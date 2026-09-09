@@ -14,17 +14,19 @@ class SaveChannelDraftShrinkRequest(DaraModel):
         draft_id: str = None,
         website_nav_name: str = None,
     ):
-        # The channel content (international only).
+        # The channel content (outside China only).
         self.adapted_content = adapted_content
         # The channel title.
         self.adapted_title = adapted_title
+        # The display name of the publishing account. A null value does not overwrite the original value. Maximum length: 256 characters.
         self.channel_account_name = channel_account_name
         # The collection of channel cover images (full overwrite).
         self.cover_images_shrink = cover_images_shrink
-        # The ID of the channel draft.
+        # The channel draft ID.
         # 
         # This parameter is required.
         self.draft_id = draft_id
+        # The article column name for Wanxiaozhi 1.0. This parameter is required only when the website has not enabled an article column.
         self.website_nav_name = website_nav_name
 
     def validate(self):

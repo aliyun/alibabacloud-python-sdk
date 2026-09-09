@@ -23,16 +23,16 @@ class SaveChannelDraftResponseBody(DaraModel):
     ):
         # The detailed reason why access was denied.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed.
+        # Indicates whether a retry is allowed.
         self.allow_retry = allow_retry
         # The application name.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
         # The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage** return parameter.
-        # > For example, if **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
+        # > For example, if **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** that you specified is invalid.
         self.dynamic_message = dynamic_message
-        # The error parameters returned.
+        # The error parameters.
         self.error_args = error_args
         # The response data.
         self.module = module
@@ -40,9 +40,9 @@ class SaveChannelDraftResponseBody(DaraModel):
         self.request_id = request_id
         # The error code.
         self.root_error_code = root_error_code
-        # The exception message.
+        # The error message.
         self.root_error_msg = root_error_msg
-        # A reserved parameter.
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):

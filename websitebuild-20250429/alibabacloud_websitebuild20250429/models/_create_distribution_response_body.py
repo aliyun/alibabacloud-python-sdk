@@ -22,11 +22,11 @@ class CreateDistributionResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The detailed reason why access is denied.
+        # The detailed reason why access was denied.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether a retry is allowed. Valid values:
-        # - false: Not allowed.
-        # - true: Allowed.
+        # Indicates whether retry is allowed. Valid values:
+        # - false: Retry is not allowed.
+        # - true: Retry is allowed.
         self.allow_retry = allow_retry
         # The application name.
         self.app_name = app_name
@@ -42,7 +42,7 @@ class CreateDistributionResponseBody(DaraModel):
         self.request_id = request_id
         # The error code.
         self.root_error_code = root_error_code
-        # The root error message.
+        # The error message.
         self.root_error_msg = root_error_msg
         # Indicates whether the request is processed synchronously.
         self.synchro = synchro
@@ -212,13 +212,9 @@ class CreateDistributionResponseBodyModuleDrafts(DaraModel):
         published_at: int = None,
         status: str = None,
     ):
-        # The AI adaptation status. Valid values:
-        # - NONE
-        # - ADAPTING
-        # - DONE
-        # - FAILED
+        # The AI adaptation status. Valid values: NONE, ADAPTING, DONE, and FAILED.
         self.adapt_status = adapt_status
-        # The channel-adapted body content.
+        # The channel-adapted content body.
         self.adapted_content = adapted_content
         # The channel-adapted title.
         self.adapted_title = adapted_title
@@ -226,13 +222,11 @@ class CreateDistributionResponseBodyModuleDrafts(DaraModel):
         self.channel = channel
         # The publishing account snapshot. For overseas channels, this is the OWLAIS socialAccountNo.
         self.channel_account = channel_account
+        # The display name of the publishing account.
         self.channel_account_name = channel_account_name
-        # The channel display name.
+        # The display name of the channel.
         self.channel_name = channel_name
-        # The channel type. Valid values:
-        # - DOMESTIC
-        # - OVERSEA
-        # - INTERNAL
+        # The channel type. Valid values: DOMESTIC, OVERSEA, and INTERNAL.
         self.channel_type = channel_type
         # The list of channel cover images.
         self.cover_images = cover_images
@@ -240,7 +234,7 @@ class CreateDistributionResponseBodyModuleDrafts(DaraModel):
         self.draft_id = draft_id
         # The ID returned by the platform.
         self.external_id = external_id
-        # The platform redirect URL.
+        # The redirect URL of the platform.
         self.external_url = external_url
         # The failure reason.
         self.fail_reason = fail_reason
@@ -248,11 +242,7 @@ class CreateDistributionResponseBodyModuleDrafts(DaraModel):
         self.publish_config = publish_config
         # The publish time, in millisecond timestamp.
         self.published_at = published_at
-        # The status. Valid values:
-        # - EDITING
-        # - PUBLISHING
-        # - SUCCESS
-        # - FAILED
+        # The status. Valid values: EDITING, PUBLISHING, SUCCESS, and FAILED.
         self.status = status
 
     def validate(self):
@@ -380,9 +370,9 @@ class CreateDistributionResponseBodyModuleDraftsCoverImages(DaraModel):
         oss_url: str = None,
         sort_order: int = None,
     ):
-        # The material center file ID.
+        # The file ID in the material center.
         self.material_file_id = material_file_id
-        # The image CDN URL.
+        # The CDN URL of the image.
         self.oss_url = oss_url
         # The sort order number.
         self.sort_order = sort_order

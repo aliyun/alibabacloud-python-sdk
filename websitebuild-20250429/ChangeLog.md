@@ -1,3 +1,6 @@
+2026-09-09 Version: 2.38.2
+- Generated python 2025-04-29 for WebsiteBuild.
+
 2026-09-08 Version: 2.38.1
 - Update API CreateDistribution: add response parameters Body.Module.Drafts.$.ChannelAccountName.
 - Update API ReportChannelPublishResult: add request parameters ChannelAccountName.
