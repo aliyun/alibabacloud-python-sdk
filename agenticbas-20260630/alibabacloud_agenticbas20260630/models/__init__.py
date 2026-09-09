@@ -1,0 +1,59 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._create_pentest_task_request import CreatePentestTaskRequest
+from ._create_pentest_task_shrink_request import CreatePentestTaskShrinkRequest
+from ._create_pentest_task_response_body import CreatePentestTaskResponseBody
+from ._create_pentest_task_response import CreatePentestTaskResponse
+from ._describe_pentest_report_content_request import DescribePentestReportContentRequest
+from ._describe_pentest_report_content_shrink_request import DescribePentestReportContentShrinkRequest
+from ._describe_pentest_report_content_response_body import DescribePentestReportContentResponseBody
+from ._describe_pentest_report_content_response import DescribePentestReportContentResponse
+from ._describe_pentest_task_list_request import DescribePentestTaskListRequest
+from ._describe_pentest_task_list_shrink_request import DescribePentestTaskListShrinkRequest
+from ._describe_pentest_task_list_response_body import DescribePentestTaskListResponseBody
+from ._describe_pentest_task_list_response import DescribePentestTaskListResponse
+from ._describe_pentest_vuln_list_request import DescribePentestVulnListRequest
+from ._describe_pentest_vuln_list_shrink_request import DescribePentestVulnListShrinkRequest
+from ._describe_pentest_vuln_list_response_body import DescribePentestVulnListResponseBody
+from ._describe_pentest_vuln_list_response import DescribePentestVulnListResponse
+from ._create_pentest_task_request import CreatePentestTaskRequestOperationInput
+from ._create_pentest_task_response_body import CreatePentestTaskResponseBodyTaskList
+from ._describe_pentest_report_content_request import DescribePentestReportContentRequestOperationInput
+from ._describe_pentest_report_content_response_body import DescribePentestReportContentResponseBodyReport
+from ._describe_pentest_task_list_request import DescribePentestTaskListRequestOperationInput
+from ._describe_pentest_task_list_response_body import DescribePentestTaskListResponseBodyPageInfo
+from ._describe_pentest_task_list_response_body import DescribePentestTaskListResponseBodyTaskList
+from ._describe_pentest_vuln_list_request import DescribePentestVulnListRequestOperationInput
+from ._describe_pentest_vuln_list_response_body import DescribePentestVulnListResponseBodyPageInfo
+from ._describe_pentest_vuln_list_response_body import DescribePentestVulnListResponseBodyVulnList
+
+__all__ = [
+    CreatePentestTaskRequest,
+    CreatePentestTaskShrinkRequest,
+    CreatePentestTaskResponseBody,
+    CreatePentestTaskResponse,
+    DescribePentestReportContentRequest,
+    DescribePentestReportContentShrinkRequest,
+    DescribePentestReportContentResponseBody,
+    DescribePentestReportContentResponse,
+    DescribePentestTaskListRequest,
+    DescribePentestTaskListShrinkRequest,
+    DescribePentestTaskListResponseBody,
+    DescribePentestTaskListResponse,
+    DescribePentestVulnListRequest,
+    DescribePentestVulnListShrinkRequest,
+    DescribePentestVulnListResponseBody,
+    DescribePentestVulnListResponse,
+    CreatePentestTaskRequestOperationInput,
+    CreatePentestTaskResponseBodyTaskList,
+    DescribePentestReportContentRequestOperationInput,
+    DescribePentestReportContentResponseBodyReport,
+    DescribePentestTaskListRequestOperationInput,
+    DescribePentestTaskListResponseBodyPageInfo,
+    DescribePentestTaskListResponseBodyTaskList,
+    DescribePentestVulnListRequestOperationInput,
+    DescribePentestVulnListResponseBodyPageInfo,
+    DescribePentestVulnListResponseBodyVulnList
+]
