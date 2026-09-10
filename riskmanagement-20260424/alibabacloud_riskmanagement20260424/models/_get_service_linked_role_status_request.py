@@ -11,9 +11,10 @@ class GetServiceLinkedRoleStatusRequest(DaraModel):
     ):
         # The authorization type. Valid values:
         # 
-        # - **SecuritySense**: security check authorization
-        # - **DisposalTool**: threat removal tool authorization
-        # - **SensePosture**: security posture authorization
+        # - **SecuritySense**: Security check authorization.
+        # - **DisposalTool**: Threat removal tool authorization.
+        # - **SensePosture**: Security posture authorization.
+        # - **CreateServiceRole**: Service role creation authorization.
         # 
         # This parameter is required.
         self.auth_type = auth_type

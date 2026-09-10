@@ -33,6 +33,10 @@ from ._describe_version_config_request import DescribeVersionConfigRequest
 from ._describe_version_config_shrink_request import DescribeVersionConfigShrinkRequest
 from ._describe_version_config_response_body import DescribeVersionConfigResponseBody
 from ._describe_version_config_response import DescribeVersionConfigResponse
+from ._download_resource_control_events_request import DownloadResourceControlEventsRequest
+from ._download_resource_control_events_shrink_request import DownloadResourceControlEventsShrinkRequest
+from ._download_resource_control_events_response_body import DownloadResourceControlEventsResponseBody
+from ._download_resource_control_events_response import DownloadResourceControlEventsResponse
 from ._get_alert_record_analysis_result_request import GetAlertRecordAnalysisResultRequest
 from ._get_alert_record_analysis_result_shrink_request import GetAlertRecordAnalysisResultShrinkRequest
 from ._get_alert_record_analysis_result_response_body import GetAlertRecordAnalysisResultResponseBody
@@ -247,6 +251,10 @@ __all__ = [
     DescribeVersionConfigShrinkRequest,
     DescribeVersionConfigResponseBody,
     DescribeVersionConfigResponse,
+    DownloadResourceControlEventsRequest,
+    DownloadResourceControlEventsShrinkRequest,
+    DownloadResourceControlEventsResponseBody,
+    DownloadResourceControlEventsResponse,
     GetAlertRecordAnalysisResultRequest,
     GetAlertRecordAnalysisResultShrinkRequest,
     GetAlertRecordAnalysisResultResponseBody,

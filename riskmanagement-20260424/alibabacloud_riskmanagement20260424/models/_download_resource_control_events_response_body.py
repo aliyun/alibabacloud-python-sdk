@@ -2,37 +2,35 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from alibabacloud_riskmanagement20260424 import models as main_models
 from darabonba.model import DaraModel
 
-class GetServiceLinkedRoleStatusResponseBody(DaraModel):
+class DownloadResourceControlEventsResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
-        data: main_models.GetServiceLinkedRoleStatusResponseBodyData = None,
+        data: str = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code. Valid values:
+        # The status code.
         # 
-        # - **200**: Succeeded.
-        # - **Other values (400, 500)**: Failed.
+        # > 200 indicates success. Other values (such as 500 or 400) indicate error codes.
         self.code = code
-        # The query result.
+        # The metadata response information.
         self.data = data
-        # The message.
+        # The prompt message.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
+        # Indicates whether the call was successful.
+        # 
         # - **true**: The call was successful.                                
         # - **false**: The call failed.
         self.success = success
 
     def validate(self):
-        if self.data:
-            self.data.validate()
+        pass
 
     def to_map(self):
         result = dict()
@@ -43,7 +41,7 @@ class GetServiceLinkedRoleStatusResponseBody(DaraModel):
             result['Code'] = self.code
 
         if self.data is not None:
-            result['Data'] = self.data.to_map()
+            result['Data'] = self.data
 
         if self.message is not None:
             result['Message'] = self.message
@@ -62,8 +60,7 @@ class GetServiceLinkedRoleStatusResponseBody(DaraModel):
             self.code = m.get('Code')
 
         if m.get('Data') is not None:
-            temp_model = main_models.GetServiceLinkedRoleStatusResponseBodyData()
-            self.data = temp_model.from_map(m.get('Data'))
+            self.data = m.get('Data')
 
         if m.get('Message') is not None:
             self.message = m.get('Message')
@@ -73,37 +70,6 @@ class GetServiceLinkedRoleStatusResponseBody(DaraModel):
 
         if m.get('Success') is not None:
             self.success = m.get('Success')
-
-        return self
-
-class GetServiceLinkedRoleStatusResponseBodyData(DaraModel):
-    def __init__(
-        self,
-        status: bool = None,
-    ):
-        # The authorization status. Valid values:
-        # 
-        # - **true**: Authorized.
-        # - **false**: Not authorized.
-        self.status = status
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        if self.status is not None:
-            result['Status'] = self.status
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
 
         return self
 

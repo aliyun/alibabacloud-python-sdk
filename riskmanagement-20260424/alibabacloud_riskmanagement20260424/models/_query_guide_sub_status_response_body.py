@@ -18,7 +18,7 @@ class QueryGuideSubStatusResponseBody(DaraModel):
         # The subscription status. Valid values:
         # 
         # - **SUBSCRIBED**: Subscribed.
-        # - **UNSUBSCRIBED**: Unsubscribed.
+        # - **UNSUBSCRIBED**: Not subscribed.
         self.data = data
         # The prompt message.
         self.message = message

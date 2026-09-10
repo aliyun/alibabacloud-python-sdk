@@ -29,21 +29,24 @@ class QueryAccountSafetyIncidentShrinkRequest(DaraModel):
         # - **en**: English.
         self.aliyun_lang = aliyun_lang
         # The event name code.
+        # > This parameter does not take effect when the CaseCodes parameter is not empty.
         self.case_code = case_code
         # The list of event name codes.
         self.case_codes_shrink = case_codes_shrink
         # The current page number. The value must be greater than 0.
         self.current = current
         # The event ID.
+        # > This parameter does not take effect when the EventIds parameter is not empty.
         self.event_id = event_id
+        # The list of event IDs.
         self.event_ids_shrink = event_ids_shrink
         # The number of records per page. Valid values: 1 to 100.
         self.page_size = page_size
-        # The control end time.
+        # The end time of the control action.
         # 
         # > Format: yyyy-MM-dd HH:mm:ss
         self.punish_end_time = punish_end_time
-        # The control start time.
+        # The start time of the control action.
         # 
         # > Format: yyyy-MM-dd HH:mm:ss
         self.punish_start_time = punish_start_time
@@ -55,7 +58,10 @@ class QueryAccountSafetyIncidentShrinkRequest(DaraModel):
         # - **Removed**: Removed.
         # - **Alerting**: Alerting.
         # - **Ended**: Ended.
+        # 
+        # > This parameter does not take effect when the Statuses parameter is not empty.
         self.status = status
+        # The list of event statuses.
         self.statuses_shrink = statuses_shrink
 
     def validate(self):

@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_riskmanagement20260424.
 
-Created on 20/08/2026
+Created on 10/09/2026
 
 @author: Alibaba Cloud SDK
 """

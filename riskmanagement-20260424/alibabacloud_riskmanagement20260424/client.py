@@ -695,6 +695,208 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_version_config_with_options_async(request, runtime)
 
+    def download_resource_control_events_with_options(
+        self,
+        tmp_req: main_models.DownloadResourceControlEventsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DownloadResourceControlEventsResponse:
+        tmp_req.validate()
+        request = main_models.DownloadResourceControlEventsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.action_codes):
+            request.action_codes_shrink = Utils.array_to_string_with_specified_style(tmp_req.action_codes, 'ActionCodes', 'json')
+        if not DaraCore.is_null(tmp_req.case_codes_prefix):
+            request.case_codes_prefix_shrink = Utils.array_to_string_with_specified_style(tmp_req.case_codes_prefix, 'CaseCodesPrefix', 'json')
+        if not DaraCore.is_null(tmp_req.event_codes):
+            request.event_codes_shrink = Utils.array_to_string_with_specified_style(tmp_req.event_codes, 'EventCodes', 'json')
+        if not DaraCore.is_null(tmp_req.exclude_action_codes):
+            request.exclude_action_codes_shrink = Utils.array_to_string_with_specified_style(tmp_req.exclude_action_codes, 'ExcludeActionCodes', 'json')
+        if not DaraCore.is_null(tmp_req.exclude_event_codes):
+            request.exclude_event_codes_shrink = Utils.array_to_string_with_specified_style(tmp_req.exclude_event_codes, 'ExcludeEventCodes', 'json')
+        if not DaraCore.is_null(tmp_req.exclude_reasons):
+            request.exclude_reasons_shrink = Utils.array_to_string_with_specified_style(tmp_req.exclude_reasons, 'ExcludeReasons', 'json')
+        if not DaraCore.is_null(tmp_req.include_reasons):
+            request.include_reasons_shrink = Utils.array_to_string_with_specified_style(tmp_req.include_reasons, 'IncludeReasons', 'json')
+        if not DaraCore.is_null(tmp_req.source_codes):
+            request.source_codes_shrink = Utils.array_to_string_with_specified_style(tmp_req.source_codes, 'SourceCodes', 'json')
+        if not DaraCore.is_null(tmp_req.status_list):
+            request.status_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.status_list, 'StatusList', 'json')
+        query = {}
+        if not DaraCore.is_null(request.action_code):
+            query['ActionCode'] = request.action_code
+        if not DaraCore.is_null(request.action_codes_shrink):
+            query['ActionCodes'] = request.action_codes_shrink
+        if not DaraCore.is_null(request.aliyun_lang):
+            query['AliyunLang'] = request.aliyun_lang
+        if not DaraCore.is_null(request.business_code):
+            query['BusinessCode'] = request.business_code
+        if not DaraCore.is_null(request.case_codes_prefix_shrink):
+            query['CaseCodesPrefix'] = request.case_codes_prefix_shrink
+        if not DaraCore.is_null(request.current):
+            query['Current'] = request.current
+        if not DaraCore.is_null(request.domain):
+            query['Domain'] = request.domain
+        if not DaraCore.is_null(request.event_code):
+            query['EventCode'] = request.event_code
+        if not DaraCore.is_null(request.event_codes_shrink):
+            query['EventCodes'] = request.event_codes_shrink
+        if not DaraCore.is_null(request.event_id):
+            query['EventId'] = request.event_id
+        if not DaraCore.is_null(request.exclude_action_codes_shrink):
+            query['ExcludeActionCodes'] = request.exclude_action_codes_shrink
+        if not DaraCore.is_null(request.exclude_event_codes_shrink):
+            query['ExcludeEventCodes'] = request.exclude_event_codes_shrink
+        if not DaraCore.is_null(request.exclude_reasons_shrink):
+            query['ExcludeReasons'] = request.exclude_reasons_shrink
+        if not DaraCore.is_null(request.include_reasons_shrink):
+            query['IncludeReasons'] = request.include_reasons_shrink
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.ip):
+            query['Ip'] = request.ip
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.punish_end_time):
+            query['PunishEndTime'] = request.punish_end_time
+        if not DaraCore.is_null(request.punish_start_time):
+            query['PunishStartTime'] = request.punish_start_time
+        if not DaraCore.is_null(request.reason):
+            query['Reason'] = request.reason
+        if not DaraCore.is_null(request.source_codes_shrink):
+            query['SourceCodes'] = request.source_codes_shrink
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.status_list_shrink):
+            query['StatusList'] = request.status_list_shrink
+        if not DaraCore.is_null(request.url):
+            query['Url'] = request.url
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DownloadResourceControlEvents',
+            version = '2026-04-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DownloadResourceControlEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def download_resource_control_events_with_options_async(
+        self,
+        tmp_req: main_models.DownloadResourceControlEventsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DownloadResourceControlEventsResponse:
+        tmp_req.validate()
+        request = main_models.DownloadResourceControlEventsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.action_codes):
+            request.action_codes_shrink = Utils.array_to_string_with_specified_style(tmp_req.action_codes, 'ActionCodes', 'json')
+        if not DaraCore.is_null(tmp_req.case_codes_prefix):
+            request.case_codes_prefix_shrink = Utils.array_to_string_with_specified_style(tmp_req.case_codes_prefix, 'CaseCodesPrefix', 'json')
+        if not DaraCore.is_null(tmp_req.event_codes):
+            request.event_codes_shrink = Utils.array_to_string_with_specified_style(tmp_req.event_codes, 'EventCodes', 'json')
+        if not DaraCore.is_null(tmp_req.exclude_action_codes):
+            request.exclude_action_codes_shrink = Utils.array_to_string_with_specified_style(tmp_req.exclude_action_codes, 'ExcludeActionCodes', 'json')
+        if not DaraCore.is_null(tmp_req.exclude_event_codes):
+            request.exclude_event_codes_shrink = Utils.array_to_string_with_specified_style(tmp_req.exclude_event_codes, 'ExcludeEventCodes', 'json')
+        if not DaraCore.is_null(tmp_req.exclude_reasons):
+            request.exclude_reasons_shrink = Utils.array_to_string_with_specified_style(tmp_req.exclude_reasons, 'ExcludeReasons', 'json')
+        if not DaraCore.is_null(tmp_req.include_reasons):
+            request.include_reasons_shrink = Utils.array_to_string_with_specified_style(tmp_req.include_reasons, 'IncludeReasons', 'json')
+        if not DaraCore.is_null(tmp_req.source_codes):
+            request.source_codes_shrink = Utils.array_to_string_with_specified_style(tmp_req.source_codes, 'SourceCodes', 'json')
+        if not DaraCore.is_null(tmp_req.status_list):
+            request.status_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.status_list, 'StatusList', 'json')
+        query = {}
+        if not DaraCore.is_null(request.action_code):
+            query['ActionCode'] = request.action_code
+        if not DaraCore.is_null(request.action_codes_shrink):
+            query['ActionCodes'] = request.action_codes_shrink
+        if not DaraCore.is_null(request.aliyun_lang):
+            query['AliyunLang'] = request.aliyun_lang
+        if not DaraCore.is_null(request.business_code):
+            query['BusinessCode'] = request.business_code
+        if not DaraCore.is_null(request.case_codes_prefix_shrink):
+            query['CaseCodesPrefix'] = request.case_codes_prefix_shrink
+        if not DaraCore.is_null(request.current):
+            query['Current'] = request.current
+        if not DaraCore.is_null(request.domain):
+            query['Domain'] = request.domain
+        if not DaraCore.is_null(request.event_code):
+            query['EventCode'] = request.event_code
+        if not DaraCore.is_null(request.event_codes_shrink):
+            query['EventCodes'] = request.event_codes_shrink
+        if not DaraCore.is_null(request.event_id):
+            query['EventId'] = request.event_id
+        if not DaraCore.is_null(request.exclude_action_codes_shrink):
+            query['ExcludeActionCodes'] = request.exclude_action_codes_shrink
+        if not DaraCore.is_null(request.exclude_event_codes_shrink):
+            query['ExcludeEventCodes'] = request.exclude_event_codes_shrink
+        if not DaraCore.is_null(request.exclude_reasons_shrink):
+            query['ExcludeReasons'] = request.exclude_reasons_shrink
+        if not DaraCore.is_null(request.include_reasons_shrink):
+            query['IncludeReasons'] = request.include_reasons_shrink
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.ip):
+            query['Ip'] = request.ip
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.punish_end_time):
+            query['PunishEndTime'] = request.punish_end_time
+        if not DaraCore.is_null(request.punish_start_time):
+            query['PunishStartTime'] = request.punish_start_time
+        if not DaraCore.is_null(request.reason):
+            query['Reason'] = request.reason
+        if not DaraCore.is_null(request.source_codes_shrink):
+            query['SourceCodes'] = request.source_codes_shrink
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.status_list_shrink):
+            query['StatusList'] = request.status_list_shrink
+        if not DaraCore.is_null(request.url):
+            query['Url'] = request.url
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DownloadResourceControlEvents',
+            version = '2026-04-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DownloadResourceControlEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def download_resource_control_events(
+        self,
+        request: main_models.DownloadResourceControlEventsRequest,
+    ) -> main_models.DownloadResourceControlEventsResponse:
+        runtime = RuntimeOptions()
+        return self.download_resource_control_events_with_options(request, runtime)
+
+    async def download_resource_control_events_async(
+        self,
+        request: main_models.DownloadResourceControlEventsRequest,
+    ) -> main_models.DownloadResourceControlEventsResponse:
+        runtime = RuntimeOptions()
+        return await self.download_resource_control_events_with_options_async(request, runtime)
+
     def get_alert_record_analysis_result_with_options(
         self,
         tmp_req: main_models.GetAlertRecordAnalysisResultRequest,
