@@ -74,7 +74,9 @@ class GetAuthorizationRuleResponseBodyAuthorizationRule(DaraModel):
         self.authorization_rule_id = authorization_rule_id
         # The authorization rule name.
         self.authorization_rule_name = authorization_rule_name
-        # The scenario label of the authorization rule.
+        # The scenario label of the authorization rule. Valid values:
+        # - privileged_cloud_account: Privileged cloud account scenario.
+        # - asset: Asset scenario.
         self.authorization_rule_scenario_label = authorization_rule_scenario_label
         # The subject ID associated with the authorization rule.
         self.authorization_rule_subject_id = authorization_rule_subject_id
@@ -86,7 +88,7 @@ class GetAuthorizationRuleResponseBodyAuthorizationRule(DaraModel):
         # - application: Application.
         # - user: Account.
         self.authorization_rule_subject_type = authorization_rule_subject_type
-        # The creation time, in UNIX timestamp format, measured in milliseconds.
+        # The creation time, in UNIX timestamp format. Unit: milliseconds.
         self.create_time = create_time
         # The description of the authorization rule.
         self.description = description
@@ -98,7 +100,7 @@ class GetAuthorizationRuleResponseBodyAuthorizationRule(DaraModel):
         # - enabled: Enabled.
         # - disabled: Disabled.
         self.status = status
-        # The last update time, in UNIX timestamp format, measured in milliseconds.
+        # The last update time, in UNIX timestamp format. Unit: milliseconds.
         self.update_time = update_time
 
     def validate(self):

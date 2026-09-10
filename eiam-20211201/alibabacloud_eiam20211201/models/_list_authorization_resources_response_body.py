@@ -16,15 +16,15 @@ class ListAuthorizationResourcesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of authorization resources.
+        # The list of authorized resources.
         self.authorization_resources = authorization_resources
         # The number of rows per page in a paging query.
         self.max_results = max_results
-        # The pagination token returned by this call, used for the next page query.
+        # The pagination token returned in this call, which is used for the next paged query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries in the list.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -92,24 +92,24 @@ class ListAuthorizationResourcesResponseBodyAuthorizationResources(DaraModel):
         instance_id: str = None,
         update_time: int = None,
     ):
-        # The resource entity ID associated with the authorization resource.
+        # The ID of the resource entity associated with the authorized resource.
         self.authorization_resource_entity_id = authorization_resource_entity_id
-        # The resource entity type associated with the authorization resource. Valid values:
-        # - cloud_account_role: cloud role
+        # The type of the resource entity associated with the authorized resource. Valid values:
+        # - cloud_account_role: cloud role.
         self.authorization_resource_entity_type = authorization_resource_entity_type
         # The authorization resource ID.
         self.authorization_resource_id = authorization_resource_id
         # The authorization rule ID.
         self.authorization_rule_id = authorization_rule_id
-        # The cloud account ID to which the resource entity associated with the authorization resource belongs.
+        # The ID of the cloud account to which the resource entity associated with the authorized resource belongs.
         self.cloud_account_id = cloud_account_id
         # The effective condition.
         self.condition = condition
-        # The creation time.
+        # The creation time, in UNIX timestamp format. Unit: milliseconds.
         self.create_time = create_time
         # The instance ID.
         self.instance_id = instance_id
-        # The update time.
+        # The update time, in UNIX timestamp format. Unit: milliseconds.
         self.update_time = update_time
 
     def validate(self):

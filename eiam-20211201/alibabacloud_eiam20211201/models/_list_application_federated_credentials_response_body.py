@@ -19,7 +19,7 @@ class ListApplicationFederatedCredentialsResponseBody(DaraModel):
     ):
         # The list of application federated credentials.
         self.application_federated_credentials = application_federated_credentials
-        # The number of entries per page in a paged query. This parameter is used for paging.
+        # The maximum number of rows per page in a paged query.
         self.max_results = max_results
         # The pagination token returned by this call.
         self.next_token = next_token
@@ -27,7 +27,7 @@ class ListApplicationFederatedCredentialsResponseBody(DaraModel):
         self.previous_token = previous_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries in the list.
         self.total_count = total_count
 
     def validate(self):
@@ -109,33 +109,35 @@ class ListApplicationFederatedCredentialsResponseBodyApplicationFederatedCredent
     ):
         # The application federated credential ID.
         self.application_federated_credential_id = application_federated_credential_id
-        # The name of the application federated credential.
+        # The application federated credential name.
         self.application_federated_credential_name = application_federated_credential_name
-        # The type of the application federated credential.
+        # The application federated credential type.
         self.application_federated_credential_type = application_federated_credential_type
         # The application ID.
         self.application_id = application_id
-        # The time when the application federated credential was created.
+        # The creation time.
         self.create_time = create_time
-        # The description of the application federated credential.
+        # The application federated credential description.
         self.description = description
         # The federated trust source ID.
         self.federated_credential_provider_id = federated_credential_provider_id
         # The instance ID.
         self.instance_id = instance_id
-        # The time when the application federated credential was last used.
+        # The last used time.
         self.last_used_time = last_used_time
-        # The OIDC structured configuration. This parameter applies to the structured mode with the OIDC type.
+        # The OIDC structured configuration.
         self.oidc_verification_config = oidc_verification_config
-        # The PKCS#7 structured configuration. This parameter applies to the structured mode with the PKCS#7 type.
+        # The PKCS#7 structured configuration.
         self.pkcs_7verification_config = pkcs_7verification_config
-        # The status of the application federated credential.
+        # The application federated credential status.
         self.status = status
-        # The time when the application federated credential was last updated.
+        # The update time.
         self.update_time = update_time
-        # The verification condition. In freedom mode, this is a manually entered value. In structured mode, this is the final compiled value.
+        # The verification condition.
         self.verification_condition = verification_condition
-        # The verification mode. Valid values: freedom and structured.
+        # The verification mode. Valid values:
+        # - freedom: free mode.
+        # - structured: structured mode.
         self.verification_mode = verification_mode
 
     def validate(self):
@@ -252,7 +254,7 @@ class ListApplicationFederatedCredentialsResponseBodyApplicationFederatedCredent
         self,
         instance_ids: List[str] = None,
     ):
-        # The list of allowed instance IDs. A maximum of 10 IDs are supported.
+        # The list of allowed instance IDs.
         self.instance_ids = instance_ids
 
     def validate(self):
@@ -288,10 +290,15 @@ class ListApplicationFederatedCredentialsResponseBodyApplicationFederatedCredent
         self.azure_vm_config = azure_vm_config
         # The GCP VM scenario configuration.
         self.gcp_vm_config = gcp_vm_config
+        # The generic scenario configuration.
         self.generic_config = generic_config
         # The Kubernetes scenario configuration.
         self.kubernetes_config = kubernetes_config
-        # The OIDC scenario profile. Valid values: generic, kubernetes, gcp_vm, and azure_vm.
+        # The OIDC scenario profile. Different profiles correspond to different configurations. Valid values:
+        # - generic
+        # - kubernetes
+        # - gcp_vm
+        # - azure_vm
         self.profile = profile
 
     def validate(self):
@@ -356,11 +363,11 @@ class ListApplicationFederatedCredentialsResponseBodyApplicationFederatedCredent
         pod_name_prefix: str = None,
         service_account_name: str = None,
     ):
-        # The Kubernetes namespace.
+        # The K8s namespace.
         self.namespace = namespace
         # The pod name prefix.
         self.pod_name_prefix = pod_name_prefix
-        # The Kubernetes service account name.
+        # The K8s service account name.
         self.service_account_name = service_account_name
 
     def validate(self):
@@ -400,6 +407,7 @@ class ListApplicationFederatedCredentialsResponseBodyApplicationFederatedCredent
         self,
         subject: str = None,
     ):
+        # The subject identifier.
         self.subject = subject
 
     def validate(self):
@@ -429,10 +437,11 @@ class ListApplicationFederatedCredentialsResponseBodyApplicationFederatedCredent
         project_id: str = None,
         service_account_id: str = None,
     ):
-        # The list of VM instance IDs. A maximum of 10 IDs are supported.
+        # The list of VM instance IDs.
         self.instance_ids = instance_ids
+        # The GCP project ID.
         self.project_id = project_id
-        # The sub claim that corresponds to the service account.
+        # The sub claim corresponding to the service account.
         self.service_account_id = service_account_id
 
     def validate(self):
@@ -475,9 +484,13 @@ class ListApplicationFederatedCredentialsResponseBodyApplicationFederatedCredent
         subscription_id: str = None,
         vm_names: List[str] = None,
     ):
+        # The principal ID.
         self.principal_id = principal_id
+        # The Azure resource group name.
         self.resource_group_name = resource_group_name
+        # The subscription ID.
         self.subscription_id = subscription_id
+        # The list of virtual machine names.
         self.vm_names = vm_names
 
     def validate(self):

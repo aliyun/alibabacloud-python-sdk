@@ -18,9 +18,9 @@ class ListCloudAccountsResponseBody(DaraModel):
     ):
         # The list of cloud accounts.
         self.cloud_accounts = cloud_accounts
-        # The maximum number of entries per page for paging.
+        # The number of rows per page for paging.
         self.max_results = max_results
-        # The token returned for the current call.
+        # The token returned for this request.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -114,27 +114,37 @@ class ListCloudAccountsResponseBodyCloudAccounts(DaraModel):
         self.cloud_account_name = cloud_account_name
         # The identity provider name.
         self.cloud_account_provider_name = cloud_account_provider_name
-        # The cloud account site.
+        # The cloud account site. Valid values:
+        # - china_mainland: The Chinese mainland.
+        # - global: Global.
         self.cloud_account_site = cloud_account_site
         # The cloud account type. Valid values:
         # 
         # - alibaba_cloud: Alibaba Cloud.
         self.cloud_account_vendor_type = cloud_account_vendor_type
-        # The creation time, in UNIX timestamp format. Unit: milliseconds.
+        # The creation time, in UNIX timestamp format, measured in milliseconds.
         self.create_time = create_time
         # The cloud account description.
         self.description = description
         # The instance ID.
         self.instance_id = instance_id
-        # The list of associated privileged access application IDs.
+        # The list of associated privilege application IDs.
         self.privilege_application_ids = privilege_application_ids
         # The reason for the privilege hosting or removal failure.
         self.privilege_hosting_error = privilege_hosting_error
-        # The privilege hosting state, which indicates whether the account has privileged access capabilities.
+        # The hosting state of the cloud account. The default value is unmanaged. Valid values:
+        # - hosting_unmanaged: Unmanaged. The cloud account has not initiated hosting and is in the initial state.
+        # - hosting_pending: Hosting in progress. The hosting task has been submitted and is being executed asynchronously. Wait for the hosting process to complete before the final state is reached.
+        # - hosting_completed: Hosting completed. The cloud account hosting process was executed successfully, and the related permission templates and hosting bindings have taken effect.
+        # - hosting_failed: Hosting failed. The hosting process encountered an exception. View the failure reason and re-initiate hosting.
+        # - hosting_removing: Removal in progress. The removal task has been submitted and is being executed asynchronously. Wait for the removal process to complete before the final state is reached.
+        # - hosting_remove_failed: Removal failed. The removal process encountered an exception. View the failure reason and re-initiate removal.
         self.privilege_hosting_state = privilege_hosting_state
-        # The privilege switch status, which indicates whether the privileged access capability is available.
+        # The privilege switch status. Valid values:
+        # - enabled: Enabled. The resource is active and can be used normally.
+        # - disabled: Disabled. The resource is deactivated and no longer takes effect. You can re-enable it to restore functionality.
         self.privilege_status = privilege_status
-        # The last update time, in UNIX timestamp format. Unit: milliseconds.
+        # The last update time, in UNIX timestamp format, measured in milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -258,9 +268,9 @@ class ListCloudAccountsResponseBodyCloudAccountsPrivilegeHostingError(DaraModel)
         error_code: str = None,
         error_message: str = None,
     ):
-        # The failure error code.
+        # The error code.
         self.error_code = error_code
-        # The failure message.
+        # The error message.
         self.error_message = error_message
 
     def validate(self):
@@ -298,7 +308,7 @@ class ListCloudAccountsResponseBodyCloudAccountsCloudAccountHealthCheckResult(Da
     ):
         # The error reason. This field is returned when the health check status is unhealthy.
         self.error_reason = error_reason
-        # The last check time, in UNIX timestamp format. Unit: milliseconds.
+        # The last check time, in UNIX timestamp format, measured in milliseconds.
         self.last_check_time = last_check_time
         # The health check result of the cloud account. Valid values:
         # - success: Succeeded.

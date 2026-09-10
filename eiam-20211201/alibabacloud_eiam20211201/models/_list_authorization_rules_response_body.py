@@ -18,7 +18,7 @@ class ListAuthorizationRulesResponseBody(DaraModel):
     ):
         # The list of authorization rules.
         self.authorization_rules = authorization_rules
-        # The number of entries per page in the paging query.
+        # The number of entries per page in a paging query.
         self.max_results = max_results
         # The token returned for the next page query.
         self.next_token = next_token
@@ -98,28 +98,30 @@ class ListAuthorizationRulesResponseBodyAuthorizationRules(DaraModel):
         update_time: int = None,
     ):
         # The authorization resource scope. Valid values:
-        # - global: all resources under the project
-        # - custom: specified resources under the project
+        # - global: all resources under the project.
+        # - custom: specified resources under the project.
         self.authorization_resource_scope = authorization_resource_scope
         # The creation type of the authorization rule. Valid values:
-        # - system_init: created by the system
-        # - user_custom: created by the user
+        # - system_init: created by the system.
+        # - user_custom: created by the user.
         self.authorization_rule_creation_type = authorization_rule_creation_type
         # The authorization rule ID.
         self.authorization_rule_id = authorization_rule_id
         # The authorization rule name.
         self.authorization_rule_name = authorization_rule_name
-        # The scenario label of the authorization rule.
+        # The scenario label of the authorization rule. Valid values:
+        # - privileged_cloud_account: privileged cloud account scenario.
+        # - asset: asset scenario.
         self.authorization_rule_scenario_label = authorization_rule_scenario_label
         # The subject ID associated with the authorization rule.
         self.authorization_rule_subject_id = authorization_rule_subject_id
         # The subject scope of the authorization rule. Valid values:
-        # - shared: supports all subjects, including accounts and applications
-        # - exclusive: exclusive type
+        # - shared: supports all subjects, including accounts and applications.
+        # - exclusive: exclusive type.
         self.authorization_rule_subject_scope = authorization_rule_subject_scope
         # The subject type associated with the authorization rule. This parameter takes effect only when the subject scope is exclusive. Valid values:
-        # - application: application
-        # - user: account
+        # - application: application.
+        # - user: account.
         self.authorization_rule_subject_type = authorization_rule_subject_type
         # The creation time, in UNIX timestamp format, measured in milliseconds.
         self.create_time = create_time
@@ -130,8 +132,8 @@ class ListAuthorizationRulesResponseBodyAuthorizationRules(DaraModel):
         # The project ID associated with the authorization rule.
         self.project_id = project_id
         # The authorization rule status. Valid values:
-        # - enabled: enabled
-        # - disabled: disabled
+        # - enabled: Enabled.
+        # - disabled: Disabled.
         self.status = status
         # The last update time, in UNIX timestamp format, measured in milliseconds.
         self.update_time = update_time

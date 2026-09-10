@@ -32,7 +32,7 @@ class ListCloudAccountRolesRequest(DaraModel):
         # 
         # - The maximum value is 100.
         self.max_results = max_results
-        # The token that identifies the start position of the next page.
+        # The token that specifies the start position of the next page.
         # 
         # - If this parameter is not specified, the query starts from the first page.
         self.next_token = next_token
@@ -95,13 +95,13 @@ class ListCloudAccountRolesRequestFilter(DaraModel):
         name: str = None,
         value: List[str] = None,
     ):
-        # The name of the filter field. Valid values:
+        # The filter field name. Valid values:
         # - CloudAccountRoleId: the cloud role ID.
         # - CloudAccountRoleName: the cloud role name.
-        # - CloudAccountRoleExternalId: the external identifier of the cloud role.
-        # - CloudAccountRoleUsageType: the usage type of the cloud role.
+        # - CloudAccountRoleExternalId: the cloud role external identifier.
+        # - CloudAccountRoleUsageType: the cloud role usage type.
         self.name = name
-        # The values of the filter field.
+        # The list of filter field values.
         self.value = value
 
     def validate(self):

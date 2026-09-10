@@ -22,23 +22,23 @@ class SetApplicationSsoConfigRequest(DaraModel):
         # 
         # This parameter is required.
         self.application_id = application_id
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see How to ensure idempotence.
+        # The client token that is used to ensure the idempotence of the request. Generate a unique value from your client. The value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see How to ensure idempotence.
         self.client_token = client_token
-        # The initialization single sign-on (SSO) method. Valid values:
-        # - only_app_init_sso: Only application-initiated SSO. This is the default value for OIDC protocol applications. When a SAML application specifies this method, InitLoginUrl must be specified.
-        # - idaas_or_app_init_sso: SSO initiated from the IDaaS portal or the application. This is the default value for SAML protocol applications. When an OIDC protocol application specifies this method, InitLoginUrl must be specified.
+        # The initial single sign-on (SSO) logon method. Valid values:
+        # - only_app_init_sso: Only application-initiated SSO is supported. This is the default value for OIDC protocol applications. When a SAML application uses this method, InitLoginUrl must be specified.
+        # - idaas_or_app_init_sso: Both IDaaS portal-initiated and application-initiated SSO are supported. This is the default value for SAML protocol applications. When an OIDC protocol application uses this method, InitLoginUrl must be specified.
         self.init_login_type = init_login_type
-        # The URL that triggers the initialization single sign-on (SSO).
-        # When an OIDC protocol application sets InitLoginType to idaas_or_app_init_sso, this parameter is required.
-        # When a SAML protocol application sets InitLoginType to only_app_init_sso, this parameter is required.
+        # The initial single sign-on (SSO) logon trigger URL.
+        # This parameter is required when an OIDC protocol application sets InitLoginType to idaas_or_app_init_sso.
+        # This parameter is required when a SAML protocol application sets InitLoginType to only_app_init_sso.
         self.init_login_url = init_login_url
         # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The SSO configuration parameters for an OIDC protocol-based application.
+        # The SSO configuration parameters for an OIDC-based application.
         self.oidc_sso_config = oidc_sso_config
-        # The SSO configuration parameters for a SAML protocol-based application.
+        # The SSO configuration parameters for a SAML-based application.
         self.saml_sso_config = saml_sso_config
 
     def validate(self):
@@ -112,18 +112,21 @@ class SetApplicationSsoConfigRequestSamlSsoConfig(DaraModel):
         name_id_format: str = None,
         name_id_value_expression: str = None,
         optional_relay_states: List[main_models.SetApplicationSsoConfigRequestSamlSsoConfigOptionalRelayStates] = None,
+        require_authn_request_signed: bool = None,
         response_signed: bool = None,
         signature_algorithm: str = None,
         sp_entity_id: str = None,
+        sp_signing_certificates: List[str] = None,
+        sp_slo_response_url: str = None,
         sp_sso_acs_url: str = None,
     ):
-        # Specifies whether the Assertion needs to be signed. ResponseSigned and AssertionSigned cannot both be set to false.
-        # - true: The Assertion is signed.
-        # - false: The Assertion is not signed.
+        # Specifies whether the assertion needs to be signed. ResponseSigned and AssertionSigned cannot both be set to false.
+        # - true: The assertion is signed.
+        # - false: The assertion is not signed.
         self.assertion_signed = assertion_signed
         # The additional user attribute configurations included in the SAML assertion.
         self.attribute_statements = attribute_statements
-        # The default RelayState value. When the single sign-on (SSO) request is initiated by EIAM, the SAML Response provided by EIAM specifies the RelayState as this value.
+        # The default RelayState value. When a single sign-on (SSO) logon request is initiated by EIAM, the SAML Response provided by EIAM specifies the RelayState as this value.
         self.default_relay_state = default_relay_state
         # The Entity ID that represents the IdP identity in the SAML protocol. URL format and URN format are supported.
         self.id_pentity_id = id_pentity_id
@@ -133,19 +136,25 @@ class SetApplicationSsoConfigRequestSamlSsoConfig(DaraModel):
         # - urn:oasis:names:tc:SAML:2.0:nameid-format:persistent: Persistent NameID.
         # - urn:oasis:names:tc:SAML:2.0:nameid-format:transient: Transient NameID.
         self.name_id_format = name_id_format
-        # The expression used to generate the actual NameID value for the SAML protocol.
+        # The expression used to generate the actual NameID value in the SAML protocol.
         self.name_id_value_expression = name_id_value_expression
         # The optional RelayState configurations.
         self.optional_relay_states = optional_relay_states
-        # Specifies whether the Response needs to be signed. ResponseSigned and AssertionSigned cannot both be set to false.
-        # - true: The Response is signed.
-        # - false: The Response is not signed.
+        # Specifies whether SSO AuthnRequest signature verification is enabled. Default value: false. If set to true, spSigningCertificates must be configured (the array must not be empty).
+        self.require_authn_request_signed = require_authn_request_signed
+        # Specifies whether the response needs to be signed. ResponseSigned and AssertionSigned cannot both be set to false.
+        # - true: The response is signed.
+        # - false: The response is not signed.
         self.response_signed = response_signed
-        # The SAML assertion signature algorithm.
+        # The signature algorithm for the SAML assertion.
         self.signature_algorithm = signature_algorithm
         # The SAML EntityId of the application (SP).
         self.sp_entity_id = sp_entity_id
-        # The SAML assertion consumer service (ACS) URL of the application (SP).
+        # The array of SP signature verification certificates in PEM format. A maximum of two certificates are allowed and are shared by SSO and SLO. Each certificate is validated for format and validity upon write. Requests with more than two certificates are rejected.
+        self.sp_signing_certificates = sp_signing_certificates
+        # The URL on the SP side that receives the LogoutResponse. This parameter is optional.
+        self.sp_slo_response_url = sp_slo_response_url
+        # The SAML assertion consumer service URL of the application (SP).
         self.sp_sso_acs_url = sp_sso_acs_url
 
     def validate(self):
@@ -188,6 +197,9 @@ class SetApplicationSsoConfigRequestSamlSsoConfig(DaraModel):
             for k1 in self.optional_relay_states:
                 result['OptionalRelayStates'].append(k1.to_map() if k1 else None)
 
+        if self.require_authn_request_signed is not None:
+            result['RequireAuthnRequestSigned'] = self.require_authn_request_signed
+
         if self.response_signed is not None:
             result['ResponseSigned'] = self.response_signed
 
@@ -196,6 +208,12 @@ class SetApplicationSsoConfigRequestSamlSsoConfig(DaraModel):
 
         if self.sp_entity_id is not None:
             result['SpEntityId'] = self.sp_entity_id
+
+        if self.sp_signing_certificates is not None:
+            result['SpSigningCertificates'] = self.sp_signing_certificates
+
+        if self.sp_slo_response_url is not None:
+            result['SpSloResponseUrl'] = self.sp_slo_response_url
 
         if self.sp_sso_acs_url is not None:
             result['SpSsoAcsUrl'] = self.sp_sso_acs_url
@@ -231,6 +249,9 @@ class SetApplicationSsoConfigRequestSamlSsoConfig(DaraModel):
                 temp_model = main_models.SetApplicationSsoConfigRequestSamlSsoConfigOptionalRelayStates()
                 self.optional_relay_states.append(temp_model.from_map(k1))
 
+        if m.get('RequireAuthnRequestSigned') is not None:
+            self.require_authn_request_signed = m.get('RequireAuthnRequestSigned')
+
         if m.get('ResponseSigned') is not None:
             self.response_signed = m.get('ResponseSigned')
 
@@ -239,6 +260,12 @@ class SetApplicationSsoConfigRequestSamlSsoConfig(DaraModel):
 
         if m.get('SpEntityId') is not None:
             self.sp_entity_id = m.get('SpEntityId')
+
+        if m.get('SpSigningCertificates') is not None:
+            self.sp_signing_certificates = m.get('SpSigningCertificates')
+
+        if m.get('SpSloResponseUrl') is not None:
+            self.sp_slo_response_url = m.get('SpSloResponseUrl')
 
         if m.get('SpSsoAcsUrl') is not None:
             self.sp_sso_acs_url = m.get('SpSsoAcsUrl')
@@ -288,7 +315,7 @@ class SetApplicationSsoConfigRequestSamlSsoConfigAttributeStatements(DaraModel):
         attribute_name: str = None,
         attribute_value_expression: str = None,
     ):
-        # The Name of the attribute in the SAML assertion.
+        # The name of the attribute in the SAML assertion.
         self.attribute_name = attribute_name
         # The value expression of the attribute in the SAML assertion.
         self.attribute_value_expression = attribute_value_expression
@@ -341,35 +368,35 @@ class SetApplicationSsoConfigRequestOidcSsoConfig(DaraModel):
     ):
         # The validity period of the issued access token. Unit: seconds. Default value: 1200 (20 minutes).
         self.access_token_effective_time = access_token_effective_time
-        # Specifies whether the application is allowed to act as a public client to request the IDaaS EIAM authorization server. Only the authorization code mode and device mode support this feature. Default value: false.
+        # Specifies whether the application is allowed to act as a public client to request the IDaaS EIAM authorization server. This parameter can be enabled only in authorization code mode and device mode. Default value: false.
         self.allowed_public_client = allowed_public_client
         # The validity period of the issued code. Unit: seconds. Default value: 60 (1 minute).
         self.code_effective_time = code_effective_time
-        # The custom user information included in the ID token response.
+        # The custom user information included in the returned ID token.
         self.custom_claims = custom_claims
-        # The OIDC standard parameter scope, which specifies the scope of user attributes that can be returned by the userinfo endpoint or the ID token.
+        # The OIDC standard parameter scope, which specifies the range of user attributes that can be returned by the userinfo endpoint or the id_token.
         self.grant_scopes = grant_scopes
-        # The list of supported OIDC protocol grant types.
+        # The list of supported OIDC grant types.
         self.grant_types = grant_types
         # The validity period of the issued ID token. Unit: seconds. Default value: 300 (5 minutes).
         self.id_token_effective_time = id_token_effective_time
-        # The ID of the identity authentication source used for the password mode. This parameter takes effect only when the GrantTypes of the OIDC application includes the password mode.
+        # The ID of the authentication source used in password mode. This parameter takes effect only when the GrantTypes specified for the OIDC application include the password mode.
         self.password_authentication_source_id = password_authentication_source_id
-        # Specifies whether TOTP-based secondary authentication is required for the password mode. This parameter takes effect only when the GrantTypes of the OIDC application includes the password mode.
+        # Specifies whether TOTP-based secondary authentication is required for password mode. This parameter takes effect only when the GrantTypes specified for the OIDC application include the password mode.
         self.password_totp_mfa_required = password_totp_mfa_required
         # The algorithm used to calculate the Code Challenge in PKCE.
         self.pkce_challenge_methods = pkce_challenge_methods
-        # Specifies whether the application SSO requires PKCE (RFC 7636).
+        # Specifies whether Proof Key for Code Exchange (PKCE) (RFC 7636) is required for application SSO.
         self.pkce_required = pkce_required
-        # The list of logout callback addresses supported by the application.
+        # The list of logout callback URIs supported by the application.
         self.post_logout_redirect_uris = post_logout_redirect_uris
-        # The list of RedirectUris supported by the application.
+        # The list of redirect URIs supported by the application.
         self.redirect_uris = redirect_uris
         # The validity period of the issued refresh token. Unit: seconds. Default value: 86400 (1 day).
         self.refresh_token_effective = refresh_token_effective
-        # The response types supported by the application when OidcSsoConfig.GrantTypes includes the implicit mode.
+        # The response types supported by the application when OidcSsoConfig.GrantTypes includes the implicit grant type.
         self.response_types = response_types
-        # The custom expression for the sub value returned in the ID token.
+        # The custom expression for the sub claim value returned in the ID token.
         self.subject_id_expression = subject_id_expression
 
     def validate(self):

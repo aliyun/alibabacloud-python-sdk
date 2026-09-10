@@ -81,12 +81,15 @@ class GetCloudAccountResponseBodyCloudAccount(DaraModel):
         self.cloud_account_id = cloud_account_id
         # The cloud account name.
         self.cloud_account_name = cloud_account_name
-        # The identity provider configuration.
+        # The identity provider configuration information.
         self.cloud_account_provider_config = cloud_account_provider_config
         # The identity provider name.
         self.cloud_account_provider_name = cloud_account_provider_name
+        # The cloud account role creation type.
         self.cloud_account_role_creation_type = cloud_account_role_creation_type
-        # The cloud account site.
+        # The cloud account site. Valid values:
+        # - china_mainland: The Chinese mainland.
+        # - global: Global.
         self.cloud_account_site = cloud_account_site
         # The cloud account type. Valid values:
         # 
@@ -102,9 +105,17 @@ class GetCloudAccountResponseBodyCloudAccount(DaraModel):
         self.privilege_application_ids = privilege_application_ids
         # The reason for the privilege hosting or removal failure.
         self.privilege_hosting_error = privilege_hosting_error
-        # The privilege hosting state, which indicates whether the privilege capability is available.
+        # The hosting state of the cloud account. The default value is hosting_unmanaged. Valid values:
+        # - hosting_unmanaged: Unmanaged. The cloud account has not initiated hosting and is in the initial state.
+        # - hosting_pending: Hosting in progress. The hosting task has been submitted and is being executed asynchronously. Wait for the hosting process to complete before the final state is reached.
+        # - hosting_completed: Hosting completed. The cloud account hosting process was executed successfully. The related permission templates and hosting bindings have taken effect.
+        # - hosting_failed: Hosting failed. The hosting process encountered an exception. View the failure reason and re-initiate hosting.
+        # - hosting_removing: Removal in progress. The removal task has been submitted and is being executed asynchronously. Wait for the removal process to complete before the final state is reached.
+        # - hosting_remove_failed: Removal failed. The removal process encountered an exception. View the failure reason and re-initiate removal.
         self.privilege_hosting_state = privilege_hosting_state
-        # The privilege switch status, which indicates whether the privilege capability is enabled.
+        # The privilege switch status. Valid values:
+        # - enabled: Enabled. The resource is active and can be used normally.
+        # - disabled: Disabled. The resource is deactivated and no longer takes effect. You can re-enable it to restore functionality.
         self.privilege_status = privilege_status
         # The last update time. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
@@ -338,7 +349,7 @@ class GetCloudAccountResponseBodyCloudAccountCloudAccountHealthCheckResult(DaraM
         last_check_time: int = None,
         result: str = None,
     ):
-        # The error reason. This field is returned when the health check status is unhealthy.
+        # The error reason. This field returns a value when the health check status is unhealthy.
         self.error_reason = error_reason
         # The time of the last health check. The value is a UNIX timestamp in milliseconds.
         self.last_check_time = last_check_time
@@ -390,7 +401,7 @@ class GetCloudAccountResponseBodyCloudAccountCloudAccountHealthCheckResultErrorR
     ):
         # The error code.
         self.error_code = error_code
-        # The error description.
+        # The error message.
         self.error_message = error_message
 
     def validate(self):

@@ -10,9 +10,9 @@ class CreateIdentityProviderResponseBody(DaraModel):
         identity_provider_id: str = None,
         request_id: str = None,
     ):
-        # Identity provider ID.
+        # The identity provider ID.
         self.identity_provider_id = identity_provider_id
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

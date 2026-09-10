@@ -27,7 +27,7 @@ class ListAuthorizationRulesRequest(DaraModel):
         # 
         # - The maximum value is 100.
         self.max_results = max_results
-        # The token that marks the starting position of the next page.
+        # The token that identifies the start position of the next page.
         # 
         # - If this parameter is not specified, the query starts from the first page.
         self.next_token = next_token
@@ -87,7 +87,7 @@ class ListAuthorizationRulesRequestFilter(DaraModel):
         # The name of the filter field. Valid values:
         # 
         # - AuthorizationRuleId: the authorization rule ID.
-        # - AuthorizationRuleNameStartWith: the prefix of the authorization rule name for fuzzy match.
+        # - AuthorizationRuleNameStartWith: the left-match value of the authorization rule name.
         self.name = name
         # The values of the filter field.
         self.value = value

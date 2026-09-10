@@ -86,6 +86,7 @@ class ListNetworkAccessEndpointsResponseBodyNetworkAccessEndpoints(DaraModel):
         vpc_id: str = None,
         vpc_region_id: str = None,
     ):
+        # The backup network access endpoint VPC configuration.
         self.backup_vpc_endpoint = backup_vpc_endpoint
         # The creation time of the network access endpoint. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
@@ -93,21 +94,21 @@ class ListNetworkAccessEndpointsResponseBodyNetworkAccessEndpoints(DaraModel):
         self.instance_id = instance_id
         # The network access endpoint ID.
         self.network_access_endpoint_id = network_access_endpoint_id
-        # The network access endpoint name.
+        # The network access endpoint name. For example, the VPC access endpoint for a specific business.
         self.network_access_endpoint_name = network_access_endpoint_name
         # The type of the network access endpoint. Valid values:
         # 
-        # - shared: Shared network access endpoint.
-        # - private: Dedicated network access endpoint.
+        # - shared: shared network access endpoint.
+        # - private: dedicated network access endpoint.
         self.network_access_endpoint_type = network_access_endpoint_type
         # The security group ID used by the dedicated network access endpoint.
         self.security_group_id = security_group_id
         # The status of the network access endpoint. Valid values:
         #  
-        # - pending: Pending initialization.
-        # - creating: Being created.
-        # - running: Running.
-        # - deleting: Being deleted.
+        # - pending: pending initialization.
+        # - creating: being created.
+        # - running: running.
+        # - deleting: being deleted.
         self.status = status
         # The last update time of the network access endpoint. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
@@ -216,11 +217,17 @@ class ListNetworkAccessEndpointsResponseBodyNetworkAccessEndpointsBackupVpcEndpo
         backup_vpc_id: str = None,
         backup_vpc_region_id: str = None,
     ):
+        # The list of private egress IP addresses of the backup network access endpoint.
         self.backup_egress_private_ip_addresses = backup_egress_private_ip_addresses
+        # The list of public egress IP addresses of the backup network access endpoint.
         self.backup_egress_public_ip_addresses = backup_egress_public_ip_addresses
+        # The security group ID of the backup network access endpoint.
         self.backup_security_group_id = backup_security_group_id
+        # The list of vSwitches for the backup network access endpoint.
         self.backup_vswitch_ids = backup_vswitch_ids
+        # The VPC ID of the backup network access endpoint.
         self.backup_vpc_id = backup_vpc_id
+        # The region of the backup network access endpoint VPC.
         self.backup_vpc_region_id = backup_vpc_region_id
 
     def validate(self):

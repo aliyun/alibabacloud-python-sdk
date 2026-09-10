@@ -1,3 +1,9 @@
+2026-09-10 Version: 2.19.3
+- Update API CreateIdentityProvider: add request parameters WeComConfig.ContactSecret.
+- Update API GetIdentityProvider: add response parameters Body.IdentityProviderDetail.WeComConfig.ContactSecret.
+- Update API UpdateIdentityProvider: add request parameters WeComConfig.ContactSecret.
+
+
 2026-08-26 Version: 2.19.0
 - Support API CreateTrustedOrigin.
 - Support API DeleteTrustedOrigin.

@@ -20,7 +20,7 @@ class ListBrandsRequest(DaraModel):
         self.max_results = max_results
         # The pagination token.
         self.next_token = next_token
-        # The pagination token for the previous page.
+        # The token used to query the previous page.
         self.previous_token = previous_token
 
     def validate(self):

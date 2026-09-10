@@ -95,7 +95,9 @@ class ListBrandsResponseBodyBrands(DaraModel):
         brand_name: str = None,
         brand_type: str = None,
         instance_id: str = None,
+        sms_gateway_id: str = None,
         status: str = None,
+        system_notification_status: str = None,
     ):
         # The brand ID.
         self.brand_id = brand_id
@@ -105,8 +107,12 @@ class ListBrandsResponseBodyBrands(DaraModel):
         self.brand_type = brand_type
         # The instance ID.
         self.instance_id = instance_id
+        # The SMS gateway ID.
+        self.sms_gateway_id = sms_gateway_id
         # The brand status.
         self.status = status
+        # The enabling status of system notifications.
+        self.system_notification_status = system_notification_status
 
     def validate(self):
         pass
@@ -128,8 +134,14 @@ class ListBrandsResponseBodyBrands(DaraModel):
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
+        if self.sms_gateway_id is not None:
+            result['SmsGatewayId'] = self.sms_gateway_id
+
         if self.status is not None:
             result['Status'] = self.status
+
+        if self.system_notification_status is not None:
+            result['SystemNotificationStatus'] = self.system_notification_status
 
         return result
 
@@ -147,8 +159,14 @@ class ListBrandsResponseBodyBrands(DaraModel):
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
 
+        if m.get('SmsGatewayId') is not None:
+            self.sms_gateway_id = m.get('SmsGatewayId')
+
         if m.get('Status') is not None:
             self.status = m.get('Status')
+
+        if m.get('SystemNotificationStatus') is not None:
+            self.system_notification_status = m.get('SystemNotificationStatus')
 
         return self
 

@@ -14,19 +14,21 @@ class CheckInstanceModuleStatusRequest(DaraModel):
         resource_label_value: str = None,
         sub_feature_key: str = None,
     ):
-        # The secondary module identifier.
+        # The level-2 module identifier.
         self.feature_key = feature_key
         # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The primary module identifier.
+        # The level-1 module identifier.
         # 
         # This parameter is required.
         self.module_key = module_key
+        # The resource label URN key.
         self.resource_label_key = resource_label_key
+        # The resource label name.
         self.resource_label_value = resource_label_value
-        # The tertiary module identifier.
+        # The level-3 module identifier.
         self.sub_feature_key = sub_feature_key
 
     def validate(self):

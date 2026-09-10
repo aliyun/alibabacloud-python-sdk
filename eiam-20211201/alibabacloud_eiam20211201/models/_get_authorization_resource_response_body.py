@@ -70,11 +70,11 @@ class GetAuthorizationResourceResponseBodyAuthorizationResource(DaraModel):
         self.cloud_account_id = cloud_account_id
         # The condition restriction.
         self.condition = condition
-        # The creation time.
+        # The creation time, in UNIX timestamp format. Unit: milliseconds.
         self.create_time = create_time
         # The instance ID.
         self.instance_id = instance_id
-        # The update time.
+        # The update time, in UNIX timestamp format. Unit: milliseconds.
         self.update_time = update_time
 
     def validate(self):

@@ -11,9 +11,9 @@ class GetBrandResponseBody(DaraModel):
         brand: main_models.GetBrandResponseBodyBrand = None,
         request_id: str = None,
     ):
-        # Brand.
+        # The brand.
         self.brand = brand
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -51,18 +51,24 @@ class GetBrandResponseBodyBrand(DaraModel):
         brand_name: str = None,
         brand_type: str = None,
         instance_id: str = None,
+        sms_gateway_id: str = None,
         status: str = None,
+        system_notification_status: str = None,
     ):
-        # Brand ID.
+        # The brand ID.
         self.brand_id = brand_id
-        # Brand name.
+        # The brand name.
         self.brand_name = brand_name
-        # Brand type.
+        # The brand type.
         self.brand_type = brand_type
-        # Instance ID.
+        # The instance ID.
         self.instance_id = instance_id
-        # Brand status.
+        # The SMS gateway ID.
+        self.sms_gateway_id = sms_gateway_id
+        # The brand status.
         self.status = status
+        # The enabling status of system notifications.
+        self.system_notification_status = system_notification_status
 
     def validate(self):
         pass
@@ -84,8 +90,14 @@ class GetBrandResponseBodyBrand(DaraModel):
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
+        if self.sms_gateway_id is not None:
+            result['SmsGatewayId'] = self.sms_gateway_id
+
         if self.status is not None:
             result['Status'] = self.status
+
+        if self.system_notification_status is not None:
+            result['SystemNotificationStatus'] = self.system_notification_status
 
         return result
 
@@ -103,8 +115,14 @@ class GetBrandResponseBodyBrand(DaraModel):
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
 
+        if m.get('SmsGatewayId') is not None:
+            self.sms_gateway_id = m.get('SmsGatewayId')
+
         if m.get('Status') is not None:
             self.status = m.get('Status')
+
+        if m.get('SystemNotificationStatus') is not None:
+            self.system_notification_status = m.get('SystemNotificationStatus')
 
         return self
 

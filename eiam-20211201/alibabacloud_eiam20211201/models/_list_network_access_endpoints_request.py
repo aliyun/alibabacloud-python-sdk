@@ -19,16 +19,16 @@ class ListNetworkAccessEndpointsRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The maximum number of entries per page for a paged query. Maximum value: 100.
+        # The number of rows per page in a paged query. Maximum value: 100.
         self.max_results = max_results
         # The status of the network access endpoint. Valid values:
         #  
-        # - pending: Pending initialization.
-        # - creating: Being created.
-        # - running: Running.
-        # - deleting: Being deleted.
+        # - pending: pending initialization.
+        # - creating: being created.
+        # - running: running.
+        # - deleting: being deleted.
         # 
-        # This parameter does not take effect when NetworkAccessEndpointType is set to shared.
+        # This filter parameter does not take effect when NetworkAccessEndpointType is set to shared.
         self.network_access_endpoint_status = network_access_endpoint_status
         # The type of the network access endpoint. Valid values:
         # 

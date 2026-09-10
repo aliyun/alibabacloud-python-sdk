@@ -10,11 +10,11 @@ class GetBrandRequest(DaraModel):
         brand_id: str = None,
         instance_id: str = None,
     ):
-        # Brand ID.
+        # The brand ID.
         # 
         # This parameter is required.
         self.brand_id = brand_id
-        # Instance ID.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
