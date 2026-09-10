@@ -9,7 +9,7 @@ class GetVolumeRequest(DaraModel):
         self,
         team_id: str = None,
     ):
-        # The unique identifier of the Team.
+        # The unique identifier of the team.
         self.team_id = team_id
 
     def validate(self):

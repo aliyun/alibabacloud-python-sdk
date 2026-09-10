@@ -22,16 +22,6 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'cn-shenzhen': 'fcsandbox.cn-shenzhen.aliyuncs.com',
-            'cn-beijing': 'fcsandbox.cn-beijing.aliyuncs.com',
-            'cn-shanghai': 'fcsandbox.cn-shanghai.aliyuncs.com',
-            'cn-hongkong': 'fcsandbox.cn-hongkong.aliyuncs.com',
-            'ap-southeast-1': 'fcsandbox.ap-southeast-1.aliyuncs.com',
-            'cn-hangzhou': 'fcsandbox.cn-hangzhou.aliyuncs.com',
-            'us-west-1': 'fcsandbox.us-west-1.aliyuncs.com',
-            'us-east-1': 'fcsandbox.us-east-1.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('fcsandbox', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 

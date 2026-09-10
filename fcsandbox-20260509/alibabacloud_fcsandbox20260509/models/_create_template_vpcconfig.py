@@ -14,9 +14,13 @@ class CreateTemplateVPCConfig(DaraModel):
         v_switch_ids: List[str] = None,
         vpc_id: str = None,
     ):
+        # The VPC authorization role name.
         self.role = role
+        # The security group ID.
         self.security_group_id = security_group_id
+        # The list of vSwitch IDs.
         self.v_switch_ids = v_switch_ids
+        # VPC ID
         self.vpc_id = vpc_id
 
     def validate(self):

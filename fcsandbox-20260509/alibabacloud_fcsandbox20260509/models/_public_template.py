@@ -17,13 +17,21 @@ class PublicTemplate(DaraModel):
         team_name: str = None,
         template_id: str = None,
     ):
+        # The creation time.
         self.created_time = created_time
+        # The template name.
         self.name = name
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The template runtime configuration.
         self.runtime_config = runtime_config
+        # The template build status.
         self.status = status
+        # The unique identifier of the team.
         self.team_id = team_id
+        # The team name.
         self.team_name = team_name
+        # The template ID.
         self.template_id = template_id
 
     def validate(self):

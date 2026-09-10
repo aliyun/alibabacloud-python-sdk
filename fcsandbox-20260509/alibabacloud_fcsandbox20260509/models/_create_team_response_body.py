@@ -19,7 +19,7 @@ class CreateTeamResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # The Team information.
+        # The team information.
         self.team = team
 
     def validate(self):

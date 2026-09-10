@@ -2,6 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._agentic_bucket_volume_config import AgenticBucketVolumeConfig
 from ._agentic_fsvolume_config import AgenticFSVolumeConfig
 from ._api_key import ApiKey
 from ._cert_config import CertConfig
@@ -35,11 +36,13 @@ from ._e2btemplate_build import E2BTemplateBuild
 from ._e2btemplate_tag import E2BTemplateTag
 from ._e2bvolume import E2BVolume
 from ._e2bvolume_mount import E2BVolumeMount
+from ._effective_permissions import EffectivePermissions
 from ._ipconfig import IPConfig
 from ._import_api_key_input import ImportApiKeyInput
 from ._log_configuration import LogConfiguration
 from ._network_configuration import NetworkConfiguration
 from ._ossvolume_config import OSSVolumeConfig
+from ._permission_policy import PermissionPolicy
 from ._public_template import PublicTemplate
 from ._public_template_log_config import PublicTemplateLogConfig
 from ._public_template_registry_config import PublicTemplateRegistryConfig
@@ -129,8 +132,15 @@ from ._update_volume_request import UpdateVolumeRequest
 from ._update_volume_response_body import UpdateVolumeResponseBody
 from ._update_volume_response import UpdateVolumeResponse
 from ._container_configuration import ContainerConfigurationRegistryCredential
+from ._create_volume_input import CreateVolumeInputMountConfigVpcConfig
+from ._create_volume_input import CreateVolumeInputMountConfig
+from ._e2bvolume import E2BVolumeMountConfigVpcConfig
+from ._e2bvolume import E2BVolumeMountConfig
+from ._permission_policy import PermissionPolicyAllow
+from ._permission_policy import PermissionPolicyDeny
 
 __all__ = [
+    AgenticBucketVolumeConfig,
     AgenticFSVolumeConfig,
     ApiKey,
     CertConfig,
@@ -164,11 +174,13 @@ __all__ = [
     E2BTemplateTag,
     E2BVolume,
     E2BVolumeMount,
+    EffectivePermissions,
     IPConfig,
     ImportApiKeyInput,
     LogConfiguration,
     NetworkConfiguration,
     OSSVolumeConfig,
+    PermissionPolicy,
     PublicTemplate,
     PublicTemplateLogConfig,
     PublicTemplateRegistryConfig,
@@ -257,5 +269,11 @@ __all__ = [
     UpdateVolumeRequest,
     UpdateVolumeResponseBody,
     UpdateVolumeResponse,
-    ContainerConfigurationRegistryCredential
+    ContainerConfigurationRegistryCredential,
+    CreateVolumeInputMountConfigVpcConfig,
+    CreateVolumeInputMountConfig,
+    E2BVolumeMountConfigVpcConfig,
+    E2BVolumeMountConfig,
+    PermissionPolicyAllow,
+    PermissionPolicyDeny
 ]

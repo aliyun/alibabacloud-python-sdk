@@ -12,8 +12,11 @@ class PublicTemplateStatus(DaraModel):
         reason: main_models.PublicTemplateStatusReason = None,
         state: str = None,
     ):
+        # The time when the build is completed.
         self.finished_at = finished_at
+        # The reason for the build failure.
         self.reason = reason
+        # The build status.
         self.state = state
 
     def validate(self):

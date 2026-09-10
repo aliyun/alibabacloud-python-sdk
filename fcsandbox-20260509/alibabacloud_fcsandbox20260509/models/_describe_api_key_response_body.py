@@ -12,26 +12,32 @@ class DescribeApiKeyResponseBody(DaraModel):
         self,
         api_key: main_models.ApiKey = None,
         code: str = None,
+        effective_permissions: main_models.EffectivePermissions = None,
         ip_blacklist: List[main_models.IPConfig] = None,
         ip_whitelist: List[main_models.IPConfig] = None,
         message: str = None,
+        permission_policy: main_models.PermissionPolicy = None,
         request_id: str = None,
     ):
         # The Bailian API key.
         self.api_key = api_key
         # The error code.
         self.code = code
+        self.effective_permissions = effective_permissions
         self.ip_blacklist = ip_blacklist
         # The IP whitelist.
         self.ip_whitelist = ip_whitelist
         # The response message.
         self.message = message
+        self.permission_policy = permission_policy
         # The request ID.
         self.request_id = request_id
 
     def validate(self):
         if self.api_key:
             self.api_key.validate()
+        if self.effective_permissions:
+            self.effective_permissions.validate()
         if self.ip_blacklist:
             for v1 in self.ip_blacklist:
                  if v1:
@@ -40,6 +46,8 @@ class DescribeApiKeyResponseBody(DaraModel):
             for v1 in self.ip_whitelist:
                  if v1:
                     v1.validate()
+        if self.permission_policy:
+            self.permission_policy.validate()
 
     def to_map(self):
         result = dict()
@@ -51,6 +59,9 @@ class DescribeApiKeyResponseBody(DaraModel):
 
         if self.code is not None:
             result['code'] = self.code
+
+        if self.effective_permissions is not None:
+            result['effectivePermissions'] = self.effective_permissions.to_map()
 
         result['ipBlacklist'] = []
         if self.ip_blacklist is not None:
@@ -64,6 +75,9 @@ class DescribeApiKeyResponseBody(DaraModel):
 
         if self.message is not None:
             result['message'] = self.message
+
+        if self.permission_policy is not None:
+            result['permissionPolicy'] = self.permission_policy.to_map()
 
         if self.request_id is not None:
             result['requestId'] = self.request_id
@@ -79,6 +93,10 @@ class DescribeApiKeyResponseBody(DaraModel):
         if m.get('code') is not None:
             self.code = m.get('code')
 
+        if m.get('effectivePermissions') is not None:
+            temp_model = main_models.EffectivePermissions()
+            self.effective_permissions = temp_model.from_map(m.get('effectivePermissions'))
+
         self.ip_blacklist = []
         if m.get('ipBlacklist') is not None:
             for k1 in m.get('ipBlacklist'):
@@ -93,6 +111,10 @@ class DescribeApiKeyResponseBody(DaraModel):
 
         if m.get('message') is not None:
             self.message = m.get('message')
+
+        if m.get('permissionPolicy') is not None:
+            temp_model = main_models.PermissionPolicy()
+            self.permission_policy = temp_model.from_map(m.get('permissionPolicy'))
 
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')

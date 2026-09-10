@@ -31,7 +31,7 @@ class ListVolumesRequest(DaraModel):
         self.team_id = team_id
         # The UID of the creator.
         self.user_id = user_id
-        # The name of the volume. The name must be unique within the team.
+        # The name of the volume. The name must be unique within a team.
         self.volume_name = volume_name
 
     def validate(self):
