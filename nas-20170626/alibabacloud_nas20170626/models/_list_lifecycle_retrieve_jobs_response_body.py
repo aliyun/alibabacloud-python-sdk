@@ -94,7 +94,7 @@ class ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs(DaraModel):
     ):
         # The time when the task was created.
         # 
-        # The time follows the ISO 8601 standard in the format of `yyyy-MM-ddTHH:mm:ssZ`.
+        # The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format.
         self.create_time = create_time
         # The total number of files read by the data retrieval task.
         self.discovered_file_count = discovered_file_count
@@ -104,21 +104,21 @@ class ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs(DaraModel):
         self.job_id = job_id
         # The execution paths of the data retrieval task.
         self.paths = paths
-        # The number of files successfully retrieved by the data retrieval task.
+        # The number of files that are successfully retrieved by the data retrieval task.
         self.retrieved_file_count = retrieved_file_count
         # The status of the data retrieval task. Valid values:
-        # - active: running.
-        # - canceled: canceled.
-        # - completed: completed.
-        # - failed: failed.
+        # - active: Running.
+        # - canceled: Canceled.
+        # - completed: Completed.
+        # - failed: Failed.
         self.status = status
         # The storage class. Valid values:
         # - InfrequentAccess: IA storage class.
-        # - Archive: Archive storage class.
+        # - Archive: Archive storage.
         self.storage_type = storage_type
         # The time when the task was last updated.
         # 
-        # The time follows the ISO 8601 standard in the format of `yyyy-MM-ddTHH:mm:ssZ`.
+        # The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format.
         self.update_time = update_time
 
     def validate(self):

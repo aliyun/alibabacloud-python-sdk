@@ -53,40 +53,7 @@ class Client(OpenApiClient):
             'cn-zhangjiakou-na62-a01': 'nas.aliyuncs.com',
             'cn-zhengzhou-nebula-1': 'nas.aliyuncs.com',
             'eu-west-1-oxs': 'nas.aliyuncs.com',
-            'rus-west-1-pop': 'nas.aliyuncs.com',
-            'cn-zhongwei': 'nas.cn-zhongwei.aliyuncs.com',
-            'cn-wulanchabu': 'nas.cn-wulanchabu.aliyuncs.com',
-            'cn-beijing': 'nas.cn-beijing.aliyuncs.com',
-            'cn-shanghai': 'nas.cn-shanghai.aliyuncs.com',
-            'cn-hongkong': 'nas.cn-hongkong.aliyuncs.com',
-            'cn-heyuan': 'nas.cn-heyuan.aliyuncs.com',
-            'cn-zhangjiakou': 'nas.cn-zhangjiakou.aliyuncs.com',
-            'cn-shenzhen': 'nas.cn-shenzhen.aliyuncs.com',
-            'ap-northeast-2': 'nas.ap-northeast-2.aliyuncs.com',
-            'ap-northeast-1': 'nas.ap-northeast-1.aliyuncs.com',
-            'cn-chengdu': 'nas.cn-chengdu.aliyuncs.com',
-            'cn-guangzhou': 'nas.cn-guangzhou.aliyuncs.com',
-            'ap-southeast-1': 'nas.ap-southeast-1.aliyuncs.com',
-            'ap-southeast-3': 'nas.ap-southeast-3.aliyuncs.com',
-            'cn-huhehaote': 'nas.cn-huhehaote.aliyuncs.com',
-            'ap-southeast-5': 'nas.ap-southeast-5.aliyuncs.com',
-            'ap-southeast-6': 'nas.ap-southeast-6.aliyuncs.com',
-            'ap-southeast-7': 'nas.ap-southeast-7.aliyuncs.com',
-            'cn-hangzhou': 'nas.cn-hangzhou.aliyuncs.com',
-            'ap-southeast-8': 'nas.ap-southeast-8.aliyuncs.com',
-            'us-east-1': 'nas.us-east-1.aliyuncs.com',
-            'us-southeast-1': 'nas.us-southeast-1.aliyuncs.com',
-            'sa-east-1': 'nas.sa-east-1.aliyuncs.com',
-            'eu-west-1': 'nas.eu-west-1.aliyuncs.com',
-            'eu-west-2': 'nas.eu-west-2.aliyuncs.com',
-            'us-west-1': 'nas.us-west-1.aliyuncs.com',
-            'eu-central-1': 'nas.eu-central-1.aliyuncs.com',
-            'na-south-1': 'nas.na-south-1.aliyuncs.com',
-            'me-east-1': 'nas.me-east-1.aliyuncs.com',
-            'me-central-1': 'nas.me-central-1.aliyuncs.com',
-            'cn-shenzhen-finance-1': 'nas.cn-shenzhen-finance-1.aliyuncs.com',
-            'cn-beijing-finance-1': 'nas.cn-beijing-finance-1.aliyuncs.com',
-            'cn-shanghai-finance-1': 'nas.cn-shanghai-finance-1.aliyuncs.com'
+            'rus-west-1-pop': 'nas.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('nas', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -1646,6 +1613,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.root_directory):
             query['RootDirectory'] = request.root_directory
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1680,6 +1649,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.root_directory):
             query['RootDirectory'] = request.root_directory
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -5322,6 +5293,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -5358,6 +5331,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

@@ -18,7 +18,7 @@ class ListRecentlyRecycledDirectoriesResponseBody(DaraModel):
         self.entries = entries
         # The pagination token for the next page.
         # 
-        # If the query results are not completely returned, the NextToken parameter is returned with a value. You can specify the NextToken value in the next request to continue the query.
+        # If a single query does not return all directories, the NextToken parameter is returned with a value. You can specify a valid NextToken value in subsequent requests to continue the query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -73,7 +73,7 @@ class ListRecentlyRecycledDirectoriesResponseBodyEntries(DaraModel):
     ):
         # The directory ID.
         self.file_id = file_id
-        # The most recent time when a delete operation was performed on the directory. The time follows the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
+        # The time when the most recent delete operation was performed on the directory. The time follows the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.last_delete_time = last_delete_time
         # The name of the directory.
         self.name = name

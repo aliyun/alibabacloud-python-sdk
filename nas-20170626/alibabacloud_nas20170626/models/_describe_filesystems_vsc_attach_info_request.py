@@ -15,12 +15,12 @@ class DescribeFilesystemsVscAttachInfoRequest(DaraModel):
         resource_ids: List[main_models.DescribeFilesystemsVscAttachInfoRequestResourceIds] = None,
         role_chain: List[main_models.DescribeFilesystemsVscAttachInfoRequestRoleChain] = None,
     ):
-        # The number of results for each query.
+        # The number of results returned per query.
         # 
         # Valid values: 10 to 100.
         # Default value: 10.
         self.max_results = max_results
-        # The query token. Set the value to the NextToken value returned in the previous API call.
+        # The query token. Set this parameter to the NextToken value returned in the previous API call.
         self.next_token = next_token
         # The ID information of file systems and virtual storage channels. A maximum of 10 entries can be specified per batch.
         # 
@@ -92,7 +92,7 @@ class DescribeFilesystemsVscAttachInfoRequestRoleChain(DaraModel):
         role_arn: str = None,
         role_type: str = None,
     ):
-        # The UID of the Alibaba Cloud account, which specifies the account on whose behalf the service assumes the role.
+        # The UID of the Alibaba Cloud account (primary account), which specifies the account on whose behalf the service assumes the role.
         self.assume_role_for = assume_role_for
         # The resource descriptor of the specified role. Format: acs:ram::$accountID:role/$roleName.
         self.role_arn = role_arn

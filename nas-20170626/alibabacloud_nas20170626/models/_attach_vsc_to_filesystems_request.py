@@ -18,14 +18,14 @@ class AttachVscToFilesystemsRequest(DaraModel):
         # 
         # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         # 
-        # > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may differ for each API request.
+        # > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may be different for each API request.
         self.client_token = client_token
-        # The ID information of file systems and Virtual Storage Channels. A maximum of 10 entries can be specified per batch.
+        # The ID information of file systems and Virtual Storage Channels (VSCs). A maximum of 10 entries can be specified per batch.
         # 
         # This parameter is required.
         self.resource_ids = resource_ids
         # The role chain.
-        # > This parameter is required only for cross-account scenarios.
+        # >This parameter is required only for cross-account scenarios.
         self.role_chain = role_chain
 
     def validate(self):
@@ -131,7 +131,7 @@ class AttachVscToFilesystemsRequestResourceIds(DaraModel):
     ):
         # The file system ID.
         self.file_system_id = file_system_id
-        # The Virtual Storage Channel ID.
+        # The Virtual Storage Channel (VSC) ID. You can call the ListVscs operation of Lingjun eflo-controller/2022-12-15 to query VSC IDs. If no VSC has been created, call the CreateVsc operation to create one.
         self.vsc_id = vsc_id
 
     def validate(self):

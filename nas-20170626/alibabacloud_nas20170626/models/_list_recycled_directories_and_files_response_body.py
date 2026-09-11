@@ -14,11 +14,11 @@ class ListRecycledDirectoriesAndFilesResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The information about files or directories in the recycle bin.
+        # The collection of files or directories in the recycle bin.
         self.entries = entries
         # The pagination token for the next page.
         # 
-        # If a single query does not return all files and directories, a non-empty NextToken is returned. You can specify the correct NextToken in subsequent queries to continue listing.
+        # If a single query does not return all files and directories, a non-empty NextToken is returned. You can pass the correct NextToken in subsequent queries to continue retrieving results.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -92,7 +92,7 @@ class ListRecycledDirectoriesAndFilesResponseBodyEntries(DaraModel):
         self.name = name
         # The file size. Unit: bytes.
         # 
-        # If Type is set to Directory, the value 0 is returned.
+        # When Type is set to Directory, the value 0 is returned.
         self.size = size
         # The object type. Valid values:
         # 

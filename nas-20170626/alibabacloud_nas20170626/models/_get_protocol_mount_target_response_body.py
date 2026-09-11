@@ -14,9 +14,9 @@ class GetProtocolMountTargetResponseBody(DaraModel):
         protocol_mount_target: main_models.GetProtocolMountTargetResponseBodyProtocolMountTarget = None,
         request_id: str = None,
     ):
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # If the response is truncated, you can use NextToken to send a subsequent request to retrieve the content after the current truncation point.
         self.next_token = next_token
-        # Information of the export directory for the protocol service
+        # The export directory information of the protocol service.
         self.protocol_mount_target = protocol_mount_target
         # The request ID.
         self.request_id = request_id
@@ -71,49 +71,48 @@ class GetProtocolMountTargetResponseBodyProtocolMountTarget(DaraModel):
         v_switch_ids: List[str] = None,
         vpc_id: str = None,
     ):
-        # The name of the permission group.
+        # The permission group name.
         # 
-        # Default permission group: DEFAULT\_VPC\_GROUP\_NAME
+        # Default permission group: DEFAULT_VPC_GROUP_NAME.
         self.access_group_name = access_group_name
-        # The time when the export directory was created. Return format: yyyy-MM-dd HH:mm:ss
+        # The creation time.
+        # Format: yyyy-MM-dd HH:mm:ss
         self.create_time = create_time
-        # The description of the export directory.
+        # The description of the protocol service export.
         self.description = description
-        # The ID of the export directory.
+        # The export directory ID.
         self.export_id = export_id
-        # The fileset ID.
+        # Fileset ID。
         self.fset_id = fset_id
-        # The path of the CPFS directory that was queried.
+        # The path of the queried CPFS directory.
         # 
         # Format:
-        # 
-        # *   Must be 1 to 1,024 characters in length.
-        # *   Must be encoded in UTF-8.
-        # *   Must start and end with a forward slash (/). The root directory is `/`.
+        # - The path is 1 to 1,024 characters in length.
+        # - The path is encoded in UTF-8.
+        # - The path must start and end with a forward slash (/). The root directory is `/`.
         self.path = path
-        # The domain name of the export directory for the protocol service.
+        # The domain name of the protocol service export directory.
         self.protocol_mount_target_domain = protocol_mount_target_domain
         # The protocol type of the file system.
         # 
         # Valid values:
         # 
-        # *   NFS: Network File System (NFS)
-        # *   SMB: Server Message Block (SMB)
-        # *   cpfs: The protocol type supported by the CPFS file system.
+        # - NFS: NFS protocol
+        # - SMB: SMB protocol
+        # - cpfs: the protocol type supported by CPFS file systems
         self.protocol_type = protocol_type
-        # The status of the export directory. Valid values:
-        # 
-        # *   CREATING: The export directory is being created.
-        # *   AVAILABLE : The export directory is available.
-        # *   MODIFYING: The export directory is being modified.
-        # *   DELETING: The export directory is being deleted.
-        # *   STOPPING: The export directory is being stopped.
+        # The status of the protocol service export directory. Valid values:
+        # - CREATING: Being created.
+        # - AVAILABLE: Available.
+        # - MODIFYING: Being modified.
+        # - DELETING: Being deleted.
+        # - STOPPING: Being stopped.
         self.status = status
-        # The vSwitch ID of the export directory.
+        # The vSwitch ID of the protocol service export.
         self.v_switch_id = v_switch_id
-        # The vSwitch ID list of the export directory.
+        # The list of vSwitch IDs of the protocol service export.
         self.v_switch_ids = v_switch_ids
-        # The VPC ID of the export directory.
+        # The virtual private cloud (VPC) ID of the protocol service export.
         self.vpc_id = vpc_id
 
     def validate(self):

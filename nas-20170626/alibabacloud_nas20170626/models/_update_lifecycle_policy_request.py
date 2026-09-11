@@ -19,7 +19,7 @@ class UpdateLifecyclePolicyRequest(DaraModel):
         storage_type: str = None,
         transit_rules: List[main_models.UpdateLifecyclePolicyRequestTransitRules] = None,
     ):
-        # The file data expiration and deletion rules.
+        # The expiration and deletion rules for file data.
         self.delete_rules = delete_rules
         # The description of the lifecycle policy.
         # 
@@ -39,18 +39,16 @@ class UpdateLifecyclePolicyRequest(DaraModel):
         self.lifecycle_policy_id = lifecycle_policy_id
         # The absolute paths of the directories associated with the lifecycle management policy.
         self.paths = paths
-        # The file data retrieval rules. You can configure up to one rule.
+        # The data retrieval rules. You can configure up to one rule.
         # > Only CPFS for Lingjun file systems are supported.
         self.retrieve_rules = retrieve_rules
         # The tiered storage type.
-        # 
-        # Valid values:
-        # - InfrequentAccess: IA storage class. This is the default value.
-        # - Archive: Archive storage.
+        # - InfrequentAccess: IA storage class (default).
+        # - Archive: Archive storage class.
         self.storage_type = storage_type
-        # The file data transit rules. You can configure up to one rule.
+        # The data transit rules. You can configure up to one rule.
         # 
-        # > This parameter is supported only when LifecyclePolicyType is set to Auto for a CPFS for Lingjun file system.
+        # > This parameter is supported only when LifecyclePolicyType is set to Auto for CPFS for Lingjun file systems.
         self.transit_rules = transit_rules
 
     def validate(self):
@@ -150,7 +148,7 @@ class UpdateLifecyclePolicyRequestTransitRules(DaraModel):
         # The attribute of the rule.
         # 
         # Valid values:
-        # - Atime: the access time of the file.
+        # - Atime: the last access time of the file.
         self.attribute = attribute
         # The threshold of the rule.
         # 
@@ -190,17 +188,13 @@ class UpdateLifecyclePolicyRequestRetrieveRules(DaraModel):
         attribute: str = None,
         threshold: str = None,
     ):
-        # The attribute of the rule.
-        # 
-        # Valid values:
+        # The attribute of the rule. Valid values:
         # - RetrieveType: the retrieval method.
         self.attribute = attribute
-        # The threshold of the rule.
-        # 
-        # Valid values:
+        # The threshold of the rule. Valid values:
         # - RetrieveType
         #     - AfterVisit: supported when LifecyclePolicyType is set to Auto. Indicates best-effort recall on visit.
-        #     - All: supported when LifecyclePolicyType is set to OnDemand. Indicates retrieval of all data.
+        #     - All: supported when LifecyclePolicyType is set to OnDemand. Indicates retrieving all data.
         self.threshold = threshold
 
     def validate(self):
@@ -238,7 +232,7 @@ class UpdateLifecyclePolicyRequestDeleteRules(DaraModel):
         # The attribute of the rule.
         # 
         # Valid values:
-        # - Atime: the access time of the file.
+        # - Atime: the last access time of the file.
         self.attribute = attribute
         # The threshold of the rule.
         # 

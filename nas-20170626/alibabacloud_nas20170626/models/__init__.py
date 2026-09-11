@@ -424,6 +424,7 @@ from ._create_access_point_request import CreateAccessPointRequestTag
 from ._create_access_point_response_body import CreateAccessPointResponseBodyAccessPoint
 from ._create_agentic_space_request import CreateAgenticSpaceRequestQuota
 from ._create_cpfs_access_point_request import CreateCpfsAccessPointRequestRootDirectory
+from ._create_cpfs_access_point_request import CreateCpfsAccessPointRequestTag
 from ._create_data_flow_request import CreateDataFlowRequestAutoRefreshs
 from ._create_data_flow_sub_task_request import CreateDataFlowSubTaskRequestCondition
 from ._create_file_system_request import CreateFileSystemRequestTag
@@ -454,7 +455,9 @@ from ._describe_auto_snapshot_policies_response_body import DescribeAutoSnapshot
 from ._describe_auto_snapshot_tasks_response_body import DescribeAutoSnapshotTasksResponseBodyAutoSnapshotTasksAutoSnapshotTask
 from ._describe_auto_snapshot_tasks_response_body import DescribeAutoSnapshotTasksResponseBodyAutoSnapshotTasks
 from ._describe_cpfs_access_point_mounted_clients_response_body import DescribeCpfsAccessPointMountedClientsResponseBodyMountedClient
+from ._describe_cpfs_access_points_request import DescribeCpfsAccessPointsRequestTag
 from ._describe_cpfs_access_points_response_body import DescribeCpfsAccessPointsResponseBodyAccessPointsRootDirectory
+from ._describe_cpfs_access_points_response_body import DescribeCpfsAccessPointsResponseBodyAccessPointsTags
 from ._describe_cpfs_access_points_response_body import DescribeCpfsAccessPointsResponseBodyAccessPoints
 from ._describe_data_flow_sub_tasks_request import DescribeDataFlowSubTasksRequestFilters
 from ._describe_data_flow_sub_tasks_response_body import DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTaskFileDetail
@@ -997,6 +1000,7 @@ __all__ = [
     CreateAccessPointResponseBodyAccessPoint,
     CreateAgenticSpaceRequestQuota,
     CreateCpfsAccessPointRequestRootDirectory,
+    CreateCpfsAccessPointRequestTag,
     CreateDataFlowRequestAutoRefreshs,
     CreateDataFlowSubTaskRequestCondition,
     CreateFileSystemRequestTag,
@@ -1027,7 +1031,9 @@ __all__ = [
     DescribeAutoSnapshotTasksResponseBodyAutoSnapshotTasksAutoSnapshotTask,
     DescribeAutoSnapshotTasksResponseBodyAutoSnapshotTasks,
     DescribeCpfsAccessPointMountedClientsResponseBodyMountedClient,
+    DescribeCpfsAccessPointsRequestTag,
     DescribeCpfsAccessPointsResponseBodyAccessPointsRootDirectory,
+    DescribeCpfsAccessPointsResponseBodyAccessPointsTags,
     DescribeCpfsAccessPointsResponseBodyAccessPoints,
     DescribeDataFlowSubTasksRequestFilters,
     DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTaskFileDetail,

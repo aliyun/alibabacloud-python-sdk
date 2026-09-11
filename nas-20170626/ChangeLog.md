@@ -1,3 +1,9 @@
+2026-09-11 Version: 3.7.2
+- Update API CreateCpfsAccessPoint: add request parameters Tag.
+- Update API DescribeCpfsAccessPoints: add request parameters Tag.
+- Update API DescribeCpfsAccessPoints: add response parameters Body.AccessPoints.$.Tags.
+
+
 2026-08-31 Version: 3.7.1
 - Update API ListDataInsightDirectories: add response parameters Body.Directory.Inode.
 - Update API ListDataInsightDirectories: add response parameters Body.Directory.SubDirectories.$.Inode.

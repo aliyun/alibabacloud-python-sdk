@@ -26,14 +26,14 @@ class ListLifecycleRetrieveJobsRequest(DaraModel):
         # Default value: 10.
         self.page_size = page_size
         # The status of the data retrieval task. Valid values:
-        # - active: running.
-        # - canceled: canceled.
-        # - completed: completed.
-        # - failed: failed.
+        # - active: Running.
+        # - canceled: Canceled.
+        # - completed: Completed.
+        # - failed: Failed.
         self.status = status
         # The storage class. Valid values:
         # - InfrequentAccess: IA storage class.
-        # - Archive: Archive storage class.
+        # - Archive: Archive storage.
         # > If StorageType is not specified, data retrieval tasks of all storage classes are returned.
         self.storage_type = storage_type
 

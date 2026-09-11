@@ -31,16 +31,16 @@ class CreateDataFlowTaskRequest(DaraModel):
         # The conflict policy for files with the same name.
         # Valid values:
         # 
-        # - SKIP_THE_FILE: skips files with the same name.
-        # - KEEP_LATEST: compares the update time and keeps the latest version.
-        # - OVERWRITE_EXISTING: forcibly overwrites files with the same name.
+        # - SKIP_THE_FILE: Skips files with the same name.
+        # - KEEP_LATEST: Compares the update time and keeps the latest version.
+        # - OVERWRITE_EXISTING: Forcibly overwrites files with the same name.
         # > This parameter is required when the file system type is CPFS for Lingjun.
         self.conflict_policy = conflict_policy
         # Specifies whether to enable automatic creation of the folder if it does not exist.
         # Valid values:
         # 
-        # - true: enables automatic creation of the folder.
-        # - false (default): does not enable automatic creation of the folder.
+        # - true: Automatic creation of the folder is enabled.
+        # - false (default): Automatic creation of the folder is not enabled.
         # 
         # > - This parameter takes effect when TaskAction is set to Import.
         # > - Only CPFS for Lingjun 2.6.0 and later support this feature.
@@ -53,12 +53,12 @@ class CreateDataFlowTaskRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # - Metadata: the metadata of files, including the timestamp, ownership, permission, and other attributes. If you select Metadata, only the metadata of files is imported. You can view the file, but when you access the file data, the data is loaded from the source storage on demand.
+        # - Metadata: the metadata of files, including attributes such as timestamp, ownership, and permission. If you select Metadata, only the metadata of files is imported. You can see the file, but when you access the file data, the data is loaded from the source storage on demand.
         # - Data: the data blocks of files.
         # - MetaAndData: the metadata and data blocks of files.
         # > When TaskAction is set to Evict, the DataType parameter is required.
         self.data_type = data_type
-        # The source directory of data.
+        # The source directory of the data.
         # 
         # Limits:
         # - The value must be 1 to 1,023 characters in length.
@@ -69,19 +69,19 @@ class CreateDataFlowTaskRequest(DaraModel):
         # - When TaskAction is set to Import, this directory must be a relative path within SourceStoragePath.
         # - When TaskAction is set to StreamExport, this directory must be a relative path within FileSystemPath.
         # - When TaskAction is set to StreamImport, this directory must be a relative path within SourceStoragePath.
-        # > StreamImport and StreamExport are supported only in CPFS for Lingjun 2.6.0 and later.
+        # > StreamImport and StreamExport are supported only by CPFS for Lingjun 2.6.0 and later.
         # Directory, EntryList, and TransferFileListPath are mutually exclusive parameters. You can specify only one of them.
         self.directory = directory
-        # Specifies whether to perform a dry run.
+        # Specifies whether to perform a dry run for this request.
         # 
-        # The dry run checks parameter validity and whether required resources are available. The dry run does not create an instance or incur fees.
+        # A dry run checks parameter validity, verifies inventory, and performs other checks without actually creating the instance or incurring fees.
         # 
         # Valid values:
         # 
-        # - true: performs a dry run without creating the instance. The system checks whether the required parameters are specified, whether the request format is valid, whether service limits are reached, and whether the required NAS resources are available. If the request fails the dry run, an error message is returned. If the request passes the dry run, the HTTP status code 200 is returned, but TaskId is empty.
-        # - false (default): performs a dry run and sends the request. If the request passes the dry run, the instance is created.
+        # - true: sends a dry run request without creating the instance. The check items include whether required parameters are specified, the request format, business limits, and File Storage NAS inventory. If the check fails, the corresponding error is returned. If the check succeeds, HTTP status code 200 is returned, but TaskId is empty.
+        # - false (default): sends a normal request. After the check succeeds, the instance is directly created.
         self.dry_run = dry_run
-        # The target directory to which the data flow task maps.
+        # The target directory to which the data flow task is mapped.
         # Limits:
         #  - The value must start and end with a forward slash (/). /../ is not supported.
         #  - The value must be 1 to 1,023 characters in length.
@@ -91,7 +91,7 @@ class CreateDataFlowTaskRequest(DaraModel):
         #  - When TaskAction is set to Import, this directory must be a relative path within FileSystemPath.
         #  - When TaskAction is set to StreamExport, this directory must be a relative path within SourceStoragePath.
         #  - When TaskAction is set to StreamImport, this directory must be a relative path within FileSystemPath.
-        # > StreamImport and StreamExport are supported only in CPFS for Lingjun 2.6.0 and later.
+        # > StreamImport and StreamExport are supported only by CPFS for Lingjun 2.6.0 and later.
         self.dst_directory = dst_directory
         # The list of files on which the data flow task is executed.
         # 
@@ -99,7 +99,7 @@ class CreateDataFlowTaskRequest(DaraModel):
         # 
         # - The value must be encoded in UTF-8.
         # - The total length of the file list must be less than 64 KB.
-        # - The file list is in JSON format.
+        # - The file list must be in JSON format.
         # - The path of each file must be 1 to 1,023 characters in length and must start with a forward slash (/).
         # - When TaskAction is set to Import, each element in the list represents an OSS object name.
         # - When TaskAction is set to Export, each element in the list represents a CPFS file path.
@@ -107,32 +107,32 @@ class CreateDataFlowTaskRequest(DaraModel):
         self.entry_list = entry_list
         # The file system ID.
         # 
-        # - General-purpose CPFS: must start with `cpfs-`, such as cpfs-125487\\*\\*\\*\\*.
+        # - General-purpose CPFS: The ID must start with `cpfs-`, such as cpfs-125487\\*\\*\\*\\*.
         # 
-        # - CPFS for Lingjun: must start with `bmcpfs-`, such as bmcpfs-0015\\*\\*\\*\\*.
+        # - CPFS for Lingjun: The ID must start with `bmcpfs-`, such as bmcpfs-0015\\*\\*\\*\\*.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
         # Filters directories under the specified directory and transfers the content of the included folders.
         # 
         # > - This parameter takes effect only when the Directory parameter is specified.
-        # > - The path of each folder must be 1 to 1,023 characters in length and must start and end with a forward slash (/). The total length must not exceed 3,000 characters.
+        # > - The path of each folder must be 1 to 1,023 characters in length and must start and end with a forward slash (/). The total length cannot exceed 3,000 characters.
         # > - Only CPFS for Lingjun supports this feature.
         self.includes = includes
-        # If you specify SrcTaskId, enter the data flow task ID. The system copies the TaskAction, DataType, and EntryList parameter information from the specified data flow task, and you do not need to specify these parameters separately.
+        # If you specify SrcTaskId, enter the data flow task ID. The system copies the TaskAction, DataType, and EntryList parameter information from the specified data flow task. You do not need to specify these parameters separately.
         # > Data flow streaming tasks are not supported.
         self.src_task_id = src_task_id
         # The data flow node type.
         # 
         # Valid values:
         # 
-        # - Import: performs data import from the source storage to CPFS.
+        # - Import: data import from the source storage to CPFS.
         # - Export: exports specified data from CPFS to the source storage.
-        # - StreamImport: batch imports specified data from the source storage to CPFS.
+        # - StreamImport: batch data import from the source storage to CPFS.
         # - StreamExport: batch exports specified data from CPFS to the source storage.
         # - Evict: releases data blocks of files on CPFS. After the release, only metadata is retained on CPFS. You can still query the file, but the data blocks are purged and do not occupy storage capacity on CPFS. When you access the file data, the data is loaded from the source storage on demand.
-        # - Inventory: obtains the file checklist managed by the data stream on CPFS. The checklist provides the cache status of files in the data flow.
-        # > CPFS for Lingjun supports only Import, Export, StreamImport, and StreamExport. StreamImport and StreamExport are supported only in CPFS for Lingjun 2.6.0 and later.
+        # - Inventory: obtains the file checklist managed by the data stream on CPFS. This provides the cache status of files in the data stream.
+        # > CPFS for Lingjun supports only Import, Export, StreamImport, and StreamExport. StreamImport and StreamExport are supported only by CPFS for Lingjun 2.6.0 and later.
         self.task_action = task_action
         # The OSS directory. Data is synchronized based on the content of CSV files in the OSS directory. Limits:
         # - The value must start and end with a forward slash (/).
@@ -147,9 +147,9 @@ class CreateDataFlowTaskRequest(DaraModel):
         # >- TransferFileListPath, Directory, and EntryList are mutually exclusive parameters. You can specify only one of them.
         # >- This parameter specifies an existing path in OSS. The \\*.csv files in the path are stored in OSS.
         # > - TransferFileListPath supports only Import and Export.
-        # > - In the Import scenario, the files or directories specified in the CSV files are imported from OSS to CPFS.
-        # > - In the Export scenario, the files or directories specified in the CSV files are exported from CPFS to OSS.
-        # > - The CSV file format must include the Name and Type columns. Name is a relative path, and Type supports two values: dir and file. If Type is dir, the Name value must end with a forward slash (/).
+        # > - For Import, the files or directories specified in the CSV files are imported from OSS to CPFS.
+        # > - For Export, the files or directories specified in the CSV files are exported from CPFS to OSS.
+        # > - The CSV file must contain the Name and Type columns. Name is a relative path. Type supports two values: dir and file. If Type is dir, the Name value must end with a forward slash (/).
         # >- Only CPFS for Lingjun supports this feature.
         self.transfer_file_list_path = transfer_file_list_path
 

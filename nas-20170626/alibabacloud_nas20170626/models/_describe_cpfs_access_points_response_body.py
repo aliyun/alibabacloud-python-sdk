@@ -93,6 +93,7 @@ class DescribeCpfsAccessPointsResponseBodyAccessPoints(DaraModel):
         region_id: str = None,
         root_directory: main_models.DescribeCpfsAccessPointsResponseBodyAccessPointsRootDirectory = None,
         status: str = None,
+        tags: List[main_models.DescribeCpfsAccessPointsResponseBodyAccessPointsTags] = None,
     ):
         # The Alibaba Cloud Resource Name (ARN) of the access point.
         self.arn = arn
@@ -114,17 +115,23 @@ class DescribeCpfsAccessPointsResponseBodyAccessPoints(DaraModel):
         # 
         # Valid values:
         # 
-        # - Active: available
-        # - Inactive: unavailable
-        # - Pending: being created
-        # - Deleting: being deleted
+        # - Active: available.
+        # - Inactive: unavailable.
+        # - Pending: being created.
+        # - Deleting: being deleted.
         # 
-        # > The file system can be mounted only when the status is Active.
+        # > You can mount the file system only when the status is Active.
         self.status = status
+        # The list of CPFS access point tags.
+        self.tags = tags
 
     def validate(self):
         if self.root_directory:
             self.root_directory.validate()
+        if self.tags:
+            for v1 in self.tags:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -158,6 +165,11 @@ class DescribeCpfsAccessPointsResponseBodyAccessPoints(DaraModel):
         if self.status is not None:
             result['Status'] = self.status
 
+        result['Tags'] = []
+        if self.tags is not None:
+            for k1 in self.tags:
+                result['Tags'].append(k1.to_map() if k1 else None)
+
         return result
 
     def from_map(self, m: dict = None):
@@ -190,6 +202,49 @@ class DescribeCpfsAccessPointsResponseBodyAccessPoints(DaraModel):
         if m.get('Status') is not None:
             self.status = m.get('Status')
 
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k1 in m.get('Tags'):
+                temp_model = main_models.DescribeCpfsAccessPointsResponseBodyAccessPointsTags()
+                self.tags.append(temp_model.from_map(k1))
+
+        return self
+
+class DescribeCpfsAccessPointsResponseBodyAccessPointsTags(DaraModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The key of the CPFS access point tag.
+        self.key = key
+        # The value of the CPFS access point tag.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.key is not None:
+            result['Key'] = self.key
+
+        if self.value is not None:
+            result['Value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+
         return self
 
 class DescribeCpfsAccessPointsResponseBodyAccessPointsRootDirectory(DaraModel):
@@ -204,9 +259,9 @@ class DescribeCpfsAccessPointsResponseBodyAccessPointsRootDirectory(DaraModel):
         # 
         # Valid values:
         # 
-        # - Unknown: The root path status is unknown.
-        # - NotExist: The root path does not exist. It may have been deleted by the user.
-        # - Ready: The root path status is normal.
+        # - Unknown: the root path status is unknown.
+        # - NotExist: the root path does not exist. It may have been deleted by the user.
+        # - Ready: the root path status is normal.
         self.root_path_status = root_path_status
 
     def validate(self):
