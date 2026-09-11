@@ -2,16 +2,15 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from alibabacloud_csas20230120 import models as main_models
 from darabonba.model import DaraModel
 
-class UpdateDeviceGroupRequest(DaraModel):
+class UpdateDeviceGroupShrinkRequest(DaraModel):
     def __init__(
         self,
         description: str = None,
         device_group_id: str = None,
         dynamic_operator: str = None,
-        dynamic_rule: main_models.Rule = None,
+        dynamic_rule_shrink: str = None,
         name: str = None,
     ):
         # The description of the device label. Set this parameter to an empty string to clear the description. The description can contain letters, digits, Chinese characters, spaces, periods (.), underscores (_), and hyphens (-).
@@ -21,13 +20,12 @@ class UpdateDeviceGroupRequest(DaraModel):
         # The operator of the dynamic device group rule.
         self.dynamic_operator = dynamic_operator
         # The matching rule of the dynamic device label.
-        self.dynamic_rule = dynamic_rule
+        self.dynamic_rule_shrink = dynamic_rule_shrink
         # The name of the device label. The name must be 1 to 128 characters in length and can contain letters, digits, Chinese characters, periods (.), underscores (_), and hyphens (-). Spaces are not supported.
         self.name = name
 
     def validate(self):
-        if self.dynamic_rule:
-            self.dynamic_rule.validate()
+        pass
 
     def to_map(self):
         result = dict()
@@ -43,8 +41,8 @@ class UpdateDeviceGroupRequest(DaraModel):
         if self.dynamic_operator is not None:
             result['DynamicOperator'] = self.dynamic_operator
 
-        if self.dynamic_rule is not None:
-            result['DynamicRule'] = self.dynamic_rule.to_map()
+        if self.dynamic_rule_shrink is not None:
+            result['DynamicRule'] = self.dynamic_rule_shrink
 
         if self.name is not None:
             result['Name'] = self.name
@@ -63,8 +61,7 @@ class UpdateDeviceGroupRequest(DaraModel):
             self.dynamic_operator = m.get('DynamicOperator')
 
         if m.get('DynamicRule') is not None:
-            temp_model = main_models.Rule()
-            self.dynamic_rule = temp_model.from_map(m.get('DynamicRule'))
+            self.dynamic_rule_shrink = m.get('DynamicRule')
 
         if m.get('Name') is not None:
             self.name = m.get('Name')

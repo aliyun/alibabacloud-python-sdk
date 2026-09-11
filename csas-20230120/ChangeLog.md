@@ -1,3 +1,7 @@
+2026-09-11 Version: 1.24.1
+- Update API UpdateDeviceGroup: add request parameters DynamicRule.
+
+
 2026-09-07 Version: 1.24.0
 - Support API CreateBackendReport.
 - Support API InvalidateApproval.

@@ -15229,10 +15229,14 @@ class Client(OpenApiClient):
 
     def update_device_group_with_options(
         self,
-        request: main_models.UpdateDeviceGroupRequest,
+        tmp_req: main_models.UpdateDeviceGroupRequest,
         runtime: RuntimeOptions,
     ) -> main_models.UpdateDeviceGroupResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.UpdateDeviceGroupShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.dynamic_rule):
+            request.dynamic_rule_shrink = Utils.array_to_string_with_specified_style(tmp_req.dynamic_rule, 'DynamicRule', 'json')
         body = {}
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
@@ -15240,6 +15244,8 @@ class Client(OpenApiClient):
             body['DeviceGroupId'] = request.device_group_id
         if not DaraCore.is_null(request.dynamic_operator):
             body['DynamicOperator'] = request.dynamic_operator
+        if not DaraCore.is_null(request.dynamic_rule_shrink):
+            body['DynamicRule'] = request.dynamic_rule_shrink
         if not DaraCore.is_null(request.name):
             body['Name'] = request.name
         req = open_api_util_models.OpenApiRequest(
@@ -15263,10 +15269,14 @@ class Client(OpenApiClient):
 
     async def update_device_group_with_options_async(
         self,
-        request: main_models.UpdateDeviceGroupRequest,
+        tmp_req: main_models.UpdateDeviceGroupRequest,
         runtime: RuntimeOptions,
     ) -> main_models.UpdateDeviceGroupResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.UpdateDeviceGroupShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.dynamic_rule):
+            request.dynamic_rule_shrink = Utils.array_to_string_with_specified_style(tmp_req.dynamic_rule, 'DynamicRule', 'json')
         body = {}
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
@@ -15274,6 +15284,8 @@ class Client(OpenApiClient):
             body['DeviceGroupId'] = request.device_group_id
         if not DaraCore.is_null(request.dynamic_operator):
             body['DynamicOperator'] = request.dynamic_operator
+        if not DaraCore.is_null(request.dynamic_rule_shrink):
+            body['DynamicRule'] = request.dynamic_rule_shrink
         if not DaraCore.is_null(request.name):
             body['Name'] = request.name
         req = open_api_util_models.OpenApiRequest(

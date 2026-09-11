@@ -633,6 +633,7 @@ from ._update_connector_client_request import UpdateConnectorClientRequest
 from ._update_connector_client_response_body import UpdateConnectorClientResponseBody
 from ._update_connector_client_response import UpdateConnectorClientResponse
 from ._update_device_group_request import UpdateDeviceGroupRequest
+from ._update_device_group_shrink_request import UpdateDeviceGroupShrinkRequest
 from ._update_device_group_response_body import UpdateDeviceGroupResponseBody
 from ._update_device_group_response import UpdateDeviceGroupResponse
 from ._update_domain_meta_request import UpdateDomainMetaRequest
@@ -1773,6 +1774,7 @@ __all__ = [
     UpdateConnectorClientResponseBody,
     UpdateConnectorClientResponse,
     UpdateDeviceGroupRequest,
+    UpdateDeviceGroupShrinkRequest,
     UpdateDeviceGroupResponseBody,
     UpdateDeviceGroupResponse,
     UpdateDomainMetaRequest,
