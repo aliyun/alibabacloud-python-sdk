@@ -21,13 +21,13 @@ class GlobalHotelValidatePriceRequest(DaraModel):
         # 
         # This parameter is required.
         self.account_no = account_no
-        # The number of adults per room.
+        # The total number of adults.
         # 
         # This parameter is required.
         self.adults = adults
-        # The number of children per room.
+        # The total number of children.
         self.children = children
-        # The list of children ages.
+        # The list of children\\"s ages.
         self.children_ages = children_ages
         # The offer key.
         # 

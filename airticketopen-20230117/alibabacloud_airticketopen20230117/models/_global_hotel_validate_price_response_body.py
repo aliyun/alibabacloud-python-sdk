@@ -25,7 +25,7 @@ class GlobalHotelValidatePriceResponseBody(DaraModel):
         self.error_msg = error_msg
         # The unique request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
         # TracerId
         self.tracer_id = tracer_id
@@ -95,7 +95,7 @@ class GlobalHotelValidatePriceResponseBodyData(DaraModel):
         self.cancellation_policies = cancellation_policies
         # The list of daily prices.
         self.daily_prices = daily_prices
-        # The price validation result ID, used for subsequent order creation.
+        # The price validation result ID, which is used for subsequent order creation.
         self.item_offer_id = item_offer_id
         # The total selling price.
         self.total_price = total_price
@@ -175,7 +175,7 @@ class GlobalHotelValidatePriceResponseBodyDataTotalPrice(DaraModel):
     ):
         # The amount in the smallest currency unit.
         self.amount = amount
-        # The currency code (ISO 4217).
+        # The currency code in ISO 4217 format.
         self.currency = currency
         # null
         self.tracer_id = tracer_id
@@ -219,7 +219,7 @@ class GlobalHotelValidatePriceResponseBodyDataDailyPrices(DaraModel):
         price: main_models.GlobalHotelValidatePriceResponseBodyDataDailyPricesPrice = None,
         tracer_id: str = None,
     ):
-        # The date in yyyy-MM-dd format, in the local time zone of the hotel.
+        # The date in yyyy-MM-dd format, based on the hotel\\"s local time zone.
         self.date = date
         # The price for the night.
         self.price = price
@@ -269,7 +269,7 @@ class GlobalHotelValidatePriceResponseBodyDataDailyPricesPrice(DaraModel):
     ):
         # The amount in the smallest currency unit.
         self.amount = amount
-        # The currency code (ISO 4217).
+        # The currency code in ISO 4217 format.
         self.currency = currency
         # null
         self.tracer_id = tracer_id
@@ -315,7 +315,7 @@ class GlobalHotelValidatePriceResponseBodyDataCancellationPolicies(DaraModel):
     ):
         # The list of cancellation penalty details.
         self.penalties = penalties
-        # The cancellation policy type (FREE_CANCEL/CONDITIONAL/NON_REFUNDABLE).
+        # The cancellation policy type.
         self.policy_type = policy_type
         # TracerId
         self.tracer_id = tracer_id
@@ -374,9 +374,9 @@ class GlobalHotelValidatePriceResponseBodyDataCancellationPoliciesPenalties(Dara
         self.currency = currency
         # The effective end time as a UTC millisecond timestamp.
         self.end = end
-        # The penalty type (PERCENT/NIGHTS/NON_CANCELLABLE).
+        # The penalty type.
         self.penalty_type = penalty_type
-        # The penalty value (percentage, amount, or number of nights). This field is not present when PenaltyType is NON_CANCELLABLE.
+        # The penalty value, which represents a percentage, amount, or number of nights.
         self.penalty_value = penalty_value
         # The effective start time as a UTC millisecond timestamp.
         self.start = start

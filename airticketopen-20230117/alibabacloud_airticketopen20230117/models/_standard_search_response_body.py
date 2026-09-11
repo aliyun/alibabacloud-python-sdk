@@ -556,6 +556,7 @@ class StandardSearchResponseBodyDataSolutionListJourneyListSegmentList(DaraModel
         departure_terminal: str = None,
         departure_time: str = None,
         equip_type: str = None,
+        fare_basis: str = None,
         flight_duration: int = None,
         marketing_airline: str = None,
         marketing_flight_no: str = None,
@@ -592,6 +593,7 @@ class StandardSearchResponseBodyDataSolutionListJourneyListSegmentList(DaraModel
         self.departure_time = departure_time
         # Aircraft type
         self.equip_type = equip_type
+        self.fare_basis = fare_basis
         # Flight duration, unit: minutes
         self.flight_duration = flight_duration
         # Marketing airline (e.g.: HO)
@@ -657,6 +659,9 @@ class StandardSearchResponseBodyDataSolutionListJourneyListSegmentList(DaraModel
 
         if self.equip_type is not None:
             result['equip_type'] = self.equip_type
+
+        if self.fare_basis is not None:
+            result['fare_basis'] = self.fare_basis
 
         if self.flight_duration is not None:
             result['flight_duration'] = self.flight_duration
@@ -727,6 +732,9 @@ class StandardSearchResponseBodyDataSolutionListJourneyListSegmentList(DaraModel
 
         if m.get('equip_type') is not None:
             self.equip_type = m.get('equip_type')
+
+        if m.get('fare_basis') is not None:
+            self.fare_basis = m.get('fare_basis')
 
         if m.get('flight_duration') is not None:
             self.flight_duration = m.get('flight_duration')

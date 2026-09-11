@@ -1,3 +1,10 @@
+2026-09-11 Version: 8.1.3
+- Update API Enrich: add response parameters Body.data.solution_list.$.journey_list.$.segment_list.$.fare_basis.
+- Update API Pricing: add response parameters Body.data.solution.journey_list.$.segment_list.$.fare_basis.
+- Update API Search: add response parameters Body.data.solution_list.$.journey_list.$.segment_list.$.fare_basis.
+- Update API StandardSearch: add response parameters Body.data.solution_list.$.journey_list.$.segment_list.$.fare_basis.
+
+
 2026-09-02 Version: 9.0.0
 - Update API globalHotelBatchGetHotelDetail: add response parameters Body.Data.Hotels.$.Facilities.$.SubItems.
 - Update API globalHotelBatchGetHotelDetail: add response parameters Body.Data.Hotels.$.RoomTypes.$.BedGroups.
