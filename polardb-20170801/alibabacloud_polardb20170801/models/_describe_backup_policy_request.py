@@ -15,7 +15,7 @@ class DescribeBackupPolicyRequest(DaraModel):
     ):
         # The cluster ID.
         # 
-        # > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/2319131.html) operation to query the details of all clusters in a region, including the cluster IDs.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/2319131.html) operation to query the information about all clusters in a specified region, including cluster IDs.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id

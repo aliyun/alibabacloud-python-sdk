@@ -18,11 +18,11 @@ class ModifyPolarFsMappingAuthRequest(DaraModel):
         # 
         # This parameter is required.
         self.bucket = bucket
-        # The AccessKey ID for the storage bucket.
+        # The AccessKey ID of the storage bucket.
         # 
         # This parameter is required.
         self.bucket_access_key_id = bucket_access_key_id
-        # The AccessKey secret for the storage bucket.
+        # The AccessKey secret of the storage bucket.
         # 
         # This parameter is required.
         self.bucket_access_key_secret = bucket_access_key_secret

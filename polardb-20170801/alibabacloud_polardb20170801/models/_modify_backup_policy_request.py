@@ -30,185 +30,134 @@ class ModifyBackupPolicyRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The advanced backup policies.
-        # 
-        # > - - This parameter is not supported for PolarDB for PostgreSQL (compatible with Oracle) and PolarDB for PostgreSQL.
-        # >
-        # > - - This parameter is supported only for clusters for which `BackupPolicyLevel` is set to `Advanced`.
+        # The advanced backup policy.
+        # > * * PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL do not support this parameter.
+        # > * * Only clusters with BackupPolicyLevel set to Advanced support this parameter.
         self.advanced_data_policies = advanced_data_policies
         # The backup frequency. Valid values:
         # 
-        # - **Normal** (default): standard backup. The cluster is backed up once a day.
+        # - **Normal** (default): regular backup. Automatic backup is performed once a day at a scheduled time.
+        # - **2/24H**: high-frequency backup. Backup is performed every 2 hours.
+        # - **3/24H**: high-frequency backup. Backup is performed every 3 hours.
+        # - **4/24H**: high-frequency backup. Backup is performed every 4 hours.
         # 
-        # - **2/24H**: high-frequency backup. The cluster is backed up every 2 hours.
-        # 
-        # - **3/24H**: high-frequency backup. The cluster is backed up every 3 hours.
-        # 
-        # - **4/24H**: high-frequency backup. The cluster is backed up every 4 hours.
-        # 
-        # > * * If you enable high-frequency backup, all backups completed within the last 24 hours are retained. For backups older than 24 hours, the system retains only the first backup completed after 00:00 each day and deletes the rest.
-        # >
-        # > * - If you enable high-frequency backup, the **PreferredBackupPeriod** parameter is automatically set to all days of the week (from Monday to Sunday).
-        # >
-        # > * - This parameter is not supported if your PolarDB for MySQL cluster is in a region that supports the cross-region backup feature. For more information about the regions that support cross-region backup, see [Overview](https://help.aliyun.com/document_detail/72672.html).
-        # >
-        # > * - After you enable advanced backup, this parameter is no longer effective. Use the `AdvancedDataPolicies` parameter instead.
+        # > * * After high-frequency backup is enabled, all backups completed within 24 hours are retained. For backups older than 24 hours, only the first backup completed after 00:00 each day is retained, and all others are deleted.
+        # > * * After high-frequency backup is enabled, the backup cycle parameter PreferredBackupPeriod defaults to all days of the week (Monday through Sunday).
+        # > * * If the region of your PolarDB for MySQL cluster supports the cross-region backup feature, this parameter is not supported. For regions that support cross-region backup, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+        # > * * After advanced backup is enabled, this parameter no longer takes effect. Use the AdvancedDataPolicies parameter instead.
         self.backup_frequency = backup_frequency
-        # The level of the backup policy. Valid values:
-        # 
-        # - **Normal**: standard backup
-        # 
-        # - **Advanced**: advanced backup
-        # 
-        # > * * This parameter is not supported for PolarDB for PostgreSQL (compatible with Oracle) and PolarDB for PostgreSQL.
-        # >
-        # > * - Check the `AdvancedPolicyOption` parameter in the response of the [DescribeBackupPolicy](https://help.aliyun.com/document_detail/2319231.html) operation to determine whether the cluster supports advanced backup. If the cluster supports advanced backup, you can request this feature in [Advanced backup settings](~611727~~).
-        # >
-        # > * - After you enable advanced backup, you **cannot** switch back to standard backup.
+        # The backup policy level. Valid values:
+        # * **Normal**: regular backup.
+        # * **Advanced**: advanced backup.
+        # > * * PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL do not support this parameter.
+        # > * * You can check the AdvancedPolicyOption response parameter of the [DescribeBackupPolicy](https://help.aliyun.com/document_detail/2319231.html) operation to determine whether the cluster supports advanced backup. If the cluster supports advanced backup, you can apply to use this feature through [Advanced backup settings](~611727~~).
+        # > * * After advanced backup is enabled, rollback to regular backup is **not supported**.
         self.backup_policy_level = backup_policy_level
-        # Specifies whether to retain backups when you delete the cluster. Valid values:
+        # Specifies whether to retain backups when the cluster is deleted. Valid values:
         # 
-        # - **ALL**: Permanently retains all backups.
+        # - **ALL**: Long-term retention (LTR) of all backups.
         # 
-        # - **LATEST**: Permanently retains the last backup.
+        # - **LATEST**: Long-term retention (LTR) of only the last backup.
         # 
-        # - **NONE**: Does not retain backup sets.
+        # - **NONE**: Does not retain any backups.
         # 
-        # > The default value is `NONE`.
+        # > Default value: NONE.
         self.backup_retention_policy_on_cluster_deletion = backup_retention_policy_on_cluster_deletion
         # The cluster ID.
         # 
-        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters in a specified region, including the cluster IDs.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters in a specific region, including cluster IDs.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The backup frequency. Valid values:
         # 
-        # - **Normal** (default): standard backup. The cluster is backed up once a day.
+        # - **Normal** (default): regular backup. Automatic backup is performed once a day at a scheduled time.
+        # - **2/24H**: high-frequency backup. Backup is performed every 2 hours.
+        # - **3/24H**: high-frequency backup. Backup is performed every 3 hours.
+        # - **4/24H**: high-frequency backup. Backup is performed every 4 hours.
         # 
-        # - **2/24H**: high-frequency backup. The cluster is backed up every 2 hours.
-        # 
-        # - **3/24H**: high-frequency backup. The cluster is backed up every 3 hours.
-        # 
-        # - **4/24H**: high-frequency backup. The cluster is backed up every 4 hours.
-        # 
-        # > * * This parameter is not supported for PolarDB for PostgreSQL (compatible with Oracle) and PolarDB for PostgreSQL.
-        # >
-        # > * - This parameter is not supported if your PolarDB for MySQL cluster is in a region that supports the cross-region backup feature. For more information about the regions that support cross-region backup, see [Overview](https://help.aliyun.com/document_detail/72672.html).
-        # >
-        # > * - After you enable advanced backup, this parameter is no longer effective. Use the `AdvancedDataPolicies` parameter instead.
+        # > * * PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL do not support this parameter.
+        # > * * If the region of your PolarDB for MySQL cluster does not support the cross-region backup feature, this parameter is not supported. For regions that support cross-region backup, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+        # > * * After advanced backup is enabled, this parameter no longer takes effect. Use the AdvancedDataPolicies parameter instead.
         self.data_level_1backup_frequency = data_level_1backup_frequency
-        # The level-1 backup cycle. Valid values:
+        # The level-1 backup cycle. Valid values: 
+        # * **Monday**
+        # * **Tuesday**
+        # * **Wednesday**
+        # * **Thursday**
+        # * **Friday**
+        # * **Saturday**
+        # * **Sunday**
         # 
-        # - **Monday**
-        # 
-        # - **Tuesday**
-        # 
-        # - **Wednesday**
-        # 
-        # - **Thursday**
-        # 
-        # - **Friday**
-        # 
-        # - **Saturday**
-        # 
-        # - **Sunday**
-        # 
-        # > * * You must select at least two days. Separate multiple values with commas.
-        # >
-        # > * - This parameter is not supported for PolarDB for PostgreSQL (compatible with Oracle) and PolarDB for PostgreSQL.
-        # >
-        # > * - This parameter is not supported if your PolarDB for MySQL cluster is in a region that supports the cross-region backup feature. For more information about the regions that support cross-region backup, see [Overview](https://help.aliyun.com/document_detail/72672.html).
-        # >
-        # > * - After you enable advanced backup, this parameter is no longer effective. Use the `AdvancedDataPolicies` parameter instead.
+        # > * * Select at least 2 days. Separate multiple values with commas (,).
+        # > * * PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL do not support this parameter.
+        # > * * If the region of your PolarDB for MySQL cluster does not support the cross-region backup feature, this parameter is not supported. For regions that support cross-region backup, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+        # > * * After advanced backup is enabled, this parameter no longer takes effect. Use the AdvancedDataPolicies parameter instead.
         self.data_level_1backup_period = data_level_1backup_period
-        # The retention period for level-1 backups, in days. Valid values: 3 to 14.
+        # The retention period of level-1 backups. Valid values: 3 to 14. Unit: days.
         # 
-        # > - After you enable advanced backup, this parameter is no longer effective. Use the `AdvancedDataPolicies` parameter instead.
+        # > * After advanced backup is enabled, this parameter no longer takes effect. Use the AdvancedDataPolicies parameter instead.
         self.data_level_1backup_retention_period = data_level_1backup_retention_period
-        # The time window for automatic backups. Specify the time in UTC and in the `hh:mmZ-hh:mmZ` format. The time window must be a one-hour period that starts on the hour. For example, `14:00Z-15:00Z`.
+        # The time period during which automatic backup is performed. Specify the time period in the `hh:mmZ-hh:mmZ` format in UTC. The values must be on the hour with an interval of 1 hour, such as `14:00Z-15:00Z`.
         # 
-        # > - This parameter is not supported for PolarDB for PostgreSQL (compatible with Oracle) and PolarDB for PostgreSQL.
-        # >
-        # > - This parameter is not supported if your PolarDB for MySQL cluster is in a region that supports the cross-region backup feature. For more information about the regions that support cross-region backup, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+        # > * PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL do not support this parameter.
+        # > * If the region of your PolarDB for MySQL cluster does not support the cross-region backup feature, this parameter is not supported. For regions that support cross-region backup, see [Overview](https://help.aliyun.com/document_detail/72672.html).
         self.data_level_1backup_time = data_level_1backup_time
-        # The destination region for the cross-region level-2 backup. For more information about the regions that support cross-region backup, see [Overview](https://help.aliyun.com/document_detail/72672.html).
-        # 
-        # > - After you enable advanced backup, this parameter is no longer effective. Use the `AdvancedDataPolicies` parameter instead.
+        # The destination region for cross-region level-2 backups. For regions that support cross-region backup, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+        # > * After advanced backup is enabled, this parameter no longer takes effect. Use the AdvancedDataPolicies parameter instead.
         self.data_level_2backup_another_region_region = data_level_2backup_another_region_region
-        # The retention period of cross-region level-2 backups. Valid values:
+        # The retention period of cross-region backups for level-2 backups. Valid values:
         # 
-        # - **0**: Disables the cross-region level-2 backup feature.
+        # - **0**: Disables the level-2 cross-region backup feature.
         # 
-        # - **30 to 7300**: The retention period of cross-region level-2 backups, in days.
+        # - **30 to 7300**: The retention period of level-2 backups. Unit: days.
         # 
-        # - **-1**: Cross-region level-2 backups are permanently retained.
+        # - **-1**: Long-term retention (LTR) of level-2 backups.
         # 
-        # > * * When you create a cluster, the default value is **0**, which disables the cross-region level-2 backup feature.
-        # >
-        # > * - After you enable advanced backup, this parameter is no longer effective. Use the `AdvancedDataPolicies` parameter instead.
+        #  > * * When a cluster is created, the default value is **0**, which means the level-2 cross-region backup feature is disabled.
+        # > * * After advanced backup is enabled, this parameter no longer takes effect. Use the AdvancedDataPolicies parameter instead.
         self.data_level_2backup_another_region_retention_period = data_level_2backup_another_region_retention_period
-        # The level-2 backup cycle. Valid values:
+        # The level-2 backup cycle. Valid values: 
+        # * **Monday**
+        # * **Tuesday**
+        # * **Wednesday**
+        # * **Thursday**
+        # * **Friday**
+        # * **Saturday**
+        # * **Sunday**
         # 
-        # - **Monday**
-        # 
-        # - **Tuesday**
-        # 
-        # - **Wednesday**
-        # 
-        # - **Thursday**
-        # 
-        # - **Friday**
-        # 
-        # - **Saturday**
-        # 
-        # - **Sunday**
-        # 
-        # > * * You must select at least two days. Separate multiple values with commas.
-        # >
-        # > * - This parameter is not supported for PolarDB for PostgreSQL (compatible with Oracle) and PolarDB for PostgreSQL.
-        # >
-        # > * - This parameter is not supported if your PolarDB for MySQL cluster is in a region that supports the cross-region backup feature. For more information about the regions that support cross-region backup, see [Overview](https://help.aliyun.com/document_detail/72672.html).
-        # >
-        # > * - After you enable advanced backup, this parameter is no longer effective. Use the `AdvancedDataPolicies` parameter instead.
+        # > * * Select at least 2 days. Separate multiple values with commas (,).
+        # > * * PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL do not support this parameter.
+        # > * * If the region of your PolarDB for MySQL cluster does not support the cross-region backup feature, this parameter is not supported. For regions that support cross-region backup, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+        # > * * After advanced backup is enabled, this parameter no longer takes effect. Use the AdvancedDataPolicies parameter instead.
         self.data_level_2backup_period = data_level_2backup_period
         # The retention period of level-2 backups. Valid values:
         # 
         # - **0**: Disables the level-2 backup feature.
         # 
-        # - **30 to 7300**: The retention period of level-2 backups, in days.
+        # - **30 to 7300**: The retention period of level-2 backups. Unit: days.
         # 
-        # - **-1**: Level-2 backups are permanently retained.
+        # - **-1**: Long-term retention (LTR) of level-2 backups.
         # 
-        # > * * When you create a cluster, the default value is **0**, which disables the level-2 backup feature.
-        # >
-        # > * - After you enable advanced backup, this parameter is no longer effective. Use the `AdvancedDataPolicies` parameter instead.
+        #  > * * When a cluster is created, the default value is **0**, which means the level-2 backup feature is disabled.
+        # > * * After advanced backup is enabled, this parameter no longer takes effect. Use the AdvancedDataPolicies parameter instead.
         self.data_level_2backup_retention_period = data_level_2backup_retention_period
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The backup cycle. Valid values:
+        # The backup cycle. Valid values: 
+        # * **Monday**
+        # * **Tuesday**
+        # * **Wednesday**
+        # * **Thursday**
+        # * **Friday**
+        # * **Saturday**
+        # * **Sunday**
         # 
-        # - **Monday**
-        # 
-        # - **Tuesday**
-        # 
-        # - **Wednesday**
-        # 
-        # - **Thursday**
-        # 
-        # - **Friday**
-        # 
-        # - **Saturday**
-        # 
-        # - **Sunday**
-        # 
-        # > * * You must select at least two days. Separate multiple values with commas.
-        # >
-        # > * - This parameter is not supported if your PolarDB for MySQL cluster is in a region that supports the cross-region backup feature. For more information about the regions that support cross-region backup, see [Overview](https://help.aliyun.com/document_detail/72672.html).
-        # >
-        # > * - After you enable advanced backup, this parameter is no longer effective. Use the `AdvancedDataPolicies` parameter instead.
+        # > * * Select at least 2 days. Separate multiple values with commas (,).
+        # > * * If the region of your PolarDB for MySQL cluster supports the cross-region backup feature, this parameter is not supported. For regions that support cross-region backup, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+        # > * * After advanced backup is enabled, this parameter no longer takes effect. Use the AdvancedDataPolicies parameter instead.
         self.preferred_backup_period = preferred_backup_period
-        # The time window for automatic backups. Specify the time in UTC and in the `hh:mmZ-hh:mmZ` format. The time window must be a one-hour period that starts on the hour. For example, `14:00Z-15:00Z`.
+        # The time period during which automatic backup is performed. Specify the time period in the `hh:mmZ-hh:mmZ` format in UTC. The values must be on the hour with an interval of 1 hour, such as `14:00Z-15:00Z`.
         self.preferred_backup_time = preferred_backup_time
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -372,91 +321,74 @@ class ModifyBackupPolicyRequestAdvancedDataPolicies(DaraModel):
     ):
         # The action type. Valid values:
         # 
-        # - **CREATE**: Create
-        # 
-        # - **UPDATE**: Update
-        # 
-        # - **DELETE**: Delete
+        # - **CREATE**: create
+        # - **UPDATE**: update
+        # - **DELETE**: delete
         self.action_type = action_type
         # Indicates whether the backup policy is automatically generated by the system.
         # 
-        # > This value is automatically generated. You do not need to specify this parameter.
+        # > This parameter value is automatically generated. You do not need to specify it.
         self.auto_created = auto_created
         # The backup type. Valid values:
         # 
-        # - **F**: full backup
-        # 
-        # > This parameter cannot be modified and is fixed to `F`.
+        # - **F**: full backup.
+        # > This parameter cannot be modified and is fixed to F.
         self.bak_type = bak_type
-        # The destination region for the backup policy.
+        # The destination region of the backup policy.
         self.dest_region = dest_region
-        # The destination type for the backup policy. Valid values:
+        # The destination type of the backup policy. Valid values:
         # 
         # - **level1**: level-1 backup
-        # 
         # - **level2**: level-2 backup
-        # 
-        # - **level2Cross**: cross-region level-2 backup
+        # - **level2Cross**: level-2 cross-region backup
         self.dest_type = dest_type
-        # The method to convert a level-1 backup to a level-2 backup. Valid values:
+        # The method for converting level-1 backups to level-2 backups. Valid values:
         # 
-        # - **copy**: Copy
+        # - **copy**: copy
         self.dump_action = dump_action
         # The scheduling type. Valid values:
         # 
-        # - **dayOfWeek**: Weekly schedule
+        # - **dayOfWeek**: scheduled by week
+        # - **dayOfMonth**: scheduled by month
+        # - **dayOfYear**: scheduled by year
+        # - **backupInterval**: scheduled at fixed intervals
         # 
-        # - **dayOfMonth**: Monthly schedule
-        # 
-        # - **dayOfYear**: Yearly schedule
-        # 
-        # - **backupInterval**: Fixed interval schedule
-        # 
-        # > This parameter is required only if `FilterType` is set to **crontab**.
+        # > This parameter is required only when FilterType is set to **crontab**.
         self.filter_key = filter_key
-        # The filter type for the advanced policy. Valid values:
+        # The filter type of the advanced policy. Valid values:
         # 
-        # - **crontab**: Recurring schedule
-        # 
-        # - **event**: Event-based schedule
+        # - **crontab**: periodic scheduling
+        # - **event**: event-based scheduling
         self.filter_type = filter_type
         # The backup cycle.
         self.filter_value = filter_value
-        # The retention policy for backups that are more than 24 hours old. Valid values:
-        # 
-        # - **true**: Retains only the first backup set of the day.
-        # 
-        # - **false**: Retains all backups.
+        # The 24-hour backup data retention policy. Valid values:
+        # - **true**: Only the first backup set of the day is retained for backups older than 24 hours.
+        # - **false**: All backup sets are retained.
         self.only_preserve_one_each_day = only_preserve_one_each_day
-        # The retention policy for hourly backups. Valid values:
+        # The hourly backup data retention policy. Valid values:
+        # * **true**: Only the earliest backup set within each hour is retained for backups older than 1 hour.
+        # * **false**: All backup sets are retained.
         # 
-        # - **true**: Retains only the first backup set of each hour for backups that are more than one hour old.
-        # 
-        # - **false**: Retains all backup sets.
-        # 
-        # > This parameter cannot be modified and is fixed to `true`.
+        # > This parameter cannot be modified and is fixed to true.
         self.only_preserve_one_each_hour = only_preserve_one_each_hour
-        # The ID of the backup policy. You can call the [DescribeBackupPolicy](https://help.aliyun.com/document_detail/2319231.html) operation to view the ID.
+        # The backup policy ID. You can call the [DescribeBackupPolicy](https://help.aliyun.com/document_detail/2319231.html) operation to query the backup policy ID.
         self.policy_id = policy_id
-        # The retention type for the backup set. Valid values:
+        # The retention type of backup sets. Valid values:
         # 
-        # - **never**: Never expires.
-        # 
-        # - **delay**: Expires after a specified number of days.
+        # - **never**: never expires
+        # - **delay**: expires after a fixed number of days
         self.retention_type = retention_type
-        # The number of days to retain the backup.
+        # The number of days to retain backups.
         self.retention_value = retention_value
-        # The source region for the backup policy.
+        # The source region of the backup policy.
         self.src_region = src_region
-        # The source type for the backup policy. Valid values:
+        # The source type of the backup policy. Valid values:
         # 
         # - **db**: database cluster
-        # 
         # - **level1**: level-1 backup
-        # 
         # - **level2**: level-2 backup
-        # 
-        # - **level2Cross**: cross-region level-2 backup
+        # - **level2Cross**: level-2 cross-region backup
         self.src_type = src_type
         self.storage_class = storage_class
 

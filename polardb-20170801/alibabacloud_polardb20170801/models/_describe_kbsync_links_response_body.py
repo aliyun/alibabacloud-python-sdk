@@ -11,10 +11,21 @@ class DescribeKBSyncLinksResponseBody(DaraModel):
     def __init__(
         self,
         items: List[main_models.DescribeKBSyncLinksResponseBodyItems] = None,
+        page_number: int = None,
+        page_size: int = None,
         request_id: str = None,
+        total_record_count: int = None,
     ):
+        # The list of synchronization links.
         self.items = items
+        # The page number of the current results.
+        self.page_number = page_number
+        # The number of records per page in the current results.
+        self.page_size = page_size
+        # Id of the request
         self.request_id = request_id
+        # The total number of synchronization links that match the query conditions.
+        self.total_record_count = total_record_count
 
     def validate(self):
         if self.items:
@@ -32,8 +43,17 @@ class DescribeKBSyncLinksResponseBody(DaraModel):
             for k1 in self.items:
                 result['Items'].append(k1.to_map() if k1 else None)
 
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+
+        if self.total_record_count is not None:
+            result['TotalRecordCount'] = self.total_record_count
 
         return result
 
@@ -45,8 +65,17 @@ class DescribeKBSyncLinksResponseBody(DaraModel):
                 temp_model = main_models.DescribeKBSyncLinksResponseBodyItems()
                 self.items.append(temp_model.from_map(k1))
 
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+
+        if m.get('TotalRecordCount') is not None:
+            self.total_record_count = m.get('TotalRecordCount')
 
         return self
 
@@ -63,14 +92,27 @@ class DescribeKBSyncLinksResponseBodyItems(DaraModel):
         sync_interval_minutes: int = None,
         sync_status: str = None,
     ):
+        # The client ID.
         self.client_id = client_id
+        # The creation time.
         self.creation_time = creation_time
+        # The description of the synchronization link.
         self.description = description
+        # The source channel of the synchronization link.
         self.im_platform = im_platform
+        # The synchronization link ID.
         self.link_id = link_id
+        # The link name.
         self.link_name = link_name
+        # The source directory address for synchronization.
         self.source_dir = source_dir
+        # The synchronization interval. Unit: minutes.
         self.sync_interval_minutes = sync_interval_minutes
+        # The synchronization status. Valid values:
+        # - CREATING
+        # - RUNNING
+        # - PAUSED
+        # - DELETING
         self.sync_status = sync_status
 
     def validate(self):

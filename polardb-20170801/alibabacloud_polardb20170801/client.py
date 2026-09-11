@@ -62,29 +62,7 @@ class Client(OpenApiClient):
             'cn-zhangjiakou-na62-a01': 'polardb.aliyuncs.com',
             'cn-zhengzhou-nebula-1': 'polardb.aliyuncs.com',
             'eu-west-1-oxs': 'polardb.aliyuncs.com',
-            'rus-west-1-pop': 'polardb.aliyuncs.com',
-            'cn-hongkong': 'polardb.cn-hongkong.aliyuncs.com',
-            'cn-zhangjiakou': 'polardb.cn-zhangjiakou.aliyuncs.com',
-            'cn-shenzhen': 'polardb.cn-shenzhen.aliyuncs.com',
-            'ap-northeast-2': 'polardb.ap-northeast-2.aliyuncs.com',
-            'ap-northeast-1': 'polardb.ap-northeast-1.aliyuncs.com',
-            'cn-chengdu': 'polardb.cn-chengdu.aliyuncs.com',
-            'cn-guangzhou': 'polardb.cn-guangzhou.aliyuncs.com',
-            'ap-southeast-1': 'polardb.ap-southeast-1.aliyuncs.com',
-            'ap-southeast-3': 'polardb.ap-southeast-3.aliyuncs.com',
-            'cn-huhehaote': 'polardb.cn-huhehaote.aliyuncs.com',
-            'ap-southeast-5': 'polardb.ap-southeast-5.aliyuncs.com',
-            'ap-southeast-6': 'polardb.ap-southeast-6.aliyuncs.com',
-            'ap-southeast-7': 'polardb.ap-southeast-7.aliyuncs.com',
-            'ap-southeast-8': 'polardb.ap-southeast-8.aliyuncs.com',
-            'na-south-1': 'polardb.na-south-1.aliyuncs.com',
-            'eu-central-1': 'polardb.eu-central-1.aliyuncs.com',
-            'us-west-1': 'polardb.us-west-1.aliyuncs.com',
-            'eu-west-1': 'polardb.eu-west-1.aliyuncs.com',
-            'us-east-1': 'polardb.us-east-1.aliyuncs.com',
-            'me-east-1': 'polardb.me-east-1.aliyuncs.com',
-            'cn-shanghai-finance-1': 'polardb.cn-shanghai-finance-1.aliyuncs.com',
-            'cn-shenzhen-finance-1': 'polardb.cn-shenzhen-finance-1.aliyuncs.com'
+            'rus-west-1-pop': 'polardb.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('polardb', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -4007,8 +3985,12 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.CreateApplicationShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.agentic_dbbranch_spec):
+            request.agentic_dbbranch_spec_shrink = Utils.array_to_string_with_specified_style(tmp_req.agentic_dbbranch_spec, 'AgenticDBBranchSpec', 'json')
         if not DaraCore.is_null(tmp_req.components):
             request.components_shrink = Utils.array_to_string_with_specified_style(tmp_req.components, 'Components', 'json')
+        if not DaraCore.is_null(tmp_req.dnat_entries):
+            request.dnat_entries_shrink = Utils.array_to_string_with_specified_style(tmp_req.dnat_entries, 'DnatEntries', 'json')
         if not DaraCore.is_null(tmp_req.endpoints):
             request.endpoints_shrink = Utils.array_to_string_with_specified_style(tmp_req.endpoints, 'Endpoints', 'json')
         if not DaraCore.is_null(tmp_req.knowledge_application_spec):
@@ -4017,9 +3999,13 @@ class Client(OpenApiClient):
             request.mem_application_spec_shrink = Utils.array_to_string_with_specified_style(tmp_req.mem_application_spec, 'MemApplicationSpec', 'json')
         if not DaraCore.is_null(tmp_req.parameters):
             request.parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
+        if not DaraCore.is_null(tmp_req.storages):
+            request.storages_shrink = Utils.array_to_string_with_specified_style(tmp_req.storages, 'Storages', 'json')
         query = {}
         if not DaraCore.is_null(request.aidbcluster_id):
             query['AIDBClusterId'] = request.aidbcluster_id
+        if not DaraCore.is_null(request.agentic_dbbranch_spec_shrink):
+            query['AgenticDBBranchSpec'] = request.agentic_dbbranch_spec_shrink
         if not DaraCore.is_null(request.application_type):
             query['ApplicationType'] = request.application_type
         if not DaraCore.is_null(request.architecture):
@@ -4042,6 +4028,10 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.dnat_entries_shrink):
+            query['DnatEntries'] = request.dnat_entries_shrink
+        if not DaraCore.is_null(request.dnat_ip_address):
+            query['DnatIpAddress'] = request.dnat_ip_address
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.endpoints_shrink):
@@ -4084,6 +4074,8 @@ class Client(OpenApiClient):
             query['SecurityIPType'] = request.security_iptype
         if not DaraCore.is_null(request.skill_template_id):
             query['SkillTemplateId'] = request.skill_template_id
+        if not DaraCore.is_null(request.storages_shrink):
+            query['Storages'] = request.storages_shrink
         if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
         if not DaraCore.is_null(request.target_version):
@@ -4094,6 +4086,8 @@ class Client(OpenApiClient):
             query['VSwitchId'] = request.v_switch_id
         if not DaraCore.is_null(request.vpc_id):
             query['VpcId'] = request.vpc_id
+        if not DaraCore.is_null(request.vpc_nat_gateway_id):
+            query['VpcNatGatewayId'] = request.vpc_nat_gateway_id
         if not DaraCore.is_null(request.zone_id):
             query['ZoneId'] = request.zone_id
         req = open_api_util_models.OpenApiRequest(
@@ -4123,8 +4117,12 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.CreateApplicationShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.agentic_dbbranch_spec):
+            request.agentic_dbbranch_spec_shrink = Utils.array_to_string_with_specified_style(tmp_req.agentic_dbbranch_spec, 'AgenticDBBranchSpec', 'json')
         if not DaraCore.is_null(tmp_req.components):
             request.components_shrink = Utils.array_to_string_with_specified_style(tmp_req.components, 'Components', 'json')
+        if not DaraCore.is_null(tmp_req.dnat_entries):
+            request.dnat_entries_shrink = Utils.array_to_string_with_specified_style(tmp_req.dnat_entries, 'DnatEntries', 'json')
         if not DaraCore.is_null(tmp_req.endpoints):
             request.endpoints_shrink = Utils.array_to_string_with_specified_style(tmp_req.endpoints, 'Endpoints', 'json')
         if not DaraCore.is_null(tmp_req.knowledge_application_spec):
@@ -4133,9 +4131,13 @@ class Client(OpenApiClient):
             request.mem_application_spec_shrink = Utils.array_to_string_with_specified_style(tmp_req.mem_application_spec, 'MemApplicationSpec', 'json')
         if not DaraCore.is_null(tmp_req.parameters):
             request.parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
+        if not DaraCore.is_null(tmp_req.storages):
+            request.storages_shrink = Utils.array_to_string_with_specified_style(tmp_req.storages, 'Storages', 'json')
         query = {}
         if not DaraCore.is_null(request.aidbcluster_id):
             query['AIDBClusterId'] = request.aidbcluster_id
+        if not DaraCore.is_null(request.agentic_dbbranch_spec_shrink):
+            query['AgenticDBBranchSpec'] = request.agentic_dbbranch_spec_shrink
         if not DaraCore.is_null(request.application_type):
             query['ApplicationType'] = request.application_type
         if not DaraCore.is_null(request.architecture):
@@ -4158,6 +4160,10 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.dnat_entries_shrink):
+            query['DnatEntries'] = request.dnat_entries_shrink
+        if not DaraCore.is_null(request.dnat_ip_address):
+            query['DnatIpAddress'] = request.dnat_ip_address
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.endpoints_shrink):
@@ -4200,6 +4206,8 @@ class Client(OpenApiClient):
             query['SecurityIPType'] = request.security_iptype
         if not DaraCore.is_null(request.skill_template_id):
             query['SkillTemplateId'] = request.skill_template_id
+        if not DaraCore.is_null(request.storages_shrink):
+            query['Storages'] = request.storages_shrink
         if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
         if not DaraCore.is_null(request.target_version):
@@ -4210,6 +4218,8 @@ class Client(OpenApiClient):
             query['VSwitchId'] = request.v_switch_id
         if not DaraCore.is_null(request.vpc_id):
             query['VpcId'] = request.vpc_id
+        if not DaraCore.is_null(request.vpc_nat_gateway_id):
+            query['VpcNatGatewayId'] = request.vpc_nat_gateway_id
         if not DaraCore.is_null(request.zone_id):
             query['ZoneId'] = request.zone_id
         req = open_api_util_models.OpenApiRequest(
@@ -24138,6 +24148,10 @@ class Client(OpenApiClient):
             query['ImPlatform'] = request.im_platform
         if not DaraCore.is_null(request.knowledge_base_id):
             query['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -24170,6 +24184,10 @@ class Client(OpenApiClient):
             query['ImPlatform'] = request.im_platform
         if not DaraCore.is_null(request.knowledge_base_id):
             query['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -40434,6 +40452,84 @@ class Client(OpenApiClient):
     ) -> main_models.RefreshDBClusterStorageUsageResponse:
         runtime = RuntimeOptions()
         return await self.refresh_dbcluster_storage_usage_with_options_async(request, runtime)
+
+    def register_knowledge_base_file_with_options(
+        self,
+        request: main_models.RegisterKnowledgeBaseFileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RegisterKnowledgeBaseFileResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_path):
+            query['FilePath'] = request.file_path
+        if not DaraCore.is_null(request.knowledge_base_id):
+            query['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RegisterKnowledgeBaseFile',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RegisterKnowledgeBaseFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def register_knowledge_base_file_with_options_async(
+        self,
+        request: main_models.RegisterKnowledgeBaseFileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RegisterKnowledgeBaseFileResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_path):
+            query['FilePath'] = request.file_path
+        if not DaraCore.is_null(request.knowledge_base_id):
+            query['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RegisterKnowledgeBaseFile',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RegisterKnowledgeBaseFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def register_knowledge_base_file(
+        self,
+        request: main_models.RegisterKnowledgeBaseFileRequest,
+    ) -> main_models.RegisterKnowledgeBaseFileResponse:
+        runtime = RuntimeOptions()
+        return self.register_knowledge_base_file_with_options(request, runtime)
+
+    async def register_knowledge_base_file_async(
+        self,
+        request: main_models.RegisterKnowledgeBaseFileRequest,
+    ) -> main_models.RegisterKnowledgeBaseFileResponse:
+        runtime = RuntimeOptions()
+        return await self.register_knowledge_base_file_with_options_async(request, runtime)
 
     def reject_polar_claw_device_pair_with_options(
         self,

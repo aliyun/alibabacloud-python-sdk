@@ -18,28 +18,26 @@ class DescribeApplicationsRequest(DaraModel):
         region_id: str = None,
         tag: List[main_models.DescribeApplicationsRequestTag] = None,
     ):
-        # A list of application IDs. If specified, this operation returns information only about the specified applications.
+        # The list of application IDs. If specified, only information about these applications is returned.
         self.application_ids = application_ids
+        # The application engine filter.
         self.application_types = application_types
-        # The ID of the PolarDB instance. If specified, this operation returns information only about applications associated with this instance.
+        # The PolarDB instance ID. If specified, only application information related to this PolarDB instance is returned.
         self.dbcluster_id = dbcluster_id
         # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values:
-        # 
-        # - **30**
-        # 
-        # - **50**
-        # 
-        # - **100**
+        # The number of entries per page. Valid values:
+        # * **30**
+        # * **50**
+        # * **100**
         # 
         # Default value: **30**.
         self.page_size = page_size
-        # The ID of the region.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # A list of tags. A tag is a key-value pair.
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -112,9 +110,9 @@ class DescribeApplicationsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):

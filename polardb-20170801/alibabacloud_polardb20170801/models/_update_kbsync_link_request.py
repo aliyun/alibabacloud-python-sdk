@@ -18,18 +18,31 @@ class UpdateKBSyncLinkRequest(DaraModel):
         sync_interval_minutes: int = None,
         user_id: str = None,
     ):
+        # The client ID.
         self.client_id = client_id
+        # The client secret.
         self.client_secret = client_secret
+        # The unique identifier of the knowledge base.
+        # 
         # This parameter is required.
         self.knowledge_base_id = knowledge_base_id
+        # The synchronization link ID.
+        # 
         # This parameter is required.
         self.link_id = link_id
+        # The MCP Server address for DingTalk documents.
         self.mcp_endpoint = mcp_endpoint
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The MCP Server address for DingTalk spreadsheets.
         self.sheet_mcp_endpoint = sheet_mcp_endpoint
+        # Specifies whether to enable automatic synchronization. This parameter can only be modified independently and cannot be changed together with other configurations.
         self.sync_enabled = sync_enabled
+        # 20
         self.sync_interval_minutes = sync_interval_minutes
+        # The DingTalk user ID for the operation.
         self.user_id = user_id
 
     def validate(self):

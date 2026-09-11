@@ -11,6 +11,7 @@ class CreateApplicationRequest(DaraModel):
     def __init__(
         self,
         aidbcluster_id: str = None,
+        agentic_dbbranch_spec: main_models.CreateApplicationRequestAgenticDBBranchSpec = None,
         application_type: str = None,
         architecture: str = None,
         auth_provider: str = None,
@@ -22,6 +23,8 @@ class CreateApplicationRequest(DaraModel):
         components: List[main_models.CreateApplicationRequestComponents] = None,
         dbcluster_id: str = None,
         description: str = None,
+        dnat_entries: List[main_models.CreateApplicationRequestDnatEntries] = None,
+        dnat_ip_address: str = None,
         dry_run: bool = None,
         endpoints: List[main_models.CreateApplicationRequestEndpoints] = None,
         knowledge_application_spec: main_models.CreateApplicationRequestKnowledgeApplicationSpec = None,
@@ -43,26 +46,28 @@ class CreateApplicationRequest(DaraModel):
         security_iplist: str = None,
         security_iptype: str = None,
         skill_template_id: str = None,
+        storages: List[main_models.CreateApplicationRequestStorages] = None,
         tag: List[main_models.CreateApplicationRequestTag] = None,
         target_version: str = None,
         used_time: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
+        vpc_nat_gateway_id: str = None,
         zone_id: str = None,
     ):
-        # The ID of an existing model operator instance to associate. This parameter is effective only when ApplicationType is set to polarclaw.
+        # The ID of an existing model operator instance to associate. This parameter takes effect only when ApplicationType is set to polarclaw.
         self.aidbcluster_id = aidbcluster_id
-        # The type of the application. Valid values:
+        # The AgenticDB branch specification.
+        self.agentic_dbbranch_spec = agentic_dbbranch_spec
+        # The application type. Valid values:
         # 
-        # - supabase: Creates a managed Supabase application.
-        # 
-        # - raycluster: Creates a managed Ray Cluster application.
-        # 
-        # - polarclaw: Creates a managed PolarClaw application.
+        # - supabase: Set this value to create a managed Supabase application.
+        # - raycluster: Set this value to create a managed Ray Cluster application.
+        # - polarclaw: Set this value to create a managed PolarClaw application.
         # 
         # This parameter is required.
         self.application_type = application_type
-        # The CPU architecture. Valid value:
+        # The CPU architecture. Valid values:
         # 
         # - x86
         # 
@@ -70,100 +75,106 @@ class CreateApplicationRequest(DaraModel):
         self.architecture = architecture
         # The authentication service provider.
         self.auth_provider = auth_provider
-        # The configuration of the authentication provider.
+        # The authentication provider configuration.
         self.auth_provider_config = auth_provider_config
-        # Specifies whether to automatically create and bind an Elastic IP Address (EIP).
+        # Specifies whether to enable automatic creation of an elastic IP address (EIP) and attach it to the instance. This is equivalent to associate with an EIP.
         self.auto_allocate_public_eip = auto_allocate_public_eip
-        # Specifies whether to automatically create a PolarFS cold storage instance. Valid values:
-        # 
-        # - false (default): Does not automatically create the instance.
-        # 
-        # - true: Automatically creates the instance.
+        # Specifies whether to enable automatic creation of a cold storage Polarlakebase instance. Valid values:
+        # * false (default): Automatic creation is disabled.
+        # * true: Automatic creation is enabled.
         self.auto_create_polar_fs = auto_create_polar_fs
         # Specifies whether to enable auto-renewal.
         self.auto_renew = auto_renew
-        # Specifies whether to automatically use a coupon. Valid values:
-        # 
-        # - true (default): Uses a coupon.
-        # 
-        # - false: Does not use a coupon.
+        # Specifies whether to automatically use coupons. Valid values:
+        # * true (default): Use coupons.
+        # * false: Do not use coupons.
         self.auto_use_coupon = auto_use_coupon
-        # A list of custom child components for the application.
+        # The list of user-defined application subcomponents.
         self.components = components
-        # The ID of the PolarDB instance that the application depends on.
+        # The instance ID of the PolarDB instance on which the application depends.
         self.dbcluster_id = dbcluster_id
         # The description of the application.
         self.description = description
-        # The default value is `false`. If you set this parameter to `true`, the system only checks the parameters and resources without creating the actual resources.
+        # The list of expected DNAT entries for NAT mapping. Specify this parameter together with VpcNatGatewayId. This parameter can be left empty, which indicates that no DNAT entries are created.
+        self.dnat_entries = dnat_entries
+        # The DNAT-dedicated NAT IP address that has been allocated (separate from the SNAT IP address) for NAT mapping. The IP address must belong to the specified gateway and be in an available state. The vSwitch of the gateway must belong to a primary CIDR block that is reachable from the office network. Specify this parameter together with VpcNatGatewayId. Prerequisite: An SNAT entry has been bound to the vSwitch where the application resides.
+        self.dnat_ip_address = dnat_ip_address
+        # Default value: `false`. If you set this parameter to `true`, only parameter and resource validation is performed without actually creating the resource.
         self.dry_run = dry_run
-        # A list of custom server-side endpoints. By default, a VPC Endpoint is created.
+        # The list of user-defined service endpoints. By default, a VPC endpoint is created.
         self.endpoints = endpoints
-        # This parameter is required for knowledge applications.
+        # Required for knowledge applications.
         self.knowledge_application_spec = knowledge_application_spec
-        # This parameter is required for mem0 applications.
+        # Required for mem0 applications.
         self.mem_application_spec = mem_application_spec
-        # The model API. This parameter is effective only when ApplicationType is set to polarclaw.
+        # The model API. This parameter takes effect only when ApplicationType is set to polarclaw.
         self.model_api = model_api
-        # The API key for the model. This parameter is effective only when ApplicationType is set to polarclaw.
+        # The model API key. This parameter takes effect only when ApplicationType is set to polarclaw.
         self.model_api_key = model_api_key
-        # The URL of the model. This parameter is effective only when ApplicationType is set to polarclaw.
+        # The model base URL. This parameter takes effect only when ApplicationType is set to polarclaw.
         self.model_base_url = model_base_url
-        # The source of the model. Valid values:
+        # The model source. Valid values:
         # 
-        # - bailian: Alibaba Cloud Model Studio model.
-        # 
-        # - custom: A custom model.
-        # 
-        # - maas: PolarDB model operator.
+        # * bailian: Alibaba Cloud Model Studio model.
+        # * custom: Custom model.
+        # * maas: PolarDB model operator.
         self.model_from = model_from
-        # The name of the model. This parameter is effective only when ApplicationType is set to polarclaw.
+        # The model name. This parameter takes effect only when ApplicationType is set to polarclaw.
         self.model_name = model_name
-        # A list of parameters.
+        # The list of parameters.
         self.parameters = parameters
-        # The billing method.
+        # The billing type.
         self.pay_type = pay_type
-        # The subscription period type.
+        # The subscription type (yearly or monthly).
         self.period = period
-        # The ID of the PolarFileSystem (PolarFS) cold storage or high-performance instance. This parameter is empty by default. If you specify this parameter, the corresponding storage is mounted to the application.
+        # The instance ID of the Polarlakebase cold storage or high-performance edition. Default value: empty. If specified, the corresponding storage is mounted to the application.
         # 
-        # This feature is currently supported only by the following applications:
-        # 
+        # Currently, only the following applications support this parameter:
         # - supabase
-        # 
         # - raycluster
         self.polar_fsinstance_id = polar_fsinstance_id
         # The coupon code. If you do not specify this parameter, the default coupon is used.
         self.promotion_code = promotion_code
-        # The region. The default value is the region of the instance.
+        # The region. Default value: the region of the instance.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The ID of the security group.
+        # The security group ID.
         self.security_group_id = security_group_id
-        # The name of the IP address whitelist group. The default value is `default`.
+        # The name of the IP whitelist group. Default value: `default`.
         self.security_iparray_name = security_iparray_name
-        # The IP address whitelist. If you do not specify this parameter, the default value `127.0.0.1` is used.
+        # The IP whitelist. If you do not specify this parameter, the default value is `127.0.0.1`.
         self.security_iplist = security_iplist
         # The type of the IP address.
         self.security_iptype = security_iptype
-        # The ID of the skill template.
+        # The skill template ID.
         self.skill_template_id = skill_template_id
-        # The tag.
+        # The list of application storages.
+        self.storages = storages
+        # The tags.
         self.tag = tag
         # The target version.
         self.target_version = target_version
         # The subscription duration.
         self.used_time = used_time
-        # The vSwitch. The default value is the current vSwitch in the primary zone of the instance.
+        # The vSwitch. Default value: the vSwitch in the primary zone of the instance.
         self.v_switch_id = v_switch_id
-        # The ID of the Virtual Private Cloud (VPC).
+        # The VPC ID.
         self.vpc_id = vpc_id
-        # The zone. The default value is the primary zone of the instance.
+        # The VPC NAT gateway ID for NAT mapping. If specified, NAT mapping is enabled when the instance is created. The NAT gateway must be in the same VPC as the application, use the private network type (intranet), and be in an active state.
+        self.vpc_nat_gateway_id = vpc_nat_gateway_id
+        # The zone. Default value: the primary zone of the instance.
         self.zone_id = zone_id
 
     def validate(self):
+        if self.agentic_dbbranch_spec:
+            self.agentic_dbbranch_spec.validate()
         if self.components:
             for v1 in self.components:
+                 if v1:
+                    v1.validate()
+        if self.dnat_entries:
+            for v1 in self.dnat_entries:
                  if v1:
                     v1.validate()
         if self.endpoints:
@@ -178,6 +189,10 @@ class CreateApplicationRequest(DaraModel):
             for v1 in self.parameters:
                  if v1:
                     v1.validate()
+        if self.storages:
+            for v1 in self.storages:
+                 if v1:
+                    v1.validate()
         if self.tag:
             for v1 in self.tag:
                  if v1:
@@ -190,6 +205,9 @@ class CreateApplicationRequest(DaraModel):
             result = _map
         if self.aidbcluster_id is not None:
             result['AIDBClusterId'] = self.aidbcluster_id
+
+        if self.agentic_dbbranch_spec is not None:
+            result['AgenticDBBranchSpec'] = self.agentic_dbbranch_spec.to_map()
 
         if self.application_type is not None:
             result['ApplicationType'] = self.application_type
@@ -225,6 +243,14 @@ class CreateApplicationRequest(DaraModel):
 
         if self.description is not None:
             result['Description'] = self.description
+
+        result['DnatEntries'] = []
+        if self.dnat_entries is not None:
+            for k1 in self.dnat_entries:
+                result['DnatEntries'].append(k1.to_map() if k1 else None)
+
+        if self.dnat_ip_address is not None:
+            result['DnatIpAddress'] = self.dnat_ip_address
 
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
@@ -293,6 +319,11 @@ class CreateApplicationRequest(DaraModel):
         if self.skill_template_id is not None:
             result['SkillTemplateId'] = self.skill_template_id
 
+        result['Storages'] = []
+        if self.storages is not None:
+            for k1 in self.storages:
+                result['Storages'].append(k1.to_map() if k1 else None)
+
         result['Tag'] = []
         if self.tag is not None:
             for k1 in self.tag:
@@ -310,6 +341,9 @@ class CreateApplicationRequest(DaraModel):
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
 
+        if self.vpc_nat_gateway_id is not None:
+            result['VpcNatGatewayId'] = self.vpc_nat_gateway_id
+
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
 
@@ -319,6 +353,10 @@ class CreateApplicationRequest(DaraModel):
         m = m or dict()
         if m.get('AIDBClusterId') is not None:
             self.aidbcluster_id = m.get('AIDBClusterId')
+
+        if m.get('AgenticDBBranchSpec') is not None:
+            temp_model = main_models.CreateApplicationRequestAgenticDBBranchSpec()
+            self.agentic_dbbranch_spec = temp_model.from_map(m.get('AgenticDBBranchSpec'))
 
         if m.get('ApplicationType') is not None:
             self.application_type = m.get('ApplicationType')
@@ -355,6 +393,15 @@ class CreateApplicationRequest(DaraModel):
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        self.dnat_entries = []
+        if m.get('DnatEntries') is not None:
+            for k1 in m.get('DnatEntries'):
+                temp_model = main_models.CreateApplicationRequestDnatEntries()
+                self.dnat_entries.append(temp_model.from_map(k1))
+
+        if m.get('DnatIpAddress') is not None:
+            self.dnat_ip_address = m.get('DnatIpAddress')
 
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
@@ -427,6 +474,12 @@ class CreateApplicationRequest(DaraModel):
         if m.get('SkillTemplateId') is not None:
             self.skill_template_id = m.get('SkillTemplateId')
 
+        self.storages = []
+        if m.get('Storages') is not None:
+            for k1 in m.get('Storages'):
+                temp_model = main_models.CreateApplicationRequestStorages()
+                self.storages.append(temp_model.from_map(k1))
+
         self.tag = []
         if m.get('Tag') is not None:
             for k1 in m.get('Tag'):
@@ -445,6 +498,9 @@ class CreateApplicationRequest(DaraModel):
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
 
+        if m.get('VpcNatGatewayId') is not None:
+            self.vpc_nat_gateway_id = m.get('VpcNatGatewayId')
+
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
 
@@ -456,9 +512,9 @@ class CreateApplicationRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -487,15 +543,106 @@ class CreateApplicationRequestTag(DaraModel):
 
         return self
 
+class CreateApplicationRequestStorages(DaraModel):
+    def __init__(
+        self,
+        container_mount_path: str = None,
+        endpoint_id: str = None,
+        mount_path: str = None,
+        storage_capacity: str = None,
+        storage_endpoint: str = None,
+        storage_instance_id: str = None,
+        storage_performance_level: str = None,
+        storage_type: str = None,
+    ):
+        # The mount path inside the container.
+        self.container_mount_path = container_mount_path
+        # The storage endpoint ID.
+        self.endpoint_id = endpoint_id
+        # The storage mount path.
+        self.mount_path = mount_path
+        # The storage capacity.
+        self.storage_capacity = storage_capacity
+        # The storage access endpoint.
+        self.storage_endpoint = storage_endpoint
+        # The storage instance ID.
+        self.storage_instance_id = storage_instance_id
+        # The storage performance level.
+        self.storage_performance_level = storage_performance_level
+        # The storage type.
+        self.storage_type = storage_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.container_mount_path is not None:
+            result['ContainerMountPath'] = self.container_mount_path
+
+        if self.endpoint_id is not None:
+            result['EndpointId'] = self.endpoint_id
+
+        if self.mount_path is not None:
+            result['MountPath'] = self.mount_path
+
+        if self.storage_capacity is not None:
+            result['StorageCapacity'] = self.storage_capacity
+
+        if self.storage_endpoint is not None:
+            result['StorageEndpoint'] = self.storage_endpoint
+
+        if self.storage_instance_id is not None:
+            result['StorageInstanceId'] = self.storage_instance_id
+
+        if self.storage_performance_level is not None:
+            result['StoragePerformanceLevel'] = self.storage_performance_level
+
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ContainerMountPath') is not None:
+            self.container_mount_path = m.get('ContainerMountPath')
+
+        if m.get('EndpointId') is not None:
+            self.endpoint_id = m.get('EndpointId')
+
+        if m.get('MountPath') is not None:
+            self.mount_path = m.get('MountPath')
+
+        if m.get('StorageCapacity') is not None:
+            self.storage_capacity = m.get('StorageCapacity')
+
+        if m.get('StorageEndpoint') is not None:
+            self.storage_endpoint = m.get('StorageEndpoint')
+
+        if m.get('StorageInstanceId') is not None:
+            self.storage_instance_id = m.get('StorageInstanceId')
+
+        if m.get('StoragePerformanceLevel') is not None:
+            self.storage_performance_level = m.get('StoragePerformanceLevel')
+
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
+
+        return self
+
 class CreateApplicationRequestParameters(DaraModel):
     def __init__(
         self,
         parameter_name: str = None,
         parameter_value: str = None,
     ):
-        # The name of the parameter.
+        # The parameter name.
         self.parameter_name = parameter_name
-        # The value of the parameter.
+        # The parameter value.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -538,25 +685,25 @@ class CreateApplicationRequestMemApplicationSpec(DaraModel):
         reranker_model: str = None,
         shard: int = None,
     ):
-        # The name of the database.
+        # The database name.
         self.db_name = db_name
         # The password.
         self.db_password = db_password
         # The username.
         self.db_user = db_user
-        # This parameter is required for mem0 applications. It specifies the name of the embedder model, such as text-embedding-v4.
+        # Required for mem0 applications. The embedder model name, such as text-embedding-v4.
         self.embedder_model = embedder_model
         # The vector dimensions.
         self.embedder_model_dimension = embedder_model_dimension
-        # The graph LLM.
+        # The graph LLM model.
         self.graph_llm_model = graph_llm_model
-        # This parameter is required for mem0 applications. It specifies the name of the large language model (LLM), such as qwen3-max.
+        # Required for mem0 applications. The LLM model name, such as qwen3-max.
         self.llm_model = llm_model
-        # The project name. This corresponds to the schema in the database where project data is stored.
+        # The project name, which corresponds to the database schema that stores project data.
         self.project_name = project_name
-        # This parameter is required for mem0 applications. It specifies the name of the reranker model, such as qwen3-rerank.
+        # Required for mem0 applications. The reranker model name, such as qwen3-rerank.
         self.reranker_model = reranker_model
-        # The number of sharded tables.
+        # The number of table shards.
         self.shard = shard
 
     def validate(self):
@@ -640,11 +787,11 @@ class CreateApplicationRequestKnowledgeApplicationSpec(DaraModel):
         db_password: str = None,
         llm_model: str = None,
     ):
-        # The password for the dashboard.
+        # The dashboard password.
         self.dashboard_password = dashboard_password
         # The password.
         self.db_password = db_password
-        # This parameter is required for knowledge applications. It specifies the name of the LLM, such as qwen3-max.
+        # Required for knowledge applications. The LLM model name, such as qwen3-max.
         self.llm_model = llm_model
 
     def validate(self):
@@ -685,9 +832,9 @@ class CreateApplicationRequestEndpoints(DaraModel):
         description: str = None,
         endpoint_type: str = None,
     ):
-        # The description of the server-side endpoint.
+        # The description of the service endpoint.
         self.description = description
-        # The type of the server-side endpoint. This value is fixed to Primary.
+        # The type of the service endpoint. The value is fixed as Primary.
         self.endpoint_type = endpoint_type
 
     def validate(self):
@@ -716,6 +863,43 @@ class CreateApplicationRequestEndpoints(DaraModel):
 
         return self
 
+class CreateApplicationRequestDnatEntries(DaraModel):
+    def __init__(
+        self,
+        front_port: int = None,
+        port_name: str = None,
+    ):
+        # The frontend port. This parameter is optional. If not specified, the system automatically assigns a port that does not conflict with ports already in use on the gateway. You can query the assignment result by calling the DescribeApplicationAttribute operation.
+        self.front_port = front_port
+        # The port name. Valid values: webui, hermesagent, dashboard, and ssh.
+        self.port_name = port_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.front_port is not None:
+            result['FrontPort'] = self.front_port
+
+        if self.port_name is not None:
+            result['PortName'] = self.port_name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FrontPort') is not None:
+            self.front_port = m.get('FrontPort')
+
+        if m.get('PortName') is not None:
+            self.port_name = m.get('PortName')
+
+        return self
+
 class CreateApplicationRequestComponents(DaraModel):
     def __init__(
         self,
@@ -730,41 +914,38 @@ class CreateApplicationRequestComponents(DaraModel):
         security_iplist: str = None,
         security_iptype: str = None,
     ):
-        # The specifications of the child component.
+        # The specification of the application subcomponent.
         self.component_class = component_class
-        # The maximum number of child components with the same specifications. The default value is the value of ComponentReplica.
+        # The maximum number of replicas for the application subcomponent with the same specification. Default value: the value of ComponentReplica.
         # 
-        # - This parameter is supported only for raycluster.
+        # - Only raycluster supports this parameter.
         self.component_max_replica = component_max_replica
-        # The number of replicas for the child component. The default value is 1.
+        # The number of replicas for the application subcomponent. Default value: 1.
         self.component_replica = component_replica
-        # The type of the child component.
+        # The type of the application subcomponent.
         # 
-        # For supabase, valid values are:
+        # For supabase, valid values:
         # 
         # - gateway
-        # 
         # - backend
         # 
-        # For raycluster, valid values are:
+        # For raycluster, valid values:
         # 
         # - head
-        # 
         # - worker
-        # 
         # - gpuworker
         self.component_type = component_type
-        # The maximum number of component replicas for scaling.
+        # The maximum number of replicas for component scaling.
         self.scale_max = scale_max
-        # The minimum number of component replicas for scaling.
+        # The minimum number of replicas for component scaling.
         self.scale_min = scale_min
-        # The security groups for the child component. Separate multiple security group IDs with commas (,).
+        # The list of security groups for the application subcomponent, separated by commas (,).
         self.security_groups = security_groups
-        # The name of the IP address whitelist group for the child component. The default value is default.
+        # The name of the whitelist IP address group for the application subcomponent. Default value: default.
         self.security_iparray_name = security_iparray_name
-        # The IP address whitelist for the child component. Separate multiple IP addresses with commas (,).
+        # The whitelist IP addresses of the application subcomponent, separated by commas (,).
         self.security_iplist = security_iplist
-        # The type of the IP address in the whitelist for the child component. The default value is ipv4.
+        # The type of the whitelist IP addresses for the application subcomponent. Default value: ipv4.
         self.security_iptype = security_iptype
 
     def validate(self):
@@ -838,6 +1019,79 @@ class CreateApplicationRequestComponents(DaraModel):
 
         if m.get('SecurityIPType') is not None:
             self.security_iptype = m.get('SecurityIPType')
+
+        return self
+
+class CreateApplicationRequestAgenticDBBranchSpec(DaraModel):
+    def __init__(
+        self,
+        branch_id: str = None,
+        dbcluster_id: str = None,
+        fork_from_application_id: str = None,
+        fork_from_branch: bool = None,
+        project_id: str = None,
+        tenant_id: str = None,
+    ):
+        # The AgenticDB branch ID.
+        self.branch_id = branch_id
+        # The AgenticDB cluster ID.
+        self.dbcluster_id = dbcluster_id
+        # The ID of the source application.
+        self.fork_from_application_id = fork_from_application_id
+        # Specifies whether to create the application based on a specified AgenticDB branch.
+        self.fork_from_branch = fork_from_branch
+        # The AgenticDB project ID.
+        self.project_id = project_id
+        # The AgenticDB tenant ID.
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.branch_id is not None:
+            result['BranchId'] = self.branch_id
+
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+
+        if self.fork_from_application_id is not None:
+            result['ForkFromApplicationId'] = self.fork_from_application_id
+
+        if self.fork_from_branch is not None:
+            result['ForkFromBranch'] = self.fork_from_branch
+
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BranchId') is not None:
+            self.branch_id = m.get('BranchId')
+
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+
+        if m.get('ForkFromApplicationId') is not None:
+            self.fork_from_application_id = m.get('ForkFromApplicationId')
+
+        if m.get('ForkFromBranch') is not None:
+            self.fork_from_branch = m.get('ForkFromBranch')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
 
         return self
 

@@ -18,15 +18,31 @@ class CreateKBSyncLinkResponseBody(DaraModel):
         sync_interval_minutes: int = None,
         sync_status: str = None,
     ):
+        # The client ID.
         self.client_id = client_id
+        # The creation time.
         self.creation_time = creation_time
+        # The description of the synchronization link.
         self.description = description
+        # The source channel of the synchronization link. Valid values:
+        # - FEISHU 
+        # - SHAREPOINT
         self.im_platform = im_platform
+        # The synchronization link ID.
         self.link_id = link_id
+        # The name of the synchronization link.
         self.link_name = link_name
+        # Id of the request
         self.request_id = request_id
+        # The source directory address for synchronization.
         self.source_dir = source_dir
+        # The synchronization interval. Unit: minutes.
         self.sync_interval_minutes = sync_interval_minutes
+        # The synchronization status. Valid values:
+        # - CREATING
+        # - RUNNING
+        # - PAUSED
+        # - DELETING
         self.sync_status = sync_status
 
     def validate(self):

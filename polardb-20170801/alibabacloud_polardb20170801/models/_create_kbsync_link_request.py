@@ -21,25 +21,45 @@ class CreateKBSyncLinkRequest(DaraModel):
         tenant_id: str = None,
         user_id: str = None,
     ):
+        # The client ID.
+        # 
         # This parameter is required.
         self.client_id = client_id
+        # The client secret.
+        # 
         # This parameter is required.
         self.client_secret = client_secret
+        # The description of the synchronization link.
         self.description = description
+        # The unique identifier of the knowledge base.
+        # 
         # This parameter is required.
         self.knowledge_base_id = knowledge_base_id
+        # The name of the synchronization link.
+        # 
         # This parameter is required.
         self.link_name = link_name
+        # The DingTalk document MCP Server endpoint.
         self.mcp_endpoint = mcp_endpoint
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The DingTalk spreadsheet MCP Server endpoint.
         self.sheet_mcp_endpoint = sheet_mcp_endpoint
+        # The source directory address for synchronization.
+        # 
         # This parameter is required.
         self.source_dir = source_dir
+        # The data source type. Valid values: FEISHU and SHAREPOINT.
+        # 
         # This parameter is required.
         self.source_type = source_type
+        # The synchronization interval. Unit: minutes.
         self.sync_interval_minutes = sync_interval_minutes
+        # The tenant ID. This parameter is required when SourceType is set to SHAREPOINT.
         self.tenant_id = tenant_id
+        # The DingTalk operator user ID.
         self.user_id = user_id
 
     def validate(self):

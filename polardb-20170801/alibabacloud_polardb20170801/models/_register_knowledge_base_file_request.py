@@ -4,22 +4,22 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class DeleteKBSyncLinkRequest(DaraModel):
+class RegisterKnowledgeBaseFileRequest(DaraModel):
     def __init__(
         self,
+        file_path: str = None,
         knowledge_base_id: str = None,
-        link_id: str = None,
         region_id: str = None,
     ):
-        # The unique ID of the knowledge base.
+        # The OSS object key of the uploaded file, excluding the oss://BucketName/ prefix.
+        # 
+        # This parameter is required.
+        self.file_path = file_path
+        # The knowledge base ID.
         # 
         # This parameter is required.
         self.knowledge_base_id = knowledge_base_id
-        # The synchronization link ID.
-        # 
-        # This parameter is required.
-        self.link_id = link_id
-        # The region ID.
+        # The ID of the region where the knowledge base resides.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -32,11 +32,11 @@ class DeleteKBSyncLinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.file_path is not None:
+            result['FilePath'] = self.file_path
+
         if self.knowledge_base_id is not None:
             result['KnowledgeBaseId'] = self.knowledge_base_id
-
-        if self.link_id is not None:
-            result['LinkId'] = self.link_id
 
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -45,11 +45,11 @@ class DeleteKBSyncLinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FilePath') is not None:
+            self.file_path = m.get('FilePath')
+
         if m.get('KnowledgeBaseId') is not None:
             self.knowledge_base_id = m.get('KnowledgeBaseId')
-
-        if m.get('LinkId') is not None:
-            self.link_id = m.get('LinkId')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

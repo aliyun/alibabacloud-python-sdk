@@ -16,15 +16,14 @@ class DescribeApplicationsResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # Contains the returned applications.
         self.items = items
-        # The page number.
+        # The current page number.
         self.page_number = page_number
-        # The number of records on the current page.
+        # The number of entries on the current page.
         self.page_record_count = page_record_count
         # The request ID.
         self.request_id = request_id
-        # The total record count.
+        # The total number of entries.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -113,6 +112,7 @@ class DescribeApplicationsResponseBodyItemsApplications(DaraModel):
         self,
         application_id: str = None,
         application_type: str = None,
+        branch_id: str = None,
         creation_time: str = None,
         dbcluster_id: str = None,
         description: str = None,
@@ -129,6 +129,7 @@ class DescribeApplicationsResponseBodyItemsApplications(DaraModel):
     ):
         self.application_id = application_id
         self.application_type = application_type
+        self.branch_id = branch_id
         self.creation_time = creation_time
         self.dbcluster_id = dbcluster_id
         self.description = description
@@ -159,6 +160,9 @@ class DescribeApplicationsResponseBodyItemsApplications(DaraModel):
 
         if self.application_type is not None:
             result['ApplicationType'] = self.application_type
+
+        if self.branch_id is not None:
+            result['BranchId'] = self.branch_id
 
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -208,6 +212,9 @@ class DescribeApplicationsResponseBodyItemsApplications(DaraModel):
 
         if m.get('ApplicationType') is not None:
             self.application_type = m.get('ApplicationType')
+
+        if m.get('BranchId') is not None:
+            self.branch_id = m.get('BranchId')
 
         if m.get('CreationTime') is not None:
             self.creation_time = m.get('CreationTime')

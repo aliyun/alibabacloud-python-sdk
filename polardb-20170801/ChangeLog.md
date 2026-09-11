@@ -1,3 +1,7 @@
+2026-09-11 Version: 8.3.1
+- Update API DescribeApplications: add response parameters Body.Items.$.BranchId.
+
+
 2026-09-01 Version: 8.2.1
 - Update API CreateKBSyncLink: add request parameters McpEndpoint.
 - Update API CreateKBSyncLink: add request parameters SheetMcpEndpoint.

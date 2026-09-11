@@ -18,6 +18,7 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         creation_time: str = None,
         dbcluster_id: str = None,
         description: str = None,
+        dnat_mappings: List[main_models.DescribeApplicationAttributeResponseBodyDnatMappings] = None,
         endpoints: List[main_models.DescribeApplicationAttributeResponseBodyEndpoints] = None,
         expire_time: str = None,
         expired: bool = None,
@@ -29,6 +30,7 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         mem_application_attribute: main_models.DescribeApplicationAttributeResponseBodyMemApplicationAttribute = None,
         minor_version: str = None,
         nat_gateway_id: str = None,
+        nat_mapping_snat_ip_address: str = None,
         pay_type: str = None,
         polar_claw_saa_sapplication_attribute: main_models.DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute = None,
         polar_fsinstance_id: str = None,
@@ -44,6 +46,7 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         vpcid: str = None,
         v_switch_id: str = None,
         version: str = None,
+        vpc_nat_gateway_id: str = None,
         zone_id: str = None,
     ):
         # The application ID.
@@ -63,11 +66,13 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         self.dbcluster_id = dbcluster_id
         # The description of the application.
         self.description = description
-        # The list of endpoints for the application.
+        # The list of DNAT mapping entries for NAT mapping.
+        self.dnat_mappings = dnat_mappings
+        # The list of endpoints of the application.
         self.endpoints = endpoints
         # The expiration time.
         # 
-        # This value is empty when the billing type is Postpaid.
+        # This value is empty if the billing method is Postpaid.
         self.expire_time = expire_time
         # Indicates whether the application has expired.
         self.expired = expired
@@ -80,9 +85,9 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         # - Unlock: Not locked.
         # - Lock: Locked.
         self.lock_mode = lock_mode
-        # The maintenance end time.
+        # The end time of the maintenance window.
         self.maintain_end_time = maintain_end_time
-        # The maintenance start time.
+        # The start time of the maintenance window.
         self.maintain_start_time = maintain_start_time
         # The Mem0 application attributes.
         self.mem_application_attribute = mem_application_attribute
@@ -90,7 +95,9 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         self.minor_version = minor_version
         # The NAT gateway ID.
         self.nat_gateway_id = nat_gateway_id
-        # The billing type.
+        # The SNAT IP address bound to the vSwitch where the application resides for NAT mapping. This is a customer-managed SNAT entry that is discovered and returned by the control plane in real time. It is not related to the Internet NAT gateway SNAT.
+        self.nat_mapping_snat_ip_address = nat_mapping_snat_ip_address
+        # The billing method.
         self.pay_type = pay_type
         # The PolarClaw SaaS application attributes.
         self.polar_claw_saa_sapplication_attribute = polar_claw_saa_sapplication_attribute
@@ -100,9 +107,9 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
-        # The list of application-level security groups.
+        # The list of security groups at the application level.
         self.security_groups = security_groups
-        # The list of application-level whitelists.
+        # The list of whitelists at the application level.
         self.security_iparrays = security_iparrays
         # The serverless type. Valid values:
         # - 2: agile.
@@ -137,12 +144,18 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         self.v_switch_id = v_switch_id
         # The application version.
         self.version = version
+        # The customer-created VPC NAT gateway ID for NAT mapping.
+        self.vpc_nat_gateway_id = vpc_nat_gateway_id
         # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
         if self.components:
             for v1 in self.components:
+                 if v1:
+                    v1.validate()
+        if self.dnat_mappings:
+            for v1 in self.dnat_mappings:
                  if v1:
                     v1.validate()
         if self.endpoints:
@@ -197,6 +210,11 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         if self.description is not None:
             result['Description'] = self.description
 
+        result['DnatMappings'] = []
+        if self.dnat_mappings is not None:
+            for k1 in self.dnat_mappings:
+                result['DnatMappings'].append(k1.to_map() if k1 else None)
+
         result['Endpoints'] = []
         if self.endpoints is not None:
             for k1 in self.endpoints:
@@ -231,6 +249,9 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
 
         if self.nat_gateway_id is not None:
             result['NatGatewayId'] = self.nat_gateway_id
+
+        if self.nat_mapping_snat_ip_address is not None:
+            result['NatMappingSnatIpAddress'] = self.nat_mapping_snat_ip_address
 
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
@@ -283,6 +304,9 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         if self.version is not None:
             result['Version'] = self.version
 
+        if self.vpc_nat_gateway_id is not None:
+            result['VpcNatGatewayId'] = self.vpc_nat_gateway_id
+
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
 
@@ -316,6 +340,12 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        self.dnat_mappings = []
+        if m.get('DnatMappings') is not None:
+            for k1 in m.get('DnatMappings'):
+                temp_model = main_models.DescribeApplicationAttributeResponseBodyDnatMappings()
+                self.dnat_mappings.append(temp_model.from_map(k1))
 
         self.endpoints = []
         if m.get('Endpoints') is not None:
@@ -353,6 +383,9 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
 
         if m.get('NatGatewayId') is not None:
             self.nat_gateway_id = m.get('NatGatewayId')
+
+        if m.get('NatMappingSnatIpAddress') is not None:
+            self.nat_mapping_snat_ip_address = m.get('NatMappingSnatIpAddress')
 
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
@@ -408,6 +441,9 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
 
         if m.get('Version') is not None:
             self.version = m.get('Version')
+
+        if m.get('VpcNatGatewayId') is not None:
+            self.vpc_nat_gateway_id = m.get('VpcNatGatewayId')
 
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
@@ -803,7 +839,7 @@ class DescribeApplicationAttributeResponseBodyEndpoints(DaraModel):
         self.ip = ip
         # The endpoint type. Valid values:
         # - Private: VPC endpoint.
-        # - Public: public endpoint.
+        # - Public: Public endpoint.
         self.net_type = net_type
         # The port.
         self.port = port
@@ -866,6 +902,79 @@ class DescribeApplicationAttributeResponseBodyEndpoints(DaraModel):
 
         return self
 
+class DescribeApplicationAttributeResponseBodyDnatMappings(DaraModel):
+    def __init__(
+        self,
+        access_address: str = None,
+        backend_port: int = None,
+        entry_id: str = None,
+        front_port: int = None,
+        port_name: str = None,
+        status: str = None,
+    ):
+        # The access address in the format of NatIp:FrontPort. This address can be used directly from the office network.
+        self.access_address = access_address
+        # The backend service port.
+        self.backend_port = backend_port
+        # The DNAT entry ID.
+        self.entry_id = entry_id
+        # The frontend port.
+        self.front_port = front_port
+        # The port name. Valid values: webui, hermesagent, dashboard, and ssh.
+        self.port_name = port_name
+        # The entry status.
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.access_address is not None:
+            result['AccessAddress'] = self.access_address
+
+        if self.backend_port is not None:
+            result['BackendPort'] = self.backend_port
+
+        if self.entry_id is not None:
+            result['EntryId'] = self.entry_id
+
+        if self.front_port is not None:
+            result['FrontPort'] = self.front_port
+
+        if self.port_name is not None:
+            result['PortName'] = self.port_name
+
+        if self.status is not None:
+            result['Status'] = self.status
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessAddress') is not None:
+            self.access_address = m.get('AccessAddress')
+
+        if m.get('BackendPort') is not None:
+            self.backend_port = m.get('BackendPort')
+
+        if m.get('EntryId') is not None:
+            self.entry_id = m.get('EntryId')
+
+        if m.get('FrontPort') is not None:
+            self.front_port = m.get('FrontPort')
+
+        if m.get('PortName') is not None:
+            self.port_name = m.get('PortName')
+
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+
+        return self
+
 class DescribeApplicationAttributeResponseBodyComponents(DaraModel):
     def __init__(
         self,
@@ -891,19 +1000,19 @@ class DescribeApplicationAttributeResponseBodyComponents(DaraModel):
         self.component_max_replica = component_max_replica
         # The number of replicas of the application subcomponent.
         self.component_replica = component_replica
-        # The group name of the application subcomponent replicas.
+        # The group name of the replicas of the application subcomponent.
         self.component_replica_group_name = component_replica_group_name
         # The type of the application subcomponent.
         self.component_type = component_type
-        # The list of subcomponent-level security groups.
+        # The list of security groups at the subcomponent level.
         # 
-        # If the subcomponent-level security groups are the same as the application-level security groups, this response element is omitted.
+        # If the security groups at the subcomponent level are the same as those at the application level, this response element is omitted.
         self.security_groups = security_groups
-        # The list of subcomponent-level whitelist addresses.
+        # The list of whitelist addresses at the subcomponent level.
         # 
-        # If the subcomponent-level whitelists are the same as the application-level whitelists, this response element is omitted.
+        # If the whitelists at the subcomponent level are the same as those at the application level, this response element is omitted.
         self.security_iparrays = security_iparrays
-        # The component status. Valid values are the same as the application status.
+        # The component status. Valid values are the same as those of the application status.
         self.status = status
         # The topology information of the application subcomponent.
         self.topology = topology

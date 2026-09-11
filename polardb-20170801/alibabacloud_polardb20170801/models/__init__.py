@@ -1281,6 +1281,9 @@ from ._reactivate_dbcluster_backup_response import ReactivateDBClusterBackupResp
 from ._refresh_dbcluster_storage_usage_request import RefreshDBClusterStorageUsageRequest
 from ._refresh_dbcluster_storage_usage_response_body import RefreshDBClusterStorageUsageResponseBody
 from ._refresh_dbcluster_storage_usage_response import RefreshDBClusterStorageUsageResponse
+from ._register_knowledge_base_file_request import RegisterKnowledgeBaseFileRequest
+from ._register_knowledge_base_file_response_body import RegisterKnowledgeBaseFileResponseBody
+from ._register_knowledge_base_file_response import RegisterKnowledgeBaseFileResponse
 from ._reject_polar_claw_device_pair_request import RejectPolarClawDevicePairRequest
 from ._reject_polar_claw_device_pair_response_body import RejectPolarClawDevicePairResponseBody
 from ._reject_polar_claw_device_pair_response import RejectPolarClawDevicePairResponse
@@ -1455,11 +1458,14 @@ from ._check_polar_fs_quota_consistency_response_body import CheckPolarFsQuotaCo
 from ._create_aidbcluster_request import CreateAIDBClusterRequestTimeSlices
 from ._create_aidbcluster_api_key_response_body import CreateAIDBClusterApiKeyResponseBodyApiKey
 from ._create_ainodes_request import CreateAINodesRequestDBNodes
+from ._create_application_request import CreateApplicationRequestAgenticDBBranchSpec
 from ._create_application_request import CreateApplicationRequestComponents
+from ._create_application_request import CreateApplicationRequestDnatEntries
 from ._create_application_request import CreateApplicationRequestEndpoints
 from ._create_application_request import CreateApplicationRequestKnowledgeApplicationSpec
 from ._create_application_request import CreateApplicationRequestMemApplicationSpec
 from ._create_application_request import CreateApplicationRequestParameters
+from ._create_application_request import CreateApplicationRequestStorages
 from ._create_application_request import CreateApplicationRequestTag
 from ._create_application_shrink_request import CreateApplicationShrinkRequestTag
 from ._create_application_response_body import CreateApplicationResponseBodyComponents
@@ -1538,6 +1544,7 @@ from ._describe_application_attribute_response_body import DescribeApplicationAt
 from ._describe_application_attribute_response_body import DescribeApplicationAttributeResponseBodyComponentsSecurityIPArrays
 from ._describe_application_attribute_response_body import DescribeApplicationAttributeResponseBodyComponentsTopology
 from ._describe_application_attribute_response_body import DescribeApplicationAttributeResponseBodyComponents
+from ._describe_application_attribute_response_body import DescribeApplicationAttributeResponseBodyDnatMappings
 from ._describe_application_attribute_response_body import DescribeApplicationAttributeResponseBodyEndpoints
 from ._describe_application_attribute_response_body import DescribeApplicationAttributeResponseBodyMemApplicationAttributeSessionStore
 from ._describe_application_attribute_response_body import DescribeApplicationAttributeResponseBodyMemApplicationAttribute
@@ -1856,6 +1863,7 @@ from ._modify_global_security_ipgroup_name_response_body import ModifyGlobalSecu
 from ._modify_global_security_ipgroup_relation_response_body import ModifyGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel
 from ._modify_log_backup_policy_request import ModifyLogBackupPolicyRequestAdvancedLogPolicies
 from ._move_polar_fs_objects_request import MovePolarFsObjectsRequestObjectsToMove
+from ._retrieval_knowledge_base_response_body import RetrievalKnowledgeBaseResponseBodyResultsImageResources
 from ._retrieval_knowledge_base_response_body import RetrievalKnowledgeBaseResponseBodyResults
 from ._retry_knowledge_base_files_response_body import RetryKnowledgeBaseFilesResponseBodyItems
 from ._search_memories_response_body import SearchMemoriesResponseBodyResults
@@ -3174,6 +3182,9 @@ __all__ = [
     RefreshDBClusterStorageUsageRequest,
     RefreshDBClusterStorageUsageResponseBody,
     RefreshDBClusterStorageUsageResponse,
+    RegisterKnowledgeBaseFileRequest,
+    RegisterKnowledgeBaseFileResponseBody,
+    RegisterKnowledgeBaseFileResponse,
     RejectPolarClawDevicePairRequest,
     RejectPolarClawDevicePairResponseBody,
     RejectPolarClawDevicePairResponse,
@@ -3348,11 +3359,14 @@ __all__ = [
     CreateAIDBClusterRequestTimeSlices,
     CreateAIDBClusterApiKeyResponseBodyApiKey,
     CreateAINodesRequestDBNodes,
+    CreateApplicationRequestAgenticDBBranchSpec,
     CreateApplicationRequestComponents,
+    CreateApplicationRequestDnatEntries,
     CreateApplicationRequestEndpoints,
     CreateApplicationRequestKnowledgeApplicationSpec,
     CreateApplicationRequestMemApplicationSpec,
     CreateApplicationRequestParameters,
+    CreateApplicationRequestStorages,
     CreateApplicationRequestTag,
     CreateApplicationShrinkRequestTag,
     CreateApplicationResponseBodyComponents,
@@ -3431,6 +3445,7 @@ __all__ = [
     DescribeApplicationAttributeResponseBodyComponentsSecurityIPArrays,
     DescribeApplicationAttributeResponseBodyComponentsTopology,
     DescribeApplicationAttributeResponseBodyComponents,
+    DescribeApplicationAttributeResponseBodyDnatMappings,
     DescribeApplicationAttributeResponseBodyEndpoints,
     DescribeApplicationAttributeResponseBodyMemApplicationAttributeSessionStore,
     DescribeApplicationAttributeResponseBodyMemApplicationAttribute,
@@ -3749,6 +3764,7 @@ __all__ = [
     ModifyGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel,
     ModifyLogBackupPolicyRequestAdvancedLogPolicies,
     MovePolarFsObjectsRequestObjectsToMove,
+    RetrievalKnowledgeBaseResponseBodyResultsImageResources,
     RetrievalKnowledgeBaseResponseBodyResults,
     RetryKnowledgeBaseFilesResponseBodyItems,
     SearchMemoriesResponseBodyResults,
