@@ -19,20 +19,20 @@ class DescribeSubscriptionInstancesResponseBody(DaraModel):
         success: str = None,
         total_record_count: int = None,
     ):
-        # The error code returned if the call failed.
+        # The error code returned if the request failed.
         self.err_code = err_code
-        # The error message returned if the call failed.
+        # The error message returned if the request failed.
         self.err_message = err_message
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The maximum number of entries that can be displayed on the current page.
+        # The maximum number of records that can be displayed on the current page.
         self.page_record_count = page_record_count
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         self.subscription_instances = subscription_instances
-        # Indicates whether the call was successful.
+        # Indicates whether the request was successful.
         self.success = success
-        # The total number of change tracking instances that belong to your Alibaba Cloud account.
+        # The total number of change tracking instances that meet the specified conditions under the Alibaba Cloud account.
         self.total_record_count = total_record_count
 
     def validate(self):

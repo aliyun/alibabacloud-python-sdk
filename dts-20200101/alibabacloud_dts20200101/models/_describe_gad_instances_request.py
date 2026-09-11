@@ -18,12 +18,17 @@ class DescribeGadInstancesRequest(DaraModel):
         slave_db_instance_id: str = None,
     ):
         self.db_engine_types = db_engine_types
+        # The name of the active geo-redundancy instance group.
         self.instance_name = instance_name
         self.master_db_instance_id = master_db_instance_id
         self.owner_id = owner_id
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page. Valid values: **1** to **100**. Default value: **20**.
         self.page_size = page_size
+        # The region ID. Specify this parameter to query instances in a specific region. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.slave_db_instance_id = slave_db_instance_id
 

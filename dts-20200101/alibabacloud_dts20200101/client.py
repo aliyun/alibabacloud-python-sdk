@@ -5431,6 +5431,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeDtsJobDetailResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.db_object_output_type):
+            query['DbObjectOutputType'] = request.db_object_output_type
         if not DaraCore.is_null(request.dts_instance_id):
             query['DtsInstanceID'] = request.dts_instance_id
         if not DaraCore.is_null(request.dts_job_id):
@@ -5471,6 +5473,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeDtsJobDetailResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.db_object_output_type):
+            query['DbObjectOutputType'] = request.db_object_output_type
         if not DaraCore.is_null(request.dts_instance_id):
             query['DtsInstanceID'] = request.dts_instance_id
         if not DaraCore.is_null(request.dts_job_id):
@@ -9661,8 +9665,14 @@ class Client(OpenApiClient):
             query['EndpointIp'] = request.endpoint_ip
         if not DaraCore.is_null(request.endpoint_port):
             query['EndpointPort'] = request.endpoint_port
+        if not DaraCore.is_null(request.endpoint_primary_vsw_id):
+            query['EndpointPrimaryVswId'] = request.endpoint_primary_vsw_id
         if not DaraCore.is_null(request.endpoint_region_id):
             query['EndpointRegionId'] = request.endpoint_region_id
+        if not DaraCore.is_null(request.endpoint_secondary_vsw_id):
+            query['EndpointSecondaryVswId'] = request.endpoint_secondary_vsw_id
+        if not DaraCore.is_null(request.endpoint_vpc_id):
+            query['EndpointVpcId'] = request.endpoint_vpc_id
         if not DaraCore.is_null(request.modify_account):
             query['ModifyAccount'] = request.modify_account
         if not DaraCore.is_null(request.password):
@@ -9729,8 +9739,14 @@ class Client(OpenApiClient):
             query['EndpointIp'] = request.endpoint_ip
         if not DaraCore.is_null(request.endpoint_port):
             query['EndpointPort'] = request.endpoint_port
+        if not DaraCore.is_null(request.endpoint_primary_vsw_id):
+            query['EndpointPrimaryVswId'] = request.endpoint_primary_vsw_id
         if not DaraCore.is_null(request.endpoint_region_id):
             query['EndpointRegionId'] = request.endpoint_region_id
+        if not DaraCore.is_null(request.endpoint_secondary_vsw_id):
+            query['EndpointSecondaryVswId'] = request.endpoint_secondary_vsw_id
+        if not DaraCore.is_null(request.endpoint_vpc_id):
+            query['EndpointVpcId'] = request.endpoint_vpc_id
         if not DaraCore.is_null(request.modify_account):
             query['ModifyAccount'] = request.modify_account
         if not DaraCore.is_null(request.password):

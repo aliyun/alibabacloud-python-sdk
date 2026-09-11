@@ -19,40 +19,42 @@ class SkipPreCheckRequest(DaraModel):
         # 
         # This parameter is required.
         self.dts_job_id = dts_job_id
-        # The precheck task ID. You can call the **DescribePreCheckStatus** operation to query the task ID.
+        # The ID of the precheck task. You can call **DescribePreCheckStatus** to query the ID.
         self.job_id = job_id
-        # The region ID of the DTS instance. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Specifies whether to skip the precheck item. Valid values:
+        # Specifies whether to suppress the precheck item. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Suppress the precheck item.
+        # - **false**: Unsuppress the precheck item.
         # 
         # This parameter is required.
         self.skip = skip
-        # The shortened name of the precheck item. Valid values:
+        # The abbreviated names of the precheck items to suppress or unsuppress. Valid values:
         # 
-        # *   **["CHECK_SAME_OBJ"]**: object name conflict.
-        # *   **["CHECK_SAME_USER"]**: username conflict.
-        # *   **["CHECK_SRC"]**: source database version.
-        # *   **["CHECK_TOPOLOGY"]**: topology. For more information about the topologies supported by Data Transmission Service (DTS), see [Synchronization topologies](https://help.aliyun.com/document_detail/124115.html).
-        # *   **["CHECK_SERVER_ID"]**: the server ID of the source database.
-        # *   **["CHECK_DEST_TABLE_EMPTY"]**: existence of objects in the destination database.
+        # - **["CHECK_SAME_OBJ"]**: check for objects with the same name.
+        # - **["CHECK_SAME_USER"]**: check for accounts with different names.
+        # - **["CHECK_SRC"]**: source database version check.
+        # - **["CHECK_TOPOLOGY"]**: topology version check. For the topology versions supported by DTS, see [Topology overview](https://help.aliyun.com/document_detail/124115.html).
+        # - **["CHECK_SERVER_ID"]**: source database server_id check.
+        # - **["CHECK_DEST_TABLE_EMPTY"]**: destination database object existence check.
+        # - **["CHECK_SUPER_AUTH_DEST"]**: destination database super account permission check.
         # 
-        # > Separate multiple item names with commas (,). Example: **["CHECK_SRC","CHECK_SAME_OBJ"]**.
+        # > Separate multiple item names with commas (,), for example, **["CHECK_SRC","CHECK_SAME_OBJ"]**.
         self.skip_pre_check_items = skip_pre_check_items
-        # The precheck item name. This parameter corresponds to **SkipPreCheckItems**. Valid values:
+        # The full names of the precheck items to suppress or unsuppress. This parameter corresponds to the **SkipPreCheckItems** parameter. Valid values:
         # 
-        # *   **["CHECK_SAME_OBJ_DETAIL"]**: object name conflict.
-        # *   **["CHECK_SAME_USER_DETAIL"]**: username conflict.
-        # *   **["CHECK_SRC_DETAIL"]**: source database version.
-        # *   **["CHECK_TOPOLOGY_DETAIL"]**: topology. For more information about the topologies supported by DTS, see [Synchronization topologies](https://help.aliyun.com/document_detail/124115.html).
-        # *   **["CHECK_SERVER_ID_DETAIL"]**: the server ID of the source database.
-        # *   **["CHECK_DEST_TABLE_EMPTY_DETAIL"]**: empty tables in the destination database.
+        # - **["CHECK_SAME_OBJ_DETAIL"]**: check for objects with the same name.
+        # - **["CHECK_SAME_USER_DETAIL"]**: check for accounts with different names.
+        # - **["CHECK_SRC_DETAIL"]**: source database version check.
+        # - **["CHECK_TOPOLOGY_DETAIL"]**: topology version check. For the topology versions supported by DTS, see [Topology overview](https://help.aliyun.com/document_detail/124115.html).
+        # - **["CHECK_SERVER_ID_DETAIL"]**: source database server_id check.
+        # - **["CHECK_DEST_TABLE_EMPTY_DETAIL"]**: check whether the destination database tables are empty.
+        # - **["CHECK_SUPER_AUTH_DEST_DETAIL"]**: check the super account permissions of the destination database.
         # 
-        # > Separate multiple item names with commas (,). Example: **["CHECK_SRC_DETAIL","CHECK_SAME_OBJ_DETAIL"]**.
+        # > Separate multiple item names with commas (,), for example, **["CHECK_SRC_DETAIL","CHECK_SAME_OBJ_DETAIL"]**.
         self.skip_pre_check_names = skip_pre_check_names
 
     def validate(self):

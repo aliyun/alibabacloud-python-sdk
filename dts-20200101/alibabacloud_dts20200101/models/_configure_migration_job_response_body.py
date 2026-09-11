@@ -12,15 +12,16 @@ class ConfigureMigrationJobResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
+        # The error code returned if the request failed.
         self.err_code = err_code
-        # The ID of the request.
+        # The error message returned if the request failed.
         self.err_message = err_message
-        # The start offset of incremental data migration. The value is a UNIX timestamp. Unit: seconds.
+        # The request ID.
         self.request_id = request_id
-        # The SID of the Oracle database.
+        # Indicates whether the request was successful. Valid values:
         # 
-        # >  You must specify this parameter only if the **DestinationEndpoint.EngineName** parameter is set to **Oracle** and the **Oracle** database is deployed in a non-RAC architecture.
+        # - **true**: The request was successful.
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):

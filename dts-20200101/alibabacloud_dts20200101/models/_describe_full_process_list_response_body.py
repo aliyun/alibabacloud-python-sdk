@@ -23,30 +23,26 @@ class DescribeFullProcessListResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The throttling configuration. Valid values:
+        # This parameter does not return a value. The following parameters describe the rate limiting configurations:
         # 
-        # *   **dts.datamove.blaster.qps.max**: The rate at which queries are made to the source database per second.
-        # *   **dts.datamove.source.rps.max**: the number of rows that are fully synchronized or migrated per second.
-        # *   **dts.datamove.source.bps.max**: the amount of data processed per second for full synchronization or migration. Unit: Byte/s.
+        # - **dts.datamove.blaster.qps.max**: the rate of queries per second to the source database.
+        # - **dts.datamove.source.rps.max**: the number of rows per second for full data synchronization or migration (RPS).
+        # - **dts.datamove.source.bps.max**: the amount of data per second for full data synchronization or migration, in bytes per second.
         # 
-        # > 
-        # 
-        # *   When you set the **JobCode** parameter to **03**, you need to specify the **EnableLimit** parameter as **true**. Otherwise, the configuration cannot take effect.
-        # 
-        # *   When you set the **JobCode** parameter to **04** or **07**, you only need to specify the **dts.datamove.source.rps.max** and **dts.datamove.source.bps.max** parameters.
-        # *   A value of \\*\\*-1\\*\\* indicates no rate limit.
+        # > - When **JobCode** is set to **03**, you must set **EnableLimit** to **true** for the three parameters to take effect.
+        # - When **JobCode** is set to **04** or **07**, you only need to configure **dts.datamove.source.rps.max** and **dts.datamove.source.bps.max**.
+        # - A value of **-1** indicates that rate limiting is disabled.
         self.config_list = config_list
-        # The ID of the data migration, data synchronization, or change tracking task.
+        # The ID of the migration, synchronization, or change tracking task.
         self.dts_job_id = dts_job_id
-        # The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\* variable in the **ErrMessage** parameter.
-        # 
-        # >  The request parameter **DtsJobId** is invalid if **The Value of Input Parameter %s is not valid** is returned for **ErrMessage** and **DtsJobId** is returned for **DynamicMessage**.
+        # The dynamic error message used to replace the **%s** variable in the **ErrMessage** parameter.
+        # > For example, if **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
-        # The error code returned when the request failed.
+        # The error code returned when the call fails.
         self.err_code = err_code
-        # The error message returned when the request failed.
+        # The error message returned when the call fails.
         self.err_message = err_message
-        # The details of the GA instances.
+        # The details of the Alibaba Cloud Global Accelerator (GA) instance list.
         self.full_process_list = full_process_list
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -54,8 +50,9 @@ class DescribeFullProcessListResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -152,25 +149,24 @@ class DescribeFullProcessListResponseBodyFullProcessList(DaraModel):
         task_id: str = None,
         time: int = None,
     ):
-        # Details
+        # The details.
         self.detail = detail
-        # The abnormal status of the task. Valid values:**notstarted**. -**checking**. -**failed**. -**finished**.
+        # The exception status of the task. Valid values: - **notstarted**: not started. - **checking**: being checked. - **failed**: failed. - **finished**: completed.
         self.exception = exception
-        # The name of the process.
+        # The process name.
         self.process_name = process_name
-        # The type of the process. Valid values:
-        # 
-        # *   **1**: trusted
-        # *   **2**: suspicious
-        # *   **3**: malicious
+        # The process type. Valid values:
+        # - **1**: trusted
+        # - **2**: suspicious
+        # - **3**: malicious.
         self.process_type = process_type
-        # SQL that is running
+        # The SQL statement that is being executed.
         self.running_sql = running_sql
-        # The log status.
+        # The status of the log information.
         self.state = state
-        # The ID of the task.
+        # The task ID.
         self.task_id = task_id
-        # The time when the logs were collected. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
+        # The time when the log was collected, in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
         self.time = time
 
     def validate(self):

@@ -21,18 +21,34 @@ class DetachGadInstanceDbMemberResponseBody(DaraModel):
         slave_db_instance_id: str = None,
         success: str = None,
     ):
+        # The time when the task was created, in the format of <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
         self.create_time = create_time
+        # The dynamic error code associated with this request.
         self.dynamic_code = dynamic_code
+        # The dynamic error message used to replace the **%s** placeholder in the **ErrMessage** response parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The instance ID of the active geo-redundancy instance group.
         self.instance_id = instance_id
+        # The name of the active geo-redundancy instance group.
         self.instance_name = instance_name
+        # The region ID. Specify this parameter to indicate the region where the instance resides. For more information, see the list of supported regions.
         self.region_id = region_id
+        # The request ID.
         self.request_id = request_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The instance ID of the secondary role.
         self.slave_db_instance_id = slave_db_instance_id
+        # Indicates whether the request was successful. Valid values:
+        # - **true**: The request was successful.
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):

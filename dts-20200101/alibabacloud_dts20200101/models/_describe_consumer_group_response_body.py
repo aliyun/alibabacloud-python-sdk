@@ -24,13 +24,13 @@ class DescribeConsumerGroupResponseBody(DaraModel):
         self.err_code = err_code
         # The error message returned if the call failed.
         self.err_message = err_message
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
         # The maximum number of consumer groups that can be displayed on one page.
         self.page_record_count = page_record_count
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # Indicates whether the request was successful.
         self.success = success
         # The total number of consumer groups.
         self.total_record_count = total_record_count

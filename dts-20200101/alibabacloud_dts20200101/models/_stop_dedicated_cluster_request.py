@@ -14,20 +14,18 @@ class StopDedicatedClusterRequest(DaraModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the cluster.
-        # 
-        # >  You must specify one of the **InstanceId** and **DedicatedClusterId** parameters.
+        # The cluster ID.
+        # > You must specify either **InstanceId** or **DedicatedClusterId**.
         self.dedicated_cluster_id = dedicated_cluster_id
-        # The name of the cluster.
+        # The cluster name.
         self.dedicated_cluster_name = dedicated_cluster_name
-        # The ID of the instance.
-        # 
-        # >  You must specify one of the **InstanceId** and **DedicatedClusterId** parameters.
+        # The instance ID.
+        # > You must specify either **InstanceId** or **DedicatedClusterId**.
         self.instance_id = instance_id
         self.owner_id = owner_id
-        # The ID of the region in which the instance resides.
+        # The region in which the instance resides.
         self.region_id = region_id
-        # The resource group ID. This parameter is a global parameter and not required.
+        # The resource group ID. This is a global parameter that does not need to be specified for this operation.
         self.resource_group_id = resource_group_id
 
     def validate(self):

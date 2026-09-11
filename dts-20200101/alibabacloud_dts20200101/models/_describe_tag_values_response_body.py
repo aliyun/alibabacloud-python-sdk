@@ -18,15 +18,15 @@ class DescribeTagValuesResponseBody(DaraModel):
     ):
         # The type of the tag key.
         self.category = category
-        # The start page of the returned pages.
+        # The page number of the returned tag values.
         self.page_number = page_number
-        # The number of tag values returned on each page.
+        # The number of tag values returned per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The tag values that are associated with the tag key.
+        # The tag information.
         self.tag_values = tag_values
-        # The total number of tag values that are associated with the tag key.
+        # The total number of tag values that correspond to the tag key.
         self.total_count = total_count
 
     def validate(self):

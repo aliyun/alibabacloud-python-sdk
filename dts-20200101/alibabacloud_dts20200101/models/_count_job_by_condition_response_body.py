@@ -16,23 +16,22 @@ class CountJobByConditionResponseBody(DaraModel):
         success: bool = None,
         total_record_count: int = None,
     ):
-        # The internal error code. This parameter will be removed soon.
+        # The internal error code. This parameter will be deprecated.
         self.dynamic_code = dynamic_code
-        # The dynamic part in the error message. This parameter is used to replace the  **%s** variable in the **ErrMessage** parameter.
-        # 
-        # > If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
+        # The dynamic error message used to replace the **%s** placeholder in the **ErrMessage** parameter.
+        # > For example, if **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
-        # The error code returned if the request failed.
+        # The error code returned if the call fails.
         self.err_code = err_code
-        # The error message returned if the request failed.
+        # The error message returned if the call fails.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
-        # The total number of data synchronization instances that meet the requirements and belong to your Alibaba Cloud account.
+        # The total number of data synchronization instances that meet the specified conditions under the Alibaba Cloud account.
         self.total_record_count = total_record_count
 
     def validate(self):

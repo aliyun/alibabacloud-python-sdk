@@ -12,15 +12,18 @@ class CreateReverseDtsJobRequest(DaraModel):
         shard_password: str = None,
         shard_username: str = None,
     ):
-        # The ID of the synchronization or migration task, which can be queried by calling [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html).
+        # The ID of the synchronization or migration task. You can call [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) to query the task ID.
         # 
         # This parameter is required.
         self.dts_job_id = dts_job_id
-        # Resource GroupId
+        # The ID of the resource group. This is a global parameter that does not need to be specified for this operation.
         self.resource_group_id = resource_group_id
-        # Shard Password
+        # The password of the shard in a MongoDB sharded cluster instance.
+        # 
+        # > - This parameter is available and required only when the source database instance is a MongoDB sharded cluster instance.
+        # - This parameter takes effect only when **ModifyAccount** is set to **true**.
         self.shard_password = shard_password
-        # Shard User name
+        # The account of the shard in a MongoDB sharded cluster instance.
         self.shard_username = shard_username
 
     def validate(self):

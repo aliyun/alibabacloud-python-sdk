@@ -17,17 +17,16 @@ class ListTagResourcesResponseBody(DaraModel):
         success: bool = None,
         tag_resources: main_models.ListTagResourcesResponseBodyTagResources = None,
     ):
-        # The error code returned if the call failed.
+        # The error code returned when the call fails.
         self.err_code = err_code
-        # The error message returned if the call failed.
+        # The error message returned when the call fails.
         self.err_message = err_message
         # The query token.
-        # 
-        # >  If a query does not return all results, you can specify the returned **NextToken** parameter in the next query to obtain more results.
+        # > If this request does not return all results, you can pass this **NextToken** value in the subsequent request to continue the query.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # Indicates whether the request was successful.
         self.success = success
         self.tag_resources = tag_resources
 

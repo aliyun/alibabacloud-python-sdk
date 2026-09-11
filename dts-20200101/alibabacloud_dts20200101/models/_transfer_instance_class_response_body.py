@@ -19,37 +19,36 @@ class TransferInstanceClassResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The billing method of the DTS instance. Valid values:
-        # 
-        # *   **POSTPAY**: pay-as-you-go.
-        # *   **PREPAY**: subscription.
+        # The billing method. Valid values:
+        # - **POSTPAY**: pay-as-you-go.
+        # - **PREPAY**: subscription.
         self.charge_type = charge_type
-        # The error code that is returned.
+        # The error code.
         self.code = code
         # The ID of the data migration or data synchronization task.
         self.dts_job_id = dts_job_id
-        # The dynamic part in the error message. This parameter is used to replace the **%s** variable in the value of the **ErrMessage** parameter.
+        # The dynamic error message, which is used to replace the %**s** variable in the **ErrMessage** parameter.
         # 
-        # > For example, if the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified value of the **DtsJobId** parameter is invalid.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the value of the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
-        # The expiration time of the DTS instance.
+        # The time when the instance expires.
         # 
-        # > This parameter is returned only if the value of the ChargeType parameter is **PREPAY**.
+        # > This parameter is returned only when ChargeType is set to **PREPAY**.
         self.end_time = end_time
-        # The error code returned if the request failed.
+        # The error code returned if the call failed.
         self.err_code = err_code
-        # The error message returned if the request failed.
+        # The error message returned if the call failed.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The ID of the DTS instance.
+        # The instance ID.
         self.instance_id = instance_id
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The request was successful.
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):

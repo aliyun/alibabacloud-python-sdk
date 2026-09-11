@@ -32,161 +32,143 @@ class CreateDtsInstanceRequest(DaraModel):
         type: str = None,
         used_time: int = None,
     ):
-        # Specifies whether to automatically renew the DTS instance when it expires. Valid values:
-        # 
-        # *   **false**: does not automatically renew the DTS instance when it expires. This is the default value.
-        # *   **true**: automatically renews the DTS instance when it expires.
+        # Specifies whether to enable auto-renewal upon expiration. Valid values:
+        # - **false**: no. This is the default value.
+        # - **true**: yes.
         self.auto_pay = auto_pay
-        # Specifies whether to automatically start the task after the DTS instance is purchased. Valid values:
+        # Specifies whether to automatically start the task after the purchase is complete. Valid values:
+        # - **false**: no. This is the default value.
+        # - **true**: yes.
         # 
-        # *   **false** (default)
-        # *   **true**
-        # 
-        # >  This parameter can be set to **true** and take effect only if you specify a valid value for **JobId**.
+        # > This parameter takes effect only when **JobId** is set to a valid task ID and this parameter is set to **true**.
         self.auto_start = auto_start
-        # The specification of the extract, transform, and load (ETL) instance. The unit is compute unit (CU). One CU is equal to 1 vCPU and 4 GB of memory. The value of this parameter must be an integer greater than or equal to 2.
+        # The specifications of the ETL instance. Unit: compute unit (CU). 1 CU = 1 vCPU + 4 GB memory. Valid values: integers that are greater than or equal to 2.
+        # <props="china">
+        # > If you specify this parameter, the [ETL feature](https://help.aliyun.com/document_detail/212324.html) is enabled for data cleaning and transformation..
         self.compute_unit = compute_unit
-        # The number of custom ApsaraDB RDS instances in the PolarDB-X instance. Default value: **1**.
-        # 
-        # >  This parameter is required only if **SourceEndpointEngineName** is set to **drds**.
+        # The number of private custom ApsaraDB RDS instances under PolarDB-X. Default value: **1**.
+        # > This parameter is required only when **SourceEndpointEngineName** is set to **drds**.
         self.database_count = database_count
-        # The database engine of the destination instance.
+        # The database engine type of the destination instance. Valid values:
+        # - **MySQL**: MySQL database, including ApsaraDB RDS for MySQL and self-managed MySQL.
+        # - **PolarDB**: PolarDB for MySQL.
+        # - **polardb_o**: PolarDB for Oracle.
+        # - **polardb_pg**: PolarDB for PostgreSQL.
+        # - **Redis**: Redis database, including Tair (Redis® OSS-Compatible) and self-managed Redis.
+        # - **DRDS**: cloud-native distributed database PolarDB-X 1.0 and 2.0.
+        # - **PostgreSQL**: self-managed PostgreSQL.
+        # - **odps**: MaxCompute.
+        # - **oracle**: self-managed Oracle.
+        # - **mongodb**: MongoDB database, including ApsaraDB for MongoDB and self-managed MongoDB.
+        # - **tidb**: TiDB database.
+        # - **ADS**: AnalyticDB for MySQL 2.0.
+        # - **ADB30**: AnalyticDB for MySQL 3.0.
+        # - **Greenplum**: AnalyticDB for PostgreSQL.
+        # - **MSSQL**: SQL Server database, including ApsaraDB RDS for SQL Server and self-managed SQL Server.
+        # - **kafka**: Kafka database, including ApsaraMQ for Kafka and self-managed Kafka.
+        # - **DataHub**: Alibaba Cloud DataHub.
+        # - **DB2**: self-managed Db2 for LUW.
+        # - **as400**: AS/400.
+        # - **Tablestore**: Tablestore.
         # 
-        # *   **MySQL**: ApsaraDB RDS for MySQL instance or self-managed MySQL database
-        # *   **PolarDB**: PolarDB for MySQL cluster
-        # *   **polardb_o**: PolarDB for Oracle cluster
-        # *   **polardb_pg**: PolarDB for PostgreSQL cluster
-        # *   **Redis**: ApsaraDB for Redis instance or self-managed Redis database
-        # *   **DRDS**: PolarDB-X 1.0 or PolarDB-X 2.0 instance
-        # *   **PostgreSQL**: self-managed PostgreSQL database
-        # *   **odps**: MaxCompute project
-        # *   **oracle**: self-managed Oracle database
-        # *   **mongodb**: ApsaraDB for MongoDB instance or self-managed MongoDB database
-        # *   **tidb**: TiDB database
-        # *   **ADS**: AnalyticDB for MySQL V2.0 cluster
-        # *   **ADB30**: AnalyticDB for MySQL V3.0 cluster
-        # *   **Greenplum**: AnalyticDB for PostgreSQL instance
-        # *   **MSSQL**: ApsaraDB RDS for SQL Server instance or self-managed SQL Server database
-        # *   **kafka**: Message Queue for Apache Kafka instance or self-managed Kafka cluster
-        # *   **DataHub**: DataHub project
-        # *   **DB2**: self-managed Db2 for LUW database
-        # *   **as400**: AS/400
-        # *   **Tablestore**: Tablestore instance
-        # 
-        # > 
-        # *   The default value is **MySQL**.
-        # *   For more information about the supported source and destination databases, see [Overview of data synchronization scenarios](https://help.aliyun.com/document_detail/130744.html) and [Overview of data migration scenarios](https://help.aliyun.com/document_detail/26618.html).
-        # *   You must specify one of this parameter and the **JobId** parameter.
+        # > - Default value: **MySQL**.
+        # - For more information about the supported source and destination database combinations, see [Databases, initial synchronization types, and synchronization topologies](https://help.aliyun.com/document_detail/130744.html) and [Supported databases and migration types](https://help.aliyun.com/document_detail/26618.html).
+        # - You must specify this parameter or **JobId**.
         self.destination_endpoint_engine_name = destination_endpoint_engine_name
-        # The ID of the region in which the destination instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
-        # 
-        # >  You must specify one of this parameter and the **JobId** parameter.
+        # The region of the destination instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # > You must specify this parameter or **JobId**.
         self.destination_region = destination_region
-        # The region ID of the DTS instance. Set this parameter to the value of **RegionId**.
+        # The region to which the instance belongs. The value must be the same as the value of **RegionId**.
         self.dts_region = dts_region
-        # The number of DTS units (DUs) that are assigned to a DTS task that is run on a DTS dedicated cluster. Valid values: **1** to **100**.
+        # The number of DU resources to allocate to the DTS task on a DTS dedicated cluster. Valid values: **1** to **100**.
         # 
-        # > 
-        # *   The value of this parameter must be within the range of the number of DUs available for the DTS dedicated cluster.
+        # > - The value must be within the range of available DUs in the DTS dedicated cluster.
+        # - For more information about DTS dedicated clusters, see [What is a DTS dedicated cluster](https://help.aliyun.com/document_detail/417481.html).
         self.du = du
-        # The billing type for a change tracking instance. Valid values: ONLY_CONFIGURATION_FEE and CONFIGURATION_FEE_AND_DATA_FEE. ONLY_CONFIGURATION_FEE: charges only configuration fees. CONFIGURATION_FEE_AND_DATA_FEE: charges configuration fees and data traffic fees.
+        # The billing type for change tracking. Valid values: ONLY_CONFIGURATION_FEE, which indicates that only configuration fees are charged and data traffic fees are waived. CONFIGURATION_FEE_AND_DATA_FEE, which indicates that data traffic fees are additionally charged.
         self.fee_type = fee_type
         self.insight_module = insight_module
-        # The instance class.
+        # The specification of the data migration or data synchronization instance.
         # 
-        # *   DTS supports the following instance classes for a data migration instance: **xxlarge**, **xlarge**, **large**, **medium**, and **small**.
-        # *   DTS supports the following instance classes for a data synchronization instance: **large**, **medium**, **small**, and **micro**.
+        # - Specifications supported by data migration instances: **xxlarge**, **xlarge**, **large**, **medium**, and **small**.
+        # - Specifications supported by data synchronization instances: **large**, **medium**, **small**, and **micro**.
         # 
-        # >  For more information about the test performance of each instance class, see [Specifications of data migration instances](https://help.aliyun.com/document_detail/26606.html) and [Specifications of data synchronization instances](https://help.aliyun.com/document_detail/26605.html).
+        # > For more information about the performance of each specification, see [Specifications of data migration instances](https://help.aliyun.com/document_detail/26606.html) and [Specifications of data synchronization instances](https://help.aliyun.com/document_detail/26605.html).
         self.instance_class = instance_class
-        # The ID of the task. You can call the **ConfigureDtsJob** operation to obtain the task ID from the **DtsJobId** parameter.
-        # 
-        # >  If this parameter is specified, you do not need to specify the **SourceRegion**, **DestinationRegion**, **Type**, **SourceEndpointEngineName**, or **DestinationEndpointEngineName** parameter. Even if these parameters are specified, the value of the **JobId** parameter takes precedence.
+        # The task ID (**DtsJobId**) obtained by calling the **ConfigureDtsJob** operation.
+        # > If you specify this parameter, you do not need to specify **SourceRegion**, **DestinationRegion**, **Type**, **SourceEndpointEngineName**, or **DestinationEndpointEngineName**. Even if you specify these parameters, the configurations in **JobId** take precedence.
         self.job_id = job_id
-        # Upper limit of DU.
+        # The maximum number of DUs.
         # 
-        # > Only supported by Serverless instances.
+        # > This parameter is supported only for serverless instances.
         self.max_du = max_du
-        # Lower limit of DU.
+        # The minimum number of DUs.
         # 
-        # > Only supported by Serverless instances.
+        # > This parameter is supported only for serverless instances.
         self.min_du = min_du
         # The billing method. Valid values:
+        # - **PrePaid**: subscription.
+        # - **PostPaid**: pay-as-you-go.
         # 
-        # *   **PrePaid**: subscription
-        # *   **PostPaid**: pay-as-you-go
-        # 
-        # >  This parameter must be specified.
+        # > Correction: This parameter is required.
         self.pay_type = pay_type
-        # The unit of the subscription duration. Valid values: **Year** and **Month**.
-        # 
-        # >  You must specify this parameter only if the **PayType** parameter is set to **PrePaid**.
+        # The billing method of the subscription instance. Valid values: **Year** and **Month**.
+        # > This parameter is valid and required only when **PayType** is set to **PrePaid** (subscription).
         self.period = period
-        # The number of DTS instances that you want to purchase.
-        # 
-        # >  You can purchase only one DTS instance each time you call this operation.
+        # The number of instances to purchase.
+        # > A maximum of one instance can be purchased per call.
         self.quantity = quantity
-        # The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The region ID of the instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The database engine of the source instance.
+        # The database engine type of the source instance. Valid values:
+        # - **MySQL**: MySQL database, including ApsaraDB RDS for MySQL and self-managed MySQL.
+        # - **PolarDB**: PolarDB for MySQL.
+        # - **polardb_o**: PolarDB for Oracle.
+        # - **polardb_pg**: PolarDB for PostgreSQL.
+        # - **Redis**: Redis database, including Tair (Redis® OSS-Compatible) and self-managed Redis.
+        # - **DRDS**: cloud-native distributed database PolarDB-X 1.0 and 2.0.
+        # - **PostgreSQL**: self-managed PostgreSQL.
+        # - **odps**: MaxCompute.
+        # - **oracle**: self-managed Oracle.
+        # - **mongodb**: MongoDB database, including ApsaraDB for MongoDB and self-managed MongoDB.
+        # - **tidb**: TiDB database.
+        # - **ADS**: AnalyticDB for MySQL 2.0.
+        # - **ADB30**: AnalyticDB for MySQL 3.0.
+        # - **Greenplum**: AnalyticDB for PostgreSQL.
+        # - **MSSQL**: SQL Server database, including ApsaraDB RDS for SQL Server and self-managed SQL Server.
+        # - **kafka**: Kafka database, including ApsaraMQ for Kafka and self-managed Kafka.
+        # - **DataHub**: Alibaba Cloud DataHub.
+        # - **DB2**: self-managed Db2 for LUW.
+        # - **as400**: AS/400.
+        # - **Tablestore**: Tablestore.
+        # - **OceanBase**: OceanBase (MySQL). Only data migration instances are supported.
         # 
-        # *   **MySQL**: ApsaraDB RDS for MySQL instance or self-managed MySQL database
-        # *   **PolarDB**: PolarDB for MySQL cluster
-        # *   **polardb_o**: PolarDB for Oracle cluster
-        # *   **polardb_pg**: PolarDB for PostgreSQL cluster
-        # *   **Redis**: ApsaraDB for Redis instance or self-managed Redis database
-        # *   **DRDS**: PolarDB-X 1.0 or PolarDB-X 2.0 instance
-        # *   **PostgreSQL**: self-managed PostgreSQL database
-        # *   **odps**: MaxCompute project
-        # *   **oracle**: self-managed Oracle database
-        # *   **mongodb**: ApsaraDB for MongoDB instance or self-managed MongoDB database
-        # *   **tidb**: TiDB database
-        # *   **ADS**: AnalyticDB for MySQL V2.0 cluster
-        # *   **ADB30**: AnalyticDB for MySQL V3.0 cluster
-        # *   **Greenplum**: AnalyticDB for PostgreSQL instance
-        # *   **MSSQL**: ApsaraDB RDS for SQL Server instance or self-managed SQL Server database
-        # *   **kafka**: Message Queue for Apache Kafka instance or self-managed Kafka cluster
-        # *   **DataHub**: DataHub project
-        # *   **DB2**: self-managed Db2 for LUW database
-        # *   **as400**: AS/400
-        # *   **Tablestore**: Tablestore instance
-        # 
-        # > 
-        # *   The default value is **MySQL**.
-        # *   For more information about the supported source and destination databases, see [Overview of data synchronization scenarios](https://help.aliyun.com/document_detail/130744.html) and [Overview of data migration scenarios](https://help.aliyun.com/document_detail/26618.html).
-        # *   You must specify one of this parameter and the **JobId** parameter.
+        # > - Default value: **MySQL**.
+        # - For more information about the supported source and destination database combinations, see [Databases, initial synchronization types, and synchronization topologies](https://help.aliyun.com/document_detail/130744.html) and [Supported databases and migration types](https://help.aliyun.com/document_detail/26618.html).
+        # - You must specify this parameter or **JobId**.
         self.source_endpoint_engine_name = source_endpoint_engine_name
-        # The ID of the region in which the source instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
-        # 
-        # >  You must specify one of this parameter and the **JobId** parameter.
+        # The region of the source instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # > You must specify this parameter or **JobId**.
         self.source_region = source_region
         # The synchronization topology. Valid values:
         # 
-        # *   **oneway**: one-way synchronization. This is the default value.
-        # *   **bidirectional**: two-way synchronization.
+        # - **oneway**: one-way synchronization. This is the default value.
+        # - **bidirectional**: two-way synchronization.
         self.sync_architecture = sync_architecture
-        # The type of the DTS instance. Valid values:
+        # The instance type. Valid values:
         # 
-        # *   **MIGRATION**: data migration instance
-        # 
-        # *   **SYNC**: data synchronization instance
-        # 
-        # *   **SUBSCRIBE**: change tracking instance
-        # 
-        # > You must specify one of this parameter and the **JobId** parameter.
+        # - **MIGRATION**: data migration.
+        # - **SYNC**: data synchronization.
+        # - **SUBSCRIBE**: change tracking.
+        # > You must specify this parameter or **JobId**.
         self.type = type
-        # The subscription duration.
-        # 
-        # *   Valid values if **Period** is set to **Month**: 1, 2, 3, 4, 5, 6, 7, 8, and 9.
-        # *   Valid values if **Period** is set to **Year**: 1, 2, 3, and 5.
-        # 
-        # > 
-        # 
-        # *   This parameter is valid and required only if **PayType** is set to **PrePaid**.
-        # 
-        # *   You can configure **Period** to specify the unit of the subscription duration.
+        # The subscription duration of the subscription instance.
+        # - If **Period** is set to **Month**, valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
+        # - If **Period** is set to **Year**, valid values are 1, 2, 3, and 5.
+        # > - This parameter is valid and required only when **PayType** is set to **PrePaid** (subscription).
+        # - You can set the billing method of the subscription instance by using the **Period** parameter.
         self.used_time = used_time
 
     def validate(self):

@@ -14,15 +14,15 @@ class CreateDtsInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The error code returned if the request failed.
+        # The error code returned when the call fails.
         self.err_code = err_code
-        # The error message returned if the request failed.
+        # The error message returned when the call fails.
         self.err_message = err_message
-        # The ID of the DTS instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The ID of the task.
+        # The task ID.
         self.job_id = job_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success

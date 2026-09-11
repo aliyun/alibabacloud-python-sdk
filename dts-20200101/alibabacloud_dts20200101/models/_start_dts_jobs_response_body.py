@@ -15,11 +15,10 @@ class StartDtsJobsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The dynamic error code. This parameter will be removed in the future.
+        # The dynamic error code. This parameter will be deprecated.
         self.dynamic_code = dynamic_code
-        # The dynamic part in the error message. This parameter is used to replace the **%s** variable in the **ErrMessage** parameter.
-        # 
-        # >  If the returned value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the returned value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
+        # The dynamic error message, which is used to replace the **%s** variable in the **ErrMessage** response parameter.
+        # > For example, if **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
         # The error code returned if the call failed.
         self.err_code = err_code
@@ -27,9 +26,9 @@ class StartDtsJobsResponseBody(DaraModel):
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

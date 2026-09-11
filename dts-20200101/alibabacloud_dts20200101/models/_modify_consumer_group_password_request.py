@@ -18,36 +18,33 @@ class ModifyConsumerGroupPasswordRequest(DaraModel):
         subscription_instance_id: str = None,
         consumer_group_new_password: str = None,
     ):
-        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because it will be deprecated.
         self.account_id = account_id
         # The ID of the consumer group. You can call the [DescribeConsumerGroup](https://help.aliyun.com/document_detail/122886.html) operation to query the consumer group ID.
         # 
         # This parameter is required.
         self.consumer_group_id = consumer_group_id
-        # The name of the consumer group. The name cannot exceed 128 characters in length. We recommend that you use an informative name for easy identification.
+        # The name of the consumer group. You can call the [DescribeConsumerGroup](https://help.aliyun.com/document_detail/122886.html) operation to query the consumer group name.
         self.consumer_group_name = consumer_group_name
-        # The new password of the consumer group.
-        # 
-        # *   A password must contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
-        # *   A password must be 8 to 32 characters in length.
+        # The current password of the consumer group.
         # 
         # This parameter is required.
         self.consumer_group_password = consumer_group_password
-        # The username of the consumer group. You can call the [DescribeConsumerGroup](https://help.aliyun.com/document_detail/122886.html) operation to query the username.
+        # The username of the consumer group. You can call the DescribeConsumerGroup operation to query the username.
         self.consumer_group_user_name = consumer_group_user_name
         self.owner_id = owner_id
-        # The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The ID of the region where the change tracking instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # Resource group ID.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The ID of the change tracking instance. You can call the **DescribeSubscriptionInstances** operation to query the instance ID.
+        # The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID.
         # 
         # This parameter is required.
         self.subscription_instance_id = subscription_instance_id
         # The new password of the consumer group.
-        #  
-        # *   A password must contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
-        # *   A password must be 8 to 32 characters in length.
+        # 
+        # - The password must contain characters from at least two of the following categories: uppercase letters, lowercase letters, digits, and special characters.
+        # - The password must be 8 to 32 characters in length.
         # 
         # This parameter is required.
         self.consumer_group_new_password = consumer_group_new_password

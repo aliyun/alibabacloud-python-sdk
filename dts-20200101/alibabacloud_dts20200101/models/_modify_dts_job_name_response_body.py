@@ -15,17 +15,16 @@ class ModifyDtsJobNameResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. This parameter is going to be removed in the future.
+        # The error code. This parameter will be deprecated.
         self.code = code
-        # The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\* variable in the value of **ErrMessage**.
-        # 
-        # >  If the return value of **ErrMessage** is **The Value of Input Parameter %s is not valid** and the return value of **DynamicMessage** is **DtsJobId**, the specified value of **DtsJobId** in the request is invalid.
+        # The dynamic error message, which is used to replace the **%s** placeholder in the **ErrMessage** response parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
-        # The error code returned if the request failed.
+        # The error code returned when the call fails.
         self.err_code = err_code
-        # The error message returned if the request failed.
+        # The error message returned when the call fails.
         self.err_message = err_message
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
         # The request ID.
         self.request_id = request_id

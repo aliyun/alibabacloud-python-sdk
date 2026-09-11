@@ -15,15 +15,15 @@ class ConfigureDtsJobResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The ID of the data migration or synchronization instance.
+        # The instance ID of the migration or synchronization task.
         self.dts_instance_id = dts_instance_id
-        # The ID of the data migration or synchronization task.
+        # The ID of the migration or synchronization task.
         self.dts_job_id = dts_job_id
-        # The error code returned if the request failed.
+        # The error code returned if the call fails.
         self.err_code = err_code
-        # The error message returned if the request failed.
+        # The error message returned if the call fails.
         self.err_message = err_message
-        # The returned HTTP status codes.
+        # The HTTP status code.
         self.http_status_code = http_status_code
         # The request ID.
         self.request_id = request_id

@@ -14,27 +14,25 @@ class RenewInstanceRequest(DaraModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The subscription duration of the DTS instance after renewal. Default value: 1.
-        # 
-        # *   If **Period** is set to **Year**, the valid values are **1 to 5**.
-        # *   If **Period** is set to **Month**, the valid values are **1 to 60**.
+        # The subscription duration of the renewed instance. Default value: 1.
+        # - If **Period** is set to **Year**, the valid values are **1 to 5**.
+        # - If **Period** is set to **Month**, the valid values are **1 to 60**.
         self.buy_count = buy_count
-        # The billing method of the DTS instance. Set the value to **PREPAY**, which specifies the subscription billing method.
+        # The billing method. Set the value to **PREPAY**, which indicates the subscription billing method.
         # 
         # This parameter is required.
         self.charge_type = charge_type
-        # The ID of the data synchronization or change tracking task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
+        # The ID of the data synchronization or change tracking task. You can call [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) to query the task ID.
         # 
         # This parameter is required.
         self.dts_job_id = dts_job_id
-        # The billing cycle of the DTS instance after renewal. Valid values:
-        # 
-        # *   **Year**
-        # *   **Month** (default)
+        # The billing method for the renewal instance. Valid values:
+        # - **Year**: yearly subscription.
+        # - **Month**: monthly subscription (default).
         self.period = period
-        # The region ID of the DTS instance. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # Resource group ID.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):

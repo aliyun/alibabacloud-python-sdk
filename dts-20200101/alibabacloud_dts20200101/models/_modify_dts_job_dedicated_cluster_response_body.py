@@ -15,13 +15,13 @@ class ModifyDtsJobDedicatedClusterResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code returned by the backend service.
+        # The error code returned by the backend. The value is incremental.
         self.code = code
-        # The dynamic part in the error message. This parameter is used to replace %s in **ErrMessage**.
+        # The dynamic error message used to replace the %s variable in the ErrMessage parameter.
         self.dynamic_message = dynamic_message
-        # The error code returned if the request failed.
+        # The error code returned when the call fails.
         self.err_code = err_code
-        # The error message returned if the request failed.
+        # The error message returned when the call fails.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code

@@ -27,15 +27,15 @@ class ListDedicatedClusterResponseBody(DaraModel):
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The page number of the returned page. The value must be an integer that is greater than 0. Default value: 1.
+        # The page number. The value is a positive integer that does not exceed the maximum value of the Integer data type. Default value: 1.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The maximum number of records that can be displayed on the current page.
         self.page_record_count = page_record_count
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
-        # The total number of clusters that meet the query condition.
+        # The total number of clusters that meet the specified conditions.
         self.total_record_count = total_record_count
 
     def validate(self):

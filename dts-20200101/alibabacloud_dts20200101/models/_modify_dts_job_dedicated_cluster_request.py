@@ -13,14 +13,14 @@ class ModifyDtsJobDedicatedClusterRequest(DaraModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The dedicated cluster ID.
+        # The ID of the dedicated cluster.
         self.dedicated_cluster_id = dedicated_cluster_id
-        # The DTS task IDs. The value can be a JSON array that consists of multiple DTS task IDs. Separate the IDs with commas (,).
+        # The task ID. You can specify multiple task IDs in a JSON array. Separate the IDs with commas (,).
         self.dts_job_ids = dts_job_ids
         self.owner_id = owner_id
-        # The ID of the region where the DTS instance resides.
+        # The region in which the DTS instance resides.
         # 
-        # > For information about the regions that support dedicated clusters, see [DTS dedicated cluster](https://help.aliyun.com/document_detail/417481.html).
+        # > For the regions supported by dedicated clusters, see [DTS dedicated cluster](https://help.aliyun.com/document_detail/417481.html).
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id

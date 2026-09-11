@@ -15,21 +15,20 @@ class ConvertInstanceResourceGroupResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code returned by the backend service. The number is incremented.
+        # The backend error code, which increments numerically.
         self.code = code
-        # The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\* variable in the **ErrMessage** parameter.
-        # 
-        # >  If **The Value of Input Parameter %s is not valid** is returned and DtsJobId is returned for DynamicMessage, it indicates that the request parameter DtsJobId is invalid.
+        # The dynamic error message, which is used to replace the **%s** placeholder in the **ErrMessage** response parameter.
+        # > For example, if **The Value of Input Parameter %s is not valid** is returned and DynamicMessage returns DtsJobId, the request parameter DtsJobId that you specified is invalid.
         self.dynamic_message = dynamic_message
-        # The error code returned when the request failed.
+        # The error code returned if the call failed.
         self.err_code = err_code
-        # The error message returned when the request failed.
+        # The error message returned if the call failed.
         self.err_message = err_message
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The ID of a request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

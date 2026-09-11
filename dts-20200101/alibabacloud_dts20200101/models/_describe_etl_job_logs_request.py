@@ -15,9 +15,9 @@ class DescribeEtlJobLogsRequest(DaraModel):
         # 
         # This parameter is required.
         self.dts_job_id = dts_job_id
-        # The ID of the region in which the Data Transmission Service (DTS) instance resides. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the available Alibaba Cloud regions.
+        # The region ID of the DTS instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the list of Alibaba Cloud regions.
         self.region_id = region_id
-        # Resource GroupId
+        # The resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):

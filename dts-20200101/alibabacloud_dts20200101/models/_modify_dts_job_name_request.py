@@ -13,22 +13,22 @@ class ModifyDtsJobNameRequest(DaraModel):
         resource_group_id: str = None,
         zero_etl_job: bool = None,
     ):
-        # The ID of the DTS task. The DTS task can be a data migration, data synchronization, or change tracking task.
+        # The ID of the data migration, data synchronization, or change tracking task.
         # 
         # This parameter is required.
         self.dts_job_id = dts_job_id
-        # The new name of the DTS task.
-        # 
-        # >  We recommend that you specify a descriptive name for easy identification. You do not need to use a unique name.
+        # The new name of the task.
+        # > Configure a descriptive name that has business meaning (uniqueness is not required) for easy identification.
         # 
         # This parameter is required.
         self.dts_job_name = dts_job_name
-        # The ID of the region in which the DTS instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The region ID of the task. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # Resource GroupId
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Whether it is a seamless integration (Zero-ETL) task, the value can be:
-        # - **false**: No. - **true**: Yes.
+        # Specifies whether the node is a seamless integration (zero-ETL) node. Valid values:
+        # - **true**: The node is a seamless integration (zero-ETL) node.
+        # - **false**: The node is not a seamless integration (zero-ETL) node.
         self.zero_etl_job = zero_etl_job
 
     def validate(self):

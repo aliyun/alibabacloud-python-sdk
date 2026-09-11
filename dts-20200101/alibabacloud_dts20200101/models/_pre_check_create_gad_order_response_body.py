@@ -18,15 +18,29 @@ class PreCheckCreateGadOrderResponseBody(DaraModel):
         success: str = None,
         task_id: str = None,
     ):
+        # The dynamic error code. This parameter will be deprecated.
         self.dynamic_code = dynamic_code
+        # The dynamic error message, which is used to replace the %s placeholder in the ErrMessage response parameter.
+        # 
+        # > If ErrMessage returns The Value of Input Parameter %s is not valid and DynamicMessage returns JobId, the value of the JobId request parameter is invalid.
         self.dynamic_message = dynamic_message
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the active geo-redundancy instance group.
         self.instance_id = instance_id
+        # The ID of the region in which the instance resides. For more information, see Supported regions.
         self.region_id = region_id
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # - true: The call was successful.
+        # - false: The call failed.
         self.success = success
+        # The precheck task ID.
         self.task_id = task_id
 
     def validate(self):

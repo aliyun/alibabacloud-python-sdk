@@ -12,18 +12,17 @@ class DeleteDtsJobsRequest(DaraModel):
         resource_group_id: str = None,
         zero_etl_job: bool = None,
     ):
-        # The ID of the data migration, data synchronization, or change tracking task.
-        # 
-        # > *   Separate multiple task IDs with commas (,).
-        # > *   You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query task IDs.
+        # The IDs of the data migration, data synchronization, or change tracking tasks.
+        # > - You can specify up to 10 task IDs, separated by commas (,).
+        # - You can call [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) to query the DTS task IDs.
         # 
         # This parameter is required.
         self.dts_job_ids = dts_job_ids
-        # The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # The resource group ID.
+        # A special parameter for specific business scenarios. You do not need to configure this parameter.
         self.resource_group_id = resource_group_id
-        # Is it ZeroETL task
+        # A special parameter for specific business scenarios. You do not need to configure this parameter.
         self.zero_etl_job = zero_etl_job
 
     def validate(self):

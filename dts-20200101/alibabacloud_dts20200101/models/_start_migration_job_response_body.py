@@ -12,11 +12,11 @@ class StartMigrationJobResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The error code returned if the request failed.
+        # The error code returned if the call failed.
         self.err_code = err_code
         # The error message returned if the call failed.
         self.err_message = err_message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success

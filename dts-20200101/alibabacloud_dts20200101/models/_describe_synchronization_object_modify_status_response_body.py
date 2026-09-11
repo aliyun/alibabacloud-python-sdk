@@ -21,34 +21,33 @@ class DescribeSynchronizationObjectModifyStatusResponseBody(DaraModel):
         structure_initialization_status: main_models.DescribeSynchronizationObjectModifyStatusResponseBodyStructureInitializationStatus = None,
         success: str = None,
     ):
-        # The status of full data synchronization.
+        # The initial full data synchronization status.
         self.data_initialization_status = data_initialization_status
-        # The status of incremental data synchronization.
-        # 
-        # >  This parameter and its sub-parameters will be removed in the future.
+        # The incremental data synchronization status.
+        # > This parameter set and its response parameters will be discontinued.
         self.data_synchronization_status = data_synchronization_status
-        # The error code returned if the call failed.
+        # The error code returned when the call failed.
         self.err_code = err_code
-        # The error message returned if the call failed.
+        # The error message returned when the call failed.
         self.err_message = err_message
-        # The error message returned if the task failed to modify the objects to be synchronized.
+        # The error message returned when the task to modify synchronization objects failed.
         self.error_message = error_message
         # The precheck status.
         self.precheck_status = precheck_status
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The status of the task that changes the objects to be synchronized. Valid values:
+        # The status of the synchronization object change. Valid values:
         # 
-        # *   **NotStarted**: The task is not started.
-        # *   **Prechecking**: The task is being prechecked.
-        # *   **PrecheckFailed**: The task failed to pass the precheck.
-        # *   **Migrating**: The task is running.
-        # *   **Failed**: The task failed.
-        # *   **Finished**: The task is completed.
+        # - **NotStarted**: not started.
+        # - **Prechecking**: running the precheck.
+        # - **PrecheckFailed**: the precheck failed.
+        # - **Migrating**: synchronizing.
+        # - **Failed**: synchronization failed.
+        # - **Finished**: synchronization completed.
         self.status = status
-        # The status of schema synchronization.
+        # The initial schema synchronization status.
         self.structure_initialization_status = structure_initialization_status
-        # Indicates whether the call was successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -144,18 +143,13 @@ class DescribeSynchronizationObjectModifyStatusResponseBodyStructureInitializati
         progress: str = None,
         status: str = None,
     ):
-        # The error message returned if schema synchronization failed.
+        # The error message returned when initial schema synchronization failed.
         self.error_message = error_message
-        # The progress of schema synchronization. Unit: %.
+        # The progress of initial schema synchronization, in percentage.
         self.percent = percent
-        # The number of tables whose schemas have been synchronized.
+        # The number of tables for which initial schema synchronization has been completed.
         self.progress = progress
-        # The status of schema synchronization. Valid values:
-        # 
-        # *   **NotStarted**: Schema synchronization is not started.
-        # *   **Migrating**: Schema synchronization is in progress.
-        # *   **Failed**: Schema synchronization failed.
-        # *   **Finished**: Schema synchronization is completed.
+        # The initial schema synchronization status. Valid values: NotStarted: not started. Migrating: initializing. Failed: initialization failed. Finished: initialization completed.
         self.status = status
 
     def validate(self):
@@ -203,9 +197,9 @@ class DescribeSynchronizationObjectModifyStatusResponseBodyPrecheckStatus(DaraMo
         percent: str = None,
         status: str = None,
     ):
-        # The result of each precheck item.
+        # The execution details of each precheck item.
         self.detail = detail
-        # The precheck progress. Unit: %.
+        # The precheck progress, in percentage.
         self.percent = percent
         # The precheck status.
         self.status = status
@@ -258,20 +252,17 @@ class DescribeSynchronizationObjectModifyStatusResponseBodyPrecheckStatusDetail(
         item_name: str = None,
         repair_method: str = None,
     ):
-        # The precheck result. Valid values:
+        # The check result. Valid values:
         # 
-        # *   Success: The task passed the precheck.
-        # *   Failed: The task failed to pass the precheck.
+        # - Success: The precheck item was passed.
+        # - Failed: The precheck item was not passed.
         self.check_status = check_status
-        # The error message returned if the task failed to pass the precheck.
-        # 
-        # >  This parameter is returned only if the return value of the **CheckStatus** parameter is **Failed**.
+        # The error message returned when the precheck item was not passed.
         self.error_message = error_message
-        # The name of the precheck item.
+        # The precheck item.
         self.item_name = item_name
         # The method to fix the precheck failure.
-        # 
-        # >  This parameter is returned only if the return value of the **CheckStatus** parameter is Failed.
+        # > This parameter is returned only when the value of the **CheckStatus** parameter is Failed.
         self.repair_method = repair_method
 
     def validate(self):
@@ -320,18 +311,20 @@ class DescribeSynchronizationObjectModifyStatusResponseBodyDataSynchronizationSt
         percent: str = None,
         status: str = None,
     ):
-        # The synchronization latency, in seconds.
+        # The synchronization latency of incremental data synchronization, in seconds.
         self.delay = delay
-        # The error message returned if incremental data synchronization failed.
+        # The error message returned when incremental data synchronization failed.
         self.error_message = error_message
-        # The progress of incremental data synchronization. Unit: %.
+        # The progress of incremental data synchronization, in percentage.
         self.percent = percent
-        # The status of incremental data synchronization. Valid values:
+        # The status of the synchronization object change. Valid values:
         # 
-        # *   **NotStarted**: Incremental data synchronization is not started.
-        # *   **Migrating**: Incremental data synchronization is in progress.
-        # *   **Failed**: Incremental data synchronization failed.
-        # *   **Finished**: Incremental data synchronization is completed.
+        # - **NotStarted**: not started.
+        # - **Prechecking**: running the precheck.
+        # - **PrecheckFailed**: the precheck failed.
+        # - **Migrating**: synchronizing.
+        # - **Failed**: synchronization failed.
+        # - **Finished**: synchronization completed.
         self.status = status
 
     def validate(self):
@@ -380,18 +373,13 @@ class DescribeSynchronizationObjectModifyStatusResponseBodyDataInitializationSta
         progress: str = None,
         status: str = None,
     ):
-        # The error message returned if full data synchronization failed.
+        # The error message returned when initial full data synchronization failed.
         self.error_message = error_message
-        # The progress of full data synchronization. Unit: %.
+        # The progress of initial full data synchronization, in percentage.
         self.percent = percent
-        # The number of records that have been synchronized during full data synchronization.
+        # The number of records that have been synchronized during initial full data synchronization.
         self.progress = progress
-        # The status of full data synchronization. Valid values:
-        # 
-        # *   **NotStarted**: Full data synchronization is not started.
-        # *   **Migrating**: Full data synchronization is in progress.
-        # *   **Failed**: Full data synchronization failed.
-        # *   **Finished**: Full data synchronization is completed.
+        # The status of the synchronization object change. Valid values: -**notstarted**: not started. -**migrating**: synchronizing. -**failed**: synchronization failed. -**finaciallocked**: financial lock.
         self.status = status
 
     def validate(self):

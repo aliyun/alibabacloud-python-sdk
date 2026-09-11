@@ -16,13 +16,22 @@ class PromoteToMasterResponseBody(DaraModel):
         success: bool = None,
         task_id: str = None,
     ):
+        # Dynamic error code. This parameter will be unpublished soon.
         self.dynamic_code = dynamic_code
+        # Dynamic error message, used to replace the **%s** placeholder in the **ErrMessage** error message.  
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
+        # Error code returned when the invocation fails.
         self.err_code = err_code
+        # Error message returned when the invocation fails.
         self.err_message = err_message
+        # Status code.
         self.http_status_code = http_status_code
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded.
         self.success = success
+        # Job ID. This parameter will be unpublished soon.
         self.task_id = task_id
 
     def validate(self):

@@ -27,55 +27,50 @@ class ConfigureSynchronizationJobRequest(DaraModel):
         self.destination_endpoint = destination_endpoint
         self.partition_key = partition_key
         self.source_endpoint = source_endpoint
-        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because it will be discontinued.
         self.account_id = account_id
         # The synchronization checkpoint.
         self.checkpoint = checkpoint
         # Specifies whether to perform initial full data synchronization. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **true**: yes.
+        # - **false**: no.
         # 
-        # >  Default value: **true**.
+        # > Default value: **true**.
         # 
         # This parameter is required.
         self.data_initialization = data_initialization
-        # The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet special requirements, for example, whether to automatically start a precheck. For more information, see [MigrationReserved](https://help.aliyun.com/document_detail/176470.html).
-        # 
-        # >  This parameter can be used for data synchronization between ApsaraDB for Redis Enterprise Edition instances. For more information, see [Use OpenAPI Explorer to configure one-way or two-way data synchronization between ApsaraDB for Redis Enterprise Edition instances](https://help.aliyun.com/document_detail/155967.html).
+        # The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet special requirements, such as specifying whether to automatically start the precheck. For more information, see [MigrationReserved parameter description](https://help.aliyun.com/document_detail/176470.html).
+        # > For example, you can use this parameter for data synchronization between ApsaraDB for Redis Enhanced Edition (Tair) instances. For more information, see [Use OpenAPI to configure one-way or bidirectional data synchronization between ApsaraDB for Redis Enhanced Edition instances](https://help.aliyun.com/document_detail/155967.html).
         self.migration_reserved = migration_reserved
         self.owner_id = owner_id
-        # The ID of the region where the data synchronization instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The ID of the region where the data synchronization instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # 资源组ID。
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         # Specifies whether to perform initial schema synchronization. Valid values:
+        # - **true**: yes.
+        # - **false**: no.
         # 
-        # *   **true**: yes
-        # *   **false**: no
-        # 
-        # >  Default value: **true**.
+        # > Default value: **true**.
         # 
         # This parameter is required.
         self.structure_initialization = structure_initialization
         # The synchronization direction. Valid values:
+        # - **Forward**: forward.
+        # - **Reverse**: reverse.
         # 
-        # *   **Forward**
-        # *   **Reverse**
-        # 
-        # > 
-        # *   Default value: **Forward**.
-        # *   The value **Reverse** takes effect only if the topology of the data synchronization instance is two-way synchronization.
+        # > - Default value: **Forward**.
+        # - This parameter takes effect only if you set it to **Reverse** and the synchronization topology of the data synchronization instance is two-way synchronization.
         self.synchronization_direction = synchronization_direction
         # The ID of the data synchronization instance. You can call the [DescribeSynchronizationJobs](https://help.aliyun.com/document_detail/49454.html) operation to query the instance ID.
         # 
         # This parameter is required.
         self.synchronization_job_id = synchronization_job_id
-        # The name of the data synchronization task.
-        # 
-        # >  We recommend that you specify an informative name for easy identification. You do not need to use a unique task name.
+        # The name of the synchronization task.
+        # > Specify a descriptive name that makes it easy to identify the task. It does not need to be unique.
         self.synchronization_job_name = synchronization_job_name
-        # The objects that you want to synchronize. The value is a JSON string and can contain regular expressions. For more information, see [SynchronizationObjects](https://help.aliyun.com/document_detail/141901.html).
+        # The objects to be synchronized. The value is a JSON string and supports certain regular expressions. For more information, see [Synchronization object configuration](https://help.aliyun.com/document_detail/141901.html).
         # 
         # This parameter is required.
         self.synchronization_objects = synchronization_objects
@@ -205,48 +200,41 @@ class ConfigureSynchronizationJobRequestSourceEndpoint(DaraModel):
         role: str = None,
         user_name: str = None,
     ):
-        # The name of the database to which the synchronization object in the source instance belongs.
+        # 源实例中的同步对象所属数据库名称。
         self.database_name = database_name
-        # The IP address of the source database.
-        # 
-        # >  You must specify this parameter only if the **SourceEndpoint.InstanceType** parameter is set to **ECS**, **Express**, **dg**, or **cen**.
+        # 源库的IP地址。
+        # > 当**SourceEndpoint.InstanceType**取值为**ECS**、**Express**、**dg**或**cen**时，本参数才可用且必须传入。
         self.ip = ip
-        # The ID of the source instance.
+        # 源实例ID。
         self.instance_id = instance_id
-        # The type of the source instance. Valid values:
+        # 源实例类型，取值为：
         # 
-        # *   **RDS**: ApsaraDB RDS instance
-        # *   **Redis**: ApsaraDB for Redis instance
-        # *   **PolarDB**: PolarDB for MySQL cluster or PolarDB O Edition cluster
-        # *   **ECS**: self-managed database that is hosted on Elastic Compute Service (ECS)
-        # *   **Express**: self-managed database that is connected over Express Connect
-        # *   **dg**: self-managed database that is connected over Database Gateway
-        # *   **cen**: self-managed database that is connected over Cloud Enterprise Network (CEN)
+        # - **RDS**：阿里云RDS实例。
+        # - **Redis**：阿里云Redis实例。
+        # - **PolarDB**：阿里云PolarDB集群（仅支持MySQL或兼容Oracle语法的引擎）。
+        # - **ECS**：ECS上的自建数据库。
+        # - **Express**：通过专线接入的自建数据库。
+        # - **dg**：通过数据库网关DG接入的自建数据库。
+        # - **cen**：通过云企业网CEN接入的自建数据库。
         # 
-        # >  The default value is **RDS**.
+        # > 默认取值为**RDS**。
         self.instance_type = instance_type
-        # The ID of the Alibaba Cloud account that owns the source RDS instance.
-        # 
-        # >  You can specify this parameter to synchronize data across different Alibaba Cloud accounts. In this case, you also need to specify the **SourceEndpoint.Role** parameter.
+        # 源RDS实例所属的阿里云账号ID。
+        # > 传入本参数即代表执行跨阿里云账号的数据同步，同时您还需要传入**SourceEndpoint.Role**参数。
         self.owner_id = owner_id
-        # The password of the source database account.
-        # 
-        # >  You must specify this parameter only if the **SourceEndpoint.InstanceType** parameter is set to **ECS**, **Express**, **dg**, or **cen**.
+        # 源库数据库账号密码。
+        # > 当**SourceEndpoint.InstanceType**取值为**ECS**、**Express**、**dg**或**cen**时，本参数必须传入。
         self.password = password
-        # The service port number of the source database.
-        # 
-        # >  You must specify this parameter only if the **SourceEndpoint.InstanceType** parameter is set to **ECS**, **Express**, **dg**, or **cen**.
+        # 源库的数据库服务端口。
+        # > 当**SourceEndpoint.InstanceType**取值为**ECS**、**Express**、**dg**或**cen**时，本参数才可用且必须传入。
         self.port = port
-        # The name of the RAM role configured for the Alibaba Cloud account that owns the source instance.
-        # 
-        # >  You must specify this parameter when you synchronize data across different Alibaba Cloud accounts. For information about the permissions and authorization methods of the RAM role, see [Configure RAM authorization for cross-account data migration and synchronization](https://help.aliyun.com/document_detail/48468.html).
+        # 源实例所属云账号配置的角色名称。
+        # > 执行跨阿里云账号的数据同步时须传入本参数，该角色所需的权限及授权方式请参见[跨阿里云账号数据迁移或同步时如何配置RAM授权](https://help.aliyun.com/document_detail/48468.html)。
         self.role = role
-        # The database account of the source database.
-        # 
-        # > 
-        # *   You must specify this parameter only if the **SourceEndpoint.InstanceType** parameter is set to **ECS**, **Express**, **dg**, or **cen**.
-        # *   If the **SourceEndpoint.InstanceType** parameter is set to **Redis**, you do not need to specify the database account.
-        # *   The permissions that are required for database accounts vary with the synchronization scenario. For more information, see [Overview of data synchronization scenarios](https://help.aliyun.com/document_detail/140954.html).
+        # 源库的数据库账号。
+        # > - 当**SourceEndpoint.InstanceType**取值为**ECS**、**Express**、**dg**或**cen**时，本参数才可用且必须传入。
+        # - 当**SourceEndpoint.InstanceType**取值为**Redis**时，本参数无需传入。
+        # - 同步不同的数据库所需的权限有所差异，详情请参见[DTS数据同步方案概览](https://help.aliyun.com/document_detail/140954.html)中对应的配置案例。
         self.user_name = user_name
 
     def validate(self):
@@ -326,25 +314,21 @@ class ConfigureSynchronizationJobRequestPartitionKey(DaraModel):
         modify_time_month: bool = None,
         modify_time_year: bool = None,
     ):
-        # Specifies whether the incremental data table contains partitions defined by the modifytime_day field. Valid values: **true** and **false**.
-        # 
-        # >  This parameter is available only if the **DestinationEndpoint.InstanceType** parameter is set to **MaxCompute**.
+        # 设置增量日志表是否包含以增量更新时间对应日期信息定义的分区，取值：**true**或**false**。
+        # > 当**DestinationEndpoint.InstanceType**参数取值为**Maxcompute**时，本参数才可用。
         self.modify_time_day = modify_time_day
-        # Specifies whether the incremental data table contains partitions defined by the modifytime_hour field. Valid values: **true** and **false**.
-        # 
-        # >  This parameter is available only if the **DestinationEndpoint.InstanceType** parameter is set to **MaxCompute**.
+        # 设置增量日志表是否包含以增量更新时间对应小时信息定义的分区，取值：**true**或**false**。
+        # > 当**DestinationEndpoint.InstanceType**参数取值为**Maxcompute**时，本参数才可用。
         self.modify_time_hour = modify_time_hour
-        # Specifies whether the incremental data table contains partitions defined by the modifytime_minute field. Valid values: **true** and **false**.
+        # 设置增量日志表是否包含以增量更新时间对应分钟信息定义的分区，取值：**true**或**false**。
         # 
-        # >  This parameter is available only if the **DestinationEndpoint.InstanceType** parameter is set to **MaxCompute**.
+        # > 当**DestinationEndpoint.InstanceType**参数取值为**Maxcompute**时，本参数才可用。
         self.modify_time_minute = modify_time_minute
-        # Specifies whether the incremental data table contains partitions defined by the modifytime_month field. Valid values: **true** and **false**.
-        # 
-        # >  This parameter is available only if the **DestinationEndpoint.InstanceType** parameter is set to **MaxCompute**.
+        # 设置增量日志表是否包含以增量更新时间对应月份信息定义的分区，取值：**true**或**false**。
+        # > 当**DestinationEndpoint.InstanceType**参数取值为**Maxcompute**时，本参数才可用。
         self.modify_time_month = modify_time_month
-        # Specifies whether the incremental data table contains partitions defined by the modifytime_year field. Valid values: **true** and **false**.
-        # 
-        # >  This parameter is available only if the **DestinationEndpoint.InstanceType** parameter is set to **MaxCompute**.
+        # 设置增量日志表是否包含以增量更新时间对应年份信息定义的分区，取值：**true**或**false**。
+        # > 当**DestinationEndpoint.InstanceType**参数取值为**Maxcompute**时，本参数才可用。
         self.modify_time_year = modify_time_year
 
     def validate(self):
@@ -402,48 +386,41 @@ class ConfigureSynchronizationJobRequestDestinationEndpoint(DaraModel):
         port: str = None,
         user_name: str = None,
     ):
-        # The name of the database to which the synchronization object in the destination instance belongs.
+        # 目标实例中的同步对象所属数据库名称。
         self.data_base_name = data_base_name
-        # The IP address of the destination database.
-        # 
-        # >  You must specify this parameter only if the **DestinationEndpoint.InstanceType** parameter is set to **Express**, **dg**, or **cen**.
+        # 目标库的IP地址。
+        # > 当**DestinationEndpoint.InstanceType**取值为**Express**、**dg**或**cen**时，本参数必须传入本参数才可用且必须传入。
         self.ip = ip
-        # The ID of the destination instance.
-        # 
-        # >  If the **DestinationEndpoint.InstanceType** parameter is set to **MaxCompute** or **DataHub**, you must specify the name of the MaxCompute project or the DataHub project.
-        # 
-        # If the destination instance is an AnalyticDB for MySQL cluster, specify the ID of the AnalyticDB for MySQL cluster.
+        # 同步目标实例的实例ID
+        # > 当**DestinationEndpoint.InstanceType**取值为**MaxCompute**或**DataHub**时，本参数传入MaxCompute实例或DataHub的Project名称。
+        # 当目标实例为阿里云分析型数据库MySQL版时，传入分析型数据库MySQL版的集群ID。
         self.instance_id = instance_id
-        # The type of the destination instance. Valid values:
+        # 目标实例类型，取值为：
         # 
-        # *   **Redis**: ApsaraDB for Redis instance
-        # *   **RDS**: ApsaraDB RDS instance
-        # *   **PolarDB**: PolarDB for MySQL cluster or PolarDB O Edition cluster
-        # *   **ECS**: self-managed database that is hosted on ECS
-        # *   **Express**: self-managed database that is connected over Express Connect
-        # *   **DataHub**: DataHub project
-        # *   **MaxCompute**: MaxCompute project
-        # *   **AnalyticDB**: AnalyticDB for MySQL cluster V3.0 or V2.0
-        # *   **Greenplum**: AnalyticDB for PostgreSQL instance
+        # - **Redis**：阿里云Redis实例。
+        # - **RDS**：阿里云RDS实例。
+        # - **PolarDB**：阿里云PolarDB集群（仅支持MySQL或兼容Oracle语法的引擎）。
+        # - **ECS**：ECS上的自建数据库。
+        # - **Express**：通过专线接入的本地数据库。
+        # - **DataHub**：阿里云DataHub实例。
+        # - **MaxCompute**：阿里云MaxCompute实例。
+        # - **AnalyticDB**：云原生数据仓库AnalyticDB MySQL  3.0和2.0版本。
+        # - **Greenplum**：云原生数据仓库ADB PostgreSQL版（原分析型数据库PostgreSQL版）。
         # 
-        # >  The default value is **RDS**.
+        # > 默认取值为**RDS**。
         self.instance_type = instance_type
-        # The password of the destination database account.
+        # 目标库数据库账号密码。
         # 
-        # > 
-        # *   If the **DestinationEndpoint.InstanceType** parameter is set to **ECS**, **Express**, **dg**, or **cen**, you must specify the DestinationEndpoint.Password parameter.
+        # > - 当**DestinationEndpoint.InstanceType**取值为**ECS**、**Express**、**dg**或**cen**时，本参数必须传入。
         self.password = password
-        # The service port number of the destination database.
-        # 
-        # >  You must specify this parameter only if the **DestinationEndpoint.InstanceType** parameter is set to **ECS**, **Express**, **dg**, or **cen**.
+        # 目标库的数据库服务端口。
+        # > 当**DestinationEndpoint.InstanceType**取值为**ECS**、**Express**、**dg**或**cen**时，本参数才可用且必须传入。
         self.port = port
-        # The database account of the destination database.
-        # 
-        # > 
-        # *   The permissions that are required for database accounts vary with the synchronization scenario. For more information, see [Overview of data synchronization scenarios](https://help.aliyun.com/document_detail/140954.html).
-        # *   If the **DestinationEndpoint.InstanceType** parameter is set to **ECS**, **Express**, **dg**, or **cen**, you must specify the DestinationEndpoint.UserName parameter.
-        # *   If the **DestinationEndpoint.InstanceType** parameter is set to RDS and the database version is MySQL 5.5 or MySQL 5.6, you do not need to specify the DestinationEndpoint.UserName and **DestinationEndpoint.Password** parameters.
-        # *   If the **DestinationEndpoint.InstanceType** parameter is set to **Redis**, you do not need to specify the DestinationEndpoint.UserName parameter.
+        # 目标库的数据库账号。
+        # > - 同步不同的数据库所需的权限有所差异，详情请参见[DTS数据同步方案概览](https://help.aliyun.com/document_detail/140954.html)中对应的配置案例。
+        # - 当**DestinationEndpoint.InstanceType**取值为**ECS**、**Express**、**dg**或**cen**时，本参数必须传入。
+        # - 当**DestinationEndpoint.InstanceType**取值为RDS且数据库版本为MySQL 5.5或MySQL 5.6，无需传入本参数和**DestinationEndpoint.Password**参数。
+        # - 当**DestinationEndpoint.InstanceType**取值为**Redis**时，无需传入本参数。
         self.user_name = user_name
 
     def validate(self):

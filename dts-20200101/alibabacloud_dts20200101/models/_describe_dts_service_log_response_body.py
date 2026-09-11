@@ -22,27 +22,27 @@ class DescribeDtsServiceLogResponseBody(DaraModel):
         success: bool = None,
         total_record_count: int = None,
     ):
-        # The dynamic error code. This parameter will be removed soon.
+        # The dynamic error code. This parameter will be deprecated.
         self.dynamic_code = dynamic_code
-        # The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\* variable in the **ErrMessage** parameter.
+        # The dynamic error message used to replace the **%s** variable in the **ErrMessage** parameter.
         self.dynamic_message = dynamic_message
-        # The error code returned if the request fails.
+        # The error code returned if the call failed.
         self.err_code = err_code
-        # The error message returned if the request fails.
+        # The error message returned if the call failed.
         self.err_message = err_message
-        # The HTTP status code that is returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The page number of the returned page.
+        # The current page number.
         self.page_number = page_number
-        # The number of log entries returned per page.
+        # The number of log entries per page.
         self.page_record_count = page_record_count
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The details of the logs.
+        # The task logs details of the node.
         self.service_log_contexts = service_log_contexts
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
-        # The total number of logs that meet the query conditions.
+        # The total number of log entries that meet the specified conditions.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -140,11 +140,11 @@ class DescribeDtsServiceLogResponseBodyServiceLogContexts(DaraModel):
         state: str = None,
         time: str = None,
     ):
-        # The log content.
+        # The specific log information.
         self.context = context
-        # The log level.
+        # The status of the log entry.
         self.state = state
-        # The time when the logs were collected. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
+        # The time when the log was collected, in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
         self.time = time
 
     def validate(self):

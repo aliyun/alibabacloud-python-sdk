@@ -15,23 +15,23 @@ class DescribeSynchronizationJobAlertRequest(DaraModel):
         synchronization_direction: str = None,
         synchronization_job_id: str = None,
     ):
-        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter is about to be discontinued.
         self.account_id = account_id
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The value can contain a maximum of 64 ASCII characters and cannot contain non-ASCII characters.
         self.client_token = client_token
         self.owner_id = owner_id
-        # The ID of the region where the data synchronization instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The region ID. Specify this parameter to indicate the region where the subscription channel resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # Resource group ID.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         # The synchronization direction. Valid values:
         # 
-        # *   **Forward**
-        # *   **Reverse**
+        # - **Forward**: forward.
+        # - **Reverse**: reverse.
         # 
-        # >  Default value: **Forward**.
+        # > Default value: **Forward**.
         self.synchronization_direction = synchronization_direction
-        # The ID of the data synchronization instance. You can call the **DescribeSynchronizationJobs** operation to query the instance ID.
+        # Instance ID of the data synchronization instance. You can call the **DescribeSynchronizationJobs** operation to query instance ID.
         # 
         # This parameter is required.
         self.synchronization_job_id = synchronization_job_id

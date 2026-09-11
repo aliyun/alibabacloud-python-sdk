@@ -20,32 +20,32 @@ class DescribeDedicatedClusterMonitorRuleResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The alert threshold for CPU utilization. Unit: percentage.
+        # The CPU alert threshold, in percentage.
         self.cpu_alarm_threshold = cpu_alarm_threshold
-        # The ID of the cluster.
+        # The cluster ID.
         self.dedicated_cluster_id = dedicated_cluster_id
-        # The alert threshold for disk usage. Unit: percentage.
+        # The disk alert threshold, in percentage.
         self.disk_alarm_threshold = disk_alarm_threshold
-        # The alert threshold for DTS Unit (DU) usage. Unit: percentage.
+        # The DU alert threshold, in percentage.
         self.du_alarm_threshold = du_alarm_threshold
-        # The error code returned if the request failed.
+        # The error code returned if the call fails.
         self.err_code = err_code
-        # The error message returned if the request failed.
+        # The error message returned if the call fails.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The alert threshold for memory usage. Unit: percentage.
+        # The memory alert threshold, in percentage.
         self.mem_alarm_threshold = mem_alarm_threshold
-        # Indicates whether the alert feature is enabled. Valid values:
+        # The alert switch. Valid values:
         # 
-        # *   **1**: The alert feature is enabled.
-        # *   **0**: The alert feature is disabled.
+        # - **1**: enabled.
+        # - **0**: disabled.
         self.notice_switch = notice_switch
-        # The mobile phone number to which alerts are sent. Separate multiple mobile phone numbers with commas (,).
+        # The phone numbers that receive alerts. If there are multiple phone numbers, they are separated by commas (,).
         self.phones = phones
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

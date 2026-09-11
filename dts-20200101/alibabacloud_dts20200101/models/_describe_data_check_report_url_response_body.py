@@ -14,11 +14,11 @@ class DescribeDataCheckReportUrlResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The URL for downloading the verification report.
+        # The download URL of the verification report.
         self.dynamic_message = dynamic_message
-        # The error code returned if the request failed.
+        # The error code returned when the call fails.
         self.err_code = err_code
-        # The error message returned if the request failed.
+        # The error message returned when the call fails.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code

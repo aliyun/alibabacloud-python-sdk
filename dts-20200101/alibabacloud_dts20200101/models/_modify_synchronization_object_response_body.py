@@ -13,15 +13,15 @@ class ModifySynchronizationObjectResponseBody(DaraModel):
         success: str = None,
         task_id: str = None,
     ):
-        # The error code returned if the call failed.
+        # The error code returned when the call fails.
         self.err_code = err_code
-        # The error message returned if the call failed.
+        # The error message returned when the call fails.
         self.err_message = err_message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # Indicates whether the request was successful.
         self.success = success
-        # The ID of the task that changes the objects. You must specify the task ID when you call the DescribeSynchronizationObjectModifyStatus operation to query the status and progress of the task.
+        # The task ID. You can call the [DescribeSynchronizationObjectModifyStatus](https://help.aliyun.com/document_detail/49452.html) operation based on this parameter to query the status and progress of the synchronization object modification.
         self.task_id = task_id
 
     def validate(self):

@@ -13,22 +13,21 @@ class ResetDtsJobRequest(DaraModel):
         resource_group_id: str = None,
         synchronization_direction: str = None,
     ):
-        # The ID of the data synchronization or change tracking instance.
+        # The synchronization or subscribe instance ID.
         self.dts_instance_id = dts_instance_id
         # The ID of the data synchronization or change tracking task.
         self.dts_job_id = dts_job_id
-        # The region where the DTS instance is located. For more information, see [List of Supported Regions](https://help.aliyun.com/document_detail/141033.html).
+        # The region ID of the DTS instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # Resource group ID.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         # The synchronization direction. Valid values:
         # 
-        # *   **Forward**
-        # *   **Reverse**
+        # - **Forward**: forward.
+        # - **Reverse**: reverse.
         # 
-        # > 
-        # *   Default value: **Forward**.
-        # *   You can set this parameter to **Reverse** to reset the reverse synchronization task only when the topology is two-way synchronization.
+        # > - Default value: **Forward**.
+        # - You can set this parameter to **Reverse** to reset the reverse synchronization task only if the topology of the data synchronization instance is two-way synchronization.
         self.synchronization_direction = synchronization_direction
 
     def validate(self):

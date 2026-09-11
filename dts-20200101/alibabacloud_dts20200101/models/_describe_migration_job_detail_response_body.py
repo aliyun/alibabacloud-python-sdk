@@ -23,32 +23,20 @@ class DescribeMigrationJobDetailResponseBody(DaraModel):
     ):
         self.data_initialization_detail_list = data_initialization_detail_list
         self.data_synchronization_detail_list = data_synchronization_detail_list
-        # Specifies whether to query the details of incremental data migration. Valid values:
-        # 
-        # *   **true**: yes
-        # 
-        # *   **false**: no
-        # 
-        # > Default value: **false**
-        self.err_code = err_code
-        # The ID of the request.
-        self.err_message = err_message
         # The error code returned if the call failed.
+        self.err_code = err_code
+        # The error message returned if the call failed.
+        self.err_message = err_message
+        # The page number.
         self.page_number = page_number
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The maximum number of migration instances that can be displayed on one page.
         self.page_record_count = page_record_count
-        # Specifies whether to query the details of full data migration. Valid values:
-        # 
-        # *   **true**: yes
-        # 
-        # *   **false**: no
-        # 
-        # > Default value: **false**
+        # The request ID.
         self.request_id = request_id
         self.structure_initialization_detail_list = structure_initialization_detail_list
-        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
+        # Indicates whether the request was successful.
         self.success = success
-        # Resource group ID.
+        # The total number of records.
         self.total_record_count = total_record_count
 
     def validate(self):

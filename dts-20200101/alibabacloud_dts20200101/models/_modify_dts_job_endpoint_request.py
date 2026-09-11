@@ -17,7 +17,10 @@ class ModifyDtsJobEndpointRequest(DaraModel):
         endpoint_instance_type: str = None,
         endpoint_ip: str = None,
         endpoint_port: str = None,
+        endpoint_primary_vsw_id: str = None,
         endpoint_region_id: str = None,
+        endpoint_secondary_vsw_id: str = None,
+        endpoint_vpc_id: str = None,
         modify_account: bool = None,
         password: str = None,
         region_id: str = None,
@@ -29,95 +32,108 @@ class ModifyDtsJobEndpointRequest(DaraModel):
         username: str = None,
         zero_etl_job: bool = None,
     ):
-        # The ID of the Alibaba Cloud account (primary account) to which the database instance belongs.
-        # >  Passing this parameter indicates that cross-Alibaba Cloud account data synchronization will be performed, and you also need to pass the **RoleName** parameter.
-        self.aliyun_uid = aliyun_uid
-        # When the database type is **PostgreSQL**, **PolarDB for PostgreSQL**, or **AnalyticDB PostgreSQL**, it represents the database name; when the database type is **MongoDB**, it represents the authentication database name.
-        # > This parameter is only available and must be provided when the database type is **PostgreSQL**, **PolarDB for PostgreSQL**, **AnalyticDB PostgreSQL**, or **MongoDB**.
-        self.database = database
-        # Specifies whether to perform only a precheck. Valid values:
+        # The ID of the Alibaba Cloud account that owns the database instance.
         # 
-        # *   **true**: Yes. After the precheck is passed, the database is not changed.
-        # *   **false** (default): No. After the precheck is passed, the system changes the original database of the DTS task and runs the task.
+        # > Specifying this parameter indicates cross-account data synchronization. You must also specify the **RoleName** parameter.
+        self.aliyun_uid = aliyun_uid
+        # The database name when the database type is **PostgreSQL**, **PolarDB for PostgreSQL**, or **AnalyticDB PostgreSQL**. The authentication database name when the database type is **MongoDB**.
+        # 
+        # > This parameter is available and required only when the database type is **PostgreSQL**, **PolarDB for PostgreSQL**, **AnalyticDB PostgreSQL**, or **MongoDB**.
+        self.database = database
+        # Specifies whether to perform only a dry run. Valid values:
+        # 
+        # - **true**: Yes. After the dry run succeeds, the instance is not modified.
+        # - **false** (default): No. After the dry run succeeds, the database instance of the DTS task is modified and the task runs.
         self.dry_run = dry_run
-        # The ID of the DTS instance. If this parameter is not provided, **DtsJobId** must be specified.
+        # The ID of the DTS instance.
+        # > If you do not specify this parameter, you must specify **DtsJobId**.
         self.dts_instance_id = dts_instance_id
-        # DTS job ID, which can be queried by calling [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html).
-        # > If this parameter is not provided, **DtsInstanceId** must be filled in.
+        # The ID of the DTS task. You can call [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) to query the task ID.
+        # 
+        # > If you do not specify this parameter, you must specify **DtsInstanceId**.
         self.dts_job_id = dts_job_id
-        # The database instance to be modified, with values:
-        # - **src**: Source database instance. - **dest**: Target database instance.
+        # The database instance to be modified. Valid values:
+        # 
+        # - **src**: source instance.
+        # - **dest**: destination instance.
         # 
         # This parameter is required.
         self.endpoint = endpoint
-        # ID of the database instance.
+        # The ID of the database instance.
         self.endpoint_instance_id = endpoint_instance_id
-        # The type of the database. Valid values:
+        # The type of the database instance. Valid values:
         # 
-        # *   **rds**: ApsaraDB RDS for MySQL instance, ApsaraDB RDS for SQL Server instance, or ApsaraDB RDS for PostgreSQL instance.
-        # *   **polardb**: PolarDB for MySQL cluster or PolarDB for PostgreSQL cluster.
-        # *   **mongodb**: ApsaraDB for MongoDB replica set instance.
-        # *   **distributed_mongodb**: ApsaraDB for MongoDB sharded cluster instance.
-        # *   **greenplum**: AnalyticDB for PostgreSQL instance.
-        # *   **kafka**: ApsaraMQ for Kafka instance.
-        # *   **ecs**: self-managed database that is hosted on an Elastic Compute Service (ECS) instance. If you set this parameter to ecs, the database must be the supported one.
-        # *   **express**: database that is connected over Express Connect. If you set this parameter to express, the database must be the supported one.
-        # *   **other**: database that is connected over Internet. If you set this parameter to other, the database must be the supported one.
+        # - **rds**: ApsaraDB RDS for MySQL or ApsaraDB RDS for PostgreSQL.
+        # - **polardb**: PolarDB for MySQL or PolarDB for PostgreSQL.
+        # - **mongodb**: when used as the source, ApsaraDB for MongoDB (replica set architecture). When used as the destination, ApsaraDB for MongoDB (replica set or sharded cluster architecture).
+        # - **distributed_mongodb**: supported only as the source of a distributed instance. Indicates ApsaraDB for MongoDB (sharded cluster architecture).
         # 
-        # > 
+        # > The incremental node of a distributed instance must obtain data changes from the source through Oplog.
         # 
-        # *   The following types of databases are supported: **MySQL**, **PolarDB for MySQL**, **PostgreSQL**, **PolarDB for PostgreSQL**, **MongoDB**, **SQL Server**, **Kafka**, and **AnalyticDB for PostgreSQL**.
+        # - **greenplum**: cloud-native data warehouse AnalyticDB for PostgreSQL.
+        # - **kafka**: ApsaraMQ for Kafka.
+        # - **ecs**: self-managed database on an ECS instance (only supported database types).
+        # - **express**: database connected over Express Connect (only supported database types).
+        # - **other**: database connected over the Internet (only supported database types).
         # 
-        # *   If the original database is an ApsaraDB for MongoDB sharded cluster instance, the new database must have the same number of shards as the original database.
-        # *   If the database that you want to change is a source **PostgreSQL** database, you must make sure that the latency of the DTS instance is less than 30 seconds and no data is written to the source database during the change. Otherwise, data inconsistency may occur.
-        # *   The value of this parameter is case-insensitive.
+        # > - Currently supported database types include **MySQL**, **PolarDB for MySQL**, **PostgreSQL**, **PolarDB for PostgreSQL**, **MongoDB**, **Kafka**, and **AnalyticDB PostgreSQL**.
+        # - If the database is MongoDB (sharded cluster), the number of shards in the new database must be the same as that in the original MongoDB (sharded cluster).
+        # - If the source instance is to be modified and the database type is **PostgreSQL**, make sure that the latency of the DTS instance is less than 30 seconds and stop writing data to the source. Otherwise, inconsistent data may occur.
+        # - The parameter values are case-insensitive.
         # 
         # This parameter is required.
         self.endpoint_instance_type = endpoint_instance_type
-        # The IP of the database instance.
+        # The IP address of the database instance.
         self.endpoint_ip = endpoint_ip
-        # port of the database instance.
+        # The port of the database instance.
         self.endpoint_port = endpoint_port
-        # The ID of the region in which the database resides.
+        # The primary vSwitch for Express Connect access.
+        self.endpoint_primary_vsw_id = endpoint_primary_vsw_id
+        # The region to which the database instance belongs.
         self.endpoint_region_id = endpoint_region_id
-        # Specifies whether to change the password of the database account. Valid values:
+        # The secondary vSwitch for Express Connect access.
+        self.endpoint_secondary_vsw_id = endpoint_secondary_vsw_id
+        # The VPC ID for Express Connect access.
+        self.endpoint_vpc_id = endpoint_vpc_id
+        # Specifies whether to modify the account and password. Valid values:
         # 
-        # *   **true**
-        # *   **false** (default)
+        # - **true**: Yes.
+        # - **false** (default): No.
         self.modify_account = modify_account
-        # The password of the database account.
+        # The database password.
         # 
-        # >  This parameter is valid only if **ModifyAccount** is set to **true**.
+        # > This parameter takes effect only when **ModifyAccount** is set to **true**.
         self.password = password
-        # The ID of the region in which the DTS instance resides.
+        # The region to which the DTS instance belongs.
         self.region_id = region_id
-        # Resource group ID.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Cross Alibaba Cloud account role name. When performing data synchronization across Alibaba Cloud accounts, this parameter must be passed. For the required permissions and authorization methods for this role, please refer to [How to Configure RAM Authorization for Cross-Account Data Migration or Synchronization](https://help.aliyun.com/document_detail/48468.html).
+        # The name of the RAM role for cross-account access.
+        # 
+        # > Specify this parameter when performing cross-account data synchronization. For the required permissions and authorization method of this role, see [Configure RAM authorization for cross-account data migration or synchronization](https://help.aliyun.com/document_detail/48468.html).
         self.role_name = role_name
-        # The account password of the shard of the ApsaraDB for MongoDB sharded cluster instance.
+        # The password of the shard in the MongoDB sharded cluster instance.
         # 
-        # > 
-        # 
-        # *   This parameter is valid and required only if the source database is an ApsaraDB for MongoDB sharded cluster instance.
-        # 
-        # *   This parameter is valid only if **ModifyAccount** is set to **true**.
+        # > - This parameter is available and required only when the source database instance is ApsaraDB for MongoDB (sharded cluster architecture).
+        # - This parameter takes effect only when **ModifyAccount** is set to **true**.
         self.shard_password = shard_password
-        # The account username of the shard of the ApsaraDB for MongoDB sharded cluster instance.
+        # The account of the shard in the MongoDB sharded cluster instance.
         # 
-        # > 
-        # 
-        # *   This parameter is valid and required only if the source database is an ApsaraDB for MongoDB sharded cluster instance.
-        # 
-        # *   This parameter is valid only if **ModifyAccount** is set to **true**.
+        # > - This parameter is available and required only when the source database instance is ApsaraDB for MongoDB (sharded cluster architecture).
+        # - This parameter takes effect only when **ModifyAccount** is set to **true**.
         self.shard_username = shard_username
-        # Synchronization direction, with values:
-        # - **Forward** (default): Forward. - **Reverse**: Reverse.
+        # The synchronization direction. Valid values:
+        # 
+        # - **Forward** (default): forward.
+        # - **Reverse**: reverse.
         self.synchronization_direction = synchronization_direction
         # The database account.
         # 
-        # >  This parameter is valid only if **ModifyAccount** is set to **true**.
+        # > This parameter takes effect only when **ModifyAccount** is set to **true**.
         self.username = username
+        # Specifies whether this is a seamless integration (zero-ETL) node. Valid values:
+        # - **true**: Yes.
+        # - **false**: No.
         self.zero_etl_job = zero_etl_job
 
     def validate(self):
@@ -158,8 +174,17 @@ class ModifyDtsJobEndpointRequest(DaraModel):
         if self.endpoint_port is not None:
             result['EndpointPort'] = self.endpoint_port
 
+        if self.endpoint_primary_vsw_id is not None:
+            result['EndpointPrimaryVswId'] = self.endpoint_primary_vsw_id
+
         if self.endpoint_region_id is not None:
             result['EndpointRegionId'] = self.endpoint_region_id
+
+        if self.endpoint_secondary_vsw_id is not None:
+            result['EndpointSecondaryVswId'] = self.endpoint_secondary_vsw_id
+
+        if self.endpoint_vpc_id is not None:
+            result['EndpointVpcId'] = self.endpoint_vpc_id
 
         if self.modify_account is not None:
             result['ModifyAccount'] = self.modify_account
@@ -225,8 +250,17 @@ class ModifyDtsJobEndpointRequest(DaraModel):
         if m.get('EndpointPort') is not None:
             self.endpoint_port = m.get('EndpointPort')
 
+        if m.get('EndpointPrimaryVswId') is not None:
+            self.endpoint_primary_vsw_id = m.get('EndpointPrimaryVswId')
+
         if m.get('EndpointRegionId') is not None:
             self.endpoint_region_id = m.get('EndpointRegionId')
+
+        if m.get('EndpointSecondaryVswId') is not None:
+            self.endpoint_secondary_vsw_id = m.get('EndpointSecondaryVswId')
+
+        if m.get('EndpointVpcId') is not None:
+            self.endpoint_vpc_id = m.get('EndpointVpcId')
 
         if m.get('ModifyAccount') is not None:
             self.modify_account = m.get('ModifyAccount')

@@ -15,20 +15,23 @@ class DescribeCheckJobsRequest(DaraModel):
         page_size: int = None,
         resource_group_id: str = None,
     ):
-        # Check the task job ID.
+        # The ID of the data validation task.
         self.check_job_id = check_job_id
-        # The type of the check
-        # >>1 full quantity, 2 incremental, 3 all
+        # The data validation method. Valid values:
+        # 
+        # - **1**: full data validation.
+        # - **2**: incremental data validation.
+        # - **3**: all.
         self.check_type = check_type
-        # Data migration instance ID, which can be queried by calling the **describemigrationjobs** API.
+        # The ID of the data migration instance. You can call the **DescribeMigrationJobs** operation to query the ID.
         self.instance_id = instance_id
-        # The name of the data migration or synchronization job.
+        # The name of the data migration or data synchronization task.
         self.job_name = job_name
-        # The number of the page to return. The value must be an integer that is greater than **0**. Default value: **1**.
+        # The page number.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of records per page. Valid values: **30**, **50**, and **100**. Default value: **30**.
         self.page_size = page_size
-        # Resource group ID.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):

@@ -23,17 +23,17 @@ class DescribeSynchronizationJobStatusListResponseBody(DaraModel):
         self.err_code = err_code
         # The error message returned if the call failed.
         self.err_message = err_message
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of data synchronization instances displayed on one page.
+        # The number of synchronization instances displayed on one page.
         self.page_record_count = page_record_count
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # Indicates whether the request was successful.
         self.success = success
-        # The status of the data synchronization tasks.
+        # The status list of synchronization jobs.
         self.synchronization_job_list_status_list = synchronization_job_list_status_list
-        # The total number of data synchronization instances.
+        # The total number of synchronization instances that were queried.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -112,9 +112,9 @@ class DescribeSynchronizationJobStatusListResponseBodySynchronizationJobListStat
         synchronization_direction_info_list: List[main_models.DescribeSynchronizationJobStatusListResponseBodySynchronizationJobListStatusListSynchronizationDirectionInfoList] = None,
         synchronization_job_id: str = None,
     ):
-        # The details of data synchronization tasks in each direction.
+        # The list of synchronization direction details.
         self.synchronization_direction_info_list = synchronization_direction_info_list
-        # The ID of the data synchronization instance.
+        # The instance ID of the data synchronization instance.
         self.synchronization_job_id = synchronization_job_id
 
     def validate(self):
@@ -158,27 +158,26 @@ class DescribeSynchronizationJobStatusListResponseBodySynchronizationJobListStat
         status: str = None,
         synchronization_direction: str = None,
     ):
-        # The UNIX timestamp generated when the latest data record was synchronized.
+        # The timestamp of the latest synchronized data, in UNIX timestamp format.
         # 
-        # >  You can use a search engine to obtain a UNIX timestamp converter.
+        # > You can use a search engine to find a UNIX timestamp converter.
         self.checkpoint = checkpoint
-        # The status of the data synchronization task in this direction. Valid values:
+        # The synchronization status of the synchronization instance in this direction. Valid values:
         # 
-        # *   **NotStarted**: The task is not started.
-        # *   **Prechecking**: The task is being prechecked.
-        # *   **PrecheckFailed**: The task failed to pass the precheck.
-        # *   **Initializing**: The task is performing initial synchronization.
-        # *   **InitializeFailed**: Initial synchronization failed.
-        # *   **Synchronizing**: The task is synchronizing data.
-        # *   **Failed**: The task failed to synchronize data.
-        # *   **Suspending**: The task is paused.
-        # *   **Modifying**: The objects in the task are being modified.
-        # *   **Finished**: The task is completed.
+        # - **NotStarted**: not started.
+        # - **Prechecking**: running a precheck.
+        # - **PrecheckFailed**: precheck failed.
+        # - **Initializing**: performing initial synchronization.
+        # - **InitializeFailed**: initial synchronization failed.
+        # - **Synchronizing**: synchronizing.
+        # - **Failed**: synchronization failed.
+        # - **Suspending**: paused.
+        # - **Modifying**: modifying synchronization objects.
+        # - **Finished**: completed.
         self.status = status
         # The synchronization direction. Valid values:
-        # 
-        # *   **Forward**
-        # *   **Reverse**
+        # - **Forward**: forward.
+        # - **Reverse**: reverse.
         self.synchronization_direction = synchronization_direction
 
     def validate(self):

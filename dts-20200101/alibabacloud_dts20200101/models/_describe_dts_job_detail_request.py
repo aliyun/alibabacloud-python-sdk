@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class DescribeDtsJobDetailRequest(DaraModel):
     def __init__(
         self,
+        db_object_output_type: str = None,
         dts_instance_id: str = None,
         dts_job_id: str = None,
         region_id: str = None,
@@ -15,30 +16,27 @@ class DescribeDtsJobDetailRequest(DaraModel):
         synchronization_direction: str = None,
         zero_etl_job: bool = None,
     ):
-        # The ID of the data migration, data synchronization, or change tracking instance.
+        self.db_object_output_type = db_object_output_type
+        # The instance ID of the data migration, data synchronization, or subscribe instance.
         self.dts_instance_id = dts_instance_id
         # The ID of the data migration, data synchronization, or change tracking task.
         self.dts_job_id = dts_job_id
-        # The ID of the region in which the Data Transmission Service (DTS) instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The ID of the region in which the task resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Specifies whether to return the information about all data synchronization subtasks. Default value: **false**. A value of false indicates that the system returns only the information about a data synchronization subtask that is running or was most recently run.
+        # Specifies whether to return information about all synchronization subtasks. Default value: **false**, which returns only the synchronization subtask that is in progress or the most recently executed synchronization subtask.
         self.sync_sub_job_history = sync_sub_job_history
         # The synchronization direction. Valid values:
+        # - **Forward**: forward.
+        # - **Reverse**: reverse.
         # 
-        # *   **Forward**
-        # *   **Reverse**
-        # 
-        # > 
-        # 
-        # *   The default value is **Forward**.
-        # *   The value **Reverse** takes effect only if the topology of the data synchronization instance is two-way synchronization.
+        # > - Default value: **Forward**.
+        # - The value **Reverse** takes effect only when the synchronization topology of the data synchronization instance is two-way synchronization.
         self.synchronization_direction = synchronization_direction
-        # Specifies whether to query only zero-extract, transform, load (ETL) integration tasks. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Specifies whether the task is a zero-ETL task. Valid values:
+        # - **true**: The task is a zero-ETL task.
+        # - **false**: The task is not a zero-ETL task.
         self.zero_etl_job = zero_etl_job
 
     def validate(self):
@@ -49,6 +47,9 @@ class DescribeDtsJobDetailRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.db_object_output_type is not None:
+            result['DbObjectOutputType'] = self.db_object_output_type
+
         if self.dts_instance_id is not None:
             result['DtsInstanceID'] = self.dts_instance_id
 
@@ -74,6 +75,9 @@ class DescribeDtsJobDetailRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DbObjectOutputType') is not None:
+            self.db_object_output_type = m.get('DbObjectOutputType')
+
         if m.get('DtsInstanceID') is not None:
             self.dts_instance_id = m.get('DtsInstanceID')
 

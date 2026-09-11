@@ -12,12 +12,12 @@ class DescribeDedicatedClusterMonitorRuleRequest(DaraModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
         self.dedicated_cluster_id = dedicated_cluster_id
         self.owner_id = owner_id
-        # The ID of the region in which the instance resides.
+        # The region in which the instance resides.
         self.region_id = region_id
-        # Resource group ID.
+        # The resource group ID. This is a global parameter that does not need to be passed in for this operation.
         self.resource_group_id = resource_group_id
 
     def validate(self):

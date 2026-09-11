@@ -14,29 +14,28 @@ class SuspendDtsJobRequest(DaraModel):
         synchronization_direction: str = None,
         zero_etl_job: bool = None,
     ):
-        # The ID of the data migration, data synchronization, or change tracking instance.
+        # The migration, synchronization, or subscribe instance ID.
         self.dts_instance_id = dts_instance_id
-        # The ID of the Data Transmission Service (DTS) task. The DTS task can be a data migration, data synchronization, or change tracking task.
+        # The ID of the data migration, synchronization, or change tracking task.
         # 
-        # >  You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to obtain the task ID.
+        # > You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
         self.dts_job_id = dts_job_id
-        # The ID of the region in which the DTS instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # Resource group ID.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         # The synchronization direction. Valid values:
         # 
-        # *   **Forward**
-        # *   **Reverse**
+        # - **Forward**: forward.
+        # - **Reverse**: reverse.
         # 
-        # > 
-        # 
-        # *   The default value is **Forward**.
-        # 
-        # *   You can set this parameter to **Reverse** only if the topology is two-way synchronization.
+        # > - The default value is **Forward**.
+        # - You can set this parameter to **Reverse** to suspend the reverse synchronization link only if the topology of the data synchronization instance is two-way synchronization.
         self.synchronization_direction = synchronization_direction
-        # Whether it is a seamless integration (Zero-ETL) task, the value can be:
-        # - **false**: No. - **true**: Yes.
+        # Specifies whether the node is a seamless integration (Zero-ETL) node. Valid values:
+        # 
+        # - **false**: no.
+        # - **true**: yes.
         self.zero_etl_job = zero_etl_job
 
     def validate(self):

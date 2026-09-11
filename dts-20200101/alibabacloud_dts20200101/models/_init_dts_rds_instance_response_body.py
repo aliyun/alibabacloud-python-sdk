@@ -15,17 +15,17 @@ class InitDtsRdsInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The built-in account that is used by DTS to connect to the node.
+        # The built-in account that DTS uses to connect to the unit node.
         self.admin_account = admin_account
         # The password of the built-in account.
         self.admin_password = admin_password
-        # The error code returned if the request fails.
+        # The error code returned if the call fails.
         self.err_code = err_code
-        # The error message returned if the request fails.
+        # The error message returned if the call fails.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success

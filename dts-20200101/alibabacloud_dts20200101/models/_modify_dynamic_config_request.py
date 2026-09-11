@@ -14,40 +14,37 @@ class ModifyDynamicConfigRequest(DaraModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The specific throttling configuration.
+        # The rate limit configurations.
         # 
-        # *   **dts.datamove.blaster.qps.max**: The rate at which queries are made to the source database per second.
-        # *   **dts.datamove.source.rps.max**: The number of rows that are fully synchronized or migrated per second.
-        # *   **dts.datamove.source.bps.max**: the amount of data processed per second for full synchronization or migration. Unit: MB.
+        # - **dts.datamove.blaster.qps.max**: the queries per second (QPS) for querying the source database.
+        # - **dts.datamove.source.rps.max**: the records per second (RPS) for full data synchronization or migration.
+        # - **dts.datamove.source.bps.max**: the data volume per second for full data synchronization or migration. Unit: bytes per second.
         # 
-        # > 
-        # 
-        # *   If you set the **JobCode** parameter to **03**, you need to specify **true** for the **EnableLimit** parameter. Otherwise, the configuration cannot take effect.
-        # 
-        # *   If you set the **JobCode** parameter to **04** or **07**, you only need to specify the **dts.datamove.source.rps.max** and **dts.datamove.source.bps.max** parameters.
-        # *   A value of \\*\\*-1\\*\\* indicates no rate limit.
+        # > - If **JobCode** is set to **03**, you must set **EnableLimit** to **true** for the three parameters to take effect.
+        # - If **JobCode** is set to **04** or **07**, you only need to configure **dts.datamove.source.rps.max** and **dts.datamove.source.bps.max**.
+        # - A value of **-1** indicates that no rate limit is applied.
         self.config_list = config_list
-        # The ID of the data migration or synchronization task.
+        # The ID of the data synchronization or migration task.
         # 
-        # >  You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
+        # > You can call [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) to obtain the task ID.
         # 
         # This parameter is required.
         self.dts_job_id = dts_job_id
-        # Specifies whether to enable throttling for data synchronization or migration. Valid values: **true** and **false**.
+        # Specifies whether to limit the migration rate of the full data synchronization or migration task. Valid values: **true** and **false**.
         # 
-        # >  Only needs to be configured when the **JobCode** parameter is set to **03**.
+        # > This parameter is required only when **JobCode** is set to **03**.
         self.enable_limit = enable_limit
-        # The task type. Valid values:
+        # The task code. Valid values:
         # 
-        # *   **03**: a full data synchronization or full data migration task.
-        # *   **04**: an incremental data migration task.
-        # *   **07**: an incremental data synchronization task.
+        # - **03**: full data synchronization or migration task.
+        # - **04**: incremental data migration task.
+        # - **07**: incremental data synchronization task.
         # 
         # This parameter is required.
         self.job_code = job_code
-        # The region ID of the DTS instance. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The ID of the region where the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # Resource group ID.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):

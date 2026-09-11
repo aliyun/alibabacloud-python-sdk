@@ -34,66 +34,66 @@ class DescribeDedicatedClusterResponseBody(DaraModel):
         used_du: int = None,
         used_mem_gbsize: int = None,
     ):
-        # The CPU utilization. Unit: percentage.
+        # The CPU utilization percentage.
         self.cpu_utilization = cpu_utilization
-        # The ID of the cluster.
+        # The cluster ID.
         self.dedicated_cluster_id = dedicated_cluster_id
-        # The name of the cluster.
+        # The cluster name.
         self.dedicated_cluster_name = dedicated_cluster_name
-        # The disk usage.
+        # The disk utilization.
         self.disk_utilization = disk_utilization
-        # The ID of the instance.
+        # The instance ID.
         self.dts_instance_id = dts_instance_id
-        # The number of DTS units (DUs).
+        # The number of DUs.
         self.du = du
-        # The DU usage. Unit: percentage.
+        # The DU utilization percentage.
         self.du_utilization = du_utilization
-        # The error code returned if the request failed.
+        # The error code returned when the call fails.
         self.err_code = err_code
-        # The error message returned if the request failed.
+        # The error message returned when the call fails.
         self.err_message = err_message
-        # The time when the cluster was created.
+        # The creation time.
         self.gmt_created = gmt_created
-        # The time when the cluster stopped.
+        # The end time.
         self.gmt_finished = gmt_finished
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The memory usage.
+        # The memory utilization.
         self.mem_utilization = mem_utilization
         # The number of nodes in the cluster.
         self.node_count = node_count
-        # The number of DUs that exceeds the upper limit.
+        # The number of oversold DUs.
         self.oversold_du = oversold_du
-        # The ID of the region in which the instance resides.
+        # The region in which the instance resides.
         self.region_id = region_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The status of the cluster. Valid values:
+        # The cluster status. Valid values:
         # 
-        # *   **init**: The cluster is being initialized.
-        # *   **schedule**: The cluster is pending scheduling.
-        # *   **running**: The cluster is running.
-        # *   **upgrade**: The cluster is being upgraded.
-        # *   **downgrade**: The cluster is being downgraded.
-        # *   **locked**: The cluster is locked.
-        # *   **releasing**: The cluster is being released.
-        # *   **released**: The cluster is released.
+        # - **init**: initialization.
+        # - **schedule**: pending scheduling.
+        # - **running**: running.
+        # - **upgrade**: upgrading.
+        # - **downgrade**: downgrading.
+        # - **locked**: locked.
+        # - **releasing**: being released.
+        # - **released**: released.
         self.state = state
         # Indicates whether the request was successful.
         self.success = success
         # The total number of CPU cores.
         self.total_cpu_core = total_cpu_core
-        # The total disk size. Unit: GB.
+        # The total disk size, in GB.
         self.total_disk_gbsize = total_disk_gbsize
-        # The total amount of memory. Unit: GB.
+        # The total memory size, in GB.
         self.total_mem_gbsize = total_mem_gbsize
         # The number of used CPU cores.
         self.used_cpu_core = used_cpu_core
-        # The used disk size. Unit: GB.
+        # The used disk size, in GB.
         self.used_disk_gbsize = used_disk_gbsize
         # The number of used DUs.
         self.used_du = used_du
-        # The amount of used memory. Unit: GB.
+        # The used memory size, in GB.
         self.used_mem_gbsize = used_mem_gbsize
 
     def validate(self):

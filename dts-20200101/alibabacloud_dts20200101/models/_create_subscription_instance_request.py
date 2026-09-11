@@ -20,37 +20,37 @@ class CreateSubscriptionInstanceRequest(DaraModel):
         used_time: int = None,
     ):
         self.source_endpoint = source_endpoint
-        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter. This parameter will be discontinued.
         self.account_id = account_id
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** parameter can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. Generate a value from your client to make sure that the value is unique among different requests. **ClientToken** supports only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         self.owner_id = owner_id
-        # The billing method of the change tracking instance.
+        # The billing method.
         # 
-        # *   **Postpaid**: pay-as-you-go
-        # *   **Prepaid**: subscription
+        # - **Postpaid**: pay-as-you-go. This is the default value.
+        # - **Prepaid**: subscription.
         self.pay_type = pay_type
-        # The billing cycle of the subscription instance. Valid values:
+        # The billing method of the subscription instance. Valid values:
         # 
-        # *   **Year**
-        # *   **Month**
+        # - **Year**: annual subscription.
+        # - **Month**: monthly subscription.
         # 
-        # >  You must specify this parameter only if you set the PayType parameter to **Prepaid**.
+        # > This parameter is valid and required only when PayType is set to **Prepaid** (subscription).
         self.period = period
-        # The region ID of the change tracking instance. The region ID is the same as that of the source instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The region ID. Set this parameter to the region where the subscription object resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         # 
         # This parameter is required.
         self.region = region
-        # The region ID of the change tracking instance. You do not need to specify this parameter because this parameter will be removed in the future.
+        # The region to which the change tracking instance belongs. You do not need to specify this parameter. This parameter will be discontinued.
         self.region_id = region_id
-        # Resource group ID.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The subscription length.
+        # The purchase duration of the subscription instance.
         # 
-        # *   If the billing cycle is **Year**, the value range is **1 to 5**.
-        # *   If the billing cycle is **Month**, the value range is **1 to 60**.
+        # - If the billing method is set to **Year** (annual subscription), the valid values are **1 to 5**.
+        # - If the billing method is set to **Month** (monthly subscription), the valid values are **1 to 60**.
         # 
-        # >  You must specify this parameter only if you set the PayType parameter to **Prepaid**.
+        # > This parameter is valid and required only when PayType is set to **Prepaid** (subscription).
         self.used_time = used_time
 
     def validate(self):
@@ -134,9 +134,8 @@ class CreateSubscriptionInstanceRequestSourceEndpoint(DaraModel):
         self,
         instance_type: str = None,
     ):
-        # The type of the source instance. Valid values: **MySQL**, **PolarDB**, **DRDS**, and **Oracle**.
-        # 
-        # >  Default value: **MySQL**.
+        # 数据订阅的实例类型，取值为：**MySQL**、**PolarDB**、**DRDS**、**Oracle**。
+        # > 默认取值为：**MySQL**。
         self.instance_type = instance_type
 
     def validate(self):

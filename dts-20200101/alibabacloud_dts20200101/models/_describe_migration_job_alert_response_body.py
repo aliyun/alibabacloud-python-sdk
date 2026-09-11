@@ -19,29 +19,33 @@ class DescribeMigrationJobAlertResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # Phone number of the contact for delay alarm.
+        # The mobile phone number of the contact for latency alerts.
         self.delay_alert_phone = delay_alert_phone
-        # Whether to monitor the delay status, return values:
-        # - **enable**: Yes. - **disable**: No.
+        # Indicates whether latency status monitoring is enabled. Valid values:
+        # 
+        # - **enable**: Enabled.
+        # - **disable**: Disabled.
         self.delay_alert_status = delay_alert_status
-        # The threshold for triggering a delayed alarm, in seconds.
+        # The threshold that triggers a latency alert. Unit: seconds.
         self.delay_over_seconds = delay_over_seconds
-        # Error code returned when the call fails.
+        # The error code returned when the call fails.
         self.err_code = err_code
-        # Indicates whether the call was successful.
+        # The error message returned when the call fails.
         self.err_message = err_message
-        # Phone number of the contact for abnormal alarm notifications
+        # The mobile phone number of the contact for error alerts.
         self.error_alert_phone = error_alert_phone
-        # Whether to monitor for abnormal status, return values:
-        # - **enable**: Yes. - **disable**: No.
+        # Indicates whether error status monitoring is enabled. Valid values:
+        # 
+        # - **enable**: Enabled.
+        # - **disable**: Disabled.
         self.error_alert_status = error_alert_status
-        # Data migration instance ID.
+        # The ID of the data migration instance.
         self.migration_job_id = migration_job_id
-        # Name of the data migration task.
+        # The name of the data migration task.
         self.migration_job_name = migration_job_name
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Whether the request was successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

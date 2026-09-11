@@ -22,39 +22,38 @@ class DescribeMetricListRequest(DaraModel):
     ):
         # The ID of the Alibaba Cloud account.
         self.account_id = account_id
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. **The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # Ensures the idempotency of the request. Generate a parameter value from your client to make sure that the value is unique among different requests. **ClientToken** supports only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The ID of the data migration or synchronization task.
+        # The ID of the data migration or data synchronization task.
         self.dts_job_id = dts_job_id
-        # The timestamp that indicates the end of the time range to query. Unit: milliseconds.
+        # The end timestamp, in milliseconds.
         self.end_time = end_time
         # Default value: **ALIYUN**.
         self.env = env
-        # *   **InternetOut**: the outbound traffic over the Internet. Unit: byte.
-        # *   **diskusage_utilization**: the disk usage.
-        # *   **IntranetInRate**: the inbound traffic over the internal network. Unit: byte.
-        # *   **InternetIn**: the inbound traffic from the Internet. Unit: byte.
-        # *   **cpu_total**: the CPU utilization.
-        # *   **memory_usedutilization**: the memory usage.
-        # *   **IntranetOutRate**: the outbound traffic over the internal network. Unit: byte.
+        # - **InternetOut**: outbound Internet traffic, in bytes.
+        # - **diskusage_utilization**: disk usage.
+        # - **IntranetInRate**: inbound internal network traffic, in bytes.
+        # - **InternetIn**: inbound Internet traffic, in bytes.
+        # - **cpu_total**: CPU utilization.
+        # - **memory_usedutilization**: memory utilization.
+        # - **IntranetOutRate**: outbound internal network traffic, in bytes.
         # 
         # This parameter is required.
         self.metric_name = metric_name
-        # Indicates whether the metrics of the cluster or a node are queried. Valid values:
-        # 
-        # *   **CLUSTER**: The metrics of the cluster are queried.
-        # *   **NODE**: The metrics of a node are queried.
+        # Specifies whether to query a cluster or a node. Valid values:
+        # - **CLUSTER**: cluster.
+        # - **NODE**: node.
         self.metric_type = metric_type
         self.owner_id = owner_id
-        # The monitored object. If the **MetricType** parameter is set to **NODE**, set this parameter to the ID of the node that is monitored.
+        # The observation value. If **MetricType** is set to **NODE**, the value is **nodeid**.
         # 
         # This parameter is required.
         self.param = param
-        # The monitoring interval. Unit: seconds. The minimum value is 15.
+        # The observation interval in seconds. The minimum interval is 15 seconds.
         self.period = period
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The timestamp that indicates the beginning of the time range to query. Unit: milliseconds.
+        # The start timestamp, in milliseconds.
         self.start_time = start_time
 
     def validate(self):

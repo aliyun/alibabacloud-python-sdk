@@ -19,33 +19,33 @@ class CreateDedicatedClusterMonitorRuleRequest(DaraModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The alert threshold for CPU utilization. Unit: percentage.
+        # The CPU alert threshold. Unit: %.
         self.cpu_alarm_threshold = cpu_alarm_threshold
-        # The ID of the cluster.
+        # The cluster ID.
         # 
         # This parameter is required.
         self.dedicated_cluster_id = dedicated_cluster_id
-        # The alert threshold for disk usage. Unit: percentage.
+        # The disk alert threshold. Unit: %.
         self.disk_alarm_threshold = disk_alarm_threshold
-        # The alert threshold for DTS Unit (DU) usage. Unit: percentage.
+        # The DU alert threshold. Unit: %.
         self.du_alarm_threshold = du_alarm_threshold
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The alert threshold for memory usage. Unit: percentage.
+        # The memory alert threshold. Unit: %.
         self.mem_alarm_threshold = mem_alarm_threshold
-        # Specifies whether to enable the alert feature. Valid values:
+        # The alert switch. Valid values:
         # 
-        # *   **1**: enables the alert feature.
-        # *   **0**: disables the alert feature.
+        # - **1**: on.
+        # - **0**: off.
         self.notice_switch = notice_switch
         self.owner_id = owner_id
-        # The mobile phone number to which alerts are sent. Separate multiple mobile phone numbers with commas (,).
+        # The alert phone numbers. Separate multiple phone numbers with commas (,).
         # 
         # This parameter is required.
         self.phones = phones
-        # The ID of the region in which the Data Transmission Service (DTS) instance resides.
+        # The region in which the DTS instance resides.
         self.region_id = region_id
-        # The resource group ID. This parameter is a global parameter and not required.
+        # The resource group ID. This is a global parameter and does not need to be passed in for this API operation.
         self.resource_group_id = resource_group_id
 
     def validate(self):

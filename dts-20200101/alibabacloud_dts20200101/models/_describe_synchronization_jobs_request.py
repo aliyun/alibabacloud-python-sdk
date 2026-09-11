@@ -20,28 +20,23 @@ class DescribeSynchronizationJobsRequest(DaraModel):
         synchronization_job_name: str = None,
         tag: List[main_models.DescribeSynchronizationJobsRequestTag] = None,
     ):
-        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because it will be discontinued.
         self.account_id = account_id
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The **ClientToken** parameter can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         self.owner_id = owner_id
-        # The number of the page to return. The value must be an integer that is greater than **0** and does not exceed the maximum value of the Integer data type. Default value: **1**.
+        # The page number. The value must be an integer greater than **0** and must not exceed the maximum value of the Integer data type. Default value: **1**.
         self.page_num = page_num
-        # The number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: **30**.
+        # The number of records per page. Valid values: **10**, **20**, and **30**. Default value: **30**. Maximum value: **30**.
         self.page_size = page_size
-        # The ID of the region where the data synchronization instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The region ID of the data synchronization instance. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The name of the data synchronization task.
-        # 
-        # >  Fuzzy matching is supported.
+        # The name of the synchronization instance.
+        # > Fuzzy match is supported.
         self.synchronization_job_name = synchronization_job_name
-        # The tag key. You can call the [ListTagResources](https://help.aliyun.com/document_detail/191187.html) operation to query the tag key.
-        # 
-        # > 
-        # *   N specifies the serial number of the tag. For example, Tag.1.Key specifies the key of the first tag and Tag.2.Key specifies the key of the second tag. You can specify 1 to 20 tag keys at a time.
-        # *   This parameter cannot be an empty string.
+        # The tags of the data synchronization instance. The tags are used as filter conditions. If you specify this parameter, only instances that have the specified tags are returned.
         self.tag = tag
 
     def validate(self):
@@ -126,19 +121,15 @@ class DescribeSynchronizationJobsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. You can call the [ListTagResources](https://help.aliyun.com/document_detail/191187.html) operation to query the tag key.
-        # 
-        # > 
-        # *   N specifies the serial number of the tag. For example, Tag.1.Key specifies the key of the first tag and Tag.2.Key specifies the key of the second tag. You can specify 1 to 20 tag keys at a time.
-        # *   This parameter cannot be an empty string.
+        # The tag key. You can query tag keys by calling the [ListTagResources](https://help.aliyun.com/document_detail/191187.html) operation.
+        # > - N specifies the sequence number of the tag key. For example, Tag.1.Key specifies the key of the first tag, and Tag.2.Key specifies the key of the second tag. You can specify 1 to 20 tag keys at a time.
+        # - This parameter cannot be set to an empty string.
         # 
         # This parameter is required.
         self.key = key
-        # The tag value. You can call the [ListTagResources](https://help.aliyun.com/document_detail/191187.html) operation to query the tag value.
-        # 
-        # > 
-        # *   N specifies the serial number of the tag. For example, Tag.1.Value specifies the value of the first tag and Tag.2.Value specifies the value of the second tag. You can specify 1 to 20 tag values at a time.
-        # *   This parameter can be an empty string.
+        # The tag value. You can query tag values by calling the [ListTagResources](https://help.aliyun.com/document_detail/191187.html) operation.
+        # >- N specifies the sequence number of the tag value. For example, Tag.1.Value specifies the value of the first tag, and Tag.2.Value specifies the value of the second tag. You can specify 1 to 20 tag values at a time.
+        # - This parameter can be set to an empty string.
         self.value = value
 
     def validate(self):

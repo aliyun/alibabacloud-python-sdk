@@ -17,15 +17,15 @@ class DescribeSubscriptionMetaResponseBody(DaraModel):
         subscription_meta_list: List[main_models.DescribeSubscriptionMetaResponseBodySubscriptionMetaList] = None,
         success: str = None,
     ):
-        # The error code returned if the request failed.
+        # The error code returned if the call failed.
         self.err_code = err_code
-        # The error message returned if the request failed.
+        # The error message returned if the call failed.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The details of the subtasks.
+        # The data information about the change tracking subtasks.
         self.subscription_meta_list = subscription_meta_list
         # Indicates whether the request was successful.
         self.success = success
@@ -97,13 +97,12 @@ class DescribeSubscriptionMetaResponseBodySubscriptionMetaList(DaraModel):
         sid: str = None,
         topic: str = None,
     ):
-        # The consumer offset of the subtask. It is a UNIX timestamp that is generated when the client consumes the first data record. Unit: seconds.
-        # 
-        # >  You can use a search engine to obtain a UNIX timestamp converter.
+        # The consumption checkpoint of the subtask, which is the timestamp of the first data record consumed by the client. The value is a UNIX timestamp. Unit: seconds.
+        # > You can use a search engine to find a UNIX timestamp converter.
         self.checkpoint = checkpoint
         # The objects of the subtask. For more information, see [Objects of DTS tasks](https://help.aliyun.com/document_detail/209545.html).
         self.dblist = dblist
-        # The endpoint and port number of the change tracking instance.
+        # The network address and port number of the change tracking channel.
         self.dproxy_url = dproxy_url
         # The consumer group ID of the subtask.
         self.sid = sid

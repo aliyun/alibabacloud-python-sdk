@@ -15,27 +15,20 @@ class DeleteDtsJobResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The operation that you want to perform. Set the value to **DeleteDtsJob**.
+        # The dynamic error code. This parameter will be deprecated.
         self.dynamic_code = dynamic_code
-        # The operation that you want to perform. Set the value to **DeleteDtsJob**.
+        # The dynamic error message, which is used to replace the **%s** placeholder in the **ErrMessage** response parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
-        # The error message returned if the call failed.
+        # The error code returned if the call failed.
         self.err_code = err_code
-        # The ID of the request.
+        # The error message returned if the call failed.
         self.err_message = err_message
-        # The ID of the data migration, data synchronization, or change tracking instance.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The synchronization direction. Valid values:
-        # 
-        # *   **Forward**: Data is synchronized from the source database to the destination database.
-        # *   **Reverse**: Data is synchronized from the destination database to the source database.
-        # 
-        # > 
-        # 
-        # *   Default value: **Forward**.
-        # *   You can set this parameter to **Reverse** to delete the reverse synchronization task only if the topology is two-way synchronization.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the region in which the data migration or synchronization task resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

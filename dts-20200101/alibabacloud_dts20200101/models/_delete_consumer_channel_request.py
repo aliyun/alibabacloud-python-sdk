@@ -17,19 +17,17 @@ class DeleteConsumerChannelRequest(DaraModel):
         # 
         # This parameter is required.
         self.consumer_group_id = consumer_group_id
-        # The ID of the change tracking instance. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
-        # 
-        # >  You must specify at least one of the **DtsInstanceId** and **DtsJobId** parameters.
+        # The ID of the change tracking instance. You can call [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) to query the instance ID.
+        # > You must specify one of the **DtsInstanceId** and **DtsJobId** parameters.
         self.dts_instance_id = dts_instance_id
-        # The ID of the change tracking task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
-        # 
-        # >  You must specify at least one of the **DtsInstanceId** and **DtsJobId** parameters.
+        # The ID of the change tracking task. You can call [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) to query the task ID.
+        # > You must specify one of the **DtsInstanceId** and **DtsJobId** parameters.
         self.dts_job_id = dts_job_id
-        # The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The region ID of the DTS change tracking instance. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):

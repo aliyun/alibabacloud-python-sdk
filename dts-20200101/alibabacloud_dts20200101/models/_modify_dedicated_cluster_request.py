@@ -15,20 +15,18 @@ class ModifyDedicatedClusterRequest(DaraModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the cluster.
-        # 
-        # >  You must specify one of the **InstanceId** and **DedicatedClusterId** parameters.
+        # The ID of the dedicated cluster.
+        # > Either **InstanceId** or **DedicatedClusterId** must be specified.
         self.dedicated_cluster_id = dedicated_cluster_id
         # The name of the cluster.
         self.dedicated_cluster_name = dedicated_cluster_name
-        # The ID of the instance.
-        # 
-        # >  You must specify one of the **InstanceId** and **DedicatedClusterId** parameters.
+        # The instance ID of the cluster.
+        # > Either the **InstanceId** or **DedicatedClusterId** parameter must be specified.
         self.instance_id = instance_id
         # The overcommit ratio. Unit: %.
         self.oversold_ratio = oversold_ratio
         self.owner_id = owner_id
-        # The ID of the region in which the Data Transmission Service (DTS) instance resides.
+        # The region in which the DTS instance resides.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id

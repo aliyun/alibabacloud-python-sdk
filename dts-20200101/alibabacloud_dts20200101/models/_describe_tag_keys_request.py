@@ -15,20 +15,19 @@ class DescribeTagKeysRequest(DaraModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
-        # The type of the tag. Valid values:
+        # The tag type. Valid values:
+        # - **System**: tags created by the system.
+        # - **Custom**: tags added by users.
         # 
-        # *   **Custom**: The tag is added by a user.
-        # *   **System**: The tag is added by the system.
-        # 
-        # >  By default, if the parameter is left empty, custom tags and system tags are returned.
+        # > If this parameter is left empty, publicly visible tags are returned by default.
         self.category = category
-        # The number of the page to return. Pages start from page 1. Default value: 1. This parameter is used together with PageSize.
+        # The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type. This parameter is used together with PageSize. Default value: 1.
         self.page_number = page_number
-        # The number of tags to return on each page if the DTS instance has multiple tags. Default value: 20.
+        # The number of tag keys to return on each page. Default value: 20.
         self.page_size = page_size
-        # The region ID of the DTS instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The region in which the DTS instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # Resource group ID.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         # The ID of the data migration, data synchronization, or change tracking instance. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
         self.resource_id = resource_id

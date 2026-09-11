@@ -12,9 +12,12 @@ class DescribeDocParserJobStatusRequest(DaraModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
+        # The task ID (DtsJobId) returned when the document parsing task was created.
         self.dts_job_id = dts_job_id
         self.rag_instance_id = rag_instance_id
+        # The region ID of the task. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):

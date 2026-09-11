@@ -29,11 +29,11 @@ class DescribeMigrationJobStatusResponseBody(DaraModel):
         success: str = None,
         task_id: str = None,
     ):
-        # The status of full data migration.
+        # The execution status of full data migration.
         self.data_initialization_status = data_initialization_status
-        # The status of incremental data migration.
+        # The execution status of incremental data migration.
         self.data_synchronization_status = data_synchronization_status
-        # The connection settings of the destination instance.
+        # The connection information of the destination instance.
         self.destination_endpoint = destination_endpoint
         # The error code returned if the call failed.
         self.err_code = err_code
@@ -41,36 +41,36 @@ class DescribeMigrationJobStatusResponseBody(DaraModel):
         self.err_message = err_message
         # The specification of the data migration instance. Valid values: **small**, **medium**, **large**, **xlarge**, and **2xlarge**. For more information, see [Specifications of data migration instances](https://help.aliyun.com/document_detail/26606.html).
         self.migration_job_class = migration_job_class
-        # The ID of the data migration instance.
+        # The instance ID of the data migration instance.
         self.migration_job_id = migration_job_id
-        # The name of the data migration task.
+        # The name of the data migration instance.
         self.migration_job_name = migration_job_name
         # The status of the data migration task. Valid values:
-        # 
-        # *   **NotStarted**: The task is not started.
-        # *   **Prechecking**: The task is being prechecked.
-        # *   **PrecheckFailed**: The task failed to pass the precheck.
-        # *   **Migrating**: The task is migrating data.
-        # *   **Suspending**: The task is paused.
-        # *   **MigrationFailed**: The task failed to migrate data.
-        # *   **Finished**: The task is completed.
+        # - **NotStarted**: not started.
+        # - **Prechecking**: running the precheck.
+        # - **PrecheckFailed**: precheck failed.
+        # - **Migrating**: migrating.
+        # - **Suspending**: paused.
+        # - **MigrationFailed**: migration failed.
+        # - **Finished**: migration completed.
         self.migration_job_status = migration_job_status
         # The migration types.
         self.migration_mode = migration_mode
-        # The objects that are migrated by the task.
+        # The migration objects.
         self.migration_object = migration_object
-        # The billing method of the data migration instance. The value is **PostPaid** (pay-as-you-go).
+        # The billing method of the data migration task. The return value is fixed as **PostPaid** (pay-as-you-go).
         self.pay_type = pay_type
-        # The precheck details.
+        # The precheck status.
         self.precheck_status = precheck_status
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The connection settings of the source instance.
+        # The connection information of the source instance.
         self.source_endpoint = source_endpoint
-        # The status of schema migration.
+        # The execution status of schema migration.
         self.structure_initialization_status = structure_initialization_status
-        # Indicates whether the call was successful.
+        # Indicates whether the request was successful.
         self.success = success
+        # The ID of the data migration task.
         self.task_id = task_id
 
     def validate(self):
@@ -223,18 +223,18 @@ class DescribeMigrationJobStatusResponseBodyStructureInitializationStatus(DaraMo
         progress: str = None,
         status: str = None,
     ):
-        # The error message returned if schema migration failed.
+        # The error message returned when schema migration failed.
         self.error_message = error_message
-        # The progress of schema migration. Unit: %.
+        # The progress of schema migration, in percentage.
         self.percent = percent
-        # The number of tables whose schemas have been migrated.
+        # The number of tables for which schema migration has been completed.
         self.progress = progress
         # The status of schema migration. Valid values:
         # 
-        # *   **NotStarted**: Schema migration is not started.
-        # *   **Migrating**: Schema migration is in progress.
-        # *   **Failed**: Schema migration failed.
-        # *   **Finished**: Schema migration is completed.
+        # - **NotStarted**: not started.
+        # - **Migrating**: migrating.
+        # - **Failed**: migration failed.
+        # - **Finished**: migration completed.
         self.status = status
 
     def validate(self):
@@ -287,30 +287,29 @@ class DescribeMigrationJobStatusResponseBodySourceEndpoint(DaraModel):
         user_name: str = None,
         oracle_sid: str = None,
     ):
-        # The name of the database to which the migration object in the source instance belongs.
+        # The name of the database to which the objects to be migrated belong in the source instance.
         self.database_name = database_name
         # The database type of the source instance.
         self.engine_name = engine_name
         # The endpoint of the source instance.
         self.ip = ip
-        # The ID of the source instance.
+        # The instance ID of the source instance.
         self.instance_id = instance_id
-        # The type of the source instance.
+        # The type of the source instance. Valid values:
         # 
-        # *   **RDS**: ApsaraDB RDS instance
-        # *   **ECS**: self-managed database that is hosted on Elastic Compute Service (ECS)
-        # *   **LocalInstance**: self-managed database with a public IP address
-        # *   **Express**: self-managed database that is connected over Express Connect, VPN Gateway, or Smart Access Gateway
-        # *   **MongoDB**: ApsaraDB for MongoDB instance
-        # *   **POLARDB**: PolarDB for MySQL cluster (available only for the China site)
+        # - **RDS**: ApsaraDB RDS instance.
+        # - **ECS**: self-managed database hosted on ECS.
+        # - **LocalInstance**: self-managed database with a public IP address.
+        # - **Express**: self-managed database connected over Express Connect, VPN Gateway, or Smart Access Gateway.
+        # - **MongoDB**: ApsaraDB for MongoDB instance.
+        # - **POLARDB**: PolarDB for MySQL cluster (this value is applicable only to the China site).
         self.instance_type = instance_type
         # The database service port of the source instance.
         self.port = port
         # The database account of the source instance.
         self.user_name = user_name
         # The SID of the Oracle database.
-        # 
-        # >  This parameter is returned only if the database type of the source instance is **Oracle**.
+        # > This parameter is returned only when the database type of the source instance is Oracle.
         self.oracle_sid = oracle_sid
 
     def validate(self):
@@ -383,15 +382,14 @@ class DescribeMigrationJobStatusResponseBodyPrecheckStatus(DaraModel):
         status: str = None,
     ):
         self.detail = detail
-        # The precheck progress. Unit: %.
+        # The overall progress of the precheck, in percentage.
         self.percent = percent
         # The precheck status. Valid values:
         # 
-        # *   **NotStarted**
-        # *   **Suspending**:
-        # *   **Checking**
-        # *   **Failed**
-        # *   **Finished**
+        # - **NotStarted**: not started.
+        # - **Checking**: running the precheck.
+        # - **Failed**: precheck failed.
+        # - **Finished**: precheck completed.
         self.status = status
 
     def validate(self):
@@ -523,18 +521,18 @@ class DescribeMigrationJobStatusResponseBodyMigrationMode(DaraModel):
     ):
         # Indicates whether full data migration is performed. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **true**: yes.
+        # - **false**: no.
         self.data_initialization = data_initialization
         # Indicates whether incremental data migration is performed. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **true**: yes.
+        # - **false**: no.
         self.data_synchronization = data_synchronization
         # Indicates whether schema migration is performed. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **true**: yes.
+        # - **false**: no.
         self.structure_initialization = structure_initialization
 
     def validate(self):
@@ -581,13 +579,13 @@ class DescribeMigrationJobStatusResponseBodyDestinationEndpoint(DaraModel):
         user_name: str = None,
         oracle_sid: str = None,
     ):
-        # The name of the database to which the migration object in the destination instance belongs.
+        # The name of the database to which the objects to be migrated belong in the destination instance.
         self.database_name = database_name
         # The database type of the destination instance.
         self.engine_name = engine_name
         # The endpoint of the destination instance.
         self.ip = ip
-        # The ID of the destination instance.
+        # The instance ID of the destination instance.
         self.instance_id = instance_id
         # The type of the destination instance.
         self.instance_type = instance_type
@@ -595,9 +593,8 @@ class DescribeMigrationJobStatusResponseBodyDestinationEndpoint(DaraModel):
         self.port = port
         # The database account of the destination instance.
         self.user_name = user_name
-        # The system ID (SID) of the Oracle database.
-        # 
-        # >  This parameter is returned only if the database type of the destination instance is **Oracle**.
+        # The SID of the Oracle database.
+        # > This parameter is returned only when the database type of the destination instance is **Oracle**.
         self.oracle_sid = oracle_sid
 
     def validate(self):
@@ -671,21 +668,21 @@ class DescribeMigrationJobStatusResponseBodyDataSynchronizationStatus(DaraModel)
         percent: str = None,
         status: str = None,
     ):
-        # The UNIX timestamp generated when the latest incremental data is migrated. Unit: seconds.
+        # The timestamp of the latest incremental data that has been migrated. The value is a UNIX timestamp, in seconds.
         self.checkpoint = checkpoint
-        # The latency of incremental data migration. Unit: seconds.
+        # The migration latency of incremental data migration, in seconds.
         self.delay = delay
-        # The error message returned if incremental data migration failed.
+        # The error message returned when incremental data migration failed.
         self.error_message = error_message
-        # The progress of incremental data migration. Unit: %.
+        # The progress of incremental data migration, in percentage.
         self.percent = percent
         # The status of incremental data migration. Valid values:
         # 
-        # *   **NotStarted**: Incremental data migration is not started.
-        # *   **Migrating**: Incremental data migration is in progress.
-        # *   **Failed**: Incremental data migration failed.
-        # *   **Finished**: Incremental data migration is completed.
-        # *   **Catched**: Incremental data migration is not delayed.
+        # - **NotStarted**: not started.
+        # - **Migrating**: migrating.
+        # - **Failed**: migration failed.
+        # - **Finished**: migration completed.
+        # - **Catched**: no latency.
         self.status = status
 
     def validate(self):
@@ -740,18 +737,18 @@ class DescribeMigrationJobStatusResponseBodyDataInitializationStatus(DaraModel):
         progress: str = None,
         status: str = None,
     ):
-        # The error message returned if full data migration failed.
+        # The error message returned when full data migration failed.
         self.error_message = error_message
-        # The migration progress. Unit: %.
+        # The progress of full data migration, in percentage.
         self.percent = percent
-        # The number of records that have been migrated during full data migration.
+        # The number of records that have been migrated during initial full data synchronization.
         self.progress = progress
         # The status of full data migration. Valid values:
         # 
-        # *   **NotStarted**: Full data migration is not started.
-        # *   **Migrating**: Full data migration is in progress.
-        # *   **Failed**: Full data migration failed.
-        # *   **Finished**: Full data migration is completed.
+        # - **NotStarted**: not started.
+        # - **Migrating**: migrating.
+        # - **Failed**: migration failed.
+        # - **Finished**: migration completed.
         self.status = status
 
     def validate(self):

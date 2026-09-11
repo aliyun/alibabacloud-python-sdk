@@ -16,15 +16,15 @@ class DescribeConnectionStatusResponseBody(DaraModel):
         source_connection_status: Dict[str, Any] = None,
         success: str = None,
     ):
-        # The connectivity of DTS servers to the destination database.
+        # The connectivity test result of the destination database.
         self.destination_connection_status = destination_connection_status
         # The error code returned if the call failed.
         self.err_code = err_code
         # The error message returned if the call failed.
         self.err_message = err_message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The connectivity of DTS servers to the source database.
+        # The connectivity test result of the source database.
         self.source_connection_status = source_connection_status
         # Indicates whether the call was successful.
         self.success = success

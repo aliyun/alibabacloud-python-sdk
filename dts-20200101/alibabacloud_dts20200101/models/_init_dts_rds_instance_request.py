@@ -15,30 +15,28 @@ class InitDtsRdsInstanceRequest(DaraModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the data synchronization task.
+        # The instance ID of the synchronization node.
         self.dts_instance_id = dts_instance_id
-        # If the node is a self-managed MySQL database that is connected over CEN, you must specify the ID of the CEN instance.
-        # 
-        # > You must specify the **EndpointRegion** and **EndpointInstanceId** parameters or the EndpointCenId parameter based on the type of the node.
+        # The instance ID of the CEN instance. This parameter is required if the unit node is a self-managed MySQL database connected through CEN.
+        # > You must specify either this parameter or the ApsaraDB RDS for MySQL-related parameters (**EndpointRegion** and **EndpointInstanceId**).
         self.endpoint_cen_id = endpoint_cen_id
-        # If the node is an ApsaraDB RDS for MySQL instance, you must specify the ID of the ApsaraDB RDS for MySQL instance.
-        # 
-        # > *   You must also specify the **EndpointRegion** parameter.
-        # >*   You must specify the EndpointInstanceId parameter or the **EndpointCenId** parameter based on the type of the node.
+        # The instance ID of the ApsaraDB RDS for MySQL instance. This parameter is required if the unit node is an ApsaraDB RDS for MySQL instance.
+        # > - You must also specify the **EndpointRegion** parameter.
+        # - You must specify either this parameter or **EndpointCenId**.
         self.endpoint_instance_id = endpoint_instance_id
-        # The type of the node. Valid values:
+        # The instance type of the unit node. Valid values:
         # 
-        # *   **RDS**: an ApsaraDB RDS for MySQL instance
-        # *   **CEN**: a self-managed MySQL database that is connected over CEN
+        # - **RDS**: ApsaraDB RDS for MySQL instance.
+        # - **CEN**: self-managed MySQL database connected through CEN.
         self.endpoint_instance_type = endpoint_instance_type
-        # If the node is an ApsaraDB RDS for MySQL instance, you must specify the region in which the ApsaraDB RDS for MySQL instance resides.
+        # The region in which the ApsaraDB RDS for MySQL instance resides. This parameter is required if the unit node is an ApsaraDB RDS for MySQL instance.
         # 
-        # > *   You must also specify the **EndpointInstanceId** parameter.
-        # >*   You must specify the EndpointRegion parameter or the **EndpointCenId** parameter based on the type of the node.
+        # > - You must also specify the **EndpointInstanceId** parameter.
+        # - You must specify either this parameter or **EndpointCenId**.
         self.endpoint_region = endpoint_region
-        # The ID of the region in which the active geo-redundancy database cluster resides.
+        # The region in which the active geo-redundancy database cluster resides.
         self.region_id = region_id
-        # Resource group ID.
+        # The ID of the resource group. This is a global parameter and does not need to be specified for this operation.
         self.resource_group_id = resource_group_id
 
     def validate(self):

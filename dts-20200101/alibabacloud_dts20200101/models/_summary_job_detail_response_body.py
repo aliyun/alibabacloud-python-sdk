@@ -21,18 +21,16 @@ class SummaryJobDetailResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The ID of the data migration or data synchronization task.
+        # The ID of the data migration or synchronization task.
         self.job_id = job_id
-        # The returned information about the migrated or synchronized objects in arrays.
-        # 
-        # >  The arrays are in the following format: [{"key":"Function","state":5,"totalCount":22},{"key":"Procedure","state":5,"totalCount":26},{"key":"Table","state":0,"totalCount":68},{"key":"View","state":5,"totalCount":100}].
+        # The array of migration object information.
+        # > The array is returned in the following format: [{"key":"Function","state":5,"totalCount":22},{"key":"Procedure","state":5,"totalCount":26},{"key":"Table","state":0,"totalCount":68},{"key":"View","state":5,"totalCount":100}].
         self.progress_summary_details = progress_summary_details
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**: The request was successful.
-        # *   **false**: The request failed.
+        # - **true**: The request was successful.
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -100,18 +98,17 @@ class SummaryJobDetailResponseBodyProgressSummaryDetails(DaraModel):
         state: int = None,
         total_count: int = None,
     ):
-        # The type of migrated or synchronized object. Valid values: **Table**, **Constraint**, **Index**, **View**, **Materialize View**, **Type**, **Synonym**, **Trigger**, **Function**, **Procedure**, **Package**, **Default**, **Rule**, **PlanGuide**, and **Sequence**.
+        # The object type of the migration object. Valid values: **Table**, **Constraint**, **Index**, **View**, **Materialize View**, **Type** (user-defined type), **Synonym**, **Trigger**, **Function**, **Procedure** (stored procedure), **Package**, **Default**, **Rule**, **PlanGuide** (execute plan), and **Sequence**.
         self.key = key
-        # The state of the data migration or data synchronization task. Valid values:
-        # 
-        # *   **0**: The task was complete.
-        # *   **1**: The task was waiting to start.
-        # *   **2**: The task was being initialized.
-        # *   **3**: The task was in progress.
-        # *   **4**: An error occurred.
-        # *   **5**: The task failed.
+        # The migration status. Valid values:
+        # - **0**: finish (completed).
+        # - **1**: catched (waiting for synchronization).
+        # - **2**: init (initializing).
+        # - **3**: running (synchronizing).
+        # - **4**: warning (error).
+        # - **5**: failed (failed).
         self.state = state
-        # The total number of migrated or synchronized objects.
+        # The total number of migration objects.
         self.total_count = total_count
 
     def validate(self):

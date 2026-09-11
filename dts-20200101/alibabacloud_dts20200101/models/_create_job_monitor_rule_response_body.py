@@ -16,26 +16,24 @@ class CreateJobMonitorRuleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. This parameter will be removed in the future.
+        # The error code. This parameter will be deprecated.
         self.code = code
         # The ID of the data migration, data synchronization, or change tracking task.
         self.dts_job_id = dts_job_id
-        # The dynamic part in the error message. The value of this parameter is used to replace the \\*\\*%s\\*\\* variable in the value of **ErrMessage**.
-        # 
-        # > If the return value of **ErrMessage** is **The Value of Input Parameter %s is not valid** and the return value of **DynamicMessage** is **DtsJobId**, the specified value of **DtsJobId** is invalid.
+        # The dynamic error message used to replace the **%s** variable in the **ErrMessage** response parameter.
+        # > For example, if **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
-        # The error code returned if the request failed.
+        # The error code returned if the call failed.
         self.err_code = err_code
-        # The error message returned if the request failed.
+        # The error message returned if the call failed.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The request was successful.
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):

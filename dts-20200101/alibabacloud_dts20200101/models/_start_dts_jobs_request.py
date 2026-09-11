@@ -12,20 +12,20 @@ class StartDtsJobsRequest(DaraModel):
         resource_group_id: str = None,
         zero_etl_job: bool = None,
     ):
-        # The ID of the data migration or data synchronization task.
-        # 
-        # > 
-        # *   For multiple tasks, separate them with commas (**,**).
-        # *   You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
+        # The IDs of the data migration or synchronization tasks.
+        # > - Separate multiple task IDs with commas (,).
+        # - You can call [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) to query DTS task IDs.
         # 
         # This parameter is required.
         self.dts_job_ids = dts_job_ids
-        # The region ID of the DTS instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # Resource GroupId
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Whether it is a seamless integration (Zero-ETL) task, the value can be:
-        # - **false**: No. - **true**: Yes.
+        # Specifies whether the node is a seamless integration (zero-ETL) node. Valid values:
+        # 
+        # - **false**: No.
+        # - **true**: Yes.
         self.zero_etl_job = zero_etl_job
 
     def validate(self):

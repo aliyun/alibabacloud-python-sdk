@@ -20,39 +20,38 @@ class DescribeSynchronizationJobAlertResponseBody(DaraModel):
         synchronization_job_id: str = None,
         synchronization_job_name: str = None,
     ):
-        # The mobile phone numbers that receive latency-related alerts.
+        # The mobile phone number of the contact for latency alerts.
         self.delay_alert_phone = delay_alert_phone
-        # Indicates whether task latency is monitored. Valid values:
+        # Indicates whether latency monitoring is enabled. Valid values:
         # 
-        # *   **enable**: yes
-        # *   **disable**: no
+        # - **enable**: enabled.
+        # - **disable**: disabled.
         self.delay_alert_status = delay_alert_status
-        # The threshold for triggering latency alerts. Unit: seconds.
+        # The threshold that triggers a latency alert. Unit: seconds.
         self.delay_over_seconds = delay_over_seconds
         # The error code returned if the call failed.
         self.err_code = err_code
         # The error message returned if the call failed.
         self.err_message = err_message
-        # The mobile phone numbers that receive status-related alerts.
+        # The mobile phone number of the contact for error alerts.
         self.error_alert_phone = error_alert_phone
-        # Indicates whether task status is monitored. Valid values:
+        # Indicates whether error status monitoring is enabled. Valid values:
         # 
-        # *   **enable**: yes
-        # *   **disable**: no
+        # - **enable**: enabled.
+        # - **disable**: disabled.
         self.error_alert_status = error_alert_status
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # Indicates whether the request was successful.
         self.success = success
         # The synchronization direction. Valid values:
         # 
-        # *   **Forward**
+        # - **Forward**: forward.
+        # - **Reverse**: reverse.
         # 
-        # *   **Reverse**
-        # 
-        # > This parameter is returned only when the topology of data synchronization is two-way synchronization.
+        # > Default value: **Forward**.
         self.synchronization_direction = synchronization_direction
-        # The ID of the data synchronization instance.
+        # The instance ID of the data synchronization instance.
         self.synchronization_job_id = synchronization_job_id
         # The name of the data synchronization task.
         self.synchronization_job_name = synchronization_job_name

@@ -24,33 +24,32 @@ class DescribeDataCheckTableDetailsResponseBody(DaraModel):
         table_details: List[main_models.DescribeDataCheckTableDetailsResponseBodyTableDetails] = None,
         total_count: int = None,
     ):
-        # The number of tables that contain inconsistent data.
+        # The number of tables with data inconsistency.
         self.diff_table_count = diff_table_count
-        # The dynamic error code. This parameter will be discontinued in the future.
+        # The dynamic error code. This parameter will be deprecated.
         self.dynamic_code = dynamic_code
-        # The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\* variable in the **ErrMessage** parameter.
-        # 
-        # > For example, if the returned value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **Type**, the specified **Type** parameter is invalid.
+        # The dynamic error message used to replace the **%s** variable in the **ErrMessage** response parameter.
+        # > For example, if **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **Type**, the request parameter **Type** is invalid.
         self.dynamic_message = dynamic_message
-        # The error code returned if the request failed.
+        # The error code returned if the call failed.
         self.err_code = err_code
-        # The error message returned if the request failed.
+        # The error message returned if the call failed.
         self.err_message = err_message
-        # The total number of data rows that were failed.
+        # The number of tables that failed the verification.
         self.failed_table_count = failed_table_count
-        # The total number of data rows that were verified.
+        # The total number of rows that have been verified.
         self.finished_count = finished_count
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
-        # The details of data verification results.
+        # The details of the data consistency verification results for tables.
         self.table_details = table_details
-        # The total number of tables on which data verification was performed.
+        # The total number of tables to be verified.
         self.total_count = total_count
 
     def validate(self):
@@ -168,37 +167,37 @@ class DescribeDataCheckTableDetailsResponseBodyTableDetails(DaraModel):
         target_tb_name: str = None,
         total_count: int = None,
     ):
-        # The time when data verification was performed.
+        # The time when the verification was performed.
         self.boot_time = boot_time
-        # The number of data rows that contain inconsistent data.
+        # The number of rows with data inconsistency.
         self.diff_count = diff_count
-        # The error code returned if the data verification task failed. Valid values:
+        # The error code returned when the task fails. Valid values:
         # 
-        # *   **1**: The number of tables that do not contain primary keys exceeds the limit.
-        # *   **2**: The number of data rows that contain inconsistent data exceeds 300.
-        # *   **3**: One or more tables to be verified do not exist.
-        # *   **4**: The SQL statements used for verifying data contain a syntax error.
+        # - **1**: the number of tables without primary key exceeds the limit.
+        # - **2**: the number of rows with data inconsistency exceeds 300.
+        # - **3**: the table to be queried does not exist.
+        # - **4**: the SQL statement used to query data contains a syntax error.
         self.error_code = error_code
-        # The number of data rows that were verified.
+        # The number of rows that have been verified in the table.
         self.finish_count = finish_count
-        # The auto-increment primary key that is used to identify the data in a verification result.
+        # The auto-increment primary key that identifies a verification result record.
         self.id = id
         # The name of the source database.
         self.source_db_name = source_db_name
         # The name of the source table.
         self.source_tb_name = source_tb_name
-        # The status of data verification results. Valid values:
+        # The status of the verification result. Valid values:
         # 
-        # *   **0**: The data verification task was complete.
-        # *   **2**: The data verification task was being initialized.
-        # *   **3**: The data verification task was in progress.
-        # *   **5**: The data verification task failed.
+        # - **0**: completed.
+        # - **2**: initializing.
+        # - **3**: running.
+        # - **5**: failed.
         self.status = status
         # The name of the destination database.
         self.target_db_name = target_db_name
         # The name of the destination table.
         self.target_tb_name = target_tb_name
-        # The total number of data rows.
+        # The total number of rows to be verified.
         self.total_count = total_count
 
     def validate(self):

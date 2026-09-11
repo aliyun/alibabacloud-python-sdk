@@ -19,24 +19,20 @@ class TransferPayTypeResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The billing method of the DTS instance. Valid values:
-        # 
-        # *   **PrePaid**: subscription
-        # *   **PostPaid**: pay-as-you-go
+        # The billing method after conversion. Valid values:
+        # - **PrePaid**: subscription.
+        # - **PostPaid**: pay-as-you-go.
         self.charge_type = charge_type
-        # The error code. This parameter will be removed in the future.
+        # The error code. This parameter will be deprecated.
         self.code = code
-        # The ID of the DTS task.
+        # The task ID.
         self.dts_job_id = dts_job_id
-        # The dynamic part in the error message. This parameter is used to replace the **%s** variable in the **ErrMessage** parameter.
-        # 
-        # >  If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
+        # The dynamic error message used to replace the **%s** variable in the **ErrMessage** parameter.
+        # > For example, if **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
-        # The expiration time of the subscription instance. The value is a UNIX timestamp.
-        # 
-        # > 
-        # *   If the DTS instance is a pay-as-you-go instance, the value of this parameter is empty.
-        # *   You can use a search engine to obtain a UNIX timestamp converter.
+        # The time when the subscription instance expires, in UNIX timestamp format.
+        # > - If the instance is converted to pay-as-you-go, this value is empty.
+        # - You can use a search engine to find a UNIX timestamp conversion tool.
         self.end_time = end_time
         # The error code returned if the call failed.
         self.err_code = err_code
@@ -44,14 +40,13 @@ class TransferPayTypeResponseBody(DaraModel):
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The ID of the DTS instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
-        # 
-        # *   **true**: The call was successful.
-        # *   **false**: The call failed.
+        # Indicates whether the request was successful. Valid values:
+        # - **true**: The request was successful.
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):

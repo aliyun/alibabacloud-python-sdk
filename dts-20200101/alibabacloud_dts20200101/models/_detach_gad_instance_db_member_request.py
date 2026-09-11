@@ -13,10 +13,14 @@ class DetachGadInstanceDbMemberRequest(DaraModel):
         resource_group_id: str = None,
         slave_db_instance_id: str = None,
     ):
+        # The instance ID of the active geo-redundancy instance group.
         self.instance_id = instance_id
         self.owner_id = owner_id
+        # The region ID. Specify this parameter to indicate the region where the instance resides. For more information, see the list of supported regions.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The instance ID of the secondary role.
         self.slave_db_instance_id = slave_db_instance_id
 
     def validate(self):

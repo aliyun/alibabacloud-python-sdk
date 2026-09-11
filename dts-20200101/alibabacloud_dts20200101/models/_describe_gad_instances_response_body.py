@@ -22,16 +22,30 @@ class DescribeGadInstancesResponseBody(DaraModel):
         success: str = None,
         total_record_count: int = None,
     ):
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
+        # The dynamic error message, which is used to replace the **%s** placeholder in the **ErrMessage** parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **Type**, the request parameter **Type** is invalid.
         self.dynamic_message = dynamic_message
+        # The error code returned if the request failed.
         self.err_code = err_code
+        # The error message returned if the request failed.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
         self.instances = instances
+        # The page number.
         self.page_number = page_number
+        # The maximum number of entries that can be displayed on the current page.
         self.page_record_count = page_record_count
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**: The request was successful.
+        # - **false**: The request failed.
         self.success = success
+        # The total number of instances returned.
         self.total_record_count = total_record_count
 
     def validate(self):

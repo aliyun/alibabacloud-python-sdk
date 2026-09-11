@@ -13,15 +13,15 @@ class StartSubscriptionInstanceResponseBody(DaraModel):
         success: str = None,
         task_id: str = None,
     ):
-        # The error code returned if the call failed.
+        # The error code returned when the call fails.
         self.err_code = err_code
-        # The error message returned if the call failed.
+        # The error message returned when the call fails.
         self.err_message = err_message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # Indicates whether the request was successful.
         self.success = success
-        # The task ID. This parameter will be removed in the future.
+        # The task ID. This parameter is about to be deprecated.
         self.task_id = task_id
 
     def validate(self):

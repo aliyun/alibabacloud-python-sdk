@@ -19,33 +19,33 @@ class DescribeSubscriptionInstanceAlertResponseBody(DaraModel):
         subscription_instance_name: str = None,
         success: str = None,
     ):
-        # The mobile phone numbers that receive latency-related alerts.
+        # The mobile phone number of the contact for latency alerts.
         self.delay_alert_phone = delay_alert_phone
-        # Indicates whether task latency is monitored. Valid values:
+        # Indicates whether latency alerting is enabled. Valid values:
         # 
-        # *   **enable**: yes
-        # *   **disable**: no
+        # - **enable**: Enabled.
+        # - **disable**: Disabled.
         self.delay_alert_status = delay_alert_status
-        # The threshold for triggering latency alerts. The unit is seconds and the value is an integer. The recommended value is 10 seconds.
+        # The threshold for triggering latency alerts. Unit: seconds. The value must be an integer. A value of 10 seconds is recommended.
         self.delay_over_seconds = delay_over_seconds
         # The error code returned if the call failed.
         self.err_code = err_code
         # The error message returned if the call failed.
         self.err_message = err_message
-        # The mobile phone numbers that receive status-related alerts.
+        # The mobile phone number of the contact for error alerts.
         self.error_alert_phone = error_alert_phone
-        # Indicates whether task status is monitored. Valid values:
+        # Indicates whether error alerting is enabled. Valid values:
         # 
-        # *   **enable**: yes
-        # *   **disable**: no
+        # - **enable**: Enabled.
+        # - **disable**: Disabled.
         self.error_alert_status = error_alert_status
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the change tracking instance.
+        # The change tracking instance ID.
         self.subscription_instance_id = subscription_instance_id
         # The name of the change tracking instance.
         self.subscription_instance_name = subscription_instance_name
-        # Indicates whether the call was successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

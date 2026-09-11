@@ -15,21 +15,19 @@ class DescribeConsumerChannelRequest(DaraModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the change tracking instance. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
-        # 
-        # >  You must specify at least one of the **DtsInstanceId** and **DtsJobId** parameters.
+        # The ID of the change tracking instance. You can call [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) to query the instance ID.
+        # > You must specify one of the **DtsInstanceId** and **DtsJobId** parameters.
         self.dts_instance_id = dts_instance_id
-        # The ID of the change tracking task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
-        # 
-        # >  You must specify at least one of the **DtsInstanceId** and **DtsJobId** parameters.
+        # The ID of the change tracking task. You can call [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) to query the task ID.
+        # > You must specify one of the **DtsInstanceId** and **DtsJobId** parameters.
         self.dts_job_id = dts_job_id
-        # The number of the page to return. The value must be an integer that is greater than **0** and does not exceed the maximum value of the Integer data type. Default value: **1**.
+        # The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
+        # The number of records per page. Valid values: **1** to **100**. Default value: **20**.
         self.page_size = page_size
-        # The parent task ID of the distributed task.
+        # The parent task ChannelId of the distributed task.
         self.parent_channel_id = parent_channel_id
-        # The ID of the region in which the change tracking instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The region ID of the DTS change tracking instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         # 
         # This parameter is required.
         self.region_id = region_id

@@ -15,12 +15,23 @@ class ModifyJobStepCheckpointResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.code = code
+        # The dynamic error message used to replace the %s placeholder in the ErrMessage parameter.
+        # 
+        # > For example, if ErrMessage returns "The Value of Input Parameter %s is not valid" and DynamicMessage returns "JobId", it indicates that the JobId request parameter you provided is invalid.
         self.dynamic_message = dynamic_message
+        # The error code returned when the API call fails.
         self.err_code = err_code
+        # The error message returned when the API call fails.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded. Valid values:
+        # - **true**: The request succeeded.
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):

@@ -17,14 +17,14 @@ class DescribeSynchronizationJobReplicatorCompareResponseBody(DaraModel):
         self.err_code = err_code
         # The error message returned if the call failed.
         self.err_message = err_message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # Indicates whether the request was successful.
         self.success = success
-        # Indicates whether image matching is enabled. Valid values:
+        # The full image switch. Valid values:
         # 
-        # *   **true**: Image matching is enabled.
-        # *   **false**: Image matching is disabled.
+        # - **true**: enabled.
+        # - **false**: disabled.
         self.synchronization_replicator_compare_enable = synchronization_replicator_compare_enable
 
     def validate(self):

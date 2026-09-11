@@ -13,14 +13,14 @@ class DeleteSubscriptionInstanceRequest(DaraModel):
         resource_group_id: str = None,
         subscription_instance_id: str = None,
     ):
-        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter is about to be discontinued.
         self.account_id = account_id
         self.owner_id = owner_id
-        # The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The ID of the region where the change tracking instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # Resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID.
+        # The ID of the change tracking instance. You can call the [DescribeSubscriptionInstances](https://help.aliyun.com/document_detail/49442.html) operation to query the instance ID.
         # 
         # This parameter is required.
         self.subscription_instance_id = subscription_instance_id

@@ -13,12 +13,12 @@ class ModifyDtsJobConfigRequest(DaraModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # DTS job ID, which can be queried by calling [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html).
+        # The ID of the DTS task. You can call [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) to query the task ID.
         self.dts_job_id = dts_job_id
         self.owner_id = owner_id
-        # The parameters that you want to modify. Specify a JSON string. For more information, see [Parameters](https://help.aliyun.com/document_detail/2536412.html).
+        # The parameters to be modified, in JSON character string format. For more information, see [Parameters metric description](https://help.aliyun.com/document_detail/2536412.html).
         self.parameters = parameters
-        # The region where the instance is located. For more details, see [List of Supported Regions](https://help.aliyun.com/document_detail/141033.html).
+        # The region in which the instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id

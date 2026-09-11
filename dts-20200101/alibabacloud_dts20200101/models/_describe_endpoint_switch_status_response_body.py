@@ -14,23 +14,23 @@ class DescribeEndpointSwitchStatusResponseBody(DaraModel):
         status: str = None,
         success: str = None,
     ):
-        # The error code returned if the call failed.
+        # The error code returned when the call fails.
         self.err_code = err_code
-        # The error message returned if the call failed.
+        # The error message returned when the call fails.
         self.err_message = err_message
-        # This parameter is no longer available.
+        # This parameter is discontinued.
         self.error_message = error_message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The status of the task. Valid values:
+        # The execution status of the task. Valid values:
         # 
-        # *   **NotStarted**: The task is not started.
-        # *   **Initializing**: The task is being initialized.
-        # *   **Switching**: The task is running.
-        # *   **Failed**: The task failed.
-        # *   **Finished**: The task is completed.
+        # - **NotStarted**: not started.
+        # - **Initializing**: initializing.
+        # - **Switching**: switching.
+        # - **Failed**: failed.
+        # - **Finished**: succeeded.
         self.status = status
-        # Indicates whether the call was successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

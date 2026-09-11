@@ -23,17 +23,29 @@ class DescribePreCheckCreateGadOrderResultResponseBody(DaraModel):
         success: str = None,
         task_id: str = None,
     ):
+        # The dynamic error code. This parameter will be deprecated.
         self.dynamic_code = dynamic_code
+        # The dynamic error message used to replace the **%s** variable in the **ErrMessage** response parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The instance ID of the GAD instance group.
         self.instance_id = instance_id
         self.pre_check_items = pre_check_items
+        # The overall precheck result.
         self.pre_check_result = pre_check_result
+        # The region ID. Specify this parameter to indicate the region where the instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The ID of the precheck task.
         self.task_id = task_id
 
     def validate(self):

@@ -20,17 +20,30 @@ class ModifyGadInstanceNameResponseBody(DaraModel):
         resource_group_id: str = None,
         success: str = None,
     ):
+        # The time when the task was created, in the format of <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
         self.create_time = create_time
+        # The dynamic error code. This parameter will be deprecated.
         self.dynamic_code = dynamic_code
+        # The dynamic error message, which replaces **%s** in the **ErrMessage** response parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
+        # The error code returned if the call failed.
         self.err_code = err_code
+        # The error message returned if the call failed.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The active geo-redundancy instance group ID.
         self.instance_id = instance_id
+        # The instance name.
         self.instance_name = instance_name
+        # The region ID of the instance. For more information, see Supported regions.
         self.region_id = region_id
+        # The request ID.
         self.request_id = request_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

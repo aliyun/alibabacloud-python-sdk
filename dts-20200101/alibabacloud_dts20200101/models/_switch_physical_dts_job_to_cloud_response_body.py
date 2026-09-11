@@ -15,19 +15,20 @@ class SwitchPhysicalDtsJobToCloudResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Dynamic error code, this parameter will be deprecated.
+        # The dynamic error code. This parameter will be deprecated.
         self.dynamic_code = dynamic_code
-        # Dynamic error message used to replace the **%s** in the **ErrMessage** return parameter.  > If **ErrMessage** returns **The Value of Input Parameter %s is not valid**, and **DynamicMessage** returns **DtsJobId**, it indicates that the request parameter **DtsJobId** is invalid.
+        # The dynamic error message used to replace the **%s** variable in the **ErrMessage** response parameter.
+        # > For example, if **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
-        # Error code returned when the call fails.
+        # The error code returned if the call failed.
         self.err_code = err_code
-        # Returns the corresponding error message when an invocation error occurs.
+        # The error message returned if the call failed.
         self.err_message = err_message
-        # Status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # request ID.
+        # The request ID.
         self.request_id = request_id
-        # Whether the request was successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

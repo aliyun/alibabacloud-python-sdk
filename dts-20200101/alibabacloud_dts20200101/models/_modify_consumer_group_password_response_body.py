@@ -12,16 +12,13 @@ class ModifyConsumerGroupPasswordResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The current password of the consumer group.
+        # The error code returned when the call fails.
         self.err_code = err_code
-        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
+        # The error message returned when the call fails.
         self.err_message = err_message
-        # The username of the consumer group. You can call the [DescribeConsumerGroup](https://help.aliyun.com/document_detail/122886.html) operation to query the username.
+        # The request ID.
         self.request_id = request_id
-        # The new password of the consumer group.
-        # 
-        # *   A password must contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
-        # *   A password must be 8 to 32 characters in length.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

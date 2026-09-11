@@ -15,23 +15,22 @@ class DescribeSynchronizationJobReplicatorCompareRequest(DaraModel):
         synchronization_direction: str = None,
         synchronization_job_id: str = None,
     ):
-        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because it will be deprecated.
         self.account_id = account_id
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** parameter can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. Generate a value from your client to ensure uniqueness across different requests. **ClientToken** supports only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         self.owner_id = owner_id
-        # The ID of the region where the data synchronization instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The region ID. Specify this parameter to indicate the region where the instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # Resource GroupId
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         # The synchronization direction. Valid values:
         # 
-        # *   **Forward**
-        # *   **Reverse**
+        # - **Forward**: forward.
+        # - **Reverse**: reverse.
         # 
-        # > 
-        # *   Default value: **Forward**.
-        # *   This parameter is required only when the topology of the data synchronization instance is two-way synchronization.
+        # > - Default value: **Forward**.
+        # - You need to specify this parameter only if the synchronization topology of the data synchronization instance is two-way synchronization.
         self.synchronization_direction = synchronization_direction
         # The ID of the data synchronization instance. You can call the [DescribeSynchronizationJobs](https://help.aliyun.com/document_detail/49454.html) operation to query the instance ID.
         # 

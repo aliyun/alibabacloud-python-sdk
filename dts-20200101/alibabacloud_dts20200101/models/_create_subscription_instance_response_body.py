@@ -17,11 +17,11 @@ class CreateSubscriptionInstanceResponseBody(DaraModel):
         self.err_code = err_code
         # The error message returned if the call failed.
         self.err_message = err_message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the change tracking instance.
+        # The change tracking instance ID.
         self.subscription_instance_id = subscription_instance_id
-        # Indicates whether the call was successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

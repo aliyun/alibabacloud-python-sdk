@@ -12,18 +12,17 @@ class DescribeFullProcessListRequest(DaraModel):
         resource_group_id: str = None,
         zero_etl_job: bool = None,
     ):
-        # The ID of the data migration, data synchronization, or change tracking task.
+        # The ID of the migration, synchronization, or change tracking task.
         # 
         # This parameter is required.
         self.dts_job_id = dts_job_id
-        # The ID of the region where the data migration instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The region ID. Specify this parameter to indicate the region where the instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Specifies whether to query only zero-extract, transform, load (ETL) integration tasks. Valid values:
-        # 
-        # *   **true**: yes.
-        # *   **false**: no.
+        # Specifies whether the node is a zero-ETL seamless integration node. Valid values:
+        # - **true**: The node is a zero-ETL seamless integration node.
+        # - **false**: The node is not a zero-ETL seamless integration node.
         self.zero_etl_job = zero_etl_job
 
     def validate(self):

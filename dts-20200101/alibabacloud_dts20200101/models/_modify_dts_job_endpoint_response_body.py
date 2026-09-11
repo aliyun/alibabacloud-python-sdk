@@ -13,15 +13,15 @@ class ModifyDtsJobEndpointResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Error code returned when the call fails.
+        # The error code returned when the call fails.
         self.err_code = err_code
-        # Error message returned when the call fails.
+        # The error message returned when the call fails.
         self.err_message = err_message
-        # Status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # request ID
+        # The request ID.
         self.request_id = request_id
-        # Whether the request was successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

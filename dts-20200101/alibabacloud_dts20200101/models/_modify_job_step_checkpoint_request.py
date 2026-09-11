@@ -13,11 +13,19 @@ class ModifyJobStepCheckpointRequest(DaraModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
+        # The ID of the migration, synchronization, or tracking task.
         self.dts_job_id = dts_job_id
+        # The task step ID, which corresponds to the **synchronization** step ID returned by the ListJobStep API.
         self.job_step_id = job_step_id
+        # The new offset as a UNIX timestamp in seconds. The specified value must fall within the offset range of the incremental data collection step.
         self.new_check_point = new_check_point
+        # The region where the DTS instance resides.
+        # 
+        # > For regions that support dedicated clusters, see [DTS dedicated cluster](https://help.aliyun.com/document_detail/417481.html).
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):

@@ -14,11 +14,11 @@ class SkipFullJobTableResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

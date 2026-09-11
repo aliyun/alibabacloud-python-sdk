@@ -22,25 +22,25 @@ class DescribeClusterOperateLogsResponseBody(DaraModel):
         success: bool = None,
         total_record_count: int = None,
     ):
-        # The error code returned by the backend service. The number is incremented.
+        # The backend error code, which is incrementally numeric.
         self.code = code
-        # The information about the operation logs.
+        # The monitoring statistics information.
         self.data_points = data_points
-        # The dynamic part in the error message. This parameter is used to replace %s in the ErrMessage parameter.
+        # The dynamic error message, which is used to replace the %s placeholder in the ErrMessage response parameter.
         self.dynamic_message = dynamic_message
-        # The error code returned if the request failed.
+        # The error code returned when the call fails.
         self.err_code = err_code
-        # The error message returned.
+        # The error message.
         self.err_message = err_message
-        # The HTTP status code returned for an exception.
+        # The HTTP status code corresponding to the exception.
         self.http_status_code = http_status_code
-        # The page number of the returned page.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries displayed on the current page.
         self.page_record_count = page_record_count
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # The call result.
         self.success = success
         # The total number of records.
         self.total_record_count = total_record_count
@@ -145,21 +145,21 @@ class DescribeClusterOperateLogsResponseBodyDataPoints(DaraModel):
         operation_user: str = None,
         success: int = None,
     ):
-        # Other description of the operation.
+        # The additional remarks.
         self.content = content
-        # The primary key of the log table.
+        # The primary key of the log record table.
         self.id = id
-        # The time when the operation is recorded. The value is in the UNIX timestamp format. Unit: milliseconds.
+        # The timestamp. Unit: milliseconds.
         self.log_datetime = log_datetime
-        # The value of the parameter after the operation if the operation is an UPDATE operation.
+        # The new parameter value when the operation type is update.
         self.new_value = new_value
-        # The value of the parameter before the operation if the operation is an UPDATE operation.
+        # The old parameter value when the operation type is update.
         self.old_value = old_value
-        # The type of the operation.
+        # The operation type.
         self.operation_name = operation_name
-        # The user who performed the operation.
+        # The operator.
         self.operation_user = operation_user
-        # Indicates whether the request was successful. A value of **1** indicates that the request was successful.
+        # The call result. Indicates whether the call was successful. A value of **1** indicates success.
         self.success = success
 
     def validate(self):

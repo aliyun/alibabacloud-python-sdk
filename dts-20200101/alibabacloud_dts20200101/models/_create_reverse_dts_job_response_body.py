@@ -15,19 +15,19 @@ class CreateReverseDtsJobResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The ID of the instance corresponding to the generated reverse task.
+        # The ID of the DTS instance that corresponds to the generated reverse task.
         self.dts_instance_id = dts_instance_id
         # The ID of the generated reverse synchronization task.
         self.dts_job_id = dts_job_id
-        # Error code returned when the call fails.
+        # The error code returned if the call fails.
         self.err_code = err_code
-        # Error message returned when the call fails.
+        # The error message returned if the call fails.
         self.err_message = err_message
-        # Status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Whether the request was successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

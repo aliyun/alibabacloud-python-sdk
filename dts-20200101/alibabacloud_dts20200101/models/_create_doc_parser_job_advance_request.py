@@ -16,11 +16,23 @@ class CreateDocParserJobAdvanceRequest(DaraModel):
         resource_group_id: str = None,
         result_type: str = None,
     ):
+        # The name of the document to be parsed.
+        # 
+        # > The name must include the file name extension. Currently, only .pdf is supported.
         self.file_name = file_name
+        # The OSS URL of the document to be parsed.
+        # 
+        # > This parameter is automatically populated when you call this operation by using an SDK.
         self.file_url_object = file_url_object
         self.rag_instance_id = rag_instance_id
+        # The region ID of the document parsing task. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The output format of the parsing result after the task is complete. Valid values:
+        # 
+        # - **zip**: a ZIP compressed file.
+        # - **content**: plain text.
         self.result_type = result_type
 
     def validate(self):

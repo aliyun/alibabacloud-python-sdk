@@ -18,21 +18,20 @@ class DescribeInitializationStatusResponseBody(DaraModel):
         structure_initialization_details: List[main_models.DescribeInitializationStatusResponseBodyStructureInitializationDetails] = None,
         success: str = None,
     ):
-        # The details of initial full data synchronization.
+        # The details of full data initialization.
         self.data_initialization_details = data_initialization_details
         # The details of incremental data synchronization.
-        # 
-        # >  This parameter and the parameters it contains will be removed in the future.
+        # > This parameter set and the included response parameters will be discontinued.
         self.data_synchronization_details = data_synchronization_details
-        # The error code returned if the call failed.
+        # The error code returned if the request failed.
         self.err_code = err_code
-        # The error message returned if the call failed.
+        # The error message returned if the request failed.
         self.err_message = err_message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The details of initial schema synchronization.
+        # The details of schema initialization.
         self.structure_initialization_details = structure_initialization_details
-        # Indicates whether the call was successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -130,29 +129,26 @@ class DescribeInitializationStatusResponseBodyStructureInitializationDetails(Dar
         status: str = None,
     ):
         # The constraints of the synchronization object, such as indexes and foreign keys.
-        # 
-        # >  This parameter is returned only if the **ObjectType** parameter is set to **Table** and the synchronization object has constraints.
+        # > This parameter is returned only when **ObjectType** is set to **Table** and the synchronization object has constraints.
         self.constraints = constraints
-        # The name of the database to which the object in the destination instance belongs.
+        # The name of the database to which the objects to be synchronized belong in the destination instance.
         self.destination_owner_dbname = destination_owner_dbname
-        # The error message returned if initial schema synchronization failed.
+        # The error message returned when schema initialization failed.
         self.error_message = error_message
-        # The schema of the object.
+        # The syntax definition of the synchronization object.
         self.object_definition = object_definition
-        # The name of the object.
+        # The name of the synchronization object.
         self.object_name = object_name
-        # The type of the object. Valid values:
-        # 
+        # The type of the synchronization object. Valid values:
         # **Table**, **Constraint**, **Index**, **View**, **Materialize View**, **Type**, **Synonym**, **Trigger**, **Function**, **Procedure**, **Package**, **Default**, **Rule**, **PlanGuide**, and **Sequence**.
         self.object_type = object_type
-        # The name of the database to which the object in the source instance belongs.
+        # The name of the database to which the objects to be synchronized belong in the source instance.
         self.source_owner_dbname = source_owner_dbname
-        # The status of initial schema synchronization. Valid values:
-        # 
-        # *   **NotStarted**
-        # *   **Migrating**
-        # *   **Failed**
-        # *   **Finished**
+        # The status of schema initialization. Valid values:
+        # - **NotStarted**: Not started.
+        # - **Migrating**: In progress.
+        # - **Failed**: Failed.
+        # - **Finished**: Completed.
         self.status = status
 
     def validate(self):
@@ -236,24 +232,23 @@ class DescribeInitializationStatusResponseBodyStructureInitializationDetailsCons
         source_owner_dbname: str = None,
         status: str = None,
     ):
-        # The name of the database to which the object in the destination instance belongs.
+        # The name of the database to which the objects to be synchronized belong in the destination instance.
         self.destination_owner_dbname = destination_owner_dbname
-        # The error message returned if constraints failed to be created.
+        # The error message returned when constraint creation failed.
         self.error_message = error_message
-        # The syntax to create constraints.
+        # The syntax definition for creating the constraint.
         self.object_definition = object_definition
-        # The name of the object.
+        # The name of the synchronization object.
         self.object_name = object_name
-        # The type of the object. Valid value: **Table**.
+        # The type of the synchronization object. The value is fixed as **Table**.
         self.object_type = object_type
-        # The name of the database to which the object in the source instance belongs.
+        # The name of the database to which the objects to be synchronized belong in the source instance.
         self.source_owner_dbname = source_owner_dbname
         # The status of constraint creation. Valid values:
-        # 
-        # *   **NotStarted**
-        # *   **Migrating**
-        # *   **Failed**
-        # *   **Finished**
+        # - **NotStarted**: Not started.
+        # - **Migrating**: In progress.
+        # - **Failed**: Failed.
+        # - **Finished**: Completed.
         self.status = status
 
     def validate(self):
@@ -321,20 +316,19 @@ class DescribeInitializationStatusResponseBodyDataSynchronizationDetails(DaraMod
         status: str = None,
         table_name: str = None,
     ):
-        # The name of the database to which the object in the destination instance belongs.
+        # The name of the database to which the objects to be synchronized belong in the destination instance.
         self.destination_owner_dbname = destination_owner_dbname
-        # The error message returned if incremental data synchronization failed.
+        # The error message returned when incremental data synchronization failed.
         self.error_message = error_message
-        # The name of the database to which the object in the source instance belongs.
+        # The name of the database to which the objects to be synchronized belong in the source instance.
         self.source_owner_dbname = source_owner_dbname
         # The status of incremental data synchronization. Valid values:
-        # 
-        # *   **NotStarted**
-        # *   **Migrating**
-        # *   **Failed**
-        # *   **Finished**
+        # - **NotStarted**: Not started.
+        # - **Migrating**: In progress.
+        # - **Failed**: Failed.
+        # - **Finished**: Completed.
         self.status = status
-        # The table name.
+        # The table name of the synchronization object.
         self.table_name = table_name
 
     def validate(self):
@@ -393,30 +387,27 @@ class DescribeInitializationStatusResponseBodyDataInitializationDetails(DaraMode
         total_row_num: str = None,
         used_time: str = None,
     ):
-        # The name of the database to which the object in the destination instance belongs.
+        # The name of the database to which the objects to be synchronized belong in the destination instance.
         self.destination_owner_dbname = destination_owner_dbname
-        # The error message returned if initial full data synchronization failed.
+        # The error message returned when full data initialization failed.
         self.error_message = error_message
-        # The total number of rows that are actually synchronized.
-        # 
-        # >  This parameter indicates the total number of actually synchronized rows. In contrast, the value of the **TotalRowNum** parameter is calculated based on the system tables in the source database. The values of the two parameters may be different due to time difference.
+        # The number of rows that have been synchronized.
+        # > This parameter indicates the total number of rows that are actually synchronized. The value of the **TotalRowNum** parameter is obtained from the system table of the source database before synchronization starts. Due to time differences during synchronization, the two values may differ.
         self.finish_row_num = finish_row_num
-        # The name of the database to which the object in the source instance belongs.
+        # The name of the database to which the objects to be synchronized belong in the source instance.
         self.source_owner_dbname = source_owner_dbname
-        # The status of initial full data synchronization. Valid values:
-        # 
-        # *   **NotStarted**
-        # *   **Migrating**
-        # *   **Failed**
-        # *   **Finished**
+        # The status of full data initialization. Valid values:
+        # - **NotStarted**: Not started.
+        # - **Migrating**: In progress.
+        # - **Failed**: Failed.
+        # - **Finished**: Completed.
         self.status = status
-        # The table name.
+        # The table name of the synchronization object.
         self.table_name = table_name
-        # The total number of rows that are supposed to be synchronized.
-        # 
-        # >  The value of this parameter is calculated based on the system tables in the source database. In contrast, the **FinishRowNum** parameter indicates the total number of actually synchronized rows. The values of the two parameters may be different due to time difference.
+        # The total number of rows to be synchronized.
+        # > The value of this parameter is obtained from the system table of the source database before synchronization starts. The **FinishRowNum** parameter indicates the total number of rows that are actually synchronized. Due to time differences during synchronization, the two values may differ.
         self.total_row_num = total_row_num
-        # The time spent on full data synchronization.
+        # The time consumed by full data initialization.
         self.used_time = used_time
 
     def validate(self):

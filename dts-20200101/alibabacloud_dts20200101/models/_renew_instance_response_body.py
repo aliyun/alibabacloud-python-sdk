@@ -19,36 +19,36 @@ class RenewInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The billing method of the DTS instance. Only **PREPAY** may be returned, which indicates the subscription billing method.
+        # The billing method. Set the value to **PREPAY**, which indicates the subscription billing method.
         self.charge_type = charge_type
-        # The error code returned if the request failed.
+        # The error code.
         # 
-        # > This parameter will be removed in the future.
+        # > This parameter will be deprecated.
         self.code = code
         # The ID of the data synchronization or change tracking task.
         self.dts_job_id = dts_job_id
-        # The dynamic part in the error message. This parameter is used to replace the **%s** variable in the value of **ErrMessage**.
+        # The dynamic error message, which is used to replace the %**s** variable in the **ErrMessage** response parameter.
         # 
-        # > If the return value of **ErrMessage** is **The Value of Input Parameter %s is not valid** and the return value of **DynamicMessage** is **DtsJobId**, the specified value of **DtsJobId** is invalid.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
-        # The time when the DTS instance expires after renewal. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ssZZZ* format. The time is displayed in UTC.
+        # The time when the renewal instance expires. The time is displayed in the format of <i>yyyy-MM-dd</i>T<i>HH:mm:ssZZZ</i> (UTC).
         # 
-        # > **ZZZ** indicates the offset of the time zone, which is displayed in the format of a plus sign (+) or a minus sign (-) followed by hours and minutes, such as **+00:00**.
+        # > **ZZZ** indicates the full time zone offset ("+" or "-" followed by hours and minutes), for example, **+00:00**.
         self.end_time = end_time
-        # The error code returned if the request failed.
+        # The error code returned when the call fails.
         self.err_code = err_code
-        # The error message returned if the request failed.
+        # The error message returned when the call fails.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The ID of the instance
+        # The instance ID.
         self.instance_id = instance_id
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The request was successful.
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):

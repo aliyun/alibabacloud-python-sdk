@@ -24,46 +24,49 @@ class WhiteIpListRequest(DaraModel):
         type: str = None,
         zero_etl_job: bool = None,
     ):
-        # destination aliyun uid
+        # The UID of the destination Alibaba Cloud account.
         self.dest_aliyun_uid = dest_aliyun_uid
-        # VPCNAT destination main VSW
+        # The primary vSwitch of the destination for VPC NAT.
         self.dest_primary_vsw_id = dest_primary_vsw_id
-        # destination role name
+        # The name of the destination role.
         self.dest_role_name = dest_role_name
-        # VPCNAT destination backup VSW
+        # The secondary vSwitch of the destination for VPC NAT.
         self.dest_secondary_vsw_id = dest_secondary_vsw_id
-        # source vpc id
+        # The ID of the destination VPC.
         self.dest_vpc_id = dest_vpc_id
-        # The region ID to which the target instance belongs, please refer to the supported region list for details.
-        # >>If the target instance is a self built database or third-party cloud database with a public IP address, you can pass in the cn Hangzhou or the region ID closest to the physical distance of the database.
-        #  - When the DTS task is migration or synchronization, this parameter must be passed in.
+        # The region ID of the destination instance. For details, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # 
+        # > -  If the destination instance is a self-managed database with a public IP address or a third-party ApsaraDB database, you can set this parameter to **ap-southeast-1** or the area ID that is geographically closest to the database.
+        # -  This parameter is required when the DTS task is a data migration or data synchronization task.
         self.destination_region = destination_region
-        # The region ID of the change tracking instance. The region ID is the same as that of the source instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The region ID of the source instance. For details, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # > If the source instance is a self-managed database with a public IP address or a third-party ApsaraDB database, you can set this parameter to **ap-southeast-1** or the area ID that is geographically closest to the database.
         # 
         # This parameter is required.
         self.region = region
-        # The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The region to which the DTS instance belongs. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # Resource group ID.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # source aliyun uid
+        # The UID of the source Alibaba Cloud account.
         self.src_aliyun_uid = src_aliyun_uid
-        # VPCNAT source end main VSW
+        # The primary vSwitch of the source for VPC NAT.
         self.src_primary_vsw_id = src_primary_vsw_id
-        # source role Name
+        # The name of the source role.
         self.src_role_name = src_role_name
-        # VPCNAT source backup VSW
+        # The secondary vSwitch of the source for VPC NAT.
         self.src_secondary_vsw_id = src_secondary_vsw_id
-        # source vpc id
+        # The ID of the source VPC.
         self.src_vpc_id = src_vpc_id
-        # The access method for self built databases or third-party cloud databases, with a value of
-        #  - Internet: accessed through the public network.
-        #  - VPC: Connected through dedicated line/VPN gateway/intelligent gateway.
+        # The connection method of the self-managed database or third-party ApsaraDB database. Valid values:
+        # - **internet**: connected over the Internet.
+        # - **vpc**: connected over Express Connect, VPN Gateway, or Smart Access Gateway.
         # 
         # This parameter is required.
         self.type = type
-        # Whether it is a seamless integration (Zero-ETL) task, the value can be:
-        # - **false**: No. - **true**: Yes.
+        # Specifies whether the node is a seamless integration (Zero-ETL) node. Valid values:
+        # - **true**: The node is a seamless integration (Zero-ETL) node.
+        # - **false**: The node is not a seamless integration (Zero-ETL) node.
         self.zero_etl_job = zero_etl_job
 
     def validate(self):

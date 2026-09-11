@@ -21,15 +21,29 @@ class DescribeDocParserJobResultResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The complete text parsing content.
+        # > If the task type is content, ContentList splits the original document by page. Each page has a separate Markdown text entry.
         self.content_list = content_list
+        # The dynamic error code. This parameter will be deprecated.
         self.dynamic_code = dynamic_code
+        # The dynamic error message used to replace the **%s** variable in the **ErrMessage** response parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
+        # The error code returned when the call fails.
         self.err_code = err_code
+        # The error message returned when the call fails.
         self.err_message = err_message
+        # The OSS download URL of the file.
+        # 
+        # > If the task type is zip, this field returns the download URL of the zip package. The URL is valid for 30 minutes.
         self.file_url = file_url
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The public OSS download URL of the file.
         self.outer_file_url = outer_file_url
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -120,7 +134,9 @@ class DescribeDocParserJobResultResponseBodyContentList(DaraModel):
         content: str = None,
         page_number: int = None,
     ):
+        # The text content of the corresponding page, which is the complete Markdown text after parsing.
         self.content = content
+        # The page number.
         self.page_number = page_number
 
     def validate(self):

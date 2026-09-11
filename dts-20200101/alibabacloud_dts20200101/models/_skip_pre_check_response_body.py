@@ -19,29 +19,29 @@ class SkipPreCheckResponseBody(DaraModel):
         skip_names: str = None,
         success: bool = None,
     ):
-        # The error code. This parameter will be removed in the future.
+        # The error code. This parameter will be deprecated.
         self.code = code
-        # The dynamic part in the error message. This parameter is used to replace %s in ErrMessage.
+        # The dynamic error message used to replace the %s variable in the ErrMessage parameter.
         # 
-        # > If JobId is invalid, JobId is returned for DynamicMessage, and the following message is returned for ErrMessage: The Value of Input Parameter %s is not valid.
+        # > For example, if ErrMessage returns The Value of Input Parameter %s is not valid and DynamicMessage returns JobId, the JobId request parameter is invalid.
         self.dynamic_message = dynamic_message
         # The error code returned if the call failed.
         self.err_code = err_code
-        # The error message returned if the request failed.
+        # The error message returned if the call failed.
         self.err_message = err_message
-        # The HTTP status codes returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The precheck task ID.
+        # The ID of the precheck task.
         self.migration_job_id = migration_job_id
         # The request ID.
         self.request_id = request_id
-        # The precheck task ID.
+        # The ID of the precheck task.
         self.schedule_job_id = schedule_job_id
-        # The shortened name of the precheck item.
+        # The abbreviated names of the precheck items to suppress or unsuppress.
         self.skip_items = skip_items
-        # The precheck item name.
+        # The full names of the precheck items to suppress or unsuppress.
         self.skip_names = skip_names
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

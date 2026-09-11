@@ -17,11 +17,17 @@ class ListJobStepResponseBody(DaraModel):
         success: bool = None,
         use_v2api: bool = None,
     ):
+        # Error code.
         self.code = code
+        # Status code.
         self.http_status_code = http_status_code
+        # The task step information.
         self.job_steps = job_steps
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded.
         self.success = success
+        # Indicates whether the Console 2.0 API is used.
         self.use_v2api = use_v2api
 
     def validate(self):
@@ -104,23 +110,51 @@ class ListJobStepResponseBodyJobSteps(DaraModel):
         sub_job_steps: List[main_models.ListJobStepResponseBodyJobStepsSubJobSteps] = None,
         redis_phase_type: str = None,
     ):
+        # The job start time, in the format <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
         self.boot_time = boot_time
+        # Task step identity.
         self.code = code
+        # The job creation time, in the format <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
         self.create_time = create_time
+        # The error message.
         self.err_msg = err_msg
+        # The error message.
         self.error_details = error_details
+        # Task end time, in the format <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
         self.finish_time = finish_time
+        # Incremental data latency, in milliseconds.
         self.inc_latency_milliseconds = inc_latency_milliseconds
+        # Incremental data latency, in seconds.
         self.inc_latency_seconds = inc_latency_seconds
+        # The task step ID.
         self.job_step_id = job_step_id
+        # Task step information. Valid values:
+        # 
+        # - Precheck: precheck phase
+        # - Incremental data service: incremental data collection phase
+        # - dts.step.struct.load: schema migration phase
+        # - dts.step.data.load: full migration phase
+        # - etl-check: extract, transform, and load phase
+        # - Consistency validation: data verification phase
+        # - Synchronization: incremental synchronization phase
         self.job_step_name = job_step_name
+        # The time when the job was updated, in the format <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
         self.modify_time = modify_time
+        # Indicates whether the acceleration feature should be provided.
         self.need_acceleration = need_acceleration
+        # The progress of the task step.
         self.progress = progress
+        # Task step serial number. Indicates the task execution order. A smaller value indicates an earlier execution order.
         self.serial = serial
+        # Task step status.
         self.state = state
+        # The number of sub-jobs.
         self.sub_job_count = sub_job_count
+        # Step information of the sub-job.
         self.sub_job_steps = sub_job_steps
+        # Used to distinguish between the Redis full and incremental phases. Valid values:
+        # - full: Full phase
+        # - inc: Incremental phase
         self.redis_phase_type = redis_phase_type
 
     def validate(self):
@@ -281,20 +315,50 @@ class ListJobStepResponseBodyJobStepsSubJobSteps(DaraModel):
         serial: int = None,
         state: str = None,
     ):
+        # The time when the sub-job was started, in the format <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
         self.boot_time = boot_time
+        # Sub-task step identity.
         self.code = code
+        # The time when the sub-job was created, in the format <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
         self.create_time = create_time
+        # Error message.
         self.err_msg = err_msg
+        # Error message.
         self.error_details = error_details
+        # End time of the sub-task, in the format <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
         self.finish_time = finish_time
+        # Incremental data latency, in milliseconds.
         self.inc_latency_milliseconds = inc_latency_milliseconds
+        # Incremental data latency, in seconds.
         self.inc_latency_seconds = inc_latency_seconds
+        # Job ID.
         self.job_step_id = job_step_id
+        # Sub-job step information. Valid values are as follows:
+        # 
+        # - Precheck: precheck phase
+        # - Incremental data service: incremental data collection phase
+        # - dts.step.struct.load: schema migration phase
+        # - dts.step.data.load: full migration phase
+        # - etl-check: extract, transform, and load (ETL) phase
+        # - Consistency validation: data verification phase
+        # - Synchronization: incremental synchronization phase
         self.job_step_name = job_step_name
+        # The time when the sub-job was updated, in the format <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
         self.modify_time = modify_time
+        # Indicates whether the acceleration feature is required.
         self.need_acceleration = need_acceleration
+        # Progress of the sub-job step.
         self.progress = progress
+        # Serial number of the sub-task step. Indicates the task execution order; the smaller the numeric value, the earlier the execution order.
         self.serial = serial
+        # Status of the sub-task step. Valid values:
+        # - Failed: failed.
+        # - Pause: paused.
+        # - Schedule: scheduled.
+        # - Init: initialization.
+        # - Running: synchronizing.
+        # - Catched: waiting for synchronization.
+        # - Finished: ended.
         self.state = state
 
     def validate(self):
@@ -415,7 +479,9 @@ class ListJobStepResponseBodyJobStepsSubJobStepsErrorDetails(DaraModel):
         error_code: str = None,
         help_url: str = None,
     ):
+        # Error code.
         self.error_code = error_code
+        # URL of the help document.
         self.help_url = help_url
 
     def validate(self):
@@ -450,7 +516,9 @@ class ListJobStepResponseBodyJobStepsErrorDetails(DaraModel):
         error_code: str = None,
         help_url: str = None,
     ):
+        # Error code.
         self.error_code = error_code
+        # URL of the help document.
         self.help_url = help_url
 
     def validate(self):

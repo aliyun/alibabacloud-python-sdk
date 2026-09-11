@@ -20,49 +20,45 @@ class CreateJobMonitorRuleRequest(DaraModel):
     ):
         # The threshold for triggering an alert.
         # 
-        # *   If **Type** is set to **delay**, the threshold must be an integer in units of seconds. You can specify the threshold based on your business requirements. To prevent jitters caused by network and database overloads, we recommend that you set the threshold to more than 10 seconds.
-        # *   If **Type** is set to **full_timeout**, the threshold must be an integer in units of hours.
+        # - If **Type** is set to **delay**, the unit is seconds and the value must be an integer. Set the threshold based on your business requirements. A value of 10 or greater is recommended to avoid alert fluctuations caused by network issues or database loads.
         # 
-        # > This parameter is required if **Type** is set to **delay** or **full_timeout** and **State** is set to **Y**.
+        # - If **Type** is set to **full_timeout**, the unit is hours and the value must be an integer.
+        # 
+        # > This parameter is required when **Type** is set to **delay** or **full_timeout** and **State** is set to **Y**.
         self.delay_rule_time = delay_rule_time
-        # The ID of the data migration, data synchronization, or change tracking task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
+        # The ID of the data migration, data synchronization, or change tracking task. You can call [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) to obtain the task ID.
         # 
         # This parameter is required.
         self.dts_job_id = dts_job_id
         # The alert threshold.
         self.notice_value = notice_value
-        # The statistical period of the incremental data verification task. Unit: minutes.
+        # The statistical period of the incremental verification task. Unit: minutes.
         # 
-        # > Valid values: 1, 3, 5, and 30.
+        # > Valid values: 1, 5, 10, and 30.
         self.period = period
-        # The mobile numbers that receive alert notifications. Separate multiple mobile numbers with commas (,).
-        # 
-        # > 
-        # 
-        # *   This parameter is available only for users of the China site (aliyun.com). Only mobile numbers in the Chinese mainland are supported. You can specify up to 10 mobile numbers.
-        # 
-        # *   Users of the international site (alibabacloud.com) cannot receive notifications on alerts by using mobile numbers, but can configure alert rules for DTS tasks in the CloudMonitor console. For more information, see [Configure alert rules for DTS tasks in the CloudMonitor console](https://help.aliyun.com/document_detail/175876.html).
+        # The mobile phone numbers of alert contacts, separated by commas (,).
+        # >-  This parameter is supported only on the China site (aliyun.com) and only for the Chinese mainland mobile phone numbers. A maximum of 10 mobile phone numbers can be specified.
+        # - The international site does not support SMS-based alerting. You can only [set alert rules for DTS tasks through the CloudMonitor monitoring platform](https://help.aliyun.com/document_detail/175876.html).
         self.phone = phone
-        # The region ID of the DTS instance. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # Resource group ID.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         # Specifies whether to enable the alert rule. Valid values:
         # 
-        # *   **Y**: enables the alert rule.
-        # *   **N**: disables the alert rule.
+        # - **Y**: Enable the alert rule.
+        # - **N**: Disable the alert rule.
         # 
         # Default value: **Y**.
         self.state = state
-        # The number of statistical periods of the incremental data verification task.
+        # The number of statistical periods for the incremental verification task.
         self.times = times
-        # The metric that is used to monitor the task. Valid values:
+        # The type of the alert metric. Valid values:
+        # - **delay**: the **Latency** metric.
+        # - **error**: the **Migration Status** metric.
+        # - **full_timeout**: the **Full Migration Duration** metric.
         # 
-        # *   **delay**: the **Latency** metric.
-        # *   **error**: the **Status** metric.
-        # *   **full_timeout**: the **Full Timeout** metric.
-        # 
-        # Default value: **error**. You must manually set this value.
+        # Default value: **error**. This parameter must be manually specified.
         self.type = type
 
     def validate(self):

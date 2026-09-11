@@ -1,3 +1,9 @@
+2026-09-11 Version: 5.11.7
+- Update API ModifyDtsJobEndpoint: add request parameters EndpointPrimaryVswId.
+- Update API ModifyDtsJobEndpoint: add request parameters EndpointSecondaryVswId.
+- Update API ModifyDtsJobEndpoint: add request parameters EndpointVpcId.
+
+
 2026-06-04 Version: 5.11.5
 - Update API TransferInstanceClass: add request parameters DatabaseCount.
 

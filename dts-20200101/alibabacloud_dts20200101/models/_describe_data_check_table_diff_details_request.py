@@ -15,28 +15,28 @@ class DescribeDataCheckTableDiffDetailsRequest(DaraModel):
         resource_group_id: str = None,
         tb_name: str = None,
     ):
-        # The data verification method. Valid values:
+        # The data validation method. Valid values:
         # 
-        # *   **1**: full data verification.
-        # *   **2**: incremental data verification.
+        # - **1**: full verification.
+        # - **2**: incremental verification.
         # 
         # This parameter is required.
         self.check_type = check_type
-        # The name of the database to which the table that contains inconsistent data belongs.
+        # The name of the database that contains the table with inconsistent data.
         # 
         # This parameter is required.
         self.db_name = db_name
-        # The ID of the data migration or data synchronization task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the ID of the task.
+        # The ID of the data migration or data synchronization task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
         # 
         # This parameter is required.
         self.dts_job_id = dts_job_id
-        # The page number of the page to return. The value must be an integer greater than 0. Default value: 1.
+        # The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of records per page.
         self.page_size = page_size
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The name of the table that contains inconsistent data exists.
+        # The name of the table that contains inconsistent data.
         # 
         # This parameter is required.
         self.tb_name = tb_name

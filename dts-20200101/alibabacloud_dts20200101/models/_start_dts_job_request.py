@@ -15,25 +15,23 @@ class StartDtsJobRequest(DaraModel):
         zero_etl_job: bool = None,
     ):
         # The ID of the data migration, data synchronization, or change tracking instance.
-        # 
-        # >  You can call the [DescribeMigrationJobs](https://help.aliyun.com/document_detail/208139.html), [DescribeSubscriptionInstances](https://help.aliyun.com/document_detail/49442.html), or [DescribeSynchronizationJobs](https://help.aliyun.com/document_detail/49454.html) operation to query the instance ID
+        # > You can query the instance ID by invoking [Query the list of data migration instances and details of each instance](https://help.aliyun.com/document_detail/208139.html), [Query the list of change tracking instances and details of each instance](https://help.aliyun.com/document_detail/49442.html), or [Query the list of data synchronization instances and details of each instance](https://help.aliyun.com/document_detail/49454.html).
         self.dts_instance_id = dts_instance_id
         # The ID of the data migration, data synchronization, or change tracking task.
         self.dts_job_id = dts_job_id
-        # The region ID of the Data Transmission Service (DTS) instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # Resource group ID.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The synchronization direction. Default value: Forward. Valid values:
-        # 
-        # *   **Forward**: Data is synchronized from the source database to the destination database.
-        # 
-        # *   **Reverse**: Data is synchronized from the destination database to the source database.
-        # 
-        # >You can set this parameter to **Reverse** to start the reverse synchronization task only if the topology is two-way synchronization.
+        # The synchronization direction. Valid values:
+        # - **Forward**: forward. This is the default value.
+        # - **Reverse**: reverse.
+        # > You can set this parameter to **Reverse** to start the reverse synchronization link only when the topology of the data synchronization instance is two-way synchronization.
         self.synchronization_direction = synchronization_direction
-        # Whether it is a seamless integration (Zero-ETL) task, the value can be:
-        # - **false**: No. - **true**: Yes.
+        # Specifies whether the node is a zero-ETL node. Valid values:
+        # 
+        # - **false**: no.
+        # - **true**: yes.
         self.zero_etl_job = zero_etl_job
 
     def validate(self):

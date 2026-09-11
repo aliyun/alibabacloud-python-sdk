@@ -14,19 +14,19 @@ class ConvertInstanceResourceGroupRequest(DaraModel):
         resource_id: str = None,
         zero_etl_job: bool = None,
     ):
-        # This historical parameter does not take effect and is not required.
+        # A legacy parameter. This parameter does not take effect. You do not need to pass this parameter.
         self.dts_job_id = dts_job_id
-        # The ID of new resource group. You can obtain the ID on the Resource Group page in the Resource Management console. For more information, see [View basic information about a resource group](https://help.aliyun.com/document_detail/151181.html).
+        # The ID of the new resource group. You can obtain the ID from the Resource Management console. For more information, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
         self.new_resource_group_id = new_resource_group_id
-        # The ID of the region in which the Data Transmission Service (DTS) instance resides.
+        # The region in which the DTS instance resides.
         self.region_id = region_id
-        # This parameter is only for special services and not required.
+        # A parameter reserved for special business scenarios. You do not need to pass this parameter.
         self.resource_group_id = resource_group_id
-        # The ID of the DTS instance. You can view the ID in the **ID/Name** column on the task page in the console.
+        # The ID of the DTS instance. You can view the ID in the **ID/Name** column on the task list page in the console.
         # 
-        # >  This parameter is required.
+        # > This parameter is required.
         self.resource_id = resource_id
-        # This parameter is only for special services and not required.
+        # A parameter reserved for special business scenarios. You do not need to pass this parameter.
         self.zero_etl_job = zero_etl_job
 
     def validate(self):

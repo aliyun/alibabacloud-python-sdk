@@ -14,7 +14,7 @@ class CreateConsumerChannelResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The ID of the consumer group. You can specify this parameter on a downstream client when you consume tracked data.
+        # The consumer group ID. You can pass this ID to the downstream client to consume the change tracking data.
         self.consumer_group_id = consumer_group_id
         # The error code returned if the call failed.
         self.err_code = err_code
@@ -22,9 +22,9 @@ class CreateConsumerChannelResponseBody(DaraModel):
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

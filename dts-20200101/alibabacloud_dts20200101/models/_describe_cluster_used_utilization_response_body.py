@@ -25,39 +25,39 @@ class DescribeClusterUsedUtilizationResponseBody(DaraModel):
         success: bool = None,
         task_running: int = None,
     ):
-        # The error code returned by the backend service. The number is incremented.
+        # The internal error code. The value is incremented.
         self.code = code
-        # The CPU utilization of the cluster. Unit: percentage.
+        # The CPU utilization of the cluster. Unit: %.
         self.cpu_total = cpu_total
-        # The ID of the cluster.
+        # The cluster ID.
         self.dedicated_cluster_id = dedicated_cluster_id
-        # The total disk size of the cluster. Unit: GB.
+        # The total disk space of the cluster. Unit: GB.
         self.disk_total = disk_total
         # The disk usage of the cluster. Unit: GB.
         self.disk_used = disk_used
-        # The total number of DTS units (DUs).
+        # The total number of DUs.
         self.du_total = du_total
-        # The usage of DUs.
+        # The number of used DUs.
         self.du_used = du_used
-        # The dynamic part in the error message. This parameter is used to replace %s in the ErrMessage parameter.
+        # The dynamic error message. This parameter is used to replace the %s placeholder in the ErrMessage response parameter.
         self.dynamic_message = dynamic_message
-        # The error code returned if the request failed.
+        # The error code returned when the call fails.
         self.err_code = err_code
-        # The error message returned if the request failed.
+        # The error message.
         self.err_message = err_message
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The total amount of memory. A value of 0 is temporarily returned.
+        # The total memory. The value 0 is returned.
         self.memory_total = memory_total
-        # The memory usage. A value of 0 is temporarily returned.
+        # The memory usage. The value 0 is returned.
         self.memory_used = memory_used
-        # The memory usage.
+        # The memory usage percentage.
         self.memory_used_percentage = memory_used_percentage
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the call was successful.
         self.success = success
-        # The number of tasks that are in progress.
+        # The number of running tasks.
         self.task_running = task_running
 
     def validate(self):

@@ -16,17 +16,17 @@ class DescribeTagKeysResponseBody(DaraModel):
         tag_keys: List[str] = None,
         total_count: int = None,
     ):
-        # The type of the tag.
+        # The tag type.
         self.category = category
-        # The start page of the returned pages.
+        # The page number of the returned page.
         self.page_number = page_number
         # The number of tags returned per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The key of the tag.
+        # The list of tag keys.
         self.tag_keys = tag_keys
-        # The total number of returned tag keys.
+        # The total number of tag keys.
         self.total_count = total_count
 
     def validate(self):

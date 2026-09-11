@@ -17,36 +17,36 @@ class ModifyDtsJobPasswordRequest(DaraModel):
         user_name: str = None,
         zero_etl_job: bool = None,
     ):
-        # The ID of the data migration, data synchronization, or change tracking instance.
-        # 
-        # >  You can call the [DescribeMigrationJobs](https://help.aliyun.com/document_detail/208139.html), [DescribeSubscriptionInstances](https://help.aliyun.com/document_detail/49442.html), or [DescribeSynchronizationJobs](https://help.aliyun.com/document_detail/49454.html) operation to query the instance ID
+        # The instance ID of the data migration, synchronization, or subscribe instance.
         self.dts_instance_id = dts_instance_id
-        # The ID of the DTS task. The DTS task can be a data migration, data synchronization, or change tracking task.
+        # The ID of the data migration, synchronization, or change tracking task.
         self.dts_job_id = dts_job_id
-        # The database to which the password belongs. Valid values:
+        # The database to which the account belongs. Valid values:
         # 
-        # *   **src**: source database.
-        # *   **dest**: destination database.
+        # - **src**: the source database.
+        # - **dest**: the destination database.
         # 
-        # >  This parameter is required.
+        # > This parameter is required.
         self.endpoint = endpoint
-        # The new password.
-        # 
-        # >  This parameter is required and cannot be set to a value that is the same as the current password.
+        # The new password for the database account.
+        # > This parameter is required and must be different from the current password.
         self.password = password
-        # The ID of the region where the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The region ID of the instance. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # Resource group ID.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Synchronization direction, with values:
-        # - **Forward** (default): Forward. - **Reverse**: Reverse.
-        self.synchronization_direction = synchronization_direction
-        # The account of the source or destination database.
+        # The synchronization direction. Valid values:
+        # - **Forward**: forward.
+        # - **Reverse**: reverse.
         # 
-        # >  This parameter is required.
+        # > - Default value: **Forward**.
+        # - This parameter is required only when the synchronization topology of the data synchronization instance is two-way synchronization.
+        self.synchronization_direction = synchronization_direction
+        # The username of the database account to modify.
         self.user_name = user_name
-        # Whether it is a seamless integration (Zero-ETL) task, the value can be:
-        # - **false**: No. - **true**: Yes.
+        # Specifies whether the node is a seamless integration (Zero-ETL) node. Valid values:
+        # - **true**
+        # - **false**.
         self.zero_etl_job = zero_etl_job
 
     def validate(self):
