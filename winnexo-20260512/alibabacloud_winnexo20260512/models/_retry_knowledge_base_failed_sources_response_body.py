@@ -22,9 +22,9 @@ class RetryKnowledgeBaseFailedSourcesResponseBody(DaraModel):
     ):
         # The business status code. A value of 200 indicates success. A failure returns a backend error code (ERR.* / InvalidParameter.*).
         self.code = code
-        # The enterprise knowledge base directory ID.
+        # The ID of the enterprise knowledge base directory.
         self.directory_id = directory_id
-        # The number of resources successfully enqueued for retry.
+        # The number of data sources successfully enqueued for retry.
         self.enqueued_count = enqueued_count
         # The list of knowledge base source IDs that have been re-enqueued.
         self.enqueued_ids = enqueued_ids
@@ -36,7 +36,7 @@ class RetryKnowledgeBaseFailedSourcesResponseBody(DaraModel):
         self.message = message
         # The request trace ID.
         self.request_id = request_id
-        # The number of resources skipped (not in FAILED status).
+        # The number of data sources skipped because they are not in FAILED status.
         self.skipped_count = skipped_count
 
     def validate(self):

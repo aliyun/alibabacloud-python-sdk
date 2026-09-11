@@ -25,7 +25,7 @@ class ListSkillsShrinkRequest(DaraModel):
         self.filter_type = filter_type
         # The search keyword. Supports fuzzy search by API name or exact search by API ID.
         self.keyword = keyword
-        # The digital employee name. Used to calculate the CodeAgent allowedSkills whitelist based on binding relationships.
+        # The name of the digital employee. Used to calculate the CodeAgent allowedSkills whitelist based on binding relationships.
         self.operating_object_name = operating_object_name
         # The current page number.
         self.page = page

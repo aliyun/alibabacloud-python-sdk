@@ -904,6 +904,102 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_custom_org_with_options_async(request, headers, runtime)
 
+    def create_graph_with_options(
+        self,
+        request: main_models.CreateGraphRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGraphResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.business_profile):
+            body['businessProfile'] = request.business_profile
+        if not DaraCore.is_null(request.data_source_id):
+            body['dataSourceId'] = request.data_source_id
+        if not DaraCore.is_null(request.display_name):
+            body['displayName'] = request.display_name
+        if not DaraCore.is_null(request.graph_name):
+            body['graphName'] = request.graph_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGraph',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createGraph',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGraphResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_graph_with_options_async(
+        self,
+        request: main_models.CreateGraphRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGraphResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.business_profile):
+            body['businessProfile'] = request.business_profile
+        if not DaraCore.is_null(request.data_source_id):
+            body['dataSourceId'] = request.data_source_id
+        if not DaraCore.is_null(request.display_name):
+            body['displayName'] = request.display_name
+        if not DaraCore.is_null(request.graph_name):
+            body['graphName'] = request.graph_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGraph',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createGraph',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGraphResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_graph(
+        self,
+        request: main_models.CreateGraphRequest,
+    ) -> main_models.CreateGraphResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_graph_with_options(request, headers, runtime)
+
+    async def create_graph_async(
+        self,
+        request: main_models.CreateGraphRequest,
+    ) -> main_models.CreateGraphResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_graph_with_options_async(request, headers, runtime)
+
     def create_group_ali_ding_chat_with_options(
         self,
         tmp_req: main_models.CreateGroupAliDingChatRequest,
@@ -1999,6 +2095,8 @@ class Client(OpenApiClient):
             body['operatingObjectName'] = request.operating_object_name
         if not DaraCore.is_null(request.shanji_url):
             body['shanjiUrl'] = request.shanji_url
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),
@@ -2043,6 +2141,8 @@ class Client(OpenApiClient):
             body['operatingObjectName'] = request.operating_object_name
         if not DaraCore.is_null(request.shanji_url):
             body['shanjiUrl'] = request.shanji_url
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),
@@ -2101,6 +2201,8 @@ class Client(OpenApiClient):
             body['name'] = request.name
         if not DaraCore.is_null(request.operating_object_name):
             body['operatingObjectName'] = request.operating_object_name
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),
@@ -2143,6 +2245,8 @@ class Client(OpenApiClient):
             body['name'] = request.name
         if not DaraCore.is_null(request.operating_object_name):
             body['operatingObjectName'] = request.operating_object_name
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),
@@ -2207,6 +2311,8 @@ class Client(OpenApiClient):
             body['objectBindings'] = request.object_bindings_shrink
         if not DaraCore.is_null(request.operating_object_name):
             body['operatingObjectName'] = request.operating_object_name
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
         if not DaraCore.is_null(request.sync_config_shrink):
             body['syncConfig'] = request.sync_config_shrink
         req = open_api_util_models.OpenApiRequest(
@@ -2257,6 +2363,8 @@ class Client(OpenApiClient):
             body['objectBindings'] = request.object_bindings_shrink
         if not DaraCore.is_null(request.operating_object_name):
             body['operatingObjectName'] = request.operating_object_name
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
         if not DaraCore.is_null(request.sync_config_shrink):
             body['syncConfig'] = request.sync_config_shrink
         req = open_api_util_models.OpenApiRequest(
@@ -2551,6 +2659,8 @@ class Client(OpenApiClient):
             body['operatingObjectName'] = request.operating_object_name
         if not DaraCore.is_null(request.shanji_url):
             body['shanjiUrl'] = request.shanji_url
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),
@@ -2595,6 +2705,8 @@ class Client(OpenApiClient):
             body['operatingObjectName'] = request.operating_object_name
         if not DaraCore.is_null(request.shanji_url):
             body['shanjiUrl'] = request.shanji_url
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),
@@ -2999,6 +3111,8 @@ class Client(OpenApiClient):
             body['name'] = request.name
         if not DaraCore.is_null(request.operating_object_name):
             body['operatingObjectName'] = request.operating_object_name
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),
@@ -3043,6 +3157,8 @@ class Client(OpenApiClient):
             body['name'] = request.name
         if not DaraCore.is_null(request.operating_object_name):
             body['operatingObjectName'] = request.operating_object_name
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),
@@ -3109,6 +3225,8 @@ class Client(OpenApiClient):
             body['name'] = request.name
         if not DaraCore.is_null(request.operating_object_name):
             body['operatingObjectName'] = request.operating_object_name
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),
@@ -3159,6 +3277,8 @@ class Client(OpenApiClient):
             body['name'] = request.name
         if not DaraCore.is_null(request.operating_object_name):
             body['operatingObjectName'] = request.operating_object_name
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),
@@ -3215,6 +3335,8 @@ class Client(OpenApiClient):
             body['name'] = request.name
         if not DaraCore.is_null(request.operating_object_name):
             body['operatingObjectName'] = request.operating_object_name
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
         if not DaraCore.is_null(request.text_content):
             body['textContent'] = request.text_content
         req = open_api_util_models.OpenApiRequest(
@@ -3257,6 +3379,8 @@ class Client(OpenApiClient):
             body['name'] = request.name
         if not DaraCore.is_null(request.operating_object_name):
             body['operatingObjectName'] = request.operating_object_name
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
         if not DaraCore.is_null(request.text_content):
             body['textContent'] = request.text_content
         req = open_api_util_models.OpenApiRequest(
@@ -3317,6 +3441,8 @@ class Client(OpenApiClient):
             body['name'] = request.name
         if not DaraCore.is_null(request.operating_object_name):
             body['operatingObjectName'] = request.operating_object_name
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
         real_headers = {}
         if not DaraCore.is_null(headers.common_headers):
             real_headers = headers.common_headers
@@ -3364,6 +3490,8 @@ class Client(OpenApiClient):
             body['name'] = request.name
         if not DaraCore.is_null(request.operating_object_name):
             body['operatingObjectName'] = request.operating_object_name
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
         real_headers = {}
         if not DaraCore.is_null(headers.common_headers):
             real_headers = headers.common_headers
@@ -4386,6 +4514,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.enable_token_with_options_async(request, headers, runtime)
 
+    def get_ali_ding_minutes_content_with_options(
+        self,
+        request: main_models.GetAliDingMinutesContentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAliDingMinutesContentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.minutes_id):
+            body['minutesId'] = request.minutes_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAliDingMinutesContent',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/getAliDingMinutesContent',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAliDingMinutesContentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_ali_ding_minutes_content_with_options_async(
+        self,
+        request: main_models.GetAliDingMinutesContentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAliDingMinutesContentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.minutes_id):
+            body['minutesId'] = request.minutes_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAliDingMinutesContent',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/getAliDingMinutesContent',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAliDingMinutesContentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_ali_ding_minutes_content(
+        self,
+        request: main_models.GetAliDingMinutesContentRequest,
+    ) -> main_models.GetAliDingMinutesContentResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_ali_ding_minutes_content_with_options(request, headers, runtime)
+
+    async def get_ali_ding_minutes_content_async(
+        self,
+        request: main_models.GetAliDingMinutesContentRequest,
+    ) -> main_models.GetAliDingMinutesContentResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_ali_ding_minutes_content_with_options_async(request, headers, runtime)
+
     def get_chat_session_with_options(
         self,
         request: main_models.GetChatSessionRequest,
@@ -4470,6 +4682,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_chat_session_with_options_async(request, headers, runtime)
 
+    def get_graph_draft_assembled_with_options(
+        self,
+        request: main_models.GetGraphDraftAssembledRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetGraphDraftAssembledResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.graph_name):
+            body['graphName'] = request.graph_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetGraphDraftAssembled',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/getGraphDraftAssembled',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetGraphDraftAssembledResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_graph_draft_assembled_with_options_async(
+        self,
+        request: main_models.GetGraphDraftAssembledRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetGraphDraftAssembledResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.graph_name):
+            body['graphName'] = request.graph_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetGraphDraftAssembled',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/getGraphDraftAssembled',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetGraphDraftAssembledResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_graph_draft_assembled(
+        self,
+        request: main_models.GetGraphDraftAssembledRequest,
+    ) -> main_models.GetGraphDraftAssembledResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_graph_draft_assembled_with_options(request, headers, runtime)
+
+    async def get_graph_draft_assembled_async(
+        self,
+        request: main_models.GetGraphDraftAssembledRequest,
+    ) -> main_models.GetGraphDraftAssembledResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_graph_draft_assembled_with_options_async(request, headers, runtime)
+
     def get_graph_schema_with_options(
         self,
         request: main_models.GetGraphSchemaRequest,
@@ -4553,6 +4849,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_graph_schema_with_options_async(request, headers, runtime)
+
+    def get_graph_schema_detail_with_options(
+        self,
+        request: main_models.GetGraphSchemaDetailRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetGraphSchemaDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.graph_name):
+            body['graphName'] = request.graph_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetGraphSchemaDetail',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/getGraphSchemaDetail',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetGraphSchemaDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_graph_schema_detail_with_options_async(
+        self,
+        request: main_models.GetGraphSchemaDetailRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetGraphSchemaDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.graph_name):
+            body['graphName'] = request.graph_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetGraphSchemaDetail',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/getGraphSchemaDetail',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetGraphSchemaDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_graph_schema_detail(
+        self,
+        request: main_models.GetGraphSchemaDetailRequest,
+    ) -> main_models.GetGraphSchemaDetailResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_graph_schema_detail_with_options(request, headers, runtime)
+
+    async def get_graph_schema_detail_async(
+        self,
+        request: main_models.GetGraphSchemaDetailRequest,
+    ) -> main_models.GetGraphSchemaDetailResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_graph_schema_detail_with_options_async(request, headers, runtime)
 
     def get_instance_expire_time_with_options(
         self,
@@ -6342,6 +6722,198 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_agents_with_options_async(request, headers, runtime)
 
+    def list_ali_ding_group_messages_with_options(
+        self,
+        request: main_models.ListAliDingGroupMessagesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAliDingGroupMessagesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.chat_id):
+            body['chatId'] = request.chat_id
+        if not DaraCore.is_null(request.direction):
+            body['direction'] = request.direction
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.time):
+            body['time'] = request.time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAliDingGroupMessages',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/listAliDingGroupMessages',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAliDingGroupMessagesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_ali_ding_group_messages_with_options_async(
+        self,
+        request: main_models.ListAliDingGroupMessagesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAliDingGroupMessagesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.chat_id):
+            body['chatId'] = request.chat_id
+        if not DaraCore.is_null(request.direction):
+            body['direction'] = request.direction
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.time):
+            body['time'] = request.time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAliDingGroupMessages',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/listAliDingGroupMessages',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAliDingGroupMessagesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_ali_ding_group_messages(
+        self,
+        request: main_models.ListAliDingGroupMessagesRequest,
+    ) -> main_models.ListAliDingGroupMessagesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_ali_ding_group_messages_with_options(request, headers, runtime)
+
+    async def list_ali_ding_group_messages_async(
+        self,
+        request: main_models.ListAliDingGroupMessagesRequest,
+    ) -> main_models.ListAliDingGroupMessagesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_ali_ding_group_messages_with_options_async(request, headers, runtime)
+
+    def list_ali_ding_minutes_with_options(
+        self,
+        request: main_models.ListAliDingMinutesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAliDingMinutesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.cursor):
+            body['cursor'] = request.cursor
+        if not DaraCore.is_null(request.end_time):
+            body['endTime'] = request.end_time
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            body['startTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAliDingMinutes',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/listAliDingMinutes',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAliDingMinutesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_ali_ding_minutes_with_options_async(
+        self,
+        request: main_models.ListAliDingMinutesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAliDingMinutesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.cursor):
+            body['cursor'] = request.cursor
+        if not DaraCore.is_null(request.end_time):
+            body['endTime'] = request.end_time
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            body['startTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAliDingMinutes',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/listAliDingMinutes',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAliDingMinutesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_ali_ding_minutes(
+        self,
+        request: main_models.ListAliDingMinutesRequest,
+    ) -> main_models.ListAliDingMinutesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_ali_ding_minutes_with_options(request, headers, runtime)
+
+    async def list_ali_ding_minutes_async(
+        self,
+        request: main_models.ListAliDingMinutesRequest,
+    ) -> main_models.ListAliDingMinutesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_ali_ding_minutes_with_options_async(request, headers, runtime)
+
     def list_authorized_agents_with_options(
         self,
         request: main_models.ListAuthorizedAgentsRequest,
@@ -6813,6 +7385,186 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_chat_sessions_with_options_async(request, headers, runtime)
+
+    def list_graph_draft_resources_with_options(
+        self,
+        request: main_models.ListGraphDraftResourcesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListGraphDraftResourcesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.graph_name):
+            body['graphName'] = request.graph_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListGraphDraftResources',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/listGraphDraftResources',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListGraphDraftResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_graph_draft_resources_with_options_async(
+        self,
+        request: main_models.ListGraphDraftResourcesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListGraphDraftResourcesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.graph_name):
+            body['graphName'] = request.graph_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListGraphDraftResources',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/listGraphDraftResources',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListGraphDraftResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_graph_draft_resources(
+        self,
+        request: main_models.ListGraphDraftResourcesRequest,
+    ) -> main_models.ListGraphDraftResourcesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_graph_draft_resources_with_options(request, headers, runtime)
+
+    async def list_graph_draft_resources_async(
+        self,
+        request: main_models.ListGraphDraftResourcesRequest,
+    ) -> main_models.ListGraphDraftResourcesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_graph_draft_resources_with_options_async(request, headers, runtime)
+
+    def list_graph_schemas_with_options(
+        self,
+        tmp_req: main_models.ListGraphSchemasRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListGraphSchemasResponse:
+        tmp_req.validate()
+        request = main_models.ListGraphSchemasShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.semantic_tags):
+            request.semantic_tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.semantic_tags, 'semanticTags', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.keyword):
+            body['keyword'] = request.keyword
+        if not DaraCore.is_null(request.semantic_tags_shrink):
+            body['semanticTags'] = request.semantic_tags_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListGraphSchemas',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/listGraphSchemas',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListGraphSchemasResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_graph_schemas_with_options_async(
+        self,
+        tmp_req: main_models.ListGraphSchemasRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListGraphSchemasResponse:
+        tmp_req.validate()
+        request = main_models.ListGraphSchemasShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.semantic_tags):
+            request.semantic_tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.semantic_tags, 'semanticTags', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.keyword):
+            body['keyword'] = request.keyword
+        if not DaraCore.is_null(request.semantic_tags_shrink):
+            body['semanticTags'] = request.semantic_tags_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListGraphSchemas',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/listGraphSchemas',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListGraphSchemasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_graph_schemas(
+        self,
+        request: main_models.ListGraphSchemasRequest,
+    ) -> main_models.ListGraphSchemasResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_graph_schemas_with_options(request, headers, runtime)
+
+    async def list_graph_schemas_async(
+        self,
+        request: main_models.ListGraphSchemasRequest,
+    ) -> main_models.ListGraphSchemasResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_graph_schemas_with_options_async(request, headers, runtime)
 
     def list_graphs_with_options(
         self,
@@ -10214,6 +10966,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.retry_knowledge_base_failed_sources_with_options_async(request, headers, runtime)
 
+    def revert_graph_draft_resource_with_options(
+        self,
+        request: main_models.RevertGraphDraftResourceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RevertGraphDraftResourceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.draft_change_id):
+            body['draftChangeId'] = request.draft_change_id
+        if not DaraCore.is_null(request.graph_name):
+            body['graphName'] = request.graph_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RevertGraphDraftResource',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/revertGraphDraftResource',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RevertGraphDraftResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def revert_graph_draft_resource_with_options_async(
+        self,
+        request: main_models.RevertGraphDraftResourceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RevertGraphDraftResourceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.draft_change_id):
+            body['draftChangeId'] = request.draft_change_id
+        if not DaraCore.is_null(request.graph_name):
+            body['graphName'] = request.graph_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RevertGraphDraftResource',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/revertGraphDraftResource',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RevertGraphDraftResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def revert_graph_draft_resource(
+        self,
+        request: main_models.RevertGraphDraftResourceRequest,
+    ) -> main_models.RevertGraphDraftResourceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.revert_graph_draft_resource_with_options(request, headers, runtime)
+
+    async def revert_graph_draft_resource_async(
+        self,
+        request: main_models.RevertGraphDraftResourceRequest,
+    ) -> main_models.RevertGraphDraftResourceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.revert_graph_draft_resource_with_options_async(request, headers, runtime)
+
     def revoke_agent_users_with_options(
         self,
         tmp_req: main_models.RevokeAgentUsersRequest,
@@ -10429,6 +11269,106 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.run_skill_with_options_async(request, headers, runtime)
+
+    def save_graph_draft_resource_with_options(
+        self,
+        request: main_models.SaveGraphDraftResourceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SaveGraphDraftResourceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.element_type):
+            body['elementType'] = request.element_type
+        if not DaraCore.is_null(request.graph_name):
+            body['graphName'] = request.graph_name
+        if not DaraCore.is_null(request.resource_name):
+            body['resourceName'] = request.resource_name
+        if not DaraCore.is_null(request.resource_type):
+            body['resourceType'] = request.resource_type
+        if not DaraCore.is_null(request.yaml_edit):
+            body['yamlEdit'] = request.yaml_edit
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SaveGraphDraftResource',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/saveGraphDraftResource',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SaveGraphDraftResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def save_graph_draft_resource_with_options_async(
+        self,
+        request: main_models.SaveGraphDraftResourceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SaveGraphDraftResourceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.element_type):
+            body['elementType'] = request.element_type
+        if not DaraCore.is_null(request.graph_name):
+            body['graphName'] = request.graph_name
+        if not DaraCore.is_null(request.resource_name):
+            body['resourceName'] = request.resource_name
+        if not DaraCore.is_null(request.resource_type):
+            body['resourceType'] = request.resource_type
+        if not DaraCore.is_null(request.yaml_edit):
+            body['yamlEdit'] = request.yaml_edit
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SaveGraphDraftResource',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/saveGraphDraftResource',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SaveGraphDraftResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def save_graph_draft_resource(
+        self,
+        request: main_models.SaveGraphDraftResourceRequest,
+    ) -> main_models.SaveGraphDraftResourceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.save_graph_draft_resource_with_options(request, headers, runtime)
+
+    async def save_graph_draft_resource_async(
+        self,
+        request: main_models.SaveGraphDraftResourceRequest,
+    ) -> main_models.SaveGraphDraftResourceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.save_graph_draft_resource_with_options_async(request, headers, runtime)
 
     def save_group_output_file_to_group_resource_with_options(
         self,
@@ -10738,6 +11678,102 @@ class Client(OpenApiClient):
         headers = {}
         return await self.save_output_file_to_resource_with_options_async(request, headers, runtime)
 
+    def search_ali_ding_group_chats_with_options(
+        self,
+        request: main_models.SearchAliDingGroupChatsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchAliDingGroupChatsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.cursor):
+            body['cursor'] = request.cursor
+        if not DaraCore.is_null(request.exclude_muted):
+            body['excludeMuted'] = request.exclude_muted
+        if not DaraCore.is_null(request.keyword):
+            body['keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SearchAliDingGroupChats',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/searchAliDingGroupChats',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SearchAliDingGroupChatsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def search_ali_ding_group_chats_with_options_async(
+        self,
+        request: main_models.SearchAliDingGroupChatsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchAliDingGroupChatsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.cursor):
+            body['cursor'] = request.cursor
+        if not DaraCore.is_null(request.exclude_muted):
+            body['excludeMuted'] = request.exclude_muted
+        if not DaraCore.is_null(request.keyword):
+            body['keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SearchAliDingGroupChats',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/searchAliDingGroupChats',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SearchAliDingGroupChatsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def search_ali_ding_group_chats(
+        self,
+        request: main_models.SearchAliDingGroupChatsRequest,
+    ) -> main_models.SearchAliDingGroupChatsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.search_ali_ding_group_chats_with_options(request, headers, runtime)
+
+    async def search_ali_ding_group_chats_async(
+        self,
+        request: main_models.SearchAliDingGroupChatsRequest,
+    ) -> main_models.SearchAliDingGroupChatsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.search_ali_ding_group_chats_with_options_async(request, headers, runtime)
+
     def send_async_chat_message_with_options(
         self,
         tmp_req: main_models.SendAsyncChatMessageRequest,
@@ -10765,6 +11801,8 @@ class Client(OpenApiClient):
             body['digitalEmployeeName'] = request.digital_employee_name_shrink
         if not DaraCore.is_null(request.direct_chat):
             body['directChat'] = request.direct_chat
+        if not DaraCore.is_null(request.enable_web_search):
+            body['enableWebSearch'] = request.enable_web_search
         if not DaraCore.is_null(request.files_shrink):
             body['files'] = request.files_shrink
         if not DaraCore.is_null(request.model):
@@ -10825,6 +11863,8 @@ class Client(OpenApiClient):
             body['digitalEmployeeName'] = request.digital_employee_name_shrink
         if not DaraCore.is_null(request.direct_chat):
             body['directChat'] = request.direct_chat
+        if not DaraCore.is_null(request.enable_web_search):
+            body['enableWebSearch'] = request.enable_web_search
         if not DaraCore.is_null(request.files_shrink):
             body['files'] = request.files_shrink
         if not DaraCore.is_null(request.model):
@@ -10901,6 +11941,8 @@ class Client(OpenApiClient):
             body['digitalEmployeeName'] = request.digital_employee_name_shrink
         if not DaraCore.is_null(request.direct_chat):
             body['directChat'] = request.direct_chat
+        if not DaraCore.is_null(request.enable_web_search):
+            body['enableWebSearch'] = request.enable_web_search
         if not DaraCore.is_null(request.files_shrink):
             body['files'] = request.files_shrink
         if not DaraCore.is_null(request.model):
@@ -10970,6 +12012,8 @@ class Client(OpenApiClient):
             body['digitalEmployeeName'] = request.digital_employee_name_shrink
         if not DaraCore.is_null(request.direct_chat):
             body['directChat'] = request.direct_chat
+        if not DaraCore.is_null(request.enable_web_search):
+            body['enableWebSearch'] = request.enable_web_search
         if not DaraCore.is_null(request.files_shrink):
             body['files'] = request.files_shrink
         if not DaraCore.is_null(request.model):
@@ -11039,6 +12083,8 @@ class Client(OpenApiClient):
             body['digitalEmployeeName'] = request.digital_employee_name_shrink
         if not DaraCore.is_null(request.direct_chat):
             body['directChat'] = request.direct_chat
+        if not DaraCore.is_null(request.enable_web_search):
+            body['enableWebSearch'] = request.enable_web_search
         if not DaraCore.is_null(request.files_shrink):
             body['files'] = request.files_shrink
         if not DaraCore.is_null(request.model):
@@ -11099,6 +12145,8 @@ class Client(OpenApiClient):
             body['digitalEmployeeName'] = request.digital_employee_name_shrink
         if not DaraCore.is_null(request.direct_chat):
             body['directChat'] = request.direct_chat
+        if not DaraCore.is_null(request.enable_web_search):
+            body['enableWebSearch'] = request.enable_web_search
         if not DaraCore.is_null(request.files_shrink):
             body['files'] = request.files_shrink
         if not DaraCore.is_null(request.model):
@@ -11616,6 +12664,262 @@ class Client(OpenApiClient):
         headers = {}
         return await self.toggle_primary_object_favorite_with_options_async(request, headers, runtime)
 
+    def transcribe_chat_voice_with_options(
+        self,
+        request: main_models.TranscribeChatVoiceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TranscribeChatVoiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.content_type):
+            body['contentType'] = request.content_type
+        if not DaraCore.is_null(request.file_name):
+            body['fileName'] = request.file_name
+        if not DaraCore.is_null(request.file_url):
+            body['fileUrl'] = request.file_url
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TranscribeChatVoice',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/transcribeChatVoice',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TranscribeChatVoiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def transcribe_chat_voice_with_options_async(
+        self,
+        request: main_models.TranscribeChatVoiceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TranscribeChatVoiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.content_type):
+            body['contentType'] = request.content_type
+        if not DaraCore.is_null(request.file_name):
+            body['fileName'] = request.file_name
+        if not DaraCore.is_null(request.file_url):
+            body['fileUrl'] = request.file_url
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TranscribeChatVoice',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/transcribeChatVoice',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TranscribeChatVoiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def transcribe_chat_voice(
+        self,
+        request: main_models.TranscribeChatVoiceRequest,
+    ) -> main_models.TranscribeChatVoiceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.transcribe_chat_voice_with_options(request, headers, runtime)
+
+    async def transcribe_chat_voice_async(
+        self,
+        request: main_models.TranscribeChatVoiceRequest,
+    ) -> main_models.TranscribeChatVoiceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.transcribe_chat_voice_with_options_async(request, headers, runtime)
+
+    def transcribe_chat_voice_advance(
+        self,
+        request: main_models.TranscribeChatVoiceAdvanceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TranscribeChatVoiceResponse:
+        # Step 0: init client
+        if DaraCore.is_null(self._credential):
+            raise open_api_exceptions.ClientException(
+                code = 'InvalidCredentials',
+                message = 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            )
+        credential_model = self._credential.get_credential()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
+        open_platform_endpoint = self._open_platform_endpoint
+        if DaraCore.is_null(open_platform_endpoint) or open_platform_endpoint == '':
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if DaraCore.is_null(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_util_models.Config(
+            access_key_id = access_key_id,
+            access_key_secret = access_key_secret,
+            security_token = security_token,
+            type = credential_type,
+            endpoint = open_platform_endpoint,
+            protocol = self._protocol,
+            region_id = self._region_id
+        )
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'WinNexo',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(auth_request)
+        )
+        auth_params = open_api_util_models.Params(
+            action = 'AuthorizeFileUpload',
+            version = '2019-12-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        auth_response = {}
+        file_obj = FileField()
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
+        transcribe_chat_voice_req = main_models.TranscribeChatVoiceRequest()
+        Utils.convert(request, transcribe_chat_voice_req)
+        if not DaraCore.is_null(request.file_url_object):
+            auth_response = auth_client.call_api(auth_params, auth_req, runtime)
+            tmp_body = auth_response.get('body')
+            use_accelerate = bool(tmp_body.get('UseAccelerate'))
+            auth_response_body = Utils.stringify_map_value(tmp_body)
+            file_obj = FileField(
+                filename = auth_response_body.get('ObjectKey'),
+                content = request.file_url_object,
+                content_type = ''
+            )
+            oss_header = {
+                'host': Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type),
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
+            transcribe_chat_voice_req.file_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
+        transcribe_chat_voice_resp = self.transcribe_chat_voice_with_options(transcribe_chat_voice_req, headers, runtime)
+        return transcribe_chat_voice_resp
+
+    async def transcribe_chat_voice_advance_async(
+        self,
+        request: main_models.TranscribeChatVoiceAdvanceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TranscribeChatVoiceResponse:
+        # Step 0: init client
+        if DaraCore.is_null(self._credential):
+            raise open_api_exceptions.ClientException(
+                code = 'InvalidCredentials',
+                message = 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            )
+        credential_model = await self._credential.get_credential_async()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
+        open_platform_endpoint = self._open_platform_endpoint
+        if DaraCore.is_null(open_platform_endpoint) or open_platform_endpoint == '':
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if DaraCore.is_null(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_util_models.Config(
+            access_key_id = access_key_id,
+            access_key_secret = access_key_secret,
+            security_token = security_token,
+            type = credential_type,
+            endpoint = open_platform_endpoint,
+            protocol = self._protocol,
+            region_id = self._region_id
+        )
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'WinNexo',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(auth_request)
+        )
+        auth_params = open_api_util_models.Params(
+            action = 'AuthorizeFileUpload',
+            version = '2019-12-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        auth_response = {}
+        file_obj = FileField()
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
+        transcribe_chat_voice_req = main_models.TranscribeChatVoiceRequest()
+        Utils.convert(request, transcribe_chat_voice_req)
+        if not DaraCore.is_null(request.file_url_object):
+            auth_response = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            tmp_body = auth_response.get('body')
+            use_accelerate = bool(tmp_body.get('UseAccelerate'))
+            auth_response_body = Utils.stringify_map_value(tmp_body)
+            file_obj = FileField(
+                filename = auth_response_body.get('ObjectKey'),
+                content = request.file_url_object,
+                content_type = ''
+            )
+            oss_header = {
+                'host': Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type),
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
+            transcribe_chat_voice_req.file_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
+        transcribe_chat_voice_resp = await self.transcribe_chat_voice_with_options_async(transcribe_chat_voice_req, headers, runtime)
+        return transcribe_chat_voice_resp
+
     def update_agent_auth_mode_with_options(
         self,
         request: main_models.UpdateAgentAuthModeRequest,
@@ -11895,6 +13199,98 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_directory_with_options_async(request, headers, runtime)
+
+    def update_graph_info_with_options(
+        self,
+        request: main_models.UpdateGraphInfoRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateGraphInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.business_profile):
+            body['businessProfile'] = request.business_profile
+        if not DaraCore.is_null(request.display_name):
+            body['displayName'] = request.display_name
+        if not DaraCore.is_null(request.graph_name):
+            body['graphName'] = request.graph_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateGraphInfo',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/updateGraphInfo',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateGraphInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_graph_info_with_options_async(
+        self,
+        request: main_models.UpdateGraphInfoRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateGraphInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.business_profile):
+            body['businessProfile'] = request.business_profile
+        if not DaraCore.is_null(request.display_name):
+            body['displayName'] = request.display_name
+        if not DaraCore.is_null(request.graph_name):
+            body['graphName'] = request.graph_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateGraphInfo',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/updateGraphInfo',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateGraphInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_graph_info(
+        self,
+        request: main_models.UpdateGraphInfoRequest,
+    ) -> main_models.UpdateGraphInfoResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_graph_info_with_options(request, headers, runtime)
+
+    async def update_graph_info_async(
+        self,
+        request: main_models.UpdateGraphInfoRequest,
+    ) -> main_models.UpdateGraphInfoResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_graph_info_with_options_async(request, headers, runtime)
 
     def update_knowledge_base_directory_with_options(
         self,

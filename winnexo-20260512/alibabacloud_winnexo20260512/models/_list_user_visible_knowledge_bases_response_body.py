@@ -94,11 +94,11 @@ class ListUserVisibleKnowledgeBasesResponseBodyItems(DaraModel):
         gmt_modified: int = None,
         name: str = None,
     ):
-        # The user ID of the creator.
+        # The user ID of the task creator.
         self.creator_id = creator_id
-        # The name of the creator.
+        # The creator name.
         self.creator_name = creator_name
-        # The description of the knowledge base.
+        # The description of the to-do card type.
         self.description = description
         # The directory ID of the enterprise knowledge base.
         self.directory_id = directory_id

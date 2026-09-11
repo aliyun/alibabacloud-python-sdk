@@ -15,6 +15,7 @@ class CreatePersonalAlidingKnowledgeBaseRequest(DaraModel):
         kb_url: str = None,
         object_bindings: List[main_models.CreatePersonalAlidingKnowledgeBaseRequestObjectBindings] = None,
         operating_object_name: str = None,
+        source_tags: str = None,
         sync_config: main_models.CreatePersonalAlidingKnowledgeBaseRequestSyncConfig = None,
         tenant_id: str = None,
     ):
@@ -30,6 +31,8 @@ class CreatePersonalAlidingKnowledgeBaseRequest(DaraModel):
         self.object_bindings = object_bindings
         # The name of the digital employee (operating object name, optional).
         self.operating_object_name = operating_object_name
+        # The list of resource tag JSON strings applied to all child sources created during knowledge base synchronization.
+        self.source_tags = source_tags
         # The synchronization settings.
         self.sync_config = sync_config
         # The tenant ID.
@@ -65,6 +68,9 @@ class CreatePersonalAlidingKnowledgeBaseRequest(DaraModel):
         if self.operating_object_name is not None:
             result['operatingObjectName'] = self.operating_object_name
 
+        if self.source_tags is not None:
+            result['sourceTags'] = self.source_tags
+
         if self.sync_config is not None:
             result['syncConfig'] = self.sync_config.to_map()
 
@@ -93,6 +99,9 @@ class CreatePersonalAlidingKnowledgeBaseRequest(DaraModel):
         if m.get('operatingObjectName') is not None:
             self.operating_object_name = m.get('operatingObjectName')
 
+        if m.get('sourceTags') is not None:
+            self.source_tags = m.get('sourceTags')
+
         if m.get('syncConfig') is not None:
             temp_model = main_models.CreatePersonalAlidingKnowledgeBaseRequestSyncConfig()
             self.sync_config = temp_model.from_map(m.get('syncConfig'))
@@ -108,7 +117,7 @@ class CreatePersonalAlidingKnowledgeBaseRequestSyncConfig(DaraModel):
         cron: str = None,
         enabled: bool = None,
     ):
-        # The cron expression for timed scheduling.
+        # The cron expression for the timed scheduling node.
         self.cron = cron
         # Specifies whether to enable synchronization.
         self.enabled = enabled

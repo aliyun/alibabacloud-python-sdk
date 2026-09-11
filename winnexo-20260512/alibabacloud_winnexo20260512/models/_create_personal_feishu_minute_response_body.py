@@ -25,7 +25,7 @@ class CreatePersonalFeishuMinuteResponseBody(DaraModel):
         self.gmt_create = gmt_create
         # The operation message.
         self.message = message
-        # The resource name.
+        # The image name.
         self.name = name
         # The request ID.
         self.request_id = request_id

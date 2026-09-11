@@ -19,7 +19,7 @@ class ListBillingRequest(DaraModel):
         tenant_id: str = None,
         wn_user_id: str = None,
     ):
-        # The unique business identifier. When bizType is LibraryChat, bizId refers to the document library ID.
+        # The unique business identifier. When bizType is set to LibraryChat, bizId specifies the document library ID.
         self.biz_id = biz_id
         # The business type. Currently supported values: model Q&A (LlmChat) and document library Q&A (LibraryChat).
         self.biz_type = biz_type
@@ -29,10 +29,10 @@ class ListBillingRequest(DaraModel):
         self.ignore_zero = ignore_zero
         # The operation type. Valid values:
         # 
-        # - start: indicates task creation. This is the default value and does not need to be explicitly set in most cases.
-        # - stop: stops a real-time meeting task. This corresponds to the creation of a real-time meeting. After the meeting ends, set this to stop to trigger the call. This is used in real-time meeting scenarios.
+        # - start: indicates node creation. This is the default value. In most cases, you do not need to explicitly set this value.
+        # - stop: stops a real-time meeting node. This value corresponds to the creation of a real-time meeting. After the meeting ends, set this value to stop and trigger the call. This value is used in real-time meeting scenarios.
         # 
-        # Note: When ending a real-time recording, you must set this parameter to stop.
+        # > Note: When ending a real-time recording, make sure to set this parameter to stop.
         self.operation = operation
         # The current page number.
         self.page = page
@@ -40,9 +40,9 @@ class ListBillingRequest(DaraModel):
         self.page_size = page_size
         # The query start time. The value is a UNIX timestamp in seconds.
         self.start_time = start_time
-        # The task status. The status is returned as Running upon submission.
+        # The node status. Running is returned upon submission.
         self.status = status
-        # The tenant ID. This is a common parameter. In winnexo-cli, pass it explicitly with --tenant-id.
+        # The tenant ID. This is a common parameter. In winnexo-cli, pass this parameter explicitly by using --tenant-id.
         self.tenant_id = tenant_id
         # The user ID (WINNEXO platform user ID, optional filter).
         self.wn_user_id = wn_user_id

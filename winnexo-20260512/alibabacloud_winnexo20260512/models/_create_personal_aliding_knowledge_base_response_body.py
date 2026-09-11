@@ -23,7 +23,7 @@ class CreatePersonalAlidingKnowledgeBaseResponseBody(DaraModel):
         self.directory_id = directory_id
         # The creation time in ISO 8601 format.
         self.gmt_create = gmt_create
-        # The knowledge base URL (echoed from the request parameter for caller alignment).
+        # The knowledge base URL. This echoes the input parameter for the caller to verify alignment.
         self.kb_url = kb_url
         # The response message.
         self.message = message
@@ -35,8 +35,8 @@ class CreatePersonalAlidingKnowledgeBaseResponseBody(DaraModel):
         self.request_id = request_id
         # The status. Valid values:
         # 
-        # - 200: Success.
-        # - 500: Failure.
+        # - 200: Succeeded.
+        # - 500: Failed.
         self.status = status
 
     def validate(self):

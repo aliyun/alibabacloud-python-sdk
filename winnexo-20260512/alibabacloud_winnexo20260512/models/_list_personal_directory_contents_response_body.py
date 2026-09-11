@@ -134,15 +134,15 @@ class ListPersonalDirectoryContentsResponseBodyItems(DaraModel):
         self.name = name
         # The object bindings.
         self.object_bindings = object_bindings
-        # The number of resources in the FAILED state. This field is returned only when the top-level KB directory list is queried.
+        # The number of resources with the FAILED status. This parameter is returned only when the top-level KB directory is listed.
         self.source_failed_count = source_failed_count
-        # The knowledge base affiliation type. Valid values: aliding_kb_doc (DingTalk knowledge base document), normal (common knowledge).
+        # The knowledge base (KB) ownership type. Valid values: aliding_kb_doc (DingTalk knowledge base document) and normal (common knowledge).
         self.source_kind = source_kind
-        # The number of resources in the READY state. This field is returned only when the top-level KB directory list is queried.
+        # The number of resources with the READY status. This parameter is returned only when the top-level KB directory is listed.
         self.source_ready_count = source_ready_count
-        # The resource status. This field has a value only when itemType is resource.
+        # The resource status. This parameter has a value only when itemType is resource.
         self.source_status = source_status
-        # The total number of resources under the directory and its subdirectories. This field is returned only when the top-level KB directory list is queried.
+        # The total number of resources under the directory and its subdirectories. This parameter is returned only when the top-level KB directory is listed.
         self.source_total_count = source_total_count
         # The data source type.
         self.source_type = source_type
@@ -273,7 +273,7 @@ class ListPersonalDirectoryContentsResponseBodyItemsObjectBindings(DaraModel):
         self.object_name = object_name
         # The bound object type, such as customer or project.
         self.object_type = object_type
-        # The display name of the object type, such as "Customer". This value is resolved from the graph schema. The value is null when the cache is missed.
+        # The display name of the object type, such as "Customer", resolved from the graph schema. The value is null when there is a cache miss.
         self.object_type_name = object_type_name
 
     def validate(self):

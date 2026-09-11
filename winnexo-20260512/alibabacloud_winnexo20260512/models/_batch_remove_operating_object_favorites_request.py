@@ -31,7 +31,7 @@ class BatchRemoveOperatingObjectFavoritesRequest(DaraModel):
         # 
         # This parameter is required.
         self.operating_object_name = operating_object_name
-        # The tenant ID. This is a common parameter. Pass it explicitly in winnexo-cli by using --tenant-id.
+        # The tenant ID. This is a common parameter. In winnexo-cli, pass this value explicitly by using --tenant-id.
         self.tenant_id = tenant_id
 
     def validate(self):

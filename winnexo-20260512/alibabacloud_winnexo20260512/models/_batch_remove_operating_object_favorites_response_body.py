@@ -31,9 +31,9 @@ class BatchRemoveOperatingObjectFavoritesResponseBody(DaraModel):
         self.object_type = object_type
         # The digital employee name (operating object name, optional).
         self.operating_object_name = operating_object_name
-        # The number of remaining favorited objects within the specified scope.
+        # The number of remaining subscribed objects within the precise scope.
         self.remaining_count = remaining_count
-        # The number of physical favorite records that are actually deleted.
+        # The number of physical subscription records that are actually deleted.
         self.removed_count = removed_count
         # The request ID.
         self.request_id = request_id
@@ -133,11 +133,11 @@ class BatchRemoveOperatingObjectFavoritesResponseBodyResults(DaraModel):
         object_id: str = None,
         processed: bool = None,
     ):
-        # Indicates whether the object is favorited after the operation.
+        # Indicates whether the object is subscribed after the operation.
         self.is_favorited = is_favorited
         # The aligned object ID: target ID or KR ID.
         self.object_id = object_id
-        # Indicates whether the request has been processed.
+        # Indicates whether the request is processed.
         self.processed = processed
 
     def validate(self):

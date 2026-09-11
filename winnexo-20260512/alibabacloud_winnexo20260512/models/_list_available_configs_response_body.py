@@ -19,7 +19,7 @@ class ListAvailableConfigsResponseBody(DaraModel):
         self.code = code
         # The list of queried Logtail configurations.
         self.configs = configs
-        # The status code description.
+        # The description of the status code.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -85,9 +85,9 @@ class ListAvailableConfigsResponseBodyConfigs(DaraModel):
         self.corp_name = corp_name
         # The platform type.
         self.platform_type = platform_type
-        # The SSO configuration ID. This field has a value only for SAML, OAuth2, or WeCom types. The value is null for custom types.
+        # The SSO configuration ID. This parameter has a value only for SAML, OAuth2, and WeCom types. The value is null for the custom type.
         self.sso_settings_id = sso_settings_id
-        # The SSO configuration name. This field has a value only for SAML, OAuth2, or WeCom types. The value is null for custom types.
+        # The SSO configuration name. This parameter has a value only for SAML, OAuth2, and WeCom types. The value is null for the custom type.
         self.sso_settings_name = sso_settings_name
 
     def validate(self):

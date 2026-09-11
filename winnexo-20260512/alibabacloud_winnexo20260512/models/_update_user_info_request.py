@@ -17,17 +17,17 @@ class UpdateUserInfoRequest(DaraModel):
     ):
         # The profile picture URL.
         self.avatar = avatar
-        # The language preference: zh-CN, en-US.
+        # The language preference: zh-CN or en-US.
         self.language_preference = language_preference
         # The name.
         self.name = name
         # The user service description. Maximum length: 1000 characters.
         self.offering = offering
-        # The user role description (used when profileRole is set to Others). Maximum length: 100 characters.
+        # The user role description. This parameter is used when profileRole is set to Others. Maximum length: 100 characters.
         self.profile_role_info = profile_role_info
         # The user self-introduction. Maximum length: 1000 characters.
         self.self_introduction = self_introduction
-        # The effective tenant ID.
+        # The ID of the effective tenant.
         self.tenant_id = tenant_id
 
     def validate(self):

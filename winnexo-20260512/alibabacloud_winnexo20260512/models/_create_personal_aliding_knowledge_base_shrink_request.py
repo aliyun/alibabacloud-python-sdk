@@ -12,6 +12,7 @@ class CreatePersonalAlidingKnowledgeBaseShrinkRequest(DaraModel):
         kb_url: str = None,
         object_bindings_shrink: str = None,
         operating_object_name: str = None,
+        source_tags: str = None,
         sync_config_shrink: str = None,
         tenant_id: str = None,
     ):
@@ -27,6 +28,8 @@ class CreatePersonalAlidingKnowledgeBaseShrinkRequest(DaraModel):
         self.object_bindings_shrink = object_bindings_shrink
         # The name of the digital employee (operating object name, optional).
         self.operating_object_name = operating_object_name
+        # The list of resource tag JSON strings applied to all child sources created during knowledge base synchronization.
+        self.source_tags = source_tags
         # The synchronization settings.
         self.sync_config_shrink = sync_config_shrink
         # The tenant ID.
@@ -55,6 +58,9 @@ class CreatePersonalAlidingKnowledgeBaseShrinkRequest(DaraModel):
         if self.operating_object_name is not None:
             result['operatingObjectName'] = self.operating_object_name
 
+        if self.source_tags is not None:
+            result['sourceTags'] = self.source_tags
+
         if self.sync_config_shrink is not None:
             result['syncConfig'] = self.sync_config_shrink
 
@@ -79,6 +85,9 @@ class CreatePersonalAlidingKnowledgeBaseShrinkRequest(DaraModel):
 
         if m.get('operatingObjectName') is not None:
             self.operating_object_name = m.get('operatingObjectName')
+
+        if m.get('sourceTags') is not None:
+            self.source_tags = m.get('sourceTags')
 
         if m.get('syncConfig') is not None:
             self.sync_config_shrink = m.get('syncConfig')

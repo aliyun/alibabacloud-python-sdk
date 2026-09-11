@@ -39,7 +39,7 @@ class GetUserInfoResponseBody(DaraModel):
         self.crm_type = crm_type
         # Indicates whether the user is an enterprise administrator.
         self.is_admin = is_admin
-        # Indicates whether the current logon tenant is the system tenant (tenantId=10000).
+        # Indicates whether the current logon tenant is a system tenant (tenantId=10000).
         self.is_system_tenant = is_system_tenant
         # The language preference.
         self.language_preference = language_preference
@@ -47,9 +47,9 @@ class GetUserInfoResponseBody(DaraModel):
         self.message = message
         # The username.
         self.name = name
-        # The user service description. Maximum length: 1000 characters.
+        # The user service description. The value can be up to 1000 characters in length.
         self.offering = offering
-        # The parsed result of the user service (JSON format).
+        # The parsed result of the user service description in JSON format.
         self.parsed_offering = parsed_offering
         # The user role.
         self.profile_role = profile_role
@@ -57,7 +57,7 @@ class GetUserInfoResponseBody(DaraModel):
         self.profile_role_info = profile_role_info
         # The request ID.
         self.request_id = request_id
-        # The user self-introduction. Maximum length: 1000 characters.
+        # The user self-introduction. The value can be up to 1000 characters in length.
         self.self_introduction = self_introduction
         # The effective tenant ID.
         self.tenant_id = tenant_id

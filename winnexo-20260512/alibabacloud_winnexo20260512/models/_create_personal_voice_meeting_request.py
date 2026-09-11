@@ -12,6 +12,7 @@ class CreatePersonalVoiceMeetingRequest(DaraModel):
         file_url: str = None,
         name: str = None,
         operating_object_name: str = None,
+        source_tags: str = None,
         tenant_id: str = None,
     ):
         # The pipeline description.
@@ -28,6 +29,8 @@ class CreatePersonalVoiceMeetingRequest(DaraModel):
         self.name = name
         # The name of the digital employee (operating object name, optional).
         self.operating_object_name = operating_object_name
+        # The list of resource tag JSON strings.
+        self.source_tags = source_tags
         # The tenant ID.
         self.tenant_id = tenant_id
 
@@ -54,6 +57,9 @@ class CreatePersonalVoiceMeetingRequest(DaraModel):
         if self.operating_object_name is not None:
             result['operatingObjectName'] = self.operating_object_name
 
+        if self.source_tags is not None:
+            result['sourceTags'] = self.source_tags
+
         if self.tenant_id is not None:
             result['tenantId'] = self.tenant_id
 
@@ -75,6 +81,9 @@ class CreatePersonalVoiceMeetingRequest(DaraModel):
 
         if m.get('operatingObjectName') is not None:
             self.operating_object_name = m.get('operatingObjectName')
+
+        if m.get('sourceTags') is not None:
+            self.source_tags = m.get('sourceTags')
 
         if m.get('tenantId') is not None:
             self.tenant_id = m.get('tenantId')

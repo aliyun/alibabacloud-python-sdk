@@ -16,6 +16,7 @@ class CreatePersonalFileRequest(DaraModel):
         file_record_id: str = None,
         name: str = None,
         operating_object_name: str = None,
+        source_tags: str = None,
         tenant_id: str = None,
     ):
         # The pipeline description.
@@ -40,6 +41,8 @@ class CreatePersonalFileRequest(DaraModel):
         self.name = name
         # The name of the digital employee (operating object name, optional).
         self.operating_object_name = operating_object_name
+        # 资源标签 JSON 字符串列表
+        self.source_tags = source_tags
         # The tenant ID.
         self.tenant_id = tenant_id
 
@@ -78,6 +81,9 @@ class CreatePersonalFileRequest(DaraModel):
         if self.operating_object_name is not None:
             result['operatingObjectName'] = self.operating_object_name
 
+        if self.source_tags is not None:
+            result['sourceTags'] = self.source_tags
+
         if self.tenant_id is not None:
             result['tenantId'] = self.tenant_id
 
@@ -111,6 +117,9 @@ class CreatePersonalFileRequest(DaraModel):
 
         if m.get('operatingObjectName') is not None:
             self.operating_object_name = m.get('operatingObjectName')
+
+        if m.get('sourceTags') is not None:
+            self.source_tags = m.get('sourceTags')
 
         if m.get('tenantId') is not None:
             self.tenant_id = m.get('tenantId')

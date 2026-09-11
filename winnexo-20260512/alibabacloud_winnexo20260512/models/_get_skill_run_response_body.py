@@ -35,11 +35,11 @@ class GetSkillRunResponseBody(DaraModel):
         self.error_code = error_code
         # The error description. This parameter is returned only when the status is Failed.
         self.error_message = error_message
-        # The task end time in ISO 8601 format. This parameter has a value only in desired states (Succeeded, Failed, or Cancelled).
+        # The task end time in ISO 8601 format. This parameter has a value only when the task is in a desired state (Succeeded, Failed, or Cancelled).
         self.finished_at = finished_at
         # The execution log list. This parameter is returned only when IncludeLogs is set to true.
         self.logs = logs
-        # The status code description.
+        # The description of the status code.
         self.message = message
         # The progress percentage. This parameter is meaningful only when the status is Running.
         self.progress = progress

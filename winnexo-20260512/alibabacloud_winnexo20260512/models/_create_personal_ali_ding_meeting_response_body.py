@@ -34,7 +34,6 @@ class CreatePersonalAliDingMeetingResponseBody(DaraModel):
         # The unique identifier on the business system side, that is, the business ID.
         self.source_id = source_id
         # The signing status. Valid values:
-        # 
         # - CREATED: Created but not signed.
         # - SUCCESS: Signed.
         # - STOP: Terminated.

@@ -11,6 +11,7 @@ class SendChatMessageShrinkRequest(DaraModel):
         content_type: str = None,
         digital_employee_name_shrink: str = None,
         direct_chat: bool = None,
+        enable_web_search: bool = None,
         files_shrink: str = None,
         model: str = None,
         reuse_last_session: bool = None,
@@ -29,15 +30,17 @@ class SendChatMessageShrinkRequest(DaraModel):
         self.digital_employee_name_shrink = digital_employee_name_shrink
         # Specifies whether to enable direct connection mode. If set to true, the regular scenario routing is skipped and the direct conversation scenario is entered.
         self.direct_chat = direct_chat
-        # The list of file references. Each item is an object in which fileId is required and is returned by uploadChatFile.
+        # Specifies whether to enable web search. Default value: False. In task execution scenarios (when taskExecution is passed), the task configuration takes precedence.
+        self.enable_web_search = enable_web_search
+        # The list of file references. Each item is an object, and fileId is required (returned by uploadChatFile).
         self.files_shrink = files_shrink
         # The abstract model tier. Valid values: quick, standard, and flagship. If not specified, new sessions use standard, and existing sessions retain the current session tier.
         self.model = model
-        # Specifies whether to reuse the most recent session of the digital employee when sessionId is not provided (CLI scenario). Default value: false, which creates a new session.
+        # Specifies whether to reuse the most recent session of the digital employee when sessionId is not passed (CLI scenario). Default value: false, which creates a new session.
         self.reuse_last_session = reuse_last_session
         # The session ID.
         self.session_id = session_id
-        # Specifies whether to use streaming output.
+        # Specifies whether to enable streaming output.
         self.stream = stream
         # The task execution metadata returned by executeScheduledTask. When provided, the request is processed through the task execution pipeline.
         self.task_execution_shrink = task_execution_shrink
@@ -63,6 +66,9 @@ class SendChatMessageShrinkRequest(DaraModel):
 
         if self.direct_chat is not None:
             result['directChat'] = self.direct_chat
+
+        if self.enable_web_search is not None:
+            result['enableWebSearch'] = self.enable_web_search
 
         if self.files_shrink is not None:
             result['files'] = self.files_shrink
@@ -100,6 +106,9 @@ class SendChatMessageShrinkRequest(DaraModel):
 
         if m.get('directChat') is not None:
             self.direct_chat = m.get('directChat')
+
+        if m.get('enableWebSearch') is not None:
+            self.enable_web_search = m.get('enableWebSearch')
 
         if m.get('files') is not None:
             self.files_shrink = m.get('files')

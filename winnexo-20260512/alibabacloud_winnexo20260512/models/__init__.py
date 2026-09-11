@@ -27,6 +27,9 @@ from ._create_conversation_response import CreateConversationResponse
 from ._create_custom_org_request import CreateCustomOrgRequest
 from ._create_custom_org_response_body import CreateCustomOrgResponseBody
 from ._create_custom_org_response import CreateCustomOrgResponse
+from ._create_graph_request import CreateGraphRequest
+from ._create_graph_response_body import CreateGraphResponseBody
+from ._create_graph_response import CreateGraphResponse
 from ._create_group_ali_ding_chat_request import CreateGroupAliDingChatRequest
 from ._create_group_ali_ding_chat_shrink_request import CreateGroupAliDingChatShrinkRequest
 from ._create_group_ali_ding_chat_response_body import CreateGroupAliDingChatResponseBody
@@ -136,12 +139,21 @@ from ._disable_token_response import DisableTokenResponse
 from ._enable_token_request import EnableTokenRequest
 from ._enable_token_response_body import EnableTokenResponseBody
 from ._enable_token_response import EnableTokenResponse
+from ._get_ali_ding_minutes_content_request import GetAliDingMinutesContentRequest
+from ._get_ali_ding_minutes_content_response_body import GetAliDingMinutesContentResponseBody
+from ._get_ali_ding_minutes_content_response import GetAliDingMinutesContentResponse
 from ._get_chat_session_request import GetChatSessionRequest
 from ._get_chat_session_response_body import GetChatSessionResponseBody
 from ._get_chat_session_response import GetChatSessionResponse
+from ._get_graph_draft_assembled_request import GetGraphDraftAssembledRequest
+from ._get_graph_draft_assembled_response_body import GetGraphDraftAssembledResponseBody
+from ._get_graph_draft_assembled_response import GetGraphDraftAssembledResponse
 from ._get_graph_schema_request import GetGraphSchemaRequest
 from ._get_graph_schema_response_body import GetGraphSchemaResponseBody
 from ._get_graph_schema_response import GetGraphSchemaResponse
+from ._get_graph_schema_detail_request import GetGraphSchemaDetailRequest
+from ._get_graph_schema_detail_response_body import GetGraphSchemaDetailResponseBody
+from ._get_graph_schema_detail_response import GetGraphSchemaDetailResponse
 from ._get_instance_expire_time_request import GetInstanceExpireTimeRequest
 from ._get_instance_expire_time_response_body import GetInstanceExpireTimeResponseBody
 from ._get_instance_expire_time_response import GetInstanceExpireTimeResponse
@@ -205,6 +217,12 @@ from ._list_admin_knowledge_bases_response import ListAdminKnowledgeBasesRespons
 from ._list_agents_request import ListAgentsRequest
 from ._list_agents_response_body import ListAgentsResponseBody
 from ._list_agents_response import ListAgentsResponse
+from ._list_ali_ding_group_messages_request import ListAliDingGroupMessagesRequest
+from ._list_ali_ding_group_messages_response_body import ListAliDingGroupMessagesResponseBody
+from ._list_ali_ding_group_messages_response import ListAliDingGroupMessagesResponse
+from ._list_ali_ding_minutes_request import ListAliDingMinutesRequest
+from ._list_ali_ding_minutes_response_body import ListAliDingMinutesResponseBody
+from ._list_ali_ding_minutes_response import ListAliDingMinutesResponse
 from ._list_authorized_agents_request import ListAuthorizedAgentsRequest
 from ._list_authorized_agents_response_body import ListAuthorizedAgentsResponseBody
 from ._list_authorized_agents_response import ListAuthorizedAgentsResponse
@@ -220,6 +238,13 @@ from ._list_billing_response import ListBillingResponse
 from ._list_chat_sessions_request import ListChatSessionsRequest
 from ._list_chat_sessions_response_body import ListChatSessionsResponseBody
 from ._list_chat_sessions_response import ListChatSessionsResponse
+from ._list_graph_draft_resources_request import ListGraphDraftResourcesRequest
+from ._list_graph_draft_resources_response_body import ListGraphDraftResourcesResponseBody
+from ._list_graph_draft_resources_response import ListGraphDraftResourcesResponse
+from ._list_graph_schemas_request import ListGraphSchemasRequest
+from ._list_graph_schemas_shrink_request import ListGraphSchemasShrinkRequest
+from ._list_graph_schemas_response_body import ListGraphSchemasResponseBody
+from ._list_graph_schemas_response import ListGraphSchemasResponse
 from ._list_graphs_request import ListGraphsRequest
 from ._list_graphs_response_body import ListGraphsResponseBody
 from ._list_graphs_response import ListGraphsResponse
@@ -337,6 +362,9 @@ from ._retry_directory_failed_sources_response import RetryDirectoryFailedSource
 from ._retry_knowledge_base_failed_sources_request import RetryKnowledgeBaseFailedSourcesRequest
 from ._retry_knowledge_base_failed_sources_response_body import RetryKnowledgeBaseFailedSourcesResponseBody
 from ._retry_knowledge_base_failed_sources_response import RetryKnowledgeBaseFailedSourcesResponse
+from ._revert_graph_draft_resource_request import RevertGraphDraftResourceRequest
+from ._revert_graph_draft_resource_response_body import RevertGraphDraftResourceResponseBody
+from ._revert_graph_draft_resource_response import RevertGraphDraftResourceResponse
 from ._revoke_agent_users_request import RevokeAgentUsersRequest
 from ._revoke_agent_users_shrink_request import RevokeAgentUsersShrinkRequest
 from ._revoke_agent_users_response_body import RevokeAgentUsersResponseBody
@@ -345,6 +373,9 @@ from ._run_skill_request import RunSkillRequest
 from ._run_skill_shrink_request import RunSkillShrinkRequest
 from ._run_skill_response_body import RunSkillResponseBody
 from ._run_skill_response import RunSkillResponse
+from ._save_graph_draft_resource_request import SaveGraphDraftResourceRequest
+from ._save_graph_draft_resource_response_body import SaveGraphDraftResourceResponseBody
+from ._save_graph_draft_resource_response import SaveGraphDraftResourceResponse
 from ._save_group_output_file_to_group_resource_request import SaveGroupOutputFileToGroupResourceRequest
 from ._save_group_output_file_to_group_resource_shrink_request import SaveGroupOutputFileToGroupResourceShrinkRequest
 from ._save_group_output_file_to_group_resource_response_body import SaveGroupOutputFileToGroupResourceResponseBody
@@ -357,6 +388,9 @@ from ._save_output_file_to_resource_request import SaveOutputFileToResourceReque
 from ._save_output_file_to_resource_shrink_request import SaveOutputFileToResourceShrinkRequest
 from ._save_output_file_to_resource_response_body import SaveOutputFileToResourceResponseBody
 from ._save_output_file_to_resource_response import SaveOutputFileToResourceResponse
+from ._search_ali_ding_group_chats_request import SearchAliDingGroupChatsRequest
+from ._search_ali_ding_group_chats_response_body import SearchAliDingGroupChatsResponseBody
+from ._search_ali_ding_group_chats_response import SearchAliDingGroupChatsResponse
 from ._send_async_chat_message_request import SendAsyncChatMessageRequest
 from ._send_async_chat_message_shrink_request import SendAsyncChatMessageShrinkRequest
 from ._send_async_chat_message_response_body import SendAsyncChatMessageResponseBody
@@ -379,6 +413,10 @@ from ._toggle_primary_object_favorite_request import TogglePrimaryObjectFavorite
 from ._toggle_primary_object_favorite_shrink_request import TogglePrimaryObjectFavoriteShrinkRequest
 from ._toggle_primary_object_favorite_response_body import TogglePrimaryObjectFavoriteResponseBody
 from ._toggle_primary_object_favorite_response import TogglePrimaryObjectFavoriteResponse
+from ._transcribe_chat_voice_request import TranscribeChatVoiceRequest
+from ._transcribe_chat_voice_advance_request import TranscribeChatVoiceAdvanceRequest
+from ._transcribe_chat_voice_response_body import TranscribeChatVoiceResponseBody
+from ._transcribe_chat_voice_response import TranscribeChatVoiceResponse
 from ._update_agent_auth_mode_request import UpdateAgentAuthModeRequest
 from ._update_agent_auth_mode_response_body import UpdateAgentAuthModeResponseBody
 from ._update_agent_auth_mode_response import UpdateAgentAuthModeResponse
@@ -388,6 +426,9 @@ from ._update_chat_session_response import UpdateChatSessionResponse
 from ._update_directory_request import UpdateDirectoryRequest
 from ._update_directory_response_body import UpdateDirectoryResponseBody
 from ._update_directory_response import UpdateDirectoryResponse
+from ._update_graph_info_request import UpdateGraphInfoRequest
+from ._update_graph_info_response_body import UpdateGraphInfoResponseBody
+from ._update_graph_info_response import UpdateGraphInfoResponse
 from ._update_knowledge_base_directory_request import UpdateKnowledgeBaseDirectoryRequest
 from ._update_knowledge_base_directory_response_body import UpdateKnowledgeBaseDirectoryResponseBody
 from ._update_knowledge_base_directory_response import UpdateKnowledgeBaseDirectoryResponse
@@ -443,6 +484,7 @@ from ._create_scheduled_task_request import CreateScheduledTaskRequestTaskDetail
 from ._create_scheduled_task_request import CreateScheduledTaskRequestTaskDetail
 from ._create_scheduled_task_request import CreateScheduledTaskRequestTriggerConfigPushConfig
 from ._create_scheduled_task_request import CreateScheduledTaskRequestTriggerConfig
+from ._get_ali_ding_minutes_content_response_body import GetAliDingMinutesContentResponseBodyTranscription
 from ._get_chat_session_response_body import GetChatSessionResponseBodyMessages
 from ._get_chat_session_response_body import GetChatSessionResponseBodySession
 from ._get_scheduled_task_execution_detail_response_body import GetScheduledTaskExecutionDetailResponseBodyFiles
@@ -465,9 +507,14 @@ from ._list_active_announcements_response_body import ListActiveAnnouncementsRes
 from ._list_admin_knowledge_bases_response_body import ListAdminKnowledgeBasesResponseBodyItemsObjectBindings
 from ._list_admin_knowledge_bases_response_body import ListAdminKnowledgeBasesResponseBodyItems
 from ._list_agents_response_body import ListAgentsResponseBodyItems
+from ._list_ali_ding_group_messages_response_body import ListAliDingGroupMessagesResponseBodyItemsAttachments
+from ._list_ali_ding_group_messages_response_body import ListAliDingGroupMessagesResponseBodyItems
+from ._list_ali_ding_minutes_response_body import ListAliDingMinutesResponseBodyItems
 from ._list_authorized_users_response_body import ListAuthorizedUsersResponseBodyItems
 from ._list_available_configs_response_body import ListAvailableConfigsResponseBodyConfigs
 from ._list_billing_response_body import ListBillingResponseBodyList
+from ._list_graph_draft_resources_response_body import ListGraphDraftResourcesResponseBodyItems
+from ._list_graph_schemas_response_body import ListGraphSchemasResponseBodyItems
 from ._list_graphs_response_body import ListGraphsResponseBodyItems
 from ._list_operating_object_favorites_response_body import ListOperatingObjectFavoritesResponseBodyItems
 from ._list_output_files_response_body import ListOutputFilesResponseBodyItemsOutputItemsEmailInfo
@@ -498,6 +545,7 @@ from ._retry_knowledge_base_failed_sources_response_body import RetryKnowledgeBa
 from ._save_group_output_file_to_group_resource_response_body import SaveGroupOutputFileToGroupResourceResponseBodyResults
 from ._save_group_output_file_to_personal_resource_response_body import SaveGroupOutputFileToPersonalResourceResponseBodyResults
 from ._save_output_file_to_resource_response_body import SaveOutputFileToResourceResponseBodyResults
+from ._search_ali_ding_group_chats_response_body import SearchAliDingGroupChatsResponseBodyItems
 from ._send_async_chat_message_request import SendAsyncChatMessageRequestFiles
 from ._send_async_chat_message_request import SendAsyncChatMessageRequestTaskExecution
 from ._send_chat_message_request import SendChatMessageRequestFiles
@@ -543,6 +591,9 @@ __all__ = [
     CreateCustomOrgRequest,
     CreateCustomOrgResponseBody,
     CreateCustomOrgResponse,
+    CreateGraphRequest,
+    CreateGraphResponseBody,
+    CreateGraphResponse,
     CreateGroupAliDingChatRequest,
     CreateGroupAliDingChatShrinkRequest,
     CreateGroupAliDingChatResponseBody,
@@ -652,12 +703,21 @@ __all__ = [
     EnableTokenRequest,
     EnableTokenResponseBody,
     EnableTokenResponse,
+    GetAliDingMinutesContentRequest,
+    GetAliDingMinutesContentResponseBody,
+    GetAliDingMinutesContentResponse,
     GetChatSessionRequest,
     GetChatSessionResponseBody,
     GetChatSessionResponse,
+    GetGraphDraftAssembledRequest,
+    GetGraphDraftAssembledResponseBody,
+    GetGraphDraftAssembledResponse,
     GetGraphSchemaRequest,
     GetGraphSchemaResponseBody,
     GetGraphSchemaResponse,
+    GetGraphSchemaDetailRequest,
+    GetGraphSchemaDetailResponseBody,
+    GetGraphSchemaDetailResponse,
     GetInstanceExpireTimeRequest,
     GetInstanceExpireTimeResponseBody,
     GetInstanceExpireTimeResponse,
@@ -721,6 +781,12 @@ __all__ = [
     ListAgentsRequest,
     ListAgentsResponseBody,
     ListAgentsResponse,
+    ListAliDingGroupMessagesRequest,
+    ListAliDingGroupMessagesResponseBody,
+    ListAliDingGroupMessagesResponse,
+    ListAliDingMinutesRequest,
+    ListAliDingMinutesResponseBody,
+    ListAliDingMinutesResponse,
     ListAuthorizedAgentsRequest,
     ListAuthorizedAgentsResponseBody,
     ListAuthorizedAgentsResponse,
@@ -736,6 +802,13 @@ __all__ = [
     ListChatSessionsRequest,
     ListChatSessionsResponseBody,
     ListChatSessionsResponse,
+    ListGraphDraftResourcesRequest,
+    ListGraphDraftResourcesResponseBody,
+    ListGraphDraftResourcesResponse,
+    ListGraphSchemasRequest,
+    ListGraphSchemasShrinkRequest,
+    ListGraphSchemasResponseBody,
+    ListGraphSchemasResponse,
     ListGraphsRequest,
     ListGraphsResponseBody,
     ListGraphsResponse,
@@ -853,6 +926,9 @@ __all__ = [
     RetryKnowledgeBaseFailedSourcesRequest,
     RetryKnowledgeBaseFailedSourcesResponseBody,
     RetryKnowledgeBaseFailedSourcesResponse,
+    RevertGraphDraftResourceRequest,
+    RevertGraphDraftResourceResponseBody,
+    RevertGraphDraftResourceResponse,
     RevokeAgentUsersRequest,
     RevokeAgentUsersShrinkRequest,
     RevokeAgentUsersResponseBody,
@@ -861,6 +937,9 @@ __all__ = [
     RunSkillShrinkRequest,
     RunSkillResponseBody,
     RunSkillResponse,
+    SaveGraphDraftResourceRequest,
+    SaveGraphDraftResourceResponseBody,
+    SaveGraphDraftResourceResponse,
     SaveGroupOutputFileToGroupResourceRequest,
     SaveGroupOutputFileToGroupResourceShrinkRequest,
     SaveGroupOutputFileToGroupResourceResponseBody,
@@ -873,6 +952,9 @@ __all__ = [
     SaveOutputFileToResourceShrinkRequest,
     SaveOutputFileToResourceResponseBody,
     SaveOutputFileToResourceResponse,
+    SearchAliDingGroupChatsRequest,
+    SearchAliDingGroupChatsResponseBody,
+    SearchAliDingGroupChatsResponse,
     SendAsyncChatMessageRequest,
     SendAsyncChatMessageShrinkRequest,
     SendAsyncChatMessageResponseBody,
@@ -895,6 +977,10 @@ __all__ = [
     TogglePrimaryObjectFavoriteShrinkRequest,
     TogglePrimaryObjectFavoriteResponseBody,
     TogglePrimaryObjectFavoriteResponse,
+    TranscribeChatVoiceRequest,
+    TranscribeChatVoiceAdvanceRequest,
+    TranscribeChatVoiceResponseBody,
+    TranscribeChatVoiceResponse,
     UpdateAgentAuthModeRequest,
     UpdateAgentAuthModeResponseBody,
     UpdateAgentAuthModeResponse,
@@ -904,6 +990,9 @@ __all__ = [
     UpdateDirectoryRequest,
     UpdateDirectoryResponseBody,
     UpdateDirectoryResponse,
+    UpdateGraphInfoRequest,
+    UpdateGraphInfoResponseBody,
+    UpdateGraphInfoResponse,
     UpdateKnowledgeBaseDirectoryRequest,
     UpdateKnowledgeBaseDirectoryResponseBody,
     UpdateKnowledgeBaseDirectoryResponse,
@@ -959,6 +1048,7 @@ __all__ = [
     CreateScheduledTaskRequestTaskDetail,
     CreateScheduledTaskRequestTriggerConfigPushConfig,
     CreateScheduledTaskRequestTriggerConfig,
+    GetAliDingMinutesContentResponseBodyTranscription,
     GetChatSessionResponseBodyMessages,
     GetChatSessionResponseBodySession,
     GetScheduledTaskExecutionDetailResponseBodyFiles,
@@ -981,9 +1071,14 @@ __all__ = [
     ListAdminKnowledgeBasesResponseBodyItemsObjectBindings,
     ListAdminKnowledgeBasesResponseBodyItems,
     ListAgentsResponseBodyItems,
+    ListAliDingGroupMessagesResponseBodyItemsAttachments,
+    ListAliDingGroupMessagesResponseBodyItems,
+    ListAliDingMinutesResponseBodyItems,
     ListAuthorizedUsersResponseBodyItems,
     ListAvailableConfigsResponseBodyConfigs,
     ListBillingResponseBodyList,
+    ListGraphDraftResourcesResponseBodyItems,
+    ListGraphSchemasResponseBodyItems,
     ListGraphsResponseBodyItems,
     ListOperatingObjectFavoritesResponseBodyItems,
     ListOutputFilesResponseBodyItemsOutputItemsEmailInfo,
@@ -1014,6 +1109,7 @@ __all__ = [
     SaveGroupOutputFileToGroupResourceResponseBodyResults,
     SaveGroupOutputFileToPersonalResourceResponseBodyResults,
     SaveOutputFileToResourceResponseBodyResults,
+    SearchAliDingGroupChatsResponseBodyItems,
     SendAsyncChatMessageRequestFiles,
     SendAsyncChatMessageRequestTaskExecution,
     SendChatMessageRequestFiles,

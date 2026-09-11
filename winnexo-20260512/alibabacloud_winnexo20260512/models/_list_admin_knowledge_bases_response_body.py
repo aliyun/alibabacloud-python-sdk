@@ -22,7 +22,7 @@ class ListAdminKnowledgeBasesResponseBody(DaraModel):
         self.code = code
         # The list of MCP cards.
         self.items = items
-        # The status code description.
+        # The description of the status code.
         self.message = message
         # The page number. Default value: 1.
         self.page = page
@@ -30,7 +30,7 @@ class ListAdminKnowledgeBasesResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The maximum number of records returned in this request.
+        # The maximum number of entries returned in this request.
         self.total = total
 
     def validate(self):
@@ -134,15 +134,15 @@ class ListAdminKnowledgeBasesResponseBodyItems(DaraModel):
         self.name = name
         # The object bindings.
         self.object_bindings = object_bindings
-        # The number of resources with FAILED status. This field is returned only for the top-level knowledge base directory list.
+        # The number of resources with the FAILED status. This field is returned only in the top-level knowledge base directory list.
         self.source_failed_count = source_failed_count
-        # The knowledge base ownership type. Valid values: aliding_kb_doc (DingTalk knowledge base document) and normal (common knowledge).
+        # The knowledge base source type. Valid values: aliding_kb_doc (DingTalk knowledge base document) and normal (common knowledge).
         self.source_kind = source_kind
-        # The number of resources with READY status. This field is returned only for the top-level knowledge base directory list.
+        # The number of resources with the READY status. This field is returned only in the top-level knowledge base directory list.
         self.source_ready_count = source_ready_count
-        # The resource status. This field has a value only when itemType is resource.
+        # The resource status. This field has a value when itemType is set to resource.
         self.source_status = source_status
-        # The total number of resources in the directory and its subdirectories. This field is returned only for the top-level knowledge base directory list.
+        # The total number of resources in the directory and its subdirectories. This field is returned only in the top-level knowledge base directory list.
         self.source_total_count = source_total_count
         # The source type.
         self.source_type = source_type
@@ -268,13 +268,13 @@ class ListAdminKnowledgeBasesResponseBodyItemsObjectBindings(DaraModel):
         object_type: str = None,
         object_type_name: str = None,
     ):
-        # The semantic graph name to which the object belongs. The object_id is unique within this graph.
+        # The name of the semantic graph to which the object belongs. The object_id is unique within this graph.
         self.graph_name = graph_name
-        # The ID of the recommended item, which can be a feedId or a micro-application ID.
+        # The ID of the recommended item, which can be a **feedId** or a micro-application ID.
         self.object_id = object_id
         # The object name.
         self.object_name = object_name
-        # The object type, such as customer. This field has a value only when type is mention.
+        # The object type, such as customer. This field has a value when type is set to mention.
         self.object_type = object_type
         # The display name of the object type (such as "Customer"), parsed from the graph schema. The value is null when the cache is missed.
         self.object_type_name = object_type_name

@@ -13,9 +13,10 @@ class CreatePersonalDingtalkMinutesRequest(DaraModel):
         notes: str = None,
         operating_object_name: str = None,
         shanji_url: str = None,
+        source_tags: str = None,
         tenant_id: str = None,
     ):
-        # The description of the pipeline.
+        # The pipeline description.
         self.description = description
         # The directory ID.
         self.directory_id = directory_id
@@ -27,10 +28,12 @@ class CreatePersonalDingtalkMinutesRequest(DaraModel):
         self.notes = notes
         # The name of the digital employee (operating object name, optional).
         self.operating_object_name = operating_object_name
-        # The original Shanji link (required).
+        # The original Shanji note link (required).
         # 
         # This parameter is required.
         self.shanji_url = shanji_url
+        # A list of resource tag JSON strings.
+        self.source_tags = source_tags
         # The tenant ID.
         self.tenant_id = tenant_id
 
@@ -60,6 +63,9 @@ class CreatePersonalDingtalkMinutesRequest(DaraModel):
         if self.shanji_url is not None:
             result['shanjiUrl'] = self.shanji_url
 
+        if self.source_tags is not None:
+            result['sourceTags'] = self.source_tags
+
         if self.tenant_id is not None:
             result['tenantId'] = self.tenant_id
 
@@ -84,6 +90,9 @@ class CreatePersonalDingtalkMinutesRequest(DaraModel):
 
         if m.get('shanjiUrl') is not None:
             self.shanji_url = m.get('shanjiUrl')
+
+        if m.get('sourceTags') is not None:
+            self.source_tags = m.get('sourceTags')
 
         if m.get('tenantId') is not None:
             self.tenant_id = m.get('tenantId')

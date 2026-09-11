@@ -34,11 +34,12 @@ class CreatePersonalAlidingDocResponseBody(DaraModel):
         self.request_id = request_id
         # The permission scope.
         self.scope = scope
-        # The unique identifier on the business system side, that is, the business ID.
+        # The unique ID on the business system side, which is the business ID.
         self.source_id = source_id
         # The call status. Valid values:
-        # - **PENDING**: Waiting for receipt.
-        # - **SUCCESS**: Succeeded.
+        # 
+        # - **PENDING**: Waiting for a receipt.
+        # - **SUCCESS**: Successful.
         # - **FAILED**: Failed.
         # - **TIMEOUT**: Timed out.
         self.status = status

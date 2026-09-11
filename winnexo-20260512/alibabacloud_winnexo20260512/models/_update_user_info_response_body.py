@@ -83,31 +83,31 @@ class UpdateUserInfoResponseBodyUser(DaraModel):
         user_code: str = None,
         user_id: int = None,
     ):
-        # The user profile picture URL.
+        # The profile picture URL of the user.
         self.avatar = avatar
         # Indicates whether the user is a super administrator.
         self.is_admin = is_admin
         # Indicates whether the current logged-in tenant is a system tenant.
         self.is_system_tenant = is_system_tenant
-        # The user language preference.
+        # The language preference of the user.
         self.language_preference = language_preference
-        # The username.
+        # The name of the user.
         self.name = name
-        # The user service description.
+        # The service description of the user.
         self.offering = offering
-        # The parsed user service result in JSON format.
+        # The parsed result of the user service in JSON format.
         self.parsed_offering = parsed_offering
-        # The user role.
+        # The role of the user.
         self.profile_role = profile_role
-        # The user role description.
+        # The role description of the user.
         self.profile_role_info = profile_role_info
-        # The user self-introduction.
+        # The self-introduction of the user.
         self.self_introduction = self_introduction
-        # The current tenant ID.
+        # The ID of the current tenant.
         self.tenant_id = tenant_id
         # The list of tenants to which the user belongs.
         self.tenant_list = tenant_list
-        # The current tenant name.
+        # The name of the current tenant.
         self.tenant_name = tenant_name
         # The user code.
         self.user_code = user_code

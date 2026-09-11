@@ -19,9 +19,9 @@ class QueryPrimaryObjectDataResponseBody(DaraModel):
     ):
         # The business status code. A value of 200 indicates success. A failure returns a backend error code (ERR.* / InvalidParameter.*).
         self.code = code
-        # The incremental information list.
+        # The list of incremental information.
         self.items = items
-        # The error description. This parameter is empty when the request succeeds.
+        # The error description. This parameter is empty if the request is successful.
         self.message = message
         # The current page number.
         self.page = page

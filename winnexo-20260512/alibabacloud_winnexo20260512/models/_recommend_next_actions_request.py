@@ -17,13 +17,13 @@ class RecommendNextActionsRequest(DaraModel):
         self.custom_prompt = custom_prompt
         # The output type: `conversation/skill/task`.
         self.output_type = output_type
-        # The number of recent messages used to assemble contextual information.
+        # The number of recent messages used to assemble the contextual information.
         self.recent_message_count = recent_message_count
         # The session ID to filter by. If specified, returns all Active/Expired status information associated with this session.
         # 
         # This parameter is required.
         self.session_id = session_id
-        # The tenant ID. This is a common parameter. Pass it explicitly through winnexo-cli using --tenant-id.
+        # The tenant ID. This is a common parameter. In winnexo-cli, pass this value explicitly by using --tenant-id.
         self.tenant_id = tenant_id
 
     def validate(self):

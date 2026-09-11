@@ -120,7 +120,7 @@ class GetScheduledTaskExecutionRecordsResponseBodyTasks(DaraModel):
         timezone: str = None,
         trigger_type: str = None,
     ):
-        # The ID of the collaboration group to which the task belongs. If empty, the task is a personal task.
+        # The ID of the collaboration group to which the task belongs. An empty value indicates a personal task.
         self.collaboration_group_id = collaboration_group_id
         # The cron expression.
         self.cron_expression = cron_expression
@@ -129,9 +129,9 @@ class GetScheduledTaskExecutionRecordsResponseBodyTasks(DaraModel):
         # Indicates whether public access is enabled.
         self.is_open = is_open
         # The execution model tier. Valid values:
-        # - flagship: flagship.
-        # - standard: standard.
-        # - quick: lightweight.
+        # - flagship: Flagship.
+        # - standard: Standard.
+        # - quick: Lightweight.
         self.model = model
         # The name.
         self.name = name
@@ -144,8 +144,8 @@ class GetScheduledTaskExecutionRecordsResponseBodyTasks(DaraModel):
         # > Default value: UTC+8.
         self.timezone = timezone
         # The trigger type. Valid values:
-        # - Manual: manually executed.
-        # - Cron: triggered by a schedule.
+        # - Manual: Manual execution.
+        # - Cron: Timed scheduling.
         self.trigger_type = trigger_type
 
     def validate(self):
@@ -242,7 +242,7 @@ class GetScheduledTaskExecutionRecordsResponseBodyTasksTimeline(DaraModel):
         scheduled_time: str = None,
         status: str = None,
     ):
-        # The actual working hours, in hours.
+        # The actual hours spent, in hours.
         self.actual_time = actual_time
         # The name of the schedule location.
         self.display_name = display_name

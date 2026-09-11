@@ -1,3 +1,29 @@
+2026-09-11 Version: 1.4.0
+- Support API CreateGraph.
+- Support API GetAliDingMinutesContent.
+- Support API GetGraphDraftAssembled.
+- Support API GetGraphSchemaDetail.
+- Support API ListAliDingGroupMessages.
+- Support API ListAliDingMinutes.
+- Support API ListGraphDraftResources.
+- Support API ListGraphSchemas.
+- Support API RevertGraphDraftResource.
+- Support API SaveGraphDraftResource.
+- Support API SearchAliDingGroupChats.
+- Support API TranscribeChatVoice.
+- Support API UpdateGraphInfo.
+- Update API CreatePersonalAliDingMeeting: add request parameters sourceTags.
+- Update API CreatePersonalAlidingDoc: add request parameters sourceTags.
+- Update API CreatePersonalAlidingKnowledgeBase: add request parameters sourceTags.
+- Update API CreatePersonalDingtalkMinutes: add request parameters sourceTags.
+- Update API CreatePersonalFeishuMinute: add request parameters sourceTags.
+- Update API CreatePersonalFile: add request parameters sourceTags.
+- Update API CreatePersonalText: add request parameters sourceTags.
+- Update API CreatePersonalVoiceMeeting: add request parameters sourceTags.
+- Update API SendAsyncChatMessage: add request parameters enableWebSearch.
+- Update API SendChatMessage: add request parameters enableWebSearch.
+
+
 2026-09-04 Version: 1.3.0
 - Support API BatchRemoveOperatingObjectFavorites.
 - Support API ClearOperatingObjectFavorites.

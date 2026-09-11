@@ -20,7 +20,7 @@ class ListBillingResponseBody(DaraModel):
     ):
         # The response status code.
         self.code = code
-        # The details of the bill list.
+        # The details of the bills.
         self.list = list
         # The prompt message.
         self.message = message
@@ -30,7 +30,7 @@ class ListBillingResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of bills.
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -134,7 +134,7 @@ class ListBillingResponseBodyList(DaraModel):
         self.entry_object_id = entry_object_id
         # The entry object type.
         self.entry_object_type = entry_object_type
-        # Indicates whether this is a shadow bill.
+        # Indicates whether the bill is a shadow bill.
         self.is_shadow = is_shadow
         # The operation type.
         self.operation = operation
@@ -142,7 +142,7 @@ class ListBillingResponseBodyList(DaraModel):
         self.operation_display_name = operation_display_name
         # The start timestamp, in milliseconds.
         self.start_time = start_time
-        # The task status. The status is returned as Running upon submission.
+        # The node status. Running is returned upon submission.
         self.status = status
         # The display name of the status.
         self.status_display_name = status_display_name

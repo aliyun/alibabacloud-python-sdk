@@ -30,7 +30,7 @@ class GetScheduledTaskUnderstandDetailResponseBody(DaraModel):
         self.related_skills = related_skills
         # The request ID.
         self.request_id = request_id
-        # The task understanding description polished by the LLM.
+        # The task understanding description refined by the LLM.
         self.task_understand = task_understand
 
     def validate(self):
@@ -129,7 +129,7 @@ class GetScheduledTaskUnderstandDetailResponseBodyRelatedSkills(DaraModel):
         self.name = name
         # The skill code.
         self.skill_code = skill_code
-        # The list of source IDs for related skills.
+        # The list of related skill source IDs.
         self.source_ids = source_ids
 
     def validate(self):
@@ -219,7 +219,7 @@ class GetScheduledTaskUnderstandDetailResponseBodyRelatedObjects(DaraModel):
         self.mention_type = mention_type
         # The name.
         self.name = name
-        # The object ID. Pass the project task ID.
+        # The object ID. Set this parameter to the project task ID.
         # 
         # - For internal enterprise applications, this is the taskId obtained by calling the [Create a project task](https://open.dingtalk.com/document/orgapp-server/create-a-project-task) operation.
         # 

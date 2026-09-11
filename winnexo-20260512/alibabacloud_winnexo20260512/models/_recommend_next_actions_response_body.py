@@ -24,7 +24,7 @@ class RecommendNextActionsResponseBody(DaraModel):
         self.next_actions = next_actions
         # The request ID.
         self.request_id = request_id
-        # The meeting reservation title.
+        # The scheduled meeting title.
         self.title = title
 
     def validate(self):

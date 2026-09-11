@@ -126,7 +126,7 @@ class ListSkillsResponseBodyItems(DaraModel):
         self.has_draft_changes = has_draft_changes
         # The file name.
         self.name = name
-        # The actual skill code for execution.
+        # The skill code that is actually executed.
         self.skill_code = skill_code
         # The skill definition ID.
         self.skill_hub_definition_id = skill_hub_definition_id
@@ -134,7 +134,7 @@ class ListSkillsResponseBodyItems(DaraModel):
         self.source_type = source_type
         # The task status. Running is returned upon submission.
         self.status = status
-        # The key.
+        # The keys.
         self.tags = tags
         # The update timestamp, in milliseconds.
         self.updated_time = updated_time

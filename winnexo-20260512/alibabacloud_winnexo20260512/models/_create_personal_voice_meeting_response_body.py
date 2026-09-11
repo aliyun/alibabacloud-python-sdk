@@ -19,7 +19,7 @@ class CreatePersonalVoiceMeetingResponseBody(DaraModel):
     ):
         # The response code.
         self.code = code
-        # The bound directory ID. This value echoes the directoryId provided in the request body. If no directoryId is specified, the value is null because the default root directory is used.
+        # The bound directory ID. This value is echoed back if provided in the request body. The value is null if the default root directory is used.
         self.directory_id = directory_id
         # The creation time in ISO 8601 format.
         self.gmt_create = gmt_create
@@ -31,7 +31,7 @@ class CreatePersonalVoiceMeetingResponseBody(DaraModel):
         self.request_id = request_id
         # The resource scope. The value is fixed to PERSONAL.
         self.scope = scope
-        # The unique identifier on the business system side, that is, the business ID.
+        # The unique ID on the business system side, which is the business ID.
         self.source_id = source_id
         # The resource status. The initial status during the creation process is typically PENDING. If the on_create process fails, the status is FAILED.
         self.status = status

@@ -14,6 +14,7 @@ class SendAsyncChatMessageRequest(DaraModel):
         content_type: str = None,
         digital_employee_name: List[str] = None,
         direct_chat: bool = None,
+        enable_web_search: bool = None,
         files: List[main_models.SendAsyncChatMessageRequestFiles] = None,
         model: str = None,
         reuse_last_session: bool = None,
@@ -32,6 +33,8 @@ class SendAsyncChatMessageRequest(DaraModel):
         self.digital_employee_name = digital_employee_name
         # Specifies whether to enable direct chat mode. If set to true, the regular scenario routing is skipped and the direct chat scenario is entered.
         self.direct_chat = direct_chat
+        # 是否启用联网搜索，默认 False；任务执行场景（传 taskExecution）下以任务配置为准
+        self.enable_web_search = enable_web_search
         # The list of file references. Each item is an object in which fileId is required and is returned by uploadChatFile.
         self.files = files
         # The abstract model tier. Valid values: quick, standard, and flagship. If not specified, new sessions use standard, and existing sessions retain their current tier.
@@ -72,6 +75,9 @@ class SendAsyncChatMessageRequest(DaraModel):
         if self.direct_chat is not None:
             result['directChat'] = self.direct_chat
 
+        if self.enable_web_search is not None:
+            result['enableWebSearch'] = self.enable_web_search
+
         result['files'] = []
         if self.files is not None:
             for k1 in self.files:
@@ -110,6 +116,9 @@ class SendAsyncChatMessageRequest(DaraModel):
 
         if m.get('directChat') is not None:
             self.direct_chat = m.get('directChat')
+
+        if m.get('enableWebSearch') is not None:
+            self.enable_web_search = m.get('enableWebSearch')
 
         self.files = []
         if m.get('files') is not None:

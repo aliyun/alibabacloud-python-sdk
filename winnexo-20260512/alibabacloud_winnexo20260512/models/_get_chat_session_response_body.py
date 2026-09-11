@@ -20,11 +20,11 @@ class GetChatSessionResponseBody(DaraModel):
         self.code = code
         # The status code description.
         self.message = message
-        # The message data detail structure.
+        # The message data details structure.
         self.messages = messages
         # The request ID.
         self.request_id = request_id
-        # The session information.
+        # The session ID.
         self.session = session
 
     def validate(self):
@@ -100,11 +100,11 @@ class GetChatSessionResponseBodySession(DaraModel):
         self.created_at = created_at
         # The message ID.
         self.id = id
-        # Indicates whether the creation time is older than 30 days.
+        # Indicates whether the creation time exceeds 30 days.
         self.is_expired = is_expired
         # The session metadata.
         self.metadata = metadata
-        # The abstract model name used by the session (quick/standard/flagship).
+        # The abstract model name used by the session. Valid values: quick, standard, and flagship.
         self.model = model
         # The type.
         self.object = object
@@ -209,9 +209,9 @@ class GetChatSessionResponseBodyMessages(DaraModel):
     ):
         # The message content.
         self.content = content
-        # Indicates whether the LLM context has been cleared after this message.
+        # Indicates whether the LLM context was cleared after this message.
         self.context_cleared = context_cleared
-        # Indicates whether the message is copied from a shared conversation.
+        # Indicates whether the message was copied from a shared conversation.
         self.from_share = from_share
         # The message ID.
         self.id = id
@@ -221,7 +221,7 @@ class GetChatSessionResponseBodyMessages(DaraModel):
         self.object = object
         # The role.
         self.role = role
-        # The username of the user who shared the message. This parameter has a value only when from_share is set to True.
+        # The username of the sharing source. This field has a value only when from_share is set to True.
         self.share_user_name = share_user_name
         # The message status.
         self.status = status
@@ -229,7 +229,7 @@ class GetChatSessionResponseBodyMessages(DaraModel):
         self.trace_id = trace_id
         # The update time.
         self.update_at = update_at
-        # The user feedback type: LIKE | DISLIKE | CANCEL.
+        # The user feedback type. Valid values: LIKE, DISLIKE, and CANCEL.
         self.user_feedback = user_feedback
 
     def validate(self):
