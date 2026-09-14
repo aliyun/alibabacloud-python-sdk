@@ -1,3 +1,8 @@
+2026-09-14 Version: 11.3.3
+- Update API CreateConsumer: add request parameters clientToken.
+- Update API CreateConsumer: add request parameters dryRun.
+
+
 2026-09-08 Version: 11.3.1
 - Update API GetGatewayQuotaRuleSubjectUsage: add request parameters endTime.
 - Update API GetGatewayQuotaRuleSubjectUsage: add request parameters startTime.

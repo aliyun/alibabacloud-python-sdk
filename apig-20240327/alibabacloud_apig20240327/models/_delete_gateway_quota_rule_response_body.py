@@ -15,7 +15,7 @@ class DeleteGatewayQuotaRuleResponseBody(DaraModel):
         self.code = code
         # The message content.
         self.message = message
-        # The unique request ID.
+        # The unique identifier of the request.
         self.request_id = request_id
 
     def validate(self):

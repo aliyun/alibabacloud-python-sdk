@@ -30,7 +30,7 @@ class CreateHttpApiRouteRequest(DaraModel):
         self.domain_ids = domain_ids
         # The environment ID.
         self.environment_id = environment_id
-        # The route match rule.
+        # The route match rules.
         self.match = match
         # The MCP route configuration.
         self.mcp_route_config = mcp_route_config
@@ -245,13 +245,13 @@ class CreateHttpApiRouteRequestBackendConfigServices(DaraModel):
         version: str = None,
         weight: int = None,
     ):
-        # The service group. Used in the HTTP-to-Dubbo conversion scenario.
+        # The service group. Used in HTTP-to-Dubbo transcoding scenarios.
         self.group_name = group_name
-        # The HTTP-to-Dubbo protocol conversion configuration. Only supported for SingleService MSE_NACOS DUBBO backends of HTTP APIs.
+        # The HTTP-to-Dubbo protocol transcoding configuration. Only supported for SingleService MSE_NACOS DUBBO backends of HTTP APIs.
         self.http_dubbo_transcoder = http_dubbo_transcoder
-        # The target model name. This field is shared by multiple model backend scenarios. The specific routing or model rewrite semantics are determined by backendConfig.scene. This field is required for the SemanticRouter scenario. If not specified in the AiAutoRouter scenario, the default model of the AI service is used.
+        # The target model name. This field is shared by multiple existing model backend scenarios. The specific routing or model rewrite semantics are determined by backendConfig.scene. This field is required for the SemanticRouter scenario. If this field is not specified for the AiAutoRouter scenario, the default model of the AI service is used.
         self.model_name = model_name
-        # The service namespace. Used in the HTTP-to-Dubbo conversion scenario.
+        # The service namespace. Used in HTTP-to-Dubbo transcoding scenarios.
         self.namespace = namespace
         # The service port. Do not specify this parameter for dynamic ports.
         self.port = port
@@ -261,11 +261,11 @@ class CreateHttpApiRouteRequestBackendConfigServices(DaraModel):
         self.protocol = protocol
         # The service ID.
         self.service_id = service_id
-        # The service source type. Used in the HTTP-to-Dubbo conversion scenario.
+        # The service source type. Used in HTTP-to-Dubbo transcoding scenarios.
         self.source_type = source_type
-        # The service version. This parameter is valid only in the tag-based scenario.
+        # The service version. This parameter takes effect only in the tag-based scenario.
         self.version = version
-        # The traffic ratio percentage value.
+        # The percentage value of the traffic ratio.
         self.weight = weight
 
     def validate(self):

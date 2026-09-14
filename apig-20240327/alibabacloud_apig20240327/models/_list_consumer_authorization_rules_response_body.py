@@ -156,13 +156,11 @@ class ListConsumerAuthorizationRulesResponseBodyDataItems(DaraModel):
         self.deploy_status = deploy_status
         # The environment context.
         self.environment_info = environment_info
-        # The expiration mode. Valid values:
-        # - LongTerm
-        # - ShortTerm
+        # The expiration mode. Valid values: LongTerm, ShortTerm.
         self.expire_mode = expire_mode
         # The expiration status.
         self.expire_status = expire_status
-        # The expiration time.
+        # The expiration timestamp.
         self.expire_timestamp = expire_timestamp
         # The gateway information.
         self.gateway_info = gateway_info

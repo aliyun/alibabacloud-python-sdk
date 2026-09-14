@@ -19,7 +19,7 @@ class AddGatewayQuotaRuleResponseBody(DaraModel):
         self.code = code
         # The response data.
         self.data = data
-        # The response message.
+        # The message content.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -128,7 +128,7 @@ class AddGatewayQuotaRuleResponseBodyDataConflictPreview(DaraModel):
         items: List[main_models.AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems] = None,
         total_conflict_count: int = None,
     ):
-        # The conflict snapshot hash.
+        # The conflict hash.
         self.conflict_hash = conflict_hash
         # The list of conflicting subjects (consumers or consumer groups).
         self.items = items
@@ -186,18 +186,13 @@ class AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems(DaraModel):
         subject_name: str = None,
         subject_type: str = None,
     ):
-        # The period type of the existing conflicting rule on the consumer subject. Valid values:
-        # - day: The existing conflicting rule has a daily period.
-        # - week: The existing conflicting rule has a weekly period.
-        # - month: The existing conflicting rule has a monthly period.
+        # The period type of the existing conflicting rule on the consumer subject. A value of day, week, or month indicates that the period of the existing conflicting rule is day, week, or month respectively.
         self.conflict_period_type = conflict_period_type
-        # The type of the existing conflicting rule on the consumer subject. Valid values:
-        # - calendar: The existing conflicting rule uses a calendar period.
-        # - epoch: The existing conflicting rule uses a custom period.
+        # The type of the existing conflicting rule on the consumer subject. A value of calendar indicates that the existing conflicting rule uses a calendar period. A value of epoch indicates that the existing conflicting rule uses a custom period.
         self.conflict_type = conflict_type
-        # The conflicting consumer ID. You can use subjectId instead.
+        # The conflicting consumer ID. Use subjectId instead.
         self.consumer_id = consumer_id
-        # The conflicting consumer name. You can use subjectName instead.
+        # The conflicting consumer name. Use subjectName instead.
         self.consumer_name = consumer_name
         # The ID of the conflicting subject.
         self.subject_id = subject_id

@@ -15,9 +15,9 @@ class UpdatePluginAttachmentRequest(DaraModel):
     ):
         # The list of mount point IDs.
         self.attach_resource_ids = attach_resource_ids
-        # Specifies whether to enable the plugin.
+        # Specifies whether to enable the plugin mount.
         self.enable = enable
-        # The Base64-encoded content of the original plugin configuration.
+        # The Base64-encoded content of the raw plugin configuration.
         self.plugin_config = plugin_config
 
     def validate(self):

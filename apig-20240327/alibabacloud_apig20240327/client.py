@@ -1182,6 +1182,11 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.CreateConsumerResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['dryRun'] = request.dry_run
         body = {}
         if not DaraCore.is_null(request.ak_sk_identity_configs):
             body['akSkIdentityConfigs'] = request.ak_sk_identity_configs
@@ -1199,6 +1204,7 @@ class Client(OpenApiClient):
             body['name'] = request.name
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -1224,6 +1230,11 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.CreateConsumerResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['dryRun'] = request.dry_run
         body = {}
         if not DaraCore.is_null(request.ak_sk_identity_configs):
             body['akSkIdentityConfigs'] = request.ak_sk_identity_configs
@@ -1241,6 +1252,7 @@ class Client(OpenApiClient):
             body['name'] = request.name
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -4178,6 +4190,8 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteHttpApiResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['dryRun'] = request.dry_run
         req = open_api_util_models.OpenApiRequest(
@@ -4209,6 +4223,8 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteHttpApiResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['dryRun'] = request.dry_run
         req = open_api_util_models.OpenApiRequest(

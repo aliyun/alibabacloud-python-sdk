@@ -11,7 +11,7 @@ class ListConsumerAuthorizationRulesRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The fuzzy match parameter for the API name.
+        # The API name used for fuzzy match.
         self.api_name_like = api_name_like
         # The page number.
         self.page_number = page_number

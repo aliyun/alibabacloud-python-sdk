@@ -78,7 +78,7 @@ class ListPluginAttachmentsResponseBodyData(DaraModel):
         self.page_number = page_number
         # The page size.
         self.page_size = page_size
-        # The total count.
+        # The total number of entries.
         self.total_size = total_size
 
     def validate(self):
@@ -140,21 +140,21 @@ class ListPluginAttachmentsResponseBodyDataItems(DaraModel):
         plugin_id: str = None,
         resource_infos: List[main_models.ResourceInfo] = None,
     ):
-        # The plugin mount resource type. Valid values: GatewayRoute, Gateway, GatewayDomain, HttpApi, and Operation.
+        # The plug-in mount resource type. Valid values: GatewayRoute, Gateway, GatewayDomain, HttpApi, Operation.
         self.attach_resource_type = attach_resource_type
-        # Indicates whether the plugin mount is enabled.
+        # Specifies whether the plug-in is enabled.
         self.enable = enable
         # The environment context.
         self.environment_info = environment_info
         # The parent resource information.
         self.parent_resource_info = parent_resource_info
-        # The plugin mount ID.
+        # The plug-in mount ID.
         self.plugin_attachment_id = plugin_attachment_id
-        # The plugin type information.
+        # The plug-in type information.
         self.plugin_class_info = plugin_class_info
-        # The Base64-encoded content of the original plugin configuration.
+        # The Base64-encoded content of the original plug-in configuration.
         self.plugin_config = plugin_config
-        # The plugin ID.
+        # The plug-in ID.
         self.plugin_id = plugin_id
         # The mount resource information.
         self.resource_infos = resource_infos

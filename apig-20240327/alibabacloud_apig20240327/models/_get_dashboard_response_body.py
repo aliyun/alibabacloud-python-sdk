@@ -94,7 +94,7 @@ class GetDashboardResponseBodyData(DaraModel):
         self.name = name
         # The dashboard title.
         self.title = title
-        # The URL of the dashboard.
+        # The dashboard URL.
         self.url = url
 
     def validate(self):

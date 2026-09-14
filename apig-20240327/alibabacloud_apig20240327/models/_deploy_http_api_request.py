@@ -16,9 +16,9 @@ class DeployHttpApiRequest(DaraModel):
     ):
         # The HTTP API deployment configuration.
         self.http_api_config = http_api_config
-        # The REST API deployment configuration. This parameter is required when the HTTP API being published is a REST API. At least one of revisionId, environment, or gatewayId must be provided to specify the publish target.
+        # The REST API deployment configuration. This parameter is required when the HTTP API to be published is a REST API. At least one of revisionId, environment, or gatewayId must be specified to identify the publish target.
         self.rest_api_config = rest_api_config
-        # The route ID. This parameter is required when publishing a route of an HTTP API.
+        # The route ID. This parameter is required when publishing a route of an HTTP API. Before deploying with routeId, make sure the target route is associated with a publishable domain name. If the domain name was not configured when the route was created, call UpdateHttpApiRoute to add domainIds.
         self.route_id = route_id
 
     def validate(self):
@@ -69,19 +69,19 @@ class DeployHttpApiRequestRestApiConfig(DaraModel):
         operation_ids: List[str] = None,
         revision_id: str = None,
     ):
-        # The publish description.
+        # The description of the publish.
         self.description = description
-        # Specifies whether to enable REST API route compression. If this parameter is omitted or set to false, operations are published individually. If set to true, the API is published as a single prefix route. This field is ignored for historical revision publishing, which uses the route mode saved in the historical revision. When set to true, operationDeployments must not be specified because prefix route publishing supports only full publishing.
+        # Specifies whether to enable REST API route compression. If this parameter is omitted or set to false, operations are published individually. If this parameter is set to true, the API is published as a single prefix route. This parameter is ignored for historical revision publishing, which uses the routing mode saved in the historical revision. When set to true, operationDeployments must not be specified because prefix route publishing supports only full publishing.
         self.enable_route_compression = enable_route_compression
         # The publish environment configuration.
         self.environment = environment
         # The gateway ID.
         self.gateway_id = gateway_id
-        # The operation-level deployment control list. This parameter takes effect only when enableRouteCompression is omitted or set to false. This field must not be specified when enableRouteCompression is set to true.
+        # The operation-level deployment control list. This parameter takes effect only when enableRouteCompression is omitted or set to false. Do not specify this parameter when enableRouteCompression is set to true.
         self.operation_deployments = operation_deployments
         # The operation IDs.
         self.operation_ids = operation_ids
-        # The historical revision ID. If this field is specified, the publish information is based on the historical revision.
+        # The historical revision ID. If this parameter is specified, the publish uses the information from the historical revision.
         self.revision_id = revision_id
 
     def validate(self):
@@ -196,13 +196,13 @@ class DeployHttpApiRequestRestApiConfigEnvironment(DaraModel):
         environment_id: str = None,
         service_configs: List[main_models.DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs] = None,
     ):
-        # The API publish scenario. Backend configurations cannot be specified during publishing. Configure them in advance by using UpdateHttpApi or UpdateHttpApiOperation before publishing.
+        # The API publish scenario. Backend configurations cannot be specified during publishing. Configure them in advance by calling UpdateHttpApi or UpdateHttpApiOperation before publishing.
         self.backend_scene = backend_scene
         # The list of custom domain names.
         self.custom_domain_ids = custom_domain_ids
         # The environment ID.
         self.environment_id = environment_id
-        # The existing service configurations. In the single-service scenario, only one entry is allowed. In ratio-based or content-based scenarios, multiple entries are allowed. Backend configurations cannot be specified during publishing. Configure them in advance by using UpdateHttpApi or UpdateHttpApiOperation before publishing.
+        # The existing service configurations. In the single-service scenario, only one entry is allowed. In ratio-based or content-based scenarios, multiple entries are allowed. Backend configurations cannot be specified during publishing. Configure them in advance by calling UpdateHttpApi or UpdateHttpApiOperation before publishing.
         self.service_configs = service_configs
 
     def validate(self):
@@ -261,13 +261,13 @@ class DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs(DaraModel):
         version: str = None,
         weight: int = None,
     ):
-        # The match condition configuration related to API publishing.
+        # The match condition configuration for API publishing.
         self.match = match
         # The service port. Do not specify this parameter for dynamic ports.
         self.port = port
         # The service protocol. Valid values:
-        # - HTTP
-        # - HTTPS
+        # - HTTP.
+        # - HTTPS.
         self.protocol = protocol
         # The service ID.
         self.service_id = service_id

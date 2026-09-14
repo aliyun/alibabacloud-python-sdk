@@ -28,22 +28,23 @@ class HttpApiDeployConfig(DaraModel):
         route_backend: main_models.Backend = None,
         service_configs: List[main_models.HttpApiDeployConfigServiceConfigs] = None,
         sub_domains: List[main_models.HttpApiDeployConfigSubDomains] = None,
+        system_model_tiers: List[str] = None,
     ):
-        # Specifies whether to automatically deploy.
+        # Specifies whether to automatically deploy the API.
         self.auto_deploy = auto_deploy
-        # The deployment scenario.
+        # The publishing scenario.
         self.backend_scene = backend_scene
         # The list of built-in route names.
         self.builtin_route_names = builtin_route_names
         # The list of custom domain name IDs.
         self.custom_domain_ids = custom_domain_ids
-        # The list of custom domain name details.
+        # The list of custom domain name information.
         self.custom_domain_infos = custom_domain_infos
-        # Specifies whether to enable gateway system models. This parameter takes effect only when the deployment scenario is AiAutoRouter. Default value: false. If enabled, built-in Qwen candidates from the platform are merged with the user\\"s own candidates.
+        # Specifies whether to enable gateway system models. This parameter takes effect only when the publishing scenario is AiAutoRouter. Default value: false. This field is used for backward compatibility with older clients. If systemModelTiers is not submitted, true indicates that all three tiers of system models are enabled, and false indicates that all are disabled.
         self.enable_system_models = enable_system_models
         # The list of environment domain name IDs. If not specified, all environment domain names are bound. An empty array indicates that no environment domain names are bound.
         self.env_domain_ids = env_domain_ids
-        # The list of environment domain name details.
+        # The list of environment domain name information.
         self.env_domain_infos = env_domain_infos
         # The environment ID.
         self.environment_id = environment_id
@@ -57,14 +58,16 @@ class HttpApiDeployConfig(DaraModel):
         self.mock = mock
         # The list of policy configurations.
         self.policy_configs = policy_configs
-        # The current online routing mode of the REST API. ordinary indicates per-Operation routing. compressed indicates single-prefix routing for the API. This field is not returned for non-REST APIs.
+        # The current online routing mode of the REST API. ordinary indicates per-operation routing, and compressed indicates single-prefix routing for the API. This field is not returned for non-REST APIs.
         self.rest_api_route_mode = rest_api_route_mode
         # The backend service information.
         self.route_backend = route_backend
         # The list of service configurations.
         self.service_configs = service_configs
-        # The list of subdomain contents.
+        # The list of subdomain content.
         self.sub_domains = sub_domains
+        # The set of explicitly enabled gateway system model capability tiers. Takes effect only when the publishing scenario is AiAutoRouter. Valid values: economy, standard, premium. An explicit empty array indicates that no system model is enabled.
+        self.system_model_tiers = system_model_tiers
 
     def validate(self):
         if self.custom_domain_infos:
@@ -163,6 +166,9 @@ class HttpApiDeployConfig(DaraModel):
             for k1 in self.sub_domains:
                 result['subDomains'].append(k1.to_map() if k1 else None)
 
+        if self.system_model_tiers is not None:
+            result['systemModelTiers'] = self.system_model_tiers
+
         return result
 
     def from_map(self, m: dict = None):
@@ -239,6 +245,9 @@ class HttpApiDeployConfig(DaraModel):
                 temp_model = main_models.HttpApiDeployConfigSubDomains()
                 self.sub_domains.append(temp_model.from_map(k1))
 
+        if m.get('systemModelTiers') is not None:
+            self.system_model_tiers = m.get('systemModelTiers')
+
         return self
 
 class HttpApiDeployConfigSubDomains(DaraModel):
@@ -299,6 +308,7 @@ class HttpApiDeployConfigSubDomains(DaraModel):
 class HttpApiDeployConfigServiceConfigs(DaraModel):
     def __init__(
         self,
+        capability_tier: str = None,
         gateway_service_id: str = None,
         intent_code: str = None,
         match: main_models.HttpApiBackendMatchConditions = None,
@@ -313,6 +323,8 @@ class HttpApiDeployConfigServiceConfigs(DaraModel):
         version: str = None,
         weight: int = None,
     ):
+        # The capability tier of the intelligent routing candidate. Specify this parameter only when the publishing scenario is AiAutoRouter. Valid values: economy, standard, and premium.
+        self.capability_tier = capability_tier
         # The gateway service ID.
         self.gateway_service_id = gateway_service_id
         # The intent code.
@@ -325,9 +337,9 @@ class HttpApiDeployConfigServiceConfigs(DaraModel):
         self.model_name_pattern = model_name_pattern
         # The multi-service routing strategy type.
         self.multi_service_route_strategy = multi_service_route_strategy
-        # The service display name.
+        # The display name of the service.
         self.name = name
-        # The observability metric routing configuration.
+        # The observability metric-based routing configuration.
         self.observability_route_config = observability_route_config
         # The service port number.
         self.port = port
@@ -351,6 +363,9 @@ class HttpApiDeployConfigServiceConfigs(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.capability_tier is not None:
+            result['capabilityTier'] = self.capability_tier
+
         if self.gateway_service_id is not None:
             result['gatewayServiceId'] = self.gateway_service_id
 
@@ -394,6 +409,9 @@ class HttpApiDeployConfigServiceConfigs(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('capabilityTier') is not None:
+            self.capability_tier = m.get('capabilityTier')
+
         if m.get('gatewayServiceId') is not None:
             self.gateway_service_id = m.get('gatewayServiceId')
 
