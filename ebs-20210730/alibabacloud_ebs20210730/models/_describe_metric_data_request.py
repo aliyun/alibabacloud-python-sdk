@@ -19,42 +19,43 @@ class DescribeMetricDataRequest(DaraModel):
         region_id: str = None,
         start_time: str = None,
     ):
-        # Aggregation method over time. Possible values include:
+        # The method for aggregating data over time. Valid values:
         # 
         # - SUM_OVER_TIME
         # - COUNT_OVER_TIME
         # - AVG_OVER_TIME
         # - MAX_OVER_TIME
         # - MIN_OVER_TIME
-        # - SUM_OVER_TIME_LCRO: Sum over a left-closed, right-open interval
-        # - AVG_OVER_TIME_LCRO: Average over a left-closed, right-open interval
-        # - SUM_OVER_TIME_LORC: Sum over a left-open, right-closed interval
-        # - AVG_OVER_TIME_LORC: Average over a left-open, right-closed interval
+        # - SUM_OVER_TIME_LCRO: The sum of values in a left-closed, right-open interval.
+        # - AVG_OVER_TIME_LCRO: The average of values in a left-closed, right-open interval.
+        # - SUM_OVER_TIME_LORC: The sum of values in a left-open, right-closed interval.
+        # - AVG_OVER_TIME_LORC: The average of values in a left-open, right-closed interval.
         self.aggre_ops = aggre_ops
-        # Aggregation method between lines. Possible values include:
-        # - NON: No aggregation
-        # - SUM: Sum
-        # - AVG: Average
-        # - COUNT: Count
-        # - MAX: Maximum
-        # - MIN: Minimum
+        # The method for aggregating data across different lines. Valid values:
+        # 
+        # - NON: No aggregation is performed.
+        # - SUM: The sum of values.
+        # - AVG: The average of values.
+        # - COUNT: The number of values.
+        # - MAX: The maximum value.
+        # - MIN: The minimum value.
         self.aggre_over_line_ops = aggre_over_line_ops
-        # The dimension map, in the JSON format. Valid values:
+        # A map of dimensions in the JSON format. The map specifies the dimensions to query. The following keys are supported:
         # 
-        # *   DiskId: the disk name. Example: d-xxx.
-        # *   DeviceType: the disk type. system indicates the system disk, and data indicates the data disk.
-        # *   DeviceCategory: the disk category. Example: cloud_essd.
-        # *   EcsInstanceId: the ECS instance name. Example: i-xxx.
-        # *   Azone: the zone, such as cn-hangzhou-a.
+        # - DiskId: The disk name, such as d-xxx.
+        # - DeviceType: The disk category. \\`system\\` indicates a system disk and \\`data\\` indicates a data disk.
+        # - DeviceCategory: The disk type, such as cloud_essd.
+        # - EcsInstanceId: The name of the ECS instance to which the disk is attached, such as i-xxx.
+        # - Azone: The zone, such as cn-hangzhou-a.
         # 
-        # The returned result is the intersection of all dimension filtering conditions.
+        # The returned results are the intersection of all specified dimension-based filter conditions.
         self.dimensions = dimensions
-        # The end time point for obtaining metric data. It should not be later than the current moment. Represented according to the ISO 8601 standard, using UTC +0 time, in the format yyyy-MM-ddTHH:mm:ssZ.
+        # The end of the time range to query metric data. The time cannot be later than the current time. The time must be in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.end_time = end_time
-        # The list of fields used for grouping and aggregation.
+        # A list of fields for grouping and aggregation.
         self.group_by_labels = group_by_labels
-        # Metric name. Possible values include:
-        #    
+        # The name of the metric. Valid values:
+        # 
         # - disk_bps_percent
         # - disk_iops_percent
         # - disk_read_block_size
@@ -66,18 +67,18 @@ class DescribeMetricDataRequest(DaraModel):
         # 
         # This parameter is required.
         self.metric_name = metric_name
-        # The granularity at which data is collected for the metric. Unit: seconds. Default value: 5. Valid values:
+        # The interval at which to query metric data. Unit: seconds. The default value is 5. Valid values:
         # 
-        # *   5: 5 seconds. The query time range can be up to 12 hours.
-        # *   10: 10 seconds. The query time range can be up to 24 hours.
-        # *   60: 60 seconds. The query time range can be up to 7 days.
-        # *   300: 300 seconds. The query time range can be up to 30 days.
-        # *   600: 600 seconds. The query time range can be up to 30 days.
-        # *   3600: 3,600 seconds. The query time range can be up to 30 days.
+        # - 5: 5-second precision. You can query data within a 12-hour time range.
+        # - 10: 10-second precision. You can query data within a 24-hour time range.
+        # - 60: 60-second precision. You can query data within a 7-day time range.
+        # - 300: 300-second precision. You can query data within a 30-day time range.
+        # - 600: 600-second precision. You can query data within a 30-day time range.
+        # - 3600: 3600-second precision. You can query data within a 30-day time range.
         self.period = period
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
-        # The beginning of the time range to query. You can specify a point in time that is up to 30 days before the current time. If both StartTime and EndTime are left empty, the monitoring metric data of the most recent statistical period is queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The beginning of the time range to query metric data. The start time can be up to 30 days before the current time. If you leave both the StartTime and EndTime parameters empty, the system queries the metrics for the most recent period. The time must be in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.start_time = start_time
 
     def validate(self):

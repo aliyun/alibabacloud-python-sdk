@@ -15,11 +15,11 @@ class DescribeLensMonitorDisksResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information about the disks.
+        # The list of cloud disk information.
         self.disk_infos = disk_infos
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # The pagination token. Set this parameter to the NextToken value returned in the previous API call.
         self.next_token = next_token
-        # The request ID.
+        # The request ID. A request ID is returned regardless of whether the API call succeeds.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
@@ -90,61 +90,63 @@ class DescribeLensMonitorDisksResponseBodyDiskInfos(DaraModel):
         tags: List[main_models.DescribeLensMonitorDisksResponseBodyDiskInfosTags] = None,
         zone_id: str = None,
     ):
-        # The BPS.
+        # The maximum data throughput for read/write (I/O) operations per second. Unit: MB/s.
         self.bps = bps
-        # Indicates whether the performance burst feature is enabled. Valid values:
+        # Indicates whether burst (performance bursting) is enabled. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: Enabled.
+        # - false: Disabled.
         # 
-        # This parameter is available only if you set `DiskCategory` to `cloud_auto`. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
+        # This parameter is supported only when DiskCategory is set to cloud_auto. For more information, see [ESSD AutoPL cloud disk](https://help.aliyun.com/document_detail/368372.html).
         self.bursting_enabled = bursting_enabled
-        # The type of the disk. Valid values:
-        # - cloud
-        # - cloud_efficiency
-        # - cloud_ssd
-        # - cloud_essd
-        # - cloud_auto
-        # - cloud_essd_entry
+        # The cloud disk type. Valid values:
+        # 
+        # - cloud: basic cloud disk.
+        # - cloud_efficiency: ultra cloud disk.
+        # - cloud_ssd: standard SSD.
+        # - cloud_essd: Enterprise SSD (ESSD).
+        # - cloud_auto: ESSD AutoPL cloud disk.
+        # - cloud_essd_entry: ESSD Entry disk.
         self.disk_category = disk_category
-        # The ID of the disk.
+        # The cloud disk ID.
         self.disk_id = disk_id
-        # The name of the disk.
+        # The cloud disk name.
         self.disk_name = disk_name
-        # The disk status. Valid values:
-        # 
-        # - Available
-        # - Deleted
+        # The cloud disk status. Valid values:
+        # - Available: in use.
+        # - Deleted: deleted.
         self.disk_status = disk_status
-        # The disk type. Valid values:
-        # *   system: system disk
-        # *   data: data disk
+        # The cloud disk type. Valid values:
+        # 
+        # - system: system cloud disk.
+        # - data: data cloud disk.
         self.disk_type = disk_type
-        # The IOPS.
+        # The maximum number of read/write (I/O) operations per second. Unit: operations/s.
         self.iops = iops
-        # Event tags of the disk.
+        # The collection of event tags for the cloud disk. Event tags display events that occurred on the cloud disk within the last 24 hours, with a delay of up to 1 hour compared to the actual events.
         self.lens_tags = lens_tags
-        # The new performance level of the ESSD. Valid values:
+        # The performance level (PL) of the ESSD cloud disk. Valid values:
         # 
-        # *   PL0: An ESSD can deliver up to 10,000 random read/write IOPS.
-        # *   PL1: An ESSD can deliver up to 50,000 random read/write IOPS.
-        # *   PL2: An ESSD can deliver up to 100,000 random read/write IOPS.
-        # *   PL3: An ESSD delivers up to 1,000,000 random read/write IOPS.
+        # - PL0: maximum random read/write IOPS of 10,000 per standard SSD.
+        # - PL1: maximum random read/write IOPS of 50,000 per standard SSD.
+        # - PL2: maximum random read/write IOPS of 100,000 per standard SSD.
+        # - PL3: maximum random read/write IOPS of 1,000,000 per standard SSD.
         self.performance_level = performance_level
-        # The provisioned read/write IOPS of the ESSD AutoPL disk to use as the system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}.
+        # The provisioned read/write IOPS of the ESSD AutoPL cloud disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline performance}.
         # 
-        # Baseline performance = min{1,800 + 50 × Capacity, 50,000}
+        # Baseline performance = min{1,800 + 50 × Capacity, 50,000}.
         # 
-        # This parameter is available only if you set `DiskCategory` to `cloud_auto`. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
+        # This parameter is supported only when DiskCategory is set to cloud_auto. For more information, see [ESSD AutoPL cloud disk](https://help.aliyun.com/document_detail/368372.html).
         self.provisioned_iops = provisioned_iops
-        # The region ID of the disk.
+        # The region ID.
         self.region_id = region_id
+        # Indicates whether the cloud disk is a shared cloud disk.
         self.sharing_enabled = sharing_enabled
-        # The size of the disk. Unit: GiB.
+        # The cloud disk size. Unit: GiB.
         self.size = size
-        # Tags of the disk.
+        # The collection of tags for the cloud disk.
         self.tags = tags
-        # The ID of the zone.
+        # The zone ID of the cloud disk.
         self.zone_id = zone_id
 
     def validate(self):

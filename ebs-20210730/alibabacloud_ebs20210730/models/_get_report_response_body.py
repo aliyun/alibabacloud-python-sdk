@@ -13,9 +13,9 @@ class GetReportResponseBody(DaraModel):
         datas: List[main_models.GetReportResponseBodyDatas] = None,
         request_id: str = None,
     ):
-        # Data Details.
+        # The data details.
         self.datas = datas
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -58,9 +58,9 @@ class GetReportResponseBodyDatas(DaraModel):
         data: List[main_models.GetReportResponseBodyDatasData] = None,
         title: str = None,
     ):
-        # Data.
+        # The data.
         self.data = data
-        # Data Title.
+        # The data title.
         self.title = title
 
     def validate(self):
@@ -103,9 +103,9 @@ class GetReportResponseBodyDatasData(DaraModel):
         data_points: Dict[str, Any] = None,
         labels: Dict[str, Any] = None,
     ):
-        # Data Points.
+        # The data points.
         self.data_points = data_points
-        # Data Labels.
+        # The data labels.
         self.labels = labels
 
     def validate(self):

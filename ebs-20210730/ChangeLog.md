@@ -1,3 +1,7 @@
+2026-09-14 Version: 5.0.1
+- Update API DescribeLensMonitorDisks: add request parameters EcsInstanceId.
+
+
 2026-06-03 Version: 5.0.0
 - Delete API DescribeDiskEvents.
 - Delete API DescribeDiskMonitorDataList.

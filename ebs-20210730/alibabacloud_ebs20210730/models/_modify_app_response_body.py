@@ -17,14 +17,23 @@ class ModifyAppResponseBody(DaraModel):
         success: bool = None,
         user_code: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # The response code.
         self.code = code
+        # The error code.
         self.dynamic_code = dynamic_code
+        # The dynamic message. This parameter is not in use. Ignore it.
         self.dynamic_message = dynamic_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values: true: The request was successful. false: The request failed.
         self.success = success
+        # The user code.
         self.user_code = user_code
 
     def validate(self):

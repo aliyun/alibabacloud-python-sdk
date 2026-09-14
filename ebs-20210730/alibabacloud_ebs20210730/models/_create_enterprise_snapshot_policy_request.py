@@ -24,43 +24,42 @@ class CreateEnterpriseSnapshotPolicyRequest(DaraModel):
         tag: List[main_models.CreateEnterpriseSnapshotPolicyRequestTag] = None,
         target_type: str = None,
     ):
-        # The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # Ensures the idempotence of the request. Generate a parameter value from your client that is unique across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # Snapshot replication destination information.
+        # The snapshot replication information.
         self.cross_region_copy_info = cross_region_copy_info
-        # The description of the policy.
+        # The description.
         self.desc = desc
-        # The name of the policy.
+        # The Policy Name.
         # 
         # This parameter is required.
         self.name = name
-        # The region ID . You can call the [DescribeRegions](https://help.aliyun.com/document_detail/354276.html) operation to query the most recent list of regions in which snapshot policy is supported.
+        # The region ID. You can call DescribeRegions to query the regions that support asynchronous replication.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which to assign the snapshot policy.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The snapshot retention rule.
+        # The retention rule.
         # 
         # This parameter is required.
         self.retain_rule = retain_rule
-        # The rule for scheduling.
+        # The schedule rule.
         # 
         # This parameter is required.
         self.schedule = schedule
-        # The special snapshot retention rules.
+        # The special retention rules.
         self.special_retain_rules = special_retain_rules
-        # The status of the policy. Valid values:
+        # The status. Valid values:
         # 
-        # - ENABLED: Enable snapshot policy execution.
-        # 
-        # - DISABLED: Disable snapshot policy execution.
+        # - DISABLED
+        # - ENABLED
         self.state = state
-        # Advanced snapshot features.
+        # The advanced snapshot feature.
         self.storage_rule = storage_rule
-        # The list of tags.
+        # The tag key-value pairs. Valid values of n: 1 to 20.
         self.tag = tag
-        # Binding target type, valid value:
+        # The type. Valid values:
         # 
         # - DISK
         # 
@@ -188,15 +187,11 @@ class CreateEnterpriseSnapshotPolicyRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key of the resource.
         # 
         # This parameter is required.
         self.key = key
-        # The tag value.
-        # 
-        # The tag value can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
-        # 
-        # Each tag key must have a unique tag value. You can specify at most 20 tag values in each call.
+        # The tag value of the resource.
         # 
         # This parameter is required.
         self.value = value
@@ -232,10 +227,9 @@ class CreateEnterpriseSnapshotPolicyRequestStorageRule(DaraModel):
         self,
         enable_immediate_access: bool = None,
     ):
-        # Whether to enable the rapid availability of snapshots. The range of values:
+        # Specifies whether to enable instant access for snapshots. Valid values:
         # 
         # - true
-        # 
         # - false
         self.enable_immediate_access = enable_immediate_access
 
@@ -265,12 +259,12 @@ class CreateEnterpriseSnapshotPolicyRequestSpecialRetainRules(DaraModel):
         enabled: bool = None,
         rules: List[main_models.CreateEnterpriseSnapshotPolicyRequestSpecialRetainRulesRules] = None,
     ):
-        # Indicates whether the special retention is enabled.
+        # Specifies whether to enable special retention. Valid values:
         # 
-        # *   true: enable
-        # *   false: disable
+        # - true
+        # - false
         self.enabled = enabled
-        # The special retention rules.
+        # The list of special retention rules.
         self.rules = rules
 
     def validate(self):
@@ -314,17 +308,17 @@ class CreateEnterpriseSnapshotPolicyRequestSpecialRetainRulesRules(DaraModel):
         time_interval: int = None,
         time_unit: str = None,
     ):
-        # The periodic unit for specially retained snapshots. If configured to WEEKS, it provides special retention for the first snapshot of each week. The retention period is determined by TimeUnit and TimeInterval. The range of values are:
+        # The period unit for specially retained snapshots. For example, if this parameter is set to WEEKS, the first snapshot of each week is specially retained. The retention duration is determined by TimeUnit and TimeInterval. Valid values:
+        # 
         # - WEEKS
         # - MONTHS
         # - YEARS
         self.special_period_unit = special_period_unit
-        # Retention Time Value. The range of values is greater than 1.
+        # The time interval of the retention rule. The unit is specified by the TimeUnit parameter. The value must be greater than 1.
         self.time_interval = time_interval
-        # Retention time unit for special snapshots. The range of values:
+        # The unit of the retention time for special snapshots. Valid values:
         # 
         # - DAYS
-        # 
         # - WEEKS
         self.time_unit = time_unit
 
@@ -365,9 +359,9 @@ class CreateEnterpriseSnapshotPolicyRequestSchedule(DaraModel):
         self,
         cron_expression: str = None,
     ):
-        # The time when the policy will to be scheduled. Valid values: Set the parameter in a cron expression.
+        # The cycle and time at which the policy is executed. Specify the value in a cron expression.
         # 
-        # For example, you can use 0 0 4 1/1 * ? to specify 04:00:00 (UTC+8) on the first day of each month.
+        # For example, `0 0 4 1/1 * ?` specifies that the snapshot operation is performed at 4:00 AM every day, starting from the first day of each month.
         # 
         # This parameter is required.
         self.cron_expression = cron_expression
@@ -399,14 +393,13 @@ class CreateEnterpriseSnapshotPolicyRequestRetainRule(DaraModel):
         time_interval: int = None,
         time_unit: str = None,
     ):
-        # Maximum number of retained snapshots.
+        # The number of snapshots to retain. Valid values: 1 to 256.
         self.number = number
-        # The time interval , valid value greater than 1.
+        # The time interval of the retention rule. The unit is specified by the TimeUnit parameter. The value must be greater than 1.
         self.time_interval = time_interval
-        # The unit of time, valid values:
+        # The unit of the retention time. Valid values:
         # 
         # - DAYS
-        # 
         # - WEEKS
         self.time_unit = time_unit
 
@@ -448,13 +441,12 @@ class CreateEnterpriseSnapshotPolicyRequestCrossRegionCopyInfo(DaraModel):
         enabled: bool = None,
         regions: List[main_models.CreateEnterpriseSnapshotPolicyRequestCrossRegionCopyInfoRegions] = None,
     ):
-        # Whether cross-region replication is enabled. The range of values:
+        # Specifies whether to enable cross-region replication. Valid values:
         # 
         # - true
-        # 
         # - false
         self.enabled = enabled
-        # The list of destination regions.
+        # The destination region information.
         self.regions = regions
 
     def validate(self):
@@ -497,9 +489,9 @@ class CreateEnterpriseSnapshotPolicyRequestCrossRegionCopyInfoRegions(DaraModel)
         region_id: str = None,
         retain_days: int = None,
     ):
-        # The region ID of the destination. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The ID of the destination region for snapshot replication. You can invoke [DescribeDiskReplicaPairs](https://help.aliyun.com/document_detail/354206.html) to query the region information of existing asynchronous replication relationships.
         self.region_id = region_id
-        # Number of days to retain the destination snapshot. The range of values is greater than 1.
+        # The number of days to retain snapshots in the destination region. The value must be greater than 1.
         self.retain_days = retain_days
 
     def validate(self):

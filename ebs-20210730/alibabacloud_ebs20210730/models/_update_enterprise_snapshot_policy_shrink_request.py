@@ -19,34 +19,34 @@ class UpdateEnterpriseSnapshotPolicyShrinkRequest(DaraModel):
         state: str = None,
         storage_rule_shrink: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # Ensures the idempotence of the request. Generate a parameter value from your client to ensure that the value is unique across different requests. The ClientToken value supports only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # Snapshot replication destination information.
+        # The cross-region copy destination information.
         self.cross_region_copy_info_shrink = cross_region_copy_info_shrink
-        # The description of the policy.
+        # The description of the snapshot policy.
         self.desc = desc
-        # The name of the policy.
+        # The ID of the policy to modify.
         self.name = name
-        # The id of the policy.
+        # The snapshot policy ID.
         # 
         # This parameter is required.
         self.policy_id = policy_id
-        # The region ID . You can call the [DescribeRegions](https://help.aliyun.com/document_detail/354276.html) operation to query the most recent list of regions in which snapshot policy is supported.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # Snapshot retention rule.
+        # The retention rule.
         self.retain_rule_shrink = retain_rule_shrink
-        # The rule for scheduling.
+        # The schedule rule.
         self.schedule_shrink = schedule_shrink
-        # The special snapshot retention rules.
+        # The special retention rules.
         self.special_retain_rules_shrink = special_retain_rules_shrink
-        # The status of the policy. Valid values:
+        # The status of the snapshot policy. Valid values:
         # 
-        # *   **ENABLED**: Enable snapshot policy execution.
-        # *   **DISABLED**: Disable snapshot policy execution.
+        # - ENABLED
+        # - DISABLED
         self.state = state
-        # Advanced snapshot features.
+        # The advanced snapshot feature.
         self.storage_rule_shrink = storage_rule_shrink
 
     def validate(self):

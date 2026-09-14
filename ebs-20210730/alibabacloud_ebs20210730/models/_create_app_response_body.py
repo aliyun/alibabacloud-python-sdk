@@ -19,16 +19,27 @@ class CreateAppResponseBody(DaraModel):
         success: bool = None,
         user_code: str = None,
     ):
+        # The detailed reason why access was denied.
         self.access_denied_detail = access_denied_detail
+        # The app ID.
         self.app_id = app_id
+        # The app name.
         self.app_name = app_name
+        # The status code. A value of 200 indicates success.
         self.code = code
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
+        # The dynamic message. This parameter is not in use. Ignore this parameter.
         self.dynamic_message = dynamic_message
+        # The error code description.
         self.http_status_code = http_status_code
+        # The additional information. If the request is successful, "success" is returned. If the request fails, a specific error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the app was created successfully. Valid values: true: The app was created successfully. false: The app failed to be created.
         self.success = success
+        # The status code.
         self.user_code = user_code
 
     def validate(self):

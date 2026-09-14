@@ -28,63 +28,76 @@ class CreateDiskReplicaPairRequest(DaraModel):
         source_zone_id: str = None,
         tag: List[main_models.CreateDiskReplicaPairRequestTag] = None,
     ):
-        # The bandwidth to use to asynchronously replicate data from the primary disk to the secondary disk. Unit: Kbit/s. Valid values:
+        # The bandwidth for asynchronous data replication between disks. The unit is Kbps. Valid values:
         # 
-        # *   10240
-        # *   20480
-        # *   51200
-        # *   102400
+        # - 10240
         # 
-        # Default value: 10240. When you set the ChargeType parameter to POSTPAY, the Bandwidth parameter is automatically set to 0 and cannot be modified. The value 0 indicates that bandwidth is dynamically allocated based on the volume of data that is asynchronously replicated from the primary disk to the secondary disk.
+        # - 20480
+        # 
+        # - 51200
+        # 
+        # - 102400
+        # 
+        # Default value: 10240.
+        # When ChargeType is set to POSTPAY, you cannot specify this parameter. The system uses a value of 0, which means that the bandwidth is dynamically allocated based on data writes.
         self.bandwidth = bandwidth
         # The billing method of the replication pair. Valid values:
         # 
-        # *   PREPAY: subscription
-        # *   POSTPAY: pay-as-you-go
+        # - PREPAY: subscription.
+        # 
+        # - POSTPAY: pay-as-you-go.
         # 
         # Default value: POSTPAY.
         self.charge_type = charge_type
-        # The client token to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # A client token to ensure the idempotence of the request. Generate a value from your client to make sure that the value is unique among different requests. The ClientToken parameter can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The description of the replication pair. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        # The description of the replication pair. The description must be 2 to 256 characters in length. It cannot start with `http://` or `https://`.
         self.description = description
-        # The ID of the secondary disk.
+        # The ID of the destination disk (secondary disk).
         # 
         # This parameter is required.
         self.destination_disk_id = destination_disk_id
-        # The region ID of the secondary disk. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/354276.html) operation to query the most recent list of regions in which async replication is supported.
+        # The region ID of the destination disk (secondary disk). You can call the [DescribeRegions](https://help.aliyun.com/document_detail/354276.html) operation to query the regions that support asynchronous replication.
         # 
         # This parameter is required.
         self.destination_region_id = destination_region_id
-        # The zone ID of the secondary disk.
+        # The zone ID of the destination disk (secondary disk).
         # 
         # This parameter is required.
         self.destination_zone_id = destination_zone_id
-        # The ID of the primary disk.
+        # The ID of the source disk (primary disk).
         # 
         # This parameter is required.
         self.disk_id = disk_id
-        # Whether to enable replication time control. By default, this parameter is disabled.
+        # Specifies whether to enable replication time control (RTC). Valid values:
+        # 
+        # - false: Disables RTC.
+        # 
+        # - true: Enables RTC.
+        # 
+        # Default value: false.
+        # 
+        # > If the replication pair is added to a replication group, the setting of this parameter is the same as that of the replication group.
         self.enable_rtc = enable_rtc
-        # The name of the replication pair. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+        # The name of the replication pair. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
         self.pair_name = pair_name
-        # The subscription duration of the replication pair. When `ChargeType` is set to PREPAY, this parameter must be specified. Valid values: 1, 2, 3, 6, 12, 24, 36, and 60. The subscription duration unit is specified by `PeriodUnit`.
+        # The subscription duration of the replication pair. This parameter is required when `ChargeType` is set to PREPAY. The unit of the duration is specified by `PeriodUnit`. Valid values: 1, 2, 3, 6, 12, 24, 36, and 60.
         self.period = period
-        # The unit of the subscription duration of the replication pair. Set the value to Month. Valid value: Month
+        # The unit of the subscription duration. Valid value: Month.
         self.period_unit = period_unit
-        # The recovery point objective (RPO) of the replication pair. Unit: seconds. Valid value: 900.
+        # The recovery point objective (RPO) of the replication pair. The unit is seconds. Currently, only 900 is supported.
         self.rpo = rpo
-        # The ID of the region in which to create the replication pair.
+        # The region ID of the replication pair.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the replication pair belongs.
         self.resource_group_id = resource_group_id
-        # The zone ID of the primary disk.
+        # The zone ID of the source disk (primary disk).
         # 
         # This parameter is required.
         self.source_zone_id = source_zone_id
-        # The tags to add to the replication pair-consistent group. You can specify up to 20 tags.
+        # The list of tags. You can specify up to 20 tags.
         self.tag = tag
 
     def validate(self):

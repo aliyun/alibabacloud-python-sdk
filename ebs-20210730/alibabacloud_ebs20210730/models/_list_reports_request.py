@@ -14,17 +14,17 @@ class ListReportsRequest(DaraModel):
         page_size: int = None,
         region_id: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
         self.app_id = app_id
-        # Maximum number of items for Token-based pagination.
+        # The maximum number of entries to return when using token-based pagination.
         self.max_results = max_results
-        # Query token (Token), the value is the NextToken parameter value returned from the previous API call.
+        # The pagination token. Set this parameter to the value of NextToken returned in the previous API call.
         self.next_token = next_token
-        # Page number for paginated queries.
+        # The page number in paged queries.
         self.page_number = page_number
-        # Number of rows per page when performing paginated queries.
+        # The number of entries per page set in Settings for a paged query during paging.
         self.page_size = page_size
-        # Region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/354276.html) to query the list of regions supported by Block Storage Data Insights.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/354276.html) to query the regions supported by EBS Lens.
         self.region_id = region_id
 
     def validate(self):

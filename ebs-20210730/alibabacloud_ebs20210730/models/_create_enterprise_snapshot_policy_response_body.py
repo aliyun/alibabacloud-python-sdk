@@ -10,7 +10,7 @@ class CreateEnterpriseSnapshotPolicyResponseBody(DaraModel):
         policy_id: str = None,
         request_id: str = None,
     ):
-        # The id of a policy.
+        # The snapshot policy ID.
         self.policy_id = policy_id
         # The request ID.
         self.request_id = request_id

@@ -15,13 +15,25 @@ class CreateDiagnoseReportRequest(DaraModel):
         resource_type: str = None,
         start_time: str = None,
     ):
+        # A client-generated token to ensure request idempotency. This lets you safely retry the request without creating a duplicate diagnostic report. The token can contain a maximum of 64 ASCII characters.
         self.client_token = client_token
+        # The diagnosis type. The only valid value is:
+        # 
+        # - Performance: performance diagnosis
+        # 
         # This parameter is required.
         self.diagnose_type = diagnose_type
+        # The end time for the diagnosis, in UTC. The time must be in the ISO 8601 format (yyyy-MM-ddTHH:mm:ssZ).
         self.end_time = end_time
+        # The region ID. Call the [DescribeRegions](https://help.aliyun.com/zh/ecs/developer-reference/api-ebs-2021-07-30-describeregions?spm=a2c4g.11186623.0.i7) operation to find all regions supported by EBS Data Insight.
         self.region_id = region_id
+        # The resource ID.
         self.resource_id = resource_id
+        # The resource type. The only valid value is:
+        # 
+        # - Disk: a cloud disk
         self.resource_type = resource_type
+        # The start time for the diagnosis, in UTC. The time must be in the ISO 8601 format (yyyy-MM-ddTHH:mm:ssZ).
         self.start_time = start_time
 
     def validate(self):

@@ -12,7 +12,7 @@ class CreateDiskReplicaGroupResponseBody(DaraModel):
     ):
         # The ID of the replication pair-consistent group.
         self.replica_group_id = replica_group_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

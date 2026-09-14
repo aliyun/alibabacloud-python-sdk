@@ -15,13 +15,13 @@ class DescribeEventsResponseBody(DaraModel):
         resource_events: List[main_models.DescribeEventsResponseBodyResourceEvents] = None,
         total_count: int = None,
     ):
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # The token for the next query. If NextToken is empty, no more results exist.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
-        # The events.
+        # The list of events.
         self.resource_events = resource_events
-        # The total number of entries returned.
+        # The total number of entries returned for the paged query.
         self.total_count = total_count
 
     def validate(self):
@@ -86,66 +86,64 @@ class DescribeEventsResponseBodyResourceEvents(DaraModel):
         start_time: str = None,
         status: str = None,
     ):
-        # The description of the event.
+        # The event description.
         self.description = description
-        # The end time of the event, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.
+        # The end time of the event. This value is a timestamp in milliseconds.
         self.end_time = end_time
-        # The level of the event. Valid values:
+        # The event level. Valid values:
         # 
-        # 1.  INFO
-        # 2.  WARN
-        # 3.  CRITICAL
+        # 1. INFO
+        # 2. WARN
+        # 3. CRITICAL
         self.event_level = event_level
-        # The name of the event. Valid values:
+        # The event name. Valid values:
         # 
-        # *   NoSnapshot: indicates the event that is triggered because no snapshot is created for a disk to protect data on the disk.
-        # *   BurstIOTriggered: indicates the event that is triggered when a burst I/O operation is performed on a disk.
-        # *   CostOptimizationNeeded: indicates the event that is triggered when cost optimization is required.
-        # *   DiskSpecNotMatchedWithInstance: indicates the event that is triggered because the specifications of a disk do not match the instance to which the disk is attached.
-        # *   DiskIONo4kAligned: indicates the event that is triggered because the physical and logical sectors involved in a read or write operation are not 4K aligned.
-        # *   DiskIOHang: indicates the event that is triggered when an I/O hang occurs on a disk.
-        # *   InstanceIOPSExceedInstanceMaxLimit: indicates the event that is triggered when the number of IOPS on an instance reaches the upper limit.
-        # *   InstanceBPSExceedInstanceMaxLimit: indicates the event that is triggered when the number of BPS on an instance reaches the upper limit.
-        # *   DiskIOPSExceedInstanceMaxLimit: indicates the event that is triggered when the number of IOPS on a disk reaches the upper limit for the associated instance.
-        # *   DiskBPSExceedInstanceMaxLimit: indicates the event that is triggered when the number of BPS on a disk reaches the upper limit for the associated instance.
-        # *   DiskIOPSExceedDiskMaxLimit: indicates the event that is triggered when the number of IOPS on a disk reaches the upper limit for the disk.
-        # *   DiskBPSExceedDiskMaxLimit: indicates the event that is triggered when the number of BPS on a disk reaches the upper limit for the disk.
+        # - NoSnapshot: data protection
+        # - BurstIOTriggered: burst I/O
+        # - CostOptimizationNeeded: cost optimization
+        # - DiskSpecNotMatchedWithInstance: instance and disk specification mismatch
+        # - DiskIONo4kAligned: non-4K aligned read/write
+        # - DiskIOHang: disk IOHang occurred
+        # - InstanceIOPSExceedInstanceMaxLimit: instance IOPS reached the upper limit
+        # - InstanceBPSExceedInstanceMaxLimit: instance BPS reached the upper limit
+        # - DiskIOPSExceedInstanceMaxLimit: disk IOPS reached the instance upper limit
+        # - DiskBPSExceedInstanceMaxLimit: disk BPS reached the instance upper limit
+        # - DiskIOPSExceedDiskMaxLimit: disk IOPS reached the disk upper limit
+        # - DiskBPSExceedDiskMaxLimit: disk BPS reached the disk upper limit
         self.event_name = event_name
-        # The type of the event. Valid values:
-        # 
-        # 1.  Notification
-        # 2.  SystemException
-        # 3.  Alert
+        # The event type. Valid values:
+        # 1. Notification
+        # 2. SystemException
+        # 3. Alert
         self.event_type = event_type
-        # Extra attributes of event, possible fields are:
+        # The additional properties. Possible fields:
         # 
-        # - EcsInstanceId: ECS instance ID where the cloud disk is mounted;
-        # - Adapter: cloud disk mount point.
+        # - EcsInstanceId: the ID of the ECS instance to which the cloud disk is attached.
+        # - Adapter: the mount point of the cloud disk.
         self.extra_attributes = extra_attributes
-        # The recommended action after the event occurred. Valid values:
+        # The recommended action after the event occurs. Valid values:
         # 
-        # *   ModifyDiskSpec
-        # *   CreateSnapshot
-        # *   ResizeDisk
-        # *   AdjustProvision
-        # *   ModifyInstanceSpec
+        # - ModifyDiskSpec: change disk specifications
+        # - CreateSnapshot: create a snapshot
+        # - ResizeDisk: expand disk capacity
+        # - AdjustProvision: adjust provisioned performance
+        # - ModifyInstanceSpec: change instance specifications
         self.recommend_action = recommend_action
-        # The codes of the parameters for the recommended action after the event occurred.
+        # The parameters for the recommended action after the event occurs.
         self.recommend_params = recommend_params
-        # The ID of the resource.
+        # The resource ID.
         self.resource_id = resource_id
-        # The type of the resource.
+        # The resource type.
         self.resource_type = resource_type
-        # The start time of the event, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.
+        # The start time of the event. This value is a timestamp in milliseconds.
         self.start_time = start_time
-        # The status of the event. Valid values:
-        # 
-        # 1.  WillExecute
-        # 2.  Executing
-        # 3.  Executed
-        # 4.  Ignore
-        # 5.  Expired
-        # 6.  Deleted
+        # The event status. Valid values:
+        # 1. WillExecute: pending
+        # 2. Executing: processing
+        # 3. Executed: processed
+        # 4. Ignore: ignored
+        # 5. Expired: expired
+        # 6. Deleted: deleted
         self.status = status
 
     def validate(self):

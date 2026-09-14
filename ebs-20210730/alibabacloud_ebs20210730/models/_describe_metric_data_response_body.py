@@ -15,13 +15,13 @@ class DescribeMetricDataResponseBody(DaraModel):
         total_count: int = None,
         warnings: List[str] = None,
     ):
-        # Collection of monitoring data for the cloud disk.
+        # A collection of monitoring data for the disk.
         self.data_list = data_list
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Total number of data points queried.
+        # The total number of data entries returned.
         self.total_count = total_count
-        # List of warning messages.
+        # A list of warning messages.
         self.warnings = warnings
 
     def validate(self):
@@ -76,9 +76,9 @@ class DescribeMetricDataResponseBodyDataList(DaraModel):
         datapoints: Any = None,
         labels: Any = None,
     ):
-        # List of monitoring data, consisting of a series of consecutive second-level timestamps and the corresponding metric values at those times.
+        # A list of monitoring data. The list contains a series of consecutive second-level timestamps and the corresponding metric values.
         self.datapoints = datapoints
-        # Labels.
+        # The labels.
         self.labels = labels
 
     def validate(self):

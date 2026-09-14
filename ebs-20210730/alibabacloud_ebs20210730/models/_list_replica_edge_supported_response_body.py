@@ -15,9 +15,17 @@ class ListReplicaEdgeSupportedResponseBody(DaraModel):
         request_id: str = None,
         supported_regions: List[main_models.ListReplicaEdgeSupportedResponseBodySupportedRegions] = None,
     ):
+        # The maximum number of entries to return on each page.
+        # 
+        # Valid values: 1 to 500.
+        # 
+        # Default value: 10.
         self.max_results = max_results
+        # The token that is used to start the next query. If NextToken is empty, no more results are available.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The set of region information.
         self.supported_regions = supported_regions
 
     def validate(self):
@@ -72,7 +80,9 @@ class ListReplicaEdgeSupportedResponseBodySupportedRegions(DaraModel):
         region_id: str = None,
         zones: List[main_models.ListReplicaEdgeSupportedResponseBodySupportedRegionsZones] = None,
     ):
+        # The region ID.
         self.region_id = region_id
+        # The set of zone information.
         self.zones = zones
 
     def validate(self):
@@ -115,7 +125,9 @@ class ListReplicaEdgeSupportedResponseBodySupportedRegionsZones(DaraModel):
         support_rtc: bool = None,
         zone_id: str = None,
     ):
+        # Indicates whether replication time control is supported.
         self.support_rtc = support_rtc
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):

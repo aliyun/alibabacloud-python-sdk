@@ -14,11 +14,11 @@ class DescribeDedicatedBlockStorageClusterDisksResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # Details about the cloud disks.
+        # The collection of cloud disk information.
         self.disks = disks
-        # The query token returned in this call.
+        # The pagination token returned in this call.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -60,7 +60,7 @@ class DescribeDedicatedBlockStorageClusterDisksResponseBodyDisks(DaraModel):
         self,
         disk: List[main_models.DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk] = None,
     ):
-        # Details about the cloud disks.
+        # The collection of cloud disk information.
         self.disk = disk
 
     def validate(self):
@@ -129,110 +129,122 @@ class DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk(DaraModel):
         type: str = None,
         zone_id: str = None,
     ):
-        # The time when the cloud disk was last attached. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mmZ format. The time is displayed in UTC.
+        # The time when the cloud disk was last attached. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddThh:mmZ format. The time is displayed in UTC.
         self.attached_time = attached_time
-        # This parameter is currently in invitational preview and unavailable for general users.
+        # This parameter is in invitational preview and is not publicly available.
         self.bdf_id = bdf_id
-        # Whether the ESSD AutoPL disk is enabled burst IOPS / BPS. This parameter is available only if the DiskCategory parameter is set to cloud_auto. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
+        # Indicates whether the burst (performance burst) feature is enabled. Valid values:
+        # 
+        # - true: Enabled.
+        # - false: Disabled.
+        # 
+        # This parameter is supported only when `DiskCategory` is set to `cloud_auto`. For more information, see [ESSD AutoPL cloud disks](https://help.aliyun.com/document_detail/368372.html).
         self.bursting_enabled = bursting_enabled
-        # The category of the disk. A value of cloud_essd indicates that the disk is an ESSD.
+        # The category of the cloud disk or local disk is cloud_essd, which indicates an ESSD.
         self.category = category
-        # Indicates whether the automatic snapshots of the cloud disk are deleted when the disk is released. Valid values:
+        # Indicates whether automatic snapshots are deleted when the cloud disk is released. Valid values:
         # 
-        # *   true: The automatic snapshots of the cloud disk are deleted when the disk is released.
-        # *   false: The automatic snapshots of the cloud disk are retained when the disk is released.
+        # - true: Automatic snapshots are deleted when the cloud disk is released.
+        # - false: Automatic snapshots are retained when the cloud disk is released.
         # 
-        # Snapshots that are created by calling the [CreateSnapshot](https://help.aliyun.com/document_detail/25524.html) operation or by using the Elastic Compute Service (ECS) console are retained and not affected by this parameter.
+        # Snapshots created by calling [CreateSnapshot](https://help.aliyun.com/document_detail/25524.html) or by using the console are not affected by this parameter and are always retained.
         self.delete_auto_snapshot = delete_auto_snapshot
-        # Indicates whether the cloud disk is released when its associated instance is released. Valid values:
+        # Indicates whether the cloud disk is released when the instance is released. Valid values:
         # 
-        # *   true: The cloud disk is released when its associated instance is released.
-        # *   false: The cloud disk is retained when its associated instance is released.
+        # - true: The cloud disk is released when the instance is released.
+        # - false: The cloud disk is retained when the instance is released.
         self.delete_with_instance = delete_with_instance
-        # The description of the cloud disk.
+        # The cloud disk description.
         self.description = description
         # The time when the cloud disk was last detached.
         self.detached_time = detached_time
-        # The device name of the cloud disk on its associated instance. Example: /dev/xvdb. Take note of the following items:
+        # The device name of the instance to which the cloud disk is attached, such as /dev/xvdb. Note the following items:
         # 
-        # *   This parameter has a value only when the `Status` value is `In_use`.
-        # *   This parameter is empty for cloud disks that have the multi-attach feature enabled. You can query the attachment information of the cloud disk based on the `Attachment` values.
+        # - This parameter has a value only when the `Status` parameter is set to `In_use`. This parameter is empty in other states.
         # 
-        # >  This parameter will be removed in the future. We recommend that you use other parameters to ensure future compatibility.
+        # - For cloud disks with the multi-attach feature enabled, this value is always empty. You can view all attachment information of the cloud disk from the returned `Attachment` list.
+        # 
+        # > This parameter will be deprecated. To ensure code compatibility, do not use this parameter.
         self.device = device
         # The billing method of the cloud disk. Valid values:
         # 
-        # *   PrePaid: subscription
-        # *   PostPaid: pay-as-you-go
+        # - PrePaid: subscription.
+        # - PostPaid: pay-as-you-go.
         self.disk_charge_type = disk_charge_type
-        # The ID of the cloud disk.
+        # The cloud disk ID.
         self.disk_id = disk_id
-        # The name of the cloud disk.
+        # The cloud disk name.
         self.disk_name = disk_name
         # Indicates whether the automatic snapshot policy feature is enabled for the cloud disk.
+        # 
+        # >This parameter is deprecated. After a cloud disk is created, the automatic snapshot policy feature is enabled by default. You only need to associate an automatic snapshot policy with the cloud disk.
         self.enable_auto_snapshot = enable_auto_snapshot
         # Indicates whether the cloud disk is encrypted.
         self.encrypted = encrypted
-        # The maximum number of IOPS.
+        # The maximum number of read/write (I/O) operations per second. Unit: operations/s.
         self.iops = iops
-        # The ID of the image that was used to create the instance. This parameter is empty unless the cloud disk was created from an image. The value of this parameter remains unchanged throughout the lifecycle of the cloud disk.
+        # The ID of the image used to create the ECS instance. This parameter has a value only for cloud disks created from an image. Otherwise, this value is empty. This value remains unchanged throughout the lifecycle of the cloud disk.
         self.image_id = image_id
-        # The ID of the instance to which the cloud disk is attached. Take note of the following items:
+        # The instance ID of the instance to which the cloud disk is mounted. Note the following items:
         # 
-        # *   This parameter has a value only when the `Status` value is `In_use`.
-        # *   This parameter is empty for cloud disks that have the multi-attach feature enabled. You can query the attachment information of the cloud disk based on the `Attachment` values.
+        # - This parameter has a value only when the `Status` parameter is set to `In_use`. This parameter is empty in other states.
+        # 
+        # - For cloud disks with the multi-attach attribute enabled, this value is always empty. You can view all mount information of the cloud disk from the returned `Attachment` list.
         self.instance_id = instance_id
-        # The ID of the Key Management Service (KMS) key used by the cloud disk.
+        # The KMS key ID used by the cloud disk.
         self.kmskey_id = kmskey_id
-        # The number of instances to which the Shared Block Storage device is attached.
+        # The number of instances to which the shared storage is attached.
         self.mount_instance_num = mount_instance_num
-        # Indicates whether the multi-attach feature was enabled for the cloud disk.
+        # Indicates whether the multi-attach feature is enabled for the cloud disk.
         self.multi_attach = multi_attach
-        # The performance level of the enhanced SSD (ESSD). Valid values:
+        # The performance level of the ESSD. Valid values:
         # 
-        # *   PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
-        # *   PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
-        # *   PL2: A single ESSD can deliver up to 100,000 random read/write IOPS.
-        # *   PL3: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
+        # - PL0: a maximum of 10,000 random read/write IOPS per cloud disk.
+        # - PL1: a maximum of 50,000 random read/write IOPS per cloud disk.
+        # - PL2: a maximum of 100,000 random read/write IOPS per cloud disk.
+        # - PL3: a maximum of 1,000,000 random read/write IOPS per cloud disk.
         self.performance_level = performance_level
         # Indicates whether the cloud disk is removable.
         self.portable = portable
-        # The provisioned read/write IOPS of the ESSD AutoPL disk. 
-        # >  This parameter is available only if the DiskCategory parameter is set to cloud_auto. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html) and [Modify the performance configurations of an ESSD AutoPL disk](https://help.aliyun.com/document_detail/413275.html).
+        # The provisioned read/write IOPS of the ESSD AutoPL cloud disk. Valid values: 0 to min{50000, 1000 × Capacity - Baseline performance}.
+        # 
+        # Baseline performance = min{1,800 + 50 × Capacity, 50,000}.
+        # 
+        # This parameter is supported only when `DiskCategory` is set to `cloud_auto`. For more information, see [ESSD AutoPL cloud disks](https://help.aliyun.com/document_detail/368372.html).
         self.provisioned_iops = provisioned_iops
-        # The region ID of cloud disk.
+        # The region ID of the cloud disk.
         self.region_id = region_id
-        # The size of the disk. Unit: GiB.
+        # The cloud disk size. Unit: GiB.
         self.size = size
-        # The ID of the snapshot that was used to create the cloud disk.
+        # The ID of the snapshot used to create the cloud disk.
         # 
-        # This parameter is empty unless the cloud disk was created from a snapshot. The value of this parameter remains unchanged throughout the lifecycle of the cloud disk.
+        # If no snapshot was specified when the cloud disk was created, this value is empty. This value remains unchanged throughout the lifecycle of the cloud disk.
         self.source_snapshot_id = source_snapshot_id
-        # The state of the cloud disk. For more information, see [Disk states](https://help.aliyun.com/document_detail/25689.html). Valid values:
+        # The cloud disk status. For more information, see [Cloud disk status](https://help.aliyun.com/document_detail/25689.html). Valid values:
         # 
-        # *   In_use
-        # *   Available
-        # *   Attaching
-        # *   Detaching
-        # *   Creating
-        # *   ReIniting
+        # -   In_use.
+        # -   Available.
+        # -   Attaching.
+        # -   Detaching.
+        # -   Creating.
+        # -   ReIniting.
         self.status = status
-        # The ID of the dedicated block storage cluster to which the cloud disk belongs. If your cloud disk belongs to the public block storage cluster, an empty value is returned.
+        # The ID of the dedicated block storage cluster to which the cloud disk belongs. If the cloud disk belongs to a public cloud block storage cluster, this value is empty.
         self.storage_cluster_id = storage_cluster_id
-        # The ID of the storage set.
+        # The storage set ID.
         self.storage_set_id = storage_set_id
         # The maximum number of partitions in the storage set.
         self.storage_set_partition_number = storage_set_partition_number
         # The tags of the cloud disk.
         self.tags = tags
-        # The maximum number of BPS.
+        # The amount of data that can be transferred per unit of time. Unit: MB/s.
         self.throughput = throughput
-        # The type of the disk. Valid values:
+        # The type of the cloud disk. Valid values:
         # 
-        # *   system: system disk
-        # *   data: data disk
+        # - system: system cloud disk.
+        # - data: data cloud disk.
         self.type = type
-        # The zone ID of cloud disk.
+        # The zone ID of the cloud disk.
         self.zone_id = zone_id
 
     def validate(self):
@@ -467,9 +479,9 @@ class DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDiskTags(DaraMod
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key of the cloud disk.
+        # The tag key.
         self.tag_key = tag_key
-        # The tag value of the cloud disk.
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):

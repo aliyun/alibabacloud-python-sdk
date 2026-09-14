@@ -17,7 +17,7 @@ class DescribeDiskReplicaGroupsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # A pagination token.
+        # The query token returned in this call.
         self.next_token = next_token
         # The page number.
         self.page_number = page_number
@@ -113,69 +113,93 @@ class DescribeDiskReplicaGroupsResponseBodyReplicaGroups(DaraModel):
         status: str = None,
         tags: List[main_models.DescribeDiskReplicaGroupsResponseBodyReplicaGroupsTags] = None,
     ):
-        # The bandwidth value. Unit: Kbit/s. This parameter is not publicly available and has a system-preset value.
+        # The bandwidth. Unit: Kbit/s. This parameter is not yet available. The return value is preset by the system.
         self.bandwidth = bandwidth
         # The description of the replication pair-consistent group.
         self.description = description
-        # The ID of the region in which the secondary site is deployed.
+        # The region ID of the disaster recovery site.
         self.destination_region_id = destination_region_id
-        # The ID of the zone in which the secondary site is deployed.
+        # The zone ID of the disaster recovery site.
         self.destination_zone_id = destination_zone_id
-        # Indicates whether to enable replication time control.
+        # Specifies whether to enable replication time control (RTC). Valid values:
+        # 
+        # - false: Disables RTC.
+        # 
+        # - true: Enables RTC.
+        # 
+        # > If you set this parameter to true, RTC is enabled for the replication pair-consistent group and all asynchronous replication pairs that are added to the group.
         self.enable_rtc = enable_rtc
         # The name of the replication pair-consistent group.
         self.group_name = group_name
-        # The time when data was last replicated from the primary disks to the secondary disks in the replication pair-consistent group. The value of this parameter is a timestamp. Unit: seconds.
+        # The time when the last asynchronous replication was completed for the replication pair-consistent group. This parameter is a UNIX timestamp. Unit: seconds.
         self.last_recover_point = last_recover_point
-        # The IDs of replication pairs that belong to the replication pair-consistent group.
+        # The list of replication pair IDs in the replication pair-consistent group.
         self.pair_ids = pair_ids
-        # The number of replication pairs that belong to the replication pair-consistent group.
+        # The number of replication pairs in the replication pair-consistent group.
         self.pair_number = pair_number
-        # The initial source region (primary region) of the replication pair-consistent group.
+        # The initial source region of the replication group.
         self.primary_region = primary_region
-        # The initial source zone (primary zone) of the replication pair-consistent group.
+        # The initial source zone of the replication group.
         self.primary_zone = primary_zone
         # The recovery point objective (RPO) of the replication pair-consistent group. Unit: seconds.
         self.rpo = rpo
-        # The IDs of the replication pair-consistent groups.
+        # The ID of the replication pair-consistent group.
         self.replica_group_id = replica_group_id
-        # The ID of the resource group to which the replication pair-consistent group belongs.
+        # The ID of the resource group to which the replication group belongs.
         self.resource_group_id = resource_group_id
-        # The type of the site from which the information about the replication pairs and replication pair-consistent group was obtained. Valid values:
+        # The site of the replication pair and the replication pair-consistent group. Valid values:
         # 
-        # *   production: primary site
-        # *   backup: secondary site
+        # - production: The production site.
+        # 
+        # - backup: The disaster recovery site.
         self.site = site
-        # The ID of the region in which the primary site is deployed.
+        # The region ID of the production site.
         self.source_region_id = source_region_id
-        # The ID of the zone in which the primary site is deployed.
+        # The zone ID of the production site.
         self.source_zone_id = source_zone_id
-        # The initial destination region (secondary region) of the replication pair-consistent group.
+        # The initial destination region of the replication group.
         self.standby_region = standby_region
-        # The initial destination zone (secondary zone) of the replication pair-consistent group.
+        # The initial destination zone of the replication group.
         self.standby_zone = standby_zone
         # The status of the replication pair-consistent group. Valid values:
         # 
-        # *   invalid: The replication pair-consistent group is invalid, which indicates that abnormal replication pairs are present in the replication pair-consistent group.
-        # *   creating: The replication pair-consistent group is being created.
-        # *   created: The replication pair-consistent group was created.
-        # *   create_failed: The replication pair-consistent group failed to be created.
-        # *   manual_syncing: Data was being manually synchronized between the disks in the replication pair-consistent group. When data was being manually synchronized for the first time, the replication pair is in this state.
-        # *   syncing: Data was being synchronized between the disks. When data is being asynchronously replicated from the primary disk to the secondary disk again in subsequent operations, the replication pair is in this state.
-        # *   normal: The replication pair was working as expected. When the system finishes replicating data from the primary disk to the secondary disk within the current replication cycle, the replication pair enters this state.
-        # *   stopping: The replication pair was being stopped.
-        # *   stopped: The replication pair was stopped.
-        # *   stop_failed: The replication pair failed to be stopped.
-        # *   failovering: A failover was being performed.
-        # *   failovered: A failover was performed.
-        # *   failover_failed: A failover failed to be performed.
-        # *   reprotecting: A reverse replication was being performed.
-        # *   reprotect_failed: A reverse replication failed to be performed.
-        # *   deleting: The replication pair was being deleted.
-        # *   delete_failed: The replication pair failed to be deleted.
-        # *   deleted: The replication pair was deleted.
+        # - invalid: The replication pair-consistent group is invalid. This status indicates that a replication pair in the group is abnormal.
+        # 
+        # - creating: The replication pair-consistent group is being created.
+        # 
+        # - created: The replication pair-consistent group is created.
+        # 
+        # - create_failed: The replication pair-consistent group failed to be created.
+        # 
+        # - manual_syncing: The replication pair-consistent group is performing a one-time synchronization. The group is also in this state during the first one-time synchronization.
+        # 
+        # - syncing: The replication pair-consistent group is synchronizing data. The group is in this state when data is asynchronously replicated from the primary disk to the secondary disk for a subsequent time.
+        # 
+        # - normal: Normal. When data replication is complete in the current asynchronous replication cycle, the group is in this state.
+        # 
+        # - stopping: The replication pair-consistent group is being stopped.
+        # 
+        # - stopped: The replication pair-consistent group is stopped.
+        # 
+        # - stop_failed: The replication pair-consistent group failed to be stopped.
+        # 
+        # - failovering: A failover is being performed.
+        # 
+        # - failovered: The failover is complete.
+        # 
+        # - failover_failed: The failover failed.
+        # 
+        # - reprotecting: A reverse replication is being performed.
+        # 
+        # - reprotect_failed: The reverse replication failed.
+        # 
+        # - deleting: The replication pair-consistent group is being deleted.
+        # 
+        # - delete_failed: The replication pair-consistent group failed to be deleted.
+        # 
+        # - deleted: The replication pair-consistent group is deleted.
         self.status = status
-        # The tags of the replication pair-consistent group.
+        # The tags of the replication group.
         self.tags = tags
 
     def validate(self):
@@ -332,9 +356,9 @@ class DescribeDiskReplicaGroupsResponseBodyReplicaGroupsTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key of the replication pair-consistent group.
+        # The key of the tag of the replication group.
         self.tag_key = tag_key
-        # The tag value of the replication pair-consistent group.
+        # The value of the tag of the replication group.
         self.tag_value = tag_value
 
     def validate(self):

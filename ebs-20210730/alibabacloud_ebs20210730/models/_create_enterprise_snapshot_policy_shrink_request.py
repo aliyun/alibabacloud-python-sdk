@@ -24,43 +24,42 @@ class CreateEnterpriseSnapshotPolicyShrinkRequest(DaraModel):
         tag: List[main_models.CreateEnterpriseSnapshotPolicyShrinkRequestTag] = None,
         target_type: str = None,
     ):
-        # The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # Ensures the idempotence of the request. Generate a parameter value from your client that is unique across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # Snapshot replication destination information.
+        # The snapshot replication information.
         self.cross_region_copy_info_shrink = cross_region_copy_info_shrink
-        # The description of the policy.
+        # The description.
         self.desc = desc
-        # The name of the policy.
+        # The Policy Name.
         # 
         # This parameter is required.
         self.name = name
-        # The region ID . You can call the [DescribeRegions](https://help.aliyun.com/document_detail/354276.html) operation to query the most recent list of regions in which snapshot policy is supported.
+        # The region ID. You can call DescribeRegions to query the regions that support asynchronous replication.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which to assign the snapshot policy.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The snapshot retention rule.
+        # The retention rule.
         # 
         # This parameter is required.
         self.retain_rule_shrink = retain_rule_shrink
-        # The rule for scheduling.
+        # The schedule rule.
         # 
         # This parameter is required.
         self.schedule_shrink = schedule_shrink
-        # The special snapshot retention rules.
+        # The special retention rules.
         self.special_retain_rules_shrink = special_retain_rules_shrink
-        # The status of the policy. Valid values:
+        # The status. Valid values:
         # 
-        # - ENABLED: Enable snapshot policy execution.
-        # 
-        # - DISABLED: Disable snapshot policy execution.
+        # - DISABLED
+        # - ENABLED
         self.state = state
-        # Advanced snapshot features.
+        # The advanced snapshot feature.
         self.storage_rule_shrink = storage_rule_shrink
-        # The list of tags.
+        # The tag key-value pairs. Valid values of n: 1 to 20.
         self.tag = tag
-        # Binding target type, valid value:
+        # The type. Valid values:
         # 
         # - DISK
         # 
@@ -173,15 +172,11 @@ class CreateEnterpriseSnapshotPolicyShrinkRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key of the resource.
         # 
         # This parameter is required.
         self.key = key
-        # The tag value.
-        # 
-        # The tag value can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
-        # 
-        # Each tag key must have a unique tag value. You can specify at most 20 tag values in each call.
+        # The tag value of the resource.
         # 
         # This parameter is required.
         self.value = value

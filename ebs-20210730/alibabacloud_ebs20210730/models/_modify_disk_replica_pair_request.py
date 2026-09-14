@@ -16,21 +16,29 @@ class ModifyDiskReplicaPairRequest(DaraModel):
         region_id: str = None,
         replica_pair_id: str = None,
     ):
-        # The bandwidth value. Unit: Kbit/s.
+        # The bandwidth for async replication, in Kbps.
         # 
-        # >  This parameter is not publicly available.
+        # > This parameter is not yet available.
         self.bandwidth = bandwidth
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # A client token to ensure the idempotence of the request. Generate a value for this parameter from your client. Make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The description of the replication pair.
         self.description = description
-        # Whether to enable replication time control.
+        # Specifies whether to enable replication time control (RTC). Valid values:
+        # 
+        # - false: Disables RTC.
+        # 
+        # - true: Enables RTC.
+        # 
+        # Default value: false.
+        # 
+        # > If a replication pair is part of a replication group, its RTC setting is the same as the setting of the group.
         self.enable_rtc = enable_rtc
         # The name of the replication pair.
         self.pair_name = pair_name
-        # The recovery point objective (RPO) of the replication pair-consistent group. Unit: seconds. Valid value: 900.
+        # The recovery point objective (RPO) of the replication pair-consistent group. Unit: seconds. Currently, only a value of 900 is supported.
         self.rpo = rpo
-        # The region ID of the primary or secondary disk in the replication pair. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/354276.html) operation to query the most recent list of regions in which async replication is supported.
+        # The region ID of the primary or secondary disk in the replication pair. You can call [DescribeRegions](https://help.aliyun.com/document_detail/354276.html) to query the regions that support async replication.
         # 
         # This parameter is required.
         self.region_id = region_id

@@ -15,9 +15,13 @@ class DescribeDiagnoseReportResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The pagination token returned in this call.
         self.next_token = next_token
+        # The list of diagnostic reports.
         self.reports = reports
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -83,18 +87,43 @@ class DescribeDiagnoseReportResponseBodyReports(DaraModel):
         severity: str = None,
         status: str = None,
     ):
+        # The user ID.
         self.ali_uid = ali_uid
+        # The time when the diagnostic report was created, in Unix/POSIX timestamp (seconds).
         self.creation_time = creation_time
+        # The end timestamp of the resource diagnosis.
         self.diagnose_end_time = diagnose_end_time
+        # The start timestamp of the resource diagnosis.
         self.diagnose_start_time = diagnose_start_time
+        # The type of diagnosis.
         self.diagnose_type = diagnose_type
+        # The list of diagnosed issues.
         self.events = events
+        # The time when the diagnostic report was completed, in Unix/POSIX timestamp (seconds).
         self.finished_time = finished_time
+        # The region ID.
         self.region_id = region_id
+        # The diagnostic report ID.
         self.report_id = report_id
+        # The resource ID.
         self.resource_id = resource_id
+        # The resource type. Valid values:
+        # 
+        # - Disk
         self.resource_type = resource_type
+        # The severity level of the diagnosis. The severity levels in ascending order are:
+        # 
+        # - Info: Associated information that may be related to an anomaly.
+        # - Warn: Associated information that may cause an anomaly.
+        # - Critical: A critical anomaly exists.
         self.severity = severity
+        # The status of the diagnostic report. Valid values:
+        # - Running
+        # - Success
+        # - TimeOut
+        # - Fail
+        # 
+        # The Severity and Events fields are valid only when Status is set to Success.
         self.status = status
 
     def validate(self):
@@ -207,11 +236,40 @@ class DescribeDiagnoseReportResponseBodyReportsEvents(DaraModel):
         severity: str = None,
         start_time: int = None,
     ):
+        # The event description.
         self.description = description
+        # The issue name. Valid values:
+        # 
+        # - NoSnapshot: data protection
+        # - BurstIOTriggered: I/O burst
+        # - CostOptimizationNeeded: cost optimization
+        # - DiskSpecNotMatchedWithInstance: instance and cloud disk specification mismatch
+        # - DiskIONo4kAligned: non-4K-aligned read/write
+        # - DiskIOHang: IOHang occurred on the cloud disk
+        # - InstanceIOPSExceedInstanceMaxLimit: instance IOPS reached the upper limit
+        # - InstanceBPSExceedInstanceMaxLimit: instance BPS reached the upper limit
+        # - DiskIOPSExceedInstanceMaxLimit: cloud disk IOPS reached the instance upper limit
+        # - DiskBPSExceedInstanceMaxLimit: cloud disk BPS reached the instance upper limit
+        # - DiskIOPSExceedDiskMaxLimit: cloud disk IOPS reached the cloud disk upper limit
+        # - DiskBPSExceedDiskMaxLimit: cloud disk BPS reached the cloud disk upper limit
         self.event_name = event_name
+        # The recommended action after the event occurs. Valid values:
+        # 
+        # - ModifyDiskSpec: change cloud disk specifications
+        # - CreateSnapshot: create a snapshot
+        # - ResizeDisk: expand the cloud disk
+        # - AdjustProvision: adjust provisioned performance
+        # - ModifyInstanceSpec: change instance specifications
         self.recommend_action = recommend_action
+        # The parameters for the recommended action after the event occurs.
         self.recommend_params = recommend_params
+        # The severity level of the diagnosed issue. The severity levels in ascending order are:
+        # 
+        # - Info: Associated information that may be related to an anomaly.
+        # - Warn: Associated information that may cause an anomaly.
+        # - Critical: A critical anomaly exists.
         self.severity = severity
+        # The start timestamp of the event, in milliseconds.
         self.start_time = start_time
 
     def validate(self):

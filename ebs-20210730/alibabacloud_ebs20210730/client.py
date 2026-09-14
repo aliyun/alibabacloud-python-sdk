@@ -20,7 +20,7 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('ebs', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -2551,6 +2551,8 @@ class Client(OpenApiClient):
             query['DiskIdPattern'] = request.disk_id_pattern
         if not DaraCore.is_null(request.disk_ids):
             query['DiskIds'] = request.disk_ids
+        if not DaraCore.is_null(request.ecs_instance_id):
+            query['EcsInstanceId'] = request.ecs_instance_id
         if not DaraCore.is_null(request.lens_tags):
             query['LensTags'] = request.lens_tags
         if not DaraCore.is_null(request.max_results):
@@ -2591,6 +2593,8 @@ class Client(OpenApiClient):
             query['DiskIdPattern'] = request.disk_id_pattern
         if not DaraCore.is_null(request.disk_ids):
             query['DiskIds'] = request.disk_ids
+        if not DaraCore.is_null(request.ecs_instance_id):
+            query['EcsInstanceId'] = request.ecs_instance_id
         if not DaraCore.is_null(request.lens_tags):
             query['LensTags'] = request.lens_tags
         if not DaraCore.is_null(request.max_results):

@@ -12,11 +12,13 @@ class DescribeLensServiceStatusResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The state of CloudLens for EBS. Valid values:
+        # The status of EBS Lens. Valid values:
         # 
-        # *   Applying
-        # *   UnAvailable
-        # *   Available
+        # - Applying: The service is being applied for.
+        # 
+        # - UnAvailable: The service is unavailable.
+        # 
+        # - Available: The service is available.
         self.status = status
 
     def validate(self):

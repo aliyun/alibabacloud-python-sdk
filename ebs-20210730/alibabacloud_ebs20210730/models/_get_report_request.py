@@ -12,13 +12,16 @@ class GetReportRequest(DaraModel):
         report_id: str = None,
         report_type: str = None,
     ):
-        # Optional, AppName only takes effect when ReportType=present.
+        # Optional. This parameter takes effect only when ReportType is set to present.
         self.app_name = app_name
-        # Region name.
+        # The region ID. This parameter is required.
         self.region_id = region_id
-        # When ReportType=history, ReportId is required to query historical reports based on ReportId.
+        # When ReportType is set to history, this parameter is required. The system queries the historical report based on the specified ReportId.
         self.report_id = report_id
-        # Optional values: history/present.
+        # Valid values:
+        # 
+        # - history
+        # - present
         self.report_type = report_type
 
     def validate(self):

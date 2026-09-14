@@ -23,39 +23,47 @@ class CreateDiskReplicaGroupRequest(DaraModel):
         source_zone_id: str = None,
         tag: List[main_models.CreateDiskReplicaGroupRequestTag] = None,
     ):
-        # The bandwidth value. Unit: Mbit/s.
+        # The bandwidth in Kbps.
         # 
-        # >  This parameter is not publicly available.
+        # > This parameter is not yet available.
         self.bandwidth = bandwidth
-        # The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # A client token to ensure the idempotence of the request. Generate a unique value from your client for this parameter. The \\`ClientToken\\` parameter value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The description of the replication pair-consistent group. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
-        # The region ID of the secondary site.
+        # The ID of the region where the disaster recovery site is located.
         # 
         # This parameter is required.
         self.destination_region_id = destination_region_id
-        # The zone ID of the secondary site.
+        # The ID of the zone where the disaster recovery site is located.
         # 
         # This parameter is required.
         self.destination_zone_id = destination_zone_id
-        # Whether to enable replication time control. By default, this parameter is disabled.
+        # Specifies whether to enable replication time control (RTC). Valid values:
+        # 
+        # - false: Disable RTC.
+        # 
+        # - true: Enable RTC.
+        # 
+        # Default value: false.
+        # 
+        # > If you set this parameter to true, RTC is enabled for the replication pair-consistent group. RTC is also enabled for all asynchronous replication pairs that are added to the group.
         self.enable_rtc = enable_rtc
-        # The name of the replication pair-consistent group. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        # The name of the replication pair-consistent group. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character, and cannot start with `http://` or `https://`. It can contain digits, colons (:), underscores (_), and hyphens (-).
         self.group_name = group_name
-        # The RPO of the replication pair-consistent group. Unit: seconds. Valid value: 900.
+        # The recovery point objective (RPO) of the replication pair-consistent group, in seconds. The only supported value is 900.
         self.rpo = rpo
-        # The ID of the region in which to create the replication pair-consistent group. The primary site is deployed in the specified region.
+        # The ID of the region where the replication pair-consistent group resides. This is the same as the region of the production site.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the replication pair-consistent group belongs.
         self.resource_group_id = resource_group_id
-        # The zone ID of the primary site.
+        # The ID of the zone where the production site is located.
         # 
         # This parameter is required.
         self.source_zone_id = source_zone_id
-        # The tags. Up to 20 tags are supported.
+        # The tags to add to the resource. You can add up to 20 tags.
         self.tag = tag
 
     def validate(self):
@@ -158,9 +166,9 @@ class CreateDiskReplicaGroupRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N of the replication pair-consistent group.
+        # The key of the tag.
         self.key = key
-        # The value of tag N of the replication pair-consistent group.
+        # The value of the tag.
         self.value = value
 
     def validate(self):

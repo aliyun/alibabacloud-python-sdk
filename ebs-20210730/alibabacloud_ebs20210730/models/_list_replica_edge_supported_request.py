@@ -12,10 +12,18 @@ class ListReplicaEdgeSupportedRequest(DaraModel):
         next_token: str = None,
         region_id: str = None,
     ):
+        # The zone ID.
+        # 
         # This parameter is required.
         self.azone = azone
+        # The maximum number of entries to return on each page. Valid values: 1 to 500. This parameter is not enabled.
+        # 
+        # Default value: 10.
         self.max_results = max_results
+        # The token that is used to start the next query. Set this parameter to the value of NextToken that was returned by the last call. Do not set this parameter for the first call. If you set NextToken, PageSize and PageNumber are ignored. TotalCount is also invalid in the response. This parameter is not enabled.
         self.next_token = next_token
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

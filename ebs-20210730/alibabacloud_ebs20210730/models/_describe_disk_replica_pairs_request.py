@@ -22,44 +22,46 @@ class DescribeDiskReplicaPairsRequest(DaraModel):
         site: str = None,
         tag: List[main_models.DescribeDiskReplicaPairsRequestTag] = None,
     ):
-        # The maximum number of entries per page. You can use this parameter together with NextToken.
+        # The maximum number of entries to return on each page. Use this parameter with NextToken.
         # 
         # Valid values: 1 to 500.
         # 
         # Default value: 10.
         self.max_results = max_results
-        # The name of the replication pair. Fuzzy search is supported.
+        # The name of the replication pair. Fuzzy matching is supported.
         self.name = name
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken. If you specify NextToken, the PageSize and PageNumber request parameters do not take effect, and the TotalCount response parameter is invalid.
+        # The query token. Set this parameter to the NextToken value returned from the previous call to this operation. You do not need to set this parameter for the first call. If you set NextToken, the PageSize and PageNumber parameters are ignored, and the TotalCount value in the response is invalid.
         self.next_token = next_token
         # The page number.
         self.page_number = page_number
-        # The number of entries per page. Valid values: 1 to 100.
+        # The number of entries per page.
+        # Valid values: 1 to 100.
         self.page_size = page_size
-        # The IDs of replication pairs. You can specify the IDs of one or more replication pairs and separate the IDs with commas (,). Example: `pair-cn-dsa****,pair-cn-asd****`.
+        # The IDs of replication pairs. Specify one or more replication pair IDs. The IDs must be in the `pair-cn-dsa****,pair-cn-asd****` format.
         # 
-        # This parameter is empty by default, which indicates that all replication pairs in the specified region are queried. You can specify a maximum of 100 replication pair IDs.
+        # If you leave this parameter empty, all replication pairs in the current region are queried. You can specify up to 100 replication pair IDs.
         self.pair_ids = pair_ids
-        # The region ID of the primary or secondary disk in the replication pair. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/354276.html) operation to query the most recent list of regions in which async replication is supported.
+        # The ID of the region where the primary or secondary disk of the replication pair resides. Call the [DescribeRegions](https://help.aliyun.com/document_detail/354276.html) operation to query the regions that support asynchronous replication.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the replication pair-consistent group. You can specify the ID of a replication pair-consistent group to query the replication pairs in the group. Example: `pg-****`.
+        # The ID of the replication pair-consistent group. Specify the ID of a replication pair-consistent group to query the replication pairs in the group. The ID must be in the `pg-****` format.
         # 
-        # This parameter is empty by default, which indicates that all replication pairs in the specified region are queried.
+        # If you leave this parameter empty, all replication pairs in the current region are queried.
         # 
-        # >  If this parameter is set to`-`, replication pairs that are not added to any replication pair-consistent groups are returned.
+        # > If you set this parameter to `-`, replication pairs that are not in any replication pair-consistent group are returned.
         self.replica_group_id = replica_group_id
         # The ID of the resource group to which the replication pair belongs.
         self.resource_group_id = resource_group_id
-        # The type of the site from which the information of replication pairs is retrieved. Valid value:
+        # The site from which to query data. Query data from the production site or the disaster recovery site. Valid values:
         # 
-        # *   production: primary site
-        # *   backup: secondary site
+        # - production: the production site.
+        # 
+        # - backup: the disaster recovery site.
         # 
         # Default value: production.
         self.site = site
-        # The tags. Up to 20 tags are supported.
+        # The tags. You can specify up to 20 tags.
         self.tag = tag
 
     def validate(self):

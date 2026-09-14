@@ -13,9 +13,9 @@ class DescribeRegionsResponseBody(DaraModel):
         regions: List[main_models.DescribeRegionsResponseBodyRegions] = None,
         request_id: str = None,
     ):
-        # Details about the regions.
+        # The collection of region and zone information.
         self.regions = regions
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -60,13 +60,13 @@ class DescribeRegionsResponseBodyRegions(DaraModel):
         region_id: str = None,
         zones: List[main_models.DescribeRegionsResponseBodyRegionsZones] = None,
     ):
-        # The name of the region.
+        # The region name.
         self.local_name = local_name
         # The endpoint of the region.
         self.region_endpoint = region_endpoint
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
-        # Details about the zones.
+        # The collection of zone information.
         self.zones = zones
 
     def validate(self):
@@ -122,11 +122,11 @@ class DescribeRegionsResponseBodyRegionsZones(DaraModel):
         resource_types: List[str] = None,
         zone_id: str = None,
     ):
-        # The name of the zone.
+        # The zone name.
         self.local_name = local_name
-        # The type of resource list.
+        # The list of resource types.
         self.resource_types = resource_types
-        # The ID of the zone.
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):

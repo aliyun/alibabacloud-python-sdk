@@ -16,25 +16,31 @@ class ModifyDiskReplicaGroupRequest(DaraModel):
         region_id: str = None,
         replica_group_id: str = None,
     ):
-        # The bandwidth value. Unit: Kbit/s.
+        # The bandwidth. Unit: Kbps.
         # 
-        # >  This parameter is not publicly available.
+        # > This parameter is not available.
         self.bandwidth = bandwidth
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # A client token to ensure the idempotence of the request. Generate a unique value for this parameter from your client. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The description of the replication pair-consistent group. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
-        # Whether to enable replication time control.
+        # Specifies whether to enable replication time control (RTC). Valid values:
+        # 
+        # - false: RTC is disabled.
+        # 
+        # - true: RTC is enabled.
+        # 
+        # > If this parameter is set to true, RTC is enabled for the replication pair-consistent group. RTC is also enabled for all asynchronous replication pairs that are added to the group.
         self.enable_rtc = enable_rtc
-        # The name of the replication pair-consistent group. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        # The name of the replication pair-consistent group. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character and cannot start with `http://` or `https://`. The name can contain digits, colons (:), underscores (_), and hyphens (-).
         self.group_name = group_name
-        # The RPO of the replication pair-consistent group. Unit: seconds. Valid value: 900.
+        # The recovery point objective (RPO) of the replication pair-consistent group. Unit: seconds. A value of 900 is supported.
         self.rpo = rpo
         # The region ID of the replication pair-consistent group.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the replication pair-consistent group. You can call the [DescribeDiskReplicaGroups](https://help.aliyun.com/document_detail/426614.html) operation to query the IDs of replication pair-consistent groups.
+        # The ID of the replication pair-consistent group. Call [DescribeDiskReplicaGroups](https://help.aliyun.com/document_detail/426614.html) to query the IDs of replication pair-consistent groups.
         # 
         # This parameter is required.
         self.replica_group_id = replica_group_id

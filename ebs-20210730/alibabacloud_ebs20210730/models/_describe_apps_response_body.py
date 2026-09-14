@@ -21,15 +21,25 @@ class DescribeAppsResponseBody(DaraModel):
         success: bool = None,
         user_code: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # The application information.
         self.app_infos = app_infos
+        # The internal error code.
         self.code = code
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
+        # The dynamic error message, which is used to replace the %s variable in the ErrMessage error message.
         self.dynamic_message = dynamic_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The user error code.
         self.user_code = user_code
 
     def validate(self):
@@ -130,17 +140,32 @@ class DescribeAppsResponseBodyAppInfos(DaraModel):
         subscribe_period: str = None,
         subscribe_status: str = None,
     ):
+        # The application ID.
         self.app_id = app_id
+        # The application name. This parameter takes effect only when ReportType is set to present.
         self.app_name = app_name
+        # The tags contained in the user application.
         self.app_tags = app_tags
+        # The default time zone.
         self.default = default
+        # The event description.
         self.description = description
+        # Indicates whether delivery to EventBridge is enabled.
         self.event_bridge_send_enabled = event_bridge_send_enabled
+        # The modification time in UTC.
         self.modify_time = modify_time
+        # Indicates whether delivery to CloudMonitor is enabled.
         self.monitor_send_enabled = monitor_send_enabled
+        # Indicates whether report sending is enabled.
         self.report_send_enabled = report_send_enabled
+        # Indicates whether delivery to Simple Log Service (SLS) is enabled.
         self.sls_send_enabled = sls_send_enabled
+        # The report subscription period.
         self.subscribe_period = subscribe_period
+        # The subscription status. Valid values:
+        # 
+        # - Subscribe: subscribed.
+        # - UnSubscribe: not subscribed.
         self.subscribe_status = subscribe_status
 
     def validate(self):
@@ -243,7 +268,9 @@ class DescribeAppsResponseBodyAppInfosAppTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):

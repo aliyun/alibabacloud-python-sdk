@@ -17,17 +17,17 @@ class DescribeEnterpriseSnapshotPolicyResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        # The pagination token (Token) returned for the next query.
         self.next_token = next_token
-        # The page number.
+        # The page number for paged queries.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page for paged queries.
         self.page_size = page_size
-        # The returned snapshot policies.
+        # The list of policies.
         self.policies = policies
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -108,37 +108,42 @@ class DescribeEnterpriseSnapshotPolicyResponseBodyPolicies(DaraModel):
         target_count: int = None,
         target_type: str = None,
     ):
-        # The time when the enterprise-level snapshot policy was created.
+        # The creation time in UTC ISO 8601 format.
         self.create_time = create_time
-        # The replication rule of snapshots in the enterprise-level snapshot policy.
+        # The snapshot cross-region copy information.
         self.cross_region_copy_info = cross_region_copy_info
-        # The description of the enterprise-level snapshot policy.
+        # The snapshot policy description.
         self.desc = desc
-        # The disks that are associated with the snapshot policy.
+        # The list of bound cloud disk IDs.
         self.disk_ids = disk_ids
-        # Indicates whether snapshots are managed.
+        # The snapshot managed status.
         self.managed_for_ecs = managed_for_ecs
-        # The name of the enterprise-level snapshot policy.
+        # The snapshot policy name.
         self.name = name
-        # The ID of the enterprise-level snapshot policy.
+        # The snapshot policy ID.
         self.policy_id = policy_id
         # the resource group
         self.resource_group_id = resource_group_id
-        # The retention rule of the enterprise-level snapshot policy.
+        # The snapshot policy retention rule.
         self.retain_rule = retain_rule
-        # The scheduling rule of the enterprise-level snapshot policy.
+        # The snapshot policy schedule rule.
         self.schedule = schedule
-        # The special retention rules of the enterprise-level snapshot policy.
+        # The special retention rules for the snapshot policy.
         self.special_retain_rules = special_retain_rules
-        # The status of the enterprise-level snapshot policy.
+        # The status. Valid values:
+        # 
+        # - DISABLED
+        # - ENABLED
         self.state = state
-        # The storage rule of snapshots in the enterprise-level snapshot policy.
+        # The snapshot policy storage rule.
         self.storage_rule = storage_rule
         # the pair tags
         self.tags = tags
-        # The number of objects that are associated with the enterprise-level snapshot policy.
+        # The number of bound targets.
         self.target_count = target_count
-        # The type of the enterprise-level snapshot policy.
+        # The type. Valid values:
+        # 
+        # - DISK
         self.target_type = target_type
 
     def validate(self):
@@ -280,9 +285,9 @@ class DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The key of the tag of the enterprise-level snapshot policy.
+        # The tag key of the resource.
         self.tag_key = tag_key
-        # The value of the tag of the enterprise-level snapshot policy.
+        # The tag value of the resource.
         self.tag_value = tag_value
 
     def validate(self):
@@ -316,7 +321,7 @@ class DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesStorageRule(DaraModel)
         self,
         enable_immediate_access: bool = None,
     ):
-        # Indicates whether the instant access feature is enabled.
+        # Indicates whether instant access is enabled for snapshots.
         self.enable_immediate_access = enable_immediate_access
 
     def validate(self):
@@ -345,7 +350,7 @@ class DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesSpecialRetainRules(Dar
         enabled: bool = None,
         rules: List[main_models.DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesSpecialRetainRulesRules] = None,
     ):
-        # Indicates whether the special retention period is enabled.
+        # Indicates whether special retention is enabled.
         self.enabled = enabled
         # The special retention rules.
         self.rules = rules
@@ -391,11 +396,11 @@ class DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesSpecialRetainRulesRule
         time_interval: int = None,
         time_unit: str = None,
     ):
-        # The unit of the special retention period.
+        # The special period unit.
         self.special_period_unit = special_period_unit
-        # The value of the retention period.
+        # The time interval of the retention rule. The unit is specified by the TimeUnit parameter. The value must be greater than 1.
         self.time_interval = time_interval
-        # The unit of the retention period.
+        # The retention time unit.
         self.time_unit = time_unit
 
     def validate(self):
@@ -435,7 +440,7 @@ class DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesSchedule(DaraModel):
         self,
         cron_expression: str = None,
     ):
-        # The cron expression of the enterprise-level snapshot policy.
+        # The cron expression.
         self.cron_expression = cron_expression
 
     def validate(self):
@@ -465,11 +470,11 @@ class DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesRetainRule(DaraModel):
         time_interval: int = None,
         time_unit: str = None,
     ):
-        # The maximum number of snapshots that can be retained.
+        # The retention count.
         self.number = number
-        # The value of the retention period of snapshots.
+        # The time interval of the retention rule. The unit is specified by the TimeUnit parameter. The value must be greater than 1.
         self.time_interval = time_interval
-        # The unit of the retention period of snapshots.
+        # The retention time unit.
         self.time_unit = time_unit
 
     def validate(self):
@@ -510,9 +515,9 @@ class DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesCrossRegionCopyInfo(Da
         enabled: bool = None,
         regions: List[main_models.DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesCrossRegionCopyInfoRegions] = None,
     ):
-        # Indicates whether the cross-region replication feature is enabled.
+        # Indicates whether cross-region copy is enabled.
         self.enabled = enabled
-        # The destination regions that store snapshot copies.
+        # The destination region information.
         self.regions = regions
 
     def validate(self):
@@ -555,9 +560,9 @@ class DescribeEnterpriseSnapshotPolicyResponseBodyPoliciesCrossRegionCopyInfoReg
         region_id: str = None,
         retain_days: int = None,
     ):
-        # The ID of the destination region.
+        # The snapshot copy destination region.
         self.region_id = region_id
-        # The retention period of snapshot copies in the destination region. Unit: day.
+        # The number of days to retain snapshots at the destination region.
         self.retain_days = retain_days
 
     def validate(self):

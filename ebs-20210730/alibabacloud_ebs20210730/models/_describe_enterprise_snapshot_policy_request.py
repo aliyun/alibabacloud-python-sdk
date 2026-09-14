@@ -21,27 +21,31 @@ class DescribeEnterpriseSnapshotPolicyRequest(DaraModel):
         resource_group_id: str = None,
         tag: List[main_models.DescribeEnterpriseSnapshotPolicyRequestTag] = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
+        # Ensures the idempotence of the request. The value is generated from your client and must be unique among different requests. ClientToken can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The IDs of disks.
+        # The list of cloud disk IDs.
         self.disk_ids = disk_ids
-        # The maximum number of entries per page.
+        # The maximum number of entries to return in this call. You can use this parameter together with NextToken.
+        # 
+        # Valid values: 1 to 500.
+        # 
+        # Default value: 10.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken. If you specify NextToken, the PageSize and PageNumber request parameters do not take effect, and the TotalCount response parameter is invalid.
+        # The pagination token (Token). Set this parameter to the NextToken value returned in the previous call. You do not need to set this parameter for the first request. If NextToken is specified, the PageSize and PageNumber request parameters do not take effect, and the TotalCount value in the response is invalid.
         self.next_token = next_token
-        # The page number.
+        # The page number in a paging query.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page in a paging query. Valid values: 1 to 100.
         self.page_size = page_size
-        # The IDs of enterprise-level snapshot policies.
+        # The list of snapshot policy IDs.
         self.policy_ids = policy_ids
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The tags of the enterprise-level snapshot policies. Valid values of N: 1 to 20.
+        # The tag key-value pairs. Valid values of N: 1 to 20.
         self.tag = tag
 
     def validate(self):
@@ -132,11 +136,11 @@ class DescribeEnterpriseSnapshotPolicyRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N of the enterprise-level snapshot policy.
+        # The tag key of the resource.
         # 
         # This parameter is required.
         self.key = key
-        # The value of tag N of the enterprise-level snapshot policy.
+        # The tag value of the resource.
         # 
         # This parameter is required.
         self.value = value
