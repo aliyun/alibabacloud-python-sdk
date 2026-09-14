@@ -9,6 +9,8 @@ class GetBatchChangeTableOwnerStatusRequest(DaraModel):
         self,
         batch_id: str = None,
     ):
+        # The batch transfer task ID returned by SubmitBatchChangeTableOwner.
+        # 
         # This parameter is required.
         self.batch_id = batch_id
 

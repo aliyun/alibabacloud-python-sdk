@@ -11,7 +11,7 @@ class GetDataQualityScanRunLogResponseBody(DaraModel):
         log_segment: main_models.GetDataQualityScanRunLogResponseBodyLogSegment = None,
         request_id: str = None,
     ):
-        # The task log information.
+        # The node task logs information.
         self.log_segment = log_segment
         # The request ID.
         self.request_id = request_id
@@ -50,9 +50,9 @@ class GetDataQualityScanRunLogResponseBodyLogSegment(DaraModel):
         log: str = None,
         next_offset: int = None,
     ):
-        # The task log.
+        # The node task logs.
         self.log = log
-        # The starting offset of the next log segment. A value of -1 indicates that all logs have been read.
+        # The start offset of the next log segment. A value of -1 indicates that all logs have been read.
         self.next_offset = next_offset
 
     def validate(self):

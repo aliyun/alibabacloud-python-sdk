@@ -1,3 +1,8 @@
+2026-09-14 Version: 9.8.0
+- Support API GetComputeResourceAuthUserMappings.
+- Support API UpdateComputeResourceAuthUserMappings.
+
+
 2026-09-02 Version: 9.6.0
 - Support API GetBatchChangeTableOwnerStatus.
 - Support API SubmitBatchChangeTableOwner.

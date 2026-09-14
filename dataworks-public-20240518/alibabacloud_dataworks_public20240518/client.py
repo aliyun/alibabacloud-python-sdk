@@ -268,6 +268,84 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def abolish_cross_project_pipeline_run_with_options(
+        self,
+        request: main_models.AbolishCrossProjectPipelineRunRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AbolishCrossProjectPipelineRunResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.pipeline_run_id):
+            body['PipelineRunId'] = request.pipeline_run_id
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.reason):
+            body['Reason'] = request.reason
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AbolishCrossProjectPipelineRun',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AbolishCrossProjectPipelineRunResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def abolish_cross_project_pipeline_run_with_options_async(
+        self,
+        request: main_models.AbolishCrossProjectPipelineRunRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AbolishCrossProjectPipelineRunResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.pipeline_run_id):
+            body['PipelineRunId'] = request.pipeline_run_id
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.reason):
+            body['Reason'] = request.reason
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AbolishCrossProjectPipelineRun',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AbolishCrossProjectPipelineRunResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def abolish_cross_project_pipeline_run(
+        self,
+        request: main_models.AbolishCrossProjectPipelineRunRequest,
+    ) -> main_models.AbolishCrossProjectPipelineRunResponse:
+        runtime = RuntimeOptions()
+        return self.abolish_cross_project_pipeline_run_with_options(request, runtime)
+
+    async def abolish_cross_project_pipeline_run_async(
+        self,
+        request: main_models.AbolishCrossProjectPipelineRunRequest,
+    ) -> main_models.AbolishCrossProjectPipelineRunResponse:
+        runtime = RuntimeOptions()
+        return await self.abolish_cross_project_pipeline_run_with_options_async(request, runtime)
+
     def abolish_pipeline_run_with_options(
         self,
         request: main_models.AbolishPipelineRunRequest,
@@ -2073,6 +2151,100 @@ class Client(OpenApiClient):
     ) -> main_models.CreateCrawlerResponse:
         runtime = RuntimeOptions()
         return await self.create_crawler_with_options_async(request, runtime)
+
+    def create_cross_project_pipeline_run_with_options(
+        self,
+        tmp_req: main_models.CreateCrossProjectPipelineRunRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCrossProjectPipelineRunResponse:
+        tmp_req.validate()
+        request = main_models.CreateCrossProjectPipelineRunShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.object_ids):
+            request.object_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.object_ids, 'ObjectIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.deployment_environment_id):
+            body['DeploymentEnvironmentId'] = request.deployment_environment_id
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.object_ids_shrink):
+            body['ObjectIds'] = request.object_ids_shrink
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCrossProjectPipelineRun',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCrossProjectPipelineRunResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_cross_project_pipeline_run_with_options_async(
+        self,
+        tmp_req: main_models.CreateCrossProjectPipelineRunRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCrossProjectPipelineRunResponse:
+        tmp_req.validate()
+        request = main_models.CreateCrossProjectPipelineRunShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.object_ids):
+            request.object_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.object_ids, 'ObjectIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.deployment_environment_id):
+            body['DeploymentEnvironmentId'] = request.deployment_environment_id
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.object_ids_shrink):
+            body['ObjectIds'] = request.object_ids_shrink
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCrossProjectPipelineRun',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCrossProjectPipelineRunResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_cross_project_pipeline_run(
+        self,
+        request: main_models.CreateCrossProjectPipelineRunRequest,
+    ) -> main_models.CreateCrossProjectPipelineRunResponse:
+        runtime = RuntimeOptions()
+        return self.create_cross_project_pipeline_run_with_options(request, runtime)
+
+    async def create_cross_project_pipeline_run_async(
+        self,
+        request: main_models.CreateCrossProjectPipelineRunRequest,
+    ) -> main_models.CreateCrossProjectPipelineRunResponse:
+        runtime = RuntimeOptions()
+        return await self.create_cross_project_pipeline_run_with_options_async(request, runtime)
 
     def create_custom_attribute_with_options(
         self,
@@ -11026,6 +11198,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.establish_relation_table_to_business_with_options_async(request, runtime)
 
+    def exec_cross_project_pipeline_run_with_options(
+        self,
+        request: main_models.ExecCrossProjectPipelineRunRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ExecCrossProjectPipelineRunResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.pipeline_run_id):
+            body['PipelineRunId'] = request.pipeline_run_id
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExecCrossProjectPipelineRun',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ExecCrossProjectPipelineRunResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def exec_cross_project_pipeline_run_with_options_async(
+        self,
+        request: main_models.ExecCrossProjectPipelineRunRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ExecCrossProjectPipelineRunResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.pipeline_run_id):
+            body['PipelineRunId'] = request.pipeline_run_id
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExecCrossProjectPipelineRun',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ExecCrossProjectPipelineRunResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def exec_cross_project_pipeline_run(
+        self,
+        request: main_models.ExecCrossProjectPipelineRunRequest,
+    ) -> main_models.ExecCrossProjectPipelineRunResponse:
+        runtime = RuntimeOptions()
+        return self.exec_cross_project_pipeline_run_with_options(request, runtime)
+
+    async def exec_cross_project_pipeline_run_async(
+        self,
+        request: main_models.ExecCrossProjectPipelineRunRequest,
+    ) -> main_models.ExecCrossProjectPipelineRunResponse:
+        runtime = RuntimeOptions()
+        return await self.exec_cross_project_pipeline_run_with_options_async(request, runtime)
+
     def exec_pipeline_run_stage_with_options(
         self,
         request: main_models.ExecPipelineRunStageRequest,
@@ -12156,6 +12402,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_compute_resource_with_options_async(request, runtime)
 
+    def get_compute_resource_auth_user_mappings_with_options(
+        self,
+        request: main_models.GetComputeResourceAuthUserMappingsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetComputeResourceAuthUserMappingsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.compute_resource_id):
+            query['ComputeResourceId'] = request.compute_resource_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetComputeResourceAuthUserMappings',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetComputeResourceAuthUserMappingsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_compute_resource_auth_user_mappings_with_options_async(
+        self,
+        request: main_models.GetComputeResourceAuthUserMappingsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetComputeResourceAuthUserMappingsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.compute_resource_id):
+            query['ComputeResourceId'] = request.compute_resource_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetComputeResourceAuthUserMappings',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetComputeResourceAuthUserMappingsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_compute_resource_auth_user_mappings(
+        self,
+        request: main_models.GetComputeResourceAuthUserMappingsRequest,
+    ) -> main_models.GetComputeResourceAuthUserMappingsResponse:
+        runtime = RuntimeOptions()
+        return self.get_compute_resource_auth_user_mappings_with_options(request, runtime)
+
+    async def get_compute_resource_auth_user_mappings_async(
+        self,
+        request: main_models.GetComputeResourceAuthUserMappingsRequest,
+    ) -> main_models.GetComputeResourceAuthUserMappingsResponse:
+        runtime = RuntimeOptions()
+        return await self.get_compute_resource_auth_user_mappings_with_options_async(request, runtime)
+
     def get_crawler_with_options(
         self,
         request: main_models.GetCrawlerRequest,
@@ -12351,6 +12671,80 @@ class Client(OpenApiClient):
     ) -> main_models.GetCreateWorkflowInstancesResultResponse:
         runtime = RuntimeOptions()
         return await self.get_create_workflow_instances_result_with_options_async(request, runtime)
+
+    def get_cross_project_pipeline_run_with_options(
+        self,
+        request: main_models.GetCrossProjectPipelineRunRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCrossProjectPipelineRunResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.pipeline_run_id):
+            body['PipelineRunId'] = request.pipeline_run_id
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCrossProjectPipelineRun',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCrossProjectPipelineRunResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_cross_project_pipeline_run_with_options_async(
+        self,
+        request: main_models.GetCrossProjectPipelineRunRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCrossProjectPipelineRunResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.pipeline_run_id):
+            body['PipelineRunId'] = request.pipeline_run_id
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCrossProjectPipelineRun',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCrossProjectPipelineRunResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_cross_project_pipeline_run(
+        self,
+        request: main_models.GetCrossProjectPipelineRunRequest,
+    ) -> main_models.GetCrossProjectPipelineRunResponse:
+        runtime = RuntimeOptions()
+        return self.get_cross_project_pipeline_run_with_options(request, runtime)
+
+    async def get_cross_project_pipeline_run_async(
+        self,
+        request: main_models.GetCrossProjectPipelineRunRequest,
+    ) -> main_models.GetCrossProjectPipelineRunResponse:
+        runtime = RuntimeOptions()
+        return await self.get_cross_project_pipeline_run_with_options_async(request, runtime)
 
     def get_custom_attribute_with_options(
         self,
@@ -16178,6 +16572,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_task_instance_log_with_options_async(request, runtime)
 
+    def get_update_task_result_with_options(
+        self,
+        request: main_models.GetUpdateTaskResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetUpdateTaskResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.operation_id):
+            query['OperationId'] = request.operation_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetUpdateTaskResult',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetUpdateTaskResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_update_task_result_with_options_async(
+        self,
+        request: main_models.GetUpdateTaskResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetUpdateTaskResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.operation_id):
+            query['OperationId'] = request.operation_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetUpdateTaskResult',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetUpdateTaskResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_update_task_result(
+        self,
+        request: main_models.GetUpdateTaskResultRequest,
+    ) -> main_models.GetUpdateTaskResultResponse:
+        runtime = RuntimeOptions()
+        return self.get_update_task_result_with_options(request, runtime)
+
+    async def get_update_task_result_async(
+        self,
+        request: main_models.GetUpdateTaskResultRequest,
+    ) -> main_models.GetUpdateTaskResultResponse:
+        runtime = RuntimeOptions()
+        return await self.get_update_task_result_with_options_async(request, runtime)
+
     def get_workflow_with_options(
         self,
         request: main_models.GetWorkflowRequest,
@@ -17951,6 +18415,386 @@ class Client(OpenApiClient):
     ) -> main_models.ListCrawlersResponse:
         runtime = RuntimeOptions()
         return await self.list_crawlers_with_options_async(request, runtime)
+
+    def list_cross_project_deployment_candidates_with_options(
+        self,
+        request: main_models.ListCrossProjectDeploymentCandidatesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCrossProjectDeploymentCandidatesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.change_type):
+            body['ChangeType'] = request.change_type
+        if not DaraCore.is_null(request.commit_time_from):
+            body['CommitTimeFrom'] = request.commit_time_from
+        if not DaraCore.is_null(request.commit_time_to):
+            body['CommitTimeTo'] = request.commit_time_to
+        if not DaraCore.is_null(request.commit_user):
+            body['CommitUser'] = request.commit_user
+        if not DaraCore.is_null(request.deployment_environment_id):
+            body['DeploymentEnvironmentId'] = request.deployment_environment_id
+        if not DaraCore.is_null(request.keyword):
+            body['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.object_id):
+            body['ObjectId'] = request.object_id
+        if not DaraCore.is_null(request.object_type):
+            body['ObjectType'] = request.object_type
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCrossProjectDeploymentCandidates',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCrossProjectDeploymentCandidatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_cross_project_deployment_candidates_with_options_async(
+        self,
+        request: main_models.ListCrossProjectDeploymentCandidatesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCrossProjectDeploymentCandidatesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.change_type):
+            body['ChangeType'] = request.change_type
+        if not DaraCore.is_null(request.commit_time_from):
+            body['CommitTimeFrom'] = request.commit_time_from
+        if not DaraCore.is_null(request.commit_time_to):
+            body['CommitTimeTo'] = request.commit_time_to
+        if not DaraCore.is_null(request.commit_user):
+            body['CommitUser'] = request.commit_user
+        if not DaraCore.is_null(request.deployment_environment_id):
+            body['DeploymentEnvironmentId'] = request.deployment_environment_id
+        if not DaraCore.is_null(request.keyword):
+            body['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.object_id):
+            body['ObjectId'] = request.object_id
+        if not DaraCore.is_null(request.object_type):
+            body['ObjectType'] = request.object_type
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCrossProjectDeploymentCandidates',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCrossProjectDeploymentCandidatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_cross_project_deployment_candidates(
+        self,
+        request: main_models.ListCrossProjectDeploymentCandidatesRequest,
+    ) -> main_models.ListCrossProjectDeploymentCandidatesResponse:
+        runtime = RuntimeOptions()
+        return self.list_cross_project_deployment_candidates_with_options(request, runtime)
+
+    async def list_cross_project_deployment_candidates_async(
+        self,
+        request: main_models.ListCrossProjectDeploymentCandidatesRequest,
+    ) -> main_models.ListCrossProjectDeploymentCandidatesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_cross_project_deployment_candidates_with_options_async(request, runtime)
+
+    def list_cross_project_deployment_environments_with_options(
+        self,
+        request: main_models.ListCrossProjectDeploymentEnvironmentsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCrossProjectDeploymentEnvironmentsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCrossProjectDeploymentEnvironments',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCrossProjectDeploymentEnvironmentsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_cross_project_deployment_environments_with_options_async(
+        self,
+        request: main_models.ListCrossProjectDeploymentEnvironmentsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCrossProjectDeploymentEnvironmentsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCrossProjectDeploymentEnvironments',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCrossProjectDeploymentEnvironmentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_cross_project_deployment_environments(
+        self,
+        request: main_models.ListCrossProjectDeploymentEnvironmentsRequest,
+    ) -> main_models.ListCrossProjectDeploymentEnvironmentsResponse:
+        runtime = RuntimeOptions()
+        return self.list_cross_project_deployment_environments_with_options(request, runtime)
+
+    async def list_cross_project_deployment_environments_async(
+        self,
+        request: main_models.ListCrossProjectDeploymentEnvironmentsRequest,
+    ) -> main_models.ListCrossProjectDeploymentEnvironmentsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_cross_project_deployment_environments_with_options_async(request, runtime)
+
+    def list_cross_project_pipeline_run_items_with_options(
+        self,
+        request: main_models.ListCrossProjectPipelineRunItemsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCrossProjectPipelineRunItemsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.pipeline_run_id):
+            body['PipelineRunId'] = request.pipeline_run_id
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCrossProjectPipelineRunItems',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCrossProjectPipelineRunItemsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_cross_project_pipeline_run_items_with_options_async(
+        self,
+        request: main_models.ListCrossProjectPipelineRunItemsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCrossProjectPipelineRunItemsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.pipeline_run_id):
+            body['PipelineRunId'] = request.pipeline_run_id
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCrossProjectPipelineRunItems',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCrossProjectPipelineRunItemsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_cross_project_pipeline_run_items(
+        self,
+        request: main_models.ListCrossProjectPipelineRunItemsRequest,
+    ) -> main_models.ListCrossProjectPipelineRunItemsResponse:
+        runtime = RuntimeOptions()
+        return self.list_cross_project_pipeline_run_items_with_options(request, runtime)
+
+    async def list_cross_project_pipeline_run_items_async(
+        self,
+        request: main_models.ListCrossProjectPipelineRunItemsRequest,
+    ) -> main_models.ListCrossProjectPipelineRunItemsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_cross_project_pipeline_run_items_with_options_async(request, runtime)
+
+    def list_cross_project_pipeline_runs_with_options(
+        self,
+        request: main_models.ListCrossProjectPipelineRunsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCrossProjectPipelineRunsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.create_time_from):
+            body['CreateTimeFrom'] = request.create_time_from
+        if not DaraCore.is_null(request.create_time_to):
+            body['CreateTimeTo'] = request.create_time_to
+        if not DaraCore.is_null(request.creator):
+            body['Creator'] = request.creator
+        if not DaraCore.is_null(request.deployment_environment_id):
+            body['DeploymentEnvironmentId'] = request.deployment_environment_id
+        if not DaraCore.is_null(request.executor):
+            body['Executor'] = request.executor
+        if not DaraCore.is_null(request.object_id):
+            body['ObjectId'] = request.object_id
+        if not DaraCore.is_null(request.object_type):
+            body['ObjectType'] = request.object_type
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCrossProjectPipelineRuns',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCrossProjectPipelineRunsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_cross_project_pipeline_runs_with_options_async(
+        self,
+        request: main_models.ListCrossProjectPipelineRunsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCrossProjectPipelineRunsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.create_time_from):
+            body['CreateTimeFrom'] = request.create_time_from
+        if not DaraCore.is_null(request.create_time_to):
+            body['CreateTimeTo'] = request.create_time_to
+        if not DaraCore.is_null(request.creator):
+            body['Creator'] = request.creator
+        if not DaraCore.is_null(request.deployment_environment_id):
+            body['DeploymentEnvironmentId'] = request.deployment_environment_id
+        if not DaraCore.is_null(request.executor):
+            body['Executor'] = request.executor
+        if not DaraCore.is_null(request.object_id):
+            body['ObjectId'] = request.object_id
+        if not DaraCore.is_null(request.object_type):
+            body['ObjectType'] = request.object_type
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCrossProjectPipelineRuns',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCrossProjectPipelineRunsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_cross_project_pipeline_runs(
+        self,
+        request: main_models.ListCrossProjectPipelineRunsRequest,
+    ) -> main_models.ListCrossProjectPipelineRunsResponse:
+        runtime = RuntimeOptions()
+        return self.list_cross_project_pipeline_runs_with_options(request, runtime)
+
+    async def list_cross_project_pipeline_runs_async(
+        self,
+        request: main_models.ListCrossProjectPipelineRunsRequest,
+    ) -> main_models.ListCrossProjectPipelineRunsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_cross_project_pipeline_runs_with_options_async(request, runtime)
 
     def list_custom_agents_with_options(
         self,
@@ -28684,6 +29528,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.update_compute_resource_with_options_async(request, runtime)
 
+    def update_compute_resource_auth_user_mappings_with_options(
+        self,
+        tmp_req: main_models.UpdateComputeResourceAuthUserMappingsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateComputeResourceAuthUserMappingsResponse:
+        tmp_req.validate()
+        request = main_models.UpdateComputeResourceAuthUserMappingsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.remove_user_ids):
+            request.remove_user_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.remove_user_ids, 'RemoveUserIds', 'json')
+        if not DaraCore.is_null(tmp_req.upserts):
+            request.upserts_shrink = Utils.array_to_string_with_specified_style(tmp_req.upserts, 'Upserts', 'json')
+        body = {}
+        if not DaraCore.is_null(request.compute_resource_id):
+            body['ComputeResourceId'] = request.compute_resource_id
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.remove_user_ids_shrink):
+            body['RemoveUserIds'] = request.remove_user_ids_shrink
+        if not DaraCore.is_null(request.upserts_shrink):
+            body['Upserts'] = request.upserts_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateComputeResourceAuthUserMappings',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateComputeResourceAuthUserMappingsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_compute_resource_auth_user_mappings_with_options_async(
+        self,
+        tmp_req: main_models.UpdateComputeResourceAuthUserMappingsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateComputeResourceAuthUserMappingsResponse:
+        tmp_req.validate()
+        request = main_models.UpdateComputeResourceAuthUserMappingsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.remove_user_ids):
+            request.remove_user_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.remove_user_ids, 'RemoveUserIds', 'json')
+        if not DaraCore.is_null(tmp_req.upserts):
+            request.upserts_shrink = Utils.array_to_string_with_specified_style(tmp_req.upserts, 'Upserts', 'json')
+        body = {}
+        if not DaraCore.is_null(request.compute_resource_id):
+            body['ComputeResourceId'] = request.compute_resource_id
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.remove_user_ids_shrink):
+            body['RemoveUserIds'] = request.remove_user_ids_shrink
+        if not DaraCore.is_null(request.upserts_shrink):
+            body['Upserts'] = request.upserts_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateComputeResourceAuthUserMappings',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateComputeResourceAuthUserMappingsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_compute_resource_auth_user_mappings(
+        self,
+        request: main_models.UpdateComputeResourceAuthUserMappingsRequest,
+    ) -> main_models.UpdateComputeResourceAuthUserMappingsResponse:
+        runtime = RuntimeOptions()
+        return self.update_compute_resource_auth_user_mappings_with_options(request, runtime)
+
+    async def update_compute_resource_auth_user_mappings_async(
+        self,
+        request: main_models.UpdateComputeResourceAuthUserMappingsRequest,
+    ) -> main_models.UpdateComputeResourceAuthUserMappingsResponse:
+        runtime = RuntimeOptions()
+        return await self.update_compute_resource_auth_user_mappings_with_options_async(request, runtime)
+
     def update_crawler_with_options(
         self,
         tmp_req: main_models.UpdateCrawlerRequest,
@@ -32541,6 +33479,184 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateTaskResponse:
         runtime = RuntimeOptions()
         return await self.update_task_with_options_async(request, runtime)
+
+    def update_task_async_with_options(
+        self,
+        tmp_req: main_models.UpdateTaskAsyncRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateTaskAsyncResponse:
+        tmp_req.validate()
+        request = main_models.UpdateTaskAsyncShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.data_source):
+            request.data_source_shrink = Utils.array_to_string_with_specified_style(tmp_req.data_source, 'DataSource', 'json')
+        if not DaraCore.is_null(tmp_req.dependencies):
+            request.dependencies_shrink = Utils.array_to_string_with_specified_style(tmp_req.dependencies, 'Dependencies', 'json')
+        if not DaraCore.is_null(tmp_req.inputs):
+            request.inputs_shrink = Utils.array_to_string_with_specified_style(tmp_req.inputs, 'Inputs', 'json')
+        if not DaraCore.is_null(tmp_req.outputs):
+            request.outputs_shrink = Utils.array_to_string_with_specified_style(tmp_req.outputs, 'Outputs', 'json')
+        if not DaraCore.is_null(tmp_req.runtime_resource):
+            request.runtime_resource_shrink = Utils.array_to_string_with_specified_style(tmp_req.runtime_resource, 'RuntimeResource', 'json')
+        if not DaraCore.is_null(tmp_req.script):
+            request.script_shrink = Utils.array_to_string_with_specified_style(tmp_req.script, 'Script', 'json')
+        if not DaraCore.is_null(tmp_req.tags):
+            request.tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        if not DaraCore.is_null(tmp_req.trigger):
+            request.trigger_shrink = Utils.array_to_string_with_specified_style(tmp_req.trigger, 'Trigger', 'json')
+        body = {}
+        if not DaraCore.is_null(request.client_unique_code):
+            body['ClientUniqueCode'] = request.client_unique_code
+        if not DaraCore.is_null(request.data_source_shrink):
+            body['DataSource'] = request.data_source_shrink
+        if not DaraCore.is_null(request.dependencies_shrink):
+            body['Dependencies'] = request.dependencies_shrink
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.env_type):
+            body['EnvType'] = request.env_type
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.inputs_shrink):
+            body['Inputs'] = request.inputs_shrink
+        if not DaraCore.is_null(request.instance_mode):
+            body['InstanceMode'] = request.instance_mode
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.outputs_shrink):
+            body['Outputs'] = request.outputs_shrink
+        if not DaraCore.is_null(request.owner):
+            body['Owner'] = request.owner
+        if not DaraCore.is_null(request.rerun_interval):
+            body['RerunInterval'] = request.rerun_interval
+        if not DaraCore.is_null(request.rerun_mode):
+            body['RerunMode'] = request.rerun_mode
+        if not DaraCore.is_null(request.rerun_times):
+            body['RerunTimes'] = request.rerun_times
+        if not DaraCore.is_null(request.runtime_resource_shrink):
+            body['RuntimeResource'] = request.runtime_resource_shrink
+        if not DaraCore.is_null(request.script_shrink):
+            body['Script'] = request.script_shrink
+        if not DaraCore.is_null(request.tags_shrink):
+            body['Tags'] = request.tags_shrink
+        if not DaraCore.is_null(request.timeout):
+            body['Timeout'] = request.timeout
+        if not DaraCore.is_null(request.trigger_shrink):
+            body['Trigger'] = request.trigger_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateTaskAsync',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateTaskAsyncResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_task_async_with_options_async(
+        self,
+        tmp_req: main_models.UpdateTaskAsyncRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateTaskAsyncResponse:
+        tmp_req.validate()
+        request = main_models.UpdateTaskAsyncShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.data_source):
+            request.data_source_shrink = Utils.array_to_string_with_specified_style(tmp_req.data_source, 'DataSource', 'json')
+        if not DaraCore.is_null(tmp_req.dependencies):
+            request.dependencies_shrink = Utils.array_to_string_with_specified_style(tmp_req.dependencies, 'Dependencies', 'json')
+        if not DaraCore.is_null(tmp_req.inputs):
+            request.inputs_shrink = Utils.array_to_string_with_specified_style(tmp_req.inputs, 'Inputs', 'json')
+        if not DaraCore.is_null(tmp_req.outputs):
+            request.outputs_shrink = Utils.array_to_string_with_specified_style(tmp_req.outputs, 'Outputs', 'json')
+        if not DaraCore.is_null(tmp_req.runtime_resource):
+            request.runtime_resource_shrink = Utils.array_to_string_with_specified_style(tmp_req.runtime_resource, 'RuntimeResource', 'json')
+        if not DaraCore.is_null(tmp_req.script):
+            request.script_shrink = Utils.array_to_string_with_specified_style(tmp_req.script, 'Script', 'json')
+        if not DaraCore.is_null(tmp_req.tags):
+            request.tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        if not DaraCore.is_null(tmp_req.trigger):
+            request.trigger_shrink = Utils.array_to_string_with_specified_style(tmp_req.trigger, 'Trigger', 'json')
+        body = {}
+        if not DaraCore.is_null(request.client_unique_code):
+            body['ClientUniqueCode'] = request.client_unique_code
+        if not DaraCore.is_null(request.data_source_shrink):
+            body['DataSource'] = request.data_source_shrink
+        if not DaraCore.is_null(request.dependencies_shrink):
+            body['Dependencies'] = request.dependencies_shrink
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.env_type):
+            body['EnvType'] = request.env_type
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.inputs_shrink):
+            body['Inputs'] = request.inputs_shrink
+        if not DaraCore.is_null(request.instance_mode):
+            body['InstanceMode'] = request.instance_mode
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.outputs_shrink):
+            body['Outputs'] = request.outputs_shrink
+        if not DaraCore.is_null(request.owner):
+            body['Owner'] = request.owner
+        if not DaraCore.is_null(request.rerun_interval):
+            body['RerunInterval'] = request.rerun_interval
+        if not DaraCore.is_null(request.rerun_mode):
+            body['RerunMode'] = request.rerun_mode
+        if not DaraCore.is_null(request.rerun_times):
+            body['RerunTimes'] = request.rerun_times
+        if not DaraCore.is_null(request.runtime_resource_shrink):
+            body['RuntimeResource'] = request.runtime_resource_shrink
+        if not DaraCore.is_null(request.script_shrink):
+            body['Script'] = request.script_shrink
+        if not DaraCore.is_null(request.tags_shrink):
+            body['Tags'] = request.tags_shrink
+        if not DaraCore.is_null(request.timeout):
+            body['Timeout'] = request.timeout
+        if not DaraCore.is_null(request.trigger_shrink):
+            body['Trigger'] = request.trigger_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateTaskAsync',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateTaskAsyncResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_task_async(
+        self,
+        request: main_models.UpdateTaskAsyncRequest,
+    ) -> main_models.UpdateTaskAsyncResponse:
+        runtime = RuntimeOptions()
+        return self.update_task_async_with_options(request, runtime)
+
+    async def update_task_async_async(
+        self,
+        request: main_models.UpdateTaskAsyncRequest,
+    ) -> main_models.UpdateTaskAsyncResponse:
+        runtime = RuntimeOptions()
+        return await self.update_task_async_with_options_async(request, runtime)
 
     def update_task_instances_with_options(
         self,

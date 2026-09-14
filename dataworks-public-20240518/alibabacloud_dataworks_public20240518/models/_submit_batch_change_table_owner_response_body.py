@@ -12,8 +12,11 @@ class SubmitBatchChangeTableOwnerResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The submit result of the batch table ownership transfer task.
         self.data = data
+        # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -57,8 +60,11 @@ class SubmitBatchChangeTableOwnerResponseBodyData(DaraModel):
         status: str = None,
         total_count: int = None,
     ):
+        # The batch transfer task ID. You can use this ID to call GetBatchChangeTableOwnerStatus to query the task progress.
         self.batch_id = batch_id
+        # The initial status of the task after submission.
         self.status = status
+        # The total number of tables submitted in this batch.
         self.total_count = total_count
 
     def validate(self):

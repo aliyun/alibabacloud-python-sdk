@@ -27,6 +27,9 @@ from ._partition import Partition
 from ._schema import Schema
 from ._table import Table
 from ._success_info_value import SuccessInfoValue
+from ._abolish_cross_project_pipeline_run_request import AbolishCrossProjectPipelineRunRequest
+from ._abolish_cross_project_pipeline_run_response_body import AbolishCrossProjectPipelineRunResponseBody
+from ._abolish_cross_project_pipeline_run_response import AbolishCrossProjectPipelineRunResponse
 from ._abolish_pipeline_run_request import AbolishPipelineRunRequest
 from ._abolish_pipeline_run_response_body import AbolishPipelineRunResponseBody
 from ._abolish_pipeline_run_response import AbolishPipelineRunResponse
@@ -100,6 +103,10 @@ from ._create_crawler_request import CreateCrawlerRequest
 from ._create_crawler_shrink_request import CreateCrawlerShrinkRequest
 from ._create_crawler_response_body import CreateCrawlerResponseBody
 from ._create_crawler_response import CreateCrawlerResponse
+from ._create_cross_project_pipeline_run_request import CreateCrossProjectPipelineRunRequest
+from ._create_cross_project_pipeline_run_shrink_request import CreateCrossProjectPipelineRunShrinkRequest
+from ._create_cross_project_pipeline_run_response_body import CreateCrossProjectPipelineRunResponseBody
+from ._create_cross_project_pipeline_run_response import CreateCrossProjectPipelineRunResponse
 from ._create_custom_attribute_request import CreateCustomAttributeRequest
 from ._create_custom_attribute_shrink_request import CreateCustomAttributeShrinkRequest
 from ._create_custom_attribute_response_body import CreateCustomAttributeResponseBody
@@ -434,6 +441,9 @@ from ._enable_process_definition_response import EnableProcessDefinitionResponse
 from ._establish_relation_table_to_business_request import EstablishRelationTableToBusinessRequest
 from ._establish_relation_table_to_business_response_body import EstablishRelationTableToBusinessResponseBody
 from ._establish_relation_table_to_business_response import EstablishRelationTableToBusinessResponse
+from ._exec_cross_project_pipeline_run_request import ExecCrossProjectPipelineRunRequest
+from ._exec_cross_project_pipeline_run_response_body import ExecCrossProjectPipelineRunResponseBody
+from ._exec_cross_project_pipeline_run_response import ExecCrossProjectPipelineRunResponse
 from ._exec_pipeline_run_stage_request import ExecPipelineRunStageRequest
 from ._exec_pipeline_run_stage_response_body import ExecPipelineRunStageResponseBody
 from ._exec_pipeline_run_stage_response import ExecPipelineRunStageResponse
@@ -482,6 +492,9 @@ from ._get_component_response import GetComponentResponse
 from ._get_compute_resource_request import GetComputeResourceRequest
 from ._get_compute_resource_response_body import GetComputeResourceResponseBody
 from ._get_compute_resource_response import GetComputeResourceResponse
+from ._get_compute_resource_auth_user_mappings_request import GetComputeResourceAuthUserMappingsRequest
+from ._get_compute_resource_auth_user_mappings_response_body import GetComputeResourceAuthUserMappingsResponseBody
+from ._get_compute_resource_auth_user_mappings_response import GetComputeResourceAuthUserMappingsResponse
 from ._get_crawler_request import GetCrawlerRequest
 from ._get_crawler_response_body import GetCrawlerResponseBody
 from ._get_crawler_response import GetCrawlerResponse
@@ -491,6 +504,9 @@ from ._get_crawler_type_capabilities_response import GetCrawlerTypeCapabilitiesR
 from ._get_create_workflow_instances_result_request import GetCreateWorkflowInstancesResultRequest
 from ._get_create_workflow_instances_result_response_body import GetCreateWorkflowInstancesResultResponseBody
 from ._get_create_workflow_instances_result_response import GetCreateWorkflowInstancesResultResponse
+from ._get_cross_project_pipeline_run_request import GetCrossProjectPipelineRunRequest
+from ._get_cross_project_pipeline_run_response_body import GetCrossProjectPipelineRunResponseBody
+from ._get_cross_project_pipeline_run_response import GetCrossProjectPipelineRunResponse
 from ._get_custom_attribute_request import GetCustomAttributeRequest
 from ._get_custom_attribute_response_body import GetCustomAttributeResponseBody
 from ._get_custom_attribute_response import GetCustomAttributeResponse
@@ -656,6 +672,9 @@ from ._get_task_instance_response import GetTaskInstanceResponse
 from ._get_task_instance_log_request import GetTaskInstanceLogRequest
 from ._get_task_instance_log_response_body import GetTaskInstanceLogResponseBody
 from ._get_task_instance_log_response import GetTaskInstanceLogResponse
+from ._get_update_task_result_request import GetUpdateTaskResultRequest
+from ._get_update_task_result_response_body import GetUpdateTaskResultResponseBody
+from ._get_update_task_result_response import GetUpdateTaskResultResponse
 from ._get_workflow_request import GetWorkflowRequest
 from ._get_workflow_response_body import GetWorkflowResponseBody
 from ._get_workflow_response import GetWorkflowResponse
@@ -724,6 +743,18 @@ from ._list_crawlers_request import ListCrawlersRequest
 from ._list_crawlers_shrink_request import ListCrawlersShrinkRequest
 from ._list_crawlers_response_body import ListCrawlersResponseBody
 from ._list_crawlers_response import ListCrawlersResponse
+from ._list_cross_project_deployment_candidates_request import ListCrossProjectDeploymentCandidatesRequest
+from ._list_cross_project_deployment_candidates_response_body import ListCrossProjectDeploymentCandidatesResponseBody
+from ._list_cross_project_deployment_candidates_response import ListCrossProjectDeploymentCandidatesResponse
+from ._list_cross_project_deployment_environments_request import ListCrossProjectDeploymentEnvironmentsRequest
+from ._list_cross_project_deployment_environments_response_body import ListCrossProjectDeploymentEnvironmentsResponseBody
+from ._list_cross_project_deployment_environments_response import ListCrossProjectDeploymentEnvironmentsResponse
+from ._list_cross_project_pipeline_run_items_request import ListCrossProjectPipelineRunItemsRequest
+from ._list_cross_project_pipeline_run_items_response_body import ListCrossProjectPipelineRunItemsResponseBody
+from ._list_cross_project_pipeline_run_items_response import ListCrossProjectPipelineRunItemsResponse
+from ._list_cross_project_pipeline_runs_request import ListCrossProjectPipelineRunsRequest
+from ._list_cross_project_pipeline_runs_response_body import ListCrossProjectPipelineRunsResponseBody
+from ._list_cross_project_pipeline_runs_response import ListCrossProjectPipelineRunsResponse
 from ._list_custom_agents_request import ListCustomAgentsRequest
 from ._list_custom_agents_shrink_request import ListCustomAgentsShrinkRequest
 from ._list_custom_agents_response_body import ListCustomAgentsResponseBody
@@ -1145,6 +1176,10 @@ from ._update_component_response import UpdateComponentResponse
 from ._update_compute_resource_request import UpdateComputeResourceRequest
 from ._update_compute_resource_response_body import UpdateComputeResourceResponseBody
 from ._update_compute_resource_response import UpdateComputeResourceResponse
+from ._update_compute_resource_auth_user_mappings_request import UpdateComputeResourceAuthUserMappingsRequest
+from ._update_compute_resource_auth_user_mappings_shrink_request import UpdateComputeResourceAuthUserMappingsShrinkRequest
+from ._update_compute_resource_auth_user_mappings_response_body import UpdateComputeResourceAuthUserMappingsResponseBody
+from ._update_compute_resource_auth_user_mappings_response import UpdateComputeResourceAuthUserMappingsResponse
 from ._update_crawler_request import UpdateCrawlerRequest
 from ._update_crawler_shrink_request import UpdateCrawlerShrinkRequest
 from ._update_crawler_response_body import UpdateCrawlerResponseBody
@@ -1277,6 +1312,10 @@ from ._update_task_request import UpdateTaskRequest
 from ._update_task_shrink_request import UpdateTaskShrinkRequest
 from ._update_task_response_body import UpdateTaskResponseBody
 from ._update_task_response import UpdateTaskResponse
+from ._update_task_async_request import UpdateTaskAsyncRequest
+from ._update_task_async_shrink_request import UpdateTaskAsyncShrinkRequest
+from ._update_task_async_response_body import UpdateTaskAsyncResponseBody
+from ._update_task_async_response import UpdateTaskAsyncResponse
 from ._update_task_instances_request import UpdateTaskInstancesRequest
 from ._update_task_instances_shrink_request import UpdateTaskInstancesShrinkRequest
 from ._update_task_instances_response_body import UpdateTaskInstancesResponseBody
@@ -1338,6 +1377,7 @@ from ._table import TableBusinessMetadataTags
 from ._table import TableBusinessMetadataUpstreamTasks
 from ._table import TableBusinessMetadata
 from ._table import TableTechnicalMetadata
+from ._abolish_cross_project_pipeline_run_response_body import AbolishCrossProjectPipelineRunResponseBodyData
 from ._apply_resource_access_permission_request import ApplyResourceAccessPermissionRequestApplyContentsGrantee
 from ._apply_resource_access_permission_request import ApplyResourceAccessPermissionRequestApplyContentsResource
 from ._apply_resource_access_permission_request import ApplyResourceAccessPermissionRequestApplyContents
@@ -1380,6 +1420,7 @@ from ._create_alert_rule_request import CreateAlertRuleRequestTriggerConditionTa
 from ._create_alert_rule_request import CreateAlertRuleRequestTriggerCondition
 from ._create_crawler_request import CreateCrawlerRequestScheduleConfig
 from ._create_crawler_request import CreateCrawlerRequestScope
+from ._create_cross_project_pipeline_run_response_body import CreateCrossProjectPipelineRunResponseBodyData
 from ._create_dialarm_rule_request import CreateDIAlarmRuleRequestNotificationSettingsNotificationChannels
 from ._create_dialarm_rule_request import CreateDIAlarmRuleRequestNotificationSettingsNotificationReceivers
 from ._create_dialarm_rule_request import CreateDIAlarmRuleRequestNotificationSettings
@@ -1478,6 +1519,7 @@ from ._create_workflow_instances_request import CreateWorkflowInstancesRequestTa
 from ._delete_semantic_job_response_body import DeleteSemanticJobResponseBodyData
 from ._download_semantic_results_response_body import DownloadSemanticResultsResponseBodyDataResults
 from ._download_semantic_results_response_body import DownloadSemanticResultsResponseBodyData
+from ._exec_cross_project_pipeline_run_response_body import ExecCrossProjectPipelineRunResponseBodyData
 from ._execute_adhoc_workflow_instance_request import ExecuteAdhocWorkflowInstanceRequestTasksDataSource
 from ._execute_adhoc_workflow_instance_request import ExecuteAdhocWorkflowInstanceRequestTasksDependencies
 from ._execute_adhoc_workflow_instance_request import ExecuteAdhocWorkflowInstanceRequestTasksInputsVariables
@@ -1528,6 +1570,8 @@ from ._get_business_response_body import GetBusinessResponseBodyData
 from ._get_certificate_response_body import GetCertificateResponseBodyCertificate
 from ._get_component_response_body import GetComponentResponseBodyComponent
 from ._get_compute_resource_response_body import GetComputeResourceResponseBodyComputeResource
+from ._get_compute_resource_auth_user_mappings_response_body import GetComputeResourceAuthUserMappingsResponseBodyDataAccounts
+from ._get_compute_resource_auth_user_mappings_response_body import GetComputeResourceAuthUserMappingsResponseBodyData
 from ._get_crawler_response_body import GetCrawlerResponseBodyCrawlerScheduleConfig
 from ._get_crawler_response_body import GetCrawlerResponseBodyCrawlerScope
 from ._get_crawler_response_body import GetCrawlerResponseBodyCrawler
@@ -1535,6 +1579,7 @@ from ._get_crawler_type_capabilities_response_body import GetCrawlerTypeCapabili
 from ._get_crawler_type_capabilities_response_body import GetCrawlerTypeCapabilitiesResponseBodyCrawlerTypesSupportedOptionKeys
 from ._get_crawler_type_capabilities_response_body import GetCrawlerTypeCapabilitiesResponseBodyCrawlerTypes
 from ._get_create_workflow_instances_result_response_body import GetCreateWorkflowInstancesResultResponseBodyResult
+from ._get_cross_project_pipeline_run_response_body import GetCrossProjectPipelineRunResponseBodyData
 from ._get_dijob_response_body import GetDIJobResponseBodyPagingInfoDestinationDataSourceSettings
 from ._get_dijob_response_body import GetDIJobResponseBodyPagingInfoJobSettingsColumnDataTypeSettings
 from ._get_dijob_response_body import GetDIJobResponseBodyPagingInfoJobSettingsCycleScheduleSettings
@@ -1725,6 +1770,7 @@ from ._get_task_instance_response_body import GetTaskInstanceResponseBodyTaskIns
 from ._get_task_instance_response_body import GetTaskInstanceResponseBodyTaskInstanceScript
 from ._get_task_instance_response_body import GetTaskInstanceResponseBodyTaskInstanceTags
 from ._get_task_instance_response_body import GetTaskInstanceResponseBodyTaskInstance
+from ._get_update_task_result_response_body import GetUpdateTaskResultResponseBodyResult
 from ._get_workflow_response_body import GetWorkflowResponseBodyWorkflowDependencies
 from ._get_workflow_response_body import GetWorkflowResponseBodyWorkflowOutputsTaskOutputs
 from ._get_workflow_response_body import GetWorkflowResponseBodyWorkflowOutputs
@@ -1785,6 +1831,14 @@ from ._list_crawler_runs_response_body import ListCrawlerRunsResponseBodyPagingI
 from ._list_crawlers_response_body import ListCrawlersResponseBodyPagingInfoCrawlersScheduleConfig
 from ._list_crawlers_response_body import ListCrawlersResponseBodyPagingInfoCrawlers
 from ._list_crawlers_response_body import ListCrawlersResponseBodyPagingInfo
+from ._list_cross_project_deployment_candidates_response_body import ListCrossProjectDeploymentCandidatesResponseBodyDataDeploymentCandidates
+from ._list_cross_project_deployment_candidates_response_body import ListCrossProjectDeploymentCandidatesResponseBodyData
+from ._list_cross_project_deployment_environments_response_body import ListCrossProjectDeploymentEnvironmentsResponseBodyDataDeploymentEnvironments
+from ._list_cross_project_deployment_environments_response_body import ListCrossProjectDeploymentEnvironmentsResponseBodyData
+from ._list_cross_project_pipeline_run_items_response_body import ListCrossProjectPipelineRunItemsResponseBodyDataPipelineRunItems
+from ._list_cross_project_pipeline_run_items_response_body import ListCrossProjectPipelineRunItemsResponseBodyData
+from ._list_cross_project_pipeline_runs_response_body import ListCrossProjectPipelineRunsResponseBodyDataPipelineRuns
+from ._list_cross_project_pipeline_runs_response_body import ListCrossProjectPipelineRunsResponseBodyData
 from ._list_custom_agents_response_body import ListCustomAgentsResponseBodyPagingInfoAgents
 from ._list_custom_agents_response_body import ListCustomAgentsResponseBodyPagingInfo
 from ._list_custom_attributes_response_body import ListCustomAttributesResponseBodyPagingInfo
@@ -2142,6 +2196,8 @@ from ._update_alert_rule_request import UpdateAlertRuleRequestTriggerConditionEx
 from ._update_alert_rule_request import UpdateAlertRuleRequestTriggerConditionExtension
 from ._update_alert_rule_request import UpdateAlertRuleRequestTriggerConditionTarget
 from ._update_alert_rule_request import UpdateAlertRuleRequestTriggerCondition
+from ._update_compute_resource_auth_user_mappings_request import UpdateComputeResourceAuthUserMappingsRequestUpserts
+from ._update_compute_resource_auth_user_mappings_response_body import UpdateComputeResourceAuthUserMappingsResponseBodyData
 from ._update_crawler_request import UpdateCrawlerRequestScheduleConfig
 from ._update_crawler_request import UpdateCrawlerRequestScope
 from ._update_dialarm_rule_request import UpdateDIAlarmRuleRequestNotificationSettingsNotificationChannels
@@ -2228,6 +2284,17 @@ from ._update_task_request import UpdateTaskRequestRuntimeResource
 from ._update_task_request import UpdateTaskRequestScript
 from ._update_task_request import UpdateTaskRequestTags
 from ._update_task_request import UpdateTaskRequestTrigger
+from ._update_task_async_request import UpdateTaskAsyncRequestDataSource
+from ._update_task_async_request import UpdateTaskAsyncRequestDependencies
+from ._update_task_async_request import UpdateTaskAsyncRequestInputsVariables
+from ._update_task_async_request import UpdateTaskAsyncRequestInputs
+from ._update_task_async_request import UpdateTaskAsyncRequestOutputsTaskOutputs
+from ._update_task_async_request import UpdateTaskAsyncRequestOutputsVariables
+from ._update_task_async_request import UpdateTaskAsyncRequestOutputs
+from ._update_task_async_request import UpdateTaskAsyncRequestRuntimeResource
+from ._update_task_async_request import UpdateTaskAsyncRequestScript
+from ._update_task_async_request import UpdateTaskAsyncRequestTags
+from ._update_task_async_request import UpdateTaskAsyncRequestTrigger
 from ._update_task_instances_request import UpdateTaskInstancesRequestTaskInstancesDataSource
 from ._update_task_instances_request import UpdateTaskInstancesRequestTaskInstances
 from ._update_workflow_request import UpdateWorkflowRequestDependencies
@@ -2275,6 +2342,9 @@ __all__ = [
     Schema,
     Table,
     SuccessInfoValue,
+    AbolishCrossProjectPipelineRunRequest,
+    AbolishCrossProjectPipelineRunResponseBody,
+    AbolishCrossProjectPipelineRunResponse,
     AbolishPipelineRunRequest,
     AbolishPipelineRunResponseBody,
     AbolishPipelineRunResponse,
@@ -2348,6 +2418,10 @@ __all__ = [
     CreateCrawlerShrinkRequest,
     CreateCrawlerResponseBody,
     CreateCrawlerResponse,
+    CreateCrossProjectPipelineRunRequest,
+    CreateCrossProjectPipelineRunShrinkRequest,
+    CreateCrossProjectPipelineRunResponseBody,
+    CreateCrossProjectPipelineRunResponse,
     CreateCustomAttributeRequest,
     CreateCustomAttributeShrinkRequest,
     CreateCustomAttributeResponseBody,
@@ -2682,6 +2756,9 @@ __all__ = [
     EstablishRelationTableToBusinessRequest,
     EstablishRelationTableToBusinessResponseBody,
     EstablishRelationTableToBusinessResponse,
+    ExecCrossProjectPipelineRunRequest,
+    ExecCrossProjectPipelineRunResponseBody,
+    ExecCrossProjectPipelineRunResponse,
     ExecPipelineRunStageRequest,
     ExecPipelineRunStageResponseBody,
     ExecPipelineRunStageResponse,
@@ -2730,6 +2807,9 @@ __all__ = [
     GetComputeResourceRequest,
     GetComputeResourceResponseBody,
     GetComputeResourceResponse,
+    GetComputeResourceAuthUserMappingsRequest,
+    GetComputeResourceAuthUserMappingsResponseBody,
+    GetComputeResourceAuthUserMappingsResponse,
     GetCrawlerRequest,
     GetCrawlerResponseBody,
     GetCrawlerResponse,
@@ -2739,6 +2819,9 @@ __all__ = [
     GetCreateWorkflowInstancesResultRequest,
     GetCreateWorkflowInstancesResultResponseBody,
     GetCreateWorkflowInstancesResultResponse,
+    GetCrossProjectPipelineRunRequest,
+    GetCrossProjectPipelineRunResponseBody,
+    GetCrossProjectPipelineRunResponse,
     GetCustomAttributeRequest,
     GetCustomAttributeResponseBody,
     GetCustomAttributeResponse,
@@ -2904,6 +2987,9 @@ __all__ = [
     GetTaskInstanceLogRequest,
     GetTaskInstanceLogResponseBody,
     GetTaskInstanceLogResponse,
+    GetUpdateTaskResultRequest,
+    GetUpdateTaskResultResponseBody,
+    GetUpdateTaskResultResponse,
     GetWorkflowRequest,
     GetWorkflowResponseBody,
     GetWorkflowResponse,
@@ -2972,6 +3058,18 @@ __all__ = [
     ListCrawlersShrinkRequest,
     ListCrawlersResponseBody,
     ListCrawlersResponse,
+    ListCrossProjectDeploymentCandidatesRequest,
+    ListCrossProjectDeploymentCandidatesResponseBody,
+    ListCrossProjectDeploymentCandidatesResponse,
+    ListCrossProjectDeploymentEnvironmentsRequest,
+    ListCrossProjectDeploymentEnvironmentsResponseBody,
+    ListCrossProjectDeploymentEnvironmentsResponse,
+    ListCrossProjectPipelineRunItemsRequest,
+    ListCrossProjectPipelineRunItemsResponseBody,
+    ListCrossProjectPipelineRunItemsResponse,
+    ListCrossProjectPipelineRunsRequest,
+    ListCrossProjectPipelineRunsResponseBody,
+    ListCrossProjectPipelineRunsResponse,
     ListCustomAgentsRequest,
     ListCustomAgentsShrinkRequest,
     ListCustomAgentsResponseBody,
@@ -3393,6 +3491,10 @@ __all__ = [
     UpdateComputeResourceRequest,
     UpdateComputeResourceResponseBody,
     UpdateComputeResourceResponse,
+    UpdateComputeResourceAuthUserMappingsRequest,
+    UpdateComputeResourceAuthUserMappingsShrinkRequest,
+    UpdateComputeResourceAuthUserMappingsResponseBody,
+    UpdateComputeResourceAuthUserMappingsResponse,
     UpdateCrawlerRequest,
     UpdateCrawlerShrinkRequest,
     UpdateCrawlerResponseBody,
@@ -3525,6 +3627,10 @@ __all__ = [
     UpdateTaskShrinkRequest,
     UpdateTaskResponseBody,
     UpdateTaskResponse,
+    UpdateTaskAsyncRequest,
+    UpdateTaskAsyncShrinkRequest,
+    UpdateTaskAsyncResponseBody,
+    UpdateTaskAsyncResponse,
     UpdateTaskInstancesRequest,
     UpdateTaskInstancesShrinkRequest,
     UpdateTaskInstancesResponseBody,
@@ -3586,6 +3692,7 @@ __all__ = [
     TableBusinessMetadataUpstreamTasks,
     TableBusinessMetadata,
     TableTechnicalMetadata,
+    AbolishCrossProjectPipelineRunResponseBodyData,
     ApplyResourceAccessPermissionRequestApplyContentsGrantee,
     ApplyResourceAccessPermissionRequestApplyContentsResource,
     ApplyResourceAccessPermissionRequestApplyContents,
@@ -3628,6 +3735,7 @@ __all__ = [
     CreateAlertRuleRequestTriggerCondition,
     CreateCrawlerRequestScheduleConfig,
     CreateCrawlerRequestScope,
+    CreateCrossProjectPipelineRunResponseBodyData,
     CreateDIAlarmRuleRequestNotificationSettingsNotificationChannels,
     CreateDIAlarmRuleRequestNotificationSettingsNotificationReceivers,
     CreateDIAlarmRuleRequestNotificationSettings,
@@ -3726,6 +3834,7 @@ __all__ = [
     DeleteSemanticJobResponseBodyData,
     DownloadSemanticResultsResponseBodyDataResults,
     DownloadSemanticResultsResponseBodyData,
+    ExecCrossProjectPipelineRunResponseBodyData,
     ExecuteAdhocWorkflowInstanceRequestTasksDataSource,
     ExecuteAdhocWorkflowInstanceRequestTasksDependencies,
     ExecuteAdhocWorkflowInstanceRequestTasksInputsVariables,
@@ -3776,6 +3885,8 @@ __all__ = [
     GetCertificateResponseBodyCertificate,
     GetComponentResponseBodyComponent,
     GetComputeResourceResponseBodyComputeResource,
+    GetComputeResourceAuthUserMappingsResponseBodyDataAccounts,
+    GetComputeResourceAuthUserMappingsResponseBodyData,
     GetCrawlerResponseBodyCrawlerScheduleConfig,
     GetCrawlerResponseBodyCrawlerScope,
     GetCrawlerResponseBodyCrawler,
@@ -3783,6 +3894,7 @@ __all__ = [
     GetCrawlerTypeCapabilitiesResponseBodyCrawlerTypesSupportedOptionKeys,
     GetCrawlerTypeCapabilitiesResponseBodyCrawlerTypes,
     GetCreateWorkflowInstancesResultResponseBodyResult,
+    GetCrossProjectPipelineRunResponseBodyData,
     GetDIJobResponseBodyPagingInfoDestinationDataSourceSettings,
     GetDIJobResponseBodyPagingInfoJobSettingsColumnDataTypeSettings,
     GetDIJobResponseBodyPagingInfoJobSettingsCycleScheduleSettings,
@@ -3973,6 +4085,7 @@ __all__ = [
     GetTaskInstanceResponseBodyTaskInstanceScript,
     GetTaskInstanceResponseBodyTaskInstanceTags,
     GetTaskInstanceResponseBodyTaskInstance,
+    GetUpdateTaskResultResponseBodyResult,
     GetWorkflowResponseBodyWorkflowDependencies,
     GetWorkflowResponseBodyWorkflowOutputsTaskOutputs,
     GetWorkflowResponseBodyWorkflowOutputs,
@@ -4033,6 +4146,14 @@ __all__ = [
     ListCrawlersResponseBodyPagingInfoCrawlersScheduleConfig,
     ListCrawlersResponseBodyPagingInfoCrawlers,
     ListCrawlersResponseBodyPagingInfo,
+    ListCrossProjectDeploymentCandidatesResponseBodyDataDeploymentCandidates,
+    ListCrossProjectDeploymentCandidatesResponseBodyData,
+    ListCrossProjectDeploymentEnvironmentsResponseBodyDataDeploymentEnvironments,
+    ListCrossProjectDeploymentEnvironmentsResponseBodyData,
+    ListCrossProjectPipelineRunItemsResponseBodyDataPipelineRunItems,
+    ListCrossProjectPipelineRunItemsResponseBodyData,
+    ListCrossProjectPipelineRunsResponseBodyDataPipelineRuns,
+    ListCrossProjectPipelineRunsResponseBodyData,
     ListCustomAgentsResponseBodyPagingInfoAgents,
     ListCustomAgentsResponseBodyPagingInfo,
     ListCustomAttributesResponseBodyPagingInfo,
@@ -4390,6 +4511,8 @@ __all__ = [
     UpdateAlertRuleRequestTriggerConditionExtension,
     UpdateAlertRuleRequestTriggerConditionTarget,
     UpdateAlertRuleRequestTriggerCondition,
+    UpdateComputeResourceAuthUserMappingsRequestUpserts,
+    UpdateComputeResourceAuthUserMappingsResponseBodyData,
     UpdateCrawlerRequestScheduleConfig,
     UpdateCrawlerRequestScope,
     UpdateDIAlarmRuleRequestNotificationSettingsNotificationChannels,
@@ -4476,6 +4599,17 @@ __all__ = [
     UpdateTaskRequestScript,
     UpdateTaskRequestTags,
     UpdateTaskRequestTrigger,
+    UpdateTaskAsyncRequestDataSource,
+    UpdateTaskAsyncRequestDependencies,
+    UpdateTaskAsyncRequestInputsVariables,
+    UpdateTaskAsyncRequestInputs,
+    UpdateTaskAsyncRequestOutputsTaskOutputs,
+    UpdateTaskAsyncRequestOutputsVariables,
+    UpdateTaskAsyncRequestOutputs,
+    UpdateTaskAsyncRequestRuntimeResource,
+    UpdateTaskAsyncRequestScript,
+    UpdateTaskAsyncRequestTags,
+    UpdateTaskAsyncRequestTrigger,
     UpdateTaskInstancesRequestTaskInstancesDataSource,
     UpdateTaskInstancesRequestTaskInstances,
     UpdateWorkflowRequestDependencies,

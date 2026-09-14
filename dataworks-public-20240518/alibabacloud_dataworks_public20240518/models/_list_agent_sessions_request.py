@@ -14,11 +14,11 @@ class ListAgentSessionsRequest(DaraModel):
         jsonrpc: str = None,
         params: main_models.ListAgentSessionsRequestParams = None,
     ):
-        # The ID provided by the caller. The value is returned as-is.
+        # The ID passed in by the requester. The value is returned as-is.
         self.id = id
-        # The JSON-RPC version. The value must be `2.0`.
+        # The JSON-RPC version. Fixed value: 2.0.
         self.jsonrpc = jsonrpc
-        # Business parameters.
+        # The business parameters.
         self.params = params
 
     def validate(self):
@@ -66,19 +66,19 @@ class ListAgentSessionsRequestParams(DaraModel):
         session_title: str = None,
         tag_list: List[str] = None,
     ):
-        # Filters sessions by the **agent name**. You must specify at least one of this parameter and `SessionSourceList`.
+        # **Agent name** for exact filtering. At least one of this parameter and `SessionSourceList` must be specified.
         self.agent_name = agent_name
-        # The maximum number of results to return per page. Default value: 50.
+        # The number of entries per page. Default value: 50.
         self.max_results = max_results
-        # The token for the next page of results. Set this parameter to `1` to retrieve the first page of results.
+        # The token for the next page. Set this parameter to 1 for the first page.
         self.next_token = next_token
-        # Filters sessions by session ID.
+        # The session ID for exact matching.
         self.session_id = session_id
-        # Filters sessions by the **list of session sources**. You must specify at least one of this parameter and `AgentName`.
+        # **Session source list** for filtering. At least one of this parameter and `AgentName` must be specified.
         self.session_source_list = session_source_list
-        # Filters sessions by session title using a fuzzy match.
+        # The session title for fuzzy match filtering.
         self.session_title = session_title
-        # Filters sessions by a list of session tag codes.
+        # The list of session tag codes for filtering.
         self.tag_list = tag_list
 
     def validate(self):

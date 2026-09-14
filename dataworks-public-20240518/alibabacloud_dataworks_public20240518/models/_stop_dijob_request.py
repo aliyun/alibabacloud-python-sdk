@@ -11,11 +11,11 @@ class StopDIJobRequest(DaraModel):
         id: int = None,
         instance_id: int = None,
     ):
-        # This parameter is deprecated and is replaced by the Id parameter.
+        # **[Deprecated]** This parameter is deprecated. Use the Id parameter instead.
         self.dijob_id = dijob_id
-        # The ID of the synchronization task.
+        # The ID of the sync task.
         self.id = id
-        # The instance ID.
+        # The ID of the instance.
         self.instance_id = instance_id
 
     def validate(self):

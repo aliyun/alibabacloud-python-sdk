@@ -13,9 +13,9 @@ class GetDataQualityRuleResponseBody(DaraModel):
         data_quality_rule: main_models.GetDataQualityRuleResponseBodyDataQualityRule = None,
         request_id: str = None,
     ):
-        # The details of the rule.
+        # The rule details.
         self.data_quality_rule = data_quality_rule
-        # The request ID.
+        # The API request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -63,21 +63,21 @@ class GetDataQualityRuleResponseBodyDataQualityRule(DaraModel):
     ):
         # The sample check settings.
         self.checking_config = checking_config
-        # The description of the rule. The maximum length is 500 characters.
+        # The rule description. The description can be up to 500 characters in length.
         self.description = description
-        # Specifies whether the rule is enabled.
+        # Indicates whether the rule is enabled.
         self.enabled = enabled
-        # The list of issue handlers for quality rule checks.
+        # The list of quality rule check error handlers.
         self.error_handlers = error_handlers
         # The rule ID.
         self.id = id
-        # The name of the rule.
+        # The rule name.
         self.name = name
         # The DataWorks workspace ID.
         self.project_id = project_id
         # The settings required for sample collection.
         self.sampling_config = sampling_config
-        # The severity of the rule for the business (corresponds to strong/weak rules on the page). Valid values:
+        # The severity level of the rule for business (corresponding to strong and weak rules on the page). Valid values:
         # - Normal
         # - High
         self.severity = severity
@@ -191,7 +191,7 @@ class GetDataQualityRuleResponseBodyDataQualityRuleTarget(DaraModel):
         table_guid: str = None,
         type: str = None,
     ):
-        # For a Table-type dataset, the type of database to which the table belongs.
+        # The database type of the table for a table-type dataset. Valid values:
         # - maxcompute
         # - emr
         # - cdh
@@ -202,9 +202,9 @@ class GetDataQualityRuleResponseBodyDataQualityRuleTarget(DaraModel):
         self.database_type = database_type
         # The partition settings of the partitioned table.
         self.partition_spec = partition_spec
-        # The unique ID of the table on which the rule takes effect in Data Map.
+        # The unique ID of the table in Data Map that the rule applies to.
         self.table_guid = table_guid
-        # The type of the monitored object.
+        # The monitored object type. Valid values:
         # 
         # - Table
         self.type = type
@@ -255,28 +255,28 @@ class GetDataQualityRuleResponseBodyDataQualityRuleSamplingConfig(DaraModel):
         sampling_filter: str = None,
         setting_config: str = None,
     ):
-        # The name of the sampling metric:
-        # - Count: the number of table rows
-        # - Min: the minimum value of the field
-        # - Max: the maximum value of the field
-        # - Avg: the average value of the field
-        # - DistinctCount: the number of distinct values of the field
-        # - DistinctPercent: the ratio of the number of distinct values of the field to the number of data rows
-        # - DuplicatedCount: the number of duplicate values of the field
-        # - DuplicatedPercent: the ratio of the number of duplicate values of the field to the number of data rows
-        # - TableSize: the size of the table
-        # - NullValueCount: the number of rows in which the field is null
-        # - NullValuePercent: the proportion of rows in which the field is null
-        # - GroupCount: the number of data rows corresponding to each value after aggregation by field value
-        # - CountNotIn: the number of rows in which the enum value does not match
-        # - CountDistinctNotIn: the number of distinct values in which the enum value does not match
-        # - UserDefinedSql: performs sample collection by using a custom SQL statement
+        # The name of the sampling metric. Valid values:
+        # - Count: the number of table rows.
+        # - Min: the minimum value of a field.
+        # - Max: the maximum value of a field.
+        # - Avg: the average value of a field.
+        # - DistinctCount: the number of unique values of a field.
+        # - DistinctPercent: the ratio of the number of unique values of a field to the number of data rows.
+        # - DuplicatedCount: the number of duplicate values of a field.
+        # - DuplicatedPercent: the ratio of the number of duplicate values of a field to the number of data rows.
+        # - TableSize: the table size.
+        # - NullValueCount: the number of rows in which the field is null.
+        # - NullValuePercent: the ratio of rows in which the field is null.
+        # - GroupCount: the number of data rows for each value after aggregation by field value.
+        # - CountNotIn: the number of rows with mismatched enumeration values.
+        # - CountDistinctNotIn: the number of unique values with mismatched enumeration values.
+        # - UserDefinedSql: sample collection through custom SQL.
         self.metric = metric
         # The parameters required for sample collection.
         self.metric_parameters = metric_parameters
-        # The condition used to perform secondary filtering on data that you do not focus on during sampling. The maximum length is 16,777,215 characters.
+        # The filter condition used to perform secondary filtering on irrelevant data during sampling. The value can be up to 16,777,215 characters in length.
         self.sampling_filter = sampling_filter
-        # The runtime parameter setting statements that are inserted and executed before the specific sampling statement is executed. The maximum length is 1,000 characters. Currently, only MaxCompute is supported.
+        # The runtime parameter setting statements that are executed before the sampling statement. The value can be up to 1,000 characters in length. Only MaxCompute is supported.
         self.setting_config = setting_config
 
     def validate(self):
@@ -323,9 +323,9 @@ class GetDataQualityRuleResponseBodyDataQualityRuleErrorHandlers(DaraModel):
         error_data_filter: str = None,
         type: str = None,
     ):
-        # If the rule is a custom SQL rule, you must specify an SQL statement to filter the problem data.
+        # The SQL statement specified by the user to filter error data. This is required for custom SQL rules.
         self.error_data_filter = error_data_filter
-        # The handler type:
+        # The handler type. Valid values:
         # - SaveErrorData
         self.type = type
 
@@ -362,11 +362,11 @@ class GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfig(DaraModel):
         thresholds: main_models.GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholds = None,
         type: str = None,
     ):
-        # Some types of thresholds require querying reference samples and then aggregating the values of the reference samples to derive the threshold used for comparison. An expression is used here to indicate the way in which the reference samples are queried.
+        # Some types of thresholds require querying reference samples and then aggregating the values of the reference samples to derive the threshold for comparison. This field uses an expression to specify how to query the reference samples.
         self.referenced_samples_filter = referenced_samples_filter
         # The threshold settings.
         self.thresholds = thresholds
-        # The threshold calculation method:
+        # The threshold calculation method. Valid values:
         # - Fixed
         # - Fluctation
         # - FluctationDiscreate
@@ -472,7 +472,7 @@ class GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsWarne
     ):
         # The threshold expression.
         self.expression = expression
-        # The comparison operator:
+        # The comparison operator. Valid values:
         # - \\>
         # - \\>=
         # - <
@@ -524,7 +524,7 @@ class GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsExpec
     ):
         # The threshold expression.
         self.expression = expression
-        # The comparison operator:
+        # The comparison operator. Valid values:
         # - \\>
         # - \\>=
         # - <
@@ -576,7 +576,7 @@ class GetDataQualityRuleResponseBodyDataQualityRuleCheckingConfigThresholdsCriti
     ):
         # The threshold expression.
         self.expression = expression
-        # The comparison operator:
+        # The comparison operator. Valid values:
         # - \\>
         # - \\>=
         # - <

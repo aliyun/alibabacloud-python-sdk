@@ -51,11 +51,11 @@ class CreateAgentResponseBodyAgent(DaraModel):
         gmt_modified_time: str = None,
         name: str = None,
     ):
-        # The creation time, in milliseconds (UNIX timestamp).
+        # The creation time, in millisecond-precision UNIX timestamp.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_create_time = gmt_create_time
-        # The last modification time, in milliseconds (UNIX timestamp).
+        # The last modification time, in millisecond-precision UNIX timestamp.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_modified_time = gmt_modified_time

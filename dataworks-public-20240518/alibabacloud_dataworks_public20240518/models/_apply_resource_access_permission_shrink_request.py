@@ -11,13 +11,13 @@ class ApplyResourceAccessPermissionShrinkRequest(DaraModel):
         client_token: str = None,
         reason: str = None,
     ):
-        # The list of resource permission application contents.
+        # The list of resource permission request entries.
         # 
         # This parameter is required.
         self.apply_contents_shrink = apply_contents_shrink
-        # The idempotency parameter. Used to prevent duplicate operations caused by multiple calls.
+        # The idempotency token. Used to prevent duplicate operations caused by multiple calls.
         self.client_token = client_token
-        # The reason for the application.
+        # The reason for the request.
         # 
         # This parameter is required.
         self.reason = reason

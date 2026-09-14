@@ -11,11 +11,11 @@ class CreateDataQualityTemplateRequest(DaraModel):
         project_id: int = None,
         spec: str = None,
     ):
-        # The owner ID.
+        # The ID of the owner.
         self.owner = owner
         # The project ID.
         self.project_id = project_id
-        # Detailed configuration Spec code of the rule template. For more information, see [Data quality Spec configuration description](~2963394~).
+        # The Spec code for the detailed configuration of the rule template. For more information, see [Data quality Spec configuration](https://help.aliyun.com/document_detail/2963394.html).
         self.spec = spec
 
     def validate(self):

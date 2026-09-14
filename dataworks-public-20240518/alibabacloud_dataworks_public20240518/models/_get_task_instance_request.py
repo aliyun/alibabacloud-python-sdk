@@ -9,7 +9,7 @@ class GetTaskInstanceRequest(DaraModel):
         self,
         id: int = None,
     ):
-        # The instance ID.
+        # The unique identifier of the task instance.
         # 
         # This parameter is required.
         self.id = id

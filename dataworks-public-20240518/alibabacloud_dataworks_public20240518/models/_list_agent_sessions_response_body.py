@@ -15,7 +15,7 @@ class ListAgentSessionsResponseBody(DaraModel):
     ):
         # The JSON-RPC response.
         self.json_rpc_response = json_rpc_response
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -53,11 +53,11 @@ class ListAgentSessionsResponseBodyJsonRpcResponse(DaraModel):
         jsonrpc: str = None,
         result: main_models.ListAgentSessionsResponseBodyJsonRpcResponseResult = None,
     ):
-        # The ID provided in the request. This value is returned unmodified.
+        # The ID passed in by the requester. The value is returned as-is.
         self.id = id
-        # The JSON-RPC version. The value is always `2.0`.
+        # The JSON-RPC version. Fixed value: 2.0.
         self.jsonrpc = jsonrpc
-        # The paginated results of the session query.
+        # The paginated result set of the session query.
         self.result = result
 
     def validate(self):
@@ -102,13 +102,13 @@ class ListAgentSessionsResponseBodyJsonRpcResponseResult(DaraModel):
         next_token: str = None,
         total_count: int = None,
     ):
-        # A list of sessions.
+        # The session list.
         self.agent_sessions = agent_sessions
-        # The number of entries returned on the current page.
+        # The actual number of entries per page.
         self.max_results = max_results
-        # The token to retrieve the next page of results. To retrieve the first page, use the value `1`.
+        # The token for the next page. Set this parameter to 1 for the first page.
         self.next_token = next_token
-        # The total number of sessions that match the query.
+        # The total number of matched sessions.
         self.total_count = total_count
 
     def validate(self):
@@ -167,17 +167,17 @@ class ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessions(DaraModel)
         session_title: str = None,
         session_updated_at: int = None,
     ):
-        # DataWorks-specific session metadata. This field is not part of the standard ACP protocol.
+        # The extended session information from DataWorks, which is not part of the ACP standard protocol.
         self.meta = meta
-        # The time the session was created.
+        # The time when the session was created.
         self.session_created_at = session_created_at
         # The session description.
         self.session_description = session_description
-        # The unique session ID.
+        # The unique ID of the session.
         self.session_id = session_id
         # The session title.
         self.session_title = session_title
-        # The time the session was last modified.
+        # The time when the session was last modified.
         self.session_updated_at = session_updated_at
 
     def validate(self):
@@ -239,11 +239,11 @@ class ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMeta(DaraMo
         session_status: str = None,
         session_tag_list: List[main_models.ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMetaSessionTagList] = None,
     ):
-        # The source of the session.
+        # The session source.
         self.session_source = session_source
-        # The session status.
+        # The session connection status.
         self.session_status = session_status
-        # A list of session tags.
+        # The list of session tags.
         self.session_tag_list = session_tag_list
 
     def validate(self):
@@ -291,7 +291,7 @@ class ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMetaSession
         self,
         session_tag_code: str = None,
     ):
-        # A tag for the session, which can be used for filtering. For example, if your application has its own user accounts but calls the API through a single service account, you can pass your application\\"s user ID as a tag. This allows you to filter sessions by your internal users.
+        # The session tag. You can filter sessions based on session tags. For example, if you use a fixed RAM user to call OpenAPI but the calling system has its own account system, you can filter the session list based on an account ID. In this case, set this parameter to the account ID of the calling system.
         self.session_tag_code = session_tag_code
 
     def validate(self):

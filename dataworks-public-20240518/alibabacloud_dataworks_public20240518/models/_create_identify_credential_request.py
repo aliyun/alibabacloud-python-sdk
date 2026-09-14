@@ -10,7 +10,7 @@ class CreateIdentifyCredentialRequest(DaraModel):
         self,
         identify_credential: main_models.IdentifyCredential = None,
     ):
-        # The user credential object.
+        # The user identity credential object.
         self.identify_credential = identify_credential
 
     def validate(self):

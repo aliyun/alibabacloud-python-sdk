@@ -12,7 +12,7 @@ class DeleteDatasetVersionResponseBody(DaraModel):
     ):
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the deletion succeeded.
+        # Indicates whether the dataset version is deleted.
         self.success = success
 
     def validate(self):

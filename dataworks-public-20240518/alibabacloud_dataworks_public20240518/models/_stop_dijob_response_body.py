@@ -10,13 +10,12 @@ class StopDIJobResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The request ID. You can use the ID to query logs and troubleshoot issues.
+        # The request ID. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # - true
-        # 
-        # - false
+        # - True: The request was successful.
+        # - False: The request failed.
         self.success = success
 
     def validate(self):

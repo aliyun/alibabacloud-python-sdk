@@ -41,7 +41,7 @@ class CreateAgentShrinkRequest(DaraModel):
         self.tools_shrink = tools_shrink
         # The visibility level.<br>
         # `TENANT`: Visible within the account.<br>
-        # `PROJECT`: Visible to specified projects.<br>
+        # `PROJECT`: Visible to a specified project.<br>
         # `USER`: Visible to specified users.
         self.visibility = visibility
         # The visibility scope. The corresponding field is determined by the Visibility parameter.

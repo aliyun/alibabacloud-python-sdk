@@ -10,9 +10,9 @@ class GetDataQualityScanRunLogRequest(DaraModel):
         id: int = None,
         offset: int = None,
     ):
-        # The ID of the data quality monitor run record.
+        # The ID of the data quality monitoring run record.
         self.id = id
-        # The starting position of the log, in bytes, relative to the beginning of the file. Each query returns a maximum of 512 KB of content.
+        # The start position of the log, which is the offset relative to the beginning of the file. Unit: bytes. Each query returns a maximum of 512 KB of content.
         self.offset = offset
 
     def validate(self):

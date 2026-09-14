@@ -9,7 +9,7 @@ class CreateIdentifyCredentialShrinkRequest(DaraModel):
         self,
         identify_credential_shrink: str = None,
     ):
-        # The user credential object.
+        # The user identity credential object.
         self.identify_credential_shrink = identify_credential_shrink
 
     def validate(self):

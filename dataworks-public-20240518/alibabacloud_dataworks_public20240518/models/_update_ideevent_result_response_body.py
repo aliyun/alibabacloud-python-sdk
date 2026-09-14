@@ -9,7 +9,7 @@ class UpdateIDEEventResultResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # The request ID. Used for troubleshooting errors.
+        # The unique ID of the request, which is used for subsequent error troubleshooting.
         self.request_id = request_id
 
     def validate(self):

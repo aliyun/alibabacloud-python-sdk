@@ -10,9 +10,9 @@ class CreateDataQualityTemplateResponseBody(DaraModel):
         id: str = None,
         request_id: str = None,
     ):
-        # The unique identifier of the newly created rule template.
+        # The unique identifier of the created rule template.
         self.id = id
-        # The API request ID, which is generated as a UUID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

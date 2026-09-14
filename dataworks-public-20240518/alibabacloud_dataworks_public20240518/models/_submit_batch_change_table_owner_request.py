@@ -13,9 +13,14 @@ class SubmitBatchChangeTableOwnerRequest(DaraModel):
         owner: str = None,
         table_meta_entity_ids: List[str] = None,
     ):
+        # Specifies whether to allow transferring ownership to an owner in a different tenant. Default value: false.
         self.enable_cross_tenant = enable_cross_tenant
+        # The target owner after the transfer. Use the Alibaba Cloud UID.
+        # 
         # This parameter is required.
         self.owner = owner
+        # The list of MaxCompute table metadata entity IDs to transfer. A maximum of 100 tables are allowed per request. Duplicate values are not allowed.
+        # 
         # This parameter is required.
         self.table_meta_entity_ids = table_meta_entity_ids
 

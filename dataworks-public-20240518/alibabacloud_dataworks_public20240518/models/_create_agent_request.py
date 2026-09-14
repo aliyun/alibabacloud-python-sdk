@@ -44,7 +44,7 @@ class CreateAgentRequest(DaraModel):
         self.tools = tools
         # The visibility level.<br>
         # `TENANT`: Visible within the account.<br>
-        # `PROJECT`: Visible to specified projects.<br>
+        # `PROJECT`: Visible to a specified project.<br>
         # `USER`: Visible to specified users.
         self.visibility = visibility
         # The visibility scope. The corresponding field is determined by the Visibility parameter.
@@ -165,9 +165,9 @@ class CreateAgentRequestVisibilityScope(DaraModel):
         project_ids: List[str] = None,
         user_ids: List[str] = None,
     ):
-        # The list of project IDs that have visibility. This parameter takes effect when Visibility is set to `PROJECT`.
+        # The list of project IDs to which the Agent is visible. This parameter takes effect only when Visibility is set to `PROJECT`.
         self.project_ids = project_ids
-        # The list of user IDs that have visibility. This parameter takes effect when Visibility is set to `USER`.
+        # The list of user IDs to which the Agent is visible. This parameter takes effect only when Visibility is set to `USER`.
         self.user_ids = user_ids
 
     def validate(self):

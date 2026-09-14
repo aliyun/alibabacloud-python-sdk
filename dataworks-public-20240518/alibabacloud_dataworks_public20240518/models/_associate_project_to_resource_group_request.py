@@ -10,7 +10,7 @@ class AssociateProjectToResourceGroupRequest(DaraModel):
         project_id: int = None,
         resource_group_id: str = None,
     ):
-        # The ID of the workspace to associate.
+        # The ID of the workspace to associate with the resource group.
         # 
         # This parameter is required.
         self.project_id = project_id
