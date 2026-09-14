@@ -1,3 +1,7 @@
+2026-09-14 Version: 1.6.0
+- Support API GetRecording.
+
+
 2026-08-17 Version: 1.4.1
 - Update API AppendCases: add response parameters Body.Data.
 

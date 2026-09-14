@@ -21,9 +21,6 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'cn-shanghai': 'outboundbot.cn-shanghai.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('outboundbot', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -1591,6 +1588,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.disable_subscription_with_options_async(request, runtime)
 
+    def get_call_detail_record_with_options(
+        self,
+        request: main_models.GetCallDetailRecordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCallDetailRecordResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCallDetailRecord',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCallDetailRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_call_detail_record_with_options_async(
+        self,
+        request: main_models.GetCallDetailRecordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCallDetailRecordResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCallDetailRecord',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCallDetailRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_call_detail_record(
+        self,
+        request: main_models.GetCallDetailRecordRequest,
+    ) -> main_models.GetCallDetailRecordResponse:
+        runtime = RuntimeOptions()
+        return self.get_call_detail_record_with_options(request, runtime)
+
+    async def get_call_detail_record_async(
+        self,
+        request: main_models.GetCallDetailRecordRequest,
+    ) -> main_models.GetCallDetailRecordResponse:
+        runtime = RuntimeOptions()
+        return await self.get_call_detail_record_with_options_async(request, runtime)
+
     def get_campaign_with_options(
         self,
         request: main_models.GetCampaignRequest,
@@ -1665,6 +1740,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_campaign_with_options_async(request, runtime)
 
+    def get_case_detail_with_options(
+        self,
+        request: main_models.GetCaseDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCaseDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.case_id):
+            query['CaseId'] = request.case_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.product_code):
+            query['ProductCode'] = request.product_code
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCaseDetail',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCaseDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_case_detail_with_options_async(
+        self,
+        request: main_models.GetCaseDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCaseDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.case_id):
+            query['CaseId'] = request.case_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.product_code):
+            query['ProductCode'] = request.product_code
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCaseDetail',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCaseDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_case_detail(
+        self,
+        request: main_models.GetCaseDetailRequest,
+    ) -> main_models.GetCaseDetailResponse:
+        runtime = RuntimeOptions()
+        return self.get_case_detail_with_options(request, runtime)
+
+    async def get_case_detail_async(
+        self,
+        request: main_models.GetCaseDetailRequest,
+    ) -> main_models.GetCaseDetailResponse:
+        runtime = RuntimeOptions()
+        return await self.get_case_detail_with_options_async(request, runtime)
+
     def get_instance_with_options(
         self,
         request: main_models.GetInstanceRequest,
@@ -1734,6 +1887,80 @@ class Client(OpenApiClient):
     ) -> main_models.GetInstanceResponse:
         runtime = RuntimeOptions()
         return await self.get_instance_with_options_async(request, runtime)
+
+    def get_recording_with_options(
+        self,
+        request: main_models.GetRecordingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetRecordingResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.session_id):
+            body['SessionId'] = request.session_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetRecording',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetRecordingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_recording_with_options_async(
+        self,
+        request: main_models.GetRecordingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetRecordingResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.session_id):
+            body['SessionId'] = request.session_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetRecording',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetRecordingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_recording(
+        self,
+        request: main_models.GetRecordingRequest,
+    ) -> main_models.GetRecordingResponse:
+        runtime = RuntimeOptions()
+        return self.get_recording_with_options(request, runtime)
+
+    async def get_recording_async(
+        self,
+        request: main_models.GetRecordingRequest,
+    ) -> main_models.GetRecordingResponse:
+        runtime = RuntimeOptions()
+        return await self.get_recording_with_options_async(request, runtime)
 
     def get_script_profile_template_with_options(
         self,
@@ -1980,6 +2207,192 @@ class Client(OpenApiClient):
     ) -> main_models.ListCampaignsResponse:
         runtime = RuntimeOptions()
         return await self.list_campaigns_with_options_async(request, runtime)
+
+    def list_cases_with_options(
+        self,
+        tmp_req: main_models.ListCasesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCasesResponse:
+        tmp_req.validate()
+        request = main_models.ListCasesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.case_ids):
+            request.case_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.case_ids, 'CaseIds', 'json')
+        if not DaraCore.is_null(tmp_req.disposition_codes):
+            request.disposition_codes_shrink = Utils.array_to_string_with_specified_style(tmp_req.disposition_codes, 'DispositionCodes', 'json')
+        if not DaraCore.is_null(tmp_req.disposition_reasons):
+            request.disposition_reasons_shrink = Utils.array_to_string_with_specified_style(tmp_req.disposition_reasons, 'DispositionReasons', 'json')
+        if not DaraCore.is_null(tmp_req.label_search):
+            request.label_search_shrink = Utils.array_to_string_with_specified_style(tmp_req.label_search, 'LabelSearch', 'json')
+        if not DaraCore.is_null(tmp_req.states):
+            request.states_shrink = Utils.array_to_string_with_specified_style(tmp_req.states, 'States', 'json')
+        query = {}
+        if not DaraCore.is_null(request.access_channel_id):
+            query['AccessChannelId'] = request.access_channel_id
+        if not DaraCore.is_null(request.access_channel_type):
+            query['AccessChannelType'] = request.access_channel_type
+        if not DaraCore.is_null(request.caller):
+            query['Caller'] = request.caller
+        if not DaraCore.is_null(request.campaign_id):
+            query['CampaignId'] = request.campaign_id
+        if not DaraCore.is_null(request.case_completed):
+            query['CaseCompleted'] = request.case_completed
+        if not DaraCore.is_null(request.case_ids_shrink):
+            query['CaseIds'] = request.case_ids_shrink
+        if not DaraCore.is_null(request.disposition_codes_shrink):
+            query['DispositionCodes'] = request.disposition_codes_shrink
+        if not DaraCore.is_null(request.disposition_reasons_shrink):
+            query['DispositionReasons'] = request.disposition_reasons_shrink
+        if not DaraCore.is_null(request.draft_version):
+            query['DraftVersion'] = request.draft_version
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.label_search_shrink):
+            query['LabelSearch'] = request.label_search_shrink
+        if not DaraCore.is_null(request.max_ringing_duration):
+            query['MaxRingingDuration'] = request.max_ringing_duration
+        if not DaraCore.is_null(request.max_talk_time):
+            query['MaxTalkTime'] = request.max_talk_time
+        if not DaraCore.is_null(request.max_talk_turns):
+            query['MaxTalkTurns'] = request.max_talk_turns
+        if not DaraCore.is_null(request.min_ringing_duration):
+            query['MinRingingDuration'] = request.min_ringing_duration
+        if not DaraCore.is_null(request.min_talk_time):
+            query['MinTalkTime'] = request.min_talk_time
+        if not DaraCore.is_null(request.min_talk_turns):
+            query['MinTalkTurns'] = request.min_talk_turns
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.states_shrink):
+            query['States'] = request.states_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCases',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCasesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_cases_with_options_async(
+        self,
+        tmp_req: main_models.ListCasesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCasesResponse:
+        tmp_req.validate()
+        request = main_models.ListCasesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.case_ids):
+            request.case_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.case_ids, 'CaseIds', 'json')
+        if not DaraCore.is_null(tmp_req.disposition_codes):
+            request.disposition_codes_shrink = Utils.array_to_string_with_specified_style(tmp_req.disposition_codes, 'DispositionCodes', 'json')
+        if not DaraCore.is_null(tmp_req.disposition_reasons):
+            request.disposition_reasons_shrink = Utils.array_to_string_with_specified_style(tmp_req.disposition_reasons, 'DispositionReasons', 'json')
+        if not DaraCore.is_null(tmp_req.label_search):
+            request.label_search_shrink = Utils.array_to_string_with_specified_style(tmp_req.label_search, 'LabelSearch', 'json')
+        if not DaraCore.is_null(tmp_req.states):
+            request.states_shrink = Utils.array_to_string_with_specified_style(tmp_req.states, 'States', 'json')
+        query = {}
+        if not DaraCore.is_null(request.access_channel_id):
+            query['AccessChannelId'] = request.access_channel_id
+        if not DaraCore.is_null(request.access_channel_type):
+            query['AccessChannelType'] = request.access_channel_type
+        if not DaraCore.is_null(request.caller):
+            query['Caller'] = request.caller
+        if not DaraCore.is_null(request.campaign_id):
+            query['CampaignId'] = request.campaign_id
+        if not DaraCore.is_null(request.case_completed):
+            query['CaseCompleted'] = request.case_completed
+        if not DaraCore.is_null(request.case_ids_shrink):
+            query['CaseIds'] = request.case_ids_shrink
+        if not DaraCore.is_null(request.disposition_codes_shrink):
+            query['DispositionCodes'] = request.disposition_codes_shrink
+        if not DaraCore.is_null(request.disposition_reasons_shrink):
+            query['DispositionReasons'] = request.disposition_reasons_shrink
+        if not DaraCore.is_null(request.draft_version):
+            query['DraftVersion'] = request.draft_version
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.label_search_shrink):
+            query['LabelSearch'] = request.label_search_shrink
+        if not DaraCore.is_null(request.max_ringing_duration):
+            query['MaxRingingDuration'] = request.max_ringing_duration
+        if not DaraCore.is_null(request.max_talk_time):
+            query['MaxTalkTime'] = request.max_talk_time
+        if not DaraCore.is_null(request.max_talk_turns):
+            query['MaxTalkTurns'] = request.max_talk_turns
+        if not DaraCore.is_null(request.min_ringing_duration):
+            query['MinRingingDuration'] = request.min_ringing_duration
+        if not DaraCore.is_null(request.min_talk_time):
+            query['MinTalkTime'] = request.min_talk_time
+        if not DaraCore.is_null(request.min_talk_turns):
+            query['MinTalkTurns'] = request.min_talk_turns
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.states_shrink):
+            query['States'] = request.states_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCases',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_cases(
+        self,
+        request: main_models.ListCasesRequest,
+    ) -> main_models.ListCasesResponse:
+        runtime = RuntimeOptions()
+        return self.list_cases_with_options(request, runtime)
+
+    async def list_cases_async(
+        self,
+        request: main_models.ListCasesRequest,
+    ) -> main_models.ListCasesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_cases_with_options_async(request, runtime)
 
     def list_clone_voice_models_with_options(
         self,

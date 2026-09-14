@@ -7,11 +7,11 @@ from typing import List
 from alibabacloud_outboundbot20251111 import models as main_models
 from darabonba.model import DaraModel
 
-class AppendCasesResponseBody(DaraModel):
+class GetRecordingResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
-        data: List[main_models.AppendCasesResponseBodyData] = None,
+        data: main_models.GetRecordingResponseBodyData = None,
         http_status_code: int = None,
         message: str = None,
         params: List[str] = None,
@@ -20,24 +20,22 @@ class AppendCasesResponseBody(DaraModel):
     ):
         # The response code.
         self.code = code
-        # The list of contacts that failed to be added.
+        # The returned data.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The message returned by the operation.
+        # The error message.
         self.message = message
-        # The variable values in the error message.
+        # The list of error parameters.
         self.params = params
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
         if self.data:
-            for v1 in self.data:
-                 if v1:
-                    v1.validate()
+            self.data.validate()
 
     def to_map(self):
         result = dict()
@@ -47,10 +45,8 @@ class AppendCasesResponseBody(DaraModel):
         if self.code is not None:
             result['Code'] = self.code
 
-        result['Data'] = []
         if self.data is not None:
-            for k1 in self.data:
-                result['Data'].append(k1.to_map() if k1 else None)
+            result['Data'] = self.data.to_map()
 
         if self.http_status_code is not None:
             result['HttpStatusCode'] = self.http_status_code
@@ -74,11 +70,9 @@ class AppendCasesResponseBody(DaraModel):
         if m.get('Code') is not None:
             self.code = m.get('Code')
 
-        self.data = []
         if m.get('Data') is not None:
-            for k1 in m.get('Data'):
-                temp_model = main_models.AppendCasesResponseBodyData()
-                self.data.append(temp_model.from_map(k1))
+            temp_model = main_models.GetRecordingResponseBodyData()
+            self.data = temp_model.from_map(m.get('Data'))
 
         if m.get('HttpStatusCode') is not None:
             self.http_status_code = m.get('HttpStatusCode')
@@ -97,16 +91,19 @@ class AppendCasesResponseBody(DaraModel):
 
         return self
 
-class AppendCasesResponseBodyData(DaraModel):
+class GetRecordingResponseBodyData(DaraModel):
     def __init__(
         self,
-        phone_number: str = None,
-        reference_id: str = None,
+        file_name: str = None,
+        file_url: str = None,
+        session_id: str = None,
     ):
-        # The phone number.
-        self.phone_number = phone_number
-        # The business ID.
-        self.reference_id = reference_id
+        # The file name, including the file name extension.
+        self.file_name = file_name
+        # The URL of the call recording file.
+        self.file_url = file_url
+        # The session ID.
+        self.session_id = session_id
 
     def validate(self):
         pass
@@ -116,21 +113,27 @@ class AppendCasesResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.phone_number is not None:
-            result['PhoneNumber'] = self.phone_number
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
 
-        if self.reference_id is not None:
-            result['ReferenceId'] = self.reference_id
+        if self.file_url is not None:
+            result['FileUrl'] = self.file_url
+
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('PhoneNumber') is not None:
-            self.phone_number = m.get('PhoneNumber')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
 
-        if m.get('ReferenceId') is not None:
-            self.reference_id = m.get('ReferenceId')
+        if m.get('FileUrl') is not None:
+            self.file_url = m.get('FileUrl')
+
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
 
         return self
 

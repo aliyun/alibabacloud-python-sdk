@@ -64,12 +64,21 @@ from ._delete_voice_access_profile_response import DeleteVoiceAccessProfileRespo
 from ._disable_subscription_request import DisableSubscriptionRequest
 from ._disable_subscription_response_body import DisableSubscriptionResponseBody
 from ._disable_subscription_response import DisableSubscriptionResponse
+from ._get_call_detail_record_request import GetCallDetailRecordRequest
+from ._get_call_detail_record_response_body import GetCallDetailRecordResponseBody
+from ._get_call_detail_record_response import GetCallDetailRecordResponse
 from ._get_campaign_request import GetCampaignRequest
 from ._get_campaign_response_body import GetCampaignResponseBody
 from ._get_campaign_response import GetCampaignResponse
+from ._get_case_detail_request import GetCaseDetailRequest
+from ._get_case_detail_response_body import GetCaseDetailResponseBody
+from ._get_case_detail_response import GetCaseDetailResponse
 from ._get_instance_request import GetInstanceRequest
 from ._get_instance_response_body import GetInstanceResponseBody
 from ._get_instance_response import GetInstanceResponse
+from ._get_recording_request import GetRecordingRequest
+from ._get_recording_response_body import GetRecordingResponseBody
+from ._get_recording_response import GetRecordingResponse
 from ._get_script_profile_template_request import GetScriptProfileTemplateRequest
 from ._get_script_profile_template_response_body import GetScriptProfileTemplateResponseBody
 from ._get_script_profile_template_response import GetScriptProfileTemplateResponse
@@ -79,6 +88,10 @@ from ._get_subscription_response import GetSubscriptionResponse
 from ._list_campaigns_request import ListCampaignsRequest
 from ._list_campaigns_response_body import ListCampaignsResponseBody
 from ._list_campaigns_response import ListCampaignsResponse
+from ._list_cases_request import ListCasesRequest
+from ._list_cases_shrink_request import ListCasesShrinkRequest
+from ._list_cases_response_body import ListCasesResponseBody
+from ._list_cases_response import ListCasesResponse
 from ._list_clone_voice_models_request import ListCloneVoiceModelsRequest
 from ._list_clone_voice_models_response_body import ListCloneVoiceModelsResponseBody
 from ._list_clone_voice_models_response import ListCloneVoiceModelsResponse
@@ -183,13 +196,24 @@ from ._create_script_version_request import CreateScriptVersionRequestTranscribe
 from ._create_script_version_request import CreateScriptVersionRequestTranscriberConfigNlsAccessProfile
 from ._create_script_version_request import CreateScriptVersionRequestTranscriberConfig
 from ._create_voice_access_profile_request import CreateVoiceAccessProfileRequestProfile
+from ._get_call_detail_record_response_body import GetCallDetailRecordResponseBodyDataLabels
+from ._get_call_detail_record_response_body import GetCallDetailRecordResponseBodyDataTranscripts
+from ._get_call_detail_record_response_body import GetCallDetailRecordResponseBodyData
 from ._get_campaign_response_body import GetCampaignResponseBodyData
+from ._get_case_detail_response_body import GetCaseDetailResponseBodyDataCallDetailRecords
+from ._get_case_detail_response_body import GetCaseDetailResponseBodyDataCaseLabels
+from ._get_case_detail_response_body import GetCaseDetailResponseBodyDataCase
+from ._get_case_detail_response_body import GetCaseDetailResponseBodyData
 from ._get_instance_response_body import GetInstanceResponseBodyData
+from ._get_recording_response_body import GetRecordingResponseBodyData
 from ._get_script_profile_template_response_body import GetScriptProfileTemplateResponseBodyData
 from ._get_subscription_response_body import GetSubscriptionResponseBodyDataEventList
 from ._get_subscription_response_body import GetSubscriptionResponseBodyData
 from ._list_campaigns_response_body import ListCampaignsResponseBodyDataList
 from ._list_campaigns_response_body import ListCampaignsResponseBodyData
+from ._list_cases_response_body import ListCasesResponseBodyDataListLabels
+from ._list_cases_response_body import ListCasesResponseBodyDataList
+from ._list_cases_response_body import ListCasesResponseBodyData
 from ._list_clone_voice_models_response_body import ListCloneVoiceModelsResponseBodyDataCloneVoiceModels
 from ._list_clone_voice_models_response_body import ListCloneVoiceModelsResponseBodyData
 from ._list_clone_voices_response_body import ListCloneVoicesResponseBodyDataCloneVoices
@@ -297,12 +321,21 @@ __all__ = [
     DisableSubscriptionRequest,
     DisableSubscriptionResponseBody,
     DisableSubscriptionResponse,
+    GetCallDetailRecordRequest,
+    GetCallDetailRecordResponseBody,
+    GetCallDetailRecordResponse,
     GetCampaignRequest,
     GetCampaignResponseBody,
     GetCampaignResponse,
+    GetCaseDetailRequest,
+    GetCaseDetailResponseBody,
+    GetCaseDetailResponse,
     GetInstanceRequest,
     GetInstanceResponseBody,
     GetInstanceResponse,
+    GetRecordingRequest,
+    GetRecordingResponseBody,
+    GetRecordingResponse,
     GetScriptProfileTemplateRequest,
     GetScriptProfileTemplateResponseBody,
     GetScriptProfileTemplateResponse,
@@ -312,6 +345,10 @@ __all__ = [
     ListCampaignsRequest,
     ListCampaignsResponseBody,
     ListCampaignsResponse,
+    ListCasesRequest,
+    ListCasesShrinkRequest,
+    ListCasesResponseBody,
+    ListCasesResponse,
     ListCloneVoiceModelsRequest,
     ListCloneVoiceModelsResponseBody,
     ListCloneVoiceModelsResponse,
@@ -416,13 +453,24 @@ __all__ = [
     CreateScriptVersionRequestTranscriberConfigNlsAccessProfile,
     CreateScriptVersionRequestTranscriberConfig,
     CreateVoiceAccessProfileRequestProfile,
+    GetCallDetailRecordResponseBodyDataLabels,
+    GetCallDetailRecordResponseBodyDataTranscripts,
+    GetCallDetailRecordResponseBodyData,
     GetCampaignResponseBodyData,
+    GetCaseDetailResponseBodyDataCallDetailRecords,
+    GetCaseDetailResponseBodyDataCaseLabels,
+    GetCaseDetailResponseBodyDataCase,
+    GetCaseDetailResponseBodyData,
     GetInstanceResponseBodyData,
+    GetRecordingResponseBodyData,
     GetScriptProfileTemplateResponseBodyData,
     GetSubscriptionResponseBodyDataEventList,
     GetSubscriptionResponseBodyData,
     ListCampaignsResponseBodyDataList,
     ListCampaignsResponseBodyData,
+    ListCasesResponseBodyDataListLabels,
+    ListCasesResponseBodyDataList,
+    ListCasesResponseBodyData,
     ListCloneVoiceModelsResponseBodyDataCloneVoiceModels,
     ListCloneVoiceModelsResponseBodyData,
     ListCloneVoicesResponseBodyDataCloneVoices,

@@ -141,7 +141,7 @@ class GetCampaignResponseBodyData(DaraModel):
         self.max_attempt_count = max_attempt_count
         # The minimum retry interval.
         self.min_attempt_interval = min_attempt_interval
-        # The campaign name.
+        # The name of the campaign.
         self.name = name
         # The list of caller numbers.
         self.numbers = numbers
@@ -153,13 +153,13 @@ class GetCampaignResponseBodyData(DaraModel):
         self.run_until_end_time = run_until_end_time
         # The scenario ID.
         self.script_id = script_id
-        # The campaign state.
+        # The state of the campaign.
         self.state = state
         # The total number of cases.
         self.total_cases = total_cases
         # The time when the campaign was last updated.
         self.updated_time = updated_time
-        # The campaign weight.
+        # The weight of the campaign.
         self.weight = weight
 
     def validate(self):

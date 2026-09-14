@@ -10,11 +10,11 @@ class SubmitCampaignRequest(DaraModel):
         campaign_id: str = None,
         instance_id: str = None,
     ):
-        # The ID of the task.
+        # The ID of the campaign.
         # 
         # This parameter is required.
         self.campaign_id = campaign_id
-        # The outbound instance ID.
+        # The outbound call instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
