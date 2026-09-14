@@ -173,11 +173,84 @@ class SubmitDocParserJobRequest(DaraModel):
 class SubmitDocParserJobRequestMultimediaParameters(DaraModel):
     def __init__(
         self,
+        enable_diarization: bool = None,
         enable_synopsis_parse: bool = None,
+        enable_synopsis_segments: bool = None,
+        enable_synopsis_summary: bool = None,
+        frame_extraction: main_models.SubmitDocParserJobRequestMultimediaParametersFrameExtraction = None,
         vl_parse_prompt: str = None,
     ):
+        self.enable_diarization = enable_diarization
         self.enable_synopsis_parse = enable_synopsis_parse
+        self.enable_synopsis_segments = enable_synopsis_segments
+        self.enable_synopsis_summary = enable_synopsis_summary
+        self.frame_extraction = frame_extraction
         self.vl_parse_prompt = vl_parse_prompt
+
+    def validate(self):
+        if self.frame_extraction:
+            self.frame_extraction.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.enable_diarization is not None:
+            result['EnableDiarization'] = self.enable_diarization
+
+        if self.enable_synopsis_parse is not None:
+            result['EnableSynopsisParse'] = self.enable_synopsis_parse
+
+        if self.enable_synopsis_segments is not None:
+            result['EnableSynopsisSegments'] = self.enable_synopsis_segments
+
+        if self.enable_synopsis_summary is not None:
+            result['EnableSynopsisSummary'] = self.enable_synopsis_summary
+
+        if self.frame_extraction is not None:
+            result['FrameExtraction'] = self.frame_extraction.to_map()
+
+        if self.vl_parse_prompt is not None:
+            result['VlParsePrompt'] = self.vl_parse_prompt
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableDiarization') is not None:
+            self.enable_diarization = m.get('EnableDiarization')
+
+        if m.get('EnableSynopsisParse') is not None:
+            self.enable_synopsis_parse = m.get('EnableSynopsisParse')
+
+        if m.get('EnableSynopsisSegments') is not None:
+            self.enable_synopsis_segments = m.get('EnableSynopsisSegments')
+
+        if m.get('EnableSynopsisSummary') is not None:
+            self.enable_synopsis_summary = m.get('EnableSynopsisSummary')
+
+        if m.get('FrameExtraction') is not None:
+            temp_model = main_models.SubmitDocParserJobRequestMultimediaParametersFrameExtraction()
+            self.frame_extraction = temp_model.from_map(m.get('FrameExtraction'))
+
+        if m.get('VlParsePrompt') is not None:
+            self.vl_parse_prompt = m.get('VlParsePrompt')
+
+        return self
+
+class SubmitDocParserJobRequestMultimediaParametersFrameExtraction(DaraModel):
+    def __init__(
+        self,
+        frame_rate: float = None,
+        mode: str = None,
+        output_image_height: int = None,
+        output_image_width: int = None,
+    ):
+        self.frame_rate = frame_rate
+        self.mode = mode
+        self.output_image_height = output_image_height
+        self.output_image_width = output_image_width
 
     def validate(self):
         pass
@@ -187,21 +260,33 @@ class SubmitDocParserJobRequestMultimediaParameters(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.enable_synopsis_parse is not None:
-            result['EnableSynopsisParse'] = self.enable_synopsis_parse
+        if self.frame_rate is not None:
+            result['FrameRate'] = self.frame_rate
 
-        if self.vl_parse_prompt is not None:
-            result['VlParsePrompt'] = self.vl_parse_prompt
+        if self.mode is not None:
+            result['Mode'] = self.mode
+
+        if self.output_image_height is not None:
+            result['OutputImageHeight'] = self.output_image_height
+
+        if self.output_image_width is not None:
+            result['OutputImageWidth'] = self.output_image_width
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('EnableSynopsisParse') is not None:
-            self.enable_synopsis_parse = m.get('EnableSynopsisParse')
+        if m.get('FrameRate') is not None:
+            self.frame_rate = m.get('FrameRate')
 
-        if m.get('VlParsePrompt') is not None:
-            self.vl_parse_prompt = m.get('VlParsePrompt')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+
+        if m.get('OutputImageHeight') is not None:
+            self.output_image_height = m.get('OutputImageHeight')
+
+        if m.get('OutputImageWidth') is not None:
+            self.output_image_width = m.get('OutputImageWidth')
 
         return self
 

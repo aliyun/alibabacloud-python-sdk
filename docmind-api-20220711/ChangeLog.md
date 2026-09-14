@@ -1,3 +1,10 @@
+2026-09-14 Version: 1.4.15
+- Update API SubmitDocParserJob: add request parameters MultimediaParameters.EnableDiarization.
+- Update API SubmitDocParserJob: add request parameters MultimediaParameters.EnableSynopsisSegments.
+- Update API SubmitDocParserJob: add request parameters MultimediaParameters.EnableSynopsisSummary.
+- Update API SubmitDocParserJob: add request parameters MultimediaParameters.FrameExtraction.
+
+
 2026-03-27 Version: 1.4.14
 - Update API QueryDocParserStatus: add response parameters Body.Data.OutputFormatResult.
 - Update API SubmitDocParserJob: add request parameters OutputFormat.
