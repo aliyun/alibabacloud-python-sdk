@@ -21,10 +21,6 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'cn-shanghai': 'cloud-siem.cn-shanghai.aliyuncs.com',
-            'ap-southeast-1': 'cloud-siem.ap-southeast-1.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('cloud-siem', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -4268,6 +4264,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_user_buy_status_with_options_async(request, runtime)
 
+    def describe_user_siem_order_status_with_options(
+        self,
+        request: main_models.DescribeUserSiemOrderStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeUserSiemOrderStatusResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not DaraCore.is_null(request.role_type):
+            body['RoleType'] = request.role_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeUserSiemOrderStatus',
+            version = '2022-06-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeUserSiemOrderStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_user_siem_order_status_with_options_async(
+        self,
+        request: main_models.DescribeUserSiemOrderStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeUserSiemOrderStatusResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not DaraCore.is_null(request.role_type):
+            body['RoleType'] = request.role_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeUserSiemOrderStatus',
+            version = '2022-06-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeUserSiemOrderStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_user_siem_order_status(
+        self,
+        request: main_models.DescribeUserSiemOrderStatusRequest,
+    ) -> main_models.DescribeUserSiemOrderStatusResponse:
+        runtime = RuntimeOptions()
+        return self.describe_user_siem_order_status_with_options(request, runtime)
+
+    async def describe_user_siem_order_status_async(
+        self,
+        request: main_models.DescribeUserSiemOrderStatusRequest,
+    ) -> main_models.DescribeUserSiemOrderStatusResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_user_siem_order_status_with_options_async(request, runtime)
+
     def describe_waf_scope_with_options(
         self,
         request: main_models.DescribeWafScopeRequest,
@@ -7387,6 +7461,8 @@ class Client(OpenApiClient):
             body['RoleType'] = request.role_type
         if not DaraCore.is_null(request.status):
             body['Status'] = request.status
+        if not DaraCore.is_null(request.sync_alert_status):
+            body['SyncAlertStatus'] = request.sync_alert_status
         if not DaraCore.is_null(request.threat_level):
             body['ThreatLevel'] = request.threat_level
         req = open_api_util_models.OpenApiRequest(
@@ -7439,6 +7515,8 @@ class Client(OpenApiClient):
             body['RoleType'] = request.role_type
         if not DaraCore.is_null(request.status):
             body['Status'] = request.status
+        if not DaraCore.is_null(request.sync_alert_status):
+            body['SyncAlertStatus'] = request.sync_alert_status
         if not DaraCore.is_null(request.threat_level):
             body['ThreatLevel'] = request.threat_level
         req = open_api_util_models.OpenApiRequest(

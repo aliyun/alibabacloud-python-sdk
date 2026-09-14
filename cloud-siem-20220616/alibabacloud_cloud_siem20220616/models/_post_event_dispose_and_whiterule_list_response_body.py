@@ -13,18 +13,16 @@ class PostEventDisposeAndWhiteruleListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The response status code.
         self.code = code
-        # The response value.
+        # The response data.
         self.data = data
         # The response message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request succeeded. Valid values:
-        # 
-        # - true: succeeded
-        # 
+        # Indicates whether the request was successful. Valid values:
+        # - true: successful
         # - false: failed
         self.success = success
 

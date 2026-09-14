@@ -64,11 +64,11 @@ class GetDataStorageResponseBodyData(DaraModel):
         self.cold_storage_used_capacity = cold_storage_used_capacity
         # The storage region of user-side logs.
         self.data_storage_region_id = data_storage_region_id
-        # Indicates whether the storage region can be modified. By default, the storage region cannot be modified. Contact your product manager to reset the region. The region can be reset only once. Valid values:
+        # Indicates whether the storage region can be modified. By default, the storage region cannot be modified. Contact the product manager to reset the region. The region can be reset only once. Valid values:
         # - allow: The storage region can be modified.
         # - deny: The storage region cannot be modified.
         self.data_storage_region_permission = data_storage_region_permission
-        # The storage capacity purchased in the upfront billing scenario.
+        # The storage capacity purchased in the prepaid scenario.
         self.data_storage_total_capacity = data_storage_total_capacity
         # The storage capacity used in user log management.
         self.data_storage_used_capacity = data_storage_used_capacity
@@ -200,10 +200,10 @@ class GetDataStorageResponseBodyDataSasLogStores(DaraModel):
         # The log code.
         self.log_code = log_code
         # The group to which the log belongs. Valid values:
-        # - host: host logs.
-        # - security: security logs.
+        # - host: Host logs.
+        # - security: Security logs.
         self.log_delivery_group = log_delivery_group
-        # Indicates whether log delivery is allowed. Log delivery is not available if the service is not purchased. Valid values:
+        # Indicates whether log delivery can be toggled. Log delivery cannot be enabled if the service is not purchased. Valid values:
         # - allow: Allowed.
         # - deny: Not allowed.
         self.log_delivery_permission = log_delivery_permission
@@ -211,7 +211,7 @@ class GetDataStorageResponseBodyDataSasLogStores(DaraModel):
         # - enable: Log delivery is enabled.
         # - disable: Log delivery is disabled.
         self.log_delivery_status = log_delivery_status
-        # The time of the most recent log delivery operation.
+        # The time when the log delivery was last modified. The time is in the YYYY-MM-DDTHH:mm:ss format.
         self.log_delivery_update_time = log_delivery_update_time
         # The log name.
         self.log_name = log_name

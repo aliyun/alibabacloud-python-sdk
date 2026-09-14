@@ -147,6 +147,9 @@ from ._describe_storage_response import DescribeStorageResponse
 from ._describe_user_buy_status_request import DescribeUserBuyStatusRequest
 from ._describe_user_buy_status_response_body import DescribeUserBuyStatusResponseBody
 from ._describe_user_buy_status_response import DescribeUserBuyStatusResponse
+from ._describe_user_siem_order_status_request import DescribeUserSiemOrderStatusRequest
+from ._describe_user_siem_order_status_response_body import DescribeUserSiemOrderStatusResponseBody
+from ._describe_user_siem_order_status_response import DescribeUserSiemOrderStatusResponse
 from ._describe_waf_scope_request import DescribeWafScopeRequest
 from ._describe_waf_scope_response_body import DescribeWafScopeResponseBody
 from ._describe_waf_scope_response import DescribeWafScopeResponse
@@ -340,6 +343,7 @@ from ._describe_operators_response_body import DescribeOperatorsResponseBodyData
 from ._describe_prod_count_response_body import DescribeProdCountResponseBodyData
 from ._describe_scope_users_response_body import DescribeScopeUsersResponseBodyData
 from ._describe_user_buy_status_response_body import DescribeUserBuyStatusResponseBodyData
+from ._describe_user_siem_order_status_response_body import DescribeUserSiemOrderStatusResponseBodyData
 from ._describe_waf_scope_response_body import DescribeWafScopeResponseBodyData
 from ._describe_white_rule_list_response_body import DescribeWhiteRuleListResponseBodyDataPageInfo
 from ._describe_white_rule_list_response_body import DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsLeft
@@ -545,6 +549,9 @@ __all__ = [
     DescribeUserBuyStatusRequest,
     DescribeUserBuyStatusResponseBody,
     DescribeUserBuyStatusResponse,
+    DescribeUserSiemOrderStatusRequest,
+    DescribeUserSiemOrderStatusResponseBody,
+    DescribeUserSiemOrderStatusResponse,
     DescribeWafScopeRequest,
     DescribeWafScopeResponseBody,
     DescribeWafScopeResponse,
@@ -738,6 +745,7 @@ __all__ = [
     DescribeProdCountResponseBodyData,
     DescribeScopeUsersResponseBodyData,
     DescribeUserBuyStatusResponseBodyData,
+    DescribeUserSiemOrderStatusResponseBodyData,
     DescribeWafScopeResponseBodyData,
     DescribeWhiteRuleListResponseBodyDataPageInfo,
     DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsLeft,

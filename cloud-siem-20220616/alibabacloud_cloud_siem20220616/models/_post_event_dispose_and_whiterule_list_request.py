@@ -19,55 +19,49 @@ class PostEventDisposeAndWhiteruleListRequest(DaraModel):
         role_for: int = None,
         role_type: int = None,
         status: int = None,
+        sync_alert_status: bool = None,
         threat_level: str = None,
     ):
-        # 幂等令牌。
+        # The idempotency token.
         self.client_token = client_token
-        # A comma-separated list of response strategy IDs.
+        # The list of handling policy IDs.
         self.dispose_strategy_ids = dispose_strategy_ids
-        # A JSON object that defines the incident response configuration.
+        # The incident handling configuration as a JSON object.
         self.event_dispose = event_dispose
         # The globally unique UUID of the incident.
         self.incident_uuid = incident_uuid
-        # The UID of the incident owner.
+        # The account UID of the incident owner.
         self.owner = owner
-        # A JSON object that defines the alert recipient configuration.
+        # The alert recipient configuration as a JSON object.
         self.receiver_info = receiver_info
-        # The region where the Data Management service for threat analysis is deployed. Select a region based on where your assets are located. Valid values:
-        # 
-        # - cn-hangzhou: Assets in the Chinese mainland or Hong Kong (China)
-        # 
-        # - ap-southeast-1: Assets outside China
+        # The region where the threat analysis data management center resides. Specify the management center based on the region of your assets. Valid values:
+        # - cn-hangzhou: Your assets reside in regions in the Chinese mainland or China (Hong Kong).
+        # - ap-southeast-1: Your assets reside in regions outside the Chinese mainland.
         self.region_id = region_id
-        # A note about the incident.
+        # The remarks for the incident.
         self.remark = remark
-        # The source of the response policy.
+        # The source of the handling policy.
         self.response_source = response_source
-        # The UID of the member whose perspective an administrator switches to.
+        # The ID of the user for whom the administrator switches to a member view.
         self.role_for = role_for
         # The view type. Valid values:
         # 
-        # - 0: Current Alibaba Cloud account view
-        # 
-        # - 1: View for all accounts in your enterprise
+        # - 0: the China account view.
+        # - 1: the view of all accounts in the enterprise.
         self.role_type = role_type
         # The incident status. Valid values:
         # 
-        # - 0: Not handled
-        # 
-        # - 1: Handling
-        # 
-        # - 5: Failed
-        # 
-        # - 10: Handled
+        # - 0: unhandled  
+        # - 1: handling 
+        # - 5: handling failed 
+        # - 10: handled
         self.status = status
+        # Specifies whether to restore associated handled alerts to unhandled status when reopening the incident.
+        self.sync_alert_status = sync_alert_status
         # The threat level. Valid values:
-        # 
-        # - serious: Important
-        # 
-        # - suspicious: Medium
-        # 
-        # - remind: Low
+        # - serious: high
+        # - suspicious: medium
+        # - remind: low
         self.threat_level = threat_level
 
     def validate(self):
@@ -114,6 +108,9 @@ class PostEventDisposeAndWhiteruleListRequest(DaraModel):
         if self.status is not None:
             result['Status'] = self.status
 
+        if self.sync_alert_status is not None:
+            result['SyncAlertStatus'] = self.sync_alert_status
+
         if self.threat_level is not None:
             result['ThreatLevel'] = self.threat_level
 
@@ -156,6 +153,9 @@ class PostEventDisposeAndWhiteruleListRequest(DaraModel):
 
         if m.get('Status') is not None:
             self.status = m.get('Status')
+
+        if m.get('SyncAlertStatus') is not None:
+            self.sync_alert_status = m.get('SyncAlertStatus')
 
         if m.get('ThreatLevel') is not None:
             self.threat_level = m.get('ThreatLevel')

@@ -1,3 +1,7 @@
+2026-09-14 Version: 6.3.0
+- Support API DescribeUserSiemOrderStatus.
+
+
 2026-08-31 Version: 6.2.6
 - Update API EnableAccessForCloudSiem: add request parameters ClientToken.
 - Update API PostEventDisposeAndWhiteruleList: add request parameters ClientToken.
