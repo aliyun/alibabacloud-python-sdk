@@ -76,7 +76,7 @@ class Task(DaraModel):
     ):
         # The --archives parameter.
         self.archives = archives
-        # The temporary URL to access the resource file.
+        # The temporary URL for accessing the resource file.
         self.artifact_url = artifact_url
         # The business ID.
         # 
@@ -84,19 +84,19 @@ class Task(DaraModel):
         self.biz_id = biz_id
         # The business ID of the folder.
         self.category_biz_id = category_biz_id
-        # The content of the Spark job.
+        # The Spark job content.
         self.content = content
         # The UID of the creator.
         # 
         # This parameter is required.
         self.creator = creator
-        # The information for directly uploading files to Object Storage Service (OSS).
+        # The credential for direct OSS upload.
         self.credential = credential
         # The default catalog ID.
         self.default_catalog_id = default_catalog_id
         # The default database.
         self.default_database = default_database
-        # The default queue ID for the task.
+        # The ID of the default task queue.
         self.default_resource_queue_id = default_resource_queue_id
         # The default SQL session ID.
         self.default_sql_compute_id = default_sql_compute_id
@@ -104,25 +104,25 @@ class Task(DaraModel):
         self.deployment_id = deployment_id
         # The environment ID.
         self.environment_id = environment_id
-        # The IDs of extra Spark resources.
+        # The IDs of extra Spark artifacts.
         self.extra_artifact_ids = extra_artifact_ids
-        # The custom parameters for the spark-submit command.
+        # The custom spark-submit configuration parameters.
         self.extra_spark_submit_params = extra_spark_submit_params
         # The --files parameter.
         self.files = files
-        # Indicates whether to enable fusion.
+        # Indicates whether the fusion feature is enabled.
         self.fusion = fusion
-        # The time when the task was created.
+        # The creation time.
         # 
         # This parameter is required.
         self.gmt_created = gmt_created
-        # The time when the task was last modified.
+        # The last modified time.
         # 
         # This parameter is required.
         self.gmt_modified = gmt_modified
-        # Indicates whether the task has been changed since the last commit.
+        # Indicates whether the task has been changed after the last commit.
         self.has_changed = has_changed
-        # Indicates whether the task has been committed.
+        # Indicates whether the task has been submitted.
         # 
         # This parameter is required.
         self.has_commited = has_commited
@@ -131,9 +131,9 @@ class Task(DaraModel):
         # The --jars parameter.
         self.jars = jars
         self.kernel_id = kernel_id
-        # The ID of the resource queue that was used for the last run.
+        # The ID of the resource queue used in the last run.
         self.last_run_resource_queue_id = last_run_resource_queue_id
-        # The UID of the user who last updated the task.
+        # The UID of the last modifier.
         # 
         # This parameter is required.
         self.modifier = modifier
@@ -142,7 +142,7 @@ class Task(DaraModel):
         # This parameter is required.
         self.name = name
         self.params = params
-        # The PySpark dependency pyfiles.
+        # The PySpark dependency pyfiles for the Spark task.
         self.py_files = py_files
         self.ray_active_deadline_seconds = ray_active_deadline_seconds
         self.ray_backoff_limit = ray_backoff_limit
@@ -164,29 +164,29 @@ class Task(DaraModel):
         self.ray_worker_spec = ray_worker_spec
         self.ray_working_dir = ray_working_dir
         self.session_cluster_id = session_cluster_id
-        # The Spark parameters.
+        # The Spark arguments.
         self.spark_args = spark_args
         # The list of Spark configurations.
         self.spark_conf = spark_conf
-        # The number of cores for the Spark driver.
+        # The number of Spark driver cores.
         # 
         # This parameter is required.
         self.spark_driver_cores = spark_driver_cores
-        # The memory of the Spark driver.
+        # The Spark driver memory.
         # 
         # This parameter is required.
         self.spark_driver_memory = spark_driver_memory
-        # The entrypoint of the Spark main class.
+        # The Spark main class entrypoint.
         self.spark_entrypoint = spark_entrypoint
-        # The number of cores for the Spark executor.
+        # The number of Spark executor cores.
         # 
         # This parameter is required.
         self.spark_executor_cores = spark_executor_cores
-        # The memory of the Spark executor.
+        # The Spark executor memory.
         # 
         # This parameter is required.
         self.spark_executor_memory = spark_executor_memory
-        # The log level for Spark.
+        # The Spark log level.
         # 
         # This parameter is required.
         self.spark_log_level = spark_log_level
@@ -194,15 +194,15 @@ class Task(DaraModel):
         # 
         # This parameter is required.
         self.spark_log_path = spark_log_path
-        # The spark-submit statement.
+        # The spark-submit task submission clause.
         self.spark_submit_clause = spark_submit_clause
         # The Spark version.
         # 
         # This parameter is required.
         self.spark_version = spark_version
-        # The task tags.
+        # The task labels.
         self.tags = tags
-        # The task timeout duration.
+        # The task timeout period.
         self.timeout = timeout
         # The task type.
         # 
@@ -628,21 +628,30 @@ class TaskRayWorkerSpec(DaraModel):
     def __init__(
         self,
         cpu: str = None,
+        env: str = None,
         gpu_spec: str = None,
         group_name: str = None,
         max_replica: int = None,
         memory: str = None,
         min_replica: int = None,
         queue_name: str = None,
+        ray_start_params: str = None,
+        ray_version: str = None,
         replica: int = None,
     ):
         self.cpu = cpu
+        # The environment variables of Ray.
+        self.env = env
         self.gpu_spec = gpu_spec
         self.group_name = group_name
         self.max_replica = max_replica
         self.memory = memory
         self.min_replica = min_replica
         self.queue_name = queue_name
+        # The startup parameters of Ray.
+        self.ray_start_params = ray_start_params
+        # The DPI engine version of Ray.
+        self.ray_version = ray_version
         self.replica = replica
 
     def validate(self):
@@ -655,6 +664,9 @@ class TaskRayWorkerSpec(DaraModel):
             result = _map
         if self.cpu is not None:
             result['cpu'] = self.cpu
+
+        if self.env is not None:
+            result['env'] = self.env
 
         if self.gpu_spec is not None:
             result['gpuSpec'] = self.gpu_spec
@@ -674,6 +686,12 @@ class TaskRayWorkerSpec(DaraModel):
         if self.queue_name is not None:
             result['queueName'] = self.queue_name
 
+        if self.ray_start_params is not None:
+            result['rayStartParams'] = self.ray_start_params
+
+        if self.ray_version is not None:
+            result['rayVersion'] = self.ray_version
+
         if self.replica is not None:
             result['replica'] = self.replica
 
@@ -683,6 +701,9 @@ class TaskRayWorkerSpec(DaraModel):
         m = m or dict()
         if m.get('cpu') is not None:
             self.cpu = m.get('cpu')
+
+        if m.get('env') is not None:
+            self.env = m.get('env')
 
         if m.get('gpuSpec') is not None:
             self.gpu_spec = m.get('gpuSpec')
@@ -702,6 +723,12 @@ class TaskRayWorkerSpec(DaraModel):
         if m.get('queueName') is not None:
             self.queue_name = m.get('queueName')
 
+        if m.get('rayStartParams') is not None:
+            self.ray_start_params = m.get('rayStartParams')
+
+        if m.get('rayVersion') is not None:
+            self.ray_version = m.get('rayVersion')
+
         if m.get('replica') is not None:
             self.replica = m.get('replica')
 
@@ -712,18 +739,27 @@ class TaskRayHeadSpec(DaraModel):
         self,
         cpu: str = None,
         enable_auto_scaling: bool = None,
+        env: str = None,
         gpu_spec: str = None,
         idle_timeout_seconds: int = None,
         memory: str = None,
         queue_name: str = None,
+        ray_start_params: str = None,
+        ray_version: str = None,
         replica: int = None,
     ):
         self.cpu = cpu
         self.enable_auto_scaling = enable_auto_scaling
+        # The environment variables of the Ray node.
+        self.env = env
         self.gpu_spec = gpu_spec
         self.idle_timeout_seconds = idle_timeout_seconds
         self.memory = memory
         self.queue_name = queue_name
+        # The startup parameters of Ray.
+        self.ray_start_params = ray_start_params
+        # The DPI engine version of Ray.
+        self.ray_version = ray_version
         self.replica = replica
 
     def validate(self):
@@ -740,6 +776,9 @@ class TaskRayHeadSpec(DaraModel):
         if self.enable_auto_scaling is not None:
             result['enableAutoScaling'] = self.enable_auto_scaling
 
+        if self.env is not None:
+            result['env'] = self.env
+
         if self.gpu_spec is not None:
             result['gpuSpec'] = self.gpu_spec
 
@@ -751,6 +790,12 @@ class TaskRayHeadSpec(DaraModel):
 
         if self.queue_name is not None:
             result['queueName'] = self.queue_name
+
+        if self.ray_start_params is not None:
+            result['rayStartParams'] = self.ray_start_params
+
+        if self.ray_version is not None:
+            result['rayVersion'] = self.ray_version
 
         if self.replica is not None:
             result['replica'] = self.replica
@@ -765,6 +810,9 @@ class TaskRayHeadSpec(DaraModel):
         if m.get('enableAutoScaling') is not None:
             self.enable_auto_scaling = m.get('enableAutoScaling')
 
+        if m.get('env') is not None:
+            self.env = m.get('env')
+
         if m.get('gpuSpec') is not None:
             self.gpu_spec = m.get('gpuSpec')
 
@@ -776,6 +824,12 @@ class TaskRayHeadSpec(DaraModel):
 
         if m.get('queueName') is not None:
             self.queue_name = m.get('queueName')
+
+        if m.get('rayStartParams') is not None:
+            self.ray_start_params = m.get('rayStartParams')
+
+        if m.get('rayVersion') is not None:
+            self.ray_version = m.get('rayVersion')
 
         if m.get('replica') is not None:
             self.replica = m.get('replica')
@@ -794,7 +848,7 @@ class TaskCredential(DaraModel):
         security_token: str = None,
         signature: str = None,
     ):
-        # The AccessKey ID.
+        # access id
         self.access_id = access_id
         # The access URL.
         self.access_url = access_url
@@ -804,9 +858,9 @@ class TaskCredential(DaraModel):
         self.host = host
         # The path.
         self.path = path
-        # The policy.
+        # policy
         self.policy = policy
-        # The security token.
+        # security token
         self.security_token = security_token
         # The signature.
         self.signature = signature

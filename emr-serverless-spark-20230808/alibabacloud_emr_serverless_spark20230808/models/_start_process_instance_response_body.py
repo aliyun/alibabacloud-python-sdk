@@ -17,7 +17,7 @@ class StartProcessInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The return code from the backend.
+        # The return code of the API request backend.
         self.code = code
         # The returned data.
         self.data = data
@@ -25,7 +25,7 @@ class StartProcessInstanceResponseBody(DaraModel):
         self.failed = failed
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The detailed description of the return code.
+        # The detailed description corresponding to the request code.
         self.msg = msg
         # Id of the request
         self.request_id = request_id

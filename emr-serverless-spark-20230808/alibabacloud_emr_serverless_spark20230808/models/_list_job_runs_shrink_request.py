@@ -10,6 +10,7 @@ class ListJobRunsShrinkRequest(DaraModel):
         application_configs: str = None,
         creator: str = None,
         end_time_shrink: str = None,
+        group_by_state: bool = None,
         is_workflow: str = None,
         job_run_deployment_id: str = None,
         job_run_id: str = None,
@@ -28,31 +29,32 @@ class ListJobRunsShrinkRequest(DaraModel):
         self.application_configs = application_configs
         # The UID of the user who created the job.
         self.creator = creator
-        # The time range when the job run ended.
+        # The end time range of the job.
         self.end_time_shrink = end_time_shrink
-        # Specifies whether the job is a workflow task.
+        self.group_by_state = group_by_state
+        # Specifies whether the job is a workflow job.
         self.is_workflow = is_workflow
-        # The deployment ID of the streaming job.
+        # The job ID of the streaming job deployment.
         self.job_run_deployment_id = job_run_deployment_id
-        # The job run ID.
+        # The job ID.
         self.job_run_id = job_run_id
-        # The maximum number of entries to return. The maximum value is 100.
+        # The maximum number of records to retrieve in a single request. Maximum value: 100.
         self.max_results = max_results
-        # The minimum runtime of the job run, in milliseconds.
+        # The minimum execution duration of the job, in milliseconds.
         self.min_duration = min_duration
         # The job name.
         self.name = name
-        # The token that specifies the position from which to start the next read.
+        # The pagination token that marks the position from which to start reading.
         self.next_token = next_token
         # The region ID.
         self.region_id = region_id
-        # The ID of the resource queue on which the Spark job runs.
+        # The name of the resource queue on which the Spark job runs.
         self.resource_queue_id = resource_queue_id
         # The runtime configurations.
         self.runtime_configs = runtime_configs
-        # The time range when the job run started.
+        # The start time range of the job.
         self.start_time_shrink = start_time_shrink
-        # The job run states.
+        # The job states.
         self.states_shrink = states_shrink
         # The list of tags.
         self.tags_shrink = tags_shrink
@@ -73,6 +75,9 @@ class ListJobRunsShrinkRequest(DaraModel):
 
         if self.end_time_shrink is not None:
             result['endTime'] = self.end_time_shrink
+
+        if self.group_by_state is not None:
+            result['groupByState'] = self.group_by_state
 
         if self.is_workflow is not None:
             result['isWorkflow'] = self.is_workflow
@@ -125,6 +130,9 @@ class ListJobRunsShrinkRequest(DaraModel):
 
         if m.get('endTime') is not None:
             self.end_time_shrink = m.get('endTime')
+
+        if m.get('groupByState') is not None:
+            self.group_by_state = m.get('groupByState')
 
         if m.get('isWorkflow') is not None:
             self.is_workflow = m.get('isWorkflow')

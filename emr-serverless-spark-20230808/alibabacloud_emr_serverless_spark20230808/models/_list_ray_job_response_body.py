@@ -14,8 +14,11 @@ class ListRayJobResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of Ray Jobs.
         self.ray_jobs = ray_jobs
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -74,17 +77,41 @@ class ListRayJobResponseBodyRayJobs(DaraModel):
         submission_id: str = None,
         submit_time: int = None,
     ):
+        # The status of the corresponding Ray cluster. Valid values:
+        # - Deleted: deleted.
+        # - Submitted: submitted but not yet being created.
+        # - Pending: being created.
+        # - Running: running.
         self.cluster_state = cluster_state
+        # The nickname of the creator.
         self.creator_name = creator_name
+        # The number of compute units (CUs) consumed during the job execution cycle. This value is an estimate. The actual value is subject to the bill.
         self.cu_hours = cu_hours
+        # The URL of the Ray cluster dashboard. When the Ray cluster is in the Running state, the URL points to the Runtime UI. After the cluster is in the Deleted state, the URL points to the History UI. The History UI is supported only in err-1.2.0 and later versions.
         self.dashboard_url = dashboard_url
+        # The execution duration of the job. Unit: seconds.
         self.duration = duration
+        # The time when the job ended.
         self.end_time = end_time
+        # The name of the Ray Job.
         self.name = name
+        # The Ray DPI engine version.
         self.resource_queue = resource_queue
+        # The time when the job was started.
         self.start_time = start_time
+        # The job status. Valid values:
+        # - Submitted: submitted.
+        # - Pending: the cluster is being created.
+        # - Running: the job is running.
+        # - Succeeded: the job succeeded.
+        # - Failed: the job failed.
+        # - Cancelling: the job is being canceled.
+        # - Cancelled: the job is canceled.
+        # - Timeout: the job timed out and was canceled.
         self.status = status
+        # The ID of the Ray Job.
         self.submission_id = submission_id
+        # The time when the job was submitted.
         self.submit_time = submit_time
 
     def validate(self):

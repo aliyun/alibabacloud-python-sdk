@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
+from typing import Dict, List
 
 from alibabacloud_emr_serverless_spark20230808 import models as main_models
 from darabonba.model import DaraModel
@@ -10,21 +10,23 @@ from darabonba.model import DaraModel
 class ListJobRunsResponseBody(DaraModel):
     def __init__(
         self,
+        aggregations: Dict[str, str] = None,
         job_runs: List[main_models.ListJobRunsResponseBodyJobRuns] = None,
         max_results: int = None,
         next_token: str = None,
         request_id: str = None,
         total_count: int = None,
     ):
-        # A list of Spark jobs.
+        self.aggregations = aggregations
+        # The list of Spark jobs.
         self.job_runs = job_runs
-        # The maximum number of entries returned for the current request.
+        # The maximum number of records returned in this request.
         self.max_results = max_results
-        # The token that is used to retrieve the next page of results.
+        # The position from which the data was read.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries that match the filter criteria.
+        # The total number of records that match the request conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -38,6 +40,9 @@ class ListJobRunsResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.aggregations is not None:
+            result['aggregations'] = self.aggregations
+
         result['jobRuns'] = []
         if self.job_runs is not None:
             for k1 in self.job_runs:
@@ -59,6 +64,9 @@ class ListJobRunsResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('aggregations') is not None:
+            self.aggregations = m.get('aggregations')
+
         self.job_runs = []
         if m.get('jobRuns') is not None:
             for k1 in m.get('jobRuns'):
@@ -106,53 +114,53 @@ class ListJobRunsResponseBodyJobRuns(DaraModel):
         web_ui: str = None,
         workspace_id: str = None,
     ):
-        # The code type of the job. Valid values:
+        # The job code type. Valid values:
         # 
         # SQL
         # 
         # JAR
         # 
-        # PYTHON
+        # PYTHON.
         self.code_type = code_type
-        # The advanced Spark configurations. This parameter is not returned by the ListJobRuns operation.
+        # The Spark advanced configurations. This parameter is not returned by the List operation.
         self.configuration_overrides = configuration_overrides
         # The UID of the user who created the job.
         self.creator = creator
-        # The number of CUs consumed by the job run. This is an estimated value. The actual value is reflected in your bill.
+        # The number of compute units (CUs) consumed during the job run cycle. This value is an estimate. The actual value is subject to the bill.
         self.cu_hours = cu_hours
-        # The display version of the Spark engine that is used to run the job.
+        # The version of the Spark DPI engine used to run the job.
         self.display_release_version = display_release_version
-        # The time when the job ended.
+        # The job end time.
         self.end_time = end_time
-        # The timeout period for the job execution, in seconds.
+        # The execution timeout period, in seconds.
         self.execution_timeout_seconds = execution_timeout_seconds
-        # Indicates whether the Fusion engine is enabled for acceleration.
+        # Indicates whether the Fusion engine acceleration is enabled.
         self.fusion = fusion
-        # The information about the Spark driver. This parameter is not returned by the ListJobRuns operation.
+        # The Spark Driver information. This parameter is not returned by the List operation.
         self.job_driver = job_driver
-        # The job run ID.
+        # The job ID.
         self.job_run_id = job_run_id
         # The path of the run log.
         self.log = log
-        # The total memory in MB allocated to the job run, multiplied by the runtime in seconds.
+        # The total amount of allocated memory multiplied by the number of seconds the job has been running.
         self.mb_seconds = mb_seconds
         # The job name.
         self.name = name
         self.priority = priority
-        # The version of the Spark engine that is used to run the job.
+        # The version of the Spark DPI engine used to run the job.
         self.release_version = release_version
         self.resource_queue_id = resource_queue_id
-        # The state of the job run.
+        # The job states.
         self.state = state
         # The reason for the state change.
         self.state_change_reason = state_change_reason
-        # The time when the job was submitted.
+        # The job submission time.
         self.submit_time = submit_time
         # The tags.
         self.tags = tags
-        # The total number of vCores allocated to the job run, multiplied by the runtime in seconds.
+        # The total number of allocated vcores multiplied by the number of seconds the job has been running.
         self.vcore_seconds = vcore_seconds
-        # The web UI of the job.
+        # The job Web UI.
         self.web_ui = web_ui
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -371,7 +379,7 @@ class ListJobRunsResponseBodyJobRunsConfigurationOverrides(DaraModel):
         self,
         configurations: List[main_models.Configuration] = None,
     ):
-        # A list of Spark configurations.
+        # The list of Spark configurations.
         self.configurations = configurations
 
     def validate(self):

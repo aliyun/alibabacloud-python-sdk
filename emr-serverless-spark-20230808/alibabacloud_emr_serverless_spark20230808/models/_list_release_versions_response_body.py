@@ -16,9 +16,9 @@ class ListReleaseVersionsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The maximum number of records to return on a single page.
+        # The maximum number of records returned per request.
         self.max_results = max_results
-        # The token for the next page of results.
+        # The token for the next page.
         self.next_token = next_token
         # The list of versions.
         self.release_versions = release_versions
@@ -88,30 +88,33 @@ class ListReleaseVersionsResponseBodyReleaseVersions(DaraModel):
         fusion: bool = None,
         gmt_create: int = None,
         iaas_type: str = None,
+        is_custom: bool = None,
         release_version: str = None,
         scala_version: str = None,
         state: str = None,
         type: str = None,
     ):
-        # The community version number of Spark.
+        # The community Spark version number.
         self.community_version = community_version
         # The list of CPU architectures.
         self.cpu_architectures = cpu_architectures
         # The version number.
         self.display_release_version = display_release_version
-        # Indicates whether the Fusion engine is enabled for acceleration.
+        # Indicates whether Fusion engine acceleration is enabled.
         self.fusion = fusion
-        # The time when the version was created.
+        # The creation time.
         self.gmt_create = gmt_create
-        # The type of the IaaS layer.
+        # The IaaS layer type.
         self.iaas_type = iaas_type
+        # Indicates whether the version is a custom image.
+        self.is_custom = is_custom
         # The version number.
         self.release_version = release_version
         # The Scala version.
         self.scala_version = scala_version
-        # The status of the version.
+        # The version status.
         self.state = state
-        # The type of the version.
+        # The version type.
         self.type = type
 
     def validate(self):
@@ -139,6 +142,9 @@ class ListReleaseVersionsResponseBodyReleaseVersions(DaraModel):
 
         if self.iaas_type is not None:
             result['iaasType'] = self.iaas_type
+
+        if self.is_custom is not None:
+            result['isCustom'] = self.is_custom
 
         if self.release_version is not None:
             result['releaseVersion'] = self.release_version
@@ -173,6 +179,9 @@ class ListReleaseVersionsResponseBodyReleaseVersions(DaraModel):
 
         if m.get('iaasType') is not None:
             self.iaas_type = m.get('iaasType')
+
+        if m.get('isCustom') is not None:
+            self.is_custom = m.get('isCustom')
 
         if m.get('releaseVersion') is not None:
             self.release_version = m.get('releaseVersion')

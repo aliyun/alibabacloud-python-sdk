@@ -22,23 +22,6 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'us-west-1': 'emr-serverless-spark.us-west-1.aliyuncs.com',
-            'us-east-1': 'emr-serverless-spark.us-east-1.aliyuncs.com',
-            'na-south-1': 'emr-serverless-spark.na-south-1.aliyuncs.com',
-            'eu-central-1': 'emr-serverless-spark.eu-central-1.aliyuncs.com',
-            'cn-zhangjiakou': 'emr-serverless-spark.cn-zhangjiakou.aliyuncs.com',
-            'cn-wulanchabu': 'emr-serverless-spark.cn-wulanchabu.aliyuncs.com',
-            'cn-shenzhen': 'emr-serverless-spark.cn-shenzhen.aliyuncs.com',
-            'cn-shanghai': 'emr-serverless-spark.cn-shanghai.aliyuncs.com',
-            'cn-hongkong': 'emr-serverless-spark.cn-hongkong.aliyuncs.com',
-            'cn-hangzhou': 'emr-serverless-spark.cn-hangzhou.aliyuncs.com',
-            'cn-chengdu': 'emr-serverless-spark.cn-chengdu.aliyuncs.com',
-            'cn-beijing': 'emr-serverless-spark.cn-beijing.aliyuncs.com',
-            'ap-southeast-5': 'emr-serverless-spark.ap-southeast-5.aliyuncs.com',
-            'ap-southeast-1': 'emr-serverless-spark.ap-southeast-1.aliyuncs.com',
-            'ap-northeast-1': 'emr-serverless-spark.ap-northeast-1.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('emr-serverless-spark', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -2194,6 +2177,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_ray_cluster_with_options_async(workspace_id, cluster_id, headers, runtime)
 
+    def delete_workspace_queue_with_options(
+        self,
+        workspace_id: str,
+        workspace_queue_name: str,
+        request: main_models.DeleteWorkspaceQueueRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWorkspaceQueueResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteWorkspaceQueue',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}/queues/{DaraURL.percent_encode(workspace_queue_name)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteWorkspaceQueueResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_workspace_queue_with_options_async(
+        self,
+        workspace_id: str,
+        workspace_queue_name: str,
+        request: main_models.DeleteWorkspaceQueueRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWorkspaceQueueResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteWorkspaceQueue',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}/queues/{DaraURL.percent_encode(workspace_queue_name)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteWorkspaceQueueResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_workspace_queue(
+        self,
+        workspace_id: str,
+        workspace_queue_name: str,
+        request: main_models.DeleteWorkspaceQueueRequest,
+    ) -> main_models.DeleteWorkspaceQueueResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_workspace_queue_with_options(workspace_id, workspace_queue_name, request, headers, runtime)
+
+    async def delete_workspace_queue_async(
+        self,
+        workspace_id: str,
+        workspace_queue_name: str,
+        request: main_models.DeleteWorkspaceQueueRequest,
+    ) -> main_models.DeleteWorkspaceQueueResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_workspace_queue_with_options_async(workspace_id, workspace_queue_name, request, headers, runtime)
+
     def edit_workspace_queue_with_options(
         self,
         request: main_models.EditWorkspaceQueueRequest,
@@ -2205,10 +2272,14 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.region_id):
             query['regionId'] = request.region_id
         body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
         if not DaraCore.is_null(request.environments):
             body['environments'] = request.environments
         if not DaraCore.is_null(request.gpu_spec):
             body['gpuSpec'] = request.gpu_spec
+        if not DaraCore.is_null(request.instance_id):
+            body['instanceId'] = request.instance_id
         if not DaraCore.is_null(request.resource_spec):
             body['resourceSpec'] = request.resource_spec
         if not DaraCore.is_null(request.workspace_id):
@@ -2247,10 +2318,14 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.region_id):
             query['regionId'] = request.region_id
         body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
         if not DaraCore.is_null(request.environments):
             body['environments'] = request.environments
         if not DaraCore.is_null(request.gpu_spec):
             body['gpuSpec'] = request.gpu_spec
+        if not DaraCore.is_null(request.instance_id):
+            body['instanceId'] = request.instance_id
         if not DaraCore.is_null(request.resource_spec):
             body['resourceSpec'] = request.resource_spec
         if not DaraCore.is_null(request.workspace_id):
@@ -4099,6 +4174,8 @@ class Client(OpenApiClient):
             query['creator'] = request.creator
         if not DaraCore.is_null(request.end_time_shrink):
             query['endTime'] = request.end_time_shrink
+        if not DaraCore.is_null(request.group_by_state):
+            query['groupByState'] = request.group_by_state
         if not DaraCore.is_null(request.is_workflow):
             query['isWorkflow'] = request.is_workflow
         if not DaraCore.is_null(request.job_run_deployment_id):
@@ -4170,6 +4247,8 @@ class Client(OpenApiClient):
             query['creator'] = request.creator
         if not DaraCore.is_null(request.end_time_shrink):
             query['endTime'] = request.end_time_shrink
+        if not DaraCore.is_null(request.group_by_state):
+            query['groupByState'] = request.group_by_state
         if not DaraCore.is_null(request.is_workflow):
             query['isWorkflow'] = request.is_workflow
         if not DaraCore.is_null(request.job_run_deployment_id):
@@ -4237,11 +4316,17 @@ class Client(OpenApiClient):
     def list_kyuubi_services_with_options(
         self,
         workspace_id: str,
+        request: main_models.ListKyuubiServicesRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ListKyuubiServicesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.token):
+            query['token'] = request.token
         req = open_api_util_models.OpenApiRequest(
-            headers = headers
+            headers = headers,
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'ListKyuubiServices',
@@ -4262,11 +4347,17 @@ class Client(OpenApiClient):
     async def list_kyuubi_services_with_options_async(
         self,
         workspace_id: str,
+        request: main_models.ListKyuubiServicesRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ListKyuubiServicesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.token):
+            query['token'] = request.token
         req = open_api_util_models.OpenApiRequest(
-            headers = headers
+            headers = headers,
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'ListKyuubiServices',
@@ -4287,18 +4378,20 @@ class Client(OpenApiClient):
     def list_kyuubi_services(
         self,
         workspace_id: str,
+        request: main_models.ListKyuubiServicesRequest,
     ) -> main_models.ListKyuubiServicesResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.list_kyuubi_services_with_options(workspace_id, headers, runtime)
+        return self.list_kyuubi_services_with_options(workspace_id, request, headers, runtime)
 
     async def list_kyuubi_services_async(
         self,
         workspace_id: str,
+        request: main_models.ListKyuubiServicesRequest,
     ) -> main_models.ListKyuubiServicesResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.list_kyuubi_services_with_options_async(workspace_id, headers, runtime)
+        return await self.list_kyuubi_services_with_options_async(workspace_id, request, headers, runtime)
 
     def list_kyuubi_spark_applications_with_options(
         self,
@@ -5896,6 +5989,138 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_workspaces_with_options_async(request, headers, runtime)
 
+    def query_apm_grafana_data_with_options(
+        self,
+        tmp_req: main_models.QueryApmGrafanaDataRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryApmGrafanaDataResponse:
+        tmp_req.validate()
+        request = main_models.QueryApmGrafanaDataShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.query_params):
+            request.query_params_shrink = Utils.array_to_string_with_specified_style(tmp_req.query_params, 'queryParams', 'json')
+        query = {}
+        if not DaraCore.is_null(request.component_name):
+            query['componentName'] = request.component_name
+        if not DaraCore.is_null(request.dashboard_id):
+            query['dashboardId'] = request.dashboard_id
+        if not DaraCore.is_null(request.end):
+            query['end'] = request.end
+        if not DaraCore.is_null(request.provider):
+            query['provider'] = request.provider
+        if not DaraCore.is_null(request.query):
+            query['query'] = request.query
+        if not DaraCore.is_null(request.query_params_shrink):
+            query['queryParams'] = request.query_params_shrink
+        if not DaraCore.is_null(request.query_url):
+            query['queryUrl'] = request.query_url
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        if not DaraCore.is_null(request.start):
+            query['start'] = request.start
+        if not DaraCore.is_null(request.step):
+            query['step'] = request.step
+        if not DaraCore.is_null(request.time):
+            query['time'] = request.time
+        if not DaraCore.is_null(request.variables):
+            query['variables'] = request.variables
+        if not DaraCore.is_null(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryApmGrafanaData',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/apm/action/queryApmGrafanaData',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryApmGrafanaDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_apm_grafana_data_with_options_async(
+        self,
+        tmp_req: main_models.QueryApmGrafanaDataRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryApmGrafanaDataResponse:
+        tmp_req.validate()
+        request = main_models.QueryApmGrafanaDataShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.query_params):
+            request.query_params_shrink = Utils.array_to_string_with_specified_style(tmp_req.query_params, 'queryParams', 'json')
+        query = {}
+        if not DaraCore.is_null(request.component_name):
+            query['componentName'] = request.component_name
+        if not DaraCore.is_null(request.dashboard_id):
+            query['dashboardId'] = request.dashboard_id
+        if not DaraCore.is_null(request.end):
+            query['end'] = request.end
+        if not DaraCore.is_null(request.provider):
+            query['provider'] = request.provider
+        if not DaraCore.is_null(request.query):
+            query['query'] = request.query
+        if not DaraCore.is_null(request.query_params_shrink):
+            query['queryParams'] = request.query_params_shrink
+        if not DaraCore.is_null(request.query_url):
+            query['queryUrl'] = request.query_url
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        if not DaraCore.is_null(request.start):
+            query['start'] = request.start
+        if not DaraCore.is_null(request.step):
+            query['step'] = request.step
+        if not DaraCore.is_null(request.time):
+            query['time'] = request.time
+        if not DaraCore.is_null(request.variables):
+            query['variables'] = request.variables
+        if not DaraCore.is_null(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryApmGrafanaData',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/apm/action/queryApmGrafanaData',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryApmGrafanaDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_apm_grafana_data(
+        self,
+        request: main_models.QueryApmGrafanaDataRequest,
+    ) -> main_models.QueryApmGrafanaDataResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.query_apm_grafana_data_with_options(request, headers, runtime)
+
+    async def query_apm_grafana_data_async(
+        self,
+        request: main_models.QueryApmGrafanaDataRequest,
+    ) -> main_models.QueryApmGrafanaDataResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.query_apm_grafana_data_with_options_async(request, headers, runtime)
+
     def refresh_livy_compute_token_with_options(
         self,
         workspace_biz_id: str,
@@ -6381,6 +6606,8 @@ class Client(OpenApiClient):
             query['comments'] = request.comments
         if not DaraCore.is_null(request.email):
             query['email'] = request.email
+        if not DaraCore.is_null(request.expected_parallelism_number):
+            query['expectedParallelismNumber'] = request.expected_parallelism_number
         if not DaraCore.is_null(request.interval):
             query['interval'] = request.interval
         if not DaraCore.is_null(request.is_prod):
@@ -6391,6 +6618,8 @@ class Client(OpenApiClient):
             query['productNamespace'] = request.product_namespace
         if not DaraCore.is_null(request.region_id):
             query['regionId'] = request.region_id
+        if not DaraCore.is_null(request.run_mode):
+            query['runMode'] = request.run_mode
         if not DaraCore.is_null(request.runtime_queue):
             query['runtimeQueue'] = request.runtime_queue
         if not DaraCore.is_null(request.version_hash_code):
@@ -6432,6 +6661,8 @@ class Client(OpenApiClient):
             query['comments'] = request.comments
         if not DaraCore.is_null(request.email):
             query['email'] = request.email
+        if not DaraCore.is_null(request.expected_parallelism_number):
+            query['expectedParallelismNumber'] = request.expected_parallelism_number
         if not DaraCore.is_null(request.interval):
             query['interval'] = request.interval
         if not DaraCore.is_null(request.is_prod):
@@ -6442,6 +6673,8 @@ class Client(OpenApiClient):
             query['productNamespace'] = request.product_namespace
         if not DaraCore.is_null(request.region_id):
             query['regionId'] = request.region_id
+        if not DaraCore.is_null(request.run_mode):
+            query['runMode'] = request.run_mode
         if not DaraCore.is_null(request.runtime_queue):
             query['runtimeQueue'] = request.runtime_queue
         if not DaraCore.is_null(request.version_hash_code):
@@ -7083,6 +7316,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.active_deadline_seconds):
             body['activeDeadlineSeconds'] = request.active_deadline_seconds
+        if not DaraCore.is_null(request.cluster_id):
+            body['clusterId'] = request.cluster_id
         if not DaraCore.is_null(request.display_release_version):
             body['displayReleaseVersion'] = request.display_release_version
         if not DaraCore.is_null(request.entrypoint):
@@ -7152,6 +7387,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.active_deadline_seconds):
             body['activeDeadlineSeconds'] = request.active_deadline_seconds
+        if not DaraCore.is_null(request.cluster_id):
+            body['clusterId'] = request.cluster_id
         if not DaraCore.is_null(request.display_release_version):
             body['displayReleaseVersion'] = request.display_release_version
         if not DaraCore.is_null(request.entrypoint):
@@ -7997,6 +8234,8 @@ class Client(OpenApiClient):
             body['gpu'] = request.gpu
         if not DaraCore.is_null(request.gpu_spec):
             body['gpuSpec'] = request.gpu_spec
+        if not DaraCore.is_null(request.gpu_subscription):
+            body['gpuSubscription'] = request.gpu_subscription
         if not DaraCore.is_null(request.ip_white_list):
             body['ipWhiteList'] = request.ip_white_list
         if not DaraCore.is_null(request.resource_group_id):
@@ -8045,6 +8284,8 @@ class Client(OpenApiClient):
             body['gpu'] = request.gpu
         if not DaraCore.is_null(request.gpu_spec):
             body['gpuSpec'] = request.gpu_spec
+        if not DaraCore.is_null(request.gpu_subscription):
+            body['gpuSubscription'] = request.gpu_subscription
         if not DaraCore.is_null(request.ip_white_list):
             body['ipWhiteList'] = request.ip_white_list
         if not DaraCore.is_null(request.resource_group_id):

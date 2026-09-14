@@ -10,11 +10,13 @@ class StartProcessInstanceRequest(DaraModel):
         action: str = None,
         comments: str = None,
         email: str = None,
+        expected_parallelism_number: int = None,
         interval: str = None,
         is_prod: bool = None,
         process_definition_code: int = None,
         product_namespace: str = None,
         region_id: str = None,
+        run_mode: str = None,
         runtime_queue: str = None,
         version_hash_code: str = None,
         version_number: int = None,
@@ -22,8 +24,10 @@ class StartProcessInstanceRequest(DaraModel):
         self.action = action
         self.comments = comments
         self.email = email
+        # The expected concurrency.
+        self.expected_parallelism_number = expected_parallelism_number
         self.interval = interval
-        # Specifies whether the workflow runs in a production environment.
+        # Specifies whether the workflow runs in the production environment.
         self.is_prod = is_prod
         # The workflow definition ID.
         # 
@@ -35,11 +39,13 @@ class StartProcessInstanceRequest(DaraModel):
         self.product_namespace = product_namespace
         # The region ID.
         self.region_id = region_id
+        # The execution policy.
+        self.run_mode = run_mode
         # The runtime queue.
         self.runtime_queue = runtime_queue
-        # The hash code of the version.
+        # The version hash code.
         self.version_hash_code = version_hash_code
-        # The version number of the workflow definition.
+        # The workflow definition version number.
         self.version_number = version_number
 
     def validate(self):
@@ -59,6 +65,9 @@ class StartProcessInstanceRequest(DaraModel):
         if self.email is not None:
             result['email'] = self.email
 
+        if self.expected_parallelism_number is not None:
+            result['expectedParallelismNumber'] = self.expected_parallelism_number
+
         if self.interval is not None:
             result['interval'] = self.interval
 
@@ -73,6 +82,9 @@ class StartProcessInstanceRequest(DaraModel):
 
         if self.region_id is not None:
             result['regionId'] = self.region_id
+
+        if self.run_mode is not None:
+            result['runMode'] = self.run_mode
 
         if self.runtime_queue is not None:
             result['runtimeQueue'] = self.runtime_queue
@@ -96,6 +108,9 @@ class StartProcessInstanceRequest(DaraModel):
         if m.get('email') is not None:
             self.email = m.get('email')
 
+        if m.get('expectedParallelismNumber') is not None:
+            self.expected_parallelism_number = m.get('expectedParallelismNumber')
+
         if m.get('interval') is not None:
             self.interval = m.get('interval')
 
@@ -110,6 +125,9 @@ class StartProcessInstanceRequest(DaraModel):
 
         if m.get('regionId') is not None:
             self.region_id = m.get('regionId')
+
+        if m.get('runMode') is not None:
+            self.run_mode = m.get('runMode')
 
         if m.get('runtimeQueue') is not None:
             self.runtime_queue = m.get('runtimeQueue')

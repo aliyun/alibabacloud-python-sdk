@@ -16,9 +16,9 @@ class ListWorkspaceQueuesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The maximum number of records to return in a single request.
+        # The maximum number of records returned per request.
         self.max_results = max_results
-        # The token for the next page of results.
+        # The token for the next page.
         self.next_token = next_token
         # The list of queues.
         self.queues = queues
@@ -85,8 +85,11 @@ class ListWorkspaceQueuesResponseBodyQueues(DaraModel):
         allow_actions: List[main_models.ListWorkspaceQueuesResponseBodyQueuesAllowActions] = None,
         create_time: int = None,
         creator: str = None,
+        description: str = None,
         environments: List[str] = None,
+        gpu_machine_num: int = None,
         gpu_spec: List[str] = None,
+        instance_id: str = None,
         max_resource: str = None,
         min_resource: str = None,
         payment_type: str = None,
@@ -101,28 +104,34 @@ class ListWorkspaceQueuesResponseBodyQueues(DaraModel):
         used_resource: str = None,
         workspace_id: str = None,
     ):
-        # The list of allowed operations for the queue.
+        # The list of allowed actions on the queue.
         self.allow_actions = allow_actions
-        # The creation time of the workspace.
+        # The time when the workspace was created.
         self.create_time = create_time
         # The UID of the user who created the queue.
         self.creator = creator
-        # The list of environment types for the queue.
+        # The description.
+        self.description = description
+        # The list of queue environment types.
         self.environments = environments
+        self.gpu_machine_num = gpu_machine_num
+        # The list of GPU models.
         self.gpu_spec = gpu_spec
+        self.instance_id = instance_id
         # The maximum resource capacity of the queue.
         self.max_resource = max_resource
         # The minimum resource capacity of the queue.
         self.min_resource = min_resource
-        # The billing method. Valid values:
+        # The billing type. Valid values:
         # 
-        # - PayAsYouGo: pay-as-you-go
-        # 
-        # - Pre: subscription
+        # - PayAsYouGo: pay-as-you-go.
+        # - Pre: subscription.
         self.payment_type = payment_type
+        # Indicates whether resource prefetch is enabled.
         self.preheat = preheat
         # The queue label.
         self.properties = properties
+        # The queue category, CPU or GPU.
         self.queue_category = queue_category
         # The queue name.
         self.queue_name = queue_name
@@ -132,9 +141,8 @@ class ListWorkspaceQueuesResponseBodyQueues(DaraModel):
         self.queue_status = queue_status
         # The queue type. Valid values:
         # 
-        # - instance: A queue for a single task.
-        # 
-        # - instanceChildren: A queue for a parent task.
+        # - instance: single task type
+        # - instanceChildren: parent task type
         self.queue_type = queue_type
         # The region ID.
         self.region_id = region_id
@@ -165,11 +173,20 @@ class ListWorkspaceQueuesResponseBodyQueues(DaraModel):
         if self.creator is not None:
             result['creator'] = self.creator
 
+        if self.description is not None:
+            result['description'] = self.description
+
         if self.environments is not None:
             result['environments'] = self.environments
 
+        if self.gpu_machine_num is not None:
+            result['gpuMachineNum'] = self.gpu_machine_num
+
         if self.gpu_spec is not None:
             result['gpuSpec'] = self.gpu_spec
+
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
 
         if self.max_resource is not None:
             result['maxResource'] = self.max_resource
@@ -226,11 +243,20 @@ class ListWorkspaceQueuesResponseBodyQueues(DaraModel):
         if m.get('creator') is not None:
             self.creator = m.get('creator')
 
+        if m.get('description') is not None:
+            self.description = m.get('description')
+
         if m.get('environments') is not None:
             self.environments = m.get('environments')
 
+        if m.get('gpuMachineNum') is not None:
+            self.gpu_machine_num = m.get('gpuMachineNum')
+
         if m.get('gpuSpec') is not None:
             self.gpu_spec = m.get('gpuSpec')
+
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
 
         if m.get('maxResource') is not None:
             self.max_resource = m.get('maxResource')
@@ -282,7 +308,7 @@ class ListWorkspaceQueuesResponseBodyQueuesAllowActions(DaraModel):
         description: str = None,
         display_name: str = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of the behavior.
+        # The action ARN.
         self.action_arn = action_arn
         # The permission name.
         self.action_name = action_name

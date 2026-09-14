@@ -83,6 +83,9 @@ from ._delete_livy_compute_token_response_body import DeleteLivyComputeTokenResp
 from ._delete_livy_compute_token_response import DeleteLivyComputeTokenResponse
 from ._delete_ray_cluster_response_body import DeleteRayClusterResponseBody
 from ._delete_ray_cluster_response import DeleteRayClusterResponse
+from ._delete_workspace_queue_request import DeleteWorkspaceQueueRequest
+from ._delete_workspace_queue_response_body import DeleteWorkspaceQueueResponseBody
+from ._delete_workspace_queue_response import DeleteWorkspaceQueueResponse
 from ._edit_workspace_queue_request import EditWorkspaceQueueRequest
 from ._edit_workspace_queue_response_body import EditWorkspaceQueueResponseBody
 from ._edit_workspace_queue_response import EditWorkspaceQueueResponse
@@ -151,6 +154,7 @@ from ._list_job_runs_request import ListJobRunsRequest
 from ._list_job_runs_shrink_request import ListJobRunsShrinkRequest
 from ._list_job_runs_response_body import ListJobRunsResponseBody
 from ._list_job_runs_response import ListJobRunsResponse
+from ._list_kyuubi_services_request import ListKyuubiServicesRequest
 from ._list_kyuubi_services_response_body import ListKyuubiServicesResponseBody
 from ._list_kyuubi_services_response import ListKyuubiServicesResponse
 from ._list_kyuubi_spark_applications_request import ListKyuubiSparkApplicationsRequest
@@ -207,6 +211,10 @@ from ._list_workspaces_request import ListWorkspacesRequest
 from ._list_workspaces_shrink_request import ListWorkspacesShrinkRequest
 from ._list_workspaces_response_body import ListWorkspacesResponseBody
 from ._list_workspaces_response import ListWorkspacesResponse
+from ._query_apm_grafana_data_request import QueryApmGrafanaDataRequest
+from ._query_apm_grafana_data_shrink_request import QueryApmGrafanaDataShrinkRequest
+from ._query_apm_grafana_data_response_body import QueryApmGrafanaDataResponseBody
+from ._query_apm_grafana_data_response import QueryApmGrafanaDataResponse
 from ._refresh_livy_compute_token_request import RefreshLivyComputeTokenRequest
 from ._refresh_livy_compute_token_response_body import RefreshLivyComputeTokenResponseBody
 from ._refresh_livy_compute_token_response import RefreshLivyComputeTokenResponse
@@ -300,6 +308,7 @@ from ._create_process_definition_with_schedule_request import CreateProcessDefin
 from ._create_process_definition_with_schedule_request import CreateProcessDefinitionWithScheduleRequestTaskDefinitionJson
 from ._create_process_definition_with_schedule_request import CreateProcessDefinitionWithScheduleRequestTaskRelationJson
 from ._create_process_definition_with_schedule_response_body import CreateProcessDefinitionWithScheduleResponseBodyData
+from ._create_ray_cluster_request import CreateRayClusterRequestHeadSpecGftConfig
 from ._create_ray_cluster_request import CreateRayClusterRequestHeadSpec
 from ._create_ray_cluster_request import CreateRayClusterRequestWorkerSpec
 from ._create_session_cluster_request import CreateSessionClusterRequestApplicationConfigs
@@ -321,6 +330,7 @@ from ._get_livy_compute_response_body import GetLivyComputeResponseBodyDataAutoS
 from ._get_livy_compute_response_body import GetLivyComputeResponseBodyData
 from ._get_livy_compute_token_response_body import GetLivyComputeTokenResponseBodyDataAutoExpireConfiguration
 from ._get_livy_compute_token_response_body import GetLivyComputeTokenResponseBodyData
+from ._get_ray_cluster_response_body import GetRayClusterResponseBodyHeadSpecGftConfig
 from ._get_ray_cluster_response_body import GetRayClusterResponseBodyHeadSpec
 from ._get_ray_cluster_response_body import GetRayClusterResponseBodyInstances
 from ._get_ray_cluster_response_body import GetRayClusterResponseBodyWorkerSpec
@@ -387,9 +397,12 @@ from ._list_workspace_queues_response_body import ListWorkspaceQueuesResponseBod
 from ._list_workspace_queues_response_body import ListWorkspaceQueuesResponseBodyQueues
 from ._list_workspaces_request import ListWorkspacesRequestTag
 from ._list_workspaces_response_body import ListWorkspacesResponseBodyWorkspacesPrePaidQuota
+from ._list_workspaces_response_body import ListWorkspacesResponseBodyWorkspacesPrePaidQuotaGpu
 from ._list_workspaces_response_body import ListWorkspacesResponseBodyWorkspacesStateChangeReason
 from ._list_workspaces_response_body import ListWorkspacesResponseBodyWorkspacesTags
 from ._list_workspaces_response_body import ListWorkspacesResponseBodyWorkspaces
+from ._query_apm_grafana_data_request import QueryApmGrafanaDataRequestQueryParams
+from ._query_apm_grafana_data_response_body import QueryApmGrafanaDataResponseBodyData
 from ._refresh_livy_compute_token_request import RefreshLivyComputeTokenRequestAutoExpireConfiguration
 from ._start_job_run_request import StartJobRunRequestConfigurationOverridesConfigurations
 from ._start_job_run_request import StartJobRunRequestConfigurationOverrides
@@ -407,8 +420,10 @@ from ._update_process_definition_with_schedule_request import UpdateProcessDefin
 from ._update_process_definition_with_schedule_request import UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson
 from ._update_process_definition_with_schedule_request import UpdateProcessDefinitionWithScheduleRequestTaskRelationJson
 from ._update_process_definition_with_schedule_response_body import UpdateProcessDefinitionWithScheduleResponseBodyData
+from ._update_ray_cluster_request import UpdateRayClusterRequestHeadSpecGftConfig
 from ._update_ray_cluster_request import UpdateRayClusterRequestHeadSpec
 from ._update_ray_cluster_request import UpdateRayClusterRequestWorkerSpec
+from ._update_workspace_request import UpdateWorkspaceRequestGpuSubscription
 from ._update_workspace_request import UpdateWorkspaceRequestSubscription
 from ._update_workspace_response_body import UpdateWorkspaceResponseBodyData
 
@@ -494,6 +509,9 @@ __all__ = [
     DeleteLivyComputeTokenResponse,
     DeleteRayClusterResponseBody,
     DeleteRayClusterResponse,
+    DeleteWorkspaceQueueRequest,
+    DeleteWorkspaceQueueResponseBody,
+    DeleteWorkspaceQueueResponse,
     EditWorkspaceQueueRequest,
     EditWorkspaceQueueResponseBody,
     EditWorkspaceQueueResponse,
@@ -562,6 +580,7 @@ __all__ = [
     ListJobRunsShrinkRequest,
     ListJobRunsResponseBody,
     ListJobRunsResponse,
+    ListKyuubiServicesRequest,
     ListKyuubiServicesResponseBody,
     ListKyuubiServicesResponse,
     ListKyuubiSparkApplicationsRequest,
@@ -618,6 +637,10 @@ __all__ = [
     ListWorkspacesShrinkRequest,
     ListWorkspacesResponseBody,
     ListWorkspacesResponse,
+    QueryApmGrafanaDataRequest,
+    QueryApmGrafanaDataShrinkRequest,
+    QueryApmGrafanaDataResponseBody,
+    QueryApmGrafanaDataResponse,
     RefreshLivyComputeTokenRequest,
     RefreshLivyComputeTokenResponseBody,
     RefreshLivyComputeTokenResponse,
@@ -711,6 +734,7 @@ __all__ = [
     CreateProcessDefinitionWithScheduleRequestTaskDefinitionJson,
     CreateProcessDefinitionWithScheduleRequestTaskRelationJson,
     CreateProcessDefinitionWithScheduleResponseBodyData,
+    CreateRayClusterRequestHeadSpecGftConfig,
     CreateRayClusterRequestHeadSpec,
     CreateRayClusterRequestWorkerSpec,
     CreateSessionClusterRequestApplicationConfigs,
@@ -732,6 +756,7 @@ __all__ = [
     GetLivyComputeResponseBodyData,
     GetLivyComputeTokenResponseBodyDataAutoExpireConfiguration,
     GetLivyComputeTokenResponseBodyData,
+    GetRayClusterResponseBodyHeadSpecGftConfig,
     GetRayClusterResponseBodyHeadSpec,
     GetRayClusterResponseBodyInstances,
     GetRayClusterResponseBodyWorkerSpec,
@@ -798,9 +823,12 @@ __all__ = [
     ListWorkspaceQueuesResponseBodyQueues,
     ListWorkspacesRequestTag,
     ListWorkspacesResponseBodyWorkspacesPrePaidQuota,
+    ListWorkspacesResponseBodyWorkspacesPrePaidQuotaGpu,
     ListWorkspacesResponseBodyWorkspacesStateChangeReason,
     ListWorkspacesResponseBodyWorkspacesTags,
     ListWorkspacesResponseBodyWorkspaces,
+    QueryApmGrafanaDataRequestQueryParams,
+    QueryApmGrafanaDataResponseBodyData,
     RefreshLivyComputeTokenRequestAutoExpireConfiguration,
     StartJobRunRequestConfigurationOverridesConfigurations,
     StartJobRunRequestConfigurationOverrides,
@@ -818,8 +846,10 @@ __all__ = [
     UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson,
     UpdateProcessDefinitionWithScheduleRequestTaskRelationJson,
     UpdateProcessDefinitionWithScheduleResponseBodyData,
+    UpdateRayClusterRequestHeadSpecGftConfig,
     UpdateRayClusterRequestHeadSpec,
     UpdateRayClusterRequestWorkerSpec,
+    UpdateWorkspaceRequestGpuSubscription,
     UpdateWorkspaceRequestSubscription,
     UpdateWorkspaceResponseBodyData
 ]

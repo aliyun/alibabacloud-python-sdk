@@ -13,7 +13,7 @@ class ListKyuubiServicesResponseBody(DaraModel):
         data: main_models.ListKyuubiServicesResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned data.
+        # The response data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -51,7 +51,7 @@ class ListKyuubiServicesResponseBodyData(DaraModel):
         self,
         kyuubi_services: List[main_models.ListKyuubiServicesResponseBodyDataKyuubiServices] = None,
     ):
-        # A list of Kyuubi servers.
+        # The list of KyuubiServer instances.
         self.kyuubi_services = kyuubi_services
 
     def validate(self):
@@ -100,37 +100,40 @@ class ListKyuubiServicesResponseBodyDataKyuubiServices(DaraModel):
         spark_configs: str = None,
         start_time: str = None,
         state: str = None,
+        web_ui: str = None,
     ):
-        # The instance type of the Kyuubi server.
+        # The KyuubiServer instance type.
         self.compute_instance = compute_instance
-        # The time when the server was created.
+        # The creation time.
         self.create_time = create_time
-        # The UID of the user who created the server.
+        # The UID of the user who created the KyuubiServer.
         self.creator = creator
-        # The internal endpoint.
+        # The internal network endpoint.
         self.inner_endpoint = inner_endpoint
-        # The Kyuubi server configurations.
+        # The KyuubiServer configurations.
         self.kyuubi_configs = kyuubi_configs
-        # The version of the Kyuubi server.
+        # The KyuubiServer version.
         self.kyuubi_release_version = kyuubi_release_version
-        # The Kyuubi server ID.
+        # KyuubiServer ID。
         self.kyuubi_service_id = kyuubi_service_id
-        # The name of the Kyuubi server.
+        # The KyuubiServer name.
         self.name = name
-        # The public endpoint.
+        # The public domain name.
         self.public_endpoint = public_endpoint
         # The queue name.
         self.queue = queue
-        # The version number of the Spark engine.
+        # The Spark DPI engine database engine version number.
         self.release_version = release_version
-        # The number of replicas for the Kyuubi server.
+        # The number of KyuubiServer replicas.
         self.replica = replica
-        # The default configurations for Spark applications launched by the Kyuubi server.
+        # The default configurations for Spark applications started by KyuubiServer.
         self.spark_configs = spark_configs
-        # The time when the Kyuubi server was last started.
+        # The most recent start time of KyuubiServer.
         self.start_time = start_time
-        # The status of the Kyuubi server.
+        # The KyuubiServer status.
         self.state = state
+        # The WebUI of the Kyuubi Gateway.
+        self.web_ui = web_ui
 
     def validate(self):
         pass
@@ -185,6 +188,9 @@ class ListKyuubiServicesResponseBodyDataKyuubiServices(DaraModel):
         if self.state is not None:
             result['state'] = self.state
 
+        if self.web_ui is not None:
+            result['webUi'] = self.web_ui
+
         return result
 
     def from_map(self, m: dict = None):
@@ -233,6 +239,9 @@ class ListKyuubiServicesResponseBodyDataKyuubiServices(DaraModel):
 
         if m.get('state') is not None:
             self.state = m.get('state')
+
+        if m.get('webUi') is not None:
+            self.web_ui = m.get('webUi')
 
         return self
 

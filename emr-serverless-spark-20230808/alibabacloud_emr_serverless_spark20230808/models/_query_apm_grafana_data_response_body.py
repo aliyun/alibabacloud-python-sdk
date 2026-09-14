@@ -5,19 +5,13 @@ from __future__ import annotations
 from alibabacloud_emr_serverless_spark20230808 import models as main_models
 from darabonba.model import DaraModel
 
-class UpdateWorkspaceResponseBody(DaraModel):
+class QueryApmGrafanaDataResponseBody(DaraModel):
     def __init__(
         self,
-        data: main_models.UpdateWorkspaceResponseBodyData = None,
-        order_id: str = None,
-        request_id: str = None,
+        data: main_models.QueryApmGrafanaDataResponseBodyData = None,
     ):
-        # The returned data.
+        # The response data.
         self.data = data
-        # The order ID.
-        self.order_id = order_id
-        # Id of the request
-        self.request_id = request_id
 
     def validate(self):
         if self.data:
@@ -31,35 +25,23 @@ class UpdateWorkspaceResponseBody(DaraModel):
         if self.data is not None:
             result['data'] = self.data.to_map()
 
-        if self.order_id is not None:
-            result['orderId'] = self.order_id
-
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('data') is not None:
-            temp_model = main_models.UpdateWorkspaceResponseBodyData()
+            temp_model = main_models.QueryApmGrafanaDataResponseBodyData()
             self.data = temp_model.from_map(m.get('data'))
-
-        if m.get('orderId') is not None:
-            self.order_id = m.get('orderId')
-
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
 
         return self
 
-class UpdateWorkspaceResponseBodyData(DaraModel):
+class QueryApmGrafanaDataResponseBodyData(DaraModel):
     def __init__(
         self,
-        order_id: str = None,
+        data: str = None,
     ):
-        # The order ID.
-        self.order_id = order_id
+        # The returned data.
+        self.data = data
 
     def validate(self):
         pass
@@ -69,15 +51,15 @@ class UpdateWorkspaceResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.order_id is not None:
-            result['orderId'] = self.order_id
+        if self.data is not None:
+            result['data'] = self.data
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('orderId') is not None:
-            self.order_id = m.get('orderId')
+        if m.get('data') is not None:
+            self.data = m.get('data')
 
         return self
 

@@ -4,14 +4,11 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class CreateRayClusterResponseBody(DaraModel):
+class DeleteWorkspaceQueueResponseBody(DaraModel):
     def __init__(
         self,
-        cluster_id: str = None,
         request_id: str = None,
     ):
-        # The Ray cluster ID.
-        self.cluster_id = cluster_id
         # The request ID.
         self.request_id = request_id
 
@@ -23,21 +20,15 @@ class CreateRayClusterResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.cluster_id is not None:
-            result['clusterId'] = self.cluster_id
-
         if self.request_id is not None:
-            result['requestId'] = self.request_id
+            result['RequestId'] = self.request_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('clusterId') is not None:
-            self.cluster_id = m.get('clusterId')
-
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
 
         return self
 

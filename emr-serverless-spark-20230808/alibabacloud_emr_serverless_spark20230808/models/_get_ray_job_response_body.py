@@ -49,43 +49,93 @@ class GetRayJobResponseBody(DaraModel):
         worker_specs: List[main_models.GetRayJobResponseBodyWorkerSpecs] = None,
         working_dir: str = None,
     ):
+        # The timeout period.
         self.active_deadline_seconds = active_deadline_seconds
+        # The number of failure retries. Currently fixed at 0.
         self.backoff_limit = backoff_limit
+        # The status of the corresponding Ray cluster. Valid values:
+        # - Deleted: Deleted.
+        # - Submitted: Submitted but creation has not started.
+        # - Pending: Being created.
+        # - Running: Running.
         self.cluster_state = cluster_state
+        # The nickname of the creator.
         self.creator_name = creator_name
+        # The consumed CU resources. This value is returned 10 minutes after the cluster is released.
         self.cu_hours = cu_hours
+        # The dashboard URL of the Ray cluster. When the Ray cluster is in the Running state, this is the Runtime UI. After the cluster enters the Deleted state, this is the History UI. History UI is supported only in err-1.2.0 and later versions.
         self.dashboard_url = dashboard_url
+        # The extra dashboard UI URLs. This field is currently empty.
         self.dashboard_url_extra = dashboard_url_extra
+        # The Ray DPI engine version.
         self.display_release_version = display_release_version
+        # The task duration, in seconds.
         self.duration = duration
+        # The task end time. This value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
+        # The startup command.
         self.entrypoint = entrypoint
+        # The memory size requested by the entrypoint task.
         self.entrypoint_memory = entrypoint_memory
+        # The number of CPUs requested by the entrypoint task.
         self.entrypoint_num_cpus = entrypoint_num_cpus
+        # The number of GPUs requested by the entrypoint task.
         self.entrypoint_num_gpus = entrypoint_num_gpus
+        # The custom resource request JSON string for the entrypoint task.
         self.entrypoint_resources = entrypoint_resources
+        # The extra parameters in JSON format.
         self.extra_param = extra_param
+        # The consumed GPU hours. This field is currently empty.
         self.gu_hours = gu_hours
+        # The parameters of the Ray cluster head node.
         self.head_spec = head_spec
+        # The name of the bucket that stores logs.
         self.log_bucket_name = log_bucket_name
+        # The path where logs are stored.
         self.log_path = log_path
+        # The execution information.
         self.message = message
+        # The task metadata JSON string.
         self.metadata_json = metadata_json
+        # The name of the Ray cluster.
         self.name = name
+        # The network connectivity name.
         self.network_service_name = network_service_name
+        # The request ID.
         self.request_id = request_id
+        # The Ray runtime environment JSON string.
         self.runtime_env_json = runtime_env_json
+        # Specifies whether to automatically destroy the temporary cluster after the task is completed. Default value: true.
         self.shutdown_after_job_finishes = shutdown_after_job_finishes
+        # The start time. This value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
+        # The task status. Valid values:
+        # - Submitted: The task is submitted.
+        # - Pending: The cluster is being created.
+        # - Running: The task is running.
+        # - Succeeded: The task succeeded.
+        # - Failed: The task failed.
+        # - Cancelling: The task is being canceled.
+        # - Cancelled: The task is canceled.
+        # - Timeout: The task timed out and was canceled.
         self.status = status
+        # The ID of the Ray Job.
         self.submission_id = submission_id
+        # The job submission mode.
         self.submission_mode = submission_mode
+        # The task submission time. This value is a UNIX timestamp in milliseconds.
         self.submit_time = submit_time
+        # The tags.
         self.tags = tags
+        # The ID of the data development node.
         self.task_biz_id = task_biz_id
+        # The number of seconds to wait before destroying the cluster. This parameter takes effect only when shutdownAfterJobFinishes is set to true.
         self.ttl_seconds_after_finished = ttl_seconds_after_finished
+        # The list of managed file IDs.
         self.volume_ids = volume_ids
+        # The Ray cluster worker node information.
         self.worker_specs = worker_specs
+        # The URL of the task code working directory.
         self.working_dir = working_dir
 
     def validate(self):
@@ -357,6 +407,7 @@ class GetRayJobResponseBodyWorkerSpecs(DaraModel):
     def __init__(
         self,
         cpu: str = None,
+        display_release_version: str = None,
         gpu_spec: str = None,
         group_name: str = None,
         max_replica: int = None,
@@ -365,13 +416,23 @@ class GetRayJobResponseBodyWorkerSpecs(DaraModel):
         queue_name: str = None,
         replica: int = None,
     ):
+        # The number of CPU cores.
         self.cpu = cpu
+        # The DPI engine version.
+        self.display_release_version = display_release_version
+        # The GPU type.
         self.gpu_spec = gpu_spec
+        # The worker node group name.
         self.group_name = group_name
+        # The maximum number of workers.
         self.max_replica = max_replica
+        # The memory size, in GiB.
         self.memory = memory
+        # The minimum number of workers.
         self.min_replica = min_replica
+        # The queue name.
         self.queue_name = queue_name
+        # The number of worker nodes.
         self.replica = replica
 
     def validate(self):
@@ -384,6 +445,9 @@ class GetRayJobResponseBodyWorkerSpecs(DaraModel):
             result = _map
         if self.cpu is not None:
             result['cpu'] = self.cpu
+
+        if self.display_release_version is not None:
+            result['displayReleaseVersion'] = self.display_release_version
 
         if self.gpu_spec is not None:
             result['gpuSpec'] = self.gpu_spec
@@ -413,6 +477,9 @@ class GetRayJobResponseBodyWorkerSpecs(DaraModel):
         if m.get('cpu') is not None:
             self.cpu = m.get('cpu')
 
+        if m.get('displayReleaseVersion') is not None:
+            self.display_release_version = m.get('displayReleaseVersion')
+
         if m.get('gpuSpec') is not None:
             self.gpu_spec = m.get('gpuSpec')
 
@@ -440,6 +507,7 @@ class GetRayJobResponseBodyHeadSpec(DaraModel):
     def __init__(
         self,
         cpu: str = None,
+        display_release_version: str = None,
         enable_auto_scaling: bool = None,
         gpu_spec: str = None,
         idle_timeout_seconds: int = None,
@@ -447,12 +515,21 @@ class GetRayJobResponseBodyHeadSpec(DaraModel):
         queue_name: str = None,
         replica: int = None,
     ):
+        # The number of CPU cores.
         self.cpu = cpu
+        # The Ray DPI engine version.
+        self.display_release_version = display_release_version
+        # Indicates whether automatic scaling is enabled for worker nodes.
         self.enable_auto_scaling = enable_auto_scaling
+        # The GPU type.
         self.gpu_spec = gpu_spec
+        # The idle timeout for worker nodes when automatic scaling is enabled.
         self.idle_timeout_seconds = idle_timeout_seconds
+        # The memory size, in GiB.
         self.memory = memory
+        # The queue name.
         self.queue_name = queue_name
+        # The number of nodes.
         self.replica = replica
 
     def validate(self):
@@ -465,6 +542,9 @@ class GetRayJobResponseBodyHeadSpec(DaraModel):
             result = _map
         if self.cpu is not None:
             result['cpu'] = self.cpu
+
+        if self.display_release_version is not None:
+            result['displayReleaseVersion'] = self.display_release_version
 
         if self.enable_auto_scaling is not None:
             result['enableAutoScaling'] = self.enable_auto_scaling
@@ -490,6 +570,9 @@ class GetRayJobResponseBodyHeadSpec(DaraModel):
         m = m or dict()
         if m.get('cpu') is not None:
             self.cpu = m.get('cpu')
+
+        if m.get('displayReleaseVersion') is not None:
+            self.display_release_version = m.get('displayReleaseVersion')
 
         if m.get('enableAutoScaling') is not None:
             self.enable_auto_scaling = m.get('enableAutoScaling')
@@ -517,7 +600,9 @@ class GetRayJobResponseBodyGuHours(DaraModel):
         gpu_hours: float = None,
         gpu_spec: str = None,
     ):
+        # The consumed GPU hours.
         self.gpu_hours = gpu_hours
+        # The GPU type.
         self.gpu_spec = gpu_spec
 
     def validate(self):

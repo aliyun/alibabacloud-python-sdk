@@ -1,3 +1,45 @@
+2026-09-14 Version: 2.0.0
+- Support API QueryApmGrafanaData.
+- Update API CreateRayCluster: add request parameters body.headSpec.displayReleaseVersion.
+- Update API CreateRayCluster: add request parameters body.headSpec.env.
+- Update API CreateRayCluster: add request parameters body.headSpec.gftConfig.
+- Update API CreateRayCluster: add request parameters body.headSpec.gftEnabled.
+- Update API CreateRayCluster: add request parameters body.headSpec.rayStartParams.
+- Update API CreateRayCluster: add request parameters body.workerSpec.$.displayReleaseVersion.
+- Update API CreateRayCluster: add request parameters body.workerSpec.$.env.
+- Update API CreateRayCluster: add request parameters body.workerSpec.$.rayStartParams.
+- Update API EditWorkspaceQueue: add request parameters body.description.
+- Update API GetJobRun: add response parameters Body.jobRun.totalTokens.
+- Update API GetRayCluster: add response parameters Body.headSpec.displayReleaseVersion.
+- Update API GetRayCluster: add response parameters Body.headSpec.env.
+- Update API GetRayCluster: add response parameters Body.headSpec.gftConfig.
+- Update API GetRayCluster: add response parameters Body.headSpec.gftEnabled.
+- Update API GetRayCluster: add response parameters Body.headSpec.rayStartParams.
+- Update API GetRayCluster: add response parameters Body.workerSpec.$.displayReleaseVersion.
+- Update API GetRayCluster: add response parameters Body.workerSpec.$.env.
+- Update API GetRayCluster: add response parameters Body.workerSpec.$.rayStartParams.
+- Update API GetRayJob: add response parameters Body.headSpec.displayReleaseVersion.
+- Update API GetRayJob: add response parameters Body.workerSpecs.$.displayReleaseVersion.
+- Update API ListKyuubiServices: add request parameters token.
+- Update API ListKyuubiServices: add response parameters Body.data.kyuubiServices.$.webUi.
+- Update API ListKyuubiServices: add request The number of query or body parameters has changed from zero to many.
+- Update API ListReleaseVersions: add response parameters Body.releaseVersions.$.isCustom.
+- Update API ListWorkspaceQueues: add response parameters Body.queues.$.description.
+- Update API StartProcessInstance: add request parameters expectedParallelismNumber.
+- Update API StartProcessInstance: add request parameters runMode.
+- Update API SubmitRayJob: add request parameters body.clusterId.
+- Update API SubmitRayJob: add request parameters body.headSpec.displayReleaseVersion.
+- Update API SubmitRayJob: add request parameters body.workerSpec.$.displayReleaseVersion.
+- Update API UpdateRayCluster: add request parameters body.headSpec.displayReleaseVersion.
+- Update API UpdateRayCluster: add request parameters body.headSpec.env.
+- Update API UpdateRayCluster: add request parameters body.headSpec.gftConfig.
+- Update API UpdateRayCluster: add request parameters body.headSpec.gftEnabled.
+- Update API UpdateRayCluster: add request parameters body.headSpec.rayStartParams.
+- Update API UpdateRayCluster: add request parameters body.workerSpec.$.displayReleaseVersion.
+- Update API UpdateRayCluster: add request parameters body.workerSpec.$.env.
+- Update API UpdateRayCluster: add request parameters body.workerSpec.$.rayStartParams.
+
+
 2026-06-30 Version: 1.26.0
 - Support API GetRayLog.
 - Support API ListRayLogs.

@@ -13,7 +13,7 @@ class GetJobRunResponseBody(DaraModel):
         job_run: main_models.GetJobRunResponseBodyJobRun = None,
         request_id: str = None,
     ):
-        # The details of the job.
+        # The job run details.
         self.job_run = job_run
         # The request ID.
         self.request_id = request_id
@@ -69,6 +69,7 @@ class GetJobRunResponseBodyJobRun(DaraModel):
         state_change_reason: main_models.GetJobRunResponseBodyJobRunStateChangeReason = None,
         submit_time: int = None,
         tags: List[main_models.Tag] = None,
+        total_tokens: int = None,
         web_ui: str = None,
         workspace_id: str = None,
     ):
@@ -80,44 +81,46 @@ class GetJobRunResponseBodyJobRun(DaraModel):
         # 
         # - PYTHON
         self.code_type = code_type
-        # The Spark configurations of the job.
+        # The Spark job configuration.
         self.configuration_overrides = configuration_overrides
-        # The version that is displayed in the console.
+        # The version displayed in the console.
         self.display_release_version = display_release_version
         # The time when the job ended.
         self.end_time = end_time
         # The environment ID.
         self.environment_id = environment_id
-        # The timeout period for the job execution.
+        # The execution timeout period, in seconds.
         self.execution_timeout_seconds = execution_timeout_seconds
-        # Indicates whether to enable the Fusion engine to accelerate the job execution.
+        # Indicates whether the Fusion engine acceleration is enabled.
         self.fusion = fusion
-        # The Spark driver information.
+        # The Spark Driver information.
         self.job_driver = job_driver
         # The job run ID.
         self.job_run_id = job_run_id
         # The path of the run log.
         self.log = log
-        # The name of the job.
+        # The job run name.
         self.name = name
-        # The access URL for the notebook of the job run.
+        # The download URL of the NOTEBOOK file. This parameter is returned only when the job type is NOTEBOOK.
         self.notebook_access_url = notebook_access_url
-        # The priority of the job run.
+        # The job priority.
         self.priority = priority
-        # The Spark engine version.
+        # The Spark DPI engine version used to run the job.
         self.release_version = release_version
-        # The UID of the user who creates the job.
+        # The UID of the user who created the job.
         self.resource_owner_id = resource_owner_id
-        # The name of the queue on which the job runs.
+        # The name of the queue used to run the job.
         self.resource_queue_id = resource_queue_id
-        # The state of the job.
+        # The job run state.
         self.state = state
         # The reason for the state change.
         self.state_change_reason = state_change_reason
         # The time when the job was submitted.
         self.submit_time = submit_time
-        # The tags.
+        # The list of tags.
         self.tags = tags
+        # The total number of tokens consumed.
+        self.total_tokens = total_tokens
         # The web UI of the job.
         self.web_ui = web_ui
         # The workspace ID.
@@ -204,6 +207,9 @@ class GetJobRunResponseBodyJobRun(DaraModel):
             for k1 in self.tags:
                 result['tags'].append(k1.to_map() if k1 else None)
 
+        if self.total_tokens is not None:
+            result['totalTokens'] = self.total_tokens
+
         if self.web_ui is not None:
             result['webUI'] = self.web_ui
 
@@ -281,6 +287,9 @@ class GetJobRunResponseBodyJobRun(DaraModel):
                 temp_model = main_models.Tag()
                 self.tags.append(temp_model.from_map(k1))
 
+        if m.get('totalTokens') is not None:
+            self.total_tokens = m.get('totalTokens')
+
         if m.get('webUI') is not None:
             self.web_ui = m.get('webUI')
 
@@ -331,7 +340,7 @@ class GetJobRunResponseBodyJobRunConfigurationOverrides(DaraModel):
         self,
         configurations: List[main_models.Configuration] = None,
     ):
-        # The configurations.
+        # The list of configurations.
         self.configurations = configurations
 
     def validate(self):

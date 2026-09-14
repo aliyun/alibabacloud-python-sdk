@@ -14,11 +14,17 @@ class ListRayJobShrinkRequest(DaraModel):
         submit_time_shrink: str = None,
         task_biz_id: str = None,
     ):
+        # The name of the Ray Job (exact match).
         self.name = name
+        # The page number. Default value: 1.
         self.page_num = page_num
+        # The number of entries per page. Default value: 20.
         self.page_size = page_size
+        # The submission ID of the Ray Job.
         self.submission_id = submission_id
+        # The submit time range.
         self.submit_time_shrink = submit_time_shrink
+        # The data development node ID.
         self.task_biz_id = task_biz_id
 
     def validate(self):

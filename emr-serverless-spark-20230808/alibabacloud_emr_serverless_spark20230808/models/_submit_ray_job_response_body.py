@@ -10,7 +10,9 @@ class SubmitRayJobResponseBody(DaraModel):
         request_id: str = None,
         submission_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Ray Job ID。
         self.submission_id = submission_id
 
     def validate(self):

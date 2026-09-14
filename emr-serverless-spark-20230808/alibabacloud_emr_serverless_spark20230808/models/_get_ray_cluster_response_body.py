@@ -39,69 +39,66 @@ class GetRayClusterResponseBody(DaraModel):
         volume_ids: List[str] = None,
         worker_spec: List[main_models.GetRayClusterResponseBodyWorkerSpec] = None,
     ):
-        # The ID of the Ray cluster.
+        # The Ray cluster ID.
         self.cluster_id = cluster_id
-        # The time when the cluster was created. This is a UNIX timestamp in milliseconds.
+        # The creation time. This value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The UID of the user who created the cluster.
         self.creator = creator
         # The nickname of the creator.
         self.creator_name = creator_name
-        # The URL of the Ray Dashboard for this cluster.
+        # The URL of the Ray cluster dashboard.
         self.dashboard_url = dashboard_url
-        # The description of the Ray cluster.
+        # The description.
         self.description = description
-        # The version of the Ray engine.
+        # The Ray DPI engine version.
         self.display_release_version = display_release_version
-        # Additional parameters in JSON format.
+        # The extra parameters in JSON format.
         self.extra_param = extra_param
-        # The gRPC endpoint for the internal network. You can also use the domain name in this endpoint to submit Ray jobs.
+        # The gRPC endpoint (internal network). The domain name in this endpoint can also be used to submit Ray jobs.
         self.grpc_endpoint = grpc_endpoint
-        # The configuration of the head node.
+        # The parameters of the Ray cluster head node.
         self.head_spec = head_spec
-        # The ID of the Ray cluster node.
+        # The Ray cluster node IDs.
         self.instance_id = instance_id
-        # The list of nodes in the Ray cluster.
+        # The Ray cluster node IDs.
         self.instances = instances
-        # The public endpoint for submitting Ray jobs.
+        # The public URL for submitting Ray Jobs.
         self.job_url = job_url
+        # The internal network URL for submitting Ray jobs.
         self.job_url_inner = job_url_inner
-        # The error message. Returned when `state` is `Error`.
+        # The error message returned when the status is Error.
         self.message = message
-        # Indicates whether the configuration was modified.
+        # Indicates whether the configuration has been modified.
         self.modified = modified
-        # The time when the cluster was last updated. This is a UNIX timestamp in milliseconds.
+        # The update time. This value is a UNIX timestamp in milliseconds.
         self.modified_time = modified_time
-        # The UID of the user who last updated the cluster.
+        # The UID of the user who last modified the cluster.
         self.modifier = modifier
         # The nickname of the modifier.
         self.modifier_name = modifier_name
-        # The name of the Ray cluster.
+        # The Ray cluster name.
         self.name = name
-        # The name of the network connection.
+        # The network connectivity name.
         self.network_service_name = network_service_name
         # The request ID.
         self.request_id = request_id
-        # The time when the cluster started. This is a UNIX timestamp in milliseconds.
+        # The start time. This value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
-        # The session state. Valid values:
-        # 
-        # - Starting: The session is starting.
-        # 
-        # - Running: The session is running.
-        # 
-        # - Stopping: The session is being stopped.
-        # 
-        # - Stopped: The session is stopped.
-        # 
-        # - Error: The session has failed.
+        # The session status. Valid values:
+        # - Starting: Starting.
+        # - Running: Running.
+        # - Stopping: Stopping.
+        # - Stopped: Stopped.
+        # - Error: Failed.
         self.state = state
-        # The authentication token for submitting Ray jobs. Add this token to the request header in the format `"ray-token": "token"`.
+        # The authentication token for submitting Ray Jobs. Include this token in the request header as "ray-token": "token".
         self.submit_token = submit_token
-        # The ID of the Alibaba Cloud account that created the cluster.
+        # The Alibaba Cloud account ID of the creator.
         self.user_id = user_id
+        # The list of managed file IDs.
         self.volume_ids = volume_ids
-        # The list of worker node group configurations.
+        # The Ray cluster worker node information.
         self.worker_spec = worker_spec
 
     def validate(self):
@@ -310,28 +307,38 @@ class GetRayClusterResponseBodyWorkerSpec(DaraModel):
     def __init__(
         self,
         cpu: str = None,
+        display_release_version: str = None,
+        env: str = None,
         gpu_spec: str = None,
         group_name: str = None,
         max_replica: int = None,
         memory: str = None,
         min_replica: int = None,
         queue_name: str = None,
+        ray_start_params: str = None,
         replica: int = None,
         worker_type: str = None,
     ):
-        # The number of CPU cores per worker node.
+        # The number of CPU cores.
         self.cpu = cpu
+        # The database engine version.
+        self.display_release_version = display_release_version
+        # The Ray environment variables.
+        self.env = env
+        # The GPU instance type.
         self.gpu_spec = gpu_spec
         # The name of the worker node group.
         self.group_name = group_name
-        # The maximum number of worker nodes in the group.
+        # The maximum number of workers.
         self.max_replica = max_replica
-        # The memory size per worker node. Unit: Gi.
+        # The memory size. Unit: Gi.
         self.memory = memory
-        # The minimum number of worker nodes in the group.
+        # The minimum number of workers.
         self.min_replica = min_replica
-        # The name of the queue.
+        # The queue name.
         self.queue_name = queue_name
+        # The Ray startup parameters.
+        self.ray_start_params = ray_start_params
         # The number of worker nodes.
         self.replica = replica
         # The type of the worker node group.
@@ -347,6 +354,12 @@ class GetRayClusterResponseBodyWorkerSpec(DaraModel):
             result = _map
         if self.cpu is not None:
             result['cpu'] = self.cpu
+
+        if self.display_release_version is not None:
+            result['displayReleaseVersion'] = self.display_release_version
+
+        if self.env is not None:
+            result['env'] = self.env
 
         if self.gpu_spec is not None:
             result['gpuSpec'] = self.gpu_spec
@@ -366,6 +379,9 @@ class GetRayClusterResponseBodyWorkerSpec(DaraModel):
         if self.queue_name is not None:
             result['queueName'] = self.queue_name
 
+        if self.ray_start_params is not None:
+            result['rayStartParams'] = self.ray_start_params
+
         if self.replica is not None:
             result['replica'] = self.replica
 
@@ -378,6 +394,12 @@ class GetRayClusterResponseBodyWorkerSpec(DaraModel):
         m = m or dict()
         if m.get('cpu') is not None:
             self.cpu = m.get('cpu')
+
+        if m.get('displayReleaseVersion') is not None:
+            self.display_release_version = m.get('displayReleaseVersion')
+
+        if m.get('env') is not None:
+            self.env = m.get('env')
 
         if m.get('gpuSpec') is not None:
             self.gpu_spec = m.get('gpuSpec')
@@ -396,6 +418,9 @@ class GetRayClusterResponseBodyWorkerSpec(DaraModel):
 
         if m.get('queueName') is not None:
             self.queue_name = m.get('queueName')
+
+        if m.get('rayStartParams') is not None:
+            self.ray_start_params = m.get('rayStartParams')
 
         if m.get('replica') is not None:
             self.replica = m.get('replica')
@@ -420,25 +445,25 @@ class GetRayClusterResponseBodyInstances(DaraModel):
         start_time: int = None,
         type: str = None,
     ):
-        # The exit code of the main container.
+        # The exit code of the primary container.
         self.container_exit_code = container_exit_code
-        # The state of the main container.
+        # The status of the primary container.
         self.container_state = container_state
-        # The status message of the main container.
+        # The primary container status message.
         self.container_state_message = container_state_message
-        # Additional information about the main container state.
+        # The primary container information.
         self.container_state_reason = container_state_reason
-        # The time when the node was created. This is a UNIX timestamp in milliseconds.
+        # The creation time.
         self.create_time = create_time
         # The node ID.
         self.instance_id = instance_id
-        # The status message of the node pod.
+        # The node pod status message.
         self.message = message
-        # The phase of the node pod.
+        # The node pod status.
         self.phase = phase
-        # Additional information about the node.
+        # The node information.
         self.reason = reason
-        # The time when the node started. This is a UNIX timestamp in milliseconds.
+        # The start time.
         self.start_time = start_time
         # The node type.
         self.type = type
@@ -527,29 +552,46 @@ class GetRayClusterResponseBodyHeadSpec(DaraModel):
     def __init__(
         self,
         cpu: str = None,
+        display_release_version: str = None,
         enable_auto_scaling: bool = None,
+        env: str = None,
+        gft_config: main_models.GetRayClusterResponseBodyHeadSpecGftConfig = None,
+        gft_enabled: bool = None,
         gpu_spec: str = None,
         idle_timeout_seconds: int = None,
         memory: str = None,
         queue_name: str = None,
+        ray_start_params: str = None,
         replica: int = None,
     ):
         # The number of CPU cores.
         self.cpu = cpu
-        # Specifies whether auto scaling is enabled for worker nodes.
+        # The Ray DPI engine version.
+        self.display_release_version = display_release_version
+        # Indicates whether automatic scaling is enabled for worker nodes.
         self.enable_auto_scaling = enable_auto_scaling
+        # The environment variables.
+        self.env = env
+        # The GCS Fault Tolerance configuration.
+        self.gft_config = gft_config
+        # Indicates whether GCS Fault Tolerance is enabled.
+        self.gft_enabled = gft_enabled
+        # The GPU instance type.
         self.gpu_spec = gpu_spec
-        # The idle timeout period for worker nodes, in seconds. Applies only when auto scaling is enabled.
+        # The idle timeout period of worker nodes after automatic scaling is enabled.
         self.idle_timeout_seconds = idle_timeout_seconds
         # The memory size. Unit: Gi.
         self.memory = memory
-        # The name of the queue.
+        # The queue name.
         self.queue_name = queue_name
+        # The Ray startup parameters.
+        self.ray_start_params = ray_start_params
         # The number of nodes.
         self.replica = replica
 
     def validate(self):
-        pass
+        if self.gft_config:
+            self.gft_config.validate()
 
     def to_map(self):
         result = dict()
@@ -559,8 +601,20 @@ class GetRayClusterResponseBodyHeadSpec(DaraModel):
         if self.cpu is not None:
             result['cpu'] = self.cpu
 
+        if self.display_release_version is not None:
+            result['displayReleaseVersion'] = self.display_release_version
+
         if self.enable_auto_scaling is not None:
             result['enableAutoScaling'] = self.enable_auto_scaling
+
+        if self.env is not None:
+            result['env'] = self.env
+
+        if self.gft_config is not None:
+            result['gftConfig'] = self.gft_config.to_map()
+
+        if self.gft_enabled is not None:
+            result['gftEnabled'] = self.gft_enabled
 
         if self.gpu_spec is not None:
             result['gpuSpec'] = self.gpu_spec
@@ -574,6 +628,9 @@ class GetRayClusterResponseBodyHeadSpec(DaraModel):
         if self.queue_name is not None:
             result['queueName'] = self.queue_name
 
+        if self.ray_start_params is not None:
+            result['rayStartParams'] = self.ray_start_params
+
         if self.replica is not None:
             result['replica'] = self.replica
 
@@ -584,8 +641,21 @@ class GetRayClusterResponseBodyHeadSpec(DaraModel):
         if m.get('cpu') is not None:
             self.cpu = m.get('cpu')
 
+        if m.get('displayReleaseVersion') is not None:
+            self.display_release_version = m.get('displayReleaseVersion')
+
         if m.get('enableAutoScaling') is not None:
             self.enable_auto_scaling = m.get('enableAutoScaling')
+
+        if m.get('env') is not None:
+            self.env = m.get('env')
+
+        if m.get('gftConfig') is not None:
+            temp_model = main_models.GetRayClusterResponseBodyHeadSpecGftConfig()
+            self.gft_config = temp_model.from_map(m.get('gftConfig'))
+
+        if m.get('gftEnabled') is not None:
+            self.gft_enabled = m.get('gftEnabled')
 
         if m.get('gpuSpec') is not None:
             self.gpu_spec = m.get('gpuSpec')
@@ -599,8 +669,57 @@ class GetRayClusterResponseBodyHeadSpec(DaraModel):
         if m.get('queueName') is not None:
             self.queue_name = m.get('queueName')
 
+        if m.get('rayStartParams') is not None:
+            self.ray_start_params = m.get('rayStartParams')
+
         if m.get('replica') is not None:
             self.replica = m.get('replica')
+
+        return self
+
+class GetRayClusterResponseBodyHeadSpecGftConfig(DaraModel):
+    def __init__(
+        self,
+        redis_password: str = None,
+        redis_url: str = None,
+        redis_username: str = None,
+    ):
+        # The Redis password.
+        self.redis_password = redis_password
+        # The Redis URL.
+        self.redis_url = redis_url
+        # The Redis username.
+        self.redis_username = redis_username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.redis_password is not None:
+            result['redisPassword'] = self.redis_password
+
+        if self.redis_url is not None:
+            result['redisUrl'] = self.redis_url
+
+        if self.redis_username is not None:
+            result['redisUsername'] = self.redis_username
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('redisPassword') is not None:
+            self.redis_password = m.get('redisPassword')
+
+        if m.get('redisUrl') is not None:
+            self.redis_url = m.get('redisUrl')
+
+        if m.get('redisUsername') is not None:
+            self.redis_username = m.get('redisUsername')
 
         return self
 

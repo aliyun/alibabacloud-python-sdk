@@ -11,6 +11,7 @@ class SubmitRayJobRequest(DaraModel):
     def __init__(
         self,
         active_deadline_seconds: int = None,
+        cluster_id: str = None,
         display_release_version: str = None,
         entrypoint: str = None,
         entrypoint_memory: str = None,
@@ -31,25 +32,47 @@ class SubmitRayJobRequest(DaraModel):
         worker_spec: List[main_models.SubmitRayJobRequestWorkerSpec] = None,
         working_dir: str = None,
     ):
+        # The timeout period of the job, which includes the cluster creation time and job runtime. The job is canceled if this period is exceeded.
         self.active_deadline_seconds = active_deadline_seconds
+        # The ID of an existing Ray cluster to which the job is submitted.
+        self.cluster_id = cluster_id
+        # The Ray DPI engine version number.
         self.display_release_version = display_release_version
+        # The startup command.
         self.entrypoint = entrypoint
+        # The memory size requested by the entrypoint task.
         self.entrypoint_memory = entrypoint_memory
+        # The number of CPUs requested by the entrypoint task.
         self.entrypoint_num_cpus = entrypoint_num_cpus
+        # The number of GPUs requested by the entrypoint task.
         self.entrypoint_num_gpus = entrypoint_num_gpus
+        # The custom resource request JSON string for the entrypoint task.
         self.entrypoint_resources = entrypoint_resources
+        # The extra parameters in a JSON string.
         self.extra_param = extra_param
+        # The Ray cluster head node parameters.
         self.head_spec = head_spec
+        # The job metadata JSON string.
         self.metadata_json = metadata_json
+        # The job name.
         self.name = name
+        # The network connectivity name.
         self.network_service_name = network_service_name
+        # The Ray runtime environment JSON string.
         self.runtime_env_json = runtime_env_json
+        # Specifies whether to automatically destroy the temporary cluster after the job finishes. Default value: true.
         self.shutdown_after_job_finishes = shutdown_after_job_finishes
+        # The job submission mode.
         self.submission_mode = submission_mode
+        # The tags.
         self.tags = tags
+        # The number of seconds to wait before destroying the cluster. This parameter takes effect only when shutdownAfterJobFinishes is set to true.
         self.ttl_seconds_after_finished = ttl_seconds_after_finished
+        # The list of mounted volume IDs.
         self.volume_ids = volume_ids
+        # The parameters of the worker nodes in the Ray cluster.
         self.worker_spec = worker_spec
+        # The URL of the job code working directory.
         self.working_dir = working_dir
 
     def validate(self):
@@ -71,6 +94,9 @@ class SubmitRayJobRequest(DaraModel):
             result = _map
         if self.active_deadline_seconds is not None:
             result['activeDeadlineSeconds'] = self.active_deadline_seconds
+
+        if self.cluster_id is not None:
+            result['clusterId'] = self.cluster_id
 
         if self.display_release_version is not None:
             result['displayReleaseVersion'] = self.display_release_version
@@ -139,6 +165,9 @@ class SubmitRayJobRequest(DaraModel):
         m = m or dict()
         if m.get('activeDeadlineSeconds') is not None:
             self.active_deadline_seconds = m.get('activeDeadlineSeconds')
+
+        if m.get('clusterId') is not None:
+            self.cluster_id = m.get('clusterId')
 
         if m.get('displayReleaseVersion') is not None:
             self.display_release_version = m.get('displayReleaseVersion')
@@ -210,6 +239,7 @@ class SubmitRayJobRequestWorkerSpec(DaraModel):
     def __init__(
         self,
         cpu: str = None,
+        display_release_version: str = None,
         gpu_spec: str = None,
         group_name: str = None,
         max_replica: int = None,
@@ -219,14 +249,25 @@ class SubmitRayJobRequestWorkerSpec(DaraModel):
         replica: int = None,
         worker_type: str = None,
     ):
+        # The number of CPU cores.
         self.cpu = cpu
+        # The database engine version.
+        self.display_release_version = display_release_version
+        # The GPU instance type.
         self.gpu_spec = gpu_spec
+        # The worker group name.
         self.group_name = group_name
+        # The maximum number of workers after automatic scaling is enabled.
         self.max_replica = max_replica
+        # The memory size. Unit: GiB.
         self.memory = memory
+        # The minimum number of workers after automatic scaling is enabled.
         self.min_replica = min_replica
+        # The queue name.
         self.queue_name = queue_name
+        # The number of workers.
         self.replica = replica
+        # The worker type.
         self.worker_type = worker_type
 
     def validate(self):
@@ -239,6 +280,9 @@ class SubmitRayJobRequestWorkerSpec(DaraModel):
             result = _map
         if self.cpu is not None:
             result['cpu'] = self.cpu
+
+        if self.display_release_version is not None:
+            result['displayReleaseVersion'] = self.display_release_version
 
         if self.gpu_spec is not None:
             result['gpuSpec'] = self.gpu_spec
@@ -270,6 +314,9 @@ class SubmitRayJobRequestWorkerSpec(DaraModel):
         m = m or dict()
         if m.get('cpu') is not None:
             self.cpu = m.get('cpu')
+
+        if m.get('displayReleaseVersion') is not None:
+            self.display_release_version = m.get('displayReleaseVersion')
 
         if m.get('gpuSpec') is not None:
             self.gpu_spec = m.get('gpuSpec')
@@ -303,7 +350,9 @@ class SubmitRayJobRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The key.
         self.key = key
+        # The value.
         self.value = value
 
     def validate(self):
@@ -336,17 +385,26 @@ class SubmitRayJobRequestHeadSpec(DaraModel):
     def __init__(
         self,
         cpu: str = None,
+        display_release_version: str = None,
         enable_auto_scaling: bool = None,
         gpu_spec: str = None,
         idle_timeout_seconds: int = None,
         memory: str = None,
         queue_name: str = None,
     ):
+        # The number of CPU cores.
         self.cpu = cpu
+        # The Ray DPI engine version.
+        self.display_release_version = display_release_version
+        # Specifies whether to enable automatic scaling for workers.
         self.enable_auto_scaling = enable_auto_scaling
+        # The GPU instance type.
         self.gpu_spec = gpu_spec
+        # The worker idle timeout period after automatic scaling is enabled.
         self.idle_timeout_seconds = idle_timeout_seconds
+        # The memory size. Unit: GiB.
         self.memory = memory
+        # The queue name.
         self.queue_name = queue_name
 
     def validate(self):
@@ -359,6 +417,9 @@ class SubmitRayJobRequestHeadSpec(DaraModel):
             result = _map
         if self.cpu is not None:
             result['cpu'] = self.cpu
+
+        if self.display_release_version is not None:
+            result['displayReleaseVersion'] = self.display_release_version
 
         if self.enable_auto_scaling is not None:
             result['enableAutoScaling'] = self.enable_auto_scaling
@@ -381,6 +442,9 @@ class SubmitRayJobRequestHeadSpec(DaraModel):
         m = m or dict()
         if m.get('cpu') is not None:
             self.cpu = m.get('cpu')
+
+        if m.get('displayReleaseVersion') is not None:
+            self.display_release_version = m.get('displayReleaseVersion')
 
         if m.get('enableAutoScaling') is not None:
             self.enable_auto_scaling = m.get('enableAutoScaling')

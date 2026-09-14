@@ -19,20 +19,21 @@ class CreateRayClusterRequest(DaraModel):
         volume_ids: List[str] = None,
         worker_spec: List[main_models.CreateRayClusterRequestWorkerSpec] = None,
     ):
-        # The description of the cluster.
+        # The description.
         self.description = description
-        # The version of the Ray engine.
+        # The Ray DPI engine version.
         self.display_release_version = display_release_version
-        # Additional parameters. The value must be in JSON format.
+        # The extra parameters. The value must be in JSON format.
         self.extra_param = extra_param
-        # The parameters for the head node of the Ray cluster.
+        # The parameters of the Ray cluster head node.
         self.head_spec = head_spec
         # The name of the Ray cluster. The name must be 1 to 64 characters in length.
         self.name = name
-        # The name of the network connection.
+        # The network connectivity name.
         self.network_service_name = network_service_name
+        # The list of managed directory IDs to mount.
         self.volume_ids = volume_ids
-        # The parameters for the worker nodes of the Ray cluster. You can specify up to 50 worker groups.
+        # The parameters of the Ray cluster worker nodes. A maximum of 50 groups are supported.
         self.worker_spec = worker_spec
 
     def validate(self):
@@ -112,29 +113,39 @@ class CreateRayClusterRequestWorkerSpec(DaraModel):
     def __init__(
         self,
         cpu: str = None,
+        display_release_version: str = None,
+        env: str = None,
         gpu_spec: str = None,
         group_name: str = None,
         max_replica: int = None,
         memory: str = None,
         min_replica: int = None,
         queue_name: str = None,
+        ray_start_params: str = None,
         replica: int = None,
         worker_type: str = None,
     ):
         # The number of CPU cores.
         self.cpu = cpu
+        # The engine version. If this parameter is not specified, the value is the same as that of the head node.
+        self.display_release_version = display_release_version
+        # The environment variables.
+        self.env = env
+        # The GPU model.
         self.gpu_spec = gpu_spec
-        # The name of the worker group.
+        # The worker group name.
         self.group_name = group_name
-        # The maximum number of worker nodes for automatic scaling. The minimum value is 1.
+        # The maximum number of workers after automatic scaling is enabled. Minimum value: 1.
         self.max_replica = max_replica
-        # The memory size, in GiB.
+        # The memory size. Unit: Gi.
         self.memory = memory
-        # The minimum number of worker nodes for automatic scaling. The minimum value is 1. This value must be less than or equal to maxReplica.
+        # The minimum number of workers after automatic scaling is enabled. Minimum value: 1. The value must be less than or equal to maxReplica.
         self.min_replica = min_replica
         # The queue name.
         self.queue_name = queue_name
-        # The number of worker nodes. The minimum value is 1.
+        # The Ray node startup parameters.
+        self.ray_start_params = ray_start_params
+        # The number of workers. Minimum value: 1.
         self.replica = replica
         # The worker type.
         self.worker_type = worker_type
@@ -149,6 +160,12 @@ class CreateRayClusterRequestWorkerSpec(DaraModel):
             result = _map
         if self.cpu is not None:
             result['cpu'] = self.cpu
+
+        if self.display_release_version is not None:
+            result['displayReleaseVersion'] = self.display_release_version
+
+        if self.env is not None:
+            result['env'] = self.env
 
         if self.gpu_spec is not None:
             result['gpuSpec'] = self.gpu_spec
@@ -168,6 +185,9 @@ class CreateRayClusterRequestWorkerSpec(DaraModel):
         if self.queue_name is not None:
             result['queueName'] = self.queue_name
 
+        if self.ray_start_params is not None:
+            result['rayStartParams'] = self.ray_start_params
+
         if self.replica is not None:
             result['replica'] = self.replica
 
@@ -180,6 +200,12 @@ class CreateRayClusterRequestWorkerSpec(DaraModel):
         m = m or dict()
         if m.get('cpu') is not None:
             self.cpu = m.get('cpu')
+
+        if m.get('displayReleaseVersion') is not None:
+            self.display_release_version = m.get('displayReleaseVersion')
+
+        if m.get('env') is not None:
+            self.env = m.get('env')
 
         if m.get('gpuSpec') is not None:
             self.gpu_spec = m.get('gpuSpec')
@@ -199,6 +225,9 @@ class CreateRayClusterRequestWorkerSpec(DaraModel):
         if m.get('queueName') is not None:
             self.queue_name = m.get('queueName')
 
+        if m.get('rayStartParams') is not None:
+            self.ray_start_params = m.get('rayStartParams')
+
         if m.get('replica') is not None:
             self.replica = m.get('replica')
 
@@ -211,26 +240,43 @@ class CreateRayClusterRequestHeadSpec(DaraModel):
     def __init__(
         self,
         cpu: str = None,
+        display_release_version: str = None,
         enable_auto_scaling: bool = None,
+        env: str = None,
+        gft_config: main_models.CreateRayClusterRequestHeadSpecGftConfig = None,
+        gft_enabled: bool = None,
         gpu_spec: str = None,
         idle_timeout_seconds: int = None,
         memory: str = None,
         queue_name: str = None,
+        ray_start_params: str = None,
     ):
         # The number of CPU cores.
         self.cpu = cpu
-        # Specifies whether to enable automatic scaling for worker nodes.
+        # The Ray DPI engine version.
+        self.display_release_version = display_release_version
+        # Specifies whether to enable automatic scaling for workers.
         self.enable_auto_scaling = enable_auto_scaling
+        # The environment variables.
+        self.env = env
+        # The GCS Fault Tolerance configuration.
+        self.gft_config = gft_config
+        # Specifies whether to enable GCS Fault Tolerance.
+        self.gft_enabled = gft_enabled
+        # The GPU model.
         self.gpu_spec = gpu_spec
-        # The idle timeout period in seconds for worker nodes when automatic scaling is enabled.
+        # The idle timeout period of workers after automatic scaling is enabled.
         self.idle_timeout_seconds = idle_timeout_seconds
-        # The memory size, in GiB.
+        # The memory size. Unit: Gi.
         self.memory = memory
         # The queue name.
         self.queue_name = queue_name
+        # The Ray node startup parameters.
+        self.ray_start_params = ray_start_params
 
     def validate(self):
-        pass
+        if self.gft_config:
+            self.gft_config.validate()
 
     def to_map(self):
         result = dict()
@@ -240,8 +286,20 @@ class CreateRayClusterRequestHeadSpec(DaraModel):
         if self.cpu is not None:
             result['cpu'] = self.cpu
 
+        if self.display_release_version is not None:
+            result['displayReleaseVersion'] = self.display_release_version
+
         if self.enable_auto_scaling is not None:
             result['enableAutoScaling'] = self.enable_auto_scaling
+
+        if self.env is not None:
+            result['env'] = self.env
+
+        if self.gft_config is not None:
+            result['gftConfig'] = self.gft_config.to_map()
+
+        if self.gft_enabled is not None:
+            result['gftEnabled'] = self.gft_enabled
 
         if self.gpu_spec is not None:
             result['gpuSpec'] = self.gpu_spec
@@ -255,6 +313,9 @@ class CreateRayClusterRequestHeadSpec(DaraModel):
         if self.queue_name is not None:
             result['queueName'] = self.queue_name
 
+        if self.ray_start_params is not None:
+            result['rayStartParams'] = self.ray_start_params
+
         return result
 
     def from_map(self, m: dict = None):
@@ -262,8 +323,21 @@ class CreateRayClusterRequestHeadSpec(DaraModel):
         if m.get('cpu') is not None:
             self.cpu = m.get('cpu')
 
+        if m.get('displayReleaseVersion') is not None:
+            self.display_release_version = m.get('displayReleaseVersion')
+
         if m.get('enableAutoScaling') is not None:
             self.enable_auto_scaling = m.get('enableAutoScaling')
+
+        if m.get('env') is not None:
+            self.env = m.get('env')
+
+        if m.get('gftConfig') is not None:
+            temp_model = main_models.CreateRayClusterRequestHeadSpecGftConfig()
+            self.gft_config = temp_model.from_map(m.get('gftConfig'))
+
+        if m.get('gftEnabled') is not None:
+            self.gft_enabled = m.get('gftEnabled')
 
         if m.get('gpuSpec') is not None:
             self.gpu_spec = m.get('gpuSpec')
@@ -276,6 +350,55 @@ class CreateRayClusterRequestHeadSpec(DaraModel):
 
         if m.get('queueName') is not None:
             self.queue_name = m.get('queueName')
+
+        if m.get('rayStartParams') is not None:
+            self.ray_start_params = m.get('rayStartParams')
+
+        return self
+
+class CreateRayClusterRequestHeadSpecGftConfig(DaraModel):
+    def __init__(
+        self,
+        redis_password: str = None,
+        redis_url: str = None,
+        redis_username: str = None,
+    ):
+        # The Redis password.
+        self.redis_password = redis_password
+        # The Redis URL.
+        self.redis_url = redis_url
+        # The Redis username.
+        self.redis_username = redis_username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.redis_password is not None:
+            result['redisPassword'] = self.redis_password
+
+        if self.redis_url is not None:
+            result['redisUrl'] = self.redis_url
+
+        if self.redis_username is not None:
+            result['redisUsername'] = self.redis_username
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('redisPassword') is not None:
+            self.redis_password = m.get('redisPassword')
+
+        if m.get('redisUrl') is not None:
+            self.redis_url = m.get('redisUrl')
+
+        if m.get('redisUsername') is not None:
+            self.redis_username = m.get('redisUsername')
 
         return self
 

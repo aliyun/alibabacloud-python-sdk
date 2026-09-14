@@ -16,11 +16,11 @@ class ListReleaseVersionsRequest(DaraModel):
     ):
         # The region ID.
         self.region_id = region_id
-        # The type of the version.
+        # The version type.
         self.release_type = release_type
-        # The EMR Serverless Spark version.
+        # The Serverless Spark version.
         self.release_version = release_version
-        # The status of the version.
+        # The version status.
         self.release_version_status = release_version_status
         self.service_filter = service_filter
         # The workspace ID.

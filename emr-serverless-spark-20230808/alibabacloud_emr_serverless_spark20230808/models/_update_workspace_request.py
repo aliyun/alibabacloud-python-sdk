@@ -13,6 +13,7 @@ class UpdateWorkspaceRequest(DaraModel):
         cu: int = None,
         gpu: int = None,
         gpu_spec: List[str] = None,
+        gpu_subscription: main_models.UpdateWorkspaceRequestGpuSubscription = None,
         ip_white_list: List[str] = None,
         resource_group_id: str = None,
         subscription: main_models.UpdateWorkspaceRequestSubscription = None,
@@ -20,17 +21,17 @@ class UpdateWorkspaceRequest(DaraModel):
         workspace_name: str = None,
         region_id: str = None,
     ):
-        # The resource cap for the workspace.
+        # The upper limit of workspace resources.
         self.cu = cu
-        # The number of GPUs.
+        # The number of GPU cards.
         self.gpu = gpu
-        # The GPU specifications.
+        # The GPU instance type.
         self.gpu_spec = gpu_spec
-        # The IP whitelist.
+        self.gpu_subscription = gpu_subscription
         self.ip_white_list = ip_white_list
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Details for converting a pay-as-you-go workspace to a subscription plan.
+        # The information for converting from pay-as-you-go to subscription.
         self.subscription = subscription
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -40,6 +41,8 @@ class UpdateWorkspaceRequest(DaraModel):
         self.region_id = region_id
 
     def validate(self):
+        if self.gpu_subscription:
+            self.gpu_subscription.validate()
         if self.subscription:
             self.subscription.validate()
 
@@ -56,6 +59,9 @@ class UpdateWorkspaceRequest(DaraModel):
 
         if self.gpu_spec is not None:
             result['gpuSpec'] = self.gpu_spec
+
+        if self.gpu_subscription is not None:
+            result['gpuSubscription'] = self.gpu_subscription.to_map()
 
         if self.ip_white_list is not None:
             result['ipWhiteList'] = self.ip_white_list
@@ -87,6 +93,10 @@ class UpdateWorkspaceRequest(DaraModel):
 
         if m.get('gpuSpec') is not None:
             self.gpu_spec = m.get('gpuSpec')
+
+        if m.get('gpuSubscription') is not None:
+            temp_model = main_models.UpdateWorkspaceRequestGpuSubscription()
+            self.gpu_subscription = temp_model.from_map(m.get('gpuSubscription'))
 
         if m.get('ipWhiteList') is not None:
             self.ip_white_list = m.get('ipWhiteList')
@@ -120,19 +130,19 @@ class UpdateWorkspaceRequestSubscription(DaraModel):
         payment_duration_unit: str = None,
         queue: List[str] = None,
     ):
-        # Indicates whether to enable auto-renewal. Required for subscription plans.
+        # Specifies whether to enable auto-renewal. This parameter is required for the pre-paid billing type.
         self.auto_renew = auto_renew
-        # The auto-renewal duration. Required for subscription plans.
+        # The auto-renewal duration. This parameter is required for the pre-paid billing type.
         self.auto_renew_period = auto_renew_period
-        # The unit for the auto-renewal duration. Required for subscription plans.
+        # The auto-renewal period unit. This parameter is required for the pre-paid billing type.
         self.auto_renew_period_unit = auto_renew_period_unit
-        # A unique, case-sensitive token to ensure request idempotence.
+        # The idempotency token.
         self.client_token = client_token
-        # The subscription duration. This parameter is required for subscription plans.
+        # The number of subscription periods. This parameter is required for the pre-paid billing type.
         self.duration = duration
-        # The unit of the subscription period.
+        # The subscription period unit.
         self.payment_duration_unit = payment_duration_unit
-        # The queues to convert to the subscription plan.
+        # The list of running queues to be converted.
         self.queue = queue
 
     def validate(self):
@@ -188,6 +198,81 @@ class UpdateWorkspaceRequestSubscription(DaraModel):
 
         if m.get('queue') is not None:
             self.queue = m.get('queue')
+
+        return self
+
+class UpdateWorkspaceRequestGpuSubscription(DaraModel):
+    def __init__(
+        self,
+        auto_renew: bool = None,
+        duration: int = None,
+        gpu_machine_num: int = None,
+        instance_id: str = None,
+        instance_type_id: str = None,
+        operation: str = None,
+        payment_duration_unit: str = None,
+    ):
+        self.auto_renew = auto_renew
+        self.duration = duration
+        self.gpu_machine_num = gpu_machine_num
+        self.instance_id = instance_id
+        self.instance_type_id = instance_type_id
+        self.operation = operation
+        self.payment_duration_unit = payment_duration_unit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.auto_renew is not None:
+            result['autoRenew'] = self.auto_renew
+
+        if self.duration is not None:
+            result['duration'] = self.duration
+
+        if self.gpu_machine_num is not None:
+            result['gpuMachineNum'] = self.gpu_machine_num
+
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+
+        if self.instance_type_id is not None:
+            result['instanceTypeId'] = self.instance_type_id
+
+        if self.operation is not None:
+            result['operation'] = self.operation
+
+        if self.payment_duration_unit is not None:
+            result['paymentDurationUnit'] = self.payment_duration_unit
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('autoRenew') is not None:
+            self.auto_renew = m.get('autoRenew')
+
+        if m.get('duration') is not None:
+            self.duration = m.get('duration')
+
+        if m.get('gpuMachineNum') is not None:
+            self.gpu_machine_num = m.get('gpuMachineNum')
+
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+
+        if m.get('instanceTypeId') is not None:
+            self.instance_type_id = m.get('instanceTypeId')
+
+        if m.get('operation') is not None:
+            self.operation = m.get('operation')
+
+        if m.get('paymentDurationUnit') is not None:
+            self.payment_duration_unit = m.get('paymentDurationUnit')
 
         return self
 

@@ -16,15 +16,15 @@ class ListWorkspacesResponseBody(DaraModel):
         total_count: int = None,
         workspaces: List[main_models.ListWorkspacesResponseBodyWorkspaces] = None,
     ):
-        # The maximum number of records to retrieve at one time.
+        # The maximum number of records to retrieve in a single request.
         self.max_results = max_results
-        # Next page token.
+        # The token for the next page.
         self.next_token = next_token
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Total number of records.
+        # The total number of records.
         self.total_count = total_count
-        # Workspace list.
+        # The list of workspaces.
         self.workspaces = workspaces
 
     def validate(self):
@@ -97,6 +97,7 @@ class ListWorkspacesResponseBodyWorkspaces(DaraModel):
         payment_status: str = None,
         payment_type: str = None,
         pre_paid_quota: main_models.ListWorkspacesResponseBodyWorkspacesPrePaidQuota = None,
+        pre_paid_quota_gpu: List[main_models.ListWorkspacesResponseBodyWorkspacesPrePaidQuotaGpu] = None,
         region_id: str = None,
         release_type: str = None,
         resource_group_id: str = None,
@@ -108,59 +109,61 @@ class ListWorkspacesResponseBodyWorkspaces(DaraModel):
         workspace_name: str = None,
         workspace_status: str = None,
     ):
-        # Specifies whether to enable auto-renewal (required for the prepaid billing method).
+        # Indicates whether auto-renewal is enabled. This parameter is required for the prepaid type.
         self.auto_renew = auto_renew
-        # Auto-renewal duration (Required for the prepaid billing method).
+        # The auto-renewal duration. This parameter is required for the prepaid type.
         self.auto_renew_period = auto_renew_period
-        # Auto-renewal period (Required for the prepaid billing method).
+        # The auto-renewal epoch unit. This parameter is required for the prepaid type.
         self.auto_renew_period_unit = auto_renew_period_unit
-        # Workspace creation time.
+        # The time when the workspace was created.
         self.create_time = create_time
-        # DLF Catalog information.
+        # The DLF Catalog information.
         self.dlf_catalog_id = dlf_catalog_id
-        # Bind a dlf type.
+        # The DLF binding type.
         self.dlf_type = dlf_type
-        # The subscription period quantity is required for the prepaid billing method.
+        # The subscription period quantity. This parameter is required for the prepaid type.
         self.duration = duration
-        # Workspace release time.
+        # The time when the workspace was released.
         self.end_time = end_time
-        # Failure reason.
+        # The failure reason.
         self.fail_reason = fail_reason
-        # The GPU specifications.
         self.gpu_spec = gpu_spec
         self.ip_white_list = ip_white_list
-        # Subscription period (Required for the prepaid billing method).
+        # The subscription period unit. This parameter is required for the prepaid type.
         self.payment_duration_unit = payment_duration_unit
-        # Payment status.
+        # The payment status.
         self.payment_status = payment_status
-        # Billing method.
+        # The payment type.
         self.payment_type = payment_type
-        # Information about prepaid resource quotas.
+        # The prepaid resource quota information.
         self.pre_paid_quota = pre_paid_quota
-        # Region ID.
+        self.pre_paid_quota_gpu = pre_paid_quota_gpu
+        # The region ID.
         self.region_id = region_id
-        # Workspace release reason.
+        # The reason why the workspace was released.
         self.release_type = release_type
-        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Resource specification.
+        # The resource specification.
         self.resource_spec = resource_spec
-        # Information about changes to the workspace status.
+        # The state change information of the workspace.
         self.state_change_reason = state_change_reason
-        # OSS path.
+        # The OSS path.
         self.storage = storage
-        # The tags of the workspace.
         self.tags = tags
-        # Workspace ID.
+        # Workspace ID。
         self.workspace_id = workspace_id
-        # Workspace name.
+        # The workspace name.
         self.workspace_name = workspace_name
-        # Workspace status.
+        # The workspace status.
         self.workspace_status = workspace_status
 
     def validate(self):
         if self.pre_paid_quota:
             self.pre_paid_quota.validate()
+        if self.pre_paid_quota_gpu:
+            for v1 in self.pre_paid_quota_gpu:
+                 if v1:
+                    v1.validate()
         if self.state_change_reason:
             self.state_change_reason.validate()
         if self.tags:
@@ -217,6 +220,11 @@ class ListWorkspacesResponseBodyWorkspaces(DaraModel):
 
         if self.pre_paid_quota is not None:
             result['prePaidQuota'] = self.pre_paid_quota.to_map()
+
+        result['prePaidQuotaGpu'] = []
+        if self.pre_paid_quota_gpu is not None:
+            for k1 in self.pre_paid_quota_gpu:
+                result['prePaidQuotaGpu'].append(k1.to_map() if k1 else None)
 
         if self.region_id is not None:
             result['regionId'] = self.region_id
@@ -300,6 +308,12 @@ class ListWorkspacesResponseBodyWorkspaces(DaraModel):
             temp_model = main_models.ListWorkspacesResponseBodyWorkspacesPrePaidQuota()
             self.pre_paid_quota = temp_model.from_map(m.get('prePaidQuota'))
 
+        self.pre_paid_quota_gpu = []
+        if m.get('prePaidQuotaGpu') is not None:
+            for k1 in m.get('prePaidQuotaGpu'):
+                temp_model = main_models.ListWorkspacesResponseBodyWorkspacesPrePaidQuotaGpu()
+                self.pre_paid_quota_gpu.append(temp_model.from_map(k1))
+
         if m.get('regionId') is not None:
             self.region_id = m.get('regionId')
 
@@ -342,9 +356,7 @@ class ListWorkspacesResponseBodyWorkspacesTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key.
         self.tag_key = tag_key
-        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -379,9 +391,9 @@ class ListWorkspacesResponseBodyWorkspacesStateChangeReason(DaraModel):
         code: str = None,
         message: str = None,
     ):
-        # Error code.
+        # The error code.
         self.code = code
-        # Error message.
+        # The error message.
         self.message = message
 
     def validate(self):
@@ -410,6 +422,145 @@ class ListWorkspacesResponseBodyWorkspacesStateChangeReason(DaraModel):
 
         return self
 
+class ListWorkspacesResponseBodyWorkspacesPrePaidQuotaGpu(DaraModel):
+    def __init__(
+        self,
+        auto_renewal: bool = None,
+        cpu_core_count: str = None,
+        create_time: int = None,
+        expire_time: int = None,
+        gpu_amount: int = None,
+        gpu_machine_num: int = None,
+        gpu_memory_size: int = None,
+        gpu_num: int = None,
+        gpu_spec: str = None,
+        instance_id: str = None,
+        instance_type_family: str = None,
+        instance_type_id: str = None,
+        memory_size: str = None,
+        order_id: str = None,
+        payment_status: str = None,
+    ):
+        self.auto_renewal = auto_renewal
+        self.cpu_core_count = cpu_core_count
+        self.create_time = create_time
+        self.expire_time = expire_time
+        self.gpu_amount = gpu_amount
+        self.gpu_machine_num = gpu_machine_num
+        self.gpu_memory_size = gpu_memory_size
+        self.gpu_num = gpu_num
+        self.gpu_spec = gpu_spec
+        self.instance_id = instance_id
+        self.instance_type_family = instance_type_family
+        self.instance_type_id = instance_type_id
+        self.memory_size = memory_size
+        self.order_id = order_id
+        self.payment_status = payment_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.auto_renewal is not None:
+            result['autoRenewal'] = self.auto_renewal
+
+        if self.cpu_core_count is not None:
+            result['cpuCoreCount'] = self.cpu_core_count
+
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+
+        if self.expire_time is not None:
+            result['expireTime'] = self.expire_time
+
+        if self.gpu_amount is not None:
+            result['gpuAmount'] = self.gpu_amount
+
+        if self.gpu_machine_num is not None:
+            result['gpuMachineNum'] = self.gpu_machine_num
+
+        if self.gpu_memory_size is not None:
+            result['gpuMemorySize'] = self.gpu_memory_size
+
+        if self.gpu_num is not None:
+            result['gpuNum'] = self.gpu_num
+
+        if self.gpu_spec is not None:
+            result['gpuSpec'] = self.gpu_spec
+
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+
+        if self.instance_type_family is not None:
+            result['instanceTypeFamily'] = self.instance_type_family
+
+        if self.instance_type_id is not None:
+            result['instanceTypeId'] = self.instance_type_id
+
+        if self.memory_size is not None:
+            result['memorySize'] = self.memory_size
+
+        if self.order_id is not None:
+            result['orderId'] = self.order_id
+
+        if self.payment_status is not None:
+            result['paymentStatus'] = self.payment_status
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('autoRenewal') is not None:
+            self.auto_renewal = m.get('autoRenewal')
+
+        if m.get('cpuCoreCount') is not None:
+            self.cpu_core_count = m.get('cpuCoreCount')
+
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+
+        if m.get('expireTime') is not None:
+            self.expire_time = m.get('expireTime')
+
+        if m.get('gpuAmount') is not None:
+            self.gpu_amount = m.get('gpuAmount')
+
+        if m.get('gpuMachineNum') is not None:
+            self.gpu_machine_num = m.get('gpuMachineNum')
+
+        if m.get('gpuMemorySize') is not None:
+            self.gpu_memory_size = m.get('gpuMemorySize')
+
+        if m.get('gpuNum') is not None:
+            self.gpu_num = m.get('gpuNum')
+
+        if m.get('gpuSpec') is not None:
+            self.gpu_spec = m.get('gpuSpec')
+
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+
+        if m.get('instanceTypeFamily') is not None:
+            self.instance_type_family = m.get('instanceTypeFamily')
+
+        if m.get('instanceTypeId') is not None:
+            self.instance_type_id = m.get('instanceTypeId')
+
+        if m.get('memorySize') is not None:
+            self.memory_size = m.get('memorySize')
+
+        if m.get('orderId') is not None:
+            self.order_id = m.get('orderId')
+
+        if m.get('paymentStatus') is not None:
+            self.payment_status = m.get('paymentStatus')
+
+        return self
+
 class ListWorkspacesResponseBodyWorkspacesPrePaidQuota(DaraModel):
     def __init__(
         self,
@@ -423,33 +574,28 @@ class ListWorkspacesResponseBodyWorkspacesPrePaidQuota(DaraModel):
         payment_status: str = None,
         used_resource: str = None,
     ):
-        # The amount of resources that are currently allocated.
+        # The amount of resources currently allocated.
         self.allocated_resource = allocated_resource
-        # Whether auto-renewal is enabled for the resource.
+        # Indicates whether auto-renewal is enabled for the resource. Valid values:
         # 
-        # - true: Enables auto-renewal. The resource is automatically renewed after it expires.
-        # 
-        # - false: Auto-renewal is disabled. The resource is stopped upon expiration.
+        # - true: Auto-renewal is enabled. The resource is automatically renewed upon expiration.
+        # - false: Auto-renewal is not enabled. The resource stops being available upon expiration.
         self.auto_renewal = auto_renewal
-        # The creation time of the resource quota.
+        # The time when the resource quota was created.
         self.create_time = create_time
-        # The expiration time of the resource quota.
+        # The time when the resource quota expires.
         self.expire_time = expire_time
-        # The resource instance ID that is associated with the quota.
+        # The instance ID of the resource associated with the quota.
         self.instance_id = instance_id
-        # The maximum amount of resources.
+        # The maximum amount of resources available.
         self.max_resource = max_resource
-        # The order ID.
         self.order_id = order_id
-        # The payment status of the current resource. The possible values are as follows:
-        # 
+        # The payment status of the current resource. Valid values:
         # - NORMAL: Active.
-        # 
-        # - WAIT_FOR_EXPIRE: Will expire.
-        # 
-        # - EXPIRED: The item has expired.
+        # - WAIT_FOR_EXPIRE: About to expire.
+        # - EXPIRED: Expired.
         self.payment_status = payment_status
-        # The amount of resources currently in use.
+        # The amount of resources currently used.
         self.used_resource = used_resource
 
     def validate(self):
