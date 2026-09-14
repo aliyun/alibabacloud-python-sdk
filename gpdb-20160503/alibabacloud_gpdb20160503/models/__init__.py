@@ -337,6 +337,9 @@ from ._describe_dbresource_group_response import DescribeDBResourceGroupResponse
 from ._describe_dbresource_management_mode_request import DescribeDBResourceManagementModeRequest
 from ._describe_dbresource_management_mode_response_body import DescribeDBResourceManagementModeResponseBody
 from ._describe_dbresource_management_mode_response import DescribeDBResourceManagementModeResponse
+from ._describe_dbversion_request import DescribeDBVersionRequest
+from ._describe_dbversion_response_body import DescribeDBVersionResponseBody
+from ._describe_dbversion_response import DescribeDBVersionResponse
 from ._describe_dbversion_infos_request import DescribeDBVersionInfosRequest
 from ._describe_dbversion_infos_response_body import DescribeDBVersionInfosResponseBody
 from ._describe_dbversion_infos_response import DescribeDBVersionInfosResponse
@@ -1533,6 +1536,9 @@ __all__ = [
     DescribeDBResourceManagementModeRequest,
     DescribeDBResourceManagementModeResponseBody,
     DescribeDBResourceManagementModeResponse,
+    DescribeDBVersionRequest,
+    DescribeDBVersionResponseBody,
+    DescribeDBVersionResponse,
     DescribeDBVersionInfosRequest,
     DescribeDBVersionInfosResponseBody,
     DescribeDBVersionInfosResponse,

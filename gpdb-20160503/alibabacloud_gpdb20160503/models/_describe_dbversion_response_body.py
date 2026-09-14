@@ -4,19 +4,16 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class CreateSupabaseProjectResponseBody(DaraModel):
+class DescribeDBVersionResponseBody(DaraModel):
     def __init__(
         self,
-        order_id: str = None,
-        project_id: str = None,
         request_id: str = None,
+        version_suggestion: str = None,
     ):
-        # The associated order ID.
-        self.order_id = order_id
-        # The instance ID.
-        self.project_id = project_id
         # The request ID.
         self.request_id = request_id
+        # The recommended upgrade version in the format of "major version,minor version" (separated by a comma). The first value is the target version for major engine version upgrade, and the second value is the target version for minor engine version update.
+        self.version_suggestion = version_suggestion
 
     def validate(self):
         pass
@@ -26,27 +23,21 @@ class CreateSupabaseProjectResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.order_id is not None:
-            result['OrderId'] = self.order_id
-
-        if self.project_id is not None:
-            result['ProjectId'] = self.project_id
-
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+
+        if self.version_suggestion is not None:
+            result['VersionSuggestion'] = self.version_suggestion
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('OrderId') is not None:
-            self.order_id = m.get('OrderId')
-
-        if m.get('ProjectId') is not None:
-            self.project_id = m.get('ProjectId')
-
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+
+        if m.get('VersionSuggestion') is not None:
+            self.version_suggestion = m.get('VersionSuggestion')
 
         return self
 

@@ -10,13 +10,13 @@ class GetSupabaseProjectRequest(DaraModel):
         project_id: str = None,
         region_id: str = None,
     ):
-        # The Supabase instance ID. You can find this ID on the Supabase page in the console.
+        # The Supabase instance ID. You can obtain the ID from the Supabase page in the console.
         # 
         # This parameter is required.
         self.project_id = project_id
         # The region ID.
         # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to view the available region IDs.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query available region IDs.
         self.region_id = region_id
 
     def validate(self):

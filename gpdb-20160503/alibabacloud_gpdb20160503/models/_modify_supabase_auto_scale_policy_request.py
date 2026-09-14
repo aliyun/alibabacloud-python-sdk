@@ -8,6 +8,7 @@ class ModifySupabaseAutoScalePolicyRequest(DaraModel):
     def __init__(
         self,
         auto_scale: bool = None,
+        idle_time_hours: str = None,
         project_id: str = None,
         region_id: str = None,
     ):
@@ -17,6 +18,7 @@ class ModifySupabaseAutoScalePolicyRequest(DaraModel):
         # 
         # This parameter is required.
         self.auto_scale = auto_scale
+        self.idle_time_hours = idle_time_hours
         # The ID of the Supabase project. You can obtain the workspace ID from the Supabase page in the console.
         # 
         # This parameter is required.
@@ -35,6 +37,9 @@ class ModifySupabaseAutoScalePolicyRequest(DaraModel):
         if self.auto_scale is not None:
             result['AutoScale'] = self.auto_scale
 
+        if self.idle_time_hours is not None:
+            result['IdleTimeHours'] = self.idle_time_hours
+
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
 
@@ -47,6 +52,9 @@ class ModifySupabaseAutoScalePolicyRequest(DaraModel):
         m = m or dict()
         if m.get('AutoScale') is not None:
             self.auto_scale = m.get('AutoScale')
+
+        if m.get('IdleTimeHours') is not None:
+            self.idle_time_hours = m.get('IdleTimeHours')
 
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')

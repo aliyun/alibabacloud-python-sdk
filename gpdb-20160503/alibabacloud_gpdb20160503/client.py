@@ -68,31 +68,7 @@ class Client(OpenApiClient):
             'cn-zhangjiakou-na62-a01': 'gpdb.aliyuncs.com',
             'cn-zhengzhou-nebula-1': 'gpdb.aliyuncs.com',
             'eu-west-1-oxs': 'gpdb.aliyuncs.com',
-            'rus-west-1-pop': 'gpdb.aliyuncs.com',
-            'cn-wulanchabu': 'gpdb.cn-wulanchabu.aliyuncs.com',
-            'cn-beijing': 'gpdb.cn-beijing.aliyuncs.com',
-            'cn-qingdao': 'gpdb.cn-qingdao.aliyuncs.com',
-            'cn-shanghai': 'gpdb.cn-shanghai.aliyuncs.com',
-            'cn-hongkong': 'gpdb.cn-hongkong.aliyuncs.com',
-            'cn-zhangjiakou': 'gpdb.cn-zhangjiakou.aliyuncs.com',
-            'cn-shenzhen': 'gpdb.cn-shenzhen.aliyuncs.com',
-            'ap-northeast-2': 'gpdb.ap-northeast-2.aliyuncs.com',
-            'ap-northeast-1': 'gpdb.ap-northeast-1.aliyuncs.com',
-            'cn-chengdu': 'gpdb.cn-chengdu.aliyuncs.com',
-            'ap-southeast-1': 'gpdb.ap-southeast-1.aliyuncs.com',
-            'ap-southeast-3': 'gpdb.ap-southeast-3.aliyuncs.com',
-            'cn-huhehaote': 'gpdb.cn-huhehaote.aliyuncs.com',
-            'ap-southeast-5': 'gpdb.ap-southeast-5.aliyuncs.com',
-            'ap-southeast-7': 'gpdb.ap-southeast-7.aliyuncs.com',
-            'us-east-1': 'gpdb.us-east-1.aliyuncs.com',
-            'eu-west-1': 'gpdb.eu-west-1.aliyuncs.com',
-            'us-west-1': 'gpdb.us-west-1.aliyuncs.com',
-            'eu-central-1': 'gpdb.eu-central-1.aliyuncs.com',
-            'me-east-1': 'gpdb.me-east-1.aliyuncs.com',
-            'me-central-1': 'gpdb.me-central-1.aliyuncs.com',
-            'cn-shenzhen-finance-1': 'gpdb.cn-shenzhen-finance-1.aliyuncs.com',
-            'cn-shanghai-finance-1': 'gpdb.cn-shanghai-finance-1.aliyuncs.com',
-            'cn-north-2-gov-1': 'gpdb.cn-north-2-gov-1.aliyuncs.com'
+            'rus-west-1-pop': 'gpdb.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('gpdb', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -10152,6 +10128,80 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeDBResourceManagementModeResponse:
         runtime = RuntimeOptions()
         return await self.describe_dbresource_management_mode_with_options_async(request, runtime)
+
+    def describe_dbversion_with_options(
+        self,
+        request: main_models.DescribeDBVersionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDBVersionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDBVersion',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDBVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dbversion_with_options_async(
+        self,
+        request: main_models.DescribeDBVersionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDBVersionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDBVersion',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDBVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dbversion(
+        self,
+        request: main_models.DescribeDBVersionRequest,
+    ) -> main_models.DescribeDBVersionResponse:
+        runtime = RuntimeOptions()
+        return self.describe_dbversion_with_options(request, runtime)
+
+    async def describe_dbversion_async(
+        self,
+        request: main_models.DescribeDBVersionRequest,
+    ) -> main_models.DescribeDBVersionResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_dbversion_with_options_async(request, runtime)
 
     def describe_dbversion_infos_with_options(
         self,
@@ -21944,6 +21994,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.auto_scale):
             query['AutoScale'] = request.auto_scale
+        if not DaraCore.is_null(request.idle_time_hours):
+            query['IdleTimeHours'] = request.idle_time_hours
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
@@ -21976,6 +22028,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.auto_scale):
             query['AutoScale'] = request.auto_scale
+        if not DaraCore.is_null(request.idle_time_hours):
+            query['IdleTimeHours'] = request.idle_time_hours
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
@@ -23798,6 +23852,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.account_password):
             query['AccountPassword'] = request.account_password
+        if not DaraCore.is_null(request.dashboard_password):
+            query['DashboardPassword'] = request.dashboard_password
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
@@ -23830,6 +23886,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.account_password):
             query['AccountPassword'] = request.account_password
+        if not DaraCore.is_null(request.dashboard_password):
+            query['DashboardPassword'] = request.dashboard_password
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):

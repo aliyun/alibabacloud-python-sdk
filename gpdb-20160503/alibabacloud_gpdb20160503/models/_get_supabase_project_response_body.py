@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class GetSupabaseProjectResponseBody(DaraModel):
     def __init__(
         self,
+        applied_idle_time_hours: str = None,
         auto_scale: str = None,
         create_time: str = None,
         dbsecurity_ip_list: str = None,
@@ -35,87 +36,78 @@ class GetSupabaseProjectResponseBody(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # Indicates whether the **auto pause and resume** feature is enabled.
-        # Valid values:
-        # 
-        # - `true`: The feature is enabled. The project automatically pauses and resumes based on traffic.
-        # 
-        # - `false`: The feature is disabled.
+        self.applied_idle_time_hours = applied_idle_time_hours
+        # Indicates whether **auto start and stop** is enabled. Valid values:
+        # - true: Enabled. After this feature is enabled, Supabase automatically pauses and resumes based on traffic conditions.
+        # - false: Disabled. After this feature is disabled, the auto start and stop feature of Supabase is turned off.
         self.auto_scale = auto_scale
-        # The creation time of the project.
+        # The creation time.
         self.create_time = create_time
-        # The database IP address whitelist, specified as a comma-separated string.
+        # The database whitelist.
         self.dbsecurity_ip_list = dbsecurity_ip_list
-        # The password for the Supabase Dashboard. This parameter is not used.
+        # The Supabase Dashboard password. This parameter is not in use.
         self.dashboard_password = dashboard_password
-        # The username for the Supabase Dashboard. This parameter is not used.
+        # The Supabase Dashboard username. This parameter is not in use.
         self.dashboard_user_name = dashboard_user_name
-        # The performance level (PL) of the cloud disk. Valid values:
-        # 
+        # The performance level of the cloud disk. Valid values:
         # - PL0
-        # 
         # - PL1
         self.disk_performance_level = disk_performance_level
-        # The database engine.
+        # The database engine type.
         self.engine = engine
-        # The engine version.
+        # The database engine version.
         self.engine_version = engine_version
-        # The elastic network interface (ENI) ID.
+        # The elastic network interface (ENI) ID. The network interface controller (NIC) ID of the instance.
         self.eni = eni
         # The current instance version.
         self.instance_version = instance_version
+        # Indicates whether the project is a lightweight edition.
         self.lightweight = lightweight
-        # The billing method. Valid values:
+        # The billing type. Valid values:
         # 
-        # - `POSTPAY`: pay-as-you-go
+        # - POSTPAY: pay-as-you-go.
         # 
-        # - `PREPAY`: subscription
+        # - PREPAY: subscription.
         self.pay_type = pay_type
-        # The private connection URL for the Supabase Dashboard.
+        # The internal network connection string of the Supabase Dashboard.
         self.private_connect_url = private_connect_url
-        # The description of the Supabase project.
+        # The detailed description of the Supabase project.
         self.project_description = project_description
-        # The Supabase project ID.
+        # The Supabase instance ID.
         self.project_id = project_id
         # The Supabase project name.
         self.project_name = project_name
-        # The Supabase instance specification.
+        # The Supabase instance specifications.
         self.project_spec = project_spec
-        # The public connection URL for the Supabase Dashboard.
+        # The public network connection string of the Supabase Dashboard.
         self.public_connect_url = public_connect_url
         # The region ID.
         # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the available regions.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query available region IDs.
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
-        # The IP address whitelist, specified as a comma-separated string.
+        # The list of IP addresses in the IP whitelist group, separated by commas (,).
         self.security_ip_list = security_ip_list
         # The Supabase instance status.
         self.status = status
-        # The storage space, in GB.
+        # The storage size. Unit: GB.
         self.storage_size = storage_size
         # The storage type. Valid values:
-        # 
         # - **cloud_essd_pl0**
-        # 
         # - **cloud_essd_pl1**
-        # 
         # - **cloud_essd_pl2**
-        # 
         # - **cloud_essd_pl3**
         self.storage_type = storage_type
-        # The vSwitch ID.
+        # The vSwitch ID. This parameter is required if a VPC ID is specified.
         self.v_switch_id = v_switch_id
         # The VPC ID.
-        # 
-        # > - You can call the [DescribeRdsVpcs](https://help.aliyun.com/document_detail/208327.html) operation to query the available VPCs.
-        # >
+        # >  - You can call the [DescribeRdsVpcs](https://help.aliyun.com/document_detail/208327.html) operation to query available VPC IDs.
         # > - This parameter is required.
         self.vpc_id = vpc_id
         # The zone ID.
         # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the available zones.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query available zone IDs.
         self.zone_id = zone_id
 
     def validate(self):
@@ -126,6 +118,9 @@ class GetSupabaseProjectResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.applied_idle_time_hours is not None:
+            result['AppliedIdleTimeHours'] = self.applied_idle_time_hours
+
         if self.auto_scale is not None:
             result['AutoScale'] = self.auto_scale
 
@@ -211,6 +206,9 @@ class GetSupabaseProjectResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppliedIdleTimeHours') is not None:
+            self.applied_idle_time_hours = m.get('AppliedIdleTimeHours')
+
         if m.get('AutoScale') is not None:
             self.auto_scale = m.get('AutoScale')
 

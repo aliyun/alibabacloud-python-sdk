@@ -1,3 +1,9 @@
+2026-09-14 Version: 5.11.1
+- Update API GetSupabaseProject: add response parameters Body.AppliedIdleTimeHours.
+- Update API ModifySupabaseAutoScalePolicy: add request parameters IdleTimeHours.
+- Update API ResetSupabaseProjectPassword: add request parameters DashboardPassword.
+
+
 2026-08-13 Version: 5.10.2
 - Update API CreateSupabaseProject: add request parameters Lightweight.
 - Update API GetSupabaseProject: add response parameters Body.Lightweight.

@@ -41,7 +41,7 @@ class CreateSupabaseProjectRequest(DaraModel):
         self.account_password = account_password
         # Specifies whether to enable auto start/stop. If this parameter is not specified, the default value is false.
         self.auto_scale = auto_scale
-        # The idempotency token. Ensures that repeated requests do not execute the same operation more than once.
+        # The idempotency token. Ensures that duplicate requests do not result in duplicate operations.
         self.client_token = client_token
         # The performance level (PL) of the cloud disk. If this parameter is not specified, the default value PL0 is used.
         # 
@@ -60,7 +60,7 @@ class CreateSupabaseProjectRequest(DaraModel):
         # - PG17: PostgreSQL 17, which supports the data sandbox feature.
         self.engine_version = engine_version
         self.lightweight = lightweight
-        # The billing method. If this parameter is not specified, the default value Free is used.
+        # The billing type. If this parameter is not specified, the default value Free is used.
         # 
         # Valid values:
         # 
@@ -95,7 +95,7 @@ class CreateSupabaseProjectRequest(DaraModel):
         # 
         # This parameter is required.
         self.security_iplist = security_iplist
-        # The storage size. Unit: GB. If this parameter is not specified for non-Free billing types, the default value is 1 GB.
+        # The storage size, in GB. If this parameter is not specified for non-Free billing types, the default value is 1 GB.
         self.storage_size = storage_size
         self.tags = tags
         # The subscription duration. This parameter takes effect only when PayType is set to PrePay. If this parameter is not specified, the default value is 1.
