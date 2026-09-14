@@ -18,6 +18,7 @@ class ListAgentSpacesRequest(DaraModel):
         self.max_results = max_results
         # The pagination token.
         self.next_token = next_token
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

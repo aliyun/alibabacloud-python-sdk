@@ -22,17 +22,6 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'cn-shenzhen': 'agentloop.cn-shenzhen.aliyuncs.com',
-            'cn-beijing': 'agentloop.cn-beijing.aliyuncs.com',
-            'cn-shanghai': 'agentloop.cn-shanghai.aliyuncs.com',
-            'cn-guangzhou': 'agentloop.cn-guangzhou.aliyuncs.com',
-            'cn-hongkong': 'agentloop.cn-hongkong.aliyuncs.com',
-            'ap-southeast-1': 'agentloop.ap-southeast-1.aliyuncs.com',
-            'cn-zhangjiakou': 'agentloop.cn-zhangjiakou.aliyuncs.com',
-            'cn-hangzhou': 'agentloop.cn-hangzhou.aliyuncs.com',
-            'cn-chengdu': 'agentloop.cn-chengdu.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('agentloop', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -2278,6 +2267,8 @@ class Client(OpenApiClient):
     ) -> main_models.ExecuteQueryResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.annotation_filter):
+            body['annotationFilter'] = request.annotation_filter
         if not DaraCore.is_null(request.from_):
             body['from'] = request.from_
         if not DaraCore.is_null(request.length):
@@ -2324,6 +2315,8 @@ class Client(OpenApiClient):
     ) -> main_models.ExecuteQueryResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.annotation_filter):
+            body['annotationFilter'] = request.annotation_filter
         if not DaraCore.is_null(request.from_):
             body['from'] = request.from_
         if not DaraCore.is_null(request.length):
@@ -4495,6 +4488,8 @@ class Client(OpenApiClient):
             query['scheduleStatus'] = request.schedule_status
         if not DaraCore.is_null(request.schedule_type):
             query['scheduleType'] = request.schedule_type
+        if not DaraCore.is_null(request.sink_name):
+            query['sinkName'] = request.sink_name
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -4534,6 +4529,8 @@ class Client(OpenApiClient):
             query['scheduleStatus'] = request.schedule_status
         if not DaraCore.is_null(request.schedule_type):
             query['scheduleType'] = request.schedule_type
+        if not DaraCore.is_null(request.sink_name):
+            query['sinkName'] = request.sink_name
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)

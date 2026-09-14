@@ -25,21 +25,41 @@ class GetPipelineResponseBody(DaraModel):
         update_time: str = None,
         workspace: str = None,
     ):
+        # The committed watermark. The value is a UNIX timestamp in seconds.
         self.committed_watermark = committed_watermark
+        # The time when the pipeline was created, in ISO 8601 UTC format.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
+        # The pipeline description.
         self.description = description
+        # The scheduling method.
         self.execute_policy = execute_policy
+        # The next scheduling trigger time. The value is a UNIX timestamp in seconds.
         self.next_trigger_time = next_trigger_time
+        # The pipeline configuration for node orchestration.
         self.pipeline = pipeline
+        # The pipeline name.
         self.pipeline_name = pipeline_name
+        # The region ID.
         self.region_id = region_id
+        # The request ID, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The scheduling status. Valid values:
+        # - None: No scheduling.
+        # - Active: Active.
+        # - Paused: Paused.
+        # - Terminated: Terminated.
         self.schedule_status = schedule_status
+        # The pipeline sink, which is the data write destination.
         self.sink = sink
+        # The pipeline data source.
         self.source = source
+        # The time when the pipeline was last updated, in ISO 8601 UTC format.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time
+        # The workspace associated with the pipeline.
         self.workspace = workspace
 
     def validate(self):
@@ -159,9 +179,13 @@ class GetPipelineResponseBodySource(DaraModel):
         logstore: main_models.GetPipelineResponseBodySourceLogstore = None,
         type: str = None,
     ):
+        # The dataset datasource config under the current AgentSpace.
         self.dataset = dataset
+        # The input fields and field types, applicable to all data source types.
         self.input_fields = input_fields
+        # The SLS Logstore datasource config.
         self.logstore = logstore
+        # The data source type. Valid values: logstore and dataset.
         self.type = type
 
     def validate(self):
@@ -223,8 +247,11 @@ class GetPipelineResponseBodySourceLogstore(DaraModel):
         project: str = None,
         query: str = None,
     ):
+        # The SLS Logstore name.
         self.logstore = logstore
+        # The SLS project name.
         self.project = project
+        # The data filtered query statement in SLS query/analysis syntax.
         self.query = query
 
     def validate(self):
@@ -265,7 +292,9 @@ class GetPipelineResponseBodySourceInputFields(DaraModel):
         name: str = None,
         type: str = None,
     ):
+        # The field name.
         self.name = name
+        # The field type. Valid values: text, long, double, and json.
         self.type = type
 
     def validate(self):
@@ -300,7 +329,9 @@ class GetPipelineResponseBodySourceDataset(DaraModel):
         dataset: str = None,
         filter: str = None,
     ):
+        # The source dataset name.
         self.dataset = dataset
+        # The dataset data filter condition.
         self.filter = filter
 
     def validate(self):
@@ -336,8 +367,11 @@ class GetPipelineResponseBodySink(DaraModel):
         dataset: main_models.GetPipelineResponseBodySinkDataset = None,
         type: str = None,
     ):
+        # The conditional routing configuration. This parameter is used only when sink.type is set to condition.
         self.condition = condition
+        # The target dataset configuration for the dataset sink. This parameter is used only when sink.type is set to dataset.
         self.dataset = dataset
+        # The sink type. Valid values: dataset and condition.
         self.type = type
 
     def validate(self):
@@ -383,7 +417,9 @@ class GetPipelineResponseBodySinkDataset(DaraModel):
         agent_space: str = None,
         dataset: str = None,
     ):
+        # The name of the AgentSpace to which the target dataset belongs.
         self.agent_space = agent_space
+        # The target dataset name.
         self.dataset = dataset
 
     def validate(self):
@@ -419,8 +455,11 @@ class GetPipelineResponseBodySinkCondition(DaraModel):
         match_mode: str = None,
         routes: List[main_models.GetPipelineResponseBodySinkConditionRoutes] = None,
     ):
+        # The default write destination used when no conditional route is matched.
         self.default_sink = default_sink
+        # The route match mode. Currently, only all is supported.
         self.match_mode = match_mode
+        # The list of conditional routes.
         self.routes = routes
 
     def validate(self):
@@ -473,8 +512,11 @@ class GetPipelineResponseBodySinkConditionRoutes(DaraModel):
         id: str = None,
         sink: main_models.GetPipelineResponseBodySinkConditionRoutesSink = None,
     ):
+        # The route expression in SPL. Only where, project, and extend are supported.
         self.expression = expression
+        # The route ID.
         self.id = id
+        # The route write destination.
         self.sink = sink
 
     def validate(self):
@@ -517,7 +559,9 @@ class GetPipelineResponseBodySinkConditionRoutesSink(DaraModel):
         dataset: main_models.GetPipelineResponseBodySinkConditionRoutesSinkDataset = None,
         type: str = None,
     ):
+        # The route destination dataset.
         self.dataset = dataset
+        # The route destination type. Currently, only dataset is supported.
         self.type = type
 
     def validate(self):
@@ -554,7 +598,9 @@ class GetPipelineResponseBodySinkConditionRoutesSinkDataset(DaraModel):
         agent_space: str = None,
         dataset: str = None,
     ):
+        # The name of the AgentSpace to which the destination dataset belongs.
         self.agent_space = agent_space
+        # The name of the destination dataset.
         self.dataset = dataset
 
     def validate(self):
@@ -589,7 +635,9 @@ class GetPipelineResponseBodySinkConditionDefaultSink(DaraModel):
         dataset: main_models.GetPipelineResponseBodySinkConditionDefaultSinkDataset = None,
         type: str = None,
     ):
+        # The default destination dataset.
         self.dataset = dataset
+        # The default destination type. Currently, only dataset is supported.
         self.type = type
 
     def validate(self):
@@ -626,7 +674,9 @@ class GetPipelineResponseBodySinkConditionDefaultSinkDataset(DaraModel):
         agent_space: str = None,
         dataset: str = None,
     ):
+        # The name of the AgentSpace to which the default destination dataset belongs.
         self.agent_space = agent_space
+        # The name of the default destination dataset.
         self.dataset = dataset
 
     def validate(self):
@@ -660,6 +710,7 @@ class GetPipelineResponseBodyPipeline(DaraModel):
         self,
         nodes: List[main_models.GetPipelineResponseBodyPipelineNodes] = None,
     ):
+        # The list of nodes.
         self.nodes = nodes
 
     def validate(self):
@@ -697,8 +748,11 @@ class GetPipelineResponseBodyPipelineNodes(DaraModel):
         parameters: Dict[str, Any] = None,
         type: str = None,
     ):
+        # The node ID.
         self.id = id
+        # The node parameters in key-value structure, which vary depending on the node type.
         self.parameters = parameters
+        # The node type.
         self.type = type
 
     def validate(self):
@@ -740,8 +794,11 @@ class GetPipelineResponseBodyExecutePolicy(DaraModel):
         run_once: main_models.GetPipelineResponseBodyExecutePolicyRunOnce = None,
         scheduled: main_models.GetPipelineResponseBodyExecutePolicyScheduled = None,
     ):
+        # The scheduling mode. For example, scheduled (timed scheduling) or runOnce (one-time execution).
         self.mode = mode
+        # The configuration for one-time execution.
         self.run_once = run_once
+        # The timed scheduling configuration.
         self.scheduled = scheduled
 
     def validate(self):
@@ -787,7 +844,9 @@ class GetPipelineResponseBodyExecutePolicyScheduled(DaraModel):
         from_time: int = None,
         interval: str = None,
     ):
+        # The scheduling start time. The value is a UNIX timestamp in milliseconds.
         self.from_time = from_time
+        # The scheduling interval. For example, 1h.
         self.interval = interval
 
     def validate(self):
@@ -822,7 +881,9 @@ class GetPipelineResponseBodyExecutePolicyRunOnce(DaraModel):
         from_time: int = None,
         to_time: int = None,
     ):
+        # The start time for data processing. The value is a UNIX timestamp in milliseconds.
         self.from_time = from_time
+        # The end time for data processing. The value is a UNIX timestamp in milliseconds.
         self.to_time = to_time
 
     def validate(self):

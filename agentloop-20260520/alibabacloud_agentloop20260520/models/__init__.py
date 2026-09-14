@@ -238,6 +238,8 @@ from ._create_pipeline_request import CreatePipelineRequestSourceInputFields
 from ._create_pipeline_request import CreatePipelineRequestSourceLogstore
 from ._create_pipeline_request import CreatePipelineRequestSource
 from ._describe_regions_response_body import DescribeRegionsResponseBodyRegions
+from ._execute_query_request import ExecuteQueryRequestAnnotationFilterConditions
+from ._execute_query_request import ExecuteQueryRequestAnnotationFilter
 from ._execute_query_response_body import ExecuteQueryResponseBodyMetaTruncation
 from ._execute_query_response_body import ExecuteQueryResponseBodyMeta
 from ._get_agent_space_response_body import GetAgentSpaceResponseBodyMseNamespace
@@ -281,6 +283,17 @@ from ._list_pipeline_runs_response_body import ListPipelineRunsResponseBodyRuns
 from ._list_pipelines_response_body import ListPipelinesResponseBodyPipelinesExecutePolicyRunOnce
 from ._list_pipelines_response_body import ListPipelinesResponseBodyPipelinesExecutePolicyScheduled
 from ._list_pipelines_response_body import ListPipelinesResponseBodyPipelinesExecutePolicy
+from ._list_pipelines_response_body import ListPipelinesResponseBodyPipelinesSinkConditionDefaultSinkDataset
+from ._list_pipelines_response_body import ListPipelinesResponseBodyPipelinesSinkConditionDefaultSink
+from ._list_pipelines_response_body import ListPipelinesResponseBodyPipelinesSinkConditionRoutesSinkDataset
+from ._list_pipelines_response_body import ListPipelinesResponseBodyPipelinesSinkConditionRoutesSink
+from ._list_pipelines_response_body import ListPipelinesResponseBodyPipelinesSinkConditionRoutes
+from ._list_pipelines_response_body import ListPipelinesResponseBodyPipelinesSinkCondition
+from ._list_pipelines_response_body import ListPipelinesResponseBodyPipelinesSinkDataset
+from ._list_pipelines_response_body import ListPipelinesResponseBodyPipelinesSink
+from ._list_pipelines_response_body import ListPipelinesResponseBodyPipelinesSourceDataset
+from ._list_pipelines_response_body import ListPipelinesResponseBodyPipelinesSourceLogstore
+from ._list_pipelines_response_body import ListPipelinesResponseBodyPipelinesSource
 from ._list_pipelines_response_body import ListPipelinesResponseBodyPipelines
 from ._preview_pipeline_request import PreviewPipelineRequestPipelineNodes
 from ._preview_pipeline_request import PreviewPipelineRequestPipeline
@@ -548,6 +561,8 @@ __all__ = [
     CreatePipelineRequestSourceLogstore,
     CreatePipelineRequestSource,
     DescribeRegionsResponseBodyRegions,
+    ExecuteQueryRequestAnnotationFilterConditions,
+    ExecuteQueryRequestAnnotationFilter,
     ExecuteQueryResponseBodyMetaTruncation,
     ExecuteQueryResponseBodyMeta,
     GetAgentSpaceResponseBodyMseNamespace,
@@ -591,6 +606,17 @@ __all__ = [
     ListPipelinesResponseBodyPipelinesExecutePolicyRunOnce,
     ListPipelinesResponseBodyPipelinesExecutePolicyScheduled,
     ListPipelinesResponseBodyPipelinesExecutePolicy,
+    ListPipelinesResponseBodyPipelinesSinkConditionDefaultSinkDataset,
+    ListPipelinesResponseBodyPipelinesSinkConditionDefaultSink,
+    ListPipelinesResponseBodyPipelinesSinkConditionRoutesSinkDataset,
+    ListPipelinesResponseBodyPipelinesSinkConditionRoutesSink,
+    ListPipelinesResponseBodyPipelinesSinkConditionRoutes,
+    ListPipelinesResponseBodyPipelinesSinkCondition,
+    ListPipelinesResponseBodyPipelinesSinkDataset,
+    ListPipelinesResponseBodyPipelinesSink,
+    ListPipelinesResponseBodyPipelinesSourceDataset,
+    ListPipelinesResponseBodyPipelinesSourceLogstore,
+    ListPipelinesResponseBodyPipelinesSource,
     ListPipelinesResponseBodyPipelines,
     PreviewPipelineRequestPipelineNodes,
     PreviewPipelineRequestPipeline,

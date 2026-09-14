@@ -20,7 +20,7 @@ class ExecuteQueryResponseBody(DaraModel):
         self.column_types = column_types
         # The result column information.
         self.columns = columns
-        # The metadata of the returned data.
+        # The metadata of the response.
         self.meta = meta
         # The request ID.
         self.request_id = request_id
@@ -90,6 +90,7 @@ class ExecuteQueryResponseBodyMeta(DaraModel):
         self.elapsed_millisecond = elapsed_millisecond
         # Indicates whether the query result is complete.
         self.progress = progress
+        # The result truncation details.
         self.truncation = truncation
 
     def validate(self):
@@ -144,7 +145,9 @@ class ExecuteQueryResponseBodyMetaTruncation(DaraModel):
         truncated: bool = None,
         truncated_column_indexes: List[List[int]] = None,
     ):
+        # Indicates whether the result is truncated.
         self.truncated = truncated
+        # The truncation details of result rows.
         self.truncated_column_indexes = truncated_column_indexes
 
     def validate(self):

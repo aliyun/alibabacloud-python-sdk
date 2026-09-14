@@ -12,12 +12,14 @@ class ListPipelinesRequest(DaraModel):
         pipeline_name: str = None,
         schedule_status: str = None,
         schedule_type: str = None,
+        sink_name: str = None,
     ):
         self.max_results = max_results
         self.next_token = next_token
         self.pipeline_name = pipeline_name
         self.schedule_status = schedule_status
         self.schedule_type = schedule_type
+        self.sink_name = sink_name
 
     def validate(self):
         pass
@@ -42,6 +44,9 @@ class ListPipelinesRequest(DaraModel):
         if self.schedule_type is not None:
             result['scheduleType'] = self.schedule_type
 
+        if self.sink_name is not None:
+            result['sinkName'] = self.sink_name
+
         return result
 
     def from_map(self, m: dict = None):
@@ -60,6 +65,9 @@ class ListPipelinesRequest(DaraModel):
 
         if m.get('scheduleType') is not None:
             self.schedule_type = m.get('scheduleType')
+
+        if m.get('sinkName') is not None:
+            self.sink_name = m.get('sinkName')
 
         return self
 
