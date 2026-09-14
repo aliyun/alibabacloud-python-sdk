@@ -25,27 +25,26 @@ class ModifyAutoSnapshotPolicyExRequest(DaraModel):
         retention_days: int = None,
         time_points: str = None,
     ):
-        # The retention period of cross-region snapshot replicas. Unit: days. Valid values:
+        # The retention period of cross-region replicated snapshots. Unit: days. Valid values:
         # 
-        # - -1: Snapshot replicas are permanently retained.
-        # - 1 to 65535: the number of days for which snapshot replicas are retained.
+        # - -1: The snapshot is retained permanently.
+        # - 1 to 65535: The snapshot is retained for the specified number of days.
         # 
         # Default value: -1.
         self.copied_snapshots_retention_days = copied_snapshots_retention_days
-        # The encryption parameter object for cross-region snapshot replication.
+        # The encryption configuration for cross-region snapshot replication.
         self.copy_encryption_configuration = copy_encryption_configuration
-        # Specifies whether to allow automatic cross-region replication.
+        # Specifies whether to allow automatic cross-region snapshot replication. Valid values:
         # 
-        # - true: allowed.
-        # - false: not allowed.
+        # - true: Allowed.
+        # - false: Not allowed.
         self.enable_cross_region_copy = enable_cross_region_copy
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The destination region to which snapshots are replicated. Currently, you can set only one destination region.
+        # The destination region for cross-region snapshot replication. You can specify only one destination region.
         self.target_copy_regions = target_copy_regions
         # The list of target resource tags. The automatic snapshot policy matches target resources based on tags.
-        # This parameter is required when AssociationType is set to AssociatedWithInstanceTag.
         self.target_tags = target_tags
         # The ID of the automatic snapshot policy. You can call [DescribeAutoSnapshotPolicyEx](https://help.aliyun.com/document_detail/25530.html) to query available automatic snapshot policies.
         # 
@@ -57,26 +56,26 @@ class ModifyAutoSnapshotPolicyExRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The days of the week on which automatic snapshots are created. Unit: days. The cycle is weekly. Valid values: 1 to 7. For example, 1 indicates Monday.
+        # The days of the week on which to create automatic snapshots. Valid values: 1 to 7, where 1 represents Monday.
         # 
         # To create multiple automatic snapshots within a week, specify multiple days:
         # 
         # - You can specify up to 7 days.
-        # - Specify multiple days in a JSON array, such as `"1", "2", … "7"`. Separate the days with commas (,).
+        # - Specify multiple days as a JSON array in the format of `"1", "2", … "7"`. Separate multiple days with commas (,).
         self.repeat_weekdays = repeat_weekdays
         # The retention period of automatic snapshots. Unit: days. Valid values:
         # 
-        # - -1: Automatic snapshots are permanently retained.
-        # - 1 to 65536: the number of days for which automatic snapshots are retained.
+        # - -1: The snapshot is retained permanently.
+        # - 1 to 65536: The snapshot is retained for the specified number of days.
         # 
         # Default value: -1.
         self.retention_days = retention_days
-        # The points in time at which automatic snapshots are created. The time is displayed in UTC+8. Unit: hours. Valid values: 0 to 23, which correspond to the 24 points in time from 00:00 to 23:00. For example, 1 indicates 01:00.
+        # The time of day at which to create automatic snapshots. The time is in UTC+8 and in the format of hours. Valid values: 0 to 23, representing 24 points in time from 00:00 to 23:00. For example, 1 represents 01:00.
         # 
-        # To create multiple automatic snapshots within a day, specify multiple points in time:
+        # To create multiple automatic snapshots within a day, specify multiple time points:
         # 
-        # - You can specify up to 24 points in time.
-        # - Specify multiple points in time in a JSON array, such as `"0", "1", … "23"`. Separate the points in time with commas (,).
+        # - You can specify up to 24 time points.
+        # - Specify multiple time points as a JSON array in the format of `"0", "1", … "23"`. Separate multiple time points with commas (,).
         self.time_points = time_points
 
     def validate(self):
@@ -195,12 +194,18 @@ class ModifyAutoSnapshotPolicyExRequestTargetTags(DaraModel):
         value: str = None,
     ):
         # The tag key.
-        # Valid values of N: 1 to 10.
-        # The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. The tag key cannot contain http:// or https://.
+        # 
+        # Valid values of N: 1 to 5.
+        # 
+        # The tag key cannot be an empty string. It can be up to 128 characters in length and cannot start with aliyun or acs:, or contain http:// or https://.
         self.key = key
         # The tag value.
-        # Valid values of N: 1 to 10. The tag value can be up to 128 characters in length and cannot contain http:// or https://.
-        # Note: If you pass in an empty value or an empty string, it indicates any value.
+        # 
+        # Valid values of N: 1 to 5.
+        # 
+        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
+        # 
+        # > If you pass an empty value or an empty string, the tag value matches any value.
         self.value = value
 
     def validate(self):
@@ -236,16 +241,16 @@ class ModifyAutoSnapshotPolicyExRequestCopyEncryptionConfiguration(DaraModel):
         encrypted: bool = None,
         kmskey_id: str = None,
     ):
-        # This parameter is not publicly available.
+        # This parameter is not available for use.
         self.arn = arn
         # Specifies whether to enable encryption for cross-region snapshot replication. Valid values:
         # 
-        # - true: Encryption is enabled. 
-        # - false: Encryption is not enabled. 
+        # - true: Yes. 
+        # - false: No. 
         # 
         # Default value: false.
         self.encrypted = encrypted
-        # The key ID of the KMS key used for encrypted cross-region snapshot replication.
+        # The key ID of the KMS key used for cross-region encrypted snapshot replication.
         self.kmskey_id = kmskey_id
 
     def validate(self):
@@ -295,11 +300,11 @@ class ModifyAutoSnapshotPolicyExRequestCopyEncryptionConfigurationArn(DaraModel)
         role_type: str = None,
         rolearn: str = None,
     ):
-        # This parameter is not publicly available.
+        # This parameter is not available for use.
         self.assume_role_for = assume_role_for
-        # This parameter is not publicly available.
+        # This parameter is not available for use.
         self.role_type = role_type
-        # This parameter is not publicly available.
+        # This parameter is not available for use.
         self.rolearn = rolearn
 
     def validate(self):

@@ -18,11 +18,11 @@ class DescribeInstancesResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.instances = instances
-        # The query token returned in this call.
+        # The pagination token returned in this call.
         self.next_token = next_token
         # The page number.
         self.page_number = page_number
-        # The number of entries per page as specified in the request.
+        # The number of entries per page that was specified in the request.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -1962,9 +1962,11 @@ class DescribeInstancesResponseBodyInstancesInstanceAdditionalInfo(DaraModel):
     def __init__(
         self,
         enable_high_density_mode: bool = None,
+        managed_host_id: str = None,
         node_serial_number: str = None,
     ):
         self.enable_high_density_mode = enable_high_density_mode
+        self.managed_host_id = managed_host_id
         self.node_serial_number = node_serial_number
 
     def validate(self):
@@ -1978,6 +1980,9 @@ class DescribeInstancesResponseBodyInstancesInstanceAdditionalInfo(DaraModel):
         if self.enable_high_density_mode is not None:
             result['EnableHighDensityMode'] = self.enable_high_density_mode
 
+        if self.managed_host_id is not None:
+            result['ManagedHostId'] = self.managed_host_id
+
         if self.node_serial_number is not None:
             result['NodeSerialNumber'] = self.node_serial_number
 
@@ -1987,6 +1992,9 @@ class DescribeInstancesResponseBodyInstancesInstanceAdditionalInfo(DaraModel):
         m = m or dict()
         if m.get('EnableHighDensityMode') is not None:
             self.enable_high_density_mode = m.get('EnableHighDensityMode')
+
+        if m.get('ManagedHostId') is not None:
+            self.managed_host_id = m.get('ManagedHostId')
 
         if m.get('NodeSerialNumber') is not None:
             self.node_serial_number = m.get('NodeSerialNumber')

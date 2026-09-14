@@ -24,7 +24,7 @@ class DescribeImagePipelinesRequest(DaraModel):
     ):
         # The image template ID. Valid values of N: 1 to 20.
         self.image_pipeline_id = image_pipeline_id
-        # The maximum number of entries per page for paging queries. Valid values: 1 to 500.
+        # The maximum number of entries per page in a paging query. Valid values: 1 to 500.
         # 
         # Default value: 50.
         self.max_results = max_results
@@ -38,7 +38,7 @@ class DescribeImagePipelinesRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the enterprise resource group. When you use this parameter to filter resources, the resource count cannot exceed 1000.
+        # The ID of the enterprise resource group. When you use this parameter to filter resources, the resource count cannot exceed 1,000.
         # 
         # >Filtering by the default resource group is not supported.
         self.resource_group_id = resource_group_id

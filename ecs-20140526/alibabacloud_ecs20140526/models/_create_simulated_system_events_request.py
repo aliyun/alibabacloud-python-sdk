@@ -17,10 +17,12 @@ class CreateSimulatedSystemEventsRequest(DaraModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        trigger_real_ops: bool = None,
     ):
         # The type of the system event. Valid values: 
-        # - SystemMaintenance.Reboot: The instance is restarted due to system maintenance. 
-        # - SystemFailure.Reboot: The instance is restarted due to a system error. 
+        # 
+        # - SystemMaintenance.Reboot: The instance is restarted due to system maintenance.
+        # - SystemFailure.Reboot: The instance is restarted due to a system error.
         # - InstanceFailure.Reboot: The instance is restarted due to an instance error.
         # - SystemMaintenance.Stop: The instance is stopped due to system maintenance.
         # - SystemMaintenance.Redeploy: The instance is redeployed due to system maintenance.
@@ -36,18 +38,20 @@ class CreateSimulatedSystemEventsRequest(DaraModel):
         self.instance_id = instance_id
         # The scheduled start time of the event. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
-        # > For abnormal events caused by system errors or instance errors, the event is already in the Executing state after it is created. In this case, the NotBefore parameter specifies the time when the event enters the Executed state.
+        # > For unexpected events caused by system errors or instance errors, the event is already in the Executing state after it is created. In this case, the NotBefore parameter specifies the time when the event enters the Executed state.
         # 
         # This parameter is required.
         self.not_before = not_before
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent list of Alibaba Cloud regions.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Specifies whether to trigger real O&M operations. Valid values:<br>- true: Triggers real O&M operations. The system actually stops or releases the instance. Exercise caution when you perform this operation, or use instances that do not run workloads for testing.<br>- false (default): Only simulates event notifications without affecting the actual lifecycle of the instance.
+        self.trigger_real_ops = trigger_real_ops
 
     def validate(self):
         pass
@@ -81,6 +85,9 @@ class CreateSimulatedSystemEventsRequest(DaraModel):
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
 
+        if self.trigger_real_ops is not None:
+            result['TriggerRealOps'] = self.trigger_real_ops
+
         return result
 
     def from_map(self, m: dict = None):
@@ -108,6 +115,9 @@ class CreateSimulatedSystemEventsRequest(DaraModel):
 
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+
+        if m.get('TriggerRealOps') is not None:
+            self.trigger_real_ops = m.get('TriggerRealOps')
 
         return self
 

@@ -17,9 +17,9 @@ class DescribeImagePipelinesResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.image_pipeline = image_pipeline
-        # The maximum number of entries per page for paging queries.
+        # The maximum number of entries per page in a paging query.
         self.max_results = max_results
-        # The pagination token returned in this call. For more information about how to use it, refer to the operation description.
+        # The pagination token returned in this call. For more information about how to use this token, see the operation description.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id

@@ -1,3 +1,7 @@
+2026-09-14 Version: 7.11.5
+- Update API CreateSimulatedSystemEvents: add request parameters TriggerRealOps.
+
+
 2026-09-08 Version: 7.11.2
 - Update API DescribeDedicatedHosts: add request parameters NeedHostDetail.
 

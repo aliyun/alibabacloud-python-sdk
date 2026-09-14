@@ -12,7 +12,7 @@ class CreateSnapshotGroupResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The ID of the snapshot-consistent group.
+        # The ID of the snapshot consistency group.
         self.snapshot_group_id = snapshot_group_id
 
     def validate(self):

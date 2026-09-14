@@ -19,7 +19,7 @@ class DescribeAutoSnapshotPolicyExResponseBody(DaraModel):
         self.auto_snapshot_policies = auto_snapshot_policies
         # The page number of the automatic snapshot policy list.
         self.page_number = page_number
-        # The number of entries per page when the automatic snapshot policies are displayed by page.
+        # The number of entries per page when the automatic snapshot policies are displayed in paging mode.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id

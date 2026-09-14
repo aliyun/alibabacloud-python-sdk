@@ -22,69 +22,69 @@ class AttachDiskRequest(DaraModel):
     ):
         # Specifies whether to attach the disk as a system disk. Valid values:
         # 
-        # - true: The disk is attached as a system disk.
+        # - true: Attach as a system disk.
         # 
-        # - false: The disk is not attached as a system disk.
+        # - false: Do not attach as a system disk.
         # 
         # Default value: false.
         # 
-        # > If you set `Bootable=true`, the destination ECS instance must have no system disk attached.
+        # > If `Bootable` is set to `true`, the target ECS instance must have no system disk attached.
         self.bootable = bootable
         # Specifies whether to release the disk when the instance is released. Valid values:
         # 
-        # - true: The disk is released together with the instance.
-        # - false: The disk is not released together with the instance. The disk is retained as a pay-as-you-go data disk.
+        # - true: The disk is released with the instance.
+        # - false: The disk is not released with the instance. The disk is retained as a pay-as-you-go data disk.
         # 
         # Default value: false.
         # 
-        # Take note of the following items when you set this parameter:
+        # Note the following when setting this parameter:
         # 
-        # - If you set `DeleteWithInstance` to `false` and the ECS instance is locked for security reasons, meaning that `OperationLocks` contains `"LockReason" : "security"`, this attribute is ignored when the ECS instance is released, and the disk is released together with the instance.
+        # - If `DeleteWithInstance` is set to `false` and the ECS instance is under security control (that is, `OperationLocks` contains `"LockReason" : "security"`), this attribute is ignored when the ECS instance is released, and the disk is released along with the instance.
         # 
-        # - If the destination disk is an `elastic ephemeral disk`, you must set `DeleteWithInstance` to `true`.
+        # - If the disk to attach is an elastic ephemeral disk, you must set `DeleteWithInstance` to `true`.
         # 
-        # - Disks with the multi-attach feature enabled do not support this parameter.
+        # - This parameter is not supported for disks with the multi-attach feature enabled.
         self.delete_with_instance = delete_with_instance
         # The device name of the disk.
         # 
-        # > This parameter will be deprecated soon. To improve compatibility, use other parameters to identify the disk.
+        # > This parameter is being deprecated. To improve compatibility, use other parameters to identify the disk.
         self.device = device
-        # The ID of the disk to be attached. The disk (`DiskId`) and the instance (`InstanceId`) must be in the same zone.
+        # The ID of the disk to attach. The disk (`DiskId`) and the instance (`InstanceId`) must be in the same zone.
         # 
-        # > You can attach data disks and system disks. For related constraints, see the operation description section above.
+        # > Both data disks and system disks are supported. For the relevant constraints, see the operation description above.
         # 
         # This parameter is required.
         self.disk_id = disk_id
-        # Specifies whether to forcefully attach the disk. Valid values:
+        # Specifies whether the request is a forced attach request. Valid values:
         # 
-        # - true: Forcefully attaches the disk.
-        # - false: Does not forcefully attach the disk.
+        # - true: Yes.
+        # - false: No.
         # 
         # Default value: false.
         # 
         # 
-        # > Currently, only regional ESSDs (cloud_regional_disk_auto) support setting this parameter to true.
+        # > Currently, only the ESSD regional disk type (cloud_regional_disk_auto) supports setting this field to true.
         self.force = force
         # The ID of the ECS instance to which you want to attach the disk.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The name of the SSH key pair that is bound to the Linux ECS instance when you attach a system disk.
+        # The name of the SSH key pair to bind to a Linux ECS instance when attaching a system disk.
         # 
         # - Windows Server instances: SSH key pairs are not supported. Even if this parameter is specified, only the `Password` configuration takes effect.
         # 
-        # - Linux instances: The password logon method is disabled by default.
+        # - Linux instances: Password-based logon is disabled after the key pair is bound.
         self.key_pair_name = key_pair_name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The password that is set for the instance when you attach a system disk. The password is effective only for the administrator and root usernames and is not effective for other usernames. The password must be 8 to 30 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported:
+        # The password for the instance when attaching a system disk. This parameter applies only to the administrator and root usernames. The password must be 8 to 30 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported:
         # 
         # ```
         # ()`~!@#$%^&*-_+=|{}[]:;\\"<>,.?/
         # ```
         # For Windows instances, the password cannot start with a forward slash (/).
         # 
-        # > If you specify the `Password` parameter, send the request over HTTPS to prevent password leaks.
+        # > If you specify the `Password` parameter, use HTTPS to send the request to prevent password leakage.
         self.password = password
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

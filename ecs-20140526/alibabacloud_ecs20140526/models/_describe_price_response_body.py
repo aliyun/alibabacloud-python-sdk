@@ -217,7 +217,7 @@ class DescribePriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice(DaraMo
         self.discount_price = discount_price
         # The original price.
         self.original_price = original_price
-        # The transaction price, which is equal to the original price minus the discount.
+        # The final price, which is the original price minus the discount.
         self.trade_price = trade_price
 
     def validate(self):
@@ -281,7 +281,7 @@ class DescribePriceResponseBodyPriceInfoPrice(DaraModel):
         self.original_price = original_price
         # The hourly price of the reserved instance with no upfront or partial upfront payment.
         self.reserved_instance_hour_price = reserved_instance_hour_price
-        # The transaction price, which is equal to the original price minus the discount.
+        # The final price, which is the original price minus the discount.
         self.trade_price = trade_price
 
     def validate(self):
