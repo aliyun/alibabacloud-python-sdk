@@ -20,13 +20,13 @@ class DocumentTranslateRequest(DaraModel):
         # 
         # This parameter is required.
         self.file_type = file_type
-        # The glossary ID. Specify this parameter when you need the glossary feature. Supports custom translation results, including do-not-translate (ABC-ABC), specified translation (ABC-DEF), and skip translation (ABC-empty value). Commonly used for brand name protection.
+        # The glossary ID. Specify this parameter when you need the glossary feature. Supports custom translation results, including do-not-translate (ABC-ABC), specified translation (ABC-DEF), and skip translation (ABC-empty value). This is commonly used for scenarios such as brand name protection.
         self.glossary = glossary
         # The target language. The language code uses the two-letter ISO 639-1 standard.
         # 
         # This parameter is required.
         self.target_language = target_language
-        # The OSS URL path of the document to be translated.
+        # The OSS URL of the document to be translated.
         # 
         # This parameter is required.
         self.url = url

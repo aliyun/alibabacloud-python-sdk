@@ -18,7 +18,7 @@ class CategoryAttributeMatchResponseBody(DaraModel):
     ):
         # The error code. This parameter is not returned for successful calls.
         self.code = code
-        # The response data.
+        # The returned result.
         self.data = data
         # The error message. This parameter is not returned for successful calls.
         self.message = message
@@ -99,7 +99,7 @@ class CategoryAttributeMatchResponseBodyData(DaraModel):
         self.matched = matched
         # The total number of attributes under the category.
         self.total_attributes = total_attributes
-        # The usage information.
+        # The usage fields.
         self.usage_map = usage_map
 
     def validate(self):

@@ -14,7 +14,7 @@ class EcomVideoRecreationResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The result code. `success` indicates success. An error code is returned upon failure.
+        # The result code. A value of `success` indicates success. An error code is returned upon failure.
         self.code = code
         # The asynchronous task submit status.
         self.data = data
@@ -76,7 +76,7 @@ class EcomVideoRecreationResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
-        # The asynchronous task ID for QueryAsyncTaskResult queries.
+        # The asynchronous task ID used to query results with QueryAsyncTaskResult.
         self.task_id = task_id
 
     def validate(self):

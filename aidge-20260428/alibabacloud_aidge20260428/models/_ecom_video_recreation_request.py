@@ -13,7 +13,7 @@ class EcomVideoRecreationRequest(DaraModel):
         input: main_models.EcomVideoRecreationRequestInput = None,
         output: main_models.EcomVideoRecreationRequestOutput = None,
     ):
-        # The input parameters for video remix.
+        # The input parameters for video multiplication.
         # 
         # This parameter is required.
         self.input = input
@@ -58,7 +58,7 @@ class EcomVideoRecreationRequestOutput(DaraModel):
         quality: str = None,
         ratio: str = None,
     ):
-        # The target duration in seconds. `"auto"` (default): determined by the system. For product replacement, an integer from 5 to 60 can be specified. For person replacement, only `"auto"` is supported.
+        # The target duration in seconds. Set to ``"auto"`` (default) to let the system decide. For product replacement, specify an integer from 5 to 60. For person replacement, only `"auto"` is supported.
         self.duration = duration
         # The output resolution. Default value: `720p`.
         self.quality = quality
@@ -107,20 +107,20 @@ class EcomVideoRecreationRequestInput(DaraModel):
         product_info: main_models.EcomVideoRecreationRequestInputProductInfo = None,
         source_video_url: str = None,
     ):
-        # The description or supplementary constraints for the target person in person replacement mode. 1 to 500 characters. Required when PersonReferenceImageUrls is not provided.   
+        # The description or supplementary constraints for the target person in person replacement mode. The value must be 1 to 500 characters in length. This parameter is required if PersonReferenceImageUrls is not provided.   
         # Example: The target person is an adult male. Retain the original clothing and actions.
         self.change_description = change_description
         # The replacement mode. Valid values: `product_replacement` (default) and `person_replacement`.
         self.mode = mode
-        # The URLs of target person reference images for person replacement. 1 to 5 images of the same person are supported. Arrange images in the following order: face close-up, front view, 45-degree angle, side view, and back view.  
+        # The URLs of reference images for the target person in person replacement mode. You can specify 1 to 5 images, which must be of the same person. Arrange the images in the following order: facial close-up, front view, 45-degree view, side view, and back view.  
         # Example: ["https://example.com/person.jpg"]
         self.person_reference_image_urls = person_reference_image_urls
-        # The URL of the target product image. Required for product replacement. Exactly one image must be provided. A clear subject with no occlusion and a clean background is recommended.  
+        # The URLs of target product images. This parameter is required for product replacement mode. You can upload 1 to 8 images for the same SKU. Use images with a clear subject, no occlusion, and a clean background.   
         # Example: ["https://example.com/product.png"]
         self.product_image_urls = product_image_urls
-        # The target product information. Provide this parameter to improve voiceover accuracy.
+        # The target product information. Specify this parameter to improve voiceover accuracy.
         self.product_info = product_info
-        # The HTTP(S) URL of the reference video. The video duration must be in the range of 2 to 360 seconds. The URL must remain accessible during task execution. Set the URL validity period to at least 24 hours.
+        # The HTTP(S) URL of the reference video. The video duration must be 2 to 360 seconds. The URL must remain accessible during task execution. A validity period of at least 24 hours is recommended.
         # 
         # This parameter is required.
         self.source_video_url = source_video_url
@@ -185,13 +185,13 @@ class EcomVideoRecreationRequestInputProductInfo(DaraModel):
         title: str = None,
     ):
         # The product category.  
-        # Example: Women\\"s Clothing/Sun Protection Jacket
+        # Example: Womenswear/Sun-protective clothing
         self.category = category
         # The actual product information (SKU, brand, color, material, size, specifications, logo, and usage), used to constrain voiceover facts.  
-        # Example: Light moon yellow, cool-touch fabric, sun protection to the back of the hand, UPF50+
+        # Example: Light yellow, cooling fabric, sun protection to the back of the hand, UPF50+
         self.detail = detail
-        # Required for product replacement. The name of the target product. Maximum length: 200 characters.  
-        # Example: Light Moon Yellow Cool-touch Sun Protection Jacket
+        # The name of the target product. This parameter is required for product replacement mode. Maximum length: 200 characters.  
+        # Example: Light yellow cooling sun-protective jacket
         self.title = title
 
     def validate(self):

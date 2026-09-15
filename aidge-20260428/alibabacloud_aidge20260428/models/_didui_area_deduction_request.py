@@ -19,7 +19,7 @@ class DiduiAreaDeductionRequest(DaraModel):
         # 
         # This parameter is required.
         self.products = products
-        # The ID of the customer-specific SKU vector store that determines which store is used for retrieval. The store must be created in advance through the store creation process.
+        # The ID of the customer-specific SKU vector database that determines which database is used for recall. The database must be created in advance through the database creation process.
         self.rag_id = rag_id
         # The optional business request ID used for Tracing Analysis.
         self.req_id = req_id
@@ -80,7 +80,7 @@ class DiduiAreaDeductionRequestProducts(DaraModel):
         boxes: List[main_models.DiduiAreaDeductionRequestProductsBoxes] = None,
         sku_id: str = None,
     ):
-        # The detection boxes for the current SKU. Coordinate values range from 0 to 1000.
+        # The instance boxes for the current SKU. The coordinate range is 0 to 1000.
         # 
         # This parameter is required.
         self.boxes = boxes

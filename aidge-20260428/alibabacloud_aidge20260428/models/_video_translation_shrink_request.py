@@ -22,7 +22,7 @@ class VideoTranslationShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.target_language = target_language
-        # The video URL (MP4/MOV, ≤ 200 MB).
+        # The URL of the video (MP4/MOV, ≤ 200 MB).
         # 
         # This parameter is required.
         self.video_url = video_url

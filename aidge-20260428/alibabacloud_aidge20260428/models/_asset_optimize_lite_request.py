@@ -21,7 +21,7 @@ class AssetOptimizeLiteRequest(DaraModel):
         self.glossary = glossary
         # Specifies whether product area translation is included.
         self.including_product_area = including_product_area
-        # Specifies whether translation is needed.
+        # Specifies whether translation is required.
         # 
         # This parameter is required.
         self.need_trans = need_trans

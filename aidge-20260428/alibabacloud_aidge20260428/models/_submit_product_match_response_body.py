@@ -5,24 +5,26 @@ from __future__ import annotations
 from alibabacloud_aidge20260428 import models as main_models
 from darabonba.model import DaraModel
 
-class AssetOptimizeLiteResponseBody(DaraModel):
+class SubmitProductMatchResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
-        data: main_models.AssetOptimizeLiteResponseBodyData = None,
+        data: main_models.SubmitProductMatchResponseBodyData = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code.
+        # The error code. This parameter is not returned if the call is successful.
         self.code = code
-        # The submit result of the asynchronous task.
+        # The submit result of the matching product identification asynchronous task.
         self.data = data
-        # The error message.
+        # The error message. This parameter is not returned if the call is successful.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the call is successful.
+        # Indicates whether the call is successful. Valid values:
+        # - true: The call is successful.
+        # - false: The call failed.
         self.success = success
 
     def validate(self):
@@ -57,7 +59,7 @@ class AssetOptimizeLiteResponseBody(DaraModel):
             self.code = m.get('Code')
 
         if m.get('Data') is not None:
-            temp_model = main_models.AssetOptimizeLiteResponseBodyData()
+            temp_model = main_models.SubmitProductMatchResponseBodyData()
             self.data = temp_model.from_map(m.get('Data'))
 
         if m.get('Message') is not None:
@@ -71,14 +73,15 @@ class AssetOptimizeLiteResponseBody(DaraModel):
 
         return self
 
-
-
-class AssetOptimizeLiteResponseBodyData(DaraModel):
+class SubmitProductMatchResponseBodyData(DaraModel):
     def __init__(
         self,
+        submitted_at: str = None,
         task_id: str = None,
     ):
-        # The asynchronous task ID, which is used to query the result later.
+        # The task acceptance time in ISO 8601 UTC format.
+        self.submitted_at = submitted_at
+        # The asynchronous task ID used for QueryAsyncTaskResult queries.
         self.task_id = task_id
 
     def validate(self):
@@ -89,6 +92,9 @@ class AssetOptimizeLiteResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.submitted_at is not None:
+            result['SubmittedAt'] = self.submitted_at
+
         if self.task_id is not None:
             result['TaskId'] = self.task_id
 
@@ -96,6 +102,9 @@ class AssetOptimizeLiteResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('SubmittedAt') is not None:
+            self.submitted_at = m.get('SubmittedAt')
+
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
 

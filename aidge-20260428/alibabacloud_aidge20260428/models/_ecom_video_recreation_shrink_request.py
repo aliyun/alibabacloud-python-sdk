@@ -10,7 +10,7 @@ class EcomVideoRecreationShrinkRequest(DaraModel):
         input_shrink: str = None,
         output_shrink: str = None,
     ):
-        # The input parameters for video remix.
+        # The input parameters for video multiplication.
         # 
         # This parameter is required.
         self.input_shrink = input_shrink

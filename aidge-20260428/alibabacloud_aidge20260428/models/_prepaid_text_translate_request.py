@@ -17,9 +17,9 @@ class PrepaidTextTranslateRequest(DaraModel):
         target_language: str = None,
         translate_scene: str = None,
     ):
-        # The business scenario identifier. This parameter is optional. Valid values: e-commerce-title, e-commerce-description, e-commerce-chat, e-commerce-cpv, novel, game. If not specified or an invalid value is passed, the general translation strategy is used by default.
+        # The business scenario identifier. This parameter is optional. Valid values: e-commerce-title, e-commerce-description, e-commerce-chat, e-commerce-cpv, novel, game. If not specified or an invalid value is passed, the general translation policy is used by default.
         self.biz_name = biz_name
-        # The format type of the source text. This parameter is optional. Supports text (plain text format) and html (web page format, preserving HTML tags).
+        # The format type of the source text. This parameter is optional. Valid values: text (plain text format) and html (web page format that preserves HTML tags).
         self.format_type = format_type
         # The intervention glossary ID. This parameter is optional. The glossary must be created separately in the console, and its ID must be provided. If the glossary ID is empty, the translation result is not modified.
         self.glossary = glossary
@@ -33,7 +33,7 @@ class PrepaidTextTranslateRequest(DaraModel):
         # 
         # This parameter is required.
         self.target_language = target_language
-        # The format of the translation text. html (web page format. This setting processes both the source text and translated text in HTML format) or text (text format. This setting processes both the source text and translated result as plain text without format processing).
+        # The format of the translation text. html (web page format. This setting processes the source text and translated text in HTML format). text (text format. This setting processes the source text and translated text as plain text without any format processing).
         self.translate_scene = translate_scene
 
     def validate(self):

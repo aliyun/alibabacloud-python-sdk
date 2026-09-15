@@ -20,7 +20,7 @@ class VisionFlowResponseBody(DaraModel):
         self.data = data
         # The error message. The value "Success" is returned for a successful call.
         self.message = message
-        # The request ID, used to uniquely identify a single API call.
+        # The request ID, used to uniquely identify a single request.
         self.request_id = request_id
         # Indicates whether the call is successful. A value of true indicates success. A value of false indicates failure.
         self.success = success

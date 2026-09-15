@@ -22,7 +22,7 @@ class CategoryMatchResponseBody(DaraModel):
         self.data = data
         # The error message. The value "Success" is returned for successful calls.
         self.message = message
-        # The request ID, which uniquely identifies the API call.
+        # The request ID, which uniquely identifies the request.
         self.request_id = request_id
         # Indicates whether the call is successful. A value of true indicates success. A value of false indicates failure.
         self.success = success
@@ -84,17 +84,17 @@ class CategoryMatchResponseBodyData(DaraModel):
         reason: str = None,
         usage_map: Dict[str, int] = None,
     ):
-        # The matched category ID.
+        # The ID of the matched category.
         self.category_id = category_id
-        # The matched category name.
+        # The name of the matched category.
         self.category_name = category_name
-        # The full path of the category, separated by "/".
+        # The full path of the category, separated by forward slashes (/).
         self.category_path = category_path
-        # The matching confidence score, ranging from 0 to 100.
+        # The match confidence score. Valid values: 0 to 100.
         self.confidence = confidence
-        # Indicates whether the matching is successful.
+        # Indicates whether the category matching is successful.
         self.match_successful = match_successful
-        # The explanation of the matching reason.
+        # The reason for the category match.
         self.reason = reason
         # The usage information.
         self.usage_map = usage_map

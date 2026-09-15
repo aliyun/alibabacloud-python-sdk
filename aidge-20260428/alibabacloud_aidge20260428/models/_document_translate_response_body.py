@@ -21,9 +21,9 @@ class DocumentTranslateResponseBody(DaraModel):
         # The error message, such as "The parameters contain sensitive information. Try other input."
         # This parameter is not returned for successful calls.
         self.message = message
-        # The unique request identity, used for troubleshooting and tracing.
+        # The unique request identity, used for troubleshooting and Tracing Analysis.
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values: true: The call was successful. false: The call failed.
+        # Indicates whether the call is successful. true: The call is successful. false: The call failed.
         self.success = success
 
     def validate(self):
@@ -77,7 +77,7 @@ class DocumentTranslateResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
-        # The unique identifier of the asynchronous task, used to query the task status and result.
+        # The unique identifier of the asynchronous task. Use this ID to query the task status and result.
         self.task_id = task_id
 
     def validate(self):

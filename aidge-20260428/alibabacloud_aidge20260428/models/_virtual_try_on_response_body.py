@@ -2,27 +2,29 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import Dict, Any
+
 from alibabacloud_aidge20260428 import models as main_models
 from darabonba.model import DaraModel
 
-class AssetOptimizeLiteResponseBody(DaraModel):
+class VirtualTryOnResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
-        data: main_models.AssetOptimizeLiteResponseBodyData = None,
+        data: main_models.VirtualTryOnResponseBodyData = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code.
+        # The error code. This parameter is not returned if the call is successful.
         self.code = code
-        # The submit result of the asynchronous task.
+        # The returned result struct.
         self.data = data
-        # The error message.
+        # The error message. This parameter is not returned if the call is successful.
         self.message = message
-        # Id of the request
+        # The request ID. Used to uniquely identify a single API call.
         self.request_id = request_id
-        # Indicates whether the call is successful.
+        # Indicates whether the call is successful. A value of true indicates success. A value of false indicates failure.
         self.success = success
 
     def validate(self):
@@ -57,7 +59,7 @@ class AssetOptimizeLiteResponseBody(DaraModel):
             self.code = m.get('Code')
 
         if m.get('Data') is not None:
-            temp_model = main_models.AssetOptimizeLiteResponseBodyData()
+            temp_model = main_models.VirtualTryOnResponseBodyData()
             self.data = temp_model.from_map(m.get('Data'))
 
         if m.get('Message') is not None:
@@ -71,15 +73,16 @@ class AssetOptimizeLiteResponseBody(DaraModel):
 
         return self
 
-
-
-class AssetOptimizeLiteResponseBodyData(DaraModel):
+class VirtualTryOnResponseBodyData(DaraModel):
     def __init__(
         self,
         task_id: str = None,
+        usage_map: Dict[str, Any] = None,
     ):
-        # The asynchronous task ID, which is used to query the result later.
+        # The asynchronous task ID. Used to query the task result later.
         self.task_id = task_id
+        # The usage details.
+        self.usage_map = usage_map
 
     def validate(self):
         pass
@@ -92,12 +95,18 @@ class AssetOptimizeLiteResponseBodyData(DaraModel):
         if self.task_id is not None:
             result['TaskId'] = self.task_id
 
+        if self.usage_map is not None:
+            result['UsageMap'] = self.usage_map
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
+
+        if m.get('UsageMap') is not None:
+            self.usage_map = m.get('UsageMap')
 
         return self
 

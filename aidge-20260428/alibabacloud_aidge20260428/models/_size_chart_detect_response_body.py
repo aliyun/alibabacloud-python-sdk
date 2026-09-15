@@ -24,9 +24,8 @@ class SizeChartDetectResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values:
-        # 
-        # - true: The call is successful.
+        # Indicates whether the call was successful. Valid values:
+        # - true: The call was successful.
         # - false: The call failed.
         self.success = success
 
@@ -84,7 +83,7 @@ class SizeChartDetectResponseBodyData(DaraModel):
     ):
         # Indicates whether the image is a size chart.
         self.is_size_chart = is_size_chart
-        # The usage information. The key is the usage name, and the value is the count.
+        # The usage information. The key is the usage name and the value is the count.
         self.usage_map = usage_map
 
     def validate(self):

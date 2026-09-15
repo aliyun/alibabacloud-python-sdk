@@ -11,8 +11,8 @@ class ImageRemovalProRequest(DaraModel):
         image_url: str = None,
     ):
         # The call type. Valid values:
-        # - true: asynchronous.
-        # - false: synchronous.
+        # - true: Asynchronous.
+        # - false: Synchronous.
         # 
         # Default value: false.
         self.async_ = async_

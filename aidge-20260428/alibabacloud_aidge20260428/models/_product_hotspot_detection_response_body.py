@@ -79,7 +79,7 @@ class ProductHotspotDetectionResponseBodyData(DaraModel):
         products: List[main_models.ProductHotspotDetectionResponseBodyDataProducts] = None,
         usage_map: Dict[str, int] = None,
     ):
-        # The list of recognized products and their bounding boxes.
+        # The list of detected products and their bounding boxes.
         self.products = products
         # The usage information.
         self.usage_map = usage_map
@@ -125,7 +125,7 @@ class ProductHotspotDetectionResponseBodyDataProducts(DaraModel):
         label: str = None,
         product_id: str = None,
     ):
-        # The bounding boxes of the product instances.
+        # The bounding boxes of the detected product instances.
         self.boxes = boxes
         # The product name.
         self.label = label

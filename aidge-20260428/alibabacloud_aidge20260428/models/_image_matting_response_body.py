@@ -25,7 +25,6 @@ class ImageMattingResponseBody(DaraModel):
         # Id of the request
         self.request_id = request_id
         # Indicates whether the call is successful. Valid values:
-        # 
         # - true: Successful.
         # - false: Failed.
         self.success = success
@@ -87,9 +86,9 @@ class ImageMattingResponseBodyData(DaraModel):
     ):
         # The height of the result image in pixels.
         self.height = height
-        # The URL of the matting result image.
+        # The URL of the image matting result.
         self.image_url = image_url
-        # The matting quality score.
+        # The quality score of the image matting result.
         self.score = score
         # The usage information.
         self.usage_map = usage_map

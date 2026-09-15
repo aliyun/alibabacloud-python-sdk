@@ -21,17 +21,17 @@ class CategoryMatchRequest(DaraModel):
         self.description = description
         # The product attributes that describe the characteristics of the product, such as material. Provide the attribute names and values.
         self.item_spec = item_spec
-        # The product SKU title.
+        # The SKU title of the product.
         self.sku = sku
         # The product category on the source platform.
         # 
         # This parameter is required.
         self.source_category = source_category
-        # The source platform where products are sourced from.
+        # The source platform from which products are sourced.
         # 
         # This parameter is required.
         self.source_platform = source_platform
-        # The target listing platform. Currently only temu is supported.
+        # The target listing platform. Currently, only temu is supported.
         # 
         # This parameter is required.
         self.target_platform = target_platform

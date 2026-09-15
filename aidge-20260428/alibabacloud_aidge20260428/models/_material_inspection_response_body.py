@@ -123,17 +123,15 @@ class MaterialInspectionResponseBodyDataResult(DaraModel):
         steps: List[main_models.MaterialInspectionResponseBodyDataResultSteps] = None,
         type: str = None,
     ):
-        # The natural language summary of the inspection result, such as "1 rule: 1 PASS, all inspection items are compliant."
+        # The natural language summary, such as "1 rule: 1 PASS, all inspection items are compliant."
         self.evidence = evidence
-        # The overall determination result. Valid values:
-        # - PASS: All inspection items are compliant.
-        # - FAIL: One or more inspection items are non-compliant.
+        # The overall determination result. Valid values: PASS and FAIL.
         self.overall_result = overall_result
-        # The request ID returned as-is from the input.
+        # The request ID returned as-is from the request.
         self.req_id = req_id
         # The list of detection steps.
         self.steps = steps
-        # The detection type that indicates the identified material category.
+        # The detection type.
         self.type = type
 
     def validate(self):
@@ -194,10 +192,7 @@ class MaterialInspectionResponseBodyDataResultSteps(DaraModel):
         result: str = None,
         step_id: str = None,
     ):
-        # The determination result of the step. Valid values:
-        # - PASS: The step is compliant.
-        # - FAIL: The step is non-compliant.
-        # - UNABLE_TO_JUDGE: The system cannot determine the result.
+        # The determination result of the step. Valid values: PASS, FAIL, and UNABLE_TO_JUDGE.
         self.result = result
         # The step ID.
         self.step_id = step_id

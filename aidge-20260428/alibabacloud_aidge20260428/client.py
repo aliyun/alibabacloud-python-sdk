@@ -2204,6 +2204,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.size_chart_extract_with_options_async(request, runtime)
 
+    def submit_product_match_with_options(
+        self,
+        request: main_models.SubmitProductMatchRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitProductMatchResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.brand_name):
+            query['BrandName'] = request.brand_name
+        if not DaraCore.is_null(request.category):
+            query['Category'] = request.category
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        if not DaraCore.is_null(request.item_id):
+            query['ItemId'] = request.item_id
+        if not DaraCore.is_null(request.product_url):
+            query['ProductUrl'] = request.product_url
+        if not DaraCore.is_null(request.shop_name):
+            query['ShopName'] = request.shop_name
+        if not DaraCore.is_null(request.title):
+            query['Title'] = request.title
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitProductMatch',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitProductMatchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_product_match_with_options_async(
+        self,
+        request: main_models.SubmitProductMatchRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitProductMatchResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.brand_name):
+            query['BrandName'] = request.brand_name
+        if not DaraCore.is_null(request.category):
+            query['Category'] = request.category
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        if not DaraCore.is_null(request.item_id):
+            query['ItemId'] = request.item_id
+        if not DaraCore.is_null(request.product_url):
+            query['ProductUrl'] = request.product_url
+        if not DaraCore.is_null(request.shop_name):
+            query['ShopName'] = request.shop_name
+        if not DaraCore.is_null(request.title):
+            query['Title'] = request.title
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitProductMatch',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitProductMatchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_product_match(
+        self,
+        request: main_models.SubmitProductMatchRequest,
+    ) -> main_models.SubmitProductMatchResponse:
+        runtime = RuntimeOptions()
+        return self.submit_product_match_with_options(request, runtime)
+
+    async def submit_product_match_async(
+        self,
+        request: main_models.SubmitProductMatchRequest,
+    ) -> main_models.SubmitProductMatchResponse:
+        runtime = RuntimeOptions()
+        return await self.submit_product_match_with_options_async(request, runtime)
+
     def text_correct_with_options(
         self,
         request: main_models.TextCorrectRequest,
@@ -2563,6 +2657,88 @@ class Client(OpenApiClient):
     ) -> main_models.VideoTranslationResponse:
         runtime = RuntimeOptions()
         return await self.video_translation_with_options_async(request, runtime)
+
+    def virtual_try_on_with_options(
+        self,
+        request: main_models.VirtualTryOnRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.VirtualTryOnResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cloth_image_url):
+            query['ClothImageUrl'] = request.cloth_image_url
+        if not DaraCore.is_null(request.cloth_type):
+            query['ClothType'] = request.cloth_type
+        if not DaraCore.is_null(request.model_image_url):
+            query['ModelImageUrl'] = request.model_image_url
+        if not DaraCore.is_null(request.resolution):
+            query['Resolution'] = request.resolution
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'VirtualTryOn',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.VirtualTryOnResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def virtual_try_on_with_options_async(
+        self,
+        request: main_models.VirtualTryOnRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.VirtualTryOnResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cloth_image_url):
+            query['ClothImageUrl'] = request.cloth_image_url
+        if not DaraCore.is_null(request.cloth_type):
+            query['ClothType'] = request.cloth_type
+        if not DaraCore.is_null(request.model_image_url):
+            query['ModelImageUrl'] = request.model_image_url
+        if not DaraCore.is_null(request.resolution):
+            query['Resolution'] = request.resolution
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'VirtualTryOn',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.VirtualTryOnResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def virtual_try_on(
+        self,
+        request: main_models.VirtualTryOnRequest,
+    ) -> main_models.VirtualTryOnResponse:
+        runtime = RuntimeOptions()
+        return self.virtual_try_on_with_options(request, runtime)
+
+    async def virtual_try_on_async(
+        self,
+        request: main_models.VirtualTryOnRequest,
+    ) -> main_models.VirtualTryOnResponse:
+        runtime = RuntimeOptions()
+        return await self.virtual_try_on_with_options_async(request, runtime)
 
     def vision_flow_with_options(
         self,

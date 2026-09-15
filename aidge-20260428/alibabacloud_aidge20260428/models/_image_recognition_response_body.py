@@ -16,11 +16,11 @@ class ImageRecognitionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. This parameter is not returned for successful calls.
+        # The error code. This parameter is not returned if the call is successful.
         self.code = code
         # The intelligent element recognition result.
         self.data = data
-        # The error message. This parameter is not returned for successful calls.
+        # The error message. This parameter is not returned if the call is successful.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -109,13 +109,13 @@ class ImageRecognitionResponseBodyData(DaraModel):
         self.obj_npx = obj_npx
         # Indicates whether the subject area contains a watermark.
         self.obj_watermark = obj_watermark
-        # The product count.
+        # The number of products.
         self.pd_num = pd_num
-        # The product proportion.
+        # The proportion of the product area in the image.
         self.pd_prop = pd_prop
         # The list of recognized text.
         self.rec_text = rec_text
-        # The text proportion.
+        # The proportion of the text area in the image.
         self.text_prop = text_prop
         # The usage information.
         self.usage_map = usage_map

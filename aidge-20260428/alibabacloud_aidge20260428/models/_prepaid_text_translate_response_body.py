@@ -16,15 +16,15 @@ class PrepaidTextTranslateResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. Returns "success" for normal calls.
+        # The response code. The value "success" is returned for successful calls.
         self.code = code
         # The translation result data, including the translation list and usage information.
         self.data = data
-        # The error message. Returns "Success" for normal calls. Returns specific error information for exceptions, such as "The parameters contain sensitive information. Try other input."
+        # The error message. The value "Success" is returned for successful calls. For exceptions, a specific error message is returned, such as "The parameters contain sensitive information. Try other input."
         self.message = message
-        # The request ID, used to identify a unique request call.
+        # The request ID, used to uniquely identify a request.
         self.request_id = request_id
-        # Indicates whether the call is successful. true indicates success. false indicates failure.
+        # Indicates whether the call is successful. A value of true indicates success. A value of false indicates failure.
         self.success = success
 
     def validate(self):
@@ -81,7 +81,7 @@ class PrepaidTextTranslateResponseBodyData(DaraModel):
     ):
         # The translation result list. Each element corresponds to a translation result for an entry in the input text list.
         self.translations = translations
-        # The usage information, including the input character count.
+        # The usage information, including the number of input characters.
         self.usage_map = usage_map
 
     def validate(self):
@@ -125,7 +125,7 @@ class PrepaidTextTranslateResponseBodyDataTranslations(DaraModel):
         detected_language: str = None,
         translated_text: str = None,
     ):
-        # The character count of the source text.
+        # The number of characters in the source text.
         self.characters = characters
         # The automatically detected source language.
         self.detected_language = detected_language

@@ -24,7 +24,7 @@ class DiduiAreaDeductionResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # Indicates whether the call is successful.
         self.success = success
 
     def validate(self):
@@ -88,7 +88,7 @@ class DiduiAreaDeductionResponseBodyData(DaraModel):
         success: bool = None,
         usage_map: Dict[str, int] = None,
     ):
-        # The number of downstream call attempts.
+        # The number of downstream calls.
         self.attempts = attempts
         # The workflow error code.
         self.code = code
@@ -96,7 +96,7 @@ class DiduiAreaDeductionResponseBodyData(DaraModel):
         self.http_status = http_status
         # The downstream call latency, in milliseconds.
         self.latency_ms = latency_ms
-        # The workflow description message.
+        # The workflow description.
         self.message = message
         # The model request ID.
         self.model_request_id = model_request_id
@@ -106,7 +106,7 @@ class DiduiAreaDeductionResponseBodyData(DaraModel):
         self.result = result
         # The workflow status.
         self.status = status
-        # The workflow business status.
+        # Indicates whether the workflow execution is successful.
         self.success = success
         # The usage information.
         self.usage_map = usage_map

@@ -16,13 +16,13 @@ class LanguageDetectResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. A value of 200 indicates a successful call. For other response codes, refer to the error code information.
+        # The response code. A value of 200 indicates a successful call. For other response codes, refer to the error code documentation.
         self.code = code
         # The language identification result data, including the detected language and usage information.
         self.data = data
-        # The error message. "Success" is returned for a successful call. A specific error message is returned for an exception, such as "The parameters contain sensitive information. Try other input."
+        # The error message. "Success" is returned for a successful call. A specific error message is returned for a failed call, such as "The parameters contain sensitive information. Try other input."
         self.message = message
-        # The request ID, used to uniquely identify a request.
+        # The request ID, which uniquely identifies the request.
         self.request_id = request_id
         # Indicates whether the call is successful. A value of true indicates success. A value of false indicates failure.
         self.success = success

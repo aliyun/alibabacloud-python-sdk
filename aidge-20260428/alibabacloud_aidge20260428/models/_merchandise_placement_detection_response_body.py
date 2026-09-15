@@ -16,16 +16,16 @@ class MerchandisePlacementDetectionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. This parameter is not returned for successful calls.
+        # The error code. This parameter is not returned if the call is successful.
         self.code = code
         # The display detection result.
         self.data = data
-        # The error message. This parameter is not returned for successful calls.
+        # The error message. This parameter is not returned if the call is successful.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
-        # - true: The call was successful.
+        # Indicates whether the call is successful. Valid values:
+        # - true: The call is successful.
         # - false: The call failed.
         self.success = success
 
@@ -84,9 +84,9 @@ class MerchandisePlacementDetectionResponseBodyData(DaraModel):
     ):
         # The number of valid detection boxes.
         self.box_count = box_count
-        # The list of retrieval details for each detection box.
+        # The list of recall details for each detection box.
         self.data = data
-        # The usage information. The key is the usage name and the value is the count.
+        # The usage information, where the key is the usage name and the value is the count.
         self.usage_map = usage_map
 
     def validate(self):
@@ -138,7 +138,7 @@ class MerchandisePlacementDetectionResponseBodyDataData(DaraModel):
         top_1: main_models.MerchandisePlacementDetectionResponseBodyDataDataTop1 = None,
         topk: List[main_models.MerchandisePlacementDetectionResponseBodyDataDataTopk] = None,
     ):
-        # The position coordinates of the detection box in the format [x1, y1, x2, y2].
+        # The position coordinates of the detection box in the format [x1,y1,x2,y2].
         self.bbox = bbox
         # The failure reason for the detection box. The value is null if the detection is successful.
         self.error = error
@@ -212,7 +212,7 @@ class MerchandisePlacementDetectionResponseBodyDataDataTopk(DaraModel):
         sku_id: str = None,
         sku_name: str = None,
     ):
-        # The recall rank.
+        # The recall rank of the product.
         self.rank = rank
         # The similarity score, ranging from 0 to 1.
         self.score = score

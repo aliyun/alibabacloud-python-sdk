@@ -15,15 +15,15 @@ class MaterialInspectionRequest(DaraModel):
     ):
         # apiId
         self.api_id = api_id
-        # The URL of the reference image. Optional. When this parameter is not empty, the system performs multi-image differential comparison.
+        # The URL of the reference image. This parameter is optional. If a non-empty value is specified, multi-image differential comparison is performed.
         self.image_refer = image_refer
-        # The URL of the target image to be inspected.
+        # The URL of the target image.
         # 
         # This parameter is required.
         self.image_url = image_url
-        # The business request identity. Optional. This value is returned as-is in the response for Tracing Analysis purposes.
+        # The business request identity. This parameter is optional. The value is returned as-is in the response for Tracing Analysis purposes.
         self.req_id = req_id
-        # The rule prompt in natural language that describes the inspection criteria.
+        # The rule prompt in natural language.
         self.rules = rules
 
     def validate(self):

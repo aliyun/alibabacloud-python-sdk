@@ -83,6 +83,9 @@ from ._size_chart_extract_request import SizeChartExtractRequest
 from ._size_chart_extract_shrink_request import SizeChartExtractShrinkRequest
 from ._size_chart_extract_response_body import SizeChartExtractResponseBody
 from ._size_chart_extract_response import SizeChartExtractResponse
+from ._submit_product_match_request import SubmitProductMatchRequest
+from ._submit_product_match_response_body import SubmitProductMatchResponseBody
+from ._submit_product_match_response import SubmitProductMatchResponse
 from ._text_correct_request import TextCorrectRequest
 from ._text_correct_response_body import TextCorrectResponseBody
 from ._text_correct_response import TextCorrectResponse
@@ -98,6 +101,9 @@ from ._video_translation_request import VideoTranslationRequest
 from ._video_translation_shrink_request import VideoTranslationShrinkRequest
 from ._video_translation_response_body import VideoTranslationResponseBody
 from ._video_translation_response import VideoTranslationResponse
+from ._virtual_try_on_request import VirtualTryOnRequest
+from ._virtual_try_on_response_body import VirtualTryOnResponseBody
+from ._virtual_try_on_response import VirtualTryOnResponse
 from ._vision_flow_request import VisionFlowRequest
 from ._vision_flow_shrink_request import VisionFlowShrinkRequest
 from ._vision_flow_response_body import VisionFlowResponseBody
@@ -158,6 +164,7 @@ from ._product_hotspot_detection_response_body import ProductHotspotDetectionRes
 from ._query_async_task_result_response_body import QueryAsyncTaskResultResponseBodyData
 from ._size_chart_detect_response_body import SizeChartDetectResponseBodyData
 from ._size_chart_extract_response_body import SizeChartExtractResponseBodyData
+from ._submit_product_match_response_body import SubmitProductMatchResponseBodyData
 from ._text_correct_response_body import TextCorrectResponseBodyData
 from ._text_translate_response_body import TextTranslateResponseBodyDataTranslations
 from ._text_translate_response_body import TextTranslateResponseBodyData
@@ -167,6 +174,7 @@ from ._video_generation_request import VideoGenerationRequestIntent
 from ._video_generation_request import VideoGenerationRequestOutput
 from ._video_generation_response_body import VideoGenerationResponseBodyData
 from ._video_translation_response_body import VideoTranslationResponseBodyData
+from ._virtual_try_on_response_body import VirtualTryOnResponseBodyData
 from ._vision_flow_response_body import VisionFlowResponseBodyData
 
 __all__ = [
@@ -251,6 +259,9 @@ __all__ = [
     SizeChartExtractShrinkRequest,
     SizeChartExtractResponseBody,
     SizeChartExtractResponse,
+    SubmitProductMatchRequest,
+    SubmitProductMatchResponseBody,
+    SubmitProductMatchResponse,
     TextCorrectRequest,
     TextCorrectResponseBody,
     TextCorrectResponse,
@@ -266,6 +277,9 @@ __all__ = [
     VideoTranslationShrinkRequest,
     VideoTranslationResponseBody,
     VideoTranslationResponse,
+    VirtualTryOnRequest,
+    VirtualTryOnResponseBody,
+    VirtualTryOnResponse,
     VisionFlowRequest,
     VisionFlowShrinkRequest,
     VisionFlowResponseBody,
@@ -326,6 +340,7 @@ __all__ = [
     QueryAsyncTaskResultResponseBodyData,
     SizeChartDetectResponseBodyData,
     SizeChartExtractResponseBodyData,
+    SubmitProductMatchResponseBodyData,
     TextCorrectResponseBodyData,
     TextTranslateResponseBodyDataTranslations,
     TextTranslateResponseBodyData,
@@ -335,5 +350,6 @@ __all__ = [
     VideoGenerationRequestOutput,
     VideoGenerationResponseBodyData,
     VideoTranslationResponseBodyData,
+    VirtualTryOnResponseBodyData,
     VisionFlowResponseBodyData
 ]

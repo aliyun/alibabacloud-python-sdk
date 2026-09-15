@@ -20,11 +20,11 @@ class ImageTranslationStandardResponseBody(DaraModel):
         self.code = code
         # The translation result data, including the translated image URL and usage information.
         self.data = data
-        # The error message. "Success" is returned for successful calls, and a specific error message is returned for failed calls.
+        # The error message. "Success" is returned for a successful call. A specific error message is returned for a failed call.
         self.message = message
-        # The request ID, used to uniquely identify a request.
+        # The request ID, which uniquely identifies the request.
         self.request_id = request_id
-        # Indicates whether the call is successful. A value of true indicates success, and a value of false indicates failure.
+        # Indicates whether the call is successful. A value of true indicates success. A value of false indicates failure.
         self.success = success
 
     def validate(self):
@@ -82,7 +82,7 @@ class ImageTranslationStandardResponseBodyData(DaraModel):
     ):
         # The edit information.
         self.edit_info = edit_info
-        # The URL of the image generated from the image translation result.
+        # The URL of the image generated after image translation.
         self.image_url = image_url
         # The usage information, including the number of processed images.
         self.usage_map = usage_map
@@ -137,15 +137,15 @@ class ImageTranslationStandardResponseBodyDataEditInfo(DaraModel):
     ):
         # The list of fonts used.
         self.font = font
-        # The product area rectangle.
+        # The product area rectangles.
         self.goods_rects = goods_rects
         # The product image URL.
         self.goods_url = goods_url
         # The list of target languages.
         self.languages = languages
-        # The URL of the original image.
+        # The original image URL.
         self.pict_url = pict_url
-        # The URL of the repaired image.
+        # The repaired image URL.
         self.repaired_url = repaired_url
         # The list of repaired image URLs.
         self.repaired_urls = repaired_urls
