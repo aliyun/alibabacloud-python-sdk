@@ -24,16 +24,19 @@ class ListObjectScanEventRequest(DaraModel):
         time_end: int = None,
         time_start: int = None,
     ):
+        # Specifies whether the alert was detected by AI. Valid values:
+        # - true: The alert was detected by AI.
+        # - false: The alert was not detected by AI.
         self.ai_detect = ai_detect
         # The batch operation type. Valid values:
         # 
-        # - **sha256**: same file content
+        # - **sha256**: same file content.
         # 
         # - **eventName**: same alerting type.
         self.batch_type = batch_type
         # The bucket name.
         self.bucket_name = bucket_name
-        # The page number of the current page when you perform a paged query.
+        # The page number of the current page in a paging query.
         # 
         # This parameter is required.
         self.current_page = current_page
@@ -41,15 +44,15 @@ class ListObjectScanEventRequest(DaraModel):
         self.event_id = event_id
         # The alert name.
         self.event_name = event_name
-        # The language type for the request and response messages. Default value: **zh**. Valid values:
-        # - **zh**: Chinese
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
         # - **en**: English.
         self.lang = lang
         # The MD5 hash of the file.
         self.md_5 = md_5
         # The storage key of the file in the OSS bucket.
         self.oss_key = oss_key
-        # The maximum number of entries to return on each page when you perform a paged query.
+        # The maximum number of entries to return on each page in a paging query.
         # 
         # This parameter is required.
         self.page_size = page_size
@@ -62,27 +65,27 @@ class ListObjectScanEventRequest(DaraModel):
         self.parent_event_id = parent_event_id
         # The risk level. Valid values:
         # 
-        # - **high**: high risk
+        # - **high**: High risk.
         # 
-        # - **medium**: medium risk
+        # - **medium**: Medium risk.
         # 
-        # - **low**: low risk.
+        # - **low**: Low risk.
         self.risk_level = risk_level
         # The data source. Valid values:
-        # - **API**: API detection
-        # - **OSS**: OSS detection.
+        # - **API**: API-based detection.
+        # - **OSS**: OSS-based detection.
         self.source = source
         # The event status. Valid values:
         # 
-        # - 0: unhandled 
-        # - 1: manually handled
-        # - 2: whitelisted
-        # - 3: ignored
-        # - 4: access denied.
+        # - 0: Unhandled. 
+        # - 1: Manually handled.
+        # - 2: Whitelisted.
+        # - 3: Ignored.
+        # - 4: Access blocked.
         self.status = status
-        # The end time of the time range during which the exception event occurred.
+        # The end time of the time range during which the anomalous event occurred.
         self.time_end = time_end
-        # The start time of the time range during which the exception event occurred.
+        # The start time of the time range during which the anomalous event occurred.
         self.time_start = time_start
 
     def validate(self):

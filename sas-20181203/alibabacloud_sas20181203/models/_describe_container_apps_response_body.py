@@ -12,9 +12,9 @@ class DescribeContainerAppsResponseBody(DaraModel):
         request_id: str = None,
         tag_values: List[str] = None,
     ):
-        # The request ID.
+        # The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
-        # The tag values.
+        # The list of tag values.
         self.tag_values = tag_values
 
     def validate(self):

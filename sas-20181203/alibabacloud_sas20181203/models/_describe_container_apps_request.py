@@ -12,17 +12,16 @@ class DescribeContainerAppsRequest(DaraModel):
         field_value: str = None,
         page_size: int = None,
     ):
-        # The ID of the container cluster.
+        # The ID of the container cluster. Note: This parameter is required. If this parameter is not specified, the service returns a 400 error.
         self.cluster_id = cluster_id
-        # The page number.
+        # The page number for a paged query.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The application value that you want to query. Fuzzy match is supported.
+        # The application value to query. Fuzzy match is supported.
         self.field_value = field_value
-        # The number of entries per page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
-        # 
-        # >  We recommend that you do not leave this parameter empty.
+        # The maximum number of entries per page for a paged query. Default value: 20. If you leave this parameter empty, 20 entries are returned.
+        # > Do not leave PageSize empty.
         # 
         # This parameter is required.
         self.page_size = page_size

@@ -16,8 +16,8 @@ class DescribeAccessKeyLeakDetailRequest(DaraModel):
         # 
         # This parameter is required.
         self.id = id
-        # The ID of the member account in the resource directory (Alibaba Cloud account).
-        # > Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+        # The ID of the member accounts in the resource folder (Alibaba Cloud account).
+        # > Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
 
     def validate(self):

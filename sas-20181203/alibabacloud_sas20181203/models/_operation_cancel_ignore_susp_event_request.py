@@ -15,8 +15,10 @@ class OperationCancelIgnoreSuspEventRequest(DaraModel):
     ):
         # The remarks.
         self.remark = remark
+        # The Alibaba Cloud account ID of the member account in the resource directory.
+        # >Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
-        # The IDs of alert events.
+        # The list of alert IDs.
         # 
         # This parameter is required.
         self.security_event_ids = security_event_ids

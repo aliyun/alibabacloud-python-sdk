@@ -13,7 +13,7 @@ class AddCloudVendorAccountAKResponseBody(DaraModel):
         data: main_models.AddCloudVendorAccountAKResponseBodyData = None,
         request_id: str = None,
     ):
-        # The information about the AccessKey pair that is added.
+        # The information about the added AK.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -60,45 +60,46 @@ class AddCloudVendorAccountAKResponseBodyData(DaraModel):
         vendor: str = None,
         vendor_auth_alias: str = None,
     ):
-        # The type of the account to which the AccessKey pair belongs. Valid values:
+        # The AK type. Valid values:
         # 
-        # *   **primary**: a primary account
-        # *   **sub**: a sub-account
+        # - **primary**: Primary account.
+        # - **sub**: Sub-account.
         self.ak_type = ak_type
-        # The unique ID of the AccessKey pair.
+        # The unique ID of the AK.
         self.auth_id = auth_id
-        # The modules that are associated with the AccessKey pair.
+        # The list of AK-associated modules.
         self.auth_modules = auth_modules
-        # Account ID. 
+        # The account ID.
         # 
-        # > The account ID of the cloud provider being integrated.
+        # > The account ID of the connected cloud vendor.
         self.ctdr_cloud_user_id = ctdr_cloud_user_id
-        # The error message of the AccessKey pair.
+        # The AK exception information.
         self.message = message
-        # The AccessKey ID.
+        # The AK parameter ID.
         self.secret_id = secret_id
-        # The service status of the AccessKey pair. Valid values:
-        # 
-        # *   **0**: being used
-        # *   **1**: exception occurred
-        # *   **2**: being validated
-        # *   **3**: validation timed out
+        # The AK usage status. Valid values:
+        # - **0**: In use.
+        # - **1**: Usage exception.
+        # - **2**: Validity verification in progress.
+        # - **3**: Validity verification timed out.
         self.service_status = service_status
-        # The status of the AccessKey pair. Valid values:
-        # 
-        # *   **0**: enabled
-        # *   **1**: disabled
+        # The AK status. Valid values:
+        # - **0**: Enabled.
+        # - **1**: Not enabled.
         self.status = status
-        # The cloud service provider. Valid values:
-        # 
-        # *   **Tencent**: Tencent Cloud
-        # *   **HUAWEICLOUD**: Huawei Cloud
-        # *   **Azure**: Microsoft Azure
-        # *   **AWS**: AWS
+        # The cloud asset vendor. Valid values:
+        # - **Tencent**: Tencent Cloud
+        # - **HUAWEICLOUD**: Huawei Cloud
+        # - **Azure**: Azure
+        # - **AWS**: AWS
+        # - **VOLCENGINE**: Volcengine
+        # - **google**: Google Cloud
+        # - **CHAITIN**: Chaitin Technology
+        # - **FORTINET**: Fortinet
+        # - **THREATBOOK**: ThreatBook
         self.vendor = vendor
-        # The name of the AccessKey pair.
-        # 
-        # >  The account information of the third-party cloud servers.
+        # The AK account name.
+        # >Used to identify the account to which third-party host assets belong.
         self.vendor_auth_alias = vendor_auth_alias
 
     def validate(self):
@@ -193,27 +194,25 @@ class AddCloudVendorAccountAKResponseBodyDataAuthModules(DaraModel):
         module_service_status: int = None,
         module_statement: str = None,
     ):
-        # The error message of the module.
+        # The module exception information.
         self.message = message
-        # The code of the module. Valid values:
-        # 
-        # *   **HOST**: host
-        # *   **CSPM**: configuration assessment
-        # *   **SIEM**: CloudSiem
-        # *   **TRIAL**: log audit
+        # The module code. Valid values:
+        # - **HOST**: Host
+        # - **CSPM**: Cloud product configuration check
+        # - **SIEM**: CloudSiem
+        # - **TRIAL**: Log audit
         self.module = module
-        # The cloud asset that is associated with the module.
+        # The cloud asset description associated with the module.
         self.module_asset_type = module_asset_type
         # The display name of the module.
         self.module_disp = module_disp
-        # The service status of the module. Valid values:
-        # 
-        # *   **0**: being used
-        # *   **1**: exception occurred
-        # *   **2**: being validated
-        # *   **3**: validation timed out
+        # The module status. Valid values:
+        # - **0**: In use.
+        # - **1**: Usage exception.
+        # - **2**: Validity verification in progress.
+        # - **3**: Validity verification timed out.
         self.module_service_status = module_service_status
-        # The permission description of the module.
+        # The description of permissions associated with the module.
         self.module_statement = module_statement
 
     def validate(self):

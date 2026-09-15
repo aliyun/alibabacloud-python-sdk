@@ -18,7 +18,7 @@ class DescribePropertyScaDetailResponseBody(DaraModel):
         self.page_info = page_info
         # The details of the Asset Fingerprints list.
         self.propertys = propertys
-        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use this ID to troubleshoot issues.
+        # The ID of the request. The China Chinese Cloud generates a unique identifier for the request, which can be used to troubleshoot and locate issues.
         self.request_id = request_id
 
     def validate(self):
@@ -132,7 +132,7 @@ class DescribePropertyScaDetailResponseBodyPropertys(DaraModel):
         self.config_path = config_path
         # The container name.
         self.container_name = container_name
-        # The timestamp of the latest scan, which indicates the most recent time when Security Center collected middleware, database, or web service information. Unit: milliseconds.
+        # The timestamp of the latest scan, which is the most recent time when Security Center collected the middleware, database, or web service information. Unit: milliseconds.
         self.create_timestamp = create_timestamp
         # The image name.
         self.image_name = image_name
@@ -153,8 +153,8 @@ class DescribePropertyScaDetailResponseBodyPropertys(DaraModel):
         # - **TCP**
         self.listen_protocol = listen_protocol
         # The listening status of the process. Valid values:
-        # - **NONE**: not listening
-        # - **LISTEN**: listening
+        # - **NONE**: Not listening.
+        # - **LISTEN**: Listening.
         self.listen_status = listen_status
         # The name of the middleware, database, or web service.
         self.name = name
@@ -389,7 +389,7 @@ class DescribePropertyScaDetailResponseBodyPageInfo(DaraModel):
         self.current_page = current_page
         # The NextToken value returned when the NextToken method is used.
         self.next_token = next_token
-        # The number of entries per page in the paged query for Asset Fingerprints information. Default value: **10**, which indicates that 10 entries of Asset Fingerprints information are displayed per page.
+        # The number of entries per page in the paged query. Default value: **10**, which indicates that 10 entries of Asset Fingerprints information are displayed per page.
         self.page_size = page_size
         # The total number of Asset Fingerprints entries returned.
         self.total_count = total_count

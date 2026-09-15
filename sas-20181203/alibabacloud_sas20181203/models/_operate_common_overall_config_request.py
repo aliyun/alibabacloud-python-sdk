@@ -17,8 +17,8 @@ class OperateCommonOverallConfigRequest(DaraModel):
         self.client_token = client_token
         # The switch status. Valid values:
         # 
-        # - **on**: enabled.
-        # - **off**: disabled.
+        # - **on**: Enabled.
+        # - **off**: Disabled.
         # 
         # This parameter is required.
         self.config = config
@@ -31,55 +31,55 @@ class OperateCommonOverallConfigRequest(DaraModel):
         self.source_ip = source_ip
         # The configuration type. Valid values:
         # 
-        # - **kdump_switch**: proactive defense optimization
+        # - **kdump_switch**: proactive defense experience optimization
         # - **threat_detect**: adaptive threat detection capability
-        # - **suspicious_aggregation**: alert associate
+        # - **suspicious_aggregation**: alert association
         # - **alidetect**: file detection
-        # - **USER-ENABLE-SWITCH-TYPE_38857**: Linux entry service execute high-risk operations
-        # - **USER-ENABLE-SWITCH-TYPE_50858**: Linux web service execute high-risk operations
-        # - **USER-ENABLE-SWITCH-TYPE_50859**: Linux entry service execute suspicious operations
+        # - **USER-ENABLE-SWITCH-TYPE_38857**: Linux entry service performs high-risk operations
+        # - **USER-ENABLE-SWITCH-TYPE_50858**: Linux web service performs high-risk operations
+        # - **USER-ENABLE-SWITCH-TYPE_50859**: Linux entry service performs suspicious operations
         # - **USER-ENABLE-SWITCH-TYPE_50862**: Linux Cloud Assistant advanced protection
         # - **USER-ENABLE-SWITCH-TYPE_50867**: Linux malicious file implantation
         # - **USER-ENABLE-SWITCH-TYPE_50868**: Linux suspicious file implantation
-        # - **USER-ENABLE-SWITCH-TYPE_64025**: Linux entry service execute commands [enhanced mode]
-        # - **USER-ENABLE-SWITCH-TYPE_51229**: Windows browser service execute high-risk operations
-        # - **USER-ENABLE-SWITCH-TYPE_51230**: Windows entry service execute suspicious operations
-        # - **USER-ENABLE-SWITCH-TYPE_51232**: Windows system process execute high-risk operations
-        # - **USER-ENABLE-SWITCH-TYPE_51233**: Windows Java service execute high-risk operations
-        # - **USER-ENABLE-SWITCH-TYPE_51234**: Windows Office component execute high-risk operations
-        # - **USER-ENABLE-SWITCH-TYPE_51235**: Windows web service execute high-risk operations
+        # - **USER-ENABLE-SWITCH-TYPE_64025**: Linux entry service executes commands [enhanced mode]
+        # - **USER-ENABLE-SWITCH-TYPE_51229**: Windows browser service performs high-risk operations
+        # - **USER-ENABLE-SWITCH-TYPE_51230**: Windows entry service performs suspicious operations
+        # - **USER-ENABLE-SWITCH-TYPE_51232**: Windows system process performs high-risk operations
+        # - **USER-ENABLE-SWITCH-TYPE_51233**: Windows Java service performs high-risk operations
+        # - **USER-ENABLE-SWITCH-TYPE_51234**: Windows Office component performs high-risk operations
+        # - **USER-ENABLE-SWITCH-TYPE_51235**: Windows web service performs high-risk operations
         # - **USER-ENABLE-SWITCH-TYPE_52820**: Windows malicious file implantation
-        # - **USER-ENABLE-SWITCH-TYPE_52826**: Windows entry service execute high-risk operations
-        # - **USER-ENABLE-SWITCH-TYPE_55251**: Windows database service execute high-risk operations
-        # - **USER-ENABLE-SWITCH-TYPE_63725**: Windows entry service implanting suspicious scripts/binary files
+        # - **USER-ENABLE-SWITCH-TYPE_52826**: Windows entry service performs high-risk operations
+        # - **USER-ENABLE-SWITCH-TYPE_55251**: Windows database service performs high-risk operations
+        # - **USER-ENABLE-SWITCH-TYPE_63725**: Windows entry service implants suspicious scripts or binary files
         # - **USER-ENABLE-SWITCH-TYPE_3277**: Linux suspicious process startup
-        # - **USER-ENABLE-SWITCH-TYPE_50983**: Linux obfuscation commands
-        # - **USER-ENABLE-SWITCH-TYPE_51200**: Linux command line downloading and running malicious files
-        # - **USER-ENABLE-SWITCH-TYPE_71131**: Linux entry service execute suspicious behavior sequence
-        # - **USER-ENABLE-SWITCH-TYPE_51225**: Windows PowerShell execute high-risk commands
-        # - **USER-ENABLE-SWITCH-TYPE_51226**: Windows PowerShell execute suspicious commands
+        # - **USER-ENABLE-SWITCH-TYPE_50983**: Linux obfuscated commands
+        # - **USER-ENABLE-SWITCH-TYPE_51200**: Linux command line downloads and runs malicious files
+        # - **USER-ENABLE-SWITCH-TYPE_71131**: Linux entry service performs suspicious behavior sequence
+        # - **USER-ENABLE-SWITCH-TYPE_51225**: Windows PowerShell executes high-risk commands
+        # - **USER-ENABLE-SWITCH-TYPE_51226**: Windows PowerShell executes suspicious commands
         # - **USER-ENABLE-SWITCH-TYPE_52821**: Windows suspicious process startup
         # - **USER-ENABLE-SWITCH-TYPE_57242**: Windows malicious command execution
-        # - **USER-ENABLE-SWITCH-TYPE_57340**: Windows command line downloading and running malicious files
+        # - **USER-ENABLE-SWITCH-TYPE_57340**: Windows command line downloads and runs malicious files
         # - **USER-ENABLE-SWITCH-TYPE_39659**: Windows sensitive registry key protection
         # - **USER-ENABLE-SWITCH-TYPE_52816**: Windows high-risk account manipulation
-        # - **USER-ENABLE-SWITCH-TYPE_54365**: Windows creating service auto-start items
-        # - **USER-ENABLE-SWITCH-TYPE_54366**: Windows creating high-risk auto-start items
-        # - **USER-ENABLE-SWITCH-TYPE_54367**: Windows creating scheduled task auto-start items
-        # - **USER-ENABLE-SWITCH-TYPE_54368**: Windows creating registry auto-start items
-        # - **USER-ENABLE-SWITCH-TYPE_54369**: Windows creating WMI auto-start items
-        # - **USER-ENABLE-SWITCH-TYPE_50869**: Linux privilege escalation execute high-risk commands
-        # - **USER-ENABLE-SWITCH-TYPE_53272**: Linux kernel vulnerability privilege escalation
-        # - **USER-ENABLE-SWITCH-TYPE_54395**: Linux privilege escalation reading/writing sensitive files
+        # - **USER-ENABLE-SWITCH-TYPE_54365**: Windows creates service auto-start items
+        # - **USER-ENABLE-SWITCH-TYPE_54366**: Windows creates high-risk auto-start items
+        # - **USER-ENABLE-SWITCH-TYPE_54367**: Windows creates scheduled task auto-start items
+        # - **USER-ENABLE-SWITCH-TYPE_54368**: Windows creates registry auto-start items
+        # - **USER-ENABLE-SWITCH-TYPE_54369**: Windows creates WMI auto-start items
+        # - **USER-ENABLE-SWITCH-TYPE_50869**: Linux privilege escalation to execute high-risk commands
+        # - **USER-ENABLE-SWITCH-TYPE_53272**: Linux kernel vulnerability exploitation for privilege escalation
+        # - **USER-ENABLE-SWITCH-TYPE_54395**: Linux privilege escalation to read/write sensitive files
         # - **USER-ENABLE-SWITCH-TYPE_57897**: Linux suspected privilege escalation behavior
-        # - **USER-ENABLE-SWITCH-TYPE_52825**: Windows privilege escalation execute high-risk commands
+        # - **USER-ENABLE-SWITCH-TYPE_52825**: Windows privilege escalation to execute high-risk commands
         # - **USER-ENABLE-SWITCH-TYPE_5507**: Linux malicious driver
         # - **USER-ENABLE-SWITCH-TYPE_50876**: Linux anti-security software
         # - **USER-ENABLE-SWITCH-TYPE_53168**: Linux process debugging
         # - **USER-ENABLE-SWITCH-TYPE_54699**: Linux dynamic-link library hijacking
-        # - **USER-ENABLE-SWITCH-TYPE_62981**: Linux bypassing security monitoring
-        # - **USER-ENABLE-SWITCH-TYPE_52815**: Windows loading high-risk drivers
-        # - **USER-ENABLE-SWITCH-TYPE_52823**: Windows running high-risk ARK tools
+        # - **USER-ENABLE-SWITCH-TYPE_62981**: Linux security monitoring bypass
+        # - **USER-ENABLE-SWITCH-TYPE_52815**: Windows loads high-risk drivers
+        # - **USER-ENABLE-SWITCH-TYPE_52823**: Windows runs high-risk ARK tools
         # - **USER-ENABLE-SWITCH-TYPE_54373**: Windows anti-security software
         # - **USER-ENABLE-SWITCH-TYPE_54374**: Windows intrusion trace cleanup
         # - **USER-ENABLE-SWITCH-TYPE_54265**: Linux PAM module hijacking
@@ -96,11 +96,11 @@ class OperateCommonOverallConfigRequest(DaraModel):
         # - **USER-ENABLE-SWITCH-TYPE_50877**: Linux malicious program communication
         # - **USER-ENABLE-SWITCH-TYPE_50884**: Linux suspicious worm script behavior
         # - **USER-ENABLE-SWITCH-TYPE_50885**: Linux malicious script behavior
-        # - **USER-ENABLE-SWITCH-TYPE_51201**: Linux ransomware virus
+        # - **USER-ENABLE-SWITCH-TYPE_51201**: Linux ransomware
         # - **USER-ENABLE-SWITCH-TYPE_51202**: Linux suspicious ransomware behavior
-        # - **USER-ENABLE-SWITCH-TYPE_52827**: Windows ransomware virus
+        # - **USER-ENABLE-SWITCH-TYPE_52827**: Windows ransomware
         # - **USER-ENABLE-SWITCH-TYPE_52828**: Windows suspicious ransomware behavior
-        # - **USER-ENABLE-SWITCH-TYPE_52829**: Windows delete system backup behavior
+        # - **USER-ENABLE-SWITCH-TYPE_52829**: Windows system backup deletion behavior
         # 
         # This parameter is required.
         self.type = type

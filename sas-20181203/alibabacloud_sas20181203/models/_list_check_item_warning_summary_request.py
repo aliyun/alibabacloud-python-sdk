@@ -26,59 +26,52 @@ class ListCheckItemWarningSummaryRequest(DaraModel):
         start_time: int = None,
         uuid_list: List[str] = None,
     ):
-        # The name of the check item. Fuzzy match is supported.
+        # The fuzzy match for the check item name.
         self.check_item_fuzzy = check_item_fuzzy
-        # The risk level. Default value: null, which indicates that check items at all risk levels are queried.Valid values:
-        # *   **high**
-        # *   **medium**
-        # *   **low**
+        # The risk level. Default value: null, which indicates that all levels are queried. Valid values:
+        # - **high**: High.
+        # - **medium**: Medium.
+        # - **low**: Low.
         self.check_level = check_level
-        # The type of the check item.
+        # The check item category name.
         self.check_type = check_type
-        # The risk status. Default value is null, meaning check items in all states are queried. Valid values:
-        # 
-        # *   **1**: failed
-        # *   **3**: passed
-        # *   **6**: whitelisted
-        # *   **8**: fixed
+        # The risk status. Default value: null, which indicates that all statuses are queried. Valid values:
+        # - **1**: Failed.
+        # - **3**: Passed.
+        # - **6**: Whitelisted.
+        # - **8**: Fixed.
         self.check_warning_status = check_warning_status
-        # The list of risk levels. If the CheckWarningStatus parameter is specified, only it takes effect.
+        # The list of risk statuses. If both this parameter and CheckWarningStatus are specified, only CheckWarningStatus takes effect.
         self.check_warning_status_list = check_warning_status_list
-        # The name of the field that is used to query containers.
+        # The container security query parameter name.
         self.container_field_name = container_field_name
-        # The value of the field that is used to query containers.
+        # The container security query parameter value.
         self.container_field_value = container_field_value
-        # The number of the page to return. Default value: **1**.
+        # The page number of the page to return. Default value: **1**, which indicates that query results are displayed starting from page 1.
         self.current_page = current_page
-        # The ID of the asset group.
-        # 
-        # > You can call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to query the IDs of asset groups.
+        # The ID of the asset group to query.
+        # > You can call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to obtain this parameter.
         self.group_id = group_id
         # The language of the content within the request and response. Default value: **zh**. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
-        # 
-        # > We recommend that you do not leave this parameter empty.
+        # The maximum number of entries per page when paging. Default value: 20. If the PageSize parameter is left empty, 20 entries are returned per page.
+        # > Do not leave PageSize empty.
         self.page_size = page_size
-        # The Alibaba Cloud account ID of the member in the resource directory.
-        # 
-        # >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain the IDs.
+        # The ID of the member accounts in the resource directory (Alibaba Cloud account).
+        # > You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
-        # The type of the baseline.
+        # The baseline category name.
         self.risk_type = risk_type
-        # The data source. Default value: **default**. Valid value:
-        # 
-        # *   **agentless**: The check items of baselines for agentless detection.
-        # *   **default**: The check items of baselines for hosts.
+        # The data source. Default value: **default**. Valid values:
+        # - **agentless**: agentless detection.
+        # - **default**: host baseline.
         self.source = source
-        # Start of time range for filtering alerts, effective only for querying historically handled alerts.
+        # The start time for filtering alerts. This parameter takes effect only when you query historical processed alerts. Specify a UNIX timestamp in milliseconds.
         self.start_time = start_time
-        # The UUIDs of the servers.
-        # 
-        # >  You can call the [DescribeCloudCenterInstances](https://help.aliyun.com/document_detail/141932.html) operation to query the UUIDs of the servers.
+        # The list of server UUIDs to query.
+        # > You can call the [DescribeCloudCenterInstances](https://help.aliyun.com/document_detail/141932.html) operation to obtain the UUID of a server.
         self.uuid_list = uuid_list
 
     def validate(self):

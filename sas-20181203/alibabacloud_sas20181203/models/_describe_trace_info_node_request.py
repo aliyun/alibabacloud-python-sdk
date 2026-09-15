@@ -24,19 +24,19 @@ class DescribeTraceInfoNodeRequest(DaraModel):
         # 
         # This parameter is required.
         self.from_ = from_
-        # The time when the event was first detected.
+        # The time when the event was first detected. This value is a UNIX timestamp. Unit: milliseconds.
         self.incident_time = incident_time
         # The language type of the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English.
+        # - **en**: English
         self.lang = lang
-        # The source IP address of the request. You do not need to specify this parameter. The system automatically obtains the value.
+        # The source IP address of the request. You do not need to specify this parameter. The system automatically obtains this value.
         self.source_ip = source_ip
-        # The vertex type. You can call the [DescribeTraceInfoDetail](~~DescribeTraceInfoDetail~~) operation to obtain this parameter.
+        # The vertex type. You can obtain this value by calling the [DescribeTraceInfoDetail](~~DescribeTraceInfoDetail~~) operation. Valid values: **SAS_ASSET**: indicates a server asset. In this case, VertexId is the UUID of the server, which can be obtained by calling the DescribeCloudCenterInstances operation. If no security events exist for the account, you can obtain the VertexId by calling the DescribeCloudCenterInstances operation.
         # 
         # This parameter is required.
         self.type = type
-        # The UUID of the server to query. You can call the [DescribeSuspEvents](~~DescribeSuspEvents~~) operation to obtain this parameter.
+        # The UUID of the server to query. You can obtain this parameter by calling the [DescribeSuspEvents](~~DescribeSuspEvents~~) operation.
         # 
         # This parameter is required.
         self.uuid = uuid

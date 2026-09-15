@@ -18,22 +18,22 @@ class HandleObjectScanEventRequest(DaraModel):
         rule_condition_list: List[main_models.HandleObjectScanEventRequestRuleConditionList] = None,
         status: int = None,
     ):
-        # Specifies the type for batch processing of similar alerts. Valid values:
+        # The type for batch handling of similar alerts. Valid values:
         # 
-        # - **sha256**: by file content
+        # - **sha256**: by file content.
         # - **eventName**: by alert name.
         self.batch_type = batch_type
-        # The event ID.
+        # The event ID. You must specify at least one of EventId and EventIdList to identify the target scan events to handle.
         self.event_id = event_id
-        # The list of event IDs.
+        # The list of event IDs. You must specify at least one of EventId and EventIdList to identify the target scan events to handle.
         self.event_id_list = event_id_list
-        # The language of the content in the request and response. Default value: **zh**. Valid values:
-        # - **zh**: Chinese
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
         # - **en**: English.
         self.lang = lang
         # The remarks.
         self.remark = remark
-        # The list of whitelist rules. This parameter takes effect only when the alert is whitelisted.
+        # The list of whitelisting rules. This parameter takes effect only when the alert is whitelisted.
         self.rule_condition_list = rule_condition_list
         # The target status. Valid values:
         # 
@@ -115,20 +115,20 @@ class HandleObjectScanEventRequestRuleConditionList(DaraModel):
         operate: str = None,
         value: str = None,
     ):
-        # The whitelist field. Valid values:
+        # The whitelisting field. Valid values:
         # 
-        # - **ossKey**: file path
-        # - **bucketName**: bucket name
-        # - **md5**: file MD5
+        # - **ossKey**: file path.
+        # - **bucketName**: bucket name.
+        # - **md5**: file MD5.
         # - **sha256**: file SHA-256.
         self.key = key
         # The operator. Valid values:
         # 
-        # - **contains**: Contains.
-        # - **not_contains**: Does not contain.
-        # - **str_equal**: Equals.
-        # - **str_not_equal**: Does not equal.
-        # - **regex**: Regular expression.
+        # - **contains**: contains.
+        # - **not_contains**: does not contain.
+        # - **str_equal**: equals.
+        # - **str_not_equal**: does not equal.
+        # - **regex**: regular expression.
         self.operate = operate
         # The value to match.
         self.value = value

@@ -19,15 +19,15 @@ class GenerateK8sAccessInfoRequest(DaraModel):
         group_id: int = None,
         vendor: str = None,
     ):
-        # This parameter is deprecated and does not need to be specified.
+        # **[Deprecated]** This parameter is deprecated and does not need to be specified.
         self.aliyun_yundun_gateway_api_name = aliyun_yundun_gateway_api_name
-        # This parameter is deprecated and does not need to be specified.
+        # **[Deprecated]** This parameter is deprecated and does not need to be specified.
         self.aliyun_yundun_gateway_pop_name = aliyun_yundun_gateway_pop_name
-        # This parameter is deprecated and does not need to be specified.
+        # **[Deprecated]** This parameter is deprecated and does not need to be specified.
         self.aliyun_yundun_gateway_project_name = aliyun_yundun_gateway_project_name
-        # The SLS Logstore of the audit log.
+        # The SLS Logstore for audit logs.
         self.audit_log_store = audit_log_store
-        # The SLS project of the audit log.
+        # The Simple Log Service (SLS) project for audit logs.
         self.audit_project = audit_project
         # The region of the audit log.
         self.audit_region_id = audit_region_id
@@ -35,13 +35,13 @@ class GenerateK8sAccessInfoRequest(DaraModel):
         # 
         # This parameter is required.
         self.cluster_name = cluster_name
-        # The CPU architecture, which can be ARM or x86.
+        # The CPU architecture, which can be ARM architecture or x86 architecture.
         self.cpu_arch = cpu_arch
-        # The expiration time for container access.
+        # The expiration time for container access. This value is a UNIX timestamp in milliseconds.
         # 
         # This parameter is required.
         self.expire_date = expire_date
-        # The queried group ID.
+        # The ID of the server group.
         # 
         # This parameter is required.
         self.group_id = group_id

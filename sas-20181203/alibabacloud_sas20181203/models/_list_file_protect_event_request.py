@@ -25,7 +25,7 @@ class ListFileProtectEventRequest(DaraModel):
     ):
         # The list of alert notification levels.
         self.alert_levels = alert_levels
-        # The page number of the current page in a paging query.
+        # The number of the page to return in a paged query.
         self.current_page = current_page
         # The timestamp of the end time.
         self.end_time = end_time
@@ -39,13 +39,13 @@ class ListFileProtectEventRequest(DaraModel):
         self.intranet_ip = intranet_ip
         # The type of operation performed on the file. Valid values:
         # 
-        # - **DELETE**: deletes the file.
-        # - **WRITE**: writes to the file.
-        # - **READ**: reads the file.
-        # - **RENAME**: renames the file.
-        # - **CHOWN**: changes the file owner and associated group.
+        # - **DELETE**: Delete the file.
+        # - **WRITE**: Write to the file.
+        # - **READ**: Read the file.
+        # - **RENAME**: Rename the file.
+        # - **CHOWN**: Change the file owner and associated group.
         self.operation = operation
-        # The maximum number of entries to return on each page in a paging query.
+        # The maximum number of entries to return on each page in a paged query.
         self.page_size = page_size
         # The rule name.
         self.rule_name = rule_name

@@ -13,20 +13,20 @@ class ModifyEmgVulSubmitRequest(DaraModel):
         resource_directory_account_id: int = None,
         user_agreement: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The language type for the request and response messages. Default value: **zh**. Valid values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # 
-        # - **zh**: Chinese
+        # - **zh**: Chinese.
         # 
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
         # The name of the vulnerability to query.
         # 
         # This parameter is required.
         self.name = name
-        # The ID of the member accounts in the resource directory (Alibaba Cloud account).
-        # >Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+        # The ID of the member account in the resource directory (Alibaba Cloud account).
+        # > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
         # Specifies whether to perform vulnerability detection. Valid values:
         # 

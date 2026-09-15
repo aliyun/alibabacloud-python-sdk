@@ -14,12 +14,14 @@ class DescribeVulCheckTaskStatusDetailRequest(DaraModel):
         types: List[str] = None,
         uuid: str = None,
     ):
+        # The Alibaba Cloud account ID of the member accounts in the resource folder.
+        # >Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
-        # The task IDs.
+        # The list of task IDs.
         self.task_ids = task_ids
-        # The types of the vulnerabilities that are detected by the tasks.
+        # The list of vulnerability types for the one-click scan.
         self.types = types
-        # The UUID of the server.
+        # The UUID of the server to query.
         self.uuid = uuid
 
     def validate(self):

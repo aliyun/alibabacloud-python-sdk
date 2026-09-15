@@ -17,13 +17,15 @@ class ModifyCustomBlockRecordRequest(DaraModel):
         # 
         # This parameter is required.
         self.block_ip = block_ip
-        # The direction in which the brute-force attacks blocking policy blocks the IP address on the server. Valid values:
+        # The direction in which the server brute-force attacks blocking policy blocks the IP address.
+        # 
+        # Valid values:
         # - **in**: inbound
-        # - **out**: outbound.
+        # - **out**: outbound
         # 
         # This parameter is required.
         self.bound = bound
-        # The expiration time of the blocking record.
+        # The expiration time of the blocking record. The value is a UNIX timestamp in milliseconds.
         # 
         # This parameter is required.
         self.expire_time = expire_time

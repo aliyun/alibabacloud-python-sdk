@@ -73,7 +73,7 @@ class DescribeImageLatestScanTaskResponseBodyTask(DaraModel):
         self.create = create
         # The number of completed image tasks.
         self.finish = finish
-        # The time when the task ended. This parameter is returned only when the task status is Finished. Otherwise, an empty value is returned.
+        # The time when the task ended. This parameter is returned only when the task status is Finished. Otherwise, an empty value is returned. This value is a UNIX timestamp. Unit: milliseconds.
         self.finish_time = finish_time
         # The task ID.
         self.id = id
@@ -81,12 +81,12 @@ class DescribeImageLatestScanTaskResponseBodyTask(DaraModel):
         self.modified = modified
         # The task name.
         self.name = name
-        # The creation method. Valid values:
+        # The creation method. The task can be created from the console or by calling an API operation. Valid values:
         # 
         # - **console_batch**: console
-        # - **openapi**: API.
+        # - **openapi**: API
         self.source = source
-        # The time when the task started.
+        # The time when the task started. This value is a UNIX timestamp. Unit: milliseconds.
         self.start_time = start_time
         # The task status. Valid values:
         # 
@@ -102,12 +102,12 @@ class DescribeImageLatestScanTaskResponseBodyTask(DaraModel):
         self.target = target
         # The scan target type. Valid values:
         # 
-        # - **IMAGE**: image.
+        # - **IMAGE**: image
         self.target_type = target_type
         # The ID of the scan task.
         self.task_id = task_id
         # The task type. Valid values:
-        # - **IMAGE_SCAN**: image scan.
+        # - **IMAGE_SCAN**: image scan
         self.task_type = task_type
 
     def validate(self):

@@ -13,9 +13,9 @@ class ExportSuspEventsResponseBody(DaraModel):
     ):
         # The name of the exported file.
         self.file_name = file_name
-        # The ID of the export record of the anomalous event.
+        # The export record ID of the anomaly event.
         self.id = id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

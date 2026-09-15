@@ -17,27 +17,28 @@ class CreateAttackPathWhitelistRequest(DaraModel):
         whitelist_name: str = None,
         whitelist_type: str = None,
     ):
-        # List of cloud product assets in the attack path.
+        # The list of cloud service assets in the attack path.
         self.attack_path_asset_list = attack_path_asset_list
-        # Path name.
+        # The path name.
         # 
         # > You can call [ListAvailableAttackPath](~~ListAvailableAttackPath~~) to query the path name.
+        # > This parameter is required. If this parameter is not specified, the API returns a 400 InvalidParam error.
         self.path_name = path_name
-        # Path type.
+        # The path type.
         # > You can call [ListAvailableAttackPath](~~ListAvailableAttackPath~~) to query the path type.
         # 
         # This parameter is required.
         self.path_type = path_type
-        # Remark information.
+        # The remarks.
         self.remark = remark
-        # Whitelist name.
+        # The whitelist name.
         # 
         # This parameter is required.
         self.whitelist_name = whitelist_name
-        # Whitelist type. Values:
+        # The whitelist type. Valid values:
         # 
-        # - **ALL_ASSET**: All assets
-        # - **PART_ASSET**: Partial assets
+        # - **ALL_ASSET**: all assets.
+        # - **PART_ASSET**: partial assets.
         # 
         # This parameter is required.
         self.whitelist_type = whitelist_type
@@ -110,29 +111,29 @@ class CreateAttackPathWhitelistRequestAttackPathAssetList(DaraModel):
         region_id: str = None,
         vendor: int = None,
     ):
-        # Subtype of the cloud product asset.
+        # The subtype of the cloud service asset.
         # 
-        # > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the subtype of the cloud product asset.
+        # > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the subtype of the cloud service asset.
         self.asset_sub_type = asset_sub_type
-        # Type of the cloud product asset.
+        # The type of the cloud service asset.
         # 
-        # > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the type of the cloud product asset.
+        # > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the type of the cloud service asset.
         self.asset_type = asset_type
-        # Cloud product asset instance ID.
+        # The instance ID of the cloud service asset.
         # 
-        # > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the cloud product asset instance ID.
+        # > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the instance ID of the cloud service asset.
         self.instance_id = instance_id
-        # Node type, with values:
-        # - **start**: Start point.
-        # - **end**: End point.
+        # The node type. Valid values:
+        # - **start**: start node.
+        # - **end**: end node.
         self.node_type = node_type
-        # Region ID of the cloud product asset instance.
+        # The region ID of the cloud service asset instance.
         # 
-        # > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the region ID of the cloud product asset instance.
+        # > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the region ID of the cloud service asset instance.
         self.region_id = region_id
-        # Vendor of the cloud product asset.
+        # The vendor of the cloud service asset.
         # 
-        # > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the vendor of the cloud product asset.
+        # > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the vendor of the cloud service asset.
         self.vendor = vendor
 
     def validate(self):

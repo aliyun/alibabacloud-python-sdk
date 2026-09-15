@@ -59,6 +59,7 @@ class GetValidDeductInstancesResponseBodyData(DaraModel):
         self.can_try = can_try
         # The list of resource plan usage details.
         self.deduct_package_list = deduct_package_list
+        # The trial version.
         self.trial_version = trial_version
 
     def validate(self):
@@ -113,20 +114,20 @@ class GetValidDeductInstancesResponseBodyDataDeductPackageList(DaraModel):
         start_time: int = None,
         status: str = None,
     ):
-        # The number of consumed quotas in the current metering cycle.
+        # The number of consumed authorizations in the current metering cycle.
         self.current_period_used = current_period_used
-        # The end time.
+        # The end time. This value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
         # The total capacity of the resource plan.
         self.init_capacity = init_capacity
-        # The resource plan instance ID.
+        # The instance ID of the resource plan.
         self.instance_id = instance_id
         # The module code. Valid values:
-        # - **POST_HOST**: host and container protection
-        # - **CSPM**: cloud product configuration check
-        # - **VUL**: vulnerability scanning
+        # - **POST_HOST**: Host and container protection.
+        # - **CSPM**: Cloud product configuration check.
+        # - **VUL**: Vulnerability scanning.
         self.module = module
-        # The number of consumed quotas up to the previous billing cycle.
+        # The number of consumed authorizations up to the end of the previous billing cycle.
         self.period_capacity = period_capacity
         # The start timestamp, in milliseconds.
         self.start_time = start_time

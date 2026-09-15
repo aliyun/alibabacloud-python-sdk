@@ -12,11 +12,11 @@ class CreateContainerScanTaskByAppNameResponseBody(DaraModel):
         http_status_code: int = None,
         request_id: str = None,
     ):
-        # The data returned if the request was successful.
+        # The data returned when the call is successful.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID.
+        # The unique request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -66,36 +66,36 @@ class CreateContainerScanTaskByAppNameResponseBodyData(DaraModel):
         task_id: str = None,
         total_count: int = None,
     ):
-        # Indicates whether you can create more scan tasks. Valid values:
+        # Indicates whether more scan tasks can be created. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: More scan tasks can be created.
+        # - **false**: No more scan tasks can be created.
         self.can_create = can_create
-        # The timestamp generated when the image information was collected. Unit: milliseconds.
+        # The timestamp when image information was collected, in milliseconds.
         self.collect_time = collect_time
-        # The timestamp generated when the scan task started. Unit: milliseconds.
+        # The timestamp when the scan task started running, in milliseconds.
         self.exec_time = exec_time
-        # The number of container applications that are scanned.
+        # The number of containers that have been scanned.
         self.finish_count = finish_count
-        # The progress of the scan task in percentage.
+        # The progress percentage of the scan task.
         self.progress = progress
-        # The result of the scan task. Valid values:
+        # The execution result of the scan task. Valid values:
         # 
-        # *   **SUCCESS**: The task is successful.
-        # *   **TASK_NOT_SUPPORT_REGION**: The task is not supported in the region where the image is deployed.
+        # - **SUCCESS**: The scan task was executed successfully.
+        # - **TASK_NOT_SUPPORT_REGION**: The image is in a region that does not support scanning.
         # 
-        # >
+        # > For the regions that support image security scanning, refer to the table of supported regions after the response parameters table in this document.
         self.result = result
         # The status of the scan task. Valid values:
         # 
-        # *   **INIT**: The task is being initialized.
-        # *   **PRE_ANALYZER**: The task is being pre-processed.
-        # *   **SUCCESS**: The task succeeds.
-        # *   **FAIL**: The task fails.
+        # - **INIT**: Initializing.
+        # - **PRE_ANALYZER**: Pre-analyzing.
+        # - **SUCCESS**: Execution succeeded.
+        # - **FAIL**: Execution failed.
         self.status = status
         # The ID of the scan task.
         self.task_id = task_id
-        # The total number of container applications that you want to scan.
+        # The total number of containers to scan.
         self.total_count = total_count
 
     def validate(self):

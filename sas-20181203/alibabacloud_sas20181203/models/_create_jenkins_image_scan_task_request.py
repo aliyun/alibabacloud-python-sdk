@@ -20,27 +20,27 @@ class CreateJenkinsImageScanTaskRequest(DaraModel):
         token: str = None,
         uuid: str = None,
     ):
-        # The digest of the image.
+        # The image summary.
         self.digest = digest
-        # The time when the image was created.
+        # The image creation time.
         self.image_create = image_create
-        # The ID of the image.
+        # The image ID.
         self.image_id = image_id
-        # The size of the image. Unit: bytes.
+        # The image size. Unit: bytes.
         self.image_size = image_size
-        # The time when the image was updated.
+        # The image update time. The value is a UNIX timestamp. Unit: milliseconds.
         self.image_update = image_update
-        # The information about the Jenkins environment.
+        # The Jenkins environment context. Leave this parameter empty or set it to the fixed value: **release**.
         self.jenkins_env = jenkins_env
         # The namespace.
         self.namespace = namespace
-        # The name of the image repository.
+        # The repository name.
         self.repo_name = repo_name
-        # The source IP address of the request.
+        # The access source IP address.
         self.source_ip = source_ip
-        # The tag of the image.
+        # The image label.
         self.tag = tag
-        # The token that is used to access the Jenkins image repository.
+        # The access token for the Jenkins image repository. Obtain the token from the homepage of the Chinese documentation center > Security Center > User Guide > Container Protection > CI/CD Access Settings. You can also invoke CreateJenkinsImageRegistry to create a CI/CD image repository and obtain the token from the response parameter Data.Token. For an existing repository, invoke PageImageRegistry to query the token.
         self.token = token
         # The UUID of the image asset.
         self.uuid = uuid

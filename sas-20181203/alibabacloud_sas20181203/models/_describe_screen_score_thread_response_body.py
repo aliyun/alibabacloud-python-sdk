@@ -52,9 +52,9 @@ class DescribeScreenScoreThreadResponseBodyData(DaraModel):
         socre_thread: List[str] = None,
         socre_thread_date: List[str] = None,
     ):
-        # The security score trend list.
+        # The list of security score trends.
         self.socre_thread = socre_thread
-        # The security score trend date list.
+        # The list of dates for security score trends.
         self.socre_thread_date = socre_thread_date
 
     def validate(self):

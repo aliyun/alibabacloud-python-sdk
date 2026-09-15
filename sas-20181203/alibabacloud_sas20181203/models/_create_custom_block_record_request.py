@@ -13,23 +13,24 @@ class CreateCustomBlockRecordRequest(DaraModel):
         resource_owner_id: int = None,
         uuids: str = None,
     ):
-        # The IP address that you want to specify in the policy.
+        # The IP address to block. Traffic from this IP address to the server is blocked.
         # 
         # This parameter is required.
         self.block_ip = block_ip
-        # The traffic direction that you want to specify in the policy. Valid values:
+        # The direction of traffic to block between the custom IP address and the server.
         # 
-        # *   **in**: inbound
-        # *   **out**: outbound
+        # Valid values:
+        # - **in**: inbound
+        # - **out**: outbound
         # 
         # This parameter is required.
         self.bound = bound
-        # The expiration time of the policy.
+        # The expiration time of the policy. This value is a UNIX timestamp in milliseconds.
         # 
         # This parameter is required.
         self.expire_time = expire_time
         self.resource_owner_id = resource_owner_id
-        # The UUIDs of the servers. Separate multiple UUIDs with commas (,).
+        # The UUIDs of the asset instances. Separate multiple UUIDs with commas (,). You can call DescribeCloudCenterInstances to obtain the UUIDs of asset instances.
         # 
         # This parameter is required.
         self.uuids = uuids

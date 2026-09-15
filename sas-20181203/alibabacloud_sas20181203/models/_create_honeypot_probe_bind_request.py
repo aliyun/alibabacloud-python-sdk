@@ -16,22 +16,21 @@ class CreateHoneypotProbeBindRequest(DaraModel):
         probe_id: str = None,
         service_ip_list: List[str] = None,
     ):
-        # The ports that are bound to the probe.
+        # The list of port bindings.
         self.bind_port_list = bind_port_list
         # The honeypot ID.
-        # 
-        # >  You can call the [ListHoneypot](~~ListHoneypot~~) operation to query the IDs of honeypots.
+        # > Call the [ListHoneypot](~~ListHoneypot~~) operation to obtain this value.
+        # This parameter is required. If this parameter is not specified, the API returns InternalError (400).
         self.honeypot_id = honeypot_id
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
         # The probe ID.
-        # 
-        # >  You can call the [ListHoneypotProbe](~~ListHoneypotProbe~~) operation to query the IDs of probes.
+        # >Call the [ListHoneypotProbe](~~ListHoneypotProbe~~) operation to obtain this parameter.
+        # This parameter is required. If this parameter is not specified, the API returns InvalidParam (400).
         self.probe_id = probe_id
-        # The IP addresses that are monitored.
+        # The list of listener IP addresses.
         self.service_ip_list = service_ip_list
 
     def validate(self):
@@ -98,22 +97,22 @@ class CreateHoneypotProbeBindRequestBindPortList(DaraModel):
     ):
         # Specifies whether to bind the port. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The port is bound.
+        # - **false**: The port is not bound.
         self.bind_port = bind_port
-        # The end port on which the probe monitors.
+        # The end port of the probe listener.
         self.end_port = end_port
-        # Specifies whether the port is a fixed port. Valid values:
+        # Specifies whether the port is fixed. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The port is fixed.
+        # - **false**: The port is not fixed.
         self.fixed = fixed
-        # The type of the protocol. Valid values:
+        # The protocol type. Valid values:
         # 
-        # *   **tcp**
-        # *   **udp**
+        # - **tcp**: TCP protocol.
+        # - **udp**: UDP protocol.
         self.proto = proto
-        # The start port on which the probe monitors.
+        # The start port of the probe listener.
         self.start_port = start_port
         # The destination port.
         self.target_port = target_port

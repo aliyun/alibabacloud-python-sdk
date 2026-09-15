@@ -9,6 +9,7 @@ from darabonba.model import DaraModel
 class DescribeImageGroupedVulListRequest(DaraModel):
     def __init__(
         self,
+        agentless_can_fix: bool = None,
         alias_name: str = None,
         cluster_id: str = None,
         current_page: int = None,
@@ -34,12 +35,14 @@ class DescribeImageGroupedVulListRequest(DaraModel):
         type: str = None,
         uuids: str = None,
     ):
+        # Specifies whether to filter by agentless fix capability. true: queries only vulnerabilities that support agentless fix. false: queries vulnerabilities that are not marked as supporting agentless fix. If this parameter is not specified, no filtering is applied based on this condition.
+        self.agentless_can_fix = agentless_can_fix
         # The alias of the vulnerability.
         self.alias_name = alias_name
         # The ID of the container cluster to query.
-        # > Call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to obtain this parameter.
+        # > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to obtain this parameter.
         self.cluster_id = cluster_id
-        # The page number of the page to return in the query results. Default value: **1**, which indicates that the first page is returned.
+        # The page number of the page to return in a paginated query. Default value: **1**, which indicates the first page.
         self.current_page = current_page
         # The CVE ID of the vulnerability.
         self.cve_id = cve_id
@@ -51,23 +54,23 @@ class DescribeImageGroupedVulListRequest(DaraModel):
         self.image_layer = image_layer
         # The tag of the image.
         self.image_tag = image_tag
-        # Specifies whether to query vulnerabilities of only the latest image. If this parameter is not set, vulnerabilities of all images are queried. Valid values:
+        # Specifies whether to query vulnerabilities only for the latest image. If this parameter is not set, vulnerabilities for all images are queried. Valid values:
         # 
         # - **0**: No.
         # - **1**: Yes.
         self.is_latest = is_latest
         # The language of the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English.
+        # - **en**: English
         self.lang = lang
         # The name of the vulnerability.
         self.name = name
         # The priority level for fixing the vulnerability. Valid values:
-        # - **asap**: high-priority vulnerability (typically a high-risk vulnerability)
-        # - **later**: medium-priority vulnerability (typically a medium-risk vulnerability)
-        # - **nntf**: low-priority vulnerability (typically a low-risk vulnerability).
+        # - **asap**: High-priority vulnerability that must be fixed as soon as possible.
+        # - **later**: Medium-priority vulnerability that can be fixed later.
+        # - **nntf**: Low-priority vulnerability that does not need to be fixed for now.
         self.necessity = necessity
-        # The number of image vulnerabilities to display on each page during a paging query. Default value: **20**, which indicates that 20 image vulnerabilities are displayed on each page.
+        # The number of image vulnerabilities to display on each page in a paging query. Default value: **20**, which indicates 20 image vulnerabilities per page.
         self.page_size = page_size
         # The ID of the vulnerability patch.
         self.patch_id = patch_id
@@ -81,16 +84,18 @@ class DescribeImageGroupedVulListRequest(DaraModel):
         self.repo_namespace = repo_namespace
         # The region ID of the image repository.
         self.repo_region_id = repo_region_id
+        # The Alibaba Cloud account ID of the member accounts in the resource folder.
+        # > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
         # The vulnerability tag. Valid values:
         # 
-        #  - **AI**: vulnerabilities related to AI components.
+        #  - **AI**: vulnerabilities related to AI components
         self.rule_tag = rule_tag
         # The collection of scan ranges.
         self.scan_range = scan_range
         # The type of vulnerability to query. Valid values:
         # - **cve**: image system vulnerability
-        # - **sca**: image application vulnerability.
+        # - **sca**: image application vulnerability
         self.type = type
         # The list of unique IDs of asset instances. Separate multiple IDs with commas (,).
         self.uuids = uuids
@@ -103,6 +108,9 @@ class DescribeImageGroupedVulListRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.agentless_can_fix is not None:
+            result['AgentlessCanFix'] = self.agentless_can_fix
+
         if self.alias_name is not None:
             result['AliasName'] = self.alias_name
 
@@ -179,6 +187,9 @@ class DescribeImageGroupedVulListRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentlessCanFix') is not None:
+            self.agentless_can_fix = m.get('AgentlessCanFix')
+
         if m.get('AliasName') is not None:
             self.alias_name = m.get('AliasName')
 

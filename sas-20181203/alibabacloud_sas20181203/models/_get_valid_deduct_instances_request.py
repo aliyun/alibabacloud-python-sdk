@@ -19,7 +19,7 @@ class GetValidDeductInstancesRequest(DaraModel):
         # - CSPM resource plan: **sas_cspm_dp_cn**
         # - Anti-virus Edition resource plan: **sas_viruspackage_dp_cn**
         self.modules = modules
-        # The status of the resource plan. The default value is valid. This parameter does not support modification.
+        # The status of the resource plan. Default value: valid. This parameter does not support modification.
         self.status = status
 
     def validate(self):

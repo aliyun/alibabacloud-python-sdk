@@ -22,48 +22,46 @@ class CreateHoneypotProbeRequest(DaraModel):
         uuid: str = None,
         vpc_id: str = None,
     ):
-        # Specifies whether to enable Address Resolution Protocol (ARP) spoofing. Valid values:
-        # 
-        # *   **true**: yes
-        # *   **false**: no
+        # Specifies whether to enable ARP spoof detection. Valid values:
+        # - **true**: Enabled.
+        # - **false**: Disabled.
         self.arp = arp
-        # The ID of the business group.
+        # The business group.
         self.business_group_id = business_group_id
-        # The ID of the management node.
-        # 
-        # > You can call the [ListHoneypotNode](~~ListHoneypotNode~~) operation to query the IDs of management nodes.
+        # The management node ID.
+        # > You can call the [ListHoneypotNode](~~ListHoneypotNode~~) operation to obtain this value.
         # 
         # This parameter is required.
         self.control_node_id = control_node_id
-        # The name of the probe.
+        # The probe name.
         # 
         # This parameter is required.
         self.display_name = display_name
-        # The configuration of the probe.
+        # The collection of service configurations.
         self.honeypot_bind_list = honeypot_bind_list
-        # Specifies whether to enable ping scan. Valid values:
+        # Specifies whether to enable ping scan detection. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **true**: Enabled.
+        # - **false**: Disabled.
         self.ping = ping
-        # The type of the probe. Valid values:
+        # The probe type. Valid values:
         # 
-        # *   **host_probe**: host probe
-        # *   **vpc_black_hole_probe**: virtual private cloud (VPC) probe
+        # - **host_probe**: host probe
+        # 
+        # - **vpc_black_hole_probe**: VPC blackhole probe
         # 
         # This parameter is required.
         self.probe_type = probe_type
-        # The version of the probe.
+        # The probe version.
         self.probe_version = probe_version
-        # The IP address of the proxy.
+        # The proxy IP address.
         self.proxy_ip = proxy_ip
-        # The UUID of the instance.
-        # 
-        # > If **ProbeType** is set to **host_probe**, this parameter is required.
+        # The instance UUID.
+        # > This parameter is required when **ProbeType** is set to **host_probe**.
         self.uuid = uuid
-        # The ID of the VPC.
+        # The ID of the virtual private cloud (VPC).
         # 
-        # > If **ProbeType** is set to **vpc_black_hole_probe**, this parameter is required. You can call the [DescribeVpcHoneyPotList](~~DescribeVpcHoneyPotList~~) operation to query the IDs of VPCs.
+        # > This parameter is required when **ProbeType** is set to **vpc_black_hole_probe**. You can call the [DescribeVpcHoneyPotList](~~DescribeVpcHoneyPotList~~) operation to obtain this value.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -160,11 +158,10 @@ class CreateHoneypotProbeRequestHoneypotBindList(DaraModel):
         bind_port_list: List[main_models.CreateHoneypotProbeRequestHoneypotBindListBindPortList] = None,
         honeypot_id: str = None,
     ):
-        # The listener ports.
+        # The list of listening ports.
         self.bind_port_list = bind_port_list
-        # The ID of the honeypot.
-        # 
-        # > You can call the [ListHoneypot](~~ListHoneypot~~) operation to query the IDs of honeypots.
+        # The honeypot ID.
+        # > You can call the [ListHoneypot](~~ListHoneypot~~) operation to obtain this value.
         self.honeypot_id = honeypot_id
 
     def validate(self):
@@ -210,23 +207,22 @@ class CreateHoneypotProbeRequestHoneypotBindListBindPortList(DaraModel):
         start_port: int = None,
         target_port: int = None,
     ):
-        # Specifies whether to bind a port. Valid values:
+        # Specifies whether to bind the port. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **true**: Yes.
+        # - **false**: No.
         self.bind_port = bind_port
-        # The end of the port range.
+        # The end port.
         self.end_port = end_port
-        # Specifies whether the port is a fixed port. Valid values:
+        # Specifies whether the port is fixed. Valid values:
         # 
-        # *   **0**: no
-        # *   **1**: yes
+        # - **0**: No.
+        # - **1**: Yes.
         self.fixed = fixed
-        # The start of the port range.
+        # The start port.
         self.start_port = start_port
         # The destination port.
-        # 
-        # > If **HoneypotId** is specified, this parameter is required.
+        # > This parameter is required when **HoneypotId** is not empty.
         self.target_port = target_port
 
     def validate(self):

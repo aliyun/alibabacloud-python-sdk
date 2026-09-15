@@ -24,10 +24,13 @@ class CreateFileProtectClientRuleRequest(DaraModel):
     ):
         # The alert notification level. Valid values:
         # 
-        # - 0: no alert
-        # - 1: reminder
-        # - 2: suspicious
-        # - 3: high-risk.
+        # - 0: No alert.
+        # 
+        # - 1: Reminder.
+        # 
+        # - 2: Suspicious.
+        # 
+        # - 3: High-risk.
         self.alert_level = alert_level
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
@@ -64,14 +67,14 @@ class CreateFileProtectClientRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.rule_name = rule_name
-        # The status of the rule. Valid values:
+        # The rule status. Valid values:
         # 
         # - **0**: Disabled.
         # - **1**: Enabled.
         # 
         # This parameter is required.
         self.status = status
-        # The switch ID associated with the rule.
+        # The switch ID that corresponds to the rule.
         self.switch_id = switch_id
 
     def validate(self):

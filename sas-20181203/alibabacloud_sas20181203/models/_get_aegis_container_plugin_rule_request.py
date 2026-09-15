@@ -11,10 +11,12 @@ class GetAegisContainerPluginRuleRequest(DaraModel):
         lang: str = None,
         rule_type: int = None,
     ):
-        # The ID of the container escape prevention rule.
-        # >You can call the [ListAegisContainerPluginRule](~~ListAegisContainerPluginRule~~) operation to query this parameter.
+        # The ID of the container anti-escape rule.
+        # >You can call the [ListAegisContainerPluginRule](~~ListAegisContainerPluginRule~~) operation to obtain this parameter.
+        # 
+        # Note: This parameter is required. If you do not specify this parameter, the API returns a parameter validation error (HTTP 400).
         self.id = id
-        # The language type for requests and responses. Default value: **zh**. Valid values:
+        # The language type for the request and response. Default value: **zh**. Valid values:
         # 
         # 
         # - **zh**: Chinese

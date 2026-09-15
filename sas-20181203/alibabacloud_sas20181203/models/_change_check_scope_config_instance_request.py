@@ -12,6 +12,7 @@ class ChangeCheckScopeConfigInstanceRequest(DaraModel):
         add_asset_uuids: List[str] = None,
         config_id: str = None,
         delete_asset_uuids: List[str] = None,
+        selection_key: str = None,
     ):
         # The list of unique IDs of cloud assets to add.
         self.add_asset_uuids = add_asset_uuids
@@ -22,6 +23,8 @@ class ChangeCheckScopeConfigInstanceRequest(DaraModel):
         self.config_id = config_id
         # The list of unique IDs of cloud assets to delete.
         self.delete_asset_uuids = delete_asset_uuids
+        # The key for cross-page select-all.
+        self.selection_key = selection_key
 
     def validate(self):
         pass
@@ -40,6 +43,9 @@ class ChangeCheckScopeConfigInstanceRequest(DaraModel):
         if self.delete_asset_uuids is not None:
             result['DeleteAssetUuids'] = self.delete_asset_uuids
 
+        if self.selection_key is not None:
+            result['SelectionKey'] = self.selection_key
+
         return result
 
     def from_map(self, m: dict = None):
@@ -52,6 +58,9 @@ class ChangeCheckScopeConfigInstanceRequest(DaraModel):
 
         if m.get('DeleteAssetUuids') is not None:
             self.delete_asset_uuids = m.get('DeleteAssetUuids')
+
+        if m.get('SelectionKey') is not None:
+            self.selection_key = m.get('SelectionKey')
 
         return self
 

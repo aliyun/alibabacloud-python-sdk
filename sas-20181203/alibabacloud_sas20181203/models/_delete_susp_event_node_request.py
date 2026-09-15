@@ -10,12 +10,13 @@ class DeleteSuspEventNodeRequest(DaraModel):
         note_id: int = None,
         resource_directory_account_id: int = None,
     ):
-        # The ID of the description.
-        # 
-        # > You can call the [DescribeSuspEvents](~~DescribeSuspEvents~~) operation to obtain the ID of the description by using the EventNotes field.
+        # The ID of the note.
+        # >Call the [DescribeSuspEvents](~~DescribeSuspEvents~~) operation to obtain this parameter from the EventNotes field.
         # 
         # This parameter is required.
         self.note_id = note_id
+        # The Alibaba Cloud account ID of the member account in the resource directory.
+        # >Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
 
     def validate(self):

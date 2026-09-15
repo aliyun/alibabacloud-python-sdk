@@ -14,18 +14,17 @@ class DescribeEventLevelCountResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned. The status code **200** indicates that the request was successful. Other status codes indicate that the request failed. You can identify the cause of the failure based on the status code.
+        # The response code. The value **200** indicates success. Any other value indicates failure. You can use this field to determine the cause of the failure.
         self.code = code
-        # The statistics of alerts by risk level.
+        # The statistics of security alerts by severity level.
         self.event_levels = event_levels
-        # The error message returned.
+        # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**: The request was successful.
-        # *   **false**: The request failed.
+        # - **true**: The request was successful.
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -81,11 +80,11 @@ class DescribeEventLevelCountResponseBodyEventLevels(DaraModel):
         serious: int = None,
         suspicious: int = None,
     ):
-        # The number of alerts whose Emergency level is Reminder.
+        # The number of security alerts with the Reminder severity level.
         self.remind = remind
-        # The number of alerts whose Emergency level is Urgent.
+        # The number of security alerts with the Urgent severity level.
         self.serious = serious
-        # The number of alerts whose Emergency level is Suspicious.
+        # The number of security alerts with the Suspicious severity level.
         self.suspicious = suspicious
 
     def validate(self):

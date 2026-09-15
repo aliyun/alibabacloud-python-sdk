@@ -23,86 +23,104 @@ class AddCloudVendorAccountAKRequest(DaraModel):
         vendor: str = None,
         vendor_auth_alias: str = None,
     ):
-        # The type of the account to which the AccessKey pair belongs. Valid values:
+        # The AccessKey (AK) type. Valid values:
         # 
-        # *   **primary**: a primary account
-        # *   **sub**: a sub-account
+        # - **primary**: Primary account.
+        # - **sub**: Sub-account.
+        # - **ctdr**: Agentic SOC.
+        # >Warning: When the vendor is **CHAITIN**, **FORTINET**, **THREATBOOK**, or **WIZ**, set this parameter to ctdr.</warning>
         # 
         # This parameter is required.
         self.ak_type = ak_type
-        # The modules that are associated with the AccessKey pair.
+        # The list of AK-associated modules.
         self.auth_modules = auth_modules
-        # Account ID. > The account ID of the cloud provider, required when permissions include threat analysis and response.
+        # The account ID.
+        # 
+        # > The account ID of the connected cloud vendor. This parameter is required when the permission description includes Cloud Threat Detection and Response (CTDR).
         self.ctdr_cloud_user_id = ctdr_cloud_user_id
-        # The Active Directory (AD) domain. This parameter takes effect only when Vendor is set to Azure. Valid values:
+        # The account domain for access. Valid values:
+        # - **china**: China
+        # - **global**: Global
+        # - **europe**: Huawei Cloud Europe
         # 
-        # *   **china**
-        # *   **global**
+        # > This parameter is valid only when **Vendor** is set to **HUAWEICLOUD**, **Azure**, **AWS**, **VOLCENGINE**, **KingsoftCloud**, **UCloud**, or **BaiduCloud**, and is required. Set this parameter to **china** for KingsoftCloud and BaiduCloud, and to **global** for UCloud.
         self.domain = domain
-        # Extended information.
-        # > Used to record extended information from different vendors. > For Google Cloud, which is accessed via a service account, ExtendInfo stores the service key file in JSON format, excluding the private_key_id and zprivate_key fields. The file includes the following fields: type, project_id, client_email, client_id, auth_uri, token_uri, auth_provider_x509_cert_url, client_x509_cert_url, universe_domain.
+        # The extended information.
+        # 
+        # > Used to record extended information for different vendors.
+        # >Google Cloud is accessed through a service account. ExtendInfo stores the JSON-formatted service key file, excluding the private_key_id and private_key fields. The file contains the following fields: type, project_id, client_email, client_id, auth_uri, token_uri, auth_provider_x509_cert_url, client_x509_cert_url, and universe_domain.
         self.extend_info = extend_info
-        # The language of the content in the request and response messages. Default value: **zh**. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
-        # The regions that are examined during AccessKey pair authentication. This parameter takes effect only when Vendor is set to AWS.
-        # 
-        # >  You can call the [ListCloudVendorRegions](~~ListCloudVendorRegions~~) operation to query regions.
+        # The list of regions used for AK information verification. This parameter is valid only when Vendor is set to AWS.
+        # >Call the [ListCloudVendorRegions](~~ListCloudVendorRegions~~) operation to obtain this parameter.
         self.regions = regions
-        # The AccessKey ID. Valid values:
+        # The AK parameter ID. Valid values:
         # 
-        # 1\\. If AkType is set to primary, specify this parameter based on the following description:
+        # 1. When AkType is set to primary:
+        # - **Tencent**: AccessKeyId of the primary account
+        # - **HUAWEICLOUD**: AccessKeyId of the primary account
+        # - **Azure**: ClientId
+        # - **AWS**: AccessKeyId of the primary account
+        # - **VOLCENGINE**: AccessKeyId of the primary account
         # 
-        # *   **Tencent**: Enter the AccessKey ID of a primary account on Tencent Cloud.
-        # *   **HUAWEICLOUD**: Enter the AccessKey ID of a primary account on Huawei Cloud.
-        # *   **Azure**: Enter the AccessKey ID of a primary account on Microsoft Azure.
-        # *   **AWS**: Enter the AccessKey ID of a primary account on AWS.
+        # 2. When AkType is set to sub:
+        # - **Tencent**: AccessKeyId of the sub-account
+        # - **HUAWEICLOUD**: AccessKeyId of the sub-account
+        # - **Azure**: ClientId
+        # - **AWS**: AccessKeyId of the sub-account
+        # - **VOLCENGINE**: AccessKeyId of the sub-account
+        # - **google**: private_key_id
         # 
-        # 2\\. If AkType is set to sub, specify this parameter based on the following description:
-        # 
-        # *   **Tencent**: Enter the AccessKey ID of a sub-account on Tencent Cloud.
-        # *   **HUAWEICLOUD**: Enter the AccessKey ID of a sub-account on Huawei Cloud.
-        # *   **Azure**: Enter the AccessKey ID of a sub-account on Microsoft Azure.
-        # *   **AWS**: Enter the AccessKey ID of a sub-account on AWS.
+        # >If AkType is set to **primary**, this value is the SecretID of the primary account on the third-party cloud. If AkType is set to **sub**, this value is the Access Key ID of the sub-account on the third-party cloud. For **Azure**, no distinction is made, and this value is the **appId** in the authentication information. Google Cloud is accessed through a service account. AkType defaults to sub, and this value is the private_key_id property value from the JSON-formatted service key file.
         # 
         # This parameter is required.
         self.secret_id = secret_id
-        # The AccessKey secret. Valid values:
+        # The AK parameter secret. Valid values:
         # 
-        # 1\\. If AkType is set to primary, specify this parameter based on the following description:
+        # 1. When AkType is set to primary:
+        # - **Tencent**: SecretAccessKey of the primary account
+        # - **HUAWEICLOUD**: SecretAccessKey of the primary account
+        # - **Azure**: ClientSecret
+        # - **AWS**: SecretAccessKey of the primary account
         # 
-        # *   **Tencent**: Enter the AccessKey secret of a primary account on Tencent Cloud.
-        # *   **HUAWEICLOUD**: Enter the AccessKey secret of a primary account on Huawei Cloud.
-        # *   **Azure**: Enter the AccessKey secret of a primary account on Microsoft Azure.
-        # *   **AWS**: Enter the AccessKey secret of a primary account on AWS.
-        # 
-        # 2\\. If AkType is set to sub, specify this parameter based on the following description:
-        # 
-        # *   **Tencent**: Enter the AccessKey secret of a sub-account on Tencent Cloud.
-        # *   **HUAWEICLOUD**: Enter the AccessKey secret of a sub-account on Huawei Cloud.
-        # *   **Azure**: Enter the AccessKey secret of a sub-account on Microsoft Azure.
-        # *   **AWS**: Enter the AccessKey secret of a sub-account on AWS.
+        # 2. When AkType is set to sub:
+        # - **Tencent**: SecretAccessKey of the sub-account
+        # - **HUAWEICLOUD**: SecretAccessKey of the sub-account
+        # - **Azure**: ClientSecret
+        # - **AWS**: SecretAccessKey of the sub-account
+        # - **google**: private_key
+        # >If AkType is set to **primary**, this value is the Secret Access Key of the primary account on the third-party cloud. If AkType is set to **sub**, this value is the Secret Access Key of the sub-account on the third-party cloud. For **Azure**, no distinction is made, and this value is the **password** in the authentication information. Google Cloud is accessed through a service account. AkType defaults to sub, and this value is the private_key property value from the JSON-formatted service key file.
         # 
         # This parameter is required.
         self.secret_key = secret_key
-        # The subscription IDs. This parameter takes effect only when Vendor is set to Azure.
-        self.subscription_ids = subscription_ids
-        # The tenant ID. This parameter takes effect only when Vendor is set to Azure.
-        self.tenant_id = tenant_id
-        # The cloud service provider. Valid values:
+        # The list of subscription IDs.
         # 
-        # *   **Tencent**: Tencent Cloud
-        # *   **HUAWEICLOUD**: Huawei Cloud
-        # *   **Azure**: Microsoft Azure
-        # *   **AWS**: Amazon Web Services (AWS)
+        # > This parameter is no longer valid.
+        self.subscription_ids = subscription_ids
+        # The tenant ID. This parameter is valid only when Vendor is set to Azure.
+        self.tenant_id = tenant_id
+        # The cloud asset vendor. Valid values:
+        # - **Tencent**: Tencent Cloud
+        # - **HUAWEICLOUD**: Huawei Cloud
+        # - **Azure**: Azure
+        # - **AWS**: AWS
+        # - **VOLCENGINE**: Volcengine
+        # - **google**: Google Cloud
+        # - **CHAITIN**: Chaitin Technology
+        # - **FORTINET**: Fortinet
+        # - **THREATBOOK**: ThreatBook
+        # - **KingsoftCloud**: Kingsoft Cloud
+        # - **UCloud**: UCloud
+        # - **BaiduCloud**: Baidu AI Cloud
+        # - **WIZ**: Wiz Security
         # 
         # This parameter is required.
         self.vendor = vendor
-        # The name of the AccessKey pair.
-        # 
-        # >  The account information of the third-party cloud servers.
+        # The AK account name.
+        # >Used to identify the account to which third-party host assets belong.
         self.vendor_auth_alias = vendor_auth_alias
 
     def validate(self):

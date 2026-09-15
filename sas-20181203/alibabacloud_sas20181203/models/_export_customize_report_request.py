@@ -11,19 +11,20 @@ class ExportCustomizeReportRequest(DaraModel):
         report_id: int = None,
         resource_directory_account_id: int = None,
     ):
-        # The type of the security report that you want to export. Valid values:
+        # The type of the export. Valid values:
         # 
-        # *   **HTML**
-        # *   **PDF**
+        # - **HTML**
+        # - **PDF**
         # 
-        # >  The default value is HTML. PDF is supported only for security reports in version 2.0.0.
+        # > Default value: HTML. PDF is supported only for security reports of version 2.0.0.
         self.export_type = export_type
         # The ID of the security report.
-        # 
-        # >  You can call the [DescribeCustomizeReportList](~~DescribeCustomizeReportList~~) operation to query the ID.
+        # > You can call [DescribeCustomizeReportList](~~DescribeCustomizeReportList~~) to obtain this value.
         # 
         # This parameter is required.
         self.report_id = report_id
+        # The Alibaba Cloud account ID of the member accounts in the resource directory.
+        # > You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
 
     def validate(self):

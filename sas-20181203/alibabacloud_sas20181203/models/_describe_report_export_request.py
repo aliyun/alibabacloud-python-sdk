@@ -12,14 +12,16 @@ class DescribeReportExportRequest(DaraModel):
         resource_directory_account_id: int = None,
     ):
         # The ID of the export task.
-        # > Call [ExportCustomizeReport](~~ExportCustomizeReport~~) to obtain this parameter.
+        # > You can call [ExportCustomizeReport](~~ExportCustomizeReport~~) to obtain this parameter.
         # 
         # This parameter is required.
         self.export_id = export_id
         # The language type for the request and response messages. Default value: **zh**. Valid values:
-        # - **zh**: Chinese
+        # - **zh**: Chinese.
         # - **en**: English.
         self.lang = lang
+        # The Alibaba Cloud account ID of the member accounts in the resource directory.
+        # > You can call [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
 
     def validate(self):

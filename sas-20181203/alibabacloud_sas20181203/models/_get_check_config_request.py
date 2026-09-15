@@ -9,6 +9,8 @@ class GetCheckConfigRequest(DaraModel):
         self,
         resource_directory_account_id: int = None,
     ):
+        # The ID of the China account in the resource folder for member accounts.
+        # >Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
 
     def validate(self):

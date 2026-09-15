@@ -11,10 +11,10 @@ class DescribeContainerServiceK8sClusterNamespacesRequest(DaraModel):
         resource_owner_id: int = None,
         source_ip: str = None,
     ):
-        # The cluster ID.
+        # The ID of the cluster. Note: This parameter is required. If this parameter is not specified, the API returns InvalidParam (400).
         self.cluster_id = cluster_id
         self.resource_owner_id = resource_owner_id
-        # The source IP address.
+        # The IP address of the access source.
         self.source_ip = source_ip
 
     def validate(self):

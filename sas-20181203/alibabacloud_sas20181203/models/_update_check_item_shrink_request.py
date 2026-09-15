@@ -23,45 +23,45 @@ class UpdateCheckItemShrinkRequest(DaraModel):
         status: str = None,
         vendor: str = None,
     ):
-        # Help information for the check item.
+        # The help information for the check item.
         self.assist_info_shrink = assist_info_shrink
-        # ID of the custom check item to be updated.
-        # > You can call the [ListCheckItems](~~ListCheckItems~~) API to get this parameter.
+        # The ID of the custom check item to update.
+        # > You can call the [ListCheckItems](~~ListCheckItems~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.check_id = check_id
-        # Definition rule for the custom check item.
+        # The definition rule of the custom check item.
         self.check_rule = check_rule
-        # Name of the custom check item.
+        # The name of the custom check item.
         self.check_show_name = check_show_name
-        # Description of the check item.
+        # The description of the check item.
         self.description_shrink = description_shrink
-        # Sub-asset type of the cloud product.
-        # > You can call the [ListCloudAssetSchemas](~~ListCloudAssetSchemas~~) API to get this parameter.
+        # The asset subtype of the cloud service.
+        # > You can call the [ListCloudAssetSchemas](~~ListCloudAssetSchemas~~) operation to obtain this parameter.
         self.instance_sub_type = instance_sub_type
-        # Asset type of the cloud product.
-        # > You can call the [ListCloudAssetSchemas](~~ListCloudAssetSchemas~~) API to get this parameter.
+        # The asset type of the cloud service.
+        # > You can call the [ListCloudAssetSchemas](~~ListCloudAssetSchemas~~) operation to obtain this parameter.
         self.instance_type = instance_type
-        # Remark information
+        # The remarks.
         self.remark = remark
-        # Risk level of the check item. Values:
-        # - **HIGH**: High risk
-        # - **MEDIUM**: Medium risk
-        # - **LOW**: Low risk
+        # The risk level of the check item. Valid values:
+        # - **HIGH**: High.
+        # - **MEDIUM**: Medium.
+        # - **LOW**: Low.
         self.risk_level = risk_level
-        # Array of section IDs associated with the check item.
+        # The IDs of the sections associated with the check item.
         self.section_ids = section_ids
-        # Solution information for the check item.
+        # The solution information for the check item.
         self.solution_shrink = solution_shrink
-        # Status of the check item. Values:
-        # - **EDIT**: In editing
-        # - **RELEASE**: Released
+        # The status of the check item. Valid values:
+        # - **EDIT**: Being edited.
+        # - **RELEASE**: Published.
         # 
-        # > - Changing from **Released** to **In editing** will clear all historical records
-        # > - Only the **Released** status allows the use of the check item for inspection.
+        # > - Changing the status from **Published** to **Being edited** purges all historical records.
+        # > - Only check items in the **Published** status can be used for checks.
         self.status = status
-        # Cloud asset vendor.
-        # > You can call the [ListCloudAssetSchemas](~~ListCloudAssetSchemas~~) API to get the available vendors.
+        # The cloud asset vendor.
+        # > You can call the [ListCloudAssetSchemas](~~ListCloudAssetSchemas~~) operation to obtain the available vendors.
         self.vendor = vendor
 
     def validate(self):

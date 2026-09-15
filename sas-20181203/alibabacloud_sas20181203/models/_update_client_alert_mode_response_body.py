@@ -10,12 +10,12 @@ class UpdateClientAlertModeResponseBody(DaraModel):
         data: bool = None,
         request_id: str = None,
     ):
-        # Indicates whether the request was successful. Valid values:
+        # The returned data. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Succeeded.
+        # - **false**: Failed.
         self.data = data
-        # The request ID.
+        # The request ID. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

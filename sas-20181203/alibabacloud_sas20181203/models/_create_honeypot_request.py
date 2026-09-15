@@ -13,15 +13,13 @@ class CreateHoneypotRequest(DaraModel):
         meta: str = None,
         node_id: str = None,
     ):
-        # The ID of the honeypot image.
-        # 
-        # > You can call the [ListAvailableHoneypot](~~ListAvailableHoneypot~~) operation to query the IDs of images from the **HoneypotImageId** response parameter.
+        # The honeypot image ID.
+        # > You can obtain this value from the **HoneypotImageId** field returned by the [ListAvailableHoneypot](~~ListAvailableHoneypot~~) operation.
         # 
         # This parameter is required.
         self.honeypot_image_id = honeypot_image_id
-        # The name of the honeypot image.
-        # 
-        # > You can call the [ListAvailableHoneypot](~~ListAvailableHoneypot~~) operation to query the names of images from the **HoneypotImageName** response parameter.
+        # The honeypot image name.
+        # > You can obtain this value from the **HoneypotImageName** field returned by the [ListAvailableHoneypot](~~ListAvailableHoneypot~~) operation.
         # 
         # This parameter is required.
         self.honeypot_image_name = honeypot_image_name
@@ -29,31 +27,23 @@ class CreateHoneypotRequest(DaraModel):
         # 
         # This parameter is required.
         self.honeypot_name = honeypot_name
-        # The custom configuration of the honeypot in the JSON format. The value contains the following fields:
+        # The custom configuration of the honeypot in JSON format. The following fields are included:
         # 
-        # *   **trojan_git**: Git-specific Defense. Valid values:
-        # 
-        #     *   **zip**: Git Source Code Package
-        #     *   **web**: Git Directory Leak
-        #     *   **close**: Disabled
-        # 
-        # *   **trojan_git_addr**: Git Trojan Address.
-        # 
-        # *   **trojan_git.zip**: Git Trojan.
-        # 
-        # *   **burp**: Burp-specific Defense. Valid values:
-        # 
-        #     *   **open**: Enable
-        #     *   **close**: Disable
-        # 
-        # *   **portrait_option**: Source Tracing Configuration. Valid values:
-        # 
-        #     *   **false**: Disable
-        #     *   **true**: Enable
+        # - **trojan_git**: The Git counter-intelligence method. Valid values:
+        #     -   **zip**: Git source code package.
+        #     -  **web**: .git folder leak.
+        #     -  **close**: Shutdown.
+        # - **trojan_git_addr**: The Git counter-intelligence endpoint.
+        # - **trojan_git.zip**: The Git counter-intelligence trojan package.
+        # - **burp**: The Burp counter-intelligence method. Valid values:
+        #      - **open**: Enabled.
+        #     - **close**: Shutdown.
+        # - **portrait_option**: The tracing configuration. Valid values:
+        #     - **false**: Shutdown.
+        #     - **true**: Enabled.
         self.meta = meta
-        # The ID of the management node.
-        # 
-        # > You can call the [ListHoneypotNode](~~ListHoneypotNode~~) operation to query the IDs of management nodes.
+        # The ID of the honeypot management node.
+        # > Call the [ListHoneypotNode](~~ListHoneypotNode~~) operation to obtain this value.
         # 
         # This parameter is required.
         self.node_id = node_id

@@ -10,9 +10,9 @@ class GetFileProtectEventCountResponseBody(DaraModel):
         data: int = None,
         request_id: str = None,
     ):
-        # The data returned if the request is successful.
+        # The data returned when the API call is successful.
         self.data = data
-        # The request ID.
+        # The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

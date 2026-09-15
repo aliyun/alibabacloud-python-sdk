@@ -13,11 +13,13 @@ class DescribeDomainSecureScoreRequest(DaraModel):
     ):
         # The language of the request and response. Default value: **zh**. Valid values:
         # 
-        # - **zh**: Chinese.
-        # - **en**: English.
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # The Alibaba Cloud account ID of the member account in the resource directory.
+        # >Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
-        # The source IP address of the visitor.
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):

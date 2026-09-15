@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
+from typing import List, Dict
 
 from alibabacloud_sas20181203 import models as main_models
 from darabonba.model import DaraModel
@@ -71,9 +71,9 @@ class ListAgentlessTaskResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The page number of the current page in a paged query. Paging starts from page 1.
+        # The page number of the current page in a paged query. This parameter implements paging.
         self.current_page = current_page
-        # The maximum number of entries per page in a paged query. Paging is performed based on this value.
+        # The maximum number of entries per page in a paged query. This parameter implements paging.
         self.page_size = page_size
         # The total number of entries.
         self.total_count = total_count
@@ -114,6 +114,7 @@ class ListAgentlessTaskResponseBodyList(DaraModel):
     def __init__(
         self,
         end_time: int = None,
+        extension: Dict[str, str] = None,
         instance_id: str = None,
         instance_name: str = None,
         internet_ip: str = None,
@@ -134,6 +135,8 @@ class ListAgentlessTaskResponseBodyList(DaraModel):
     ):
         # The end timestamp of the task, in milliseconds.
         self.end_time = end_time
+        # The extended information of the task. For image security fix subtasks, this field returns the selected vulnerability identifiers and the name of the fixed image. The keys include vulnerabilityIds and outputImageName.
+        self.extension = extension
         # The instance ID of the asset.
         self.instance_id = instance_id
         # The name of the asset instance.
@@ -142,7 +145,7 @@ class ListAgentlessTaskResponseBodyList(DaraModel):
         self.internet_ip = internet_ip
         # The private IP address of the server.
         self.intranet_ip = intranet_ip
-        # The amount of detected data, in MB.
+        # The amount of data scanned, in MB.
         self.measure_space = measure_space
         # The task progress.
         self.progress = progress
@@ -157,7 +160,7 @@ class ListAgentlessTaskResponseBodyList(DaraModel):
         #  - **TIMEOUT**: Timed out.
         #  - **FAILED**: Failed.
         self.report_status = report_status
-        # The detection result.
+        # The check result.
         self.result = result
         # The start timestamp of the task, in milliseconds.
         self.start_time = start_time
@@ -173,7 +176,7 @@ class ListAgentlessTaskResponseBodyList(DaraModel):
         # The object type. Valid values:
         # 
         # - **1**: snapshot
-        # - **2**: image.
+        # - **2**: image
         self.target_type = target_type
         # The task ID.
         self.task_id = task_id
@@ -192,6 +195,9 @@ class ListAgentlessTaskResponseBodyList(DaraModel):
             result = _map
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+
+        if self.extension is not None:
+            result['Extension'] = self.extension
 
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
@@ -250,6 +256,9 @@ class ListAgentlessTaskResponseBodyList(DaraModel):
         m = m or dict()
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+
+        if m.get('Extension') is not None:
+            self.extension = m.get('Extension')
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')

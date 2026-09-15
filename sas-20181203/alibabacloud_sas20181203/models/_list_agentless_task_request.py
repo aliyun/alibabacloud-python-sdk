@@ -23,7 +23,7 @@ class ListAgentlessTaskRequest(DaraModel):
         task_id: str = None,
         uuid: str = None,
     ):
-        # The page number of the current page in a paged query. Paging starts from page 1.
+        # The page number of the current page in a paged query. This parameter implements paging.
         self.current_page = current_page
         # The timestamp of the end time.
         self.end_time = end_time
@@ -34,11 +34,11 @@ class ListAgentlessTaskRequest(DaraModel):
         # The language type. Valid values:  
         # 
         # - **zh**: Chinese
-        # - **en**: English.
+        # - **en**: English
         self.lang = lang
         # The name of the instance.
         self.machine_name = machine_name
-        # The maximum number of entries per page in a paged query. Paging is performed based on this value.
+        # The maximum number of entries per page in a paged query. This parameter implements paging.
         self.page_size = page_size
         # Specifies whether to query the root task list. Valid values:
         # 
@@ -61,7 +61,7 @@ class ListAgentlessTaskRequest(DaraModel):
         # The scan object type. Valid values:
         # 
         # - **1**: snapshot 
-        # - **2**: image.
+        # - **2**: image
         self.target_type = target_type
         # The ID of the root task. Specify this parameter to query the subtask list of a root task.
         self.task_id = task_id

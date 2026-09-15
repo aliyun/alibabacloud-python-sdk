@@ -18,7 +18,7 @@ class ListFileProtectEventResponseBody(DaraModel):
         self.event_list = event_list
         # The pagination information of the query result.
         self.page_info = page_info
-        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -71,9 +71,9 @@ class ListFileProtectEventResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The page number of the current page in a paging query.
+        # The number of the page to return in a paged query.
         self.current_page = current_page
-        # The maximum number of entries returned per page in a paging query.
+        # The maximum number of entries returned per page in a paged query.
         self.page_size = page_size
         # The total number of entries.
         self.total_count = total_count
@@ -134,19 +134,19 @@ class ListFileProtectEventResponseBodyEventList(DaraModel):
     ):
         # The alert notification level. Valid values:
         # 
-        # - 0: no alert
+        # - 0: No alert.
         # 
-        # - 1: reminder
+        # - 1: Reminder.
         # 
-        # - 2: suspicious
+        # - 2: Suspicious.
         # 
-        # - 3: high-risk.
+        # - 3: High-risk.
         self.alert_level = alert_level
         # The command line of the event.
         self.cmd_line = cmd_line
-        # The file path on which the process operates.
+        # The file path on which the process operated.
         self.file_path = file_path
-        # The time when the event was handled.
+        # The time when the event was handled. This value is a UNIX timestamp in milliseconds.
         self.handle_time = handle_time
         # The event ID.
         self.id = id
@@ -156,13 +156,13 @@ class ListFileProtectEventResponseBodyEventList(DaraModel):
         self.internet_ip = internet_ip
         # The private IP address of the asset.
         self.intranet_ip = intranet_ip
-        # The most recent time when the event occurred.
+        # The most recent time when the event occurred. This value is a UNIX timestamp in milliseconds.
         self.latest_time = latest_time
         # The operation performed by the process on the file.
         self.operation = operation
         # The operating system type. Valid values:
         # 
-        # - **windows**: Windows
+        # - **windows**: Windows.
         # - **linux**: Linux.
         self.platform = platform
         # The process path.

@@ -3102,6 +3102,8 @@ class Client(OpenApiClient):
             query['ConfigId'] = request.config_id
         if not DaraCore.is_null(request.delete_asset_uuids):
             query['DeleteAssetUuids'] = request.delete_asset_uuids
+        if not DaraCore.is_null(request.selection_key):
+            query['SelectionKey'] = request.selection_key
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3134,6 +3136,8 @@ class Client(OpenApiClient):
             query['ConfigId'] = request.config_id
         if not DaraCore.is_null(request.delete_asset_uuids):
             query['DeleteAssetUuids'] = request.delete_asset_uuids
+        if not DaraCore.is_null(request.selection_key):
+            query['SelectionKey'] = request.selection_key
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3768,14 +3772,20 @@ class Client(OpenApiClient):
             query['AutoDeleteDays'] = request.auto_delete_days
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.from_):
+            query['From'] = request.from_
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.release_after_scan):
             query['ReleaseAfterScan'] = request.release_after_scan
+        if not DaraCore.is_null(request.resource_region_id):
+            query['ResourceRegionId'] = request.resource_region_id
         if not DaraCore.is_null(request.scan_data_disk):
             query['ScanDataDisk'] = request.scan_data_disk
         if not DaraCore.is_null(request.target_type):
             query['TargetType'] = request.target_type
+        if not DaraCore.is_null(request.targets):
+            query['Targets'] = request.targets
         if not DaraCore.is_null(request.uuid_list):
             query['UuidList'] = request.uuid_list
         req = open_api_util_models.OpenApiRequest(
@@ -3810,14 +3820,20 @@ class Client(OpenApiClient):
             query['AutoDeleteDays'] = request.auto_delete_days
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.from_):
+            query['From'] = request.from_
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.release_after_scan):
             query['ReleaseAfterScan'] = request.release_after_scan
+        if not DaraCore.is_null(request.resource_region_id):
+            query['ResourceRegionId'] = request.resource_region_id
         if not DaraCore.is_null(request.scan_data_disk):
             query['ScanDataDisk'] = request.scan_data_disk
         if not DaraCore.is_null(request.target_type):
             query['TargetType'] = request.target_type
+        if not DaraCore.is_null(request.targets):
+            query['Targets'] = request.targets
         if not DaraCore.is_null(request.uuid_list):
             query['UuidList'] = request.uuid_list
         req = open_api_util_models.OpenApiRequest(
@@ -4322,6 +4338,10 @@ class Client(OpenApiClient):
             query['PolicyRegionId'] = request.policy_region_id
         if not DaraCore.is_null(request.policy_version):
             query['PolicyVersion'] = request.policy_version
+        if not DaraCore.is_null(request.select_type):
+            query['SelectType'] = request.select_type
+        if not DaraCore.is_null(request.server_type):
+            query['ServerType'] = request.server_type
         if not DaraCore.is_null(request.uuid_list):
             query['UuidList'] = request.uuid_list
         req = open_api_util_models.OpenApiRequest(
@@ -4362,6 +4382,10 @@ class Client(OpenApiClient):
             query['PolicyRegionId'] = request.policy_region_id
         if not DaraCore.is_null(request.policy_version):
             query['PolicyVersion'] = request.policy_version
+        if not DaraCore.is_null(request.select_type):
+            query['SelectType'] = request.select_type
+        if not DaraCore.is_null(request.server_type):
+            query['ServerType'] = request.server_type
         if not DaraCore.is_null(request.uuid_list):
             query['UuidList'] = request.uuid_list
         req = open_api_util_models.OpenApiRequest(
@@ -25076,6 +25100,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeImageGroupedVulListResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.agentless_can_fix):
+            query['AgentlessCanFix'] = request.agentless_can_fix
         if not DaraCore.is_null(request.alias_name):
             query['AliasName'] = request.alias_name
         if not DaraCore.is_null(request.cluster_id):
@@ -25150,6 +25176,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeImageGroupedVulListResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.agentless_can_fix):
+            query['AgentlessCanFix'] = request.agentless_can_fix
         if not DaraCore.is_null(request.alias_name):
             query['AliasName'] = request.alias_name
         if not DaraCore.is_null(request.cluster_id):
@@ -26550,6 +26578,8 @@ class Client(OpenApiClient):
             query['Dealed'] = request.dealed
         if not DaraCore.is_null(request.digest):
             query['Digest'] = request.digest
+        if not DaraCore.is_null(request.group_by_asset):
+            query['GroupByAsset'] = request.group_by_asset
         if not DaraCore.is_null(request.image):
             query['Image'] = request.image
         if not DaraCore.is_null(request.instance_id):
@@ -26636,6 +26666,8 @@ class Client(OpenApiClient):
             query['Dealed'] = request.dealed
         if not DaraCore.is_null(request.digest):
             query['Digest'] = request.digest
+        if not DaraCore.is_null(request.group_by_asset):
+            query['GroupByAsset'] = request.group_by_asset
         if not DaraCore.is_null(request.image):
             query['Image'] = request.image
         if not DaraCore.is_null(request.instance_id):
@@ -61856,6 +61888,10 @@ class Client(OpenApiClient):
             query['PolicyRegionId'] = request.policy_region_id
         if not DaraCore.is_null(request.policy_version):
             query['PolicyVersion'] = request.policy_version
+        if not DaraCore.is_null(request.select_type):
+            query['SelectType'] = request.select_type
+        if not DaraCore.is_null(request.server_type):
+            query['ServerType'] = request.server_type
         if not DaraCore.is_null(request.uuid_list):
             query['UuidList'] = request.uuid_list
         req = open_api_util_models.OpenApiRequest(
@@ -61898,6 +61934,10 @@ class Client(OpenApiClient):
             query['PolicyRegionId'] = request.policy_region_id
         if not DaraCore.is_null(request.policy_version):
             query['PolicyVersion'] = request.policy_version
+        if not DaraCore.is_null(request.select_type):
+            query['SelectType'] = request.select_type
+        if not DaraCore.is_null(request.server_type):
+            query['ServerType'] = request.server_type
         if not DaraCore.is_null(request.uuid_list):
             query['UuidList'] = request.uuid_list
         req = open_api_util_models.OpenApiRequest(

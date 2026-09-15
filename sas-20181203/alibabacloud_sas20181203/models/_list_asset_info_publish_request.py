@@ -12,9 +12,9 @@ class ListAssetInfoPublishRequest(DaraModel):
         name: str = None,
         uuid_list: List[str] = None,
     ):
-        # An extended parameter. This parameter is temporarily unavailable.
+        # An extension field. This parameter is currently not used.
         self.name = name
-        # The UUIDs of the servers that you want to query.
+        # The list of server UUIDs to query.
         # 
         # This parameter is required.
         self.uuid_list = uuid_list

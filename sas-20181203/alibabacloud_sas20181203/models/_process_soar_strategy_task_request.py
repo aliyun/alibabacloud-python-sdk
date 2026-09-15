@@ -17,7 +17,7 @@ class ProcessSoarStrategyTaskRequest(DaraModel):
         self.strategy_task_id = strategy_task_id
         # The action status of the task. Valid values:
         # - SCHEDULE: scheduling
-        # - PAUSE: pause.
+        # - PAUSE: pause
         # 
         # This parameter is required.
         self.task_action = task_action

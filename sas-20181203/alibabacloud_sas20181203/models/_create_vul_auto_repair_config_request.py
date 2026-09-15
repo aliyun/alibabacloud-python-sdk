@@ -14,13 +14,15 @@ class CreateVulAutoRepairConfigRequest(DaraModel):
         type: str = None,
         vul_auto_repair_config_list: List[main_models.CreateVulAutoRepairConfigRequestVulAutoRepairConfigList] = None,
     ):
-        # The reason why the vulnerability can be automatically fixed.
+        # The reason for adding the vulnerabilities that can be automatically fixed.
         self.reason = reason
-        # The type of the vulnerability. Valid values: -**cve**: Linux software vulnerability -**sys**: Windows system vulnerability
+        # The type of the vulnerability. Valid values:
+        # - **cve**: Linux software vulnerability.
+        # - **sys**: Windows system vulnerability.
         # 
         # This parameter is required.
         self.type = type
-        # The vulnerabilities that can be automatically fixed.
+        # The list of vulnerabilities that can be automatically fixed.
         # 
         # This parameter is required.
         self.vul_auto_repair_config_list = vul_auto_repair_config_list

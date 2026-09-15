@@ -17,10 +17,12 @@ class DescribeCustomizeReportConfigDetailRequest(DaraModel):
         # - **en**: English.
         self.lang = lang
         # The report ID.\\
-        # The ReportId returned by calling the [DescribeCustomizeReportList](https://help.aliyun.com/document_detail/271655.html) operation.
+        # Call the [DescribeCustomizeReportList](https://help.aliyun.com/document_detail/271655.html) operation to obtain the value of ReportId from the response.
         # 
         # This parameter is required.
         self.report_id = report_id
+        # The Alibaba Cloud account ID of the member accounts in the resource folder.
+        # >Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
         # The IP address of the access source.
         self.source_ip = source_ip

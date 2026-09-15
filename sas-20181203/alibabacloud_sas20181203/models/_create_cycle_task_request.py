@@ -19,15 +19,15 @@ class CreateCycleTaskRequest(DaraModel):
         task_name: str = None,
         task_type: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # Specifies whether to enable the task. Valid values:
-        # - **1**: enabled.
-        # - **0**: disabled.
+        # - **1**: Enable.
+        # - **0**: Disable.
         # 
         # This parameter is required.
         self.enable = enable
-        # The first execution time.
+        # The time of the first execution.
         # 
         # This parameter is required.
         self.first_date_str = first_date_str
@@ -36,8 +36,10 @@ class CreateCycleTaskRequest(DaraModel):
         # This parameter is required.
         self.interval_period = interval_period
         # The extended information field.
+        # 
+        # Note: This parameter is actually required. If this parameter is not specified, the API returns an error. The value is a JSON-formatted string that must contain at least the targetInfo array.
         self.param = param
-        # The unit of the scan interval. Valid values:
+        # The unit of the scan period. Valid values:
         # - **day**: day.
         # - **hour**: hour.
         # 
@@ -53,14 +55,11 @@ class CreateCycleTaskRequest(DaraModel):
         # 
         # This parameter is required.
         self.target_start_time = target_start_time
-        # The task name. Valid values:
-        # - **VIRUS_VUL_SCHEDULE_SCAN**: virus scan.
-        # - **IMAGE_SCAN**: image scan.
-        # - **EMG_VUL_SCHEDULE_SCAN**: emergency vulnerability scanning.
+        # The task name. This is a custom string used to identify the periodic scan task.
         # 
         # This parameter is required.
         self.task_name = task_name
-        # The task type. Valid values:
+        # The node type. Valid values:
         # - **VIRUS_VUL_SCHEDULE_SCAN**: virus scan.
         # - **IMAGE_SCAN**: image scan.
         # - **EMG_VUL_SCHEDULE_SCAN**: emergency vulnerability scanning.

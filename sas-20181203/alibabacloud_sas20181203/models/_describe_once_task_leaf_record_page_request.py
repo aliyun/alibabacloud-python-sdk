@@ -37,12 +37,12 @@ class DescribeOnceTaskLeafRecordPageRequest(DaraModel):
         self.source = source
         # The timestamp of the start time.
         self.start_time = start_time
-        # The list of statuses.
+        # The status list.
         self.status_list = status_list
         # The ID of the task to retrieve.
         self.task_id = task_id
         # The task type. Valid values:
-        # - **IMAGE_SCAN**: image scanning
+        # - **IMAGE_SCAN**: image scanning.
         # - **IMAGE_REGISTRY_PULL**: image asset synchronization.
         # 
         # This parameter is required.

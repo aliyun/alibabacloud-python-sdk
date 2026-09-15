@@ -23,46 +23,43 @@ class UpdateFileProtectEventStatusRequest(DaraModel):
         status: int = None,
         uuid: str = None,
     ):
-        # The severities of alerts.
+        # The list of alert notification levels.
         self.alert_levels = alert_levels
-        # The end of the time range to query. Unit: milliseconds.
+        # The end timestamp of the query.
         self.end_time = end_time
-        # The IDs of the events.
+        # The list of event IDs.
         self.id = id
-        # The instance ID of the asset.
+        # The ID of the asset instance.
         self.instance_id = instance_id
-        # The name of the server.
+        # The name of the asset instance.
         self.instance_name = instance_name
-        # The public IP address of the server.
+        # The public IP address.
         self.internet_ip = internet_ip
-        # The private IP address of the server.
+        # The internal IP address.
         self.intranet_ip = intranet_ip
-        # Type of operation on a file. eg:
+        # The type of operation performed on the file. Valid values:
         # 
-        # - **DELETE**: delete the file.
-        # - **WRITE**: write the file.
-        # - **READ**: read the file.
-        # - **RENAME**: rename the file.
-        # - **CHOWN**: set the file owner and file association group operations.
+        # - **DELETE**: Deletes a file.
+        # - **WRITE**: Writes to a file.
+        # - **READ**: Reads a file.
+        # - **RENAME**: Renames a file.
+        # - **CHOWN**: Changes the file owner and associated file group.
         self.operation = operation
-        # The name of the defense rule.
+        # The rule name.
         self.rule_name = rule_name
-        # Whether to choose all fields across industries.
-        # 
-        # - **true**: yes
-        # - **false**: no
+        # Specifies whether to select all items across pages. Valid values:
+        # - **true**: Selected.
+        # - **false**: Not selected.
         self.select_all_across_pages = select_all_across_pages
-        # The beginning of the time range to query. Unit: milliseconds.
+        # The start timestamp of the query.
         self.start_time = start_time
-        # The handling status of the event. Valid values:
-        # 
-        # *   **0**: unhandled
-        # *   **1**: handled
-        # *   **2**: added to the whitelist
+        # The event handling status.
+        # - **0**: Unhandled
+        # - **1**: Manually handled
+        # - **2**: Added to whitelist
+        # - **3**: Ignored
         self.status = status
         # The UUID of the server.
-        # 
-        # > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
         self.uuid = uuid
 
     def validate(self):

@@ -13,18 +13,20 @@ class ModifyCreateVulWhitelistRequest(DaraModel):
         target_info: str = None,
         whitelist: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The reason for adding the vulnerability to the whitelist.
+        # The reason for adding the vulnerability whitelist.
         self.reason = reason
+        # The Alibaba Cloud account ID of the member accounts in the resource folder.
+        # > Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
         # The scope in which the whitelist takes effect. The value is a JSON string that contains the following fields:
-        # - **type**: The scope type. Valid values:
+        # - **type**: The type of the scope. Valid values:
         #     - **GroupId**: server group
         #     - **Uuid**: host asset
         # - **uuids**: The collection of host asset UUIDs. The field type is String.
         # - **groupIds**: The collection of server group IDs. The field type is Long.
-        # > If this parameter is left empty, the whitelist takes effect on all hosts. If **type** is set to **GroupId**, **groupIds** cannot be empty. If **type** is set to **Uuid**, **uuids** cannot be empty.
+        # > If this value is empty, the whitelist applies to all hosts. If **type** is set to **GroupId**, **groupIds** cannot be empty. If **type** is set to **Uuid**, **uuids** cannot be empty.
         self.target_info = target_info
         # The information about the vulnerability to add to the whitelist. The value is a JSON string that contains the following fields:
         # 

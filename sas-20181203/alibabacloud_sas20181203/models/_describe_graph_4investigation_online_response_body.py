@@ -20,13 +20,13 @@ class DescribeGraph4InvestigationOnlineResponseBody(DaraModel):
         self.code = code
         # The response data.
         self.data = data
-        # The returned message.
+        # The message returned for the request.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
-        # - **true**: The call was successful.
-        # - **false**: The call failed.
+        # Indicates whether the API call was successful. Valid values:
+        # - **true**: The API call was successful.
+        # - **false**: The API call failed.
         self.success = success
 
     def validate(self):
@@ -181,7 +181,7 @@ class DescribeGraph4InvestigationOnlineResponseBodyDataVertexList(DaraModel):
         self.neighbor_list = neighbor_list
         # The properties.
         self.properties = properties
-        # The time.
+        # The time. Format: YYYY-MM-DD HH:mm:ss.
         self.time = time
         # The type of the vertex.
         self.type = type
@@ -302,7 +302,7 @@ class DescribeGraph4InvestigationOnlineResponseBodyDataRelationTypeList(DaraMode
     ):
         # The direction of the edge. Valid values:
         # - **1**: forward
-        # - **0**: reverse.
+        # - **0**: reverse
         self.directed = directed
         # The rendering color of the edge.
         self.display_color = display_color
@@ -431,7 +431,7 @@ class DescribeGraph4InvestigationOnlineResponseBodyDataEdgeList(DaraModel):
         # - **file**: file
         # - **alert**: alert
         # - **ip**: IP address
-        # - **domain**: domain name.
+        # - **domain**: domain name
         self.end_type = end_type
         # The name of the edge.
         self.name = name
@@ -442,9 +442,9 @@ class DescribeGraph4InvestigationOnlineResponseBodyDataEdgeList(DaraModel):
         # - **file**: file
         # - **alert**: alert
         # - **ip**: IP address
-        # - **domain**: domain name.
+        # - **domain**: domain name
         self.start_type = start_type
-        # The time when the edge was created.
+        # The time when the edge was established. Format: YYYY-MM-DD HH:mm:ss.
         self.time = time
         # The type of the edge.
         self.type = type

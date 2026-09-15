@@ -12,7 +12,7 @@ class GetSwitchRegionDetailRequest(DaraModel):
     ):
         # The language type for the request and response messages. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English.
+        # - **en**: English
         self.lang = lang
         # The service switchover type. Valid values:
         # 

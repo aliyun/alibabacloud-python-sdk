@@ -18,40 +18,43 @@ class UpdateFileProtectRuleRequest(DaraModel):
         rule_name: str = None,
         status: int = None,
     ):
-        # The severity of alerts. Valid values:
+        # The alert notification level. Valid values:
         # 
-        # *   0: does not generate alerts
-        # *   1: sends notifications
-        # *   2: suspicious
-        # *   3: high-risk
+        # - 0: no alert
+        # 
+        # - 1: reminder
+        # 
+        # - 2: suspicious
+        # 
+        # - 3: high-risk
         self.alert_level = alert_level
-        # The operations that you want to perform on the files.
+        # The list of operations performed on files.
         # 
         # This parameter is required.
         self.file_ops = file_ops
-        # The paths to the monitored files. Wildcard characters are supported.
+        # The list of monitored file paths. Wildcards are supported.
         # 
         # This parameter is required.
         self.file_paths = file_paths
-        # The ID of the rule.
+        # The rule ID.
         self.id = id
-        # The paths to the monitored processes.
+        # The list of process listening paths.
         # 
         # This parameter is required.
         self.proc_paths = proc_paths
-        # The handling method of the rule. Valid values:
+        # The behavior of the rule on the client. Valid values:
         # 
-        # *   pass: allow
-        # *   alert
+        # - pass: allow
+        # 
+        # - alert: alert
         self.rule_action = rule_action
-        # The name of the rule.
+        # The rule name.
         # 
         # This parameter is required.
         self.rule_name = rule_name
-        # The status of the rule. Valid values:
-        # 
-        # *   **0**: disabled
-        # *   **1**: enabled
+        # The rule status. Valid values:
+        # - **0**: disabled
+        # - **1**: enabled
         self.status = status
 
     def validate(self):

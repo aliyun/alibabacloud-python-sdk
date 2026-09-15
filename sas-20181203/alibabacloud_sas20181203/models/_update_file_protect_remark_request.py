@@ -24,41 +24,41 @@ class UpdateFileProtectRemarkRequest(DaraModel):
         start_time: int = None,
         uuid: str = None,
     ):
-        # Alert notification level list.
+        # The list of alert notification levels.
         self.alert_levels = alert_levels
-        # End time timestamp.
+        # The timestamp of the end time.
         self.end_time = end_time
-        # The ID of the event.
+        # The event ID.
         self.id = id
-        # Event ID list.
+        # The list of event IDs.
         self.id_list = id_list
-        # Asset instance ID.
+        # The ID of the asset instance.
         self.instance_id = instance_id
-        # Asset instance name.
+        # The name of the asset instance.
         self.instance_name = instance_name
-        # Public IP.
+        # The public IP address.
         self.internet_ip = internet_ip
-        # Private IP.
+        # The internal IP address.
         self.intranet_ip = intranet_ip
-        # File operation type. Values:
+        # The type of operation performed on the file. Valid values:
         # 
-        # - **DELETE**: File deletion operation.
-        # - **WRITE**: File write operation.
-        # - **READ**: File read operation.
-        # - **RENAME**: File rename operation.
-        # - **CHOWN**: Set file owner and associated group operation.
+        # - **DELETE**: Delete the file.
+        # - **WRITE**: Write to the file.
+        # - **READ**: Read the file.
+        # - **RENAME**: Rename the file.
+        # - **CHOWN**: Change the file owner and file group.
         self.operation = operation
         # The remarks.
         self.remark = remark
-        # Rule name.
+        # The rule name.
         self.rule_name = rule_name
-        # Cross-page select all indicator. Values:
-        # - **true**: Yes
-        # - **false**: No
+        # Specifies whether to select all items across pages. Valid values:
+        # - **true**: Yes.
+        # - **false**: No.
         self.select_all_across_pages = select_all_across_pages
-        # Start time timestamp.
+        # The timestamp of the start time.
         self.start_time = start_time
-        # Server UUID.
+        # The UUID of the server.
         self.uuid = uuid
 
     def validate(self):

@@ -19,29 +19,30 @@ class AddContainerDefenseRuleRequest(DaraModel):
         scope: List[main_models.AddContainerDefenseRuleRequestScope] = None,
         whitelist: main_models.AddContainerDefenseRuleRequestWhitelist = None,
     ):
-        # The description of the rule.
+        # The description.
         self.description = description
-        # The action that is performed when the rule is hit. Valid values:
+        # The action to take when the rule is matched. Valid values:
         # 
-        # *   **1**: alert
-        # *   **2**: block
+        # - **1**: Alert.
+        # 
+        # - **2**: Block.
         self.rule_action = rule_action
-        # The ID of the rule. You do not need to manually specify the ID.
+        # The rule ID. You do not need to specify this parameter when creating a rule.
         self.rule_id = rule_id
-        # The name of the rule.
+        # The rule name.
         self.rule_name = rule_name
-        # The switch of the rule. Valid values:
+        # The rule switch. Valid values:
         # 
-        # *   **0**: off
-        # *   **1**: on
+        # - **0**: Disabled.
+        # 
+        # - **1**: Enabled.
         self.rule_switch = rule_switch
         # The rule type. Valid values:
+        # - 2: user rule
         # 
-        # *   2: user-defined rules
-        # 
-        # > Only the value 2 is supported.
+        # >Notice: Only the value 2 is supported.
         self.rule_type = rule_type
-        # The scope.
+        # The scope. This parameter is required. Specify at least one Scope entry, such as Scope.1.AllNamespace=1, which indicates that the rule applies to all namespaces. If this parameter is not specified, the API returns a 400 error.
         self.scope = scope
         # The whitelist.
         self.whitelist = whitelist
@@ -126,13 +127,11 @@ class AddContainerDefenseRuleRequestWhitelist(DaraModel):
         image: List[str] = None,
         path: List[str] = None,
     ):
-        # The hash values of the files that need to be added to the whitelist.
-        # 
-        # > This parameter is not supported.
+        # The file hash.>Notice: This parameter is not supported.
         self.hash = hash
-        # The images that need to be added to the whitelist.
+        # The list of images to whitelist.
         self.image = image
-        # The paths to the files that need to be added to the whitelist.
+        # The list of file paths to whitelist.
         self.path = path
 
     def validate(self):
@@ -176,14 +175,14 @@ class AddContainerDefenseRuleRequestScope(DaraModel):
     ):
         # Specifies whether to include all namespaces. Valid values:
         # 
-        # *   **0**: You can use the Namespaces parameter to specify the namespaces to include.
-        # *   **1**: All namespaces are included.
-        self.all_namespace = all_namespace
-        # The ID of the cluster.
+        # - **0**: Specifies the namespaces to include by using the Namespaces parameter.
         # 
-        # >  You can call the [DescribeGroupedContainerInstances](https://help.aliyun.com/document_detail/182997.html) operation to query the IDs of clusters.
+        # - **1**: Includes all namespaces.
+        self.all_namespace = all_namespace
+        # The cluster ID.
+        # > You can call the [DescribeGroupedContainerInstances](https://help.aliyun.com/document_detail/182997.html) operation to obtain this parameter.
         self.cluster_id = cluster_id
-        # The namespaces to include.
+        # The list of included namespaces.
         self.namespaces = namespaces
 
     def validate(self):

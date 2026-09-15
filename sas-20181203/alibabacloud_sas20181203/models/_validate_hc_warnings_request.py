@@ -15,15 +15,19 @@ class ValidateHcWarningsRequest(DaraModel):
         # The IDs of the check items. Separate multiple check item IDs with commas (,).
         # 
         # > You can call the [DescribeCheckWarningSummary](https://help.aliyun.com/document_detail/116179.html) operation to obtain check item IDs.
+        # Note: You must specify at least one of RiskIds and CheckIds. Otherwise, the API returns the HcIllegalParameter error.
         self.check_ids = check_ids
         # The IDs of the risk items to verify. Separate multiple IDs with commas (,).
         # >  You can call the [DescribeCheckWarnings](~~DescribeCheckWarnings~~) operation to obtain this parameter.
+        # Note: You must specify at least one of RiskIds and CheckIds. Otherwise, the API returns the HcIllegalParameter error.
         self.risk_ids = risk_ids
-        # The status of the check item to verify. Valid values:
+        # The status of the check items to verify.
         # 
-        # - 1: not passed
-        # - 3: passed
-        # - 5: expired.
+        # - 1: Not passed
+        # 
+        # - 3: Passed
+        # 
+        # - 5: Expired
         self.status = status
         # The UUIDs of the servers to verify. Separate multiple UUIDs with commas (,).
         # 

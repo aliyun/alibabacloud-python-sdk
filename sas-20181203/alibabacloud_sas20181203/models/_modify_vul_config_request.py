@@ -11,7 +11,7 @@ class ModifyVulConfigRequest(DaraModel):
         config: str = None,
         type: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # Specifies whether to enable or disable vulnerability detection. Valid values:
         # 

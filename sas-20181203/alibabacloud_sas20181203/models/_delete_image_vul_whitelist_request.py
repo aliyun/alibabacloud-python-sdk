@@ -10,11 +10,11 @@ class DeleteImageVulWhitelistRequest(DaraModel):
         ids: str = None,
         lang: str = None,
     ):
-        # The vulnerability whitelist IDs. Separate multiple IDs with commas (,).
+        # The IDs of the vulnerability whitelists. Separate multiple IDs with commas (,). This parameter is essentially required. If this parameter is not specified, the API returns an error response with Code: -101 (illegal parameter, param is ids).
         self.ids = ids
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English.
+        # - **en**: English
         self.lang = lang
 
     def validate(self):

@@ -13,19 +13,19 @@ class DescribeAllRegionsStatisticsRequest(DaraModel):
         resource_directory_account_id: int = None,
         source_ip: str = None,
     ):
-        # The source of the request. Default value: **aqs**. Valid values:
-        # 
-        # *   **sas**: Security Center.
-        # *   **aqs**: Server Guard.
+        # The source of the data request. Default value: **aqs**. Valid values:
+        # - **sas**: The data request comes from Security Center.
+        # - **aqs**: The data request comes from Server Guard.
         self.from_ = from_
-        # The ID of the asset group that you want to query.
-        # 
-        # >  You can call the [DescribeAllGroups](https://help.aliyun.com/document_detail/130972.html) operation to query the ID.
+        # The ID of the asset group to query.
+        # > You can call the [DescribeAllGroups](https://help.aliyun.com/document_detail/130972.html) operation to obtain this parameter.
         self.group_id = group_id
-        # The name or public IP address of the asset.
+        # The asset name or public IP address.
         self.remark = remark
+        # The ID of the Alibaba Cloud account of the member accounts in the resource folder.
+        # > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
-        # The source IP address of the request.
+        # The IP address of the access source.
         self.source_ip = source_ip
 
     def validate(self):

@@ -13,9 +13,9 @@ class GetSwitchRegionDetailResponseBody(DaraModel):
         data: main_models.GetSwitchRegionDetailResponseBodyData = None,
         request_id: str = None,
     ):
-        # The response data.
+        # The returned data.
         self.data = data
-        # The ID of the request. The China Chinese mainland generates a unique identifier for each request, which can be used for troubleshooting and diagnostics.
+        # The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -154,13 +154,13 @@ class GetSwitchRegionDetailResponseBodyDataRegionStatus(DaraModel):
     ):
         # The number of ECS instances.
         self.ecs_count = ecs_count
-        # The planned migration time.
+        # The planned migration time. The value is a UNIX timestamp. Unit: milliseconds.
         self.gmt_plan_switch_time = gmt_plan_switch_time
         # The region where the server resides.
         self.region_id = region_id
         # The migration status. Valid values:
         # - **0**: waiting for migration
-        # - **1**: switchover succeeded.
+        # - **1**: switchover succeeded
         self.status = status
 
     def validate(self):

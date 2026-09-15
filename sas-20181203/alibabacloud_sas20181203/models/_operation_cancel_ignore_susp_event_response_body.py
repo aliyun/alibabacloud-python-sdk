@@ -14,20 +14,20 @@ class OperationCancelIgnoreSuspEventResponseBody(DaraModel):
         success: bool = None,
         time_cost: int = None,
     ):
-        # The status code returned. The status code **200** indicates that the request was is successful. Other status codes indicate that the request fails. You can identify the cause of the failure based on the status code.
+        # The result code. A value of **200** indicates success. Other values indicate failure. You can use this field to determine the cause of the failure.
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The error message returned.
+        # The detailed information about the error code.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The handling result of an exception. Valid values:
+        # The result of the alert event processing. Valid values:
         # 
-        # *   **true**: successful
-        # *   **false**: failed
+        # - **true**: Successful.
+        # - **false**: Failed.
         self.success = success
-        # The time consumed for the request. Unit: seconds.
+        # The time consumed by the task, in seconds.
         self.time_cost = time_cost
 
     def validate(self):

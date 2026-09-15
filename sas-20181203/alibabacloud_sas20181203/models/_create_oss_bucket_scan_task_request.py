@@ -23,35 +23,35 @@ class CreateOssBucketScanTaskRequest(DaraModel):
     ):
         # Specifies whether to match all prefixes. If this parameter is set to true, the KeyPrefixList parameter does not take effect.
         self.all_key_prefix = all_key_prefix
-        # The list of bucket names.
+        # The list of bucket names. The specified buckets must already exist in OSS and must have been synchronized to Security Center by calling the RefreshOssBucketScanInfo operation. You can call the ListOssBucket operation to obtain the list of managed buckets.
         # 
         # This parameter is required.
         self.bucket_name_list = bucket_name_list
-        # The maximum number of files to decompress. The minimum value is 1 and the maximum value is 1000. When the maximum number of decompressed files is exceeded, the decompression operation ends immediately. The detection of files that have already been decompressed is not affected.
+        # The maximum number of files to decompress. The minimum value is 1 and the maximum value is 1000. When the maximum number of decompressed files is exceeded, the decompression operation stops immediately. The scanning of files that have already been decompressed is not affected.
         self.decompress_max_file_count = decompress_max_file_count
-        # The maximum number of decompression layers when multiple levels of compressed packages are nested. The minimum value is 1 and the maximum value is 5. When the maximum number of decompression layers is exceeded, the decompression operation ends immediately. The detection of files that have already been decompressed is not affected.
+        # The maximum number of decompression layers when multiple levels of nested compressed files exist. The minimum value is 1 and the maximum value is 5. When the maximum number of decompression layers is exceeded, the decompression operation stops immediately. The scanning of files that have already been decompressed is not affected.
         self.decompress_max_layer = decompress_max_layer
         # The list of decryption types.
         self.decryption_list = decryption_list
-        # The list of file suffixes to exclude from detection.
+        # The list of file suffixes to exclude from scanning.
         self.exclude_key_suffix_list = exclude_key_suffix_list
         # The prefix list of files.
         self.key_prefix_list = key_prefix_list
         # The list of file suffixes.
         self.key_suffix_list = key_suffix_list
-        # Specifies that only files whose last modification time is after the specified timestamp are detected. Unit: milliseconds.
+        # Specifies that only files whose last modification time is after the specified timestamp are scanned. Unit: milliseconds.
         self.last_modified_start_time = last_modified_start_time
-        # The detection mode. Valid values:
+        # The scan mode. Valid values:
         # 
-        # - **1**: Full file detection.
+        # - **1**: Full file scan.
         # 
-        # - **2**: Incremental file detection.
+        # - **2**: Incremental file scan.
         # 
         # This parameter is required.
         self.scan_mode = scan_mode
         # The business source. Valid values:
-        # - **OSS**: OSS
-        # - **NAS**: NAS
+        # - **OSS**: OSS.
+        # - **NAS**: NAS.
         self.source = source
 
     def validate(self):

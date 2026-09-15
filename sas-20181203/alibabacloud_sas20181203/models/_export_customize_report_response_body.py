@@ -16,25 +16,24 @@ class ExportCustomizeReportResponseBody(DaraModel):
         request_id: str = None,
         url_expired_time: int = None,
     ):
-        # The download URL of the security report.
+        # The download URL of the report.
         self.download_url = download_url
-        # The time when the security report was exported.
+        # The time when the report was generated. Format: YYYY-MM-DD.
         self.export_date = export_date
-        # The ID of the export task.
+        # The ID of the export report task.
         self.export_id = export_id
-        # The status of the export task. Valid values:
-        # 
-        # *   **fail**: The export task fails.
-        # *   **exporting**: The export task is being executed.
-        # *   **success**: The export task is successful.
+        # The status of the export node. Valid values:
+        # - **fail**: The export failed.
+        # - **exporting**: The export is in progress.
+        # - **success**: The export succeeded.
         self.export_status = export_status
-        # The name of the report file that is exported.
+        # The name of the exported file.
         self.file_name = file_name
         # The ID of the security report.
         self.report_id = report_id
-        # The request ID.
+        # The request ID, which is a unique identifier that Alibaba Cloud generates for the request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
-        # The timestamp when the download URL expires. Unit: seconds.
+        # The UNIX timestamp when the report download URL expires. Unit: seconds.
         self.url_expired_time = url_expired_time
 
     def validate(self):

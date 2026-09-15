@@ -16,28 +16,27 @@ class DescribeSuspEventQuaraFilesRequest(DaraModel):
         source_ip: str = None,
         status: str = None,
     ):
-        # The number of the page to return.
+        # The page number of the file list to view.
         self.current_page = current_page
-        # The ID of the request source. Set the value to **sas**.
+        # The identifier of the request source. Set the value to **sas**.
         self.from_ = from_
         # The ID of the asset group.
         self.group_id = group_id
-        # The ID of the server group to which the server belongs. The quarantined file is located on the server.
+        # The ID of the server group where the quarantined file is located.
         self.grouping_id = grouping_id
-        # The number of entries to return on each page.
+        # The maximum number of entries per page in a paged query.
         self.page_size = page_size
-        # The unique ID of the quarantined file.
+        # The unique identifier of the quarantined file.
         self.quara_tag = quara_tag
-        # The source IP address of the request.
+        # The IP address of the access source.
         self.source_ip = source_ip
-        # The status of the quarantined file that you want to query. Valid values:
-        # 
-        # *   **quaraFailed**: The file fails to be quarantined.
-        # *   **quaraDone**: The file is quarantined.
-        # *   **quaraing**: The file is being quarantined.
-        # *   **rollbackFailed**: The system fails to cancel quarantining the file.
-        # *   **rollbackDone**: The system cancelled quarantining the file.
-        # *   **rollbacking**: The system is cancelling quarantining the file.
+        # The status of the quarantined files to query. Valid values:  
+        # - **quaraFailed**: Quarantine failed.
+        # - **quaraDone**: Quarantine succeeded.
+        # - **quaraing**: Quarantine in progress.
+        # - **rollbackFailed**: Quarantine rollback failed.
+        # - **rollbackDone**: Quarantine rollback succeeded.
+        # - **rollbacking**: Quarantine rollback in progress.
         self.status = status
 
     def validate(self):

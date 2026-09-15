@@ -18,7 +18,7 @@ class ListOperationProcessDetailResponseBody(DaraModel):
         self.page_info = page_info
         # The list of operation subtask information.
         self.process_details = process_details
-        # The unique request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -86,20 +86,20 @@ class ListOperationProcessDetailResponseBodyProcessDetails(DaraModel):
         self.asset_vendor = asset_vendor
         # The list of check items associated with the operation subtask.
         self.checks = checks
-        # The timestamp when the task was created, in milliseconds.
+        # The timestamp when the task was created. Unit: milliseconds.
         self.create_time = create_time
         # The operation subtask ID.
         self.detail_task_id = detail_task_id
-        # The timestamp when the operation subtask ended, in milliseconds.
+        # The timestamp when the operation subtask ended. Unit: milliseconds.
         self.end_time = end_time
-        # The timestamp when the operation subtask started, in milliseconds.
+        # The timestamp when the operation subtask started. Unit: milliseconds.
         self.start_time = start_time
         # The operation subtask status code. Valid values:
-        # - 0: not started.
-        # - 1: checking.
-        # - 2: succeeded.
-        # - 3: timed out.
-        # - 4: failed.
+        # - 0: Not started.
+        # - 1: Checking.
+        # - 2: Succeeded.
+        # - 3: Timed out.
+        # - 4: Failed.
         self.status_code = status_code
         # The operation subtask ID.
         self.task_id = task_id
@@ -235,7 +235,7 @@ class ListOperationProcessDetailResponseBodyPageInfo(DaraModel):
         self.count = count
         # The page number of the current page in a paged query.
         self.current_page = current_page
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
         # The total number of entries.
         self.total_count = total_count

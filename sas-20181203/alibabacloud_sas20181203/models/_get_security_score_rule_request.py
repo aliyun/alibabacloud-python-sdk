@@ -15,8 +15,10 @@ class GetSecurityScoreRuleRequest(DaraModel):
         self.cal_type = cal_type
         # The language type for the request and response messages. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English.
+        # - **en**: English
         self.lang = lang
+        # The Alibaba Cloud account ID of the member accounts in the resource folder.
+        # >Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
 
     def validate(self):

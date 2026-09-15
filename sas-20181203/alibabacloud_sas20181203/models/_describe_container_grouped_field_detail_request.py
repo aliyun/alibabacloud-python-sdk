@@ -10,20 +10,18 @@ class DescribeContainerGroupedFieldDetailRequest(DaraModel):
         criteria: str = None,
         group_field: str = None,
     ):
-        # The search conditions that are used to query assets. The value of this parameter is in the JSON format. Separate multiple search conditions with commas (,). Example: `[{"name":"riskStatus","value":"YES"},{"name":"riskLevel","value":"2"}]`.
-        # 
-        # >  Supported search conditions include the instance ID, instance name, virtual private cloud (VPC) ID, region, and public IP address. You can call the [DescribeCriteria](~~DescribeCriteria~~) operation to query the supported search conditions.
+        # The conditions for searching assets. This parameter is in JSON format. Separate multiple conditions with commas (,). Example: `[{"name":"riskStatus","value":"YES"},{"name":"riskLevel","value":"2"}]`.
+        # > You can search for assets by conditions such as instance ID, instance name, VPC ID, region, and public IP address. Call [DescribeCriteria](~~DescribeCriteria~~) to query the supported search conditions.
         # 
         # This parameter is required.
         self.criteria = criteria
-        # The filter condition for a grouping and aggregation query. Valid values:
-        # 
-        # *   **pod**
-        # *   **appName**
-        # *   **clusterId**
-        # *   **namespace**
-        # *   **image**
-        # *   **containerScan**
+        # The search item. Valid values:
+        # - **pod**: pod.
+        # - **appName**: application name.
+        # - **clusterId**: cluster ID.
+        # - **namespace**: namespace.
+        # - **image**: image.
+        # - **containerScan**: container scan.
         # 
         # This parameter is required.
         self.group_field = group_field

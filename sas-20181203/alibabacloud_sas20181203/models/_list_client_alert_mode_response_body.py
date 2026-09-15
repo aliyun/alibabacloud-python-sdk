@@ -15,7 +15,7 @@ class ListClientAlertModeResponseBody(DaraModel):
     ):
         # The data returned by the request.
         self.data = data
-        # The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
+        # The request ID. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -52,7 +52,7 @@ class ListClientAlertModeResponseBodyData(DaraModel):
         count: int = None,
         uuids: List[str] = None,
     ):
-        # The total number of entries returned.
+        # The total number of returned entries.
         self.count = count
         # The list of asset UUIDs.
         self.uuids = uuids

@@ -15,23 +15,22 @@ class ModifyClientConfStrategyRequest(DaraModel):
         uuid: str = None,
         uuids: List[str] = None,
     ):
-        # The key of the tag that is added to the agent configuration policy.
+        # The client configuration tag.
         # 
         # This parameter is required.
         self.tag = tag
-        # The extended tag of the agent configuration policy.
+        # The extended tag.
         self.tag_ext = tag_ext
-        # The value of the tag that is added to the agent configuration policy.
-        # 
-        # *   major
-        # *   advanced
-        # *   basic
+        # The client tag value. Valid values:
+        # - major
+        # - advanced
+        # - basic
         # 
         # This parameter is required.
         self.tag_value = tag_value
-        # The UUID of the server that you want to query.
+        # The UUID of the asset to query. You must specify at least one of the Uuid and Uuids parameters. Otherwise, the API returns a 400 error. The Uuid parameter specifies a single asset.
         self.uuid = uuid
-        # The UUID of the asset. You can specify a maximum of 500 UUIDs at a time.
+        # The UUIDs of asset instances. A maximum of 500 UUIDs can be specified at a time. You must specify at least one of the Uuids and Uuid parameters. Otherwise, the API returns a 400 error. The Uuids parameter specifies multiple assets in a batch.
         self.uuids = uuids
 
     def validate(self):

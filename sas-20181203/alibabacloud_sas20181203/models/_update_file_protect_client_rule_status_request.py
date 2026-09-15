@@ -20,13 +20,13 @@ class UpdateFileProtectClientRuleStatusRequest(DaraModel):
     ):
         # The alert notification level. Valid values:
         # 
-        # - 0: no alert
+        # - 0: No alert.
         # 
-        # - 1: reminder
+        # - 1: Reminder.
         # 
-        # - 2: suspicious
+        # - 2: Suspicious.
         # 
-        # - 3: high-risk.
+        # - 3: High-risk.
         self.alert_level = alert_level
         # The list of excluded rule IDs.
         self.exclude_id_list = exclude_id_list
@@ -34,7 +34,7 @@ class UpdateFileProtectClientRuleStatusRequest(DaraModel):
         self.id_list = id_list
         # The operating system type. Valid values:
         # 
-        # - **windows**: Windows
+        # - **windows**: Windows.
         # - **linux**: Linux.
         self.platform = platform
         # The rule action. Valid values:
@@ -52,8 +52,8 @@ class UpdateFileProtectClientRuleStatusRequest(DaraModel):
         # This parameter is required.
         self.select_all = select_all
         # The policy status. Valid values:
-        # - **0**: disabled.
-        # - **1**: enabled.
+        # - **0**: Disabled.
+        # - **1**: Enabled.
         # 
         # This parameter is required.
         self.status = status

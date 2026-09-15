@@ -17,17 +17,17 @@ class DescribeVulWhitelistResponseBody(DaraModel):
         total_count: int = None,
         vul_whitelists: List[main_models.DescribeVulWhitelistResponseBodyVulWhitelists] = None,
     ):
-        # The number of entries on the current page in paging.
+        # The number of entries on the current page when paging.
         self.count = count
-        # The page number of the current page in paging.
+        # The current page number when paging.
         self.current_page = current_page
-        # The number of entries per page in paging.
+        # The number of entries per page when paging.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
         # The total number of entries.
         self.total_count = total_count
-        # The list of whitelisted vulnerabilities.
+        # The list of vulnerability whitelist entries.
         self.vul_whitelists = vul_whitelists
 
     def validate(self):

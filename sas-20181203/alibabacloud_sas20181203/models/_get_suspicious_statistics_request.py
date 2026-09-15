@@ -16,6 +16,8 @@ class GetSuspiciousStatisticsRequest(DaraModel):
         # 
         # This parameter is required.
         self.group_id_list = group_id_list
+        # The Alibaba Cloud account ID of the member accounts in the resource folder.
+        # > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
         # The IP address of the access source.
         self.source_ip = source_ip

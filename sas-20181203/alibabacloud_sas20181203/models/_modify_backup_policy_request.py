@@ -14,45 +14,54 @@ class ModifyBackupPolicyRequest(DaraModel):
         policy: Dict[str, Any] = None,
         policy_region_id: str = None,
         policy_version: str = None,
+        select_type: str = None,
+        server_type: str = None,
         uuid_list: List[str] = None,
     ):
-        # The ID of the anti-ransomware mitigation policy to modify.
+        # The ID of the anti-ransomware policy to modify.
         # 
         # This parameter is required.
         self.id = id
-        # The name of the anti-ransomware mitigation policy to modify.
+        # The name of the anti-ransomware policy to modify.
         # 
         # This parameter is required.
         self.name = name
-        # The content of the mitigation policy to modify. The value is a JSON-format string that contains the following fields:
+        # The content of the policy to modify. The value is a JSON format character string that contains the following fields:
         # 
         # - **Source**: The server folder to protect. To protect all folders, set this field to [].
         # - **Include**: The file types to protect. Examples: "\\*.jpg" and "\\*.doc".
-        # - **Exclude**: The custom folders to exclude. For example, exclude the folder "/home/user". Invoke the DescribeExcludeSystemPath operation to obtain all folders, and then add the folders that you want to exclude.
-        # - **Schedule**: The start time and interval of the data backup task. Specify a non-hourly time during off-peak hours.
+        # - **Exclude**: The custom folders to exclude. For example, "/home/user" excludes the /home/user folder. Invoke the DescribeExcludeSystemPath operation to obtain all folders, and then add the folders that you want to exclude.
+        # - **Schedule**: The start time and interval of the data backup node. Specify a non-hourly time during off-peak hours.
         # 
-        #     - Example 1: I|1583216092|P21D indicates that the start time is 2020-03-03 14:14:52 and the interval is 3 weeks.
+        #     - Example 1: I|1583216092|P21D indicates that the execute start time is 2020-03-03 14:14:52 and the interval is 3 weeks.
         # 
-        #     - Example 2: I|1583216092|PT24H indicates that the start time is 2020-03-03 14:14:52 and the interval is 24 hours.
+        #     - Example 2: I|1583216092|PT24H indicates that the execute start time is 2020-03-03 14:14:52 and the interval is 24 hours.
         # 
         # - **Retention**: The retention period of backup data. Unit: days. 7 indicates 1 week, 365 indicates 1 year, and -1 indicates permanent retention.
-        # - **SpeedLimiter**: The network bandwidth throttling for backup. Example: 12:15:15360|6:12:5120 indicates 15 MB from 12:00 to 15:00 and 5 MB from 6:00 to 12:00.
-        # Cloud-hosted servers connect through the internal network. Do not limit the backup network bandwidth. To remove the bandwidth limit, set this parameter to an empty string ("").
+        # - **SpeedLimiter**: The network bandwidth throttling for backup. For example, 12:15:15360|6:12:5120 indicates 15 MB from 12:00 to 15:00 and 5 MB from 6:00 to 12:00.
+        # For cloud-based servers connected to the internal network, do not limit the backup network bandwidth. To remove the network bandwidth throttling, set this parameter to an empty character string ("").
         # 
         # This parameter is required.
         self.policy = policy
-        # The region of the server for which you want to modify the mitigation policy.
+        # The region of the server for which you want to modify the policy.
         # 
         # You can invoke the [DescribeSupportRegion](~~DescribeSupportRegion~~) operation to query the regions supported by the anti-ransomware feature.
         self.policy_region_id = policy_region_id
-        # The version of the mitigation policy. You can invoke the [DescribeBackupPolicies](~~DescribeBackupPolicies~~) operation to query the version.
+        # The version of the policy. You can invoke the [DescribeBackupPolicies](~~DescribeBackupPolicies~~) operation to query the version.
         # 
         # - **1.0.0**
         # - **2.0.0**
         self.policy_version = policy_version
-        # The UUIDs of the servers protected by the mitigation policy.
-        # 
-        # This parameter is required.
+        # The method used to select assets. Valid values:
+        # - **ALL_MACHINE**: all assets
+        # >To cover all assets of the specified type, set this parameter to **ALL_MACHINE**. In this case, **UuidList** is invalid. Only one policy that covers all assets can exist for each server type.
+        self.select_type = select_type
+        # The server type. Valid values:
+        # - **ALIYUN**: Alibaba Cloud server
+        # - **OUT_CLOUD**: non-Alibaba Cloud server
+        # - **TRIPARTITE**: simple application server
+        self.server_type = server_type
+        # The list of UUIDs of the servers protected by the policy.
         self.uuid_list = uuid_list
 
     def validate(self):
@@ -78,6 +87,12 @@ class ModifyBackupPolicyRequest(DaraModel):
         if self.policy_version is not None:
             result['PolicyVersion'] = self.policy_version
 
+        if self.select_type is not None:
+            result['SelectType'] = self.select_type
+
+        if self.server_type is not None:
+            result['ServerType'] = self.server_type
+
         if self.uuid_list is not None:
             result['UuidList'] = self.uuid_list
 
@@ -99,6 +114,12 @@ class ModifyBackupPolicyRequest(DaraModel):
 
         if m.get('PolicyVersion') is not None:
             self.policy_version = m.get('PolicyVersion')
+
+        if m.get('SelectType') is not None:
+            self.select_type = m.get('SelectType')
+
+        if m.get('ServerType') is not None:
+            self.server_type = m.get('ServerType')
 
         if m.get('UuidList') is not None:
             self.uuid_list = m.get('UuidList')

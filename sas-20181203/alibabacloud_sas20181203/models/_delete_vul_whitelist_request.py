@@ -12,8 +12,10 @@ class DeleteVulWhitelistRequest(DaraModel):
         whitelist: str = None,
     ):
         # The ID of the vulnerability whitelist.
-        # > To delete a vulnerability whitelist, provide the vulnerability whitelist ID. You can obtain this ID by calling the [DescribeVulWhitelist](~~DescribeVulWhitelist~~) operation.
+        # > To delete a vulnerability whitelist, provide the vulnerability whitelist ID. You can call the [DescribeVulWhitelist](~~DescribeVulWhitelist~~) operation to obtain this ID.
         self.id = id
+        # The Alibaba Cloud account ID of the member account in the resource directory.
+        # > You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
         # The vulnerability whitelist information to delete. The value is a JSON string that contains the following fields:
         # 

@@ -22,14 +22,14 @@ class ListAgentlessMaliciousFilesRequest(DaraModel):
         scan_range: List[str] = None,
         uuid: str = None,
     ):
-        # The page number of the current page in a paging query.
+        # The page number of the current page in a paged query.
         # 
         # This parameter is required.
         self.current_page = current_page
         # Specifies whether the alert has been handled. Valid values:
         # 
         # - Y: handled
-        # - N: not handled.
+        # - N: not handled
         self.dealed = dealed
         # The event ID.
         self.event_id = event_id
@@ -38,17 +38,17 @@ class ListAgentlessMaliciousFilesRequest(DaraModel):
         self.fuzzy_malicious_name = fuzzy_malicious_name
         # The language type for the request and response messages. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English.
+        # - **en**: English
         self.lang = lang
         # The severity levels. Separate multiple values with commas (,). Valid values:
         # 
         # - serious: urgent
         # - suspicious: suspicious
-        # - remind: reminder.
+        # - remind: reminder
         self.levels = levels
         # The MD5 hash of the malicious file.
         self.malicious_md_5 = malicious_md_5
-        # The Alarm Metric.
+        # The alerting type.
         # 
         # If Lang is set to zh, valid values:
         # 
@@ -60,15 +60,15 @@ class ListAgentlessMaliciousFilesRequest(DaraModel):
         # 
         # - WebShell: WebShell
         # - Malicious Software: malware
-        # - Malicious Script: malicious script.
+        # - Malicious Script: malicious script
         self.malicious_type = malicious_type
-        # The maximum number of entries to return per page in a paging query.
+        # The maximum number of entries to return per page in a paged query.
         # 
         # This parameter is required.
         self.page_size = page_size
         # The asset information to query. You can set this parameter to the asset name, public IP address, or private IP address. Fuzzy match is supported.
         self.remark = remark
-        # The file source.
+        # The file sources.
         self.scan_range = scan_range
         # The unique identifier of the asset.
         self.uuid = uuid

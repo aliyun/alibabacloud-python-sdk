@@ -17,21 +17,21 @@ class ListOperationProcessDetailRequest(DaraModel):
         status_codes: List[int] = None,
         task_ids: List[str] = None,
     ):
-        # The page number in a paged query. Default value: 1.
+        # The page number of the current page in a paged query. Default value: 1.
         self.current_page = current_page
-        # The query end time based on the task completion time, in milliseconds.
+        # The end time of the query based on the task completion time. Unit: milliseconds.
         self.end_time = end_time
-        # The language type for the request and response messages. Default value: **zh**. Valid values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English.
+        # - **en**: English
         self.lang = lang
         # The number of entries per page.
         self.page_size = page_size
-        # The query start time based on the task creation time, in milliseconds.
+        # The start time of the query based on the task creation time. Unit: milliseconds.
         self.start_time = start_time
         # The list of operation subtask status codes.
         self.status_codes = status_codes
-        # The list of operation task IDs.
+        # The list of operation task IDs. You can call the ListOperationProcess operation to obtain valid values. This parameter is required. If this parameter is not specified, the API returns 400 CspmParamIllegal.
         self.task_ids = task_ids
 
     def validate(self):

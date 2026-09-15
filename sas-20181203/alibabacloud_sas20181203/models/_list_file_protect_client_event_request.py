@@ -27,7 +27,7 @@ class ListFileProtectClientEventRequest(DaraModel):
     ):
         # The list of alert notification levels.
         self.alert_levels = alert_levels
-        # The page number of the current page when paging is used in a paged query.
+        # The number of the page to return in a paged query.
         self.current_page = current_page
         # The end timestamp.
         self.end_time = end_time
@@ -43,19 +43,19 @@ class ListFileProtectClientEventRequest(DaraModel):
         self.intranet_ip = intranet_ip
         # The type of operation performed on the file. Valid values:
         # 
-        # - **DELETE**: deletes the file.
-        # - **WRITE**: writes to the file.
-        # - **READ**: reads the file.
-        # - **RENAME**: renames the file.
-        # - **CHOWN**: changes the file owner and associated group.
+        # - **DELETE**: File deletion.
+        # - **WRITE**: File write.
+        # - **READ**: File read.
+        # - **RENAME**: File rename.
+        # - **CHOWN**: Setting the file owner and file group.
         self.operation = operation
-        # The maximum number of entries per page when paging is used in a paged query.
+        # The maximum number of entries to return on each page in a paged query.
         self.page_size = page_size
         # The process path.
         self.proc_path = proc_path
         # The name of the configuration rule.
         self.rule_name = rule_name
-        # The start time.
+        # The start time. This value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
         # The event status. Valid values:
         # - **0**: Unhandled.
@@ -63,7 +63,7 @@ class ListFileProtectClientEventRequest(DaraModel):
         # - **2**: Whitelisted.
         self.status = status
         # The UUID of the server to query.
-        # > Call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.
+        # >You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.
         self.uuid = uuid
 
     def validate(self):

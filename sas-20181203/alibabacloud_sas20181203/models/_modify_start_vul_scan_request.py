@@ -14,18 +14,21 @@ class ModifyStartVulScanRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The Alibaba Cloud account ID of the member accounts in the resource folder.
+        # > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
-        # Settings for the types of vulnerabilities to detect by using the one-click scan feature. Valid values:
+        # Settings for the vulnerability types to detect by using the one-click scan feature. Valid values:
         # - **cve**: Linux software vulnerability.
         # - **sys**: Windows system vulnerability.
         # - **cms**: Web-CMS vulnerability.
-        # - **app**: application vulnerability detected by the web scanner.
-        # - **emg**: urgent vulnerability.
-        # - **image**: container image vulnerability.
-        # - **sca**: application vulnerability detected by software constituency parsing.
+        # - **app**: Application vulnerability detected by the web scanner.
+        # - **emg**: Emergency vulnerability.
+        # - **image**: Container image vulnerability.
+        # - **sca**: Application vulnerability detected by software constituency parsing.
         # > If this parameter is left empty, all vulnerability types are detected.
         self.types = types
         # The UUIDs of the servers. Separate multiple UUIDs with commas (,).
+        # 
         # 
         # > You can call the [DescribeCloudCenterInstances](https://help.aliyun.com/document_detail/421726.html) operation to obtain this parameter.
         self.uuids = uuids

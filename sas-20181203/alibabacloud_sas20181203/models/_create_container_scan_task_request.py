@@ -11,16 +11,14 @@ class CreateContainerScanTaskRequest(DaraModel):
         container_ids: str = None,
         lang: str = None,
     ):
-        # The ID of the cluster to which the container belongs.
-        # 
-        # > You can call the [DescribeGroupedContainerInstances](https://help.aliyun.com/document_detail/182997.html) operation to query the IDs of clusters.
+        # The ID of the container cluster.
+        # > You can call the [DescribeGroupedContainerInstances](https://help.aliyun.com/document_detail/182997.html) operation to obtain this parameter.
         self.cluster_id = cluster_id
-        # The ID of the container.
+        # The container ID.
         self.container_ids = container_ids
         # The language of the content within the request and response. Default value: **zh**. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
 
     def validate(self):

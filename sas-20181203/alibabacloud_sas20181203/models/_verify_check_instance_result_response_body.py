@@ -15,7 +15,7 @@ class VerifyCheckInstanceResultResponseBody(DaraModel):
     ):
         # The returned data.
         self.data = data
-        # The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
+        # The request ID. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -57,8 +57,8 @@ class VerifyCheckInstanceResultResponseBodyData(DaraModel):
         self.fail_instances = fail_instances
         # The operation code of the cloud service configuration check task. Valid values:
         # 
-        # - **Throttling**: rate limit.
-        # - **ActionTrialUnauthorized**: unauthorized error.
+        # - **Throttling**: Rate limited.
+        # - **ActionTrialUnauthorized**: Unauthorized error.
         self.operate_code = operate_code
         # The task ID.
         self.task_id = task_id

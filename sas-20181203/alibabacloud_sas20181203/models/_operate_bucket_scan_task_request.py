@@ -12,10 +12,11 @@ class OperateBucketScanTaskRequest(DaraModel):
         source: str = None,
     ):
         # The bucket name.
+        # > Note: This parameter is required. If this parameter is not specified, the API returns the InvalidBucketName (400) error.
         self.bucket_name = bucket_name
         # The operation to perform on the bucket. Valid values:
         # 
-        # - **1**: Cancel detection.
+        # - **1**: Cancel the scan task.
         self.operate_code = operate_code
         # The business source. Valid values:
         # - **OSS**: OSS

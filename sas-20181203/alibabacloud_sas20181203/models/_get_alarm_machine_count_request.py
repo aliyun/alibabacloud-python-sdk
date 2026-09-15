@@ -10,8 +10,10 @@ class GetAlarmMachineCountRequest(DaraModel):
         from_: str = None,
         resource_directory_account_id: int = None,
     ):
-        # The source identifier of the request. Set this parameter to sas.
+        # The request source identifier. Set this parameter to sas.
         self.from_ = from_
+        # The Alibaba Cloud account ID of the member account in the resource directory.
+        # >Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
 
     def validate(self):

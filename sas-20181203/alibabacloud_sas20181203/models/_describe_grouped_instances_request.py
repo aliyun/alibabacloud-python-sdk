@@ -19,54 +19,56 @@ class DescribeGroupedInstancesRequest(DaraModel):
         vendor: int = None,
         vendors: str = None,
     ):
-        # The page number from which query results start to be displayed. Default value: **1**, indicating that query results are displayed starting from page 1.
+        # The page number of the first page to return. Default value: **1**, which indicates that the query results are returned starting from page 1.
         self.current_page = current_page
-        # The name of the asset group to query. Fuzzy search is supported.
+        # The name of the asset group to query. Fuzzy match is supported.
         self.field_value = field_value
         # The filter condition for querying assets. Valid values:
         # 
-        # - **groupId**: queries assets by group.
+        # - **groupId**: queries assets by asset group.
         # - **regionId**: queries assets by region.
-        # - **vpcInstanceId**: queries assets by Virtual Private Cloud (VPC).
+        # - **vpcInstanceId**: queries assets by virtual private cloud (VPC).
         # 
         # This parameter is required.
         self.group_field = group_field
-        # The language type for requests and responses. Default value: **zh**. Valid values:
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
         # - **zh**: Chinese
         # - **en**: English
         self.lang = lang
-        # The type of assets to query. Fixed value: **ecs**, indicating Elastic Compute Service (ECS) instances.
+        # The type of assets to query. Set the value to **ecs**, which indicates Elastic Compute Service (ECS) instances.
         self.machine_types = machine_types
-        # Specifies whether to enable paginated queries. Default value: **true**. Valid values:
-        # - **true**: enables paginated queries.
-        # - **false**: disables paginated queries.
+        # Settings for whether to enable paged query. Default value: **true**. Valid values:
+        # - **true**: Paged query is enabled.
+        # - **false**: Paged query is disabled. Paging is not performed.
         self.no_page = no_page
-        # The number of entries per page in a paginated query. Default value: **20**, indicating that 20 entries of asset information are displayed per page.
+        # The number of entries per page in a paged query. Default value: **20**, which indicates that 20 entries of asset information are displayed per page.
         self.page_size = page_size
+        # The ID of the Alibaba Cloud account that is added as a member of a resource folder for member accounts.
+        # >Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
-        # The edition filter for querying assets. Valid values:
+        # The edition-based filter condition for querying assets. Valid values:
         # 
-        # - **sas_gte_advanced**: Advanced edition or higher
-        # - **sas_gte_enterprise**: Enterprise edition or higher
-        # - **sas_gt_basic**: paid editions
-        # - **sas_eq_advanced**: Advanced edition only
-        # - **sas_gt_anti_virus**: editions higher than Anti-virus edition
+        # - **sas_gte_advanced**: Advanced Edition or higher
+        # - **sas_gte_enterprise**: Enterprise Edition or higher
+        # - **sas_gt_basic**: paid edition
+        # - **sas_eq_advanced**: Advanced Edition
+        # - **sas_gt_anti_virus**: higher than Anti-virus Edition
         self.sale_version_check_code = sale_version_check_code
         # The server vendor. Valid values:
         # 
-        # - **0**: Alibaba Cloud assets
-        # - **1**: non-cloud assets
-        # - **2**: IDC assets
-        # - **3**, **4**, **5**, **7**: assets from other cloud providers
-        # - **8**: lightweight assets
+        # - **0**: Alibaba Cloud asset
+        # - **1**: non-cloud asset
+        # - **2**: IDC asset
+        # - **3**, **4**, **5**, **7**: third-party cloud asset
+        # - **8**: lightweight asset
         self.vendor = vendor
         # The server vendors. Separate multiple vendors with commas (,). Valid values:
         # 
-        # - **0**: Alibaba Cloud assets
-        # - **1**: non-cloud assets
-        # - **2**: IDC assets
-        # - **3**, **4**, **5**, **7**: assets from other cloud providers
-        # - **8**: lightweight assets
+        # - **0**: Alibaba Cloud asset
+        # - **1**: non-cloud asset
+        # - **2**: IDC asset
+        # - **3**, **4**, **5**, **7**: third-party cloud asset
+        # - **8**: lightweight asset
         self.vendors = vendors
 
     def validate(self):

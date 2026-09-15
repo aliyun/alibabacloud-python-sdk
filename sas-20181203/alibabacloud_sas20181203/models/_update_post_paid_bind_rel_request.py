@@ -17,10 +17,10 @@ class UpdatePostPaidBindRelRequest(DaraModel):
         product_code: str = None,
         update_if_necessary: bool = None,
     ):
-        # Specifies whether to enable automatic binding for new assets. Valid values:
+        # Specifies whether to automatically bind new assets. Valid values:
         # 
-        # - **0**: disabled
-        # - **1**: enabled
+        # - **0**: Disabled.
+        # - **1**: Enabled.
         self.auto_bind = auto_bind
         # The edition to automatically bind when new assets are added. Valid values:
         # - **1**: Free Edition 
@@ -31,8 +31,10 @@ class UpdatePostPaidBindRelRequest(DaraModel):
         self.auto_bind_version = auto_bind_version
         # The binding action parameter.
         self.bind_action = bind_action
-        # The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The abbreviated name of the cloud service. Valid values:
+        # - **sas**: Security Center
         self.product_code = product_code
         # Specifies whether to forcibly upgrade the edition.
         self.update_if_necessary = update_if_necessary
@@ -105,9 +107,10 @@ class UpdatePostPaidBindRelRequestBindAction(DaraModel):
     ):
         # Specifies whether to bind all servers. Default value: **false**. Valid values:
         # 
-        # - **true**: yes
-        # - **false**: no
+        # - **true**: Bind all servers.
+        # - **false**: Do not bind all servers.
         self.bind_all = bind_all
+        # The free quota type.
         self.free_type = free_type
         # The list of server UUIDs.
         self.uuid_list = uuid_list

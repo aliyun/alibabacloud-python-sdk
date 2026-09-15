@@ -14,15 +14,15 @@ class ListHoneypotProbeRequest(DaraModel):
         probe_status: str = None,
         probe_type: str = None,
     ):
-        # The page number of the page to return. Minimum value: **1**. Default value: **1**.
+        # The page number of the page to return. Minimum value: **1**. Default value: **1**, which indicates that the first page is returned.
         self.current_page = current_page
-        # The name of the probe.
+        # The probe name.
         self.display_name = display_name
         # The language of the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English.
+        # - **en**: English
         self.lang = lang
-        # The maximum number of entries to return on each page in a paged query. Default value: 20. If you leave this parameter empty, 20 entries are returned per page during paging.
+        # The maximum number of entries per page for a paging query. Default value: 20. If you leave this parameter empty, 20 entries are returned per page.
         # > Do not leave PageSize empty.
         self.page_size = page_size
         # The probe status. Valid values:
@@ -40,7 +40,7 @@ class ListHoneypotProbeRequest(DaraModel):
         # The probe type. Valid values:
         # 
         # - **host_probe**: host probe
-        # - **vpc_black_hole_probe**: VPC blackhole probe.
+        # - **vpc_black_hole_probe**: VPC blackhole probe
         self.probe_type = probe_type
 
     def validate(self):

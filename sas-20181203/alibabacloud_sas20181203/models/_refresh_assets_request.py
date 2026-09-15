@@ -13,49 +13,50 @@ class RefreshAssetsRequest(DaraModel):
         resource_directory_account_id: int = None,
         vendor: int = None,
     ):
-        # The type of the asset that you want to synchronize. Valid values:
-        # 
-        # *   **cloud_product**: Alibaba Cloud service
-        # *   **ecs**: Elastic Compute Service (ECS) instance
-        # *   **container_image**: container image
+        # The type of asset to synchronize. Default value: **ecs**. Valid values:
+        # - **cloud_product**: cloud product
+        # - **ecs**: server
+        # - **container_image**: container image
         self.asset_type = asset_type
-        # The subtype of the cloud service.
+        # The subtype of the cloud product.
         # 
-        # >  The following list describes the subtypes of cloud services.
+        # > Refer to the following list for valid values.
         self.cloud_asset_sub_type = cloud_asset_sub_type
-        # The type of the cloud service. Valid values:
+        # The type of cloud product. Valid values:
         # 
-        # *   **0**: ECS
-        # *   **1**: Server Load Balancer (SLB)
-        # *   **3**: ApsaraDB RDS
-        # *   **4**: ApsaraDB for MongoDB (MongoDB)
-        # *   **5**: ApsaraDB for Redis (Redis)
-        # *   **6**: Container Registry
-        # *   **8**: Container Service for Kubernetes (ACK)
-        # *   **9**: Virtual Private Cloud (VPC)
-        # *   **11**: ActionTrail
-        # *   **12**: Alibaba Cloud CDN (CDN)
-        # *   **13**: Certificate Management Service (formerly SSL Certificates Service)
-        # *   **14**: Apsara Devops
-        # *   **15**: Resource Access Management (RAM)
-        # *   **16**: Anti-DDoS
-        # *   **17**: Web Application Firewall (WAF)
-        # *   **18**: Object Storage Service (OSS)
-        # *   **19**: PolarDB
-        # *   **20**: ApsaraDB RDS for PostgreSQL
-        # *   **21**: Microservices Engine (MSE)
-        # *   **22**: File Storage NAS (NAS)
-        # *   **23**: Data Security Center (DSC)
-        # *   **24**: Elastic IP Address (EIP)
+        # - **0**: server
+        # - **1**: load balancing
+        # - **3**: ApsaraDB RDS database
+        # - **4**: ApsaraDB for MongoDB database
+        # - **5**: Tair (Redis® OSS-Compatible) database
+        # - **6**: Container Registry
+        # - **8**: container service for Kubernetes
+        # - **9**: VPC
+        # - **11**: ActionTrail
+        # - **12**: CDN
+        # - **13**: Certificate Management Service (formerly SSL Certificates Service)
+        # - **14**: Apsara Devops
+        # - **15**: access control
+        # - **16**: Anti-DDoS
+        # - **17**: Web Application Firewall
+        # - **18**: OSS
+        # - **19**: cloud-native relational database PolarDB
+        # - **20**: ApsaraDB RDS for PostgreSQL database
+        # - **21**: Microservices Engine
+        # - **22**: File Storage NAS
+        # - **23**: Data Security Center
+        # - **24**: EIP
         self.cloud_asset_type = cloud_asset_type
+        # The ID of the Alibaba Cloud account of the member accounts in the resource directory.
+        # > Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
-        # The type of the server. Valid values:
+        # The server vendor. Valid values:
         # 
-        # *   **0**: an asset provided by Alibaba Cloud
-        # *   **1**: a third-party cloud asset
-        # *   **2**: an asset in a data center
-        # *   **3**, **4**, **5**, and **7**: an asset provided by another cloud
-        # *   **8**: a lightweight asset
+        # - **0**: Alibaba Cloud asset
+        # - **1**: asset outside the cloud
+        # - **2**: IDC asset
+        # - **3**, **4**, **5**, **7**: third-party cloud asset
+        # - **8**: lightweight asset
         self.vendor = vendor
 
     def validate(self):

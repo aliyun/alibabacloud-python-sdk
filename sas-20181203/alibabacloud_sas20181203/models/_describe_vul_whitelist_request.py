@@ -12,14 +12,16 @@ class DescribeVulWhitelistRequest(DaraModel):
         page_size: int = None,
         resource_directory_account_id: int = None,
     ):
-        # The page number in paging. Pages start from page 1. Default value: 1.
+        # The page number when paging. Minimum value: 1. Default value: 1.
         self.current_page = current_page
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English.
+        # - **en**: English
         self.lang = lang
-        # The number of entries per page in paging. Default value: 10.
+        # The number of entries per page when paging. Default value: 10.
         self.page_size = page_size
+        # The Alibaba Cloud account ID of the member accounts in the resource directory.
+        # >Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
 
     def validate(self):

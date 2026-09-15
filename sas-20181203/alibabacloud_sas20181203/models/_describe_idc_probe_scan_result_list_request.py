@@ -15,29 +15,29 @@ class DescribeIdcProbeScanResultListRequest(DaraModel):
         page_size: int = None,
         status: str = None,
     ):
-        # The search conditions for assets. This parameter is in JSON format. Parameter names are case-sensitive.
+        # The search conditions for assets. This parameter is in JSON format. The parameter names are case-sensitive.
         # > You can search for assets by instance ID, instance name, VPC ID, region, or public IP address.
         self.criteria = criteria
-        # The page number of the current page in a paged query.
+        # The page number in a paging query.
         self.current_page = current_page
-        # The end time of the scan discovery period.
+        # The end time of the scan discovery. Specify a UNIX timestamp in milliseconds.
         self.found_end_time = found_end_time
-        # The start time of the scan discovery period.
+        # The start time of the scan discovery. Specify a UNIX timestamp in milliseconds.
         self.found_start_time = found_start_time
-        # The logical relationship between multiple search conditions. Valid values:
+        # The logical relationship among multiple search conditions. Valid values:
         # 
         # - **OR**: The search conditions are in a logical **OR** relationship.
         # - **AND**: The search conditions are in a logical **AND** relationship.
         self.logical_exp = logical_exp
-        # The maximum number of entries per page in a paged query. Default value: 20. If you leave this parameter empty, 20 entries are returned per page.
-        # > Do not leave PageSize empty.
+        # The maximum number of entries per page in a paging query. Default value: 20. If you leave this parameter empty, 20 entries are returned per page.
+        # > Specify a value for PageSize.
         self.page_size = page_size
         # The status list of the corresponding probes. Separate multiple values with commas. Valid values:
         # - **0**: active
         # - **1**: ignored
         # - **2**: invalid
         # - **3**: expired
-        # - **4**: probe does not exist.
+        # - **4**: probe does not exist
         self.status = status
 
     def validate(self):

@@ -14,11 +14,11 @@ class DescribeVulCheckTaskStatusDetailResponseBody(DaraModel):
         task_statuses: List[main_models.DescribeVulCheckTaskStatusDetailResponseBodyTaskStatuses] = None,
         total_count: int = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # An array that consists of the status information about the vulnerability scan tasks on the server.
+        # The list of vulnerability task statuses for the server.
         self.task_statuses = task_statuses
-        # The total number of vulnerability scan tasks on the server.
+        # The total number of vulnerability subtasks for the server.
         self.total_count = total_count
 
     def validate(self):
@@ -67,9 +67,9 @@ class DescribeVulCheckTaskStatusDetailResponseBodyTaskStatuses(DaraModel):
         task_id: str = None,
         task_status_list: List[main_models.DescribeVulCheckTaskStatusDetailResponseBodyTaskStatusesTaskStatusList] = None,
     ):
-        # The ID of the main task.
+        # The main task ID.
         self.task_id = task_id
-        # An array that consists of status information about the vulnerability scan subtask.
+        # The list of vulnerability detection task statuses.
         self.task_status_list = task_status_list
 
     def validate(self):
@@ -113,22 +113,21 @@ class DescribeVulCheckTaskStatusDetailResponseBodyTaskStatusesTaskStatusList(Dar
         status: str = None,
         type: str = None,
     ):
-        # The error code returned.
+        # The failure code.
         self.code = code
-        # The status of the subtask. Valid values:
+        # The completion status of the check. Valid values:
         # 
-        # *   **0**: unhandled
-        # *   **1**: collecting
-        # *   **2**: collected
-        # *   **3**: matching
-        # *   **4**: complete
+        # - **0**: Unprocessed.
+        # - **1**: Collecting.
+        # - **2**: Collection completed.
+        # - **3**: Matching.
+        # - **4**: Completed.
         self.status = status
-        # The type of the vulnerability. Valid values:
-        # 
-        # *   **cve**: Linux software vulnerability
-        # *   **sys**: Windows system vulnerability
-        # *   **cms**: Web-CMS vulnerability
-        # *   **sca**: vulnerability that is detected based on software component analysis
+        # The vulnerability type. Valid values:
+        # - **cve**: Linux software vulnerability
+        # - **sys**: Windows system vulnerability
+        # - **cms**: Web-CMS vulnerability
+        # - **sca**: sca vulnerability
         self.type = type
 
     def validate(self):

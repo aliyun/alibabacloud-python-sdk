@@ -31,29 +31,29 @@ class DescribeCustomizeReportConfigDetailResponseBody(DaraModel):
         target_uids: str = None,
         title: str = None,
     ):
-        # The report chart configuration IDs, separated by commas.
+        # The IDs of report chart configurations. Multiple IDs are separated by commas (,).
         self.chart_ids = chart_ids
         # The group type. Valid values:
         # - **ALIYUN_RG**: ALIYUN_RG.
         # - **SAS_GROUP**: SAS_GROUP.
         self.group_type = group_type
         # Indicates whether the report is a default report. Valid values:
-        # - **0**: Not a default report.
-        # - **1**: A default report.
+        # - **0**: The report is not a default report.
+        # - **1**: The report is a default report.
         self.is_default = is_default
-        # Specifies whether newly added accounts are included by default. Valid values:
+        # Indicates whether newly added accounts are included by default. Valid values:
         # 
-        # - **true**: Included.
-        # - **false**: Not included.
+        # - **true**: Yes.
+        # - **false**: No.
         # > Only version 2.0.0 supports this parameter.
         self.member_account_sync_flag = member_account_sync_flag
-        # The pinned time.
+        # The pinned time. The value is a UNIX timestamp. Unit: milliseconds.
         self.pinned_time = pinned_time
-        # The recipient email addresses, separated by commas.
+        # The email addresses of contacts. Multiple email addresses are separated by commas (,).
         self.recipients = recipients
         # The number of recent days covered by the report statistics.
         self.report_days = report_days
-        # The end date for report delivery.
+        # The end date for report sending. The value is a UNIX timestamp. Unit: milliseconds.
         self.report_end_date = report_end_date
         # The report ID.
         self.report_id = report_id
@@ -61,13 +61,13 @@ class DescribeCustomizeReportConfigDetailResponseBody(DaraModel):
         # - **zh**: Chinese.
         # - **en**: English.
         self.report_lang = report_lang
-        # The report delivery time range. Valid values:
+        # The report sending type. Valid values:
         # - **1**: 0:00 to 6:00.
         # - **2**: 6:00 to 12:00.
         # - **3**: 12:00 to 18:00.
         # - **4**: 18:00 to 24:00.
         self.report_send_type = report_send_type
-        # The start date for report delivery.
+        # The start date for report sending. The value is a UNIX timestamp. Unit: milliseconds.
         self.report_start_date = report_start_date
         # The report status. Valid values:
         #  - **0**: Disabled.
@@ -82,22 +82,22 @@ class DescribeCustomizeReportConfigDetailResponseBody(DaraModel):
         self.report_type = report_type
         # The request ID.
         self.request_id = request_id
-        # The delivery end time, in the format of HH:mm:ss.
+        # The end time for sending. Format: HH:mm:ss.
         self.send_end_time = send_end_time
-        # The specific execution dates within the delivery period.
+        # The specific execution dates within the sending period.
         self.send_period_days = send_period_days
-        # The delivery period type. Valid values:
+        # The sending period type. Valid values:
         # - **DAY**: day.
         # - **WEEK**: week.
         # - **MONTH**: month.
         self.send_period_type = send_period_type
-        # The delivery start time, in the format of HH:mm:ss.
+        # The start time for sending. Format: HH:mm:ss.
         self.send_start_time = send_start_time
-        # The delivery time, in the format of HH:mm:ss.
+        # The sending time. Format: HH:mm:ss.
         self.send_time = send_time
         # The targets within the group.
         self.target_groups = target_groups
-        # The list of target UIDs, separated by commas.
+        # The list of target UIDs. Multiple UIDs are separated by commas (,).
         self.target_uids = target_uids
         # The title.
         self.title = title

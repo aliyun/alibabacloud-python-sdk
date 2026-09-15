@@ -21,36 +21,37 @@ class DescribePropertyProcDetailRequest(DaraModel):
         user: str = None,
         uuid: str = None,
     ):
-        # The startup parameter of the process.
+        # The startup parameters of the process.
         self.cmdline = cmdline
-        # The number of the page to return. Default value: **1**.
+        # The page number of the page to return. Default value: **1**, which indicates that the first page is returned.
         self.current_page = current_page
-        # Specifies whether fuzzy search by process name is supported. If you want to use fuzzy search, set the parameter to 1. If you set the parameter to a different value or leave the parameter empty, fuzzy search is not supported.
+        # Specifies whether fuzzy match is supported for the process name. Set this parameter to 1 to enable fuzzy match. Other values or an empty value indicate that fuzzy match is not supported.
         self.extend = extend
-        # The name of the process.
+        # The process name.
         self.name = name
-        # The value of NextToken that is returned when the NextToken method is used. You do not need to specify this parameter for the first request.
+        # The token that marks the current position from which to start reading. Leave this parameter empty to start reading from the beginning.
+        # 
+        # > You do not need to specify this parameter for the first call. The NextToken value for the second call is included in the response of the first call. Each subsequent response contains the NextToken value for the next call.
         self.next_token = next_token
-        # The number of entries to return on each page. Default value: **10**.
+        # The number of entries per page in a paged query. Default value: **10**, which indicates that 10 entries of process Asset Fingerprints information are displayed per page.
         self.page_size = page_size
-        # The timestamp when the process ends. Unit: milliseconds.
+        # The end timestamp of the process startup time range. Unit: milliseconds.
         self.proc_time_end = proc_time_end
-        # The timestamp when the process starts. Unit: milliseconds.
+        # The start timestamp of the process startup time range. Unit: milliseconds.
         self.proc_time_start = proc_time_start
-        # The name or IP address of the server.
+        # The name or IP address of the server that you want to query.
         self.remark = remark
-        # The Alibaba Cloud account ID of the member in the resource directory.
-        # 
-        # >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to query the account ID.
+        # The Alibaba Cloud account ID of the member accounts in the resource folder.
+        # >You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
-        # Specifies whether to use the NextToken method to retrieve a new page of results. If you set UseNextToken to true, the value of TotalCount is not returned. Valid values:
+        # Specifies whether to use the NextToken method to retrieve the vulnerability list data. If this parameter is used, TotalCount is no longer returned. Valid values:
         # 
-        # - **true**: The NextToken method is used.
-        # - **false**: The NextToken method is not used.
+        # - **true**: Use the NextToken method.
+        # - **false**: Do not use the NextToken method.
         self.use_next_token = use_next_token
-        # The user who runs the process.
+        # The information about the user that runs the process.
         self.user = user
-        # The UUID of the server.
+        # The UUID of the server that you want to query.
         self.uuid = uuid
 
     def validate(self):

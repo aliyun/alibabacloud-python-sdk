@@ -19,27 +19,24 @@ class SubmitOperationTaskRequest(DaraModel):
     ):
         # The ID of the check item.
         # 
-        # >  You can call the [ListCheckResult](~~ListCheckResult~~) operation to obtain the ID of the check item.
+        # > Call the [ListCheckResult](~~ListCheckResult~~) operation to obtain the check item ID.
         # 
         # This parameter is required.
         self.check_id = check_id
-        # The dimension of the task that you want to submit. Valid values:
-        # 
-        # *   Instance dimension: INSTANCE
-        # *   Check item dimension: CHECK_ID
+        # The task dimension for the submitted operation task. Valid values:
+        # - INSTANCE: instance dimension
+        # - CHECK_ID: check item dimension
         self.dimension_type = dimension_type
-        # The asset information required to submit the tasks for instances.
+        # The asset information required to submit instance tasks.
         self.operation_task_instances = operation_task_instances
-        # The key linked to cross-page selections during task submission.
-        # 
-        # >  You can call the [CreateAssetSelectionConfig](~~CreateAssetSelectionConfig~~) operation to query the associated key from the BusinessType field.
+        # The relation key associated with cross-page selection when submitting the operation.
+        # > Call the [CreateAssetSelectionConfig](~~CreateAssetSelectionConfig~~) operation and use the BusinessType field to obtain the relation key.
         self.relation_key = relation_key
-        # The temporary parameters required for the repair task.
+        # The temporary parameters required for the remediation task.
         self.repair_temp_param = repair_temp_param
-        # The type of the task that you want to submit. Valid values:
-        # 
-        # *   Repair task: REPAIR
-        # *   Rollback task: ROLLBACK
+        # The task type for the submitted task. Valid values:
+        # - REPAIR: remediation task
+        # - ROLLBACK: rollback task
         # 
         # This parameter is required.
         self.type = type
@@ -117,9 +114,9 @@ class SubmitOperationTaskRequestRepairTempParam(DaraModel):
         name: str = None,
         value: str = None,
     ):
-        # The name of the temporary repair parameter.
+        # The name of the temporary remediation parameter.
         self.name = name
-        # The value of the temporary repair parameter.
+        # The value of the temporary remediation parameter.
         self.value = value
 
     def validate(self):
@@ -160,15 +157,15 @@ class SubmitOperationTaskRequestOperationTaskInstances(DaraModel):
         self.instance_id = instance_id
         # The region ID of the server.
         self.region_id = region_id
-        # The ID of the task that you want to roll back
+        # The task ID to roll back when performing a rollback task.
         self.task_id = task_id
-        # The service provider of the asset. Valid values:
+        # The asset vendor. Valid values:
         # 
-        # *   **0**: an asset provided by Alibaba Cloud.
-        # *   **1**: an asset outside Alibaba Cloud.
-        # *   **2**: an asset in a data center.
-        # *   **3**, **4**, **5**, and **7**: an asset from a third-party cloud service provider.
-        # *   **8**: a lightweight asset.
+        # - **0**: Alibaba Cloud asset
+        # - **1**: asset outside the cloud
+        # - **2**: IDC asset
+        # - **3**, **4**, **5**, **7**: asset from another cloud provider
+        # - **8**: lightweight asset
         self.vendor = vendor
 
     def validate(self):

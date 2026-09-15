@@ -1,3 +1,9 @@
+2026-09-15 Version: 10.1.4
+- Update API ChangeCheckScopeConfigInstance: add request parameters SelectionKey.
+- Update API CreateAgentlessScanTask: add request parameters From.
+- Update API CreateAgentlessScanTask: add request parameters ResourceRegionId.
+
+
 2026-09-02 Version: 10.1.0
 - Support API DescribeUuidVulNumClassifyStatistic.
 - Update API DescribeVersionConfig: add response parameters Body.SdkAiPostPaidGray.

@@ -11,7 +11,7 @@ class DescribeContainerGroupedFieldDetailResponseBody(DaraModel):
         data: main_models.DescribeContainerGroupedFieldDetailResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The returned data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -67,48 +67,46 @@ class DescribeContainerGroupedFieldDetailResponseBodyData(DaraModel):
     ):
         # The number of alerts.
         self.alarm_count = alarm_count
-        # The name of the application.
+        # The application name.
         self.app_name = app_name
         # The version of the current online server in the cluster.
         self.cluster_current_version = cluster_current_version
-        # The ID of the cluster.
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # The name of the cluster.
+        # The cluster name.
         self.cluster_name = cluster_name
-        # The status of the cluster. Valid values:
-        # 
-        # *   STARTING: The cluster is being started.
-        # *   START_FAILED: The cluster fails to be started.
-        # *   BOOTSTRAPPING: The bootstrap action is being performed for the cluster.
-        # *   RUNNING: The cluster is running.
-        # *   TERMINATING: The cluster is being terminated.
-        # *   TERMINATED: The cluster is terminated.
-        # *   TERMINATED_WITH_ERRORS: The cluster is terminated due to an exception.
-        # *   TERMINATE_FAILED: The cluster fails to be terminated.
+        # The cluster status. Valid values:
+        # - STARTING: Starting.
+        # - START_FAILED: Failed to start.
+        # - BOOTSTRAPPING: Initializing bootstrap actions.
+        # - RUNNING: Running.
+        # - TERMINATING: Terminating.
+        # - TERMINATED: Terminated.
+        # - TERMINATED_WITH_ERRORS: Terminated due to an exception.
+        # - TERMINATE_FAILED: Failed to terminate.
         self.cluster_state = cluster_state
-        # The type of the cluster. Valid values:
-        # 
-        # *   **Kubernetes**: dedicated Kubernetes cluster.
-        # *   **ManagedKubernetes**: standard managed cluster (edge cluster).
-        # *   **Ask**: serverless Kubernetes (ASK) cluster.
+        # The cluster type. Valid values:
+        # - **Kubernetes**: dedicated Kubernetes cluster.
+        # - **ManagedKubernetes**: standard managed cluster (edge cluster).
+        # - **Ask**: standard serverless cluster.
         self.cluster_type = cluster_type
         # The number of containers.
         self.container_count = container_count
-        # The creation time.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The number of instances.
         self.instance_count = instance_count
         # The namespace.
         self.namespace = namespace
-        # The name of the node.
+        # The node name.
         self.node_name = node_name
-        # The name of the pod.
+        # The POD name.
         self.pod = pod
-        # The number of pods.
+        # The number of PODs.
         self.pod_count = pod_count
-        # The IP address of the pod.
+        # The IP address of the POD.
         self.pod_ip = pod_ip
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
         # The number of vulnerabilities.
         self.vul_count = vul_count

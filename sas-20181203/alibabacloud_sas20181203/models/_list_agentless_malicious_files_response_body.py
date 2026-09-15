@@ -72,11 +72,11 @@ class ListAgentlessMaliciousFilesResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of malicious file entries displayed on the current page in a paging query.
+        # The number of malicious files displayed on the current page in a paged query.
         self.count = count
         # The current page number in the returned results.
         self.current_page = current_page
-        # The maximum number of entries returned per page in a paging query.
+        # The maximum number of entries to return per page in a paged query.
         self.page_size = page_size
         # The total number of malicious files found.
         self.total_count = total_count
@@ -151,7 +151,7 @@ class ListAgentlessMaliciousFilesResponseBodyList(DaraModel):
         self.download_url = download_url
         # The file path.
         self.file_path = file_path
-        # The timestamp of the first scan, in milliseconds.
+        # The timestamp of the first scan. Unit: milliseconds.
         self.first_scan_timestamp = first_scan_timestamp
         # The highlighted text, in JSON string format.
         self.high_light = high_light
@@ -163,13 +163,13 @@ class ListAgentlessMaliciousFilesResponseBodyList(DaraModel):
         self.internet_ip = internet_ip
         # The private IP address of the server.
         self.intranet_ip = intranet_ip
-        # The timestamp of the latest scan, in milliseconds.
+        # The timestamp of the latest scan. Unit: milliseconds.
         self.latest_scan_timestamp = latest_scan_timestamp
         # The severity level. Valid values:
         # 
         # - serious: urgent
         # - suspicious: suspicious
-        # - remind: reminder.
+        # - remind: reminder
         self.level = level
         # The MD5 hash of the malicious file.
         self.malicious_md_5 = malicious_md_5
@@ -181,7 +181,7 @@ class ListAgentlessMaliciousFilesResponseBodyList(DaraModel):
         self.notes = notes
         # The alert handling result.
         self.operate_result = operate_result
-        # The timestamp when the alert was handled, in milliseconds.
+        # The timestamp when the alert was handled. Unit: milliseconds.
         self.operate_timestamp = operate_timestamp
         # The disk partition.
         self.partition = partition
@@ -191,7 +191,7 @@ class ListAgentlessMaliciousFilesResponseBodyList(DaraModel):
         self.target_name = target_name
         # The object type of the scan target. Valid values:
         # 
-        # - 2: image.
+        # - 2: image
         self.target_type = target_type
         # The UUID of the asset instance.
         self.uuid = uuid
@@ -370,7 +370,7 @@ class ListAgentlessMaliciousFilesResponseBodyListNotes(DaraModel):
         self.note = note
         # The ID of the remark record.
         self.note_id = note_id
-        # The time of the remark record.
+        # The time of the remark record. Format: YYYY-MM-DD HH:mm:ss.
         self.note_time = note_time
 
     def validate(self):

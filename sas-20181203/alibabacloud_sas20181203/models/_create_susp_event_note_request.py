@@ -11,7 +11,7 @@ class CreateSuspEventNoteRequest(DaraModel):
         note: str = None,
         resource_directory_account_id: int = None,
     ):
-        # The ID of the security alert event to which you want to add a note. Call [DescribeSuspEvents](https://help.aliyun.com/document_detail/251497.html) to obtain the ID of the alert event.
+        # The ID of the alert event for which you want to add a note. Call [DescribeSuspEvents](https://help.aliyun.com/document_detail/251497.html) to obtain the alert event ID.
         # 
         # This parameter is required.
         self.event_id = event_id
@@ -19,6 +19,8 @@ class CreateSuspEventNoteRequest(DaraModel):
         # 
         # This parameter is required.
         self.note = note
+        # The ID of the member accounts in the resource folder.
+        # >Invoke [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
 
     def validate(self):

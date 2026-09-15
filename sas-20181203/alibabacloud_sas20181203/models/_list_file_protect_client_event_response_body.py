@@ -71,9 +71,9 @@ class ListFileProtectClientEventResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The page number of the current page when paging is used in a paged query.
+        # The number of the page to return in a paged query.
         self.current_page = current_page
-        # The maximum number of entries per page when paging is used in a paged query.
+        # The maximum number of entries to return on each page in a paged query.
         self.page_size = page_size
         # The total number of entries returned.
         self.total_count = total_count
@@ -143,7 +143,7 @@ class ListFileProtectClientEventResponseBodyEventList(DaraModel):
         # 
         # - 2: suspicious
         # 
-        # - 3: high-risk.
+        # - 3: high-risk
         self.alert_level = alert_level
         # The command line of the event.
         self.cmd_line = cmd_line
@@ -153,7 +153,7 @@ class ListFileProtectClientEventResponseBodyEventList(DaraModel):
         self.file_path = file_path
         # The timestamp when the event was first detected. Unit: milliseconds.
         self.first_time = first_time
-        # The time when the event was handled.
+        # The time when the event was handled. This value is a UNIX timestamp in milliseconds.
         self.handle_time = handle_time
         # The event ID.
         self.id = id
@@ -163,19 +163,19 @@ class ListFileProtectClientEventResponseBodyEventList(DaraModel):
         self.internet_ip = internet_ip
         # The private IP address of the instance.
         self.intranet_ip = intranet_ip
-        # The most recent time the event occurred.
+        # The most recent time when the event occurred. This value is a UNIX timestamp in milliseconds.
         self.latest_time = latest_time
         # The type of operation performed on the file. Valid values:
         # 
-        # - **DELETE**: deletes the file.
-        # - **WRITE**: writes to the file.
-        # - **READ**: reads the file.
-        # - **RENAME**: renames the file.
-        # - **CHOWN**: changes the file owner and associated group.
+        # - **DELETE**: File deletion.
+        # - **WRITE**: File write.
+        # - **READ**: File read.
+        # - **RENAME**: File rename.
+        # - **CHOWN**: Setting the file owner and file group.
         self.operation = operation
         # The operating system type. Valid values:
         # 
-        # - **windows**: Windows
+        # - **windows**: Windows.
         # - **linux**: Linux.
         self.platform = platform
         # The process path.
@@ -196,9 +196,9 @@ class ListFileProtectClientEventResponseBodyEventList(DaraModel):
         self.rule_name = rule_name
         # The event status. Valid values:
         # 
-        # - 0: unhandled 
-        # - 1: handled
-        # - 2: whitelisted.
+        # - 0: Unhandled. 
+        # - 1: Handled.
+        # - 2: Whitelisted.
         self.status = status
         # The UUID of the server.
         self.uuid = uuid

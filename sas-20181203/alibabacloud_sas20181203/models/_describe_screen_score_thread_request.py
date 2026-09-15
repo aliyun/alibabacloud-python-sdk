@@ -16,8 +16,10 @@ class DescribeScreenScoreThreadRequest(DaraModel):
         # 
         # This parameter is required.
         self.end_time = end_time
+        # The Alibaba Cloud account ID of the member accounts in the resource directory folder.
+        # > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
-        # The source of the security score. If left empty, the default value is Security Center. Valid values:
+        # The source of the security score. If this parameter is left empty, the default value is Security Center. Valid values:
         # 
         # 0: Security Center.
         # 

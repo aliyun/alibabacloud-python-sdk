@@ -9,10 +9,11 @@ class GetFileProtectEventCountRequest(DaraModel):
         self,
         status: int = None,
     ):
-        # The status of the event. Valid values:
+        # The event filter status. Valid values:
         # 
-        # *   0: unhandled
-        # *   1: handled
+        # - 0: Unhandled.
+        # 
+        # - 1: Handled.
         self.status = status
 
     def validate(self):

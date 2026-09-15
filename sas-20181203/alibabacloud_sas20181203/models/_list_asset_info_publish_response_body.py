@@ -13,9 +13,9 @@ class ListAssetInfoPublishResponseBody(DaraModel):
         asset_list: List[main_models.ListAssetInfoPublishResponseBodyAssetList] = None,
         request_id: str = None,
     ):
-        # The servers.
+        # The server list information.
         self.asset_list = asset_list
-        # The request ID.
+        # The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -61,24 +61,23 @@ class ListAssetInfoPublishResponseBodyAssetList(DaraModel):
         upgrade_enable: bool = None,
         uuid: str = None,
     ):
-        # The version of the Security Center agent.
+        # The current client version.
         self.cur_version = cur_version
-        # The time when the Security Center agent was last upgraded.
+        # The time of the last upgrade. The value is a UNIX timestamp in milliseconds.
         self.last_upgrade_time = last_upgrade_time
-        # The publish status of the Security Center agent. Valid values:
+        # The client release status. Valid values:
         # 
-        # *   **0**: not started.
-        # *   **1**: publishing.
-        # *   **2**: published.
-        # *   **3**: publish suspended.
-        # *   **4**: forcibly upgrading.
+        # - **0**: Not started.
+        # - **1**: Publishing.
+        # - **2**: Publishing completed.
+        # - **3**: Publishing paused.
+        # - **4**: Force upgrading.
         self.status = status
-        # Indicates whether automatic upgrade is enabled. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the upgrade is enabled. Valid values:
+        # - **true**: Enabled.
+        # - **false**: Not enabled.
         self.upgrade_enable = upgrade_enable
-        # The UUID of the asset.
+        # The UUID of the Security Center asset.
         self.uuid = uuid
 
     def validate(self):

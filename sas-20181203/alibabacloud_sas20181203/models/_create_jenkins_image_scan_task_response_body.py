@@ -11,7 +11,7 @@ class CreateJenkinsImageScanTaskResponseBody(DaraModel):
         data: main_models.CreateJenkinsImageScanTaskResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The response data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -54,15 +54,15 @@ class CreateJenkinsImageScanTaskResponseBodyData(DaraModel):
         task_id: str = None,
         uuid: str = None,
     ):
-        # The quota for image scan.
+        # The number of scan authorizations.
         self.image_scan_capacity = image_scan_capacity
-        # The ID of the image repository.
+        # The repository ID.
         self.repo_id = repo_id
-        # The instance ID of the image repository.
+        # The repository instance ID.
         self.repo_instance_id = repo_instance_id
-        # The ID of the region.
+        # The region ID.
         self.repo_region_id = repo_region_id
-        # The ID of the scan task.
+        # The scan node ID.
         self.task_id = task_id
         # The UUID of the image asset.
         self.uuid = uuid

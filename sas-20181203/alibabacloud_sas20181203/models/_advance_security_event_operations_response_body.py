@@ -15,7 +15,7 @@ class AdvanceSecurityEventOperationsResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The operation performed on the alert event.
+        # The operation types for handling alert events.
         self.security_event_operations_response = security_event_operations_response
 
     def validate(self):
@@ -61,29 +61,29 @@ class AdvanceSecurityEventOperationsResponseBodySecurityEventOperationsResponse(
         operation_params: str = None,
         user_can_operate: bool = None,
     ):
-        # The object on which the operation is performed. This parameter is required when you set the OperationCode parameter to **advance_mark_mis_info**.
+        # The configuration information when the handling method is **advance_mark_mis_info**.
         self.mark_field = mark_field
-        # The metadata configuration returned by the advanced whitelist rule.
+        # The metadata configuration information returned for the advanced whitelist.
         self.mark_fields_source = mark_fields_source
-        # The operation performed to handle the alert. Valid values:
+        # The handling method for the alert. Valid values:
         # 
-        # *   **block_ip**: blocks the alert.
-        # *   **advance_mark_mis_info**: adds the alert to the whitelist.
-        # *   **ignore**: ignores the alert.
-        # *   **manual_handled**: marks the alert as manually handled.
-        # *   **kill_process**: terminates the malicious process.
-        # *   **cleanup**: performs in-depth virus detection and removal.
-        # *   **kill_and_quara**: performs virus detection and removal.
-        # *   **disable_malicious_defense**: turns off malicious defense behavior.
-        # *   **client_problem_check**: performs troubleshooting.
-        # *   **quara**: performs quarantine operations.
+        # - **block_ip**: Block.
+        # - **advance_mark_mis_info**: Add to whitelist.
+        # - **ignore**: Ignore.
+        # - **manual_handled**: Manually handled.
+        # - **kill_process**: Terminate process.
+        # - **cleanup**: Deep scan and removal.
+        # - **kill_and_quara**: Virus scan and quarantine.
+        # - **disable_malicious_defense**: Disable malicious behavior defense.
+        # - **client_problem_check**: Troubleshoot.
+        # - **quara**: Quarantine.
         self.operation_code = operation_code
-        # The configuration of the operation performed to handle the alert event.
+        # The configuration of the sub-operation for the alert event handling method.
         self.operation_params = operation_params
-        # Indicates whether the operation can be performed.
+        # Indicates whether the operation is available.
         # 
-        # *   **true**: The operation can be performed.
-        # *   **false**: The operation cannot be performed.
+        # - **true**: Available.
+        # - **false**: Not available.
         self.user_can_operate = user_can_operate
 
     def validate(self):
@@ -155,19 +155,19 @@ class AdvanceSecurityEventOperationsResponseBodySecurityEventOperationsResponseM
         mark_mis_value: str = None,
         supported_mis_type: List[str] = None,
     ):
-        # The alias of the field that can be used in the whitelist rule.
+        # The name of the whitelist field that can be configured in a whitelist rule.
         self.filed_alias_name = filed_alias_name
-        # The field that can be used in the whitelist rule.
+        # The whitelist field that can be configured in a whitelist rule.
         self.filed_name = filed_name
-        # The value of the field that can be used in the whitelist rule.
+        # The rule value of the whitelist rule.
         self.mark_mis_value = mark_mis_value
-        # The operation that is supported in the whitelist rule. Valid values:
+        # The supported wildcards in the whitelist rule. Valid values:
         # 
-        # *   **contains**: contains
-        # *   **notContains**: does not contain
-        # *   **regex**: regular expression
-        # *   **strEqual**: equals
-        # *   **strNotEqual**: does not equal
+        # - **contains**: contains
+        # - **notContains**: does not contain
+        # - **regex**: regular expression
+        # - **strEqual**: equals
+        # - **strNotEqual**: does not equal
         self.supported_mis_type = supported_mis_type
 
     def validate(self):
@@ -217,27 +217,26 @@ class AdvanceSecurityEventOperationsResponseBodySecurityEventOperationsResponseM
         mark_mis_value: str = None,
         supported_mis_type: List[str] = None,
     ):
-        # The alias of the field that is used in the whitelist rule.
+        # The name of the whitelist field in the configured whitelist rule.
         self.filed_alias_name = filed_alias_name
-        # The field that is used in the whitelist rule.
+        # The whitelist field in the configured whitelist rule.
         self.filed_name = filed_name
-        # The operation that is used in the whitelist rule. Valid values:
-        # 
-        # *   **contains**: contains
-        # *   **notContains**: does not contain
-        # *   **regex**: regular expression
-        # *   **strEqual**: equals
-        # *   **strNotEqual**: does not equal
+        # The wildcard in the configured whitelist rule. Valid values:
+        # - **contains**: contains
+        # - **notContains**: does not contain
+        # - **regex**: regular expression
+        # - **strEqual**: equals
+        # - **strNotEqual**: does not equal
         self.mark_mis_type = mark_mis_type
-        # The value of the field that is used in the whitelist rule.
+        # The rule value of the configured whitelist rule.
         self.mark_mis_value = mark_mis_value
-        # The operation that is used and can be modified in the whitelist rule. Valid values:
+        # The wildcard types that can be modified in the configured whitelist rule. Valid values:
         # 
-        # *   **contains**: contains
-        # *   **notContains**: does not contain
-        # *   **regex**: regular expression
-        # *   **strEqual**: equals
-        # *   **strNotEqual**: does not equal
+        # - **contains**: contains
+        # - **notContains**: does not contain
+        # - **regex**: regular expression
+        # - **strEqual**: equals
+        # - **strNotEqual**: does not equal
         self.supported_mis_type = supported_mis_type
 
     def validate(self):

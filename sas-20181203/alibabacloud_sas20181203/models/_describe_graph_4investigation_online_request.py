@@ -17,10 +17,10 @@ class DescribeGraph4InvestigationOnlineRequest(DaraModel):
         self.anomaly_id = anomaly_id
         # The UUID of the asset associated with the alert event. You can call [DescribeSuspEvents](~~DescribeSuspEvents~~) to obtain the asset UUID. The value is in the data.SuspEvents[index].Uuid path.
         self.anomaly_uuid = anomaly_uuid
-        # The language type for the request and response. Default value: **zh**. Valid values:
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
         # 
         # - **zh**: Chinese
-        # - **en**: English.
+        # - **en**: English
         self.lang = lang
         # The namespace of the graph. Set this parameter to hundun_dc_online.
         # 

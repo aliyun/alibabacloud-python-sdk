@@ -14,26 +14,30 @@ class ListFileProtectRuleRequest(DaraModel):
         rule_action: str = None,
         rule_name: str = None,
     ):
-        # The severity of alerts. Valid values:
+        # The alert notification level. Valid values:
         # 
-        # *   0: does not generate alerts
-        # *   1: sends notifications
-        # *   2: suspicious
-        # *   3: high-risk
+        # - 0: No alert.
+        # 
+        # - 1: Reminder.
+        # 
+        # - 2: Suspicious.
+        # 
+        # - 3: High-risk.
         self.alert_level = alert_level
-        # The page number.
+        # The page number of the current page in a paging query.
         self.current_page = current_page
-        # The number of entries per page.
+        # The maximum number of entries per page in a paging query.
         self.page_size = page_size
-        # The type of the operating system. Valid values:
+        # The operating system type. Valid values:
         # 
-        # *   **windows**: Windows
-        # *   **linux**: Linux
+        # - **windows**: Windows
+        # - **linux**: Linux
         self.platform = platform
-        # The handling method of the rule. Valid values:
+        # The action of the rule on the client. Valid values:
         # 
-        # *   pass: allow
-        # *   alert
+        # - pass: allow
+        # 
+        # - alert: alert
         self.rule_action = rule_action
         # The name of the rule.
         self.rule_name = rule_name

@@ -49,11 +49,11 @@ class DescribeSuspEventsRequest(DaraModel):
     ):
         # The unique ID of the alert event.
         # 
-        # > To query the exception information of a single alert event, provide the unique ID of the alert event. You can call the [DescribeSuspEvents](~~DescribeSuspEvents~~) operation to obtain the ID.
+        # > To query the exception information of a single alert event, provide the unique ID of the alert event. You can obtain this ID by calling the [DescribeSuspEvents](~~DescribeSuspEvents~~) operation.
         self.alarm_unique_info = alarm_unique_info
         # The collection of asset types.
         self.assets_type_list = assets_type_list
-        # The ID of the cluster for which you want to query alert events.
+        # The cluster ID for which you want to query alert events.
         self.cluster_id = cluster_id
         # The container search field. Valid values:
         # 
@@ -72,11 +72,13 @@ class DescribeSuspEventsRequest(DaraModel):
         self.container_field_name = container_field_name
         # The value of the container search field.
         self.container_field_value = container_field_value
-        # The page number of the results to return. Default value: **1**.
+        # The page number of the page to return in a paged query. Default value: **1**, which indicates that the results start from page 1.
         self.current_page = current_page
         # Specifies whether the alert events to query have been handled. Valid values:
+        # - **N**: Unhandled.
+        # - **Y**: Handled.
         self.dealed = dealed
-        # The discovery source. This parameter is invalid.
+        # The discovery source. This is an invalid field.
         self.detect_source = detect_source
         # The subtypes of the alert events. Separate multiple subtypes with commas (,).
         self.event_names = event_names
@@ -87,18 +89,17 @@ class DescribeSuspEventsRequest(DaraModel):
         # The unique ID that identifies the alert event record.
         self.id = id
         # The language of the request and response. Default value: **zh**. Valid values:
-        # - **zh**: Chinese
-        # - **en**: English
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # The severity levels of the security alerts that you want to query. Separate multiple severity levels with commas (,). The severity levels are listed in descending order. Valid values:
-        # 
-        # - **serious**: Critical.
+        # The severity levels of the alert events to query. Separate multiple severity levels with commas (,). The severity levels are listed in descending order. Valid values:
+        # - **serious**: Urgent.
         # - **suspicious**: Suspicious.
-        # - **remind**: Informational.
+        # - **remind**: Reminder.
         self.levels = levels
         # The multi-account query type. Default value: **0**. Valid values:
-        # - **0**: Queries data of the current account.
-        # - **1**: Queries data of all accounts.
+        # - **0**: Query data of the current account.
+        # - **1**: Query data of all accounts.
         self.multi_account_action_type = multi_account_action_type
         # The name of the asset affected by the alert event.
         self.name = name
@@ -108,28 +109,54 @@ class DescribeSuspEventsRequest(DaraModel):
         self.operate_time_end = operate_time_end
         # The start timestamp of the handling time.
         self.operate_time_start = operate_time_start
-        # The number of alert events to display on each page in a paged query. Default value: **20**. Maximum value: 100.
+        # The number of alert events to display on each page in a paged query. Default value: **20**, which indicates that 20 alert events are displayed on each page. Maximum value: 100.
         self.page_size = page_size
-        # The Alarm Metric of the alerting events to query. Valid values:
+        # The alerting type of the alert events to query. Valid values:
+        # 
+        # - **Abnormal process behavior**
+        # - **Web shell**
+        # - **Unusual logon**
+        # - **Abnormal event**
+        # - **Sensitive file tampering**
+        # - **Malicious process (cloud scan)**
+        # - **Suspicious network connectivity**
+        # - **Abnormal account**
+        # - **Application intrusion event**
+        # - **Cloud service threat detection**
+        # - **Precise defense**
+        # - **Application whitelist**
+        # - **Persistent backdoor**
+        # - **Web application threat detection**
+        # - **Malicious script**
+        # - **Threat intelligence**
+        # - **Malicious network behavior**
+        # - **Container cluster exception**
+        # - **Web shell (local scan)**
+        # - **Vulnerability exploits**
+        # - **Malicious process (local scan)**
+        # - **Trusted exception**
+        # - **Other**
         self.parent_event_types = parent_event_types
         # The alert name or asset information to query.
+        # 
+        # > Fuzzy match is supported. Asset information includes the asset name, public IP address, and private IP address.
         self.remark = remark
-        # The China site (Chinese mainland) account ID of the member account in the resource directory.
+        # The Alibaba Cloud account ID of the member accounts in the resource directory.
         # >Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
         # The custom sort field. Default value: **operateTime**. Valid values:
         # 
-        # - **lastTime**: the most recent occurrence time.
-        # - **operateTime**: the processing time.
+        # - **lastTime**: Latest occurrence time.
+        # - **operateTime**: Handling time.
         # 
         # > This field takes effect only when **Dealed** is set to Y.
         self.sort_column = sort_column
-        # The custom sort type. Default value: **desc**. Valid values:
+        # The custom sort order. Default value: **desc**. Valid values:
         # 
-        # - **asc**: ascending order.
-        # - **desc**: descending order.
+        # - **asc**: Ascending order.
+        # - **desc**: Descending order.
         # 
-        # > This parameter takes effect only when **Dealed** is set to Y.
+        # > This field takes effect only when **Dealed** is set to Y.
         self.sort_type = sort_type
         # The alert source.
         self.source = source
@@ -138,22 +165,34 @@ class DescribeSuspEventsRequest(DaraModel):
         # The IP address of the access source.
         self.source_ip = source_ip
         # The status of the alert events to query. Valid values:
+        # - **0**: All.
+        # - **1**: Unhandled.
+        # - **2**: Ignored.
+        # - **4**: Confirmed.
+        # - **8**: Marked as false positive.
+        # - **16**: Handling.
+        # - **32**: Handled.
+        # - **64**: Expired.
+        # - **128**: Deleted.
+        # - **512**: Automatic blocking in progress.
+        # - **513**: Automatic blocking completed.
         self.status = status
-        # Specifies whether the alert is identified in strict mode.
+        # Specifies whether the alert is in strict mode. Valid values:
+        # - N: No.
+        # - Y: Yes.
         self.strict_mode = strict_mode
         # The list of operation types supported by the alert.
         self.support_operate_code_list = support_operate_code_list
-        # The tactic ID in ATT&CK.
+        # The ATT&CK tactic ID.
         self.tactic_id = tactic_id
-        # The type of the container search target. Valid values:
-        # 
-        # - **containerId**: container ID.
-        # - **uuid**: server UUID.
-        # - **imageUuid**: image UUID.
+        # The target type for container search. Valid values:
+        # - **containerId**: container ID
+        # - **uuid**: server UUID
+        # - **imageUuid**: image UUID
         self.target_type = target_type
-        # The end time of the latest occurrence time range.
+        # The end time of the latest occurrence. Format: YYYY-MM-DD HH:mm:ss.
         self.time_end = time_end
-        # The start time of the latest occurrence time range.
+        # The start time of the latest occurrence. Format: YYYY-MM-DD HH:mm:ss.
         self.time_start = time_start
         # The unique key of the security alert.
         self.unique_info = unique_info

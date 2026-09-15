@@ -74,7 +74,7 @@ class DescribeIdcProbeScanResultListResponseBodyPageInfo(DaraModel):
     ):
         # The number of entries on the current page.
         self.count = count
-        # The page number of the current page in a paged query.
+        # The page number in a paging query.
         self.current_page = current_page
         # The number of entries per page.
         self.page_size = page_size
@@ -140,15 +140,15 @@ class DescribeIdcProbeScanResultListResponseBodyInstances(DaraModel):
         # - **online**: The Agent client on the asset is enabled.
         # - **offline**: The Agent client on the asset is disabled.
         self.client_status = client_status
-        # The name of the IDC server room.
+        # The IDC name.
         self.idc_name = idc_name
         # The IP segment list.
         self.ip_segment = ip_segment
-        # The timestamp of the latest scan, in milliseconds.
+        # The timestamp of the latest scan. Unit: milliseconds.
         self.last_scan_time = last_scan_time
         # The operating system type of the asset. Valid values:
         # - **windows**
-        # - **linux**.
+        # - **linux**
         self.os = os
         # The public IP address of the associated machine instance.
         self.probe_internet_ip = probe_internet_ip

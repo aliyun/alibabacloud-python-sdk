@@ -19,12 +19,14 @@ class OperateVulsRequest(DaraModel):
         # 
         # This parameter is required.
         self.operate_type = operate_type
+        # The Alibaba Cloud account ID of the member accounts in the resource directory.
+        # >Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
         # The type of vulnerability to fix. Set the value to **cve**, which indicates a Linux software vulnerability.
         # 
         # This parameter is required.
         self.type = type
-        # The UUIDs of the servers on which you want to fix the vulnerabilities.
+        # The UUIDs of the servers on which you want to fix vulnerabilities.
         # 
         # This parameter is required.
         self.uuids = uuids

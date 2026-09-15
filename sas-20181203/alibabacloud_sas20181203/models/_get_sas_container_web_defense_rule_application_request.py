@@ -10,7 +10,8 @@ class GetSasContainerWebDefenseRuleApplicationRequest(DaraModel):
         rule_id: int = None,
     ):
         # The rule ID.
-        # > You can call the ListSasContainerWebDefenseRule operation to obtain this parameter.
+        # > Call the ListSasContainerWebDefenseRule operation to obtain this parameter.
+        # Note: This parameter is required. If this parameter is not specified, the API returns a 400 error. Call the ListSasContainerWebDefenseRule operation to obtain valid RuleId values.
         self.rule_id = rule_id
 
     def validate(self):

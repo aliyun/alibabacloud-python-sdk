@@ -18,15 +18,25 @@ class DataValue(DaraModel):
         vul_nntf_sum: int = None,
         sys_asap_num: int = None,
     ):
+        # The number of Linux software vulnerabilities.
         self.cve_num = cve_num
+        # The number of emergency vulnerabilities. This field is 0 when ImageVul is set to true.
         self.emg_num = emg_num
+        # The number of Windows system vulnerabilities. This field is 0 when ImageVul is set to true.
         self.sys_num = sys_num
+        # The number of Web-CMS vulnerabilities. This field is 0 when ImageVul is set to true.
         self.cms_num = cms_num
+        # The number of application vulnerabilities. This field is 0 when ImageVul is set to true.
         self.app_num = app_num
+        # The number of software composition analysis (SCA) vulnerabilities.
         self.sca_num = sca_num
+        # The number of high-priority vulnerabilities.
         self.vul_asap_sum = vul_asap_sum
+        # The number of medium-priority vulnerabilities.
         self.vul_later_sum = vul_later_sum
+        # The number of low-priority vulnerabilities.
         self.vul_nntf_sum = vul_nntf_sum
+        # The number of high-priority system vulnerabilities among Linux software vulnerabilities and Windows system vulnerabilities.
         self.sys_asap_num = sys_asap_num
 
     def validate(self):

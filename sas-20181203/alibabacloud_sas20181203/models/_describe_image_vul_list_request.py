@@ -16,6 +16,7 @@ class DescribeImageVulListRequest(DaraModel):
         current_page: int = None,
         dealed: str = None,
         digest: str = None,
+        group_by_asset: bool = None,
         image: str = None,
         instance_id: str = None,
         lang: str = None,
@@ -46,32 +47,34 @@ class DescribeImageVulListRequest(DaraModel):
         self.cluster_name = cluster_name
         # The ID of the container.
         self.container_id = container_id
-        # The page number of the page to return in a paginated query. Default value: **1**, which indicates the first page.
+        # The page number of the page to return in the query results. Default value: **1**, which indicates the first page.
         self.current_page = current_page
         # Specifies whether the vulnerability has been handled. Valid values:
-        # - **y**: handled
-        # - **n**: not handled.
+        # - **y**: Handled.
+        # - **n**: Not handled.
         self.dealed = dealed
         # The unique identifier of the container image.
         self.digest = digest
+        # Specifies whether to group results by image asset before pagination. If set to true, one vulnerability record is returned for each asset, and TotalCount indicates the total number of assets. If set to false or not specified, results are paginated by vulnerability record. Asset grouping is not applied when MaxId is specified.
+        self.group_by_asset = group_by_asset
         # The name of the container image.
         self.image = image
         # The ID of the asset instance.
         self.instance_id = instance_id
-        # The language type of the request and response messages. Default value: **zh**. Valid values:
+        # The language type of the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English.
+        # - **en**: English
         self.lang = lang
         # The name of the vulnerability to query.
         self.name = name
         # The namespace.
         self.namespace = namespace
-        # The priority level of vulnerability fixing. Valid values:
-        # - **asap**: high-priority vulnerability
-        # - **later**: medium-priority vulnerability
-        # - **nntf**: low-priority vulnerability.
+        # The priority level for fixing the vulnerability. Valid values:
+        # - **asap**: High-priority vulnerability that must be fixed as soon as possible.
+        # - **later**: Medium-priority vulnerability that can be fixed later.
+        # - **nntf**: Low-priority vulnerability that does not need to be fixed for now.
         self.necessity = necessity
-        # Settings for the number of vulnerabilities to display on each page in a paged query. Default value: **10**, which indicates that 10 vulnerabilities are displayed on each page.
+        # The number of entries per page in a paged query. Default value: **10**, which indicates 10 vulnerability entries per page.
         self.page_size = page_size
         # The pod.
         self.pod = pod
@@ -87,17 +90,19 @@ class DescribeImageVulListRequest(DaraModel):
         self.repo_namespace = repo_namespace
         # The region ID of the container image repository.
         self.repo_region_id = repo_region_id
+        # The Alibaba Cloud account ID of the member accounts in the resource directory.
+        # >Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
         # The vulnerability tag. Valid values:
         # 
-        # - **AI**: vulnerability related to AI components.
+        # - **AI**: vulnerabilities related to AI components
         self.rule_tag = rule_tag
         # The collection of scan ranges.
         self.scan_range = scan_range
         # The fix status of the vulnerability. Valid values:
-        # - **1**: unfixed
-        # - **4**: being fixed
-        # - **7**: fixed.
+        # - **1**: Unfixed.
+        # - **4**: Being fixed.
+        # - **7**: Fixed.
         self.status_list = status_list
         # The tag of the container image.
         self.tag = tag
@@ -136,6 +141,9 @@ class DescribeImageVulListRequest(DaraModel):
 
         if self.digest is not None:
             result['Digest'] = self.digest
+
+        if self.group_by_asset is not None:
+            result['GroupByAsset'] = self.group_by_asset
 
         if self.image is not None:
             result['Image'] = self.image
@@ -224,6 +232,9 @@ class DescribeImageVulListRequest(DaraModel):
 
         if m.get('Digest') is not None:
             self.digest = m.get('Digest')
+
+        if m.get('GroupByAsset') is not None:
+            self.group_by_asset = m.get('GroupByAsset')
 
         if m.get('Image') is not None:
             self.image = m.get('Image')

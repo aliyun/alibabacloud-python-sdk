@@ -13,9 +13,9 @@ class DescribeContainerServiceK8sClusterNamespacesResponseBody(DaraModel):
         k_8s_cluster_namespaces: List[main_models.DescribeContainerServiceK8sClusterNamespacesResponseBodyK8sClusterNamespaces] = None,
         request_id: str = None,
     ):
-        # The namespaces.
+        # The list of namespaces.
         self.k_8s_cluster_namespaces = k_8s_cluster_namespaces
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
