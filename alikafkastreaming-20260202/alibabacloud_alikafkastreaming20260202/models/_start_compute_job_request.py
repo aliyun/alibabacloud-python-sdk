@@ -7,21 +7,17 @@ from darabonba.model import DaraModel
 class StartComputeJobRequest(DaraModel):
     def __init__(
         self,
-        client_token: str = None,
         cu_limit: float = None,
         cu_reserved: float = None,
         draft_sql: str = None,
-        draft_sql_start: bool = None,
         instance_id: str = None,
         job_name: str = None,
         recovery_mode: str = None,
         region_id: str = None,
     ):
-        self.client_token = client_token
         self.cu_limit = cu_limit
         self.cu_reserved = cu_reserved
         self.draft_sql = draft_sql
-        self.draft_sql_start = draft_sql_start
         # This parameter is required.
         self.instance_id = instance_id
         # This parameter is required.
@@ -38,9 +34,6 @@ class StartComputeJobRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.client_token is not None:
-            result['ClientToken'] = self.client_token
-
         if self.cu_limit is not None:
             result['CuLimit'] = self.cu_limit
 
@@ -49,9 +42,6 @@ class StartComputeJobRequest(DaraModel):
 
         if self.draft_sql is not None:
             result['DraftSql'] = self.draft_sql
-
-        if self.draft_sql_start is not None:
-            result['DraftSqlStart'] = self.draft_sql_start
 
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
@@ -69,9 +59,6 @@ class StartComputeJobRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ClientToken') is not None:
-            self.client_token = m.get('ClientToken')
-
         if m.get('CuLimit') is not None:
             self.cu_limit = m.get('CuLimit')
 
@@ -80,9 +67,6 @@ class StartComputeJobRequest(DaraModel):
 
         if m.get('DraftSql') is not None:
             self.draft_sql = m.get('DraftSql')
-
-        if m.get('DraftSqlStart') is not None:
-            self.draft_sql_start = m.get('DraftSqlStart')
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')

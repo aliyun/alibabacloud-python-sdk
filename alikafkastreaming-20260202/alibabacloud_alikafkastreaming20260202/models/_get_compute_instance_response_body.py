@@ -71,10 +71,8 @@ class GetComputeInstanceResponseBodyData(DaraModel):
         expire_time: str = None,
         instance_id: str = None,
         instance_name: str = None,
-        order_id: str = None,
         region_id: str = None,
         service_status: str = None,
-        service_version: str = None,
         total_jobs: int = None,
         total_running_jobs: int = None,
         v_switch_ids: List[str] = None,
@@ -90,10 +88,8 @@ class GetComputeInstanceResponseBodyData(DaraModel):
         self.expire_time = expire_time
         self.instance_id = instance_id
         self.instance_name = instance_name
-        self.order_id = order_id
         self.region_id = region_id
         self.service_status = service_status
-        self.service_version = service_version
         self.total_jobs = total_jobs
         self.total_running_jobs = total_running_jobs
         self.v_switch_ids = v_switch_ids
@@ -131,17 +127,11 @@ class GetComputeInstanceResponseBodyData(DaraModel):
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
 
-        if self.order_id is not None:
-            result['OrderId'] = self.order_id
-
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
         if self.service_status is not None:
             result['ServiceStatus'] = self.service_status
-
-        if self.service_version is not None:
-            result['ServiceVersion'] = self.service_version
 
         if self.total_jobs is not None:
             result['TotalJobs'] = self.total_jobs
@@ -183,17 +173,11 @@ class GetComputeInstanceResponseBodyData(DaraModel):
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
 
-        if m.get('OrderId') is not None:
-            self.order_id = m.get('OrderId')
-
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
 
         if m.get('ServiceStatus') is not None:
             self.service_status = m.get('ServiceStatus')
-
-        if m.get('ServiceVersion') is not None:
-            self.service_version = m.get('ServiceVersion')
 
         if m.get('TotalJobs') is not None:
             self.total_jobs = m.get('TotalJobs')

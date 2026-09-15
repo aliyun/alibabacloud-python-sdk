@@ -95,9 +95,7 @@ class ListComputeInstancesInPageResponseBodyData(DaraModel):
         self,
         auto_renew_flag: bool = None,
         charge_type: str = None,
-        commodity_code: str = None,
         create_time: str = None,
-        cu: int = None,
         cu_limit_sum: float = None,
         cu_reserved_sum: float = None,
         cu_used_sum: float = None,
@@ -110,15 +108,12 @@ class ListComputeInstancesInPageResponseBodyData(DaraModel):
         total_jobs: int = None,
         total_running_jobs: int = None,
         v_switch_ids: List[str] = None,
-        version: str = None,
         vpc_id: str = None,
     ):
         self.auto_renew_flag = auto_renew_flag
         self.charge_type = charge_type
-        self.commodity_code = commodity_code
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
-        self.cu = cu
         self.cu_limit_sum = cu_limit_sum
         self.cu_reserved_sum = cu_reserved_sum
         self.cu_used_sum = cu_used_sum
@@ -132,7 +127,6 @@ class ListComputeInstancesInPageResponseBodyData(DaraModel):
         self.total_jobs = total_jobs
         self.total_running_jobs = total_running_jobs
         self.v_switch_ids = v_switch_ids
-        self.version = version
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -149,14 +143,8 @@ class ListComputeInstancesInPageResponseBodyData(DaraModel):
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
 
-        if self.commodity_code is not None:
-            result['CommodityCode'] = self.commodity_code
-
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
-
-        if self.cu is not None:
-            result['Cu'] = self.cu
 
         if self.cu_limit_sum is not None:
             result['CuLimitSum'] = self.cu_limit_sum
@@ -194,9 +182,6 @@ class ListComputeInstancesInPageResponseBodyData(DaraModel):
         if self.v_switch_ids is not None:
             result['VSwitchIds'] = self.v_switch_ids
 
-        if self.version is not None:
-            result['Version'] = self.version
-
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
 
@@ -210,14 +195,8 @@ class ListComputeInstancesInPageResponseBodyData(DaraModel):
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
 
-        if m.get('CommodityCode') is not None:
-            self.commodity_code = m.get('CommodityCode')
-
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
-
-        if m.get('Cu') is not None:
-            self.cu = m.get('Cu')
 
         if m.get('CuLimitSum') is not None:
             self.cu_limit_sum = m.get('CuLimitSum')
@@ -254,9 +233,6 @@ class ListComputeInstancesInPageResponseBodyData(DaraModel):
 
         if m.get('VSwitchIds') is not None:
             self.v_switch_ids = m.get('VSwitchIds')
-
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
 
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')

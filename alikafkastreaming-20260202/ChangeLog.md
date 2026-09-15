@@ -1,3 +1,41 @@
+2026-09-15 Version: 2.0.0
+- Update API CreateComputeInstance: delete request parameters ResourceType.
+- Update API CreateComputeJob: delete request parameters ClientToken.
+- Update API CreateComputeJob: delete request parameters DraftSql.
+- Update API CreateComputeJob: delete request parameters JobConfig.
+- Update API CreateComputeJob: delete request parameters UpgradeMode.
+- Update API CreateComputeJob: delete request parameters UserId.
+- Update API DeleteComputeInstance: delete request parameters ResourceType.
+- Update API GetComputeInstance: delete request parameters OrderId.
+- Update API GetComputeInstance: delete response parameters Body.Data.OrderId.
+- Update API GetComputeInstance: delete response parameters Body.Data.ServiceVersion.
+- Update API GetComputeJob: add response parameters Body.Data.ErrorMsg.
+- Update API GetComputeJob: add response parameters Body.Data.ExpirationTime.
+- Update API GetComputeJob: delete response parameters Body.Data.HistoryInfos.
+- Update API GetComputeJob: delete response parameters Body.Data.JobConfig.
+- Update API ListComputeInstancesInPage: add request parameters ResourceGroupId.
+- Update API ListComputeInstancesInPage: delete request parameters InstanceId.
+- Update API ListComputeInstancesInPage: delete request parameters OrderId.
+- Update API ListComputeInstancesInPage: delete response parameters Body.Data.$.CommodityCode.
+- Update API ListComputeInstancesInPage: delete response parameters Body.Data.$.Cu.
+- Update API ListComputeInstancesInPage: delete response parameters Body.Data.$.Version.
+- Update API ListComputeJobs: delete request parameters CurrentPage.
+- Update API ListComputeJobs: delete request parameters PageSize.
+- Update API ReopenComputeInstance: delete request parameters ClientToken.
+- Update API StartComputeInstance: delete request parameters ClientToken.
+- Update API StartComputeInstance: delete request parameters SelectedZones.
+- Update API StartComputeInstance: delete request parameters ServiceVersion.
+- Update API StartComputeJob: delete request parameters ClientToken.
+- Update API StartComputeJob: delete request parameters DraftSqlStart.
+- Update API StopComputeInstance: delete request parameters ClientToken.
+- Update API StopComputeJob: delete request parameters ClientToken.
+- Update API UpdateComputeInstanceName: delete request parameters ClientToken.
+- Update API UpdateComputeJob: delete request parameters ClientToken.
+- Update API UpdateComputeJob: delete request parameters UpgradeMode.
+- Update API UpdateComputeJobCu: delete request parameters ClientToken.
+- Update API UpdateComputeJobDraftSql: delete request parameters ClientToken.
+
+
 2026-07-24 Version: 1.2.0
 - Support API CheckSqlContent.
 - Support API CreateComputeJob.

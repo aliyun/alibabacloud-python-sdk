@@ -20,7 +20,7 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('alikafkastreaming', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -135,8 +135,6 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not DaraCore.is_null(request.resource_type):
-            query['ResourceType'] = request.resource_type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -169,8 +167,6 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not DaraCore.is_null(request.resource_type):
-            query['ResourceType'] = request.resource_type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -215,28 +211,16 @@ class Client(OpenApiClient):
             query['CuLimit'] = request.cu_limit
         if not DaraCore.is_null(request.cu_reserved):
             query['CuReserved'] = request.cu_reserved
-        if not DaraCore.is_null(request.draft_sql):
-            query['DraftSql'] = request.draft_sql
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not DaraCore.is_null(request.job_config):
-            query['JobConfig'] = request.job_config
         if not DaraCore.is_null(request.job_name):
             query['JobName'] = request.job_name
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.remark):
             query['Remark'] = request.remark
-        if not DaraCore.is_null(request.upgrade_mode):
-            query['UpgradeMode'] = request.upgrade_mode
-        if not DaraCore.is_null(request.user_id):
-            query['UserId'] = request.user_id
-        body = {}
-        if not DaraCore.is_null(request.client_token):
-            body['ClientToken'] = request.client_token
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query),
-            body = Utils.parse_to_map(body)
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'CreateComputeJob',
@@ -265,28 +249,16 @@ class Client(OpenApiClient):
             query['CuLimit'] = request.cu_limit
         if not DaraCore.is_null(request.cu_reserved):
             query['CuReserved'] = request.cu_reserved
-        if not DaraCore.is_null(request.draft_sql):
-            query['DraftSql'] = request.draft_sql
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not DaraCore.is_null(request.job_config):
-            query['JobConfig'] = request.job_config
         if not DaraCore.is_null(request.job_name):
             query['JobName'] = request.job_name
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.remark):
             query['Remark'] = request.remark
-        if not DaraCore.is_null(request.upgrade_mode):
-            query['UpgradeMode'] = request.upgrade_mode
-        if not DaraCore.is_null(request.user_id):
-            query['UserId'] = request.user_id
-        body = {}
-        if not DaraCore.is_null(request.client_token):
-            body['ClientToken'] = request.client_token
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query),
-            body = Utils.parse_to_map(body)
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'CreateComputeJob',
@@ -329,8 +301,6 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not DaraCore.is_null(request.resource_type):
-            query['ResourceType'] = request.resource_type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -361,8 +331,6 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not DaraCore.is_null(request.resource_type):
-            query['ResourceType'] = request.resource_type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -483,8 +451,6 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not DaraCore.is_null(request.order_id):
-            query['OrderId'] = request.order_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -515,8 +481,6 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not DaraCore.is_null(request.order_id):
-            query['OrderId'] = request.order_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -835,16 +799,14 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not DaraCore.is_null(request.instance_id):
-            query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.instance_ids_shrink):
             query['InstanceIds'] = request.instance_ids_shrink
-        if not DaraCore.is_null(request.order_id):
-            query['OrderId'] = request.order_id
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -877,16 +839,14 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not DaraCore.is_null(request.instance_id):
-            query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.instance_ids_shrink):
             query['InstanceIds'] = request.instance_ids_shrink
-        if not DaraCore.is_null(request.order_id):
-            query['OrderId'] = request.order_id
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -927,16 +887,12 @@ class Client(OpenApiClient):
     ) -> main_models.ListComputeJobsResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.current_page):
-            query['CurrentPage'] = request.current_page
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
-        if not DaraCore.is_null(request.page_size):
-            query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.search):
@@ -971,16 +927,12 @@ class Client(OpenApiClient):
     ) -> main_models.ListComputeJobsResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.current_page):
-            query['CurrentPage'] = request.current_page
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
-        if not DaraCore.is_null(request.page_size):
-            query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.search):
@@ -1107,12 +1059,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        body = {}
-        if not DaraCore.is_null(request.client_token):
-            body['ClientToken'] = request.client_token
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query),
-            body = Utils.parse_to_map(body)
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'ReopenComputeInstance',
@@ -1141,12 +1089,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        body = {}
-        if not DaraCore.is_null(request.client_token):
-            body['ClientToken'] = request.client_token
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query),
-            body = Utils.parse_to_map(body)
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'ReopenComputeInstance',
@@ -1281,20 +1225,12 @@ class Client(OpenApiClient):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not DaraCore.is_null(request.selected_zones):
-            query['SelectedZones'] = request.selected_zones
-        if not DaraCore.is_null(request.service_version):
-            query['ServiceVersion'] = request.service_version
         if not DaraCore.is_null(request.v_switch_ids_shrink):
             query['VSwitchIds'] = request.v_switch_ids_shrink
         if not DaraCore.is_null(request.vpc_id):
             query['VpcId'] = request.vpc_id
-        body = {}
-        if not DaraCore.is_null(request.client_token):
-            body['ClientToken'] = request.client_token
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query),
-            body = Utils.parse_to_map(body)
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'StartComputeInstance',
@@ -1329,20 +1265,12 @@ class Client(OpenApiClient):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not DaraCore.is_null(request.selected_zones):
-            query['SelectedZones'] = request.selected_zones
-        if not DaraCore.is_null(request.service_version):
-            query['ServiceVersion'] = request.service_version
         if not DaraCore.is_null(request.v_switch_ids_shrink):
             query['VSwitchIds'] = request.v_switch_ids_shrink
         if not DaraCore.is_null(request.vpc_id):
             query['VpcId'] = request.vpc_id
-        body = {}
-        if not DaraCore.is_null(request.client_token):
-            body['ClientToken'] = request.client_token
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query),
-            body = Utils.parse_to_map(body)
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'StartComputeInstance',
@@ -1387,8 +1315,6 @@ class Client(OpenApiClient):
             query['CuReserved'] = request.cu_reserved
         if not DaraCore.is_null(request.draft_sql):
             query['DraftSql'] = request.draft_sql
-        if not DaraCore.is_null(request.draft_sql_start):
-            query['DraftSqlStart'] = request.draft_sql_start
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.job_name):
@@ -1397,12 +1323,8 @@ class Client(OpenApiClient):
             query['RecoveryMode'] = request.recovery_mode
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        body = {}
-        if not DaraCore.is_null(request.client_token):
-            body['ClientToken'] = request.client_token
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query),
-            body = Utils.parse_to_map(body)
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'StartComputeJob',
@@ -1433,8 +1355,6 @@ class Client(OpenApiClient):
             query['CuReserved'] = request.cu_reserved
         if not DaraCore.is_null(request.draft_sql):
             query['DraftSql'] = request.draft_sql
-        if not DaraCore.is_null(request.draft_sql_start):
-            query['DraftSqlStart'] = request.draft_sql_start
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.job_name):
@@ -1443,12 +1363,8 @@ class Client(OpenApiClient):
             query['RecoveryMode'] = request.recovery_mode
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        body = {}
-        if not DaraCore.is_null(request.client_token):
-            body['ClientToken'] = request.client_token
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query),
-            body = Utils.parse_to_map(body)
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'StartComputeJob',
@@ -1491,12 +1407,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        body = {}
-        if not DaraCore.is_null(request.client_token):
-            body['ClientToken'] = request.client_token
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query),
-            body = Utils.parse_to_map(body)
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'StopComputeInstance',
@@ -1525,12 +1437,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        body = {}
-        if not DaraCore.is_null(request.client_token):
-            body['ClientToken'] = request.client_token
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query),
-            body = Utils.parse_to_map(body)
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'StopComputeInstance',
@@ -1575,12 +1483,8 @@ class Client(OpenApiClient):
             query['JobName'] = request.job_name
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        body = {}
-        if not DaraCore.is_null(request.client_token):
-            body['ClientToken'] = request.client_token
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query),
-            body = Utils.parse_to_map(body)
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'StopComputeJob',
@@ -1611,12 +1515,8 @@ class Client(OpenApiClient):
             query['JobName'] = request.job_name
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        body = {}
-        if not DaraCore.is_null(request.client_token):
-            body['ClientToken'] = request.client_token
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query),
-            body = Utils.parse_to_map(body)
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'StopComputeJob',
@@ -1661,12 +1561,8 @@ class Client(OpenApiClient):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        body = {}
-        if not DaraCore.is_null(request.client_token):
-            body['ClientToken'] = request.client_token
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query),
-            body = Utils.parse_to_map(body)
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'UpdateComputeInstanceName',
@@ -1697,12 +1593,8 @@ class Client(OpenApiClient):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        body = {}
-        if not DaraCore.is_null(request.client_token):
-            body['ClientToken'] = request.client_token
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query),
-            body = Utils.parse_to_map(body)
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'UpdateComputeInstanceName',
@@ -1749,14 +1641,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.remark):
             query['Remark'] = request.remark
-        if not DaraCore.is_null(request.upgrade_mode):
-            query['UpgradeMode'] = request.upgrade_mode
-        body = {}
-        if not DaraCore.is_null(request.client_token):
-            body['ClientToken'] = request.client_token
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query),
-            body = Utils.parse_to_map(body)
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'UpdateComputeJob',
@@ -1789,14 +1675,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.remark):
             query['Remark'] = request.remark
-        if not DaraCore.is_null(request.upgrade_mode):
-            query['UpgradeMode'] = request.upgrade_mode
-        body = {}
-        if not DaraCore.is_null(request.client_token):
-            body['ClientToken'] = request.client_token
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query),
-            body = Utils.parse_to_map(body)
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'UpdateComputeJob',
@@ -1845,12 +1725,8 @@ class Client(OpenApiClient):
             query['JobName'] = request.job_name
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        body = {}
-        if not DaraCore.is_null(request.client_token):
-            body['ClientToken'] = request.client_token
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query),
-            body = Utils.parse_to_map(body)
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'UpdateComputeJobCu',
@@ -1885,12 +1761,8 @@ class Client(OpenApiClient):
             query['JobName'] = request.job_name
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        body = {}
-        if not DaraCore.is_null(request.client_token):
-            body['ClientToken'] = request.client_token
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query),
-            body = Utils.parse_to_map(body)
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'UpdateComputeJobCu',
@@ -1937,12 +1809,8 @@ class Client(OpenApiClient):
             query['JobName'] = request.job_name
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        body = {}
-        if not DaraCore.is_null(request.client_token):
-            body['ClientToken'] = request.client_token
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query),
-            body = Utils.parse_to_map(body)
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'UpdateComputeJobDraftSql',
@@ -1975,12 +1843,8 @@ class Client(OpenApiClient):
             query['JobName'] = request.job_name
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        body = {}
-        if not DaraCore.is_null(request.client_token):
-            body['ClientToken'] = request.client_token
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query),
-            body = Utils.parse_to_map(body)
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'UpdateComputeJobDraftSql',

@@ -7,15 +7,15 @@ from darabonba.model import DaraModel
 class UpdateComputeJobCuRequest(DaraModel):
     def __init__(
         self,
-        client_token: str = None,
         cu_limit: float = None,
         cu_reserved: float = None,
         instance_id: str = None,
         job_name: str = None,
         region_id: str = None,
     ):
-        self.client_token = client_token
+        # This parameter is required.
         self.cu_limit = cu_limit
+        # This parameter is required.
         self.cu_reserved = cu_reserved
         # This parameter is required.
         self.instance_id = instance_id
@@ -32,9 +32,6 @@ class UpdateComputeJobCuRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.client_token is not None:
-            result['ClientToken'] = self.client_token
-
         if self.cu_limit is not None:
             result['CuLimit'] = self.cu_limit
 
@@ -54,9 +51,6 @@ class UpdateComputeJobCuRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ClientToken') is not None:
-            self.client_token = m.get('ClientToken')
-
         if m.get('CuLimit') is not None:
             self.cu_limit = m.get('CuLimit')
 

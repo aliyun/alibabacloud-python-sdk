@@ -7,13 +7,11 @@ from darabonba.model import DaraModel
 class UpdateComputeJobDraftSqlRequest(DaraModel):
     def __init__(
         self,
-        client_token: str = None,
         draft_sql: str = None,
         instance_id: str = None,
         job_name: str = None,
         region_id: str = None,
     ):
-        self.client_token = client_token
         # This parameter is required.
         self.draft_sql = draft_sql
         # This parameter is required.
@@ -31,9 +29,6 @@ class UpdateComputeJobDraftSqlRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.client_token is not None:
-            result['ClientToken'] = self.client_token
-
         if self.draft_sql is not None:
             result['DraftSql'] = self.draft_sql
 
@@ -50,9 +45,6 @@ class UpdateComputeJobDraftSqlRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ClientToken') is not None:
-            self.client_token = m.get('ClientToken')
-
         if m.get('DraftSql') is not None:
             self.draft_sql = m.get('DraftSql')
 

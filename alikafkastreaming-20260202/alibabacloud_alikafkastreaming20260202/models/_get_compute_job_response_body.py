@@ -68,9 +68,9 @@ class GetComputeJobResponseBodyData(DaraModel):
         debug_mode: int = None,
         deployed_sql: str = None,
         draft_sql: str = None,
-        history_infos: str = None,
+        error_msg: str = None,
+        expiration_time: str = None,
         instance_id: str = None,
-        job_config: str = None,
         job_name: str = None,
         owner: str = None,
         region_id: str = None,
@@ -86,9 +86,10 @@ class GetComputeJobResponseBodyData(DaraModel):
         self.debug_mode = debug_mode
         self.deployed_sql = deployed_sql
         self.draft_sql = draft_sql
-        self.history_infos = history_infos
+        self.error_msg = error_msg
+        # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
+        self.expiration_time = expiration_time
         self.instance_id = instance_id
-        self.job_config = job_config
         self.job_name = job_name
         self.owner = owner
         self.region_id = region_id
@@ -125,14 +126,14 @@ class GetComputeJobResponseBodyData(DaraModel):
         if self.draft_sql is not None:
             result['DraftSql'] = self.draft_sql
 
-        if self.history_infos is not None:
-            result['HistoryInfos'] = self.history_infos
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+
+        if self.expiration_time is not None:
+            result['ExpirationTime'] = self.expiration_time
 
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
-
-        if self.job_config is not None:
-            result['JobConfig'] = self.job_config
 
         if self.job_name is not None:
             result['JobName'] = self.job_name
@@ -177,14 +178,14 @@ class GetComputeJobResponseBodyData(DaraModel):
         if m.get('DraftSql') is not None:
             self.draft_sql = m.get('DraftSql')
 
-        if m.get('HistoryInfos') is not None:
-            self.history_infos = m.get('HistoryInfos')
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+
+        if m.get('ExpirationTime') is not None:
+            self.expiration_time = m.get('ExpirationTime')
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-
-        if m.get('JobConfig') is not None:
-            self.job_config = m.get('JobConfig')
 
         if m.get('JobName') is not None:
             self.job_name = m.get('JobName')

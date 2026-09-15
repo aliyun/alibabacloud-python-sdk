@@ -8,12 +8,10 @@ class GetComputeInstanceRequest(DaraModel):
     def __init__(
         self,
         instance_id: str = None,
-        order_id: str = None,
         region_id: str = None,
     ):
         # This parameter is required.
         self.instance_id = instance_id
-        self.order_id = order_id
         # This parameter is required.
         self.region_id = region_id
 
@@ -28,9 +26,6 @@ class GetComputeInstanceRequest(DaraModel):
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
-        if self.order_id is not None:
-            result['OrderId'] = self.order_id
-
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -40,9 +35,6 @@ class GetComputeInstanceRequest(DaraModel):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
-
-        if m.get('OrderId') is not None:
-            self.order_id = m.get('OrderId')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
