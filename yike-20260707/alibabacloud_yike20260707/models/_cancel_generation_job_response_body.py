@@ -4,16 +4,16 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class SubmitVideoDetextJobResponseBody(DaraModel):
+class CancelGenerationJobResponseBody(DaraModel):
     def __init__(
         self,
         job_id: str = None,
         request_id: str = None,
+        status: str = None,
     ):
-        # The ID of the video text removal job. Use this ID to call GetVideoDetextJob to query the job.
         self.job_id = job_id
-        # The request ID, used for Tracing Analysis and troubleshooting.
         self.request_id = request_id
+        self.status = status
 
     def validate(self):
         pass
@@ -29,6 +29,9 @@ class SubmitVideoDetextJobResponseBody(DaraModel):
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
+        if self.status is not None:
+            result['Status'] = self.status
+
         return result
 
     def from_map(self, m: dict = None):
@@ -38,6 +41,9 @@ class SubmitVideoDetextJobResponseBody(DaraModel):
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
 
         return self
 

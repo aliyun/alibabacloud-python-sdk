@@ -5,6 +5,9 @@ from __future__ import annotations
 from ._batch_get_medias_request import BatchGetMediasRequest
 from ._batch_get_medias_response_body import BatchGetMediasResponseBody
 from ._batch_get_medias_response import BatchGetMediasResponse
+from ._cancel_generation_job_request import CancelGenerationJobRequest
+from ._cancel_generation_job_response_body import CancelGenerationJobResponseBody
+from ._cancel_generation_job_response import CancelGenerationJobResponse
 from ._create_asset_category_request import CreateAssetCategoryRequest
 from ._create_asset_category_response_body import CreateAssetCategoryResponseBody
 from ._create_asset_category_response import CreateAssetCategoryResponse
@@ -153,6 +156,9 @@ __all__ = [
     BatchGetMediasRequest,
     BatchGetMediasResponseBody,
     BatchGetMediasResponse,
+    CancelGenerationJobRequest,
+    CancelGenerationJobResponseBody,
+    CancelGenerationJobResponse,
     CreateAssetCategoryRequest,
     CreateAssetCategoryResponseBody,
     CreateAssetCategoryResponse,

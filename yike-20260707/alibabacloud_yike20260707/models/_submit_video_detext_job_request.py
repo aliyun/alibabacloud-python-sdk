@@ -13,17 +13,17 @@ class SubmitVideoDetextJobRequest(DaraModel):
         output: str = None,
         user_data: str = None,
     ):
-        # The user-level idempotency token. Maximum length: 40 characters. If the same user submits a request with the same token, the original task is returned.
+        # The user-level idempotency token. Maximum length: 40 characters. If the same user submits a request with the same token, the original job is returned.
         self.client_token = client_token
-        # The input configuration JSON string. You must specify either VideoUrl or VideoMediaId, but not both.
+        # The input configuration JSON string. You must provide exactly one of VideoUrl or VideoMediaId.
         # 
         # This parameter is required.
         self.input = input
-        # The text erasure parameter JSON string. This string can contain EraseAllText, TimeRanges, TextTargets, FullEraseTargets, and Config.
+        # The text removal parameters JSON string. TextTargets detects and removes text within specified regions. FullEraseTargets repairs entire rectangular regions regardless of text detection. EraseAllText controls only text filtering and does not expand the removal region. For parameter details, default behavior, and combination examples, see the supplementary request parameter description.
         self.job_parameters = job_parameters
-        # The output configuration JSON string. OssUri specifies an OSS directory or MP4 file path and cannot contain query parameters or fragments. For directory paths, detext.mp4 is automatically appended. Paths ending with .mp4 without a trailing / are used directly as the target file. If not specified, a signed URL of the processing result is returned in the query result.
+        # The output configuration JSON string. OssUri specifies an OSS directory or MP4 file path in the format oss://bucket/path. It cannot contain query parameters or fragments. A directory path automatically appends detext.mp4. A path ending in .mp4 without a trailing slash is used directly as the target file. If not specified, a signed URL for the result is returned in the query response.
         self.output = output
-        # The custom data JSON string for pass-through in desired state notifications. For MNS callbacks, use NotifyAddress to specify a queue name prefixed with yike-callback, and use NotifyMnsEndpoint to specify an MNS endpoint under the same account. For HTTP(S) callbacks, use NotifyAddress to specify the full URL.
+        # The custom data JSON string used for pass-through in desired-state notifications. For MNS callbacks, use NotifyAddress to specify a queue name prefixed with yike-callback, and use NotifyMnsEndpoint to specify the MNS endpoint of the same account. For HTTP(S) callbacks, use NotifyAddress to specify the full URL.
         self.user_data = user_data
 
     def validate(self):

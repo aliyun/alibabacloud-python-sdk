@@ -1,3 +1,7 @@
+2026-09-15 Version: 2.6.0
+- Support API CancelGenerationJob.
+
+
 2026-09-08 Version: 2.5.0
 - Support API GetAgentJob.
 - Support API SubmitAgentJob.

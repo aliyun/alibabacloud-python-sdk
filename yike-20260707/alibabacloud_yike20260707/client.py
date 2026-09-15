@@ -122,6 +122,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.batch_get_medias_with_options_async(request, runtime)
 
+    def cancel_generation_job_with_options(
+        self,
+        request: main_models.CancelGenerationJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelGenerationJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CancelGenerationJob',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CancelGenerationJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_generation_job_with_options_async(
+        self,
+        request: main_models.CancelGenerationJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelGenerationJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CancelGenerationJob',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CancelGenerationJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_generation_job(
+        self,
+        request: main_models.CancelGenerationJobRequest,
+    ) -> main_models.CancelGenerationJobResponse:
+        runtime = RuntimeOptions()
+        return self.cancel_generation_job_with_options(request, runtime)
+
+    async def cancel_generation_job_async(
+        self,
+        request: main_models.CancelGenerationJobRequest,
+    ) -> main_models.CancelGenerationJobResponse:
+        runtime = RuntimeOptions()
+        return await self.cancel_generation_job_with_options_async(request, runtime)
+
     def create_asset_category_with_options(
         self,
         request: main_models.CreateAssetCategoryRequest,
