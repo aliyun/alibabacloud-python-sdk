@@ -28,9 +28,9 @@ class ListManagedAgentsResponseBody(DaraModel):
         self.items = items
         # The maximum number of results returned for this request.
         self.max_results = max_results
-        # The message returned for the request.
+        # The result message of the request.
         self.message = message
-        # The token for the next page. An empty value indicates that no more pages are available.
+        # The token for the next page. An empty value indicates that the last page has been reached.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -123,7 +123,7 @@ class ListManagedAgentsResponseBodyItems(DaraModel):
         created_at: str = None,
         deploy_type: str = None,
         description: str = None,
-        effective_spec_version: int = None,
+        harness: main_models.ListManagedAgentsResponseBodyItemsHarness = None,
         latest_spec_version: int = None,
         name: str = None,
         runtime: str = None,
@@ -141,15 +141,21 @@ class ListManagedAgentsResponseBodyItems(DaraModel):
         self.deploy_type = deploy_type
         # The description of the managed agent.
         self.description = description
-        # The effective specification version number.
-        self.effective_spec_version = effective_spec_version
+        # The agent runtime framework.
+        self.harness = harness
         # The latest specification version number.
         self.latest_spec_version = latest_spec_version
-        # The managed agent name.
+        # The name of the managed agent.
         self.name = name
         # The runtime type.
         self.runtime = runtime
-        # The status of the managed agent.
+        # The status of the managed agent. Valid values:
+        # - Creating: Being created.
+        # - Failed: Failed.
+        # - Running: Running.
+        # - Updating: Being updated.
+        # - Deleted: Deleted.
+        # - Deleting: Being deleted.
         self.status = status
         # The update time in RFC 3339 format.
         self.updated_at = updated_at
@@ -157,7 +163,8 @@ class ListManagedAgentsResponseBodyItems(DaraModel):
         self.workspace_id = workspace_id
 
     def validate(self):
-        pass
+        if self.harness:
+            self.harness.validate()
 
     def to_map(self):
         result = dict()
@@ -179,8 +186,8 @@ class ListManagedAgentsResponseBodyItems(DaraModel):
         if self.description is not None:
             result['description'] = self.description
 
-        if self.effective_spec_version is not None:
-            result['effectiveSpecVersion'] = self.effective_spec_version
+        if self.harness is not None:
+            result['harness'] = self.harness.to_map()
 
         if self.latest_spec_version is not None:
             result['latestSpecVersion'] = self.latest_spec_version
@@ -219,8 +226,9 @@ class ListManagedAgentsResponseBodyItems(DaraModel):
         if m.get('description') is not None:
             self.description = m.get('description')
 
-        if m.get('effectiveSpecVersion') is not None:
-            self.effective_spec_version = m.get('effectiveSpecVersion')
+        if m.get('harness') is not None:
+            temp_model = main_models.ListManagedAgentsResponseBodyItemsHarness()
+            self.harness = temp_model.from_map(m.get('harness'))
 
         if m.get('latestSpecVersion') is not None:
             self.latest_spec_version = m.get('latestSpecVersion')
@@ -239,6 +247,82 @@ class ListManagedAgentsResponseBodyItems(DaraModel):
 
         if m.get('workspaceId') is not None:
             self.workspace_id = m.get('workspaceId')
+
+        return self
+
+class ListManagedAgentsResponseBodyItemsHarness(DaraModel):
+    def __init__(
+        self,
+        configuration: main_models.ListManagedAgentsResponseBodyItemsHarnessConfiguration = None,
+        type: str = None,
+    ):
+        # The Connector binding configuration for the qodercli framework.
+        self.configuration = configuration
+        # The runtime framework type. Valid values: qwenpaw and qodercli. The qodercli type binds by configuration.connectorServiceAccountKey, and the name is also populated during queries.
+        self.type = type
+
+    def validate(self):
+        if self.configuration:
+            self.configuration.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.configuration is not None:
+            result['configuration'] = self.configuration.to_map()
+
+        if self.type is not None:
+            result['type'] = self.type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('configuration') is not None:
+            temp_model = main_models.ListManagedAgentsResponseBodyItemsHarnessConfiguration()
+            self.configuration = temp_model.from_map(m.get('configuration'))
+
+        if m.get('type') is not None:
+            self.type = m.get('type')
+
+        return self
+
+class ListManagedAgentsResponseBodyItemsHarnessConfiguration(DaraModel):
+    def __init__(
+        self,
+        connector_service_account_key: str = None,
+        connector_service_account_name: str = None,
+    ):
+        # Binds a Service Account Key of the QoderCLI Connector by Key ID. This parameter can be omitted when only one key exists, but is required when multiple keys exist.
+        self.connector_service_account_key = connector_service_account_key
+        # The Connector Key name populated during queries. This parameter is not used as a binding reference during writes.
+        self.connector_service_account_name = connector_service_account_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.connector_service_account_key is not None:
+            result['connectorServiceAccountKey'] = self.connector_service_account_key
+
+        if self.connector_service_account_name is not None:
+            result['connectorServiceAccountName'] = self.connector_service_account_name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('connectorServiceAccountKey') is not None:
+            self.connector_service_account_key = m.get('connectorServiceAccountKey')
+
+        if m.get('connectorServiceAccountName') is not None:
+            self.connector_service_account_name = m.get('connectorServiceAccountName')
 
         return self
 

@@ -17,11 +17,17 @@ class GetCredentialResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The business status code.
         self.code = code
+        # The credential details.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message. An error description is returned if the request fails.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -87,23 +93,43 @@ class GetCredentialResponseBodyData(DaraModel):
         description: str = None,
         name: str = None,
         region_id: str = None,
+        resource_refs: List[main_models.GetCredentialResponseBodyDataResourceRefs] = None,
+        resource_scope: str = None,
         updated_at: str = None,
         workspace_id: str = None,
     ):
+        # The list of agents bound to the credential.
         self.bound_agents = bound_agents
+        # The creation time in UTC, formatted according to RFC 3339.
         self.created_at = created_at
+        # The credential ID.
         self.credential_id = credential_id
+        # The masked content of the credential. When credentialType is apiKey, the value of apiKey is returned as asterisks (*) of equal length.
         self.credential_metadata = credential_metadata
+        # The credential type. Currently, only apiKey is supported.
         self.credential_type = credential_type
+        # The credential description, up to 256 characters in length.
         self.description = description
+        # The credential name. The name must be unique within the workspace and can contain only letters, digits, periods (.), underscores (_), and hyphens (-). The name must be 3 to 128 characters in length and cannot use runtime reserved names.
         self.name = name
+        # The region ID where the resource resides.
         self.region_id = region_id
+        # Each item contains resourceType, resourceId, and resourceName. If the resource has been deleted, resourceName is empty.
+        self.resource_refs = resource_refs
+        # The scope of resources to which the credential applies.
+        self.resource_scope = resource_scope
+        # The time of the last modification in UTC, formatted according to RFC 3339.
         self.updated_at = updated_at
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
         if self.bound_agents:
             for v1 in self.bound_agents:
+                 if v1:
+                    v1.validate()
+        if self.resource_refs:
+            for v1 in self.resource_refs:
                  if v1:
                     v1.validate()
 
@@ -137,6 +163,14 @@ class GetCredentialResponseBodyData(DaraModel):
 
         if self.region_id is not None:
             result['regionId'] = self.region_id
+
+        result['resourceRefs'] = []
+        if self.resource_refs is not None:
+            for k1 in self.resource_refs:
+                result['resourceRefs'].append(k1.to_map() if k1 else None)
+
+        if self.resource_scope is not None:
+            result['resourceScope'] = self.resource_scope
 
         if self.updated_at is not None:
             result['updatedAt'] = self.updated_at
@@ -175,11 +209,66 @@ class GetCredentialResponseBodyData(DaraModel):
         if m.get('regionId') is not None:
             self.region_id = m.get('regionId')
 
+        self.resource_refs = []
+        if m.get('resourceRefs') is not None:
+            for k1 in m.get('resourceRefs'):
+                temp_model = main_models.GetCredentialResponseBodyDataResourceRefs()
+                self.resource_refs.append(temp_model.from_map(k1))
+
+        if m.get('resourceScope') is not None:
+            self.resource_scope = m.get('resourceScope')
+
         if m.get('updatedAt') is not None:
             self.updated_at = m.get('updatedAt')
 
         if m.get('workspaceId') is not None:
             self.workspace_id = m.get('workspaceId')
+
+        return self
+
+class GetCredentialResponseBodyDataResourceRefs(DaraModel):
+    def __init__(
+        self,
+        resource_id: str = None,
+        resource_name: str = None,
+        resource_type: str = None,
+    ):
+        # The unique identifier of the resource.
+        self.resource_id = resource_id
+        # The resource name. This value is empty if the resource has been deleted.
+        self.resource_name = resource_name
+        # The resource type, such as agent.
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.resource_id is not None:
+            result['resourceId'] = self.resource_id
+
+        if self.resource_name is not None:
+            result['resourceName'] = self.resource_name
+
+        if self.resource_type is not None:
+            result['resourceType'] = self.resource_type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('resourceId') is not None:
+            self.resource_id = m.get('resourceId')
+
+        if m.get('resourceName') is not None:
+            self.resource_name = m.get('resourceName')
+
+        if m.get('resourceType') is not None:
+            self.resource_type = m.get('resourceType')
 
         return self
 
@@ -189,7 +278,9 @@ class GetCredentialResponseBodyDataBoundAgents(DaraModel):
         agent_id: str = None,
         agent_name: str = None,
     ):
+        # The agent ID.
         self.agent_id = agent_id
+        # The agent name.
         self.agent_name = agent_name
 
     def validate(self):

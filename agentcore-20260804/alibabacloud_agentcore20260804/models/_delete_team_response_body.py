@@ -15,11 +15,17 @@ class DeleteTeamResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The business status code.
         self.code = code
+        # The information about the deleted team.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message. An error description is returned if the request failed.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -82,9 +88,19 @@ class DeleteTeamResponseBodyData(DaraModel):
         team_id: str = None,
         workspace_id: str = None,
     ):
+        # The team name. The name can contain only lowercase letters, digits, and hyphens (-). It must start and end with a lowercase letter or digit and must be 1 to 128 characters in length.
         self.name = name
+        # The team status. Valid values:
+        # - Creating
+        # - Active
+        # - Updating
+        # - Deleting
+        # - Failed
+        # - Deleted
         self.status = status
+        # The team ID.
         self.team_id = team_id
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

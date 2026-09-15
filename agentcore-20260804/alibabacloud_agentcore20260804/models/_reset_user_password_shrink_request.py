@@ -9,6 +9,7 @@ class ResetUserPasswordShrinkRequest(DaraModel):
         self,
         body_shrink: str = None,
     ):
+        # The request body for resetting the user password.
         self.body_shrink = body_shrink
 
     def validate(self):

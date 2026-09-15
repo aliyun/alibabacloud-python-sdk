@@ -85,27 +85,41 @@ class GetWorkspaceResponseBody(DaraModel):
 class GetWorkspaceResponseBodyData(DaraModel):
     def __init__(
         self,
+        authorization_status: str = None,
+        bucket_name: str = None,
         create_time: str = None,
         name: str = None,
         network_configuration: main_models.GetWorkspaceResponseBodyDataNetworkConfiguration = None,
         region_id: str = None,
         status: str = None,
         status_reason: str = None,
+        storage_type: str = None,
         tenant_id: str = None,
         workspace_id: str = None,
     ):
-        # The creation time.
+        # The OSS storage authorization status.
+        self.authorization_status = authorization_status
+        # The name of the private OSS bucket.
+        self.bucket_name = bucket_name
+        # The time when the workspace was created.
         self.create_time = create_time
         # The workspace name.
         self.name = name
-        # The workspace network configuration.
+        # The network configuration of the workspace.
         self.network_configuration = network_configuration
         # The region ID of the workspace.
         self.region_id = region_id
-        # The workspace status. Valid values: Initializing, InitializationFailed, Initialized, Deleting, Deleted.
+        # The workspace status. Valid values:
+        # - Initializing
+        # - InitializationFailed
+        # - Initialized
+        # - Deleting
+        # - Deleted
         self.status = status
         # The reason for the workspace status.
         self.status_reason = status_reason
+        # The storage type of the workspace.
+        self.storage_type = storage_type
         # The ID of the tenant to which the workspace belongs.
         self.tenant_id = tenant_id
         # The workspace ID.
@@ -120,6 +134,12 @@ class GetWorkspaceResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.authorization_status is not None:
+            result['authorizationStatus'] = self.authorization_status
+
+        if self.bucket_name is not None:
+            result['bucketName'] = self.bucket_name
+
         if self.create_time is not None:
             result['createTime'] = self.create_time
 
@@ -138,6 +158,9 @@ class GetWorkspaceResponseBodyData(DaraModel):
         if self.status_reason is not None:
             result['statusReason'] = self.status_reason
 
+        if self.storage_type is not None:
+            result['storageType'] = self.storage_type
+
         if self.tenant_id is not None:
             result['tenantId'] = self.tenant_id
 
@@ -148,6 +171,12 @@ class GetWorkspaceResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('authorizationStatus') is not None:
+            self.authorization_status = m.get('authorizationStatus')
+
+        if m.get('bucketName') is not None:
+            self.bucket_name = m.get('bucketName')
+
         if m.get('createTime') is not None:
             self.create_time = m.get('createTime')
 
@@ -167,6 +196,9 @@ class GetWorkspaceResponseBodyData(DaraModel):
         if m.get('statusReason') is not None:
             self.status_reason = m.get('statusReason')
 
+        if m.get('storageType') is not None:
+            self.storage_type = m.get('storageType')
+
         if m.get('tenantId') is not None:
             self.tenant_id = m.get('tenantId')
 
@@ -178,9 +210,12 @@ class GetWorkspaceResponseBodyData(DaraModel):
 class GetWorkspaceResponseBodyDataNetworkConfiguration(DaraModel):
     def __init__(
         self,
+        public_egress_ip: str = None,
         vpc: main_models.GetWorkspaceResponseBodyDataNetworkConfigurationVpc = None,
     ):
-        # The user VPC network configuration.
+        # The public egress IP address allocated to the workspace. You can use this IP address to configure IP address whitelists for external services. This field is returned only when the public egress resource is attached and an address is allocated. The field is empty if no address is allocated, the attachment is failed, or the address is being released. This address is independent of whether VPC networking is active.
+        self.public_egress_ip = public_egress_ip
+        # The VPC network configuration of the user.
         self.vpc = vpc
 
     def validate(self):
@@ -192,6 +227,9 @@ class GetWorkspaceResponseBodyDataNetworkConfiguration(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.public_egress_ip is not None:
+            result['publicEgressIp'] = self.public_egress_ip
+
         if self.vpc is not None:
             result['vpc'] = self.vpc.to_map()
 
@@ -199,6 +237,9 @@ class GetWorkspaceResponseBodyDataNetworkConfiguration(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('publicEgressIp') is not None:
+            self.public_egress_ip = m.get('publicEgressIp')
+
         if m.get('vpc') is not None:
             temp_model = main_models.GetWorkspaceResponseBodyDataNetworkConfigurationVpc()
             self.vpc = temp_model.from_map(m.get('vpc'))
@@ -212,7 +253,7 @@ class GetWorkspaceResponseBodyDataNetworkConfigurationVpc(DaraModel):
         v_switch_ids: List[str] = None,
         vpc_id: str = None,
     ):
-        # Indicates whether the VPC network is enabled.
+        # Indicates whether VPC networking is enabled.
         self.enabled = enabled
         # The list of vSwitch IDs.
         self.v_switch_ids = v_switch_ids

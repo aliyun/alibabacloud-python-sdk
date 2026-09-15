@@ -12,7 +12,7 @@ class CreateMcpShrinkRequest(DaraModel):
     ):
         # The request body.
         self.body_shrink = body_shrink
-        # The client idempotency token.
+        # The client token that ensures idempotency of the request.
         self.client_token = client_token
 
     def validate(self):

@@ -52,7 +52,7 @@ class GetAgentSpecImportFileUrlResponseBodyData(DaraModel):
         oss_object_name: str = None,
         upload_url: str = None,
     ):
-        # The Content-Type used for the OSS PUT request.
+        # The Content-Type to use for the OSS PUT request.
         self.content_type = content_type
         # The maximum number of bytes allowed for the upload.
         self.max_size = max_size

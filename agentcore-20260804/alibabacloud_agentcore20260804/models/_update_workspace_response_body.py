@@ -85,21 +85,30 @@ class UpdateWorkspaceResponseBody(DaraModel):
 class UpdateWorkspaceResponseBodyData(DaraModel):
     def __init__(
         self,
+        authorization_status: str = None,
+        bucket_name: str = None,
         name: str = None,
         network_configuration: main_models.UpdateWorkspaceResponseBodyDataNetworkConfiguration = None,
         region_id: str = None,
         status: str = None,
+        storage_type: str = None,
         tenant_id: str = None,
         workspace_id: str = None,
     ):
+        # The OSS storage authorization status.
+        self.authorization_status = authorization_status
+        # The name of the private OSS bucket.
+        self.bucket_name = bucket_name
         # The workspace name.
         self.name = name
-        # The workspace network configuration.
+        # The network configuration of the workspace.
         self.network_configuration = network_configuration
         # The region ID of the workspace.
         self.region_id = region_id
         # The workspace status. Valid values: Initializing, Initialized, Deleting, Deleted.
         self.status = status
+        # The storage type of the workspace.
+        self.storage_type = storage_type
         # The ID of the tenant to which the workspace belongs.
         self.tenant_id = tenant_id
         # The workspace ID.
@@ -114,6 +123,12 @@ class UpdateWorkspaceResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.authorization_status is not None:
+            result['authorizationStatus'] = self.authorization_status
+
+        if self.bucket_name is not None:
+            result['bucketName'] = self.bucket_name
+
         if self.name is not None:
             result['name'] = self.name
 
@@ -126,6 +141,9 @@ class UpdateWorkspaceResponseBodyData(DaraModel):
         if self.status is not None:
             result['status'] = self.status
 
+        if self.storage_type is not None:
+            result['storageType'] = self.storage_type
+
         if self.tenant_id is not None:
             result['tenantId'] = self.tenant_id
 
@@ -136,6 +154,12 @@ class UpdateWorkspaceResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('authorizationStatus') is not None:
+            self.authorization_status = m.get('authorizationStatus')
+
+        if m.get('bucketName') is not None:
+            self.bucket_name = m.get('bucketName')
+
         if m.get('name') is not None:
             self.name = m.get('name')
 
@@ -148,6 +172,9 @@ class UpdateWorkspaceResponseBodyData(DaraModel):
 
         if m.get('status') is not None:
             self.status = m.get('status')
+
+        if m.get('storageType') is not None:
+            self.storage_type = m.get('storageType')
 
         if m.get('tenantId') is not None:
             self.tenant_id = m.get('tenantId')
@@ -162,7 +189,7 @@ class UpdateWorkspaceResponseBodyDataNetworkConfiguration(DaraModel):
         self,
         vpc: main_models.UpdateWorkspaceResponseBodyDataNetworkConfigurationVpc = None,
     ):
-        # The user VPC network configuration.
+        # The VPC network configuration.
         self.vpc = vpc
 
     def validate(self):
@@ -198,7 +225,7 @@ class UpdateWorkspaceResponseBodyDataNetworkConfigurationVpc(DaraModel):
         self.enabled = enabled
         # The list of vSwitch IDs.
         self.v_switch_ids = v_switch_ids
-        # The ID of the user VPC.
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):

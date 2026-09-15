@@ -51,6 +51,7 @@ class CreateWorkspaceRequestBody(DaraModel):
         self,
         name: str = None,
         network_configuration: main_models.CreateWorkspaceRequestBodyNetworkConfiguration = None,
+        storage_type: str = None,
     ):
         # The workspace name.
         # 
@@ -58,6 +59,7 @@ class CreateWorkspaceRequestBody(DaraModel):
         self.name = name
         # The network configuration of the workspace.
         self.network_configuration = network_configuration
+        self.storage_type = storage_type
 
     def validate(self):
         if self.network_configuration:
@@ -74,6 +76,9 @@ class CreateWorkspaceRequestBody(DaraModel):
         if self.network_configuration is not None:
             result['networkConfiguration'] = self.network_configuration.to_map()
 
+        if self.storage_type is not None:
+            result['storageType'] = self.storage_type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -84,6 +89,9 @@ class CreateWorkspaceRequestBody(DaraModel):
         if m.get('networkConfiguration') is not None:
             temp_model = main_models.CreateWorkspaceRequestBodyNetworkConfiguration()
             self.network_configuration = temp_model.from_map(m.get('networkConfiguration'))
+
+        if m.get('storageType') is not None:
+            self.storage_type = m.get('storageType')
 
         return self
 
@@ -130,7 +138,7 @@ class CreateWorkspaceRequestBodyNetworkConfigurationVpc(DaraModel):
         self.enabled = enabled
         # The list of vSwitch IDs. When VPC networking is enabled, at least one vSwitch must be included, and all vSwitches must belong to the VPC specified by VpcId.
         self.v_switch_ids = v_switch_ids
-        # The ID of the VPC.
+        # The ID of the user VPC.
         self.vpc_id = vpc_id
 
     def validate(self):

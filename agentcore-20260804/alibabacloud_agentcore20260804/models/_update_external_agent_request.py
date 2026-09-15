@@ -15,7 +15,7 @@ class UpdateExternalAgentRequest(DaraModel):
     ):
         # The request body.
         self.body = body
-        # A reserved idempotency token. The backend does not guarantee idempotency in the current version.
+        # The reserved idempotency token. The backend does not guarantee idempotence in the current phase.
         self.client_token = client_token
 
     def validate(self):
@@ -62,12 +62,11 @@ class UpdateExternalAgentRequestBody(DaraModel):
         self.description = description
         # The agent instruction that guides the behavior of the agent.
         self.instruction = instruction
-        # The model configuration. This parameter is available only when modelSource is set to PLATFORM.
+        # The model configuration. Available only when modelSource is set to PLATFORM.
         self.model = model
         # The source of the model configuration. Valid values:
-        # 
-        # - PLATFORM: The model configuration is parsed and distributed by the platform. You can specify the model parameter.
-        # - RUNTIME: The model is managed by the external runtime. You cannot specify the model parameter at the same time.
+        # - PLATFORM: The platform parses and delivers the model configuration.
+        # - RUNTIME: The external runtime manages the model on its own. You cannot specify model at the same time.
         self.model_source = model_source
         # The name of the external agent.
         self.name = name
@@ -174,7 +173,6 @@ class UpdateExternalAgentRequestBodyTools(DaraModel):
         # This parameter is required.
         self.name = name
         # The tool type. Valid values:
-        # 
         # - MCP: MCP tool.
         # 
         # This parameter is required.
@@ -247,6 +245,8 @@ class UpdateExternalAgentRequestBodyTemplateAiRegistry(DaraModel):
         # This parameter is required.
         self.name = name
         # The version of the template in AI Registry.
+        # 
+        # This parameter is required.
         self.version = version
 
     def validate(self):

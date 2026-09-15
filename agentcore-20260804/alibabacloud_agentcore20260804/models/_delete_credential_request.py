@@ -9,6 +9,7 @@ class DeleteCredentialRequest(DaraModel):
         self,
         client_token: str = None,
     ):
+        # Not supported.
         self.client_token = client_token
 
     def validate(self):

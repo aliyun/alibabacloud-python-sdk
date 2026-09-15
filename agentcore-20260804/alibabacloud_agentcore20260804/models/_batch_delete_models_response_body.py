@@ -17,11 +17,17 @@ class BatchDeleteModelsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The business status code. The value SUCCESS indicates success.
         self.code = code
+        # The batch deletion result.
         self.data = data
+        # The HTTP status code. The value 200 indicates success.
         self.http_status_code = http_status_code
+        # The request processing result message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -82,7 +88,9 @@ class BatchDeleteModelsResponseBodyData(DaraModel):
         model_ids: List[str] = None,
         workspace_id: str = None,
     ):
+        # The list of model IDs.
         self.model_ids = model_ids
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

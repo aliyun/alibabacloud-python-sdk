@@ -10,6 +10,7 @@ class ResetUserPasswordRequest(DaraModel):
         self,
         body: main_models.ResetUserPasswordRequestBody = None,
     ):
+        # The request body for resetting the user password.
         self.body = body
 
     def validate(self):
@@ -41,8 +42,11 @@ class ResetUserPasswordRequestBody(DaraModel):
         password: str = None,
         username: str = None,
     ):
+        # The user ID. At least one of agentCoreUserId and username must be specified. If both are specified, agentCoreUserId takes precedence.
         self.agent_core_user_id = agent_core_user_id
+        # The new password after the reset. The password must be 8 to 32 characters in length and must contain uppercase letters, lowercase letters, digits, and special characters. The password cannot contain the username. If this parameter is not specified, the server generates a random password.
         self.password = password
+        # The username. At least one of username and agentCoreUserId must be specified.
         self.username = username
 
     def validate(self):

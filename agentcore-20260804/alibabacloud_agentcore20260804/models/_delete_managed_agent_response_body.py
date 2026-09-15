@@ -15,13 +15,13 @@ class DeleteManagedAgentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The business status code. The value SUCCESS indicates success.
+        # The business status code. The value SUCCESS is returned if the request succeeds.
         self.code = code
-        # The summary information of the managed agent after deletion.
+        # The summary information of the deleted managed agent.
         self.data = data
-        # The HTTP status code. The value 200 indicates success.
+        # The HTTP status code. The value 200 is returned if the request succeeds.
         self.http_status_code = http_status_code
-        # The result message of the request.
+        # The message returned for the request processing result.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -88,7 +88,6 @@ class DeleteManagedAgentResponseBodyData(DaraModel):
         created_at: str = None,
         deploy_type: str = None,
         description: str = None,
-        effective_spec_version: int = None,
         latest_spec_version: int = None,
         name: str = None,
         runtime: str = None,
@@ -106,8 +105,6 @@ class DeleteManagedAgentResponseBodyData(DaraModel):
         self.deploy_type = deploy_type
         # The description of the managed agent.
         self.description = description
-        # The effective specification version number.
-        self.effective_spec_version = effective_spec_version
         # The latest specification version number.
         self.latest_spec_version = latest_spec_version
         # The name of the managed agent.
@@ -143,9 +140,6 @@ class DeleteManagedAgentResponseBodyData(DaraModel):
 
         if self.description is not None:
             result['description'] = self.description
-
-        if self.effective_spec_version is not None:
-            result['effectiveSpecVersion'] = self.effective_spec_version
 
         if self.latest_spec_version is not None:
             result['latestSpecVersion'] = self.latest_spec_version
@@ -183,9 +177,6 @@ class DeleteManagedAgentResponseBodyData(DaraModel):
 
         if m.get('description') is not None:
             self.description = m.get('description')
-
-        if m.get('effectiveSpecVersion') is not None:
-            self.effective_spec_version = m.get('effectiveSpecVersion')
 
         if m.get('latestSpecVersion') is not None:
             self.latest_spec_version = m.get('latestSpecVersion')

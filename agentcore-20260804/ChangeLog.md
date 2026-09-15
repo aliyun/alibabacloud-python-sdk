@@ -1,3 +1,120 @@
+2026-09-15 Version: 2.0.0
+- Support API ConvertMcpToFreeEdit.
+- Support API DisableConnector.
+- Support API EnableConnector.
+- Support API GetMcpMarketItem.
+- Support API InstallMcpMarketItem.
+- Support API ListConnectorModels.
+- Support API ListConnectors.
+- Support API ListMcpMarketItems.
+- Support API ListSandboxSessions.
+- Support API ListSandboxes.
+- Support API UpdateConnector.
+- Support API UpdateMcpTemplateConfig.
+- Support API VerifyConnector.
+- Support API VerifyWorkspaceOssMountRamAuthorization.
+- Update API CreateCredential: add request parameters body.resourceRefs.
+- Update API CreateCredential: add request parameters body.resourceScope.
+- Update API CreateCredential: add response parameters Body.data.resourceRefs.
+- Update API CreateCredential: add response parameters Body.data.resourceScope.
+- Update API CreateExternalAgent: delete response parameters Body.data.effectiveResult.
+- Update API CreateExternalAgent: delete response parameters Body.data.effectiveSpecVersion.
+- Update API CreateManagedAgent: add request parameters body.harness.
+- Update API CreateManagedAgent: add request parameters body.ossMounts.
+- Update API CreateManagedAgent: add request parameters body.runtime.hpa.
+- Update API CreateManagedAgent: add response parameters Body.data.harness.
+- Update API CreateManagedAgent: add response parameters Body.data.ossMounts.
+- Update API CreateManagedAgent: add response parameters Body.data.sandboxPhaseCounts.
+- Update API CreateManagedAgent: add response parameters Body.data.runtime.hpa.
+- Update API CreateMcp: add request parameters body.customTags.
+- Update API CreateMcp: add request parameters body.deploymentConfig.
+- Update API CreateMcp: add request parameters body.auth.codePackage.
+- Update API CreateMcp: add response parameters Body.data.customTags.
+- Update API CreateMcp: add response parameters Body.data.deploymentConfig.
+- Update API CreateMcp: add response parameters Body.data.endpoint.
+- Update API CreateMcp: add response parameters Body.data.functionName.
+- Update API CreateMcp: add response parameters Body.data.marketSource.
+- Update API CreateMcp: add response parameters Body.data.officialTag.
+- Update API CreateMcp: add response parameters Body.data.template.
+- Update API CreateMcp: add response parameters Body.data.usageActive.
+- Update API CreateMcp: add response parameters Body.data.auth.codePackage.
+- Update API CreateWorkspace: add request parameters body.storageType.
+- Update API CreateWorkspace: add response parameters Body.data.aiRegistryNamespaceId.
+- Update API CreateWorkspace: add response parameters Body.data.authorizationStatus.
+- Update API CreateWorkspace: add response parameters Body.data.bucketName.
+- Update API CreateWorkspace: add response parameters Body.data.cmsWorkspaceId.
+- Update API CreateWorkspace: add response parameters Body.data.createTime.
+- Update API CreateWorkspace: add response parameters Body.data.resourceGroupId.
+- Update API CreateWorkspace: add response parameters Body.data.statusReason.
+- Update API CreateWorkspace: add response parameters Body.data.storageType.
+- Update API CreateWorkspace: add response parameters Body.data.tags.
+- Update API DeleteExternalAgent: delete response parameters Body.data.effectiveSpecVersion.
+- Update API DeleteManagedAgent: delete response parameters Body.data.effectiveSpecVersion.
+- Update API GetCredential: add response parameters Body.data.resourceRefs.
+- Update API GetCredential: add response parameters Body.data.resourceScope.
+- Update API GetExternalAgent: delete response parameters Body.data.effectiveResult.
+- Update API GetExternalAgent: delete response parameters Body.data.effectiveSpecVersion.
+- Update API GetManagedAgent: add response parameters Body.data.harness.
+- Update API GetManagedAgent: add response parameters Body.data.ossMounts.
+- Update API GetManagedAgent: add response parameters Body.data.sandboxPhaseCounts.
+- Update API GetManagedAgent: add response parameters Body.data.runtime.hpa.
+- Update API GetMcp: add response parameters Body.data.createdAt.
+- Update API GetMcp: add response parameters Body.data.customTags.
+- Update API GetMcp: add response parameters Body.data.deploymentConfig.
+- Update API GetMcp: add response parameters Body.data.endpoint.
+- Update API GetMcp: add response parameters Body.data.functionName.
+- Update API GetMcp: add response parameters Body.data.marketSource.
+- Update API GetMcp: add response parameters Body.data.officialTag.
+- Update API GetMcp: add response parameters Body.data.template.
+- Update API GetMcp: add response parameters Body.data.updatedAt.
+- Update API GetMcp: add response parameters Body.data.usageActive.
+- Update API GetMcp: add response parameters Body.data.auth.codePackage.
+- Update API GetTeam: delete response parameters Body.data.agents.$.effectiveSpecVersion.
+- Update API GetWorkspace: add response parameters Body.data.authorizationStatus.
+- Update API GetWorkspace: add response parameters Body.data.bucketName.
+- Update API GetWorkspace: add response parameters Body.data.storageType.
+- Update API GetWorkspace: add response parameters Body.data.networkConfiguration.publicEgressIp.
+- Update API ListCredentials: add response parameters Body.items.$.resourceRefs.
+- Update API ListCredentials: add response parameters Body.items.$.resourceScope.
+- Update API ListExternalAgents: delete response parameters Body.items.$.effectiveSpecVersion.
+- Update API ListManagedAgents: add response parameters Body.items.$.harness.
+- Update API ListManagedAgents: delete response parameters Body.items.$.effectiveSpecVersion.
+- Update API ListMcps: add request parameters officialTag.
+- Update API ListMcps: add request parameters usageActive.
+- Update API ListMcps: add response parameters Body.items.$.createdAt.
+- Update API ListMcps: add response parameters Body.items.$.customTags.
+- Update API ListMcps: add response parameters Body.items.$.deploymentConfig.
+- Update API ListMcps: add response parameters Body.items.$.endpoint.
+- Update API ListMcps: add response parameters Body.items.$.functionName.
+- Update API ListMcps: add response parameters Body.items.$.marketSource.
+- Update API ListMcps: add response parameters Body.items.$.officialTag.
+- Update API ListMcps: add response parameters Body.items.$.updatedAt.
+- Update API ListMcps: add response parameters Body.items.$.usageActive.
+- Update API ListMcps: add response parameters Body.items.$.auth.codePackage.
+- Update API UpdateCredential: add request parameters body.resourceRefs.
+- Update API UpdateCredential: add request parameters body.resourceScope.
+- Update API UpdateCredential: add response parameters Body.data.resourceRefs.
+- Update API UpdateCredential: add response parameters Body.data.resourceScope.
+- Update API UpdateExternalAgent: delete response parameters Body.data.effectiveResult.
+- Update API UpdateExternalAgent: delete response parameters Body.data.effectiveSpecVersion.
+- Update API UpdateManagedAgent: add request parameters body.harness.
+- Update API UpdateManagedAgent: add request parameters body.ossMounts.
+- Update API UpdateManagedAgent: add request parameters body.runtime.hpa.
+- Update API UpdateManagedAgent: add response parameters Body.data.harness.
+- Update API UpdateManagedAgent: add response parameters Body.data.ossMounts.
+- Update API UpdateManagedAgent: add response parameters Body.data.sandboxPhaseCounts.
+- Update API UpdateManagedAgent: add response parameters Body.data.runtime.hpa.
+- Update API UpdateMcp: add request parameters body.customTags.
+- Update API UpdateMcp: add request parameters body.deploymentConfig.
+- Update API UpdateMcp: add request parameters body.auth.codePackage.
+- Update API UpdateModel: add request parameters body.capabilities.
+- Update API UpdateModel: add request parameters body.contextSize.
+- Update API UpdateModel: add request parameters body.maxTokens.
+- Update API UpdateWorkspace: add response parameters Body.data.authorizationStatus.
+- Update API UpdateWorkspace: add response parameters Body.data.bucketName.
+- Update API UpdateWorkspace: add response parameters Body.data.storageType.
+
+
 2026-08-29 Version: 1.2.1
 - Update API ListMcps: add request parameters name.
 - Update API ListMcps: add request parameters searchType.

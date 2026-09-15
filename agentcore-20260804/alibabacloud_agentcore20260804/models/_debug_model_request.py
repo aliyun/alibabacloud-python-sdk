@@ -10,6 +10,7 @@ class DebugModelRequest(DaraModel):
         self,
         body: main_models.DebugModelRequestBody = None,
     ):
+        # The request body.
         self.body = body
 
     def validate(self):
@@ -39,6 +40,8 @@ class DebugModelRequestBody(DaraModel):
         self,
         prompt: str = None,
     ):
+        # The prompt used to verify the model call chain.
+        # 
         # This parameter is required.
         self.prompt = prompt
 

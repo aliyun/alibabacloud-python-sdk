@@ -17,11 +17,11 @@ class DeleteIdentityProviderResponseBody(DaraModel):
     ):
         # The business status code.
         self.code = code
-        # The binding information of the external identity provider after the unbinding operation is accepted.
+        # The binding information of the external identity provider after the unbinding request is accepted.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The response message. An error description is returned if the request fails.
+        # The response message. An error description is returned if the request failed.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -87,17 +87,21 @@ class DeleteIdentityProviderResponseBodyData(DaraModel):
         status: str = None,
         workspace_id: str = None,
     ):
-        # The type of the external identity provider. Valid values: DingTalk, Feishu.
+        # The type of the external identity provider. Valid values:
+        # 
+        # - DingTalk
+        # - Feishu
         self.identity_provider_type = identity_provider_type
         # The status. Valid values:
+        # 
         # - CONFIGURED: The configuration has been accepted and is waiting for the user pool to be provisioned.
         # - SYNCING: Organization members are being synchronized.
         # - SYNCED: Organization member synchronization is complete.
         # - READY: The binding is in effect.
         # - SYNC_FAILED: Organization member synchronization failed.
         # - UPDATING: The configuration is being updated.
-        # - UPDATE_FAILED: Configuration update failed.
-        # - DISCONNECTING: The unbinding is in progress.
+        # - UPDATE_FAILED: The configuration update failed.
+        # - DISCONNECTING: The identity provider is being unbound.
         # - DISCONNECT_FAILED: The unbinding failed.
         self.status = status
         # The workspace ID.

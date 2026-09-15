@@ -9,6 +9,7 @@ class DebugModelShrinkRequest(DaraModel):
         self,
         body_shrink: str = None,
     ):
+        # The request body.
         self.body_shrink = body_shrink
 
     def validate(self):

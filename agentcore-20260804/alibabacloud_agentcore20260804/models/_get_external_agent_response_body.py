@@ -17,13 +17,13 @@ class GetExternalAgentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The business status code. The value SUCCESS indicates success.
+        # The business status code. The value SUCCESS is returned when the request succeeds.
         self.code = code
-        # The external agent details.
+        # The details of the external agent.
         self.data = data
-        # The HTTP status code. The value 200 indicates success.
+        # The HTTP status code. The value 200 is returned when the request succeeds.
         self.http_status_code = http_status_code
-        # The request processing result message.
+        # The message that indicates the result of the request.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -90,8 +90,6 @@ class GetExternalAgentResponseBodyData(DaraModel):
         created_at: str = None,
         deploy_type: str = None,
         description: str = None,
-        effective_result: main_models.GetExternalAgentResponseBodyDataEffectiveResult = None,
-        effective_spec_version: int = None,
         external_agent_status: main_models.GetExternalAgentResponseBodyDataExternalAgentStatus = None,
         instruction: str = None,
         latest_spec_version: int = None,
@@ -116,12 +114,8 @@ class GetExternalAgentResponseBodyData(DaraModel):
         self.created_at = created_at
         # The deployment type.
         self.deploy_type = deploy_type
-        # The external agent description.
+        # The description of the external agent.
         self.description = description
-        # The runtime result corresponding to the currently effective specification.
-        self.effective_result = effective_result
-        # The currently effective specification version number.
-        self.effective_spec_version = effective_spec_version
         # The runtime status information reported by the external agent.
         self.external_agent_status = external_agent_status
         # The agent instruction that guides the behavior of the agent.
@@ -129,20 +123,20 @@ class GetExternalAgentResponseBodyData(DaraModel):
         # The latest specification version number.
         self.latest_spec_version = latest_spec_version
         # The processing status of the latest specification version. Valid values:
-        # - pending: Pending processing.
-        # - processing: Being processed.
+        # - pending: Pending.
+        # - processing: Processing.
         # - waiting_retry: Waiting for retry.
         # - succeeded: Succeeded.
         # - failed: Failed.
         # - superseded: Superseded by a newer version.
         self.latest_version_status = latest_version_status
-        # The model configuration. Available only when modelSource is set to PLATFORM.
+        # The model configuration. This parameter is available only when modelSource is set to PLATFORM.
         self.model = model
-        # The model configuration source. Valid values:
-        # - PLATFORM: The model configuration is parsed and delivered by the platform.
-        # - RUNTIME: The model is managed by the external runtime. The model parameter cannot be specified at the same time.
+        # The source of the model configuration. PLATFORM indicates that the model configuration is parsed and delivered by the platform. RUNTIME indicates that the model is managed by the external runtime, and the model parameter cannot be specified at the same time. Valid values:
+        # - PLATFORM: Platform model.
+        # - RUNTIME: Runtime model.
         self.model_source = model_source
-        # The external agent name.
+        # The name of the external agent.
         self.name = name
         # The region ID.
         self.region_id = region_id
@@ -150,13 +144,13 @@ class GetExternalAgentResponseBodyData(DaraModel):
         self.runtime = runtime
         # The list of skill configurations.
         self.skills = skills
-        # The external agent status. Valid values:
-        # - Creating: The agent is being created.
-        # - Running: The agent is running.
-        # - Failed: The agent has failed.
-        # - Updating: The agent is being updated.
-        # - Deleting: The agent is being deleted.
-        # - Deleted: The agent has been deleted.
+        # The status of the external agent. Valid values:
+        # - Creating: Being created.
+        # - Running: Running.
+        # - Failed: Failed.
+        # - Updating: Being updated.
+        # - Deleting: Being deleted.
+        # - Deleted: Deleted.
         self.status = status
         # The agent template configuration.
         self.template = template
@@ -168,8 +162,6 @@ class GetExternalAgentResponseBodyData(DaraModel):
         self.workspace_id = workspace_id
 
     def validate(self):
-        if self.effective_result:
-            self.effective_result.validate()
         if self.external_agent_status:
             self.external_agent_status.validate()
         if self.model:
@@ -204,12 +196,6 @@ class GetExternalAgentResponseBodyData(DaraModel):
 
         if self.description is not None:
             result['description'] = self.description
-
-        if self.effective_result is not None:
-            result['effectiveResult'] = self.effective_result.to_map()
-
-        if self.effective_spec_version is not None:
-            result['effectiveSpecVersion'] = self.effective_spec_version
 
         if self.external_agent_status is not None:
             result['externalAgentStatus'] = self.external_agent_status.to_map()
@@ -278,13 +264,6 @@ class GetExternalAgentResponseBodyData(DaraModel):
 
         if m.get('description') is not None:
             self.description = m.get('description')
-
-        if m.get('effectiveResult') is not None:
-            temp_model = main_models.GetExternalAgentResponseBodyDataEffectiveResult()
-            self.effective_result = temp_model.from_map(m.get('effectiveResult'))
-
-        if m.get('effectiveSpecVersion') is not None:
-            self.effective_spec_version = m.get('effectiveSpecVersion')
 
         if m.get('externalAgentStatus') is not None:
             temp_model = main_models.GetExternalAgentResponseBodyDataExternalAgentStatus()
@@ -425,6 +404,8 @@ class GetExternalAgentResponseBodyDataTemplateAiRegistry(DaraModel):
         # This parameter is required.
         self.name = name
         # The version of the template in AI Registry.
+        # 
+        # This parameter is required.
         self.version = version
 
     def validate(self):
@@ -542,14 +523,14 @@ class GetExternalAgentResponseBodyDataExternalAgentStatus(DaraModel):
         local_ip: str = None,
         runtime: str = None,
     ):
-        # The heartbeat status. Valid values:
-        # - ONLINE: The latest heartbeat has not exceeded the configured timeout threshold.
-        # - STALE: The heartbeat has timed out.
-        # - UNKNOWN: The heartbeat is missing or has an invalid format.
+        # The heartbeat status. ONLINE indicates that the most recent heartbeat has not exceeded the configured timeout threshold. STALE indicates that the heartbeat has timed out. UNKNOWN indicates that the heartbeat is missing or has an invalid format. Valid values:
+        # - ONLINE: Online.
+        # - STALE: Heartbeat expired.
+        # - UNKNOWN: Unknown.
         self.heartbeat_status = heartbeat_status
-        # The time when the external agent was last active in RFC 3339 format.
+        # The last active time of the external agent in RFC 3339 format.
         self.last_active_at = last_active_at
-        # The time of the last heartbeat from the external agent in RFC 3339 format.
+        # The last heartbeat time of the external agent in RFC 3339 format.
         self.last_heartbeat = last_heartbeat
         # The local IP address reported by the external agent.
         self.local_ip = local_ip
@@ -597,79 +578,6 @@ class GetExternalAgentResponseBodyDataExternalAgentStatus(DaraModel):
 
         if m.get('runtime') is not None:
             self.runtime = m.get('runtime')
-
-        return self
-
-class GetExternalAgentResponseBodyDataEffectiveResult(DaraModel):
-    def __init__(
-        self,
-        matrix_user_id: str = None,
-        personal_room_id: str = None,
-        runtime_accept_status: str = None,
-        runtime_id: str = None,
-        runtime_request_version: int = None,
-        workspace_prefix: str = None,
-    ):
-        # The user ID of the agent in Matrix.
-        self.matrix_user_id = matrix_user_id
-        # The Matrix personal room ID of the agent.
-        self.personal_room_id = personal_room_id
-        # The acceptance status of the runtime for the current request version.
-        self.runtime_accept_status = runtime_accept_status
-        # The runtime instance ID.
-        self.runtime_id = runtime_id
-        # The runtime request version number.
-        self.runtime_request_version = runtime_request_version
-        # The storage prefix of the agent in the workspace.
-        self.workspace_prefix = workspace_prefix
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        if self.matrix_user_id is not None:
-            result['matrixUserId'] = self.matrix_user_id
-
-        if self.personal_room_id is not None:
-            result['personalRoomId'] = self.personal_room_id
-
-        if self.runtime_accept_status is not None:
-            result['runtimeAcceptStatus'] = self.runtime_accept_status
-
-        if self.runtime_id is not None:
-            result['runtimeId'] = self.runtime_id
-
-        if self.runtime_request_version is not None:
-            result['runtimeRequestVersion'] = self.runtime_request_version
-
-        if self.workspace_prefix is not None:
-            result['workspacePrefix'] = self.workspace_prefix
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('matrixUserId') is not None:
-            self.matrix_user_id = m.get('matrixUserId')
-
-        if m.get('personalRoomId') is not None:
-            self.personal_room_id = m.get('personalRoomId')
-
-        if m.get('runtimeAcceptStatus') is not None:
-            self.runtime_accept_status = m.get('runtimeAcceptStatus')
-
-        if m.get('runtimeId') is not None:
-            self.runtime_id = m.get('runtimeId')
-
-        if m.get('runtimeRequestVersion') is not None:
-            self.runtime_request_version = m.get('runtimeRequestVersion')
-
-        if m.get('workspacePrefix') is not None:
-            self.workspace_prefix = m.get('workspacePrefix')
 
         return self
 

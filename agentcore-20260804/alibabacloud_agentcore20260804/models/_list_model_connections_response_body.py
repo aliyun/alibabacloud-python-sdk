@@ -20,14 +20,23 @@ class ListModelConnectionsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The business status code. A value of SUCCESS indicates success.
         self.code = code
+        # The HTTP status code. A value of 200 indicates success.
         self.http_status_code = http_status_code
+        # The list of model connections.
         self.items = items
+        # The number of records per page. Valid values: 0 to 100. If this parameter is not set or is set to 0, the default value 10 is used.
         self.max_results = max_results
+        # The request processing result message.
         self.message = message
+        # The pagination token. Pass the token returned in the previous query. An empty response indicates that no more pages are available.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The total number of resources that match the query conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -124,19 +133,33 @@ class ListModelConnectionsResponseBodyItems(DaraModel):
         updated_at: str = None,
         workspace_id: str = None,
     ):
+        # The number of API keys configured for the model connection.
         self.api_key_count = api_key_count
+        # The model connection ID.
         self.connection_id = connection_id
+        # The time when the resource was created, in RFC 3339 UTC format.
         self.created_at = created_at
+        # Indicates whether access credentials have been configured for the model connection.
         self.credential_configured = credential_configured
+        # The description of the model connection. Maximum length: 255 characters.
         self.description = description
+        # The absolute HTTP or HTTPS address of the upstream model service. Maximum length: 1024 characters.
         self.endpoint = endpoint
+        # The list of model summaries associated with the model connection.
         self.models = models
+        # The model connection name. The name must be 1 to 128 non-whitespace characters in length.
         self.name = name
+        # The model invocation protocol. Currently only OpenAI/v1 is supported. If not configured in Settings when the model connection is created, this default value is used.
         self.protocol = protocol
+        # The model provider type.
         self.provider_type = provider_type
+        # The resource status.
         self.status = status
+        # The failure summary returned when the model connection fails to be published or fails to be deleted but remains in the Deleting state. This value is empty for other states.
         self.status_reason = status_reason
+        # The time when the resource was last updated, in RFC 3339 UTC format.
         self.updated_at = updated_at
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -251,7 +274,9 @@ class ListModelConnectionsResponseBodyItemsModels(DaraModel):
         model_id: str = None,
         model_name: str = None,
     ):
+        # The model ID.
         self.model_id = model_id
+        # The upstream model name.
         self.model_name = model_name
 
     def validate(self):

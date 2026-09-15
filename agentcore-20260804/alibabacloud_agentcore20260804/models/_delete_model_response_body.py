@@ -15,11 +15,17 @@ class DeleteModelResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The business status code. The value SUCCESS indicates success.
         self.code = code
+        # The identifier of the model that has been accepted for deletion.
         self.data = data
+        # The HTTP status code. The value 200 indicates success.
         self.http_status_code = http_status_code
+        # The request processing result message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -80,7 +86,9 @@ class DeleteModelResponseBodyData(DaraModel):
         model_id: str = None,
         workspace_id: str = None,
     ):
+        # The model ID.
         self.model_id = model_id
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

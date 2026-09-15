@@ -21,7 +21,7 @@ class GetIdentityProviderResponseBody(DaraModel):
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The response message. An error description is returned if the request fails.
+        # The response message. An error description is returned if the request failed.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -96,18 +96,18 @@ class GetIdentityProviderResponseBodyData(DaraModel):
     ):
         # The creation time in UTC, formatted according to RFC 3339.
         self.created_at = created_at
-        # The event subscription callback URL. Configure this URL in the application on the external identity provider side to receive organization change events. An empty string is returned if the user pool has not been provisioned.
+        # The event subscription callback URL. Configure this URL in the external identity provider application to receive organization change events. An empty string is returned if the user pool has not been activated.
         self.event_subscription_callback_url = event_subscription_callback_url
         # The type of the external identity provider. Valid values: DingTalk, Feishu.
         self.identity_provider_type = identity_provider_type
-        # The logon callback URL. Configure this URL in the application on the external identity provider side. An empty string is returned if the user pool has not been provisioned.
+        # The logon callback URL. Configure this URL in the external identity provider application. An empty string is returned if the user pool has not been activated.
         self.login_callback_url = login_callback_url
         # Indicates whether workspace users are allowed to log on through this external identity provider.
         self.login_enabled = login_enabled
         # The application configuration of the external identity provider. Application secret configurations are not returned.
         self.metadata = metadata
         # The status. Valid values:
-        # - CONFIGURED: The configuration has been accepted and is waiting for the user pool to be provisioned.
+        # - CONFIGURED: The configuration has been accepted and is waiting for user pool activation.
         # - SYNCING: Organization members are being synchronized.
         # - SYNCED: Organization member synchronization is complete.
         # - READY: The binding is active.

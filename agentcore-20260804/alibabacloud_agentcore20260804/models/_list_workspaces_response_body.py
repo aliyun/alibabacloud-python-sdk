@@ -26,11 +26,11 @@ class ListWorkspacesResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The list of workspaces.
         self.items = items
-        # The maximum number of records per page used for this request.
+        # The maximum number of records per page used in this request.
         self.max_results = max_results
         # The response message.
         self.message = message
-        # The pagination token for the next page. This value is empty if no more pages exist.
+        # The pagination token for the next page. This parameter is empty if no more pages are available.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -126,9 +126,9 @@ class ListWorkspacesResponseBodyItems(DaraModel):
         tenant_id: str = None,
         workspace_id: str = None,
     ):
-        # The creation time of the workspace.
+        # The time when the workspace was created.
         self.create_time = create_time
-        # The workspace name.
+        # The name of the workspace.
         self.name = name
         # The network configuration of the workspace.
         self.network_configuration = network_configuration

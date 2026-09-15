@@ -21,7 +21,7 @@ class UpdateIdentityProviderResponseBody(DaraModel):
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The response message. An error description is returned if the request fails.
+        # The response message. An error description is returned if the request failed.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -104,7 +104,7 @@ class UpdateIdentityProviderResponseBodyData(DaraModel):
         # - DISCONNECTING: The binding is being removed.
         # - DISCONNECT_FAILED: The unbinding failed.
         self.status = status
-        # Specifies whether to enable organization member synchronization. After this feature is enabled, the external identity provider synchronizes organization members as workspace users.
+        # Specifies whether to enable organization member synchronization. When enabled, the external identity provider synchronizes organization members as workspace users.
         self.sync_enabled = sync_enabled
         # The workspace ID.
         self.workspace_id = workspace_id

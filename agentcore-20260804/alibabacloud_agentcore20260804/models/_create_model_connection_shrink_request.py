@@ -10,7 +10,9 @@ class CreateModelConnectionShrinkRequest(DaraModel):
         body_shrink: str = None,
         client_token: str = None,
     ):
+        # The request body.
         self.body_shrink = body_shrink
+        # The client token used for idempotence. Not supported.
         self.client_token = client_token
 
     def validate(self):

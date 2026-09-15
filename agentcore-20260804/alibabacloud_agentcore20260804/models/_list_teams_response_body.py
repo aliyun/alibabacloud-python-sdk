@@ -20,14 +20,23 @@ class ListTeamsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The business status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The list of teams.
         self.items = items
+        # The maximum number of records per page that took effect for this query.
         self.max_results = max_results
+        # The response message. An error description is returned if the request fails.
         self.message = message
+        # The pagination token for the next page. This parameter is empty if no more pages are available.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The total number of teams that match the query conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -119,14 +128,29 @@ class ListTeamsResponseBodyItems(DaraModel):
         users: List[main_models.ListTeamsResponseBodyItemsUsers] = None,
         workspace_id: str = None,
     ):
+        # The list of agent members in the team.
         self.agents = agents
+        # The time when the team was created, in UTC and RFC 3339 format.
         self.created_at = created_at
+        # The team description.
         self.description = description
+        # The team name. The name can contain only lowercase letters, digits, and hyphens (-). It must start and end with a lowercase letter or digit. The name must be 1 to 128 characters in length.
         self.name = name
+        # The team status. Valid values:
+        # - Creating
+        # - Active
+        # - Updating
+        # - Deleting
+        # - Failed
+        # - Deleted
         self.status = status
+        # The team ID.
         self.team_id = team_id
+        # The time when the team was last modified, in UTC and RFC 3339 format.
         self.updated_at = updated_at
+        # The list of user members in the team.
         self.users = users
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -221,8 +245,15 @@ class ListTeamsResponseBodyItemsUsers(DaraModel):
         user_id: str = None,
         user_name: str = None,
     ):
+        # The role of the user in the team. Valid values:
+        # - ADMIN
+        # - MEMBER
+        # 
+        # Each team must have exactly one ADMIN.
         self.team_role = team_role
+        # The user ID.
         self.user_id = user_id
+        # The username.
         self.user_name = user_name
 
     def validate(self):
@@ -264,8 +295,13 @@ class ListTeamsResponseBodyItemsAgents(DaraModel):
         agent_name: str = None,
         team_role: str = None,
     ):
+        # The agent ID.
         self.agent_id = agent_id
+        # The agent name.
         self.agent_name = agent_name
+        # The role of the agent in the team. Valid values:
+        # - LEADER
+        # - WORKER
         self.team_role = team_role
 
     def validate(self):

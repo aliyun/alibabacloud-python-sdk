@@ -15,7 +15,7 @@ class CreateExternalAgentRequest(DaraModel):
     ):
         # The request body.
         self.body = body
-        # The reserved idempotency token. The backend does not guarantee idempotence in the current version.
+        # The reserved idempotency token. The backend does not provide idempotency guarantees in the current version.
         self.client_token = client_token
 
     def validate(self):
@@ -62,12 +62,12 @@ class CreateExternalAgentRequestBody(DaraModel):
         self.description = description
         # The agent instruction that guides the behavior of the agent.
         self.instruction = instruction
-        # The model configuration. This parameter is available only when modelSource is set to PLATFORM.
+        # The model configuration. Available only when modelSource is set to PLATFORM.
         self.model = model
         # The source of the model configuration. Valid values:
         # 
-        # - PLATFORM: The platform parses and delivers the model configuration. You can specify the model parameter.
-        # - RUNTIME: The external runtime manages the model on its own. You cannot specify the model parameter at the same time.
+        # - PLATFORM: The platform parses and delivers the model configuration.
+        # - RUNTIME: The external runtime manages the model on its own. You cannot specify model at the same time.
         self.model_source = model_source
         # The name of the external agent.
         # 
@@ -249,6 +249,8 @@ class CreateExternalAgentRequestBodyTemplateAiRegistry(DaraModel):
         # This parameter is required.
         self.name = name
         # The version of the template in AI Registry.
+        # 
+        # This parameter is required.
         self.version = version
 
     def validate(self):

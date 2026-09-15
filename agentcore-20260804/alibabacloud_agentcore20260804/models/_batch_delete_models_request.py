@@ -13,7 +13,9 @@ class BatchDeleteModelsRequest(DaraModel):
         body: main_models.BatchDeleteModelsRequestBody = None,
         client_token: str = None,
     ):
+        # The request body.
         self.body = body
+        # The client token used for idempotence. Not supported.
         self.client_token = client_token
 
     def validate(self):
@@ -51,6 +53,8 @@ class BatchDeleteModelsRequestBody(DaraModel):
         self,
         model_ids: List[str] = None,
     ):
+        # The list of model IDs.
+        # 
         # This parameter is required.
         self.model_ids = model_ids
 

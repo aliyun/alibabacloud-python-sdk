@@ -15,7 +15,7 @@ class UpdateManagedAgentRequest(DaraModel):
     ):
         # The request body.
         self.body = body
-        # The reserved idempotency token. The backend does not provide idempotency guarantees in the current phase.
+        # The reserved idempotency token. The backend does not guarantee idempotence in the current phase.
         self.client_token = client_token
 
     def validate(self):
@@ -51,10 +51,12 @@ class UpdateManagedAgentRequestBody(DaraModel):
         self,
         description: str = None,
         environment: main_models.UpdateManagedAgentRequestBodyEnvironment = None,
+        harness: main_models.UpdateManagedAgentRequestBodyHarness = None,
         instruction: str = None,
         model: main_models.UpdateManagedAgentRequestBodyModel = None,
         name: str = None,
         network: main_models.UpdateManagedAgentRequestBodyNetwork = None,
+        oss_mounts: List[main_models.UpdateManagedAgentRequestBodyOssMounts] = None,
         runtime: main_models.UpdateManagedAgentRequestBodyRuntime = None,
         skills: List[main_models.UpdateManagedAgentRequestBodySkills] = None,
         sub_agents: List[main_models.UpdateManagedAgentRequestBodySubAgents] = None,
@@ -65,6 +67,8 @@ class UpdateManagedAgentRequestBody(DaraModel):
         self.description = description
         # The environment configuration.
         self.environment = environment
+        # The runtime harness of the managed agent. Valid values: qwenpaw and qodercli.
+        self.harness = harness
         # The agent instruction that guides the behavior of the agent.
         self.instruction = instruction
         # The model configuration.
@@ -73,6 +77,8 @@ class UpdateManagedAgentRequestBody(DaraModel):
         self.name = name
         # The network configuration.
         self.network = network
+        # The OSS mount list. A maximum of 10 items are supported. Pass an empty array to clear existing mounts.
+        self.oss_mounts = oss_mounts
         # The runtime configuration.
         self.runtime = runtime
         # The list of skill configurations.
@@ -87,10 +93,16 @@ class UpdateManagedAgentRequestBody(DaraModel):
     def validate(self):
         if self.environment:
             self.environment.validate()
+        if self.harness:
+            self.harness.validate()
         if self.model:
             self.model.validate()
         if self.network:
             self.network.validate()
+        if self.oss_mounts:
+            for v1 in self.oss_mounts:
+                 if v1:
+                    v1.validate()
         if self.runtime:
             self.runtime.validate()
         if self.skills:
@@ -119,6 +131,9 @@ class UpdateManagedAgentRequestBody(DaraModel):
         if self.environment is not None:
             result['environment'] = self.environment.to_map()
 
+        if self.harness is not None:
+            result['harness'] = self.harness.to_map()
+
         if self.instruction is not None:
             result['instruction'] = self.instruction
 
@@ -130,6 +145,11 @@ class UpdateManagedAgentRequestBody(DaraModel):
 
         if self.network is not None:
             result['network'] = self.network.to_map()
+
+        result['ossMounts'] = []
+        if self.oss_mounts is not None:
+            for k1 in self.oss_mounts:
+                result['ossMounts'].append(k1.to_map() if k1 else None)
 
         if self.runtime is not None:
             result['runtime'] = self.runtime.to_map()
@@ -163,6 +183,10 @@ class UpdateManagedAgentRequestBody(DaraModel):
             temp_model = main_models.UpdateManagedAgentRequestBodyEnvironment()
             self.environment = temp_model.from_map(m.get('environment'))
 
+        if m.get('harness') is not None:
+            temp_model = main_models.UpdateManagedAgentRequestBodyHarness()
+            self.harness = temp_model.from_map(m.get('harness'))
+
         if m.get('instruction') is not None:
             self.instruction = m.get('instruction')
 
@@ -176,6 +200,12 @@ class UpdateManagedAgentRequestBody(DaraModel):
         if m.get('network') is not None:
             temp_model = main_models.UpdateManagedAgentRequestBodyNetwork()
             self.network = temp_model.from_map(m.get('network'))
+
+        self.oss_mounts = []
+        if m.get('ossMounts') is not None:
+            for k1 in m.get('ossMounts'):
+                temp_model = main_models.UpdateManagedAgentRequestBodyOssMounts()
+                self.oss_mounts.append(temp_model.from_map(k1))
 
         if m.get('runtime') is not None:
             temp_model = main_models.UpdateManagedAgentRequestBodyRuntime()
@@ -287,6 +317,8 @@ class UpdateManagedAgentRequestBodyTemplateAiRegistry(DaraModel):
         # This parameter is required.
         self.name = name
         # The version of the template in the AI registry.
+        # 
+        # This parameter is required.
         self.version = version
 
     def validate(self):
@@ -399,12 +431,15 @@ class UpdateManagedAgentRequestBodyRuntime(DaraModel):
     def __init__(
         self,
         compute: main_models.UpdateManagedAgentRequestBodyRuntimeCompute = None,
+        hpa: main_models.UpdateManagedAgentRequestBodyRuntimeHpa = None,
         session_policy: main_models.UpdateManagedAgentRequestBodyRuntimeSessionPolicy = None,
     ):
         # The compute configuration.
         # 
         # This parameter is required.
         self.compute = compute
+        # The Sandbox auto scaling and session configuration.
+        self.hpa = hpa
         # The session policy configuration.
         # 
         # This parameter is required.
@@ -413,6 +448,8 @@ class UpdateManagedAgentRequestBodyRuntime(DaraModel):
     def validate(self):
         if self.compute:
             self.compute.validate()
+        if self.hpa:
+            self.hpa.validate()
         if self.session_policy:
             self.session_policy.validate()
 
@@ -424,6 +461,9 @@ class UpdateManagedAgentRequestBodyRuntime(DaraModel):
         if self.compute is not None:
             result['compute'] = self.compute.to_map()
 
+        if self.hpa is not None:
+            result['hpa'] = self.hpa.to_map()
+
         if self.session_policy is not None:
             result['sessionPolicy'] = self.session_policy.to_map()
 
@@ -434,6 +474,10 @@ class UpdateManagedAgentRequestBodyRuntime(DaraModel):
         if m.get('compute') is not None:
             temp_model = main_models.UpdateManagedAgentRequestBodyRuntimeCompute()
             self.compute = temp_model.from_map(m.get('compute'))
+
+        if m.get('hpa') is not None:
+            temp_model = main_models.UpdateManagedAgentRequestBodyRuntimeHpa()
+            self.hpa = temp_model.from_map(m.get('hpa'))
 
         if m.get('sessionPolicy') is not None:
             temp_model = main_models.UpdateManagedAgentRequestBodyRuntimeSessionPolicy()
@@ -447,7 +491,7 @@ class UpdateManagedAgentRequestBodyRuntimeSessionPolicy(DaraModel):
         header_name: str = None,
         type: str = None,
     ):
-        # The HTTP header name used for session affinity. This parameter takes effect only when sessionPolicy.type is set to ISOLATED_HEADER_FIELD.
+        # The HTTP header name used for session affinity. Takes effect when sessionPolicy.type is set to ISOLATED_HEADER_FIELD.
         self.header_name = header_name
         # The session policy type.
         # 
@@ -480,6 +524,70 @@ class UpdateManagedAgentRequestBodyRuntimeSessionPolicy(DaraModel):
 
         return self
 
+class UpdateManagedAgentRequestBodyRuntimeHpa(DaraModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        max_concurrent_sessions_per_sandbox: int = None,
+        max_sandbox_count: int = None,
+        min_sandbox_count: int = None,
+        session_ttl_seconds: int = None,
+    ):
+        # Specifies whether to enable auto scaling. Required when hpa is present as validated by the backend.
+        self.enabled = enabled
+        # The maximum number of active sessions per Sandbox. Required when hpa is present as validated by the backend.
+        self.max_concurrent_sessions_per_sandbox = max_concurrent_sessions_per_sandbox
+        # The maximum number of Sandboxes. Required when HPA is enabled and must be no less than the minimum value.
+        self.max_sandbox_count = max_sandbox_count
+        # The minimum number of Sandboxes. Required when HPA is enabled.
+        self.min_sandbox_count = min_sandbox_count
+        # The session reclamation time after inactivity, in seconds. Required when hpa is present as validated by the backend.
+        self.session_ttl_seconds = session_ttl_seconds
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+
+        if self.max_concurrent_sessions_per_sandbox is not None:
+            result['maxConcurrentSessionsPerSandbox'] = self.max_concurrent_sessions_per_sandbox
+
+        if self.max_sandbox_count is not None:
+            result['maxSandboxCount'] = self.max_sandbox_count
+
+        if self.min_sandbox_count is not None:
+            result['minSandboxCount'] = self.min_sandbox_count
+
+        if self.session_ttl_seconds is not None:
+            result['sessionTtlSeconds'] = self.session_ttl_seconds
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+
+        if m.get('maxConcurrentSessionsPerSandbox') is not None:
+            self.max_concurrent_sessions_per_sandbox = m.get('maxConcurrentSessionsPerSandbox')
+
+        if m.get('maxSandboxCount') is not None:
+            self.max_sandbox_count = m.get('maxSandboxCount')
+
+        if m.get('minSandboxCount') is not None:
+            self.min_sandbox_count = m.get('minSandboxCount')
+
+        if m.get('sessionTtlSeconds') is not None:
+            self.session_ttl_seconds = m.get('sessionTtlSeconds')
+
+        return self
+
 class UpdateManagedAgentRequestBodyRuntimeCompute(DaraModel):
     def __init__(
         self,
@@ -507,6 +615,61 @@ class UpdateManagedAgentRequestBodyRuntimeCompute(DaraModel):
         m = m or dict()
         if m.get('computeClass') is not None:
             self.compute_class = m.get('computeClass')
+
+        return self
+
+class UpdateManagedAgentRequestBodyOssMounts(DaraModel):
+    def __init__(
+        self,
+        bucket_name: str = None,
+        mount_path: str = None,
+        path: str = None,
+        read_only: bool = None,
+    ):
+        # The OSS bucket name. Each mount item is validated as required by the backend.
+        self.bucket_name = bucket_name
+        # The absolute mount path in the container. Each mount item is validated as required by the backend.
+        self.mount_path = mount_path
+        # The relative object prefix in the bucket. If not specified, the entire bucket is mounted.
+        self.path = path
+        # Specifies whether to mount as read-only. Default value: false.
+        self.read_only = read_only
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.bucket_name is not None:
+            result['bucketName'] = self.bucket_name
+
+        if self.mount_path is not None:
+            result['mountPath'] = self.mount_path
+
+        if self.path is not None:
+            result['path'] = self.path
+
+        if self.read_only is not None:
+            result['readOnly'] = self.read_only
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bucketName') is not None:
+            self.bucket_name = m.get('bucketName')
+
+        if m.get('mountPath') is not None:
+            self.mount_path = m.get('mountPath')
+
+        if m.get('path') is not None:
+            self.path = m.get('path')
+
+        if m.get('readOnly') is not None:
+            self.read_only = m.get('readOnly')
 
         return self
 
@@ -557,9 +720,7 @@ class UpdateManagedAgentRequestBodyNetworkAccessVpc(DaraModel):
         self,
         enabled: bool = None,
     ):
-        # Specifies whether to allow access to the VPC.
-        # 
-        # This parameter is required.
+        # Specifies whether VPC access is allowed.
         self.enabled = enabled
 
     def validate(self):
@@ -587,9 +748,7 @@ class UpdateManagedAgentRequestBodyNetworkAccessInternet(DaraModel):
         self,
         enabled: bool = None,
     ):
-        # Specifies whether to allow access to the Internet.
-        # 
-        # This parameter is required.
+        # Specifies whether public network access is allowed.
         self.enabled = enabled
 
     def validate(self):
@@ -623,8 +782,6 @@ class UpdateManagedAgentRequestBodyModel(DaraModel):
         # This parameter is required.
         self.model_connection_id = model_connection_id
         # The upstream model name.
-        # 
-        # This parameter is required.
         self.model_name = model_name
 
     def validate(self):
@@ -650,6 +807,82 @@ class UpdateManagedAgentRequestBodyModel(DaraModel):
 
         if m.get('modelName') is not None:
             self.model_name = m.get('modelName')
+
+        return self
+
+class UpdateManagedAgentRequestBodyHarness(DaraModel):
+    def __init__(
+        self,
+        configuration: main_models.UpdateManagedAgentRequestBodyHarnessConfiguration = None,
+        type: str = None,
+    ):
+        # The Connector binding configuration for the qodercli harness.
+        self.configuration = configuration
+        # The type of the runtime harness. Valid values: qwenpaw and qodercli. When the type is qodercli, binding is performed based on configuration.connectorServiceAccountKey, and the name is also populated during queries.
+        self.type = type
+
+    def validate(self):
+        if self.configuration:
+            self.configuration.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.configuration is not None:
+            result['configuration'] = self.configuration.to_map()
+
+        if self.type is not None:
+            result['type'] = self.type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('configuration') is not None:
+            temp_model = main_models.UpdateManagedAgentRequestBodyHarnessConfiguration()
+            self.configuration = temp_model.from_map(m.get('configuration'))
+
+        if m.get('type') is not None:
+            self.type = m.get('type')
+
+        return self
+
+class UpdateManagedAgentRequestBodyHarnessConfiguration(DaraModel):
+    def __init__(
+        self,
+        connector_service_account_key: str = None,
+        connector_service_account_name: str = None,
+    ):
+        # The Key ID used to bind a Service Account Key of the QoderCLI Connector. This parameter can be omitted when only one key exists, but is required when multiple keys exist.
+        self.connector_service_account_key = connector_service_account_key
+        # The Connector Key name that is populated during queries. This value is not used as a binding reference during writes.
+        self.connector_service_account_name = connector_service_account_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.connector_service_account_key is not None:
+            result['connectorServiceAccountKey'] = self.connector_service_account_key
+
+        if self.connector_service_account_name is not None:
+            result['connectorServiceAccountName'] = self.connector_service_account_name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('connectorServiceAccountKey') is not None:
+            self.connector_service_account_key = m.get('connectorServiceAccountKey')
+
+        if m.get('connectorServiceAccountName') is not None:
+            self.connector_service_account_name = m.get('connectorServiceAccountName')
 
         return self
 
@@ -713,11 +946,11 @@ class UpdateManagedAgentRequestBodyEnvironmentVariables(DaraModel):
         name: str = None,
         value: str = None,
     ):
-        # The environment variable name.
+        # The name of the environment variable.
         # 
         # This parameter is required.
         self.name = name
-        # The environment variable value.
+        # The value of the environment variable.
         # 
         # This parameter is required.
         self.value = value

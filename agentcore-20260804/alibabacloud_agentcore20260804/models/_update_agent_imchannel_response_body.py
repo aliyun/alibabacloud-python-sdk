@@ -23,7 +23,7 @@ class UpdateAgentIMChannelResponseBody(DaraModel):
         self.data = data
         # The HTTP status code. The value 200 indicates success.
         self.http_status_code = http_status_code
-        # The result message of the request.
+        # The request processing result message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -112,13 +112,13 @@ class UpdateAgentIMChannelResponseBodyData(DaraModel):
         self.create_time = create_time
         # The channel credential summary. Only non-sensitive fields and the names of configured secret fields are returned. Secret values are not returned.
         self.credential_summary = credential_summary
-        # Specifies whether to enable the IM channel. Default value: true (when created).
+        # Specifies whether to enable the IM channel. Default value upon creation: true.
         self.enabled = enabled
         # The public network access URL of the attached ServiceEndpoint.
         self.endpoint_url = endpoint_url
         # The IM channel ID.
         self.im_channel_id = im_channel_id
-        # The ID of the bound ServiceEndpoint. The endpoint must belong to the specified agent and its current version, be in the ready state, and have a public endpoint address.
+        # The ID of the bound ServiceEndpoint. The endpoint must belong to the specified agent and its current version, be in the ready state, and have a public endpoint.
         self.service_endpoint_id = service_endpoint_id
         # The IM channel status. Valid values:
         # - CREATING: Being created.
@@ -128,7 +128,7 @@ class UpdateAgentIMChannelResponseBodyData(DaraModel):
         # - DELETING: Being deleted.
         # - DELETE_FAILED: Deletion failed.
         self.status = status
-        # The reason for the current status of the IM channel.
+        # The reason for the current IM channel status.
         self.status_reason = status_reason
         # The update time in RFC 3339 format.
         self.update_time = update_time

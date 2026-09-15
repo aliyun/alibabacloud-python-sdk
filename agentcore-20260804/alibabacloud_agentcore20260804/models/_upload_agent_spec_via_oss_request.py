@@ -46,9 +46,9 @@ class UploadAgentSpecViaOssRequestBody(DaraModel):
         # 
         # This parameter is required.
         self.oss_object_name = oss_object_name
-        # Specifies whether to overwrite existing drafts. Default value: false.
+        # Specifies whether to overwrite the existing draft. Default value: false.
         self.overwrite = overwrite
-        # Specifies whether to publish immediately after upload. Default value: false.
+        # Specifies whether to publish directly after upload. Default value: false.
         self.publish = publish
 
     def validate(self):

@@ -20,17 +20,17 @@ class ListExternalAgentsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The business status code. The value SUCCESS indicates success.
+        # The business status code. The value SUCCESS is returned for a successful request.
         self.code = code
-        # The HTTP status code. The value 200 indicates success.
+        # The HTTP status code. The value 200 is returned for a successful request.
         self.http_status_code = http_status_code
         # The list of external agents.
         self.items = items
         # The maximum number of entries returned per page for this request.
         self.max_results = max_results
-        # The message returned for the request.
+        # The message that indicates the result of the request.
         self.message = message
-        # The token for the next page. An empty value indicates the last page.
+        # The token for the next page. An empty value indicates that the last page has been reached.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -123,7 +123,6 @@ class ListExternalAgentsResponseBodyItems(DaraModel):
         created_at: str = None,
         deploy_type: str = None,
         description: str = None,
-        effective_spec_version: int = None,
         latest_spec_version: int = None,
         name: str = None,
         runtime: str = None,
@@ -139,17 +138,15 @@ class ListExternalAgentsResponseBodyItems(DaraModel):
         self.created_at = created_at
         # The deployment type.
         self.deploy_type = deploy_type
-        # The external agent description.
+        # The description of the external agent.
         self.description = description
-        # The currently effective specification version number.
-        self.effective_spec_version = effective_spec_version
         # The latest specification version number.
         self.latest_spec_version = latest_spec_version
-        # The external agent name.
+        # The name of the external agent.
         self.name = name
         # The runtime type reported by the external agent.
         self.runtime = runtime
-        # The external agent status. Valid values:
+        # The status of the external agent. Valid values:
         # - Creating: The agent is being created.
         # - Running: The agent is running.
         # - Failed: The agent has failed.
@@ -184,9 +181,6 @@ class ListExternalAgentsResponseBodyItems(DaraModel):
 
         if self.description is not None:
             result['description'] = self.description
-
-        if self.effective_spec_version is not None:
-            result['effectiveSpecVersion'] = self.effective_spec_version
 
         if self.latest_spec_version is not None:
             result['latestSpecVersion'] = self.latest_spec_version
@@ -224,9 +218,6 @@ class ListExternalAgentsResponseBodyItems(DaraModel):
 
         if m.get('description') is not None:
             self.description = m.get('description')
-
-        if m.get('effectiveSpecVersion') is not None:
-            self.effective_spec_version = m.get('effectiveSpecVersion')
 
         if m.get('latestSpecVersion') is not None:
             self.latest_spec_version = m.get('latestSpecVersion')

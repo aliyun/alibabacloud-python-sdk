@@ -46,7 +46,7 @@ class UpdateIdentityProviderRequestBody(DaraModel):
         self.login_enabled = login_enabled
         # The new application configuration of the external identity provider. If not specified, the existing configuration remains unchanged.
         self.metadata = metadata
-        # Specifies whether to enable organization member synchronization. After this feature is enabled, the external identity provider synchronizes organization members as workspace users.
+        # Specifies whether to enable organization member synchronization. When enabled, the external identity provider synchronizes organization members as workspace users.
         self.sync_enabled = sync_enabled
 
     def validate(self):
@@ -101,9 +101,9 @@ class UpdateIdentityProviderRequestBodyMetadata(DaraModel):
         self.app_secret = app_secret
         # The CorpId of the DingTalk organization. This parameter is required when the binding type is DingTalk.
         self.corp_id = corp_id
-        # The data encryption key for event subscriptions. The value must be consistent with the one configured in the external identity provider application. This parameter is write-only and is not returned by query operations.
+        # The data encryption key for event subscriptions. The value must match the one configured in the external identity provider application. This parameter is write-only and is not returned by query operations.
         self.encrypt_key = encrypt_key
-        # The verification token for event subscriptions. The value must be consistent with the one configured in the external identity provider application. This parameter is write-only and is not returned by query operations.
+        # The verification token for event subscriptions. The value must match the one configured in the external identity provider application. This parameter is write-only and is not returned by query operations.
         self.verification_token = verification_token
 
     def validate(self):

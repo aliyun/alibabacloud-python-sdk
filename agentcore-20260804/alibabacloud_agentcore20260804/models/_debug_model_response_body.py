@@ -15,11 +15,17 @@ class DebugModelResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The business status code. The value SUCCESS indicates success.
         self.code = code
+        # The model debugging result.
         self.data = data
+        # The HTTP status code. The value 200 indicates success.
         self.http_status_code = http_status_code
+        # The request processing result message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -88,18 +94,25 @@ class DebugModelResponseBodyData(DaraModel):
         response: str = None,
         status: str = None,
     ):
+        # The model connection ID.
         self.connection_id = connection_id
+        # Indicates whether the model debugging was successful.
         self.debug_success = debug_success
-        # 调试失败时的错误码。取值：MODEL_CONNECTION_NOT_READY（模型连接尚未发布就绪）、MODEL_CONNECTION_TEST_FAILED（平台调用网关失败）、UPSTREAM_MODEL_NOT_FOUND（模型服务商侧不存在该模型）、UPSTREAM_UNAUTHORIZED（模型服务商拒绝所配置的凭证）、UPSTREAM_RATE_LIMITED（模型服务商限流）、UPSTREAM_SERVER_ERROR（模型服务商服务端错误）、UPSTREAM_HTTP_ERROR（模型服务商返回其它非成功状态）、UPSTREAM_EMPTY_RESPONSE（模型服务商返回空响应）、UPSTREAM_INVALID_RESPONSE（模型服务商响应格式非法）、UPSTREAM_MODEL_ERROR（模型服务商拒绝本次请求）、MODEL_RESPONSE_INVALID（响应解析失败）。
+        # The error code returned when debugging fails.
         self.error_code = error_code
-        # 调试失败时的错误描述，为固定脱敏文案，不透传模型服务商的原始错误详情。
+        # The error message returned when debugging fails.
         self.error_message = error_message
+        # The number of input tokens consumed by this model debugging request.
         self.input_tokens = input_tokens
+        # The time consumed by this model debugging call, in milliseconds.
         self.latency_ms = latency_ms
+        # The model ID.
         self.model_id = model_id
+        # The number of output tokens consumed by this model debugging response.
         self.output_tokens = output_tokens
+        # The text response returned by the model when debugging succeeds. This value is empty when debugging fails.
         self.response = response
-        # 调试结果状态。取值：NORMAL（正常）、ABNORMAL（异常）。
+        # The debug result status.
         self.status = status
 
     def validate(self):

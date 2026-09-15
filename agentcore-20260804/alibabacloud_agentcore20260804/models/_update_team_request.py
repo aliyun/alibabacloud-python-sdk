@@ -13,7 +13,9 @@ class UpdateTeamRequest(DaraModel):
         body: main_models.UpdateTeamRequestBody = None,
         client_token: str = None,
     ):
+        # The request body for updating the team.
         self.body = body
+        # Not supported.
         self.client_token = client_token
 
     def validate(self):
@@ -51,8 +53,11 @@ class UpdateTeamRequestBody(DaraModel):
         description: str = None,
         users: List[main_models.UpdateTeamRequestBodyUsers] = None,
     ):
+        # The new agent member list. Replaces the existing agent members using full overwrite semantics. If not specified, the existing agent members remain unchanged.
         self.agents = agents
+        # The new team description. If not specified, the existing description remains unchanged.
         self.description = description
+        # The new user member list. Replaces the existing user members using full overwrite semantics. When specified, the list must contain exactly one member with the ADMIN role. If not specified, the existing user members remain unchanged.
         self.users = users
 
     def validate(self):
@@ -110,7 +115,13 @@ class UpdateTeamRequestBodyUsers(DaraModel):
         team_role: str = None,
         user_id: str = None,
     ):
+        # The role of the user in the team. Valid values:
+        # - ADMIN
+        # - MEMBER
+        # 
+        # Each team must have exactly one ADMIN.
         self.team_role = team_role
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -145,7 +156,11 @@ class UpdateTeamRequestBodyAgents(DaraModel):
         agent_id: str = None,
         team_role: str = None,
     ):
+        # The agent ID.
         self.agent_id = agent_id
+        # The role of the agent in the team. Valid values:
+        # - LEADER
+        # - WORKER
         self.team_role = team_role
 
     def validate(self):

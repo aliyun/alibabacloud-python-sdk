@@ -225,6 +225,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.batch_upload_skills_via_oss_with_options_async(workspace_id, request, headers, runtime)
 
+    def convert_mcp_to_free_edit_with_options(
+        self,
+        workspace_id: str,
+        mcp_server_id: str,
+        request: main_models.ConvertMcpToFreeEditRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ConvertMcpToFreeEditResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ConvertMcpToFreeEdit',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/mcp-servers/{DaraURL.percent_encode(mcp_server_id)}/convert-to-free-edit',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ConvertMcpToFreeEditResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def convert_mcp_to_free_edit_with_options_async(
+        self,
+        workspace_id: str,
+        mcp_server_id: str,
+        request: main_models.ConvertMcpToFreeEditRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ConvertMcpToFreeEditResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ConvertMcpToFreeEdit',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/mcp-servers/{DaraURL.percent_encode(mcp_server_id)}/convert-to-free-edit',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ConvertMcpToFreeEditResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def convert_mcp_to_free_edit(
+        self,
+        workspace_id: str,
+        mcp_server_id: str,
+        request: main_models.ConvertMcpToFreeEditRequest,
+    ) -> main_models.ConvertMcpToFreeEditResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.convert_mcp_to_free_edit_with_options(workspace_id, mcp_server_id, request, headers, runtime)
+
+    async def convert_mcp_to_free_edit_async(
+        self,
+        workspace_id: str,
+        mcp_server_id: str,
+        request: main_models.ConvertMcpToFreeEditRequest,
+    ) -> main_models.ConvertMcpToFreeEditResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.convert_mcp_to_free_edit_with_options_async(workspace_id, mcp_server_id, request, headers, runtime)
+
     def create_agent_imchannel_with_options(
         self,
         workspace_id: str,
@@ -2913,6 +2997,82 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_workspace_with_options_async(workspace_id, request, headers, runtime)
 
+    def disable_connector_with_options(
+        self,
+        workspace_id: str,
+        connector_name: str,
+        request: main_models.DisableConnectorRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableConnectorResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableConnector',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/connectors/{DaraURL.percent_encode(connector_name)}/actions/disable',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableConnectorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_connector_with_options_async(
+        self,
+        workspace_id: str,
+        connector_name: str,
+        request: main_models.DisableConnectorRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableConnectorResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableConnector',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/connectors/{DaraURL.percent_encode(connector_name)}/actions/disable',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableConnectorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_connector(
+        self,
+        workspace_id: str,
+        connector_name: str,
+        request: main_models.DisableConnectorRequest,
+    ) -> main_models.DisableConnectorResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.disable_connector_with_options(workspace_id, connector_name, request, headers, runtime)
+
+    async def disable_connector_async(
+        self,
+        workspace_id: str,
+        connector_name: str,
+        request: main_models.DisableConnectorRequest,
+    ) -> main_models.DisableConnectorResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.disable_connector_with_options_async(workspace_id, connector_name, request, headers, runtime)
+
     def download_agent_spec_via_oss_with_options(
         self,
         workspace_id: str,
@@ -3076,6 +3236,98 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.download_skill_version_via_oss_with_options_async(workspace_id, skill_name, skill_version, request, headers, runtime)
+
+    def enable_connector_with_options(
+        self,
+        workspace_id: str,
+        connector_name: str,
+        tmp_req: main_models.EnableConnectorRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableConnectorResponse:
+        tmp_req.validate()
+        request = main_models.EnableConnectorShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableConnector',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/connectors/{DaraURL.percent_encode(connector_name)}/actions/enable',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableConnectorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_connector_with_options_async(
+        self,
+        workspace_id: str,
+        connector_name: str,
+        tmp_req: main_models.EnableConnectorRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableConnectorResponse:
+        tmp_req.validate()
+        request = main_models.EnableConnectorShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableConnector',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/connectors/{DaraURL.percent_encode(connector_name)}/actions/enable',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableConnectorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_connector(
+        self,
+        workspace_id: str,
+        connector_name: str,
+        request: main_models.EnableConnectorRequest,
+    ) -> main_models.EnableConnectorResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.enable_connector_with_options(workspace_id, connector_name, request, headers, runtime)
+
+    async def enable_connector_async(
+        self,
+        workspace_id: str,
+        connector_name: str,
+        request: main_models.EnableConnectorRequest,
+    ) -> main_models.EnableConnectorResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.enable_connector_with_options_async(workspace_id, connector_name, request, headers, runtime)
 
     def force_publish_skill_version_with_options(
         self,
@@ -4021,6 +4273,82 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_mcp_with_options_async(workspace_id, mcp_server_id, request, headers, runtime)
 
+    def get_mcp_market_item_with_options(
+        self,
+        workspace_id: str,
+        market_item_id: str,
+        request: main_models.GetMcpMarketItemRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMcpMarketItemResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMcpMarketItem',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/mcp-market/items/{DaraURL.percent_encode(market_item_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMcpMarketItemResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_mcp_market_item_with_options_async(
+        self,
+        workspace_id: str,
+        market_item_id: str,
+        request: main_models.GetMcpMarketItemRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMcpMarketItemResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMcpMarketItem',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/mcp-market/items/{DaraURL.percent_encode(market_item_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMcpMarketItemResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_mcp_market_item(
+        self,
+        workspace_id: str,
+        market_item_id: str,
+        request: main_models.GetMcpMarketItemRequest,
+    ) -> main_models.GetMcpMarketItemResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_mcp_market_item_with_options(workspace_id, market_item_id, request, headers, runtime)
+
+    async def get_mcp_market_item_async(
+        self,
+        workspace_id: str,
+        market_item_id: str,
+        request: main_models.GetMcpMarketItemRequest,
+    ) -> main_models.GetMcpMarketItemResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_mcp_market_item_with_options_async(workspace_id, market_item_id, request, headers, runtime)
+
     def get_model_with_options(
         self,
         workspace_id: str,
@@ -4861,6 +5189,110 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_workspace_plugin_with_options_async(workspace_id, plugin_name, request, headers, runtime)
 
+    def install_mcp_market_item_with_options(
+        self,
+        workspace_id: str,
+        market_item_id: str,
+        tmp_req: main_models.InstallMcpMarketItemRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.InstallMcpMarketItemResponse:
+        tmp_req.validate()
+        request = main_models.InstallMcpMarketItemShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.template_version):
+            query['templateVersion'] = request.template_version
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'InstallMcpMarketItem',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/mcp-market/items/{DaraURL.percent_encode(market_item_id)}/install',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InstallMcpMarketItemResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def install_mcp_market_item_with_options_async(
+        self,
+        workspace_id: str,
+        market_item_id: str,
+        tmp_req: main_models.InstallMcpMarketItemRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.InstallMcpMarketItemResponse:
+        tmp_req.validate()
+        request = main_models.InstallMcpMarketItemShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.template_version):
+            query['templateVersion'] = request.template_version
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'InstallMcpMarketItem',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/mcp-market/items/{DaraURL.percent_encode(market_item_id)}/install',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InstallMcpMarketItemResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def install_mcp_market_item(
+        self,
+        workspace_id: str,
+        market_item_id: str,
+        request: main_models.InstallMcpMarketItemRequest,
+    ) -> main_models.InstallMcpMarketItemResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.install_mcp_market_item_with_options(workspace_id, market_item_id, request, headers, runtime)
+
+    async def install_mcp_market_item_async(
+        self,
+        workspace_id: str,
+        market_item_id: str,
+        request: main_models.InstallMcpMarketItemRequest,
+    ) -> main_models.InstallMcpMarketItemResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.install_mcp_market_item_with_options_async(workspace_id, market_item_id, request, headers, runtime)
+
     def install_workspace_plugin_with_options(
         self,
         workspace_id: str,
@@ -5257,6 +5689,182 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_agent_teams_with_options_async(workspace_id, request, headers, runtime)
 
+    def list_connector_models_with_options(
+        self,
+        workspace_id: str,
+        connector_name: str,
+        request: main_models.ListConnectorModelsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListConnectorModelsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.connector_key_id):
+            query['connectorKeyId'] = request.connector_key_id
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListConnectorModels',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/connectors/{DaraURL.percent_encode(connector_name)}/models',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListConnectorModelsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_connector_models_with_options_async(
+        self,
+        workspace_id: str,
+        connector_name: str,
+        request: main_models.ListConnectorModelsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListConnectorModelsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.connector_key_id):
+            query['connectorKeyId'] = request.connector_key_id
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListConnectorModels',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/connectors/{DaraURL.percent_encode(connector_name)}/models',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListConnectorModelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_connector_models(
+        self,
+        workspace_id: str,
+        connector_name: str,
+        request: main_models.ListConnectorModelsRequest,
+    ) -> main_models.ListConnectorModelsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_connector_models_with_options(workspace_id, connector_name, request, headers, runtime)
+
+    async def list_connector_models_async(
+        self,
+        workspace_id: str,
+        connector_name: str,
+        request: main_models.ListConnectorModelsRequest,
+    ) -> main_models.ListConnectorModelsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_connector_models_with_options_async(workspace_id, connector_name, request, headers, runtime)
+
+    def list_connectors_with_options(
+        self,
+        workspace_id: str,
+        request: main_models.ListConnectorsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListConnectorsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListConnectors',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/connectors',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListConnectorsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_connectors_with_options_async(
+        self,
+        workspace_id: str,
+        request: main_models.ListConnectorsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListConnectorsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListConnectors',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/connectors',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListConnectorsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_connectors(
+        self,
+        workspace_id: str,
+        request: main_models.ListConnectorsRequest,
+    ) -> main_models.ListConnectorsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_connectors_with_options(workspace_id, request, headers, runtime)
+
+    async def list_connectors_async(
+        self,
+        workspace_id: str,
+        request: main_models.ListConnectorsRequest,
+    ) -> main_models.ListConnectorsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_connectors_with_options_async(workspace_id, request, headers, runtime)
+
     def list_credentials_with_options(
         self,
         workspace_id: str,
@@ -5270,6 +5878,8 @@ class Client(OpenApiClient):
             query['credentialType'] = request.credential_type
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
         if not DaraCore.is_null(request.name_like):
             query['nameLike'] = request.name_like
         if not DaraCore.is_null(request.next_token):
@@ -5307,6 +5917,8 @@ class Client(OpenApiClient):
             query['credentialType'] = request.credential_type
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
         if not DaraCore.is_null(request.name_like):
             query['nameLike'] = request.name_like
         if not DaraCore.is_null(request.next_token):
@@ -5601,6 +6213,102 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_managed_agents_with_options_async(workspace_id, request, headers, runtime)
 
+    def list_mcp_market_items_with_options(
+        self,
+        workspace_id: str,
+        request: main_models.ListMcpMarketItemsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMcpMarketItemsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.keyword):
+            query['keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.mcp_type):
+            query['mcpType'] = request.mcp_type
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.official_tag):
+            query['officialTag'] = request.official_tag
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMcpMarketItems',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/mcp-market/items',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMcpMarketItemsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_mcp_market_items_with_options_async(
+        self,
+        workspace_id: str,
+        request: main_models.ListMcpMarketItemsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMcpMarketItemsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.keyword):
+            query['keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.mcp_type):
+            query['mcpType'] = request.mcp_type
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.official_tag):
+            query['officialTag'] = request.official_tag
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMcpMarketItems',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/mcp-market/items',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMcpMarketItemsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_mcp_market_items(
+        self,
+        workspace_id: str,
+        request: main_models.ListMcpMarketItemsRequest,
+    ) -> main_models.ListMcpMarketItemsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_mcp_market_items_with_options(workspace_id, request, headers, runtime)
+
+    async def list_mcp_market_items_async(
+        self,
+        workspace_id: str,
+        request: main_models.ListMcpMarketItemsRequest,
+    ) -> main_models.ListMcpMarketItemsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_mcp_market_items_with_options_async(workspace_id, request, headers, runtime)
+
     def list_mcp_tools_with_options(
         self,
         workspace_id: str,
@@ -5704,8 +6412,12 @@ class Client(OpenApiClient):
             query['name'] = request.name
         if not DaraCore.is_null(request.next_token):
             query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.official_tag):
+            query['officialTag'] = request.official_tag
         if not DaraCore.is_null(request.search_type):
             query['searchType'] = request.search_type
+        if not DaraCore.is_null(request.usage_active):
+            query['usageActive'] = request.usage_active
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -5741,8 +6453,12 @@ class Client(OpenApiClient):
             query['name'] = request.name
         if not DaraCore.is_null(request.next_token):
             query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.official_tag):
+            query['officialTag'] = request.official_tag
         if not DaraCore.is_null(request.search_type):
             query['searchType'] = request.search_type
+        if not DaraCore.is_null(request.usage_active):
+            query['usageActive'] = request.usage_active
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -6116,6 +6832,194 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_predefined_models_with_options_async(provider_type, request, headers, runtime)
+
+    def list_sandbox_sessions_with_options(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        sandbox_id: str,
+        request: main_models.ListSandboxSessionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSandboxSessionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSandboxSessions',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/managed-agents/{DaraURL.percent_encode(agent_id)}/sandboxes/{DaraURL.percent_encode(sandbox_id)}/sessions',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSandboxSessionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_sandbox_sessions_with_options_async(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        sandbox_id: str,
+        request: main_models.ListSandboxSessionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSandboxSessionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSandboxSessions',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/managed-agents/{DaraURL.percent_encode(agent_id)}/sandboxes/{DaraURL.percent_encode(sandbox_id)}/sessions',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSandboxSessionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_sandbox_sessions(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        sandbox_id: str,
+        request: main_models.ListSandboxSessionsRequest,
+    ) -> main_models.ListSandboxSessionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_sandbox_sessions_with_options(workspace_id, agent_id, sandbox_id, request, headers, runtime)
+
+    async def list_sandbox_sessions_async(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        sandbox_id: str,
+        request: main_models.ListSandboxSessionsRequest,
+    ) -> main_models.ListSandboxSessionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_sandbox_sessions_with_options_async(workspace_id, agent_id, sandbox_id, request, headers, runtime)
+
+    def list_sandboxes_with_options(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        request: main_models.ListSandboxesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSandboxesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.search_text):
+            query['searchText'] = request.search_text
+        if not DaraCore.is_null(request.session_id):
+            query['sessionId'] = request.session_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSandboxes',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/managed-agents/{DaraURL.percent_encode(agent_id)}/sandboxes',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSandboxesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_sandboxes_with_options_async(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        request: main_models.ListSandboxesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSandboxesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.search_text):
+            query['searchText'] = request.search_text
+        if not DaraCore.is_null(request.session_id):
+            query['sessionId'] = request.session_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSandboxes',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/managed-agents/{DaraURL.percent_encode(agent_id)}/sandboxes',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSandboxesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_sandboxes(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        request: main_models.ListSandboxesRequest,
+    ) -> main_models.ListSandboxesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_sandboxes_with_options(workspace_id, agent_id, request, headers, runtime)
+
+    async def list_sandboxes_async(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        request: main_models.ListSandboxesRequest,
+    ) -> main_models.ListSandboxesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_sandboxes_with_options_async(workspace_id, agent_id, request, headers, runtime)
 
     def list_service_endpoints_with_options(
         self,
@@ -7645,6 +8549,98 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_agent_spec_with_options_async(workspace_id, agent_spec_name, request, headers, runtime)
 
+    def update_connector_with_options(
+        self,
+        workspace_id: str,
+        connector_name: str,
+        tmp_req: main_models.UpdateConnectorRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateConnectorResponse:
+        tmp_req.validate()
+        request = main_models.UpdateConnectorShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateConnector',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/connectors/{DaraURL.percent_encode(connector_name)}/actions/update',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateConnectorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_connector_with_options_async(
+        self,
+        workspace_id: str,
+        connector_name: str,
+        tmp_req: main_models.UpdateConnectorRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateConnectorResponse:
+        tmp_req.validate()
+        request = main_models.UpdateConnectorShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateConnector',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/connectors/{DaraURL.percent_encode(connector_name)}/actions/update',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateConnectorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_connector(
+        self,
+        workspace_id: str,
+        connector_name: str,
+        request: main_models.UpdateConnectorRequest,
+    ) -> main_models.UpdateConnectorResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_connector_with_options(workspace_id, connector_name, request, headers, runtime)
+
+    async def update_connector_async(
+        self,
+        workspace_id: str,
+        connector_name: str,
+        request: main_models.UpdateConnectorRequest,
+    ) -> main_models.UpdateConnectorResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_connector_with_options_async(workspace_id, connector_name, request, headers, runtime)
+
     def update_credential_with_options(
         self,
         workspace_id: str,
@@ -8136,6 +9132,110 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_mcp_with_options_async(workspace_id, mcp_server_id, request, headers, runtime)
+
+    def update_mcp_template_config_with_options(
+        self,
+        workspace_id: str,
+        mcp_server_id: str,
+        tmp_req: main_models.UpdateMcpTemplateConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMcpTemplateConfigResponse:
+        tmp_req.validate()
+        request = main_models.UpdateMcpTemplateConfigShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.template_version):
+            query['templateVersion'] = request.template_version
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMcpTemplateConfig',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/mcp-servers/{DaraURL.percent_encode(mcp_server_id)}/template-config',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMcpTemplateConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_mcp_template_config_with_options_async(
+        self,
+        workspace_id: str,
+        mcp_server_id: str,
+        tmp_req: main_models.UpdateMcpTemplateConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMcpTemplateConfigResponse:
+        tmp_req.validate()
+        request = main_models.UpdateMcpTemplateConfigShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.template_version):
+            query['templateVersion'] = request.template_version
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMcpTemplateConfig',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/mcp-servers/{DaraURL.percent_encode(mcp_server_id)}/template-config',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMcpTemplateConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_mcp_template_config(
+        self,
+        workspace_id: str,
+        mcp_server_id: str,
+        request: main_models.UpdateMcpTemplateConfigRequest,
+    ) -> main_models.UpdateMcpTemplateConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_mcp_template_config_with_options(workspace_id, mcp_server_id, request, headers, runtime)
+
+    async def update_mcp_template_config_async(
+        self,
+        workspace_id: str,
+        mcp_server_id: str,
+        request: main_models.UpdateMcpTemplateConfigRequest,
+    ) -> main_models.UpdateMcpTemplateConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_mcp_template_config_with_options_async(workspace_id, mcp_server_id, request, headers, runtime)
 
     def update_model_with_options(
         self,
@@ -9084,3 +10184,175 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.upload_skill_via_oss_with_options_async(workspace_id, request, headers, runtime)
+
+    def verify_connector_with_options(
+        self,
+        workspace_id: str,
+        connector_name: str,
+        tmp_req: main_models.VerifyConnectorRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.VerifyConnectorResponse:
+        tmp_req.validate()
+        request = main_models.VerifyConnectorShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'VerifyConnector',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/connectors/{DaraURL.percent_encode(connector_name)}/actions/verify',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.VerifyConnectorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def verify_connector_with_options_async(
+        self,
+        workspace_id: str,
+        connector_name: str,
+        tmp_req: main_models.VerifyConnectorRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.VerifyConnectorResponse:
+        tmp_req.validate()
+        request = main_models.VerifyConnectorShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'VerifyConnector',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/connectors/{DaraURL.percent_encode(connector_name)}/actions/verify',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.VerifyConnectorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def verify_connector(
+        self,
+        workspace_id: str,
+        connector_name: str,
+        request: main_models.VerifyConnectorRequest,
+    ) -> main_models.VerifyConnectorResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.verify_connector_with_options(workspace_id, connector_name, request, headers, runtime)
+
+    async def verify_connector_async(
+        self,
+        workspace_id: str,
+        connector_name: str,
+        request: main_models.VerifyConnectorRequest,
+    ) -> main_models.VerifyConnectorResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.verify_connector_with_options_async(workspace_id, connector_name, request, headers, runtime)
+
+    def verify_workspace_oss_mount_ram_authorization_with_options(
+        self,
+        workspace_id: str,
+        request: main_models.VerifyWorkspaceOssMountRamAuthorizationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.VerifyWorkspaceOssMountRamAuthorizationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bucket_name):
+            query['bucketName'] = request.bucket_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'VerifyWorkspaceOssMountRamAuthorization',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/oss-mount/authorize/verify',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.VerifyWorkspaceOssMountRamAuthorizationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def verify_workspace_oss_mount_ram_authorization_with_options_async(
+        self,
+        workspace_id: str,
+        request: main_models.VerifyWorkspaceOssMountRamAuthorizationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.VerifyWorkspaceOssMountRamAuthorizationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bucket_name):
+            query['bucketName'] = request.bucket_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'VerifyWorkspaceOssMountRamAuthorization',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/oss-mount/authorize/verify',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.VerifyWorkspaceOssMountRamAuthorizationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def verify_workspace_oss_mount_ram_authorization(
+        self,
+        workspace_id: str,
+        request: main_models.VerifyWorkspaceOssMountRamAuthorizationRequest,
+    ) -> main_models.VerifyWorkspaceOssMountRamAuthorizationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.verify_workspace_oss_mount_ram_authorization_with_options(workspace_id, request, headers, runtime)
+
+    async def verify_workspace_oss_mount_ram_authorization_async(
+        self,
+        workspace_id: str,
+        request: main_models.VerifyWorkspaceOssMountRamAuthorizationRequest,
+    ) -> main_models.VerifyWorkspaceOssMountRamAuthorizationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.verify_workspace_oss_mount_ram_authorization_with_options_async(workspace_id, request, headers, runtime)

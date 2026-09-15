@@ -10,7 +10,9 @@ class CreateUserShrinkRequest(DaraModel):
         body_shrink: str = None,
         client_token: str = None,
     ):
+        # The request body for creating a user.
         self.body_shrink = body_shrink
+        # Not supported.
         self.client_token = client_token
 
     def validate(self):

@@ -15,11 +15,17 @@ class CreateModelConnectionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The business status code. The value SUCCESS indicates success.
         self.code = code
+        # The model connection information after creation.
         self.data = data
+        # The HTTP status code. The value 200 indicates success.
         self.http_status_code = http_status_code
+        # The request processing result message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -91,18 +97,31 @@ class CreateModelConnectionResponseBodyData(DaraModel):
         updated_at: str = None,
         workspace_id: str = None,
     ):
+        # The number of API keys configured in the model connection.
         self.api_key_count = api_key_count
+        # The model connection ID.
         self.connection_id = connection_id
+        # The time when the resource was created, in RFC 3339 UTC format.
         self.created_at = created_at
+        # Indicates whether access credentials have been configured for the model connection.
         self.credential_configured = credential_configured
+        # The description of the model connection. The description can be up to 255 characters in length.
         self.description = description
+        # The absolute HTTP or HTTPS address of the upstream model service. The address can be up to 1024 characters in length.
         self.endpoint = endpoint
+        # The model connection name. The name must be 1 to 128 non-whitespace characters in length.
         self.name = name
+        # The model invoke protocol. Currently, only OpenAI/v1 is supported. If this parameter is not configured in Settings during model creation, this default value is used.
         self.protocol = protocol
+        # The model provider type.
         self.provider_type = provider_type
+        # The resource status.
         self.status = status
+        # The failure summary returned when the model connection fails to be published or fails to be deleted but remains in the Deleting state. This parameter is empty for other states.
         self.status_reason = status_reason
+        # The time when the resource was last updated, in RFC 3339 UTC format.
         self.updated_at = updated_at
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

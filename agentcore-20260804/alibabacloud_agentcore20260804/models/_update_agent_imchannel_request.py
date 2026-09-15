@@ -13,7 +13,7 @@ class UpdateAgentIMChannelRequest(DaraModel):
     ):
         # The request body.
         self.body = body
-        # The reserved idempotency token. The backend does not provide persistent idempotency guarantees in this phase.
+        # The reserved idempotency token. The backend does not provide persistent idempotency guarantees in the current phase.
         self.client_token = client_token
 
     def validate(self):
@@ -51,11 +51,11 @@ class UpdateAgentIMChannelRequestBody(DaraModel):
         enabled: bool = None,
         service_endpoint_id: str = None,
     ):
-        # The channel behavior configuration. When provided, the entire configuration is replaced. An empty object restores default values.
+        # The channel behavior configuration. When specified, the entire configuration is replaced. An empty object restores default values.
         self.channel_config = channel_config
-        # Specifies whether to enable the IM channel. Default value: true (when created).
+        # Specifies whether to enable the IM channel. Default value upon creation: true.
         self.enabled = enabled
-        # The ID of the bound ServiceEndpoint. The endpoint must belong to the specified agent and its current version, be in the ready state, and have a public endpoint address.
+        # The ID of the bound ServiceEndpoint. The endpoint must belong to the specified agent and its current version, be in the ready state, and have a public endpoint.
         self.service_endpoint_id = service_endpoint_id
 
     def validate(self):

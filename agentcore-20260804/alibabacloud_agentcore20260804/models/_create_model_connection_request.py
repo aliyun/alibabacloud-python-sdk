@@ -13,7 +13,9 @@ class CreateModelConnectionRequest(DaraModel):
         body: main_models.CreateModelConnectionRequestBody = None,
         client_token: str = None,
     ):
+        # The request body.
         self.body = body
+        # The client token used for idempotence. Not supported.
         self.client_token = client_token
 
     def validate(self):
@@ -54,14 +56,24 @@ class CreateModelConnectionRequestBody(DaraModel):
         protocol: str = None,
         provider_type: str = None,
     ):
+        # The list of API keys used to access the upstream model service. The list must contain at least one non-empty value.
+        # 
         # This parameter is required.
         self.api_keys = api_keys
+        # The description of the model connection. The description can be up to 255 characters in length.
         self.description = description
+        # The absolute HTTP or HTTPS address of the upstream model service. The address can be up to 1024 characters in length.
+        # 
         # This parameter is required.
         self.endpoint = endpoint
+        # The model connection name. The name must be 1 to 128 non-whitespace characters in length.
+        # 
         # This parameter is required.
         self.name = name
+        # The model invoke protocol. Currently, only OpenAI/v1 is supported. If this parameter is not configured in Settings during model creation, this default value is used.
         self.protocol = protocol
+        # The model provider type.
+        # 
         # This parameter is required.
         self.provider_type = provider_type
 

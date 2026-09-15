@@ -15,7 +15,7 @@ class UpdateAgentIMChannelCredentialRequest(DaraModel):
     ):
         # The request body.
         self.body = body
-        # A reserved idempotency token. The backend does not provide persistent idempotence guarantee in the current version.
+        # Reserved idempotency token. The backend does not provide persistent idempotence guarantees in the current version.
         self.client_token = client_token
 
     def validate(self):

@@ -17,11 +17,17 @@ class UpdateTeamResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The business status code.
         self.code = code
+        # The updated team information.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message. An error description is returned if the request failed.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -89,14 +95,29 @@ class UpdateTeamResponseBodyData(DaraModel):
         users: List[main_models.UpdateTeamResponseBodyDataUsers] = None,
         workspace_id: str = None,
     ):
+        # The agent member list of the team.
         self.agents = agents
+        # The creation time in UTC, formatted in RFC 3339.
         self.created_at = created_at
+        # The team description.
         self.description = description
+        # The team name. The name can contain only lowercase letters, digits, and hyphens (-). It must start and end with a lowercase letter or digit. The name must be 1 to 128 characters in length.
         self.name = name
+        # The team status. Valid values:
+        # - Creating
+        # - Active
+        # - Updating
+        # - Deleting
+        # - Failed
+        # - Deleted
         self.status = status
+        # The team ID.
         self.team_id = team_id
+        # The time of the last modification in UTC, formatted in RFC 3339.
         self.updated_at = updated_at
+        # The user member list of the team.
         self.users = users
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -190,7 +211,13 @@ class UpdateTeamResponseBodyDataUsers(DaraModel):
         team_role: str = None,
         user_id: str = None,
     ):
+        # The role of the user in the team. Valid values:
+        # - ADMIN
+        # - MEMBER
+        # 
+        # Each team must have exactly one ADMIN.
         self.team_role = team_role
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -225,7 +252,13 @@ class UpdateTeamResponseBodyDataAgents(DaraModel):
         agent_id: str = None,
         team_role: str = None,
     ):
+        # The agent ID.
         self.agent_id = agent_id
+        # The role of the agent in the team. Valid values:
+        # - LEADER
+        # - WORKER
+        # 
+        # Each team must have exactly one LEADER.
         self.team_role = team_role
 
     def validate(self):

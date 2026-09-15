@@ -15,11 +15,17 @@ class GetUserResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The business status code.
         self.code = code
+        # The user details.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message. An error description is returned if the request fails.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -89,16 +95,27 @@ class GetUserResponseBodyData(DaraModel):
         updated_at: str = None,
         workspace_id: str = None,
     ):
+        # The user ID.
         self.agent_core_user_id = agent_core_user_id
+        # The authentication method of the user. password indicates local password authentication in the workspace. dingtalk and feishu indicate that the user is synchronized and authenticated by the corresponding external identity provider.
         self.auth_method = auth_method
+        # The creation time in UTC, formatted in RFC 3339.
         self.created_at = created_at
+        # The display name of the user. The display name must be 1 to 32 characters in length.
         self.display_name = display_name
+        # The email address of the user. The email address can be up to 256 characters in length.
         self.email = email
+        # The username. The username must be unique within the workspace and can contain only lowercase letters, digits, and hyphens (-). It must start and end with a lowercase letter or digit. The username must be 1 to 32 characters in length.
         self.name = name
+        # The remarks of the user. The remarks can be up to 1024 characters in length.
         self.note = note
+        # The region ID of the resource.
         self.region_id = region_id
+        # The user status. Valid values: Creating, Active, Updating, Deleting, Failed, DeleteFailed.
         self.status = status
+        # The last modification time in UTC, formatted in RFC 3339.
         self.updated_at = updated_at
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
