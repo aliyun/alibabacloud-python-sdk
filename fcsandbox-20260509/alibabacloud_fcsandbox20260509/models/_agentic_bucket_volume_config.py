@@ -13,10 +13,15 @@ class AgenticBucketVolumeConfig(DaraModel):
         endpoint: str = None,
         read_only: bool = None,
     ):
+        # AgenticBucket
         self.agentic_bucket = agentic_bucket
+        # The BucketSpace of the agentic child.
         self.bucket_name = bucket_name
+        # The file path under the BucketSpace.
         self.bucket_path = bucket_path
+        # Agentic Bucket Endpoint
         self.endpoint = endpoint
+        # Indicates whether the bucket is read-only.
         self.read_only = read_only
 
     def validate(self):

@@ -25,10 +25,11 @@ class E2BVolume(DaraModel):
         volume_id: str = None,
         volume_name: str = None,
     ):
+        # The AgenticBucket configuration.
         self.agentic_bucket_volume_config = agentic_bucket_volume_config
         # The AgenticFS configuration.
         self.agentic_fsvolume_config = agentic_fsvolume_config
-        # The time when the volume was created.
+        # The creation time.
         self.created_at = created_at
         # The mount configuration.
         self.mount_config = mount_config
@@ -42,7 +43,7 @@ class E2BVolume(DaraModel):
         # - ERROR
         # - DELETING
         self.status = status
-        # The reason for the status.
+        # The status reason.
         self.status_reason = status_reason
         # The storage type. Valid values:
         # - OSS
@@ -50,7 +51,7 @@ class E2BVolume(DaraModel):
         self.storage_class = storage_class
         # The unique identifier of the team.
         self.team_id = team_id
-        # The time when the volume was last updated.
+        # The update time.
         self.updated_at = updated_at
         # The UID of the creator.
         self.user_id = user_id
@@ -174,9 +175,9 @@ class E2BVolumeMountConfig(DaraModel):
         role: str = None,
         vpc_config: main_models.E2BVolumeMountConfigVpcConfig = None,
     ):
-        # The RAM role that the user grants to the sandboxed container. After this role is set, the sandboxed container assumes the role to generate temporary access credentials. You can use the temporary access credentials of this role to mount storage in the sandboxed container, such as OSS and AgenticFS.
+        # The RAM role that the user grants to the cloud sandbox. After this role is set, the cloud sandbox assumes the role to generate temporary access credentials. You can use the temporary access credentials of this role to mount storage in the cloud sandbox, such as OSS and AgenticFS.
         self.role = role
-        # The virtual private cloud (VPC) ID.
+        # The VPC ID.
         self.vpc_config = vpc_config
 
     def validate(self):
@@ -218,7 +219,7 @@ class E2BVolumeMountConfigVpcConfig(DaraModel):
         self.security_group_id = security_group_id
         # The list of vSwitches.
         self.v_switch_ids = v_switch_ids
-        # The virtual private cloud (VPC) ID.
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):

@@ -1,3 +1,7 @@
+2026-09-15 Version: 1.5.0
+- Support API UpdateTemplate.
+
+
 2026-09-10 Version: 1.4.3
 - Generated python 2026-05-09 for FCSandbox.
 

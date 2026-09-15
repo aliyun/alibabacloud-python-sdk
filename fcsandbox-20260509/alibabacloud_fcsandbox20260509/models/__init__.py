@@ -52,6 +52,18 @@ from ._public_template_sandbox_config import PublicTemplateSandboxConfig
 from ._public_template_status import PublicTemplateStatus
 from ._public_template_status_reason import PublicTemplateStatusReason
 from ._public_template_vpcconfig import PublicTemplateVPCConfig
+from ._public_update_template_build_config import PublicUpdateTemplateBuildConfig
+from ._public_update_template_copy_action import PublicUpdateTemplateCopyAction
+from ._public_update_template_envd_inject_action import PublicUpdateTemplateEnvdInjectAction
+from ._public_update_template_input import PublicUpdateTemplateInput
+from ._public_update_template_log_config import PublicUpdateTemplateLogConfig
+from ._public_update_template_registry_auth_config import PublicUpdateTemplateRegistryAuthConfig
+from ._public_update_template_registry_cert_config import PublicUpdateTemplateRegistryCertConfig
+from ._public_update_template_registry_config import PublicUpdateTemplateRegistryConfig
+from ._public_update_template_registry_network_config import PublicUpdateTemplateRegistryNetworkConfig
+from ._public_update_template_runtime_config import PublicUpdateTemplateRuntimeConfig
+from ._public_update_template_sandbox_config import PublicUpdateTemplateSandboxConfig
+from ._public_update_template_vpcconfig import PublicUpdateTemplateVPCConfig
 from ._quota import Quota
 from ._tlsconfig import TLSConfig
 from ._update_api_key_input import UpdateApiKeyInput
@@ -128,6 +140,9 @@ from ._update_quota_response import UpdateQuotaResponse
 from ._update_team_request import UpdateTeamRequest
 from ._update_team_response_body import UpdateTeamResponseBody
 from ._update_team_response import UpdateTeamResponse
+from ._update_template_request import UpdateTemplateRequest
+from ._update_template_response_body import UpdateTemplateResponseBody
+from ._update_template_response import UpdateTemplateResponse
 from ._update_volume_request import UpdateVolumeRequest
 from ._update_volume_response_body import UpdateVolumeResponseBody
 from ._update_volume_response import UpdateVolumeResponse
@@ -190,6 +205,18 @@ __all__ = [
     PublicTemplateStatus,
     PublicTemplateStatusReason,
     PublicTemplateVPCConfig,
+    PublicUpdateTemplateBuildConfig,
+    PublicUpdateTemplateCopyAction,
+    PublicUpdateTemplateEnvdInjectAction,
+    PublicUpdateTemplateInput,
+    PublicUpdateTemplateLogConfig,
+    PublicUpdateTemplateRegistryAuthConfig,
+    PublicUpdateTemplateRegistryCertConfig,
+    PublicUpdateTemplateRegistryConfig,
+    PublicUpdateTemplateRegistryNetworkConfig,
+    PublicUpdateTemplateRuntimeConfig,
+    PublicUpdateTemplateSandboxConfig,
+    PublicUpdateTemplateVPCConfig,
     Quota,
     TLSConfig,
     UpdateApiKeyInput,
@@ -266,6 +293,9 @@ __all__ = [
     UpdateTeamRequest,
     UpdateTeamResponseBody,
     UpdateTeamResponse,
+    UpdateTemplateRequest,
+    UpdateTemplateResponseBody,
+    UpdateTemplateResponse,
     UpdateVolumeRequest,
     UpdateVolumeResponseBody,
     UpdateVolumeResponse,

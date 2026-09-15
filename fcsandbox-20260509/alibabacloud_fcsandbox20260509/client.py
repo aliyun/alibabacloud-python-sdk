@@ -1827,6 +1827,88 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_team_with_options_async(team_id, request, headers, runtime)
 
+    def update_template_with_options(
+        self,
+        template_id: str,
+        request: main_models.UpdateTemplateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.team_id):
+            query['teamID'] = request.team_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateTemplate',
+            version = '2026-05-09',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-05-09/templates/{DaraURL.percent_encode(template_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_template_with_options_async(
+        self,
+        template_id: str,
+        request: main_models.UpdateTemplateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.team_id):
+            query['teamID'] = request.team_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateTemplate',
+            version = '2026-05-09',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-05-09/templates/{DaraURL.percent_encode(template_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_template(
+        self,
+        template_id: str,
+        request: main_models.UpdateTemplateRequest,
+    ) -> main_models.UpdateTemplateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_template_with_options(template_id, request, headers, runtime)
+
+    async def update_template_async(
+        self,
+        template_id: str,
+        request: main_models.UpdateTemplateRequest,
+    ) -> main_models.UpdateTemplateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_template_with_options_async(template_id, request, headers, runtime)
+
     def update_volume_with_options(
         self,
         volume_id: str,

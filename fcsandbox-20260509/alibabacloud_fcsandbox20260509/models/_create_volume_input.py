@@ -17,6 +17,7 @@ class CreateVolumeInput(DaraModel):
         team_id: str = None,
         volume_name: str = None,
     ):
+        # The AgenticBucket configuration.
         self.agentic_bucket_volume_config = agentic_bucket_volume_config
         # The AgenticFS configuration.
         self.agentic_fsvolume_config = agentic_fsvolume_config
@@ -96,7 +97,7 @@ class CreateVolumeInputMountConfig(DaraModel):
         role: str = None,
         vpc_config: main_models.CreateVolumeInputMountConfigVpcConfig = None,
     ):
-        # The RAM role that the user grants to the cloud sandbox. After this role is set, the cloud sandbox assumes the role to generate temporary access credentials. You can use the temporary access credentials of this role to mount storage in the cloud sandbox, such as OSS and AgenticFS.
+        # The RAM role that the user grants to the cloud sandbox. After the role is set, the cloud sandbox assumes this role to generate temporary access credentials. You can use the temporary access credentials of this role to mount storage in the cloud sandbox, such as OSS and AgenticFS.
         self.role = role
         # The VPC configuration.
         self.vpc_config = vpc_config
