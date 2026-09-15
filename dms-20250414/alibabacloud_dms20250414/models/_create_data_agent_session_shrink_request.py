@@ -19,7 +19,7 @@ class CreateDataAgentSessionShrinkRequest(DaraModel):
         self.file = file
         # The session configuration.
         self.session_config_shrink = session_config_shrink
-        # The session title. Supports Chinese and English. Maximum length: 128 characters.
+        # The title. Chinese and English characters are supported. Maximum length: 128 characters.
         self.title = title
         # The workspace ID.
         self.workspace_id = workspace_id

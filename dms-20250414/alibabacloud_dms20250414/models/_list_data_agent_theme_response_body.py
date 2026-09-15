@@ -24,17 +24,17 @@ class ListDataAgentThemeResponseBody(DaraModel):
     ):
         # The response struct.
         self.data = data
-        # The error code returned when the request failed.
+        # The error code returned if the request failed.
         self.error_code = error_code
-        # The error message returned when the request failed.
+        # The error message returned if the request failed.
         self.error_message = error_message
-        # The page size.
+        # The number of entries per page.
         self.max_results = max_results
         # The pagination token.
         self.next_token = next_token
         # The current page number.
         self.page_number = page_number
-        # The current page size.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID, which is used to locate logs and troubleshoot issues.
         self.request_id = request_id
@@ -149,7 +149,7 @@ class ListDataAgentThemeResponseBodyData(DaraModel):
         theme_name: str = None,
         theme_type: str = None,
     ):
-        # The common scenarios. Valid values: report, infographic, and others.
+        # The common scenario of the theme. Valid values: report, infographic, and others.
         self.category = category
         # The creation time in ISO 8601 format.
         self.created_at = created_at
@@ -157,7 +157,7 @@ class ListDataAgentThemeResponseBodyData(DaraModel):
         self.description = description
         # The modification time in ISO 8601 format.
         self.modified_at = modified_at
-        # The tracing reference that points to the UUID of the source theme.
+        # The traceability reference that points to the UUID of the source theme.
         self.refer_to = refer_to
         # The source of the theme. Valid values:
         # 
@@ -171,8 +171,8 @@ class ListDataAgentThemeResponseBodyData(DaraModel):
         self.theme_name = theme_name
         # The theme stage. Valid values:
         # 
-        # - design: contains only design.md.
-        # - template: complete and renderable.
+        # - design: The theme contains only design.md.
+        # - template: The theme is complete and renderable.
         self.theme_type = theme_type
 
     def validate(self):

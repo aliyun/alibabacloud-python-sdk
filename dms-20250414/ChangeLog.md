@@ -1,3 +1,9 @@
+2026-09-15 Version: 2.1.0
+- Support API CreateAgent.
+- Update API CreateDataAgentTheme: add request parameters WorkspaceId.
+- Update API ListDataAgentTheme: add request parameters WorkspaceId.
+
+
 2026-09-08 Version: 2.0.0
 - Update API SendChatMessage: update request parameters SessionConfig.EnableSearch' type has changed.
 - Update API SendChatMessage: update request parameters SessionConfig.KbUuidList' type has changed.

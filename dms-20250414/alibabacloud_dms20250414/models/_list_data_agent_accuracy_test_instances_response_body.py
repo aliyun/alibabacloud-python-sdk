@@ -156,6 +156,7 @@ class ListDataAgentAccuracyTestInstancesResponseBodyData(DaraModel):
         self.agent_id = agent_id
         # The UID of the workspace creator.
         self.creator = creator
+        # The data source.
         self.datasource = datasource
         # The ID of the test set file.
         self.file_id = file_id
@@ -171,7 +172,7 @@ class ListDataAgentAccuracyTestInstancesResponseBodyData(DaraModel):
         self.mode = mode
         # The custom agent name.
         self.name = name
-        # Specifies whether sessions are displayed after analysis. This parameter is not supported.
+        # Specifies whether sessions are displayed after analysis. This feature is not supported.
         self.need_delete = need_delete
         # The workspace ID.
         self.workspace_id = workspace_id

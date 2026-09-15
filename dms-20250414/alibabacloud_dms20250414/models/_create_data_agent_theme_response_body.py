@@ -16,9 +16,9 @@ class CreateDataAgentThemeResponseBody(DaraModel):
     ):
         # The response struct.
         self.data = data
-        # The error code returned when the request is abnormal.
+        # The error code returned when the request fails.
         self.error_code = error_code
-        # The error message returned when the call fails.
+        # The error message returned when the request fails.
         self.error_message = error_message
         # The request ID, which is used to locate logs and troubleshoot issues.
         self.request_id = request_id

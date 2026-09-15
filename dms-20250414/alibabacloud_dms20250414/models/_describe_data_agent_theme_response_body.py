@@ -16,16 +16,16 @@ class DescribeDataAgentThemeResponseBody(DaraModel):
     ):
         # The response struct.
         self.data = data
-        # The error code returned when the request is abnormal.
+        # The error code returned when the request fails.
         self.error_code = error_code
         # The error message returned when the call fails.
         self.error_message = error_message
         # The request ID, which is used to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request is successful. Valid values:
         # 
-        # - **true**: The request was successful.
-        # - **false**: The request failed.
+        # - **true**: The request is successful.
+        # - **false**: The request fails.
         self.success = success
 
     def validate(self):
@@ -95,21 +95,17 @@ class DescribeDataAgentThemeResponseBodyData(DaraModel):
         self.description = description
         # The modification time in ISO 8601 format.
         self.modified_at = modified_at
-        # The theme tracing information. This field is currently not enabled.
+        # The tracing information of the theme. This field is currently not enabled.
         self.refer_to = refer_to
-        # The source of the theme. Valid values:
-        # 
-        # - system
-        # - custom
+        # The source of the theme. Valid values: system, custom.
         self.theme_from = theme_from
         # The business ID of the theme.
         self.theme_id = theme_id
         # The display name of the theme.
         self.theme_name = theme_name
-        # The theme stage. Valid values:
-        # 
-        # - design: design.md only.
-        # - template: complete and renderable.
+        # The stage of the theme. Valid values:
+        # - design: The theme contains only design.md.
+        # - template: The theme is complete and renderable.
         self.theme_type = theme_type
 
     def validate(self):

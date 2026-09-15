@@ -14,19 +14,20 @@ class ListDataAgentThemeRequest(DaraModel):
         page_size: int = None,
         theme_from: str = None,
         theme_type: str = None,
+        workspace_id: str = None,
     ):
-        # The common scenarios. Valid values: report, infographic, and others.
+        # The common scenario of the theme. Valid values: report, infographic, and others.
         self.category = category
-        # **[Not supported]** The page size. Maximum value: 100.
+        # **[Not currently supported]** The maximum number of entries per page. Maximum value: 100.
         self.max_results = max_results
-        # **[Not supported]** The pagination token for the next query. Valid values:
+        # **[Not currently supported]** The pagination token for the next query. Valid values:
         # 
         # - If **NextToken** is empty, no next query exists.
-        # - If **NextToken** has a return value, the value indicates the token for the next query.
+        # - If **NextToken** has a return value, the value is the token for the next query.
         self.next_token = next_token
         # The current page number.
         self.page_number = page_number
-        # The current page size.
+        # The number of entries per page.
         self.page_size = page_size
         # The source of the theme. Valid values:
         # 
@@ -36,9 +37,11 @@ class ListDataAgentThemeRequest(DaraModel):
         self.theme_from = theme_from
         # The theme stage. Valid values:
         # 
-        # - design: contains only design.md.
-        # - template: complete and renderable.
+        # - design: The theme contains only design.md.
+        # - template: The theme is complete and renderable.
         self.theme_type = theme_type
+        # The workspace context. If this parameter is left empty or set to personal, the personal workspace is used. To query themes in a collaborative workspace, specify the workspace ID.
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -69,6 +72,9 @@ class ListDataAgentThemeRequest(DaraModel):
         if self.theme_type is not None:
             result['ThemeType'] = self.theme_type
 
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -93,6 +99,9 @@ class ListDataAgentThemeRequest(DaraModel):
 
         if m.get('ThemeType') is not None:
             self.theme_type = m.get('ThemeType')
+
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
 
         return self
 

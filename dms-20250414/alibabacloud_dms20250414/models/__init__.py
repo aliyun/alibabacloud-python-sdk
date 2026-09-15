@@ -84,6 +84,9 @@ from ._config_airflow_response import ConfigAirflowResponse
 from ._config_data_agent_memory_request import ConfigDataAgentMemoryRequest
 from ._config_data_agent_memory_response_body import ConfigDataAgentMemoryResponseBody
 from ._config_data_agent_memory_response import ConfigDataAgentMemoryResponse
+from ._create_agent_request import CreateAgentRequest
+from ._create_agent_response_body import CreateAgentResponseBody
+from ._create_agent_response import CreateAgentResponse
 from ._create_airflow_request import CreateAirflowRequest
 from ._create_airflow_shrink_request import CreateAirflowShrinkRequest
 from ._create_airflow_response_body import CreateAirflowResponseBody
@@ -512,6 +515,8 @@ from ._add_user_to_data_agent_workspace_response_body import AddUserToDataAgentW
 from ._check_data_agent_memory_config_response_body import CheckDataAgentMemoryConfigResponseBodyData
 from ._config_airflow_response_body import ConfigAirflowResponseBodyRoot
 from ._config_data_agent_memory_response_body import ConfigDataAgentMemoryResponseBodyData
+from ._create_agent_response_body import CreateAgentResponseBodyDataApiKey
+from ._create_agent_response_body import CreateAgentResponseBodyData
 from ._create_airflow_response_body import CreateAirflowResponseBodyRoot
 from ._create_airflow_login_token_response_body import CreateAirflowLoginTokenResponseBodyData
 from ._create_custom_agent_request import CreateCustomAgentRequestCallbackConfig
@@ -728,6 +733,9 @@ __all__ = [
     ConfigDataAgentMemoryRequest,
     ConfigDataAgentMemoryResponseBody,
     ConfigDataAgentMemoryResponse,
+    CreateAgentRequest,
+    CreateAgentResponseBody,
+    CreateAgentResponse,
     CreateAirflowRequest,
     CreateAirflowShrinkRequest,
     CreateAirflowResponseBody,
@@ -1156,6 +1164,8 @@ __all__ = [
     CheckDataAgentMemoryConfigResponseBodyData,
     ConfigAirflowResponseBodyRoot,
     ConfigDataAgentMemoryResponseBodyData,
+    CreateAgentResponseBodyDataApiKey,
+    CreateAgentResponseBodyData,
     CreateAirflowResponseBodyRoot,
     CreateAirflowLoginTokenResponseBodyData,
     CreateCustomAgentRequestCallbackConfig,

@@ -13,30 +13,33 @@ class CreateDataAgentThemeRequest(DaraModel):
         theme_id: str = None,
         theme_name: str = None,
         theme_type: str = None,
+        workspace_id: str = None,
     ):
-        # The application scenario, which affects filtering when viewing the theme list in the console. Valid values:
+        # The scenario, which affects the filtering when you view the theme list in the console. Valid values:
         # 
-        # - (Recommended) custom: a user-uploaded custom theme with no preset style or information organization structure.
-        # - report: a web report that conforms to the DataAgent information organization structure.
-        # - (Not supported) infographic: an infographic that conforms to the DataAgent information organization structure.
+        # - (Recommended) custom: A user-uploaded custom theme with no preset style or information organization structure.
+        # - report: A web report that conforms to the DataAgent information organization structure.
+        # - (Not supported) infographic: An infographic that conforms to the DataAgent information organization structure.
         self.category = category
         # The description. The value can be up to 255 characters in length.
         self.description = description
         # The file source, which affects the backend logic for determining whether the theme is valid. Valid values:
         # 
-        # - upload: uploaded through OSS.
-        # - (Not supported) public_url: provided through an OSS URL that allows public network access.
-        # - (Not supported) user_oss: provided through a user OSS URL.
+        # - upload: The file is uploaded through OSS.
+        # - (Not supported) public_url: The file is provided through a public network access OSS URL.
+        # - (Not supported) user_oss: The file is provided through a user OSS URL.
         self.file_from = file_from
         # The UUID of the theme. The value must be returned by GetDataAgentThemeUploadSignature, and the file must have been uploaded. If the UUID is forged or the file has not been uploaded, the creation fails.
         self.theme_id = theme_id
-        # The display name of the theme. The value can be up to 64 characters in length. This parameter is required during creation.
+        # The display name of the theme. The value can be up to 64 characters in length. This parameter is required when you create a theme.
         self.theme_name = theme_name
         # The type of the custom theme. Valid values:
         # 
         # - (Default) template: The theme is a template.
         # - (Not supported) design: The theme is a DESIGN.md file.
         self.theme_type = theme_type
+        # The workspace to which the theme belongs. If this parameter is not specified or is set to personal, the personal workspace is used. You can also specify a collaboration workspace ID.
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -64,6 +67,9 @@ class CreateDataAgentThemeRequest(DaraModel):
         if self.theme_type is not None:
             result['ThemeType'] = self.theme_type
 
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -85,6 +91,9 @@ class CreateDataAgentThemeRequest(DaraModel):
 
         if m.get('ThemeType') is not None:
             self.theme_type = m.get('ThemeType')
+
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
 
         return self
 

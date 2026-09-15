@@ -16,18 +16,17 @@ class CreateDataAgentSessionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response structure.
+        # The response struct.
         self.data = data
         # The error code.
         self.error_code = error_code
-        # The error message returned if the request fails.
+        # The error message returned when the request failed.
         self.error_message = error_message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
         # - **true**: The request was successful.
-        # 
         # - **false**: The request failed.
         self.success = success
 
@@ -90,15 +89,15 @@ class CreateDataAgentSessionResponseBodyData(DaraModel):
         session_status: str = None,
         title: str = None,
     ):
-        # The agent ID.
+        # Agent Id
         self.agent_id = agent_id
         # The agent status.
         self.agent_status = agent_status
-        # The time when the session was created, in Unix milliseconds.
+        # The time when the session was created.
         self.create_time = create_time
-        # The ID of the associated file.
+        # The basic information about the file.
         self.file = file
-        # Indicates whether the current user has favorited the session.
+        # Indicates whether the session is saved to the favorites of the current user.
         self.saved = saved
         # The session configuration.
         self.session_config = session_config
@@ -106,7 +105,7 @@ class CreateDataAgentSessionResponseBodyData(DaraModel):
         self.session_id = session_id
         # The session status.
         self.session_status = session_status
-        # The session title.
+        # The title.
         self.title = title
 
     def validate(self):
@@ -198,37 +197,34 @@ class CreateDataAgentSessionResponseBodyDataSessionConfig(DaraModel):
         # The custom agent ID.
         self.custom_agent_id = custom_agent_id
         # The stage of the custom agent. Valid values:
-        # 
-        # - **debug**: Debug stage
-        # 
-        # - **prod**: Production stage
+        # - **debug**: Debug stage.
+        # - **prod**: Production stage.
         self.custom_agent_stage = custom_agent_stage
-        # Indicates whether web search is enabled.
+        # Specifies whether to enable web search.
         self.enable_search = enable_search
+        # The encryption key.
         self.encrypt_key = encrypt_key
+        # The encryption type.
         self.encrypt_type = encrypt_type
+        # The list of knowledge base IDs.
         self.kb_uuid_list = kb_uuid_list
         # The language. Valid values:
-        # 
-        # - **CHINESE**: Chinese
-        # 
-        # - **ENGLISH**: English
+        # - **CHINESE**: Chinese.
+        # - **ENGLISH**: English.
         self.language = language
-        # A list of MCP server IDs.
+        # The list of MCP server IDs in the session configuration.
         self.mcp_server_ids = mcp_server_ids
         # The mode. Valid values:
-        # 
-        # - **ASK_DATA**: Quick Inquiry Mode
-        # 
-        # - **ANALYSIS**: Analysis Mode
-        # 
-        # - **INSIGHT**: Insight Mode
+        # - **ASK_DATA**: Ask data mode.
+        # - **ANALYSIS**: Analysis mode.
+        # - **INSIGHT**: Insight mode.
         self.mode = mode
+        # The report page width.
         self.report_page_width = report_page_width
+        # The report watermark.
         self.report_water_mark = report_water_mark
-        # The name of the user\\"s OSS bucket.
-        # 
-        # - Analysis files and report artifacts can be uploaded to this OSS bucket.
+        # The name of the user OSS bucket.
+        # - Analysis process files and report artifacts can be uploaded to the specified OSS bucket.
         self.user_oss_bucket = user_oss_bucket
 
     def validate(self):

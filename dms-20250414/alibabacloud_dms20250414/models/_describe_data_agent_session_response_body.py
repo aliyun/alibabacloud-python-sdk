@@ -26,7 +26,7 @@ class DescribeDataAgentSessionResponseBody(DaraModel):
         self.request_id = request_id
         # The return value. Valid values:
         # 
-        # - **true**: Succeeded.
+        # - **true**: Successful.
         # - **false**: Failed.
         self.success = success
 
@@ -101,7 +101,7 @@ class DescribeDataAgentSessionResponseBodyData(DaraModel):
         self.agent_status = agent_status
         # The list of artifacts produced by the session. Currently, only reports are included.
         self.artifacts = artifacts
-        # The chat replay history.
+        # The chat history replay records.
         self.chat_history_locations = chat_history_locations
         # The time when the session was created.
         self.create_time = create_time
@@ -287,8 +287,8 @@ class DescribeDataAgentSessionResponseBodyDataSessionConfig(DaraModel):
         # The custom agent ID.
         self.custom_agent_id = custom_agent_id
         # The stage of the custom agent. Valid values:
-        # - **debug**: test stage.
-        # - **prod**: production stage.
+        # - **debug**: The debug stage.
+        # - **prod**: The production stage.
         self.custom_agent_stage = custom_agent_stage
         # Specifies whether to enable web search.
         self.enable_search = enable_search
@@ -305,16 +305,15 @@ class DescribeDataAgentSessionResponseBodyDataSessionConfig(DaraModel):
         # The list of MCP server IDs in the session configuration.
         self.mcp_server_ids = mcp_server_ids
         # The mode. Valid values:
-        #  - **ASK_DATA**: ask data mode.
-        #  - **ANALYSIS**: analysis mode.
-        #  - **INSIGHT**: insight mode.
+        # - **ASK_DATA**: The ask-data mode.
+        # - **ANALYSIS**: The analysis mode.
+        # - **INSIGHT**: The insight mode.
         self.mode = mode
         # The report page width.
         self.report_page_width = report_page_width
         # The report watermark.
         self.report_water_mark = report_water_mark
-        # The name of the user OSS bucket.
-        # - Analysis process files and report artifacts can be uploaded to the user-specified OSS bucket.
+        # The name of the user OSS bucket. Analysis process files and report artifacts can be uploaded to the user-specified OSS bucket.
         self.user_oss_bucket = user_oss_bucket
 
     def validate(self):
@@ -412,7 +411,7 @@ class DescribeDataAgentSessionResponseBodyDataRecallResults(DaraModel):
     ):
         # The content of the recalled knowledge chunk.
         self.content = content
-        # The similarity score of this data entry. The scoring algorithm is related to the algorithm (l2/ip/cosine) specified when the index was created.
+        # The similarity score of this record. The scoring algorithm is related to the algorithm (l2/ip/cosine) specified when the index was created.
         self.score = score
         # The type of the recalled knowledge.
         self.type = type
@@ -457,9 +456,9 @@ class DescribeDataAgentSessionResponseBodyDataDataSources(DaraModel):
     ):
         # The data source category. Valid values:
         # 
-        # - **CHAT**: specified through the CreateDataAgentSession or SendChatMessage operation during a conversation.
+        # - **CHAT**: Specified through the CreateDataAgentSession or SendChatMessage operation during a conversation.
         # 
-        # - **CUSTOM_AGENT**: from the preset analysis data scope in a custom agent.
+        # - **CUSTOM_AGENT**: From the preset analysis data scope in a custom agent.
         self.category = category
         # The data source details.
         # 
@@ -498,9 +497,9 @@ class DescribeDataAgentSessionResponseBodyDataChatHistoryLocations(DaraModel):
         key: str = None,
         url: str = None,
     ):
-        # The key of the chat replay history.
+        # The key of the chat history replay record.
         self.key = key
-        # The OSS download URL of the chat replay history.
+        # The OSS download URL of the chat history replay record.
         self.url = url
 
     def validate(self):
@@ -543,15 +542,15 @@ class DescribeDataAgentSessionResponseBodyDataArtifacts(DaraModel):
     ):
         # The brief description of the artifact. This value may be empty.
         self.description = description
-        # The time when the backend completed the artifact task. This is a UNIX timestamp accurate to the second.
+        # The time when the backend completed the artifact task. The value is a UNIX timestamp accurate to seconds.
         self.finish_time = finish_time
-        # The globally unique artifact ID. If the report is produced by calling SendChatMessage with MessageType set to REPORT, the artifact ID is the same as the MessageId in the response of the SendChatMessage operation.
+        # The artifact ID, which is globally unique. If the report is produced by calling SendChatMessage with MessageType set to REPORT, the artifact ID is the same as the MessageId in the response of the SendChatMessage operation.
         self.id = id
-        # The artifact name. This is typically a string concatenated by the system and is aligned with the name field in the ListFileUpload operation. You can use this field to query the download URL of the artifact file.
+        # The artifact name, which is typically a string concatenated by the system. This name is aligned with the name field in the ListFileUpload operation. You can use this field to query the download URL of the artifact file.
         self.name = name
-        # The time when the backend received the artifact request. This is a UNIX timestamp accurate to the second.
+        # The time when the backend received the artifact request. The value is a UNIX timestamp accurate to seconds.
         self.receive_time = receive_time
-        # The time when the backend actually started running the artifact task. This is a UNIX timestamp accurate to the second.
+        # The time when the backend actually started running the artifact task. The value is a UNIX timestamp accurate to seconds.
         self.start_time = start_time
         # The artifact status. Valid values:
         # 

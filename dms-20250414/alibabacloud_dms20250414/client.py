@@ -754,6 +754,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.config_data_agent_memory_with_options_async(request, runtime)
 
+    def create_agent_with_options(
+        self,
+        request: main_models.CreateAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_name):
+            query['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.agent_type):
+            query['AgentType'] = request.agent_type
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.expire_after_seconds):
+            query['ExpireAfterSeconds'] = request.expire_after_seconds
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAgent',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_agent_with_options_async(
+        self,
+        request: main_models.CreateAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_name):
+            query['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.agent_type):
+            query['AgentType'] = request.agent_type
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.expire_after_seconds):
+            query['ExpireAfterSeconds'] = request.expire_after_seconds
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAgent',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_agent(
+        self,
+        request: main_models.CreateAgentRequest,
+    ) -> main_models.CreateAgentResponse:
+        runtime = RuntimeOptions()
+        return self.create_agent_with_options(request, runtime)
+
+    async def create_agent_async(
+        self,
+        request: main_models.CreateAgentRequest,
+    ) -> main_models.CreateAgentResponse:
+        runtime = RuntimeOptions()
+        return await self.create_agent_with_options_async(request, runtime)
+
     def create_airflow_with_options(
         self,
         tmp_req: main_models.CreateAirflowRequest,
@@ -1641,6 +1723,8 @@ class Client(OpenApiClient):
             query['ThemeName'] = request.theme_name
         if not DaraCore.is_null(request.theme_type):
             query['ThemeType'] = request.theme_type
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1679,6 +1763,8 @@ class Client(OpenApiClient):
             query['ThemeName'] = request.theme_name
         if not DaraCore.is_null(request.theme_type):
             query['ThemeType'] = request.theme_type
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -7671,6 +7757,8 @@ class Client(OpenApiClient):
             query['ThemeFrom'] = request.theme_from
         if not DaraCore.is_null(request.theme_type):
             query['ThemeType'] = request.theme_type
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -7711,6 +7799,8 @@ class Client(OpenApiClient):
             query['ThemeFrom'] = request.theme_from
         if not DaraCore.is_null(request.theme_type):
             query['ThemeType'] = request.theme_type
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
