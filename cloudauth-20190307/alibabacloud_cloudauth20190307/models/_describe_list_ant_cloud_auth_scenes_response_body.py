@@ -13,9 +13,9 @@ class DescribeListAntCloudAuthScenesResponseBody(DaraModel):
         request_id: str = None,
         scenes: List[main_models.DescribeListAntCloudAuthScenesResponseBodyScenes] = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The list of scenes.
+        # The list of scenarios.
         self.scenes = scenes
 
     def validate(self):
@@ -59,6 +59,9 @@ class DescribeListAntCloudAuthScenesResponseBodyScenes(DaraModel):
         bind_mini_program: str = None,
         create_time: str = None,
         creator: str = None,
+        degrade_app_scheme: str = None,
+        degrade_sub_codes: str = None,
+        degrade_type: str = None,
         device_risk_plus: str = None,
         domain: str = None,
         mini_program_name: str = None,
@@ -71,6 +74,7 @@ class DescribeListAntCloudAuthScenesResponseBodyScenes(DaraModel):
         status: int = None,
         store_image: str = None,
         update_time: str = None,
+        use_degrade: str = None,
     ):
         # The application ID.
         self.app_id = app_id
@@ -78,10 +82,16 @@ class DescribeListAntCloudAuthScenesResponseBodyScenes(DaraModel):
         # - **Y**: Enabled.
         # - **N (default)**: Disabled.
         self.bind_mini_program = bind_mini_program
-        # The creation time.
+        # The creation time. The value is a UNIX timestamp in milliseconds (ms), such as 1740389697000.
         self.create_time = create_time
         # The creator.
         self.creator = creator
+        # The iOS scheme for degradation.
+        self.degrade_app_scheme = degrade_app_scheme
+        # The list of SubCodes that trigger degradation.
+        self.degrade_sub_codes = degrade_sub_codes
+        # The degraded authentication type.
+        self.degrade_type = degrade_type
         # Specifies whether to enable enhanced device risk detection. Valid values:
         # - **Y**: Enabled.
         # - **N**: Disabled.
@@ -93,26 +103,28 @@ class DescribeListAntCloudAuthScenesResponseBodyScenes(DaraModel):
         # The modifier.
         self.modifier = modifier
         # The mini program platform. Valid values:
-        # - **WECHAT**: WeChat
-        # - **ALIPAY**: Alipay
+        # - **WECHAT**: WeChat.
+        # - **ALIPAY**: Alipay.
         # - **TIKTOK**: TikTok.
         self.platform = platform
-        # The number of evidence face photos (1 to 5).
+        # The number of evidence face photos (1-5).
         self.return_pic_count = return_pic_count
-        # The duration of the evidence video, in seconds.
+        # The evidence video duration in seconds.
         self.return_video_length = return_video_length
-        # The scene ID.
+        # The scenario ID.
         self.scene_id = scene_id
-        # The scene name.
+        # The scenario name.
         self.scene_name = scene_name
-        # Indicates whether the scene is enabled. The value 1 indicates enabled.
+        # Indicates whether the scenario is enabled. The value is 1.
         self.status = status
         # Specifies whether to deliver files generated during authentication to the customer\\"s OSS. Valid values:
         # - **Y**: Enabled.
         # - **N**: Disabled.
         self.store_image = store_image
-        # The time when the instance was last updated.
+        # The last update time of the instance. The value is a UNIX timestamp in milliseconds (ms), such as 1740541510000.
         self.update_time = update_time
+        # Specifies whether to enable degraded authentication.
+        self.use_degrade = use_degrade
 
     def validate(self):
         pass
@@ -133,6 +145,15 @@ class DescribeListAntCloudAuthScenesResponseBodyScenes(DaraModel):
 
         if self.creator is not None:
             result['Creator'] = self.creator
+
+        if self.degrade_app_scheme is not None:
+            result['DegradeAppScheme'] = self.degrade_app_scheme
+
+        if self.degrade_sub_codes is not None:
+            result['DegradeSubCodes'] = self.degrade_sub_codes
+
+        if self.degrade_type is not None:
+            result['DegradeType'] = self.degrade_type
 
         if self.device_risk_plus is not None:
             result['DeviceRiskPlus'] = self.device_risk_plus
@@ -170,6 +191,9 @@ class DescribeListAntCloudAuthScenesResponseBodyScenes(DaraModel):
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
 
+        if self.use_degrade is not None:
+            result['UseDegrade'] = self.use_degrade
+
         return result
 
     def from_map(self, m: dict = None):
@@ -185,6 +209,15 @@ class DescribeListAntCloudAuthScenesResponseBodyScenes(DaraModel):
 
         if m.get('Creator') is not None:
             self.creator = m.get('Creator')
+
+        if m.get('DegradeAppScheme') is not None:
+            self.degrade_app_scheme = m.get('DegradeAppScheme')
+
+        if m.get('DegradeSubCodes') is not None:
+            self.degrade_sub_codes = m.get('DegradeSubCodes')
+
+        if m.get('DegradeType') is not None:
+            self.degrade_type = m.get('DegradeType')
 
         if m.get('DeviceRiskPlus') is not None:
             self.device_risk_plus = m.get('DeviceRiskPlus')
@@ -221,6 +254,9 @@ class DescribeListAntCloudAuthScenesResponseBodyScenes(DaraModel):
 
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
+
+        if m.get('UseDegrade') is not None:
+            self.use_degrade = m.get('UseDegrade')
 
         return self
 

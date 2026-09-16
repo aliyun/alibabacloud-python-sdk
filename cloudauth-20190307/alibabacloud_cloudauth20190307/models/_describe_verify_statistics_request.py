@@ -15,9 +15,9 @@ class DescribeVerifyStatisticsRequest(DaraModel):
     ):
         # Specifies whether the age is older than 14. Valid values:
         # - **T**: older than 14
-        # - **F**: younger than 14.
+        # - **F**: younger than 14
         self.age_gt = age_gt
-        # The end time of the query.
+        # The end time of the query. Format: UNIX timestamp. Unit: milliseconds. Example: 1760630399999.
         # 
         # This parameter is required.
         self.end_date = end_date
@@ -25,12 +25,12 @@ class DescribeVerifyStatisticsRequest(DaraModel):
         self.product_code = product_code
         # The service type. Valid values:
         # - **antcloudauth**: financial-grade ID Verification.
-        # - **cloudauthst** (discontinued): enhanced ID Verification.
+        # - **cloudauthst** (discontinued): ID Verification - Enhanced Edition.
         # - **cloudauth** (discontinued): ID Verification.
         # 
         # This parameter is required.
         self.service_code = service_code
-        # The start time of the query.
+        # The start time of the query. Format: UNIX timestamp. Unit: milliseconds. Example: 1760025600000.
         # 
         # This parameter is required.
         self.start_date = start_date

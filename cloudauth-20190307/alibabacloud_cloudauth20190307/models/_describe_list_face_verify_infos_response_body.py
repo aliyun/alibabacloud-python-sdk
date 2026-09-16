@@ -107,11 +107,12 @@ class DescribeListFaceVerifyInfosResponseBodyFaceVerifyInfos(DaraModel):
         self.cert_no = cert_no
         # The certificate ID.
         self.certify_id = certify_id
-        # The creation time of the facial recognition record.
+        # The creation time of the facial recognition record. The value is a UNIX timestamp in milliseconds (ms), such as 1740389697000.
         self.create_time = create_time
         # The scene ID.
         self.scene_id = scene_id
         # The authentication status. Valid values:
+        # 
         # - **1**: Authentication passed.
         # - **2**: Authentication failed.
         self.status = status

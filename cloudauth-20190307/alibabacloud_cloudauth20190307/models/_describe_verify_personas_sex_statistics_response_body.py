@@ -63,35 +63,35 @@ class DescribeVerifyPersonasSexStatisticsResponseBodyResultObject(DaraModel):
         male_cnt: int = None,
         male_rate: str = None,
     ):
-        # The number of authenticated users aged 14 and under.
+        # The number of users aged 14 and under.
         self.age_0to_14cnt = age_0to_14cnt
-        # The proportion of authenticated users aged 14 and under.
+        # The proportion of users aged 14 and under.
         self.age_0to_14rate = age_0to_14rate
-        # The number of authenticated users aged 14 to 18.
+        # The number of users aged 14 to 18.
         self.age_14to_18cnt = age_14to_18cnt
-        # The proportion of authenticated users aged 14 to 18.
+        # The proportion of users aged 14 to 18.
         self.age_14to_18rate = age_14to_18rate
-        # The number of authenticated users aged 18 to 35.
+        # The number of verified users aged 18 to 35.
         self.age_18to_35cnt = age_18to_35cnt
-        # The proportion of authenticated users aged 18 to 35.
+        # The proportion of verified users aged 18 to 35.
         self.age_18to_35rate = age_18to_35rate
-        # The number of authenticated users aged 35 to 50.
+        # The number of verified users aged 35 to 50.
         self.age_35to_50cnt = age_35to_50cnt
-        # The proportion of authenticated users aged 35 to 50.
+        # The proportion of verified users aged 35 to 50.
         self.age_35to_50rate = age_35to_50rate
-        # The number of authenticated users aged 50 and over.
+        # The number of verified users aged 50 and over.
         self.age_50to_999cnt = age_50to_999cnt
-        # The number of authenticated users aged 50 and over.
+        # The number of verified users aged 50 and over.
         self.age_50to_999rate = age_50to_999rate
-        # The total number of authenticated users.
+        # The total number of verified users.
         self.all_user_cnt = all_user_cnt
-        # The number of female authenticated users.
+        # The number of female users.
         self.female_cnt = female_cnt
-        # The proportion of female authenticated users.
+        # The proportion of female verified users.
         self.female_rate = female_rate
-        # The number of male authenticated users.
+        # The number of male users.
         self.male_cnt = male_cnt
-        # The proportion of male authenticated users.
+        # The proportion of male users.
         self.male_rate = male_rate
 
     def validate(self):

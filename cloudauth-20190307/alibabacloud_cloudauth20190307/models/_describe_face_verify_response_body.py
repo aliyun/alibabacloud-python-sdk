@@ -19,7 +19,7 @@ class DescribeFaceVerifyResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The returned result information.
+        # The result information.
         self.result_object = result_object
 
     def validate(self):
@@ -65,6 +65,7 @@ class DescribeFaceVerifyResponseBody(DaraModel):
 class DescribeFaceVerifyResponseBodyResultObject(DaraModel):
     def __init__(
         self,
+        degrade_info: str = None,
         device_risk: str = None,
         device_token: str = None,
         identity_info: str = None,
@@ -74,11 +75,13 @@ class DescribeFaceVerifyResponseBodyResultObject(DaraModel):
         success: str = None,
         user_info: str = None,
     ):
+        # The result of degraded verification.
+        self.degrade_info = degrade_info
         # The device risk label.
         self.device_risk = device_risk
         # The device token.
         self.device_token = device_token
-        # The identity information of the verification subject. This field is empty in common verification scenarios.
+        # The identity information of the verification subject. This field is empty for common verification scenarios.
         self.identity_info = identity_info
         # The supplementary material information of the verification subject, primarily image-based materials. The value is in JSON format. See the example below.
         self.material_info = material_info
@@ -88,13 +91,13 @@ class DescribeFaceVerifyResponseBodyResultObject(DaraModel):
         self.sub_code = sub_code
         # Indicates whether the response is successful.
         self.success = success
-        # The identity information and corresponding encoding entered by the user in rare character mode. The value is a JSON-formatted string. An empty string is returned if the name does not contain rare characters.
+        # Records the identity information and corresponding encoding entered by the user in rare character mode. The return data is a JSON-formatted string. An empty string is returned if the name does not contain rare characters.
         # 
         # - name: the name entered by the user.
         # 
-        # - verifyName: the final name encoding that passed verification. For example, if a rare character is verified through transcoding: "王先生", the actual verified name is "王先升".
+        # - verifyName: the final name encoding that passed verification. For example, if a rare character is verified through transcoding: "Wang Xiansheng", the actual verified name is "Wang Xiansheng" (with a different character).
         # 
-        # - number: the ID number entered by the user.
+        # - number: the ID card number entered by the user.
         self.user_info = user_info
 
     def validate(self):
@@ -105,6 +108,9 @@ class DescribeFaceVerifyResponseBodyResultObject(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.degrade_info is not None:
+            result['DegradeInfo'] = self.degrade_info
+
         if self.device_risk is not None:
             result['DeviceRisk'] = self.device_risk
 
@@ -133,6 +139,9 @@ class DescribeFaceVerifyResponseBodyResultObject(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DegradeInfo') is not None:
+            self.degrade_info = m.get('DegradeInfo')
+
         if m.get('DeviceRisk') is not None:
             self.device_risk = m.get('DeviceRisk')
 

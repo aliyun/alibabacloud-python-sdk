@@ -61,7 +61,7 @@ class DescribeVerifyDeviceRiskStatisticsResponseBodyResultObject(DaraModel):
         self.face_attack_rate = face_attack_rate
         # The total number of suspected fake identities.
         self.id_fake_rate = id_fake_rate
-        # The data items in the response.
+        # The data items of the returned result.
         self.items = items
         # The number of risks.
         self.risk_count = risk_count
@@ -146,7 +146,7 @@ class DescribeVerifyDeviceRiskStatisticsResponseBodyResultObjectItems(DaraModel)
     ):
         # The number of daily transactions.
         self.daily_call_count = daily_call_count
-        # The date.
+        # The date. Format: YYYY-MM-DD, such as 2025-10-10.
         self.date = date
         # The abnormal device risk ratio.
         self.device_risk_rate = device_risk_rate

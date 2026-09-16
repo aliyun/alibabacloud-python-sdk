@@ -15,10 +15,10 @@ class Id3MetaVerifyWithOCRResponseBody(DaraModel):
     ):
         # The response code. 200 indicates success. Other values indicate failure. **Important**
         # 
-        # - This parameter indicates only whether the API call was made correctly. For more information about return codes, see error codes.
-        # - Check the fields in ResultObject for the business verification result.
+        # - This parameter indicates whether the API was called correctly. For more information about return codes, refer to the error codes.
+        # - Check the business verification result in the fields of ResultObject.
         self.code = code
-        # The response message of the API call. This parameter indicates only whether an exception occurred during the API call.
+        # The response message. Important: This parameter only indicates whether the API call is abnormal.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -74,11 +74,11 @@ class Id3MetaVerifyWithOCRResponseBodyResultObject(DaraModel):
     ):
         # The identity verification result. Valid values:
         # 
-        # - 1: consistent.
-        # - 2: inconsistent.
-        # - 3: no record found.
+        # - 1: Consistent.
+        # - 2: Inconsistent.
+        # - 3: No record found.
         self.biz_code = biz_code
-        # {"address":"浙江省杭州市余*****","birthDate":"19901226","certName":"张三","certNo":"1234561990122*****","nationality":"汉","authority":"xxx公安局","startDate":"20201130","endDate":"20301130"}.
+        # {"address":"No. XX, XX Road, Hangzhou, Zhejiang","birthDate":"19901226","certName":"John","certNo":"1234561990122*****","nationality":"Han","authority":"XXX Public Security Bureau","startDate":"20201130","endDate":"20301130"}
         self.card_info = card_info
         # The face comparison score.
         self.face_detail = face_detail

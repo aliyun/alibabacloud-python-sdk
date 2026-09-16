@@ -19,13 +19,13 @@ class PageQueryWhiteListSettingRequest(DaraModel):
     ):
         # The certificate number.
         self.cert_no = cert_no
-        # The unique identifier of the ID Verification request.
+        # The unique identifier of the ID Verification.
         self.certify_id = certify_id
         # The current page number. Default value: 1.
         self.current_page = current_page
         # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # The verification scenario ID. This ID is automatically generated after you create a verification scenario in the console. For more information about how to create a verification scenario, refer to Add a verification scenario.
+        # The verification scenario ID. This ID is automatically generated after you create a verification scenario in the console. For information about how to create a verification scenario, see Add a verification scenario.
         self.scene_id = scene_id
         # The ServiceCode of the ID Verification cloud service. Value: **antcloudauth**.
         self.service_code = service_code
@@ -33,7 +33,7 @@ class PageQueryWhiteListSettingRequest(DaraModel):
         # 
         # - DELETE: Deleted.
         # - VALID: Not deleted and within the validity period (valid).
-        # - INVALID: Not deleted but outside the validity period (invalid).
+        # - INVALID: Not deleted but not within the validity period (invalid).
         self.status = status
         # The end date of the validity period (timestamp in milliseconds).
         self.valid_end_date = valid_end_date

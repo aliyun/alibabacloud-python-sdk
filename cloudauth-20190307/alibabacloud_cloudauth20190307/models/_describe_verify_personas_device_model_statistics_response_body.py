@@ -54,7 +54,7 @@ class DescribeVerifyPersonasDeviceModelStatisticsResponseBodyResultObject(DaraMo
     ):
         # The total number of devices.
         self.all_device_cnt = all_device_cnt
-        # The list of data for different phone models.
+        # The data list of different phone models.
         self.items = items
 
     def validate(self):
@@ -102,7 +102,7 @@ class DescribeVerifyPersonasDeviceModelStatisticsResponseBodyResultObjectItems(D
         self.device_cnt = device_cnt
         # The device model.
         self.device_model = device_model
-        # The ratio of devices of this model to the total number of devices.
+        # The ratio of this device model to the total number of devices.
         self.device_rate = device_rate
 
     def validate(self):

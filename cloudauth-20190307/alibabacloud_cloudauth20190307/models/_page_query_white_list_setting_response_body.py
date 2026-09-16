@@ -132,7 +132,7 @@ class PageQueryWhiteListSettingResponseBodyResultObject(DaraModel):
     ):
         # The certificate number.
         self.cert_no = cert_no
-        # The unique identifier of the ID Verification request.
+        # The unique identifier of the ID Verification.
         self.certify_id = certify_id
         # The creation time.
         self.gmt_create = gmt_create
@@ -150,11 +150,11 @@ class PageQueryWhiteListSettingResponseBodyResultObject(DaraModel):
         # 
         # - DELETE: Deleted.
         # - VALID: Not deleted and within the validity period (valid).
-        # - INVALID: Not deleted but outside the validity period (invalid).
+        # - INVALID: Not deleted but not within the validity period (invalid).
         self.status = status
-        # The end date of the validity period.
+        # The end date of the validity period. Format: YYYY-MM-DD HH:mm:ss, for example, 2024-09-02 13:57:51.
         self.valid_end_date = valid_end_date
-        # The start date of the validity period.
+        # The start date of the validity period. Format: YYYY-MM-DD HH:mm:ss, for example, 2024-08-30 13:57:51.
         self.valid_start_date = valid_start_date
 
     def validate(self):

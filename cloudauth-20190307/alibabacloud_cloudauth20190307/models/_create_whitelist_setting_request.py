@@ -39,6 +39,7 @@ class CreateWhitelistSettingRequest(DaraModel):
         # 
         # This parameter is required.
         self.valid_day = valid_day
+        # The whitelist type.
         self.whitelist_type = whitelist_type
 
     def validate(self):

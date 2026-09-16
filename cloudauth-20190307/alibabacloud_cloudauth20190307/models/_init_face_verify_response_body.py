@@ -68,20 +68,18 @@ class InitFaceVerifyResponseBodyResultObject(DaraModel):
         certify_id: str = None,
         certify_url: str = None,
     ):
-        # The unique identifier for ID Verification.
+        # The unique identifier of the ID Verification session.
         self.certify_id = certify_id
-        # The URL for performing ID Verification in a web browser. After authentication is complete, the page redirects based on the ReturnUrl parameter.
+        # The URL for performing ID Verification in a web browser. After authentication ends, the page redirects based on the ReturnUrl input parameter.
         # 
         # >Notice: 
         # 
-        # - The CertifyUrl returned by the initialization operation is **valid for 30 minutes and can be submitted for authentication only once**. Use it within the validity period and do not reuse it.
-        # - This parameter requires the **MetaInfo** parameter to be correctly passed in to return a CertifyUrl that matches the client. If the URL cannot be obtained, check whether **MetaInfo** and other input parameters are correct.
+        # - The CertifyUrl returned by the initialization operation is **valid for 30 minutes and can only be submitted once for authentication**. Use it within the validity period and avoid reuse.
+        # - This parameter requires the correct **MetaInfo** input to return a CertifyUrl that matches the client. If it cannot be obtained, check whether **MetaInfo** and other input parameters are correct.
         # 
         # - The domain name of this URL may change with service updates. To ensure normal service availability, do not apply access control to this domain name.
         # 
-        # - Do not use incognito mode or modify the URL during browser redirection. Otherwise, a **signature exception** error may occur.
-        # 
-        # .
+        # - When redirecting in a browser, do not use incognito mode or modify the URL. Otherwise, a **signature exception** error may occur.
         self.certify_url = certify_url
 
     def validate(self):

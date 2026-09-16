@@ -13,7 +13,7 @@ class DescribeVerifyFailStatisticsResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DescribeVerifyFailStatisticsResponseBodyResultObject = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The authentication result.
         self.result_object = result_object
@@ -141,7 +141,7 @@ class DescribeVerifyFailStatisticsResponseBodyResultObjectLineItems(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The returned count data.
+        # The count data returned.
         self.data = data
 
     def validate(self):
@@ -189,7 +189,7 @@ class DescribeVerifyFailStatisticsResponseBodyResultObjectLineItemsData(DaraMode
         self.code = code
         # The count.
         self.count = count
-        # The date.
+        # The date. Format: YYYY-MM-DD, such as 2025-10-16.
         self.date = date
 
     def validate(self):

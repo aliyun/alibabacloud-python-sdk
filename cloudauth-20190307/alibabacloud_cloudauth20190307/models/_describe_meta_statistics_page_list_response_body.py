@@ -17,17 +17,17 @@ class DescribeMetaStatisticsPageListResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Paginated list data.
+        # The paginated list data.
         self.items = items
-        # Number of data entries per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of this request.
+        # The ID of the request.
         self.request_id = request_id
-        # Total number of pages.
+        # The total number of pages.
         self.total_count = total_count
-        # Total number of pages.
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -106,50 +106,50 @@ class DescribeMetaStatisticsPageListResponseBodyItems(DaraModel):
         total_count: int = None,
         unpassed_count: int = None,
     ):
-        # API.
+        # Api。
         self.api = api
-        # Name corresponding to the API:
-        # - **ID_CARD_2_META**: ID Card Two-Element Verification
-        # - **ID_PERIOD**: ID Card Validity Verification Period
-        # - **MOBILE_ONLINE_LENGTH**: Mobile Online Duration
-        # - **MOBILE_ONLINE_STATUS**: Mobile Online Status
-        # - **MOBILE_3_META_SIMPLE**: Mobile Number Three-Element Verification (Simple)
-        # - **MOBILE_3_META**: Mobile Number Three-Element Verification (Detailed)
-        # - **MOBILE_2_META**: Mobile Number Two-Element Verification
-        # - **BANK_CARD_N_META**: Bank Card Verification (Detailed)
-        # - **MOBILE_DETECT**: Number Detection
-        #  -**VEHICLE_N_META**: Vehicle Element Verification (Enhanced)
-        # - **VEHICLE_PENTA_INFO**: Vehicle Five-Element Information Recognition
-        # - **VEHICLE_LICENSE_INFO**: Vehicle Information Recognition
-        # - **VEHICLE_INSURE_DATE**: Vehicle Insurance Date Query
-        # - **VEHICLE_CHECK**: Vehicle Element Verification
+        # The name corresponding to the API. Valid values:
+        # - **ID_CARD_2_META**: ID card two-element verification
+        # - **ID_PERIOD**: ID card validity period verification
+        # - **MOBILE_ONLINE_LENGTH**: mobile number online duration
+        # - **MOBILE_ONLINE_STATUS**: mobile number online status
+        # - **MOBILE_3_META_SIMPLE**: mobile number three-element verification (simple edition)
+        # - **MOBILE_3_META**: mobile number three-element verification (detailed edition)
+        # - **MOBILE_2_META**: mobile number two-element verification
+        # - **BANK_CARD_N_META**: bank card verification (detailed edition)
+        # - **MOBILE_DETECT**: phone number detection
+        # - **VEHICLE_N_META**: vehicle element verification (enhanced edition)
+        # - **VEHICLE_PENTA_INFO**: vehicle five-element information recognition
+        # - **VEHICLE_LICENSE_INFO**: vehicle information recognition
+        # - **VEHICLE_INSURE_DATE**: vehicle insurance date query
+        # - **VEHICLE_CHECK**: vehicle element verification
         self.api_name = api_name
-        # Number of hits (billed).
+        # The number of successful queries (billable).
         self.bill_count = bill_count
-        # Hit rate (%).
+        # The query hit rate (%).
         self.bill_rate = bill_rate
-        # Number of successful mobile number queries (exclusive to Number Detection).
+        # The number of successful phone number queries (exclusive to phone number detection).
         self.charge_count = charge_count
-        # Date.
+        # The date. Format: M/d (month/day). For example, 11/8 indicates November 8.
         self.date = date
-        # Carrier name:
+        # The carrier name. Valid values:
         # - **CMCC**: China Mobile
         # - **CUCC**: China Unicom
         # - **CTCC**: China Telecom
         self.isp_name = isp_name
-        # Number of calls with no record information.
+        # The number of calls with no education information found.
         self.no_record_count = no_record_count
-        # Number of passed authentications.
+        # The number of authentication-passed transactions.
         self.passed_count = passed_count
-        # Authentication pass rate (%).
+        # The authentication pass rate (%).
         self.passed_rate = passed_rate
-        # Number of successful requests.
+        # The number of successful requests.
         self.success_count = success_count
-        # Call success rate (%).
+        # The call success rate (%).
         self.success_rate = success_rate
-        # Total number of entries.
+        # The total number of entries.
         self.total_count = total_count
-        # Number of failed calls.
+        # The number of authentication-failed calls.
         self.unpassed_count = unpassed_count
 
     def validate(self):

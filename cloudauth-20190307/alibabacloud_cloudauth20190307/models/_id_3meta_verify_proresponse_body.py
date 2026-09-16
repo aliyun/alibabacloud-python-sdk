@@ -5,30 +5,22 @@ from __future__ import annotations
 from alibabacloud_cloudauth20190307 import models as main_models
 from darabonba.model import DaraModel
 
-class Id3MetaVerifyResponseBody(DaraModel):
+class Id3MetaVerifyPROResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
         message: str = None,
         request_id: str = None,
-        result_object: main_models.Id3MetaVerifyResponseBodyResultObject = None,
+        result_object: main_models.Id3MetaVerifyPROResponseBodyResultObject = None,
     ):
-        # The response code. 200 indicates success. Other values indicate failure.
-        # 
-        # **Important**
-        # 
-        # - This parameter indicates whether the API call is successful. For more information about return codes, see error codes.
-        # - Check the business verification result in the fields of ResultObject.
+        # The response code. **200** indicates that the API call is successful.
         self.code = code
-        # The response message.
-        # 
-        # **Important**
-        # 
-        # This parameter only indicates whether the API call is abnormal.
+        # The response message of the API call.
+        # >Notice: This parameter only indicates whether the API call is abnormal.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The result object.
+        # The returned result.
         self.result_object = result_object
 
     def validate(self):
@@ -66,49 +58,56 @@ class Id3MetaVerifyResponseBody(DaraModel):
             self.request_id = m.get('RequestId')
 
         if m.get('ResultObject') is not None:
-            temp_model = main_models.Id3MetaVerifyResponseBodyResultObject()
+            temp_model = main_models.Id3MetaVerifyPROResponseBodyResultObject()
             self.result_object = temp_model.from_map(m.get('ResultObject'))
 
         return self
 
-class Id3MetaVerifyResponseBodyResultObject(DaraModel):
+class Id3MetaVerifyPROResponseBodyResultObject(DaraModel):
     def __init__(
         self,
         biz_code: str = None,
         face_detail: str = None,
+        hit_whitelist: str = None,
         sub_code: str = None,
     ):
-        # The identity verification result. Valid values:
+        # The authoritative source verification result. Valid values:
         # 
-        # - 1: verification is consistent.
-        # - 2: verification is inconsistent.
-        # - 3: no record found.
+        # - **1**: Verification is consistent (billable).
+        # - **2**: Verification is inconsistent (billable).
+        # - **3**: No record found (not billable).
         self.biz_code = biz_code
-        # The face comparison score.
+        # - **verifyScore**: The face comparison score. Value range: 0 to 1000. A higher score indicates a higher probability of the same face. A score >= 700.0 confirms the same person.
+        # 
+        # - **faceAttack**: Returned when liveness detection is enabled (does not participate in the verification result decision).
+        # 
+        # - **invokeChannel**: The identifier of the actual invocation channel. 1: authoritative source. 0: comprehensive source.
         self.face_detail = face_detail
+        # Indicates whether the whitelist is hit: **Y**.
+        self.hit_whitelist = hit_whitelist
         # The authoritative source verification details. Valid values:
         # 
-        # - 101: authentication passed.
+        # - **101**: Authentication passed.
         # 
-        # - 201: authentication failed. The name does not match the ID card number.
+        # - **201**: Authentication failed. The name does not match the ID card number.
         # 
-        # - 202: authentication failed. The person is suspected to be the ID holder.
+        # - **202**: Authentication failed. Suspected to be the person.
         # 
-        # - 203: authentication failed. No photo exists in the database.
+        # - **203**: Authentication failed. No photo in the database.
         # 
-        # - 204: authentication failed. The person is not the same individual.
+        # - **204**: Authentication failed. Not the same person.
         # 
-        # - 205: authentication failed. Modeling of the image to be compared failed.
+        # - **205**: Authentication failed. Modeling of the image to be compared failed.
         # 
-        # - 206: authentication failed. The image format is incorrect.
+        # - **206**: Authentication failed. The image format is incorrect.
         # 
-        # - 207: authentication failed. The uploaded image is too small. Upload a new image.
+        # - **207**: Authentication failed. The uploaded image is too small. Upload the image again.
         # 
-        # - 208: authentication failed. The quality of the uploaded portrait photo is poor. Upload a new photo.
+        # - **208**: Authentication failed. The quality of the uploaded portrait photo is poor. Upload the photo again.
         # 
-        # - 301: no record found. The ID number does not exist in the database.
+        # - **301**: No record found. The ID number does not exist in the database.
         # 
-        # - 302: no record found. Verification cannot be performed.
+        # - **302**: No record found. Verification is not possible.
         self.sub_code = sub_code
 
     def validate(self):
@@ -125,6 +124,9 @@ class Id3MetaVerifyResponseBodyResultObject(DaraModel):
         if self.face_detail is not None:
             result['FaceDetail'] = self.face_detail
 
+        if self.hit_whitelist is not None:
+            result['HitWhitelist'] = self.hit_whitelist
+
         if self.sub_code is not None:
             result['SubCode'] = self.sub_code
 
@@ -137,6 +139,9 @@ class Id3MetaVerifyResponseBodyResultObject(DaraModel):
 
         if m.get('FaceDetail') is not None:
             self.face_detail = m.get('FaceDetail')
+
+        if m.get('HitWhitelist') is not None:
+            self.hit_whitelist = m.get('HitWhitelist')
 
         if m.get('SubCode') is not None:
             self.sub_code = m.get('SubCode')

@@ -30,7 +30,7 @@ class DescribePageFaceVerifyDataResponseBody(DaraModel):
         self.message = message
         # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The ID of this request.
         self.request_id = request_id
         # Indicates whether the response is successful.
         self.success = success
@@ -125,7 +125,7 @@ class DescribePageFaceVerifyDataResponseBodyItems(DaraModel):
         success_count: str = None,
         total_count: str = None,
     ):
-        # The date.
+        # The date. The value is in ISO 8601/RFC 3339 format, UTC time zone (Z indicates +00:00), with millisecond precision, such as 2024-03-24T00:00:00.000Z.
         self.date = date
         # The product solution code. For more information, refer to the financial-grade ID Verification documentation.
         self.product_code = product_code

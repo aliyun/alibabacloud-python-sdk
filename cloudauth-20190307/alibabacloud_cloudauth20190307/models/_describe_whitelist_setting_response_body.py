@@ -100,7 +100,7 @@ class DescribeWhitelistSettingResponseBodyItems(DaraModel):
         self.certify_id = certify_id
         # The creation time.
         self.gmt_create = gmt_create
-        # The update time.
+        # The modification time.
         self.gmt_modified = gmt_modified
         # The whitelist ID.
         self.id = id
@@ -113,10 +113,11 @@ class DescribeWhitelistSettingResponseBodyItems(DaraModel):
         # - **INVALID**: Invalid.
         # - **DELETED**: Deleted.
         self.status = status
-        # The expiration date.
+        # The effective end date. Format: YYYY-MM-DD HH:mm:ss. Example: 2025-10-16 17:28:03.
         self.valid_end_date = valid_end_date
         # The effective period.
         self.valid_start_date = valid_start_date
+        # The whitelist type.
         self.whitelist_type = whitelist_type
 
     def validate(self):

@@ -28,9 +28,9 @@ class AIGCFaceVerifyRequest(DaraModel):
         # The file name in the authorized OSS bucket.
         # > You can use one of the following methods to pass in the image: FaceContrastPicture, FaceContrastPictureUrl, or OSS.
         self.oss_object_name = oss_object_name
-        # The custom business unique identifier on the client side, used for subsequent troubleshooting. The value can contain up to 32 characters, including letters and digits. Make sure the value is unique.
+        # The custom business unique identifier on the client side, which is used for subsequent troubleshooting. The value can contain up to 32 characters, including letters and digits. Make sure the value is unique.
         self.outer_order_no = outer_order_no
-        # The product plan.
+        # The product solution.
         self.product_code = product_code
         # The ID of the verification scenario. This ID is automatically generated after you create a verification scenario in the console. For more information about how to create a verification scenario, refer to Add a verification scenario.
         self.scene_id = scene_id

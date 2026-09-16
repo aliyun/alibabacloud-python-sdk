@@ -53,13 +53,13 @@ class DescribeVerifyPersonasOsStatisticsResponseBodyResultObject(DaraModel):
         device_ios_cnt: int = None,
         device_ios_rate: str = None,
     ):
-        # The total number of devices used for ID Verification.
+        # The total number of authenticated devices.
         self.all_device_cnt = all_device_cnt
-        # The number of Android devices used for ID Verification.
+        # The number of authenticated Android devices.
         self.device_android_cnt = device_android_cnt
         # The proportion of Android devices.
         self.device_android_rate = device_android_rate
-        # The number of iOS devices used for ID Verification.
+        # The number of authenticated iOS devices.
         self.device_ios_cnt = device_ios_cnt
         # The proportion of iOS devices.
         self.device_ios_rate = device_ios_rate

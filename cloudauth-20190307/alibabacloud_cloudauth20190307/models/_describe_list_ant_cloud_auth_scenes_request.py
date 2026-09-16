@@ -9,7 +9,7 @@ class DescribeListAntCloudAuthScenesRequest(DaraModel):
         self,
         scene_id: int = None,
     ):
-        # The scene ID.
+        # The scenario ID.
         self.scene_id = scene_id
 
     def validate(self):

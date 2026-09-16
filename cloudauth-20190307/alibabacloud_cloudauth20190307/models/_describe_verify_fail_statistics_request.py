@@ -16,22 +16,22 @@ class DescribeVerifyFailStatisticsRequest(DaraModel):
         start_date: int = None,
     ):
         # Specifies whether the age is greater than 14. Valid values:
-        # - **T**: greater than 14.
-        # - **F**: less than 14.
+        # - **T**: Greater than 14.
+        # - **F**: Less than 14.
         self.age_gt = age_gt
         # The API code. Valid values:
-        # - **INIT_SERVICE**: server-side initialization failure.
-        # - **INIT_DEVICE**: client-side failure.
-        # - **VERIFY_DEVICE**: authentication not passed.
+        # - **INIT_SERVICE**: Server-side initialization failure.
+        # - **INIT_DEVICE**: Client-side failure.
+        # - **VERIFY_DEVICE**: Authentication not passed.
         # 
         # This parameter is required.
         self.api = api
         # The device type. Valid values:
         # - ios
         # - android
-        # - websdk.
+        # - websdk
         self.device_type = device_type
-        # The end time of the query.
+        # The end time of the query. The value is a UNIX timestamp in milliseconds, such as 1760630399999.
         # 
         # This parameter is required.
         self.end_date = end_date
@@ -40,13 +40,13 @@ class DescribeVerifyFailStatisticsRequest(DaraModel):
         # This parameter is required.
         self.product_code = product_code
         # The service type. Valid values:
-        # - **antcloudauth**: financial-grade ID Verification.
+        # - **antcloudauth**: Financial-grade ID Verification.
         # - **cloudauthst** (discontinued): ID Verification Enhanced Edition.
         # - **cloudauth** (discontinued): ID Verification.
         # 
         # This parameter is required.
         self.service_code = service_code
-        # The start time of the query.
+        # The start time of the query. The value is a UNIX timestamp in milliseconds, such as 1760025600000.
         # 
         # This parameter is required.
         self.start_date = start_date

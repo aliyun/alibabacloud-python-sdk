@@ -27,7 +27,7 @@ class QueryVerifyFlowPackageResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -104,7 +104,7 @@ class QueryVerifyFlowPackageResponseBodyItems(DaraModel):
         self.curr_capacity = curr_capacity
         # The ratio of the current remaining capacity to the total capacity.
         self.curr_proportion = curr_proportion
-        # The data transfer plan details.
+        # The details of the data transfer plan.
         self.flow_details = flow_details
         # The total quota.
         self.total_capacity = total_capacity
@@ -189,13 +189,13 @@ class QueryVerifyFlowPackageResponseBodyItemsFlowDetails(DaraModel):
         self.curr_capacity = curr_capacity
         # The ratio of the remaining capacity to the total capacity.
         self.curr_proportion = curr_proportion
-        # The expiration time.
+        # The expiration time. Format: YYYY-MM-DD HH:mm:ss, for example, 2025-10-10 00:00:00.
         self.expire_date = expire_date
         # The instance name.
         self.instance_name = instance_name
         # The status.
         self.status = status
-        # The effective period.
+        # The effective period. Format: YYYY-MM-DD HH:mm:ss, for example, 2025-10-10 00:00:00.
         self.take_effect_date = take_effect_date
 
     def validate(self):

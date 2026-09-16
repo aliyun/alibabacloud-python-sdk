@@ -24,15 +24,15 @@ class DescribeInfoCheckExportRecordResponseBody(DaraModel):
         self.code = code
         # The current page number.
         self.current_page = current_page
-        # The list of results.
+        # The result list.
         self.items = items
-        # The error code.
+        # The error message.
         self.message = message
         # The number of entries per page.
         self.page_size = page_size
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the response is successful.
         self.success = success
         # The total number of entries.
         self.total_count = total_count
@@ -127,7 +127,7 @@ class DescribeInfoCheckExportRecordResponseBodyItems(DaraModel):
         status: int = None,
         url: str = None,
     ):
-        # The download date.
+        # The download time. The value is a UNIX timestamp in milliseconds (ms), for example, 1758250979000.
         self.download_date = download_date
         # The ID of the download task.
         self.download_task_id = download_task_id
@@ -140,23 +140,23 @@ class DescribeInfoCheckExportRecordResponseBodyItems(DaraModel):
         # The product type name. Valid values:
         # - **ID_CARD_2_META**: ID card two-element verification.
         # - **ID_PERIOD**: ID card validity period verification.
-        # - **MOBILE_ONLINE_LENGTH**: mobile number online duration.
-        # - **MOBILE_ONLINE_STATUS**: mobile number online status.
-        # - **MOBILE_3_META_SIMPLE**: mobile number three-element verification (simple edition).
-        # - **MOBILE_3_META**: mobile number three-element verification (detailed edition).
-        # - **MOBILE_2_META**: mobile number two-element verification.
-        # - **BANK_CARD_N_META**: bank card verification (detailed edition).
-        # - **MOBILE_DETECT**: phone number detection.
-        # - **VEHICLE_N_META**: vehicle element verification (enhanced edition).
-        # - **VEHICLE_PENTA_INFO**: vehicle five-element information recognition.
-        # - **VEHICLE_LICENSE_INFO**: vehicle information recognition.
-        # - **VEHICLE_INSURE_DATE**: vehicle insurance date query.
-        # - **VEHICLE_CHECK**: vehicle element verification.
+        # - **MOBILE_ONLINE_LENGTH**: Mobile number online duration.
+        # - **MOBILE_ONLINE_STATUS**: Mobile number online status.
+        # - **MOBILE_3_META_SIMPLE**: Mobile number three-element verification (simple edition).
+        # - **MOBILE_3_META**: Mobile number three-element verification (detailed edition).
+        # - **MOBILE_2_META**: Mobile number two-element verification.
+        # - **BANK_CARD_N_META**: Bank card verification (detailed edition).
+        # - **MOBILE_DETECT**: Number detection.
+        # - **VEHICLE_N_META**: Vehicle element verification (enhanced edition).
+        # - **VEHICLE_PENTA_INFO**: Vehicle five-element information recognition.
+        # - **VEHICLE_LICENSE_INFO**: Vehicle information recognition.
+        # - **VEHICLE_INSURE_DATE**: Vehicle insurance date query.
+        # - **VEHICLE_CHECK**: Vehicle element verification.
         self.product_type = product_type
         # The task status. Valid values:
-        # - **1**: The file is being generated.
-        # - **2**: The file has been generated.
-        # - **3**: The file failed to be generated.
+        # - **1**: File is being generated.
+        # - **2**: File generation is complete.
+        # - **3**: File generation failed.
         self.status = status
         # The task URL.
         self.url = url

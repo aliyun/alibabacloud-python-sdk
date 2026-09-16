@@ -6,47 +6,61 @@ from typing import BinaryIO
 
 from darabonba.model import DaraModel
 
-class Id3MetaVerifyAdvanceRequest(DaraModel):
+class Id3MetaVerifyPROAdvanceRequest(DaraModel):
     def __init__(
         self,
         crop: str = None,
+        enable_fallback: str = None,
         face_file_object: BinaryIO = None,
         face_picture: str = None,
         face_url: str = None,
         identify_num: str = None,
+        liveness_check: str = None,
         param_type: str = None,
         user_name: str = None,
     ):
         # Specifies whether to allow cropping of the facial photo. By default, cropping is not allowed. Valid values:
-        # - T: allows cropping.
-        # - F: does not allow cropping.
-        # 
-        # **Note**
-        # 
-        # If the requested image is not captured by a standard liveness detection SDK, allow cropping of the facial photo. After this feature is enabled, the requested image is first cropped and corrected for face alignment before the service request is initiated.
+        # - **T**: Cropping is allowed.
+        # - **F**: Cropping is not allowed.
+        # > If the requested image is not captured by a standard liveness detection SDK, allow cropping of the facial photo.
+        # After this feature is enabled, the requested image is first cropped and corrected for the face, and then the request is sent to the service.
         self.crop = crop
-        # The input stream of the ID card portrait photo. Specify either CertUrl or CertFile.
+        # Specifies whether to allow fallback to a non-public security source. Valid values:
+        # 
+        # - **N** (default): Disabled.
+        # - **Y**: Enabled.
+        self.enable_fallback = enable_fallback
+        # The input stream of the facial photo.
         self.face_file_object = face_file_object
-        # The Base64-encoded facial photo.
+        # The Base64-encoded photo. If you use this method to submit the facial photo, check the photo size and do not submit an excessively large photo.
         self.face_picture = face_picture
-        # The URL of the ID card portrait photo. The URL must be a publicly accessible HTTP or HTTPS link. Specify either CertUrl or CertFile.
+        # The URL of the facial photo. The URL must be a publicly accessible HTTP or HTTPS link.
         self.face_url = face_url
-        # The ID card number:
-        # - If paramType is set to normal: enter the ID card number in plaintext.
-        # - If paramType is set to md5: first 6 digits of the ID card number (plaintext) + date of birth (ciphertext) + last 4 digits of the ID card number (plaintext).
+        # The ID card number.
+        # 
+        # - If **paramType** is set to normal: Enter the ID card number in plaintext.
+        # 
+        # - If **paramType** is set to sm2: Enter the encrypted ID card number.
+        # 
+        # 
+        # > Due to authoritative source limitations, only second-generation resident ID card numbers are supported.
         self.identify_num = identify_num
+        # Specifies whether to enable liveness detection. Valid values:
+        # 
+        # - **N** (default): Liveness detection is disabled.
+        # - **Y**: Liveness detection is enabled.
+        self.liveness_check = liveness_check
         # The encryption method. Valid values:
-        # - normal: plaintext without encryption.
-        # - md5: MD5 encryption.
         # 
-        # **Important**
+        # - **normal**: Plaintext without encryption.
         # 
-        # - All encrypted parameter values use 32-character lowercase MD5 strings.
-        # - Different MD5 tools may produce different ciphertext. If the API call succeeds with plaintext but fails after encryption, try a different MD5 tool.
+        # - **sm2**: SM2 encryption.
         self.param_type = param_type
-        # The name:
-        # - If paramType is set to normal: enter the name in plaintext.
-        # - If paramType is set to md5: ciphertext of the first character of the name + plaintext of the remaining characters.
+        # The name.
+        # 
+        # - If **paramType** is set to normal: Enter the name in plaintext.
+        # 
+        # - If **paramType** is set to sm2: Enter the encrypted name.
         self.user_name = user_name
 
     def validate(self):
@@ -60,6 +74,9 @@ class Id3MetaVerifyAdvanceRequest(DaraModel):
         if self.crop is not None:
             result['Crop'] = self.crop
 
+        if self.enable_fallback is not None:
+            result['EnableFallback'] = self.enable_fallback
+
         if self.face_file_object is not None:
             result['FaceFile'] = self.face_file_object
 
@@ -71,6 +88,9 @@ class Id3MetaVerifyAdvanceRequest(DaraModel):
 
         if self.identify_num is not None:
             result['IdentifyNum'] = self.identify_num
+
+        if self.liveness_check is not None:
+            result['LivenessCheck'] = self.liveness_check
 
         if self.param_type is not None:
             result['ParamType'] = self.param_type
@@ -85,6 +105,9 @@ class Id3MetaVerifyAdvanceRequest(DaraModel):
         if m.get('Crop') is not None:
             self.crop = m.get('Crop')
 
+        if m.get('EnableFallback') is not None:
+            self.enable_fallback = m.get('EnableFallback')
+
         if m.get('FaceFile') is not None:
             self.face_file_object = m.get('FaceFile')
 
@@ -96,6 +119,9 @@ class Id3MetaVerifyAdvanceRequest(DaraModel):
 
         if m.get('IdentifyNum') is not None:
             self.identify_num = m.get('IdentifyNum')
+
+        if m.get('LivenessCheck') is not None:
+            self.liveness_check = m.get('LivenessCheck')
 
         if m.get('ParamType') is not None:
             self.param_type = m.get('ParamType')

@@ -70,7 +70,7 @@ class DescribeMetaStatisticsListResponseBodyItems(DaraModel):
         total_count: int = None,
         unpassed_count: int = None,
     ):
-        # The commodity (product) code.
+        # The product code.
         self.api = api
         # The name corresponding to the API. Valid values:
         # - **ID_CARD_2_META**: ID card two-element verification
@@ -81,27 +81,27 @@ class DescribeMetaStatisticsListResponseBodyItems(DaraModel):
         # - **MOBILE_3_META**: mobile number three-element verification (detailed edition)
         # - **MOBILE_2_META**: mobile number two-element verification
         # - **BANK_CARD_N_META**: bank card verification (detailed edition)
-        # - **MOBILE_DETECT**: phone number detection
+        # - **MOBILE_DETECT**: number detection
         # - **VEHICLE_N_META**: vehicle element verification (enhanced edition)
         # - **VEHICLE_PENTA_INFO**: vehicle five-element information recognition
         # - **VEHICLE_LICENSE_INFO**: vehicle information recognition
         # - **VEHICLE_INSURE_DATE**: vehicle insurance date query
-        # - **VEHICLE_CHECK**: vehicle element verification.
+        # - **VEHICLE_CHECK**: vehicle element verification
         self.api_name = api_name
         # The number of successful queries (billable).
         self.bill_count = bill_count
         # The query hit rate (%).
         self.bill_rate = bill_rate
-        # The number of successful phone number queries (exclusive to phone number detection).
+        # The number of successful mobile number queries (exclusive to number detection).
         self.charge_count = charge_count
-        # The date.
+        # The date. Format: YYYY-MM-DD, such as 2015-08-24.
         self.date = date
-        # The name of the telecommunications service provider. Valid values:
+        # The carrier name. Valid values:
         # - **CMCC**: China Mobile
         # - **CUCC**: China Unicom
-        # - **CTCC**: China Telecom.
+        # - **CTCC**: China Telecom
         self.isp_name = isp_name
-        # The number of calls with no education information found.
+        # The number of calls with no education record information.
         self.no_record_count = no_record_count
         # The number of authentication-passed transactions.
         self.passed_count = passed_count

@@ -23,28 +23,28 @@ class DescribeMetaSearchPageListRequest(DaraModel):
         vehicle_num: str = None,
     ):
         # The product API. Valid values:
-        # - **ID_CARD_2_META**: ID card two-element verification
-        # - **ID_PERIOD**: ID card validity period verification
-        # - **MOBILE_ONLINE_LENGTH**: mobile number online duration
-        # - **MOBILE_ONLINE_STATUS**: mobile number online status
-        # - **MOBILE_3_META_SIMPLE**: mobile number three-element verification (simple edition)
-        # - **MOBILE_3_META**: mobile number three-element verification (detailed edition)
-        # - **MOBILE_2_META**: mobile number two-element verification
-        # - **BANK_CARD_N_META**: bank card verification (detailed edition)
-        # - **MOBILE_DETECT**: phone number detection 
-        # - **VEHICLE_N_META**: vehicle element verification (enhanced edition)
-        # - **VEHICLE_PENTA_INFO**: vehicle five-element information recognition
-        # - **VEHICLE_LICENSE_INFO**: vehicle information recognition
-        # - **VEHICLE_INSURE_DATE**: vehicle insurance date query
+        # - **ID_CARD_2_META**: ID card two-element verification.
+        # - **ID_PERIOD**: ID card validity period verification.
+        # - **MOBILE_ONLINE_LENGTH**: mobile number online duration.
+        # - **MOBILE_ONLINE_STATUS**: mobile number online status.
+        # - **MOBILE_3_META_SIMPLE**: mobile number three-element verification (simple edition).
+        # - **MOBILE_3_META**: mobile number three-element verification (detailed edition).
+        # - **MOBILE_2_META**: mobile number two-element verification.
+        # - **BANK_CARD_N_META**: bank card verification (detailed edition).
+        # - **MOBILE_DETECT**: phone number detection. 
+        # - **VEHICLE_N_META**: vehicle element verification (enhanced edition).
+        # - **VEHICLE_PENTA_INFO**: vehicle five-element information recognition.
+        # - **VEHICLE_LICENSE_INFO**: vehicle information recognition.
+        # - **VEHICLE_INSURE_DATE**: vehicle insurance date query.
         # - **VEHICLE_CHECK**: vehicle element verification.
         # 
         # This parameter is required.
         self.api = api
         # The bank card number.
         self.bank_card = bank_card
-        # The verification status. Valid values:
-        # - **1**: Verification passed.
-        # - **2**: Verification failed.
+        # The authentication status. Valid values:
+        # - **1**: Authentication passed.
+        # - **2**: Authentication failed.
         # - **3**: No record found.
         self.biz_code = biz_code
         # The current page number.
@@ -57,12 +57,12 @@ class DescribeMetaSearchPageListRequest(DaraModel):
         self.end_date = end_date
         # The ID card number.
         self.identify_num = identify_num
-        # The name of the telecommunications service provider. Valid values:
-        # - **CMCC**: China Mobile
-        # - **CUCC**: China Unicom
+        # The telecommunications service provider name. Valid values:
+        # - **CMCC**: China Mobile.
+        # - **CUCC**: China Unicom.
         # - **CTCC**: China Telecom.
         self.isp_name = isp_name
-        # The mobile phone number.
+        # The mobile number.
         self.mobile = mobile
         # The number of entries per page.
         # 
@@ -74,7 +74,7 @@ class DescribeMetaSearchPageListRequest(DaraModel):
         # 
         # This parameter is required.
         self.start_date = start_date
-        # The result code. For more information, see [official documentation](https://www.alibabacloud.com/help/en/id-verification/information-verification/).
+        # The result code. For more information, refer to the [official documentation](https://www.alibabacloud.com/help/en/id-verification/information-verification/).
         self.sub_code = sub_code
         # The name.
         self.user_name = user_name

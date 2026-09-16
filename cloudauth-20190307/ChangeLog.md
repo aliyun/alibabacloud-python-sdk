@@ -1,3 +1,20 @@
+2026-09-16 Version: 3.14.0
+- Support API Id3MetaVerifyPRO.
+- Update API CreateAntCloudAuthScene: add request parameters DegradeAppScheme.
+- Update API CreateAntCloudAuthScene: add request parameters DegradeSubCodes.
+- Update API CreateAntCloudAuthScene: add request parameters DegradeType.
+- Update API CreateAntCloudAuthScene: add request parameters UseDegrade.
+- Update API DescribeFaceVerify: add response parameters Body.ResultObject.DegradeInfo.
+- Update API DescribeListAntCloudAuthScenes: add response parameters Body.Scenes.$.DegradeAppScheme.
+- Update API DescribeListAntCloudAuthScenes: add response parameters Body.Scenes.$.DegradeSubCodes.
+- Update API DescribeListAntCloudAuthScenes: add response parameters Body.Scenes.$.DegradeType.
+- Update API DescribeListAntCloudAuthScenes: add response parameters Body.Scenes.$.UseDegrade.
+- Update API UpdateAntCloudAuthScene: add request parameters DegradeAppScheme.
+- Update API UpdateAntCloudAuthScene: add request parameters DegradeSubCodes.
+- Update API UpdateAntCloudAuthScene: add request parameters DegradeType.
+- Update API UpdateAntCloudAuthScene: add request parameters UseDegrade.
+
+
 2026-07-10 Version: 3.13.4
 - Update API CreateWhitelistSetting: add request parameters WhitelistType.
 - Update API DescribeWhitelistSetting: add request parameters WhitelistType.

@@ -15,7 +15,7 @@ class DescribeFaceVerifyRequest(DaraModel):
         self.certify_id = certify_id
         # The image return type.
         self.picture_return_type = picture_return_type
-        # The ID of the verification scenario.
+        # The verification scenario ID.
         self.scene_id = scene_id
 
     def validate(self):

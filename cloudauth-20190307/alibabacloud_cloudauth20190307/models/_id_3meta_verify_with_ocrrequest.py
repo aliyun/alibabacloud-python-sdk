@@ -16,9 +16,9 @@ class Id3MetaVerifyWithOCRRequest(DaraModel):
         self.cert_file = cert_file
         # The image of the national emblem side of the ID card. Specify either CertNationalUrl or CertNationalFile, or leave both empty.
         self.cert_national_file = cert_national_file
-        # The URL of the national emblem side image of the ID card. Specify a publicly accessible HTTP or HTTPS URL. Specify either CertNationalUrl or CertNationalFile, or leave both empty.
+        # The URL of the national emblem side image of the ID card. A publicly accessible HTTP or HTTPS URL. Specify either CertNationalUrl or CertNationalFile, or leave both empty.
         self.cert_national_url = cert_national_url
-        # The image of the portrait side of the ID card. Specify a publicly accessible HTTP or HTTPS URL. Specify either CertUrl or CertFile.
+        # The image of the portrait side of the ID card. A publicly accessible HTTP or HTTPS URL. Specify either CertUrl or CertFile.
         self.cert_url = cert_url
 
     def validate(self):

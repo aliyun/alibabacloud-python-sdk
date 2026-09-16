@@ -197,6 +197,10 @@ from ._id_3meta_verify_request import Id3MetaVerifyRequest
 from ._id_3meta_verify_advance_request import Id3MetaVerifyAdvanceRequest
 from ._id_3meta_verify_response_body import Id3MetaVerifyResponseBody
 from ._id_3meta_verify_response import Id3MetaVerifyResponse
+from ._id_3meta_verify_prorequest import Id3MetaVerifyPRORequest
+from ._id_3meta_verify_proadvance_request import Id3MetaVerifyPROAdvanceRequest
+from ._id_3meta_verify_proresponse_body import Id3MetaVerifyPROResponseBody
+from ._id_3meta_verify_proresponse import Id3MetaVerifyPROResponse
 from ._id_3meta_verify_with_ocrrequest import Id3MetaVerifyWithOCRRequest
 from ._id_3meta_verify_with_ocradvance_request import Id3MetaVerifyWithOCRAdvanceRequest
 from ._id_3meta_verify_with_ocrresponse_body import Id3MetaVerifyWithOCRResponseBody
@@ -383,6 +387,7 @@ from ._id_2meta_standard_verify_response_body import Id2MetaStandardVerifyRespon
 from ._id_2meta_verify_response_body import Id2MetaVerifyResponseBodyResultObject
 from ._id_2meta_verify_with_ocrresponse_body import Id2MetaVerifyWithOCRResponseBodyResultObject
 from ._id_3meta_verify_response_body import Id3MetaVerifyResponseBodyResultObject
+from ._id_3meta_verify_proresponse_body import Id3MetaVerifyPROResponseBodyResultObject
 from ._id_3meta_verify_with_ocrresponse_body import Id3MetaVerifyWithOCRResponseBodyResultObject
 from ._init_auth_verify_response_body import InitAuthVerifyResponseBodyResult
 from ._init_card_verify_response_body import InitCardVerifyResponseBodyResultObject
@@ -614,6 +619,10 @@ __all__ = [
     Id3MetaVerifyAdvanceRequest,
     Id3MetaVerifyResponseBody,
     Id3MetaVerifyResponse,
+    Id3MetaVerifyPRORequest,
+    Id3MetaVerifyPROAdvanceRequest,
+    Id3MetaVerifyPROResponseBody,
+    Id3MetaVerifyPROResponse,
     Id3MetaVerifyWithOCRRequest,
     Id3MetaVerifyWithOCRAdvanceRequest,
     Id3MetaVerifyWithOCRResponseBody,
@@ -800,6 +809,7 @@ __all__ = [
     Id2MetaVerifyResponseBodyResultObject,
     Id2MetaVerifyWithOCRResponseBodyResultObject,
     Id3MetaVerifyResponseBodyResultObject,
+    Id3MetaVerifyPROResponseBodyResultObject,
     Id3MetaVerifyWithOCRResponseBodyResultObject,
     InitAuthVerifyResponseBodyResult,
     InitCardVerifyResponseBodyResultObject,

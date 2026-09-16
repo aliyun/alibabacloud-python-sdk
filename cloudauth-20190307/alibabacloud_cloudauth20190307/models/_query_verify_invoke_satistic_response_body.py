@@ -29,7 +29,7 @@ class QueryVerifyInvokeSatisticResponseBody(DaraModel):
         self.page_size = page_size
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the response is successful.
+        # Indicates whether the request was successful.
         self.success = success
         # The total number of entries.
         self.total_count = total_count
@@ -114,7 +114,7 @@ class QueryVerifyInvokeSatisticResponseBodyItems(DaraModel):
     ):
         # The list of statistics data.
         self.data = data
-        # The statistics date.
+        # The statistics date. Format: YYYY-MM-DD. Example: 2025-10-16.
         self.statistics_date = statistics_date
 
     def validate(self):
@@ -157,7 +157,7 @@ class QueryVerifyInvokeSatisticResponseBodyItemsData(DaraModel):
         statistics_count: str = None,
         statistics_type: str = None,
     ):
-        # The count of the statistical value.
+        # The count of the statistics value.
         self.statistics_count = statistics_count
         # The product code.
         self.statistics_type = statistics_type

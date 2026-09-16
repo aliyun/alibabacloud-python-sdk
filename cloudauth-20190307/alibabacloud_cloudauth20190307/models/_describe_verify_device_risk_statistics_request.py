@@ -13,22 +13,22 @@ class DescribeVerifyDeviceRiskStatisticsRequest(DaraModel):
         service_code: str = None,
         start_date: int = None,
     ):
-        # The end time.
+        # The end time. The value is a UNIX timestamp in milliseconds, such as 1748624399999.
         # 
         # This parameter is required.
         self.end_date = end_date
-        # The code of the cloud service.
+        # The cloud product code.
         self.product_code = product_code
         # The scene ID.
         self.scene_id = scene_id
         # The service type. Valid values:
         # - **antcloudauth**: financial-grade ID Verification.
-        # - **cloudauthst** (discontinued): ID Verification - Enhanced Edition.
+        # - **cloudauthst** (discontinued): ID Verification Enhanced Edition.
         # - **cloudauth** (discontinued): ID Verification.
         # 
         # This parameter is required.
         self.service_code = service_code
-        # The start time of the query. The value is a UNIX timestamp in milliseconds.
+        # The start time of the query. The value is a UNIX timestamp in milliseconds, such as 1746720000000.
         # 
         # This parameter is required.
         self.start_date = start_date

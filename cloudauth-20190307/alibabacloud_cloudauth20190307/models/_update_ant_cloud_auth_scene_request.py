@@ -10,6 +10,9 @@ class UpdateAntCloudAuthSceneRequest(DaraModel):
         bind_mini_program: str = None,
         check_file_body: str = None,
         check_file_name: str = None,
+        degrade_app_scheme: str = None,
+        degrade_sub_codes: str = None,
+        degrade_type: str = None,
         device_risk_plus: str = None,
         mini_program_name: str = None,
         platform: str = None,
@@ -19,16 +22,23 @@ class UpdateAntCloudAuthSceneRequest(DaraModel):
         scene_name: str = None,
         status: int = None,
         store_image: str = None,
+        use_degrade: str = None,
     ):
         # Specifies whether to bind a mini program. Valid values:
         # - **Y**: enabled.
         # - **N (default)**: disabled.
-        # >Notice: If you enable mini program binding, make sure that you specify all parameters related to the mini program binding..
+        # >Notice: If you enable mini program binding, make sure that you specify all parameters related to the mini program binding.
         self.bind_mini_program = bind_mini_program
         # The content of the uploaded verification file.
         self.check_file_body = check_file_body
         # The name of the uploaded verification file.
         self.check_file_name = check_file_name
+        # The iOS app scheme for degradation.
+        self.degrade_app_scheme = degrade_app_scheme
+        # The SubCode that triggers degradation.
+        self.degrade_sub_codes = degrade_sub_codes
+        # Specifies whether to enable degraded authentication.
+        self.degrade_type = degrade_type
         # Specifies whether to enable enhanced device risk detection. Valid values:
         # - **Y**: enabled.
         # - **N**: disabled.
@@ -38,11 +48,11 @@ class UpdateAntCloudAuthSceneRequest(DaraModel):
         # The mini program platform. Valid values:
         # - **WECHAT**: WeChat
         # - **ALIPAY**: Alipay
-        # - **TIKTOK**: TikTok.
+        # - **TIKTOK**: TikTok
         self.platform = platform
-        # The number of returned photos (1 to 5). This parameter takes effect only after StoreImage is enabled for certification file retention.
+        # The number of returned photos (1 to 5). This parameter takes effect after StoreImage is enabled for authentication file retention.
         self.return_pic_count = return_pic_count
-        # The duration of the returned video (1 to 2 seconds). This parameter takes effect only after StoreImage is enabled.
+        # The duration of the returned video (1 to 2 seconds). This parameter takes effect after StoreImage is enabled.
         self.return_video_length = return_video_length
         # The scenario ID.
         # 
@@ -50,12 +60,14 @@ class UpdateAntCloudAuthSceneRequest(DaraModel):
         self.scene_id = scene_id
         # The scenario name.
         self.scene_name = scene_name
-        # This parameter is not used. You do not need to specify this parameter.
+        # This parameter has no effect. You do not need to specify this parameter.
         self.status = status
-        # Specifies whether to deliver certification files generated during the certification process to the user\\"s OSS bucket. Valid values:
+        # Specifies whether to deliver authentication files generated during the authentication process to your OSS bucket. Valid values:
         # - **Y**: enabled.
         # - **N (default)**: disabled.
         self.store_image = store_image
+        # Specifies whether to enable degraded authentication.
+        self.use_degrade = use_degrade
 
     def validate(self):
         pass
@@ -73,6 +85,15 @@ class UpdateAntCloudAuthSceneRequest(DaraModel):
 
         if self.check_file_name is not None:
             result['CheckFileName'] = self.check_file_name
+
+        if self.degrade_app_scheme is not None:
+            result['DegradeAppScheme'] = self.degrade_app_scheme
+
+        if self.degrade_sub_codes is not None:
+            result['DegradeSubCodes'] = self.degrade_sub_codes
+
+        if self.degrade_type is not None:
+            result['DegradeType'] = self.degrade_type
 
         if self.device_risk_plus is not None:
             result['DeviceRiskPlus'] = self.device_risk_plus
@@ -101,6 +122,9 @@ class UpdateAntCloudAuthSceneRequest(DaraModel):
         if self.store_image is not None:
             result['StoreImage'] = self.store_image
 
+        if self.use_degrade is not None:
+            result['UseDegrade'] = self.use_degrade
+
         return result
 
     def from_map(self, m: dict = None):
@@ -113,6 +137,15 @@ class UpdateAntCloudAuthSceneRequest(DaraModel):
 
         if m.get('CheckFileName') is not None:
             self.check_file_name = m.get('CheckFileName')
+
+        if m.get('DegradeAppScheme') is not None:
+            self.degrade_app_scheme = m.get('DegradeAppScheme')
+
+        if m.get('DegradeSubCodes') is not None:
+            self.degrade_sub_codes = m.get('DegradeSubCodes')
+
+        if m.get('DegradeType') is not None:
+            self.degrade_type = m.get('DegradeType')
 
         if m.get('DeviceRiskPlus') is not None:
             self.device_risk_plus = m.get('DeviceRiskPlus')
@@ -140,6 +173,9 @@ class UpdateAntCloudAuthSceneRequest(DaraModel):
 
         if m.get('StoreImage') is not None:
             self.store_image = m.get('StoreImage')
+
+        if m.get('UseDegrade') is not None:
+            self.use_degrade = m.get('UseDegrade')
 
         return self
 

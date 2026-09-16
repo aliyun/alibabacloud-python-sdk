@@ -15,27 +15,27 @@ class DescribeInfoCheckExportRecordRequest(DaraModel):
     ):
         # The current page number.
         self.current_page = current_page
-        # The end time of the query.
+        # The query end time. Format: YYYY-MM-DD HH:mm:ss, for example, 2025-10-11 21:24:48.
         self.end_date = end_date
         # The number of entries per page.
         self.page_size = page_size
         # The product type. Valid values:
         # - **ID_CARD_2_META**: ID card two-element verification.
         # - **ID_PERIOD**: ID card validity period verification.
-        # - **MOBILE_ONLINE_LENGTH**: mobile number online duration.
-        # - **MOBILE_ONLINE_STATUS**: mobile number online status.
-        # - **MOBILE_3_META_SIMPLE**: mobile number three-element verification (simple edition).
-        # - **MOBILE_3_META**: mobile number three-element verification (detailed edition).
-        # - **MOBILE_2_META**: mobile number two-element verification.
-        # - **BANK_CARD_N_META**: bank card verification (detailed edition).
-        # - **MOBILE_DETECT**: phone number detection.
-        # - **VEHICLE_N_META**: vehicle element verification (enhanced edition).
-        # - **VEHICLE_PENTA_INFO**: vehicle five-element information recognition.
-        # - **VEHICLE_LICENSE_INFO**: vehicle information recognition.
-        # - **VEHICLE_INSURE_DATE**: vehicle insurance date query.
-        # - **VEHICLE_CHECK**: vehicle element verification.
+        # - **MOBILE_ONLINE_LENGTH**: Mobile number online duration.
+        # - **MOBILE_ONLINE_STATUS**: Mobile number online status.
+        # - **MOBILE_3_META_SIMPLE**: Mobile number three-element verification (simple edition).
+        # - **MOBILE_3_META**: Mobile number three-element verification (detailed edition).
+        # - **MOBILE_2_META**: Mobile number two-element verification.
+        # - **BANK_CARD_N_META**: Bank card verification (detailed edition).
+        # - **MOBILE_DETECT**: Number detection.
+        # - **VEHICLE_N_META**: Vehicle element verification (enhanced edition).
+        # - **VEHICLE_PENTA_INFO**: Vehicle five-element information recognition.
+        # - **VEHICLE_LICENSE_INFO**: Vehicle information recognition.
+        # - **VEHICLE_INSURE_DATE**: Vehicle insurance date query.
+        # - **VEHICLE_CHECK**: Vehicle element verification.
         self.product_type = product_type
-        # The start time of the query.
+        # The query start time. Format: YYYY-MM-DD HH:mm:ss, for example, 2025-10-11 21:24:48.
         self.start_date = start_date
 
     def validate(self):

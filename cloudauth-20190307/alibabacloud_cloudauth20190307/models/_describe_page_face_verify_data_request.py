@@ -16,7 +16,7 @@ class DescribePageFaceVerifyDataRequest(DaraModel):
     ):
         # The current page number. Default value: 1.
         self.current_page = current_page
-        # Required. The end time in the yyyy-MM-dd format. The default value is yyyy-MM-dd 00:00:00. The maximum query interval is 90 days.
+        # Required. The end time in the format of yyyy-MM-dd. The default time is yyyy-MM-dd 00:00:00. The maximum query interval is 90 days.
         self.end_date = end_date
         # The number of entries per page. Default value: 10.
         self.page_size = page_size
@@ -24,7 +24,7 @@ class DescribePageFaceVerifyDataRequest(DaraModel):
         self.product_code = product_code
         # The scene ID.
         self.scene_id = scene_id
-        # Required. The start time in the yyyy-MM-dd format. The default value is yyyy-MM-dd 00:00:00. The maximum query interval is 90 days.
+        # Required. The start time in the format of yyyy-MM-dd. The default time is yyyy-MM-dd 00:00:00. The maximum query interval is 90 days.
         self.start_date = start_date
 
     def validate(self):

@@ -28,7 +28,7 @@ class DescribeWhitelistSettingRequest(DaraModel):
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The language of the query result. Valid values:
+        # The language of the query results. Valid values:
         # - **zh**: Chinese.
         # - **en**: English.
         self.lang = lang
@@ -39,8 +39,8 @@ class DescribeWhitelistSettingRequest(DaraModel):
         # The scene ID.
         self.scene_id = scene_id
         # The service code. Valid values:
-        # - **cloudauthst**: enhanced financial-grade edition.
-        # - **antcloudauth**: financial-grade edition.
+        # - **cloudauthst**: Enhanced Finance Edition.
+        # - **antcloudauth**: Finance Edition.
         # 
         # This parameter is required.
         self.service_code = service_code
@@ -51,10 +51,11 @@ class DescribeWhitelistSettingRequest(DaraModel):
         # - **INVALID**: invalid.
         # - **DELETED**: deleted.
         self.status = status
-        # The end time of the validity period.
+        # The end time of the validity period. Format: UNIX timestamp. Unit: milliseconds. Example: 1730304000000.
         self.valid_end_date = valid_end_date
-        # The start time of the validity period. The value is a UNIX timestamp in seconds.
+        # The start time of the validity period. Format: UNIX timestamp. Unit: milliseconds. Example: 1759939200000.
         self.valid_start_date = valid_start_date
+        # The whitelist type.
         self.whitelist_type = whitelist_type
 
     def validate(self):

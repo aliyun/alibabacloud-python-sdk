@@ -25,7 +25,7 @@ class DescribeVerifySearchPageListResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of pages.
         self.total_count = total_count
         # The total number of pages.
         self.total_page = total_page
@@ -111,55 +111,55 @@ class DescribeVerifySearchPageListResponseBodyItems(DaraModel):
         user_id: str = None,
         virtual_video: int = None,
     ):
-        # The desensitized ID card number.
+        # The masked ID card number.
         self.cert_no = cert_no
-        # The certification ID.
+        # The authentication ID.
         self.certify_id = certify_id
         # The extended information.
         self.ext_info = ext_info
-        # The verification time of this authentication record.
+        # The verification time of the authentication record.
         self.gmt_verify = gmt_verify
         # The liveness detection scheme.
         self.model = model
-        # The unique identifier for the customer request.
+        # The unique identifier of the customer request.
         self.outer_order_no = outer_order_no
-        # Specifies whether the authentication passed. Valid values:
+        # Indicates whether the authentication is passed. Valid values:
         # - **T**: Passed.
-        # - **F**: Failed.
+        # - **F**: Not passed.
         self.passed = passed
         # The product code.
         self.product_code = product_code
-        # The business scenario risk:
+        # The business scenario risk. Valid values:
         # - **0**: No risk.
-        # - **1**: Risk detected.
+        # - **1**: Risk exists.
         self.risk_biz_scenario = risk_biz_scenario
-        # The device risk:
+        # The device risk. Valid values:
         # - **0**: No risk.
-        # - **1**: Risk detected.
+        # - **1**: Risk exists.
         self.risk_device = risk_device
-        # The DeviceToken risk:
+        # The DeviceToken risk. Valid values:
         # - **0**: No risk.
-        # - **1**: Risk detected.
+        # - **1**: Risk exists.
         self.risk_device_token = risk_device_token
-        # The generic risk:
+        # The generic risk. Valid values:
         # - **0**: No risk.
-        # - **1**: Risk detected.
+        # - **1**: Risk exists.
         self.risk_generic = risk_generic
-        # The large model mining risk:
+        # The large model mining risk. Valid values:
         # - **0**: No risk.
-        # - **1**: Risk detected.
+        # - **1**: Risk exists.
         self.risk_model_mining = risk_model_mining
-        # Specifies whether the device is rooted. Set to 1 if selected; otherwise, do not pass this parameter. This parameter corresponds to the identity tag risk type.
+        # Specifies whether the device is rooted. Set this parameter to 1 if selected. Otherwise, do not pass this parameter. This corresponds to the identity tag risk type.
         self.root = root
         # The scene ID.
         self.scene_id = scene_id
-        # Specifies whether the device is a simulator. Set to 1 if selected; otherwise, do not pass this parameter. This parameter corresponds to the device tag risk type.
+        # Specifies whether the device is a simulator. Set this parameter to 1 if selected. Otherwise, do not pass this parameter. This corresponds to the device tag risk type.
         self.simulator = simulator
         # The error code returned by the system.
         self.sub_code = sub_code
         # The user ID.
         self.user_id = user_id
-        # Specifies whether virtual video is used. Set to 1 if selected; otherwise, do not pass this parameter. This parameter corresponds to the behavior tag risk type.
+        # Specifies whether virtual video adaptation is used. Set this parameter to 1 if selected. Otherwise, do not pass this parameter. This corresponds to the behavior tag risk type.
         self.virtual_video = virtual_video
 
     def validate(self):
@@ -311,29 +311,29 @@ class DescribeVerifySearchPageListResponseBodyItemsExtInfo(DaraModel):
         screen_video_object_names: List[str] = None,
         voice_object_names: List[str] = None,
     ):
-        # The desensitized name.
+        # The masked name.
         self.cert_name = cert_name
-        # The Face Guard tags.
+        # The face guard label.
         self.device_risk = device_risk
-        # Specifies whether a face attack is detected:
+        # Indicates whether a face attack is detected. Valid values:
         # - **T**: Yes.
         # - **F**: No.
         self.face_attack = face_attack
-        # The face attack score. The value ranges from 0 to 1. A value closer to 1 indicates a higher likelihood of an attack.
+        # The face attack score. Valid values: 0 to 1. A value closer to 1 indicates a higher likelihood of an attack.
         self.face_attack_score = face_attack_score
-        # Specifies whether the face is occluded. T indicates occlusion detected. F indicates no occlusion.
+        # Indicates whether the face is occluded. T indicates occluded. F indicates not occluded.
         self.face_occlusion = face_occlusion
-        # The face-to-ID card comparison score.
+        # The face-to-ID-card comparison score.
         self.id_card_verify_score = id_card_verify_score
         # The OSS bucket for photos.
         self.oss_bucket_name = oss_bucket_name
-        # The file name of the OCR ID card face image.
+        # The OSS file name of the OCR ID card face image.
         self.oss_id_face_object_name = oss_id_face_object_name
-        # The file name of the OCR ID card national emblem image.
+        # The OSS file name of the OCR ID card national emblem image.
         self.oss_id_national_emblem_object_name = oss_id_national_emblem_object_name
         # The storage object name.
         self.oss_object_name = oss_object_name
-        # The liveness face quality score.
+        # The face quality score from liveness detection.
         self.quality_score = quality_score
         # The face comparison score.
         self.verify_score = verify_score

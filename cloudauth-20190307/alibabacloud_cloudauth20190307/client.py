@@ -29,32 +29,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = 'regional'
+        self._endpoint_rule = 'central'
         self._endpoint_map = {
-            'us-west-1': 'cloudauth.aliyuncs.com',
-            'us-east-1': 'cloudauth.aliyuncs.com',
-            'me-east-1': 'cloudauth.aliyuncs.com',
-            'eu-west-1': 'cloudauth.aliyuncs.com',
-            'eu-central-1': 'cloudauth.aliyuncs.com',
-            'cn-zhangjiakou': 'cloudauth.aliyuncs.com',
-            'cn-shenzhen-finance-1': 'cloudauth.aliyuncs.com',
-            'cn-shenzhen': 'cloudauth.aliyuncs.com',
-            'cn-shanghai-finance-1': 'cloudauth.aliyuncs.com',
-            'cn-shanghai': 'cloudauth.aliyuncs.com',
-            'cn-qingdao': 'cloudauth.cn-qingdao.aliyuncs.com',
-            'cn-north-2-gov-1': 'cloudauth.aliyuncs.com',
-            'cn-huhehaote': 'cloudauth.aliyuncs.com',
-            'cn-hongkong': 'cloudauth.aliyuncs.com',
-            'cn-hangzhou-finance': 'cloudauth.aliyuncs.com',
-            'cn-hangzhou': 'cloudauth.aliyuncs.com',
-            'cn-chengdu': 'cloudauth.aliyuncs.com',
-            'cn-beijing': 'cloudauth.cn-beijing.aliyuncs.com',
-            'ap-southeast-5': 'cloudauth.aliyuncs.com',
-            'ap-southeast-3': 'cloudauth.aliyuncs.com',
-            'ap-southeast-2': 'cloudauth.aliyuncs.com',
-            'ap-southeast-1': 'cloudauth.aliyuncs.com',
-            'ap-south-1': 'cloudauth.aliyuncs.com',
-            'ap-northeast-1': 'cloudauth.aliyuncs.com'
+            'cn-beijing': 'cloudauth.cn-beijing.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('cloudauth', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -952,6 +929,12 @@ class Client(OpenApiClient):
             query['CheckFileBody'] = request.check_file_body
         if not DaraCore.is_null(request.check_file_name):
             query['CheckFileName'] = request.check_file_name
+        if not DaraCore.is_null(request.degrade_app_scheme):
+            query['DegradeAppScheme'] = request.degrade_app_scheme
+        if not DaraCore.is_null(request.degrade_sub_codes):
+            query['DegradeSubCodes'] = request.degrade_sub_codes
+        if not DaraCore.is_null(request.degrade_type):
+            query['DegradeType'] = request.degrade_type
         if not DaraCore.is_null(request.device_risk_plus):
             query['DeviceRiskPlus'] = request.device_risk_plus
         if not DaraCore.is_null(request.mini_program_name):
@@ -966,6 +949,8 @@ class Client(OpenApiClient):
             query['SceneName'] = request.scene_name
         if not DaraCore.is_null(request.store_image):
             query['StoreImage'] = request.store_image
+        if not DaraCore.is_null(request.use_degrade):
+            query['UseDegrade'] = request.use_degrade
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -998,6 +983,12 @@ class Client(OpenApiClient):
             query['CheckFileBody'] = request.check_file_body
         if not DaraCore.is_null(request.check_file_name):
             query['CheckFileName'] = request.check_file_name
+        if not DaraCore.is_null(request.degrade_app_scheme):
+            query['DegradeAppScheme'] = request.degrade_app_scheme
+        if not DaraCore.is_null(request.degrade_sub_codes):
+            query['DegradeSubCodes'] = request.degrade_sub_codes
+        if not DaraCore.is_null(request.degrade_type):
+            query['DegradeType'] = request.degrade_type
         if not DaraCore.is_null(request.device_risk_plus):
             query['DeviceRiskPlus'] = request.device_risk_plus
         if not DaraCore.is_null(request.mini_program_name):
@@ -1012,6 +1003,8 @@ class Client(OpenApiClient):
             query['SceneName'] = request.scene_name
         if not DaraCore.is_null(request.store_image):
             query['StoreImage'] = request.store_image
+        if not DaraCore.is_null(request.use_degrade):
+            query['UseDegrade'] = request.use_degrade
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -6611,6 +6604,274 @@ class Client(OpenApiClient):
         id_3meta_verify_resp = await self.id_3meta_verify_with_options_async(id_3meta_verify_req, runtime)
         return id_3meta_verify_resp
 
+    def id_3meta_verify_prowith_options(
+        self,
+        request: main_models.Id3MetaVerifyPRORequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.Id3MetaVerifyPROResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.enable_fallback):
+            query['EnableFallback'] = request.enable_fallback
+        body = {}
+        if not DaraCore.is_null(request.crop):
+            body['Crop'] = request.crop
+        if not DaraCore.is_null(request.face_file):
+            body['FaceFile'] = request.face_file
+        if not DaraCore.is_null(request.face_picture):
+            body['FacePicture'] = request.face_picture
+        if not DaraCore.is_null(request.face_url):
+            body['FaceUrl'] = request.face_url
+        if not DaraCore.is_null(request.identify_num):
+            body['IdentifyNum'] = request.identify_num
+        if not DaraCore.is_null(request.liveness_check):
+            body['LivenessCheck'] = request.liveness_check
+        if not DaraCore.is_null(request.param_type):
+            body['ParamType'] = request.param_type
+        if not DaraCore.is_null(request.user_name):
+            body['UserName'] = request.user_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'Id3MetaVerifyPRO',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.Id3MetaVerifyPROResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def id_3meta_verify_prowith_options_async(
+        self,
+        request: main_models.Id3MetaVerifyPRORequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.Id3MetaVerifyPROResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.enable_fallback):
+            query['EnableFallback'] = request.enable_fallback
+        body = {}
+        if not DaraCore.is_null(request.crop):
+            body['Crop'] = request.crop
+        if not DaraCore.is_null(request.face_file):
+            body['FaceFile'] = request.face_file
+        if not DaraCore.is_null(request.face_picture):
+            body['FacePicture'] = request.face_picture
+        if not DaraCore.is_null(request.face_url):
+            body['FaceUrl'] = request.face_url
+        if not DaraCore.is_null(request.identify_num):
+            body['IdentifyNum'] = request.identify_num
+        if not DaraCore.is_null(request.liveness_check):
+            body['LivenessCheck'] = request.liveness_check
+        if not DaraCore.is_null(request.param_type):
+            body['ParamType'] = request.param_type
+        if not DaraCore.is_null(request.user_name):
+            body['UserName'] = request.user_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'Id3MetaVerifyPRO',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.Id3MetaVerifyPROResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def id_3meta_verify_pro(
+        self,
+        request: main_models.Id3MetaVerifyPRORequest,
+    ) -> main_models.Id3MetaVerifyPROResponse:
+        runtime = RuntimeOptions()
+        return self.id_3meta_verify_prowith_options(request, runtime)
+
+    async def id_3meta_verify_pro_async(
+        self,
+        request: main_models.Id3MetaVerifyPRORequest,
+    ) -> main_models.Id3MetaVerifyPROResponse:
+        runtime = RuntimeOptions()
+        return await self.id_3meta_verify_prowith_options_async(request, runtime)
+
+    def id_3meta_verify_proadvance(
+        self,
+        request: main_models.Id3MetaVerifyPROAdvanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.Id3MetaVerifyPROResponse:
+        # Step 0: init client
+        if DaraCore.is_null(self._credential):
+            raise open_api_exceptions.ClientException(
+                code = 'InvalidCredentials',
+                message = 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            )
+        credential_model = self._credential.get_credential()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
+        open_platform_endpoint = self._open_platform_endpoint
+        if DaraCore.is_null(open_platform_endpoint) or open_platform_endpoint == '':
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if DaraCore.is_null(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_util_models.Config(
+            access_key_id = access_key_id,
+            access_key_secret = access_key_secret,
+            security_token = security_token,
+            type = credential_type,
+            endpoint = open_platform_endpoint,
+            protocol = self._protocol,
+            region_id = self._region_id
+        )
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'Cloudauth',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(auth_request)
+        )
+        auth_params = open_api_util_models.Params(
+            action = 'AuthorizeFileUpload',
+            version = '2019-12-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        auth_response = {}
+        file_obj = FileField()
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
+        id_3meta_verify_proreq = main_models.Id3MetaVerifyPRORequest()
+        Utils.convert(request, id_3meta_verify_proreq)
+        if not DaraCore.is_null(request.face_file_object):
+            auth_response = auth_client.call_api(auth_params, auth_req, runtime)
+            tmp_body = auth_response.get('body')
+            use_accelerate = bool(tmp_body.get('UseAccelerate'))
+            auth_response_body = Utils.stringify_map_value(tmp_body)
+            file_obj = FileField(
+                filename = auth_response_body.get('ObjectKey'),
+                content = request.face_file_object,
+                content_type = ''
+            )
+            oss_header = {
+                'host': Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type),
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
+            id_3meta_verify_proreq.face_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
+        id_3meta_verify_proresp = self.id_3meta_verify_prowith_options(id_3meta_verify_proreq, runtime)
+        return id_3meta_verify_proresp
+
+    async def id_3meta_verify_proadvance_async(
+        self,
+        request: main_models.Id3MetaVerifyPROAdvanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.Id3MetaVerifyPROResponse:
+        # Step 0: init client
+        if DaraCore.is_null(self._credential):
+            raise open_api_exceptions.ClientException(
+                code = 'InvalidCredentials',
+                message = 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            )
+        credential_model = await self._credential.get_credential_async()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
+        open_platform_endpoint = self._open_platform_endpoint
+        if DaraCore.is_null(open_platform_endpoint) or open_platform_endpoint == '':
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if DaraCore.is_null(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_util_models.Config(
+            access_key_id = access_key_id,
+            access_key_secret = access_key_secret,
+            security_token = security_token,
+            type = credential_type,
+            endpoint = open_platform_endpoint,
+            protocol = self._protocol,
+            region_id = self._region_id
+        )
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'Cloudauth',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(auth_request)
+        )
+        auth_params = open_api_util_models.Params(
+            action = 'AuthorizeFileUpload',
+            version = '2019-12-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        auth_response = {}
+        file_obj = FileField()
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
+        id_3meta_verify_proreq = main_models.Id3MetaVerifyPRORequest()
+        Utils.convert(request, id_3meta_verify_proreq)
+        if not DaraCore.is_null(request.face_file_object):
+            auth_response = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            tmp_body = auth_response.get('body')
+            use_accelerate = bool(tmp_body.get('UseAccelerate'))
+            auth_response_body = Utils.stringify_map_value(tmp_body)
+            file_obj = FileField(
+                filename = auth_response_body.get('ObjectKey'),
+                content = request.face_file_object,
+                content_type = ''
+            )
+            oss_header = {
+                'host': Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type),
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
+            id_3meta_verify_proreq.face_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
+        id_3meta_verify_proresp = await self.id_3meta_verify_prowith_options_async(id_3meta_verify_proreq, runtime)
+        return id_3meta_verify_proresp
+
     def id_3meta_verify_with_ocrwith_options(
         self,
         request: main_models.Id3MetaVerifyWithOCRRequest,
@@ -9320,6 +9581,12 @@ class Client(OpenApiClient):
             query['CheckFileBody'] = request.check_file_body
         if not DaraCore.is_null(request.check_file_name):
             query['CheckFileName'] = request.check_file_name
+        if not DaraCore.is_null(request.degrade_app_scheme):
+            query['DegradeAppScheme'] = request.degrade_app_scheme
+        if not DaraCore.is_null(request.degrade_sub_codes):
+            query['DegradeSubCodes'] = request.degrade_sub_codes
+        if not DaraCore.is_null(request.degrade_type):
+            query['DegradeType'] = request.degrade_type
         if not DaraCore.is_null(request.device_risk_plus):
             query['DeviceRiskPlus'] = request.device_risk_plus
         if not DaraCore.is_null(request.mini_program_name):
@@ -9338,6 +9605,8 @@ class Client(OpenApiClient):
             query['Status'] = request.status
         if not DaraCore.is_null(request.store_image):
             query['StoreImage'] = request.store_image
+        if not DaraCore.is_null(request.use_degrade):
+            query['UseDegrade'] = request.use_degrade
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -9370,6 +9639,12 @@ class Client(OpenApiClient):
             query['CheckFileBody'] = request.check_file_body
         if not DaraCore.is_null(request.check_file_name):
             query['CheckFileName'] = request.check_file_name
+        if not DaraCore.is_null(request.degrade_app_scheme):
+            query['DegradeAppScheme'] = request.degrade_app_scheme
+        if not DaraCore.is_null(request.degrade_sub_codes):
+            query['DegradeSubCodes'] = request.degrade_sub_codes
+        if not DaraCore.is_null(request.degrade_type):
+            query['DegradeType'] = request.degrade_type
         if not DaraCore.is_null(request.device_risk_plus):
             query['DeviceRiskPlus'] = request.device_risk_plus
         if not DaraCore.is_null(request.mini_program_name):
@@ -9388,6 +9663,8 @@ class Client(OpenApiClient):
             query['Status'] = request.status
         if not DaraCore.is_null(request.store_image):
             query['StoreImage'] = request.store_image
+        if not DaraCore.is_null(request.use_degrade):
+            query['UseDegrade'] = request.use_degrade
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
