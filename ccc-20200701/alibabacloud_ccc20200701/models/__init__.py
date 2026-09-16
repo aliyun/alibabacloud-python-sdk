@@ -76,6 +76,9 @@ from ._change_visibility_response import ChangeVisibilityResponse
 from ._change_work_mode_request import ChangeWorkModeRequest
 from ._change_work_mode_response_body import ChangeWorkModeResponseBody
 from ._change_work_mode_response import ChangeWorkModeResponse
+from ._check_business_hours_request import CheckBusinessHoursRequest
+from ._check_business_hours_response_body import CheckBusinessHoursResponseBody
+from ._check_business_hours_response import CheckBusinessHoursResponse
 from ._claim_call_request import ClaimCallRequest
 from ._claim_call_response_body import ClaimCallResponseBody
 from ._claim_call_response import ClaimCallResponse
@@ -1237,6 +1240,9 @@ __all__ = [
     ChangeWorkModeRequest,
     ChangeWorkModeResponseBody,
     ChangeWorkModeResponse,
+    CheckBusinessHoursRequest,
+    CheckBusinessHoursResponseBody,
+    CheckBusinessHoursResponse,
     ClaimCallRequest,
     ClaimCallResponseBody,
     ClaimCallResponse,

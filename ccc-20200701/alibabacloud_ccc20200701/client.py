@@ -2042,6 +2042,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.change_work_mode_with_options_async(request, runtime)
 
+    def check_business_hours_with_options(
+        self,
+        request: main_models.CheckBusinessHoursRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckBusinessHoursResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.time):
+            query['Time'] = request.time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckBusinessHours',
+            version = '2020-07-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckBusinessHoursResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_business_hours_with_options_async(
+        self,
+        request: main_models.CheckBusinessHoursRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckBusinessHoursResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.time):
+            query['Time'] = request.time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckBusinessHours',
+            version = '2020-07-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckBusinessHoursResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_business_hours(
+        self,
+        request: main_models.CheckBusinessHoursRequest,
+    ) -> main_models.CheckBusinessHoursResponse:
+        runtime = RuntimeOptions()
+        return self.check_business_hours_with_options(request, runtime)
+
+    async def check_business_hours_async(
+        self,
+        request: main_models.CheckBusinessHoursRequest,
+    ) -> main_models.CheckBusinessHoursResponse:
+        runtime = RuntimeOptions()
+        return await self.check_business_hours_with_options_async(request, runtime)
+
     def claim_call_with_options(
         self,
         request: main_models.ClaimCallRequest,

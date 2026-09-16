@@ -1,3 +1,7 @@
+2026-09-16 Version: 2.34.0
+- Support API CheckBusinessHours.
+
+
 2026-09-08 Version: 2.33.5
 - Update API ListCallDetailRecordsV2: add response parameters Body.Data.List.$.AccessChannelId.
 
