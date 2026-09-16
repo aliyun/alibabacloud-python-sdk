@@ -19,6 +19,7 @@ class UpdateJobRequest(DaraModel):
         data_offset: int = None,
         description: str = None,
         dispatcher_size: int = None,
+        end_time: int = None,
         execute_mode: str = None,
         fail_enable: bool = None,
         fail_times: int = None,
@@ -56,12 +57,12 @@ class UpdateJobRequest(DaraModel):
         self.calendar = calendar
         # The full path of the node interface class.
         # 
-        # This field is required only for Java node types, and the full path must be specified.
+        # This field is required and must contain the full path only for Java node types.
         self.class_name = class_name
-        # The advanced configuration for parallel grid tasks. The number of threads for a single trigger on a single machine. Default value: 5.
+        # Advanced configuration for parallel grid tasks. The number of threads for a single trigger on a single machine. Default value: 5.
         self.consumer_size = consumer_size
         # The contact information for the node.
-        # >Notice: This field is deprecated.</notice>
+        # >Notice: This parameter is deprecated.</notice>
         self.contact_info = contact_info
         # - If the node type is python, shell, or k8s, specify the corresponding script content.
         # - If the node type is golang, the content format example is {"jobName":"HelloWorld"}.
@@ -70,20 +71,21 @@ class UpdateJobRequest(DaraModel):
         self.data_offset = data_offset
         # The node description.
         self.description = description
-        # The advanced configuration for parallel grid tasks. The number of subtask dispatch threads. Default value: 5.
+        # Advanced configuration for parallel grid tasks. The number of subtask dispatch threads. Default value: 5.
         self.dispatcher_size = dispatcher_size
-        # The node execution mode. Valid values:
+        self.end_time = end_time
+        # The node execution mode. The following execution modes are supported:
         # 
-        # - **standalone**: standalone
-        # - **broadcatst**: broadcast
-        # - **parallel**: visual MapReduce
-        # - **batch**: MapReduce
-        # - **shard**: shard
+        # - **Standalone**: standalone
+        # - **Broadcast**: broadcatst
+        # - **Visual MapReduce**: parallel
+        # - **MapReduce**: batch
+        # - **Sharding**: shard
         self.execute_mode = execute_mode
         # Specifies whether to enable the failure alert. Valid values:
         # 
-        # - **true**: Enabled.
-        # - **false**: Disabled.
+        # - **true**: enables the failure alert.
+        # - **false**: disables the failure alert.
         self.fail_enable = fail_enable
         # The number of consecutive failures before an alert is triggered.
         self.fail_times = fail_times
@@ -97,11 +99,11 @@ class UpdateJobRequest(DaraModel):
         self.job_id = job_id
         # The maximum number of retries on errors. Set this parameter based on your business requirements.
         self.max_attempt = max_attempt
-        # The maximum number of concurrently running instances. Default value: 1. This means that if the previous trigger has not finished running, the next trigger is not performed even if the scheduled time has arrived.
+        # The maximum number of concurrently running instances. Default value: 1. This means that if the previous trigger has not finished running, the next trigger is skipped even if the scheduled time has arrived.
         self.max_concurrency = max_concurrency
         # Specifies whether to enable the no-available-machine alert. Valid values:
-        # - **true**: Enabled.
-        # - **false**: Disabled.
+        # - **true**: enables the no-available-machine alert.
+        # - **false**: disables the no-available-machine alert.
         self.miss_worker_enable = miss_worker_enable
         # The node name.
         self.name = name
@@ -111,7 +113,7 @@ class UpdateJobRequest(DaraModel):
         self.namespace = namespace
         # This parameter is required only for special third-party users.
         self.namespace_source = namespace_source
-        # The advanced configuration for parallel grid tasks. The number of subtasks pulled per request. Default value: 100.
+        # Advanced configuration for parallel grid tasks. The number of subtasks pulled per request. Default value: 100.
         self.page_size = page_size
         # The user-defined parameters that can be obtained at runtime.
         self.parameters = parameters
@@ -121,7 +123,7 @@ class UpdateJobRequest(DaraModel):
         # - **10**: high
         # - **15**: very high
         self.priority = priority
-        # The advanced configuration for parallel grid tasks. The maximum cache size of the subtask queue. Default value: 10000.
+        # Advanced configuration for parallel grid tasks. The maximum cache size of the subtask queue. Default value: 10000.
         self.queue_size = queue_size
         # The region ID.
         # 
@@ -129,47 +131,48 @@ class UpdateJobRequest(DaraModel):
         self.region_id = region_id
         # The alert notification method. Currently, only sms is supported.
         self.send_channel = send_channel
+        # The start timestamp in milliseconds. The value must be greater than the current time. A value of -1 indicates immediate start.
         self.start_time = start_time
         # Specifies whether to enable the success notification.
         self.success_notice_enable = success_notice_enable
-        # The advanced configuration for parallel grid tasks. The retry interval for failed subtasks.
+        # Advanced configuration for parallel grid tasks. The retry interval for failed subtasks.
         self.task_attempt_interval = task_attempt_interval
-        # The advanced configuration for parallel grid tasks. Specifies the push model or pull model.
+        # Advanced configuration for parallel grid tasks. Specifies the push model or pull model.
         self.task_dispatch_mode = task_dispatch_mode
-        # The advanced configuration for parallel grid tasks. The number of retries for failed subtasks.
+        # Advanced configuration for parallel grid tasks. The number of retries for failed subtasks.
         self.task_max_attempt = task_max_attempt
         # The custom task template for k8s node types.
         self.template = template
         # The time expression. Set the time expression based on the selected time type.
         # 
-        # - **cron**: Specify a standard cron expression. Online verification is supported.
-        # - **api**: No time expression is required.
-        # - **fixed_rate**: Specify a fixed frequency value in seconds. For example, 30 indicates that the node is triggered every 30 seconds.
-        # - **second_delay**: Specify a fixed delay in seconds before each execution (1s to 60s).
+        # - **cron**: specify a standard cron expression, which supports online verification.
+        # - **api**: no time expression is required.
+        # - **fixed_rate**: specify a fixed frequency value in seconds. For example, 30 indicates that the node is triggered every 30 seconds.
+        # - **second_delay**: specify a fixed delay in seconds before each execution (1s to 60s).
         self.time_expression = time_expression
-        # The time configuration type. Valid values:
+        # The time configuration type. The following configuration types are supported:
         # 
-        # - **1**: cron
-        # - **3**: fix_rate
-        # - **4**: second_delay
-        # - **5**: one_time
-        # - **100**: api
+        # - **cron**: 1
+        # - **fix_rate**: 3
+        # - **second_delay**: 4
+        # - **one_time**: 5
+        # - **api**: 100
         self.time_type = time_type
         # The timeout threshold. Unit: seconds.
         self.timeout = timeout
         # Specifies whether to enable the timeout alert. Valid values:
         # 
-        # - **true**: Enabled.
-        # - **false**: Disabled.
+        # - **true**: enables the timeout alert.
+        # - **false**: disables the timeout alert.
         self.timeout_enable = timeout_enable
         # Specifies whether to enable the timeout termination for the current trigger. Valid values:
         # 
-        # - **true**: Enabled.
-        # - **false**: Disabled.
+        # - **true**: enables the timeout termination.
+        # - **false**: disables the timeout termination.
         self.timeout_kill_enable = timeout_kill_enable
         # The time zone.
         self.timezone = timezone
-        # The parameter that must be configured for k8s node types.
+        # The extended attributes. This parameter is required for k8s node types.
         # Job task: {"resource":"job"}
         # Shell task: {"image":"busybox","resource":"shell"}
         self.xattrs = xattrs
@@ -213,6 +216,9 @@ class UpdateJobRequest(DaraModel):
 
         if self.dispatcher_size is not None:
             result['DispatcherSize'] = self.dispatcher_size
+
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
 
         if self.execute_mode is not None:
             result['ExecuteMode'] = self.execute_mode
@@ -337,6 +343,9 @@ class UpdateJobRequest(DaraModel):
 
         if m.get('DispatcherSize') is not None:
             self.dispatcher_size = m.get('DispatcherSize')
+
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
 
         if m.get('ExecuteMode') is not None:
             self.execute_mode = m.get('ExecuteMode')

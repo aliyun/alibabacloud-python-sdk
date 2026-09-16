@@ -16,19 +16,18 @@ class GetJobInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The return code.
         self.code = code
-        # The details of the job.
+        # The information about the specified node.
         self.data = data
-        # The error message returned only if an error occurs.
+        # The error message. This parameter is returned only when an error occurs.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the job details were obtained. Valid values:
+        # Indicates whether the node details were retrieved. Valid values:
         # 
-        # - **true**
-        # 
-        # - **false**
+        # - **true**: The node details were retrieved.
+        # - **false**: The node details failed to be retrieved.
         self.success = success
 
     def validate(self):
@@ -82,7 +81,7 @@ class GetJobInfoResponseBodyData(DaraModel):
         self,
         job_config_info: main_models.GetJobInfoResponseBodyDataJobConfigInfo = None,
     ):
-        # The configurations of the job.
+        # The node configuration information.
         self.job_config_info = job_config_info
 
     def validate(self):
@@ -114,6 +113,7 @@ class GetJobInfoResponseBodyDataJobConfigInfo(DaraModel):
         class_name: str = None,
         content: str = None,
         description: str = None,
+        end_time: int = None,
         execute_mode: str = None,
         jar_url: str = None,
         job_id: int = None,
@@ -128,55 +128,52 @@ class GetJobInfoResponseBodyDataJobConfigInfo(DaraModel):
         time_config: main_models.GetJobInfoResponseBodyDataJobConfigInfoTimeConfig = None,
         xattrs: str = None,
     ):
-        # The interval at which the system retried to run the job after a job failure. Default value: 30. Unit: seconds.
+        # The retry interval on failure. Unit: seconds. Default value: 30.
         self.attempt_interval = attempt_interval
-        # The full path of the job interface class. This parameter is returned only for jobs whose job type is Java.
+        # The full path of the node interface class. This field is available only for Java-type nodes.
         self.class_name = class_name
-        # The script of a script job.
+        # The script content for script-type nodes.
         self.content = content
-        # The description of the job.
+        # The node description.
         self.description = description
-        # The execution mode of the job. Valid values:
+        self.end_time = end_time
+        # The node execution mode. Valid values:
         # 
-        # - **Stand-alone operation**: standalone
-        # 
-        # - **Broadcast run**: broadcast
-        # 
-        # - **Visual MapReduce**: parallel
-        # 
-        # - **MapReduce**: batch
-        # 
-        # - **Shard run**: sharding
+        # - **standalone**: standalone
+        # - **broadcatst**: broadcast
+        # - **parallel**: parallel computing
+        # - **grid**: in-memory grid
+        # - **batch**: grid computing
+        # - **shard**: shard
         self.execute_mode = execute_mode
-        # The full path used to upload files to Object Storage Service (OSS).
+        # The full path of the file uploaded to Object Storage Service (OSS).
         # 
-        # If you use a JAR package, you can upload the JAR package to this OSS path.
+        # If you select JAR package execution, you can upload the corresponding JAR package to this OSS path.
         self.jar_url = jar_url
-        # The job ID.
+        # The node ID.
         self.job_id = job_id
-        # The monitoring information of the job.
+        # The node monitoring information.
         self.job_monitor_info = job_monitor_info
-        # The job type.
+        # The node type.
         self.job_type = job_type
-        # The advanced configurations of the job.
+        # The advanced configuration. This configuration is available only for parallel computing, in-memory grid, and grid computing modes.
         self.map_task_xattrs = map_task_xattrs
-        # The maximum number of retries after a job failure. This parameter was specified based on your business requirements. Default value: 0.
+        # The maximum number of retries on failure. Set this parameter based on your business requirements. Default value: 0.
         self.max_attempt = max_attempt
-        # The maximum number of concurrent instances. Default value: 1. The default value indicates that if the last triggered instance is running, the next instance is not triggered even if the scheduled point in time for running the next instance is reached.
+        # The maximum number of concurrently running instances. Default value: 1. A value of 1 indicates that if the previous trigger has not finished running, the next trigger is skipped even if the scheduled time has arrived.
         self.max_concurrency = max_concurrency
-        # The job name.
+        # The node name.
         self.name = name
-        # The user-defined parameters that you can obtain when the job is running.
+        # The user-defined parameters that can be obtained at runtime.
         self.parameters = parameters
-        # Indicates whether the job was enabled. Valid values:
+        # The node status. Valid values:
         # 
-        # - **1**: The job was enabled and could be triggered.
-        # 
-        # - **0**: The job was disabled and could not be triggered.
+        # - **1**: Enabled. The node can be triggered normally.
+        # - **0**: Disabled. The node is not triggered.
         self.status = status
-        # The time configurations.
+        # The time configuration information.
         self.time_config = time_config
-        # The extended fields.
+        # The extended fields of the node.
         self.xattrs = xattrs
 
     def validate(self):
@@ -203,6 +200,9 @@ class GetJobInfoResponseBodyDataJobConfigInfo(DaraModel):
 
         if self.description is not None:
             result['Description'] = self.description
+
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
 
         if self.execute_mode is not None:
             result['ExecuteMode'] = self.execute_mode
@@ -259,6 +259,9 @@ class GetJobInfoResponseBodyDataJobConfigInfo(DaraModel):
         if m.get('Description') is not None:
             self.description = m.get('Description')
 
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+
         if m.get('ExecuteMode') is not None:
             self.execute_mode = m.get('ExecuteMode')
 
@@ -311,30 +314,23 @@ class GetJobInfoResponseBodyDataJobConfigInfoTimeConfig(DaraModel):
         time_expression: str = None,
         time_type: int = None,
     ):
-        # Custom calendar days specified if TimeType is set to **1** (cron).
+        # The custom calendar for the **cron** type. This parameter is optional.
         self.calendar = calendar
-        # The time offset specified if TimeType is set to **1** (cron). Unit: seconds.
+        # The time offset for the **cron** type. Unit: seconds.
         self.data_offset = data_offset
-        # The time expression specified based on the value of TimeType:
+        # The time expression. The following time expression types are supported:
         # 
-        # - If TimeType is set to **100** (api), no time expression is required.
-        # 
-        # - If TimeType is set to **3** (fix_rate), this parameter value indicates the specific and fixed frequency. For example, if the value is 30, the system triggers a job every 30 seconds.
-        # 
-        # - If TimeType is set to **1** (cron), this parameter value indicates the standard CRON expression used to specify the time when to schedule the job.
-        # 
-        # - If TimeType is set to **4** (second_delay), this parameter value indicates the fixed delay after which the job is triggered. Valid values: 1 to 60. Unit: seconds.
+        # - **api**: No time expression is required.
+        # - **fix_rate**: A fixed frequency value. For example, 30 indicates that the node is triggered every 30 seconds.
+        # - **cron**: A standard cron expression.
+        # - **second_delay**: A fixed delay in seconds before each execution (valid range: 1s to 60s).
         self.time_expression = time_expression
-        # The time type. Valid values:
+        # The time configuration type. Valid values:
         # 
         # - **1**: cron
-        # 
         # - **3**: fix_rate
-        # 
         # - **4**: second_delay
-        # 
         # - **5**: one_time
-        # 
         # - **100**: api
         self.time_type = time_type
 
@@ -386,17 +382,17 @@ class GetJobInfoResponseBodyDataJobConfigInfoMapTaskXAttrs(DaraModel):
         task_attempt_interval: int = None,
         task_max_attempt: int = None,
     ):
-        # The number of threads that were triggered by a single worker at a time. Default value: 5.
+        # The number of threads for a single trigger on a single machine. Default value: 5.
         self.consumer_size = consumer_size
-        # The number of task distribution threads. Default value: 5.
+        # The number of threads for subtask distribution. Default value: 5.
         self.dispatcher_size = dispatcher_size
-        # The number of tasks that were pulled by a parallel job at a time. Default value: 100.
+        # The number of subtasks pulled per request for parallel nodes. Default value: 100.
         self.page_size = page_size
-        # The maximum number of tasks that can be queued. Default value: 10000.
+        # The maximum number of subtasks that can be cached in the queue. Default value: 10000.
         self.queue_size = queue_size
-        # The interval at which the system retried to run the task after a task failure.
+        # The retry interval for a subtask on failure.
         self.task_attempt_interval = task_attempt_interval
-        # The number of retries after a task failure.
+        # The maximum number of retries for a subtask on failure.
         self.task_max_attempt = task_max_attempt
 
     def validate(self):
@@ -455,9 +451,9 @@ class GetJobInfoResponseBodyDataJobConfigInfoJobMonitorInfo(DaraModel):
         contact_info: List[main_models.GetJobInfoResponseBodyDataJobConfigInfoJobMonitorInfoContactInfo] = None,
         monitor_config: main_models.GetJobInfoResponseBodyDataJobConfigInfoJobMonitorInfoMonitorConfig = None,
     ):
-        # The alert contact Information.
+        # The contact information.
         self.contact_info = contact_info
-        # The configurations of the alerting features and the alert thresholds.
+        # The alert switch and threshold configuration.
         self.monitor_config = monitor_config
 
     def validate(self):
@@ -507,25 +503,23 @@ class GetJobInfoResponseBodyDataJobConfigInfoJobMonitorInfoMonitorConfig(DaraMod
         timeout_enable: bool = None,
         timeout_kill_enable: bool = None,
     ):
-        # Indicates whether the Failure alarm switch was turned on. Valid values:
+        # Specifies whether to enable the failure alert. Valid values:
         # 
-        # - **true**
-        # 
-        # - **false**
+        # - **true**: Enables the failure alert.
+        # - **false**: Disables the failure alert.
         self.fail_enable = fail_enable
-        # Indicates whether the No machine alarm available switch was turned on.
+        # Specifies whether to enable the alert for no available machines.
         self.miss_worker_enable = miss_worker_enable
-        # The method used to send alerts. Only Short Message Service (SMS) is supported.
+        # The alert notification method. Currently, only sms is supported.
         self.send_channel = send_channel
-        # The timeout threshold. Default value: 7200. Unit: seconds.
+        # The timeout threshold. Unit: seconds. Default value: 7200.
         self.timeout = timeout
-        # Indicates whether the Timeout alarm switch was turned on. Valid values:
+        # Specifies whether to enable the timeout alert. Valid values:
         # 
-        # - **true**
-        # 
-        # - **false**
+        # - **true**: Enables the timeout alert.
+        # - **false**: Disables the timeout alert.
         self.timeout_enable = timeout_enable
-        # Indicates whether the Timeout termination switch was turned on. The switch is turned off by default.
+        # Specifies whether to terminate the current trigger upon timeout. This feature is disabled by default.
         self.timeout_kill_enable = timeout_kill_enable
 
     def validate(self):
@@ -586,13 +580,13 @@ class GetJobInfoResponseBodyDataJobConfigInfoJobMonitorInfoContactInfo(DaraModel
         user_name: str = None,
         user_phone: str = None,
     ):
-        # The webhook URL of the DingTalk chatbot.
+        # The webhook URL of DingTalk.
         self.ding = ding
-        # The email address of the alert contact.
+        # The email address of the user.
         self.user_mail = user_mail
-        # The name of the alert contact.
+        # The username.
         self.user_name = user_name
-        # The mobile phone number of the alert contact.
+        # The mobile phone number of the user.
         self.user_phone = user_phone
 
     def validate(self):

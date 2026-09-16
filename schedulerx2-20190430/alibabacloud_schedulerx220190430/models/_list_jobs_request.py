@@ -20,7 +20,7 @@ class ListJobsRequest(DaraModel):
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The node name.
+        # The job name.
         self.job_name = job_name
         # The namespace. You can obtain the namespace on the **Namespace** page in the console.
         # 
@@ -36,7 +36,7 @@ class ListJobsRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The node status.
+        # The job status. Valid values:
         # 
         # - **0**: disabled
         # 

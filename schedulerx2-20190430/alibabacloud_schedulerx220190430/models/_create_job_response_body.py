@@ -22,9 +22,9 @@ class CreateJobResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the node was created successfully. Valid values:
+        # Indicates whether the node was created. Valid values:
         # 
-        # - **true**: The node was created successfully.
+        # - **true**: The node was created.
         # - **false**: The node failed to be created.
         self.success = success
 

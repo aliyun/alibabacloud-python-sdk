@@ -14,21 +14,21 @@ class GetJobInfoRequest(DaraModel):
         namespace_source: str = None,
         region_id: str = None,
     ):
-        # The application ID. You can obtain the application ID on the Application Management page in the SchedulerX console.
+        # The application ID. You can obtain the ID on the Application Management page in the console.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The job ID. You can obtain the job ID on the Task Management page in the SchedulerX console.
+        # The node ID. You can obtain the ID on the Task Management page in the console.
         # 
         # This parameter is required.
         self.job_id = job_id
-        # The job name.
+        # The node name.
         self.job_name = job_name
-        # The namespace ID. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+        # The namespace ID. You can obtain the ID on the Namespace page in the console.
         # 
         # This parameter is required.
         self.namespace = namespace
-        # The namespace source. This parameter is required only for a special third party.
+        # This parameter is required only for special third-party users.
         self.namespace_source = namespace_source
         # The region ID.
         # 

@@ -19,6 +19,7 @@ class CreateJobRequest(DaraModel):
         data_offset: int = None,
         description: str = None,
         dispatcher_size: int = None,
+        end_time: int = None,
         execute_mode: str = None,
         fail_enable: bool = None,
         fail_times: int = None,
@@ -51,27 +52,29 @@ class CreateJobRequest(DaraModel):
     ):
         # The retry interval on failure. Unit: seconds. Default value: 30.
         self.attempt_interval = attempt_interval
-        # The custom calendar. This parameter is available for the cron time type.
+        # The custom calendar. This parameter is optional for the cron time type.
         self.calendar = calendar
         # The full path of the node interface class.
         # 
-        # This field is required only when you select the Java node type. Specify the full path.
+        # This field is available and required only when you select the Java node type. Specify the full path.
         self.class_name = class_name
-        # The advanced configuration for parallel grid nodes. The number of threads triggered for a single execution on a single machine. Default value: 5.
+        # Advanced configuration for parallel grid nodes. The number of threads for a single trigger on a single machine. Default value: 5.
         self.consumer_size = consumer_size
         # The node contact information.
         # 
-        # >Notice: This field is deprecated.</notice>
+        # >Notice: This parameter is deprecated.
         self.contact_info = contact_info
         # - If the node type is python, shell, or k8s, specify the corresponding script content.
         # - If the node type is golang, the content format example is {"jobName":"HelloWorld"}.
         self.content = content
-        # The time offset. Unit: seconds. This parameter is available for the cron time type.
+        # The time offset for the cron time type. Unit: seconds.
         self.data_offset = data_offset
         # The node description.
         self.description = description
-        # The advanced configuration for parallel grid nodes. The number of subtask dispatch threads. Default value: 5.
+        # Advanced configuration for parallel grid nodes. The number of threads for subtask dispatching. Default value: 5.
         self.dispatcher_size = dispatcher_size
+        # The node expiration timestamp in milliseconds. The value must be greater than the current time and the start time. A value of -1 indicates no expiration.
+        self.end_time = end_time
         # The node execution mode. The following execution modes are supported:
         # 
         # - **Standalone**: standalone
@@ -109,7 +112,7 @@ class CreateJobRequest(DaraModel):
         self.job_type = job_type
         # The maximum number of retries on failure. Set this parameter based on your business requirements. Default value: 0.
         self.max_attempt = max_attempt
-        # The maximum number of concurrently running instances. Default value: 1. This means that if the previous trigger has not finished running, the next trigger is not performed even if the scheduled time arrives.
+        # The maximum number of concurrently running instances. Default value: 1. A value of 1 indicates that if the previous trigger has not finished running, the next trigger is skipped even if the scheduled time has arrived.
         self.max_concurrency = max_concurrency
         # Specifies whether to enable the no-available-machine alert. Valid values:
         # - **true**: Enables the no-available-machine alert.
@@ -125,7 +128,7 @@ class CreateJobRequest(DaraModel):
         self.namespace = namespace
         # This parameter is required only for special third-party users.
         self.namespace_source = namespace_source
-        # The advanced configuration for parallel grid nodes. The number of subtasks pulled in a single request. Default value: 100.
+        # Advanced configuration for parallel grid nodes. The number of subtasks pulled per request. Default value: 100.
         self.page_size = page_size
         # The user-defined parameters that can be obtained at runtime.
         self.parameters = parameters
@@ -135,7 +138,7 @@ class CreateJobRequest(DaraModel):
         # - **10**: high
         # - **15**: very high
         self.priority = priority
-        # The advanced configuration for parallel grid nodes. The maximum cache size of the subtask queue. Default value: 10000.
+        # Advanced configuration for parallel grid nodes. The maximum number of subtasks that can be cached in the queue. Default value: 10000.
         self.queue_size = queue_size
         # The region ID.
         # 
@@ -144,24 +147,25 @@ class CreateJobRequest(DaraModel):
         # The alert notification channel.
         # 
         # - Use the default channel of the application group: default.
-        # - Specify a notification channel for the node: sms, mail, phone, or webhook.
+        # - Specify the notification channel for the node: sms,mail,phone,webhook.
         self.send_channel = send_channel
+        # The start timestamp in milliseconds. The value must be greater than the current time. A value of -1 indicates immediate start.
         self.start_time = start_time
-        # The node status. Valid values: 0: disabled. 1: enabled. Default value: 1 (enabled).
+        # The node status. 0: disabled. 1: enabled. Default value: enabled.
         self.status = status
         # Specifies whether to enable the success notification.
         self.success_notice_enable = success_notice_enable
-        # The advanced configuration for parallel grid nodes. The retry interval for a failed subtask. Default value: 0.
+        # Advanced configuration for parallel grid nodes. The retry interval for a subtask on failure. Default value: 0.
         self.task_attempt_interval = task_attempt_interval
-        # The advanced configuration for parallel grid nodes. The number of retries for a failed subtask. Default value: 0.
+        # Advanced configuration for parallel grid nodes. The maximum number of retries for a subtask on failure. Default value: 0.
         self.task_max_attempt = task_max_attempt
         # The time expression. Set the time expression based on the selected time type.
         # 
         # - **cron**: Specify a standard cron expression. Online verification is supported.
         # - **api**: No time expression is required.
         # - **fixed_rate**: Specify a fixed frequency value in seconds. For example, 30 indicates that the node is triggered every 30 seconds.
-        # - **second_delay**: Specify a fixed delay in seconds before each execution (1s to 60s).
-        # - **one_time**: Specify a time in the format of yyyy-MM-dd HH:mm:ss or a timestamp in milliseconds. For example, "2022-10-10 10:10:00".
+        # - **second_delay**: Specify a fixed delay in seconds before each execution (valid values: 1 to 60).
+        # - **one_time**: Specify a time in the yyyy-MM-dd HH:mm:ss format or a timestamp in milliseconds. For example, "2022-10-10 10:10:00".
         self.time_expression = time_expression
         # The time type. The following time types are supported:
         # 
@@ -232,6 +236,9 @@ class CreateJobRequest(DaraModel):
 
         if self.dispatcher_size is not None:
             result['DispatcherSize'] = self.dispatcher_size
+
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
 
         if self.execute_mode is not None:
             result['ExecuteMode'] = self.execute_mode
@@ -354,6 +361,9 @@ class CreateJobRequest(DaraModel):
         if m.get('DispatcherSize') is not None:
             self.dispatcher_size = m.get('DispatcherSize')
 
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+
         if m.get('ExecuteMode') is not None:
             self.execute_mode = m.get('ExecuteMode')
 
@@ -451,13 +461,13 @@ class CreateJobRequestContactInfo(DaraModel):
         user_name: str = None,
         user_phone: str = None,
     ):
-        # The webhook URL of the DingTalk chatbot for the alert contact\\"s DingTalk group. References: [DingTalk development documentation](https://open.dingtalk.com/document/org/application-types).
+        # The webhook URL of the DingTalk chatbot in the DingTalk group for alert contacts. References: [DingTalk development documentation](https://open.dingtalk.com/document/org/application-types).
         self.ding = ding
         # The email address of the alert contact.
         self.user_mail = user_mail
         # The name of the alert contact.
         self.user_name = user_name
-        # The mobile phone number of the alert recipient.
+        # The phone number for receiving alerts.
         self.user_phone = user_phone
 
     def validate(self):
