@@ -104,7 +104,7 @@ class DescribeDBResourceGroupResponseBodyGroupsInfo(DaraModel):
         self.create_time = create_time
         # The minimum elastic computing resources, in ACUs.
         self.elastic_min_compute_resource = elastic_min_compute_resource
-        # Indicates whether the spot instance feature is enabled for the resource group. When the spot instance feature is enabled, the unit price of resources is reduced, but instances may be released. Valid values:
+        # Indicates whether the spot instance feature is enabled for the resource group. After the spot instance feature is enabled, the unit price of resources is reduced, but the resources may be released. Valid values:
         # - **True**: The spot instance feature is enabled.
         # - **False**: The spot instance feature is disabled.
         # 
@@ -121,7 +121,7 @@ class DescribeDBResourceGroupResponseBodyGroupsInfo(DaraModel):
         # The resource group type. Valid values:
         # - **Interactive**
         # - **Job**
-        # > For more information about resource groups in Data Lakehouse Edition, see [Resource group introduction (Data Lakehouse Edition)](https://help.aliyun.com/document_detail/428610.html).
+        # > For more information about resource groups of the Data Lakehouse Edition, see [Resource group introduction (Data Lakehouse Edition)](https://help.aliyun.com/document_detail/428610.html).
         self.group_type = group_type
         # The Resource Access Management (RAM) users attached to the resource group.
         self.group_users = group_users
@@ -156,9 +156,11 @@ class DescribeDBResourceGroupResponseBodyGroupsInfo(DaraModel):
         # The specification name.
         self.spec_name = spec_name
         # The resource group status. Valid values:
-        # - **creating**: being created
-        # - **ok**: created
-        # - **pendingdelete**: pending deletion
+        # - **Pending**: being created.
+        # - **Running**: running.
+        # - **Scaling**: being scaled.
+        # - **Deleting**: being deleted.
+        # - **Deleted**: deleted.
         self.status = status
         # The name of the target resource group.
         self.target_resource_group_name = target_resource_group_name
@@ -438,9 +440,9 @@ class DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig(DaraModel):
         self.app_config = app_config
         # The Ray cluster type. Valid values:
         # 
-        # - BASIC: basic type, non-high-availability
+        # - BASIC: basic type, non-high-availability.
         # 
-        # - HIGH_AVAILABILITY: high-availability type
+        # - HIGH_AVAILABILITY: high-availability type.
         self.category = category
         # Indicates whether ENI is enabled.
         self.enable_user_eni = enable_user_eni
@@ -597,7 +599,7 @@ class DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigWorkerGroups(DaraMod
     ):
         # The allocation unit.
         self.allocate_unit = allocate_unit
-        # The Ray worker group name.
+        # The name of the Ray worker group.
         self.group_name = group_name
         # The maximum number of workers.
         self.max_worker_quantity = max_worker_quantity
@@ -856,9 +858,9 @@ class DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlanRules(DaraModel
         end_cron_expression: str = None,
         start_cron_expression: str = None,
     ):
-        # The end time in Cron expression format. The interval must be at least 1 hour.
+        # The end time in cron expression format. The interval must be at least 1 hour.
         self.end_cron_expression = end_cron_expression
-        # The start time in Cron expression format. The interval must be at least 1 hour.
+        # The start time in cron expression format. The interval must be at least 1 hour.
         self.start_cron_expression = start_cron_expression
 
     def validate(self):
@@ -904,17 +906,17 @@ class DescribeDBResourceGroupResponseBodyGroupsInfoAtmConfig(DaraModel):
     ):
         # The number of authentication nodes.
         self.auth_node_num = auth_node_num
-        # The authentication node specifications.
+        # The node specifications of authentication nodes.
         self.auth_node_spec = auth_node_spec
         # The number of write nodes.
         self.insert_node_num = insert_node_num
-        # The write node specifications.
+        # The node specifications of write nodes.
         self.insert_node_spec = insert_node_spec
         # The cache size of query nodes.
         self.select_node_cache_size = select_node_cache_size
         # The number of query nodes.
         self.select_node_num = select_node_num
-        # The query node specifications.
+        # The node specifications of query nodes.
         self.select_node_spec = select_node_spec
         # The disk size of storage nodes.
         self.storage_node_disk_size = storage_node_disk_size
@@ -922,7 +924,7 @@ class DescribeDBResourceGroupResponseBodyGroupsInfoAtmConfig(DaraModel):
         self.storage_node_disk_type = storage_node_disk_type
         # The number of storage nodes.
         self.storage_node_num = storage_node_num
-        # The storage node specifications.
+        # The node specifications of storage nodes.
         self.storage_node_spec = storage_node_spec
 
     def validate(self):

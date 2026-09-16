@@ -29,7 +29,7 @@ class ModifyMaterializedViewRecommendRequest(DaraModel):
         self.dbcluster_id = dbcluster_id
         # The description of the recommendation task.
         self.description = description
-        # The minimum number of slow queries matched by a pattern.
+        # The minimum number of slow queries that a pattern must match.
         self.min_rewrite_query_count = min_rewrite_query_count
         # The minimum number of patterns that can be accelerated.
         self.min_rewrite_query_pattern = min_rewrite_query_pattern
@@ -39,7 +39,7 @@ class ModifyMaterializedViewRecommendRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The scan time range, in days. Default value: 3.
+        # The time range to scan, in days. Default value: 3.
         self.scan_queries_range = scan_queries_range
         # Valid only when SchedulingPolicy is set to weekly. Valid values:
         # - Monday
@@ -53,12 +53,12 @@ class ModifyMaterializedViewRecommendRequest(DaraModel):
         # Separate multiple days with commas.
         self.scheduling_day = scheduling_day
         # The recommendation policy. Valid values: 
-        # - daliy: scheduled on a daily basis.
-        # - weekly: scheduled on a weekly basis.
+        # - daily: schedules the task on a daily basis.
+        # - weekly: schedules the task on a weekly basis.
         self.scheduling_policy = scheduling_policy
         # The slow query threshold.
         self.slow_query_threshold = slow_query_threshold
-        # The execution time of the task in the format HH:MM:SS.
+        # The execution time of the task in HH:MM:SS format.
         self.specified_time = specified_time
         # The name of the materialized view recommendation task.
         # 

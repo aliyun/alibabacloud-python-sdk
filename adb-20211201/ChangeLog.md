@@ -1,3 +1,7 @@
+2026-09-16 Version: 4.4.0
+- Support API ListKnowledgeFiles.
+
+
 2026-09-07 Version: 4.2.0
 - Support API AddKnowledgeTags.
 - Support API AddKnowledgeUploadUser.
