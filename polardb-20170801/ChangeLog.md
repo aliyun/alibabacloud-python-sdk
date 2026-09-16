@@ -1,3 +1,9 @@
+2026-09-16 Version: 8.4.0
+- Support API DeleteAIDBClusterCustomModel.
+- Support API ModifyAIDBClusterModel.
+- Support API RegisterAIDBClusterCustomModel.
+
+
 2026-09-11 Version: 8.3.1
 - Update API DescribeApplications: add response parameters Body.Items.$.BranchId.
 

@@ -9291,6 +9291,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_aidbcluster_api_key_with_options_async(request, runtime)
 
+    def delete_aidbcluster_custom_model_with_options(
+        self,
+        request: main_models.DeleteAIDBClusterCustomModelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAIDBClusterCustomModelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.model_name):
+            query['ModelName'] = request.model_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAIDBClusterCustomModel',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAIDBClusterCustomModelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_aidbcluster_custom_model_with_options_async(
+        self,
+        request: main_models.DeleteAIDBClusterCustomModelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAIDBClusterCustomModelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.model_name):
+            query['ModelName'] = request.model_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAIDBClusterCustomModel',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAIDBClusterCustomModelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_aidbcluster_custom_model(
+        self,
+        request: main_models.DeleteAIDBClusterCustomModelRequest,
+    ) -> main_models.DeleteAIDBClusterCustomModelResponse:
+        runtime = RuntimeOptions()
+        return self.delete_aidbcluster_custom_model_with_options(request, runtime)
+
+    async def delete_aidbcluster_custom_model_async(
+        self,
+        request: main_models.DeleteAIDBClusterCustomModelRequest,
+    ) -> main_models.DeleteAIDBClusterCustomModelResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_aidbcluster_custom_model_with_options_async(request, runtime)
+
     def delete_aidbcluster_dataset_with_options(
         self,
         request: main_models.DeleteAIDBClusterDatasetRequest,
@@ -17256,6 +17334,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.kube_type):
             query['KubeType'] = request.kube_type
+        if not DaraCore.is_null(request.model_type):
+            query['ModelType'] = request.model_type
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -17286,6 +17366,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.kube_type):
             query['KubeType'] = request.kube_type
+        if not DaraCore.is_null(request.model_type):
+            query['ModelType'] = request.model_type
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -32703,6 +32785,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_aidbcluster_description_with_options_async(request, runtime)
 
+    def modify_aidbcluster_model_with_options(
+        self,
+        request: main_models.ModifyAIDBClusterModelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAIDBClusterModelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.display_model_name):
+            query['DisplayModelName'] = request.display_model_name
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.model_name):
+            query['ModelName'] = request.model_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyAIDBClusterModel',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyAIDBClusterModelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_aidbcluster_model_with_options_async(
+        self,
+        request: main_models.ModifyAIDBClusterModelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAIDBClusterModelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.display_model_name):
+            query['DisplayModelName'] = request.display_model_name
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.model_name):
+            query['ModelName'] = request.model_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyAIDBClusterModel',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyAIDBClusterModelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_aidbcluster_model(
+        self,
+        request: main_models.ModifyAIDBClusterModelRequest,
+    ) -> main_models.ModifyAIDBClusterModelResponse:
+        runtime = RuntimeOptions()
+        return self.modify_aidbcluster_model_with_options(request, runtime)
+
+    async def modify_aidbcluster_model_async(
+        self,
+        request: main_models.ModifyAIDBClusterModelRequest,
+    ) -> main_models.ModifyAIDBClusterModelResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_aidbcluster_model_with_options_async(request, runtime)
+
     def modify_account_description_with_options(
         self,
         request: main_models.ModifyAccountDescriptionRequest,
@@ -40452,6 +40620,96 @@ class Client(OpenApiClient):
     ) -> main_models.RefreshDBClusterStorageUsageResponse:
         runtime = RuntimeOptions()
         return await self.refresh_dbcluster_storage_usage_with_options_async(request, runtime)
+
+    def register_aidbcluster_custom_model_with_options(
+        self,
+        request: main_models.RegisterAIDBClusterCustomModelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RegisterAIDBClusterCustomModelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.custom_oss_bucket_name):
+            query['CustomOssBucketName'] = request.custom_oss_bucket_name
+        if not DaraCore.is_null(request.custom_oss_bucket_path):
+            query['CustomOssBucketPath'] = request.custom_oss_bucket_path
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.display_model_name):
+            query['DisplayModelName'] = request.display_model_name
+        if not DaraCore.is_null(request.model_name):
+            query['ModelName'] = request.model_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RegisterAIDBClusterCustomModel',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RegisterAIDBClusterCustomModelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def register_aidbcluster_custom_model_with_options_async(
+        self,
+        request: main_models.RegisterAIDBClusterCustomModelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RegisterAIDBClusterCustomModelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.custom_oss_bucket_name):
+            query['CustomOssBucketName'] = request.custom_oss_bucket_name
+        if not DaraCore.is_null(request.custom_oss_bucket_path):
+            query['CustomOssBucketPath'] = request.custom_oss_bucket_path
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.display_model_name):
+            query['DisplayModelName'] = request.display_model_name
+        if not DaraCore.is_null(request.model_name):
+            query['ModelName'] = request.model_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RegisterAIDBClusterCustomModel',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RegisterAIDBClusterCustomModelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def register_aidbcluster_custom_model(
+        self,
+        request: main_models.RegisterAIDBClusterCustomModelRequest,
+    ) -> main_models.RegisterAIDBClusterCustomModelResponse:
+        runtime = RuntimeOptions()
+        return self.register_aidbcluster_custom_model_with_options(request, runtime)
+
+    async def register_aidbcluster_custom_model_async(
+        self,
+        request: main_models.RegisterAIDBClusterCustomModelRequest,
+    ) -> main_models.RegisterAIDBClusterCustomModelResponse:
+        runtime = RuntimeOptions()
+        return await self.register_aidbcluster_custom_model_with_options_async(request, runtime)
 
     def register_knowledge_base_file_with_options(
         self,

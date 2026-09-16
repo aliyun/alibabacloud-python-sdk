@@ -272,6 +272,9 @@ from ._delete_aidbcluster_response import DeleteAIDBClusterResponse
 from ._delete_aidbcluster_api_key_request import DeleteAIDBClusterApiKeyRequest
 from ._delete_aidbcluster_api_key_response_body import DeleteAIDBClusterApiKeyResponseBody
 from ._delete_aidbcluster_api_key_response import DeleteAIDBClusterApiKeyResponse
+from ._delete_aidbcluster_custom_model_request import DeleteAIDBClusterCustomModelRequest
+from ._delete_aidbcluster_custom_model_response_body import DeleteAIDBClusterCustomModelResponseBody
+from ._delete_aidbcluster_custom_model_response import DeleteAIDBClusterCustomModelResponse
 from ._delete_aidbcluster_dataset_request import DeleteAIDBClusterDatasetRequest
 from ._delete_aidbcluster_dataset_response_body import DeleteAIDBClusterDatasetResponseBody
 from ._delete_aidbcluster_dataset_response import DeleteAIDBClusterDatasetResponse
@@ -1045,6 +1048,9 @@ from ._manually_start_dbcluster_response import ManuallyStartDBClusterResponse
 from ._modify_aidbcluster_description_request import ModifyAIDBClusterDescriptionRequest
 from ._modify_aidbcluster_description_response_body import ModifyAIDBClusterDescriptionResponseBody
 from ._modify_aidbcluster_description_response import ModifyAIDBClusterDescriptionResponse
+from ._modify_aidbcluster_model_request import ModifyAIDBClusterModelRequest
+from ._modify_aidbcluster_model_response_body import ModifyAIDBClusterModelResponseBody
+from ._modify_aidbcluster_model_response import ModifyAIDBClusterModelResponse
 from ._modify_account_description_request import ModifyAccountDescriptionRequest
 from ._modify_account_description_response_body import ModifyAccountDescriptionResponseBody
 from ._modify_account_description_response import ModifyAccountDescriptionResponse
@@ -1281,6 +1287,9 @@ from ._reactivate_dbcluster_backup_response import ReactivateDBClusterBackupResp
 from ._refresh_dbcluster_storage_usage_request import RefreshDBClusterStorageUsageRequest
 from ._refresh_dbcluster_storage_usage_response_body import RefreshDBClusterStorageUsageResponseBody
 from ._refresh_dbcluster_storage_usage_response import RefreshDBClusterStorageUsageResponse
+from ._register_aidbcluster_custom_model_request import RegisterAIDBClusterCustomModelRequest
+from ._register_aidbcluster_custom_model_response_body import RegisterAIDBClusterCustomModelResponseBody
+from ._register_aidbcluster_custom_model_response import RegisterAIDBClusterCustomModelResponse
 from ._register_knowledge_base_file_request import RegisterKnowledgeBaseFileRequest
 from ._register_knowledge_base_file_response_body import RegisterKnowledgeBaseFileResponseBody
 from ._register_knowledge_base_file_response import RegisterKnowledgeBaseFileResponse
@@ -2173,6 +2182,9 @@ __all__ = [
     DeleteAIDBClusterApiKeyRequest,
     DeleteAIDBClusterApiKeyResponseBody,
     DeleteAIDBClusterApiKeyResponse,
+    DeleteAIDBClusterCustomModelRequest,
+    DeleteAIDBClusterCustomModelResponseBody,
+    DeleteAIDBClusterCustomModelResponse,
     DeleteAIDBClusterDatasetRequest,
     DeleteAIDBClusterDatasetResponseBody,
     DeleteAIDBClusterDatasetResponse,
@@ -2946,6 +2958,9 @@ __all__ = [
     ModifyAIDBClusterDescriptionRequest,
     ModifyAIDBClusterDescriptionResponseBody,
     ModifyAIDBClusterDescriptionResponse,
+    ModifyAIDBClusterModelRequest,
+    ModifyAIDBClusterModelResponseBody,
+    ModifyAIDBClusterModelResponse,
     ModifyAccountDescriptionRequest,
     ModifyAccountDescriptionResponseBody,
     ModifyAccountDescriptionResponse,
@@ -3182,6 +3197,9 @@ __all__ = [
     RefreshDBClusterStorageUsageRequest,
     RefreshDBClusterStorageUsageResponseBody,
     RefreshDBClusterStorageUsageResponse,
+    RegisterAIDBClusterCustomModelRequest,
+    RegisterAIDBClusterCustomModelResponseBody,
+    RegisterAIDBClusterCustomModelResponse,
     RegisterKnowledgeBaseFileRequest,
     RegisterKnowledgeBaseFileResponseBody,
     RegisterKnowledgeBaseFileResponse,
