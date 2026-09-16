@@ -1,3 +1,7 @@
+2026-09-16 Version: 1.4.2
+- Update API CreateDigitalEmployee: add request parameters body.channel.
+
+
 2026-07-27 Version: 1.3.0
 - Support API CreateArtifactUploadToken.
 - Support API GetArtifactDownloadUrl.

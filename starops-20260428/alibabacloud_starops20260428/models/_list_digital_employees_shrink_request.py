@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class ListDigitalEmployeesShrinkRequest(DaraModel):
     def __init__(
         self,
+        channel: str = None,
         display_name: str = None,
         employee_type: str = None,
         max_results: int = None,
@@ -15,17 +16,19 @@ class ListDigitalEmployeesShrinkRequest(DaraModel):
         resource_group_id: str = None,
         tags_shrink: str = None,
     ):
+        # Filters digital employees by channel type. If this parameter is not specified, the default channel is used.
+        self.channel = channel
         # The display name of the digital employee.
         self.display_name = display_name
         # The type of the digital employee.
         self.employee_type = employee_type
-        # The number of entries to return on each page. Valid values: 1 to 100. Default value: 20.
+        # The page size. Default value: 20. Maximum value: 100.
         self.max_results = max_results
         # The name of the digital employee.
         self.name = name
-        # The token that is used to retrieve the next page of results.
+        # The token for the next query.
         self.next_token = next_token
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         # The tags.
         self.tags_shrink = tags_shrink
@@ -38,6 +41,9 @@ class ListDigitalEmployeesShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.channel is not None:
+            result['channel'] = self.channel
+
         if self.display_name is not None:
             result['displayName'] = self.display_name
 
@@ -63,6 +69,9 @@ class ListDigitalEmployeesShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('channel') is not None:
+            self.channel = m.get('channel')
+
         if m.get('displayName') is not None:
             self.display_name = m.get('displayName')
 

@@ -11,6 +11,7 @@ class CreateDigitalEmployeeRequest(DaraModel):
     def __init__(
         self,
         attributes: Dict[str, str] = None,
+        channel: str = None,
         default_rule: str = None,
         description: str = None,
         display_name: str = None,
@@ -22,14 +23,17 @@ class CreateDigitalEmployeeRequest(DaraModel):
         tags: List[main_models.Tag] = None,
         tool_policy: main_models.CreateDigitalEmployeeRequestToolPolicy = None,
     ):
+        # The attributes.
         self.attributes = attributes
+        # 数字员工渠道类型。不填时使用默认渠道。
+        self.channel = channel
         # The default rule of the digital employee.
         self.default_rule = default_rule
         # The description of the digital employee.
         self.description = description
         # The display name of the digital employee.
         self.display_name = display_name
-        # The list of knowledge bases.
+        # The knowledge base list.
         self.knowledges = knowledges
         # The name of the digital employee.
         # 
@@ -67,6 +71,9 @@ class CreateDigitalEmployeeRequest(DaraModel):
             result = _map
         if self.attributes is not None:
             result['attributes'] = self.attributes
+
+        if self.channel is not None:
+            result['channel'] = self.channel
 
         if self.default_rule is not None:
             result['defaultRule'] = self.default_rule
@@ -106,6 +113,9 @@ class CreateDigitalEmployeeRequest(DaraModel):
         m = m or dict()
         if m.get('attributes') is not None:
             self.attributes = m.get('attributes')
+
+        if m.get('channel') is not None:
+            self.channel = m.get('channel')
 
         if m.get('defaultRule') is not None:
             self.default_rule = m.get('defaultRule')
@@ -178,12 +188,18 @@ class CreateDigitalEmployeeRequestToolPolicy(DaraModel):
 class CreateDigitalEmployeeRequestToolPolicyAliyun(DaraModel):
     def __init__(
         self,
+        auto_pass_policy: List[str] = None,
+        deny_policy: List[str] = None,
         enable: bool = None,
         statements: List[main_models.CreateDigitalEmployeeRequestToolPolicyAliyunStatements] = None,
     ):
-        # Specifies whether to enable the Aliyun MCP tool policy.
+        # The auto-pass policy. Each entry is a RAM Action string in the format of product:ApiName, product:Prefix*, or product:*. Matched actions are automatically approved without human confirmation. If this parameter is empty or not configured, built-in read-only actions (Get*, List*, Describe*) are automatically approved. Unmatched actions require human-in-the-loop (HIL) confirmation.
+        self.auto_pass_policy = auto_pass_policy
+        # The explicit deny policy with the highest priority. Each entry is a RAM Action string in the format of product:ApiName, product:Prefix*, or product:*. If this parameter is empty or not configured, no actions are actively denied. STAROps directly denies matched actions. The Pop side performs secondary fallback enforcement.
+        self.deny_policy = deny_policy
+        # Specifies whether to enable the Aliyun MCP tool policy. The policy is enabled by default and is disabled only when this parameter is explicitly set to false.
         self.enable = enable
-        # The list of Aliyun OpenAPI tool policy statements.
+        # **[Deprecated]** Use denyPolicy and autoPassPolicy instead. This parameter is still returned during the transition period. Original description: The list of Aliyun OpenAPI tool policy statements.
         self.statements = statements
 
     def validate(self):
@@ -197,6 +213,12 @@ class CreateDigitalEmployeeRequestToolPolicyAliyun(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.auto_pass_policy is not None:
+            result['autoPassPolicy'] = self.auto_pass_policy
+
+        if self.deny_policy is not None:
+            result['denyPolicy'] = self.deny_policy
+
         if self.enable is not None:
             result['enable'] = self.enable
 
@@ -209,6 +231,12 @@ class CreateDigitalEmployeeRequestToolPolicyAliyun(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('autoPassPolicy') is not None:
+            self.auto_pass_policy = m.get('autoPassPolicy')
+
+        if m.get('denyPolicy') is not None:
+            self.deny_policy = m.get('denyPolicy')
+
         if m.get('enable') is not None:
             self.enable = m.get('enable')
 
@@ -228,11 +256,11 @@ class CreateDigitalEmployeeRequestToolPolicyAliyunStatements(DaraModel):
         decision: str = None,
         product: str = None,
     ):
-        # The list of Aliyun OpenAPI actions. The format is product:ApiName, product:Prefix*, or product:*.
+        # The list of Aliyun OpenAPI actions in the format of product:ApiName, product:Prefix*, or product:*.
         self.actions = actions
         # The Aliyun OpenAPI version that this statement applies to.
         self.api_version = api_version
-        # The execution policy when the API is matched.
+        # The execution policy when this API is matched.
         self.decision = decision
         # The Aliyun OpenAPI product name that this statement applies to.
         self.product = product
@@ -284,7 +312,7 @@ class CreateDigitalEmployeeRequestSandboxNetworkPolicy(DaraModel):
     ):
         # The list of allowed CIDRs or IP addresses. A maximum of 50 entries are supported.
         self.allow_cidrs = allow_cidrs
-        # The list of allowed FQDNs. A maximum of 50 FQDNs are supported.
+        # The list of allowed FQDNs. A maximum of 50 entries are supported.
         self.allow_fqdns = allow_fqdns
         # Specifies whether to enable the sandbox network ACL.
         self.enable_acl = enable_acl
@@ -327,9 +355,9 @@ class CreateDigitalEmployeeRequestKnowledges(DaraModel):
         bailian: List[main_models.CreateDigitalEmployeeRequestKnowledgesBailian] = None,
         sop: List[Dict[str, Any]] = None,
     ):
-        # The list of Bailian knowledge bases.
+        # The Bailian knowledge base list.
         self.bailian = bailian
-        # The list of SOP knowledge bases.
+        # The SOP knowledge base list.
         self.sop = sop
 
     def validate(self):
@@ -374,7 +402,7 @@ class CreateDigitalEmployeeRequestKnowledgesBailian(DaraModel):
         region: str = None,
         workspace_id: str = None,
     ):
-        # The attributes of the knowledge base.
+        # The knowledge base attributes.
         self.attributes = attributes
         # The Bailian index ID.
         self.index_id = index_id

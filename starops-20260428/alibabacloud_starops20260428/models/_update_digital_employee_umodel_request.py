@@ -4,15 +4,15 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class GetArtifactDownloadUrlRequest(DaraModel):
+class UpdateDigitalEmployeeUmodelRequest(DaraModel):
     def __init__(
         self,
-        artifact_path: str = None,
+        description: str = None,
     ):
-        # The artifact file path, relative to the digital worker artifact root directory.
+        # The updated UModel description of the digital human.
         # 
         # This parameter is required.
-        self.artifact_path = artifact_path
+        self.description = description
 
     def validate(self):
         pass
@@ -22,15 +22,15 @@ class GetArtifactDownloadUrlRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.artifact_path is not None:
-            result['artifactPath'] = self.artifact_path
+        if self.description is not None:
+            result['description'] = self.description
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('artifactPath') is not None:
-            self.artifact_path = m.get('artifactPath')
+        if m.get('description') is not None:
+            self.description = m.get('description')
 
         return self
 

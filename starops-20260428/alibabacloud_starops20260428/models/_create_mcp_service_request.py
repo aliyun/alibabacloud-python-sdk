@@ -353,6 +353,7 @@ class CreateMcpServiceRequestConnection(DaraModel):
         # 
         # This parameter is required.
         self.endpoint = endpoint
+        # The custom headers.
         self.headers = headers
         # The platform type of the MCP service. Valid values: AIGateway and Custom.
         # 

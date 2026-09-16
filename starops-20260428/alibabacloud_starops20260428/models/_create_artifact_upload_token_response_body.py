@@ -18,15 +18,25 @@ class CreateArtifactUploadTokenResponseBody(DaraModel):
         signature: str = None,
         success_action_status: str = None,
     ):
+        # The AccessKey ID used for OSS uploads.
         self.access_id = access_id
+        # The normalized logical upload directory on the server side, relative to the digital human artifact root directory.
         self.artifact_path = artifact_path
+        # The allowed OSS object prefix for uploads.
         self.dir = dir
+        # The expiration time of the upload credential. The value is a UNIX timestamp in seconds.
         self.expire = expire
+        # The OSS form upload URL.
         self.host = host
+        # The maximum size of a single file upload, in bytes.
         self.max_size = max_size
+        # The Base64-encoded OSS Post Policy.
         self.policy = policy
+        # The request ID.
         self.request_id = request_id
+        # The OSS Post Policy signature.
         self.signature = signature
+        # The status code returned upon a successful OSS upload.
         self.success_action_status = success_action_status
 
     def validate(self):

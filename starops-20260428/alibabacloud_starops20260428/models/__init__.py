@@ -2,6 +2,13 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._connector_authentication import ConnectorAuthentication
+from ._connector_authentication_input import ConnectorAuthenticationInput
+from ._connector_authentication_update_input import ConnectorAuthenticationUpdateInput
+from ._connector_create_input import ConnectorCreateInput
+from ._connector_info import ConnectorInfo
+from ._connector_runtime import ConnectorRuntime
+from ._connector_update_input import ConnectorUpdateInput
 from ._tag import Tag
 from ._create_artifact_upload_token_request import CreateArtifactUploadTokenRequest
 from ._create_artifact_upload_token_response_body import CreateArtifactUploadTokenResponseBody
@@ -30,6 +37,9 @@ from ._delete_digital_employee_response import DeleteDigitalEmployeeResponse
 from ._delete_digital_employee_skill_request import DeleteDigitalEmployeeSkillRequest
 from ._delete_digital_employee_skill_response_body import DeleteDigitalEmployeeSkillResponseBody
 from ._delete_digital_employee_skill_response import DeleteDigitalEmployeeSkillResponse
+from ._delete_digital_employee_umodel_common_schema_ref_request import DeleteDigitalEmployeeUmodelCommonSchemaRefRequest
+from ._delete_digital_employee_umodel_common_schema_ref_response_body import DeleteDigitalEmployeeUmodelCommonSchemaRefResponseBody
+from ._delete_digital_employee_umodel_common_schema_ref_response import DeleteDigitalEmployeeUmodelCommonSchemaRefResponse
 from ._delete_mcp_service_request import DeleteMcpServiceRequest
 from ._delete_mcp_service_response_body import DeleteMcpServiceResponseBody
 from ._delete_mcp_service_response import DeleteMcpServiceResponse
@@ -47,9 +57,15 @@ from ._get_artifact_download_url_response import GetArtifactDownloadUrlResponse
 from ._get_digital_employee_request import GetDigitalEmployeeRequest
 from ._get_digital_employee_response_body import GetDigitalEmployeeResponseBody
 from ._get_digital_employee_response import GetDigitalEmployeeResponse
+from ._get_digital_employee_entity_data_request import GetDigitalEmployeeEntityDataRequest
+from ._get_digital_employee_entity_data_response_body import GetDigitalEmployeeEntityDataResponseBody
+from ._get_digital_employee_entity_data_response import GetDigitalEmployeeEntityDataResponse
 from ._get_digital_employee_skill_request import GetDigitalEmployeeSkillRequest
 from ._get_digital_employee_skill_response_body import GetDigitalEmployeeSkillResponseBody
 from ._get_digital_employee_skill_response import GetDigitalEmployeeSkillResponse
+from ._get_digital_employee_umodel_request import GetDigitalEmployeeUmodelRequest
+from ._get_digital_employee_umodel_response_body import GetDigitalEmployeeUmodelResponseBody
+from ._get_digital_employee_umodel_response import GetDigitalEmployeeUmodelResponse
 from ._get_mcp_service_request import GetMcpServiceRequest
 from ._get_mcp_service_response_body import GetMcpServiceResponseBody
 from ._get_mcp_service_response import GetMcpServiceResponse
@@ -85,12 +101,35 @@ from ._update_digital_employee_response import UpdateDigitalEmployeeResponse
 from ._update_digital_employee_skill_request import UpdateDigitalEmployeeSkillRequest
 from ._update_digital_employee_skill_response_body import UpdateDigitalEmployeeSkillResponseBody
 from ._update_digital_employee_skill_response import UpdateDigitalEmployeeSkillResponse
+from ._update_digital_employee_umodel_request import UpdateDigitalEmployeeUmodelRequest
+from ._update_digital_employee_umodel_response_body import UpdateDigitalEmployeeUmodelResponseBody
+from ._update_digital_employee_umodel_response import UpdateDigitalEmployeeUmodelResponse
 from ._update_mcp_service_request import UpdateMcpServiceRequest
 from ._update_mcp_service_response_body import UpdateMcpServiceResponseBody
 from ._update_mcp_service_response import UpdateMcpServiceResponse
 from ._update_thread_request import UpdateThreadRequest
 from ._update_thread_response_body import UpdateThreadResponseBody
 from ._update_thread_response import UpdateThreadResponse
+from ._upsert_digital_employee_umodel_common_schema_ref_request import UpsertDigitalEmployeeUmodelCommonSchemaRefRequest
+from ._upsert_digital_employee_umodel_common_schema_ref_response_body import UpsertDigitalEmployeeUmodelCommonSchemaRefResponseBody
+from ._upsert_digital_employee_umodel_common_schema_ref_response import UpsertDigitalEmployeeUmodelCommonSchemaRefResponse
+from ._connector_authentication import ConnectorAuthenticationBasic
+from ._connector_authentication import ConnectorAuthenticationBotToken
+from ._connector_authentication import ConnectorAuthenticationOauth
+from ._connector_authentication import ConnectorAuthenticationRole
+from ._connector_authentication import ConnectorAuthenticationSatellite
+from ._connector_authentication_input import ConnectorAuthenticationInputBasic
+from ._connector_authentication_input import ConnectorAuthenticationInputBotToken
+from ._connector_authentication_input import ConnectorAuthenticationInputOauth
+from ._connector_authentication_input import ConnectorAuthenticationInputPatToken
+from ._connector_authentication_input import ConnectorAuthenticationInputRole
+from ._connector_authentication_input import ConnectorAuthenticationInputSatellite
+from ._connector_authentication_update_input import ConnectorAuthenticationUpdateInputBasic
+from ._connector_authentication_update_input import ConnectorAuthenticationUpdateInputBotToken
+from ._connector_authentication_update_input import ConnectorAuthenticationUpdateInputOauth
+from ._connector_authentication_update_input import ConnectorAuthenticationUpdateInputPatToken
+from ._connector_authentication_update_input import ConnectorAuthenticationUpdateInputRole
+from ._connector_authentication_update_input import ConnectorAuthenticationUpdateInputSatellite
 from ._create_chat_request import CreateChatRequestMessagesContents
 from ._create_chat_request import CreateChatRequestMessages
 from ._create_chat_response_body import CreateChatResponseBodyMessages
@@ -115,7 +154,10 @@ from ._get_digital_employee_response_body import GetDigitalEmployeeResponseBodyS
 from ._get_digital_employee_response_body import GetDigitalEmployeeResponseBodyToolPolicyAliyunStatements
 from ._get_digital_employee_response_body import GetDigitalEmployeeResponseBodyToolPolicyAliyun
 from ._get_digital_employee_response_body import GetDigitalEmployeeResponseBodyToolPolicy
+from ._get_digital_employee_entity_data_response_body import GetDigitalEmployeeEntityDataResponseBodyResponseStatusStatusItem
+from ._get_digital_employee_entity_data_response_body import GetDigitalEmployeeEntityDataResponseBodyResponseStatus
 from ._get_digital_employee_skill_response_body import GetDigitalEmployeeSkillResponseBodyFiles
+from ._get_digital_employee_umodel_response_body import GetDigitalEmployeeUmodelResponseBodyCommonSchemaRef
 from ._get_mcp_service_response_body import GetMcpServiceResponseBodyMcpServiceConnectionAuth
 from ._get_mcp_service_response_body import GetMcpServiceResponseBodyMcpServiceConnection
 from ._get_mcp_service_response_body import GetMcpServiceResponseBodyMcpServiceNetwork
@@ -152,6 +194,13 @@ from ._update_mcp_service_request import UpdateMcpServiceRequestNetwork
 from ._update_mcp_service_request import UpdateMcpServiceRequestTools
 
 __all__ = [
+    ConnectorAuthentication,
+    ConnectorAuthenticationInput,
+    ConnectorAuthenticationUpdateInput,
+    ConnectorCreateInput,
+    ConnectorInfo,
+    ConnectorRuntime,
+    ConnectorUpdateInput,
     Tag,
     CreateArtifactUploadTokenRequest,
     CreateArtifactUploadTokenResponseBody,
@@ -180,6 +229,9 @@ __all__ = [
     DeleteDigitalEmployeeSkillRequest,
     DeleteDigitalEmployeeSkillResponseBody,
     DeleteDigitalEmployeeSkillResponse,
+    DeleteDigitalEmployeeUmodelCommonSchemaRefRequest,
+    DeleteDigitalEmployeeUmodelCommonSchemaRefResponseBody,
+    DeleteDigitalEmployeeUmodelCommonSchemaRefResponse,
     DeleteMcpServiceRequest,
     DeleteMcpServiceResponseBody,
     DeleteMcpServiceResponse,
@@ -197,9 +249,15 @@ __all__ = [
     GetDigitalEmployeeRequest,
     GetDigitalEmployeeResponseBody,
     GetDigitalEmployeeResponse,
+    GetDigitalEmployeeEntityDataRequest,
+    GetDigitalEmployeeEntityDataResponseBody,
+    GetDigitalEmployeeEntityDataResponse,
     GetDigitalEmployeeSkillRequest,
     GetDigitalEmployeeSkillResponseBody,
     GetDigitalEmployeeSkillResponse,
+    GetDigitalEmployeeUmodelRequest,
+    GetDigitalEmployeeUmodelResponseBody,
+    GetDigitalEmployeeUmodelResponse,
     GetMcpServiceRequest,
     GetMcpServiceResponseBody,
     GetMcpServiceResponse,
@@ -235,12 +293,35 @@ __all__ = [
     UpdateDigitalEmployeeSkillRequest,
     UpdateDigitalEmployeeSkillResponseBody,
     UpdateDigitalEmployeeSkillResponse,
+    UpdateDigitalEmployeeUmodelRequest,
+    UpdateDigitalEmployeeUmodelResponseBody,
+    UpdateDigitalEmployeeUmodelResponse,
     UpdateMcpServiceRequest,
     UpdateMcpServiceResponseBody,
     UpdateMcpServiceResponse,
     UpdateThreadRequest,
     UpdateThreadResponseBody,
     UpdateThreadResponse,
+    UpsertDigitalEmployeeUmodelCommonSchemaRefRequest,
+    UpsertDigitalEmployeeUmodelCommonSchemaRefResponseBody,
+    UpsertDigitalEmployeeUmodelCommonSchemaRefResponse,
+    ConnectorAuthenticationBasic,
+    ConnectorAuthenticationBotToken,
+    ConnectorAuthenticationOauth,
+    ConnectorAuthenticationRole,
+    ConnectorAuthenticationSatellite,
+    ConnectorAuthenticationInputBasic,
+    ConnectorAuthenticationInputBotToken,
+    ConnectorAuthenticationInputOauth,
+    ConnectorAuthenticationInputPatToken,
+    ConnectorAuthenticationInputRole,
+    ConnectorAuthenticationInputSatellite,
+    ConnectorAuthenticationUpdateInputBasic,
+    ConnectorAuthenticationUpdateInputBotToken,
+    ConnectorAuthenticationUpdateInputOauth,
+    ConnectorAuthenticationUpdateInputPatToken,
+    ConnectorAuthenticationUpdateInputRole,
+    ConnectorAuthenticationUpdateInputSatellite,
     CreateChatRequestMessagesContents,
     CreateChatRequestMessages,
     CreateChatResponseBodyMessages,
@@ -265,7 +346,10 @@ __all__ = [
     GetDigitalEmployeeResponseBodyToolPolicyAliyunStatements,
     GetDigitalEmployeeResponseBodyToolPolicyAliyun,
     GetDigitalEmployeeResponseBodyToolPolicy,
+    GetDigitalEmployeeEntityDataResponseBodyResponseStatusStatusItem,
+    GetDigitalEmployeeEntityDataResponseBodyResponseStatus,
     GetDigitalEmployeeSkillResponseBodyFiles,
+    GetDigitalEmployeeUmodelResponseBodyCommonSchemaRef,
     GetMcpServiceResponseBodyMcpServiceConnectionAuth,
     GetMcpServiceResponseBodyMcpServiceConnection,
     GetMcpServiceResponseBodyMcpServiceNetwork,

@@ -14,11 +14,11 @@ class CreateChatResponseBody(DaraModel):
         request_id: str = None,
         trace_id: str = None,
     ):
-        # A list of message objects in the session.
+        # The list of messages in the session.
         self.messages = messages
-        # A unique identifier for the API request, useful for troubleshooting.
+        # The ID data of the current message request. The first request ID in the root data.
         self.request_id = request_id
-        # Uniquely identifies the request chain for tracing.
+        # The ID data of the current message request. The first trace ID in the root data.
         self.trace_id = trace_id
 
     def validate(self):
@@ -78,31 +78,31 @@ class CreateChatResponseBodyMessages(DaraModel):
         type: str = None,
         version: str = None,
     ):
-        # A list of invoked agents.
+        # The list of invoked agents.
         self.agents = agents
-        # A list of generated artifacts.
+        # The artifact output information.
         self.artifacts = artifacts
-        # The ID of the current call.
+        # The current execution ID.
         self.call_id = call_id
-        # A list of content objects.
+        # The content information.
         self.contents = contents
-        # Message details.
+        # The message details.
         self.detail = detail
-        # A list of events.
+        # The list of events.
         self.events = events
-        # The ID of the parent call.
+        # The execution ID of the parent level.
         self.parent_call_id = parent_call_id
-        # The role of the message sender.
+        # The role that initiated the message.
         self.role = role
-        # The message sequence number.
+        # The sequence number of the message.
         self.seq = seq
-        # The timestamp, in nanoseconds.
+        # The timestamp in nanoseconds.
         self.timestamp = timestamp
-        # A list of tool calls.
+        # The list of tools used.
         self.tools = tools
-        # The message type.
+        # The specific type of the message.
         self.type = type
-        # The message version.
+        # The version number of the message.
         self.version = version
 
     def validate(self):

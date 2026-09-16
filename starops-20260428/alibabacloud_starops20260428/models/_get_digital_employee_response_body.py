@@ -11,6 +11,7 @@ class GetDigitalEmployeeResponseBody(DaraModel):
     def __init__(
         self,
         attributes: Dict[str, str] = None,
+        channel: str = None,
         create_time: str = None,
         default_rule: str = None,
         description: str = None,
@@ -29,6 +30,8 @@ class GetDigitalEmployeeResponseBody(DaraModel):
     ):
         # The attributes.
         self.attributes = attributes
+        # The channel type.
+        self.channel = channel
         # The creation time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
@@ -51,15 +54,15 @@ class GetDigitalEmployeeResponseBody(DaraModel):
         self.request_id = request_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The ARN of the RAM role.
+        # The Alibaba Cloud Resource Name (ARN) of the RAM role.
         self.role_arn = role_arn
-        # The sandbox network ACL policy configuration for the digital employee.
+        # The sandbox network ACL policy configuration of the digital employee.
         self.sandbox_network_policy = sandbox_network_policy
         # The tags.
         self.tags = tags
         # The tool policy.
         self.tool_policy = tool_policy
-        # The update time.
+        # The modification time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time
@@ -83,6 +86,9 @@ class GetDigitalEmployeeResponseBody(DaraModel):
             result = _map
         if self.attributes is not None:
             result['attributes'] = self.attributes
+
+        if self.channel is not None:
+            result['channel'] = self.channel
 
         if self.create_time is not None:
             result['createTime'] = self.create_time
@@ -137,6 +143,9 @@ class GetDigitalEmployeeResponseBody(DaraModel):
         m = m or dict()
         if m.get('attributes') is not None:
             self.attributes = m.get('attributes')
+
+        if m.get('channel') is not None:
+            self.channel = m.get('channel')
 
         if m.get('createTime') is not None:
             self.create_time = m.get('createTime')
@@ -196,7 +205,7 @@ class GetDigitalEmployeeResponseBodyToolPolicy(DaraModel):
         self,
         aliyun: main_models.GetDigitalEmployeeResponseBodyToolPolicyAliyun = None,
     ):
-        # The security policy configuration for Aliyun CLI tool calling.
+        # The security policy configuration for Alibaba Cloud CLI tool calling invokes.
         self.aliyun = aliyun
 
     def validate(self):
@@ -224,12 +233,18 @@ class GetDigitalEmployeeResponseBodyToolPolicy(DaraModel):
 class GetDigitalEmployeeResponseBodyToolPolicyAliyun(DaraModel):
     def __init__(
         self,
+        auto_pass_policy: List[str] = None,
+        deny_policy: List[str] = None,
         enable: bool = None,
         statements: List[main_models.GetDigitalEmployeeResponseBodyToolPolicyAliyunStatements] = None,
     ):
+        # The auto-pass policy. Each entry is a RAM Action string in the format of product:ApiName, product:Prefix*, or product:*. Matched actions are automatically approved without human confirmation. If this parameter is empty or not configured, built-in read-only actions (Get*, List*, Describe*) are automatically approved. Unmatched actions require human-in-the-loop (HIL) confirmation.
+        self.auto_pass_policy = auto_pass_policy
+        # The explicit deny policy with the highest priority. Each entry is a RAM Action string in the format of product:ApiName, product:Prefix*, or product:*. If this parameter is empty or not configured, no actions are actively denied. STAROps directly denies matched actions. The Pop side performs secondary fallback enforcement.
+        self.deny_policy = deny_policy
         # Indicates whether the policy is enabled.
         self.enable = enable
-        # The list of Aliyun CLI tool policy statements.
+        # The list of Alibaba Cloud CLI tool policy statements.
         self.statements = statements
 
     def validate(self):
@@ -243,6 +258,12 @@ class GetDigitalEmployeeResponseBodyToolPolicyAliyun(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.auto_pass_policy is not None:
+            result['autoPassPolicy'] = self.auto_pass_policy
+
+        if self.deny_policy is not None:
+            result['denyPolicy'] = self.deny_policy
+
         if self.enable is not None:
             result['enable'] = self.enable
 
@@ -255,6 +276,12 @@ class GetDigitalEmployeeResponseBodyToolPolicyAliyun(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('autoPassPolicy') is not None:
+            self.auto_pass_policy = m.get('autoPassPolicy')
+
+        if m.get('denyPolicy') is not None:
+            self.deny_policy = m.get('denyPolicy')
+
         if m.get('enable') is not None:
             self.enable = m.get('enable')
 

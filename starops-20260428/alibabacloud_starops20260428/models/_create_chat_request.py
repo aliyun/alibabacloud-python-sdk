@@ -16,15 +16,21 @@ class CreateChatRequest(DaraModel):
         thread_id: str = None,
         variables: Dict[str, Any] = None,
     ):
-        # The operation type. Valid values: `create` (default), `reconnect`, and `stop`.
+        # The action type. Valid values:
+        # 
+        # - create: creates a conversation.
+        # - reconnect: reconnects to an existing conversation.
+        # - stop: stops the conversation.
+        # 
+        # Default value: create.
         self.action = action
         # The name of the digital employee.
         self.digital_employee_name = digital_employee_name
-        # The message list.
+        # The list of messages.
         self.messages = messages
-        # The session thread ID.
+        # The conversation thread ID.
         self.thread_id = thread_id
-        # The set of variables.
+        # The list of variables.
         self.variables = variables
 
     def validate(self):
@@ -87,13 +93,13 @@ class CreateChatRequestMessages(DaraModel):
         role: str = None,
         tools: List[Dict[str, Any]] = None,
     ):
-        # The multimodal content of the message.
+        # The text or multimodal array.
         self.contents = contents
-        # A unique identifier for the message.
+        # The unique identifier of the current message.
         self.message_id = message_id
         # The role of the message.
         self.role = role
-        # The tool call list.
+        # The list of tool invocations.
         self.tools = tools
 
     def validate(self):
@@ -141,8 +147,6 @@ class CreateChatRequestMessages(DaraModel):
             self.tools = m.get('tools')
 
         return self
-
-
 
 class CreateChatRequestMessagesContents(DaraModel):
     def __init__(

@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_starops20260428.
 
-Created on 27/07/2026
+Created on 16/09/2026
 
 @author: Alibaba Cloud SDK
 """

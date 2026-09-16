@@ -16,15 +16,15 @@ class ListDigitalEmployeesResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # A list of digital employees.
+        # The list of digital employees.
         self.digital_employees = digital_employees
-        # The maximum number of entries returned.
+        # The maximum number of results returned.
         self.max_results = max_results
-        # The token to retrieve the next page of results.
+        # The token for the next query.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total count.
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -83,6 +83,7 @@ class ListDigitalEmployeesResponseBodyDigitalEmployees(DaraModel):
     def __init__(
         self,
         attributes: Dict[str, str] = None,
+        channel: str = None,
         create_time: str = None,
         default_rule: str = None,
         description: str = None,
@@ -95,8 +96,10 @@ class ListDigitalEmployeesResponseBodyDigitalEmployees(DaraModel):
         tags: List[main_models.Tag] = None,
         update_time: str = None,
     ):
-        # The custom attributes of the digital employee.
+        # The attributes.
         self.attributes = attributes
+        # The channel type of the digital employee.
+        self.channel = channel
         # The creation time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
@@ -109,17 +112,17 @@ class ListDigitalEmployeesResponseBodyDigitalEmployees(DaraModel):
         self.display_name = display_name
         # The type of the digital employee.
         self.employee_type = employee_type
-        # A list of knowledge bases.
+        # The list of knowledge bases.
         self.knowledges = knowledges
         # The name of the digital employee.
         self.name = name
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The RAM role ARN.
+        # The ARN of the RAM role.
         self.role_arn = role_arn
-        # A list of tags.
+        # The tags.
         self.tags = tags
-        # The modification time.
+        # The update time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time
@@ -139,6 +142,9 @@ class ListDigitalEmployeesResponseBodyDigitalEmployees(DaraModel):
             result = _map
         if self.attributes is not None:
             result['attributes'] = self.attributes
+
+        if self.channel is not None:
+            result['channel'] = self.channel
 
         if self.create_time is not None:
             result['createTime'] = self.create_time
@@ -181,6 +187,9 @@ class ListDigitalEmployeesResponseBodyDigitalEmployees(DaraModel):
         m = m or dict()
         if m.get('attributes') is not None:
             self.attributes = m.get('attributes')
+
+        if m.get('channel') is not None:
+            self.channel = m.get('channel')
 
         if m.get('createTime') is not None:
             self.create_time = m.get('createTime')
@@ -227,9 +236,9 @@ class ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledges(DaraModel):
         bailian: List[main_models.ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledgesBailian] = None,
         sop: List[Dict[str, Any]] = None,
     ):
-        # A list of Model Studio knowledge bases.
+        # The list of Bailian knowledge bases.
         self.bailian = bailian
-        # A list of SOP knowledge bases.
+        # The list of SOP knowledge bases.
         self.sop = sop
 
     def validate(self):
@@ -274,13 +283,13 @@ class ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledgesBailian(DaraMode
         region: str = None,
         workspace_id: str = None,
     ):
-        # The attributes of the knowledge base.
+        # The knowledge base attributes.
         self.attributes = attributes
-        # The ID of the Model Studio index.
+        # The Bailian index ID.
         self.index_id = index_id
         # The region of the knowledge base.
         self.region = region
-        # The ID of the Model Studio workspace.
+        # The Bailian workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

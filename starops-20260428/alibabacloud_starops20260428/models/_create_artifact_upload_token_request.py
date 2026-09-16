@@ -9,6 +9,7 @@ class CreateArtifactUploadTokenRequest(DaraModel):
         self,
         artifact_path: str = None,
     ):
+        # The artifact upload directory, relative to the digital human artifact root directory. The value can only be empty or a directory under upload/. If not specified, upload/{YYYY-MM-DD}/ is used by default.
         self.artifact_path = artifact_path
 
     def validate(self):

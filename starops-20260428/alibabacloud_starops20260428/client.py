@@ -25,10 +25,6 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'cn-beijing': 'starops.cn-beijing.aliyuncs.com',
-            'ap-southeast-1': 'starops.ap-southeast-1.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('starops', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -324,6 +320,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.attributes):
             body['attributes'] = request.attributes
+        if not DaraCore.is_null(request.channel):
+            body['channel'] = request.channel
         if not DaraCore.is_null(request.default_rule):
             body['defaultRule'] = request.default_rule
         if not DaraCore.is_null(request.description):
@@ -374,6 +372,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.attributes):
             body['attributes'] = request.attributes
+        if not DaraCore.is_null(request.channel):
+            body['channel'] = request.channel
         if not DaraCore.is_null(request.default_rule):
             body['defaultRule'] = request.default_rule
         if not DaraCore.is_null(request.description):
@@ -950,6 +950,82 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_digital_employee_skill_with_options_async(name, skill_name, request, headers, runtime)
 
+    def delete_digital_employee_umodel_common_schema_ref_with_options(
+        self,
+        name: str,
+        group: str,
+        request: main_models.DeleteDigitalEmployeeUmodelCommonSchemaRefRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDigitalEmployeeUmodelCommonSchemaRefResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDigitalEmployeeUmodelCommonSchemaRef',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = f'/digitalEmployee/{DaraURL.percent_encode(name)}/umodel/commonSchemaRefs/{DaraURL.percent_encode(group)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDigitalEmployeeUmodelCommonSchemaRefResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_digital_employee_umodel_common_schema_ref_with_options_async(
+        self,
+        name: str,
+        group: str,
+        request: main_models.DeleteDigitalEmployeeUmodelCommonSchemaRefRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDigitalEmployeeUmodelCommonSchemaRefResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDigitalEmployeeUmodelCommonSchemaRef',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = f'/digitalEmployee/{DaraURL.percent_encode(name)}/umodel/commonSchemaRefs/{DaraURL.percent_encode(group)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDigitalEmployeeUmodelCommonSchemaRefResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_digital_employee_umodel_common_schema_ref(
+        self,
+        name: str,
+        group: str,
+        request: main_models.DeleteDigitalEmployeeUmodelCommonSchemaRefRequest,
+    ) -> main_models.DeleteDigitalEmployeeUmodelCommonSchemaRefResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_digital_employee_umodel_common_schema_ref_with_options(name, group, request, headers, runtime)
+
+    async def delete_digital_employee_umodel_common_schema_ref_async(
+        self,
+        name: str,
+        group: str,
+        request: main_models.DeleteDigitalEmployeeUmodelCommonSchemaRefRequest,
+    ) -> main_models.DeleteDigitalEmployeeUmodelCommonSchemaRefResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_digital_employee_umodel_common_schema_ref_with_options_async(name, group, request, headers, runtime)
+
     def delete_mcp_service_with_options(
         self,
         name: str,
@@ -1430,6 +1506,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_digital_employee_with_options_async(name, request, headers, runtime)
 
+    def get_digital_employee_entity_data_with_options(
+        self,
+        name: str,
+        request: main_models.GetDigitalEmployeeEntityDataRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDigitalEmployeeEntityDataResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.from_):
+            body['from'] = request.from_
+        if not DaraCore.is_null(request.query):
+            body['query'] = request.query
+        if not DaraCore.is_null(request.to):
+            body['to'] = request.to
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDigitalEmployeeEntityData',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = f'/digitalEmployee/{DaraURL.percent_encode(name)}/entities/query',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDigitalEmployeeEntityDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_digital_employee_entity_data_with_options_async(
+        self,
+        name: str,
+        request: main_models.GetDigitalEmployeeEntityDataRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDigitalEmployeeEntityDataResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.from_):
+            body['from'] = request.from_
+        if not DaraCore.is_null(request.query):
+            body['query'] = request.query
+        if not DaraCore.is_null(request.to):
+            body['to'] = request.to
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDigitalEmployeeEntityData',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = f'/digitalEmployee/{DaraURL.percent_encode(name)}/entities/query',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDigitalEmployeeEntityDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_digital_employee_entity_data(
+        self,
+        name: str,
+        request: main_models.GetDigitalEmployeeEntityDataRequest,
+    ) -> main_models.GetDigitalEmployeeEntityDataResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_digital_employee_entity_data_with_options(name, request, headers, runtime)
+
+    async def get_digital_employee_entity_data_async(
+        self,
+        name: str,
+        request: main_models.GetDigitalEmployeeEntityDataRequest,
+    ) -> main_models.GetDigitalEmployeeEntityDataResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_digital_employee_entity_data_with_options_async(name, request, headers, runtime)
+
     def get_digital_employee_skill_with_options(
         self,
         name: str,
@@ -1513,6 +1677,78 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_digital_employee_skill_with_options_async(name, skill_name, request, headers, runtime)
+
+    def get_digital_employee_umodel_with_options(
+        self,
+        name: str,
+        request: main_models.GetDigitalEmployeeUmodelRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDigitalEmployeeUmodelResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDigitalEmployeeUmodel',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = f'/digitalEmployee/{DaraURL.percent_encode(name)}/umodel',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDigitalEmployeeUmodelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_digital_employee_umodel_with_options_async(
+        self,
+        name: str,
+        request: main_models.GetDigitalEmployeeUmodelRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDigitalEmployeeUmodelResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDigitalEmployeeUmodel',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = f'/digitalEmployee/{DaraURL.percent_encode(name)}/umodel',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDigitalEmployeeUmodelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_digital_employee_umodel(
+        self,
+        name: str,
+        request: main_models.GetDigitalEmployeeUmodelRequest,
+    ) -> main_models.GetDigitalEmployeeUmodelResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_digital_employee_umodel_with_options(name, request, headers, runtime)
+
+    async def get_digital_employee_umodel_async(
+        self,
+        name: str,
+        request: main_models.GetDigitalEmployeeUmodelRequest,
+    ) -> main_models.GetDigitalEmployeeUmodelResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_digital_employee_umodel_with_options_async(name, request, headers, runtime)
 
     def get_mcp_service_with_options(
         self,
@@ -2018,6 +2254,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.tags):
             request.tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
         query = {}
+        if not DaraCore.is_null(request.channel):
+            query['channel'] = request.channel
         if not DaraCore.is_null(request.display_name):
             query['displayName'] = request.display_name
         if not DaraCore.is_null(request.employee_type):
@@ -2064,6 +2302,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.tags):
             request.tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
         query = {}
+        if not DaraCore.is_null(request.channel):
+            query['channel'] = request.channel
         if not DaraCore.is_null(request.display_name):
             query['displayName'] = request.display_name
         if not DaraCore.is_null(request.employee_type):
@@ -2514,6 +2754,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_digital_employee_skill_with_options_async(name, skill_name, request, headers, runtime)
 
+    def update_digital_employee_umodel_with_options(
+        self,
+        name: str,
+        request: main_models.UpdateDigitalEmployeeUmodelRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDigitalEmployeeUmodelResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDigitalEmployeeUmodel',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = f'/digitalEmployee/{DaraURL.percent_encode(name)}/umodel',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDigitalEmployeeUmodelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_digital_employee_umodel_with_options_async(
+        self,
+        name: str,
+        request: main_models.UpdateDigitalEmployeeUmodelRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDigitalEmployeeUmodelResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDigitalEmployeeUmodel',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = f'/digitalEmployee/{DaraURL.percent_encode(name)}/umodel',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDigitalEmployeeUmodelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_digital_employee_umodel(
+        self,
+        name: str,
+        request: main_models.UpdateDigitalEmployeeUmodelRequest,
+    ) -> main_models.UpdateDigitalEmployeeUmodelResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_digital_employee_umodel_with_options(name, request, headers, runtime)
+
+    async def update_digital_employee_umodel_async(
+        self,
+        name: str,
+        request: main_models.UpdateDigitalEmployeeUmodelRequest,
+    ) -> main_models.UpdateDigitalEmployeeUmodelResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_digital_employee_umodel_with_options_async(name, request, headers, runtime)
+
     def update_mcp_service_with_options(
         self,
         name: str,
@@ -2709,3 +3029,87 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_thread_with_options_async(name, thread_id, request, headers, runtime)
+
+    def upsert_digital_employee_umodel_common_schema_ref_with_options(
+        self,
+        name: str,
+        group: str,
+        request: main_models.UpsertDigitalEmployeeUmodelCommonSchemaRefRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpsertDigitalEmployeeUmodelCommonSchemaRefResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.version):
+            body['version'] = request.version
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpsertDigitalEmployeeUmodelCommonSchemaRef',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = f'/digitalEmployee/{DaraURL.percent_encode(name)}/umodel/commonSchemaRefs/{DaraURL.percent_encode(group)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpsertDigitalEmployeeUmodelCommonSchemaRefResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upsert_digital_employee_umodel_common_schema_ref_with_options_async(
+        self,
+        name: str,
+        group: str,
+        request: main_models.UpsertDigitalEmployeeUmodelCommonSchemaRefRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpsertDigitalEmployeeUmodelCommonSchemaRefResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.version):
+            body['version'] = request.version
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpsertDigitalEmployeeUmodelCommonSchemaRef',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = f'/digitalEmployee/{DaraURL.percent_encode(name)}/umodel/commonSchemaRefs/{DaraURL.percent_encode(group)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpsertDigitalEmployeeUmodelCommonSchemaRefResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upsert_digital_employee_umodel_common_schema_ref(
+        self,
+        name: str,
+        group: str,
+        request: main_models.UpsertDigitalEmployeeUmodelCommonSchemaRefRequest,
+    ) -> main_models.UpsertDigitalEmployeeUmodelCommonSchemaRefResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.upsert_digital_employee_umodel_common_schema_ref_with_options(name, group, request, headers, runtime)
+
+    async def upsert_digital_employee_umodel_common_schema_ref_async(
+        self,
+        name: str,
+        group: str,
+        request: main_models.UpsertDigitalEmployeeUmodelCommonSchemaRefRequest,
+    ) -> main_models.UpsertDigitalEmployeeUmodelCommonSchemaRefResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.upsert_digital_employee_umodel_common_schema_ref_with_options_async(name, group, request, headers, runtime)

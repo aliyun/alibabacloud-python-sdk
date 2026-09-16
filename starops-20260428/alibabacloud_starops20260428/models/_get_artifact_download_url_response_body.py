@@ -11,8 +11,11 @@ class GetArtifactDownloadUrlResponseBody(DaraModel):
         request_id: str = None,
         url: str = None,
     ):
+        # The expiration time of the download URL. This value is a UNIX timestamp in seconds.
         self.expire = expire
+        # The request ID.
         self.request_id = request_id
+        # The temporary download URL.
         self.url = url
 
     def validate(self):

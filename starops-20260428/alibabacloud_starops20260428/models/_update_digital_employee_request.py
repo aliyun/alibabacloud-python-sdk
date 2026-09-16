@@ -27,13 +27,13 @@ class UpdateDigitalEmployeeRequest(DaraModel):
         self.description = description
         # The display name of the digital employee.
         self.display_name = display_name
-        # The list of knowledge bases.
+        # The knowledge base list.
         self.knowledges = knowledges
         # The ARN of the RAM role.
         self.role_arn = role_arn
         # The list of CIDRs or IP addresses that are allowed to be accessed.
         self.sandbox_network_policy = sandbox_network_policy
-        # The security policy configuration for tool calling of the digital employee.
+        # The tool calling security policy configuration of the digital employee.
         self.tool_policy = tool_policy
 
     def validate(self):
@@ -111,7 +111,7 @@ class UpdateDigitalEmployeeRequestToolPolicy(DaraModel):
         self,
         aliyun: main_models.UpdateDigitalEmployeeRequestToolPolicyAliyun = None,
     ):
-        # The security policy configuration for Aliyun CLI tool calling.
+        # The Aliyun CLI tool calling security policy configuration.
         self.aliyun = aliyun
 
     def validate(self):
@@ -139,9 +139,15 @@ class UpdateDigitalEmployeeRequestToolPolicy(DaraModel):
 class UpdateDigitalEmployeeRequestToolPolicyAliyun(DaraModel):
     def __init__(
         self,
+        auto_pass_policy: List[str] = None,
+        deny_policy: List[str] = None,
         enable: bool = None,
         statements: List[main_models.UpdateDigitalEmployeeRequestToolPolicyAliyunStatements] = None,
     ):
+        # The automatic pass-through policy. Each entry is a RAM Action string in the format of product:ApiName, product:Prefix*, or product:*. Matched actions are automatically allowed without human confirmation. If this parameter is empty or not configured, built-in read-only actions (Get*, List*, Describe*) are automatically allowed. Unmatched actions require human-in-the-loop (HIL) confirmation.
+        self.auto_pass_policy = auto_pass_policy
+        # The explicit deny policy with the highest priority. Each entry is a RAM Action string in the format of product:ApiName, product:Prefix*, or product:*. If this parameter is empty or not configured, no operations are actively denied. STAROps directly denies matched actions. Pop performs secondary enforcement.
+        self.deny_policy = deny_policy
         # Specifies whether to enable the policy.
         self.enable = enable
         # The list of Aliyun CLI tool policy statements.
@@ -158,6 +164,12 @@ class UpdateDigitalEmployeeRequestToolPolicyAliyun(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.auto_pass_policy is not None:
+            result['autoPassPolicy'] = self.auto_pass_policy
+
+        if self.deny_policy is not None:
+            result['denyPolicy'] = self.deny_policy
+
         if self.enable is not None:
             result['enable'] = self.enable
 
@@ -170,6 +182,12 @@ class UpdateDigitalEmployeeRequestToolPolicyAliyun(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('autoPassPolicy') is not None:
+            self.auto_pass_policy = m.get('autoPassPolicy')
+
+        if m.get('denyPolicy') is not None:
+            self.deny_policy = m.get('denyPolicy')
+
         if m.get('enable') is not None:
             self.enable = m.get('enable')
 
@@ -191,11 +209,11 @@ class UpdateDigitalEmployeeRequestToolPolicyAliyunStatements(DaraModel):
     ):
         # RAM action
         self.actions = actions
-        # The API version. This parameter is deprecated.
+        # **[Deprecated]** The API version.
         self.api_version = api_version
         # The execution policy.
         self.decision = decision
-        # The cloud service code.
+        # The cloud product code.
         self.product = product
 
     def validate(self):
@@ -288,9 +306,9 @@ class UpdateDigitalEmployeeRequestKnowledges(DaraModel):
         bailian: List[main_models.UpdateDigitalEmployeeRequestKnowledgesBailian] = None,
         sop: List[Dict[str, Any]] = None,
     ):
-        # The list of Bailian knowledge bases.
+        # The Bailian knowledge base list.
         self.bailian = bailian
-        # The list of SOP knowledge bases.
+        # The SOP knowledge base list.
         self.sop = sop
 
     def validate(self):
@@ -335,7 +353,7 @@ class UpdateDigitalEmployeeRequestKnowledgesBailian(DaraModel):
         region: str = None,
         workspace_id: str = None,
     ):
-        # The attributes of the knowledge base.
+        # The knowledge base attributes.
         self.attributes = attributes
         # The Bailian index ID.
         self.index_id = index_id
