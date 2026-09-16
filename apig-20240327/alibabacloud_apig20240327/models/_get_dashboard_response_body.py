@@ -88,13 +88,13 @@ class GetDashboardResponseBodyData(DaraModel):
         title: str = None,
         url: str = None,
     ):
-        # The unique identifier of the gateway.
+        # The unique ID of the gateway.
         self.gateway_id = gateway_id
         # The dashboard name.
         self.name = name
         # The dashboard title.
         self.title = title
-        # The dashboard URL.
+        # The URL of the dashboard.
         self.url = url
 
     def validate(self):

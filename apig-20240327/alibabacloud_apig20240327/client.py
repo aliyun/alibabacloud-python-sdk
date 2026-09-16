@@ -1906,6 +1906,9 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.CreateHttpApiResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
         body = {}
         if not DaraCore.is_null(request.agent_protocols):
             body['agentProtocols'] = request.agent_protocols
@@ -1947,6 +1950,7 @@ class Client(OpenApiClient):
             body['versionConfig'] = request.version_config
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -1972,6 +1976,9 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.CreateHttpApiResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
         body = {}
         if not DaraCore.is_null(request.agent_protocols):
             body['agentProtocols'] = request.agent_protocols
@@ -2013,6 +2020,7 @@ class Client(OpenApiClient):
             body['versionConfig'] = request.version_config
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -14926,6 +14934,8 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateHttpApiResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['dryRun'] = request.dry_run
         body = {}
@@ -14985,6 +14995,8 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateHttpApiResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
             query['dryRun'] = request.dry_run
         body = {}

@@ -24,11 +24,11 @@ class QueryConsumerAuthorizationRulesRequest(DaraModel):
     ):
         # The API name.
         self.api_name_like = api_name_like
-        # The consumer group ID. If specified, the authorization rules of this consumer group are queried.
+        # The consumer group ID. If specified, the authorization rules of the consumer group are queried. At least one of the following parameters must be specified: resourceId, parentResourceId, consumerId, and consumerGroupId.
         self.consumer_group_id = consumer_group_id
         # The consumer group name for fuzzy match.
         self.consumer_group_name_like = consumer_group_name_like
-        # The consumer ID.
+        # The consumer ID. At least one of the following parameters must be specified: resourceId, parentResourceId, consumerId, and consumerGroupId.
         self.consumer_id = consumer_id
         # The consumer name for fuzzy match.
         self.consumer_name_like = consumer_name_like
@@ -40,15 +40,15 @@ class QueryConsumerAuthorizationRulesRequest(DaraModel):
         self.page_number = page_number
         # The page size.
         self.page_size = page_size
-        # The parent resource ID.
+        # The parent resource ID. At least one of the following parameters must be specified: resourceId, parentResourceId, consumerId, and consumerGroupId.
         self.parent_resource_id = parent_resource_id
-        # The principal type. Valid values: Consumer or ConsumerGroup.
+        # The principal type. Valid values: Consumer and ConsumerGroup.
         self.principal_type = principal_type
-        # The resource ID.
+        # The resource ID. At least one of the following parameters must be specified: resourceId, parentResourceId, consumerId, and consumerGroupId.
         self.resource_id = resource_id
         # The resource type.
         self.resource_type = resource_type
-        # The service source types.
+        # The service source type.
         self.resource_types = resource_types
 
     def validate(self):

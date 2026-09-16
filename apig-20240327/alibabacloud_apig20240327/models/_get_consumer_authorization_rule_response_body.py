@@ -35,9 +35,8 @@ class GetConsumerAuthorizationRuleResponseBody(DaraModel):
         # The environment context.
         self.environment_info = environment_info
         # The expiration mode. Valid values:
-        # 
-        # - LongTerm
-        # - ShortTerm
+        # - LongTerm: long-term
+        # - ShortTerm: short-term
         self.expire_mode = expire_mode
         # The expiration status.
         self.expire_status = expire_status

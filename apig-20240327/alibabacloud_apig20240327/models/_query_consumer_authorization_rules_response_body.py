@@ -72,7 +72,7 @@ class QueryConsumerAuthorizationRulesResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: str = None,
     ):
-        # The list of consumer rules.
+        # The list of consumer authorization rules.
         self.items = items
         # The page number.
         self.page_number = page_number
@@ -149,7 +149,7 @@ class QueryConsumerAuthorizationRulesResponseBodyDataItems(DaraModel):
         resource_type: str = None,
         update_timestamp: int = None,
     ):
-        # The API information details.
+        # The API information.
         self.api_info = api_info
         # The consumer authorization rule ID.
         self.consumer_authorization_rule_id = consumer_authorization_rule_id
@@ -159,17 +159,15 @@ class QueryConsumerAuthorizationRulesResponseBodyDataItems(DaraModel):
         self.consumer_group_info = consumer_group_info
         # The consumer ID.
         self.consumer_id = consumer_id
-        # The consumer information details.
+        # The consumer information.
         self.consumer_info = consumer_info
         # The creation timestamp. Unit: milliseconds.
         self.create_timestamp = create_timestamp
-        # The publish status of the API in the current environment.
+        # The deployment status of the API in the current environment.
         self.deploy_status = deploy_status
         # The environment context.
         self.environment_info = environment_info
-        # The expiration mode. Valid values:
-        # - LongTerm
-        # - ShortTerm
+        # The expiration mode. Valid values: LongTerm and ShortTerm.
         self.expire_mode = expire_mode
         # The expiration status.
         self.expire_status = expire_status
@@ -177,11 +175,11 @@ class QueryConsumerAuthorizationRulesResponseBodyDataItems(DaraModel):
         self.expire_timestamp = expire_timestamp
         # The gateway information.
         self.gateway_info = gateway_info
-        # The principal type. Valid values: Consumer or ConsumerGroup.
+        # The principal type. Valid values: Consumer and ConsumerGroup.
         self.principal_type = principal_type
         # The resource ID.
         self.resource_id = resource_id
-        # The resource information details.
+        # The resource information.
         self.resource_info = resource_info
         # The resource type.
         self.resource_type = resource_type
@@ -333,7 +331,7 @@ class QueryConsumerAuthorizationRulesResponseBodyDataItemsResourceInfo(DaraModel
         operation_info: main_models.HttpApiOperationInfo = None,
         route: main_models.HttpRoute = None,
     ):
-        # The operation information.
+        # The API operation information.
         self.operation_info = operation_info
         # The routing rule.
         self.route = route

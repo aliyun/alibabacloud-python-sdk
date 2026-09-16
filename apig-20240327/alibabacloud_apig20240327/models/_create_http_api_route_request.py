@@ -144,7 +144,7 @@ class CreateHttpApiRouteRequestMcpRouteConfig(DaraModel):
         self.exposed_uri_path = exposed_uri_path
         # Specifies whether to enable MCP observability. Default value: false.
         self.mcp_statistics_enable = mcp_statistics_enable
-        # The service protocol. Valid values:
+        # The Terms of Service. Valid values:
         # - TCP.
         # - HTTP.
         # - DUBBO.
@@ -249,13 +249,13 @@ class CreateHttpApiRouteRequestBackendConfigServices(DaraModel):
         self.group_name = group_name
         # The HTTP-to-Dubbo protocol transcoding configuration. Only supported for SingleService MSE_NACOS DUBBO backends of HTTP APIs.
         self.http_dubbo_transcoder = http_dubbo_transcoder
-        # The target model name. This field is shared by multiple existing model backend scenarios. The specific routing or model rewrite semantics are determined by backendConfig.scene. This field is required for the SemanticRouter scenario. If this field is not specified for the AiAutoRouter scenario, the default model of the AI service is used.
+        # The target model name. This field is shared by multiple existing model backend scenarios. The specific routing or model rewrite semantics are determined by backendConfig.scene. This field is required for the SemanticRouter scenario. If not specified in the AiAutoRouter scenario, the default model of the AI service is used.
         self.model_name = model_name
         # The service namespace. Used in HTTP-to-Dubbo transcoding scenarios.
         self.namespace = namespace
         # The service port. Do not specify this parameter for dynamic ports.
         self.port = port
-        # The service protocol. Valid values:
+        # The Terms of Service. Valid values:
         # - HTTP.
         # - HTTPS.
         self.protocol = protocol
@@ -263,7 +263,7 @@ class CreateHttpApiRouteRequestBackendConfigServices(DaraModel):
         self.service_id = service_id
         # The service source type. Used in HTTP-to-Dubbo transcoding scenarios.
         self.source_type = source_type
-        # The service version. This parameter takes effect only in the tag-based scenario.
+        # The service version. This parameter takes effect only in tag-based scenarios.
         self.version = version
         # The percentage value of the traffic ratio.
         self.weight = weight

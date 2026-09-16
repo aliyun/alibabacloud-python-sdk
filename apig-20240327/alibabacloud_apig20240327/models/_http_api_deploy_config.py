@@ -64,9 +64,9 @@ class HttpApiDeployConfig(DaraModel):
         self.route_backend = route_backend
         # The list of service configurations.
         self.service_configs = service_configs
-        # The list of subdomain content.
+        # The list of second-level domain name content.
         self.sub_domains = sub_domains
-        # The set of explicitly enabled gateway system model capability tiers. Takes effect only when the publishing scenario is AiAutoRouter. Valid values: economy, standard, premium. An explicit empty array indicates that no system model is enabled.
+        # The set of explicitly enabled gateway system model capability tiers. Takes effect only when the publishing scenario is AiAutoRouter. Valid values: economy, standard, and premium. An explicitly empty array indicates that no system models are enabled.
         self.system_model_tiers = system_model_tiers
 
     def validate(self):
@@ -323,7 +323,7 @@ class HttpApiDeployConfigServiceConfigs(DaraModel):
         version: str = None,
         weight: int = None,
     ):
-        # The capability tier of the intelligent routing candidate. Specify this parameter only when the publishing scenario is AiAutoRouter. Valid values: economy, standard, and premium.
+        # The capability tier for intelligent routing candidates. Specify this parameter only when the publishing scenario is AiAutoRouter. Valid values: economy, standard, and premium.
         self.capability_tier = capability_tier
         # The gateway service ID.
         self.gateway_service_id = gateway_service_id

@@ -18,25 +18,28 @@ class GetDashboardRequest(DaraModel):
         source: str = None,
         upstream_cluster: str = None,
     ):
-        # The response language. Valid values:
-        # zh: Chinese
-        # en: English
+        # The language. Valid values:
+        # 
+        # - zh: Chinese
+        # - en: English
         self.accept_language = accept_language
         # The unique ID of the API.
         self.api_id = api_id
         # The filter configuration.
         self.filter = filter
         # The dashboard name. Valid values:
+        # 
         # - LOG: access log
-        # - PLUGIN: plug-in log
+        # - PLUGIN: plugin log
         self.name = name
-        # The plug-in type ID.
+        # The plugin type ID.
         self.plugin_class_id = plugin_class_id
-        # The plug-in ID.
+        # The plugin ID.
         self.plugin_id = plugin_id
         # The route ID.
         self.route_id = route_id
         # The dashboard source. Valid values:
+        # 
         # - SLS: log dashboard
         self.source = source
         # The AI service identifier.
