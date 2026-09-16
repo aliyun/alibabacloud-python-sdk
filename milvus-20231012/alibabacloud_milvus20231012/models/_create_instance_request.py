@@ -27,6 +27,7 @@ class CreateInstanceRequest(DaraModel):
         kms_key_id: str = None,
         load_replicas: int = None,
         multi_zone_mode: str = None,
+        node_type: str = None,
         payment_duration: int = None,
         payment_duration_unit: str = None,
         payment_type: str = None,
@@ -45,8 +46,10 @@ class CreateInstanceRequest(DaraModel):
         # Specifies whether to enable automatic backup.
         self.auto_backup = auto_backup
         # Specifies whether to enable automatic payment. Default value: true. Valid values:
+        # - true: Automatic payment is enabled.
+        # - false: Only an order is generated. No payment is made.
         self.auto_pay = auto_pay
-        # Specifies whether to enable auto-renewal. This parameter takes effect only when the payment type is set to Subscription.
+        # Specifies whether to enable auto-renewal. This parameter takes effect only when the billing method of the instance is Subscription.
         self.auto_renew = auto_renew
         # The backup and restoration information.
         self.backup_restore_info = backup_restore_info
@@ -54,7 +57,7 @@ class CreateInstanceRequest(DaraModel):
         self.components = components
         # The configuration items.
         self.configuration = configuration
-        # The database administrator password.
+        # The database password.
         self.db_admin_password = db_admin_password
         # The Milvus version.
         # 
@@ -62,7 +65,7 @@ class CreateInstanceRequest(DaraModel):
         self.db_version = db_version
         # Specifies whether to enable OSS encryption.
         self.encrypted = encrypted
-        # Specifies whether to enable high availability.
+        # Specifies whether to enable high availability (HA).
         self.ha = ha
         # The instance name.
         self.instance_name = instance_name
@@ -74,9 +77,11 @@ class CreateInstanceRequest(DaraModel):
         self.load_replicas = load_replicas
         # The zone configuration.
         self.multi_zone_mode = multi_zone_mode
+        # The node type. Valid values for Milvus standalone: perf, enhanced, and cap. Default value: perf.
+        self.node_type = node_type
         # The payment duration.
         self.payment_duration = payment_duration
-        # The payment duration unit.
+        # The unit of the payment duration.
         self.payment_duration_unit = payment_duration_unit
         # The payment type.
         # 
@@ -175,6 +180,9 @@ class CreateInstanceRequest(DaraModel):
         if self.multi_zone_mode is not None:
             result['multiZoneMode'] = self.multi_zone_mode
 
+        if self.node_type is not None:
+            result['nodeType'] = self.node_type
+
         if self.payment_duration is not None:
             result['paymentDuration'] = self.payment_duration
 
@@ -267,6 +275,9 @@ class CreateInstanceRequest(DaraModel):
 
         if m.get('multiZoneMode') is not None:
             self.multi_zone_mode = m.get('multiZoneMode')
+
+        if m.get('nodeType') is not None:
+            self.node_type = m.get('nodeType')
 
         if m.get('paymentDuration') is not None:
             self.payment_duration = m.get('paymentDuration')
@@ -396,8 +407,9 @@ class CreateInstanceRequestComponents(DaraModel):
         self.cu_num = cu_num
         # The CU type.
         self.cu_type = cu_type
+        # The QueryNode data cloud disk configuration. This parameter is supported only when type is set to query.
         self.data_disk = data_disk
-        # The disk size type for Query Node. Set to Large for storage-optimized, and Normal for compute-optimized or other configurations.
+        # The disk size type for the Query Node. Set this parameter to Large for storage-optimized instances, and to Normal for compute-optimized and other instance types.
         self.disk_size_type = disk_size_type
         # The number of replicas.
         # 
@@ -468,9 +480,13 @@ class CreateInstanceRequestComponentsDataDisk(DaraModel):
         size: int = None,
         storage_class: str = None,
     ):
+        # Specifies whether to enable the QueryNode data cloud disk.
         self.enabled = enabled
+        # The ESSD performance level (PL). Valid values: PL0, PL1, PL2, and PL3. If StorageClass is not specified, this parameter is used for parsing.
         self.performance_level = performance_level
+        # The data cloud disk capacity. Unit: GiB.
         self.size = size
+        # The StorageClass of the data cloud disk. Valid values: alicloud-disk-essd-pl0, alicloud-disk-essd-pl1, alicloud-disk-essd-pl2, and alicloud-disk-essd-pl3.
         self.storage_class = storage_class
 
     def validate(self):
@@ -522,7 +538,7 @@ class CreateInstanceRequestBackupRestoreInfo(DaraModel):
         self.backup_id = backup_id
         # The backup name.
         self.backup_name = backup_name
-        # The ID of the source backup cluster.
+        # The ID of the source cluster for the backup.
         self.source_cluster_id = source_cluster_id
 
     def validate(self):

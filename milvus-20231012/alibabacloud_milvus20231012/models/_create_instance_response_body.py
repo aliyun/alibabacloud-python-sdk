@@ -14,7 +14,7 @@ class CreateInstanceResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The returned result.
+        # The returned data.
         self.data = data
         # Indicates whether the request was successful.
         self.success = success

@@ -18,7 +18,7 @@ class GetInstanceDetailResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details of the permission verification failure.
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
         # The response data.
         self.data = data
@@ -129,7 +129,7 @@ class GetInstanceDetailResponseBodyData(DaraModel):
         zone_id: str = None,
         maintainable_period_time_zone: str = None,
     ):
-        # The ACL ID for public network access control.
+        # The public network access control ACL ID.
         self.acl_id = acl_id
         # The start time.
         self.begin_time = begin_time
@@ -141,7 +141,7 @@ class GetInstanceDetailResponseBodyData(DaraModel):
         self.cluster_info = cluster_info
         # The instance name.
         self.cluster_name = cluster_name
-        # Indicates whether high availability is enabled.
+        # Indicates whether high availability (HA) is enabled.
         self.enable_ha = enable_ha
         self.encrypted = encrypted
         # The expiration time.
@@ -150,23 +150,37 @@ class GetInstanceDetailResponseBodyData(DaraModel):
         # The instance ID.
         self.instance_id = instance_id
         # The instance status. Valid values:
+        # - creating: Being created.
+        # - running: Running.
+        # - updating: Being upgraded. This includes specification changes, configuration changes, and public network access toggling.
+        # - disable: Unavailable. The cluster has expired and requires renewal to reactivate.
+        # - deleting: Being deleted.
+        # - deleted: Deleted.
         self.instance_status = instance_status
         self.kms_key_id = kms_key_id
         self.maintainable_period = maintainable_period
         # The configuration information.
         self.measure_config = measure_config
+        # Single,Two,Three
         self.multi_zone_mode = multi_zone_mode
         # The node type. Valid values:
+        # * perf: compute-optimized instance.
+        # * cap: storage-optimized.
         self.node_type = node_type
         # Indicates whether public network access is enabled.
         self.open_public_net = open_public_net
-        # The specification details. Valid values:
+        # The edition. Valid values:
+        # 
+        # - trial: Trial Edition.
+        # - standard: Standard Edition.
         self.package_type = package_type
         # The billing type. Valid values:
+        # - 0: pay-as-you-go.
+        # - 1: subscription.
         self.pay_type = pay_type
         # The commodity code.
         self.product_code = product_code
-        # The region.
+        # The region ID.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -187,7 +201,7 @@ class GetInstanceDetailResponseBodyData(DaraModel):
         self.vpc_id = vpc_id
         # The vSwitch ID.
         self.vsw_id = vsw_id
-        # The zone.
+        # The zone ID.
         self.zone_id = zone_id
         self.maintainable_period_time_zone = maintainable_period_time_zone
 
@@ -521,25 +535,25 @@ class GetInstanceDetailResponseBodyDataMeasureConfig(DaraModel):
         query_node_cu_num: int = None,
         query_node_replica: int = None,
     ):
-        # The number of CUs for the Data node.
+        # The number of CUs for data nodes.
         self.data_node_cu_num = data_node_cu_num
-        # The number of replicas for the Data node.
+        # The number of replicas for data nodes.
         self.data_node_replica = data_node_replica
-        # The number of CUs for the Index node.
+        # The number of CUs for index nodes.
         self.index_node_cu_num = index_node_cu_num
-        # The number of replicas for the Index node.
+        # The number of replicas for index nodes.
         self.index_node_replica = index_node_replica
-        # The number of CUs for the MixCoordinator node.
+        # The number of CUs for MixCoordinator nodes.
         self.mix_coodinator_node_cu_num = mix_coodinator_node_cu_num
-        # The number of replicas for the MixCoordinator node.
+        # The number of replicas for MixCoordinator nodes.
         self.mix_coodinator_node_replica = mix_coodinator_node_replica
-        # The number of CUs for the Proxy node.
+        # The number of CUs for proxy nodes.
         self.proxy_node_cu_num = proxy_node_cu_num
-        # The number of replicas for the Proxy node.
+        # The number of replicas for proxy nodes.
         self.proxy_node_replica = proxy_node_replica
-        # The number of CUs for the Query node.
+        # The number of CUs for query nodes.
         self.query_node_cu_num = query_node_cu_num
-        # The number of replicas for the Query node.
+        # The number of replicas for query nodes.
         self.query_node_replica = query_node_replica
 
     def validate(self):
@@ -671,29 +685,44 @@ class GetInstanceDetailResponseBodyDataClusterInfo(DaraModel):
     def __init__(
         self,
         attu_port: int = None,
+        ca_cert_url: str = None,
+        certificate_trust: str = None,
         internet_url: str = None,
         intranet_url: str = None,
         milvus_resource_info_list: List[main_models.GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList] = None,
         oss_storage_size: str = None,
         oss_storage_timestamp: int = None,
         proxy_port: int = None,
+        secure_internet_url: str = None,
+        secure_intranet_url: str = None,
+        secure_proxy_port: int = None,
         total_cu_num: int = None,
         total_disk_size: int = None,
     ):
         # The Attu component port.
         self.attu_port = attu_port
-        # The public network address.
+        # The HTTPS download URL of the CA certificate.
+        self.ca_cert_url = ca_cert_url
+        # The certificate trust type.
+        self.certificate_trust = certificate_trust
+        # The public endpoint.
         self.internet_url = internet_url
-        # The internal network address.
+        # The internal endpoint.
         self.intranet_url = intranet_url
         # The resource details.
         self.milvus_resource_info_list = milvus_resource_info_list
         # The OSS storage data size.
         self.oss_storage_size = oss_storage_size
-        # The timestamp of the OSS storage metric.
+        # The OSS storage metric timestamp.
         self.oss_storage_timestamp = oss_storage_timestamp
         # The proxy port.
         self.proxy_port = proxy_port
+        # The TLS public domain name.
+        self.secure_internet_url = secure_internet_url
+        # The TLS internal domain name.
+        self.secure_intranet_url = secure_intranet_url
+        # The TLS connection port.
+        self.secure_proxy_port = secure_proxy_port
         # The total number of CUs.
         self.total_cu_num = total_cu_num
         # The total disk size.
@@ -712,6 +741,12 @@ class GetInstanceDetailResponseBodyDataClusterInfo(DaraModel):
             result = _map
         if self.attu_port is not None:
             result['AttuPort'] = self.attu_port
+
+        if self.ca_cert_url is not None:
+            result['CaCertUrl'] = self.ca_cert_url
+
+        if self.certificate_trust is not None:
+            result['CertificateTrust'] = self.certificate_trust
 
         if self.internet_url is not None:
             result['InternetUrl'] = self.internet_url
@@ -733,6 +768,15 @@ class GetInstanceDetailResponseBodyDataClusterInfo(DaraModel):
         if self.proxy_port is not None:
             result['ProxyPort'] = self.proxy_port
 
+        if self.secure_internet_url is not None:
+            result['SecureInternetUrl'] = self.secure_internet_url
+
+        if self.secure_intranet_url is not None:
+            result['SecureIntranetUrl'] = self.secure_intranet_url
+
+        if self.secure_proxy_port is not None:
+            result['SecureProxyPort'] = self.secure_proxy_port
+
         if self.total_cu_num is not None:
             result['TotalCuNum'] = self.total_cu_num
 
@@ -745,6 +789,12 @@ class GetInstanceDetailResponseBodyDataClusterInfo(DaraModel):
         m = m or dict()
         if m.get('AttuPort') is not None:
             self.attu_port = m.get('AttuPort')
+
+        if m.get('CaCertUrl') is not None:
+            self.ca_cert_url = m.get('CaCertUrl')
+
+        if m.get('CertificateTrust') is not None:
+            self.certificate_trust = m.get('CertificateTrust')
 
         if m.get('InternetUrl') is not None:
             self.internet_url = m.get('InternetUrl')
@@ -766,6 +816,15 @@ class GetInstanceDetailResponseBodyDataClusterInfo(DaraModel):
 
         if m.get('ProxyPort') is not None:
             self.proxy_port = m.get('ProxyPort')
+
+        if m.get('SecureInternetUrl') is not None:
+            self.secure_internet_url = m.get('SecureInternetUrl')
+
+        if m.get('SecureIntranetUrl') is not None:
+            self.secure_intranet_url = m.get('SecureIntranetUrl')
+
+        if m.get('SecureProxyPort') is not None:
+            self.secure_proxy_port = m.get('SecureProxyPort')
 
         if m.get('TotalCuNum') is not None:
             self.total_cu_num = m.get('TotalCuNum')
@@ -792,10 +851,18 @@ class GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList(DaraMod
         pods_list: List[main_models.GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoListPodsList] = None,
     ):
         # The component type. Valid values:
+        # - standalone
+        # - proxy
+        # - mix_coordinator
+        # - query
+        # - index
+        # - data
         self.component_type = component_type
         # The number of compute units (CUs).
         self.cu_num = cu_num
-        # The CU specifications. Valid values:
+        # The CU specification. Valid values:
+        # * 4: 1 core corresponds to 4 GB.
+        # * 8: 1 core corresponds to 8 GB.
         self.cu_ratio = cu_ratio
         # The disk size.
         self.disk_size = disk_size
@@ -805,8 +872,11 @@ class GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList(DaraMod
         # The number of replicas.
         self.replica = replica
         self.zone_id = zone_id
+        # Indicates whether the data cloud disk is enabled.
         self.data_disk_enabled = data_disk_enabled
+        # The data cloud disk capacity, in GiB.
         self.data_disk_size = data_disk_size
+        # The StorageClass of the data cloud disk.
         self.data_disk_storage_class = data_disk_storage_class
         self.pods_list = pods_list
 

@@ -1,3 +1,12 @@
+2026-09-16 Version: 1.3.3
+- Update API CreateInstance: add request parameters body.nodeType.
+- Update API GetInstanceDetail: add response parameters Body.Data.ClusterInfo.CaCertUrl.
+- Update API GetInstanceDetail: add response parameters Body.Data.ClusterInfo.CertificateTrust.
+- Update API GetInstanceDetail: add response parameters Body.Data.ClusterInfo.SecureInternetUrl.
+- Update API GetInstanceDetail: add response parameters Body.Data.ClusterInfo.SecureIntranetUrl.
+- Update API GetInstanceDetail: add response parameters Body.Data.ClusterInfo.SecureProxyPort.
+
+
 2026-07-28 Version: 1.3.2
 - Update API CreateInstance: add request parameters body.components.$.dataDisk.
 - Update API GetInstanceDetail: add response parameters Body.Data.maintainablePeriodTimeZone.
