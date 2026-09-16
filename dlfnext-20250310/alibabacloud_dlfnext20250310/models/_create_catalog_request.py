@@ -15,15 +15,15 @@ class CreateCatalogRequest(DaraModel):
         share_id: str = None,
         type: str = None,
     ):
-        # Specifies whether to share the catalog.
+        # Specifies whether the catalog is a shared data catalog.
         self.is_shared = is_shared
-        # The catalog name.
+        # The name of the data catalog.
         self.name = name
-        # The configuration options for the catalog.
+        # The configuration parameter struct.
         self.options = options
         # The share ID.
         self.share_id = share_id
-        # The catalog type.
+        # The type of the data catalog.
         self.type = type
 
     def validate(self):

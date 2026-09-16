@@ -15,6 +15,7 @@ class Partition(DaraModel):
         file_count: int = None,
         file_size_in_bytes: int = None,
         last_file_creation_time: int = None,
+        options: Dict[str, str] = None,
         record_count: int = None,
         spec: Dict[str, Any] = None,
         storage_action: str = None,
@@ -36,6 +37,7 @@ class Partition(DaraModel):
         self.file_size_in_bytes = file_size_in_bytes
         # The time when the latest file was created.
         self.last_file_creation_time = last_file_creation_time
+        self.options = options
         # The number of records.
         self.record_count = record_count
         # The key-value pairs of the partition values.
@@ -78,6 +80,9 @@ class Partition(DaraModel):
 
         if self.last_file_creation_time is not None:
             result['lastFileCreationTime'] = self.last_file_creation_time
+
+        if self.options is not None:
+            result['options'] = self.options
 
         if self.record_count is not None:
             result['recordCount'] = self.record_count
@@ -124,6 +129,9 @@ class Partition(DaraModel):
 
         if m.get('lastFileCreationTime') is not None:
             self.last_file_creation_time = m.get('lastFileCreationTime')
+
+        if m.get('options') is not None:
+            self.options = m.get('options')
 
         if m.get('recordCount') is not None:
             self.record_count = m.get('recordCount')

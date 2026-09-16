@@ -83,6 +83,7 @@ from ._batch_revoke_permissions_request import BatchRevokePermissionsRequest
 from ._batch_revoke_permissions_response_body import BatchRevokePermissionsResponseBody
 from ._batch_revoke_permissions_response import BatchRevokePermissionsResponse
 from ._create_catalog_request import CreateCatalogRequest
+from ._create_catalog_response_body import CreateCatalogResponseBody
 from ._create_catalog_response import CreateCatalogResponse
 from ._create_database_request import CreateDatabaseRequest
 from ._create_database_response import CreateDatabaseResponse
@@ -323,6 +324,7 @@ __all__ = [
     BatchRevokePermissionsResponseBody,
     BatchRevokePermissionsResponse,
     CreateCatalogRequest,
+    CreateCatalogResponseBody,
     CreateCatalogResponse,
     CreateDatabaseRequest,
     CreateDatabaseResponse,

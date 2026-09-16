@@ -22,20 +22,6 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'us-west-1': 'dlfnext.us-west-1.aliyuncs.com',
-            'us-east-1': 'dlfnext.us-east-1.aliyuncs.com',
-            'eu-central-1': 'dlfnext.eu-central-1.aliyuncs.com',
-            'cn-wulanchabu': 'dlfnext.cn-wulanchabu.aliyuncs.com',
-            'cn-shenzhen': 'dlfnext.cn-shenzhen.aliyuncs.com',
-            'cn-shanghai': 'dlfnext.cn-shanghai.aliyuncs.com',
-            'cn-hongkong': 'dlfnext.cn-hongkong.aliyuncs.com',
-            'cn-hangzhou': 'dlfnext.cn-hangzhou.aliyuncs.com',
-            'cn-beijing': 'dlfnext.cn-beijing.aliyuncs.com',
-            'ap-southeast-5': 'dlfnext.ap-southeast-5.aliyuncs.com',
-            'ap-southeast-1': 'dlfnext.ap-southeast-1.aliyuncs.com',
-            'ap-northeast-1': 'dlfnext.ap-northeast-1.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('dlfnext', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -934,7 +920,7 @@ class Client(OpenApiClient):
             auth_type = 'AK',
             style = 'ROA',
             req_body_type = 'json',
-            body_type = 'none'
+            body_type = 'json'
         )
         return DaraCore.from_map(
             main_models.CreateCatalogResponse(),
@@ -972,7 +958,7 @@ class Client(OpenApiClient):
             auth_type = 'AK',
             style = 'ROA',
             req_body_type = 'json',
-            body_type = 'none'
+            body_type = 'json'
         )
         return DaraCore.from_map(
             main_models.CreateCatalogResponse(),
