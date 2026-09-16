@@ -19,16 +19,14 @@ class ChatMessagesRequest(DaraModel):
     ):
         # The conversation ID.
         self.conversation_id = conversation_id
-        # The event output type. Valid values: inline and separate. Default value: inline. When set to inline, tool invocation events, sub-node events, and document events are included in the answer field of event = message. When set to separate, tool invocation events, sub-node events, and document events each have their own event.
+        # The event output type. Valid values: inline and separate. Default value: inline. When set to inline, tool invocation events, sub-node events, and document events are included in the answer field of the event = message response. When set to separate, tool invocation events, sub-node events, and document events each have their own event.
         self.event_mode = event_mode
         self.files = files
-        # The task input.
+        # The task inputs.
         self.inputs = inputs
         # The parent message ID.
         self.parent_message_id = parent_message_id
         # The query content.
-        # 
-        # This parameter is required.
         self.query = query
 
     def validate(self):
@@ -100,8 +98,11 @@ class ChatMessagesRequestInputs(DaraModel):
         language: str = None,
         model_id: str = None,
         region_id: str = None,
+        resume_call_id: str = None,
         think_effort: str = None,
         timezone: str = None,
+        tool_approval_mode: str = None,
+        workspace_id: str = None,
     ):
         # The custom agent ID for the user.
         self.custom_agent_id = custom_agent_id
@@ -113,10 +114,16 @@ class ChatMessagesRequestInputs(DaraModel):
         self.model_id = model_id
         # The region ID.
         self.region_id = region_id
+        # The tool approval call ID for resuming execution. Pass this parameter after all decisions in the current approval round are completed in the console to continue the interrupted ChatMessage Loop. Do not pass this parameter for regular conversations.
+        self.resume_call_id = resume_call_id
         # The thinking depth.
         self.think_effort = think_effort
         # The time zone. Default value: **Asia/Shanghai**.
         self.timezone = timezone
+        # The tool approval mode for the current conversation. Valid values: read_only (read-only, write tools are rejected), manual (write tools require manual approval), and auto (the approval sub-agent automatically determines the action. If the result is needs_human, the approval is escalated to manual review). When this parameter is passed, the approval mode of the current conversation is updated.
+        self.tool_approval_mode = tool_approval_mode
+        # The ContextDB workspace ID.
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -141,11 +148,20 @@ class ChatMessagesRequestInputs(DaraModel):
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
+        if self.resume_call_id is not None:
+            result['ResumeCallId'] = self.resume_call_id
+
         if self.think_effort is not None:
             result['ThinkEffort'] = self.think_effort
 
         if self.timezone is not None:
             result['Timezone'] = self.timezone
+
+        if self.tool_approval_mode is not None:
+            result['ToolApprovalMode'] = self.tool_approval_mode
+
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
 
         return result
 
@@ -166,11 +182,20 @@ class ChatMessagesRequestInputs(DaraModel):
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
 
+        if m.get('ResumeCallId') is not None:
+            self.resume_call_id = m.get('ResumeCallId')
+
         if m.get('ThinkEffort') is not None:
             self.think_effort = m.get('ThinkEffort')
 
         if m.get('Timezone') is not None:
             self.timezone = m.get('Timezone')
+
+        if m.get('ToolApprovalMode') is not None:
+            self.tool_approval_mode = m.get('ToolApprovalMode')
+
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
 
         return self
 

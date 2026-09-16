@@ -11,21 +11,24 @@ class CreateSkillShrinkRequest(DaraModel):
         dbtypes_shrink: str = None,
         description: str = None,
         name: str = None,
+        upload_id: str = None,
+        upload_token: str = None,
+        workspace_id: str = None,
     ):
-        # The content of the skill.
+        # The content.
         self.content_shrink = content_shrink
-        # The list of database engines.
-        # 
-        # This parameter is required.
+        # The list of database types.
         self.dbtypes_shrink = dbtypes_shrink
-        # The description of the skill. It can be up to 1000 characters in length.
-        # 
-        # This parameter is required.
+        # The Skill description. The description can be up to 1000 characters in length.
         self.description = description
-        # The name of the skill, which can contain only lowercase letters, numbers, and hyphens.
-        # 
-        # This parameter is required.
+        # The Skill name. The name can contain only lowercase letters, digits, and hyphens.
         self.name = name
+        # The Skill upload session ID.
+        self.upload_id = upload_id
+        # The Skill upload session token.
+        self.upload_token = upload_token
+        # The ContextDB workspace ID.
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -47,6 +50,15 @@ class CreateSkillShrinkRequest(DaraModel):
         if self.name is not None:
             result['Name'] = self.name
 
+        if self.upload_id is not None:
+            result['UploadId'] = self.upload_id
+
+        if self.upload_token is not None:
+            result['UploadToken'] = self.upload_token
+
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -62,6 +74,15 @@ class CreateSkillShrinkRequest(DaraModel):
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('UploadId') is not None:
+            self.upload_id = m.get('UploadId')
+
+        if m.get('UploadToken') is not None:
+            self.upload_token = m.get('UploadToken')
+
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
 
         return self
 

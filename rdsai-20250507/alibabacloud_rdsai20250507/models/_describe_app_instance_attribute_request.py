@@ -11,10 +11,11 @@ class DescribeAppInstanceAttributeRequest(DaraModel):
         instance_name: str = None,
         region_id: str = None,
     ):
+        # Reserved parameter.
         self.branch_name = branch_name
         # The instance ID of the AI application.
         self.instance_name = instance_name
-        # The region.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

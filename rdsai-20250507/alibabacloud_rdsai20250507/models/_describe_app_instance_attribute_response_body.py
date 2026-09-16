@@ -19,9 +19,11 @@ class DescribeAppInstanceAttributeResponseBody(DaraModel):
         eip_id: str = None,
         eip_status: str = None,
         instance_class: str = None,
+        instance_latest_version: str = None,
         instance_minor_version: str = None,
         instance_name: str = None,
         login_token: str = None,
+        minor_version_detail: str = None,
         nat_created_by: str = None,
         nat_gateway_id: str = None,
         nat_status: str = None,
@@ -41,38 +43,55 @@ class DescribeAppInstanceAttributeResponseBody(DaraModel):
         self.app_name = app_name
         # The application type. Currently, only **supabase** is supported, which indicates [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html).
         self.app_type = app_type
+        # Reserved parameter.
         self.branch_name = branch_name
+        # Reserved parameter.
         self.branching_enabled = branching_enabled
+        # The list of components.
         self.components = components
-        # The instance ID of the RDS PostgreSQL database to which the AI application is connected.
+        # The ID of the RDS PostgreSQL database instance that the AI application is connected to.
         self.dbinstance_name = dbinstance_name
+        # The instance ID of the EIP.
         self.eip_id = eip_id
+        # The activation status of the EIP.
         self.eip_status = eip_status
-        # The instance type of the AI application.
+        # The instance class of the AI application.
         self.instance_class = instance_class
+        # The latest minor version of the RDS AI application instance.
+        self.instance_latest_version = instance_latest_version
         # The minor version of the RDS AI application instance.
         self.instance_minor_version = instance_minor_version
         # The instance ID of the AI application.
         self.instance_name = instance_name
+        # Reserved parameter.
         self.login_token = login_token
+        # The minor version details of each component of the RDS AI application instance.
+        self.minor_version_detail = minor_version_detail
+        # The creator of the NAT gateway.
         self.nat_created_by = nat_created_by
+        # The ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
+        # The activation status of the NAT gateway.
         self.nat_status = nat_status
-        # The public endpoint of the AI application.
+        # The public connection string of the AI application.
         self.public_connection_string = public_connection_string
         # The region ID.
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
+        # Reserved parameter.
         self.retention_hours = retention_hours
+        # Reserved parameter.
         self.sql_extend_mo_instance_id = sql_extend_mo_instance_id
-        # The instance status. For more information, see [Instance status](https://help.aliyun.com/document_detail/2623972.html).
+        # The instance status. For more information, see [Instance status table](https://help.aliyun.com/document_detail/2623972.html).
         self.status = status
+        # Reserved parameter.
         self.upload_key = upload_key
+        # Reserved parameter.
         self.upload_key_list = upload_key_list
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The internal endpoint of the AI application.
+        # The internal connection string of the AI application.
         self.vpc_connection_string = vpc_connection_string
         # The zone ID.
         self.zone_id = zone_id
@@ -121,6 +140,9 @@ class DescribeAppInstanceAttributeResponseBody(DaraModel):
         if self.instance_class is not None:
             result['InstanceClass'] = self.instance_class
 
+        if self.instance_latest_version is not None:
+            result['InstanceLatestVersion'] = self.instance_latest_version
+
         if self.instance_minor_version is not None:
             result['InstanceMinorVersion'] = self.instance_minor_version
 
@@ -129,6 +151,9 @@ class DescribeAppInstanceAttributeResponseBody(DaraModel):
 
         if self.login_token is not None:
             result['LoginToken'] = self.login_token
+
+        if self.minor_version_detail is not None:
+            result['MinorVersionDetail'] = self.minor_version_detail
 
         if self.nat_created_by is not None:
             result['NatCreatedBy'] = self.nat_created_by
@@ -208,6 +233,9 @@ class DescribeAppInstanceAttributeResponseBody(DaraModel):
         if m.get('InstanceClass') is not None:
             self.instance_class = m.get('InstanceClass')
 
+        if m.get('InstanceLatestVersion') is not None:
+            self.instance_latest_version = m.get('InstanceLatestVersion')
+
         if m.get('InstanceMinorVersion') is not None:
             self.instance_minor_version = m.get('InstanceMinorVersion')
 
@@ -216,6 +244,9 @@ class DescribeAppInstanceAttributeResponseBody(DaraModel):
 
         if m.get('LoginToken') is not None:
             self.login_token = m.get('LoginToken')
+
+        if m.get('MinorVersionDetail') is not None:
+            self.minor_version_detail = m.get('MinorVersionDetail')
 
         if m.get('NatCreatedBy') is not None:
             self.nat_created_by = m.get('NatCreatedBy')
@@ -273,10 +304,15 @@ class DescribeAppInstanceAttributeResponseBodyUploadKeyList(DaraModel):
         status: str = None,
         upload_key: str = None,
     ):
+        # Reserved parameter.
         self.is_system_key = is_system_key
+        # Reserved parameter.
         self.remark = remark
+        # Reserved parameter.
         self.sls_storage_bytes = sls_storage_bytes
+        # Reserved parameter.
         self.status = status
+        # Reserved parameter.
         self.upload_key = upload_key
 
     def validate(self):
@@ -329,7 +365,9 @@ class DescribeAppInstanceAttributeResponseBodyComponents(DaraModel):
         status: str = None,
         type: str = None,
     ):
+        # The component status.
         self.status = status
+        # The component type.
         self.type = type
 
     def validate(self):

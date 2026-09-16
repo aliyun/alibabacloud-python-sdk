@@ -291,6 +291,8 @@ from ._create_custom_agent_response_body import CreateCustomAgentResponseBodySki
 from ._create_inspection_task_response_body import CreateInspectionTaskResponseBodyData
 from ._create_mousage_detail_export_response_body import CreateMOUsageDetailExportResponseBodyDataFilters
 from ._create_mousage_detail_export_response_body import CreateMOUsageDetailExportResponseBodyData
+from ._create_skill_response_body import CreateSkillResponseBodySkill
+from ._create_skill_response_body import CreateSkillResponseBodyVersion
 from ._delete_context_database_member_response_body import DeleteContextDatabaseMemberResponseBodyKeys
 from ._describe_app_instance_attribute_response_body import DescribeAppInstanceAttributeResponseBodyComponents
 from ._describe_app_instance_attribute_response_body import DescribeAppInstanceAttributeResponseBodyUploadKeyList
@@ -334,6 +336,7 @@ from ._get_model_operator_order_response_body import GetModelOperatorOrderRespon
 from ._get_model_operator_order_response_body import GetModelOperatorOrderResponseBodyData
 from ._get_scheduled_instances_response_body import GetScheduledInstancesResponseBodyInstances
 from ._get_scheduled_reports_response_body import GetScheduledReportsResponseBodyReports
+from ._get_skill_response_body import GetSkillResponseBodyVersions
 from ._get_stand_alone_reports_response_body import GetStandAloneReportsResponseBodyReports
 from ._list_api_keys_response_body import ListApiKeysResponseBodyDataCustomKeyList
 from ._list_api_keys_response_body import ListApiKeysResponseBodyData
@@ -652,6 +655,8 @@ __all__ = [
     CreateInspectionTaskResponseBodyData,
     CreateMOUsageDetailExportResponseBodyDataFilters,
     CreateMOUsageDetailExportResponseBodyData,
+    CreateSkillResponseBodySkill,
+    CreateSkillResponseBodyVersion,
     DeleteContextDatabaseMemberResponseBodyKeys,
     DescribeAppInstanceAttributeResponseBodyComponents,
     DescribeAppInstanceAttributeResponseBodyUploadKeyList,
@@ -695,6 +700,7 @@ __all__ = [
     GetModelOperatorOrderResponseBodyData,
     GetScheduledInstancesResponseBodyInstances,
     GetScheduledReportsResponseBodyReports,
+    GetSkillResponseBodyVersions,
     GetStandAloneReportsResponseBodyReports,
     ListApiKeysResponseBodyDataCustomKeyList,
     ListApiKeysResponseBodyData,

@@ -27,17 +27,9 @@ class Client(OpenApiClient):
             'cn-wulanchabu': 'rdsai.aliyuncs.com',
             'cn-shenzhen': 'rdsai.aliyuncs.com',
             'cn-beijing': 'rdsai.aliyuncs.com',
-            'ap-northeast-1': 'rdsai.ap-northeast-1.aliyuncs.com',
-            'cn-chengdu': 'rdsai.cn-chengdu.aliyuncs.com',
             'cn-shanghai': 'rdsai.aliyuncs.com',
             'cn-guangzhou': 'rdsai.aliyuncs.com',
-            'cn-hongkong': 'rdsai.cn-hongkong.aliyuncs.com',
-            'ap-southeast-1': 'rdsai.ap-southeast-1.aliyuncs.com',
-            'ap-southeast-3': 'rdsai.ap-southeast-3.aliyuncs.com',
-            'ap-southeast-5': 'rdsai.ap-southeast-5.aliyuncs.com',
-            'cn-hangzhou': 'rdsai.aliyuncs.com',
-            'us-west-1': 'rdsai.us-west-1.aliyuncs.com',
-            'eu-central-1': 'rdsai.eu-central-1.aliyuncs.com'
+            'cn-hangzhou': 'rdsai.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('rdsai', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -275,6 +267,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.task_id):
             query['TaskId'] = request.task_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -303,6 +297,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.task_id):
             query['TaskId'] = request.task_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1357,6 +1353,12 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.upload_id):
+            query['UploadId'] = request.upload_id
+        if not DaraCore.is_null(request.upload_token):
+            query['UploadToken'] = request.upload_token
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1397,6 +1399,12 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.upload_id):
+            query['UploadId'] = request.upload_id
+        if not DaraCore.is_null(request.upload_token):
+            query['UploadToken'] = request.upload_token
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1957,6 +1965,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.skill_id):
             query['SkillId'] = request.skill_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1985,6 +1995,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.skill_id):
             query['SkillId'] = request.skill_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3101,6 +3113,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region):
+            query['Region'] = request.region
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3129,6 +3143,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region):
+            query['Region'] = request.region
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3753,6 +3769,8 @@ class Client(OpenApiClient):
             query['Pinned'] = request.pinned
         if not DaraCore.is_null(request.sort_by):
             query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3787,6 +3805,8 @@ class Client(OpenApiClient):
             query['Pinned'] = request.pinned
         if not DaraCore.is_null(request.sort_by):
             query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3983,6 +4003,8 @@ class Client(OpenApiClient):
             query['FirstId'] = request.first_id
         if not DaraCore.is_null(request.limit):
             query['Limit'] = request.limit
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -4017,6 +4039,8 @@ class Client(OpenApiClient):
             query['FirstId'] = request.first_id
         if not DaraCore.is_null(request.limit):
             query['Limit'] = request.limit
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -4056,7 +4080,12 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.GetModelOperatorOrderResponse:
         request.validate()
-        req = open_api_util_models.OpenApiRequest()
+        query = {}
+        if not DaraCore.is_null(request.region):
+            query['Region'] = request.region
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
         params = open_api_util_models.Params(
             action = 'GetModelOperatorOrder',
             version = '2025-05-07',
@@ -4079,7 +4108,12 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.GetModelOperatorOrderResponse:
         request.validate()
-        req = open_api_util_models.OpenApiRequest()
+        query = {}
+        if not DaraCore.is_null(request.region):
+            query['Region'] = request.region
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
         params = open_api_util_models.Params(
             action = 'GetModelOperatorOrder',
             version = '2025-05-07',
@@ -4285,6 +4319,8 @@ class Client(OpenApiClient):
             query['Language'] = request.language
         if not DaraCore.is_null(request.skill_id):
             query['SkillId'] = request.skill_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -4315,6 +4351,8 @@ class Client(OpenApiClient):
             query['Language'] = request.language
         if not DaraCore.is_null(request.skill_id):
             query['SkillId'] = request.skill_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -5055,6 +5093,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -5087,6 +5127,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

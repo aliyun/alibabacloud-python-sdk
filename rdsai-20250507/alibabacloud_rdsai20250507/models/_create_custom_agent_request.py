@@ -19,6 +19,7 @@ class CreateCustomAgentRequest(DaraModel):
         self.enable_tools = enable_tools
         # The name of the agent.
         self.name = name
+        # The list of associated skill IDs.
         self.skill_ids = skill_ids
         # The system prompt.
         # 

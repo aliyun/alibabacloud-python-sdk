@@ -10,18 +10,21 @@ class ListSkillRequest(DaraModel):
         language: str = None,
         page_number: int = None,
         page_size: int = None,
+        workspace_id: str = None,
     ):
-        # The languages supported by the skills.
+        # The supported languages. Valid values:
         # 
-        # *   zh-CN: Simplified Chinese
-        # *   zh-TW: Traditional Chinese
-        # *   en-US: English
-        # *   ja-JP: Japanese
+        # * zh-CN: Simplified Chinese
+        # * zh-TW: Traditional Chinese
+        # * en-US: English
+        # * ja-JP: Japanese
         self.language = language
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number. Pages start from 1. Default value: 1.
         self.page_number = page_number
-        # The number of records to return on each page. Default value: 20. Maximum value: 100.
+        # The number of entries per page. Default value: 20. Maximum value: 100.
         self.page_size = page_size
+        # The ContextDB workspace ID.
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -40,6 +43,9 @@ class ListSkillRequest(DaraModel):
         if self.page_size is not None:
             result['PageSize'] = self.page_size
 
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -52,6 +58,9 @@ class ListSkillRequest(DaraModel):
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
 
         return self
 

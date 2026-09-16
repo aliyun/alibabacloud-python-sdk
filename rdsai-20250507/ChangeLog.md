@@ -1,3 +1,55 @@
+2026-09-16 Version: 3.9.3
+- Update API ChatMessages: add request parameters Inputs.ResumeCallId.
+- Update API ChatMessages: add request parameters Inputs.ToolApprovalMode.
+- Update API ChatMessages: add request parameters Inputs.WorkspaceId.
+- Update API ChatMessages: add response parameters Body.ApprovalStatus.
+- Update API ChatMessages: add response parameters Body.CallId.
+- Update API ChatMessages: add response parameters Body.Description.
+- Update API ChatMessages: add response parameters Body.RoundId.
+- Update API ChatMessages: add response parameters Body.ToolArguments.
+- Update API ChatMessages: add response parameters Body.ToolName.
+- Update API ChatMessagesTaskStop: add request parameters WorkspaceId.
+- Update API CreateSkill: add request parameters UploadId.
+- Update API CreateSkill: add request parameters UploadToken.
+- Update API CreateSkill: add request parameters WorkspaceId.
+- Update API CreateSkill: add response parameters Body.CatalogRevision.
+- Update API CreateSkill: add response parameters Body.Skill.
+- Update API CreateSkill: add response parameters Body.Version.
+- Update API DeleteSkill: add request parameters WorkspaceId.
+- Update API DeleteSkill: add response parameters Body.CatalogRevision.
+- Update API DeleteSkill: add response parameters Body.Deleted.
+- Update API DeleteSkill: add response parameters Body.SkillId.
+- Update API GetConversations: add request parameters WorkspaceId.
+- Update API GetConversations: add response parameters Body.Data.$.Status.
+- Update API GetMessages: add request parameters WorkspaceId.
+- Update API GetMessages: add response parameters Body.Data.$.Events.$.ApprovalStatus.
+- Update API GetMessages: add response parameters Body.Data.$.Events.$.CallId.
+- Update API GetMessages: add response parameters Body.Data.$.Events.$.ConversationId.
+- Update API GetMessages: add response parameters Body.Data.$.Events.$.Description.
+- Update API GetMessages: add response parameters Body.Data.$.Events.$.MessageId.
+- Update API GetMessages: add response parameters Body.Data.$.Events.$.RoundId.
+- Update API GetMessages: add response parameters Body.Data.$.Events.$.ToolArguments.
+- Update API GetMessages: add response parameters Body.Data.$.Events.$.ToolName.
+- Update API GetMessages: add response parameters Body.Data.$.MessageFiles.$.UploadFileId.
+- Update API GetSkill: add request parameters WorkspaceId.
+- Update API GetSkill: add response parameters Body.ActiveVersionId.
+- Update API GetSkill: add response parameters Body.Category.
+- Update API GetSkill: add response parameters Body.DisplayName.
+- Update API GetSkill: add response parameters Body.Icon.
+- Update API GetSkill: add response parameters Body.IsDeleted.
+- Update API GetSkill: add response parameters Body.Scope.
+- Update API GetSkill: add response parameters Body.Slug.
+- Update API GetSkill: add response parameters Body.Versions.
+- Update API ListSkill: add request parameters WorkspaceId.
+- Update API ListSkill: add response parameters Body.Data.$.ActiveVersionId.
+- Update API ListSkill: add response parameters Body.Data.$.Category.
+- Update API ListSkill: add response parameters Body.Data.$.DisplayName.
+- Update API ListSkill: add response parameters Body.Data.$.Icon.
+- Update API ListSkill: add response parameters Body.Data.$.IsDeleted.
+- Update API ListSkill: add response parameters Body.Data.$.Scope.
+- Update API ListSkill: add response parameters Body.Data.$.Slug.
+
+
 2026-08-24 Version: 3.9.0
 - Support API GetChatModel.
 - Update API CreateSandboxTemplate: add request parameters Image.

@@ -11,14 +11,17 @@ class GetMessagesRequest(DaraModel):
         event_mode: str = None,
         first_id: str = None,
         limit: int = None,
+        workspace_id: str = None,
     ):
         # The conversation ID.
         self.conversation_id = conversation_id
         self.event_mode = event_mode
         # The ID of the first message.
         self.first_id = first_id
-        # The number of entries per page in a paging query. Valid values: 1 to 100. Default value: 100.
+        # The number of entries per page for a paged query. Valid values: 1 to 100. Default value: 100.
         self.limit = limit
+        # The ContextDB workspace ID.
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -40,6 +43,9 @@ class GetMessagesRequest(DaraModel):
         if self.limit is not None:
             result['Limit'] = self.limit
 
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -55,6 +61,9 @@ class GetMessagesRequest(DaraModel):
 
         if m.get('Limit') is not None:
             self.limit = m.get('Limit')
+
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
 
         return self
 

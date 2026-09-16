@@ -9,18 +9,20 @@ class GetSkillRequest(DaraModel):
         self,
         language: str = None,
         skill_id: str = None,
+        workspace_id: str = None,
     ):
-        # The languages supported by the skill. Valid values:
-        # 
-        # *   zh-CN: Simplified Chinese
-        # *   zh-TW: Traditional Chinese
-        # *   en-US: English
-        # *   ja-JP: Japanese
+        # The supported languages. Valid values:
+        # * zh-CN: Simplified Chinese
+        # * zh-TW: Traditional Chinese
+        # * en-US: English
+        # * ja-JP: Japanese
         self.language = language
-        # The unique identifier of the skill.
+        # The unique identifier of the Skill.
         # 
         # This parameter is required.
         self.skill_id = skill_id
+        # The ContextDB workspace ID.
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -36,6 +38,9 @@ class GetSkillRequest(DaraModel):
         if self.skill_id is not None:
             result['SkillId'] = self.skill_id
 
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -45,6 +50,9 @@ class GetSkillRequest(DaraModel):
 
         if m.get('SkillId') is not None:
             self.skill_id = m.get('SkillId')
+
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
 
         return self
 

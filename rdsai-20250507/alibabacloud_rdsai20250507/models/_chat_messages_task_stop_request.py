@@ -8,11 +8,12 @@ class ChatMessagesTaskStopRequest(DaraModel):
     def __init__(
         self,
         task_id: str = None,
+        workspace_id: str = None,
     ):
-        # The operation that you want to perform. Set the value to **ChatMessagesTaskStop**.
-        # 
-        # This parameter is required.
+        # The unique ID of the task.
         self.task_id = task_id
+        # The ContextDB workspace ID.
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -25,12 +26,18 @@ class ChatMessagesTaskStopRequest(DaraModel):
         if self.task_id is not None:
             result['TaskId'] = self.task_id
 
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
+
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
 
         return self
 

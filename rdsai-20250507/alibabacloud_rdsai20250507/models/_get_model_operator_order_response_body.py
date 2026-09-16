@@ -17,11 +17,11 @@ class GetModelOperatorOrderResponseBody(DaraModel):
     ):
         # The query result.
         self.data = data
-        # The returned message.
+        # The response message.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Request result.
+        # The request result.
         self.success = success
 
     def validate(self):
@@ -72,7 +72,7 @@ class GetModelOperatorOrderResponseBodyData(DaraModel):
     ):
         # Indicates whether a valid order exists.
         self.has_valid_order = has_valid_order
-        # The instance list.
+        # The list of instances.
         self.instance_list = instance_list
 
     def validate(self):
@@ -119,14 +119,15 @@ class GetModelOperatorOrderResponseBodyDataInstanceList(DaraModel):
         start_time: int = None,
         status: str = None,
     ):
+        # The instance type.
         self.charge_type = charge_type
-        # The instance end time (format: Timestamp).
+        # The end time of the instance. Format: Timestamp.
         self.end_time = end_time
-        # instance type
+        # The instance type.
         self.instance_class = instance_class
         # The instance name.
         self.instance_id = instance_id
-        # The instance start time (format: Timestamp).
+        # The start time of the instance. Format: Timestamp.
         self.start_time = start_time
         # The instance status.
         self.status = status

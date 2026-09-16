@@ -15,13 +15,13 @@ class UpdateSkillRequest(DaraModel):
         name: str = None,
         skill_id: str = None,
     ):
-        # The content of the skill.
+        # The content.
         self.content = content
-        # The list of database engines.
+        # The list of database types.
         self.dbtypes = dbtypes
-        # The description of the Skill. It can be up to 1000 characters in length.
+        # The skill description. The description can be up to 1000 characters in length.
         self.description = description
-        # The name of the skill, which can contain only lowercase letters, numbers, and hyphens.
+        # The skill name. The name can contain only lowercase letters, digits, and hyphens.
         self.name = name
         # The unique identifier of the skill.
         # 

@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List, Any
+from typing import List, Any, Dict
 
 from alibabacloud_rdsai20250507 import models as main_models
 from darabonba.model import DaraModel
@@ -90,7 +90,7 @@ class GetMessagesResponseBodyData(DaraModel):
     ):
         # The answer.
         self.answer = answer
-        # The conversation ID.
+        # The session ID.
         self.conversation_id = conversation_id
         # The creation time.
         self.created_at = created_at
@@ -231,10 +231,13 @@ class GetMessagesResponseBodyDataMessageFiles(DaraModel):
         id: str = None,
         preview_url: str = None,
         type: str = None,
+        upload_file_id: str = None,
     ):
         self.id = id
         self.preview_url = preview_url
         self.type = type
+        # The upload file ID.
+        self.upload_file_id = upload_file_id
 
     def validate(self):
         pass
@@ -253,6 +256,9 @@ class GetMessagesResponseBodyDataMessageFiles(DaraModel):
         if self.type is not None:
             result['Type'] = self.type
 
+        if self.upload_file_id is not None:
+            result['UploadFileId'] = self.upload_file_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -266,14 +272,41 @@ class GetMessagesResponseBodyDataMessageFiles(DaraModel):
         if m.get('Type') is not None:
             self.type = m.get('Type')
 
+        if m.get('UploadFileId') is not None:
+            self.upload_file_id = m.get('UploadFileId')
+
         return self
 
 class GetMessagesResponseBodyDataEvents(DaraModel):
     def __init__(
         self,
+        approval_status: str = None,
+        call_id: str = None,
+        conversation_id: str = None,
+        description: str = None,
+        message_id: str = None,
+        round_id: str = None,
+        tool_arguments: Dict[str, Any] = None,
+        tool_name: str = None,
         answer: str = None,
         event: str = None,
     ):
+        # The approval status of the tool calling.
+        self.approval_status = approval_status
+        # The tool calling ID.
+        self.call_id = call_id
+        # The session ID.
+        self.conversation_id = conversation_id
+        # The description of the tool calling.
+        self.description = description
+        # The message ID.
+        self.message_id = message_id
+        # The tool approval round ID.
+        self.round_id = round_id
+        # The parameters of the tool calling.
+        self.tool_arguments = tool_arguments
+        # The tool name.
+        self.tool_name = tool_name
         self.answer = answer
         self.event = event
 
@@ -285,6 +318,30 @@ class GetMessagesResponseBodyDataEvents(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.approval_status is not None:
+            result['ApprovalStatus'] = self.approval_status
+
+        if self.call_id is not None:
+            result['CallId'] = self.call_id
+
+        if self.conversation_id is not None:
+            result['ConversationId'] = self.conversation_id
+
+        if self.description is not None:
+            result['Description'] = self.description
+
+        if self.message_id is not None:
+            result['MessageId'] = self.message_id
+
+        if self.round_id is not None:
+            result['RoundId'] = self.round_id
+
+        if self.tool_arguments is not None:
+            result['ToolArguments'] = self.tool_arguments
+
+        if self.tool_name is not None:
+            result['ToolName'] = self.tool_name
+
         if self.answer is not None:
             result['answer'] = self.answer
 
@@ -295,6 +352,30 @@ class GetMessagesResponseBodyDataEvents(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ApprovalStatus') is not None:
+            self.approval_status = m.get('ApprovalStatus')
+
+        if m.get('CallId') is not None:
+            self.call_id = m.get('CallId')
+
+        if m.get('ConversationId') is not None:
+            self.conversation_id = m.get('ConversationId')
+
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+
+        if m.get('MessageId') is not None:
+            self.message_id = m.get('MessageId')
+
+        if m.get('RoundId') is not None:
+            self.round_id = m.get('RoundId')
+
+        if m.get('ToolArguments') is not None:
+            self.tool_arguments = m.get('ToolArguments')
+
+        if m.get('ToolName') is not None:
+            self.tool_name = m.get('ToolName')
+
         if m.get('answer') is not None:
             self.answer = m.get('answer')
 

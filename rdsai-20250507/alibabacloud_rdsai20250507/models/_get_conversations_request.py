@@ -11,15 +11,18 @@ class GetConversationsRequest(DaraModel):
         limit: str = None,
         pinned: str = None,
         sort_by: str = None,
+        workspace_id: str = None,
     ):
         # The ID of the last conversation record.
         self.last_id = last_id
         # The number of entries per page for a paged query. Valid values: 1 to 100.
         self.limit = limit
-        # The favorite pinning flag for the application.
+        # The pinned bookmark flag for the application.
         self.pinned = pinned
         # The sorting criterion.
         self.sort_by = sort_by
+        # The ContextDB workspace ID.
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -41,6 +44,9 @@ class GetConversationsRequest(DaraModel):
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
 
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -56,6 +62,9 @@ class GetConversationsRequest(DaraModel):
 
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')
+
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
 
         return self
 

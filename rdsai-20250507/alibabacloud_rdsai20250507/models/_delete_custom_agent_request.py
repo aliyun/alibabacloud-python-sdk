@@ -9,7 +9,7 @@ class DeleteCustomAgentRequest(DaraModel):
         self,
         custom_agent_id: str = None,
     ):
-        # The operation that you want to perform. Set the value to **DeleteCustomAgent**.
+        # AgentId。
         self.custom_agent_id = custom_agent_id
 
     def validate(self):

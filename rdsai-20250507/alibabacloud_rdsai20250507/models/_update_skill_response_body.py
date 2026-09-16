@@ -18,21 +18,21 @@ class UpdateSkillResponseBody(DaraModel):
         skill_type: str = None,
         updated_at: str = None,
     ):
-        # The content of the skill.
+        # The content.
         self.content = content
-        # The list of database engines.
+        # The list of database types.
         self.dbtypes = dbtypes
-        # The description of the skill. It can be up to 1000 characters in length.
+        # The skill description. The description can be up to 1000 characters in length.
         self.description = description
         # The unique identifier of the skill.
         self.id = id
-        # The name of the skill, which can contain only lowercase letters, numbers, and hyphens.
+        # The skill name. The name can contain only lowercase letters, digits, and hyphens.
         self.name = name
-        # The request ID.
+        # The unique identifier of the request.
         self.request_id = request_id
         # The skill type.
         self.skill_type = skill_type
-        # The update time of the skill.
+        # The time when the skill was last updated.
         self.updated_at = updated_at
 
     def validate(self):

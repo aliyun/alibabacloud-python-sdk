@@ -78,17 +78,25 @@ class GetConversationsResponseBodyData(DaraModel):
         introduction: str = None,
         is_running: bool = None,
         name: str = None,
+        status: str = None,
         updated_at: str = None,
     ):
         # The creation time.
         self.created_at = created_at
-        # The ID of the historical conversation.
+        # The historical conversation ID.
         self.id = id
         # The conversation introduction.
         self.introduction = introduction
         self.is_running = is_running
-        # The name of the historical conversation.
+        # The historical conversation name.
         self.name = name
+        # The session status. Valid values:
+        # - idle: The session is idle.
+        # - running: The session is generating a response.
+        # - pending_approval: The session is waiting for approval or manual review.
+        # 
+        # If both pending_approval and running conditions are met, pending_approval is returned.
+        self.status = status
         self.updated_at = updated_at
 
     def validate(self):
@@ -114,6 +122,9 @@ class GetConversationsResponseBodyData(DaraModel):
         if self.name is not None:
             result['Name'] = self.name
 
+        if self.status is not None:
+            result['Status'] = self.status
+
         if self.updated_at is not None:
             result['UpdatedAt'] = self.updated_at
 
@@ -135,6 +146,9 @@ class GetConversationsResponseBodyData(DaraModel):
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
 
         if m.get('UpdatedAt') is not None:
             self.updated_at = m.get('UpdatedAt')

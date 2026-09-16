@@ -8,11 +8,12 @@ class DeleteSkillRequest(DaraModel):
     def __init__(
         self,
         skill_id: str = None,
+        workspace_id: str = None,
     ):
-        # The unique identifier of the skill.
-        # 
-        # This parameter is required.
+        # The unique identifier of the Skill.
         self.skill_id = skill_id
+        # The ContextDB workspace ID.
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -25,12 +26,18 @@ class DeleteSkillRequest(DaraModel):
         if self.skill_id is not None:
             result['SkillId'] = self.skill_id
 
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('SkillId') is not None:
             self.skill_id = m.get('SkillId')
+
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
 
         return self
 

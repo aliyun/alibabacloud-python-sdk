@@ -8,9 +8,12 @@ class DescribeModelOperatorRequest(DaraModel):
     def __init__(
         self,
         instance_id: str = None,
+        region: str = None,
     ):
-        # The instance ID.
+        # The instance name.
         self.instance_id = instance_id
+        # The region.
+        self.region = region
 
     def validate(self):
         pass
@@ -23,12 +26,18 @@ class DescribeModelOperatorRequest(DaraModel):
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
+        if self.region is not None:
+            result['Region'] = self.region
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
 
         return self
 

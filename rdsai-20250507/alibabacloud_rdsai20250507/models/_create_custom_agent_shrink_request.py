@@ -17,6 +17,7 @@ class CreateCustomAgentShrinkRequest(DaraModel):
         self.enable_tools = enable_tools
         # The name of the agent.
         self.name = name
+        # The list of associated skill IDs.
         self.skill_ids_shrink = skill_ids_shrink
         # The system prompt.
         # 
