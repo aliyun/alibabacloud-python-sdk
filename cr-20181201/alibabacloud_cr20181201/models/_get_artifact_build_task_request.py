@@ -14,7 +14,7 @@ class GetArtifactBuildTaskRequest(DaraModel):
         # 
         # This parameter is required.
         self.build_task_id = build_task_id
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

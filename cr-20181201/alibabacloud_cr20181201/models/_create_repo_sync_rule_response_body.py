@@ -12,9 +12,9 @@ class CreateRepoSyncRuleResponseBody(DaraModel):
         request_id: str = None,
         sync_rule_id: str = None,
     ):
-        # The HTTP status code.
+        # The response code.
         self.code = code
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.is_success = is_success
         # The request ID.
         self.request_id = request_id

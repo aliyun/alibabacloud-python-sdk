@@ -24,56 +24,67 @@ class CreateRepoSyncRuleRequest(DaraModel):
         target_repo_name: str = None,
         target_user_id: str = None,
     ):
-        # The source instance ID.
+        # The ID of the source instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the custom synchronization link.
         self.link_id = link_id
         # The namespace name of the source instance.
         self.namespace_name = namespace_name
+        # The instance-level namespace regex filter.
+        # > This parameter takes effect only when SyncScope is set to `INSTANCE`.
         self.namespace_name_filter = namespace_name_filter
-        self.priority = priority
-        # The name of the image repository in the source instance.
-        self.repo_name = repo_name
-        # The regular expression that is used to filter repositories.
+        # The execution priority of the synchronization task. Synchronization tasks are executed in descending order of priority. Tasks with the same priority are executed in random order.
         # 
-        # >  This parameter is valid only when SyncScope is set to `NAMESPACE`.
+        # Valid values: 1 to 5.
+        # 
+        # Default value: 3.
+        self.priority = priority
+        # The repository name of the source instance.
+        self.repo_name = repo_name
+        # The repository filter rule.
+        # > This parameter takes effect only when SyncScope is set to `INSTANCE` or `NAMESPACE`.
         self.repo_name_filter = repo_name_filter
-        # The name of the image synchronization rule.
+        # The name of the synchronization rule.
         # 
         # This parameter is required.
         self.sync_rule_name = sync_rule_name
-        # The synchronization scope. Valid values:
+        # The synchronization type. Valid values:
         # 
-        # *   `REPO`: synchronizes the image tags in an image repository that meet the synchronization rule.
-        # *   `NAMESPACE`: synchronizes the image tags in a namespace that meet the synchronization rule.
+        # - `REPO`: Synchronizes by image repository.
+        # 
+        # - `NAMESPACE`: Synchronizes by namespace.
+        # 
+        # - `INSTANCE`: Synchronizes by namespace regex and repository regex.
         # 
         # This parameter is required.
         self.sync_scope = sync_scope
-        # The mode of triggering the synchronization rule. Valid values:
+        # The trigger for the synchronization action. Valid values:
         # 
-        # *   `INITIATIVE`: manually triggers the synchronization rule.
-        # *   `PASSIVE`: automatically triggers the synchronization rule.
+        # - `INITIATIVE`: Manual trigger.
+        #  
+        # - `PASSIVE`: Automatic trigger.
         self.sync_trigger = sync_trigger
-        # The regular expression that is used to filter image tags.
+        # The tag filter rule.
         # 
         # This parameter is required.
         self.tag_filter = tag_filter
-        # The destination instance ID.
+        # The ID of the target instance.
         # 
         # This parameter is required.
         self.target_instance_id = target_instance_id
-        # The namespace name of the destination instance.
+        # The namespace name of the target instance.
         self.target_namespace_name = target_namespace_name
-        # The region ID of the destination instance.
+        # The region ID of the target instance.
         # 
         # This parameter is required.
         self.target_region_id = target_region_id
-        # The name of the image repository in the destination instance.
+        # The image repository name of the target instance.
         self.target_repo_name = target_repo_name
-        # The user ID (UID) of the account to which the destination instance belongs.
+        # The UID of the account to which the target instance belongs.
         # 
-        # >  If you synchronize images across accounts, you must use the UID.
+        # > This parameter is required for cross-account image synchronization.
         self.target_user_id = target_user_id
 
     def validate(self):

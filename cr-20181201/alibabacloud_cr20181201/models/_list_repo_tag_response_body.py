@@ -20,13 +20,15 @@ class ListRepoTagResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The return code.
+        # The return value.
         self.code = code
-        # The image list.
+        # The list of images.
         self.images = images
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.is_success = is_success
+        # The maximum number of entries returned.
         self.max_results = max_results
+        # The pagination token for the next page. If a next page exists, the service returns a NextToken value. Pass this value in the next request.
         self.next_token = next_token
         # The page number.
         self.page_no = page_no
@@ -132,7 +134,7 @@ class ListRepoTagResponseBodyImages(DaraModel):
         self.image_id = image_id
         # The image size, in bytes.
         self.image_size = image_size
-        # The time when the image was updated.
+        # The time when the image was last updated.
         self.image_update = image_update
         # The status.
         self.status = status

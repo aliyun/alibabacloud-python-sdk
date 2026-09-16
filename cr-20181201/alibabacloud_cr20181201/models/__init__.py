@@ -378,6 +378,7 @@ from ._artifact_lifecycle_policy import ArtifactLifecyclePolicyCondition
 from ._artifact_lifecycle_policy import ArtifactLifecyclePolicyFilter
 from ._repo_configuration import RepoConfigurationArtifactBuildRuleParameters
 from ._get_artifact_build_rule_response_body import GetArtifactBuildRuleResponseBodyParameters
+from ._get_artifact_build_task_response_body import GetArtifactBuildTaskResponseBodyArtifactCompression
 from ._get_artifact_build_task_response_body import GetArtifactBuildTaskResponseBodySourceArtifact
 from ._get_artifact_build_task_response_body import GetArtifactBuildTaskResponseBodyTargetArtifact
 from ._get_artifact_lifecycle_rule_response_body import GetArtifactLifecycleRuleResponseBodyPoliciesCondition
@@ -820,6 +821,7 @@ __all__ = [
     ArtifactLifecyclePolicyFilter,
     RepoConfigurationArtifactBuildRuleParameters,
     GetArtifactBuildRuleResponseBodyParameters,
+    GetArtifactBuildTaskResponseBodyArtifactCompression,
     GetArtifactBuildTaskResponseBodySourceArtifact,
     GetArtifactBuildTaskResponseBodyTargetArtifact,
     GetArtifactLifecycleRuleResponseBodyPoliciesCondition,

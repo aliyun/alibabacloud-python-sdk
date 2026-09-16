@@ -15,21 +15,21 @@ class ListRepoSyncRuleRequest(DaraModel):
         target_instance_id: str = None,
         target_region_id: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The name of the namespace.
+        # The namespace name.
         self.namespace_name = namespace_name
-        # The number of the page to return.
+        # The page number.
         self.page_no = page_no
-        # The number of entries to return on each page.
+        # The page size.
         self.page_size = page_size
-        # The name of the image repository.
+        # The image repository name.
         self.repo_name = repo_name
-        # The ID of the target instance.
+        # The target instance ID.
         self.target_instance_id = target_instance_id
-        # The ID of the target region.
+        # The target region ID.
         self.target_region_id = target_region_id
 
     def validate(self):

@@ -19,46 +19,51 @@ class CreateRepoSyncTaskRequest(DaraModel):
         target_tag: str = None,
         target_user_id: str = None,
     ):
-        # Source instance ID
+        # The source instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Specifies whether to overwrite an existing image:
+        # Specifies whether to forcibly overwrite existing images. Valid values:
         # 
-        # - `true`: Overwrite the existing image.
+        # - `true`: Forcibly overwrites existing images.
         # 
-        # - `false`: Do not overwrite the existing image.
+        # - `false`: Does not forcibly overwrite existing images.
         self.override = override
+        # The execution priority of the synchronization task. Synchronization tasks are executed in descending order of priority. Tasks with the same priority are executed in random order.
+        # 
+        # Valid values: 1 to 5.
+        # 
+        # Default value: 3.
         self.priority = priority
-        # Image repository ID in the source instance
+        # The ID of the image repository in the source instance.
         # 
         # This parameter is required.
         self.repo_id = repo_id
-        # Image tag in the source instance
+        # The image tag in the source instance.
         # 
         # This parameter is required.
         self.tag = tag
-        # Target instance ID
+        # The target instance ID.
         # 
         # This parameter is required.
         self.target_instance_id = target_instance_id
-        # Namespace in the target instance
+        # The namespace of the target instance.
         # 
         # This parameter is required.
         self.target_namespace = target_namespace
-        # Region ID of the target instance
+        # The region ID of the target instance.
         # 
         # This parameter is required.
         self.target_region_id = target_region_id
-        # Name of the image repository in the target instance
+        # The name of the image repository in the target instance.
         # 
         # This parameter is required.
         self.target_repo_name = target_repo_name
-        # Image tag in the target instance
+        # The image tag in the target instance.
         # 
         # This parameter is required.
         self.target_tag = target_tag
-        # UID of the account to which the target instance belongs
+        # The UID of the account to which the target instance belongs.
         self.target_user_id = target_user_id
 
     def validate(self):

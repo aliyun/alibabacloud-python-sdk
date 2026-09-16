@@ -8,7 +8,9 @@ class CreateArtifactLifecycleRuleRequest(DaraModel):
     def __init__(
         self,
         auto: bool = None,
+        dry_run: bool = None,
         enable_delete_tag: bool = None,
+        enable_delete_untagged_manifest: bool = None,
         instance_id: str = None,
         namespace_name: str = None,
         repo_name: str = None,
@@ -19,8 +21,10 @@ class CreateArtifactLifecycleRuleRequest(DaraModel):
     ):
         # Specify whether to automatically execute the lifecycle management rule.
         self.auto = auto
+        self.dry_run = dry_run
         # Specify whether to enable lifecycle management for the artifact.
         self.enable_delete_tag = enable_delete_tag
+        self.enable_delete_untagged_manifest = enable_delete_untagged_manifest
         # The instance ID.
         # 
         # This parameter is required.
@@ -49,8 +53,14 @@ class CreateArtifactLifecycleRuleRequest(DaraModel):
         if self.auto is not None:
             result['Auto'] = self.auto
 
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+
         if self.enable_delete_tag is not None:
             result['EnableDeleteTag'] = self.enable_delete_tag
+
+        if self.enable_delete_untagged_manifest is not None:
+            result['EnableDeleteUntaggedManifest'] = self.enable_delete_untagged_manifest
 
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
@@ -80,8 +90,14 @@ class CreateArtifactLifecycleRuleRequest(DaraModel):
         if m.get('Auto') is not None:
             self.auto = m.get('Auto')
 
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+
         if m.get('EnableDeleteTag') is not None:
             self.enable_delete_tag = m.get('EnableDeleteTag')
+
+        if m.get('EnableDeleteUntaggedManifest') is not None:
+            self.enable_delete_untagged_manifest = m.get('EnableDeleteUntaggedManifest')
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')

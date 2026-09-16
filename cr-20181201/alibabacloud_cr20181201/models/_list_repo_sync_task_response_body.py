@@ -18,9 +18,9 @@ class ListRepoSyncTaskResponseBody(DaraModel):
         sync_tasks: List[main_models.ListRepoSyncTaskResponseBodySyncTasks] = None,
         total_count: str = None,
     ):
-        # The return code.
+        # The return value.
         self.code = code
-        # Whether the request was successful.
+        # Indicates whether the request is successful.
         self.is_success = is_success
         # The page number.
         self.page_no = page_no
@@ -28,7 +28,7 @@ class ListRepoSyncTaskResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # A list of sync tasks.
+        # The list of synchronization tasks.
         self.sync_tasks = sync_tasks
         # The total number of entries.
         self.total_count = total_count
@@ -117,9 +117,9 @@ class ListRepoSyncTaskResponseBodySyncTasks(DaraModel):
         task_status: str = None,
         task_trigger: str = None,
     ):
-        # The creation time of the task.
+        # The creation time.
         self.create_time = create_time
-        # Whether the image is synchronized across accounts. Valid values:
+        # Indicates whether the image is synchronized across accounts. Valid values:
         # 
         # - `true`: The image is synchronized across accounts.
         # 
@@ -127,40 +127,43 @@ class ListRepoSyncTaskResponseBodySyncTasks(DaraModel):
         # 
         # Default value: `false`
         self.cross_user = cross_user
-        # Whether a custom sync link is used.
+        # Indicates whether a custom synchronization link is used.
         self.custom_link = custom_link
         # The source image.
         self.image_from = image_from
         # The destination image.
         self.image_to = image_to
-        # The ID of the custom sync link.
+        # The custom synchronization link ID.
         self.link_id = link_id
-        # This parameter is deprecated due to a typo. Use `ModifiedTime` instead.
+        # The modification time.
         self.modifed_time = modifed_time
-        # The modification time of the task.
+        # The modification time.
         self.modified_time = modified_time
-        self.priority = priority
-        # The ID of the batch sync task. This ID is the same as the sync record ID (`SyncRecordId`).
+        # The execution priority of the synchronization task. Synchronization tasks are executed in descending order of priority. Tasks with the same priority are executed in random order.
         # 
-        # > If an image matches multiple sync rules, multiple sync tasks are generated. These tasks share the same `SyncBatchTaskId`.
+        # Valid values: 1 to 5.
+        # 
+        # Default value: 3.
+        self.priority = priority
+        # The batch synchronization task ID for images, which corresponds to the SyncRecordId (synchronization task record ID) in the request parameters.
+        # > When an image matches multiple synchronization rules and generates multiple synchronization tasks, these tasks share the same SyncBatchTaskId.
         self.sync_batch_task_id = sync_batch_task_id
-        # The ID of the sync rule.
+        # The synchronization rule ID.
         self.sync_rule_id = sync_rule_id
-        # The ID of the sync task.
+        # The synchronization task ID.
         self.sync_task_id = sync_task_id
-        # Whether transfer acceleration is enabled for the sync task.
+        # The synchronization transfer acceleration status.
         self.sync_trans_accelerate = sync_trans_accelerate
         # The task failure information.
-        # 
-        # > If the sync task fails, this field returns details about the failure.
+        # > When a synchronization task fails, this field returns information about the failure.
         self.task_issue = task_issue
         # The task status.
         self.task_status = task_status
         # The trigger policy. Valid values:
         # 
-        # - `PASSIVE`: The sync task is automatically triggered.
+        # - `PASSIVE`: Synchronization is automatically triggered.
         # 
-        # - `INITIATIVE`: The sync task is manually triggered.
+        # - `INITIATIVE`: Synchronization is manually triggered.
         # 
         # Default value: `PASSIVE`
         self.task_trigger = task_trigger
@@ -291,9 +294,9 @@ class ListRepoSyncTaskResponseBodySyncTasksImageTo(DaraModel):
     ):
         # The image tag.
         self.image_tag = image_tag
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
         # The repository name.
         self.repo_name = repo_name
@@ -355,9 +358,9 @@ class ListRepoSyncTaskResponseBodySyncTasksImageFrom(DaraModel):
     ):
         # The image tag.
         self.image_tag = image_tag
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
         # The repository name.
         self.repo_name = repo_name

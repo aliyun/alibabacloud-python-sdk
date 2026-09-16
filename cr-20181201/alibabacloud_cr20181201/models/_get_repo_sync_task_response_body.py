@@ -30,50 +30,60 @@ class GetRepoSyncTaskResponseBody(DaraModel):
     ):
         # The return value.
         self.code = code
-        # Indicates whether the synchronization task is performed across Alibaba Cloud accounts.
+        # Indicates whether the synchronization is cross-account.
         self.cross_user = cross_user
-        # The source address of the image.
+        # The source image.
         self.image_from = image_from
-        # The destination address of the image.
+        # The destination image.
         self.image_to = image_to
         # Indicates whether the request is successful.
         self.is_success = is_success
-        # The synchronization tasks for the image layer.
+        # The list of image layer synchronization tasks.
         self.layer_tasks = layer_tasks
+        # The execution priority of the synchronization task. Synchronization tasks are executed in descending order of priority. Tasks with the same priority are executed in random order.
+        # 
+        # Valid values: 1 to 5.
+        # 
+        # Default value: 3.
         self.priority = priority
         # The synchronization progress. Valid values:
         # 
-        # *   `0`: The synchronization starts or failed.
-        # *   `1`: The synchronization is successful.
+        # - `0`: The synchronization has just started or failed.
+        # 
+        # - `1`: The synchronization succeeded.
         self.progress = progress
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the synchronization task in which multiple images are synchronized at a time.
+        # The synchronization batch task ID.
         self.sync_batch_task_id = sync_batch_task_id
-        # The ID of the synchronization rule.
+        # The synchronization rule ID.
         self.sync_rule_id = sync_rule_id
-        # The ID of the synchronization task.
+        # The synchronization task ID.
         self.sync_task_id = sync_task_id
-        # Indicates whether transfer acceleration is enabled in the synchronization process.
+        # Indicates whether transfer acceleration is enabled for synchronization.
         self.sync_trans_accelerate = sync_trans_accelerate
-        # The size of the image layer that is synchronized. Unit: bytes.
+        # The synchronized size, in bytes.
         self.synced_size = synced_size
-        # The error message that is returned if the synchronization task fails.
-        # 
-        # >  The system uses this parameter to return an error message if the synchronization task fails.
-        # 
-        # Valid values:
-        # 
-        # *   OSS_POLICY_UNAUTHORIZED: Container Registry is not granted permissions to use Object Storage Service (OSS).
-        # *   TAG_CONFLICT: The destination repository contains an image that has the same tag as the source image, and image tag immutability is enabled for the destination repository.
-        # *   UNSUPPORTED_FORMAT: The manifest and config formats of the image to be synchronized are not supported.
-        # *   INTERNAL_ERROR: The synchronization task failed due to internal issues on the server.
-        # *   NETWORK_ERROR: The synchronization task failed due to unstable network connection.
-        # *   DATA_LENGTH_EXCEEDED: The manifest or config of the image is oversized.
+        # The task failure information.
+        # > When the synchronization task fails, this field returns information about the failure.
         self.task_issue = task_issue
-        # The status of the task. Valid values:
+        # The task status. Valid values:
+        # 
+        # `PENDING`: The synchronization is pending.
+        # 
+        # `SYNCHRONIZING`: The synchronization is in progress.
+        # 
+        # `SUCCESS`: The synchronization succeeded.
+        # 
+        # `ERROR`: The synchronization failed.
+        # 
+        # `CANCELED`: The synchronization task is canceled.
         self.task_status = task_status
-        # The policy that is used to trigger the synchronization task.
+        # The trigger type of the synchronization task. Valid values:
+        # 
+        # `PASSIVE`: The synchronization task is automatically triggered.
+        # 
+        # `INITIATIVE`: The synchronization task is manually triggered.
         self.task_trigger = task_trigger
 
     def validate(self):
@@ -216,17 +226,17 @@ class GetRepoSyncTaskResponseBodyLayerTasks(DaraModel):
         synced_size: int = None,
         task_status: str = None,
     ):
-        # The digest of the artifact.
+        # The digest value of the artifact.
         self.artifact_digest = artifact_digest
-        # The digest of the image layer.
+        # The image digest value.
         self.digest = digest
-        # The size of synchronized image layers.
+        # The size.
         self.size = size
-        # The ID of the synchronization task for the image layer.
+        # The synchronization layer task ID.
         self.sync_layer_task_id = sync_layer_task_id
-        # The size of the image layer that is synchronized.
+        # The synchronized size.
         self.synced_size = synced_size
-        # The status of the synchronization task. Valid values:
+        # The task status.
         self.task_status = task_status
 
     def validate(self):
@@ -288,15 +298,15 @@ class GetRepoSyncTaskResponseBodyImageTo(DaraModel):
         repo_name: str = None,
         repo_namespace_name: str = None,
     ):
-        # The tag of the image.
+        # The image tag.
         self.image_tag = image_tag
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The region ID.
+        # The region.
         self.region_id = region_id
-        # The name of the image repository.
+        # The repository name.
         self.repo_name = repo_name
-        # The name of the namespace.
+        # The namespace name.
         self.repo_namespace_name = repo_namespace_name
 
     def validate(self):
@@ -352,15 +362,15 @@ class GetRepoSyncTaskResponseBodyImageFrom(DaraModel):
         repo_name: str = None,
         repo_namespace_name: str = None,
     ):
-        # The tag of the image.
+        # The image tag.
         self.image_tag = image_tag
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The region ID.
+        # The region.
         self.region_id = region_id
-        # The name of the image repository.
+        # The repository name.
         self.repo_name = repo_name
-        # The name of the namespace.
+        # The namespace name.
         self.repo_namespace_name = repo_namespace_name
 
     def validate(self):

@@ -13,23 +13,22 @@ class GetArtifactBuildRuleRequest(DaraModel):
         scope_id: str = None,
         scope_type: str = None,
     ):
-        # The type of the artifact.
+        # The type of the accelerated image. Valid values:
         # 
-        # *   `ACCELERATED_IMAGE`: accelerated images.
+        # - `ACCELERATED_IMAGE`: generates an accelerated image.
         self.artifact_type = artifact_type
-        # The ID of the artifact building rule.
+        # The build rule ID.
         self.build_rule_id = build_rule_id
-        # The ID of the Container Registry instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the effective range of the artifact building rule.
+        # The ID of the scope in which the rule takes effect. Valid values:
         # 
-        # *   Set the value to the ID of the image repository.
+        # - ScopeId: the image repository ID.
         self.scope_id = scope_id
-        # The effective range of the artifact building rule. Valid values:
-        # 
-        # *   `REPOSITORY`: The artifact building rule is effective in the repository level.
+        # The scope of the rule. Valid values:
+        # - `REPOSITORY`: repository level.
         self.scope_type = scope_type
 
     def validate(self):

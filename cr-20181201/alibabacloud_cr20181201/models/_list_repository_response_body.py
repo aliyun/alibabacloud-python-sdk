@@ -22,9 +22,11 @@ class ListRepositoryResponseBody(DaraModel):
     ):
         # The return value.
         self.code = code
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.is_success = is_success
+        # The maximum number of entries returned.
         self.max_results = max_results
+        # The pagination token. If a next page exists, the service returns a NextToken value. Pass this value in the next request.
         self.next_token = next_token
         # The page number.
         self.page_no = page_no
@@ -129,11 +131,11 @@ class ListRepositoryResponseBodyRepositories(DaraModel):
         summary: str = None,
         tag_immutability: bool = None,
     ):
-        # The creation time.
+        # The time when the repository was created.
         self.create_time = create_time
         # The instance ID.
         self.instance_id = instance_id
-        # The last modification time.
+        # The time when the repository was last modified.
         self.modified_time = modified_time
         # The repository build type. Valid values:
         # 
@@ -157,9 +159,9 @@ class ListRepositoryResponseBodyRepositories(DaraModel):
         self.repo_type = repo_type
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The summary information.
+        # The summary.
         self.summary = summary
-        # The image tag immutability.
+        # The tag immutability of the image.
         self.tag_immutability = tag_immutability
 
     def validate(self):

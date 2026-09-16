@@ -1,3 +1,22 @@
+2026-09-16 Version: 2.2.5
+- Update API CreateArtifactLifecycleRule: add request parameters DryRun.
+- Update API CreateArtifactLifecycleRule: add request parameters EnableDeleteUntaggedManifest.
+- Update API GetArtifactBuildRule: add response parameters Body.Parameters.Priority.
+- Update API GetArtifactBuildTask: add response parameters Body.ArtifactCompression.
+- Update API GetArtifactBuildTask: add response parameters Body.Priority.
+- Update API GetArtifactBuildTask: add response parameters Body.SourceArtifact.LayerCount.
+- Update API GetArtifactBuildTask: add response parameters Body.SourceArtifact.Size.
+- Update API GetArtifactBuildTask: add response parameters Body.TargetArtifact.LayerCount.
+- Update API GetArtifactBuildTask: add response parameters Body.TargetArtifact.Size.
+- Update API GetArtifactLifecycleRule: add response parameters Body.DryRun.
+- Update API GetArtifactLifecycleRule: add response parameters Body.EnableDeleteUntaggedManifest.
+- Update API GetInstanceUsage: add response parameters Body.PerformanceUnits.
+- Update API ListArtifactLifecycleRule: add response parameters Body.Rules.$.DryRun.
+- Update API ListArtifactLifecycleRule: add response parameters Body.Rules.$.EnableDeleteUntaggedManifest.
+- Update API UpdateArtifactLifecycleRule: add request parameters DryRun.
+- Update API UpdateArtifactLifecycleRule: add request parameters EnableDeleteUntaggedManifest.
+
+
 2026-08-07 Version: 2.2.4
 - Generated python 2018-12-01 for cr.
 

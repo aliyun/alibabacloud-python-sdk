@@ -13,20 +13,25 @@ class CreateRepoSyncTaskByRuleRequest(DaraModel):
         sync_rule_id: str = None,
         tag: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The execution priority of the synchronization task. Synchronization tasks are executed in descending order of priority. Synchronization tasks with the same priority are executed in random order.
+        # 
+        # Valid values: 1 to 5.
+        # 
+        # Default value: 3.
         self.priority = priority
-        # The ID of the image repository.
+        # The image repository ID.
         # 
         # This parameter is required.
         self.repo_id = repo_id
-        # The ID of the synchronization rule.
+        # The synchronization rule ID.
         # 
         # This parameter is required.
         self.sync_rule_id = sync_rule_id
-        # The version of the image to be synchronized.
+        # The image version to be synchronized.
         # 
         # This parameter is required.
         self.tag = tag

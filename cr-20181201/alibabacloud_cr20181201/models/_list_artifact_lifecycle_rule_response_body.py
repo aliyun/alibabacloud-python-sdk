@@ -20,21 +20,21 @@ class ListArtifactLifecycleRuleResponseBody(DaraModel):
     ):
         # The return code.
         self.code = code
-        # Indicates whether the request succeeded. Valid values:
+        # Indicates whether the call was successful. Valid values:
         # 
-        # - `true`: The request succeeded.
+        # - `true`: The call was successful.
         # 
-        # - `false`: The request failed.
+        # - `false`: The call failed.
         self.is_success = is_success
         # The page number.
         self.page_no = page_no
-        # The number of entries returned on each page.
+        # The page size.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The list of lifecycle management rules.
+        # The list of rules.
         self.rules = rules
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -106,7 +106,9 @@ class ListArtifactLifecycleRuleResponseBodyRules(DaraModel):
         self,
         auto: bool = None,
         create_time: int = None,
+        dry_run: bool = None,
         enable_delete_tag: bool = None,
+        enable_delete_untagged_manifest: bool = None,
         instance_id: str = None,
         modified_time: int = None,
         namespace_name: str = None,
@@ -119,32 +121,41 @@ class ListArtifactLifecycleRuleResponseBodyRules(DaraModel):
         scope: str = None,
         tag_regexp: str = None,
     ):
-        # Indicates whether the rule runs automatically.
+        # Indicates whether the rule is automatically executed.
         self.auto = auto
-        # The creation time of the rule.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # Indicates whether the rule is configured to delete tags.
+        # Indicates whether DryRun mode is enabled. When DryRun mode is enabled, only lifecycle task scanning is performed and no actual data cleanup is executed. This mode is disabled by default.
+        self.dry_run = dry_run
+        # Indicates whether lifecycle management is enabled.
+        # 
+        # Only one of this parameter and EnableDeleteUntaggedManifest can be set to true.
         self.enable_delete_tag = enable_delete_tag
+        # Indicates whether artifact cleanup is enabled.
+        # 
+        # Only one of this parameter and EnableDeleteTag can be set to true.
+        self.enable_delete_untagged_manifest = enable_delete_untagged_manifest
         # The instance ID.
         self.instance_id = instance_id
-        # The last modification time of the rule.
+        # The modification time. The value is a UNIX timestamp in milliseconds.
         self.modified_time = modified_time
         # The namespace name.
         self.namespace_name = namespace_name
-        # The next execution time.
+        # The next execution time. The value is a UNIX timestamp in milliseconds.
         self.next_time = next_time
+        # The list of lifecycle policies.
         self.policies = policies
         # The repository name.
         self.repo_name = repo_name
-        # The number of image tags to retain.
+        # The number of retained images.
         self.retention_tag_count = retention_tag_count
         # The rule ID.
         self.rule_id = rule_id
-        # The execution schedule.
+        # The execution cycle.
         self.schedule_time = schedule_time
-        # The scope of the rule.
+        # The cleanup scope.
         self.scope = scope
-        # The regular expression that matches image tags to retain.
+        # The regular expression for retaining image versions.
         self.tag_regexp = tag_regexp
 
     def validate(self):
@@ -164,8 +175,14 @@ class ListArtifactLifecycleRuleResponseBodyRules(DaraModel):
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
 
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+
         if self.enable_delete_tag is not None:
             result['EnableDeleteTag'] = self.enable_delete_tag
+
+        if self.enable_delete_untagged_manifest is not None:
+            result['EnableDeleteUntaggedManifest'] = self.enable_delete_untagged_manifest
 
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
@@ -212,8 +229,14 @@ class ListArtifactLifecycleRuleResponseBodyRules(DaraModel):
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
 
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+
         if m.get('EnableDeleteTag') is not None:
             self.enable_delete_tag = m.get('EnableDeleteTag')
+
+        if m.get('EnableDeleteUntaggedManifest') is not None:
+            self.enable_delete_untagged_manifest = m.get('EnableDeleteUntaggedManifest')
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
@@ -260,8 +283,11 @@ class ListArtifactLifecycleRuleResponseBodyRulesPolicies(DaraModel):
         filter: main_models.ListArtifactLifecycleRuleResponseBodyRulesPoliciesFilter = None,
         type: str = None,
     ):
+        # The trigger condition of the lifecycle policy.
         self.condition = condition
+        # The image version filter condition.
         self.filter = filter
+        # The lifecycle policy type.
         self.type = type
 
     def validate(self):
@@ -306,6 +332,7 @@ class ListArtifactLifecycleRuleResponseBodyRulesPoliciesFilter(DaraModel):
         self,
         tag_wildcard: str = None,
     ):
+        # The wildcard used to match image versions.
         self.tag_wildcard = tag_wildcard
 
     def validate(self):
@@ -335,8 +362,11 @@ class ListArtifactLifecycleRuleResponseBodyRulesPoliciesCondition(DaraModel):
         last_push_older_than_days: int = None,
         latest_tag_count: int = None,
     ):
+        # The number of days since the last pull.
         self.last_pull_older_than_days = last_pull_older_than_days
+        # The number of days since the last push.
         self.last_push_older_than_days = last_push_older_than_days
+        # The number of latest image versions to retain.
         self.latest_tag_count = latest_tag_count
 
     def validate(self):

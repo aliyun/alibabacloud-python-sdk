@@ -25,13 +25,12 @@ class ListRepoSyncTaskRequest(DaraModel):
         self.page_size = page_size
         # The repository name.
         self.repo_name = repo_name
-        # The name of the repository namespace.
+        # The name of the namespace to which the repository belongs.
         self.repo_namespace_name = repo_namespace_name
-        # The ID of the sync task. This ID is also the `SyncBatchTaskId` returned in the response, which identifies the image\\"s sync batch task.
-        # 
-        # > An image that matches multiple sync rules generates multiple sync tasks, each with the same `SyncBatchTaskId`.
+        # The synchronization task record ID, which corresponds to the SyncBatchTaskId (batch synchronization task ID for images) in the response.
+        # > When an image matches multiple synchronization rules and generates multiple synchronization tasks, these tasks share the same SyncBatchTaskId.
         self.sync_record_id = sync_record_id
-        # The image tag.
+        # The image version.
         self.tag = tag
 
     def validate(self):

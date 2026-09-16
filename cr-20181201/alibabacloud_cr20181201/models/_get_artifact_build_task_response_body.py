@@ -11,11 +11,13 @@ class GetArtifactBuildTaskResponseBody(DaraModel):
     def __init__(
         self,
         artifact_build_type: str = None,
+        artifact_compression: main_models.GetArtifactBuildTaskResponseBodyArtifactCompression = None,
         build_task_id: str = None,
         code: str = None,
         end_time: int = None,
         instructions: List[str] = None,
         is_success: bool = None,
+        priority: int = None,
         request_id: str = None,
         source_artifact: main_models.GetArtifactBuildTaskResponseBodySourceArtifact = None,
         start_time: int = None,
@@ -24,39 +26,44 @@ class GetArtifactBuildTaskResponseBody(DaraModel):
     ):
         # The artifact build type. Valid values:
         # 
-        # - `IMAGE_TO_ACCELERATED_IMAGE`: an accelerated image for ACK.
+        # - `IMAGE_TO_ACCELERATED_IMAGE`: Accelerated image creation optimized for ACK scenarios.
         # 
-        # - `IMAGE_TO_ECI_ACCELERATED_IMAGE`: an accelerated image for ECI.
+        # - `IMAGE_TO_ECI_ACCELERATED_IMAGE`: Accelerated image artifact optimized for ECI scenarios.
         self.artifact_build_type = artifact_build_type
+        # The artifact compression parameters.
+        self.artifact_compression = artifact_compression
         # The ID of the artifact build task.
         self.build_task_id = build_task_id
-        # The response code.
+        # The return code.
         self.code = code
-        # The Unix timestamp in seconds when the task ended.
+        # The end time. The value is a UNIX timestamp in seconds.
         self.end_time = end_time
+        # The reserved field list of the artifact build task. The list elements should be empty.
         self.instructions = instructions
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.is_success = is_success
-        # The ID of the request.
+        self.priority = priority
+        # The request ID.
         self.request_id = request_id
         # The source artifact.
         self.source_artifact = source_artifact
-        # The Unix timestamp in seconds when the task started.
+        # The start time. The value is a UNIX timestamp in seconds.
         self.start_time = start_time
         # The target artifact.
         self.target_artifact = target_artifact
-        # The status of the artifact build task. Valid values:
+        # The artifact build status. Valid values:
+        # - `PENDING`: Scheduling in progress.
         # 
-        # - `PENDING`: The task is being scheduled.
+        # - `BUILDING`: Building in progress.
         # 
-        # - `BUILDING`: The task is in progress.
+        # - `SUCCESS`: Build succeeded.
         # 
-        # - `SUCCESS`: The task is successful.
-        # 
-        # - `FAILED`: The task failed.
+        # - `FAILED`: Build failed.
         self.task_status = task_status
 
     def validate(self):
+        if self.artifact_compression:
+            self.artifact_compression.validate()
         if self.source_artifact:
             self.source_artifact.validate()
         if self.target_artifact:
@@ -69,6 +76,9 @@ class GetArtifactBuildTaskResponseBody(DaraModel):
             result = _map
         if self.artifact_build_type is not None:
             result['ArtifactBuildType'] = self.artifact_build_type
+
+        if self.artifact_compression is not None:
+            result['ArtifactCompression'] = self.artifact_compression.to_map()
 
         if self.build_task_id is not None:
             result['BuildTaskId'] = self.build_task_id
@@ -84,6 +94,9 @@ class GetArtifactBuildTaskResponseBody(DaraModel):
 
         if self.is_success is not None:
             result['IsSuccess'] = self.is_success
+
+        if self.priority is not None:
+            result['Priority'] = self.priority
 
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -107,6 +120,10 @@ class GetArtifactBuildTaskResponseBody(DaraModel):
         if m.get('ArtifactBuildType') is not None:
             self.artifact_build_type = m.get('ArtifactBuildType')
 
+        if m.get('ArtifactCompression') is not None:
+            temp_model = main_models.GetArtifactBuildTaskResponseBodyArtifactCompression()
+            self.artifact_compression = temp_model.from_map(m.get('ArtifactCompression'))
+
         if m.get('BuildTaskId') is not None:
             self.build_task_id = m.get('BuildTaskId')
 
@@ -121,6 +138,9 @@ class GetArtifactBuildTaskResponseBody(DaraModel):
 
         if m.get('IsSuccess') is not None:
             self.is_success = m.get('IsSuccess')
+
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
@@ -145,14 +165,20 @@ class GetArtifactBuildTaskResponseBodyTargetArtifact(DaraModel):
     def __init__(
         self,
         artifact_type: str = None,
+        layer_count: int = None,
         repo_id: str = None,
+        size: int = None,
         version: str = None,
     ):
-        # The artifact type. Currently, only `IMAGE` is supported.
+        # The artifact type. Only IMAGE is supported.
         self.artifact_type = artifact_type
-        # The repository ID. It must be the same as the repository ID of the source artifact. Only image repositories are supported.
+        # The number of artifact layers.
+        self.layer_count = layer_count
+        # The repository ID. Only image repositories are supported. The repository ID of the target artifact must be the same as that of the source artifact.
         self.repo_id = repo_id
-        # The artifact version. Currently, only image versions are supported.
+        # The artifact size, in bytes.
+        self.size = size
+        # The artifact version. Only images are supported.
         self.version = version
 
     def validate(self):
@@ -166,8 +192,14 @@ class GetArtifactBuildTaskResponseBodyTargetArtifact(DaraModel):
         if self.artifact_type is not None:
             result['ArtifactType'] = self.artifact_type
 
+        if self.layer_count is not None:
+            result['LayerCount'] = self.layer_count
+
         if self.repo_id is not None:
             result['RepoId'] = self.repo_id
+
+        if self.size is not None:
+            result['Size'] = self.size
 
         if self.version is not None:
             result['Version'] = self.version
@@ -179,8 +211,14 @@ class GetArtifactBuildTaskResponseBodyTargetArtifact(DaraModel):
         if m.get('ArtifactType') is not None:
             self.artifact_type = m.get('ArtifactType')
 
+        if m.get('LayerCount') is not None:
+            self.layer_count = m.get('LayerCount')
+
         if m.get('RepoId') is not None:
             self.repo_id = m.get('RepoId')
+
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
 
         if m.get('Version') is not None:
             self.version = m.get('Version')
@@ -191,14 +229,20 @@ class GetArtifactBuildTaskResponseBodySourceArtifact(DaraModel):
     def __init__(
         self,
         artifact_type: str = None,
+        layer_count: int = None,
         repo_id: str = None,
+        size: int = None,
         version: str = None,
     ):
-        # The artifact type. Currently, only `IMAGE` is supported.
+        # The artifact type. Only IMAGE is supported.
         self.artifact_type = artifact_type
-        # The repository ID. Currently, only image repositories are supported.
+        # The number of artifact layers.
+        self.layer_count = layer_count
+        # The repository ID. Only image repositories are supported.
         self.repo_id = repo_id
-        # The artifact version. Currently, only image versions are supported.
+        # The artifact size, in bytes.
+        self.size = size
+        # The artifact version. Only image versions are supported.
         self.version = version
 
     def validate(self):
@@ -212,8 +256,14 @@ class GetArtifactBuildTaskResponseBodySourceArtifact(DaraModel):
         if self.artifact_type is not None:
             result['ArtifactType'] = self.artifact_type
 
+        if self.layer_count is not None:
+            result['LayerCount'] = self.layer_count
+
         if self.repo_id is not None:
             result['RepoId'] = self.repo_id
+
+        if self.size is not None:
+            result['Size'] = self.size
 
         if self.version is not None:
             result['Version'] = self.version
@@ -225,11 +275,63 @@ class GetArtifactBuildTaskResponseBodySourceArtifact(DaraModel):
         if m.get('ArtifactType') is not None:
             self.artifact_type = m.get('ArtifactType')
 
+        if m.get('LayerCount') is not None:
+            self.layer_count = m.get('LayerCount')
+
         if m.get('RepoId') is not None:
             self.repo_id = m.get('RepoId')
 
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+
         if m.get('Version') is not None:
             self.version = m.get('Version')
+
+        return self
+
+class GetArtifactBuildTaskResponseBodyArtifactCompression(DaraModel):
+    def __init__(
+        self,
+        platform: str = None,
+        squash_keep_layers: int = None,
+        start_layer_digest: str = None,
+    ):
+        # The operating system and architecture.
+        self.platform = platform
+        # The number of layers to retain after compression.
+        self.squash_keep_layers = squash_keep_layers
+        # The digest of the starting layer for compression.
+        self.start_layer_digest = start_layer_digest
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.platform is not None:
+            result['Platform'] = self.platform
+
+        if self.squash_keep_layers is not None:
+            result['SquashKeepLayers'] = self.squash_keep_layers
+
+        if self.start_layer_digest is not None:
+            result['StartLayerDigest'] = self.start_layer_digest
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Platform') is not None:
+            self.platform = m.get('Platform')
+
+        if m.get('SquashKeepLayers') is not None:
+            self.squash_keep_layers = m.get('SquashKeepLayers')
+
+        if m.get('StartLayerDigest') is not None:
+            self.start_layer_digest = m.get('StartLayerDigest')
 
         return self
 

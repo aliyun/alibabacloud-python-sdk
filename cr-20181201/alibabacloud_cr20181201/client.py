@@ -21,49 +21,6 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'us-west-1': 'cr.us-west-1.aliyuncs.com',
-            'us-southeast-1': 'cr.us-southeast-1.aliyuncs.com',
-            'us-east-1': 'cr.us-east-1.aliyuncs.com',
-            'na-south-1': 'cr.na-south-1.aliyuncs.com',
-            'me-east-1': 'cr.me-east-1.aliyuncs.com',
-            'me-central-1': 'cr.me-central-1.aliyuncs.com',
-            'eu-west-2': 'cr.eu-west-2.aliyuncs.com',
-            'eu-west-1': 'cr.eu-west-1.aliyuncs.com',
-            'eu-central-1': 'cr.eu-central-1.aliyuncs.com',
-            'cn-zhongwei': 'cr.cn-zhongwei.aliyuncs.com',
-            'cn-zhengzhou-jva': 'cr.cn-zhengzhou-jva.aliyuncs.com',
-            'cn-zhangjiakou': 'cr.cn-zhangjiakou.aliyuncs.com',
-            'cn-wulanchabu-gic-1': 'cr.cn-wulanchabu-gic-1.aliyuncs.com',
-            'cn-wulanchabu': 'cr.cn-wulanchabu.aliyuncs.com',
-            'cn-wuhan-lr': 'cr.cn-wuhan-lr.aliyuncs.com',
-            'cn-shenzhen-finance-1': 'cr.cn-shenzhen-finance-1.aliyuncs.com',
-            'cn-shenzhen': 'cr.cn-shenzhen.aliyuncs.com',
-            'cn-shanghai-finance-1': 'cr.cn-shanghai-finance-1.aliyuncs.com',
-            'cn-shanghai': 'cr.cn-shanghai.aliyuncs.com',
-            'cn-qingdao': 'cr.cn-qingdao.aliyuncs.com',
-            'cn-north-2-gov-1': 'cr.cn-north-2-gov-1.aliyuncs.com',
-            'cn-nanjing': 'cr.cn-nanjing.aliyuncs.com',
-            'cn-huhehaote': 'cr.cn-huhehaote.aliyuncs.com',
-            'cn-hongkong': 'cr.cn-hongkong.aliyuncs.com',
-            'cn-heyuan-acdr-1': 'cr.cn-heyuan-acdr-1.aliyuncs.com',
-            'cn-heyuan': 'cr.cn-heyuan.aliyuncs.com',
-            'cn-hangzhou-finance': 'cr.cn-hangzhou-finance.aliyuncs.com',
-            'cn-hangzhou': 'cr.cn-hangzhou.aliyuncs.com',
-            'cn-guangzhou': 'cr.cn-guangzhou.aliyuncs.com',
-            'cn-fuzhou': 'cr.cn-fuzhou.aliyuncs.com',
-            'cn-chengdu': 'cr.cn-chengdu.aliyuncs.com',
-            'cn-beijing-finance-1': 'cr.cn-beijing-finance-1.aliyuncs.com',
-            'cn-beijing': 'cr.cn-beijing.aliyuncs.com',
-            'ap-southeast-8': 'cr.ap-southeast-8.aliyuncs.com',
-            'ap-southeast-7': 'cr.ap-southeast-7.aliyuncs.com',
-            'ap-southeast-6': 'cr.ap-southeast-6.aliyuncs.com',
-            'ap-southeast-5': 'cr.ap-southeast-5.aliyuncs.com',
-            'ap-southeast-3': 'cr.ap-southeast-3.aliyuncs.com',
-            'ap-southeast-1': 'cr.ap-southeast-1.aliyuncs.com',
-            'ap-northeast-2': 'cr.ap-northeast-2.aliyuncs.com',
-            'ap-northeast-1': 'cr.ap-northeast-1.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('cr', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -490,8 +447,12 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.auto):
             query['Auto'] = request.auto
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.enable_delete_tag):
             query['EnableDeleteTag'] = request.enable_delete_tag
+        if not DaraCore.is_null(request.enable_delete_untagged_manifest):
+            query['EnableDeleteUntaggedManifest'] = request.enable_delete_untagged_manifest
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.namespace_name):
@@ -534,8 +495,12 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.auto):
             query['Auto'] = request.auto
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.enable_delete_tag):
             query['EnableDeleteTag'] = request.enable_delete_tag
+        if not DaraCore.is_null(request.enable_delete_untagged_manifest):
+            query['EnableDeleteUntaggedManifest'] = request.enable_delete_untagged_manifest
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.namespace_name):
@@ -8488,8 +8453,12 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.auto):
             query['Auto'] = request.auto
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.enable_delete_tag):
             query['EnableDeleteTag'] = request.enable_delete_tag
+        if not DaraCore.is_null(request.enable_delete_untagged_manifest):
+            query['EnableDeleteUntaggedManifest'] = request.enable_delete_untagged_manifest
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.namespace_name):
@@ -8534,8 +8503,12 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.auto):
             query['Auto'] = request.auto
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.enable_delete_tag):
             query['EnableDeleteTag'] = request.enable_delete_tag
+        if not DaraCore.is_null(request.enable_delete_untagged_manifest):
+            query['EnableDeleteUntaggedManifest'] = request.enable_delete_untagged_manifest
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.namespace_name):

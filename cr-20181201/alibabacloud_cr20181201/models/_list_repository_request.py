@@ -20,7 +20,13 @@ class ListRepositoryRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The maximum number of entries to return.
+        # 
+        # Use this parameter together with NextToken. This parameter takes priority over PageNo and PageSize.
         self.max_results = max_results
+        # The pagination token. If a next page exists, the service returns a NextToken value. Pass this value in the next request.
+        # 
+        # Use this parameter together with MaxResults. This parameter takes priority over PageNo and PageSize.
         self.next_token = next_token
         # The page number.
         self.page_no = page_no

@@ -17,32 +17,33 @@ class GetArtifactBuildRuleResponseBody(DaraModel):
         scope_id: str = None,
         scope_type: str = None,
     ):
-        # The type of the artifact. Valid values:
+        # The type of the accelerated image. Valid values:
         # 
-        # *   `ACCELERATED_IMAGE`: accelerated images.
+        # - `ACCELERATED_IMAGE`: generates an accelerated image.
         self.artifact_type = artifact_type
-        # The ID of the artifact building rule.
+        # The build rule ID.
         self.build_rule_id = build_rule_id
-        # The API return code:
-        # - **200**: Indicates success.
-        # - Others: Indicate error codes.
-        self.code = code
-        # Indicates whether the API request is successful. Valid values:
+        # The response code. Valid values:
         # 
-        # *   `true`: The request is successful.
-        # *   `false`: The request fails.
+        # - **200**: success.
+        # - Other values: error codes.
+        self.code = code
+        # Indicates whether the API call is successful. Valid values:
+        # 
+        # - `true`: The API call is successful.
+        # 
+        # - `false`: The API call failed.
         self.is_success = is_success
-        # Additional parameters.
+        # The additional parameters.
         self.parameters = parameters
         # The request ID.
         self.request_id = request_id
-        # The ID of the effective range of the artifact building rule.
+        # The ID of the scope in which the rule takes effect. Valid values:
         # 
-        # *   The parameter value is the ID of the image repository.
+        # - ScopeId: the image repository ID.
         self.scope_id = scope_id
-        # The effective range of the artifact building rule. Valid values:
-        # 
-        # *   `REPOSITORY`: The artifact building rule is effective in the repository level.
+        # The scope of the rule. Valid values:
+        # - `REPOSITORY`: repository level.
         self.scope_type = scope_type
 
     def validate(self):
@@ -113,11 +114,14 @@ class GetArtifactBuildRuleResponseBodyParameters(DaraModel):
     def __init__(
         self,
         image_index_only: bool = None,
+        priority: int = None,
         priority_file: str = None,
     ):
         # Indicates whether the index-only mode is enabled.
         self.image_index_only = image_index_only
-        # The list of files that you want to prefetch when you use the image acceleration feature. Each entry contains the Base64-encoded absolute path of a file.
+        # The task priority. Valid values: [1, 5].
+        self.priority = priority
+        # The list of prefetch files for the accelerated image. Each line contains an absolute path. The list is Base64-encoded.
         self.priority_file = priority_file
 
     def validate(self):
@@ -131,6 +135,9 @@ class GetArtifactBuildRuleResponseBodyParameters(DaraModel):
         if self.image_index_only is not None:
             result['ImageIndexOnly'] = self.image_index_only
 
+        if self.priority is not None:
+            result['Priority'] = self.priority
+
         if self.priority_file is not None:
             result['PriorityFile'] = self.priority_file
 
@@ -140,6 +147,9 @@ class GetArtifactBuildRuleResponseBodyParameters(DaraModel):
         m = m or dict()
         if m.get('ImageIndexOnly') is not None:
             self.image_index_only = m.get('ImageIndexOnly')
+
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
 
         if m.get('PriorityFile') is not None:
             self.priority_file = m.get('PriorityFile')

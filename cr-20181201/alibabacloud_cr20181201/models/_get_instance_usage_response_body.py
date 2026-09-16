@@ -15,40 +15,44 @@ class GetInstanceUsageResponseBody(DaraModel):
         is_success: bool = None,
         namespace_quota: str = None,
         namespace_usage: str = None,
+        performance_units: int = None,
         repo_quota: str = None,
         repo_usage: str = None,
         request_id: str = None,
         vpc_quota: str = None,
         vpc_usage: str = None,
     ):
-        # The quota of chart namespaces.
+        # The quota of Chart namespaces.
         self.chart_namespace_quota = chart_namespace_quota
-        # The number of chart namespaces that are created in the instance.
+        # The number of Chart namespaces created.
         self.chart_namespace_usage = chart_namespace_usage
-        # The quota of chart repositories for the instance.
+        # The quota of Chart repositories.
         self.chart_repo_quota = chart_repo_quota
-        # The number of chart repositories that are created.
+        # The number of Chart repositories created.
         self.chart_repo_usage = chart_repo_usage
         # The return value.
         self.code = code
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the call was successful. Valid values:
         # 
-        # *   `true`: The request is successful.
-        # *   `false`: The request fails.
+        # - `true`: The call was successful.
+        # 
+        # - `false`: The call failed.
         self.is_success = is_success
-        # The quota of image namespaces for the instance.
+        # The quota of image namespaces.
         self.namespace_quota = namespace_quota
-        # The number of image namespaces that are created in the instance.
+        # The number of image namespaces used.
         self.namespace_usage = namespace_usage
-        # The quota of image repositories for the instance.
+        # The number of performance units, which indicates the additional instance capacity purchased on top of the Advanced Edition.
+        self.performance_units = performance_units
+        # The quota of image repositories.
         self.repo_quota = repo_quota
-        # The number of image repositories that are created in the instance.
+        # The number of image repositories used.
         self.repo_usage = repo_usage
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # VPC quota
+        # The VPC quota.
         self.vpc_quota = vpc_quota
-        # Number of bound VPCs
+        # The number of bound VPCs.
         self.vpc_usage = vpc_usage
 
     def validate(self):
@@ -82,6 +86,9 @@ class GetInstanceUsageResponseBody(DaraModel):
 
         if self.namespace_usage is not None:
             result['NamespaceUsage'] = self.namespace_usage
+
+        if self.performance_units is not None:
+            result['PerformanceUnits'] = self.performance_units
 
         if self.repo_quota is not None:
             result['RepoQuota'] = self.repo_quota
@@ -125,6 +132,9 @@ class GetInstanceUsageResponseBody(DaraModel):
 
         if m.get('NamespaceUsage') is not None:
             self.namespace_usage = m.get('NamespaceUsage')
+
+        if m.get('PerformanceUnits') is not None:
+            self.performance_units = m.get('PerformanceUnits')
 
         if m.get('RepoQuota') is not None:
             self.repo_quota = m.get('RepoQuota')

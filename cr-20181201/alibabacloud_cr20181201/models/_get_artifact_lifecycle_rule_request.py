@@ -10,11 +10,11 @@ class GetArtifactLifecycleRuleRequest(DaraModel):
         instance_id: str = None,
         rule_id: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the rule.
+        # The rule ID.
         # 
         # This parameter is required.
         self.rule_id = rule_id
