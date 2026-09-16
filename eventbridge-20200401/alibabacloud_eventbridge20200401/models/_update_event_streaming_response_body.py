@@ -12,13 +12,11 @@ class UpdateEventStreamingResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. Valid values:
-        # - Success: The request was successful.
-        # - Other values: An error occurred. For more information, see error codes.
+        # The returned code. Success indicates a successful call. Other values indicate error codes. For more information, see Error codes.
         self.code = code
         # The error message.
         self.message = message
-        # The unique identifier that Alibaba Cloud generates for the request.
+        # The unique identifier that Alibaba Cloud generated for the request.
         self.request_id = request_id
         # Returns true if the operation is successful.
         self.success = success

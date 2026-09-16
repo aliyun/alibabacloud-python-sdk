@@ -3156,6 +3156,588 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_generate_agent_data_semantics_progress_with_options_async(request, runtime)
 
+    def get_luma_catalog_with_options(
+        self,
+        request: main_models.GetLumaCatalogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetLumaCatalogResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetLumaCatalog',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetLumaCatalogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_luma_catalog_with_options_async(
+        self,
+        request: main_models.GetLumaCatalogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetLumaCatalogResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetLumaCatalog',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetLumaCatalogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_luma_catalog(
+        self,
+        request: main_models.GetLumaCatalogRequest,
+    ) -> main_models.GetLumaCatalogResponse:
+        runtime = RuntimeOptions()
+        return self.get_luma_catalog_with_options(request, runtime)
+
+    async def get_luma_catalog_async(
+        self,
+        request: main_models.GetLumaCatalogRequest,
+    ) -> main_models.GetLumaCatalogResponse:
+        runtime = RuntimeOptions()
+        return await self.get_luma_catalog_with_options_async(request, runtime)
+
+    def get_luma_chunk_with_options(
+        self,
+        request: main_models.GetLumaChunkRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetLumaChunkResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.catalog):
+            body['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.chunk_seq):
+            body['ChunkSeq'] = request.chunk_seq
+        if not DaraCore.is_null(request.document_id):
+            body['DocumentId'] = request.document_id
+        if not DaraCore.is_null(request.knowledge_base_name):
+            body['KnowledgeBaseName'] = request.knowledge_base_name
+        if not DaraCore.is_null(request.namespace):
+            body['Namespace'] = request.namespace
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetLumaChunk',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetLumaChunkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_luma_chunk_with_options_async(
+        self,
+        request: main_models.GetLumaChunkRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetLumaChunkResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.catalog):
+            body['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.chunk_seq):
+            body['ChunkSeq'] = request.chunk_seq
+        if not DaraCore.is_null(request.document_id):
+            body['DocumentId'] = request.document_id
+        if not DaraCore.is_null(request.knowledge_base_name):
+            body['KnowledgeBaseName'] = request.knowledge_base_name
+        if not DaraCore.is_null(request.namespace):
+            body['Namespace'] = request.namespace
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetLumaChunk',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetLumaChunkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_luma_chunk(
+        self,
+        request: main_models.GetLumaChunkRequest,
+    ) -> main_models.GetLumaChunkResponse:
+        runtime = RuntimeOptions()
+        return self.get_luma_chunk_with_options(request, runtime)
+
+    async def get_luma_chunk_async(
+        self,
+        request: main_models.GetLumaChunkRequest,
+    ) -> main_models.GetLumaChunkResponse:
+        runtime = RuntimeOptions()
+        return await self.get_luma_chunk_with_options_async(request, runtime)
+
+    def get_luma_document_with_options(
+        self,
+        request: main_models.GetLumaDocumentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetLumaDocumentResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.catalog):
+            body['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.document_id):
+            body['DocumentId'] = request.document_id
+        if not DaraCore.is_null(request.knowledge_base_name):
+            body['KnowledgeBaseName'] = request.knowledge_base_name
+        if not DaraCore.is_null(request.namespace):
+            body['Namespace'] = request.namespace
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetLumaDocument',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetLumaDocumentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_luma_document_with_options_async(
+        self,
+        request: main_models.GetLumaDocumentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetLumaDocumentResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.catalog):
+            body['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.document_id):
+            body['DocumentId'] = request.document_id
+        if not DaraCore.is_null(request.knowledge_base_name):
+            body['KnowledgeBaseName'] = request.knowledge_base_name
+        if not DaraCore.is_null(request.namespace):
+            body['Namespace'] = request.namespace
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetLumaDocument',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetLumaDocumentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_luma_document(
+        self,
+        request: main_models.GetLumaDocumentRequest,
+    ) -> main_models.GetLumaDocumentResponse:
+        runtime = RuntimeOptions()
+        return self.get_luma_document_with_options(request, runtime)
+
+    async def get_luma_document_async(
+        self,
+        request: main_models.GetLumaDocumentRequest,
+    ) -> main_models.GetLumaDocumentResponse:
+        runtime = RuntimeOptions()
+        return await self.get_luma_document_with_options_async(request, runtime)
+
+    def get_luma_document_download_url_with_options(
+        self,
+        request: main_models.GetLumaDocumentDownloadUrlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetLumaDocumentDownloadUrlResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.catalog):
+            body['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.document_id):
+            body['DocumentId'] = request.document_id
+        if not DaraCore.is_null(request.knowledge_base_name):
+            body['KnowledgeBaseName'] = request.knowledge_base_name
+        if not DaraCore.is_null(request.namespace):
+            body['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.network_type):
+            body['NetworkType'] = request.network_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetLumaDocumentDownloadUrl',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetLumaDocumentDownloadUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_luma_document_download_url_with_options_async(
+        self,
+        request: main_models.GetLumaDocumentDownloadUrlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetLumaDocumentDownloadUrlResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.catalog):
+            body['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.document_id):
+            body['DocumentId'] = request.document_id
+        if not DaraCore.is_null(request.knowledge_base_name):
+            body['KnowledgeBaseName'] = request.knowledge_base_name
+        if not DaraCore.is_null(request.namespace):
+            body['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.network_type):
+            body['NetworkType'] = request.network_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetLumaDocumentDownloadUrl',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetLumaDocumentDownloadUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_luma_document_download_url(
+        self,
+        request: main_models.GetLumaDocumentDownloadUrlRequest,
+    ) -> main_models.GetLumaDocumentDownloadUrlResponse:
+        runtime = RuntimeOptions()
+        return self.get_luma_document_download_url_with_options(request, runtime)
+
+    async def get_luma_document_download_url_async(
+        self,
+        request: main_models.GetLumaDocumentDownloadUrlRequest,
+    ) -> main_models.GetLumaDocumentDownloadUrlResponse:
+        runtime = RuntimeOptions()
+        return await self.get_luma_document_download_url_with_options_async(request, runtime)
+
+    def get_luma_knowledge_base_with_options(
+        self,
+        request: main_models.GetLumaKnowledgeBaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetLumaKnowledgeBaseResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.catalog):
+            body['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.knowledge_base_name):
+            body['KnowledgeBaseName'] = request.knowledge_base_name
+        if not DaraCore.is_null(request.namespace):
+            body['Namespace'] = request.namespace
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetLumaKnowledgeBase',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetLumaKnowledgeBaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_luma_knowledge_base_with_options_async(
+        self,
+        request: main_models.GetLumaKnowledgeBaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetLumaKnowledgeBaseResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.catalog):
+            body['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.knowledge_base_name):
+            body['KnowledgeBaseName'] = request.knowledge_base_name
+        if not DaraCore.is_null(request.namespace):
+            body['Namespace'] = request.namespace
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetLumaKnowledgeBase',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetLumaKnowledgeBaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_luma_knowledge_base(
+        self,
+        request: main_models.GetLumaKnowledgeBaseRequest,
+    ) -> main_models.GetLumaKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        return self.get_luma_knowledge_base_with_options(request, runtime)
+
+    async def get_luma_knowledge_base_async(
+        self,
+        request: main_models.GetLumaKnowledgeBaseRequest,
+    ) -> main_models.GetLumaKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        return await self.get_luma_knowledge_base_with_options_async(request, runtime)
+
+    def get_luma_namespace_with_options(
+        self,
+        request: main_models.GetLumaNamespaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetLumaNamespaceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.catalog):
+            body['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetLumaNamespace',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetLumaNamespaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_luma_namespace_with_options_async(
+        self,
+        request: main_models.GetLumaNamespaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetLumaNamespaceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.catalog):
+            body['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetLumaNamespace',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetLumaNamespaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_luma_namespace(
+        self,
+        request: main_models.GetLumaNamespaceRequest,
+    ) -> main_models.GetLumaNamespaceResponse:
+        runtime = RuntimeOptions()
+        return self.get_luma_namespace_with_options(request, runtime)
+
+    async def get_luma_namespace_async(
+        self,
+        request: main_models.GetLumaNamespaceRequest,
+    ) -> main_models.GetLumaNamespaceResponse:
+        runtime = RuntimeOptions()
+        return await self.get_luma_namespace_with_options_async(request, runtime)
+
+    def get_luma_table_with_options(
+        self,
+        request: main_models.GetLumaTableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetLumaTableResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.catalog):
+            body['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.namespace):
+            body['Namespace'] = request.namespace
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetLumaTable',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetLumaTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_luma_table_with_options_async(
+        self,
+        request: main_models.GetLumaTableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetLumaTableResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.catalog):
+            body['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.namespace):
+            body['Namespace'] = request.namespace
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetLumaTable',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetLumaTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_luma_table(
+        self,
+        request: main_models.GetLumaTableRequest,
+    ) -> main_models.GetLumaTableResponse:
+        runtime = RuntimeOptions()
+        return self.get_luma_table_with_options(request, runtime)
+
+    async def get_luma_table_async(
+        self,
+        request: main_models.GetLumaTableRequest,
+    ) -> main_models.GetLumaTableResponse:
+        runtime = RuntimeOptions()
+        return await self.get_luma_table_with_options_async(request, runtime)
+
     def get_namespace_with_options(
         self,
         request: main_models.GetNamespaceRequest,
@@ -3691,6 +4273,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.connection_name_prefix):
             body['ConnectionNamePrefix'] = request.connection_name_prefix
+        if not DaraCore.is_null(request.exclude_type):
+            body['ExcludeType'] = request.exclude_type
         if not DaraCore.is_null(request.max_results):
             body['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
@@ -3725,6 +4309,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.connection_name_prefix):
             body['ConnectionNamePrefix'] = request.connection_name_prefix
+        if not DaraCore.is_null(request.exclude_type):
+            body['ExcludeType'] = request.exclude_type
         if not DaraCore.is_null(request.max_results):
             body['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
@@ -4005,6 +4591,538 @@ class Client(OpenApiClient):
     ) -> main_models.ListEventStreamingsResponse:
         runtime = RuntimeOptions()
         return await self.list_event_streamings_with_options_async(request, runtime)
+
+    def list_luma_catalogs_with_options(
+        self,
+        request: main_models.ListLumaCatalogsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListLumaCatalogsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.limit):
+            body['Limit'] = request.limit
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListLumaCatalogs',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListLumaCatalogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_luma_catalogs_with_options_async(
+        self,
+        request: main_models.ListLumaCatalogsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListLumaCatalogsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.limit):
+            body['Limit'] = request.limit
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListLumaCatalogs',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListLumaCatalogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_luma_catalogs(
+        self,
+        request: main_models.ListLumaCatalogsRequest,
+    ) -> main_models.ListLumaCatalogsResponse:
+        runtime = RuntimeOptions()
+        return self.list_luma_catalogs_with_options(request, runtime)
+
+    async def list_luma_catalogs_async(
+        self,
+        request: main_models.ListLumaCatalogsRequest,
+    ) -> main_models.ListLumaCatalogsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_luma_catalogs_with_options_async(request, runtime)
+
+    def list_luma_chunks_with_options(
+        self,
+        request: main_models.ListLumaChunksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListLumaChunksResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.catalog):
+            body['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.document_id):
+            body['DocumentId'] = request.document_id
+        if not DaraCore.is_null(request.enabled):
+            body['Enabled'] = request.enabled
+        if not DaraCore.is_null(request.keyword):
+            body['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.knowledge_base_name):
+            body['KnowledgeBaseName'] = request.knowledge_base_name
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.namespace):
+            body['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListLumaChunks',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListLumaChunksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_luma_chunks_with_options_async(
+        self,
+        request: main_models.ListLumaChunksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListLumaChunksResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.catalog):
+            body['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.document_id):
+            body['DocumentId'] = request.document_id
+        if not DaraCore.is_null(request.enabled):
+            body['Enabled'] = request.enabled
+        if not DaraCore.is_null(request.keyword):
+            body['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.knowledge_base_name):
+            body['KnowledgeBaseName'] = request.knowledge_base_name
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.namespace):
+            body['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListLumaChunks',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListLumaChunksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_luma_chunks(
+        self,
+        request: main_models.ListLumaChunksRequest,
+    ) -> main_models.ListLumaChunksResponse:
+        runtime = RuntimeOptions()
+        return self.list_luma_chunks_with_options(request, runtime)
+
+    async def list_luma_chunks_async(
+        self,
+        request: main_models.ListLumaChunksRequest,
+    ) -> main_models.ListLumaChunksResponse:
+        runtime = RuntimeOptions()
+        return await self.list_luma_chunks_with_options_async(request, runtime)
+
+    def list_luma_documents_with_options(
+        self,
+        request: main_models.ListLumaDocumentsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListLumaDocumentsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.catalog):
+            body['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.file_name_prefix):
+            body['FileNamePrefix'] = request.file_name_prefix
+        if not DaraCore.is_null(request.knowledge_base_name):
+            body['KnowledgeBaseName'] = request.knowledge_base_name
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.namespace):
+            body['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListLumaDocuments',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListLumaDocumentsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_luma_documents_with_options_async(
+        self,
+        request: main_models.ListLumaDocumentsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListLumaDocumentsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.catalog):
+            body['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.file_name_prefix):
+            body['FileNamePrefix'] = request.file_name_prefix
+        if not DaraCore.is_null(request.knowledge_base_name):
+            body['KnowledgeBaseName'] = request.knowledge_base_name
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.namespace):
+            body['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListLumaDocuments',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListLumaDocumentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_luma_documents(
+        self,
+        request: main_models.ListLumaDocumentsRequest,
+    ) -> main_models.ListLumaDocumentsResponse:
+        runtime = RuntimeOptions()
+        return self.list_luma_documents_with_options(request, runtime)
+
+    async def list_luma_documents_async(
+        self,
+        request: main_models.ListLumaDocumentsRequest,
+    ) -> main_models.ListLumaDocumentsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_luma_documents_with_options_async(request, runtime)
+
+    def list_luma_knowledge_bases_with_options(
+        self,
+        request: main_models.ListLumaKnowledgeBasesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListLumaKnowledgeBasesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.catalog):
+            body['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.namespace):
+            body['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListLumaKnowledgeBases',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListLumaKnowledgeBasesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_luma_knowledge_bases_with_options_async(
+        self,
+        request: main_models.ListLumaKnowledgeBasesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListLumaKnowledgeBasesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.catalog):
+            body['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.namespace):
+            body['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListLumaKnowledgeBases',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListLumaKnowledgeBasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_luma_knowledge_bases(
+        self,
+        request: main_models.ListLumaKnowledgeBasesRequest,
+    ) -> main_models.ListLumaKnowledgeBasesResponse:
+        runtime = RuntimeOptions()
+        return self.list_luma_knowledge_bases_with_options(request, runtime)
+
+    async def list_luma_knowledge_bases_async(
+        self,
+        request: main_models.ListLumaKnowledgeBasesRequest,
+    ) -> main_models.ListLumaKnowledgeBasesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_luma_knowledge_bases_with_options_async(request, runtime)
+
+    def list_luma_namespaces_with_options(
+        self,
+        request: main_models.ListLumaNamespacesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListLumaNamespacesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.catalog):
+            body['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.limit):
+            body['Limit'] = request.limit
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListLumaNamespaces',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListLumaNamespacesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_luma_namespaces_with_options_async(
+        self,
+        request: main_models.ListLumaNamespacesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListLumaNamespacesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.catalog):
+            body['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.limit):
+            body['Limit'] = request.limit
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListLumaNamespaces',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListLumaNamespacesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_luma_namespaces(
+        self,
+        request: main_models.ListLumaNamespacesRequest,
+    ) -> main_models.ListLumaNamespacesResponse:
+        runtime = RuntimeOptions()
+        return self.list_luma_namespaces_with_options(request, runtime)
+
+    async def list_luma_namespaces_async(
+        self,
+        request: main_models.ListLumaNamespacesRequest,
+    ) -> main_models.ListLumaNamespacesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_luma_namespaces_with_options_async(request, runtime)
+
+    def list_luma_tables_with_options(
+        self,
+        request: main_models.ListLumaTablesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListLumaTablesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.catalog):
+            body['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.limit):
+            body['Limit'] = request.limit
+        if not DaraCore.is_null(request.namespace):
+            body['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListLumaTables',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListLumaTablesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_luma_tables_with_options_async(
+        self,
+        request: main_models.ListLumaTablesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListLumaTablesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.catalog):
+            body['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.limit):
+            body['Limit'] = request.limit
+        if not DaraCore.is_null(request.namespace):
+            body['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListLumaTables',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListLumaTablesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_luma_tables(
+        self,
+        request: main_models.ListLumaTablesRequest,
+    ) -> main_models.ListLumaTablesResponse:
+        runtime = RuntimeOptions()
+        return self.list_luma_tables_with_options(request, runtime)
+
+    async def list_luma_tables_async(
+        self,
+        request: main_models.ListLumaTablesRequest,
+    ) -> main_models.ListLumaTablesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_luma_tables_with_options_async(request, runtime)
 
     def list_namespaces_with_options(
         self,
@@ -5114,6 +6232,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.query_event_traces_with_options_async(request, runtime)
 
+    def query_luma_with_sqlwith_options(
+        self,
+        request: main_models.QueryLumaWithSQLRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryLumaWithSQLResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.max_rows):
+            body['MaxRows'] = request.max_rows
+        if not DaraCore.is_null(request.sql):
+            body['Sql'] = request.sql
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryLumaWithSQL',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryLumaWithSQLResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_luma_with_sqlwith_options_async(
+        self,
+        request: main_models.QueryLumaWithSQLRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryLumaWithSQLResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.max_rows):
+            body['MaxRows'] = request.max_rows
+        if not DaraCore.is_null(request.sql):
+            body['Sql'] = request.sql
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryLumaWithSQL',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryLumaWithSQLResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_luma_with_sql(
+        self,
+        request: main_models.QueryLumaWithSQLRequest,
+    ) -> main_models.QueryLumaWithSQLResponse:
+        runtime = RuntimeOptions()
+        return self.query_luma_with_sqlwith_options(request, runtime)
+
+    async def query_luma_with_sql_async(
+        self,
+        request: main_models.QueryLumaWithSQLRequest,
+    ) -> main_models.QueryLumaWithSQLResponse:
+        runtime = RuntimeOptions()
+        return await self.query_luma_with_sqlwith_options_async(request, runtime)
+
     def query_traced_event_by_event_id_with_options(
         self,
         request: main_models.QueryTracedEventByEventIdRequest,
@@ -5400,6 +6596,108 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.save_agent_data_semantics_with_options_async(request, runtime)
 
+    def search_luma_knowledge_base_with_options(
+        self,
+        request: main_models.SearchLumaKnowledgeBaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchLumaKnowledgeBaseResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.catalog):
+            body['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.knowledge_base_name):
+            body['KnowledgeBaseName'] = request.knowledge_base_name
+        if not DaraCore.is_null(request.metadata_filter):
+            body['MetadataFilter'] = request.metadata_filter
+        if not DaraCore.is_null(request.mode):
+            body['Mode'] = request.mode
+        if not DaraCore.is_null(request.namespace):
+            body['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.query):
+            body['Query'] = request.query
+        if not DaraCore.is_null(request.rerank):
+            body['Rerank'] = request.rerank
+        if not DaraCore.is_null(request.top_k):
+            body['TopK'] = request.top_k
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SearchLumaKnowledgeBase',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SearchLumaKnowledgeBaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def search_luma_knowledge_base_with_options_async(
+        self,
+        request: main_models.SearchLumaKnowledgeBaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchLumaKnowledgeBaseResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_name):
+            body['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.catalog):
+            body['Catalog'] = request.catalog
+        if not DaraCore.is_null(request.knowledge_base_name):
+            body['KnowledgeBaseName'] = request.knowledge_base_name
+        if not DaraCore.is_null(request.metadata_filter):
+            body['MetadataFilter'] = request.metadata_filter
+        if not DaraCore.is_null(request.mode):
+            body['Mode'] = request.mode
+        if not DaraCore.is_null(request.namespace):
+            body['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.query):
+            body['Query'] = request.query
+        if not DaraCore.is_null(request.rerank):
+            body['Rerank'] = request.rerank
+        if not DaraCore.is_null(request.top_k):
+            body['TopK'] = request.top_k
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SearchLumaKnowledgeBase',
+            version = '2020-04-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SearchLumaKnowledgeBaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def search_luma_knowledge_base(
+        self,
+        request: main_models.SearchLumaKnowledgeBaseRequest,
+    ) -> main_models.SearchLumaKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        return self.search_luma_knowledge_base_with_options(request, runtime)
+
+    async def search_luma_knowledge_base_async(
+        self,
+        request: main_models.SearchLumaKnowledgeBaseRequest,
+    ) -> main_models.SearchLumaKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        return await self.search_luma_knowledge_base_with_options_async(request, runtime)
+
     def start_event_streaming_with_options(
         self,
         request: main_models.StartEventStreamingRequest,
@@ -5637,6 +6935,10 @@ class Client(OpenApiClient):
             body['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
+        if not DaraCore.is_null(request.mcp_server_id):
+            body['McpServerId'] = request.mcp_server_id
+        if not DaraCore.is_null(request.mcp_server_name):
+            body['McpServerName'] = request.mcp_server_name
         if not DaraCore.is_null(request.metadata_shrink):
             body['Metadata'] = request.metadata_shrink
         if not DaraCore.is_null(request.name):
@@ -5677,6 +6979,10 @@ class Client(OpenApiClient):
             body['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
+        if not DaraCore.is_null(request.mcp_server_id):
+            body['McpServerId'] = request.mcp_server_id
+        if not DaraCore.is_null(request.mcp_server_name):
+            body['McpServerName'] = request.mcp_server_name
         if not DaraCore.is_null(request.metadata_shrink):
             body['Metadata'] = request.metadata_shrink
         if not DaraCore.is_null(request.name):

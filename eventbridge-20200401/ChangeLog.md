@@ -1,3 +1,69 @@
+2026-09-16 Version: 8.6.1
+- Update API CreateEventStreaming: add request parameters Transforms.$.AiChunkTransformParameters.
+- Update API CreateEventStreaming: add request parameters Transforms.$.AiClassifyTransformParameters.
+- Update API CreateEventStreaming: add request parameters Transforms.$.AiEmbedTransformParameters.
+- Update API CreateEventStreaming: add request parameters Transforms.$.AiExtractTransformParameters.
+- Update API CreateEventStreaming: add request parameters Transforms.$.AiFilterTransformParameters.
+- Update API CreateEventStreaming: add request parameters Transforms.$.AiPrepSearchTransformParameters.
+- Update API CreateEventStreaming: add request parameters Transforms.$.AiRedactTransformParameters.
+- Update API CreateEventStreaming: add request parameters Transforms.$.AiSentimentAnalysisTransformParameters.
+- Update API CreateEventStreaming: add request parameters Transforms.$.AiSummarizeTransformParameters.
+- Update API CreateEventStreaming: add request parameters Transforms.$.AiTranslateTransformParameters.
+- Update API GetEventStreaming: add response parameters Body.Data.Transforms.$.AiChunkTransformParameters.
+- Update API GetEventStreaming: add response parameters Body.Data.Transforms.$.AiClassifyTransformParameters.
+- Update API GetEventStreaming: add response parameters Body.Data.Transforms.$.AiEmbedTransformParameters.
+- Update API GetEventStreaming: add response parameters Body.Data.Transforms.$.AiExtractTransformParameters.
+- Update API GetEventStreaming: add response parameters Body.Data.Transforms.$.AiFilterTransformParameters.
+- Update API GetEventStreaming: add response parameters Body.Data.Transforms.$.AiPrepSearchTransformParameters.
+- Update API GetEventStreaming: add response parameters Body.Data.Transforms.$.AiRedactTransformParameters.
+- Update API GetEventStreaming: add response parameters Body.Data.Transforms.$.AiSentimentAnalysisTransformParameters.
+- Update API GetEventStreaming: add response parameters Body.Data.Transforms.$.AiSummarizeTransformParameters.
+- Update API GetEventStreaming: add response parameters Body.Data.Transforms.$.AiTranslateTransformParameters.
+- Update API ListConnections: add request parameters ExcludeType.
+- Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.Transforms.$.AiChunkTransformParameters.
+- Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.Transforms.$.AiClassifyTransformParameters.
+- Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.Transforms.$.AiEmbedTransformParameters.
+- Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.Transforms.$.AiExtractTransformParameters.
+- Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.Transforms.$.AiFilterTransformParameters.
+- Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.Transforms.$.AiPrepSearchTransformParameters.
+- Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.Transforms.$.AiRedactTransformParameters.
+- Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.Transforms.$.AiSentimentAnalysisTransformParameters.
+- Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.Transforms.$.AiSummarizeTransformParameters.
+- Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.Transforms.$.AiTranslateTransformParameters.
+- Update API ListLumaCatalogs: add request parameters Limit.
+- Update API ListLumaCatalogs: add request parameters NextToken.
+- Update API ListLumaCatalogs: add response parameters Body.Data.Limit.
+- Update API ListLumaCatalogs: add response parameters Body.Data.NextToken.
+- Update API ListLumaCatalogs: add response parameters Body.Data.TotalCount.
+- Update API ListLumaKnowledgeBases: add request parameters MaxResults.
+- Update API ListLumaKnowledgeBases: add request parameters NextToken.
+- Update API ListLumaKnowledgeBases: add response parameters Body.Data.MaxResults.
+- Update API ListLumaKnowledgeBases: add response parameters Body.Data.NextToken.
+- Update API ListLumaKnowledgeBases: add response parameters Body.Data.TotalCount.
+- Update API ListLumaNamespaces: add request parameters Limit.
+- Update API ListLumaNamespaces: add request parameters NextToken.
+- Update API ListLumaNamespaces: add response parameters Body.Data.Limit.
+- Update API ListLumaNamespaces: add response parameters Body.Data.NextToken.
+- Update API ListLumaNamespaces: add response parameters Body.Data.TotalCount.
+- Update API ListLumaTables: add request parameters Limit.
+- Update API ListLumaTables: add request parameters NextToken.
+- Update API ListLumaTables: add response parameters Body.Data.Limit.
+- Update API ListLumaTables: add response parameters Body.Data.NextToken.
+- Update API ListLumaTables: add response parameters Body.Data.TotalCount.
+- Update API UpdateAgent: add request parameters McpServerId.
+- Update API UpdateAgent: add request parameters McpServerName.
+- Update API UpdateEventStreaming: add request parameters Transforms.$.AiChunkTransformParameters.
+- Update API UpdateEventStreaming: add request parameters Transforms.$.AiClassifyTransformParameters.
+- Update API UpdateEventStreaming: add request parameters Transforms.$.AiEmbedTransformParameters.
+- Update API UpdateEventStreaming: add request parameters Transforms.$.AiExtractTransformParameters.
+- Update API UpdateEventStreaming: add request parameters Transforms.$.AiFilterTransformParameters.
+- Update API UpdateEventStreaming: add request parameters Transforms.$.AiPrepSearchTransformParameters.
+- Update API UpdateEventStreaming: add request parameters Transforms.$.AiRedactTransformParameters.
+- Update API UpdateEventStreaming: add request parameters Transforms.$.AiSentimentAnalysisTransformParameters.
+- Update API UpdateEventStreaming: add request parameters Transforms.$.AiSummarizeTransformParameters.
+- Update API UpdateEventStreaming: add request parameters Transforms.$.AiTranslateTransformParameters.
+
+
 2026-09-08 Version: 8.5.0
 - Support API PutEvents.
 

@@ -12,9 +12,13 @@ class SourceFeiShuDocsParameters(DaraModel):
         knowledge_space_name: str = None,
         load_mode: str = None,
     ):
+        # The App ID of the custom Lark application. Obtain this value after creating an application on the Lark Open Platform.
         self.app_id = app_id
+        # The App Secret of the custom Lark application. Obtain this value after creating an application on the Lark Open Platform.
         self.app_secret = app_secret
+        # The name of the Lark knowledge space. An exact match is required.
         self.knowledge_space_name = knowledge_space_name
+        # The document loading mode. Valid values: block: splits the document by blocks, with each block as a separate event. single (default): treats the entire document as a single event, with metadata extension keys such as file name, modification time, and original link. Use this mode when importing into an EventHouse knowledge base.
         self.load_mode = load_mode
 
     def validate(self):

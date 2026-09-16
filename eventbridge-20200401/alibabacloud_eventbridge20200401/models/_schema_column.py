@@ -10,9 +10,9 @@ class SchemaColumn(DaraModel):
         name: str = None,
         type: str = None,
     ):
-        # Column name
+        # The column name.
         self.name = name
-        # Column type
+        # The column type.
         self.type = type
 
     def validate(self):

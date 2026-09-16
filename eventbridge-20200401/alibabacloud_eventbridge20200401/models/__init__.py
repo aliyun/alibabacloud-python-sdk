@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from ._agent import Agent
+from ._agent_bridge_runtime import AgentBridgeRuntime
 from ._agent_data_semantics_example import AgentDataSemanticsExample
 from ._agent_data_semantics_example_parameter import AgentDataSemanticsExampleParameter
 from ._agent_data_semantics_join import AgentDataSemanticsJoin
@@ -11,6 +12,17 @@ from ._agent_data_semantics_metric import AgentDataSemanticsMetric
 from ._agent_data_semantics_stage_progress import AgentDataSemanticsStageProgress
 from ._agent_data_semantics_text import AgentDataSemanticsText
 from ._agui_message import AguiMessage
+from ._ai_chunk_transform_parameters import AiChunkTransformParameters
+from ._ai_classify_transform_parameters import AiClassifyTransformParameters
+from ._ai_embed_transform_parameters import AiEmbedTransformParameters
+from ._ai_extract_transform_parameters import AiExtractTransformParameters
+from ._ai_filter_transform_parameters import AiFilterTransformParameters
+from ._ai_prep_search_transform_parameters import AiPrepSearchTransformParameters
+from ._ai_redact_transform_parameters import AiRedactTransformParameters
+from ._ai_sentiment_analysis_transform_parameters import AiSentimentAnalysisTransformParameters
+from ._ai_summarize_transform_parameters import AiSummarizeTransformParameters
+from ._ai_transform_field import AiTransformField
+from ._ai_translate_transform_parameters import AiTranslateTransformParameters
 from ._ask_luma_log_entry import AskLumaLogEntry
 from ._ask_luma_result import AskLumaResult
 from ._bai_lian_agent_transform_parameters import BaiLianAgentTransformParameters
@@ -24,7 +36,13 @@ from ._embedding_transform_parameters import EmbeddingTransformParameters
 from ._event_house_runtime import EventHouseRuntime
 from ._event_table_query_histogram import EventTableQueryHistogram
 from ._execution_result import ExecutionResult
+from ._knowledge_base import KnowledgeBase
+from ._knowledge_base_chunk import KnowledgeBaseChunk
+from ._knowledge_base_document import KnowledgeBaseDocument
+from ._knowledge_base_search_chunk import KnowledgeBaseSearchChunk
+from ._luma_table import LumaTable
 from ._metadata import Metadata
+from ._metadata_schema_field import MetadataSchemaField
 from ._namespace import Namespace
 from ._query_ask_luma_log_result import QueryAskLumaLogResult
 from ._query_attachment import QueryAttachment
@@ -35,6 +53,7 @@ from ._sink_api_destination_parameters import SinkApiDestinationParameters
 from ._sink_bai_lian_parameters import SinkBaiLianParameters
 from ._sink_data_works_trigger_parameters import SinkDataWorksTriggerParameters
 from ._sink_https_parameters import SinkHttpsParameters
+from ._sink_knowledge_base_parameters import SinkKnowledgeBaseParameters
 from ._sink_mqttparameters import SinkMQTTParameters
 from ._sink_ossparameters import SinkOSSParameters
 from ._sink_rabbit_mqmeta_parameters import SinkRabbitMQMetaParameters
@@ -171,6 +190,27 @@ from ._get_event_streaming_response import GetEventStreamingResponse
 from ._get_generate_agent_data_semantics_progress_request import GetGenerateAgentDataSemanticsProgressRequest
 from ._get_generate_agent_data_semantics_progress_response_body import GetGenerateAgentDataSemanticsProgressResponseBody
 from ._get_generate_agent_data_semantics_progress_response import GetGenerateAgentDataSemanticsProgressResponse
+from ._get_luma_catalog_request import GetLumaCatalogRequest
+from ._get_luma_catalog_response_body import GetLumaCatalogResponseBody
+from ._get_luma_catalog_response import GetLumaCatalogResponse
+from ._get_luma_chunk_request import GetLumaChunkRequest
+from ._get_luma_chunk_response_body import GetLumaChunkResponseBody
+from ._get_luma_chunk_response import GetLumaChunkResponse
+from ._get_luma_document_request import GetLumaDocumentRequest
+from ._get_luma_document_response_body import GetLumaDocumentResponseBody
+from ._get_luma_document_response import GetLumaDocumentResponse
+from ._get_luma_document_download_url_request import GetLumaDocumentDownloadUrlRequest
+from ._get_luma_document_download_url_response_body import GetLumaDocumentDownloadUrlResponseBody
+from ._get_luma_document_download_url_response import GetLumaDocumentDownloadUrlResponse
+from ._get_luma_knowledge_base_request import GetLumaKnowledgeBaseRequest
+from ._get_luma_knowledge_base_response_body import GetLumaKnowledgeBaseResponseBody
+from ._get_luma_knowledge_base_response import GetLumaKnowledgeBaseResponse
+from ._get_luma_namespace_request import GetLumaNamespaceRequest
+from ._get_luma_namespace_response_body import GetLumaNamespaceResponseBody
+from ._get_luma_namespace_response import GetLumaNamespaceResponse
+from ._get_luma_table_request import GetLumaTableRequest
+from ._get_luma_table_response_body import GetLumaTableResponseBody
+from ._get_luma_table_response import GetLumaTableResponse
 from ._get_namespace_request import GetNamespaceRequest
 from ._get_namespace_response_body import GetNamespaceResponseBody
 from ._get_namespace_response import GetNamespaceResponse
@@ -203,6 +243,24 @@ from ._list_event_house_runtimes_response import ListEventHouseRuntimesResponse
 from ._list_event_streamings_request import ListEventStreamingsRequest
 from ._list_event_streamings_response_body import ListEventStreamingsResponseBody
 from ._list_event_streamings_response import ListEventStreamingsResponse
+from ._list_luma_catalogs_request import ListLumaCatalogsRequest
+from ._list_luma_catalogs_response_body import ListLumaCatalogsResponseBody
+from ._list_luma_catalogs_response import ListLumaCatalogsResponse
+from ._list_luma_chunks_request import ListLumaChunksRequest
+from ._list_luma_chunks_response_body import ListLumaChunksResponseBody
+from ._list_luma_chunks_response import ListLumaChunksResponse
+from ._list_luma_documents_request import ListLumaDocumentsRequest
+from ._list_luma_documents_response_body import ListLumaDocumentsResponseBody
+from ._list_luma_documents_response import ListLumaDocumentsResponse
+from ._list_luma_knowledge_bases_request import ListLumaKnowledgeBasesRequest
+from ._list_luma_knowledge_bases_response_body import ListLumaKnowledgeBasesResponseBody
+from ._list_luma_knowledge_bases_response import ListLumaKnowledgeBasesResponse
+from ._list_luma_namespaces_request import ListLumaNamespacesRequest
+from ._list_luma_namespaces_response_body import ListLumaNamespacesResponseBody
+from ._list_luma_namespaces_response import ListLumaNamespacesResponse
+from ._list_luma_tables_request import ListLumaTablesRequest
+from ._list_luma_tables_response_body import ListLumaTablesResponseBody
+from ._list_luma_tables_response import ListLumaTablesResponse
 from ._list_namespaces_request import ListNamespacesRequest
 from ._list_namespaces_response_body import ListNamespacesResponseBody
 from ._list_namespaces_response import ListNamespacesResponse
@@ -247,6 +305,9 @@ from ._query_event_house_with_time_range_response import QueryEventHouseWithTime
 from ._query_event_traces_request import QueryEventTracesRequest
 from ._query_event_traces_response_body import QueryEventTracesResponseBody
 from ._query_event_traces_response import QueryEventTracesResponse
+from ._query_luma_with_sqlrequest import QueryLumaWithSQLRequest
+from ._query_luma_with_sqlresponse_body import QueryLumaWithSQLResponseBody
+from ._query_luma_with_sqlresponse import QueryLumaWithSQLResponse
 from ._query_traced_event_by_event_id_request import QueryTracedEventByEventIdRequest
 from ._query_traced_event_by_event_id_response_body import QueryTracedEventByEventIdResponseBody
 from ._query_traced_event_by_event_id_response import QueryTracedEventByEventIdResponse
@@ -257,6 +318,9 @@ from ._save_agent_data_semantics_request import SaveAgentDataSemanticsRequest
 from ._save_agent_data_semantics_shrink_request import SaveAgentDataSemanticsShrinkRequest
 from ._save_agent_data_semantics_response_body import SaveAgentDataSemanticsResponseBody
 from ._save_agent_data_semantics_response import SaveAgentDataSemanticsResponse
+from ._search_luma_knowledge_base_request import SearchLumaKnowledgeBaseRequest
+from ._search_luma_knowledge_base_response_body import SearchLumaKnowledgeBaseResponseBody
+from ._search_luma_knowledge_base_response import SearchLumaKnowledgeBaseResponse
 from ._start_event_streaming_request import StartEventStreamingRequest
 from ._start_event_streaming_response_body import StartEventStreamingResponseBody
 from ._start_event_streaming_response import StartEventStreamingResponse
@@ -313,6 +377,15 @@ from ._agui_message import AguiMessageToolCalls
 from ._bai_lian_agent_transform_parameters import BaiLianAgentTransformParametersPrompt
 from ._dash_scope_transform_parameters import DashScopeTransformParametersMessages
 from ._embedding_transform_parameters import EmbeddingTransformParametersEmbeddingData
+from ._knowledge_base import KnowledgeBaseChunkConfigurationPreprocessRules
+from ._knowledge_base import KnowledgeBaseChunkConfiguration
+from ._knowledge_base import KnowledgeBaseSearchConfiguration
+from ._knowledge_base_document import KnowledgeBaseDocumentChunkConfigurationPreprocessRules
+from ._knowledge_base_document import KnowledgeBaseDocumentChunkConfiguration
+from ._knowledge_base_document import KnowledgeBaseDocumentMetadata
+from ._knowledge_base_search_chunk import KnowledgeBaseSearchChunkScores
+from ._luma_table import LumaTableColumns
+from ._luma_table import LumaTableRetentionPolicy
 from ._metadata import MetadataAttachments
 from ._sink_agent_run_parameters import SinkAgentRunParametersBody
 from ._sink_api_destination_parameters import SinkApiDestinationParametersBodyParameters
@@ -712,6 +785,7 @@ from ._get_event_streaming_response_body import GetEventStreamingResponseBodyDat
 from ._get_event_streaming_response_body import GetEventStreamingResponseBodyDataTransforms
 from ._get_event_streaming_response_body import GetEventStreamingResponseBodyData
 from ._get_generate_agent_data_semantics_progress_response_body import GetGenerateAgentDataSemanticsProgressResponseBodyData
+from ._get_luma_document_download_url_response_body import GetLumaDocumentDownloadUrlResponseBodyData
 from ._get_rule_response_body import GetRuleResponseBodyDataTargetsConcurrentConfig
 from ._get_rule_response_body import GetRuleResponseBodyDataTargetsDeadLetterQueue
 from ._get_rule_response_body import GetRuleResponseBodyDataTargetsParamList
@@ -873,6 +947,12 @@ from ._list_event_streamings_response_body import ListEventStreamingsResponseBod
 from ._list_event_streamings_response_body import ListEventStreamingsResponseBodyDataEventStreamingsTransforms
 from ._list_event_streamings_response_body import ListEventStreamingsResponseBodyDataEventStreamings
 from ._list_event_streamings_response_body import ListEventStreamingsResponseBodyData
+from ._list_luma_catalogs_response_body import ListLumaCatalogsResponseBodyData
+from ._list_luma_chunks_response_body import ListLumaChunksResponseBodyData
+from ._list_luma_documents_response_body import ListLumaDocumentsResponseBodyData
+from ._list_luma_knowledge_bases_response_body import ListLumaKnowledgeBasesResponseBodyData
+from ._list_luma_namespaces_response_body import ListLumaNamespacesResponseBodyData
+from ._list_luma_tables_response_body import ListLumaTablesResponseBodyData
 from ._list_namespaces_response_body import ListNamespacesResponseBodyData
 from ._list_rules_response_body import ListRulesResponseBodyDataRulesTargets
 from ._list_rules_response_body import ListRulesResponseBodyDataRules
@@ -908,6 +988,7 @@ from ._query_traced_event_by_event_id_response_body import QueryTracedEventByEve
 from ._query_traced_event_by_event_id_response_body import QueryTracedEventByEventIdResponseBodyData
 from ._query_traced_events_response_body import QueryTracedEventsResponseBodyDataEvents
 from ._query_traced_events_response_body import QueryTracedEventsResponseBodyData
+from ._search_luma_knowledge_base_response_body import SearchLumaKnowledgeBaseResponseBodyData
 from ._test_event_pattern_response_body import TestEventPatternResponseBodyData
 from ._test_event_source_config_request import TestEventSourceConfigRequestSourceMySQLParameters
 from ._test_event_source_config_response_body import TestEventSourceConfigResponseBodyData
@@ -1101,6 +1182,7 @@ from ._update_table_response_body import UpdateTableResponseBodyData
 
 __all__ = [
     Agent,
+    AgentBridgeRuntime,
     AgentDataSemanticsExample,
     AgentDataSemanticsExampleParameter,
     AgentDataSemanticsJoin,
@@ -1109,6 +1191,17 @@ __all__ = [
     AgentDataSemanticsStageProgress,
     AgentDataSemanticsText,
     AguiMessage,
+    AiChunkTransformParameters,
+    AiClassifyTransformParameters,
+    AiEmbedTransformParameters,
+    AiExtractTransformParameters,
+    AiFilterTransformParameters,
+    AiPrepSearchTransformParameters,
+    AiRedactTransformParameters,
+    AiSentimentAnalysisTransformParameters,
+    AiSummarizeTransformParameters,
+    AiTransformField,
+    AiTranslateTransformParameters,
     AskLumaLogEntry,
     AskLumaResult,
     BaiLianAgentTransformParameters,
@@ -1122,7 +1215,13 @@ __all__ = [
     EventHouseRuntime,
     EventTableQueryHistogram,
     ExecutionResult,
+    KnowledgeBase,
+    KnowledgeBaseChunk,
+    KnowledgeBaseDocument,
+    KnowledgeBaseSearchChunk,
+    LumaTable,
     Metadata,
+    MetadataSchemaField,
     Namespace,
     QueryAskLumaLogResult,
     QueryAttachment,
@@ -1133,6 +1232,7 @@ __all__ = [
     SinkBaiLianParameters,
     SinkDataWorksTriggerParameters,
     SinkHttpsParameters,
+    SinkKnowledgeBaseParameters,
     SinkMQTTParameters,
     SinkOSSParameters,
     SinkRabbitMQMetaParameters,
@@ -1269,6 +1369,27 @@ __all__ = [
     GetGenerateAgentDataSemanticsProgressRequest,
     GetGenerateAgentDataSemanticsProgressResponseBody,
     GetGenerateAgentDataSemanticsProgressResponse,
+    GetLumaCatalogRequest,
+    GetLumaCatalogResponseBody,
+    GetLumaCatalogResponse,
+    GetLumaChunkRequest,
+    GetLumaChunkResponseBody,
+    GetLumaChunkResponse,
+    GetLumaDocumentRequest,
+    GetLumaDocumentResponseBody,
+    GetLumaDocumentResponse,
+    GetLumaDocumentDownloadUrlRequest,
+    GetLumaDocumentDownloadUrlResponseBody,
+    GetLumaDocumentDownloadUrlResponse,
+    GetLumaKnowledgeBaseRequest,
+    GetLumaKnowledgeBaseResponseBody,
+    GetLumaKnowledgeBaseResponse,
+    GetLumaNamespaceRequest,
+    GetLumaNamespaceResponseBody,
+    GetLumaNamespaceResponse,
+    GetLumaTableRequest,
+    GetLumaTableResponseBody,
+    GetLumaTableResponse,
     GetNamespaceRequest,
     GetNamespaceResponseBody,
     GetNamespaceResponse,
@@ -1301,6 +1422,24 @@ __all__ = [
     ListEventStreamingsRequest,
     ListEventStreamingsResponseBody,
     ListEventStreamingsResponse,
+    ListLumaCatalogsRequest,
+    ListLumaCatalogsResponseBody,
+    ListLumaCatalogsResponse,
+    ListLumaChunksRequest,
+    ListLumaChunksResponseBody,
+    ListLumaChunksResponse,
+    ListLumaDocumentsRequest,
+    ListLumaDocumentsResponseBody,
+    ListLumaDocumentsResponse,
+    ListLumaKnowledgeBasesRequest,
+    ListLumaKnowledgeBasesResponseBody,
+    ListLumaKnowledgeBasesResponse,
+    ListLumaNamespacesRequest,
+    ListLumaNamespacesResponseBody,
+    ListLumaNamespacesResponse,
+    ListLumaTablesRequest,
+    ListLumaTablesResponseBody,
+    ListLumaTablesResponse,
     ListNamespacesRequest,
     ListNamespacesResponseBody,
     ListNamespacesResponse,
@@ -1345,6 +1484,9 @@ __all__ = [
     QueryEventTracesRequest,
     QueryEventTracesResponseBody,
     QueryEventTracesResponse,
+    QueryLumaWithSQLRequest,
+    QueryLumaWithSQLResponseBody,
+    QueryLumaWithSQLResponse,
     QueryTracedEventByEventIdRequest,
     QueryTracedEventByEventIdResponseBody,
     QueryTracedEventByEventIdResponse,
@@ -1355,6 +1497,9 @@ __all__ = [
     SaveAgentDataSemanticsShrinkRequest,
     SaveAgentDataSemanticsResponseBody,
     SaveAgentDataSemanticsResponse,
+    SearchLumaKnowledgeBaseRequest,
+    SearchLumaKnowledgeBaseResponseBody,
+    SearchLumaKnowledgeBaseResponse,
     StartEventStreamingRequest,
     StartEventStreamingResponseBody,
     StartEventStreamingResponse,
@@ -1411,6 +1556,15 @@ __all__ = [
     BaiLianAgentTransformParametersPrompt,
     DashScopeTransformParametersMessages,
     EmbeddingTransformParametersEmbeddingData,
+    KnowledgeBaseChunkConfigurationPreprocessRules,
+    KnowledgeBaseChunkConfiguration,
+    KnowledgeBaseSearchConfiguration,
+    KnowledgeBaseDocumentChunkConfigurationPreprocessRules,
+    KnowledgeBaseDocumentChunkConfiguration,
+    KnowledgeBaseDocumentMetadata,
+    KnowledgeBaseSearchChunkScores,
+    LumaTableColumns,
+    LumaTableRetentionPolicy,
     MetadataAttachments,
     SinkAgentRunParametersBody,
     SinkApiDestinationParametersBodyParameters,
@@ -1810,6 +1964,7 @@ __all__ = [
     GetEventStreamingResponseBodyDataTransforms,
     GetEventStreamingResponseBodyData,
     GetGenerateAgentDataSemanticsProgressResponseBodyData,
+    GetLumaDocumentDownloadUrlResponseBodyData,
     GetRuleResponseBodyDataTargetsConcurrentConfig,
     GetRuleResponseBodyDataTargetsDeadLetterQueue,
     GetRuleResponseBodyDataTargetsParamList,
@@ -1971,6 +2126,12 @@ __all__ = [
     ListEventStreamingsResponseBodyDataEventStreamingsTransforms,
     ListEventStreamingsResponseBodyDataEventStreamings,
     ListEventStreamingsResponseBodyData,
+    ListLumaCatalogsResponseBodyData,
+    ListLumaChunksResponseBodyData,
+    ListLumaDocumentsResponseBodyData,
+    ListLumaKnowledgeBasesResponseBodyData,
+    ListLumaNamespacesResponseBodyData,
+    ListLumaTablesResponseBodyData,
     ListNamespacesResponseBodyData,
     ListRulesResponseBodyDataRulesTargets,
     ListRulesResponseBodyDataRules,
@@ -2006,6 +2167,7 @@ __all__ = [
     QueryTracedEventByEventIdResponseBodyData,
     QueryTracedEventsResponseBodyDataEvents,
     QueryTracedEventsResponseBodyData,
+    SearchLumaKnowledgeBaseResponseBodyData,
     TestEventPatternResponseBodyData,
     TestEventSourceConfigRequestSourceMySQLParameters,
     TestEventSourceConfigResponseBodyData,

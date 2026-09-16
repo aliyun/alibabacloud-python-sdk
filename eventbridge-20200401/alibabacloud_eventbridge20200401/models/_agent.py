@@ -10,6 +10,8 @@ class Agent(DaraModel):
         self,
         created_at: int = None,
         description: str = None,
+        mcp_server_id: str = None,
+        mcp_server_name: str = None,
         metadata: main_models.Metadata = None,
         name: str = None,
         prompt: str = None,
@@ -17,6 +19,8 @@ class Agent(DaraModel):
     ):
         self.created_at = created_at
         self.description = description
+        self.mcp_server_id = mcp_server_id
+        self.mcp_server_name = mcp_server_name
         self.metadata = metadata
         self.name = name
         self.prompt = prompt
@@ -36,6 +40,12 @@ class Agent(DaraModel):
 
         if self.description is not None:
             result['Description'] = self.description
+
+        if self.mcp_server_id is not None:
+            result['McpServerId'] = self.mcp_server_id
+
+        if self.mcp_server_name is not None:
+            result['McpServerName'] = self.mcp_server_name
 
         if self.metadata is not None:
             result['Metadata'] = self.metadata.to_map()
@@ -58,6 +68,12 @@ class Agent(DaraModel):
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('McpServerId') is not None:
+            self.mcp_server_id = m.get('McpServerId')
+
+        if m.get('McpServerName') is not None:
+            self.mcp_server_name = m.get('McpServerName')
 
         if m.get('Metadata') is not None:
             temp_model = main_models.Metadata()
