@@ -147,12 +147,12 @@ class CreateAgentSessionRequestParamsMetaInitialConfigOptions(DaraModel):
         resource_group_id: str = None,
         skills: str = None,
     ):
-        # The exec mode. Valid values:
+        # The execution pattern. Valid values:
         # * chat: conversation mode only. Suitable for simple Q&A scenarios. Advantages: fast response and low token consumption. Disadvantages: cannot handle complex problems.
-        # * cli: sandbox mode. Suitable for complex data analytics, data processing, and code writing scenarios. Advantages: can handle complex problems with the model autonomously performing analysis and problem resolution. Disadvantages: slower processing speed and higher token consumption compared to chat mode.
+        # * cli: sandbox pattern. Suitable for complex data analytics, data processing, and code writing scenarios. Advantages: can handle complex problems, and the model autonomously executes analysis and problem resolution. Disadvantages: slower processing speed and higher token consumption compared to chat pattern.
         self.execution_lane = execution_lane
         # The authorization mode for script execution. OpenAPI currently supports only the yolo mode. Valid values:
-        # * yolo: automatic authorization. No human intervention is required, and the model can process tasks automatically.
+        # * yolo: automatic authorization. No manual intervention is required, and the model can process tasks automatically.
         self.mode = mode
         # The ID of the resource group used for initialization.
         self.resource_group_id = resource_group_id
@@ -203,7 +203,7 @@ class CreateAgentSessionRequestParamsMetaConfig(DaraModel):
         session_source: str = None,
         session_tags: List[main_models.CreateAgentSessionRequestParamsMetaConfigSessionTags] = None,
     ):
-        # The session source identifier for retrieval by source. For example, if an agent is used on both page A and page B, and you want page A to display only sessions created from page A, you can filter based on this parameter. The value can be up to 128 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
+        # The session source identifier for retrieval by source. For example, if an agent is used on both page A and page B, and you want page A to display only sessions created on page A, you can filter by this parameter. The value can be up to 128 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
         self.session_source = session_source
         # The list of session tags. You can use session tags for search and filtering.
         self.session_tags = session_tags
@@ -247,7 +247,7 @@ class CreateAgentSessionRequestParamsMetaConfigSessionTags(DaraModel):
         self,
         session_tag_code: str = None,
     ):
-        # The session tag. You can filter sessions based on session tags. For example, if you use a fixed RAM user to call OpenAPI operations but your calling system has its own account system, you can pass the account ID of your calling system as this tag to filter the session list by account ID. The value can be up to 128 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
+        # The session tag. You can filter sessions by tag. For example, if you use a fixed RAM user to call OpenAPI but your calling system has its own account system, you can pass the account ID of your calling system as this tag to filter the session list by account ID. The value can be up to 128 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
         self.session_tag_code = session_tag_code
 
     def validate(self):
@@ -276,9 +276,9 @@ class CreateAgentSessionRequestParamsMetaAgent(DaraModel):
         agent_name: str = None,
     ):
         # The name of the agent bound to the session. This parameter is required.
-        # * dataworks_data_agent: DataWorks built-in agent — Data Agent, which provides intelligent data development AI capabilities covering the entire workflow of data integration, development, O&M, governance, and analytics.
-        # * dataworks_chatbi_agent: DataWorks built-in agent — ChatBI, which uses natural language processing and intelligent analytics technologies to automate the entire analysis workflow from requirement parsing, data extraction, and automatic code generation to visualization report output through conversational interaction.
-        # * dataworks_ai_assistant_agent: DataWorks built-in agent — AI Assistant Service, which is a DataWorks enterprise-grade dedicated AI assistant built on open source frameworks such as OpenClaw and Hermes Agent.
+        # * dataworks_data_agent: DataWorks built-in agent — Data Agent. Provides intelligent data development AI capabilities that cover the entire pipeline of data integration, development, O&M, governance, and analytics.
+        # * dataworks_chatbi_agent: DataWorks built-in agent — ChatBI. Uses natural language processing and intelligent analytics to automate the entire analysis workflow through conversational interaction, from requirement parsing, data extraction, and automatic code generation to visualization report output.
+        # * dataworks_ai_assistant_agent: DataWorks built-in agent — AI Assistant Service. A DataWorks enterprise-grade dedicated AI assistant built on open source frameworks such as OpenClaw and Hermes Agent.
         self.agent_name = agent_name
 
     def validate(self):

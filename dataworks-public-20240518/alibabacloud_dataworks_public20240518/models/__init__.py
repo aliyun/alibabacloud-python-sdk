@@ -1068,6 +1068,10 @@ from ._rename_resource_response import RenameResourceResponse
 from ._rename_workflow_definition_request import RenameWorkflowDefinitionRequest
 from ._rename_workflow_definition_response_body import RenameWorkflowDefinitionResponseBody
 from ._rename_workflow_definition_response import RenameWorkflowDefinitionResponse
+from ._reply_agent_session_request import ReplyAgentSessionRequest
+from ._reply_agent_session_shrink_request import ReplyAgentSessionShrinkRequest
+from ._reply_agent_session_response_body import ReplyAgentSessionResponseBody
+from ._reply_agent_session_response import ReplyAgentSessionResponse
 from ._rerun_task_instances_request import RerunTaskInstancesRequest
 from ._rerun_task_instances_shrink_request import RerunTaskInstancesShrinkRequest
 from ._rerun_task_instances_response_body import RerunTaskInstancesResponseBody
@@ -2173,6 +2177,11 @@ from ._prompt_agent_session_request import PromptAgentSessionRequestParamsPrompt
 from ._prompt_agent_session_request import PromptAgentSessionRequestParamsPrompt
 from ._prompt_agent_session_request import PromptAgentSessionRequestParams
 from ._publish_image_response_body import PublishImageResponseBodyData
+from ._reply_agent_session_request import ReplyAgentSessionRequestParamsOutcome
+from ._reply_agent_session_request import ReplyAgentSessionRequestParams
+from ._reply_agent_session_response_body import ReplyAgentSessionResponseBodyJsonRpcResponseError
+from ._reply_agent_session_response_body import ReplyAgentSessionResponseBodyJsonRpcResponseResult
+from ._reply_agent_session_response_body import ReplyAgentSessionResponseBodyJsonRpcResponse
 from ._rerun_workflow_instances_request import RerunWorkflowInstancesRequestFilter
 from ._run_image_test_response_body import RunImageTestResponseBodyData
 from ._run_semantic_job_response_body import RunSemanticJobResponseBodyData
@@ -3383,6 +3392,10 @@ __all__ = [
     RenameWorkflowDefinitionRequest,
     RenameWorkflowDefinitionResponseBody,
     RenameWorkflowDefinitionResponse,
+    ReplyAgentSessionRequest,
+    ReplyAgentSessionShrinkRequest,
+    ReplyAgentSessionResponseBody,
+    ReplyAgentSessionResponse,
     RerunTaskInstancesRequest,
     RerunTaskInstancesShrinkRequest,
     RerunTaskInstancesResponseBody,
@@ -4488,6 +4501,11 @@ __all__ = [
     PromptAgentSessionRequestParamsPrompt,
     PromptAgentSessionRequestParams,
     PublishImageResponseBodyData,
+    ReplyAgentSessionRequestParamsOutcome,
+    ReplyAgentSessionRequestParams,
+    ReplyAgentSessionResponseBodyJsonRpcResponseError,
+    ReplyAgentSessionResponseBodyJsonRpcResponseResult,
+    ReplyAgentSessionResponseBodyJsonRpcResponse,
     RerunWorkflowInstancesRequestFilter,
     RunImageTestResponseBodyData,
     RunSemanticJobResponseBodyData,

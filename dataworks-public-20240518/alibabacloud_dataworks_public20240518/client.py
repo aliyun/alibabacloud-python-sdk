@@ -26970,6 +26970,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.rename_workflow_definition_with_options_async(request, runtime)
 
+    def reply_agent_session_with_options(
+        self,
+        tmp_req: main_models.ReplyAgentSessionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ReplyAgentSessionResponse:
+        tmp_req.validate()
+        request = main_models.ReplyAgentSessionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.params):
+            request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'Params', 'json')
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.jsonrpc):
+            body['Jsonrpc'] = request.jsonrpc
+        if not DaraCore.is_null(request.params_shrink):
+            body['Params'] = request.params_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ReplyAgentSession',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ReplyAgentSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reply_agent_session_with_options_async(
+        self,
+        tmp_req: main_models.ReplyAgentSessionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ReplyAgentSessionResponse:
+        tmp_req.validate()
+        request = main_models.ReplyAgentSessionShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.params):
+            request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'Params', 'json')
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.jsonrpc):
+            body['Jsonrpc'] = request.jsonrpc
+        if not DaraCore.is_null(request.params_shrink):
+            body['Params'] = request.params_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ReplyAgentSession',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ReplyAgentSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reply_agent_session(
+        self,
+        request: main_models.ReplyAgentSessionRequest,
+    ) -> main_models.ReplyAgentSessionResponse:
+        runtime = RuntimeOptions()
+        return self.reply_agent_session_with_options(request, runtime)
+
+    async def reply_agent_session_async(
+        self,
+        request: main_models.ReplyAgentSessionRequest,
+    ) -> main_models.ReplyAgentSessionResponse:
+        runtime = RuntimeOptions()
+        return await self.reply_agent_session_with_options_async(request, runtime)
+
     def rerun_task_instances_with_options(
         self,
         tmp_req: main_models.RerunTaskInstancesRequest,
