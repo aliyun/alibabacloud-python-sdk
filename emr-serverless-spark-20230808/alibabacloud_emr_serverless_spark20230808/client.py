@@ -1777,6 +1777,122 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_workspace_with_options_async(request, headers, runtime)
 
+    def create_workspace_queue_with_options(
+        self,
+        request: main_models.CreateWorkspaceQueueRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateWorkspaceQueueResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.gpu_spec):
+            body['gpuSpec'] = request.gpu_spec
+        if not DaraCore.is_null(request.instance_id):
+            body['instanceId'] = request.instance_id
+        if not DaraCore.is_null(request.payment_type):
+            body['paymentType'] = request.payment_type
+        if not DaraCore.is_null(request.preheat):
+            body['preheat'] = request.preheat
+        if not DaraCore.is_null(request.queue_category):
+            body['queueCategory'] = request.queue_category
+        if not DaraCore.is_null(request.resource_spec):
+            body['resourceSpec'] = request.resource_spec
+        if not DaraCore.is_null(request.workspace_id):
+            body['workspaceId'] = request.workspace_id
+        if not DaraCore.is_null(request.workspace_queue_name):
+            body['workspaceQueueName'] = request.workspace_queue_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateWorkspaceQueue',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/queues',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateWorkspaceQueueResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_workspace_queue_with_options_async(
+        self,
+        request: main_models.CreateWorkspaceQueueRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateWorkspaceQueueResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.gpu_spec):
+            body['gpuSpec'] = request.gpu_spec
+        if not DaraCore.is_null(request.instance_id):
+            body['instanceId'] = request.instance_id
+        if not DaraCore.is_null(request.payment_type):
+            body['paymentType'] = request.payment_type
+        if not DaraCore.is_null(request.preheat):
+            body['preheat'] = request.preheat
+        if not DaraCore.is_null(request.queue_category):
+            body['queueCategory'] = request.queue_category
+        if not DaraCore.is_null(request.resource_spec):
+            body['resourceSpec'] = request.resource_spec
+        if not DaraCore.is_null(request.workspace_id):
+            body['workspaceId'] = request.workspace_id
+        if not DaraCore.is_null(request.workspace_queue_name):
+            body['workspaceQueueName'] = request.workspace_queue_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateWorkspaceQueue',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/queues',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateWorkspaceQueueResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_workspace_queue(
+        self,
+        request: main_models.CreateWorkspaceQueueRequest,
+    ) -> main_models.CreateWorkspaceQueueResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_workspace_queue_with_options(request, headers, runtime)
+
+    async def create_workspace_queue_async(
+        self,
+        request: main_models.CreateWorkspaceQueueRequest,
+    ) -> main_models.CreateWorkspaceQueueResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_workspace_queue_with_options_async(request, headers, runtime)
+
     def delete_kyuubi_service_with_options(
         self,
         workspace_id: str,

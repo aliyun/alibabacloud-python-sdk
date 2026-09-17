@@ -70,6 +70,9 @@ from ._create_sql_statement_response import CreateSqlStatementResponse
 from ._create_workspace_request import CreateWorkspaceRequest
 from ._create_workspace_response_body import CreateWorkspaceResponseBody
 from ._create_workspace_response import CreateWorkspaceResponse
+from ._create_workspace_queue_request import CreateWorkspaceQueueRequest
+from ._create_workspace_queue_response_body import CreateWorkspaceQueueResponseBody
+from ._create_workspace_queue_response import CreateWorkspaceQueueResponse
 from ._delete_kyuubi_service_response_body import DeleteKyuubiServiceResponseBody
 from ._delete_kyuubi_service_response import DeleteKyuubiServiceResponse
 from ._delete_kyuubi_token_request import DeleteKyuubiTokenRequest
@@ -317,6 +320,7 @@ from ._create_session_cluster_request import CreateSessionClusterRequestAutoStop
 from ._create_sql_statement_response_body import CreateSqlStatementResponseBodyData
 from ._create_workspace_request import CreateWorkspaceRequestResourceSpec
 from ._create_workspace_request import CreateWorkspaceRequestTag
+from ._create_workspace_queue_request import CreateWorkspaceQueueRequestResourceSpec
 from ._edit_workspace_queue_request import EditWorkspaceQueueRequestResourceSpec
 from ._get_cu_hours_response_body import GetCuHoursResponseBodyData
 from ._get_doctor_application_response_body import GetDoctorApplicationResponseBodyData
@@ -496,6 +500,9 @@ __all__ = [
     CreateWorkspaceRequest,
     CreateWorkspaceResponseBody,
     CreateWorkspaceResponse,
+    CreateWorkspaceQueueRequest,
+    CreateWorkspaceQueueResponseBody,
+    CreateWorkspaceQueueResponse,
     DeleteKyuubiServiceResponseBody,
     DeleteKyuubiServiceResponse,
     DeleteKyuubiTokenRequest,
@@ -743,6 +750,7 @@ __all__ = [
     CreateSqlStatementResponseBodyData,
     CreateWorkspaceRequestResourceSpec,
     CreateWorkspaceRequestTag,
+    CreateWorkspaceQueueRequestResourceSpec,
     EditWorkspaceQueueRequestResourceSpec,
     GetCuHoursResponseBodyData,
     GetDoctorApplicationResponseBodyData,

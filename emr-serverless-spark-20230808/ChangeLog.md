@@ -1,3 +1,7 @@
+2026-09-17 Version: 2.1.0
+- Support API CreateWorkspaceQueue.
+
+
 2026-09-14 Version: 2.0.0
 - Support API QueryApmGrafanaData.
 - Update API CreateRayCluster: add request parameters body.headSpec.displayReleaseVersion.
