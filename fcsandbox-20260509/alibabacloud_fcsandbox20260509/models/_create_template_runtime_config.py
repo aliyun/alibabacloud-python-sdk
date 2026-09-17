@@ -18,7 +18,7 @@ class CreateTemplateRuntimeConfig(DaraModel):
     ):
         # The number of CPU cores.
         self.cpu = cpu
-        # The disk size. Unit: GB.
+        # The disk size. Unit: MB.
         self.disk_size = disk_size
         # Specifies whether to allow access to the Internet.
         self.internet_access = internet_access
