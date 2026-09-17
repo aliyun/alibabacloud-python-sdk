@@ -1,3 +1,10 @@
+2026-09-17 Version: 3.23.0
+- Support API CredentialRecognitionIntlV2.
+- Support API CredentialSubmitIntlV2.
+- Update API CredentialRecognitionIntl: add request parameters FileInputType.
+- Update API CredentialSubmitIntl: add request parameters FileInputType.
+
+
 2026-08-28 Version: 3.22.3
 - Update API CredentialRecognitionIntl: add request parameters CheckRuleConfig.
 - Update API CredentialRecognitionIntl: add request parameters IdQuality.

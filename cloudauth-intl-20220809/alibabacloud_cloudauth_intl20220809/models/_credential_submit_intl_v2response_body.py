@@ -5,19 +5,19 @@ from __future__ import annotations
 from alibabacloud_cloudauth_intl20220809 import models as main_models
 from darabonba.model import DaraModel
 
-class CredentialRecognitionIntlResponseBody(DaraModel):
+class CredentialSubmitIntlV2ResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
         message: str = None,
         request_id: str = None,
-        result: main_models.CredentialRecognitionIntlResponseBodyResult = None,
+        result: main_models.CredentialSubmitIntlV2ResponseBodyResult = None,
     ):
         # The return code.
         self.code = code
-        # The response message.
+        # The return message.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
         # The returned result.
         self.result = result
@@ -57,26 +57,18 @@ class CredentialRecognitionIntlResponseBody(DaraModel):
             self.request_id = m.get('RequestId')
 
         if m.get('Result') is not None:
-            temp_model = main_models.CredentialRecognitionIntlResponseBodyResult()
+            temp_model = main_models.CredentialSubmitIntlV2ResponseBodyResult()
             self.result = temp_model.from_map(m.get('Result'))
 
         return self
 
-class CredentialRecognitionIntlResponseBodyResult(DaraModel):
+class CredentialSubmitIntlV2ResponseBodyResult(DaraModel):
     def __init__(
         self,
-        ext_id_info: str = None,
-        sub_code: str = None,
-        success: str = None,
+        transaction_id: str = None,
     ):
-        # The recognized key information, in JSON format.
-        self.ext_id_info = ext_id_info
-        # The description of the authentication result.
-        self.sub_code = sub_code
-        # The extraction result. Valid values:
-        # - S: Succeeded.
-        # - F: Failed.
-        self.success = success
+        # The unique identifier of the verification request.
+        self.transaction_id = transaction_id
 
     def validate(self):
         pass
@@ -86,27 +78,15 @@ class CredentialRecognitionIntlResponseBodyResult(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.ext_id_info is not None:
-            result['ExtIdInfo'] = self.ext_id_info
-
-        if self.sub_code is not None:
-            result['SubCode'] = self.sub_code
-
-        if self.success is not None:
-            result['Success'] = self.success
+        if self.transaction_id is not None:
+            result['TransactionId'] = self.transaction_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ExtIdInfo') is not None:
-            self.ext_id_info = m.get('ExtIdInfo')
-
-        if m.get('SubCode') is not None:
-            self.sub_code = m.get('SubCode')
-
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
+        if m.get('TransactionId') is not None:
+            self.transaction_id = m.get('TransactionId')
 
         return self
 

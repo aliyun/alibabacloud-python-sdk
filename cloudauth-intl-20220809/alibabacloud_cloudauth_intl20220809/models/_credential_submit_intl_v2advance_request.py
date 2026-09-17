@@ -2,38 +2,48 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import BinaryIO
+
 from darabonba.model import DaraModel
 
-class CredentialRecognitionIntlRequest(DaraModel):
+class CredentialSubmitIntlV2AdvanceRequest(DaraModel):
     def __init__(
         self,
         check_rule_config: str = None,
         credential_ocr_picture_base_64: str = None,
+        credential_ocr_picture_file_object: BinaryIO = None,
         credential_ocr_picture_url: str = None,
         doc_type: str = None,
         file_input_type: str = None,
         fraud_check: str = None,
         id_quality: str = None,
+        merchant_biz_id: str = None,
         ocr_area: str = None,
         ocr_translation: str = None,
         ocr_value_standard: str = None,
         product_code: str = None,
+        scene_code: str = None,
     ):
-        # The field check rule configuration, in JSON string format.
+        # The field validation rule configuration. The value is a JSON string.
         self.check_rule_config = check_rule_config
-        # The Base64-encoded image. If you choose to pass in the image by using IdOcrPictureBase64 (Base64-encoded photo), check the photo size and do not pass in an excessively large photo.
+        # The Base64-encoded image. If you choose this method to submit a photo, check the photo size and do not submit an excessively large photo.
         self.credential_ocr_picture_base_64 = credential_ocr_picture_base_64
+        # The image file stream.
+        self.credential_ocr_picture_file_object = credential_ocr_picture_file_object
         # The URL of the image. The URL must be a publicly accessible HTTP or HTTPS link.
         self.credential_ocr_picture_url = credential_ocr_picture_url
         # The credential type. Valid values:
-        # - 01: transaction credential (including electronic bill images for water, electricity, gas, credit card, and other types)
+        # 
+        # - 01: Transaction voucher, which includes electronic bill images for utilities such as water, electricity, gas, and credit cards.
+        # - 02: Vehicle registration certificate.
+        # - 03: Transfer transaction record.
+        # - 04: Proof of address (POA).
         # 
         # This parameter is required.
         self.doc_type = doc_type
-        # The input file type. Valid values:
+        # The type of the input material. Valid values:
         # 
         # - IMAGE (default): image.
-        # 
         # - PDF: PDF format.
         self.file_input_type = file_input_type
         # Specifies whether to enable tampering detection. Valid values:
@@ -42,27 +52,36 @@ class CredentialRecognitionIntlRequest(DaraModel):
         # 
         # This parameter is required.
         self.fraud_check = fraud_check
-        # Specifies whether to enable quality detection. Valid values:
-        # - Y: Enabled.
-        # - N: Disabled.
+        # Specifies whether to enable quality detection. Valid values: Y (enabled) and N (disabled).
         self.id_quality = id_quality
+        # The unique identifier of the merchant request. The value is a 32-character alphanumeric string.
+        # 
+        # The first few characters consist of a custom abbreviation defined by the merchant, the middle part can contain a time segment, and the last part can use a random or incremental sequence.
+        # 
+        # This parameter is required.
+        self.merchant_biz_id = merchant_biz_id
         # The extraction type. Valid values:
-        # - 0101: electronic bill address and name module (extracts the address and name module through intelligent analysis)
+        # 0101: electronic bill address and name module (extracts address and name modules through intelligent analysis).
+        # 0201: 
+        # 0301: transfer transaction amount information.
+        # 0401: POA credential extraction information.
         # 
         # This parameter is required.
         self.ocr_area = ocr_area
-        # Specifies whether to enable translation. Valid values:
-        # - 0: Disabled.
-        # - 1: Enabled.
+        # Specifies whether to enable translation. Valid values: 0 (disabled) and 1 (enabled).
         self.ocr_translation = ocr_translation
-        # Specifies whether to enable OCR result normalization. Valid values:
-        # - 0: Disabled.
+        # Specifies whether to enable standardization of key fields recognized by OCR. Valid values:
+        # - 0: Disabled (default). 
         # - 1: Enabled.
         self.ocr_value_standard = ocr_value_standard
         # The product solution to use. Set the value to CREDENTIAL_RECOGNITION.
         # 
         # This parameter is required.
         self.product_code = product_code
+        # The custom verification scenario ID. You can use this scenario ID to query related records in the console. The value is a combination of up to 10 letters, digits, or underscores.
+        # 
+        # This parameter is required.
+        self.scene_code = scene_code
 
     def validate(self):
         pass
@@ -77,6 +96,9 @@ class CredentialRecognitionIntlRequest(DaraModel):
 
         if self.credential_ocr_picture_base_64 is not None:
             result['CredentialOcrPictureBase64'] = self.credential_ocr_picture_base_64
+
+        if self.credential_ocr_picture_file_object is not None:
+            result['CredentialOcrPictureFile'] = self.credential_ocr_picture_file_object
 
         if self.credential_ocr_picture_url is not None:
             result['CredentialOcrPictureUrl'] = self.credential_ocr_picture_url
@@ -93,6 +115,9 @@ class CredentialRecognitionIntlRequest(DaraModel):
         if self.id_quality is not None:
             result['IdQuality'] = self.id_quality
 
+        if self.merchant_biz_id is not None:
+            result['MerchantBizId'] = self.merchant_biz_id
+
         if self.ocr_area is not None:
             result['OcrArea'] = self.ocr_area
 
@@ -105,6 +130,9 @@ class CredentialRecognitionIntlRequest(DaraModel):
         if self.product_code is not None:
             result['ProductCode'] = self.product_code
 
+        if self.scene_code is not None:
+            result['SceneCode'] = self.scene_code
+
         return result
 
     def from_map(self, m: dict = None):
@@ -114,6 +142,9 @@ class CredentialRecognitionIntlRequest(DaraModel):
 
         if m.get('CredentialOcrPictureBase64') is not None:
             self.credential_ocr_picture_base_64 = m.get('CredentialOcrPictureBase64')
+
+        if m.get('CredentialOcrPictureFile') is not None:
+            self.credential_ocr_picture_file_object = m.get('CredentialOcrPictureFile')
 
         if m.get('CredentialOcrPictureUrl') is not None:
             self.credential_ocr_picture_url = m.get('CredentialOcrPictureUrl')
@@ -130,6 +161,9 @@ class CredentialRecognitionIntlRequest(DaraModel):
         if m.get('IdQuality') is not None:
             self.id_quality = m.get('IdQuality')
 
+        if m.get('MerchantBizId') is not None:
+            self.merchant_biz_id = m.get('MerchantBizId')
+
         if m.get('OcrArea') is not None:
             self.ocr_area = m.get('OcrArea')
 
@@ -141,6 +175,9 @@ class CredentialRecognitionIntlRequest(DaraModel):
 
         if m.get('ProductCode') is not None:
             self.product_code = m.get('ProductCode')
+
+        if m.get('SceneCode') is not None:
+            self.scene_code = m.get('SceneCode')
 
         return self
 

@@ -4,11 +4,12 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class CredentialRecognitionIntlRequest(DaraModel):
+class CredentialRecognitionIntlV2Request(DaraModel):
     def __init__(
         self,
         check_rule_config: str = None,
         credential_ocr_picture_base_64: str = None,
+        credential_ocr_picture_file: str = None,
         credential_ocr_picture_url: str = None,
         doc_type: str = None,
         file_input_type: str = None,
@@ -19,22 +20,27 @@ class CredentialRecognitionIntlRequest(DaraModel):
         ocr_value_standard: str = None,
         product_code: str = None,
     ):
-        # The field check rule configuration, in JSON string format.
+        # The field validation rule configuration, in JSON string format.
         self.check_rule_config = check_rule_config
         # The Base64-encoded image. If you choose to pass in the image by using IdOcrPictureBase64 (Base64-encoded photo), check the photo size and do not pass in an excessively large photo.
         self.credential_ocr_picture_base_64 = credential_ocr_picture_base_64
+        # The image file stream.
+        self.credential_ocr_picture_file = credential_ocr_picture_file
         # The URL of the image. The URL must be a publicly accessible HTTP or HTTPS link.
         self.credential_ocr_picture_url = credential_ocr_picture_url
         # The credential type. Valid values:
-        # - 01: transaction credential (including electronic bill images for water, electricity, gas, credit card, and other types)
+        # 
+        # - 01: transaction credential (including electronic bill images for water, electricity, gas, credit cards, and other types)
+        # - 02: vehicle registration certificate
+        # - 03: transfer transaction record
+        # - 04: POA address proof
         # 
         # This parameter is required.
         self.doc_type = doc_type
-        # The input file type. Valid values:
+        # The input material type. Valid values:
         # 
-        # - IMAGE (default): image.
-        # 
-        # - PDF: PDF format.
+        # - IMAGE (default): image
+        # - PDF: PDF format
         self.file_input_type = file_input_type
         # Specifies whether to enable tampering detection. Valid values:
         # - true: Enabled.
@@ -42,22 +48,20 @@ class CredentialRecognitionIntlRequest(DaraModel):
         # 
         # This parameter is required.
         self.fraud_check = fraud_check
-        # Specifies whether to enable quality detection. Valid values:
-        # - Y: Enabled.
-        # - N: Disabled.
+        # Specifies whether to enable quality detection. Valid values: Y (enabled) and N (disabled).
         self.id_quality = id_quality
         # The extraction type. Valid values:
-        # - 0101: electronic bill address and name module (extracts the address and name module through intelligent analysis)
+        # 
+        # - 0101: electronic bill address and name module (extracts address and name modules through intelligent analysis)
+        # - 0201: Thailand vehicle registration certificate
+        # - 0301: transfer transaction amount information
+        # - 0401: POA credential extraction information
         # 
         # This parameter is required.
         self.ocr_area = ocr_area
-        # Specifies whether to enable translation. Valid values:
-        # - 0: Disabled.
-        # - 1: Enabled.
+        # Specifies whether to enable translation. Valid values: 0 (disabled) and 1 (enabled).
         self.ocr_translation = ocr_translation
-        # Specifies whether to enable OCR result normalization. Valid values:
-        # - 0: Disabled.
-        # - 1: Enabled.
+        # Specifies whether to enable OCR result normalization. Valid values: 0 (disabled) and 1 (enabled).
         self.ocr_value_standard = ocr_value_standard
         # The product solution to use. Set the value to CREDENTIAL_RECOGNITION.
         # 
@@ -77,6 +81,9 @@ class CredentialRecognitionIntlRequest(DaraModel):
 
         if self.credential_ocr_picture_base_64 is not None:
             result['CredentialOcrPictureBase64'] = self.credential_ocr_picture_base_64
+
+        if self.credential_ocr_picture_file is not None:
+            result['CredentialOcrPictureFile'] = self.credential_ocr_picture_file
 
         if self.credential_ocr_picture_url is not None:
             result['CredentialOcrPictureUrl'] = self.credential_ocr_picture_url
@@ -114,6 +121,9 @@ class CredentialRecognitionIntlRequest(DaraModel):
 
         if m.get('CredentialOcrPictureBase64') is not None:
             self.credential_ocr_picture_base_64 = m.get('CredentialOcrPictureBase64')
+
+        if m.get('CredentialOcrPictureFile') is not None:
+            self.credential_ocr_picture_file = m.get('CredentialOcrPictureFile')
 
         if m.get('CredentialOcrPictureUrl') is not None:
             self.credential_ocr_picture_url = m.get('CredentialOcrPictureUrl')

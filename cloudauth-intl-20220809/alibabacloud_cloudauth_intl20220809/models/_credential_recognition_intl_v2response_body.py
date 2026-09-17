@@ -5,21 +5,21 @@ from __future__ import annotations
 from alibabacloud_cloudauth_intl20220809 import models as main_models
 from darabonba.model import DaraModel
 
-class CredentialRecognitionIntlResponseBody(DaraModel):
+class CredentialRecognitionIntlV2ResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
         message: str = None,
         request_id: str = None,
-        result: main_models.CredentialRecognitionIntlResponseBodyResult = None,
+        result: main_models.CredentialRecognitionIntlV2ResponseBodyResult = None,
     ):
-        # The return code.
+        # The return code. A value of 200 indicates a successful request. Other values indicate failures.
         self.code = code
         # The response message.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # The returned result.
+        # The response result.
         self.result = result
 
     def validate(self):
@@ -57,12 +57,12 @@ class CredentialRecognitionIntlResponseBody(DaraModel):
             self.request_id = m.get('RequestId')
 
         if m.get('Result') is not None:
-            temp_model = main_models.CredentialRecognitionIntlResponseBodyResult()
+            temp_model = main_models.CredentialRecognitionIntlV2ResponseBodyResult()
             self.result = temp_model.from_map(m.get('Result'))
 
         return self
 
-class CredentialRecognitionIntlResponseBodyResult(DaraModel):
+class CredentialRecognitionIntlV2ResponseBodyResult(DaraModel):
     def __init__(
         self,
         ext_id_info: str = None,
@@ -71,7 +71,13 @@ class CredentialRecognitionIntlResponseBodyResult(DaraModel):
     ):
         # The recognized key information, in JSON format.
         self.ext_id_info = ext_id_info
-        # The description of the authentication result.
+        # The result code. Valid values:
+        # 
+        # - 200: OCR extraction succeeded and all rule checks passed.
+        # - 204: Validation result is inconsistent. OCR extraction succeeded, but some fields in CheckRuleConfig did not pass (N).
+        # - 211: Quality does not meet requirements. Quality detection did not pass when idQuality is set to Y (not yet supported in the current version).
+        # - 212: Anti-forgery check did not pass. fraudCheck was triggered and anti-forgery verification failed.
+        # - 213: No text was extracted, or the credential type check did not pass.
         self.sub_code = sub_code
         # The extraction result. Valid values:
         # - S: Succeeded.

@@ -33,9 +33,17 @@ from ._credential_get_result_intl_response import CredentialGetResultIntlRespons
 from ._credential_recognition_intl_request import CredentialRecognitionIntlRequest
 from ._credential_recognition_intl_response_body import CredentialRecognitionIntlResponseBody
 from ._credential_recognition_intl_response import CredentialRecognitionIntlResponse
+from ._credential_recognition_intl_v2request import CredentialRecognitionIntlV2Request
+from ._credential_recognition_intl_v2advance_request import CredentialRecognitionIntlV2AdvanceRequest
+from ._credential_recognition_intl_v2response_body import CredentialRecognitionIntlV2ResponseBody
+from ._credential_recognition_intl_v2response import CredentialRecognitionIntlV2Response
 from ._credential_submit_intl_request import CredentialSubmitIntlRequest
 from ._credential_submit_intl_response_body import CredentialSubmitIntlResponseBody
 from ._credential_submit_intl_response import CredentialSubmitIntlResponse
+from ._credential_submit_intl_v2request import CredentialSubmitIntlV2Request
+from ._credential_submit_intl_v2advance_request import CredentialSubmitIntlV2AdvanceRequest
+from ._credential_submit_intl_v2response_body import CredentialSubmitIntlV2ResponseBody
+from ._credential_submit_intl_v2response import CredentialSubmitIntlV2Response
 from ._credential_verify_intl_request import CredentialVerifyIntlRequest
 from ._credential_verify_intl_advance_request import CredentialVerifyIntlAdvanceRequest
 from ._credential_verify_intl_response_body import CredentialVerifyIntlResponseBody
@@ -168,7 +176,9 @@ from ._check_result_response_body import CheckResultResponseBodyResult
 from ._check_verify_log_response_body import CheckVerifyLogResponseBodyResult
 from ._credential_get_result_intl_response_body import CredentialGetResultIntlResponseBodyResult
 from ._credential_recognition_intl_response_body import CredentialRecognitionIntlResponseBodyResult
+from ._credential_recognition_intl_v2response_body import CredentialRecognitionIntlV2ResponseBodyResult
 from ._credential_submit_intl_response_body import CredentialSubmitIntlResponseBodyResult
+from ._credential_submit_intl_v2response_body import CredentialSubmitIntlV2ResponseBodyResult
 from ._credential_verify_intl_response_body import CredentialVerifyIntlResponseBodyResultObject
 from ._deepfake_detect_intl_response_body import DeepfakeDetectIntlResponseBodyResultObject
 from ._deepfake_detect_intl_stream_response_body import DeepfakeDetectIntlStreamResponseBodyResultObject
@@ -240,9 +250,17 @@ __all__ = [
     CredentialRecognitionIntlRequest,
     CredentialRecognitionIntlResponseBody,
     CredentialRecognitionIntlResponse,
+    CredentialRecognitionIntlV2Request,
+    CredentialRecognitionIntlV2AdvanceRequest,
+    CredentialRecognitionIntlV2ResponseBody,
+    CredentialRecognitionIntlV2Response,
     CredentialSubmitIntlRequest,
     CredentialSubmitIntlResponseBody,
     CredentialSubmitIntlResponse,
+    CredentialSubmitIntlV2Request,
+    CredentialSubmitIntlV2AdvanceRequest,
+    CredentialSubmitIntlV2ResponseBody,
+    CredentialSubmitIntlV2Response,
     CredentialVerifyIntlRequest,
     CredentialVerifyIntlAdvanceRequest,
     CredentialVerifyIntlResponseBody,
@@ -375,7 +393,9 @@ __all__ = [
     CheckVerifyLogResponseBodyResult,
     CredentialGetResultIntlResponseBodyResult,
     CredentialRecognitionIntlResponseBodyResult,
+    CredentialRecognitionIntlV2ResponseBodyResult,
     CredentialSubmitIntlResponseBodyResult,
+    CredentialSubmitIntlV2ResponseBodyResult,
     CredentialVerifyIntlResponseBodyResultObject,
     DeepfakeDetectIntlResponseBodyResultObject,
     DeepfakeDetectIntlStreamResponseBodyResultObject,

@@ -11,6 +11,7 @@ class CredentialSubmitIntlRequest(DaraModel):
         credential_ocr_picture_base_64: str = None,
         credential_ocr_picture_url: str = None,
         doc_type: str = None,
+        file_input_type: str = None,
         fraud_check: str = None,
         id_quality: str = None,
         merchant_biz_id: str = None,
@@ -27,10 +28,16 @@ class CredentialSubmitIntlRequest(DaraModel):
         # The URL of the image. The URL must be a publicly accessible HTTP or HTTPS link.
         self.credential_ocr_picture_url = credential_ocr_picture_url
         # The credential type. Valid values:
-        # - 02: vehicle registration certificate
+        # - 02: vehicle registration certificate.
         # 
         # This parameter is required.
         self.doc_type = doc_type
+        # The input file type. Valid values:
+        # 
+        # - IMAGE (default): image.
+        # 
+        # - PDF: PDF format.
+        self.file_input_type = file_input_type
         # Specifies whether to enable tampering detection. Valid values:
         # - true: Enabled.
         # - false: Disabled.
@@ -41,13 +48,13 @@ class CredentialSubmitIntlRequest(DaraModel):
         # - Y: Enabled.
         # - N: Disabled.
         self.id_quality = id_quality
-        # The merchant-defined unique business identifier, used for subsequent troubleshooting. The value can be a combination of letters and numbers with a maximum length of 32 characters. Ensure that the value is unique.
+        # The custom business unique identifier on the merchant side, used for subsequent troubleshooting. The value can be a combination of letters and digits with a maximum length of 32 characters. Ensure that the value is unique.
         # 
         # This parameter is required.
         self.merchant_biz_id = merchant_biz_id
         # The extraction type. Valid values:
         # 
-        # - 0201: Thailand vehicle registration certificate
+        # - 0201: Thailand vehicle registration certificate.
         # 
         # This parameter is required.
         self.ocr_area = ocr_area
@@ -59,11 +66,11 @@ class CredentialSubmitIntlRequest(DaraModel):
         # - 0: Disabled.
         # - 1: Enabled.
         self.ocr_value_standard = ocr_value_standard
-        # The product solution to use. Set this to CREDENTIAL_RECOGNITION.
+        # The product solution to use. Set this parameter to CREDENTIAL_RECOGNITION.
         # 
         # This parameter is required.
         self.product_code = product_code
-        # The custom authentication scenario ID. You can use this ID to query related records in the console. The value can be a combination of letters, numbers, or underscores with a maximum length of 10 characters.
+        # The custom authentication scenario ID. You can use this scenario ID to query related records in the console. The value can be a combination of letters, digits, or underscores with a maximum length of 10 characters.
         # 
         # This parameter is required.
         self.scene_code = scene_code
@@ -87,6 +94,9 @@ class CredentialSubmitIntlRequest(DaraModel):
 
         if self.doc_type is not None:
             result['DocType'] = self.doc_type
+
+        if self.file_input_type is not None:
+            result['FileInputType'] = self.file_input_type
 
         if self.fraud_check is not None:
             result['FraudCheck'] = self.fraud_check
@@ -127,6 +137,9 @@ class CredentialSubmitIntlRequest(DaraModel):
 
         if m.get('DocType') is not None:
             self.doc_type = m.get('DocType')
+
+        if m.get('FileInputType') is not None:
+            self.file_input_type = m.get('FileInputType')
 
         if m.get('FraudCheck') is not None:
             self.fraud_check = m.get('FraudCheck')
