@@ -21,12 +21,6 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'cn-shenzhen': 'vs.cn-shenzhen.aliyuncs.com',
-            'cn-qingdao': 'vs.cn-qingdao.aliyuncs.com',
-            'cn-beijing': 'vs.cn-beijing.aliyuncs.com',
-            'cn-shanghai': 'vs.cn-shanghai.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('vs', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -5658,6 +5652,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_comfy_productions_with_options_async(request, runtime)
 
+    def describe_comfy_task_waiting_queue_with_options(
+        self,
+        request: main_models.DescribeComfyTaskWaitingQueueRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeComfyTaskWaitingQueueResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.hive_id):
+            query['HiveId'] = request.hive_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeComfyTaskWaitingQueue',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeComfyTaskWaitingQueueResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_comfy_task_waiting_queue_with_options_async(
+        self,
+        request: main_models.DescribeComfyTaskWaitingQueueRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeComfyTaskWaitingQueueResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.hive_id):
+            query['HiveId'] = request.hive_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeComfyTaskWaitingQueue',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeComfyTaskWaitingQueueResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_comfy_task_waiting_queue(
+        self,
+        request: main_models.DescribeComfyTaskWaitingQueueRequest,
+    ) -> main_models.DescribeComfyTaskWaitingQueueResponse:
+        runtime = RuntimeOptions()
+        return self.describe_comfy_task_waiting_queue_with_options(request, runtime)
+
+    async def describe_comfy_task_waiting_queue_async(
+        self,
+        request: main_models.DescribeComfyTaskWaitingQueueRequest,
+    ) -> main_models.DescribeComfyTaskWaitingQueueResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_comfy_task_waiting_queue_with_options_async(request, runtime)
+
     def describe_comfy_tasks_with_options(
         self,
         request: main_models.DescribeComfyTasksRequest,
@@ -5665,6 +5729,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeComfyTasksResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.hive_id):
+            query['HiveId'] = request.hive_id
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -5701,6 +5767,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeComfyTasksResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.hive_id):
+            query['HiveId'] = request.hive_id
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -11832,6 +11900,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_rendering_data_packages_with_options_async(request, runtime)
 
+    def list_rendering_images_with_options(
+        self,
+        request: main_models.ListRenderingImagesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListRenderingImagesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.image_id):
+            query['ImageId'] = request.image_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListRenderingImages',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListRenderingImagesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_rendering_images_with_options_async(
+        self,
+        request: main_models.ListRenderingImagesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListRenderingImagesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.image_id):
+            query['ImageId'] = request.image_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListRenderingImages',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListRenderingImagesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_rendering_images(
+        self,
+        request: main_models.ListRenderingImagesRequest,
+    ) -> main_models.ListRenderingImagesResponse:
+        runtime = RuntimeOptions()
+        return self.list_rendering_images_with_options(request, runtime)
+
+    async def list_rendering_images_async(
+        self,
+        request: main_models.ListRenderingImagesRequest,
+    ) -> main_models.ListRenderingImagesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_rendering_images_with_options_async(request, runtime)
+
     def list_rendering_instance_gateway_with_options(
         self,
         request: main_models.ListRenderingInstanceGatewayRequest,
@@ -14069,6 +14215,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.rendering_instance_ids):
             request.rendering_instance_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.rendering_instance_ids, 'RenderingInstanceIds', 'json')
         query = {}
+        if not DaraCore.is_null(request.precheck):
+            query['Precheck'] = request.precheck
         if not DaraCore.is_null(request.rendering_instance_ids_shrink):
             query['RenderingInstanceIds'] = request.rendering_instance_ids_shrink
         req = open_api_util_models.OpenApiRequest(
@@ -14101,6 +14249,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.rendering_instance_ids):
             request.rendering_instance_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.rendering_instance_ids, 'RenderingInstanceIds', 'json')
         query = {}
+        if not DaraCore.is_null(request.precheck):
+            query['Precheck'] = request.precheck
         if not DaraCore.is_null(request.rendering_instance_ids_shrink):
             query['RenderingInstanceIds'] = request.rendering_instance_ids_shrink
         req = open_api_util_models.OpenApiRequest(
@@ -17346,6 +17496,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.update_vs_pull_stream_info_config_with_options_async(request, runtime)
 
+    def upgrade_rendering_instance_image_with_options(
+        self,
+        tmp_req: main_models.UpgradeRenderingInstanceImageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpgradeRenderingInstanceImageResponse:
+        tmp_req.validate()
+        request = main_models.UpgradeRenderingInstanceImageShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.rendering_instance_ids):
+            request.rendering_instance_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.rendering_instance_ids, 'RenderingInstanceIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.image_id):
+            query['ImageId'] = request.image_id
+        if not DaraCore.is_null(request.rendering_instance_ids_shrink):
+            query['RenderingInstanceIds'] = request.rendering_instance_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpgradeRenderingInstanceImage',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpgradeRenderingInstanceImageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upgrade_rendering_instance_image_with_options_async(
+        self,
+        tmp_req: main_models.UpgradeRenderingInstanceImageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpgradeRenderingInstanceImageResponse:
+        tmp_req.validate()
+        request = main_models.UpgradeRenderingInstanceImageShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.rendering_instance_ids):
+            request.rendering_instance_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.rendering_instance_ids, 'RenderingInstanceIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.image_id):
+            query['ImageId'] = request.image_id
+        if not DaraCore.is_null(request.rendering_instance_ids_shrink):
+            query['RenderingInstanceIds'] = request.rendering_instance_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpgradeRenderingInstanceImage',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpgradeRenderingInstanceImageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upgrade_rendering_instance_image(
+        self,
+        request: main_models.UpgradeRenderingInstanceImageRequest,
+    ) -> main_models.UpgradeRenderingInstanceImageResponse:
+        runtime = RuntimeOptions()
+        return self.upgrade_rendering_instance_image_with_options(request, runtime)
+
+    async def upgrade_rendering_instance_image_async(
+        self,
+        request: main_models.UpgradeRenderingInstanceImageRequest,
+    ) -> main_models.UpgradeRenderingInstanceImageResponse:
+        runtime = RuntimeOptions()
+        return await self.upgrade_rendering_instance_image_with_options_async(request, runtime)
+
     def upload_cloud_app_with_options(
         self,
         tmp_req: main_models.UploadCloudAppRequest,
@@ -17373,6 +17605,10 @@ class Client(OpenApiClient):
             query['PkgLabels'] = request.pkg_labels_shrink
         if not DaraCore.is_null(request.pkg_type):
             query['PkgType'] = request.pkg_type
+        if not DaraCore.is_null(request.post_command_path):
+            query['PostCommandPath'] = request.post_command_path
+        if not DaraCore.is_null(request.post_command_timeout_sec):
+            query['PostCommandTimeoutSec'] = request.post_command_timeout_sec
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -17419,6 +17655,10 @@ class Client(OpenApiClient):
             query['PkgLabels'] = request.pkg_labels_shrink
         if not DaraCore.is_null(request.pkg_type):
             query['PkgType'] = request.pkg_type
+        if not DaraCore.is_null(request.post_command_path):
+            query['PostCommandPath'] = request.post_command_path
+        if not DaraCore.is_null(request.post_command_timeout_sec):
+            query['PostCommandTimeoutSec'] = request.post_command_timeout_sec
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

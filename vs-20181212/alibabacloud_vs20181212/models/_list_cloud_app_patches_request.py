@@ -15,23 +15,23 @@ class ListCloudAppPatchesRequest(DaraModel):
         patch_name: str = None,
         start_time: str = None,
     ):
-        # The ID of the cloud application. This ID corresponds to a unique application package.
+        # The cloud application ID, which corresponds to a unique application package.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The time range for filtering. The time must be in UTC and in the ISO 8601 standard format yyyy-MM-ddTHH:mm:ssZ.
+        # The start time for time range filtering. Specify the time in the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.end_time = end_time
-        # The page number of the list to return. The value starts from 1.
+        # The page number of the list to query. Minimum value: 1.
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. The maximum value is 100.
+        # The number of entries per page for a paged query. Maximum value: 100.
         # Default value: 10.
         self.page_size = page_size
         # The ID of the patch package.
         self.patch_id = patch_id
         # The name of the patch package.
         self.patch_name = patch_name
-        # The start of the time range to query. The time is in UTC and follows the ISO 8601 standard. The format is yyyy-MM-ddTHH:mm:ssZ.
+        # The start time for time range filtering. Specify the time in the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.start_time = start_time
 
     def validate(self):

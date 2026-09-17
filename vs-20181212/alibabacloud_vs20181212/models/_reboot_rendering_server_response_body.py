@@ -16,15 +16,15 @@ class RebootRenderingServerResponseBody(DaraModel):
         success_instance_count: int = None,
         success_instances: List[main_models.RebootRenderingServerResponseBodySuccessInstances] = None,
     ):
-        # Number of cloud application service instances that failed to restart
+        # The number of cloud application service instances that failed to restart.
         self.failed_instance_count = failed_instance_count
-        # Cloud application service instance IDs and their failure details
+        # The cloud application service instance IDs and the associated failure information.
         self.failed_instances = failed_instances
         # The request ID.
         self.request_id = request_id
-        # Number of successful cloud application service instances
+        # The number of cloud application service instances that were successfully restarted.
         self.success_instance_count = success_instance_count
-        # The instance ID of the cloud application service and the description of the result.
+        # The cloud application service instance IDs and the associated result descriptions.
         self.success_instances = success_instances
 
     def validate(self):
@@ -93,7 +93,7 @@ class RebootRenderingServerResponseBodySuccessInstances(DaraModel):
         self,
         rendering_instance_id: str = None,
     ):
-        # Cloud application service instance ID
+        # The instance ID of the cloud application service instance.
         self.rendering_instance_id = rendering_instance_id
 
     def validate(self):
@@ -123,11 +123,11 @@ class RebootRenderingServerResponseBodyFailedInstances(DaraModel):
         err_message: str = None,
         rendering_instance_id: str = None,
     ):
-        # Error code
+        # The error code of the failure.
         self.err_code = err_code
-        # Reason for failure
+        # The error message of the failure.
         self.err_message = err_message
-        # Cloud application service instance ID
+        # The instance ID of the cloud application service instance.
         self.rendering_instance_id = rendering_instance_id
 
     def validate(self):

@@ -95,9 +95,9 @@ class ListSpecificationsResponseBodyItems(DaraModel):
         self.cores = cores
         # The memory size.
         self.memory = memory
-        # The number of cards per single load.
+        # The number of cards per workload.
         self.shard = shard
-        # `RenderingSpec`
+        # The specification.
         self.specification = specification
         # The maximum storage capacity. Unit: GB.
         self.storage = storage

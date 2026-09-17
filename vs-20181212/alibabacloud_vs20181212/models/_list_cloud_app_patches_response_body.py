@@ -16,11 +16,11 @@ class ListCloudAppPatchesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
+        # The page number of the query list.
         self.page_number = page_number
-        # The number of entries returned on each page.
+        # The number of entries per page for the paged query.
         self.page_size = page_size
-        # The list of cloud application patches.
+        # The list of patches for the cloud application.
         self.patches = patches
         # Id of the request
         self.request_id = request_id
@@ -84,6 +84,8 @@ class ListCloudAppPatchesResponseBodyPatches(DaraModel):
         self,
         patch_id: str = None,
         patch_name: str = None,
+        post_command_path: str = None,
+        post_command_timeout_sec: int = None,
         status: str = None,
         status_description: str = None,
         update_time: str = None,
@@ -93,23 +95,21 @@ class ListCloudAppPatchesResponseBodyPatches(DaraModel):
         self.patch_id = patch_id
         # The name of the patch package.
         self.patch_name = patch_name
-        # The upload status of the application. Valid values:
-        # 
+        # The relative path of the post-command within the application package. Only Windows-type applications are supported.
+        self.post_command_path = post_command_path
+        # The timeout period for the post-command execution, in seconds. Only Windows-type applications are supported.
+        self.post_command_timeout_sec = post_command_timeout_sec
+        # The application upload status. Valid values:
         # 1. Created
-        # 
         # 2. Doing
-        # 
-        # 3. Success: A final state.
-        # 
-        # 4. Failed: A final state.
-        # 
+        # 3. Success: desired state.
+        # 4. Failed: desired state.
         # 5. Deleting
-        # 
-        # 6. DeleteFailed: A final state.
+        # 6. DeleteFailed: desired state.
         self.status = status
-        # The description of the status.
+        # The status description.
         self.status_description = status_description
-        # The time when the status was last updated.
+        # The most recent time when the status was updated.
         self.update_time = update_time
         # The time when the patch was uploaded.
         self.upload_time = upload_time
@@ -127,6 +127,12 @@ class ListCloudAppPatchesResponseBodyPatches(DaraModel):
 
         if self.patch_name is not None:
             result['PatchName'] = self.patch_name
+
+        if self.post_command_path is not None:
+            result['PostCommandPath'] = self.post_command_path
+
+        if self.post_command_timeout_sec is not None:
+            result['PostCommandTimeoutSec'] = self.post_command_timeout_sec
 
         if self.status is not None:
             result['Status'] = self.status
@@ -149,6 +155,12 @@ class ListCloudAppPatchesResponseBodyPatches(DaraModel):
 
         if m.get('PatchName') is not None:
             self.patch_name = m.get('PatchName')
+
+        if m.get('PostCommandPath') is not None:
+            self.post_command_path = m.get('PostCommandPath')
+
+        if m.get('PostCommandTimeoutSec') is not None:
+            self.post_command_timeout_sec = m.get('PostCommandTimeoutSec')
 
         if m.get('Status') is not None:
             self.status = m.get('Status')

@@ -214,6 +214,9 @@ from ._describe_comfy_production_download_url_response import DescribeComfyProdu
 from ._describe_comfy_productions_request import DescribeComfyProductionsRequest
 from ._describe_comfy_productions_response_body import DescribeComfyProductionsResponseBody
 from ._describe_comfy_productions_response import DescribeComfyProductionsResponse
+from ._describe_comfy_task_waiting_queue_request import DescribeComfyTaskWaitingQueueRequest
+from ._describe_comfy_task_waiting_queue_response_body import DescribeComfyTaskWaitingQueueResponseBody
+from ._describe_comfy_task_waiting_queue_response import DescribeComfyTaskWaitingQueueResponse
 from ._describe_comfy_tasks_request import DescribeComfyTasksRequest
 from ._describe_comfy_tasks_response_body import DescribeComfyTasksResponseBody
 from ._describe_comfy_tasks_response import DescribeComfyTasksResponse
@@ -438,6 +441,9 @@ from ._list_public_keys_response import ListPublicKeysResponse
 from ._list_rendering_data_packages_request import ListRenderingDataPackagesRequest
 from ._list_rendering_data_packages_response_body import ListRenderingDataPackagesResponseBody
 from ._list_rendering_data_packages_response import ListRenderingDataPackagesResponse
+from ._list_rendering_images_request import ListRenderingImagesRequest
+from ._list_rendering_images_response_body import ListRenderingImagesResponseBody
+from ._list_rendering_images_response import ListRenderingImagesResponse
 from ._list_rendering_instance_gateway_request import ListRenderingInstanceGatewayRequest
 from ._list_rendering_instance_gateway_response_body import ListRenderingInstanceGatewayResponseBody
 from ._list_rendering_instance_gateway_response import ListRenderingInstanceGatewayResponse
@@ -641,6 +647,10 @@ from ._update_rendering_project_response import UpdateRenderingProjectResponse
 from ._update_vs_pull_stream_info_config_request import UpdateVsPullStreamInfoConfigRequest
 from ._update_vs_pull_stream_info_config_response_body import UpdateVsPullStreamInfoConfigResponseBody
 from ._update_vs_pull_stream_info_config_response import UpdateVsPullStreamInfoConfigResponse
+from ._upgrade_rendering_instance_image_request import UpgradeRenderingInstanceImageRequest
+from ._upgrade_rendering_instance_image_shrink_request import UpgradeRenderingInstanceImageShrinkRequest
+from ._upgrade_rendering_instance_image_response_body import UpgradeRenderingInstanceImageResponseBody
+from ._upgrade_rendering_instance_image_response import UpgradeRenderingInstanceImageResponse
 from ._upload_cloud_app_request import UploadCloudAppRequest
 from ._upload_cloud_app_shrink_request import UploadCloudAppShrinkRequest
 from ._upload_cloud_app_response_body import UploadCloudAppResponseBody
@@ -692,6 +702,7 @@ from ._del_hive_edge_workers_response_body import DelHiveEdgeWorkersResponseBody
 from ._del_hive_edge_workers_response_body import DelHiveEdgeWorkersResponseBodySuccessInstances
 from ._delete_rendering_instance_configuration_request import DeleteRenderingInstanceConfigurationRequestConfiguration
 from ._describe_comfy_productions_response_body import DescribeComfyProductionsResponseBodyProductions
+from ._describe_comfy_task_waiting_queue_response_body import DescribeComfyTaskWaitingQueueResponseBodyTaskWaitingQueue
 from ._describe_comfy_tasks_response_body import DescribeComfyTasksResponseBodyTasks
 from ._describe_comfy_user_datas_response_body import DescribeComfyUserDatasResponseBodyUserDatas
 from ._describe_comfy_workflows_response_body import DescribeComfyWorkflowsResponseBodyWorkflows
@@ -791,6 +802,7 @@ from ._list_files_response_body import ListFilesResponseBodyFiles
 from ._list_hives_response_body import ListHivesResponseBodyHives
 from ._list_public_keys_response_body import ListPublicKeysResponseBodyPublicKeys
 from ._list_rendering_data_packages_response_body import ListRenderingDataPackagesResponseBodyDataPackages
+from ._list_rendering_images_response_body import ListRenderingImagesResponseBodyImages
 from ._list_rendering_instance_gateway_response_body import ListRenderingInstanceGatewayResponseBodyGatewayConfigurationInfos
 from ._list_rendering_instances_response_body import ListRenderingInstancesResponseBodyRenderingInstances
 from ._list_rendering_project_instances_response_body import ListRenderingProjectInstancesResponseBodyRenderingInstancesStateInfo
@@ -816,6 +828,8 @@ from ._update_rendering_instance_configuration_request import UpdateRenderingIns
 from ._update_rendering_instance_configuration_request import UpdateRenderingInstanceConfigurationRequestConfiguration
 from ._update_rendering_instance_settings_request import UpdateRenderingInstanceSettingsRequestSettings
 from ._update_rendering_project_request import UpdateRenderingProjectRequestSessionAttribs
+from ._upgrade_rendering_instance_image_response_body import UpgradeRenderingInstanceImageResponseBodyFailedItems
+from ._upgrade_rendering_instance_image_response_body import UpgradeRenderingInstanceImageResponseBodySuccessItems
 
 __all__ = [
     AddHiveEdgeWorkersRequest,
@@ -1030,6 +1044,9 @@ __all__ = [
     DescribeComfyProductionsRequest,
     DescribeComfyProductionsResponseBody,
     DescribeComfyProductionsResponse,
+    DescribeComfyTaskWaitingQueueRequest,
+    DescribeComfyTaskWaitingQueueResponseBody,
+    DescribeComfyTaskWaitingQueueResponse,
     DescribeComfyTasksRequest,
     DescribeComfyTasksResponseBody,
     DescribeComfyTasksResponse,
@@ -1254,6 +1271,9 @@ __all__ = [
     ListRenderingDataPackagesRequest,
     ListRenderingDataPackagesResponseBody,
     ListRenderingDataPackagesResponse,
+    ListRenderingImagesRequest,
+    ListRenderingImagesResponseBody,
+    ListRenderingImagesResponse,
     ListRenderingInstanceGatewayRequest,
     ListRenderingInstanceGatewayResponseBody,
     ListRenderingInstanceGatewayResponse,
@@ -1457,6 +1477,10 @@ __all__ = [
     UpdateVsPullStreamInfoConfigRequest,
     UpdateVsPullStreamInfoConfigResponseBody,
     UpdateVsPullStreamInfoConfigResponse,
+    UpgradeRenderingInstanceImageRequest,
+    UpgradeRenderingInstanceImageShrinkRequest,
+    UpgradeRenderingInstanceImageResponseBody,
+    UpgradeRenderingInstanceImageResponse,
     UploadCloudAppRequest,
     UploadCloudAppShrinkRequest,
     UploadCloudAppResponseBody,
@@ -1508,6 +1532,7 @@ __all__ = [
     DelHiveEdgeWorkersResponseBodySuccessInstances,
     DeleteRenderingInstanceConfigurationRequestConfiguration,
     DescribeComfyProductionsResponseBodyProductions,
+    DescribeComfyTaskWaitingQueueResponseBodyTaskWaitingQueue,
     DescribeComfyTasksResponseBodyTasks,
     DescribeComfyUserDatasResponseBodyUserDatas,
     DescribeComfyWorkflowsResponseBodyWorkflows,
@@ -1607,6 +1632,7 @@ __all__ = [
     ListHivesResponseBodyHives,
     ListPublicKeysResponseBodyPublicKeys,
     ListRenderingDataPackagesResponseBodyDataPackages,
+    ListRenderingImagesResponseBodyImages,
     ListRenderingInstanceGatewayResponseBodyGatewayConfigurationInfos,
     ListRenderingInstancesResponseBodyRenderingInstances,
     ListRenderingProjectInstancesResponseBodyRenderingInstancesStateInfo,
@@ -1631,5 +1657,7 @@ __all__ = [
     UpdateRenderingInstanceConfigurationRequestConfigurationAttributes,
     UpdateRenderingInstanceConfigurationRequestConfiguration,
     UpdateRenderingInstanceSettingsRequestSettings,
-    UpdateRenderingProjectRequestSessionAttribs
+    UpdateRenderingProjectRequestSessionAttribs,
+    UpgradeRenderingInstanceImageResponseBodyFailedItems,
+    UpgradeRenderingInstanceImageResponseBodySuccessItems
 ]

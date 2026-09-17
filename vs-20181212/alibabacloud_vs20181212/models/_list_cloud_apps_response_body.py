@@ -16,15 +16,15 @@ class ListCloudAppsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # List of cloud application information.
+        # The list of cloud application information.
         self.cloud_apps = cloud_apps
-        # Page number of the query list.
+        # The page number of the query list.
         self.page_number = page_number
-        # Number of rows per page for paged queries.
+        # The number of entries per page for the paged query.
         self.page_size = page_size
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Total number of matching cloud application entries.
+        # The total number of matched cloud applications.
         self.total_count = total_count
 
     def validate(self):
@@ -88,41 +88,45 @@ class ListCloudAppsResponseBodyCloudApps(DaraModel):
         description: str = None,
         pkg_format: str = None,
         pkg_type: str = None,
+        post_command_path: str = None,
+        post_command_timeout_sec: int = None,
         stable_patch_id: str = None,
         status: str = None,
         status_description: str = None,
         update_time: str = None,
         upload_time: str = None,
     ):
-        # Application ID.
+        # The application ID.
         self.app_id = app_id
-        # Application name.
+        # The application name.
         self.app_name = app_name
-        # Application version.
+        # The application version.
         self.app_version = app_version
-        # Application description.
+        # The application description.
         self.description = description
-        # Package format.
+        # The installation package format.
         self.pkg_format = pkg_format
-        # Package type: android/win.
+        # The installation package type. Valid values: android and win.
         self.pkg_type = pkg_type
-        # Stable patch package ID.
+        # The relative path of the post-command within the application package. Only win type applications are supported.
+        self.post_command_path = post_command_path
+        # The timeout period for post-command execution, in seconds. Only win type applications are supported.
+        self.post_command_timeout_sec = post_command_timeout_sec
+        # The ID of the stable version patch package.
         self.stable_patch_id = stable_patch_id
         # The application upload status. Valid values:
-        # 
         # 1. Created
-        # 
         # 2. Doing
-        # 
-        # 3. Success: The desired state.
-        # 
-        # 4. Failed: The desired state.
+        # 3. Success: desired state.
+        # 4. Failed: desired state.
+        # 5. Deleting
+        # 6. DeleteFailed: desired state.
         self.status = status
-        # Status description.
+        # The status description.
         self.status_description = status_description
-        # Latest status update time.
+        # The latest status update time.
         self.update_time = update_time
-        # Application upload time.
+        # The application upload time.
         self.upload_time = upload_time
 
     def validate(self):
@@ -150,6 +154,12 @@ class ListCloudAppsResponseBodyCloudApps(DaraModel):
 
         if self.pkg_type is not None:
             result['PkgType'] = self.pkg_type
+
+        if self.post_command_path is not None:
+            result['PostCommandPath'] = self.post_command_path
+
+        if self.post_command_timeout_sec is not None:
+            result['PostCommandTimeoutSec'] = self.post_command_timeout_sec
 
         if self.stable_patch_id is not None:
             result['StablePatchId'] = self.stable_patch_id
@@ -187,6 +197,12 @@ class ListCloudAppsResponseBodyCloudApps(DaraModel):
 
         if m.get('PkgType') is not None:
             self.pkg_type = m.get('PkgType')
+
+        if m.get('PostCommandPath') is not None:
+            self.post_command_path = m.get('PostCommandPath')
+
+        if m.get('PostCommandTimeoutSec') is not None:
+            self.post_command_timeout_sec = m.get('PostCommandTimeoutSec')
 
         if m.get('StablePatchId') is not None:
             self.stable_patch_id = m.get('StablePatchId')

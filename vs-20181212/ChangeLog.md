@@ -1,3 +1,17 @@
+2026-09-17 Version: 3.10.0
+- Support API ListRenderingImages.
+- Support API UpgradeRenderingInstanceImage.
+- Update API ListCloudAppPatches: add response parameters Body.Patches.$.PostCommandPath.
+- Update API ListCloudAppPatches: add response parameters Body.Patches.$.PostCommandTimeoutSec.
+- Update API ListCloudApps: add response parameters Body.CloudApps.$.PostCommandPath.
+- Update API ListCloudApps: add response parameters Body.CloudApps.$.PostCommandTimeoutSec.
+- Update API RebootRenderingServer: add request parameters Precheck.
+- Update API UpdateCloudAppInfo: add request parameters Patch.PostCommandPath.
+- Update API UpdateCloudAppInfo: add request parameters Patch.PostCommandTimeoutSec.
+- Update API UploadCloudApp: add request parameters PostCommandPath.
+- Update API UploadCloudApp: add request parameters PostCommandTimeoutSec.
+
+
 2026-08-31 Version: 3.8.2
 - Update API DescribeComfyTasks: add response parameters Body.Tasks.$.TaskErrorMessage.
 - Update API DescribeComfyTasks: add response parameters Body.Tasks.$.TaskStateMessage.

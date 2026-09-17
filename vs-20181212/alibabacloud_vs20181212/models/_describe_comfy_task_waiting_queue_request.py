@@ -4,14 +4,12 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class DeleteHiveRequest(DaraModel):
+class DescribeComfyTaskWaitingQueueRequest(DaraModel):
     def __init__(
         self,
         hive_id: str = None,
     ):
-        # The cluster ID.
-        # 
-        # This parameter is required.
+        # The waiting queue information of a specified Hive.
         self.hive_id = hive_id
 
     def validate(self):

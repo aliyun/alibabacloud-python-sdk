@@ -16,13 +16,13 @@ class MoveHiveEdgeWorkersResponseBody(DaraModel):
         success_instance_count: int = None,
         success_instances: List[main_models.MoveHiveEdgeWorkersResponseBodySuccessInstances] = None,
     ):
-        # The number of failed operations.
+        # The number of workloads that failed to be moved.
         self.failed_instance_count = failed_instance_count
         # The list of workloads that failed to be moved.
         self.failed_instances = failed_instances
         # The request ID.
         self.request_id = request_id
-        # The number of successful operations.
+        # The number of workloads that were successfully moved.
         self.success_instance_count = success_instance_count
         # The list of workloads that were successfully moved.
         self.success_instances = success_instances

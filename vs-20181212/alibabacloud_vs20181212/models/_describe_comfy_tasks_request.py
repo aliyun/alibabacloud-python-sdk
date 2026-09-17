@@ -7,15 +7,18 @@ from darabonba.model import DaraModel
 class DescribeComfyTasksRequest(DaraModel):
     def __init__(
         self,
+        hive_id: str = None,
         page_number: int = None,
         page_size: int = None,
         task_id: str = None,
         task_state: str = None,
         workflow_id: str = None,
     ):
+        # The HiveId used as a filter condition to query tasks executed under the specified HiveId.
+        self.hive_id = hive_id
         # The page number.
         self.page_number = page_number
-        # The number of records to display per page.
+        # The number of records per page.
         self.page_size = page_size
         # The Comfy workflow ID used as a filter condition.
         self.task_id = task_id
@@ -32,6 +35,9 @@ class DescribeComfyTasksRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.hive_id is not None:
+            result['HiveId'] = self.hive_id
+
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
 
@@ -51,6 +57,9 @@ class DescribeComfyTasksRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('HiveId') is not None:
+            self.hive_id = m.get('HiveId')
+
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
 

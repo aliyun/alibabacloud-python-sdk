@@ -13,30 +13,27 @@ class UpdateCloudAppInfoShrinkRequest(DaraModel):
         pkg_labels_shrink: str = None,
         stable_patch_id: str = None,
     ):
-        # The ID of the cloud application, which corresponds to a unique application package.
+        # The cloud application ID, which corresponds to a unique application package.
         # 
         # This parameter is required.
         self.app_id = app_id
         # The description of the application.
         self.description = description
-        # Information about the patch package to upload.
-        # 
-        # 1. This parameter is not supported when PkgType is android.
-        # 
-        # 2. For the same AppId, only one patch can be in the process of uploading at a time. This means only one patch can be in a state other than its desired state.
+        # The information about the patch package to upload.
+        # 1. Not supported when PkgType is set to android.
+        # 2. Only one patch can be in the uploading state at a time for the same AppId (only one patch in a non-final state is allowed per AppId).
         self.patch_shrink = patch_shrink
-        # The tags for the cloud application. You can select multiple tags. This action resets all existing tags for the cloud application.
-        # 
+        # The cloud application labels. You can select multiple labels. This operation resets the cloud application labels.
         # 1. Valid values:
-        #    hot, game, and app.
-        # 
-        # 2. Special case:
-        #    To delete all tags, enter ["NULL"].
+        #   a. hot
+        #   b. game
+        #   c. app
+        # 2. Special cases:
+        #   a. To delete all labels, set this parameter to ["NULL"].
         self.pkg_labels_shrink = pkg_labels_shrink
-        # The ID of the stable patch. This patch is used by default if you do not specify a PatchId when the application is in use, such as during a session startup. This parameter is not supported when PkgType is android.
-        # Special value:
-        # 
-        # 1. If you set this parameter to origin, the patch version is removed and the initial version is used.
+        # The stable PatchId. When a PatchId is not specified during business operations (such as session startup), this PatchId is used by default. Not supported when PkgType is set to android.
+        # Special values:
+        # 1. origin: cancels the patch version and uses the initial version by default.
         self.stable_patch_id = stable_patch_id
 
     def validate(self):

@@ -25,13 +25,13 @@ class DescribeComfyTasksResponseBody(DaraModel):
         # The page number. Default value: 1.
         self.page_number = page_number
         # The page size.
-        # > Only applicable to recording queries.
+        # > Only available for recording queries.
         self.page_size = page_size
         # Id of the request
         self.request_id = request_id
         # The task list.
         self.tasks = tasks
-        # The number of tasks.
+        # The total number of tasks.
         self.total = total
 
     def validate(self):

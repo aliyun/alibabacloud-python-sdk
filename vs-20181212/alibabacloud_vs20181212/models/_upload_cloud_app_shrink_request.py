@@ -15,57 +15,47 @@ class UploadCloudAppShrinkRequest(DaraModel):
         pkg_format: str = None,
         pkg_labels_shrink: str = None,
         pkg_type: str = None,
+        post_command_path: str = None,
+        post_command_timeout_sec: int = None,
     ):
-        # The application name. For Android apps, use the package name, such as com.aaa.bbb.
+        # The application name. For Android applications, use the package name, such as com.aaa.bbb.
         # 
-        # Value requirements:
-        # 
-        # 1. Length: 4–50 characters
-        # 
-        # 2. Allowed characters: lowercase letters, digits, underscores (_), hyphens (-), and dots (.)
-        # 
-        # 3. The first and last characters must be a letter or digit
+        # Value rules:
+        # 1. Length: 4 to 50 characters.
+        # 2. Lowercase letters, digits, underscores (_), hyphens (-), and periods (.).
+        # 3. The first and last characters must be letters or digits.
         # 
         # This parameter is required.
         self.app_name = app_name
-        # Value requirements:
+        # The application version. For Android applications, use the VersionName, such as 1.1.1.
         # 
-        # 1. Length: 1–50 characters
-        # 
-        # 2. Allowed characters: lowercase letters, digits, underscores (_), hyphens (-), and dots (.)
-        # 
-        # 3. The first and last characters must be a letter or digit
+        # Value rules:
+        # 1. Length: 1 to 50 characters.
+        # 2. Lowercase letters, digits, underscores (_), hyphens (-), and periods (.).
+        # 3. The first and last characters must be letters or digits.
         # 
         # This parameter is required.
         self.app_version = app_version
-        # A description of the application.
+        # The description of the application.
         self.description = description
         # The download URL of the application package.
         # 
         # This parameter is required.
         self.download_url = download_url
-        # The MD5 hash of the application package, used to verify package integrity.
+        # The MD5 checksum of the application package, used to verify package integrity.
         # 
         # This parameter is required.
         self.md_5 = md_5
-        # The package format. By default, this is inferred from the file extension in the DownloadUrl. Valid values:
-        # 
+        # The package format. The default value is the file extension of the download URL. Valid values:
         # 1. apk
-        # 
         # 2. tar.gz
-        # 
         # 3. tar
-        # 
         # 4. zip
-        # 
         # 5. rar
         self.pkg_format = pkg_format
-        # Cloud application labels. You can select multiple. Valid values:
-        # 
+        # The cloud application labels. You can select multiple values. Valid values:
         # 1. hot
-        # 
         # 2. game
-        # 
         # 3. app
         self.pkg_labels_shrink = pkg_labels_shrink
         # The package type.
@@ -73,23 +63,21 @@ class UploadCloudAppShrinkRequest(DaraModel):
         # ## Valid values:
         # 
         # 1. android
-        # 
         # 2. win
+        # 3. android_appmarket: corresponds to the Android app marketplace scenario. In this scenario, the actual APK PackageName is restricted:
+        # a. Different AppName values cannot share the same PackageName.
+        # b. The same AppName with different AppVersion values can be associated with different PackageName values.
         # 
-        # 3. android_appmarket: for Android app marketplace scenarios. This scenario enforces real APK PackageName restrictions:
-        #    a. PackageNames must be unique across different AppNames.
-        #    b. The same AppName with different AppVersions can map to different PackageNames.
-        # 
-        # ## Default behavior:
-        # 
-        # If not specified, the system automatically maps the package type based on PkgFormat (or infers PkgFormat from the DownloadUrl file extension). The default mapping is:
-        # 
-        # 1. android: apk
-        # 
-        # 2. win: tar.gz, tar, zip, rar
-        # 
-        # 3. android_appmarket: apk
+        # ## Default value:
+        # If not specified, the package type is automatically mapped based on PkgFormat (or the file extension of DownloadUrl). Default mappings between PkgFormat and package type:
+        # 1. android: apk (the apk format is mapped to android by default).
+        # 2. win: tar.gz, tar, zip, rar.
+        # 3. android_appmarket: apk.
         self.pkg_type = pkg_type
+        # The relative path of the post-installation command within the application package. Only supported for win type applications.
+        self.post_command_path = post_command_path
+        # The timeout period (in seconds) for the post-installation command. Only supported for win type applications.
+        self.post_command_timeout_sec = post_command_timeout_sec
 
     def validate(self):
         pass
@@ -123,6 +111,12 @@ class UploadCloudAppShrinkRequest(DaraModel):
         if self.pkg_type is not None:
             result['PkgType'] = self.pkg_type
 
+        if self.post_command_path is not None:
+            result['PostCommandPath'] = self.post_command_path
+
+        if self.post_command_timeout_sec is not None:
+            result['PostCommandTimeoutSec'] = self.post_command_timeout_sec
+
         return result
 
     def from_map(self, m: dict = None):
@@ -150,6 +144,12 @@ class UploadCloudAppShrinkRequest(DaraModel):
 
         if m.get('PkgType') is not None:
             self.pkg_type = m.get('PkgType')
+
+        if m.get('PostCommandPath') is not None:
+            self.post_command_path = m.get('PostCommandPath')
+
+        if m.get('PostCommandTimeoutSec') is not None:
+            self.post_command_timeout_sec = m.get('PostCommandTimeoutSec')
 
         return self
 

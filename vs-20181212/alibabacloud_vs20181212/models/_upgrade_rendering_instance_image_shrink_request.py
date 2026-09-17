@@ -4,15 +4,17 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class RebootRenderingServerShrinkRequest(DaraModel):
+class UpgradeRenderingInstanceImageShrinkRequest(DaraModel):
     def __init__(
         self,
-        precheck: bool = None,
+        image_id: str = None,
         rendering_instance_ids_shrink: str = None,
     ):
-        # Specifies whether to perform only an admission check without actually restarting the hosts. Default value: false.
-        self.precheck = precheck
-        # The list of cloud application service instance IDs.
+        # The image ID.
+        # 
+        # This parameter is required.
+        self.image_id = image_id
+        # The list of cloud application service instance IDs. A maximum of 100 IDs can be specified.
         # 
         # This parameter is required.
         self.rendering_instance_ids_shrink = rendering_instance_ids_shrink
@@ -25,8 +27,8 @@ class RebootRenderingServerShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.precheck is not None:
-            result['Precheck'] = self.precheck
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
 
         if self.rendering_instance_ids_shrink is not None:
             result['RenderingInstanceIds'] = self.rendering_instance_ids_shrink
@@ -35,8 +37,8 @@ class RebootRenderingServerShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Precheck') is not None:
-            self.precheck = m.get('Precheck')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
 
         if m.get('RenderingInstanceIds') is not None:
             self.rendering_instance_ids_shrink = m.get('RenderingInstanceIds')

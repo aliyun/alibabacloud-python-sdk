@@ -16,15 +16,15 @@ class ListEdgeWorkersResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The workload list.
+        # The list of loads.
         self.instances = instances
-        # The page number of the query list. Minimum value: 1. Default value: 1.
+        # The page number of the query list. The value starts from 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page for a paginated query. Maximum value: 100. Default value: 100.
+        # The number of entries per page in a paged query. Settings for paging. Maximum value: 100. Default value: 100.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of workloads.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -96,7 +96,7 @@ class ListEdgeWorkersResponseBodyInstances(DaraModel):
         self.expire_time = expire_time
         # The cluster ID.
         self.hive_id = hive_id
-        # The workload ID.
+        # The load ID.
         self.instance_id = instance_id
         # The plan ID.
         self.plan_id = plan_id

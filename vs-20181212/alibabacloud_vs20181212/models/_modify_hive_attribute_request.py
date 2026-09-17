@@ -11,13 +11,13 @@ class ModifyHiveAttributeRequest(DaraModel):
         hive_id: str = None,
         name: str = None,
     ):
-        # The new description of the cluster.
+        # The description.
         self.description = description
-        # The ID of the cluster.
+        # ID
         # 
         # This parameter is required.
         self.hive_id = hive_id
-        # The new name of the cluster.
+        # The name.
         self.name = name
 
     def validate(self):
