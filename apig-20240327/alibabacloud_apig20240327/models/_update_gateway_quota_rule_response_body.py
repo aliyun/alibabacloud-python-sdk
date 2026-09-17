@@ -17,9 +17,9 @@ class UpdateGatewayQuotaRuleResponseBody(DaraModel):
     ):
         # The status code or error code.
         self.code = code
-        # The response data content.
+        # The response data.
         self.data = data
-        # The message content.
+        # The response message.
         self.message = message
         # The unique identifier of the request.
         self.request_id = request_id
@@ -72,11 +72,11 @@ class UpdateGatewayQuotaRuleResponseBodyData(DaraModel):
         dry_run: bool = None,
         rule_id: str = None,
     ):
-        # Indicates whether the write request is accepted by the system. A value of false typically indicates a retryable scenario such as an unconfirmed conflict overwrite.
+        # Indicates whether the write request is accepted by the system. A value of false typically indicates a retryable scenario, such as an unconfirmed conflict overwrite.
         self.accepted = accepted
         # The conflict preview.
         self.conflict_preview = conflict_preview
-        # Indicates whether the request is a dry run.
+        # Indicates whether this is a dry run.
         self.dry_run = dry_run
         # The rule ID.
         self.rule_id = rule_id
@@ -128,9 +128,9 @@ class UpdateGatewayQuotaRuleResponseBodyDataConflictPreview(DaraModel):
         items: List[main_models.UpdateGatewayQuotaRuleResponseBodyDataConflictPreviewItems] = None,
         total_conflict_count: int = None,
     ):
-        # The hash of the conflict snapshot.
+        # The conflict hash.
         self.conflict_hash = conflict_hash
-        # The list of conflicting principals (consumers or consumer groups).
+        # The list of conflicting subjects (consumers or consumer groups).
         self.items = items
         # The total number of conflicts.
         self.total_conflict_count = total_conflict_count
@@ -186,19 +186,19 @@ class UpdateGatewayQuotaRuleResponseBodyDataConflictPreviewItems(DaraModel):
         subject_name: str = None,
         subject_type: str = None,
     ):
-        # The period type of the existing conflicting rule on the consumer principal. Valid values: day, week, and month, which indicate that the period of the conflicting rule is daily, weekly, or monthly.
+        # The period type of the existing conflicting rule on the consumer subject. Valid values: day (daily), week (weekly), month (monthly).
         self.conflict_period_type = conflict_period_type
-        # The type of the existing conflicting rule on the consumer principal. Valid values: calendar (the conflicting rule uses a calendar period) and epoch (the conflicting rule uses a custom period).
+        # The type of the existing conflicting rule on the consumer subject. Valid values: calendar (calendar period) and epoch (custom period).
         self.conflict_type = conflict_type
-        # The consumer ID. You can use subjectId instead.
+        # The consumer ID. Use subjectId instead.
         self.consumer_id = consumer_id
-        # The consumer name. You can use subjectName instead.
+        # The consumer name. Use subjectName instead.
         self.consumer_name = consumer_name
-        # The ID of the conflicting principal.
+        # The ID of the conflicting subject.
         self.subject_id = subject_id
-        # The name of the conflicting principal.
+        # The name of the conflicting subject.
         self.subject_name = subject_name
-        # The type of the conflicting principal. Valid values: consumer and consumer_group.
+        # The type of the conflicting subject. Valid values: consumer and consumer_group.
         self.subject_type = subject_type
 
     def validate(self):

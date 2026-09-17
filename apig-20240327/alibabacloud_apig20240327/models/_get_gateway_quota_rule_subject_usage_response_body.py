@@ -21,7 +21,7 @@ class GetGatewayQuotaRuleSubjectUsageResponseBody(DaraModel):
         self.data = data
         # The response message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -83,17 +83,17 @@ class GetGatewayQuotaRuleSubjectUsageResponseBodyData(DaraModel):
     ):
         # The total cached token consumption.
         self.cached_amount = cached_amount
-        # The exact value of total cached consumption. Supports decimals in credit scenarios.
+        # The exact value of total cached consumption. Decimals are supported in credit scenarios.
         self.cached_amount_decimal = cached_amount_decimal
         # The paginated consumption details.
         self.details = details
         # The total input token consumption.
         self.input_amount = input_amount
-        # The exact value of total input consumption. Supports decimals in credit scenarios.
+        # The exact value of total input consumption. Decimals are supported in credit scenarios.
         self.input_amount_decimal = input_amount_decimal
         # The total output token consumption.
         self.output_amount = output_amount
-        # The exact value of total output consumption. Supports decimals in credit scenarios.
+        # The exact value of total output consumption. Decimals are supported in credit scenarios.
         self.output_amount_decimal = output_amount_decimal
         # Indicates whether the quota limit is exceeded.
         self.over_limit = over_limit
@@ -105,7 +105,7 @@ class GetGatewayQuotaRuleSubjectUsageResponseBodyData(DaraModel):
         self.total_quota = total_quota
         # The total used amount of the subject.
         self.used_amount = used_amount
-        # The exact value of the total used amount of the subject. Supports decimals in credit scenarios.
+        # The exact value of the total used amount of the subject. Decimals are supported in credit scenarios.
         self.used_amount_decimal = used_amount_decimal
 
     def validate(self):
@@ -283,19 +283,19 @@ class GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems(DaraModel):
     ):
         # The cached token consumption.
         self.cached_amount = cached_amount
-        # The exact value of cached consumption. Supports decimals in credit scenarios.
+        # The exact value of cached consumption. Decimals are supported in credit scenarios.
         self.cached_amount_decimal = cached_amount_decimal
         # The consumer name.
         self.consumer = consumer
         # The input token consumption.
         self.input_amount = input_amount
-        # The exact value of input consumption. Supports decimals in credit scenarios.
+        # The exact value of input consumption. Decimals are supported in credit scenarios.
         self.input_amount_decimal = input_amount_decimal
         # The model name.
         self.model = model
         # The output token consumption.
         self.output_amount = output_amount
-        # The exact value of output consumption. Supports decimals in credit scenarios.
+        # The exact value of output consumption. Decimals are supported in credit scenarios.
         self.output_amount_decimal = output_amount_decimal
         # The request ID.
         self.request_id = request_id
@@ -303,7 +303,7 @@ class GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems(DaraModel):
         self.start_time = start_time
         # The total consumption.
         self.used_amount = used_amount
-        # The exact value of total consumption. Supports decimals in credit scenarios.
+        # The exact value of total consumption. Decimals are supported in credit scenarios.
         self.used_amount_decimal = used_amount_decimal
 
     def validate(self):

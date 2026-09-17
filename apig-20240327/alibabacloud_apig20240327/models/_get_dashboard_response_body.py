@@ -90,9 +90,9 @@ class GetDashboardResponseBodyData(DaraModel):
     ):
         # The unique ID of the gateway.
         self.gateway_id = gateway_id
-        # The dashboard name.
+        # The name of the dashboard.
         self.name = name
-        # The dashboard title.
+        # The title of the dashboard.
         self.title = title
         # The URL of the dashboard.
         self.url = url

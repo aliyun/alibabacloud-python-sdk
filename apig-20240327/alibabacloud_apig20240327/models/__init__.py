@@ -313,6 +313,9 @@ from ._get_gateway_quota_rule_response import GetGatewayQuotaRuleResponse
 from ._get_gateway_quota_rule_subject_usage_request import GetGatewayQuotaRuleSubjectUsageRequest
 from ._get_gateway_quota_rule_subject_usage_response_body import GetGatewayQuotaRuleSubjectUsageResponseBody
 from ._get_gateway_quota_rule_subject_usage_response import GetGatewayQuotaRuleSubjectUsageResponse
+from ._get_gateway_resource_quota_usage_request import GetGatewayResourceQuotaUsageRequest
+from ._get_gateway_resource_quota_usage_response_body import GetGatewayResourceQuotaUsageResponseBody
+from ._get_gateway_resource_quota_usage_response import GetGatewayResourceQuotaUsageResponse
 from ._get_http_api_request import GetHttpApiRequest
 from ._get_http_api_response_body import GetHttpApiResponseBody
 from ._get_http_api_response import GetHttpApiResponse
@@ -867,6 +870,8 @@ from ._get_gateway_quota_rule_response_body import GetGatewayQuotaRuleResponseBo
 from ._get_gateway_quota_rule_subject_usage_response_body import GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems
 from ._get_gateway_quota_rule_subject_usage_response_body import GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetails
 from ._get_gateway_quota_rule_subject_usage_response_body import GetGatewayQuotaRuleSubjectUsageResponseBodyData
+from ._get_gateway_resource_quota_usage_response_body import GetGatewayResourceQuotaUsageResponseBodyDataItems
+from ._get_gateway_resource_quota_usage_response_body import GetGatewayResourceQuotaUsageResponseBodyData
 from ._get_mcp_server_response_body import GetMcpServerResponseBodyDataAssembledSources
 from ._get_mcp_server_response_body import GetMcpServerResponseBodyDataDomainInfos
 from ._get_mcp_server_response_body import GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices
@@ -1388,6 +1393,9 @@ __all__ = [
     GetGatewayQuotaRuleSubjectUsageRequest,
     GetGatewayQuotaRuleSubjectUsageResponseBody,
     GetGatewayQuotaRuleSubjectUsageResponse,
+    GetGatewayResourceQuotaUsageRequest,
+    GetGatewayResourceQuotaUsageResponseBody,
+    GetGatewayResourceQuotaUsageResponse,
     GetHttpApiRequest,
     GetHttpApiResponseBody,
     GetHttpApiResponse,
@@ -1942,6 +1950,8 @@ __all__ = [
     GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems,
     GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetails,
     GetGatewayQuotaRuleSubjectUsageResponseBodyData,
+    GetGatewayResourceQuotaUsageResponseBodyDataItems,
+    GetGatewayResourceQuotaUsageResponseBodyData,
     GetMcpServerResponseBodyDataAssembledSources,
     GetMcpServerResponseBodyDataDomainInfos,
     GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices,

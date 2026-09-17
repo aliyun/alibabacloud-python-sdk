@@ -18,23 +18,23 @@ class UpdateGatewayQuotaRuleRequest(DaraModel):
         remove_ids: List[str] = None,
         rule_name: str = None,
     ):
-        # The list of consumer principal IDs to bind.
+        # The list of consumer subject IDs to bind.
         self.add_ids = add_ids
-        # The conflict snapshot hash, used to prevent concurrent dirty overwrites when confirming an overwrite. Obtain this value from the response of a prior dryRun=true call.
+        # The conflict snapshot hash, used to prevent concurrent dirty overwrites when confirming an overwrite. Obtain this value from the response of a dry run request with dryRun set to true.
         # 
         # This parameter is not required in the following cases: no conflicts exist, the request is a dry run (dryRun=true), or overwrite is set to false.
         # 
-        # When dryRun is set to false and overwrite is set to true, if this parameter is missing or the value has expired and no longer matches, the backend returns accepted=false with a new conflict preview. Perform a dry run again to confirm the new conflicts.
+        # If dryRun is set to false and overwrite is set to true but this parameter is missing or the value has expired, the backend returns accepted=false with a new conflict preview. Perform a new dry run to confirm the updated conflicts.
         self.conflict_hash = conflict_hash
         # **[Deprecated]** The list of consumer group IDs.
         self.consumer_group_ids = consumer_group_ids
-        # Specifies whether to perform a dry run only without persisting or applying the configuration. A dry run checks whether conflicting rules exist on the bound consumer principals. The same consumer principal cannot have two calendar-period quotas with the same period. For example, a consumer principal that already has a daily calendar quota cannot be assigned another daily calendar quota rule.
+        # Specifies whether to perform only a dry run without applying the actual configuration. A dry run checks whether conflicting rules exist on the bound API consumer. The same API consumer cannot have two natural period quotas with the same period. For example, you cannot add a calendar day quota rule to an API consumer that already has a calendar day quota rule.
         self.dry_run = dry_run
-        # Specifies whether to allow overwriting when conflicts exist. If overwriting is allowed, conflicting principals (consumers or consumer groups) are unbound from the old rule and bound to the new rule.
+        # Specifies whether to allow overwriting when conflicts exist. If overwriting is allowed, conflicting subjects (consumers or consumer groups) are unbound from the old rule and bound to the new rule.
         self.overwrite = overwrite
-        # The updated total available quota.
+        # The updated total available quota per period.
         self.quota_limit = quota_limit
-        # The list of consumer principal IDs to unbind.
+        # The list of consumer subject IDs to unbind.
         self.remove_ids = remove_ids
         # The updated rule name.
         self.rule_name = rule_name

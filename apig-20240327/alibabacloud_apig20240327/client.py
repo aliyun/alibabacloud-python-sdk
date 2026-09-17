@@ -6605,6 +6605,78 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_gateway_quota_rule_subject_usage_with_options_async(gateway_id, rule_id, subject_id, request, headers, runtime)
 
+    def get_gateway_resource_quota_usage_with_options(
+        self,
+        gateway_id: str,
+        request: main_models.GetGatewayResourceQuotaUsageRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetGatewayResourceQuotaUsageResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetGatewayResourceQuotaUsage',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/resource-quota-usage',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetGatewayResourceQuotaUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_gateway_resource_quota_usage_with_options_async(
+        self,
+        gateway_id: str,
+        request: main_models.GetGatewayResourceQuotaUsageRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetGatewayResourceQuotaUsageResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetGatewayResourceQuotaUsage',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/resource-quota-usage',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetGatewayResourceQuotaUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_gateway_resource_quota_usage(
+        self,
+        gateway_id: str,
+        request: main_models.GetGatewayResourceQuotaUsageRequest,
+    ) -> main_models.GetGatewayResourceQuotaUsageResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_gateway_resource_quota_usage_with_options(gateway_id, request, headers, runtime)
+
+    async def get_gateway_resource_quota_usage_async(
+        self,
+        gateway_id: str,
+        request: main_models.GetGatewayResourceQuotaUsageRequest,
+    ) -> main_models.GetGatewayResourceQuotaUsageResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_gateway_resource_quota_usage_with_options_async(gateway_id, request, headers, runtime)
+
     def get_http_api_with_options(
         self,
         http_api_id: str,
