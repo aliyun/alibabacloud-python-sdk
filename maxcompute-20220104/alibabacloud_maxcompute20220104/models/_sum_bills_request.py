@@ -15,10 +15,15 @@ class SumBillsRequest(DaraModel):
         stats_type: str = None,
         top_n: int = None,
     ):
+        # The end time of the billing cycle.
         self.end_date = end_date
+        # A list of instance names. This parameter is not required if `statsType` is set to `FEE_ITEM`.
         self.project_names = project_names
+        # The start time of the billing cycle.
         self.start_date = start_date
+        # The dimension by which to summarize costs. Valid values: `PROJECT` (by instance) and `FEE_ITEM` (by billable item).
         self.stats_type = stats_type
+        # The number of top results to return after sorting by cost.
         self.top_n = top_n
 
     def validate(self):

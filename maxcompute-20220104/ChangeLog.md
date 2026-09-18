@@ -1,3 +1,8 @@
+2026-09-18 Version: 7.1.2
+- Update API UpdateMmsTimer: add request parameters body.tableBlackList.
+- Update API UpdateMmsTimer: add request parameters body.tableWhiteList.
+
+
 2026-05-29 Version: 7.1.0
 - Support API DeleteRole.
 

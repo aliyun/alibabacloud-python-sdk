@@ -14,8 +14,11 @@ class SumBillsResponseBody(DaraModel):
         http_code: int = None,
         request_id: str = None,
     ):
+        # The returned result.
         self.data = data
+        # The HTTP status code.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -59,8 +62,11 @@ class SumBillsResponseBodyData(DaraModel):
         item_bills: List[main_models.SumBillsResponseBodyDataItemBills] = None,
         total_cost: str = None,
     ):
+        # The currency used for all cost values.
         self.currency = currency
+        # A list of billable items.
         self.item_bills = item_bills
+        # The total cost of all returned billable items.
         self.total_cost = total_cost
 
     def validate(self):
@@ -111,9 +117,13 @@ class SumBillsResponseBodyDataItemBills(DaraModel):
         item_name: str = None,
         percentage: float = None,
     ):
+        # The cost.
         self.cost = cost
+        # The currency.
         self.currency = currency
+        # The item name. When the request\\"s `statsType` is `PROJECT`, this is the instance name. When `statsType` is `FEE_ITEM`, this is the billable item type (for example, `DRStorage`, `ComputationSql`, or `Storage`).
         self.item_name = item_name
+        # The percentage of the total cost that this item represents. The value does not include a percent sign (%).
         self.percentage = percentage
 
     def validate(self):

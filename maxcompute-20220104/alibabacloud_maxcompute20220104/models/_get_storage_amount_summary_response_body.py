@@ -16,10 +16,18 @@ class GetStorageAmountSummaryResponseBody(DaraModel):
         http_code: int = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The business error code, or an empty value.
+        # - If success is false, a business error code is returned.
+        #  
+        # - If success is true, an empty value is returned.
         self.error_code = error_code
+        # The error message.
         self.error_msg = error_msg
+        # The HTTP status code that indicates whether the business request was successful. A non-empty value other than 200 indicates a business processing failure.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -76,9 +84,17 @@ class GetStorageAmountSummaryResponseBodyData(DaraModel):
         unit: Dict[str, str] = None,
         value: Dict[str, int] = None,
     ):
+        # The date for statistics collection, in the YYYYMMdd format.
         self.date = date
+        # The timestamp. This API operation does not return this field.
         self.timestamp = timestamp
+        # The unit of the storage metric. This API operation does not return this field.
         self.unit = unit
+        # The storage metrics. Valid values:
+        # - projectAmount
+        # - schemaAmount
+        # - tableAmount
+        # - partitionAmount
         self.value = value
 
     def validate(self):

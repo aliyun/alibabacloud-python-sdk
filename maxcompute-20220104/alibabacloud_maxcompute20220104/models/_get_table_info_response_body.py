@@ -147,10 +147,13 @@ class GetTableInfoResponseBodyData(DaraModel):
         self.tablestore_columns_mapping = tablestore_columns_mapping
         # The type of the table or view. Valid values:
         # 
-        # *   **internal**: internal table
-        # *   **external**: external table
-        # *   **view**: view
-        # *   **materializedView**: [materialize view](https://www.alibabacloud.com/help/maxcompute/user-guide/materialized-view-operations)
+        # - **internal**: internal table
+        # 
+        # - **external**: external table
+        # 
+        # - **view**: view
+        # 
+        # - **materializedView**: [materialize view](https://www.alibabacloud.com/help/maxcompute/user-guide/materialized-view-operations)
         self.type = type
         # The statement that generates the view. This response parameter is returned when type is set to view.
         self.view_text = view_text

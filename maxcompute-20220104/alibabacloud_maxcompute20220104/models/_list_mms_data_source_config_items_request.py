@@ -10,7 +10,10 @@ class ListMmsDataSourceConfigItemsRequest(DaraModel):
         lang: str = None,
         source_type: str = None,
     ):
+        # The language for the descriptions of the configuration items. Defaults to Chinese (`zh_CN`).
         self.lang = lang
+        # The data source type.
+        # 
         # This parameter is required.
         self.source_type = source_type
 

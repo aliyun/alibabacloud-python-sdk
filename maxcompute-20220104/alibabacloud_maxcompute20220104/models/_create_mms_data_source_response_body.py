@@ -11,7 +11,9 @@ class CreateMmsDataSourceResponseBody(DaraModel):
         data: main_models.CreateMmsDataSourceResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned result.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -47,6 +49,7 @@ class CreateMmsDataSourceResponseBodyData(DaraModel):
         self,
         data_source_id: int = None,
     ):
+        # The data source ID.
         self.data_source_id = data_source_id
 
     def validate(self):

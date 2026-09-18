@@ -14,8 +14,11 @@ class ListInstancesResponseBody(DaraModel):
         http_code: int = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # Indicates whether the request was successful. If the value of this parameter is not 200, the request failed.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -63,6 +66,7 @@ class ListInstancesResponseBodyData(DaraModel):
         self,
         name: str = None,
     ):
+        # The project name.
         self.name = name
 
     def validate(self):

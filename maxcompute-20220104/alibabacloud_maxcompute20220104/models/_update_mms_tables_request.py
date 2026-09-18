@@ -16,12 +16,17 @@ class UpdateMmsTablesRequest(DaraModel):
         table_names: List[str] = None,
         tables: List[int] = None,
     ):
+        # The name of the database that contains the source tables to be updated.
         self.db_name = db_name
+        # The destination MaxCompute project.
         self.dst_project_name = dst_project_name
+        # The destination MaxCompute schema.
         self.dst_schema_name = dst_schema_name
+        # The migration status.
         self.status = status
+        # The list of source tables to be updated.
         self.table_names = table_names
-        # Deprecated
+        # This parameter is deprecated.
         self.tables = tables
 
     def validate(self):

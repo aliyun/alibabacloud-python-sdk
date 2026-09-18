@@ -13,7 +13,9 @@ class ListMmsTasksResponseBody(DaraModel):
         data: main_models.ListMmsTasksResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -52,9 +54,13 @@ class ListMmsTasksResponseBodyData(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
+        # The list of migration tasks.
         self.object_list = object_list
+        # The page number.
         self.page_num = page_num
+        # The page size.
         self.page_size = page_size
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -128,26 +134,47 @@ class ListMmsTasksResponseBodyDataObjectList(DaraModel):
         table_id: int = None,
         type: str = None,
     ):
+        # The time when the task was created.
         self.create_time = create_time
+        # The source database ID.
         self.db_id = db_id
+        # The destination MaxCompute project.
         self.dst_db_name = dst_db_name
+        # The destination MaxCompute schema.
         self.dst_schema_name = dst_schema_name
+        # The destination MaxCompute table.
         self.dst_table_name = dst_table_name
+        # The end time of the task.
         self.end_time = end_time
+        # The migration task ID.
         self.id = id
+        # The migration job ID.
         self.job_id = job_id
+        # The migration job name.
         self.job_name = job_name
+        # The number of retries that have been performed.
         self.retried_times = retried_times
+        # Indicates whether the task is running.
         self.running = running
+        # The data source ID.
         self.source_id = source_id
+        # The data source name.
         self.source_name = source_name
+        # The source database name.
         self.src_db_name = src_db_name
+        # The source schema name in a three-level namespace.
         self.src_schema_name = src_schema_name
+        # The source table name.
         self.src_table_name = src_table_name
+        # The start time of the task.
         self.start_time = start_time
+        # The migration task status.
         self.status = status
+        # Indicates whether the task is stopped.
         self.stopped = stopped
+        # The source table ID.
         self.table_id = table_id
+        # The task type.
         self.type = type
 
     def validate(self):

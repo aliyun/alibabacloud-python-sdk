@@ -13,7 +13,9 @@ class ListMmsDataSourcesResponseBody(DaraModel):
         data: main_models.ListMmsDataSourcesResponseBodyData = None,
         request_id: str = None,
     ):
+        # The response payload.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -52,9 +54,13 @@ class ListMmsDataSourcesResponseBodyData(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
+        # The list of data sources.
         self.object_list = object_list
+        # The page number.
         self.page_num = page_num
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of data sources.
         self.total = total
 
     def validate(self):
@@ -133,31 +139,55 @@ class ListMmsDataSourcesResponseBodyDataObjectList(DaraModel):
         tables_part_done_num: int = None,
         type: str = None,
     ):
+        # Indicates whether the agent for the data source instance is online.
         self.agent_is_online = agent_is_online
+        # A list of data source configurations.
         self.config = config
+        # The time the data source was created.
         self.create_time = create_time
+        # The number of databases in the data source.
         self.db_num = db_num
+        # The default destination MaxCompute project.
         self.dst_project = dst_project
+        # A list of destination MaxCompute projects.
         self.dst_projects = dst_projects
+        # The reason the data source instance failed to start or stop. This parameter is returned only if the `status` is `START_FAILED` or `STOP_FAILED`.
         self.err_msg = err_msg
+        # The data source ID.
         self.id = id
+        # The last metadata synchronization time.
         self.last_update_time = last_update_time
+        # The data source name.
         self.name = name
+        # The network connection, specified in the `VpcId:RegionId` format.
         self.networklink = networklink
+        # The number of partitions in the data source.
         self.partition_num = partition_num
+        # The number of partitions currently being migrated.
         self.partitions_doing_num = partitions_doing_num
+        # The number of successfully migrated partitions.
         self.partitions_done_num = partitions_done_num
+        # The number of partitions that failed to migrate.
         self.partitions_failed_num = partitions_failed_num
+        # The region ID.
         self.region = region
         self.scan_err_msg = scan_err_msg
+        # The ID of the metadata synchronization task.
         self.scan_id = scan_id
         self.scan_status = scan_status
+        # The data source status.
         self.status = status
+        # The number of tables in the data source.
         self.table_num = table_num
+        # The number of tables currently being migrated.
         self.tables_doing_num = tables_doing_num
+        # The number of successfully migrated tables.
         self.tables_done_num = tables_done_num
+        # The number of tables that failed to migrate.
         self.tables_failed_num = tables_failed_num
+        # The number of partially migrated tables.
         self.tables_part_done_num = tables_part_done_num
+        # The data source type.
         self.type = type
 
     def validate(self):
@@ -352,15 +382,25 @@ class ListMmsDataSourcesResponseBodyDataObjectListConfig(DaraModel):
         type: str = None,
         value: Any = None,
     ):
+        # The description of the configuration.
         self.desc = desc
+        # A list of valid values for the configuration.
         self.enums = enums
+        # The configuration group.
         self.group = group
+        # The unique key for the configuration.
         self.key = key
+        # The configuration name.
         self.name = name
+        # A placeholder for the configuration value.
         self.place_holder = place_holder
+        # Indicates whether the configuration is required.
         self.required = required
+        # The required file extension (for example, `.keytab`) when `type` is `file`.
         self.sub_type = sub_type
+        # The configuration type.
         self.type = type
+        # The configuration value.
         self.value = value
 
     def validate(self):

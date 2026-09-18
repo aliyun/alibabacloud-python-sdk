@@ -12,9 +12,9 @@ class UpdateUsersToRoleRequest(DaraModel):
         add: List[str] = None,
         remove: List[str] = None,
     ):
-        # The accounts.
+        # The action to add users to the project role.
         self.add = add
-        # The accounts.
+        # The action to remove users from the project role.
         self.remove = remove
 
     def validate(self):

@@ -23,8 +23,9 @@ class GetQuotaUsageRequest(DaraModel):
         self.agg_method = agg_method
         # The time when the query starts. The value is the log time that is specified when log data is written.
         # 
-        # *   The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the **from** parameter, but does not include the end time specified by the **to** parameter. If you set the **from** and **to** parameters to the same value, the time range is invalid and an error message is returned.
-        # *   This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # - The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the **from** parameter, but does not include the end time specified by the **to** parameter. If you set the **from** and **to** parameters to the same value, the time range is invalid and an error message is returned.
+        # 
+        # - This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
         # This parameter is required.
         self.from_ = from_
@@ -32,8 +33,9 @@ class GetQuotaUsageRequest(DaraModel):
         self.plot_types = plot_types
         # The quota type. Default value: ODPS.
         # 
-        # *   ODPS: computing quota
-        # *   TUNNEL: Tunnel quota
+        # - ODPS: computing quota
+        # 
+        # - TUNNEL: Tunnel quota
         self.product_id = product_id
         # The region ID.
         self.region = region
@@ -43,8 +45,9 @@ class GetQuotaUsageRequest(DaraModel):
         self.tenant_id = tenant_id
         # The time when the query ends. The value is the log time that is specified when log data is written.
         # 
-        # *   The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the **from** parameter, but does not include the end time specified by the **to** parameter. If you set the **from** and **to** parameters to the same value, the time range is invalid and an error message is returned.
-        # *   This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # - The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the **from** parameter, but does not include the end time specified by the **to** parameter. If you set the **from** and **to** parameters to the same value, the time range is invalid and an error message is returned.
+        # 
+        # - This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
         # This parameter is required.
         self.to = to

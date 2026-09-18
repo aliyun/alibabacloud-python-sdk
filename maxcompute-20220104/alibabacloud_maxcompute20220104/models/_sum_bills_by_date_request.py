@@ -15,10 +15,15 @@ class SumBillsByDateRequest(DaraModel):
         stats_type: str = None,
         top_n: int = None,
     ):
+        # The end time of the cost statistics period.
         self.end_date = end_date
+        # A list of instance names. In this context, an instance is a MaxCompute project.
         self.project_names = project_names
+        # The start time of the cost statistics period.
         self.start_date = start_date
+        # The statistics type. Valid values: `PROJECT` (by instance) and `FEE_ITEM` (by billable item).
         self.stats_type = stats_type
+        # The number of top results to return, sorted by cost.
         self.top_n = top_n
 
     def validate(self):

@@ -10,8 +10,12 @@ class ListInstancesRequest(DaraModel):
         end_date: int = None,
         start_date: int = None,
     ):
+        # The end time of the time range for cost analysis.
+        # 
         # This parameter is required.
         self.end_date = end_date
+        # The start time of the time range for cost analysis.
+        # 
         # This parameter is required.
         self.start_date = start_date
 

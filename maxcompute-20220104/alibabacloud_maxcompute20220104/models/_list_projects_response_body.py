@@ -13,7 +13,7 @@ class ListProjectsResponseBody(DaraModel):
         data: main_models.ListProjectsResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The returned data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -54,9 +54,9 @@ class ListProjectsResponseBodyData(DaraModel):
         max_item: int = None,
         projects: List[main_models.ListProjectsResponseBodyDataProjects] = None,
     ):
-        # A pagination token. Only continuous page turning is supported. If NextToken is not empty, the next page exists. The value of NextToken can be used in the next request to retrieve a new page of results.
+        # The token for retrieving the next page of results. If this parameter is empty, all results have been returned.
         self.next_token = next_token
-        # Indicates the marker after which the returned list begins.
+        # A pagination marker used to retrieve the next page of results. This parameter is returned when the response is truncated.
         self.marker = marker
         # The maximum number of entries returned per page.
         self.max_item = max_item
@@ -127,46 +127,45 @@ class ListProjectsResponseBodyDataProjects(DaraModel):
         three_tier_model: bool = None,
         type: str = None,
     ):
-        # The project description.
+        # The description of the project.
         self.comment = comment
-        # The total storage usage. The storage space that is occupied by your project, which is the logical storage space after your project data is collected and compressed.
+        # The total storage usage of the project, which represents the compressed, logical data size used for metering.
         self.cost_storage = cost_storage
-        # The creation time.
+        # The time when the project was created, as a Unix timestamp in milliseconds.
         self.created_time = created_time
-        # The default computing quota that is used to allocate computing resources. If you do not specify a computing quota for your project, the jobs that are initiated by your project consume the computing resources in the default quota. For more information about how to use computing resources, see [Use quota groups for computing resources](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/use-of-computing-resources)
+        # The default compute quota. If you do not specify a quota for a job, the job consumes computing resources from this default quota. For more information about how to use computing resources, see <props="intl">[Use of computing resources](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/use-of-computing-resources).
         self.default_quota = default_quota
-        # The information about the IP address whitelist.
+        # The IP whitelist.
         self.ip_white_list = ip_white_list
         # The name of the project.
         self.name = name
-        # The account information of the project owner.
+        # The owner of the project.
         self.owner = owner
         # The basic properties of the project.
         self.properties = properties
         # The region ID.
         self.region_id = region_id
-        # The instance ID and billing method of the default computing quota.
+        # The instance ID and billing method of the default compute quota.
         self.sale_tag = sale_tag
-        # The permission properties.
+        # The security-related properties.
         self.security_properties = security_properties
-        # The project status. Valid values:
+        # The status of the project. Valid values:
         # 
-        # *   **AVAILABLE**
-        # *   **READONLY**
-        # *   **FROZEN**
-        # *   **DELETING**
+        # - **AVAILABLE**: The project is running as expected.
+        # 
+        # - **READONLY**: The project is read-only.
+        # 
+        # - **FROZEN**: The project is frozen.
+        # 
+        # - **DELETING**: The project is being deleted.
         self.status = status
-        # Indicates whether data storage by schema is supported. MaxCompute supports the schema feature. This feature allows you to classify objects such as tables, resources, and user-defined functions (UDFs) in a project by schema. You can create multiple schemas in a project. For more information, see [Schema-related operations](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/schema-related-operations).
-        # 
-        # Valid values:
-        # 
-        # *   true: supported
-        # *   false: not supported
+        # Specifies whether the project uses a three-tier model (project > schema > object). In this model, schemas are used within a project to organize objects such as tables, resources, and user-defined functions (UDFs). For more information, see <props="intl">[Schema operations](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/schema-related-operations).
         self.three_tier_model = three_tier_model
-        # The project type. Valid values:
+        # The type of the project. Valid values:
         # 
-        # *   **managed**: internal project
-        # *   **external**: external project
+        # - **managed**: An internal project.
+        # 
+        # - **external**: An external project.
         self.type = type
 
     def validate(self):
@@ -289,19 +288,19 @@ class ListProjectsResponseBodyDataProjectsSecurityProperties(DaraModel):
         using_acl: bool = None,
         using_policy: bool = None,
     ):
-        # Indicates whether the [download control](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/label-based-access-control) feature is enabled. By default, this feature is disabled.
+        # Specifies whether to enable <props="intl">[download control](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/label-based-access-control). Default value: `false`.
         self.enable_download_privilege = enable_download_privilege
-        # Indicates whether the [label-based access control](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/label-based-access-control) feature is enabled. By default, this feature is disabled.
+        # Specifies whether to enable <props="intl">[label-based access control](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/label-based-access-control). Default value: `false`.
         self.label_security = label_security
-        # Indicates whether to allow the object creator to have the access permissions on the object. The default value is true, which indicates that the object creator has the access permissions on the object.
+        # Specifies whether the creator of an object can access it. Default value: `true`.
         self.object_creator_has_access_permission = object_creator_has_access_permission
-        # Indicates whether the object creator has the authorization permissions on the object. The default value is true, which indicates that the object creator has the authorization permissions on the object.
+        # Specifies whether the creator of an object can grant other users permissions on it. Default value: `true`.
         self.object_creator_has_grant_permission = object_creator_has_grant_permission
-        # The properties of the [data protection mechanism](https://www.alibabacloud.com/help/zh/maxcompute/security-and-compliance/project-data-protection).
+        # The <props="intl">[project data protection](https://www.alibabacloud.com/help/zh/maxcompute/security-and-compliance/project-data-protection) properties.
         self.project_protection = project_protection
-        # Indicates whether the [ACL-based access control](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/acl-based-access-control) feature is enabled. By default, this feature is enabled.
+        # Specifies whether to enable <props="intl">[ACL-based access control](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/acl-based-access-control). Default value: `true`.
         self.using_acl = using_acl
-        # Indicates whether the [policy-based access control](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/policy-based-access-control-1) feature is enabled. By default, this feature is enabled.
+        # Specifies whether to enable <props="intl">[policy-based access control](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/policy-based-access-control-1). Default value: `true`.
         self.using_policy = using_policy
 
     def validate(self):
@@ -368,9 +367,9 @@ class ListProjectsResponseBodyDataProjectsSecurityPropertiesProjectProtection(Da
         exception_policy: str = None,
         protected: bool = None,
     ):
-        # If you enable the project data protection mechanism, you can configure exception or trusted projects. This allows specified users to transfer data of a specified object to a specified project. The project data protection mechanism does not take effect in all the situations that are specified in the exception policy.
+        # If project data protection is enabled, you can configure an exception policy. This policy allows specified users to export data from specified objects to trusted projects, bypassing the data protection mechanism.
         self.exception_policy = exception_policy
-        # Indicates whether the [data protection mechanism](https://www.alibabacloud.com/help/zh/maxcompute/security-and-compliance/project-data-protection) is enabled for the project. This allows or denies data transfer across projects. By default, the data protection mechanism is disabled.
+        # Specifies whether to enable <props="intl">[project data protection](https://www.alibabacloud.com/help/zh/maxcompute/security-and-compliance/project-data-protection) to prevent data from being exported from the project. Default value: `false`.
         self.protected = protected
 
     def validate(self):
@@ -405,9 +404,9 @@ class ListProjectsResponseBodyDataProjectsSaleTag(DaraModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
-        # The instance ID of the default computing quota.
+        # The instance ID of the default compute quota.
         self.resource_id = resource_id
-        # The billing method of the default computing quota.
+        # The billing method of the default compute quota.
         self.resource_type = resource_type
 
     def validate(self):
@@ -451,39 +450,43 @@ class ListProjectsResponseBodyDataProjectsProperties(DaraModel):
         tunnel_quota: str = None,
         type_system: str = None,
     ):
-        # Indicates whether a full table scan is allowed in the project. A full table scan occupies a large number of resources, which reduces data processing efficiency. By default, the full table scan feature is disabled.
+        # Specifies whether to allow a full table scan in the project. This feature is disabled by default because a full table scan can consume a large amount of computing resources.
         self.allow_full_scan = allow_full_scan
-        # Indicates whether the DECIMAL type of the MaxCompute V2.0 data type edition is enabled.
+        # Specifies whether to enable the MaxCompute 2.0 Decimal data type in the project.
         self.enable_decimal_2 = enable_decimal_2
-        # Indicates whether the routing of the Tunnel resource group is enabled.
+        # Specifies whether to enable routing for the Data Transmission Service resource group.
         # 
-        # *   true: The data transfer tasks that are submitted by the project by default use the Tunnel resource group that is bound to the project.
-        # *   false: The data transfer tasks that are submitted by the project by default use the Tunnel shared resource group.
+        # - true: Data transmission jobs submitted by default from the project use the bound Data Transmission Service resource group.
+        # 
+        # - false: Data transmission jobs submitted by default from the project use the shared Data Transmission Service resource group.
         self.enable_tunnel_quota_route = enable_tunnel_quota_route
         # The storage encryption properties.
         self.encryption = encryption
         # The properties of the external project.
         self.external_project_properties = external_project_properties
-        # The retention period for backup data. Unit: days. During the retention period, you can restore data of the version in use to the backup data of any version. Valid values: [0,30]. Default value: 1. The value 0 indicates that the backup feature is disabled.
+        # The number of retention days for backup data. You can restore data to any backup version that is created within the retention period. Valid values: `0` to `30`. Default value: `1`. A value of `0` indicates that the backup feature is disabled.
         self.retention_days = retention_days
-        # The maximum consumption threshold of a single SQL statement. Formula: Amount of scanned data (GB) × Complexity.
+        # The maximum metered cost for a single SQL statement. The cost is calculated by using the formula: (scanned data in GB) × (complexity).
         self.sql_metering_max = sql_metering_max
         # The table lifecycle properties.
         self.table_lifecycle = table_lifecycle
-        # The time zone that is used by your project. The time zone is the same as the time zone specified by `odps.sql.timezone`.
+        # The time zone of the project. This parameter corresponds to the `odps.sql.timezone` property.
         self.timezone = timezone
-        # The [Tunnel](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/overview-of-dts) resource group that is bound to the project.
+        # The <props="intl">[Data Transmission Service](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/overview-of-dts) resource group that is bound to the project.
         # 
-        # *   Default resource group: The Tunnel shared resource group is used. You cannot use the subscription-based Tunnel resource group for the project. The default resource group is automatically used by the Tunnel service of your project, regardless of the parameter setting.
-        # *   Subscription-based Tunnel resource group: You can use the subscription-based Tunnel resource group for the project.
+        # - Default (shared Data Transmission Service resource group): The project cannot use subscription Data Transmission Service resource groups. Data Transmission Service jobs submitted from this project automatically use the Default resource group, regardless of the default setting for the Data Transmission Service resource group.
+        # 
+        # - Subscription Data Transmission Service resource group: The project can use a subscription Data Transmission Service resource group.
         self.tunnel_quota = tunnel_quota
-        # The data type edition. Valid values:
+        # The data type version. Valid values:
         # 
-        # *   **1**: MaxCompute V1.0 data type edition
-        # *   **2**: MaxCompute V2.0 data type edition
-        # *   **hive**: Hive-compatible data type edition
+        # - **1**: Version 1.0.
         # 
-        # For more information about the differences among the three data type editions, see [Data type editions](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/data-type-editions).
+        # - **2**: Version 2.0.
+        # 
+        # - **hive**: A Hive-compatible type.
+        # 
+        # For more information about the differences between the data type versions, see <props="intl">[Data type versions](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/data-type-editions).
         self.type_system = type_system
 
     def validate(self):
@@ -580,13 +583,15 @@ class ListProjectsResponseBodyDataProjectsPropertiesTableLifecycle(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The lifecycle type. Valid values:
+        # The type of the lifecycle. Valid values:
         # 
-        # *   **mandatory**: The lifecycle clause is required in a table creation statement.
-        # *   **optional**: The lifecycle clause is optional in a table creation statement. If you do not configure a lifecycle for a table, the table does not expire.
-        # *   **inherit**: If you do not configure a lifecycle for a table when you create the table, the value of the odps.table.lifecycle.value parameter is used as the table lifecycle by default.
+        # - **mandatory**: A lifecycle must be configured for each table.
+        # 
+        # - **optional**: The lifecycle is optional. If unspecified for a table, the table does not expire.
+        # 
+        # - **inherit**: If no lifecycle is specified for a table, the table inherits its lifecycle from the `odps.table.lifecycle.value` property.
         self.type = type
-        # The table lifecycle. Unit: days. Valid values: 1 to 37231. Default value: 37231.
+        # The lifecycle of the table, in days. Valid values: `1` to `37231`. Default value: `37231`.
         self.value = value
 
     def validate(self):
@@ -620,7 +625,7 @@ class ListProjectsResponseBodyDataProjectsPropertiesExternalProjectProperties(Da
         self,
         is_external_catalog_bound: str = None,
     ):
-        # Indicates whether the external project is an external project for [data lakehouse solution 2.0](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/lake-warehouse-integrated-2-0-use-guide).
+        # Specifies whether the project is an external project for <props="intl">[Integrated Lakehouse](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/lake-warehouse-integrated-2-0-use-guide).
         self.is_external_catalog_bound = is_external_catalog_bound
 
     def validate(self):
@@ -650,13 +655,12 @@ class ListProjectsResponseBodyDataProjectsPropertiesEncryption(DaraModel):
         enable: bool = None,
         key: str = None,
     ):
-        # The data encryption algorithm that is supported by the key. Valid values: AES256, AESCTR, and RC4.
+        # The data encryption algorithm. Supported algorithms include AES256, AESCTR, and RC4.
         self.algorithm = algorithm
-        # Indicates whether the data encryption feature needs to be enabled for the project. For more information about data encryption, see
-        # 
-        # [Storage encryption](https://www.alibabacloud.com/help/zh/maxcompute/security-and-compliance/storage-encryption).
+        # Specifies whether to enable storage encryption for the project. For more information, see
+        # <props="intl">[Storage encryption](https://www.alibabacloud.com/help/zh/maxcompute/security-and-compliance/storage-encryption).
         self.enable = enable
-        # The type of key that is used for data encryption. You can select MaxCompute Default Key or Bring Your Own Key (BYOK) as the key type. If you select MaxCompute Default Key, the default key that is created by MaxCompute is used.
+        # The key for data encryption. You can use the default MaxCompute-managed key or a custom key with the Bring Your Own Key (BYOK) feature.
         self.key = key
 
     def validate(self):
@@ -697,13 +701,13 @@ class ListProjectsResponseBodyDataProjectsIpWhiteList(DaraModel):
         ip_list: str = None,
         vpc_ip_list: str = None,
     ):
-        # The IP address whitelist for access over the Internet or the network for interconnecting with other Alibaba Cloud services.
+        # The IP whitelist for access over the public network and from other Alibaba Cloud services.
         # 
-        # >  If you configure only the IP address whitelist for access over the Internet or the network for interconnecting with other Alibaba Cloud services, the access over the Internet or the network for interconnecting with other Alibaba Cloud services is subject to configurations, and access over a virtual private cloud (VPC) is not allowed.
+        # > If you configure only this IP whitelist, access over the public network and from other Alibaba Cloud services is restricted based on the whitelist, and all access from VPCs is denied.
         self.ip_list = ip_list
-        # The IP address whitelist for access over a VPC.
+        # The IP whitelist for access from VPCs.
         # 
-        # >  If you configure only the IP address whitelist for access over a VPC, the access over a VPC is subject to configurations, and the access over the Internet or the network for interconnecting with other Alibaba Cloud services is not allowed.
+        # > If you configure only the VPC IP whitelist, access from VPCs is restricted based on the whitelist, and all access over the public network and from other Alibaba Cloud services is denied.
         self.vpc_ip_list = vpc_ip_list
 
     def validate(self):

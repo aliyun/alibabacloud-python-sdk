@@ -13,7 +13,9 @@ class ListMmsDataSourceConfigItemsResponseBody(DaraModel):
         data: List[main_models.ListMmsDataSourceConfigItemsResponseBodyData] = None,
         request_id: str = None,
     ):
+        # A list of configuration items.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -65,16 +67,27 @@ class ListMmsDataSourceConfigItemsResponseBodyData(DaraModel):
         type: str = None,
         value: Any = None,
     ):
+        # The description of the configuration item.
         self.desc = desc
+        # The enumerated values for the configuration item.
         self.enums = enums
+        # The group to which the configuration item belongs.
         self.group = group
+        # The key of the configuration item.
         self.key = key
+        # The name of the configuration item.
         self.name = name
+        # The placeholder for the configuration value.
         self.place_holder = place_holder
+        # Indicates whether the configuration item is required.
         self.required = required
+        # The sub-items of the configuration item.
         self.sub_items = sub_items
+        # The file type. This parameter is valid only when `type` is `file`. For example, .keytab.
         self.sub_type = sub_type
+        # The data type of the configuration item.
         self.type = type
+        # The value of the configuration item.
         self.value = value
 
     def validate(self):

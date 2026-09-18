@@ -31,19 +31,19 @@ class GetQuotaResponseBody(DaraModel):
         type: str = None,
         version: str = None,
     ):
-        # The information about the order.
+        # The order information.
         self.billing_policy = billing_policy
         # The cluster ID.
         self.cluster = cluster
         # The time when the resource was created.
         self.create_time = create_time
-        # The ID of the Alibaba Cloud account that is used to create the resource.
+        # The creator of the resource. This parameter is the UID of an Alibaba Cloud account.
         self.creator_id = creator_id
         # The returned data.
         self.data = data
         # The quota ID.
         self.id = id
-        # The name of the quota.
+        # The quota name.
         self.name = name
         # The alias of the quota.
         self.nick_name = nick_name
@@ -55,19 +55,19 @@ class GetQuotaResponseBody(DaraModel):
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
-        # The identifier of an object in a MaxCompute quota. This identifier is the same as the identifier in the sales bill of Alibaba Cloud. This parameter is used for tags.
+        # The identifier of the MaxCompute quota object. This identifier is the same as the identifier in the bill of Alibaba Cloud. This parameter is used in tagging scenarios.
         self.sale_tag = sale_tag
-        # The information about the scheduling plan.
+        # The time-sharing information.
         self.schedule_info = schedule_info
-        # The status of the resource.
+        # The resource status.
         self.status = status
-        # The information about the level-2 quota.
+        # The information about the level-2 quotas.
         self.sub_quota_info_list = sub_quota_info_list
-        # The tag of the resource for the quota.
+        # The resource tag of the quota.
         self.tag = tag
         # The tenant ID.
         self.tenant_id = tenant_id
-        # The type of the resource system. This parameter corresponds to the resourceSystemType parameter of the cluster.
+        # This parameter corresponds to the resourceSystemType field of the control cluster.
         self.type = type
         # The version number.
         self.version = version
@@ -247,15 +247,15 @@ class GetQuotaResponseBodySubQuotaInfoList(DaraModel):
         type: str = None,
         version: str = None,
     ):
-        # The information about the order.
+        # The order information.
         self.billing_policy = billing_policy
         # The cluster ID.
         self.cluster = cluster
         # The time when the resource was created.
         self.create_time = create_time
-        # The ID of the Alibaba Cloud account that is used to create the resource.
+        # The creator of the resource. This parameter is the UID of an Alibaba Cloud account.
         self.creator_id = creator_id
-        # The ID of the level-2 quota.
+        # The level-2 quota ID.
         self.id = id
         # The name of the level-2 quota.
         self.name = name
@@ -267,17 +267,17 @@ class GetQuotaResponseBodySubQuotaInfoList(DaraModel):
         self.parent_id = parent_id
         # The region ID.
         self.region_id = region_id
-        # The identifier of an object in a MaxCompute quota. This identifier is the same as the identifier in the sales bill of Alibaba Cloud. This parameter is used for tags.
+        # The identifier of the MaxCompute quota object. This identifier is the same as the identifier in the bill of Alibaba Cloud. This parameter is used in tagging scenarios.
         self.sale_tag = sale_tag
-        # The information about the scheduling plan.
+        # The time-sharing information.
         self.schedule_info = schedule_info
-        # The status of the resource.
+        # The resource status.
         self.status = status
-        # The tag of the resource for the quota.
+        # The resource tag of the quota.
         self.tag = tag
         # The tenant ID.
         self.tenant_id = tenant_id
-        # The type of the resource system. This parameter corresponds to the resourceSystemType parameter of the cluster.
+        # This parameter corresponds to the resourceSystemType field of the control cluster.
         self.type = type
         # The version number.
         self.version = version
@@ -421,21 +421,22 @@ class GetQuotaResponseBodySubQuotaInfoListScheduleInfo(DaraModel):
         operator_name: str = None,
         timezone: str = None,
     ):
-        # The quota plan that takes effect based on the scheduling plan.
+        # The quota plan that is in effect based on the scheduling plan.
         self.curr_plan = curr_plan
-        # The time when the current quota plan is scheduled.
+        # The time when the currPlan was scheduled.
         self.curr_time = curr_time
-        # The next quota plan that will take effect based on the scheduling plan.
+        # The quota plan that is about to take effect based on the scheduling plan.
         self.next_plan = next_plan
-        # The time when the next quota plan is scheduled.
+        # The time when the next_plan is scheduled.
         self.next_time = next_time
-        # The quota plan that immediately takes effect. If the quota plan that immediately takes effect is different from the current quota plan, this parameter is not empty.
+        # The quota plan that takes effect immediately.
+        # This parameter is not empty if a user triggers a plan that is different from the curr_plan to take effect immediately.
         self.once_plan = once_plan
-        # The time when the quota plan immediately takes effect.
+        # The time when the immediate-effect plan was triggered.
         self.once_time = once_time
         # The name of the operator.
         self.operator_name = operator_name
-        # The time zone of the project.
+        # The time zone.
         self.timezone = timezone
 
     def validate(self):
@@ -506,9 +507,9 @@ class GetQuotaResponseBodySubQuotaInfoListSaleTag(DaraModel):
         resource_ids: List[str] = None,
         resource_type: str = None,
     ):
-        # The identifier of an object in a MaxCompute quota. This identifier exists in the sales bill of Alibaba Cloud. You can use this identifier to associate the cost of a quota object with a tag.
+        # The identifier of the MaxCompute quota object. This identifier also exists in the billing subsystem of Alibaba Cloud. You can use this identifier to associate the costs of a quota object with a tag.
         self.resource_ids = resource_ids
-        # The type of the object. Valid values: quota and project.
+        # The type of the object. Currently, only quota and project are supported.
         self.resource_type = resource_type
 
     def validate(self):
@@ -548,14 +549,23 @@ class GetQuotaResponseBodySubQuotaInfoListParameter(DaraModel):
         scheduler_type: str = None,
         single_job_culimit: int = None,
     ):
+        # The value of elastic reserved CUs.
         self.elastic_reserved_cu = elastic_reserved_cu
+        # Enables the priority feature.
         self.enable_priority = enable_priority
+        # Specifies whether to enable exclusive use.
         self.force_reserved_min = force_reserved_min
+        # The upper limit of reserved computing units (CUs).
+        # 
         # This parameter is required.
         self.max_cu = max_cu
+        # The guaranteed reserved CUs.
+        # 
         # This parameter is required.
         self.min_cu = min_cu
+        # The scheduling policy.
         self.scheduler_type = scheduler_type
+        # The upper limit of CUs for a single job.
         self.single_job_culimit = single_job_culimit
 
     def validate(self):
@@ -621,10 +631,11 @@ class GetQuotaResponseBodySubQuotaInfoListBillingPolicy(DaraModel):
         odps_spec_code: str = None,
         order_id: str = None,
     ):
-        # The billing method of the quota. Valid values:
+        # The billing method.
         # 
-        # *   subscription: a subscription quota.
-        # *   payasyougo: a pay-as-you-go quota.
+        # - subscription: indicates a subscription quota.
+        # 
+        # - payasyougo: indicates a pay-as-you-go quota.
         self.billing_method = billing_method
         # The specifications of the order.
         self.odps_spec_code = odps_spec_code
@@ -675,21 +686,22 @@ class GetQuotaResponseBodyScheduleInfo(DaraModel):
         operator_name: str = None,
         timezone: str = None,
     ):
-        # The quota plan that takes effect based on the scheduling plan.
+        # The quota plan that is in effect based on the scheduling plan.
         self.curr_plan = curr_plan
-        # The time when the current quota plan is scheduled.
+        # The time when the currPlan was scheduled.
         self.curr_time = curr_time
-        # The next quota plan that will take effect based on the scheduling plan.
+        # The quota plan that is about to take effect based on the scheduling plan.
         self.next_plan = next_plan
-        # The time when the next quota plan is scheduled.
+        # The time when the next_plan is scheduled.
         self.next_time = next_time
-        # The quota plan that immediately takes effect. If the quota plan that immediately takes effect is different from the current quota plan, this parameter is not empty.
+        # The quota plan that takes effect immediately.
+        # This parameter is not empty if a user triggers a plan that is different from the curr_plan to take effect immediately.
         self.once_plan = once_plan
-        # The time when the quota plan immediately takes effect.
+        # The time when the immediate-effect plan was triggered.
         self.once_time = once_time
         # The name of the operator.
         self.operator_name = operator_name
-        # The time zone of the project.
+        # The time zone.
         self.timezone = timezone
 
     def validate(self):
@@ -760,9 +772,9 @@ class GetQuotaResponseBodySaleTag(DaraModel):
         resource_ids: List[str] = None,
         resource_type: str = None,
     ):
-        # The identifier of an object in a MaxCompute quota. This identifier exists in the sales bill of Alibaba Cloud. You can use this identifier to associate the cost of a quota object with a tag.
+        # The identifier of the MaxCompute quota object. This identifier also exists in the billing subsystem of Alibaba Cloud. You can use this identifier to associate the costs of a quota object with a tag.
         self.resource_ids = resource_ids
-        # The type of the object. Valid values: quota and project.
+        # The type of the object. Currently, only quota and project are supported.
         self.resource_type = resource_type
 
     def validate(self):
@@ -813,17 +825,17 @@ class GetQuotaResponseBodyData(DaraModel):
         type: str = None,
         version: str = None,
     ):
-        # The information about the order.
+        # The order information.
         self.billing_policy = billing_policy
         # The cluster ID.
         self.cluster = cluster
         # The time when the resource was created.
         self.create_time = create_time
-        # The ID of the Alibaba Cloud account that is used to create the resource.
+        # The creator of the resource. This parameter is the UID of an Alibaba Cloud account.
         self.creator_id = creator_id
         # The quota ID.
         self.id = id
-        # The name of the quota.
+        # The quota name.
         self.name = name
         # The alias of the quota.
         self.nick_name = nick_name
@@ -833,19 +845,19 @@ class GetQuotaResponseBodyData(DaraModel):
         self.parent_id = parent_id
         # The region ID.
         self.region_id = region_id
-        # The identifier of an object in a MaxCompute quota. This identifier is the same as the identifier in the sales bill of Alibaba Cloud. This parameter is used for tags.
+        # The identifier of the MaxCompute quota object. This identifier is the same as the identifier in the bill of Alibaba Cloud. This parameter is used in tagging scenarios.
         self.sale_tag = sale_tag
-        # The information about the scheduling plan.
+        # The time-sharing information.
         self.schedule_info = schedule_info
-        # The status of the resource.
+        # The resource status.
         self.status = status
-        # The information about the level-2 quota.
+        # The information about the level-2 quotas.
         self.sub_quota_info_list = sub_quota_info_list
-        # The tag of the resource for the quota.
+        # The resource tag of the quota.
         self.tag = tag
         # The tenant ID.
         self.tenant_id = tenant_id
-        # The type of the resource system. This parameter corresponds to the resourceSystemType parameter of the cluster.
+        # This parameter corresponds to the resourceSystemType field of the control cluster.
         self.type = type
         # The version number.
         self.version = version
@@ -1010,15 +1022,15 @@ class GetQuotaResponseBodyDataSubQuotaInfoList(DaraModel):
         type: str = None,
         version: str = None,
     ):
-        # The information about the order.
+        # The order information.
         self.billing_policy = billing_policy
         # The cluster ID.
         self.cluster = cluster
         # The time when the resource was created.
         self.create_time = create_time
-        # The ID of the Alibaba Cloud account that is used to create the resource.
+        # The creator of the resource. This parameter is the UID of an Alibaba Cloud account.
         self.creator_id = creator_id
-        # The ID of the level-2 quota.
+        # The level-2 quota ID.
         self.id = id
         # The name of the level-2 quota.
         self.name = name
@@ -1030,17 +1042,17 @@ class GetQuotaResponseBodyDataSubQuotaInfoList(DaraModel):
         self.parent_id = parent_id
         # The region ID.
         self.region_id = region_id
-        # The identifier of an object in a MaxCompute quota. This identifier is the same as the identifier in the sales bill of Alibaba Cloud. This parameter is used for tags.
+        # The identifier of the MaxCompute quota object. This identifier is the same as the identifier in the bill of Alibaba Cloud. This parameter is used in tagging scenarios.
         self.sale_tag = sale_tag
-        # The information about the scheduling plan.
+        # The time-sharing information.
         self.schedule_info = schedule_info
-        # The status of the resource.
+        # The resource status.
         self.status = status
-        # The tag of the resource for the quota.
+        # The resource tag of the quota.
         self.tag = tag
         # The tenant ID.
         self.tenant_id = tenant_id
-        # The type of the resource system. This parameter corresponds to the resourceSystemType parameter of the cluster.
+        # This parameter corresponds to the resourceSystemType field of the control cluster.
         self.type = type
         # The version number.
         self.version = version
@@ -1184,21 +1196,22 @@ class GetQuotaResponseBodyDataSubQuotaInfoListScheduleInfo(DaraModel):
         operator_name: str = None,
         timezone: str = None,
     ):
-        # The quota plan that takes effect based on the scheduling plan.
+        # The quota plan that is in effect based on the scheduling plan.
         self.curr_plan = curr_plan
-        # The time when the current quota plan is scheduled.
+        # The time when the currPlan was scheduled.
         self.curr_time = curr_time
-        # The next quota plan that will take effect based on the scheduling plan.
+        # The quota plan that is about to take effect based on the scheduling plan.
         self.next_plan = next_plan
-        # The time when the next quota plan is scheduled.
+        # The time when the next_plan is scheduled.
         self.next_time = next_time
-        # The quota plan that immediately takes effect. If the quota plan that immediately takes effect is different from the current quota plan, this parameter is not empty.
+        # The quota plan that takes effect immediately.
+        # This parameter is not empty if a user triggers a plan that is different from the curr_plan to take effect immediately.
         self.once_plan = once_plan
-        # The time when the quota plan immediately takes effect.
+        # The time when the immediate-effect plan was triggered.
         self.once_time = once_time
         # The name of the operator.
         self.operator_name = operator_name
-        # The time zone of the project.
+        # The time zone.
         self.timezone = timezone
 
     def validate(self):
@@ -1269,9 +1282,9 @@ class GetQuotaResponseBodyDataSubQuotaInfoListSaleTag(DaraModel):
         resource_ids: List[str] = None,
         resource_type: str = None,
     ):
-        # The identifier of an object in a MaxCompute quota. This identifier exists in the sales bill of Alibaba Cloud. You can use this identifier to associate the cost of a quota object with a tag.
+        # The identifier of the MaxCompute quota object. This identifier also exists in the billing subsystem of Alibaba Cloud. You can use this identifier to associate the costs of a quota object with a tag.
         self.resource_ids = resource_ids
-        # The type of the object. Valid values: quota and project.
+        # The type of the object. Currently, only quota and project are supported.
         self.resource_type = resource_type
 
     def validate(self):
@@ -1311,14 +1324,23 @@ class GetQuotaResponseBodyDataSubQuotaInfoListParameter(DaraModel):
         scheduler_type: str = None,
         single_job_culimit: int = None,
     ):
+        # The value of elastic reserved CUs.
         self.elastic_reserved_cu = elastic_reserved_cu
+        # Enables the priority feature.
         self.enable_priority = enable_priority
+        # Specifies whether to enable exclusive use.
         self.force_reserved_min = force_reserved_min
+        # The upper limit of reserved computing units (CUs).
+        # 
         # This parameter is required.
         self.max_cu = max_cu
+        # The guaranteed reserved CUs.
+        # 
         # This parameter is required.
         self.min_cu = min_cu
+        # The scheduling policy.
         self.scheduler_type = scheduler_type
+        # The upper limit of CUs for a single job.
         self.single_job_culimit = single_job_culimit
 
     def validate(self):
@@ -1384,10 +1406,11 @@ class GetQuotaResponseBodyDataSubQuotaInfoListBillingPolicy(DaraModel):
         odps_spec_code: str = None,
         order_id: str = None,
     ):
-        # The billing method of the quota. Valid values:
+        # The billing method.
         # 
-        # *   subscription: a subscription quota.
-        # *   payasyougo: a pay-as-you-go quota.
+        # - subscription: indicates a subscription quota.
+        # 
+        # - payasyougo: indicates a pay-as-you-go quota.
         self.billing_method = billing_method
         # The specifications of the order.
         self.odps_spec_code = odps_spec_code
@@ -1438,21 +1461,22 @@ class GetQuotaResponseBodyDataScheduleInfo(DaraModel):
         operator_name: str = None,
         timezone: str = None,
     ):
-        # The quota plan that takes effect based on the scheduling plan.
+        # The quota plan that is in effect based on the scheduling plan.
         self.curr_plan = curr_plan
-        # The time when the current quota plan is scheduled.
+        # The time when the currPlan was scheduled.
         self.curr_time = curr_time
-        # The next quota plan that will take effect based on the scheduling plan.
+        # The quota plan that is about to take effect based on the scheduling plan.
         self.next_plan = next_plan
-        # The time when the next quota plan is scheduled.
+        # The time when the next_plan is scheduled.
         self.next_time = next_time
-        # The quota plan that immediately takes effect. If the quota plan that immediately takes effect is different from the current quota plan, this parameter is not empty.
+        # The quota plan that takes effect immediately.
+        # This parameter is not empty if a user triggers a plan that is different from the curr_plan to take effect immediately.
         self.once_plan = once_plan
-        # The time when the quota plan immediately takes effect.
+        # The time when the immediate-effect plan was triggered.
         self.once_time = once_time
         # The name of the operator.
         self.operator_name = operator_name
-        # The time zone of the project.
+        # The time zone.
         self.timezone = timezone
 
     def validate(self):
@@ -1523,9 +1547,9 @@ class GetQuotaResponseBodyDataSaleTag(DaraModel):
         resource_ids: List[str] = None,
         resource_type: str = None,
     ):
-        # The identifier of an object in a MaxCompute quota. This identifier exists in the sales bill of Alibaba Cloud. You can use this identifier to associate the cost of a quota object with a tag.
+        # The identifier of the MaxCompute quota object. This identifier also exists in the billing subsystem of Alibaba Cloud. You can use this identifier to associate the costs of a quota object with a tag.
         self.resource_ids = resource_ids
-        # The type of the object. Valid values: quota and project.
+        # The type of the object. Currently, only quota and project are supported.
         self.resource_type = resource_type
 
     def validate(self):
@@ -1561,10 +1585,11 @@ class GetQuotaResponseBodyDataBillingPolicy(DaraModel):
         odps_spec_code: str = None,
         order_id: str = None,
     ):
-        # The billing method of the quota. Valid values:
+        # The billing method.
         # 
-        # *   subscription: a subscription quota.
-        # *   payasyougo: a pay-as-you-go quota.
+        # - subscription: indicates a subscription quota.
+        # 
+        # - payasyougo: indicates a pay-as-you-go quota.
         self.billing_method = billing_method
         # The specifications of the order.
         self.odps_spec_code = odps_spec_code
@@ -1610,10 +1635,11 @@ class GetQuotaResponseBodyBillingPolicy(DaraModel):
         odps_spec_code: str = None,
         order_id: str = None,
     ):
-        # The billing method of the quota. Valid values:
+        # The billing method.
         # 
-        # *   subscription: a subscription quota.
-        # *   payasyougo: a pay-as-you-go quota.
+        # - subscription: indicates a subscription quota.
+        # 
+        # - payasyougo: indicates a pay-as-you-go quota.
         self.billing_method = billing_method
         # The specifications of the order.
         self.odps_spec_code = odps_spec_code

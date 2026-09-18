@@ -10,7 +10,9 @@ class ListMmsTimerLogsRequest(DaraModel):
         page_num: int = None,
         page_size: int = None,
     ):
+        # The page number.
         self.page_num = page_num
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):

@@ -14,17 +14,16 @@ class ListComputeMetricsByInstanceResponseBody(DaraModel):
         http_code: int = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The response data.
         self.data = data
-        # The HTTP status code.
-        # 
-        # - 1xx: informational response. The request is received and is being processed.
-        # - 2xx: success. The request is successfully received, understood, and accepted by the server.
-        # - 3xx: redirection. The request is redirected, and further actions are required to complete the request.
-        # - 4xx: client error. The request contains invalid request parameters or syntaxes, or specific request conditions cannot be met.
-        # - 5xx: server error. The server cannot meet requirements due to other reasons.
+        # The HTTP status code. Valid values:
+        # - 1xx: Informational response. The request has been received and is being processed.
+        # - 2xx: Success. The request has been successfully received, understood, and accepted by the server.
+        # - 3xx: Redirection. The request is redirected, and further action is required to complete the request.
+        # - 4xx: Client error. The request contains invalid parameters, bad syntax, or specific request conditions cannot be fulfilled.
+        # - 5xx: Server error. The server cannot fulfill the request due to other reasons.
         self.http_code = http_code
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -69,13 +68,13 @@ class ListComputeMetricsByInstanceResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # List of pay-as-you-go job compute usage.
+        # The list of pay-as-you-go job compute usage.
         self.instance_compute_metrics = instance_compute_metrics
         # The current page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The total number of results returned.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -138,43 +137,43 @@ class ListComputeMetricsByInstanceResponseBodyDataInstanceComputeMetrics(DaraMod
         unit: str = None,
         usage: float = None,
     ):
-        # The end time of the job execution.
+        # The job end time. This value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # The job(instance) ID.
+        # The job ID.
         self.instance_id = instance_id
-        # The owner of the job.
+        # The job owner.
         self.job_owner = job_owner
-        # The name of the project.
+        # The project name.
         self.project_name = project_name
-        # The signature of the SQL job.
+        # The SQL job signature.
         self.signature = signature
-        # Specifications Type, specifies the resource package that you select when you purchase the MaxCompute service.
-        # - OdpsStandard: the pay-as-you-go resource package.
-        # 
-        # - OdpsSpot: the pay-as-you-go spot resource package.
+        # The specification type. Valid values:
+        # - OdpsStandard: the pay-as-you-go billing method Standard Edition.
+        # - OdpsSpot: the pay-as-you-go billing method Off-peak Edition.
         self.spec_code = spec_code
-        # The submission time of the job.
+        # The job submit time. This value is a UNIX timestamp in milliseconds.
         self.submit_time = submit_time
-        # Metering types.
-        # - ComputationSql: the metering data of SQL jobs that involve internal tables.
+        # The metering type. Valid values:
         # 
-        # - ComputationSqlOTS: the metering data of SQL jobs that involve Tablestore external tables.
+        # - ComputationSql: metering data of SQL jobs that operate on internal tables.
         # 
-        # - ComputationSqlOSS: the metering data of SQL jobs that involve OSS external tables.
+        # - ComputationSqlOTS: metering data of SQL jobs that operate on OTS external tables.
         # 
-        # - MapReduce: the metering data of MapReduce jobs.
+        # - ComputationSqlOSS: metering data of SQL jobs that operate on OSS external tables.
         # 
-        # - spark: the metering data of Spark jobs.
+        # - MapReduce: metering data of MapReduce jobs.
         # 
-        # - mars: the metering data of Mars jobs.
+        # - spark: metering data of Spark jobs.
+        # 
+        # - mars: metering data of Mars jobs.
         self.type = type
-        # The unit of computing resource usage
+        # The unit of compute usage.
         self.unit = unit
-        # The computing resource usage is calculated based on the following items:
+        # The compute usage.
         # 
-        # - Amount of scanned data in the unit of GB. For the jobs whose metering types are ComputationSql, ComputationSqlOTS, or ComputationSqlOSS, they are billed based on the amount of scanned data. The computing resource usage of such a job is calculated by using the following formula: Amount of scanned data × Complexity. The complexity is fixed at 1 for the jobs whose metering types are ComputationSqlOTS or ComputationSqlOSS.
+        # - For scan-based billing types, the unit is GB. This includes the ComputationSql, ComputationSqlOTS, and ComputationSqlOSS billing types, which are billed based on the amount of data scanned. The compute usage is calculated as the scan volume × complexity for each job. The complexity for ComputationSqlOTS and ComputationSqlOSS types is fixed at 1.
         # 
-        # - CU-hours. For the jobs whose metering types are MapReduce, spark, or mars, they are billed based on CU-hours.
+        # - For CU-hour-based billing types, the unit is CU-hours. This includes the MapReduce, spark, and mars billing types, which are billed based on CU-hours.
         self.usage = usage
 
     def validate(self):

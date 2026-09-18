@@ -32,10 +32,11 @@ class ListJobInfosRequest(DaraModel):
         region: str = None,
         tenant_id: str = None,
     ):
-        # Specifies whether to sort query results in ascending or descending order.
+        # Specifies whether to sort in ascending or descending order.
         self.asc_order = asc_order
-        # The ancestor node IDs.
+        # The upstream node IDs.
         self.ext_node_id_list = ext_node_id_list
+        # The upstream node names.
         self.ext_node_name_list = ext_node_name_list
         # The start timestamp.
         # 
@@ -51,16 +52,17 @@ class ListJobInfosRequest(DaraModel):
         self.project_list = project_list
         # The quota nickname.
         self.quota_nickname = quota_nickname
-        # The intelligent diagnostics tags.
+        # The intelligent diagnosis labels.
         self.scene_tag_list = scene_tag_list
         # The job signatures.
         self.signature_list = signature_list
-        # The sorting columns.
+        # The fields used for multi-column sorting.
         self.sort_by_list = sort_by_list
-        # The orders for the sorting columns.
+        # The sort orders for multi-column sorting.
         self.sort_order_list = sort_order_list
-        # The job states.
+        # The job statuses.
         self.status_list = status_list
+        # The job names.
         self.task_name_list = task_name_list
         # The end timestamp.
         # 
@@ -68,7 +70,7 @@ class ListJobInfosRequest(DaraModel):
         self.to = to
         # The job types.
         self.type_list = type_list
-        # The column based on which you want to sort query results.
+        # The column used for sorting.
         self.order_column = order_column
         # The page number.
         self.page_number = page_number

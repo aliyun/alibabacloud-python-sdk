@@ -10,7 +10,9 @@ class StopMmsJobResponseBody(DaraModel):
         data: int = None,
         request_id: str = None,
     ):
+        # The data migration ID.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

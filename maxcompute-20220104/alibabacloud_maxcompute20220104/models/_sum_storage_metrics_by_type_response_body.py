@@ -14,8 +14,21 @@ class SumStorageMetricsByTypeResponseBody(DaraModel):
         http_code: int = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The HTTP status code.
+        # 
+        # - `1xx`: Informational response - The request has been received and is being processed.
+        # 
+        # - `2xx`: Success - The request was successfully received, understood, and accepted.
+        # 
+        # - `3xx`: Redirection - Further action is needed to complete the request.
+        # 
+        # - `4xx`: Client error - The request contains invalid syntax or cannot be fulfilled.
+        # 
+        # - `5xx`: Server error - The server failed to fulfill a valid request.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -66,9 +79,25 @@ class SumStorageMetricsByTypeResponseBodyData(DaraModel):
         unit: str = None,
         usage: float = None,
     ):
+        # A list of daily storage usage metrics.
         self.daily_storage_metrics = daily_storage_metrics
+        # The storage type. Valid values:
+        # 
+        # - `Storage`: standard storage.
+        # 
+        # - `LowFreqStorage`: infrequent access storage.
+        # 
+        # - `ColdStorage`: archive storage.
+        # 
+        # - `$sum`: total storage.
+        # 
+        # - `RecycleBinStorage`: recycle bin storage.
+        # 
+        # - `DRStorage`: multi-AZ storage.
         self.storage_type = storage_type
+        # The unit of the storage metric.
         self.unit = unit
+        # The total storage usage.
         self.usage = usage
 
     def validate(self):
@@ -126,10 +155,27 @@ class SumStorageMetricsByTypeResponseBodyDataDailyStorageMetrics(DaraModel):
         unit: str = None,
         usage: float = None,
     ):
+        # The date of the metric, in `yyyyMMdd` format.
         self.date_time = date_time
+        # The percentage of total daily storage that this storage type accounts for.
         self.percentage = percentage
+        # The storage type. Valid values:
+        # 
+        # - `Storage`: standard storage.
+        # 
+        # - `LowFreqStorage`: infrequent access storage.
+        # 
+        # - `ColdStorage`: archive storage.
+        # 
+        # - `$sum`: total storage.
+        # 
+        # - `RecycleBinStorage`: recycle bin storage.
+        # 
+        # - `DRStorage`: multi-AZ storage.
         self.storage_type = storage_type
+        # The unit of the storage metric.
         self.unit = unit
+        # The storage usage for this day.
         self.usage = usage
 
     def validate(self):

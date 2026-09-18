@@ -11,8 +11,11 @@ class UpdateMmsDbRequest(DaraModel):
         dst_project_name: str = None,
         status: str = None,
     ):
+        # The name of the destination schema in MaxCompute.
         self.dst_name = dst_name
+        # The name of the destination MaxCompute project.
         self.dst_project_name = dst_project_name
+        # The migration status.
         self.status = status
 
     def validate(self):

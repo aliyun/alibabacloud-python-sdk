@@ -21,15 +21,25 @@ class ListMmsTasksRequest(DaraModel):
         status: str = None,
     ):
         self.sorter = sorter
+        # The destination MaxCompute project.
         self.dst_db_name = dst_db_name
+        # The destination MaxCompute table.
         self.dst_table_name = dst_table_name
+        # The migration job ID.
         self.job_id = job_id
+        # The job name.
         self.job_name = job_name
+        # The page number.
         self.page_num = page_num
+        # The page size.
         self.page_size = page_size
+        # The partition value. Use this parameter to filter migration tasks that migrated a specific partition value.
         self.partition = partition
+        # The source database name.
         self.src_db_name = src_db_name
+        # The source table name.
         self.src_table_name = src_table_name
+        # The migration task status.
         self.status = status
 
     def validate(self):
@@ -120,7 +130,9 @@ class ListMmsTasksRequestSorter(DaraModel):
         start_time: str = None,
         status: str = None,
     ):
+        # Sorts results by the start time.
         self.start_time = start_time
+        # Sorts results by status.
         self.status = status
 
     def validate(self):

@@ -607,8 +607,9 @@ class QueryQuotaResponseBodyDataSubQuotaInfoListBillingPolicy(DaraModel):
     ):
         # The billing method. Valid values:
         # 
-        # *   subscription: the subscription quota.
-        # *   payasyougo: the pay-as-you-go quota.
+        # - subscription: the subscription quota.
+        # 
+        # - payasyougo: the pay-as-you-go quota.
         self.billing_method = billing_method
         # In MaxCompute, instanceId and orderId are considered the same.
         self.instance_id = instance_id
@@ -793,8 +794,9 @@ class QueryQuotaResponseBodyDataBillingPolicy(DaraModel):
     ):
         # The billing method. Valid values:
         # 
-        # *   subscription: the subscription quota.
-        # *   payasyougo: the pay-as-you-go quota.
+        # - subscription: the subscription quota.
+        # 
+        # - payasyougo: the pay-as-you-go quota.
         self.billing_method = billing_method
         # In MaxCompute, instanceId and orderId are considered the same.
         self.instance_id = instance_id

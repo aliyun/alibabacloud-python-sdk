@@ -26,21 +26,37 @@ class CreateMmsTimerRequest(DaraModel):
         tables: List[str] = None,
         value: str = None,
     ):
+        # A map of source column names to target column names.
         self.column_mapping = column_mapping
+        # Specifies whether to migrate table data.
         self.enable_data_migration = enable_data_migration
+        # Specifies whether to migrate the table schema.
         self.enable_schema_migration = enable_schema_migration
+        # Specifies whether to enable data verification. If set to `true`, the system runs a `SELECT COUNT(*)` query on both the source and target tables and compares the row counts.
         self.enable_verification = enable_verification
+        # The name of the scheduled task.
         self.name = name
+        # Other configuration settings.
         self.others = others
+        # A map of table names to their corresponding partition filter expressions.
         self.partition_filters = partition_filters
+        # A list of IDs for the table partitions to migrate. This parameter takes effect only when the `type` parameter is set to `Partitions`.
         self.partitions = partitions
+        # The schedule type for the task.
         self.schedule_type = schedule_type
+        # The ID of the data source.
         self.source_id = source_id
+        # The name of the source database.
         self.src_db_name = src_db_name
+        # A blacklist of tables to exclude from the migration. This parameter takes effect only when the `type` parameter is set to `Database`.
         self.table_black_list = table_black_list
+        # A map of source table names to target table names.
         self.table_mapping = table_mapping
+        # A whitelist of tables to migrate. This parameter takes effect only when the `type` parameter is set to `Database`. If omitted, all tables in the source database are migrated.
         self.table_white_list = table_white_list
+        # A list of table names to migrate. This parameter takes effect only when the `type` parameter is set to `Tables`.
         self.tables = tables
+        # The time to run the scheduled task. If `scheduleType` is set to `Daily`, the value is the time in `HH:MM` format. If `scheduleType` is set to `Hourly`, the value is the minute of the hour (`MM`).
         self.value = value
 
     def validate(self):

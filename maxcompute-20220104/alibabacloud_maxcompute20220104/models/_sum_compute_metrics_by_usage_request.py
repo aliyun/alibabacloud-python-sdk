@@ -14,9 +14,13 @@ class SumComputeMetricsByUsageRequest(DaraModel):
         start_date: int = None,
         usage_type: str = None,
     ):
+        # The end timestamp for the query, in milliseconds.
         self.end_date = end_date
+        # The project names.
         self.project_names = project_names
+        # The start timestamp for the query, in milliseconds.
         self.start_date = start_date
+        # The usage type. Valid values: `CU` (CU usage) and `SCAN` (scanned data volume).
         self.usage_type = usage_type
 
     def validate(self):

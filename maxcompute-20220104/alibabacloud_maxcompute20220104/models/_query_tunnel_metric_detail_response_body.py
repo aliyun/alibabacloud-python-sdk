@@ -16,10 +16,15 @@ class QueryTunnelMetricDetailResponseBody(DaraModel):
         http_code: int = None,
         request_id: str = None,
     ):
+        # The response data.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_msg = error_msg
+        # The HTTP status code.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -74,7 +79,9 @@ class QueryTunnelMetricDetailResponseBodyData(DaraModel):
         metrics: List[main_models.QueryTunnelMetricDetailResponseBodyDataMetrics] = None,
         name: str = None,
     ):
+        # The metric values.
         self.metrics = metrics
+        # The metric name.
         self.name = name
 
     def validate(self):
@@ -117,7 +124,9 @@ class QueryTunnelMetricDetailResponseBodyDataMetrics(DaraModel):
         metric: Dict[str, str] = None,
         value: Dict[str, Any] = None,
     ):
+        # The metric metadata.
         self.metric = metric
+        # The metric\\"s numerical values.
         self.value = value
 
     def validate(self):

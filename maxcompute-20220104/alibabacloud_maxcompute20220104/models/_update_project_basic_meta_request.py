@@ -48,6 +48,7 @@ class UpdateProjectBasicMetaRequestProperties(DaraModel):
     def __init__(
         self,
         allow_full_scan: bool = None,
+        enable_data_masking: bool = None,
         enable_decimal_2: bool = None,
         enable_dr: bool = None,
         enable_tunnel_quota_route: bool = None,
@@ -59,39 +60,42 @@ class UpdateProjectBasicMetaRequestProperties(DaraModel):
         tunnel_quota: str = None,
         type_system: str = None,
     ):
-        # Indicates whether a full table scan is allowed in the project. A full table scan occupies a large number of resources, which reduces data processing efficiency. By default, the full table scan feature is disabled.
+        # Specifies whether to allow full table scans in the project. Full table scans consume a large amount of resources. To improve processing efficiency, this feature is disabled by default.
         self.allow_full_scan = allow_full_scan
-        # Indicates whether the DECIMAL type of the MaxCompute V2.0 data type edition is enabled.
+        self.enable_data_masking = enable_data_masking
+        # Specifies whether to enable the Decimal data type of MaxCompute 2.0 for the project.
         self.enable_decimal_2 = enable_decimal_2
         self.enable_dr = enable_dr
-        # Indicates whether the routing of the Tunnel resource group is enabled.
-        # 
-        # - true: The data transfer tasks that are submitted by the project by default use the Tunnel resource group that is bound to the project.
-        # - false: The data transfer tasks that are submitted by the project by default use the Tunnel shared resource group.
+        # Specifies whether to enable resource group routing for the data transfer service.
+        # - true: The data transfer tasks submitted by this project use the bound data transfer service resource group by default.
+        # - false: The data transfer tasks submitted by this project use the shared data transfer service resource group by default.
         self.enable_tunnel_quota_route = enable_tunnel_quota_route
         # The storage encryption properties.
         self.encryption = encryption
-        # The retention period for backup data. Unit: days. During the retention period, you can restore data of the version in use to the backup data of any version. Valid values: [0,30]. Default value: 1. The value 0 indicates that the backup feature is disabled.
+        # The number of days to retain backup data. During this period, you can restore the current version to any backed-up data version.
+        # Valid values: [0, 30]. Default value: 1. A value of 0 indicates that the backup feature is disabled.
         self.retention_days = retention_days
-        # The maximum consumption threshold of a single SQL statement. Formula: Amount of scanned data (GB) × Complexity.
+        # The maximum threshold for a single SQL statement consumption.
+        # Unit: scan volume (GB) × complexity.
         self.sql_metering_max = sql_metering_max
-        # The table lifecycle properties.
+        # The lifecycle properties of tables.
         self.table_lifecycle = table_lifecycle
-        # The time zone that is used by your project. The time zone is the same as the time zone specified by `odps.sql.timezone` .
+        # The time zone of the project, which is the `odps.sql.timezone` property.
         self.timezone = timezone
-        # The <props="china">[Data Transmission Service](https://help.aliyun.com/zh/maxcompute/user-guide/overview-of-dts)
-        # <props="intl">[Data Transmission Service](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/overview-of-dts) resource group that is bound to the project.
+        # The <props="china">[Data Transfer Service](https://help.aliyun.com/zh/maxcompute/user-guide/overview-of-dts)
+        # <props="intl">[Data Transfer Service](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/overview-of-dts) resource group bound to the project.
         # 
-        # - Default resource group: The Tunnel shared resource group is used. You cannot use the subscription-based Tunnel resource group for the project. The default resource group is automatically used by the Tunnel service of your project, regardless of the parameter setting.
-        # - Subscription-based Tunnel resource group: You can use the subscription-based Tunnel resource group for the project.
+        # - Default (shared data transfer service resource group): The project is not allowed to use subscription-based data transfer service resource groups. Regardless of the default data transfer service resource group setting, data transfer tasks submitted by this project automatically use the Default resource group.
+        # 
+        # - Subscription-based data transfer service resource group: The project is allowed to use subscription-based data transfer service resource groups.
         self.tunnel_quota = tunnel_quota
         # The data type edition. Valid values:
+        # - **1**: Edition 1.0
+        # - **2**: Edition 2.0
+        # - **hive**: Hive-compatible type
         # 
-        # - *1*: MaxCompute V1.0 data type edition
-        # - *2*: MaxCompute V2.0 data type edition
-        # - *hive*: Hive-compatible data type edition
-        # For more information about the differences among the three data type editions, see <props="china">[Data Type Versions](https://help.aliyun.com/zh/maxcompute/user-guide/data-type-editions)
-        # <props="intl">[Data Type Versions](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/data-type-editions).
+        # For more information about the differences among the three data type editions, see <props="china">[Data Type Editions](https://help.aliyun.com/zh/maxcompute/user-guide/data-type-editions)
+        # <props="intl">[Data Type Editions](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/data-type-editions).
         self.type_system = type_system
 
     def validate(self):
@@ -107,6 +111,9 @@ class UpdateProjectBasicMetaRequestProperties(DaraModel):
             result = _map
         if self.allow_full_scan is not None:
             result['allowFullScan'] = self.allow_full_scan
+
+        if self.enable_data_masking is not None:
+            result['enableDataMasking'] = self.enable_data_masking
 
         if self.enable_decimal_2 is not None:
             result['enableDecimal2'] = self.enable_decimal_2
@@ -144,6 +151,9 @@ class UpdateProjectBasicMetaRequestProperties(DaraModel):
         m = m or dict()
         if m.get('allowFullScan') is not None:
             self.allow_full_scan = m.get('allowFullScan')
+
+        if m.get('enableDataMasking') is not None:
+            self.enable_data_masking = m.get('enableDataMasking')
 
         if m.get('enableDecimal2') is not None:
             self.enable_decimal_2 = m.get('enableDecimal2')
@@ -186,11 +196,11 @@ class UpdateProjectBasicMetaRequestPropertiesTableLifecycle(DaraModel):
         value: str = None,
     ):
         # The lifecycle type. Valid values:
-        # - *mandatory*: The lifecycle clause is required in a table creation statement.
-        # - *optional*: The lifecycle clause is optional in a table creation statement. If you do not configure a lifecycle for a table, the table does not expire.
-        # - *inherit*: If you do not configure a lifecycle for a table when you create the table, the value of the odps.table.lifecycle.value parameter is used as the table lifecycle by default.
+        # - **mandatory**: The Lifecycle clause is required. You must configure the lifecycle of a table.
+        # - **optional**: The Lifecycle clause is optional when you create a table. If the lifecycle of a table is not configured, the table is permanently valid.
+        # - **inherit**: If the lifecycle of a table is not configured when you create a table, the lifecycle of the table is set to the value of odps.table.lifecycle.value.
         self.type = type
-        # The table lifecycle. Unit: days. Valid values: 1 to 37231. Default value: 37231.
+        # The lifecycle of a table. Unit: days. Valid values: 1 to 37231. Default value: 37231.
         self.value = value
 
     def validate(self):
@@ -226,13 +236,13 @@ class UpdateProjectBasicMetaRequestPropertiesEncryption(DaraModel):
         enable: bool = None,
         key: str = None,
     ):
-        # The data encryption algorithm that is supported by the key. Valid values: AES256, AESCTR, and RC4.
+        # The data encryption algorithm. The supported encryption algorithms include AES256, AESCTR, and RC4.
         self.algorithm = algorithm
-        # Indicates whether the data encryption feature needs to be enabled for the project. For more information about data encryption, see
+        # Specifies whether to enable data encryption for the project. For more information about data encryption, see
         # <props="china">[Storage Encryption](https://help.aliyun.com/zh/maxcompute/security-and-compliance/storage-encryption)
         # <props="intl">[Storage Encryption](https://www.alibabacloud.com/help/zh/maxcompute/security-and-compliance/storage-encryption).
         self.enable = enable
-        # The type of key that is used for data encryption. You can select MaxCompute Default Key or Bring Your Own Key (BYOK) as the key type. If you select MaxCompute Default Key, the default key that is created by MaxCompute is used.
+        # The type of key used for data encryption, including the default key (MaxCompute Default Key) and Bring Your Own Key (BYOK). The default key (MaxCompute Default Key) is a default key created internally by MaxCompute.
         self.key = key
 
     def validate(self):

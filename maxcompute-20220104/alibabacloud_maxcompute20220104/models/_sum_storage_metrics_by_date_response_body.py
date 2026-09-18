@@ -14,8 +14,21 @@ class SumStorageMetricsByDateResponseBody(DaraModel):
         http_code: int = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The HTTP status code.
+        # 
+        # - 1xx: Informational. The request is received and the process is continuing.
+        # 
+        # - 2xx: Success. The request is successfully received, understood, and accepted.
+        # 
+        # - 3xx: Redirection. Further action needs to be taken to complete the request.
+        # 
+        # - 4xx: Client Error. The request contains bad syntax or cannot be fulfilled.
+        # 
+        # - 5xx: Server Error. The server fails to fulfill an apparently valid request.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -67,10 +80,21 @@ class SumStorageMetricsByDateResponseBodyData(DaraModel):
         unit: str = None,
         usage: str = None,
     ):
+        # The date of the statistics. The format is yyyyMMdd.
         self.date_time = date_time
+        # The list of storage usage of a specified type.
         self.item_storage_metrics = item_storage_metrics
+        # The storage type. Valid values:
+        # 
+        # - Storage: Standard.
+        # 
+        # - LowFreqStorage: Infrequent Access (IA).
+        # 
+        # - ColdStorage: Archive.
         self.storage_type = storage_type
+        # The unit of the total storage.
         self.unit = unit
+        # The total storage.
         self.usage = usage
 
     def validate(self):
@@ -132,8 +156,11 @@ class SumStorageMetricsByDateResponseBodyDataItemStorageMetrics(DaraModel):
         percentage: float = None,
         usage: str = None,
     ):
+        # If the type is PROJECT, this parameter indicates the project name. If the type is STORAGE_TYPE, this parameter indicates the storage type.
         self.item_name = item_name
+        # The percentage of the storage usage.
         self.percentage = percentage
+        # The storage usage.
         self.usage = usage
 
     def validate(self):

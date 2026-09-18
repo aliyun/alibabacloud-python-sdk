@@ -14,8 +14,11 @@ class SumBillsByDateResponseBody(DaraModel):
         http_code: int = None,
         request_id: str = None,
     ):
+        # The list of results.
         self.data = data
+        # The HTTP status code.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -66,9 +69,13 @@ class SumBillsByDateResponseBodyData(DaraModel):
         date_time: str = None,
         item_bills: List[main_models.SumBillsByDateResponseBodyDataItemBills] = None,
     ):
+        # The total cost for the specified `dateTime`.
         self.cost = cost
+        # The currency. This is a fixed value.
         self.currency = currency
+        # The date of the statistics, in `yyyyMMdd` format.
         self.date_time = date_time
+        # A list of billable items.
         self.item_bills = item_bills
 
     def validate(self):
@@ -125,9 +132,13 @@ class SumBillsByDateResponseBodyDataItemBills(DaraModel):
         item_name: str = None,
         percentage: float = None,
     ):
+        # The cost.
         self.cost = cost
+        # The currency. This is a fixed value.
         self.currency = currency
+        # The name of the item. The value of this parameter depends on the `statsType` parameter in the request. If `statsType` is `PROJECT`, this parameter indicates the instance name. If `statsType` is `FEE_ITEM`, this parameter can be a value such as `DRStorage`, `ComputationSql`, or `Storage`.
         self.item_name = item_name
+        # The item\\"s cost as a percentage of the total daily cost. This value does not include a percent sign (%).
         self.percentage = percentage
 
     def validate(self):

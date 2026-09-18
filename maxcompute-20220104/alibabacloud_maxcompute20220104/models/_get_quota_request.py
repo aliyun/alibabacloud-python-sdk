@@ -12,13 +12,10 @@ class GetQuotaRequest(DaraModel):
         region: str = None,
         tenant_id: str = None,
     ):
-        # The trusted AccessKey pairs.
         self.ak_proven = ak_proven
-        # Specifies whether to include submodules. Valid values: -true: The request includes submodules. -false: The request does not include submodules. This is the default value.
+        # Specifies whether to include submodules. Valid values: -true: includes submodules. -false (default): does not include submodules.
         self.mock = mock
-        # The region ID.
         self.region = region
-        # The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):

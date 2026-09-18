@@ -14,9 +14,13 @@ class CreateMmsDataSourceRequest(DaraModel):
         networklink: str = None,
         type: str = None,
     ):
+        # The data source configurations. Call ListMmsDataSourceConfigItems first to retrieve the valid and required configuration items for the target data source type, and then construct this object accordingly.
         self.config = config
+        # The name of the data source.
         self.name = name
+        # The ID of the MaxCompute network connectivity.
         self.networklink = networklink
+        # The type of the data source.
         self.type = type
 
     def validate(self):

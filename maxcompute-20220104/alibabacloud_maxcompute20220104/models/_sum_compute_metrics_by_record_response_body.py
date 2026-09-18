@@ -14,8 +14,21 @@ class SumComputeMetricsByRecordResponseBody(DaraModel):
         http_code: int = None,
         request_id: str = None,
     ):
+        # The response data.
         self.data = data
+        # The HTTP status code.
+        # 
+        # - 1xx: Informational. The server has received the request and is processing it.
+        # 
+        # - 2xx: Success. The server successfully received, understood, and accepted the request.
+        # 
+        # - 3xx: Redirection. The client must take further action to complete the request.
+        # 
+        # - 4xx: Client-side error. The request contains invalid syntax or parameters and cannot be fulfilled.
+        # 
+        # - 5xx: Server-side error. The server failed to fulfill a valid request.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -64,7 +77,9 @@ class SumComputeMetricsByRecordResponseBodyData(DaraModel):
         daily_compute_records: List[main_models.SumComputeMetricsByRecordResponseBodyDataDailyComputeRecords] = None,
         type: str = None,
     ):
+        # A list of daily usage records.
         self.daily_compute_records = daily_compute_records
+        # The usage type. For example: ComputationSql
         self.type = type
 
     def validate(self):
@@ -108,8 +123,11 @@ class SumComputeMetricsByRecordResponseBodyDataDailyComputeRecords(DaraModel):
         percentage: float = None,
         record: str = None,
     ):
+        # The statistics date. The format is yyyyMMdd.
         self.date_time = date_time
+        # This day\\"s usage as a percentage of the total usage for the specified period. The value does not include a percent sign (%).
         self.percentage = percentage
+        # The record count.
         self.record = record
 
     def validate(self):

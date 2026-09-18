@@ -13,7 +13,9 @@ class GetMmsJobResponseBody(DaraModel):
         data: main_models.GetMmsJobResponseBodyData = None,
         request_id: str = None,
     ):
+        # The migration job object.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -65,22 +67,39 @@ class GetMmsJobResponseBodyData(DaraModel):
         task_num: int = None,
         type: str = None,
     ):
+        # The configuration of the migration job.
         self.config = config
+        # The creation time in the format of YYYY-MM-DD HH:mm:ss.
         self.create_time = create_time
+        # The source database ID.
         self.db_id = db_id
+        # The destination MaxCompute project.
         self.dst_db_name = dst_db_name
+        # The destination MaxCompute schema.
         self.dst_schema_name = dst_schema_name
+        # The expected migration completion time. A smaller eta value indicates a higher priority for the migration task.
         self.eta = eta
+        # The migration job ID.
         self.id = id
+        # The migration job name.
         self.name = name
+        # The data source ID.
         self.source_id = source_id
+        # The data source name.
         self.source_name = source_name
+        # The source database name.
         self.src_db_name = src_db_name
+        # The source schema name in a three-level namespace.
         self.src_schema_name = src_schema_name
+        # The migration task status.
         self.status = status
+        # Indicates whether the job is stopped.
         self.stopped = stopped
+        # The number of completed migration tasks.
         self.task_done = task_done
+        # The number of migration tasks included.
         self.task_num = task_num
+        # The migration scope. Valid values: Database, Tables, Partitions.
         self.type = type
 
     def validate(self):
@@ -218,18 +237,31 @@ class GetMmsJobResponseBodyDataConfig(DaraModel):
         task_type: str = None,
         tunnel_quota: str = None,
     ):
+        # The column name mapping in the format of {source column name: destination column name}.
         self.column_mapping = column_mapping
+        # Specifies whether to enable verification. The current verification method executes SELECT COUNT on both the source and destination to compare row counts.
         self.enable_verification = enable_verification
+        # Specifies whether to enable incremental migration. Only new partitions or modified partitions are migrated. Modified partitions are re-migrated.
         self.increment = increment
+        # The additional configuration information.
         self.others = others
+        # The partition filter expressions. Specifies the partition filter expression for a given table.
         self.partition_filters = partition_filters
+        # The list of partition IDs of the tables to migrate. This parameter takes effect when type is set to Partitions.
         self.partitions = partitions
+        # Depcreated
         self.schema_only = schema_only
+        # The list of tables to exclude from migration. This parameter takes effect when type is set to Database.
         self.table_black_list = table_black_list
+        # The mapping from source table names to destination table names.
         self.table_mapping = table_mapping
+        # The list of tables to migrate. This parameter takes effect when type is set to Database. If tableWhiteList is not specified, all tables in the corresponding database are migrated.
         self.table_white_list = table_white_list
+        # The list of table names to migrate. This parameter takes effect when type is set to Tables.
         self.tables = tables
+        # **[Deprecated]** Valid values: MOCK, HIVE (hive udtf task), HIVE_DATAX (hive datax task), COPY_TASK (ODPS Copy Task), ODPS_INSERT_OVERWRITE (ODPS simple insert overwrite task), MC2MC_VERIFY, OSS, HIVE_OSS, HIVE_SPARK, BIGQUERY.
         self.task_type = task_type
+        # Depcreated
         self.tunnel_quota = tunnel_quota
 
     def validate(self):

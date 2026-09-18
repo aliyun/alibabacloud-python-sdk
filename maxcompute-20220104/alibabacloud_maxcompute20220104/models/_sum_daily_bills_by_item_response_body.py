@@ -14,8 +14,11 @@ class SumDailyBillsByItemResponseBody(DaraModel):
         http_code: int = None,
         request_id: str = None,
     ):
+        # The response data.
         self.data = data
+        # The HTTP status code.
         self.http_code = http_code
+        # The unique identifier for the request.
         self.request_id = request_id
 
     def validate(self):
@@ -60,9 +63,13 @@ class SumDailyBillsByItemResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # An array of item-level cost summaries.
         self.item_summary_bills = item_summary_bills
+        # The current page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -121,11 +128,17 @@ class SumDailyBillsByItemResponseBodyDataItemSummaryBills(DaraModel):
         spec_code: str = None,
         total_cost: str = None,
     ):
+        # The currency of the cost.
         self.currency = currency
+        # An array of daily cost summaries for the item.
         self.daily_sum_bills = daily_sum_bills
+        # The name of the billable item.
         self.item_name = item_name
+        # The item\\"s percentage of the total cost.
         self.percentage = percentage
+        # The specification code of the item.
         self.spec_code = spec_code
+        # The total cost of the item.
         self.total_cost = total_cost
 
     def validate(self):
@@ -194,9 +207,13 @@ class SumDailyBillsByItemResponseBodyDataItemSummaryBillsDailySumBills(DaraModel
         date_time: str = None,
         item_bills: List[main_models.SumDailyBillsByItemResponseBodyDataItemSummaryBillsDailySumBillsItemBills] = None,
     ):
+        # The cost for the day.
         self.cost = cost
+        # The currency of the cost.
         self.currency = currency
+        # The date. Format: YYYYMMDD.
         self.date_time = date_time
+        # An array of detailed bills for the item on the specified day.
         self.item_bills = item_bills
 
     def validate(self):
@@ -253,9 +270,13 @@ class SumDailyBillsByItemResponseBodyDataItemSummaryBillsDailySumBillsItemBills(
         item_name: str = None,
         percentage: float = None,
     ):
+        # The cost of the item.
         self.cost = cost
+        # The currency of the cost.
         self.currency = currency
+        # The name of the billable item.
         self.item_name = item_name
+        # The item\\"s percentage of the daily total cost.
         self.percentage = percentage
 
     def validate(self):

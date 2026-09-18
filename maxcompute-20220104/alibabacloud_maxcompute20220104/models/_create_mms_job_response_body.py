@@ -11,7 +11,9 @@ class CreateMmsJobResponseBody(DaraModel):
         data: main_models.CreateMmsJobResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -47,6 +49,7 @@ class CreateMmsJobResponseBodyData(DaraModel):
         self,
         async_task_id: int = None,
     ):
+        # The ID of the asynchronous task that is created for the migration job.
         self.async_task_id = async_task_id
 
     def validate(self):

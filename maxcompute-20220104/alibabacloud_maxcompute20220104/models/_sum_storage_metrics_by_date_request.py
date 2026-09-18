@@ -14,9 +14,17 @@ class SumStorageMetricsByDateRequest(DaraModel):
         start_date: int = None,
         stats_type: str = None,
     ):
+        # The end of the time range to query. The value must be a timestamp in milliseconds. This parameter is required.
         self.end_date = end_date
+        # The project names. If this parameter is not specified, the data of all projects is returned.
         self.project_names = project_names
+        # The beginning of the time range to query. The value must be a timestamp in milliseconds. This parameter is required.
         self.start_date = start_date
+        # The dimension for aggregating storage metrics. This parameter is required. Valid values:
+        # 
+        # - `PROJECT`
+        # 
+        # - `STORAGE_TYPE`
         self.stats_type = stats_type
 
     def validate(self):

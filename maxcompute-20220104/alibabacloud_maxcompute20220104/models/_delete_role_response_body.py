@@ -10,7 +10,9 @@ class DeleteRoleResponseBody(DaraModel):
         data: str = None,
         request_id: str = None,
     ):
+        # The returned data. A value of `success` indicates that the operation succeeded.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

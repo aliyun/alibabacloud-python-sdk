@@ -6173,6 +6173,10 @@ class Client(OpenApiClient):
             query['region'] = request.region
         if not DaraCore.is_null(request.sale_tags):
             query['saleTags'] = request.sale_tags
+        if not DaraCore.is_null(request.sort_by):
+            query['sortBy'] = request.sort_by
+        if not DaraCore.is_null(request.sort_order):
+            query['sortOrder'] = request.sort_order
         if not DaraCore.is_null(request.tenant_id):
             query['tenantId'] = request.tenant_id
         if not DaraCore.is_null(request.type):
@@ -6221,6 +6225,10 @@ class Client(OpenApiClient):
             query['region'] = request.region
         if not DaraCore.is_null(request.sale_tags):
             query['saleTags'] = request.sale_tags
+        if not DaraCore.is_null(request.sort_by):
+            query['sortBy'] = request.sort_by
+        if not DaraCore.is_null(request.sort_order):
+            query['sortOrder'] = request.sort_order
         if not DaraCore.is_null(request.tenant_id):
             query['tenantId'] = request.tenant_id
         if not DaraCore.is_null(request.type):
@@ -9453,6 +9461,10 @@ class Client(OpenApiClient):
             body['scheduleType'] = request.schedule_type
         if not DaraCore.is_null(request.stopped):
             body['stopped'] = request.stopped
+        if not DaraCore.is_null(request.table_black_list):
+            body['tableBlackList'] = request.table_black_list
+        if not DaraCore.is_null(request.table_white_list):
+            body['tableWhiteList'] = request.table_white_list
         if not DaraCore.is_null(request.value):
             body['value'] = request.value
         req = open_api_util_models.OpenApiRequest(
@@ -9489,6 +9501,10 @@ class Client(OpenApiClient):
             body['scheduleType'] = request.schedule_type
         if not DaraCore.is_null(request.stopped):
             body['stopped'] = request.stopped
+        if not DaraCore.is_null(request.table_black_list):
+            body['tableBlackList'] = request.table_black_list
+        if not DaraCore.is_null(request.table_white_list):
+            body['tableWhiteList'] = request.table_white_list
         if not DaraCore.is_null(request.value):
             body['value'] = request.value
         req = open_api_util_models.OpenApiRequest(

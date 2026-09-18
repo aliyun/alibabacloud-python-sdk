@@ -58,7 +58,6 @@ class UpdateComputeSubQuotaRequestSubQuotaInfoList(DaraModel):
         self.parameter = parameter
         # The type of quota.
         # 
-        # > 
         # > - FUXI_OFFLINE(default) : Quotas of this type are used to run batch jobs.
         self.type = type
 
@@ -111,14 +110,16 @@ class UpdateComputeSubQuotaRequestSubQuotaInfoListParameter(DaraModel):
         # Specifies whether the quota is strongly exclusive.
         self.force_reserved_min = force_reserved_min
         # The value of minCU in Reserved CUs.
+        # 
         # > The value of maxCU must be less than or equal to the value of maxCU in the level-1 quota that you purchased.
         # 
         # This parameter is required.
         self.max_cu = max_cu
         # The value of maxCU in Reserved CUs.
-        # > 
-        # >- The total value of minCU in all the level-2 quotas is equal to the value of minCU in the level-1 quota.
-        # >- The value of minCU must be less than or equal to the value of maxCU in the level-2 quota and less than or equal to the value of minCU in the level-1 quota that you purchased.
+        # 
+        # > - The total value of minCU in all the level-2 quotas is equal to the value of minCU in the level-1 quota.
+        # >
+        # > - The value of minCU must be less than or equal to the value of maxCU in the level-2 quota and less than or equal to the value of minCU in the level-1 quota that you purchased.
         # 
         # This parameter is required.
         self.min_cu = min_cu

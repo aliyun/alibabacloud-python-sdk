@@ -15,36 +15,38 @@ class ListProjectsRequest(DaraModel):
         quota_nick_name: str = None,
         region: str = None,
         sale_tags: str = None,
+        sort_by: str = None,
+        sort_order: str = None,
         tenant_id: str = None,
         type: str = None,
     ):
-        # Specifies whether to list the built-in **SYSTEM_CATALOG** projects that are used to provide data such as project metadata and historical usage data. For more information, see [Tenant-level Information Schema](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/tenant-level-information-schema).
-        # 
-        # Valid values:
-        # 
-        # *   true: The built-in SYSTEM_CATALOG projects are listed.
-        # *   false: The built-in SYSTEM_CATALOG projects are not listed.
+        # Specifies whether to list the built-in **SYSTEM_CATALOG** project. This project provides information such as project metadata and usage history. For more information, see <props="intl">[Information Schema](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/tenant-level-information-schema).
         self.list_system_catalog = list_system_catalog
-        # The maximum number of entries to return on each page.
+        # The token that specifies the starting point of the query. The results are returned in alphabetical order, starting from the entry that immediately follows the marker.
         self.marker = marker
-        # The maximum number of entries per page. Default value: 10.
+        # The maximum number of entries to return on each page. Default value: 10.
         self.max_item = max_item
-        # Specifies the marker after which the returned list begins.
+        # The prefix of the resource names to query. For example, if you specify `a` for this parameter, only resources whose names start with "a" are returned.
         self.prefix = prefix
-        # The quota name that is automatically generated. You can log on to the [MaxCompute console](https://maxcompute.console.aliyun.com), choose **Workspace** > **Quotas** from the left-side navigation pane, and then view the quota name on the **Quotas** page.
+        # The quota name. The system automatically generates this name. To obtain the quota name, log in to the [MaxCompute console](https://maxcompute.console.aliyun.com) and select **Workspace** > **Quota** **Management** from the navigation pane on the left.
         self.quota_name = quota_name
-        # The quota nickname. You can log on to the [MaxCompute console](https://maxcompute.console.aliyun.com), choose **Workspace** > **Quotas** from the left-side navigation pane, and then view the quota nickname on the **Quotas** page.
+        # The quota nickname. To obtain the quota nickname, log in to the [MaxCompute console](https://maxcompute.console.aliyun.com) and select **Workspace** > **Quota** **Management** from the navigation pane on the left.
         self.quota_nick_name = quota_nick_name
         # The region ID.
         self.region = region
-        # The instance ID and billing method of the default computing quota.
+        # The instance ID and billing method of the default compute quota.
         self.sale_tags = sale_tags
-        # The tenant ID. You can log on to the [MaxCompute console](https://maxcompute.console.aliyun.com), and choose **Tenants** > **Tenant Property** from the left-side navigation pane to view the tenant ID.
+        # The sort field. The only supported value is `createdTime`.
+        self.sort_by = sort_by
+        # The sort order. This parameter takes effect only when `sortBy` is specified. Valid values are `ASC` and `DESC`. The values are case-insensitive.
+        self.sort_order = sort_order
+        # The tenant ID. To obtain the ID, log in to the [MaxCompute console](https://maxcompute.console.aliyun.com) and select **Tenant Management** > **Tenant Properties** from the navigation pane on the left.
         self.tenant_id = tenant_id
         # The project type. Valid values:
         # 
-        # *   **managed**: internal project
-        # *   **external**: external project
+        # - **managed**: a managed project.
+        # 
+        # - **external**: an external project.
         self.type = type
 
     def validate(self):
@@ -79,6 +81,12 @@ class ListProjectsRequest(DaraModel):
         if self.sale_tags is not None:
             result['saleTags'] = self.sale_tags
 
+        if self.sort_by is not None:
+            result['sortBy'] = self.sort_by
+
+        if self.sort_order is not None:
+            result['sortOrder'] = self.sort_order
+
         if self.tenant_id is not None:
             result['tenantId'] = self.tenant_id
 
@@ -112,6 +120,12 @@ class ListProjectsRequest(DaraModel):
 
         if m.get('saleTags') is not None:
             self.sale_tags = m.get('saleTags')
+
+        if m.get('sortBy') is not None:
+            self.sort_by = m.get('sortBy')
+
+        if m.get('sortOrder') is not None:
+            self.sort_order = m.get('sortOrder')
 
         if m.get('tenantId') is not None:
             self.tenant_id = m.get('tenantId')

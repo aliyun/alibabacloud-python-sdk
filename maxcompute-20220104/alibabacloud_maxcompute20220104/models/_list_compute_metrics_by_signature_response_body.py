@@ -14,8 +14,21 @@ class ListComputeMetricsBySignatureResponseBody(DaraModel):
         http_code: int = None,
         request_id: str = None,
     ):
+        # The data payload of the response.
         self.data = data
+        # The HTTP status code.
+        # 
+        # - `1xx`: Informational - The server has received the request and is processing it.
+        # 
+        # - `2xx`: Success - The server successfully received, understood, and accepted the request.
+        # 
+        # - `3xx`: Redirection - Further action is required to complete the request.
+        # 
+        # - `4xx`: Client Error - The request contains invalid syntax or cannot be fulfilled.
+        # 
+        # - `5xx`: Server Error - The server failed to fulfill a valid request.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -60,9 +73,13 @@ class ListComputeMetricsBySignatureResponseBodyData(DaraModel):
         signature_compute_metrics: List[main_models.ListComputeMetricsBySignatureResponseBodyDataSignatureComputeMetrics] = None,
         total_count: int = None,
     ):
+        # The current page number.
         self.page_number = page_number
+        # The number of entries on the current page.
         self.page_size = page_size
+        # An array containing the compute metrics for each signature.
         self.signature_compute_metrics = signature_compute_metrics
+        # The total number of entries that match the query.
         self.total_count = total_count
 
     def validate(self):
@@ -120,10 +137,15 @@ class ListComputeMetricsBySignatureResponseBodyDataSignatureComputeMetrics(DaraM
         unit: str = None,
         usage: float = None,
     ):
+        # A list of instances.
         self.instances = instances
+        # A list of project names.
         self.project_names = project_names
+        # The signature of the SQL job.
         self.signature = signature
+        # The unit of compute usage.
         self.unit = unit
+        # The compute usage.
         self.usage = usage
 
     def validate(self):
@@ -185,8 +207,11 @@ class ListComputeMetricsBySignatureResponseBodyDataSignatureComputeMetricsInstan
         instance_id: str = None,
         start_time: int = None,
     ):
+        # The end time of the instance.
         self.end_time = end_time
+        # The instance ID.
         self.instance_id = instance_id
+        # The start time of the instance.
         self.start_time = start_time
 
     def validate(self):

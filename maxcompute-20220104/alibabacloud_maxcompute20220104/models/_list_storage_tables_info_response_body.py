@@ -24,11 +24,15 @@ class ListStorageTablesInfoResponseBody(DaraModel):
         self.error_msg = error_msg
         # The HTTP status code.
         # 
-        # *   1xx: informational response. The request is received and is being processed.
-        # *   2xx: success. The request is successfully received, understood, and accepted by the server.
-        # *   3xx: redirection. The request is redirected, and further actions are required to complete the request.
-        # *   4xx: client error. The request contains invalid request parameters and syntaxes, or specific request conditions cannot be met.
-        # *   5xx: server error. The server cannot meet requirements due to other reasons.
+        # - 1xx: informational response. The request is received and is being processed.
+        # 
+        # - 2xx: success. The request is successfully received, understood, and accepted by the server.
+        # 
+        # - 3xx: redirection. The request is redirected, and further actions are required to complete the request.
+        # 
+        # - 4xx: client error. The request contains invalid request parameters and syntaxes, or specific request conditions cannot be met.
+        # 
+        # - 5xx: server error. The server cannot meet requirements due to other reasons.
         self.http_code = http_code
         # The request ID.
         self.request_id = request_id
@@ -184,7 +188,7 @@ class ListStorageTablesInfoResponseBodyDataStorageTableInfoList(DaraModel):
         self.is_partitioned = is_partitioned
         # The time when the table was last accessed. This value is returned when the table is a non-partitioned table.
         # 
-        # >  The data collection method is upgraded from July 2023. If the data is not accessed after the upgrade or is accessed by using ALGO jobs or the direct read method of Hologres, the last access time cannot be collected.
+        # > The data collection method is upgraded from July 2023. If the data is not accessed after the upgrade or is accessed by using ALGO jobs or the direct read method of Hologres, the last access time cannot be collected.
         self.last_access_time = last_access_time
         # The storage usage at the long-term storage tier.
         self.long_term_storage = long_term_storage
@@ -212,28 +216,33 @@ class ListStorageTablesInfoResponseBodyDataStorageTableInfoList(DaraModel):
         self.standard_storage_unit = standard_storage_unit
         # The table storage type.
         # 
-        # *   standard
-        # *   lowfrequency
-        # *   longterm
-        # *   unknown: This value is returned when the table is a partitioned table. You can call the ListStoragePartitionsInfo operation to query the storage type of each partition.
+        # - standard
+        # 
+        # - lowfrequency
+        # 
+        # - longterm
+        # 
+        # - unknown: This value is returned when the table is a partitioned table. You can call the ListStoragePartitionsInfo operation to query the storage type of each partition.
         self.storage_type = storage_type
         # The table name.
         self.table_name = table_name
         # The access frequency.
         # 
-        # > 
+        # >
         # 
-        # *   Access behaviors include:
+        # - Access behaviors include:
         # 
-        # *   The table is used as the input table of an SQL task.
-        # *   The table is downloaded by Tunnel.
-        # *   The table is read by calling the Storage API. The partition granularity of the partitioned table is not available. Each time an access operation is performed, the access frequency is incremented by 1.
+        # - The table is used as the input table of an SQL task.
         # 
-        # *   The data collection method is upgraded from July 2023. If the data is not accessed after the upgrade or is accessed by using ALGO jobs or the direct read method of Hologres, the access frequency cannot be collected.
+        # - The table is downloaded by Tunnel.
+        # 
+        # - The table is read by calling the Storage API. The partition granularity of the partitioned table is not available. Each time an access operation is performed, the access frequency is incremented by 1.
+        # 
+        # - The data collection method is upgraded from July 2023. If the data is not accessed after the upgrade or is accessed by using ALGO jobs or the direct read method of Hologres, the access frequency cannot be collected.
         self.total_frequency = total_frequency
         # The total amount of accessed data.
         # 
-        # >  The amount of data that is read by all access behaviors.
+        # > The amount of data that is read by all access behaviors.
         self.total_input_amount = total_input_amount
         # The unit of the total amount of accessed data.
         self.total_input_amount_unit = total_input_amount_unit

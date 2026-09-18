@@ -21,10 +21,14 @@ class ListJobMetricRequest(DaraModel):
         # Grouping basis.
         # 
         # > Available values: project, quota, type, status. Meanings:
-        # >- project: Group and aggregate by project;
-        # >- quota: Group and aggregate by quota;
-        # >- type: Group and aggregate by job type;
-        # >- status: Group and aggregate by job status.
+        # >
+        # > - project: Group and aggregate by project;
+        # >
+        # > - quota: Group and aggregate by quota;
+        # >
+        # > - type: Group and aggregate by job type;
+        # >
+        # > - status: Group and aggregate by job status.
         self.group = group
         # The name of observation metric.
         self.metric = metric

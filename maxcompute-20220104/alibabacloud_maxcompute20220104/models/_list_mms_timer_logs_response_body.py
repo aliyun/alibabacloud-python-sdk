@@ -13,7 +13,9 @@ class ListMmsTimerLogsResponseBody(DaraModel):
         data: main_models.ListMmsTimerLogsResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -52,9 +54,13 @@ class ListMmsTimerLogsResponseBodyData(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
+        # The list of logs.
         self.object_list = object_list
+        # The page number.
         self.page_num = page_num
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -113,11 +119,17 @@ class ListMmsTimerLogsResponseBodyDataObjectList(DaraModel):
         source_id: int = None,
         status: str = None,
     ):
+        # The logged action for the migration job created by the scheduled task.
         self.action = action
+        # The creation time of the log entry.
         self.create_time = create_time
+        # The ID of the asynchronous task for the migration job created by the scheduled task.
         self.id = id
+        # A detailed message about the action.
         self.msg = msg
+        # The ID of the data source.
         self.source_id = source_id
+        # The status of the migration job created by the scheduled task.
         self.status = status
 
     def validate(self):

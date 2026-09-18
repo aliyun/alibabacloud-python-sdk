@@ -11,9 +11,11 @@ class GetProjectRequest(DaraModel):
         with_quota_product_type: bool = None,
         with_storage_tier_info: bool = None,
     ):
-        # Specifies whether to use additional information.
+        # Whether to include additional information (securityProperties, superAdmins).
         self.verbose = verbose
+        # Whether to include additional information (productType).
         self.with_quota_product_type = with_quota_product_type
+        # Whether to include additional information (properties.storageTierInfo).
         self.with_storage_tier_info = with_storage_tier_info
 
     def validate(self):

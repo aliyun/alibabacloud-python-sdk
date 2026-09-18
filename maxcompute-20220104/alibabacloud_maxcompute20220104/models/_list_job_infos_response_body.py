@@ -14,9 +14,9 @@ class ListJobInfosResponseBody(DaraModel):
         http_code: int = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The response data.
         self.data = data
-        # Indicates whether the request was successful. If this parameter was not empty and the value of this parameter was not 200, the request failed.
+        # The HTTP status code. If the value is not empty and is not 200, the request failed.
         self.http_code = http_code
         # The request ID.
         self.request_id = request_id
@@ -63,9 +63,9 @@ class ListJobInfosResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The information about the jobs.
+        # The list of job information.
         self.job_info_list = job_info_list
-        # The page number.
+        # The current page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
@@ -141,6 +141,7 @@ class ListJobInfosResponseBodyDataJobInfoList(DaraModel):
         quota_nickname: str = None,
         quota_type: str = None,
         region: str = None,
+        role_session_name: str = None,
         running_at_time: int = None,
         running_time: int = None,
         scene_results: List[main_models.ListJobInfosResponseBodyDataJobInfoListSceneResults] = None,
@@ -156,64 +157,69 @@ class ListJobInfosResponseBodyDataJobInfoList(DaraModel):
     ):
         # The cluster ID.
         self.cluster = cluster
-        # The CU snapshot proportion of the job.
+        # The CU snapshot ratio of the job.
         self.cu_snapshot = cu_snapshot
-        # The amount of resources consumed by the job. This parameter is returned only for jobs that are complete.Unit: 100\\*Core\\*s.
+        # The total CU usage.
         self.cu_usage = cu_usage
-        # The time when the job stops running.
+        # The time when the job finished running.
         self.end_at_time = end_at_time
-        # The node ID of DataWorks.
+        # The DataWorks node ID.
         self.ext_node_id = ext_node_id
+        # The name of the external scheduling platform that submitted the job.
         self.ext_node_name = ext_node_name
-        # The account of the node owner.
+        # The person responsible for the execution.
         self.ext_node_on_duty = ext_node_on_duty
         # The upstream platform.
         self.ext_plant_from = ext_plant_from
+        # The identifier of the external scheduling platform that submitted the job.
         self.ext_platform_id = ext_platform_id
-        # The amount of scanned data for the job. Unit: byte.
+        # The amount of data scanned by the job. Unit: bytes.
         self.input_bytes = input_bytes
         # The instance ID.
         self.instance_id = instance_id
-        # The account that commits the job.
+        # The account that submitted the job.
         self.job_owner = job_owner
-        # The type of the job.
+        # The job types.
         self.job_type = job_type
-        # The memory snapshot proportion of the job.
+        # The memory snapshot ratio of the job.
         self.memory_snapshot = memory_snapshot
-        # The number of memory consumed by the job. This parameter is returned only for jobs that are complete.Unit: MB\\*s.
+        # The total memory usage.
         self.memory_usage = memory_usage
-        # The priority of the job.
+        # The priority.
         self.priority = priority
-        # The name of the MaxCompute project.
+        # The MaxCompute project name.
         self.project = project
-        # The nickname of the quota that is used by the job.
+        # The nickname of the quota used by the job.
         self.quota_nickname = quota_nickname
-        # The type of the quota.
+        # The quota type.
         self.quota_type = quota_type
         # The region ID.
         self.region = region
-        # The time when the job starts to run.
+        # The role session name of the entity that submitted the job through role assumption.
+        self.role_session_name = role_session_name
+        # The time when the job started running.
         self.running_at_time = running_at_time
-        # The period for which the job runs.
+        # The running time.
         self.running_time = running_time
         # The intelligent diagnostics results.
         self.scene_results = scene_results
-        # The signature of the SQL job.
+        # The SQL signature.
         self.signature = signature
-        # The status of the job.
+        # The status.
         self.status = status
-        # The status of the snapshot.
+        # The snapshot status of the job.
         self.status_snapshot = status_snapshot
-        # The time when the job was committed.
+        # The time when the job was submitted.
         self.submitted_at_time = submitted_at_time
         # The tags.
         self.tags = tags
+        # The task name.
         self.task_name = task_name
         # The tenant ID.
         self.tenant_id = tenant_id
-        # The total period for which the job runs.
+        # The total running duration.
         self.total_time = total_time
-        # The duration for which the job waits to start.
+        # The waiting time.
         self.waiting_time = waiting_time
 
     def validate(self):
@@ -286,6 +292,9 @@ class ListJobInfosResponseBodyDataJobInfoList(DaraModel):
 
         if self.region is not None:
             result['region'] = self.region
+
+        if self.role_session_name is not None:
+            result['roleSessionName'] = self.role_session_name
 
         if self.running_at_time is not None:
             result['runningAtTime'] = self.running_at_time
@@ -389,6 +398,9 @@ class ListJobInfosResponseBodyDataJobInfoList(DaraModel):
         if m.get('region') is not None:
             self.region = m.get('region')
 
+        if m.get('roleSessionName') is not None:
+            self.role_session_name = m.get('roleSessionName')
+
         if m.get('runningAtTime') is not None:
             self.running_at_time = m.get('runningAtTime')
 
@@ -440,17 +452,17 @@ class ListJobInfosResponseBodyDataJobInfoListSceneResults(DaraModel):
         summary: str = None,
         type: str = None,
     ):
-        # The intelligent diagnostics result description.
+        # The details of the intelligent diagnostics result.
         self.description = description
-        # Information about the nodes where data skew or data expansion is detected. This parameter is returned only when the diagnostics scenario is data skew or data expansion.
+        # The node information about data skew or data bloat. This parameter is returned only when the diagnostics scenario is data skew or data bloat.
         self.params = params
-        # The intelligent diagnostics result scenario.
+        # The scenario of the intelligent diagnostics result.
         self.scene = scene
-        # The intelligent diagnostics result tag.
+        # The tag of the intelligent diagnostics result.
         self.scene_tag = scene_tag
-        # The intelligent diagnostics result summary.
+        # The summary of the intelligent diagnostics result.
         self.summary = summary
-        # The intelligent diagnostics result type.
+        # The type of the intelligent diagnostics result.
         self.type = type
 
     def validate(self):

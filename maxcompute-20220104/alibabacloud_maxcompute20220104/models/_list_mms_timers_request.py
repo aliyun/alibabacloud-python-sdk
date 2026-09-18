@@ -14,11 +14,17 @@ class ListMmsTimersRequest(DaraModel):
         src_table_name: str = None,
         stopped: bool = None,
     ):
+        # The timer name.
         self.name = name
+        # The page number.
         self.page_num = page_num
+        # The number of entries per page.
         self.page_size = page_size
+        # The source database name.
         self.src_db_name = src_db_name
+        # The source table name.
         self.src_table_name = src_table_name
+        # Filters timers by their stopped state.
         self.stopped = stopped
 
     def validate(self):

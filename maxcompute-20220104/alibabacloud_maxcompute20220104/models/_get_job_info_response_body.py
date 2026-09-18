@@ -16,7 +16,7 @@ class GetJobInfoResponseBody(DaraModel):
         http_code: int = None,
         request_id: str = None,
     ):
-        # The returned result.
+        # The returned data.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -24,11 +24,15 @@ class GetJobInfoResponseBody(DaraModel):
         self.error_msg = error_msg
         # The HTTP status code.
         # 
-        # *   1xx: informational response. The request is received and is being processed.
-        # *   2xx: success. The request is successfully received, understood, and accepted by the server.
-        # *   3xx: redirection. The request is redirected, and further actions are required to complete the request.
-        # *   4xx: client error. The request contains invalid request parameters and syntaxes, or specific request conditions cannot be met.
-        # *   5xx: server error. The server cannot meet requirements due to other reasons.
+        # - 1xx: informational. The request is received and being processed.
+        # 
+        # - 2xx: success. The request was received, understood, and accepted.
+        # 
+        # - 3xx: redirection. Further action is required to complete the request.
+        # 
+        # - 4xx: client error. The request contains invalid parameters or syntax, or a precondition cannot be met.
+        # 
+        # - 5xx: server error. The server failed to fulfill the request.
         self.http_code = http_code
         # The request ID.
         self.request_id = request_id
@@ -108,7 +112,7 @@ class GetJobInfoResponseBodyData(DaraModel):
         total_time: int = None,
         waiting_time: int = None,
     ):
-        # The amount of resources consumed by the job. This parameter is returned only for jobs that are complete.Unit: 100\\*Core\\*s.
+        # The resources consumed by the job. Returned only for completed jobs. Unit: 100\\*Core\\*s.
         self.cu_usage = cu_usage
         # The end time of the job.
         self.end_at_time = end_at_time
@@ -122,31 +126,31 @@ class GetJobInfoResponseBodyData(DaraModel):
         self.input_bytes = input_bytes
         # The job ID.
         self.instance_id = instance_id
-        # The owner of the job.
+        # The job owner.
         self.job_owner = job_owner
-        # The substatuses of the job lifecycle.
+        # The job lifecycle substatuses.
         self.job_sub_status_list = job_sub_status_list
-        # The type of the job.
+        # The job type.
         self.job_type = job_type
-        # The number of memory consumed by the job. This parameter is returned only for jobs that are complete.Unit: MB\\*s.
+        # The memory consumed by the job. Returned only for completed jobs. Unit: MB\\*s.
         self.memory_usage = memory_usage
-        # The priority of the job.
+        # The job priority.
         self.priority = priority
         # The project name.
         self.project = project
-        # The nickname of the computing quota that is used by the job.
+        # The nickname of the computing quota used by the job.
         self.quota_nickname = quota_nickname
         # The quota type.
         self.quota_type = quota_type
         # The region ID.
         self.region = region
-        # The start time, which is the time when the job received the first batch of computing resources. For jobs that run for a short period of time or do not consume computing resources, such as the jobs that involve DDL statements, the job submission time is used instead.
+        # The time when the job received its first computing resources. For short-lived or resource-free jobs (such as DDL jobs), the submission time is used instead.
         self.running_at_time = running_at_time
-        # The execution duration, which is the duration from the start time to the end time of the job.
+        # The duration from job start to job end.
         self.running_time = running_time
-        # The intelligent diagnostics result.
+        # The intelligent diagnostics results.
         self.scene_results = scene_results
-        # The signature of the SQL job. You can use the signature to find the instances on which each time an SQL statement is executed.
+        # The SQL job signature. Use this value to locate all instances where an SQL statement was executed.
         self.signature = signature
         # The job status.
         self.status = status
@@ -154,9 +158,9 @@ class GetJobInfoResponseBodyData(DaraModel):
         self.submitted_at_time = submitted_at_time
         # The tenant ID.
         self.tenant_id = tenant_id
-        # The total duration from the time a job is submitted to the time the job is terminated.
+        # The total duration from job submission to termination.
         self.total_time = total_time
-        # The wait time, which is the duration from the time the job is submitted to the time the job starts to run.
+        # The duration from job submission to execution start.
         self.waiting_time = waiting_time
 
     def validate(self):
@@ -352,9 +356,9 @@ class GetJobInfoResponseBodyDataSceneResults(DaraModel):
     ):
         # The intelligent diagnostics result description.
         self.description = description
-        # Information about the nodes where data skew or data expansion is detected. This parameter is returned only when the diagnostics scenario is data skew or data expansion.
+        # Node information for data skew or data expansion diagnostics. Returned only when the scenario is data skew or data expansion.
         self.params = params
-        # The intelligent diagnostics result scenario.
+        # The intelligent diagnostics scenario.
         self.scene = scene
         # The intelligent diagnostics result tag.
         self.scene_tag = scene_tag
@@ -420,7 +424,7 @@ class GetJobInfoResponseBodyDataJobSubStatusList(DaraModel):
         description: str = None,
         start_time: str = None,
     ):
-        # The encoding of the substatus.
+        # The substatus code.
         self.code = code
         # The description of the substatus.
         self.description = description

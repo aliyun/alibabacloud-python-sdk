@@ -18,8 +18,9 @@ class GetQuotaScheduleResponseBody(DaraModel):
     ):
         # The returned data.
         self.data = data
-        # *   If the value of success was false, an error code was returned.
-        # *   If the value of success was true, a null value was returned.
+        # - If the value of success was false, an error code was returned.
+        # 
+        # - If the value of success was true, a null value was returned.
         self.error_code = error_code
         # The error message.
         self.error_msg = error_msg

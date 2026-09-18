@@ -11,8 +11,11 @@ class GetStorageAmountSummaryRequest(DaraModel):
         region: str = None,
         tenant_id: str = None,
     ):
+        # The date for statistics collection. The value is at the day level and must be in the YYYYMMdd format.
         self.date = date
+        # The region ID.
         self.region = region
+        # The tenant ID. You can view the tenant ID by logging on to the MaxCompute console and choosing **Tenant Management** > **Tenant Properties** in the left-side navigation pane.
         self.tenant_id = tenant_id
 
     def validate(self):

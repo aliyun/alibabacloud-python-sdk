@@ -13,7 +13,9 @@ class GetMmsTimerResponseBody(DaraModel):
         data: main_models.GetMmsTimerResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -60,17 +62,29 @@ class GetMmsTimerResponseBodyData(DaraModel):
         update_time: str = None,
         value: str = None,
     ):
+        # The configuration of the migration job.
         self.config = config
+        # The creation time of the scheduled task. This is a Unix timestamp in milliseconds.
         self.create_time = create_time
+        # The ID of the source database.
         self.db_id = db_id
+        # The ID of the scheduled task.
         self.id = id
+        # The name of the scheduled task.
         self.name = name
+        # The scheduling type of the scheduled task. Valid values: `Daily` and `Hourly`.
         self.schedule_type = schedule_type
+        # The ID of the data source.
         self.source_id = source_id
+        # The name of the source database.
         self.src_db_name = src_db_name
+        # Indicates whether the scheduled task is stopped.
         self.stopped = stopped
+        # The type of the scheduled task.
         self.type = type
+        # The last update time of the scheduled task, in ISO 8601 format.
         self.update_time = update_time
+        # The scheduling time. If `scheduleType` is `Daily`, the value is in the `HH:MM` format. If `scheduleType` is `Hourly`, the value is in the `MM` format.
         self.value = value
 
     def validate(self):
@@ -176,16 +190,27 @@ class GetMmsTimerResponseBodyDataConfig(DaraModel):
         table_white_list: List[str] = None,
         tables: List[str] = None,
     ):
+        # A map of source column names to destination column names.
         self.column_mapping = column_mapping
+        # Whether to migrate table data.
         self.enable_data_migration = enable_data_migration
+        # Whether to migrate the table schema.
         self.enable_schema_migration = enable_schema_migration
+        # Whether to enable verification. The system performs verification by running a `SELECT COUNT(*)` query on both the source and destination to compare the row count.
         self.enable_verification = enable_verification
+        # Other configurations.
         self.others = others
+        # A map of table names to their corresponding partition filter expressions.
         self.partition_filters = partition_filters
+        # If `type` is set to `Partitions`, this parameter specifies a list of partition IDs to migrate.
         self.partitions = partitions
+        # If `type` is set to `Database`, this parameter specifies a table deny list. Tables on this list are excluded from the migration.
         self.table_black_list = table_black_list
+        # A map of source table names to destination table names.
         self.table_mapping = table_mapping
+        # If `type` is set to `Database`, this parameter specifies a table allowlist. If this parameter is not specified, all tables in the database are migrated.
         self.table_white_list = table_white_list
+        # If `type` is set to `Tables`, this parameter specifies a list of table names to migrate.
         self.tables = tables
 
     def validate(self):

@@ -539,8 +539,9 @@ class GetQuotaPlanResponseBodyDataQuotaSubQuotaInfoListBillingPolicy(DaraModel):
     ):
         # The billing method of the quota. Valid values:
         # 
-        # *   subscription: a subscription quota.
-        # *   payasyougo: a pay-as-you-go quota.
+        # - subscription: a subscription quota.
+        # 
+        # - payasyougo: a pay-as-you-go quota.
         self.billing_method = billing_method
         # The specifications of the order.
         self.odps_spec_code = odps_spec_code
@@ -670,8 +671,9 @@ class GetQuotaPlanResponseBodyDataQuotaBillingPolicy(DaraModel):
     ):
         # The billing method of the quota. Valid values:
         # 
-        # *   subscription: a subscription quota.
-        # *   payasyougo: a pay-as-you-go quota.
+        # - subscription: a subscription quota.
+        # 
+        # - payasyougo: a pay-as-you-go quota.
         self.billing_method = billing_method
         # The specifications of the order.
         self.odps_spec_code = odps_spec_code

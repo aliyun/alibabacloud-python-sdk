@@ -14,8 +14,21 @@ class SumComputeMetricsByUsageResponseBody(DaraModel):
         http_code: int = None,
         request_id: str = None,
     ):
+        # The usage data for each metering type.
         self.data = data
+        # The HTTP status code.
+        # 
+        # - `1xx`: Informational response. The request is received and is being processed.
+        # 
+        # - `2xx`: Success. The request was successfully received, understood, and accepted.
+        # 
+        # - `3xx`: Redirection. Further action is required to complete the request.
+        # 
+        # - `4xx`: Client error. The request has invalid syntax or cannot be fulfilled.
+        # 
+        # - `5xx`: Server error. The server failed to fulfill an otherwise valid request.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -64,7 +77,21 @@ class SumComputeMetricsByUsageResponseBodyData(DaraModel):
         daily_compute_metrics: List[main_models.SumComputeMetricsByUsageResponseBodyDataDailyComputeMetrics] = None,
         type: str = None,
     ):
+        # The daily usage statistics.
         self.daily_compute_metrics = daily_compute_metrics
+        # The metering type.
+        # 
+        # `ComputationSql`: Metering data for SQL jobs on internal tables.
+        # 
+        # `ComputationSqlOTS`: Metering data for SQL jobs on OTS external tables.
+        # 
+        # `ComputationSqlOSS`: Metering data for SQL jobs on OSS external tables.
+        # 
+        # `MapReduce`: Metering data for MapReduce jobs.
+        # 
+        # `spark`: Metering data for Spark jobs.
+        # 
+        # `mars`: Metering data for Mars jobs.
         self.type = type
 
     def validate(self):
@@ -108,8 +135,11 @@ class SumComputeMetricsByUsageResponseBodyDataDailyComputeMetrics(DaraModel):
         unit: str = None,
         usage: str = None,
     ):
+        # The date of the usage, in `yyyyMMdd` format.
         self.date_time = date_time
+        # The unit of compute usage.
         self.unit = unit
+        # The total usage for the day.
         self.usage = usage
 
     def validate(self):

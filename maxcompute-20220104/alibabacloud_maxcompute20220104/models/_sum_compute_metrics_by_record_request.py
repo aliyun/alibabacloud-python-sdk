@@ -13,8 +13,11 @@ class SumComputeMetricsByRecordRequest(DaraModel):
         project_names: List[str] = None,
         start_date: int = None,
     ):
+        # The end of the time range to query, specified as a required Unix timestamp in milliseconds.
         self.end_date = end_date
+        # The list of project names.
         self.project_names = project_names
+        # The start of the time range to query, specified as a required Unix timestamp in milliseconds.
         self.start_date = start_date
 
     def validate(self):

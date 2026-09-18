@@ -11,7 +11,9 @@ class GetMmsAsyncTaskResponseBody(DaraModel):
         data: main_models.GetMmsAsyncTaskResponseBodyData = None,
         request_id: str = None,
     ):
+        # The asynchronous task object.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -58,17 +60,29 @@ class GetMmsAsyncTaskResponseBodyData(DaraModel):
         status: str = None,
         type: str = None,
     ):
+        # The creation time, in the format of YYYY-MM-DD HH:mm:ss.
         self.create_time = create_time
+        # The end time, in the format of YYYY-MM-DD HH:mm:ss.
         self.end_time = end_time
+        # The error message.
         self.error_msg = error_msg
+        # The asynchronous task ID.
         self.id = id
+        # The ID of the object associated with the asynchronous task.
         self.object_id = object_id
+        # The running progress.
         self.progress = progress
+        # The running result.
         self.result = result
+        # Indicates whether the task is running.
         self.running = running
+        # The data source ID.
         self.source_id = source_id
+        # The start time, in the format of YYYY-MM-DD HH:mm:ss.
         self.start_time = start_time
+        # The asynchronous task status.
         self.status = status
+        # The asynchronous task type.
         self.type = type
 
     def validate(self):
