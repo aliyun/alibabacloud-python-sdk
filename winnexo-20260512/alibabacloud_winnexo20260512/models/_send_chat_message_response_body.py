@@ -15,6 +15,7 @@ class SendChatMessageResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
         type: str = None,
+        work_mode: str = None,
     ):
         # The error code.
         self.code = code
@@ -28,6 +29,13 @@ class SendChatMessageResponseBody(DaraModel):
         self.request_id = request_id
         # The event type.
         self.type = type
+        # The session work mode that takes effect for the current turn. Valid values:
+        # - ask: Quick Q&A.
+        # - work: Deep work.
+        # - direct: Direct connection (request-level).
+        # 
+        # In multi-digital-employee or task execution scenarios, if ask is provided, work takes effect instead.
+        self.work_mode = work_mode
 
     def validate(self):
         pass
@@ -55,6 +63,9 @@ class SendChatMessageResponseBody(DaraModel):
         if self.type is not None:
             result['type'] = self.type
 
+        if self.work_mode is not None:
+            result['workMode'] = self.work_mode
+
         return result
 
     def from_map(self, m: dict = None):
@@ -76,6 +87,9 @@ class SendChatMessageResponseBody(DaraModel):
 
         if m.get('type') is not None:
             self.type = m.get('type')
+
+        if m.get('workMode') is not None:
+            self.work_mode = m.get('workMode')
 
         return self
 

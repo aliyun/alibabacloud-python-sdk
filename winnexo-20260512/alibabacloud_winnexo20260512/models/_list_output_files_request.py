@@ -27,7 +27,7 @@ class ListOutputFilesRequest(DaraModel):
         self.page_size = page_size
         # Specifies whether to display only outputs and output items with sharing enabled.
         self.shared_only = shared_only
-        # The tenant ID. This is a common parameter. In winnexo-cli, pass it explicitly with --tenant-id.
+        # The tenant ID. This is a common parameter. In winnexo-cli, pass it explicitly by using --tenant-id.
         self.tenant_id = tenant_id
 
     def validate(self):

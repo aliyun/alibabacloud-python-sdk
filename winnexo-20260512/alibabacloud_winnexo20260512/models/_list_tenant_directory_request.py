@@ -27,7 +27,7 @@ class ListTenantDirectoryRequest(DaraModel):
         # - event_execute_start_time: the event execution time.
         # - event_execute_finish_time: the event completion time.
         self.sort_field = sort_field
-        # The sort order. This parameter takes effect only when sortBy is specified. Valid values: ASC, DESC (case-insensitive).
+        # The sort order. This parameter takes effect only when sortBy is specified. Valid values: ASC and DESC (case-insensitive).
         self.sort_order = sort_order
         # The list of source types.
         self.source_types = source_types

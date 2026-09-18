@@ -13,7 +13,11 @@ class ListAuthorizedUsersRequest(DaraModel):
         permission: str = None,
         tenant_id: str = None,
     ):
-        # The filter type. Valid values: USER, USER_GROUP. If not specified, all types are returned.
+        # The filter type. Valid values:
+        # - USER
+        # - USER_GROUP
+        # 
+        # If this parameter is not specified, all types are returned.
         self.grantee_type = grantee_type
         # The search keyword.
         self.keyword = keyword
@@ -23,7 +27,7 @@ class ListAuthorizedUsersRequest(DaraModel):
         self.operating_object_name = operating_object_name
         # Permission
         self.permission = permission
-        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
+        # The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
 
     def validate(self):

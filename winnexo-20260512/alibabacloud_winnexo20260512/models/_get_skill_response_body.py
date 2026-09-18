@@ -35,13 +35,13 @@ class GetSkillResponseBody(DaraModel):
         version_count: int = None,
         version_number: str = None,
     ):
-        # The simplified parameter schema that describes what needs to be passed in runSkill.arguments. This is automatically extracted from inputConfigFormatted.
+        # The simplified parameter schema that describes what to pass in runSkill.arguments. Automatically extracted from inputConfigFormatted.
         self.arguments = arguments
         # The response status code.
         self.code = code
         # The creation time in ISO 8601 format.
         self.created_time = created_time
-        # The skill description, which has been resolved through internationalization (i18n).
+        # The skill description. The value is resolved through i18n.
         self.description = description
         # The detailed logic of the skill.
         self.detail_logic = detail_logic
@@ -59,13 +59,13 @@ class GetSkillResponseBody(DaraModel):
         self.input_config_formatted = input_config_formatted
         # The status code description.
         self.message = message
-        # The skill name, which has been resolved through internationalization (i18n).
+        # The skill name. The value is resolved through i18n.
         self.name = name
         # The request ID.
         self.request_id = request_id
         # The skill code, which is globally unique.
         self.skill_code = skill_code
-        # The nested tree of skill files. This is returned only when includeSkillFiles is set to True.
+        # The nested skill file tree. This parameter is returned only when includeSkillFiles is set to True.
         self.skill_files = skill_files
         # The skill definition ID.
         self.skill_hub_definition_id = skill_hub_definition_id
@@ -75,9 +75,9 @@ class GetSkillResponseBody(DaraModel):
         self.source_type = source_type
         # The skill status. Valid values: ACTIVE and DRAFT.
         self.status = status
-        # The tag list, which has been resolved through internationalization (i18n).
+        # The label list. The values are resolved through i18n.
         self.tags = tags
-        # The modification time in ISO 8601 format.
+        # The update time in ISO 8601 format.
         self.updated_time = updated_time
         # The total number of versions.
         self.version_count = version_count
@@ -264,9 +264,9 @@ class GetSkillResponseBodyArguments(DaraModel):
         self.default = default
         # The parameter description.
         self.description = description
-        # The list of valid values, which is available when the options are limited.
+        # The list of valid values when options are limited.
         self.enum = enum
-        # The parameter name, which corresponds to the key in runSkill.arguments.
+        # The parameter name, corresponding to the key in runSkill.arguments.
         self.name = name
         # Indicates whether the parameter is required.
         self.required = required

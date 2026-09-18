@@ -34,14 +34,33 @@ from ._create_group_ali_ding_chat_request import CreateGroupAliDingChatRequest
 from ._create_group_ali_ding_chat_shrink_request import CreateGroupAliDingChatShrinkRequest
 from ._create_group_ali_ding_chat_response_body import CreateGroupAliDingChatResponseBody
 from ._create_group_ali_ding_chat_response import CreateGroupAliDingChatResponse
+from ._create_group_ali_ding_doc_request import CreateGroupAliDingDocRequest
+from ._create_group_ali_ding_doc_response_body import CreateGroupAliDingDocResponseBody
+from ._create_group_ali_ding_doc_response import CreateGroupAliDingDocResponse
 from ._create_group_dingtalk_chat_request import CreateGroupDingtalkChatRequest
 from ._create_group_dingtalk_chat_shrink_request import CreateGroupDingtalkChatShrinkRequest
 from ._create_group_dingtalk_chat_response_body import CreateGroupDingtalkChatResponseBody
 from ._create_group_dingtalk_chat_response import CreateGroupDingtalkChatResponse
+from ._create_group_directory_request import CreateGroupDirectoryRequest
+from ._create_group_directory_response_body import CreateGroupDirectoryResponseBody
+from ._create_group_directory_response import CreateGroupDirectoryResponse
+from ._create_group_feishu_chat_request import CreateGroupFeishuChatRequest
+from ._create_group_feishu_chat_shrink_request import CreateGroupFeishuChatShrinkRequest
+from ._create_group_feishu_chat_response_body import CreateGroupFeishuChatResponseBody
+from ._create_group_feishu_chat_response import CreateGroupFeishuChatResponse
 from ._create_group_feishu_doc_request import CreateGroupFeishuDocRequest
 from ._create_group_feishu_doc_shrink_request import CreateGroupFeishuDocShrinkRequest
 from ._create_group_feishu_doc_response_body import CreateGroupFeishuDocResponseBody
 from ._create_group_feishu_doc_response import CreateGroupFeishuDocResponse
+from ._create_group_file_request import CreateGroupFileRequest
+from ._create_group_file_response_body import CreateGroupFileResponseBody
+from ._create_group_file_response import CreateGroupFileResponse
+from ._create_group_public_url_request import CreateGroupPublicUrlRequest
+from ._create_group_public_url_response_body import CreateGroupPublicUrlResponseBody
+from ._create_group_public_url_response import CreateGroupPublicUrlResponse
+from ._create_group_text_request import CreateGroupTextRequest
+from ._create_group_text_response_body import CreateGroupTextResponseBody
+from ._create_group_text_response import CreateGroupTextResponse
 from ._create_knowledge_base_ali_ding_doc_request import CreateKnowledgeBaseAliDingDocRequest
 from ._create_knowledge_base_ali_ding_doc_response_body import CreateKnowledgeBaseAliDingDocResponseBody
 from ._create_knowledge_base_ali_ding_doc_response import CreateKnowledgeBaseAliDingDocResponse
@@ -55,6 +74,9 @@ from ._create_knowledge_base_feishu_doc_response import CreateKnowledgeBaseFeish
 from ._create_knowledge_base_file_request import CreateKnowledgeBaseFileRequest
 from ._create_knowledge_base_file_response_body import CreateKnowledgeBaseFileResponseBody
 from ._create_knowledge_base_file_response import CreateKnowledgeBaseFileResponse
+from ._create_knowledge_base_public_url_request import CreateKnowledgeBasePublicUrlRequest
+from ._create_knowledge_base_public_url_response_body import CreateKnowledgeBasePublicUrlResponseBody
+from ._create_knowledge_base_public_url_response import CreateKnowledgeBasePublicUrlResponse
 from ._create_knowledge_base_text_request import CreateKnowledgeBaseTextRequest
 from ._create_knowledge_base_text_response_body import CreateKnowledgeBaseTextResponseBody
 from ._create_knowledge_base_text_response import CreateKnowledgeBaseTextResponse
@@ -99,6 +121,9 @@ from ._create_personal_feishu_minute_response import CreatePersonalFeishuMinuteR
 from ._create_personal_file_request import CreatePersonalFileRequest
 from ._create_personal_file_response_body import CreatePersonalFileResponseBody
 from ._create_personal_file_response import CreatePersonalFileResponse
+from ._create_personal_public_url_request import CreatePersonalPublicUrlRequest
+from ._create_personal_public_url_response_body import CreatePersonalPublicUrlResponseBody
+from ._create_personal_public_url_response import CreatePersonalPublicUrlResponse
 from ._create_personal_text_request import CreatePersonalTextRequest
 from ._create_personal_text_response_body import CreatePersonalTextResponseBody
 from ._create_personal_text_response import CreatePersonalTextResponse
@@ -154,6 +179,9 @@ from ._get_graph_schema_response import GetGraphSchemaResponse
 from ._get_graph_schema_detail_request import GetGraphSchemaDetailRequest
 from ._get_graph_schema_detail_response_body import GetGraphSchemaDetailResponseBody
 from ._get_graph_schema_detail_response import GetGraphSchemaDetailResponse
+from ._get_group_source_request import GetGroupSourceRequest
+from ._get_group_source_response_body import GetGroupSourceResponseBody
+from ._get_group_source_response import GetGroupSourceResponse
 from ._get_instance_expire_time_request import GetInstanceExpireTimeRequest
 from ._get_instance_expire_time_response_body import GetInstanceExpireTimeResponseBody
 from ._get_instance_expire_time_response import GetInstanceExpireTimeResponse
@@ -248,6 +276,13 @@ from ._list_graph_schemas_response import ListGraphSchemasResponse
 from ._list_graphs_request import ListGraphsRequest
 from ._list_graphs_response_body import ListGraphsResponseBody
 from ._list_graphs_response import ListGraphsResponse
+from ._list_group_directories_request import ListGroupDirectoriesRequest
+from ._list_group_directories_response_body import ListGroupDirectoriesResponseBody
+from ._list_group_directories_response import ListGroupDirectoriesResponse
+from ._list_group_directory_request import ListGroupDirectoryRequest
+from ._list_group_directory_shrink_request import ListGroupDirectoryShrinkRequest
+from ._list_group_directory_response_body import ListGroupDirectoryResponseBody
+from ._list_group_directory_response import ListGroupDirectoryResponse
 from ._list_knowledge_base_directories_request import ListKnowledgeBaseDirectoriesRequest
 from ._list_knowledge_base_directories_response_body import ListKnowledgeBaseDirectoriesResponseBody
 from ._list_knowledge_base_directories_response import ListKnowledgeBaseDirectoriesResponse
@@ -296,6 +331,9 @@ from ._list_visible_knowledge_bases_headers import ListVisibleKnowledgeBasesHead
 from ._list_visible_knowledge_bases_request import ListVisibleKnowledgeBasesRequest
 from ._list_visible_knowledge_bases_response_body import ListVisibleKnowledgeBasesResponseBody
 from ._list_visible_knowledge_bases_response import ListVisibleKnowledgeBasesResponse
+from ._move_group_resource_request import MoveGroupResourceRequest
+from ._move_group_resource_response_body import MoveGroupResourceResponseBody
+from ._move_group_resource_response import MoveGroupResourceResponse
 from ._move_knowledge_base_resource_request import MoveKnowledgeBaseResourceRequest
 from ._move_knowledge_base_resource_response_body import MoveKnowledgeBaseResourceResponseBody
 from ._move_knowledge_base_resource_response import MoveKnowledgeBaseResourceResponse
@@ -305,6 +343,9 @@ from ._move_resource_response import MoveResourceResponse
 from ._offline_announcement_request import OfflineAnnouncementRequest
 from ._offline_announcement_response_body import OfflineAnnouncementResponseBody
 from ._offline_announcement_response import OfflineAnnouncementResponse
+from ._preview_group_source_request import PreviewGroupSourceRequest
+from ._preview_group_source_response_body import PreviewGroupSourceResponseBody
+from ._preview_group_source_response import PreviewGroupSourceResponse
 from ._preview_knowledge_base_source_request import PreviewKnowledgeBaseSourceRequest
 from ._preview_knowledge_base_source_response_body import PreviewKnowledgeBaseSourceResponseBody
 from ._preview_knowledge_base_source_response import PreviewKnowledgeBaseSourceResponse
@@ -337,9 +378,15 @@ from ._rename_knowledge_base_source_response import RenameKnowledgeBaseSourceRes
 from ._rename_source_request import RenameSourceRequest
 from ._rename_source_response_body import RenameSourceResponseBody
 from ._rename_source_response import RenameSourceResponse
+from ._reparse_group_source_request import ReparseGroupSourceRequest
+from ._reparse_group_source_response_body import ReparseGroupSourceResponseBody
+from ._reparse_group_source_response import ReparseGroupSourceResponse
 from ._reparse_source_request import ReparseSourceRequest
 from ._reparse_source_response_body import ReparseSourceResponseBody
 from ._reparse_source_response import ReparseSourceResponse
+from ._replace_group_source_file_request import ReplaceGroupSourceFileRequest
+from ._replace_group_source_file_response_body import ReplaceGroupSourceFileResponseBody
+from ._replace_group_source_file_response import ReplaceGroupSourceFileResponse
 from ._replace_knowledge_base_source_file_request import ReplaceKnowledgeBaseSourceFileRequest
 from ._replace_knowledge_base_source_file_response_body import ReplaceKnowledgeBaseSourceFileResponseBody
 from ._replace_knowledge_base_source_file_response import ReplaceKnowledgeBaseSourceFileResponse
@@ -373,6 +420,10 @@ from ._run_skill_request import RunSkillRequest
 from ._run_skill_shrink_request import RunSkillShrinkRequest
 from ._run_skill_response_body import RunSkillResponseBody
 from ._run_skill_response import RunSkillResponse
+from ._save_graph_draft_batch_define_request import SaveGraphDraftBatchDefineRequest
+from ._save_graph_draft_batch_define_shrink_request import SaveGraphDraftBatchDefineShrinkRequest
+from ._save_graph_draft_batch_define_response_body import SaveGraphDraftBatchDefineResponseBody
+from ._save_graph_draft_batch_define_response import SaveGraphDraftBatchDefineResponse
 from ._save_graph_draft_resource_request import SaveGraphDraftResourceRequest
 from ._save_graph_draft_resource_response_body import SaveGraphDraftResourceResponseBody
 from ._save_graph_draft_resource_response import SaveGraphDraftResourceResponse
@@ -429,6 +480,12 @@ from ._update_directory_response import UpdateDirectoryResponse
 from ._update_graph_info_request import UpdateGraphInfoRequest
 from ._update_graph_info_response_body import UpdateGraphInfoResponseBody
 from ._update_graph_info_response import UpdateGraphInfoResponse
+from ._update_group_directory_request import UpdateGroupDirectoryRequest
+from ._update_group_directory_response_body import UpdateGroupDirectoryResponseBody
+from ._update_group_directory_response import UpdateGroupDirectoryResponse
+from ._update_group_source_content_request import UpdateGroupSourceContentRequest
+from ._update_group_source_content_response_body import UpdateGroupSourceContentResponseBody
+from ._update_group_source_content_response import UpdateGroupSourceContentResponse
 from ._update_knowledge_base_directory_request import UpdateKnowledgeBaseDirectoryRequest
 from ._update_knowledge_base_directory_response_body import UpdateKnowledgeBaseDirectoryResponseBody
 from ._update_knowledge_base_directory_response import UpdateKnowledgeBaseDirectoryResponse
@@ -465,6 +522,7 @@ from ._upload_chat_file_response import UploadChatFileResponse
 from ._batch_remove_operating_object_favorites_response_body import BatchRemoveOperatingObjectFavoritesResponseBodyResults
 from ._create_group_ali_ding_chat_request import CreateGroupAliDingChatRequestUpdateFrequency
 from ._create_group_dingtalk_chat_request import CreateGroupDingtalkChatRequestUpdateFrequency
+from ._create_group_feishu_chat_request import CreateGroupFeishuChatRequestUpdateFrequency
 from ._create_group_feishu_doc_request import CreateGroupFeishuDocRequestObjectBindings
 from ._create_group_feishu_doc_request import CreateGroupFeishuDocRequestSyncConfig
 from ._create_knowledge_base_feishu_doc_request import CreateKnowledgeBaseFeishuDocRequestObjectBindings
@@ -516,6 +574,9 @@ from ._list_billing_response_body import ListBillingResponseBodyList
 from ._list_graph_draft_resources_response_body import ListGraphDraftResourcesResponseBodyItems
 from ._list_graph_schemas_response_body import ListGraphSchemasResponseBodyItems
 from ._list_graphs_response_body import ListGraphsResponseBodyItems
+from ._list_group_directories_response_body import ListGroupDirectoriesResponseBodyDirectories
+from ._list_group_directory_response_body import ListGroupDirectoryResponseBodyItemsObjectBindings
+from ._list_group_directory_response_body import ListGroupDirectoryResponseBodyItems
 from ._list_operating_object_favorites_response_body import ListOperatingObjectFavoritesResponseBodyItems
 from ._list_output_files_response_body import ListOutputFilesResponseBodyItemsOutputItemsEmailInfo
 from ._list_output_files_response_body import ListOutputFilesResponseBodyItemsOutputItemsFileInfo
@@ -542,6 +603,7 @@ from ._replace_object_bindings_request import ReplaceObjectBindingsRequestObject
 from ._replace_object_bindings_response_body import ReplaceObjectBindingsResponseBodyObjectBindings
 from ._retry_directory_failed_sources_response_body import RetryDirectoryFailedSourcesResponseBodyFailedSources
 from ._retry_knowledge_base_failed_sources_response_body import RetryKnowledgeBaseFailedSourcesResponseBodyFailedSources
+from ._save_graph_draft_batch_define_response_body import SaveGraphDraftBatchDefineResponseBodyItems
 from ._save_group_output_file_to_group_resource_response_body import SaveGroupOutputFileToGroupResourceResponseBodyResults
 from ._save_group_output_file_to_personal_resource_response_body import SaveGroupOutputFileToPersonalResourceResponseBodyResults
 from ._save_output_file_to_resource_response_body import SaveOutputFileToResourceResponseBodyResults
@@ -598,14 +660,33 @@ __all__ = [
     CreateGroupAliDingChatShrinkRequest,
     CreateGroupAliDingChatResponseBody,
     CreateGroupAliDingChatResponse,
+    CreateGroupAliDingDocRequest,
+    CreateGroupAliDingDocResponseBody,
+    CreateGroupAliDingDocResponse,
     CreateGroupDingtalkChatRequest,
     CreateGroupDingtalkChatShrinkRequest,
     CreateGroupDingtalkChatResponseBody,
     CreateGroupDingtalkChatResponse,
+    CreateGroupDirectoryRequest,
+    CreateGroupDirectoryResponseBody,
+    CreateGroupDirectoryResponse,
+    CreateGroupFeishuChatRequest,
+    CreateGroupFeishuChatShrinkRequest,
+    CreateGroupFeishuChatResponseBody,
+    CreateGroupFeishuChatResponse,
     CreateGroupFeishuDocRequest,
     CreateGroupFeishuDocShrinkRequest,
     CreateGroupFeishuDocResponseBody,
     CreateGroupFeishuDocResponse,
+    CreateGroupFileRequest,
+    CreateGroupFileResponseBody,
+    CreateGroupFileResponse,
+    CreateGroupPublicUrlRequest,
+    CreateGroupPublicUrlResponseBody,
+    CreateGroupPublicUrlResponse,
+    CreateGroupTextRequest,
+    CreateGroupTextResponseBody,
+    CreateGroupTextResponse,
     CreateKnowledgeBaseAliDingDocRequest,
     CreateKnowledgeBaseAliDingDocResponseBody,
     CreateKnowledgeBaseAliDingDocResponse,
@@ -619,6 +700,9 @@ __all__ = [
     CreateKnowledgeBaseFileRequest,
     CreateKnowledgeBaseFileResponseBody,
     CreateKnowledgeBaseFileResponse,
+    CreateKnowledgeBasePublicUrlRequest,
+    CreateKnowledgeBasePublicUrlResponseBody,
+    CreateKnowledgeBasePublicUrlResponse,
     CreateKnowledgeBaseTextRequest,
     CreateKnowledgeBaseTextResponseBody,
     CreateKnowledgeBaseTextResponse,
@@ -663,6 +747,9 @@ __all__ = [
     CreatePersonalFileRequest,
     CreatePersonalFileResponseBody,
     CreatePersonalFileResponse,
+    CreatePersonalPublicUrlRequest,
+    CreatePersonalPublicUrlResponseBody,
+    CreatePersonalPublicUrlResponse,
     CreatePersonalTextRequest,
     CreatePersonalTextResponseBody,
     CreatePersonalTextResponse,
@@ -718,6 +805,9 @@ __all__ = [
     GetGraphSchemaDetailRequest,
     GetGraphSchemaDetailResponseBody,
     GetGraphSchemaDetailResponse,
+    GetGroupSourceRequest,
+    GetGroupSourceResponseBody,
+    GetGroupSourceResponse,
     GetInstanceExpireTimeRequest,
     GetInstanceExpireTimeResponseBody,
     GetInstanceExpireTimeResponse,
@@ -812,6 +902,13 @@ __all__ = [
     ListGraphsRequest,
     ListGraphsResponseBody,
     ListGraphsResponse,
+    ListGroupDirectoriesRequest,
+    ListGroupDirectoriesResponseBody,
+    ListGroupDirectoriesResponse,
+    ListGroupDirectoryRequest,
+    ListGroupDirectoryShrinkRequest,
+    ListGroupDirectoryResponseBody,
+    ListGroupDirectoryResponse,
     ListKnowledgeBaseDirectoriesRequest,
     ListKnowledgeBaseDirectoriesResponseBody,
     ListKnowledgeBaseDirectoriesResponse,
@@ -860,6 +957,9 @@ __all__ = [
     ListVisibleKnowledgeBasesRequest,
     ListVisibleKnowledgeBasesResponseBody,
     ListVisibleKnowledgeBasesResponse,
+    MoveGroupResourceRequest,
+    MoveGroupResourceResponseBody,
+    MoveGroupResourceResponse,
     MoveKnowledgeBaseResourceRequest,
     MoveKnowledgeBaseResourceResponseBody,
     MoveKnowledgeBaseResourceResponse,
@@ -869,6 +969,9 @@ __all__ = [
     OfflineAnnouncementRequest,
     OfflineAnnouncementResponseBody,
     OfflineAnnouncementResponse,
+    PreviewGroupSourceRequest,
+    PreviewGroupSourceResponseBody,
+    PreviewGroupSourceResponse,
     PreviewKnowledgeBaseSourceRequest,
     PreviewKnowledgeBaseSourceResponseBody,
     PreviewKnowledgeBaseSourceResponse,
@@ -901,9 +1004,15 @@ __all__ = [
     RenameSourceRequest,
     RenameSourceResponseBody,
     RenameSourceResponse,
+    ReparseGroupSourceRequest,
+    ReparseGroupSourceResponseBody,
+    ReparseGroupSourceResponse,
     ReparseSourceRequest,
     ReparseSourceResponseBody,
     ReparseSourceResponse,
+    ReplaceGroupSourceFileRequest,
+    ReplaceGroupSourceFileResponseBody,
+    ReplaceGroupSourceFileResponse,
     ReplaceKnowledgeBaseSourceFileRequest,
     ReplaceKnowledgeBaseSourceFileResponseBody,
     ReplaceKnowledgeBaseSourceFileResponse,
@@ -937,6 +1046,10 @@ __all__ = [
     RunSkillShrinkRequest,
     RunSkillResponseBody,
     RunSkillResponse,
+    SaveGraphDraftBatchDefineRequest,
+    SaveGraphDraftBatchDefineShrinkRequest,
+    SaveGraphDraftBatchDefineResponseBody,
+    SaveGraphDraftBatchDefineResponse,
     SaveGraphDraftResourceRequest,
     SaveGraphDraftResourceResponseBody,
     SaveGraphDraftResourceResponse,
@@ -993,6 +1106,12 @@ __all__ = [
     UpdateGraphInfoRequest,
     UpdateGraphInfoResponseBody,
     UpdateGraphInfoResponse,
+    UpdateGroupDirectoryRequest,
+    UpdateGroupDirectoryResponseBody,
+    UpdateGroupDirectoryResponse,
+    UpdateGroupSourceContentRequest,
+    UpdateGroupSourceContentResponseBody,
+    UpdateGroupSourceContentResponse,
     UpdateKnowledgeBaseDirectoryRequest,
     UpdateKnowledgeBaseDirectoryResponseBody,
     UpdateKnowledgeBaseDirectoryResponse,
@@ -1029,6 +1148,7 @@ __all__ = [
     BatchRemoveOperatingObjectFavoritesResponseBodyResults,
     CreateGroupAliDingChatRequestUpdateFrequency,
     CreateGroupDingtalkChatRequestUpdateFrequency,
+    CreateGroupFeishuChatRequestUpdateFrequency,
     CreateGroupFeishuDocRequestObjectBindings,
     CreateGroupFeishuDocRequestSyncConfig,
     CreateKnowledgeBaseFeishuDocRequestObjectBindings,
@@ -1080,6 +1200,9 @@ __all__ = [
     ListGraphDraftResourcesResponseBodyItems,
     ListGraphSchemasResponseBodyItems,
     ListGraphsResponseBodyItems,
+    ListGroupDirectoriesResponseBodyDirectories,
+    ListGroupDirectoryResponseBodyItemsObjectBindings,
+    ListGroupDirectoryResponseBodyItems,
     ListOperatingObjectFavoritesResponseBodyItems,
     ListOutputFilesResponseBodyItemsOutputItemsEmailInfo,
     ListOutputFilesResponseBodyItemsOutputItemsFileInfo,
@@ -1106,6 +1229,7 @@ __all__ = [
     ReplaceObjectBindingsResponseBodyObjectBindings,
     RetryDirectoryFailedSourcesResponseBodyFailedSources,
     RetryKnowledgeBaseFailedSourcesResponseBodyFailedSources,
+    SaveGraphDraftBatchDefineResponseBodyItems,
     SaveGroupOutputFileToGroupResourceResponseBodyResults,
     SaveGroupOutputFileToPersonalResourceResponseBodyResults,
     SaveOutputFileToResourceResponseBodyResults,

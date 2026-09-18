@@ -21,9 +21,9 @@ class ListChatSessionsResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # Indicates whether there is a next page.
+        # Indicates whether more pages are available.
         self.has_more = has_more
-        # The status code description.
+        # The description of the status code.
         self.message = message
         # The current page number.
         self.page = page

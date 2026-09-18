@@ -15,13 +15,13 @@ class ListGraphSchemasResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The status code.
         self.code = code
-        # 租户下 active 图谱摘要列表
+        # The location clustering.
         self.items = items
-        # 错误描述，成功时为空
+        # The prompt message.
         self.message = message
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -84,37 +84,37 @@ class ListGraphSchemasResponseBodyItems(DaraModel):
         relation_count: int = None,
         semantic_tags: List[str] = None,
     ):
-        # active Schema 版本
+        # The currently active schema version number. The value is 0.0.0 for a quick-created placeholder graph.
         self.active_version = active_version
-        # 业务说明，未设置时为空字符串
+        # The business description of the graph. An empty string is returned if this parameter is not configured.
         self.business_profile = business_profile
-        # 图谱展示名，空值时兜底 graphName
+        # The display name of the tool.
         self.display_name = display_name
-        # 图谱名称
+        # The graph name.
         # 
         # This parameter is required.
         self.graph_name = graph_name
-        # 图谱状态：PUBLISHED / DEVELOPING（当前用户有活动草稿）/ PUBLISHING（当前用户发布中）
+        # The status of the semantic graph.
         # 
         # This parameter is required.
         self.graph_status = graph_status
-        # 当前调用者视角是否存在个人活动草稿；部署/系统级 Token 恒 false
+        # Indicates whether the graph contains a draft.
         # 
         # This parameter is required.
         self.has_draft = has_draft
-        # 是否为租户默认图谱
+        # Indicates whether this is the default group.
         # 
         # This parameter is required.
         self.is_default = is_default
-        # object_type 数量，解析失败兜底 0
+        # The number of object types. The value falls back to 0 if parsing fails.
         # 
         # This parameter is required.
         self.object_type_count = object_type_count
-        # relation 数量，解析失败兜底 0
+        # The number of relations. The value falls back to 0 if parsing fails.
         # 
         # This parameter is required.
         self.relation_count = relation_count
-        # 语义标签列表，未配置时为空数组
+        # The list of semantic tags. An empty array [] is returned if this parameter is not configured.
         # 
         # This parameter is required.
         self.semantic_tags = semantic_tags

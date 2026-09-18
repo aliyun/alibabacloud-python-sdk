@@ -105,17 +105,19 @@ class ListAuthorizedUsersResponseBodyItems(DaraModel):
         user_id: int = None,
         user_name: str = None,
     ):
-        # The authorization expiration timestamp in milliseconds. If not specified, the authorization never expires.
+        # The authorization expiration timestamp in milliseconds. If this parameter is not specified, the authorization never expires.
         self.expire_date = expire_date
         # The creation time.
         self.gmt_create = gmt_create
-        # The last update time.
+        # The last modification time.
         self.gmt_modified = gmt_modified
-        # The user ID of the person who granted the authorization.
+        # The user ID of the grantor.
         self.granted_by = granted_by
-        # The ID of the authorized object.
+        # The ID of the grantee.
         self.grantee_id = grantee_id
-        # The authorization object type. Valid values: USER, USER_GROUP.
+        # The object type of the authorization target. Valid values:
+        # - USER
+        # - USER_GROUP
         self.grantee_type = grantee_type
         # The Operation logs ID.
         self.id = id
@@ -123,19 +125,19 @@ class ListAuthorizedUsersResponseBodyItems(DaraModel):
         self.member_count = member_count
         # The permission member type. Valid values:
         # 
-        # - **ORG**: Enterprise.
+        # - **ORG**: enterprise.
         # 
-        # - **DEPT**: Department.
+        # - **DEPT**: department.
         # 
-        # - **TAG**: Custom tag.
+        # - **TAG**: custom tag.
         # 
-        # - **CONVERSATION**: Conversation.
+        # - **CONVERSATION**: conversation.
         # 
-        # - **USER**: User.
+        # - **USER**: user.
         self.permissions = permissions
         # The user group ID. This parameter has a value only when granteeType is set to USER_GROUP.
         self.user_group_id = user_group_id
-        # The user group name.
+        # The name of the user group.
         self.user_group_name = user_group_name
         # The user ID. This parameter has a value only when granteeType is set to USER.
         self.user_id = user_id

@@ -35,11 +35,11 @@ class GetUserResponseBody(DaraModel):
         self.is_active = is_active
         # The last logon time.
         self.last_login_time = last_login_time
-        # The status code description.
+        # The description of the status code.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The list of system role codes (full replacement, must contain at least one role). Valid values: SUPER_ADMIN, SYSTEM_ADMIN, SEMANTIC_ADMIN, SKILL_ADMIN, KB_ADMIN, AGENT_ADMIN, and APPLICATION_USER.
+        # The list of system role codes. The list performs a full replacement and must contain at least one role. Valid values: SUPER_ADMIN, SYSTEM_ADMIN, SEMANTIC_ADMIN, SKILL_ADMIN, KB_ADMIN, AGENT_ADMIN, and APPLICATION_USER.
         self.role_codes = role_codes
         # The list of user group IDs to which the user belongs.
         self.user_group_ids = user_group_ids

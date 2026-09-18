@@ -21,9 +21,9 @@ class CreatePersonalFileRequest(DaraModel):
     ):
         # The pipeline description.
         self.description = description
-        # The directory ID.
+        # The folder ID.
         self.directory_id = directory_id
-        # The file extension (optional, such as pdf or docx).
+        # The file name extension (optional, such as pdf or docx).
         self.file_ext = file_ext
         # The file name.
         self.file_name = file_name
@@ -31,7 +31,7 @@ class CreatePersonalFileRequest(DaraModel):
         # 
         # This parameter is required.
         self.file_path = file_path
-        # The publicly accessible URL of the Alibaba DingTalk online document.
+        # The publicly accessible URL of the DingTalk online document.
         self.file_public_url = file_public_url
         # The file record ID (optional, corresponding to settings.file_record_id).
         self.file_record_id = file_record_id
@@ -41,7 +41,7 @@ class CreatePersonalFileRequest(DaraModel):
         self.name = name
         # The name of the digital employee (operating object name, optional).
         self.operating_object_name = operating_object_name
-        # 资源标签 JSON 字符串列表
+        # The list of resource tag JSON strings.
         self.source_tags = source_tags
         # The tenant ID.
         self.tenant_id = tenant_id

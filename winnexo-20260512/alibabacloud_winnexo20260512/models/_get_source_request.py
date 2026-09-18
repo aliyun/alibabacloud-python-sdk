@@ -17,7 +17,7 @@ class GetSourceRequest(DaraModel):
         # 
         # This parameter is required.
         self.source_id = source_id
-        # The tenant ID to which the task belongs.
+        # The ID of the tenant to which the task belongs.
         self.tenant_id = tenant_id
 
     def validate(self):

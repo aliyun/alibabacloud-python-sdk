@@ -1,0 +1,168 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from alibabacloud_winnexo20260512 import models as main_models
+from darabonba.model import DaraModel
+
+class CreateGroupFeishuChatRequest(DaraModel):
+    def __init__(
+        self,
+        chat_id: str = None,
+        description: str = None,
+        directory_id: str = None,
+        group_id: str = None,
+        history_start_time: str = None,
+        notes: str = None,
+        operating_object_name: str = None,
+        source_tags: str = None,
+        tenant_id: str = None,
+        update_frequency: main_models.CreateGroupFeishuChatRequestUpdateFrequency = None,
+    ):
+        # 飞书群聊ID，以oc_开头，需当前用户有权读取
+        # 
+        # This parameter is required.
+        self.chat_id = chat_id
+        # 资料描述
+        self.description = description
+        # 空间物理目录ID；省略/root使用空间根，首次可能初始化根目录
+        self.directory_id = directory_id
+        # 协作空间 ID
+        # 
+        # This parameter is required.
+        self.group_id = group_id
+        # 历史起始时间，YYYY-MM-DD或YYYY-MM-DD HH:MM:SS；省略读取全部可见历史
+        self.history_start_time = history_start_time
+        # 分析指令
+        self.notes = notes
+        # 运营对象名称，用于来源追溯
+        self.operating_object_name = operating_object_name
+        # 资料标签JSON字符串列表
+        self.source_tags = source_tags
+        # 租户ID，公共参数；缺省时使用调用方默认租户
+        self.tenant_id = tenant_id
+        # Source级同步配置
+        self.update_frequency = update_frequency
+
+    def validate(self):
+        if self.update_frequency:
+            self.update_frequency.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.chat_id is not None:
+            result['chatId'] = self.chat_id
+
+        if self.description is not None:
+            result['description'] = self.description
+
+        if self.directory_id is not None:
+            result['directoryId'] = self.directory_id
+
+        if self.group_id is not None:
+            result['groupId'] = self.group_id
+
+        if self.history_start_time is not None:
+            result['historyStartTime'] = self.history_start_time
+
+        if self.notes is not None:
+            result['notes'] = self.notes
+
+        if self.operating_object_name is not None:
+            result['operatingObjectName'] = self.operating_object_name
+
+        if self.source_tags is not None:
+            result['sourceTags'] = self.source_tags
+
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+
+        if self.update_frequency is not None:
+            result['updateFrequency'] = self.update_frequency.to_map()
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('chatId') is not None:
+            self.chat_id = m.get('chatId')
+
+        if m.get('description') is not None:
+            self.description = m.get('description')
+
+        if m.get('directoryId') is not None:
+            self.directory_id = m.get('directoryId')
+
+        if m.get('groupId') is not None:
+            self.group_id = m.get('groupId')
+
+        if m.get('historyStartTime') is not None:
+            self.history_start_time = m.get('historyStartTime')
+
+        if m.get('notes') is not None:
+            self.notes = m.get('notes')
+
+        if m.get('operatingObjectName') is not None:
+            self.operating_object_name = m.get('operatingObjectName')
+
+        if m.get('sourceTags') is not None:
+            self.source_tags = m.get('sourceTags')
+
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+
+        if m.get('updateFrequency') is not None:
+            temp_model = main_models.CreateGroupFeishuChatRequestUpdateFrequency()
+            self.update_frequency = temp_model.from_map(m.get('updateFrequency'))
+
+        return self
+
+class CreateGroupFeishuChatRequestUpdateFrequency(DaraModel):
+    def __init__(
+        self,
+        cron: str = None,
+        enabled: bool = None,
+        preset: str = None,
+    ):
+        # 五段 cron，优先于 preset
+        self.cron = cron
+        # 是否启用同步，默认true
+        self.enabled = enabled
+        # 同步预设：hourly 或 daily_2am
+        self.preset = preset
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.cron is not None:
+            result['cron'] = self.cron
+
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+
+        if self.preset is not None:
+            result['preset'] = self.preset
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cron') is not None:
+            self.cron = m.get('cron')
+
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+
+        if m.get('preset') is not None:
+            self.preset = m.get('preset')
+
+        return self
+

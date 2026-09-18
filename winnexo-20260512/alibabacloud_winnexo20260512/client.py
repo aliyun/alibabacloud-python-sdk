@@ -1128,6 +1128,110 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_group_ali_ding_chat_with_options_async(request, headers, runtime)
 
+    def create_group_ali_ding_doc_with_options(
+        self,
+        request: main_models.CreateGroupAliDingDocRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGroupAliDingDocResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.file_public_url):
+            body['filePublicUrl'] = request.file_public_url
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGroupAliDingDoc',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createGroupAliDingDoc',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGroupAliDingDocResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_group_ali_ding_doc_with_options_async(
+        self,
+        request: main_models.CreateGroupAliDingDocRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGroupAliDingDocResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.file_public_url):
+            body['filePublicUrl'] = request.file_public_url
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGroupAliDingDoc',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createGroupAliDingDoc',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGroupAliDingDocResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_group_ali_ding_doc(
+        self,
+        request: main_models.CreateGroupAliDingDocRequest,
+    ) -> main_models.CreateGroupAliDingDocResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_group_ali_ding_doc_with_options(request, headers, runtime)
+
+    async def create_group_ali_ding_doc_async(
+        self,
+        request: main_models.CreateGroupAliDingDocRequest,
+    ) -> main_models.CreateGroupAliDingDocResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_group_ali_ding_doc_with_options_async(request, headers, runtime)
+
     def create_group_dingtalk_chat_with_options(
         self,
         tmp_req: main_models.CreateGroupDingtalkChatRequest,
@@ -1255,6 +1359,226 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.create_group_dingtalk_chat_with_options_async(request, headers, runtime)
+
+    def create_group_directory_with_options(
+        self,
+        request: main_models.CreateGroupDirectoryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGroupDirectoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.parent_directory_id):
+            body['parentDirectoryId'] = request.parent_directory_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGroupDirectory',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createGroupDirectory',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGroupDirectoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_group_directory_with_options_async(
+        self,
+        request: main_models.CreateGroupDirectoryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGroupDirectoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.parent_directory_id):
+            body['parentDirectoryId'] = request.parent_directory_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGroupDirectory',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createGroupDirectory',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGroupDirectoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_group_directory(
+        self,
+        request: main_models.CreateGroupDirectoryRequest,
+    ) -> main_models.CreateGroupDirectoryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_group_directory_with_options(request, headers, runtime)
+
+    async def create_group_directory_async(
+        self,
+        request: main_models.CreateGroupDirectoryRequest,
+    ) -> main_models.CreateGroupDirectoryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_group_directory_with_options_async(request, headers, runtime)
+
+    def create_group_feishu_chat_with_options(
+        self,
+        tmp_req: main_models.CreateGroupFeishuChatRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGroupFeishuChatResponse:
+        tmp_req.validate()
+        request = main_models.CreateGroupFeishuChatShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.update_frequency):
+            request.update_frequency_shrink = Utils.array_to_string_with_specified_style(tmp_req.update_frequency, 'updateFrequency', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.chat_id):
+            body['chatId'] = request.chat_id
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.history_start_time):
+            body['historyStartTime'] = request.history_start_time
+        if not DaraCore.is_null(request.notes):
+            body['notes'] = request.notes
+        if not DaraCore.is_null(request.operating_object_name):
+            body['operatingObjectName'] = request.operating_object_name
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
+        if not DaraCore.is_null(request.update_frequency_shrink):
+            body['updateFrequency'] = request.update_frequency_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGroupFeishuChat',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createGroupFeishuChat',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGroupFeishuChatResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_group_feishu_chat_with_options_async(
+        self,
+        tmp_req: main_models.CreateGroupFeishuChatRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGroupFeishuChatResponse:
+        tmp_req.validate()
+        request = main_models.CreateGroupFeishuChatShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.update_frequency):
+            request.update_frequency_shrink = Utils.array_to_string_with_specified_style(tmp_req.update_frequency, 'updateFrequency', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.chat_id):
+            body['chatId'] = request.chat_id
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.history_start_time):
+            body['historyStartTime'] = request.history_start_time
+        if not DaraCore.is_null(request.notes):
+            body['notes'] = request.notes
+        if not DaraCore.is_null(request.operating_object_name):
+            body['operatingObjectName'] = request.operating_object_name
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
+        if not DaraCore.is_null(request.update_frequency_shrink):
+            body['updateFrequency'] = request.update_frequency_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGroupFeishuChat',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createGroupFeishuChat',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGroupFeishuChatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_group_feishu_chat(
+        self,
+        request: main_models.CreateGroupFeishuChatRequest,
+    ) -> main_models.CreateGroupFeishuChatResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_group_feishu_chat_with_options(request, headers, runtime)
+
+    async def create_group_feishu_chat_async(
+        self,
+        request: main_models.CreateGroupFeishuChatRequest,
+    ) -> main_models.CreateGroupFeishuChatResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_group_feishu_chat_with_options_async(request, headers, runtime)
 
     def create_group_feishu_doc_with_options(
         self,
@@ -1387,6 +1711,326 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.create_group_feishu_doc_with_options_async(request, headers, runtime)
+
+    def create_group_file_with_options(
+        self,
+        request: main_models.CreateGroupFileRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGroupFileResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.file_record_id):
+            body['fileRecordId'] = request.file_record_id
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGroupFile',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createGroupFile',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGroupFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_group_file_with_options_async(
+        self,
+        request: main_models.CreateGroupFileRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGroupFileResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.file_record_id):
+            body['fileRecordId'] = request.file_record_id
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGroupFile',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createGroupFile',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGroupFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_group_file(
+        self,
+        request: main_models.CreateGroupFileRequest,
+    ) -> main_models.CreateGroupFileResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_group_file_with_options(request, headers, runtime)
+
+    async def create_group_file_async(
+        self,
+        request: main_models.CreateGroupFileRequest,
+    ) -> main_models.CreateGroupFileResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_group_file_with_options_async(request, headers, runtime)
+
+    def create_group_public_url_with_options(
+        self,
+        request: main_models.CreateGroupPublicUrlRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGroupPublicUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.notes):
+            body['notes'] = request.notes
+        if not DaraCore.is_null(request.operating_object_name):
+            body['operatingObjectName'] = request.operating_object_name
+        if not DaraCore.is_null(request.original_url):
+            body['originalUrl'] = request.original_url
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGroupPublicUrl',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createGroupPublicUrl',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGroupPublicUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_group_public_url_with_options_async(
+        self,
+        request: main_models.CreateGroupPublicUrlRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGroupPublicUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.notes):
+            body['notes'] = request.notes
+        if not DaraCore.is_null(request.operating_object_name):
+            body['operatingObjectName'] = request.operating_object_name
+        if not DaraCore.is_null(request.original_url):
+            body['originalUrl'] = request.original_url
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGroupPublicUrl',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createGroupPublicUrl',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGroupPublicUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_group_public_url(
+        self,
+        request: main_models.CreateGroupPublicUrlRequest,
+    ) -> main_models.CreateGroupPublicUrlResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_group_public_url_with_options(request, headers, runtime)
+
+    async def create_group_public_url_async(
+        self,
+        request: main_models.CreateGroupPublicUrlRequest,
+    ) -> main_models.CreateGroupPublicUrlResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_group_public_url_with_options_async(request, headers, runtime)
+
+    def create_group_text_with_options(
+        self,
+        request: main_models.CreateGroupTextRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGroupTextResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
+        if not DaraCore.is_null(request.text_content):
+            body['textContent'] = request.text_content
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGroupText',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createGroupText',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGroupTextResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_group_text_with_options_async(
+        self,
+        request: main_models.CreateGroupTextRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGroupTextResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
+        if not DaraCore.is_null(request.text_content):
+            body['textContent'] = request.text_content
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGroupText',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createGroupText',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGroupTextResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_group_text(
+        self,
+        request: main_models.CreateGroupTextRequest,
+    ) -> main_models.CreateGroupTextResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_group_text_with_options(request, headers, runtime)
+
+    async def create_group_text_async(
+        self,
+        request: main_models.CreateGroupTextRequest,
+    ) -> main_models.CreateGroupTextResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_group_text_with_options_async(request, headers, runtime)
 
     def create_knowledge_base_ali_ding_doc_with_options(
         self,
@@ -1839,6 +2483,114 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.create_knowledge_base_file_with_options_async(request, headers, runtime)
+
+    def create_knowledge_base_public_url_with_options(
+        self,
+        request: main_models.CreateKnowledgeBasePublicUrlRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateKnowledgeBasePublicUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.notes):
+            body['notes'] = request.notes
+        if not DaraCore.is_null(request.operating_object_name):
+            body['operatingObjectName'] = request.operating_object_name
+        if not DaraCore.is_null(request.original_url):
+            body['originalUrl'] = request.original_url
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateKnowledgeBasePublicUrl',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createKnowledgeBasePublicUrl',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateKnowledgeBasePublicUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_knowledge_base_public_url_with_options_async(
+        self,
+        request: main_models.CreateKnowledgeBasePublicUrlRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateKnowledgeBasePublicUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.notes):
+            body['notes'] = request.notes
+        if not DaraCore.is_null(request.operating_object_name):
+            body['operatingObjectName'] = request.operating_object_name
+        if not DaraCore.is_null(request.original_url):
+            body['originalUrl'] = request.original_url
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateKnowledgeBasePublicUrl',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createKnowledgeBasePublicUrl',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateKnowledgeBasePublicUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_knowledge_base_public_url(
+        self,
+        request: main_models.CreateKnowledgeBasePublicUrlRequest,
+    ) -> main_models.CreateKnowledgeBasePublicUrlResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_knowledge_base_public_url_with_options(request, headers, runtime)
+
+    async def create_knowledge_base_public_url_async(
+        self,
+        request: main_models.CreateKnowledgeBasePublicUrlRequest,
+    ) -> main_models.CreateKnowledgeBasePublicUrlResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_knowledge_base_public_url_with_options_async(request, headers, runtime)
 
     def create_knowledge_base_text_with_options(
         self,
@@ -3315,6 +4067,114 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.create_personal_file_with_options_async(request, headers, runtime)
+
+    def create_personal_public_url_with_options(
+        self,
+        request: main_models.CreatePersonalPublicUrlRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePersonalPublicUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.notes):
+            body['notes'] = request.notes
+        if not DaraCore.is_null(request.operating_object_name):
+            body['operatingObjectName'] = request.operating_object_name
+        if not DaraCore.is_null(request.original_url):
+            body['originalUrl'] = request.original_url
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePersonalPublicUrl',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createPersonalPublicUrl',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePersonalPublicUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_personal_public_url_with_options_async(
+        self,
+        request: main_models.CreatePersonalPublicUrlRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePersonalPublicUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.notes):
+            body['notes'] = request.notes
+        if not DaraCore.is_null(request.operating_object_name):
+            body['operatingObjectName'] = request.operating_object_name
+        if not DaraCore.is_null(request.original_url):
+            body['originalUrl'] = request.original_url
+        if not DaraCore.is_null(request.source_tags):
+            body['sourceTags'] = request.source_tags
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePersonalPublicUrl',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createPersonalPublicUrl',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePersonalPublicUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_personal_public_url(
+        self,
+        request: main_models.CreatePersonalPublicUrlRequest,
+    ) -> main_models.CreatePersonalPublicUrlResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_personal_public_url_with_options(request, headers, runtime)
+
+    async def create_personal_public_url_async(
+        self,
+        request: main_models.CreatePersonalPublicUrlRequest,
+    ) -> main_models.CreatePersonalPublicUrlResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_personal_public_url_with_options_async(request, headers, runtime)
 
     def create_personal_text_with_options(
         self,
@@ -4934,6 +5794,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_graph_schema_detail_with_options_async(request, headers, runtime)
 
+    def get_group_source_with_options(
+        self,
+        request: main_models.GetGroupSourceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetGroupSourceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.source_id):
+            body['sourceId'] = request.source_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetGroupSource',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/getGroupSource',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetGroupSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_group_source_with_options_async(
+        self,
+        request: main_models.GetGroupSourceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetGroupSourceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.source_id):
+            body['sourceId'] = request.source_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetGroupSource',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/getGroupSource',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetGroupSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_group_source(
+        self,
+        request: main_models.GetGroupSourceRequest,
+    ) -> main_models.GetGroupSourceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_group_source_with_options(request, headers, runtime)
+
+    async def get_group_source_async(
+        self,
+        request: main_models.GetGroupSourceRequest,
+    ) -> main_models.GetGroupSourceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_group_source_with_options_async(request, headers, runtime)
+
     def get_instance_expire_time_with_options(
         self,
         request: main_models.GetInstanceExpireTimeRequest,
@@ -5755,6 +6703,8 @@ class Client(OpenApiClient):
             body['expires'] = request.expires
         if not DaraCore.is_null(request.filename):
             body['filename'] = request.filename
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
         if not DaraCore.is_null(request.operating_object_name):
             body['operatingObjectName'] = request.operating_object_name
         if not DaraCore.is_null(request.scope):
@@ -5797,6 +6747,8 @@ class Client(OpenApiClient):
             body['expires'] = request.expires
         if not DaraCore.is_null(request.filename):
             body['filename'] = request.filename
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
         if not DaraCore.is_null(request.operating_object_name):
             body['operatingObjectName'] = request.operating_object_name
         if not DaraCore.is_null(request.scope):
@@ -7642,6 +8594,222 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_graphs_with_options_async(request, headers, runtime)
 
+    def list_group_directories_with_options(
+        self,
+        request: main_models.ListGroupDirectoriesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListGroupDirectoriesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.sort_field):
+            body['sortField'] = request.sort_field
+        if not DaraCore.is_null(request.sort_order):
+            body['sortOrder'] = request.sort_order
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListGroupDirectories',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/listGroupDirectories',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListGroupDirectoriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_group_directories_with_options_async(
+        self,
+        request: main_models.ListGroupDirectoriesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListGroupDirectoriesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.sort_field):
+            body['sortField'] = request.sort_field
+        if not DaraCore.is_null(request.sort_order):
+            body['sortOrder'] = request.sort_order
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListGroupDirectories',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/listGroupDirectories',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListGroupDirectoriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_group_directories(
+        self,
+        request: main_models.ListGroupDirectoriesRequest,
+    ) -> main_models.ListGroupDirectoriesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_group_directories_with_options(request, headers, runtime)
+
+    async def list_group_directories_async(
+        self,
+        request: main_models.ListGroupDirectoriesRequest,
+    ) -> main_models.ListGroupDirectoriesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_group_directories_with_options_async(request, headers, runtime)
+
+    def list_group_directory_with_options(
+        self,
+        tmp_req: main_models.ListGroupDirectoryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListGroupDirectoryResponse:
+        tmp_req.validate()
+        request = main_models.ListGroupDirectoryShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.source_types):
+            request.source_types_shrink = Utils.array_to_string_with_specified_style(tmp_req.source_types, 'sourceTypes', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.page):
+            body['page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.sort_field):
+            body['sortField'] = request.sort_field
+        if not DaraCore.is_null(request.sort_order):
+            body['sortOrder'] = request.sort_order
+        if not DaraCore.is_null(request.source_status):
+            body['sourceStatus'] = request.source_status
+        if not DaraCore.is_null(request.source_types_shrink):
+            body['sourceTypes'] = request.source_types_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListGroupDirectory',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/listGroupDirectory',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListGroupDirectoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_group_directory_with_options_async(
+        self,
+        tmp_req: main_models.ListGroupDirectoryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListGroupDirectoryResponse:
+        tmp_req.validate()
+        request = main_models.ListGroupDirectoryShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.source_types):
+            request.source_types_shrink = Utils.array_to_string_with_specified_style(tmp_req.source_types, 'sourceTypes', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.page):
+            body['page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.sort_field):
+            body['sortField'] = request.sort_field
+        if not DaraCore.is_null(request.sort_order):
+            body['sortOrder'] = request.sort_order
+        if not DaraCore.is_null(request.source_status):
+            body['sourceStatus'] = request.source_status
+        if not DaraCore.is_null(request.source_types_shrink):
+            body['sourceTypes'] = request.source_types_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListGroupDirectory',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/listGroupDirectory',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListGroupDirectoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_group_directory(
+        self,
+        request: main_models.ListGroupDirectoryRequest,
+    ) -> main_models.ListGroupDirectoryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_group_directory_with_options(request, headers, runtime)
+
+    async def list_group_directory_async(
+        self,
+        request: main_models.ListGroupDirectoryRequest,
+    ) -> main_models.ListGroupDirectoryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_group_directory_with_options_async(request, headers, runtime)
+
     def list_knowledge_base_directories_with_options(
         self,
         request: main_models.ListKnowledgeBaseDirectoriesRequest,
@@ -9060,6 +10228,102 @@ class Client(OpenApiClient):
         headers = main_models.ListVisibleKnowledgeBasesHeaders()
         return await self.list_visible_knowledge_bases_with_options_async(request, headers, runtime)
 
+    def move_group_resource_with_options(
+        self,
+        request: main_models.MoveGroupResourceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.MoveGroupResourceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.source_directory_id):
+            body['sourceDirectoryId'] = request.source_directory_id
+        if not DaraCore.is_null(request.source_id):
+            body['sourceId'] = request.source_id
+        if not DaraCore.is_null(request.target_directory_id):
+            body['targetDirectoryId'] = request.target_directory_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'MoveGroupResource',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/moveGroupResource',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MoveGroupResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def move_group_resource_with_options_async(
+        self,
+        request: main_models.MoveGroupResourceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.MoveGroupResourceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.source_directory_id):
+            body['sourceDirectoryId'] = request.source_directory_id
+        if not DaraCore.is_null(request.source_id):
+            body['sourceId'] = request.source_id
+        if not DaraCore.is_null(request.target_directory_id):
+            body['targetDirectoryId'] = request.target_directory_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'MoveGroupResource',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/moveGroupResource',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MoveGroupResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def move_group_resource(
+        self,
+        request: main_models.MoveGroupResourceRequest,
+    ) -> main_models.MoveGroupResourceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.move_group_resource_with_options(request, headers, runtime)
+
+    async def move_group_resource_async(
+        self,
+        request: main_models.MoveGroupResourceRequest,
+    ) -> main_models.MoveGroupResourceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.move_group_resource_with_options_async(request, headers, runtime)
+
     def move_knowledge_base_resource_with_options(
         self,
         request: main_models.MoveKnowledgeBaseResourceRequest,
@@ -9331,6 +10595,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.offline_announcement_with_options_async(request, headers, runtime)
+
+    def preview_group_source_with_options(
+        self,
+        request: main_models.PreviewGroupSourceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.PreviewGroupSourceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.source_id):
+            body['sourceId'] = request.source_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'PreviewGroupSource',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/previewGroupSource',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PreviewGroupSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def preview_group_source_with_options_async(
+        self,
+        request: main_models.PreviewGroupSourceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.PreviewGroupSourceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.source_id):
+            body['sourceId'] = request.source_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'PreviewGroupSource',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/previewGroupSource',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PreviewGroupSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def preview_group_source(
+        self,
+        request: main_models.PreviewGroupSourceRequest,
+    ) -> main_models.PreviewGroupSourceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.preview_group_source_with_options(request, headers, runtime)
+
+    async def preview_group_source_async(
+        self,
+        request: main_models.PreviewGroupSourceRequest,
+    ) -> main_models.PreviewGroupSourceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.preview_group_source_with_options_async(request, headers, runtime)
 
     def preview_knowledge_base_source_with_options(
         self,
@@ -10234,6 +11586,98 @@ class Client(OpenApiClient):
         headers = {}
         return await self.rename_source_with_options_async(request, headers, runtime)
 
+    def reparse_group_source_with_options(
+        self,
+        request: main_models.ReparseGroupSourceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ReparseGroupSourceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.force_sync):
+            body['forceSync'] = request.force_sync
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.source_id):
+            body['sourceId'] = request.source_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ReparseGroupSource',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/reparseGroupSource',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ReparseGroupSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reparse_group_source_with_options_async(
+        self,
+        request: main_models.ReparseGroupSourceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ReparseGroupSourceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.force_sync):
+            body['forceSync'] = request.force_sync
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.source_id):
+            body['sourceId'] = request.source_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ReparseGroupSource',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/reparseGroupSource',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ReparseGroupSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reparse_group_source(
+        self,
+        request: main_models.ReparseGroupSourceRequest,
+    ) -> main_models.ReparseGroupSourceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.reparse_group_source_with_options(request, headers, runtime)
+
+    async def reparse_group_source_async(
+        self,
+        request: main_models.ReparseGroupSourceRequest,
+    ) -> main_models.ReparseGroupSourceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.reparse_group_source_with_options_async(request, headers, runtime)
+
     def reparse_source_with_options(
         self,
         request: main_models.ReparseSourceRequest,
@@ -10321,6 +11765,114 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.reparse_source_with_options_async(request, headers, runtime)
+
+    def replace_group_source_file_with_options(
+        self,
+        request: main_models.ReplaceGroupSourceFileRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ReplaceGroupSourceFileResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.file_name):
+            body['fileName'] = request.file_name
+        if not DaraCore.is_null(request.file_path):
+            body['filePath'] = request.file_path
+        if not DaraCore.is_null(request.file_public_url):
+            body['filePublicUrl'] = request.file_public_url
+        if not DaraCore.is_null(request.file_record_id):
+            body['fileRecordId'] = request.file_record_id
+        if not DaraCore.is_null(request.force_sync):
+            body['forceSync'] = request.force_sync
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.source_id):
+            body['sourceId'] = request.source_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ReplaceGroupSourceFile',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/replaceGroupSourceFile',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ReplaceGroupSourceFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def replace_group_source_file_with_options_async(
+        self,
+        request: main_models.ReplaceGroupSourceFileRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ReplaceGroupSourceFileResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.file_name):
+            body['fileName'] = request.file_name
+        if not DaraCore.is_null(request.file_path):
+            body['filePath'] = request.file_path
+        if not DaraCore.is_null(request.file_public_url):
+            body['filePublicUrl'] = request.file_public_url
+        if not DaraCore.is_null(request.file_record_id):
+            body['fileRecordId'] = request.file_record_id
+        if not DaraCore.is_null(request.force_sync):
+            body['forceSync'] = request.force_sync
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.source_id):
+            body['sourceId'] = request.source_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ReplaceGroupSourceFile',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/replaceGroupSourceFile',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ReplaceGroupSourceFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def replace_group_source_file(
+        self,
+        request: main_models.ReplaceGroupSourceFileRequest,
+    ) -> main_models.ReplaceGroupSourceFileResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.replace_group_source_file_with_options(request, headers, runtime)
+
+    async def replace_group_source_file_async(
+        self,
+        request: main_models.ReplaceGroupSourceFileRequest,
+    ) -> main_models.ReplaceGroupSourceFileResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.replace_group_source_file_with_options_async(request, headers, runtime)
 
     def replace_knowledge_base_source_file_with_options(
         self,
@@ -11270,6 +12822,110 @@ class Client(OpenApiClient):
         headers = {}
         return await self.run_skill_with_options_async(request, headers, runtime)
 
+    def save_graph_draft_batch_define_with_options(
+        self,
+        tmp_req: main_models.SaveGraphDraftBatchDefineRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SaveGraphDraftBatchDefineResponse:
+        tmp_req.validate()
+        request = main_models.SaveGraphDraftBatchDefineShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.draft_change_ids):
+            request.draft_change_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.draft_change_ids, 'draftChangeIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.draft_change_ids_shrink):
+            body['draftChangeIds'] = request.draft_change_ids_shrink
+        if not DaraCore.is_null(request.graph_name):
+            body['graphName'] = request.graph_name
+        if not DaraCore.is_null(request.save_mode):
+            body['saveMode'] = request.save_mode
+        if not DaraCore.is_null(request.yaml_edit):
+            body['yamlEdit'] = request.yaml_edit
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SaveGraphDraftBatchDefine',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/saveGraphDraftBatchDefine',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SaveGraphDraftBatchDefineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def save_graph_draft_batch_define_with_options_async(
+        self,
+        tmp_req: main_models.SaveGraphDraftBatchDefineRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SaveGraphDraftBatchDefineResponse:
+        tmp_req.validate()
+        request = main_models.SaveGraphDraftBatchDefineShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.draft_change_ids):
+            request.draft_change_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.draft_change_ids, 'draftChangeIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.draft_change_ids_shrink):
+            body['draftChangeIds'] = request.draft_change_ids_shrink
+        if not DaraCore.is_null(request.graph_name):
+            body['graphName'] = request.graph_name
+        if not DaraCore.is_null(request.save_mode):
+            body['saveMode'] = request.save_mode
+        if not DaraCore.is_null(request.yaml_edit):
+            body['yamlEdit'] = request.yaml_edit
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SaveGraphDraftBatchDefine',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/saveGraphDraftBatchDefine',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SaveGraphDraftBatchDefineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def save_graph_draft_batch_define(
+        self,
+        request: main_models.SaveGraphDraftBatchDefineRequest,
+    ) -> main_models.SaveGraphDraftBatchDefineResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.save_graph_draft_batch_define_with_options(request, headers, runtime)
+
+    async def save_graph_draft_batch_define_async(
+        self,
+        request: main_models.SaveGraphDraftBatchDefineRequest,
+    ) -> main_models.SaveGraphDraftBatchDefineResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.save_graph_draft_batch_define_with_options_async(request, headers, runtime)
+
     def save_graph_draft_resource_with_options(
         self,
         request: main_models.SaveGraphDraftResourceRequest,
@@ -11815,6 +13471,8 @@ class Client(OpenApiClient):
             body['stream'] = request.stream
         if not DaraCore.is_null(request.task_execution_shrink):
             body['taskExecution'] = request.task_execution_shrink
+        if not DaraCore.is_null(request.work_mode):
+            body['workMode'] = request.work_mode
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),
@@ -11877,6 +13535,8 @@ class Client(OpenApiClient):
             body['stream'] = request.stream
         if not DaraCore.is_null(request.task_execution_shrink):
             body['taskExecution'] = request.task_execution_shrink
+        if not DaraCore.is_null(request.work_mode):
+            body['workMode'] = request.work_mode
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),
@@ -11955,6 +13615,8 @@ class Client(OpenApiClient):
             body['stream'] = request.stream
         if not DaraCore.is_null(request.task_execution_shrink):
             body['taskExecution'] = request.task_execution_shrink
+        if not DaraCore.is_null(request.work_mode):
+            body['workMode'] = request.work_mode
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),
@@ -12026,6 +13688,8 @@ class Client(OpenApiClient):
             body['stream'] = request.stream
         if not DaraCore.is_null(request.task_execution_shrink):
             body['taskExecution'] = request.task_execution_shrink
+        if not DaraCore.is_null(request.work_mode):
+            body['workMode'] = request.work_mode
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),
@@ -12097,6 +13761,8 @@ class Client(OpenApiClient):
             body['stream'] = request.stream
         if not DaraCore.is_null(request.task_execution_shrink):
             body['taskExecution'] = request.task_execution_shrink
+        if not DaraCore.is_null(request.work_mode):
+            body['workMode'] = request.work_mode
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),
@@ -12159,6 +13825,8 @@ class Client(OpenApiClient):
             body['stream'] = request.stream
         if not DaraCore.is_null(request.task_execution_shrink):
             body['taskExecution'] = request.task_execution_shrink
+        if not DaraCore.is_null(request.work_mode):
+            body['workMode'] = request.work_mode
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),
@@ -13291,6 +14959,198 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_graph_info_with_options_async(request, headers, runtime)
+
+    def update_group_directory_with_options(
+        self,
+        request: main_models.UpdateGroupDirectoryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateGroupDirectoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateGroupDirectory',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/updateGroupDirectory',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateGroupDirectoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_group_directory_with_options_async(
+        self,
+        request: main_models.UpdateGroupDirectoryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateGroupDirectoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.directory_id):
+            body['directoryId'] = request.directory_id
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateGroupDirectory',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/updateGroupDirectory',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateGroupDirectoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_group_directory(
+        self,
+        request: main_models.UpdateGroupDirectoryRequest,
+    ) -> main_models.UpdateGroupDirectoryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_group_directory_with_options(request, headers, runtime)
+
+    async def update_group_directory_async(
+        self,
+        request: main_models.UpdateGroupDirectoryRequest,
+    ) -> main_models.UpdateGroupDirectoryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_group_directory_with_options_async(request, headers, runtime)
+
+    def update_group_source_content_with_options(
+        self,
+        request: main_models.UpdateGroupSourceContentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateGroupSourceContentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.content):
+            body['content'] = request.content
+        if not DaraCore.is_null(request.force_sync):
+            body['forceSync'] = request.force_sync
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.source_id):
+            body['sourceId'] = request.source_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateGroupSourceContent',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/updateGroupSourceContent',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateGroupSourceContentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_group_source_content_with_options_async(
+        self,
+        request: main_models.UpdateGroupSourceContentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateGroupSourceContentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.content):
+            body['content'] = request.content
+        if not DaraCore.is_null(request.force_sync):
+            body['forceSync'] = request.force_sync
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.source_id):
+            body['sourceId'] = request.source_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateGroupSourceContent',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/updateGroupSourceContent',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateGroupSourceContentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_group_source_content(
+        self,
+        request: main_models.UpdateGroupSourceContentRequest,
+    ) -> main_models.UpdateGroupSourceContentResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_group_source_content_with_options(request, headers, runtime)
+
+    async def update_group_source_content_async(
+        self,
+        request: main_models.UpdateGroupSourceContentRequest,
+    ) -> main_models.UpdateGroupSourceContentResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_group_source_content_with_options_async(request, headers, runtime)
 
     def update_knowledge_base_directory_with_options(
         self,

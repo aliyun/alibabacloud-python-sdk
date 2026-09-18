@@ -19,6 +19,7 @@ class SendChatMessageShrinkRequest(DaraModel):
         stream: bool = None,
         task_execution_shrink: str = None,
         tenant_id: str = None,
+        work_mode: str = None,
     ):
         # The message body from the user.
         # 
@@ -28,15 +29,15 @@ class SendChatMessageShrinkRequest(DaraModel):
         self.content_type = content_type
         # The list of digital employee names. A single string can be passed for backward compatibility with the legacy format.
         self.digital_employee_name_shrink = digital_employee_name_shrink
-        # Specifies whether to enable direct connection mode. If set to true, the regular scenario routing is skipped and the direct conversation scenario is entered.
+        # Specifies whether to enable direct connection mode. If set to true, the standard scenario routing is skipped and the direct conversation scenario is entered directly.
         self.direct_chat = direct_chat
-        # Specifies whether to enable web search. Default value: False. In task execution scenarios (when taskExecution is passed), the task configuration takes precedence.
+        # Specifies whether to enable web search. Default value: False. In task execution scenarios (when taskExecution is provided), the task configuration takes precedence.
         self.enable_web_search = enable_web_search
         # The list of file references. Each item is an object, and fileId is required (returned by uploadChatFile).
         self.files_shrink = files_shrink
         # The abstract model tier. Valid values: quick, standard, and flagship. If not specified, new sessions use standard, and existing sessions retain the current session tier.
         self.model = model
-        # Specifies whether to reuse the most recent session of the digital employee when sessionId is not passed (CLI scenario). Default value: false, which creates a new session.
+        # Specifies whether to reuse the most recent session of the digital employee when sessionId is not provided (CLI scenario). Default value: false, which creates a new session.
         self.reuse_last_session = reuse_last_session
         # The session ID.
         self.session_id = session_id
@@ -46,6 +47,13 @@ class SendChatMessageShrinkRequest(DaraModel):
         self.task_execution_shrink = task_execution_shrink
         # The effective tenant ID.
         self.tenant_id = tenant_id
+        # The session work mode. Valid values:
+        # - ask: Quick Q&A. Tools, skills, and connectors are trimmed, and single-turn direct answers are provided.
+        # - work: Deep work. This is the default value.
+        # - direct: Direct connection mode (request-level). The sandbox is not started and no context pollution occurs. This is equivalent to directChat=true.
+        # 
+        # The ask and work modes are session-level: the mode is selected and fixed when a session is created. By default, follow-up messages inherit the session mode. If an explicitly provided value is inconsistent with the session mode, a parameter error is returned. To switch modes, create a new session or fork the existing one. In multi-digital-employee or task execution scenarios, if ask is provided, work takes effect instead. When directChat=true, this parameter is ignored.
+        self.work_mode = work_mode
 
     def validate(self):
         pass
@@ -91,6 +99,9 @@ class SendChatMessageShrinkRequest(DaraModel):
         if self.tenant_id is not None:
             result['tenantId'] = self.tenant_id
 
+        if self.work_mode is not None:
+            result['workMode'] = self.work_mode
+
         return result
 
     def from_map(self, m: dict = None):
@@ -130,6 +141,9 @@ class SendChatMessageShrinkRequest(DaraModel):
 
         if m.get('tenantId') is not None:
             self.tenant_id = m.get('tenantId')
+
+        if m.get('workMode') is not None:
+            self.work_mode = m.get('workMode')
 
         return self
 

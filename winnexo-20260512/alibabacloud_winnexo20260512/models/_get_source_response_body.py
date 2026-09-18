@@ -50,7 +50,7 @@ class GetSourceResponseBody(DaraModel):
         self.gmt_modified = gmt_modified
         # Indicates whether notes exist.
         self.has_notes = has_notes
-        # Indicates whether settings configuration exists.
+        # Indicates whether settings configurations exist.
         self.has_settings = has_settings
         # Indicates whether structured tables exist.
         self.has_structured_tables = has_structured_tables
@@ -64,31 +64,31 @@ class GetSourceResponseBody(DaraModel):
         self.notes = notes
         # The object bindings.
         self.object_bindings = object_bindings
-        # The associated variable ID.
+        # The ID of the associated variable.
         self.object_id = object_id
         # The object type, such as customer. This field has a value when type is set to mention.
         self.object_type = object_type
-        # The digital employee name (operating object name, optional).
+        # The name of the digital employee (operating object name, optional).
         self.operating_object_name = operating_object_name
         # The request ID.
         self.request_id = request_id
         # The task scope.
         self.scope = scope
-        # The user profile settings.
+        # The user card information settings.
         self.settings = settings
-        # The skill output ID (carried when the output is saved as a resource).
+        # The skill output ID. This ID is included when the output is saved as a resource.
         self.skill_output_id = skill_output_id
         # The data source ID.
         self.source_id = source_id
         # The knowledge base (KB) ownership type. Valid values:
         # - aliding_kb_doc: DingTalk knowledge base document.
-        # - normal: common knowledge.
+        # - normal: standard knowledge.
         self.source_kind = source_kind
-        # The resource tags (optional, a JSON string list such as ["tagA","tagB"]).
+        # The resource tags (optional). The value is a JSON string list, such as ["tagA","tagB"].
         self.source_tags = source_tags
         # The resource type.
         self.source_type = source_type
-        # The final status of the message.
+        # The final message status.
         self.status = status
         # The list of structured tables.
         self.structured_tables = structured_tables
@@ -302,13 +302,13 @@ class GetSourceResponseBodyUnstructuredDocs(DaraModel):
         self.completion_time = completion_time
         # The file name, including the file name extension.
         self.file_name = file_name
-        # The file record ID (optional, corresponding to settings.file_record_id).
+        # The file record ID (optional). This value corresponds to settings.file_record_id.
         self.file_record_id = file_record_id
         # The file type. Valid values:
         # - **file**: file.
         # - **folder**: folder.
         self.file_type = file_type
-        # The session analysis result in OSS URL format. The URL expires in one hour.
+        # The session analysis result in OSS URL format. The URL expires after one hour.
         self.oss_url = oss_url
         # The DocumentAgent semantic ID.
         self.semantics_id = semantics_id
@@ -370,9 +370,9 @@ class GetSourceResponseBodyObjectBindings(DaraModel):
         object_id: str = None,
         object_type: str = None,
     ):
-        # The semantic graph name to which the object belongs.
+        # The name of the semantic graph to which the object belongs.
         self.graph_name = graph_name
-        # The ID of the recommended item, which can be a **feedId** or a micro-application ID.
+        # The ID of the recommended item. The value can be a **feedId** or a mini-app ID.
         self.object_id = object_id
         # The object type, such as customer. This field has a value when type is set to mention.
         self.object_type = object_type

@@ -17,7 +17,7 @@ class ListRolesResponseBody(DaraModel):
     ):
         # The response status code.
         self.code = code
-        # The MCP card list.
+        # The list of MCP cards.
         self.items = items
         # The prompt message.
         self.message = message
@@ -84,7 +84,7 @@ class ListRolesResponseBodyItems(DaraModel):
         self.role_code = role_code
         # The role name.
         self.role_name = role_name
-        # Indicates whether the enable/disable operation is allowed. Super administrators and application users cannot be switched.
+        # Indicates whether the enable/disable operation is allowed. Super administrators and application users cannot be toggled.
         self.toggleable = toggleable
 
     def validate(self):

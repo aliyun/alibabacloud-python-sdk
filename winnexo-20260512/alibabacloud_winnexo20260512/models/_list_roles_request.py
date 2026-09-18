@@ -9,7 +9,7 @@ class ListRolesRequest(DaraModel):
         self,
         tenant_id: str = None,
     ):
-        # The tenant ID. This is a common parameter. You can pass it explicitly by using --tenant-id in winnexo-cli.
+        # The tenant ID. This is a common parameter. In winnexo-cli, pass it explicitly with --tenant-id.
         self.tenant_id = tenant_id
 
     def validate(self):

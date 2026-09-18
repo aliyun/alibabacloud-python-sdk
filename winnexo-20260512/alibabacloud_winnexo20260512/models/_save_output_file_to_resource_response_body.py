@@ -15,13 +15,13 @@ class SaveOutputFileToResourceResponseBody(DaraModel):
         request_id: str = None,
         results: List[main_models.SaveOutputFileToResourceResponseBodyResults] = None,
     ):
-        # The business status code. A value of 200 indicates success. A failure returns a backend error code (ERR.* / InvalidParameter.*).
+        # The business status code. A value of 200 indicates success. A failure returns a backend error code (ERR.* or InvalidParameter.*).
         self.code = code
-        # The error description. This value is empty on success.
+        # The error description. This value is empty when the operation succeeds.
         self.message = message
         # The request trace ID.
         self.request_id = request_id
-        # The per-record results in the same order as the input itemIds. A single record failure does not affect other records.
+        # The per-record results, in the same order as the input itemIds. A failure of a single record does not affect other records.
         self.results = results
 
     def validate(self):
@@ -79,13 +79,13 @@ class SaveOutputFileToResourceResponseBodyResults(DaraModel):
         source_id: str = None,
         success: bool = None,
     ):
-        # The business error code (i18n key). Returned on failure.
+        # The business error code (i18n key) returned on failure.
         self.error_code = error_code
-        # The error description, localized based on the request Accept-Language header. Returned on failure.
+        # The error description returned on failure, localized based on the request locale.
         self.error_message = error_message
         # The output detail ID.
         self.item_id = item_id
-        # The sourceId of the newly created resource. Returned on success.
+        # The sourceId of the newly created resource, returned on success.
         self.source_id = source_id
         # Indicates whether the operation is successful.
         self.success = success

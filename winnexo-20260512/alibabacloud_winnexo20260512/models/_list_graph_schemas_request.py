@@ -13,11 +13,11 @@ class ListGraphSchemasRequest(DaraModel):
         semantic_tags: List[str] = None,
         tenant_id: str = None,
     ):
-        # 关键词，匹配 graphName / displayName（可选，忽略大小写）
+        # The keyword for fuzzy match of component data in the form.
         self.keyword = keyword
-        # 语义标签过滤（可选，命中任一标签即保留）
+        # The semantic tags used for filtering. A graph is retained if any tag matches.
         self.semantic_tags = semantic_tags
-        # 租户ID，公共参数，缺省时使用调用方默认租户
+        # The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
 
     def validate(self):

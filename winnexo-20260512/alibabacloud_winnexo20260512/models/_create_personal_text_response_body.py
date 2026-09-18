@@ -19,7 +19,7 @@ class CreatePersonalTextResponseBody(DaraModel):
     ):
         # SUCCESS indicates success. In case of failure, the corresponding error type is returned, such as ERR_BAD_REQUEST, ERR_VALIDATION_FAILED, or ERR_INTERNAL_SERVER_ERROR.
         self.code = code
-        # The folder ID.
+        # The directory ID.
         self.directory_id = directory_id
         # The creation time in ISO 8601 format.
         self.gmt_create = gmt_create
@@ -29,19 +29,19 @@ class CreatePersonalTextResponseBody(DaraModel):
         self.name = name
         # The request ID.
         self.request_id = request_id
-        # The travel scale of the integration partner.
+        # The travel scale of the partner.
         self.scope = scope
         # The source ID.
         self.source_id = source_id
         # The filter status.
         # 
-        # - 0: All
+        # - 0: All.
         # 
-        # - 1: Unconfirmed
+        # - 1: Unconfirmed.
         # 
-        # - 3: Ignored
+        # - 3: Ignored.
         # 
-        # - 4: Rejected
+        # - 4: Rejected.
         self.status = status
 
     def validate(self):

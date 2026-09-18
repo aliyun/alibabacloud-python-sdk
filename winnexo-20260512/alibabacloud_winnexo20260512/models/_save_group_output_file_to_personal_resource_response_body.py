@@ -17,11 +17,11 @@ class SaveGroupOutputFileToPersonalResourceResponseBody(DaraModel):
     ):
         # SUCCESS indicates success. In case of failure, the corresponding error type is returned, such as ERR_BAD_REQUEST, ERR_VALIDATION_FAILED, or ERR_INTERNAL_SERVER_ERROR.
         self.code = code
-        # The status code description.
+        # The description of the status code.
         self.message = message
         # The request trace ID.
         self.request_id = request_id
-        # The result list.
+        # The list of results.
         self.results = results
 
     def validate(self):
@@ -79,13 +79,13 @@ class SaveGroupOutputFileToPersonalResourceResponseBodyResults(DaraModel):
         source_id: str = None,
         success: bool = None,
     ):
-        # The business error code (i18n key), returned on failure.
+        # The business error code (i18n key) returned upon failure.
         self.error_code = error_code
-        # The error description (internationalized based on the request locale), returned on failure.
+        # The error description returned upon failure. The description is internationalized based on the request locale.
         self.error_message = error_message
         # The output item ID.
         self.item_id = item_id
-        # The sourceId of the newly created resource, returned on success.
+        # The sourceId of the newly created resource, returned upon success.
         self.source_id = source_id
         # Indicates whether the operation is successful.
         self.success = success

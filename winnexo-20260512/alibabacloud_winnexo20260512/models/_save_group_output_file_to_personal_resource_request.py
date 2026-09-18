@@ -26,8 +26,8 @@ class SaveGroupOutputFileToPersonalResourceRequest(DaraModel):
         # This parameter is required.
         self.item_ids = item_ids
         # The save mode. Valid values:
-        # - link: creates a link (1:1 idempotent, editing the output synchronizes the resource).
-        # - copy: creates a copy (unlimited times, snapshot).
+        # - link: Links the output. This mode is idempotent on a 1:1 basis. Editing the output synchronizes the resource.
+        # - copy: Copies the output. This mode allows unlimited copies and creates a snapshot.
         # 
         # This parameter is required.
         self.mode = mode

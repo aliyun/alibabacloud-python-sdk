@@ -15,7 +15,7 @@ class ListAuthorizedAgentsRequest(DaraModel):
         self.permission = permission
         # The target user ID.
         self.target_user_id = target_user_id
-        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
+        # The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
 
     def validate(self):

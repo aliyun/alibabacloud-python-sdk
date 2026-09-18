@@ -21,13 +21,16 @@ class GetSourceUploadSignatureResponseBody(DaraModel):
     ):
         # The response status code.
         self.code = code
-        # The content type. Valid values: Text and Markdown.
+        # The content type. Valid values:
+        # 
+        # - Text
+        # - Markdown
         self.content_type = content_type
         # The validity period of the task, in seconds.
         self.expires_in = expires_in
         # The publicly accessible URL of the DingTalk online document.
         self.file_public_url = file_public_url
-        # The file record ID. This parameter is optional and corresponds to settings.file_record_id.
+        # The file record ID (optional, corresponding to settings.file_record_id).
         self.file_record_id = file_record_id
         # The Yida attachment URL.
         self.file_url = file_url

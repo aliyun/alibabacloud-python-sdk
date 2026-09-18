@@ -19,7 +19,7 @@ class CreatePersonalFileResponseBody(DaraModel):
     ):
         # The response status code.
         self.code = code
-        # The directory ID.
+        # The folder ID.
         self.directory_id = directory_id
         # The creation time.
         self.gmt_create = gmt_create

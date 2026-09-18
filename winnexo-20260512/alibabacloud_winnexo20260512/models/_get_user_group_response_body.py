@@ -17,19 +17,19 @@ class GetUserGroupResponseBody(DaraModel):
         request_id: str = None,
         user_group: Any = None,
     ):
-        # **The list of direct child user groups.**
+        # **Direct child user group list**
         self.child_groups = child_groups
         # The status code.
         self.code = code
-        # **The list of direct members in the current user group.**
+        # **Direct member list of the current user group**
         self.members = members
         # The description of the status code.
         self.message = message
-        # **The parent user group information. This is empty for the root node.**
+        # **Parent user group information. This value is empty for the root node.**
         self.parent_group = parent_group
         # The request ID.
         self.request_id = request_id
-        # **The target user group information.**
+        # **Target user group information**
         self.user_group = user_group
 
     def validate(self):

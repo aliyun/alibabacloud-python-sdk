@@ -1,3 +1,29 @@
+2026-09-18 Version: 1.5.0
+- Support API CreateGroupAliDingDoc.
+- Support API CreateGroupDirectory.
+- Support API CreateGroupFeishuChat.
+- Support API CreateGroupFile.
+- Support API CreateGroupPublicUrl.
+- Support API CreateGroupText.
+- Support API CreateKnowledgeBasePublicUrl.
+- Support API CreatePersonalPublicUrl.
+- Support API GetGroupSource.
+- Support API ListGroupDirectories.
+- Support API ListGroupDirectory.
+- Support API MoveGroupResource.
+- Support API PreviewGroupSource.
+- Support API ReparseGroupSource.
+- Support API ReplaceGroupSourceFile.
+- Support API SaveGraphDraftBatchDefine.
+- Support API UpdateGroupDirectory.
+- Support API UpdateGroupSourceContent.
+- Update API GetSourceUploadSignature: add request parameters groupId.
+- Update API SendAsyncChatMessage: add request parameters workMode.
+- Update API SendAsyncChatMessage: add response parameters Body.workMode.
+- Update API SendChatMessage: add request parameters workMode.
+- Update API SendChatMessage: add response parameters Body.workMode.
+
+
 2026-09-11 Version: 1.4.0
 - Support API CreateGraph.
 - Support API GetAliDingMinutesContent.

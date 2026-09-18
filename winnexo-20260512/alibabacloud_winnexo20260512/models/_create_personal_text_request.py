@@ -17,7 +17,7 @@ class CreatePersonalTextRequest(DaraModel):
     ):
         # The pipeline description.
         self.description = description
-        # The folder ID.
+        # The directory ID.
         self.directory_id = directory_id
         # The image name.
         # 
@@ -25,7 +25,7 @@ class CreatePersonalTextRequest(DaraModel):
         self.name = name
         # The name of the digital employee (operating object name, optional).
         self.operating_object_name = operating_object_name
-        # 资源标签 JSON 字符串列表
+        # The list of resource tag JSON strings.
         self.source_tags = source_tags
         # The tenant ID.
         self.tenant_id = tenant_id

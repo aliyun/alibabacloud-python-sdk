@@ -13,15 +13,15 @@ class GetSkillRequest(DaraModel):
         tenant_id: str = None,
         view_mode: str = None,
     ):
-        # Specifies whether to return the complete file tree. Default value: False. This avoids large response payloads.
+        # Specifies whether to return the complete file tree. Default value: False. This avoids large responses.
         self.include_skill_files = include_skill_files
         # The skill code. This parameter has a value when type is set to skill.
         self.skill_code = skill_code
         # The skill name.
         self.skill_name = skill_name
-        # The tenant ID to which the task belongs.
+        # The ID of the tenant to which the task belongs.
         self.tenant_id = tenant_id
-        # The view mode. Valid values: draft (draft/editing view) or published (published view, default).
+        # The view mode. Valid values: draft (draft/editing view) and published (published view, default).
         self.view_mode = view_mode
 
     def validate(self):

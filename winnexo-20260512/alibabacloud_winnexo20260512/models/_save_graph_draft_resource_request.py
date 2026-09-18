@@ -14,25 +14,27 @@ class SaveGraphDraftResourceRequest(DaraModel):
         tenant_id: str = None,
         yaml_edit: str = None,
     ):
-        # 资源小类：resourceType=object 时固定 object_type；resourceType=element 时为 indicator / logic / process / rule / analysis 之一
+        # The element type. Currently, only text is supported.
         # 
         # This parameter is required.
         self.element_type = element_type
-        # 图谱名称，须已存在（active 记录）
+        # The graph name.
         # 
         # This parameter is required.
         self.graph_name = graph_name
-        # 资源名（创建后不可改名，底层校验）
+        # The resource name.
         # 
         # This parameter is required.
         self.resource_name = resource_name
-        # 资源大类：object（对象）/ element（业务元素）
+        # The resource type.
+        # 
+        # This parameter is set to **instance**, which indicates that the resource type is instance.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # 租户ID，公共参数，缺省时使用调用方默认租户
+        # The tenant ID.
         self.tenant_id = tenant_id
-        # 单资源 YAML 文本
+        # The original YAML text of the graph schema trimmed by READ permissions, with $ref references within the authorized subgraph retained.
         # 
         # This parameter is required.
         self.yaml_edit = yaml_edit

@@ -30,7 +30,7 @@ class ListOutputFilesResponseBody(DaraModel):
         self.page_size = page_size
         # The request trace ID.
         self.request_id = request_id
-        # The total number of outputs that match the specified conditions.
+        # The total number of outputs that meet the specified conditions.
         self.total = total
 
     def validate(self):
@@ -112,7 +112,7 @@ class ListOutputFilesResponseBodyItems(DaraModel):
         skill_output_id: str = None,
         task_id: str = None,
     ):
-        # The conversation ID.
+        # The session ID.
         self.conversation_id = conversation_id
         # The creation time in ISO 8601 format.
         self.gmt_create = gmt_create
@@ -126,13 +126,13 @@ class ListOutputFilesResponseBodyItems(DaraModel):
         self.output_id = output_id
         # The output detail list.
         self.output_items = output_items
-        # The output type: `conversation/skill/task`.
+        # The output type. Valid values: `conversation/skill/task`.
         self.output_type = output_type
         # The internationalized display name of the output type.
         self.output_type_display_name = output_type_display_name
         # The skill output ID.
         self.skill_output_id = skill_output_id
-        # The task ID.
+        # The node ID.
         self.task_id = task_id
 
     def validate(self):
@@ -244,9 +244,9 @@ class ListOutputFilesResponseBodyItemsOutputItems(DaraModel):
     ):
         # The creation time in ISO 8601 format.
         self.create_time = create_time
-        # The email information. This field is present when the output type is email.
+        # The email information. This field is present only when the output type is email.
         self.email_info = email_info
-        # The file information. This field is present when the output type is file.
+        # The file information. This field is present only when the output type is file.
         self.file_info = file_info
         # The database creation time in ISO 8601 format.
         self.gmt_create = gmt_create
@@ -264,11 +264,11 @@ class ListOutputFilesResponseBodyItemsOutputItems(DaraModel):
         self.output_item_id = output_item_id
         # Indicates whether sharing is enabled.
         self.share_enabled = share_enabled
-        # The share token that is present when sharing is enabled. You can use this token to access the public share preview API.
+        # The share token. This field is present only when sharing is enabled. You can use this token to access the public share preview endpoint.
         self.share_token = share_token
         # The skill output ID.
         self.skill_output_id = skill_output_id
-        # The slides information. This field is present when the output type is slides.
+        # The slides information. This field is present only when the output type is slides.
         self.slides_info = slides_info
         # The task execution ID.
         self.task_execution_id = task_execution_id
@@ -505,7 +505,7 @@ class ListOutputFilesResponseBodyItemsOutputItemsEmailInfo(DaraModel):
     ):
         # The email body.
         self.body = body
-        # The content type, such as MARKDOWN/JSONML/HTML.
+        # The content type, such as MARKDOWN, JSONML, or HTML.
         self.content_type = content_type
         # The recipient list.
         self.recipients = recipients

@@ -13,7 +13,7 @@ class GetUserRequest(DaraModel):
     ):
         # The ID of the tenant to which the task belongs.
         self.tenant_id = tenant_id
-        # The WINNEXO logon account. This is a unique identifier and cannot be empty.
+        # The WINNEXO logon account. This parameter is a unique identifier and cannot be empty.
         self.wn_account_id = wn_account_id
         # The WINNEXO platform user ID. Specify either this parameter or accountId.
         self.wn_user_id = wn_user_id

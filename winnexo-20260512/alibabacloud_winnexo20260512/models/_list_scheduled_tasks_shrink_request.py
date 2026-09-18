@@ -19,9 +19,9 @@ class ListScheduledTasksShrinkRequest(DaraModel):
     ):
         # The ID of the collaboration group (such as cg_101). If specified, a group task is created (the caller must be a valid group member). If left empty, a personal task is created.
         self.collaboration_group_id = collaboration_group_id
-        # Specifies whether to return only tasks created by the caller. This parameter takes effect only in the group dimension (in the personal dimension, only the caller\\"s own tasks are returned). If not specified, no filtering is applied.
+        # Specifies whether to return only tasks created by the caller. This parameter takes effect only in the group dimension. In the personal dimension, only the caller\\"s own tasks are always returned. If not specified, no filtering is applied.
         self.creator_only = creator_only
-        # The keyword of the rule name for fuzzy match.
+        # The keyword of the rule name, used for fuzzy match.
         self.keyword = keyword
         # The maximum number of entries to return in this request.
         self.max_results = max_results
@@ -33,7 +33,7 @@ class ListScheduledTasksShrinkRequest(DaraModel):
         # 
         # > The maximum number of entries per page is 30.
         self.page_size = page_size
-        # The tenant ID that takes effect.
+        # The ID of the effective tenant.
         self.tenant_id = tenant_id
         # Filters by visibility. Valid values:
         # - PRIVATE: visible only to the creator and group owner.

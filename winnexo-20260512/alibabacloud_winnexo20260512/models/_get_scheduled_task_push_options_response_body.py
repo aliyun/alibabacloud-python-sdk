@@ -20,9 +20,9 @@ class GetScheduledTaskPushOptionsResponseBody(DaraModel):
         self.channels = channels
         # The status code.
         self.code = code
-        # The prompt displayed when no third-party accounts are bound.
+        # The hint displayed when no third-party accounts are bound.
         self.empty_hint = empty_hint
-        # The prompt message.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -170,7 +170,7 @@ class GetScheduledTaskPushOptionsResponseBodyChannelsMethods(DaraModel):
     ):
         # The reason why the option is grayed out.
         self.disabled_reason = disabled_reason
-        # The feature switch. This parameter is optional when type is set to web_search.
+        # Specifies whether the feature is enabled. This parameter is optional when type is set to web_search.
         # 
         # This parameter is required.
         self.enabled = enabled

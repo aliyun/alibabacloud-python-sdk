@@ -20,7 +20,7 @@ class SaveOutputFileToResourceShrinkRequest(DaraModel):
         self.item_ids_shrink = item_ids_shrink
         # The save mode. Valid values:
         # - link: Links the resource to the output in a 1:1 idempotent manner. Edits to the output are synchronized to the resource.
-        # - copy: Creates a snapshot copy with no limit on the number of copies.
+        # - copy: Creates a snapshot copy. No limit on the number of copies.
         self.mode = mode
         # The tenant ID. This is a common parameter. In winnexo-cli, pass it explicitly with --tenant-id.
         self.tenant_id = tenant_id

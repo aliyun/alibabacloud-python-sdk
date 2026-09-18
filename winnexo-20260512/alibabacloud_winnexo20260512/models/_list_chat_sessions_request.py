@@ -21,7 +21,7 @@ class ListChatSessionsRequest(DaraModel):
         self.page = page
         # The maximum number of data records to read in this request.
         self.page_size = page_size
-        # The tenant ID to which the task belongs.
+        # The ID of the tenant to which the node belongs.
         self.tenant_id = tenant_id
 
     def validate(self):

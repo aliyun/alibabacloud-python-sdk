@@ -15,19 +15,19 @@ class UpdateGraphInfoResponseBody(DaraModel):
         request_id: str = None,
         updated: bool = None,
     ):
-        # 更新后的业务说明，未设置时为空
+        # The business description of the knowledge graph. If not configured, the value is an empty string.
         self.business_profile = business_profile
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # SUCCESS indicates success. In failure cases, the corresponding error type is returned, such as ERR_BAD_REQUEST, ERR_VALIDATION_FAILED, or ERR_INTERNAL_SERVER_ERROR.
         self.code = code
-        # 更新后的图谱展示名，未设置时为空
+        # The display name of the knowledge graph.
         self.display_name = display_name
-        # 图谱名称
+        # The name of the knowledge graph.
         self.graph_name = graph_name
-        # 错误描述，成功时为空
+        # The description of the status code.
         self.message = message
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 是否更新成功
+        # The updated items.
         self.updated = updated
 
     def validate(self):

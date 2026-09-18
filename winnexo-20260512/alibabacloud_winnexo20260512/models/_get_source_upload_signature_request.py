@@ -10,11 +10,15 @@ class GetSourceUploadSignatureRequest(DaraModel):
         content_type: str = None,
         expires: int = None,
         filename: str = None,
+        group_id: str = None,
         operating_object_name: str = None,
         scope: str = None,
         tenant_id: str = None,
     ):
-        # The content type. Valid values: Text and Markdown.
+        # The content type. Valid values:
+        # 
+        # - Text
+        # - Markdown
         self.content_type = content_type
         # The expiration time of the signed URL, in seconds. Default value: 3600.
         self.expires = expires
@@ -22,7 +26,9 @@ class GetSourceUploadSignatureRequest(DaraModel):
         # 
         # This parameter is required.
         self.filename = filename
-        # The name of the digital employee (operating object name). This parameter is optional.
+        # The collaboration space ID passed from the frontend. This parameter is required when scope is set to group. The value must be a space accessible to the current user and is used in the OSS path for locating. The value must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). This parameter is not used for other scope values.
+        self.group_id = group_id
+        # The name of the digital employee (operating object name, optional).
         self.operating_object_name = operating_object_name
         # The permission scope.
         self.scope = scope
@@ -46,6 +52,9 @@ class GetSourceUploadSignatureRequest(DaraModel):
         if self.filename is not None:
             result['filename'] = self.filename
 
+        if self.group_id is not None:
+            result['groupId'] = self.group_id
+
         if self.operating_object_name is not None:
             result['operatingObjectName'] = self.operating_object_name
 
@@ -67,6 +76,9 @@ class GetSourceUploadSignatureRequest(DaraModel):
 
         if m.get('filename') is not None:
             self.filename = m.get('filename')
+
+        if m.get('groupId') is not None:
+            self.group_id = m.get('groupId')
 
         if m.get('operatingObjectName') is not None:
             self.operating_object_name = m.get('operatingObjectName')

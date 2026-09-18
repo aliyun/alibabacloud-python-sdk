@@ -51,7 +51,7 @@ class GetScheduledTaskExecutionDetailResponseBody(DaraModel):
         self.files = files
         # The creation time in ISO 8601 format.
         self.gmt_create = gmt_create
-        # The status code description.
+        # The description of the status code.
         self.message = message
         # The extended metadata.
         self.metadata = metadata
@@ -75,7 +75,7 @@ class GetScheduledTaskExecutionDetailResponseBody(DaraModel):
         self.trigger_info = trigger_info
         # The trigger type.
         self.trigger_type = trigger_type
-        # The visibility scope of the execution record, which is always equal to the visibility scope of the associated task. Valid values: PRIVATE, COLLABORATIVE, and PUBLIC. This field is empty for personal task executions.
+        # The visibility scope of the execution record, which is always the same as the visibility scope of the associated task. Valid values: PRIVATE, COLLABORATIVE, and PUBLIC. This value is empty for personal task executions.
         self.visibility = visibility
 
     def validate(self):
@@ -243,7 +243,7 @@ class GetScheduledTaskExecutionDetailResponseBodyTriggerInfo(DaraModel):
         self,
         triggered_by: str = None,
     ):
-        # The user identifier that triggered the execution.
+        # The identifier of the user who triggered the execution.
         self.triggered_by = triggered_by
 
     def validate(self):

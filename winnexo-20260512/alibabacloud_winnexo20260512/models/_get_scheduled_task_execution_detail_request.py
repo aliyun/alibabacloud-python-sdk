@@ -14,7 +14,7 @@ class GetScheduledTaskExecutionDetailRequest(DaraModel):
         # 
         # This parameter is required.
         self.execution_id = execution_id
-        # The tenant ID that takes effect.
+        # The ID of the effective tenant.
         self.tenant_id = tenant_id
 
     def validate(self):

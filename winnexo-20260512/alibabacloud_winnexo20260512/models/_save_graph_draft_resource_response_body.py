@@ -19,27 +19,27 @@ class SaveGraphDraftResourceResponseBody(DaraModel):
         resource_name: str = None,
         resource_type: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The business status code. A value of 200 indicates success. A failure returns a backend error code (ERR.* / InvalidParameter.*).
         self.code = code
-        # 草稿变更 ID；内容与在线完全一致被跳过时为 null
+        # The draft change ID (the draftChangeId returned by listGraphDraftResources).
         self.draft_change_id = draft_change_id
-        # 草稿内容哈希；被跳过时为 null
+        # The online content hash on which the draft save is based (draft starting point), a 64-character SHA-256 hexadecimal string.
         self.draft_content_hash = draft_content_hash
-        # 资源小类：resourceType=object 时固定 object_type；resourceType=element 时为 indicator / logic / process / rule / analysis 之一
+        # The element type. Currently, only text is supported.
         self.element_type = element_type
-        # 最后修改时间（ISO8601）；被跳过时为 null
+        # The last modified time in ISO 8601 format.
         self.gmt_modified = gmt_modified
-        # 图谱名称
+        # The graph name.
         self.graph_name = graph_name
-        # 错误描述，成功时为空
+        # The status code description.
         self.message = message
-        # 操作类型：CREATE / UPDATE（由底层判定）；被跳过时为 null
+        # The operation type.
         self.operation_type = operation_type
-        # 请求追踪 ID
+        # The request trace ID.
         self.request_id = request_id
-        # 资源名
+        # The resource name.
         self.resource_name = resource_name
-        # 资源大类：object（对象）/ element（业务元素）
+        # The resource type.
         self.resource_type = resource_type
 
     def validate(self):
