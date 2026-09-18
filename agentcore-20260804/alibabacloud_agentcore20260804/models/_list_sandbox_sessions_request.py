@@ -12,7 +12,7 @@ class ListSandboxSessionsRequest(DaraModel):
     ):
         # The maximum number of records per page. Default value: 20.
         self.max_results = max_results
-        # The cursor used to query the next page.
+        # The pagination token for querying the next page.
         self.next_token = next_token
 
     def validate(self):

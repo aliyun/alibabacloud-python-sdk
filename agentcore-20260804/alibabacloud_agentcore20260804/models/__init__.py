@@ -205,6 +205,9 @@ from ._get_user_response import GetUserResponse
 from ._get_workspace_request import GetWorkspaceRequest
 from ._get_workspace_response_body import GetWorkspaceResponseBody
 from ._get_workspace_response import GetWorkspaceResponse
+from ._get_workspace_acr_ram_authorize_url_request import GetWorkspaceAcrRamAuthorizeUrlRequest
+from ._get_workspace_acr_ram_authorize_url_response_body import GetWorkspaceAcrRamAuthorizeUrlResponseBody
+from ._get_workspace_acr_ram_authorize_url_response import GetWorkspaceAcrRamAuthorizeUrlResponse
 from ._get_workspace_plugin_request import GetWorkspacePluginRequest
 from ._get_workspace_plugin_response_body import GetWorkspacePluginResponseBody
 from ._get_workspace_plugin_response import GetWorkspacePluginResponse
@@ -402,6 +405,9 @@ from ._verify_connector_request import VerifyConnectorRequest
 from ._verify_connector_shrink_request import VerifyConnectorShrinkRequest
 from ._verify_connector_response_body import VerifyConnectorResponseBody
 from ._verify_connector_response import VerifyConnectorResponse
+from ._verify_workspace_acr_ram_authorization_request import VerifyWorkspaceAcrRamAuthorizationRequest
+from ._verify_workspace_acr_ram_authorization_response_body import VerifyWorkspaceAcrRamAuthorizationResponseBody
+from ._verify_workspace_acr_ram_authorization_response import VerifyWorkspaceAcrRamAuthorizationResponse
 from ._verify_workspace_oss_mount_ram_authorization_request import VerifyWorkspaceOssMountRamAuthorizationRequest
 from ._verify_workspace_oss_mount_ram_authorization_response_body import VerifyWorkspaceOssMountRamAuthorizationResponseBody
 from ._verify_workspace_oss_mount_ram_authorization_response import VerifyWorkspaceOssMountRamAuthorizationResponse
@@ -441,6 +447,7 @@ from ._create_credential_request import CreateCredentialRequestBodyResourceRefs
 from ._create_credential_request import CreateCredentialRequestBody
 from ._create_credential_response_body import CreateCredentialResponseBodyDataResourceRefs
 from ._create_credential_response_body import CreateCredentialResponseBodyData
+from ._create_external_agent_request import CreateExternalAgentRequestBodyModelQuota
 from ._create_external_agent_request import CreateExternalAgentRequestBodyModel
 from ._create_external_agent_request import CreateExternalAgentRequestBodySkills
 from ._create_external_agent_request import CreateExternalAgentRequestBodyTemplateAiRegistry
@@ -448,6 +455,7 @@ from ._create_external_agent_request import CreateExternalAgentRequestBodyTempla
 from ._create_external_agent_request import CreateExternalAgentRequestBodyTools
 from ._create_external_agent_request import CreateExternalAgentRequestBody
 from ._create_external_agent_response_body import CreateExternalAgentResponseBodyDataExternalAgentStatus
+from ._create_external_agent_response_body import CreateExternalAgentResponseBodyDataModelQuota
 from ._create_external_agent_response_body import CreateExternalAgentResponseBodyDataModel
 from ._create_external_agent_response_body import CreateExternalAgentResponseBodyDataSkills
 from ._create_external_agent_response_body import CreateExternalAgentResponseBodyDataTemplateAiRegistry
@@ -464,6 +472,7 @@ from ._create_managed_agent_request import CreateManagedAgentRequestBodyEnvironm
 from ._create_managed_agent_request import CreateManagedAgentRequestBodyEnvironment
 from ._create_managed_agent_request import CreateManagedAgentRequestBodyHarnessConfiguration
 from ._create_managed_agent_request import CreateManagedAgentRequestBodyHarness
+from ._create_managed_agent_request import CreateManagedAgentRequestBodyModelQuota
 from ._create_managed_agent_request import CreateManagedAgentRequestBodyModel
 from ._create_managed_agent_request import CreateManagedAgentRequestBodyNetworkAccessInternet
 from ._create_managed_agent_request import CreateManagedAgentRequestBodyNetworkAccessVpc
@@ -484,6 +493,7 @@ from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyD
 from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataEnvironment
 from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataHarnessConfiguration
 from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataHarness
+from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataModelQuota
 from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataModel
 from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataNetworkAccessInternet
 from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataNetworkAccessVpc
@@ -596,6 +606,7 @@ from ._get_credential_response_body import GetCredentialResponseBodyDataBoundAge
 from ._get_credential_response_body import GetCredentialResponseBodyDataResourceRefs
 from ._get_credential_response_body import GetCredentialResponseBodyData
 from ._get_external_agent_response_body import GetExternalAgentResponseBodyDataExternalAgentStatus
+from ._get_external_agent_response_body import GetExternalAgentResponseBodyDataModelQuota
 from ._get_external_agent_response_body import GetExternalAgentResponseBodyDataModel
 from ._get_external_agent_response_body import GetExternalAgentResponseBodyDataSkills
 from ._get_external_agent_response_body import GetExternalAgentResponseBodyDataTemplateAiRegistry
@@ -611,6 +622,7 @@ from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataEnv
 from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataEnvironment
 from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataHarnessConfiguration
 from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataHarness
+from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataModelQuota
 from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataModel
 from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataNetworkAccessInternet
 from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataNetworkAccessVpc
@@ -670,6 +682,7 @@ from ._get_user_response_body import GetUserResponseBodyData
 from ._get_workspace_response_body import GetWorkspaceResponseBodyDataNetworkConfigurationVpc
 from ._get_workspace_response_body import GetWorkspaceResponseBodyDataNetworkConfiguration
 from ._get_workspace_response_body import GetWorkspaceResponseBodyData
+from ._get_workspace_acr_ram_authorize_url_response_body import GetWorkspaceAcrRamAuthorizeUrlResponseBodyData
 from ._get_workspace_plugin_response_body import GetWorkspacePluginResponseBodyDataConfigAgentLoop
 from ._get_workspace_plugin_response_body import GetWorkspacePluginResponseBodyDataConfigNetworkInternet
 from ._get_workspace_plugin_response_body import GetWorkspacePluginResponseBodyDataConfigNetworkVpc
@@ -813,6 +826,7 @@ from ._update_credential_request import UpdateCredentialRequestBodyResourceRefs
 from ._update_credential_request import UpdateCredentialRequestBody
 from ._update_credential_response_body import UpdateCredentialResponseBodyDataResourceRefs
 from ._update_credential_response_body import UpdateCredentialResponseBodyData
+from ._update_external_agent_request import UpdateExternalAgentRequestBodyModelQuota
 from ._update_external_agent_request import UpdateExternalAgentRequestBodyModel
 from ._update_external_agent_request import UpdateExternalAgentRequestBodySkills
 from ._update_external_agent_request import UpdateExternalAgentRequestBodyTemplateAiRegistry
@@ -820,6 +834,7 @@ from ._update_external_agent_request import UpdateExternalAgentRequestBodyTempla
 from ._update_external_agent_request import UpdateExternalAgentRequestBodyTools
 from ._update_external_agent_request import UpdateExternalAgentRequestBody
 from ._update_external_agent_response_body import UpdateExternalAgentResponseBodyDataExternalAgentStatus
+from ._update_external_agent_response_body import UpdateExternalAgentResponseBodyDataModelQuota
 from ._update_external_agent_response_body import UpdateExternalAgentResponseBodyDataModel
 from ._update_external_agent_response_body import UpdateExternalAgentResponseBodyDataSkills
 from ._update_external_agent_response_body import UpdateExternalAgentResponseBodyDataTemplateAiRegistry
@@ -834,6 +849,7 @@ from ._update_managed_agent_request import UpdateManagedAgentRequestBodyEnvironm
 from ._update_managed_agent_request import UpdateManagedAgentRequestBodyEnvironment
 from ._update_managed_agent_request import UpdateManagedAgentRequestBodyHarnessConfiguration
 from ._update_managed_agent_request import UpdateManagedAgentRequestBodyHarness
+from ._update_managed_agent_request import UpdateManagedAgentRequestBodyModelQuota
 from ._update_managed_agent_request import UpdateManagedAgentRequestBodyModel
 from ._update_managed_agent_request import UpdateManagedAgentRequestBodyNetworkAccessInternet
 from ._update_managed_agent_request import UpdateManagedAgentRequestBodyNetworkAccessVpc
@@ -854,6 +870,7 @@ from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyD
 from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataEnvironment
 from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataHarnessConfiguration
 from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataHarness
+from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataModelQuota
 from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataModel
 from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataNetworkAccessInternet
 from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataNetworkAccessVpc
@@ -959,6 +976,7 @@ from ._upload_agent_spec_via_oss_request import UploadAgentSpecViaOssRequestBody
 from ._upload_skill_via_oss_request import UploadSkillViaOssRequestBody
 from ._verify_connector_request import VerifyConnectorRequestBody
 from ._verify_connector_response_body import VerifyConnectorResponseBodyData
+from ._verify_workspace_acr_ram_authorization_response_body import VerifyWorkspaceAcrRamAuthorizationResponseBodyData
 from ._verify_workspace_oss_mount_ram_authorization_response_body import VerifyWorkspaceOssMountRamAuthorizationResponseBodyData
 
 __all__ = [
@@ -1165,6 +1183,9 @@ __all__ = [
     GetWorkspaceRequest,
     GetWorkspaceResponseBody,
     GetWorkspaceResponse,
+    GetWorkspaceAcrRamAuthorizeUrlRequest,
+    GetWorkspaceAcrRamAuthorizeUrlResponseBody,
+    GetWorkspaceAcrRamAuthorizeUrlResponse,
     GetWorkspacePluginRequest,
     GetWorkspacePluginResponseBody,
     GetWorkspacePluginResponse,
@@ -1362,6 +1383,9 @@ __all__ = [
     VerifyConnectorShrinkRequest,
     VerifyConnectorResponseBody,
     VerifyConnectorResponse,
+    VerifyWorkspaceAcrRamAuthorizationRequest,
+    VerifyWorkspaceAcrRamAuthorizationResponseBody,
+    VerifyWorkspaceAcrRamAuthorizationResponse,
     VerifyWorkspaceOssMountRamAuthorizationRequest,
     VerifyWorkspaceOssMountRamAuthorizationResponseBody,
     VerifyWorkspaceOssMountRamAuthorizationResponse,
@@ -1401,6 +1425,7 @@ __all__ = [
     CreateCredentialRequestBody,
     CreateCredentialResponseBodyDataResourceRefs,
     CreateCredentialResponseBodyData,
+    CreateExternalAgentRequestBodyModelQuota,
     CreateExternalAgentRequestBodyModel,
     CreateExternalAgentRequestBodySkills,
     CreateExternalAgentRequestBodyTemplateAiRegistry,
@@ -1408,6 +1433,7 @@ __all__ = [
     CreateExternalAgentRequestBodyTools,
     CreateExternalAgentRequestBody,
     CreateExternalAgentResponseBodyDataExternalAgentStatus,
+    CreateExternalAgentResponseBodyDataModelQuota,
     CreateExternalAgentResponseBodyDataModel,
     CreateExternalAgentResponseBodyDataSkills,
     CreateExternalAgentResponseBodyDataTemplateAiRegistry,
@@ -1424,6 +1450,7 @@ __all__ = [
     CreateManagedAgentRequestBodyEnvironment,
     CreateManagedAgentRequestBodyHarnessConfiguration,
     CreateManagedAgentRequestBodyHarness,
+    CreateManagedAgentRequestBodyModelQuota,
     CreateManagedAgentRequestBodyModel,
     CreateManagedAgentRequestBodyNetworkAccessInternet,
     CreateManagedAgentRequestBodyNetworkAccessVpc,
@@ -1444,6 +1471,7 @@ __all__ = [
     CreateManagedAgentResponseBodyDataEnvironment,
     CreateManagedAgentResponseBodyDataHarnessConfiguration,
     CreateManagedAgentResponseBodyDataHarness,
+    CreateManagedAgentResponseBodyDataModelQuota,
     CreateManagedAgentResponseBodyDataModel,
     CreateManagedAgentResponseBodyDataNetworkAccessInternet,
     CreateManagedAgentResponseBodyDataNetworkAccessVpc,
@@ -1556,6 +1584,7 @@ __all__ = [
     GetCredentialResponseBodyDataResourceRefs,
     GetCredentialResponseBodyData,
     GetExternalAgentResponseBodyDataExternalAgentStatus,
+    GetExternalAgentResponseBodyDataModelQuota,
     GetExternalAgentResponseBodyDataModel,
     GetExternalAgentResponseBodyDataSkills,
     GetExternalAgentResponseBodyDataTemplateAiRegistry,
@@ -1571,6 +1600,7 @@ __all__ = [
     GetManagedAgentResponseBodyDataEnvironment,
     GetManagedAgentResponseBodyDataHarnessConfiguration,
     GetManagedAgentResponseBodyDataHarness,
+    GetManagedAgentResponseBodyDataModelQuota,
     GetManagedAgentResponseBodyDataModel,
     GetManagedAgentResponseBodyDataNetworkAccessInternet,
     GetManagedAgentResponseBodyDataNetworkAccessVpc,
@@ -1630,6 +1660,7 @@ __all__ = [
     GetWorkspaceResponseBodyDataNetworkConfigurationVpc,
     GetWorkspaceResponseBodyDataNetworkConfiguration,
     GetWorkspaceResponseBodyData,
+    GetWorkspaceAcrRamAuthorizeUrlResponseBodyData,
     GetWorkspacePluginResponseBodyDataConfigAgentLoop,
     GetWorkspacePluginResponseBodyDataConfigNetworkInternet,
     GetWorkspacePluginResponseBodyDataConfigNetworkVpc,
@@ -1773,6 +1804,7 @@ __all__ = [
     UpdateCredentialRequestBody,
     UpdateCredentialResponseBodyDataResourceRefs,
     UpdateCredentialResponseBodyData,
+    UpdateExternalAgentRequestBodyModelQuota,
     UpdateExternalAgentRequestBodyModel,
     UpdateExternalAgentRequestBodySkills,
     UpdateExternalAgentRequestBodyTemplateAiRegistry,
@@ -1780,6 +1812,7 @@ __all__ = [
     UpdateExternalAgentRequestBodyTools,
     UpdateExternalAgentRequestBody,
     UpdateExternalAgentResponseBodyDataExternalAgentStatus,
+    UpdateExternalAgentResponseBodyDataModelQuota,
     UpdateExternalAgentResponseBodyDataModel,
     UpdateExternalAgentResponseBodyDataSkills,
     UpdateExternalAgentResponseBodyDataTemplateAiRegistry,
@@ -1794,6 +1827,7 @@ __all__ = [
     UpdateManagedAgentRequestBodyEnvironment,
     UpdateManagedAgentRequestBodyHarnessConfiguration,
     UpdateManagedAgentRequestBodyHarness,
+    UpdateManagedAgentRequestBodyModelQuota,
     UpdateManagedAgentRequestBodyModel,
     UpdateManagedAgentRequestBodyNetworkAccessInternet,
     UpdateManagedAgentRequestBodyNetworkAccessVpc,
@@ -1814,6 +1848,7 @@ __all__ = [
     UpdateManagedAgentResponseBodyDataEnvironment,
     UpdateManagedAgentResponseBodyDataHarnessConfiguration,
     UpdateManagedAgentResponseBodyDataHarness,
+    UpdateManagedAgentResponseBodyDataModelQuota,
     UpdateManagedAgentResponseBodyDataModel,
     UpdateManagedAgentResponseBodyDataNetworkAccessInternet,
     UpdateManagedAgentResponseBodyDataNetworkAccessVpc,
@@ -1919,5 +1954,6 @@ __all__ = [
     UploadSkillViaOssRequestBody,
     VerifyConnectorRequestBody,
     VerifyConnectorResponseBodyData,
+    VerifyWorkspaceAcrRamAuthorizationResponseBodyData,
     VerifyWorkspaceOssMountRamAuthorizationResponseBodyData
 ]

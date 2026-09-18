@@ -89,13 +89,13 @@ class UpdateConnectorResponseBodyData(DaraModel):
         name: str = None,
         status: str = None,
     ):
-        # The number of Agents attached to the Connector.
+        # The number of bound agents.
         self.bound_agent_count = bound_agent_count
         # The time when the Connector was enabled.
         self.enabled_at = enabled_at
-        # A JSON string. For qodercli: {"site":"global|cn","organizationId":"...","apiKey":"...","serviceAccountKeys":[{"id":"ckey-xxx","name":"default","serviceAccountKey":"..."}]}. This field is empty when the Connector is not enabled.
+        # The updated Connector configuration JSON string. This is sensitive information.
         self.metadata = metadata
-        # The Connector name.
+        # The Connector name. Currently, the value is qodercli.
         self.name = name
         # The Connector status.
         self.status = status

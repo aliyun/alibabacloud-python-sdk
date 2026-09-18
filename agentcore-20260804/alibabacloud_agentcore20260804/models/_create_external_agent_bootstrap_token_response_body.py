@@ -15,13 +15,13 @@ class CreateExternalAgentBootstrapTokenResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The business status code. The value SUCCESS indicates success.
+        # The business status code. The value SUCCESS is returned if the request is successful.
         self.code = code
-        # The Bootstrap Token and CMS configuration required for connecting the external agent.
+        # The bootstrap token and CMS configuration required for connecting the external agent.
         self.data = data
-        # The HTTP status code. The value 200 indicates success.
+        # The HTTP status code. The value 200 is returned if the request is successful.
         self.http_status_code = http_status_code
-        # The message indicating the request processing result.
+        # The message that indicates the result of the request.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -92,7 +92,7 @@ class CreateExternalAgentBootstrapTokenResponseBodyData(DaraModel):
     ):
         # The external agent ID.
         self.agent_id = agent_id
-        # The Bootstrap Token used for connecting the external agent.
+        # The bootstrap token used for connecting the external agent.
         self.bootstrap_token = bootstrap_token
         # The CMS configuration used for connecting the external agent.
         self.cms = cms
@@ -100,7 +100,7 @@ class CreateExternalAgentBootstrapTokenResponseBodyData(DaraModel):
         # - INTERNET: public network
         # - INTRANET: internal network
         self.network_type = network_type
-        # The fingerprint of the Bootstrap Token.
+        # The fingerprint of the bootstrap token.
         self.token_fingerprint = token_fingerprint
         # The workspace ID.
         self.workspace_id = workspace_id

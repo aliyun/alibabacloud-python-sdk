@@ -53,19 +53,19 @@ class CreateUserRequestBody(DaraModel):
         note: str = None,
         password: str = None,
     ):
-        # The display name of the user. The display name must be 1 to 32 characters in length.
+        # The display name of the user. The name must be 1 to 32 characters in length.
         # 
         # This parameter is required.
         self.display_name = display_name
-        # The email address of the user. The email address can be up to 256 characters in length.
+        # The email address of the user. The address can be up to 256 characters in length.
         self.email = email
-        # The username. The username must be unique within the workspace and can contain only lowercase letters, digits, and hyphens. It must start and end with a lowercase letter or digit and be 1 to 32 characters in length. Reserved names such as manager, admin, or names starting with worker- cannot be used.
+        # The username. The name must be unique within the workspace and can contain only lowercase letters, digits, and hyphens. It must start and end with a lowercase letter or digit and must be 1 to 32 characters in length. Reserved names such as manager, admin, or names starting with worker- cannot be used.
         # 
         # This parameter is required.
         self.name = name
         # The remarks of the user. The remarks can be up to 1024 characters in length.
         self.note = note
-        # The initial password of the user. The password must be 8 to 32 characters in length and contain uppercase letters, lowercase letters, digits, and special characters. The password cannot contain the username. If this parameter is not specified, the server generates a random password and returns it in the initialPassword field of the response.
+        # The initial password of the user. The password must be 8 to 32 characters in length and must contain uppercase letters, lowercase letters, digits, and special characters. The password cannot contain the username. If this parameter is not specified, the server generates a random password and returns it in the initialPassword field of the response.
         self.password = password
 
     def validate(self):

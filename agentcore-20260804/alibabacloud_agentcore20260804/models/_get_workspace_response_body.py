@@ -105,20 +105,15 @@ class GetWorkspaceResponseBodyData(DaraModel):
         self.create_time = create_time
         # The workspace name.
         self.name = name
-        # The network configuration of the workspace.
+        # The workspace network configuration.
         self.network_configuration = network_configuration
         # The region ID of the workspace.
         self.region_id = region_id
-        # The workspace status. Valid values:
-        # - Initializing
-        # - InitializationFailed
-        # - Initialized
-        # - Deleting
-        # - Deleted
+        # The workspace status. Valid values: Initializing, InitializationFailed, Initialized, Deleting, and Deleted.
         self.status = status
         # The reason for the workspace status.
         self.status_reason = status_reason
-        # The storage type of the workspace.
+        # The workspace storage type.
         self.storage_type = storage_type
         # The ID of the tenant to which the workspace belongs.
         self.tenant_id = tenant_id
@@ -213,9 +208,9 @@ class GetWorkspaceResponseBodyDataNetworkConfiguration(DaraModel):
         public_egress_ip: str = None,
         vpc: main_models.GetWorkspaceResponseBodyDataNetworkConfigurationVpc = None,
     ):
-        # The public egress IP address allocated to the workspace. You can use this IP address to configure IP address whitelists for external services. This field is returned only when the public egress resource is attached and an address is allocated. The field is empty if no address is allocated, the attachment is failed, or the address is being released. This address is independent of whether VPC networking is active.
+        # The public egress IP address of the workspace.
         self.public_egress_ip = public_egress_ip
-        # The VPC network configuration of the user.
+        # The user VPC network configuration.
         self.vpc = vpc
 
     def validate(self):
@@ -253,11 +248,11 @@ class GetWorkspaceResponseBodyDataNetworkConfigurationVpc(DaraModel):
         v_switch_ids: List[str] = None,
         vpc_id: str = None,
     ):
-        # Indicates whether VPC networking is enabled.
+        # Indicates whether the VPC network is enabled.
         self.enabled = enabled
         # The list of vSwitch IDs.
         self.v_switch_ids = v_switch_ids
-        # The ID of the user VPC.
+        # The user VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):

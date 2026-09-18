@@ -90,7 +90,7 @@ class UpdateWorkspaceRequestBodyNetworkConfiguration(DaraModel):
         self,
         vpc: main_models.UpdateWorkspaceRequestBodyNetworkConfigurationVpc = None,
     ):
-        # The VPC network configuration.
+        # The VPC network configuration of the user.
         # 
         # This parameter is required.
         self.vpc = vpc
@@ -128,7 +128,7 @@ class UpdateWorkspaceRequestBodyNetworkConfigurationVpc(DaraModel):
         self.enabled = enabled
         # The list of vSwitch IDs. When VPC networking is enabled, at least one vSwitch must be specified, and all vSwitches must belong to the VPC specified by VpcId.
         self.v_switch_ids = v_switch_ids
-        # The VPC ID.
+        # The VPC ID of the user.
         self.vpc_id = vpc_id
 
     def validate(self):

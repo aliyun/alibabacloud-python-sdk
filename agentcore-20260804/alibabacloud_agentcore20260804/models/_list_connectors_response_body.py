@@ -26,17 +26,17 @@ class ListConnectorsResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The list of connectors.
         self.items = items
-        # The number of entries returned in this request.
+        # The number of connectors returned in this request.
         self.max_results = max_results
         # The response message.
         self.message = message
-        # The pagination token for the next page.
+        # The next page token. The current version does not return this field.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
-        # The total number of connectors.
+        # The total number of connectors returned.
         self.total_count = total_count
 
     def validate(self):
@@ -124,13 +124,13 @@ class ListConnectorsResponseBodyItems(DaraModel):
         name: str = None,
         status: str = None,
     ):
-        # The number of agents bound to the connector.
+        # The number of bound agents.
         self.bound_agent_count = bound_agent_count
         # The time when the connector was enabled.
         self.enabled_at = enabled_at
-        # A JSON string. qodercli: {"site":"global|cn","organizationId":"...","apiKey":"...","serviceAccountKeys":[{"id":"ckey-xxx","name":"default","serviceAccountKey":"..."}]}. This field is absent when the connector is not enabled.
+        # The connector configuration JSON string. After the connector is enabled, this string may contain sensitive credentials.
         self.metadata = metadata
-        # The connector name.
+        # The connector name. The current value is qodercli.
         self.name = name
         # The connector status.
         self.status = status

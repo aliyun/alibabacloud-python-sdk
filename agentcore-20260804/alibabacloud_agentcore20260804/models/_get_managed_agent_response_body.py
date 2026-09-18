@@ -122,7 +122,7 @@ class GetManagedAgentResponseBodyData(DaraModel):
         self.description = description
         # The environment configuration.
         self.environment = environment
-        # The runtime harness of the managed agent. Valid values: qwenpaw and qodercli.
+        # The agent runtime harness.
         self.harness = harness
         # The agent instruction that guides the behavior of the agent.
         self.instruction = instruction
@@ -142,7 +142,7 @@ class GetManagedAgentResponseBodyData(DaraModel):
         self.region_id = region_id
         # The runtime configuration.
         self.runtime = runtime
-        # The instance count of the managed agent grouped by sandbox phase. Current keys: PENDING (being created or initialized), RUNNING (running), HIBERNATING (entering hibernation), HIBERNATED (hibernated), RESUMING (resuming), TERMINATING (being terminated), FAILED (runtime failure). Only phases that actually occur are returned. Missing keys are treated as 0. This field is a dynamic map and new keys may be added in the future. Use FAILED > 0 to determine whether abnormal instances exist.
+        # The instance counts of the managed agent grouped by sandbox phase. Current keys: PENDING (being created or initialized), RUNNING (running), HIBERNATING (entering hibernation), HIBERNATED (hibernated), RESUMING (resuming), TERMINATING (being terminated), and FAILED (runtime failure). Only phases that actually occur are returned. Missing keys should be treated as 0. This field is a dynamic map, and new keys may be added in the future. You can use FAILED > 0 to determine whether abnormal instances exist.
         self.sandbox_phase_counts = sandbox_phase_counts
         # The list of skill configurations.
         self.skills = skills
@@ -154,7 +154,7 @@ class GetManagedAgentResponseBodyData(DaraModel):
         self.template = template
         # The list of tool configurations.
         self.tools = tools
-        # The update time in RFC 3339 format.
+        # The time when the agent was last updated, in RFC 3339 format.
         self.updated_at = updated_at
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -488,7 +488,7 @@ class GetManagedAgentResponseBodyDataSubAgents(DaraModel):
         instruction: str = None,
         name: str = None,
     ):
-        # The sub-agent instruction.
+        # The instruction for the sub-agent.
         # 
         # This parameter is required.
         self.instruction = instruction
@@ -573,7 +573,7 @@ class GetManagedAgentResponseBodyDataRuntime(DaraModel):
         # 
         # This parameter is required.
         self.compute = compute
-        # The sandbox auto scaling and session configuration.
+        # The sandbox auto-scaling and session configuration.
         self.hpa = hpa
         # The session policy configuration.
         # 
@@ -626,7 +626,7 @@ class GetManagedAgentResponseBodyDataRuntimeSessionPolicy(DaraModel):
         header_name: str = None,
         type: str = None,
     ):
-        # The HTTP header name used for session affinity. This parameter takes effect when sessionPolicy.type is set to ISOLATED_HEADER_FIELD.
+        # The HTTP header name used for session affinity. Takes effect when sessionPolicy.type is set to ISOLATED_HEADER_FIELD.
         self.header_name = header_name
         # The session policy type.
         # 
@@ -668,15 +668,15 @@ class GetManagedAgentResponseBodyDataRuntimeHpa(DaraModel):
         min_sandbox_count: int = None,
         session_ttl_seconds: int = None,
     ):
-        # Specifies whether to enable auto scaling. This parameter is required when hpa is present as validated by the backend.
+        # Specifies whether auto-scaling is enabled. Required when hpa is present, validated by the backend.
         self.enabled = enabled
-        # The maximum number of active sessions per sandbox. This parameter is required when hpa is present as validated by the backend.
+        # The maximum number of active sessions per sandbox. Required when hpa is present, validated by the backend.
         self.max_concurrent_sessions_per_sandbox = max_concurrent_sessions_per_sandbox
-        # The maximum number of sandboxes. This parameter is required when HPA is enabled and must be no less than the minimum value.
+        # The maximum number of sandboxes. Required when HPA is enabled and must be no less than the minimum value.
         self.max_sandbox_count = max_sandbox_count
-        # The minimum number of sandboxes. This parameter is required when HPA is enabled.
+        # The minimum number of sandboxes. Required when HPA is enabled.
         self.min_sandbox_count = min_sandbox_count
-        # The session reclamation time after inactivity, in seconds. This parameter is required when hpa is present as validated by the backend.
+        # The session reclamation time after inactivity, in seconds. Required when hpa is present, validated by the backend.
         self.session_ttl_seconds = session_ttl_seconds
 
     def validate(self):
@@ -728,7 +728,7 @@ class GetManagedAgentResponseBodyDataRuntimeCompute(DaraModel):
         self,
         compute_class: str = None,
     ):
-        # The compute class.
+        # The compute specification.
         # 
         # This parameter is required.
         self.compute_class = compute_class
@@ -761,9 +761,9 @@ class GetManagedAgentResponseBodyDataOssMounts(DaraModel):
         path: str = None,
         read_only: bool = None,
     ):
-        # The OSS bucket name. This parameter is required for each mount entry as validated by the backend.
+        # The OSS bucket name. Required for each mount entry, validated by the backend.
         self.bucket_name = bucket_name
-        # The absolute mount path in the container. This parameter is required for each mount entry as validated by the backend.
+        # The absolute mount path in the container. Required for each mount entry, validated by the backend.
         self.mount_path = mount_path
         # The relative object prefix in the bucket. If not specified, the entire bucket is mounted.
         self.path = path
@@ -911,16 +911,18 @@ class GetManagedAgentResponseBodyDataModel(DaraModel):
         self,
         model_connection_id: str = None,
         model_name: str = None,
+        quota: main_models.GetManagedAgentResponseBodyDataModelQuota = None,
     ):
         # The model connection ID.
-        # 
-        # This parameter is required.
         self.model_connection_id = model_connection_id
         # The upstream model name.
         self.model_name = model_name
+        # The model token quota configuration and usage status for the current period. Empty if no quota is configured.
+        self.quota = quota
 
     def validate(self):
-        pass
+        if self.quota:
+            self.quota.validate()
 
     def to_map(self):
         result = dict()
@@ -933,6 +935,9 @@ class GetManagedAgentResponseBodyDataModel(DaraModel):
         if self.model_name is not None:
             result['modelName'] = self.model_name
 
+        if self.quota is not None:
+            result['quota'] = self.quota.to_map()
+
         return result
 
     def from_map(self, m: dict = None):
@@ -943,6 +948,92 @@ class GetManagedAgentResponseBodyDataModel(DaraModel):
         if m.get('modelName') is not None:
             self.model_name = m.get('modelName')
 
+        if m.get('quota') is not None:
+            temp_model = main_models.GetManagedAgentResponseBodyDataModelQuota()
+            self.quota = temp_model.from_map(m.get('quota'))
+
+        return self
+
+class GetManagedAgentResponseBodyDataModelQuota(DaraModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        limit_type: str = None,
+        over_limit: bool = None,
+        period_type: str = None,
+        rule_status: str = None,
+        usage_limit: int = None,
+        used_amount: int = None,
+    ):
+        # Indicates whether the quota is enabled. Not returned if no quota is configured.
+        self.enabled = enabled
+        # The quota limit type. Currently only token is supported.
+        self.limit_type = limit_type
+        # Indicates whether the quota has been exceeded in the current period. Read-only, returned by the backend.
+        self.over_limit = over_limit
+        # The quota statistical period. Valid values: day (daily) and month (monthly).
+        self.period_type = period_type
+        # The gateway quota rule status. Read-only, returned by the backend.
+        self.rule_status = rule_status
+        # The maximum number of tokens allowed per period.
+        self.usage_limit = usage_limit
+        # The number of tokens consumed in the current period. Read-only, returned by the backend.
+        self.used_amount = used_amount
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+
+        if self.limit_type is not None:
+            result['limitType'] = self.limit_type
+
+        if self.over_limit is not None:
+            result['overLimit'] = self.over_limit
+
+        if self.period_type is not None:
+            result['periodType'] = self.period_type
+
+        if self.rule_status is not None:
+            result['ruleStatus'] = self.rule_status
+
+        if self.usage_limit is not None:
+            result['usageLimit'] = self.usage_limit
+
+        if self.used_amount is not None:
+            result['usedAmount'] = self.used_amount
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+
+        if m.get('limitType') is not None:
+            self.limit_type = m.get('limitType')
+
+        if m.get('overLimit') is not None:
+            self.over_limit = m.get('overLimit')
+
+        if m.get('periodType') is not None:
+            self.period_type = m.get('periodType')
+
+        if m.get('ruleStatus') is not None:
+            self.rule_status = m.get('ruleStatus')
+
+        if m.get('usageLimit') is not None:
+            self.usage_limit = m.get('usageLimit')
+
+        if m.get('usedAmount') is not None:
+            self.used_amount = m.get('usedAmount')
+
         return self
 
 class GetManagedAgentResponseBodyDataHarness(DaraModel):
@@ -951,9 +1042,9 @@ class GetManagedAgentResponseBodyDataHarness(DaraModel):
         configuration: main_models.GetManagedAgentResponseBodyDataHarnessConfiguration = None,
         type: str = None,
     ):
-        # The Connector binding configuration for the qodercli harness.
+        # The runtime harness configuration.
         self.configuration = configuration
-        # The runtime harness type. Valid values: qwenpaw and qodercli. When the type is qodercli, binding is based on configuration.connectorServiceAccountKey, and the name is also populated during queries.
+        # The runtime harness type.
         self.type = type
 
     def validate(self):
@@ -990,9 +1081,9 @@ class GetManagedAgentResponseBodyDataHarnessConfiguration(DaraModel):
         connector_service_account_key: str = None,
         connector_service_account_name: str = None,
     ):
-        # The Service Account Key bound to the QoderCLI Connector by Key ID. This parameter can be omitted when only one key exists, but is required when multiple keys exist.
+        # The connector service account key.
         self.connector_service_account_key = connector_service_account_key
-        # The Connector Key name populated during queries. This value is not used as a binding reference during writes.
+        # The connector service account name.
         self.connector_service_account_name = connector_service_account_name
 
     def validate(self):

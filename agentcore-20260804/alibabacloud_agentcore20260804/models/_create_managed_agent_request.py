@@ -15,7 +15,7 @@ class CreateManagedAgentRequest(DaraModel):
     ):
         # The request body.
         self.body = body
-        # The reserved idempotency token. The backend does not provide idempotency guarantees in the current phase.
+        # The reserved idempotency token. The backend does not provide idempotency guarantees in the current version.
         self.client_token = client_token
 
     def validate(self):
@@ -67,7 +67,7 @@ class CreateManagedAgentRequestBody(DaraModel):
         self.description = description
         # The environment configuration.
         self.environment = environment
-        # The runtime harness of the managed agent. Valid values: qwenpaw and qodercli.
+        # The agent harness.
         self.harness = harness
         # The agent instruction that guides the behavior of the agent.
         self.instruction = instruction
@@ -444,7 +444,7 @@ class CreateManagedAgentRequestBodyRuntime(DaraModel):
         # 
         # This parameter is required.
         self.compute = compute
-        # The Sandbox auto-scaling and session configuration.
+        # The sandbox auto scaling and session configuration.
         self.hpa = hpa
         # The session policy configuration.
         # 
@@ -497,7 +497,7 @@ class CreateManagedAgentRequestBodyRuntimeSessionPolicy(DaraModel):
         header_name: str = None,
         type: str = None,
     ):
-        # The HTTP header name used for session affinity. This parameter takes effect when sessionPolicy.type is set to ISOLATED_HEADER_FIELD.
+        # The name of the HTTP header used for session affinity. This parameter takes effect when sessionPolicy.type is set to ISOLATED_HEADER_FIELD.
         self.header_name = header_name
         # The session policy type.
         # 
@@ -539,15 +539,15 @@ class CreateManagedAgentRequestBodyRuntimeHpa(DaraModel):
         min_sandbox_count: int = None,
         session_ttl_seconds: int = None,
     ):
-        # Specifies whether to enable auto-scaling. This parameter is required when hpa is present as validated by the backend.
+        # Specifies whether to enable auto scaling. This parameter is required by backend validation when hpa is present.
         self.enabled = enabled
-        # The maximum number of active sessions per Sandbox. This parameter is required when hpa is present as validated by the backend.
+        # The maximum number of active sessions per sandbox. This parameter is required by backend validation when hpa is present.
         self.max_concurrent_sessions_per_sandbox = max_concurrent_sessions_per_sandbox
-        # The maximum number of Sandboxes. This parameter is required when HPA is enabled and must be no less than the minimum value.
+        # The maximum number of sandboxes. This parameter is required when HPA is enabled and the value must be no less than the minimum value.
         self.max_sandbox_count = max_sandbox_count
-        # The minimum number of Sandboxes. This parameter is required when HPA is enabled.
+        # The minimum number of sandboxes. This parameter is required when HPA is enabled.
         self.min_sandbox_count = min_sandbox_count
-        # The session reclamation time after inactivity, in seconds. This parameter is required when hpa is present as validated by the backend.
+        # The time in seconds before an inactive session is reclaimed. This parameter is required by backend validation when hpa is present.
         self.session_ttl_seconds = session_ttl_seconds
 
     def validate(self):
@@ -632,13 +632,13 @@ class CreateManagedAgentRequestBodyOssMounts(DaraModel):
         path: str = None,
         read_only: bool = None,
     ):
-        # The OSS bucket name. This parameter is required for each mount entry as validated by the backend.
+        # The OSS bucket name. This parameter is required by backend validation for each mount entry.
         self.bucket_name = bucket_name
-        # The absolute mount path in the container. This parameter is required for each mount entry as validated by the backend.
+        # The absolute mount path in the container. This parameter is required by backend validation for each mount entry.
         self.mount_path = mount_path
-        # The relative object prefix in the bucket. If this parameter is not specified, the entire bucket is mounted.
+        # The relative object prefix in the bucket. If not specified, the entire bucket is mounted.
         self.path = path
-        # Specifies whether to mount as read-only. Default value: false.
+        # Specifies whether to mount in read-only mode. Default value: false.
         self.read_only = read_only
 
     def validate(self):
@@ -782,6 +782,7 @@ class CreateManagedAgentRequestBodyModel(DaraModel):
         self,
         model_connection_id: str = None,
         model_name: str = None,
+        quota: main_models.CreateManagedAgentRequestBodyModelQuota = None,
     ):
         # The model connection ID.
         # 
@@ -789,9 +790,12 @@ class CreateManagedAgentRequestBodyModel(DaraModel):
         self.model_connection_id = model_connection_id
         # The upstream model name.
         self.model_name = model_name
+        # The model token quota configuration. If not specified, no quota is configured.
+        self.quota = quota
 
     def validate(self):
-        pass
+        if self.quota:
+            self.quota.validate()
 
     def to_map(self):
         result = dict()
@@ -804,6 +808,9 @@ class CreateManagedAgentRequestBodyModel(DaraModel):
         if self.model_name is not None:
             result['modelName'] = self.model_name
 
+        if self.quota is not None:
+            result['quota'] = self.quota.to_map()
+
         return result
 
     def from_map(self, m: dict = None):
@@ -814,6 +821,67 @@ class CreateManagedAgentRequestBodyModel(DaraModel):
         if m.get('modelName') is not None:
             self.model_name = m.get('modelName')
 
+        if m.get('quota') is not None:
+            temp_model = main_models.CreateManagedAgentRequestBodyModelQuota()
+            self.quota = temp_model.from_map(m.get('quota'))
+
+        return self
+
+class CreateManagedAgentRequestBodyModelQuota(DaraModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        limit_type: str = None,
+        period_type: str = None,
+        usage_limit: int = None,
+    ):
+        # Specifies whether to enable the token quota. Default value: true. If you set this parameter to false, the token quota is disabled and existing quota rules are deleted.
+        self.enabled = enabled
+        # The quota limit type. This parameter is required by backend validation when the quota is enabled. Fixed value: token.
+        self.limit_type = limit_type
+        # The quota statistical period. This parameter is required by backend validation when the quota is enabled. Valid values:
+        # - day: daily.
+        # - month: monthly.
+        self.period_type = period_type
+        # The maximum number of tokens that can be consumed within a single period. This parameter is required by backend validation when the quota is enabled. The value must be greater than 0.
+        self.usage_limit = usage_limit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+
+        if self.limit_type is not None:
+            result['limitType'] = self.limit_type
+
+        if self.period_type is not None:
+            result['periodType'] = self.period_type
+
+        if self.usage_limit is not None:
+            result['usageLimit'] = self.usage_limit
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+
+        if m.get('limitType') is not None:
+            self.limit_type = m.get('limitType')
+
+        if m.get('periodType') is not None:
+            self.period_type = m.get('periodType')
+
+        if m.get('usageLimit') is not None:
+            self.usage_limit = m.get('usageLimit')
+
         return self
 
 class CreateManagedAgentRequestBodyHarness(DaraModel):
@@ -822,9 +890,9 @@ class CreateManagedAgentRequestBodyHarness(DaraModel):
         configuration: main_models.CreateManagedAgentRequestBodyHarnessConfiguration = None,
         type: str = None,
     ):
-        # The Connector binding configuration for the qodercli harness.
+        # The harness configuration.
         self.configuration = configuration
-        # The runtime harness type. Valid values: qwenpaw and qodercli. When the type is qodercli, binding is performed based on configuration.connectorServiceAccountKey, and the name is also populated during queries.
+        # The harness type.
         self.type = type
 
     def validate(self):
@@ -861,9 +929,9 @@ class CreateManagedAgentRequestBodyHarnessConfiguration(DaraModel):
         connector_service_account_key: str = None,
         connector_service_account_name: str = None,
     ):
-        # The Key ID used to bind a Service Account Key of the QoderCLI Connector. This parameter is optional when only one key exists, but required when multiple keys exist.
+        # The connector service account key.
         self.connector_service_account_key = connector_service_account_key
-        # The Connector Key name that is populated during queries. This parameter is not used as a binding reference during writes.
+        # The connector service account name.
         self.connector_service_account_name = connector_service_account_name
 
     def validate(self):

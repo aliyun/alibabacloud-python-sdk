@@ -28,9 +28,9 @@ class ListTeamsResponseBody(DaraModel):
         self.items = items
         # The maximum number of records per page that took effect for this query.
         self.max_results = max_results
-        # The response message. An error description is returned if the request fails.
+        # The response message. An error description is returned if the request failed.
         self.message = message
-        # The pagination token for the next page. This parameter is empty if no more pages are available.
+        # The pagination token for the next page. This value is empty if no more pages are available.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -130,7 +130,7 @@ class ListTeamsResponseBodyItems(DaraModel):
     ):
         # The list of agent members in the team.
         self.agents = agents
-        # The time when the team was created, in UTC and RFC 3339 format.
+        # The creation time in UTC, formatted according to RFC 3339.
         self.created_at = created_at
         # The team description.
         self.description = description
@@ -146,7 +146,7 @@ class ListTeamsResponseBodyItems(DaraModel):
         self.status = status
         # The team ID.
         self.team_id = team_id
-        # The time when the team was last modified, in UTC and RFC 3339 format.
+        # The time of the last modification in UTC, formatted according to RFC 3339.
         self.updated_at = updated_at
         # The list of user members in the team.
         self.users = users

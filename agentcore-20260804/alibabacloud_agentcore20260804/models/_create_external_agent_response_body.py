@@ -23,7 +23,7 @@ class CreateExternalAgentResponseBody(DaraModel):
         self.data = data
         # The HTTP status code. The value is 200 when the request succeeds.
         self.http_status_code = http_status_code
-        # The message that indicates the result of the request.
+        # The request processing result message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -132,10 +132,9 @@ class CreateExternalAgentResponseBodyData(DaraModel):
         self.latest_version_status = latest_version_status
         # The model configuration. Available only when modelSource is set to PLATFORM.
         self.model = model
-        # The source of the model configuration. Valid values:
-        # 
-        # - PLATFORM: The platform parses and delivers the model configuration.
-        # - RUNTIME: The external runtime manages the model on its own. You cannot specify model at the same time.
+        # The model configuration source. PLATFORM indicates that the platform parses and delivers the model configuration. RUNTIME indicates that the external runtime manages the model independently, and the model parameter cannot be specified at the same time. Valid values:
+        # - PLATFORM: platform model.
+        # - RUNTIME: runtime model.
         self.model_source = model_source
         # The name of the external agent.
         self.name = name
@@ -333,7 +332,6 @@ class CreateExternalAgentResponseBodyDataTools(DaraModel):
         # This parameter is required.
         self.name = name
         # The tool type. Valid values:
-        # 
         # - MCP: MCP tool.
         # 
         # This parameter is required.
@@ -480,18 +478,18 @@ class CreateExternalAgentResponseBodyDataModel(DaraModel):
         self,
         model_connection_id: str = None,
         model_name: str = None,
+        quota: main_models.CreateExternalAgentResponseBodyDataModelQuota = None,
     ):
         # The model connection ID.
-        # 
-        # This parameter is required.
         self.model_connection_id = model_connection_id
         # The upstream model name.
-        # 
-        # This parameter is required.
         self.model_name = model_name
+        # The model token quota configuration and the quota usage status in the current cycle. This field is empty if no quota is configured.
+        self.quota = quota
 
     def validate(self):
-        pass
+        if self.quota:
+            self.quota.validate()
 
     def to_map(self):
         result = dict()
@@ -504,6 +502,9 @@ class CreateExternalAgentResponseBodyDataModel(DaraModel):
         if self.model_name is not None:
             result['modelName'] = self.model_name
 
+        if self.quota is not None:
+            result['quota'] = self.quota.to_map()
+
         return result
 
     def from_map(self, m: dict = None):
@@ -513,6 +514,92 @@ class CreateExternalAgentResponseBodyDataModel(DaraModel):
 
         if m.get('modelName') is not None:
             self.model_name = m.get('modelName')
+
+        if m.get('quota') is not None:
+            temp_model = main_models.CreateExternalAgentResponseBodyDataModelQuota()
+            self.quota = temp_model.from_map(m.get('quota'))
+
+        return self
+
+class CreateExternalAgentResponseBodyDataModelQuota(DaraModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        limit_type: str = None,
+        over_limit: bool = None,
+        period_type: str = None,
+        rule_status: str = None,
+        usage_limit: int = None,
+        used_amount: int = None,
+    ):
+        # Indicates whether the quota is enabled. This field is not returned if no quota is configured.
+        self.enabled = enabled
+        # The quota limit type. Currently, only token is supported.
+        self.limit_type = limit_type
+        # Indicates whether the quota has been exceeded in the current cycle. This is a read-only field returned by the backend.
+        self.over_limit = over_limit
+        # The quota statistical period. day indicates a daily period. month indicates a monthly period.
+        self.period_type = period_type
+        # The gateway quota rule status. This is a read-only field returned by the backend.
+        self.rule_status = rule_status
+        # The maximum number of tokens that can be consumed within a single cycle.
+        self.usage_limit = usage_limit
+        # The number of tokens consumed in the current cycle. This is a read-only field returned by the backend.
+        self.used_amount = used_amount
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+
+        if self.limit_type is not None:
+            result['limitType'] = self.limit_type
+
+        if self.over_limit is not None:
+            result['overLimit'] = self.over_limit
+
+        if self.period_type is not None:
+            result['periodType'] = self.period_type
+
+        if self.rule_status is not None:
+            result['ruleStatus'] = self.rule_status
+
+        if self.usage_limit is not None:
+            result['usageLimit'] = self.usage_limit
+
+        if self.used_amount is not None:
+            result['usedAmount'] = self.used_amount
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+
+        if m.get('limitType') is not None:
+            self.limit_type = m.get('limitType')
+
+        if m.get('overLimit') is not None:
+            self.over_limit = m.get('overLimit')
+
+        if m.get('periodType') is not None:
+            self.period_type = m.get('periodType')
+
+        if m.get('ruleStatus') is not None:
+            self.rule_status = m.get('ruleStatus')
+
+        if m.get('usageLimit') is not None:
+            self.usage_limit = m.get('usageLimit')
+
+        if m.get('usedAmount') is not None:
+            self.used_amount = m.get('usedAmount')
 
         return self
 
@@ -530,9 +617,9 @@ class CreateExternalAgentResponseBodyDataExternalAgentStatus(DaraModel):
         # - STALE: Heartbeat expired.
         # - UNKNOWN: Unknown.
         self.heartbeat_status = heartbeat_status
-        # The last active time of the external agent in RFC 3339 format.
+        # The time when the external agent was last active, in RFC 3339 format.
         self.last_active_at = last_active_at
-        # The last heartbeat time of the external agent in RFC 3339 format.
+        # The time of the last heartbeat from the external agent, in RFC 3339 format.
         self.last_heartbeat = last_heartbeat
         # The local IP address reported by the external agent.
         self.local_ip = local_ip

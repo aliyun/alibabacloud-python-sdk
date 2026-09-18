@@ -5,11 +5,11 @@ from __future__ import annotations
 from alibabacloud_agentcore20260804 import models as main_models
 from darabonba.model import DaraModel
 
-class CreateIdentityProviderResponseBody(DaraModel):
+class GetWorkspaceAcrRamAuthorizeUrlResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
-        data: main_models.CreateIdentityProviderResponseBodyData = None,
+        data: main_models.GetWorkspaceAcrRamAuthorizeUrlResponseBodyData = None,
         http_status_code: int = None,
         message: str = None,
         request_id: str = None,
@@ -17,11 +17,11 @@ class CreateIdentityProviderResponseBody(DaraModel):
     ):
         # The business status code.
         self.code = code
-        # The binding information of the external identity provider.
+        # The response data.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The response message. An error description is returned if the request failed.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -63,7 +63,7 @@ class CreateIdentityProviderResponseBody(DaraModel):
             self.code = m.get('code')
 
         if m.get('data') is not None:
-            temp_model = main_models.CreateIdentityProviderResponseBodyData()
+            temp_model = main_models.GetWorkspaceAcrRamAuthorizeUrlResponseBodyData()
             self.data = temp_model.from_map(m.get('data'))
 
         if m.get('httpStatusCode') is not None:
@@ -80,34 +80,23 @@ class CreateIdentityProviderResponseBody(DaraModel):
 
         return self
 
-class CreateIdentityProviderResponseBodyData(DaraModel):
+class GetWorkspaceAcrRamAuthorizeUrlResponseBodyData(DaraModel):
     def __init__(
         self,
-        identity_provider_type: str = None,
-        login_enabled: bool = None,
-        status: str = None,
-        sync_enabled: bool = None,
+        acr_instance_id: str = None,
+        authorize_url: str = None,
+        role_name: str = None,
+        role_source: str = None,
         workspace_id: str = None,
     ):
-        # The type of the external identity provider. Valid values:
-        # - DingTalk
-        # - Feishu
-        self.identity_provider_type = identity_provider_type
-        # Specifies whether workspace users are allowed to log on through this external identity provider.
-        self.login_enabled = login_enabled
-        # The binding status. Valid values:
-        # - CONFIGURED: The configuration has been accepted and is waiting for user pool provisioning.
-        # - SYNCING: Organization members are being synchronized.
-        # - SYNCED: Organization member synchronization is complete.
-        # - READY: The binding is active.
-        # - SYNC_FAILED: Organization member synchronization failed.
-        # - UPDATING: The configuration is being updated.
-        # - UPDATE_FAILED: The configuration update failed.
-        # - DISCONNECTING: The binding is being removed.
-        # - DISCONNECT_FAILED: The unbinding failed.
-        self.status = status
-        # Specifies whether to enable organization member synchronization. After this feature is enabled, the external identity provider synchronizes organization members as workspace users.
-        self.sync_enabled = sync_enabled
+        # The ACR Enterprise instance ID.
+        self.acr_instance_id = acr_instance_id
+        # The RAM authorization URL used to create or append ACR permissions for the shared role on the target repository.
+        self.authorize_url = authorize_url
+        # The shared role name selected by the backend. This value is not editable on the frontend.
+        self.role_name = role_name
+        # The source of the shared role. This value does not indicate that authorization is complete.
+        self.role_source = role_source
         # The workspace ID.
         self.workspace_id = workspace_id
 
@@ -119,17 +108,17 @@ class CreateIdentityProviderResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.identity_provider_type is not None:
-            result['identityProviderType'] = self.identity_provider_type
+        if self.acr_instance_id is not None:
+            result['acrInstanceId'] = self.acr_instance_id
 
-        if self.login_enabled is not None:
-            result['loginEnabled'] = self.login_enabled
+        if self.authorize_url is not None:
+            result['authorizeUrl'] = self.authorize_url
 
-        if self.status is not None:
-            result['status'] = self.status
+        if self.role_name is not None:
+            result['roleName'] = self.role_name
 
-        if self.sync_enabled is not None:
-            result['syncEnabled'] = self.sync_enabled
+        if self.role_source is not None:
+            result['roleSource'] = self.role_source
 
         if self.workspace_id is not None:
             result['workspaceId'] = self.workspace_id
@@ -138,17 +127,17 @@ class CreateIdentityProviderResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('identityProviderType') is not None:
-            self.identity_provider_type = m.get('identityProviderType')
+        if m.get('acrInstanceId') is not None:
+            self.acr_instance_id = m.get('acrInstanceId')
 
-        if m.get('loginEnabled') is not None:
-            self.login_enabled = m.get('loginEnabled')
+        if m.get('authorizeUrl') is not None:
+            self.authorize_url = m.get('authorizeUrl')
 
-        if m.get('status') is not None:
-            self.status = m.get('status')
+        if m.get('roleName') is not None:
+            self.role_name = m.get('roleName')
 
-        if m.get('syncEnabled') is not None:
-            self.sync_enabled = m.get('syncEnabled')
+        if m.get('roleSource') is not None:
+            self.role_source = m.get('roleSource')
 
         if m.get('workspaceId') is not None:
             self.workspace_id = m.get('workspaceId')

@@ -9,7 +9,7 @@ class DownloadAgentSpecViaOssRequest(DaraModel):
         self,
         agent_spec_version: str = None,
     ):
-        # The version number. If not specified, the version corresponding to the latest label is downloaded.
+        # The version number. If this parameter is not specified, the version corresponding to the latest label is downloaded.
         self.agent_spec_version = agent_spec_version
 
     def validate(self):

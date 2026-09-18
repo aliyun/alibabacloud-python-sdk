@@ -101,7 +101,7 @@ class UpdateCredentialResponseBodyData(DaraModel):
         self.created_at = created_at
         # The credential ID.
         self.credential_id = credential_id
-        # The masked credential content. If credentialType is apiKey, the apiKey value is returned as asterisks (*) of equal length.
+        # The masked credential content. If credentialType is set to apiKey, the apiKey value is returned as asterisks (*) of equal length.
         self.credential_metadata = credential_metadata
         # The credential type. Currently, only apiKey is supported.
         self.credential_type = credential_type

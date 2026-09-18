@@ -20,15 +20,15 @@ class ListAgentIMChannelsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The business status code. A value of SUCCESS indicates success.
+        # The business status code. The value SUCCESS indicates a successful request.
         self.code = code
-        # The HTTP status code. A value of 200 indicates success.
+        # The HTTP status code. The value 200 indicates a successful request.
         self.http_status_code = http_status_code
-        # The IM channel list.
+        # The list of IM channels.
         self.items = items
         # The maximum number of entries returned per page for this request.
         self.max_results = max_results
-        # The message returned for the request.
+        # The request processing result message.
         self.message = message
         # The token for the next page. An empty value indicates that the last page has been reached.
         self.next_token = next_token
@@ -36,7 +36,7 @@ class ListAgentIMChannelsResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
-        # The total number of records that match the query conditions.
+        # The total number of records that match the specified conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -143,7 +143,7 @@ class ListAgentIMChannelsResponseBodyItems(DaraModel):
         self.channel_type = channel_type
         # The creation time in RFC 3339 format.
         self.create_time = create_time
-        # The channel credential summary. Only non-sensitive fields and configured secret field names are returned. Secret values are not returned.
+        # The channel credential summary. Only non-sensitive fields and the names of configured secret fields are returned. Secret values are not returned.
         self.credential_summary = credential_summary
         # Indicates whether the IM channel is enabled. Default value upon creation: true.
         self.enabled = enabled
@@ -151,15 +151,15 @@ class ListAgentIMChannelsResponseBodyItems(DaraModel):
         self.endpoint_url = endpoint_url
         # The IM channel ID.
         self.im_channel_id = im_channel_id
-        # The ID of the bound ServiceEndpoint. The endpoint must belong to the specified agent and its current version, be in the ready state, and have a public network address.
+        # The ID of the bound ServiceEndpoint. The endpoint must belong to the specified agent and its current version, be in the ready state, and have a public access URL.
         self.service_endpoint_id = service_endpoint_id
         # The IM channel status. Valid values:
-        # - CREATING: being created.
-        # - READY: ready.
-        # - UPDATING: being updated.
-        # - FAILED: failed.
-        # - DELETING: being deleted.
-        # - DELETE_FAILED: deletion failed.
+        # - CREATING: The channel is being created.
+        # - READY: The channel is ready.
+        # - UPDATING: The channel is being updated.
+        # - FAILED: The channel creation or update failed.
+        # - DELETING: The channel is being deleted.
+        # - DELETE_FAILED: The channel deletion failed.
         self.status = status
         # The reason for the current status of the IM channel.
         self.status_reason = status_reason

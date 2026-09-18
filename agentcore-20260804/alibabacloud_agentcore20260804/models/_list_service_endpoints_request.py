@@ -24,7 +24,7 @@ class ListServiceEndpointsRequest(DaraModel):
         self.collaboration_component = collaboration_component
         # The maximum number of records per page. Valid values: 1 to 100. If this parameter is not specified, 20 records are returned by default.
         self.max_results = max_results
-        # The pagination token for the next page. Do not specify this parameter for the first request. For subsequent requests, specify the nextToken value returned in the previous response.
+        # The pagination token for the next page. Do not specify this parameter for the first request. For subsequent requests, set this parameter to the nextToken value returned in the previous response.
         self.next_token = next_token
         # Filters by the workspace resource binding ID of the target collaboration component.
         self.resource_binding_id = resource_binding_id

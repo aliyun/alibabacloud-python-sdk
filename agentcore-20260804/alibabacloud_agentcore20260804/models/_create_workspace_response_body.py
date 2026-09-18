@@ -101,15 +101,15 @@ class CreateWorkspaceResponseBodyData(DaraModel):
         tenant_id: str = None,
         workspace_id: str = None,
     ):
-        # The AI Registry namespace ID. This value is returned after the related resource binding is complete and may be empty during initialization.
+        # The AI Registry namespace ID. This value is returned after the related resources are bound. It may be empty during initialization.
         self.ai_registry_namespace_id = ai_registry_namespace_id
         # The OSS storage authorization status.
         self.authorization_status = authorization_status
         # The name of the private OSS bucket.
         self.bucket_name = bucket_name
-        # The CloudMonitor workspace ID. This value is returned after the related resource binding is complete and may be empty during initialization.
+        # The CloudMonitor workspace ID. This value is returned after the related resources are bound. It may be empty during initialization.
         self.cms_workspace_id = cms_workspace_id
-        # The time when the workspace was created, in ISO-8601 format.
+        # The time when the workspace was created, in ISO 8601 format.
         # 
         # This parameter is required.
         self.create_time = create_time
@@ -123,7 +123,7 @@ class CreateWorkspaceResponseBodyData(DaraModel):
         self.resource_group_id = resource_group_id
         # The workspace status.
         self.status = status
-        # The supplementary reason for the current workspace status. This value is used to display the specific reason when initialization fails or authorization is pending, and may be empty under normal conditions.
+        # The supplementary reason for the current workspace status. This value is used to display the specific reason when initialization fails or authorization is pending. It may be empty under normal conditions.
         self.status_reason = status_reason
         # The storage type of the workspace.
         self.storage_type = storage_type

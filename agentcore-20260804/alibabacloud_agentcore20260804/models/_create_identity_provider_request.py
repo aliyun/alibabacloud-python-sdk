@@ -43,7 +43,9 @@ class CreateIdentityProviderRequestBody(DaraModel):
         metadata: main_models.CreateIdentityProviderRequestBodyMetadata = None,
         sync_enabled: bool = None,
     ):
-        # The type of the external identity provider. Valid values: DingTalk, Feishu.
+        # The type of the external identity provider. Valid values:
+        # - DingTalk
+        # - Feishu
         # 
         # This parameter is required.
         self.identity_provider_type = identity_provider_type
@@ -108,13 +110,13 @@ class CreateIdentityProviderRequestBodyMetadata(DaraModel):
         self.app_id = app_id
         # The AppKey of the DingTalk application. This parameter is required when the binding type is DingTalk.
         self.app_key = app_key
-        # Required. The secret of the external identity provider application. This parameter is used only for write operations. The query API does not return this field.
+        # Required. The secret of the external identity provider application. This parameter is write-only and is not returned by query operations.
         self.app_secret = app_secret
-        # The CorpId of the DingTalk enterprise. This parameter is required when the binding type is DingTalk.
+        # The CorpId of the DingTalk organization. This parameter is required when the binding type is DingTalk.
         self.corp_id = corp_id
-        # The data encryption key for event subscription. The value must be the same as the one configured in the external identity provider application. This parameter is used only for write operations. The query API does not return this field.
+        # The data encryption key for event subscriptions. The value must be the same as the one configured in the external identity provider application. This parameter is write-only and is not returned by query operations.
         self.encrypt_key = encrypt_key
-        # The verification token for event subscription. The value must be the same as the one configured in the external identity provider application. This parameter is used only for write operations. The query API does not return this field.
+        # The verification token for event subscriptions. The value must be the same as the one configured in the external identity provider application. This parameter is write-only and is not returned by query operations.
         self.verification_token = verification_token
 
     def validate(self):

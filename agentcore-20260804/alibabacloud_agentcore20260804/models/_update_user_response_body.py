@@ -105,7 +105,7 @@ class UpdateUserResponseBodyData(DaraModel):
         self.display_name = display_name
         # The email address of the user. The address can be up to 256 characters in length.
         self.email = email
-        # The username. The name must be unique within the workspace and can contain only lowercase letters, digits, and hyphens (-). It must start and end with a lowercase letter or digit. The name must be 1 to 32 characters in length.
+        # The username. The name must be unique within the workspace and can contain only lowercase letters, digits, and hyphens (-). It must start and end with a lowercase letter or digit and be 1 to 32 characters in length.
         self.name = name
         # The note for the user. The note can be up to 1,024 characters in length.
         self.note = note

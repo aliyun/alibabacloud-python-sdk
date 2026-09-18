@@ -26,7 +26,7 @@ class ListCredentialsResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The list of credentials.
         self.items = items
-        # The maximum number of records per page that took effect for this query.
+        # The maximum number of records per page that takes effect for this query.
         self.max_results = max_results
         # The response message. An error description is returned if the request fails.
         self.message = message
@@ -149,7 +149,7 @@ class ListCredentialsResponseBodyItems(DaraModel):
         self.region_id = region_id
         # The list of resources to which the credential can be applied.
         self.resource_refs = resource_refs
-        # The scope of resources to which the credential can be applied.
+        # The resource scope of the credential.
         self.resource_scope = resource_scope
         # The time of the last modification in UTC, formatted according to RFC 3339.
         self.updated_at = updated_at

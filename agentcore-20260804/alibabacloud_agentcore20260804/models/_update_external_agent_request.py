@@ -15,7 +15,7 @@ class UpdateExternalAgentRequest(DaraModel):
     ):
         # The request body.
         self.body = body
-        # The reserved idempotency token. The backend does not guarantee idempotence in the current phase.
+        # The reserved idempotency token. The backend does not provide idempotency guarantees in the current phase.
         self.client_token = client_token
 
     def validate(self):
@@ -64,9 +64,9 @@ class UpdateExternalAgentRequestBody(DaraModel):
         self.instruction = instruction
         # The model configuration. Available only when modelSource is set to PLATFORM.
         self.model = model
-        # The source of the model configuration. Valid values:
-        # - PLATFORM: The platform parses and delivers the model configuration.
-        # - RUNTIME: The external runtime manages the model on its own. You cannot specify model at the same time.
+        # The model configuration source. PLATFORM indicates that the platform parses and delivers the model configuration. RUNTIME indicates that the external runtime manages the model independently, and the model parameter cannot be specified at the same time. Valid values:
+        # - PLATFORM: platform model.
+        # - RUNTIME: runtime model.
         self.model_source = model_source
         # The name of the external agent.
         self.name = name
@@ -319,6 +319,7 @@ class UpdateExternalAgentRequestBodyModel(DaraModel):
         self,
         model_connection_id: str = None,
         model_name: str = None,
+        quota: main_models.UpdateExternalAgentRequestBodyModelQuota = None,
     ):
         # The model connection ID.
         # 
@@ -328,9 +329,12 @@ class UpdateExternalAgentRequestBodyModel(DaraModel):
         # 
         # This parameter is required.
         self.model_name = model_name
+        # The model token quota configuration. If not specified, no quota is configured.
+        self.quota = quota
 
     def validate(self):
-        pass
+        if self.quota:
+            self.quota.validate()
 
     def to_map(self):
         result = dict()
@@ -343,6 +347,9 @@ class UpdateExternalAgentRequestBodyModel(DaraModel):
         if self.model_name is not None:
             result['modelName'] = self.model_name
 
+        if self.quota is not None:
+            result['quota'] = self.quota.to_map()
+
         return result
 
     def from_map(self, m: dict = None):
@@ -352,6 +359,65 @@ class UpdateExternalAgentRequestBodyModel(DaraModel):
 
         if m.get('modelName') is not None:
             self.model_name = m.get('modelName')
+
+        if m.get('quota') is not None:
+            temp_model = main_models.UpdateExternalAgentRequestBodyModelQuota()
+            self.quota = temp_model.from_map(m.get('quota'))
+
+        return self
+
+class UpdateExternalAgentRequestBodyModelQuota(DaraModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        limit_type: str = None,
+        period_type: str = None,
+        usage_limit: int = None,
+    ):
+        # Specifies whether to enable token quota. Defaults to true if not specified. Set to false to disable and delete existing quota rules.
+        self.enabled = enabled
+        # The quota limit type. Required by backend validation when quota is enabled. Fixed value: token.
+        self.limit_type = limit_type
+        # The quota statistical period. Required by backend validation when quota is enabled. Valid values: day (daily) and month (monthly).
+        self.period_type = period_type
+        # The maximum number of tokens that can be consumed within a single period. Required by backend validation when quota is enabled. The value must be greater than 0.
+        self.usage_limit = usage_limit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+
+        if self.limit_type is not None:
+            result['limitType'] = self.limit_type
+
+        if self.period_type is not None:
+            result['periodType'] = self.period_type
+
+        if self.usage_limit is not None:
+            result['usageLimit'] = self.usage_limit
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+
+        if m.get('limitType') is not None:
+            self.limit_type = m.get('limitType')
+
+        if m.get('periodType') is not None:
+            self.period_type = m.get('periodType')
+
+        if m.get('usageLimit') is not None:
+            self.usage_limit = m.get('usageLimit')
 
         return self
 

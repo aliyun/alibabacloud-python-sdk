@@ -26,11 +26,11 @@ class ListIdentityProvidersResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The list of external identity providers.
         self.items = items
-        # The maximum number of records per page that takes effect for this query.
+        # The maximum number of records per page that took effect for this query.
         self.max_results = max_results
-        # The response message. An error description is returned if the request fails.
+        # The response message. An error description is returned if the request failed.
         self.message = message
-        # The pagination token for the next page. This parameter is empty if no more pages exist.
+        # The pagination token for the next page. This parameter is empty if no more pages are available.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -131,32 +131,21 @@ class ListIdentityProvidersResponseBodyItems(DaraModel):
     ):
         # The creation time in UTC, formatted according to RFC 3339.
         self.created_at = created_at
-        # The event subscription callback URL. Configure this URL in the external identity provider application to receive organization change events. An empty string is returned if the user pool has not been provisioned.
+        # The event subscription callback URL. Configure this URL in the external identity provider application to receive organization change events. An empty string is returned if the user pool has not been activated.
         self.event_subscription_callback_url = event_subscription_callback_url
-        # The type of the external identity provider. Valid values:
-        # - DingTalk
-        # - Feishu
+        # The type of the external identity provider. Valid values: DingTalk, Feishu.
         self.identity_provider_type = identity_provider_type
-        # The logon callback URL. Configure this URL in the external identity provider application. An empty string is returned if the user pool has not been provisioned.
+        # The logon callback URL. Configure this URL in the external identity provider application. An empty string is returned if the user pool has not been activated.
         self.login_callback_url = login_callback_url
         # Indicates whether workspace users are allowed to log on through this external identity provider.
         self.login_enabled = login_enabled
         # The application configuration of the external identity provider. Application secret configurations are not returned.
         self.metadata = metadata
-        # The binding status. Valid values:
-        # - CONFIGURED: The configuration has been accepted and is waiting for user pool provisioning.
-        # - SYNCING: Organization members are being synchronized.
-        # - SYNCED: Organization member synchronization is complete.
-        # - READY: The binding is active.
-        # - SYNC_FAILED: Organization member synchronization failed.
-        # - UPDATING: The configuration is being updated.
-        # - UPDATE_FAILED: The configuration update failed.
-        # - DISCONNECTING: The binding is being removed.
-        # - DISCONNECT_FAILED: The unbinding failed.
+        # The binding status. Valid values: CONFIGURED (The configuration has been accepted and the user pool is pending activation.), SYNCING (Organization members are being synchronized.), SYNCED (Organization member synchronization is complete.), READY (The binding is active.), SYNC_FAILED (Organization member synchronization failed.), UPDATING (The configuration is being updated.), UPDATE_FAILED (The configuration update failed.), DISCONNECTING (The binding is being removed.), DISCONNECT_FAILED (The unbinding failed.).
         self.status = status
-        # Indicates whether organization member synchronization is enabled. When enabled, organization members are synchronized from this external identity provider as workspace users.
+        # Indicates whether organization member synchronization is enabled. When enabled, the external identity provider synchronizes organization members as workspace users.
         self.sync_enabled = sync_enabled
-        # The last modification time in UTC, formatted according to RFC 3339.
+        # The time of the last modification in UTC, formatted according to RFC 3339.
         self.updated_at = updated_at
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -244,11 +233,11 @@ class ListIdentityProvidersResponseBodyItemsMetadata(DaraModel):
         app_key: str = None,
         corp_id: str = None,
     ):
-        # The App ID of the Lark application. Required when the binding type is Feishu.
+        # The App ID of the Lark application. This parameter is required when the binding type is Feishu.
         self.app_id = app_id
-        # The AppKey of the DingTalk application. Required when the binding type is DingTalk.
+        # The AppKey of the DingTalk application. This parameter is required when the binding type is DingTalk.
         self.app_key = app_key
-        # The CorpId of the DingTalk enterprise. Required when the binding type is DingTalk.
+        # The CorpId of the DingTalk organization. This parameter is required when the binding type is DingTalk.
         self.corp_id = corp_id
 
     def validate(self):

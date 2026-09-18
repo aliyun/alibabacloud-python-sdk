@@ -26,17 +26,17 @@ class ListConnectorModelsResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The list of available models.
         self.items = items
-        # The number of entries returned in this request.
+        # The number of models returned in this request.
         self.max_results = max_results
         # The response message.
         self.message = message
-        # The pagination token for the next page.
+        # The next page token. This field is not returned in the current version.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
-        # The total number of models.
+        # The total number of models returned.
         self.total_count = total_count
 
     def validate(self):
@@ -129,15 +129,13 @@ class ListConnectorModelsResponseBodyItems(DaraModel):
         self.description = description
         # The display name of the model.
         self.display_name = display_name
-        # Key ID
+        # The associated Connector Key ID. This field is not returned in the current version.
         self.key_id = key_id
-        # The key name.
+        # The associated Connector Key name. This field is not returned in the current version.
         self.key_name = key_name
         # The stable identifier of the model.
         self.model_id = model_id
-        # The source of the model. Valid values:
-        # - official: an official model.
-        # - enterprise: an enterprise-specific model.
+        # The source of the model.
         self.source = source
 
     def validate(self):

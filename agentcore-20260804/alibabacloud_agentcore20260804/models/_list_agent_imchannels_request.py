@@ -22,12 +22,12 @@ class ListAgentIMChannelsRequest(DaraModel):
         # The pagination token. You do not need to specify this parameter for the first request. For subsequent requests, use the nextToken value returned in the previous response.
         self.next_token = next_token
         # The IM channel status. Valid values:
-        # - CREATING: being created.
-        # - READY: ready.
-        # - UPDATING: being updated.
-        # - FAILED: failed.
-        # - DELETING: being deleted.
-        # - DELETE_FAILED: deletion failed.
+        # - CREATING: The channel is being created.
+        # - READY: The channel is ready.
+        # - UPDATING: The channel is being updated.
+        # - FAILED: The channel creation or update failed.
+        # - DELETING: The channel is being deleted.
+        # - DELETE_FAILED: The channel deletion failed.
         self.status = status
 
     def validate(self):

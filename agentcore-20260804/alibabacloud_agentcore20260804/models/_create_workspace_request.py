@@ -59,6 +59,9 @@ class CreateWorkspaceRequestBody(DaraModel):
         self.name = name
         # The network configuration of the workspace.
         self.network_configuration = network_configuration
+        # The storage type of the workspace. Valid values:
+        # - PLATFORM: Platform-managed storage.
+        # - PRIVATE: User-owned private OSS storage.
         self.storage_type = storage_type
 
     def validate(self):

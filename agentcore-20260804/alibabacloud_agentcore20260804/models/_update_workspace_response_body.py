@@ -105,11 +105,11 @@ class UpdateWorkspaceResponseBodyData(DaraModel):
         self.network_configuration = network_configuration
         # The region ID of the workspace.
         self.region_id = region_id
-        # The workspace status. Valid values: Initializing, Initialized, Deleting, Deleted.
+        # The workspace status. Valid values: Initializing, Initialized, Deleting, and Deleted.
         self.status = status
         # The storage type of the workspace.
         self.storage_type = storage_type
-        # The ID of the tenant to which the workspace belongs.
+        # The tenant ID to which the workspace belongs.
         self.tenant_id = tenant_id
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -189,7 +189,7 @@ class UpdateWorkspaceResponseBodyDataNetworkConfiguration(DaraModel):
         self,
         vpc: main_models.UpdateWorkspaceResponseBodyDataNetworkConfigurationVpc = None,
     ):
-        # The VPC network configuration.
+        # The VPC network configuration of the user.
         self.vpc = vpc
 
     def validate(self):
@@ -225,7 +225,7 @@ class UpdateWorkspaceResponseBodyDataNetworkConfigurationVpc(DaraModel):
         self.enabled = enabled
         # The list of vSwitch IDs.
         self.v_switch_ids = v_switch_ids
-        # The VPC ID.
+        # The VPC ID of the user.
         self.vpc_id = vpc_id
 
     def validate(self):

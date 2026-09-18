@@ -11,11 +11,11 @@ class ListConnectorModelsRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # The ID of a service account key. This parameter is required when multiple keys exist. You can leave this parameter empty if only one key exists.
+        # The Connector Key ID. This parameter is not supported in the current version.
         self.connector_key_id = connector_key_id
-        # The number of entries per page.
+        # The page size. This parameter is not supported in the current version.
         self.max_results = max_results
-        # The pagination token for the next page.
+        # The next page token. This parameter is not supported in the current version.
         self.next_token = next_token
 
     def validate(self):

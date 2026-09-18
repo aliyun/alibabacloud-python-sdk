@@ -23,7 +23,7 @@ class GetServiceEndpointResponseBody(DaraModel):
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The response message. An error description is returned if the request fails.
+        # The response message. An error description is returned when the request fails.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -98,19 +98,17 @@ class GetServiceEndpointResponseBodyData(DaraModel):
         updated_at: str = None,
         workspace_id: str = None,
     ):
-        # The access URL list of the service endpoint.
+        # The list of access URLs for the service endpoint.
         self.access_urls = access_urls
         # The authentication configuration of the service endpoint.
         self.authentication = authentication
         # The creation time in UTC, formatted in RFC 3339.
         self.created_at = created_at
-        # The service endpoint type. Valid values:
-        # - DEFAULT: a default endpoint created and maintained by the platform.
-        # - NAMED: a named endpoint explicitly created by the user.
+        # The service endpoint type. DEFAULT indicates a default endpoint created and maintained by the platform. NAMED indicates a named endpoint explicitly created by the user.
         self.endpoint_type = endpoint_type
-        # The service endpoint name. The name is unique within the workspace and is 1 to 128 characters in length.
+        # The service endpoint name. The name must be unique within the workspace and can be 1 to 128 characters in length.
         self.name = name
-        # The region ID where the service endpoint resides.
+        # The region ID of the service endpoint.
         self.region_id = region_id
         # The service endpoint ID.
         self.service_endpoint_id = service_endpoint_id
@@ -120,7 +118,7 @@ class GetServiceEndpointResponseBodyData(DaraModel):
         self.status_reason = status_reason
         # The target routing configuration of the service endpoint.
         self.target = target
-        # The last modification time in UTC, formatted in RFC 3339.
+        # The time of the last modification in UTC, formatted in RFC 3339.
         self.updated_at = updated_at
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -294,9 +292,7 @@ class GetServiceEndpointResponseBodyDataAuthentication(DaraModel):
         self,
         type: str = None,
     ):
-        # The authentication method. Valid values:
-        # - NONE: no authentication required.
-        # - API_KEY: authentication by passing an API key through the x-api-key request header.
+        # The authentication method. NONE indicates that no authentication is required. API_KEY indicates that an API key is passed through the x-api-key request header for authentication.
         self.type = type
 
     def validate(self):
@@ -331,7 +327,7 @@ class GetServiceEndpointResponseBodyDataAccessUrls(DaraModel):
         self.access_type = access_type
         # The access URL status. Valid values: CREATING, READY, DEGRADED.
         self.status = status
-        # The reason for the access URL status. A specific reason is returned when the status is degraded.
+        # The reason for the access URL status. A specific reason is returned when the status is abnormal.
         self.status_reason = status_reason
         # The access URL.
         self.url = url

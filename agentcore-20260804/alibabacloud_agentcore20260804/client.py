@@ -5113,6 +5113,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_workspace_with_options_async(workspace_id, request, headers, runtime)
 
+    def get_workspace_acr_ram_authorize_url_with_options(
+        self,
+        workspace_id: str,
+        request: main_models.GetWorkspaceAcrRamAuthorizeUrlRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkspaceAcrRamAuthorizeUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.acr_instance_id):
+            query['acrInstanceId'] = request.acr_instance_id
+        if not DaraCore.is_null(request.namespace):
+            query['namespace'] = request.namespace
+        if not DaraCore.is_null(request.repository):
+            query['repository'] = request.repository
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkspaceAcrRamAuthorizeUrl',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/acr/authorize',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkspaceAcrRamAuthorizeUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_workspace_acr_ram_authorize_url_with_options_async(
+        self,
+        workspace_id: str,
+        request: main_models.GetWorkspaceAcrRamAuthorizeUrlRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkspaceAcrRamAuthorizeUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.acr_instance_id):
+            query['acrInstanceId'] = request.acr_instance_id
+        if not DaraCore.is_null(request.namespace):
+            query['namespace'] = request.namespace
+        if not DaraCore.is_null(request.repository):
+            query['repository'] = request.repository
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkspaceAcrRamAuthorizeUrl',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/acr/authorize',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkspaceAcrRamAuthorizeUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_workspace_acr_ram_authorize_url(
+        self,
+        workspace_id: str,
+        request: main_models.GetWorkspaceAcrRamAuthorizeUrlRequest,
+    ) -> main_models.GetWorkspaceAcrRamAuthorizeUrlResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_workspace_acr_ram_authorize_url_with_options(workspace_id, request, headers, runtime)
+
+    async def get_workspace_acr_ram_authorize_url_async(
+        self,
+        workspace_id: str,
+        request: main_models.GetWorkspaceAcrRamAuthorizeUrlRequest,
+    ) -> main_models.GetWorkspaceAcrRamAuthorizeUrlResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_workspace_acr_ram_authorize_url_with_options_async(workspace_id, request, headers, runtime)
+
     def get_workspace_plugin_with_options(
         self,
         workspace_id: str,
@@ -10276,6 +10364,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.verify_connector_with_options_async(workspace_id, connector_name, request, headers, runtime)
+
+    def verify_workspace_acr_ram_authorization_with_options(
+        self,
+        workspace_id: str,
+        request: main_models.VerifyWorkspaceAcrRamAuthorizationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.VerifyWorkspaceAcrRamAuthorizationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.acr_instance_id):
+            query['acrInstanceId'] = request.acr_instance_id
+        if not DaraCore.is_null(request.namespace):
+            query['namespace'] = request.namespace
+        if not DaraCore.is_null(request.repository):
+            query['repository'] = request.repository
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'VerifyWorkspaceAcrRamAuthorization',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/acr/authorize/verify',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.VerifyWorkspaceAcrRamAuthorizationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def verify_workspace_acr_ram_authorization_with_options_async(
+        self,
+        workspace_id: str,
+        request: main_models.VerifyWorkspaceAcrRamAuthorizationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.VerifyWorkspaceAcrRamAuthorizationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.acr_instance_id):
+            query['acrInstanceId'] = request.acr_instance_id
+        if not DaraCore.is_null(request.namespace):
+            query['namespace'] = request.namespace
+        if not DaraCore.is_null(request.repository):
+            query['repository'] = request.repository
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'VerifyWorkspaceAcrRamAuthorization',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/acr/authorize/verify',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.VerifyWorkspaceAcrRamAuthorizationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def verify_workspace_acr_ram_authorization(
+        self,
+        workspace_id: str,
+        request: main_models.VerifyWorkspaceAcrRamAuthorizationRequest,
+    ) -> main_models.VerifyWorkspaceAcrRamAuthorizationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.verify_workspace_acr_ram_authorization_with_options(workspace_id, request, headers, runtime)
+
+    async def verify_workspace_acr_ram_authorization_async(
+        self,
+        workspace_id: str,
+        request: main_models.VerifyWorkspaceAcrRamAuthorizationRequest,
+    ) -> main_models.VerifyWorkspaceAcrRamAuthorizationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.verify_workspace_acr_ram_authorization_with_options_async(workspace_id, request, headers, runtime)
 
     def verify_workspace_oss_mount_ram_authorization_with_options(
         self,

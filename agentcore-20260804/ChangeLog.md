@@ -1,3 +1,6 @@
+2026-09-18 Version: 2.0.2
+- Generated python 2026-08-04 for AgentCore.
+
 2026-09-15 Version: 2.0.0
 - Support API ConvertMcpToFreeEdit.
 - Support API DisableConnector.

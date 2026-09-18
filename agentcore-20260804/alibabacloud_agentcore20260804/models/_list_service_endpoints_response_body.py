@@ -28,9 +28,9 @@ class ListServiceEndpointsResponseBody(DaraModel):
         self.items = items
         # The maximum number of records per page that takes effect for this query.
         self.max_results = max_results
-        # The response message. An error description is returned if the request fails.
+        # The response message. An error description is returned when the request fails.
         self.message = message
-        # The pagination token for the next page. This value is empty if no more pages exist.
+        # The pagination token for the next page. This value is empty when no more pages are available.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -135,13 +135,13 @@ class ListServiceEndpointsResponseBodyItems(DaraModel):
         self.access_urls = access_urls
         # The authentication configuration of the service endpoint.
         self.authentication = authentication
-        # The creation time in UTC, formatted according to RFC 3339.
+        # The creation time in UTC, formatted in RFC 3339.
         self.created_at = created_at
         # The service endpoint type. DEFAULT indicates a default endpoint created and maintained by the platform. NAMED indicates a named endpoint explicitly created by the user.
         self.endpoint_type = endpoint_type
         # The service endpoint name. The name is unique within the workspace and is 1 to 128 characters in length.
         self.name = name
-        # The region ID where the service endpoint is located.
+        # The region ID of the service endpoint.
         self.region_id = region_id
         # The service endpoint ID.
         self.service_endpoint_id = service_endpoint_id
@@ -151,7 +151,7 @@ class ListServiceEndpointsResponseBodyItems(DaraModel):
         self.status_reason = status_reason
         # The target routing configuration of the service endpoint.
         self.target = target
-        # The last modification time in UTC, formatted according to RFC 3339.
+        # The time of the last modification in UTC, formatted in RFC 3339.
         self.updated_at = updated_at
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -265,13 +265,13 @@ class ListServiceEndpointsResponseBodyItemsTarget(DaraModel):
         resource_binding_id: str = None,
         target_type: str = None,
     ):
-        # The target agent ID. This parameter is returned when the target type is AGENT_VERSION.
+        # The target agent ID. Returned when the target type is AGENT_VERSION.
         self.agent_id = agent_id
-        # The target agent version number. This parameter is returned when the target type is AGENT_VERSION.
+        # The target agent version number. Returned when the target type is AGENT_VERSION.
         self.agent_version = agent_version
-        # The collaboration component type. This parameter is returned when the target type is TEAM_COLLABORATION.
+        # The collaboration component type. Returned when the target type is TEAM_COLLABORATION.
         self.collaboration_component = collaboration_component
-        # The workspace resource binding ID associated with the target collaboration component. This parameter is returned when the target type is TEAM_COLLABORATION.
+        # The workspace resource binding ID associated with the target collaboration component. Returned when the target type is TEAM_COLLABORATION.
         self.resource_binding_id = resource_binding_id
         # The target type. Valid values: AGENT_VERSION, TEAM_COLLABORATION.
         self.target_type = target_type

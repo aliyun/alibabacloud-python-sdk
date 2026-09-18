@@ -88,9 +88,9 @@ class VerifyConnectorResponseBodyData(DaraModel):
         invalid_service_account_keys: List[str] = None,
         valid: bool = None,
     ):
-        # The list of Service Account Key names that failed validation. Each element is a key name string. This list is empty if all keys pass validation.
+        # The list of Service Account Key labels that failed validation or returned indeterminate results.
         self.invalid_service_account_keys = invalid_service_account_keys
-        # Indicates whether the credentials are valid.
+        # Indicates whether all validated Service Account Keys are valid.
         self.valid = valid
 
     def validate(self):

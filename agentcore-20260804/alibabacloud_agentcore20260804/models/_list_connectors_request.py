@@ -10,9 +10,9 @@ class ListConnectorsRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # The number of entries per page.
+        # The page size. The current version does not support this parameter.
         self.max_results = max_results
-        # The pagination token for the next page.
+        # The next page token. The current version does not support this parameter.
         self.next_token = next_token
 
     def validate(self):

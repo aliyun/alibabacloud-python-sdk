@@ -30,7 +30,7 @@ class ListManagedAgentsResponseBody(DaraModel):
         self.max_results = max_results
         # The result message of the request.
         self.message = message
-        # The token for the next page. An empty value indicates that the last page has been reached.
+        # The token for the next page. An empty value indicates the last page.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -149,13 +149,7 @@ class ListManagedAgentsResponseBodyItems(DaraModel):
         self.name = name
         # The runtime type.
         self.runtime = runtime
-        # The status of the managed agent. Valid values:
-        # - Creating: Being created.
-        # - Failed: Failed.
-        # - Running: Running.
-        # - Updating: Being updated.
-        # - Deleted: Deleted.
-        # - Deleting: Being deleted.
+        # The status of the managed agent.
         self.status = status
         # The update time in RFC 3339 format.
         self.updated_at = updated_at
@@ -297,7 +291,7 @@ class ListManagedAgentsResponseBodyItemsHarnessConfiguration(DaraModel):
     ):
         # Binds a Service Account Key of the QoderCLI Connector by Key ID. This parameter can be omitted when only one key exists, but is required when multiple keys exist.
         self.connector_service_account_key = connector_service_account_key
-        # The Connector Key name populated during queries. This parameter is not used as a binding reference during writes.
+        # The Connector Key name populated during queries. This value is not used as a binding reference during writes.
         self.connector_service_account_name = connector_service_account_name
 
     def validate(self):

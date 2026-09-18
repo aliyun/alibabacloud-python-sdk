@@ -17,11 +17,11 @@ class CreateAgentIMChannelResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The business status code. The value SUCCESS indicates success.
+        # The business status code. The value is SUCCESS when the request succeeds.
         self.code = code
         # The IM channel information after creation.
         self.data = data
-        # The HTTP status code. The value 200 indicates success.
+        # The HTTP status code. The value is 200 when the request succeeds.
         self.http_status_code = http_status_code
         # The request processing result message.
         self.message = message
@@ -104,7 +104,6 @@ class CreateAgentIMChannelResponseBodyData(DaraModel):
         # The channel behavior configuration.
         self.channel_config = channel_config
         # The IM channel type. Valid values:
-        # 
         # - DINGTALK: DingTalk.
         # - FEISHU: Lark.
         # - WECOM: WeCom.
@@ -113,16 +112,15 @@ class CreateAgentIMChannelResponseBodyData(DaraModel):
         self.create_time = create_time
         # The channel credential summary. Only non-sensitive fields and configured secret field names are returned. Secret values are not returned.
         self.credential_summary = credential_summary
-        # Specifies whether to enable the IM channel. Default value: true.
+        # Specifies whether to enable the IM channel. Default value during creation: true.
         self.enabled = enabled
         # The public network access URL of the attached ServiceEndpoint.
         self.endpoint_url = endpoint_url
         # The IM channel ID.
         self.im_channel_id = im_channel_id
-        # The ID of the ServiceEndpoint to bind. The endpoint must belong to the specified agent and its current version, be in the ready state, and have a public network address.
+        # The ID of the bound ServiceEndpoint. The endpoint must belong to the specified agent and its current version, be in the ready state, and have a public network address.
         self.service_endpoint_id = service_endpoint_id
         # The IM channel status. Valid values:
-        # 
         # - CREATING: Being created.
         # - READY: Ready.
         # - UPDATING: Being updated.
@@ -130,7 +128,7 @@ class CreateAgentIMChannelResponseBodyData(DaraModel):
         # - DELETING: Being deleted.
         # - DELETE_FAILED: Deletion failed.
         self.status = status
-        # The reason for the current IM channel status.
+        # The reason for the current status of the IM channel.
         self.status_reason = status_reason
         # The update time in RFC 3339 format.
         self.update_time = update_time
