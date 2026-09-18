@@ -16,13 +16,13 @@ class ListContactGroupsResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # A list of contact groups.
+        # The contact groups.
         self.contact_groups = contact_groups
-        # The returned page number.
+        # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page. Default value: 100.
         self.page_size = page_size
-        # The request ID.
+        # The unique request ID.
         self.request_id = request_id
         # The total number of entries.
         self.total = total
@@ -87,12 +87,13 @@ class ListContactGroupsResponseBodyContactGroups(DaraModel):
         name: str = None,
         workspace: str = None,
     ):
-        # The contact group ID.
+        # The unique identifier of the contact group.
         self.contact_group_id = contact_group_id
-        # The contact IDs in the group.
+        # The contact IDs.
         self.contact_ids = contact_ids
-        # The name of the contact group.
+        # The contact name.
         self.name = name
+        # The workspace.
         self.workspace = workspace
 
     def validate(self):

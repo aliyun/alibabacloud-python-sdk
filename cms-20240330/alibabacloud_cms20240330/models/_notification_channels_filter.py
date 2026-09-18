@@ -17,12 +17,19 @@ class NotificationChannelsFilter(DaraModel):
         contains_slack_webhooks: List[str] = None,
         contains_wx_webhooks: List[str] = None,
     ):
+        # The alert contact list of the rule contains any value in the array (OR semantics), corresponding to V1 notification.contacts.
         self.contains_contacts = contains_contacts
+        # The custom webhook list of the rule contains any value in the array (OR semantics), corresponding to V1 notification.customWebhooks.
         self.contains_custom_webhooks = contains_custom_webhooks
+        # The DingTalk webhook list of the rule contains any value in the array (OR semantics), corresponding to V1 notification.dingWebhooks.
         self.contains_ding_webhooks = contains_ding_webhooks
+        # The Lark webhook list of the rule contains any value in the array (OR semantics), corresponding to V1 notification.fsWebhooks.
         self.contains_fs_webhooks = contains_fs_webhooks
+        # The alert contact group list of the rule contains any value in the array (OR semantics), corresponding to V1 notification.groups.
         self.contains_groups = contains_groups
+        # The Slack webhook list of the rule contains any value in the array (OR semantics), corresponding to V1 notification.slackWebhooks.
         self.contains_slack_webhooks = contains_slack_webhooks
+        # The WeCom webhook list of the rule contains any value in the array (OR semantics), corresponding to V1 notification.wxWebhooks.
         self.contains_wx_webhooks = contains_wx_webhooks
 
     def validate(self):

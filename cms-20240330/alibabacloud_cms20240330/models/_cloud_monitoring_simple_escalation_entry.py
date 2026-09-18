@@ -20,11 +20,11 @@ class CloudMonitoringSimpleEscalationEntry(DaraModel):
         self.pre_condition = pre_condition
         # The severity level.
         self.severity = severity
-        # The statistics method.
+        # The statistical method.
         self.statistics = statistics
         # The threshold.
         self.threshold = threshold
-        # The number of consecutive times the condition is triggered.
+        # The number of consecutive times the condition must be met to trigger an alert.
         self.times = times
 
     def validate(self):

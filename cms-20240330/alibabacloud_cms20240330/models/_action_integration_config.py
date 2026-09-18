@@ -12,9 +12,9 @@ class ActionIntegrationConfig(DaraModel):
         actions: List[str] = None,
         enabled: bool = None,
     ):
-        # The list of action integration IDs.
+        # The list of action integration configurations. An action integration is an automated action that is executed after an alert rule is triggered, such as sending a notification or invoking a webhook. Each action integration is referenced by its action integration ID.
         self.actions = actions
-        # Indicates whether action integration is started.
+        # Indicates whether action integration is enabled.
         self.enabled = enabled
 
     def validate(self):

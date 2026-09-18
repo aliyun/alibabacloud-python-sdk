@@ -21,16 +21,27 @@ class NotifyConfigUnified(DaraModel):
         type: str = None,
         utc_offset: str = None,
     ):
+        # The days of the week on which notifications are sent, 1-7.
         self.active_days = active_days
+        # The daily notification effective end time.
         self.active_end_time = active_end_time
+        # The daily notification effective start time.
         self.active_start_time = active_start_time
+        # The list of notification channels.
         self.channels = channels
+        # The list of notification policy IDs (type=NOTIFY_POLICY, currently a maximum of 1 per service. Mutually exclusive with channels/silenceTimeSecs/activeDays/activeStartTime/activeEndTime/utcOffset of DIRECT_NOTIFY).
         self.notify_strategies = notify_strategies
+        # Specifies whether to send recovery notifications (type=DIRECT_NOTIFY). Default value: true. Each severity level in severityChannels can independently override this setting.
         self.send_recover_notification = send_recover_notification
+        # The Notification Recipients and channels configured by severity level (type=DIRECT_NOTIFY, new mode, mutually exclusive with channels). The key is the severity level: CRITICAL/ERROR/WARNING/INFO.
         self.severity_channels = severity_channels
+        # The mute for epoch in seconds.
         self.silence_time_secs = silence_time_secs
+        # The notification configuration type.
+        # 
         # This parameter is required.
         self.type = type
+        # The UTC time zone offset.
         self.utc_offset = utc_offset
 
     def validate(self):

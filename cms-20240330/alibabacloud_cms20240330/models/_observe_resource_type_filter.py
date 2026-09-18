@@ -9,7 +9,7 @@ class ObserveResourceTypeFilter(DaraModel):
         self,
         eq: str = None,
     ):
-        # The exact resource type to query. Returns only resources of this type.
+        # The exact match.
         self.eq = eq
 
     def validate(self):

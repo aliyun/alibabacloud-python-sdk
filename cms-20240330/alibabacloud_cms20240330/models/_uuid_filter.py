@@ -12,7 +12,9 @@ class UuidFilter(DaraModel):
         eq: str = None,
         in_: List[str] = None,
     ):
+        # The exact match condition for the alert rule UUID. Only the alert rule whose UUID equals the specified value is returned.
         self.eq = eq
+        # The set match condition for alert rule UUIDs. All alert rules whose UUIDs are in the specified list are returned.
         self.in_ = in_
 
     def validate(self):

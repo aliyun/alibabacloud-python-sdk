@@ -12,7 +12,9 @@ class QueryAlertRulesEntityTypeFilter(DaraModel):
         in_: List[str] = None,
         not_in: List[str] = None,
     ):
+        # Matches any value in the set (OR semantics).
         self.in_ = in_
+        # Excludes any value in the set (NOT IN semantics).
         self.not_in = not_in
 
     def validate(self):

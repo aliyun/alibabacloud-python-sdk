@@ -18,7 +18,7 @@ class ListPrometheusInstancesShrinkRequest(DaraModel):
         version: str = None,
         workspace: str = None,
     ):
-        # The region IDs for filtering, separated by commas.
+        # The region IDs for filtering, separated by commas. Currently, only a single region ID is supported.
         self.filter_region_ids = filter_region_ids
         # The maximum number of records to return.
         self.max_results = max_results
@@ -34,9 +34,7 @@ class ListPrometheusInstancesShrinkRequest(DaraModel):
         self.resource_type = resource_type
         # The tags.
         self.tag_shrink = tag_shrink
-        # The instance version. Valid values:
-        # - V1: V1 version.
-        # - V2: V2 version.
+        # The instance version. Valid values: V1 and V2.
         self.version = version
         # The workspace to which the instance belongs.
         self.workspace = workspace

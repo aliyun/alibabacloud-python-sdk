@@ -19,23 +19,23 @@ class SubscriptionForModify(DaraModel):
         subscription_name: str = None,
         workspace_filter_setting: main_models.WorkspaceFilterSetting = None,
     ):
+        # The agent configuration information.
         self.agent_config = agent_config
         # The description.
         self.description = description
         # The filter settings.
         self.filter_setting = filter_setting
-        # The UUID of the notification policy.
+        # The UUID of the notification strategy.
         self.notify_strategy_id = notify_strategy_id
         # The push settings.
         self.pushing_setting = pushing_setting
-        # Specifies whether to subscribe to legacy product events (CMS 1.0, ARMS, or SLS events where workspace is null). Valid values:
-        # - true: Subscribe.
-        # - false or null: Do not subscribe.
+        # Specifies whether to subscribe to legacy product events (CMS 1.0, ARMS, or SLS events where workspace is null). Valid values: true: Subscribe. false or null: Do not subscribe.
         self.subscribe_legacy_event = subscribe_legacy_event
         # The name.
         # 
         # This parameter is required.
         self.subscription_name = subscription_name
+        # The workspace filter settings.
         self.workspace_filter_setting = workspace_filter_setting
 
     def validate(self):
@@ -119,11 +119,11 @@ class SubscriptionForModifyPushingSetting(DaraModel):
         restore_action_ids: List[str] = None,
         template_uuid: str = None,
     ):
-        # The list of action plan IDs for alert pushing.
+        # The list of action plan IDs for alert push.
         self.alert_action_ids = alert_action_ids
         # The action plan ID.
         self.response_plan_id = response_plan_id
-        # The list of action integration plan IDs for recovery pushing.
+        # The list of action integration plan IDs for recovery push.
         self.restore_action_ids = restore_action_ids
         # The UUID of the template.
         self.template_uuid = template_uuid
@@ -172,7 +172,9 @@ class SubscriptionForModifyAgentConfig(DaraModel):
         agent_uuid: str = None,
         routes: List[main_models.NotifyRouteForSubscription] = None,
     ):
+        # The unique identifier of the agent.
         self.agent_uuid = agent_uuid
+        # The list of agent routing configurations.
         self.routes = routes
 
     def validate(self):

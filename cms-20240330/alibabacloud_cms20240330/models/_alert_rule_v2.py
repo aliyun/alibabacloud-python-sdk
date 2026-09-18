@@ -22,6 +22,7 @@ class AlertRuleV2(DaraModel):
         display_name: str = None,
         enabled: bool = None,
         labels: Dict[str, str] = None,
+        managed_by: str = None,
         notify_config: main_models.NotifyConfigUnified = None,
         notify_strategy_id: str = None,
         observe_resource_config: main_models.ObserveResourceConfig = None,
@@ -39,52 +40,61 @@ class AlertRuleV2(DaraModel):
         uuid: str = None,
         workspace: str = None,
     ):
+        # The action integration configuration.
         self.action_integration_config = action_integration_config
         # The annotations.
         self.annotations = annotations
+        # The Application Real-Time Monitoring Service (ARMS) integration configuration.
         self.arms_integration_config = arms_integration_config
-        # The business source. This field is read-only. Example values: managed_service_for_prometheus, umodel, application_insights, cloud_monitoring, and sls.
+        # The business source (read-only, such as managed_service_for_prometheus, umodel, application_insights, cloud_monitoring, or sls).
         self.biz_source = biz_source
+        # The detection condition configuration aggregation (Prometheus simple, UModel, APM simple, or APM composite).
         self.condition_config = condition_config
         # The content template.
         self.content_template = content_template
-        # The creation time in ISO 8601 format. This field is read-only.
+        # The creation time (read-only), in ISO 8601 format.
         self.created_at = created_at
+        # The datasource config aggregation (PROMETHEUS, UMODEL, and APM share a single object, with fields selected based on type).
         self.datasource_config = datasource_config
-        # The data source type. This field is read-only and derived.
+        # The data source type (read-only, derived).
         self.datasource_type = datasource_type
         # The display name.
         self.display_name = display_name
-        # Specifies whether the alert rule is enabled.
+        # Indicates whether the alert rule is enabled.
         self.enabled = enabled
         # The labels.
         self.labels = labels
+        # The rule manager (read-only). An empty value indicates a user-created rule. A non-empty value indicates the rule is created and managed by the corresponding cloud service.
+        self.managed_by = managed_by
+        # The notification configuration aggregation (currently only DIRECT_NOTIFY, corresponding to DirectNotifyConfig).
         self.notify_config = notify_config
-        # The notification strategy ID. This field is read-only and derived from the first item in the notification strategy list.
+        # The notification policy ID (read-only, derived, the first entry in the notification policy list).
         self.notify_strategy_id = notify_strategy_id
         # The observable resource configuration.
         self.observe_resource_config = observe_resource_config
-        # **[Deprecated]** Indicates whether the rule applies to all resources of this type. This field is read-only and derived. Use observeResourceConfig.relationType set to ALL for equivalent semantics in new integrations.
+        # **[Deprecated]** Indicates whether the rule takes effect on all resources of this type (read-only, derived). For new integrations, use observeResourceConfig.relationType to check whether the value is ALL for equivalent semantics.
         self.observe_resource_global_scope = observe_resource_global_scope
-        # The list of observable resource IDs. This field is read-only and derived.
+        # The list of observable resource IDs (read-only, derived).
         self.observe_resource_list = observe_resource_list
-        # **[Deprecated]** The observable resource type. This field is read-only and derived. Use observeResourceConfig.entityType instead for new integrations.
+        # **[Deprecated]** The observable resource type (read-only, derived). For new integrations, use observeResourceConfig.entityType instead.
         self.observe_resource_type = observe_resource_type
-        # The partition key. This field is read-only and maintained by the system for rule routing and sharding.
+        # The partition key (read-only, maintained by the system for rule routing and sharding).
         self.partition_key = partition_key
+        # The query configuration aggregation (PROMETHEUS_SINGLE_QUERY, UMODEL_METRICSET_QUERY, or APM_MULTI_QUERY).
         self.query_config = query_config
-        # The RCA (root cause analysis) configuration.
+        # The Root Cause Analysis (RCA) configuration.
         self.rca_config = rca_config
-        # The region ID. This field is aligned with V1 AlertRule.regionId. Priority: request body regionId > gateway callerRegionId.
+        # The region ID (aligned with V1 AlertRule.regionId. Priority: regionId in the request body > callerRegionId from the gateway).
         self.region_id = region_id
+        # The scheduling configuration aggregation (currently only FIXED is supported).
         self.schedule_config = schedule_config
-        # The severity levels covered by this rule, separated by commas. This field is read-only and derived. The format is the same as the filter.severityLevels query parameter.
+        # The severity levels covered by this rule, comma-separated (read-only, derived. Same format as the filter.severityLevels query parameter).
         self.severity_levels = severity_levels
-        # The alert status. This field is read-only.
+        # The alert status (read-only).
         self.status = status
-        # The update time in ISO 8601 format. This field is read-only.
+        # The update time (read-only), in ISO 8601 format.
         self.updated_at = updated_at
-        # The rule UUID. This field is system-generated and read-only.
+        # The rule UUID (system-generated, read-only).
         self.uuid = uuid
         # The workspace.
         self.workspace = workspace
@@ -149,6 +159,9 @@ class AlertRuleV2(DaraModel):
 
         if self.labels is not None:
             result['labels'] = self.labels
+
+        if self.managed_by is not None:
+            result['managedBy'] = self.managed_by
 
         if self.notify_config is not None:
             result['notifyConfig'] = self.notify_config.to_map()
@@ -241,6 +254,9 @@ class AlertRuleV2(DaraModel):
 
         if m.get('labels') is not None:
             self.labels = m.get('labels')
+
+        if m.get('managedBy') is not None:
+            self.managed_by = m.get('managedBy')
 
         if m.get('notifyConfig') is not None:
             temp_model = main_models.NotifyConfigUnified()

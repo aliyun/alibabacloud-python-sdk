@@ -10,7 +10,9 @@ class EntityFields(DaraModel):
         field: str = None,
         value: str = None,
     ):
+        # The entity field name.
         self.field = field
+        # The field alias or display value.
         self.value = value
 
     def validate(self):

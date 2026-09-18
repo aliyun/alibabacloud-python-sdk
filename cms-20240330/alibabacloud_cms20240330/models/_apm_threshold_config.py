@@ -16,11 +16,11 @@ class ApmThresholdConfig(DaraModel):
         self.max = max
         # The lower bound of the range.
         self.min = min
-        # The alert level.
+        # The warning level.
         # 
         # This parameter is required.
         self.severity = severity
-        # The threshold. This parameter is required for APM_SIMPLE_CONDITION.
+        # The threshold.
         self.threshold = threshold
 
     def validate(self):

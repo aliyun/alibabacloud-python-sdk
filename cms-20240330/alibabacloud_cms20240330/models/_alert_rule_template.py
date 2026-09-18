@@ -29,26 +29,47 @@ class AlertRuleTemplate(DaraModel):
         user_id: str = None,
         uuid: str = None,
     ):
+        # The alert type.
         self.alert_type = alert_type
+        # The number of rules that have been applied from this template.
         self.apply_count = apply_count
+        # The business type.
         self.biz_type = biz_type
+        # The data source, in JSON string format.
         self.datasource = datasource
+        # The template description.
         self.description = description
+        # The creation time, in UNIX millisecond timestamp format.
         self.gmt_create = gmt_create
+        # The last modified time, in UNIX millisecond timestamp format.
         self.gmt_modified = gmt_modified
+        # The template ID.
         self.id = id
+        # Indicates whether the template is a system template. Valid values: 1: yes. 0: no.
         self.is_system = is_system
+        # The labels, in JSON string format.
         self.labels = labels
+        # The namespace.
         self.namespace = namespace
+        # The cloud service category.
         self.product_category = product_category
+        # The rule configurations, in JSON string format.
         self.rule_configs = rule_configs
+        # The applicable scenarios.
         self.scenes = scenes
+        # The schema version.
         self.schema_version = schema_version
+        # The source type.
         self.source_type = source_type
+        # The template status. Valid values: 1: enabled. 0: disabled.
         self.status = status
+        # The subtype.
         self.sub_type = sub_type
+        # The template name.
         self.template_name = template_name
+        # The ID of the user to whom the template belongs.
         self.user_id = user_id
+        # The template UUID.
         self.uuid = uuid
 
     def validate(self):

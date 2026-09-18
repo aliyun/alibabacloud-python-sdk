@@ -13,9 +13,9 @@ class NotifyRouteForSubscription(DaraModel):
         channels: List[main_models.NotifyRouteForSubscriptionChannels] = None,
         effect_time_range: main_models.NotifyRouteForSubscriptionEffectTimeRange = None,
     ):
-        # An array of objects, each defining a notification channel.
+        # The list of notification channels.
         self.channels = channels
-        # The active period for the notification rule.
+        # The effective period configuration.
         self.effect_time_range = effect_time_range
 
     def validate(self):
@@ -63,13 +63,13 @@ class NotifyRouteForSubscriptionEffectTimeRange(DaraModel):
         start_time_in_minute: int = None,
         time_zone: str = None,
     ):
-        # The active days of the week, specified as an array of integers.
+        # The effective days of the week (0 = Sunday, 1 = Monday, ..., 6 = Saturday).
         self.day_in_week = day_in_week
-        # The end of the active period, in minutes from 00:00. The value ranges from 0 to 1439.
+        # The end time of the day, in minutes from 0:00.
         self.end_time_in_minute = end_time_in_minute
-        # The start of the active period, in minutes from 00:00. The value ranges from 0 to 1439.
+        # The start time of the day, in minutes from 0:00.
         self.start_time_in_minute = start_time_in_minute
-        # The time zone for the effect time range, specified in the IANA Time Zone Database format. For example, `UTC` or `Asia/Shanghai`.
+        # The time zone.
         self.time_zone = time_zone
 
     def validate(self):
@@ -117,11 +117,11 @@ class NotifyRouteForSubscriptionChannels(DaraModel):
         enabled_sub_channels: List[str] = None,
         receivers: List[str] = None,
     ):
-        # The channel type. For example, `Email`, `SMS`, or `Webhook`.
+        # The channel type.
         self.channel_type = channel_type
-        # A list of enabled sub-channels. Applicable to channels that support finer-grained topics or categories.
+        # The list of enabled subchannels.
         self.enabled_sub_channels = enabled_sub_channels
-        # A list of notification receivers. The receiver format depends on the `channelType`.
+        # The list of receivers.
         self.receivers = receivers
 
     def validate(self):

@@ -41,7 +41,7 @@ class AlertRuleCondition(DaraModel):
         self.alert_count = alert_count
         # Applicable condition type: SLS_CONDITION.
         # 
-        # The list of Simple Log Service alert conditions.
+        # The list of Simple Log Service (SLS) alert conditions.
         self.case_list = case_list
         # Applicable condition type: APM_CONDITION.
         # 
@@ -49,54 +49,63 @@ class AlertRuleCondition(DaraModel):
         self.compare_list = compare_list
         # Applicable condition type: CMS_BASIC_CONDITION.
         # 
-        # This parameter takes effect only when escalationType is set to composite. The composite metric alert condition.
+        # Valid when escalationType is set to composite. The composite metric alert condition.
         self.composite_escalation = composite_escalation
+        # The count comparison operator, specified when type=LOG_SET_CONDITION. Valid values: GTE / GT / EQ / LTE / LT.
         self.count_operator = count_operator
+        # The count threshold, specified when type=LOG_SET_CONDITION.
         self.count_threshold = count_threshold
+        # Used when type=UMODEL_METRICSET_MULTI_CONDITION. Specifies whether to enable severity suppression to the highest level. Default value: true. Only the highest severity level is reported for the same entity.
         self.enable_severity_suppression = enable_severity_suppression
         # Applicable condition type: CMS_BASIC_CONDITION.
         # 
         # Valid values:
         # 
-        # - simple: simple metric condition.
-        # - composite: composite metric condition.
-        # - express: expression condition.
+        # - simple: simple metric condition
+        # - composite: composite metric condition
+        # - express: expression condition
         self.escalation_type = escalation_type
         # Applicable condition type: CMS_BASIC_CONDITION.
         # 
-        # This parameter takes effect only when escalationType is set to composite. The multi-metric composite alert condition.
+        # Valid when escalationType=composite. Specifies the multi-metric composite alert conditions.
         self.express_escalation = express_escalation
+        # The log field name, specified when type=LOG_SET_CONDITION and matchOperator=CONTAINS/EQUALS/REGEX.
         self.match_field = match_field
+        # The match operator, specified when type=LOG_SET_CONDITION. Valid values: PRESENT / NOT_PRESENT / CONTAINS / EQUALS / REGEX.
         self.match_operator = match_operator
+        # The match value, specified when type=LOG_SET_CONDITION and matchOperator=CONTAINS/EQUALS/REGEX.
         self.match_value = match_value
+        # The upper bound of the range specified when type=BASIC_CONDITION and oper=IN_RANGE/OUT_OF_RANGE.
         self.max = max
+        # The lower bound of the range specified when type=BASIC_CONDITION and oper=IN_RANGE/OUT_OF_RANGE.
         self.min = min
         # Applicable condition type: APM_CONDITION.
         # 
-        # The alert level when no data is available. If this parameter is not specified, no alert is triggered when no data is available.
+        # The alert level when no data is available. If not specified, no alert is triggered for no-data scenarios.
         self.no_data_alert_level = no_data_alert_level
         # Applicable condition type: APM_CONDITION.
         # 
-        # The compensation value when no data is available.
+        # The value to use as compensation when no data is available.
         self.no_data_append_value = no_data_append_value
         # Applicable condition type: CMS_BASIC_CONDITION.
         # 
-        # The method used to handle alerts when no monitoring data is available. Valid values:
+        # 
+        # Specifies how to handle alerts when no monitoring data is available. Valid values:
         # 
         # - KEEP_LAST_STATE (default): No action is taken.
-        # - INSUFFICIENT_DATA: The alert content indicates that no data is available.
+        # - INSUFFICIENT_DATA: The alert content indicates no data.
         # - OK: Normal.
         self.no_data_policy = no_data_policy
-        # The comparison operator. Specifies whether to use year-over-year or period-over-period comparison. Valid values:
+        # The comparison operator. Determines whether year-over-year or period-over-period comparison is used.
         # 
-        # - GT: greater than.
-        # - GTE: greater than or equal to.
-        # - LT: less than.
-        # - LTE: less than or equal to.
-        # - EQ: equal to.
-        # - NE: not equal to.
-        # - YOY_UP: year-over-year increase.
-        # - YOY_DOWN: year-over-year decrease.
+        # - Greater than: GT
+        # - Greater than or equal to: GTE
+        # - Less than: LT
+        # - Less than or equal to: LTE
+        # - Equal to: EQ
+        # - Not equal to: NE
+        # - Year-over-year increase: YOY_UP
+        # - Year-over-year decrease: YOY_DOWN
         self.oper = oper
         # Applicable condition type: APM_CONDITION.
         # 
@@ -106,18 +115,20 @@ class AlertRuleCondition(DaraModel):
         self.relation = relation
         # Applicable condition type: CMS_BASIC_CONDITION.
         # 
-        # This parameter takes effect only when escalationType is set to simple. The alert condition configured for a single metric.
+        # Valid only when escalationType is set to simple. The alert condition for a single metric.
         self.simple_escalation = simple_escalation
+        # The list of multi-level thresholds and severity levels, used to map different thresholds to corresponding alert levels.
         self.threshold_list = threshold_list
+        # Specified when type=UMODEL_METRICSET_MULTI_CONDITION. The list of trigger conditions. Each item contains severity, durationSecs, and an expression (SIMPLE for single-metric or COMPOSITE for multi-metric AND/OR/UNLESS).
         self.triggers = triggers
         # The rule condition type. Valid values:
-        # - SLS_CONDITION: Simple Log Service alert condition.
+        # - SLS_CONDITION: SLS alert condition.
         # - APM_CONDITION: APM alert condition.
-        # - CMS_BASIC_CONDITION: CloudMonitor Basic monitoring alert condition.
+        # - CMS_BASIC_CONDITION: CloudMonitor Basic CloudMonitor alerts condition.
         # 
         # This parameter is required.
         self.type = type
-        # The threshold that triggers the alert.
+        # The threshold for triggering an alert.
         self.value = value
 
     def validate(self):
@@ -329,8 +340,11 @@ class AlertRuleConditionTriggers(DaraModel):
         expression: main_models.AlertRuleConditionTriggersExpression = None,
         severity: str = None,
     ):
+        # The duration in seconds that the condition must be continuously met before an alert is triggered.
         self.duration_secs = duration_secs
+        # The expression of the trigger condition. Supports two forms: SIMPLE (single-metric) and COMPOSITE (multi-metric AND/OR/UNLESS combination).
         self.expression = expression
+        # The alert severity level that corresponds to this trigger condition when it is met.
         self.severity = severity
 
     def validate(self):
@@ -374,8 +388,11 @@ class AlertRuleConditionTriggersExpression(DaraModel):
         expression_type: str = None,
         logic_operator: str = None,
     ):
+        # The list of sub-conditions for the trigger condition. Multiple sub-conditions are evaluated based on the logicOperator of the parent expression.
         self.conditions = conditions
+        # The expression type. SIMPLE indicates a single-metric condition. COMPOSITE indicates a multi-metric composite condition.
         self.expression_type = expression_type
+        # The multi-metric composite operator. Valid only when expressionType=COMPOSITE.
         self.logic_operator = logic_operator
 
     def validate(self):
@@ -426,9 +443,13 @@ class AlertRuleConditionTriggersExpressionConditions(DaraModel):
         query_name: str = None,
         threshold: float = None,
     ):
+        # The conditional expression type of the sub-condition, typically SIMPLE.
         self.expression_type = expression_type
+        # The comparison operator of the sub-condition, used to compare the query result with the threshold.
         self.operator = operator
+        # The query name referenced by the sub-condition, corresponding to the name in queries.
         self.query_name = query_name
+        # The threshold value of the sub-condition.
         self.threshold = threshold
 
     def validate(self):
@@ -477,9 +498,13 @@ class AlertRuleConditionThresholdList(DaraModel):
         severity: str = None,
         threshold: float = None,
     ):
+        # The upper bound of the range (required when operator=IN_RANGE/OUT_OF_RANGE).
         self.max = max
+        # The lower bound of the range (required when operator=IN_RANGE/OUT_OF_RANGE).
         self.min = min
+        # The severity level.
         self.severity = severity
+        # The threshold (required when the operator is not a range operator).
         self.threshold = threshold
 
     def validate(self):
@@ -527,13 +552,13 @@ class AlertRuleConditionSimpleEscalation(DaraModel):
         metric_name: str = None,
         period: int = None,
     ):
-        # The list of conditions. When an alert rule corresponds to multiple levels, each level has a condition object.
+        # The list of conditions. If an alert rule corresponds to multiple levels, each level has a condition object.
         self.escalations = escalations
         # Applicable condition type: CMS_BASIC_CONDITION.
         # 
         # The metric associated with the alert condition.
         self.metric_name = metric_name
-        # The time window of the metric. Unit: seconds.
+        # The time window of the metric, in seconds.
         self.period = period
 
     def validate(self):
@@ -606,7 +631,7 @@ class AlertRuleConditionSimpleEscalationEscalations(DaraModel):
         # - WARNING
         # - INFO
         self.level = level
-        # The statistical method. The value of this parameter is determined by the Statistics column corresponding to the MetricName of the specified cloud service. Examples: Maximum, Minimum, and Average.
+        # The statistical method. The valid values of this parameter are determined by the Statistics column corresponding to the MetricName of the specified cloud service. Examples: Maximum, Minimum, and Average.
         self.statistics = statistics
         # The alert threshold.
         self.threshold = threshold
@@ -670,7 +695,7 @@ class AlertRuleConditionExpressEscalation(DaraModel):
         # - WARNING
         # - INFO
         self.level = level
-        # The alert condition expression.
+        # The alert conditional expression.
         self.raw_expression = raw_expression
         # The number of times the condition must be met to trigger an alert.
         self.times = times
@@ -800,10 +825,10 @@ class AlertRuleConditionCompositeEscalationEscalations(DaraModel):
         self.period = period
         # The statistical method. The value of this parameter is determined by the Statistics column corresponding to the MetricName of the specified cloud service. Example values for the statistical method of a metric:
         # 
-        # - $Maximum: Maximum value.
-        # - $Minimum: Minimum value.
-        # - $Average: Average value.
-        # - $Availability: Availability rate (typically used for site monitoring).
+        # - $Maximum: maximum value.
+        # - $Minimum: minimum value.
+        # - $Average: average value.
+        # - $Availability: availability rate (typically used for site monitoring).
         # 
         # Note: $ is the unified prefix symbol for metrics.
         self.statistics = statistics
@@ -866,7 +891,7 @@ class AlertRuleConditionCompareList(DaraModel):
         yoy_time_unit: str = None,
         yoy_time_value: int = None,
     ):
-        # The aggregate functions applied after time series aggregation.
+        # The aggregation function applied after time series.
         # 
         # - count
         # - sum
@@ -896,10 +921,10 @@ class AlertRuleConditionCompareList(DaraModel):
         self.value = value
         # The list of alert levels for different values.
         self.value_level_list = value_level_list
-        # The time unit for year-over-year comparison. Valid only when oper is set to YOY_UP or YOY_DOWN.
+        # The year-over-year time unit. Valid only when oper is set to YOY_UP or YOY_DOWN.
         # Valid values: minute, hour, day, week, month.
         self.yoy_time_unit = yoy_time_unit
-        # The value of the year-over-year time period. Used together with yoyTimeUnit.
+        # The year-over-year time value. Used together with yoyTimeUnit.
         self.yoy_time_value = yoy_time_value
 
     def validate(self):
@@ -1025,13 +1050,13 @@ class AlertRuleConditionCaseList(DaraModel):
         self.count_condition = count_condition
         # The alert level when the condition is met.
         self.level = level
-        # The match type: has data, has a specific number of data entries, has data match, or has a specific number of data matches.
+        # The match type: has data, has specific count of data, has data match, or has specific count of data match.
         # 
         # Valid values:
         # - HasData: has data
-        # - HasDataCount: has a specific number of data entries
+        # - HasDataCount: has specific count of data
         # - HasDataMatch: has data match
-        # - HasDataMatchCount: has a specific number of data matches
+        # - HasDataMatchCount: has specific count of data match
         self.type = type
 
     def validate(self):

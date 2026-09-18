@@ -16,15 +16,15 @@ class ListContactsResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The list of contacts.
+        # The list of alert contacts.
         self.contacts = contacts
         # The page number. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 100.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -94,26 +94,27 @@ class ListContactsResponseBodyContacts(DaraModel):
         update_time: str = None,
         workspace: str = None,
     ):
-        # The ID of the contact.
+        # The ID of the alert contact.
         self.contact_id = contact_id
-        # The email address of the contact.
+        # The email address of the alert contact.
         self.email = email
         # Indicates whether the email address is verified.
         self.email_verify = email_verify
-        # A list of contact group IDs to which the contact belongs.
+        # The contact groups to which the alert contact belongs.
         self.group_list = group_list
-        # A map of user IDs for various instant messaging (IM) tools.
+        # The mapping of instant messaging user IDs. Multiple instant messaging tools are supported.
         self.im_user_ids = im_user_ids
-        # The language preference for notifications. Valid values: zh-CN and en-US.
+        # The language.
         self.lang = lang
-        # The name of the contact.
+        # The name of the alert contact.
         self.name = name
-        # The phone number of the contact.
+        # The phone number of the alert contact.
         self.phone = phone
-        # Indicates whether the phone number is verified.
+        # Indicates whether the phone number of the alert contact is verified.
         self.phone_verify = phone_verify
-        # The last time the contact was updated.
+        # The time when the alert contact was last updated. Format: yyyy-MM-dd HH:mm:ss.
         self.update_time = update_time
+        # The workspace name.
         self.workspace = workspace
 
     def validate(self):

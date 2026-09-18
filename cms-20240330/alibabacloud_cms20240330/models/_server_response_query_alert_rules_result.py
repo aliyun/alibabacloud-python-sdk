@@ -18,14 +18,23 @@ class ServerResponseQueryAlertRulesResult(DaraModel):
         success: bool = None,
         total: int = None,
     ):
+        # The status code of the API response. A value of 200 indicates a successful request. Other values indicate an exception.
         self.code = code
+        # The business data returned by the API, including the list of alert rule query results and pagination information.
         self.data = data
+        # The detailed error description returned when the request fails. This parameter is empty when the request succeeds.
         self.message = message
+        # The token for the next page. A value of null indicates that no more pages are available.
         self.next_token = next_token
+        # The page number of the current response.
         self.page_number = page_number
+        # The number of records per page in the current response.
         self.page_size = page_size
+        # The unique ID of the API request, used for troubleshooting and server-side log tracing.
         self.request_id = request_id
+        # Indicates whether the request was successful. A value of true indicates success. A value of false indicates failure.
         self.success = success
+        # The total number of alert rules that match the query conditions.
         self.total = total
 
     def validate(self):

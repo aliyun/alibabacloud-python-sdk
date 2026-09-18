@@ -645,6 +645,110 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_agg_task_group_with_options_async(instance_id, request, headers, runtime)
 
+    def create_alert_robot_with_options(
+        self,
+        request: main_models.CreateAlertRobotRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAlertRobotResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.digital_employee_name):
+            body['digitalEmployeeName'] = request.digital_employee_name
+        if not DaraCore.is_null(request.lang):
+            body['lang'] = request.lang
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.robot_id):
+            body['robotId'] = request.robot_id
+        if not DaraCore.is_null(request.robot_sign_key):
+            body['robotSignKey'] = request.robot_sign_key
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        if not DaraCore.is_null(request.url):
+            body['url'] = request.url
+        if not DaraCore.is_null(request.workspace):
+            body['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAlertRobot',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/robot',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAlertRobotResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_alert_robot_with_options_async(
+        self,
+        request: main_models.CreateAlertRobotRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAlertRobotResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.digital_employee_name):
+            body['digitalEmployeeName'] = request.digital_employee_name
+        if not DaraCore.is_null(request.lang):
+            body['lang'] = request.lang
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.robot_id):
+            body['robotId'] = request.robot_id
+        if not DaraCore.is_null(request.robot_sign_key):
+            body['robotSignKey'] = request.robot_sign_key
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        if not DaraCore.is_null(request.url):
+            body['url'] = request.url
+        if not DaraCore.is_null(request.workspace):
+            body['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAlertRobot',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/robot',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAlertRobotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_alert_robot(
+        self,
+        request: main_models.CreateAlertRobotRequest,
+    ) -> main_models.CreateAlertRobotResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_alert_robot_with_options(request, headers, runtime)
+
+    async def create_alert_robot_async(
+        self,
+        request: main_models.CreateAlertRobotRequest,
+    ) -> main_models.CreateAlertRobotResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_alert_robot_with_options_async(request, headers, runtime)
+
     def create_alert_webhook_with_options(
         self,
         request: main_models.CreateAlertWebhookRequest,
@@ -1546,6 +1650,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.create_integration_policy_with_options_async(request, headers, runtime)
+
+    def create_maintain_window_with_options(
+        self,
+        request: main_models.CreateMaintainWindowRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateMaintainWindowResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateMaintainWindow',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/maintainWindows',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateMaintainWindowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_maintain_window_with_options_async(
+        self,
+        request: main_models.CreateMaintainWindowRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateMaintainWindowResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateMaintainWindow',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/maintainWindows',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateMaintainWindowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_maintain_window(
+        self,
+        request: main_models.CreateMaintainWindowRequest,
+    ) -> main_models.CreateMaintainWindowResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_maintain_window_with_options(request, headers, runtime)
+
+    async def create_maintain_window_async(
+        self,
+        request: main_models.CreateMaintainWindowRequest,
+    ) -> main_models.CreateMaintainWindowResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_maintain_window_with_options_async(request, headers, runtime)
 
     def create_memory_store_with_options(
         self,
@@ -2837,6 +3019,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_agg_task_group_with_options_async(instance_id, group_id, request, headers, runtime)
 
+    def delete_alert_robots_with_options(
+        self,
+        tmp_req: main_models.DeleteAlertRobotsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAlertRobotsResponse:
+        tmp_req.validate()
+        request = main_models.DeleteAlertRobotsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.robot_ids):
+            request.robot_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.robot_ids, 'robotIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.robot_ids_shrink):
+            query['robotIds'] = request.robot_ids_shrink
+        if not DaraCore.is_null(request.type):
+            query['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAlertRobots',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/robots',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAlertRobotsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_alert_robots_with_options_async(
+        self,
+        tmp_req: main_models.DeleteAlertRobotsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAlertRobotsResponse:
+        tmp_req.validate()
+        request = main_models.DeleteAlertRobotsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.robot_ids):
+            request.robot_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.robot_ids, 'robotIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.robot_ids_shrink):
+            query['robotIds'] = request.robot_ids_shrink
+        if not DaraCore.is_null(request.type):
+            query['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAlertRobots',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/robots',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAlertRobotsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_alert_robots(
+        self,
+        request: main_models.DeleteAlertRobotsRequest,
+    ) -> main_models.DeleteAlertRobotsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_alert_robots_with_options(request, headers, runtime)
+
+    async def delete_alert_robots_async(
+        self,
+        request: main_models.DeleteAlertRobotsRequest,
+    ) -> main_models.DeleteAlertRobotsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_alert_robots_with_options_async(request, headers, runtime)
+
     def delete_alert_webhooks_with_options(
         self,
         tmp_req: main_models.DeleteAlertWebhooksRequest,
@@ -3750,6 +4020,86 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_integration_policy_with_options_async(policy_id, request, headers, runtime)
+
+    def delete_maintain_window_with_options(
+        self,
+        maintain_window_id: str,
+        request: main_models.DeleteMaintainWindowRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteMaintainWindowResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteMaintainWindow',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/maintainWindows/{DaraURL.percent_encode(maintain_window_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteMaintainWindowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_maintain_window_with_options_async(
+        self,
+        maintain_window_id: str,
+        request: main_models.DeleteMaintainWindowRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteMaintainWindowResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteMaintainWindow',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/maintainWindows/{DaraURL.percent_encode(maintain_window_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteMaintainWindowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_maintain_window(
+        self,
+        maintain_window_id: str,
+        request: main_models.DeleteMaintainWindowRequest,
+    ) -> main_models.DeleteMaintainWindowResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_maintain_window_with_options(maintain_window_id, request, headers, runtime)
+
+    async def delete_maintain_window_async(
+        self,
+        maintain_window_id: str,
+        request: main_models.DeleteMaintainWindowRequest,
+    ) -> main_models.DeleteMaintainWindowResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_maintain_window_with_options_async(maintain_window_id, request, headers, runtime)
 
     def delete_memories_with_options(
         self,
@@ -4947,6 +5297,10 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.labels):
             request.labels_shrink = Utils.array_to_string_with_specified_style(tmp_req.labels, 'labels', 'json')
         query = {}
+        if not DaraCore.is_null(request.aliyun_lang):
+            query['aliyunLang'] = request.aliyun_lang
+        if not DaraCore.is_null(request.category):
+            query['category'] = request.category
         if not DaraCore.is_null(request.keywords):
             query['keywords'] = request.keywords
         if not DaraCore.is_null(request.labels_shrink):
@@ -4993,6 +5347,10 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.labels):
             request.labels_shrink = Utils.array_to_string_with_specified_style(tmp_req.labels, 'labels', 'json')
         query = {}
+        if not DaraCore.is_null(request.aliyun_lang):
+            query['aliyunLang'] = request.aliyun_lang
+        if not DaraCore.is_null(request.category):
+            query['category'] = request.category
         if not DaraCore.is_null(request.keywords):
             query['keywords'] = request.keywords
         if not DaraCore.is_null(request.labels_shrink):
@@ -5119,6 +5477,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.describe_regions_with_options_async(request, headers, runtime)
 
+    def disable_maintain_window_with_options(
+        self,
+        maintain_window_id: str,
+        request: main_models.DisableMaintainWindowRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableMaintainWindowResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableMaintainWindow',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/maintainWindows/{DaraURL.percent_encode(maintain_window_id)}/disable',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableMaintainWindowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_maintain_window_with_options_async(
+        self,
+        maintain_window_id: str,
+        request: main_models.DisableMaintainWindowRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableMaintainWindowResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableMaintainWindow',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/maintainWindows/{DaraURL.percent_encode(maintain_window_id)}/disable',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableMaintainWindowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_maintain_window(
+        self,
+        maintain_window_id: str,
+        request: main_models.DisableMaintainWindowRequest,
+    ) -> main_models.DisableMaintainWindowResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.disable_maintain_window_with_options(maintain_window_id, request, headers, runtime)
+
+    async def disable_maintain_window_async(
+        self,
+        maintain_window_id: str,
+        request: main_models.DisableMaintainWindowRequest,
+    ) -> main_models.DisableMaintainWindowResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.disable_maintain_window_with_options_async(maintain_window_id, request, headers, runtime)
+
     def disable_notify_policy_with_options(
         self,
         uuid: str,
@@ -5198,6 +5636,86 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.disable_notify_policy_with_options_async(uuid, request, headers, runtime)
+
+    def enable_maintain_window_with_options(
+        self,
+        maintain_window_id: str,
+        request: main_models.EnableMaintainWindowRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableMaintainWindowResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableMaintainWindow',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/maintainWindows/{DaraURL.percent_encode(maintain_window_id)}/enable',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableMaintainWindowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_maintain_window_with_options_async(
+        self,
+        maintain_window_id: str,
+        request: main_models.EnableMaintainWindowRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableMaintainWindowResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableMaintainWindow',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/maintainWindows/{DaraURL.percent_encode(maintain_window_id)}/enable',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableMaintainWindowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_maintain_window(
+        self,
+        maintain_window_id: str,
+        request: main_models.EnableMaintainWindowRequest,
+    ) -> main_models.EnableMaintainWindowResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.enable_maintain_window_with_options(maintain_window_id, request, headers, runtime)
+
+    async def enable_maintain_window_async(
+        self,
+        maintain_window_id: str,
+        request: main_models.EnableMaintainWindowRequest,
+    ) -> main_models.EnableMaintainWindowResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.enable_maintain_window_with_options_async(maintain_window_id, request, headers, runtime)
 
     def enable_notify_policy_with_options(
         self,
@@ -6782,6 +7300,86 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_integration_version_for_cswith_options_async(request, headers, runtime)
+
+    def get_maintain_window_with_options(
+        self,
+        maintain_window_id: str,
+        request: main_models.GetMaintainWindowRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMaintainWindowResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMaintainWindow',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/maintainWindows/{DaraURL.percent_encode(maintain_window_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMaintainWindowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_maintain_window_with_options_async(
+        self,
+        maintain_window_id: str,
+        request: main_models.GetMaintainWindowRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMaintainWindowResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMaintainWindow',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/maintainWindows/{DaraURL.percent_encode(maintain_window_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMaintainWindowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_maintain_window(
+        self,
+        maintain_window_id: str,
+        request: main_models.GetMaintainWindowRequest,
+    ) -> main_models.GetMaintainWindowResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_maintain_window_with_options(maintain_window_id, request, headers, runtime)
+
+    async def get_maintain_window_async(
+        self,
+        maintain_window_id: str,
+        request: main_models.GetMaintainWindowRequest,
+    ) -> main_models.GetMaintainWindowResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_maintain_window_with_options_async(maintain_window_id, request, headers, runtime)
 
     def get_memories_with_options(
         self,
@@ -10259,6 +10857,110 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_integration_policy_storage_requirements_with_options_async(policy_id, request, headers, runtime)
 
+    def list_maintain_windows_with_options(
+        self,
+        request: main_models.ListMaintainWindowsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMaintainWindowsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.direction):
+            query['direction'] = request.direction
+        if not DaraCore.is_null(request.enable):
+            query['enable'] = request.enable
+        if not DaraCore.is_null(request.maintain_window_id):
+            query['maintainWindowId'] = request.maintain_window_id
+        if not DaraCore.is_null(request.maintain_window_name):
+            query['maintainWindowName'] = request.maintain_window_name
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.order_by):
+            query['orderBy'] = request.order_by
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMaintainWindows',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/maintainWindows',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMaintainWindowsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_maintain_windows_with_options_async(
+        self,
+        request: main_models.ListMaintainWindowsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMaintainWindowsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.direction):
+            query['direction'] = request.direction
+        if not DaraCore.is_null(request.enable):
+            query['enable'] = request.enable
+        if not DaraCore.is_null(request.maintain_window_id):
+            query['maintainWindowId'] = request.maintain_window_id
+        if not DaraCore.is_null(request.maintain_window_name):
+            query['maintainWindowName'] = request.maintain_window_name
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.order_by):
+            query['orderBy'] = request.order_by
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMaintainWindows',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/maintainWindows',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMaintainWindowsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_maintain_windows(
+        self,
+        request: main_models.ListMaintainWindowsRequest,
+    ) -> main_models.ListMaintainWindowsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_maintain_windows_with_options(request, headers, runtime)
+
+    async def list_maintain_windows_async(
+        self,
+        request: main_models.ListMaintainWindowsRequest,
+    ) -> main_models.ListMaintainWindowsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_maintain_windows_with_options_async(request, headers, runtime)
+
     def list_memory_stores_with_options(
         self,
         workspace: str,
@@ -12663,6 +13365,106 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_agg_task_group_status_with_options_async(instance_id, group_id, request, headers, runtime)
 
+    def update_alert_robot_with_options(
+        self,
+        robot_id: str,
+        request: main_models.UpdateAlertRobotRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAlertRobotResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.digital_employee_name):
+            body['digitalEmployeeName'] = request.digital_employee_name
+        if not DaraCore.is_null(request.lang):
+            body['lang'] = request.lang
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.robot_sign_key):
+            body['robotSignKey'] = request.robot_sign_key
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        if not DaraCore.is_null(request.url):
+            body['url'] = request.url
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAlertRobot',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/robot/{DaraURL.percent_encode(robot_id)}',
+            method = 'PATCH',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAlertRobotResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_alert_robot_with_options_async(
+        self,
+        robot_id: str,
+        request: main_models.UpdateAlertRobotRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAlertRobotResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.digital_employee_name):
+            body['digitalEmployeeName'] = request.digital_employee_name
+        if not DaraCore.is_null(request.lang):
+            body['lang'] = request.lang
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.robot_sign_key):
+            body['robotSignKey'] = request.robot_sign_key
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        if not DaraCore.is_null(request.url):
+            body['url'] = request.url
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAlertRobot',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/robot/{DaraURL.percent_encode(robot_id)}',
+            method = 'PATCH',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAlertRobotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_alert_robot(
+        self,
+        robot_id: str,
+        request: main_models.UpdateAlertRobotRequest,
+    ) -> main_models.UpdateAlertRobotResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_alert_robot_with_options(robot_id, request, headers, runtime)
+
+    async def update_alert_robot_async(
+        self,
+        robot_id: str,
+        request: main_models.UpdateAlertRobotRequest,
+    ) -> main_models.UpdateAlertRobotResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_alert_robot_with_options_async(robot_id, request, headers, runtime)
+
     def update_alert_webhook_with_options(
         self,
         webhook_id: str,
@@ -13450,6 +14252,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_integration_policy_with_options_async(integration_policy_id, request, headers, runtime)
+
+    def update_maintain_window_with_options(
+        self,
+        maintain_window_id: str,
+        request: main_models.UpdateMaintainWindowRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMaintainWindowResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMaintainWindow',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/maintainWindows/{DaraURL.percent_encode(maintain_window_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMaintainWindowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_maintain_window_with_options_async(
+        self,
+        maintain_window_id: str,
+        request: main_models.UpdateMaintainWindowRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMaintainWindowResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMaintainWindow',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/maintainWindows/{DaraURL.percent_encode(maintain_window_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMaintainWindowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_maintain_window(
+        self,
+        maintain_window_id: str,
+        request: main_models.UpdateMaintainWindowRequest,
+    ) -> main_models.UpdateMaintainWindowResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_maintain_window_with_options(maintain_window_id, request, headers, runtime)
+
+    async def update_maintain_window_async(
+        self,
+        maintain_window_id: str,
+        request: main_models.UpdateMaintainWindowRequest,
+    ) -> main_models.UpdateMaintainWindowResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_maintain_window_with_options_async(maintain_window_id, request, headers, runtime)
 
     def update_memory_with_options(
         self,

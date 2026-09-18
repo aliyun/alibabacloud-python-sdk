@@ -19,15 +19,25 @@ class NotifyPolicySummary(DaraModel):
         version: int = None,
         workspace: str = None,
     ):
+        # The creation time, represented as a UNIX millisecond timestamp string.
         self.create_time = create_time
+        # The description of the notification policy.
         self.description = description
+        # Indicates whether the notification policy is enabled.
         self.enabled = enabled
+        # The Policy Name of the notification policy.
         self.name = name
+        # The configuration details of the notification policy.
         self.notify_strategy = notify_strategy
+        # The update time, represented as a UNIX millisecond timestamp string.
         self.update_time = update_time
+        # The Alibaba Cloud account UID.
         self.user_id = user_id
+        # The unique identifier of the notification policy.
         self.uuid = uuid
+        # The version number of the notification policy.
         self.version = version
+        # The workspace identifier.
         self.workspace = workspace
 
     def validate(self):

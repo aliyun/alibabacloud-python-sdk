@@ -36,12 +36,15 @@ class AlertRuleNotification(DaraModel):
         self.fs_webhooks = fs_webhooks
         # The list of contact group IDs.
         self.groups = groups
-        # The notification time period. Notifications are sent only during this time period.
+        # The notification time window. Notifications are sent only within this time window.
         self.notify_time = notify_time
+        # The Qwen (Qwencloud) Notification Recipient configuration. Both the outer key and inner key are custom identity values. The inner Boolean value specifies whether the Notification Recipient is enabled.
         self.qwencloud_contacts = qwencloud_contacts
+        # Specifies whether to send recovery notifications. Each severity level in severityNotifications can independently override this setting.
         self.send_ok = send_ok
+        # The Notification Recipients and channels configured by severity level. This parameter is mutually exclusive with the top-level contacts, groups, and similar parameters. The key is the severity level: CRITICAL, ERROR, WARNING, or INFO.
         self.severity_notifications = severity_notifications
-        # The notification mute duration, in seconds.
+        # The notification mute duration. Unit: seconds.
         self.silence_time = silence_time
         # The list of Slack webhook Notification Recipient IDs.
         self.slack_webhooks = slack_webhooks

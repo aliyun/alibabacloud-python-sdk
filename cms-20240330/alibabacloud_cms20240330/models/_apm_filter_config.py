@@ -11,15 +11,19 @@ class ApmFilterConfig(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The dimension key.
+        # The dimension key name of the APM query filter condition. Specifies which dimension to filter by, such as hostname or service name.
         # 
         # This parameter is required.
         self.key = key
-        # The filter type.
+        # The matching type of the APM query filter condition. Valid values:
+        # - ALL: Matches all values.
+        # - EQ: Exact match.
+        # - NE: Not equal to.
+        # - DISABLED: Disables the filter condition.
         # 
         # This parameter is required.
         self.type = type
-        # The filter value. This can be empty when type is ALL or DISABLED.
+        # The filter value. Can be empty when type is set to ALL or DISABLED.
         self.value = value
 
     def validate(self):

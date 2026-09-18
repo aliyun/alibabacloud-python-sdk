@@ -10,9 +10,9 @@ class DisplayNameFilter(DaraModel):
         contains: str = None,
         not_contains: str = None,
     ):
-        # Returns only resources whose display name contains the specified string. The match is case-sensitive.
+        # The inclusion keyword for the display name. Only alert rules whose display names contain this keyword are returned. Fuzzy match is supported.
         self.contains = contains
-        # Returns only resources whose display name does not contain the specified string. The match is case-sensitive.
+        # The exclusion keyword for the display name. Alert rules whose display names contain this keyword are excluded. Fuzzy match is supported.
         self.not_contains = not_contains
 
     def validate(self):

@@ -14,8 +14,14 @@ class MetricSetTriggerCompositeExpression(DaraModel):
         expression_type: str = None,
         logic_operator: str = None,
     ):
+        # The list of sub-conditions. Each item is a simple comparison expression.
         self.conditions = conditions
+        # The expression type, fixed as COMPOSITE.
         self.expression_type = expression_type
+        # The logical operator. Valid values:
+        # - AND: All conditions are met.
+        # - OR: Any condition is met.
+        # - UNLESS: The first condition is met and none of the remaining conditions are met.
         self.logic_operator = logic_operator
 
     def validate(self):

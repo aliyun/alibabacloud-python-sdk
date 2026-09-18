@@ -11,8 +11,11 @@ class TagCondition(DaraModel):
         op: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The operator.
         self.op = op
+        # The tag value.
         self.value = value
 
     def validate(self):

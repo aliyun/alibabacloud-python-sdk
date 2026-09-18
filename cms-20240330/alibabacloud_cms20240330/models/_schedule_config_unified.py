@@ -10,9 +10,9 @@ class ScheduleConfigUnified(DaraModel):
         interval_secs: int = None,
         type: str = None,
     ):
-        # The interval between scheduled runs, in seconds.
+        # The scheduling interval in seconds. This parameter is used when type is set to FIXED.
         self.interval_secs = interval_secs
-        # The type of the schedule.
+        # The type of the scheduling configuration. FIXED indicates fixed-interval scheduling, which executes periodically based on the interval specified by intervalSecs.
         # 
         # This parameter is required.
         self.type = type

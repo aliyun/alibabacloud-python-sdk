@@ -96,15 +96,15 @@ class DescribeMetricMetaListResponseBodyResources(DaraModel):
     ):
         # The description.
         self.description = description
-        # The dimension description.
+        # The dimension information description.
         self.dimension_description = dimension_description
         # The resource filtering dimensions of CloudMonitor Basic.
         self.dimensions = dimensions
         # The CloudMonitor labels. This parameter is returned only when metaFormat is set to CMS.
         self.labels = labels
-        # The metadata source. CMS indicates CloudMonitor Basic monitoring metrics. PROM_BASIC indicates Prometheus CloudMonitor basic monitoring metrics.
+        # The metadata source. CMS indicates CloudMonitor Basic monitoring metrics. PROM_BASIC indicates Prometheus CloudMonitor Basic monitoring metrics.
         # 
-        # Sample value:
+        # Example value:
         # CMS
         # Valid values:
         # CMS

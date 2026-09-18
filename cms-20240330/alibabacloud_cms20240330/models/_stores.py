@@ -12,9 +12,16 @@ class Stores(DaraModel):
         store: str = None,
         store_type: str = None,
     ):
+        # **[Deprecated]** The SLS project name. This field has been moved to DatasourceConfigUnified.project. Using this field in write paths returns HTTP status code 400.
         self.project = project
+        # **[Deprecated]** The region ID. This field has been moved to DatasourceConfigUnified.regionId. Using this field in write paths returns HTTP status code 400.
         self.region_id = region_id
+        # The name of the SLS Store.
         self.store = store
+        # The store type. Valid values:
+        # 
+        # - LOG: Logstore.
+        # - METRIC: Metricstore.
         self.store_type = store_type
 
     def validate(self):

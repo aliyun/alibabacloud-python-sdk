@@ -211,6 +211,9 @@ from ._create_addon_release_response import CreateAddonReleaseResponse
 from ._create_agg_task_group_request import CreateAggTaskGroupRequest
 from ._create_agg_task_group_response_body import CreateAggTaskGroupResponseBody
 from ._create_agg_task_group_response import CreateAggTaskGroupResponse
+from ._create_alert_robot_request import CreateAlertRobotRequest
+from ._create_alert_robot_response_body import CreateAlertRobotResponseBody
+from ._create_alert_robot_response import CreateAlertRobotResponse
 from ._create_alert_webhook_request import CreateAlertWebhookRequest
 from ._create_alert_webhook_response_body import CreateAlertWebhookResponseBody
 from ._create_alert_webhook_response import CreateAlertWebhookResponse
@@ -240,6 +243,9 @@ from ._create_entity_store_response import CreateEntityStoreResponse
 from ._create_integration_policy_request import CreateIntegrationPolicyRequest
 from ._create_integration_policy_response_body import CreateIntegrationPolicyResponseBody
 from ._create_integration_policy_response import CreateIntegrationPolicyResponse
+from ._create_maintain_window_request import CreateMaintainWindowRequest
+from ._create_maintain_window_response_body import CreateMaintainWindowResponseBody
+from ._create_maintain_window_response import CreateMaintainWindowResponse
 from ._create_memory_store_request import CreateMemoryStoreRequest
 from ._create_memory_store_response_body import CreateMemoryStoreResponseBody
 from ._create_memory_store_response import CreateMemoryStoreResponse
@@ -282,6 +288,10 @@ from ._delete_addon_release_response import DeleteAddonReleaseResponse
 from ._delete_agg_task_group_request import DeleteAggTaskGroupRequest
 from ._delete_agg_task_group_response_body import DeleteAggTaskGroupResponseBody
 from ._delete_agg_task_group_response import DeleteAggTaskGroupResponse
+from ._delete_alert_robots_request import DeleteAlertRobotsRequest
+from ._delete_alert_robots_shrink_request import DeleteAlertRobotsShrinkRequest
+from ._delete_alert_robots_response_body import DeleteAlertRobotsResponseBody
+from ._delete_alert_robots_response import DeleteAlertRobotsResponse
 from ._delete_alert_webhooks_request import DeleteAlertWebhooksRequest
 from ._delete_alert_webhooks_shrink_request import DeleteAlertWebhooksShrinkRequest
 from ._delete_alert_webhooks_response_body import DeleteAlertWebhooksResponseBody
@@ -318,6 +328,9 @@ from ._delete_entity_store_response import DeleteEntityStoreResponse
 from ._delete_integration_policy_request import DeleteIntegrationPolicyRequest
 from ._delete_integration_policy_response_body import DeleteIntegrationPolicyResponseBody
 from ._delete_integration_policy_response import DeleteIntegrationPolicyResponse
+from ._delete_maintain_window_request import DeleteMaintainWindowRequest
+from ._delete_maintain_window_response_body import DeleteMaintainWindowResponseBody
+from ._delete_maintain_window_response import DeleteMaintainWindowResponse
 from ._delete_memories_request import DeleteMemoriesRequest
 from ._delete_memories_response_body import DeleteMemoriesResponseBody
 from ._delete_memories_response import DeleteMemoriesResponse
@@ -370,9 +383,15 @@ from ._describe_metric_meta_list_response import DescribeMetricMetaListResponse
 from ._describe_regions_request import DescribeRegionsRequest
 from ._describe_regions_response_body import DescribeRegionsResponseBody
 from ._describe_regions_response import DescribeRegionsResponse
+from ._disable_maintain_window_request import DisableMaintainWindowRequest
+from ._disable_maintain_window_response_body import DisableMaintainWindowResponseBody
+from ._disable_maintain_window_response import DisableMaintainWindowResponse
 from ._disable_notify_policy_request import DisableNotifyPolicyRequest
 from ._disable_notify_policy_response_body import DisableNotifyPolicyResponseBody
 from ._disable_notify_policy_response import DisableNotifyPolicyResponse
+from ._enable_maintain_window_request import EnableMaintainWindowRequest
+from ._enable_maintain_window_response_body import EnableMaintainWindowResponseBody
+from ._enable_maintain_window_response import EnableMaintainWindowResponse
 from ._enable_notify_policy_request import EnableNotifyPolicyRequest
 from ._enable_notify_policy_response_body import EnableNotifyPolicyResponseBody
 from ._enable_notify_policy_response import EnableNotifyPolicyResponse
@@ -432,6 +451,9 @@ from ._get_integration_policy_response import GetIntegrationPolicyResponse
 from ._get_integration_version_for_csrequest import GetIntegrationVersionForCSRequest
 from ._get_integration_version_for_csresponse_body import GetIntegrationVersionForCSResponseBody
 from ._get_integration_version_for_csresponse import GetIntegrationVersionForCSResponse
+from ._get_maintain_window_request import GetMaintainWindowRequest
+from ._get_maintain_window_response_body import GetMaintainWindowResponseBody
+from ._get_maintain_window_response import GetMaintainWindowResponse
 from ._get_memories_request import GetMemoriesRequest
 from ._get_memories_response_body import GetMemoriesResponseBody
 from ._get_memories_response import GetMemoriesResponse
@@ -557,6 +579,9 @@ from ._list_integration_policy_service_monitors_response import ListIntegrationP
 from ._list_integration_policy_storage_requirements_request import ListIntegrationPolicyStorageRequirementsRequest
 from ._list_integration_policy_storage_requirements_response_body import ListIntegrationPolicyStorageRequirementsResponseBody
 from ._list_integration_policy_storage_requirements_response import ListIntegrationPolicyStorageRequirementsResponse
+from ._list_maintain_windows_request import ListMaintainWindowsRequest
+from ._list_maintain_windows_response_body import ListMaintainWindowsResponseBody
+from ._list_maintain_windows_response import ListMaintainWindowsResponse
 from ._list_memory_stores_request import ListMemoryStoresRequest
 from ._list_memory_stores_response_body import ListMemoryStoresResponseBody
 from ._list_memory_stores_response import ListMemoryStoresResponse
@@ -635,6 +660,9 @@ from ._update_agg_task_group_response import UpdateAggTaskGroupResponse
 from ._update_agg_task_group_status_request import UpdateAggTaskGroupStatusRequest
 from ._update_agg_task_group_status_response_body import UpdateAggTaskGroupStatusResponseBody
 from ._update_agg_task_group_status_response import UpdateAggTaskGroupStatusResponse
+from ._update_alert_robot_request import UpdateAlertRobotRequest
+from ._update_alert_robot_response_body import UpdateAlertRobotResponseBody
+from ._update_alert_robot_response import UpdateAlertRobotResponse
 from ._update_alert_webhook_request import UpdateAlertWebhookRequest
 from ._update_alert_webhook_response_body import UpdateAlertWebhookResponseBody
 from ._update_alert_webhook_response import UpdateAlertWebhookResponse
@@ -658,6 +686,9 @@ from ._update_delivery_task_response import UpdateDeliveryTaskResponse
 from ._update_integration_policy_request import UpdateIntegrationPolicyRequest
 from ._update_integration_policy_response_body import UpdateIntegrationPolicyResponseBody
 from ._update_integration_policy_response import UpdateIntegrationPolicyResponse
+from ._update_maintain_window_request import UpdateMaintainWindowRequest
+from ._update_maintain_window_response_body import UpdateMaintainWindowResponseBody
+from ._update_maintain_window_response import UpdateMaintainWindowResponse
 from ._update_memory_request import UpdateMemoryRequest
 from ._update_memory_response_body import UpdateMemoryResponseBody
 from ._update_memory_response import UpdateMemoryResponse
@@ -1333,6 +1364,9 @@ __all__ = [
     CreateAggTaskGroupRequest,
     CreateAggTaskGroupResponseBody,
     CreateAggTaskGroupResponse,
+    CreateAlertRobotRequest,
+    CreateAlertRobotResponseBody,
+    CreateAlertRobotResponse,
     CreateAlertWebhookRequest,
     CreateAlertWebhookResponseBody,
     CreateAlertWebhookResponse,
@@ -1362,6 +1396,9 @@ __all__ = [
     CreateIntegrationPolicyRequest,
     CreateIntegrationPolicyResponseBody,
     CreateIntegrationPolicyResponse,
+    CreateMaintainWindowRequest,
+    CreateMaintainWindowResponseBody,
+    CreateMaintainWindowResponse,
     CreateMemoryStoreRequest,
     CreateMemoryStoreResponseBody,
     CreateMemoryStoreResponse,
@@ -1404,6 +1441,10 @@ __all__ = [
     DeleteAggTaskGroupRequest,
     DeleteAggTaskGroupResponseBody,
     DeleteAggTaskGroupResponse,
+    DeleteAlertRobotsRequest,
+    DeleteAlertRobotsShrinkRequest,
+    DeleteAlertRobotsResponseBody,
+    DeleteAlertRobotsResponse,
     DeleteAlertWebhooksRequest,
     DeleteAlertWebhooksShrinkRequest,
     DeleteAlertWebhooksResponseBody,
@@ -1440,6 +1481,9 @@ __all__ = [
     DeleteIntegrationPolicyRequest,
     DeleteIntegrationPolicyResponseBody,
     DeleteIntegrationPolicyResponse,
+    DeleteMaintainWindowRequest,
+    DeleteMaintainWindowResponseBody,
+    DeleteMaintainWindowResponse,
     DeleteMemoriesRequest,
     DeleteMemoriesResponseBody,
     DeleteMemoriesResponse,
@@ -1492,9 +1536,15 @@ __all__ = [
     DescribeRegionsRequest,
     DescribeRegionsResponseBody,
     DescribeRegionsResponse,
+    DisableMaintainWindowRequest,
+    DisableMaintainWindowResponseBody,
+    DisableMaintainWindowResponse,
     DisableNotifyPolicyRequest,
     DisableNotifyPolicyResponseBody,
     DisableNotifyPolicyResponse,
+    EnableMaintainWindowRequest,
+    EnableMaintainWindowResponseBody,
+    EnableMaintainWindowResponse,
     EnableNotifyPolicyRequest,
     EnableNotifyPolicyResponseBody,
     EnableNotifyPolicyResponse,
@@ -1554,6 +1604,9 @@ __all__ = [
     GetIntegrationVersionForCSRequest,
     GetIntegrationVersionForCSResponseBody,
     GetIntegrationVersionForCSResponse,
+    GetMaintainWindowRequest,
+    GetMaintainWindowResponseBody,
+    GetMaintainWindowResponse,
     GetMemoriesRequest,
     GetMemoriesResponseBody,
     GetMemoriesResponse,
@@ -1679,6 +1732,9 @@ __all__ = [
     ListIntegrationPolicyStorageRequirementsRequest,
     ListIntegrationPolicyStorageRequirementsResponseBody,
     ListIntegrationPolicyStorageRequirementsResponse,
+    ListMaintainWindowsRequest,
+    ListMaintainWindowsResponseBody,
+    ListMaintainWindowsResponse,
     ListMemoryStoresRequest,
     ListMemoryStoresResponseBody,
     ListMemoryStoresResponse,
@@ -1757,6 +1813,9 @@ __all__ = [
     UpdateAggTaskGroupStatusRequest,
     UpdateAggTaskGroupStatusResponseBody,
     UpdateAggTaskGroupStatusResponse,
+    UpdateAlertRobotRequest,
+    UpdateAlertRobotResponseBody,
+    UpdateAlertRobotResponse,
     UpdateAlertWebhookRequest,
     UpdateAlertWebhookResponseBody,
     UpdateAlertWebhookResponse,
@@ -1780,6 +1839,9 @@ __all__ = [
     UpdateIntegrationPolicyRequest,
     UpdateIntegrationPolicyResponseBody,
     UpdateIntegrationPolicyResponse,
+    UpdateMaintainWindowRequest,
+    UpdateMaintainWindowResponseBody,
+    UpdateMaintainWindowResponse,
     UpdateMemoryRequest,
     UpdateMemoryResponseBody,
     UpdateMemoryResponse,

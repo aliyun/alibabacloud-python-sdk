@@ -19,13 +19,23 @@ class PrometheusMultiTrigger(DaraModel):
         severity: str = None,
         threshold: float = None,
     ):
+        # The list of sub-conditions. This parameter is used when expressionType is set to COMPOSITE. Each item contains queryName, operator, and threshold.
         self.conditions = conditions
+        # The duration, in seconds, for which the data must continuously meet the condition before the alert is triggered. If this parameter is not specified, the value of conditionConfig.durationSecs is inherited.
         self.duration_secs = duration_secs
+        # The expression type. Valid values:
+        # - SIMPLE: single-query threshold.
+        # - COMPOSITE: multi-query AND/OR/UNLESS combination.
         self.expression_type = expression_type
+        # The logical operator. This parameter is used when expressionType is set to COMPOSITE. Valid values: AND, OR, and UNLESS.
         self.logic_operator = logic_operator
+        # The comparison operator. This parameter is used when expressionType is set to SIMPLE. Valid values: GT, GE, LT, LE, EQ, and NE.
         self.operator = operator
+        # The referenced query name. This parameter is used when expressionType is set to SIMPLE. The value corresponds to QueryConfigUnified.queries[].name.
         self.query_name = query_name
+        # The alert severity level. The priority order is CRITICAL > ERROR > WARN / WARNING > INFO. When multiple triggers are defined, they are sorted by this priority, and the first match fires the alert.
         self.severity = severity
+        # The comparison threshold. This parameter is used when expressionType is set to SIMPLE.
         self.threshold = threshold
 
     def validate(self):

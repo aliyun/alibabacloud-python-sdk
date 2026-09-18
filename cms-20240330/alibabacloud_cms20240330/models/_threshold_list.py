@@ -12,10 +12,15 @@ class ThresholdList(DaraModel):
         severity: str = None,
         threshold: float = None,
     ):
+        # The upper bound of the interval.
         self.max = max
+        # The lower bound of the interval.
         self.min = min
+        # The warning level.
+        # 
         # This parameter is required.
         self.severity = severity
+        # The threshold.
         self.threshold = threshold
 
     def validate(self):

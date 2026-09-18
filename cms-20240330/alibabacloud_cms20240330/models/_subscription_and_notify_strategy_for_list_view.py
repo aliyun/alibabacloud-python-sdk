@@ -23,19 +23,33 @@ class SubscriptionAndNotifyStrategyForListView(DaraModel):
         version: int = None,
         workspace: str = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The description.
         self.description = description
+        # Indicates whether the policy is enabled.
         self.enabled = enabled
+        # The migration batch ID. This field is empty for user-created entries and has a value for migration artifacts.
         self.migration_batch_id = migration_batch_id
+        # The migration metadata JSON string.
         self.migration_meta = migration_meta
+        # The name.
         self.name = name
+        # The notification policy snapshot.
         self.notify_strategy = notify_strategy
+        # The UUID of the associated notifyStrategy, which is shared with the responsePlan UUID.
         self.notify_strategy_uuid = notify_strategy_uuid
+        # The UUID of the directly bound primary subscription, which has a 1:1 association in the NOTIFY mode.
         self.subscription_uuid = subscription_uuid
+        # The update time.
         self.update_time = update_time
+        # The user ID of the owner.
         self.user_id = user_id
+        # The UUID of the aggregate entity.
         self.uuid = uuid
+        # The optimistic lock version number.
         self.version = version
+        # The workspace identifier.
         self.workspace = workspace
 
     def validate(self):

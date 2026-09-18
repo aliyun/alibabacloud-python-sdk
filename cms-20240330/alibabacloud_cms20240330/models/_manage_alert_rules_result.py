@@ -16,15 +16,15 @@ class ManageAlertRulesResult(DaraModel):
         updated_count: int = None,
         updated_uuid_list: List[str] = None,
     ):
-        # The details of the created or updated alert rule.
+        # The alert rule V2.
         self.alert_rule = alert_rule
-        # The number of deleted alert rules.
+        # The number of rules that were successfully deleted.
         self.deleted_count = deleted_count
-        # A list of UUIDs of deleted alert rules.
+        # The list of UUIDs of rules that were successfully deleted.
         self.deleted_uuid_list = deleted_uuid_list
-        # The number of updated alert rules.
+        # The number of rules that were successfully enabled or disabled.
         self.updated_count = updated_count
-        # A list of UUIDs of updated alert rules.
+        # The list of UUIDs of rules that were successfully enabled or disabled.
         self.updated_uuid_list = updated_uuid_list
 
     def validate(self):

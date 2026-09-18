@@ -21,25 +21,25 @@ class DatasourceConfigUnified(DaraModel):
         tenant_id: str = None,
         type: str = None,
     ):
-        # The Prometheus instance ID. Required when type is PROMETHEUS or VIRTUAL_PROMETHEUS. Ignored for other types.
+        # The Prometheus instance ID. Used when type is set to PROMETHEUS.
         self.instance_id = instance_id
-        # The raw V1 datasource JSON string returned as a fallback when type is UNKNOWN and read-path parsing fails. When the frontend detects that this field is not empty, display it as read-only.
+        # The raw V1 datasource JSON string returned as a read-path fallback when type is set to UNKNOWN and parsing fails. When this field is not empty, the frontend displays it as read-only.
         self.legacy_raw = legacy_raw
-        # Returned when type is UNKNOWN. Indicates that this rule cannot be edited through the new API. Submit a ticket to contact the CloudMonitor team.
+        # Returned when type is set to UNKNOWN. Indicates that the rule cannot be edited through the new API. Submit a ticket to contact the CloudMonitor team.
         self.legacy_type = legacy_type
-        # The namespace. Optional when type is VIRTUAL_PROMETHEUS. Identifies the namespace to which the virtual Prometheus instance belongs.
+        # The namespace. Optional when type is set to VIRTUAL_PROMETHEUS. Identifies the namespace to which the virtual Prometheus instance belongs.
         self.namespace = namespace
-        # The Alibaba Cloud service category. Optional when type is CLOUD_MONITORING. Returns unknown when the source lacks this information.
+        # The Alibaba Cloud service category. Optional when type is set to CLOUD_MONITORING. Outputs unknown when the source does not contain this information.
         self.product_category = product_category
-        # The Simple Log Service (SLS) project name. Required when type is SLS. All stores share the same project.
+        # The Simple Log Service (SLS) project name. Required when type is set to SLS. All stores share the same project.
         self.project = project
-        # The region ID. Optional for PROMETHEUS, VIRTUAL_PROMETHEUS, UMODEL, APM, XTRACE, EBPF, RUM, and SLS types. Defaults to the region of the rule or gateway. Not used for CLOUD_MONITORING. Use AlertRuleV2.regionId instead for CLOUD_MONITORING.
+        # The region ID. Optional for all types. Defaults to the region of the rule or gateway.
         self.region_id = region_id
-        # The list of SLS stores. Used when type is SLS. At least one store is required. Each store contains store and storeType fields. The project and regionId fields have been moved to the top level. The deprecated fields with the same names that remain in stores return a 400 error if used in write paths.
+        # The list of SLS stores. Used when type is set to SLS. At least one store is required. Each store contains the store and storeType fields. The project and regionId fields have been moved to the top level. The fields with the same names that remain in stores are deprecated. Using them in write paths returns a 400 error.
         self.stores = stores
-        # The tenant ID. Optional when type is VIRTUAL_PROMETHEUS. Identifies the tenant to which the virtual Prometheus instance belongs.
+        # The tenant ID. Optional when type is set to VIRTUAL_PROMETHEUS. Identifies the tenant to which the virtual Prometheus instance belongs.
         self.tenant_id = tenant_id
-        # The data source type. Valid values and associated fields: PROMETHEUS (instanceId required; regionId optional). VIRTUAL_PROMETHEUS (instanceId required; regionId, namespace, and tenantId optional). UMODEL (regionId optional; other fields are carried in queryConfig/conditionConfig). APM (regionId optional). XTRACE (regionId optional). EBPF (regionId optional). RUM (regionId optional). CLOUD_MONITORING (regionId and productCategory optional). SLS (project and stores required). UNKNOWN (read-only fallback; do not use in write paths). Non-enumerated values (such as CMS_BASIC_DS/SLS_DS) are prohibited and the backend returns an Invalidtype 400 error.
+        # The datasource type.
         # 
         # This parameter is required.
         self.type = type

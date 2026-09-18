@@ -27,21 +27,37 @@ class NotifyStrategyForSNSView(DaraModel):
         user_id: str = None,
         workspace: str = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The notification channel templates.
         self.custom_template_entries = custom_template_entries
+        # The description.
         self.description = description
+        # Indicates whether the notification policy is enabled.
         self.enable = enable
+        # Indicates whether incident management is enabled.
         self.enable_incident_management = enable_incident_management
+        # The grouping settings.
         self.grouping_setting = grouping_setting
+        # Indicates whether to send a notification upon recovery.
         self.ignore_restored_notification = ignore_restored_notification
+        # The associated response plan UUID, which equals notifyStrategyId.
         self.incident_response_plan_id = incident_response_plan_id
+        # The lifecycle mode. Within SNS, this value is always BundleStrategy.
         self.mode = mode
+        # The notification policy ID.
         self.notify_strategy_id = notify_strategy_id
+        # The name.
         self.notify_strategy_name = notify_strategy_name
+        # The notification channel routing settings.
         self.routes = routes
+        # The sync source. For SNS creation, this value is always OBS.
         self.sync_from_type = sync_from_type
+        # The update time.
         self.update_time = update_time
+        # The user ID.
         self.user_id = user_id
+        # The workspace identifier.
         self.workspace = workspace
 
     def validate(self):
@@ -184,11 +200,17 @@ class NotifyStrategyForSNSViewRoutes(DaraModel):
         filter_setting: main_models.FilterSetting = None,
         severities: List[str] = None,
     ):
+        # The notification channels.
         self.channels = channels
+        # The digital employee name.
         self.digital_employee_name = digital_employee_name
+        # The effective time range.
         self.effect_time_range = effect_time_range
+        # Indicates whether root cause analysis (RCA) is enabled.
         self.enable_rca = enable_rca
+        # The route-level filter.
         self.filter_setting = filter_setting
+        # The severity filter.
         self.severities = severities
 
     def validate(self):
@@ -263,9 +285,13 @@ class NotifyStrategyForSNSViewRoutesEffectTimeRange(DaraModel):
         start_time_in_minute: int = None,
         time_zone: str = None,
     ):
+        # The effective days (Monday to Sunday).
         self.day_in_week = day_in_week
+        # The start time (in minutes).
         self.end_time_in_minute = end_time_in_minute
+        # The start time (in minutes).
         self.start_time_in_minute = start_time_in_minute
+        # The time zone.
         self.time_zone = time_zone
 
     def validate(self):
@@ -313,8 +339,11 @@ class NotifyStrategyForSNSViewRoutesChannels(DaraModel):
         enabled_sub_channels: List[str] = None,
         receivers: List[str] = None,
     ):
+        # The channel type.
         self.channel_type = channel_type
+        # The enabled notification types.
         self.enabled_sub_channels = enabled_sub_channels
+        # The channel receivers.
         self.receivers = receivers
 
     def validate(self):
@@ -357,9 +386,13 @@ class NotifyStrategyForSNSViewGroupingSetting(DaraModel):
         silence_sec: int = None,
         times: int = None,
     ):
+        # The grouping keys.
         self.grouping_keys = grouping_keys
+        # The check period in minutes.
         self.period_min = period_min
+        # The silence duration in seconds.
         self.silence_sec = silence_sec
+        # The number of times the condition is triggered.
         self.times = times
 
     def validate(self):
@@ -406,7 +439,9 @@ class NotifyStrategyForSNSViewCustomTemplateEntries(DaraModel):
         target_type: str = None,
         template_uuid: str = None,
     ):
+        # The notification type.
         self.target_type = target_type
+        # The template UUID.
         self.template_uuid = template_uuid
 
     def validate(self):

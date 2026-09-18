@@ -14,8 +14,11 @@ class TagSelector(DaraModel):
         expression: str = None,
         relation: str = None,
     ):
+        # The list of label filter conditions.
         self.conditions = conditions
+        # The custom expression in advanced mode. This overrides the conditions and relation settings.
         self.expression = expression
+        # The relationship between conditions.
         self.relation = relation
 
     def validate(self):

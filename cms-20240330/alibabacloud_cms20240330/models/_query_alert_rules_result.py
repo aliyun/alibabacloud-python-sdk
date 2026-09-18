@@ -13,9 +13,9 @@ class QueryAlertRulesResult(DaraModel):
         alert_rules: List[main_models.AlertRuleV2] = None,
         total_count: int = None,
     ):
-        # The list of alert rules for the current page.
+        # The list of alert rules returned by the query. Each element contains the complete configuration information of an alert rule.
         self.alert_rules = alert_rules
-        # The total number of alert rules that match the query.
+        # The total number of alert rules that match the query conditions.
         self.total_count = total_count
 
     def validate(self):

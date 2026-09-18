@@ -10,9 +10,9 @@ class Pagination(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The current page number.
+        # The page number, starting from 1.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of records per page. This parameter controls the amount of data returned in a single request. Recommended value range: 1 to 100.
         self.page_size = page_size
 
     def validate(self):

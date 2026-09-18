@@ -26,26 +26,39 @@ class QueryAlertRulesFilter(DaraModel):
         status: main_models.StatusFilter = None,
         uuid: main_models.UuidFilter = None,
     ):
+        # The filter condition for the business source.
         self.biz_source = biz_source
+        # The filter condition for the data source type.
         self.datasource_type = datasource_type
+        # The filter for alert rule names.
         self.display_name = display_name
+        # The filter for whether the alert rule is enabled.
         self.enabled = enabled
+        # The filter for labels.
         self.labels = labels
-        # Filters by migration status. isMigrated=true queries migrated rules (migration_status is not 0 or NULL). isMigrated=false queries native rules (migration_status=0).
+        # The migration status filter. Set isMigrated to true to query migrated rules (migration_status is not 0 or NULL). Set isMigrated to false to query native rules (migration_status=0).
         self.migration_status = migration_status
+        # The filter condition for notification channels.
         self.notification_channels = notification_channels
+        # The filter condition for the notification policy ID.
         self.notify_strategy_id = notify_strategy_id
-        # Filters by the observeResourceConfig structure. This takes priority over the standalone observeResourceType / observeResourceGlobalScope / observeResourceList fields below. If both are specified and their semantics conflict, the request is rejected.
+        # The composite filter based on the observeResourceConfig structure. This filter takes priority over the standalone observeResourceType, observeResourceGlobalScope, and observeResourceList fields. If both are specified and their semantics conflict, the request is rejected.
         self.observe_resource_config = observe_resource_config
+        # The filter condition for the global scope of observable resources.
         self.observe_resource_global_scope = observe_resource_global_scope
-        # **[Deprecated]** Filters by a single resource entity ID. This field is retained only for backward compatibility with legacy SDKs. For new integrations, use observeResourceList.contains instead. If this field is not empty and observeResourceList is not specified, it is equivalent to observeResourceList.contains=[observeResourceInstanceId].
+        # **[Deprecated]** The single-value filter for the resource instance ID. This field is retained only for compatibility with legacy SDKs. Use observeResourceList.contains instead for new integrations. If this field is not empty and observeResourceList is not specified, it is equivalent to observeResourceList.contains=[observeResourceInstanceId].
         self.observe_resource_instance_id = observe_resource_instance_id
+        # The filter condition for the list of observable resources.
         self.observe_resource_list = observe_resource_list
-        # **[Deprecated]** Filters by observable resource type. For new integrations, use observeResourceConfig.entityType instead.
+        # **[Deprecated]** The filter for the observable resource type. Use observeResourceConfig.entityType instead for new integrations.
         self.observe_resource_type = observe_resource_type
+        # The filter condition for the partition key.
         self.partition_key = partition_key
+        # The filter condition for alert severity levels.
         self.severity_levels = severity_levels
+        # The filter for statuses.
         self.status = status
+        # The filter for alert rule UUIDs.
         self.uuid = uuid
 
     def validate(self):

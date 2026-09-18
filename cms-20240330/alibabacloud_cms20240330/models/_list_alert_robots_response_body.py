@@ -22,7 +22,7 @@ class ListAlertRobotsResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The chatbot ID.
+        # The robot IDs.
         self.robots = robots
         # The total number of records.
         self.total = total
@@ -91,18 +91,21 @@ class ListAlertRobotsResponseBodyRobots(DaraModel):
         url: str = None,
         workspace: str = None,
     ):
+        # The name of the digital employee.
         self.digital_employee_name = digital_employee_name
         # The language.
         self.lang = lang
-        # The chatbot name.
+        # The robot name.
         self.name = name
-        # The unique ID of the chatbot.
+        # The unique ID of the robot.
         self.robot_id = robot_id
+        # The signing key of the robot.
         self.robot_sign_key = robot_sign_key
-        # The chatbot type.
+        # The robot types.
         self.type = type
-        # The webhook URL of the chatbot.
+        # The webhook URL of the robot.
         self.url = url
+        # The workspace ID.
         self.workspace = workspace
 
     def validate(self):

@@ -17,12 +17,13 @@ class ListContactGroupsRequest(DaraModel):
     ):
         # The contact group IDs.
         self.contact_group_ids = contact_group_ids
-        # The name of the contact group.
+        # The contact name.
         self.name = name
-        # The page number. The default is 1.
+        # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return per page. The default is 100.
+        # The number of entries per page. Default value: 100.
         self.page_size = page_size
+        # The workspace name.
         self.workspace = workspace
 
     def validate(self):

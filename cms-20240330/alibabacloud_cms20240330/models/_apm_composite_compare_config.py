@@ -13,11 +13,11 @@ class ApmCompositeCompareConfig(DaraModel):
         yoy_time_unit: str = None,
         yoy_time_value: int = None,
     ):
-        # The aggregate functions used for aggregation.
+        # The aggregate functions.
         # 
         # This parameter is required.
         self.aggregate = aggregate
-        # The comparison operator. GTE/LTE indicates greater than or equal to/less than or equal to. YOY_UP/YOY_DOWN indicates year-over-year increase/decrease, which requires yoyTimeUnit and yoyTimeValue to be specified.
+        # The comparison operator.
         # 
         # This parameter is required.
         self.operator = operator

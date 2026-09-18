@@ -12,7 +12,9 @@ class QueryAlertRulesRelationTypeFilter(DaraModel):
         in_: List[str] = None,
         not_in: List[str] = None,
     ):
+        # Matches any value in the set with OR semantics. Valid values: ALL, UMODEL_ENTITY, CLOUD_INSTANCE, GROUP_V1, GROUP_V2, and TAG.
         self.in_ = in_
+        # Excludes any value in the set with NOT IN semantics.
         self.not_in = not_in
 
     def validate(self):

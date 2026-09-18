@@ -9,7 +9,7 @@ class NotifyStrategyIdFilter(DaraModel):
         self,
         eq: str = None,
     ):
-        # The exact ID of the notification strategy to retrieve.
+        # The exact match.
         self.eq = eq
 
     def validate(self):

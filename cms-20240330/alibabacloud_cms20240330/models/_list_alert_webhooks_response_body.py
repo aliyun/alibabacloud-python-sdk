@@ -16,15 +16,15 @@ class ListAlertWebhooksResponseBody(DaraModel):
         total: int = None,
         webhooks: List[main_models.ListAlertWebhooksResponseBodyWebhooks] = None,
     ):
-        # The page number. The default value is 1.
+        # The page number. Default value: 1.
         self.page_number = page_number
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
         # The total number of entries.
         self.total = total
-        # The webhooks.
+        # The list of webhooks.
         self.webhooks = webhooks
 
     def validate(self):
@@ -92,23 +92,17 @@ class ListAlertWebhooksResponseBodyWebhooks(DaraModel):
         workspace: str = None,
     ):
         # The content type of the data. Valid values:
-        # 
         # - JSON
-        # 
         # - FORM
         self.content_type = content_type
-        # The headers.
+        # The collection of HTTP request headers.
         self.headers = headers
         # The language. Valid values:
-        # 
         # - zh_CN
-        # 
         # - en_US
         self.lang = lang
         # The request method. Valid values:
-        # 
         # - GET
-        # 
         # - POST
         self.method = method
         # The name of the webhook.
@@ -117,6 +111,7 @@ class ListAlertWebhooksResponseBodyWebhooks(DaraModel):
         self.url = url
         # The unique ID of the webhook.
         self.webhook_id = webhook_id
+        # The workspace name.
         self.workspace = workspace
 
     def validate(self):

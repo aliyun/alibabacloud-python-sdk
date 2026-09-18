@@ -33,28 +33,51 @@ class ManageAlertRulesUnifiedActionInput(DaraModel):
         uuid_list: List[str] = None,
         workspace: str = None,
     ):
+        # The action type.
+        # 
         # This parameter is required.
         self.action = action
+        # The action integration configuration.
         self.action_integration_config = action_integration_config
+        # The annotations.
         self.annotations = annotations
+        # The ARMS integration configuration.
         self.arms_integration_config = arms_integration_config
+        # The business source (optional). Examples: managed_service_for_prometheus, umodel, application_insights, cloud_monitoring, sls. Provide as needed for CREATE/UPDATE/PATCH.
         self.biz_source = biz_source
+        # The aggregated condition configuration.
         self.condition_config = condition_config
+        # The content template.
         self.content_template = content_template
+        # The aggregated data source configuration.
         self.datasource_config = datasource_config
+        # The display name.
         self.display_name = display_name
+        # Specifies whether the rule is enabled.
         self.enabled = enabled
+        # The labels.
         self.labels = labels
+        # The aggregated notification configuration.
         self.notify_config = notify_config
+        # The observable resource configuration.
         self.observe_resource_config = observe_resource_config
+        # **[Deprecated]** The monitored object instance ID. Use observeResourceConfig.resources instead. Retained only for backward compatibility with legacy SDKs.
         self.observe_resource_instance_id = observe_resource_instance_id
+        # **[Deprecated]** The monitored object resource type. Use observeResourceConfig.entityType instead. Retained only for backward compatibility with legacy SDKs.
         self.observe_resource_type = observe_resource_type
+        # The aggregated query configuration.
         self.query_config = query_config
+        # The root cause analysis (RCA) configuration (optional). Provide as needed for CREATE/UPDATE/PATCH.
         self.rca_config = rca_config
+        # The region ID. Aligned with V1 AlertRule.regionId. If not provided, the gateway callerRegionId is used.
         self.region_id = region_id
+        # The aggregated schedule configuration.
         self.schedule_config = schedule_config
+        # The UUID of the rule. Required for UPDATE/PATCH.
         self.uuid = uuid
+        # The list of rule UUIDs to delete (BATCH_DELETE).
         self.uuid_list = uuid_list
+        # The workspace. Required for CREATE/UPDATE and other actions.
         self.workspace = workspace
 
     def validate(self):

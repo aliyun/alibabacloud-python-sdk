@@ -9,6 +9,7 @@ class QueryAlertRulesProductCategoryFilter(DaraModel):
         self,
         eq: str = None,
     ):
+        # The exact match.
         self.eq = eq
 
     def validate(self):

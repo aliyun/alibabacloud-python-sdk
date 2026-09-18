@@ -19,10 +19,11 @@ class ListAlertWebhooksRequest(DaraModel):
         self.name = name
         # The page number. Default value: 1.
         self.page_number = page_number
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
         # The unique ID of the webhook.
         self.webhook_ids = webhook_ids
+        # The workspace name.
         self.workspace = workspace
 
     def validate(self):

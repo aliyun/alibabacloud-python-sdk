@@ -19,23 +19,23 @@ class ListContactsRequest(DaraModel):
         query_ungrouped_contacts: bool = None,
         workspace: str = None,
     ):
-        # The contact IDs.
+        # The IDs of the alert contacts.
         self.contact_ids = contact_ids
-        # The email address of the contact.
+        # The email address of the alert contact.
         self.email = email
-        # The ID of the contact group.
+        # The ID of the contact group to which the alert contact belongs.
         self.group_id = group_id
-        # The contact name.
+        # The name of the alert contact.
         self.name = name
         # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: 100.
+        # The number of entries per page. Default value: 100.
         self.page_size = page_size
-        # The mobile number of the contact.
+        # The phone number of the alert contact.
         self.phone = phone
-        # Specifies whether to query only ungrouped contacts.
+        # Specifies whether to query only ungrouped alert contacts.
         self.query_ungrouped_contacts = query_ungrouped_contacts
-        # The workspace ID.
+        # The workspace name. Format: `default-cms-{accountId}-{region}`. Example: `default-cms-1744108686100472-cn-hangzhou`. You can call the ListWorkspaces API to obtain valid workspace names.
         self.workspace = workspace
 
     def validate(self):

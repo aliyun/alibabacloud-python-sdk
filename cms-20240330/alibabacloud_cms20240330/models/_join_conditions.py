@@ -11,8 +11,11 @@ class JoinConditions(DaraModel):
         operator: str = None,
         rhs_field: str = None,
     ):
+        # The left field in the format $<query_idx>.<field>, such as $0.hostIp.
         self.lhs_field = lhs_field
+        # The comparison operator. Valid values: == / != / < / > / <= / >=.
         self.operator = operator
+        # The right field in the format $<query_idx>.<field>, such as $1.hostIp.
         self.rhs_field = rhs_field
 
     def validate(self):

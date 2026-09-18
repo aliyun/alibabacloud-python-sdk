@@ -12,8 +12,12 @@ class DirectNotifyChannel(DaraModel):
         identifiers: List[str] = None,
         type: str = None,
     ):
+        # The list of Notification Recipient identifiers.
+        # 
         # This parameter is required.
         self.identifiers = identifiers
+        # The notification channel type.
+        # 
         # This parameter is required.
         self.type = type
 

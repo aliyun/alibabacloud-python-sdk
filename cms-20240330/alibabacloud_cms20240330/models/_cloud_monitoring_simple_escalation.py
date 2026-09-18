@@ -14,11 +14,11 @@ class CloudMonitoringSimpleEscalation(DaraModel):
         metric_name: str = None,
         period: int = None,
     ):
-        # An object that defines a single escalation rule.
+        # The list of multi-level trigger configurations for cloud service monitoring. Each item defines a trigger level, such as Warning or Critical, and includes parameters such as the threshold, duration, and notification method.
         self.escalations = escalations
-        # The name of the metric.
+        # The metric name.
         self.metric_name = metric_name
-        # The evaluation period for the metric, in seconds.
+        # The aggregation period, in seconds.
         self.period = period
 
     def validate(self):

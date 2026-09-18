@@ -24,22 +24,35 @@ class SubscriptionForSNSView(DaraModel):
         workspace: str = None,
         workspace_filter_setting: main_models.WorkspaceFilterSetting = None,
     ):
+        # The time when the subscription was created.
         self.create_time = create_time
+        # Indicates whether the subscription is enabled.
         self.enable = enable
+        # The filter configuration.
         self.filter_setting = filter_setting
+        # The lifecycle mode.
         self.mode = mode
+        # The subscription name.
         self.name = name
-        # The reverse association to SNS (= snsUuid).
+        # The reverse association to the SNS (= snsUuid).
         self.notify_strategy_uuid = notify_strategy_uuid
+        # The region ID.
         self.region_id = region_id
-        # Indicates whether to subscribe to legacy product events (CMS 1.0, ARMS, or SLS events where workspace=null). Valid values: true: subscribed. false or null: not subscribed.
+        # Indicates whether the subscription includes legacy product events (CMS 1.0, ARMS, or SLS events where workspace is null). Valid values: true: Subscribed. false or null: Not subscribed.
         self.subscribe_legacy_event = subscribe_legacy_event
+        # The subscription type.
         self.subscription_type = subscription_type
+        # The sync source type.
         self.sync_from_type = sync_from_type
+        # The time when the subscription was last updated.
         self.update_time = update_time
+        # The user ID of the owner.
         self.user_id = user_id
+        # The subscription UUID.
         self.uuid = uuid
+        # The workspace.
         self.workspace = workspace
+        # The workspace filter configuration.
         self.workspace_filter_setting = workspace_filter_setting
 
     def validate(self):

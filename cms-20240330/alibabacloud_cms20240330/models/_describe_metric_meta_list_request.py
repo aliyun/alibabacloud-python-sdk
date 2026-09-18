@@ -10,6 +10,8 @@ from darabonba.model import DaraModel
 class DescribeMetricMetaListRequest(DaraModel):
     def __init__(
         self,
+        aliyun_lang: str = None,
+        category: str = None,
         keywords: str = None,
         labels: List[main_models.DescribeMetricMetaListRequestLabels] = None,
         meta_format: str = None,
@@ -18,6 +20,10 @@ class DescribeMetricMetaListRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The language.
+        self.aliyun_lang = aliyun_lang
+        # The category.
+        self.category = category
         # The keyword.
         self.keywords = keywords
         # Filters resources by label. The following labels are available:
@@ -26,11 +32,12 @@ class DescribeMetricMetaListRequest(DaraModel):
         # - alertUnit: the recommended alert unit.
         # - unitFactor: the unit conversion factor.
         # - minAlertPeriod: the minimum alert period.
-        # - productCategory: the service type category.
+        # - productCategory: the product type category.
         self.labels = labels
         # The metadata source. Valid values:
+        # 
         # - CMS: CloudMonitor Basic monitoring metrics.
-        # - PROM_BASIC: Prometheus CloudMonitor basic monitoring metrics.
+        # - PROM_BASIC: Prometheus CloudMonitor Basic monitoring metrics.
         self.meta_format = meta_format
         # The metric name.
         self.metric_name = metric_name
@@ -52,6 +59,12 @@ class DescribeMetricMetaListRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.aliyun_lang is not None:
+            result['aliyunLang'] = self.aliyun_lang
+
+        if self.category is not None:
+            result['category'] = self.category
+
         if self.keywords is not None:
             result['keywords'] = self.keywords
 
@@ -79,6 +92,12 @@ class DescribeMetricMetaListRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('aliyunLang') is not None:
+            self.aliyun_lang = m.get('aliyunLang')
+
+        if m.get('category') is not None:
+            self.category = m.get('category')
+
         if m.get('keywords') is not None:
             self.keywords = m.get('keywords')
 

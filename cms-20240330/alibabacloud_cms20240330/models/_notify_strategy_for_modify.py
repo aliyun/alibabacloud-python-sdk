@@ -24,13 +24,13 @@ class NotifyStrategyForModify(DaraModel):
         routes: List[main_models.NotifyStrategyForModifyRoutes] = None,
         workspace_filter_setting: main_models.WorkspaceFilterSetting = None,
     ):
-        # The auto-recovery time in seconds.
+        # The automatic recovery time in seconds.
         self.auto_recover_seconds = auto_recover_seconds
-        # The notification channel template.
+        # The notification channel templates.
         self.custom_template_entries = custom_template_entries
         # The description.
         self.description = description
-        # Specifies whether to enable incident management.
+        # Indicates whether incident management is enabled.
         self.enable_incident_management = enable_incident_management
         # The list of escalation policy IDs.
         self.escalation_id = escalation_id
@@ -40,17 +40,17 @@ class NotifyStrategyForModify(DaraModel):
         # 
         # This parameter is required.
         self.grouping_setting = grouping_setting
-        # Specifies whether to send a notification upon recovery.
+        # Indicates whether to send a notification when the alert is restored.
         self.ignore_restored_notification = ignore_restored_notification
-        # The name.
+        # The name of the notification policy.
         # 
         # This parameter is required.
         self.notify_strategy_name = notify_strategy_name
         # The push settings.
         self.pushing_setting = pushing_setting
-        # The settings for repeated notifications.
+        # The repeat notification settings.
         self.repeat_notify_setting = repeat_notify_setting
-        # The routing settings for the notification channel.
+        # The notification channel route settings.
         # 
         # This parameter is required.
         self.routes = routes
@@ -191,13 +191,15 @@ class NotifyStrategyForModifyRoutes(DaraModel):
         filter_setting: main_models.FilterSetting = None,
         severities: List[str] = None,
     ):
-        # The notification channel.
+        # The notification channels.
         self.channels = channels
+        # The name of the digital employee.
         self.digital_employee_name = digital_employee_name
         # The effective time range.
         self.effect_time_range = effect_time_range
+        # Indicates whether root cause analysis is enabled.
         self.enable_rca = enable_rca
-        # The routing conditions.
+        # The route condition.
         self.filter_setting = filter_setting
         # The list of severity levels.
         self.severities = severities
@@ -274,7 +276,7 @@ class NotifyStrategyForModifyRoutesEffectTimeRange(DaraModel):
         start_time_in_minute: int = None,
         time_zone: str = None,
     ):
-        # The days of the week when the policy is active. Monday to Sunday.
+        # The effective days (Monday to Sunday).
         self.day_in_week = day_in_week
         # The end time in minutes.
         self.end_time_in_minute = end_time_in_minute
@@ -377,9 +379,9 @@ class NotifyStrategyForModifyRepeatNotifySetting(DaraModel):
         end_incident_state: str = None,
         repeat_interval: int = None,
     ):
-        # The incident state that stops the repeated notifications.
+        # The end incident state.
         self.end_incident_state = end_incident_state
-        # The interval for repeated notifications.
+        # The time interval for repeat notifications.
         self.repeat_interval = repeat_interval
 
     def validate(self):
@@ -417,7 +419,7 @@ class NotifyStrategyForModifyPushingSetting(DaraModel):
     ):
         # The list of alert action IDs.
         self.alert_action_ids = alert_action_ids
-        # The list of restore action IDs.
+        # The list of recovery action IDs.
         self.restore_action_ids = restore_action_ids
         # The message template UUID.
         self.template_uuid = template_uuid
@@ -462,13 +464,13 @@ class NotifyStrategyForModifyGroupingSetting(DaraModel):
         silence_sec: int = None,
         times: int = None,
     ):
-        # The keys used for merging.
+        # The grouping keys.
         self.grouping_keys = grouping_keys
         # The check period in minutes.
         self.period_min = period_min
-        # The silence period in seconds.
+        # The silence duration in seconds.
         self.silence_sec = silence_sec
-        # The number of triggers.
+        # The number of times the alert is triggered.
         self.times = times
 
     def validate(self):

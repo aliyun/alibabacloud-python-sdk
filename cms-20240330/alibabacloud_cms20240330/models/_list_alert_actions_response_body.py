@@ -16,7 +16,7 @@ class ListAlertActionsResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The list of alert action integration configurations.
+        # The list of action integration configurations.
         self.alert_actions = alert_actions
         # The page number.
         self.page_number = page_number
@@ -94,25 +94,25 @@ class ListAlertActionsResponseBodyAlertActions(DaraModel):
         type: str = None,
         webhook_param: main_models.ListAlertActionsResponseBodyAlertActionsWebhookParam = None,
     ):
-        # The unique ID of the alert action integration.
+        # The unique IDs of the action integrations.
         self.alert_action_id = alert_action_id
-        # The name of the alert action integration.
+        # The name of the action integration.
         self.alert_action_name = alert_action_name
-        # Specifies the event bus.
+        # The EventBridge parameters.
         self.eb_param = eb_param
-        # The parameters of Auto Scaling.
+        # The elastic scaling parameters.
         self.ess_param = ess_param
-        # The parameters of Function Compute 3.0.
+        # The Function Compute 3.0 parameters.
         self.fc_3param = fc_3param
-        # The parameters of Function Compute.
+        # The Function Compute parameters.
         self.fc_param = fc_param
-        # The parameters of Simple Message Queue (formerly MNS).
+        # The Simple Message Queue (formerly MNS) parameters.
         self.mns_param = mns_param
         # The PagerDuty parameters.
         self.pager_duty_param = pager_duty_param
-        # The parameters of Simple Log Service.
+        # The Simple Log Service parameters.
         self.sls_param = sls_param
-        # The type of the alert action integration.
+        # The type of the action integration.
         self.type = type
         # The webhook parameters.
         self.webhook_param = webhook_param
@@ -228,13 +228,13 @@ class ListAlertActionsResponseBodyAlertActionsWebhookParam(DaraModel):
         method: str = None,
         url: str = None,
     ):
-        # The data format. This parameter is valid only when the request method is POST.
+        # The data format. This parameter takes effect only when the request method is POST.
         self.content_type = content_type
         # The request headers.
         self.headers = headers
-        # The request method of the webhook.
+        # The webhook request method.
         self.method = method
-        # The callback URL for alerts.
+        # The alert callback URL.
         self.url = url
 
     def validate(self):
@@ -329,7 +329,7 @@ class ListAlertActionsResponseBodyAlertActionsPagerDutyParam(DaraModel):
     ):
         # The integration key of PagerDuty.
         self.key = key
-        # The integration webhook of PagerDuty. Versions 1 and 2 are supported.
+        # The integration webhook of PagerDuty. V1 and V2 versions are supported.
         self.url = url
 
     def validate(self):
@@ -367,11 +367,10 @@ class ListAlertActionsResponseBodyAlertActionsMnsParam(DaraModel):
     ):
         # The resource type of Simple Message Queue (formerly MNS).
         self.mns_type = mns_type
-        # The name of the resource.
+        # The resource name.
         # 
-        # - If the resource type is \\`queue\\`, this parameter specifies the queue name.
-        # 
-        # - If the resource type is \\`topic\\`, this parameter specifies the topic name.
+        # - If the resource type is queue, the resource name is the queue name.
+        # - If the resource type is topic, the resource name is the topic name.
         self.name = name
         # The region ID.
         self.region_id = region_id
@@ -507,9 +506,9 @@ class ListAlertActionsResponseBodyAlertActionsEssParam(DaraModel):
         ess_rule_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the Auto Scaling group.
+        # The ID of the elastic scaling group.
         self.ess_group_id = ess_group_id
-        # The ID of the scaling rule.
+        # The ID of the elastic scaling rule.
         self.ess_rule_id = ess_rule_id
         # The region ID.
         self.region_id = region_id
@@ -554,7 +553,7 @@ class ListAlertActionsResponseBodyAlertActionsEbParam(DaraModel):
         region_id: str = None,
         subject: str = None,
     ):
-        # The event provider.
+        # The event source.
         self.eb_source = eb_source
         # The name of the event bus.
         self.event_bus_name = event_bus_name

@@ -14,9 +14,9 @@ class ListPrometheusDashboardsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # A list of dashboards for the Prometheus instance.
+        # The list of dashboards for the Managed Service for Prometheus instance.
         self.prometheus_dashboards = prometheus_dashboards
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
         # The total number of instances.
         self.total_count = total_count
@@ -64,6 +64,7 @@ class ListPrometheusDashboardsResponseBody(DaraModel):
 class ListPrometheusDashboardsResponseBodyPrometheusDashboards(DaraModel):
     def __init__(
         self,
+        folder_uid: str = None,
         id: str = None,
         name: str = None,
         tags: List[str] = None,
@@ -71,6 +72,8 @@ class ListPrometheusDashboardsResponseBodyPrometheusDashboards(DaraModel):
         uid: str = None,
         url: str = None,
     ):
+        # The UID of the dashboard folder.
+        self.folder_uid = folder_uid
         # The dashboard ID.
         self.id = id
         # The dashboard name.
@@ -81,7 +84,7 @@ class ListPrometheusDashboardsResponseBodyPrometheusDashboards(DaraModel):
         self.title = title
         # The dashboard UID.
         self.uid = uid
-        # The URL of the dashboard.
+        # The dashboard URL.
         self.url = url
 
     def validate(self):
@@ -92,6 +95,9 @@ class ListPrometheusDashboardsResponseBodyPrometheusDashboards(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.folder_uid is not None:
+            result['folderUid'] = self.folder_uid
+
         if self.id is not None:
             result['id'] = self.id
 
@@ -114,6 +120,9 @@ class ListPrometheusDashboardsResponseBodyPrometheusDashboards(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('folderUid') is not None:
+            self.folder_uid = m.get('folderUid')
+
         if m.get('id') is not None:
             self.id = m.get('id')
 

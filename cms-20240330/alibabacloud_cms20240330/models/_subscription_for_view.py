@@ -27,6 +27,7 @@ class SubscriptionForView(DaraModel):
         workspace: str = None,
         workspace_filter_setting: main_models.WorkspaceFilterSetting = None,
     ):
+        # The Agent configuration information.
         self.agent_config = agent_config
         # The creation time.
         self.create_time = create_time
@@ -40,16 +41,15 @@ class SubscriptionForView(DaraModel):
         self.notify_strategy_id = notify_strategy_id
         # The push settings.
         self.pushing_setting = pushing_setting
-        # Specifies whether to subscribe to legacy product events (CMS 1.0, ARMS, or SLS events where workspace is null). Valid values:
-        # - true: Subscribe.
-        # - false or null: Do not subscribe.
+        # Specifies whether to subscribe to legacy product events (CMS 1.0, ARMS, or SLS events where workspace is null). Valid values: true: Subscribe. false or null: Do not subscribe.
         self.subscribe_legacy_event = subscribe_legacy_event
-        # UUID
+        # The unique identifier of the subscription.
         self.subscription_id = subscription_id
-        # The name.
+        # The name of the subscription.
         # 
         # This parameter is required.
         self.subscription_name = subscription_name
+        # The subscription type.
         self.subscription_type = subscription_type
         # The source type of the synchronization policy.
         self.sync_from_type = sync_from_type
@@ -57,8 +57,9 @@ class SubscriptionForView(DaraModel):
         self.update_time = update_time
         # The user ID.
         self.user_id = user_id
-        # workspace
+        # The workspace identifier.
         self.workspace = workspace
+        # The workspace filter settings.
         self.workspace_filter_setting = workspace_filter_setting
 
     def validate(self):
@@ -243,7 +244,9 @@ class SubscriptionForViewAgentConfig(DaraModel):
         agent_uuid: str = None,
         routes: List[main_models.NotifyRouteForSubscription] = None,
     ):
+        # The unique identifier of the Agent.
         self.agent_uuid = agent_uuid
+        # The list of Agent routing configurations.
         self.routes = routes
 
     def validate(self):

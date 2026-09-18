@@ -19,29 +19,29 @@ class CreateAddonReleaseRequest(DaraModel):
         version: str = None,
         workspace: str = None,
     ):
-        # The name of the add-on to integrate.
+        # The name of the addon component to be connected to monitoring.
         # 
         # This parameter is required.
         self.addon_name = addon_name
-        # The language of the add-on.
+        # The language type of the component.
         self.aliyun_lang = aliyun_lang
-        # Specifies whether to perform a dry run. The default value is false.
+        # Specifies whether to perform a dry run. Default value: false.
         self.dry_run = dry_run
-        # The entity discovery rules.
+        # The field rules.
         self.entity_rules = entity_rules
-        # The environment type. Set this parameter to CS for container environments or ECS for ECS environments. For all other environment types, set this parameter to Cloud.
+        # The environment type. If the policy type is CS or ECS, the corresponding value is used. For other types, the value is Cloud.
         self.env_type = env_type
-        # The ID of the parent AddonRelease.
+        # The parent AddonReleaseId.
         self.parent_addon_release_id = parent_addon_release_id
-        # The name of the release after the integration. If you do not specify this parameter, a default name is generated.
+        # The name of the plugin after access. If this parameter is not specified, a default rule name is generated.
         self.release_name = release_name
-        # The metadata.
+        # The input metadata.
         self.values = values
-        # The version of the add-on to integrate.
+        # The version of the addon component to be connected to monitoring.
         # 
         # This parameter is required.
         self.version = version
-        # The name of the workspace where the add-on is installed.
+        # The name of the workspace where the component resources are installed.
         self.workspace = workspace
 
     def validate(self):

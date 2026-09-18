@@ -20,23 +20,23 @@ class EntityDiscoverRule(DaraModel):
         resource_group_id: str = None,
         tags: List[main_models.EntityDiscoverRuleTags] = None,
     ):
-        # A collection of annotation matching rules.
+        # The collection of annotation matching rules.
         self.annotations = annotations
-        # A collection of entity types.
+        # The collection of entity types.
         self.entity_types = entity_types
         # The property matching rules.
         self.field_rules = field_rules
-        # A collection of instance IDs.
+        # The collection of instance IDs.
         self.instance_ids = instance_ids
-        # A collection of IP address matching rules.
+        # The collection of IP matching rules.
         self.ip_match_rule = ip_match_rule
-        # A collection of label matching rules.
+        # The collection of label matching rules.
         self.labels = labels
-        # A collection of region IDs.
+        # The collection of region IDs.
         self.region_ids = region_ids
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The tag-based service discovery rules.
+        # The tag-based service discovery settings.
         self.tags = tags
 
     def validate(self):
@@ -156,7 +156,7 @@ class EntityDiscoverRuleTags(DaraModel):
         self.op = op
         # The key of the tag.
         self.tag_key = tag_key
-        # A collection of tag values.
+        # The collection of tag values.
         self.tag_values = tag_values
 
     def validate(self):
@@ -202,7 +202,7 @@ class EntityDiscoverRuleLabels(DaraModel):
         self.op = op
         # The key of the label.
         self.tag_key = tag_key
-        # A collection of label values.
+        # The collection of label values.
         self.tag_values = tag_values
 
     def validate(self):
@@ -243,7 +243,9 @@ class EntityDiscoverRuleIpMatchRule(DaraModel):
         ip_cidr: str = None,
         ip_field_key: str = None,
     ):
+        # The CIDR block of the IP address.
         self.ip_cidr = ip_cidr
+        # The property key of the IP address.
         self.ip_field_key = ip_field_key
 
     def validate(self):
@@ -281,7 +283,7 @@ class EntityDiscoverRuleFieldRules(DaraModel):
     ):
         # The key of the property.
         self.field_key = field_key
-        # A collection of property values.
+        # The collection of property values.
         self.field_values = field_values
         # The operation.
         self.op = op
@@ -329,7 +331,7 @@ class EntityDiscoverRuleAnnotations(DaraModel):
         self.op = op
         # The key of the annotation.
         self.tag_key = tag_key
-        # A collection of annotation values.
+        # The collection of annotation values.
         self.tag_values = tag_values
 
     def validate(self):

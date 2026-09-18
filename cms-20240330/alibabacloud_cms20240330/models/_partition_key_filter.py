@@ -9,7 +9,7 @@ class PartitionKeyFilter(DaraModel):
         self,
         eq: str = None,
     ):
-        # Returns only items whose partition key value equals this string.
+        # The exact match value.
         self.eq = eq
 
     def validate(self):

@@ -24,31 +24,31 @@ class IncidentResponsePlanForSNSView(DaraModel):
         update_time: str = None,
         uuid: str = None,
     ):
-        # The duration, in seconds, after which an incident without new alerts is automatically resolved.
+        # The auto-recovery time when no incidents occur, in seconds.
         self.auto_recover_seconds = auto_recover_seconds
-        # The time when the incident response plan was created, in UTC and in the `YYYY-MM-DDThh:mm:ssZ` format.
+        # The creation time.
         self.create_time = create_time
-        # Indicates if the incident response plan is enabled. Valid values: `true` and `false`.
+        # Indicates whether the response plan is enabled.
         self.enable = enable
-        # The IDs of the escalation policies.
+        # The list of escalation plan IDs.
         self.escalation_id = escalation_id
-        # The mode of the incident response plan. Valid values: `AUTO` and `MANUAL`.
+        # The lifecycle mode.
         self.mode = mode
-        # The name of the incident response plan.
+        # The name.
         self.name = name
-        # The settings for sending notifications.
+        # The push settings.
         self.pushing_setting = pushing_setting
-        # The settings for repeated notifications.
+        # The repeat notification settings.
         self.repeat_notify_setting = repeat_notify_setting
-        # The source of the incident.
+        # The source. This value must be CUSTOM within SNS.
         self.source = source
         # The synchronization source type.
         self.sync_from_type = sync_from_type
-        # The type of the incident response plan.
+        # The response plan type. This value must be NOTIFY_STRATEGY_DEFINED within SNS.
         self.type = type
-        # The time when the incident response plan was last updated, in UTC and in the `YYYY-MM-DDThh:mm:ssZ` format.
+        # The update time.
         self.update_time = update_time
-        # The unique ID of the incident response plan.
+        # The unique identifier of the response plan.
         self.uuid = uuid
 
     def validate(self):
@@ -154,9 +154,9 @@ class IncidentResponsePlanForSNSViewRepeatNotifySetting(DaraModel):
         end_incident_state: str = None,
         repeat_interval: int = None,
     ):
-        # The incident state at which repeated notifications stop. For example, `resolved`.
+        # The setting that specifies whether to send repeat notifications when an incident ends.
         self.end_incident_state = end_incident_state
-        # The interval, in seconds, for repeated notifications.
+        # The repeat notification interval, in seconds.
         self.repeat_interval = repeat_interval
 
     def validate(self):
@@ -192,11 +192,11 @@ class IncidentResponsePlanForSNSViewPushingSetting(DaraModel):
         restore_action_ids: List[str] = None,
         template_uuid: str = None,
     ):
-        # The IDs of actions to run when an alert is triggered.
+        # The list of response action IDs triggered by alerts.
         self.alert_action_ids = alert_action_ids
-        # The IDs of actions to run when the incident is resolved.
+        # The list of response action IDs triggered by alert recovery.
         self.restore_action_ids = restore_action_ids
-        # The ID of the notification template.
+        # The UUID of the template used for pushing.
         self.template_uuid = template_uuid
 
     def validate(self):

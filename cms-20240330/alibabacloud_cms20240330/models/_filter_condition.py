@@ -11,11 +11,11 @@ class FilterCondition(DaraModel):
         op: str = None,
         value: str = None,
     ):
-        # The name of the field to filter on.
+        # The field name.
         self.field = field
-        # The comparison operator, such as `equals` or `startsWith`.
+        # The operator.
         self.op = op
-        # The value to match for the specified field and operator.
+        # The comparison value.
         self.value = value
 
     def validate(self):

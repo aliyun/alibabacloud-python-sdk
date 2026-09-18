@@ -11,7 +11,7 @@ class ObserveResourceListFilter(DaraModel):
         self,
         contains: List[str] = None,
     ):
-        # Returns resources if a specified property contains any string in this array.
+        # The match condition that requires the observeResourceList of a rule to contain at least one instance ID from the array (OR semantics).
         self.contains = contains
 
     def validate(self):

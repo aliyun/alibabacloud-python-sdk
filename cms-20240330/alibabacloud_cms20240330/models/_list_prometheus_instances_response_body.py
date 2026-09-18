@@ -107,11 +107,11 @@ class ListPrometheusInstancesResponseBodyPrometheusInstances(DaraModel):
         self.create_time = create_time
         # The instance type.
         self.instance_type = instance_type
-        # The billing method. Valid values:
-        # - POSTPAY: pay-as-you-go by metric volume.
-        # - POSTPAY_GB: pay-as-you-go by write volume.
-        # - PREPAY: subscription.
-        # - FREE: free.
+        # The payment type. Valid values:
+        # - POSTPAY: Pay-as-you-go by metric volume.
+        # - POSTPAY_GB: Pay-as-you-go by write volume.
+        # - PREPAY: Subscription.
+        # - FREE: Free.
         self.payment_type = payment_type
         # The product to which the Prometheus instance belongs.
         self.product = product

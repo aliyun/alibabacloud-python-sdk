@@ -18,36 +18,31 @@ class CreateAlertWebhookRequest(DaraModel):
         webhook_id: str = None,
         workspace: str = None,
     ):
-        # The content type. Valid values:
-        # 
+        # The content type of the data. Valid values:
         # - JSON (default)
-        # 
         # - FORM
         self.content_type = content_type
-        # The headers.
+        # The collection of HTTP request headers.
         self.headers = headers
         # The language. Valid values:
-        # 
         # - zh_CN
-        # 
         # - en_US
         self.lang = lang
         # The request method. Valid values:
-        # 
         # - GET
-        # 
         # - POST
         self.method = method
-        # The name of the webhook.
+        # The webhook name.
         # 
         # This parameter is required.
         self.name = name
-        # The URL for the alert callback.
+        # The alert callback URL.
         # 
         # This parameter is required.
         self.url = url
-        # The unique ID of the webhook.
+        # The unique identifier of the webhook.
         self.webhook_id = webhook_id
+        # The workspace identifier.
         self.workspace = workspace
 
     def validate(self):

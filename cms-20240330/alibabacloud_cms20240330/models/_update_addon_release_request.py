@@ -13,9 +13,11 @@ class UpdateAddonReleaseRequest(DaraModel):
         entity_rules: main_models.EntityDiscoverRule = None,
         values: str = None,
     ):
-        # The version of the add-on.
+        # The version of the addon.
         self.addon_version = addon_version
-        # Specifies whether to perform a dry run for the request.
+        # Specifies whether to perform a dry run. Valid values:
+        # - true: Performs a dry run.
+        # - false: Does not perform a dry run.
         self.dry_run = dry_run
         # The entity discovery rules.
         self.entity_rules = entity_rules

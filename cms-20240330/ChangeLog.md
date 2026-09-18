@@ -1,3 +1,6 @@
+2026-09-18 Version: 10.5.2
+- Generated python 2024-03-30 for Cms.
+
 2026-08-26 Version: 10.4.2
 - Update API GetPrometheusInstance: add response parameters Body.prometheusInstance.storeConfig.
 - Update API UpdatePrometheusInstance: add request parameters body.storeConfig.

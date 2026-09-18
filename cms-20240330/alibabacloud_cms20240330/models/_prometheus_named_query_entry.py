@@ -10,7 +10,9 @@ class PrometheusNamedQueryEntry(DaraModel):
         expr: str = None,
         name: str = None,
     ):
+        # The PromQL query expression.
         self.expr = expr
+        # The query name, such as $A or $B, referenced by the condition trigger.
         self.name = name
 
     def validate(self):

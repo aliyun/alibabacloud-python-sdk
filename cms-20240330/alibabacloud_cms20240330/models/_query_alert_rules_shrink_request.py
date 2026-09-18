@@ -19,8 +19,9 @@ class QueryAlertRulesShrinkRequest(DaraModel):
         self.client_token = client_token
         # The maximum number of data records to read in this request.
         self.max_results = max_results
-        # The token that marks the position from which you want to start reading. If this parameter is left empty, data is read from the beginning.
+        # The pagination token that marks the position from which to start reading. Leave this parameter empty to read from the beginning.
         self.next_token = next_token
+        # The query filter condition. The value is a JSON string whose fields have the same semantics as the request body. Supported fields include filter (uuid, displayName, labels, status, enabled, and more. Fields at the same level have an AND relationship), pagination (pageNumber and pageSize), and workspace. Specify either this parameter or the request body. If both are specified, the request body takes precedence.
         self.query_json = query_json
 
     def validate(self):

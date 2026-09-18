@@ -23,18 +23,29 @@ class IncidentResponsePlanForModify(DaraModel):
         type: str = None,
         uuid: str = None,
     ):
+        # The auto-recovery time when no events occur, in seconds.
         self.auto_recover_seconds = auto_recover_seconds
+        # The description.
         self.description = description
+        # Indicates whether the response plan is enabled.
         self.enabled = enabled
+        # The list of escalation plan IDs.
         self.escalation_id = escalation_id
+        # The lifecycle mode.
         self.mode = mode
+        # The name.
         self.name = name
+        # The push settings.
         self.pushing_setting = pushing_setting
+        # The repeat notification configuration.
         self.repeat_notify_setting = repeat_notify_setting
+        # The source.
         self.source = source
+        # The synchronization source type.
         self.sync_from_type = sync_from_type
+        # The type.
         self.type = type
-        # Required for update operations. Optional for create operations; if omitted, the backend generates one. `NotifyStrategy` also uses this UUID.
+        # Required for Update. Can be omitted for Create, in which case the backend generates it. Shared with NotifyStrategy.
         self.uuid = uuid
 
     def validate(self):

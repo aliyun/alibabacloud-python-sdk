@@ -11,8 +11,11 @@ class PrometheusMetricFilterValue(DaraModel):
         opt: str = None,
         value: str = None,
     ):
+        # The filter dimension name.
         self.dim = dim
+        # The filter operator, such as eq, neq, contain, not_contain, all, or disabled.
         self.opt = opt
+        # The filter value.
         self.value = value
 
     def validate(self):

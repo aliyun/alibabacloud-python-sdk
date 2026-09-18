@@ -16,11 +16,17 @@ class ObserveResourceConfig(DaraModel):
         relation_type: str = None,
         resources: List[str] = None,
     ):
+        # The UModel entity domain.
         self.entity_domain = entity_domain
+        # The UModel entity type.
         self.entity_type = entity_type
+        # The CloudMonitor namespace.
         self.namespace = namespace
+        # The CloudMonitor product category.
         self.product_category = product_category
+        # The relation type. TAG is supported only for alert rules where datasourceConfig.type is set to APM and queryConfig.type is set to APM_MULTI_QUERY. UMODEL_ENTITY does not support writes and is used only for reading existing data.
         self.relation_type = relation_type
+        # The list of resources. If relationType is set to ALL, this parameter can be left empty, which indicates all resources. If relationType is set to TAG, this parameter is a list of labels in key=value format (such as ["env=prod", "app=foo"]). This is supported only for APM data sources with APM_MULTI_QUERY.
         self.resources = resources
 
     def validate(self):

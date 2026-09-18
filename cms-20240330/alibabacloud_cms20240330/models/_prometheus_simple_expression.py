@@ -11,13 +11,7 @@ class PrometheusSimpleExpression(DaraModel):
         query_name: str = None,
         threshold: float = None,
     ):
-        # The comparison operator. Valid values:
-        # - GT: greater than
-        # - GE: greater than or equal to
-        # - LT: less than
-        # - LE: less than or equal to
-        # - EQ: equal to
-        # - NE: not equal to
+        # The comparison operator. Valid values: GT (greater than), GE (greater than or equal to), LT (less than), LE (less than or equal to), EQ (equal to), and NE (not equal to).
         self.operator = operator
         # The referenced query name, corresponding to QueryConfigUnified.queries[].name.
         self.query_name = query_name

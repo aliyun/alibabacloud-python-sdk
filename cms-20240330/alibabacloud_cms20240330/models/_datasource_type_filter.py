@@ -9,7 +9,7 @@ class DatasourceTypeFilter(DaraModel):
         self,
         eq: str = None,
     ):
-        # Specifies the data source type for an exact match.
+        # The exact match value.
         self.eq = eq
 
     def validate(self):

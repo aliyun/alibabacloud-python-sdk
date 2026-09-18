@@ -20,7 +20,7 @@ class ListServiceRecordsResponseBody(DaraModel):
         self.max_results = max_results
         # The pagination token.
         self.next_token = next_token
-        # The list of ticket operation records.
+        # The list of operation records.
         self.records = records
         # Id of the request
         self.request_id = request_id
@@ -85,6 +85,7 @@ class ListServiceRecordsResponseBodyRecords(DaraModel):
         record_content: str = None,
         record_type: str = None,
         service_id: str = None,
+        service_name: str = None,
         workspace: str = None,
     ):
         # The entry content in JSON string format. The format varies depending on the recordType.
@@ -94,6 +95,8 @@ class ListServiceRecordsResponseBodyRecords(DaraModel):
         self.record_type = record_type
         # The unique identifier of the service.
         self.service_id = service_id
+        # The service name.
+        self.service_name = service_name
         # The workspace.
         self.workspace = workspace
 
@@ -114,6 +117,9 @@ class ListServiceRecordsResponseBodyRecords(DaraModel):
         if self.service_id is not None:
             result['serviceId'] = self.service_id
 
+        if self.service_name is not None:
+            result['serviceName'] = self.service_name
+
         if self.workspace is not None:
             result['workspace'] = self.workspace
 
@@ -129,6 +135,9 @@ class ListServiceRecordsResponseBodyRecords(DaraModel):
 
         if m.get('serviceId') is not None:
             self.service_id = m.get('serviceId')
+
+        if m.get('serviceName') is not None:
+            self.service_name = m.get('serviceName')
 
         if m.get('workspace') is not None:
             self.workspace = m.get('workspace')

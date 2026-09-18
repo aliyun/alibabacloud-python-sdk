@@ -20,20 +20,23 @@ class SubscriptionAndNotifyStrategyForModify(DaraModel):
         uuid: str = None,
         version: int = None,
     ):
-        # The description.
+        # The description of the alert policy.
         self.description = description
-        # Specifies whether to enable the subscription. Enabled by default during creation.
+        # Read-only. This parameter does not take effect even if specified. The backend forcibly sets this parameter to true during creation and retains the current value during updates. To enable or disable the policy, call the EnableAlertPolicy or DisableAlertPolicy operation.
         self.enabled = enabled
-        # Optional. The backend derives the name from notifyStrategy if this parameter is not specified.
+        # Policy Name of the alert policy. If this parameter is not specified, the backend derives Policy Name from notifyStrategy.
         self.name = name
+        # The notification configuration that defines noise reduction rules, notification channel routing, and templates. This parameter is required for Create operations.
         self.notify_strategy = notify_strategy
+        # The event management configuration that defines recovery notifications, repeat notifications, automatic recovery, and escalation policies.
         self.response_plan = response_plan
+        # The single primary subscription configuration that defines event filter conditions. This parameter is mutually exclusive with subscriptions. Do not specify both parameters at the same time.
         self.subscription = subscription
-        # Used exclusively for Update operations. Performs batch create, update, or remove adjustments on member subscriptions.
+        # Dedicated to Update operations. Performs batch create, update, or remove adjustments on member subscriptions.
         self.subscriptions = subscriptions
-        # Required for Update. Can be omitted for Create, in which case the backend generates it.
+        # The unique identifier of the alert policy. This parameter is required for Update operations. Do not specify this parameter for Create operations because the backend automatically generates the value.
         self.uuid = uuid
-        # Required for Update. The value must match the backend record for the write to succeed. If the values do not match, OPTIMISTIC_LOCK_FAILED is returned.
+        # The optimistic lock version number. This parameter is required for Update operations and must match the current value on the backend. Otherwise, a 409 VersionConflict error is returned. The version number increments by 1 after each successful update.
         self.version = version
 
     def validate(self):

@@ -11,8 +11,11 @@ class EntityFilters(DaraModel):
         operator: str = None,
         value: str = None,
     ):
+        # The name of the filter field.
         self.field = field
+        # The filter operator. Only = or != is supported.
         self.operator = operator
+        # The filter value.
         self.value = value
 
     def validate(self):

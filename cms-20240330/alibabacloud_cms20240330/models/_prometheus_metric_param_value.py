@@ -10,7 +10,9 @@ class PrometheusMetricParamValue(DaraModel):
         name: str = None,
         value: str = None,
     ):
+        # The parameter name.
         self.name = name
+        # The parameter value.
         self.value = value
 
     def validate(self):

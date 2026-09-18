@@ -15,13 +15,13 @@ class IncidentResponsePlanForSNSModify(DaraModel):
         pushing_setting: main_models.IncidentResponsePlanForSNSModifyPushingSetting = None,
         repeat_notify_setting: main_models.IncidentResponsePlanForSNSModifyRepeatNotifySetting = None,
     ):
-        # The auto recovery time, in seconds. After this period, the incident is automatically resolved.
+        # The auto-recovery time. Unit: seconds. After this is configured, if no new events are generated for the incident within this period, the incident is automatically marked as resolved.
         self.auto_recover_seconds = auto_recover_seconds
-        # The IDs of the escalation policies.
+        # The list of escalation policy IDs. Associates with IncidentEscalationPolicy to define step-by-step escalation rules when an incident is not handled as expected, such as notifying a supervisor if the incident is not acknowledged within 30 minutes.
         self.escalation_id = escalation_id
-        # The push setting for notifications.
+        # The action integration execution configuration that defines automated actions to trigger when an incident occurs and when it is recovered.
         self.pushing_setting = pushing_setting
-        # The repeat notification setting.
+        # The repeat notification settings. When an incident remains unresolved, notifications are sent repeatedly at a fixed interval.
         self.repeat_notify_setting = repeat_notify_setting
 
     def validate(self):
@@ -73,9 +73,9 @@ class IncidentResponsePlanForSNSModifyRepeatNotifySetting(DaraModel):
         end_incident_state: str = None,
         repeat_interval: int = None,
     ):
-        # The incident state that stops repeat notifications.
+        # The incident status at which repeat notifications stop. Repeat notifications are no longer sent after the incident reaches this status.
         self.end_incident_state = end_incident_state
-        # The repeat interval for notifications, in seconds.
+        # The repeat notification interval. Unit: seconds.
         self.repeat_interval = repeat_interval
 
     def validate(self):
@@ -111,11 +111,11 @@ class IncidentResponsePlanForSNSModifyPushingSetting(DaraModel):
         restore_action_ids: List[str] = None,
         template_uuid: str = None,
     ):
-        # The IDs of the alert actions.
+        # The list of action IDs to execute when an event is triggered. Actions must be created in advance by calling CreateAlertAction.
         self.alert_action_ids = alert_action_ids
-        # The IDs of the restore actions.
+        # The list of action IDs to execute when an event is recovered.
         self.restore_action_ids = restore_action_ids
-        # The UUID of the notification template.
+        # Deprecated. This parameter does not take effect even if a value is passed in.
         self.template_uuid = template_uuid
 
     def validate(self):

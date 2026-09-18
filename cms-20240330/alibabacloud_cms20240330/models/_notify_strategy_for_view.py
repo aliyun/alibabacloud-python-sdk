@@ -31,7 +31,7 @@ class NotifyStrategyForView(DaraModel):
         workspace: str = None,
         workspace_filter_setting: main_models.WorkspaceFilterSetting = None,
     ):
-        # The automatic recovery time.
+        # The automatic recovery time in seconds.
         self.auto_recover_seconds = auto_recover_seconds
         # The creation time.
         self.create_time = create_time
@@ -39,31 +39,31 @@ class NotifyStrategyForView(DaraModel):
         self.custom_template_entries = custom_template_entries
         # The description.
         self.description = description
-        # Indicates whether the policy is enabled.
+        # Indicates whether the notification strategy is enabled.
         self.enable = enable
         # The filter settings.
         self.filter_setting = filter_setting
-        # The merge settings.
+        # The grouping settings.
         # 
         # This parameter is required.
         self.grouping_setting = grouping_setting
-        # Indicates whether to send a notification upon recovery.
+        # Indicates whether recovery notifications are sent.
         self.ignore_restored_notification = ignore_restored_notification
         # The list of associated escalation policies.
         self.incident_escalation_policies = incident_escalation_policies
-        # The UUID.
+        # The unique identifier of the notification strategy.
         self.notify_strategy_id = notify_strategy_id
-        # The name.
+        # The name of the notification strategy.
         # 
         # This parameter is required.
         self.notify_strategy_name = notify_strategy_name
         # The push settings.
         self.pushing_setting = pushing_setting
-        # The list of receiver names.
+        # The list of recipient names.
         self.receiver_names = receiver_names
-        # The settings for repeated notifications.
+        # The repeat notification settings.
         self.repeat_notify_setting = repeat_notify_setting
-        # The routing settings for notification channels.
+        # The notification channel routing settings.
         # 
         # This parameter is required.
         self.routes = routes
@@ -256,9 +256,11 @@ class NotifyStrategyForViewRoutes(DaraModel):
     ):
         # The notification channels.
         self.channels = channels
+        # The name of the digital employee.
         self.digital_employee_name = digital_employee_name
-        # The field.
+        # The effective time range.
         self.effect_time_range = effect_time_range
+        # Indicates whether root cause analysis is enabled.
         self.enable_rca = enable_rca
         # The routing settings.
         self.filter_setting = filter_setting
@@ -337,7 +339,7 @@ class NotifyStrategyForViewRoutesEffectTimeRange(DaraModel):
         start_time_in_minute: int = None,
         time_zone: str = None,
     ):
-        # The days of the week when the policy is effective (Monday to Sunday).
+        # The effective days (Monday to Sunday).
         self.day_in_week = day_in_week
         # The end time in minutes.
         self.end_time_in_minute = end_time_in_minute
@@ -440,9 +442,9 @@ class NotifyStrategyForViewRepeatNotifySetting(DaraModel):
         end_incident_state: str = None,
         repeat_interval: int = None,
     ):
-        # The event state at which to stop.
+        # The end incident state.
         self.end_incident_state = end_incident_state
-        # The interval for repeated notifications.
+        # The time interval for repeat notifications.
         self.repeat_interval = repeat_interval
 
     def validate(self):
@@ -525,13 +527,13 @@ class NotifyStrategyForViewGroupingSetting(DaraModel):
         silence_sec: int = None,
         times: int = None,
     ):
-        # The merge keys.
+        # The grouping keys.
         self.grouping_keys = grouping_keys
         # The check period in minutes.
         self.period_min = period_min
-        # The silence period in seconds.
+        # The silence duration in seconds.
         self.silence_sec = silence_sec
-        # The number of triggers.
+        # The number of times the alert is triggered.
         self.times = times
 
     def validate(self):

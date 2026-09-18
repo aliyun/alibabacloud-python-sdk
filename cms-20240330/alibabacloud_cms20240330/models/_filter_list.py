@@ -11,10 +11,15 @@ class FilterList(DaraModel):
         type: str = None,
         value: str = None,
     ):
+        # The dimension key.
+        # 
         # This parameter is required.
         self.key = key
+        # The filter type.
+        # 
         # This parameter is required.
         self.type = type
+        # The filter value. This parameter can be left empty when type is set to ALL or DISABLED.
         self.value = value
 
     def validate(self):

@@ -20,14 +20,23 @@ class Queries(DaraModel):
         time_unit: str = None,
         window: int = None,
     ):
+        # The end offset of the time range for SLS_MULTI_QUERY. This parameter is mutually exclusive with window.
         self.end = end
+        # The query expression. For PROMETHEUS_MULTI_QUERY, this is a PromQL expression. For SLS_MULTI_QUERY, this is an SPL expression.
         self.expr = expr
+        # The label filter conditions for UMODEL_METRICSET_MULTI_QUERY. This parameter is optional and independent for each query.
         self.label_filters = label_filters
+        # The metric name for UMODEL_METRICSET_MULTI_QUERY.
         self.metric = metric
+        # The metric set name for UMODEL_METRICSET_MULTI_QUERY.
         self.metric_set = metric_set
+        # The query name used by PROMETHEUS_MULTI_QUERY and UMODEL_METRICSET_MULTI_QUERY, such as $A or $B, which can be referenced by condition triggers.
         self.name = name
+        # The start offset of the time range for SLS_MULTI_QUERY. This parameter is mutually exclusive with window.
         self.start = start
+        # The time unit for SLS_MULTI_QUERY. Valid values: day, hour, minute, and second.
         self.time_unit = time_unit
+        # The snap window size for SLS_MULTI_QUERY. This parameter is mutually exclusive with start and end.
         self.window = window
 
     def validate(self):

@@ -11,8 +11,11 @@ class LabelFilters(DaraModel):
         operator: str = None,
         value: str = None,
     ):
+        # The label name.
         self.name = name
+        # The label filter operator. Supported operators: = (equal to), != (not equal to), =~ (regular expression match), and !~ (regular expression not match).
         self.operator = operator
+        # The label value.
         self.value = value
 
     def validate(self):

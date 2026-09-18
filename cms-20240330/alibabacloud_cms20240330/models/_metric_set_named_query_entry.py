@@ -15,9 +15,13 @@ class MetricSetNamedQueryEntry(DaraModel):
         metric_set: str = None,
         name: str = None,
     ):
+        # The label filter conditions. This parameter is optional and independent for each query.
         self.label_filters = label_filters
+        # The metric name.
         self.metric = metric
+        # The metric set name.
         self.metric_set = metric_set
+        # The query name, such as $A or $B, referenced by condition triggers.
         self.name = name
 
     def validate(self):

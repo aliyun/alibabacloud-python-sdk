@@ -9,7 +9,7 @@ class ObserveResourceGlobalScopeFilter(DaraModel):
         self,
         eq: bool = None,
     ):
-        # Specifies whether to retrieve only resources that are exclusive to the global scope.
+        # The exact match.
         self.eq = eq
 
     def validate(self):

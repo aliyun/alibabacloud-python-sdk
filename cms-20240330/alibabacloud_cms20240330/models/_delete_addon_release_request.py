@@ -11,9 +11,9 @@ class DeleteAddonReleaseRequest(DaraModel):
         force: bool = None,
         release_name: str = None,
     ):
-        # The name of the add-on. If you specify this parameter, the ReleaseName parameter is ignored and all AddonReleases that belong to the add-on are uninstalled in a batch.
+        # The addon name. If AddonName is specified, the ReleaseName parameter is ignored and all AddonRelease instances that belong to the same addon are uninstalled in a batch.
         self.addon_name = addon_name
-        # Specifies whether to forcibly delete the add-on release. The default value is false.
+        # Specifies whether to force delete the addon release. Default value: false.
         self.force = force
         # The name of the AddonRelease.
         self.release_name = release_name
