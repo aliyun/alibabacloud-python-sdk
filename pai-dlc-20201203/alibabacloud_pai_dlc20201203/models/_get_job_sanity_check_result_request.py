@@ -11,19 +11,18 @@ class GetJobSanityCheckResultRequest(DaraModel):
         sanity_check_phase: str = None,
         token: str = None,
     ):
-        # The nth time for which the job sanity check is performed.
+        # The sequence number of the computing power health check for the job.
         # 
         # This parameter is required.
         self.sanity_check_number = sanity_check_number
-        # The phase in which the job sanity check is performed.
-        # 
-        # *   CheckInit
-        # *   DeviceCheck
-        # *   SingleNodeCommCheck
-        # *   TwoNodeCommCheck
-        # *   AllNodeCommCheck
+        # The phase of the computing power health check. Valid values:
+        # - CheckInit: environment preparation check.
+        # - DeviceCheck: single-card computing power check.
+        # - SingleNodeCommCheck: intra-node communication check.
+        # - TwoNodeCommCheck: two-node communication check.
+        # - AllNodeCommCheck: all-node communication check.
         self.sanity_check_phase = sanity_check_phase
-        # The token information for job sharing. For more information about how to obtain the token information, see [GetToken](https://help.aliyun.com/document_detail/2557812.html).
+        # The token information in the job sharing token. To obtain the token, see [GetToken](https://help.aliyun.com/document_detail/2557812.html).
         self.token = token
 
     def validate(self):

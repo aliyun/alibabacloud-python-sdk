@@ -17,7 +17,7 @@ class GetJobEventsResponseBody(DaraModel):
         self.events = events
         # The job ID.
         self.job_id = job_id
-        # The request ID, which can be used for troubleshooting.
+        # The request ID, which is used for diagnostics and troubleshooting.
         self.request_id = request_id
 
     def validate(self):

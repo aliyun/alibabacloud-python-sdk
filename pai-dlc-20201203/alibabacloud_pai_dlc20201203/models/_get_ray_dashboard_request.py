@@ -10,9 +10,9 @@ class GetRayDashboardRequest(DaraModel):
         is_shared: bool = None,
         token: str = None,
     ):
-        # Set to true to generate a shareable link. If you set this parameter to true, you must also specify the token parameter.
+        # Specifies whether the link is a shared link. If set to true, the token parameter is also required.
         self.is_shared = is_shared
-        # The token returned by GetToken
+        # The token obtained from the GetToken operation.
         self.token = token
 
     def validate(self):

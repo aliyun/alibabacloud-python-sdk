@@ -9,7 +9,7 @@ class GetTensorboardSharedUrlRequest(DaraModel):
         self,
         expire_time_seconds: str = None,
     ):
-        # The validity period of the shareable link. Unit: seconds. Maximum value: 604800.
+        # The validity period of the sharing link. Unit: seconds. Maximum value: 604800.
         self.expire_time_seconds = expire_time_seconds
 
     def validate(self):

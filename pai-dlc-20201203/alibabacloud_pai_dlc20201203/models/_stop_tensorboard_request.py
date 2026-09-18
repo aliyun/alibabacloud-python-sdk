@@ -9,7 +9,7 @@ class StopTensorboardRequest(DaraModel):
         self,
         workspace_id: str = None,
     ):
-        # The workspace ID.
+        # The workspace ID. <props="china">For information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
         self.workspace_id = workspace_id
 
     def validate(self):

@@ -28,7 +28,7 @@ class GetSignalResponseBody(DaraModel):
         self.gmt_modified = gmt_modified
         # The job ID.
         self.job_id = job_id
-        # The status description, which contains a summary for each pod (number of successful deliveries, names of failed or pending pods, etc.).
+        # The status description, which contains a summary for each pod, such as the number of successful deliveries and the names of failed or pending pods.
         self.message = message
         # The list of pod names.
         self.pod_names = pod_names

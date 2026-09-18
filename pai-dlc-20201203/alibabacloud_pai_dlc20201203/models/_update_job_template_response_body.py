@@ -13,13 +13,13 @@ class UpdateJobTemplateResponseBody(DaraModel):
         version: int = None,
         version_created: bool = None,
     ):
-        # The default version number.
+        # The default version number currently in use.
         self.default_version = default_version
-        # The time the template was last modified.
+        # The last modification time of the template.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_modify_time = gmt_modify_time
-        # The request ID, used for diagnostics and troubleshooting.
+        # The ID of the request, used for diagnostics and troubleshooting.
         self.request_id = request_id
         # The version number.
         self.version = version

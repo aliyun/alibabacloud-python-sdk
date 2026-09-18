@@ -18,7 +18,7 @@ class ListEcsSpecsResponseBody(DaraModel):
         self.ecs_specs = ecs_specs
         # The request ID.
         self.request_id = request_id
-        # The number of types that meet the filter conditions.
+        # The total number of entries that match the filter conditions.
         self.total_count = total_count
 
     def validate(self):

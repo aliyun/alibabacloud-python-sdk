@@ -30,7 +30,7 @@ class GetPodLogsResponseBody(DaraModel):
         self.pod_id = pod_id
         # The instance UID.
         self.pod_uid = pod_uid
-        # The request ID for this call, used for diagnostics and troubleshooting.
+        # The request ID of this call, used for diagnostics and troubleshooting.
         self.request_id = request_id
 
     def validate(self):

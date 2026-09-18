@@ -10,9 +10,9 @@ class GetTensorboardSharedUrlResponseBody(DaraModel):
         request_id: str = None,
         tensorboard_shared_url: str = None,
     ):
-        # The request ID which is used for troubleshooting.
+        # The request ID. Used for troubleshooting and support inquiries.
         self.request_id = request_id
-        # The shareable link of the TensorBoard task.
+        # The sharing link for the TensorBoard task.
         self.tensorboard_shared_url = tensorboard_shared_url
 
     def validate(self):

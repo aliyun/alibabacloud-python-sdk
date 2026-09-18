@@ -11,11 +11,11 @@ class GetJobEventsRequest(DaraModel):
         max_events_num: int = None,
         start_time: str = None,
     ):
-        # The end time (UTC) of the time range for querying events. The default value is the current time.
+        # The end time (UTC) of the event query interval. Default value: current time.
         self.end_time = end_time
-        # The maximum number of events that can be returned. Default value: 2000.
+        # The maximum number of events to retrieve. Default value: 2000.
         self.max_events_num = max_events_num
-        # The start time (UTC) of the time range for querying events. The default value is 7 days ago.
+        # The start time (UTC) of the event query interval. Default value: 7 days ago.
         self.start_time = start_time
 
     def validate(self):

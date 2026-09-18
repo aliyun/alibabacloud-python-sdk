@@ -17,19 +17,19 @@ class UpdateJobTemplateRequest(DaraModel):
         template_name: str = None,
         version: int = None,
     ):
-        # The field constraints. The key is a JSONPath expression and the value is the constraint type. Valid values are `locked`, `overridable`, and `required`. This parameter must be specified with `Content` and cannot be updated on its own.
+        # The field constraint rules. The key is a JSONPath expression and the value is the constraint type: locked (cannot be overridden), overridable (can be overridden), or required (mandatory). Must be provided together with Content. You cannot update this field independently.
         self.constraints = constraints
-        # The configuration content of the job template. This parameter supports all fields from the `CreateJob` operation and must be in JSON format. Specifying this parameter creates a new version.
+        # The configuration content of the task template. Supports all parameter fields of the CreateJob operation, passed in JSON format. Providing this field creates a new version.
         self.content = content
-        # The description of the job template.
+        # The description of the task template.
         self.description = description
-        # User-defined key-value pairs.
+        # The user-defined key-value pair metadata.
         self.metadata = metadata
-        # If `true`, the new version becomes the default version.
+        # Specifies whether to set the new version as the default version when a new version is created.
         self.set_as_default = set_as_default
-        # The name of the job template.
+        # The name of the task template.
         self.template_name = template_name
-        # This field is not supported.
+        # Invalid field.
         self.version = version
 
     def validate(self):

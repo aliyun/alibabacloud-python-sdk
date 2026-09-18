@@ -9,7 +9,7 @@ class GetDashboardResponseBody(DaraModel):
         self,
         url: str = None,
     ):
-        # The Dashboard URL.
+        # The URL of the dashboard.
         self.url = url
 
     def validate(self):

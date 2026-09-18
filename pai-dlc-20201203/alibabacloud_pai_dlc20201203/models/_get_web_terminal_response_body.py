@@ -10,47 +10,48 @@ class GetWebTerminalResponseBody(DaraModel):
         request_id: str = None,
         web_terminal_url: str = None,
     ):
-        # The request ID which is used for diagnostics and Q\\&A.
+        # The request ID for this call, used for diagnostics and troubleshooting.
         self.request_id = request_id
-        # The WebSocket URI for accessing the container. You must build a WebSocket client. For more information about the communication format, see the following code:
+        # The WebSocket link for accessing the container. You need to build a WebSocket client. For the detailed communication format, refer to the following code:
+        #   ```
+        #   ws = new WebSocket(
+        #     `wss://xxxxx`,
+        #   );
+        #   ws.onopen = function open() {
+        #     console.warn(\\"connected\\");
+        #     term.write(\\"\\");
+        #   };
         # 
-        #     ws = new WebSocket(
-        #       `wss://xxxxx`,
-        #     );
-        #     ws.onopen = function open() {
-        #       console.warn(\\"connected\\");
-        #       term.write(\\"\\r\\");
-        #     };
+        #   ws.onclose = function close() {
+        #     console.warn(\\"disconnected\\");
+        #     term.write(\\"Connection closed\\");
+        #   };
         # 
-        #     ws.onclose = function close() {
-        #       console.warn(\\"disconnected\\");
-        #       term.write(\\"Connection closed\\");
-        #     };
+        #   // Receive response from the backend
+        #   ws.onmessage = function incoming(event) {
+        #     const msg = JSON.parse(event.data);
+        #     console.warn(msg);
+        #     if (msg.operation === \\"stdout\\") {
+        #       term.write(msg.data);
+        #     } else {
+        #       console.warn(\\"invalid msg operation: \\" + msg);
+        #     }
+        #   };
         # 
-        #     // Return the following information in the backend.
-        #     ws.onmessage = function incoming(event) {
-        #       const msg = JSON.parse(event.data);
-        #       console.warn(msg);
-        #       if (msg.operation === \\"stdout\\") {
-        #         term.write(msg.data);
-        #       } else {
-        #         console.warn(\\"invalid msg operation: \\" + msg);
-        #       }
-        #     };
+        #   // Console input
+        #   term.onData(data => {
+        #     const msg = { operation: \\"stdin\\", data: data };
+        #     ws.send(JSON.stringify(msg));
+        #   });
         # 
-        #     // Enter the following code in the console.
-        #     term.onData(data => {
-        #       const msg = { operation: \\"stdin\\", data: data };
-        #       ws.send(JSON.stringify(msg));
-        #     });
+        #   term.onResize(size => {
+        #     const msg = { operation: \\"resize\\", cols: size.cols, rows: size.rows };
+        #     ws.send(JSON.stringify(msg));
+        #   });
         # 
-        #     term.onResize(size => {
-        #       const msg = { operation: \\"resize\\", cols: size.cols, rows: size.rows };
-        #       ws.send(JSON.stringify(msg));
-        #     });
-        # 
-        #     fitAddon.fit();
-        #     };
+        #   fitAddon.fit();
+        # };
+        # ```
         self.web_terminal_url = web_terminal_url
 
     def validate(self):

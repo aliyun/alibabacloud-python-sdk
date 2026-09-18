@@ -12,13 +12,13 @@ class GetPodEventsRequest(DaraModel):
         pod_uid: str = None,
         start_time: str = None,
     ):
-        # The end time (UTC).
+        # The end time in UTC.
         self.end_time = end_time
-        # The maximum number of events that can be returned.
+        # The maximum number of events to return.
         self.max_events_num = max_events_num
-        # The node UID. Call [GetJob](https://help.aliyun.com/document_detail/459677.html) to get the node UID.
+        # The node UID. You can call [GetJob](https://help.aliyun.com/document_detail/459677.html) to obtain the node UID.
         self.pod_uid = pod_uid
-        # The start time (UTC).
+        # The start time in UTC.
         self.start_time = start_time
 
     def validate(self):

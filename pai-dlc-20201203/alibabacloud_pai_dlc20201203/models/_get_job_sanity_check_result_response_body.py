@@ -18,7 +18,7 @@ class GetJobSanityCheckResultResponseBody(DaraModel):
         self.job_id = job_id
         # The request ID.
         self.request_id = request_id
-        # The job sanity check result.
+        # The result of the computing power health check.
         self.sanity_check_result = sanity_check_result
 
     def validate(self):

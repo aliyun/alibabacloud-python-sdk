@@ -25,54 +25,54 @@ class ListRayHistoryServersRequest(DaraModel):
         username: str = None,
         workspace_id: str = None,
     ):
-        # The display name of the job.
+        # The display name of the node.
         self.display_name = display_name
-        # The end time of the query range. The job creation time is used for filtering.
+        # The end time of the query range. The node creation time is used for filtering.
         self.end_time = end_time
         # The ID prefix.
         self.id_prefix = id_prefix
-        # Filters results by the time after which they were modified.
+        # Filters results by the time after which the resource was last modified.
         self.modified_after = modified_after
         # The sort order. Valid values:
-        # - desc: descending order.
-        # - asc: ascending order.
+        # - desc: descending order
+        # - asc: ascending order
         self.order = order
-        # The page number of the page to return in a paged query. Paging starts from page 1.
+        # The page number for a paging query. Paging starts from page 1.
         self.page_number = page_number
-        # The number of RayHistoryServer entries to return on each page in a paged query. Paging is used to return results in batches.
+        # The number of RayHistoryServers to return per page in a paging query.
         self.page_size = page_size
-        # The billing method. Valid values:
+        # The payment method. Valid values:
         # - PrePaid
-        # - PostPaid.
+        # - PostPaid
         self.payment_type = payment_type
-        # The resource group ID. For information about how to query the ID of a dedicated resource group, see [Manage resource quotas](https://help.aliyun.com/document_detail/2651299.html).
+        # The resource group ID. To query the ID of a dedicated resource group, see [Manage resource quotas](https://help.aliyun.com/document_detail/2651299.html).
         self.resource_id = resource_id
-        # Specifies whether to return only the RayHistoryServer entries created by the current user.
+        # Specifies whether to return only the RayHistoryServers created by the current user.
         self.show_own = show_own
-        # The field by which to sort the returned results. Valid values:
+        # The field by which to sort the results. Valid values:
         # - DisplayName
         # - GmtCreateTime
         # - UserId
         # - ResourceId
         # - Status
-        # - GmtModifyTime.
+        # - GmtModifyTime
         self.sort_by = sort_by
         # The start time.
         self.start_time = start_time
-        # The RayHistoryServer status. Valid values:
-        # - Creating: being created.
-        # - Queuing: waiting in queue.
-        # - Running: running.
-        # - Stopped: stopped.
-        # - Failed: failed.
+        # The status of the RayHistoryServer. Valid values:
+        # - Creating: The RayHistoryServer is being created.
+        # - Queuing: The RayHistoryServer is queuing.
+        # - Running: The RayHistoryServer is running.
+        # - Stopped: The RayHistoryServer is stopped.
+        # - Failed: The RayHistoryServer has failed.
         self.status = status
-        # The storage path of Ray logs.
+        # The storage path for Ray logs.
         self.storage_path = storage_path
         # Filters results by user ID.
         self.user_id_for_filter = user_id_for_filter
         # Filters results by username.
         self.username = username
-        # The workspace ID. <props="china">For information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html)..
+        # The workspace ID. <props="china">To obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
         self.workspace_id = workspace_id
 
     def validate(self):

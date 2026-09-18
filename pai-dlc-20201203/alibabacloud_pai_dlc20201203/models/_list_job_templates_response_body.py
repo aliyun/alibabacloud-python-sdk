@@ -16,15 +16,15 @@ class ListJobTemplatesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of job templates.
+        # The list of templates.
         self.job_templates = job_templates
         # The current page number.
         self.page_number = page_number
-        # The number of results on the current page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The unique ID of the request. Use this ID to troubleshoot issues.
+        # The request ID.
         self.request_id = request_id
-        # The total number of job templates that match the filter conditions.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -86,6 +86,7 @@ class ListJobTemplatesResponseBodyJobTemplates(DaraModel):
         description: str = None,
         gmt_create_time: str = None,
         gmt_modify_time: str = None,
+        last_used_time: str = None,
         metadata: Dict[str, Any] = None,
         modified_by: str = None,
         template_id: str = None,
@@ -96,29 +97,33 @@ class ListJobTemplatesResponseBodyJobTemplates(DaraModel):
     ):
         # The default version number.
         self.default_version = default_version
-        # The description of the job template.
+        # The template description.
         self.description = description
-        # The creation time of the template, in UTC and ISO 8601 format.
+        # The time when the template was created.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_create_time = gmt_create_time
-        # The modification time of the template, in UTC and ISO 8601 format.
+        # The time when the template was last modified.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_modify_time = gmt_modify_time
-        # Custom metadata, represented as a collection of key-value pairs.
+        # The most recent time when a task was successfully created by using this template.
+        # 
+        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
+        self.last_used_time = last_used_time
+        # The custom metadata.
         self.metadata = metadata
-        # The ID of the modifier.
+        # The ID of the user who last modified the template.
         self.modified_by = modified_by
-        # The ID of the job template.
+        # The template ID.
         self.template_id = template_id
-        # The name of the job template.
+        # The template name.
         self.template_name = template_name
-        # The ID of the tenant.
+        # The tenant ID.
         self.tenant_id = tenant_id
-        # The ID of the creator.
+        # The ID of the user who created the template.
         self.user_id = user_id
-        # The ID of the workspace.
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -140,6 +145,9 @@ class ListJobTemplatesResponseBodyJobTemplates(DaraModel):
 
         if self.gmt_modify_time is not None:
             result['GmtModifyTime'] = self.gmt_modify_time
+
+        if self.last_used_time is not None:
+            result['LastUsedTime'] = self.last_used_time
 
         if self.metadata is not None:
             result['Metadata'] = self.metadata
@@ -177,6 +185,9 @@ class ListJobTemplatesResponseBodyJobTemplates(DaraModel):
 
         if m.get('GmtModifyTime') is not None:
             self.gmt_modify_time = m.get('GmtModifyTime')
+
+        if m.get('LastUsedTime') is not None:
+            self.last_used_time = m.get('LastUsedTime')
 
         if m.get('Metadata') is not None:
             self.metadata = m.get('Metadata')

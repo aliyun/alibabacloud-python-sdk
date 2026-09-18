@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class ListJobTemplatesRequest(DaraModel):
     def __init__(
         self,
+        description: str = None,
         order: str = None,
         page_number: int = None,
         page_size: int = None,
@@ -16,21 +17,23 @@ class ListJobTemplatesRequest(DaraModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
-        # The sort order. Valid values: `asc` for ascending and `desc` for descending. Default value: `desc`.
+        # Filters the list by a fuzzy match of the template description.
+        self.description = description
+        # The sort order.
         self.order = order
-        # The page number to retrieve.
+        # The page number.
         self.page_number = page_number
-        # The number of results to return per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The field to sort the results by. Default value: `GmtCreateTime`.
+        # The field by which to sort the results.
         self.sort_by = sort_by
-        # The job template ID. Use this parameter to filter for an exact match.
+        # Filters the list by an exact match of the template ID.
         self.template_id = template_id
-        # The job template name. Use this parameter to filter for a partial match.
+        # Filters the list by a fuzzy match of the template name.
         self.template_name = template_name
-        # The ID of the creator. Use this parameter to filter results by a specific creator.
+        # The user ID.
         self.user_id = user_id
-        # The ID of the workspace.
+        # The workspace ID.
         # 
         # This parameter is required.
         self.workspace_id = workspace_id
@@ -43,6 +46,9 @@ class ListJobTemplatesRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.description is not None:
+            result['Description'] = self.description
+
         if self.order is not None:
             result['Order'] = self.order
 
@@ -71,6 +77,9 @@ class ListJobTemplatesRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+
         if m.get('Order') is not None:
             self.order = m.get('Order')
 

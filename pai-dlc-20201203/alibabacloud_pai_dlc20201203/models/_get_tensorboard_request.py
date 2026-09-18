@@ -11,11 +11,11 @@ class GetTensorboardRequest(DaraModel):
         token: str = None,
         workspace_id: str = None,
     ):
-        # The job ID. Refer to [ListJobs](https://help.aliyun.com/document_detail/459676.html) to obtain the job ID.
+        # The job ID. See [ListJobs](https://help.aliyun.com/document_detail/459676.html) to obtain the job ID.
         self.jod_id = jod_id
         # The sharing token. Specify this parameter to use the sharing token to obtain the permission to view a specific Tensorboard job. You can extract the token from the URL returned by calling [GetTensorboardSharedUrl](https://help.aliyun.com/document_detail/2557813.html).
         self.token = token
-        # The workspace ID. <props="china">Refer to [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID..
+        # The workspace ID. <props="china">See [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

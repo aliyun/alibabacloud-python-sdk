@@ -27,41 +27,42 @@ class GetRayHistoryServerResponseBody(DaraModel):
         username: str = None,
         workspace_id: str = None,
     ):
-        # The visibility of the job.
+        # The visibility.
         self.accessibility = accessibility
         # The display name of the job.
         self.display_name = display_name
-        # The specifications of the public resource group. For a list of supported instance types, see [PAI-DLC billing](https://help.aliyun.com/document_detail/171758.html).>Notice: Pricing varies based on the specifications.
+        # The hardware specifications of the public resource group. For the detailed list of specifications, see [PAI-DLC billing](https://help.aliyun.com/document_detail/171758.html).
+        # >Notice: Prices vary depending on the specifications.
         self.ecs_spec = ecs_spec
-        # The time when the job was created. The time is in UTC.
+        # The creation time (UTC).
         self.gmt_create_time = gmt_create_time
-        # The time when the job is complete. The time is in UTC.
+        # The end time (UTC).
         self.gmt_finish_time = gmt_finish_time
-        # The time when the job was last modified. The time is in UTC.
+        # The modification time (UTC).
         self.gmt_modify_time = gmt_modify_time
-        # The maximum running time. Unit: minutes.
+        # The maximum runtime duration.
         self.max_runtime_minutes = max_runtime_minutes
-        # The ID of the Ray history server.
+        # The ID of the RayHistoryServer.
         self.ray_history_server_id = ray_history_server_id
-        # The URL of the Ray dashboard.
+        # Ray Dashboard URL。
         self.ray_history_server_url = ray_history_server_url
-        # The code of the job status.
+        # The status detail code.
         self.reason_code = reason_code
-        # The message that describes the job status.
+        # The status details.
         self.reason_message = reason_message
-        # The ID of the resource group to which the job belongs.
+        # The ID of the resource group in which the job runs.
         self.resource_id = resource_id
-        # The name of the resource on which the job runs.
+        # The name of the resource in which the job runs.
         self.resource_name = resource_name
-        # The status of the job.
+        # The status.
         self.status = status
         # The storage path of Ray logs.
         self.storage_path = storage_path
         # The tenant ID.
         self.tenant_id = tenant_id
-        # The ID of the user who creates the job.
+        # The user ID used to filter results.
         self.user_id = user_id
-        # The username of the user who creates the job.
+        # The username used to filter results.
         self.username = username
         # The ID of the workspace to which the job belongs.
         self.workspace_id = workspace_id

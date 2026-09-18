@@ -18,7 +18,7 @@ class ListSignalsRequest(DaraModel):
         self.order = order
         # The current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
         # The field used for sorting.
         self.sort_by = sort_by

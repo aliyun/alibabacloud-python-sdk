@@ -14,6 +14,7 @@ class GetJobTemplateResponseBody(DaraModel):
         description: str = None,
         gmt_create_time: str = None,
         gmt_modify_time: str = None,
+        last_used_time: str = None,
         metadata: Dict[str, Any] = None,
         modified_by: str = None,
         request_id: str = None,
@@ -25,37 +26,41 @@ class GetJobTemplateResponseBody(DaraModel):
         versions: List[main_models.GetJobTemplateResponseBodyVersions] = None,
         workspace_id: str = None,
     ):
-        # The default version of the job template.
+        # The default version number currently in use.
         self.default_version = default_version
-        # A description of the job template.
+        # The description of the task template.
         self.description = description
-        # The time the job template was created.
+        # The time when the template was created.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_create_time = gmt_create_time
-        # The time the job template was last modified.
+        # The time when the template was last modified.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_modify_time = gmt_modify_time
-        # A collection of user-defined key-value pairs.
+        # The most recent time when a task was successfully created by using this template. This parameter is not returned if the template has not been used.
+        # 
+        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
+        self.last_used_time = last_used_time
+        # The custom key-value pair metadata defined by the user.
         self.metadata = metadata
-        # The ID of the user who last modified the job template.
+        # The ID of the user who last modified the template.
         self.modified_by = modified_by
-        # The ID of the request.
+        # The ID of the request. This ID is used for diagnostics and troubleshooting.
         self.request_id = request_id
-        # The ID of the job template.
+        # The unique identifier of the task template.
         self.template_id = template_id
-        # The name of the job template.
+        # The name of the task template.
         self.template_name = template_name
-        # The ID of the tenant that owns the job template.
+        # The ID of the tenant to which the template belongs.
         self.tenant_id = tenant_id
-        # The total number of versions returned. This value is 1 if a specific version is queried, or the total count if all versions are queried.
+        # The total number of versions. If a single version is queried, the value 1 is returned. If all versions are queried, the actual total number is returned.
         self.total_count = total_count
-        # The ID of the user who created the job template.
+        # The ID of the user who created the template.
         self.user_id = user_id
-        # An array of template versions. This array contains only one version if a specific version is requested, or all versions if `all` is specified.
+        # The list of template version details. If a single version is queried, one element is returned. If all versions are queried, all elements are returned.
         self.versions = versions
-        # The ID of the workspace that contains the job template.
+        # The ID of the workspace to which the template belongs.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -80,6 +85,9 @@ class GetJobTemplateResponseBody(DaraModel):
 
         if self.gmt_modify_time is not None:
             result['GmtModifyTime'] = self.gmt_modify_time
+
+        if self.last_used_time is not None:
+            result['LastUsedTime'] = self.last_used_time
 
         if self.metadata is not None:
             result['Metadata'] = self.metadata
@@ -129,6 +137,9 @@ class GetJobTemplateResponseBody(DaraModel):
         if m.get('GmtModifyTime') is not None:
             self.gmt_modify_time = m.get('GmtModifyTime')
 
+        if m.get('LastUsedTime') is not None:
+            self.last_used_time = m.get('LastUsedTime')
+
         if m.get('Metadata') is not None:
             self.metadata = m.get('Metadata')
 
@@ -173,13 +184,13 @@ class GetJobTemplateResponseBodyVersions(DaraModel):
         gmt_create_time: str = None,
         version: int = None,
     ):
-        # The field constraint rules. The key is a JSONPath expression and the value is a constraint type.
+        # The field constraint rules. The key is a JSONPath expression, and the value is the constraint type.
         self.constraints = constraints
-        # The configuration of the version, in JSON format.
+        # The template configuration content of this version in JSON format.
         self.content = content
         # The ID of the user who created the version.
         self.created_by = created_by
-        # The time the version was created.
+        # The time when the version was created.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_create_time = gmt_create_time

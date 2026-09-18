@@ -12,7 +12,7 @@ class DeleteJobResponseBody(DaraModel):
     ):
         # The job ID.
         self.job_id = job_id
-        # The request ID. You can troubleshoot issues based on the request ID.
+        # The request ID, which is used for diagnostics and troubleshooting.
         self.request_id = request_id
 
     def validate(self):

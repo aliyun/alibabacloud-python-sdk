@@ -17,17 +17,19 @@ class GetMetricsResponseBody(DaraModel):
     ):
         # The status code. A value of 200 indicates success.
         self.code = code
-        # The monitoring metric data.
+        # The monitoring metrics data.
         self.data_points = data_points
-        # Detailed result message.
+        # The detailed information about the detection result.
         self.message = message
         # Id of the request
         self.next_token = next_token
-        # The statistical period for monitoring data. Valid values: 15, 60, 900, and 3600. Unit: seconds. If you do not specify a statistical period, the system uses the reporting period registered for the metric. Each cloud service metric (MetricName) may have a different statistical period. For more information, see cloud service monitoring metrics.
+        # The statistical period of the monitoring data. Valid values: 15, 60, 900, and 3600. Unit: seconds. If you do not set the statistical period, monitoring data is queried based on the reporting period that was specified when the monitoring metric was registered. The statistical period varies for each monitoring metric (MetricName) of each cloud service. For more information, see cloud service monitoring items.
         self.period = period
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation succeeded. Valid values: true (success) and false (failure).
+        # Indicates whether the operation was successful. Valid values:
+        # - true: The operation was successful.
+        # - false: The operation failed.
         self.success = success
 
     def validate(self):

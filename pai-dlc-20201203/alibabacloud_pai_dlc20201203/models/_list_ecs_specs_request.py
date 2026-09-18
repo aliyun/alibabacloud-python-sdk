@@ -15,33 +15,29 @@ class ListEcsSpecsRequest(DaraModel):
         resource_type: str = None,
         sort_by: str = None,
     ):
-        # Filter by accelerator type. Valid values:
-        # 
-        # *   CPU
-        # *   GPU
+        # Filters by accelerator type. Valid values:
+        # - CPU
+        # - GPU
         self.accelerator_type = accelerator_type
-        # The instance types to query. Separate the types with commas (,).
+        # The list of instance types to query. Separate multiple instance types with commas (,).
         self.instance_types = instance_types
-        # The sorting order. Valid values:
-        # 
-        # *   desc: descending order.
-        # *   asc: ascending order.
+        # The sort order. Valid values:
+        # - desc: descending order.
+        # - asc: ascending order.
         self.order = order
-        # The number of the page to query. The start value is 1.
+        # The page number. The minimum value is 1.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries to return on each page in a paged query. This parameter is used for paging.
         self.page_size = page_size
-        # The type of the resource. Valid values:
-        # 
-        # *   ECS
-        # *   Lingjun
+        # The resource type. Valid values:
+        # - ECS
+        # - Lingjun
         self.resource_type = resource_type
-        # The field based on which the results are sorted. Valid values:
-        # 
-        # *   CPU
-        # *   GPU
-        # *   Memory
-        # *   GmtCreateTime
+        # Sorts by return field. Valid values:
+        # - CPU
+        # - GPU
+        # - Memory
+        # - GmtCreateTime
         self.sort_by = sort_by
 
     def validate(self):

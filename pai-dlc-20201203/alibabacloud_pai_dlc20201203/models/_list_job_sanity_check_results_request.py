@@ -9,10 +9,9 @@ class ListJobSanityCheckResultsRequest(DaraModel):
         self,
         order: str = None,
     ):
-        # The sorting order:
-        # 
-        # *   desc: descending order
-        # *   asc: ascending order
+        # The sort order. Valid values:
+        # - desc: descending order
+        # - asc: ascending order
         self.order = order
 
     def validate(self):

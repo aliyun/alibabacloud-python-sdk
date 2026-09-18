@@ -16,21 +16,21 @@ class CreateJobTemplateRequest(DaraModel):
         template_name: str = None,
         workspace_id: str = None,
     ):
-        # The field constraint rules. The key is a JSONPath expression, and the value is a constraint type: `locked` (cannot be overridden), `overridable` (can be overridden), or `required` (must be specified).
+        # The field constraint rules. The key is a JSONPath expression, and the value is the constraint type: locked (locked and cannot be overridden), overridable (can be overridden), or required (required).
         self.constraints = constraints
-        # The configuration of the job template, which must be a JSON string containing the job configuration parameters.
+        # The configuration content of the task template, which contains job configuration parameters. Pass the value in JSON string format.
         # 
         # This parameter is required.
         self.content = content
-        # The description of the job template.
+        # The description of the task template.
         self.description = description
-        # User-defined key-value metadata.
+        # The custom key-value pair metadata.
         self.metadata = metadata
-        # The name of the job template.
+        # The name of the task template.
         # 
         # This parameter is required.
         self.template_name = template_name
-        # The ID of the workspace that contains the job template.
+        # The ID of the workspace to which the template belongs.
         # 
         # This parameter is required.
         self.workspace_id = workspace_id

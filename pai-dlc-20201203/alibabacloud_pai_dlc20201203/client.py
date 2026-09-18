@@ -2584,6 +2584,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListJobTemplatesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
         if not DaraCore.is_null(request.order):
             query['Order'] = request.order
         if not DaraCore.is_null(request.page_number):
@@ -2628,6 +2630,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListJobTemplatesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
         if not DaraCore.is_null(request.order):
             query['Order'] = request.order
         if not DaraCore.is_null(request.page_number):

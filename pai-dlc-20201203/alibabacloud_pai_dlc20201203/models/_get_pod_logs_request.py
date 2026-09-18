@@ -24,7 +24,7 @@ class GetPodLogsRequest(DaraModel):
         self.end_time = end_time
         # The maximum number of log lines to return. Default value: 2000.
         self.max_lines = max_lines
-        # The node UID. For information about how to obtain the node UID, see [GetJob](https://help.aliyun.com/document_detail/459677.html).
+        # The node UID. To obtain the node UID, see [GetJob](https://help.aliyun.com/document_detail/459677.html).
         self.pod_uid = pod_uid
         # The start time of the query. Default value: 7 days ago.
         self.start_time = start_time

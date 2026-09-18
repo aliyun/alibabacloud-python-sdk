@@ -10,9 +10,9 @@ class StopTensorboardResponseBody(DaraModel):
         request_id: str = None,
         tensorboard_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the TensorBoard instance.
+        # Tensorboard ID。
         self.tensorboard_id = tensorboard_id
 
     def validate(self):

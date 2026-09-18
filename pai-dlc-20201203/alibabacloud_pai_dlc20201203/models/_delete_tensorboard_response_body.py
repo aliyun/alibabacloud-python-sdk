@@ -12,7 +12,7 @@ class DeleteTensorboardResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The TensorBoard ID.
+        # Tensorboard ID。
         self.tensorboard_id = tensorboard_id
 
     def validate(self):
