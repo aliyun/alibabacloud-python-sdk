@@ -11,6 +11,7 @@ from ._create_api_key_input import CreateApiKeyInput
 from ._create_custom_domain_input import CreateCustomDomainInput
 from ._create_team_input import CreateTeamInput
 from ._create_template_build_config import CreateTemplateBuildConfig
+from ._create_template_cache_input import CreateTemplateCacheInput
 from ._create_template_copy_action import CreateTemplateCopyAction
 from ._create_template_envd_inject_action import CreateTemplateEnvdInjectAction
 from ._create_template_input import CreateTemplateInput
@@ -47,6 +48,7 @@ from ._log_configuration import LogConfiguration
 from ._network_configuration import NetworkConfiguration
 from ._ossvolume_config import OSSVolumeConfig
 from ._public_template import PublicTemplate
+from ._public_template_cache import PublicTemplateCache
 from ._public_template_log_config import PublicTemplateLogConfig
 from ._public_template_registry_config import PublicTemplateRegistryConfig
 from ._public_template_registry_network_config import PublicTemplateRegistryNetworkConfig
@@ -75,6 +77,30 @@ from ._update_team_input import UpdateTeamInput
 from ._update_template_input import UpdateTemplateInput
 from ._update_volume_input import UpdateVolumeInput
 from ._volume_mount_config import VolumeMountConfig
+from ._create_template_request import CreateTemplateRequest
+from ._create_template_response_body import CreateTemplateResponseBody
+from ._create_template_response import CreateTemplateResponse
+from ._create_template_cache_request import CreateTemplateCacheRequest
+from ._create_template_cache_response_body import CreateTemplateCacheResponseBody
+from ._create_template_cache_response import CreateTemplateCacheResponse
+from ._delete_template_request import DeleteTemplateRequest
+from ._delete_template_response_body import DeleteTemplateResponseBody
+from ._delete_template_response import DeleteTemplateResponse
+from ._delete_template_cache_request import DeleteTemplateCacheRequest
+from ._delete_template_cache_response_body import DeleteTemplateCacheResponseBody
+from ._delete_template_cache_response import DeleteTemplateCacheResponse
+from ._describe_template_cache_request import DescribeTemplateCacheRequest
+from ._describe_template_cache_response_body import DescribeTemplateCacheResponseBody
+from ._describe_template_cache_response import DescribeTemplateCacheResponse
+from ._get_template_request import GetTemplateRequest
+from ._get_template_response_body import GetTemplateResponseBody
+from ._get_template_response import GetTemplateResponse
+from ._list_template_cache_request import ListTemplateCacheRequest
+from ._list_template_cache_response_body import ListTemplateCacheResponseBody
+from ._list_template_cache_response import ListTemplateCacheResponse
+from ._list_templates_request import ListTemplatesRequest
+from ._list_templates_response_body import ListTemplatesResponseBody
+from ._list_templates_response import ListTemplatesResponse
 from ._update_template_request import UpdateTemplateRequest
 from ._update_template_response_body import UpdateTemplateResponseBody
 from ._update_template_response import UpdateTemplateResponse
@@ -110,6 +136,7 @@ __all__ = [
     CreateCustomDomainInput,
     CreateTeamInput,
     CreateTemplateBuildConfig,
+    CreateTemplateCacheInput,
     CreateTemplateCopyAction,
     CreateTemplateEnvdInjectAction,
     CreateTemplateInput,
@@ -146,6 +173,7 @@ __all__ = [
     NetworkConfiguration,
     OSSVolumeConfig,
     PublicTemplate,
+    PublicTemplateCache,
     PublicTemplateLogConfig,
     PublicTemplateRegistryConfig,
     PublicTemplateRegistryNetworkConfig,
@@ -174,6 +202,30 @@ __all__ = [
     UpdateTemplateInput,
     UpdateVolumeInput,
     VolumeMountConfig,
+    CreateTemplateRequest,
+    CreateTemplateResponseBody,
+    CreateTemplateResponse,
+    CreateTemplateCacheRequest,
+    CreateTemplateCacheResponseBody,
+    CreateTemplateCacheResponse,
+    DeleteTemplateRequest,
+    DeleteTemplateResponseBody,
+    DeleteTemplateResponse,
+    DeleteTemplateCacheRequest,
+    DeleteTemplateCacheResponseBody,
+    DeleteTemplateCacheResponse,
+    DescribeTemplateCacheRequest,
+    DescribeTemplateCacheResponseBody,
+    DescribeTemplateCacheResponse,
+    GetTemplateRequest,
+    GetTemplateResponseBody,
+    GetTemplateResponse,
+    ListTemplateCacheRequest,
+    ListTemplateCacheResponseBody,
+    ListTemplateCacheResponse,
+    ListTemplatesRequest,
+    ListTemplatesResponseBody,
+    ListTemplatesResponse,
     UpdateTemplateRequest,
     UpdateTemplateResponseBody,
     UpdateTemplateResponse,
