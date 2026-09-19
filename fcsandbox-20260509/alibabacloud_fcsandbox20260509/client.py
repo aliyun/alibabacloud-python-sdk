@@ -251,6 +251,76 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_template_with_options_async(request, headers, runtime)
 
+    def create_template_cache_with_options(
+        self,
+        request: main_models.CreateTemplateCacheRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTemplateCacheResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTemplateCache',
+            version = '2026-05-09',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-05-09/template-caches',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTemplateCacheResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_template_cache_with_options_async(
+        self,
+        request: main_models.CreateTemplateCacheRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTemplateCacheResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTemplateCache',
+            version = '2026-05-09',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-05-09/template-caches',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTemplateCacheResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_template_cache(
+        self,
+        request: main_models.CreateTemplateCacheRequest,
+    ) -> main_models.CreateTemplateCacheResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_template_cache_with_options(request, headers, runtime)
+
+    async def create_template_cache_async(
+        self,
+        request: main_models.CreateTemplateCacheRequest,
+    ) -> main_models.CreateTemplateCacheResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_template_cache_with_options_async(request, headers, runtime)
+
     def create_volume_with_options(
         self,
         request: main_models.CreateVolumeRequest,
@@ -621,6 +691,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_template_with_options_async(template_id, request, headers, runtime)
 
+    def delete_template_cache_with_options(
+        self,
+        template_id: str,
+        request: main_models.DeleteTemplateCacheRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteTemplateCacheResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.team_id):
+            query['teamID'] = request.team_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteTemplateCache',
+            version = '2026-05-09',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-05-09/template-caches/{DaraURL.percent_encode(template_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteTemplateCacheResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_template_cache_with_options_async(
+        self,
+        template_id: str,
+        request: main_models.DeleteTemplateCacheRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteTemplateCacheResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.team_id):
+            query['teamID'] = request.team_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteTemplateCache',
+            version = '2026-05-09',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-05-09/template-caches/{DaraURL.percent_encode(template_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteTemplateCacheResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_template_cache(
+        self,
+        template_id: str,
+        request: main_models.DeleteTemplateCacheRequest,
+    ) -> main_models.DeleteTemplateCacheResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_template_cache_with_options(template_id, request, headers, runtime)
+
+    async def delete_template_cache_async(
+        self,
+        template_id: str,
+        request: main_models.DeleteTemplateCacheRequest,
+    ) -> main_models.DeleteTemplateCacheResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_template_cache_with_options_async(template_id, request, headers, runtime)
+
     def delete_volume_with_options(
         self,
         volume_id: str,
@@ -848,6 +998,86 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.describe_quota_with_options_async(request, headers, runtime)
+
+    def describe_template_cache_with_options(
+        self,
+        template_id: str,
+        request: main_models.DescribeTemplateCacheRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeTemplateCacheResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.team_id):
+            query['teamID'] = request.team_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeTemplateCache',
+            version = '2026-05-09',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-05-09/template-caches/{DaraURL.percent_encode(template_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeTemplateCacheResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_template_cache_with_options_async(
+        self,
+        template_id: str,
+        request: main_models.DescribeTemplateCacheRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeTemplateCacheResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.team_id):
+            query['teamID'] = request.team_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeTemplateCache',
+            version = '2026-05-09',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-05-09/template-caches/{DaraURL.percent_encode(template_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeTemplateCacheResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_template_cache(
+        self,
+        template_id: str,
+        request: main_models.DescribeTemplateCacheRequest,
+    ) -> main_models.DescribeTemplateCacheResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.describe_template_cache_with_options(template_id, request, headers, runtime)
+
+    async def describe_template_cache_async(
+        self,
+        template_id: str,
+        request: main_models.DescribeTemplateCacheRequest,
+    ) -> main_models.DescribeTemplateCacheResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.describe_template_cache_with_options_async(template_id, request, headers, runtime)
 
     def get_team_with_options(
         self,
@@ -1352,6 +1582,98 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_teams_with_options_async(request, headers, runtime)
+
+    def list_template_cache_with_options(
+        self,
+        request: main_models.ListTemplateCacheRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTemplateCacheResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        if not DaraCore.is_null(request.team_id):
+            query['teamID'] = request.team_id
+        if not DaraCore.is_null(request.template_id):
+            query['templateID'] = request.template_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTemplateCache',
+            version = '2026-05-09',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-05-09/template-caches',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTemplateCacheResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_template_cache_with_options_async(
+        self,
+        request: main_models.ListTemplateCacheRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTemplateCacheResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        if not DaraCore.is_null(request.team_id):
+            query['teamID'] = request.team_id
+        if not DaraCore.is_null(request.template_id):
+            query['templateID'] = request.template_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTemplateCache',
+            version = '2026-05-09',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-05-09/template-caches',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTemplateCacheResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_template_cache(
+        self,
+        request: main_models.ListTemplateCacheRequest,
+    ) -> main_models.ListTemplateCacheResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_template_cache_with_options(request, headers, runtime)
+
+    async def list_template_cache_async(
+        self,
+        request: main_models.ListTemplateCacheRequest,
+    ) -> main_models.ListTemplateCacheResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_template_cache_with_options_async(request, headers, runtime)
 
     def list_templates_with_options(
         self,

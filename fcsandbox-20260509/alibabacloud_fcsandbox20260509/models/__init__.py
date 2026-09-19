@@ -11,6 +11,7 @@ from ._create_api_key_input import CreateApiKeyInput
 from ._create_custom_domain_input import CreateCustomDomainInput
 from ._create_team_input import CreateTeamInput
 from ._create_template_build_config import CreateTemplateBuildConfig
+from ._create_template_cache_input import CreateTemplateCacheInput
 from ._create_template_copy_action import CreateTemplateCopyAction
 from ._create_template_envd_inject_action import CreateTemplateEnvdInjectAction
 from ._create_template_input import CreateTemplateInput
@@ -44,6 +45,7 @@ from ._network_configuration import NetworkConfiguration
 from ._ossvolume_config import OSSVolumeConfig
 from ._permission_policy import PermissionPolicy
 from ._public_template import PublicTemplate
+from ._public_template_cache import PublicTemplateCache
 from ._public_template_log_config import PublicTemplateLogConfig
 from ._public_template_registry_config import PublicTemplateRegistryConfig
 from ._public_template_registry_network_config import PublicTemplateRegistryNetworkConfig
@@ -80,6 +82,9 @@ from ._create_team_response import CreateTeamResponse
 from ._create_template_request import CreateTemplateRequest
 from ._create_template_response_body import CreateTemplateResponseBody
 from ._create_template_response import CreateTemplateResponse
+from ._create_template_cache_request import CreateTemplateCacheRequest
+from ._create_template_cache_response_body import CreateTemplateCacheResponseBody
+from ._create_template_cache_response import CreateTemplateCacheResponse
 from ._create_volume_request import CreateVolumeRequest
 from ._create_volume_response_body import CreateVolumeResponseBody
 from ._create_volume_response import CreateVolumeResponse
@@ -95,6 +100,9 @@ from ._delete_team_response import DeleteTeamResponse
 from ._delete_template_request import DeleteTemplateRequest
 from ._delete_template_response_body import DeleteTemplateResponseBody
 from ._delete_template_response import DeleteTemplateResponse
+from ._delete_template_cache_request import DeleteTemplateCacheRequest
+from ._delete_template_cache_response_body import DeleteTemplateCacheResponseBody
+from ._delete_template_cache_response import DeleteTemplateCacheResponse
 from ._delete_volume_request import DeleteVolumeRequest
 from ._delete_volume_response_body import DeleteVolumeResponseBody
 from ._delete_volume_response import DeleteVolumeResponse
@@ -104,6 +112,9 @@ from ._describe_api_key_response import DescribeApiKeyResponse
 from ._describe_quota_request import DescribeQuotaRequest
 from ._describe_quota_response_body import DescribeQuotaResponseBody
 from ._describe_quota_response import DescribeQuotaResponse
+from ._describe_template_cache_request import DescribeTemplateCacheRequest
+from ._describe_template_cache_response_body import DescribeTemplateCacheResponseBody
+from ._describe_template_cache_response import DescribeTemplateCacheResponse
 from ._get_team_request import GetTeamRequest
 from ._get_team_response_body import GetTeamResponseBody
 from ._get_team_response import GetTeamResponse
@@ -122,6 +133,9 @@ from ._list_quota_response import ListQuotaResponse
 from ._list_teams_request import ListTeamsRequest
 from ._list_teams_response_body import ListTeamsResponseBody
 from ._list_teams_response import ListTeamsResponse
+from ._list_template_cache_request import ListTemplateCacheRequest
+from ._list_template_cache_response_body import ListTemplateCacheResponseBody
+from ._list_template_cache_response import ListTemplateCacheResponse
 from ._list_templates_request import ListTemplatesRequest
 from ._list_templates_response_body import ListTemplatesResponseBody
 from ._list_templates_response import ListTemplatesResponse
@@ -164,6 +178,7 @@ __all__ = [
     CreateCustomDomainInput,
     CreateTeamInput,
     CreateTemplateBuildConfig,
+    CreateTemplateCacheInput,
     CreateTemplateCopyAction,
     CreateTemplateEnvdInjectAction,
     CreateTemplateInput,
@@ -197,6 +212,7 @@ __all__ = [
     OSSVolumeConfig,
     PermissionPolicy,
     PublicTemplate,
+    PublicTemplateCache,
     PublicTemplateLogConfig,
     PublicTemplateRegistryConfig,
     PublicTemplateRegistryNetworkConfig,
@@ -233,6 +249,9 @@ __all__ = [
     CreateTemplateRequest,
     CreateTemplateResponseBody,
     CreateTemplateResponse,
+    CreateTemplateCacheRequest,
+    CreateTemplateCacheResponseBody,
+    CreateTemplateCacheResponse,
     CreateVolumeRequest,
     CreateVolumeResponseBody,
     CreateVolumeResponse,
@@ -248,6 +267,9 @@ __all__ = [
     DeleteTemplateRequest,
     DeleteTemplateResponseBody,
     DeleteTemplateResponse,
+    DeleteTemplateCacheRequest,
+    DeleteTemplateCacheResponseBody,
+    DeleteTemplateCacheResponse,
     DeleteVolumeRequest,
     DeleteVolumeResponseBody,
     DeleteVolumeResponse,
@@ -257,6 +279,9 @@ __all__ = [
     DescribeQuotaRequest,
     DescribeQuotaResponseBody,
     DescribeQuotaResponse,
+    DescribeTemplateCacheRequest,
+    DescribeTemplateCacheResponseBody,
+    DescribeTemplateCacheResponse,
     GetTeamRequest,
     GetTeamResponseBody,
     GetTeamResponse,
@@ -275,6 +300,9 @@ __all__ = [
     ListTeamsRequest,
     ListTeamsResponseBody,
     ListTeamsResponse,
+    ListTemplateCacheRequest,
+    ListTemplateCacheResponseBody,
+    ListTemplateCacheResponse,
     ListTemplatesRequest,
     ListTemplatesResponseBody,
     ListTemplatesResponse,
