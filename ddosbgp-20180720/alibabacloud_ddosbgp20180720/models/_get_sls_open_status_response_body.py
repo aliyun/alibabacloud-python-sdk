@@ -10,12 +10,12 @@ class GetSlsOpenStatusResponseBody(DaraModel):
         request_id: str = None,
         sls_open_status: bool = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether Simple Log Service was activated. Valid values:
+        # Indicates whether Simple Log Service is activated for the current Alibaba Cloud account. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Simple Log Service is activated.
+        # - **false**: Simple Log Service is not activated.
         self.sls_open_status = sls_open_status
 
     def validate(self):

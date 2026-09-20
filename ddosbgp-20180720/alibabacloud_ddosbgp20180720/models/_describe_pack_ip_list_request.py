@@ -18,36 +18,39 @@ class DescribePackIpListRequest(DaraModel):
     ):
         # The ID of the Anti-DDoS Origin instance to query.
         # 
-        # >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances.
+        # > Call [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) to query the IDs of all Anti-DDoS Origin instances.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The protected IP address to query.
         self.ip = ip
-        # The ID of the member.
+        # The UID of the member account.
         self.member_uid = member_uid
         # The number of the page to return.
         # 
         # This parameter is required.
         self.page_no = page_no
-        # The number of entries to return on each page.
+        # The number of protected IP addresses to return on each page. The maximum value is 50.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The type of the cloud asset to which the protected IP address to query belongs. Valid values:
+        # The type of the cloud asset to which the protected IP address belongs. Valid values:
         # 
-        # *   **ECS**: an Elastic Compute Service (ECS) instance.
-        # *   **SLB**: a Classic Load Balancer (CLB) instance, originally called a Server Load Balancer (SLB) instance.
-        # *   **EIP**: an elastic IP address (EIP). An Internet-facing Application Load Balancer (ALB) instance uses an EIP. If the IP address belongs to the Internet-facing ALB instance, set this parameter to EIP.
-        # *   **WAF**: a Web Application Firewall (WAF) instance.
+        # - **ECS**: an Elastic Compute Service (ECS) instance.
+        # 
+        # - **SLB**: a Classic Load Balancer (CLB) instance.
+        # 
+        # - **EIP**: an Elastic IP Address (EIP) instance. Because Application Load Balancer (ALB) instances use EIPs, query the public IP address of an ALB instance using the EIP.
+        # 
+        # - **WAF**: a Web Application Firewall (WAF) instance.
         self.product_name = product_name
-        # The ID of the region where the Anti-DDoS Origin instance resides.
+        # The region ID of the Anti-DDoS Origin instance.
         # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
+        # > Call [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) to query the IDs of all regions that Anti-DDoS Origin supports.
         self.region_id = region_id
         # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
         # 
-        # If you do not specify this parameter, the instance belongs to the default resource group.
+        # If you do not set this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):

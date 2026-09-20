@@ -20,12 +20,13 @@ class DescribeAssetGroupRequest(DaraModel):
         self.region = region
         # The ID of the region in which the instance resides.
         # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
         self.region_id = region_id
         # The type of the asset. Valid values:
         # 
-        # *   **waf**: WAF instance
-        # *   **ga**: Global Accelerator (GA) instance
+        # - **waf**: WAF instance
+        # 
+        # - **ga**: Global Accelerator (GA) instance
         # 
         # This parameter is required.
         self.type = type

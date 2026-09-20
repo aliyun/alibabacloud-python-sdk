@@ -11,18 +11,22 @@ class DetachFromPolicyShrinkRequest(DaraModel):
         policy_type: str = None,
         port_version: str = None,
     ):
-        # The protected objects.
+        # The list of protected objects.
         # 
         # This parameter is required.
         self.ip_port_protocol_list_shrink = ip_port_protocol_list_shrink
-        # The type of the policy. Valid values:
-        # 
-        # *   **default**: the default mitigation policies.
-        # *   **l3**: IP-specific mitigation policies.
-        # *   **l4**: port-specific mitigation policies.
+        # The policy type. Valid values:
+        # - **default**: default mitigation policy.
+        # - **l3**: IP-specific mitigation policy.
+        # - **l4**: port-specific mitigation policy.
         # 
         # This parameter is required.
         self.policy_type = policy_type
+        # The version of the port-specific mitigation policy. Valid values:
+        # 
+        # - **Not specified**: dissociates the default surf anti-DDoS engine policy.
+        # - **2**: dissociates the new stream anti-DDoS engine policy.
+        # > Only port-specific mitigation policies support this parameter.
         self.port_version = port_version
 
     def validate(self):

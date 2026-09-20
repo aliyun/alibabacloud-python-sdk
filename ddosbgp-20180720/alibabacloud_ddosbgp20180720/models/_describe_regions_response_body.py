@@ -17,14 +17,13 @@ class DescribeRegionsResponseBody(DaraModel):
     ):
         # The HTTP status code.
         self.code = code
-        # The information about the regions of cloud assets that can be protected by Anti-DDoS Origin. The information includes region IDs and names.
+        # The region information of cloud assets that can be protected by Anti-DDoS Origin, including region IDs and names.
         self.regions = regions
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -82,7 +81,7 @@ class DescribeRegionsResponseBodyRegions(DaraModel):
     ):
         # The English name of the region.
         self.region_en_name = region_en_name
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
         # The Chinese name of the region.
         self.region_name = region_name

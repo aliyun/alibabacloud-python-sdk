@@ -12,26 +12,27 @@ class AddIpRequest(DaraModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the Anti-DDoS Origin instance.
+        # The ID of the Anti-DDoS Origin instance to manage.
         # 
-        # >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances.
+        # > Call [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) to query the IDs of all Anti-DDoS Origin instances.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The IP addresses that you want to add to the Anti-DDoS Origin instance. This parameter is a string consisting of JSON arrays. Each element in a JSON array is a JSON struct that includes the following fields:
+        # The list of IP addresses to add to the Anti-DDoS Origin instance for protection. The value is a string that is converted from a JSON array. Each element in the JSON array is a struct that contains the following fields:
         # 
-        # *   **ip**: required. The IP address that you want to add. Data type: string.
-        # *   **member_uid**: optional. The member to which the asset belongs. Data type: string. This field is required only if the asset of a member is queried. Example: [{"ip":"121.41.XX.XX","member_uid":"120100811162\\*\\*\\*\\*"}].
+        # - **ip**: The IP address to add. This parameter is of the String type and is required.
+        # 
+        # - **member_uid**: The ID of the member account that owns the asset. This parameter is of the String type and is optional. Specify this parameter only when you add an asset that belongs to a member account. For example: [{"ip":"121.41.XX.XX","member_uid":"120100811162\\*\\*\\*\\*"}]
         # 
         # This parameter is required.
         self.ip_list = ip_list
-        # The ID of the region where the Anti-DDoS Origin instance resides.
+        # The region ID of the Anti-DDoS Origin instance.
         # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
+        # > Call [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) to query information about all regions that Anti-DDoS Origin supports.
         self.region_id = region_id
-        # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management. This parameter is empty by default, which indicates that the Anti-DDoS Origin instance belongs to the default resource group.
+        # The ID of the resource group in Resource Management to which the Anti-DDoS Origin instance belongs. If you leave this parameter empty, the instance is added to the default resource group.
         # 
-        # For information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
+        # For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
         self.resource_group_id = resource_group_id
 
     def validate(self):

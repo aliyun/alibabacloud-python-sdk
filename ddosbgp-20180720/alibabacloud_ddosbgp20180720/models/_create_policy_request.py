@@ -11,15 +11,19 @@ class CreatePolicyRequest(DaraModel):
         port_version: str = None,
         type: str = None,
     ):
-        # The name of the policy.
+        # The policy name.
         # 
         # This parameter is required.
         self.name = name
-        self.port_version = port_version
-        # The type of the policy. Valid values:
+        # The version of the port-specific mitigation policy. Valid values:
         # 
-        # *   **l3**: IP-specific mitigation policies.
-        # *   **l4**: port-specific mitigation policies.
+        # - **Not specified**: creates a default surf DPI engine policy.
+        # - **2**: creates a new stream DPI engine policy.
+        # > Only port-specific mitigation policies support this parameter.
+        self.port_version = port_version
+        # The policy type. Valid values:
+        # - **l3**: IP-specific mitigation policy.
+        # - **l4**: port-specific mitigation policy.
         # 
         # This parameter is required.
         self.type = type

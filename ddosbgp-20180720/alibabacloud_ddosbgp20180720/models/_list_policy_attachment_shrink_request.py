@@ -14,20 +14,23 @@ class ListPolicyAttachmentShrinkRequest(DaraModel):
         policy_type: str = None,
         port_version: str = None,
     ):
-        # The protected objects.
+        # The list of protected objects.
         self.ip_port_protocol_list_shrink = ip_port_protocol_list_shrink
-        # The page number.
+        # The page number of the current page in a paging query.
         self.page_no = page_no
-        # The number of entries per page. Default value: **10**.
+        # The number of entries per page in a paging query. Default value: **10**.
         self.page_size = page_size
-        # The ID of the policy.
+        # The policy ID.
         self.policy_id = policy_id
-        # The type of the policy. Valid values:
-        # 
-        # *   **default**: the default mitigation policies.
-        # *   **l3**: IP-specific mitigation policies.
-        # *   **l4**: port-specific mitigation policies.
+        # The policy type. Valid values:
+        # - **default**: default mitigation policy.
+        # - **l3**: IP-specific mitigation policy.
+        # - **l4**: port-specific mitigation policy.
         self.policy_type = policy_type
+        # The version of the port-specific mitigation policy. Valid values:
+        # 
+        # - **Not specified**: queries the policy associations of the default surf DPI engine.
+        # - **2**: queries the policy associations of the new stream DPI engine.
         self.port_version = port_version
 
     def validate(self):

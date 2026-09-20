@@ -10,9 +10,9 @@ class CreatePolicyResponseBody(DaraModel):
         id: str = None,
         request_id: str = None,
     ):
-        # The ID of the policy.
+        # The policy ID.
         self.id = id
-        # The request ID.
+        # The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

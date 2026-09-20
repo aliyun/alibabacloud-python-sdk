@@ -20,16 +20,17 @@ class DescribePackIpListResponseBody(DaraModel):
         # 
         # For more information about status codes, see [Common parameters](https://help.aliyun.com/document_detail/118841.html).
         self.code = code
-        # The IP addresses that are protected by the instance.
+        # The list of IP addresses that are protected by the Anti-DDoS Origin instance.
         self.ip_list = ip_list
         # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**: The call is successful.
-        # *   **false**: The call fails.
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
-        # The number of protected IP addresses.
+        # The number of protected IP addresses that are returned.
         self.total = total
 
     def validate(self):
@@ -99,36 +100,41 @@ class DescribePackIpListResponseBodyIpList(DaraModel):
     ):
         # The IP address.
         self.ip = ip
-        # The ID of the member.
+        # The UID of the member account.
         self.member_uid = member_uid
-        # The time when the near-origin traffic diversion feature was disabled.
+        # The end time of cross-border traffic blocking.
         self.nsm_expire_at = nsm_expire_at
-        # The time when the near-origin traffic diversion feature was enabled.
+        # The start time of cross-border traffic blocking.
         self.nsm_start_at = nsm_start_at
-        # The status of the near-origin traffic diversion feature. Valid values:
+        # The status of cross-border traffic blocking. Valid values:
         # 
-        # *   **1**: The near-origin traffic diversion feature is enabled.
-        # *   **0**: The near-origin traffic diversion feature is disabled.
+        # - **1**: Cross-border traffic is being blocked.
+        # 
+        # - **0**: Cross-border traffic is not blocked.
         self.nsm_status = nsm_status
         # The type of the cloud asset to which the IP address belongs. Valid values:
         # 
-        # *   **ECS**: an ECS instance.
-        # *   **SLB**: a CLB (formerly SLB) instance.
-        # *   **EIP**: an EIP. If the IP address belongs to an ALB instance, the value EIP is returned.
-        # *   **WAF**: a WAF instance.
+        # - **ECS**: an ECS instance.
+        # 
+        # - **SLB**: a CLB instance.
+        # 
+        # - **EIP**: an EIP instance. This includes the EIP used by an ALB instance.
+        # 
+        # - **WAF**: a WAF instance.
         self.product = product
-        # The region to which the protected IP address belongs.
+        # The region where the protected IP address is deployed.
         # 
-        # >  If the protected IP address is in the same region as the instance, this parameter is not returned.
+        # > This parameter is not returned if the protected IP address is deployed in the same region as the instance.
         self.region = region
-        # The description of the cloud asset to which the IP address belongs. The asset can be an ECS instance or an SLB instance.
+        # The remarks on the cloud asset to which the IP address belongs, such as an ECS instance or an SLB instance.
         # 
-        # >  If no descriptions are provided for the asset, this parameter is not returned.
+        # > This parameter is not returned if no remarks are specified for the cloud asset.
         self.remark = remark
-        # The status of the IP address. Valid values:
+        # The current status of the IP address. Valid values:
         # 
-        # *   **normal**: The IP address is not under attack.
-        # *   **hole_begin**: Blackhole filtering is triggered for the IP address.
+        # - **normal**: The IP address is not under attack.
+        # 
+        # - **hole_begin**: The IP address is in blackhole filtering status.
         self.status = status
 
     def validate(self):

@@ -14,11 +14,11 @@ class DescribeInstanceListResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The details about the Anti-DDoS Origin instances.
+        # The details of the Anti-DDoS Origin instances.
         self.instance_list = instance_list
-        # The details about the Anti-DDoS Origin instance.
+        # The ID of the request.
         self.request_id = request_id
-        # The details about the Anti-DDoS Origin instances.
+        # The total number of Anti-DDoS Origin instances returned.
         self.total = total
 
     def validate(self):
@@ -75,68 +75,74 @@ class DescribeInstanceListResponseBodyInstanceList(DaraModel):
         instance_id: str = None,
         instance_type: str = None,
         ip_type: str = None,
+        log_ext: str = None,
         product: str = None,
         remark: str = None,
         resource_group_id: str = None,
         status: str = None,
     ):
-        # The event that triggers automatic association. Valid values:
-        # 
-        # *   **any**: The instance is automatically associated with an object based on traffic scrubbing events or blackhole filtering events.
-        # *   **clean**: The instance is automatically associated with an object based on traffic scrubbing events.
-        # *   **blackhole**: The instance is automatically associated with an object based on blackhole filtering events.
+        # The automatic binding condition.
         self.auto_protect_condition = auto_protect_condition
-        # The time when the instance expires. The value is a UNIX timestamp. Unit: milliseconds.
+        # Indicates whether auto-renewal is enabled for the instance. Valid values:
+        # 
+        # - **true**: Enabled.
+        # - **false**: Disabled.
         self.auto_renewal = auto_renewal
-        # The type of the instance.
+        # The number of IP addresses that are in blackhole filtering status among the assets that are assigned public IP addresses protected by the instance.
         # 
-        # *   **ddos_ddosorigin_public_cn**: Anti-DDoS Origin 2.0 (Pay-as-you-go) on the China site (aliyun.com).
-        # *   **ddos_ddosorigin_public_intl**: Anti-DDoS Origin 2.0 (Pay-as-you-go) on the International site (alibabacloud.com).
+        # > You can invoke [DeleteBlackhole](https://help.aliyun.com/document_detail/118692.html) to deactivate blackhole filtering for a single protected IP address.
         self.blackholding_count = blackholding_count
-        # The condition that triggers automatic association of the instance with an object.
+        # The commodity type of the instance.
+        # 
+        # - **ddos_ddosorigin_public_cn**: Anti-DDoS Origin 2.0 (Pay-as-you-go) China site.
+        # - **ddos_ddosorigin_public_intl**: Anti-DDoS Origin 2.0 (Pay-as-you-go) International site.
         self.commodity_type = commodity_type
-        # Indicates whether overdue payments exist. Valid values:
+        # The asset overwrite type of the instance.
         # 
-        # *   **0**: Overdue payments do not exist.
-        # *   **1**: Overdue payments exist.
+        # - **1**: Supports assets that are assigned public IP addresses in multiple regions globally.
+        # - **2**: Supports assets that are assigned public IP addresses in multiple regions in the Chinese mainland.
+        # - **3**: Supports assets that are assigned public IP addresses in multiple regions outside the Chinese mainland.
+        # - **4**: Supports assets that are assigned public IP addresses in a single region globally.
         self.coverage_type = coverage_type
-        # The events that trigger automatic association.
+        # The overdue payment status. Valid values:
+        # 
+        # - **0**: No overdue payment.
+        # - **1**: Overdue payment.
         self.debt_status = debt_status
-        # The time when the instance was purchased. The value is a UNIX timestamp. Unit: milliseconds.
+        # The expiration time of the instance. The value is a UNIX timestamp. Unit: milliseconds.
         self.expire_time = expire_time
-        # The mitigation plan of the instance. Valid values:
-        # 
-        # *   **0**: the Professional mitigation plan
-        # *   **1**: the Enterprise mitigation plan
+        # The purchase time of the instance. The value is a UNIX timestamp. Unit: milliseconds.
         self.gmt_create = gmt_create
-        # The number of protected public IP addresses for which blackhole filtering is triggered.
-        # 
-        # >  You can call the [DeleteBlackhole](https://help.aliyun.com/document_detail/118692.html) operation to deactivate blackhole filtering for a protected IP address.
+        # The instance ID.
         self.instance_id = instance_id
-        # The application scope of the instance.
+        # The mitigation plan type of the instance. Valid values:
         # 
-        # *   **1**: The instance supports public IP addresses in all regions.
-        # *   **2**: The instance supports public IP addresses in regions in the Chinese mainland.
-        # *   **3**: The instance supports public IP addresses in regions outside the Chinese mainland.
-        # *   **4**: The instance supports public IP addresses in a region in or outside the Chinese mainland.
+        # - **0**: Professional.
+        # - **1**: Enterprise.
         self.instance_type = instance_type
-        # The description of the instance.
+        # The protocol type of the IP assets protected by the instance. Valid values:
+        # 
+        # - **IPv4**: IPv4 protocol.
+        # - **IPv6**: IPv6 protocol.
         self.ip_type = ip_type
-        # The ID of the instance.
-        self.product = product
-        # The type of the cloud service that is associated with the Anti-DDoS Origin instance By default, this parameter is not returned. If the Anti-DDoS Origin instance is created by using a different cloud service, the code of the cloud service is returned.
+        # The full logs property.
+        self.log_ext = log_ext
+        # The type of the cloud service associated with the instance. This parameter is not returned by default. It is returned only when the Anti-DDoS Origin instance is created by another cloud service, with the corresponding cloud service code.
         # 
         # Valid values:
         # 
-        # *   **gamebox**: The Anti-DDoS Origin instance is created by using Game Security Box.
-        # *   **eip**: The Anti-DDoS Origin instance is created by using an elastic IP address (EIP) for which Anti-DDoS (Enhanced Edition) is enabled.
+        # - **gamebox**: The Anti-DDoS Origin instance is created by Game Security Box.
+        # - **eip**: The Anti-DDoS Origin instance is created by an EIP with Anti-DDoS (Enhanced) enabled.
+        self.product = product
+        # The remark of the instance.
         self.remark = remark
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Indicates whether auto-renewal is enabled for the instance. Valid values:
+        # The status of the instance. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **1**: Normal.
+        # - **2**: Expired.
+        # - **3**: Released.
         self.status = status
 
     def validate(self):
@@ -180,6 +186,9 @@ class DescribeInstanceListResponseBodyInstanceList(DaraModel):
 
         if self.ip_type is not None:
             result['IpType'] = self.ip_type
+
+        if self.log_ext is not None:
+            result['LogExt'] = self.log_ext
 
         if self.product is not None:
             result['Product'] = self.product
@@ -231,6 +240,9 @@ class DescribeInstanceListResponseBodyInstanceList(DaraModel):
         if m.get('IpType') is not None:
             self.ip_type = m.get('IpType')
 
+        if m.get('LogExt') is not None:
+            self.log_ext = m.get('LogExt')
+
         if m.get('Product') is not None:
             self.product = m.get('Product')
 
@@ -250,7 +262,7 @@ class DescribeInstanceListResponseBodyInstanceListAutoProtectCondition(DaraModel
         self,
         events: List[str] = None,
     ):
-        # Events which result in auto binding.
+        # The events on which automatic binding is based.
         self.events = events
 
     def validate(self):

@@ -10,12 +10,11 @@ class CheckAccessLogAuthResponseBody(DaraModel):
         access_log_auth: bool = None,
         request_id: str = None,
     ):
-        # Indicates whether Anti-DDoS Origin was authorized to access Simple Log Service. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether Anti-DDoS Origin is authorized to access Simple Log Service. Valid values:
+        # - **true**: Authorized.
+        # - **false**: Not authorized.
         self.access_log_auth = access_log_auth
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

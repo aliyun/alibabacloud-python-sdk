@@ -14,12 +14,17 @@ class ModifyPolicyContentShrinkRequest(DaraModel):
     ):
         # The policy content.
         self.content_shrink = content_shrink
-        # The ID of the policy.
+        # The policy ID.
         # 
         # This parameter is required.
         self.id = id
-        # The name of the policy.
+        # The policy name.
         self.name = name
+        # The version of the port-specific mitigation policy. Valid values:
+        # 
+        # - **Not specified**: modifies the default surf mitigation engine policy.
+        # - **2**: modifies the new stream mitigation engine policy.
+        # > Only port-specific mitigation policies are supported.
         self.port_version = port_version
 
     def validate(self):

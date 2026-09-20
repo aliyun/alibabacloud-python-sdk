@@ -16,41 +16,46 @@ class ModifyPolicyRequest(DaraModel):
         name: str = None,
         port_version: str = None,
     ):
-        # The type of the action. Valid values:
+        # The action type. Valid values:
         # 
-        # *   **10**: modifies the name. If you specify this value, `Name` is required.
-        # *   **11**: modifies the blacklist validity period. If you specify this value, `BlackIpListExpireAt` is required. Only IP-specific mitigation policies support this value.
-        # *   **12**: changes the status of the feature of adding back-to-origin CIDR blocks of Anti-DDoS Proxy to the whitelist. If you specify this value, `WhitenGfbrNets` is required. Only IP-specific mitigation policies support this value.
-        # *   **13**: changes the status of the ICMP blocking feature. If you specify this value, `EnableDropIcmp` is required. Only IP-specific mitigation policies support this value.
-        # *   **20**: adds IP addresses to the blacklist or the whitelist. If you specify this value, you must specify at least one of `WhiteIpList` and `BlackIpList`. Only IP-specific mitigation policies support this value.
-        # *   **21**: removes IP addresses from the blacklist or the whitelist. If you specify this value, at least one of `WhiteIpList` and `BlackIpList` is required. Only IP-specific mitigation policies support this value.
-        # *   **22**: clears the whitelist. Only IP-specific mitigation policies support this value.
-        # *   **23**: clears the blacklist. Only IP-specific mitigation policies support this value.
-        # *   **30**: modifies the status and level of intelligent protection. If you specify this value, `EnableIntelligence` and `IntelligenceLevel` are required. Only IP-specific mitigation policies support this value.
-        # *   **31**: modifies the location blacklist settings. If you specify this value, one of `RegionBlockCountryList` and `RegionBlockProvinceList` is required. Only IP-specific mitigation policies support this value.
-        # *   **32**: modifies the settings for source rate limiting. If you specify this value, `SourceLimit` and `SourceBlockList` are required. Only IP-specific mitigation policies support this value.
-        # *   **33**: modifies the settings for reflection attack filtering. If you specify this value, `ReflectBlockUdpPortList` is required. Only IP-specific mitigation policies support this value.
-        # *   **40**: creates a port blocking rule. If you specify this value, `PortRuleList` is required. Only IP-specific mitigation policies support this value.
-        # *   **41**: modifies the port blocking rule. If you specify this value, `PortRuleList` is required. Only IP-specific mitigation policies support this value.
-        # *   **42**: deletes the port blocking rule. If you specify this value, `PortRuleList` is required. Only IP-specific mitigation policies support this value.
-        # *   **50**: creates a byte-match filter rule. If you specify this value, `FingerPrintRuleList` is required. Only IP-specific mitigation policies support this value.
-        # *   **51**: modifies the byte-match filter rule. If you specify this value, `FingerPrintRuleList` is required. Only IP-specific mitigation policies support this value.
-        # *   **52**: deletes the byte-match filter rule. If you specify this value, `FingerPrintRuleList` is required. Only IP-specific mitigation policies support this value.
-        # *   **60**: changes the status of the port-specific mitigation feature. If you specify this value, `EnableL4Defense` is required. Only port-specific mitigation policies support this value.
-        # *   **61**: creates a port-specific mitigation rule. If you specify this value, `L4RuleList` is required. Only port-specific mitigation policies support this value.
-        # *   **62**: modifies the port-specific mitigation rule. If you specify this value, `L4RuleList` is required. Only port-specific mitigation policies support this value.
-        # *   **63**: deletes the port-specific mitigation rule. If you specify this value, `L4RuleList` is required. Only port-specific mitigation policies support this value.
+        # - **10**: modifies the name (Name is required).
+        # - **11**: modifies the blacklist timeout period (BlackIpListExpireAt is required). Only IP-specific mitigation policy is supported.
+        # - **12**: modifies the switch for whitelisting back-to-origin IP addresses of Anti-DDoS Pro and Anti-DDoS Premium (WhitenGfbrNets is required). Only IP-specific mitigation policy is supported.
+        # - **13**: modifies the switch for ICMP Blocking (EnableDropIcmp is required). Only IP-specific mitigation policy is supported.
+        # - **20**: adds entries to blacklists and whitelists (WhiteIpList and BlackIpList are optional). Only IP-specific mitigation policy is supported.
+        # - **21**: deletes entries from blacklists and whitelists (WhiteIpList and BlackIpList are optional). Only IP-specific mitigation policy is supported.
+        # - **22**: clears the whitelist. Only IP-specific mitigation policy is supported.
+        # - **23**: clears the blacklist. Only IP-specific mitigation policy is supported.
+        # - **30**: modifies the AI-based intelligent protection switch and level (EnableIntelligence and IntelligenceLevel are required). Only IP-specific mitigation policy is supported.
+        # - **31**: modifies the Location Blacklist configuration (RegionBlockCountryList and RegionBlockProvinceList are optional). Only IP-specific mitigation policy is supported.
+        # - **32**: modifies the source rate limiting configuration (SourceLimit and SourceBlockList are required). Only IP-specific mitigation policy is supported.
+        # - **33**: modifies the reflection attack port filtering (ReflectBlockUdpPortList is required). Only IP-specific mitigation policy is supported.
+        # - **40**: creates a port blocking rule (PortRuleList is required). Only IP-specific mitigation policy is supported.
+        # - **41**: modifies a port blocking rule (PortRuleList is required). Only IP-specific mitigation policy is supported.
+        # - **42**: deletes a port blocking rule (PortRuleList is required). Only IP-specific mitigation policy is supported.
+        # - **50**: creates a byte-match filter rule (FingerPrintRuleList is required). Only IP-specific mitigation policy is supported.
+        # - **51**: modifies a byte-match filter rule (FingerPrintRuleList is required). Only IP-specific mitigation policy is supported.
+        # - **52**: deletes a byte-match filter rule (FingerPrintRuleList is required). Only IP-specific mitigation policy is supported.
+        # - **60**: modifies the port-specific mitigation switch (EnableL4Defense is required). Only port-specific mitigation policy is supported.
+        # - **61**: creates a port-specific mitigation rule (L4RuleList is required). Only port-specific mitigation policy is supported.
+        # - **62**: modifies a port-specific mitigation rule (L4RuleList is required). Only port-specific mitigation policy is supported.
+        # - **63**: deletes a port-specific mitigation rule (L4RuleList is required). Only port-specific mitigation policy is supported.
         # 
         # This parameter is required.
         self.action_type = action_type
         # The policy content.
         self.content = content
-        # The ID of the policy.
+        # The policy ID.
         # 
         # This parameter is required.
         self.id = id
-        # The name of the policy.
+        # The policy name.
         self.name = name
+        # The version of the port-specific mitigation policy. Valid values:
+        # 
+        # - **Not specified**: Modifies the default surf mitigation engine policy.
+        # - **2**: Modifies the new stream mitigation engine policy.
+        # > Only port-specific mitigation policies are supported.
         self.port_version = port_version
 
     def validate(self):
@@ -114,46 +119,49 @@ class ModifyPolicyRequestContent(DaraModel):
         reflect_block_udp_port_list: List[int] = None,
         region_block_country_list: List[int] = None,
         region_block_province_list: List[int] = None,
+        sip_defense: main_models.ModifyPolicyRequestContentSipDefense = None,
         source_block_list: List[main_models.ModifyPolicyRequestContentSourceBlockList] = None,
         source_limit: main_models.ModifyPolicyRequestContentSourceLimit = None,
         white_ip_list: List[str] = None,
         whiten_gfbr_nets: bool = None,
     ):
-        # The IP addresses in the blacklist.
+        # The IP blacklist.
         self.black_ip_list = black_ip_list
-        # The validity period of the IP address blacklist. The value is a UNIX timestamp.
+        # The timeout period of the IP blacklist (UNIX timestamp).
         self.black_ip_list_expire_at = black_ip_list_expire_at
-        # Specifies whether to enable ICMP blocking.
+        # Specifies whether to disable the ICMP protocol.
         self.enable_drop_icmp = enable_drop_icmp
-        # Specifies whether to enable intelligent protection.
+        # Specifies whether to enable AI-based intelligent protection.
         self.enable_intelligence = enable_intelligence
         # Specifies whether to enable port-specific mitigation.
         self.enable_l4defense = enable_l4defense
-        # The byte-match filter rules.
+        # The list of Byte-Match Filter rules.
         self.finger_print_rule_list = finger_print_rule_list
-        # The level of intelligent protection. Valid values:
+        # The protection level of AI-based intelligent protection. Valid values:
         # 
-        # *   **default**: normal.
-        # *   **hard**: strict.
-        # *   **weak**: loose.
+        # - **default**: Normal.
+        # - **weak**: Loose.
+        # - **hard**: Strict.
         self.intelligence_level = intelligence_level
-        # The port-specific mitigation rules.
+        # The list of port-specific mitigation rules.
         self.l_4rule_list = l_4rule_list
-        # The port blocking rules.
+        # The list of port blocking rules.
         self.port_rule_list = port_rule_list
-        # The ports whose traffic is filtered out by the filtering policies for UDP reflection attacks.
+        # The list of ports filtered by reflection attack prevention.
         self.reflect_block_udp_port_list = reflect_block_udp_port_list
-        # The countries in the location blacklist.
+        # The list of countries for the location blacklist.
         self.region_block_country_list = region_block_country_list
-        # The provinces in the location blacklist.
+        # The list of provinces for the location blacklist.
         self.region_block_province_list = region_block_province_list
-        # The source IP addresses that are added to the blacklist.
+        # The SIP Protection Settings.
+        self.sip_defense = sip_defense
+        # The source rate limiting blacklist.
         self.source_block_list = source_block_list
-        # The settings for source rate limiting.
+        # The source rate limiting configuration.
         self.source_limit = source_limit
-        # The IP addresses in the whitelist.
+        # The IP whitelist.
         self.white_ip_list = white_ip_list
-        # Specifies whether to add back-to-origin CIDR blocks of Anti-DDoS Proxy to the whitelist.
+        # Specifies whether to enable whitelisting of back-to-origin IP addresses for Anti-DDoS Pro and Anti-DDoS Premium (the Chinese mainland and outside the Chinese mainland).
         self.whiten_gfbr_nets = whiten_gfbr_nets
 
     def validate(self):
@@ -169,6 +177,8 @@ class ModifyPolicyRequestContent(DaraModel):
             for v1 in self.port_rule_list:
                  if v1:
                     v1.validate()
+        if self.sip_defense:
+            self.sip_defense.validate()
         if self.source_block_list:
             for v1 in self.source_block_list:
                  if v1:
@@ -222,6 +232,9 @@ class ModifyPolicyRequestContent(DaraModel):
 
         if self.region_block_province_list is not None:
             result['RegionBlockProvinceList'] = self.region_block_province_list
+
+        if self.sip_defense is not None:
+            result['SipDefense'] = self.sip_defense.to_map()
 
         result['SourceBlockList'] = []
         if self.source_block_list is not None:
@@ -286,6 +299,10 @@ class ModifyPolicyRequestContent(DaraModel):
         if m.get('RegionBlockProvinceList') is not None:
             self.region_block_province_list = m.get('RegionBlockProvinceList')
 
+        if m.get('SipDefense') is not None:
+            temp_model = main_models.ModifyPolicyRequestContentSipDefense()
+            self.sip_defense = temp_model.from_map(m.get('SipDefense'))
+
         self.source_block_list = []
         if m.get('SourceBlockList') is not None:
             for k1 in m.get('SourceBlockList'):
@@ -312,13 +329,13 @@ class ModifyPolicyRequestContentSourceLimit(DaraModel):
         syn_bps: int = None,
         syn_pps: int = None,
     ):
-        # The bandwidth limit on source IP addresses. Unit: bytes per second.
+        # The source bandwidth throttling rate limit, in bytes per second.
         self.bps = bps
-        # The packets per second (pps) limit on source IP addresses.
+        # The source PPS rate limit, in packets per second.
         self.pps = pps
-        # The bandwidth limit on source SYN packets. Unit: bytes per second.
+        # The source SYN bandwidth throttling rate limit, in bytes per second.
         self.syn_bps = syn_bps
-        # The pps limit on source SYN packets.
+        # The source SYN PPS rate limit, in packets per second.
         self.syn_pps = syn_pps
 
     def validate(self):
@@ -367,24 +384,27 @@ class ModifyPolicyRequestContentSourceBlockList(DaraModel):
         exceed_limit_times: int = None,
         type: int = None,
     ):
-        # The validity period of the blacklist to which the source IP address is added. Unit: seconds.
+        # The duration for which the source IP address is added to the blacklist. Unit: seconds.
         # 
         # This parameter is required.
         self.block_expire_seconds = block_expire_seconds
-        # The statistical period during which the system collects data on source IP addresses to determine whether to add the source IP addresses to the blacklist. Unit: seconds.
+        # The statistical period for source rate limiting blacklisting. Unit: seconds.
         # 
         # This parameter is required.
         self.every_seconds = every_seconds
-        # The number of times that the source IP address exceeds a limit in a statistical period.
+        # The number of times the source IP address exceeds the rate limit within one statistical period.
         # 
         # This parameter is required.
         self.exceed_limit_times = exceed_limit_times
-        # The type of the source rate limit. Valid values:
+        # The source rate limiting type. Valid values:
         # 
-        # *   **3**: the pps limit on source IP addresses.
-        # *   **4**: the bandwidth limit on source IP addresses.
-        # *   **5**: the pps limit on source SYN packets.
-        # *   **6**: the bandwidth limit on source SYN packets.
+        # - **3**: source PPS rate limiting.
+        # 
+        # - **4**: source bandwidth throttling.
+        # 
+        # - **5**: source SYN PPS rate limiting.
+        # 
+        # - **6**: source SYN bandwidth throttling.
         # 
         # This parameter is required.
         self.type = type
@@ -427,6 +447,109 @@ class ModifyPolicyRequestContentSourceBlockList(DaraModel):
 
         return self
 
+class ModifyPolicyRequestContentSipDefense(DaraModel):
+    def __init__(
+        self,
+        enable: bool = None,
+        level: str = None,
+        sip_defend: bool = None,
+        sip_learn: bool = None,
+        sip_module: bool = None,
+        sip_port: str = None,
+        sip_rate: int = None,
+        sip_start_mbps: int = None,
+        sip_start_pps: int = None,
+    ):
+        # Specifies whether to enable SIP protection. Valid values:
+        # 
+        # - **true**: Enabled.
+        # - **false**: Disabled.
+        self.enable = enable
+        # The SIP protection level.
+        self.level = level
+        # Specifies whether to enable SIP defense mode.
+        self.sip_defend = sip_defend
+        # Specifies whether to enable SIP learning mode.
+        self.sip_learn = sip_learn
+        # Specifies whether to enable the SIP source rate limiting module.
+        self.sip_module = sip_module
+        # The SIP protection port. Valid values: **1** to **65535**.
+        self.sip_port = sip_port
+        # The SIP source rate limit value (PPS).
+        self.sip_rate = sip_rate
+        # The SIP activation threshold (Mbit/s).
+        self.sip_start_mbps = sip_start_mbps
+        # The SIP activation threshold (PPS).
+        self.sip_start_pps = sip_start_pps
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.enable is not None:
+            result['Enable'] = self.enable
+
+        if self.level is not None:
+            result['Level'] = self.level
+
+        if self.sip_defend is not None:
+            result['SipDefend'] = self.sip_defend
+
+        if self.sip_learn is not None:
+            result['SipLearn'] = self.sip_learn
+
+        if self.sip_module is not None:
+            result['SipModule'] = self.sip_module
+
+        if self.sip_port is not None:
+            result['SipPort'] = self.sip_port
+
+        if self.sip_rate is not None:
+            result['SipRate'] = self.sip_rate
+
+        if self.sip_start_mbps is not None:
+            result['SipStartMbps'] = self.sip_start_mbps
+
+        if self.sip_start_pps is not None:
+            result['SipStartPps'] = self.sip_start_pps
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+
+        if m.get('SipDefend') is not None:
+            self.sip_defend = m.get('SipDefend')
+
+        if m.get('SipLearn') is not None:
+            self.sip_learn = m.get('SipLearn')
+
+        if m.get('SipModule') is not None:
+            self.sip_module = m.get('SipModule')
+
+        if m.get('SipPort') is not None:
+            self.sip_port = m.get('SipPort')
+
+        if m.get('SipRate') is not None:
+            self.sip_rate = m.get('SipRate')
+
+        if m.get('SipStartMbps') is not None:
+            self.sip_start_mbps = m.get('SipStartMbps')
+
+        if m.get('SipStartPps') is not None:
+            self.sip_start_pps = m.get('SipStartPps')
+
+        return self
+
 class ModifyPolicyRequestContentPortRuleList(DaraModel):
     def __init__(
         self,
@@ -439,40 +562,39 @@ class ModifyPolicyRequestContentPortRuleList(DaraModel):
         src_port_end: int = None,
         src_port_start: int = None,
     ):
-        # The end of the destination port range. Valid values: **0** to **65535**.
+        # The end value of the destination port range. Valid values: **0** to **65535**.
         # 
         # This parameter is required.
         self.dst_port_end = dst_port_end
-        # The start of the destination port range. Valid values: **0** to **65535**.
+        # The start value of the destination port range. Valid values: **0** to **65535**.
         # 
         # This parameter is required.
         self.dst_port_start = dst_port_start
-        # The ID of the rule.
+        # The rule ID.
         self.id = id
-        # The action triggered if the rule is matched. Valid values:
+        # The match action. Valid values:
         # 
-        # *   **drop**: The traffic is discarded.
+        # - **drop**: Drop.
         # 
         # This parameter is required.
         self.match_action = match_action
-        # The type of the protocol. Valid values:
+        # The protocol type. Valid values:
         # 
-        # *   **tcp**
-        # *   **udp**
+        # - **tcp**: Transmission Control Protocol.
+        # - **udp**: User Datagram Protocol.
         # 
         # This parameter is required.
         self.protocol = protocol
-        # The sequence number that indicates the order for the rule to take effect. The value is an integer.
-        # 
-        # >  A smaller number indicates a higher priority.
+        # The priority, expressed as an integer.
+        # > A smaller value indicates a higher priority.
         # 
         # This parameter is required.
         self.seq_no = seq_no
-        # The end of the source port range. Valid values: **0** to **65535**.
+        # The end value of the source port range. Valid values: **0** to **65535**.
         # 
         # This parameter is required.
         self.src_port_end = src_port_end
-        # The start of the source port range. Valid values: **0** to **65535**.
+        # The start value of the source port range. Valid values: **0** to **65535**.
         # 
         # This parameter is required.
         self.src_port_start = src_port_start
@@ -550,31 +672,31 @@ class ModifyPolicyRequestContentL4RuleList(DaraModel):
         name: str = None,
         priority: int = None,
     ):
-        # The action that is specified in the rule. Valid value:
-        # 
-        # *   **2**: The traffic is discarded.
+        # The action.
         self.action = action
-        # The match conditions.
+        # The list of detection conditions.
         self.condition_list = condition_list
-        # The minimum number of bytes in a session to trigger matching. Valid values: **0** to **2048**.
+        # The minimum number of bytes in a session flow to trigger rule matching. Valid values: **0** to **2048**.
         self.limited = limited
-        # The condition based on which an action is performed. Valid values:
+        # The logical operator. Valid values:
         # 
-        # *   **0**: If the rule is matched, the action specified in the rule is performed.
-        # *   **1**: If the rule is not matched, the action specified in the rule is performed.
+        # - **0**: Executes the action when the rule is hit.
+        # 
+        # - **1**: Executes the action when the rule is not hit.
         self.match = match
-        # The type of the rule. Valid values:
+        # The rule type. Valid values:
         # 
-        # *   **char**: string match.
-        # *   **hex**: hexadecimal string match.
+        # - **hex**: Hexadecimal matching.
+        # 
+        # - **char**: String matching.
         self.method = method
-        # The name of the rule.
+        # The rule name.
         # 
         # This parameter is required.
         self.name = name
-        # The priority of the rule. Valid values: **1** to **100**.
+        # The rule priority. Valid values: **1** to **100**.
         # 
-        # >  A smaller value indicates a higher priority.
+        # > A smaller value indicates a higher priority.
         self.priority = priority
 
     def validate(self):
@@ -652,17 +774,53 @@ class ModifyPolicyRequestContentL4RuleListConditionList(DaraModel):
         pattern: str = None,
         position: int = None,
     ):
-        # The term that is used for matching.
-        # 
-        # >  If Method is set to **char**, the value of this parameter must be ASCII strings. If Method is set to **hex**, the value of this parameter must be hexadecimal strings. Maximum length: 2,048.
+        # The detection content.
+        # > If the rule type is **char**, the value must be an ASCII string. If the rule type is **hex**, the value must be a hexadecimal string. Maximum length: 2048.
         self.arg = arg
+        # The matching content.
+        # 
+        # 1. When **Encode** is set to **str**, the value must meet the following requirements:
+        # 
+        # - The length of **Content** does not exceed 1500.
+        # 
+        # - **End** - **Start** >= the length of **Content**.
+        # 
+        # 2. When **Encode** is set to **hex**, the value must meet the following requirements:
+        # 
+        # - **Content** must be hexadecimal characters.
+        # 
+        # - The length of **Content** must be an even number.
+        # 
+        # - The length of **Content** does not exceed 3000.
+        # 
+        # - **End** - **Start** + 1 >= the length of **Content** / 2.
         self.content = content
-        # The number of bytes from the start position for matching. Valid values: **1** to **2048**.
+        # The detection window length. Valid values: **1** to **2048**.
         self.depth = depth
+        # The character type. Valid values:
+        # 
+        # - **str**: String.
+        # 
+        # - **hex**: Hexadecimal.
         self.encode = encode
+        # The matching range.
         self.offset = offset
+        # The matching pattern. Valid values depend on the **Encode** field:
+        # 
+        # (1) When **Encode** is set to **str**:
+        # - **contain**: Contains.
+        # 
+        # - **not_contain**: Does not contain.
+        # 
+        # - **regex**: Regular expression.
+        # 
+        # (2) When **Encode** is set to **hex**:
+        # 
+        # - **contain**: Contains.
+        # 
+        # - **not_contain**: Does not contain.
         self.pattern = pattern
-        # The start position for matching. Valid values: **0** to **2047**.
+        # The detection start position. Valid values: **0** to **2047**.
         self.position = position
 
     def validate(self):
@@ -729,7 +887,11 @@ class ModifyPolicyRequestContentL4RuleListConditionListOffset(DaraModel):
         end: int = None,
         start: int = None,
     ):
+        # The end position. Valid values: **0** to **1499**.
+        # 
+        # > The end position must be greater than or equal to the start position.
         self.end = end
+        # The start position. Valid values: **0** to **1499**.
         self.start = start
 
     def validate(self):
@@ -761,76 +923,73 @@ class ModifyPolicyRequestContentL4RuleListConditionListOffset(DaraModel):
 class ModifyPolicyRequestContentFingerPrintRuleList(DaraModel):
     def __init__(
         self,
+        comment: str = None,
         dst_port_end: int = None,
         dst_port_start: int = None,
         id: str = None,
         match_action: str = None,
         max_pkt_len: int = None,
         min_pkt_len: int = None,
+        mode: int = None,
         offset: int = None,
         payload_bytes: str = None,
         protocol: str = None,
         rate_value: int = None,
+        rule: str = None,
         seq_no: int = None,
         src_port_end: int = None,
         src_port_start: int = None,
+        type: int = None,
     ):
-        # The end of the destination port range. Valid values: **0** to **65535**.
-        # 
-        # This parameter is required.
+        # The rule comment.
+        self.comment = comment
+        # The end value of the destination port range. Valid values: **0** to **65535**.
         self.dst_port_end = dst_port_end
-        # The start of the destination port range. Valid values: **0** to **65535**.
-        # 
-        # This parameter is required.
+        # The start value of the destination port range. Valid values: **0** to **65535**.
         self.dst_port_start = dst_port_start
-        # The ID of the rule.
+        # The rule ID.
         self.id = id
-        # The action triggered if the rule is matched. Valid values:
+        # The match action. Valid values:
         # 
-        # *   **accept**: allows the traffic that matches the conditions in the byte-match filter rule.
-        # *   **drop**: discards the traffic that matches the conditions in the byte-match filter rule.
-        # *   **ip_rate**: limits rates on the source IP address whose traffic matches the conditions in the byte-match filter rule. The rate limit is specified by **RateValue**.
-        # *   **session_rate**: limits the number of sessions from the source IP address whose traffic matches the conditions in the byte-match filter rule. The rate limit is specified by **RateValue**.
+        # - **accept**: Allows traffic that matches the fingerprint.
+        # - **drop**: Drops traffic that matches the fingerprint.
+        # - **ip_rate**: Rate-limits the source IP address of traffic that matches the fingerprint. The rate limit value is specified by the **RateValue** parameter.
+        # - **session_rate**: Rate-limits the source session of traffic that matches the fingerprint. The rate limit value is specified by the **RateValue** parameter.
         # 
         # This parameter is required.
         self.match_action = match_action
         # The maximum packet length. Valid values: **1** to **1500**.
-        # 
-        # This parameter is required.
         self.max_pkt_len = max_pkt_len
         # The minimum packet length. Valid values: **1** to **1500**.
-        # 
-        # This parameter is required.
         self.min_pkt_len = min_pkt_len
+        # The rule mode.
+        self.mode = mode
         # The offset. Valid values: **0** to **1500**.
         self.offset = offset
-        # The payload. The value is a hexadecimal string.
+        # The detection payload. The value is in hexadecimal string format.
         self.payload_bytes = payload_bytes
-        # The type of the protocol. Valid values:
+        # The protocol type. Valid values:
         # 
-        # *   **tcp**
-        # *   **udp**
-        # 
-        # This parameter is required.
+        # - **tcp**: Transmission Control Protocol.
+        # - **udp**: User Datagram Protocol.
         self.protocol = protocol
-        # The rate limit. Valid values: **1** to **100000**.
+        # The rate limit value. Valid values: **1** to **100000**.
         # 
-        # >  This parameter is required when **MatchAction** is set to **ip_rate** or **session_rate**.
+        # > This parameter is required when the match action is source IP rate limiting or source session rate limiting (**MatchAction** is **ip_rate** or **session_rate**).
         self.rate_value = rate_value
-        # The sequence number that indicates the order for the rule to take effect. The value is an integer.
-        # 
-        # >  A smaller number indicates a higher priority.
+        # The rule.
+        self.rule = rule
+        # The priority, expressed as an integer.
+        # > A smaller value indicates a higher priority.
         # 
         # This parameter is required.
         self.seq_no = seq_no
-        # The end of the source port range. Valid values: **0** to **65535**.
-        # 
-        # This parameter is required.
+        # The end value of the source port range. Valid values: **0** to **65535**.
         self.src_port_end = src_port_end
-        # The start of the source port range. Valid values: **0** to **65535**.
-        # 
-        # This parameter is required.
+        # The start value of the source port range. Valid values: **0** to **65535**.
         self.src_port_start = src_port_start
+        # The type.
+        self.type = type
 
     def validate(self):
         pass
@@ -840,6 +999,9 @@ class ModifyPolicyRequestContentFingerPrintRuleList(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.comment is not None:
+            result['Comment'] = self.comment
+
         if self.dst_port_end is not None:
             result['DstPortEnd'] = self.dst_port_end
 
@@ -858,6 +1020,9 @@ class ModifyPolicyRequestContentFingerPrintRuleList(DaraModel):
         if self.min_pkt_len is not None:
             result['MinPktLen'] = self.min_pkt_len
 
+        if self.mode is not None:
+            result['Mode'] = self.mode
+
         if self.offset is not None:
             result['Offset'] = self.offset
 
@@ -870,6 +1035,9 @@ class ModifyPolicyRequestContentFingerPrintRuleList(DaraModel):
         if self.rate_value is not None:
             result['RateValue'] = self.rate_value
 
+        if self.rule is not None:
+            result['Rule'] = self.rule
+
         if self.seq_no is not None:
             result['SeqNo'] = self.seq_no
 
@@ -879,10 +1047,16 @@ class ModifyPolicyRequestContentFingerPrintRuleList(DaraModel):
         if self.src_port_start is not None:
             result['SrcPortStart'] = self.src_port_start
 
+        if self.type is not None:
+            result['Type'] = self.type
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+
         if m.get('DstPortEnd') is not None:
             self.dst_port_end = m.get('DstPortEnd')
 
@@ -901,6 +1075,9 @@ class ModifyPolicyRequestContentFingerPrintRuleList(DaraModel):
         if m.get('MinPktLen') is not None:
             self.min_pkt_len = m.get('MinPktLen')
 
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+
         if m.get('Offset') is not None:
             self.offset = m.get('Offset')
 
@@ -913,6 +1090,9 @@ class ModifyPolicyRequestContentFingerPrintRuleList(DaraModel):
         if m.get('RateValue') is not None:
             self.rate_value = m.get('RateValue')
 
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+
         if m.get('SeqNo') is not None:
             self.seq_no = m.get('SeqNo')
 
@@ -921,6 +1101,9 @@ class ModifyPolicyRequestContentFingerPrintRuleList(DaraModel):
 
         if m.get('SrcPortStart') is not None:
             self.src_port_start = m.get('SrcPortStart')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
 
         return self
 

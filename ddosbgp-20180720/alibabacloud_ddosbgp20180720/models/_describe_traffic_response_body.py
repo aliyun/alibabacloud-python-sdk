@@ -13,7 +13,7 @@ class DescribeTrafficResponseBody(DaraModel):
         flow_list: List[main_models.DescribeTrafficResponseBodyFlowList] = None,
         request_id: str = None,
     ):
-        # The queried traffic statistics.
+        # The traffic statistics.
         self.flow_list = flow_list
         # The ID of the request.
         self.request_id = request_id
@@ -63,26 +63,25 @@ class DescribeTrafficResponseBodyFlowList(DaraModel):
         pps: int = None,
         time: int = None,
     ):
-        # The bandwidth of attack traffic. Unit: bit/s.
+        # The bandwidth of attack traffic. Unit: bps.
         # 
-        # >  This parameter is returned only if attack traffic exists.
+        # > This field is returned only when attack traffic exists.
         self.attack_bps = attack_bps
-        # The packet forwarding rate of attack traffic. Unit: packets per second.
-        # 
-        # >  This parameter is returned only if attack traffic exists.
+        # The packet forwarding rate of attack traffic. Unit: pps.
+        # > This field is returned only when attack traffic exists.
         self.attack_pps = attack_pps
         # The type of the traffic statistics. Valid values:
         # 
-        # *   **max**: the peak traffic within the specified interval
-        # *   **avg**: the average traffic within the specified interval
+        # - **max**: the peak traffic within the statistical interval.
+        # - **avg**: the average traffic within the statistical interval.
         self.flow_type = flow_type
-        # The bandwidth of the total traffic. Unit: Kbit/s.
+        # The bandwidth of total traffic. Unit: Kbps.
         self.kbps = kbps
-        # The ID of the traffic statistics.
+        # The ID of the traffic statistics entry.
         self.name = name
-        # The packet forwarding rate of the total traffic. Unit: packets per second.
+        # The packet forwarding rate of total traffic. Unit: pps.
         self.pps = pps
-        # The time when the traffic statistics are calculated. This value is a UNIX timestamp. Unit: seconds.
+        # The time of the traffic statistics. Expressed as a UNIX timestamp. Unit: seconds.
         self.time = time
 
     def validate(self):

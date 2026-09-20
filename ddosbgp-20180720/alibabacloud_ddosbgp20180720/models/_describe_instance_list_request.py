@@ -24,48 +24,52 @@ class DescribeInstanceListRequest(DaraModel):
         resource_group_id: str = None,
         tag: List[main_models.DescribeInstanceListRequestTag] = None,
     ):
-        # The number of the page to return.
+        # The IDs of the Anti-DDoS Origin instances to query. Specify the value in the `["<Instance ID 1>","<Instance ID 2>",……]` format.
         self.instance_id_list = instance_id_list
-        # The field that is used to sort the Anti-DDoS Origin instances. Set the value to **expireTime**, which indicates that the instances are sorted based on the expiration time.
+        # The mitigation plan type of the Anti-DDoS Origin instance to query. Valid values:
         # 
-        # You can set the **Orderdire** parameter to specify the sorting method.
+        # - **0**: Professional.
+        # - **1**: Enterprise.
         self.instance_type = instance_type
-        # The total number of Anti-DDoS Origin instances.
+        # The mitigation plan types of the Anti-DDoS Origin instances to query.
         self.instance_type_list = instance_type_list
-        # The sorting method. Valid values:
-        # 
-        # *   **desc**: the descending order. This is the default value.
-        # *   **asc**: the ascending order.
+        # The protected IP address of the Anti-DDoS Origin instance to query.
         self.ip = ip
-        # The IP address of the object that is protected by the Anti-DDoS Origin instance to query.
+        # The protocol type of the IP assets protected by the Anti-DDoS Origin instance to query. Valid values:
+        # 
+        # - **IPv4**: IPv4 protocol.
+        # - **IPv6**: IPv6 protocol.
         self.ip_version = ip_version
-        # The ID of the region where the Anti-DDoS Origin instance to query resides.
+        # The sort field for the Anti-DDoS Origin instance list. The value is fixed as **expireTime**, which indicates sorting by instance expiration time.
         # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
+        # You can use the **Orderdire** parameter to specify the sort order.
         self.orderby = orderby
-        # The tags that are added to the Anti-DDoS Origin instance.
-        self.orderdire = orderdire
-        # The protocol type of the IP address asset that is protected by the Anti-DDoS Origin instance to query. Valid values:
+        # The sort order. Valid values:
         # 
-        # *   **Ipv4**: IPv4
-        # *   **Ipv6**: IPv6
+        # - **desc** (default): descending order by expiration time.
+        # - **asc**: ascending order by expiration time.
+        self.orderdire = orderdire
+        # The page number of the current page in a paging query. Settings the current page number.
         # 
         # This parameter is required.
         self.page_no = page_no
-        # The mitigation plan of the Anti-DDoS Origin instance to query. Valid values:
-        # 
-        # *   **0**: the Professional mitigation plan
-        # *   **1**: the Enterprise mitigation plan
+        # The number of instances on each page in a paging query. Settings the number of instances per page.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The tag that is added to the Anti-DDoS Origin instance.
+        # The region ID of the Anti-DDoS Origin instance to query.
+        # 
+        # > You can call [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) to query all region IDs supported by Anti-DDoS Origin.
+        # >-
+        # >Notice: This parameter is required. If it is not specified, the API returns DDosBgp.CheckError.InvalidRegion(400).</notice>
         self.region_id = region_id
-        # The number of entries to return on each page.
+        # The remark of the Anti-DDoS Origin instance to query. Fuzzy match is supported.
         self.remark = remark
-        # The remarks of the Anti-DDoS Origin instance to query. Fuzzy match is supported.
+        # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
+        # 
+        # If you do not specify this parameter, the default resource group is used.
         self.resource_group_id = resource_group_id
-        # The key of the tag that is added to the Anti-DDoS Origin instance.
+        # The tags bound to the Anti-DDoS Origin instances to query.
         self.tag = tag
 
     def validate(self):
@@ -174,12 +178,9 @@ class DescribeInstanceListRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The mitigation plan of the Anti-DDoS Origin instance.
+        # The key of the tag bound to the Anti-DDoS Origin instance to query.
         self.key = key
-        # The mitigation plan of the Anti-DDoS Origin instance. Valid values:
-        # 
-        # *   0: the Professional mitigation plan.
-        # *   1: the Enterprise mitigation plan.
+        # The value of the tag bound to the Anti-DDoS Origin instance to query.
         self.value = value
 
     def validate(self):

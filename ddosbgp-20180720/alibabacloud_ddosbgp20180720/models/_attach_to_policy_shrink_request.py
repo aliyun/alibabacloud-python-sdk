@@ -11,7 +11,7 @@ class AttachToPolicyShrinkRequest(DaraModel):
         policy_id: str = None,
         port_version: str = None,
     ):
-        # The protected objects.
+        # The list of protection objects.
         # 
         # This parameter is required.
         self.ip_port_protocol_list_shrink = ip_port_protocol_list_shrink
@@ -19,6 +19,11 @@ class AttachToPolicyShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.policy_id = policy_id
+        # The version of the port-specific mitigation policy. Valid values:
+        # 
+        # - **Not specified**: Binds the default surf protection engine policy.
+        # - **2**: Binds the new stream protection engine policy.
+        # > Only port-specific mitigation policies support this parameter.
         self.port_version = port_version
 
     def validate(self):

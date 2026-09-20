@@ -20,13 +20,13 @@ class AttachAssetGroupToInstanceRequest(DaraModel):
         self.asset_group_list = asset_group_list
         # The ID of the instance to query.
         # 
-        # >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances of paid editions.
+        # > You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances of paid editions.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The ID of the region in which the instance resides.
         # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):

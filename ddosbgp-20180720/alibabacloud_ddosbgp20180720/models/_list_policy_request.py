@@ -13,26 +13,30 @@ class ListPolicyRequest(DaraModel):
         product_type: str = None,
         type: str = None,
     ):
-        # The name of the policy.
+        # The policy name.
         self.name = name
-        # The page number.
+        # The page number of the current page in a paging query.
         self.page_no = page_no
-        # The number of entries per page. Default value: **10**.
+        # The number of entries per page in a paging query. Default value: **10**.
         self.page_size = page_size
-        # The service type. Valid values:
+        # The applicable product type. Valid values:
+        #  - **ecs**: queries the default policy applicable to ECS.
         # 
-        # *   **ecs**: Elastic Compute Service (ECS).
-        # *   **slb**: Server Load Balancer (SLB).
-        # *   **eip**: Elastic IP Address (EIP).
-        # *   **gf-eip**: EIP with Anti-DDoS (Enhanced) enabled.
+        # -  **slb**: queries the default policy applicable to SLB.
         # 
-        # >  This parameter is available only if Type is set to `default`.
+        # -  **eip**: queries the default policy applicable to EIP.
+        # 
+        #  - **gf-eip**: queries the default policy applicable to elastic IP addresses (EIPs) with Anti-DDoS Proxy Enabled.
+        # 
+        # > This parameter takes effect only when the policy type is `default`.
         self.product_type = product_type
-        # The type of the policy. Valid values:
+        # The policy type. Valid values:
         # 
-        # *   **default**: the default mitigation policy.
-        # *   **l3**: IP-specific mitigation policies.
-        # *   **l4**: port-specific mitigation policies.
+        # - **default**: the default mitigation policy.
+        # 
+        # - **l3**: the IP-specific mitigation policy.
+        # 
+        # - **l4**: the port-specific mitigation policy.
         self.type = type
 
     def validate(self):

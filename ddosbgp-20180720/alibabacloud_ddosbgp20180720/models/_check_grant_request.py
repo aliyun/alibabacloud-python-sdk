@@ -13,12 +13,13 @@ class CheckGrantRequest(DaraModel):
     ):
         # Specifies whether to allow Anti-DDoS Origin to check the service-linked role. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.is_slr = is_slr
         # The ID of the region where the Anti-DDoS Origin instance resides.
         # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
         self.region_id = region_id
         # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
         # 

@@ -26,22 +26,57 @@ class Client(OpenApiClient):
             'cn-beijing': 'ddosbgp.aliyuncs.com',
             'cn-zhangjiakou': 'ddosbgp.aliyuncs.com',
             'cn-huhehaote': 'ddosbgp.aliyuncs.com',
+            'cn-wulanchabu': 'ddosbgp.aliyuncs.com',
             'cn-hangzhou': 'ddosbgp.aliyuncs.com',
             'cn-shanghai': 'ddosbgp.aliyuncs.com',
             'cn-shenzhen': 'ddosbgp.aliyuncs.com',
-            'ap-northeast-1': 'ddosbgp.ap-southeast-1.aliyuncs.com',
-            'ap-south-1': 'ddosbgp.ap-southeast-1.aliyuncs.com',
-            'ap-southeast-2': 'ddosbgp.ap-southeast-1.aliyuncs.com',
-            'ap-southeast-3': 'ddosbgp.ap-southeast-1.aliyuncs.com',
-            'ap-southeast-5': 'ddosbgp.ap-southeast-1.aliyuncs.com',
+            'cn-heyuan': 'ddosbgp.aliyuncs.com',
+            'cn-guangzhou': 'ddosbgp.aliyuncs.com',
             'cn-chengdu': 'ddosbgp.aliyuncs.com',
-            'eu-central-1': 'ddosbgp.ap-southeast-1.aliyuncs.com',
-            'eu-west-1': 'ddosbgp.ap-southeast-1.aliyuncs.com',
-            'me-east-1': 'ddosbgp.ap-southeast-1.aliyuncs.com',
-            'cn-hangzhou-finance': 'ddosbgp.aliyuncs.com',
+            'ap-northeast-1': 'ddosbgp.aliyuncs.com',
+            'ap-southeast-2': 'ddosbgp.aliyuncs.com',
+            'ap-southeast-3': 'ddosbgp.aliyuncs.com',
+            'ap-southeast-5': 'ddosbgp.aliyuncs.com',
+            'eu-west-1': 'ddosbgp.aliyuncs.com',
+            'eu-central-1': 'ddosbgp.aliyuncs.com',
+            'ap-south-1': 'ddosbgp.aliyuncs.com',
+            'me-east-1': 'ddosbgp.aliyuncs.com',
             'cn-shenzhen-finance-1': 'ddosbgp.aliyuncs.com',
+            'ap-northeast-2-pop': 'ddosbgp.aliyuncs.com',
+            'cn-beijing-finance-1': 'ddosbgp.aliyuncs.com',
+            'cn-beijing-finance-pop': 'ddosbgp.aliyuncs.com',
+            'cn-beijing-gov-1': 'ddosbgp.aliyuncs.com',
+            'cn-beijing-nu16-b01': 'ddosbgp.aliyuncs.com',
+            'cn-edge-1': 'ddosbgp.aliyuncs.com',
+            'cn-fujian': 'ddosbgp.aliyuncs.com',
+            'cn-haidian-cm12-c01': 'ddosbgp.aliyuncs.com',
+            'cn-hangzhou-bj-b01': 'ddosbgp.aliyuncs.com',
+            'cn-hangzhou-finance': 'ddosbgp.aliyuncs.com',
+            'cn-hangzhou-internal-prod-1': 'ddosbgp.aliyuncs.com',
+            'cn-hangzhou-internal-test-1': 'ddosbgp.aliyuncs.com',
+            'cn-hangzhou-internal-test-2': 'ddosbgp.aliyuncs.com',
+            'cn-hangzhou-internal-test-3': 'ddosbgp.aliyuncs.com',
+            'cn-hangzhou-test-306': 'ddosbgp.aliyuncs.com',
+            'cn-hongkong-finance-pop': 'ddosbgp.aliyuncs.com',
+            'cn-huhehaote-nebula-1': 'ddosbgp.aliyuncs.com',
+            'cn-north-2-gov-1': 'ddosbgp.aliyuncs.com',
+            'cn-qingdao-nebula': 'ddosbgp.aliyuncs.com',
+            'cn-shanghai-et15-b01': 'ddosbgp.aliyuncs.com',
+            'cn-shanghai-et2-b01': 'ddosbgp.aliyuncs.com',
             'cn-shanghai-finance-1': 'ddosbgp.aliyuncs.com',
-            'cn-north-2-gov-1': 'ddosbgp.aliyuncs.com'
+            'cn-shanghai-inner': 'ddosbgp.aliyuncs.com',
+            'cn-shanghai-internal-test-1': 'ddosbgp.aliyuncs.com',
+            'cn-shenzhen-inner': 'ddosbgp.aliyuncs.com',
+            'cn-shenzhen-st4-d01': 'ddosbgp.aliyuncs.com',
+            'cn-shenzhen-su18-b01': 'ddosbgp.aliyuncs.com',
+            'cn-wuhan': 'ddosbgp.aliyuncs.com',
+            'cn-yushanfang': 'ddosbgp.aliyuncs.com',
+            'cn-zhangbei': 'ddosbgp.aliyuncs.com',
+            'cn-zhangbei-na61-b01': 'ddosbgp.aliyuncs.com',
+            'cn-zhangjiakou-na62-a01': 'ddosbgp.aliyuncs.com',
+            'cn-zhengzhou-nebula-1': 'ddosbgp.aliyuncs.com',
+            'eu-west-1-oxs': 'ddosbgp.aliyuncs.com',
+            'rus-west-1-pop': 'ddosbgp.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('ddosbgp', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -1545,6 +1580,120 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeInstanceSpecsResponse:
         runtime = RuntimeOptions()
         return await self.describe_instance_specs_with_options_async(request, runtime)
+
+    def describe_network_layer_intercepts_with_options(
+        self,
+        request: main_models.DescribeNetworkLayerInterceptsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeNetworkLayerInterceptsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.destination_ip):
+            query['DestinationIp'] = request.destination_ip
+        if not DaraCore.is_null(request.destination_port):
+            query['DestinationPort'] = request.destination_port
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.intercept_module):
+            query['InterceptModule'] = request.intercept_module
+        if not DaraCore.is_null(request.network_protocol):
+            query['NetworkProtocol'] = request.network_protocol
+        if not DaraCore.is_null(request.page):
+            query['Page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.protocol_number):
+            query['ProtocolNumber'] = request.protocol_number
+        if not DaraCore.is_null(request.source_port):
+            query['SourcePort'] = request.source_port
+        if not DaraCore.is_null(request.src_ip):
+            query['SrcIp'] = request.src_ip
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeNetworkLayerIntercepts',
+            version = '2018-07-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeNetworkLayerInterceptsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_network_layer_intercepts_with_options_async(
+        self,
+        request: main_models.DescribeNetworkLayerInterceptsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeNetworkLayerInterceptsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.destination_ip):
+            query['DestinationIp'] = request.destination_ip
+        if not DaraCore.is_null(request.destination_port):
+            query['DestinationPort'] = request.destination_port
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.intercept_module):
+            query['InterceptModule'] = request.intercept_module
+        if not DaraCore.is_null(request.network_protocol):
+            query['NetworkProtocol'] = request.network_protocol
+        if not DaraCore.is_null(request.page):
+            query['Page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.protocol_number):
+            query['ProtocolNumber'] = request.protocol_number
+        if not DaraCore.is_null(request.source_port):
+            query['SourcePort'] = request.source_port
+        if not DaraCore.is_null(request.src_ip):
+            query['SrcIp'] = request.src_ip
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeNetworkLayerIntercepts',
+            version = '2018-07-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeNetworkLayerInterceptsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_network_layer_intercepts(
+        self,
+        request: main_models.DescribeNetworkLayerInterceptsRequest,
+    ) -> main_models.DescribeNetworkLayerInterceptsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_network_layer_intercepts_with_options(request, runtime)
+
+    async def describe_network_layer_intercepts_async(
+        self,
+        request: main_models.DescribeNetworkLayerInterceptsRequest,
+    ) -> main_models.DescribeNetworkLayerInterceptsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_network_layer_intercepts_with_options_async(request, runtime)
 
     def describe_op_entities_with_options(
         self,

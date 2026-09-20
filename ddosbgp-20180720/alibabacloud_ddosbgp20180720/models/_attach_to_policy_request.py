@@ -14,7 +14,7 @@ class AttachToPolicyRequest(DaraModel):
         policy_id: str = None,
         port_version: str = None,
     ):
-        # The protected objects.
+        # The list of protection objects.
         # 
         # This parameter is required.
         self.ip_port_protocol_list = ip_port_protocol_list
@@ -22,6 +22,11 @@ class AttachToPolicyRequest(DaraModel):
         # 
         # This parameter is required.
         self.policy_id = policy_id
+        # The version of the port-specific mitigation policy. Valid values:
+        # 
+        # - **Not specified**: Binds the default surf protection engine policy.
+        # - **2**: Binds the new stream protection engine policy.
+        # > Only port-specific mitigation policies support this parameter.
         self.port_version = port_version
 
     def validate(self):
@@ -72,21 +77,22 @@ class AttachToPolicyRequestIpPortProtocolList(DaraModel):
         port_range: str = None,
         protocol: str = None,
     ):
-        # The IP address of the protected object.
+        # The IP address of the protection object.
+        # > Prerequisite: The IP address must be added to the Anti-DDoS Origin instance by calling the AddIp operation in advance, and you must call the DescribeInstanceList operation to verify that the IP address has been added to the Anti-DDoS Origin instance.
         # 
         # This parameter is required.
         self.ip = ip
-        # The port number of the protected object.
-        # 
-        # >  This parameter is available for only port-specific mitigation policies.
+        # The port number of the protection object.
+        # > Only port-specific mitigation policies support this parameter.
         self.port = port
+        # The port range of the protection object.
+        # > Only port-specific mitigation policies support this parameter.
         self.port_range = port_range
-        # The protocol type of the protected object. Valid values:
+        # The protocol type of the protection object. Valid values:
         # 
-        # *   **tcp**
-        # *   **udp**
-        # 
-        # >  This parameter is available for only port-specific mitigation policies.
+        # - **tcp**: Transmission Control Protocol.
+        # - **udp**: User Datagram Protocol.
+        # > Only port-specific mitigation policies support this parameter.
         self.protocol = protocol
 
     def validate(self):

@@ -14,11 +14,11 @@ class ListOpenedAccessLogInstancesResponseBody(DaraModel):
         sls_config_status: List[main_models.ListOpenedAccessLogInstancesResponseBodySlsConfigStatus] = None,
         total_count: int = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The configuration of log analysis for the Anti-DDoS Origin instances.
+        # The log analysis configurations of Anti-DDoS Origin instances.
         self.sls_config_status = sls_config_status
-        # The number of the Anti-DDoS Origin instances for which log analysis was enabled.
+        # The number of results returned, which is the number of Anti-DDoS Origin instances that have log analysis enabled.
         self.total_count = total_count
 
     def validate(self):
@@ -67,12 +67,12 @@ class ListOpenedAccessLogInstancesResponseBodySlsConfigStatus(DaraModel):
         enable: bool = None,
         instance_id: str = None,
     ):
-        # Indicates whether log analysis was enabled for the Anti-DDoS Origin instance. Valid values:
+        # Indicates whether log analysis is enabled for the instance. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Enabled.
+        # - **false**: Not enabled.
         self.enable = enable
-        # The ID of the Anti-DDoS Origin instance.
+        # The instance ID of Anti-DDoS Origin.
         self.instance_id = instance_id
 
     def validate(self):

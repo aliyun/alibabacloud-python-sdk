@@ -1,3 +1,8 @@
+2026-09-20 Version: 3.1.3
+- Update API DescribeNetworkLayerIntercepts: add request parameters InterceptModule.
+- Update API ListPolicyAttachment: add response parameters Body.AttachmentList.$.Status.
+
+
 2026-03-18 Version: 3.0.0
 - Delete API ConfigSchedruleOnDemand.
 - Delete API CreateSchedruleOnDemand.

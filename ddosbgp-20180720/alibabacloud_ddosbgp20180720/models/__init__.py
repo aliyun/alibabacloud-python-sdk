@@ -60,6 +60,9 @@ from ._describe_instance_list_response import DescribeInstanceListResponse
 from ._describe_instance_specs_request import DescribeInstanceSpecsRequest
 from ._describe_instance_specs_response_body import DescribeInstanceSpecsResponseBody
 from ._describe_instance_specs_response import DescribeInstanceSpecsResponse
+from ._describe_network_layer_intercepts_request import DescribeNetworkLayerInterceptsRequest
+from ._describe_network_layer_intercepts_response_body import DescribeNetworkLayerInterceptsResponseBody
+from ._describe_network_layer_intercepts_response import DescribeNetworkLayerInterceptsResponse
 from ._describe_op_entities_request import DescribeOpEntitiesRequest
 from ._describe_op_entities_response_body import DescribeOpEntitiesResponseBody
 from ._describe_op_entities_response import DescribeOpEntitiesResponse
@@ -143,6 +146,7 @@ from ._describe_instance_list_response_body import DescribeInstanceListResponseB
 from ._describe_instance_list_response_body import DescribeInstanceListResponseBodyInstanceList
 from ._describe_instance_specs_response_body import DescribeInstanceSpecsResponseBodyInstanceSpecsPackConfig
 from ._describe_instance_specs_response_body import DescribeInstanceSpecsResponseBodyInstanceSpecs
+from ._describe_network_layer_intercepts_response_body import DescribeNetworkLayerInterceptsResponseBodyInterceptionRecords
 from ._describe_op_entities_response_body import DescribeOpEntitiesResponseBodyOpEntities
 from ._describe_pack_ip_list_response_body import DescribePackIpListResponseBodyIpList
 from ._describe_rd_member_list_response_body import DescribeRdMemberListResponseBodyMemberList
@@ -156,6 +160,7 @@ from ._list_policy_response_body import ListPolicyResponseBodyPolicyListContentL
 from ._list_policy_response_body import ListPolicyResponseBodyPolicyListContentL4RuleListConditionList
 from ._list_policy_response_body import ListPolicyResponseBodyPolicyListContentL4RuleList
 from ._list_policy_response_body import ListPolicyResponseBodyPolicyListContentPortRuleList
+from ._list_policy_response_body import ListPolicyResponseBodyPolicyListContentSipDefense
 from ._list_policy_response_body import ListPolicyResponseBodyPolicyListContentSourceBlockList
 from ._list_policy_response_body import ListPolicyResponseBodyPolicyListContentSourceLimit
 from ._list_policy_response_body import ListPolicyResponseBodyPolicyListContent
@@ -171,6 +176,7 @@ from ._modify_policy_request import ModifyPolicyRequestContentL4RuleListConditio
 from ._modify_policy_request import ModifyPolicyRequestContentL4RuleListConditionList
 from ._modify_policy_request import ModifyPolicyRequestContentL4RuleList
 from ._modify_policy_request import ModifyPolicyRequestContentPortRuleList
+from ._modify_policy_request import ModifyPolicyRequestContentSipDefense
 from ._modify_policy_request import ModifyPolicyRequestContentSourceBlockList
 from ._modify_policy_request import ModifyPolicyRequestContentSourceLimit
 from ._modify_policy_request import ModifyPolicyRequestContent
@@ -179,6 +185,7 @@ from ._modify_policy_content_request import ModifyPolicyContentRequestContentL4R
 from ._modify_policy_content_request import ModifyPolicyContentRequestContentL4RuleListConditionList
 from ._modify_policy_content_request import ModifyPolicyContentRequestContentL4RuleList
 from ._modify_policy_content_request import ModifyPolicyContentRequestContentPortRuleList
+from ._modify_policy_content_request import ModifyPolicyContentRequestContentSipDefense
 from ._modify_policy_content_request import ModifyPolicyContentRequestContentSourceBlockList
 from ._modify_policy_content_request import ModifyPolicyContentRequestContentSourceLimit
 from ._modify_policy_content_request import ModifyPolicyContentRequestContent
@@ -243,6 +250,9 @@ __all__ = [
     DescribeInstanceSpecsRequest,
     DescribeInstanceSpecsResponseBody,
     DescribeInstanceSpecsResponse,
+    DescribeNetworkLayerInterceptsRequest,
+    DescribeNetworkLayerInterceptsResponseBody,
+    DescribeNetworkLayerInterceptsResponse,
     DescribeOpEntitiesRequest,
     DescribeOpEntitiesResponseBody,
     DescribeOpEntitiesResponse,
@@ -326,6 +336,7 @@ __all__ = [
     DescribeInstanceListResponseBodyInstanceList,
     DescribeInstanceSpecsResponseBodyInstanceSpecsPackConfig,
     DescribeInstanceSpecsResponseBodyInstanceSpecs,
+    DescribeNetworkLayerInterceptsResponseBodyInterceptionRecords,
     DescribeOpEntitiesResponseBodyOpEntities,
     DescribePackIpListResponseBodyIpList,
     DescribeRdMemberListResponseBodyMemberList,
@@ -339,6 +350,7 @@ __all__ = [
     ListPolicyResponseBodyPolicyListContentL4RuleListConditionList,
     ListPolicyResponseBodyPolicyListContentL4RuleList,
     ListPolicyResponseBodyPolicyListContentPortRuleList,
+    ListPolicyResponseBodyPolicyListContentSipDefense,
     ListPolicyResponseBodyPolicyListContentSourceBlockList,
     ListPolicyResponseBodyPolicyListContentSourceLimit,
     ListPolicyResponseBodyPolicyListContent,
@@ -354,6 +366,7 @@ __all__ = [
     ModifyPolicyRequestContentL4RuleListConditionList,
     ModifyPolicyRequestContentL4RuleList,
     ModifyPolicyRequestContentPortRuleList,
+    ModifyPolicyRequestContentSipDefense,
     ModifyPolicyRequestContentSourceBlockList,
     ModifyPolicyRequestContentSourceLimit,
     ModifyPolicyRequestContent,
@@ -362,6 +375,7 @@ __all__ = [
     ModifyPolicyContentRequestContentL4RuleListConditionList,
     ModifyPolicyContentRequestContentL4RuleList,
     ModifyPolicyContentRequestContentPortRuleList,
+    ModifyPolicyContentRequestContentSipDefense,
     ModifyPolicyContentRequestContentSourceBlockList,
     ModifyPolicyContentRequestContentSourceLimit,
     ModifyPolicyContentRequestContent,

@@ -21,9 +21,11 @@ class DescribeRdStatusResponseBody(DaraModel):
         self.current_uid = current_uid
         # The type of the Alibaba Cloud account. Valid values:
         # 
-        # *   **MasterAccount**: management account.
-        # *   **DelegatedAdminAccount**: delegated administrator account.
-        # *   **MemberAccount**: member.
+        # - **MasterAccount**: management account.
+        # 
+        # - **DelegatedAdminAccount**: delegated administrator account.
+        # 
+        # - **MemberAccount**: member.
         self.current_uid_type = current_uid_type
         # Indicates whether the multi-account management feature is enabled for Anti-DDoS Origin.
         self.enabled = enabled

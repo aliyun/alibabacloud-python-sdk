@@ -10,13 +10,13 @@ class DescribeRegionsRequest(DaraModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the region. The default value is **cn-hangzhou**. If the default value is used, the regions of cloud assets that can be protected by Anti-DDoS Origin in the China (Hangzhou) region are queried.
+        # The region ID to query. Default value: **ap-southeast-1**, which indicates that the regions of cloud assets that can be protected by the Anti-DDoS Origin instance in the China (Hangzhou) region are queried.
         # 
-        # If you want to specify another value for **RegionId**, see [Regions and Zones](https://help.aliyun.com/document_detail/40654.html).
+        # To query other region IDs, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html) to obtain the corresponding **RegionId**.
         self.region_id = region_id
-        # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management. This parameter is empty by default, which indicates that the Anti-DDoS Origin instance belongs to the default resource group.
+        # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management. By default, this parameter is empty, which indicates that the instance belongs to the default resource group.
         # 
-        # For information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
+        # For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
         self.resource_group_id = resource_group_id
 
     def validate(self):
