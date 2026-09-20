@@ -15,11 +15,11 @@ class CreateTaskResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The response data.
+        # The response object.
         self.data = data
-        # The status message.
+        # The status description.
         self.message = message
-        # The request ID, used for troubleshooting only.
+        # The request ID, used only for troubleshooting.
         self.request_id = request_id
 
     def validate(self):
@@ -70,11 +70,11 @@ class CreateTaskResponseBodyData(DaraModel):
         task_key: str = None,
         task_status: str = None,
     ):
-        # The stream ingestion URL. Push audio streams to this URL for real-time transcription.
+        # The audio stream push URL generated in the real-time recording scenario. You can use this URL for subsequent real-time audio stream recognition.
         self.meeting_join_url = meeting_join_url
         # The task ID.
         self.task_id = task_id
-        # The custom identifier specified during task creation.
+        # The custom identifier set by the user when creating the task.
         self.task_key = task_key
         # The task status.
         self.task_status = task_status
