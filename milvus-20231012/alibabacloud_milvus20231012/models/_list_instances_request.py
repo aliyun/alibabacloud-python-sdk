@@ -30,7 +30,7 @@ class ListInstancesRequest(DaraModel):
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The tags used to filter instances.
+        # The tag information.
         self.tag = tag
 
     def validate(self):
@@ -103,9 +103,9 @@ class ListInstancesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of the tag.
         self.key = key
-        # The tag value.
+        # The value of the tag.
         self.value = value
 
     def validate(self):

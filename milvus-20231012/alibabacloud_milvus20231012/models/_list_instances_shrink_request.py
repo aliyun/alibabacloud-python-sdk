@@ -27,7 +27,7 @@ class ListInstancesShrinkRequest(DaraModel):
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The tags used to filter instances.
+        # The tag information.
         self.tag_shrink = tag_shrink
 
     def validate(self):

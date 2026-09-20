@@ -15,7 +15,7 @@ class ModifyInstanceConfigResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details of the access denied error.
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
         # The returned data.
         self.data = data

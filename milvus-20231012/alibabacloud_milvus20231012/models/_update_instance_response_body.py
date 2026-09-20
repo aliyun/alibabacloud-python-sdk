@@ -16,6 +16,7 @@ class UpdateInstanceResponseBody(DaraModel):
         self.request_id = request_id
         # The operation result.
         self.data = data
+        # The order ID.
         self.order_id = order_id
         # Indicates whether the request was successful.
         self.success = success

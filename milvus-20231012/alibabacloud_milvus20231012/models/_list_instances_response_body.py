@@ -19,9 +19,9 @@ class ListInstancesResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
-        # Details for an access denial error.
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
-        # An array of instance objects.
+        # The returned data.
         self.data = data
         # The error code.
         self.err_code = err_code
@@ -33,7 +33,7 @@ class ListInstancesResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
-        # The total number of instances found.
+        # The total count.
         self.total = total
 
     def validate(self):
@@ -123,6 +123,7 @@ class ListInstancesResponseBodyData(DaraModel):
         product_code: str = None,
         region_id: str = None,
         resource_group_id: str = None,
+        resource_owner_id: str = None,
         running_time: int = None,
         sg_id: str = None,
         tags: List[main_models.ListInstancesResponseBodyDataTags] = None,
@@ -134,67 +135,57 @@ class ListInstancesResponseBodyData(DaraModel):
     ):
         # Indicates whether automatic backup is enabled.
         self.auto_backup = auto_backup
-        # The creation time of the instance.
+        # The start time.
         self.begin_time = begin_time
         # The instance details.
         self.cluster_info = cluster_info
         # The instance name.
         self.cluster_name = cluster_name
-        # The expiration time of the instance.
+        # The expiration time.
         self.expire_time = expire_time
         # The instance ID.
         self.instance_id = instance_id
         # The instance status. Valid values:
-        # 
-        # - `creating`: The instance is being created.
-        # 
-        # - `running`: The instance is running.
-        # 
-        # - `updating`: The instance is being updated. This includes scaling the instance, changing configurations, or modifying public network access.
-        # 
-        # - `disable`: The instance is unavailable because it has expired and requires renewal.
-        # 
-        # - `deleting`: The instance is being deleted.
-        # 
-        # - `deleted`: The instance has been deleted.
+        # - creating: Being created.
+        # - running: Running.
+        # - updating: Being upgraded. This includes specification changes, configuration changes, and enabling or disabling public network access.
+        # - disable: Unavailable. The cluster has expired and requires renewal to reactivate.
+        # - deleting: Being deleted.
+        # - deleted: Deleted.
         self.instance_status = instance_status
         # The node type.
         self.node_type = node_type
         # Indicates whether public network access is enabled.
         self.open_public_net = open_public_net
-        # The instance edition. Valid values:
-        # 
-        # - `trial`: Trial Edition.
-        # 
-        # - `standard`: Standard Edition.
+        # The edition. Valid values:
+        # - trial: Trial Edition.
+        # - standard: Standard Edition.
         self.package_type = package_type
-        # The billing method. Valid values:
-        # 
-        # - `0`: pay-as-you-go.
-        # 
-        # - `1`: subscription.
+        # The billing type. Valid values:
+        # - 0: Pay-as-you-go.
+        # - 1: Subscription.
         self.pay_type = pay_type
-        # The product code.
+        # The commodity code.
         self.product_code = product_code
         # The region ID.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The duration the instance has been running.
+        # The ID of the resource owner account.
+        self.resource_owner_id = resource_owner_id
+        # The running time.
         self.running_time = running_time
         # The security group ID.
         self.sg_id = sg_id
-        # The tags attached to the instance.
+        # The tag information.
         self.tags = tags
-        # The template version.
         self.template_version = template_version
-        # The instance version.
         self.version = version
         # The VPC ID.
         self.vpc_id = vpc_id
         # The vSwitch ID.
         self.vsw_id = vsw_id
-        # The zone ID.
+        # The zone.
         self.zone_id = zone_id
 
     def validate(self):
@@ -251,6 +242,9 @@ class ListInstancesResponseBodyData(DaraModel):
 
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
 
         if self.running_time is not None:
             result['RunningTime'] = self.running_time
@@ -325,6 +319,9 @@ class ListInstancesResponseBodyData(DaraModel):
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
 
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+
         if m.get('RunningTime') is not None:
             self.running_time = m.get('RunningTime')
 
@@ -360,9 +357,9 @@ class ListInstancesResponseBodyDataTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of the tag.
         self.key = key
-        # The tag value.
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -399,22 +396,25 @@ class ListInstancesResponseBodyDataClusterInfo(DaraModel):
         intranet_url: str = None,
         milvus_resource_info_list: List[main_models.ListInstancesResponseBodyDataClusterInfoMilvusResourceInfoList] = None,
         proxy_port: int = None,
+        resource_owner_id: str = None,
         total_cu_num: int = None,
         total_disk_size: int = None,
     ):
-        # The Attu port.
+        # The port of the Attu component.
         self.attu_port = attu_port
         # The public endpoint.
         self.internet_url = internet_url
         # The internal endpoint.
         self.intranet_url = intranet_url
-        # A list of resource details for the instance\\"s components.
+        # The resource details.
         self.milvus_resource_info_list = milvus_resource_info_list
         # The proxy port.
         self.proxy_port = proxy_port
-        # The total number of CUs.
+        # The ID of the resource owner account.
+        self.resource_owner_id = resource_owner_id
+        # The number of CUs.
         self.total_cu_num = total_cu_num
-        # The total disk size in GB.
+        # The total disk size.
         self.total_disk_size = total_disk_size
 
     def validate(self):
@@ -445,6 +445,9 @@ class ListInstancesResponseBodyDataClusterInfo(DaraModel):
         if self.proxy_port is not None:
             result['ProxyPort'] = self.proxy_port
 
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+
         if self.total_cu_num is not None:
             result['TotalCuNum'] = self.total_cu_num
 
@@ -473,6 +476,9 @@ class ListInstancesResponseBodyDataClusterInfo(DaraModel):
         if m.get('ProxyPort') is not None:
             self.proxy_port = m.get('ProxyPort')
 
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+
         if m.get('TotalCuNum') is not None:
             self.total_cu_num = m.get('TotalCuNum')
 
@@ -491,22 +497,16 @@ class ListInstancesResponseBodyDataClusterInfoMilvusResourceInfoList(DaraModel):
         replica: int = None,
     ):
         # The component type. Valid values:
-        # 
-        # - `standalone`
-        # 
-        # - `proxy`
-        # 
-        # - `mix_coordinator`
-        # 
-        # - `query`
-        # 
-        # - `index`
-        # 
-        # - `data`
+        # - standalone
+        # - proxy
+        # - mix_coordinator
+        # - query
+        # - index
+        # - data
         self.component_type = component_type
         # The number of CUs.
         self.cu_num = cu_num
-        # The disk size in GB.
+        # The disk size.
         self.disk_size = disk_size
         # The disk type.
         self.disk_type = disk_type
