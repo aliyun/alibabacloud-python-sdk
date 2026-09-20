@@ -1,3 +1,7 @@
+2026-09-20 Version: 7.1.3
+- Update API GetProject: add response parameters Body.data.securityProperties.enableNamespacePrivilege.
+
+
 2026-09-18 Version: 7.1.2
 - Update API UpdateMmsTimer: add request parameters body.tableBlackList.
 - Update API UpdateMmsTimer: add request parameters body.tableWhiteList.
