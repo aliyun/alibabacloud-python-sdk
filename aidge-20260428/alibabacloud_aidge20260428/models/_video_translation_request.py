@@ -18,7 +18,7 @@ class VideoTranslationRequest(DaraModel):
         # 
         # This parameter is required.
         self.capabilities = capabilities
-        # The source language. This parameter is optional. Default value: auto (automatic detection).
+        # The source language. This parameter is optional. Default value: auto, which indicates automatic detection.
         self.source_language = source_language
         # The target language. This parameter is required.
         # 

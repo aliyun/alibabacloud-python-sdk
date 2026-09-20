@@ -111,11 +111,11 @@ class ImageRecognitionResponseBodyData(DaraModel):
         self.obj_watermark = obj_watermark
         # The number of products.
         self.pd_num = pd_num
-        # The proportion of the product area in the image.
+        # The proportion of the product in the image.
         self.pd_prop = pd_prop
         # The list of recognized text.
         self.rec_text = rec_text
-        # The proportion of the text area in the image.
+        # The proportion of text in the image.
         self.text_prop = text_prop
         # The usage information.
         self.usage_map = usage_map

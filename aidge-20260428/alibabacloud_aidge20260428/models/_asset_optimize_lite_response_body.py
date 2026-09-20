@@ -71,8 +71,6 @@ class AssetOptimizeLiteResponseBody(DaraModel):
 
         return self
 
-
-
 class AssetOptimizeLiteResponseBodyData(DaraModel):
     def __init__(
         self,

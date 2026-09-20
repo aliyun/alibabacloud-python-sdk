@@ -1,3 +1,7 @@
+2026-09-20 Version: 5.7.0
+- Support API AiTryOn.
+
+
 2026-09-15 Version: 5.6.0
 - Support API SubmitProductMatch.
 

@@ -2,6 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._ai_try_on_request import AiTryOnRequest
+from ._ai_try_on_response_body import AiTryOnResponseBody
+from ._ai_try_on_response import AiTryOnResponse
 from ._asset_optimize_lite_request import AssetOptimizeLiteRequest
 from ._asset_optimize_lite_response_body import AssetOptimizeLiteResponseBody
 from ._asset_optimize_lite_response import AssetOptimizeLiteResponse
@@ -108,6 +111,8 @@ from ._vision_flow_request import VisionFlowRequest
 from ._vision_flow_shrink_request import VisionFlowShrinkRequest
 from ._vision_flow_response_body import VisionFlowResponseBody
 from ._vision_flow_response import VisionFlowResponse
+from ._ai_try_on_response_body import AiTryOnResponseBodyDataUsageMap
+from ._ai_try_on_response_body import AiTryOnResponseBodyData
 from ._asset_optimize_lite_response_body import AssetOptimizeLiteResponseBodyData
 from ._asset_optimize_pro_response_body import AssetOptimizeProResponseBodyData
 from ._category_attribute_match_response_body import CategoryAttributeMatchResponseBodyDataAttributes
@@ -178,6 +183,9 @@ from ._virtual_try_on_response_body import VirtualTryOnResponseBodyData
 from ._vision_flow_response_body import VisionFlowResponseBodyData
 
 __all__ = [
+    AiTryOnRequest,
+    AiTryOnResponseBody,
+    AiTryOnResponse,
     AssetOptimizeLiteRequest,
     AssetOptimizeLiteResponseBody,
     AssetOptimizeLiteResponse,
@@ -284,6 +292,8 @@ __all__ = [
     VisionFlowShrinkRequest,
     VisionFlowResponseBody,
     VisionFlowResponse,
+    AiTryOnResponseBodyDataUsageMap,
+    AiTryOnResponseBodyData,
     AssetOptimizeLiteResponseBodyData,
     AssetOptimizeProResponseBodyData,
     CategoryAttributeMatchResponseBodyDataAttributes,

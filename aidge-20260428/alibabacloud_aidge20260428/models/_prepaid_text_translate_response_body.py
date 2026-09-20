@@ -81,7 +81,7 @@ class PrepaidTextTranslateResponseBodyData(DaraModel):
     ):
         # The translation result list. Each element corresponds to a translation result for an entry in the input text list.
         self.translations = translations
-        # The usage information, including the number of input characters.
+        # The usage information, including the input character count.
         self.usage_map = usage_map
 
     def validate(self):

@@ -22,9 +22,9 @@ class VirtualTryOnResponseBody(DaraModel):
         self.data = data
         # The error message. This parameter is not returned if the call is successful.
         self.message = message
-        # The request ID. Used to uniquely identify a single API call.
+        # The request ID, which uniquely identifies the request.
         self.request_id = request_id
-        # Indicates whether the call is successful. A value of true indicates success. A value of false indicates failure.
+        # Indicates whether the call is successful. Valid values: true: The call is successful. false: The call failed.
         self.success = success
 
     def validate(self):
@@ -79,7 +79,7 @@ class VirtualTryOnResponseBodyData(DaraModel):
         task_id: str = None,
         usage_map: Dict[str, Any] = None,
     ):
-        # The asynchronous task ID. Used to query the task result later.
+        # The asynchronous task ID, which is used to query the task result later.
         self.task_id = task_id
         # The usage details.
         self.usage_map = usage_map

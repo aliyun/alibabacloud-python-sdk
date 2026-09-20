@@ -16,7 +16,7 @@ class VideoTranslationResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The asynchronous task submit result.
+        # The submit status of the asynchronous task.
         self.data = data
         # The description.
         self.message = message

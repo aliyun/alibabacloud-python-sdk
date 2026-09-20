@@ -40,6 +40,88 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def ai_try_on_with_options(
+        self,
+        request: main_models.AiTryOnRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AiTryOnResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cloth_image_url):
+            query['ClothImageUrl'] = request.cloth_image_url
+        if not DaraCore.is_null(request.cloth_type):
+            query['ClothType'] = request.cloth_type
+        if not DaraCore.is_null(request.model_image_url):
+            query['ModelImageUrl'] = request.model_image_url
+        if not DaraCore.is_null(request.resolution):
+            query['Resolution'] = request.resolution
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AiTryOn',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AiTryOnResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def ai_try_on_with_options_async(
+        self,
+        request: main_models.AiTryOnRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AiTryOnResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cloth_image_url):
+            query['ClothImageUrl'] = request.cloth_image_url
+        if not DaraCore.is_null(request.cloth_type):
+            query['ClothType'] = request.cloth_type
+        if not DaraCore.is_null(request.model_image_url):
+            query['ModelImageUrl'] = request.model_image_url
+        if not DaraCore.is_null(request.resolution):
+            query['Resolution'] = request.resolution
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AiTryOn',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AiTryOnResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def ai_try_on(
+        self,
+        request: main_models.AiTryOnRequest,
+    ) -> main_models.AiTryOnResponse:
+        runtime = RuntimeOptions()
+        return self.ai_try_on_with_options(request, runtime)
+
+    async def ai_try_on_async(
+        self,
+        request: main_models.AiTryOnRequest,
+    ) -> main_models.AiTryOnResponse:
+        runtime = RuntimeOptions()
+        return await self.ai_try_on_with_options_async(request, runtime)
+
     def asset_optimize_lite_with_options(
         self,
         request: main_models.AssetOptimizeLiteRequest,

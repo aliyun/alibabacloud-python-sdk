@@ -16,7 +16,7 @@ class VideoTranslationShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.capabilities_shrink = capabilities_shrink
-        # The source language. This parameter is optional. Default value: auto (automatic detection).
+        # The source language. This parameter is optional. Default value: auto, which indicates automatic detection.
         self.source_language = source_language
         # The target language. This parameter is required.
         # 
