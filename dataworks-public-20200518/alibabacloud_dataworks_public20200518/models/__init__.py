@@ -1050,6 +1050,7 @@ from ._get_alert_message_response_body import GetAlertMessageResponseBodyDataSla
 from ._get_alert_message_response_body import GetAlertMessageResponseBodyDataTopics
 from ._get_alert_message_response_body import GetAlertMessageResponseBodyData
 from ._get_baseline_response_body import GetBaselineResponseBodyDataAlertSettingsDingRobots
+from ._get_baseline_response_body import GetBaselineResponseBodyDataAlertSettingsTopicSlowConfig
 from ._get_baseline_response_body import GetBaselineResponseBodyDataAlertSettings
 from ._get_baseline_response_body import GetBaselineResponseBodyDataOverTimeSettings
 from ._get_baseline_response_body import GetBaselineResponseBodyData
@@ -1407,6 +1408,7 @@ from ._top_ten_elapsed_time_instance_response_body import TopTenElapsedTimeInsta
 from ._top_ten_error_times_instance_response_body import TopTenErrorTimesInstanceResponseBodyInstanceErrorRankErrorRank
 from ._top_ten_error_times_instance_response_body import TopTenErrorTimesInstanceResponseBodyInstanceErrorRank
 from ._update_baseline_request import UpdateBaselineRequestAlertSettingsDingRobots
+from ._update_baseline_request import UpdateBaselineRequestAlertSettingsTopicSlowConfig
 from ._update_baseline_request import UpdateBaselineRequestAlertSettings
 from ._update_baseline_request import UpdateBaselineRequestOvertimeSettings
 from ._update_dialarm_rule_request import UpdateDIAlarmRuleRequestNotificationSettingsNotificationChannels
@@ -2482,6 +2484,7 @@ __all__ = [
     GetAlertMessageResponseBodyDataTopics,
     GetAlertMessageResponseBodyData,
     GetBaselineResponseBodyDataAlertSettingsDingRobots,
+    GetBaselineResponseBodyDataAlertSettingsTopicSlowConfig,
     GetBaselineResponseBodyDataAlertSettings,
     GetBaselineResponseBodyDataOverTimeSettings,
     GetBaselineResponseBodyData,
@@ -2839,6 +2842,7 @@ __all__ = [
     TopTenErrorTimesInstanceResponseBodyInstanceErrorRankErrorRank,
     TopTenErrorTimesInstanceResponseBodyInstanceErrorRank,
     UpdateBaselineRequestAlertSettingsDingRobots,
+    UpdateBaselineRequestAlertSettingsTopicSlowConfig,
     UpdateBaselineRequestAlertSettings,
     UpdateBaselineRequestOvertimeSettings,
     UpdateDIAlarmRuleRequestNotificationSettingsNotificationChannels,

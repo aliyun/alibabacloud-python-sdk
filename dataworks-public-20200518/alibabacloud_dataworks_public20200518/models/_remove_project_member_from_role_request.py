@@ -11,25 +11,26 @@ class RemoveProjectMemberFromRoleRequest(DaraModel):
         role_code: str = None,
         user_id: str = None,
     ):
-        # The DataWorks workspace ID.
+        # The ID of the DataWorks workspace.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The code of the role in the DataWorks workspace. You can call the ListProjectRoles operation to query the codes of all roles in a DataWorks workspace. Valid values:
+        # The role code of the DataWorks workspace. You can invoke the ListProjectRoles operation to obtain the list of role codes for a project.
+        # The default preset roles are as follows:
         # 
-        # *   role_project_owner: workspace owner
-        # *   role_project_admin: workspace administrator
-        # *   role_project_dev: developer
-        # *   role_project_pe: O\\&M engineer
-        # *   role_project_deploy: deployment expert
-        # *   role_project_guest: visitor
-        # *   role_project_security: security administrator
-        # *   role_project_tester: experiencer
-        # *   role_project_erd: model designer
+        # - role_project_owner: Project owner.
+        # - role_project_admin: Storage management administrator.
+        # - role_project_dev: Developer.
+        # - role_project_pe: O&M engineer.
+        # - role_project_deploy: Deployment.
+        # - role_project_guest: Visitor.
+        # - role_project_security: Security administrator.
+        # - role_project_tester: Experience user.
+        # - role_project_erd: Model designer.
         # 
         # This parameter is required.
         self.role_code = role_code
-        # The user ID.
+        # The ID of the user.
         # 
         # This parameter is required.
         self.user_id = user_id

@@ -1,3 +1,8 @@
+2026-09-20 Version: 10.1.1
+- Update API GetBaseline: add response parameters Body.Data.AlertSettings.$.TopicSlowConfig.
+- Update API UpdateBaseline: add request parameters AlertSettings.$.TopicSlowConfig.
+
+
 2026-07-27 Version: 10.1.0
 - Support API DsgGetVisitDetail.
 - Support API DsgGetVisitStat.

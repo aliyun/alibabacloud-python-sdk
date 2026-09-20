@@ -17,17 +17,17 @@ class ListBaselineStatusesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The data returned.
+        # The list of baseline instances returned.
         self.data = data
-        # The error code returned.
+        # The error code.
         self.error_code = error_code
-        # The error message returned.
+        # The error message.
         self.error_message = error_message
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The ID of the request. You can use the ID to troubleshoot issues.
+        # The unique ID of the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -92,9 +92,9 @@ class ListBaselineStatusesResponseBodyData(DaraModel):
     ):
         # The list of baseline instances.
         self.baseline_statuses = baseline_statuses
-        # The page number of the returned page.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
         # The total number of baseline instances.
         self.total_count = total_count
@@ -164,35 +164,39 @@ class ListBaselineStatusesResponseBodyDataBaselineStatuses(DaraModel):
         sla_time: int = None,
         status: str = None,
     ):
-        # The baseline ID.
+        # The ID of the baseline.
         self.baseline_id = baseline_id
         # The name of the baseline.
         self.baseline_name = baseline_name
-        # The type of the baseline, including DAILY and HOURLY. Separate multiple types with commas (,).
+        # The type of the baseline. Valid values: DAILY and HOURLY.
         self.baseline_type = baseline_type
-        # The data timestamp.
+        # The business date timestamp.
         self.bizdate = bizdate
-        # The margin of the baseline instance. Unit: seconds.
+        # The buffer time of the baseline instance, in seconds.
         self.buffer = buffer
-        # The timestamp of the predicted time when the baseline instance finished running.
+        # The estimated completion time of the baseline instance.
         self.end_cast = end_cast
-        # The timestamp of the alerting time of the baseline instance.
+        # The warning time of the baseline instance.
+        # 
+        # The format is a 13-digit number, such as `1553531400000`.
         self.exp_time = exp_time
-        # The status of the baseline instance. Valid values: UNFINISH and FINISH.
+        # The completion status of the baseline instance. Valid values: UNFINISH and FINISH.
         self.finish_status = finish_status
-        # The timestamp of the actual time when the baseline instance finished running. This parameter is returned if the value of the FinishStatus parameter is FINISH.
+        # The completion timestamp of the baseline instance. This parameter is returned only when FinishStatus is FINISH.
         self.finish_time = finish_time
-        # The ID of the cycle of the baseline instance. Valid values of the ID of an hour-level cycle: [1,24]. The ID of a day-level cycle is 1.
+        # The cycle number of the baseline instance. The value is 1 for daily baselines. The value ranges from 1 to 24 for hourly baselines.
         self.in_group_id = in_group_id
-        # The ID of the Alibaba Cloud account used by the baseline owner. Multiple IDs are separated by commas (,).
+        # The Alibaba Cloud UID of the baseline owner. Separate multiple owners with commas (,).
         self.owner = owner
-        # The priority of the baseline. Valid values: {1,3,5,7,8}.
+        # The priority of the baseline. Valid values: 1, 3, 5, 7, and 8.
         self.priority = priority
-        # The ID of the workspace to which the baseline belongs.
+        # The ID of the workspace where the baseline resides.
         self.project_id = project_id
-        # The timestamp of the actual time when the baseline instance finished running.
+        # The actual completion time of the baseline instance.
+        # 
+        # The format is a 13-digit number, such as `1553531400000`.
         self.sla_time = sla_time
-        # The status of the baseline. Valid values: ERROR, SAFE, DANGEROUS, and OVER. The value ERROR indicates that no nodes are associated with the baseline, or all nodes associated with the baseline are suspended. The value SAFE indicates that nodes are run before the alert duration begins. The value DANGEROUS indicates that nodes are still running after the alert duration ends but the committed completion time does not arrive. The value OVER indicates that nodes are still running after the committed completion time.
+        # The status of the baseline. Valid values: ERROR, SAFE, DANGEROUS, and OVER.
         self.status = status
 
     def validate(self):

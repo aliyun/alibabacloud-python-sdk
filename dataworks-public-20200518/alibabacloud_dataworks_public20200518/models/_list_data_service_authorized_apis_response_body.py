@@ -17,7 +17,7 @@ class ListDataServiceAuthorizedApisResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The information about the APIs that you are authorized to access.
+        # The information about authorized APIs.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -25,9 +25,9 @@ class ListDataServiceAuthorizedApisResponseBody(DaraModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID.
+        # The request ID. A unique identifier for the request.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -90,13 +90,13 @@ class ListDataServiceAuthorizedApisResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The APIs that you are authorized to access.
+        # The list of authorized APIs.
         self.api_authorized_list = api_authorized_list
-        # The page number. The value of this parameter is the same as that of the PageNumber parameter in the request.
+        # The page number, which is the same as the PageNumber value in the request.
         self.page_number = page_number
         # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -162,27 +162,29 @@ class ListDataServiceAuthorizedApisResponseBodyDataApiAuthorizedList(DaraModel):
         project_id: int = None,
         tenant_id: int = None,
     ):
-        # The API ID.
+        # The ID of the API.
         self.api_id = api_id
         # The name of the API.
         self.api_name = api_name
         # The path of the API.
         self.api_path = api_path
-        # The status of the API. Valid values: 0 and 1. The value 0 indicates that the API is not published. The value 1 indicates that the API is published.
+        # The status of the API. Valid values:
+        # - 0: unpublished.
+        # - 1: published.
         self.api_status = api_status
-        # The time when the API was created.
+        # The time when the API was created. Format: yyyy-MM-dd\\"T\\"HH:mm:ssZ (the example time zone is +0800).
         self.created_time = created_time
-        # The ID of the Alibaba Cloud account used by the API owner.
+        # The Alibaba Cloud ID of the API owner.
         self.creator_id = creator_id
-        # The time when the access permissions on the API were granted.
+        # The time when the API was authorized. Format: yyyy-MM-dd\\"T\\"HH:mm:ssZ (the example time zone is +0800).
         self.grant_created_time = grant_created_time
-        # The expiration time of the access permissions granted on the API.
+        # The expiration time of the API authorization. Format: yyyy-MM-dd\\"T\\"HH:mm:ssZ (the example time zone is +0800).
         self.grant_end_time = grant_end_time
-        # The ID of the Alibaba Cloud account used by the user who granted the access permissions on the API.
+        # The Alibaba Cloud ID of the user who granted the authorization.
         self.grant_operator_id = grant_operator_id
         # The group ID.
         self.group_id = group_id
-        # The time when the API was last updated.
+        # The last modification time of the API. Format: yyyy-MM-dd\\"T\\"HH:mm:ssZ (the example time zone is +0800).
         self.modified_time = modified_time
         # The workspace ID.
         self.project_id = project_id

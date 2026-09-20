@@ -14,7 +14,9 @@ class GetNodeCodeRequest(DaraModel):
         # 
         # This parameter is required.
         self.node_id = node_id
-        # The environment of the workspace. Valid values: PROD and DEV.
+        # The environment of the workspace. Valid values:
+        # - PROD: production environment
+        # - DEV: development environment
         # 
         # This parameter is required.
         self.project_env = project_env

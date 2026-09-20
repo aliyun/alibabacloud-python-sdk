@@ -14,7 +14,7 @@ class SuspendInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The data returned.
+        # The result details returned after the SuspendInstance operation is called.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -24,7 +24,7 @@ class SuspendInstanceResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The request ID. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):

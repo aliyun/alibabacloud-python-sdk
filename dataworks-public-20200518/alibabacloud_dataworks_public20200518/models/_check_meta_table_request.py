@@ -13,15 +13,15 @@ class CheckMetaTableRequest(DaraModel):
         table_guid: str = None,
         table_name: str = None,
     ):
-        # The E-MapReduce (EMR) cluster ID.
+        # The ID of the EMR cluster.
         self.cluster_id = cluster_id
-        # The type of the data source. Valid values: odps and emr.
+        # The data source type. Valid values: odps and emr.
         self.data_source_type = data_source_type
-        # The name of the metadatabase of the EMR cluster.
+        # The name of the EMR database.
         self.database_name = database_name
-        # The GUID of the metatable.
+        # The globally unique identifier of the table.
         self.table_guid = table_guid
-        # The name of the EMR metatable.
+        # The name of the EMR table.
         self.table_name = table_name
 
     def validate(self):

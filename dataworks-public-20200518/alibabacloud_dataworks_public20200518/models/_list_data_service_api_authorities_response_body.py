@@ -17,7 +17,7 @@ class ListDataServiceApiAuthoritiesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The APIs on which other users are granted the access permissions.
+        # The list of APIs authorized to other users.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -25,9 +25,9 @@ class ListDataServiceApiAuthoritiesResponseBody(DaraModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID.
+        # The request ID. A unique identifier for the request.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -90,13 +90,13 @@ class ListDataServiceApiAuthoritiesResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The APIs on which other users are granted the access permissions.
+        # The response structure.
         self.api_authorization_list = api_authorization_list
-        # The page number. The value of this parameter is the same as that of the PageNumber parameter in the request.
+        # The page number, which is the same as the PageNumber value in the request.
         self.page_number = page_number
-        # The number of entries per page. Valid values: 1 to 100. Default value: 10.
+        # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -166,17 +166,17 @@ class ListDataServiceApiAuthoritiesResponseBodyDataApiAuthorizationList(DaraMode
         self.api_name = api_name
         # The path of the API.
         self.api_path = api_path
-        # The status of the API. Valid values: 0 and 1. The value 0 indicates that the API is not published. The value 1 indicates that the API is published.
+        # The status of the API. Valid values: 0: unpublished. 1: published.
         self.api_status = api_status
-        # The authorization records.
+        # The list of authorization details for APIs authorized to other users.
         self.authorization_records = authorization_records
-        # The time when the API was created.
+        # The time when the API was created, in the yyyy-MM-dd\\"T\\"HH:mm:ssZ format (the example time zone is +0800).
         self.created_time = created_time
-        # The ID of the Alibaba Cloud account used by the API owner.
+        # The Alibaba Cloud ID of the API owner.
         self.creator_id = creator_id
         # The group ID.
         self.group_id = group_id
-        # The time when the API was last modified.
+        # The time when the API was last modified, in the yyyy-MM-dd\\"T\\"HH:mm:ssZ format (the example time zone is +0800).
         self.modified_time = modified_time
         # The workspace ID.
         self.project_id = project_id
@@ -279,13 +279,13 @@ class ListDataServiceApiAuthoritiesResponseBodyDataApiAuthorizationListAuthoriza
         end_time: str = None,
         project_id: int = None,
     ):
-        # The time when the access permissions on the API were granted to other users.
+        # The authorization time, in the yyyy-MM-dd\\"T\\"HH:mm:ssZ format (the example time zone is +0800).
         self.created_time = created_time
-        # The ID of the Alibaba Cloud account used by the API owner.
+        # The Alibaba Cloud ID of the API owner.
         self.creator_id = creator_id
-        # The end time of the validity period of the authorization.
+        # The end time of the authorization validity period, in the yyyy-MM-dd\\"T\\"HH:mm:ssZ format (the example time zone is +0800).
         self.end_time = end_time
-        # The ID of the workspace to which the access permissions on the API are granted.
+        # The workspace ID that has been granted the authorization.
         self.project_id = project_id
 
     def validate(self):

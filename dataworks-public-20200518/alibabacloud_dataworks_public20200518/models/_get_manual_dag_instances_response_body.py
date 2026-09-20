@@ -13,9 +13,9 @@ class GetManualDagInstancesResponseBody(DaraModel):
         instances: List[main_models.GetManualDagInstancesResponseBodyInstances] = None,
         request_id: str = None,
     ):
-        # The instances in the manually triggered workflow.
+        # The list of internal instances of the manual workflow.
         self.instances = instances
-        # The request ID.
+        # The unique ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -73,57 +73,71 @@ class GetManualDagInstancesResponseBodyInstances(DaraModel):
         status: str = None,
         task_type: str = None,
     ):
-        # The time when the instance started to run.
+        # The time when the instance node started to run.
+        # 
+        # The value is a 13-digit number, for example, `1605178414676`.
         self.begin_running_time = begin_running_time
-        # The time when the instance started to wait for resources.
+        # The time when the instance node started to wait for resources.
+        # 
+        # The value is a 13-digit number, for example, `1605178414676`.
         self.begin_wait_res_time = begin_wait_res_time
-        # The time when the instance started to wait to be scheduled.
+        # The time when the instance node started to wait for scheduling.
+        # 
+        # The value is a 13-digit number, for example, `1605178414676`.
         self.begin_wait_time_time = begin_wait_time_time
-        # The data timestamp of the instance. In most cases, the value is one day before the time when the instance was run.
+        # The business date. This is typically the day before the node runs.
+        # 
+        # The value is a 13-digit number, for example, `1605178414676`.
         self.biz_date = biz_date
-        # The time when the instance was generated.
+        # The time when the instance node was created.
+        # 
+        # The value is a 13-digit number, for example, `1605178414676`.
         self.create_time = create_time
-        # The user who performed the operation.
+        # The operator.
         self.create_user = create_user
-        # The time when the instance was scheduled to run.
+        # The scheduled time of the instance node.
+        # 
+        # The value is a 13-digit number, for example, `1605178414676`.
         self.cyc_time = cyc_time
-        # The ID of the DAG for the manually triggered workflow.
+        # The DAG ID of the manual workflow instance.
         self.dag_id = dag_id
-        # The type of the manually triggered workflow.
+        # The type of the manual workflow.
         self.dag_type = dag_type
-        # The time when the instance finished running.
+        # The time when the instance node finished running.
+        # 
+        # The value is a 13-digit number, for example, `1605178414676`.
         self.finish_time = finish_time
-        # The ID of the instance in the manually triggered workflow.
+        # The internal instance ID.
         self.instance_id = instance_id
-        # The time when the instance was last modified.
+        # The most recent modification time of the instance node.
+        # 
+        # The value is a 13-digit number, for example, `1605178414676`.
         self.modify_time = modify_time
-        # The ID of the node in the manually triggered workflow.
+        # The internal node ID of the workflow.
         self.node_id = node_id
-        # The name of the node.
+        # The node name.
         self.node_name = node_name
-        # The parameters related to the instance.
+        # The parameter information of the instance.
         self.param_values = param_values
-        # The status of the instance. Valid values:
-        # 
-        # *   NOT_RUN: The instance is not run.
-        # *   WAIT_TIME: The instance is waiting for its scheduling time to arrive.
-        # *   WAIT_RESOURCE: The instance is waiting for resources.
-        # *   RUNNING: The instance is running.
-        # *   CHECKING: Data quality is being checked for the instance.
-        # *   CHECKING_CONDITION: Branch conditions are being checked for the instance.
-        # *   FAILURE: The instance fails to be run.
-        # *   SUCCESS: The instance is successfully run.
+        # The status of the instance node. Valid values:
+        # - NOT_RUN: The instance is not run.
+        # - WAIT_TIME: The instance is waiting for the scheduled dueTime or cycleTime.
+        # - WAIT_RESOURCE: The instance is waiting for resources.
+        # - RUNNING: The instance is running.
+        # - CHECKING: The instance is submitted to Data Quality for data verification.
+        # - CHECKING_CONDITION: The instance is performing branch condition verification.
+        # - FAILURE: The instance failed to run.
+        # - SUCCESS: The instance is run successfully.
         self.status = status
-        # The scheduling type of the node that generates the instance. Valid values:
-        # 
-        # *   NORMAL(0): The node is an auto triggered node. The scheduling system regularly runs the node.
-        # *   MANUAL(1): The node is a manually triggered node. The scheduling system does not regularly run the node.
-        # *   PAUSE(2): The node is a paused node. The scheduling system regularly runs the node but sets the status of the node to failed when the scheduling system starts to run the node.
-        # *   SKIP(3): The node is a dry-run node. The scheduling system regularly runs the node but sets the status of the node to successful when the scheduling system starts to run the node.
-        # *   SKIP_UNCHOOSE(4): The node is an unselected node in a temporary workflow. This type of node exists only in temporary workflows. The scheduling system sets the status of the node to successful when the scheduling system starts to run the node.
-        # *   SKIP_CYCLE(5): The node is a node that is scheduled by week or month and is waiting for the scheduling time to arrive. The scheduling system regularly runs the node but sets the status of the node to successful when the scheduling system starts to run the node.
-        # *   CONDITION_UNCHOOSE(6): The node is not selected by its ancestor branch node and is run as a dry-run node.
-        # *   REALTIME_DEPRECATED(7): The node has instances that are generated in real time but deprecated. The scheduling system sets the status of the node to successful.
+        # The scheduling type of the instance node. Valid values:
+        # - NORMAL(0): a normal scheduling node. The node is scheduled on a daily basis.
+        # - MANUAL(1): a manual node. The node is not scheduled on a daily basis.
+        # - PAUSE(2): a paused node. The node is scheduled on a daily basis, but is set to failed when scheduling starts.
+        # - SKIP(3): a dry-run node. The node is scheduled on a daily basis, but is set to successful when scheduling starts.
+        # - SKIP_UNCHOOSE(4): a node that is not selected in a temporary workflow. This type of node exists only in temporary workflows and is set to successful when scheduling starts.
+        # - SKIP_CYCLE(5): a weekly or monthly node that has not reached its run cycle. The node is scheduled on a daily basis, but is set to successful when scheduling starts.
+        # - CONDITION_UNCHOOSE(6): a downstream node that is not selected by an upstream branch (IF) node. The node is directly set to dry-run.
+        # - REALTIME_DEPRECATED(7): an expired periodic instance generated in real time. This type of node is directly set to successful.
         self.task_type = task_type
 
     def validate(self):

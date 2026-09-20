@@ -10,11 +10,13 @@ class GetIDEEventDetailRequest(DaraModel):
         message_id: str = None,
         project_id: int = None,
     ):
-        # The message ID in DataWorks OpenEvent. You can obtain the ID from a received message when an extension point event is triggered.
+        # The message ID of the DataWorks open message. After an extension point event is triggered, you can obtain the message ID from the received event message.
+        # 
+        # <props="china">For the message format, refer to [Message format](https://help.aliyun.com/document_detail/215367.html).
         # 
         # This parameter is required.
         self.message_id = message_id
-        # The DataWorks workspace ID. You can obtain the ID from the message.
+        # The ID of the DataWorks workspace. You can obtain the workspace ID by parsing the DataWorks open message.
         # 
         # This parameter is required.
         self.project_id = project_id

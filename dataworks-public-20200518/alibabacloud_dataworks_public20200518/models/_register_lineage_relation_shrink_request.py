@@ -9,7 +9,7 @@ class RegisterLineageRelationShrinkRequest(DaraModel):
         self,
         lineage_relation_register_voshrink: str = None,
     ):
-        # The structure whose lineage you want to register to DataWorks.
+        # The lineage registration structure.
         # 
         # This parameter is required.
         self.lineage_relation_register_voshrink = lineage_relation_register_voshrink

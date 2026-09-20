@@ -15,7 +15,7 @@ class ListCheckProcessesResponseBody(DaraModel):
     ):
         # The pagination information.
         self.paging_info = paging_info
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -54,13 +54,13 @@ class ListCheckProcessesResponseBodyPagingInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The check details of the extension.
+        # The details of the extension check processes.
         self.check_processes = check_processes
         # The page number.
         self.page_number = page_number
-        # The number of entries displayed on each page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -122,26 +122,27 @@ class ListCheckProcessesResponseBodyPagingInfoCheckProcesses(DaraModel):
         project_id: int = None,
         status: str = None,
     ):
-        # Extension point event encoding.
+        # The event code of the extension point.
         self.event_code = event_code
         # The name of the extension point event.
         self.event_name = event_name
         # The English name of the event.
         self.event_name_en = event_name_en
-        # DataWorks the message ID of the open message. After an extended point event is triggered, you can obtain the message ID from the received event message.
+        # The message ID of the DataWorks open message. After an extension point event is triggered, you can obtain the message ID from the received event message.
         self.message_id = message_id
-        # The operator ID.
+        # The ID of the operator.
         self.operator = operator
-        # The ID of the process instance.
+        # The process instance ID.
         self.process_id = process_id
-        # The name of the check object, such as the file name or node name.
+        # The name of the operation object, such as the file name or node name.
         self.process_name = process_name
         # The ID of the DataWorks workspace.
         self.project_id = project_id
-        # The status of the extender check.
-        # - CHECKING CHECKING
-        # - PASSED the pass check
-        # - BLOCKED check failed
+        # The check status of the extension. Valid values:
+        # 
+        # - CHECKING: The check is in progress.
+        # - PASSED: The check is passed.
+        # - BLOCKED: The check is not passed.
         self.status = status
 
     def validate(self):

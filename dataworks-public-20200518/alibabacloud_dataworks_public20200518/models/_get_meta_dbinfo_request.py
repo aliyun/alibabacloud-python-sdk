@@ -12,13 +12,13 @@ class GetMetaDBInfoRequest(DaraModel):
         data_source_type: str = None,
         database_name: str = None,
     ):
-        # The compute engine instance ID. Specify the ID in the `Engine type.Engine name` format.
+        # The engine ID, in the format of `Engine type.Engine name`.
         self.app_guid = app_guid
-        # The E-MapReduce (EMR) cluster ID.
+        # The cluster ID of the EMR cluster.
         self.cluster_id = cluster_id
-        # The type of the data source. Valid values: odps and emr.
+        # The data type. Valid values: odps and emr.
         self.data_source_type = data_source_type
-        # The name of the metadatabase of the EMR cluster.
+        # The database of the EMR cluster.
         self.database_name = database_name
 
     def validate(self):

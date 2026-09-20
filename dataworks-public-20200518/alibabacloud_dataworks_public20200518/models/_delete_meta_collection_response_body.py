@@ -20,19 +20,19 @@ class DeleteMetaCollectionResponseBody(DaraModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID.
+        # The request ID. Used for locating logs and troubleshooting issues.
         self.request_id = request_id
-        # The result of the operation. Valid values:
+        # The operation result. Valid values:
+        #  
+        # true: Succeeded.
         # 
-        # true: succeeded
-        # 
-        # false: failed
+        # false: Failed.
         self.status = status
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the call was successful. Valid values:
         # 
-        # true
+        # true: The call was successful.
         # 
-        # false
+        # false: The call failed.
         self.success = success
 
     def validate(self):

@@ -10,11 +10,16 @@ class RestartInstanceRequest(DaraModel):
         instance_id: int = None,
         project_env: str = None,
     ):
-        # The instance ID.
+        # The ID of the instance.
+        # 
+        # You can obtain the ID from Data.Instances[].InstanceId in the ListInstances response.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The environment of the workspace. Valid values: PROD and DEV.
+        # The environment of the workspace. Valid values:
+        # 
+        # - PROD: production environment
+        # - DEV: development environment
         # 
         # This parameter is required.
         self.project_env = project_env

@@ -15,11 +15,11 @@ class AddMetaCollectionEntityRequest(DaraModel):
         # 
         # This parameter is required.
         self.collection_qualified_name = collection_qualified_name
-        # The unique identifier of the entity. Example: maxcompute-table.projectA.tableA.
+        # The unique identifier of the entity.
         # 
         # This parameter is required.
         self.entity_qualified_name = entity_qualified_name
-        # The remarks of the entity. Example: latest product table.
+        # The remarks on the entity.
         self.remark = remark
 
     def validate(self):

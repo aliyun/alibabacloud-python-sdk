@@ -11,18 +11,18 @@ class ListNodeInputOrOutputRequest(DaraModel):
         node_id: int = None,
         project_env: str = None,
     ):
-        # The type of node that you want to query. Valid values:
+        # Specifies whether to query upstream or downstream nodes. Valid values:
         # 
-        # *   input: ancestor node
-        # *   output: descendant node
+        # - input: upstream nodes.
+        # - output: downstream nodes.
         # 
         # This parameter is required.
         self.io_type = io_type
-        # The node ID. You can call the [ListNodes](https://help.aliyun.com/document_detail/173979.html) operation to query the ID.
+        # The node ID. You can call the [ListNodes](https://help.aliyun.com/document_detail/173979.html) operation to query the node ID.
         # 
         # This parameter is required.
         self.node_id = node_id
-        # The environment of the workspace. Valid values: DEV and PROD.
+        # The environment in which the node runs. Valid values: DEV (development environment) and PROD (production environment).
         # 
         # This parameter is required.
         self.project_env = project_env

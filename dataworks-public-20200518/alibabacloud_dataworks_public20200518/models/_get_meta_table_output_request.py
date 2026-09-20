@@ -16,17 +16,21 @@ class GetMetaTableOutputRequest(DaraModel):
     ):
         # The end date.
         # 
+        # The format is `yyyy-MM-dd`, for example, `2020-05-27`.
+        # 
         # This parameter is required.
         self.end_date = end_date
-        # The page number. Valid values: 1 to 30. Default value: 1.
+        # The page number. Default value: 1. Minimum value: 1. Maximum value: 30.
         self.page_number = page_number
         # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
         # The start date.
         # 
+        # The format is `yyyy-MM-dd`, for example, `2020-06-27`.
+        # 
         # This parameter is required.
         self.start_date = start_date
-        # The GUID of the metatable.
+        # The unique identifier of the table.
         # 
         # This parameter is required.
         self.table_guid = table_guid

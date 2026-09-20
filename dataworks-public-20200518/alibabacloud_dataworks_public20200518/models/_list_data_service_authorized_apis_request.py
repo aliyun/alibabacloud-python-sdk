@@ -13,17 +13,17 @@ class ListDataServiceAuthorizedApisRequest(DaraModel):
         project_id: int = None,
         tenant_id: int = None,
     ):
-        # The keyword in API names. The keyword is used to search for the APIs whose names contain the keyword.
+        # The keyword of the API name. This parameter is used to filter APIs whose names contain the specified keyword.
         self.api_name_keyword = api_name_keyword
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number. Pages start from 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: 10. Maximum value: 100.
+        # The number of entries per page. Default value: 10. Maximum value: 50.
         self.page_size = page_size
-        # The workspace ID.
+        # The workspace ID. You can obtain this value from the PageResult.ProjectList[].ProjectId field returned by the ListProjects operation.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The tenant ID. This parameter is deprecated.
+        # **[Deprecated]** The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):

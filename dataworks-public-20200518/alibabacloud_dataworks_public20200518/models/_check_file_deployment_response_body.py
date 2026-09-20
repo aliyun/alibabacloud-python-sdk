@@ -9,7 +9,7 @@ class CheckFileDeploymentResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # The request ID. You can use the ID to troubleshoot issues.
+        # The request ID, which is used for subsequent troubleshooting.
         self.request_id = request_id
 
     def validate(self):

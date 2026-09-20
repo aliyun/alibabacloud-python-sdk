@@ -12,7 +12,7 @@ class RevokeTablePermissionResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the permissions are revoked.
+        # Indicates whether the revocation was successful.
         self.revoke_success = revoke_success
 
     def validate(self):

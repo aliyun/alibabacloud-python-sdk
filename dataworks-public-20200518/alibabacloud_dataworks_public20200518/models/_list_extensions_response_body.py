@@ -56,11 +56,11 @@ class ListExtensionsResponseBodyPagingInfo(DaraModel):
     ):
         # The list of extensions.
         self.extensions = extensions
-        # The page number.
+        # The page number of the request, used for pagination.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries that meet the conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -121,15 +121,21 @@ class ListExtensionsResponseBodyPagingInfoExtensions(DaraModel):
     ):
         # The list of extension point events.
         self.bind_event_list = bind_event_list
-        # The unique code of the extension.
+        # The unique extension code.
         self.extension_code = extension_code
         # The description of the extension.
         self.extension_desc = extension_desc
         # The name of the extension.
         self.extension_name = extension_name
-        # The ID of the RAM user.
+        # The RAM user ID.
         self.owner = owner
-        # The state of the extension. Valid values: 0: Testing 1: Publishing 3: Disabled 4: Processing 5: Approved 6: Approve Failed
+        # The extension status. Valid values:
+        # 0: testing.
+        # 1: online.
+        # 3: disabled.
+        # 4: pending approval.
+        # 5: approved.
+        # 6: rejected.
         self.status = status
 
     def validate(self):
@@ -196,9 +202,9 @@ class ListExtensionsResponseBodyPagingInfoExtensionsBindEventList(DaraModel):
         event_code: str = None,
         event_name: str = None,
     ):
-        # The code of the event.
+        # The event code.
         self.event_code = event_code
-        # The name of the event.
+        # The event name.
         self.event_name = event_name
 
     def validate(self):

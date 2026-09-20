@@ -13,7 +13,7 @@ class ListProjectRolesResponseBody(DaraModel):
         project_role_list: List[main_models.ListProjectRolesResponseBodyProjectRoleList] = None,
         request_id: str = None,
     ):
-        # The roles in the DataWorks workspace.
+        # The list of roles in the workspace.
         self.project_role_list = project_role_list
         # The request ID.
         self.request_id = request_id
@@ -60,13 +60,13 @@ class ListProjectRolesResponseBodyProjectRoleList(DaraModel):
         project_role_name: str = None,
         project_role_type: str = None,
     ):
-        # The code of the role in the DataWorks workspace.
+        # The code of the workspace role.
         self.project_role_code = project_role_code
-        # The ID of the role in the DataWorks workspace.
+        # The ID of the workspace role.
         self.project_role_id = project_role_id
-        # The name of the role in the DataWorks workspace.
+        # The name of the workspace role.
         self.project_role_name = project_role_name
-        # The type of the role in the DataWorks workspace.
+        # The type of the workspace role.
         self.project_role_type = project_role_type
 
     def validate(self):

@@ -19,33 +19,45 @@ class RunManualDagNodesRequest(DaraModel):
         project_name: str = None,
         start_biz_date: str = None,
     ):
-        # The data timestamp. The value of the data timestamp must be one or more days before the current date. For example, if the current date is November 11, 2020, set the value to 2020-11-10 00:00:00 or earlier. Configure this parameter in the YYYY-MM-DD 00:00:00 format. The StartBizDate parameter is used together with the EndBizDate parameter. You can configure only the BizDate parameter or the StartBizDate and EndBizDate parameters.
+        # The business date. The value must be less than or equal to the current date minus 1 day. For example, if today is November 11, 2020, the business date must be 00:00:00 on November 10, 2020 or an earlier date. The hour, minute, and second values of the business date must all be set to 00.
+        # 
+        # This parameter is used together with the StartBizDate and EndBizDate parameters. You can configure only one of BizDate or the StartBizDate and EndBizDate pair.
+        # 
+        # Format: `yyyy-MM-dd HH:mm:ss`. Example: `2020-11-11 00:00:00`.
         self.biz_date = biz_date
-        # The parameters are synchronized to all the instances in the directed acyclic graph (DAG) of the workflow. If a workflow parameter specified in DagParameters is referenced as a scheduling parameter of a [node](https://help.aliyun.com/document_detail/147245.html), the value of the scheduling parameter is replaced with the value of the workflow parameter.
+        # This parameter is synchronized to all instances of the current dagrun. If the scheduling parameters of internal nodes ([supported node types](https://help.aliyun.com/document_detail/147245.html)) reference workflow parameters in DagParameters, the corresponding parameter values of the nodes are replaced with the workflow parameters in DagParameters.
         self.dag_parameters = dag_parameters
-        # The end of the time range in which data generated needs to be processed. Configure this parameter in the yyyy-MM-dd HH:mm:ss format. The StartBizDate parameter is used together with the EndBizDate parameter. You can configure only the BizDate parameter or the StartBizDate and EndBizDate parameters.
+        # The business end date. Format: yyyy-MM-dd HH:mm:ss.
+        # 
+        # This parameter is used together with the StartBizDate parameter. You can configure only one of the StartBizDate and EndBizDate pair or the BizDate parameter.
         self.end_biz_date = end_biz_date
-        # The IDs of the nodes that you do not need to run in the manually triggered workflow. DataWorks generates dry-run instances for all these nodes. After the dry-run instances are scheduled, the states of these instances are directly set to successful, but the scripts are not run. Separate multiple node IDs with commas (,). The ExcludeNodeIds parameter must be used together with the IncludeNodeIds parameter. This way, the settings of the ExcludeNodeIds parameter can take effect.
+        # The IDs of nodes that you do not want to run within the workflow. The specified nodes generate dry-run instances during execution. After a dry-run instance is scheduled, it immediately succeeds without executing the script content. Separate multiple node IDs with commas (,).
+        # 
+        # The ExcludeNodeIds parameter takes effect only when used together with the IncludeNodeIds parameter.
         self.exclude_node_ids = exclude_node_ids
-        # The name of the manually triggered workflow.
+        # The name of the manual workflow.
         # 
         # This parameter is required.
         self.flow_name = flow_name
-        # The IDs of the nodes that you need to run in the manually triggered workflow. Separate multiple node IDs with commas (,).
+        # The IDs of specific nodes to run within the manual workflow. Separate multiple node IDs with commas (,).
         self.include_node_ids = include_node_ids
-        # The scheduling parameters of nodes in the manually triggered workflow. Configure NodeParameters in the following JSON format: {"\\<ID of a node in the manually triggered workflow>": "Scheduling parameter settings of the node, which are in the same format as the parameter settings in the Scheduling Parameter section of the Properties tab on the DataStudio page", "\\<ID of a node in the manually triggered workflow>": "Scheduling parameter settings of the node, which are in the same format as the parameter settings in the Scheduling Parameter section of the Properties tab on the DataStudio page"}.
+        # The node parameter information passed when the manual workflow is executed. This corresponds to the **scheduling parameters** configured in the **Properties** of nodes within the manual workflow.
+        # 
+        # A JSON format: { "<Node ID within the manual workflow>": "Scheduling parameter information of the node, in the same format as the parameters in the data development scheduling configuration", "<Node ID within the manual workflow>": "Scheduling parameter information of the node, in the same format as the parameters in the data development scheduling configuration" }
         self.node_parameters = node_parameters
-        # The environment type of Operation Center. Valid values: PROD and DEV. The value PROD indicates the production environment. The value DEV indicates the development environment.
+        # The environment identifier of the Operation Center. PROD indicates the production environment. DEV indicates the development environment.
         # 
         # This parameter is required.
         self.project_env = project_env
-        # The ID of the workspace to which the manually triggered workflow belongs.
+        # The project ID.
         self.project_id = project_id
-        # The name of the workspace to which the manually triggered workflow belongs.
+        # The name of the workspace to which the manual workflow belongs.
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The beginning of the time range in which data generated needs to be processed. Configure this parameter in the yyyy-MM-dd HH:mm:ss format. The StartBizDate parameter is used together with the EndBizDate parameter. You can configure only the BizDate parameter or the StartBizDate and EndBizDate parameters.
+        # The business start date. Format: yyyy-MM-dd HH:mm:ss.
+        # 
+        # This parameter is used together with the EndBizDate parameter. You can configure only one of the StartBizDate and EndBizDate pair or the BizDate parameter.
         self.start_biz_date = start_biz_date
 
     def validate(self):

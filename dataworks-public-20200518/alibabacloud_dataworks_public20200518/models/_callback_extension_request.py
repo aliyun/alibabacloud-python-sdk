@@ -12,21 +12,22 @@ class CallbackExtensionRequest(DaraModel):
         extension_code: str = None,
         message_id: str = None,
     ):
-        # The check message of the extension point event. If CheckResult is set to FAIL, you must provide the failure cause.
+        # The reason for the failure when CheckResult is set to FAIL.
         self.check_message = check_message
-        # The check status of the extension point event. Valid values:
-        # 
-        # *   OK: The event passes the check.
-        # *   FAIL: The event fails to pass the check. You must check and handle the reported error at the earliest opportunity to ensure that your program is run as expected.
-        # *   WARN: The event passes the check, but an alert is reported.
+        # The check status of the extension program for the extension point event. Valid values:
+        # - OK: The extension program check for the extension point event passed.
+        # - FAIL: The extension program check for the extension point event failed. View and resolve the error promptly to avoid affecting the normal execution of subsequent programs.
+        # - WARN: The extension program check for the extension point event passed, but warnings exist.
         # 
         # This parameter is required.
         self.check_result = check_result
-        # The unique code of the extension.
+        # The unique code of the extension program.
         # 
         # This parameter is required.
         self.extension_code = extension_code
-        # The message ID in DataWorks OpenEvent. You can obtain the ID from a received message when an extension point event is triggered.
+        # The message ID of the DataWorks open message. After an extension point event is triggered, you can obtain the message ID from the received event message.
+        # 
+        # <props="china">For more information about the message format, see [Message format](https://help.aliyun.com/document_detail/215367.html).
         # 
         # This parameter is required.
         self.message_id = message_id

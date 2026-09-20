@@ -11,19 +11,17 @@ class CheckFileDeploymentRequest(DaraModel):
         checker_instance_id: str = None,
         status: str = None,
     ):
-        # This parameter is deprecated.
+        # Deprecated.
         self.check_detail_url = check_detail_url
-        # The ID of the instance to which the file checker belongs. You can obtain the ID from the CheckerInstanceId parameter in the check event logs returned by DataWorks.
+        # The instance ID to which the file checker belongs. You can obtain this value from the CheckerInstanceId field in the file publish check event.
         # 
         # This parameter is required.
         self.checker_instance_id = checker_instance_id
-        # The check status of the file that you want to deploy. Valid values:
+        # The check status of the file pending deployment. Valid values:
         # 
-        # - OK: The file passes the check.
-        # 
-        # - WARN: The file passes the check, but an alert is reported.
-        # 
-        # - FAIL: The file fails the check.
+        # - OK: The file passed the check.
+        # - WARN: The file passed the check but has warnings.
+        # - FAIL: The file failed the check.
         # 
         # This parameter is required.
         self.status = status

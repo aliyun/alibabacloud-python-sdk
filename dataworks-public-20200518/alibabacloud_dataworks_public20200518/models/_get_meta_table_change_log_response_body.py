@@ -92,11 +92,11 @@ class GetMetaTableChangeLogResponseBodyData(DaraModel):
     ):
         # The list of instances.
         self.data_entity_list = data_entity_list
-        # The page number.
+        # The page number. Used for pagination.
         self.page_number = page_number
         # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
-        # The total number of metatables.
+        # The total number of tables.
         self.total_count = total_count
 
     def validate(self):
@@ -159,11 +159,15 @@ class GetMetaTableChangeLogResponseBodyDataDataEntityList(DaraModel):
         self.change_content = change_content
         # The type of the change.
         self.change_type = change_type
-        # The time when the metatable was created.
+        # The time when the table was created.
+        # 
+        # The format is a 13-digit number, for example, `1590722845000`.
         self.create_time = create_time
-        # The time when the metatable was modified.
+        # The time when the table was modified.
+        # 
+        # The format is a 13-digit number, for example, `1590722845000`.
         self.modified_time = modified_time
-        # The entity on which the change was made. Valid values: TABLE and PARTITION.
+        # The type of the changed object. Valid values: TABLE and PARTITION.
         self.object_type = object_type
         # The name of the operator.
         self.operator = operator

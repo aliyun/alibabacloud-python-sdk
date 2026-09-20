@@ -11,13 +11,15 @@ class ListDIAlarmRulesRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The ID of the task with which the alert rules are associated.
+        # The task ID. This is the task ID associated with the alert rule.
+        # 
+        # You can obtain this value from DIJobPaging.DIJobs[].DIJobId in the ListDIJobs response.
         # 
         # This parameter is required.
         self.dijob_id = dijob_id
         # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: 10.
+        # The page size. Default value: 10.
         self.page_size = page_size
 
     def validate(self):

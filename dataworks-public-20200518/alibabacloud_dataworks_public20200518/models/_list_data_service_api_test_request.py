@@ -10,11 +10,11 @@ class ListDataServiceApiTestRequest(DaraModel):
         api_id: int = None,
         page_size: int = None,
     ):
-        # The ID of the DataService Studio API on which tests are performed.
+        # The ID of the API to test.
         # 
         # This parameter is required.
         self.api_id = api_id
-        # The number of entries to return on each page. Maximum value: 100.
+        # The page size. Maximum value: 100.
         self.page_size = page_size
 
     def validate(self):

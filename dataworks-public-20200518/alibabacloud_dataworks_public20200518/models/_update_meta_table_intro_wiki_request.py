@@ -10,11 +10,11 @@ class UpdateMetaTableIntroWikiRequest(DaraModel):
         content: str = None,
         table_guid: str = None,
     ):
-        # The details of the instructions on how to use the metatable.
+        # The details of the table description.
         # 
         # This parameter is required.
         self.content = content
-        # The GUID of the table. Specify the GUID in the odps.{projectName}.{tableName} format.
+        # The globally unique identifier (GUID) of the table, in the format of odps.{projectName}.{tableName}.
         # 
         # This parameter is required.
         self.table_guid = table_guid

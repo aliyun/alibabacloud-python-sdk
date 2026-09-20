@@ -15,7 +15,7 @@ class ListResourceGroupsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The resource groups.
+        # The list of resource groups.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -92,69 +92,66 @@ class ListResourceGroupsResponseBodyData(DaraModel):
         update_time: str = None,
     ):
         # The category of the resource group. Valid values:
-        # 
-        # *   default: shared resource group
-        # *   single: exclusive resource group
+        # - default: public resource group.
+        # - single: dedicated resource group.
         self.biz_ext_key = biz_ext_key
-        # The name of the cluster. This parameter is returned only if the type of the resource group is MaxCompute or PAI.
+        # The name of the cluster. This parameter is valid only for MaxCompute and PAI resource group types.
         self.cluster = cluster
-        # The time when the cluster was created. Example: Jul 9, 2018 2:43:37 PM.
+        # The time when the cluster was created. The format is Jul 9, 2018 2:43:37 PM.
         self.create_time = create_time
-        # Indicates whether the UID of an Alibaba Cloud account is used for access. Valid values:
-        # 
-        # *   true: The MaxCompute compute engine uses the UID of the Alibaba Cloud account as the display name of the account for access.
-        # *   false: The MaxCompute compute engine uses the name of the Alibaba Cloud account as the display name of the account for access. The remaining values are useless. This parameter is returned only if the type of the resource group is MaxCompute.
+        # Indicates whether Kp (key person) access is used. Valid values:
+        # - true: The MaxCompute engine uses the Alibaba Cloud account UID as the display name of the access account.
+        # - false: The MaxCompute engine uses the Alibaba Cloud account name as the display name of the access account.
+        # This parameter is meaningless for other types and is valid only for the MaxCompute engine.
         self.enable_kp = enable_kp
-        # The resource group ID.
+        # The ID of the resource group.
         self.id = id
         # The identifier of the resource group.
         self.identifier = identifier
         # Indicates whether the resource group is the default resource group. Valid values:
-        # 
-        # *   true: The resource group is the default resource group.
-        # *   false: The resource group is not the default resource group.
+        # - true: The resource group is the default resource group.
+        # - false: The resource group is not the default resource group.
         self.is_default = is_default
-        # The mode of the resource group. Valid values:
-        # 
-        # *   ISOLATE: exclusive resource group that adopts the subscription billing method
-        # *   SHARE: shared resource group that adopts the pay-as-you-go billing method
-        # *   DEVELOP: resource group for developers
+        # The type of the resource group. Valid values:
+        # - ISOLATE: an upfront dedicated resource group.
+        # - SHARE: a pay-as-you-go public resource group.
+        # - DEVELOP: a developer edition.
         self.mode = mode
         # The name of the resource group.
         self.name = name
         # The type of the resource group. Valid values:
-        # 
-        # *   0: DataWorks
-        # *   2: MaxCompute
-        # *   3: PAI
-        # *   4: Data Integration
-        # *   7: scheduling
-        # *   9: DataService Studio
+        # - 0: DataWorks
+        # - 2: MaxCompute
+        # - 3: PAI
+        # - 4: data integration
+        # - 7: scheduling
+        # - 9: dataService
         self.resource_group_type = resource_group_type
-        # The ID of your Alibaba Cloud resource group.
+        # The resource group ID.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The sequence number of the resource group. Created resource groups are sorted in ascending order by sequence number.
+        # The sequence field. Used to sort created resource groups in ascending order by creation sequence number.
         self.sequence = sequence
-        # The details of the resource group. The content enclosed in braces {} is the details of the resource group.
+        # The detailed information of the resource group. The content displayed in {} is the detailed information of the resource group.
         self.specs = specs
         # The status of the resource group. Valid values:
-        # 
-        # *   0: NORMAL, which indicates that the resource group is running or in service.
-        # *   1: STOP, which indicates that the resource group has expired and is frozen.
-        # *   2: DELETED, which indicates that the resource group is released or destroyed.
-        # *   3: CREATING, which indicates that the resource group is being created or started.
-        # *   4: CREATE_FAILED, which indicates that the resource group fails to be created or started.
-        # *   5: UPDATING, which indicates that the resource group is being scaled out or upgraded.
-        # *   6: UPDATE_FAILED, which indicates that the resource group fails to be scaled out or upgraded.
-        # *   7: DELETING, which indicates that the resource group is being released or destroyed.
-        # *   8: DELETE_FAILED, which indicates that the resource group fails to be released or destroyed.
-        # *   9: TIMEOUT, which indicates that the operation performed on the resource group times out. All operations may time out. This value is temporarily available only for DataService Studio.
+        # - NORMAL(0): The resource group is running or in service.
+        # - STOP(1): The resource group has expired and is frozen.
+        # - DELETED(2): The resource group has been released or destroyed.
+        # - CREATING(3): The resource group is being created or started.
+        # - CREATE_FAILED(4): The resource group failed to be created or started.
+        # - UPDATING(5): The resource group is being scaled out or upgraded.
+        # - UPDATE_FAILED(6): The resource group failed to be scaled out or upgraded.
+        # - DELETING(7): The resource group is being released or destroyed.
+        # - DELETE_FAILED(8): The resource group failed to be released or destroyed.
+        # - TIMEOUT(9): The operation performed on the resource group timed out. All change operations may time out. This value is temporarily available only for DataService.
         self.status = status
-        # The tags.
+        # The list of tags.
         self.tags = tags
         # The tenant ID.
         self.tenant_id = tenant_id
         # The time when the resource group was last updated.
+        # 
+        # The format is `MMM d, yyyy h:mm:ss a`, for example, `Jul 9, 2018 2:43:37 PM`.
         self.update_time = update_time
 
     def validate(self):

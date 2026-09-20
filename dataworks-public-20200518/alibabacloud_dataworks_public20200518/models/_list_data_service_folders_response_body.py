@@ -13,9 +13,9 @@ class ListDataServiceFoldersResponseBody(DaraModel):
         folder_paging_result: main_models.ListDataServiceFoldersResponseBodyFolderPagingResult = None,
         request_id: str = None,
     ):
-        # The paging result for the folders.
+        # The pagination result of the folder list.
         self.folder_paging_result = folder_paging_result
-        # The request ID.
+        # The request ID. A unique identifier for the request.
         self.request_id = request_id
 
     def validate(self):
@@ -54,13 +54,13 @@ class ListDataServiceFoldersResponseBodyFolderPagingResult(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The folders.
+        # The folder list.
         self.folders = folders
-        # The page number. The value of this parameter is the same as that of the PageNumber parameter in the request.
+        # The page number, which is the same as the PageNumber parameter in the request.
         self.page_number = page_number
         # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -122,16 +122,20 @@ class ListDataServiceFoldersResponseBodyFolderPagingResultFolders(DaraModel):
         tenant_id: int = None,
     ):
         # The time when the folder was created.
+        # 
+        # The format is `yyyy-MM-dd\\"T\\"HH:mm:ssZ`, for example, `2020-09-24T18:37:51+0800`. The time zone offset in this example is `+0800`.
         self.created_time = created_time
         # The folder ID.
         self.folder_id = folder_id
-        # The name of the folder.
+        # The folder name.
         self.folder_name = folder_name
         # The ID of the business process to which the folder belongs.
         self.group_id = group_id
         # The time when the folder was last modified.
+        # 
+        # The format is `yyyy-MM-dd\\"T\\"HH:mm:ssZ`, for example, `2020-09-24T18:37:51+0800`. The time zone offset in this example is `+0800`.
         self.modified_time = modified_time
-        # The ID of the parent folder. The ID of the root folder in a business process is 0, and the ID of a folder created by a user in a business process is greater than 0.
+        # The ID of the parent folder. The root folder ID under a business process is 0. User-created folder IDs are greater than 0.
         self.parent_id = parent_id
         # The workspace ID.
         self.project_id = project_id

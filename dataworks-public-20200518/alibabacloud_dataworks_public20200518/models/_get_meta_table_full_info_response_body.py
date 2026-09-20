@@ -25,9 +25,9 @@ class GetMetaTableFullInfoResponseBody(DaraModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID.
+        # The request ID. You can use this ID to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -108,47 +108,41 @@ class GetMetaTableFullInfoResponseBodyData(DaraModel):
         tenant_id: int = None,
         total_column_count: int = None,
     ):
-        # The EMR cluster ID.
+        # The ID of the EMR cluster.
         self.cluster_id = cluster_id
-        # The fields in the table.
+        # The list of fields.
         self.column_list = column_list
-        # The comment on the table.
+        # The comment of the table.
         self.comment = comment
-        # The time when the table was created. A timestamp is returned for this parameter. You can convert the timestamp to the related date based on the time zone that you use.
+        # The time when the table was created. The value is a timestamp. You can convert the timestamp to a date based on the time zone that you use.
         self.create_time = create_time
-        # The size of the storage space that is consumed by the table. Unit: bytes.
+        # The storage space occupied by the table, in bytes.
         self.data_size = data_size
         # The name of the database.
         self.database_name = database_name
-        # The type of the environment. Valid values:
-        # 
-        # - 0: indicates that the table resides in the development environment.
-        # 
-        # - 1: indicates that the table resides in the production environment.
+        # The environment type. Valid values:
+        # - 0: The table is in the development environment.
+        # - 1: The table is in the production environment.
         self.env_type = env_type
-        # The scope in which the table is visible. Valid values:
-        # 
-        # - 0: indicates that the table is visible to workspace members.
-        # 
-        # - 1: indicates that the table is visible to users within a tenant.
-        # 
-        # - 2: indicates that the table is visible to all tenants.
-        # 
-        # - 3: indicates that the table is visible only to the table owner.
+        # The visibility of the table. Valid values:
+        # - 0: The table is visible to workspace members.
+        # - 1: The table is visible within the tenant.
+        # - 2: The table is visible across tenants.
+        # - 3: The table is visible only to the owner.
         self.is_visible = is_visible
-        # The time when the table was last accessed. A timestamp is returned for this parameter. You can convert the timestamp to the related date based on the time zone that you use.
+        # The time when the table was last accessed. The value is a timestamp. You can convert the timestamp to a date based on the time zone that you use.
         self.last_access_time = last_access_time
-        # The time when the schema of the table was last changed. A timestamp is returned for this parameter. You can convert the timestamp to the related date based on the time zone that you use.
+        # The time when the table schema was last changed. The value is a timestamp. You can convert the timestamp to a date based on the time zone that you use.
         self.last_ddl_time = last_ddl_time
-        # The time when the table was last updated. A timestamp is returned for this parameter. You can convert the timestamp to the related date based on the time zone that you use.
+        # The time when the table was last updated. The value is a timestamp. You can convert the timestamp to a date based on the time zone that you use.
         self.last_modify_time = last_modify_time
-        # The lifecycle of the table. Unit: days.
+        # The lifecycle of the table, in days.
         self.life_cycle = life_cycle
         # The storage path of the Hive table.
         self.location = location
         # The ID of the table owner.
         self.owner_id = owner_id
-        # The partition key column.
+        # The partition keys.
         self.partition_keys = partition_keys
         # The ID of the workspace to which the table belongs.
         self.project_id = project_id
@@ -156,7 +150,7 @@ class GetMetaTableFullInfoResponseBodyData(DaraModel):
         self.project_name = project_name
         # The schema information of the table.
         self.schema = schema
-        # The unique identifier of the table.
+        # The GUID of the table.
         self.table_guid = table_guid
         # The name of the table.
         self.table_name = table_name
@@ -334,33 +328,27 @@ class GetMetaTableFullInfoResponseBodyDataColumnList(DaraModel):
     ):
         # The description of the field.
         self.caption = caption
-        # The unique identifier of the field.
+        # The GUID of the field.
         self.column_guid = column_guid
         # The name of the field.
         self.column_name = column_name
-        # The data type of the field.
+        # The type of the field.
         self.column_type = column_type
-        # The remarks of the field.
+        # The comment of the field.
         self.comment = comment
         # Indicates whether the field is a foreign key. Valid values:
-        # 
-        # - true
-        # 
-        # - false
+        # - true: The field is a foreign key.
+        # - false: The field is not a foreign key.
         self.is_foreign_key = is_foreign_key
         # Indicates whether the field is a partition field. Valid values:
-        # 
-        # - true
-        # 
-        # - false
+        # - true: The field is a partition field.
+        # - false: The field is not a partition field.
         self.is_partition_column = is_partition_column
         # Indicates whether the field is a primary key. Valid values:
-        # 
-        # - true
-        # 
-        # - false
+        # - true: The field is a primary key.
+        # - false: The field is not a primary key.
         self.is_primary_key = is_primary_key
-        # The sequence number of the field.
+        # The ordinal position of the field.
         self.position = position
 
     def validate(self):

@@ -22,12 +22,11 @@ class CreateMetaCollectionResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The unique identifier of the collection.
         self.qualified_name = qualified_name
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   true
-        # *   false
+        # Indicates whether the call was successful. Valid values:
+        # - true: The call was successful.
+        # - false: The call failed.
         self.success = success
 
     def validate(self):

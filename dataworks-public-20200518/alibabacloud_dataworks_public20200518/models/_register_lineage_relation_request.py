@@ -10,7 +10,7 @@ class RegisterLineageRelationRequest(DaraModel):
         self,
         lineage_relation_register_vo: main_models.LineageRelationRegisterVO = None,
     ):
-        # The structure whose lineage you want to register to DataWorks.
+        # The lineage registration structure.
         # 
         # This parameter is required.
         self.lineage_relation_register_vo = lineage_relation_register_vo

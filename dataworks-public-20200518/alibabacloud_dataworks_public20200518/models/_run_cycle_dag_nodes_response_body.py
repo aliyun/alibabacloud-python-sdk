@@ -16,7 +16,7 @@ class RunCycleDagNodesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The IDs of the nodes in the workflow. You can query instances based on the IDs.
+        # The DagId returned by the data backfill instance. You can use this DagId to query the corresponding instances.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -24,9 +24,9 @@ class RunCycleDagNodesResponseBody(DaraModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID. You can use the request ID to query logs and troubleshoot issues.
+        # The request ID. You can use this ID to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):

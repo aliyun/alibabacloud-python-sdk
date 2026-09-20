@@ -14,9 +14,10 @@ class SetEntityTagsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Indicates whether the call was successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # true and false.
+        # - true: The operation was successful.
+        # - false: The operation failed.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -24,11 +25,12 @@ class SetEntityTagsResponseBody(DaraModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID.
+        # The ID of the request, which is used to locate logs and troubleshoot issues.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # true and false.
+        # - true: The request was successful.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):

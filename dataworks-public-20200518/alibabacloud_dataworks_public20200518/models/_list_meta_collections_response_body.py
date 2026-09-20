@@ -17,7 +17,7 @@ class ListMetaCollectionsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The returned result.
+        # The returned object.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -25,13 +25,11 @@ class ListMetaCollectionsResponseBody(DaraModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID.
+        # The request ID. Used for locating logs and troubleshooting issues.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # - true
-        # 
-        # - false
+        # Indicates whether the call was successful. Valid values:
+        # - true: The call was successful.
+        # - false: The call failed.
         self.success = success
 
     def validate(self):
@@ -92,9 +90,9 @@ class ListMetaCollectionsResponseBodyData(DaraModel):
         collection_list: List[main_models.Collection] = None,
         next_token: str = None,
     ):
-        # The collections.
+        # The array object.
         self.collection_list = collection_list
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # The token for the next page.
         self.next_token = next_token
 
     def validate(self):

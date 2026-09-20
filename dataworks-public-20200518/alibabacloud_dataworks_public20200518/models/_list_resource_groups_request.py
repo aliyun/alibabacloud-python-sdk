@@ -17,28 +17,26 @@ class ListResourceGroupsRequest(DaraModel):
         tags: List[main_models.ListResourceGroupsRequestTags] = None,
     ):
         # The category of the resource group. Valid values:
-        # 
-        # *   default (default): shared resource group
-        # *   single: exclusive resource group
+        # - default: public resource group.
+        # - single: dedicated resource group.
         self.biz_ext_key = biz_ext_key
-        # The keyword that is used for fuzzy match by resource group name and identifier.
+        # The keyword. Used for fuzzy matching of resource group names and resource group identifiers.
         self.keyword = keyword
-        # The type of the resource group that you want to query. Valid values:
+        # The type ID of the resource group to query. Valid values:
+        # - 0: DataWorks
+        # - 1: scheduling
+        # - 2: MaxCompute
+        # - 3: PAI
+        # - 4: data integration
+        # - 7: the purchase resource ID generated when you purchase a dedicated schedule resource group
+        # - 9: dataService
+        # - Default value: 1 (scheduling).
         # 
-        # *   0: DataWorks
-        # *   1: scheduling
-        # *   2: MaxCompute
-        # *   3: Platform for AI (PAI)
-        # *   4: Data Integration
-        # *   7: exclusive resource group for scheduling (An ID is generated for the purchased resource when you purchase an exclusive resource group for scheduling.)
-        # *   9: DataService Studio
-        # *   Default value: 1
-        # 
-        # If the value indicates a compute engine, the resource groups to query are the ones that were created when you purchased the compute engine.
+        # When the value represents an engine, the returned resource group list contains the resource groups created when you purchased that type of engine.
         self.resource_group_type = resource_group_type
         # The resource group ID.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The tags.
+        # The list of tags.
         self.tags = tags
 
     def validate(self):

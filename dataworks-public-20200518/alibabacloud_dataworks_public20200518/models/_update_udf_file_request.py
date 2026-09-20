@@ -20,45 +20,46 @@ class UpdateUdfFileRequest(DaraModel):
         return_value: str = None,
         udf_description: str = None,
     ):
-        # The name of the class in which the function is defined. This parameter corresponds to the Class Name parameter in the Register Function section of the configuration tab of the function in the DataWorks console.
+        # The name of the class where the function is defined, which corresponds to the Class Name field in the Create Function form.
         # 
         # This parameter is required.
         self.class_name = class_name
-        # The syntax used for calling the function. This parameter corresponds to the Expression Syntax parameter in the Register Function section of the configuration tab of the function in the DataWorks console.
+        # The command format for calling the function, which corresponds to the Command Format field in the Create Function form.
         self.cmd_description = cmd_description
-        # The example for calling the function. This parameter corresponds to the Example parameter in the Register Function section of the configuration tab of the function in the DataWorks console.
+        # The example of calling the function, which corresponds to the Example field in the Create Function form.
         self.example = example
-        # The path of the folder in which the function file is stored.
+        # The path of the folder where the function file is stored.
         self.file_folder_path = file_folder_path
-        # The file ID.
+        # The ID of the file.
         # 
         # This parameter is required.
         self.file_id = file_id
-        # The type of the function. Valid values: MATH, AGGREGATE, STRING, DATE, ANALYTIC, and OTHER. This parameter corresponds to the Function Type parameter in the Register Function section of the configuration tab of the function on the DataStudio page.
+        # The categorization of the function, which corresponds to the udf type field in the Create Function form. Valid values:
+        # 
+        # - MATH: mathematical operation function.
+        # - AGGREGATE: aggregate functions.
+        # - STRING: character string processing function.
+        # - DATE: date processing function.
+        # - ANALYTIC: window function.
+        # - OTHER: other function.
         # 
         # This parameter is required.
         self.function_type = function_type
-        # The description of the input parameters of the function. This parameter corresponds to the Parameter Description parameter in the Register Function section of the configuration tab of the function on the DataStudio page.
-        # 
-        # Valid values:
-        # 
-        # *   ALL_ALLOWD
-        # *   FAILURE_ALLOWED
-        # *   ALL_DENIED
+        # The description of the function input parameters, which corresponds to the metric description field in the Create Function form.
         self.parameter_description = parameter_description
-        # The ID of the DataWorks workspace. You can click the Workspace Manage icon in the upper-right corner of the DataStudio page to go to the Workspace Management page and view the workspace ID.
+        # The ID of the DataWorks workspace. You can click the small wrench icon in the upper-right corner of the page to go to the storage management page and view the ID.
         self.project_id = project_id
-        # The unique identifier of the DataWorks workspace. You can click the identifier in the upper-left corner of the DataStudio page to switch to another workspace.
+        # The unique identifier of the DataWorks workspace, which is the English identifier displayed in the workspace switcher at the top of the DataStudio page.
         # 
-        # You must specify either this parameter or ProjectId to determine the DataWorks workspace to which the operation is applied.
+        # You must specify either this parameter or the ProjectId parameter to determine the DataWorks workspace for this API call.
         self.project_identifier = project_identifier
-        # The names of the resources that are referenced by the function. This parameter corresponds to the Resources parameter in the Register Function section of the configuration tab of the function in the DataWorks console. Separate multiple resource names with commas (,).
+        # The list of resource names referenced by the function, separated by commas (,). This corresponds to the resources field in the Create Function form.
         # 
         # This parameter is required.
         self.resources = resources
-        # The description of the return value of the function. This parameter corresponds to the Return Value parameter in the Register Function section of the configuration tab of the function on the DataStudio page.
+        # The description of the function return value, which corresponds to the Return Value field in the Create Function form.
         self.return_value = return_value
-        # The description of the function. This parameter corresponds to the Description parameter in the Register Function section of the configuration tab of the function on the DataStudio page.
+        # The description of the function purpose, which corresponds to the Description field in the Create Function form.
         self.udf_description = udf_description
 
     def validate(self):

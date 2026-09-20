@@ -13,9 +13,9 @@ class GetSuccessInstanceTrendResponseBody(DaraModel):
         instance_status_trend: main_models.GetSuccessInstanceTrendResponseBodyInstanceStatusTrend = None,
         request_id: str = None,
     ):
-        # The trend of statistics on the instance status in different time periods.
+        # The statistical trends of instance status by time period.
         self.instance_status_trend = instance_status_trend
-        # The request ID.
+        # The unique ID generated for each request.
         self.request_id = request_id
 
     def validate(self):
@@ -53,11 +53,11 @@ class GetSuccessInstanceTrendResponseBodyInstanceStatusTrend(DaraModel):
         today_trend: List[main_models.GetSuccessInstanceTrendResponseBodyInstanceStatusTrendTodayTrend] = None,
         yesterday_trend: List[main_models.GetSuccessInstanceTrendResponseBodyInstanceStatusTrendYesterdayTrend] = None,
     ):
-        # The average trend.
+        # The historical average trends.
         self.avg_trend = avg_trend
-        # The trend on the current day.
+        # The trends for today.
         self.today_trend = today_trend
-        # The trend on the previous day.
+        # The trends for yesterday.
         self.yesterday_trend = yesterday_trend
 
     def validate(self):
@@ -126,7 +126,9 @@ class GetSuccessInstanceTrendResponseBodyInstanceStatusTrendYesterdayTrend(DaraM
     ):
         # The number of instances.
         self.count = count
-        # The point in time. Valid values: 00:00 to 23:00.
+        # The time point, ranging from 00:00 to 23:00.
+        # 
+        # The format is `HH:mm`, for example, `01:00`.
         self.time_point = time_point
 
     def validate(self):
@@ -163,7 +165,9 @@ class GetSuccessInstanceTrendResponseBodyInstanceStatusTrendTodayTrend(DaraModel
     ):
         # The number of instances.
         self.count = count
-        # The point in time. Valid values: 00:00 to 23:00.
+        # The time point, ranging from 00:00 to 23:00.
+        # 
+        # The format is `HH:mm`, for example, `01:00`.
         self.time_point = time_point
 
     def validate(self):
@@ -200,7 +204,9 @@ class GetSuccessInstanceTrendResponseBodyInstanceStatusTrendAvgTrend(DaraModel):
     ):
         # The number of instances.
         self.count = count
-        # The point in time. Valid values: 00:00 to 23:00.
+        # The time point, ranging from 00:00 to 23:00.
+        # 
+        # The format is `HH:mm`, for example, `01:00`.
         self.time_point = time_point
 
     def validate(self):

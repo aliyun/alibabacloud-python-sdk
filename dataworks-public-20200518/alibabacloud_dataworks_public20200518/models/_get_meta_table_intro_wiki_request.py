@@ -10,11 +10,11 @@ class GetMetaTableIntroWikiRequest(DaraModel):
         table_guid: str = None,
         wiki_version: int = None,
     ):
-        # The GUID of the metatable.
+        # The unique identifier of the table.
         # 
         # This parameter is required.
         self.table_guid = table_guid
-        # The version of the instructions.
+        # The version of the usage instructions.
         self.wiki_version = wiki_version
 
     def validate(self):

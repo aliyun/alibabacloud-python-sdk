@@ -10,9 +10,10 @@ class GetProjectRequest(DaraModel):
         project_id: int = None,
         project_identifier: str = None,
     ):
-        # The ID of the DataWorks workspace. You can call the [ListProjects](https://help.aliyun.com/document_detail/2780068.html) operation to query the ID.
+        # The DataWorks workspace ID.
+        # You can call the [ListProjects](https://help.aliyun.com/document_detail/2780068.html) operation to obtain the workspace ID.
         self.project_id = project_id
-        # The name of the DataWorks workspace. You can call the [ListProjects](https://help.aliyun.com/document_detail/2780068.html) operation to query the name.
+        # The name of the DataWorks workspace. You can call the [ListProjects](https://help.aliyun.com/document_detail/2780068.html) operation to obtain the workspace name.
         self.project_identifier = project_identifier
 
     def validate(self):

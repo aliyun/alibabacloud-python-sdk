@@ -14,19 +14,19 @@ class ListDataServiceFoldersRequest(DaraModel):
         project_id: int = None,
         tenant_id: int = None,
     ):
-        # The keyword in folder names. The keyword is used to search for folders whose names contain this keyword.
+        # The keyword of the folder name. Substring matching is supported.
         self.folder_name_keyword = folder_name_keyword
-        # The ID of the business process to which the folders belong.
+        # The ID of the business process to which the folder belongs.
         self.group_id = group_id
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number. Pages start from 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: 10. Maximum value: 100.
+        # The number of entries per page. Default value: 10. Maximum value: 50.
         self.page_size = page_size
-        # The ID of the workspace.
+        # The workspace ID.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The tenant ID. To obtain the tenant ID, perform the following steps: Log on to the [DataWorks console](https://workbench.data.aliyun.com/console). Find your workspace and go to the DataStudio page. On the page that appears, click the username for the logon in the upper-right corner and click User Info in the Menu section.
+        # The tenant ID. To obtain the tenant ID, log on to the [DataWorks console](https://workbench.data.aliyun.com/console), go to the DataStudio page, click your username in the upper-right corner, and select Menu > User Info.
         self.tenant_id = tenant_id
 
     def validate(self):

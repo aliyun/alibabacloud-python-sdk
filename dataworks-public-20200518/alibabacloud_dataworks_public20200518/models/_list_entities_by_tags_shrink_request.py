@@ -16,11 +16,11 @@ class ListEntitiesByTagsShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.entity_type = entity_type
-        # The pagination token that is used in the next request to retrieve a new page of results.
+        # The pagination token that specifies the start point of the current read operation.
         self.next_token = next_token
-        # The number of entries per page. Default value: 10. Valid values: 1 to 100.
+        # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
-        # The tags.
+        # The list of tags.
         # 
         # This parameter is required.
         self.tags_shrink = tags_shrink

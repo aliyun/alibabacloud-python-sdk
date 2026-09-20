@@ -11,11 +11,11 @@ class GetMetaCategoryRequest(DaraModel):
         page_size: int = None,
         parent_category_id: int = None,
     ):
-        # The number of the page to return.
+        # The page number. Used for pagination.
         self.page_num = page_num
-        # The number of entries to return on each page. Default value: 10. Maximum value: 100.
+        # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
-        # The category tree ID.
+        # The ID of the tree category.
         self.parent_category_id = parent_category_id
 
     def validate(self):

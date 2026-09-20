@@ -54,11 +54,11 @@ class GetDDLJobStatusResponseBodyData(DaraModel):
     ):
         # The content of the task.
         self.content = content
-        # The ID of the ongoing task. If no value is returned for this parameter, all subtasks are complete.
+        # The ID of the task that is in progress. If this parameter is empty, all tasks are completed.
         self.next_task_id = next_task_id
         # The status of the task.
         self.status = status
-        # The task ID.
+        # The ID of the task.
         self.task_id = task_id
 
     def validate(self):

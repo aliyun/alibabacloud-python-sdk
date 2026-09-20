@@ -16,19 +16,19 @@ class UpdateMetaCollectionResponseBody(DaraModel):
     ):
         # The error code.
         self.error_code = error_code
-        # The returned message.
+        # The error message.
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID. You can locate logs and troubleshoot issues based on the ID.
+        # The request ID. Used to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # The result of the operation. Valid values: true false
+        # The update result. Valid values:
+        # - true: Succeeded.
+        # - false: Failed.
         self.status = status
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # - true: The request was successful.
-        # 
-        # - false: The request failed.
+        # Indicates whether the call was successful. Valid values:
+        # - true: The call was successful.
+        # - false: The call failed.
         self.success = success
 
     def validate(self):

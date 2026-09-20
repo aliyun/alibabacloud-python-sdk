@@ -13,7 +13,7 @@ class ListProjectMembersResponseBody(DaraModel):
         data: main_models.ListProjectMembersResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned results.
+        # The query result.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -54,11 +54,11 @@ class ListProjectMembersResponseBodyData(DaraModel):
         project_member_list: List[main_models.ListProjectMembersResponseBodyDataProjectMemberList] = None,
         total_count: int = None,
     ):
-        # The page number.
+        # The current page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The information about members in the DataWorks workspace.
+        # The list of workspace members.
         self.project_member_list = project_member_list
         # The total number of entries returned.
         self.total_count = total_count
@@ -119,29 +119,25 @@ class ListProjectMembersResponseBodyDataProjectMemberList(DaraModel):
         project_role_list: List[main_models.ListProjectMembersResponseBodyDataProjectMemberListProjectRoleList] = None,
         status: str = None,
     ):
-        # The nickname of the member.
+        # The nickname of the workspace member.
         self.nick = nick
-        # The member ID.
+        # The user ID of the member.
         self.project_member_id = project_member_id
         # The name of the member.
         self.project_member_name = project_member_name
         # The type of the member. Valid values:
         # 
-        # - 1: USER_ALIYUN, which indicates that the member is an Alibaba Cloud account.
-        # 
-        # - 5: USER_UBACCOUNT, which indicates that the member is a RAM user.
-        # 
-        # - 6: USER_STS_ROLE, which indicates that the member is a RAM role.
+        # - 1: Alibaba Cloud account (USER_ALIYUN).
+        # - 5: RAM user (USER_UBACCOUNT).
+        # - 6: RAM role (USER_STS_ROLE).
         self.project_member_type = project_member_type
-        # The roles that are assigned to the member.
+        # The list of roles assigned to the member.
         self.project_role_list = project_role_list
-        # The status of the member. Valid values:
-        # 
-        # - 0: NORMAL, which indicates that the member is in a normal state.
-        # 
-        # - 1: FORBIDDEN, which indicates that the member is disabled.
-        # 
-        # - 2: DELETED, which indicates that the member is deleted.
+        # The query status. Valid values:
+        #  
+        # - 0: Normal (NORMAL).
+        # - 1: Disabled (FORBIDDEN).
+        # - 2: Deleted (DELETED).
         self.status = status
 
     def validate(self):
@@ -210,17 +206,17 @@ class ListProjectMembersResponseBodyDataProjectMemberListProjectRoleList(DaraMod
         project_role_name: str = None,
         project_role_type: str = None,
     ):
-        # The code of the role. DataWorks provides built-in roles and allows you to create custom roles based on your business requirements. For more information about roles, see [Overview of users, roles, and permissions](https://help.aliyun.com/document_detail/295463.html).
+        # The role code. DataWorks provides preset roles. You can also create custom roles based on your business requirements. For more information about roles, see [Overview of users, roles, and permissions](https://help.aliyun.com/document_detail/295463.html).
         self.project_role_code = project_role_code
         # The role ID.
         self.project_role_id = project_role_id
-        # The name of the role. DataWorks provides built-in roles and allows you to create custom roles based on your business requirements. For more information about roles, see [Overview of users, roles, and permissions](https://help.aliyun.com/document_detail/295463.html).
+        # The name of the role. DataWorks provides preset roles. You can also create custom roles based on your business requirements. For more information about roles, see [Overview of users, roles, and permissions](https://help.aliyun.com/document_detail/295463.html).
         self.project_role_name = project_role_name
         # The type of the role. Valid values:
         # 
-        # - 0: SYSTEM, which indicates that the role is a built-in role.
+        # - SYSTEM (0): system role.
         # 
-        # - 2: USER_CUSTOM, which indicates that the role is a custom role.
+        # - USER_CUSTOM (2): custom role.
         self.project_role_type = project_role_type
 
     def validate(self):

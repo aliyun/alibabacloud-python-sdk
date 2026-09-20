@@ -14,7 +14,7 @@ class DeleteDataServiceApiResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Indicates whether the API was deleted.
+        # Indicates whether the deletion was successful.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -22,9 +22,9 @@ class DeleteDataServiceApiResponseBody(DaraModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID.
+        # The request ID. It is a unique identifier for the request.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):

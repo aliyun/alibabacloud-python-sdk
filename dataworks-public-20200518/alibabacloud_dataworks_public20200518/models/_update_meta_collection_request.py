@@ -11,7 +11,7 @@ class UpdateMetaCollectionRequest(DaraModel):
         name: str = None,
         qualified_name: str = None,
     ):
-        # The comment of the collection. The comment must be 1 to 64 characters in length.
+        # The comment of the collection. Length limit: 1 to 64 characters.
         self.comment = comment
         # The name of the collection.
         self.name = name

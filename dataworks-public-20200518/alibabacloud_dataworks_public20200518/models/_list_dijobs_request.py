@@ -14,19 +14,19 @@ class ListDIJobsRequest(DaraModel):
         project_id: int = None,
         source_data_source_type: str = None,
     ):
-        # The destination type. If you do not configure this parameter, no limits are imposed on the tasks.
+        # The destination data source type. If this parameter is not specified, no filtering is applied.
         self.destination_data_source_type = destination_data_source_type
-        # The name of the task. Fuzzy match is supported. If you do not configure this parameter, no limits are imposed on the tasks.
+        # The task name. If this parameter is not specified, no filtering is applied. Fuzzy match is supported.
         self.job_name = job_name
         # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: 10. Maximum value: 100.
+        # The page size. Default value: 10. Maximum value: 100.
         self.page_size = page_size
-        # The ID of the workspace.
+        # The workspace ID.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The source type. If you do not configure this parameter, no limits are imposed on the tasks.
+        # The source data source type. If this parameter is not specified, no filtering is applied.
         self.source_data_source_type = source_data_source_type
 
     def validate(self):

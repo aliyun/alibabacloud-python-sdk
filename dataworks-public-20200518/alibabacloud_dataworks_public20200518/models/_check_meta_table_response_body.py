@@ -10,7 +10,7 @@ class CheckMetaTableResponseBody(DaraModel):
         data: bool = None,
         request_id: str = None,
     ):
-        # Indicates whether the metatable exists.
+        # Indicates whether the table exists.
         self.data = data
         # The request ID.
         self.request_id = request_id

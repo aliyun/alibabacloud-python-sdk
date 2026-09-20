@@ -10,11 +10,11 @@ class GetBaselineRequest(DaraModel):
         baseline_id: int = None,
         project_id: int = None,
     ):
-        # The baseline ID. You can call the [ListBaselines](https://help.aliyun.com/document_detail/2261507.html) operation to query the ID.
+        # The ID of the baseline. You can call [ListBaselines](https://help.aliyun.com/document_detail/2261507.html) to obtain the ID.
         # 
         # This parameter is required.
         self.baseline_id = baseline_id
-        # The ID of the workspace to which the baseline belongs. You can call the [ListBaselines](https://help.aliyun.com/document_detail/2261507.html) operation to query the ID.
+        # The ID of the workspace monitored by the baseline. You can call [ListBaselines](https://help.aliyun.com/document_detail/2261507.html) to obtain the ID.
         # 
         # This parameter is required.
         self.project_id = project_id

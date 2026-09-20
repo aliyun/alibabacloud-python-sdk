@@ -13,9 +13,9 @@ class ListDataServiceGroupsResponseBody(DaraModel):
         group_paging_result: main_models.ListDataServiceGroupsResponseBodyGroupPagingResult = None,
         request_id: str = None,
     ):
-        # The paging result for the business processes.
+        # The pagination result of business processes.
         self.group_paging_result = group_paging_result
-        # The request ID.
+        # The request ID. A unique identifier for the request.
         self.request_id = request_id
 
     def validate(self):
@@ -54,13 +54,13 @@ class ListDataServiceGroupsResponseBodyGroupPagingResult(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The business processes.
+        # The list of business processes.
         self.groups = groups
-        # The page number. The value of this parameter is the same as that of the PageNumber parameter in the request.
+        # The page number, which is the same as the PageNumber value in the request.
         self.page_number = page_number
-        # The number of entries per page. Valid values: 1 to 100. Default value: 10.
+        # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -122,19 +122,23 @@ class ListDataServiceGroupsResponseBodyGroupPagingResultGroups(DaraModel):
         project_id: int = None,
         tenant_id: int = None,
     ):
-        # The ID of the API Gateway group to which the workflow is bound.
+        # The ID of the API Gateway group associated with the business process.
         self.api_gateway_group_id = api_gateway_group_id
         # The time when the business process was created.
+        # 
+        # The format is `yyyy-MM-dd\\"T\\"HH:mm:ssZ`, for example, `2020-09-24T18:37:51+0800`. The time zone offset in this example is `+0800`.
         self.created_time = created_time
-        # The user identifier (UID) of the creator of the business process. The value of this parameter may be empty for creators of some existing business processes.
+        # The UID of the creator. The creator UID may be empty for some legacy business processes.
         self.creator_id = creator_id
         # The description of the business process.
         self.description = description
-        # The business process ID.
+        # The ID of the business process.
         self.group_id = group_id
         # The name of the business process.
         self.group_name = group_name
-        # The time when the business process was modified.
+        # The time when the business process was last modified.
+        # 
+        # The format is `yyyy-MM-dd\\"T\\"HH:mm:ssZ`, for example, `2020-09-24T18:37:51+0800`. The time zone offset in this example is `+0800`.
         self.modified_time = modified_time
         # The workspace ID.
         self.project_id = project_id

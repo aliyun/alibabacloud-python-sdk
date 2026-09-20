@@ -17,7 +17,7 @@ class ListNodeInputOrOutputResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The ancestor or descendant nodes.
+        # The list of input and output nodes.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -25,7 +25,7 @@ class ListNodeInputOrOutputResponseBody(DaraModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID.
+        # The request ID. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -95,11 +95,11 @@ class ListNodeInputOrOutputResponseBodyData(DaraModel):
         node_id: int = None,
         table_name: str = None,
     ):
-        # The name of the ancestor or descendant node.
+        # The name of the input or output node.
         self.data = data
         # The node ID.
         self.node_id = node_id
-        # This parameter does not take effect. You cannot obtain the parameter settings.
+        # This parameter is not in use and cannot be queried.
         self.table_name = table_name
 
     def validate(self):

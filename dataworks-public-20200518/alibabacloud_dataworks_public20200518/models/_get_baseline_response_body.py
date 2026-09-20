@@ -17,7 +17,7 @@ class GetBaselineResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The data returned.
+        # The returned data.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -28,9 +28,8 @@ class GetBaselineResponseBody(DaraModel):
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
-        # 
-        # *   true
-        # *   false
+        # - true
+        # - false
         self.success = success
 
     def validate(self):
@@ -101,35 +100,35 @@ class GetBaselineResponseBodyData(DaraModel):
         priority: int = None,
         project_id: int = None,
     ):
-        # Indicates whether the alerting feature is enabled. Valid values:
+        # Indicates whether alerting is started. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # - false
         self.alert_enabled = alert_enabled
-        # The alert margin threshold. Unit: minutes.
+        # The alert margin threshold, in minutes.
         self.alert_margin_threshold = alert_margin_threshold
         # The alert settings.
         self.alert_settings = alert_settings
-        # The baseline ID.
+        # The ID of the baseline.
         self.baseline_id = baseline_id
         # The name of the baseline.
         self.baseline_name = baseline_name
         # The type of the baseline. Valid values:
         # 
-        # *   DAILY
-        # *   HOURLY
+        # - DAILY: daily baseline.
+        # - HOURLY: hourly baseline.
         self.baseline_type = baseline_type
-        # Indicates whether the baseline is enabled.
+        # Indicates whether the baseline is started.
         self.enabled = enabled
-        # The node IDs.
+        # The list of upstream nodes of the baseline.
         self.node_ids = node_ids
-        # The settings of the committed completion time of the baseline.
+        # The baseline committed time settings.
         self.over_time_settings = over_time_settings
         # The owner.
         self.owner = owner
         # The priority of the baseline. Valid values: 1, 3, 5, 7, and 8.
         self.priority = priority
-        # The workspace ID.
+        # The project ID.
         self.project_id = project_id
 
     def validate(self):
@@ -241,9 +240,9 @@ class GetBaselineResponseBodyDataOverTimeSettings(DaraModel):
         cycle: int = None,
         time: str = None,
     ):
-        # The period corresponding to the commitment time. The space-based line is 1, and the hourly baseline can be configured for up to 24 cycles.
+        # The cycle corresponding to the committed time. The value is 1 for daily baselines. You can configure up to 24 cycles for hourly baselines.
         self.cycle = cycle
-        # Commitment time, hh:mm format, hh value range is [0,47],mm value range is [0,59].
+        # The committed time in hh:mm format, where hh ranges from 0 to 47 and mm ranges from 0 to 59.
         self.time = time
 
     def validate(self):
@@ -285,46 +284,47 @@ class GetBaselineResponseBodyDataAlertSettings(DaraModel):
         ding_robots: List[main_models.GetBaselineResponseBodyDataAlertSettingsDingRobots] = None,
         silence_end_time: str = None,
         silence_start_time: str = None,
+        topic_slow_config: main_models.GetBaselineResponseBodyDataAlertSettingsTopicSlowConfig = None,
         topic_types: List[str] = None,
         webhooks: List[str] = None,
     ):
-        # The event alert interval, in seconds.
+        # The event alerting interval, in seconds.
         self.alert_interval = alert_interval
-        # The maximum number of event alerts.
+        # The maximum number of event alerting notifications.
         self.alert_maximum = alert_maximum
-        # Alert method list
+        # The list of alert methods.
         self.alert_methods = alert_methods
-        # Alert recipient details.
+        # The alert recipient details.
         # 
-        # AlertRecipientType is OWNER: empty
-        # AlertRecipientType is SHIFT_SCHEDULE: duty table uid
-        # AlertRecipientType is OTHER: uid list, multiple UIDs are in English, split
+        # - If AlertRecipientType is set to OWNER: empty.
+        # - If AlertRecipientType is set to SHIFT_SCHEDULE: the UID of the shift schedule.
+        # - If AlertRecipientType is set to OTHER: a list of UIDs. Separate multiple UIDs with commas (,).
         self.alert_recipient = alert_recipient
-        # The type of alert recipient.
+        # The type of alert recipient. Valid values:
         # 
-        # - OWNER: task owner
-        # - OTHER: designated person
-        # - SHIFT: SCHEDULE-duty table
+        # - OWNER: node owner.
+        # - OTHER: specified users.
+        # - SHIFT_SCHEDULE: shift schedule.
         self.alert_recipient_type = alert_recipient_type
-        # Alert type
-        # 
-        # - BASELINE: baseline
-        # - TOPIC: event
+        # The alerting type. Valid values:
+        # - BASELINE: baseline.
+        # - TOPIC: event.
         self.alert_type = alert_type
-        # The baseline alarm switch.
+        # The baseline alert switch. This is a baseline-specific configuration. Valid values:
         # 
-        # - true
-        # - false
+        # - true: started.
+        # - false: stopped.
         self.baseline_alert_enabled = baseline_alert_enabled
-        # DingTalk robot list.
+        # The list of DingTalk chatbots.
         self.ding_robots = ding_robots
-        # The end time of the silence. The format is HH:mm:ss.
+        # The silence end time, in the HH:mm:ss format.
         self.silence_end_time = silence_end_time
-        # The start time of the silence. Format: HH:mm:ss
+        # The silence start time, in the HH:mm:ss format.
         self.silence_start_time = silence_start_time
-        # The list of Event Alert types.
+        self.topic_slow_config = topic_slow_config
+        # The list of event alerting types. This is an event-specific configuration.
         self.topic_types = topic_types
-        # webhook list.
+        # The list of webhooks.
         self.webhooks = webhooks
 
     def validate(self):
@@ -332,6 +332,8 @@ class GetBaselineResponseBodyDataAlertSettings(DaraModel):
             for v1 in self.ding_robots:
                  if v1:
                     v1.validate()
+        if self.topic_slow_config:
+            self.topic_slow_config.validate()
 
     def to_map(self):
         result = dict()
@@ -369,6 +371,9 @@ class GetBaselineResponseBodyDataAlertSettings(DaraModel):
 
         if self.silence_start_time is not None:
             result['SilenceStartTime'] = self.silence_start_time
+
+        if self.topic_slow_config is not None:
+            result['TopicSlowConfig'] = self.topic_slow_config.to_map()
 
         if self.topic_types is not None:
             result['TopicTypes'] = self.topic_types
@@ -413,11 +418,50 @@ class GetBaselineResponseBodyDataAlertSettings(DaraModel):
         if m.get('SilenceStartTime') is not None:
             self.silence_start_time = m.get('SilenceStartTime')
 
+        if m.get('TopicSlowConfig') is not None:
+            temp_model = main_models.GetBaselineResponseBodyDataAlertSettingsTopicSlowConfig()
+            self.topic_slow_config = temp_model.from_map(m.get('TopicSlowConfig'))
+
         if m.get('TopicTypes') is not None:
             self.topic_types = m.get('TopicTypes')
 
         if m.get('Webhooks') is not None:
             self.webhooks = m.get('Webhooks')
+
+        return self
+
+class GetBaselineResponseBodyDataAlertSettingsTopicSlowConfig(DaraModel):
+    def __init__(
+        self,
+        min_over: int = None,
+        over_factor: float = None,
+    ):
+        self.min_over = min_over
+        self.over_factor = over_factor
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.min_over is not None:
+            result['MinOver'] = self.min_over
+
+        if self.over_factor is not None:
+            result['OverFactor'] = self.over_factor
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MinOver') is not None:
+            self.min_over = m.get('MinOver')
+
+        if m.get('OverFactor') is not None:
+            self.over_factor = m.get('OverFactor')
 
         return self
 
@@ -427,9 +471,9 @@ class GetBaselineResponseBodyDataAlertSettingsDingRobots(DaraModel):
         at_all: bool = None,
         web_url: str = None,
     ):
-        # Whether @ everyone.
+        # Indicates whether to @ all members.
         self.at_all = at_all
-        # DingTalk robot address
+        # The webhook URL of the DingTalk chatbot.
         self.web_url = web_url
 
     def validate(self):

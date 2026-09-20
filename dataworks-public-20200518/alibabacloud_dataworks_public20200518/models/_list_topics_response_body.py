@@ -17,17 +17,17 @@ class ListTopicsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The information about the events returned.
+        # The returned event list.
         self.data = data
-        # The error code returned.
+        # The error code.
         self.error_code = error_code
-        # The error message returned.
+        # The error message.
         self.error_message = error_message
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The ID of the request. You can use the ID to troubleshoot issues.
+        # The unique ID of the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -90,13 +90,13 @@ class ListTopicsResponseBodyData(DaraModel):
         topics: List[main_models.ListTopicsResponseBodyDataTopics] = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The events returned.
+        # The list of events.
         self.topics = topics
-        # The total number of the events returned.
+        # The total number of events.
         self.total_count = total_count
 
     def validate(self):
@@ -161,19 +161,19 @@ class ListTopicsResponseBodyDataTopics(DaraModel):
         topic_status: str = None,
         topic_type: str = None,
     ):
-        # The timestamp when the event was found.
+        # The timestamp when the event was discovered.
         self.add_time = add_time
-        # The timestamp when the event was processed.
+        # The timestamp when the event was recovered.
         self.fix_time = fix_time
-        # The timestamp when the event occurred. A time difference may exist between the time when the event occurred and the time when the event was found.
+        # The timestamp when the event occurred. There is a time difference between when the event occurs and when it is discovered.
         self.happen_time = happen_time
-        # The ID of the node instance that triggers the event.
+        # The instance ID associated with the event.
         self.instance_id = instance_id
-        # The ID of the node that triggers the event.
+        # The ID of the node associated with the event.
         self.node_id = node_id
         # The name of the node.
         self.node_name = node_name
-        # The ID of the Alibaba Cloud account that is used by the node owner.
+        # The Alibaba Cloud UID of the node owner.
         self.node_owner = node_owner
         # The ID of the workspace to which the node belongs.
         self.project_id = project_id
@@ -181,9 +181,9 @@ class ListTopicsResponseBodyDataTopics(DaraModel):
         self.topic_id = topic_id
         # The name of the event.
         self.topic_name = topic_name
-        # The status of the event. Valid values: IGNORE, NEW, FIXING, and RECOVER. The value IGNORE indicates that the event is ignored. The value NEW indicates that the event is a new event. The value FIXING indicates that the event is being processed. The value RECOVER indicates that the event is processed.
+        # The status of the event. Valid values: IGNORE (ignored), NEW (newly discovered), FIXING (being processed), and RECOVER (recovered).
         self.topic_status = topic_status
-        # The type of the event. Valid values: SLOW and ERROR. The value SLOW indicates that the running duration of the node in the current scheduling cycle is significantly longer than the average running duration of the node in previous scheduling cycles. The value ERROR indicates that the node fails to run.
+        # The type of the event. Valid values: SLOW (slow) and ERROR (error).
         self.topic_type = topic_type
 
     def validate(self):

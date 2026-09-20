@@ -10,11 +10,13 @@ class DesensitizeDataRequest(DaraModel):
         data: str = None,
         scene_code: str = None,
     ):
-        # The data that you want to mask.
+        # The input data to be masked.
         # 
         # This parameter is required.
         self.data = data
-        # The code of the data masking scenario. You can view the code on the Data Masking Management page in Data Security Guard of the DataWorks console.
+        # The masking scene code. You can view this on the Data Masking Management page of DataWorks Data Protection Umbrella in the DataWorks console.
+        # 
+        # You can obtain this value from Data[].SceneCode in the response of DsgSceneQuerySceneListByName.
         # 
         # This parameter is required.
         self.scene_code = scene_code

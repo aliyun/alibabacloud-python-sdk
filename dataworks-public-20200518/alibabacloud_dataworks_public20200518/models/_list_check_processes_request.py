@@ -15,25 +15,27 @@ class ListCheckProcessesRequest(DaraModel):
         project_id: int = None,
         status: str = None,
     ):
-        # Extension point event encoding.
+        # The event code of the extension point.
         # 
         # This parameter is required.
         self.event_code = event_code
-        # The message ID in DataWorks OpenEvent. You can obtain the ID from a received message when an extension point event is triggered.
+        # The message ID of the DataWorks open message. After an extension point event is triggered, you can obtain the message ID from the received event message.
+        # 
+        # <props="china">For the message format, refer to [Message format](https://help.aliyun.com/document_detail/215367.html).
         self.message_id = message_id
-        # The operator ID.
+        # The ID of the operator.
         self.operator = operator
-        # The page number. Default value: 1.
+        # The page number in a paged query. This parameter is used for paging. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page in a paged query. This parameter is used for paging.
         self.page_size = page_size
         # The ID of the workspace.
         self.project_id = project_id
         # The check status of the extension. Valid values:
         # 
-        # *   CHECKING
-        # *   PASSED
-        # *   BLOCKED
+        # - CHECKING: The check is in progress.
+        # - PASSED: The check is passed.
+        # - BLOCKED: The check is not passed.
         self.status = status
 
     def validate(self):

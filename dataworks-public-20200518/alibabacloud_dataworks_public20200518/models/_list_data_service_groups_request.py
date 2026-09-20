@@ -13,17 +13,19 @@ class ListDataServiceGroupsRequest(DaraModel):
         project_id: int = None,
         tenant_id: int = None,
     ):
-        # The keyword of a business process name. The keyword is used to search for business processes whose names contain this keyword.
+        # The keyword of the business process name. Fuzzy match is supported.
         self.group_name_keyword = group_name_keyword
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number. Pages start from 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Valid values: 1 to 100. Default value: 10.
+        # The number of entries per page. Default value: 10. Maximum value: 50.
         self.page_size = page_size
         # The workspace ID.
         # 
+        # You can obtain this value from PageResult.ProjectList[].ProjectId in the response of the ListProjects operation.
+        # 
         # This parameter is required.
         self.project_id = project_id
-        # The tenant ID. This parameter is deprecated.
+        # **[Deprecated]** The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):

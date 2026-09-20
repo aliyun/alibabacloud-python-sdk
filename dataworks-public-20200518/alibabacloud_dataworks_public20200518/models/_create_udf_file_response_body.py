@@ -14,17 +14,17 @@ class CreateUdfFileResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The ID of the file that was created.
+        # The ID of the file after it is created.
         self.data = data
-        # The error code returned.
+        # The error code.
         self.error_code = error_code
-        # The error message returned.
+        # The error message.
         self.error_message = error_message
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The ID of the request. You can troubleshoot issues based on the ID.
+        # The unique ID of the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):

@@ -12,7 +12,7 @@ class CreateProjectResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The workspace ID.
+        # The ID of the DataWorks workspace that was created.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -20,8 +20,8 @@ class CreateProjectResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The request was successful.
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):

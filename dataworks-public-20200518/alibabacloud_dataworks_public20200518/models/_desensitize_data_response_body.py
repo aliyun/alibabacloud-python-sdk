@@ -10,9 +10,9 @@ class DesensitizeDataResponseBody(DaraModel):
         desensitize_data: str = None,
         request_id: str = None,
     ):
-        # The data returned after masking.
+        # The masked result data.
         self.desensitize_data = desensitize_data
-        # The request ID.
+        # The request ID. A unique identifier for the request.
         self.request_id = request_id
 
     def validate(self):

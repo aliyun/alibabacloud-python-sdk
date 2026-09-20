@@ -17,7 +17,7 @@ class ListLineageResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The structure returned.
+        # The response structure.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -25,12 +25,11 @@ class ListLineageResponseBody(DaraModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID.
+        # The request ID. Used to locate logs and troubleshoot issues.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
-        # 
-        # *   true
-        # *   false
+        # - true: The request was successful.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -91,9 +90,9 @@ class ListLineageResponseBodyData(DaraModel):
         data_entity_list: List[main_models.ListLineageResponseBodyDataDataEntityList] = None,
         next_token: str = None,
     ):
-        # The array of the entity structure.
+        # The array of entity structures.
         self.data_entity_list = data_entity_list
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # The pagination token that specifies the starting point of the next read operation.
         self.next_token = next_token
 
     def validate(self):
@@ -137,11 +136,11 @@ class ListLineageResponseBodyDataDataEntityList(DaraModel):
         entity: main_models.Entity = None,
         relation_list: List[main_models.ListLineageResponseBodyDataDataEntityListRelationList] = None,
     ):
-        # The time when the lineage was generated.
+        # The time when the lineage was created.
         self.create_timestamp = create_timestamp
-        # The information about the entity.
+        # The entity information.
         self.entity = entity
-        # The array of the relationship structure.
+        # The array of relation structures.
         self.relation_list = relation_list
 
     def validate(self):
@@ -197,14 +196,14 @@ class ListLineageResponseBodyDataDataEntityListRelationList(DaraModel):
     ):
         # The data channel. Valid values:
         # 
-        # *   **FIRST_PARTY: DataWorks platform**
-        # *   **THIRD_PARTY: user registration**
+        # - **FIRST_PARTY**: DataWorks platform data.
+        # - **THIRD_PARTY**: User-registered data.
         self.channel = channel
         # The data source.
         self.datasource = datasource
-        # The unique relationship ID.
+        # The unique ID of the relation.
         self.guid = guid
-        # The task type, which is used to describe the relationship between entities, such as SQL-based calculation, mapping based on report fields, or API operation definition.
+        # The task type, which describes the relationship type between entities. For example, computed by SQL, mapped by report fields, or defined by API.
         self.type = type
 
     def validate(self):

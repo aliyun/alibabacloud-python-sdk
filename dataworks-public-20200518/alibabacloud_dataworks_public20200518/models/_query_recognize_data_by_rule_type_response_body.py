@@ -16,7 +16,7 @@ class QueryRecognizeDataByRuleTypeResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The returned result in the JSON format.
+        # The returned data in JSON format.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -24,12 +24,11 @@ class QueryRecognizeDataByRuleTypeResponseBody(DaraModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID. You can locate logs and troubleshoot issues based on the ID.
+        # The request ID. You can use this ID to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   true
-        # *   false
+        # Indicates whether the call was successful.
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):

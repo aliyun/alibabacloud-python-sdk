@@ -10,11 +10,11 @@ class GetMetaTableThemeLevelRequest(DaraModel):
         data_source_type: str = None,
         table_guid: str = None,
     ):
-        # The type of the data source. Set the value to odps.
+        # The data type. Currently, only odps is supported.
         # 
         # This parameter is required.
         self.data_source_type = data_source_type
-        # The GUID of the metatable. Specify the GUID in the format of odps.${projectName}.${tableName}.
+        # The unique ID of the table. Format: odps.${projectName}.${tableName}.
         # 
         # This parameter is required.
         self.table_guid = table_guid

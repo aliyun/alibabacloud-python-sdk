@@ -17,7 +17,7 @@ class GetQualityFollowerRequest(DaraModel):
         self.entity_id = entity_id
         # The ID of the DataWorks workspace.
         self.project_id = project_id
-        # The name of the engine or data source.
+        # The name of the compute engine or data source.
         # 
         # This parameter is required.
         self.project_name = project_name

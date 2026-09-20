@@ -16,7 +16,7 @@ class QueryDefaultTemplateResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The returned data about the default data category and data sensitivity level template. The data is in the JSON array format.
+        # The default data classification template returned. The value is in JSON format.
         # 
         # This parameter is required.
         self.data = data
@@ -32,14 +32,13 @@ class QueryDefaultTemplateResponseBody(DaraModel):
         # 
         # This parameter is required.
         self.http_status_code = http_status_code
-        # The request ID. You can locate logs and troubleshoot issues based on the ID.
+        # The request ID. You can use the ID to locate logs and troubleshoot issues.
         # 
         # This parameter is required.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
-        # 
-        # *   true
-        # *   false
+        # - true: The request was successful.
+        # - false: The request failed.
         # 
         # This parameter is required.
         self.success = success

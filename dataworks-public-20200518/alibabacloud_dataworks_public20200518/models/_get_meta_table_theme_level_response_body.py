@@ -25,7 +25,7 @@ class GetMetaTableThemeLevelResponseBody(DaraModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID. You can troubleshoot issues based on the ID.
+        # The request ID. You can use this ID to troubleshoot issues.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -88,9 +88,9 @@ class GetMetaTableThemeLevelResponseBodyEntity(DaraModel):
         level: List[main_models.GetMetaTableThemeLevelResponseBodyEntityLevel] = None,
         theme: List[main_models.GetMetaTableThemeLevelResponseBodyEntityTheme] = None,
     ):
-        # The information about the levels of the metatable.
+        # The level information.
         self.level = level
-        # The information about the themes of the metatable.
+        # The theme information.
         self.theme = theme
 
     def validate(self):
@@ -144,17 +144,15 @@ class GetMetaTableThemeLevelResponseBodyEntityTheme(DaraModel):
         parent_id: int = None,
         theme_id: int = None,
     ):
-        # The level of the theme. Valid values:
-        # 
-        # - 1
-        # 
-        # - 2
+        # The theme type. Valid values:
+        # - 1: primary theme.
+        # - 2: secondary theme.
         self.level = level
-        # The name of the theme.
+        # The theme name.
         self.name = name
         # The ID of the parent theme.
         self.parent_id = parent_id
-        # The ID of the theme.
+        # The theme ID.
         self.theme_id = theme_id
 
     def validate(self):
@@ -205,15 +203,13 @@ class GetMetaTableThemeLevelResponseBodyEntityLevel(DaraModel):
     ):
         # The description of the level.
         self.description = description
-        # The ID of the level.
+        # The level ID.
         self.level_id = level_id
-        # The name of the level.
+        # The level name.
         self.name = name
-        # The type of the level. Valid values:
-        # 
-        # - 1: indicates the logical level.
-        # 
-        # - 2: indicates the physical level.
+        # The level type. Valid values:
+        # - 1: logical level.
+        # - 2: physical level.
         self.type = type
 
     def validate(self):

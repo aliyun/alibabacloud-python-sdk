@@ -17,7 +17,7 @@ class ListEntitiesByTagsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The data returned.
+        # The returned data.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -25,12 +25,12 @@ class ListEntitiesByTagsResponseBody(DaraModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID.
+        # The request ID, which is used to locate logs and troubleshoot issues.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # true\\
-        # false
+        # - true: The request was successful.  
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -91,9 +91,9 @@ class ListEntitiesByTagsResponseBodyData(DaraModel):
         entity_list: List[main_models.Entity] = None,
         next_token: str = None,
     ):
-        # The entities.
+        # The list of entities.
         self.entity_list = entity_list
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # The pagination token that specifies the start point of the next read operation.
         self.next_token = next_token
 
     def validate(self):

@@ -17,15 +17,15 @@ class GetNodeResponseBody(DaraModel):
     ):
         # The details of the node.
         self.data = data
-        # The ID of the node. You can call the [ListNodes](https://help.aliyun.com/document_detail/173979.html) operation to query the node ID.
+        # The error code.
         self.error_code = error_code
-        # The connection string.
+        # The error message.
         self.error_message = error_message
-        # The operation that you want to perform. Set the value to **GetNode**.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Other parameters.
+        # The request ID. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # The ID of the workflow.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -111,71 +111,69 @@ class GetNodeResponseBodyData(DaraModel):
         res_group_name: str = None,
         scheduler_type: str = None,
     ):
-        # The description of the node.
+        # The baseline ID. The baseline ID configured for the node as a leaf node is returned. If no baseline is configured, a workspace default value is returned.
         self.baseline_id = baseline_id
-        # The operation that you want to perform. Set the value to **GetNode**.
+        # The ID of the workflow.
         self.business_id = business_id
-        # The environment of the workspace. Valid values: PROD and DEV.
+        # The connection string.
         self.connection = connection
         # The creation time.
+        # 
+        # The value is a 13-digit number, such as `1727280000000`.
         self.create_time = create_time
-        # The environment of the workspace. Valid values: PROD and DEV.
+        # The CRON expression.
         self.cron_express = cron_express
         # The deployment date.
+        # 
+        # The value is a 13-digit number, such as `1727280000000`.
         self.deploy_date = deploy_date
-        # The name of the resource group.
+        # The description of the node.
         self.description = description
-        # The ID of the node. You can call the [ListNodes](https://help.aliyun.com/document_detail/173979.html) operation to query the node ID.
+        # The DQC partitioning rule string.
         self.dqc_description = dqc_description
-        # The error message returned.
+        # The DQC type. A value of 0 indicates that no DQC rule is associated. A value of 1 indicates that a DQC rule is associated.
         self.dqc_type = dqc_type
-        # The file ID.
-        # 
-        # \\*\\*
-        # 
-        # **Warning** The field is deprecated.
+        # The file ID. <warning>This field is deprecated.</warning>
         self.file_id = file_id
-        # The file type. Different file types have different codes. For more information, see [DataWorks node collection](https://help.aliyun.com/document_detail/600169.html).
+        # The file type. Different file types have different codes. For more information, see [DataWorks nodes](https://help.aliyun.com/document_detail/600169.html).
         self.file_type = file_type
-        # The version of the file.
+        # The file version.
         self.file_version = file_version
         # The modification time.
+        # 
+        # The value is a 13-digit number, such as `1727280000000`.
         self.modify_time = modify_time
-        # The HTTP status code returned.
-        self.node_id = node_id
-        # The scheduling type of the node. Valid values:
-        # 
-        # - NORMAL: The node is an auto triggered node.
-        # 
-        # - MANUAL: The node is a manually triggered node. Manually triggered nodes cannot be automatically triggered.
-        # 
-        # - PAUSE: The node is a paused node.
-        # 
-        # - SKIP: The node is a dry-run node. Dry-run nodes are started as scheduled but the system sets the status of the nodes to successful when it starts to run them.
-        self.node_name = node_name
         # The ID of the node.
+        self.node_id = node_id
+        # The name of the node.
+        self.node_name = node_name
+        # The ID of the node owner.
         self.owner_id = owner_id
-        # The CRON expression returned.
+        # The additional parameters.
         self.param_values = param_values
-        # The HTTP status code returned.
+        # The priority of the node. Valid values: 1, 3, 5, 7, and 8.
         self.priority = priority
-        # The ID of the owner of the node.
-        self.program_type = program_type
-        # Indicates whether the node can be rerun.
-        self.project_id = project_id
-        # Indicates whether the node is associated with Data Quality. Valid values: 0 and 1. A value of 0 indicates that the node is associated with Data Quality. A value of 1 indicates that the node is not associated with Data Quality.
-        self.related_flow_id = related_flow_id
-        # The ID of the workflow to which the node belongs.
-        self.repeat_interval = repeat_interval
-        # Rerun mode. 0 indicates that you can rerun only if you fail, 1 indicates that you can rerun in all cases, and 2 indicates that you cannot rerun in all cases.
-        self.repeat_mode = repeat_mode
         # The type of the node.
+        self.program_type = program_type
+        # The ID of the workspace.
+        self.project_id = project_id
+        # The ID of the associated workflow.
+        self.related_flow_id = related_flow_id
+        # The interval at which the node is rescheduled after a failure.
+        self.repeat_interval = repeat_interval
+        # The rerun mode. A value of 0 indicates that the node can be rerun only upon failure. A value of 1 indicates that the node can be rerun in all cases. A value of 2 indicates that the node cannot be rerun in any case.
+        self.repeat_mode = repeat_mode
+        # Indicates whether the node can be rerun.
         self.repeatability = repeatability
         # The unique identifier of the resource group.
         self.res_group_identifier = res_group_identifier
-        # The ID of the request. You can use the ID to locate logs and troubleshoot issues.
+        # The name of the resource group.
         self.res_group_name = res_group_name
-        # The ID of the workspace.
+        # The scheduling type. Valid values:
+        # - NORMAL: normal scheduling node.
+        # - MANUAL: manual node that is not scheduled on a regular basis.
+        # - PAUSE: paused node.
+        # - SKIP: dry-run node that is scheduled on a regular basis but is directly set to successful when scheduling starts.
         self.scheduler_type = scheduler_type
 
     def validate(self):

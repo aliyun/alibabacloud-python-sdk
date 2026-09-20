@@ -90,9 +90,9 @@ class GetMetaColumnLineageResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The returned result.
+        # The list of instance data.
         self.data_entity_list = data_entity_list
-        # The page number.
+        # The page number. Used for pagination.
         self.page_num = page_num
         # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
@@ -154,7 +154,7 @@ class GetMetaColumnLineageResponseBodyDataDataEntityList(DaraModel):
         database_name: str = None,
         table_name: str = None,
     ):
-        # The EMR cluster ID.
+        # The ID of the EMR cluster.
         self.cluster_id = cluster_id
         # The unique identifier of the field.
         self.column_guid = column_guid

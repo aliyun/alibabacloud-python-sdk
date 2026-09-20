@@ -9,7 +9,7 @@ class ListNodesByBaselineRequest(DaraModel):
         self,
         baseline_id: int = None,
     ):
-        # The baseline ID. You can call the [ListBaselineConfigs](https://help.aliyun.com/document_detail/173964.html) operation to query the baseline ID.
+        # The ID of the baseline. You can call the [ListBaselineConfigs](https://help.aliyun.com/document_detail/173964.html) operation to obtain the baseline ID.
         # 
         # This parameter is required.
         self.baseline_id = baseline_id

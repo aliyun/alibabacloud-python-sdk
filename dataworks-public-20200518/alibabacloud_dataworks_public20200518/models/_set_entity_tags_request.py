@@ -17,7 +17,7 @@ class SetEntityTagsRequest(DaraModel):
         # 
         # This parameter is required.
         self.qualified_name = qualified_name
-        # The tags.
+        # The list of labels.
         self.tags = tags
 
     def validate(self):

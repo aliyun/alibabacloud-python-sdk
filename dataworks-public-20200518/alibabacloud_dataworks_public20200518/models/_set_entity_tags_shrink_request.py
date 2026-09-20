@@ -14,7 +14,7 @@ class SetEntityTagsShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.qualified_name = qualified_name
-        # The tags.
+        # The list of labels.
         self.tags_shrink = tags_shrink
 
     def validate(self):

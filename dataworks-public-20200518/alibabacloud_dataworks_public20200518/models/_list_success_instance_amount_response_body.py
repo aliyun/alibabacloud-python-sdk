@@ -13,9 +13,9 @@ class ListSuccessInstanceAmountResponseBody(DaraModel):
         instance_status_trend: main_models.ListSuccessInstanceAmountResponseBodyInstanceStatusTrend = None,
         request_id: str = None,
     ):
-        # Indicates the trend of the number of auto triggered node instances that are successfully run every hour on the hour of the current day.
+        # The trend data of successfully completed instance counts at different hours on the business date.
         self.instance_status_trend = instance_status_trend
-        # The request ID.
+        # The request ID. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -53,11 +53,11 @@ class ListSuccessInstanceAmountResponseBodyInstanceStatusTrend(DaraModel):
         today_trend: List[main_models.ListSuccessInstanceAmountResponseBodyInstanceStatusTrendTodayTrend] = None,
         yesterday_trend: List[main_models.ListSuccessInstanceAmountResponseBodyInstanceStatusTrendYesterdayTrend] = None,
     ):
-        # The average trend.
+        # The historical average trend.
         self.avg_trend = avg_trend
-        # The trend of the number of auto triggered node instances that are successfully run on the current day.
+        # The trend for the current business date.
         self.today_trend = today_trend
-        # The trend of the number of auto triggered node instances that are successfully run one day earlier than the current day.
+        # The trend for the day before the business date.
         self.yesterday_trend = yesterday_trend
 
     def validate(self):
@@ -124,9 +124,11 @@ class ListSuccessInstanceAmountResponseBodyInstanceStatusTrendYesterdayTrend(Dar
         count: int = None,
         time_point: str = None,
     ):
-        # The number of instances that are successfully run.
+        # The number of successfully completed instances.
         self.count = count
-        # The point in time. The value is an exact hour that ranges from 00:00 to 23:00, such as 00:00, 01:00, or 02:00.
+        # The time point. Valid values: hours on the hour from 00:00 to 23:00, such as 00:00, 01:00, and 02:00.
+        # 
+        # Format: `HH:mm`. Example: `01:00`.
         self.time_point = time_point
 
     def validate(self):
@@ -161,9 +163,11 @@ class ListSuccessInstanceAmountResponseBodyInstanceStatusTrendTodayTrend(DaraMod
         count: int = None,
         time_point: str = None,
     ):
-        # The number of instances that are successfully run.
+        # The number of successfully completed instances.
         self.count = count
-        # The point in time. The value is an exact hour that ranges from 00:00 to 23:00, such as 00:00, 01:00, or 02:00.
+        # The time point. Valid values: hours on the hour from 00:00 to 23:00, such as 00:00, 01:00, and 02:00.
+        # 
+        # Format: `HH:mm`. Example: `01:00`.
         self.time_point = time_point
 
     def validate(self):
@@ -198,9 +202,11 @@ class ListSuccessInstanceAmountResponseBodyInstanceStatusTrendAvgTrend(DaraModel
         count: int = None,
         time_point: str = None,
     ):
-        # The number of instances that are successfully run.
+        # The number of successfully completed instances.
         self.count = count
-        # The point in time. The value is an exact hour that ranges from 00:00 to 23:00, such as 00:00, 01:00, or 02:00.
+        # The time point. Valid values: hours on the hour from 00:00 to 23:00, such as 00:00, 01:00, and 02:00.
+        # 
+        # Format: `HH:mm`. Example: `01:00`.
         self.time_point = time_point
 
     def validate(self):

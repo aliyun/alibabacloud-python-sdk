@@ -13,9 +13,9 @@ class ListDataServiceApiTestResponseBody(DaraModel):
         data: List[main_models.ListDataServiceApiTestResponseBodyData] = None,
         request_id: str = None,
     ):
-        # The list of test records.
+        # The data list.
         self.data = data
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -64,21 +64,26 @@ class ListDataServiceApiTestResponseBodyData(DaraModel):
         status: str = None,
         test_id: int = None,
     ):
-        # The ID of the DataService Studio API on which the test is performed.
+        # The ID of the API to test.
         self.api_id = api_id
-        # The time that is consumed to complete the test.
+        # The time consumed by the API request.
         self.cost_time = cost_time
-        # The time when the test was initiated.
+        # The time when the task was created.
+        # 
+        # The value is a 13-digit number, such as `1651824913000`.
         self.create_time = create_time
-        # The request parameters configured for the test.
+        # The request parameters of the test API.
         self.param_map = param_map
-        # The status code returned for the test. If the test is not complete, this parameter is not returned.
+        # The return code of the test API. This field is empty if the test is not completed.
         self.ret_code = ret_code
-        # The result returned for the test.
+        # The returned data.
         self.ret_result = ret_result
-        # The status of the test. Valid values: RUNNING and FINISHED.
+        # Indicates whether the task is completed. Valid values:
+        # 
+        # - RUNNING
+        # - FINISHED
         self.status = status
-        # The ID of the test.
+        # The test ID.
         self.test_id = test_id
 
     def validate(self):

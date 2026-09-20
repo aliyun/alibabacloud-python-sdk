@@ -17,7 +17,7 @@ class GetNodeChildrenResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The information about the descendant nodes.
+        # The list of node information returned.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -25,9 +25,9 @@ class GetNodeChildrenResponseBody(DaraModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID. You can use the ID to troubleshoot issues.
+        # The unique ID of the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -87,7 +87,7 @@ class GetNodeChildrenResponseBodyData(DaraModel):
         self,
         nodes: List[main_models.GetNodeChildrenResponseBodyDataNodes] = None,
     ):
-        # The descendant nodes.
+        # The list of nodes.
         self.nodes = nodes
 
     def validate(self):
@@ -135,36 +135,33 @@ class GetNodeChildrenResponseBodyDataNodes(DaraModel):
     ):
         # The baseline ID.
         self.baseline_id = baseline_id
-        # The CRON expression. CRON expressions are used to run auto triggered nodes.
+        # The CRON expression. The expression is used for timed scheduling to execute the node task.
         self.cron_express = cron_express
         # The node ID.
         self.node_id = node_id
-        # The name of the node.
+        # The node name.
         self.node_name = node_name
-        # The ID of the Alibaba Cloud account used by the node owner.
+        # The DataWorks UID of the node owner.
         self.owner_id = owner_id
-        # The priority. Valid values: 1 to 8. A large value indicates a high priority.
+        # The priority. Valid values: 1 to 8. A larger value indicates a higher priority.
         self.priority = priority
-        # The type of the node.
+        # The node type.
         self.program_type = program_type
         # The ID of the workspace to which the node belongs.
         self.project_id = project_id
-        # Indicates whether the node can be rerun if the node fails to run. Valid values:
-        # 
-        # *   true
-        # *   false
+        # Indicates whether the node can be rerun upon failure. Valid values:
+        # - true: The node can be rerun.
+        # - false: The node cannot be rerun.
         self.repeatability = repeatability
-        # The scheduling type of the node. Valid values:
-        # 
-        # *   NORMAL: The node is an auto triggered node.
-        # *   MANUAL: The node is a manually triggered node. Manually triggered nodes cannot be automatically triggered.
-        # *   PAUSE: The node is a paused node. Paused nodes are started as scheduled but the system sets the status of the nodes to failed when it starts to run them.
-        # *   SKIP: The node is a dry-run node. Dry-run nodes are started as scheduled but the system sets the status of the nodes to successful when it starts to run them.
+        # The scheduling type. Valid values:
+        # - NORMAL: normal scheduling node.
+        # - MANUAL: manual node. The node is not scheduled on a regular basis.
+        # - PAUSE: paused node. The node is scheduled on a regular basis but is set to failed when scheduling starts.
+        # - SKIP: dry-run node. The node is scheduled on a regular basis but is set to successful when scheduling starts.
         self.scheduler_type = scheduler_type
         # The scheduling dependency type. Valid values:
-        # 
-        # *   **0**: same-cycle scheduling dependency
-        # *   **3**: cross-cycle scheduling dependency
+        # - **0**: same-cycle dependency.
+        # - **3**: cross-cycle dependency.
         self.step_type = step_type
 
     def validate(self):

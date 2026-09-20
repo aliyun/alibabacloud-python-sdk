@@ -12,13 +12,17 @@ class CreateMetaCollectionRequest(DaraModel):
         name: str = None,
         parent_qualified_name: str = None,
     ):
-        # The type of the collection.
+        # The collection type.
         # 
         # This parameter is required.
         self.collection_type = collection_type
-        # The comment of the collection. The comment must be 1 to 64 characters in length.
+        # The comment for the collection.
+        # 
+        # Length limit: 1 to 64 characters.
         self.comment = comment
-        # The name of the collection. The name must be 1 to 32 characters in length.
+        # The collection name.
+        # 
+        # Length limit: 1 to 32 characters.
         # 
         # This parameter is required.
         self.name = name

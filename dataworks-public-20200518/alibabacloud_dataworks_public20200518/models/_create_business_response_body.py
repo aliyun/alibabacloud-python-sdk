@@ -14,7 +14,7 @@ class CreateBusinessResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The workflow ID.
+        # The ID of the business process.
         self.business_id = business_id
         # The error code.
         self.error_code = error_code
@@ -22,7 +22,7 @@ class CreateBusinessResponseBody(DaraModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID.
+        # The unique ID of the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success

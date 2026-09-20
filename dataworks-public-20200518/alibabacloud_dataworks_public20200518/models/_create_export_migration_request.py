@@ -16,30 +16,28 @@ class CreateExportMigrationRequest(DaraModel):
     ):
         # The description of the export task.
         self.description = description
-        # The export mode of the export task. Valid values:
-        # 
-        # *   FULL: The export task is used to export all data objects.
-        # *   INCREMENTAL: The export task is used to export data objects that were modified since the specified point in time. If you set this parameter to INCREMENTAL, you must configure the IncrementalSince parameter.
+        # The export mode of the task. Valid values:
+        # - FULL: exports the target task in full.
+        # - INCREMENTAL: incrementally exports the target task from a specified point in time. If you select this mode, you must also configure the IncrementalSince parameter.
         # 
         # This parameter is required.
         self.export_mode = export_mode
-        # The status of the data objects that you want to export in the export task. The system exports data objects in the state that is specified by this parameter. Valid values:
-        # 
-        # *   SAVED
-        # *   SUBMITTED
-        # *   DEPLOYED
+        # The status of the export task. The system exports tasks in the specified status. Valid values:
+        # - SAVED: saved. Tasks that have been saved are exported.
+        # - SUBMITTED: submitted. Tasks that have been submitted are exported.
+        # - DEPLOYED: deployed. Tasks that have been deployed are exported.
         self.export_object_status = export_object_status
-        # The start time of the incremental export task.
+        # The start time for incrementally exporting the target node.
         # 
-        # The IncrementalSince parameter takes effect only when the ExportMode parameter is set to INCREMENTAL.
+        # This parameter takes effect only when the ExportMode parameter settings is set to INCREMENTAL.
         self.incremental_since = incremental_since
         # The name of the export task.
         # 
-        # The name of each export task must be unique. You must ensure that no duplicate export task exists in the current workspace.
+        # The name must be unique. No duplicate export task names can exist in the current DataWorks workspace.
         # 
         # This parameter is required.
         self.name = name
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the workspace ID.
+        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace configuration page to obtain the workspace ID.
         # 
         # This parameter is required.
         self.project_id = project_id

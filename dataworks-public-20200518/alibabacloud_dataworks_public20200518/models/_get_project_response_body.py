@@ -15,16 +15,15 @@ class GetProjectResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The information about the workspace.
+        # The details of the workspace.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The request was successful.
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -105,7 +104,7 @@ class GetProjectResponseBodyData(DaraModel):
         self.appkey = appkey
         # This parameter is deprecated.
         self.base_project = base_project
-        # The ID of the resource group that was allocated by default when you purchased an exclusive resource group for MaxCompute.
+        # The identifier of the default resource group that is automatically assigned when you purchase a MaxCompute exclusive resource group.
         self.default_di_resource_group_identifier = default_di_resource_group_identifier
         # This parameter is deprecated.
         self.destination = destination
@@ -113,26 +112,23 @@ class GetProjectResponseBodyData(DaraModel):
         self.dev_storage_quota = dev_storage_quota
         # This parameter is deprecated.
         self.development_type = development_type
-        # Indicates whether the Develop role is disabled. Valid values:
-        # 
-        # *   **false** (default)
-        # *   **true**
+        # Indicates whether the development role is disabled. Valid values:
+        #  - **false** (default): The development role is enabled.
+        #  - **true**: The development role is disabled.
         self.disable_development = disable_development
-        # The environment information of the workspace.
+        # The environment context of the workspace.
         self.env_types = env_types
         # The time when the workspace was created. Example: `Dec 3, 2019 9:12:20 PM`.
         self.gmt_create = gmt_create
         # The time when the workspace was last modified. Example: `Dec 3, 2019 9:12:20 PM`.
         self.gmt_modified = gmt_modified
-        # Indicates whether you are allowed to download the query result from DataStudio. Valid values:
-        # 
-        # *   **1**: You are allowed to download the query result from DataStudio.
-        # *   **0**: You are not allowed to download the query result from DataStudio.
+        # Indicates whether downloading query results from the IDE is allowed. Valid values:
+        # - **1**: Downloading is allowed.
+        # - **0**: Downloading is not allowed.
         self.is_allow_download = is_allow_download
-        # Indicates whether the workspace is a default workspace. Valid values:
-        # 
-        # *   **1**: The workspace is a default workspace.
-        # *   **0**: The workspace is not a default workspace.
+        # Indicates whether the workspace is the default workspace. Valid values:
+        # - **1**: Yes.
+        # - **0**: No.
         self.is_default = is_default
         # This parameter is deprecated.
         self.max_flow_node = max_flow_node
@@ -140,58 +136,53 @@ class GetProjectResponseBodyData(DaraModel):
         self.prod_storage_quota = prod_storage_quota
         # The description of the workspace.
         self.project_description = project_description
-        # The ID of the workspace.
+        # The workspace ID.
         self.project_id = project_id
         # The name of the workspace.
         self.project_identifier = project_identifier
         # The mode of the workspace. Valid values:
-        # 
-        # *   **2**: The workspace is in basic mode.
-        # *   **3**: The workspace is in standard mode.
+        # - **2**: basic mode.
+        # - **3**: standard mode.
         self.project_mode = project_mode
         # The display name of the workspace.
         self.project_name = project_name
-        # The ID of the Alibaba Cloud account used by the workspace owner.
+        # The Alibaba Cloud ID of the workspace owner.
         self.project_owner_base_id = project_owner_base_id
-        # Indicates whether the workspace protection feature is enabled. Valid values:
-        # 
-        # *   **1**: enabled
-        # *   **0**: disabled
+        # Indicates whether protected mode is enabled for the workspace. Valid values:
+        # - **1**: Protected mode is enabled.
+        # - **0**: Protected mode is not enabled.
         self.protected_mode = protected_mode
         # The type of the workspace. Valid values:
-        # 
-        # *   **private**
-        # *   **swap**
+        # - **private**: private zone.
+        # - **swap**: swap zone.
         self.resident_area = resident_area
         # The resource group ID.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The default maximum number of automatic reruns that are allowed after an error occurs.
+        # The default maximum number of automatic reruns upon an error.
         self.scheduler_max_retry_times = scheduler_max_retry_times
-        # The default interval between automatic reruns after an error occurs. Unit: milliseconds. The maximum interval is 30 minutes. You must pay attention to the conversion between units.
+        # The default interval between automatic reruns upon an error. Unit: ms. The maximum value is 30 minutes. Note the unit conversion.
         self.scheduler_retry_interval = scheduler_retry_interval
         # The status of the workspace. Valid values:
-        # 
-        # *   **0**: AVAILABLE, which indicates that the workspace runs as expected.
-        # *   **1**: DELETED, which indicates that the workspace is deleted.
-        # *   **2**: INITIALIZING, which indicates that the workspace is being initialized.
-        # *   **3**: INIT_FAILED, which indicates that the workspace fails to be initialized.
-        # *   **4**: FORBIDDEN, which indicates that the workspace is manually disabled.
-        # *   **5**: DELETING, which indicates that the workspace is being deleted.
-        # *   **6**: DEL_FAILED, which indicates that the workspace fails to be deleted.
-        # *   **7**: FROZEN, which indicates that the workspace is frozen due to overdue payments.
-        # *   **8**: UPDATING, which indicates that the workspace is being updated. The workspace enters this state after you associate a new compute engine with the workspace and the compute engine is initialized.
-        # *   **9**: UPDATE_FAILED, which indicates that the workspace fails to be updated.
+        # - **0**: AVAILABLE. The workspace is running normally.
+        # - **1**: DELETED. The workspace has been deleted.
+        # - **2**: INITIALIZING. The workspace is being initialized.
+        # - **3**: INIT_FAILED. The workspace failed to be initialized.
+        # - **4**: FORBIDDEN. The workspace is manually disabled.
+        # - **5**: DELETING. The workspace is being deleted.
+        # - **6**: DEL_FAILED. The workspace failed to be deleted.
+        # - **7**: FROZEN. The workspace is frozen due to overdue payment.
+        # - **8**: UPDATING. The workspace is being updated (a compute engine is being added and initialized).
+        # - **9**: UPDATE_FAILED. The workspace failed to be updated (a compute engine failed to be added and initialized).
         self.status = status
-        # Indicates whether the MaxCompute tables in the workspace are visible to the users within a tenant. Valid values:
-        # 
-        # *   **0**: invisible
-        # *   **1**: visible
+        # The visibility of MaxCompute tables. Valid values:
+        # - **0**: MaxCompute tables are not visible to users within the tenant.
+        # - **1**: MaxCompute tables are visible to users within the tenant.
         self.table_privacy_mode = table_privacy_mode
-        # The tags added to the workspace.
+        # The list of tags bound to the workspace.
         self.tags = tags
         # The tenant ID.
         self.tenant_id = tenant_id
-        # Indicates whether a proxy account is used to access the MaxCompute compute engine associated with the workspace.
+        # Indicates whether a proxy account is used to access the MaxCompute engine.
         self.use_proxy_odps_account = use_proxy_odps_account
 
     def validate(self):

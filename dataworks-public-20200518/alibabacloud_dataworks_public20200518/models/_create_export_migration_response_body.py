@@ -11,14 +11,13 @@ class CreateExportMigrationResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The export task ID.
+        # The ID of the export task.
         self.data = data
-        # The request ID. You can locate logs and troubleshoot issues based on the ID.
+        # The request ID. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   true
-        # *   false
+        # Indicates whether the call was successful. Valid values:
+        # - true: The call was successful.
+        # - false: The call failed. You can locate the issue based on the request ID.
         self.success = success
 
     def validate(self):

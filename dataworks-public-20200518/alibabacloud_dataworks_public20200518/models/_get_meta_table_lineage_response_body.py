@@ -89,11 +89,11 @@ class GetMetaTableLineageResponseBodyData(DaraModel):
         has_next: bool = None,
         next_primary_key: str = None,
     ):
-        # The information about the table.
+        # The table information.
         self.data_entity_list = data_entity_list
-        # Indicates whether the next page exists.
+        # Indicates whether there is a next page.
         self.has_next = has_next
-        # The logic of paging. If the value true is returned for the HasNext parameter and a value is returned for the NextPrimaryKey parameter in the response of the previous request, you must use the value of the NextPrimaryKey parameter for the next request.
+        # The pagination key. Set this parameter based on the HasNext and key values returned in the response.
         self.next_primary_key = next_primary_key
 
     def validate(self):
@@ -144,7 +144,7 @@ class GetMetaTableLineageResponseBodyDataDataEntityList(DaraModel):
         table_guid: str = None,
         table_name: str = None,
     ):
-        # The time when the table was created.
+        # The creation time.
         self.create_timestamp = create_timestamp
         # The name of the database.
         self.database_name = database_name

@@ -14,7 +14,7 @@ class UpdateRemindResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Indicates whether the modification to the custom alert rule succeeds.
+        # The result of updating the custom monitoring rule.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -22,12 +22,11 @@ class UpdateRemindResponseBody(DaraModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID. You can use the ID to troubleshoot issues.
+        # The unique ID of the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   true
-        # *   false
+        # Indicates whether the call was successful. Valid values:
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):

@@ -90,13 +90,13 @@ class GetMetaTableOutputResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The partitions.
+        # The list of instances.
         self.data_entity_list = data_entity_list
-        # The page number. Valid values: 1 to 30. Default value: 1.
+        # The page number. Default value: 1. Minimum value: 1. Maximum value: 30.
         self.page_number = page_number
         # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of tables.
         self.total_count = total_count
 
     def validate(self):
@@ -157,18 +157,22 @@ class GetMetaTableOutputResponseBodyDataDataEntityList(DaraModel):
         wait_time: str = None,
     ):
         # The end time.
+        # 
+        # The format is `yyyy-MM-dd HH:mm:ss`, for example, `2020-01-01 00:01:00`.
         self.end_time = end_time
         # The workspace ID.
         self.project_id = project_id
         # The start time.
+        # 
+        # The format is `yyyy-MM-dd HH:mm:ss`, for example, `2020-01-01 00:00:00`.
         self.start_time = start_time
-        # The GUID of the MaxCompute table.
+        # The unique identifier of the ODPS table.
         self.table_guid = table_guid
         # The task ID.
         self.task_id = task_id
         # The instance ID.
         self.task_instance_id = task_instance_id
-        # The waiting time.
+        # The task wait duration, in seconds.
         self.wait_time = wait_time
 
     def validate(self):

@@ -12,13 +12,13 @@ class CreateProjectMemberRequest(DaraModel):
         role_code: str = None,
         user_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. We recommend that you set this parameter to a UUID.
+        # The idempotence string. A UUID is recommended.
         self.client_token = client_token
-        # The DataWorks workspace ID.
+        # The ID of the DataWorks workspace.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The code of the role. This parameter is optional. If you configure the RoleCode parameter, the user is assigned the role.
+        # The role code. This parameter is optional. If this parameter is specified, the user is also added to the specified role.
         self.role_code = role_code
         # The ID of the user to be added.
         # 

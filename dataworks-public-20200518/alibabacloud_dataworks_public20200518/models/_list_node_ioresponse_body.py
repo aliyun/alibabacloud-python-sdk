@@ -17,7 +17,7 @@ class ListNodeIOResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The node information.
+        # The upstream and downstream information.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -25,9 +25,9 @@ class ListNodeIOResponseBody(DaraModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID.
+        # The ID of the request, which is used to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -95,7 +95,7 @@ class ListNodeIOResponseBodyData(DaraModel):
         node_id: int = None,
         table_name: str = None,
     ):
-        # The name of the ancestor or descendant node.
+        # The name of the input or output.
         self.data = data
         # The node ID.
         self.node_id = node_id

@@ -15,25 +15,25 @@ class GetMetaTableFullInfoRequest(DaraModel):
         table_guid: str = None,
         table_name: str = None,
     ):
-        # The ID of the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
+        # The ID of the EMR cluster. This parameter is required only when the data source type is EMR.
         # 
-        # You can log on to the [EMR console](https://emr.console.aliyun.com/?spm=a2c4g.11186623.0.0.965cc5c2GeiHet#/cn-hangzhou) to query the ID.
+        # You can log on to the [EMR console](https://emr.console.aliyun.com/?spm=a2c4g.11186623.0.0.965cc5c2GeiHet#/cn-hangzhou) to obtain the cluster ID.
         self.cluster_id = cluster_id
-        # The type of the data source. Set the value to emr.
+        # The data source type. Currently, only EMR is supported.
         self.data_source_type = data_source_type
-        # The name of the database. This parameter is required only if you set the DataSourceType parameter to emr.
+        # The name of the database. This parameter is required only when the data source type is EMR.
         # 
-        # You can call the [ListMetaDB](https://help.aliyun.com/document_detail/185662.html) operation to query the database name.
+        # You can call the [ListMetaDB](https://help.aliyun.com/document_detail/185662.html) operation to obtain the database name.
         self.database_name = database_name
-        # The page number requested for pagination.
+        # The page number for pagination.
         self.page_num = page_num
-        # The number of items per page, with a default of 10 and a maximum of 100.
+        # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
-        # The unique identifier of the table. You can call the [GetMetaDBTableList](https://help.aliyun.com/document_detail/173916.html) operation to query the unique identifier of the table.
+        # The globally unique identifier (GUID) of the table. You can call [GetMetaDBTableList](https://help.aliyun.com/document_detail/173916.html) to obtain the GUID of the table.
         self.table_guid = table_guid
-        # The name of the table in the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
+        # The name of the EMR table. This parameter is required only when the data source type is EMR.
         # 
-        # You can call the [GetMetaDBTableList](https://help.aliyun.com/document_detail/173916.html) operation to query the table name.
+        # You can call the [GetMetaDBTableList](https://help.aliyun.com/document_detail/173916.html) operation to obtain the table name.
         self.table_name = table_name
 
     def validate(self):

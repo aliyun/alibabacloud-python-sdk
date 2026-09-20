@@ -10,7 +10,7 @@ class DeleteProjectMemberRequest(DaraModel):
         project_id: int = None,
         user_id: str = None,
     ):
-        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the workspace ID.
+        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace configuration page to obtain the workspace ID.
         # 
         # This parameter is required.
         self.project_id = project_id

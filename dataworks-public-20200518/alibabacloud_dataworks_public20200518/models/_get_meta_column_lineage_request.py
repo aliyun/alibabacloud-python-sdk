@@ -17,25 +17,31 @@ class GetMetaColumnLineageRequest(DaraModel):
         page_size: int = None,
         table_name: str = None,
     ):
-        # The ID of the E-MapReduce (EMR) cluster. Configure this parameter only when you query data in an EMR compute engine instance.
+        # The ID of the EMR cluster. This parameter is required for EMR scenarios.
         self.cluster_id = cluster_id
         # The unique identifier of the field.
         self.column_guid = column_guid
         # The name of the field.
         self.column_name = column_name
-        # The type of the data source. Valid values: odps and emr.
+        # The data source type. Valid values:
+        # 
+        # - odps
+        # - emr
         self.data_source_type = data_source_type
         # The name of the database.
         self.database_name = database_name
-        # Specifies whether to query the ancestor or descendant lineage of the field. The value up indicates the ancestor lineage. The value down indicates the descendant lineage.
+        # The direction of the field lineage. Valid values:
+        # 
+        # - up: upstream.
+        # - down: downstream.
         # 
         # This parameter is required.
         self.direction = direction
-        # The number of the page to return.
+        # The page number. Used for pagination.
         self.page_num = page_num
-        # The number of entries to return on each page. Default value: 10. Maximum value: 100.
+        # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
-        # The name of the metatable.
+        # The name of the table.
         self.table_name = table_name
 
     def validate(self):

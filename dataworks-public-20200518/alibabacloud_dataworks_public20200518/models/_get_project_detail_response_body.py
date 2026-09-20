@@ -15,13 +15,13 @@ class GetProjectDetailResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The information about the workspace.
+        # The description of the workspace.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the workspace information was queried successfully.
         self.success = success
 
     def validate(self):
@@ -92,62 +92,59 @@ class GetProjectDetailResponseBodyData(DaraModel):
         tenant_id: int = None,
         use_proxy_odps_account: bool = None,
     ):
-        # The identifier of the shared resource group for Data Integration on which nodes are run.
+        # The identifier of the default data integration resource group for nodes.
         self.default_di_resource_group_identifier = default_di_resource_group_identifier
-        # The development type of the workspace. The value is fixed to 4.
+        # The project development type. The value is 4.
         self.development_type = development_type
-        # Indicates whether the Develop role is disabled. Valid values:
-        # 
-        # *   **false** (default)
-        # *   **true**
+        # Indicates whether the development role is disabled. Valid values:
+        #  - **false** (default): The development role is enabled.
+        #  - **true**: The development role is disabled.
         self.disable_development = disable_development
-        # The environments of workspaces in different modes. Workspaces in basic mode provide only the production environment. Workspaces in standard mode provide both the development environment and the production environment.
+        # The environments contained in the workspace. A workspace in basic mode contains only the production environment (PROD). A workspace in standard mode contains the development environment (DEV) and the production environment (PROD).
         self.env_types = env_types
         # The time when the workspace was created.
         self.gmt_create = gmt_create
         # The time when the workspace was last modified.
         self.gmt_modified = gmt_modified
-        # Indicates whether the download operation is allowed.
+        # Indicates whether downloads are allowed.
         self.is_allow_download = is_allow_download
-        # Indicates whether the workspace is a default workspace. Valid values:
-        # 
-        # *   1: The workspace is a default workspace.
-        # *   0: The workspace is not a default workspace.
+        # Indicates whether the workspace is the default workspace. Valid values:
+        # - 1: Yes.
+        # - 0: No.
         self.is_default = is_default
         # The description of the workspace.
         self.project_description = project_description
-        # The workspace ID.
+        # The ID of the workspace.
         self.project_id = project_id
-        # The unique identifier of the workspace.
+        # The identifier of the workspace.
         self.project_identifier = project_identifier
-        # The mode of the workspace. The value 2 indicates that the workspace is in basic mode. The value 3 indicates that the workspace is in standard mode.
+        # The workspace mode. A value of 2 indicates basic mode. A value of 3 indicates standard mode.
         self.project_mode = project_mode
         # The display name of the workspace.
         self.project_name = project_name
-        # The ID of the Alibaba Cloud account used by the workspace owner.
+        # The Alibaba Cloud ID of the workspace owner.
         self.project_owner_base_id = project_owner_base_id
-        # Indicates whether the workspace protection feature is enabled.
+        # Indicates whether protected mode is enabled for the workspace.
         self.protected_mode = protected_mode
-        # The type of the workspace. Valid values: private and swap.
+        # The type of the workspace. A value of private indicates a private zone. A value of swap indicates a swap zone.
         self.resident_area = resident_area
         # The resource group ID.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The default maximum number of automatic reruns that are allowed after an error occurs.
+        # The default maximum number of automatic reruns upon an error.
         self.scheduler_max_retry_times = scheduler_max_retry_times
-        # The interval between automatic reruns after an error occurs.
+        # The default interval between automatic reruns upon an error.
         self.scheduler_retry_interval = scheduler_retry_interval
         # The status of the workspace.
         self.status = status
-        # Indicates whether the MaxCompute tables in the workspace are visible to the users within a tenant. Valid values:
-        # 
-        # *   0: The MaxCompute tables in the workspace are not visible to the users within a tenant.
-        # *   1: The MaxCompute tables in the workspace are visible to the users within a tenant.
+        # The visibility of MaxCompute tables. Valid values:
+        # - 0: MaxCompute tables are not visible to tenant users.
+        # - 1: MaxCompute tables are visible to tenant users.
         self.table_privacy_mode = table_privacy_mode
         # The tag information.
         self.tags = tags
         # The tenant ID.
         self.tenant_id = tenant_id
-        # Indicates whether a proxy account is used to access the MaxCompute compute engine.
+        # Indicates whether a proxy account is used to access the MaxCompute engine.
         self.use_proxy_odps_account = use_proxy_odps_account
 
     def validate(self):

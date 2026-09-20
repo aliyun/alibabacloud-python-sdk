@@ -17,15 +17,15 @@ class GetBaselineStatusResponseBody(DaraModel):
     ):
         # The details of the baseline instance.
         self.data = data
-        # The error code returned.
+        # The error code.
         self.error_code = error_code
-        # The error message returned.
+        # The error message.
         self.error_message = error_message
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The ID of the request. You can use the ID to troubleshoot issues.
+        # The unique ID of the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -104,33 +104,33 @@ class GetBaselineStatusResponseBodyData(DaraModel):
         self.baseline_id = baseline_id
         # The name of the baseline.
         self.baseline_name = baseline_name
-        # The data timestamp of the baseline instance.
+        # The business date timestamp.
         self.bizdate = bizdate
-        # The information about the key instance.
+        # The information about the critical instance.
         self.block_instance = block_instance
-        # The margin of the baseline instance. Unit: seconds.
+        # The buffer time of the baseline instance, in seconds.
         self.buffer = buffer
-        # The timestamp of the predicted time when the baseline instance finished running.
+        # The estimated completion timestamp of the baseline instance.
         self.end_cast = end_cast
-        # The timestamp of the alerting time of the baseline instance.
+        # The warning timestamp of the baseline instance.
         self.exp_time = exp_time
-        # The status of the baseline instance. Valid values: UNFINISH and FINISH. The value UNFINISH indicates that the baseline instance is still running. The value FINISH indicates that the baseline instance finishes running.
+        # Indicates whether the baseline instance is completed. Valid values: UNFINISH and FINISH.
         self.finish_status = finish_status
-        # The timestamp of the actual time when the baseline instance finished running. This parameter is returned if the value of the FinishStatus parameter is FINISH.
+        # The completion timestamp of the baseline instance. This parameter is returned only when FinishStatus is FINISH.
         self.finish_time = finish_time
-        # The ID of the scheduling cycle of the baseline instance. For a baseline instance that is scheduled by day, the value of this parameter is 1. For a baseline instance that is scheduled by hour, the value of this parameter ranges from 1 to 24.
+        # The cycle number of the baseline instance. The value is 1 for daily baselines. The value ranges from [1,24\\] for hourly baselines.
         self.in_group_id = in_group_id
-        # The information about the last generated instance.
+        # The information about the latest instance.
         self.last_instance = last_instance
-        # The ID of the Alibaba Cloud account used by the baseline owner. Multiple IDs are separated by commas (,).
+        # The Alibaba Cloud UID of the baseline owner. Multiple owners are separated by commas (,).
         self.owner = owner
         # The priority of the baseline. Valid values: 1, 2, 5, 7, and 8.
         self.priority = priority
         # The ID of the workspace to which the baseline belongs.
         self.project_id = project_id
-        # The timestamp of the committed completion time of the baseline instance.
+        # The committed completion timestamp of the baseline instance.
         self.sla_time = sla_time
-        # The status of the baseline. Valid values: ERROR, SAFE, DANGEROUS, and OVER. The value ERROR indicates that no nodes are associated with the baseline, or all nodes associated with the baseline are suspended. The value SAFE indicates that nodes finish running before the alerting time. The value DANGEROUS indicates that nodes are still running after the alerting time but before the committed completion time. The value OVER indicates that nodes are still running after the committed completion time.
+        # The status of the baseline. Valid values: ERROR, SAFE, DANGROUS (warning), and OVER (exceeded).
         self.status = status
 
     def validate(self):
@@ -260,9 +260,9 @@ class GetBaselineStatusResponseBodyDataLastInstance(DaraModel):
         project_id: int = None,
         status: str = None,
     ):
-        # The timestamp of the predicted time when the instance finished running.
+        # The estimated completion timestamp of the instance.
         self.end_cast = end_cast
-        # The timestamp of the actual time when the instance finished running.
+        # The actual completion timestamp of the instance.
         self.finish_time = finish_time
         # The ID of the instance.
         self.instance_id = instance_id
@@ -270,11 +270,11 @@ class GetBaselineStatusResponseBodyDataLastInstance(DaraModel):
         self.node_id = node_id
         # The name of the node.
         self.node_name = node_name
-        # The ID of the Alibaba Cloud account used by the node owner.
+        # The Alibaba Cloud UID of the node owner.
         self.owner = owner
         # The ID of the workspace to which the node belongs.
         self.project_id = project_id
-        # The status of the instance. Valid values: NOT_RUN, WAIT_TIME, WAIT_RESOURCE, RUNNING, CHECKING, CHECKING_CONDITION, FAILURE, and SUCCESS. The value NOT_RUN indicates that the instance is not run. The value WAIT_TIME indicates that the instance is waiting to be run. The value WAIT_RESOURCE indicates that the instance is waiting for resources. The value RUNNING indicates that the instance is running. The value CHECKING indicates that data quality is being checked for the instance. The value CHECKING_CONDITION indicates that branch conditions are being checked for the instance. The value FAILURE indicates that the instance fails to run. The value SUCCESS indicates that the instance is run.
+        # The status of the instance. Valid values: NOT_RUN, WAIT_TIME, WAIT_RESOURCE, RUNNING, CHECKING, CHECKING_CONDITION, FAILURE, and SUCCESS.
         self.status = status
 
     def validate(self):
@@ -351,9 +351,9 @@ class GetBaselineStatusResponseBodyDataBlockInstance(DaraModel):
         project_id: int = None,
         status: str = None,
     ):
-        # The timestamp of the predicted time when the instance finished running.
+        # The estimated completion timestamp of the instance.
         self.end_cast = end_cast
-        # The timestamp of the actual time when the instance finished running.
+        # The actual completion timestamp of the instance.
         self.finish_time = finish_time
         # The ID of the instance.
         self.instance_id = instance_id
@@ -361,11 +361,11 @@ class GetBaselineStatusResponseBodyDataBlockInstance(DaraModel):
         self.node_id = node_id
         # The name of the node.
         self.node_name = node_name
-        # The ID of the Alibaba Cloud account used by the node owner.
+        # The Alibaba Cloud UID of the node owner.
         self.owner = owner
         # The ID of the workspace to which the node belongs.
         self.project_id = project_id
-        # The status of the instance. Valid values: NOT_RUN, WAIT_TIME, WAIT_RESOURCE, RUNNING, CHECKING, CHECKING_CONDITION, FAILURE, and SUCCESS. The value NOT_RUN indicates that the instance is not run. The value WAIT_TIME indicates that the instance is waiting to be run. The value WAIT_RESOURCE indicates that the instance is waiting for resources. The value RUNNING indicates that the instance is running. The value CHECKING indicates that data quality is being checked for the instance. The value CHECKING_CONDITION indicates that branch conditions are being checked for the instance. The value FAILURE indicates that the instance fails to run. The value SUCCESS indicates that the instance is run.
+        # The status of the instance. Valid values: NOT_RUN, WAIT_TIME, WAIT_RESOURCE, RUNNING, CHECKING, CHECKING_CONDITION, FAILURE, and SUCCESS.
         self.status = status
 
     def validate(self):

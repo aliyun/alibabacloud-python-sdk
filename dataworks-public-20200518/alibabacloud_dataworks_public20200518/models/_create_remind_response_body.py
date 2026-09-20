@@ -14,7 +14,7 @@ class CreateRemindResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The ID of the custom alert rule.
+        # The ID of the custom rule returned after the custom monitoring rule is created.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -22,7 +22,7 @@ class CreateRemindResponseBody(DaraModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID.
+        # The unique ID of the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success

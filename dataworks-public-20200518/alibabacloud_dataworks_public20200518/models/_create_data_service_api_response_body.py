@@ -14,7 +14,7 @@ class CreateDataServiceApiResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The ID of the API.
+        # The ID of the created API.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -22,7 +22,7 @@ class CreateDataServiceApiResponseBody(DaraModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID.
+        # The request ID. A unique identifier for the request.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success

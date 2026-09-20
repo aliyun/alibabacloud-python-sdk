@@ -14,7 +14,7 @@ class RestartInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The data returned.
+        # The details of the result returned after the instance is restarted.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -22,9 +22,9 @@ class RestartInstanceResponseBody(DaraModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID.
+        # The request ID. Used to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):

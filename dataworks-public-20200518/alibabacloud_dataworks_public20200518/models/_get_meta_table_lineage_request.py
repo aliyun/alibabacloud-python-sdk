@@ -16,17 +16,22 @@ class GetMetaTableLineageRequest(DaraModel):
         table_guid: str = None,
         table_name: str = None,
     ):
-        # The ID of the E-MapReduce (EMR) cluster. Configure this parameter only if you want to query the lineage of an EMR table.
+        # The ID of the EMR cluster. This parameter is required for EMR scenarios.
         self.cluster_id = cluster_id
-        # The type of the data source. Valid values: odps and emr.
+        # The data source type. Valid values: odps and emr.
         self.data_source_type = data_source_type
         # The name of the database.
         self.database_name = database_name
-        # Specifies the ancestor or descendant lineage that you want to query for a field. Valid values: up and down. The value up indicates the ancestor lineage. The value down indicates the descendant lineage.
+        # The direction of the lineage. Valid values:
+        # 
+        # - up: upstream.
+        # - down: downstream.
         # 
         # This parameter is required.
         self.direction = direction
-        # The logic of paging. Configure this parameter based on the value of the response parameter NextPrimaryKey when the value of the response parameter HasNext is true in the previous request.
+        # The pagination logic.
+        # 
+        # If HasNext is set to true and NextPrimaryKey is not empty in the last response, set this parameter to the value of NextPrimaryKey in the next request.
         self.next_primary_key = next_primary_key
         # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size

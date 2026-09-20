@@ -13,7 +13,7 @@ class GetPermissionApplyOrderDetailResponseBody(DaraModel):
         apply_order_detail: main_models.GetPermissionApplyOrderDetailResponseBodyApplyOrderDetail = None,
         request_id: str = None,
     ):
-        # The details of the request order.
+        # The details of the application order.
         self.apply_order_detail = apply_order_detail
         # The request ID.
         self.request_id = request_id
@@ -59,28 +59,28 @@ class GetPermissionApplyOrderDetailResponseBodyApplyOrderDetail(DaraModel):
         flow_status: int = None,
         grantee_object_list: List[main_models.GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailGranteeObjectList] = None,
     ):
-        # The UID of the Alibaba Cloud account that submitted the request order.
+        # The UID of the Alibaba Cloud account that submitted the application order.
         self.apply_base_id = apply_base_id
-        # The time when the request order was submitted, displayed as a UNIX timestamp.
+        # The time when the application order was submitted. The value is a UNIX timestamp.
         self.apply_timestamp = apply_timestamp
-        # The list of Alibaba Cloud accounts that approved the request order.
+        # The list of Alibaba Cloud accounts that approved the application order.
         self.approve_account_list = approve_account_list
-        # The specific content of the request.
+        # The specific content of the application.
         self.approve_content = approve_content
-        # The time when the final approval was completed, displayed as a UNIX timestamp.
+        # The time when the final approval was completed. The value is a UNIX timestamp.
         self.finish_aapproval_timestamp = finish_aapproval_timestamp
         # The final approval comment.
         self.finish_approval_comment = finish_approval_comment
-        # The ID of the request order.
+        # The ID of the application order.
         self.flow_id = flow_id
-        # The status of the request order. Valid values:
+        # The status of the application order. Valid values:
         # - 1: Pending approval.
         # - 2: Approved and authorization succeeded.
         # - 3: Approved but authorization failed.
         # - 4: Rejected.
         # - 5: Withdrawn.
         self.flow_status = flow_status
-        # The information about the accounts that requested permissions.
+        # The account information of the permission applicant.
         self.grantee_object_list = grantee_object_list
 
     def validate(self):
@@ -179,15 +179,15 @@ class GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailGranteeObjectList
         grantee_type: int = None,
         grantee_type_sub: int = None,
     ):
-        # The UID of the Alibaba Cloud account that requested permissions.
+        # The UID of the Alibaba Cloud account that requested the permission.
         self.grantee_id = grantee_id
-        # The name of the Alibaba Cloud account that requested permissions. The format is consistent with the MaxCompute account format.
-        # - Primary account: ALIYUN$+account name.
+        # The name of the Alibaba Cloud account that requested the permission. The format is the same as the MaxCompute account format.
+        # - Alibaba Cloud account: ALIYUN$+account name.
         # - RAM user: RAM$+account name.
         self.grantee_name = grantee_name
-        # The type of the entity that requested permissions. Currently, only 1 (user) is supported.
+        # The principal type of the permission applicant. Currently, only the value 1 (user) is supported.
         self.grantee_type = grantee_type
-        # The subtype of the entity that requested permissions. Valid values:
+        # The principal subtype of the permission applicant. Valid values:
         # - 101: Production Alibaba Cloud account.
         # - 103: Personal Alibaba Cloud account.
         # - 105: Alibaba Cloud account applied on behalf of another user.
@@ -239,14 +239,14 @@ class GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContent(Da
         order_type: int = None,
         project_meta: main_models.GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentProjectMeta = None,
     ):
-        # The reason for the request, used as a reference for the administrator during approval.
+        # The reason for the application, which is used as a reference for administrator approval.
         self.apply_reason = apply_reason
-        # The expiration time of the requested permissions, displayed as a UNIX timestamp.
-        # If the MaxCompute project does not have LabelSecurity enabled, or the security level of the requested table field is 0 or less than or equal to the security level of the requesting account, only permanent permissions can be requested.
+        # The expiration time of the requested permission. The value is a UNIX timestamp.
+        # If LabelSecurity is not enabled for the MaxCompute project, or the security level of the requested table field is 0 or less than or equal to the security level of the requesting account, only permanent permissions can be requested.
         self.deadline = deadline
-        # The type of the request order. Currently, only the value 1 is supported, indicating an object ACL permission request.
+        # The type of the application order. Currently, only the value 1 is supported, which indicates an object ACL permission application.
         self.order_type = order_type
-        # The information about the project and workspace to which the requested object belongs.
+        # The project and workspace information to which the requested object belongs.
         self.project_meta = project_meta
 
     def validate(self):
@@ -298,7 +298,7 @@ class GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentPro
     ):
         # The MaxCompute project in which the requested object resides.
         self.max_compute_project_name = max_compute_project_name
-        # The detailed information about the requested objects.
+        # The details of the requested object.
         self.object_meta_list = object_meta_list
         # The ID of the DataWorks workspace in which the requested object resides.
         self.workspace_id = workspace_id
@@ -455,7 +455,7 @@ class GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveAccountLis
         self,
         base_id: str = None,
     ):
-        # The UID of the Alibaba Cloud account that approved the request order.
+        # The UID of the Alibaba Cloud account that approved the application order.
         self.base_id = base_id
 
     def validate(self):

@@ -11,7 +11,7 @@ class ListProjectMembersRequest(DaraModel):
         page_size: int = None,
         project_id: int = None,
     ):
-        # The page number. Valid values: 1 to 30. Default value: 1.
+        # The page number. Default value: 1. Minimum value: 1. Maximum value: 30.
         self.page_number = page_number
         # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size

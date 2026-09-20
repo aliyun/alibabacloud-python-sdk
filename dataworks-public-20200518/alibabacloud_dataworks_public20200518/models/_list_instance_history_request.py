@@ -10,11 +10,11 @@ class ListInstanceHistoryRequest(DaraModel):
         instance_id: int = None,
         project_env: str = None,
     ):
-        # The instance ID. You can call the ListInstances operation to query the instance ID.
+        # The ID of the instance. You can call ListInstances to obtain the ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The environment of the workspace. Valid values: PROD and DEV. By default, data of instances in the production environment is queried.
+        # The environment of the workspace. Valid values: PROD (production environment) and DEV (development environment). Default value: PROD.
         self.project_env = project_env
 
     def validate(self):

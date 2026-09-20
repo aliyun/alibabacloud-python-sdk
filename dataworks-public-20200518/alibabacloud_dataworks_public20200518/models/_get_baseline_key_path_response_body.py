@@ -17,17 +17,17 @@ class GetBaselineKeyPathResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The information about the key path.
+        # The critical path information.
         self.data = data
-        # Error code
+        # The error code.
         self.error_code = error_code
-        # Error message
+        # The error message.
         self.error_message = error_message
-        # The timestamp when the event was found.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The unique ID of the call. After an error occurs, you can troubleshoot the problem based on the ID.
+        # The unique ID of the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Whether the call is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -102,25 +102,25 @@ class GetBaselineKeyPathResponseBodyData(DaraModel):
         runs: List[main_models.GetBaselineKeyPathResponseBodyDataRuns] = None,
         topics: List[main_models.GetBaselineKeyPathResponseBodyDataTopics] = None,
     ):
-        # The data timestamp of the instance.
+        # The timestamp of the business date of the instance.
         self.bizdate = bizdate
-        # The ID of the scheduling cycle of the instance. Valid values: 1 to 288.
+        # The cycle number of the instance. Valid values: [1,288\\].
         self.in_group_id = in_group_id
         # The ID of the instance.
         self.instance_id = instance_id
-        # The node ID.
+        # The ID of the node.
         self.node_id = node_id
         # The name of the node.
         self.node_name = node_name
-        # The ID of the Alibaba Cloud account used by the node owner.
+        # The Alibaba Cloud UID of the node owner.
         self.owner = owner
-        # The type of the node. Valid values: 23, 10, 6, and 99. The value 23 indicates that the node is a Data Integration node. The value 10 indicates that the node is a MaxCompute SQL node. The value 6 indicates that the node is a Shell node. The value 99 indicates that the node is a zero load node.
+        # The node type. Common node types include Data Integration (23), MaxCompute SQL (10), Shell (6), and virtual node (99).
         self.prg_type = prg_type
         # The ID of the workspace to which the node belongs.
         self.project_id = project_id
-        # The running records of the instance.
+        # The run records of the instance.
         self.runs = runs
-        # The information about the events that are associated with the instance.
+        # The event information associated with the instance.
         self.topics = topics
 
     def validate(self):
@@ -222,11 +222,11 @@ class GetBaselineKeyPathResponseBodyDataTopics(DaraModel):
         topic_id: int = None,
         topic_name: str = None,
     ):
-        # The timestamp when the event was found.
+        # The timestamp when the event was detected.
         self.add_time = add_time
-        # The instance ID.
+        # The ID of the instance.
         self.instance_id = instance_id
-        # The event ID.
+        # The ID of the event.
         self.topic_id = topic_id
         # The name of the event.
         self.topic_name = topic_name
@@ -281,21 +281,29 @@ class GetBaselineKeyPathResponseBodyDataRuns(DaraModel):
         finish_time: int = None,
         status: str = None,
     ):
-        # The timestamp obtained by adding the predicted time when the instance started to run to the historical average running duration of the instance.
+        # The timestamp calculated by adding the historical average run duration to the estimated start time of the instance.
         self.abs_time = abs_time
-        # The timestamp of the predicted time when the instance started to run.
+        # The estimated start time of the instance.
         self.begin_cast = begin_cast
-        # The timestamp of the actual time when the instance started to run.
+        # The timestamp when the instance actually started running.
         self.begin_running_time = begin_running_time
-        # The timestamp when the instance started to wait for resources.
+        # The timestamp when the instance entered the waiting-for-resources state.
         self.begin_wait_res_time = begin_wait_res_time
-        # The timestamp when the instance started to wait for the scheduling time.
+        # The timestamp when the instance entered the waiting-for-time state.
         self.begin_wait_time_time = begin_wait_time_time
-        # The timestamp of the predicted time when the instance finished running.
+        # The estimated end time of the instance.
         self.end_cast = end_cast
-        # The timestamp of the actual time when the instance finished running.
+        # The timestamp when the instance actually finished running.
         self.finish_time = finish_time
-        # The status of the instance. Valid values: NOT_RUN, WAIT_TIME, WAIT_RESOURCE, RUNNING, CHECKING, CHECKING_CONDITION, FAILURE, and SUCCESS. The value NOT_RUN indicates that the instance is not run. The value WAIT_TIME indicates that the instance is waiting to be run. The value WAIT_RESOURCE indicates that the instance is waiting for resources. The value RUNNING indicates that the instance is running. The value CHECKING indicates that data quality is being checked for the instance. The value CHECKING_CONDITION indicates that branch conditions are being checked for the instance. The value FAILURE indicates that the instance fails to run. The value SUCCESS indicates that the instance is run.
+        # The status of the instance. Valid values:
+        # - NOT_RUN: not run.
+        # - WAIT_TIME: waiting for the scheduled time.
+        # - WAIT_RESOURCE: waiting for resources.
+        # - RUNNING: running.
+        # - CHECKING: checking.
+        # - CHECKING_CONDITION: checking conditions.
+        # - FAILURE: failed.
+        # - SUCCESS: succeeded.
         self.status = status
 
     def validate(self):

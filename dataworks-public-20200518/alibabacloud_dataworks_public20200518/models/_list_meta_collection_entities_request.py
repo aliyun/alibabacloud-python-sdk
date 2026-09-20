@@ -17,15 +17,13 @@ class ListMetaCollectionEntitiesRequest(DaraModel):
         # 
         # This parameter is required.
         self.collection_qualified_name = collection_qualified_name
-        # The type of the entities.
-        # 
-        # For example, if this parameter is set to maxcompute-table, the entity is a MaxCompute table.
+        # The entity type. Example: maxcompute-table indicates the MaxCompute table type.
         self.entity_type = entity_type
         # The search keyword.
         self.keyword = keyword
-        # The pagination token that is used in the next request to retrieve a new page of results.
+        # The pagination token that specifies the starting point of the current read operation.
         self.next_token = next_token
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
 
     def validate(self):

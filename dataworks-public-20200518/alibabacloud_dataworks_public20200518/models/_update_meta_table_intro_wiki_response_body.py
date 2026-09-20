@@ -10,9 +10,9 @@ class UpdateMetaTableIntroWikiResponseBody(DaraModel):
         request_id: str = None,
         update_result: bool = None,
     ):
-        # The request ID. You can troubleshoot issues based on the ID.
+        # The unique ID of the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the instructions on how to use the table are updated.
+        # The update result of the table.
         self.update_result = update_result
 
     def validate(self):

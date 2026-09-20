@@ -20,16 +20,16 @@ class AddMetaCollectionEntityResponseBody(DaraModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID. You can use the request ID to query logs and troubleshoot issues.
+        # The request ID. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # The result of the operation. Valid values:
+        # The operation result. Valid values: 
         # 
-        # *   true: succeeded
-        # *   false: failed
+        # - true: Succeeded. 
+        # - false: Failed.
         self.status = status
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # true false
+        # Indicates whether the call was successful. Valid values:
+        # - true: The call was successful.
+        # - false: The call failed.
         self.success = success
 
     def validate(self):

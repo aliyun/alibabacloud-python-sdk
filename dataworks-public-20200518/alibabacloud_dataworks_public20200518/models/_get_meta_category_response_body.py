@@ -90,13 +90,13 @@ class GetMetaCategoryResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The information about the category tree.
+        # The list of data entities.
         self.data_entity_list = data_entity_list
-        # The page number.
+        # The page number. Used for pagination.
         self.page_num = page_num
         # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
-        # The total number of categories returned.
+        # The total number of categories.
         self.total_count = total_count
 
     def validate(self):
@@ -158,23 +158,27 @@ class GetMetaCategoryResponseBodyDataDataEntityList(DaraModel):
         owner_id: str = None,
         parent_category_id: int = None,
     ):
-        # The category ID.
+        # The ID of the category.
         self.category_id = category_id
         # The remarks of the category.
         self.comment = comment
         # The time when the category was created.
+        # 
+        # The value is a 13-digit number, such as `1541576644000`.
         self.create_time = create_time
-        # The number of category levels.
+        # The depth level of the category.
         self.depth = depth
-        # The ID of the user that performed the last operation.
+        # The ID of the user who last performed an operation.
         self.last_operator_id = last_operator_id
         # The time when the category was last modified.
+        # 
+        # The value is a 13-digit number, such as `1541576644000`.
         self.modified_time = modified_time
         # The name of the category.
         self.name = name
-        # The category owner ID.
+        # The ID of the category owner.
         self.owner_id = owner_id
-        # The parent category ID.
+        # The ID of the parent category.
         self.parent_category_id = parent_category_id
 
     def validate(self):

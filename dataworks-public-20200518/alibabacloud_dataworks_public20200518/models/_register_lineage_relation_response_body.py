@@ -21,15 +21,15 @@ class RegisterLineageRelationResponseBody(DaraModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The lineage.
+        # The lineage relationship object.
         self.lineage_relation = lineage_relation
-        # The request ID. You can locate logs and troubleshoot issues based on the ID.
+        # The request ID. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # - true
+        # - true: The request was successful.
         # 
-        # - false
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -93,7 +93,7 @@ class RegisterLineageRelationResponseBodyLineageRelation(DaraModel):
     ):
         # The unique identifier of the destination entity.
         self.dest_entity_qualified_name = dest_entity_qualified_name
-        # The ID of the lineage between entities.
+        # The lineage relationship ID between entities.
         self.relationship_guid = relationship_guid
         # The unique identifier of the source entity.
         self.src_entity_qualified_name = src_entity_qualified_name

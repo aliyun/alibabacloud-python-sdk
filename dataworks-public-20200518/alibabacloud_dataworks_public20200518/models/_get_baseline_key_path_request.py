@@ -11,15 +11,15 @@ class GetBaselineKeyPathRequest(DaraModel):
         bizdate: str = None,
         in_group_id: int = None,
     ):
-        # The name of the event.
+        # The ID of the baseline.
         # 
         # This parameter is required.
         self.baseline_id = baseline_id
-        # The ID of the instance.
+        # The business date in the yyyy-MM-dd\\"T\\"HH:mm:ssZ UTC format.
         # 
         # This parameter is required.
         self.bizdate = bizdate
-        # The ID of the event.
+        # The cycle number of the baseline instance. The value is 1 for a daily baseline. Valid values for an hourly baseline: [1,24\\].
         # 
         # This parameter is required.
         self.in_group_id = in_group_id

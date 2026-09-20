@@ -17,7 +17,7 @@ class ListDagsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details of DAGs.
+        # The details of the DAGs.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -25,9 +25,9 @@ class ListDagsResponseBody(DaraModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID. You can use the ID to locate logs and troubleshoot issues.
+        # The request ID. You can use this ID to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -87,7 +87,7 @@ class ListDagsResponseBodyData(DaraModel):
         self,
         dags: List[main_models.ListDagsResponseBodyDataDags] = None,
     ):
-        # The entities returned.
+        # The returned entities.
         self.dags = dags
 
     def validate(self):
@@ -135,47 +135,51 @@ class ListDagsResponseBodyDataDags(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The data timestamp.
+        # The business date.
+        # 
+        # The value is a 13-digit number, for example, `1605052800000`.
         self.bizdate = bizdate
         # The creation time.
+        # 
+        # The value is a 13-digit number, for example, `1605052800000`.
         self.create_time = create_time
         # The creator.
         self.create_user = create_user
-        # The DAG ID.
+        # DagId。
         self.dag_id = dag_id
         # The end time.
+        # 
+        # The value is a 13-digit number, for example, `1605052800000`.
         self.finish_time = finish_time
-        # The actual running time.
+        # The GMT date.
+        # 
+        # The value is a 13-digit number, for example, `1605052800000`.
         self.gmtdate = gmtdate
         # The modification time.
+        # 
+        # The value is a 13-digit number, for example, `1605052800000`.
         self.modify_time = modify_time
         # The name of the DAG.
         self.name = name
-        # The sequence number of the operation.
+        # The operation sequence code.
         self.op_seq = op_seq
         # The workspace ID.
         self.project_id = project_id
         # The start time.
+        # 
+        # The value is a 13-digit number, for example, `1605052800000`.
         self.start_time = start_time
         # The status of the DAG. Valid values:
-        # 
-        # - CREATED
-        # 
-        # - RUNNING
-        # 
-        # - FAILURE
-        # 
-        # - SUCCESS
+        # - CREATED: created
+        # - RUNNING: running
+        # - FAILURE: failed
+        # - SUCCESS: succeeded
         self.status = status
         # The type of the DAG. Valid values:
-        # 
-        # - MANUAL: DAG for a manually triggered workflow
-        # 
-        # - SMOKE_TEST: DAG for a smoke testing workflow
-        # 
-        # - SUPPLY_DATA: DAG for a data backfill instance
-        # 
-        # - BUSINESS_PROCESS_DAG: DAG for a one-time workflow
+        # - MANUAL: manual task workflow
+        # - SMOKE_TEST: smoke test workflow
+        # - SUPPLY_DATA: data backfill
+        # - BUSINESS_PROCESS_DAG: one-time business process workflow
         self.type = type
 
     def validate(self):

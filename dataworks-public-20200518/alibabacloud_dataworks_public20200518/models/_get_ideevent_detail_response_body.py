@@ -13,11 +13,11 @@ class GetIDEEventDetailResponseBody(DaraModel):
         event_detail: main_models.GetIDEEventDetailResponseBodyEventDetail = None,
         request_id: str = None,
     ):
-        # The data snapshot that is generated when an extension point event is triggered.
+        # The data snapshot at the time the extension point event was triggered.
         # 
-        # The fields contained in data snapshots vary based on the types of the triggered extension point events. For more information, see the description of the fields.
+        # Different types of message events have different valid fields in the data snapshot. For details, refer to the field descriptions of each message event.
         self.event_detail = event_detail
-        # The request ID.
+        # The unique ID of the request, which can be used for troubleshooting.
         self.request_id = request_id
 
     def validate(self):
@@ -56,15 +56,15 @@ class GetIDEEventDetailResponseBodyEventDetail(DaraModel):
         file_execution_command: main_models.GetIDEEventDetailResponseBodyEventDetailFileExecutionCommand = None,
         table_model: main_models.GetIDEEventDetailResponseBodyEventDetailTableModel = None,
     ):
-        # The data snapshot when the file is committed and deployed.
+        # The snapshot when a file is committed or deployed.
         # 
-        # This parameter is valid only if the message type is IDE_FILE_SUBMIT_BEFORE or IDE_FILE_DEPLOY_BEFORE.
+        # This field is valid only when the Message type is IDE_FILE_SUBMIT_BEFORE or IDE_FILE_DEPLOY_BEFORE.
         self.committed_file = committed_file
-        # The data snapshot when the file is deleted. This parameter is valid only if the message type is IDE_FILE_DELETE_BEFORE.
+        # The snapshot information when a file is deleted. This field is valid only when the Message type is IDE_FILE_DELETE_BEFORE.
         self.deleted_file = deleted_file
-        # The data snapshot when the code in the file is run. This parameter is valid only if the message type is IDE_FILE_EXECUTE_BEFORE.
+        # The snapshot when file code is executed. This field is valid only when the Message type is IDE_FILE_EXECUTE_BEFORE.
         self.file_execution_command = file_execution_command
-        # The data snapshot when the table is committed and deployed. This parameter is valid only if the message type is IDE_TABLE_SUBMIT_BEFORE or IDE_TABLE_DEPLOY_BEFORE.
+        # The snapshot when a table is committed or deployed. This field is valid only when the Message type is IDE_TABLE_SUBMIT_BEFORE or IDE_TABLE_DEPLOY_BEFORE.
         self.table_model = table_model
 
     def validate(self):
@@ -127,20 +127,19 @@ class GetIDEEventDetailResponseBodyEventDetailTableModel(DaraModel):
         location: str = None,
         table_name: str = None,
     ):
-        # The columns in the table.
+        # The list of columns.
         self.columns = columns
-        # The remarks of the table.
+        # The comment of the table.
         self.comment = comment
-        # The name of the data source to which the table belongs.
+        # The unique identifier of the data source to which the table belongs.
         self.data_source_name = data_source_name
-        # The environment in which the table is used. Valid values:
-        # 
-        # *   DEV
-        # *   PROD
+        # The environment to which the table belongs. Valid values:
+        # - DEV: development environment.
+        # - PROD: production environment.
         self.env = env
-        # The lifecycle of the metatable. Unit: day.
+        # The lifecycle of the table. Unit: days.
         self.life_cycle = life_cycle
-        # The path of the table.
+        # The location information of the external table.
         self.location = location
         # The name of the table.
         self.table_name = table_name
@@ -219,14 +218,13 @@ class GetIDEEventDetailResponseBodyEventDetailTableModelColumns(DaraModel):
     ):
         # The name of the column.
         self.column_name = column_name
-        # The data type of the column.
+        # The type of the column.
         self.column_type = column_type
-        # The remarks of the column.
+        # The comment of the column.
         self.comment = comment
-        # Indicates whether the column is a partition key column. Valid values:
-        # 
-        # *   true: The column is a partition key column.
-        # *   false: The column is not a partition key column.
+        # Indicates whether the column is a partition column. Valid values:
+        # - true: The column is a partition column.
+        # - false: The column is not a partition column.
         self.is_partition_column = is_partition_column
 
     def validate(self):
@@ -275,13 +273,13 @@ class GetIDEEventDetailResponseBodyEventDetailFileExecutionCommand(DaraModel):
         file_id: int = None,
         file_type: int = None,
     ):
-        # The code in the file of the current version.
+        # The file code that generated this file version.
         self.content = content
-        # The name of the data source with which the file is associated.
+        # The unique identifier of the data source associated with the file.
         self.data_source_name = data_source_name
-        # The file ID.
+        # The ID of the file.
         self.file_id = file_id
-        # The type of the code for the file. The code for files varies based on the file type. For more information, see [DataWorks nodes](https://help.aliyun.com/document_detail/600169.html).
+        # The file type. Different file types have different code. For more information, see [DataWorks nodes](https://help.aliyun.com/document_detail/600169.html).
         self.file_type = file_type
 
     def validate(self):
@@ -340,34 +338,33 @@ class GetIDEEventDetailResponseBodyEventDetailDeletedFile(DaraModel):
     ):
         # The ID of the workflow to which the file belongs.
         self.business_id = business_id
-        # The code in the file of the current version.
+        # The file code that generated this file version.
         self.content = content
-        # The latest version number of the file.
+        # The latest version of the file.
         self.current_version = current_version
-        # The name of the data source with which the file is associated.
+        # The unique identifier of the data source associated with the file.
         self.data_source_name = data_source_name
-        # The file ID.
+        # The ID of the file.
         self.file_id = file_id
         # The name of the file.
         self.file_name = file_name
-        # The type of the code for the file. The code of files varies based on the file type. For more information, see [DataWorks nodes](https://help.aliyun.com/document_detail/600169.html).
+        # The file type. Different file types have different code. For more information, see [DataWorks nodes](https://help.aliyun.com/document_detail/600169.html).
         self.file_type = file_type
-        # The ID of the folder to which the file belongs. You can call the [GetFolder](https://help.aliyun.com/document_detail/173952.html) operation to query the details of the file based on the folder ID.
+        # The ID of the folder to which the file belongs. You can call the [GetFolder](https://help.aliyun.com/document_detail/173952.html) operation to query file details by folder ID.
         self.folder_id = folder_id
-        # The ID of the node that is scheduled.
+        # The ID of the scheduling node.
         self.node_id = node_id
-        # The file owner.
+        # The owner of the file.
         self.owner = owner
-        # The ID of the do-while node or for-each node that corresponds to the file.
+        # The node ID of the loop node or traversal node to which the file belongs.
         self.parent_file_id = parent_file_id
-        # The module to which the file belongs. Valid values:
-        # 
-        # *   NORMAL: The file is used for DataStudio.
-        # *   MANUAL: The file is used for a manually triggered node.
-        # *   MANUAL_BIZ: The file is used for a manually triggered workflow.
-        # *   SKIP: The file is used for a dry-run DataStudio node.
-        # *   ADHOCQUERY: The file is used for an ad hoc query.
-        # *   COMPONENT: The file is used for a snippet.
+        # The functional module to which the file belongs. Valid values:
+        # - NORMAL: DataStudio.
+        # - MANUAL: manual task.
+        # - MANUAL_BIZ: manual workflow.
+        # - SKIP: dry-run scheduling in DataStudio.
+        # - ADHOCQUERY: ad hoc query.
+        # - COMPONENT: component management.
         self.use_type = use_type
 
     def validate(self):
@@ -471,34 +468,33 @@ class GetIDEEventDetailResponseBodyEventDetailCommittedFile(DaraModel):
         node_id: int = None,
         use_type: str = None,
     ):
-        # The type of the change to the file of the current version. Valid values: CREATE, UPDATE, and DELETE.
+        # The change type of this file version. Valid values: CREATE, UPDATE, and DELETE.
         self.change_type = change_type
-        # The description of the file version.
+        # The description of this file version.
         self.comment = comment
-        # The ID of the Alibaba Cloud account that is used to generate the file of the current version.
+        # The Alibaba Cloud user ID that generated this file version.
         self.committor = committor
-        # The code in the file of the current version.
+        # The file code that generated this file version.
         self.content = content
-        # The file ID.
+        # The ID of the file.
         self.file_id = file_id
         # The name of the file.
         self.file_name = file_name
-        # The details of the file.
+        # The additional properties of the file.
         self.file_property_content = file_property_content
-        # The type of the code for the file. The code of files varies based on the file type. For more information, see [DataWorks nodes](https://help.aliyun.com/document_detail/600169.html).
+        # The file type. Different file types have different code. For more information, see [DataWorks nodes](https://help.aliyun.com/document_detail/600169.html).
         self.file_type = file_type
-        # The scheduling properties of the node that corresponds to the file.
+        # The scheduling configuration of the file.
         self.node_configuration = node_configuration
-        # The ID of the node that is scheduled.
+        # The ID of the scheduling node.
         self.node_id = node_id
-        # The module to which the file belongs. Valid values:
-        # 
-        # *   NORMAL: The file is used for DataStudio.
-        # *   MANUAL: The file is used for a manually triggered node.
-        # *   MANUAL_BIZ: The file is used for a manually triggered workflow.
-        # *   SKIP: The file is used for a dry-run DataStudio node.
-        # *   ADHOCQUERY: The file is used for an ad hoc query.
-        # *   COMPONENT: The file is used for a snippet.
+        # The functional module to which the file belongs. Valid values:
+        # - NORMAL: DataStudio.
+        # - MANUAL: manual task.
+        # - MANUAL_BIZ: manual workflow.
+        # - SKIP: dry-run scheduling in DataStudio.
+        # - ADHOCQUERY: ad hoc query.
+        # - COMPONENT: component management.
         self.use_type = use_type
 
     def validate(self):
@@ -602,53 +598,50 @@ class GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration(Dar
         resource_group_id: int = None,
         scheduler_type: str = None,
     ):
-        # The interval at which the node corresponding to the file is rerun. Unit: milliseconds.
+        # The interval between automatic reruns, in milliseconds.
         self.auto_rerun_interval_millis = auto_rerun_interval_millis
-        # The number of times that the node corresponding to the file can be rerun.
+        # The number of automatic reruns.
         self.auto_rerun_times = auto_rerun_times
-        # The CRON expression that is used to schedule the node corresponding to the file.
+        # The scheduling cron expression.
         self.cron_express = cron_express
-        # The type of the scheduling cycle of the node that corresponds to the file. Valid values: NOT_DAY and DAY. The value NOT_DAY indicates that the node is scheduled to run by minute or hour. The value DAY indicates that the node is scheduled to run by day, week, or month.
+        # The type of the scheduling cycle. Valid values: NOT_DAY (minute or hour) and DAY (day, week, or month).
         # 
-        # This parameter corresponds to the Scheduling Cycle parameter in the Schedule section of the Properties tab in the [DataWorks console](https://workbench.data.aliyun.com/console).
+        # This parameter corresponds to the "Schedule Configuration > Time Properties > Scheduling Cycle" setting of a DataStudio task in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.cycle_type = cycle_type
-        # The ID of the node on which the node that corresponds to the file depends when the DependentType parameter is set to USER_DEFINE. Multiple IDs are separated by commas (,).
+        # The IDs of the nodes on which the current file depends when the DependentType parameter settings are set to USER_DEFINE. Separate multiple node IDs with commas (,).
         # 
-        # The value of this parameter is equivalent to the ID of the node that you specified after you select Other Nodes for Cross-Cycle Dependency (Original Previous-Cycle Dependency) in the Dependencies section of the Properties tab in the [DataWorks console](https://workbench.data.aliyun.com/console).
+        # This parameter corresponds to the "Settings > Scheduling Dependencies > Cross-epoch Dependencies (Previous Epoch)" setting of a DataStudio task in the [DataWorks console](https://workbench.data.aliyun.com/console), when the dependency is set to "Other Nodes".
         self.dependent_node_id_list = dependent_node_id_list
-        # The type of the cross-cycle scheduling dependency of the node. Valid values:
-        # 
-        # *   SELF: The instance generated for the node in the current cycle depends on the instance generated for the node in the previous cycle.
-        # *   CHILD: The instance generated for the node in the current cycle depends on the instances generated for the descendant nodes at the nearest level of the node in the previous cycle.
-        # *   USER_DEFINE: The instance generated for the node in the current cycle depends on the instances generated for one or more specified nodes in the previous cycle.
-        # *   NONE: No cross-cycle scheduling dependency type is selected for the node.
+        # The method of depending on the previous cycle. Valid values:
+        # - SELF: the dependency is set to the current node.
+        # - CHILD: the dependency is set to first-level child nodes.
+        # - USER_DEFINE: the dependency is set to other nodes.
+        # - NONE: no dependency is selected, meaning the node does not depend on the previous cycle.
         self.dependent_type = dependent_type
-        # The output names of the parent files on which the current file depends.
+        # The upstream file outputs on which the file depends.
         self.input_list = input_list
-        # The output names of the current file.
+        # The outputs of the file.
         # 
-        # This parameter corresponds to the Output Name of Current Node parameter in the Dependencies section of the Properties tab in the [DataWorks console](https://workbench.data.aliyun.com/console).
+        # This parameter corresponds to the "Schedule Configuration > Scheduling Dependencies > Output Name of Current Node" setting of a DataStudio task in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.output_list = output_list
-        # The scheduling parameters of the node.
+        # The scheduling parameters.
         # 
-        # This parameter corresponds to the Scheduling Parameter section of the Properties tab in the [DataWorks console](https://workbench.data.aliyun.com/console). For more information about the configurations of the scheduling parameters, see [Configure scheduling parameters](https://help.aliyun.com/document_detail/137548.html).
+        # This parameter corresponds to the "Schedule Configuration > Parameters" setting of a DataStudio task in the [DataWorks console](https://workbench.data.aliyun.com/console). For more information, see [Scheduling parameters](https://help.aliyun.com/document_detail/137548.html).
         self.para_value = para_value
-        # Indicates whether the node that corresponds to the file can be rerun. Valid values:
+        # The rerun property. Valid values:
+        # - ALL_ALLOWED: The node can be rerun regardless of whether it runs successfully or fails.
+        # - FAILURE_ALLOWED: The node can be rerun only after it fails.
+        # - ALL_DENIED: The node cannot be rerun regardless of whether it runs successfully or fails.
         # 
-        # *   ALL_ALLOWED: The node can be rerun regardless of whether it is successfully run or fails to run.
-        # *   FAILURE_ALLOWED: The node can be rerun only after it fails to run.
-        # *   ALL_DENIED: The node cannot be rerun regardless of whether it is successfully run or fails to run.
-        # 
-        # This parameter corresponds to the Rerun parameter in the Schedule section of the Properties tab in the [DataWorks console](https://workbench.data.aliyun.com/console).
+        # This parameter corresponds to the "Schedule Configuration > Time Properties > Rerun Properties" setting of a DataStudio task in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.rerun_mode = rerun_mode
-        # The ID of the resource group that is used to run the node that corresponds to the file. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/173913.html) operation to query the available resource groups in the workspace.
+        # The resource group used when the task is executed after the file is deployed. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/173913.html) operation to obtain the list of available resource groups for the workspace.
         self.resource_group_id = resource_group_id
-        # The scheduling type of the node. Valid values:
-        # 
-        # *   NORMAL: The node is an auto triggered node.
-        # *   MANUAL: The node is a manually triggered node. Manually triggered nodes cannot be automatically triggered. They correspond to the nodes in the Manually Triggered Workflows pane.
-        # *   PAUSE: The node is a paused node.
-        # *   SKIP: The node is a dry-run node. Dry-run nodes are started as scheduled, but the system sets the status of the nodes to successful when it starts to run them.
+        # The scheduling type. Valid values:
+        # - NORMAL: normal scheduling task.
+        # - MANUAL: manual task that is not scheduled on a regular basis. This corresponds to nodes in a manual workflow.
+        # - PAUSE: paused task.
+        # - SKIP: dry-run task that is scheduled on a regular basis but is directly set to successful when scheduling starts.
         self.scheduler_type = scheduler_type
 
     def validate(self):
@@ -760,13 +753,13 @@ class GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfigurationOutp
         output: str = None,
         ref_table_name: str = None,
     ):
-        # The output name of the current file.
+        # The output name of the file.
         # 
-        # This parameter corresponds to the Output Name parameter under Output Name of Current Node in the Dependencies section of the Properties tab in the [DataWorks console](https://workbench.data.aliyun.com/console).
+        # This parameter corresponds to the "Output Name" in the "Schedule Configuration > Scheduling Dependencies > Output Name of Current Node" setting of a DataStudio task in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.output = output
-        # The output table name of the current file.
+        # The output table name of the file.
         # 
-        # This parameter corresponds to the Output Table Name parameter under Output Name of Current Node in the Dependencies section of the Properties tab in the [DataWorks console](https://workbench.data.aliyun.com/console).
+        # This parameter corresponds to the "Output Table Name" in the "Schedule Configuration > Scheduling Dependencies > Output Name of Current Node" setting of a DataStudio task in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.ref_table_name = ref_table_name
 
     def validate(self):
@@ -801,14 +794,13 @@ class GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfigurationInpu
         input: str = None,
         parse_type: str = None,
     ):
-        # The output name of the parent file on which the current file depends.
+        # The output name of the upstream file on which the file depends.
         # 
-        # This parameter corresponds to the Output Name of Ancestor Node parameter under Parent Nodes in the Dependencies section of the Properties tab in the [DataWorks console](https://workbench.data.aliyun.com/console).
+        # This parameter corresponds to the "Output Name of Upstream Node" in the "Schedule Configuration > Scheduling Dependencies > Depends On Upstream Nodes" setting of a DataStudio task in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.input = input
-        # The mode of the configuration file dependency. Valid values:
-        # 
-        # *   MANUAL: Scheduling dependencies are manually configured.
-        # *   AUTO: Scheduling dependencies are automatically parsed.
+        # The method used to configure file dependencies. Valid values:
+        # - MANUAL: manual configuration.
+        # - AUTO: automatic parsing.
         self.parse_type = parse_type
 
     def validate(self):
@@ -849,15 +841,15 @@ class GetIDEEventDetailResponseBodyEventDetailCommittedFileFilePropertyContent(D
     ):
         # The ID of the workflow to which the file belongs.
         self.business_id = business_id
-        # The latest version number of the file.
+        # The latest version of the file.
         self.current_version = current_version
-        # The name of the data source with which the file is associated.
+        # The unique identifier of the data source associated with the file.
         self.data_source_name = data_source_name
-        # The ID of the folder to which the file belongs. You can call the [GetFolder](https://help.aliyun.com/document_detail/173952.html) operation to query the details of the file based on the folder ID.
+        # The ID of the folder to which the file belongs. You can call the [GetFolder](https://help.aliyun.com/document_detail/173952.html) operation to query file details by folder ID.
         self.folder_id = folder_id
-        # The file owner.
+        # The owner of the file.
         self.owner = owner
-        # The ID of the do-while node or for-each node that corresponds to the file.
+        # The node ID of the loop node or traversal node to which the file belongs.
         self.parent_file_id = parent_file_id
 
     def validate(self):

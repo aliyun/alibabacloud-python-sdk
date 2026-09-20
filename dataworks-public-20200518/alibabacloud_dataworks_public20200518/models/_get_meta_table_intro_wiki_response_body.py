@@ -90,15 +90,19 @@ class GetMetaTableIntroWikiResponseBodyData(DaraModel):
         modified_time: int = None,
         version: int = None,
     ):
-        # The description of the metatable.
+        # The description of the table.
         self.content = content
-        # The time when the metatable was created.
+        # The time when the table was created.
+        # 
+        # The value is a 13-digit number, such as `1584444247000`.
         self.create_time = create_time
-        # The creator of the metatable.
+        # The creator of the table.
         self.creator = creator
-        # The name of the user who creates the metatable.
+        # The name of the table creator.
         self.creator_name = creator_name
-        # The time when the metatable was last modified.
+        # The time when the table was modified.
+        # 
+        # The value is a 13-digit number, such as `1584444247000`.
         self.modified_time = modified_time
         # The version number.
         self.version = version

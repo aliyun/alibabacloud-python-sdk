@@ -23,9 +23,9 @@ class GetTopicResponseBody(DaraModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID.
+        # The unique ID of the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -107,51 +107,51 @@ class GetTopicResponseBodyData(DaraModel):
         topic_status: str = None,
         topic_type: str = None,
     ):
-        # The timestamp when the event was found.
+        # The timestamp when the event was discovered.
         self.add_time = add_time
-        # The timestamp when the first alert was reported.
+        # The timestamp of the first alert.
         self.alert_time = alert_time
-        # The ID of the Alibaba Cloud account used by the alert recipient.
+        # The Alibaba Cloud UID of the assigner.
         self.assigner = assigner
-        # The margin of the worst baseline instance. Unit: seconds.
+        # The buffer of the worst baseline instance, in seconds.
         self.baseline_buffer = baseline_buffer
-        # The ID of the baseline to which the worst baseline instance belongs.
+        # The baseline ID of the worst baseline instance.
         self.baseline_id = baseline_id
-        # The ID of the cycle of the worst baseline instance.
+        # The cycle number of the worst baseline instance.
         self.baseline_in_group_id = baseline_in_group_id
-        # The name of the baseline to which the worst baseline instance belongs.
+        # The baseline name of the worst baseline instance.
         self.baseline_name = baseline_name
-        # The status of the baseline. Valid values: ERROR, SAFE, DANGROUS, and OVER. The value ERROR indicates that no nodes are associated with the baseline, or all nodes associated with the baseline are suspended. The value SAFE indicates that nodes are run before the alert duration begins. The value DANGROUS indicates that nodes are still running after the alert duration ends but the committed completion time does not arrive. The value OVER indicates that nodes are still running after the committed completion time.
+        # The status of the baseline. Valid values: ERROR, SAFE, DANGROUS (warning), and OVER (exceeded).
         self.baseline_status = baseline_status
-        # The margin of the event. Unit: seconds.
+        # The buffer of the event, in seconds.
         self.buffer = buffer
-        # The timestamp when the event was last processed.
+        # The timestamp of the last handling.
         self.deal_time = deal_time
-        # The ID of the Alibaba Cloud account used by the user who last processed the event.
+        # The Alibaba Cloud UID of the last handler.
         self.deal_user = deal_user
-        # The timestamp when the event was processed.
+        # The timestamp when the event was resolved.
         self.fix_time = fix_time
-        # The timestamp when the event occurred. A time difference may exist between the time when the event occurred and the time when the event was found.
+        # The timestamp when the event occurred. There may be a time difference between when the event occurred and when it was discovered.
         self.happen_time = happen_time
-        # The ID of the instance that triggered the event.
+        # The instance ID associated with the event.
         self.instance_id = instance_id
-        # The timestamp when the system reports the next alert.
+        # The timestamp of the next alert.
         self.next_alert_time = next_alert_time
-        # The ID of the node that triggered the event.
+        # The ID of the node associated with the event.
         self.node_id = node_id
-        # The name of the node that triggered the event.
+        # The name of the node associated with the event.
         self.node_name = node_name
-        # The ID of the Alibaba Cloud account used by the event owner.
+        # The Alibaba Cloud UID of the event owner.
         self.owner = owner
-        # The ID of the workspace to which the node that triggered the event belongs.
+        # The ID of the workspace to which the node associated with the event belongs.
         self.project_id = project_id
-        # The event ID.
+        # The ID of the event.
         self.topic_id = topic_id
         # The name of the event.
         self.topic_name = topic_name
-        # The status of the event. Valid values: IGNORE, NEW, FIXING, and RECOVER.
+        # The status of the event. Valid values: IGNORE (ignored), NEW (newly discovered), FIXING (being handled), and RECOVER (recovered).
         self.topic_status = topic_status
-        # The type of the event. Valid values: SLOW and ERROR. The value SLOW indicates that the duration of the task is significantly longer than the average duration of the task in previous cycles. The value ERROR indicates that the task fails to run.
+        # The type of the event. Valid values: SLOW and ERROR.
         self.topic_type = topic_type
 
     def validate(self):

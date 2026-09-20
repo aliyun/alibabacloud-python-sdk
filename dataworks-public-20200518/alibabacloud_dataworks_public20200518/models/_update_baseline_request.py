@@ -24,35 +24,41 @@ class UpdateBaselineRequest(DaraModel):
         project_id: int = None,
         remove_node_ids: str = None,
     ):
-        # Specifies whether to enable the alerting feature. Valid values: true and false.
+        # Specifies whether alerting is enabled. Valid values:
+        # - true: Enabled.
+        # - false: Disabled.
         self.alert_enabled = alert_enabled
-        # The alert margin threshold of the baseline. Unit: minutes.
+        # The baseline alert margin. Unit: minutes.
         self.alert_margin_threshold = alert_margin_threshold
-        # The alert settings of the baseline.
+        # The baseline alert configurations.
         self.alert_settings = alert_settings
-        # The baseline ID. You can call the [ListBaselines](https://help.aliyun.com/document_detail/2261507.html) operation to query the ID.
+        # The ID of the baseline. You can call [ListBaselines](https://help.aliyun.com/document_detail/2261507.html) to obtain the ID.
         # 
         # This parameter is required.
         self.baseline_id = baseline_id
-        # The name of the baseline.
+        # The baseline name.
         self.baseline_name = baseline_name
-        # The type of the baseline. Valid values: DAILY and HOURLY.
+        # The baseline type. Valid values:
+        # - DAILY: daily baseline.
+        # - HOURLY: hourly baseline.
         self.baseline_type = baseline_type
-        # Specifies whether to enable the baseline. Valid values: true and false.
+        # Specifies whether the baseline is enabled. Valid values:
+        # - true: Enabled.
+        # - false: Disabled.
         self.enabled = enabled
-        # The ancestor nodes of nodes in the baseline. Separate the ancestor nodes with commas (,). If a large number of ancestor nodes exist, we recommend that you create a zero load node and configure the zero load node as the descendant node of nodes in the baseline to facilitate node management.
+        # The list of upstream node IDs for the baseline, separated by commas. If there are many nodes, we recommend that you add a virtual node downstream for easier management.
         self.node_ids = node_ids
-        # The settings of the committed completion time of the baseline.
+        # The baseline committed time configurations.
         self.overtime_settings = overtime_settings
-        # The ID of the Alibaba Cloud account used by the baseline owner.
+        # The Alibaba Cloud UID of the baseline owner.
         self.owner = owner
-        # The priority of the baseline. Valid values: {1,3,5,7,8}.
+        # The priority of the baseline. Valid values: 1, 3, 5, 7, and 8.
         self.priority = priority
-        # The workspace ID. You can call the [ListBaselines](https://help.aliyun.com/document_detail/2261507.html) operation to query the ID.
+        # The project ID. You can call [ListBaselines](https://help.aliyun.com/document_detail/2261507.html) to obtain the ID.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The ID of the node that you want to disassociate from the baseline. You can specify multiple node IDs. Separate multiple node IDs with commas (,).
+        # The IDs of nodes to remove from the baseline. Separate multiple IDs with commas (,).
         self.remove_node_ids = remove_node_ids
 
     def validate(self):
@@ -170,9 +176,9 @@ class UpdateBaselineRequestOvertimeSettings(DaraModel):
         cycle: int = None,
         time: str = None,
     ):
-        # The cycle that corresponds to the committed completion time. For a day-level baseline, set this parameter to 1. For an hour-level baseline, set this parameter to a value that is no more than 24.
+        # The epoch corresponding to the committed time. For daily baselines, the value is 1. For hourly baselines, you can configure up to 24 epochs.
         self.cycle = cycle
-        # The committed completion time in the hh:mm format. Valid values of hh: [0,47]. Valid values of mm: [0,59].
+        # The committed time in hh:mm format. Valid values of hh: 0 to 47. Valid values of mm: 0 to 59.
         self.time = time
 
     def validate(self):
@@ -214,32 +220,47 @@ class UpdateBaselineRequestAlertSettings(DaraModel):
         ding_robots: List[main_models.UpdateBaselineRequestAlertSettingsDingRobots] = None,
         silence_end_time: str = None,
         silence_start_time: str = None,
+        topic_slow_config: main_models.UpdateBaselineRequestAlertSettingsTopicSlowConfig = None,
         topic_types: List[str] = None,
         webhooks: List[str] = None,
     ):
-        # The interval at which an event alert notification is sent. Unit: minutes. Minimum value: 5. Maximum value: 1,440.
+        # The event alerting interval. Unit: minutes. Minimum value: 5. Maximum value: 1440.
         self.alert_interval = alert_interval
-        # The maximum number of times an event alert notification is sent. Maximum value: 24.
+        # The maximum number of event alerting notifications. Maximum value: 288.
         self.alert_maximum = alert_maximum
-        # The alert notification methods. Valid values: MAIL, SMS, PHONE, DINGROBOTS, and Webhooks. The value MAIL indicates that alert notifications are sent by email. The value SMS indicates that alert notifications are sent by text message. The value PHONE indicates that alert notifications are sent by phone call. You can use this notification method only in DataWorks Professional Edition or a more advanced edition. The value DINGROBOTS indicates that alert notifications are sent by using a DingTalk chatbot. You can use this notification method only if the RobotUrls parameter is configured. The value Webhooks indicates that alert notifications are sent by WeCom or Lark. You can use this notification method only if the Webhooks parameter is configured.
+        # Valid values:
+        # - MAIL: email.
+        # - SMS: text message.
+        # - PHONE: phone call. Only DataWorks Professional Edition and higher support phone call alerts.
+        # - DINGROBOTS: DingTalk chatbot. This alert method takes effect only after the RobotUrls parameter is configured.
+        # - Webhooks: WeCom or Lark chatbot. This alert method takes effect only after the Webhooks parameter is configured.
         self.alert_methods = alert_methods
-        # The details of the alert recipient. If you set AlertRecipientType to OWNER, leave this parameter empty. If you set AlertRecipientType to SHIFT_SCHEDULE, set this parameter to the name of the shift schedule. If you set AlertRecipientType to OTHER, set this parameter to the employee IDs of specified personnel.
+        # The alert recipient details. For specified users: a list of employee IDs. For on-duty schedule: the schedule name. For owner: leave empty.
         self.alert_recipient = alert_recipient
-        # The type of the alert recipient. Valid values: OWNER, OTHER, and SHIFT_SCHEDULE. The value OWNER indicates the node owner. The value OTHER indicates specified personnel. The value SHIFT_SCHEDULE indicates personnel in a shift schedule.
+        # The alert recipient type. Valid values:
+        # - OWNER: node owner.
+        # - OTHER: specified users.
+        # - SHIFT_SCHEDULE: on-duty schedule.
         self.alert_recipient_type = alert_recipient_type
-        # The type of the alert. Valid values: BASELINE and TOPIC. The value BASELINE indicates a baseline alert. The value TOPIC indicates an event alert.
+        # The alert type. Valid values:
+        # - BASELINE: baseline alerting.
+        # - TOPIC: event alerting.
         self.alert_type = alert_type
-        # Specifies whether to enable the baseline alerting feature. This feature is specific to baselines. Valid values: true and false.
+        # Specifies whether baseline alerting is enabled. This is a baseline-specific configuration. Valid values:
+        # - true: Enabled.
+        # - false: Disabled.
         self.baseline_alert_enabled = baseline_alert_enabled
-        # The DingTalk chatbots.
+        # The list of DingTalk chatbots.
         self.ding_robots = ding_robots
-        # The end time of silence.
+        # The silence end time.
         self.silence_end_time = silence_end_time
-        # The start time of silence.
+        # The silence start time.
         self.silence_start_time = silence_start_time
-        # The types of event alerts, which are event-specific configurations.
+        # The threshold configuration for event slowdown alerts.
+        self.topic_slow_config = topic_slow_config
+        # The event alerting type. This is an event-specific configuration.
         self.topic_types = topic_types
-        # The webhook URLs.
+        # The webhook list.
         self.webhooks = webhooks
 
     def validate(self):
@@ -247,6 +268,8 @@ class UpdateBaselineRequestAlertSettings(DaraModel):
             for v1 in self.ding_robots:
                  if v1:
                     v1.validate()
+        if self.topic_slow_config:
+            self.topic_slow_config.validate()
 
     def to_map(self):
         result = dict()
@@ -284,6 +307,9 @@ class UpdateBaselineRequestAlertSettings(DaraModel):
 
         if self.silence_start_time is not None:
             result['SilenceStartTime'] = self.silence_start_time
+
+        if self.topic_slow_config is not None:
+            result['TopicSlowConfig'] = self.topic_slow_config.to_map()
 
         if self.topic_types is not None:
             result['TopicTypes'] = self.topic_types
@@ -328,11 +354,52 @@ class UpdateBaselineRequestAlertSettings(DaraModel):
         if m.get('SilenceStartTime') is not None:
             self.silence_start_time = m.get('SilenceStartTime')
 
+        if m.get('TopicSlowConfig') is not None:
+            temp_model = main_models.UpdateBaselineRequestAlertSettingsTopicSlowConfig()
+            self.topic_slow_config = temp_model.from_map(m.get('TopicSlowConfig'))
+
         if m.get('TopicTypes') is not None:
             self.topic_types = m.get('TopicTypes')
 
         if m.get('Webhooks') is not None:
             self.webhooks = m.get('Webhooks')
+
+        return self
+
+class UpdateBaselineRequestAlertSettingsTopicSlowConfig(DaraModel):
+    def __init__(
+        self,
+        min_over: int = None,
+        over_factor: float = None,
+    ):
+        # The minimum slowdown threshold. Unit: seconds. Valid values: 300 to 18000.
+        self.min_over = min_over
+        # The ratio used to calculate the slowdown threshold based on the historical average execution duration of the node. Valid values: 0.1 to 2.
+        self.over_factor = over_factor
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.min_over is not None:
+            result['MinOver'] = self.min_over
+
+        if self.over_factor is not None:
+            result['OverFactor'] = self.over_factor
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MinOver') is not None:
+            self.min_over = m.get('MinOver')
+
+        if m.get('OverFactor') is not None:
+            self.over_factor = m.get('OverFactor')
 
         return self
 
@@ -342,9 +409,11 @@ class UpdateBaselineRequestAlertSettingsDingRobots(DaraModel):
         at_all: bool = None,
         web_url: str = None,
     ):
-        # Specifies whether to remind all members by using the at sign (@). Valid values: true and false.
+        # Specifies whether to @all members. Valid values:
+        # - true: Yes.
+        # - false: No.
         self.at_all = at_all
-        # The webhook URL of the DingTalk chatbot.
+        # The webhook URL of the DingTalk group chatbot.
         self.web_url = web_url
 
     def validate(self):

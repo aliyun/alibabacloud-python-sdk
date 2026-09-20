@@ -98,33 +98,33 @@ class GetBaselineConfigResponseBodyData(DaraModel):
         sla_minu: int = None,
         use_flag: bool = None,
     ):
-        # The baseline ID.
+        # The ID of the baseline.
         self.baseline_id = baseline_id
         # The name of the baseline.
         self.baseline_name = baseline_name
-        # The type of the baseline. Valid values: DAILY and HOURLY.
+        # The type of the baseline. Valid values: DAILY (daily baseline) and HOURLY (hourly baseline).
         self.baseline_type = baseline_type
-        # The hour in the alerting time of the day-level baseline. Valid values: [0, 47].
+        # The alert hour of the daily baseline. Valid values: [0, 47\\].
         self.exp_hour = exp_hour
-        # The minute in the alerting time of the day-level baseline. Valid values: [0, 59].
+        # The alert minute of the daily baseline. Valid values: [0, 59\\].
         self.exp_minu = exp_minu
-        # The alerting time of the hour-level baseline. This parameter is presented as key-value pairs in the JSON format. The key indicates the ID of the cycle, and the value is presented in the hh:mm format. Valid values of hh: [0,47]. Valid values of mm: [0,59].
+        # The alert time configuration of the hourly baseline in JSON format. The key is the cycle number, and the value is in hh:mm format. Valid values of hh: [0,47\\]. Valid values of mm: [0,59\\].
         self.hour_exp_detail = hour_exp_detail
-        # The committed completion time of the hour-level baseline. This parameter is presented as key-value pairs in the JSON format. The key indicates the ID of the cycle, and the value is presented in the hh:mm format. Valid values of hh: [0,47]. Valid values of mm: [0,59].
+        # The committed time configuration of the hourly baseline in JSON format. The key is the cycle number, and the value is in hh:mm format. Valid values of hh: [0,47\\]. Valid values of mm: [0,59\\].
         self.hour_sla_detail = hour_sla_detail
-        # Indicates whether the baseline is a default baseline of the workspace. Valid values: true and false.
+        # Indicates whether this is the default baseline of the workspace. Valid values: true and false.
         self.is_default = is_default
-        # The ID of the Alibaba Cloud account used by the baseline owner. Multiple IDs can be specified. The IDs are separated by commas (,).
+        # The Alibaba Cloud UID of the baseline owner. If multiple owners exist, they are separated by commas (,).
         self.owner = owner
-        # The priority of the baseline. Valid values: {1,3,5,7,8}.
+        # The priority of the baseline. Valid values: 1, 3, 5, 7, and 8.
         self.priority = priority
         # The ID of the workspace.
         self.project_id = project_id
-        # The hour in the committed completion time of the day-level baseline. Valid values: [0, 47].
+        # The committed hour of the daily baseline. Valid values: [0, 47\\].
         self.sla_hour = sla_hour
-        # The minute in the committed completion time of the day-level baseline. Valid values: [0, 59].
+        # The committed minute of the daily baseline. Valid values: [0, 59\\].
         self.sla_minu = sla_minu
-        # Indicates whether the baseline is enabled. Valid values: true and false.
+        # Indicates whether the baseline is enabled. Valid values: true (enabled) and false (disabled).
         self.use_flag = use_flag
 
     def validate(self):

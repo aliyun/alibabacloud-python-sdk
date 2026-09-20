@@ -16,7 +16,7 @@ class RemoveEntityTagsRequest(DaraModel):
         # 
         # This parameter is required.
         self.qualified_name = qualified_name
-        # The tag keys.
+        # The list of tag keys.
         # 
         # This parameter is required.
         self.tag_keys = tag_keys

@@ -17,7 +17,7 @@ class GetQualityEntityResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The data returned.
+        # The returned information.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -27,7 +27,7 @@ class GetQualityEntityResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request succeeded.
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -108,45 +108,43 @@ class GetQualityEntityResponseBodyData(DaraModel):
         table_name: str = None,
         task: int = None,
     ):
-        # The time when the partition filter expression was created.
+        # The time when the partition expression was created.
+        # 
+        # The value is a 13-digit number, for example, `1593964800000`.
         self.create_time = create_time
-        # The level of the partition filter expression. Valid values:
-        # 
-        # - 0 (SQL-level): A data quality check is triggered after each SQL statement is run.
-        # 
-        # - 1 (Task-level): A data quality check is triggered after all SQL statements are run.
+        # The level of the partition expression. Valid values:
+        # - 0 (SQL level): DQC verification is triggered after each SQL statement is executed.
+        # - 1 (Task level): Verification is performed after all SQL statements are executed.
         self.entity_level = entity_level
         # The type of the engine or data source.
         self.env_type = env_type
-        # The subscribers who receive alert notifications. The value is the ID of an Alibaba Cloud account.
+        # The subscribers. The Alibaba Cloud account IDs that receive alert notifications.
         self.followers = followers
-        # Indicates whether the partition filter expression is associated with a scheduling node. Valid values:
-        # 
-        # - true: The partition filter expression is associated with a scheduling node.
-        # 
-        # - false: The partition filter expression is not associated with a scheduling node.
+        # Indicates whether the partition expression is associated with scheduling. Valid values:
+        # - true: Associated with scheduling.
+        # - false: Not associated with scheduling.
         self.has_relative_node = has_relative_node
-        # The ID of the partition filter expression.
+        # The ID of the partition expression.
         self.id = id
-        # The partition filter expression.
+        # The partition expression.
         self.match_expression = match_expression
-        # The time when the partition filter expression was last updated.
+        # The time when the partition expression was updated.
+        # 
+        # The value is a 13-digit number, for example, `1593964800000`.
         self.modify_time = modify_time
-        # The user who updates the partition filter expression. The value is the ID of an Alibaba Cloud account.
+        # The account ID of the user who updated the partition expression.
         self.modify_user = modify_user
-        # The owner who configures the partition filter expression. The value is the ID of an Alibaba Cloud account.
+        # The owner. The account ID of the user who configured the partition expression.
         self.on_duty = on_duty
-        # The name of the Alibaba Cloud account of the owner.
+        # The Alibaba Cloud account name of the owner.
         self.on_duty_account_name = on_duty_account_name
         # The name of the engine or data source.
         self.project_name = project_name
-        # The scheduling node that is associated with the partition filter expression. This parameter includes the following sub-parameters:
-        # 
-        # - ProjectName: The name of the workspace to which the scheduling node belongs.
-        # 
-        # - NodeID: The ID of the scheduling node.
+        # The information about the scheduling node associated with the partition expression, including:
+        # - ProjectName: the name of the project to which the scheduling node belongs.
+        # - NodeID: the node ID of the scheduling node.
         self.relative_node = relative_node
-        # The SQL-level partition filter expression.
+        # The SQL-level partition expression.
         self.sql = sql
         # The name of the partitioned table.
         self.table_name = table_name

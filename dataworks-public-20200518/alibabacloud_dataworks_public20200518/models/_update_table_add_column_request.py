@@ -13,11 +13,11 @@ class UpdateTableAddColumnRequest(DaraModel):
         column: List[main_models.UpdateTableAddColumnRequestColumn] = None,
         table_guid: str = None,
     ):
-        # The fields.
+        # The list of columns.
         # 
         # This parameter is required.
         self.column = column
-        # The globally unique identifier (GUID) of the MaxCompute table. Specify the GUID in the odps.projectName.tableName format.
+        # The unique identifier of the MaxCompute table. Format: odps.projectName.tableName.
         # 
         # This parameter is required.
         self.table_guid = table_guid
@@ -64,17 +64,17 @@ class UpdateTableAddColumnRequestColumn(DaraModel):
         column_type: str = None,
         comment: str = None,
     ):
-        # The name of the field.
+        # The name of the column.
         # 
         # This parameter is required.
         self.column_name = column_name
-        # The display name of the field.
+        # The Chinese name of the column.
         self.column_name_cn = column_name_cn
-        # The type of the field. For more information, see MaxCompute field types.
+        # The type of the column. For more information, see the column types supported by MaxCompute.
         # 
         # This parameter is required.
         self.column_type = column_type
-        # The comment of the field.
+        # The comment of the column.
         self.comment = comment
 
     def validate(self):

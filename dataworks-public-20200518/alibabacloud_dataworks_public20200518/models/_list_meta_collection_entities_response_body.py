@@ -17,7 +17,7 @@ class ListMetaCollectionEntitiesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response parameters.
+        # The response structure.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -25,13 +25,13 @@ class ListMetaCollectionEntitiesResponseBody(DaraModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID. You can locate logs and troubleshoot issues based on the ID.
+        # The request ID. You can use this ID to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the call was successful. Valid values:
         # 
-        # true: The request was successful.
+        # true: The call was successful.
         # 
-        # false: The request failed.
+        # false: The call failed.
         self.success = success
 
     def validate(self):
@@ -92,9 +92,9 @@ class ListMetaCollectionEntitiesResponseBodyData(DaraModel):
         entity_list: List[main_models.Entity] = None,
         next_token: str = None,
     ):
-        # The entities.
+        # The entity array.
         self.entity_list = entity_list
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # The token for the next page.
         self.next_token = next_token
 
     def validate(self):

@@ -13,10 +13,9 @@ class ListLineageRequest(DaraModel):
         next_token: str = None,
         page_size: int = None,
     ):
-        # The lineage type. Valid values:
-        # 
-        # *   up: ancestor lineage
-        # *   down: descendant lineage
+        # The lineage direction. Valid values: 
+        # - up: upstream.
+        # - down: downstream.
         # 
         # This parameter is required.
         self.direction = direction
@@ -26,9 +25,9 @@ class ListLineageRequest(DaraModel):
         self.entity_qualified_name = entity_qualified_name
         # The keyword of the entity name.
         self.keyword = keyword
-        # The pagination token that is used in the next request to retrieve a new page of results.
+        # The pagination token that specifies the starting point of the current read operation.
         self.next_token = next_token
-        # The number of entries per page. Maximum value: 100.
+        # The page size. Maximum value: 100.
         self.page_size = page_size
 
     def validate(self):

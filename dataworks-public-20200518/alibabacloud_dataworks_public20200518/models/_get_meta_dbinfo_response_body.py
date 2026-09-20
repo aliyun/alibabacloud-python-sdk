@@ -64,25 +64,29 @@ class GetMetaDBInfoResponseBodyData(DaraModel):
         tenant_id: int = None,
         type: str = None,
     ):
-        # The compute engine instance ID. Specify the ID in the `Engine type.Engine name` format.
+        # The engine ID, in the format of `Engine type.Engine name`.
         self.app_guid = app_guid
         # The EMR cluster ID.
         self.cluster_biz_id = cluster_biz_id
         # The comment.
         self.comment = comment
-        # The time when the compute engine instance was created.
+        # The time when the engine was created.
+        # 
+        # The value is a 13-digit number, for example, `1541576644000`.
         self.create_time = create_time
-        # The endpoint of the service.
+        # The service endpoint.
         self.endpoint = endpoint
-        # The type of the environment. Valid values: 0 and 1. The value 0 indicates the development environment. The value 1 indicates the production environment.
+        # The environment type. A value of 0 indicates a non-production table. A value of 1 indicates a production table.
         self.env_type = env_type
-        # The storage path of the metadatabase of the EMR cluster.
+        # The data storage address of the EMR database.
         self.location = location
-        # The time when the compute engine instance was modified.
+        # The time when the engine was modified.
+        # 
+        # The value is a 13-digit number, for example, `1541576644000`.
         self.modify_time = modify_time
-        # The name of the database.
+        # The database name.
         self.name = name
-        # The ID of the Alibaba Cloud account used by the workspace owner.
+        # The Alibaba Cloud account ID of the workspace owner.
         self.owner_id = owner_id
         # The name of the workspace owner.
         self.owner_name = owner_name
@@ -94,7 +98,7 @@ class GetMetaDBInfoResponseBodyData(DaraModel):
         self.project_name_cn = project_name_cn
         # The tenant ID.
         self.tenant_id = tenant_id
-        # The type of the metadatabase.
+        # The database type.
         self.type = type
 
     def validate(self):

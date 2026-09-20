@@ -12,13 +12,13 @@ class ListProjectsShrinkRequest(DaraModel):
         resource_manager_resource_group_id: str = None,
         tags_shrink: str = None,
     ):
-        # The page number. Valid values: 1 to 100.
+        # The page number. Minimum value: 1. Maximum value: 100.
         self.page_number = page_number
         # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
         # The resource group ID.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The tags to add to the workspace.
+        # The list of tags bound to the workspace.
         self.tags_shrink = tags_shrink
 
     def validate(self):

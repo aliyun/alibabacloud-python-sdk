@@ -14,17 +14,17 @@ class UpdateQualityRuleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Indicates whether the validation rule was successfully updated.
+        # Indicates whether the quality check rule is updated.
         self.data = data
-        # The error code returned when the request fails.
+        # The error code.
         self.error_code = error_code
-        # The error message returned when the request fails.
+        # The error message.
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The ID of the request, used for troubleshooting.
+        # The request ID. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the API call was successful.
+        # Indicates whether the call is successful.
         self.success = success
 
     def validate(self):

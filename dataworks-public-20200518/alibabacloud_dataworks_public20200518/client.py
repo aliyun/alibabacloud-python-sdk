@@ -88,8 +88,8 @@ class Client(OpenApiClient):
             'rus-west-1-pop': 'dataworks.aliyuncs.com',
             'us-east-1': 'dataworks.us-east-1.aliyuncs.com',
             'us-west-1': 'dataworks.us-west-1.aliyuncs.com',
-            'me-central-1': 'dataworks.me-central-1.aliyuncs.com',
-            'ap-northeast-2': 'dataworks.ap-northeast-2.aliyuncs.com'
+            'ap-northeast-2': 'dataworks.ap-northeast-2.aliyuncs.com',
+            'me-central-1': 'dataworks.me-central-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('dataworks-public', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)

@@ -13,7 +13,7 @@ class ListDIJobsResponseBody(DaraModel):
         dijob_paging: main_models.ListDIJobsResponseBodyDIJobPaging = None,
         request_id: str = None,
     ):
-        # The pagination information.
+        # The paginated task results.
         self.dijob_paging = dijob_paging
         # The request ID.
         self.request_id = request_id
@@ -54,13 +54,13 @@ class ListDIJobsResponseBodyDIJobPaging(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The list of tasks.
+        # The task list.
         self.dijobs = dijobs
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -122,35 +122,26 @@ class ListDIJobsResponseBodyDIJobPagingDIJobs(DaraModel):
     ):
         # The task ID.
         self.dijob_id = dijob_id
-        # The type of the destination. The value Hologres is returned.
+        # The destination data source type. Valid values: Hologres.
         self.destination_data_source_type = destination_data_source_type
         # The task name.
         self.job_name = job_name
-        # The task status. Valid values:
-        # 
-        # - Finished
-        # 
-        # - Initialized
-        # 
-        # - Stopped
-        # 
-        # - Failed
-        # 
-        # - Running
-        # 
-        # - Stopping
+        # The synchronization status. Valid values:
+        # - Finished: Completed successfully.
+        # - Initialized: Initialization completed.
+        # - Stopped: Stopped.
+        # - Failed: Failed.
+        # - Running: Running.
+        # - Stopping: Stopping.
         self.job_status = job_status
         # The synchronization type. Valid values:
-        # 
-        # - FullAndRealtimeIncremental: one-time full synchronization and real-time incremental synchronization
-        # 
-        # - RealtimeIncremental: real-time incremental synchronization
-        # 
-        # - Full: one-time full synchronization
+        # - FullAndRealtimeIncremental: Full and real-time incremental.
+        # - RealtimeIncremental: Real-time incremental.
+        # - Full: Full.
         self.migration_type = migration_type
         # The workspace ID.
         self.project_id = project_id
-        # The type of the source. The value MySQL is returned.
+        # The source data source type. Valid values: MySQL.
         self.source_data_source_type = source_data_source_type
 
     def validate(self):

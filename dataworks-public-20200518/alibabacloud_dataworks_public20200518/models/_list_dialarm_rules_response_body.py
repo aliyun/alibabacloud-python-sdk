@@ -13,7 +13,7 @@ class ListDIAlarmRulesResponseBody(DaraModel):
         dialarm_rule_paging: main_models.ListDIAlarmRulesResponseBodyDIAlarmRulePaging = None,
         request_id: str = None,
     ):
-        # The pagination information.
+        # The paginated result of alert rules.
         self.dialarm_rule_paging = dialarm_rule_paging
         # The request ID.
         self.request_id = request_id
@@ -54,13 +54,13 @@ class ListDIAlarmRulesResponseBodyDIAlarmRulePaging(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The alert rules.
+        # The list of alert rules.
         self.dijob_alarm_rules = dijob_alarm_rules
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -122,23 +122,20 @@ class ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRules(DaraModel):
     ):
         # The alert rule ID.
         self.dialarm_rule_id = dialarm_rule_id
-        # The ID of the task with which the alert rule is associated.
+        # The task ID. This is the task ID associated with the alert rule.
         self.dijob_id = dijob_id
-        # The description of the alert rule.
+        # The description.
         self.description = description
         # Indicates whether the alert rule is enabled.
         self.enabled = enabled
-        # The metric type in the alert rule. Valid values:
-        # 
-        # - Heartbeat
-        # 
-        # - FailoverCount
-        # 
-        # - Delay
+        # The alert metric type. Valid values:
+        # - Heartbeat: task status alert.
+        # - FailoverCount: failover count alert.
+        # - Delay: task delay alert.
         self.metric_type = metric_type
         # The alert notification settings.
         self.notification_settings = notification_settings
-        # The conditions that are used to trigger the alert rule.
+        # The list of alert trigger conditions. Multiple conditions are supported.
         self.trigger_conditions = trigger_conditions
 
     def validate(self):
@@ -215,21 +212,17 @@ class ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRulesTriggerConditi
         severity: str = None,
         threshold: int = None,
     ):
-        # The time interval for alert calculation. Unit: minutes.
+        # The time window for alert calculation. Unit: minutes.
         self.duration = duration
         # The severity level. Valid values:
-        # 
         # - Warning
-        # 
         # - Critical
         self.severity = severity
         # The alert threshold.
         # 
-        # - If the alert rule is for task status, no threshold is used.
-        # 
-        # - If the alert rule is for failovers, the threshold is the number of failovers.
-        # 
-        # - If the alert rule is for latency, the threshold is the latency duration, in seconds.
+        # - Task status alert: no threshold.
+        # - Failover count alert: the threshold is the number of failovers.
+        # - Task delay alert: the threshold is the delay duration. Unit: seconds.
         self.threshold = threshold
 
     def validate(self):
@@ -271,11 +264,11 @@ class ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRulesNotificationSe
         notification_channels: List[main_models.ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRulesNotificationSettingsNotificationChannels] = None,
         notification_receivers: List[main_models.ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRulesNotificationSettingsNotificationReceivers] = None,
     ):
-        # The duration of the alert suppression interval. Unit: minutes.
+        # The alert suppression interval. Unit: minutes.
         self.inhibition_interval = inhibition_interval
-        # The alert notification methods.
+        # The alert notification channels. Multiple values are supported.
         self.notification_channels = notification_channels
-        # The settings of alert notification recipients.
+        # The alert notification receivers. Multiple values are supported.
         self.notification_receivers = notification_receivers
 
     def validate(self):
@@ -333,13 +326,12 @@ class ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRulesNotificationSe
         receiver_type: str = None,
         receiver_values: List[str] = None,
     ):
-        # The recipient type. Valid values: AliyunUid and DingToken.
+        # The receiver type.
         # 
-        # - If the alert notification method is Mail, Phone, or Sms, the value of this parameter is **AliyunUid**, which indicates the Alibaba Cloud account ID.
-        # 
-        # - If the alert notification method is Ding, the value of this parameter is **DingToken**, which indicates the DingTalk chatbot token.
+        # - If the alert notification channel is email, phone call, or text message, the receiver type is Alibaba Cloud user ID (**AliyunUid**).
+        # - If the alert notification channel is DingTalk, the receiver type is DingTalk token (**DingToken**).
         self.receiver_type = receiver_type
-        # The recipients.
+        # The list of receiver values.
         self.receiver_values = receiver_values
 
     def validate(self):
@@ -374,12 +366,10 @@ class ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRulesNotificationSe
         channels: List[str] = None,
         severity: str = None,
     ):
-        # The alert notification methods.
+        # The list of channels.
         self.channels = channels
         # The severity level. Valid values:
-        # 
         # - Warning
-        # 
         # - Critical
         self.severity = severity
 

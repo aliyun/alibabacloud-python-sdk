@@ -19,21 +19,21 @@ class ListMetaCollectionsRequest(DaraModel):
     ):
         # The ID of the collection administrator.
         self.administrator = administrator
-        # - ALBUM: data album
-        # 
-        # - ALBUM_CATEGORY: category in a data album
+        # The type of collection to query. Valid values:
+        # - **ALBUM**: album collection.
+        # - **ALBUM_CATEGORY**: subcategory within an album.
         # 
         # This parameter is required.
         self.collection_type = collection_type
-        # The ID of the collection creator.
+        # The user ID of the creator.
         self.creator = creator
         # The ID of the collection follower.
         self.follower = follower
         # The keyword.
         self.keyword = keyword
-        # The pagination token that is used in the next request to retrieve a new page of results.
+        # The pagination token that specifies the start point of the current read operation.
         self.next_token = next_token
-        # The name of the sorting field.
+        # The name of the field used for sorting.
         self.order_by = order_by
         # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size

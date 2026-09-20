@@ -13,15 +13,17 @@ class UpdateTableModelInfoRequest(DaraModel):
         second_level_theme_id: int = None,
         table_guid: str = None,
     ):
-        # The ID of the first-level table folder.
+        # The first-level topic ID.
         self.first_level_theme_id = first_level_theme_id
-        # The table level ID.
+        # The level ID.
         self.level_id = level_id
-        # The type of the table level. Valid values: 1 and 2. The value 1 indicates the logical level. The value 2 indicates the physical level.
+        # The level type. Valid values:
+        # - 1: logical level.
+        # - 2: physical level.
         self.level_type = level_type
-        # The ID of the second-level table folder.
+        # The second-level topic ID.
         self.second_level_theme_id = second_level_theme_id
-        # The GUID of the table. Specify the GUID in the odps.{projectName}.{tableName} format.
+        # The unique identifier of the table, in the format of odps.{projectName}.{tableName}.
         # 
         # This parameter is required.
         self.table_guid = table_guid

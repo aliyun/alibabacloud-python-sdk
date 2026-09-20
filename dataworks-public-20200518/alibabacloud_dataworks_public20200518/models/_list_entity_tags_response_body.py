@@ -17,7 +17,7 @@ class ListEntityTagsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The tags.
+        # The list of tags.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -25,12 +25,12 @@ class ListEntityTagsResponseBody(DaraModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID.
+        # The request ID, which is used to locate logs and troubleshoot issues.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # true\\
-        # false
+        # - true: The request was successful.  
+        # - false: The request failed.
         self.success = success
 
     def validate(self):

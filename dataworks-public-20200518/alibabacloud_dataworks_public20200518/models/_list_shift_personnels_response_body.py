@@ -13,9 +13,9 @@ class ListShiftPersonnelsResponseBody(DaraModel):
         paging: main_models.ListShiftPersonnelsResponseBodyPaging = None,
         request_id: str = None,
     ):
-        # The pagination information.
+        # The pagination result.
         self.paging = paging
-        # The request ID. You can use the ID to troubleshoot issues.
+        # The request ID. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -54,13 +54,13 @@ class ListShiftPersonnelsResponseBodyPaging(DaraModel):
         shift_persons: List[main_models.ListShiftPersonnelsResponseBodyPagingShiftPersons] = None,
         total_count: int = None,
     ):
-        # The page number. Valid values: 1 to 100. Default value: 1.
+        # The page number. Minimum value: 1. Maximum value: 100. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
-        # The on-duty engineers in the shift schedule.
+        # The list of on-duty personnel.
         self.shift_persons = shift_persons
-        # The total number of entries returned.
+        # The total number of entries that meet the conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -117,13 +117,17 @@ class ListShiftPersonnelsResponseBodyPagingShiftPersons(DaraModel):
         shift_person_name: str = None,
         shift_person_uid: str = None,
     ):
-        # The time when the on-duty engineer starts the shift.
+        # The start time of the on-duty cycle.
+        # 
+        # The value is a 13-digit timestamp, for example, `1593950832000`.
         self.begin_time = begin_time
-        # The time when the on-duty engineer ends the shift.
+        # The end time of the on-duty cycle.
+        # 
+        # The value is a 13-digit timestamp, for example, `1593950832000`.
         self.end_time = end_time
-        # The name of the on-duty engineer.
+        # The name of the on-duty person.
         self.shift_person_name = shift_person_name
-        # The UID of the on-duty engineer.
+        # The UID of the on-duty person.
         self.shift_person_uid = shift_person_uid
 
     def validate(self):
