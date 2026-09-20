@@ -1,0 +1,58 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class ModifyUIAccountPasswordRequest(DaraModel):
+    def __init__(
+        self,
+        account_name: str = None,
+        account_password: str = None,
+        cluster_id: str = None,
+    ):
+        # The username of the cluster management system to be reset. If no user has been created for the HBase instance, the default username is **root**.
+        # 
+        # This parameter is required.
+        self.account_name = account_name
+        # The new password for the target username of the cluster management system. The password must be 2 to 30 characters in length and must contain one or more of the following character types: uppercase letters, lowercase letters, special characters, and digits. Supported special characters are underscores (_) and hyphens (-).
+        # 
+        # This parameter is required.
+        self.account_password = account_password
+        # The ID of the target instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/144595.html) operation to obtain the instance ID.
+        # 
+        # This parameter is required.
+        self.cluster_id = cluster_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.account_name is not None:
+            result['AccountName'] = self.account_name
+
+        if self.account_password is not None:
+            result['AccountPassword'] = self.account_password
+
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountName') is not None:
+            self.account_name = m.get('AccountName')
+
+        if m.get('AccountPassword') is not None:
+            self.account_password = m.get('AccountPassword')
+
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+
+        return self
+
