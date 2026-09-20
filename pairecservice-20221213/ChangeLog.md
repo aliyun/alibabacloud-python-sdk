@@ -1,3 +1,8 @@
+2026-09-20 Version: 7.1.3
+- Update API GetInstance: add response parameters Body.FeatureStoreInfo.
+- Update API GetInstance: add response parameters Body.RecommendCustomization.
+
+
 2026-08-12 Version: 7.1.2
 - Update API CreateEngineConfig: add request parameters body.Type.
 - Update API GetEngineConfig: add response parameters Body.Type.

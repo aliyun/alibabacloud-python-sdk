@@ -14,45 +14,67 @@ class GetInstanceResponseBody(DaraModel):
         commodity_code: str = None,
         config: main_models.GetInstanceResponseBodyConfig = None,
         expired_time: str = None,
+        feature_store_info: main_models.GetInstanceResponseBodyFeatureStoreInfo = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
         instance_id: str = None,
         operating_tool: main_models.GetInstanceResponseBodyOperatingTool = None,
+        recommend_customization: main_models.GetInstanceResponseBodyRecommendCustomization = None,
         region_id: str = None,
         request_id: str = None,
         status: str = None,
         type: str = None,
     ):
-        # The billing method of the instance. The value is fixed as Subscription.
+        # The billing type of the instance. Currently, only Subscription (prepayment) is supported.
         self.charge_type = charge_type
         # The commodity code of the instance.
         self.commodity_code = commodity_code
-        # The instance configurations.
+        # The instance configuration.
         self.config = config
         # The time when the instance expires.
         self.expired_time = expired_time
+        self.feature_store_info = feature_store_info
         # The time when the instance was created.
         self.gmt_create_time = gmt_create_time
         # The time when the instance was last updated.
         self.gmt_modified_time = gmt_modified_time
         # The instance ID.
         self.instance_id = instance_id
-        # The operating tool configurations.
+        # The configuration of the operations tool.
         self.operating_tool = operating_tool
-        # The region ID. Valid values:<br>● cn-shenzhen: Shenzhen<br>● cn-hangzhou: Hangzhou<br>● cn-beijing: Beijing<br>● cn-shanghai: Shanghai<br><br><br><br>
+        self.recommend_customization = recommend_customization
+        # The region ID. Valid values:
+        # 
+        # - cn-shenzhen: China (Shenzhen).
+        # - cn-hangzhou: China (Hangzhou).
+        # - cn-beijing: China (Beijing).
+        # - cn-shanghai: China (Shanghai).
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
-        # The instance status. Valid values:<br>● Initializing<br>● Stopped<br>● Running<br><br><br>
+        # The instance status. Valid values:
+        # 
+        # - Initializing: The instance is being initialized.
+        # - Stopped: The instance is stopped.
+        # - Running: The instance is running.
         self.status = status
-        # The instance type. Valid values:<br>● basic: Basic<br>● highlevel: High-level<br>● advanced: Advanced<br>● standard: Standard<br><br><br><br>
+        # The instance type. Valid values:
+        # 
+        # - basic: Basic Edition.
+        # - highleve: Upgraded Edition.
+        # - advance: Advanced Edition.
+        # - standard: Standard Edition.
         self.type = type
 
     def validate(self):
         if self.config:
             self.config.validate()
+        if self.feature_store_info:
+            self.feature_store_info.validate()
         if self.operating_tool:
             self.operating_tool.validate()
+        if self.recommend_customization:
+            self.recommend_customization.validate()
 
     def to_map(self):
         result = dict()
@@ -71,6 +93,9 @@ class GetInstanceResponseBody(DaraModel):
         if self.expired_time is not None:
             result['ExpiredTime'] = self.expired_time
 
+        if self.feature_store_info is not None:
+            result['FeatureStoreInfo'] = self.feature_store_info.to_map()
+
         if self.gmt_create_time is not None:
             result['GmtCreateTime'] = self.gmt_create_time
 
@@ -82,6 +107,9 @@ class GetInstanceResponseBody(DaraModel):
 
         if self.operating_tool is not None:
             result['OperatingTool'] = self.operating_tool.to_map()
+
+        if self.recommend_customization is not None:
+            result['RecommendCustomization'] = self.recommend_customization.to_map()
 
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -112,6 +140,10 @@ class GetInstanceResponseBody(DaraModel):
         if m.get('ExpiredTime') is not None:
             self.expired_time = m.get('ExpiredTime')
 
+        if m.get('FeatureStoreInfo') is not None:
+            temp_model = main_models.GetInstanceResponseBodyFeatureStoreInfo()
+            self.feature_store_info = temp_model.from_map(m.get('FeatureStoreInfo'))
+
         if m.get('GmtCreateTime') is not None:
             self.gmt_create_time = m.get('GmtCreateTime')
 
@@ -124,6 +156,10 @@ class GetInstanceResponseBody(DaraModel):
         if m.get('OperatingTool') is not None:
             temp_model = main_models.GetInstanceResponseBodyOperatingTool()
             self.operating_tool = temp_model.from_map(m.get('OperatingTool'))
+
+        if m.get('RecommendCustomization') is not None:
+            temp_model = main_models.GetInstanceResponseBodyRecommendCustomization()
+            self.recommend_customization = temp_model.from_map(m.get('RecommendCustomization'))
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
@@ -139,16 +175,11 @@ class GetInstanceResponseBody(DaraModel):
 
         return self
 
-class GetInstanceResponseBodyOperatingTool(DaraModel):
+class GetInstanceResponseBodyRecommendCustomization(DaraModel):
     def __init__(
         self,
         is_enable: bool = None,
     ):
-        # Indicates whether the operating tool is enabled for the instance. Valid values:
-        # 
-        # - True: Enabled
-        # 
-        # - False: Disabled
         self.is_enable = is_enable
 
     def validate(self):
@@ -171,6 +202,72 @@ class GetInstanceResponseBodyOperatingTool(DaraModel):
 
         return self
 
+class GetInstanceResponseBodyOperatingTool(DaraModel):
+    def __init__(
+        self,
+        is_enable: bool = None,
+    ):
+        # Indicates whether the operations tool is enabled for the instance. Valid values:
+        # 
+        # - True: Enabled.
+        # - False: Not enabled.
+        self.is_enable = is_enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.is_enable is not None:
+            result['IsEnable'] = self.is_enable
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsEnable') is not None:
+            self.is_enable = m.get('IsEnable')
+
+        return self
+
+class GetInstanceResponseBodyFeatureStoreInfo(DaraModel):
+    def __init__(
+        self,
+        feature_dbstatus: str = None,
+        instance_id: str = None,
+    ):
+        self.feature_dbstatus = feature_dbstatus
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.feature_dbstatus is not None:
+            result['FeatureDBStatus'] = self.feature_dbstatus
+
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FeatureDBStatus') is not None:
+            self.feature_dbstatus = m.get('FeatureDBStatus')
+
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+
+        return self
+
 class GetInstanceResponseBodyConfig(DaraModel):
     def __init__(
         self,
@@ -182,7 +279,7 @@ class GetInstanceResponseBodyConfig(DaraModel):
         self.data_managements = data_managements
         # The list of service engines.
         self.engines = engines
-        # The list of monitoring components.
+        # The list of supporting features.
         self.monitors = monitors
 
     def validate(self):

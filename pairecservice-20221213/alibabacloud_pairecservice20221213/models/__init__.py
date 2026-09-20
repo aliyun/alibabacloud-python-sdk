@@ -597,7 +597,9 @@ from ._get_instance_response_body import GetInstanceResponseBodyConfigDataManage
 from ._get_instance_response_body import GetInstanceResponseBodyConfigEngines
 from ._get_instance_response_body import GetInstanceResponseBodyConfigMonitors
 from ._get_instance_response_body import GetInstanceResponseBodyConfig
+from ._get_instance_response_body import GetInstanceResponseBodyFeatureStoreInfo
 from ._get_instance_response_body import GetInstanceResponseBodyOperatingTool
+from ._get_instance_response_body import GetInstanceResponseBodyRecommendCustomization
 from ._get_instance_resource_table_response_body import GetInstanceResourceTableResponseBodyFields
 from ._get_recall_management_config_response_body import GetRecallManagementConfigResponseBodyNetworkConfigs
 from ._get_recall_management_job_response_body import GetRecallManagementJobResponseBodyRecallManagementTableInfo
@@ -1305,7 +1307,9 @@ __all__ = [
     GetInstanceResponseBodyConfigEngines,
     GetInstanceResponseBodyConfigMonitors,
     GetInstanceResponseBodyConfig,
+    GetInstanceResponseBodyFeatureStoreInfo,
     GetInstanceResponseBodyOperatingTool,
+    GetInstanceResponseBodyRecommendCustomization,
     GetInstanceResourceTableResponseBodyFields,
     GetRecallManagementConfigResponseBodyNetworkConfigs,
     GetRecallManagementJobResponseBodyRecallManagementTableInfo,

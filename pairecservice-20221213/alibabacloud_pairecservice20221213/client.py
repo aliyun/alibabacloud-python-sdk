@@ -24,18 +24,6 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'cn-shenzhen': 'pairecservice.cn-shenzhen.aliyuncs.com',
-            'cn-shanghai': 'pairecservice.cn-shanghai.aliyuncs.com',
-            'cn-hongkong': 'pairecservice.cn-hongkong.aliyuncs.com',
-            'cn-hangzhou': 'pairecservice.cn-hangzhou.aliyuncs.com',
-            'cn-beijing': 'pairecservice.cn-beijing.aliyuncs.com',
-            'ap-southeast-5': 'pairecservice.ap-southeast-5.aliyuncs.com',
-            'ap-southeast-1': 'pairecservice.ap-southeast-1.aliyuncs.com',
-            'eu-central-1': 'pairecservice.eu-central-1.aliyuncs.com',
-            'us-east-1': 'pairecservice.us-east-1.aliyuncs.com',
-            'us-west-1': 'pairecservice.us-west-1.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('pairecservice', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
