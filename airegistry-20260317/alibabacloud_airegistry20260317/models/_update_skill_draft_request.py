@@ -12,11 +12,18 @@ class UpdateSkillDraftRequest(DaraModel):
         skill_card: str = None,
         skill_name: str = None,
     ):
+        # The commit message.
         self.commit_msg = commit_msg
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.namespace_id = namespace_id
+        # The skill card JSON string that contains complete skill information.
+        # 
         # This parameter is required.
         self.skill_card = skill_card
+        # The skill name.
+        # 
         # This parameter is required.
         self.skill_name = skill_name
 

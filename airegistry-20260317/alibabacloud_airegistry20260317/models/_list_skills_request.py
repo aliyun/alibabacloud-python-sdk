@@ -16,14 +16,29 @@ class ListSkillsRequest(DaraModel):
         search: str = None,
         skill_name: str = None,
     ):
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.namespace_id = namespace_id
+        # The field by which to sort the results. Set the value to download_count. Default value: gmt_modified.
         self.order_by = order_by
+        # The owner by which to filter the results.
         self.owner = owner
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 10. Maximum value: 50.
         self.page_size = page_size
+        # The visibility by which to filter the results. Valid values:
+        # 
+        # - PUBLIC
+        # - PRIVATE
         self.scope = scope
+        # The search mode. Valid values:
+        # 
+        # - accurate: exact match.
+        # - blur: fuzzy match.
         self.search = search
+        # The filter keyword.
         self.skill_name = skill_name
 
     def validate(self):

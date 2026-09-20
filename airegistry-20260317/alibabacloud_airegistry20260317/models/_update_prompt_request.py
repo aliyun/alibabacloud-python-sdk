@@ -15,11 +15,18 @@ class UpdatePromptRequest(DaraModel):
         namespace_id: str = None,
         prompt_key: str = None,
     ):
+        # The list of business tags. The value is a string array.
         self.biz_tags = biz_tags
+        # The description of the prompt.
         self.description = description
+        # The mapping between prompt versions and labels.
         self.labels = labels
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.namespace_id = namespace_id
+        # The unique identifier of the prompt.
+        # 
         # This parameter is required.
         self.prompt_key = prompt_key
 

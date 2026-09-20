@@ -15,14 +15,23 @@ class CreatePromptVersionRequest(DaraModel):
         template: str = None,
         variables: str = None,
     ):
+        # Fork from this version. Either this parameter or Template must be specified.
         self.based_on_version = based_on_version
+        # Commit message.
         self.commit_msg = commit_msg
+        # Workspace ID.
+        # 
         # This parameter is required.
         self.namespace_id = namespace_id
+        # Unique identifier of the prompt.
+        # 
         # This parameter is required.
         self.prompt_key = prompt_key
+        # Draft version number. If not specified, the version number is automatically incremented.
         self.target_version = target_version
+        # Prompt template content. Either this parameter or BasedOnVersion must be specified.
         self.template = template
+        # Variable definitions in a JSON array string.
         self.variables = variables
 
     def validate(self):

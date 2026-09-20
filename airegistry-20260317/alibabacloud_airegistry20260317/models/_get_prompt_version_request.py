@@ -11,10 +11,16 @@ class GetPromptVersionRequest(DaraModel):
         prompt_key: str = None,
         prompt_version: str = None,
     ):
+        # Workspace ID
+        # 
         # This parameter is required.
         self.namespace_id = namespace_id
+        # Unique identifier of the prompt
+        # 
         # This parameter is required.
         self.prompt_key = prompt_key
+        # Version number
+        # 
         # This parameter is required.
         self.prompt_version = prompt_version
 

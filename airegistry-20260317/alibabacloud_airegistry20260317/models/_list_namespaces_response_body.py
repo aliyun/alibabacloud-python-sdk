@@ -13,7 +13,9 @@ class ListNamespacesResponseBody(DaraModel):
         data: main_models.ListNamespacesResponseBodyData = None,
         request_id: str = None,
     ):
+        # The namespace query result.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -52,9 +54,13 @@ class ListNamespacesResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The returned data entries.
         self.items = items
+        # The page number.
         self.page_number = page_number
+        # The page size. Default value: 10.
         self.page_size = page_size
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -108,22 +114,37 @@ class ListNamespacesResponseBodyDataItems(DaraModel):
         self,
         created_time: str = None,
         description: str = None,
+        ip_whitelist: str = None,
         name: str = None,
         namespace_id: str = None,
         prompt_count: int = None,
+        public_access_enabled: bool = None,
+        public_domain: str = None,
         skill_count: int = None,
         source: str = None,
         source_index: int = None,
         tags: str = None,
     ):
+        # The time when the namespace was created.
         self.created_time = created_time
+        # The description of the namespace.
         self.description = description
+        self.ip_whitelist = ip_whitelist
+        # The namespace name.
         self.name = name
+        # The namespace ID.
         self.namespace_id = namespace_id
+        # The number of prompts in the namespace.
         self.prompt_count = prompt_count
+        self.public_access_enabled = public_access_enabled
+        self.public_domain = public_domain
+        # The number of skills in the namespace.
         self.skill_count = skill_count
+        # The source of the namespace.
         self.source = source
+        # The source index of the namespace.
         self.source_index = source_index
+        # The tags of the namespace.
         self.tags = tags
 
     def validate(self):
@@ -140,6 +161,9 @@ class ListNamespacesResponseBodyDataItems(DaraModel):
         if self.description is not None:
             result['Description'] = self.description
 
+        if self.ip_whitelist is not None:
+            result['IpWhitelist'] = self.ip_whitelist
+
         if self.name is not None:
             result['Name'] = self.name
 
@@ -148,6 +172,12 @@ class ListNamespacesResponseBodyDataItems(DaraModel):
 
         if self.prompt_count is not None:
             result['PromptCount'] = self.prompt_count
+
+        if self.public_access_enabled is not None:
+            result['PublicAccessEnabled'] = self.public_access_enabled
+
+        if self.public_domain is not None:
+            result['PublicDomain'] = self.public_domain
 
         if self.skill_count is not None:
             result['SkillCount'] = self.skill_count
@@ -171,6 +201,9 @@ class ListNamespacesResponseBodyDataItems(DaraModel):
         if m.get('Description') is not None:
             self.description = m.get('Description')
 
+        if m.get('IpWhitelist') is not None:
+            self.ip_whitelist = m.get('IpWhitelist')
+
         if m.get('Name') is not None:
             self.name = m.get('Name')
 
@@ -179,6 +212,12 @@ class ListNamespacesResponseBodyDataItems(DaraModel):
 
         if m.get('PromptCount') is not None:
             self.prompt_count = m.get('PromptCount')
+
+        if m.get('PublicAccessEnabled') is not None:
+            self.public_access_enabled = m.get('PublicAccessEnabled')
+
+        if m.get('PublicDomain') is not None:
+            self.public_domain = m.get('PublicDomain')
 
         if m.get('SkillCount') is not None:
             self.skill_count = m.get('SkillCount')

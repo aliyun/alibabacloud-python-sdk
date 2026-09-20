@@ -11,10 +11,16 @@ class UpdateSkillBizTagsRequest(DaraModel):
         namespace_id: str = None,
         skill_name: str = None,
     ):
+        # The business tags as a JSON array string.
+        # 
         # This parameter is required.
         self.biz_tags = biz_tags
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.namespace_id = namespace_id
+        # The skill name.
+        # 
         # This parameter is required.
         self.skill_name = skill_name
 

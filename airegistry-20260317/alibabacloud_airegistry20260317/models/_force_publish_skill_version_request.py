@@ -12,12 +12,19 @@ class ForcePublishSkillVersionRequest(DaraModel):
         skill_version: str = None,
         update_latest_label: bool = None,
     ):
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.namespace_id = namespace_id
+        # The skill name.
+        # 
         # This parameter is required.
         self.skill_name = skill_name
+        # The version number.
+        # 
         # This parameter is required.
         self.skill_version = skill_version
+        # Specifies whether to update the latest label.
         self.update_latest_label = update_latest_label
 
     def validate(self):

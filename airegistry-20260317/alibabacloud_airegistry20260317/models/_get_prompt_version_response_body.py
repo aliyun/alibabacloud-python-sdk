@@ -13,7 +13,9 @@ class GetPromptVersionResponseBody(DaraModel):
         data: main_models.GetPromptVersionResponseBodyData = None,
         request_id: str = None,
     ):
+        # Query result
         self.data = data
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -57,14 +59,23 @@ class GetPromptVersionResponseBodyData(DaraModel):
         variables: List[main_models.GetPromptVersionResponseBodyDataVariables] = None,
         version: str = None,
     ):
+        # Commit message of this version
         self.commit_msg = commit_msg
+        # Last modified time of the prompt
         self.gmt_modified = gmt_modified
+        # MD5 hash of the prompt content for this version
         self.md_5 = md_5
+        # Unique identifier of the prompt
         self.prompt_key = prompt_key
+        # Creator of this version
         self.src_user = src_user
+        # Version status. Draft: draft / Published: online
         self.status = status
+        # Template content of the prompt version
         self.template = template
+        # List of variables for this version
         self.variables = variables
+        # Version number
         self.version = version
 
     def validate(self):
@@ -150,8 +161,11 @@ class GetPromptVersionResponseBodyDataVariables(DaraModel):
         description: str = None,
         name: str = None,
     ):
+        # Default value
         self.default_value = default_value
+        # Variable description
         self.description = description
+        # Variable name
         self.name = name
 
     def validate(self):

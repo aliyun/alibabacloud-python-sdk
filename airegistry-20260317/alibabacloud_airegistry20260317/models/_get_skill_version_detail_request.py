@@ -11,10 +11,16 @@ class GetSkillVersionDetailRequest(DaraModel):
         skill_name: str = None,
         skill_version: str = None,
     ):
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.namespace_id = namespace_id
+        # The Skill name.
+        # 
         # This parameter is required.
         self.skill_name = skill_name
+        # The version number.
+        # 
         # This parameter is required.
         self.skill_version = skill_version
 

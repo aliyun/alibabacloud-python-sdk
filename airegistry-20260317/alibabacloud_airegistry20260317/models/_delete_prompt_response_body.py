@@ -10,7 +10,9 @@ class DeletePromptResponseBody(DaraModel):
         data: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether the operation is successful.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -13,7 +13,9 @@ class ListPromptsResponseBody(DaraModel):
         data: main_models.ListPromptsResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned result.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -52,9 +54,13 @@ class ListPromptsResponseBodyData(DaraModel):
         pages_available: int = None,
         total_count: int = None,
     ):
+        # The list of prompts.
         self.page_items = page_items
+        # The page number.
         self.page_number = page_number
+        # The number of available pages.
         self.pages_available = pages_available
+        # The total number of prompts.
         self.total_count = total_count
 
     def validate(self):
@@ -117,15 +123,25 @@ class ListPromptsResponseBodyDataPageItems(DaraModel):
         reviewing_version: str = None,
         schema_version: int = None,
     ):
+        # The list of business tags.
         self.biz_tags = biz_tags
+        # The description.
         self.description = description
+        # The version number of the draft version of the prompt. This value is empty if no draft version exists.
         self.editing_version = editing_version
+        # The time when the prompt was last modified.
         self.gmt_modified = gmt_modified
+        # The mapping between prompt versions and labels.
         self.labels = labels
+        # The latest version number of the prompt.
         self.latest_version = latest_version
+        # The number of online versions of the prompt.
         self.online_cnt = online_cnt
+        # The unique identifier of the prompt.
         self.prompt_key = prompt_key
+        # The version number of the prompt version that is under review. This value is empty if no version is under review.
         self.reviewing_version = reviewing_version
+        # The schema version of the prompt.
         self.schema_version = schema_version
 
     def validate(self):

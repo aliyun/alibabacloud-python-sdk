@@ -10,7 +10,9 @@ class UpdatePromptResponseBody(DaraModel):
         data: bool = None,
         request_id: str = None,
     ):
+        # The modification result.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -13,7 +13,9 @@ class ListPromptVersionsResponseBody(DaraModel):
         data: main_models.ListPromptVersionsResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -52,9 +54,13 @@ class ListPromptVersionsResponseBodyData(DaraModel):
         pages_available: int = None,
         total_count: int = None,
     ):
+        # The list of prompt versions.
         self.page_items = page_items
+        # The page number. Valid values: 1 to 100.
         self.page_number = page_number
+        # The number of available pages.
         self.pages_available = pages_available
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -113,11 +119,17 @@ class ListPromptVersionsResponseBodyDataPageItems(DaraModel):
         status: str = None,
         version: str = None,
     ):
+        # The commit message of the prompt version.
         self.commit_msg = commit_msg
+        # The modification date.
         self.gmt_modified = gmt_modified
+        # The unique identifier of the prompt.
         self.prompt_key = prompt_key
+        # The creator of the prompt version.
         self.src_user = src_user
+        # The status of the prompt version.
         self.status = status
+        # The version number.
         self.version = version
 
     def validate(self):

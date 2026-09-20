@@ -13,7 +13,11 @@ class ListSkillsResponseBody(DaraModel):
         data: main_models.ListSkillsResponseBodyData = None,
         request_id: str = None,
     ):
+        # The list of rule information returned when the call succeeds. For more information, see **RuleInfo**.
+        # 
+        # > The returned rule information is sorted by rule creation time in descending order.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -52,9 +56,13 @@ class ListSkillsResponseBodyData(DaraModel):
         pages_available: int = None,
         total_count: int = None,
     ):
+        # The MCP server information.
         self.page_items = page_items
+        # The page number.
         self.page_number = page_number
+        # pagesAvailable.
         self.pages_available = pages_available
+        # The total number of tasks.
         self.total_count = total_count
 
     def validate(self):
@@ -109,6 +117,7 @@ class ListSkillsResponseBodyDataPageItems(DaraModel):
         biz_tags: str = None,
         description: str = None,
         download_count: int = None,
+        draft_mode: str = None,
         editing_version: str = None,
         enable: bool = None,
         from_: str = None,
@@ -122,20 +131,40 @@ class ListSkillsResponseBodyDataPageItems(DaraModel):
         update_time: int = None,
         writeable: bool = None,
     ):
+        # The business label JSON array string.
         self.biz_tags = biz_tags
+        # The description.
         self.description = description
+        # The total number of downloads.
         self.download_count = download_count
+        # The draft mode. Valid values:
+        # 
+        # - VERSIONED: numbered mode. Each draft corresponds to a specific version number.
+        # - HEAD: workspace mode. A permanent draft workspace that overwrites in place and publishes version snapshots.
+        self.draft_mode = draft_mode
+        # The version that is being edited.
         self.editing_version = editing_version
+        # Indicates whether the skill is enabled.
         self.enable = enable
+        # The source tag.
         self.from_ = from_
+        # The label mapping.
         self.labels = labels
+        # The name.
         self.name = name
+        # The ID of the group or workspace to which the repository belongs.
         self.namespace_id = namespace_id
+        # The number of online versions.
         self.online_cnt = online_cnt
+        # The account ID of the owner.
         self.owner = owner
+        # The version that is under review.
         self.reviewing_version = reviewing_version
+        # The visibility scope.
         self.scope = scope
+        # The update time.
         self.update_time = update_time
+        # Indicates whether the skill can be edited.
         self.writeable = writeable
 
     def validate(self):
@@ -154,6 +183,9 @@ class ListSkillsResponseBodyDataPageItems(DaraModel):
 
         if self.download_count is not None:
             result['DownloadCount'] = self.download_count
+
+        if self.draft_mode is not None:
+            result['DraftMode'] = self.draft_mode
 
         if self.editing_version is not None:
             result['EditingVersion'] = self.editing_version
@@ -203,6 +235,9 @@ class ListSkillsResponseBodyDataPageItems(DaraModel):
 
         if m.get('DownloadCount') is not None:
             self.download_count = m.get('DownloadCount')
+
+        if m.get('DraftMode') is not None:
+            self.draft_mode = m.get('DraftMode')
 
         if m.get('EditingVersion') is not None:
             self.editing_version = m.get('EditingVersion')

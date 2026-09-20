@@ -10,7 +10,9 @@ class CreatePromptVersionResponseBody(DaraModel):
         data: str = None,
         request_id: str = None,
     ):
+        # Version number of the created draft version.
         self.data = data
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

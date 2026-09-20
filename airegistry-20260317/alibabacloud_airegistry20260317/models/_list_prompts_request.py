@@ -14,12 +14,22 @@ class ListPromptsRequest(DaraModel):
         prompt_key: str = None,
         search: str = None,
     ):
+        # The business tags used to filter prompts. Separate multiple tags with commas (,).
         self.biz_tags = biz_tags
+        # The namespace ID.
+        # 
         # This parameter is required.
         self.namespace_id = namespace_id
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 10. Maximum value: 50.
         self.page_size = page_size
+        # The identifier of the prompt to search for. This parameter is optional.
         self.prompt_key = prompt_key
+        # The search mode. Valid values:
+        # 
+        # - accurate: exact match.
+        # - blur: fuzzy match.
         self.search = search
 
     def validate(self):

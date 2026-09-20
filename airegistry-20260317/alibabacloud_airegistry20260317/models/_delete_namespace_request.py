@@ -9,6 +9,8 @@ class DeleteNamespaceRequest(DaraModel):
         self,
         namespace_id: str = None,
     ):
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.namespace_id = namespace_id
 

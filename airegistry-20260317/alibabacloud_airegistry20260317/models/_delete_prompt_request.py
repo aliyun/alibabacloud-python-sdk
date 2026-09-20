@@ -10,8 +10,12 @@ class DeletePromptRequest(DaraModel):
         namespace_id: str = None,
         prompt_key: str = None,
     ):
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.namespace_id = namespace_id
+        # The unique identifier of the prompt.
+        # 
         # This parameter is required.
         self.prompt_key = prompt_key
 

@@ -12,9 +12,20 @@ class CreateNamespaceRequest(DaraModel):
         scan_policy: str = None,
         tags: str = None,
     ):
+        # The workspace description.
         self.description = description
+        # The workspace name.
         self.name = name
+        # The scan policy.
+        # 
+        # This parameter contains two configuration items:
+        # - minBlockRiskLevel: the risk level for blocking.
+        #   - high: blocks high-risk items.
+        #   - medium: blocks medium-risk and high-risk items.
+        #   - low: blocks all risk levels including high, medium, and low.
+        # - maxSkipRatio: the max false positive rate. If the scan skip ratio exceeds this value, the scan is considered as failed.
         self.scan_policy = scan_policy
+        # The tags. Separate multiple tags with commas.
         self.tags = tags
 
     def validate(self):

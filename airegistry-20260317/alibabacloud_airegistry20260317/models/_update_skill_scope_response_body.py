@@ -9,6 +9,7 @@ class UpdateSkillScopeResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
+        # The unique identifier that Alibaba Cloud generates for the request.
         self.request_id = request_id
 
     def validate(self):

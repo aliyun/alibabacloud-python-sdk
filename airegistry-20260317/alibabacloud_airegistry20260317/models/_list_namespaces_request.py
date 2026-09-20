@@ -12,9 +12,13 @@ class ListNamespacesRequest(DaraModel):
         page_size: int = None,
         tags: str = None,
     ):
+        # Performs a fuzzy search by name.
         self.name = name
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # Filters by tags. Separate multiple tags with commas. Results are matched by intersection.
         self.tags = tags
 
     def validate(self):

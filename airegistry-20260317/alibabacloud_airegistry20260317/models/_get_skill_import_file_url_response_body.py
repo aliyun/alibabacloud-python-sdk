@@ -11,7 +11,9 @@ class GetSkillImportFileUrlResponseBody(DaraModel):
         data: main_models.GetSkillImportFileUrlResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned result.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -50,9 +52,15 @@ class GetSkillImportFileUrlResponseBodyData(DaraModel):
         oss_object_name: str = None,
         upload_url: str = None,
     ):
+        # The file type.
         self.content_type = content_type
+        # The maximum allowed file size for upload, in MB.
         self.max_size = max_size
+        # The file name in the authorized OSS bucket.
+        # 
+        # > Among the four image input methods (FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS), select one to use.
         self.oss_object_name = oss_object_name
+        # The file upload URL. The client uses this URL to upload the file.
         self.upload_url = upload_url
 
     def validate(self):

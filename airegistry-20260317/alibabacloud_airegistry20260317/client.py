@@ -20,7 +20,7 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('airegistry', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -2585,6 +2585,8 @@ class Client(OpenApiClient):
             query['OssObjectName'] = request.oss_object_name
         if not DaraCore.is_null(request.overwrite):
             query['Overwrite'] = request.overwrite
+        if not DaraCore.is_null(request.target_version):
+            query['TargetVersion'] = request.target_version
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -2619,6 +2621,8 @@ class Client(OpenApiClient):
             query['OssObjectName'] = request.oss_object_name
         if not DaraCore.is_null(request.overwrite):
             query['Overwrite'] = request.overwrite
+        if not DaraCore.is_null(request.target_version):
+            query['TargetVersion'] = request.target_version
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

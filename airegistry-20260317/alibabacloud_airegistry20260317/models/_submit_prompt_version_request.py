@@ -11,10 +11,15 @@ class SubmitPromptVersionRequest(DaraModel):
         prompt_key: str = None,
         prompt_version: str = None,
     ):
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.namespace_id = namespace_id
+        # The unique identifier of the prompt.
+        # 
         # This parameter is required.
         self.prompt_key = prompt_key
+        # The version number to publish. If not specified, the current draft version is published by default.
         self.prompt_version = prompt_version
 
     def validate(self):

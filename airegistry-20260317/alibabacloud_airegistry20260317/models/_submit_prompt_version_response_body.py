@@ -10,7 +10,9 @@ class SubmitPromptVersionResponseBody(DaraModel):
         data: str = None,
         request_id: str = None,
     ):
+        # The version number of the published version.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -12,11 +12,19 @@ class OfflineSkillRequest(DaraModel):
         skill_name: str = None,
         skill_version: str = None,
     ):
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.namespace_id = namespace_id
+        # The operation scope. Valid values:
+        # - skill: the entire Skill.
+        # - version: a specified version.
         self.scope = scope
+        # The Skill name.
+        # 
         # This parameter is required.
         self.skill_name = skill_name
+        # The version number. This parameter is required when scope is set to version.
         self.skill_version = skill_version
 
     def validate(self):

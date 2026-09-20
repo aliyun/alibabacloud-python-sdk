@@ -10,7 +10,9 @@ class DownloadSkillVersionViaOssResponseBody(DaraModel):
         data: str = None,
         request_id: str = None,
     ):
+        # The OSS URL for downloading the skill.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

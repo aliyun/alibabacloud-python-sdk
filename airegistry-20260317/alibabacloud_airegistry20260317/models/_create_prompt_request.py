@@ -16,16 +16,27 @@ class CreatePromptRequest(DaraModel):
         template: str = None,
         variables: str = None,
     ):
+        # Business tags, comma-separated
         self.biz_tags = biz_tags
+        # Commit message
         self.commit_msg = commit_msg
+        # Prompt description
         self.description = description
+        # Workspace ID
+        # 
         # This parameter is required.
         self.namespace_id = namespace_id
+        # Prompt unique identifier
+        # 
         # This parameter is required.
         self.prompt_key = prompt_key
+        # Version number for the initial draft version of the prompt. Defaults to 0.0.1 if not specified.
         self.target_version = target_version
+        # Template content for the initial draft version of the prompt
+        # 
         # This parameter is required.
         self.template = template
+        # Variable definitions, JSON array string, supporting name, description, and defaultValue parameters
         self.variables = variables
 
     def validate(self):

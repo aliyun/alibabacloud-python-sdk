@@ -14,9 +14,13 @@ class DataResourceValue(DaraModel):
         content: str = None,
         metadata: Dict[str, Any] = None,
     ):
+        # The resource name (including the file name extension).
         self.name = name
+        # The resource type, such as template, data, or script.
         self.type = type
+        # The resource content.
         self.content = content
+        # The resource metadata.
         self.metadata = metadata
 
     def validate(self):

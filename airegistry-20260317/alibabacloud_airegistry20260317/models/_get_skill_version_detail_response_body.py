@@ -13,7 +13,9 @@ class GetSkillVersionDetailResponseBody(DaraModel):
         data: main_models.GetSkillVersionDetailResponseBodyData = None,
         request_id: str = None,
     ):
+        # The detailed information about the Skill version.
         self.data = data
+        # The unique identifier that Alibaba Cloud generated for the request.
         self.request_id = request_id
 
     def validate(self):
@@ -53,10 +55,15 @@ class GetSkillVersionDetailResponseBodyData(DaraModel):
         resource: Dict[str, main_models.DataResourceValue] = None,
         skill_md: str = None,
     ):
+        # The description of the Skill for the current version.
         self.description = description
+        # The Skill name.
         self.name = name
+        # The namespace ID to which the application belongs.
         self.namespace_id = namespace_id
+        # The resource mapping (key is the resource name).
         self.resource = resource
+        # The Skill card content (SKILL.md).
         self.skill_md = skill_md
 
     def validate(self):

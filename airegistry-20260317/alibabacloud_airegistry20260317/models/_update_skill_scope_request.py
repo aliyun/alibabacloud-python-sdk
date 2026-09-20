@@ -11,10 +11,16 @@ class UpdateSkillScopeRequest(DaraModel):
         scope: str = None,
         skill_name: str = None,
     ):
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.namespace_id = namespace_id
+        # The visibility.
+        # 
         # This parameter is required.
         self.scope = scope
+        # The skill name.
+        # 
         # This parameter is required.
         self.skill_name = skill_name
 

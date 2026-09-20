@@ -10,7 +10,10 @@ class GetSkillImportFileUrlRequest(DaraModel):
         content_type: str = None,
         namespace_id: str = None,
     ):
+        # The Content-Type of the upload file. Default value: application/zip.
         self.content_type = content_type
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.namespace_id = namespace_id
 

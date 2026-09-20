@@ -10,7 +10,9 @@ class DeleteNamespaceResponseBody(DaraModel):
         data: bool = None,
         request_id: str = None,
     ):
+        # The namespace deletion result.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

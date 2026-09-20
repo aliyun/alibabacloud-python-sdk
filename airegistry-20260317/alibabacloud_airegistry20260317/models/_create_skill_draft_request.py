@@ -14,13 +14,21 @@ class CreateSkillDraftRequest(DaraModel):
         skill_name: str = None,
         target_version: str = None,
     ):
+        # The version to fork from. If not specified, a new Skill is created based on the latest version.
         self.based_on_version = based_on_version
+        # The commit message.
         self.commit_msg = commit_msg
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.namespace_id = namespace_id
+        # The Skill card JSON string that contains complete Skill information.
         self.skill_card = skill_card
+        # The Skill name.
+        # 
         # This parameter is required.
         self.skill_name = skill_name
+        # The specified draft version number. If not specified, the version number auto-increments.
         self.target_version = target_version
 
     def validate(self):

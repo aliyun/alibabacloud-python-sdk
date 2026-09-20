@@ -12,10 +12,16 @@ class ListPromptVersionsRequest(DaraModel):
         page_size: int = None,
         prompt_key: str = None,
     ):
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.namespace_id = namespace_id
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The unique identifier of the prompt.
+        # 
         # This parameter is required.
         self.prompt_key = prompt_key
 

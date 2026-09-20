@@ -13,7 +13,9 @@ class GetPromptResponseBody(DaraModel):
         data: main_models.GetPromptResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned result.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -60,17 +62,29 @@ class GetPromptResponseBodyData(DaraModel):
         version_details: List[main_models.GetPromptResponseBodyDataVersionDetails] = None,
         versions: List[str] = None,
     ):
+        # The list of business tags.
         self.biz_tags = biz_tags
+        # The description of the prompt.
         self.description = description
+        # The version number of the draft version. This value is empty if no draft version exists.
         self.editing_version = editing_version
+        # The time when the prompt was last modified.
         self.gmt_modified = gmt_modified
+        # The mapping between prompt labels and versions.
         self.labels = labels
+        # The version number of the latest version of the prompt.
         self.latest_version = latest_version
+        # The number of online versions of the prompt.
         self.online_cnt = online_cnt
+        # The unique identifier of the prompt.
         self.prompt_key = prompt_key
+        # The version number of the prompt version that is under review.
         self.reviewing_version = reviewing_version
+        # The schema version.
         self.schema_version = schema_version
+        # The list of version details.
         self.version_details = version_details
+        # The list of version numbers.
         self.versions = versions
 
     def validate(self):
@@ -177,11 +191,17 @@ class GetPromptResponseBodyDataVersionDetails(DaraModel):
         status: str = None,
         version: str = None,
     ):
+        # The commit message of the version.
         self.commit_msg = commit_msg
+        # The time when the version was last modified.
         self.gmt_modified = gmt_modified
+        # The unique identifier of the prompt.
         self.prompt_key = prompt_key
+        # The creator of the version.
         self.src_user = src_user
+        # The version status. Valid values: draft and online.
         self.status = status
+        # The version number.
         self.version = version
 
     def validate(self):

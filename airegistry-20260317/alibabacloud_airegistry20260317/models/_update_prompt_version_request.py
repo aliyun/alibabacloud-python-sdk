@@ -13,13 +13,21 @@ class UpdatePromptVersionRequest(DaraModel):
         template: str = None,
         variables: str = None,
     ):
+        # The commit message.
         self.commit_msg = commit_msg
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.namespace_id = namespace_id
+        # The unique identifier of the prompt.
+        # 
         # This parameter is required.
         self.prompt_key = prompt_key
+        # The updated template content.
+        # 
         # This parameter is required.
         self.template = template
+        # The updated variable definition in JSON format.
         self.variables = variables
 
     def validate(self):

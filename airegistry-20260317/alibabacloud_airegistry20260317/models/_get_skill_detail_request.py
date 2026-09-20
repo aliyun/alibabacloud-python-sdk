@@ -10,8 +10,12 @@ class GetSkillDetailRequest(DaraModel):
         namespace_id: str = None,
         skill_name: str = None,
     ):
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.namespace_id = namespace_id
+        # The skill name.
+        # 
         # This parameter is required.
         self.skill_name = skill_name
 
