@@ -13,7 +13,7 @@ class UpdateMcpTemplateConfigShrinkRequest(DaraModel):
     ):
         # The MCP configuration to update by the specified template version. The configuration must conform to the input schema of the template.
         self.body_shrink = body_shrink
-        # The client token that is used to ensure the idempotence of the request.
+        # The client token that is used to ensure the idempotency of the request.
         self.client_token = client_token
         # The template version used for this update.
         # 

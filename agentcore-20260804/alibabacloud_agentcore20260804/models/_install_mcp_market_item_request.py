@@ -62,6 +62,7 @@ class InstallMcpMarketItemRequestBody(DaraModel):
         self,
         addresses: List[str] = None,
         auth: main_models.InstallMcpMarketItemRequestBodyAuth = None,
+        custom_tags: List[str] = None,
         deployment_config: main_models.InstallMcpMarketItemRequestBodyDeploymentConfig = None,
         description: str = None,
         name: str = None,
@@ -73,6 +74,8 @@ class InstallMcpMarketItemRequestBody(DaraModel):
         self.addresses = addresses
         # The MCP authentication configuration.
         self.auth = auth
+        # The custom tags. Multiple tags are supported. Custom tags are merged with template fixed tags and deduplicated.
+        self.custom_tags = custom_tags
         # The deployment configuration for code-deployed MCP.
         self.deployment_config = deployment_config
         # The MCP service description.
@@ -84,9 +87,10 @@ class InstallMcpMarketItemRequestBody(DaraModel):
         # The OpenAPI configuration for HTTP-to-MCP conversion, represented as a JSON string.
         self.swagger_config = swagger_config
         # The MCP type. Valid values:
-        # - DIRECT_PROXY: direct proxy.
+        # 
+        # - DIRECT_PROXY: Direct proxy.
         # - HTTP_TO_MCP: HTTP-to-MCP conversion.
-        # - CODE_PACKAGE: code deployment.
+        # - CODE_PACKAGE: Code deployment.
         self.type = type
 
     def validate(self):
@@ -105,6 +109,9 @@ class InstallMcpMarketItemRequestBody(DaraModel):
 
         if self.auth is not None:
             result['auth'] = self.auth.to_map()
+
+        if self.custom_tags is not None:
+            result['customTags'] = self.custom_tags
 
         if self.deployment_config is not None:
             result['deploymentConfig'] = self.deployment_config.to_map()
@@ -134,6 +141,9 @@ class InstallMcpMarketItemRequestBody(DaraModel):
         if m.get('auth') is not None:
             temp_model = main_models.InstallMcpMarketItemRequestBodyAuth()
             self.auth = temp_model.from_map(m.get('auth'))
+
+        if m.get('customTags') is not None:
+            self.custom_tags = m.get('customTags')
 
         if m.get('deploymentConfig') is not None:
             temp_model = main_models.InstallMcpMarketItemRequestBodyDeploymentConfig()
@@ -174,11 +184,13 @@ class InstallMcpMarketItemRequestBodyDeploymentConfig(DaraModel):
         proxy_configuration: main_models.InstallMcpMarketItemRequestBodyDeploymentConfigProxyConfiguration = None,
         runtime_configuration: main_models.InstallMcpMarketItemRequestBodyDeploymentConfigRuntimeConfiguration = None,
     ):
-        # The MCP ingress access control configuration.
+        # The MCP ingress access control settings.
         self.access_control = access_control
         # The Agent Identity configuration.
         self.agent_identity_configuration = agent_identity_configuration
-        # Code indicates a ZIP code package. Container indicates a custom container.
+        # The artifact type. Valid values:
+        # - Code: ZIP code package.
+        # - Container: custom container.
         self.artifact_type = artifact_type
         # The code package configuration.
         self.code_configuration = code_configuration
@@ -351,21 +363,21 @@ class InstallMcpMarketItemRequestBodyDeploymentConfigRuntimeConfiguration(DaraMo
         port: int = None,
         timeout: int = None,
     ):
-        # The number of vCPUs. Default value: 0.25.
+        # Unit: cores. Default value: 0.25.
         self.cpu = cpu
-        # The ephemeral disk size. Unit: MB. Valid values: 512 and 10240.
+        # Unit: MB. Valid values: 512 and 10240.
         self.disk_size = disk_size
         # The environment variables.
         self.environment_variables = environment_variables
-        # The ARN of the RAM role used by user code to access downstream Alibaba Cloud resources.
+        # The ARN of the RAM role used when user code accesses downstream Alibaba Cloud resources.
         self.execution_role_arn = execution_role_arn
-        # The maximum number of concurrent requests per instance. Default value: 200.
+        # Default value: 200.
         self.instance_concurrency = instance_concurrency
-        # The memory size. Unit: MB. Default value: 512.
+        # Unit: MB. Default value: 512.
         self.memory = memory
-        # The service port. Default value: 9000.
+        # Default value: 9000.
         self.port = port
-        # The function timeout period. Unit: seconds. Default value: 300.
+        # Unit: seconds. Default value: 300.
         self.timeout = timeout
 
     def validate(self):
@@ -467,7 +479,7 @@ class InstallMcpMarketItemRequestBodyDeploymentConfigParameterTransformConfigura
     ):
         # Specifies whether to enable parameter transformation and result enhancement.
         self.enabled = enabled
-        # The reserved reference to a parameter transformation and result enhancement rule set.
+        # The reserved reference to the parameter transformation and result enhancement rule set.
         self.rule_set_id = rule_set_id
         # The transformation rule version.
         self.version = version
@@ -767,13 +779,13 @@ class InstallMcpMarketItemRequestBodyDeploymentConfigMcpConfiguration(DaraModel)
         session_idle_timeout_seconds: int = None,
         session_max_lifetime_seconds: int = None,
     ):
-        # The MCP endpoint path. For example, /mcp or /sse.
+        # For example, /mcp or /sse.
         self.endpoint_path = endpoint_path
-        # The number of concurrent sessions per instance. Currently fixed to 1.
+        # Currently fixed to 1.
         self.session_concurrency_per_instance = session_concurrency_per_instance
-        # The session idle timeout period. Unit: seconds. Default value: 1800.
+        # Unit: seconds. Default value: 1800.
         self.session_idle_timeout_seconds = session_idle_timeout_seconds
-        # The maximum session lifetime. Unit: seconds. Default value: 21600.
+        # Unit: seconds. Default value: 21600.
         self.session_max_lifetime_seconds = session_max_lifetime_seconds
 
     def validate(self):
@@ -883,7 +895,7 @@ class InstallMcpMarketItemRequestBodyDeploymentConfigHookConfiguration(DaraModel
         self,
         hooks: List[main_models.InstallMcpMarketItemRequestBodyDeploymentConfigHookConfigurationHooks] = None,
     ):
-        # Executes PRE_LIST_TOOLS, PRE_CALL_TOOL, POST_LIST_TOOLS, and POST_CALL_TOOL hooks in array order.
+        # The hooks executed in array order: PRE_LIST_TOOLS, PRE_CALL_TOOL, POST_LIST_TOOLS, and POST_CALL_TOOL.
         self.hooks = hooks
 
     def validate(self):
@@ -935,7 +947,7 @@ class InstallMcpMarketItemRequestBodyDeploymentConfigHookConfigurationHooks(Dara
         self.event = event
         # The hook request headers.
         self.headers = headers
-        # The timeout period, in milliseconds.
+        # The timeout period. Unit: milliseconds.
         self.timeout = timeout
         # The hook callback URL.
         self.url = url
@@ -1017,9 +1029,9 @@ class InstallMcpMarketItemRequestBodyDeploymentConfigContainerConfiguration(Dara
         self.image = image
         # The image registry type.
         self.image_registry_type = image_registry_type
-        # Custom containers must expose a standard MCP endpoint. Set this parameter to SELF_HOSTED.
+        # The MCP Runtime mode. Custom containers must expose a standard MCP endpoint. Set this parameter to SELF_HOSTED.
         self.mcp_runtime_mode = mcp_runtime_mode
-        # Currently fixed to CONTAINER_IMAGE.
+        # The container source type. Currently fixed to CONTAINER_IMAGE.
         self.source_type = source_type
 
     def validate(self):
@@ -1086,13 +1098,13 @@ class InstallMcpMarketItemRequestBodyDeploymentConfigCodeConfiguration(DaraModel
         command: List[str] = None,
         language: str = None,
     ):
-        # The temporary code package token returned by GetMcpCodePackageUploadUrl. Used to create a code deployment after the pre-signed upload is complete. Specify either this parameter or CodePackageUrl.
+        # The temporary code package token returned by GetMcpCodePackageUploadUrl. Use this token to create a code deployment after completing the pre-signed upload. Specify either this parameter or CodePackageUrl.
         self.code_package_token = code_package_token
-        # The public Alibaba Cloud OSS HTTP(S) URL that can be directly passed in when creating a code deployment. Specify either this parameter or CodePackageToken. Only supported by CreateMcp. Not supported for update or query operations.
+        # The public Alibaba Cloud OSS HTTP(S) URL of the code package. You can pass this URL directly when creating a code deployment. Specify either this parameter or CodePackageToken. Only CreateMcp supports this parameter. Update and query operations do not support this parameter.
         self.code_package_url = code_package_url
-        # The full startup command, with arguments passed in sequence by parameter boundary. For example, when using supergateway to start a stdio MCP, pass in supergateway, --stdio, the full subcommand, and remaining arguments.
+        # The full startup command, with arguments passed in order by parameter boundary. For example, when using supergateway to start a stdio MCP, pass supergateway, --stdio, the full subcommand, and remaining arguments.
         self.command = command
-        # The code package runtime: python3.13, nodejs22, or java17.
+        # The code package runtime. Valid values: python3.13, nodejs22, and java17.
         self.language = language
 
     def validate(self):
@@ -1141,13 +1153,13 @@ class InstallMcpMarketItemRequestBodyDeploymentConfigAgentIdentityConfiguration(
         credential_provider_type: str = None,
         enabled: bool = None,
     ):
-        # Specifies whether authorization is enabled.
+        # Specifies whether to enable authorization.
         self.authorization_enabled = authorization_enabled
-        # The Alibaba Cloud Resource Name (ARN) of the credential provider.
+        # The ARN of the credential provider.
         self.credential_provider_arn = credential_provider_arn
-        # The credential provider type.
+        # The type of the credential provider.
         self.credential_provider_type = credential_provider_type
-        # Specifies whether Agent Identity is enabled.
+        # Specifies whether to enable Agent Identity.
         self.enabled = enabled
 
     def validate(self):
@@ -1199,7 +1211,9 @@ class InstallMcpMarketItemRequestBodyDeploymentConfigAccessControl(DaraModel):
         self.credential_id = credential_id
         # Specifies whether to enable ingress access control.
         self.enabled = enabled
-        # ANONYMOUS indicates anonymous access. CREDENTIAL indicates access using an AgentCore credential.
+        # The access control mode. Valid values:
+        # - ANONYMOUS: anonymous access.
+        # - CREDENTIAL: AgentCore credential-based access.
         self.mode = mode
 
     def validate(self):
@@ -1243,7 +1257,7 @@ class InstallMcpMarketItemRequestBodyAuth(DaraModel):
     ):
         # The backend authentication configuration for direct proxy.
         self.direct_proxy = direct_proxy
-        # Specifies whether the configuration is enabled.
+        # Specifies whether to enable this configuration.
         self.enabled = enabled
         # The list of backend authentication configurations for HTTP-to-MCP conversion.
         self.http_to_mcp = http_to_mcp

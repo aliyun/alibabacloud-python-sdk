@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class ListMcpsRequest(DaraModel):
     def __init__(
         self,
+        custom_tag: str = None,
         max_results: int = None,
         name: str = None,
         next_token: str = None,
@@ -14,6 +15,8 @@ class ListMcpsRequest(DaraModel):
         search_type: str = None,
         usage_active: bool = None,
     ):
+        # Filters results by custom tag. The tag must be an exact match.
+        self.custom_tag = custom_tag
         # The maximum number of entries per page.
         self.max_results = max_results
         # The MCP service name or service ID. Used together with SearchType.
@@ -28,7 +31,7 @@ class ListMcpsRequest(DaraModel):
         # 
         # Default value: blur.
         self.search_type = search_type
-        # Specifies whether the service is still bound by the official template usage constraint.
+        # Specifies whether the service is still bound by the official template usage.
         self.usage_active = usage_active
 
     def validate(self):
@@ -39,6 +42,9 @@ class ListMcpsRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.custom_tag is not None:
+            result['customTag'] = self.custom_tag
+
         if self.max_results is not None:
             result['maxResults'] = self.max_results
 
@@ -61,6 +67,9 @@ class ListMcpsRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('customTag') is not None:
+            self.custom_tag = m.get('customTag')
+
         if m.get('maxResults') is not None:
             self.max_results = m.get('maxResults')
 

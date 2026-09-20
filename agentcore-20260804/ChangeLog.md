@@ -1,3 +1,10 @@
+2026-09-20 Version: 2.0.3
+- Update API GetMcpMarketItem: add response parameters Body.data.i18n.
+- Update API InstallMcpMarketItem: add request parameters body.customTags.
+- Update API ListMcpMarketItems: add response parameters Body.items.$.i18n.
+- Update API ListMcps: add request parameters customTag.
+
+
 2026-09-18 Version: 2.0.2
 - Generated python 2026-08-04 for AgentCore.
 

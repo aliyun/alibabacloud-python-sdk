@@ -6494,6 +6494,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListMcpsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.custom_tag):
+            query['customTag'] = request.custom_tag
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.name):
@@ -6535,6 +6537,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListMcpsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.custom_tag):
+            query['customTag'] = request.custom_tag
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.name):

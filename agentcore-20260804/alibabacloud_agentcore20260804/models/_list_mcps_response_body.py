@@ -952,7 +952,7 @@ class ListMcpsResponseBodyItemsDeploymentConfigMcpConfiguration(DaraModel):
         session_idle_timeout_seconds: int = None,
         session_max_lifetime_seconds: int = None,
     ):
-        # The MCP endpoint path. For example, /mcp or /sse.
+        # The MCP endpoint path, such as /mcp or /sse.
         self.endpoint_path = endpoint_path
         # The value is fixed to 1.
         self.session_concurrency_per_instance = session_concurrency_per_instance
@@ -1012,11 +1012,11 @@ class ListMcpsResponseBodyItemsDeploymentConfigLogConfiguration(DaraModel):
         self.enable_instance_metrics = enable_instance_metrics
         # Indicates whether request metrics collection is enabled.
         self.enable_request_metrics = enable_request_metrics
-        # The log splitting begin rule for Function Compute (FC).
+        # The log segmentation begin rule for Function Compute (FC).
         self.log_begin_rule = log_begin_rule
         # The Logstore name.
         self.logstore = logstore
-        # The Simple Log Service project name.
+        # The Log Service project name.
         self.project = project
 
     def validate(self):
@@ -1272,7 +1272,7 @@ class ListMcpsResponseBodyItemsDeploymentConfigCodeConfiguration(DaraModel):
     ):
         # The temporary code package token returned by GetMcpCodePackageUploadUrl. Use this token to create or update a code deployment after completing the pre-signed upload.
         self.code_package_token = code_package_token
-        # The full startup command, with arguments passed in order by parameter boundary. For example, when using supergateway to start a stdio MCP, pass supergateway, --stdio, the full subcommand, and remaining arguments.
+        # The full startup command, with arguments passed in order by parameter boundary. For example, when using supergateway to start a stdio MCP, pass in supergateway, --stdio, the full subcommand, and the remaining arguments.
         self.command = command
         # The code package runtime: python3.13, nodejs22, or java17.
         self.language = language
@@ -1371,11 +1371,11 @@ class ListMcpsResponseBodyItemsDeploymentConfigAccessControl(DaraModel):
         enabled: bool = None,
         mode: str = None,
     ):
-        # References an AgentCore Credential when mode is set to CREDENTIAL.
+        # The AgentCore Credential referenced when mode is set to CREDENTIAL.
         self.credential_id = credential_id
         # Indicates whether ingress access control is enabled.
         self.enabled = enabled
-        # ANONYMOUS indicates anonymous access. CREDENTIAL indicates using an AgentCore access credential.
+        # ANONYMOUS indicates anonymous access. CREDENTIAL indicates using AgentCore access credentials.
         self.mode = mode
 
     def validate(self):

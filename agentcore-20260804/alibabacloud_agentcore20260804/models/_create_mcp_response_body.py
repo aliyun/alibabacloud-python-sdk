@@ -107,9 +107,9 @@ class CreateMcpResponseBodyData(DaraModel):
     ):
         # The list of MCP service addresses.
         self.addresses = addresses
-        # The backend authentication configuration. enabled indicates whether authentication is enabled. directProxy specifies custom authentication headers for direct proxy connections. httpToMcp specifies the list of OpenAPI credentials for HTTP_TO_MCP.
+        # The backend authentication configuration. enabled indicates whether authentication is enabled. directProxy specifies custom authentication headers for direct-connect proxies. httpToMcp specifies the OpenAPI credential list for HTTP_TO_MCP.
         self.auth = auth
-        # Custom tags. Multiple tags are supported.
+        # The custom tags. Multiple tags are supported.
         self.custom_tags = custom_tags
         # The deployment configuration for code-deployed MCP services.
         self.deployment_config = deployment_config
@@ -578,7 +578,7 @@ class CreateMcpResponseBodyDataDeploymentConfigRuntimeConfiguration(DaraModel):
         self.disk_size = disk_size
         # The environment variables.
         self.environment_variables = environment_variables
-        # The ARN of the RAM role used when user code accesses downstream Alibaba Cloud resources.
+        # The ARN of the RAM role used by user code to access downstream Alibaba Cloud resources.
         self.execution_role_arn = execution_role_arn
         # Default value: 200.
         self.instance_concurrency = instance_concurrency
@@ -839,7 +839,7 @@ class CreateMcpResponseBodyDataDeploymentConfigNetworkConfiguration(DaraModel):
         self.security_group_id = security_group_id
         # The list of vSwitch IDs.
         self.v_switch_ids = v_switch_ids
-        # The virtual private cloud (VPC) ID.
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -1156,7 +1156,7 @@ class CreateMcpResponseBodyDataDeploymentConfigHookConfigurationHooks(DaraModel)
         self.event = event
         # The hook request headers.
         self.headers = headers
-        # The hook timeout period. Unit: milliseconds.
+        # The timeout period. Unit: milliseconds.
         self.timeout = timeout
         # The hook callback URL.
         self.url = url
@@ -1456,7 +1456,7 @@ class CreateMcpResponseBodyDataAuth(DaraModel):
         enabled: bool = None,
         http_to_mcp: List[main_models.CreateMcpResponseBodyDataAuthHttpToMcp] = None,
     ):
-        # The API key authentication configuration for callers of code-deployed MCP.
+        # The API key authentication configuration for code-deployed MCP callers.
         self.code_package = code_package
         # The authentication configuration for direct proxy.
         self.direct_proxy = direct_proxy

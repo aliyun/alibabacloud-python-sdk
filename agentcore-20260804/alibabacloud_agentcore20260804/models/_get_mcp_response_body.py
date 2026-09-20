@@ -114,7 +114,7 @@ class GetMcpResponseBodyData(DaraModel):
         self.auth = auth
         # The MCP creation time in ISO 8601 UTC format.
         self.created_at = created_at
-        # The custom tags. Multiple values are supported.
+        # The custom tags. Multiple tags are supported.
         self.custom_tags = custom_tags
         # The deployment configuration for code-deployed MCP.
         self.deployment_config = deployment_config
@@ -124,11 +124,11 @@ class GetMcpResponseBodyData(DaraModel):
         self.endpoint = endpoint
         # The Function Compute function name that corresponds to the CODE_PACKAGE MCP. This value is empty before the deployment is complete or for other types.
         self.function_name = function_name
-        # The marketplace source template of the MCP.
+        # The marketplace source template for the MCP.
         self.market_source = market_source
         # The MCP server configuration, represented as a JSON string.
         self.mcp_server_config = mcp_server_config
-        # The MCP service ID.
+        # The MCP server ID.
         self.mcp_server_id = mcp_server_id
         # The name.
         self.name = name
@@ -146,7 +146,7 @@ class GetMcpResponseBodyData(DaraModel):
         self.template = template
         # The type.
         self.type = type
-        # The last updated time of the MCP, in ISO 8601 UTC format.
+        # The last updated time of the MCP in ISO 8601 UTC format.
         self.updated_at = updated_at
         # The access URL of the MCP service.
         self.url = url
@@ -327,7 +327,7 @@ class GetMcpResponseBodyDataTemplate(DaraModel):
         self.schema_version = schema_version
         # The template input schema, represented as a JSON Schema string.
         self.template_input_schema = template_input_schema
-        # Indicates whether an updated template version is available.
+        # Indicates whether a template version update is available.
         self.update_available = update_available
 
     def validate(self):
@@ -379,7 +379,7 @@ class GetMcpResponseBodyDataMarketSource(DaraModel):
         self,
         market_item_id: str = None,
     ):
-        # The MCP marketplace template ID.
+        # The marketplace template ID for the MCP.
         self.market_item_id = market_item_id
 
     def validate(self):
@@ -599,13 +599,13 @@ class GetMcpResponseBodyDataDeploymentConfigRuntimeConfiguration(DaraModel):
     ):
         # The number of vCPUs. Default value: 0.25.
         self.cpu = cpu
-        # The temporary disk size. Unit: MB. Valid values: 512 and 10240.
+        # The ephemeral disk size. Unit: MB. Valid values: 512 and 10240.
         self.disk_size = disk_size
         # The environment variables.
         self.environment_variables = environment_variables
-        # The Alibaba Cloud Resource Name (ARN) of the RAM role used by user code to access downstream Alibaba Cloud resources.
+        # The ARN of the RAM role used by user code to access downstream Alibaba Cloud resources.
         self.execution_role_arn = execution_role_arn
-        # The maximum number of concurrent requests per instance. Default value: 200.
+        # The number of concurrent requests per instance. Default value: 200.
         self.instance_concurrency = instance_concurrency
         # The memory size. Unit: MB. Default value: 512.
         self.memory = memory
@@ -1013,13 +1013,13 @@ class GetMcpResponseBodyDataDeploymentConfigMcpConfiguration(DaraModel):
         session_idle_timeout_seconds: int = None,
         session_max_lifetime_seconds: int = None,
     ):
-        # The MCP endpoint path, such as /mcp or /sse.
+        # The MCP endpoint path. For example, /mcp or /sse.
         self.endpoint_path = endpoint_path
         # The value is fixed to 1.
         self.session_concurrency_per_instance = session_concurrency_per_instance
-        # The session idle timeout period, in seconds. Default value: 1800.
+        # The session idle timeout period. Unit: seconds. Default value: 1800.
         self.session_idle_timeout_seconds = session_idle_timeout_seconds
-        # The maximum session lifetime, in seconds. Default value: 21600.
+        # The maximum session lifetime. Unit: seconds. Default value: 21600.
         self.session_max_lifetime_seconds = session_max_lifetime_seconds
 
     def validate(self):
@@ -1069,11 +1069,11 @@ class GetMcpResponseBodyDataDeploymentConfigLogConfiguration(DaraModel):
         logstore: str = None,
         project: str = None,
     ):
-        # Indicates whether instance metrics are collected.
+        # Indicates whether instance metrics collection is enabled.
         self.enable_instance_metrics = enable_instance_metrics
-        # Indicates whether request metrics are collected.
+        # Indicates whether request metrics collection is enabled.
         self.enable_request_metrics = enable_request_metrics
-        # The log splitting begin rule for Function Compute (FC).
+        # The log segmentation begin rule for Function Compute (FC).
         self.log_begin_rule = log_begin_rule
         # The Logstore name.
         self.logstore = logstore
@@ -1181,7 +1181,7 @@ class GetMcpResponseBodyDataDeploymentConfigHookConfigurationHooks(DaraModel):
         self.event = event
         # The hook request headers.
         self.headers = headers
-        # The timeout period, in milliseconds.
+        # The timeout period. Unit: milliseconds.
         self.timeout = timeout
         # The hook callback URL.
         self.url = url
@@ -1333,7 +1333,7 @@ class GetMcpResponseBodyDataDeploymentConfigCodeConfiguration(DaraModel):
     ):
         # The temporary code package token returned by GetMcpCodePackageUploadUrl. Use this token to create or update a code deployment after completing the pre-signed upload.
         self.code_package_token = code_package_token
-        # The full startup command, with arguments passed in order by parameter boundary. For example, when using supergateway to start a stdio MCP, pass supergateway, --stdio, the full subcommand, and remaining arguments.
+        # The full startup command, with arguments passed in order by parameter boundary. For example, when using supergateway to start a stdio MCP, pass supergateway, --stdio, the full subcommand, and the remaining arguments.
         self.command = command
         # The runtime of the code package: python3.13, nodejs22, or java17.
         self.language = language
@@ -1436,7 +1436,7 @@ class GetMcpResponseBodyDataDeploymentConfigAccessControl(DaraModel):
         self.credential_id = credential_id
         # Indicates whether ingress access control is enabled.
         self.enabled = enabled
-        # ANONYMOUS indicates anonymous access. CREDENTIAL indicates the use of AgentCore access credentials.
+        # ANONYMOUS indicates anonymous access. CREDENTIAL indicates that AgentCore access credentials are used.
         self.mode = mode
 
     def validate(self):

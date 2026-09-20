@@ -36,7 +36,7 @@ class ListMcpMarketItemsResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
-        # The total number of records that match the filter conditions.
+        # The total number of records that match the specified conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -121,6 +121,7 @@ class ListMcpMarketItemsResponseBodyItems(DaraModel):
         category: str = None,
         description: str = None,
         display_metadata: Dict[str, Any] = None,
+        i_18n: Dict[str, main_models.ItemsI18nValue] = None,
         icon_url: str = None,
         install_count: int = None,
         market_item_id: str = None,
@@ -133,37 +134,42 @@ class ListMcpMarketItemsResponseBodyItems(DaraModel):
         template_input_schema: str = None,
         template_version: str = None,
     ):
-        # The MCP marketplace template category.
+        # The category of the MCP marketplace template.
         self.category = category
-        # The MCP service description.
+        # The description of the MCP service.
         self.description = description
         # The display metadata of the template.
         self.display_metadata = display_metadata
+        # The multilingual display content organized by BCP-47 language tags. Falls back to default fields if the specified language is not matched.
+        self.i_18n = i_18n
         # The icon URL of the MCP marketplace template.
         self.icon_url = icon_url
         # The number of times the template has been installed.
         self.install_count = install_count
-        # The MCP marketplace template ID.
+        # The ID of the MCP marketplace template.
         self.market_item_id = market_item_id
         # The MCP type.
         self.mcp_type = mcp_type
-        # The MCP marketplace template name.
+        # The name of the MCP marketplace template.
         self.name = name
         # The official usage tag.
         self.official_tag = official_tag
         # The MCP protocol.
         self.protocol = protocol
-        # The usage instructions for the MCP marketplace template.
+        # The usage instructions of the MCP marketplace template.
         self.readme = readme
-        # The template schema version.
+        # The schema version of the template.
         self.schema_version = schema_version
         # The template input schema, represented as a JSON Schema string.
         self.template_input_schema = template_input_schema
-        # The MCP marketplace template version.
+        # The version of the MCP marketplace template.
         self.template_version = template_version
 
     def validate(self):
-        pass
+        if self.i_18n:
+            for v1 in self.i_18n.values():
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -178,6 +184,11 @@ class ListMcpMarketItemsResponseBodyItems(DaraModel):
 
         if self.display_metadata is not None:
             result['displayMetadata'] = self.display_metadata
+
+        result['i18n'] = {}
+        if self.i_18n is not None:
+            for k1, v1 in self.i_18n.items():
+                result['i18n'][k1] = v1.to_map() if v1 else None
 
         if self.icon_url is not None:
             result['iconUrl'] = self.icon_url
@@ -224,6 +235,12 @@ class ListMcpMarketItemsResponseBodyItems(DaraModel):
 
         if m.get('displayMetadata') is not None:
             self.display_metadata = m.get('displayMetadata')
+
+        self.i_18n = {}
+        if m.get('i18n') is not None:
+            for k1, v1 in m.get('i18n').items():
+                temp_model = main_models.ItemsI18nValue()
+                self.i_18n[k1] = temp_model.from_map(v1)
 
         if m.get('iconUrl') is not None:
             self.icon_url = m.get('iconUrl')

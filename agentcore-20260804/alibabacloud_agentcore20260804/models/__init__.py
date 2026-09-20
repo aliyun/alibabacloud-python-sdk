@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 from ._data_resource_value import DataResourceValue
+from ._data_i18n_value import DataI18nValue
+from ._items_i18n_value import ItemsI18nValue
 from ._batch_delete_models_request import BatchDeleteModelsRequest
 from ._batch_delete_models_shrink_request import BatchDeleteModelsShrinkRequest
 from ._batch_delete_models_response_body import BatchDeleteModelsResponseBody
@@ -981,6 +983,8 @@ from ._verify_workspace_oss_mount_ram_authorization_response_body import VerifyW
 
 __all__ = [
     DataResourceValue,
+    DataI18nValue,
+    ItemsI18nValue,
     BatchDeleteModelsRequest,
     BatchDeleteModelsShrinkRequest,
     BatchDeleteModelsResponseBody,

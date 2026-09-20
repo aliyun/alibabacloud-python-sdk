@@ -15,7 +15,7 @@ class CreateMcpRequest(DaraModel):
     ):
         # The request body.
         self.body = body
-        # The client token that ensures idempotency of the request.
+        # The client token that is used to ensure the idempotency of the request.
         self.client_token = client_token
 
     def validate(self):
@@ -63,7 +63,7 @@ class CreateMcpRequestBody(DaraModel):
         self.addresses = addresses
         # The backend authentication configuration. When enabled is set to true: for DIRECT_PROXY, specify directProxy (name/value). For HTTP_TO_MCP, specify the httpToMcp array (each item contains id/type/credential. For apiKey, position/name are also required). Multiple authentication objects are supported, and the first one is used as the default upstream credential. HTTP_TO_MCP credentials are merged into the securitySchemes of the Swagger specification.
         self.auth = auth
-        # Custom tags. Multiple tags are supported.
+        # The custom tags. Multiple tags are supported.
         self.custom_tags = custom_tags
         # The code deployment configuration. Required when Type is set to CODE_PACKAGE. When creating a Code artifact, you must specify either CodeConfiguration.CodePackageToken or CodePackageUrl, but not both. CodePackageUrl supports only public Alibaba Cloud OSS HTTP(S) addresses.
         self.deployment_config = deployment_config
@@ -358,7 +358,7 @@ class CreateMcpRequestBodyDeploymentConfigRuntimeConfiguration(DaraModel):
         self.disk_size = disk_size
         # The environment variables.
         self.environment_variables = environment_variables
-        # The ARN of the RAM role used when user code accesses downstream Alibaba Cloud resources.
+        # The ARN of the RAM role used by user code to access downstream Alibaba Cloud resources.
         self.execution_role_arn = execution_role_arn
         # Default value: 200.
         self.instance_concurrency = instance_concurrency
@@ -619,7 +619,7 @@ class CreateMcpRequestBodyDeploymentConfigNetworkConfiguration(DaraModel):
         self.security_group_id = security_group_id
         # The list of vSwitch IDs.
         self.v_switch_ids = v_switch_ids
-        # The virtual private cloud (VPC) ID.
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -936,7 +936,7 @@ class CreateMcpRequestBodyDeploymentConfigHookConfigurationHooks(DaraModel):
         self.event = event
         # The hook request headers.
         self.headers = headers
-        # The hook timeout period. Unit: milliseconds.
+        # The timeout period. Unit: milliseconds.
         self.timeout = timeout
         # The hook callback URL.
         self.url = url
@@ -1245,7 +1245,7 @@ class CreateMcpRequestBodyAuth(DaraModel):
         enabled: bool = None,
         http_to_mcp: List[main_models.CreateMcpRequestBodyAuthHttpToMcp] = None,
     ):
-        # The API key authentication configuration for callers of code-deployed MCP.
+        # The API key authentication configuration for code-deployed MCP callers.
         self.code_package = code_package
         # The authentication configuration for direct proxy.
         self.direct_proxy = direct_proxy
