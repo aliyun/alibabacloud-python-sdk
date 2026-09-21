@@ -30,17 +30,17 @@ class GetEvaluationTaskResponseBody(DaraModel):
     ):
         # The AgentSpace name.
         self.agent_space = agent_space
-        # The task source.
+        # The source of the task.
         self.channel = channel
-        # The data source and execution configuration. Tasks with `dataType=trace` typically contain `project`, `storeName`, and `dataScope` fields that are populated by the backend.
+        # The data source and execution configuration. Tasks with `dataType=trace` typically contain backend-populated `project`, `storeName`, and `dataScope` fields.
         self.config = config
-        # The creation time, in seconds-level UNIX timestamp.
+        # The creation time, in seconds as a UNIX timestamp.
         self.created_at = created_at
-        # The evaluation data filter condition, returned by the backend as a JSON string.
+        # The evaluation data filter conditions, returned by the backend as a JSON string.
         self.data_filter = data_filter
         # The data source type of the evaluation object.
         self.data_type = data_type
-        # The evaluation task description.
+        # The description of the evaluation task.
         self.description = description
         # The list of evaluator configurations.
         self.evaluators = evaluators
@@ -48,7 +48,7 @@ class GetEvaluationTaskResponseBody(DaraModel):
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
-        # The structured configuration of the run strategy, including the parsed backfill strategy and continuous evaluation strategy.
+        # The structured run strategy configuration, including the parsed backfill strategy and continuous evaluation strategy.
         self.run_strategy_config = run_strategy_config
         # The evaluation task status.
         self.status = status
@@ -60,7 +60,7 @@ class GetEvaluationTaskResponseBody(DaraModel):
         self.task_mode = task_mode
         # The task name.
         self.task_name = task_name
-        # The last update time, in seconds-level UNIX timestamp.
+        # The last update time, in seconds as a UNIX timestamp.
         self.updated_at = updated_at
 
     def validate(self):

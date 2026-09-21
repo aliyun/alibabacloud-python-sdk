@@ -305,6 +305,7 @@ from ._preview_pipeline_response_body import PreviewPipelineResponseBodyMeta
 from ._run_pipeline_request import RunPipelineRequestOutput
 from ._update_context_store_request import UpdateContextStoreRequestConfigSource
 from ._update_context_store_request import UpdateContextStoreRequestConfig
+from ._update_dataset_request import UpdateDatasetRequestRenames
 from ._update_evaluator_skill_request import UpdateEvaluatorSkillRequestFiles
 from ._update_pipeline_request import UpdatePipelineRequestExecutePolicyRunOnce
 from ._update_pipeline_request import UpdatePipelineRequestExecutePolicyScheduled
@@ -628,6 +629,7 @@ __all__ = [
     RunPipelineRequestOutput,
     UpdateContextStoreRequestConfigSource,
     UpdateContextStoreRequestConfig,
+    UpdateDatasetRequestRenames,
     UpdateEvaluatorSkillRequestFiles,
     UpdatePipelineRequestExecutePolicyRunOnce,
     UpdatePipelineRequestExecutePolicyScheduled,

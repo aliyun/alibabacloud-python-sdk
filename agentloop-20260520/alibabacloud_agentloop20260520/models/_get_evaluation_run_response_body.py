@@ -28,15 +28,15 @@ class GetEvaluationRunResponseBody(DaraModel):
     ):
         # The creation time, in seconds-level UNIX timestamp.
         self.created_at = created_at
-        # The end time of the data window for the run, in seconds-level UNIX timestamp.
+        # The end time of the run data window, in seconds-level UNIX timestamp.
         self.data_end_time = data_end_time
-        # The start time of the data window for the run, in seconds-level UNIX timestamp.
+        # The start time of the run data window, in seconds-level UNIX timestamp.
         self.data_start_time = data_start_time
-        # The list of progress details by evaluator.
+        # The list of progress entries by evaluator.
         self.evaluator_progress = evaluator_progress
-        # The evaluator configuration snapshot at the time the run was created, in JSON string format.
+        # The snapshot of the evaluator configuration at the time the run was created, in JSON string format.
         self.evaluators = evaluators
-        # The number of failed entries.
+        # The number of failed items.
         self.failed_count = failed_count
         # The request ID.
         self.request_id = request_id
@@ -48,11 +48,11 @@ class GetEvaluationRunResponseBody(DaraModel):
         self.run_type = run_type
         # The run status.
         self.status = status
-        # The number of successful entries.
+        # The number of successful items.
         self.success_count = success_count
         # The evaluation task ID.
         self.task_id = task_id
-        # The total number of evaluation entries.
+        # The total number of evaluation items.
         self.total_count = total_count
         # The update time, in seconds-level UNIX timestamp.
         self.updated_at = updated_at
@@ -179,11 +179,11 @@ class GetEvaluationRunResponseBodyEvaluatorProgress(DaraModel):
     ):
         # The evaluator name.
         self.evaluator_name = evaluator_name
-        # The number of failed entries for this evaluator.
+        # The number of failed items for this evaluator.
         self.failed_count = failed_count
-        # The number of successful entries for this evaluator.
+        # The number of successful items for this evaluator.
         self.success_count = success_count
-        # The total number of entries for this evaluator.
+        # The total number of items for this evaluator.
         self.total_count = total_count
 
     def validate(self):

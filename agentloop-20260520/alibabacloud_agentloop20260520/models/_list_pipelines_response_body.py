@@ -16,10 +16,15 @@ class ListPipelinesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The maximum number of entries per page that was specified in the request. This value is echoed back.
         self.max_results = max_results
+        # The token for the next page. An empty string indicates that the current page is the last page.
         self.next_token = next_token
+        # The list of pipelines.
         self.pipelines = pipelines
+        # The request ID, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The total number of pipelines that match the filter conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -89,18 +94,37 @@ class ListPipelinesResponseBodyPipelines(DaraModel):
         update_time: str = None,
         workspace: str = None,
     ):
+        # The time when the pipeline was created, in ISO 8601 UTC format.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
+        # The description of the pipeline.
         self.description = description
+        # The execution policy.
         self.execute_policy = execute_policy
+        # The name of the pipeline.
         self.pipeline_name = pipeline_name
+        # The region ID.
         self.region_id = region_id
+        # The scheduling status. Valid values:
+        # - None: no scheduling. This value is returned for RunOnce pipelines.
+        # - Active: active.
+        # - Paused: paused.
+        # - Terminated: terminated.
         self.schedule_status = schedule_status
+        # The scheduling type. Valid values:
+        # - RunOnce: one-time execution.
+        # - Scheduled: periodic scheduling.
         self.schedule_type = schedule_type
+        # The pipeline sink (data write destination).
         self.sink = sink
+        # The pipeline data source.
         self.source = source
+        # The time when the pipeline was last updated, in ISO 8601 UTC format.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time
+        # The workspace associated with the pipeline.
         self.workspace = workspace
 
     def validate(self):
@@ -198,8 +222,11 @@ class ListPipelinesResponseBodyPipelinesSource(DaraModel):
         logstore: main_models.ListPipelinesResponseBodyPipelinesSourceLogstore = None,
         type: str = None,
     ):
+        # The dataset datasource config in the current AgentSpace.
         self.dataset = dataset
+        # The Simple Log Service (SLS) Logstore datasource config.
         self.logstore = logstore
+        # The data source type. Valid values: logstore or dataset.
         self.type = type
 
     def validate(self):
@@ -246,8 +273,11 @@ class ListPipelinesResponseBodyPipelinesSourceLogstore(DaraModel):
         project: str = None,
         query: str = None,
     ):
+        # The name of the SLS Logstore.
         self.logstore = logstore
+        # The name of the SLS project.
         self.project = project
+        # The data filtered query statement in SLS query/analysis syntax.
         self.query = query
 
     def validate(self):
@@ -288,7 +318,9 @@ class ListPipelinesResponseBodyPipelinesSourceDataset(DaraModel):
         dataset: str = None,
         filter: str = None,
     ):
+        # The name of the source dataset.
         self.dataset = dataset
+        # The data filter condition for the dataset.
         self.filter = filter
 
     def validate(self):
@@ -324,8 +356,11 @@ class ListPipelinesResponseBodyPipelinesSink(DaraModel):
         dataset: main_models.ListPipelinesResponseBodyPipelinesSinkDataset = None,
         type: str = None,
     ):
+        # The conditional routing configuration. This parameter is used only when sink.type is set to condition.
         self.condition = condition
+        # The destination dataset configuration for the dataset sink. This parameter is used only when sink.type is set to dataset.
         self.dataset = dataset
+        # The destination type. Valid values: dataset or condition.
         self.type = type
 
     def validate(self):
@@ -371,7 +406,9 @@ class ListPipelinesResponseBodyPipelinesSinkDataset(DaraModel):
         agent_space: str = None,
         dataset: str = None,
     ):
+        # The name of the AgentSpace to which the destination dataset belongs.
         self.agent_space = agent_space
+        # The name of the destination dataset.
         self.dataset = dataset
 
     def validate(self):
@@ -407,8 +444,11 @@ class ListPipelinesResponseBodyPipelinesSinkCondition(DaraModel):
         match_mode: str = None,
         routes: List[main_models.ListPipelinesResponseBodyPipelinesSinkConditionRoutes] = None,
     ):
+        # The default write destination that is used when no condition route is matched.
         self.default_sink = default_sink
+        # The route matching mode. Currently, only all is supported.
         self.match_mode = match_mode
+        # The list of condition routes.
         self.routes = routes
 
     def validate(self):
@@ -461,8 +501,11 @@ class ListPipelinesResponseBodyPipelinesSinkConditionRoutes(DaraModel):
         id: str = None,
         sink: main_models.ListPipelinesResponseBodyPipelinesSinkConditionRoutesSink = None,
     ):
+        # The route expression in SPL. Only where, project, and extend are supported.
         self.expression = expression
+        # The route ID.
         self.id = id
+        # The write destination of the route.
         self.sink = sink
 
     def validate(self):
@@ -505,7 +548,9 @@ class ListPipelinesResponseBodyPipelinesSinkConditionRoutesSink(DaraModel):
         dataset: main_models.ListPipelinesResponseBodyPipelinesSinkConditionRoutesSinkDataset = None,
         type: str = None,
     ):
+        # The destination dataset of the route.
         self.dataset = dataset
+        # The type of the route destination. Currently, only dataset is supported.
         self.type = type
 
     def validate(self):
@@ -542,7 +587,9 @@ class ListPipelinesResponseBodyPipelinesSinkConditionRoutesSinkDataset(DaraModel
         agent_space: str = None,
         dataset: str = None,
     ):
+        # The name of the AgentSpace to which the destination dataset belongs.
         self.agent_space = agent_space
+        # The name of the destination dataset.
         self.dataset = dataset
 
     def validate(self):
@@ -577,7 +624,9 @@ class ListPipelinesResponseBodyPipelinesSinkConditionDefaultSink(DaraModel):
         dataset: main_models.ListPipelinesResponseBodyPipelinesSinkConditionDefaultSinkDataset = None,
         type: str = None,
     ):
+        # The default destination dataset.
         self.dataset = dataset
+        # The type of the default destination. Currently, only dataset is supported.
         self.type = type
 
     def validate(self):
@@ -614,7 +663,9 @@ class ListPipelinesResponseBodyPipelinesSinkConditionDefaultSinkDataset(DaraMode
         agent_space: str = None,
         dataset: str = None,
     ):
+        # The name of the AgentSpace to which the default destination dataset belongs.
         self.agent_space = agent_space
+        # The name of the default destination dataset.
         self.dataset = dataset
 
     def validate(self):
@@ -650,8 +701,13 @@ class ListPipelinesResponseBodyPipelinesExecutePolicy(DaraModel):
         run_once: main_models.ListPipelinesResponseBodyPipelinesExecutePolicyRunOnce = None,
         scheduled: main_models.ListPipelinesResponseBodyPipelinesExecutePolicyScheduled = None,
     ):
+        # The scheduling mode. Valid values:
+        # - RunOnce: one-time execution.
+        # - Scheduled: periodic scheduling.
         self.mode = mode
+        # The parameters for one-time execution. This parameter has a value only when mode is set to RunOnce.
         self.run_once = run_once
+        # The parameters for periodic scheduling. This parameter has a value only when mode is set to Scheduled.
         self.scheduled = scheduled
 
     def validate(self):
@@ -697,7 +753,9 @@ class ListPipelinesResponseBodyPipelinesExecutePolicyScheduled(DaraModel):
         from_time: int = None,
         interval: str = None,
     ):
+        # The scheduling start time, in UNIX millisecond timestamp format.
         self.from_time = from_time
+        # The scheduling interval, such as 1h or 30m.
         self.interval = interval
 
     def validate(self):
@@ -732,7 +790,9 @@ class ListPipelinesResponseBodyPipelinesExecutePolicyRunOnce(DaraModel):
         from_time: int = None,
         to_time: int = None,
     ):
+        # The start of the time slice, in UNIX millisecond timestamp format.
         self.from_time = from_time
+        # The end of the time slice, in UNIX millisecond timestamp format.
         self.to_time = to_time
 
     def validate(self):

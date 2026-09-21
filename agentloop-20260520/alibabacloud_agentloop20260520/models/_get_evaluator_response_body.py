@@ -70,7 +70,7 @@ class GetEvaluatorResponseBodyEvaluator(DaraModel):
         self.annotations = annotations
         # The configuration of the current version.
         self.config = config
-        # The time when the evaluator was created. The value is a UNIX timestamp in seconds.
+        # The creation time, in seconds-level UNIX timestamp.
         self.created_at = created_at
         # The version number returned in the current response.
         self.current_version = current_version
@@ -88,7 +88,7 @@ class GetEvaluatorResponseBodyEvaluator(DaraModel):
         self.properties = properties
         # The evaluator type.
         self.type = type
-        # The time when the evaluator was last updated. The value is a UNIX timestamp in seconds.
+        # The update time, in seconds-level UNIX timestamp.
         self.updated_at = updated_at
         # The list of versions.
         self.versions = versions
@@ -206,7 +206,7 @@ class GetEvaluatorResponseBodyEvaluatorVersions(DaraModel):
         version: str = None,
         version_description: str = None,
     ):
-        # The time when the version was created. The value is a UNIX timestamp in seconds.
+        # The version creation time, in seconds-level UNIX timestamp.
         self.created_at = created_at
         # The version number.
         self.version = version

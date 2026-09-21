@@ -90,7 +90,7 @@ class ListEvaluatorSkillsResponseBodySkills(DaraModel):
         skill_name: str = None,
         updated_at: int = None,
     ):
-        # The creation time. This field is declared as int64 in CloudSpec, but the backend currently returns the StarOps `createTime` string field.
+        # The creation time. Declared as int64 in CloudSpec. The backend currently returns the StarOps `createTime` string field.
         self.created_at = created_at
         # The skill description.
         self.description = description
@@ -102,7 +102,7 @@ class ListEvaluatorSkillsResponseBodySkills(DaraModel):
         self.latest_version = latest_version
         # The skill name.
         self.skill_name = skill_name
-        # The update time. This field is declared as int64 in CloudSpec, but the backend currently returns the StarOps `updateTime` string field.
+        # The update time. Declared as int64 in CloudSpec. The backend currently returns the StarOps `updateTime` string field.
         self.updated_at = updated_at
 
     def validate(self):

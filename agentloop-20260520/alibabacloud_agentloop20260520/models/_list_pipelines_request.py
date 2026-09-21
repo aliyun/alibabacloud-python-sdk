@@ -14,11 +14,23 @@ class ListPipelinesRequest(DaraModel):
         schedule_type: str = None,
         sink_name: str = None,
     ):
+        # The maximum number of pipelines to return. Default value: 20. Maximum value: 100.
         self.max_results = max_results
+        # The pagination token. Set this parameter to the nextToken value returned in the previous response to retrieve the next page. Do not specify this parameter for the first request.
         self.next_token = next_token
+        # Filters pipelines by name using exact match. If this parameter is not specified, no filtering is applied.
         self.pipeline_name = pipeline_name
+        # Filters pipelines by schedule status. If this parameter is not specified, no filtering is applied. Valid values:
+        # - None: No schedule.
+        # - Active: Active.
+        # - Paused: Paused.
+        # - Terminated: Terminated.
         self.schedule_status = schedule_status
+        # Filters pipelines by schedule type. If this parameter is not specified, no filtering is applied. Valid values:
+        # - RunOnce: One-time execution.
+        # - Scheduled: Periodic scheduling.
         self.schedule_type = schedule_type
+        # Filters pipelines by the exact name of the output dataset. Matches standard sinks, conditional branch sinks, and default sinks. If this parameter is not specified, no filtering is applied.
         self.sink_name = sink_name
 
     def validate(self):

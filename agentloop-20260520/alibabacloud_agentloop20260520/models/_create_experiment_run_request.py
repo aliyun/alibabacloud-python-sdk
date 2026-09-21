@@ -21,23 +21,23 @@ class CreateExperimentRunRequest(DaraModel):
         total_tasks: int = None,
         client_token: str = None,
     ):
-        # The completion time, in millisecond-level UNIX timestamp.
+        # The completion time. The value is a millisecond-level UNIX timestamp.
         self.completed_at = completed_at
-        # The number of completed tasks. If not specified, the default value is 0.
+        # The number of completed tasks. Default value: 0.
         self.completed_tasks = completed_tasks
-        # The execution time, in millisecond-level UNIX timestamp.
+        # The execution time. The value is a millisecond-level UNIX timestamp.
         self.executed_at = executed_at
         # The experiment plan ID.
         # 
         # This parameter is required.
         self.experiment_plan_id = experiment_plan_id
-        # The number of failed tasks. If not specified, the default value is 0.
+        # The number of failed tasks. Default value: 0.
         self.failed_tasks = failed_tasks
-        # The list of offline experiment configurations. Required when the plan type is offline. The number of items ranges from 1 to 5.
+        # The list of offline experiment configurations. This parameter is required when the plan type is offline. You can specify 1 to 5 configurations.
         self.offline_experiments = offline_experiments
-        # The experiment record name. If not specified, the default value is the plan name plus a timestamp.
+        # The experiment record name. If not specified, the default value is the plan name followed by a timestamp.
         self.record_name = record_name
-        # The initial status. If not specified, the default value is `pending`.
+        # The initial status. Default value: `pending`.
         self.status = status
         # The total number of tasks. For online experiments, if not specified, the value is calculated based on the number of generated tasks.
         self.total_tasks = total_tasks

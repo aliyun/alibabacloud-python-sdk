@@ -11,13 +11,22 @@ class IndexKey(DaraModel):
     def __init__(
         self,
         chn: bool = None,
+        description: str = None,
         embedding: str = None,
         json_keys: Dict[str, main_models.IndexJsonKey] = None,
         type: str = None,
     ):
+        # Specifies whether Chinese is included. This parameter is required only when the **type** parameter is set to **text**. Valid values:
+        #   - true: Chinese is included.
+        #   - false: Chinese is not included.
         self.chn = chn
+        # The description.
+        self.description = description
+        # The field embedding type.
         self.embedding = embedding
+        # The JSON subfields. This parameter takes effect only when type is set to json.
         self.json_keys = json_keys
+        # The type.
         self.type = type
 
     def validate(self):
@@ -33,6 +42,9 @@ class IndexKey(DaraModel):
             result = _map
         if self.chn is not None:
             result['chn'] = self.chn
+
+        if self.description is not None:
+            result['description'] = self.description
 
         if self.embedding is not None:
             result['embedding'] = self.embedding
@@ -51,6 +63,9 @@ class IndexKey(DaraModel):
         m = m or dict()
         if m.get('chn') is not None:
             self.chn = m.get('chn')
+
+        if m.get('description') is not None:
+            self.description = m.get('description')
 
         if m.get('embedding') is not None:
             self.embedding = m.get('embedding')

@@ -60,7 +60,7 @@ class GetEvaluatorSkillResponseBodySkill(DaraModel):
         updated_at: int = None,
         versions: List[main_models.GetEvaluatorSkillResponseBodySkillVersions] = None,
     ):
-        # The time when the skill was created. This value is a UNIX timestamp in seconds.
+        # The creation time, in seconds-level UNIX timestamp.
         self.created_at = created_at
         # The current version.
         self.current_version = current_version
@@ -76,7 +76,7 @@ class GetEvaluatorSkillResponseBodySkill(DaraModel):
         self.latest_version = latest_version
         # The skill name.
         self.skill_name = skill_name
-        # The time when the skill was last updated. This value is a UNIX timestamp in seconds.
+        # The update time, in seconds-level UNIX timestamp.
         self.updated_at = updated_at
         # The list of skill versions.
         self.versions = versions
@@ -179,7 +179,7 @@ class GetEvaluatorSkillResponseBodySkillVersions(DaraModel):
         version: str = None,
         version_description: str = None,
     ):
-        # The time when the version was created. This value is a UNIX timestamp in seconds.
+        # The version creation time, in seconds-level UNIX timestamp.
         self.created_at = created_at
         # The version number.
         self.version = version
@@ -229,7 +229,7 @@ class GetEvaluatorSkillResponseBodySkillFiles(DaraModel):
         self.content = content
         # The file name.
         self.name = name
-        # The file remarks.
+        # The file remark.
         self.remark = remark
 
     def validate(self):

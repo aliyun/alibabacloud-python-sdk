@@ -14,7 +14,7 @@ class UpdateExperimentPlanResponseBody(DaraModel):
     ):
         # The prompt message.
         self.message = message
-        # The ID of the experiment plan.
+        # The experiment plan ID.
         self.plan_id = plan_id
         # The request ID.
         self.request_id = request_id

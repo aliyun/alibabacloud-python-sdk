@@ -15,7 +15,7 @@ class DeleteExperimentPlanResponseBody(DaraModel):
         self.plan_id = plan_id
         # The request ID.
         self.request_id = request_id
-        # The deletion result. The value is deleted if the operation is successful.
+        # The deletion result. The value is deleted if the operation succeeds.
         self.status = status
 
     def validate(self):

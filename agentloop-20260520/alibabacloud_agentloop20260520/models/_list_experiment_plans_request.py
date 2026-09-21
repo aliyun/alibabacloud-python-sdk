@@ -22,9 +22,9 @@ class ListExperimentPlansRequest(DaraModel):
         self.next_token = next_token
         # The offset. Default value: 0.
         self.offset = offset
-        # Fuzzy match by plan name.
+        # Fuzzy matches experiment plans by plan name.
         self.plan_name = plan_name
-        # Filters by exact status.
+        # Filters experiment plans by exact status.
         self.status = status
 
     def validate(self):

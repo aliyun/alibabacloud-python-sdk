@@ -24,7 +24,7 @@ class ListEvaluationTasksResponseBody(DaraModel):
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of records. The total count is returned only on the first page. This value may be empty on subsequent pages.
+        # The total number of records. The total count is calculated only on the first page. This value may be empty on subsequent pages.
         self.total_count = total_count
 
     def validate(self):
@@ -101,7 +101,7 @@ class ListEvaluationTasksResponseBodyEvaluationTasks(DaraModel):
         self.created_at = created_at
         # The data source type of the evaluation object.
         self.data_type = data_type
-        # The evaluation task description.
+        # The description of the evaluation task.
         self.description = description
         # The evaluator configuration summary, in JSON string format.
         self.evaluators = evaluators

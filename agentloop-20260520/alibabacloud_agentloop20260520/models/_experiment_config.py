@@ -18,16 +18,28 @@ class ExperimentConfig(DaraModel):
         name: str = None,
         prompt_template: List[main_models.PromptTemplateItem] = None,
         request_body_template: str = None,
+        request_header_template: str = None,
         request_method: str = None,
     ):
+        # The endpoint connector ID. This parameter is required in user/agent mode.
         self.endpoint_connector_id = endpoint_connector_id
+        # The experiment label (A/B/C/D/E).
         self.label = label
+        # The model name. You can set this parameter to agent in agent scenarios.
         self.model_name = model_name
+        # The model parameters.
         self.model_parameters = model_parameters
+        # The model provider. Valid values: dashscope (default), user, and agent.
         self.model_provider = model_provider
+        # The experiment name.
         self.name = name
+        # The prompt message template. Supports {{variable name}} placeholders.
         self.prompt_template = prompt_template
+        # The agent request body template. This parameter is required in agent mode. Supports {{variable name}} placeholders.
         self.request_body_template = request_body_template
+        # The agent request header template. This parameter is optional in agent mode. Supports {{variable name}} placeholders.
+        self.request_header_template = request_header_template
+        # The agent request method. Valid values: POST (default) and GET.
         self.request_method = request_method
 
     def validate(self):
@@ -69,6 +81,9 @@ class ExperimentConfig(DaraModel):
         if self.request_body_template is not None:
             result['requestBodyTemplate'] = self.request_body_template
 
+        if self.request_header_template is not None:
+            result['requestHeaderTemplate'] = self.request_header_template
+
         if self.request_method is not None:
             result['requestMethod'] = self.request_method
 
@@ -103,6 +118,9 @@ class ExperimentConfig(DaraModel):
 
         if m.get('requestBodyTemplate') is not None:
             self.request_body_template = m.get('requestBodyTemplate')
+
+        if m.get('requestHeaderTemplate') is not None:
+            self.request_header_template = m.get('requestHeaderTemplate')
 
         if m.get('requestMethod') is not None:
             self.request_method = m.get('requestMethod')

@@ -18,9 +18,9 @@ class UpdateEvaluatorRequest(DaraModel):
         version_description: str = None,
         client_token: str = None,
     ):
-        # The list of annotation marks.
+        # The list of annotation tags.
         self.annotations = annotations
-        # The new version configuration. This parameter is typically required when `version` is specified.
+        # The configuration of the new version. This parameter is typically required when `version` is specified.
         self.config = config
         # The evaluator description.
         self.description = description
@@ -28,7 +28,7 @@ class UpdateEvaluatorRequest(DaraModel):
         self.display_name = display_name
         # The evaluator properties.
         self.properties = properties
-        # The new version number. If specified, a new version is created.
+        # The new version number. A new version is created when this parameter is specified.
         self.version = version
         # The version description.
         self.version_description = version_description

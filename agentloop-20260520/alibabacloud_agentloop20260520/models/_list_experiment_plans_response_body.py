@@ -22,7 +22,7 @@ class ListExperimentPlansResponseBody(DaraModel):
         self.max_results = max_results
         # The token for the next page.
         self.next_token = next_token
-        # The page number.
+        # The page number information.
         self.page = page
         # The number of entries per page.
         self.page_size = page_size
@@ -30,7 +30,7 @@ class ListExperimentPlansResponseBody(DaraModel):
         self.plans = plans
         # The request ID.
         self.request_id = request_id
-        # The total number of records that match the filter criteria.
+        # The total number of records that match the filter conditions.
         self.total = total
 
     def validate(self):

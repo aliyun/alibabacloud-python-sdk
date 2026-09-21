@@ -5312,6 +5312,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.description):
             body['description'] = request.description
+        if not DaraCore.is_null(request.renames):
+            body['renames'] = request.renames
         if not DaraCore.is_null(request.schema):
             body['schema'] = request.schema
         req = open_api_util_models.OpenApiRequest(
@@ -5350,6 +5352,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.description):
             body['description'] = request.description
+        if not DaraCore.is_null(request.renames):
+            body['renames'] = request.renames
         if not DaraCore.is_null(request.schema):
             body['schema'] = request.schema
         req = open_api_util_models.OpenApiRequest(

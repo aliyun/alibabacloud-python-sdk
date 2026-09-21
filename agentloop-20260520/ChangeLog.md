@@ -1,3 +1,7 @@
+2026-09-21 Version: 2.3.7
+- Update API UpdateDataset: add request parameters body.renames.
+
+
 2026-09-14 Version: 2.3.5
 - Update API ListPipelines: add request parameters sinkName.
 - Update API ListPipelines: add response parameters Body.pipelines.$.sink.

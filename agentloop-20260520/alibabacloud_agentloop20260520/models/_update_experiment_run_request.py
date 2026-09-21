@@ -16,17 +16,17 @@ class UpdateExperimentRunRequest(DaraModel):
         total_tasks: int = None,
         client_token: str = None,
     ):
-        # The experiment completion time. A millisecond-level UNIX timestamp.
+        # The experiment completion time. This value is a millisecond-level UNIX timestamp.
         self.completed_at = completed_at
         # The number of completed tasks.
         self.completed_tasks = completed_tasks
-        # The experiment execution time. A millisecond-level UNIX timestamp.
+        # The experiment execution time. This value is a millisecond-level UNIX timestamp.
         self.executed_at = executed_at
         # The number of failed tasks.
         self.failed_tasks = failed_tasks
         # The experiment record name.
         self.record_name = record_name
-        # The experiment record status. Set to cancelled to cancel execution.
+        # The experiment record status. Set this parameter to cancelled to cancel the execution.
         self.status = status
         # The total number of tasks.
         self.total_tasks = total_tasks

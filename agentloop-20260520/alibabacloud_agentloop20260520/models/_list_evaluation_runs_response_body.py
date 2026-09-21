@@ -20,7 +20,7 @@ class ListEvaluationRunsResponseBody(DaraModel):
         self.evaluation_runs = evaluation_runs
         # The number of entries per page used in this request.
         self.max_results = max_results
-        # The pagination token for the next page. An empty value indicates that no more pages exist.
+        # The pagination token for the next page. An empty value indicates that no more pages are available.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id

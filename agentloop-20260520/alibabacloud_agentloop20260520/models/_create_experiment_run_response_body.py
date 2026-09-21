@@ -14,11 +14,11 @@ class CreateExperimentRunResponseBody(DaraModel):
     ):
         # The message.
         self.message = message
-        # The experiment record ID. For online experiments, the format is typically exp-run-{uuid32}. For offline experiments, the format may also be a standard UUID.
+        # The experiment record ID. For online experiments, the ID is typically in the format exp-run-{uuid32}. For offline experiments, the ID may also be a standard UUID.
         self.record_id = record_id
         # The request ID.
         self.request_id = request_id
-        # The experiment record status. After creation, the status is typically pending.
+        # The experiment record status. The value is typically pending after creation.
         self.status = status
 
     def validate(self):
