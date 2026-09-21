@@ -4006,6 +4006,8 @@ class Client(OpenApiClient):
             query['AIDBClusterId'] = request.aidbcluster_id
         if not DaraCore.is_null(request.agentic_dbbranch_spec_shrink):
             query['AgenticDBBranchSpec'] = request.agentic_dbbranch_spec_shrink
+        if not DaraCore.is_null(request.agentic_dbcluster_id):
+            query['AgenticDBClusterId'] = request.agentic_dbcluster_id
         if not DaraCore.is_null(request.application_type):
             query['ApplicationType'] = request.application_type
         if not DaraCore.is_null(request.architecture):
@@ -4138,6 +4140,8 @@ class Client(OpenApiClient):
             query['AIDBClusterId'] = request.aidbcluster_id
         if not DaraCore.is_null(request.agentic_dbbranch_spec_shrink):
             query['AgenticDBBranchSpec'] = request.agentic_dbbranch_spec_shrink
+        if not DaraCore.is_null(request.agentic_dbcluster_id):
+            query['AgenticDBClusterId'] = request.agentic_dbcluster_id
         if not DaraCore.is_null(request.application_type):
             query['ApplicationType'] = request.application_type
         if not DaraCore.is_null(request.architecture):
@@ -7262,6 +7266,8 @@ class Client(OpenApiClient):
             query['SyncIntervalMinutes'] = request.sync_interval_minutes
         if not DaraCore.is_null(request.tenant_id):
             query['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.user_access_token):
+            query['UserAccessToken'] = request.user_access_token
         if not DaraCore.is_null(request.user_id):
             query['UserId'] = request.user_id
         req = open_api_util_models.OpenApiRequest(
@@ -7314,6 +7320,8 @@ class Client(OpenApiClient):
             query['SyncIntervalMinutes'] = request.sync_interval_minutes
         if not DaraCore.is_null(request.tenant_id):
             query['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.user_access_token):
+            query['UserAccessToken'] = request.user_access_token
         if not DaraCore.is_null(request.user_id):
             query['UserId'] = request.user_id
         req = open_api_util_models.OpenApiRequest(
@@ -32802,6 +32810,10 @@ class Client(OpenApiClient):
             query['ModelName'] = request.model_name
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.restart_mode):
+            query['RestartMode'] = request.restart_mode
+        if not DaraCore.is_null(request.worker_batch_size):
+            query['WorkerBatchSize'] = request.worker_batch_size
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -32838,6 +32850,10 @@ class Client(OpenApiClient):
             query['ModelName'] = request.model_name
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.restart_mode):
+            query['RestartMode'] = request.restart_mode
+        if not DaraCore.is_null(request.worker_batch_size):
+            query['WorkerBatchSize'] = request.worker_batch_size
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -44062,6 +44078,8 @@ class Client(OpenApiClient):
             query['SyncEnabled'] = request.sync_enabled
         if not DaraCore.is_null(request.sync_interval_minutes):
             query['SyncIntervalMinutes'] = request.sync_interval_minutes
+        if not DaraCore.is_null(request.user_access_token):
+            query['UserAccessToken'] = request.user_access_token
         if not DaraCore.is_null(request.user_id):
             query['UserId'] = request.user_id
         req = open_api_util_models.OpenApiRequest(
@@ -44108,6 +44126,8 @@ class Client(OpenApiClient):
             query['SyncEnabled'] = request.sync_enabled
         if not DaraCore.is_null(request.sync_interval_minutes):
             query['SyncIntervalMinutes'] = request.sync_interval_minutes
+        if not DaraCore.is_null(request.user_access_token):
+            query['UserAccessToken'] = request.user_access_token
         if not DaraCore.is_null(request.user_id):
             query['UserId'] = request.user_id
         req = open_api_util_models.OpenApiRequest(

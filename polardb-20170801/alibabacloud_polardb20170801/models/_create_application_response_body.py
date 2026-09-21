@@ -22,7 +22,7 @@ class CreateApplicationResponseBody(DaraModel):
         self.application_id = application_id
         # The list of child components.
         self.components = components
-        # The application description.
+        # The description of the application.
         self.description = description
         # The generated order ID.
         self.order_id = order_id

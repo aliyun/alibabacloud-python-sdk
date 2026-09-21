@@ -19,7 +19,7 @@ class ModifyAIDBClusterModelResponseBody(DaraModel):
         total_msds: int = None,
         warnings: List[str] = None,
     ):
-        # Indicates whether the request is a dry run.
+        # Indicates whether the request is a dry-run request.
         self.dry_run = dry_run
         # The model type of the instance.
         self.model_type = model_type
@@ -33,9 +33,9 @@ class ModifyAIDBClusterModelResponseBody(DaraModel):
         self.task_id = task_id
         # The number of change batches.
         self.total_batches = total_batches
-        # The number of affected model service instances.
+        # The number of affected model serving instances.
         self.total_msds = total_msds
-        # The change warnings returned by the upstream service. The caller must display these warnings.
+        # The change warnings returned by the upstream. The caller must display these warnings.
         self.warnings = warnings
 
     def validate(self):

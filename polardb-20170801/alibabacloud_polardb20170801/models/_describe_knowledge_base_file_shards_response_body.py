@@ -91,30 +91,53 @@ class DescribeKnowledgeBaseFileShardsResponseBody(DaraModel):
 class DescribeKnowledgeBaseFileShardsResponseBodyShards(DaraModel):
     def __init__(
         self,
+        captions: List[str] = None,
+        doc_items: List[str] = None,
         headings: List[str] = None,
+        image_resources: List[main_models.DescribeKnowledgeBaseFileShardsResponseBodyShardsImageResources] = None,
         page_numbers: List[str] = None,
         shard_content: str = None,
         shard_index: int = None,
     ):
+        # The list of figure or table captions associated with the shard.
+        self.captions = captions
+        # The list of Docling source document structured element references associated with the shard. You can use these references to precisely locate original document elements.
+        self.doc_items = doc_items
         # The chain of section headings to which the shard belongs.
         self.headings = headings
+        # The list of image resources referenced by the shard.
+        self.image_resources = image_resources
         # The list of page numbers to which the shard belongs.
         self.page_numbers = page_numbers
         # The text content of the shard.
         self.shard_content = shard_content
-        # The shard index.
+        # The index of the shard.
         self.shard_index = shard_index
 
     def validate(self):
-        pass
+        if self.image_resources:
+            for v1 in self.image_resources:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.captions is not None:
+            result['Captions'] = self.captions
+
+        if self.doc_items is not None:
+            result['DocItems'] = self.doc_items
+
         if self.headings is not None:
             result['Headings'] = self.headings
+
+        result['ImageResources'] = []
+        if self.image_resources is not None:
+            for k1 in self.image_resources:
+                result['ImageResources'].append(k1.to_map() if k1 else None)
 
         if self.page_numbers is not None:
             result['PageNumbers'] = self.page_numbers
@@ -129,8 +152,20 @@ class DescribeKnowledgeBaseFileShardsResponseBodyShards(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Captions') is not None:
+            self.captions = m.get('Captions')
+
+        if m.get('DocItems') is not None:
+            self.doc_items = m.get('DocItems')
+
         if m.get('Headings') is not None:
             self.headings = m.get('Headings')
+
+        self.image_resources = []
+        if m.get('ImageResources') is not None:
+            for k1 in m.get('ImageResources'):
+                temp_model = main_models.DescribeKnowledgeBaseFileShardsResponseBodyShardsImageResources()
+                self.image_resources.append(temp_model.from_map(k1))
 
         if m.get('PageNumbers') is not None:
             self.page_numbers = m.get('PageNumbers')
@@ -140,6 +175,70 @@ class DescribeKnowledgeBaseFileShardsResponseBodyShards(DaraModel):
 
         if m.get('ShardIndex') is not None:
             self.shard_index = m.get('ShardIndex')
+
+        return self
+
+class DescribeKnowledgeBaseFileShardsResponseBodyShardsImageResources(DaraModel):
+    def __init__(
+        self,
+        document_index: int = None,
+        id: str = None,
+        item_ref: str = None,
+        mime_type: str = None,
+        uri: str = None,
+    ):
+        # The index of the source document to which the image belongs, starting from 0.
+        self.document_index = document_index
+        # The unique ID of the image resource.
+        self.id = id
+        # The element reference of the image in the Docling source document structure.
+        self.item_ref = item_ref
+        # The media type of the image resource.
+        self.mime_type = mime_type
+        # The OSS URI of the image resource.
+        self.uri = uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.document_index is not None:
+            result['DocumentIndex'] = self.document_index
+
+        if self.id is not None:
+            result['Id'] = self.id
+
+        if self.item_ref is not None:
+            result['ItemRef'] = self.item_ref
+
+        if self.mime_type is not None:
+            result['MimeType'] = self.mime_type
+
+        if self.uri is not None:
+            result['Uri'] = self.uri
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DocumentIndex') is not None:
+            self.document_index = m.get('DocumentIndex')
+
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+
+        if m.get('ItemRef') is not None:
+            self.item_ref = m.get('ItemRef')
+
+        if m.get('MimeType') is not None:
+            self.mime_type = m.get('MimeType')
+
+        if m.get('Uri') is not None:
+            self.uri = m.get('Uri')
 
         return self
 

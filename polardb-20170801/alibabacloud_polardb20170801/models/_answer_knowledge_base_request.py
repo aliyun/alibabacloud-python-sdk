@@ -25,7 +25,7 @@ class AnswerKnowledgeBaseRequest(DaraModel):
         self.knowledge_base_id = knowledge_base_id
         # The maximum number of context characters. Valid values: 1000 to 32000.
         self.max_context_chars = max_context_chars
-        # The user query text.
+        # The user question.
         # 
         # This parameter is required.
         self.query_text = query_text
@@ -33,9 +33,9 @@ class AnswerKnowledgeBaseRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # Specifies whether to enable reranking. Default value: false.
+        # Specifies whether to enable reranking. Disabled by default.
         self.rerank_enabled = rerank_enabled
-        # Specifies whether to return citation sources. Default value: true.
+        # Specifies whether to return citation sources. Enabled by default.
         self.return_sources = return_sources
         # The similarity score threshold.
         self.score_threshold = score_threshold
@@ -43,9 +43,9 @@ class AnswerKnowledgeBaseRequest(DaraModel):
         self.search_mode = search_mode
         # The system prompt.
         self.system_prompt = system_prompt
-        # The number of results to recall during retrieval.
+        # The number of recall results to retrieve.
         self.top_k = top_k
-        # The supplementary user instructions.
+        # The user supplementary instructions.
         self.user_instructions = user_instructions
 
     def validate(self):

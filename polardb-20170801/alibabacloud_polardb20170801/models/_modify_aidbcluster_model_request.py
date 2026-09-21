@@ -12,14 +12,16 @@ class ModifyAIDBClusterModelRequest(DaraModel):
         dry_run: bool = None,
         model_name: str = None,
         region_id: str = None,
+        restart_mode: str = None,
+        worker_batch_size: int = None,
     ):
         # The ID of the PolarDB AI 3.0 logical instance.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The new customer-facing invocation name. If this parameter is not specified, the existing invocation name is retained.
+        # The new client-facing invocation name. If this parameter is not specified, the existing invocation name is retained.
         self.display_model_name = display_model_name
-        # Specifies whether to only preview the change.
+        # Specifies whether to only preview the change without actually performing it.
         self.dry_run = dry_run
         # The name of the target model. Select a value from the ModelName values returned by the DescribeAvailableModels operation.
         # 
@@ -29,6 +31,12 @@ class ModifyAIDBClusterModelRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The restart mode for workers. Valid values:
+        # - inPlace
+        # - recreate
+        self.restart_mode = restart_mode
+        # The maximum number of workers to restart per batch within a single MSD. Valid values: 1 to 30. This parameter takes effect only when RestartMode is set to inPlace.
+        self.worker_batch_size = worker_batch_size
 
     def validate(self):
         pass
@@ -53,6 +61,12 @@ class ModifyAIDBClusterModelRequest(DaraModel):
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
+        if self.restart_mode is not None:
+            result['RestartMode'] = self.restart_mode
+
+        if self.worker_batch_size is not None:
+            result['WorkerBatchSize'] = self.worker_batch_size
+
         return result
 
     def from_map(self, m: dict = None):
@@ -71,6 +85,12 @@ class ModifyAIDBClusterModelRequest(DaraModel):
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+
+        if m.get('RestartMode') is not None:
+            self.restart_mode = m.get('RestartMode')
+
+        if m.get('WorkerBatchSize') is not None:
+            self.worker_batch_size = m.get('WorkerBatchSize')
 
         return self
 

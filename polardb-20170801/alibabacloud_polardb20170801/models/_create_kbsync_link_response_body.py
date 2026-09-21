@@ -20,7 +20,7 @@ class CreateKBSyncLinkResponseBody(DaraModel):
     ):
         # The client ID.
         self.client_id = client_id
-        # The creation time.
+        # The time when the synchronization link was created.
         self.creation_time = creation_time
         # The description of the synchronization link.
         self.description = description
@@ -28,7 +28,7 @@ class CreateKBSyncLinkResponseBody(DaraModel):
         # - FEISHU 
         # - SHAREPOINT
         self.im_platform = im_platform
-        # The synchronization link ID.
+        # The ID of the synchronization link.
         self.link_id = link_id
         # The name of the synchronization link.
         self.link_name = link_name

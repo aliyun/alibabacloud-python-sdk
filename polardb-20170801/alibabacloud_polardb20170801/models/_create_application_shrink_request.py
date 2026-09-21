@@ -12,6 +12,7 @@ class CreateApplicationShrinkRequest(DaraModel):
         self,
         aidbcluster_id: str = None,
         agentic_dbbranch_spec_shrink: str = None,
+        agentic_dbcluster_id: str = None,
         application_type: str = None,
         architecture: str = None,
         auth_provider: str = None,
@@ -59,6 +60,8 @@ class CreateApplicationShrinkRequest(DaraModel):
         self.aidbcluster_id = aidbcluster_id
         # The AgenticDB branch specification.
         self.agentic_dbbranch_spec_shrink = agentic_dbbranch_spec_shrink
+        # The AgenticDB cluster ID.
+        self.agentic_dbcluster_id = agentic_dbcluster_id
         # The application type. Valid values:
         # 
         # - supabase: Set this value to create a managed Supabase application.
@@ -77,9 +80,9 @@ class CreateApplicationShrinkRequest(DaraModel):
         self.auth_provider = auth_provider
         # The authentication provider configuration.
         self.auth_provider_config = auth_provider_config
-        # Specifies whether to enable automatic creation of an elastic IP address (EIP) and attach it to the instance. This is equivalent to associate with an EIP.
+        # Specifies whether to automatically create an elastic IP address (EIP) and associate it with the instance.
         self.auto_allocate_public_eip = auto_allocate_public_eip
-        # Specifies whether to enable automatic creation of a cold storage Polarlakebase instance. Valid values:
+        # Specifies whether to enable automatic creation of a cold storage Polarlakebase. Valid values:
         # * false (default): Automatic creation is disabled.
         # * true: Automatic creation is enabled.
         self.auto_create_polar_fs = auto_create_polar_fs
@@ -97,7 +100,7 @@ class CreateApplicationShrinkRequest(DaraModel):
         self.description = description
         # The list of expected DNAT entries for NAT mapping. Specify this parameter together with VpcNatGatewayId. This parameter can be left empty, which indicates that no DNAT entries are created.
         self.dnat_entries_shrink = dnat_entries_shrink
-        # The DNAT-dedicated NAT IP address that has been allocated (separate from the SNAT IP address) for NAT mapping. The IP address must belong to the specified gateway and be in an available state. The vSwitch of the gateway must belong to a primary CIDR block that is reachable from the office network. Specify this parameter together with VpcNatGatewayId. Prerequisite: An SNAT entry has been bound to the vSwitch where the application resides.
+        # The DNAT-dedicated NAT IP address allocated by the customer, which must be separate from the SNAT IP address. The IP address must belong to the specified gateway and be in an available state. The vSwitch where the gateway resides must be in a primary CIDR block reachable from the office network. Specify this parameter together with VpcNatGatewayId. Prerequisite: The customer has bound an SNAT entry to the vSwitch where the application resides.
         self.dnat_ip_address = dnat_ip_address
         # Default value: `false`. If you set this parameter to `true`, only parameter and resource validation is performed without actually creating the resource.
         self.dry_run = dry_run
@@ -115,7 +118,7 @@ class CreateApplicationShrinkRequest(DaraModel):
         self.model_base_url = model_base_url
         # The model source. Valid values:
         # 
-        # * bailian: Alibaba Cloud Model Studio model.
+        # * bailian: Bailian model.
         # * custom: Custom model.
         # * maas: PolarDB model operator.
         self.model_from = model_from
@@ -143,7 +146,7 @@ class CreateApplicationShrinkRequest(DaraModel):
         self.security_group_id = security_group_id
         # The name of the IP whitelist group. Default value: `default`.
         self.security_iparray_name = security_iparray_name
-        # The IP whitelist. If you do not specify this parameter, the default value is `127.0.0.1`.
+        # The IP whitelist. If you do not specify this parameter, the default value `127.0.0.1` is used.
         self.security_iplist = security_iplist
         # The type of the IP address.
         self.security_iptype = security_iptype
@@ -161,7 +164,7 @@ class CreateApplicationShrinkRequest(DaraModel):
         self.v_switch_id = v_switch_id
         # The VPC ID.
         self.vpc_id = vpc_id
-        # The VPC NAT gateway ID for NAT mapping. If specified, NAT mapping is enabled when the instance is created. The NAT gateway must be in the same VPC as the application, use the private network type (intranet), and be in an active state.
+        # The VPC NAT gateway ID for NAT mapping. If specified, NAT mapping is enabled when the instance is created. The NAT gateway must be in the same VPC as the application, use the private network type (intranet), and be in active status.
         self.vpc_nat_gateway_id = vpc_nat_gateway_id
         # The zone. Default value: the primary zone of the instance.
         self.zone_id = zone_id
@@ -182,6 +185,9 @@ class CreateApplicationShrinkRequest(DaraModel):
 
         if self.agentic_dbbranch_spec_shrink is not None:
             result['AgenticDBBranchSpec'] = self.agentic_dbbranch_spec_shrink
+
+        if self.agentic_dbcluster_id is not None:
+            result['AgenticDBClusterId'] = self.agentic_dbcluster_id
 
         if self.application_type is not None:
             result['ApplicationType'] = self.application_type
@@ -320,6 +326,9 @@ class CreateApplicationShrinkRequest(DaraModel):
 
         if m.get('AgenticDBBranchSpec') is not None:
             self.agentic_dbbranch_spec_shrink = m.get('AgenticDBBranchSpec')
+
+        if m.get('AgenticDBClusterId') is not None:
+            self.agentic_dbcluster_id = m.get('AgenticDBClusterId')
 
         if m.get('ApplicationType') is not None:
             self.application_type = m.get('ApplicationType')

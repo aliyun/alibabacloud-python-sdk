@@ -16,13 +16,14 @@ class UpdateKBSyncLinkRequest(DaraModel):
         sheet_mcp_endpoint: str = None,
         sync_enabled: bool = None,
         sync_interval_minutes: int = None,
+        user_access_token: str = None,
         user_id: str = None,
     ):
         # The client ID.
         self.client_id = client_id
         # The client secret.
         self.client_secret = client_secret
-        # The unique identifier of the knowledge base.
+        # The unique ID of the knowledge base.
         # 
         # This parameter is required.
         self.knowledge_base_id = knowledge_base_id
@@ -30,19 +31,21 @@ class UpdateKBSyncLinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.link_id = link_id
-        # The MCP Server address for DingTalk documents.
+        # The DingTalk document MCP Server endpoint.
         self.mcp_endpoint = mcp_endpoint
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The MCP Server address for DingTalk spreadsheets.
+        # The DingTalk spreadsheet MCP Server endpoint.
         self.sheet_mcp_endpoint = sheet_mcp_endpoint
         # Specifies whether to enable automatic synchronization. This parameter can only be modified independently and cannot be changed together with other configurations.
         self.sync_enabled = sync_enabled
         # 20
         self.sync_interval_minutes = sync_interval_minutes
-        # The DingTalk user ID for the operation.
+        # The new Lark user access token.
+        self.user_access_token = user_access_token
+        # The DingTalk user ID of the operator.
         self.user_id = user_id
 
     def validate(self):
@@ -80,6 +83,9 @@ class UpdateKBSyncLinkRequest(DaraModel):
         if self.sync_interval_minutes is not None:
             result['SyncIntervalMinutes'] = self.sync_interval_minutes
 
+        if self.user_access_token is not None:
+            result['UserAccessToken'] = self.user_access_token
+
         if self.user_id is not None:
             result['UserId'] = self.user_id
 
@@ -113,6 +119,9 @@ class UpdateKBSyncLinkRequest(DaraModel):
 
         if m.get('SyncIntervalMinutes') is not None:
             self.sync_interval_minutes = m.get('SyncIntervalMinutes')
+
+        if m.get('UserAccessToken') is not None:
+            self.user_access_token = m.get('UserAccessToken')
 
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')

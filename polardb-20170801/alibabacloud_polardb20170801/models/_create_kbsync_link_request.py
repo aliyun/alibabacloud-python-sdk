@@ -19,6 +19,7 @@ class CreateKBSyncLinkRequest(DaraModel):
         source_type: str = None,
         sync_interval_minutes: int = None,
         tenant_id: str = None,
+        user_access_token: str = None,
         user_id: str = None,
     ):
         # The client ID.
@@ -31,7 +32,7 @@ class CreateKBSyncLinkRequest(DaraModel):
         self.client_secret = client_secret
         # The description of the synchronization link.
         self.description = description
-        # The unique identifier of the knowledge base.
+        # The unique ID of the knowledge base.
         # 
         # This parameter is required.
         self.knowledge_base_id = knowledge_base_id
@@ -39,13 +40,13 @@ class CreateKBSyncLinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.link_name = link_name
-        # The DingTalk document MCP Server endpoint.
+        # The MCP Server address for DingTalk documents.
         self.mcp_endpoint = mcp_endpoint
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The DingTalk spreadsheet MCP Server endpoint.
+        # The MCP Server address for DingTalk sheets.
         self.sheet_mcp_endpoint = sheet_mcp_endpoint
         # The source directory address for synchronization.
         # 
@@ -59,7 +60,9 @@ class CreateKBSyncLinkRequest(DaraModel):
         self.sync_interval_minutes = sync_interval_minutes
         # The tenant ID. This parameter is required when SourceType is set to SHAREPOINT.
         self.tenant_id = tenant_id
-        # The DingTalk operator user ID.
+        # The Lark user access token. This token is used only when the application identity cannot expand group members because the bot is not in the group chat.
+        self.user_access_token = user_access_token
+        # The DingTalk user ID of the operator.
         self.user_id = user_id
 
     def validate(self):
@@ -106,6 +109,9 @@ class CreateKBSyncLinkRequest(DaraModel):
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
 
+        if self.user_access_token is not None:
+            result['UserAccessToken'] = self.user_access_token
+
         if self.user_id is not None:
             result['UserId'] = self.user_id
 
@@ -148,6 +154,9 @@ class CreateKBSyncLinkRequest(DaraModel):
 
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
+
+        if m.get('UserAccessToken') is not None:
+            self.user_access_token = m.get('UserAccessToken')
 
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')

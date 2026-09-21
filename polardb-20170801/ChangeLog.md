@@ -1,3 +1,7 @@
+2026-09-21 Version: 8.4.2
+- Update API CreateApplication: add request parameters AgenticDBClusterId.
+
+
 2026-09-16 Version: 8.4.0
 - Support API DeleteAIDBClusterCustomModel.
 - Support API ModifyAIDBClusterModel.
