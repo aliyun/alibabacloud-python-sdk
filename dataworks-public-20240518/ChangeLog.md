@@ -1,3 +1,7 @@
+2026-09-21 Version: 9.9.1
+- Update API CreateAgentSession: add request parameters Params.Meta.InitialConfigOptions.ProjectId.
+
+
 2026-09-17 Version: 9.9.0
 - Support API ReplyAgentSession.
 
