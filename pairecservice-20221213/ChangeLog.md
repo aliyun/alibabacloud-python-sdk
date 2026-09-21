@@ -1,3 +1,16 @@
+2026-09-21 Version: 7.1.4
+- Update API CloneEngineConfig: add request parameters body.SceneId.
+- Update API CreateEngineConfig: add request parameters body.SceneId.
+- Update API GetEngineConfig: add response parameters Body.SceneId.
+- Update API GetService: add response parameters Body.SceneId.
+- Update API ListEngineConfigs: add request parameters SceneId.
+- Update API ListEngineConfigs: add response parameters Body.EngineConfigs.$.SceneId.
+- Update API ListFeatureConsistencyCheckJobConfigs: add request parameters SceneId.
+- Update API ListSampleConsistencyJobs: add request parameters SceneId.
+- Update API ShoppingAssistant: add response parameters Body.EnableSuggestion.
+- Update API UpdateEngineConfig: add request parameters body.SceneId.
+
+
 2026-09-20 Version: 7.1.3
 - Update API GetInstance: add response parameters Body.FeatureStoreInfo.
 - Update API GetInstance: add response parameters Body.RecommendCustomization.

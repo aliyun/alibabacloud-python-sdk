@@ -24,7 +24,7 @@ class ShoppingAssistantRequest(DaraModel):
     ):
         # The additional configuration.
         self.config = config
-        # The contents.
+        # The content.
         self.contents = contents
         # The conversation ID. This parameter is not yet effective.
         self.conversation_id = conversation_id

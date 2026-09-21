@@ -11,6 +11,7 @@ class ListSampleConsistencyJobsRequest(DaraModel):
         order: str = None,
         page_number: int = None,
         page_size: int = None,
+        scene_id: str = None,
         sort_by: str = None,
     ):
         # This parameter is required.
@@ -18,6 +19,7 @@ class ListSampleConsistencyJobsRequest(DaraModel):
         self.order = order
         self.page_number = page_number
         self.page_size = page_size
+        self.scene_id = scene_id
         self.sort_by = sort_by
 
     def validate(self):
@@ -40,6 +42,9 @@ class ListSampleConsistencyJobsRequest(DaraModel):
         if self.page_size is not None:
             result['PageSize'] = self.page_size
 
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
 
@@ -58,6 +63,9 @@ class ListSampleConsistencyJobsRequest(DaraModel):
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
 
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')

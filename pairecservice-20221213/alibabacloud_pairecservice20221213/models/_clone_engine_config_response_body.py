@@ -10,7 +10,7 @@ class CloneEngineConfigResponseBody(DaraModel):
         engine_config_id: str = None,
         request_id: str = None,
     ):
-        # The engine configuration ID.
+        # The DPI engine configuration ID.
         self.engine_config_id = engine_config_id
         # The request ID.
         self.request_id = request_id

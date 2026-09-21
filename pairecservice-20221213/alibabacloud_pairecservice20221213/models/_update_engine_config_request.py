@@ -12,15 +12,14 @@ class UpdateEngineConfigRequest(DaraModel):
         environment: str = None,
         instance_id: str = None,
         name: str = None,
+        scene_id: str = None,
         type: str = None,
     ):
         # The content of the engine configuration.
         self.config_value = config_value
         # The description.
         self.description = description
-        # The runtime environment.
-        # 
-        # Valid values:
+        # The runtime environment. Valid values:
         # 
         # - Daily: daily environment.
         # 
@@ -32,6 +31,8 @@ class UpdateEngineConfigRequest(DaraModel):
         self.instance_id = instance_id
         # The engine configuration name.
         self.name = name
+        # The scene.
+        self.scene_id = scene_id
         # The engine configuration type.
         self.type = type
 
@@ -58,6 +59,9 @@ class UpdateEngineConfigRequest(DaraModel):
         if self.name is not None:
             result['Name'] = self.name
 
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+
         if self.type is not None:
             result['Type'] = self.type
 
@@ -79,6 +83,9 @@ class UpdateEngineConfigRequest(DaraModel):
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
 
         if m.get('Type') is not None:
             self.type = m.get('Type')

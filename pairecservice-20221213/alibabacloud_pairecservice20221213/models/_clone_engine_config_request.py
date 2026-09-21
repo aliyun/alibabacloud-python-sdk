@@ -11,20 +11,24 @@ class CloneEngineConfigRequest(DaraModel):
         description: str = None,
         environment: str = None,
         instance_id: str = None,
+        scene_id: str = None,
     ):
-        # The content of the engine configuration.
+        # The content of the DPI engine configuration.
         self.config_value = config_value
+        # The description.
         self.description = description
-        # The environment. Valid values:
+        # The runtime environment. Valid values:
         # 
-        # - Daily: The daily environment.
+        # - Daily: daily environment.
         # 
-        # - Pre: The pre-release environment.
+        # - Pre: staging environment.
         # 
-        # - Prod: The production environment.
+        # - Prod: production environment.
         self.environment = environment
-        # The instance ID. To obtain an instance ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
+        # The instance ID. For information about how to obtain the instance ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
         self.instance_id = instance_id
+        # The scene.
+        self.scene_id = scene_id
 
     def validate(self):
         pass
@@ -46,6 +50,9 @@ class CloneEngineConfigRequest(DaraModel):
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -61,6 +68,9 @@ class CloneEngineConfigRequest(DaraModel):
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
 
         return self
 

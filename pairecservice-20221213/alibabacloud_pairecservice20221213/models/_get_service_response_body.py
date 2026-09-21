@@ -19,34 +19,37 @@ class GetServiceResponseBody(DaraModel):
         region: str = None,
         repository_id: str = None,
         request_id: str = None,
+        scene_id: str = None,
         service_config: str = None,
         service_resource_uri: str = None,
     ):
-        # The Container Registry Enterprise instance ID selected by the user when a non-official image is used.
+        # The instance ID of the Container Registry Enterprise instance selected when a non-official image is used.
         self.cr_instance_id = cr_instance_id
         # The service description.
         self.description = description
         # The engine configuration ID.
         self.engine_config_id = engine_config_id
-        # The time of the most recent production release.
+        # The time of the most recent production publish.
         self.gmt_released_time = gmt_released_time
         # The image secret.
         self.image_auth = image_auth
         # The image name.
         self.image_name = image_name
-        # The most recent production release record.
+        # The most recent production publish record.
         self.latest_prod_release_order = latest_prod_release_order
         # The service name.
         self.name = name
         # The region where the service is deployed.
         self.region = region
-        # The Container Registry Enterprise Edition repository ID selected by the user when a non-official image is used.
+        # The ID of the Container Registry Enterprise Edition repository selected when a non-official image is used.
         self.repository_id = repository_id
         # The request ID.
         self.request_id = request_id
-        # The configuration used to publish the service, such as the service configuration in EAS.
+        # The scenario.
+        self.scene_id = scene_id
+        # The configuration used to publish the service, such as the Elastic Algorithm Service (EAS) service configuration.
         self.service_config = service_config
-        # The resource address used to publish the service, such as the resource group name in Elastic Algorithm Service (EAS).
+        # The resource address used to publish the service, such as the EAS resource group name.
         self.service_resource_uri = service_resource_uri
 
     def validate(self):
@@ -90,6 +93,9 @@ class GetServiceResponseBody(DaraModel):
 
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
 
         if self.service_config is not None:
             result['ServiceConfig'] = self.service_config
@@ -135,6 +141,9 @@ class GetServiceResponseBody(DaraModel):
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
 
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+
         if m.get('ServiceConfig') is not None:
             self.service_config = m.get('ServiceConfig')
 
@@ -153,17 +162,17 @@ class GetServiceResponseBodyLatestProdReleaseOrder(DaraModel):
         releaser: str = None,
         topic: str = None,
     ):
-        # The release content.
+        # The publish content.
         self.content = content
         # The image version.
         self.image_version = image_version
-        # The release information.
+        # The publish information.
         self.release_info = release_info
-        # The release order ID.
+        # The publish order ID.
         self.release_order_id = release_order_id
         # The publisher, including the name and UID of the Resource Access Management (RAM) users.
         self.releaser = releaser
-        # The release title.
+        # The publish title.
         self.topic = topic
 
     def validate(self):

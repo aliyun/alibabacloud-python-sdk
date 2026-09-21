@@ -11,6 +11,7 @@ class ShoppingAssistantResponseBody(DaraModel):
         citation: main_models.ShoppingAssistantResponseBodyCitation = None,
         content: str = None,
         conversation_id: str = None,
+        enable_suggestion: bool = None,
         error_code: str = None,
         event: str = None,
         request_id: str = None,
@@ -20,10 +21,12 @@ class ShoppingAssistantResponseBody(DaraModel):
     ):
         # The citation information.
         self.citation = citation
-        # The returned content.
+        # The response content.
         self.content = content
         # The session ID.
         self.conversation_id = conversation_id
+        # Indicates whether suggestions are provided.
+        self.enable_suggestion = enable_suggestion
         # The error message.
         self.error_code = error_code
         # The event.
@@ -57,6 +60,9 @@ class ShoppingAssistantResponseBody(DaraModel):
         if self.conversation_id is not None:
             result['ConversationId'] = self.conversation_id
 
+        if self.enable_suggestion is not None:
+            result['EnableSuggestion'] = self.enable_suggestion
+
         if self.error_code is not None:
             result['ErrorCode'] = self.error_code
 
@@ -88,6 +94,9 @@ class ShoppingAssistantResponseBody(DaraModel):
 
         if m.get('ConversationId') is not None:
             self.conversation_id = m.get('ConversationId')
+
+        if m.get('EnableSuggestion') is not None:
+            self.enable_suggestion = m.get('EnableSuggestion')
 
         if m.get('ErrorCode') is not None:
             self.error_code = m.get('ErrorCode')
@@ -121,7 +130,7 @@ class ShoppingAssistantResponseBodyResult(DaraModel):
     ):
         # The citation information.
         self.citation = citation
-        # The returned content.
+        # The response content.
         self.content = content
         # The error message.
         self.error_code = error_code
@@ -250,7 +259,7 @@ class ShoppingAssistantResponseBodyCitation(DaraModel):
         item_id: str = None,
         type: str = None,
     ):
-        # The ID of the `item`.
+        # The ID of the item.
         self.item_id = item_id
         # The reference data type. Fixed value: `item`.
         self.type = type

@@ -15,6 +15,7 @@ class GetEngineConfigResponseBody(DaraModel):
         gmt_released_time: str = None,
         name: str = None,
         request_id: str = None,
+        scene_id: str = None,
         status: str = None,
         type: str = None,
     ):
@@ -40,6 +41,7 @@ class GetEngineConfigResponseBody(DaraModel):
         self.name = name
         # The request ID.
         self.request_id = request_id
+        self.scene_id = scene_id
         # The status. Valid values:
         # 
         # - Released: published.
@@ -81,6 +83,9 @@ class GetEngineConfigResponseBody(DaraModel):
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+
         if self.status is not None:
             result['Status'] = self.status
 
@@ -114,6 +119,9 @@ class GetEngineConfigResponseBody(DaraModel):
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
 
         if m.get('Status') is not None:
             self.status = m.get('Status')

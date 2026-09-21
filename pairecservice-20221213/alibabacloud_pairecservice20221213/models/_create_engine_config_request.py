@@ -12,6 +12,7 @@ class CreateEngineConfigRequest(DaraModel):
         environment: str = None,
         instance_id: str = None,
         name: str = None,
+        scene_id: str = None,
         type: str = None,
     ):
         # The content of the engine configuration.
@@ -30,6 +31,7 @@ class CreateEngineConfigRequest(DaraModel):
         self.instance_id = instance_id
         # The name of the engine configuration.
         self.name = name
+        self.scene_id = scene_id
         # The type of the engine configuration.
         self.type = type
 
@@ -56,6 +58,9 @@ class CreateEngineConfigRequest(DaraModel):
         if self.name is not None:
             result['Name'] = self.name
 
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+
         if self.type is not None:
             result['Type'] = self.type
 
@@ -77,6 +82,9 @@ class CreateEngineConfigRequest(DaraModel):
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
 
         if m.get('Type') is not None:
             self.type = m.get('Type')

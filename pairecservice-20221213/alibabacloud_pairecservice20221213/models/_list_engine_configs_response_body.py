@@ -18,7 +18,7 @@ class ListEngineConfigsResponseBody(DaraModel):
         self.engine_configs = engine_configs
         # The request ID.
         self.request_id = request_id
-        # The total number of elements in the list.
+        # The total number of entries in the list.
         self.total_count = total_count
 
     def validate(self):
@@ -72,6 +72,7 @@ class ListEngineConfigsResponseBodyEngineConfigs(DaraModel):
         gmt_modified_time: str = None,
         gmt_released_time: str = None,
         name: str = None,
+        scene_id: str = None,
         status: str = None,
         type: str = None,
         version: str = None,
@@ -82,13 +83,13 @@ class ListEngineConfigsResponseBodyEngineConfigs(DaraModel):
         self.description = description
         # The engine configuration ID.
         self.engine_config_id = engine_config_id
-        # The runtime environment.
+        # The runtime environment. Valid values:
         # 
-        # - Daily: daily environment.
+        # - Daily: Daily environment.
         # 
-        # - Pre: staging environment.
+        # - Pre: Pre-release environment.
         # 
-        # - Prod: production environment.
+        # - Prod: Production environment.
         self.environment = environment
         # The creation time.
         self.gmt_create_time = gmt_create_time
@@ -98,11 +99,13 @@ class ListEngineConfigsResponseBodyEngineConfigs(DaraModel):
         self.gmt_released_time = gmt_released_time
         # The engine configuration name.
         self.name = name
-        # The status.
+        # The scene ID.
+        self.scene_id = scene_id
+        # The status. Valid values:
         # 
-        # - Released: released.
+        # - Released: Released.
         # 
-        # - UnReleased: not released.
+        # - UnReleased: Not released.
         self.status = status
         # The engine configuration type.
         self.type = type
@@ -141,6 +144,9 @@ class ListEngineConfigsResponseBodyEngineConfigs(DaraModel):
         if self.name is not None:
             result['Name'] = self.name
 
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+
         if self.status is not None:
             result['Status'] = self.status
 
@@ -177,6 +183,9 @@ class ListEngineConfigsResponseBodyEngineConfigs(DaraModel):
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
 
         if m.get('Status') is not None:
             self.status = m.get('Status')

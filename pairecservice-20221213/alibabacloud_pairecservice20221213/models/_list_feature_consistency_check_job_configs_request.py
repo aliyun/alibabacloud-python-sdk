@@ -11,27 +11,26 @@ class ListFeatureConsistencyCheckJobConfigsRequest(DaraModel):
         order: str = None,
         page_number: str = None,
         page_size: str = None,
+        scene_id: str = None,
         sort_by: str = None,
     ):
-        # The instance ID. To obtain an instance ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
+        # The instance ID. For information about how to obtain an instance ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The sort order.
-        # 
-        # - `ASC`: Ascending order.
-        # 
-        # - `DESC`: Descending order.
+        # The sort order. Valid values:
+        # - ASC: ascending order.
+        # - DESC: descending order.
         self.order = order
-        # The page number. The value starts at 1. The default value is 1.
+        # The page number. Minimum value: 1. Default value: 1.
         self.page_number = page_number
         # The page size.
         self.page_size = page_size
-        # The field to sort by.
-        # 
-        # - `GmtCreateTime`: Creation time.
-        # 
-        # - `GmtModifiedTime`: Modified time.
+        # The scene ID.
+        self.scene_id = scene_id
+        # The field used to sort the results. Valid values:
+        # - GmtCreateTime: sorts by creation time.
+        # - GmtModifiedTime: sorts by update time.
         self.sort_by = sort_by
 
     def validate(self):
@@ -54,6 +53,9 @@ class ListFeatureConsistencyCheckJobConfigsRequest(DaraModel):
         if self.page_size is not None:
             result['PageSize'] = self.page_size
 
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
 
@@ -72,6 +74,9 @@ class ListFeatureConsistencyCheckJobConfigsRequest(DaraModel):
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
 
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')

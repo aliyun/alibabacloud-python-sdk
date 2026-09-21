@@ -690,6 +690,8 @@ class Client(OpenApiClient):
             body['Environment'] = request.environment
         if not DaraCore.is_null(request.instance_id):
             body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.scene_id):
+            body['SceneId'] = request.scene_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -727,6 +729,8 @@ class Client(OpenApiClient):
             body['Environment'] = request.environment
         if not DaraCore.is_null(request.instance_id):
             body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.scene_id):
+            body['SceneId'] = request.scene_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -1911,6 +1915,8 @@ class Client(OpenApiClient):
             body['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.name):
             body['Name'] = request.name
+        if not DaraCore.is_null(request.scene_id):
+            body['SceneId'] = request.scene_id
         if not DaraCore.is_null(request.type):
             body['Type'] = request.type
         req = open_api_util_models.OpenApiRequest(
@@ -1951,6 +1957,8 @@ class Client(OpenApiClient):
             body['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.name):
             body['Name'] = request.name
+        if not DaraCore.is_null(request.scene_id):
+            body['SceneId'] = request.scene_id
         if not DaraCore.is_null(request.type):
             body['Type'] = request.type
         req = open_api_util_models.OpenApiRequest(
@@ -9891,6 +9899,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.scene_id):
+            query['SceneId'] = request.scene_id
         if not DaraCore.is_null(request.status):
             query['Status'] = request.status
         if not DaraCore.is_null(request.version):
@@ -9933,6 +9943,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.scene_id):
+            query['SceneId'] = request.scene_id
         if not DaraCore.is_null(request.status):
             query['Status'] = request.status
         if not DaraCore.is_null(request.version):
@@ -10169,6 +10181,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.scene_id):
+            query['SceneId'] = request.scene_id
         if not DaraCore.is_null(request.sort_by):
             query['SortBy'] = request.sort_by
         req = open_api_util_models.OpenApiRequest(
@@ -10207,6 +10221,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.scene_id):
+            query['SceneId'] = request.scene_id
         if not DaraCore.is_null(request.sort_by):
             query['SortBy'] = request.sort_by
         req = open_api_util_models.OpenApiRequest(
@@ -11777,6 +11793,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.scene_id):
+            query['SceneId'] = request.scene_id
         if not DaraCore.is_null(request.sort_by):
             query['SortBy'] = request.sort_by
         req = open_api_util_models.OpenApiRequest(
@@ -11815,6 +11833,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.scene_id):
+            query['SceneId'] = request.scene_id
         if not DaraCore.is_null(request.sort_by):
             query['SortBy'] = request.sort_by
         req = open_api_util_models.OpenApiRequest(
@@ -15562,6 +15582,8 @@ class Client(OpenApiClient):
             body['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.name):
             body['Name'] = request.name
+        if not DaraCore.is_null(request.scene_id):
+            body['SceneId'] = request.scene_id
         if not DaraCore.is_null(request.type):
             body['Type'] = request.type
         req = open_api_util_models.OpenApiRequest(
@@ -15603,6 +15625,8 @@ class Client(OpenApiClient):
             body['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.name):
             body['Name'] = request.name
+        if not DaraCore.is_null(request.scene_id):
+            body['SceneId'] = request.scene_id
         if not DaraCore.is_null(request.type):
             body['Type'] = request.type
         req = open_api_util_models.OpenApiRequest(
