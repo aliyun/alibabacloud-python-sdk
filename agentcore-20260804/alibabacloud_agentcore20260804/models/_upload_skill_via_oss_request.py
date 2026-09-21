@@ -51,7 +51,7 @@ class UploadSkillViaOssRequestBody(DaraModel):
         self.oss_object_name = oss_object_name
         # Specifies whether to overwrite an existing Skill. Default value: false.
         self.overwrite = overwrite
-        # The upload version number. This parameter is optional and used as a fallback when the ZIP package contains no version information.
+        # The target upload version number. This parameter is optional and serves as a fallback when the ZIP package does not contain version information.
         self.target_version = target_version
 
     def validate(self):

@@ -13,7 +13,7 @@ class PrecheckSkillUploadViaOssResponseBody(DaraModel):
         data: List[main_models.PrecheckSkillUploadViaOssResponseBodyData] = None,
         request_id: str = None,
     ):
-        # The returned data.
+        # The response data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -55,9 +55,12 @@ class PrecheckSkillUploadViaOssResponseBody(DaraModel):
 class PrecheckSkillUploadViaOssResponseBodyData(DaraModel):
     def __init__(
         self,
+        draft_mode: str = None,
         editing_version: str = None,
         entry_path: str = None,
         exists: bool = None,
+        head_revision: str = None,
+        head_status: str = None,
         max_published_version: str = None,
         owner: str = None,
         parsed_version: str = None,
@@ -68,19 +71,25 @@ class PrecheckSkillUploadViaOssResponseBodyData(DaraModel):
         target_version: str = None,
         workspace_id: str = None,
     ):
+        # The draft mode: HEAD or VERSIONED, determined by the server.
+        self.draft_mode = draft_mode
         # The version currently being edited.
         self.editing_version = editing_version
         # The entry path of the Skill package.
         self.entry_path = entry_path
         # Indicates whether the Skill already exists.
         self.exists = exists
+        # The content revision identifier of the persistent draft, used to determine whether the local cache has expired. Returned only in HEAD draft mode.
+        self.head_revision = head_revision
+        # The status of the persistent draft: draft, reviewing, or reviewed. Returned only in HEAD draft mode.
+        self.head_status = head_status
         # The highest published version.
         self.max_published_version = max_published_version
         # The resource owner.
         self.owner = owner
         # The version parsed from the uploaded content.
         self.parsed_version = parsed_version
-        # The pre-check result code.
+        # The dry run result code.
         self.precheck_code = precheck_code
         # The reason description.
         self.reason = reason
@@ -101,6 +110,9 @@ class PrecheckSkillUploadViaOssResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.draft_mode is not None:
+            result['draftMode'] = self.draft_mode
+
         if self.editing_version is not None:
             result['editingVersion'] = self.editing_version
 
@@ -109,6 +121,12 @@ class PrecheckSkillUploadViaOssResponseBodyData(DaraModel):
 
         if self.exists is not None:
             result['exists'] = self.exists
+
+        if self.head_revision is not None:
+            result['headRevision'] = self.head_revision
+
+        if self.head_status is not None:
+            result['headStatus'] = self.head_status
 
         if self.max_published_version is not None:
             result['maxPublishedVersion'] = self.max_published_version
@@ -141,6 +159,9 @@ class PrecheckSkillUploadViaOssResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('draftMode') is not None:
+            self.draft_mode = m.get('draftMode')
+
         if m.get('editingVersion') is not None:
             self.editing_version = m.get('editingVersion')
 
@@ -149,6 +170,12 @@ class PrecheckSkillUploadViaOssResponseBodyData(DaraModel):
 
         if m.get('exists') is not None:
             self.exists = m.get('exists')
+
+        if m.get('headRevision') is not None:
+            self.head_revision = m.get('headRevision')
+
+        if m.get('headStatus') is not None:
+            self.head_status = m.get('headStatus')
 
         if m.get('maxPublishedVersion') is not None:
             self.max_published_version = m.get('maxPublishedVersion')

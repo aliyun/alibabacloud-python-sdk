@@ -1,3 +1,48 @@
+2026-09-21 Version: 2.1.0
+- Support API GetWorkspaceAgenticFsMountRamAuthorizeUrl.
+- Support API ListSkillReferences.
+- Support API VerifyWorkspaceAgenticFsMountRamAuthorization.
+- Update API CreateManagedAgent: add request parameters body.agenticFsMounts.
+- Update API CreateManagedAgent: add request parameters body.skills.$.sourceType.
+- Update API CreateManagedAgent: add request parameters body.skills.$.versionSelector.
+- Update API CreateManagedAgent: add response parameters Body.data.agenticFsMounts.
+- Update API CreateManagedAgent: add response parameters Body.data.configuredSkills.
+- Update API CreateManagedAgent: add response parameters Body.data.skills.$.appliedVersion.
+- Update API CreateManagedAgent: add response parameters Body.data.skills.$.fromTemplate.
+- Update API CreateManagedAgent: add response parameters Body.data.skills.$.resolvedVersion.
+- Update API CreateManagedAgent: add response parameters Body.data.skills.$.sourceType.
+- Update API CreateManagedAgent: add response parameters Body.data.skills.$.versionSelector.
+- Update API ForcePublishSkillVersion: add request parameters body.commitMsg.
+- Update API GetAgentSpecLatest: add response parameters Body.data.skills.$.sourceType.
+- Update API GetAgentSpecLatest: add response parameters Body.data.skills.$.versionSelector.
+- Update API GetManagedAgent: add response parameters Body.data.agenticFsMounts.
+- Update API GetManagedAgent: add response parameters Body.data.configuredSkills.
+- Update API GetManagedAgent: add response parameters Body.data.skills.$.appliedVersion.
+- Update API GetManagedAgent: add response parameters Body.data.skills.$.fromTemplate.
+- Update API GetManagedAgent: add response parameters Body.data.skills.$.resolvedVersion.
+- Update API GetManagedAgent: add response parameters Body.data.skills.$.sourceType.
+- Update API GetManagedAgent: add response parameters Body.data.skills.$.versionSelector.
+- Update API GetSkillDetail: add response parameters Body.data.draftMode.
+- Update API GetSkillDetail: add response parameters Body.data.versions.$.contentMd5.
+- Update API ListAgentSpecs: add response parameters Body.data.pageItems.$.skills.$.sourceType.
+- Update API ListAgentSpecs: add response parameters Body.data.pageItems.$.skills.$.versionSelector.
+- Update API ListSkills: add response parameters Body.data.pageItems.$.draftMode.
+- Update API PrecheckSkillUploadViaOss: add response parameters Body.data.$.draftMode.
+- Update API PrecheckSkillUploadViaOss: add response parameters Body.data.$.headRevision.
+- Update API PrecheckSkillUploadViaOss: add response parameters Body.data.$.headStatus.
+- Update API PublishSkillVersion: add request parameters body.commitMsg.
+- Update API UpdateManagedAgent: add request parameters body.agenticFsMounts.
+- Update API UpdateManagedAgent: add request parameters body.skills.$.sourceType.
+- Update API UpdateManagedAgent: add request parameters body.skills.$.versionSelector.
+- Update API UpdateManagedAgent: add response parameters Body.data.agenticFsMounts.
+- Update API UpdateManagedAgent: add response parameters Body.data.configuredSkills.
+- Update API UpdateManagedAgent: add response parameters Body.data.skills.$.appliedVersion.
+- Update API UpdateManagedAgent: add response parameters Body.data.skills.$.fromTemplate.
+- Update API UpdateManagedAgent: add response parameters Body.data.skills.$.resolvedVersion.
+- Update API UpdateManagedAgent: add response parameters Body.data.skills.$.sourceType.
+- Update API UpdateManagedAgent: add response parameters Body.data.skills.$.versionSelector.
+
+
 2026-09-20 Version: 2.0.3
 - Update API GetMcpMarketItem: add response parameters Body.data.i18n.
 - Update API InstallMcpMarketItem: add request parameters body.customTags.

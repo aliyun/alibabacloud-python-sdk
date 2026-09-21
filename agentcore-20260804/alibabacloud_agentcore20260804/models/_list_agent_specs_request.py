@@ -17,19 +17,19 @@ class ListAgentSpecsRequest(DaraModel):
         search: str = None,
         with_capabilities: bool = None,
     ):
-        # The AgentSpec name used as a search keyword. Use this parameter together with the search parameter.
+        # The AgentSpec name used as a search keyword. This parameter is used together with the search parameter.
         self.agent_spec_name = agent_spec_name
         # The business tag used for fuzzy filtering.
         self.biz_tag = biz_tag
-        # The field by which to sort results. Set this parameter to download_count to sort by download count. By default, results are sorted by update time.
+        # The field by which to sort the results. Set the value to download_count to sort by download count. By default, results are sorted by update time.
         self.order_by = order_by
-        # The owner used to filter results.
+        # The owner used to filter the results.
         self.owner = owner
         # The page number. Pages start from 1. Default value: 1.
         self.page_no = page_no
         # The number of entries per page. Default value: 10. Maximum value: 50.
         self.page_size = page_size
-        # The visibility scope used to filter results. Valid values:
+        # The visibility scope used to filter the results. Valid values:
         # 
         # - PUBLIC
         # - PRIVATE

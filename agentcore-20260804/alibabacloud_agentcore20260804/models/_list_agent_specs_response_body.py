@@ -133,7 +133,7 @@ class ListAgentSpecsResponseBodyDataPageItems(DaraModel):
         self.description = description
         # The download count.
         self.download_count = download_count
-        # The version currently being edited.
+        # The version that is currently being edited.
         self.editing_version = editing_version
         # Indicates whether the AgentSpec is enabled.
         self.enable = enable
@@ -147,7 +147,7 @@ class ListAgentSpecsResponseBodyDataPageItems(DaraModel):
         self.name = name
         # The number of online versions.
         self.online_cnt = online_cnt
-        # The version currently under review.
+        # The version that is currently under review.
         self.reviewing_version = reviewing_version
         # The visibility scope.
         self.scope = scope
@@ -275,12 +275,22 @@ class ListAgentSpecsResponseBodyDataPageItemsSkills(DaraModel):
     def __init__(
         self,
         name: str = None,
+        source_type: str = None,
+        version_selector: main_models.ListAgentSpecsResponseBodyDataPageItemsSkillsVersionSelector = None,
     ):
         # The name.
         self.name = name
+        # The Skill source type. Valid values:
+        # 
+        # - REFERENCE: references the AI Registry.
+        # - STATIC: statically bundled with the package.
+        self.source_type = source_type
+        # The referenced version selector. If omitted, the default value is LABEL/latest.
+        self.version_selector = version_selector
 
     def validate(self):
-        pass
+        if self.version_selector:
+            self.version_selector.validate()
 
     def to_map(self):
         result = dict()
@@ -290,12 +300,65 @@ class ListAgentSpecsResponseBodyDataPageItemsSkills(DaraModel):
         if self.name is not None:
             result['name'] = self.name
 
+        if self.source_type is not None:
+            result['sourceType'] = self.source_type
+
+        if self.version_selector is not None:
+            result['versionSelector'] = self.version_selector.to_map()
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('name') is not None:
             self.name = m.get('name')
+
+        if m.get('sourceType') is not None:
+            self.source_type = m.get('sourceType')
+
+        if m.get('versionSelector') is not None:
+            temp_model = main_models.ListAgentSpecsResponseBodyDataPageItemsSkillsVersionSelector()
+            self.version_selector = temp_model.from_map(m.get('versionSelector'))
+
+        return self
+
+class ListAgentSpecsResponseBodyDataPageItemsSkillsVersionSelector(DaraModel):
+    def __init__(
+        self,
+        type: str = None,
+        value: str = None,
+    ):
+        # The version selector type. Valid values:
+        # 
+        # - LABEL: selects by label.
+        # - VERSION: selects by specific version.
+        self.type = type
+        # The selector value. If the type is LABEL, this value is a label name such as latest. If the type is VERSION, this value is a specific version number.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.type is not None:
+            result['type'] = self.type
+
+        if self.value is not None:
+            result['value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('type') is not None:
+            self.type = m.get('type')
+
+        if m.get('value') is not None:
+            self.value = m.get('value')
 
         return self
 

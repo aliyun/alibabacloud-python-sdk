@@ -15,7 +15,7 @@ class UpdateManagedAgentRequest(DaraModel):
     ):
         # The request body.
         self.body = body
-        # The reserved idempotency token. The backend does not provide idempotency guarantees in the current version.
+        # The reserved idempotency token. The backend does not guarantee idempotency in the current release.
         self.client_token = client_token
 
     def validate(self):
@@ -49,6 +49,7 @@ class UpdateManagedAgentRequest(DaraModel):
 class UpdateManagedAgentRequestBody(DaraModel):
     def __init__(
         self,
+        agentic_fs_mounts: List[main_models.UpdateManagedAgentRequestBodyAgenticFsMounts] = None,
         description: str = None,
         environment: main_models.UpdateManagedAgentRequestBodyEnvironment = None,
         harness: main_models.UpdateManagedAgentRequestBodyHarness = None,
@@ -63,11 +64,13 @@ class UpdateManagedAgentRequestBody(DaraModel):
         template: main_models.UpdateManagedAgentRequestBodyTemplate = None,
         tools: List[main_models.UpdateManagedAgentRequestBodyTools] = None,
     ):
+        # The AgenticFS mount list. Omit to retain existing values, pass [] to clear, or pass a non-empty array for full replacement. null is rejected. Combined with OSS mounts, a maximum of 10 entries are allowed.
+        self.agentic_fs_mounts = agentic_fs_mounts
         # The description of the managed agent.
         self.description = description
         # The environment configuration.
         self.environment = environment
-        # The agent harness configuration.
+        # The agent runtime harness.
         self.harness = harness
         # The agent instruction that guides the behavior of the agent.
         self.instruction = instruction
@@ -77,20 +80,24 @@ class UpdateManagedAgentRequestBody(DaraModel):
         self.name = name
         # The network configuration.
         self.network = network
-        # The list of OSS mounts. A maximum of 10 entries are supported. Pass an empty array to clear existing mounts.
+        # The OSS mount list. A maximum of 10 entries are allowed. Pass an empty array to clear existing mounts.
         self.oss_mounts = oss_mounts
         # The runtime configuration.
         self.runtime = runtime
-        # The list of skill configurations.
+        # The skill configuration list.
         self.skills = skills
-        # The list of sub-agent configurations.
+        # The sub-agent configuration list.
         self.sub_agents = sub_agents
         # The agent template configuration.
         self.template = template
-        # The list of tool configurations.
+        # The tool configuration list.
         self.tools = tools
 
     def validate(self):
+        if self.agentic_fs_mounts:
+            for v1 in self.agentic_fs_mounts:
+                 if v1:
+                    v1.validate()
         if self.environment:
             self.environment.validate()
         if self.harness:
@@ -125,6 +132,11 @@ class UpdateManagedAgentRequestBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        result['agenticFsMounts'] = []
+        if self.agentic_fs_mounts is not None:
+            for k1 in self.agentic_fs_mounts:
+                result['agenticFsMounts'].append(k1.to_map() if k1 else None)
+
         if self.description is not None:
             result['description'] = self.description
 
@@ -176,6 +188,12 @@ class UpdateManagedAgentRequestBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.agentic_fs_mounts = []
+        if m.get('agenticFsMounts') is not None:
+            for k1 in m.get('agenticFsMounts'):
+                temp_model = main_models.UpdateManagedAgentRequestBodyAgenticFsMounts()
+                self.agentic_fs_mounts.append(temp_model.from_map(k1))
+
         if m.get('description') is not None:
             self.description = m.get('description')
 
@@ -281,7 +299,7 @@ class UpdateManagedAgentRequestBodyTemplate(DaraModel):
         self,
         ai_registry: main_models.UpdateManagedAgentRequestBodyTemplateAiRegistry = None,
     ):
-        # The AI registry template configuration.
+        # The AI Registry template configuration.
         self.ai_registry = ai_registry
 
     def validate(self):
@@ -312,13 +330,11 @@ class UpdateManagedAgentRequestBodyTemplateAiRegistry(DaraModel):
         name: str = None,
         version: str = None,
     ):
-        # The name of the template in the AI registry.
+        # The name of the template in AI Registry.
         # 
         # This parameter is required.
         self.name = name
-        # The version of the template in the AI registry.
-        # 
-        # This parameter is required.
+        # The version of the template in AI Registry.
         self.version = version
 
     def validate(self):
@@ -392,17 +408,26 @@ class UpdateManagedAgentRequestBodySkills(DaraModel):
     def __init__(
         self,
         name: str = None,
+        source_type: str = None,
         version: str = None,
+        version_selector: main_models.UpdateManagedAgentRequestBodySkillsVersionSelector = None,
     ):
         # The skill name.
         # 
         # This parameter is required.
         self.name = name
+        # The skill source type. Valid values:
+        # - REFERENCE: references AI Registry.
+        # - STATIC: statically bundled with the package.
+        self.source_type = source_type
         # The skill version.
         self.version = version
+        # The referenced version selector. Defaults to LABEL/latest if omitted. Currently supports LABEL/latest.
+        self.version_selector = version_selector
 
     def validate(self):
-        pass
+        if self.version_selector:
+            self.version_selector.validate()
 
     def to_map(self):
         result = dict()
@@ -412,8 +437,14 @@ class UpdateManagedAgentRequestBodySkills(DaraModel):
         if self.name is not None:
             result['name'] = self.name
 
+        if self.source_type is not None:
+            result['sourceType'] = self.source_type
+
         if self.version is not None:
             result['version'] = self.version
+
+        if self.version_selector is not None:
+            result['versionSelector'] = self.version_selector.to_map()
 
         return result
 
@@ -422,8 +453,54 @@ class UpdateManagedAgentRequestBodySkills(DaraModel):
         if m.get('name') is not None:
             self.name = m.get('name')
 
+        if m.get('sourceType') is not None:
+            self.source_type = m.get('sourceType')
+
         if m.get('version') is not None:
             self.version = m.get('version')
+
+        if m.get('versionSelector') is not None:
+            temp_model = main_models.UpdateManagedAgentRequestBodySkillsVersionSelector()
+            self.version_selector = temp_model.from_map(m.get('versionSelector'))
+
+        return self
+
+class UpdateManagedAgentRequestBodySkillsVersionSelector(DaraModel):
+    def __init__(
+        self,
+        type: str = None,
+        value: str = None,
+    ):
+        # The version selector type. Valid values:
+        # - LABEL: selects by label.
+        # - VERSION: selects by specific version.
+        self.type = type
+        # The selector value. If the type is LABEL, specify a label name such as latest. If the type is VERSION, specify a specific version number.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.type is not None:
+            result['type'] = self.type
+
+        if self.value is not None:
+            result['value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('type') is not None:
+            self.type = m.get('type')
+
+        if m.get('value') is not None:
+            self.value = m.get('value')
 
         return self
 
@@ -491,7 +568,7 @@ class UpdateManagedAgentRequestBodyRuntimeSessionPolicy(DaraModel):
         header_name: str = None,
         type: str = None,
     ):
-        # The name of the HTTP header used for session affinity. This parameter takes effect when sessionPolicy.type is set to ISOLATED_HEADER_FIELD.
+        # The HTTP header name used for session affinity. Takes effect when sessionPolicy.type is set to ISOLATED_HEADER_FIELD.
         self.header_name = header_name
         # The session policy type.
         # 
@@ -533,15 +610,15 @@ class UpdateManagedAgentRequestBodyRuntimeHpa(DaraModel):
         min_sandbox_count: int = None,
         session_ttl_seconds: int = None,
     ):
-        # Specifies whether to enable auto scaling. This parameter is required by backend validation when hpa is specified.
+        # Specifies whether to enable auto scaling. Required when hpa is present, as validated by the backend.
         self.enabled = enabled
-        # The maximum number of active sessions per sandbox. This parameter is required by backend validation when hpa is specified.
+        # The maximum number of active sessions per sandbox. Required when hpa is present, as validated by the backend.
         self.max_concurrent_sessions_per_sandbox = max_concurrent_sessions_per_sandbox
-        # The maximum number of sandboxes. This parameter is required when HPA is enabled and the value must be no less than the minimum value.
+        # The maximum number of sandboxes. Required when HPA is enabled and must be no less than the minimum value.
         self.max_sandbox_count = max_sandbox_count
-        # The minimum number of sandboxes. This parameter is required when HPA is enabled.
+        # The minimum number of sandboxes. Required when HPA is enabled.
         self.min_sandbox_count = min_sandbox_count
-        # The session reclamation time after inactivity, in seconds. This parameter is required by backend validation when hpa is specified.
+        # The time in seconds before an inactive session is reclaimed. Required when hpa is present, as validated by the backend.
         self.session_ttl_seconds = session_ttl_seconds
 
     def validate(self):
@@ -593,7 +670,7 @@ class UpdateManagedAgentRequestBodyRuntimeCompute(DaraModel):
         self,
         compute_class: str = None,
     ):
-        # The compute specification.
+        # The compute class.
         # 
         # This parameter is required.
         self.compute_class = compute_class
@@ -626,11 +703,11 @@ class UpdateManagedAgentRequestBodyOssMounts(DaraModel):
         path: str = None,
         read_only: bool = None,
     ):
-        # The OSS bucket name. This parameter is required by backend validation for each mount entry.
+        # The OSS bucket name. Required for each mount entry as validated by the backend.
         self.bucket_name = bucket_name
-        # The absolute mount path in the container. This parameter is required by backend validation for each mount entry.
+        # The absolute mount path in the container. Required for each mount entry as validated by the backend.
         self.mount_path = mount_path
-        # The relative object prefix within the bucket. If this parameter is not specified, the entire bucket is mounted.
+        # The relative object prefix within the bucket. If not specified, the entire bucket is mounted.
         self.path = path
         # Specifies whether to mount in read-only mode. Default value: false.
         self.read_only = read_only
@@ -784,7 +861,7 @@ class UpdateManagedAgentRequestBodyModel(DaraModel):
         self.model_connection_id = model_connection_id
         # The upstream model name.
         self.model_name = model_name
-        # The model token quota configuration. If this parameter is not specified, no quota is configured.
+        # The model token quota configuration. If not specified, no quota is configured.
         self.quota = quota
 
     def validate(self):
@@ -829,15 +906,15 @@ class UpdateManagedAgentRequestBodyModelQuota(DaraModel):
         period_type: str = None,
         usage_limit: int = None,
     ):
-        # Specifies whether to enable the token quota. Default value: true. If you set this parameter to false, the token quota is disabled and existing quota rules are deleted.
+        # Specifies whether to enable token quota. Default value: true. Set to false to disable and delete existing quota rules.
         self.enabled = enabled
-        # The quota limit type. This parameter is required by backend validation when the quota is enabled. Fixed value: token.
+        # The quota limit type. Required when quota is enabled, as validated by the backend. Fixed value: token.
         self.limit_type = limit_type
-        # The quota statistical period. This parameter is required by backend validation when the quota is enabled. Valid values:
+        # The quota statistical period. Required when quota is enabled, as validated by the backend. Valid values:
         # - day: daily.
         # - month: monthly.
         self.period_type = period_type
-        # The maximum number of tokens that can be consumed within a single period. This parameter is required by backend validation when the quota is enabled. The value must be greater than 0.
+        # The maximum number of tokens allowed within a single period. Required when quota is enabled, as validated by the backend. The value must be greater than 0.
         self.usage_limit = usage_limit
 
     def validate(self):
@@ -884,9 +961,9 @@ class UpdateManagedAgentRequestBodyHarness(DaraModel):
         configuration: main_models.UpdateManagedAgentRequestBodyHarnessConfiguration = None,
         type: str = None,
     ):
-        # The harness configuration.
+        # The runtime harness configuration.
         self.configuration = configuration
-        # The harness type.
+        # The runtime harness type.
         self.type = type
 
     def validate(self):
@@ -1076,6 +1153,61 @@ class UpdateManagedAgentRequestBodyEnvironmentCredentialReferences(DaraModel):
         m = m or dict()
         if m.get('credentialId') is not None:
             self.credential_id = m.get('credentialId')
+
+        return self
+
+class UpdateManagedAgentRequestBodyAgenticFsMounts(DaraModel):
+    def __init__(
+        self,
+        mount_path: str = None,
+        path: str = None,
+        read_only: bool = None,
+        server: str = None,
+    ):
+        # The subdirectory under /mnt/agenticfs/ in the container. Required for each mount entry as validated by the backend. Mount targets must not be duplicated or have parent-child overlaps.
+        self.mount_path = mount_path
+        # The non-empty relative directory that exists under the AccessPoint. Required for each mount entry as validated by the backend. Root directory, absolute paths, and parent directory segments are not allowed.
+        self.path = path
+        # Specifies whether to mount in read-only mode. Default value: false. This is not the RAM role read-only policy.
+        self.read_only = read_only
+        # The AccessPoint domain name. Required for each mount entry as validated by the backend. Do not include the protocol, port, or path. Use the DomainName from the NAS ListAccessPoints response.
+        self.server = server
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.mount_path is not None:
+            result['mountPath'] = self.mount_path
+
+        if self.path is not None:
+            result['path'] = self.path
+
+        if self.read_only is not None:
+            result['readOnly'] = self.read_only
+
+        if self.server is not None:
+            result['server'] = self.server
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('mountPath') is not None:
+            self.mount_path = m.get('mountPath')
+
+        if m.get('path') is not None:
+            self.path = m.get('path')
+
+        if m.get('readOnly') is not None:
+            self.read_only = m.get('readOnly')
+
+        if m.get('server') is not None:
+            self.server = m.get('server')
 
         return self
 

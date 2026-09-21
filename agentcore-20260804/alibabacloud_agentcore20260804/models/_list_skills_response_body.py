@@ -133,6 +133,7 @@ class ListSkillsResponseBodyDataPageItems(DaraModel):
         biz_tags: str = None,
         description: str = None,
         download_count: int = None,
+        draft_mode: str = None,
         editing_version: str = None,
         enable: bool = None,
         from_: str = None,
@@ -152,6 +153,7 @@ class ListSkillsResponseBodyDataPageItems(DaraModel):
         self.description = description
         # The total number of downloads.
         self.download_count = download_count
+        self.draft_mode = draft_mode
         # The version that is being edited.
         self.editing_version = editing_version
         # Indicates whether the Skill is enabled.
@@ -193,6 +195,9 @@ class ListSkillsResponseBodyDataPageItems(DaraModel):
 
         if self.download_count is not None:
             result['downloadCount'] = self.download_count
+
+        if self.draft_mode is not None:
+            result['draftMode'] = self.draft_mode
 
         if self.editing_version is not None:
             result['editingVersion'] = self.editing_version
@@ -242,6 +247,9 @@ class ListSkillsResponseBodyDataPageItems(DaraModel):
 
         if m.get('downloadCount') is not None:
             self.download_count = m.get('downloadCount')
+
+        if m.get('draftMode') is not None:
+            self.draft_mode = m.get('draftMode')
 
         if m.get('editingVersion') is not None:
             self.editing_version = m.get('editingVersion')

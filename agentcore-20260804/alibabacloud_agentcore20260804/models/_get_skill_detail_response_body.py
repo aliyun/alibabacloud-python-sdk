@@ -52,6 +52,7 @@ class GetSkillDetailResponseBodyData(DaraModel):
         biz_tags: str = None,
         description: str = None,
         download_count: int = None,
+        draft_mode: str = None,
         editing_version: str = None,
         enable: bool = None,
         from_: str = None,
@@ -66,13 +67,15 @@ class GetSkillDetailResponseBodyData(DaraModel):
         workspace_id: str = None,
         writeable: bool = None,
     ):
-        # The business tag JSON array string.
+        # The business label JSON array string.
         self.biz_tags = biz_tags
         # The description.
         self.description = description
         # The total number of downloads.
         self.download_count = download_count
-        # The version currently being edited.
+        # The draft pattern. HEAD indicates that the Skill has a persistent draft. VERSIONED indicates that each edit creates a draft with a version number. The server determines the pattern, and the invoker uses it for routing what to do next.
+        self.draft_mode = draft_mode
+        # The version being edited.
         self.editing_version = editing_version
         # Indicates whether the Skill is enabled.
         self.enable = enable
@@ -86,7 +89,7 @@ class GetSkillDetailResponseBodyData(DaraModel):
         self.online_cnt = online_cnt
         # The resource owner.
         self.owner = owner
-        # The version currently under review.
+        # The version under review.
         self.reviewing_version = reviewing_version
         # The visibility scope.
         self.scope = scope
@@ -118,6 +121,9 @@ class GetSkillDetailResponseBodyData(DaraModel):
 
         if self.download_count is not None:
             result['downloadCount'] = self.download_count
+
+        if self.draft_mode is not None:
+            result['draftMode'] = self.draft_mode
 
         if self.editing_version is not None:
             result['editingVersion'] = self.editing_version
@@ -173,6 +179,9 @@ class GetSkillDetailResponseBodyData(DaraModel):
         if m.get('downloadCount') is not None:
             self.download_count = m.get('downloadCount')
 
+        if m.get('draftMode') is not None:
+            self.draft_mode = m.get('draftMode')
+
         if m.get('editingVersion') is not None:
             self.editing_version = m.get('editingVersion')
 
@@ -222,6 +231,7 @@ class GetSkillDetailResponseBodyDataVersions(DaraModel):
         self,
         author: str = None,
         commit_msg: str = None,
+        content_md_5: str = None,
         create_time: int = None,
         description: str = None,
         download_count: int = None,
@@ -234,11 +244,13 @@ class GetSkillDetailResponseBodyDataVersions(DaraModel):
         self.author = author
         # The commit message.
         self.commit_msg = commit_msg
+        # The MD5 checksum of the Skill content package for this version, used to verify content consistency.
+        self.content_md_5 = content_md_5
         # The creation time. This value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The description.
         self.description = description
-        # The download count.
+        # The number of downloads.
         self.download_count = download_count
         # The publish pipeline information.
         self.publish_pipeline_info = publish_pipeline_info
@@ -262,6 +274,9 @@ class GetSkillDetailResponseBodyDataVersions(DaraModel):
 
         if self.commit_msg is not None:
             result['commitMsg'] = self.commit_msg
+
+        if self.content_md_5 is not None:
+            result['contentMd5'] = self.content_md_5
 
         if self.create_time is not None:
             result['createTime'] = self.create_time
@@ -293,6 +308,9 @@ class GetSkillDetailResponseBodyDataVersions(DaraModel):
 
         if m.get('commitMsg') is not None:
             self.commit_msg = m.get('commitMsg')
+
+        if m.get('contentMd5') is not None:
+            self.content_md_5 = m.get('contentMd5')
 
         if m.get('createTime') is not None:
             self.create_time = m.get('createTime')

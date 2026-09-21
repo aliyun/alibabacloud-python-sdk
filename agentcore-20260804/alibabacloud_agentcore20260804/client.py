@@ -5201,6 +5201,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_workspace_acr_ram_authorize_url_with_options_async(workspace_id, request, headers, runtime)
 
+    def get_workspace_agentic_fs_mount_ram_authorize_url_with_options(
+        self,
+        workspace_id: str,
+        request: main_models.GetWorkspaceAgenticFsMountRamAuthorizeUrlRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkspaceAgenticFsMountRamAuthorizeUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.access_point_id):
+            query['accessPointId'] = request.access_point_id
+        if not DaraCore.is_null(request.file_system_id):
+            query['fileSystemId'] = request.file_system_id
+        if not DaraCore.is_null(request.server):
+            query['server'] = request.server
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkspaceAgenticFsMountRamAuthorizeUrl',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/agentic-fs/authorize',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkspaceAgenticFsMountRamAuthorizeUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_workspace_agentic_fs_mount_ram_authorize_url_with_options_async(
+        self,
+        workspace_id: str,
+        request: main_models.GetWorkspaceAgenticFsMountRamAuthorizeUrlRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkspaceAgenticFsMountRamAuthorizeUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.access_point_id):
+            query['accessPointId'] = request.access_point_id
+        if not DaraCore.is_null(request.file_system_id):
+            query['fileSystemId'] = request.file_system_id
+        if not DaraCore.is_null(request.server):
+            query['server'] = request.server
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkspaceAgenticFsMountRamAuthorizeUrl',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/agentic-fs/authorize',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkspaceAgenticFsMountRamAuthorizeUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_workspace_agentic_fs_mount_ram_authorize_url(
+        self,
+        workspace_id: str,
+        request: main_models.GetWorkspaceAgenticFsMountRamAuthorizeUrlRequest,
+    ) -> main_models.GetWorkspaceAgenticFsMountRamAuthorizeUrlResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_workspace_agentic_fs_mount_ram_authorize_url_with_options(workspace_id, request, headers, runtime)
+
+    async def get_workspace_agentic_fs_mount_ram_authorize_url_async(
+        self,
+        workspace_id: str,
+        request: main_models.GetWorkspaceAgenticFsMountRamAuthorizeUrlRequest,
+    ) -> main_models.GetWorkspaceAgenticFsMountRamAuthorizeUrlResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_workspace_agentic_fs_mount_ram_authorize_url_with_options_async(workspace_id, request, headers, runtime)
+
     def get_workspace_plugin_with_options(
         self,
         workspace_id: str,
@@ -7220,6 +7308,102 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_service_endpoints_with_options_async(workspace_id, request, headers, runtime)
+
+    def list_skill_references_with_options(
+        self,
+        workspace_id: str,
+        skill_name: str,
+        request: main_models.ListSkillReferencesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSkillReferencesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_no):
+            query['pageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.selector_type):
+            query['selectorType'] = request.selector_type
+        if not DaraCore.is_null(request.selector_value):
+            query['selectorValue'] = request.selector_value
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSkillReferences',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/skills/{DaraURL.percent_encode(skill_name)}/references',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSkillReferencesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_skill_references_with_options_async(
+        self,
+        workspace_id: str,
+        skill_name: str,
+        request: main_models.ListSkillReferencesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSkillReferencesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_no):
+            query['pageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.selector_type):
+            query['selectorType'] = request.selector_type
+        if not DaraCore.is_null(request.selector_value):
+            query['selectorValue'] = request.selector_value
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSkillReferences',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/skills/{DaraURL.percent_encode(skill_name)}/references',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSkillReferencesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_skill_references(
+        self,
+        workspace_id: str,
+        skill_name: str,
+        request: main_models.ListSkillReferencesRequest,
+    ) -> main_models.ListSkillReferencesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_skill_references_with_options(workspace_id, skill_name, request, headers, runtime)
+
+    async def list_skill_references_async(
+        self,
+        workspace_id: str,
+        skill_name: str,
+        request: main_models.ListSkillReferencesRequest,
+    ) -> main_models.ListSkillReferencesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_skill_references_with_options_async(workspace_id, skill_name, request, headers, runtime)
 
     def list_skills_with_options(
         self,
@@ -10456,6 +10640,86 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.verify_workspace_acr_ram_authorization_with_options_async(workspace_id, request, headers, runtime)
+
+    def verify_workspace_agentic_fs_mount_ram_authorization_with_options(
+        self,
+        workspace_id: str,
+        request: main_models.VerifyWorkspaceAgenticFsMountRamAuthorizationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.VerifyWorkspaceAgenticFsMountRamAuthorizationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.server):
+            query['server'] = request.server
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'VerifyWorkspaceAgenticFsMountRamAuthorization',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/agentic-fs/authorize/verify',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.VerifyWorkspaceAgenticFsMountRamAuthorizationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def verify_workspace_agentic_fs_mount_ram_authorization_with_options_async(
+        self,
+        workspace_id: str,
+        request: main_models.VerifyWorkspaceAgenticFsMountRamAuthorizationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.VerifyWorkspaceAgenticFsMountRamAuthorizationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.server):
+            query['server'] = request.server
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'VerifyWorkspaceAgenticFsMountRamAuthorization',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/agentic-fs/authorize/verify',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.VerifyWorkspaceAgenticFsMountRamAuthorizationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def verify_workspace_agentic_fs_mount_ram_authorization(
+        self,
+        workspace_id: str,
+        request: main_models.VerifyWorkspaceAgenticFsMountRamAuthorizationRequest,
+    ) -> main_models.VerifyWorkspaceAgenticFsMountRamAuthorizationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.verify_workspace_agentic_fs_mount_ram_authorization_with_options(workspace_id, request, headers, runtime)
+
+    async def verify_workspace_agentic_fs_mount_ram_authorization_async(
+        self,
+        workspace_id: str,
+        request: main_models.VerifyWorkspaceAgenticFsMountRamAuthorizationRequest,
+    ) -> main_models.VerifyWorkspaceAgenticFsMountRamAuthorizationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.verify_workspace_agentic_fs_mount_ram_authorization_with_options_async(workspace_id, request, headers, runtime)
 
     def verify_workspace_oss_mount_ram_authorization_with_options(
         self,

@@ -59,7 +59,7 @@ class GetSkillVersionDetailResponseBodyData(DaraModel):
         self.description = description
         # The name.
         self.name = name
-        # The resource mapping (key is the resource name).
+        # The resource mapping in which the key is the resource name.
         self.resource = resource
         # The Skill card content (SKILL.md).
         self.skill_md = skill_md

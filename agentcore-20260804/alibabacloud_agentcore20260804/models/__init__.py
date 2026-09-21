@@ -210,6 +210,9 @@ from ._get_workspace_response import GetWorkspaceResponse
 from ._get_workspace_acr_ram_authorize_url_request import GetWorkspaceAcrRamAuthorizeUrlRequest
 from ._get_workspace_acr_ram_authorize_url_response_body import GetWorkspaceAcrRamAuthorizeUrlResponseBody
 from ._get_workspace_acr_ram_authorize_url_response import GetWorkspaceAcrRamAuthorizeUrlResponse
+from ._get_workspace_agentic_fs_mount_ram_authorize_url_request import GetWorkspaceAgenticFsMountRamAuthorizeUrlRequest
+from ._get_workspace_agentic_fs_mount_ram_authorize_url_response_body import GetWorkspaceAgenticFsMountRamAuthorizeUrlResponseBody
+from ._get_workspace_agentic_fs_mount_ram_authorize_url_response import GetWorkspaceAgenticFsMountRamAuthorizeUrlResponse
 from ._get_workspace_plugin_request import GetWorkspacePluginRequest
 from ._get_workspace_plugin_response_body import GetWorkspacePluginResponseBody
 from ._get_workspace_plugin_response import GetWorkspacePluginResponse
@@ -279,6 +282,9 @@ from ._list_sandboxes_response import ListSandboxesResponse
 from ._list_service_endpoints_request import ListServiceEndpointsRequest
 from ._list_service_endpoints_response_body import ListServiceEndpointsResponseBody
 from ._list_service_endpoints_response import ListServiceEndpointsResponse
+from ._list_skill_references_request import ListSkillReferencesRequest
+from ._list_skill_references_response_body import ListSkillReferencesResponseBody
+from ._list_skill_references_response import ListSkillReferencesResponse
 from ._list_skills_request import ListSkillsRequest
 from ._list_skills_response_body import ListSkillsResponseBody
 from ._list_skills_response import ListSkillsResponse
@@ -410,6 +416,9 @@ from ._verify_connector_response import VerifyConnectorResponse
 from ._verify_workspace_acr_ram_authorization_request import VerifyWorkspaceAcrRamAuthorizationRequest
 from ._verify_workspace_acr_ram_authorization_response_body import VerifyWorkspaceAcrRamAuthorizationResponseBody
 from ._verify_workspace_acr_ram_authorization_response import VerifyWorkspaceAcrRamAuthorizationResponse
+from ._verify_workspace_agentic_fs_mount_ram_authorization_request import VerifyWorkspaceAgenticFsMountRamAuthorizationRequest
+from ._verify_workspace_agentic_fs_mount_ram_authorization_response_body import VerifyWorkspaceAgenticFsMountRamAuthorizationResponseBody
+from ._verify_workspace_agentic_fs_mount_ram_authorization_response import VerifyWorkspaceAgenticFsMountRamAuthorizationResponse
 from ._verify_workspace_oss_mount_ram_authorization_request import VerifyWorkspaceOssMountRamAuthorizationRequest
 from ._verify_workspace_oss_mount_ram_authorization_response_body import VerifyWorkspaceOssMountRamAuthorizationResponseBody
 from ._verify_workspace_oss_mount_ram_authorization_response import VerifyWorkspaceOssMountRamAuthorizationResponse
@@ -469,6 +478,7 @@ from ._create_external_agent_bootstrap_token_response_body import CreateExternal
 from ._create_identity_provider_request import CreateIdentityProviderRequestBodyMetadata
 from ._create_identity_provider_request import CreateIdentityProviderRequestBody
 from ._create_identity_provider_response_body import CreateIdentityProviderResponseBodyData
+from ._create_managed_agent_request import CreateManagedAgentRequestBodyAgenticFsMounts
 from ._create_managed_agent_request import CreateManagedAgentRequestBodyEnvironmentCredentialReferences
 from ._create_managed_agent_request import CreateManagedAgentRequestBodyEnvironmentVariables
 from ._create_managed_agent_request import CreateManagedAgentRequestBodyEnvironment
@@ -484,12 +494,16 @@ from ._create_managed_agent_request import CreateManagedAgentRequestBodyRuntimeC
 from ._create_managed_agent_request import CreateManagedAgentRequestBodyRuntimeHpa
 from ._create_managed_agent_request import CreateManagedAgentRequestBodyRuntimeSessionPolicy
 from ._create_managed_agent_request import CreateManagedAgentRequestBodyRuntime
+from ._create_managed_agent_request import CreateManagedAgentRequestBodySkillsVersionSelector
 from ._create_managed_agent_request import CreateManagedAgentRequestBodySkills
 from ._create_managed_agent_request import CreateManagedAgentRequestBodySubAgents
 from ._create_managed_agent_request import CreateManagedAgentRequestBodyTemplateAiRegistry
 from ._create_managed_agent_request import CreateManagedAgentRequestBodyTemplate
 from ._create_managed_agent_request import CreateManagedAgentRequestBodyTools
 from ._create_managed_agent_request import CreateManagedAgentRequestBody
+from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataAgenticFsMounts
+from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataConfiguredSkillsVersionSelector
+from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataConfiguredSkills
 from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataEnvironmentCredentialReferences
 from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataEnvironmentVariables
 from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataEnvironment
@@ -505,6 +519,7 @@ from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyD
 from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataRuntimeHpa
 from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataRuntimeSessionPolicy
 from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataRuntime
+from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataSkillsVersionSelector
 from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataSkills
 from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataSubAgents
 from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataTemplateAiRegistry
@@ -601,6 +616,7 @@ from ._get_agent_spec_response_body import GetAgentSpecResponseBodyDataVersions
 from ._get_agent_spec_response_body import GetAgentSpecResponseBodyData
 from ._get_agent_spec_import_file_url_response_body import GetAgentSpecImportFileUrlResponseBodyData
 from ._get_agent_spec_latest_response_body import GetAgentSpecLatestResponseBodyDataMcpServers
+from ._get_agent_spec_latest_response_body import GetAgentSpecLatestResponseBodyDataSkillsVersionSelector
 from ._get_agent_spec_latest_response_body import GetAgentSpecLatestResponseBodyDataSkills
 from ._get_agent_spec_latest_response_body import GetAgentSpecLatestResponseBodyData
 from ._get_agent_spec_version_response_body import GetAgentSpecVersionResponseBodyData
@@ -619,6 +635,9 @@ from ._get_external_agent_bootstrap_options_response_body import GetExternalAgen
 from ._get_external_agent_bootstrap_options_response_body import GetExternalAgentBootstrapOptionsResponseBodyData
 from ._get_identity_provider_response_body import GetIdentityProviderResponseBodyDataMetadata
 from ._get_identity_provider_response_body import GetIdentityProviderResponseBodyData
+from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataAgenticFsMounts
+from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataConfiguredSkillsVersionSelector
+from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataConfiguredSkills
 from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataEnvironmentCredentialReferences
 from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataEnvironmentVariables
 from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataEnvironment
@@ -634,6 +653,7 @@ from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataRun
 from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataRuntimeHpa
 from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataRuntimeSessionPolicy
 from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataRuntime
+from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataSkillsVersionSelector
 from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataSkills
 from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataSubAgents
 from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataTemplateAiRegistry
@@ -685,6 +705,7 @@ from ._get_workspace_response_body import GetWorkspaceResponseBodyDataNetworkCon
 from ._get_workspace_response_body import GetWorkspaceResponseBodyDataNetworkConfiguration
 from ._get_workspace_response_body import GetWorkspaceResponseBodyData
 from ._get_workspace_acr_ram_authorize_url_response_body import GetWorkspaceAcrRamAuthorizeUrlResponseBodyData
+from ._get_workspace_agentic_fs_mount_ram_authorize_url_response_body import GetWorkspaceAgenticFsMountRamAuthorizeUrlResponseBodyData
 from ._get_workspace_plugin_response_body import GetWorkspacePluginResponseBodyDataConfigAgentLoop
 from ._get_workspace_plugin_response_body import GetWorkspacePluginResponseBodyDataConfigNetworkInternet
 from ._get_workspace_plugin_response_body import GetWorkspacePluginResponseBodyDataConfigNetworkVpc
@@ -742,6 +763,7 @@ from ._list_agent_imchannels_response_body import ListAgentIMChannelsResponseBod
 from ._list_agent_imchannels_response_body import ListAgentIMChannelsResponseBodyItemsCredentialSummary
 from ._list_agent_imchannels_response_body import ListAgentIMChannelsResponseBodyItems
 from ._list_agent_specs_response_body import ListAgentSpecsResponseBodyDataPageItemsMcpServers
+from ._list_agent_specs_response_body import ListAgentSpecsResponseBodyDataPageItemsSkillsVersionSelector
 from ._list_agent_specs_response_body import ListAgentSpecsResponseBodyDataPageItemsSkills
 from ._list_agent_specs_response_body import ListAgentSpecsResponseBodyDataPageItems
 from ._list_agent_specs_response_body import ListAgentSpecsResponseBodyData
@@ -795,6 +817,8 @@ from ._list_service_endpoints_response_body import ListServiceEndpointsResponseB
 from ._list_service_endpoints_response_body import ListServiceEndpointsResponseBodyItemsAuthentication
 from ._list_service_endpoints_response_body import ListServiceEndpointsResponseBodyItemsTarget
 from ._list_service_endpoints_response_body import ListServiceEndpointsResponseBodyItems
+from ._list_skill_references_response_body import ListSkillReferencesResponseBodyDataPageItems
+from ._list_skill_references_response_body import ListSkillReferencesResponseBodyData
 from ._list_skills_response_body import ListSkillsResponseBodyDataPageItems
 from ._list_skills_response_body import ListSkillsResponseBodyData
 from ._list_teams_response_body import ListTeamsResponseBodyItemsAgents
@@ -846,6 +870,7 @@ from ._update_external_agent_response_body import UpdateExternalAgentResponseBod
 from ._update_identity_provider_request import UpdateIdentityProviderRequestBodyMetadata
 from ._update_identity_provider_request import UpdateIdentityProviderRequestBody
 from ._update_identity_provider_response_body import UpdateIdentityProviderResponseBodyData
+from ._update_managed_agent_request import UpdateManagedAgentRequestBodyAgenticFsMounts
 from ._update_managed_agent_request import UpdateManagedAgentRequestBodyEnvironmentCredentialReferences
 from ._update_managed_agent_request import UpdateManagedAgentRequestBodyEnvironmentVariables
 from ._update_managed_agent_request import UpdateManagedAgentRequestBodyEnvironment
@@ -861,12 +886,16 @@ from ._update_managed_agent_request import UpdateManagedAgentRequestBodyRuntimeC
 from ._update_managed_agent_request import UpdateManagedAgentRequestBodyRuntimeHpa
 from ._update_managed_agent_request import UpdateManagedAgentRequestBodyRuntimeSessionPolicy
 from ._update_managed_agent_request import UpdateManagedAgentRequestBodyRuntime
+from ._update_managed_agent_request import UpdateManagedAgentRequestBodySkillsVersionSelector
 from ._update_managed_agent_request import UpdateManagedAgentRequestBodySkills
 from ._update_managed_agent_request import UpdateManagedAgentRequestBodySubAgents
 from ._update_managed_agent_request import UpdateManagedAgentRequestBodyTemplateAiRegistry
 from ._update_managed_agent_request import UpdateManagedAgentRequestBodyTemplate
 from ._update_managed_agent_request import UpdateManagedAgentRequestBodyTools
 from ._update_managed_agent_request import UpdateManagedAgentRequestBody
+from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataAgenticFsMounts
+from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataConfiguredSkillsVersionSelector
+from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataConfiguredSkills
 from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataEnvironmentCredentialReferences
 from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataEnvironmentVariables
 from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataEnvironment
@@ -882,6 +911,7 @@ from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyD
 from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataRuntimeHpa
 from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataRuntimeSessionPolicy
 from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataRuntime
+from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataSkillsVersionSelector
 from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataSkills
 from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataSubAgents
 from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataTemplateAiRegistry
@@ -979,6 +1009,7 @@ from ._upload_skill_via_oss_request import UploadSkillViaOssRequestBody
 from ._verify_connector_request import VerifyConnectorRequestBody
 from ._verify_connector_response_body import VerifyConnectorResponseBodyData
 from ._verify_workspace_acr_ram_authorization_response_body import VerifyWorkspaceAcrRamAuthorizationResponseBodyData
+from ._verify_workspace_agentic_fs_mount_ram_authorization_response_body import VerifyWorkspaceAgenticFsMountRamAuthorizationResponseBodyData
 from ._verify_workspace_oss_mount_ram_authorization_response_body import VerifyWorkspaceOssMountRamAuthorizationResponseBodyData
 
 __all__ = [
@@ -1190,6 +1221,9 @@ __all__ = [
     GetWorkspaceAcrRamAuthorizeUrlRequest,
     GetWorkspaceAcrRamAuthorizeUrlResponseBody,
     GetWorkspaceAcrRamAuthorizeUrlResponse,
+    GetWorkspaceAgenticFsMountRamAuthorizeUrlRequest,
+    GetWorkspaceAgenticFsMountRamAuthorizeUrlResponseBody,
+    GetWorkspaceAgenticFsMountRamAuthorizeUrlResponse,
     GetWorkspacePluginRequest,
     GetWorkspacePluginResponseBody,
     GetWorkspacePluginResponse,
@@ -1259,6 +1293,9 @@ __all__ = [
     ListServiceEndpointsRequest,
     ListServiceEndpointsResponseBody,
     ListServiceEndpointsResponse,
+    ListSkillReferencesRequest,
+    ListSkillReferencesResponseBody,
+    ListSkillReferencesResponse,
     ListSkillsRequest,
     ListSkillsResponseBody,
     ListSkillsResponse,
@@ -1390,6 +1427,9 @@ __all__ = [
     VerifyWorkspaceAcrRamAuthorizationRequest,
     VerifyWorkspaceAcrRamAuthorizationResponseBody,
     VerifyWorkspaceAcrRamAuthorizationResponse,
+    VerifyWorkspaceAgenticFsMountRamAuthorizationRequest,
+    VerifyWorkspaceAgenticFsMountRamAuthorizationResponseBody,
+    VerifyWorkspaceAgenticFsMountRamAuthorizationResponse,
     VerifyWorkspaceOssMountRamAuthorizationRequest,
     VerifyWorkspaceOssMountRamAuthorizationResponseBody,
     VerifyWorkspaceOssMountRamAuthorizationResponse,
@@ -1449,6 +1489,7 @@ __all__ = [
     CreateIdentityProviderRequestBodyMetadata,
     CreateIdentityProviderRequestBody,
     CreateIdentityProviderResponseBodyData,
+    CreateManagedAgentRequestBodyAgenticFsMounts,
     CreateManagedAgentRequestBodyEnvironmentCredentialReferences,
     CreateManagedAgentRequestBodyEnvironmentVariables,
     CreateManagedAgentRequestBodyEnvironment,
@@ -1464,12 +1505,16 @@ __all__ = [
     CreateManagedAgentRequestBodyRuntimeHpa,
     CreateManagedAgentRequestBodyRuntimeSessionPolicy,
     CreateManagedAgentRequestBodyRuntime,
+    CreateManagedAgentRequestBodySkillsVersionSelector,
     CreateManagedAgentRequestBodySkills,
     CreateManagedAgentRequestBodySubAgents,
     CreateManagedAgentRequestBodyTemplateAiRegistry,
     CreateManagedAgentRequestBodyTemplate,
     CreateManagedAgentRequestBodyTools,
     CreateManagedAgentRequestBody,
+    CreateManagedAgentResponseBodyDataAgenticFsMounts,
+    CreateManagedAgentResponseBodyDataConfiguredSkillsVersionSelector,
+    CreateManagedAgentResponseBodyDataConfiguredSkills,
     CreateManagedAgentResponseBodyDataEnvironmentCredentialReferences,
     CreateManagedAgentResponseBodyDataEnvironmentVariables,
     CreateManagedAgentResponseBodyDataEnvironment,
@@ -1485,6 +1530,7 @@ __all__ = [
     CreateManagedAgentResponseBodyDataRuntimeHpa,
     CreateManagedAgentResponseBodyDataRuntimeSessionPolicy,
     CreateManagedAgentResponseBodyDataRuntime,
+    CreateManagedAgentResponseBodyDataSkillsVersionSelector,
     CreateManagedAgentResponseBodyDataSkills,
     CreateManagedAgentResponseBodyDataSubAgents,
     CreateManagedAgentResponseBodyDataTemplateAiRegistry,
@@ -1581,6 +1627,7 @@ __all__ = [
     GetAgentSpecResponseBodyData,
     GetAgentSpecImportFileUrlResponseBodyData,
     GetAgentSpecLatestResponseBodyDataMcpServers,
+    GetAgentSpecLatestResponseBodyDataSkillsVersionSelector,
     GetAgentSpecLatestResponseBodyDataSkills,
     GetAgentSpecLatestResponseBodyData,
     GetAgentSpecVersionResponseBodyData,
@@ -1599,6 +1646,9 @@ __all__ = [
     GetExternalAgentBootstrapOptionsResponseBodyData,
     GetIdentityProviderResponseBodyDataMetadata,
     GetIdentityProviderResponseBodyData,
+    GetManagedAgentResponseBodyDataAgenticFsMounts,
+    GetManagedAgentResponseBodyDataConfiguredSkillsVersionSelector,
+    GetManagedAgentResponseBodyDataConfiguredSkills,
     GetManagedAgentResponseBodyDataEnvironmentCredentialReferences,
     GetManagedAgentResponseBodyDataEnvironmentVariables,
     GetManagedAgentResponseBodyDataEnvironment,
@@ -1614,6 +1664,7 @@ __all__ = [
     GetManagedAgentResponseBodyDataRuntimeHpa,
     GetManagedAgentResponseBodyDataRuntimeSessionPolicy,
     GetManagedAgentResponseBodyDataRuntime,
+    GetManagedAgentResponseBodyDataSkillsVersionSelector,
     GetManagedAgentResponseBodyDataSkills,
     GetManagedAgentResponseBodyDataSubAgents,
     GetManagedAgentResponseBodyDataTemplateAiRegistry,
@@ -1665,6 +1716,7 @@ __all__ = [
     GetWorkspaceResponseBodyDataNetworkConfiguration,
     GetWorkspaceResponseBodyData,
     GetWorkspaceAcrRamAuthorizeUrlResponseBodyData,
+    GetWorkspaceAgenticFsMountRamAuthorizeUrlResponseBodyData,
     GetWorkspacePluginResponseBodyDataConfigAgentLoop,
     GetWorkspacePluginResponseBodyDataConfigNetworkInternet,
     GetWorkspacePluginResponseBodyDataConfigNetworkVpc,
@@ -1722,6 +1774,7 @@ __all__ = [
     ListAgentIMChannelsResponseBodyItemsCredentialSummary,
     ListAgentIMChannelsResponseBodyItems,
     ListAgentSpecsResponseBodyDataPageItemsMcpServers,
+    ListAgentSpecsResponseBodyDataPageItemsSkillsVersionSelector,
     ListAgentSpecsResponseBodyDataPageItemsSkills,
     ListAgentSpecsResponseBodyDataPageItems,
     ListAgentSpecsResponseBodyData,
@@ -1775,6 +1828,8 @@ __all__ = [
     ListServiceEndpointsResponseBodyItemsAuthentication,
     ListServiceEndpointsResponseBodyItemsTarget,
     ListServiceEndpointsResponseBodyItems,
+    ListSkillReferencesResponseBodyDataPageItems,
+    ListSkillReferencesResponseBodyData,
     ListSkillsResponseBodyDataPageItems,
     ListSkillsResponseBodyData,
     ListTeamsResponseBodyItemsAgents,
@@ -1826,6 +1881,7 @@ __all__ = [
     UpdateIdentityProviderRequestBodyMetadata,
     UpdateIdentityProviderRequestBody,
     UpdateIdentityProviderResponseBodyData,
+    UpdateManagedAgentRequestBodyAgenticFsMounts,
     UpdateManagedAgentRequestBodyEnvironmentCredentialReferences,
     UpdateManagedAgentRequestBodyEnvironmentVariables,
     UpdateManagedAgentRequestBodyEnvironment,
@@ -1841,12 +1897,16 @@ __all__ = [
     UpdateManagedAgentRequestBodyRuntimeHpa,
     UpdateManagedAgentRequestBodyRuntimeSessionPolicy,
     UpdateManagedAgentRequestBodyRuntime,
+    UpdateManagedAgentRequestBodySkillsVersionSelector,
     UpdateManagedAgentRequestBodySkills,
     UpdateManagedAgentRequestBodySubAgents,
     UpdateManagedAgentRequestBodyTemplateAiRegistry,
     UpdateManagedAgentRequestBodyTemplate,
     UpdateManagedAgentRequestBodyTools,
     UpdateManagedAgentRequestBody,
+    UpdateManagedAgentResponseBodyDataAgenticFsMounts,
+    UpdateManagedAgentResponseBodyDataConfiguredSkillsVersionSelector,
+    UpdateManagedAgentResponseBodyDataConfiguredSkills,
     UpdateManagedAgentResponseBodyDataEnvironmentCredentialReferences,
     UpdateManagedAgentResponseBodyDataEnvironmentVariables,
     UpdateManagedAgentResponseBodyDataEnvironment,
@@ -1862,6 +1922,7 @@ __all__ = [
     UpdateManagedAgentResponseBodyDataRuntimeHpa,
     UpdateManagedAgentResponseBodyDataRuntimeSessionPolicy,
     UpdateManagedAgentResponseBodyDataRuntime,
+    UpdateManagedAgentResponseBodyDataSkillsVersionSelector,
     UpdateManagedAgentResponseBodyDataSkills,
     UpdateManagedAgentResponseBodyDataSubAgents,
     UpdateManagedAgentResponseBodyDataTemplateAiRegistry,
@@ -1959,5 +2020,6 @@ __all__ = [
     VerifyConnectorRequestBody,
     VerifyConnectorResponseBodyData,
     VerifyWorkspaceAcrRamAuthorizationResponseBodyData,
+    VerifyWorkspaceAgenticFsMountRamAuthorizationResponseBodyData,
     VerifyWorkspaceOssMountRamAuthorizationResponseBodyData
 ]
