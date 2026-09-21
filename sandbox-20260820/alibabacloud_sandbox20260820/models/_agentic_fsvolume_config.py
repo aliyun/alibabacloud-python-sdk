@@ -14,11 +14,17 @@ class AgenticFSVolumeConfig(DaraModel):
         server_addr: str = None,
         user_id: int = None,
     ):
+        # The access point ID.
         self.access_point_id = access_point_id
+        # The workspace ID.
         self.agentic_space_id = agentic_space_id
+        # The file system ID.
         self.file_system_id = file_system_id
+        # The group ID for local mounting.
         self.group_id = group_id
+        # The AgenticFS access point address.
         self.server_addr = server_addr
+        # The user ID for local mounting.
         self.user_id = user_id
 
     def validate(self):

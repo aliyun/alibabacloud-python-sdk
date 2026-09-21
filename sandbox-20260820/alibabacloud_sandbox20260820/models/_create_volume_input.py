@@ -18,12 +18,19 @@ class CreateVolumeInput(DaraModel):
         team_id: str = None,
         volume_name: str = None,
     ):
+        # The AgenticBucket Volume configuration.
         self.agentic_bucket_volume_config = agentic_bucket_volume_config
+        # The AgenticFS Volume configuration.
         self.agentic_fsvolume_config = agentic_fsvolume_config
+        # The JuiceFS Volume configuration.
         self.juice_fsvolume_config = juice_fsvolume_config
+        # The mount configuration.
         self.mount_config = mount_config
+        # The OSS Volume configuration.
         self.oss_volume_config = oss_volume_config
+        # The unique identifier of the team.
         self.team_id = team_id
+        # The name, which must be unique within the team.
         self.volume_name = volume_name
 
     def validate(self):
@@ -102,7 +109,9 @@ class CreateVolumeInputMountConfig(DaraModel):
         role: str = None,
         vpc_config: main_models.CreateVolumeInputMountConfigVpcConfig = None,
     ):
+        # The permission role.
         self.role = role
+        # The VPC configuration.
         self.vpc_config = vpc_config
 
     def validate(self):
@@ -140,8 +149,11 @@ class CreateVolumeInputMountConfigVpcConfig(DaraModel):
         v_switch_ids: List[str] = None,
         vpc_id: str = None,
     ):
+        # The security group ID.
         self.security_group_id = security_group_id
+        # The vSwitch IDs.
         self.v_switch_ids = v_switch_ids
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -183,8 +195,11 @@ class CreateVolumeInputAgenticFSVolumeConfig(DaraModel):
         server_addr: str = None,
         user_id: int = None,
     ):
+        # The groupID of the local directory.
         self.group_id = group_id
+        # The Access Point endpoint address.
         self.server_addr = server_addr
+        # The userID of the local directory.
         self.user_id = user_id
 
     def validate(self):

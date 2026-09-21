@@ -11,8 +11,11 @@ class CertConfig(DaraModel):
         certificate: str = None,
         private_key: str = None,
     ):
+        # The certificate name, which is used to identify the certificate in the console.
         self.cert_name = cert_name
+        # The certificate public key content in PEM format, including the complete certificate chain.
         self.certificate = certificate
+        # The certificate private key content in PEM format. The private key is encrypted and stored on the server side, and is not returned in plaintext when queried.
         self.private_key = private_key
 
     def validate(self):

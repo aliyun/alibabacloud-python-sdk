@@ -13,7 +13,9 @@ class InnerSandboxRuntimeConfig(DaraModel):
         role: str = None,
         vpc_config: main_models.InnerSandboxRuntimeConfigVpcConfig = None,
     ):
+        # The RAM role that grants the required permissions to the sandbox.
         self.role = role
+        # The VPC configuration.
         self.vpc_config = vpc_config
 
     def validate(self):
@@ -51,8 +53,11 @@ class InnerSandboxRuntimeConfigVpcConfig(DaraModel):
         v_switch_ids: List[str] = None,
         vpc_id: str = None,
     ):
+        # The security group ID.
         self.security_group_id = security_group_id
+        # The vSwitch IDs.
         self.v_switch_ids = v_switch_ids
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):

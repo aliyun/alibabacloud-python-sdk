@@ -7,27 +7,26 @@ from typing import List
 from alibabacloud_sandbox20260820 import models as main_models
 from darabonba.model import DaraModel
 
-class CreateApiKeyInput(DaraModel):
+class ResetApiKeyResponseBody(DaraModel):
     def __init__(
         self,
-        api_key_name: str = None,
-        expire_time: str = None,
+        api_key: main_models.ApiKey = None,
+        code: str = None,
         ip_blacklist: List[main_models.IPConfig] = None,
         ip_whitelist: List[main_models.IPConfig] = None,
-        team_id: str = None,
+        message: str = None,
+        request_id: str = None,
     ):
-        # The name of the API key. The name can be up to 128 characters in length and can contain letters, digits, spaces, hyphens (-), underscores (_), and periods (.).
-        self.api_key_name = api_key_name
-        # The expiration time of the API key. The time is in UTC and in the RFC 3339 format. If you leave this parameter empty, the API key never expires.
-        self.expire_time = expire_time
-        # The IP blacklist. After you configure this parameter, IP addresses in the list cannot use the API key. This parameter is mutually exclusive with ipWhitelist.
+        self.api_key = api_key
+        self.code = code
         self.ip_blacklist = ip_blacklist
-        # The IP address whitelist. After you configure this parameter, only IP addresses in the list can use the API key. This parameter is mutually exclusive with ipBlacklist.
         self.ip_whitelist = ip_whitelist
-        # The ID of the team to which the API key belongs. The value is in UUID format. If you do not specify this parameter, the default team of the current account is used.
-        self.team_id = team_id
+        self.message = message
+        self.request_id = request_id
 
     def validate(self):
+        if self.api_key:
+            self.api_key.validate()
         if self.ip_blacklist:
             for v1 in self.ip_blacklist:
                  if v1:
@@ -42,11 +41,11 @@ class CreateApiKeyInput(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.api_key_name is not None:
-            result['apiKeyName'] = self.api_key_name
+        if self.api_key is not None:
+            result['apiKey'] = self.api_key.to_map()
 
-        if self.expire_time is not None:
-            result['expireTime'] = self.expire_time
+        if self.code is not None:
+            result['code'] = self.code
 
         result['ipBlacklist'] = []
         if self.ip_blacklist is not None:
@@ -58,18 +57,22 @@ class CreateApiKeyInput(DaraModel):
             for k1 in self.ip_whitelist:
                 result['ipWhitelist'].append(k1.to_map() if k1 else None)
 
-        if self.team_id is not None:
-            result['teamID'] = self.team_id
+        if self.message is not None:
+            result['message'] = self.message
+
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('apiKeyName') is not None:
-            self.api_key_name = m.get('apiKeyName')
+        if m.get('apiKey') is not None:
+            temp_model = main_models.ApiKey()
+            self.api_key = temp_model.from_map(m.get('apiKey'))
 
-        if m.get('expireTime') is not None:
-            self.expire_time = m.get('expireTime')
+        if m.get('code') is not None:
+            self.code = m.get('code')
 
         self.ip_blacklist = []
         if m.get('ipBlacklist') is not None:
@@ -83,8 +86,11 @@ class CreateApiKeyInput(DaraModel):
                 temp_model = main_models.IPConfig()
                 self.ip_whitelist.append(temp_model.from_map(k1))
 
-        if m.get('teamID') is not None:
-            self.team_id = m.get('teamID')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
 
         return self
 

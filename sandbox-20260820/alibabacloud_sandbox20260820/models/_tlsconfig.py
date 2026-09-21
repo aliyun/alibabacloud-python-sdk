@@ -13,8 +13,11 @@ class TLSConfig(DaraModel):
         max_version: str = None,
         min_version: str = None,
     ):
+        # The list of allowed TLS cipher suites. If this parameter is not specified, the server default cipher suites are used.
         self.cipher_suites = cipher_suites
+        # The maximum TLS protocol version allowed. Example values: TLSv1.2 and TLSv1.3. If this parameter is not specified, the server default value is used. Do not pass an empty string.
         self.max_version = max_version
+        # The minimum TLS protocol version allowed. Example values: TLSv1.2 and TLSv1.3. If this parameter is not specified, the server default value is used. Do not pass an empty string.
         self.min_version = min_version
 
     def validate(self):

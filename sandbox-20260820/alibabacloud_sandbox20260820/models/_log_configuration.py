@@ -10,7 +10,9 @@ class LogConfiguration(DaraModel):
         logstore: str = None,
         project: str = None,
     ):
+        # The name of the Simple Log Service Logstore that receives sandbox runtime logs.
         self.logstore = logstore
+        # The name of the Simple Log Service project that receives sandbox runtime logs.
         self.project = project
 
     def validate(self):

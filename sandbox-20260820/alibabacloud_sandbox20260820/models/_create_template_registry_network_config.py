@@ -11,8 +11,11 @@ class CreateTemplateRegistryNetworkConfig(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The ID of the security group used to access the image repository.
         self.security_group_id = security_group_id
+        # The ID of the vSwitch used to access the image repository.
         self.v_switch_id = v_switch_id
+        # The ID of the VPC used to access the image repository.
         self.vpc_id = vpc_id
 
     def validate(self):
