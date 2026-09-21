@@ -7,17 +7,17 @@ from typing import List
 from alibabacloud_eds_aic20230930 import models as main_models
 from darabonba.model import DaraModel
 
-class ResetAndroidInstancesInGroupResponseBody(DaraModel):
+class UpdateCloudPhoneNodeSystemImageResponseBody(DaraModel):
     def __init__(
         self,
-        order_id: str = None,
         request_id: str = None,
-        tasks: main_models.ResetAndroidInstancesInGroupResponseBodyTasks = None,
+        task_id: str = None,
+        tasks: main_models.UpdateCloudPhoneNodeSystemImageResponseBodyTasks = None,
     ):
-        # The order ID for storage reduction. This parameter is returned only when you reduce storage while resetting instances in a cloud phone matrix. It is not returned in other scenarios.
-        self.order_id = order_id
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
+        # The task ID.
+        self.task_id = task_id
         # The task information.
         self.tasks = tasks
 
@@ -30,11 +30,11 @@ class ResetAndroidInstancesInGroupResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.order_id is not None:
-            result['OrderId'] = self.order_id
-
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
 
         if self.tasks is not None:
             result['Tasks'] = self.tasks.to_map()
@@ -43,22 +43,22 @@ class ResetAndroidInstancesInGroupResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('OrderId') is not None:
-            self.order_id = m.get('OrderId')
-
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
 
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+
         if m.get('Tasks') is not None:
-            temp_model = main_models.ResetAndroidInstancesInGroupResponseBodyTasks()
+            temp_model = main_models.UpdateCloudPhoneNodeSystemImageResponseBodyTasks()
             self.tasks = temp_model.from_map(m.get('Tasks'))
 
         return self
 
-class ResetAndroidInstancesInGroupResponseBodyTasks(DaraModel):
+class UpdateCloudPhoneNodeSystemImageResponseBodyTasks(DaraModel):
     def __init__(
         self,
-        child_tasks: List[main_models.ResetAndroidInstancesInGroupResponseBodyTasksChildTasks] = None,
+        child_tasks: List[main_models.UpdateCloudPhoneNodeSystemImageResponseBodyTasksChildTasks] = None,
         parent_task_id: str = None,
     ):
         # The child tasks.
@@ -92,7 +92,7 @@ class ResetAndroidInstancesInGroupResponseBodyTasks(DaraModel):
         self.child_tasks = []
         if m.get('ChildTasks') is not None:
             for k1 in m.get('ChildTasks'):
-                temp_model = main_models.ResetAndroidInstancesInGroupResponseBodyTasksChildTasks()
+                temp_model = main_models.UpdateCloudPhoneNodeSystemImageResponseBodyTasksChildTasks()
                 self.child_tasks.append(temp_model.from_map(k1))
 
         if m.get('ParentTaskId') is not None:
@@ -100,13 +100,13 @@ class ResetAndroidInstancesInGroupResponseBodyTasks(DaraModel):
 
         return self
 
-class ResetAndroidInstancesInGroupResponseBodyTasksChildTasks(DaraModel):
+class UpdateCloudPhoneNodeSystemImageResponseBodyTasksChildTasks(DaraModel):
     def __init__(
         self,
         instance_id: str = None,
         task_id: str = None,
     ):
-        # The instance ID.
+        # The node ID.
         self.instance_id = instance_id
         # The child task ID.
         self.task_id = task_id

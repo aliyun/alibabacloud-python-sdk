@@ -36,6 +36,9 @@ from ._check_resource_stock_response import CheckResourceStockResponse
 from ._create_aicloud_phone_request import CreateAICloudPhoneRequest
 from ._create_aicloud_phone_response_body import CreateAICloudPhoneResponseBody
 from ._create_aicloud_phone_response import CreateAICloudPhoneResponse
+from ._create_agent_skill_request import CreateAgentSkillRequest
+from ._create_agent_skill_response_body import CreateAgentSkillResponseBody
+from ._create_agent_skill_response import CreateAgentSkillResponse
 from ._create_android_instance_group_request import CreateAndroidInstanceGroupRequest
 from ._create_android_instance_group_shrink_request import CreateAndroidInstanceGroupShrinkRequest
 from ._create_android_instance_group_response_body import CreateAndroidInstanceGroupResponseBody
@@ -78,6 +81,9 @@ from ._create_system_property_template_request import CreateSystemPropertyTempla
 from ._create_system_property_template_shrink_request import CreateSystemPropertyTemplateShrinkRequest
 from ._create_system_property_template_response_body import CreateSystemPropertyTemplateResponseBody
 from ._create_system_property_template_response import CreateSystemPropertyTemplateResponse
+from ._delete_agent_skill_request import DeleteAgentSkillRequest
+from ._delete_agent_skill_response_body import DeleteAgentSkillResponseBody
+from ._delete_agent_skill_response import DeleteAgentSkillResponse
 from ._delete_android_instance_group_request import DeleteAndroidInstanceGroupRequest
 from ._delete_android_instance_group_response_body import DeleteAndroidInstanceGroupResponseBody
 from ._delete_android_instance_group_response import DeleteAndroidInstanceGroupResponse
@@ -175,6 +181,9 @@ from ._describe_scheduled_task_executions_response import DescribeScheduledTaskE
 from ._describe_scheduled_tasks_request import DescribeScheduledTasksRequest
 from ._describe_scheduled_tasks_response_body import DescribeScheduledTasksResponseBody
 from ._describe_scheduled_tasks_response import DescribeScheduledTasksResponse
+from ._describe_skills_request import DescribeSkillsRequest
+from ._describe_skills_response_body import DescribeSkillsResponseBody
+from ._describe_skills_response import DescribeSkillsResponse
 from ._describe_spec_request import DescribeSpecRequest
 from ._describe_spec_response_body import DescribeSpecResponseBody
 from ._describe_spec_response import DescribeSpecResponse
@@ -229,6 +238,9 @@ from ._install_app_response import InstallAppResponse
 from ._install_monitor_agent_request import InstallMonitorAgentRequest
 from ._install_monitor_agent_response_body import InstallMonitorAgentResponseBody
 from ._install_monitor_agent_response import InstallMonitorAgentResponse
+from ._install_skills_request import InstallSkillsRequest
+from ._install_skills_response_body import InstallSkillsResponseBody
+from ._install_skills_response import InstallSkillsResponse
 from ._instance_healer_request import InstanceHealerRequest
 from ._instance_healer_response_body import InstanceHealerResponseBody
 from ._instance_healer_response import InstanceHealerResponse
@@ -360,9 +372,15 @@ from ._uninstall_app_response import UninstallAppResponse
 from ._uninstall_monitor_agent_request import UninstallMonitorAgentRequest
 from ._uninstall_monitor_agent_response_body import UninstallMonitorAgentResponseBody
 from ._uninstall_monitor_agent_response import UninstallMonitorAgentResponse
+from ._uninstall_skills_request import UninstallSkillsRequest
+from ._uninstall_skills_response_body import UninstallSkillsResponseBody
+from ._uninstall_skills_response import UninstallSkillsResponse
 from ._untag_resources_request import UntagResourcesRequest
 from ._untag_resources_response_body import UntagResourcesResponseBody
 from ._untag_resources_response import UntagResourcesResponse
+from ._update_cloud_phone_node_system_image_request import UpdateCloudPhoneNodeSystemImageRequest
+from ._update_cloud_phone_node_system_image_response_body import UpdateCloudPhoneNodeSystemImageResponseBody
+from ._update_cloud_phone_node_system_image_response import UpdateCloudPhoneNodeSystemImageResponse
 from ._update_custom_image_name_request import UpdateCustomImageNameRequest
 from ._update_custom_image_name_response_body import UpdateCustomImageNameResponseBody
 from ._update_custom_image_name_response import UpdateCustomImageNameResponse
@@ -387,6 +405,7 @@ from ._change_cloud_phone_node_response_body import ChangeCloudPhoneNodeResponse
 from ._change_cloud_phone_node_response_body import ChangeCloudPhoneNodeResponseBodyNodeInfos
 from ._check_resource_stock_response_body import CheckResourceStockResponseBodyResourceStockModels
 from ._create_aicloud_phone_response_body import CreateAICloudPhoneResponseBodyData
+from ._create_agent_skill_response_body import CreateAgentSkillResponseBodySkillInfo
 from ._create_android_instance_group_request import CreateAndroidInstanceGroupRequestNetworkInfo
 from ._create_android_instance_group_request import CreateAndroidInstanceGroupRequestTag
 from ._create_android_instance_group_shrink_request import CreateAndroidInstanceGroupShrinkRequestTag
@@ -400,6 +419,7 @@ from ._create_cloud_phone_node_shrink_request import CreateCloudPhoneNodeShrinkR
 from ._create_cloud_phone_node_response_body import CreateCloudPhoneNodeResponseBodyNetworkPackageOrderModel
 from ._create_cloud_phone_node_response_body import CreateCloudPhoneNodeResponseBodyNodeInfos
 from ._create_key_pair_response_body import CreateKeyPairResponseBodyData
+from ._create_mobile_agent_package_request import CreateMobileAgentPackageRequestTag
 from ._create_policy_group_request import CreatePolicyGroupRequestNetRedirectPolicyRules
 from ._create_policy_group_request import CreatePolicyGroupRequestNetRedirectPolicy
 from ._create_policy_group_request import CreatePolicyGroupRequestWatermark
@@ -411,6 +431,7 @@ from ._create_system_property_template_request import CreateSystemPropertyTempla
 from ._create_system_property_template_request import CreateSystemPropertyTemplateRequestSystemPropertyInfo
 from ._delete_images_response_body import DeleteImagesResponseBodyData
 from ._delete_scheduled_task_response_body import DeleteScheduledTaskResponseBodyTasks
+from ._describe_agent_task_response_body import DescribeAgentTaskResponseBodyTasksArtifacts
 from ._describe_agent_task_response_body import DescribeAgentTaskResponseBodyTasks
 from ._describe_android_instance_groups_request import DescribeAndroidInstanceGroupsRequestTags
 from ._describe_android_instance_groups_response_body import DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRulesInstanceQosRule
@@ -463,11 +484,15 @@ from ._describe_metric_list_response_body import DescribeMetricListResponseBodyM
 from ._describe_metric_top_response_body import DescribeMetricTopResponseBodyMetricTotalModelMetricModelListDataPoints
 from ._describe_metric_top_response_body import DescribeMetricTopResponseBodyMetricTotalModelMetricModelList
 from ._describe_metric_top_response_body import DescribeMetricTopResponseBodyMetricTotalModel
+from ._describe_mobile_agent_package_response_body import DescribeMobileAgentPackageResponseBodyPackageListTags
 from ._describe_mobile_agent_package_response_body import DescribeMobileAgentPackageResponseBodyPackageList
 from ._describe_regions_response_body import DescribeRegionsResponseBodyRegionModels
+from ._describe_scheduled_task_executions_response_body import DescribeScheduledTaskExecutionsResponseBodyExecutionsArtifacts
 from ._describe_scheduled_task_executions_response_body import DescribeScheduledTaskExecutionsResponseBodyExecutions
 from ._describe_scheduled_tasks_response_body import DescribeScheduledTasksResponseBodyTasksRunConfig
 from ._describe_scheduled_tasks_response_body import DescribeScheduledTasksResponseBodyTasks
+from ._describe_skills_response_body import DescribeSkillsResponseBodySkillInfoInstalledInstances
+from ._describe_skills_response_body import DescribeSkillsResponseBodySkillInfo
 from ._describe_spec_response_body import DescribeSpecResponseBodySpecInfoModel
 from ._describe_system_property_templates_response_body import DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModelSystemPropertyInfoCustomPropertyInfos
 from ._describe_system_property_templates_response_body import DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModelSystemPropertyInfo
@@ -479,6 +504,7 @@ from ._get_instance_properties_response_body import GetInstancePropertiesRespons
 from ._get_network_blacklist_response_body import GetNetworkBlacklistResponseBodyNetworkBlacklistModel
 from ._import_key_pair_response_body import ImportKeyPairResponseBodyData
 from ._install_app_response_body import InstallAppResponseBodyChildTaskInfo
+from ._install_skills_response_body import InstallSkillsResponseBodyInstallResults
 from ._instance_healer_response_body import InstanceHealerResponseBodyInstanceHealerModel
 from ._list_instance_adb_attributes_response_body import ListInstanceAdbAttributesResponseBodyData
 from ._list_policy_groups_response_body import ListPolicyGroupsResponseBodyPolicyGroupModelAccessPolicies
@@ -522,6 +548,8 @@ from ._send_file_response_body import SendFileResponseBodyData
 from ._set_adb_secure_response_body import SetAdbSecureResponseBodyData
 from ._tag_resources_request import TagResourcesRequestTag
 from ._uninstall_app_response_body import UninstallAppResponseBodyChildTaskInfo
+from ._update_cloud_phone_node_system_image_response_body import UpdateCloudPhoneNodeSystemImageResponseBodyTasksChildTasks
+from ._update_cloud_phone_node_system_image_response_body import UpdateCloudPhoneNodeSystemImageResponseBodyTasks
 from ._update_instance_image_response_body import UpdateInstanceImageResponseBodyTasksChildTasks
 from ._update_instance_image_response_body import UpdateInstanceImageResponseBodyTasks
 
@@ -560,6 +588,9 @@ __all__ = [
     CreateAICloudPhoneRequest,
     CreateAICloudPhoneResponseBody,
     CreateAICloudPhoneResponse,
+    CreateAgentSkillRequest,
+    CreateAgentSkillResponseBody,
+    CreateAgentSkillResponse,
     CreateAndroidInstanceGroupRequest,
     CreateAndroidInstanceGroupShrinkRequest,
     CreateAndroidInstanceGroupResponseBody,
@@ -602,6 +633,9 @@ __all__ = [
     CreateSystemPropertyTemplateShrinkRequest,
     CreateSystemPropertyTemplateResponseBody,
     CreateSystemPropertyTemplateResponse,
+    DeleteAgentSkillRequest,
+    DeleteAgentSkillResponseBody,
+    DeleteAgentSkillResponse,
     DeleteAndroidInstanceGroupRequest,
     DeleteAndroidInstanceGroupResponseBody,
     DeleteAndroidInstanceGroupResponse,
@@ -699,6 +733,9 @@ __all__ = [
     DescribeScheduledTasksRequest,
     DescribeScheduledTasksResponseBody,
     DescribeScheduledTasksResponse,
+    DescribeSkillsRequest,
+    DescribeSkillsResponseBody,
+    DescribeSkillsResponse,
     DescribeSpecRequest,
     DescribeSpecResponseBody,
     DescribeSpecResponse,
@@ -753,6 +790,9 @@ __all__ = [
     InstallMonitorAgentRequest,
     InstallMonitorAgentResponseBody,
     InstallMonitorAgentResponse,
+    InstallSkillsRequest,
+    InstallSkillsResponseBody,
+    InstallSkillsResponse,
     InstanceHealerRequest,
     InstanceHealerResponseBody,
     InstanceHealerResponse,
@@ -884,9 +924,15 @@ __all__ = [
     UninstallMonitorAgentRequest,
     UninstallMonitorAgentResponseBody,
     UninstallMonitorAgentResponse,
+    UninstallSkillsRequest,
+    UninstallSkillsResponseBody,
+    UninstallSkillsResponse,
     UntagResourcesRequest,
     UntagResourcesResponseBody,
     UntagResourcesResponse,
+    UpdateCloudPhoneNodeSystemImageRequest,
+    UpdateCloudPhoneNodeSystemImageResponseBody,
+    UpdateCloudPhoneNodeSystemImageResponse,
     UpdateCustomImageNameRequest,
     UpdateCustomImageNameResponseBody,
     UpdateCustomImageNameResponse,
@@ -911,6 +957,7 @@ __all__ = [
     ChangeCloudPhoneNodeResponseBodyNodeInfos,
     CheckResourceStockResponseBodyResourceStockModels,
     CreateAICloudPhoneResponseBodyData,
+    CreateAgentSkillResponseBodySkillInfo,
     CreateAndroidInstanceGroupRequestNetworkInfo,
     CreateAndroidInstanceGroupRequestTag,
     CreateAndroidInstanceGroupShrinkRequestTag,
@@ -924,6 +971,7 @@ __all__ = [
     CreateCloudPhoneNodeResponseBodyNetworkPackageOrderModel,
     CreateCloudPhoneNodeResponseBodyNodeInfos,
     CreateKeyPairResponseBodyData,
+    CreateMobileAgentPackageRequestTag,
     CreatePolicyGroupRequestNetRedirectPolicyRules,
     CreatePolicyGroupRequestNetRedirectPolicy,
     CreatePolicyGroupRequestWatermark,
@@ -935,6 +983,7 @@ __all__ = [
     CreateSystemPropertyTemplateRequestSystemPropertyInfo,
     DeleteImagesResponseBodyData,
     DeleteScheduledTaskResponseBodyTasks,
+    DescribeAgentTaskResponseBodyTasksArtifacts,
     DescribeAgentTaskResponseBodyTasks,
     DescribeAndroidInstanceGroupsRequestTags,
     DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRulesInstanceQosRule,
@@ -987,11 +1036,15 @@ __all__ = [
     DescribeMetricTopResponseBodyMetricTotalModelMetricModelListDataPoints,
     DescribeMetricTopResponseBodyMetricTotalModelMetricModelList,
     DescribeMetricTopResponseBodyMetricTotalModel,
+    DescribeMobileAgentPackageResponseBodyPackageListTags,
     DescribeMobileAgentPackageResponseBodyPackageList,
     DescribeRegionsResponseBodyRegionModels,
+    DescribeScheduledTaskExecutionsResponseBodyExecutionsArtifacts,
     DescribeScheduledTaskExecutionsResponseBodyExecutions,
     DescribeScheduledTasksResponseBodyTasksRunConfig,
     DescribeScheduledTasksResponseBodyTasks,
+    DescribeSkillsResponseBodySkillInfoInstalledInstances,
+    DescribeSkillsResponseBodySkillInfo,
     DescribeSpecResponseBodySpecInfoModel,
     DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModelSystemPropertyInfoCustomPropertyInfos,
     DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModelSystemPropertyInfo,
@@ -1003,6 +1056,7 @@ __all__ = [
     GetNetworkBlacklistResponseBodyNetworkBlacklistModel,
     ImportKeyPairResponseBodyData,
     InstallAppResponseBodyChildTaskInfo,
+    InstallSkillsResponseBodyInstallResults,
     InstanceHealerResponseBodyInstanceHealerModel,
     ListInstanceAdbAttributesResponseBodyData,
     ListPolicyGroupsResponseBodyPolicyGroupModelAccessPolicies,
@@ -1046,6 +1100,8 @@ __all__ = [
     SetAdbSecureResponseBodyData,
     TagResourcesRequestTag,
     UninstallAppResponseBodyChildTaskInfo,
+    UpdateCloudPhoneNodeSystemImageResponseBodyTasksChildTasks,
+    UpdateCloudPhoneNodeSystemImageResponseBodyTasks,
     UpdateInstanceImageResponseBodyTasksChildTasks,
     UpdateInstanceImageResponseBodyTasks
 ]

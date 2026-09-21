@@ -28,11 +28,11 @@ class DescribeCloudPhoneNodesRequest(DaraModel):
         self.bandwidth_package_id = bandwidth_package_id
         # The region ID.
         self.biz_region_id = biz_region_id
-        # The billing type. Only subscription is supported.
+        # The billing method. Only subscription is supported.
         self.charge_type = charge_type
         # The maximum number of entries per page for a paged query. Maximum value: 100. Default value: 20.
         self.max_results = max_results
-        # The pagination token for the next query. If the results of a query are not completely returned, the returned NextToken is not empty. You can pass the returned NextToken in the next query to continue retrieving results.
+        # The pagination token for the next query. If the results of a query are not completely returned, the returned NextToken is not empty. You can include the returned NextToken in the next request to continue the query.
         self.next_token = next_token
         # The list of cloud phone matrix IDs.
         self.node_ids = node_ids

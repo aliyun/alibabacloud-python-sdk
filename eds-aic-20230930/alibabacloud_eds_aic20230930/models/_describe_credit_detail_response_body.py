@@ -58,8 +58,9 @@ class DescribeCreditDetailResponseBodyData(DaraModel):
     ):
         # The credit change details.
         self.details = details
+        # The token for the next query.
         self.next_token = next_token
-        # The page number. Default value: 1.
+        # The page number for pagination. Default value: 1.
         self.page_num = page_num
         # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
@@ -129,6 +130,7 @@ class DescribeCreditDetailResponseBodyData(DaraModel):
 class DescribeCreditDetailResponseBodyDataDetails(DaraModel):
     def __init__(
         self,
+        agent_type: str = None,
         api_key_name: str = None,
         cached_tokens: int = None,
         change_time: str = None,
@@ -146,7 +148,11 @@ class DescribeCreditDetailResponseBodyDataDetails(DaraModel):
         total_tokens: int = None,
         ttft_ms: int = None,
     ):
+        # The agent type. This field is populated only when querying by a single agent type.
+        self.agent_type = agent_type
+        # The API key name.
         self.api_key_name = api_key_name
+        # The number of cached tokens.
         self.cached_tokens = cached_tokens
         # The time when the change occurred.
         self.change_time = change_time
@@ -154,19 +160,27 @@ class DescribeCreditDetailResponseBodyDataDetails(DaraModel):
         self.credit_change = credit_change
         # The task description.
         self.description = description
+        # The model inference duration, in milliseconds.
         self.duration_ms = duration_ms
+        # The number of input tokens.
         self.input_tokens = input_tokens
         # The instance ID.
         self.instance_id = instance_id
+        # The instance name.
         self.instance_name = instance_name
+        # The model ID.
         self.model_id = model_id
+        # The number of output tokens.
         self.output_tokens = output_tokens
-        # The ID of the credit or plan package.
+        # The credit or package ID.
         self.package_id = package_id
+        # The request ID.
         self.request_id = request_id
-        # The task ID, which is globally unique.
+        # The globally unique task ID.
         self.task_id = task_id
+        # The total number of tokens.
         self.total_tokens = total_tokens
+        # The response time of the first token, in milliseconds.
         self.ttft_ms = ttft_ms
 
     def validate(self):
@@ -177,6 +191,9 @@ class DescribeCreditDetailResponseBodyDataDetails(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.agent_type is not None:
+            result['AgentType'] = self.agent_type
+
         if self.api_key_name is not None:
             result['ApiKeyName'] = self.api_key_name
 
@@ -229,6 +246,9 @@ class DescribeCreditDetailResponseBodyDataDetails(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentType') is not None:
+            self.agent_type = m.get('AgentType')
+
         if m.get('ApiKeyName') is not None:
             self.api_key_name = m.get('ApiKeyName')
 

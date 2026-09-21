@@ -91,6 +91,7 @@ class DescribeMobileAgentPackageResponseBodyPackageList(DaraModel):
         package_status: str = None,
         period_end_time: str = None,
         period_start_time: str = None,
+        tags: List[main_models.DescribeMobileAgentPackageResponseBodyPackageListTags] = None,
         used_credit: str = None,
     ):
         # The expiration time.
@@ -108,11 +109,16 @@ class DescribeMobileAgentPackageResponseBodyPackageList(DaraModel):
         self.package_status = package_status
         self.period_end_time = period_end_time
         self.period_start_time = period_start_time
+        # The labels.
+        self.tags = tags
         # The number of credits that have been used.
         self.used_credit = used_credit
 
     def validate(self):
-        pass
+        if self.tags:
+            for v1 in self.tags:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -145,6 +151,11 @@ class DescribeMobileAgentPackageResponseBodyPackageList(DaraModel):
 
         if self.period_start_time is not None:
             result['PeriodStartTime'] = self.period_start_time
+
+        result['Tags'] = []
+        if self.tags is not None:
+            for k1 in self.tags:
+                result['Tags'].append(k1.to_map() if k1 else None)
 
         if self.used_credit is not None:
             result['UsedCredit'] = self.used_credit
@@ -180,8 +191,51 @@ class DescribeMobileAgentPackageResponseBodyPackageList(DaraModel):
         if m.get('PeriodStartTime') is not None:
             self.period_start_time = m.get('PeriodStartTime')
 
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k1 in m.get('Tags'):
+                temp_model = main_models.DescribeMobileAgentPackageResponseBodyPackageListTags()
+                self.tags.append(temp_model.from_map(k1))
+
         if m.get('UsedCredit') is not None:
             self.used_credit = m.get('UsedCredit')
+
+        return self
+
+class DescribeMobileAgentPackageResponseBodyPackageListTags(DaraModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The label key.
+        self.key = key
+        # The label value.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.key is not None:
+            result['Key'] = self.key
+
+        if self.value is not None:
+            result['Value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
 
         return self
 

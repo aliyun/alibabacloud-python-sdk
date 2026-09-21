@@ -2,18 +2,20 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from darabonba.model import DaraModel
 
-class ImportImageResponseBody(DaraModel):
+class UpdateCloudPhoneNodeSystemImageRequest(DaraModel):
     def __init__(
         self,
         image_id: str = None,
-        request_id: str = None,
+        node_ids: List[str] = None,
     ):
-        # ImageId
+        # The image ID.
         self.image_id = image_id
-        # Id of the request
-        self.request_id = request_id
+        # The list of cloud phone normal matrix IDs.
+        self.node_ids = node_ids
 
     def validate(self):
         pass
@@ -26,8 +28,8 @@ class ImportImageResponseBody(DaraModel):
         if self.image_id is not None:
             result['ImageId'] = self.image_id
 
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
+        if self.node_ids is not None:
+            result['NodeIds'] = self.node_ids
 
         return result
 
@@ -36,8 +38,8 @@ class ImportImageResponseBody(DaraModel):
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
 
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
+        if m.get('NodeIds') is not None:
+            self.node_ids = m.get('NodeIds')
 
         return self
 

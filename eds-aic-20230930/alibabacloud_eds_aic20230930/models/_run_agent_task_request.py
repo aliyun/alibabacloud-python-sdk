@@ -14,6 +14,7 @@ class RunAgentTaskRequest(DaraModel):
         instance_ids: List[str] = None,
         max_steps: int = None,
         run_config: main_models.RunAgentTaskRequestRunConfig = None,
+        save_artifacts: bool = None,
         schedule_id: str = None,
         targets: List[main_models.RunAgentTaskRequestTargets] = None,
         task_config_id: str = None,
@@ -28,9 +29,11 @@ class RunAgentTaskRequest(DaraModel):
         self.max_steps = max_steps
         # The runtime configuration that carries the runtime parameters (skills) for this task.
         self.run_config = run_config
+        # Specifies whether to write the task artifacts to the user\\"s OSS bucket.
+        self.save_artifacts = save_artifacts
         # The scheduling plan ID. When specified, the execution record is associated with the corresponding scheduled node, which facilitates aggregate query by scheduling dimension through aggregation.
         self.schedule_id = schedule_id
-        # The Targets array. Each element is an object that contains InstanceId and SessionId.
+        # An array of target objects. Each element contains an InstanceId and a SessionId.
         self.targets = targets
         # The task configuration ID. This parameter is used to trigger a task with the specified configuration.
         self.task_config_id = task_config_id
@@ -63,6 +66,9 @@ class RunAgentTaskRequest(DaraModel):
 
         if self.run_config is not None:
             result['RunConfig'] = self.run_config.to_map()
+
+        if self.save_artifacts is not None:
+            result['SaveArtifacts'] = self.save_artifacts
 
         if self.schedule_id is not None:
             result['ScheduleId'] = self.schedule_id
@@ -97,6 +103,9 @@ class RunAgentTaskRequest(DaraModel):
         if m.get('RunConfig') is not None:
             temp_model = main_models.RunAgentTaskRequestRunConfig()
             self.run_config = temp_model.from_map(m.get('RunConfig'))
+
+        if m.get('SaveArtifacts') is not None:
+            self.save_artifacts = m.get('SaveArtifacts')
 
         if m.get('ScheduleId') is not None:
             self.schedule_id = m.get('ScheduleId')

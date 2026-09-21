@@ -18,9 +18,9 @@ class DescribeCloudPhoneNodesResponseBody(DaraModel):
     ):
         # The maximum number of entries per page for a paged query.
         self.max_results = max_results
-        # The pagination token for the next query. Valid values:
-        # - If **NextToken** is empty, no more results exist.
-        # - If **NextToken** has a value, the value indicates the token from which the next query starts.
+        # Indicates whether a next query token exists. Valid values:
+        # - If **NextToken** is empty, no next query exists.
+        # - If **NextToken** has a return value, the value is the token for the next query.
         self.next_token = next_token
         # The details of the cloud phone matrix.
         self.node_model = node_model
@@ -114,19 +114,16 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(DaraModel):
         tags: List[main_models.DescribeCloudPhoneNodesResponseBodyNodeModelTags] = None,
         v_switch_id: str = None,
     ):
-        # The bandwidth plan ID.
+        # The ID of the bandwidth plan.
         self.bandwidth_package_id = bandwidth_package_id
-        # The status of the bandwidth plan. Valid values:
-        # - 0: initializing
-        # - 1: normal
-        # - 2: deleted
+        # The status of the bandwidth plan. Valid values: 0: initializing. 1: normal. 2: deleted.
         self.bandwidth_package_status = bandwidth_package_status
         # The bandwidth type.
         self.bandwidth_package_type = bandwidth_package_type
         # The array of tag information.
         self.biz_tags = biz_tags
         self.channel = channel
-        # The billing type.
+        # The billing method.
         self.charge_type = charge_type
         # The number of CPU cores.
         self.cpu = cpu
@@ -134,7 +131,7 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(DaraModel):
         self.gmt_create = gmt_create
         # The expiration time of the subscription matrix.
         self.gmt_expired = gmt_expired
-        # The time when the matrix was last modified.
+        # The most recent modification time.
         self.gmt_modified = gmt_modified
         # The instance type.
         self.instance_type = instance_type
@@ -151,7 +148,7 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(DaraModel):
         # The name of the cloud phone matrix.
         self.node_name = node_name
         self.package_id = package_id
-        # The number of instances provisioned under the cloud phone matrix.
+        # The number of instances under the cloud phone matrix.
         self.phone_count = phone_count
         # The independent device storage information.
         self.phone_data_info = phone_data_info

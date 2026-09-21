@@ -9,6 +9,7 @@ from darabonba.model import DaraModel
 class DescribeCreditDetailRequest(DaraModel):
     def __init__(
         self,
+        agent_types: List[str] = None,
         end_time: int = None,
         instance_ids: List[str] = None,
         max_results: int = None,
@@ -18,15 +19,19 @@ class DescribeCreditDetailRequest(DaraModel):
         page_size: str = None,
         start_time: int = None,
     ):
+        # The list of agent types, used to filter credit change details by specified agent types.
+        self.agent_types = agent_types
         # The end time.
         self.end_time = end_time
         # The list of instance IDs.
         self.instance_ids = instance_ids
+        # The maximum number of entries to read in this request.
         self.max_results = max_results
+        # The token for the next query. If a query does not return all results, the returned NextToken is not empty. You can pass the returned NextToken in the next query to continue retrieving results.
         self.next_token = next_token
-        # The list of plan packages or credit booster packages.
+        # The list of package or credit booster pack IDs.
         self.package_ids = package_ids
-        # The page number. Default value: 1.
+        # The page number for pagination. Default value: 1.
         self.page_num = page_num
         # The number of entries per page.
         self.page_size = page_size
@@ -41,6 +46,9 @@ class DescribeCreditDetailRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.agent_types is not None:
+            result['AgentTypes'] = self.agent_types
+
         if self.end_time is not None:
             result['EndTime'] = self.end_time
 
@@ -69,6 +77,9 @@ class DescribeCreditDetailRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentTypes') is not None:
+            self.agent_types = m.get('AgentTypes')
+
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
 

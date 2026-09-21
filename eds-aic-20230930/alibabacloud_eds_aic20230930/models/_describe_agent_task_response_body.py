@@ -20,7 +20,7 @@ class DescribeAgentTaskResponseBody(DaraModel):
         self.code = code
         # The number of tasks.
         self.count = count
-        # The message returned by the API.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -82,6 +82,8 @@ class DescribeAgentTaskResponseBody(DaraModel):
 class DescribeAgentTaskResponseBodyTasks(DaraModel):
     def __init__(
         self,
+        artifact_count: int = None,
+        artifacts: List[main_models.DescribeAgentTaskResponseBodyTasksArtifacts] = None,
         current_status: str = None,
         digest_source: str = None,
         instance_id: str = None,
@@ -94,18 +96,23 @@ class DescribeAgentTaskResponseBodyTasks(DaraModel):
         task_result: str = None,
         user_prompt: str = None,
     ):
+        # The number of task artifacts.
+        self.artifact_count = artifact_count
+        # The list of uploaded task artifacts.
+        self.artifacts = artifacts
         # The current status of the task. Valid values:
         # 
-        # PENDING: The task is being created.
-        # 
-        # RUNNING: The task is running.
-        # 
-        # COMPLETED: The task is completed.
-        # 
-        # FAILED: The task failed.
-        # 
-        # TIMEOUT: The task execution timed out.
+        # - PENDING: The task is being created.
+        # - RUNNING: The task is running.
+        # - COMPLETED: The task is completed.
+        # - FAILED: The task failed.
+        # - TIMEOUT: The task execution timed out.
         self.current_status = current_status
+        # The source of the digest. Valid values:
+        # 
+        # - PROMPT_AUTO: auto-generated.
+        # - RESULT_AUTO: result refinement.
+        # - USER: user-edited.
         self.digest_source = digest_source
         # The Mobile node ID.
         self.instance_id = instance_id
@@ -114,6 +121,7 @@ class DescribeAgentTaskResponseBodyTasks(DaraModel):
         self.running_at = running_at
         # The number of steps executed.
         self.steps = steps
+        # The task digest text, up to 25 characters.
         self.task_digest = task_digest
         # The task duration. This field is returned only when CurrentStatus is FAILED or COMPLETED.
         self.task_duration = task_duration
@@ -125,13 +133,24 @@ class DescribeAgentTaskResponseBodyTasks(DaraModel):
         self.user_prompt = user_prompt
 
     def validate(self):
-        pass
+        if self.artifacts:
+            for v1 in self.artifacts:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.artifact_count is not None:
+            result['ArtifactCount'] = self.artifact_count
+
+        result['Artifacts'] = []
+        if self.artifacts is not None:
+            for k1 in self.artifacts:
+                result['Artifacts'].append(k1.to_map() if k1 else None)
+
         if self.current_status is not None:
             result['CurrentStatus'] = self.current_status
 
@@ -169,6 +188,15 @@ class DescribeAgentTaskResponseBodyTasks(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ArtifactCount') is not None:
+            self.artifact_count = m.get('ArtifactCount')
+
+        self.artifacts = []
+        if m.get('Artifacts') is not None:
+            for k1 in m.get('Artifacts'):
+                temp_model = main_models.DescribeAgentTaskResponseBodyTasksArtifacts()
+                self.artifacts.append(temp_model.from_map(k1))
+
         if m.get('CurrentStatus') is not None:
             self.current_status = m.get('CurrentStatus')
 
@@ -201,6 +229,70 @@ class DescribeAgentTaskResponseBodyTasks(DaraModel):
 
         if m.get('UserPrompt') is not None:
             self.user_prompt = m.get('UserPrompt')
+
+        return self
+
+class DescribeAgentTaskResponseBodyTasksArtifacts(DaraModel):
+    def __init__(
+        self,
+        content_type: str = None,
+        download_url: str = None,
+        name: str = None,
+        size: int = None,
+        updated_time: str = None,
+    ):
+        # The MIME type.
+        self.content_type = content_type
+        # The OSS pre-signed download URL.
+        self.download_url = download_url
+        # The file name.
+        self.name = name
+        # The file size in bytes.
+        self.size = size
+        # The upload time in ISO 8601 format.
+        self.updated_time = updated_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.content_type is not None:
+            result['ContentType'] = self.content_type
+
+        if self.download_url is not None:
+            result['DownloadUrl'] = self.download_url
+
+        if self.name is not None:
+            result['Name'] = self.name
+
+        if self.size is not None:
+            result['Size'] = self.size
+
+        if self.updated_time is not None:
+            result['UpdatedTime'] = self.updated_time
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ContentType') is not None:
+            self.content_type = m.get('ContentType')
+
+        if m.get('DownloadUrl') is not None:
+            self.download_url = m.get('DownloadUrl')
+
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+
+        if m.get('UpdatedTime') is not None:
+            self.updated_time = m.get('UpdatedTime')
 
         return self
 

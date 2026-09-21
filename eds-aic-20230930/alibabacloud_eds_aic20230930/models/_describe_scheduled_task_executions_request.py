@@ -15,7 +15,7 @@ class DescribeScheduledTaskExecutionsRequest(DaraModel):
         start_time: str = None,
         status: str = None,
     ):
-        # The end time of the time range in ISO-8601 format.
+        # The end time of the time range in ISO 8601 format.
         self.end_time = end_time
         # The instance ID.
         self.instance_id = instance_id
@@ -27,7 +27,7 @@ class DescribeScheduledTaskExecutionsRequest(DaraModel):
         # 
         # This parameter is required.
         self.scheduled_id = scheduled_id
-        # The start time of the time range in ISO-8601 format.
+        # The start time of the time range in ISO 8601 format.
         self.start_time = start_time
         # The status of the scheduled task.
         self.status = status

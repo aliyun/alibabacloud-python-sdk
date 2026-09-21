@@ -2,6 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
+from alibabacloud_eds_aic20230930 import models as main_models
 from darabonba.model import DaraModel
 
 class CreateMobileAgentPackageRequest(DaraModel):
@@ -22,26 +25,27 @@ class CreateMobileAgentPackageRequest(DaraModel):
         period: int = None,
         period_unit: str = None,
         promotion_id: str = None,
+        tag: List[main_models.CreateMobileAgentPackageRequestTag] = None,
     ):
         # The number of resource plans.
         self.amount = amount
         # Specifies whether to enable automatic payment. Valid values:
         # 
-        # - **true**: enables automatic payment. Make sure that your account balance is sufficient.
-        # - **false** (default): generates an order without charging the account.
+        # - **true**: Automatic payment is enabled. Make sure that your account balance is sufficient.
+        # - **false** (default): Only an order is generated. No payment is made.
         # 
         # 
         # 
         # 
-        # > If your payment method has an insufficient balance, set this parameter to false. An unpaid order is generated. You can log on to the CloudPhone console to complete the payment.
+        # > If your payment method has an insufficient balance, set this parameter to false. An unpaid order is generated. You can log on to the Elastic Cloud Phone console to complete the payment.
         # >
         self.auto_pay = auto_pay
         # Specifies whether to enable auto-renewal for the instance. Valid values:
         # 
-        # * **true**: enables auto-renewal.
-        # * **false** (default): disables auto-renewal.
+        # * **true**: Auto-renewal is enabled.
+        # * **false** (default): Auto-renewal is disabled.
         self.auto_renew = auto_renew
-        # The region in which the instance resides. Currently, only cn-hangzhou is supported.
+        # The region where the instance resides. Currently, only cn-hangzhou is supported.
         self.biz_region_id = biz_region_id
         self.channel_cookie = channel_cookie
         # The credit quota.
@@ -66,9 +70,14 @@ class CreateMobileAgentPackageRequest(DaraModel):
         self.period_unit = period_unit
         # The ID of the promotional campaign.
         self.promotion_id = promotion_id
+        # The tags.
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for v1 in self.tag:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -120,6 +129,11 @@ class CreateMobileAgentPackageRequest(DaraModel):
         if self.promotion_id is not None:
             result['PromotionId'] = self.promotion_id
 
+        result['Tag'] = []
+        if self.tag is not None:
+            for k1 in self.tag:
+                result['Tag'].append(k1.to_map() if k1 else None)
+
         return result
 
     def from_map(self, m: dict = None):
@@ -168,6 +182,49 @@ class CreateMobileAgentPackageRequest(DaraModel):
 
         if m.get('PromotionId') is not None:
             self.promotion_id = m.get('PromotionId')
+
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k1 in m.get('Tag'):
+                temp_model = main_models.CreateMobileAgentPackageRequestTag()
+                self.tag.append(temp_model.from_map(k1))
+
+        return self
+
+class CreateMobileAgentPackageRequestTag(DaraModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag key. This parameter cannot be empty.
+        self.key = key
+        # The tag value.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.key is not None:
+            result['Key'] = self.key
+
+        if self.value is not None:
+            result['Value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
 
         return self
 

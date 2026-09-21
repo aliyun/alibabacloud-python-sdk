@@ -6,15 +6,13 @@ from typing import List
 
 from darabonba.model import DaraModel
 
-class DeleteBackupFileRequest(DaraModel):
+class DeleteAgentSkillRequest(DaraModel):
     def __init__(
         self,
-        backup_file_id_list: List[str] = None,
+        skill_ids: List[str] = None,
     ):
-        # The list of backup file IDs.
-        # 
-        # This parameter is required.
-        self.backup_file_id_list = backup_file_id_list
+        # The list of skill IDs.
+        self.skill_ids = skill_ids
 
     def validate(self):
         pass
@@ -24,15 +22,15 @@ class DeleteBackupFileRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.backup_file_id_list is not None:
-            result['BackupFileIdList'] = self.backup_file_id_list
+        if self.skill_ids is not None:
+            result['SkillIds'] = self.skill_ids
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('BackupFileIdList') is not None:
-            self.backup_file_id_list = m.get('BackupFileIdList')
+        if m.get('SkillIds') is not None:
+            self.skill_ids = m.get('SkillIds')
 
         return self
 

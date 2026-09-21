@@ -1,3 +1,10 @@
+2026-09-21 Version: 4.36.0
+- Support API UpdateCloudPhoneNodeSystemImage.
+- Update API CreateMobileAgentPackage: add request parameters Tag.
+- Update API DescribeMobileAgentPackage: add response parameters Body.PackageList.$.Tags.
+- Update API ImportImage: add request parameters BaseImageId.
+
+
 2026-08-21 Version: 4.34.2
 - Generated python 2023-09-30 for eds-aic.
 
