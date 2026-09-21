@@ -12,10 +12,22 @@ class GetDeadLockDetailRequest(DaraModel):
         source: str = None,
         text_id: str = None,
     ):
+        # The ID of the database instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The node ID.
+        # 
+        # > Required for PolarDB for MySQL cluster instances.
         self.node_id = node_id
+        # The source of the analysis task:
+        # 
+        # - **MANUAL** or **not specified**: queries the recent deadlock analysis task.
+        # 
+        # - **AUTO**: queries the full deadlock analysis task.
         self.source = source
+        # The ID of the deadlock text. This value is returned from the GetDeadLockHistory operation.
+        # 
         # This parameter is required.
         self.text_id = text_id
 

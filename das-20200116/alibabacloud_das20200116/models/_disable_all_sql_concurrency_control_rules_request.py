@@ -14,7 +14,7 @@ class DisableAllSqlConcurrencyControlRulesRequest(DaraModel):
         self.console_context = console_context
         # The instance ID.
         # 
-        # >  You must specify this parameter only if your database instance is an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster.
+        # > You must specify this parameter only if your database instance is an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster.
         # 
         # This parameter is required.
         self.instance_id = instance_id

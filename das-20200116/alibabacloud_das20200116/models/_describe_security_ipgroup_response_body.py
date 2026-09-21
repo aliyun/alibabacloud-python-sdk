@@ -16,11 +16,20 @@ class DescribeSecurityIPGroupResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The status code returned.
         self.code = code
         # ListResult<InstanceSSL>
         self.data = data
+        # The message returned for the request.
+        # 
+        # > If the request is successful, **Successful** is returned. If the request fails, an exception message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # - **true**: The request is successful.
+        # - **false**: The request fails.
         self.success = success
 
     def validate(self):
@@ -74,6 +83,7 @@ class DescribeSecurityIPGroupResponseBodyData(DaraModel):
         self,
         security_ip_groups: List[main_models.DescribeSecurityIPGroupResponseBodyDataSecurityIpGroups] = None,
     ):
+        # The list of all cross-engine whitelist templates for the user in the specified region.
         self.security_ip_groups = security_ip_groups
 
     def validate(self):
@@ -119,16 +129,34 @@ class DescribeSecurityIPGroupResponseBodyDataSecurityIpGroups(DaraModel):
         user_id: str = None,
         whitelist_net_type: str = None,
     ):
+        # The list of database instances bound to the cross-engine whitelist template.
         self.db_instances = db_instances
+        # The instance information for each product bound to the template.
         self.engine_info_list = engine_info_list
+        # The ECS security group ID. This field is invalid and contains redundant data that will be deprecated.
         self.gecs_sg_id_list = gecs_sg_id_list
+        # The IP addresses in the whitelist template.
+        # > Separate multiple IP addresses with commas (,).
         self.gip_list = gip_list
+        # The IP whitelist template name. The name must meet the following requirements:
+        # 
+        # - Contains only lowercase letters, digits, and underscores (_).
+        # 
+        # - Starts with a letter and ends with a letter or digit.
+        # 
+        # - Contains 2 to 120 characters in length.
         self.global_ig_name = global_ig_name
+        # The IP whitelist template ID.
         self.global_security_group_id = global_security_group_id
+        # The region ID.
         self.region_id = region_id
+        # The IP type.
         self.security_ip_type = security_ip_type
+        # The account ID. You can obtain the ID of the **logon account** on the **Security Settings** page in **Account Management** of the Alibaba Cloud console.
         self.uid = uid
+        # The user ID.
         self.user_id = user_id
+        # The network type of the whitelist.
         self.whitelist_net_type = whitelist_net_type
 
     def validate(self):
@@ -226,8 +254,11 @@ class DescribeSecurityIPGroupResponseBodyDataSecurityIpGroupsEngineInfoList(Dara
         instance_ids: List[str] = None,
         instance_num: int = None,
     ):
+        # The database engine type of the target instance.
         self.engine_name = engine_name
+        # The list of database instance IDs.
         self.instance_ids = instance_ids
+        # The number of instances under the current logon account.
         self.instance_num = instance_num
 
     def validate(self):

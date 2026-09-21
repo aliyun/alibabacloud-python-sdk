@@ -14,11 +14,19 @@ class GetInstanceGroupInspectReportDetailResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The status code returned.
         self.code = code
         # ReportDetail
         self.data = data
+        # The message returned for the request.
+        # 
+        # > If the request is successful, **Successful** is returned. If the request fails, exception information such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # * true: The request is successful.
+        # * false: The request fails.
         self.success = success
 
     def validate(self):
@@ -73,7 +81,9 @@ class GetInstanceGroupInspectReportDetailResponseBodyData(DaraModel):
         report_detail: str = None,
         report_id: str = None,
     ):
+        # The content of the operations report, which mainly includes the report date and diagnostic details of managed instances.
         self.report_detail = report_detail
+        # The report ID.
         self.report_id = report_id
 
     def validate(self):

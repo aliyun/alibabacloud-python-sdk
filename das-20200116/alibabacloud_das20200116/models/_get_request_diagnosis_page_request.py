@@ -24,7 +24,7 @@ class GetRequestDiagnosisPageRequest(DaraModel):
         self.instance_id = instance_id
         # The node ID.
         # 
-        # >  You must specify the node ID if your database instance is a PolarDB for MySQL, PolarDB for PostgreSQL (Compatible with Oracle), or ApsaraDB for MongoDB instance.
+        # > You must specify the node ID if your database instance is a PolarDB for MySQL, PolarDB for PostgreSQL (Compatible with Oracle), or ApsaraDB for MongoDB instance.
         self.node_id = node_id
         # The page number. The value must be a positive integer. Default value: 1.
         # 

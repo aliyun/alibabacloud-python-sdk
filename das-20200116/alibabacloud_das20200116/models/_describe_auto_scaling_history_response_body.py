@@ -16,20 +16,19 @@ class DescribeAutoScalingHistoryResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The HTTP status code returned. The status code 200 indicates that the request was successful.
+        # The status code. A value of 200 indicates success.
         self.code = code
-        # The history of auto scaling.
+        # The elastic scaling history records.
         self.data = data
         # The returned message.
-        # 
-        # > If the request was successful, **Successful** is returned. Otherwise, an error message such as an error code is returned.
+        # > If the request is successful, **Successful** is returned. If the request fails, an error message such as an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The request was successful.
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -88,17 +87,17 @@ class DescribeAutoScalingHistoryResponseBodyData(DaraModel):
         spec_history: List[main_models.DescribeAutoScalingHistoryResponseBodyDataSpecHistory] = None,
         storage: List[Dict[str, Any]] = None,
     ):
-        # The history of automatic bandwidth scaling of ApsaraDB for Redis instances. This feature is not supported.
+        # The Redis bandwidth elastic scaling history records. This parameter is not supported.
         self.bandwidth = bandwidth
         # The instance ID.
         self.instance_id = instance_id
-        # The history of resource scale-out of ApsaraDB for Redis instances. This feature is not supported.
+        # The Redis resource scaling history records. This parameter is not supported.
         self.resource = resource
-        # The history of automatic shard scale-out of ApsaraDB for Redis instances. This feature is not supported.
+        # The Redis automatic shard scaling history records. This parameter is not supported.
         self.shard = shard
-        # The history of automatic performance scaling.
+        # The automatic performance extension history records.
         self.spec_history = spec_history
-        # The history of storage expansion. This feature is not supported.
+        # The storage expansion history records. This parameter is not supported.
         self.storage = storage
 
     def validate(self):
@@ -173,36 +172,34 @@ class DescribeAutoScalingHistoryResponseBodyDataSpecHistory(DaraModel):
         task_excute_status: bool = None,
         task_time: int = None,
     ):
-        # The error code returned by the scaling task. Valid values:
+        # The error code returned by the internal scaling task. Valid values:
         # 
-        # *   **Insufficient_Balance**: The account has insufficient balance or an unpaid order.
-        # *   **REACH_SPEC_UPPERBOUND**: The instance type reaches the upper limit.
-        # *   **Control_Error_Timeout_Msg**: The management task timed out.
-        # *   **Invoke_Rds_Api_Error_Msg**: Failed to call the ApsaraDB RDS API.
+        # - **Insufficient_Balance**: The account balance is insufficient or there are unpaid orders.
+        # - **REACH_SPEC_UPPERBOUND**: The upper limit of the instance specification has been reached.
+        # - **Control_Error_Timeout_Msg**: The control task timed out.
+        # - **Invoke_Rds_Api_Error_Msg**: Failed to call the RDS API.
         self.error_code = error_code
-        # The original number of CPU cores of the instance.
+        # The number of CPU cores of the original instance.
         self.origin_core = origin_core
         # The original instance type.
         self.origin_instance_class = origin_instance_class
-        # The original memory size of the instance. Unit: GB.
+        # The memory size of the original instance. Unit: GB.
         self.origin_memory = origin_memory
-        # The type of the automatic performance scaling task. Valid values:
-        # 
-        # *   **SCALE_UP**: automatic instance type scale-up task.
-        # *   **SCALE_DOWN**: automatic instance type scale-down task.
+        # The type of the automatic performance extension task. Valid values:
+        # - **SCALE_UP**: Automatic specification extension.
+        # - **SCALE_DOWN**: Automatic specification scale-down.
         self.scale_type = scale_type
-        # The destination number of CPU cores of the instance.
+        # The number of CPU cores of the target instance.
         self.target_core = target_core
-        # The destination instance type.
+        # The target instance type.
         self.target_instance_class = target_instance_class
-        # The destination memory size of the instance. Unit: GB.
+        # The memory size of the target instance. Unit: GB.
         self.target_memory = target_memory
-        # The status of the task. Valid values:
-        # 
-        # *   **true**: The task was successful.
-        # *   **false**: The task failed.
+        # The task execution status. Valid values:
+        # - **true**: The task was executed successfully.
+        # - **false**: The task failed.
         self.task_excute_status = task_excute_status
-        # The time when the task was run. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The task execution time. The value is a UNIX timestamp. Unit: milliseconds.
         self.task_time = task_time
 
     def validate(self):

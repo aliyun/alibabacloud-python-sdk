@@ -22,14 +22,15 @@ class GetMySQLAllSessionAsyncResponseBody(DaraModel):
         self.data = data
         # The returned message.
         # 
-        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+        # > If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.success = success
 
     def validate(self):
@@ -91,18 +92,21 @@ class GetMySQLAllSessionAsyncResponseBodyData(DaraModel):
     ):
         # Indicates whether the asynchronous request was complete. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.complete = complete
         # Indicates whether the asynchronous request failed. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.fail = fail
         # Indicates whether the asynchronous request was complete. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.is_finish = is_finish
         # The ID of the asynchronous request.
         self.result_id = result_id
@@ -110,9 +114,11 @@ class GetMySQLAllSessionAsyncResponseBodyData(DaraModel):
         self.session_data = session_data
         # The state of the asynchronous request. Valid values:
         # 
-        # *   **RUNNING**
-        # *   **SUCCESS**
-        # *   **FAIL**
+        # - **RUNNING**
+        # 
+        # - **SUCCESS**
+        # 
+        # - **FAIL**
         self.state = state
         # The time when the asynchronous request was made. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.timestamp = timestamp
@@ -312,7 +318,7 @@ class GetMySQLAllSessionAsyncResponseBodyDataSessionDataUserStats(DaraModel):
     ):
         # The number of active sessions within the account.
         # 
-        # >  If the type of the command executed in the session is Query or Execute and the session in the transaction is not terminated, the session is active.
+        # > If the type of the command executed in the session is Query or Execute and the session in the transaction is not terminated, the session is active.
         self.active_count = active_count
         # The database account.
         self.key = key
@@ -393,7 +399,7 @@ class GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList(DaraModel):
         self.session_id = session_id
         # The SQL template ID.
         # 
-        # >  This parameter is returned only when you use a PolarDB-X 2.0 instance.
+        # > This parameter is returned only when you use a PolarDB-X 2.0 instance.
         self.sql_template_id = sql_template_id
         # The SQL statement executed in the session.
         self.sql_text = sql_text
@@ -507,7 +513,7 @@ class GetMySQLAllSessionAsyncResponseBodyDataSessionDataDbStats(DaraModel):
     ):
         # The number of active sessions of the database.
         # 
-        # >  If the type of the command executed in the session is Query or Execute and the session in the transaction is not terminated, the session is active.
+        # > If the type of the command executed in the session is Query or Execute and the session in the transaction is not terminated, the session is active.
         self.active_count = active_count
         # The database name.
         self.key = key
@@ -573,7 +579,7 @@ class GetMySQLAllSessionAsyncResponseBodyDataSessionDataClientStats(DaraModel):
     ):
         # The number of active sessions that belong to the client IP address.
         # 
-        # >  If the type of the command executed in the session is Query or Execute and the session in the transaction is not terminated, the session is active.
+        # > If the type of the command executed in the session is Query or Execute and the session in the transaction is not terminated, the session is active.
         self.active_count = active_count
         # The IP address of the client.
         self.key = key

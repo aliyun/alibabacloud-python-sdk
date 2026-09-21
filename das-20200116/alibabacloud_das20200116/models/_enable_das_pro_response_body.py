@@ -20,14 +20,15 @@ class EnableDasProResponseBody(DaraModel):
         self.data = data
         # The returned message.
         # 
-        # >  If the request was successful, **Successful** is returned. If the request failed, an error message that contains information such as an error code is returned.
+        # > If the request was successful, **Successful** is returned. If the request failed, an error message that contains information such as an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.success = success
         # The reserved parameter.
         self.synchro = synchro

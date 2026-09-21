@@ -22,14 +22,15 @@ class GetAsyncErrorRequestListByCodeResponseBody(DaraModel):
         self.data = data
         # The returned message.
         # 
-        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+        # > If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.success = success
 
     def validate(self):
@@ -91,18 +92,21 @@ class GetAsyncErrorRequestListByCodeResponseBodyData(DaraModel):
     ):
         # Indicates whether the asynchronous request was complete.
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.complete = complete
         # Indicates whether the asynchronous request failed. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.fail = fail
         # Indicates whether the asynchronous request was complete. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.is_finish = is_finish
         # The instance ID.
         self.result = result
@@ -110,9 +114,11 @@ class GetAsyncErrorRequestListByCodeResponseBodyData(DaraModel):
         self.result_id = result_id
         # The state of the asynchronous request. Valid values:
         # 
-        # *   **RUNNING**
-        # *   **SUCCESS**
-        # *   **FAIL**
+        # - **RUNNING**
+        # 
+        # - **SUCCESS**
+        # 
+        # - **FAIL**
         self.state = state
         # The time when the asynchronous request was made. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.timestamp = timestamp

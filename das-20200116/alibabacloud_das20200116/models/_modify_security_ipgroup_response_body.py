@@ -16,11 +16,21 @@ class ModifySecurityIPGroupResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The status code.
         self.code = code
-        # ListResult<InstanceSSL>
+        # The returned data.
         self.data = data
+        # The returned message.
+        # 
+        # > If the request is successful, **Successful** is returned. If the request fails, an error message is returned, such as an error code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful:
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -74,6 +84,7 @@ class ModifySecurityIPGroupResponseBodyData(DaraModel):
         self,
         global_security_ipgroup: List[main_models.ModifySecurityIPGroupResponseBodyDataGlobalSecurityIPGroup] = None,
     ):
+        # The information about the cross-product whitelist template.
         self.global_security_ipgroup = global_security_ipgroup
 
     def validate(self):
@@ -114,11 +125,21 @@ class ModifySecurityIPGroupResponseBodyDataGlobalSecurityIPGroup(DaraModel):
         security_ip_type: str = None,
         whitelist_net_type: str = None,
     ):
+        # The IP addresses in the whitelist template.
+        # 
+        # > Separate multiple IP addresses with commas. All IP address whitelists support a combined total of 1,000 IP addresses or address segments.
         self.gip_list = gip_list
+        # The name of the IP address whitelist template.
         self.global_ig_name = global_ig_name
+        # The ID of the IP address whitelist template.
         self.global_security_group_id = global_security_group_id
+        # The region ID.
+        # 
+        # Example: cn-hangzhou
         self.region_id = region_id
+        # The IP type.
         self.security_ip_type = security_ip_type
+        # The network type of the whitelist.
         self.whitelist_net_type = whitelist_net_type
 
     def validate(self):

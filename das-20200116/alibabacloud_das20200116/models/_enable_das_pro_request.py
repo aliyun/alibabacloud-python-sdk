@@ -17,15 +17,19 @@ class EnableDasProRequest(DaraModel):
         self.instance_id = instance_id
         # The storage duration of SQL Explorer data. Unit: day. Default value: **30**. Valid values:
         # 
-        # *   **30**
-        # *   **180**
-        # *   **365**
-        # *   **1095**
-        # *   **1825**
+        # - **30**
+        # 
+        # - **180**
+        # 
+        # - **365**
+        # 
+        # - **1095**
+        # 
+        # - **1825**
         self.sql_retention = sql_retention
         # The ID of the Alibaba Cloud account that is used to create the database instance.
         # 
-        # >  This parameter is optional. The system can automatically obtain the account ID based on the value of InstanceId when you call this operation.
+        # > This parameter is optional. The system can automatically obtain the account ID based on the value of InstanceId when you call this operation.
         self.user_id = user_id
 
     def validate(self):

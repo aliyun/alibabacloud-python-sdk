@@ -14,20 +14,19 @@ class GetSqlOptimizeAdviceResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The HTTP status code returned.
+        # The status code returned.
         self.code = code
-        # The detailed information, including the error codes and the number of entries that are returned.
+        # The details, including the total number of entries and error codes.
         self.data = data
-        # The returned message.
-        # 
-        # >  If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
+        # The message returned for the request.
+        # >If the request is successful, Successful is returned. If the request fails, an error message is returned, such as an error code.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request is successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: successful.
+        # - **false**: failed.
         self.success = success
 
     def validate(self):
@@ -86,26 +85,25 @@ class GetSqlOptimizeAdviceResponseBodyData(DaraModel):
         status_code: str = None,
         task_id: str = None,
     ):
-        # The time when the task was created. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The time when the task was created. The value is a UNIX timestamp. Unit: milliseconds.
         self.create_time = create_time
-        # The URL that is used to download the file.
+        # The download URL of the file.
         self.download_url = download_url
-        # The time when the file expires. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-        # 
-        # >  The file expires three days after the task is created.
+        # The time when the file expires. The value is a UNIX timestamp. Unit: milliseconds.
+        # >The file expires three days after the task is created.
         self.expire_time = expire_time
-        # The status of the task. Valid values:
+        # The task status. Valid values:
         # 
-        # *   **INIT**: The task is being initialized.
-        # *   **RUNNING**: The task is running.
-        # *   **FINISH**: The task is complete.
-        # *   **FAILED**: The task failed.
+        # - **INIT**: initializing.
+        # - **RUNNING**: running.
+        # - **FINISH**: completed.
+        # - **FAILED**: failed.
         self.status = status
-        # The status code of the task. Valid values:
+        # The task status code. Valid values:
         # 
-        # *   **NO_DATA**: No data is returned.
-        # *   **INTERNAL_ERROR**: An internal error occurred.
-        # *   **SUCCESS**: The task is successful.
+        # - **NO_DATA**: no data available.
+        # - **INTERNAL_ERROR**: internal error.
+        # - **SUCCESS**: successful.
         self.status_code = status_code
         # The task ID.
         self.task_id = task_id

@@ -9,7 +9,7 @@ class DescribeSqlLogStatisticRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
-        # The ID of the database instance.
+        # The database instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

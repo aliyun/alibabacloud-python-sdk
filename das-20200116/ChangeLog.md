@@ -1,3 +1,30 @@
+2026-09-21 Version: 4.0.0
+- Support API DescribeAuditLogs.
+- Support API DescribeDasOpsConfig.
+- Support API DescribeSqlInsightStatistic.
+- Support API ModifyDasOpsConfig.
+- Support API ModifyForwardSqlLogConfig.
+- Update API Chat: add request parameters Resume.
+- Update API Chat: add response parameters Body.AgentId.
+- Update API Chat: add response parameters Body.Kind.
+- Update API Chat: add response parameters Body.Label.
+- Update API Chat: add response parameters Body.OriginatingToolCallId.
+- Update API Chat: add response parameters Body.ParentAgentId.
+- Update API Chat: add response parameters Body.StepStatus.
+- Update API Chat: add response parameters Body.Timestamp.
+- Update API Chat: add response parameters Body.ToolCallError.
+- Update API DescribeErrorLogRecords: add response parameters Body.Data.Logs.$.Db.
+- Update API DescribeErrorLogRecords: add response parameters Body.Data.Logs.$.User.
+- Update API DescribeErrorLogRecords: add response parameters Body.Data.Logs.$.UserIp.
+- Update API DescribeSlowLogRecords: add response parameters Body.Data.Logs.$.ExtText.
+- Update API DescribeSqlLogConfig: add response parameters Body.Data.Enable.
+- Update API DescribeSqlLogConfig: add response parameters Body.Data.SupportSecurityAudit.
+- Update API GetFullRequestSampleByInstanceId: delete request parameters UserId.
+- Update API GetInstanceGroupInspectReportDetail: add request parameters ReportType.
+- Update API GetInstanceGroupInspectReportList: add request parameters ReportType.
+- Update API GetYaoChiAgent: add request parameters ImageKeys.
+
+
 2026-05-08 Version: 3.0.0
 - Support API Chat.
 - Delete API GetEndpointSwitchTask.

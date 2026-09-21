@@ -16,10 +16,19 @@ class DescribeErrorLogRecordsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The returned status code.
         self.code = code
+        # The data details.
         self.data = data
+        # The returned message.
+        # > If the request is successful, **Successful** is returned. If the request fails, an error message that contains information such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # - **true**: The request is successful.
+        # - **false**: The request fails.
         self.success = success
 
     def validate(self):
@@ -79,12 +88,19 @@ class DescribeErrorLogRecordsResponseBodyData(DaraModel):
         start_time: str = None,
         total_records: int = None,
     ):
+        # The end time of the query. The time is in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
         self.end_time = end_time
+        # The total number of log entries returned.
         self.items_numbers = items_numbers
+        # The log details.
         self.logs = logs
+        # The maximum number of records per page.
         self.max_records_per_page = max_records_per_page
+        # The page number of the current query.
         self.page_numbers = page_numbers
+        # The start time of the query. The time is in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
         self.start_time = start_time
+        # The total number of log entries within the query time range.
         self.total_records = total_records
 
     def validate(self):
@@ -159,12 +175,46 @@ class DescribeErrorLogRecordsResponseBodyDataLogs(DaraModel):
         content: str = None,
         create_time: str = None,
         dbinstance_name: str = None,
+        db: str = None,
+        user: str = None,
+        user_ip: str = None,
     ):
+        # The log category. Valid values:
+        # - **NETWORK**: network connectivity log.
+        # - **ACCESS**: access control log.
+        # - **-**: general log.
+        # - **COMMAND**: slow log.
+        # - **SHARDING**: cluster log.
+        # - **STORAGE**: storage engine log.
+        # - **CONNPOOL**: connection pool log.
+        # - **ASIO**: asynchronous I/O log.
+        # - **WRITE**: slow update log.
+        # 
+        # > Only ApsaraDB for MongoDB instances are supported.
         self.category = category
+        # The log connection information.
+        # 
+        # > Only ApsaraDB for MongoDB instances are supported.
         self.conn_info = conn_info
+        # The error log content.
         self.content = content
+        # The time when the error log was generated. The value is a UNIX timestamp in milliseconds.
+        # 
+        # >Notice: For ApsaraDB for MongoDB instances, the time is in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
         self.create_time = create_time
+        # The node ID.
+        # 
+        # > Only ApsaraDB for MongoDB instances are supported.
         self.dbinstance_name = dbinstance_name
+        # The database name.
+        # > Only certain special logs of ApsaraDB RDS for PostgreSQL and PolarDB for PostgreSQL instances are supported.
+        self.db = db
+        # The database account.
+        # > Only certain special logs of ApsaraDB RDS for PostgreSQL and PolarDB for PostgreSQL instances are supported.
+        self.user = user
+        # The client IP address.
+        # > Only certain special logs of ApsaraDB RDS for PostgreSQL and PolarDB for PostgreSQL instances are supported.
+        self.user_ip = user_ip
 
     def validate(self):
         pass
@@ -189,6 +239,15 @@ class DescribeErrorLogRecordsResponseBodyDataLogs(DaraModel):
         if self.dbinstance_name is not None:
             result['DBInstanceName'] = self.dbinstance_name
 
+        if self.db is not None:
+            result['Db'] = self.db
+
+        if self.user is not None:
+            result['User'] = self.user
+
+        if self.user_ip is not None:
+            result['UserIp'] = self.user_ip
+
         return result
 
     def from_map(self, m: dict = None):
@@ -207,6 +266,15 @@ class DescribeErrorLogRecordsResponseBodyDataLogs(DaraModel):
 
         if m.get('DBInstanceName') is not None:
             self.dbinstance_name = m.get('DBInstanceName')
+
+        if m.get('Db') is not None:
+            self.db = m.get('Db')
+
+        if m.get('User') is not None:
+            self.user = m.get('User')
+
+        if m.get('UserIp') is not None:
+            self.user_ip = m.get('UserIp')
 
         return self
 

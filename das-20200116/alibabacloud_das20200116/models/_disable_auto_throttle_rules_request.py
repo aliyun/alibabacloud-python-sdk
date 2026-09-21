@@ -14,7 +14,7 @@ class DisableAutoThrottleRulesRequest(DaraModel):
         self.console_context = console_context
         # The database instance IDs.
         # 
-        # >  Set this parameter to a JSON array that consists of multiple instance IDs. Separate instance IDs with commas (,). Example: `[\\"Instance ID1\\",\\"Instance ID2\\"]`.
+        # > Set this parameter to a JSON array that consists of multiple instance IDs. Separate instance IDs with commas (,). Example: `[\\"Instance ID1\\",\\"Instance ID2\\"]`.
         # 
         # This parameter is required.
         self.instance_ids = instance_ids

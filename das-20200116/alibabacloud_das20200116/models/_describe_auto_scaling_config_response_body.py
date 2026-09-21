@@ -14,20 +14,20 @@ class DescribeAutoScalingConfigResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The HTTP status code returned.
+        # The returned status code.
         self.code = code
-        # The configurations of the auto scaling feature for instances.
+        # The elastic scaling feature configuration of the instance.
         self.data = data
         # The returned message.
         # 
-        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+        # > If the request is successful, **Successful** is returned. If the request fails, an error message such as an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request is successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The request is successful.
+        # - **false**: The request fails.
         self.success = success
 
     def validate(self):
@@ -85,15 +85,15 @@ class DescribeAutoScalingConfigResponseBodyData(DaraModel):
         spec: main_models.DescribeAutoScalingConfigResponseBodyDataSpec = None,
         storage: main_models.DescribeAutoScalingConfigResponseBodyDataStorage = None,
     ):
-        # The configurations of the automatic bandwidth adjustment feature.
+        # The bandwidth elastic scaling feature configuration of the instance.
         self.bandwidth = bandwidth
-        # The configurations of the auto scaling feature for local resources.
+        # The local resource elastic scaling feature configuration of the instance.
         self.resource = resource
-        # The configurations of the auto scaling feature for shards.
+        # The shard elastic scaling feature configuration of the instance.
         self.shard = shard
-        # The configurations of the auto scaling feature for specifications.
+        # The specification elastic scaling feature configuration.
         self.spec = spec
-        # The configurations of the automatic storage expansion feature.
+        # The Automatic storage scaling feature configuration of the instance.
         self.storage = storage
 
     def validate(self):
@@ -161,14 +161,14 @@ class DescribeAutoScalingConfigResponseBodyDataStorage(DaraModel):
         max_storage: int = None,
         upgrade: bool = None,
     ):
-        # The average storage usage threshold that triggers automatic storage expansion. Unit: %.
+        # The average storage utilization threshold that triggers automatic storage scaling. Unit: %.
         self.disk_usage_upper_threshold = disk_usage_upper_threshold
-        # The maximum storage size. Unit: GB.
+        # The maximum storage capacity. Unit: GB.
         self.max_storage = max_storage
-        # Indicates whether the automatic storage expansion feature is enabled. Valid values:
+        # Indicates whether automatic storage scaling is enabled. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Enabled.
+        # - **false**: Disabled.
         self.upgrade = upgrade
 
     def validate(self):
@@ -215,44 +215,53 @@ class DescribeAutoScalingConfigResponseBodyDataSpec(DaraModel):
         observation_window_size: str = None,
         upgrade: bool = None,
     ):
-        # The quiescent period. The return value consists of a numeric value and a time unit suffix. Valid values of the time unit suffix:
+        # The cool-down period. The value consists of a number and a time unit suffix. The time unit suffixes are:
         # 
-        # *   **s**: seconds.
-        # *   **m**: minutes.
-        # *   **h**: hours.
-        # *   **d**: days.
+        # - **s**: seconds.
+        # - **m**: minutes.
+        # - **h**: hours.
+        # - **d**: days. 
         # 
-        # >  A value of **5m** indicates 5 minutes.
+        # > For example, **5m** indicates 5 minutes.
         self.cool_down_time = cool_down_time
         # The average CPU utilization threshold that triggers automatic specification scale-up. Unit: %.
         self.cpu_usage_upper_threshold = cpu_usage_upper_threshold
-        # Indicates whether the automatic specification scale-down feature is enabled. Valid values:
+        # Indicates whether automatic specification scale-down is enabled. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Enabled.
+        # - **false**: Disabled.
         self.downgrade = downgrade
-        # The maximum number of read-only nodes of the instance.
+        # The maximum number of read-only nodes for the instance.
         self.max_read_only_nodes = max_read_only_nodes
-        # The maximum specifications to which the cluster can be scaled up. For more information about the specifications of each type of supported database instances, see the following topics:
+        # The maximum specification for automatic scale-up. For details, refer to the product specification documentation for each database instance:
+        # <props="china">
         # 
-        # *   PolarDB for MySQL Cluster Edition instances: [Compute node specifications of PolarDB for MySQL Enterprise Edition](https://help.aliyun.com/document_detail/102542.html)
-        # *   ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or ESSDs: [Specifications](https://help.aliyun.com/document_detail/276974.html)
+        # - For PolarDB for MySQL Cluster Edition, see [Compute node specifications](https://help.aliyun.com/document_detail/102542.html).
+        # - For ApsaraDB RDS for MySQL high-availability series with cloud disks, see [Product specifications](https://help.aliyun.com/document_detail/276974.html).
+        # - For Redis community cloud disk edition, see [Instance specifications](https://help.aliyun.com/document_detail/144986.html).
+        # 
+        # 
+        # 
+        # <props="intl">
+        # 
+        # - For PolarDB for MySQL Cluster Edition, see [Compute node specifications](https://help.aliyun.com/document_detail/102542.html).
+        # - For ApsaraDB RDS for MySQL high-availability series with cloud disks, see [Product specifications](https://help.aliyun.com/document_detail/276974.html).
         self.max_spec = max_spec
-        # The average memory usage threshold that triggers automatic specification scale-up. Unit: %.
+        # The average memory utilization threshold that triggers automatic specification scale-up. Unit: %.
         self.mem_usage_upper_threshold = mem_usage_upper_threshold
-        # The observation window. The return value consists of a numeric value and a time unit suffix. Valid values of the time unit suffix:
+        # The observation window. The value consists of a number and a time unit suffix. The time unit suffixes are:
         # 
-        # *   **s**: seconds.
-        # *   **m**: minutes.
-        # *   **h**: hours.
-        # *   **d**: days.
+        # - **s**: seconds.
+        # - **m**: minutes.
+        # - **h**: hours.
+        # - **d**: days. 
         # 
-        # >  A value of **5m** indicates 5 minutes.
+        # > For example, **5m** indicates 5 minutes.
         self.observation_window_size = observation_window_size
-        # Indicates whether the automatic specification scale-up feature is enabled. Valid values:
+        # Indicates whether automatic specification scale-up is enabled. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Enabled.
+        # - **false**: Disabled.
         self.upgrade = upgrade
 
     def validate(self):
@@ -329,41 +338,40 @@ class DescribeAutoScalingConfigResponseBodyDataShard(DaraModel):
         upgrade: bool = None,
         upgrade_observation_window_size: str = None,
     ):
-        # Indicates whether the feature of automatically removing shards is enabled. Valid values:
+        # Indicates whether automatic shard removal is enabled. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Enabled.
+        # - **false**: Disabled.
         self.downgrade = downgrade
-        # The observation window of the feature of automatically removing shards. The return value consists of a numeric value and a time unit suffix. Valid values of the time unit suffix:
+        # The observation window for automatic shard removal. The value consists of a number and a time unit suffix. The time unit suffixes are:
+        # - **s**: seconds.
+        # - **m**: minutes.
+        # - **h**: hours.
+        # - **d**: days. 
         # 
-        # *   **s**: seconds.
-        # *   **m**: minutes.
-        # *   **h**: hours.
-        # *   **d**: days.
-        # 
-        # >  A value of **1d** indicates one day.
+        # > For example, **1d** indicates 1 day.
         self.downgrade_observation_window_size = downgrade_observation_window_size
-        # The maximum number of shards in the instance.
+        # The maximum total number of shards for the instance.
         self.max_shards = max_shards
-        # The average memory usage threshold that triggers automatic removal of shards. Unit: %.
+        # The average memory utilization threshold that triggers automatic shard removal. Unit: %.
         self.mem_usage_lower_threshold = mem_usage_lower_threshold
-        # The average memory usage threshold that triggers automatic adding of shards. Unit: %.
+        # The average memory utilization threshold that triggers automatic shard addition. Unit: %.
         self.mem_usage_upper_threshold = mem_usage_upper_threshold
-        # The minimum number of shards in the instance.
+        # The minimum total number of shards for the instance.
         self.min_shards = min_shards
-        # Indicates whether the feature of automatically adding shards is enabled. Valid values:
+        # Indicates whether automatic shard addition is enabled. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Enabled.
+        # - **false**: Disabled.
         self.upgrade = upgrade
-        # The observation window of the feature of automatically adding shards. The return value consists of a numeric value and a time unit suffix. Valid values of the time unit suffix:
+        # The observation window for automatic shard addition. The value consists of a number and a time unit suffix. The time unit suffixes are:
         # 
-        # *   **s**: seconds.
-        # *   **m**: minutes.
-        # *   **h**: hours.
-        # *   **d**: days.
+        # - **s**: seconds.
+        # - **m**: minutes.
+        # - **h**: hours.
+        # - **d**: days. 
         # 
-        # >  A value of **5m** indicates 5 minutes.
+        # > For example, **5m** indicates 5 minutes.
         self.upgrade_observation_window_size = upgrade_observation_window_size
 
     def validate(self):
@@ -437,32 +445,32 @@ class DescribeAutoScalingConfigResponseBodyDataResource(DaraModel):
         enable: bool = None,
         upgrade_observation_window_size: str = None,
     ):
-        # The scale-out step size of CPU.
+        # The CPU scale-up increment.
         self.cpu_step = cpu_step
-        # The average CPU utilization threshold that triggers automatic scale-out of local resources. Unit: %.
+        # The average CPU utilization threshold that triggers automatic local resource scale-up. Unit: %.
         self.cpu_usage_upper_threshold = cpu_usage_upper_threshold
-        # The observation window of the automatic scale-in feature for local resources. The return value consists of a numeric value and a time unit suffix. Valid values of the time unit suffix:
+        # The scale-down observation window. The value consists of a number and a time unit suffix. The time unit suffixes are:
         # 
-        # *   **s**: seconds.
-        # *   **m**: minutes.
-        # *   **h**: hours.
-        # *   **d**: days.
+        # - **s**: seconds.
+        # - **m**: minutes.
+        # - **h**: hours.
+        # - **d**: days. 
         # 
-        # >  A value of **5m** indicates 5 minutes.
+        # > For example, **5m** indicates 5 minutes.
         self.downgrade_observation_window_size = downgrade_observation_window_size
-        # Indicates whether the auto scaling feature is enabled for local resources. Valid values:
+        # Indicates whether local resource elastic scaling is enabled. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Enabled.
+        # - **false**: Disabled.
         self.enable = enable
-        # The observation window of the automatic scale-out feature for local resources. The return value consists of a numeric value and a time unit suffix. Valid values of the time unit suffix:
+        # The scale-up observation window. The value consists of a number and a time unit suffix. The time unit suffixes are:
         # 
-        # *   **s**: seconds.
-        # *   **m**: minutes.
-        # *   **h**: hours.
-        # *   **d**: days.
+        # - **s**: seconds.
+        # - **m**: minutes.
+        # - **h**: hours.
+        # - **d**: days. 
         # 
-        # >  A value of **5m** indicates 5 minutes.
+        # > For example, **5m** indicates 5 minutes.
         self.upgrade_observation_window_size = upgrade_observation_window_size
 
     def validate(self):
@@ -520,26 +528,25 @@ class DescribeAutoScalingConfigResponseBodyDataBandwidth(DaraModel):
     ):
         # The average bandwidth usage threshold that triggers automatic bandwidth downgrade. Unit: %.
         self.bandwidth_usage_lower_threshold = bandwidth_usage_lower_threshold
-        # The average bandwidth usage threshold that triggers automatic bandwidth adjustment. Unit: %.
+        # The average bandwidth usage threshold that triggers automatic bandwidth upgrade. Unit: %.
         self.bandwidth_usage_upper_threshold = bandwidth_usage_upper_threshold
-        # Indicates whether the automatic bandwidth downgrade feature is enabled. Valid values:
+        # Indicates whether automatic bandwidth downgrade is enabled. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Enabled.
+        # - **false**: Disabled.
         self.downgrade = downgrade
-        # The observation window of the automatic bandwidth adjustment feature. The return value consists of a numeric value and a time unit suffix. Valid values of the time unit suffix:
+        # The observation window for automatic bandwidth upgrade. The value consists of a number and a time unit suffix. The time unit suffixes are:
         # 
-        # *   **s**: seconds.
-        # *   **m**: minutes.
-        # *   **h**: hours.
-        # *   **d**: days.
+        # - **s**: seconds.
+        # - **m**: minutes.
+        # - **h**: hours.
+        # - **d**: days. 
         # 
-        # >  A value of **5m** indicates 5 minutes.
+        # > For example, **5m** indicates 5 minutes.
         self.observation_window_size = observation_window_size
-        # Indicates whether the automatic bandwidth adjustment feature is enabled. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether automatic bandwidth upgrade is enabled. Valid values:
+        # - **true**: Enabled.
+        # - **false**: Disabled.
         self.upgrade = upgrade
 
     def validate(self):

@@ -20,7 +20,7 @@ class GetMongoDBCurrentOpRequest(DaraModel):
         self.instance_id = instance_id
         # The node ID.
         # 
-        # >  If you do not specify a node ID, the sessions of the primary node are queried by default.
+        # > If you do not specify a node ID, the sessions of the primary node are queried by default.
         self.node_id = node_id
         # A reserved parameter. You do not need to specify the parameter.
         self.role = role

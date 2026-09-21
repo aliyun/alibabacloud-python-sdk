@@ -8,14 +8,21 @@ class GetYaoChiAgentRequest(DaraModel):
     def __init__(
         self,
         extra_info: str = None,
+        image_keys: str = None,
         query: str = None,
         session_id: str = None,
         source: str = None,
     ):
+        # The additional information in JSON string format. This parameter is optional.
         self.extra_info = extra_info
+        self.image_keys = image_keys
+        # The natural language description of the question.
+        # 
         # This parameter is required.
         self.query = query
+        # The session ID in UUID string format. This parameter is optional. If you do not specify this parameter, a new session is created. To maintain context across a conversation, use the same session ID.
         self.session_id = session_id
+        # The cloud service source that specifies which cloud service the question belongs to. This parameter is optional. Default value: yaochi.
         self.source = source
 
     def validate(self):
@@ -28,6 +35,9 @@ class GetYaoChiAgentRequest(DaraModel):
             result = _map
         if self.extra_info is not None:
             result['ExtraInfo'] = self.extra_info
+
+        if self.image_keys is not None:
+            result['ImageKeys'] = self.image_keys
 
         if self.query is not None:
             result['Query'] = self.query
@@ -44,6 +54,9 @@ class GetYaoChiAgentRequest(DaraModel):
         m = m or dict()
         if m.get('ExtraInfo') is not None:
             self.extra_info = m.get('ExtraInfo')
+
+        if m.get('ImageKeys') is not None:
+            self.image_keys = m.get('ImageKeys')
 
         if m.get('Query') is not None:
             self.query = m.get('Query')

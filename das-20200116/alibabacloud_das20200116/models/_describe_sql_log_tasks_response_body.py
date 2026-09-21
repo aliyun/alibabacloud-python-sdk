@@ -16,20 +16,19 @@ class DescribeSqlLogTasksResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The response code.
+        # The returned status code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
         # The returned message.
-        # 
-        # >  If the request was successful, **Successful** is returned. If the request failed, an error message is returned.
+        # >If the request is successful, **Successful** is returned. If the request fails, an error message is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request is successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The request is successful.
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -86,13 +85,13 @@ class DescribeSqlLogTasksResponseBodyData(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
-        # The details of the data returned.
+        # The list of returned information.
         self.list = list
         # The page number.
         self.page_no = page_no
-        # The number of entries per page.
+        # The number of records per page.
         self.page_size = page_size
-        # The number of tasks.
+        # The total number of tasks.
         self.total = total
 
     def validate(self):
@@ -162,54 +161,55 @@ class DescribeSqlLogTasksResponseBodyDataList(DaraModel):
         task_id: str = None,
         task_type: str = None,
     ):
-        # The time when the analysis task was complete. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The analysis task completion time. The value is a UNIX timestamp in milliseconds.
         self.analysis_task_finish_time = analysis_task_finish_time
-        # The state of the analysis task.
+        # The analysis task status.
         # 
-        # >  This parameter is a system parameter. You do not need to pay attention to the parameter.
+        # > This is an internal system parameter. You do not need to pay attention to it.
         self.analysis_task_status = analysis_task_status
-        # The time when the task was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The task creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The time when the task ended. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The task end time. The value is a UNIX timestamp in milliseconds.
         self.end = end
-        # Indicates whether the task expired. Valid values:
+        # Indicates whether the task has expired. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The task has expired.
+        # - **false**: The task has not expired.
         self.expire = expire
-        # The filter parameters.
+        # The list of query filter conditions.
         self.filters = filters
+        # The VPC internal endpoint.
         self.inner_result = inner_result
-        # The ID of the database instance.
+        # The database instance ID.
         self.instance_id = instance_id
-        # The number of log records.
+        # The total number of logs.
         self.log_count = log_count
         # The task name.
         self.name = name
         # The task progress.
         self.progress = progress
-        # The URL that is returned if the value of TaskType is **Export**.
+        # The link address when the task type is **Export**.
         self.result = result
-        # The number of files that are scanned.
+        # The number of scanned files.
         self.scan_file_size = scan_file_size
-        # The time when the task started. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The task start time. The value is a UNIX timestamp in milliseconds.
         self.start = start
-        # The task state. Valid values:
+        # The task status. Valid values:
         # 
-        # *   **INIT**: The task is to be scheduled.
-        # *   **RUNNING**: The task is running.
-        # *   **FAILED**: The task failed.
-        # *   **CANCELED**: The task is canceled.
-        # *   **COMPLETED**: The task is complete.
+        # - **INIT**: Pending scheduling.
+        # - **RUNNING**: Running.
+        # - **FAILED**: Failed.
+        # - **CANCELED**: Canceled.
+        # - **COMPLETED**: Completed.
         # 
-        # >  If a task is in the **COMPLETED** state, you can view the results of the task.
+        # > When the task is in the **COMPLETED** state, you can view the results of the batch task.
         self.status = status
         # The task ID.
         self.task_id = task_id
         # The task type. Valid values:
         # 
-        # *   **Export**
-        # *   **Query**
+        # - **Export**: export task.
+        # - **Query**: query task.
         self.task_type = task_type
 
     def validate(self):
@@ -342,9 +342,9 @@ class DescribeSqlLogTasksResponseBodyDataListFilters(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The name of the filter parameter.
+        # The filter parameter.
         # 
-        # >  For more information about the filter parameters, see the **Valid values of Key** section of this topic.
+        # > For supported filter parameters and their values, refer to **Supplementary description of request parameters**.
         self.key = key
         # The value of the filter parameter.
         self.value = value

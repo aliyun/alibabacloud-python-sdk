@@ -16,11 +16,20 @@ class CreateSecurityIPGroupResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The returned status code.
         self.code = code
         # ListResult<InstanceSSL>
         self.data = data
+        # The returned message.
+        # 
+        # > If the request is successful, **Successful** is returned. If the request fails, an error message that contains information such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # - **true**: The request is successful.
+        # - **false**: The request fails.
         self.success = success
 
     def validate(self):
@@ -74,6 +83,7 @@ class CreateSecurityIPGroupResponseBodyData(DaraModel):
         self,
         global_security_ipgroup: List[main_models.CreateSecurityIPGroupResponseBodyDataGlobalSecurityIPGroup] = None,
     ):
+        # The cross-service whitelist template information.
         self.global_security_ipgroup = global_security_ipgroup
 
     def validate(self):
@@ -114,11 +124,28 @@ class CreateSecurityIPGroupResponseBodyDataGlobalSecurityIPGroup(DaraModel):
         security_ip_type: str = None,
         whitelist_net_type: str = None,
     ):
+        # The IP addresses in the whitelist template.
+        # 
+        # > Separate multiple IP addresses with commas (,). A maximum of 1000 IP addresses or CIDR blocks can be added across all IP whitelists.
         self.gip_list = gip_list
+        # The name of the IP whitelist template. The name must meet the following requirements:
+        # 
+        # - Contains only lowercase letters, digits, and underscores (_).
+        # 
+        # - Starts with a letter and ends with a letter or digit.
+        # 
+        # - Is 2 to 120 characters in length.
         self.global_ig_name = global_ig_name
+        # The ID of the IP whitelist template.
         self.global_security_group_id = global_security_group_id
+        # The region ID.
+        # 
+        # Example value:
+        # cn-hangzhou
         self.region_id = region_id
+        # The IP type.
         self.security_ip_type = security_ip_type
+        # The network type of the whitelist.
         self.whitelist_net_type = whitelist_net_type
 
     def validate(self):

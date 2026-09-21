@@ -15,9 +15,13 @@ class GetDasAgentSSEResponseBody(DaraModel):
         id: str = None,
         metadata: main_models.GetDasAgentSSEResponseBodyMetadata = None,
     ):
+        # The answer content.
         self.answer = answer
+        # The type of the returned answer information.
         self.event = event
+        # The session ID, which is the same as the SessionId in the request parameters.
         self.id = id
+        # The metadata.
         self.metadata = metadata
 
     def validate(self):
@@ -69,10 +73,15 @@ class GetDasAgentSSEResponseBodyMetadata(DaraModel):
         tool_name: str = None,
         tool_params: List[str] = None,
     ):
+        # The number of characters in the answer.
         self.char_count = char_count
+        # The error type returned when an exception occurs. This field is empty when no exception occurs.
         self.code = code
+        # The request ID.
         self.request_id = request_id
+        # The tool command that is called.
         self.tool_name = tool_name
+        # The tool parameters.
         self.tool_params = tool_params
 
     def validate(self):

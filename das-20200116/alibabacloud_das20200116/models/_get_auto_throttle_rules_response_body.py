@@ -22,14 +22,15 @@ class GetAutoThrottleRulesResponseBody(DaraModel):
         self.data = data
         # The returned message.
         # 
-        # >  If the request was successful, **Successful** is returned. If the request failed, an error message that contains information such as an error code is returned.
+        # > If the request was successful, **Successful** is returned. If the request failed, an error message that contains information such as an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.success = success
 
     def validate(self):
@@ -95,11 +96,11 @@ class GetAutoThrottleRulesResponseBodyData(DaraModel):
         self.enable_auto_throttle_list = enable_auto_throttle_list
         # The number of database instances that do not exist or for which the automatic SQL throttling feature has never been enabled.
         # 
-        # >  If a database instance does not exist, the instance has been released or the specified instance ID is invalid.
+        # > If a database instance does not exist, the instance has been released or the specified instance ID is invalid.
         self.never_enable_auto_throttle_or_released_instance_count = never_enable_auto_throttle_or_released_instance_count
         # The number of database instances that do not exist or for which the automatic SQL throttling feature has never been enabled.
         # 
-        # >  If a database instance does not exist, the instance has been released or the specified instance ID is invalid.
+        # > If a database instance does not exist, the instance has been released or the specified instance ID is invalid.
         self.never_enable_auto_throttle_or_released_instance_id_list = never_enable_auto_throttle_or_released_instance_id_list
         # The number of databases for which the automatic SQL throttling feature has been enabled.
         self.total_auto_throttle_rules_count = total_auto_throttle_rules_count
@@ -208,13 +209,15 @@ class GetAutoThrottleRulesResponseBodyDataTurnOffAutoThrottleList(DaraModel):
         # 
         # > Abnormal SQL statements use the same template as the SQL statements that need to be throttled.
         # 
-        # * **true**
-        # * **false**
+        # - **true**
+        # 
+        # - **false**
         self.auto_kill_session = auto_kill_session
         # The logical relationship between the CPU utilization threshold and the maximum number of active sessions. Valid values:
         # 
-        # * **AND**
-        # * **OR**
+        # - **AND**
+        # 
+        # - **OR**
         self.cpu_session_relation = cpu_session_relation
         # The CPU utilization threshold.
         self.cpu_usage = cpu_usage
@@ -226,8 +229,9 @@ class GetAutoThrottleRulesResponseBodyDataTurnOffAutoThrottleList(DaraModel):
         self.user_id = user_id
         # Indicates whether the automatic SQL throttling feature is enabled. Valid values:
         # 
-        # * **true**
-        # * **false**
+        # - **true**
+        # 
+        # - **false**
         self.visible = visible
 
     def validate(self):
@@ -337,13 +341,15 @@ class GetAutoThrottleRulesResponseBodyDataEnableAutoThrottleList(DaraModel):
         # 
         # > Abnormal SQL statements use the same template as the SQL statements that need to be throttled.
         # 
-        # * **true**
-        # * **false**
+        # - **true**
+        # 
+        # - **false**
         self.auto_kill_session = auto_kill_session
         # The logical relationship between the CPU utilization threshold and the maximum number of active sessions. Valid values:
         # 
-        # * **AND**
-        # * **OR**
+        # - **AND**
+        # 
+        # - **OR**
         self.cpu_session_relation = cpu_session_relation
         # The CPU utilization threshold.
         self.cpu_usage = cpu_usage
@@ -355,8 +361,9 @@ class GetAutoThrottleRulesResponseBodyDataEnableAutoThrottleList(DaraModel):
         self.user_id = user_id
         # Indicates whether the automatic SQL throttling feature is enabled. Valid values:
         # 
-        # * **true**
-        # * **false**
+        # - **true**
+        # 
+        # - **false**
         self.visible = visible
 
     def validate(self):

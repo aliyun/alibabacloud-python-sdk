@@ -10,8 +10,13 @@ class CreateLatestDeadLockAnalysisRequest(DaraModel):
         instance_id: str = None,
         node_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The node ID.
+        # 
+        # > For PolarDB for MySQL instances, you must specify the node ID.
         self.node_id = node_id
 
     def validate(self):

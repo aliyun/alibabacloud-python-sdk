@@ -12,10 +12,15 @@ class GetDasAgentSSERequest(DaraModel):
         query: str = None,
         session_id: str = None,
     ):
+        # Optional. By default, the default agent is used. You can also specify an agent that was generated after enabling the DAS Agent service or an agent that you manually created.
         self.agent_id = agent_id
+        # Deprecated parameter. The instance ID is passed through the Query field.
         self.instance_id = instance_id
+        # The natural language description for the query.
+        # 
         # This parameter is required.
         self.query = query
+        # Optional. The session ID in UUID string format. If not specified, a new session is created. To maintain context across conversations, use the same session ID.
         self.session_id = session_id
 
     def validate(self):

@@ -10,8 +10,12 @@ class DeleteSecurityIPGroupRequest(DaraModel):
         global_security_group_id: str = None,
         region_name: str = None,
     ):
+        # The ID of the IP whitelist template.
+        # 
         # This parameter is required.
         self.global_security_group_id = global_security_group_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_name = region_name
 

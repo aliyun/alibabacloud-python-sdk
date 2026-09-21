@@ -18,22 +18,27 @@ class DescribeDiagnosticReportListResponseBody(DaraModel):
         self.code = code
         # The information of the diagnostics reports. Valid values:
         # 
-        # *   **total**: the number of diagnostics reports.
-        # *   **score**: the health score.
-        # *   **diagnosticTime**: the time when the diagnostics report was generated. The time is displayed in UTC.
-        # *   **startTime**: the start time of the query. The time is displayed in UTC.
-        # *   **endTime**: the end time of the query. The time is displayed in UTC.
+        # - **total**: the number of diagnostics reports.
+        # 
+        # - **score**: the health score.
+        # 
+        # - **diagnosticTime**: the time when the diagnostics report was generated. The time is displayed in UTC.
+        # 
+        # - **startTime**: the start time of the query. The time is displayed in UTC.
+        # 
+        # - **endTime**: the end time of the query. The time is displayed in UTC.
         self.data = data
         # The returned message.
         # 
-        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+        # > If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.success = success
         # The reserved parameter.
         self.synchro = synchro

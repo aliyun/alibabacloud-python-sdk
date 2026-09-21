@@ -23,45 +23,45 @@ class AddHDMInstanceRequest(DaraModel):
     ):
         # The database engine. Valid values:
         # 
-        # *   **MySQL**
-        # *   **PostgreSQL**
-        # *   **SQLServer**
-        # *   **PolarDBMySQL**
-        # *   **PolarDBPostgreSQL**
-        # *   **Redis**
-        # *   **MongoDB**
-        # *   **PolarDBOracle**
-        # *   **PolarDBX**
+        # - **MySQL**
+        # - **PostgreSQL**
+        # - **SQLServer**
+        # - **PolarDBMySQL**
+        # - **PolarDBPostgreSQL**
+        # - **Redis**
+        # - **MongoDB**
+        # - **PolarDBOracle**
+        # - **PolarDBX**
         self.engine = engine
         # The reserved parameter.
         self.flush_account = flush_account
-        # The name of the instance.
+        # The instance name.
         self.instance_alias = instance_alias
-        # The type of the instance on which the database is deployed. Valid values:
+        # The database product to which the instance belongs. Valid values:
         # 
-        # *   **RDS**: an Alibaba Cloud database instance.
-        # *   **ECS**: an Elastic Compute Service (ECS) instance on which a self-managed database is deployed.
-        # *   **IDC**: a self-managed database instance that is not deployed on Alibaba Cloud.
+        # - **RDS**: cloud instance.
+        # - **ECS**: self-managed instance on ECS.
+        # - **IDC**: self-managed instance not on a public cloud.
         # 
-        # >  IDC refers to your data center.
+        # > IDC stands for Internet Data Center.
         # 
         # This parameter is required.
         self.instance_area = instance_area
         # The instance ID.
         self.instance_id = instance_id
-        # The endpoint that is used to access the instance over internal networks.
+        # The internal endpoint of the instance to be connected.
         self.ip = ip
         # The network type of the instance.
         self.network_type = network_type
-        # The password for the username.
+        # The password of the username.
         self.password = password
-        # The port that is used to access the instance over internal networks.
+        # The internal network connection port of the instance.
         self.port = port
-        # The ID of the region in which the instance resides.
+        # The region in which the instance resides.
         self.region = region
-        # The username that is used to log on to the database.
+        # The username.
         self.username = username
-        # The virtual private cloud (VPC) ID.
+        # VPC ID。
         self.vpc_id = vpc_id
         # The reserved parameter.
         self.context = context

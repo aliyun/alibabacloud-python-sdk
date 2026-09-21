@@ -21,16 +21,19 @@ class GetQueryOptimizeExecErrorStatsRequest(DaraModel):
     ):
         # Specifies whether to sort the returned entries in ascending order. Default value: **true**. Valid values:
         # 
-        # *   **true**: sorts the returned entries in ascending order.
-        # *   **false**: does not sort the returned entries in ascending order.
+        # - **true**: sorts the returned entries in ascending order.
+        # 
+        # - **false**: does not sort the returned entries in ascending order.
         self.asc = asc
         # The name of the database to be queried.
         self.db_names = db_names
         # The database engine. Valid values:
         # 
-        # *   **MySQL**
-        # *   **PolarDBMySQL**
-        # *   **PostgreSQL**
+        # - **MySQL**
+        # 
+        # - **PolarDBMySQL**
+        # 
+        # - **PostgreSQL**
         # 
         # This parameter is required.
         self.engine = engine
@@ -40,8 +43,9 @@ class GetQueryOptimizeExecErrorStatsRequest(DaraModel):
         self.keywords = keywords
         # The logical relationship between multiple keywords. Valid values:
         # 
-        # *   **or**
-        # *   **and**
+        # - **or**
+        # 
+        # - **and**
         self.logical_operator = logical_operator
         # The field by which to sort the returned entries. Only error_count is supported, which specifies that the entries are sorted based on the number of failed executions.
         self.order_by = order_by
@@ -55,13 +59,15 @@ class GetQueryOptimizeExecErrorStatsRequest(DaraModel):
         self.page_size = page_size
         # The region in which the instance resides. Valid values:
         # 
-        # *   **cn-china**: Chinese mainland
-        # *   **cn-hongkong**: China (Hong Kong)
-        # *   **ap-southeast-1**: Singapore
+        # - **cn-china**: Chinese mainland
         # 
-        # This parameter takes effect only if **InstanceIds** is left empty. If you leave **InstanceIds** empty, the system obtains data from the region set by **Region**. By default, Region is set to **cn-china**. If you specify **InstanceIds**, **Region** does not take effect and the system obtains data from the region in which the first specified instance resides.****
+        # - **cn-hongkong**: China (Hong Kong)
         # 
-        # >  Set this parameter to **cn-china** for the instances that are created in the regions in the Chinese mainland.
+        # - **ap-southeast-1**: Singapore
+        # 
+        # This parameter takes effect only if **InstanceIds** is left empty. If you leave **InstanceIds** empty, the system obtains data from the region set by **Region**. By default, Region is set to **cn-china**. If you specify **InstanceIds**, **Region** does not take effect and the system obtains data from the region in which the first specified instance resides.\\*\\*\\*\\*
+        # 
+        # > Set this parameter to **cn-china** for the instances that are created in the regions in the Chinese mainland.
         self.region = region
         # The time range to query. Specify the time in the UNIX timestamp format. Unit: milliseconds.
         # 

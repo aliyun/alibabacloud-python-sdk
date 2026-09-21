@@ -14,20 +14,18 @@ class DescribeSqlLogConfigResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The response code.
+        # The returned status code.
         self.code = code
-        # The data that is returned.
+        # The returned data.
         self.data = data
         # The returned message.
-        # 
-        # >  If the request was successful, **Successful** is returned. If the request failed, an error message is returned.
+        # >If the request is successful, **Successful** is returned. If the request fails, an error message is returned, such as an error code.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # * **true**: The request was successful.
+        # * **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -83,6 +81,7 @@ class DescribeSqlLogConfigResponseBodyData(DaraModel):
         cold_retention: int = None,
         cold_start_time: int = None,
         collector_version: str = None,
+        enable: bool = None,
         hot_enable: bool = None,
         hot_retention: int = None,
         hot_start_time: int = None,
@@ -96,84 +95,82 @@ class DescribeSqlLogConfigResponseBodyData(DaraModel):
         sql_log_state: str = None,
         sql_log_visible_time: int = None,
         support_migration: bool = None,
+        support_security_audit: bool = None,
         support_version: str = None,
         version: str = None,
     ):
-        # Indicates whether the cold data storage is enabled. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether cold data storage is enabled. Valid values:
+        # - **true**: Enabled.
+        # - **false**: Not enabled.
         self.cold_enable = cold_enable
-        # The number of days for which the SQL Explorer and Audit data is stored in cold storage.
+        # The cold data storage duration. Unit: days.
         self.cold_retention = cold_retention
-        # The time when the cold data storage was enabled. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The start time of cold data storage. The value is a UNIX timestamp. Unit: milliseconds.
         self.cold_start_time = cold_start_time
         # The collector version. Valid values:
-        # 
-        # *   **MYSQL_V0**
-        # *   **MYSQL_V1**
-        # *   **MYSQL_V2**
-        # *   **MYSQL_V3**
-        # *   **PG_V1**
-        # *   **rdspg_v1**
-        # *   **polarpg_v1**
+        # - **MYSQL_V0**: MySQL V0.
+        # - **MYSQL_V1**: MySQL V1.
+        # - **MYSQL_V2**: MySQL V2.
+        # - **MYSQL_V3**: MySQL V3.
+        # - **PG_V1**: PostgreSQL V1.
+        # - **rdspg_v1**: RDS PostgreSQL V1.
+        # - **polarpg_v1**: PolarDB for PostgreSQL V1.
         self.collector_version = collector_version
-        # Indicates whether the hot data storage is enabled. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether SQL Explorer is enabled. This parameter is an alias of SqlLogEnable.
+        self.enable = enable
+        # Indicates whether hot data storage is enabled. Valid values:
+        # - **true**: Enabled.
+        # - **false**: Not enabled.
         self.hot_enable = hot_enable
-        # The number of days for which the SQL Explorer and Audit data is stored in hot storage.
+        # The hot data storage duration. Unit: days.
         self.hot_retention = hot_retention
-        # The time when the hot data storage was enabled. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The start time of hot data storage. The value is a UNIX timestamp. Unit: milliseconds.
         self.hot_start_time = hot_start_time
         # A reserved parameter.
         self.log_filter = log_filter
-        # Indicates whether the SQL Explorer feature is enabled. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether SQL Explorer is enabled. Valid values:
+        # - **true**: Enabled.
+        # - **false**: Not enabled.
         self.request_enable = request_enable
-        # The time when the SQL Explorer feature was enabled. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The time when SQL Explorer was enabled. The value is a UNIX timestamp. Unit: milliseconds.
         self.request_start_time = request_start_time
-        # The time when DAS Enterprise Edition V1 expired. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The expiration time of DAS Enterprise Edition V1. The value is a UNIX timestamp. Unit: milliseconds.
         self.request_stop_time = request_stop_time
-        # The total storage duration of the SQL Explorer and Audit data. The value of this parameter is the sum of the values of **HotRetention** and **ColdRetention**. Unit: day.
+        # The total data storage duration, which is the sum of **HotRetention** and **ColdRetention**. Unit: days.
         self.retention = retention
         # Indicates whether DAS Enterprise Edition is enabled. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Enabled.
+        # - **false**: Not enabled.
         self.sql_log_enable = sql_log_enable
         # A reserved parameter.
         self.sql_log_source = sql_log_source
-        # The state of data migration. Valid values:
+        # The data migration status. Valid values:
         # 
-        # *   **FINISH**: The historical data is migrated.
-        # *   **RUNNING**: The historical data is being migrated.
-        # *   **FAILURE**: The historical data fails to be migrated.
+        # - **FINISH**: Historical data migration is complete.
+        # - **RUNNING**: Historical data migration is in progress.
+        # - **FAILURE**: Historical data migration failed.
         self.sql_log_state = sql_log_state
-        # The time when DAS Enterprise Edition was enabled. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The time when DAS Enterprise Edition was enabled. The value is a UNIX timestamp. Unit: milliseconds.
         self.sql_log_visible_time = sql_log_visible_time
         # A reserved parameter.
         self.support_migration = support_migration
-        # The latest version of DAS Enterprise Edition that supports the database instance. Valid values:
-        # 
-        # *   **SQL_LOG_V0**: DAS Enterprise Edition V0.
-        # *   **SQL_LOG_V1**: DAS Enterprise version V1.
-        # *   **SQL_LOG_V2**: DAS Enterprise Edition V2.
-        # *   **SQL_LOG_V3**: DAS Enterprise Edition V3.
-        # *   **SQL_LOG_NOT_ENABLE**: DAS Enterprise Edition is not enabled.
-        # *   **SQL_LOG_NOT_SUPPORT**: DAS Enterprise Edition is not supported.
+        # Indicates whether the engine and region of the current instance support security audit activation. This field only indicates product capability and does not indicate that security audit is already enabled.
+        self.support_security_audit = support_security_audit
+        # The latest DAS Enterprise Edition version supported by the current instance. Valid values:
+        # - **SQL_LOG_V0**: Enterprise Edition V0.
+        # - **SQL_LOG_V1**: Enterprise Edition V1.
+        # - **SQL_LOG_V2**: Enterprise Edition V2.
+        # - **SQL_LOG_V3**: Enterprise Edition V3.
+        # - **SQL_LOG_NOT_ENABLE**: Enterprise Edition is not enabled.
+        # - **SQL_LOG_NOT_SUPPORT**: Enterprise Edition is not supported.
         self.support_version = support_version
-        # The version of DAS Enterprise Edition that is enabled for the database instance. Valid values:
-        # 
-        # *   **SQL_LOG_V0**: DAS Enterprise Edition V0.
-        # *   **SQL_LOG_V1**: DAS Enterprise version V1.
-        # *   **SQL_LOG_V2**: DAS Enterprise Edition V2.
-        # *   **SQL_LOG_V3**: DAS Enterprise Edition V3.
-        # *   **SQL_LOG_NOT_ENABLE**: DAS Enterprise Edition is not enabled.
-        # *   **SQL_LOG_NOT_SUPPORT**: DAS Enterprise Edition is not supported.
+        # The current DAS Enterprise Edition version that is enabled. Valid values:
+        # - **SQL_LOG_V0**: Enterprise Edition V0.
+        # - **SQL_LOG_V1**: Enterprise Edition V1.
+        # - **SQL_LOG_V2**: Enterprise Edition V2.
+        # - **SQL_LOG_V3**: Enterprise Edition V3.
+        # - **SQL_LOG_NOT_ENABLE**: Enterprise Edition is not enabled.
+        # - **SQL_LOG_NOT_SUPPORT**: Enterprise Edition is not supported.
         self.version = version
 
     def validate(self):
@@ -195,6 +192,9 @@ class DescribeSqlLogConfigResponseBodyData(DaraModel):
 
         if self.collector_version is not None:
             result['CollectorVersion'] = self.collector_version
+
+        if self.enable is not None:
+            result['Enable'] = self.enable
 
         if self.hot_enable is not None:
             result['HotEnable'] = self.hot_enable
@@ -235,6 +235,9 @@ class DescribeSqlLogConfigResponseBodyData(DaraModel):
         if self.support_migration is not None:
             result['SupportMigration'] = self.support_migration
 
+        if self.support_security_audit is not None:
+            result['SupportSecurityAudit'] = self.support_security_audit
+
         if self.support_version is not None:
             result['SupportVersion'] = self.support_version
 
@@ -256,6 +259,9 @@ class DescribeSqlLogConfigResponseBodyData(DaraModel):
 
         if m.get('CollectorVersion') is not None:
             self.collector_version = m.get('CollectorVersion')
+
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
 
         if m.get('HotEnable') is not None:
             self.hot_enable = m.get('HotEnable')
@@ -295,6 +301,9 @@ class DescribeSqlLogConfigResponseBodyData(DaraModel):
 
         if m.get('SupportMigration') is not None:
             self.support_migration = m.get('SupportMigration')
+
+        if m.get('SupportSecurityAudit') is not None:
+            self.support_security_audit = m.get('SupportSecurityAudit')
 
         if m.get('SupportVersion') is not None:
             self.support_version = m.get('SupportVersion')

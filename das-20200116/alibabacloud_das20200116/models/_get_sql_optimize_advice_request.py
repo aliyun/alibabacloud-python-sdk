@@ -14,36 +14,35 @@ class GetSqlOptimizeAdviceRequest(DaraModel):
         region: str = None,
         start_dt: str = None,
     ):
-        # The reserved parameter.
+        # A reserved parameter.
         self.console_context = console_context
-        # The end date of the time range to query. Specify the date in the *yyyyMMdd* format. The time must be in UTC.
+        # The end date of the query. Format: <i>yyyyMMdd</i> (UTC).
         # 
-        # *   The default value of this parameter is one day before the current day.
-        # *   The value must be earlier than the current day. The interval between the start date and the end date cannot exceed 30 days.
+        # - If this parameter is left empty, the default value is the day before the current date.
+        # - You can only query data from the day before the current date or earlier. The interval between the start date and the end date cannot exceed 30 days.
         self.end_dt = end_dt
         # The database engine. Valid values:
         # 
-        # *   **MySQL**: ApsaraDB RDS for MySQL.
-        # *   **PolarDBMySQL**: PolarDB for MySQL.
+        # - **MySQL**: RDS MySQL.
+        # - **PolarDBMySQL**: PolarDB for MySQL.
         self.engine = engine
         # The instance ID.
-        # 
-        # >  You must specify the instance ID only if your database instance is an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster.
+        # >Only RDS MySQL and PolarDB for MySQL instances are supported.
         self.instance_ids = instance_ids
-        # The region in which the instance resides. Valid values:
+        # The region to which the instance belongs. Valid values:
         # 
-        # *   **cn-china**: Chinese mainland.
-        # *   **cn-hongkong**: China (Hong Kong).
-        # *   **ap-southeast-1**: Singapore.
+        # - **cn-china**: the Chinese mainland.
+        # - **cn-hongkong**: Hong Kong (China).
+        # - **ap-southeast-1**: Singapore.
         # 
-        # This parameter takes effect only if **InstanceIds** is left empty. If you leave **InstanceIds** empty, the system obtains data from the region specified by **Region**. By default, Region is set to **cn-china**. If you specify **InstanceIds**, **Region** does not take effect, and the system obtains data from the region in which the first specified instance resides.****
+        # This parameter takes effect only when the **InstanceIds** request parameter is left empty. If **InstanceIds** is left empty, data is retrieved based on the region specified by the **Region** parameter. The default region is **cn-china**. If **InstanceIds** is not empty, data is retrieved based on the region of the first instance specified by **InstanceIds**, even if the **Region** parameter is set.
         # 
-        # >  If your instances reside in the regions inside the Chinese mainland, set this parameter to **cn-china**.
+        # > For instances created in regions within the Chinese mainland, set this parameter to **cn-china**.
         self.region = region
-        # The start date of the time range to query. Specify the date in the *yyyyMMdd* format. The time must be in UTC.
+        # The start date of the query. Format: <i>yyyyMMdd</i> (UTC).
         # 
-        # *   The default value of this parameter is one day before the current day.
-        # *   The value must be earlier than the current day.
+        # - If this parameter is left empty, the default value is the day before the current date.
+        # - You can only query data from the day before the current date or earlier.
         self.start_dt = start_dt
 
     def validate(self):

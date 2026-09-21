@@ -22,14 +22,15 @@ class GetBlockingDetailListResponseBody(DaraModel):
         self.data = data
         # The returned message.
         # 
-        # >  If the request is successful, **Successful** is returned. Otherwise, an error message such as an error code is returned.
+        # > If the request is successful, **Successful** is returned. Otherwise, an error message such as an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.success = success
 
     def validate(self):

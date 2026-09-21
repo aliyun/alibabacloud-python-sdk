@@ -22,14 +22,15 @@ class GetAutoResourceOptimizeRulesResponseBody(DaraModel):
         self.data = data
         # The returned message.
         # 
-        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+        # > If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.success = success
 
     def validate(self):
@@ -99,11 +100,11 @@ class GetAutoResourceOptimizeRulesResponseBodyData(DaraModel):
         self.has_enable_rule_but_not_das_pro_count = has_enable_rule_but_not_das_pro_count
         # The database instances for which the automatic fragment recycling feature is enabled and DAS Enterprise Edition is disabled.
         # 
-        # >  Automatic fragment recycling tasks are run on this type of database instances only if DAS Enterprise Edition is enabled for the database instances again.
+        # > Automatic fragment recycling tasks are run on this type of database instances only if DAS Enterprise Edition is enabled for the database instances again.
         self.has_enable_rule_but_not_das_pro_list = has_enable_rule_but_not_das_pro_list
         # The number of database instances that do not exist or for which the automatic fragment recycling feature has never been enabled.
         # 
-        # >  If a database instance does not exist, the instance has been released or the specified instance ID is invalid.
+        # > If a database instance does not exist, the instance has been released or the specified instance ID is invalid.
         self.never_enable_auto_resource_optimize_or_released_instance_count = never_enable_auto_resource_optimize_or_released_instance_count
         # The database instances that do not exist or for which the automatic fragment recycling feature has never been enabled.
         self.never_enable_auto_resource_optimize_or_released_instance_id_list = never_enable_auto_resource_optimize_or_released_instance_id_list
@@ -220,13 +221,15 @@ class GetAutoResourceOptimizeRulesResponseBodyDataTurnOffAutoResourceOptimizeLis
     ):
         # Indicates whether the automatic fragment recycling feature is enabled. Valid values:
         # 
-        # *   **true**:
-        # *   **false**
+        # - **true**:
+        # 
+        # - **false**
         self.auto_defragment = auto_defragment
         # Indicates whether DAS Enterprise Edition is enabled. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.das_pro_on = das_pro_on
         # The database instance ID.
         self.instance_id = instance_id
@@ -299,13 +302,15 @@ class GetAutoResourceOptimizeRulesResponseBodyDataHasEnableRuleButNotDasProList(
     ):
         # Indicates whether the automatic fragment recycling feature is enabled. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.auto_defragment = auto_defragment
         # Indicates whether DAS Enterprise Edition is enabled. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.das_pro_on = das_pro_on
         # The database instance ID.
         self.instance_id = instance_id
@@ -378,13 +383,15 @@ class GetAutoResourceOptimizeRulesResponseBodyDataEnableAutoResourceOptimizeList
     ):
         # Indicates whether the automatic fragment recycling feature is enabled. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.auto_defragment = auto_defragment
         # Indicates whether DAS Enterprise Edition is enabled. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.das_pro_on = das_pro_on
         # The database instance ID.
         self.instance_id = instance_id

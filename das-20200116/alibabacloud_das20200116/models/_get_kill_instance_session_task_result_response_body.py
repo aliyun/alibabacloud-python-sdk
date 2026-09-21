@@ -22,14 +22,15 @@ class GetKillInstanceSessionTaskResultResponseBody(DaraModel):
         self.data = data
         # The returned message.
         # 
-        # >  If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
+        # > If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.success = success
 
     def validate(self):
@@ -102,22 +103,25 @@ class GetKillInstanceSessionTaskResultResponseBodyData(DaraModel):
         self.kill_success_count = kill_success_count
         # The node ID.
         # 
-        # >  This parameter is returned only if the instance is a PolarDB for MySQL cluster.
+        # > This parameter is returned only if the instance is a PolarDB for MySQL cluster.
         self.node_id = node_id
         # The details of the task that terminated sessions.
         self.result = result
         # The session IDs.
         # 
-        # >  If all sessions are terminated, the IDs of all sessions on the instance or node are returned.
+        # > If all sessions are terminated, the IDs of all sessions on the instance or node are returned.
         self.sessions = sessions
         # The task ID.
         self.task_id = task_id
         # The state of the task that terminates sessions.
         # 
-        # *   **RUNNING**: The task is in progress.
-        # *   **SUCCESS**: The task is successful.
-        # *   **FAILURE**: The task failed.
-        # *   **ERROR**: Other errors occur.
+        # - **RUNNING**: The task is in progress.
+        # 
+        # - **SUCCESS**: The task is successful.
+        # 
+        # - **FAILURE**: The task failed.
+        # 
+        # - **ERROR**: Other errors occur.
         self.task_state = task_state
         # The ID of the Alibaba Cloud account.
         self.user_id = user_id
@@ -235,14 +239,21 @@ class GetKillInstanceSessionTaskResultResponseBodyDataResult(DaraModel):
         self.info = info
         # The description of the session when the session was terminated.
         # 
-        # *   **SESSION_KILLED**: The session is terminated.
-        # *   **SESSION_EXPIRED**: The session has expired.
-        # *   **SESSION_NO_PERMISSION**: The account used to terminate the session has insufficient permissions.
-        # *   **SESSION_ACCOUNT_ERROR**: The account or password used to terminate the session is invalid.
-        # *   **SESSION_IGNORED_USER**: The session of the account does not need to be terminated.
-        # *   **SESSION_INTERNAL_USER_OR_COMMAND**: The session is a session initiated by or a command run by an Alibaba Cloud O\\&M account.
-        # *   **SESSION_KILL_TASK_TIMEOUT**: Timeout occurs when the session is terminated.
-        # *   **SESSION_OTHER_ERROR**: Other errors occurred.
+        # - **SESSION_KILLED**: The session is terminated.
+        # 
+        # - **SESSION_EXPIRED**: The session has expired.
+        # 
+        # - **SESSION_NO_PERMISSION**: The account used to terminate the session has insufficient permissions.
+        # 
+        # - **SESSION_ACCOUNT_ERROR**: The account or password used to terminate the session is invalid.
+        # 
+        # - **SESSION_IGNORED_USER**: The session of the account does not need to be terminated.
+        # 
+        # - **SESSION_INTERNAL_USER_OR_COMMAND**: The session is a session initiated by or a command run by an Alibaba Cloud O\\&M account.
+        # 
+        # - **SESSION_KILL_TASK_TIMEOUT**: Timeout occurs when the session is terminated.
+        # 
+        # - **SESSION_OTHER_ERROR**: Other errors occurred.
         self.reason = reason
         # The status of the session.
         self.state = state

@@ -19,7 +19,7 @@ class DescribeDiagnosticReportListRequest(DaraModel):
         self.dbinstance_id = dbinstance_id
         # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
-        # >  The end time must be later than the start time.
+        # > The end time must be later than the start time.
         # 
         # This parameter is required.
         self.end_time = end_time

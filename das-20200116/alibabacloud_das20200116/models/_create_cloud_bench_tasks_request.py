@@ -35,16 +35,17 @@ class CreateCloudBenchTasksRequest(DaraModel):
         task_type: str = None,
         work_dir: str = None,
     ):
-        # The total number of stress testing tasks that you want to create. Valid values: **0** to **30**. Default value: **1**.
+        # The total number of stress testing tasks to create. Valid values: **0** to **30**. Default value: **1**.
         self.amount = amount
-        # The ID of the backup set. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/26273.html) operation to query the ID of the backup set.
+        # The ID of the backup set. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/26273.html) operation to query the backup list and obtain the ID.
         self.backup_id = backup_id
-        # The time when the backup starts. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The time of the backup. Format: yyyy-MM-ddTHH:mm:ssZ (UTC time).
         self.backup_time = backup_time
-        # The type of the stress testing client. Valid values:
+        # The type of stress testing machine. Valid values:
         # 
-        # *   **ECS**: indicates that you must create the [DBGateway](https://help.aliyun.com/document_detail/64905.html).
-        # *   **DAS_ECS**: indicates that DAS automatically purchases and deploys an Elastic Compute Service (ECS) instance for stress testing.
+        # - **ECS**: You need to prepare a [Database Gateway](https://help.aliyun.com/document_detail/64905.html) yourself.
+        # 
+        # - **DAS_ECS**: An ECS instance that is automatically purchased and deployed by DAS.
         # 
         # This parameter is required.
         self.client_type = client_type
@@ -52,88 +53,93 @@ class CreateCloudBenchTasksRequest(DaraModel):
         # 
         # This parameter is required.
         self.description = description
-        # The endpoint of the destination instance. The specified endpoint must be the endpoint of an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL instance.
+        # The connection address of the target instance. Only RDS MySQL and PolarDB MySQL instances are supported.
         # 
-        # >  This parameter takes effect only if you set **DstType** to **ConnectionString**.
+        # > This parameter takes effect when **DstType** is set to **ConnectionString**.
         self.dst_connection_string = dst_connection_string
-        # The ID of the destination instance. The instance must be an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL instance. You can call the [GetInstanceInspections](https://help.aliyun.com/document_detail/202857.html) operation to query the ID.
+        # The ID of the target instance. Only RDS MySQL and PolarDB MySQL instances are supported. You can call the [GetInstanceInspections](https://help.aliyun.com/document_detail/202857.html) operation to obtain the ID.
         # 
-        # >  This parameter must be specified if you set **DstType** to **Instance**.
+        # > This parameter is required when **DstType** is set to **Instance**.
         self.dst_instance_id = dst_instance_id
-        # The port number of the instance that you want to access.
+        # The port of the target instance.
         # 
-        # >  This parameter takes effect only if you set **DstType** to **ConnectionString**.
+        # > This parameter takes effect when **DstType** is set to **ConnectionString**.
         self.dst_port = dst_port
-        # The name of the privileged account for the destination instance.
+        # The privileged account of the target instance.
         self.dst_super_account = dst_super_account
-        # The password of the privileged account for the destination instance.
+        # The password of the privileged account of the target instance.
         self.dst_super_password = dst_super_password
-        # The type of the identifier that is used to indicate the destination instance. Valid values:
+        # The type of the target instance. Valid values:
         # 
-        # *   **Instance**: the instance ID. This is the default value.
-        # *   **ConnectionString**: the endpoint of the instance.
+        # - **Instance** (default): instance ID.
+        # 
+        # - **ConnectionString**: connection address of the instance.
         self.dst_type = dst_type
-        # The specification of the Data Transmission Service (DTS) migration task. You can call the [DescribeCloudbenchTask](https://help.aliyun.com/document_detail/230669.html) operation to query the specification.
+        # The specification of the DTS migration task. You can call the [DescribeCloudbenchTask](https://help.aliyun.com/document_detail/230669.html) operation to obtain the specification.
         # 
-        # >  You must migrate the basic data in the source instance to the destination instance before you start a stress testing task. When you create a DTS migration task, you must specify this parameter.
+        # > The stress testing task needs to migrate the baseline data from the source instance to the target instance. This parameter is required when you create a new DTS task.
         self.dts_job_class = dts_job_class
-        # The ID of the DTS migration task. You can call the [ConfigureDtsJob](https://help.aliyun.com/document_detail/208399.html) operation to query the ID.
+        # The ID of the DTS migration task. You can call the [ConfigureDtsJob](https://help.aliyun.com/document_detail/208399.html) operation to obtain the ID.
         # 
-        # >  After a DTS migration task is created in the DTS console, you must specify this parameter.
+        # > This parameter is required when a DTS task has been created in the DTS console.
         self.dts_job_id = dts_job_id
-        # The state that specifies the last operation that is performed for the stress testing task. Valid values:
+        # The status after the stress testing task ends. Valid values:
         # 
-        # *   **WAIT_TARGET**: prepares the destination instance
-        # *   **WAIT_DBGATEWAY**: prepares the DBGateway
-        # *   **WAIT_SQL**: prepares the full SQL statistics
-        # *   **WAIT_LOGIC**: prepares to replay the traffic
+        # - **WAIT_TARGET**: Prepare the target instance for stress testing.
         # 
-        # >  When the state of a stress testing task changes to the state that is specified by the EndState parameter, the stress testing task becomes completed.
+        # - **WAIT_DBGATEWAY**: Prepare the stress testing deployment.
+        # 
+        # - **WAIT_SQL**: Prepare the full SQL statements.
+        # 
+        # - **WAIT_LOGIC**: Prepare to start replaying the traffic.
+        # 
+        # > When the stress testing task completes the status set by EndState, the task directly reaches the completed status.
         self.end_state = end_state
-        # The ID of the virtual private cloud (VPC) in which the database gateway (DBGateway) is deployed.
+        # The virtual private cloud (VPC) ID of the Database Gateway.
         # 
-        # >  This parameter must be specified if you set **ClientType** to **ECS**.
+        # > This parameter is required when **ClientType** is set to **ECS**.
         self.gateway_vpc_id = gateway_vpc_id
-        # The IP address or domain name of the DBGateway.
+        # The IP address or domain name of the Database Gateway.
         # 
-        # >  This parameter must be specified if you set **ClientType** to **ECS**.
+        # > This parameter is required when **ClientType** is set to **ECS**.
         self.gateway_vpc_ip = gateway_vpc_ip
-        # The rate at which the traffic captured from the source instance is replayed on the destination instance. The value must be a positive integer. Valid values: **1** to **30**. Default value: **1**.
+        # The replay speed of the source instance traffic on the target instance. The replay speed must be a positive integer. Valid values: **1** to **30**. Default value: **1**.
         self.rate = rate
-        # The duration of the stress testing task for which the traffic is captured from the source instance. Unit: milliseconds.
+        # The duration of the stress testing task. Unit: milliseconds.
         self.request_duration = request_duration
-        # The time when the stress testing task ends. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The end time of the stress testing task. The time is in the UNIX timestamp format. Unit: milliseconds.
         self.request_end_time = request_end_time
-        # The time when the stress testing task starts. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The start time of the stress testing task. The time is in the UNIX timestamp format. Unit: milliseconds.
         self.request_start_time = request_start_time
-        # The duration within which the traffic generation stressing test takes effect. Unit: milliseconds.
+        # The duration of the generated stress testing. Unit: milliseconds.
         # 
-        # >  This parameter must be specified if you set **TaskType** to **smart pressure test**.
+        # > This parameter is required when **TaskType** is set to **smart pressure test**.
         self.smart_pressure_time = smart_pressure_time
-        # The ID of the source instance. The instance must be an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL instance. You can call the [GetInstanceInspections](https://help.aliyun.com/document_detail/202857.html) operation to query the ID.
+        # The ID of the source instance. Only RDS MySQL and PolarDB MySQL instances are supported. You can call the [GetInstanceInspections](https://help.aliyun.com/document_detail/202857.html) operation to obtain the ID.
         # 
-        # >  This parameter must be specified if you set **DstType** to **Instance**.
+        # > This parameter is required when **DstType** is set to **Instance**.
         # 
         # This parameter is required.
         self.src_instance_id = src_instance_id
-        # The reserved parameter.
+        # Reserved parameter.
         self.src_public_ip = src_public_ip
-        # The name of the privileged account for the source instance. Set the value to **admin**.
+        # The privileged account of the source instance. Value: **admin**.
         # 
-        # >  This parameter must be specified if you set **DstType** to **Instance**.
+        # > This parameter is required when **DstType** is set to **Instance**.
         self.src_super_account = src_super_account
-        # The password of the privileged account for the source instance.
+        # The password of the privileged account of the source instance.
         # 
-        # >  This parameter must be specified if you set **DstType** to **Instance**.
+        # > This parameter is required when **DstType** is set to **Instance**.
         self.src_super_password = src_super_password
-        # The type of the stress testing task. Valid values:
+        # The type of stress testing task. Valid values:
         # 
-        # *   **pressure test** (default): A task of this type replays the traffic that is captured from the source instance on the destination instance at the maximum playback rate that is supported by the destination instance.
-        # *   **smart pressure test**: A task of this type analyzes the traffic that is captured from the source instance over a short period of time and generates traffic on the destination instance for continuous stress testing. The business model based on which the traffic is generated on the destination instance and the traffic distribution are consistent with those on the source instance. Stress testing tasks of this type can help you reduce the amount of time that is consumed to collect data from the source instance and reduce storage costs and performance overheads.
+        # - **pressure test** (default): Intelligent stress testing, which replays the traffic captured from the source instance on the target instance at the maximum speed supported by the target instance type.
+        # 
+        # - **smart pressure test**: Generated stress testing, which analyzes and learns from the traffic captured from the source instance in a short period of time, generates traffic that is consistent with the business model and traffic distribution of the original traffic for continuous stress testing, reduces the time for collecting data from the source instance, and reduces storage costs and performance overhead.
         # 
         # This parameter is required.
         self.task_type = task_type
-        # The temporary directory generated for stress testing.
+        # The temporary directory generated by the stress testing.
         self.work_dir = work_dir
 
     def validate(self):

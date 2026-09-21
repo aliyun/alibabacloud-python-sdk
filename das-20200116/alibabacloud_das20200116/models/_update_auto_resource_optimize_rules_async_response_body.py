@@ -22,14 +22,15 @@ class UpdateAutoResourceOptimizeRulesAsyncResponseBody(DaraModel):
         self.data = data
         # The returned message.
         # 
-        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+        # > If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.success = success
 
     def validate(self):
@@ -91,30 +92,35 @@ class UpdateAutoResourceOptimizeRulesAsyncResponseBodyData(DaraModel):
     ):
         # Indicates whether the asynchronous request was complete. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.complete = complete
         # The returned data of the configuration.
         # 
-        # >  The data is returned only if the value of isFinish is **true**. This value indicates that the asynchronous request is complete.
+        # > The data is returned only if the value of isFinish is **true**. This value indicates that the asynchronous request is complete.
         self.config_response = config_response
         # Indicates whether the asynchronous request failed. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.fail = fail
         # Indicates whether the asynchronous request was complete. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.is_finish = is_finish
         # The ID of the asynchronous request.
         self.result_id = result_id
         # The state of the asynchronous request. Valid values:
         # 
-        # *   **RUNNING**
-        # *   **SUCCESS**
-        # *   **FAIL**
+        # - **RUNNING**
+        # 
+        # - **SUCCESS**
+        # 
+        # - **FAIL**
         self.state = state
         # The time when the asynchronous request was made. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.timestamp = timestamp
@@ -266,9 +272,9 @@ class UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponseConfigSu
     ):
         # Indicates whether the parameters are configured. Valid values:
         # 
-        # * **true**
+        # - **true**
         # 
-        # * **false**
+        # - **false**
         self.config_success = config_success
         # The database instance ID.
         self.instance_id = instance_id
@@ -308,9 +314,9 @@ class UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponseConfigFa
     ):
         # Indicates whether the parameters are configured. Valid values:
         # 
-        # * **true**
+        # - **true**
         # 
-        # * **false**
+        # - **false**
         self.config_success = config_success
         # The error message returned.
         self.error_message = error_message

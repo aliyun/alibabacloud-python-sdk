@@ -19,15 +19,36 @@ class DescribeErrorLogRecordsRequest(DaraModel):
         role: str = None,
         start_time: int = None,
     ):
+        # The end time of the query. The value is in the format of a UNIX timestamp, in milliseconds.
+        # >Notice: The data type of this parameter is Long. During the sequence of serialization/deserialization, precision loss may occur. Ensure that the value does not exceed 9007199254740991.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The filter conditions.
+        # 
+        # > Only error log filtering for ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, PolarDB for MySQL, PolarDB for PostgreSQL, and PolarDB for PostgreSQL (Compatible with Oracle) is supported.
         self.filters = filters
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The node ID.
         self.node_id = node_id
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page. Maximum value: 100.
         self.page_size = page_size
+        # The node role. Valid values:
+        # 
+        # - db
+        # - mongos
+        # 
+        # > Only ApsaraDB for MongoDB instances are supported.
         self.role = role
+        # The start time of the query. The value is in the format of a UNIX timestamp, in milliseconds.
+        # 
+        # >Notice: The data type of this parameter is Long. During the sequence of serialization/deserialization, precision loss may occur. Ensure that the value does not exceed 9007199254740991.
+        # 
         # This parameter is required.
         self.start_time = start_time
 
@@ -107,7 +128,9 @@ class DescribeErrorLogRecordsRequestFilters(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The filter parameter. Set this parameter to filters.
         self.key = key
+        # The error log content to filter.
         self.value = value
 
     def validate(self):

@@ -16,20 +16,19 @@ class UpdateAutoThrottleRulesAsyncResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code returned.
+        # The returned status code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
         # The returned message.
-        # 
-        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+        # > If the request is successful, **Successful** is returned. If the request fails, an error message such as an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The request was successful.
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -89,34 +88,38 @@ class UpdateAutoThrottleRulesAsyncResponseBodyData(DaraModel):
         state: str = None,
         timestamp: int = None,
     ):
-        # Indicates whether the asynchronous request was complete. Valid values:
+        # Indicates whether the asynchronous request is complete. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The request is complete.
+        # 
+        # - **false**: The request is not complete.
         self.complete = complete
-        # The returned data of the configuration.
-        # 
-        # >  The data is returned only if the value of isFinish is **true**. This value indicates that the asynchronous request is complete.
+        # The response data of the batch configuration.
+        # > This data is returned only when the asynchronous request is complete (that is, when isFinish is **true**).
         self.config_response = config_response
-        # Indicates whether the asynchronous request failed. Valid values:
+        # Indicates whether the request failed. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The request failed.
+        # 
+        # - **false**: The request did not fail.
         self.fail = fail
-        # Indicates whether the asynchronous request was complete. Valid values:
+        # Indicates whether the asynchronous request is complete. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The request is complete.
+        # 
+        # - **false**: The request is not complete.
         self.is_finish = is_finish
         # The ID of the asynchronous request.
         self.result_id = result_id
-        # The state of the asynchronous request. Valid values:
+        # The execution status of the asynchronous request. Valid values:
         # 
-        # *   **RUNNING**
-        # *   **SUCCESS**
-        # *   **FAIL**
+        # - **RUNNING**: The request is running.
+        # 
+        # - **SUCCESS**: The request succeeded.
+        # 
+        # - **FAIL**: The request failed.
         self.state = state
-        # The time when the asynchronous request was made. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The execution time. The value is a UNIX timestamp. Unit: milliseconds.
         self.timestamp = timestamp
 
     def validate(self):
@@ -186,13 +189,13 @@ class UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponse(DaraModel):
         config_success_instance_list: List[main_models.UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigSuccessInstanceList] = None,
         total_instance_count: int = None,
     ):
-        # The number of database instances for which the parameters failed to be configured.
+        # The number of database instances that failed to be configured.
         self.config_fail_instance_count = config_fail_instance_count
-        # The database instances for which the parameters failed to be configured.
+        # The list of database instances that failed to be configured.
         self.config_fail_instance_list = config_fail_instance_list
-        # The number of database instances for which the parameters are configured.
+        # The number of database instances that were configured successfully.
         self.config_success_instance_count = config_success_instance_count
-        # The database instances for which the parameters are configured.
+        # The list of database instances that were configured successfully.
         self.config_success_instance_list = config_success_instance_list
         # The total number of database instances.
         self.total_instance_count = total_instance_count
@@ -264,11 +267,11 @@ class UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigSuccessIns
         config_success: bool = None,
         instance_id: str = None,
     ):
-        # Indicates whether the parameters are configured. Valid values:
+        # Indicates whether the configuration was successful. Valid values:
         # 
-        # * **true**
+        # - **true**: The configuration was successful.
         # 
-        # * **false**
+        # - **false**: The configuration failed.
         self.config_success = config_success
         # The database instance ID.
         self.instance_id = instance_id
@@ -306,13 +309,13 @@ class UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigFailInstan
         error_message: str = None,
         instance_id: str = None,
     ):
-        # Indicates whether the parameters are configured. Valid values:
+        # Indicates whether the configuration was successful. Valid values:
         # 
-        # * **true**
+        # - **true**: The configuration was successful.
         # 
-        # * **false**
+        # - **false**: The configuration failed.
         self.config_success = config_success
-        # The error message returned.
+        # The error message.
         self.error_message = error_message
         # The database instance ID.
         self.instance_id = instance_id

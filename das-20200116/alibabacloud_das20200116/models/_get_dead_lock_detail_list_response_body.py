@@ -22,14 +22,15 @@ class GetDeadLockDetailListResponseBody(DaraModel):
         self.data = data
         # The returned message.
         # 
-        # >  If the request is successful, **Successful** is returned. Otherwise, an error message such as an error code is returned.
+        # > If the request is successful, **Successful** is returned. Otherwise, an error message such as an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request is successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.success = success
 
     def validate(self):
@@ -196,8 +197,9 @@ class GetDeadLockDetailListResponseBodyDataList(DaraModel):
         self.status = status
         # Indicates whether the session is the victim of the deadlock. Valid values:
         # 
-        # *   **0**: no.
-        # *   **1**: yes.
+        # - **0**: no.
+        # 
+        # - **1**: yes.
         self.victim = victim
         # The lock mode requested by the session. For more information, see [Lock modes](https://help.aliyun.com/document_detail/2362804.html).
         self.wait_mode = wait_mode
@@ -391,8 +393,9 @@ class GetDeadLockDetailListResponseBodyDataListBlockProcessList(DaraModel):
         self.status = status
         # Indicates whether the session is the victim of the deadlock. Valid values:
         # 
-        # *   **0**: no.
-        # *   **1**: yes.
+        # - **0**: no.
+        # 
+        # - **1**: yes.
         self.victim = victim
         # The lock mode requested by the session. For more information, see [Lock modes](https://help.aliyun.com/document_detail/2362804.html).
         self.wait_mode = wait_mode

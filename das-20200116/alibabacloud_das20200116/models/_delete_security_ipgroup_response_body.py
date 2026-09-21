@@ -16,11 +16,19 @@ class DeleteSecurityIPGroupResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The status code.
         self.code = code
         # ListResult<InstanceSSL>
         self.data = data
+        # The returned message.
+        # >If the request is successful, **Successful** is returned. If the request fails, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # - **true**: The request is successful.
+        # - **false**: The request fails.
         self.success = success
 
     def validate(self):
@@ -74,6 +82,7 @@ class DeleteSecurityIPGroupResponseBodyData(DaraModel):
         self,
         global_security_ipgroup: List[main_models.DeleteSecurityIPGroupResponseBodyDataGlobalSecurityIPGroup] = None,
     ):
+        # The cross-product whitelist template information.
         self.global_security_ipgroup = global_security_ipgroup
 
     def validate(self):
@@ -109,6 +118,7 @@ class DeleteSecurityIPGroupResponseBodyDataGlobalSecurityIPGroup(DaraModel):
         self,
         global_security_group_id: str = None,
     ):
+        # The ID of the IP whitelist template.
         self.global_security_group_id = global_security_group_id
 
     def validate(self):

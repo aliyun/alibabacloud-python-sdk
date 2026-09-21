@@ -16,7 +16,7 @@ class GetSqlConcurrencyControlRulesHistoryRequest(DaraModel):
         self.console_context = console_context
         # The instance ID.
         # 
-        # >  Only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters are supported.
+        # > Only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters are supported.
         # 
         # This parameter is required.
         self.instance_id = instance_id

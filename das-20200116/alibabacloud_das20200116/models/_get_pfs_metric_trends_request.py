@@ -15,20 +15,23 @@ class GetPfsMetricTrendsRequest(DaraModel):
     ):
         # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
-        # >  The end time must be later than the start time. You can view the data of up to seven days in the previous 30 days.
+        # > The end time must be later than the start time. You can view the data of up to seven days in the previous 30 days.
         self.end_time = end_time
         # The instance ID.
         self.instance_id = instance_id
         # The metric whose trend you want to query. Valid values:
         # 
-        # *   **count**: the number of executions.
-        # *   **avgRt**: the average execution duration.
-        # *   **rtRate**: the execution duration percentage.
-        # *   **rowsExamined**: the total number of scanned rows.
+        # - **count**: the number of executions.
+        # 
+        # - **avgRt**: the average execution duration.
+        # 
+        # - **rtRate**: the execution duration percentage.
+        # 
+        # - **rowsExamined**: the total number of scanned rows.
         self.metric = metric
         # The node ID.
         # 
-        # >  This parameter is required if the database instance is an ApsaraDB RDS for MySQL Cluster Edition instance or a PolarDB for MySQL clusters.
+        # > This parameter is required if the database instance is an ApsaraDB RDS for MySQL Cluster Edition instance or a PolarDB for MySQL clusters.
         self.node_id = node_id
         # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start_time = start_time

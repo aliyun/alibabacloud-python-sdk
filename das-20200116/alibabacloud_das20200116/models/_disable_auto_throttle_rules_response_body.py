@@ -22,14 +22,15 @@ class DisableAutoThrottleRulesResponseBody(DaraModel):
         self.data = data
         # The returned message.
         # 
-        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+        # > If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.success = success
 
     def validate(self):
@@ -167,9 +168,9 @@ class DisableAutoThrottleRulesResponseBodyDataConfigSuccessInstanceList(DaraMode
     ):
         # Indicates whether the automatic SQL throttling feature is disabled. Valid values:
         # 
-        # * **true**
+        # - **true**
         # 
-        # * **false**
+        # - **false**
         self.config_success = config_success
         # The database instance ID.
         self.instance_id = instance_id
@@ -209,9 +210,9 @@ class DisableAutoThrottleRulesResponseBodyDataConfigFailInstanceList(DaraModel):
     ):
         # Indicates whether the automatic SQL throttling feature is disabled. Valid values:
         # 
-        # * **true**
+        # - **true**
         # 
-        # * **false**
+        # - **false**
         self.config_success = config_success
         # The error message returned.
         self.error_message = error_message

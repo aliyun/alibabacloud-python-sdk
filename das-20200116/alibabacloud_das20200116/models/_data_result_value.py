@@ -11,8 +11,11 @@ class DataResultValue(DaraModel):
         instance_id: str = None,
         count: int = None,
     ):
+        # The SQL template ID.
         self.sql_id = sql_id
+        # The instance ID.
         self.instance_id = instance_id
+        # The number of errors.
         self.count = count
 
     def validate(self):

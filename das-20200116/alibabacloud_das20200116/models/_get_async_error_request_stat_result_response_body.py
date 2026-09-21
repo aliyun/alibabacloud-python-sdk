@@ -16,20 +16,21 @@ class GetAsyncErrorRequestStatResultResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code returned.
+        # The response status code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The returned message.
+        # The response message.
         # 
-        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+        # > If the request succeeds, this parameter returns **Successful**. If the request fails, this parameter returns an error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request was successful.
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -89,32 +90,37 @@ class GetAsyncErrorRequestStatResultResponseBodyData(DaraModel):
         state: str = None,
         timestamp: int = None,
     ):
-        # Indicates whether the asynchronous request was complete.
+        # Indicates whether the asynchronous request is complete.
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The request is complete.
+        # 
+        # - **false**: The request is in progress.
         self.complete = complete
-        # Indicates whether the request failed. Valid values:
+        # Indicates whether the request failed.
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The request failed.
+        # 
+        # - **false**: The request succeeded.
         self.fail = fail
-        # Indicates whether the asynchronous request was successful. Valid values:
+        # Indicates whether the asynchronous request is complete.
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The request is complete.
+        # 
+        # - **false**: The request is in progress.
         self.is_finish = is_finish
-        # The returned data of the asynchronous request.
+        # The data returned by the asynchronous request.
         self.result = result
-        # The ID of the asynchronous request.
+        # The asynchronous request ID.
         self.result_id = result_id
         # The state of the asynchronous request. Valid values:
         # 
-        # *   **RUNNING**: The asynchronous request is running.
-        # *   **SUCCESS**: The asynchronous request is successful.
-        # *   **FAIL**: The asynchronous request fails.
+        # - **RUNNING**: The request is running.
+        # 
+        # - **SUCCESS**: The request succeeded.
+        # 
+        # - **FAIL**: The request failed.
         self.state = state
-        # The time when the asynchronous request was made. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The time when the asynchronous request was complete. The time is a Unix timestamp in milliseconds.
         self.timestamp = timestamp
 
     def validate(self):

@@ -13,10 +13,23 @@ class CreateLatestDeadLockAnalysisResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The returned status code.
         self.code = code
+        # Indicates whether the task is created. Valid values:
+        # 
+        # - **true**: The task is created.
+        # - **false**: The task fails to be created.
         self.data = data
+        # The returned message.
+        # 
+        # > If the request is successful, **Successful** is returned. If the request fails, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # - **true**: The request is successful.
+        # - **false**: The request fails.
         self.success = success
 
     def validate(self):

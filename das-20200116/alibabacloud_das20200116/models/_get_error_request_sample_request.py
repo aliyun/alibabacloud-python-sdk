@@ -18,7 +18,7 @@ class GetErrorRequestSampleRequest(DaraModel):
         self.db_name = db_name
         # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
-        # >  The end time must be later than the start time. The interval cannot exceed 24 hours.
+        # > The end time must be later than the start time. The interval cannot exceed 24 hours.
         self.end = end
         # The instance ID.
         # 
@@ -26,13 +26,13 @@ class GetErrorRequestSampleRequest(DaraModel):
         self.instance_id = instance_id
         # The node ID.
         # 
-        # >  You must specify the node ID if your database instance is a PolarDB for MySQL cluster.
+        # > You must specify the node ID if your database instance is a PolarDB for MySQL cluster.
         self.node_id = node_id
         # The SQL query ID. You can call the [GetAsyncErrorRequestListByCode](https://help.aliyun.com/document_detail/410746.html) operation to query the ID of the SQL query for which MySQL error code is returned.
         self.sql_id = sql_id
         # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
-        # >  The start time must be within the storage duration of the SQL Explorer feature of the database instance, and can be up to 90 days earlier than the current time.
+        # > The start time must be within the storage duration of the SQL Explorer feature of the database instance, and can be up to 90 days earlier than the current time.
         self.start = start
 
     def validate(self):

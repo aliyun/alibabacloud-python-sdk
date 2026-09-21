@@ -14,20 +14,21 @@ class DescribeCloudbenchTaskConfigResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The HTTP status code returned.
+        # The returned status code.
         self.code = code
-        # The detailed information, including the error codes and the number of entries that are returned.
+        # The list of detailed information, including the total number of information items, error codes, and other details.
         self.data = data
         # The returned message.
         # 
-        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+        # > When the request is successful, this parameter returns **Successful**. When the request fails, this parameter returns exception information (such as error codes).
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request is successful:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The request is successful.
+        # 
+        # - **false**: The request fails.
         self.success = success
 
     def validate(self):
@@ -97,39 +98,39 @@ class DescribeCloudbenchTaskConfigResponseBodyData(DaraModel):
         user_id: str = None,
         work_dir: str = None,
     ):
-        # The path in which the files are archived.
+        # The path of archived objects.
         self.archive_folder = archive_folder
-        # The command that was run to start the stress testing task.
+        # The stress testing command.
         self.bench_cmd = bench_cmd
-        # The path to the JAR file that is used for stress testing.
+        # The path of the stress testing JAR package.
         self.client_jar_path = client_jar_path
-        # The path to the JAR file that is stored in OSS. The JAR file is used for stress testing.
+        # The path of the stress testing JAR package in OSS.
         self.jar_on_oss = jar_on_oss
-        # The command that was run to preload the file that stores the analysis result of full SQL statistics.
+        # The command for preloading the SQL file.
         self.load_cmd = load_cmd
         # The name of the metadata file.
         self.meta_file_name = meta_file_name
-        # The name of the metadata file stored in Object Storage Service (OSS).
+        # The name of the metadata file in OSS.
         self.meta_file_on_oss = meta_file_on_oss
-        # The path to the metadata file.
+        # The path of the metadata file.
         self.meta_file_path = meta_file_path
-        # The command that was run to parse the file that stores the analysis result of full SQL statistics.
+        # The command for parsing the SQL file.
         self.parse_cmd = parse_cmd
-        # The path to the file that is parsed. The file stores the analysis result of full SQL statistics.
+        # The path of the parsed SQL file.
         self.parse_file_path = parse_file_path
-        # The location where the RocksDB storage system is deployed in the stress testing client.
+        # The location of the RocksDB storage system in the stress testing machine.
         self.rocks_db_path = rocks_db_path
-        # The name of the file that stores the analysis result of full SQL statistics.
+        # The name of the full SQL file.
         self.sql_file_name = sql_file_name
-        # The name of the file that stores the analysis result of full SQL statistics and that is stored in OSS.
+        # The name of the full SQL file in OSS.
         self.sql_file_on_oss = sql_file_on_oss
-        # The path to the file that stores the analysis result of full SQL statistics.
+        # The path of the SQL file.
         self.sql_file_path = sql_file_path
         # The task ID.
         self.task_id = task_id
         # The Alibaba Cloud account ID.
         self.user_id = user_id
-        # The path of the temporary directory that is generated for stress testing.
+        # The temporary directory generated for stress testing.
         self.work_dir = work_dir
 
     def validate(self):

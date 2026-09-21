@@ -16,11 +16,20 @@ class DescribeSecurityIPGroupRelationResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The status code returned.
         self.code = code
         # ListResult<InstanceSSL>
         self.data = data
+        # The message returned for the request.
+        # 
+        # > If the request is successful, **Successful** is returned. If the request fails, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # - **true**: The request is successful.
+        # - **false**: The request fails.
         self.success = success
 
     def validate(self):
@@ -75,7 +84,9 @@ class DescribeSecurityIPGroupRelationResponseBodyData(DaraModel):
         global_security_ipgroup_rel: List[main_models.DescribeSecurityIPGroupRelationResponseBodyDataGlobalSecurityIPGroupRel] = None,
         instance_id: str = None,
     ):
+        # The global IP whitelist template information.
         self.global_security_ipgroup_rel = global_security_ipgroup_rel
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):
@@ -120,9 +131,15 @@ class DescribeSecurityIPGroupRelationResponseBodyDataGlobalSecurityIPGroupRel(Da
         global_security_group_id: str = None,
         region_id: str = None,
     ):
+        # The IP addresses in the whitelist template.
+        # 
+        # > Separate multiple IP addresses with commas (,). You can add up to 1,000 IP addresses or CIDR blocks across all IP whitelists.
         self.gip_list = gip_list
+        # The name of the IP whitelist template.
         self.global_ig_name = global_ig_name
+        # The ID of the IP whitelist template.
         self.global_security_group_id = global_security_group_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

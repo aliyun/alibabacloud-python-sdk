@@ -16,20 +16,19 @@ class CreateCacheAnalysisJobResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The HTTP status code returned.
+        # The returned status code.
         self.code = code
-        # The detailed information.
+        # The details.
         self.data = data
         # The returned message.
-        # 
-        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+        # >If the request is successful, **Successful** is returned. If the request fails, an error message such as an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request is successful. Valid values:
         # 
-        # *   **true**: The request was successful.
-        # *   **false**: The request failed.
+        # - **true**: The request is successful.
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -91,22 +90,20 @@ class CreateCacheAnalysisJobResponseBodyData(DaraModel):
         self.big_keys = big_keys
         # The instance ID.
         self.instance_id = instance_id
-        # The ID of the cache analysis task.
-        # 
-        # >  This parameter can be used to query a specific cache analysis task. When you call the CreateCacheAnalysisJob operation, it takes some time to create a cache analysis task. As a result, the analysis results cannot be immediately returned. You can call the [DescribeCacheAnalysisJob](https://help.aliyun.com/document_detail/180983.html) operation to query the analysis results of the specified cache analysis task.
+        # The ID of query cache analysis task.
+        # >You can use this parameter to query query cache analysis task. Because creating a cache analysis task takes some time, the analysis result is not immediately returned when you call this operation. Use this parameter together with the [DescribeCacheAnalysisJob](https://help.aliyun.com/document_detail/180983.html) operation to query the analysis result.
         self.job_id = job_id
         # The returned message.
-        # 
-        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+        # >If the request is successful, **Successful** is returned. If the request fails, an error message such as an error code is returned.
         self.message = message
-        # The ID of the data node on the instance.
+        # The ID of the data node in the instance.
         self.node_id = node_id
-        # The state of the cache analysis task. Valid values:
+        # The status of the cache analysis task. Valid values:
         # 
-        # *   **BACKUP**: The data is being backed up.
-        # *   **ANALYZING**: The data is being analyzed.
-        # *   **FINISHED**: The data is analyzed.
-        # *   **FAILED**: An error occurred.
+        # - **BACKUP**: The system is performing a backup.
+        # - **ANALYZING**: The system is analyzing the backup file.
+        # - **FINISHED**: The analysis is complete.
+        # - **FAILED**: An error occurred.
         self.task_state = task_state
 
     def validate(self):

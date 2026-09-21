@@ -13,26 +13,31 @@ class DeleteStopGatewayResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The HTTP status code returned.
+        # The returned status code.
         self.code = code
-        # The result of the DeleteStopGateway operation. Valid values:
+        # The status code indicating the result of the deletion:
         # 
-        # *   **0**: The metadata of the DBGateway is deleted.
-        # *   **-1**: A system error occurs.
-        # *   **-2**: The DBGateway does not exist.
-        # *   **-3**: The DBGateway is not stopped and the metadata cannot be deleted.
-        # *   **-4**: The metadata of the DBGateway fails to be deleted.
+        # - **0**: Success. The metadata was deleted.
+        # 
+        # - **-1**: A system error occurred.
+        # 
+        # - **-2**: The specified database gateway does not exist.
+        # 
+        # - **-3**: The database gateway is still active (not stopped) and its metadata cannot be deleted.
+        # 
+        # - **-4**: Failed to delete the metadata.
         self.data = data
         # The returned message.
         # 
-        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+        # > When the request is successful, this parameter returns **Successful**. When the request fails, this parameter returns exception information such as error codes.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request was successful:
         # 
-        # *   **true**: The request was successful.
-        # *   **false**: The request failed.
+        # - **true**: The operation is successful.
+        # 
+        # - **false**: The operation failed.
         self.success = success
 
     def validate(self):

@@ -15,20 +15,19 @@ class AddHDMInstanceResponseBody(DaraModel):
         success: str = None,
         synchro: str = None,
     ):
-        # The HTTP status code returned.
+        # The status code.
         self.code = code
-        # The detailed information, including the error codes and the number of entries that are returned.
+        # The details, including the total number of entries and error codes.
         self.data = data
         # The returned message.
-        # 
-        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+        # >If the request is successful, **Successful** is returned. If the request fails, an error message is returned, such as an error code.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request is successful. Valid values:
         # 
-        # *   **true**: The request was successful.
-        # *   **false**: The request failed.
+        # - **true**: The request is successful.
+        # - **false**: The request fails.
         self.success = success
         # The reserved parameter.
         self.synchro = synchro
@@ -105,27 +104,27 @@ class AddHDMInstanceResponseBodyData(DaraModel):
     ):
         # The user ID of the caller.
         self.caller_uid = caller_uid
-        # The HTTP status code returned.
+        # The status code.
         self.code = code
-        # The error message returned if the request failed.
+        # The error message.
         self.error = error
         # The instance ID.
         self.instance_id = instance_id
-        # The endpoint of the instance.
+        # The IP endpoint of the instance.
         self.ip = ip
-        # The ID of the instance owner.
+        # The owner ID.
         self.owner_id = owner_id
-        # The port number of the instance that you want to access.
+        # The port of the target instance.
         self.port = port
-        # The role of the current API caller.
+        # The role information.
         self.role = role
         # The tenant ID.
         self.tenant_id = tenant_id
-        # The client token that is used to ensure the idempotence of the request.
+        # The client token, which is a custom unique random string.
         self.token = token
         # The unique identifier of the instance.
         self.uuid = uuid
-        # The VPC ID.
+        # VPC ID。
         self.vpc_id = vpc_id
 
     def validate(self):

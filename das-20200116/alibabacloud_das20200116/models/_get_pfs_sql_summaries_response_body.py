@@ -16,20 +16,21 @@ class GetPfsSqlSummariesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code returned.
+        # Response status code.
         self.code = code
-        # The returned data.
+        # Response data.
         self.data = data
-        # The returned message.
+        # Response message.
         # 
-        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+        # > If the request succeeds, this parameter returns **Successful**. If it fails, it returns error details such as an error code.
         self.message = message
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request succeeded:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Succeeded.
+        # 
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -87,15 +88,15 @@ class GetPfsSqlSummariesResponseBodyData(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
-        # The reserved parameter.
+        # Reserved parameter.
         self.extra = extra
-        # The details of the data returned.
+        # Detailed information list.
         self.list = list
-        # The page number.
+        # Page number.
         self.page_no = page_no
-        # The number of entries per page.
+        # Maximum number of records per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # Total number of records.
         self.total = total
 
     def validate(self):
@@ -217,148 +218,152 @@ class GetPfsSqlSummariesResponseBodyDataList(DaraModel):
         user_id: str = None,
         warn_count: int = None,
     ):
-        # The average execution latency. Unit: millisecond.
+        # Average SQL execution duration, in milliseconds.
         self.avg_latency = avg_latency
-        # The total number of executions.
+        # Total number of executions.
         self.count = count
-        # The percentage of the number of executions.
+        # Percentage of total executions.
         self.count_rate = count_rate
-        # The ratio of the CPU execution duration to the total execution duration of the SQL statement.
+        # Ratio of CPU execution time to total SQL execution time.
         self.cpu_rate = cpu_rate
-        # The CPU execution duration. Unit: millisecond.
+        # CPU runtime, in milliseconds.
         self.cpu_time = cpu_time
-        # The data read duration. Unit: millisecond.
+        # Data read time, in milliseconds.
         self.data_read_time = data_read_time
-        # The number of nodes from which data can be read.
+        # Number of readable data nodes.
         self.data_reads = data_reads
-        # The data write duration. Unit: millisecond.
+        # Data write time, in milliseconds.
         self.data_write_time = data_write_time
-        # The number of nodes to which data can be written.
+        # Number of writable data nodes.
         self.data_writes = data_writes
-        # The name of the database.
+        # Database name.
         self.db = db
-        # The execution duration. Unit: millisecond.
+        # Actual runtime, in milliseconds.
         self.elapsed_time = elapsed_time
-        # The number of errors.
+        # Number of errors.
         self.err_count = err_count
-        # The time when the SQL statement was executed for the first time. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # First execution time, in Unix time format, in milliseconds.
         self.first_time = first_time
-        # Indicates whether full table scan was enabled. Valid values:
+        # Indicates whether a full table scan occurred. Valid values:
         # 
-        # * **true**
-        # * **false**
+        # - **true**: Yes.
+        # 
+        # - **false**: No.
         self.full_scan = full_scan
-        # The primary key ID.
+        # Primary key ID.
         self.id = id
-        # The instance ID.
+        # Instance ID.
         self.instance_id = instance_id
-        # The time when the SQL statement was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # Last update time, in Unix time format, in milliseconds.
         self.last_time = last_time
-        # The average lock wait latency. Unit: millisecond.
+        # Average lock wait time, in milliseconds.
         self.lock_latency_avg = lock_latency_avg
-        # The logical database ID.
+        # Logical database ID.
         self.logic_id = logic_id
-        # The number of logical nodes.
+        # Number of logical nodes.
         self.logic_reads = logic_reads
-        # The maximum execution latency. Unit: millisecond.
+        # Maximum execution duration, in milliseconds.
         self.max_latency = max_latency
-        # The number of mutex spins.
+        # Number of mutex spins.
         self.mutex_spins = mutex_spins
-        # The number of mutex waits.
+        # Number of mutex waits.
         self.mutex_waits = mutex_waits
-        # The node ID.
+        # Node ID.
         # 
-        # >  This parameter is returned only if the database instance is an ApsaraDB RDS for MySQL Cluster Edition instance or a PolarDB for MySQL cluster.
+        # > This parameter is returned for ApsaraDB RDS for MySQL Cluster Edition or PolarDB for MySQL database instances.
         self.node_id = node_id
-        # The number of physical asynchronous nodes.
+        # Number of physical asynchronous nodes.
         self.physical_async_reads = physical_async_reads
-        # The number of physical nodes.
+        # Number of physical nodes.
         self.physical_reads = physical_reads
-        # The SQL template.
+        # SQL template.
         self.psql = psql
-        # The number of redo nodes.
+        # Number of redo nodes.
         self.redo_writes = redo_writes
-        # The number of rows that are affected by the SQL statement.
+        # Number of rows affected.
         self.rows_affected = rows_affected
-        # The average number of rows affected by the SQL statement.
+        # Average number of rows affected.
         self.rows_affected_avg = rows_affected_avg
-        # The total number of scanned rows.
+        # Total number of rows scanned.
         self.rows_examined = rows_examined
-        # The average number of scanned rows.
+        # Average number of rows scanned.
         self.rows_examined_avg = rows_examined_avg
-        # The average number of returned rows.
+        # Average number of rows sent.
         self.rows_send_avg = rows_send_avg
-        # The number of rows returned by the SQL statement.
+        # Number of rows returned.
         self.rows_sent = rows_sent
-        # The average number of rows returned for the SQL statement.
+        # Average number of rows returned per SQL statement.
         self.rows_sent_avg = rows_sent_avg
-        # The number of sorted rows.
+        # Number of rows sorted.
         self.rows_sorted = rows_sorted
-        # The execution duration percentage.
+        # Percentage of total execution duration.
         self.rt_rate = rt_rate
-        # Indicates whether read/write splitting was enabled. Valid values:
+        # Indicates whether read/write splitting is enabled. Valid values:
         # 
-        # * **0:** Read/write splitting was disabled.
-        # * **1:** Read/write splitting was enabled.
+        # - **0**: Disabled.
+        # 
+        # - **1**: Enabled.
         self.rwlock_os_waits = rwlock_os_waits
-        # The read/write splitting parameters.
+        # Read/write splitting parameter.
         self.rwlock_spin_rounds = rwlock_spin_rounds
-        # Indices whether multi-index scanning was enabled. Valid values:
+        # Indicates whether multiple index scans are enabled. Valid values:
         # 
-        # * **0:** Multi-index scanning was disabled.
-        # * **1:** Multi-index scanning was enabled.
+        # - **0**: Disabled.
+        # 
+        # - **1**: Enabled.
         self.rwlock_spin_waits = rwlock_spin_waits
-        # The average number of joins that performed table scans without using indexes.
-        # 
-        # > If the value of this parameter is not 0, check the table indexes.
+        # The average number of connections that perform table scans without using an index.
+        # >Notice: If this parameter value is not 0, carefully check the indexes of the table.
         self.select_full_join_avg = select_full_join_avg
-        # The average number of joins that selected a range.
+        # Average number of range joins.
         self.select_full_range_join_avg = select_full_range_join_avg
-        # The average selected range.
+        # Average range selection.
         self.select_range_avg = select_range_avg
-        # The average number of scanned rows.
+        # Average number of scans.
         self.select_scan_avg = select_scan_avg
-        # The semi-synchronous replication latency. Unit: millisecond.
+        # Semi-synchronous replication delay, in milliseconds.
         self.semisync_delay_time = semisync_delay_time
-        # The amount of time consumed for locking the server. Unit: millisecond.
+        # Server lock time, in milliseconds.
         self.server_lock_time = server_lock_time
-        # The number of merges that the sorting algorithm must perform.
+        # Number of merge passes required by the sort algorithm.
         self.sort_merge_passes = sort_merge_passes
-        # The average number of sorts that were performed by using a range.
+        # Average number of range-based sorts.
         self.sort_range_avg = sort_range_avg
-        # The average number of sorted rows.
+        # Average number of sorted rows.
         self.sort_rows_avg = sort_rows_avg
-        # The average number of sorts that were performed during table scans.
+        # Average number of sorted scans.
         self.sort_scan_avg = sort_scan_avg
-        # The SQL template ID.
+        # SQL template ID.
         self.sql_id = sql_id
-        # The type of the SQL statement. Valid values:
+        # SQL type. Valid values:
         # 
-        # * **SELECT**
-        # * **UPDATE**
-        # * **DELETE**
+        # - **SELECT**
+        # 
+        # - **UPDATE**
+        # 
+        # - **DELETE**
         self.sql_type = sql_type
-        # The names of tables in the database.
+        # Database table names.
         self.tables = tables
-        # The reserved parameter.
+        # Reserved parameter.
         self.timer_wait_avg = timer_wait_avg
-        # The data timestamp. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # Data timestamp in Unix time format, in milliseconds.
         self.timestamp = timestamp
-        # The number of on-disk temporary tables.
+        # Number of temporary disk tables.
         self.tmp_disk_tables = tmp_disk_tables
-        # The average number of on-disk temporary tables.
+        # Average number of temporary disk tables.
         self.tmp_disk_tables_avg = tmp_disk_tables_avg
-        # The number of temporary tables.
+        # Number of temporary tables.
         self.tmp_tables = tmp_tables
-        # The average number of temporary tables.
+        # Average number of temporary tables.
         self.tmp_tables_avg = tmp_tables_avg
-        # The execution latency. Unit: millisecond.
+        # Total execution duration, in milliseconds.
         self.total_latency = total_latency
-        # The amount of time consumed for locking the storage transaction. Unit: millisecond.
+        # Transaction lock time, in milliseconds.
         self.transaction_lock_time = transaction_lock_time
-        # The user ID.
+        # User ID.
         self.user_id = user_id
-        # The number of warnings.
+        # Number of warnings.
         self.warn_count = warn_count
 
     def validate(self):

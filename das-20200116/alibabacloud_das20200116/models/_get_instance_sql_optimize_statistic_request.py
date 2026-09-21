@@ -21,20 +21,21 @@ class GetInstanceSqlOptimizeStatisticRequest(DaraModel):
         self.end_time = end_time
         # Specifies whether to filter instances for which DAS Enterprise Edition is enabled. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
         # 
-        # >  If you set this parameter to **true**, only database instances for which DAS Enterprise Edition is disabled are queried. If you set this parameter to **false**, all database instances are queried.
+        # - **false**
+        # 
+        # > If you set this parameter to **true**, only database instances for which DAS Enterprise Edition is disabled are queried. If you set this parameter to **false**, all database instances are queried.
         self.filter_enable = filter_enable
         # The database instance ID.
         # 
-        # >  The database instance must be an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster.
+        # > The database instance must be an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The node ID.
         # 
-        # >  For ApsaraDB RDS for MySQL Cluster Edition instances or PolarDB for MySQL clusters, you must specify the node ID.
+        # > For ApsaraDB RDS for MySQL Cluster Edition instances or PolarDB for MySQL clusters, you must specify the node ID.
         self.node_id = node_id
         # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
@@ -42,14 +43,15 @@ class GetInstanceSqlOptimizeStatisticRequest(DaraModel):
         self.start_time = start_time
         # The duration threshold for automatic SQL optimization events. After this parameter is specified, the system collects statistics on automatic SQL optimization events whose duration does not exceed the specified threshold.
         # 
-        # >  This parameter is a reserved parameter and does not take effect.
+        # > This parameter is a reserved parameter and does not take effect.
         self.threshold = threshold
         # Specifies whether to merge automatic SQL optimization events. Valid values:
         # 
-        # *   **true**: merges automatic SQL optimization events.
-        # *   **false**: does not merge automatic SQL optimization events.
+        # - **true**: merges automatic SQL optimization events.
         # 
-        # >  This parameter is a reserved parameter and does not take effect.
+        # - **false**: does not merge automatic SQL optimization events.
+        # 
+        # > This parameter is a reserved parameter and does not take effect.
         self.use_merging = use_merging
 
     def validate(self):

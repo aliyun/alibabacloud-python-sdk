@@ -14,11 +14,85 @@ class GetDeadLockDetailResponseBody(DaraModel):
         success: str = None,
         synchro: str = None,
     ):
+        # The returned status code.
         self.code = code
+        # The returned data in JSON format:
+        # 
+        # - accountId: the user ID.
+        # 
+        # - textId: the deadlock text ID.
+        # 
+        # - gmtModified: the time when the diagnosis was generated.
+        # 
+        # - originText: the original deadlock text of LATEST DETECTED DEADLOCK or the original deadlock text in the error log.
+        # 
+        # - deadlock: the deadlock details:
+        # 
+        #   - occurTime: the time when the deadlock occurred.
+        # 
+        #   - originTextId: the deadlock text ID.
+        # 
+        #   - rollbackTrxId: the ID of the rolled back transaction.
+        # 
+        #   - transactions:
+        # 
+        #     - deadlockIdInDB: the deadlock ID in the database.
+        # 
+        #     - ip: the access IP address.
+        # 
+        #     - queryId: the query ID.
+        # 
+        #     - queryType: the query type.
+        # 
+        #     - relatedTables: the related tables.
+        # 
+        #     - tableNamesString: the related tables.
+        # 
+        #     - sqlText: the SQL text.
+        # 
+        #     - threadId: the thread ID.
+        # 
+        #     - transactionId: the transaction ID.
+        # 
+        #     - trxIdInLock: the transaction ID in the deadlock.
+        # 
+        #     - userName: the database username.
+        # 
+        #     - waitLockIndexName: the name of the index for which the lock is waiting.
+        # 
+        #     - waitLockMode: the type of the lock that is waiting.
+        # 
+        #     - lockWait: the waiting lock.
+        # 
+        #     - holdLockIndexName: the name of the index for which the lock is held.
+        # 
+        #     - holdLockMode: the type of the lock that is held.
+        # 
+        #     - lockHold: the held lock.
+        # 
+        #   - trxNum: the number of transactions.
+        # 
+        # - gmtCreate: the time when the diagnosis was created.
+        # 
+        # - nodeId: the node ID.
+        # 
+        # - uuid: the instance ID.
         self.data = data
+        # The response message.
+        # 
+        # > - When the request is successful, **Successful** is returned.
+        # >
+        # > - When the request fails, error information (such as error codes) is returned.
         self.message = message
+        # The unique request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):

@@ -22,14 +22,15 @@ class GetEventSubscriptionResponseBody(DaraModel):
         self.data = data
         # The returned message.
         # 
-        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+        # > If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.success = success
 
     def validate(self):
@@ -100,15 +101,19 @@ class GetEventSubscriptionResponseBodyData(DaraModel):
     ):
         # Indicates whether the event subscription feature is enabled. Valid values:
         # 
-        # *   **0**: The event subscription feature is disabled.
-        # *   **1**: The event subscription feature is enabled.
+        # - **0**: The event subscription feature is disabled.
+        # 
+        # - **1**: The event subscription feature is enabled.
         self.active = active
         # The notification method. Valid values:
         # 
-        # *   **hdm_alarm_sms**: text message.
-        # *   **dingtalk**: DingTalk chatbot.
-        # *   **hdm_alarm_sms_and_email**: text message and email.
-        # *   **hdm_alarm_sms,dingtalk**: text message and DingTalk chatbot.
+        # - **hdm_alarm_sms**: text message.
+        # 
+        # - **dingtalk**: DingTalk chatbot.
+        # 
+        # - **hdm_alarm_sms_and_email**: text message and email.
+        # 
+        # - **hdm_alarm_sms,dingtalk**: text message and DingTalk chatbot.
         self.channel_type = channel_type
         # The name of the contact group that receives alert notifications. Multiple names are separated by commas (,).
         self.contact_group_name = contact_group_name
@@ -134,10 +139,13 @@ class GetEventSubscriptionResponseBodyData(DaraModel):
         self.lang = lang
         # The risk level of the events that trigger notifications. Valid values:
         # 
-        # *   **Notice**
-        # *   **Optimization**
-        # *   **Warn**
-        # *   **Critical**
+        # - **Notice**
+        # 
+        # - **Optimization**
+        # 
+        # - **Warn**
+        # 
+        # - **Critical**
         self.level = level
         # The minimum interval between event notifications. Unit: seconds.
         self.min_interval = min_interval
@@ -290,8 +298,9 @@ class GetEventSubscriptionResponseBodyDataContacts(DaraModel):
         self.groups = groups
         # Indicates whether the alert contact name is the same as the contact name on CloudMonitor.
         # 
-        # * **true**
-        # * **false**
+        # - **true**
+        # 
+        # - **false**
         self.is_cms_reduplicated = is_cms_reduplicated
         # The name of the alert contact.
         self.name = name

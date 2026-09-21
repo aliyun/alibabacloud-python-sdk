@@ -15,14 +15,42 @@ class GetDeadLockHistoryRequest(DaraModel):
         source: str = None,
         start_time: int = None,
     ):
+        # The end time of the query. This value is a UNIX timestamp. Unit: milliseconds.
+        # 
+        # >Notice: 
+        # 
+        # This parameter is a Long value. To prevent precision loss during serialization and deserialization, make sure that the value does not exceed 9007199254740991.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The node ID.
+        # 
+        # > Specify the node ID for a PolarDB for MySQL instance.
         self.node_id = node_id
+        # The page number.
         self.page_no = page_no
+        # The number of entries per page. The maximum value is **100**.
         self.page_size = page_size
+        # The source of the task:
+        # 
+        # - **MANUAL** or unspecified: queries tasks for recent deadlock analysis.
+        # 
+        # - **AUTO**: queries tasks for full deadlock analysis.
+        # 
+        # >Notice: 
+        # 
+        # If you set this parameter to AUTO to query tasks for full deadlock analysis, the start time can be a maximum of seven days earlier than the end time.
         self.source = source
+        # The start time of the query. This value is a UNIX timestamp. Unit: milliseconds.
+        # 
+        # >Notice: 
+        # 
+        # This parameter is a Long value. To prevent precision loss during serialization and deserialization, make sure that the value does not exceed 9007199254740991.
+        # 
         # This parameter is required.
         self.start_time = start_time
 

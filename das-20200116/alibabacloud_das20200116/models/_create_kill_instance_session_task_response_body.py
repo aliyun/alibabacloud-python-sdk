@@ -13,22 +13,21 @@ class CreateKillInstanceSessionTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code returned.
+        # The returned status code.
         self.code = code
-        # The ID of the task that terminated the sessions.
+        # The task ID for terminating sessions.
         # 
-        # >  If the sessions of a PolarDB for MySQL cluster were terminated, **NodeId** is left empty, and **KillAllSessions** is set to **true**, the task IDs are returned based on the number of nodes. Example: ["f77d535b45405bd462b21caa3ee8\\*\\*\\*\\*", "e93ab549abb081eb5dcd5396a29b\\*\\*\\*\\*"].
+        # > When you invoke this API operation for a PolarDB for MySQL instance with the **NodeId** request parameter left empty (no node ID specified) and the **KillAllSessions** request parameter set to **true** (terminate all sessions), a list of task IDs is returned based on the number of nodes, such as ["f77d535b45405bd462b21caa3ee8\\*\\*\\*\\*", "e93ab549abb081eb5dcd5396a29b\\*\\*\\*\\*"\\].
         self.data = data
         # The returned message.
-        # 
-        # >  If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
+        # >If the request is successful, **Successful** is returned. If the request fails, an error message such as an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request is successful.
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The request is successful.
+        # - **false**: The request fails.
         self.success = success
 
     def validate(self):

@@ -14,20 +14,19 @@ class DescribeCloudbenchTaskResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The HTTP status code returned.
+        # The returned status code.
         self.code = code
-        # The detailed information, including the error codes and the number of entries that are returned.
+        # The detailed information, including the total number of entries and error codes.
         self.data = data
         # The returned message.
-        # 
-        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+        # >If the request is successful, **Successful** is returned. If the request fails, an error message is returned, such as an error code.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request is successful. Valid values:
         # 
-        # *   **true**: The request was successful.
-        # *   **false**: The request failed.
+        # - **true**: The request is successful.
+        # - **false**: The request fails.
         self.success = success
 
     def validate(self):
@@ -121,180 +120,178 @@ class DescribeCloudbenchTaskResponseBodyData(DaraModel):
         version: str = None,
         work_dir: str = None,
     ):
-        # The ID of the archiving task.
+        # The archiving task ID.
         self.archive_job_id = archive_job_id
-        # The name of the table that was archived to Object Storage Service (OSS).
+        # The name of the archived OSS table.
         self.archive_oss_table_name = archive_oss_table_name
-        # The archiving state of the file that stores the analysis result of full SQL statistics. Valid values:
+        # The SQL archiving state. Valid values:
         # 
-        # *   **0**: The file archiving is not started.
-        # *   **1**: The file is archived.
-        # *   **2**: An error occurred.
-        # *   **3**: The file is being archived.
-        # *   **4**: The archived file does not need to be downloaded.
+        # - **0**: not started.
+        # - **1**: completed.
+        # - **2**: error.
+        # - **3**: running.
+        # - **4**: no download required.
         self.archive_state = archive_state
-        # The ID of the backup set. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/26273.html) operation to query the ID of the backup set.
+        # The backup set ID. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/26273.html) operation to obtain the backup set ID.
         self.backup_id = backup_id
         # The backup type. Valid values:
         # 
-        # *   **TIMESTAMP**
-        # *   **BACKUPID**
+        # - **TIMESTAMP**: by backup time.
+        # - **BACKUPID**: by backup set ID.
         self.backup_type = backup_type
-        # The substep in the stress testing task. Valid values:
+        # The substep of the stress testing task. Valid values:
         # 
-        # *   **NEW**: initializes the stress testing task.
-        # *   **WAIT_BUY_ECS**: purchases an ECS instance.
-        # *   **WAIT_START_ECS**: starts an ECS instance.
-        # *   **WAIT_INSTALL_JDK**: installs the Java Development Kit (JDK).
-        # *   **WAIT_INSTALL_DBGATEWAY**: installs the database gateway (DBGateway).
-        # *   **ADD_SECURITY_IPS_STEP**: configure a security group whitelist.
-        # *   **ARCHIVE**: archives the full SQL statistics.
-        # *   **DOWNLOAD**: downloads the file that stores the analysis result of full SQL statistics.
-        # *   **PROCEED**: preprocesses the file that stores the analysis result of full SQL statistics.
-        # *   **PRE_LOAD**: preloads the file that stores the analysis result of full SQL statistics.
-        # *   **VALIDATE**: verifies the functionality of stress testing.
-        # *   **PRESSURE**: starts the stress testing task.
+        # - **NEW**: task initialization.
+        # - **WAIT_BUY_ECS**: purchasing an ECS instance.
+        # - **WAIT_START_ECS**: starting the ECS instance.
+        # - **WAIT_INSTALL_JDK**: installing JDK.
+        # - **WAIT_INSTALL_DBGATEWAY**: installing DBGateway.
+        # - **ADD_SECURITY_IPS_STEP**: configuring the security group whitelist.
+        # - **ARCHIVE**: archiving full SQL.
+        # - **DOWNLOAD**: downloading the full SQL file.
+        # - **PROCEED**: preprocessing the full SQL file.
+        # - **PRE_LOAD**: preloading the full SQL file.
+        # - **VALIDATE**: functional verification.
+        # - **PRESSURE**: performance stress testing.
         self.bench_step = bench_step
-        # The status that indicates the substep performed on the stress testing task. Valid values:
+        # The status of the stress testing substep. Valid values:
         # 
-        # *   **NEW**: The task is being initialized.
-        # *   **RUNNING**: The task is running.
-        # *   **FAILED**: The task failed.
-        # *   **FINISHED**: The task is complete.
-        # *   **Terminated**: The task is terminated.
-        # *   **Deleted**: The task is deleted.
+        # - **NEW**: task initialization.
+        # - **RUNNING**: running.
+        # - **FAILED**: failed.
+        # - **FINISHED**: completed.
+        # - **Terminated**: terminated.
+        # - **Deleted**: deleted.
         self.bench_step_status = bench_step_status
-        # The DBGateway ID of the stress testing client.
+        # The database gateway ID of the stress testing machine.
         self.client_gateway_id = client_gateway_id
-        # The type of the stress testing client. Valid values:
+        # The type of the stress testing machine. Valid values:
         # 
-        # *   **ECS**: indicates that you must create the [DBGateway](https://help.aliyun.com/document_detail/64905.html).
-        # *   **DAS_ECS**: indicates that DAS automatically purchases and deploys an ECS instance for stress testing.
+        # - **ECS**: You need to prepare the [Database Gateway](https://help.aliyun.com/document_detail/64905.html) on your own.
+        # - **DAS_ECS**: an ECS instance automatically purchased and deployed by DAS.
         self.client_type = client_type
         # The description of the stress testing task.
         self.description = description
-        # The UUID of the destination instance.
+        # The unique identity of the target instance.
         self.dst_instance_uuid = dst_instance_uuid
         # The reserved parameter.
         self.dst_ip = dst_ip
-        # The port number of the destination instance.
+        # The port of the target instance.
         self.dst_port = dst_port
-        # The type of the identifier that is used to indicate the destination instance. Valid values:
-        # 
-        # *   **Instance** (default): the instance ID.
-        # *   **ConnectionString**: the endpoint of the instance.
+        # The type of the target instance. Valid values:
+        # - **Instance** (default): instance ID.
+        # - **ConnectionString**: endpoint of the instance.
         self.dst_type = dst_type
-        # The specification of the DTS task.
+        # The DTS task specification.
         self.dts_job_class = dts_job_class
         # The ID of the DTS migration task.
         self.dts_job_id = dts_job_id
         # The name of the Data Transmission Service (DTS) task.
         self.dts_job_name = dts_job_name
-        # The state of the DTS task. Valid values:
+        # The DTS task state. Valid values:
         # 
-        # *   **NOT_STARTED**: The task is not started.
-        # *   **PRE_CHECKING**: The task is in precheck.
-        # *   **PRE_CHECK_FAILED**: The precheck failed.
-        # *   **CHECKING**: The task is being checked.
-        # *   **MIGRATING**: The data is being migrated.
-        # *   **CATCHED**: The data is migrated from the source instance to the destination instance.
-        # *   **SUSPENDING**: The task is suspended.
-        # *   **MIGRATION_FAILED**: The data failed to be migrated.
-        # *   **FINISHED**: The task is complete.
-        # *   **INITIALIZING**: The synchronization is being initialized.
-        # *   **INITIALIZE_FAILED**: The synchronization failed to be initialized.
-        # *   **SYNCHRONIZING**: The data is being synchronized.
-        # *   **MODIFYING**: The objects to be synchronized are being changed.
-        # *   **SWITCHING**: The roles of the instances are being switched.
-        # *   **FAILED**: The task failed.
+        # - **NOT_STARTED**: not started.
+        # - **PRE_CHECKING**: precheck in progress.
+        # - **PRE_CHECK_FAILED**: precheck failed.
+        # - **CHECKING**: checking.
+        # - **MIGRATING**: migrating.
+        # - **CATCHED**: caught up.
+        # - **SUSPENDING**: suspending.
+        # - **MIGRATION_FAILED**: migration failed.
+        # - **FINISHED**: completed.
+        # - **INITIALIZING**: synchronization initializing.
+        # - **INITIALIZE_FAILED**: synchronization initialization failed.
+        # - **SYNCHRONIZING**: synchronizing.
+        # - **MODIFYING**: modifying synchronization objects.
+        # - **SWITCHING**: switching.
+        # - **FAILED**: failed.
         self.dts_job_state = dts_job_state
-        # The state of the DTS task. Valid values:
+        # The DTS task state. Valid values:
         # 
-        # *   **NOT_STARTED**: The task is not started.
-        # *   **PRE_CHECKING**: The task is in precheck.
-        # *   **PRE_CHECK_FAILED**: The precheck failed.
-        # *   **CHECKING**: The task is being checked.
-        # *   **MIGRATING**: The data is being migrated.
-        # *   **CATCHED**: The data is migrated from the source instance to the destination instance.
-        # *   **SUSPENDING**: The task is suspended.
-        # *   **MIGRATION_FAILED**: The data failed to be migrated.
-        # *   **FINISHED**: The task is complete.
-        # *   **INITIALIZING**: The synchronization is being initialized.
-        # *   **INITIALIZE_FAILED**: The synchronization failed to be initialized.
-        # *   **SYNCHRONIZING**: The data is being synchronized.
-        # *   **MODIFYING**: The objects to be synchronized are being changed.
-        # *   **SWITCHING**: The roles of the instances are being switched.
-        # *   **FAILED**: The task failed.
+        # - **NOT_STARTED**: not started.
+        # - **PRE_CHECKING**: precheck in progress.
+        # - **PRE_CHECK_FAILED**: precheck failed.
+        # - **CHECKING**: checking.
+        # - **MIGRATING**: migrating.
+        # - **CATCHED**: caught up.
+        # - **SUSPENDING**: suspending.
+        # - **MIGRATION_FAILED**: migration failed.
+        # - **FINISHED**: completed.
+        # - **INITIALIZING**: synchronization initializing.
+        # - **INITIALIZE_FAILED**: synchronization initialization failed.
+        # - **SYNCHRONIZING**: synchronizing.
+        # - **MODIFYING**: modifying synchronization objects.
+        # - **SWITCHING**: switching.
+        # - **FAILED**: failed.
         self.dts_job_status = dts_job_status
-        # The ID of the Elastic Compute Service (ECS) instance.
+        # The ECS instance ID.
         self.ecs_instance_id = ecs_instance_id
-        # The state that specifies the last operation that is performed for the stress testing task. Valid values:
+        # The state after the stress testing task ends. Valid values:
         # 
-        # *   **WAIT_TARGET**: prepares the destination instance.
-        # *   **WAIT_DBGATEWAY**: prepares the DBGateway.
-        # *   **WAIT_SQL**: prepares the full SQL statistics.
-        # *   **WAIT_LOGIC**: prepares to replay the traffic.
+        # - **WAIT_TARGET**: preparing the target instance for stress testing.
+        # - **WAIT_DBGATEWAY**: preparing the stress testing deployment.
+        # - **WAIT_SQL**: preparing full SQL.
+        # - **WAIT_LOGIC**: preparing to start traffic replay.
         # 
-        # >  When the state of a stress testing task changes to the state that is specified by the EndState parameter, the stress testing task becomes completed.
+        # >After the stress testing task executes the state specified by EndState, the task directly reaches the completed state.
         self.end_state = end_state
-        # The error code returned for the substep of the stress testing task.
+        # The error code returned by the internal stress testing task.
         self.error_code = error_code
-        # The error message returned if the request failed.
+        # The error message returned when the task fails.
         self.error_message = error_message
         # The additional information.
         self.external = external
-        # The rate at which the stress testing task replayed the traffic. The value is a positive integer. Valid values:**1** to **30**. Default value: **1**.
+        # The stress testing rate multiplier. The replay rate must be a positive integer. Valid values: **0** to **30**. Default value: **1**.
         self.rate = rate
-        # The duration of the stress testing task for which traffic was captured from the source instance.
+        # The duration of the stress testing task.
         self.request_duration = request_duration
-        # The duration of the stress testing task for which the traffic was generated on the destination instance. Unit: milliseconds.
+        # The generated stress testing duration. Unit: milliseconds.
         self.smart_pressure_time = smart_pressure_time
-        # The source of the task. Valid values:
+        # The task source. Valid values:
         # 
-        # *   **DAS**
-        # *   **OPEN_API**
+        # - **DAS**.
+        # - **OPEN_API**.
         self.source = source
-        # The reuse information about the analysis result of full SQL statistics.
+        # The reuse information of the full SQL.
         self.sql_complete_reuse = sql_complete_reuse
-        # The database type of the source instance. Valid values:
+        # The database type of the source instance.
         self.src_instance_area = src_instance_area
         # The UUID of the source instance.
         self.src_instance_uuid = src_instance_uuid
         # The reserved parameter.
         self.src_public_ip = src_public_ip
-        # The state that indicates the operation performed for the stress testing task. Valid values:
+        # The current state of the stress testing task. Valid values:
         # 
-        # *   **WAIT_TARGET**: prepares the destination instance.
-        # *   **WAIT_DBGATEWAY**: prepares the DBGateway.
-        # *   **WAIT_SQL**: prepares the full SQL statistics.
-        # *   **WAIT_LOGIC**: prepares to replay the traffic.
+        # - **WAIT_TARGET**: preparing the target instance for stress testing.
+        # - **WAIT_DBGATEWAY**: preparing the stress testing deployment.
+        # - **WAIT_SQL**: preparing full SQL.
+        # - **WAIT_LOGIC**: preparing to start traffic replay.
         self.state = state
-        # The state of the stress testing task. Valid values:
+        # The running status of the stress testing task. Valid values:
         # 
-        # *   **SUCCESS**: The task is successful.
-        # *   **IGNORED**: The task is ignored.
-        # *   **RUNNING**: The task is running.
-        # *   **EXCEPTION**: An error occurred.
+        # - **SUCCESS**: successful.
+        # - **IGNORED**: ignored.
+        # - **RUNNING**: running.
+        # - **EXCEPTION**: abnormal.
         self.status = status
-        # The name of the table that is used for stress testing.
+        # The table names involved in the stress testing task.
         self.table_schema = table_schema
         # The task ID.
         self.task_id = task_id
         # The type of the stress testing task. Valid values:
-        # 
-        # *   **pressure test** (default): A task of this type replays the traffic that is captured from the source instance on the destination instance at the maximum playback rate that is supported by the destination instance.
-        # *   **smart pressure test**: A task of this type analyzes the traffic that is captured from the source instance over a short period of time and generates traffic on the destination instance for continuous stress testing. The business model based on which the traffic is generated on the destination instance and the traffic distribution are consistent with those on the source instance. Stress testing tasks of this type can help you reduce the amount of time that is consumed to collect data from the source instance and reduce storage costs and performance overheads.
+        # - **pressure test** (default): intelligent stress testing. The traffic captured from the target instance is replayed on the destination instance at the maximum speed supported by the destination instance specifications.
+        # - **smart pressure test**: generated stress testing. By analyzing and learning the traffic captured from the target instance within a short period of time, traffic that is consistent with the business model and traffic distribution of the original traffic is generated for continuous stress testing. This reduces the time required to collect data from the target instance and lowers storage costs and performance overhead.
         self.task_type = task_type
-        # The topic that contains the consumed data. This topic is a topic in Message Queue for Apache Kafka.
+        # The Kafka consumption topic.
         self.topic = topic
-        # The ID of the Alibaba Cloud account.
+        # The Alibaba Cloud account ID.
         self.user_id = user_id
         # The version of the stress testing task. Valid values:
         # 
-        # *   **V2.0**
-        # *   **V3.0**
+        # - **V2.0**
+        # - **V3.0**
         self.version = version
-        # The temporary directory generated for stress testing.
+        # The temporary directory generated by the stress testing task.
         self.work_dir = work_dir
 
     def validate(self):

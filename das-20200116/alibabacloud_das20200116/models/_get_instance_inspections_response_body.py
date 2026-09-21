@@ -22,14 +22,15 @@ class GetInstanceInspectionsResponseBody(DaraModel):
         self.data = data
         # The returned message.
         # 
-        # >  If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
+        # > If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.success = success
 
     def validate(self):
@@ -162,13 +163,15 @@ class GetInstanceInspectionsResponseBodyDataList(DaraModel):
         self.data = data
         # Indicates whether DAS Enterprise Edition is enabled. Valid values:
         # 
-        # *   **0**: disabled.
-        # *   **1**: enabled.
-        # *   **2**: not supported.
+        # - **0**: disabled.
+        # 
+        # - **1**: enabled.
+        # 
+        # - **2**: not supported.
         self.enable_das_pro = enable_das_pro
         # The end time of the inspection and scoring task. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
-        # >  The end time must be later than the start time.
+        # > The end time must be later than the start time.
         self.end_time = end_time
         # The time when the task was created. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.gmt_create = gmt_create
@@ -182,14 +185,17 @@ class GetInstanceInspectionsResponseBodyDataList(DaraModel):
         self.start_time = start_time
         # The state of the inspection and scoring task. Valid values:
         # 
-        # *   **0**: The task is waiting for execution.
-        # *   **1**: The task is in progress.
-        # *   **2**: The task is complete.
+        # - **0**: The task is waiting for execution.
+        # 
+        # - **1**: The task is in progress.
+        # 
+        # - **2**: The task is complete.
         self.state = state
         # The mode in which the inspection and scoring task was initiated. Valid values:
         # 
-        # *   **0**: automatic mode.
-        # *   **1**: manual mode.
+        # - **0**: automatic mode.
+        # 
+        # - **1**: manual mode.
         self.task_type = task_type
 
     def validate(self):
@@ -301,16 +307,19 @@ class GetInstanceInspectionsResponseBodyDataListInstance(DaraModel):
         self.account_id = account_id
         # The connection mode of the instance. Valid values:
         # 
-        # *   **standard**: standard mode.
-        # *   **safe**: database proxy mode.
+        # - **standard**: standard mode.
+        # 
+        # - **safe**: database proxy mode.
         self.category = category
         # The CPU specification of the instance. For example, if a value of 8 is returned, the instance has eight CPU cores.
         self.cpu = cpu
         # The database engine. Valid values:
         # 
-        # *   **MySQL**
-        # *   **Redis**
-        # *   **PolarDBMySQL**
+        # - **MySQL**
+        # 
+        # - **Redis**
+        # 
+        # - **PolarDBMySQL**
         self.engine = engine
         # The version number of the database engine.
         self.engine_version = engine_version
@@ -318,11 +327,13 @@ class GetInstanceInspectionsResponseBodyDataListInstance(DaraModel):
         self.instance_alias = instance_alias
         # The type of the instance on which the database is deployed. Valid values:
         # 
-        # *   **RDS**: an Alibaba Cloud database instance.
-        # *   **ECS**: an Elastic Compute Service (ECS) instance on which a self-managed database is deployed.
-        # *   **IDC**: a self-managed database instance that is not deployed on Alibaba Cloud.
+        # - **RDS**: an Alibaba Cloud database instance.
         # 
-        # >  The value IDC indicates that the instance is deployed in a data center.
+        # - **ECS**: an Elastic Compute Service (ECS) instance on which a self-managed database is deployed.
+        # 
+        # - **IDC**: a self-managed database instance that is not deployed on Alibaba Cloud.
+        # 
+        # > The value IDC indicates that the instance is deployed in a data center.
         self.instance_area = instance_area
         # The instance type.
         self.instance_class = instance_class
@@ -464,33 +475,43 @@ class GetInstanceInspectionsResponseBodyDataListAutoFunction(DaraModel):
     ):
         # Indicates whether the feature of automatically creating and deleting indexes is enabled. Valid values:
         # 
-        # *   **0**: disabled.
-        # *   **1**: enabled.
-        # *   **2**: not supported.
+        # - **0**: disabled.
+        # 
+        # - **1**: enabled.
+        # 
+        # - **2**: not supported.
         self.auto_index = auto_index
         # Indicates whether the automatic throttling feature is enabled. Valid values:
         # 
-        # *   **0**: disabled.
-        # *   **1**: enabled.
-        # *   **2**: not supported.
+        # - **0**: disabled.
+        # 
+        # - **1**: enabled.
+        # 
+        # - **2**: not supported.
         self.auto_limited_sql = auto_limited_sql
         # Indicates whether the automatic fragment recycling feature is enabled. Valid values:
         # 
-        # *   **0**: disabled.
-        # *   **1**: enabled.
-        # *   **2**: not supported.
+        # - **0**: disabled.
+        # 
+        # - **1**: enabled.
+        # 
+        # - **2**: not supported.
         self.auto_resource_optimize = auto_resource_optimize
         # Indicates whether the auto scaling feature is enabled. Valid values:
         # 
-        # *   **0**: disabled.
-        # *   **1**: enabled.
-        # *   **2**: not supported.
+        # - **0**: disabled.
+        # 
+        # - **1**: enabled.
+        # 
+        # - **2**: not supported.
         self.auto_scale = auto_scale
         # Indicates whether the event subscription feature is enabled. Valid values:
         # 
-        # *   **0**: disabled.
-        # *   **1**: enabled.
-        # *   **2**: not supported.
+        # - **0**: disabled.
+        # 
+        # - **1**: enabled.
+        # 
+        # - **2**: not supported.
         self.event_subscription = event_subscription
 
     def validate(self):

@@ -18,41 +18,45 @@ class GetPfsSqlSummariesRequest(DaraModel):
         sql_id: str = None,
         start_time: int = None,
     ):
-        # Specifies whether to sort the returned entries in ascending order. Default value: **false**. Valid values:
+        # Sort in ascending order. Default is **false**.
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Yes.
+        # 
+        # - **false**: No.
         self.asc = asc
-        # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # End time of the query, in Unix timestamp format, in milliseconds.
         # 
-        # >  The end time must be later than the start time. You can view the data of up to seven days within the last month.
+        # > The end time must be later than the start time. You can query data for any seven-day period within the last 30 days.
         self.end_time = end_time
-        # The instance ID.
+        # Database instance ID.
         self.instance_id = instance_id
-        # The keywords of the SQL template. Separate multiple keywords with spaces.
+        # Keywords in the SQL text. Separate multiple keywords with spaces.
         self.keywords = keywords
-        # The node ID.
+        # Node ID.
         # 
-        # >  This parameter is required if the database instance is an ApsaraDB RDS for MySQL Cluster Edition instance or a PolarDB for MySQL cluster.
+        # > Provide a node ID for RDS MySQL Cluster Edition or PolarDB for MySQL database instances.
         self.node_id = node_id
-        # The field by which to sort the returned entries. Default value: **count**.
+        # Field to sort by. Default is **count**.
         # 
-        # *   **count**: the number of executions.
-        # *   **avgRt**: the average execution duration.
-        # *   **rtRate**: the execution duration percentage.
-        # *   **rowsExamined**: the total number of scanned rows.
-        # *   **avgRowsExamined**: the average number of scanned rows.
-        # *   **avgRowsReturned**: the average number of returned rows.
+        # - **count**: Number of executions.
+        # 
+        # - **avgLatency**: Average execution time.
+        # 
+        # - **rowsExamined**: Total number of scanned rows.
+        # 
+        # - **rowsExaminedAvg**: Average number of scanned rows.
+        # 
+        # - **rowsSentAvg**: Average number of returned rows.
         self.order_by = order_by
-        # The page number. Pages start from page 1. Default value: 1.
+        # Page number for paged queries. Start from 1. Default is 1.
         self.page_no = page_no
-        # The number of entries per page. Default value: 10. Valid values: 1 to 100.
+        # Maximum number of records per page for paged queries. Default is 10. Maximum is 100.
         self.page_size = page_size
-        # The SQL ID.
+        # SQL ID.
         # 
-        # >  If this parameter is specified, the full request statistics of the specified SQL query are collected. If this parameter is left empty, the full request statistics of the entire database instance are collected.
+        # > If you specify an SQL ID, the system returns statistics for that SQL ID only. If you leave this parameter empty, the system returns statistics for the entire database instance.
         self.sql_id = sql_id
-        # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # Start time of the query, in Unix timestamp format, in milliseconds.
         self.start_time = start_time
 
     def validate(self):

@@ -12,11 +12,10 @@ class GetFullRequestSampleByInstanceIdRequest(DaraModel):
         role: str = None,
         sql_id: str = None,
         start: int = None,
-        user_id: str = None,
     ):
-        # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The end of the time range to query. Specify a UNIX timestamp in milliseconds.
         # 
-        # >  The end time must be later than the start time. The interval between the start time and the end time must be equal to or greater than 1 hour.
+        # > The end time must be later than the start time, and the interval between the start time and end time cannot be less than 1 hour.
         # 
         # This parameter is required.
         self.end = end
@@ -24,25 +23,21 @@ class GetFullRequestSampleByInstanceIdRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The role of the PolarDB-X 2.0 node. Valid values:
+        # The node information of a PolarDB-X 2.0 database instance.
         # 
-        # *   **polarx_cn**: compute node.
-        # *   **polarx_en**: data node.
+        # - **polarx_cn**: compute node.
+        # - **polarx_en**: data node.
         self.role = role
-        # The SQL statement ID.
+        # SQL ID。
         # 
         # This parameter is required.
         self.sql_id = sql_id
-        # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The beginning of the time range to query. Specify a UNIX timestamp in milliseconds.
         # 
-        # >  The start time must be within the storage duration of the SQL Explorer feature of the database instance, and can be up to 90 days earlier than the current time.
+        # > The start time must be within the storage duration of SQL Explorer for the database instance and cannot be earlier than 90 days before the current time.
         # 
         # This parameter is required.
         self.start = start
-        # The ID of the Alibaba Cloud account that is used to create the database instance.
-        # 
-        # >  This parameter is optional. The system can automatically obtain the account ID based on the value of InstanceId when you call this operation.
-        self.user_id = user_id
 
     def validate(self):
         pass
@@ -67,9 +62,6 @@ class GetFullRequestSampleByInstanceIdRequest(DaraModel):
         if self.start is not None:
             result['Start'] = self.start
 
-        if self.user_id is not None:
-            result['UserId'] = self.user_id
-
         return result
 
     def from_map(self, m: dict = None):
@@ -88,9 +80,6 @@ class GetFullRequestSampleByInstanceIdRequest(DaraModel):
 
         if m.get('Start') is not None:
             self.start = m.get('Start')
-
-        if m.get('UserId') is not None:
-            self.user_id = m.get('UserId')
 
         return self
 

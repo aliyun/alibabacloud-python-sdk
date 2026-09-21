@@ -18,25 +18,29 @@ class GetInstanceInspectionsRequest(DaraModel):
     ):
         # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
-        # >  The end time must be later than the start time.
+        # > The end time must be later than the start time.
         # 
         # This parameter is required.
         self.end_time = end_time
         # The database engine. Valid values:
         # 
-        # *   **MySQL**
-        # *   **Redis**
-        # *   **PolarDBMySQL**
+        # - **MySQL**
+        # 
+        # - **Redis**
+        # 
+        # - **PolarDBMySQL**
         # 
         # This parameter is required.
         self.engine = engine
         # The type of the instance on which the database is deployed. Valid values:
         # 
-        # *   **RDS**: an Alibaba Cloud database instance.
-        # *   **ECS**: an ECS instance on which a self-managed database is deployed.
-        # *   **IDC**: a self-managed database instance that is not deployed on Alibaba Cloud.
+        # - **RDS**: an Alibaba Cloud database instance.
         # 
-        # >  The value IDC specifies that the instance is deployed in a data center.
+        # - **ECS**: an ECS instance on which a self-managed database is deployed.
+        # 
+        # - **IDC**: a self-managed database instance that is not deployed on Alibaba Cloud.
+        # 
+        # > The value IDC specifies that the instance is deployed in a data center.
         # 
         # This parameter is required.
         self.instance_area = instance_area
@@ -52,9 +56,11 @@ class GetInstanceInspectionsRequest(DaraModel):
         self.resource_group_id = resource_group_id
         # The filter condition, which can be specified in one of the following formats:
         # 
-        # *   Specify the ID of a single instance in the {"InstanceId":"Instance ID"} format.
-        # *   Specify the IDs of multiple instances in the {"InstanceIds":["Instance ID1","Instance ID2"]} format. Separate the instance IDs with commas (,).
-        # *   Specify the region in which the instance resides in the {"region":"Region of the instance"} format.
+        # - Specify the ID of a single instance in the {"InstanceId":"Instance ID"} format.
+        # 
+        # - Specify the IDs of multiple instances in the {"InstanceIds":["Instance ID1","Instance ID2"]} format. Separate the instance IDs with commas (,).
+        # 
+        # - Specify the region in which the instance resides in the {"region":"Region of the instance"} format.
         self.search_map = search_map
         # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 

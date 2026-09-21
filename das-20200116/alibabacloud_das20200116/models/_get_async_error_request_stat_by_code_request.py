@@ -17,7 +17,7 @@ class GetAsyncErrorRequestStatByCodeRequest(DaraModel):
         self.db_name = db_name
         # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
-        # >  The end time must be later than the start time. The interval between the start time and the end time cannot exceed 24 hours.
+        # > The end time must be later than the start time. The interval between the start time and the end time cannot exceed 24 hours.
         self.end = end
         # The instance ID.
         # 
@@ -25,11 +25,11 @@ class GetAsyncErrorRequestStatByCodeRequest(DaraModel):
         self.instance_id = instance_id
         # The node ID.
         # 
-        # >  This parameter must be specified for PolarDB for MySQL clusters.
+        # > This parameter must be specified for PolarDB for MySQL clusters.
         self.node_id = node_id
         # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
-        # >  The start time must be within the storage duration of the SQL Explorer feature of the database instance and can be up to 90 days earlier than the current time.
+        # > The start time must be within the storage duration of the SQL Explorer feature of the database instance and can be up to 90 days earlier than the current time.
         self.start = start
 
     def validate(self):

@@ -174,6 +174,8 @@ class Client(OpenApiClient):
             query['AgentId'] = request.agent_id
         if not DaraCore.is_null(request.message):
             query['Message'] = request.message
+        if not DaraCore.is_null(request.resume):
+            query['Resume'] = request.resume
         if not DaraCore.is_null(request.session_id):
             query['SessionId'] = request.session_id
         if not DaraCore.is_null(request.summary):
@@ -217,6 +219,8 @@ class Client(OpenApiClient):
             query['AgentId'] = request.agent_id
         if not DaraCore.is_null(request.message):
             query['Message'] = request.message
+        if not DaraCore.is_null(request.resume):
+            query['Resume'] = request.resume
         if not DaraCore.is_null(request.session_id):
             query['SessionId'] = request.session_id
         if not DaraCore.is_null(request.summary):
@@ -260,6 +264,8 @@ class Client(OpenApiClient):
             query['AgentId'] = request.agent_id
         if not DaraCore.is_null(request.message):
             query['Message'] = request.message
+        if not DaraCore.is_null(request.resume):
+            query['Resume'] = request.resume
         if not DaraCore.is_null(request.session_id):
             query['SessionId'] = request.session_id
         if not DaraCore.is_null(request.summary):
@@ -294,6 +300,8 @@ class Client(OpenApiClient):
             query['AgentId'] = request.agent_id
         if not DaraCore.is_null(request.message):
             query['Message'] = request.message
+        if not DaraCore.is_null(request.resume):
+            query['Resume'] = request.resume
         if not DaraCore.is_null(request.session_id):
             query['SessionId'] = request.session_id
         if not DaraCore.is_null(request.summary):
@@ -1567,6 +1575,176 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_stop_gateway_with_options_async(request, runtime)
 
+    def describe_audit_logs_with_options(
+        self,
+        request: main_models.DescribeAuditLogsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAuditLogsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.async_request_id):
+            query['AsyncRequestId'] = request.async_request_id
+        if not DaraCore.is_null(request.client_ip):
+            query['ClientIp'] = request.client_ip
+        if not DaraCore.is_null(request.client_ua):
+            query['ClientUa'] = request.client_ua
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.database_name):
+            query['DatabaseName'] = request.database_name
+        if not DaraCore.is_null(request.effect_row_range):
+            query['EffectRowRange'] = request.effect_row_range
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.execute_time_range):
+            query['ExecuteTimeRange'] = request.execute_time_range
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.ip_type):
+            query['IpType'] = request.ip_type
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.load_white_list):
+            query['LoadWhiteList'] = request.load_white_list
+        if not DaraCore.is_null(request.log_query_op_json):
+            query['LogQueryOpJson'] = request.log_query_op_json
+        if not DaraCore.is_null(request.log_source):
+            query['LogSource'] = request.log_source
+        if not DaraCore.is_null(request.operate_type):
+            query['OperateType'] = request.operate_type
+        if not DaraCore.is_null(request.oss_object_key):
+            query['OssObjectKey'] = request.oss_object_key
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not DaraCore.is_null(request.product_id):
+            query['ProductId'] = request.product_id
+        if not DaraCore.is_null(request.rule_agg_query):
+            query['RuleAggQuery'] = request.rule_agg_query
+        if not DaraCore.is_null(request.rule_category):
+            query['RuleCategory'] = request.rule_category
+        if not DaraCore.is_null(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not DaraCore.is_null(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not DaraCore.is_null(request.sql_text):
+            query['SqlText'] = request.sql_text
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAuditLogs',
+            version = '2020-01-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAuditLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_audit_logs_with_options_async(
+        self,
+        request: main_models.DescribeAuditLogsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAuditLogsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.async_request_id):
+            query['AsyncRequestId'] = request.async_request_id
+        if not DaraCore.is_null(request.client_ip):
+            query['ClientIp'] = request.client_ip
+        if not DaraCore.is_null(request.client_ua):
+            query['ClientUa'] = request.client_ua
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.database_name):
+            query['DatabaseName'] = request.database_name
+        if not DaraCore.is_null(request.effect_row_range):
+            query['EffectRowRange'] = request.effect_row_range
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.execute_time_range):
+            query['ExecuteTimeRange'] = request.execute_time_range
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.ip_type):
+            query['IpType'] = request.ip_type
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.load_white_list):
+            query['LoadWhiteList'] = request.load_white_list
+        if not DaraCore.is_null(request.log_query_op_json):
+            query['LogQueryOpJson'] = request.log_query_op_json
+        if not DaraCore.is_null(request.log_source):
+            query['LogSource'] = request.log_source
+        if not DaraCore.is_null(request.operate_type):
+            query['OperateType'] = request.operate_type
+        if not DaraCore.is_null(request.oss_object_key):
+            query['OssObjectKey'] = request.oss_object_key
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not DaraCore.is_null(request.product_id):
+            query['ProductId'] = request.product_id
+        if not DaraCore.is_null(request.rule_agg_query):
+            query['RuleAggQuery'] = request.rule_agg_query
+        if not DaraCore.is_null(request.rule_category):
+            query['RuleCategory'] = request.rule_category
+        if not DaraCore.is_null(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not DaraCore.is_null(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not DaraCore.is_null(request.sql_text):
+            query['SqlText'] = request.sql_text
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAuditLogs',
+            version = '2020-01-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAuditLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_audit_logs(
+        self,
+        request: main_models.DescribeAuditLogsRequest,
+    ) -> main_models.DescribeAuditLogsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_audit_logs_with_options(request, runtime)
+
+    async def describe_audit_logs_async(
+        self,
+        request: main_models.DescribeAuditLogsRequest,
+    ) -> main_models.DescribeAuditLogsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_audit_logs_with_options_async(request, runtime)
+
     def describe_auto_scaling_config_with_options(
         self,
         request: main_models.DescribeAutoScalingConfigRequest,
@@ -2092,6 +2270,76 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeCloudbenchTaskConfigResponse:
         runtime = RuntimeOptions()
         return await self.describe_cloudbench_task_config_with_options_async(request, runtime)
+
+    def describe_das_ops_config_with_options(
+        self,
+        request: main_models.DescribeDasOpsConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDasOpsConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDasOpsConfig',
+            version = '2020-01-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDasOpsConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_das_ops_config_with_options_async(
+        self,
+        request: main_models.DescribeDasOpsConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDasOpsConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDasOpsConfig',
+            version = '2020-01-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDasOpsConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_das_ops_config(
+        self,
+        request: main_models.DescribeDasOpsConfigRequest,
+    ) -> main_models.DescribeDasOpsConfigResponse:
+        runtime = RuntimeOptions()
+        return self.describe_das_ops_config_with_options(request, runtime)
+
+    async def describe_das_ops_config_async(
+        self,
+        request: main_models.DescribeDasOpsConfigRequest,
+    ) -> main_models.DescribeDasOpsConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_das_ops_config_with_options_async(request, runtime)
 
     def describe_diagnostic_report_list_with_options(
         self,
@@ -3030,6 +3278,148 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeSlowLogStatisticResponse:
         runtime = RuntimeOptions()
         return await self.describe_slow_log_statistic_with_options_async(request, runtime)
+
+    def describe_sql_insight_statistic_with_options(
+        self,
+        request: main_models.DescribeSqlInsightStatisticRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSqlInsightStatisticResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.console_context):
+            query['ConsoleContext'] = request.console_context
+        if not DaraCore.is_null(request.filters):
+            query['Filters'] = request.filters
+        body = {}
+        if not DaraCore.is_null(request.asc):
+            body['Asc'] = request.asc
+        if not DaraCore.is_null(request.db_name):
+            body['DbName'] = request.db_name
+        if not DaraCore.is_null(request.do_fill_trend):
+            body['DoFillTrend'] = request.do_fill_trend
+        if not DaraCore.is_null(request.end_time):
+            body['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.job_id):
+            body['JobId'] = request.job_id
+        if not DaraCore.is_null(request.keyword):
+            body['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.node_id):
+            body['NodeId'] = request.node_id
+        if not DaraCore.is_null(request.order_by):
+            body['OrderBy'] = request.order_by
+        if not DaraCore.is_null(request.page_no):
+            body['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.role):
+            body['Role'] = request.role
+        if not DaraCore.is_null(request.sql_type):
+            body['SqlType'] = request.sql_type
+        if not DaraCore.is_null(request.start_time):
+            body['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSqlInsightStatistic',
+            version = '2020-01-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSqlInsightStatisticResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_sql_insight_statistic_with_options_async(
+        self,
+        request: main_models.DescribeSqlInsightStatisticRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSqlInsightStatisticResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.console_context):
+            query['ConsoleContext'] = request.console_context
+        if not DaraCore.is_null(request.filters):
+            query['Filters'] = request.filters
+        body = {}
+        if not DaraCore.is_null(request.asc):
+            body['Asc'] = request.asc
+        if not DaraCore.is_null(request.db_name):
+            body['DbName'] = request.db_name
+        if not DaraCore.is_null(request.do_fill_trend):
+            body['DoFillTrend'] = request.do_fill_trend
+        if not DaraCore.is_null(request.end_time):
+            body['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.job_id):
+            body['JobId'] = request.job_id
+        if not DaraCore.is_null(request.keyword):
+            body['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.node_id):
+            body['NodeId'] = request.node_id
+        if not DaraCore.is_null(request.order_by):
+            body['OrderBy'] = request.order_by
+        if not DaraCore.is_null(request.page_no):
+            body['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.role):
+            body['Role'] = request.role
+        if not DaraCore.is_null(request.sql_type):
+            body['SqlType'] = request.sql_type
+        if not DaraCore.is_null(request.start_time):
+            body['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSqlInsightStatistic',
+            version = '2020-01-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSqlInsightStatisticResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_sql_insight_statistic(
+        self,
+        request: main_models.DescribeSqlInsightStatisticRequest,
+    ) -> main_models.DescribeSqlInsightStatisticResponse:
+        runtime = RuntimeOptions()
+        return self.describe_sql_insight_statistic_with_options(request, runtime)
+
+    async def describe_sql_insight_statistic_async(
+        self,
+        request: main_models.DescribeSqlInsightStatisticRequest,
+    ) -> main_models.DescribeSqlInsightStatisticResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_sql_insight_statistic_with_options_async(request, runtime)
 
     def describe_sql_log_config_with_options(
         self,
@@ -6145,8 +6535,6 @@ class Client(OpenApiClient):
             body['SqlId'] = request.sql_id
         if not DaraCore.is_null(request.start):
             body['Start'] = request.start
-        if not DaraCore.is_null(request.user_id):
-            body['UserId'] = request.user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query),
             body = Utils.parse_to_map(body)
@@ -6185,8 +6573,6 @@ class Client(OpenApiClient):
             body['SqlId'] = request.sql_id
         if not DaraCore.is_null(request.start):
             body['Start'] = request.start
-        if not DaraCore.is_null(request.user_id):
-            body['UserId'] = request.user_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query),
             body = Utils.parse_to_map(body)
@@ -6356,6 +6742,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.agent_id):
             query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.report_type):
+            query['ReportType'] = request.report_type
         body = {}
         if not DaraCore.is_null(request.report_id):
             body['ReportId'] = request.report_id
@@ -6388,6 +6776,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.agent_id):
             query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.report_type):
+            query['ReportType'] = request.report_type
         body = {}
         if not DaraCore.is_null(request.report_id):
             body['ReportId'] = request.report_id
@@ -6436,6 +6826,8 @@ class Client(OpenApiClient):
             query['AgentId'] = request.agent_id
         if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
+        if not DaraCore.is_null(request.report_type):
+            query['ReportType'] = request.report_type
         body = {}
         if not DaraCore.is_null(request.end_time):
             body['EndTime'] = request.end_time
@@ -6472,6 +6864,8 @@ class Client(OpenApiClient):
             query['AgentId'] = request.agent_id
         if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
+        if not DaraCore.is_null(request.report_type):
+            query['ReportType'] = request.report_type
         body = {}
         if not DaraCore.is_null(request.end_time):
             body['EndTime'] = request.end_time
@@ -8798,6 +9192,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.extra_info):
             query['ExtraInfo'] = request.extra_info
+        if not DaraCore.is_null(request.image_keys):
+            query['ImageKeys'] = request.image_keys
         if not DaraCore.is_null(request.query):
             query['Query'] = request.query
         if not DaraCore.is_null(request.session_id):
@@ -8841,6 +9237,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.extra_info):
             query['ExtraInfo'] = request.extra_info
+        if not DaraCore.is_null(request.image_keys):
+            query['ImageKeys'] = request.image_keys
         if not DaraCore.is_null(request.query):
             query['Query'] = request.query
         if not DaraCore.is_null(request.session_id):
@@ -8884,6 +9282,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.extra_info):
             query['ExtraInfo'] = request.extra_info
+        if not DaraCore.is_null(request.image_keys):
+            query['ImageKeys'] = request.image_keys
         if not DaraCore.is_null(request.query):
             query['Query'] = request.query
         if not DaraCore.is_null(request.session_id):
@@ -8918,6 +9318,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.extra_info):
             query['ExtraInfo'] = request.extra_info
+        if not DaraCore.is_null(request.image_keys):
+            query['ImageKeys'] = request.image_keys
         if not DaraCore.is_null(request.query):
             query['Query'] = request.query
         if not DaraCore.is_null(request.session_id):
@@ -9120,6 +9522,170 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyAutoScalingConfigResponse:
         runtime = RuntimeOptions()
         return await self.modify_auto_scaling_config_with_options_async(request, runtime)
+
+    def modify_das_ops_config_with_options(
+        self,
+        request: main_models.ModifyDasOpsConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyDasOpsConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.filters):
+            query['Filters'] = request.filters
+        body = {}
+        if not DaraCore.is_null(request.enable):
+            body['Enable'] = request.enable
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyDasOpsConfig',
+            version = '2020-01-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyDasOpsConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_das_ops_config_with_options_async(
+        self,
+        request: main_models.ModifyDasOpsConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyDasOpsConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.filters):
+            query['Filters'] = request.filters
+        body = {}
+        if not DaraCore.is_null(request.enable):
+            body['Enable'] = request.enable
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyDasOpsConfig',
+            version = '2020-01-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyDasOpsConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_das_ops_config(
+        self,
+        request: main_models.ModifyDasOpsConfigRequest,
+    ) -> main_models.ModifyDasOpsConfigResponse:
+        runtime = RuntimeOptions()
+        return self.modify_das_ops_config_with_options(request, runtime)
+
+    async def modify_das_ops_config_async(
+        self,
+        request: main_models.ModifyDasOpsConfigRequest,
+    ) -> main_models.ModifyDasOpsConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_das_ops_config_with_options_async(request, runtime)
+
+    def modify_forward_sql_log_config_with_options(
+        self,
+        request: main_models.ModifyForwardSqlLogConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyForwardSqlLogConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.enable):
+            body['Enable'] = request.enable
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.service):
+            body['Service'] = request.service
+        if not DaraCore.is_null(request.source):
+            body['Source'] = request.source
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyForwardSqlLogConfig',
+            version = '2020-01-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyForwardSqlLogConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_forward_sql_log_config_with_options_async(
+        self,
+        request: main_models.ModifyForwardSqlLogConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyForwardSqlLogConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.enable):
+            body['Enable'] = request.enable
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.service):
+            body['Service'] = request.service
+        if not DaraCore.is_null(request.source):
+            body['Source'] = request.source
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyForwardSqlLogConfig',
+            version = '2020-01-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyForwardSqlLogConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_forward_sql_log_config(
+        self,
+        request: main_models.ModifyForwardSqlLogConfigRequest,
+    ) -> main_models.ModifyForwardSqlLogConfigResponse:
+        runtime = RuntimeOptions()
+        return self.modify_forward_sql_log_config_with_options(request, runtime)
+
+    async def modify_forward_sql_log_config_async(
+        self,
+        request: main_models.ModifyForwardSqlLogConfigRequest,
+    ) -> main_models.ModifyForwardSqlLogConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_forward_sql_log_config_with_options_async(request, runtime)
 
     def modify_security_ipgroup_with_options(
         self,

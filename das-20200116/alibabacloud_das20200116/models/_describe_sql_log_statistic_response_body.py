@@ -14,20 +14,19 @@ class DescribeSqlLogStatisticResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The response code.
+        # The returned status code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
         # The returned message.
         # 
-        # >  If the request was successful, **Successful** is returned. If the request failed, an error message is returned.
+        # > If the request is successful, **Successful** is returned. If the request fails, an error message such as an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   true
-        # *   false
+        # Indicates whether the request is successful. Valid values:
+        # * true: The request is successful.
+        # * false: The request fails.
         self.success = success
 
     def validate(self):
@@ -87,18 +86,19 @@ class DescribeSqlLogStatisticResponseBodyData(DaraModel):
         timestamp: int = None,
         total_sql_size: int = None,
     ):
-        # The size of the SQL Explorer and Audit data that is stored in cold storage. Unit: bytes.
+        # The total cold storage data. Unit: bytes.
         self.cold_sql_size = cold_sql_size
-        # The free quota for cold data storage. Unit: bytes.
+        # The free cold storage data. Unit: bytes.
         self.free_cold_sql_size = free_cold_sql_size
-        # The free quota for hot data storage. Unit: bytes.
+        # The free hot storage data. Unit: bytes.
         self.free_hot_sql_size = free_hot_sql_size
-        # The size of the SQL Explorer and Audit data that is stored in hot storage. Unit: bytes.
+        # The total hot storage data. Unit: bytes.
         self.hot_sql_size = hot_sql_size
-        # The size of the SQL Explorer and Audit data that was generated in the most recent day. Unit: bytes.
+        # The amount of data imported in the last day. Unit: bytes.
         self.import_sql_size = import_sql_size
-        # The timestamp. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The timestamp in UNIX timestamp format. Unit: milliseconds.
         self.timestamp = timestamp
+        # The total storage data (cold data + hot data).
         self.total_sql_size = total_sql_size
 
     def validate(self):

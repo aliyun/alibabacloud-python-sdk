@@ -54,6 +54,9 @@ from ._delete_security_ipgroup_response import DeleteSecurityIPGroupResponse
 from ._delete_stop_gateway_request import DeleteStopGatewayRequest
 from ._delete_stop_gateway_response_body import DeleteStopGatewayResponseBody
 from ._delete_stop_gateway_response import DeleteStopGatewayResponse
+from ._describe_audit_logs_request import DescribeAuditLogsRequest
+from ._describe_audit_logs_response_body import DescribeAuditLogsResponseBody
+from ._describe_audit_logs_response import DescribeAuditLogsResponse
 from ._describe_auto_scaling_config_request import DescribeAutoScalingConfigRequest
 from ._describe_auto_scaling_config_response_body import DescribeAutoScalingConfigResponseBody
 from ._describe_auto_scaling_config_response import DescribeAutoScalingConfigResponse
@@ -75,6 +78,9 @@ from ._describe_cloudbench_task_response import DescribeCloudbenchTaskResponse
 from ._describe_cloudbench_task_config_request import DescribeCloudbenchTaskConfigRequest
 from ._describe_cloudbench_task_config_response_body import DescribeCloudbenchTaskConfigResponseBody
 from ._describe_cloudbench_task_config_response import DescribeCloudbenchTaskConfigResponse
+from ._describe_das_ops_config_request import DescribeDasOpsConfigRequest
+from ._describe_das_ops_config_response_body import DescribeDasOpsConfigResponseBody
+from ._describe_das_ops_config_response import DescribeDasOpsConfigResponse
 from ._describe_diagnostic_report_list_request import DescribeDiagnosticReportListRequest
 from ._describe_diagnostic_report_list_response_body import DescribeDiagnosticReportListResponseBody
 from ._describe_diagnostic_report_list_response import DescribeDiagnosticReportListResponse
@@ -108,6 +114,9 @@ from ._describe_slow_log_records_response import DescribeSlowLogRecordsResponse
 from ._describe_slow_log_statistic_request import DescribeSlowLogStatisticRequest
 from ._describe_slow_log_statistic_response_body import DescribeSlowLogStatisticResponseBody
 from ._describe_slow_log_statistic_response import DescribeSlowLogStatisticResponse
+from ._describe_sql_insight_statistic_request import DescribeSqlInsightStatisticRequest
+from ._describe_sql_insight_statistic_response_body import DescribeSqlInsightStatisticResponseBody
+from ._describe_sql_insight_statistic_response import DescribeSqlInsightStatisticResponse
 from ._describe_sql_log_config_request import DescribeSqlLogConfigRequest
 from ._describe_sql_log_config_response_body import DescribeSqlLogConfigResponseBody
 from ._describe_sql_log_config_response import DescribeSqlLogConfigResponse
@@ -315,6 +324,12 @@ from ._kill_instance_all_session_response import KillInstanceAllSessionResponse
 from ._modify_auto_scaling_config_request import ModifyAutoScalingConfigRequest
 from ._modify_auto_scaling_config_response_body import ModifyAutoScalingConfigResponseBody
 from ._modify_auto_scaling_config_response import ModifyAutoScalingConfigResponse
+from ._modify_das_ops_config_request import ModifyDasOpsConfigRequest
+from ._modify_das_ops_config_response_body import ModifyDasOpsConfigResponseBody
+from ._modify_das_ops_config_response import ModifyDasOpsConfigResponse
+from ._modify_forward_sql_log_config_request import ModifyForwardSqlLogConfigRequest
+from ._modify_forward_sql_log_config_response_body import ModifyForwardSqlLogConfigResponseBody
+from ._modify_forward_sql_log_config_response import ModifyForwardSqlLogConfigResponse
 from ._modify_security_ipgroup_request import ModifySecurityIPGroupRequest
 from ._modify_security_ipgroup_response_body import ModifySecurityIPGroupResponseBody
 from ._modify_security_ipgroup_response import ModifySecurityIPGroupResponse
@@ -351,6 +366,7 @@ from ._create_sql_log_task_response_body import CreateSqlLogTaskResponseBodyData
 from ._create_storage_analysis_task_response_body import CreateStorageAnalysisTaskResponseBodyData
 from ._delete_security_ipgroup_response_body import DeleteSecurityIPGroupResponseBodyDataGlobalSecurityIPGroup
 from ._delete_security_ipgroup_response_body import DeleteSecurityIPGroupResponseBodyData
+from ._describe_audit_logs_response_body import DescribeAuditLogsResponseBodyItems
 from ._describe_auto_scaling_config_response_body import DescribeAutoScalingConfigResponseBodyDataBandwidth
 from ._describe_auto_scaling_config_response_body import DescribeAutoScalingConfigResponseBodyDataResource
 from ._describe_auto_scaling_config_response_body import DescribeAutoScalingConfigResponseBodyDataShard
@@ -382,6 +398,7 @@ from ._describe_cloud_bench_tasks_response_body import DescribeCloudBenchTasksRe
 from ._describe_cloud_bench_tasks_response_body import DescribeCloudBenchTasksResponseBodyData
 from ._describe_cloudbench_task_response_body import DescribeCloudbenchTaskResponseBodyData
 from ._describe_cloudbench_task_config_response_body import DescribeCloudbenchTaskConfigResponseBodyData
+from ._describe_das_ops_config_response_body import DescribeDasOpsConfigResponseBodyData
 from ._describe_error_log_records_request import DescribeErrorLogRecordsRequestFilters
 from ._describe_error_log_records_response_body import DescribeErrorLogRecordsResponseBodyDataLogs
 from ._describe_error_log_records_response_body import DescribeErrorLogRecordsResponseBodyData
@@ -419,6 +436,11 @@ from ._describe_slow_log_statistic_response_body import DescribeSlowLogStatistic
 from ._describe_slow_log_statistic_response_body import DescribeSlowLogStatisticResponseBodyDataDataLogs
 from ._describe_slow_log_statistic_response_body import DescribeSlowLogStatisticResponseBodyDataData
 from ._describe_slow_log_statistic_response_body import DescribeSlowLogStatisticResponseBodyData
+from ._describe_sql_insight_statistic_request import DescribeSqlInsightStatisticRequestFilters
+from ._describe_sql_insight_statistic_response_body import DescribeSqlInsightStatisticResponseBodyDataDataListTrend
+from ._describe_sql_insight_statistic_response_body import DescribeSqlInsightStatisticResponseBodyDataDataList
+from ._describe_sql_insight_statistic_response_body import DescribeSqlInsightStatisticResponseBodyDataData
+from ._describe_sql_insight_statistic_response_body import DescribeSqlInsightStatisticResponseBodyData
 from ._describe_sql_log_config_response_body import DescribeSqlLogConfigResponseBodyData
 from ._describe_sql_log_records_request import DescribeSqlLogRecordsRequestFilters
 from ._describe_sql_log_records_response_body import DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord
@@ -543,6 +565,9 @@ from ._modify_auto_scaling_config_request import ModifyAutoScalingConfigRequestR
 from ._modify_auto_scaling_config_request import ModifyAutoScalingConfigRequestShard
 from ._modify_auto_scaling_config_request import ModifyAutoScalingConfigRequestSpec
 from ._modify_auto_scaling_config_request import ModifyAutoScalingConfigRequestStorage
+from ._modify_das_ops_config_request import ModifyDasOpsConfigRequestFilters
+from ._modify_das_ops_config_response_body import ModifyDasOpsConfigResponseBodyData
+from ._modify_forward_sql_log_config_response_body import ModifyForwardSqlLogConfigResponseBodyData
 from ._modify_security_ipgroup_response_body import ModifySecurityIPGroupResponseBodyDataGlobalSecurityIPGroup
 from ._modify_security_ipgroup_response_body import ModifySecurityIPGroupResponseBodyData
 from ._modify_security_ipgroup_relation_response_body import ModifySecurityIPGroupRelationResponseBodyDataGlobalSecurityIPGroupRel
@@ -615,6 +640,9 @@ __all__ = [
     DeleteStopGatewayRequest,
     DeleteStopGatewayResponseBody,
     DeleteStopGatewayResponse,
+    DescribeAuditLogsRequest,
+    DescribeAuditLogsResponseBody,
+    DescribeAuditLogsResponse,
     DescribeAutoScalingConfigRequest,
     DescribeAutoScalingConfigResponseBody,
     DescribeAutoScalingConfigResponse,
@@ -636,6 +664,9 @@ __all__ = [
     DescribeCloudbenchTaskConfigRequest,
     DescribeCloudbenchTaskConfigResponseBody,
     DescribeCloudbenchTaskConfigResponse,
+    DescribeDasOpsConfigRequest,
+    DescribeDasOpsConfigResponseBody,
+    DescribeDasOpsConfigResponse,
     DescribeDiagnosticReportListRequest,
     DescribeDiagnosticReportListResponseBody,
     DescribeDiagnosticReportListResponse,
@@ -669,6 +700,9 @@ __all__ = [
     DescribeSlowLogStatisticRequest,
     DescribeSlowLogStatisticResponseBody,
     DescribeSlowLogStatisticResponse,
+    DescribeSqlInsightStatisticRequest,
+    DescribeSqlInsightStatisticResponseBody,
+    DescribeSqlInsightStatisticResponse,
     DescribeSqlLogConfigRequest,
     DescribeSqlLogConfigResponseBody,
     DescribeSqlLogConfigResponse,
@@ -876,6 +910,12 @@ __all__ = [
     ModifyAutoScalingConfigRequest,
     ModifyAutoScalingConfigResponseBody,
     ModifyAutoScalingConfigResponse,
+    ModifyDasOpsConfigRequest,
+    ModifyDasOpsConfigResponseBody,
+    ModifyDasOpsConfigResponse,
+    ModifyForwardSqlLogConfigRequest,
+    ModifyForwardSqlLogConfigResponseBody,
+    ModifyForwardSqlLogConfigResponse,
     ModifySecurityIPGroupRequest,
     ModifySecurityIPGroupResponseBody,
     ModifySecurityIPGroupResponse,
@@ -912,6 +952,7 @@ __all__ = [
     CreateStorageAnalysisTaskResponseBodyData,
     DeleteSecurityIPGroupResponseBodyDataGlobalSecurityIPGroup,
     DeleteSecurityIPGroupResponseBodyData,
+    DescribeAuditLogsResponseBodyItems,
     DescribeAutoScalingConfigResponseBodyDataBandwidth,
     DescribeAutoScalingConfigResponseBodyDataResource,
     DescribeAutoScalingConfigResponseBodyDataShard,
@@ -943,6 +984,7 @@ __all__ = [
     DescribeCloudBenchTasksResponseBodyData,
     DescribeCloudbenchTaskResponseBodyData,
     DescribeCloudbenchTaskConfigResponseBodyData,
+    DescribeDasOpsConfigResponseBodyData,
     DescribeErrorLogRecordsRequestFilters,
     DescribeErrorLogRecordsResponseBodyDataLogs,
     DescribeErrorLogRecordsResponseBodyData,
@@ -980,6 +1022,11 @@ __all__ = [
     DescribeSlowLogStatisticResponseBodyDataDataLogs,
     DescribeSlowLogStatisticResponseBodyDataData,
     DescribeSlowLogStatisticResponseBodyData,
+    DescribeSqlInsightStatisticRequestFilters,
+    DescribeSqlInsightStatisticResponseBodyDataDataListTrend,
+    DescribeSqlInsightStatisticResponseBodyDataDataList,
+    DescribeSqlInsightStatisticResponseBodyDataData,
+    DescribeSqlInsightStatisticResponseBodyData,
     DescribeSqlLogConfigResponseBodyData,
     DescribeSqlLogRecordsRequestFilters,
     DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord,
@@ -1104,6 +1151,9 @@ __all__ = [
     ModifyAutoScalingConfigRequestShard,
     ModifyAutoScalingConfigRequestSpec,
     ModifyAutoScalingConfigRequestStorage,
+    ModifyDasOpsConfigRequestFilters,
+    ModifyDasOpsConfigResponseBodyData,
+    ModifyForwardSqlLogConfigResponseBodyData,
     ModifySecurityIPGroupResponseBodyDataGlobalSecurityIPGroup,
     ModifySecurityIPGroupResponseBodyData,
     ModifySecurityIPGroupRelationResponseBodyDataGlobalSecurityIPGroupRel,

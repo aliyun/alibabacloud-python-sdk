@@ -12,11 +12,11 @@ class DescribeSqlLogTaskRequest(DaraModel):
         page_size: int = None,
         task_id: str = None,
     ):
-        # The ID of the database instance.
+        # The database instance ID.
         self.instance_id = instance_id
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number for the paging query. Pages start from page 1. Default value: 1.
         self.page_no = page_no
-        # The number of entries per page. Default value: 10.
+        # The maximum number of records per page for the paging query. Maximum value: 100. Default value: 10.
         self.page_size = page_size
         # The task ID.
         self.task_id = task_id

@@ -26,8 +26,9 @@ class GetQueryOptimizeDataTopResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**: The request was successful.
-        # *   **false**: The request failed.
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -159,8 +160,9 @@ class GetQueryOptimizeDataTopResponseBodyDataList(DaraModel):
         self.instance_id = instance_id
         # The metric name. Valid values:
         # 
-        # * **sqlExecuteCount**: the number of slow SQL executions.
-        # * **optimizedSqlExecuteCount**: the number of slow SQL executions that need to be optimized.
+        # - **sqlExecuteCount**: the number of slow SQL executions.
+        # 
+        # - **optimizedSqlExecuteCount**: the number of slow SQL executions that need to be optimized.
         self.type = type
         # The metric value.
         self.value = value

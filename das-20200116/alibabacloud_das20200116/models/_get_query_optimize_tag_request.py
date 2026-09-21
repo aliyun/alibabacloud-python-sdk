@@ -13,9 +13,9 @@ class GetQueryOptimizeTagRequest(DaraModel):
     ):
         # The database engine. Valid values:
         # 
-        # *   **MySQL**: ApsaraDB RDS for MySQL
-        # *   **PolarDBMySQL**: PolarDB for MySQL
-        # *   **PostgreSQL**: ApsaraDB RDS for PostgreSQL
+        # - **MySQL**: RDS MySQL
+        # - **PolarDBMySQL**: PolarDB for MySQL
+        # - **PostgreSQL**: RDS PostgreSQL
         # 
         # This parameter is required.
         self.engine = engine
@@ -23,7 +23,8 @@ class GetQueryOptimizeTagRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The SQL template ID. You can call the [GetQueryOptimizeDataStats](https://help.aliyun.com/document_detail/405261.html) operation to query the SQL template ID.
+        # The SQL template ID.
+        # You can call the [GetQueryOptimizeDataStats](https://help.aliyun.com/document_detail/405261.html) operation to query the SQL template ID.
         # 
         # This parameter is required.
         self.sql_id = sql_id

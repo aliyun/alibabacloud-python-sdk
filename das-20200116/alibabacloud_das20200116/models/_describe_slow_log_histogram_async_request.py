@@ -16,12 +16,22 @@ class DescribeSlowLogHistogramAsyncRequest(DaraModel):
         node_id: str = None,
         start_time: int = None,
     ):
+        # The end time of the query. Specify a UNIX timestamp in milliseconds.
+        # > The end time must be later than the start time.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The list of query filter conditions.
         self.filters = filters
+        # The database instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The node ID.
+        # > For PolarDB for MySQL instances, specify the node ID.
         self.node_id = node_id
+        # The start time of the query. Specify a UNIX timestamp in milliseconds.
+        # 
         # This parameter is required.
         self.start_time = start_time
 
@@ -83,7 +93,9 @@ class DescribeSlowLogHistogramAsyncRequestFilters(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The filter parameter.
         self.key = key
+        # The value of the filter parameter.
         self.value = value
 
     def validate(self):

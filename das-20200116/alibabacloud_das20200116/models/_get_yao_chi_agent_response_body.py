@@ -21,15 +21,25 @@ class GetYaoChiAgentResponseBody(DaraModel):
         sub_agent_call: List[main_models.GetYaoChiAgentResponseBodySubAgentCall] = None,
         ui_function_call: List[main_models.GetYaoChiAgentResponseBodyUiFunctionCall] = None,
     ):
+        # The response content.
         self.content = content
+        # The tool calling invoke list.
         self.function_call = function_call
+        # The ParentId field. This field exists only when the message is output by a sub-agent, and the value is the sub-agent ID.
         self.parent_id = parent_id
+        # The cloud service type.
         self.product = product
+        # The query ID. This value is the same as the QueryId request parameter.
         self.query_id = query_id
+        # The reasoning content of the model.
         self.reasoning_content = reasoning_content
+        # The request ID.
         self.request_id = request_id
+        # The session ID. This value is the same as the SessionId request parameter.
         self.session_id = session_id
+        # The list of sub-agent call information.
         self.sub_agent_call = sub_agent_call
+        # The card tool calling invoke list.
         self.ui_function_call = ui_function_call
 
     def validate(self):
@@ -138,7 +148,9 @@ class GetYaoChiAgentResponseBodyUiFunctionCall(DaraModel):
         args_text: str = None,
         tool_name: str = None,
     ):
+        # The parameters of the card tool.
         self.args_text = args_text
+        # The name of the card tool.
         self.tool_name = tool_name
 
     def validate(self):
@@ -174,8 +186,11 @@ class GetYaoChiAgentResponseBodySubAgentCall(DaraModel):
         sub_agent_id: str = None,
         sub_agent_name: str = None,
     ):
+        # The sub-agent status.
         self.status = status
+        # The sub-agent ID.
         self.sub_agent_id = sub_agent_id
+        # The sub-agent name.
         self.sub_agent_name = sub_agent_name
 
     def validate(self):
@@ -218,9 +233,13 @@ class GetYaoChiAgentResponseBodyFunctionCall(DaraModel):
         name: str = None,
         status: str = None,
     ):
+        # The parameters of the called tool.
         self.arguments = arguments
+        # The tool ID.
         self.id = id
+        # The name of the called tool.
         self.name = name
+        # The tool calling invoke status.
         self.status = status
 
     def validate(self):

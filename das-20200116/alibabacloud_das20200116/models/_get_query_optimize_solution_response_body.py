@@ -26,8 +26,9 @@ class GetQueryOptimizeSolutionResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.success = success
 
     def validate(self):
@@ -158,8 +159,9 @@ class GetQueryOptimizeSolutionResponseBodyDataList(DaraModel):
     ):
         # The severity level. Valid values:
         # 
-        # * **INFO**
-        # * **WARN**
+        # - **INFO**
+        # 
+        # - **WARN**
         self.level = level
         # The tag ID.
         self.rule_id = rule_id

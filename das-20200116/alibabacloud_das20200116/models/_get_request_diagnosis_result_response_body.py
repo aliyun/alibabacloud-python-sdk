@@ -14,20 +14,21 @@ class GetRequestDiagnosisResultResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The HTTP status code returned.
+        # The status code returned.
         self.code = code
         # The returned data.
         self.data = data
-        # The returned message.
+        # The response message.
         # 
-        # >  If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
+        # > This parameter returns `Successful` if the request succeeds. If the request fails, it returns an error message, which may include an error code.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The request succeeded.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -93,83 +94,131 @@ class GetRequestDiagnosisResultResponseBodyData(DaraModel):
     ):
         # The user ID.
         self.account_id = account_id
-        # The name of the database.
+        # The database name.
         self.db_schema = db_schema
         # The database engine. Valid values:
         # 
-        # *   **MySQL**
-        # *   **PostgreSQL**
-        # *   **SQLServer**
-        # *   **PolarDBMySQL**
-        # *   **PolarDBOracle**
-        # *   **MongoDB**
+        # - **MySQL**
+        # 
+        # - **PostgreSQL**
+        # 
+        # - **SQL Server**
+        # 
+        # - **PolarDB-X**
+        # 
+        # - **PolarDB for Oracle**
+        # 
+        # - **MongoDB**
         self.engine = engine
-        # The time when the SQL diagnostics task was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The creation time of the SQL diagnosis, provided as a Unix timestamp in milliseconds.
         self.gmt_create = gmt_create
-        # The time when the SQL diagnostics task was modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The last modification time of the SQL diagnosis, provided as a Unix timestamp in milliseconds.
         self.gmt_modified = gmt_modified
-        # The unique ID of the diagnostics task.
+        # The unique ID of the diagnosis.
         self.message_id = message_id
-        # The additional information.
+        # Additional information.
         self.param = param
-        # The result of the SQL diagnostics task. The result includes the following information:
+        # The details of the SQL diagnosis result, returned as a JSON-formatted string.
         # 
-        # *   **endTime**: the end time of the SQL diagnostics task.
+        # - **endTime**: The end time of the SQL diagnosis.
         # 
-        # *   **errorCode**: the error code.
+        # - **errorCode**: The error code.
         # 
-        #     *   **0001**: The SQL diagnostics task is complete.
-        #     *   **0003**: The SQL diagnostics task failed.
+        #   - **0001**: The diagnosis was successful.
         # 
-        # *   **errorMessage**: the error message.
+        #   - **0003**: The diagnosis failed.
         # 
-        # *   **estimateCost**: the estimated cost.
+        # - **errorMessage**: The error message.
         # 
-        #     *   **cpu**: the estimated CPU utilization of the index.
-        #     *   **io**: the estimated I/O usage of the index.
-        #     *   **rows**: the estimated values of the rows returned for the index.
+        # - **estimateCost**: The estimated cost.
         # 
-        # *   **improvement**: the performance improvement ratio.
+        #   - **cpu**: The estimated CPU cost of the query.
         # 
-        # *   **indexAdvices**: the index recommendations, which include the following information:
+        #   - **io**: The estimated I/O cost of the query.
         # 
-        #     *   **columns**: the index columns.
-        #     *   **ddlAddIndex**: the DDL statement for the index.
-        #     *   **indexName**: the name of the index.
-        #     *   **schemaName**: the name of the database.
-        #     *   **tableName**: the name of the table.
-        #     *   **unique**: indicates whether the index is unique.
+        #   - **rows**: The estimated number of rows returned by the query.
         # 
-        # *   **ip**: the IP address of the instance.
+        # - **improvement**: The performance improvement ratio.
         # 
-        # *   **messageId**: the ID of the diagnostics task.
+        # - **indexAdvices**: The index suggestions.
         # 
-        # *   **port**: the port used to connect to the instance.
+        #   - **columns**: The index columns.
         # 
-        # *   **sqlTag**: the SQL tag.
+        #   - **ddlAddIndex**: The DDL statement for creating the index.
         # 
-        # *   **startTime**: the start time of the SQL diagnostics task.
+        #   - **indexName**: The index name.
         # 
-        # *   **success**: indicates whether the request was successful.
+        #   - **schemaName**: The schema name.
         # 
-        # *   **support**: indicates whether the SQL statement can be diagnosed. Valid values:
+        #   - **tableName**: The table name.
         # 
-        #     *   **true**
-        #     *   **false**
+        #   - **unique**: Indicates whether the index is a unique index.
         # 
-        # *   **tuningAdvices** : the SQL rewrite suggestions.
+        # - **ip**: The instance IP address.
+        # 
+        # - **messageId**: The diagnosis ID.
+        # 
+        # - **port**: The instance port.
+        # 
+        # - **sqlTag**: The SQL tags.
+        # 
+        #   - **PRED_EQUAL**: Equality predicate.
+        # 
+        #   - **CNT_QB**: Number of query blocks.
+        # 
+        #   - **CNT_TB**: Number of tables.
+        # 
+        #   - **JOIN_LEFT**: Left join.
+        # 
+        #   - **SEL_SMALL**: Small result set selection.
+        # 
+        #   - **AGGR_SEL**: Aggregate selection.
+        # 
+        #   - **PRED_LT_EQ / PRED_GT_EQ**: Less-than-or-equal-to / greater-than-or-equal-to predicate.
+        # 
+        #   - **PRED_LIKE_PREFIX**: LIKE prefix match.
+        # 
+        #   - **ORDER_BY**: Contains an ORDER BY clause.
+        # 
+        #   - **LIMIT**: Contains a LIMIT clause.
+        # 
+        #   - **GROUP_BY**: Contains a GROUP BY clause.
+        # 
+        #   - **JOIN_INNER**: Inner join.
+        # 
+        #   - **JOIN_RIGHT**: Right join.
+        # 
+        #   - **HAVING**: Contains a HAVING clause.
+        # 
+        #   - **UNION**: Contains a UNION operation.
+        # 
+        # - **startTime**: The start time of the SQL diagnosis.
+        # 
+        # - **success**: Indicates whether the diagnosis was successful.
+        # 
+        # - **support**: Indicates whether the SQL statement can be diagnosed.
+        # 
+        #   - **true**: Supported.
+        # 
+        #   - **false**: Not supported.
+        # 
+        # - **tuningAdvices**: The SQL rewrite suggestions.
         self.result = result
         # The SQL template ID.
         self.sql_id = sql_id
-        # The state of the diagnostics task. Valid values:
+        # The diagnosis status. Valid values:
         # 
-        # *   **0**: The diagnostics task is in progress.
-        # *   **1**: A diagnostics error occurred.
-        # *   **2**: The diagnostics task is complete.
-        # *   **3**: An SQL error occurred.
-        # *   **4**: An engine error occurred.
+        # - **0**: In progress.
+        # 
+        # - **1**: Diagnosis error.
+        # 
+        # - **2**: Completed.
+        # 
+        # - **3**: SQL error.
+        # 
+        # - **4**: Engine error.
         self.state = state
-        # The unique ID of the diagnostics instance.
+        # The unique identifier of the diagnosed instance.
         self.uuid = uuid
 
     def validate(self):

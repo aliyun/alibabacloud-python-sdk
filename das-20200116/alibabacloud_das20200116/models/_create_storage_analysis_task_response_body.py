@@ -20,14 +20,15 @@ class CreateStorageAnalysisTaskResponseBody(DaraModel):
         self.data = data
         # The returned message.
         # 
-        # >  If the request is successful, **Successful** is returned. Otherwise, an error message such as an error code is returned.
+        # > If the request is successful, **Successful** is returned. Otherwise, an error message such as an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request is successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.success = success
 
     def validate(self):
@@ -85,8 +86,9 @@ class CreateStorageAnalysisTaskResponseBodyData(DaraModel):
     ):
         # Indicates whether the task is created. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.create_task_success = create_task_success
         # The error message returned.
         self.error_message = error_message

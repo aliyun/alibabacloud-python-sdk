@@ -17,7 +17,7 @@ class GetStorageAnalysisResultRequest(DaraModel):
         self.instance_id = instance_id
         # The node ID.
         # 
-        # >  This parameter is reserved.
+        # > This parameter is reserved.
         self.node_id = node_id
         # The task ID. You can obtain the task ID from the response of the [CreateStorageAnalysisTask](https://help.aliyun.com/document_detail/2639140.html) operation.
         # 

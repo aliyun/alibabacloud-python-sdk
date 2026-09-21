@@ -22,19 +22,73 @@ class DescribeSlowLogStatisticRequest(DaraModel):
         template_id: str = None,
         type: str = None,
     ):
+        # Specifies whether to sort results in ascending order. This feature is disabled by default.
         self.asc = asc
+        # The end time of the query. Specify a UNIX timestamp in UTC. Unit: milliseconds.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The list of query filter conditions.
         self.filters = filters
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The node ID.
+        # 
+        # - For ApsaraDB RDS for MySQL and PolarDB for MySQL, this parameter is applicable only to cluster instances. If you do not specify this parameter, the log details of the primary node are queried by default.
+        # - For PolarDB-X 2.0, set this parameter to **polarx_cn** (compute node) or **polarx_dn** (data node).
         self.node_id = node_id
+        # The sorting method. Valid values:
+        # 
+        # **Count**
+        # 
+        # **QueryTime**
+        # 
+        # **LockTime**
+        # 
+        # **RowsExamined**
+        # 
+        # **RowsSent**
         self.order_by = order_by
+        # The page number. The value starts from 1. Default value: 1.
         self.page_number = page_number
+        # The maximum number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The start time of the query. Specify a UNIX timestamp in UTC. Unit: milliseconds.
+        # 
         # This parameter is required.
         self.start_time = start_time
+        # The template ID.
         self.template_id = template_id
+        # The task type.
+        # 
+        # SQL engine-specific:
+        # 
+        # **SlowLogRequestOrigin**: aggregates logs by source IP address.
+        # 
+        # **SlowLogRequestUser**: aggregates logs by source user.
+        # 
+        # **SQL**: aggregates logs by SQL ID.
+        # 
+        # 
+        # MongoDB engine-specific:
+        # 
+        # **SlowLogRequestOrigin**: aggregates logs by source IP address.
+        # 
+        # **SlowLogRequestUser**: aggregates logs by source user.
+        # 
+        # **SQL**: aggregates logs by Query ID.
+        # 
+        # **SlowLogRequestOpType**: aggregates logs by operation type.
+        # 
+        # **SlowLogRequestNamespace**: aggregates logs by namespace.
+        # 
+        # Redis engine-specific:
+        # 
+        # **SlowLogRequestNodeId**: aggregates logs by node ID.
+        # 
+        # **SlowLogRequestHostInsId**: aggregates logs by HostInsId.
         self.type = type
 
     def validate(self):
@@ -131,7 +185,9 @@ class DescribeSlowLogStatisticRequestFilters(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The filter parameter.
         self.key = key
+        # The value of the filter parameter.
         self.value = value
 
     def validate(self):

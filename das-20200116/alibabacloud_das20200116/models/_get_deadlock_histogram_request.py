@@ -13,13 +13,28 @@ class GetDeadlockHistogramRequest(DaraModel):
         start_time: int = None,
         status: str = None,
     ):
+        # The end of the time range to query. The format is a UNIX timestamp in milliseconds.
+        # >Notice: The value is of the Long type. Precision loss may occur during the serialization/deserialization procedure. The value must not be greater than 9007199254740991.</notice>
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The node ID.
+        # 
+        # > For PolarDB for MySQL instances, you must specify the node ID.
         self.node_id = node_id
+        # The beginning of the time range to query. The format is a UNIX timestamp in milliseconds.
+        # 
+        # > The start time can be at most 7 days earlier than the end time.
+        # 
+        # >Notice: The value is of the Long type. Precision loss may occur during the serialization/deserialization procedure. The value must not be greater than 9007199254740991.</notice>
+        # 
         # This parameter is required.
         self.start_time = start_time
+        # The analysis status of the task.
         self.status = status
 
     def validate(self):

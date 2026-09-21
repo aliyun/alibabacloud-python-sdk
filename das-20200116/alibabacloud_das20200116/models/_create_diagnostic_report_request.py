@@ -17,7 +17,7 @@ class CreateDiagnosticReportRequest(DaraModel):
         self.dbinstance_id = dbinstance_id
         # The end of the time range to create the diagnostic report. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
-        # >  The start time must be later than the end time.
+        # > The start time must be later than the end time.
         # 
         # This parameter is required.
         self.end_time = end_time

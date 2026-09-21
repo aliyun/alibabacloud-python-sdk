@@ -10,11 +10,11 @@ class DescribeHotKeysRequest(DaraModel):
         instance_id: str = None,
         node_id: str = None,
     ):
-        # The ID of the ApsaraDB for Redis instance.
+        # The instance ID of the Redis instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the data shard on the ApsaraDB for Redis instance.
+        # The ID of the data shard in the Redis instance.
         self.node_id = node_id
 
     def validate(self):

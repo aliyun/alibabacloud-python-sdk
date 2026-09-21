@@ -16,11 +16,18 @@ class GetInstanceGroupInspectReportListResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The response status code.
         self.code = code
         # List<ReportStatus>
         self.data = data
+        # The response message.
+        # >If the request is successful, **Successful** is returned. If the request fails, exception information such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # * **true**: The request is successful.
+        # * **false**: The request fails.
         self.success = success
 
     def validate(self):
@@ -83,9 +90,13 @@ class GetInstanceGroupInspectReportListResponseBodyData(DaraModel):
         report_id: str = None,
         status: str = None,
     ):
+        # The time when the task was created.
         self.create_time = create_time
+        # The date of the diagnosis.
         self.report_date = report_date
+        # The report ID.
         self.report_id = report_id
+        # The task status. Valid values: WAITING_UNREADY = 0, WAITING_READY = 1, PROCESSING = 2, FINISHED = 3, ERROR = 4, STOPPED = -1.
         self.status = status
 
     def validate(self):

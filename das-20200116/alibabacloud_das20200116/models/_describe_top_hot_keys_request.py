@@ -13,27 +13,25 @@ class DescribeTopHotKeysRequest(DaraModel):
         node_id: str = None,
         start_time: str = None,
     ):
-        # The reserved parameter.
+        # A reserved parameter.
         self.console_context = console_context
-        # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The end of the query time range, specified as a UNIX timestamp in milliseconds.
         # 
-        # > 
-        # 
-        # *   The end time must be later than the start time.
-        # 
-        # *   Only data within the last four days can be queried.
-        # 
-        # *   The maximum interval between the **start time** and the** end time** is 3 hours.
+        # > - The end time must be later than the start time.
+        # >
+        # > - You can query data within the last four days.
+        # >
+        # > - The maximum time interval between **StartTime** and **EndTime** is three hours.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The ID of the ApsaraDB for Redis instance.
+        # The ID of the Redis instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the data shard on the ApsaraDB for Redis instance.
+        # The ID of the data shard of the Redis instance.
         self.node_id = node_id
-        # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The start of the query time range, specified as a UNIX timestamp in milliseconds.
         # 
         # This parameter is required.
         self.start_time = start_time

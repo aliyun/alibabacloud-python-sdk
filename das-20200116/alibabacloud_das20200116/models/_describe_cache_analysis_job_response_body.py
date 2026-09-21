@@ -22,14 +22,15 @@ class DescribeCacheAnalysisJobResponseBody(DaraModel):
         self.data = data
         # The message that is returned for the request.
         # 
-        # >  If the request is successful, **Successful** is returned. If the request fails, an error message that contains information such as an error code is returned.
+        # > If the request is successful, **Successful** is returned. If the request fails, an error message that contains information such as an error code is returned.
         self.message = message
         # The ID of the request.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.success = success
 
     def validate(self):
@@ -103,16 +104,19 @@ class DescribeCacheAnalysisJobResponseBodyData(DaraModel):
         self.key_prefixes = key_prefixes
         # The message that is returned for the request.
         # 
-        # >  If the request is successful, **Successful** is returned. If the request fails, an error message that contains information such as an error code is returned.
+        # > If the request is successful, **Successful** is returned. If the request fails, an error message that contains information such as an error code is returned.
         self.message = message
         # The ID of the data node on the instance.
         self.node_id = node_id
         # The state of the cache analysis task. Valid values:
         # 
-        # *   **BACKUP**: The data is being backed up.
-        # *   **ANALYZING**: The data is being analyzed.
-        # *   **FINISHED**: The data is analyzed.
-        # *   **FAILED**: An error occurred.
+        # - **BACKUP**: The data is being backed up.
+        # 
+        # - **ANALYZING**: The data is being analyzed.
+        # 
+        # - **FINISHED**: The data is analyzed.
+        # 
+        # - **FAILED**: An error occurred.
         self.task_state = task_state
         self.unex_big_keys_of_bytes = unex_big_keys_of_bytes
         self.unex_big_keys_of_num = unex_big_keys_of_num

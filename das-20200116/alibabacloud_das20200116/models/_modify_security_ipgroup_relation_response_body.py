@@ -16,11 +16,18 @@ class ModifySecurityIPGroupRelationResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The status code.
         self.code = code
         # ListResult<InstanceSSL>
         self.data = data
+        # The returned message.
+        # >If the request is successful, Successful is returned. If the request fails, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # * true: The request is successful.
+        # * false: The request fails.
         self.success = success
 
     def validate(self):
@@ -75,7 +82,9 @@ class ModifySecurityIPGroupRelationResponseBodyData(DaraModel):
         global_security_ipgroup_rel: List[main_models.ModifySecurityIPGroupRelationResponseBodyDataGlobalSecurityIPGroupRel] = None,
         instance_id: str = None,
     ):
+        # The binding information of the cross-engine IP whitelist template.
         self.global_security_ipgroup_rel = global_security_ipgroup_rel
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):
@@ -120,9 +129,21 @@ class ModifySecurityIPGroupRelationResponseBodyDataGlobalSecurityIPGroupRel(Dara
         global_security_group_id: str = None,
         region_id: str = None,
     ):
+        # The IP addresses in the whitelist template.
+        # 
+        # > Separate multiple IP addresses with commas (,). You can add up to 1,000 IP addresses or CIDR blocks across all IP whitelists.
         self.gip_list = gip_list
+        # The name of the IP whitelist template. The name must meet the following requirements:
+        # 
+        # - Contains only lowercase letters, digits, and underscores (_).
+        # 
+        # - Starts with a letter and ends with a letter or digit.
+        # 
+        # - Contains 2 to 120 characters in length.
         self.global_ig_name = global_ig_name
+        # The ID of the IP whitelist template.
         self.global_security_group_id = global_security_group_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

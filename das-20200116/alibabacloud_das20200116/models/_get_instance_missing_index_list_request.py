@@ -33,7 +33,7 @@ class GetInstanceMissingIndexListRequest(DaraModel):
         self.index_count = index_count
         # The database instance ID.
         # 
-        # >  Only ApsaraDB RDS for SQL Server instances are supported.
+        # > Only ApsaraDB RDS for SQL Server instances are supported.
         # 
         # This parameter is required.
         self.instance_id = instance_id

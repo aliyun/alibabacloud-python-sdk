@@ -16,11 +16,20 @@ class DescribeSlowLogRecordsResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The status code returned.
         self.code = code
         # DBLogRecords<SlowLogItem>
         self.data = data
+        # The message returned for the request.
+        # >  This parameter returns **Successful** when the request succeeds. If the request fails, an exception message is returned, such as an error code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -83,15 +92,25 @@ class DescribeSlowLogRecordsResponseBodyData(DaraModel):
         start_time: str = None,
         total_records: int = None,
     ):
+        # The numeric ID of the instance.
         self.db_instance_id = db_instance_id
+        # The instance ID.
         self.db_instance_name = db_instance_name
+        # The end time.
         self.end_time = end_time
+        # The number of items in the log list on the current page.
         self.items_numbers = items_numbers
+        # The returned data.
         self.logs = logs
+        # The maximum number of records per page for the paged query. Valid values: 5 to 100.
         self.max_records_per_page = max_records_per_page
+        # The node ID.
         self.node_id = node_id
+        # The page number for the paged query. The value starts from 1. Default value: 1.
         self.page_numbers = page_numbers
+        # The start time.
         self.start_time = start_time
+        # The total number of records.
         self.total_records = total_records
 
     def validate(self):
@@ -190,6 +209,7 @@ class DescribeSlowLogRecordsResponseBodyDataLogs(DaraModel):
         db_id: str = None,
         db_instance_name: str = None,
         docs_examined: str = None,
+        ext_text: str = None,
         fail: str = None,
         frows: int = None,
         host_address: str = None,
@@ -235,60 +255,156 @@ class DescribeSlowLogRecordsResponseBodyDataLogs(DaraModel):
         timestamp: int = None,
         trace_id: str = None,
     ):
+        # The username.
         self.account_name = account_name
+        # The application name.
+        # 
+        # > Only ApsaraDB RDS for SQL Server instances are supported.
         self.application_name = application_name
+        # The CPU query time.
+        # 
+        # > Only ApsaraDB RDS for SQL Server instances are supported.
         self.cputime = cputime
+        # The CPU query time, in seconds.
+        # 
+        # > Only ApsaraDB RDS for SQL Server instances are supported.
         self.cputime_seconds = cputime_seconds
+        # The client IP address connected to the Redis proxy.
         self.client_ip = client_ip
+        # The command executed at the Redis proxy layer.
         self.cmd = cmd
+        # The slow query statement.
+        # > Only ApsaraDB Tair (Redis® OSS-Compatible) database instances are supported.
         self.command = command
+        # The database name.
         self.dbname = dbname
+        # Redis Proxy DbId
         self.db_id = db_id
+        # The instance ID.
         self.db_instance_name = db_instance_name
+        # The number of documents scanned during the MongoDB operation.
         self.docs_examined = docs_examined
+        # The extension field that contains additional information about the SQL execution.
+        # > Only PolarDB for MySQL instances are supported.
+        self.ext_text = ext_text
+        # Indicates whether the SQL execution was successful. 0 indicates success. A non-zero value indicates failure.
+        # > Only ApsaraDB for Lindorm instances are supported.
         self.fail = fail
+        # The number of rows fetched by the compute node (CN) of the PolarDB-X 2.0 database.
+        # 
+        # > Only ApsaraDB PolarDB-X 2.0 database instances are supported.
         self.frows = frows
+        # The source address.
         self.host_address = host_address
+        # The number of I/O writes.
+        # 
+        # > Only ApsaraDB RDS for SQL Server instances are supported.
         self.iowrites = iowrites
+        # The instance name.
         self.ins_name = ins_name
+        # The number of index rows scanned in MongoDB.
         self.keys_examined = keys_examined
+        # The number of rows affected by the last statement.
+        # 
+        # > Only ApsaraDB RDS for SQL Server instances are supported.
         self.last_rows_count_affected = last_rows_count_affected
+        # The lock wait time.
         self.lock_time = lock_time
+        # The lock wait time, in seconds.
         self.lock_time_seconds = lock_time_seconds
+        # The number of logical reads.
+        # 
+        # > Only ApsaraDB RDS for SQL Server instances are supported.
         self.logical_ioreads = logical_ioreads
+        # The namespace.
+        # > Only ApsaraDB for MongoDB instances are supported.
         self.namespace = namespace
+        # The node ID.
         self.node_id = node_id
+        # The operation type.
+        # > Only ApsaraDB for MongoDB instances are supported.
         self.op_type = op_type
+        # The execution time at the Redis proxy.
         self.origin_time = origin_time
+        # The parameter values attached to the SQL statement in parameter query scenarios. Multiple parameters are separated by commas (,).
+        # > Only ApsaraDB for Lindorm database instances are supported.
         self.params = params
+        # The number of physical reads.
+        # 
+        # > Only ApsaraDB RDS for SQL Server instances are supported.
         self.physical_ioreads = physical_ioreads
+        # The SQL template.
         self.psql = psql
+        # The query ID.
+        # > Only ApsaraDB for MongoDB instances are supported.
         self.query_id = query_id
+        # The time when the query started. Format: yyyy-MM-dd hh:mm:ss (UTC).
         self.query_start_time = query_start_time
+        # The query duration.
         self.query_time = query_time
+        # The query duration, in seconds.
         self.query_time_seconds = query_time_seconds
+        # The error message when the slow query execution fails.
+        # > Only ApsaraDB for Lindorm instances are supported.
         self.reason = reason
+        # The unique identifier of the slow query log record.
+        # > Only ApsaraDB for Lindorm instances are supported.
         self.req_id = req_id
+        # The request packet size at the Redis proxy layer, in bytes.
         self.request_size = request_size
+        # The response packet size at the Redis proxy layer, in bytes.
         self.response_size = response_size
+        # The number of returned items.
         self.return_item_numbers = return_item_numbers
+        # The number of rows returned.
+        # > Only ApsaraDB for MongoDB instances are supported.
         self.return_num = return_num
+        # The total number of rows updated or returned by the compute nodes of the PolarDB-X 2.0 database instance.
+        # 
+        # > Only ApsaraDB PolarDB-X 2.0 database instances are supported.
         self.rows = rows
+        # The number of rows affected.
+        # 
+        # > Only ApsaraDB RDS for SQL Server instances are supported.
         self.rows_count_affected = rows_count_affected
+        # The number of rows scanned.
         self.rows_examined = rows_examined
+        # The number of rows returned.
         self.rows_sent = rows_sent
+        # The total response time at the Redis proxy layer, in microseconds.
         self.rt = rt
+        # The SQL text.
         self.sqltext = sqltext
+        # The data schema.
         self.scheme = scheme
+        # The number of data node (DN) requests from the compute node (CN) of the PolarDB-X 2.0 database.
+        # 
+        # > Only ApsaraDB PolarDB-X 2.0 database instances are supported.
         self.scnt = scnt
+        # The SQL template ID.
         self.sql_id = sql_id
+        # The tag.
         self.sql_tag = sql_tag
+        # The type of the SQL statement. Valid values:
+        # - **SELECT**
+        # - **UPDATE**
+        # - **DELETE**
         self.sql_type = sql_type
+        # The sub-instance ID.
         self.sub_instance_id = sub_instance_id
+        # The table name.
         self.table_name = table_name
+        # The template ID of the PolarDB-X 2.0 database.
+        # 
+        # > Only ApsaraDB PolarDB-X 2.0 database instances are supported.
         self.template_id = template_id
+        # The thread ID.
         self.thread_id = thread_id
+        # The timestamp.
         self.timestamp = timestamp
+        # The trace ID of PolarDB-X 2.0, which is the execute ID of the SQL statement on the database data node.
+        # 
+        # > Only ApsaraDB PolarDB-X 2.0 database instances are supported.
         self.trace_id = trace_id
 
     def validate(self):
@@ -332,6 +448,9 @@ class DescribeSlowLogRecordsResponseBodyDataLogs(DaraModel):
 
         if self.docs_examined is not None:
             result['DocsExamined'] = self.docs_examined
+
+        if self.ext_text is not None:
+            result['ExtText'] = self.ext_text
 
         if self.fail is not None:
             result['Fail'] = self.fail
@@ -502,6 +621,9 @@ class DescribeSlowLogRecordsResponseBodyDataLogs(DaraModel):
         if m.get('DocsExamined') is not None:
             self.docs_examined = m.get('DocsExamined')
 
+        if m.get('ExtText') is not None:
+            self.ext_text = m.get('ExtText')
+
         if m.get('Fail') is not None:
             self.fail = m.get('Fail')
 
@@ -644,9 +766,11 @@ class DescribeSlowLogRecordsResponseBodyDataLogsSqlTag(DaraModel):
         sql_id: str = None,
         tags: str = None,
     ):
+        # The remarks.
         self.comments = comments
         # sqlid。
         self.sql_id = sql_id
+        # Multiple tags separated by commas.
         self.tags = tags
 
     def validate(self):

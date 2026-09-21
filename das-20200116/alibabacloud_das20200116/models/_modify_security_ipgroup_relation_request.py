@@ -11,10 +11,16 @@ class ModifySecurityIPGroupRelationRequest(DaraModel):
         instance_id: str = None,
         region_name: str = None,
     ):
+        # The ID of the IP whitelist template.
+        # 
         # This parameter is required.
         self.global_security_group_id = global_security_group_id
+        # The database instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_name = region_name
 

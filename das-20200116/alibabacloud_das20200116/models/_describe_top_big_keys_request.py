@@ -17,13 +17,13 @@ class DescribeTopBigKeysRequest(DaraModel):
         self.console_context = console_context
         # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
-        # > 
+        # >
         # 
-        # *   The end time must be later than the start time.
+        # - The end time must be later than the start time.
         # 
-        # *   Only data within the last four days can be queried.
+        # - Only data within the last four days can be queried.
         # 
-        # *   The maximum interval between the **start time** and the** end time** is 3 hours.
+        # - The maximum interval between the **start time** and the\\*\\* end time\\*\\* is 3 hours.
         # 
         # This parameter is required.
         self.end_time = end_time

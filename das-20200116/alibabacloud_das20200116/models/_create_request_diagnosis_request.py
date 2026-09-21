@@ -22,7 +22,7 @@ class CreateRequestDiagnosisRequest(DaraModel):
         self.instance_id = instance_id
         # The node ID.
         # 
-        # >  This parameter must be specified for PolarDB for MySQL, PolarDB for PostgreSQL (Compatible with Oracle), and ApsaraDB for MongoDB instances.
+        # > This parameter must be specified for PolarDB for MySQL, PolarDB for PostgreSQL (Compatible with Oracle), and ApsaraDB for MongoDB instances.
         self.node_id = node_id
         # The SQL statement that you want to diagnose.
         # 

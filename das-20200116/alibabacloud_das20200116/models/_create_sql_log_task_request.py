@@ -19,30 +19,34 @@ class CreateSqlLogTaskRequest(DaraModel):
         start_time: int = None,
         type: str = None,
     ):
-        # The end of the time range to query. Specify the time in the UNIX timestamp format. Unit: milliseconds.
+        # The end time of the task. Specify the value as a UNIX timestamp. Unit: milliseconds.
+        # 
+        # This parameter is required.
         self.end_time = end_time
-        # The filter conditions.
+        # The list of filter conditions.
         self.filters = filters
-        # The ID of the database instance.
+        # The database instance ID.
         self.instance_id = instance_id
-        # The name of the task.
+        # The task name.
         self.name = name
         # The node ID.
-        # 
-        # >  This parameter is available only for instances that run in a cluster architecture. You can specify this parameter to query the offline tasks of a specific node. By default, if this parameter is not specified, the information about the offline tasks of the primary node is returned.
+        # >This parameter is applicable only to cluster instances. You can specify this parameter to query the batch task of a specific node. If you do not specify this parameter, the batch task of the primary node is returned by default.
         self.node_id = node_id
-        # The role of the node of the PolarDB-X 2.0 database instance. Valid values:
+        # The node information of the PolarDB-X 2.0 database instance.
         # 
-        # *   **polarx_cn**: compute node
-        # *   **polarx_dn**: data node
+        # - **polarx_cn**: compute node.
+        # 
+        # - **polarx_dn**: data node.
         self.role = role
-        # The beginning of the time range to query. Specify the time in the UNIX timestamp format. Unit: milliseconds.
-        self.start_time = start_time
-        # The type of the task. Valid values:
+        # The start time of the task. Specify the value as a UNIX timestamp. Unit: milliseconds.
         # 
-        # *   **Export**
-        # *   **Query**
-        # *   **Insight**
+        # This parameter is required.
+        self.start_time = start_time
+        # The task type.
+        # 
+        # - **Export**: export task.
+        # > For the filter parameters and values supported by **Export**, see **Request parameters description**.
+        # - **Query**: query task.
         self.type = type
 
     def validate(self):
@@ -123,7 +127,7 @@ class CreateSqlLogTaskRequestFilters(DaraModel):
     ):
         # The name of the filter parameter.
         # 
-        # >  For more information about the supported filter parameters and their valid values, see the following **supplement about the Key parameter**.
+        # > For the supported filter parameters and values, see **Request parameters description**.
         self.key = key
         # The value of the filter parameter.
         self.value = value

@@ -16,11 +16,19 @@ class DescribeSlowLogHistogramAsyncResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The status code returned.
         self.code = code
         # AsyncResult<Histogram>。
         self.data = data
+        # The message returned for the request.
+        # >  This parameter returns **Successful** when the request succeeds. If the request fails, an exception message (such as an error code) is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful:
+        # 
+        # - **true**: The request was successful.
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -81,13 +89,24 @@ class DescribeSlowLogHistogramAsyncResponseBodyData(DaraModel):
         state: str = None,
         timestamp: int = None,
     ):
+        # The data.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # Indicates whether the task is finished.
         self.is_finish = is_finish
+        # The error message.
         self.message = message
+        # The key of the request parameter.
         self.request_key = request_key
+        # The result ID.
         self.result_id = result_id
+        # The current state. Valid values:
+        # - **RUNNING**: Running.
+        # - **SUCCESS**: Succeeded.
+        # - **FAIL**: Failed.
         self.state = state
+        # The request time.
         self.timestamp = timestamp
 
     def validate(self):
@@ -212,59 +231,147 @@ class DescribeSlowLogHistogramAsyncResponseBodyDataData(DaraModel):
         ts: List[int] = None,
         ts_end: List[int] = None,
     ):
+        # The average CPU processing duration. Unit: seconds (s).
+        # >Only ApsaraDB RDS for SQL Server instances are supported.
         self.avg_cputime = avg_cputime
+        # The average number of document rows scanned.
+        # >Supported only for ApsaraDB for MongoDB instances.
         self.avg_doc_examined = avg_doc_examined
+        # The average number of rows fetched.
         self.avg_frows = avg_frows
+        # The average number of I/O writes.
+        # >Only ApsaraDB RDS for SQL Server instances are supported.
         self.avg_iowrites = avg_iowrites
+        # The average number of index rows scanned.
+        # >Supported only for ApsaraDB for MongoDB instances.
         self.avg_keys_examined = avg_keys_examined
+        # The average number of rows affected by the last statement.
+        # >Only ApsaraDB RDS for SQL Server instances are supported.
         self.avg_last_rows_count_affected = avg_last_rows_count_affected
+        # The average lock wait time. Unit: seconds.
         self.avg_lock_time = avg_lock_time
+        # The average number of logical reads.
+        # >Only ApsaraDB RDS for SQL Server instances are supported.
         self.avg_logical_ioreads = avg_logical_ioreads
+        # The average number of physical reads.
+        # >Only ApsaraDB RDS for SQL Server instances are supported.
         self.avg_physical_ioreads = avg_physical_ioreads
+        # The average number of rows returned.
+        # >Supported only for ApsaraDB for MongoDB instances.
         self.avg_return_num = avg_return_num
+        # The average number of rows.
         self.avg_rows = avg_rows
+        # The average number of rows affected.
+        # >Only ApsaraDB RDS for SQL Server instances are supported.
         self.avg_rows_count_affected = avg_rows_count_affected
+        # The average number of rows scanned.
         self.avg_rows_examined = avg_rows_examined
+        # The average number of rows returned.
         self.avg_rows_sent = avg_rows_sent
+        # The average execution duration.
         self.avg_rt = avg_rt
+        # The average number of requests.
         self.avg_scnt = avg_scnt
+        # The CPU processing duration. Unit: seconds (s).
+        # >Only ApsaraDB RDS for SQL Server instances are supported.
         self.cputime = cputime
+        # The slow log count trend.
         self.count = count
+        # The number of document rows scanned.
+        # >Supported only for ApsaraDB for MongoDB instances.
         self.doc_examined = doc_examined
+        # The number of rows fetched by the compute node (CN) of the PolarDB-X 2.0 database instance.
+        # 
+        # > Only ApsaraDB PolarDB-X 2.0 instances are supported.
         self.frows = frows
+        # The number of I/O writes.
+        # >Only ApsaraDB RDS for SQL Server instances are supported.
         self.iowrites = iowrites
+        # The trend metrics.
         self.item = item
+        # The number of index rows scanned.
+        # >Supported only for ApsaraDB for MongoDB instances.
         self.keys_examined = keys_examined
+        # The number of rows affected by the last statement.
+        # >Only ApsaraDB RDS for SQL Server instances are supported.
         self.last_rows_count_affected = last_rows_count_affected
+        # The total lock wait time. Unit: seconds.
         self.lock_time = lock_time
+        # The number of logical reads.
+        # >Only ApsaraDB RDS for SQL Server instances are supported.
         self.logical_ioreads = logical_ioreads
+        # The maximum CPU processing duration. Unit: seconds (s).
+        # >Only ApsaraDB RDS for SQL Server instances are supported.
         self.max_cputime = max_cputime
+        # The maximum number of document rows scanned.
+        # >Supported only for ApsaraDB for MongoDB instances.
         self.max_doc_examined = max_doc_examined
+        # The maximum number of rows fetched.
         self.max_frows = max_frows
+        # The maximum number of I/O writes.
+        # >Only ApsaraDB RDS for SQL Server instances are supported.
         self.max_iowrites = max_iowrites
+        # The maximum number of index rows scanned.
+        # >Supported only for ApsaraDB for MongoDB instances.
         self.max_keys_examined = max_keys_examined
+        # The maximum number of rows affected by the last statement.
+        # >Only ApsaraDB RDS for SQL Server instances are supported.
         self.max_last_rows_count_affected = max_last_rows_count_affected
+        # The maximum lock wait time. Unit: seconds.
         self.max_lock_time = max_lock_time
+        # The maximum number of logical reads.
+        # >Only ApsaraDB RDS for SQL Server instances are supported.
         self.max_logical_ioreads = max_logical_ioreads
+        # The maximum number of physical reads.
+        # >Only ApsaraDB RDS for SQL Server instances are supported.
         self.max_physical_ioreads = max_physical_ioreads
+        # The maximum number of rows returned.
+        # >Supported only for ApsaraDB for MongoDB instances.
         self.max_return_num = max_return_num
+        # The maximum number of rows.
         self.max_rows = max_rows
+        # The maximum number of rows affected.
+        # >Only ApsaraDB RDS for SQL Server instances are supported.
         self.max_rows_count_affected = max_rows_count_affected
+        # The maximum number of rows scanned.
         self.max_rows_examined = max_rows_examined
+        # The maximum number of rows returned.
         self.max_rows_sent = max_rows_sent
+        # The maximum execution duration. Unit: seconds.
         self.max_rt = max_rt
+        # The maximum number of requests.
         self.max_scnt = max_scnt
+        # The number of physical reads.
+        # >Only ApsaraDB RDS for SQL Server instances are supported.
         self.physical_ioreads = physical_ioreads
+        # The number of rows returned.
+        # >Supported only for ApsaraDB for MongoDB instances.
         self.return_num = return_num
+        # The total number of rows updated or returned by compute nodes of the PolarDB-X 2.0 database instance.
+        # 
+        # > Only ApsaraDB PolarDB-X 2.0 instances are supported.
         self.rows = rows
+        # The number of rows affected.
+        # >Only ApsaraDB RDS for SQL Server instances are supported.
         self.rows_count_affected = rows_count_affected
+        # The total number of rows scanned.
+        # > Databases that currently support this field: ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, and PolarDB for MySQL.
         self.rows_examined = rows_examined
+        # The number of rows returned.
         self.rows_sent = rows_sent
+        # The total execution duration. Unit: seconds.
         self.rt = rt
+        # The number of DN requests from the compute node (CN) of the PolarDB-X 2.0 database instance.
+        # 
+        # > Only ApsaraDB PolarDB-X 2.0 instances are supported.
         self.scnt = scnt
+        # The total number of records queried.
         self.total = total
+        # The total number of slow query logs.
         self.total_count = total_count
+        # Used only for relational databases.
         self.ts = ts
+        # Not used. Reserved field.
         self.ts_end = ts_end
 
     def validate(self):
@@ -622,10 +729,17 @@ class DescribeSlowLogHistogramAsyncResponseBodyDataDataItem(DaraModel):
         node_id: str = None,
         total_count: int = None,
     ):
+        # The number of slow logs.
         self.count = count
+        # The trend metrics.
+        # >Supported only for ApsaraDB for MongoDB instances.
         self.ins_items = ins_items
+        # The instance role.
+        # >Supported only for ApsaraDB for MongoDB instances.
         self.ins_role = ins_role
+        # The node ID.
         self.node_id = node_id
+        # The total number of slow logs.
         self.total_count = total_count
 
     def validate(self):
@@ -688,9 +802,15 @@ class DescribeSlowLogHistogramAsyncResponseBodyDataDataItemInsItems(DaraModel):
         ins_role: str = None,
         total_count: int = None,
     ):
+        # The number of executions.
         self.count = count
+        # The instance role ID.
+        # >Supported only for ApsaraDB for MongoDB instances.
         self.ins_id = ins_id
+        # The instance role.
+        # >Supported only for ApsaraDB for MongoDB instances.
         self.ins_role = ins_role
+        # The number of slow logs on the physical node.
         self.total_count = total_count
 
     def validate(self):

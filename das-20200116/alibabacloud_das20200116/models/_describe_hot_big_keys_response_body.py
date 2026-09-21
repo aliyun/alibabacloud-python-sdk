@@ -16,9 +16,9 @@ class DescribeHotBigKeysResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The HTTP status code returned.
+        # The returned status code.
         self.code = code
-        # The list of hot keys and large keys.
+        # The details.
         self.data = data
         # The returned message.
         self.message = message
@@ -26,8 +26,8 @@ class DescribeHotBigKeysResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**: The request was successful.
-        # *   **false**: The request failed.
+        # - **true**: The request was successful.
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -88,14 +88,16 @@ class DescribeHotBigKeysResponseBodyData(DaraModel):
         large_key_msg: str = None,
         large_keys: main_models.DescribeHotBigKeysResponseBodyDataLargeKeys = None,
     ):
-        # The reason why the large key failed to be queried.
+        # The reason why the big keys sorted by the number of child elements failed to be retrieved.
         self.big_key_msg = big_key_msg
         self.big_keys = big_keys
+        # The reason why the hot keys sorted by traffic failed to be retrieved.
         self.high_traffic_key_msg = high_traffic_key_msg
         self.high_traffic_keys = high_traffic_keys
-        # The reason why the hot key failed to be queried.
+        # The reason why the hot keys sorted by QPS failed to be retrieved.
         self.hot_key_msg = hot_key_msg
         self.hot_keys = hot_keys
+        # The reason why the big keys sorted by memory usage failed to be retrieved.
         self.large_key_msg = large_key_msg
         self.large_keys = large_keys
 

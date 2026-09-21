@@ -26,8 +26,9 @@ class GetQueryOptimizeDataStatsResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**: The request was successful.
-        # *   **false**: The request failed.
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -360,8 +361,9 @@ class GetQueryOptimizeDataStatsResponseBodyDataListRuleList(DaraModel):
         self.name = name
         # The type of the rule. Valid values:
         # 
-        # * **Predefined**
-        # * **UserDefined**
+        # - **Predefined**
+        # 
+        # - **UserDefined**
         self.type = type
 
     def validate(self):

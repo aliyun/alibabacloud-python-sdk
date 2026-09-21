@@ -16,20 +16,19 @@ class DescribeSqlLogTaskResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The response code.
+        # The returned status code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
         # The returned message.
-        # 
-        # >  If the request was successful, **Successful** is returned. If the request failed, an error message is returned.
+        # >If the request is successful, **Successful** is returned. If the request fails, exception information such as an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request is successful.
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The request is successful.
+        # - **false**: The request fails.
         self.success = success
 
     def validate(self):
@@ -94,41 +93,39 @@ class DescribeSqlLogTaskResponseBodyData(DaraModel):
         task_type: str = None,
         total: int = None,
     ):
-        # The time when the task was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The task creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The end of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The query end time. The value is a UNIX timestamp in milliseconds.
         self.end = end
-        # Indicates whether the task has expired. Valid values:
+        # Indicates whether the task has expired.
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The task has expired.
+        # - **false**: The task has not expired.
         self.expire = expire
-        # The download URL of the export task.
+        # The download URL of the export task. This value is returned only when TaskType is set to Export.
         self.export = export
-        # The filter parameters.
+        # The filter conditions.
         self.filters = filters
         # The task name.
         self.name = name
-        # The results of the offline querying task.
+        # The task result of the offline query node. This value is returned only when TaskType is set to Query.
         self.queries = queries
-        # The beginning of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The query start time. The value is a UNIX timestamp in milliseconds.
         self.start = start
-        # The task state. Valid values:
-        # 
-        # *   **INIT**: The task is to be scheduled.
-        # *   **RUNNING**: The task is running.
-        # *   **FAILED**: The task failed.
-        # *   **CANCELED**: The task is canceled.
-        # *   **COMPLETED**: The task is complete.
-        # 
-        # >  If a task is in the **COMPLETED** state, you can view the results of the task.
+        # The task status. Valid values:
+        # - **INIT**: Pending scheduling.
+        # - **RUNNING**: Running.
+        # - **FAILED**: Failed.
+        # - **CANCELED**: Canceled.
+        # - **COMPLETED**: Completed.
+        # > When the task is in the **COMPLETED** state, you can view the results of the offline task.
         self.status = status
         # The task ID.
         self.task_id = task_id
         # The task type. Valid values:
         # 
-        # *   **Export**
-        # *   **Query**
+        # - **Export**: export task.
+        # - **Query**: custom query task.
         self.task_type = task_type
         # The total number of tasks.
         self.total = total
@@ -284,87 +281,96 @@ class DescribeSqlLogTaskResponseBodyDataQueries(DaraModel):
     ):
         # The database account.
         self.account_name = account_name
+        # The affected columns.
         self.affect_columns = affect_columns
+        # The client IP address in the query.
         self.client_ip = client_ip
+        # The client port number in the query.
         self.client_port = client_port
+        # A reserved parameter.
         self.collection = collection
+        # The connection ID used in the query.
         self.connection_id = connection_id
-        # The execution duration. Unit: millisecond.
+        # The execution duration in milliseconds.
         self.consume = consume
-        # The CPU execution time. Unit: microsecond.
+        # The CPU execution time in microseconds.
         self.cpu_time = cpu_time
         # The database name.
         self.dbname = dbname
-        # The execution time. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+        # The execution time in UTC format: `yyyy-MM-ddTHH:mm:ssZ`.
         self.execute_time = execute_time
-        # The extended information. This parameter is a reserved parameter.
+        # The extended information field. This is a reserved parameter.
         self.ext = ext
-        # The number of rows pulled by the CNs of the PolarDB-X 2.0 instance.
+        # The number of rows fetched by the PolarDB-X 2.0 compute node (CN).
         self.frows = frows
-        # The IP address of the client.
+        # The client IP address.
         self.host_address = host_address
-        # The lock wait time. Unit: millisecond.
+        # The lock wait time in milliseconds.
         self.lock_time = lock_time
         # The number of logical reads.
         self.logic_read = logic_read
-        # The ID of the child node.
+        # The child node ID.
         self.node_id = node_id
-        # The execution timestamp. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The execution timestamp. The value is a UNIX timestamp in milliseconds.
         self.origin_time = origin_time
-        # The wait time of parallel queries in the queue in the PolarDB for MySQL instance. Unit: millisecond.
+        # The parallel queue time of the PolarDB for MySQL instance in milliseconds.
         self.parallel_degree = parallel_degree
-        # The degree of parallelism (DOP) value of the PolarDB for MySQL instance.
+        # The parallel degree of the PolarDB for MySQL instance.
         self.parallel_queue_time = parallel_queue_time
+        # The list of query parameters.
         self.params = params
         # The number of physical asynchronous reads.
         self.physic_async_read = physic_async_read
-        # The total number of physical reads.
+        # The number of physical reads.
         self.physic_read = physic_read
         # The number of physical synchronous reads.
         self.physic_sync_read = physic_sync_read
+        # Indicates whether the query item is protected.
         self.protected = protected
-        # The number of rows returned.
+        # The number of returned rows.
         self.return_rows = return_rows
+        # The row key in the query.
         self.row_key = row_key
-        # The total number of rows updated or returned by the CNs of the PolarDB-X 2.0 instance.
+        # The total number of rows updated or returned by the PolarDB-X 2.0 compute node.
         self.rows = rows
-        # The number of rows scanned.
+        # The number of scanned rows.
         self.scan_rows = scan_rows
-        # The number of requests from the compute nodes (CNs) to the data nodes (DNs) in the PolarDB-X 2.0 instance.
+        # The number of DN requests from the PolarDB-X 2.0 compute node (CN).
         self.scnt = scnt
+        # The SQL command in the query.
         self.sql_command = sql_command
-        # The ID of the SQL statement.
+        # SQL ID。
         self.sql_id = sql_id
-        # The queried SQL statement.
+        # The SQL statement details.
         self.sql_text = sql_text
         # The type of the SQL statement. Valid values:
-        # 
-        # *   **SELECT**
-        # *   **UPDATE**
-        # *   **DELETE**
+        # - **SELECT**
+        # - **UPDATE**
+        # - **DELETE**
         self.sql_type = sql_type
-        # The execution result of the SQL statement. Valid values:
+        # The execution result.
         # 
-        # *   **0**: The execution was successful.
-        # *   **1**: The execution failed.
+        # - **0**: Execution succeeded.
+        # - **1**: Execution failed.
         self.state = state
+        # The table name used in the query.
         self.table_name = table_name
         # The thread ID.
         self.thread_id = thread_id
-        # The trace ID of the PolarDB-X 2.0 instance, which is the execution ID of the SQL statement on the DN.
+        # The trace ID of PolarDB-X 2.0, which is the execution ID of the SQL statement on the data node.
         self.trace_id = trace_id
         # The transaction ID.
         self.trx_id = trx_id
-        # The number of rows updated.
+        # The number of updated rows.
         self.update_rows = update_rows
-        # Indicates whether the PolarDB for MySQL instance uses In-Memory Column Indexes (IMCIs). Valid values:
+        # Indicates whether the PolarDB for MySQL instance uses the In-Memory Column Index.
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The IMCI is used.
+        # - **false**: The IMCI is not used.
         self.use_imci_engine = use_imci_engine
-        # The IP address to which the endpoint used for query is resolved.
+        # The endpoint resolution address of the query link.
         self.vip = vip
-        # The number of writes to the ApsaraDB RDS for SQL Server instance.
+        # The number of writes for the RDS SQL Server engine.
         self.writes = writes
 
     def validate(self):
@@ -640,8 +646,7 @@ class DescribeSqlLogTaskResponseBodyDataFilters(DaraModel):
         value: Any = None,
     ):
         # The name of the filter parameter.
-        # 
-        # >  For more information about the filter parameters, see the **Valid values of Key** section of this topic.
+        # >For supported filter parameters and their values, refer to **Supplementary description of response parameters**.
         self.key = key
         # The value of the filter parameter.
         self.value = value

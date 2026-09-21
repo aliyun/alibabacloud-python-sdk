@@ -14,9 +14,11 @@ class GetQueryOptimizeSolutionRequest(DaraModel):
     ):
         # The database engine. Valid values:
         # 
-        # *   **MySQL**
-        # *   **PolarDBMySQL**
-        # *   **PostgreSQL**
+        # - **MySQL**
+        # 
+        # - **PolarDBMySQL**
+        # 
+        # - **PostgreSQL**
         # 
         # This parameter is required.
         self.engine = engine

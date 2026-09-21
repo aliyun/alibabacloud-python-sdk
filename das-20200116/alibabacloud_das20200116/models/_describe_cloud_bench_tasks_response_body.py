@@ -16,20 +16,19 @@ class DescribeCloudBenchTasksResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The HTTP status code returned.
+        # The returned status code.
         self.code = code
-        # The detailed information, including the error codes and the number of entries that are returned.
+        # The detailed information list, including the total number of entries and error codes.
         self.data = data
         # The returned message.
-        # 
-        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+        # >If the request is successful, **Successful** is returned. If the request fails, an error message such as an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request is successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The request is successful.
+        # - **false**: The request fails.
         self.success = success
 
     def validate(self):
@@ -92,9 +91,9 @@ class DescribeCloudBenchTasksResponseBodyData(DaraModel):
         self.list = list
         # The page number.
         self.page_no = page_no
-        # The number of entries per page.
+        # The maximum number of records per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of results.
         self.total = total
 
     def validate(self):

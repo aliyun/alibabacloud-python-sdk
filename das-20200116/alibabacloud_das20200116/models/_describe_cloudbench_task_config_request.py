@@ -9,7 +9,7 @@ class DescribeCloudbenchTaskConfigRequest(DaraModel):
         self,
         task_id: str = None,
     ):
-        # The task ID. You can call the [DescribeCloudBenchTasks](https://help.aliyun.com/document_detail/230670.html) operation to query the task ID.
+        # The unique ID of the stress test task. You can call the [DescribeCloudBenchTasks](https://help.aliyun.com/document_detail/230670.html) API to get the task ID.
         # 
         # This parameter is required.
         self.task_id = task_id

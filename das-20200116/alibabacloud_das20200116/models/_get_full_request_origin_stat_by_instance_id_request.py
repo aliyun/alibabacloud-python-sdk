@@ -23,7 +23,7 @@ class GetFullRequestOriginStatByInstanceIdRequest(DaraModel):
         self.asc = asc
         # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
-        # >  The end time must be later than the start time. The interval between the start time and the end time cannot exceed 24 hours.
+        # > The end time must be later than the start time. The interval between the start time and the end time cannot exceed 24 hours.
         # 
         # This parameter is required.
         self.end = end
@@ -33,16 +33,21 @@ class GetFullRequestOriginStatByInstanceIdRequest(DaraModel):
         self.instance_id = instance_id
         # The node ID.
         # 
-        # >  This parameter must be specified if the database instance is a PolarDB for MySQL cluster.
+        # > This parameter must be specified if the database instance is a PolarDB for MySQL cluster.
         self.node_id = node_id
         # The field by which the results to be returned are sorted. Default value: **count**. Valid values:
         # 
-        # *   **count**: the number of executions.
-        # *   **avgRt**: the average execution duration.
-        # *   **rtRate**: the execution duration percentage.
-        # *   **rowsExamined**: the total number of scanned rows.
-        # *   **avgRowsExamined**: the average number of scanned rows.
-        # *   **avgRowsReturned**: the average number of returned rows.
+        # - **count**: the number of executions.
+        # 
+        # - **avgRt**: the average execution duration.
+        # 
+        # - **rtRate**: the execution duration percentage.
+        # 
+        # - **rowsExamined**: the total number of scanned rows.
+        # 
+        # - **avgRowsExamined**: the average number of scanned rows.
+        # 
+        # - **avgRowsReturned**: the average number of returned rows.
         self.order_by = order_by
         # The page number. Pages start from page 1. Default value: 1.
         # 
@@ -54,22 +59,23 @@ class GetFullRequestOriginStatByInstanceIdRequest(DaraModel):
         self.page_size = page_size
         # The role of the PolarDB-X 2.0 node. Valid values:
         # 
-        # *   **polarx_cn**: compute node.
-        # *   **polarx_en**: data node.
+        # - **polarx_cn**: compute node.
+        # 
+        # - **polarx_en**: data node.
         self.role = role
         # The type of the SQL statement. Valid values: **SELECT**, **INSERT**, **UPDATE**, **DELETE**, **MERGE**, **ALTER**, **CREATEINDEX**, **DROPINDEX**, **CREATE**, **DROP**, **SET**, **DESC**, **REPLACE**, **CALL**, **BEGIN**, **DESCRIBE**, **ROLLBACK**, **FLUSH**, **USE**, **SHOW**, **START**, **COMMIT**, and **RENAME**.
         # 
-        # >  If the database instance is an ApsaraDB RDS for MySQL instance, a PolarDB for MySQL instance, or a PolarDB-X 2.0 instance, statistics can be collected based on the SQL statement type.
+        # > If the database instance is an ApsaraDB RDS for MySQL instance, a PolarDB for MySQL instance, or a PolarDB-X 2.0 instance, statistics can be collected based on the SQL statement type.
         self.sql_type = sql_type
         # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
-        # >  The start time must be within the storage duration of the SQL Explorer of the database instance, and can be up to 90 days earlier than the current time.
+        # > The start time must be within the storage duration of the SQL Explorer of the database instance, and can be up to 90 days earlier than the current time.
         # 
         # This parameter is required.
         self.start = start
         # The ID of the Alibaba Cloud account that is used to create the database instance.
         # 
-        # >  This parameter is optional. The system can automatically obtain the account ID based on the value of InstanceId when you call this operation.
+        # > This parameter is optional. The system can automatically obtain the account ID based on the value of InstanceId when you call this operation.
         self.user_id = user_id
 
     def validate(self):

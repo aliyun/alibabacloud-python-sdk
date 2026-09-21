@@ -16,20 +16,20 @@ class GetFullRequestSampleByInstanceIdResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code returned.
+        # The response status code.
         self.code = code
         # The returned data.
         self.data = data
         # The returned message.
         # 
-        # >  If the request was successful, **Successful** is returned. If the request failed, an error message that contains information such as an error code is returned.
+        # > If the request is successful, **Successful** is returned. If the request fails, an error message that contains information such as an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The request was successful.
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -107,45 +107,44 @@ class GetFullRequestSampleByInstanceIdResponseBodyData(DaraModel):
         update_rows: int = None,
         user: str = None,
     ):
-        # The name of the database.
+        # The database name.
         self.database = database
-        # The number of rows fetched by PolarDB-X 2.0 compute nodes.
+        # The number of rows fetched by the PolarDB-X 2.0 compute node (CN).
         self.frows = frows
         # The lock wait duration. Unit: seconds.
         self.lock_wait_time = lock_wait_time
         # The number of logical reads.
         self.logical_read = logical_read
-        # The source IP address.
+        # The source of the access.
         self.origin_host = origin_host
         # The number of physical asynchronous reads.
         self.physical_async_read = physical_async_read
         # The number of physical synchronous reads.
         self.physical_sync_read = physical_sync_read
-        # The number of rows updated or returned on PolarDB-X 2.0 compute nodes.
+        # The number of rows updated or returned by the PolarDB-X 2.0 compute node (CN).
         self.rows = rows
-        # The total number of scanned rows.
-        # 
-        # > This parameter is returned only for ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, and PolarDB for MySQL databases.
+        # The total number of rows examined.
+        # > Currently, the following databases support this field: ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, and PolarDB for MySQL.
         self.rows_examined = rows_examined
-        # The number of rows returned by the SQL statement.
+        # The number of rows returned.
         self.rows_returned = rows_returned
-        # The amount of time consumed to execute the SQL statement. Unit: seconds.
+        # The execution duration. Unit: seconds.
         self.rt = rt
-        # The number of scanned rows.
+        # The number of rows scanned.
         self.scan_rows = scan_rows
-        # The number of requests sent from PolarDB-X 2.0 compute nodes to data nodes.
+        # The number of DN requests from the PolarDB-X 2.0 compute node (CN).
         self.scnt = scnt
-        # The sample SQL statement.
+        # The SQL sample.
         self.sql = sql
-        # The SQL statement ID.
+        # SQL ID。
         self.sql_id = sql_id
         # The type of the SQL statement. Valid values: **SELECT**, **INSERT**, **UPDATE**, **DELETE**, **LOGIN**, **LOGOUT**, **MERGE**, **ALTER**, **CREATEINDEX**, **DROPINDEX**, **CREATE**, **DROP**, **SET**, **DESC**, **REPLACE**, **CALL**, **BEGIN**, **DESCRIBE**, **ROLLBACK**, **FLUSH**, **USE**, **SHOW**, **START**, **COMMIT**, and **RENAME**.
         self.sql_type = sql_type
-        # The time when the SQL statement was executed. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The time when the SQL statement was executed. The value is a UNIX timestamp in milliseconds.
         self.timestamp = timestamp
-        # The number of updated rows.
+        # The number of rows updated.
         self.update_rows = update_rows
-        # The name of the user who executes the SQL statement.
+        # The username that executed the SQL statement.
         self.user = user
 
     def validate(self):

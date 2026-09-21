@@ -20,16 +20,56 @@ class DescribeSlowLogRecordsRequest(DaraModel):
         page_size: int = None,
         start_time: int = None,
     ):
+        # Specifies whether to sort the results in ascending order. Default value: **true**.
+        # 
+        # - **true**: Sort in ascending order.
+        # - **false**: Sort in descending order.
         self.asc = asc
+        # The end time.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The list of filter conditions.
         self.filters = filters
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The node ID.
         self.node_id = node_id
+        # - **Common to all engines** 
+        #   - QueryTimeSeconds: query duration (seconds).
+        #   - Timestamp: timestamp.
+        # 
+        # - **SQL-based engines (MySQL / PolarDB for MySQL / PostgreSQL / PolarDB for PostgreSQL / PolarDB for Oracle / PolarDB-X DN)**
+        #   - LockTimeSeconds: lock time (seconds).
+        #   - RowsExamined: rows examined.
+        #   - RowsSent: rows returned.
+        # 
+        # - **MongoDB**
+        #   - KeysExamined: number of indexes scanned.
+        #   - DocExamined: number of documents scanned.
+        #   - ReturnNum: rows returned.
+        # 
+        # - **SQL Server**
+        #   - CPUTimeSeconds: CPU time.
+        #   - IOWrites: number of I/O writes.
+        #   - LastRowsCountAffected: last rows affected.
+        #   - LogicalIOReads: logical I/O reads.
+        #   - PhysicalIOReads: physical I/O reads.
+        #   - RowsCountAffected: rows affected.
+        # 
+        # - **PolarDB-X CN**
+        #   - RowsSent: rows returned or updated.
+        #   - Frows: rows fetched.
+        #   - Scnt: number of physical SQL statements.
         self.order_by = order_by
+        # The page number. Pages start from page 1.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The start time.
+        # 
         # This parameter is required.
         self.start_time = start_time
 
@@ -115,7 +155,11 @@ class DescribeSlowLogRecordsRequestFilters(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The filter parameter.
+        # 
+        # > For more information, refer to the supplementary description.
         self.key = key
+        # The value of the filter parameter.
         self.value = value
 
     def validate(self):

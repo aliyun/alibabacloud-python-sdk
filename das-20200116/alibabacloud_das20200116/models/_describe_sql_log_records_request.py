@@ -19,29 +19,35 @@ class DescribeSqlLogRecordsRequest(DaraModel):
         role: str = None,
         start_time: int = None,
     ):
-        # The end of the time range to query. This value is a UNIX timestamp. Unit: millisecond.
+        # The end of the time range to query. This is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.end_time = end_time
-        # The filter conditions.
+        # A list of filter conditions.
         self.filters = filters
-        # The database instance ID.
+        # The ID of the database instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The node ID.
         # 
-        # *   For ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters, this parameter is valid only for instances of the Cluster Edition. If you do not specify this parameter, the log details of the primary node is queried by default.
-        # *   For PolarDB-X 2.0 instances, set this parameter to **polarx_cn** if the node is a compute node, or **polarx_dn** if the node is a data node.
+        # - This parameter is applicable only to ApsaraDB RDS for MySQL and PolarDB for MySQL cluster instances. If this parameter is omitted, the log details of the primary node are returned by default.
+        # 
+        # - For PolarDB-X 2.0, set this parameter to **polarx_cn** (compute node) or **polarx_dn** (data node).
         self.node_id = node_id
         # The page number. Pages start from page 1. Default value: 1.
         self.page_no = page_no
-        # The number of entries per page. Default value: 10.
+        # The number of entries per page. Maximum value: 100. Default value: 10.
         self.page_size = page_size
-        # The role of the node of the PolarDB-X 2.0 instance. Valid values:
+        # The role of the node in the PolarDB-X 2.0 database instance.
         # 
-        # *   \\*\\*polarx_cn\\*\\*: compute node
-        # *   \\*\\*polarx_dn\\*\\*: data node
+        # - **polarx_cn**: compute node.
+        # 
+        # - **polarx_dn**: data node.
         self.role = role
-        # The beginning of the time range to query. This value is a UNIX timestamp. Unit: millisecond.
+        # The beginning of the time range to query. This is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -120,11 +126,11 @@ class DescribeSqlLogRecordsRequestFilters(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The filter parameter.
+        # The filter key.
         # 
-        # >  For more information about the supported filter parameters and their valid values, see the **Supported parameters and values for Key** section of this topic.
+        # > For details on supported filter keys and their values, see **Additional information about request parameters**.
         self.key = key
-        # The value of the filter parameter.
+        # The filter value.
         self.value = value
 
     def validate(self):

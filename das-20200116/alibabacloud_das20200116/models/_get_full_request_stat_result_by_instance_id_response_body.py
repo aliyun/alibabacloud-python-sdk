@@ -22,14 +22,15 @@ class GetFullRequestStatResultByInstanceIdResponseBody(DaraModel):
         self.data = data
         # The returned message.
         # 
-        # >  If the request was successful, **Successful** is returned. If the request failed, an error message that contains information such as an error code is returned.
+        # > If the request was successful, **Successful** is returned. If the request failed, an error message that contains information such as an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.success = success
 
     def validate(self):
@@ -90,13 +91,15 @@ class GetFullRequestStatResultByInstanceIdResponseBodyData(DaraModel):
     ):
         # Indicates whether the asynchronous request failed. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.fail = fail
         # Indicates whether the asynchronous request was complete. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.is_finish = is_finish
         # The returned full request data.
         self.result = result
@@ -104,9 +107,11 @@ class GetFullRequestStatResultByInstanceIdResponseBodyData(DaraModel):
         self.result_id = result_id
         # The state of the asynchronous request. Valid values:
         # 
-        # *   **RUNNING**
-        # *   **SUCCESS**
-        # *   **FAIL**
+        # - **RUNNING**
+        # 
+        # - **SUCCESS**
+        # 
+        # - **FAIL**
         self.state = state
         # The time when the asynchronous request was sent. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.timestamp = timestamp
@@ -266,7 +271,7 @@ class GetFullRequestStatResultByInstanceIdResponseBodyDataResultList(DaraModel):
         self.avg_sql_count = avg_sql_count
         # The average number of updated rows.
         # 
-        #  > This parameter is returned only for ApsaraDB RDS for MySQL and PolarDB-X 2.0 databases.
+        # > This parameter is returned only for ApsaraDB RDS for MySQL and PolarDB-X 2.0 databases.
         self.avg_updated_rows = avg_updated_rows
         # The total number of executions.
         self.count = count

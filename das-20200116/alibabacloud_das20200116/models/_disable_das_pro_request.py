@@ -16,7 +16,7 @@ class DisableDasProRequest(DaraModel):
         self.instance_id = instance_id
         # The ID of the Alibaba Cloud account that is used to create the database instance.
         # 
-        # >  This parameter is optional. The system can automatically obtain the account ID based on the value of InstanceId that you set when you call this operation.
+        # > This parameter is optional. The system can automatically obtain the account ID based on the value of InstanceId that you set when you call this operation.
         self.user_id = user_id
 
     def validate(self):

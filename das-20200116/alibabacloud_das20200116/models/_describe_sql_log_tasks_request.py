@@ -18,21 +18,20 @@ class DescribeSqlLogTasksRequest(DaraModel):
         page_size: int = None,
         start_time: int = None,
     ):
-        # The end of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The end time of the query. Specify a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # The filter parameters.
+        # The list of query filter conditions.
         self.filters = filters
-        # The ID of the database instance.
+        # The database instance ID.
         self.instance_id = instance_id
         # The node ID.
-        # 
-        # >  This parameter is available only for instances that are deployed in the cluster architecture. You can specify this parameter to query the tasks of a specific node. If this parameter is not specified, the tasks of the primary node are returned by default.
+        # >This parameter is applicable only to Cluster Edition instances. You can specify a node to query its batch tasks. If you do not specify this parameter, the batch tasks of the primary node are returned by default.
         self.node_id = node_id
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number for the paging query. Pages start from 1. Default value: 1.
         self.page_no = page_no
-        # The number of entries per page. Valid values: 1 to 100. Default value: 10.
+        # The maximum number of records per page. Maximum value: 100. Default value: 10.
         self.page_size = page_size
-        # The beginning of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The start time of the query. Specify a UNIX timestamp in milliseconds.
         self.start_time = start_time
 
     def validate(self):
@@ -105,9 +104,9 @@ class DescribeSqlLogTasksRequestFilters(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The name of the filter parameter.
+        # The filter parameter.
         # 
-        # >  For more information about the filter parameters, see the **Valid values of Key** section of this topic.
+        # > For supported filter parameters and their values, refer to **Supplementary description of request parameters**.
         self.key = key
         # The value of the filter parameter.
         self.value = value

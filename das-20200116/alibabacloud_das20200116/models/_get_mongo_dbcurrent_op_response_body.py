@@ -22,14 +22,15 @@ class GetMongoDBCurrentOpResponseBody(DaraModel):
         self.data = data
         # The returned message.
         # 
-        # >  If the request was successful, **Successful** is returned. Otherwise, an error message such as an error code is returned.
+        # > If the request was successful, **Successful** is returned. Otherwise, an error message such as an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.success = success
 
     def validate(self):
@@ -240,8 +241,9 @@ class GetMongoDBCurrentOpResponseBodyDataSessionList(DaraModel):
     ):
         # Indicates whether the operation is active. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.active = active
         # The IP address of the client.
         self.client = client
@@ -257,8 +259,9 @@ class GetMongoDBCurrentOpResponseBodyDataSessionList(DaraModel):
         self.host = host
         # Indicates whether the operation is marked as terminated.
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.kill_pending = kill_pending
         # The namespace.
         self.ns = ns
@@ -280,7 +283,7 @@ class GetMongoDBCurrentOpResponseBodyDataSessionList(DaraModel):
         self.secs_running = secs_running
         # The ID of the data shard.
         # 
-        # >  This parameter is returned for sharded cluster instances.
+        # > This parameter is returned for sharded cluster instances.
         self.shard = shard
 
     def validate(self):

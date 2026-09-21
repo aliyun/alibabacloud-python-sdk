@@ -9,10 +9,16 @@ class GetInstanceGroupInspectReportDetailRequest(DaraModel):
         self,
         agent_id: str = None,
         report_id: str = None,
+        report_type: str = None,
     ):
+        # The ID of the agent that the user purchased.
         self.agent_id = agent_id
+        # The ID of the operations report.
+        # 
         # This parameter is required.
         self.report_id = report_id
+        # The type of the report.
+        self.report_type = report_type
 
     def validate(self):
         pass
@@ -28,6 +34,9 @@ class GetInstanceGroupInspectReportDetailRequest(DaraModel):
         if self.report_id is not None:
             result['ReportId'] = self.report_id
 
+        if self.report_type is not None:
+            result['ReportType'] = self.report_type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -37,6 +46,9 @@ class GetInstanceGroupInspectReportDetailRequest(DaraModel):
 
         if m.get('ReportId') is not None:
             self.report_id = m.get('ReportId')
+
+        if m.get('ReportType') is not None:
+            self.report_type = m.get('ReportType')
 
         return self
 

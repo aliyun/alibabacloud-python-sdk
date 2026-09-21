@@ -14,12 +14,13 @@ class GetAutoResourceOptimizeRulesRequest(DaraModel):
         self.console_context = console_context
         # The database instance IDs.
         # 
-        # *   Specify the parameter value as a JSON array, such as `[\\"Database account 1\\",\\"Database account 2\\"]`. Separate database instance IDs with commas (,).
+        # - Specify the parameter value as a JSON array, such as `[\\"Database account 1\\",\\"Database account 2\\"]`. Separate database instance IDs with commas (,).
         # 
-        # *   By default, if you leave this parameter empty, all database instances for which the automatic fragment recycling feature has been enabled within the current Alibaba Cloud account are returned. The following types of database instances are returned:
+        # - By default, if you leave this parameter empty, all database instances for which the automatic fragment recycling feature has been enabled within the current Alibaba Cloud account are returned. The following types of database instances are returned:
         # 
-        #     *   Database instances for which the automatic fragment recycling feature is currently enabled.
-        #     *   Database instances for which the automatic fragment recycling feature was once enabled but is currently disabled, including those for which DAS Enterprise Edition has been disabled but excluding those that have been released.
+        #   - Database instances for which the automatic fragment recycling feature is currently enabled.
+        # 
+        #   - Database instances for which the automatic fragment recycling feature was once enabled but is currently disabled, including those for which DAS Enterprise Edition has been disabled but excluding those that have been released.
         self.instance_ids = instance_ids
 
     def validate(self):

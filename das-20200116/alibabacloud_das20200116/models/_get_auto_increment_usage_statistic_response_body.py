@@ -22,14 +22,15 @@ class GetAutoIncrementUsageStatisticResponseBody(DaraModel):
         self.data = data
         # The returned message.
         # 
-        # >  If the request is successful, **Successful** is returned. Otherwise, an error message such as an error code is returned.
+        # > If the request is successful, **Successful** is returned. Otherwise, an error message such as an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request is successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.success = success
 
     def validate(self):
@@ -93,15 +94,19 @@ class GetAutoIncrementUsageStatisticResponseBodyData(DaraModel):
         self.error_info = error_info
         # Indicates whether the task is complete. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.finish = finish
         # The task status. Valid values:
         # 
-        # *   **INIT**: The task is being initialized.
-        # *   **RUNNING**: The task is being executed.
-        # *   **SUCCESS**: The task succeeds.
-        # *   **FAIL**: The task fails.
+        # - **INIT**: The task is being initialized.
+        # 
+        # - **RUNNING**: The task is being executed.
+        # 
+        # - **SUCCESS**: The task succeeds.
+        # 
+        # - **FAIL**: The task fails.
         self.task_status = task_status
         # The time when the request was made. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.timestamp = timestamp
