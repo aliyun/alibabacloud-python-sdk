@@ -15,6 +15,7 @@ class CreateSiteDeliveryTaskResponseBody(DaraModel):
         # The data center. Valid values:
         # - **cn**: the Chinese mainland.
         # - **oversea**: outside the Chinese mainland.
+        # - **global**: global.
         self.data_center = data_center
         # The request ID.
         self.request_id = request_id

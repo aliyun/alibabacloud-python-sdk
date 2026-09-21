@@ -15,13 +15,13 @@ class WafTimer(DaraModel):
         weekly_periods: List[main_models.WafTimerWeeklyPeriods] = None,
         zone: int = None,
     ):
-        # 生效时间段。
+        # The effective periods.
         self.periods = periods
-        # 定时类型：永久生效（permanent/<空>）/时间段生效（periods）/weekly（周期生效）。
+        # The timer type: permanently effective (permanent/empty), effective during time periods (periods), or periodically effective (weekly).
         self.scopes = scopes
-        # 每周生效时间段。
+        # The weekly effective periods.
         self.weekly_periods = weekly_periods
-        # 时区，不填则默认为UTC+00:00。<br>例：8表示东8区，-8表示西8区<br>范围：-12 - +14。
+        # The time zone. Default value: UTC+00:00.<br>Example: 8 indicates UTC+8, -8 indicates UTC-8.<br>Valid range: -12 to +14.
         self.zone = zone
 
     def validate(self):
@@ -85,9 +85,9 @@ class WafTimerWeeklyPeriods(DaraModel):
         daily_periods: List[main_models.WafTimerWeeklyPeriodsDailyPeriods] = None,
         days: str = None,
     ):
-        # 该周期内的生效时间。
+        # The effective period within the epoch.
         self.daily_periods = daily_periods
-        # 周期，多个使用逗号分隔，1-7分别代表周一-周日。<br>例：周一，周三值为"1,3"。
+        # The days of the week, separated by commas. Values 1-7 represent Monday through Sunday.<br>Example: Monday and Wednesday is "1,3".
         self.days = days
 
     def validate(self):
@@ -130,9 +130,9 @@ class WafTimerWeeklyPeriodsDailyPeriods(DaraModel):
         end: str = None,
         start: str = None,
     ):
-        # 结束时间，格式为HH:mm:ss。
+        # The end time in HH:mm:ss format.
         self.end = end
-        # 起始时间，格式为HH:mm:ss。
+        # The start time in HH:mm:ss format.
         self.start = start
 
     def validate(self):
@@ -167,9 +167,9 @@ class WafTimerPeriods(DaraModel):
         end: str = None,
         start: str = None,
     ):
-        # 结束时间，值为RFC3339格式的UTC时间。
+        # The end time in RFC 3339 UTC format.
         self.end = end
-        # 起始时间，值为RFC3339格式的UTC时间。
+        # The start time in RFC 3339 UTC format.
         self.start = start
 
     def validate(self):

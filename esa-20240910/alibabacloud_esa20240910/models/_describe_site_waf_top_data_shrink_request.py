@@ -16,7 +16,7 @@ class DescribeSiteWafTopDataShrinkRequest(DaraModel):
     ):
         # The end of the time range to query.
         # 
-        # Specify the time in ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
+        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
         # 
         # > The end time must be later than the start time.
         self.end_time = end_time
@@ -30,12 +30,11 @@ class DescribeSiteWafTopDataShrinkRequest(DaraModel):
         self.limit = limit
         # The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
         # 
-        # 
         # If this parameter is left empty, user-level data is queried.
         self.site_id = site_id
         # The beginning of the time range to query.
         # 
-        # Specify the time in ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
+        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
         self.start_time = start_time
 
     def validate(self):

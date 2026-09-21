@@ -102,7 +102,7 @@ class DescribeUserResourcePackageResponseBodyResourcePackageInfos(DaraModel):
         # The commodity code of the resource plan.
         self.commodity_code = commodity_code
         # The current remaining capacity of the instance.
-        # - Unit for traffic plans: bytes.
+        # - Unit for traffic plans: Byte.
         # 
         # - Unit for request plans: count.
         self.curr_capacity = curr_capacity
@@ -114,10 +114,10 @@ class DescribeUserResourcePackageResponseBodyResourcePackageInfos(DaraModel):
         self.curr_capacity_show_value = curr_capacity_show_value
         # The name of the resource plan.
         self.display_name = display_name
-        # The expiration time.
+        # The expiration time in UTC. Format: YYYY-MM-DDTHH:mm:ssZ.
         self.end_time = end_time
         # The total capacity of the resource plan.
-        # - Unit for traffic plans: bytes.
+        # - Unit for traffic plans: Byte.
         # 
         # - Unit for request plans: count.
         self.init_capacity = init_capacity
@@ -127,11 +127,11 @@ class DescribeUserResourcePackageResponseBodyResourcePackageInfos(DaraModel):
         self.init_capacity_show_unit = init_capacity_show_unit
         # The display value of the total capacity of the resource plan.
         self.init_capacity_show_value = init_capacity_show_value
-        # The resource plan instance ID.
+        # The instance ID of the resource plan.
         self.instance_id = instance_id
         # The region.
         self.region = region
-        # The effective period.
+        # The effective period in UTC. Format: YYYY-MM-DDTHH:mm:ssZ.
         self.start_time = start_time
         # The status of the resource plan.
         self.status = status

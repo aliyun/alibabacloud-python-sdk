@@ -29,7 +29,7 @@ class RecoverSiteResponseBody(DaraModel):
         # 
         # - **CNAME**: access through CNAME.
         self.access_type = access_type
-        # The CNAME suffix of the site. For sites accessed through CNAME, this is the suffix that needs to be configured for the CNAME record.
+        # The CNAME suffix of the site. For sites that are accessed through CNAME, this field indicates the CNAME suffix that needs to be configured for records.
         self.cname_zone = cname_zone
         # The acceleration region of the site. Valid values:
         # - **domestic**: the Chinese mainland only.
@@ -40,15 +40,15 @@ class RecoverSiteResponseBody(DaraModel):
         self.create_time = create_time
         # The plan instance ID.
         self.instance_id = instance_id
-        # The list of name servers assigned to the site, separated by commas (,). When the site is accessed through NS, this field contains values. You need to change the DNS servers of the site to these name servers. Then you can verify site ownership and activate the site.
+        # The list of name servers assigned to the site, separated by commas (,). When the site uses NS access, this field contains values. You need to change the DNS servers of the site to these name servers. Then you can verify the site ownership and activate the site.
         self.name_server_list = name_server_list
-        # The reason why the site was disabled. Valid values:
+        # The reason why the site was deactivated. Valid values:
         # 
-        # - **expiration_ arrears**: the subscription plan expired or the account has an overdue payment.
-        # - **internally_disabled**: disabled by the system internally.
-        # - **missing_icp**: the domain name lacks an ICP filing.
-        # - **content_violation**: content violation.
-        # - **proactively_disabled**: you proactively disabled the site or the site was disabled due to the usage cap you configured.
+        # - **expiration_arrears**: The subscription plan expired or the account has an overdue payment.
+        # - **internally_disabled**: The site was disabled by the system.
+        # - **missing_icp**: The domain name does not have an ICP filing.
+        # - **content_violation**: Content violation.
+        # - **proactively_disabled**: You proactively disabled the site or the site was disabled because the usage cap you configured was reached.
         self.offline_reason = offline_reason
         # The plan name.
         self.plan_name = plan_name
@@ -62,10 +62,10 @@ class RecoverSiteResponseBody(DaraModel):
         self.site_name = site_name
         # The site status. Valid values:
         # 
-        # - **pending**: the site is pending configuration.
-        # - **active**: the site is activated.
-        # - **offline**: the site is offline.
-        # - **moved**: the site has been superseded.
+        # - **pending**: The site is pending configuration.
+        # - **active**: The site is activated.
+        # - **offline**: The site is offline.
+        # - **moved**: The site has been replaced.
         self.status = status
         # The modification time.
         self.update_time = update_time

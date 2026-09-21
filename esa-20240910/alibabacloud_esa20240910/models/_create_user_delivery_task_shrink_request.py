@@ -23,15 +23,13 @@ class CreateUserDeliveryTaskShrinkRequest(DaraModel):
     ):
         # The real-time log type. Valid values:
         # 
-        # - **dcdn_log_access_l1 (default)**: access logs.
-        # - **dcdn_log_er**: edge function logs.
-        # - **dcdn_log_waf**: security protection logs.
-        # - **dcdn_log_ipa**: Layer 4 acceleration logs.
+        # - **dcdn_log_er_pod**: edge container logs.
+        # - **dcdn_log_dns**: edge DNS logs.
         # 
         # This parameter is required.
         self.business_type = business_type
         # The data center. Valid values:
-        # - **cn**: Chinese mainland.
+        # - **cn**: the Chinese mainland.
         # - **sg**: global (excluding the Chinese mainland).
         self.data_center = data_center
         # The delivery type. Valid values:
@@ -45,13 +43,17 @@ class CreateUserDeliveryTaskShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.delivery_type = delivery_type
+        # The list of Edge Routine (ER) pods to configure.
         self.details = details
         # The discard rate. Default value: 0.
         self.discard_rate = discard_rate
-        # The fields to be selected, separated by commas (,).
+        # The fields to deliver, separated by commas (,).
         # 
         # This parameter is required.
         self.field_name = field_name
+        # The version of the filter rule.
+        # 
+        # > This parameter is used for backward compatibility with legacy filter rules. The default value is v1. New tasks use v2.
         self.filter_ver = filter_ver
         # The HTTP delivery configuration parameters.
         self.http_delivery_shrink = http_delivery_shrink

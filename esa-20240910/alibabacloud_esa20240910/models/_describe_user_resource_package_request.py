@@ -15,7 +15,7 @@ class DescribeUserResourcePackageRequest(DaraModel):
         sort_rule: str = None,
         status: str = None,
     ):
-        # The resource plan instance ID.
+        # The instance ID of the resource plan.
         self.instance_id = instance_id
         # The page number. Default value: 1.
         self.page_number = page_number
@@ -25,8 +25,11 @@ class DescribeUserResourcePackageRequest(DaraModel):
         # The sorting field. Valid values:
         # - startTime: the effective period of the instance.
         # - endTime: the expiration time of the instance.
+        # - StartTime: the effective period of the instance.
+        # - EndTime: the expiration time of the instance.
+        # - default: no sorting field.
         self.sort_field = sort_field
-        # The sorting collation. Default value: desc. Valid values:
+        # The sorting rule. Default value: desc. Valid values:
         # - asc
         # - desc
         self.sort_rule = sort_rule

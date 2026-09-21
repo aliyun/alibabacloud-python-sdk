@@ -7,11 +7,14 @@ from darabonba.model import DaraModel
 class ApplyCertificateRequest(DaraModel):
     def __init__(
         self,
+        alg_type: str = None,
         domains: str = None,
         site_id: int = None,
         type: str = None,
     ):
-        # A comma-separated list of domain names.
+        # The algorithm type.
+        self.alg_type = alg_type
+        # The list of domain names, separated by commas.
         # 
         # This parameter is required.
         self.domains = domains
@@ -19,7 +22,10 @@ class ApplyCertificateRequest(DaraModel):
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The certificate type. Valid values: `lets_encrypt` for a Let\\"s Encrypt certificate, `digicert_single` for a Digicert single-domain certificate, and `digicert_wildcard` for a Digicert wildcard certificate.
+        # The certificate type. Valid values:
+        # - lets_encrypt: Let\\"s Encrypt certificate.
+        # - digicert_single: DigiCert single-domain certificate.
+        # - digicert_wildcard: DigiCert wildcard domain certificate.
         self.type = type
 
     def validate(self):
@@ -30,6 +36,9 @@ class ApplyCertificateRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.alg_type is not None:
+            result['AlgType'] = self.alg_type
+
         if self.domains is not None:
             result['Domains'] = self.domains
 
@@ -43,6 +52,9 @@ class ApplyCertificateRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AlgType') is not None:
+            self.alg_type = m.get('AlgType')
+
         if m.get('Domains') is not None:
             self.domains = m.get('Domains')
 

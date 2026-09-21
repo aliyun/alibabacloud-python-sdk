@@ -15,25 +15,24 @@ class ListDDoSInstancesRequest(DaraModel):
         sort_order: str = None,
         status: str = None,
     ):
-        # Instance ID.
+        # The instance ID.
         self.instance_id = instance_id
-        # Page number. Default: **1**.
+        # The page number for a paged query. The value must be greater than or equal to 1. Default value: **1**.
         self.page_number = page_number
-        # Number of entries per page. Default: 20. Maximum: 500. Valid values: integers from 1 to 500.
+        # The number of entries per page for a paged query. Default value: 20. Maximum value: 500. Valid values: any integer from 1 to 500.
         self.page_size = page_size
-        # Associated site package instance ID.
+        # The instance ID of the associated site plan.
         self.site_instance_id = site_instance_id
-        # Sort field. Default: CreateTime.
+        # The sort field. By default, results are sorted by purchase time. Valid values:
         # 
-        # - **CreateTime**: Time when the instance was purchased.
+        # - **CreateTime**: purchase time.
         self.sort_by = sort_by
-        # Sort order:
+        # The sort order. Valid values:
         # 
-        # - asc: ascending.
-        # 
-        # - desc: descending.
+        # - asc: ascending order.
+        # - desc: descending order.
         self.sort_order = sort_order
-        # Instance status.
+        # The instance status.
         self.status = status
 
     def validate(self):

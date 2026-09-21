@@ -12,7 +12,7 @@ class GetClientCaCertificateHostnamesRequest(DaraModel):
     ):
         # The client CA certificate ID.
         self.id = id
-        # The site ID. To obtain this ID, call the [ListSites](~~ListSites~~) API.
+        # The site ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
         # 
         # This parameter is required.
         self.site_id = site_id

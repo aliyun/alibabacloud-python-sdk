@@ -1,3 +1,7 @@
+2026-09-21 Version: 3.15.2
+- Update API GetWafFilter: add response parameters Body.Filter.Fields.$.Subs.
+
+
 2026-07-31 Version: 3.13.0
 - Support API DescribeUserResourcePackage.
 - Support API GetReleaseTime.

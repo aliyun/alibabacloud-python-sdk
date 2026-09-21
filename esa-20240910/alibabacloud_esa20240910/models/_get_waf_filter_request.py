@@ -12,13 +12,13 @@ class GetWafFilterRequest(DaraModel):
         target: str = None,
         type: str = None,
     ):
-        # Specifies the WAF phase from which to retrieve the matching engine information.
+        # The WAF phase. Specifies the WAF phase for which to query the match engine information.
         self.phase = phase
-        # Specifies the ID of the site. You can get this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
         self.site_id = site_id
-        # Specifies the application target of the matching engine.
+        # The target. Defines the application target of the match engine.
         self.target = target
-        # Specifies the rule type.
+        # The rule type.
         self.type = type
 
     def validate(self):

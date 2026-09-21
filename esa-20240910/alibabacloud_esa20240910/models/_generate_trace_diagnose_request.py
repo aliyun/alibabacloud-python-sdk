@@ -10,7 +10,7 @@ class GenerateTraceDiagnoseRequest(DaraModel):
         source: str = None,
         url: str = None,
     ):
-        # The source of the request.
+        # The source.
         self.source = source
         # The URL to diagnose.
         # 

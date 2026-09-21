@@ -26,7 +26,7 @@ class PurchaseRatePlanRequest(DaraModel):
         self.auto_pay = auto_pay
         # Specifies whether to enable auto-renewal. Valid values:
         # - true: Auto-renewal is enabled.
-        # - false: Auto-renewal is not enabled.
+        # - false: Auto-renewal is disabled.
         self.auto_renew = auto_renew
         # The channel field.
         self.channel = channel
@@ -41,12 +41,13 @@ class PurchaseRatePlanRequest(DaraModel):
         # - global: global.
         # - overseas: global (excluding the Chinese mainland).
         self.coverage = coverage
+        # The overage policy.
         self.overage_policy = overage_policy
         # The purchase period, in months. This parameter is required when you directly call this operation.
         self.period = period
         # The plan code.
         # 
-        # Chinese site
+        # China site
         # 
         # - Free Edition: entranceplan
         # - Basic: basicplan
@@ -61,7 +62,7 @@ class PurchaseRatePlanRequest(DaraModel):
         self.plan_code = plan_code
         # The plan name.
         # 
-        # Chinese site
+        # China site
         # 
         # - Free Edition: entranceplan
         # - Basic: basic

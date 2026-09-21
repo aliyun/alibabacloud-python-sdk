@@ -13,7 +13,7 @@ class DescribeSiteLogsRequest(DaraModel):
         site_id: int = None,
         start_time: str = None,
     ):
-        # The end time for retrieving logs.
+        # The end time for log retrieval.
         # 
         # The date is in ISO 8601 format and uses UTC+0 time in the format of yyyy-MM-ddTHH:mm:ssZ.
         # 
@@ -27,7 +27,7 @@ class DescribeSiteLogsRequest(DaraModel):
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The start time for retrieving logs.
+        # The start time for log retrieval.
         # 
         # The date is in ISO 8601 format and uses UTC+0 time in the format of yyyy-MM-ddTHH:mm:ssZ.
         self.start_time = start_time

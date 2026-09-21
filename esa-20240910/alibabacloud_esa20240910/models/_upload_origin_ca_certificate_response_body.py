@@ -25,21 +25,21 @@ class UploadOriginCaCertificateResponseBody(DaraModel):
         self.fingerprint_sha_256 = fingerprint_sha_256
         # The certificate ID.
         self.id = id
-        # The issuer of the certificate.
+        # The certification authority.
         self.issuer = issuer
-        # The validity end time of the certificate.
+        # The end time of the certificate validity period.
         self.not_after = not_after
-        # The validity start time of the certificate.
+        # The start time of the certificate validity period.
         self.not_before = not_before
         # The request ID.
         self.request_id = request_id
-        # The serial number of the certificate.
+        # The certificate serial number.
         self.serial_number = serial_number
         # The signature algorithm of the certificate.
         self.signature_algorithm = signature_algorithm
         # The certificate status.
         self.status = status
-        # The validity period of the certificate in days.
+        # The number of days the certificate is valid.
         self.validity_days = validity_days
 
     def validate(self):

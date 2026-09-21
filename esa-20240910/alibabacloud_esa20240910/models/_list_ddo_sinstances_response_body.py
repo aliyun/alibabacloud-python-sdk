@@ -17,17 +17,17 @@ class ListDDoSInstancesResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # Instance details
+        # The instance details.
         self.instance_info = instance_info
-        # Page number. Default: **1**.
+        # The current page number, which is the same as the PageNumber request parameter.
         self.page_number = page_number
-        # Number of entries per page
+        # The number of entries per page.
         self.page_size = page_size
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Total number of entries
+        # The total number of records.
         self.total_count = total_count
-        # Total number of pages
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -99,27 +99,23 @@ class ListDDoSInstancesResponseBodyInstanceInfo(DaraModel):
         site_instance_id: str = None,
         status: str = None,
     ):
-        # Time when the instance was purchased
+        # The purchase time of the instance. The time is in ISO 8601 format and displayed in UTC. The format is yyyy-MM-ddTHH:mm:ssZ.
         self.create_time = create_time
-        # DDoS protection specification for the Chinese mainland
+        # The specifications of the DDoS instance in the Chinese mainland.
         self.ddo_sburstable_domestic_protection = ddo_sburstable_domestic_protection
-        # DDoS protection specification for regions outside the Chinese mainland
+        # The specifications of the DDoS instance outside the Chinese mainland.
         self.ddo_sburstable_overseas_protection = ddo_sburstable_overseas_protection
-        # Instance ID
+        # The instance ID.
         self.instance_id = instance_id
-        # Scheduled release time
+        # The scheduled release time. The time is in ISO 8601 format and displayed in UTC. The format is yyyy-MM-ddTHH:mm:ssZ.
         self.reserve_release_time = reserve_release_time
-        # Associated site package instance ID
+        # The ID of the associated site plan instance.
         self.site_instance_id = site_instance_id
-        # Instance status. Valid values:
-        # 
-        # - **online**: Normal service status.
-        # 
-        # - **offline**: Expired but not overdue. Instance is unavailable.
-        # 
-        # - **disable**: Released.
-        # 
-        # - **overdue**: Service suspended due to overdue payment.
+        # The instance status. Valid values:
+        # - **online**: The instance is running normally.
+        # - **offline**: The instance has expired but is not overdue, and is unavailable.
+        # - **disable**: The instance has been released.
+        # - **overdue**: The instance is suspended due to overdue payment.
         self.status = status
 
     def validate(self):

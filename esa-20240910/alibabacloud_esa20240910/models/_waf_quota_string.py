@@ -9,7 +9,7 @@ class WafQuotaString(DaraModel):
         self,
         regexp: str = None,
     ):
-        # 正则表达式。
+        # The regular expression.
         self.regexp = regexp
 
     def validate(self):

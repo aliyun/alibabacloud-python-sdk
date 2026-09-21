@@ -11,6 +11,7 @@ class ListCertificatesRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
         site_id: int = None,
+        type: str = None,
         valid_only: bool = None,
     ):
         # The search keyword.
@@ -23,6 +24,7 @@ class ListCertificatesRequest(DaraModel):
         # 
         # This parameter is required.
         self.site_id = site_id
+        self.type = type
         # Specifies whether to return only valid certificates.
         self.valid_only = valid_only
 
@@ -46,6 +48,9 @@ class ListCertificatesRequest(DaraModel):
         if self.site_id is not None:
             result['SiteId'] = self.site_id
 
+        if self.type is not None:
+            result['Type'] = self.type
+
         if self.valid_only is not None:
             result['ValidOnly'] = self.valid_only
 
@@ -64,6 +69,9 @@ class ListCertificatesRequest(DaraModel):
 
         if m.get('SiteId') is not None:
             self.site_id = m.get('SiteId')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
 
         if m.get('ValidOnly') is not None:
             self.valid_only = m.get('ValidOnly')

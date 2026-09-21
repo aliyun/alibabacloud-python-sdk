@@ -16,6 +16,7 @@ from ._http_delivery_query_param_value import HttpDeliveryQueryParamValue
 from ._field_content_value import FieldContentValue
 from ._quota_list_items_value import QuotaListItemsValue
 from ._quota_page_content_types_value import QuotaPageContentTypesValue
+from ._environment_variables_value import EnvironmentVariablesValue
 from ._activate_client_certificate_request import ActivateClientCertificateRequest
 from ._activate_client_certificate_response_body import ActivateClientCertificateResponseBody
 from ._activate_client_certificate_response import ActivateClientCertificateResponse
@@ -383,6 +384,10 @@ from ._delete_routine_build_configuration_response import DeleteRoutineBuildConf
 from ._delete_routine_code_version_request import DeleteRoutineCodeVersionRequest
 from ._delete_routine_code_version_response_body import DeleteRoutineCodeVersionResponseBody
 from ._delete_routine_code_version_response import DeleteRoutineCodeVersionResponse
+from ._delete_routine_environment_variables_request import DeleteRoutineEnvironmentVariablesRequest
+from ._delete_routine_environment_variables_shrink_request import DeleteRoutineEnvironmentVariablesShrinkRequest
+from ._delete_routine_environment_variables_response_body import DeleteRoutineEnvironmentVariablesResponseBody
+from ._delete_routine_environment_variables_response import DeleteRoutineEnvironmentVariablesResponse
 from ._delete_routine_related_record_request import DeleteRoutineRelatedRecordRequest
 from ._delete_routine_related_record_response_body import DeleteRoutineRelatedRecordResponseBody
 from ._delete_routine_related_record_response import DeleteRoutineRelatedRecordResponse
@@ -1039,6 +1044,9 @@ from ._list_routine_canary_areas_response import ListRoutineCanaryAreasResponse
 from ._list_routine_code_versions_request import ListRoutineCodeVersionsRequest
 from ._list_routine_code_versions_response_body import ListRoutineCodeVersionsResponseBody
 from ._list_routine_code_versions_response import ListRoutineCodeVersionsResponse
+from ._list_routine_environment_variables_request import ListRoutineEnvironmentVariablesRequest
+from ._list_routine_environment_variables_response_body import ListRoutineEnvironmentVariablesResponseBody
+from ._list_routine_environment_variables_response import ListRoutineEnvironmentVariablesResponse
 from ._list_routine_related_records_request import ListRoutineRelatedRecordsRequest
 from ._list_routine_related_records_response_body import ListRoutineRelatedRecordsResponseBody
 from ._list_routine_related_records_response import ListRoutineRelatedRecordsResponse
@@ -1239,6 +1247,10 @@ from ._set_origin_client_certificate_hostnames_request import SetOriginClientCer
 from ._set_origin_client_certificate_hostnames_shrink_request import SetOriginClientCertificateHostnamesShrinkRequest
 from ._set_origin_client_certificate_hostnames_response_body import SetOriginClientCertificateHostnamesResponseBody
 from ._set_origin_client_certificate_hostnames_response import SetOriginClientCertificateHostnamesResponse
+from ._set_routine_environment_variables_request import SetRoutineEnvironmentVariablesRequest
+from ._set_routine_environment_variables_shrink_request import SetRoutineEnvironmentVariablesShrinkRequest
+from ._set_routine_environment_variables_response_body import SetRoutineEnvironmentVariablesResponseBody
+from ._set_routine_environment_variables_response import SetRoutineEnvironmentVariablesResponse
 from ._start_scheduled_preload_execution_request import StartScheduledPreloadExecutionRequest
 from ._start_scheduled_preload_execution_response_body import StartScheduledPreloadExecutionResponseBody
 from ._start_scheduled_preload_execution_response import StartScheduledPreloadExecutionResponse
@@ -1257,9 +1269,16 @@ from ._submit_upload_task_response import SubmitUploadTaskResponse
 from ._tag_resources_request import TagResourcesRequest
 from ._tag_resources_response_body import TagResourcesResponseBody
 from ._tag_resources_response import TagResourcesResponse
+from ._trace_site_request import TraceSiteRequest
+from ._trace_site_shrink_request import TraceSiteShrinkRequest
+from ._trace_site_response_body import TraceSiteResponseBody
+from ._trace_site_response import TraceSiteResponse
 from ._untag_resources_request import UntagResourcesRequest
 from ._untag_resources_response_body import UntagResourcesResponseBody
 from ._untag_resources_response import UntagResourcesResponse
+from ._update_bot_spec_request import UpdateBotSpecRequest
+from ._update_bot_spec_response_body import UpdateBotSpecResponseBody
+from ._update_bot_spec_response import UpdateBotSpecResponse
 from ._update_cache_reserve_request import UpdateCacheReserveRequest
 from ._update_cache_reserve_response_body import UpdateCacheReserveResponseBody
 from ._update_cache_reserve_response import UpdateCacheReserveResponse
@@ -1293,6 +1312,9 @@ from ._update_custom_response_code_rule_response import UpdateCustomResponseCode
 from ._update_custom_scene_policy_request import UpdateCustomScenePolicyRequest
 from ._update_custom_scene_policy_response_body import UpdateCustomScenePolicyResponseBody
 from ._update_custom_scene_policy_response import UpdateCustomScenePolicyResponse
+from ._update_ddo_sspec_request import UpdateDDoSSpecRequest
+from ._update_ddo_sspec_response_body import UpdateDDoSSpecResponseBody
+from ._update_ddo_sspec_response import UpdateDDoSSpecResponse
 from ._update_development_mode_request import UpdateDevelopmentModeRequest
 from ._update_development_mode_response_body import UpdateDevelopmentModeResponseBody
 from ._update_development_mode_response import UpdateDevelopmentModeResponse
@@ -1720,6 +1742,9 @@ from ._get_waf_filter_response_body import GetWafFilterResponseBodyFilterFieldsL
 from ._get_waf_filter_response_body import GetWafFilterResponseBodyFilterFieldsLogics
 from ._get_waf_filter_response_body import GetWafFilterResponseBodyFilterFieldsSelectorData
 from ._get_waf_filter_response_body import GetWafFilterResponseBodyFilterFieldsSelector
+from ._get_waf_filter_response_body import GetWafFilterResponseBodyFilterFieldsSubsLogicsValidator
+from ._get_waf_filter_response_body import GetWafFilterResponseBodyFilterFieldsSubsLogics
+from ._get_waf_filter_response_body import GetWafFilterResponseBodyFilterFieldsSubs
 from ._get_waf_filter_response_body import GetWafFilterResponseBodyFilterFields
 from ._get_waf_filter_response_body import GetWafFilterResponseBodyFilter
 from ._get_waf_quota_response_body import GetWafQuotaResponseBodyQuotaCaptcha
@@ -1844,6 +1869,7 @@ from ._list_site_functions_response_body import ListSiteFunctionsResponseBodyCon
 from ._list_site_functions_response_body import ListSiteFunctionsResponseBodyConfigsImageTransform
 from ._list_site_functions_response_body import ListSiteFunctionsResponseBodyConfigsIpv6
 from ._list_site_functions_response_body import ListSiteFunctionsResponseBodyConfigsManagedTransforms
+from ._list_site_functions_response_body import ListSiteFunctionsResponseBodyConfigsMarkdownForAgent
 from ._list_site_functions_response_body import ListSiteFunctionsResponseBodyConfigsNetworkOptimization
 from ._list_site_functions_response_body import ListSiteFunctionsResponseBodyConfigsOriginRules
 from ._list_site_functions_response_body import ListSiteFunctionsResponseBodyConfigsRedirectRules
@@ -1895,6 +1921,13 @@ from ._modify_instance_features_request import ModifyInstanceFeaturesRequestSite
 from ._purge_caches_request import PurgeCachesRequestContentCacheKeys
 from ._purge_caches_request import PurgeCachesRequestContent
 from ._tag_resources_request import TagResourcesRequestTag
+from ._trace_site_request import TraceSiteRequestBody
+from ._trace_site_request import TraceSiteRequestContextGeoLocation
+from ._trace_site_request import TraceSiteRequestContext
+from ._trace_site_request import TraceSiteRequestCookies
+from ._trace_site_request import TraceSiteRequestHeaders
+from ._trace_site_response_body import TraceSiteResponseBodyTraceTrace
+from ._trace_site_response_body import TraceSiteResponseBodyTrace
 from ._update_edge_container_app_resource_reserve_request import UpdateEdgeContainerAppResourceReserveRequestReserveSet
 from ._update_edge_container_app_resource_reserve_response_body import UpdateEdgeContainerAppResourceReserveResponseBodyReserveSet
 from ._update_http_incoming_request_header_modification_rule_request import UpdateHttpIncomingRequestHeaderModificationRuleRequestRequestHeaderModification
@@ -1928,6 +1961,7 @@ __all__ = [
     FieldContentValue,
     QuotaListItemsValue,
     QuotaPageContentTypesValue,
+    EnvironmentVariablesValue,
     ActivateClientCertificateRequest,
     ActivateClientCertificateResponseBody,
     ActivateClientCertificateResponse,
@@ -2295,6 +2329,10 @@ __all__ = [
     DeleteRoutineCodeVersionRequest,
     DeleteRoutineCodeVersionResponseBody,
     DeleteRoutineCodeVersionResponse,
+    DeleteRoutineEnvironmentVariablesRequest,
+    DeleteRoutineEnvironmentVariablesShrinkRequest,
+    DeleteRoutineEnvironmentVariablesResponseBody,
+    DeleteRoutineEnvironmentVariablesResponse,
     DeleteRoutineRelatedRecordRequest,
     DeleteRoutineRelatedRecordResponseBody,
     DeleteRoutineRelatedRecordResponse,
@@ -2951,6 +2989,9 @@ __all__ = [
     ListRoutineCodeVersionsRequest,
     ListRoutineCodeVersionsResponseBody,
     ListRoutineCodeVersionsResponse,
+    ListRoutineEnvironmentVariablesRequest,
+    ListRoutineEnvironmentVariablesResponseBody,
+    ListRoutineEnvironmentVariablesResponse,
     ListRoutineRelatedRecordsRequest,
     ListRoutineRelatedRecordsResponseBody,
     ListRoutineRelatedRecordsResponse,
@@ -3151,6 +3192,10 @@ __all__ = [
     SetOriginClientCertificateHostnamesShrinkRequest,
     SetOriginClientCertificateHostnamesResponseBody,
     SetOriginClientCertificateHostnamesResponse,
+    SetRoutineEnvironmentVariablesRequest,
+    SetRoutineEnvironmentVariablesShrinkRequest,
+    SetRoutineEnvironmentVariablesResponseBody,
+    SetRoutineEnvironmentVariablesResponse,
     StartScheduledPreloadExecutionRequest,
     StartScheduledPreloadExecutionResponseBody,
     StartScheduledPreloadExecutionResponse,
@@ -3169,9 +3214,16 @@ __all__ = [
     TagResourcesRequest,
     TagResourcesResponseBody,
     TagResourcesResponse,
+    TraceSiteRequest,
+    TraceSiteShrinkRequest,
+    TraceSiteResponseBody,
+    TraceSiteResponse,
     UntagResourcesRequest,
     UntagResourcesResponseBody,
     UntagResourcesResponse,
+    UpdateBotSpecRequest,
+    UpdateBotSpecResponseBody,
+    UpdateBotSpecResponse,
     UpdateCacheReserveRequest,
     UpdateCacheReserveResponseBody,
     UpdateCacheReserveResponse,
@@ -3205,6 +3257,9 @@ __all__ = [
     UpdateCustomScenePolicyRequest,
     UpdateCustomScenePolicyResponseBody,
     UpdateCustomScenePolicyResponse,
+    UpdateDDoSSpecRequest,
+    UpdateDDoSSpecResponseBody,
+    UpdateDDoSSpecResponse,
     UpdateDevelopmentModeRequest,
     UpdateDevelopmentModeResponseBody,
     UpdateDevelopmentModeResponse,
@@ -3632,6 +3687,9 @@ __all__ = [
     GetWafFilterResponseBodyFilterFieldsLogics,
     GetWafFilterResponseBodyFilterFieldsSelectorData,
     GetWafFilterResponseBodyFilterFieldsSelector,
+    GetWafFilterResponseBodyFilterFieldsSubsLogicsValidator,
+    GetWafFilterResponseBodyFilterFieldsSubsLogics,
+    GetWafFilterResponseBodyFilterFieldsSubs,
     GetWafFilterResponseBodyFilterFields,
     GetWafFilterResponseBodyFilter,
     GetWafQuotaResponseBodyQuotaCaptcha,
@@ -3756,6 +3814,7 @@ __all__ = [
     ListSiteFunctionsResponseBodyConfigsImageTransform,
     ListSiteFunctionsResponseBodyConfigsIpv6,
     ListSiteFunctionsResponseBodyConfigsManagedTransforms,
+    ListSiteFunctionsResponseBodyConfigsMarkdownForAgent,
     ListSiteFunctionsResponseBodyConfigsNetworkOptimization,
     ListSiteFunctionsResponseBodyConfigsOriginRules,
     ListSiteFunctionsResponseBodyConfigsRedirectRules,
@@ -3807,6 +3866,13 @@ __all__ = [
     PurgeCachesRequestContentCacheKeys,
     PurgeCachesRequestContent,
     TagResourcesRequestTag,
+    TraceSiteRequestBody,
+    TraceSiteRequestContextGeoLocation,
+    TraceSiteRequestContext,
+    TraceSiteRequestCookies,
+    TraceSiteRequestHeaders,
+    TraceSiteResponseBodyTraceTrace,
+    TraceSiteResponseBodyTrace,
     UpdateEdgeContainerAppResourceReserveRequestReserveSet,
     UpdateEdgeContainerAppResourceReserveResponseBodyReserveSet,
     UpdateHttpIncomingRequestHeaderModificationRuleRequestRequestHeaderModification,

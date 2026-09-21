@@ -19,13 +19,13 @@ class GetCertificateQuotaResponseBody(DaraModel):
     ):
         # The free certificate quota.
         self.quota = quota
-        # The number of used free certificates.
+        # The free certificate quota usage.
         self.quota_usage = quota_usage
         # The request ID.
         self.request_id = request_id
-        # The site count.
+        # The number of sites.
         self.site_count = site_count
-        # Details about the certificate usage for each site.
+        # The list of site usage details.
         self.site_usage = site_usage
         # The certificate quota type.
         self.type = type
@@ -99,7 +99,7 @@ class GetCertificateQuotaResponseBodySiteUsage(DaraModel):
         self.site_id = site_id
         # The site name.
         self.site_name = site_name
-        # The number of certificates used by the site.
+        # The site usage.
         self.site_usage = site_usage
 
     def validate(self):

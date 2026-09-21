@@ -12,14 +12,14 @@ class CheckSiteProjectNameResponseBody(DaraModel):
         project_name: str = None,
         request_id: str = None,
     ):
-        # Indicates whether the task name is valid. Valid values:
+        # Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Can be added.
+        # - **false**: Cannot be added.
         self.check = check
         # The result description.
         self.description = description
-        # The name of the real-time log delivery task.
+        # The real-time log project name.
         self.project_name = project_name
         # The request ID.
         self.request_id = request_id

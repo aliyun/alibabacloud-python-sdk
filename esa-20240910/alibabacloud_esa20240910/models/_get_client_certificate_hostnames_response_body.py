@@ -15,7 +15,7 @@ class GetClientCertificateHostnamesResponseBody(DaraModel):
         site_id: int = None,
         site_name: str = None,
     ):
-        # The list of bound hostnames.
+        # The list of bound domain names.
         self.hostnames = hostnames
         # The client CA certificate ID.
         self.id = id

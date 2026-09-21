@@ -17,12 +17,13 @@ class WafRuleMatch(DaraModel):
         match_type: str = None,
         match_value: Any = None,
         negate: bool = None,
+        parent: str = None,
     ):
-        # Specifies whether the value is case-insensitive.
+        # The case-insensitive value setting.
         self.convert_to_lower = convert_to_lower
         # The logic list.
         self.criteria = criteria
-        # The logic relationship.
+        # The logical relationship.
         self.logic = logic
         # The match operator.
         self.match_operator = match_operator
@@ -30,8 +31,10 @@ class WafRuleMatch(DaraModel):
         self.match_type = match_type
         # The match value.
         self.match_value = match_value
-        # Specifies whether to negate the match result.
+        # The negation of the match result.
         self.negate = negate
+        # The primary row key of the parent group. This is used for two-level drop-down positioning of enumeration subkey fields. For example, the Parent of ali.websdk.umid is ali.websdk.
+        self.parent = parent
 
     def validate(self):
         if self.criteria:
@@ -67,6 +70,9 @@ class WafRuleMatch(DaraModel):
         if self.negate is not None:
             result['Negate'] = self.negate
 
+        if self.parent is not None:
+            result['Parent'] = self.parent
+
         return result
 
     def from_map(self, m: dict = None):
@@ -94,6 +100,9 @@ class WafRuleMatch(DaraModel):
 
         if m.get('Negate') is not None:
             self.negate = m.get('Negate')
+
+        if m.get('Parent') is not None:
+            self.parent = m.get('Parent')
 
         return self
 

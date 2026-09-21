@@ -61,7 +61,7 @@ class DescribeSiteLogsResponseBodySiteLogDetails(DaraModel):
         site_id: int = None,
         site_name: str = None,
     ):
-        # The total number of entries returned on the current page.
+        # The total number of entries returned on this page.
         self.log_count = log_count
         # The site log package information.
         self.log_infos = log_infos
@@ -183,17 +183,21 @@ class DescribeSiteLogsResponseBodySiteLogDetailsLogInfos(DaraModel):
         start_time: str = None,
     ):
         # The end time.
+        # 
+        # > Date format example: yyyy-MM-ddTHH:mm:ssZ
         self.end_time = end_time
         # The log name.
         self.log_name = log_name
         # The log path.
         # 
         # 
-        # > Pay attention to the Expires field (expiration timestamp) in the LogPath response parameter. After the expiration time, the log download link becomes invalid and must be obtained again.
+        # > Note the Expires field (expiration timestamp) in the LogPath response parameter. After the expiration time, the log download link becomes invalid and must be obtained again.
         self.log_path = log_path
         # The log size, in bytes.
         self.log_size = log_size
         # The start time.
+        # 
+        # > Date format example: yyyy-MM-ddTHH:mm:ssZ
         self.start_time = start_time
 
     def validate(self):

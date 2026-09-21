@@ -13,7 +13,7 @@ class CreateUserDeliveryTaskResponseBody(DaraModel):
         task_name: str = None,
     ):
         # The data center. Valid values:
-        # - **cn**: Chinese mainland.
+        # - **cn**: the Chinese mainland.
         # - **sg**: global (excluding the Chinese mainland).
         self.data_center = data_center
         # The request ID.

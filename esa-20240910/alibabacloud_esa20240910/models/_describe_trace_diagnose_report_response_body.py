@@ -43,7 +43,7 @@ class DescribeTraceDiagnoseReportResponseBody(DaraModel):
         self.diagnose_url = diagnose_url
         # The diagnosed domain name.
         self.domain = domain
-        # The expiration time. Unit: seconds. The value is a UNIX timestamp.
+        # The expiration time. The value is a UNIX timestamp. Unit: seconds.
         self.expire_time = expire_time
         # The remaining number of available diagnostic attempts.
         self.remain_diagnose_times = remain_diagnose_times
@@ -51,7 +51,7 @@ class DescribeTraceDiagnoseReportResponseBody(DaraModel):
         self.report = report
         # Id of the request
         self.request_id = request_id
-        # The report generation status. Valid values:
+        # The report generation status.
         # 
         # 0: succeeded.
         # 1: failed.
@@ -59,7 +59,7 @@ class DescribeTraceDiagnoseReportResponseBody(DaraModel):
         # 3: running.
         # 4: waiting.
         self.state = state
-        # The status of the diagnostic link. Valid values:
+        # The status of the diagnostic link.
         # 
         # 1: active.
         # 0: expired.

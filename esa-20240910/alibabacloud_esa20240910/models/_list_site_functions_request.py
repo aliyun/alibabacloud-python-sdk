@@ -19,10 +19,6 @@ class ListSiteFunctionsRequest(DaraModel):
         # The configuration ID.
         self.config_id = config_id
         # The configuration type. You can use this parameter to query global configurations or rule configurations. Valid values:
-        # - global: queries global configurations.
-        # - rule: queries rule configurations.
-        # 
-        # This parameter is optional. If not specified, both global and rule configurations are returned. This parameter takes effect only when the FunctionName parameter is specified.
         self.config_type = config_type
         # The function name of the feature.
         self.function_name = function_name
@@ -30,7 +26,7 @@ class ListSiteFunctionsRequest(DaraModel):
         self.page_number = page_number
         # The number of entries per page. Maximum value: 500. Default value: 500.
         self.page_size = page_size
-        # The rule name. Returns the rule that matches the specified name. This parameter takes effect only when the FunctionName parameter is specified.
+        # The rule name. Filters the rule that matches the specified name. This parameter takes effect only when FunctionName is specified.
         self.rule_name = rule_name
         # The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
         # 

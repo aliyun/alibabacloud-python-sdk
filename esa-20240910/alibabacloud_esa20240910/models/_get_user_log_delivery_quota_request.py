@@ -9,12 +9,13 @@ class GetUserLogDeliveryQuotaRequest(DaraModel):
         self,
         business_type: str = None,
     ):
-        # The log category. Valid values:
+        # The log type of real-time Mitigation Logs. Valid values:
         # 
-        # *   dcdn_log_access_l1 (default): access logs.
-        # *   dcdn_log_er: Edge Routine logs.
-        # *   dcdn_log_waf: firewall logs.
-        # *   dcdn_log_ipa: TCP/UDP proxy logs.
+        # - **dcdn_log_access_l1 (default)**: access logs.
+        # - **dcdn_log_er**: Edge Routine logs.
+        # - **dcdn_log_waf**: security protection logs.
+        # - **dcdn_log_ipa**: Layer 4 acceleration logs.
+        # - **dcdn_log_er_pod**: edge container logs.
         # 
         # This parameter is required.
         self.business_type = business_type

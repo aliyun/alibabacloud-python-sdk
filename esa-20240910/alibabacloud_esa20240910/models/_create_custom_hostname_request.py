@@ -21,7 +21,7 @@ class CreateCustomHostnameRequest(DaraModel):
         self.cas_id = cas_id
         # The region of the SSL Certificates Service certificate. This parameter is required when CertType is set to cas.
         # - For Chinese site accounts, set this parameter to cn-hangzhou.
-        # - For International site accounts, set this parameter to ap-southeast-1.
+        # - For international site accounts, set this parameter to ap-southeast-1.
         self.cas_region = cas_region
         # The certificate type. This parameter is required when SslFlag is set to on. Valid values:
         # - **free**: free certificate.
@@ -34,13 +34,13 @@ class CreateCustomHostnameRequest(DaraModel):
         # 
         # This parameter is required.
         self.hostname = hostname
-        # The certificate private key. This parameter is required when CertType is set to upload.
+        # The private key of the certificate. This parameter is required when CertType is set to upload.
         self.private_key = private_key
-        # The ID of the record to bind. You can call the [ListRecords](https://help.aliyun.com/document_detail/2850265.html) operation to obtain the record ID.
+        # The ID of the record to bind. You can obtain this value by calling the [ListRecords](https://help.aliyun.com/document_detail/2850265.html) operation.
         # 
         # This parameter is required.
         self.record_id = record_id
-        # The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
+        # The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         # 
         # This parameter is required.
         self.site_id = site_id

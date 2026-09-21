@@ -131,7 +131,7 @@ class ListCertificatesResponseBodyResult(DaraModel):
         self.cas_id = cas_id
         # The common name of the certificate.
         self.common_name = common_name
-        # The creation time. Format: YYYY-MM-DD HH:MM:SS, in UTC/GMT time zone.
+        # The creation time. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
         self.create_time = create_time
         # The Domain Control Validation (DCV) information.
         self.dcv = dcv
@@ -147,9 +147,9 @@ class ListCertificatesResponseBodyResult(DaraModel):
         self.key_server_id = key_server_id
         # The certificate name.
         self.name = name
-        # The end time of the certificate validity period. Format: YYYY-MM-DD HH:MM:SS, in UTC/GMT time zone.
+        # The end time of the certificate validity period. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
         self.not_after = not_after
-        # The start time of the certificate validity period. Format: YYYY-MM-DD HH:MM:SS, in UTC/GMT time zone.
+        # The start time of the certificate validity period. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
         self.not_before = not_before
         # The public key algorithm of the certificate.
         self.pub_alg = pub_alg
@@ -165,18 +165,18 @@ class ListCertificatesResponseBodyResult(DaraModel):
         # - OK: Normal.
         # - Expired: The certificate has expired.
         # - Expiring: The certificate is about to expire (within 30 days).
-        # - Issued: Free certificate - issued.
-        # - Applying: Free certificate - applying.
-        # - ApplyFailed: Free certificate - application failed.
-        # - Canceled: Free certificate - canceled.
+        # - Issued: Free certificate - Issued.
+        # - Applying: Free certificate - Applying.
+        # - ApplyFailed: Free certificate - Application failed.
+        # - Canceled: Free certificate - Canceled.
         self.status = status
         # The certificate type. Valid values:
-        # - cas: SSL Certificates Service certificate.
+        # - cas: Alibaba Cloud SSL certificate.
         # - upload: Custom uploaded certificate.
         # - free: Free certificate.
         # - keyless: Keyless certificate.
         self.type = type
-        # The update time. Format: YYYY-MM-DD HH:MM:SS, in UTC/GMT time zone.
+        # The update time. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
         self.update_time = update_time
 
     def validate(self):
@@ -348,7 +348,7 @@ class ListCertificatesResponseBodyResultDCV(DaraModel):
         self.key = key
         # The validation status.
         self.status = status
-        # The DCV type. Valid values: DNS and HTTP.
+        # The DCV type. Valid values: DNS, HTTP.
         self.type = type
         # The DCV content.
         self.value = value

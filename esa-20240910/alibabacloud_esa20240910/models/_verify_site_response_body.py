@@ -12,8 +12,8 @@ class VerifySiteResponseBody(DaraModel):
     ):
         # Indicates whether the verification passed. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The verification passed.
+        # - **false**: The verification failed.
         self.passed = passed
         # The request ID.
         self.request_id = request_id

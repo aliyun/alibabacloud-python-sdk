@@ -10,7 +10,7 @@ class GetReleaseTimeResponseBody(DaraModel):
         release_time: str = None,
         request_id: str = None,
     ):
-        # The scheduled release time.
+        # The scheduled release time. Format: yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\".
         self.release_time = release_time
         # The request ID.
         self.request_id = request_id

@@ -12,17 +12,17 @@ class UploadOriginClientCertificateRequest(DaraModel):
         private_key: str = None,
         site_id: int = None,
     ):
-        # The content of the certificate in PEM format.
+        # The certificate content.
         # 
         # This parameter is required.
         self.certificate = certificate
         # The certificate name.
         self.name = name
-        # The private key for the certificate in PEM format.
+        # The certificate private key.
         # 
         # This parameter is required.
         self.private_key = private_key
-        # The site ID. To get this ID, call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+        # The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         # 
         # This parameter is required.
         self.site_id = site_id

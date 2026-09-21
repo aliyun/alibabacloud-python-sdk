@@ -22,7 +22,7 @@ class ListTraceTasksResponseBody(DaraModel):
         self.list = list
         # The page number, starting from 1.
         self.page_number = page_number
-        # The page size. Valid values: any integer from 1 to 1000.
+        # The number of entries per page. Valid values: any integer from 1 to 1000.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -107,9 +107,9 @@ class ListTraceTasksResponseBodyList(DaraModel):
         self.create_time = create_time
         # The diagnose ID.
         self.diagnose_id = diagnose_id
-        # The diagnostic URL.
+        # The diagnose URL.
         self.diagnose_url = diagnose_url
-        # The domain name to diagnose.
+        # The domain name to be diagnosed.
         self.domain = domain
         # The expiration time. The value is a UNIX timestamp. Unit: seconds.
         self.expire_time = expire_time
@@ -123,16 +123,16 @@ class ListTraceTasksResponseBodyList(DaraModel):
         # - 3: Running.
         # - 4: Waiting.
         self.state = state
-        # The status of the diagnostic URL. Valid values:
+        # The status of the diagnose URL. Valid values:
         # 
-        # - 1: active
-        # - 0: expired.
+        # - 1: Active.
+        # - 0: Expired.
         self.status = status
         # The task ID.
         self.task_id = task_id
         # The time consumed to generate the report.
         self.time_consuming = time_consuming
-        # The diagnostic trace ID.
+        # The trace ID of the diagnostic task.
         self.trace_id = trace_id
 
     def validate(self):

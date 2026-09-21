@@ -16,21 +16,22 @@ class UpdateUserDeliveryTaskRequest(DaraModel):
     ):
         # The real-time log type. Valid values:
         # 
-        # - **dcdn_log_access_l1 (default)**: access log.
-        # 
-        # - **dcdn_log_er**: edge function log.
-        # 
-        # - **dcdn_log_waf**: WAF log.
-        # 
-        # - **dcdn_log_ipa**: layer 4 acceleration log.
+        # - **dcdn_log_access_l1 (default)**: access logs.
+        # - **dcdn_log_er**: Edge Routine function logs.
+        # - **dcdn_log_waf**: security protection logs.
+        # - **dcdn_log_ipa**: Layer 4 acceleration logs.
         self.business_type = business_type
+        # The list of ER PODs to configure.
         self.details = details
-        # The default value is 0.
+        # The discard rate. If not specified, the default value is 0.
         self.discard_rate = discard_rate
-        # The selected fields. Separate multiple fields with a comma.
+        # The selected fields, separated by commas (,).
         # 
         # This parameter is required.
         self.field_name = field_name
+        # The version of the filter rule.
+        # 
+        # > Compatible with legacy filter rules. The default value is v1. Newly created tasks use v2.
         self.filter_ver = filter_ver
         # The task name.
         # 

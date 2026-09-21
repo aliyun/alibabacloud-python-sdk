@@ -10,7 +10,7 @@ class GetCertificateQuotaRequest(DaraModel):
         site_id: int = None,
         type: str = None,
     ):
-        # The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain this ID.
+        # The site ID. You can call the [ListSites](~~ListSites~~) operation to query the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id

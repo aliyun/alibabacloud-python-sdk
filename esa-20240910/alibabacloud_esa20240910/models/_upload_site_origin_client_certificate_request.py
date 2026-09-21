@@ -22,7 +22,7 @@ class UploadSiteOriginClientCertificateRequest(DaraModel):
         # 
         # This parameter is required.
         self.private_key = private_key
-        # Site ID.
+        # The site ID.
         # 
         # This parameter is required.
         self.site_id = site_id

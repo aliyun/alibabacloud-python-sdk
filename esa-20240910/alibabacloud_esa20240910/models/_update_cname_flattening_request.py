@@ -10,14 +10,13 @@ class UpdateCnameFlatteningRequest(DaraModel):
         flatten_mode: str = None,
         site_id: int = None,
     ):
-        # The CNAME flattening mode. Valid values:
-        # 
-        # *   flatten_all: flattens all CNAMEs.
-        # *   flatten_at_root: flattens only the root domain. Default: flatten_at_root
+        # The flattening mode. Valid values:
+        # - flatten_all: flattens all records.
+        # - flatten_at_root: flattens only the root domain. This is the default value.
         # 
         # This parameter is required.
         self.flatten_mode = flatten_mode
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id

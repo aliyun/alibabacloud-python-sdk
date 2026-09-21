@@ -17,31 +17,31 @@ class SetKeylessServerRequest(DaraModel):
         site_id: int = None,
         verify: bool = None,
     ):
-        # The CA certificate used to verify the server certificate of the keyless server. This parameter applies only when `Verify` is set to `true`.
+        # The CA certificate used to verify the server certificate of the Keyless server. This parameter takes effect only when Verify is set to true.
         self.ca_certificate = ca_certificate
-        # The client certificate. This parameter must be used with the `ClientPrivateKey` parameter.
+        # The client certificate. This parameter must be specified together with the client private key.
         self.client_certificate = client_certificate
-        # The client private key. This parameter must be used with the `ClientCertificate` parameter.
+        # The client private key. This parameter must be specified together with the client certificate.
         self.client_private_key = client_private_key
-        # The hostname of the keyless server. The value can be a domain name or an IP address.
+        # The hostname of the Keyless server. The value can be a domain name or an IP address.
         # 
         # This parameter is required.
         self.host = host
-        # The keyless server ID.
+        # Keyless server ID。
         self.id = id
-        # The keyless server name.
+        # The name of the Keyless server.
         # 
         # This parameter is required.
         self.name = name
-        # The keyless server port.
+        # The port of the Keyless server.
         # 
         # This parameter is required.
         self.port = port
-        # The site ID. You can obtain this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # Specifies whether to verify the server certificate of the keyless server. Default: false.
+        # Specifies whether to verify the server certificate of the Keyless server. Default value: false.
         self.verify = verify
 
     def validate(self):

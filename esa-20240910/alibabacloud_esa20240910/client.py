@@ -30,10 +30,6 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'cn-hangzhou': 'esa.cn-hangzhou.aliyuncs.com',
-            'ap-southeast-1': 'esa.ap-southeast-1.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('esa', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -446,6 +442,8 @@ class Client(OpenApiClient):
     ) -> main_models.ApplyCertificateResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.alg_type):
+            query['AlgType'] = request.alg_type
         if not DaraCore.is_null(request.domains):
             query['Domains'] = request.domains
         if not DaraCore.is_null(request.site_id):
@@ -478,6 +476,8 @@ class Client(OpenApiClient):
     ) -> main_models.ApplyCertificateResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.alg_type):
+            query['AlgType'] = request.alg_type
         if not DaraCore.is_null(request.domains):
             query['Domains'] = request.domains
         if not DaraCore.is_null(request.site_id):
@@ -10466,6 +10466,92 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteRoutineCodeVersionResponse:
         runtime = RuntimeOptions()
         return await self.delete_routine_code_version_with_options_async(request, runtime)
+
+    def delete_routine_environment_variables_with_options(
+        self,
+        tmp_req: main_models.DeleteRoutineEnvironmentVariablesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteRoutineEnvironmentVariablesResponse:
+        tmp_req.validate()
+        request = main_models.DeleteRoutineEnvironmentVariablesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.environment_variable_keys):
+            request.environment_variable_keys_shrink = Utils.array_to_string_with_specified_style(tmp_req.environment_variable_keys, 'EnvironmentVariableKeys', 'json')
+        body = {}
+        if not DaraCore.is_null(request.env):
+            body['Env'] = request.env
+        if not DaraCore.is_null(request.environment_variable_keys_shrink):
+            body['EnvironmentVariableKeys'] = request.environment_variable_keys_shrink
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteRoutineEnvironmentVariables',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteRoutineEnvironmentVariablesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_routine_environment_variables_with_options_async(
+        self,
+        tmp_req: main_models.DeleteRoutineEnvironmentVariablesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteRoutineEnvironmentVariablesResponse:
+        tmp_req.validate()
+        request = main_models.DeleteRoutineEnvironmentVariablesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.environment_variable_keys):
+            request.environment_variable_keys_shrink = Utils.array_to_string_with_specified_style(tmp_req.environment_variable_keys, 'EnvironmentVariableKeys', 'json')
+        body = {}
+        if not DaraCore.is_null(request.env):
+            body['Env'] = request.env
+        if not DaraCore.is_null(request.environment_variable_keys_shrink):
+            body['EnvironmentVariableKeys'] = request.environment_variable_keys_shrink
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteRoutineEnvironmentVariables',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteRoutineEnvironmentVariablesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_routine_environment_variables(
+        self,
+        request: main_models.DeleteRoutineEnvironmentVariablesRequest,
+    ) -> main_models.DeleteRoutineEnvironmentVariablesResponse:
+        runtime = RuntimeOptions()
+        return self.delete_routine_environment_variables_with_options(request, runtime)
+
+    async def delete_routine_environment_variables_async(
+        self,
+        request: main_models.DeleteRoutineEnvironmentVariablesRequest,
+    ) -> main_models.DeleteRoutineEnvironmentVariablesResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_routine_environment_variables_with_options_async(request, runtime)
 
     def delete_routine_related_record_with_options(
         self,
@@ -22370,6 +22456,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.site_id):
             query['SiteId'] = request.site_id
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
         if not DaraCore.is_null(request.valid_only):
             query['ValidOnly'] = request.valid_only
         req = open_api_util_models.OpenApiRequest(
@@ -22406,6 +22494,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.site_id):
             query['SiteId'] = request.site_id
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
         if not DaraCore.is_null(request.valid_only):
             query['ValidOnly'] = request.valid_only
         req = open_api_util_models.OpenApiRequest(
@@ -25946,6 +26036,92 @@ class Client(OpenApiClient):
     ) -> main_models.ListRoutineCodeVersionsResponse:
         runtime = RuntimeOptions()
         return await self.list_routine_code_versions_with_options_async(request, runtime)
+
+    def list_routine_environment_variables_with_options(
+        self,
+        request: main_models.ListRoutineEnvironmentVariablesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListRoutineEnvironmentVariablesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.env):
+            body['Env'] = request.env
+        if not DaraCore.is_null(request.key_word):
+            body['KeyWord'] = request.key_word
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListRoutineEnvironmentVariables',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListRoutineEnvironmentVariablesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_routine_environment_variables_with_options_async(
+        self,
+        request: main_models.ListRoutineEnvironmentVariablesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListRoutineEnvironmentVariablesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.env):
+            body['Env'] = request.env
+        if not DaraCore.is_null(request.key_word):
+            body['KeyWord'] = request.key_word
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListRoutineEnvironmentVariables',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListRoutineEnvironmentVariablesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_routine_environment_variables(
+        self,
+        request: main_models.ListRoutineEnvironmentVariablesRequest,
+    ) -> main_models.ListRoutineEnvironmentVariablesResponse:
+        runtime = RuntimeOptions()
+        return self.list_routine_environment_variables_with_options(request, runtime)
+
+    async def list_routine_environment_variables_async(
+        self,
+        request: main_models.ListRoutineEnvironmentVariablesRequest,
+    ) -> main_models.ListRoutineEnvironmentVariablesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_routine_environment_variables_with_options_async(request, runtime)
 
     def list_routine_related_records_with_options(
         self,
@@ -31133,6 +31309,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.set_origin_client_certificate_hostnames_with_options_async(request, runtime)
 
+    def set_routine_environment_variables_with_options(
+        self,
+        tmp_req: main_models.SetRoutineEnvironmentVariablesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetRoutineEnvironmentVariablesResponse:
+        tmp_req.validate()
+        request = main_models.SetRoutineEnvironmentVariablesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.environment_variables):
+            request.environment_variables_shrink = Utils.array_to_string_with_specified_style(tmp_req.environment_variables, 'EnvironmentVariables', 'json')
+        body = {}
+        if not DaraCore.is_null(request.env):
+            body['Env'] = request.env
+        if not DaraCore.is_null(request.environment_variables_shrink):
+            body['EnvironmentVariables'] = request.environment_variables_shrink
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetRoutineEnvironmentVariables',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetRoutineEnvironmentVariablesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_routine_environment_variables_with_options_async(
+        self,
+        tmp_req: main_models.SetRoutineEnvironmentVariablesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetRoutineEnvironmentVariablesResponse:
+        tmp_req.validate()
+        request = main_models.SetRoutineEnvironmentVariablesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.environment_variables):
+            request.environment_variables_shrink = Utils.array_to_string_with_specified_style(tmp_req.environment_variables, 'EnvironmentVariables', 'json')
+        body = {}
+        if not DaraCore.is_null(request.env):
+            body['Env'] = request.env
+        if not DaraCore.is_null(request.environment_variables_shrink):
+            body['EnvironmentVariables'] = request.environment_variables_shrink
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetRoutineEnvironmentVariables',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetRoutineEnvironmentVariablesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_routine_environment_variables(
+        self,
+        request: main_models.SetRoutineEnvironmentVariablesRequest,
+    ) -> main_models.SetRoutineEnvironmentVariablesResponse:
+        runtime = RuntimeOptions()
+        return self.set_routine_environment_variables_with_options(request, runtime)
+
+    async def set_routine_environment_variables_async(
+        self,
+        request: main_models.SetRoutineEnvironmentVariablesRequest,
+    ) -> main_models.SetRoutineEnvironmentVariablesResponse:
+        runtime = RuntimeOptions()
+        return await self.set_routine_environment_variables_with_options_async(request, runtime)
+
     def start_scheduled_preload_execution_with_options(
         self,
         request: main_models.StartScheduledPreloadExecutionRequest,
@@ -31569,6 +31831,120 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
 
+    def trace_site_with_options(
+        self,
+        tmp_req: main_models.TraceSiteRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TraceSiteResponse:
+        tmp_req.validate()
+        request = main_models.TraceSiteShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'Body', 'json')
+        if not DaraCore.is_null(tmp_req.context):
+            request.context_shrink = Utils.array_to_string_with_specified_style(tmp_req.context, 'Context', 'json')
+        if not DaraCore.is_null(tmp_req.cookies):
+            request.cookies_shrink = Utils.array_to_string_with_specified_style(tmp_req.cookies, 'Cookies', 'json')
+        if not DaraCore.is_null(tmp_req.headers):
+            request.headers_shrink = Utils.array_to_string_with_specified_style(tmp_req.headers, 'Headers', 'json')
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['Body'] = request.body_shrink
+        if not DaraCore.is_null(request.context_shrink):
+            body['Context'] = request.context_shrink
+        if not DaraCore.is_null(request.cookies_shrink):
+            body['Cookies'] = request.cookies_shrink
+        if not DaraCore.is_null(request.headers_shrink):
+            body['Headers'] = request.headers_shrink
+        if not DaraCore.is_null(request.method):
+            body['Method'] = request.method
+        if not DaraCore.is_null(request.protocol):
+            body['Protocol'] = request.protocol
+        if not DaraCore.is_null(request.url):
+            body['Url'] = request.url
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TraceSite',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TraceSiteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def trace_site_with_options_async(
+        self,
+        tmp_req: main_models.TraceSiteRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TraceSiteResponse:
+        tmp_req.validate()
+        request = main_models.TraceSiteShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'Body', 'json')
+        if not DaraCore.is_null(tmp_req.context):
+            request.context_shrink = Utils.array_to_string_with_specified_style(tmp_req.context, 'Context', 'json')
+        if not DaraCore.is_null(tmp_req.cookies):
+            request.cookies_shrink = Utils.array_to_string_with_specified_style(tmp_req.cookies, 'Cookies', 'json')
+        if not DaraCore.is_null(tmp_req.headers):
+            request.headers_shrink = Utils.array_to_string_with_specified_style(tmp_req.headers, 'Headers', 'json')
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['Body'] = request.body_shrink
+        if not DaraCore.is_null(request.context_shrink):
+            body['Context'] = request.context_shrink
+        if not DaraCore.is_null(request.cookies_shrink):
+            body['Cookies'] = request.cookies_shrink
+        if not DaraCore.is_null(request.headers_shrink):
+            body['Headers'] = request.headers_shrink
+        if not DaraCore.is_null(request.method):
+            body['Method'] = request.method
+        if not DaraCore.is_null(request.protocol):
+            body['Protocol'] = request.protocol
+        if not DaraCore.is_null(request.url):
+            body['Url'] = request.url
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TraceSite',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TraceSiteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def trace_site(
+        self,
+        request: main_models.TraceSiteRequest,
+    ) -> main_models.TraceSiteResponse:
+        runtime = RuntimeOptions()
+        return self.trace_site_with_options(request, runtime)
+
+    async def trace_site_async(
+        self,
+        request: main_models.TraceSiteRequest,
+    ) -> main_models.TraceSiteResponse:
+        runtime = RuntimeOptions()
+        return await self.trace_site_with_options_async(request, runtime)
+
     def untag_resources_with_options(
         self,
         request: main_models.UntagResourcesRequest,
@@ -31658,6 +32034,80 @@ class Client(OpenApiClient):
     ) -> main_models.UntagResourcesResponse:
         runtime = RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
+
+    def update_bot_spec_with_options(
+        self,
+        request: main_models.UpdateBotSpecRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateBotSpecResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bot_instance_level):
+            query['BotInstanceLevel'] = request.bot_instance_level
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateBotSpec',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateBotSpecResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_bot_spec_with_options_async(
+        self,
+        request: main_models.UpdateBotSpecRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateBotSpecResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bot_instance_level):
+            query['BotInstanceLevel'] = request.bot_instance_level
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateBotSpec',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateBotSpecResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_bot_spec(
+        self,
+        request: main_models.UpdateBotSpecRequest,
+    ) -> main_models.UpdateBotSpecResponse:
+        runtime = RuntimeOptions()
+        return self.update_bot_spec_with_options(request, runtime)
+
+    async def update_bot_spec_async(
+        self,
+        request: main_models.UpdateBotSpecRequest,
+    ) -> main_models.UpdateBotSpecResponse:
+        runtime = RuntimeOptions()
+        return await self.update_bot_spec_with_options_async(request, runtime)
 
     def update_cache_reserve_with_options(
         self,
@@ -32700,6 +33150,88 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateCustomScenePolicyResponse:
         runtime = RuntimeOptions()
         return await self.update_custom_scene_policy_with_options_async(request, runtime)
+
+    def update_ddo_sspec_with_options(
+        self,
+        request: main_models.UpdateDDoSSpecRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDDoSSpecResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.ddo_sbilling_mode):
+            query['DDoSBillingMode'] = request.ddo_sbilling_mode
+        if not DaraCore.is_null(request.ddo_sburstable_domestic_protection):
+            query['DDoSBurstableDomesticProtection'] = request.ddo_sburstable_domestic_protection
+        if not DaraCore.is_null(request.ddo_sburstable_overseas_protection):
+            query['DDoSBurstableOverseasProtection'] = request.ddo_sburstable_overseas_protection
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDDoSSpec',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDDoSSpecResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_ddo_sspec_with_options_async(
+        self,
+        request: main_models.UpdateDDoSSpecRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDDoSSpecResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.ddo_sbilling_mode):
+            query['DDoSBillingMode'] = request.ddo_sbilling_mode
+        if not DaraCore.is_null(request.ddo_sburstable_domestic_protection):
+            query['DDoSBurstableDomesticProtection'] = request.ddo_sburstable_domestic_protection
+        if not DaraCore.is_null(request.ddo_sburstable_overseas_protection):
+            query['DDoSBurstableOverseasProtection'] = request.ddo_sburstable_overseas_protection
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDDoSSpec',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDDoSSpecResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_ddo_sspec(
+        self,
+        request: main_models.UpdateDDoSSpecRequest,
+    ) -> main_models.UpdateDDoSSpecResponse:
+        runtime = RuntimeOptions()
+        return self.update_ddo_sspec_with_options(request, runtime)
+
+    async def update_ddo_sspec_async(
+        self,
+        request: main_models.UpdateDDoSSpecRequest,
+    ) -> main_models.UpdateDDoSSpecResponse:
+        runtime = RuntimeOptions()
+        return await self.update_ddo_sspec_with_options_async(request, runtime)
 
     def update_development_mode_with_options(
         self,

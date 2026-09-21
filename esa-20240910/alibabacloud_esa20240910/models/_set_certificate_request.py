@@ -22,7 +22,7 @@ class SetCertificateRequest(DaraModel):
         self.cas_id = cas_id
         # The certificate content. This parameter is required when Type is set to upload.
         self.certificate = certificate
-        # The certificate ID. Certificates of the free type (created by calling the ApplyCertificate operation) are not supported. Certificates of the cas and upload types are supported.
+        # The certificate ID. Free certificates created by calling the ApplyCertificate operation are not supported. Certificate IDs of the cas and upload types are supported.
         self.id = id
         # The keyless server ID. This parameter takes effect only when Type is set to keyless.
         self.key_server_id = key_server_id
@@ -32,9 +32,9 @@ class SetCertificateRequest(DaraModel):
         self.private_key = private_key
         # The region. This parameter is required when Type is set to cas. Valid values:
         # 
-        # - China site accounts: cn-hangzhou.
+        # - Alibaba Cloud China Website accounts: cn-hangzhou.
         # 
-        # - International site accounts: ap-southeast-1.
+        # - Alibaba Cloud International Website accounts: ap-southeast-1.
         self.region = region
         self.security_token = security_token
         # The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
@@ -43,11 +43,11 @@ class SetCertificateRequest(DaraModel):
         self.site_id = site_id
         # The certificate type. Valid values:
         # 
-        # - **cas**: certificate from SSL Certificates Service.
+        # - **cas**: a certificate from SSL Certificates Service.
         # 
-        # - **upload**: custom uploaded certificate.
+        # - **upload**: a custom uploaded certificate.
         # 
-        # - **keyless**: keyless certificate.
+        # - **keyless**: a keyless certificate.
         # 
         # This parameter is required.
         self.type = type

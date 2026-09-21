@@ -20,7 +20,7 @@ class DescribeSiteWafTopDataResponseBody(DaraModel):
         self.data = data
         # The end of the time range for the returned data.
         # 
-        # The time is in ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC+0.
+        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC+0.
         self.end_time = end_time
         # The request ID.
         self.request_id = request_id
@@ -28,7 +28,7 @@ class DescribeSiteWafTopDataResponseBody(DaraModel):
         self.sampling_rate = sampling_rate
         # The beginning of the time range to query.
         # 
-        # Specify the time in ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
+        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
         self.start_time = start_time
 
     def validate(self):
@@ -92,7 +92,7 @@ class DescribeSiteWafTopDataResponseBodyData(DaraModel):
     ):
         # The returned data.
         self.detail_data = detail_data
-        # The query dimension.
+        # The query dimensions.
         self.dimension_name = dimension_name
         # The query metric value.
         self.field_name = field_name

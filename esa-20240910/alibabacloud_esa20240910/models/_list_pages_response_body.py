@@ -110,10 +110,11 @@ class ListPagesResponseBodyPages(DaraModel):
         self.content_type = content_type
         # The description of the custom response page.
         self.description = description
-        # The ID of the custom response page. You can obtain this value by calling the [ListPages](https://help.aliyun.com/document_detail/2850223.html) operation.
+        # The ID of the custom response page. You can obtain the ID by calling the [ListPages](https://help.aliyun.com/document_detail/2850223.html) operation.
         self.id = id
         # The type of the custom response page.
         self.kind = kind
+        # The content moderation result.
         self.moderation = moderation
         # The name of the custom response page.
         self.name = name
@@ -194,7 +195,9 @@ class ListPagesResponseBodyPagesModeration(DaraModel):
         reasons: List[str] = None,
         status: str = None,
     ):
+        # The list of rejection reasons.
         self.reasons = reasons
+        # The moderation status.
         self.status = status
 
     def validate(self):

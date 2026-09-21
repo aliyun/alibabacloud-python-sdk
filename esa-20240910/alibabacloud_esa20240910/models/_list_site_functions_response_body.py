@@ -17,7 +17,7 @@ class ListSiteFunctionsResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # The configuration information.
+        # The response body configurations.
         self.configs = configs
         # The current page number.
         self.page_number = page_number
@@ -103,6 +103,7 @@ class ListSiteFunctionsResponseBodyConfigs(DaraModel):
         image_transform: List[main_models.ListSiteFunctionsResponseBodyConfigsImageTransform] = None,
         ipv_6: List[main_models.ListSiteFunctionsResponseBodyConfigsIpv6] = None,
         managed_transforms: List[main_models.ListSiteFunctionsResponseBodyConfigsManagedTransforms] = None,
+        markdown_for_agent: List[main_models.ListSiteFunctionsResponseBodyConfigsMarkdownForAgent] = None,
         network_optimization: List[main_models.ListSiteFunctionsResponseBodyConfigsNetworkOptimization] = None,
         origin_rules: List[main_models.ListSiteFunctionsResponseBodyConfigsOriginRules] = None,
         redirect_rules: List[main_models.ListSiteFunctionsResponseBodyConfigsRedirectRules] = None,
@@ -117,7 +118,7 @@ class ListSiteFunctionsResponseBodyConfigs(DaraModel):
         self.cache_reserve = cache_reserve
         # The cache rules.
         self.cache_rules = cache_rules
-        # The cache tags. When using the purge-by-cache-tag feature, specifies the CacheTag name carried in the origin server response.
+        # The cache tag configuration. When using the purge-by-cache-tag feature, specifies the CacheTag name carried in the origin server response.
         self.cache_tags = cache_tags
         # The CNAME flattening configuration.
         self.cname_flattening = cname_flattening
@@ -125,15 +126,15 @@ class ListSiteFunctionsResponseBodyConfigs(DaraModel):
         self.compression_rules = compression_rules
         # The Chinese mainland network optimization configuration.
         self.cross_border_optimization = cross_border_optimization
-        # The custom response code rules.
+        # The custom response code configurations.
         self.custom_response_code = custom_response_code
         # The development mode configuration.
         self.development_mode = development_mode
-        # The error page redirect rules.
+        # The error code redirect rules.
         self.error_pages_redirects = error_pages_redirects
         # The inbound request header modification rules.
         self.http_incoming_request_header_modification_rules = http_incoming_request_header_modification_rules
-        # The inbound response header modification rules.
+        # The rules for modifying inbound response headers.
         self.http_incoming_response_header_modification_rules = http_incoming_response_header_modification_rules
         # The request header modification rules.
         self.http_request_header_modification_rules = http_request_header_modification_rules
@@ -149,6 +150,7 @@ class ListSiteFunctionsResponseBodyConfigs(DaraModel):
         self.ipv_6 = ipv_6
         # The managed transforms.
         self.managed_transforms = managed_transforms
+        self.markdown_for_agent = markdown_for_agent
         # The network optimization configuration.
         self.network_optimization = network_optimization
         # The back-to-origin rules.
@@ -159,13 +161,13 @@ class ListSiteFunctionsResponseBodyConfigs(DaraModel):
         self.rewrite_url_rules = rewrite_url_rules
         # The search engine crawler bypass configuration.
         self.seo_bypass = seo_bypass
-        # The site name exclusive configuration. When enabled, other accounts cannot create sites or subsites with the same name as the current site.
+        # Site name exclusive. When enabled, other accounts cannot create sites or subsites with the same name as the current site.
         self.site_name_exclusive = site_name_exclusive
-        # The site acceleration pause configuration. Temporarily pauses the proxy acceleration feature for the entire site. When enabled, all DNS records directly return record values to clients.
+        # Site acceleration pause. Temporarily pauses the proxy acceleration feature for the entire site. When enabled, all DNS records directly return record values to the client.
         self.site_pause = site_pause
         # The tiered cache configuration.
         self.tiered_cache = tiered_cache
-        # The video processing configuration.
+        # The video processing configurations.
         self.video_processing = video_processing
 
     def validate(self):
@@ -239,6 +241,10 @@ class ListSiteFunctionsResponseBodyConfigs(DaraModel):
                     v1.validate()
         if self.managed_transforms:
             for v1 in self.managed_transforms:
+                 if v1:
+                    v1.validate()
+        if self.markdown_for_agent:
+            for v1 in self.markdown_for_agent:
                  if v1:
                     v1.validate()
         if self.network_optimization:
@@ -372,6 +378,11 @@ class ListSiteFunctionsResponseBodyConfigs(DaraModel):
         if self.managed_transforms is not None:
             for k1 in self.managed_transforms:
                 result['ManagedTransforms'].append(k1.to_map() if k1 else None)
+
+        result['MarkdownForAgent'] = []
+        if self.markdown_for_agent is not None:
+            for k1 in self.markdown_for_agent:
+                result['MarkdownForAgent'].append(k1.to_map() if k1 else None)
 
         result['NetworkOptimization'] = []
         if self.network_optimization is not None:
@@ -530,6 +541,12 @@ class ListSiteFunctionsResponseBodyConfigs(DaraModel):
                 temp_model = main_models.ListSiteFunctionsResponseBodyConfigsManagedTransforms()
                 self.managed_transforms.append(temp_model.from_map(k1))
 
+        self.markdown_for_agent = []
+        if m.get('MarkdownForAgent') is not None:
+            for k1 in m.get('MarkdownForAgent'):
+                temp_model = main_models.ListSiteFunctionsResponseBodyConfigsMarkdownForAgent()
+                self.markdown_for_agent.append(temp_model.from_map(k1))
+
         self.network_optimization = []
         if m.get('NetworkOptimization') is not None:
             for k1 in m.get('NetworkOptimization'):
@@ -608,8 +625,6 @@ class ListSiteFunctionsResponseBodyConfigsVideoProcessing(DaraModel):
         # The custom FLV start parameter.
         self.flv_seek_start = flv_seek_start
         # The FLV seeking mode. Valid values:
-        # - by_byte: seeks by byte.
-        # - by_time: seeks by time.
         self.flv_video_seek_mode = flv_video_seek_mode
         # The custom MP4 end parameter.
         self.mp_4seek_end = mp_4seek_end
@@ -617,19 +632,13 @@ class ListSiteFunctionsResponseBodyConfigsVideoProcessing(DaraModel):
         self.mp_4seek_start = mp_4seek_start
         # The rule content.
         self.rule = rule
-        # The rule switch. Valid values:
-        # - on: enabled.
-        # - off: disabled.
+        # Specifies whether the rule is enabled. Valid values:
         self.rule_enable = rule_enable
         # The rule name.
         self.rule_name = rule_name
-        # The rule execution order.
+        # The execution order of the rule.
         self.sequence = sequence
-        # The video seeking switch. Valid values:
-        # 
-        # - on: enabled.
-        # 
-        # - off: disabled.
+        # Specifies whether to enable the audio seeking feature. Valid values:
         self.video_seek_enable = video_seek_enable
 
     def validate(self):
@@ -720,14 +729,10 @@ class ListSiteFunctionsResponseBodyConfigsTieredCache(DaraModel):
         sequence: str = None,
     ):
         # The tiered cache architecture mode. Valid values:
-        # - edge: edge cache layer.
-        # - edge_smart: edge cache layer + smart cache layer.
-        # - edge_regional: edge cache layer + regional cache layer.
-        # - edge_regional_smart: edge cache layer + regional cache layer + smart cache layer.
         self.cache_architecture_mode = cache_architecture_mode
         # The configuration ID.
         self.config_id = config_id
-        # The rule execution order.
+        # The execution order of the rule.
         self.sequence = sequence
 
     def validate(self):
@@ -771,11 +776,11 @@ class ListSiteFunctionsResponseBodyConfigsSitePause(DaraModel):
     ):
         # The configuration ID.
         self.config_id = config_id
-        # Temporarily pauses the proxy acceleration feature for the entire site. When enabled, all DNS records directly return record values to clients. Valid values:
-        # - true: site acceleration is paused.
-        # - false: site acceleration is active.
+        # Specifies whether to temporarily pause the proxy acceleration feature for the entire site. When enabled, all DNS records directly return record values to the client. Valid values:
+        # - true: Site acceleration is paused.
+        # - false: Site acceleration is active.
         self.paused = paused
-        # The rule execution order.
+        # The execution order of the rule.
         self.sequence = sequence
 
     def validate(self):
@@ -820,10 +825,8 @@ class ListSiteFunctionsResponseBodyConfigsSiteNameExclusive(DaraModel):
         # The configuration ID.
         self.config_id = config_id
         # The feature switch. Valid values:
-        # - on: enabled.
-        # - off: disabled.
         self.enable = enable
-        # The rule execution order.
+        # The execution order of the rule.
         self.sequence = sequence
 
     def validate(self):
@@ -868,10 +871,8 @@ class ListSiteFunctionsResponseBodyConfigsSeoBypass(DaraModel):
         # The configuration ID.
         self.config_id = config_id
         # The feature switch. Disabled by default. Valid values:
-        # - on: enabled.
-        # - off: disabled.
         self.enable = enable
-        # The rule execution order.
+        # The execution order of the rule.
         self.sequence = sequence
 
     def validate(self):
@@ -924,20 +925,16 @@ class ListSiteFunctionsResponseBodyConfigsRewriteUrlRules(DaraModel):
         # The query string after rewriting.
         self.query_string = query_string
         # The query string rewrite type. Valid values:
-        # - static: static mode.
         self.rewrite_query_string_type = rewrite_query_string_type
         # The path rewrite type. Valid values:
-        # - static: static mode.
         self.rewrite_uri_type = rewrite_uri_type
         # The rule content.
         self.rule = rule
-        # The rule switch. Valid values:
-        # - on: enabled.
-        # - off: disabled.
+        # Specifies whether the rule is enabled. Valid values:
         self.rule_enable = rule_enable
         # The rule name.
         self.rule_name = rule_name
-        # The rule execution order.
+        # The execution order of the rule.
         self.sequence = sequence
         # The target URI after rewriting.
         self.uri = uri
@@ -1025,21 +1022,17 @@ class ListSiteFunctionsResponseBodyConfigsRedirectRules(DaraModel):
     ):
         # The configuration ID.
         self.config_id = config_id
-        # Specifies whether to preserve the query string. Valid values:
-        # - on: enabled.
-        # - off: disabled.
+        # Specifies whether to reserve the query string. Valid values:
         self.reserve_query_string = reserve_query_string
         # The rule content.
         self.rule = rule
-        # The rule switch. Valid values:
-        # - on: enabled.
-        # - off: disabled.
+        # Specifies whether the rule is enabled. Valid values:
         self.rule_enable = rule_enable
         # The rule name.
         self.rule_name = rule_name
-        # The rule execution order.
+        # The execution order of the rule.
         self.sequence = sequence
-        # The response status code used by the edge node when responding with the redirect address to the client. Valid values:
+        # The HTTP status code used when the node responds to the client with a redirect address. Valid values:
         # - 301
         # - 302
         # - 303
@@ -1049,7 +1042,6 @@ class ListSiteFunctionsResponseBodyConfigsRedirectRules(DaraModel):
         # The target URL after redirection.
         self.target_url = target_url
         # The redirect type. Valid values:
-        # - static: static mode.
         self.type = type
 
     def validate(self):
@@ -1142,7 +1134,7 @@ class ListSiteFunctionsResponseBodyConfigsOriginRules(DaraModel):
     ):
         # The configuration ID.
         self.config_id = config_id
-        # The overridden DNS resolution record for back-to-origin requests.
+        # The rewritten DNS resolution record for back-to-origin requests.
         self.dns_record = dns_record
         # The HOST header carried in the back-to-origin request.
         self.origin_host = origin_host
@@ -1150,43 +1142,30 @@ class ListSiteFunctionsResponseBodyConfigsOriginRules(DaraModel):
         self.origin_http_port = origin_http_port
         # The origin server port used when fetching content over HTTPS.
         self.origin_https_port = origin_https_port
-        # Specifies whether to enable mTLS for back-to-origin. Valid values:
-        # - on: enabled.
-        # - off: disabled.
+        # Specifies whether to enable mTLS for back-to-origin requests. Valid values:
         self.origin_mtls = origin_mtls
         # The origin read timeout, in seconds.
         self.origin_read_timeout = origin_read_timeout
         # The protocol used for back-to-origin requests. Valid values:
-        # - http: uses HTTP for back-to-origin.
-        # - https: uses HTTPS for back-to-origin.
-        # - follow: follows the client protocol for back-to-origin.
         self.origin_scheme = origin_scheme
         # The SNI carried in the back-to-origin request.
         self.origin_sni = origin_sni
         # Specifies whether to enable origin server certificate verification. Valid values:
-        # - on: enabled.
-        # - off: disabled.
         self.origin_verify = origin_verify
-        # Specifies whether to use range-based origin fetch for file downloads. Valid values:
+        # Uses range-based origin fetch to download files. Valid values:
         # - on: enabled.
         # - off: disabled.
         # - force: forced.
         self.range = range
         # The range chunk size. Valid values:
-        # - 512KB
-        # - 1MB
-        # - 2MB
-        # - 4MB
         self.range_chunk_size = range_chunk_size
         # The rule content.
         self.rule = rule
-        # The rule switch. Valid values:
-        # - on: enabled.
-        # - off: disabled.
+        # Specifies whether the rule is enabled. Valid values:
         self.rule_enable = rule_enable
         # The rule name.
         self.rule_name = rule_name
-        # The rule execution order.
+        # The execution order of the rule.
         self.sequence = sequence
 
     def validate(self):
@@ -1315,34 +1294,23 @@ class ListSiteFunctionsResponseBodyConfigsNetworkOptimization(DaraModel):
     ):
         # The configuration ID.
         self.config_id = config_id
-        # Specifies whether to enable gRPC. Disabled by default. Valid values:
-        # - on: enabled.
-        # - off: disabled.
+        # Specifies whether to enable gRPC. This feature is disabled by default. Valid values:
         self.grpc = grpc
-        # Specifies whether to enable HTTP/2 back-to-origin. Disabled by default. Valid values:
-        # 
-        # - on: enabled.
-        # - off: disabled.
+        # Specifies whether to enable HTTP/2 back-to-origin. This feature is disabled by default. Valid values:
         self.http_2origin = http_2origin
         # The rule content.
         self.rule = rule
         # The rule switch. Valid values:
-        # - on: enabled.
-        # - off: disabled.
         self.rule_enable = rule_enable
         # The rule name.
         self.rule_name = rule_name
-        # The rule execution order.
+        # The execution order of the rule.
         self.sequence = sequence
-        # Specifies whether to enable smart routing. Disabled by default. Valid values:
-        # - on: enabled.
-        # - off: disabled.
+        # Specifies whether to enable the smart routing service. This feature is disabled by default. Valid values:
         self.smart_routing = smart_routing
-        # The maximum upload file size, in MB. Valid values: 100 to 500.
+        # The maximum upload file size. Unit: MB. Valid values: 100 to 500.
         self.upload_max_filesize = upload_max_filesize
-        # Specifies whether to enable WebSocket. Enabled by default. Valid values:
-        # - on: enabled.
-        # - off: disabled.
+        # Specifies whether to enable WebSocket. This feature is enabled by default. Valid values:
         self.websocket = websocket
 
     def validate(self):
@@ -1419,6 +1387,73 @@ class ListSiteFunctionsResponseBodyConfigsNetworkOptimization(DaraModel):
 
         return self
 
+class ListSiteFunctionsResponseBodyConfigsMarkdownForAgent(DaraModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        enable: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        sequence: str = None,
+    ):
+        self.config_id = config_id
+        self.enable = enable
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.sequence = sequence
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+
+        if self.enable is not None:
+            result['Enable'] = self.enable
+
+        if self.rule is not None:
+            result['Rule'] = self.rule
+
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+
+        return self
+
 class ListSiteFunctionsResponseBodyConfigsManagedTransforms(DaraModel):
     def __init__(
         self,
@@ -1428,16 +1463,14 @@ class ListSiteFunctionsResponseBodyConfigsManagedTransforms(DaraModel):
         sequence: str = None,
     ):
         # Specifies whether to add visitor geolocation headers. Valid values:
-        # - on: enabled.
-        # - off: disabled.
         self.add_client_geolocation_headers = add_client_geolocation_headers
-        # Specifies whether to add the "ali-real-client-ip" header that contains the real client IP address. Valid values:
+        # Adds the "ali-real-client-ip" header that contains the originating IP address of the client. Valid values:
         # - on: enabled.
         # - off: disabled.
         self.add_real_client_ip_header = add_real_client_ip_header
         # The configuration ID.
         self.config_id = config_id
-        # The rule execution order.
+        # The execution order of the rule.
         self.sequence = sequence
 
     def validate(self):
@@ -1488,10 +1521,8 @@ class ListSiteFunctionsResponseBodyConfigsIpv6(DaraModel):
         # The configuration ID.
         self.config_id = config_id
         # Specifies whether to enable IPv6. Enabled by default. Valid values:
-        # - on: enabled.
-        # - off: disabled.
         self.enable = enable
-        # The rule execution order.
+        # The execution order of the rule.
         self.sequence = sequence
 
     def validate(self):
@@ -1544,19 +1575,15 @@ class ListSiteFunctionsResponseBodyConfigsImageTransform(DaraModel):
         self.auto_webp = auto_webp
         # The configuration ID.
         self.config_id = config_id
-        # Specifies whether to enable image transformation. Disabled by default. Valid values:
-        # - on: enabled.
-        # - off: disabled.
+        # Specifies whether to enable image transformation. This feature is disabled by default. Valid values:
         self.enable = enable
         # The rule content.
         self.rule = rule
-        # The rule switch. Valid values:
-        # - on: enabled.
-        # - off: disabled.
+        # Specifies whether the rule is enabled. Valid values:
         self.rule_enable = rule_enable
         # The rule name.
         self.rule_name = rule_name
-        # The rule execution order.
+        # The execution order of the rule.
         self.sequence = sequence
 
     def validate(self):
@@ -1640,9 +1667,9 @@ class ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration(DaraModel):
         tls_12: str = None,
         tls_13: str = None,
     ):
-        # The custom cipher suites. Specifies the specific encryption algorithms selected when CiphersuiteGroup is set to custom.
+        # The custom cipher suite. Specifies the specific encryption algorithms selected when CiphersuiteGroup is set to custom.
         self.ciphersuite = ciphersuite
-        # The cipher suite group. All cipher suites are enabled by default. Valid values:
+        # The cipher suite group. By default, all cipher suites are enabled. Valid values:
         # - all: all cipher suites.
         # - strict: strong cipher suites.
         # - custom: custom cipher suites.
@@ -1650,48 +1677,28 @@ class ListSiteFunctionsResponseBodyConfigsHttpsBasicConfiguration(DaraModel):
         # The configuration ID.
         self.config_id = config_id
         # Specifies whether to enable HTTP/2. Enabled by default. Valid values:
-        # - on: enabled.
-        # - off: disabled.
         self.http_2 = http_2
         # Specifies whether to enable HTTP/3. Enabled by default. Valid values:
-        # - on: enabled.
-        # - off: disabled.
         self.http_3 = http_3
         # Specifies whether to enable HTTPS. Enabled by default. Valid values:
-        # 
-        # - on: enabled.
-        # 
-        # - off: disabled.
         self.https = https
         # Specifies whether to enable OCSP stapling. Disabled by default. Valid values:
-        # - on: enabled.
-        # - off: disabled.
         self.ocsp_stapling = ocsp_stapling
         # The matching rule content.
         self.rule = rule
-        # The rule switch. Valid values:
-        # - on: enabled.
-        # - off: disabled.
+        # Specifies whether the rule is enabled. Valid values:
         self.rule_enable = rule_enable
         # The rule name.
         self.rule_name = rule_name
-        # The rule execution order.
+        # The execution order of the rule.
         self.sequence = sequence
         # Specifies whether to enable TLS 1.0. Disabled by default. Valid values:
-        # - on: enabled.
-        # - off: disabled.
         self.tls_10 = tls_10
         # Specifies whether to enable TLS 1.1. Enabled by default. Valid values:
-        # - on: enabled.
-        # - off: disabled.
         self.tls_11 = tls_11
         # Specifies whether to enable TLS 1.2. Enabled by default. Valid values:
-        # - on: enabled.
-        # - off: disabled.
         self.tls_12 = tls_12
         # Specifies whether to enable TLS 1.3. Enabled by default. Valid values:
-        # - on: enabled.
-        # - off: disabled.
         self.tls_13 = tls_13
 
     def validate(self):
@@ -1818,59 +1825,34 @@ class ListSiteFunctionsResponseBodyConfigsHttpsApplicationConfiguration(DaraMode
         sequence: str = None,
     ):
         # The Alt-Svc feature switch. Disabled by default. Valid values:
-        # - on: enabled.
-        # - off: disabled.
         self.alt_svc = alt_svc
         # Specifies whether the Alt-Svc header includes the clear parameter. Disabled by default. Valid values:
-        # - on: enabled.
-        # - off: disabled.
         self.alt_svc_clear = alt_svc_clear
         # The Alt-Svc validity period, in seconds. Default value: 86400.
         self.alt_svc_ma = alt_svc_ma
         # Specifies whether the Alt-Svc header includes the persist parameter. Disabled by default. Valid values:
-        # - on: enabled.
-        # - off: disabled.
         self.alt_svc_persist = alt_svc_persist
         # The configuration ID.
         self.config_id = config_id
         # Specifies whether to enable HSTS. Disabled by default. Valid values:
-        # 
-        # - on: enabled.
-        # - off: disabled.
         self.hsts = hsts
         # Specifies whether to include subdomains in HSTS. Disabled by default. Valid values:
-        # 
-        # - on: enabled.
-        # - off: disabled.
         self.hsts_include_subdomains = hsts_include_subdomains
         # The HSTS expiration time, in seconds.
         self.hsts_max_age = hsts_max_age
         # Specifies whether to enable HSTS preload. Disabled by default. Valid values:
-        # 
-        # - on: enabled.
-        # - off: disabled.
         self.hsts_preload = hsts_preload
         # Specifies whether to enable forced HTTPS. Disabled by default. Valid values:
-        # 
-        # - on: enabled.
-        # 
-        # - off: disabled.
         self.https_force = https_force
-        # The status code used for forced HTTPS redirect. Valid values:
-        # - 301
-        # - 302
-        # - 307
-        # - 308
+        # The HTTP status code for forced HTTPS redirect. Valid values:
         self.https_force_code = https_force_code
         # The rule content.
         self.rule = rule
         # The rule switch. Valid values:
-        # - on: enabled.
-        # - off: disabled.
         self.rule_enable = rule_enable
         # The rule name.
         self.rule_name = rule_name
-        # The rule execution order.
+        # The execution order of the rule.
         self.sequence = sequence
 
     def validate(self):
@@ -1993,13 +1975,11 @@ class ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRules(Da
         self.response_header_modification = response_header_modification
         # The rule content.
         self.rule = rule
-        # The rule switch. Valid values:
-        # - on: enabled.
-        # - off: disabled.
+        # Specifies whether the rule is enabled. Valid values:
         self.rule_enable = rule_enable
         # The rule name.
         self.rule_name = rule_name
-        # The rule execution order.
+        # The execution order of the rule.
         self.sequence = sequence
 
     def validate(self):
@@ -2070,9 +2050,6 @@ class ListSiteFunctionsResponseBodyConfigsHttpResponseHeaderModificationRulesRes
         # The response header name.
         self.name = name
         # The operation type. Valid values:
-        # - add: adds a header.
-        # - del: deletes a header.
-        # - modify: modifies a header.
         self.operation = operation
         # The response header value.
         self.value = value
@@ -2125,13 +2102,11 @@ class ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRules(Dar
         self.request_header_modification = request_header_modification
         # The rule content.
         self.rule = rule
-        # The rule switch. Valid values:
-        # - on: enabled.
-        # - off: disabled.
+        # Specifies whether the rule is enabled. Valid values:
         self.rule_enable = rule_enable
         # The rule name.
         self.rule_name = rule_name
-        # The rule execution order.
+        # The execution order of the rule.
         self.sequence = sequence
 
     def validate(self):
@@ -2202,9 +2177,6 @@ class ListSiteFunctionsResponseBodyConfigsHttpRequestHeaderModificationRulesRequ
         # The request header name.
         self.name = name
         # The operation type. Valid values:
-        # - add: adds a header.
-        # - del: deletes a header.
-        # - modify: modifies a header.
         self.operation = operation
         # The request header value.
         self.value = value
@@ -2257,13 +2229,11 @@ class ListSiteFunctionsResponseBodyConfigsHttpIncomingResponseHeaderModification
         self.response_header_modification = response_header_modification
         # The rule content.
         self.rule = rule
-        # The rule switch. Valid values:
-        # - on: enabled.
-        # - off: disabled.
+        # Specifies whether the rule is enabled. Valid values:
         self.rule_enable = rule_enable
         # The rule name.
         self.rule_name = rule_name
-        # The rule execution order.
+        # The execution order of the rule.
         self.sequence = sequence
 
     def validate(self):
@@ -2334,9 +2304,6 @@ class ListSiteFunctionsResponseBodyConfigsHttpIncomingResponseHeaderModification
         # The response header name.
         self.name = name
         # The operation type. Valid values:
-        # - add: adds a header.
-        # - del: deletes a header.
-        # - modify: modifies a header.
         self.operation = operation
         # The response header value.
         self.value = value
@@ -2389,13 +2356,11 @@ class ListSiteFunctionsResponseBodyConfigsHttpIncomingRequestHeaderModificationR
         self.request_header_modification = request_header_modification
         # The rule content.
         self.rule = rule
-        # The rule switch. Valid values:
-        # - on: enabled.
-        # - off: disabled.
+        # Specifies whether the rule is enabled. Valid values:
         self.rule_enable = rule_enable
         # The rule name.
         self.rule_name = rule_name
-        # The rule execution order.
+        # The execution order of the rule.
         self.sequence = sequence
 
     def validate(self):
@@ -2466,9 +2431,6 @@ class ListSiteFunctionsResponseBodyConfigsHttpIncomingRequestHeaderModificationR
         # The request header name.
         self.name = name
         # The operation type. Valid values:
-        # - add: adds a header.
-        # - del: deletes a header.
-        # - modify: modifies a header.
         self.operation = operation
         # The request header value.
         self.value = value
@@ -2517,19 +2479,17 @@ class ListSiteFunctionsResponseBodyConfigsErrorPagesRedirects(DaraModel):
     ):
         # The configuration ID.
         self.config_id = config_id
-        # The error page redirect configuration.
+        # The error code redirect configuration.
         self.error_pages_redirect = error_pages_redirect
-        # The rule content. Uses conditional expressions to match user requests. This parameter is not required when adding a global configuration. Two scenarios are supported:
-        # - Match all incoming requests: set the value to true.
-        # - Match specified requests: set the value to a custom expression, such as (http.host eq \\"video.example.com\\").
+        # The rule content. A conditional expression is used to match user requests. You do not need to set this parameter when you add a global configuration. Two scenarios are supported:
+        # - Match all incoming requests: Set the value to true.
+        # - Match specified requests: Set the value to a custom expression, such as (http.host eq \\"video.example.com\\").
         self.rule = rule
-        # The rule switch. This parameter is not required when adding a global configuration. Valid values:
-        # - on: enabled.
-        # - off: disabled.
+        # Specifies whether to enable the rule. You do not need to set this parameter when adding a global configuration. Valid values:
         self.rule_enable = rule_enable
-        # The rule name. This parameter is not required when adding a global configuration.
+        # The rule name. You do not need to set this parameter when adding a global configuration.
         self.rule_name = rule_name
-        # The rule execution order. A smaller value indicates a higher priority.
+        # The execution priority of the rule. A smaller value indicates a higher priority.
         self.sequence = sequence
 
     def validate(self):
@@ -2596,20 +2556,9 @@ class ListSiteFunctionsResponseBodyConfigsErrorPagesRedirectsErrorPagesRedirect(
         status_code: str = None,
         target_url: str = None,
     ):
-        # The response status code used by the edge node when responding with the redirect address to the client. Valid values:
-        # - 400
-        # - 403
-        # - 404
-        # - 405
-        # - 414
-        # - 416
-        # - 500
-        # - 501
-        # - 502
-        # - 503
-        # - 504
+        # The response status code used by the node when returning the redirect address to the client. Valid values:
         self.status_code = status_code
-        # The target URL after redirection.
+        # The target URL to which the request is redirected.
         self.target_url = target_url
 
     def validate(self):
@@ -2648,10 +2597,8 @@ class ListSiteFunctionsResponseBodyConfigsDevelopmentMode(DaraModel):
         # The configuration ID.
         self.config_id = config_id
         # The feature switch. Disabled by default. Valid values:
-        # - on: enabled.
-        # - off: disabled.
         self.enable = enable
-        # The rule execution order.
+        # The execution order of the rule.
         self.sequence = sequence
 
     def validate(self):
@@ -2703,18 +2650,15 @@ class ListSiteFunctionsResponseBodyConfigsCustomResponseCode(DaraModel):
         self.page_id = page_id
         # The response code.
         self.return_code = return_code
-        # The rule content. Uses conditional expressions to match user requests. This parameter is not required when adding a global configuration. Two scenarios are supported:
-        # - Match all incoming requests: set the value to true.
-        # - Match specified requests: set the value to a custom expression, such as (http.host eq \\"video.example.com\\").
+        # The rule content. A conditional expression is used to match user requests. You do not need to set this parameter when you add a global configuration. Two scenarios are supported:
+        # - Match all incoming requests: Set the value to true.
+        # - Match specified requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # The rule switch. This parameter is not required when adding a global configuration. Valid values:
-        # 
-        # - on: enabled.
-        # - off: disabled.
+        # Specifies whether to enable the rule. You do not need to set this parameter when adding a global configuration. Valid values:
         self.rule_enable = rule_enable
-        # The rule name. This parameter is not required when adding a global configuration.
+        # The rule name. You do not need to set this parameter when adding a global configuration.
         self.rule_name = rule_name
-        # The rule execution order. A smaller value indicates a higher priority.
+        # The execution priority of the rule. A smaller value indicates a higher priority.
         self.sequence = sequence
 
     def validate(self):
@@ -2783,10 +2727,8 @@ class ListSiteFunctionsResponseBodyConfigsCrossBorderOptimization(DaraModel):
         # The configuration ID.
         self.config_id = config_id
         # Specifies whether to enable Chinese mainland network access optimization. Disabled by default. Valid values:
-        # - on: enabled.
-        # - off: disabled.
         self.enable = enable
-        # The rule execution order.
+        # The execution order of the rule.
         self.sequence = sequence
 
     def validate(self):
@@ -2833,29 +2775,21 @@ class ListSiteFunctionsResponseBodyConfigsCompressionRules(DaraModel):
         sequence: str = None,
         zstd: str = None,
     ):
-        # Specifies whether to enable Brotli compression. Valid values:
-        # - on: enabled.
-        # - off: disabled.
+        # The Brotli compression setting. Valid values:
         self.brotli = brotli
         # The configuration ID.
         self.config_id = config_id
-        # Specifies whether to enable Gzip compression. Valid values:
-        # - on: enabled.
-        # - off: disabled.
+        # The Gzip compression setting. Valid values:
         self.gzip = gzip
         # The rule content.
         self.rule = rule
-        # The rule switch. Valid values:
-        # - on: enabled.
-        # - off: disabled.
+        # Specifies whether the rule is enabled. Valid values:
         self.rule_enable = rule_enable
         # The rule name.
         self.rule_name = rule_name
-        # The rule execution order.
+        # The execution order of the rule.
         self.sequence = sequence
-        # Specifies whether to enable Zstd compression. Valid values:
-        # - on: enabled.
-        # - off: disabled.
+        # The Zstd compression setting. Valid values:
         self.zstd = zstd
 
     def validate(self):
@@ -2931,9 +2865,9 @@ class ListSiteFunctionsResponseBodyConfigsCnameFlattening(DaraModel):
         self.config_id = config_id
         # The flattening mode. Valid values:
         # - flatten_all: flattens all records.
-        # - flatten_at_root: flattens only the root domain. This is the default value.
+        # - flatten_at_root: flattens only the root domain. The root domain is flattened by default.
         self.flatten_mode = flatten_mode
-        # The rule execution order.
+        # The execution order of the rule.
         self.sequence = sequence
 
     def validate(self):
@@ -2977,12 +2911,10 @@ class ListSiteFunctionsResponseBodyConfigsCacheTags(DaraModel):
         tag_name: str = None,
     ):
         # Specifies whether to ignore case. Valid values:
-        # - on: enabled.
-        # - off: disabled.
         self.case_insensitive = case_insensitive
         # The configuration ID.
         self.config_id = config_id
-        # The rule execution order.
+        # The execution order of the rule.
         self.sequence = sequence
         # The custom CacheTag name.
         self.tag_name = tag_name
@@ -3060,9 +2992,6 @@ class ListSiteFunctionsResponseBodyConfigsCacheRules(DaraModel):
         # The ports on which caching is enabled. Valid values: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, and 2096.
         self.additional_cacheable_ports = additional_cacheable_ports
         # The browser cache mode. Valid values:
-        # - no_cache: no caching.
-        # - follow_origin: follows the origin server cache policy.
-        # - override_origin: overrides the origin server cache policy.
         self.browser_cache_mode = browser_cache_mode
         # The browser cache expiration time, in seconds.
         self.browser_cache_ttl = browser_cache_ttl
@@ -3070,77 +2999,59 @@ class ListSiteFunctionsResponseBodyConfigsCacheRules(DaraModel):
         # - cache_all: all requests are cached.
         # - bypass_all: all requests bypass the cache.
         self.bypass_cache = bypass_cache
-        # Specifies whether to enable cache deception armor. This feature protects against web cache deception attacks by caching only content that passes validation. Valid values:
-        # - on: enabled.
-        # - off: disabled.
+        # Specifies whether cache deception armor is enabled. This feature protects against web cache deception attacks by caching only content that passes validation. Valid values:
         self.cache_deception_armor = cache_deception_armor
-        # The cache reserve eligibility. Controls whether requests bypass the cache reserve node during back-to-origin. Valid values:
+        # The cache reserve eligibility. Controls whether user requests bypass cache reserve nodes during back-to-origin. Valid values:
         # - bypass_cache_reserve: requests bypass cache reserve.
-        # - eligible_for_cache_reserve: requests are eligible for cache reserve.
+        # - eligible_for_cache_reserve: eligible for cache reserve.
         self.cache_reserve_eligibility = cache_reserve_eligibility
-        # Checks whether a cookie exists when generating cache keys. If the cookie exists, the cookie name (case-insensitive) is added to the cache key. Multiple cookie names are supported and separated by spaces.
+        # The cookie names to check for presence when generating cache keys. If a cookie exists, its name (case-insensitive) is added to the cache key. Multiple cookie names are separated by spaces.
         self.check_presence_cookie = check_presence_cookie
-        # Checks whether a header exists when generating cache keys. If the header exists, the header name (case-insensitive) is added to the cache key. Multiple header names are supported and separated by spaces.
+        # The header names to check for presence when generating cache keys. If a header exists, its name (case-insensitive) is added to the cache key. Multiple header names are separated by spaces.
         self.check_presence_header = check_presence_header
         # The configuration ID.
         self.config_id = config_id
         # The edge cache mode. Valid values:
-        # - follow_origin: follows the origin server cache policy (if present). Otherwise, uses the default cache policy.
-        # - no_cache: no caching.
-        # - override_origin: overrides the origin server cache policy.
-        # - follow_origin_bypass: follows the origin server cache policy (if present). Otherwise, does not cache.
+        # - follow_origin: follows the origin cache policy if one exists. Otherwise, uses the default cache policy.
+        # - no_cache: does not cache.
+        # - override_origin: overrides the origin cache policy.
+        # - follow_origin_bypass: follows the origin cache policy if one exists. Otherwise, does not cache.
         self.edge_cache_mode = edge_cache_mode
-        # The edge cache expiration time, in seconds.
+        # The edge node cache expiration time, in seconds.
         self.edge_cache_ttl = edge_cache_ttl
         # The status code cache expiration time, in seconds.
         self.edge_status_code_cache_ttl = edge_status_code_cache_ttl
-        # The cookie names and their values to include when generating cache keys. Multiple values are supported and separated by spaces.
+        # The specified cookie names and their values to include when generating cache keys. Multiple values are separated by spaces.
         self.include_cookie = include_cookie
-        # The header names and their values to include when generating cache keys. Multiple values are supported and separated by spaces.
+        # The specified header names and their values to include when generating cache keys. Multiple values are separated by spaces.
         self.include_header = include_header
         # The cache key processing mode.
         self.post_body_cache_key = post_body_cache_key
-        # The body size limit, in KB. Supports body sizes from 1 to 8 KB. If left empty, the default value of 8 KB is used.
+        # The body size limit, in KB. Supports body sizes from 1 to 8 KB. If the value is empty, the default value of 8 KB takes effect.
         self.post_body_size_limit = post_body_size_limit
-        # The POST cache switch.
+        # Specifies whether POST caching is enabled.
         self.post_cache = post_cache
-        # The query strings to retain or remove. Multiple values are supported and separated by spaces.
+        # The query strings to retain or remove. Multiple values are separated by spaces.
         self.query_string = query_string
-        # The query string processing mode when generating cache keys. Valid values:
-        # - ignore_all: ignores all query strings.
-        # - exclude_query_string: removes specified query strings.
-        # - reserve_all: retains all query strings. This is the default value.
-        # - include_query_string: retains specified query strings.
+        # The processing mode for query strings when generating cache keys. Valid values:
         self.query_string_mode = query_string_mode
         # The rule content.
         self.rule = rule
-        # The rule switch. Valid values:
-        # - on: enabled.
-        # - off: disabled.
+        # Specifies whether the rule is enabled. Valid values:
         self.rule_enable = rule_enable
         # The rule name.
         self.rule_name = rule_name
-        # The rule execution order.
+        # The execution order of the rule.
         self.sequence = sequence
-        # Specifies whether to serve stale cache. When enabled, the edge node can respond to user requests with cached expired content when the origin server is unavailable. Valid values:
-        # - on: enabled.
-        # - off: disabled.
+        # Specifies whether to serve stale cache. When enabled, edge nodes can respond to user requests with cached expired content when the origin server is unavailable. Valid values:
         self.serve_stale = serve_stale
-        # Specifies whether to sort query strings. Valid values:
-        # - on: enabled.
-        # - off: disabled.
+        # Specifies whether to sort query strings for caching. Valid values:
         self.sort_query_string_for_cache = sort_query_string_for_cache
         # Specifies whether to include the type of the client when generating cache keys. Valid values:
-        # - on: enabled.
-        # - off: shutdown.
         self.user_device_type = user_device_type
         # Specifies whether to include the client geographic location when generating cache keys. Valid values:
-        # - on: enabled.
-        # - off: disabled.
         self.user_geo = user_geo
         # Specifies whether to include the client language type when generating cache keys. Valid values:
-        # - on: enabled.
-        # - off: disabled.
         self.user_language = user_language
 
     def validate(self):
@@ -3334,9 +3245,7 @@ class ListSiteFunctionsResponseBodyConfigsCacheReserve(DaraModel):
     ):
         # The configuration ID.
         self.config_id = config_id
-        # Specifies whether to enable cache reserve. Disabled by default. Valid values:
-        # - on: enabled.
-        # - off: disabled.
+        # Specifies whether to enable cache reserve. This feature is disabled by default. Valid values:
         self.enable = enable
         # The cache reserve instance ID.
         self.instance_id = instance_id
