@@ -10,9 +10,9 @@ class UpdatePrometheusViewResponseBody(DaraModel):
         prometheus_view_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the Prometheus view instance.
+        # The instance ID of the Prometheus view graph instance.
         self.prometheus_view_id = prometheus_view_id
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

@@ -1,3 +1,63 @@
+2026-09-21 Version: 10.5.3
+- Update API CreateDataPipeline: add request parameters body.outputs.$.processors.$.config.assignments.
+- Update API CreateDataPipeline: add request parameters body.outputs.$.processors.$.config.parameters.
+- Update API CreateDataPipeline: add request parameters body.outputs.$.processors.$.config.projections.
+- Update API CreateDataPipeline: add request parameters body.outputs.$.processors.$.config.scope.
+- Update API CreateDataPipeline: add request parameters body.processors.$.config.assignments.
+- Update API CreateDataPipeline: add request parameters body.processors.$.config.parameters.
+- Update API CreateDataPipeline: add request parameters body.processors.$.config.projections.
+- Update API CreateDataPipeline: add request parameters body.processors.$.config.scope.
+- Update API CreateDataPipeline: add response parameters Body.pipeline.outputs.$.processors.$.config.assignments.
+- Update API CreateDataPipeline: add response parameters Body.pipeline.outputs.$.processors.$.config.parameters.
+- Update API CreateDataPipeline: add response parameters Body.pipeline.outputs.$.processors.$.config.projections.
+- Update API CreateDataPipeline: add response parameters Body.pipeline.outputs.$.processors.$.config.scope.
+- Update API CreateDataPipeline: add response parameters Body.pipeline.processors.$.config.assignments.
+- Update API CreateDataPipeline: add response parameters Body.pipeline.processors.$.config.parameters.
+- Update API CreateDataPipeline: add response parameters Body.pipeline.processors.$.config.projections.
+- Update API CreateDataPipeline: add response parameters Body.pipeline.processors.$.config.scope.
+- Update API GetDataPipeline: add response parameters Body.pipeline.outputs.$.processors.$.config.assignments.
+- Update API GetDataPipeline: add response parameters Body.pipeline.outputs.$.processors.$.config.parameters.
+- Update API GetDataPipeline: add response parameters Body.pipeline.outputs.$.processors.$.config.projections.
+- Update API GetDataPipeline: add response parameters Body.pipeline.outputs.$.processors.$.config.scope.
+- Update API GetDataPipeline: add response parameters Body.pipeline.processors.$.config.assignments.
+- Update API GetDataPipeline: add response parameters Body.pipeline.processors.$.config.parameters.
+- Update API GetDataPipeline: add response parameters Body.pipeline.processors.$.config.projections.
+- Update API GetDataPipeline: add response parameters Body.pipeline.processors.$.config.scope.
+- Update API ListDataPipelines: add response parameters Body.pipelines.$.outputs.$.processors.$.config.assignments.
+- Update API ListDataPipelines: add response parameters Body.pipelines.$.outputs.$.processors.$.config.parameters.
+- Update API ListDataPipelines: add response parameters Body.pipelines.$.outputs.$.processors.$.config.projections.
+- Update API ListDataPipelines: add response parameters Body.pipelines.$.outputs.$.processors.$.config.scope.
+- Update API ListDataPipelines: add response parameters Body.pipelines.$.processors.$.config.assignments.
+- Update API ListDataPipelines: add response parameters Body.pipelines.$.processors.$.config.parameters.
+- Update API ListDataPipelines: add response parameters Body.pipelines.$.processors.$.config.projections.
+- Update API ListDataPipelines: add response parameters Body.pipelines.$.processors.$.config.scope.
+- Update API PreviewDataPipeline: add request parameters body.outputs.$.processors.$.config.assignments.
+- Update API PreviewDataPipeline: add request parameters body.outputs.$.processors.$.config.parameters.
+- Update API PreviewDataPipeline: add request parameters body.outputs.$.processors.$.config.projections.
+- Update API PreviewDataPipeline: add request parameters body.outputs.$.processors.$.config.scope.
+- Update API PreviewDataPipeline: add request parameters body.processors.$.config.assignments.
+- Update API PreviewDataPipeline: add request parameters body.processors.$.config.parameters.
+- Update API PreviewDataPipeline: add request parameters body.processors.$.config.projections.
+- Update API PreviewDataPipeline: add request parameters body.processors.$.config.scope.
+- Update API PreviewDataPipeline: add response parameters Body.diagnostics.
+- Update API UpdateDataPipeline: add request parameters body.outputs.$.processors.$.config.assignments.
+- Update API UpdateDataPipeline: add request parameters body.outputs.$.processors.$.config.parameters.
+- Update API UpdateDataPipeline: add request parameters body.outputs.$.processors.$.config.projections.
+- Update API UpdateDataPipeline: add request parameters body.outputs.$.processors.$.config.scope.
+- Update API UpdateDataPipeline: add request parameters body.processors.$.config.assignments.
+- Update API UpdateDataPipeline: add request parameters body.processors.$.config.parameters.
+- Update API UpdateDataPipeline: add request parameters body.processors.$.config.projections.
+- Update API UpdateDataPipeline: add request parameters body.processors.$.config.scope.
+- Update API UpdateDataPipeline: add response parameters Body.pipeline.outputs.$.processors.$.config.assignments.
+- Update API UpdateDataPipeline: add response parameters Body.pipeline.outputs.$.processors.$.config.parameters.
+- Update API UpdateDataPipeline: add response parameters Body.pipeline.outputs.$.processors.$.config.projections.
+- Update API UpdateDataPipeline: add response parameters Body.pipeline.outputs.$.processors.$.config.scope.
+- Update API UpdateDataPipeline: add response parameters Body.pipeline.processors.$.config.assignments.
+- Update API UpdateDataPipeline: add response parameters Body.pipeline.processors.$.config.parameters.
+- Update API UpdateDataPipeline: add response parameters Body.pipeline.processors.$.config.projections.
+- Update API UpdateDataPipeline: add response parameters Body.pipeline.processors.$.config.scope.
+
+
 2026-09-18 Version: 10.5.2
 - Generated python 2024-03-30 for Cms.
 

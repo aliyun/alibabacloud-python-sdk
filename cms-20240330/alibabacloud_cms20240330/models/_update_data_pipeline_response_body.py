@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
+from typing import List, Dict, Any
 
 from alibabacloud_cms20240330 import models as main_models
 from darabonba.model import DaraModel
@@ -63,7 +63,7 @@ class UpdateDataPipelineResponseBodyPipeline(DaraModel):
         update_time: str = None,
         version: int = None,
     ):
-        # The creation time.
+        # The time when the data pipeline was created.
         # 
         # This parameter is required.
         # 
@@ -245,7 +245,7 @@ class UpdateDataPipelineResponseBodyPipelineSource(DaraModel):
     ):
         # The datasource config.
         self.config = config
-        # The data source type.
+        # The type of the data source.
         self.type = type
 
     def validate(self):
@@ -477,21 +477,33 @@ class UpdateDataPipelineResponseBodyPipelineProcessorsConfig(DaraModel):
     def __init__(
         self,
         applications: List[str] = None,
+        assignments: List[main_models.UpdateDataPipelineResponseBodyPipelineProcessorsConfigAssignments] = None,
         expression: str = None,
         fields: List[str] = None,
+        parameters: Dict[str, Any] = None,
+        projections: List[main_models.UpdateDataPipelineResponseBodyPipelineProcessorsConfigProjections] = None,
         rules: List[main_models.UpdateDataPipelineResponseBodyPipelineProcessorsConfigRules] = None,
+        scope: main_models.UpdateDataPipelineResponseBodyPipelineProcessorsConfigScope = None,
         script: str = None,
         selector: main_models.UpdateDataPipelineResponseBodyPipelineProcessorsConfigSelector = None,
         target: main_models.UpdateDataPipelineResponseBodyPipelineProcessorsConfigTarget = None,
     ):
-        # The application list.
+        # The list of applications.
         self.applications = applications
+        # The list of field assignments.
+        self.assignments = assignments
         # The filter expression.
         self.expression = expression
-        # The field list.
+        # The list of fields.
         self.fields = fields
-        # The masking rule list.
+        # The extended parameters.
+        self.parameters = parameters
+        # The list of field projections.
+        self.projections = projections
+        # The list of masking rules.
         self.rules = rules
+        # The scope in which the pipeline processing processor takes effect.
+        self.scope = scope
         # The SPL script.
         self.script = script
         # The service selector.
@@ -500,10 +512,20 @@ class UpdateDataPipelineResponseBodyPipelineProcessorsConfig(DaraModel):
         self.target = target
 
     def validate(self):
+        if self.assignments:
+            for v1 in self.assignments:
+                 if v1:
+                    v1.validate()
+        if self.projections:
+            for v1 in self.projections:
+                 if v1:
+                    v1.validate()
         if self.rules:
             for v1 in self.rules:
                  if v1:
                     v1.validate()
+        if self.scope:
+            self.scope.validate()
         if self.selector:
             self.selector.validate()
         if self.target:
@@ -517,16 +539,32 @@ class UpdateDataPipelineResponseBodyPipelineProcessorsConfig(DaraModel):
         if self.applications is not None:
             result['applications'] = self.applications
 
+        result['assignments'] = []
+        if self.assignments is not None:
+            for k1 in self.assignments:
+                result['assignments'].append(k1.to_map() if k1 else None)
+
         if self.expression is not None:
             result['expression'] = self.expression
 
         if self.fields is not None:
             result['fields'] = self.fields
 
+        if self.parameters is not None:
+            result['parameters'] = self.parameters
+
+        result['projections'] = []
+        if self.projections is not None:
+            for k1 in self.projections:
+                result['projections'].append(k1.to_map() if k1 else None)
+
         result['rules'] = []
         if self.rules is not None:
             for k1 in self.rules:
                 result['rules'].append(k1.to_map() if k1 else None)
+
+        if self.scope is not None:
+            result['scope'] = self.scope.to_map()
 
         if self.script is not None:
             result['script'] = self.script
@@ -544,17 +582,36 @@ class UpdateDataPipelineResponseBodyPipelineProcessorsConfig(DaraModel):
         if m.get('applications') is not None:
             self.applications = m.get('applications')
 
+        self.assignments = []
+        if m.get('assignments') is not None:
+            for k1 in m.get('assignments'):
+                temp_model = main_models.UpdateDataPipelineResponseBodyPipelineProcessorsConfigAssignments()
+                self.assignments.append(temp_model.from_map(k1))
+
         if m.get('expression') is not None:
             self.expression = m.get('expression')
 
         if m.get('fields') is not None:
             self.fields = m.get('fields')
 
+        if m.get('parameters') is not None:
+            self.parameters = m.get('parameters')
+
+        self.projections = []
+        if m.get('projections') is not None:
+            for k1 in m.get('projections'):
+                temp_model = main_models.UpdateDataPipelineResponseBodyPipelineProcessorsConfigProjections()
+                self.projections.append(temp_model.from_map(k1))
+
         self.rules = []
         if m.get('rules') is not None:
             for k1 in m.get('rules'):
                 temp_model = main_models.UpdateDataPipelineResponseBodyPipelineProcessorsConfigRules()
                 self.rules.append(temp_model.from_map(k1))
+
+        if m.get('scope') is not None:
+            temp_model = main_models.UpdateDataPipelineResponseBodyPipelineProcessorsConfigScope()
+            self.scope = temp_model.from_map(m.get('scope'))
 
         if m.get('script') is not None:
             self.script = m.get('script')
@@ -602,7 +659,7 @@ class UpdateDataPipelineResponseBodyPipelineProcessorsConfigSelector(DaraModel):
         self,
         service_names: List[str] = None,
     ):
-        # The service name list.
+        # The list of service names.
         self.service_names = service_names
 
     def validate(self):
@@ -625,6 +682,243 @@ class UpdateDataPipelineResponseBodyPipelineProcessorsConfigSelector(DaraModel):
 
         return self
 
+class UpdateDataPipelineResponseBodyPipelineProcessorsConfigScope(DaraModel):
+    def __init__(
+        self,
+        conditions: List[main_models.UpdateDataPipelineResponseBodyPipelineProcessorsConfigScopeConditions] = None,
+        metric_name: main_models.UpdateDataPipelineResponseBodyPipelineProcessorsConfigScopeMetricName = None,
+        service_name: main_models.UpdateDataPipelineResponseBodyPipelineProcessorsConfigScopeServiceName = None,
+    ):
+        # The additional field conditions.
+        self.conditions = conditions
+        # The metric name scope.
+        self.metric_name = metric_name
+        # The service name scope.
+        self.service_name = service_name
+
+    def validate(self):
+        if self.conditions:
+            for v1 in self.conditions:
+                 if v1:
+                    v1.validate()
+        if self.metric_name:
+            self.metric_name.validate()
+        if self.service_name:
+            self.service_name.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['conditions'] = []
+        if self.conditions is not None:
+            for k1 in self.conditions:
+                result['conditions'].append(k1.to_map() if k1 else None)
+
+        if self.metric_name is not None:
+            result['metricName'] = self.metric_name.to_map()
+
+        if self.service_name is not None:
+            result['serviceName'] = self.service_name.to_map()
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.conditions = []
+        if m.get('conditions') is not None:
+            for k1 in m.get('conditions'):
+                temp_model = main_models.UpdateDataPipelineResponseBodyPipelineProcessorsConfigScopeConditions()
+                self.conditions.append(temp_model.from_map(k1))
+
+        if m.get('metricName') is not None:
+            temp_model = main_models.UpdateDataPipelineResponseBodyPipelineProcessorsConfigScopeMetricName()
+            self.metric_name = temp_model.from_map(m.get('metricName'))
+
+        if m.get('serviceName') is not None:
+            temp_model = main_models.UpdateDataPipelineResponseBodyPipelineProcessorsConfigScopeServiceName()
+            self.service_name = temp_model.from_map(m.get('serviceName'))
+
+        return self
+
+class UpdateDataPipelineResponseBodyPipelineProcessorsConfigScopeServiceName(DaraModel):
+    def __init__(
+        self,
+        match_type: str = None,
+        values: List[str] = None,
+    ):
+        # The matching method.
+        self.match_type = match_type
+        # The match values.
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.match_type is not None:
+            result['matchType'] = self.match_type
+
+        if self.values is not None:
+            result['values'] = self.values
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('matchType') is not None:
+            self.match_type = m.get('matchType')
+
+        if m.get('values') is not None:
+            self.values = m.get('values')
+
+        return self
+
+class UpdateDataPipelineResponseBodyPipelineProcessorsConfigScopeMetricName(DaraModel):
+    def __init__(
+        self,
+        match_type: str = None,
+        values: List[str] = None,
+    ):
+        # The matching method.
+        self.match_type = match_type
+        # The metric names.
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.match_type is not None:
+            result['matchType'] = self.match_type
+
+        if self.values is not None:
+            result['values'] = self.values
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('matchType') is not None:
+            self.match_type = m.get('matchType')
+
+        if m.get('values') is not None:
+            self.values = m.get('values')
+
+        return self
+
+class UpdateDataPipelineResponseBodyPipelineProcessorsConfigScopeConditions(DaraModel):
+    def __init__(
+        self,
+        field: main_models.UpdateDataPipelineResponseBodyPipelineProcessorsConfigScopeConditionsField = None,
+        match_type: str = None,
+        values: List[str] = None,
+    ):
+        # The field reference.
+        self.field = field
+        # The matching method.
+        self.match_type = match_type
+        # The match values.
+        self.values = values
+
+    def validate(self):
+        if self.field:
+            self.field.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.field is not None:
+            result['field'] = self.field.to_map()
+
+        if self.match_type is not None:
+            result['matchType'] = self.match_type
+
+        if self.values is not None:
+            result['values'] = self.values
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('field') is not None:
+            temp_model = main_models.UpdateDataPipelineResponseBodyPipelineProcessorsConfigScopeConditionsField()
+            self.field = temp_model.from_map(m.get('field'))
+
+        if m.get('matchType') is not None:
+            self.match_type = m.get('matchType')
+
+        if m.get('values') is not None:
+            self.values = m.get('values')
+
+        return self
+
+class UpdateDataPipelineResponseBodyPipelineProcessorsConfigScopeConditionsField(DaraModel):
+    def __init__(
+        self,
+        container: str = None,
+        kind: str = None,
+        name: str = None,
+        path: List[str] = None,
+    ):
+        # The JSON object container.
+        self.container = container
+        # The reference data type.
+        self.kind = kind
+        # The field or dimension name.
+        self.name = name
+        # The JSON literal key path.
+        self.path = path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.container is not None:
+            result['container'] = self.container
+
+        if self.kind is not None:
+            result['kind'] = self.kind
+
+        if self.name is not None:
+            result['name'] = self.name
+
+        if self.path is not None:
+            result['path'] = self.path
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('container') is not None:
+            self.container = m.get('container')
+
+        if m.get('kind') is not None:
+            self.kind = m.get('kind')
+
+        if m.get('name') is not None:
+            self.name = m.get('name')
+
+        if m.get('path') is not None:
+            self.path = m.get('path')
+
+        return self
+
 class UpdateDataPipelineResponseBodyPipelineProcessorsConfigRules(DaraModel):
     def __init__(
         self,
@@ -635,9 +929,9 @@ class UpdateDataPipelineResponseBodyPipelineProcessorsConfigRules(DaraModel):
         mode: str = None,
         types: List[str] = None,
     ):
-        # The retained prefix length.
+        # The length of the prefix to retain.
         self.keep_prefix = keep_prefix
-        # The retained suffix length.
+        # The length of the suffix to retain.
         self.keep_suffix = keep_suffix
         # The sensitive keywords.
         self.keys = keys
@@ -695,6 +989,80 @@ class UpdateDataPipelineResponseBodyPipelineProcessorsConfigRules(DaraModel):
 
         if m.get('types') is not None:
             self.types = m.get('types')
+
+        return self
+
+class UpdateDataPipelineResponseBodyPipelineProcessorsConfigProjections(DaraModel):
+    def __init__(
+        self,
+        source: str = None,
+        target: str = None,
+    ):
+        # The source field.
+        self.source = source
+        # The target field.
+        self.target = target
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.source is not None:
+            result['source'] = self.source
+
+        if self.target is not None:
+            result['target'] = self.target
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('source') is not None:
+            self.source = m.get('source')
+
+        if m.get('target') is not None:
+            self.target = m.get('target')
+
+        return self
+
+class UpdateDataPipelineResponseBodyPipelineProcessorsConfigAssignments(DaraModel):
+    def __init__(
+        self,
+        expression: str = None,
+        field: str = None,
+    ):
+        # The assignment expression.
+        self.expression = expression
+        # The output field.
+        self.field = field
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.expression is not None:
+            result['expression'] = self.expression
+
+        if self.field is not None:
+            result['field'] = self.field
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('expression') is not None:
+            self.expression = m.get('expression')
+
+        if m.get('field') is not None:
+            self.field = m.get('field')
 
         return self
 
@@ -795,21 +1163,33 @@ class UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfig(DaraModel):
     def __init__(
         self,
         applications: List[str] = None,
+        assignments: List[main_models.UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigAssignments] = None,
         expression: str = None,
         fields: List[str] = None,
+        parameters: Dict[str, Any] = None,
+        projections: List[main_models.UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigProjections] = None,
         rules: List[main_models.UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigRules] = None,
+        scope: main_models.UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigScope = None,
         script: str = None,
         selector: main_models.UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigSelector = None,
         target: main_models.UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigTarget = None,
     ):
-        # The application list.
+        # The list of applications.
         self.applications = applications
+        # The list of field assignments.
+        self.assignments = assignments
         # The filter expression.
         self.expression = expression
-        # The field list.
+        # The list of fields.
         self.fields = fields
-        # The masking rule list.
+        # The extended parameters.
+        self.parameters = parameters
+        # The list of field projections.
+        self.projections = projections
+        # The list of masking rules.
         self.rules = rules
+        # The scope in which the pipeline processing processor takes effect.
+        self.scope = scope
         # The SPL script.
         self.script = script
         # The service selector.
@@ -818,10 +1198,20 @@ class UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfig(DaraModel):
         self.target = target
 
     def validate(self):
+        if self.assignments:
+            for v1 in self.assignments:
+                 if v1:
+                    v1.validate()
+        if self.projections:
+            for v1 in self.projections:
+                 if v1:
+                    v1.validate()
         if self.rules:
             for v1 in self.rules:
                  if v1:
                     v1.validate()
+        if self.scope:
+            self.scope.validate()
         if self.selector:
             self.selector.validate()
         if self.target:
@@ -835,16 +1225,32 @@ class UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfig(DaraModel):
         if self.applications is not None:
             result['applications'] = self.applications
 
+        result['assignments'] = []
+        if self.assignments is not None:
+            for k1 in self.assignments:
+                result['assignments'].append(k1.to_map() if k1 else None)
+
         if self.expression is not None:
             result['expression'] = self.expression
 
         if self.fields is not None:
             result['fields'] = self.fields
 
+        if self.parameters is not None:
+            result['parameters'] = self.parameters
+
+        result['projections'] = []
+        if self.projections is not None:
+            for k1 in self.projections:
+                result['projections'].append(k1.to_map() if k1 else None)
+
         result['rules'] = []
         if self.rules is not None:
             for k1 in self.rules:
                 result['rules'].append(k1.to_map() if k1 else None)
+
+        if self.scope is not None:
+            result['scope'] = self.scope.to_map()
 
         if self.script is not None:
             result['script'] = self.script
@@ -862,17 +1268,36 @@ class UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfig(DaraModel):
         if m.get('applications') is not None:
             self.applications = m.get('applications')
 
+        self.assignments = []
+        if m.get('assignments') is not None:
+            for k1 in m.get('assignments'):
+                temp_model = main_models.UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigAssignments()
+                self.assignments.append(temp_model.from_map(k1))
+
         if m.get('expression') is not None:
             self.expression = m.get('expression')
 
         if m.get('fields') is not None:
             self.fields = m.get('fields')
 
+        if m.get('parameters') is not None:
+            self.parameters = m.get('parameters')
+
+        self.projections = []
+        if m.get('projections') is not None:
+            for k1 in m.get('projections'):
+                temp_model = main_models.UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigProjections()
+                self.projections.append(temp_model.from_map(k1))
+
         self.rules = []
         if m.get('rules') is not None:
             for k1 in m.get('rules'):
                 temp_model = main_models.UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigRules()
                 self.rules.append(temp_model.from_map(k1))
+
+        if m.get('scope') is not None:
+            temp_model = main_models.UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigScope()
+            self.scope = temp_model.from_map(m.get('scope'))
 
         if m.get('script') is not None:
             self.script = m.get('script')
@@ -920,7 +1345,7 @@ class UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigSelector(Dara
         self,
         service_names: List[str] = None,
     ):
-        # The service name list.
+        # The list of service names.
         self.service_names = service_names
 
     def validate(self):
@@ -943,6 +1368,243 @@ class UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigSelector(Dara
 
         return self
 
+class UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigScope(DaraModel):
+    def __init__(
+        self,
+        conditions: List[main_models.UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditions] = None,
+        metric_name: main_models.UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeMetricName = None,
+        service_name: main_models.UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeServiceName = None,
+    ):
+        # The additional field conditions.
+        self.conditions = conditions
+        # The metric name scope.
+        self.metric_name = metric_name
+        # The service name scope.
+        self.service_name = service_name
+
+    def validate(self):
+        if self.conditions:
+            for v1 in self.conditions:
+                 if v1:
+                    v1.validate()
+        if self.metric_name:
+            self.metric_name.validate()
+        if self.service_name:
+            self.service_name.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['conditions'] = []
+        if self.conditions is not None:
+            for k1 in self.conditions:
+                result['conditions'].append(k1.to_map() if k1 else None)
+
+        if self.metric_name is not None:
+            result['metricName'] = self.metric_name.to_map()
+
+        if self.service_name is not None:
+            result['serviceName'] = self.service_name.to_map()
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.conditions = []
+        if m.get('conditions') is not None:
+            for k1 in m.get('conditions'):
+                temp_model = main_models.UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditions()
+                self.conditions.append(temp_model.from_map(k1))
+
+        if m.get('metricName') is not None:
+            temp_model = main_models.UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeMetricName()
+            self.metric_name = temp_model.from_map(m.get('metricName'))
+
+        if m.get('serviceName') is not None:
+            temp_model = main_models.UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeServiceName()
+            self.service_name = temp_model.from_map(m.get('serviceName'))
+
+        return self
+
+class UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeServiceName(DaraModel):
+    def __init__(
+        self,
+        match_type: str = None,
+        values: List[str] = None,
+    ):
+        # The matching method.
+        self.match_type = match_type
+        # The match values.
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.match_type is not None:
+            result['matchType'] = self.match_type
+
+        if self.values is not None:
+            result['values'] = self.values
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('matchType') is not None:
+            self.match_type = m.get('matchType')
+
+        if m.get('values') is not None:
+            self.values = m.get('values')
+
+        return self
+
+class UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeMetricName(DaraModel):
+    def __init__(
+        self,
+        match_type: str = None,
+        values: List[str] = None,
+    ):
+        # The matching method.
+        self.match_type = match_type
+        # The metric names.
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.match_type is not None:
+            result['matchType'] = self.match_type
+
+        if self.values is not None:
+            result['values'] = self.values
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('matchType') is not None:
+            self.match_type = m.get('matchType')
+
+        if m.get('values') is not None:
+            self.values = m.get('values')
+
+        return self
+
+class UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditions(DaraModel):
+    def __init__(
+        self,
+        field: main_models.UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditionsField = None,
+        match_type: str = None,
+        values: List[str] = None,
+    ):
+        # The field reference.
+        self.field = field
+        # The matching method.
+        self.match_type = match_type
+        # The match values.
+        self.values = values
+
+    def validate(self):
+        if self.field:
+            self.field.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.field is not None:
+            result['field'] = self.field.to_map()
+
+        if self.match_type is not None:
+            result['matchType'] = self.match_type
+
+        if self.values is not None:
+            result['values'] = self.values
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('field') is not None:
+            temp_model = main_models.UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditionsField()
+            self.field = temp_model.from_map(m.get('field'))
+
+        if m.get('matchType') is not None:
+            self.match_type = m.get('matchType')
+
+        if m.get('values') is not None:
+            self.values = m.get('values')
+
+        return self
+
+class UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeConditionsField(DaraModel):
+    def __init__(
+        self,
+        container: str = None,
+        kind: str = None,
+        name: str = None,
+        path: List[str] = None,
+    ):
+        # The JSON object container.
+        self.container = container
+        # The reference data type.
+        self.kind = kind
+        # The field or dimension name.
+        self.name = name
+        # The JSON literal key path.
+        self.path = path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.container is not None:
+            result['container'] = self.container
+
+        if self.kind is not None:
+            result['kind'] = self.kind
+
+        if self.name is not None:
+            result['name'] = self.name
+
+        if self.path is not None:
+            result['path'] = self.path
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('container') is not None:
+            self.container = m.get('container')
+
+        if m.get('kind') is not None:
+            self.kind = m.get('kind')
+
+        if m.get('name') is not None:
+            self.name = m.get('name')
+
+        if m.get('path') is not None:
+            self.path = m.get('path')
+
+        return self
+
 class UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigRules(DaraModel):
     def __init__(
         self,
@@ -953,9 +1615,9 @@ class UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigRules(DaraMod
         mode: str = None,
         types: List[str] = None,
     ):
-        # The retained prefix length.
+        # The length of the prefix to retain.
         self.keep_prefix = keep_prefix
-        # The retained suffix length.
+        # The length of the suffix to retain.
         self.keep_suffix = keep_suffix
         # The sensitive keywords.
         self.keys = keys
@@ -1013,6 +1675,80 @@ class UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigRules(DaraMod
 
         if m.get('types') is not None:
             self.types = m.get('types')
+
+        return self
+
+class UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigProjections(DaraModel):
+    def __init__(
+        self,
+        source: str = None,
+        target: str = None,
+    ):
+        # The source field.
+        self.source = source
+        # The target field.
+        self.target = target
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.source is not None:
+            result['source'] = self.source
+
+        if self.target is not None:
+            result['target'] = self.target
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('source') is not None:
+            self.source = m.get('source')
+
+        if m.get('target') is not None:
+            self.target = m.get('target')
+
+        return self
+
+class UpdateDataPipelineResponseBodyPipelineOutputsProcessorsConfigAssignments(DaraModel):
+    def __init__(
+        self,
+        expression: str = None,
+        field: str = None,
+    ):
+        # The assignment expression.
+        self.expression = expression
+        # The output field.
+        self.field = field
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.expression is not None:
+            result['expression'] = self.expression
+
+        if self.field is not None:
+            result['field'] = self.field
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('expression') is not None:
+            self.expression = m.get('expression')
+
+        if m.get('field') is not None:
+            self.field = m.get('field')
 
         return self
 

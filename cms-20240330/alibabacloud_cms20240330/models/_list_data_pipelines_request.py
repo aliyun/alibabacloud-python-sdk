@@ -12,7 +12,7 @@ class ListDataPipelinesRequest(DaraModel):
     ):
         # The maximum number of results per page.
         self.max_results = max_results
-        # The token for the next page.
+        # The pagination token for the next page.
         self.next_token = next_token
 
     def validate(self):

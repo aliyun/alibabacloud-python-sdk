@@ -21,9 +21,9 @@ class CreatePrometheusViewRequest(DaraModel):
         version: str = None,
         workspace: str = None,
     ):
-        # Not in use.
+        # Not yet enabled.
         self.auth_free_read_policy = auth_free_read_policy
-        # Specifies whether anonymous read is supported.
+        # Specifies whether authentication-free read is supported.
         self.enable_auth_free_read = enable_auth_free_read
         # Specifies whether authToken is supported.
         self.enable_auth_token = enable_auth_token
@@ -37,13 +37,13 @@ class CreatePrometheusViewRequest(DaraModel):
         self.prometheus_view_name = prometheus_view_name
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Not in use.
+        # Not yet enabled.
         self.status = status
-        # The tags.
+        # The operation to perform.
         self.tags = tags
         # Valid values:
-        # - V1: legacy version
-        # - V2: new version.
+        # - V1: Legacy version.
+        # - V2: New version.
         # 
         # This parameter is required.
         self.version = version

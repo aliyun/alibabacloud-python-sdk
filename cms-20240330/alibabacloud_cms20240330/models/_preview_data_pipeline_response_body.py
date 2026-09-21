@@ -11,12 +11,15 @@ class PreviewDataPipelineResponseBody(DaraModel):
     def __init__(
         self,
         datasets: List[main_models.PreviewDataPipelineResponseBodyDatasets] = None,
+        diagnostics: Dict[str, Any] = None,
         effective_script: str = None,
         request_id: str = None,
     ):
         # The dataset preview results.
         self.datasets = datasets
-        # The effective SPL.
+        # The aggregated diagnostics.
+        self.diagnostics = diagnostics
+        # The effective SPL script.
         self.effective_script = effective_script
         # The request ID.
         self.request_id = request_id
@@ -37,6 +40,9 @@ class PreviewDataPipelineResponseBody(DaraModel):
             for k1 in self.datasets:
                 result['datasets'].append(k1.to_map() if k1 else None)
 
+        if self.diagnostics is not None:
+            result['diagnostics'] = self.diagnostics
+
         if self.effective_script is not None:
             result['effectiveScript'] = self.effective_script
 
@@ -52,6 +58,9 @@ class PreviewDataPipelineResponseBody(DaraModel):
             for k1 in m.get('datasets'):
                 temp_model = main_models.PreviewDataPipelineResponseBodyDatasets()
                 self.datasets.append(temp_model.from_map(k1))
+
+        if m.get('diagnostics') is not None:
+            self.diagnostics = m.get('diagnostics')
 
         if m.get('effectiveScript') is not None:
             self.effective_script = m.get('effectiveScript')
