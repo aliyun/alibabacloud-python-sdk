@@ -9,19 +9,22 @@ class ModifyVulConfigRequest(DaraModel):
         self,
         client_token: str = None,
         config: str = None,
+        dry_run: bool = None,
         type: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # Specifies whether to enable or disable vulnerability detection. Valid values:
         # 
-        # - **on**: Enable vulnerability detection.
-        # - **off**: Disable vulnerability detection.
+        # - **on**: Enables vulnerability detection.
+        # - **off**: Disables vulnerability detection.
         # 
         # > If the type is set to real risk, valid values:
         # > - **real**: Real risk vulnerabilities.
         # > - **all**: All vulnerabilities.
         self.config = config
+        # Specifies whether to perform only a dry run of the request. Valid values: true: performs only a dry run without performing the actual operation. false: performs the actual request. Default value: false.
+        self.dry_run = dry_run
         # The type of vulnerability to modify. Valid values:
         # 
         # - **cve**: Linux software vulnerability
@@ -47,6 +50,9 @@ class ModifyVulConfigRequest(DaraModel):
         if self.config is not None:
             result['Config'] = self.config
 
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+
         if self.type is not None:
             result['Type'] = self.type
 
@@ -59,6 +65,9 @@ class ModifyVulConfigRequest(DaraModel):
 
         if m.get('Config') is not None:
             self.config = m.get('Config')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
 
         if m.get('Type') is not None:
             self.type = m.get('Type')

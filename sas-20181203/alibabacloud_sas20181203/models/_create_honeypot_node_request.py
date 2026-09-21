@@ -25,7 +25,7 @@ class CreateHoneypotNodeRequest(DaraModel):
         # 
         # This parameter is required.
         self.node_name = node_name
-        # The list of allowed CIDR blocks. This parameter is required. At least one allowed CIDR block must be specified (such as 0.0.0.0/0). If this parameter is not specified, the API returns InvalidParam (400).
+        # The list of allowed CIDR blocks. This parameter is required. At least one allowed CIDR block must be specified, such as 0.0.0.0/0. If this parameter is not specified, the API returns InvalidParam (400).
         self.security_group_probe_ip_list = security_group_probe_ip_list
 
     def validate(self):

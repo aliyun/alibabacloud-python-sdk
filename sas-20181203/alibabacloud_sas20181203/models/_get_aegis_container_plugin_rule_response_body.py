@@ -63,7 +63,7 @@ class GetAegisContainerPluginRuleResponseBodyData(DaraModel):
     ):
         # The timestamp when the rule was created. Unit: milliseconds.
         self.gmt_create = gmt_create
-        # The timestamp when the rule was modified. Unit: milliseconds.
+        # The timestamp when the rule was last modified. Unit: milliseconds.
         self.gmt_modified = gmt_modified
         # The rule action mode. Valid values:
         # - **0**: Allow

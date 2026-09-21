@@ -72,11 +72,11 @@ class ListUnknownThreatDetectStrategyResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of entries displayed on the current page.
+        # The number of entries on the current page.
         self.count = count
-        # The page number of the current page in a paging query.
+        # The page number of the current page in a paged query. This is used for paging.
         self.current_page = current_page
-        # The maximum number of entries displayed on each page in a paging query.
+        # The maximum number of entries per page in a paged query. This is used for paging.
         self.page_size = page_size
         # The total number of entries returned.
         self.total_count = total_count

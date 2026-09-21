@@ -9,6 +9,7 @@ class UpdateSelectionKeyByTypeRequest(DaraModel):
         self,
         business_type: str = None,
         client_token: str = None,
+        dry_run: bool = None,
         selection_key: str = None,
     ):
         # The business type of asset selection. Valid values:
@@ -21,6 +22,13 @@ class UpdateSelectionKeyByTypeRequest(DaraModel):
         self.business_type = business_type
         # The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # 
+        # - true: performs only a dry run without performing the actual operation.
+        # - false: performs the actual request.
+        # 
+        # Default value: false.
+        self.dry_run = dry_run
         # The unique identifier of the asset selection.
         self.selection_key = selection_key
 
@@ -38,6 +46,9 @@ class UpdateSelectionKeyByTypeRequest(DaraModel):
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
 
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+
         if self.selection_key is not None:
             result['SelectionKey'] = self.selection_key
 
@@ -50,6 +61,9 @@ class UpdateSelectionKeyByTypeRequest(DaraModel):
 
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
 
         if m.get('SelectionKey') is not None:
             self.selection_key = m.get('SelectionKey')

@@ -21,8 +21,8 @@ class GetCloudAssetSummaryRequest(DaraModel):
         # - **true**: Returns sale-related data.
         # - **false**: Does not return sale-related data.
         self.is_sale_data = is_sale_data
-        # The ID of the member accounts in the resource folder.
-        # > Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+        # The ID of the Alibaba Cloud account of the resource directory member accounts.
+        # >Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
         # The list of cloud vendors to query.
         self.vendors = vendors
@@ -80,13 +80,13 @@ class GetCloudAssetSummaryRequestCloudAssetTypes(DaraModel):
         asset_type: int = None,
         vendor: int = None,
     ):
-        # The subtype of the cloud service. The asset type-subtype. Valid values:
+        # The subtype of the cloud service. Asset type-subtype. Valid values:
         # 
         # - **0**: Elastic Compute Service (ECS) server
         #     *  **1**: Cloud disk (storage)
         #     *  **2**: Security group
         #     *  **100**: Instance
-        # - **1**: Load balancing
+        # - **1**: load balancing
         #     *  **0**: Classic Load Balancer (CLB)
         #     *  **1**: Application Load Balancer (ALB)
         # - **3**: ApsaraDB RDS database
@@ -119,7 +119,7 @@ class GetCloudAssetSummaryRequestCloudAssetTypes(DaraModel):
         #     *  **0**: Domain name
         # - **18**: Object Storage Service (OSS)
         #     *  **0**: Bucket
-        # - **19**: Cloud-native relational database PolarDB
+        # - **19**: cloud-native relational database PolarDB
         #     *  **0**: Cluster
         # - **20**: ApsaraDB RDS for PostgreSQL database
         #     *  **0**: Instance
@@ -141,7 +141,7 @@ class GetCloudAssetSummaryRequestCloudAssetTypes(DaraModel):
         # The type of the asset. Valid values:
         # 
         # - **0**: Elastic Compute Service (ECS) server
-        # - **1**: Load balancing
+        # - **1**: load balancing
         # - **3**: ApsaraDB RDS database
         # - **4**: ApsaraDB for MongoDB database
         # - **5**: Tair (Redis® OSS-Compatible) database
@@ -155,7 +155,7 @@ class GetCloudAssetSummaryRequestCloudAssetTypes(DaraModel):
         # - **16**: Anti-DDoS
         # - **17**: Web Application Firewall (WAF)
         # - **18**: Object Storage Service (OSS)
-        # - **19**: Cloud-native relational database PolarDB
+        # - **19**: cloud-native relational database PolarDB
         # - **20**: ApsaraDB RDS for PostgreSQL database
         # - **21**: Microservices Engine (MSE)
         # - **22**: Apsara File Storage NAS

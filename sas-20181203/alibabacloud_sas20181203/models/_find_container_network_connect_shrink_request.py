@@ -17,20 +17,30 @@ class FindContainerNetworkConnectShrinkRequest(DaraModel):
     ):
         # The query type of the element to query. Valid values:
         # 
-        # - **EDGE**: connection information
+        # - **EDGE**: connection information.
+        # 
+        # This parameter is required. If this parameter is not specified, the service returns error code -101.
         self.criteria_type = criteria_type
-        # The page number of the page to return in a paged query. Default value: **1**, which indicates that the first page is returned.
+        # The page number of the page to return in a paginated query. Default value: **1**, which indicates the first page.
         self.current_page = current_page
         # The destination node information, which is used to filter destination nodes.
+        # 
+        # This parameter is required. If this parameter is not specified, the service returns error code -101.
         self.dst_node_shrink = dst_node_shrink
         # The end time of the network connectivity. Specify a UNIX timestamp in milliseconds.
+        # 
+        # This parameter is required. If this parameter is not specified, the service returns error code -101.
         self.end_time = end_time
-        # The maximum number of entries per page in a paged query. Default value: 20. If the PageSize parameter is left empty, 20 entries are returned by default.
+        # The maximum number of entries per page when paging is used. Default value: 20. If this parameter is left empty, 20 entries are returned.
         # > Do not leave PageSize empty.
         self.page_size = page_size
         # The source node information, which is used to filter source nodes.
+        # 
+        # This parameter is required. If this parameter is not specified, the service returns error code -101.
         self.src_node_shrink = src_node_shrink
         # The start time of the network connectivity. Specify a UNIX timestamp in milliseconds.
+        # 
+        # This parameter is required. If this parameter is not specified, the service returns error code -101.
         self.start_time = start_time
 
     def validate(self):

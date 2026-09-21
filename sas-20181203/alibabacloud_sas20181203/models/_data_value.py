@@ -7,6 +7,17 @@ from darabonba.model import DaraModel
 class DataValue(DaraModel):
     def __init__(
         self,
+        risk_machine: int = None,
+        scan_machine: int = None,
+        malicious_file: int = None,
+        vulnerability: int = None,
+        last_task_time: int = None,
+        baseline_check_count: int = None,
+        sca_vul_count: int = None,
+        cve_vul_count: int = None,
+        sys_vul_count: int = None,
+        sensitive_file_count: int = None,
+        estimate_used_size: int = None,
         cve_num: int = None,
         emg_num: int = None,
         sys_num: int = None,
@@ -18,6 +29,28 @@ class DataValue(DaraModel):
         vul_nntf_sum: int = None,
         sys_asap_num: int = None,
     ):
+        # The number of risky hosts.
+        self.risk_machine = risk_machine
+        # The number of scanned hosts.
+        self.scan_machine = scan_machine
+        # The total number of malicious sample files.
+        self.malicious_file = malicious_file
+        # The number of vulnerability risks.
+        self.vulnerability = vulnerability
+        # The timestamp of the last scan time. Unit: milliseconds.
+        self.last_task_time = last_task_time
+        # The total number of baseline check items.
+        self.baseline_check_count = baseline_check_count
+        # The total number of application vulnerabilities.
+        self.sca_vul_count = sca_vul_count
+        # The total number of system vulnerabilities.
+        self.cve_vul_count = cve_vul_count
+        # The total number of Windows system vulnerabilities.
+        self.sys_vul_count = sys_vul_count
+        # The total number of sensitive files.
+        self.sensitive_file_count = sensitive_file_count
+        # The estimated detection volume. Unit: GB. This field is not returned by the batch statistics operation.
+        self.estimate_used_size = estimate_used_size
         # The number of Linux software vulnerabilities.
         self.cve_num = cve_num
         # The number of emergency vulnerabilities. This field is 0 when ImageVul is set to true.
@@ -47,6 +80,39 @@ class DataValue(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.risk_machine is not None:
+            result['RiskMachine'] = self.risk_machine
+
+        if self.scan_machine is not None:
+            result['ScanMachine'] = self.scan_machine
+
+        if self.malicious_file is not None:
+            result['MaliciousFile'] = self.malicious_file
+
+        if self.vulnerability is not None:
+            result['Vulnerability'] = self.vulnerability
+
+        if self.last_task_time is not None:
+            result['LastTaskTime'] = self.last_task_time
+
+        if self.baseline_check_count is not None:
+            result['BaselineCheckCount'] = self.baseline_check_count
+
+        if self.sca_vul_count is not None:
+            result['ScaVulCount'] = self.sca_vul_count
+
+        if self.cve_vul_count is not None:
+            result['CveVulCount'] = self.cve_vul_count
+
+        if self.sys_vul_count is not None:
+            result['SysVulCount'] = self.sys_vul_count
+
+        if self.sensitive_file_count is not None:
+            result['SensitiveFileCount'] = self.sensitive_file_count
+
+        if self.estimate_used_size is not None:
+            result['EstimateUsedSize'] = self.estimate_used_size
+
         if self.cve_num is not None:
             result['CveNum'] = self.cve_num
 
@@ -81,6 +147,39 @@ class DataValue(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RiskMachine') is not None:
+            self.risk_machine = m.get('RiskMachine')
+
+        if m.get('ScanMachine') is not None:
+            self.scan_machine = m.get('ScanMachine')
+
+        if m.get('MaliciousFile') is not None:
+            self.malicious_file = m.get('MaliciousFile')
+
+        if m.get('Vulnerability') is not None:
+            self.vulnerability = m.get('Vulnerability')
+
+        if m.get('LastTaskTime') is not None:
+            self.last_task_time = m.get('LastTaskTime')
+
+        if m.get('BaselineCheckCount') is not None:
+            self.baseline_check_count = m.get('BaselineCheckCount')
+
+        if m.get('ScaVulCount') is not None:
+            self.sca_vul_count = m.get('ScaVulCount')
+
+        if m.get('CveVulCount') is not None:
+            self.cve_vul_count = m.get('CveVulCount')
+
+        if m.get('SysVulCount') is not None:
+            self.sys_vul_count = m.get('SysVulCount')
+
+        if m.get('SensitiveFileCount') is not None:
+            self.sensitive_file_count = m.get('SensitiveFileCount')
+
+        if m.get('EstimateUsedSize') is not None:
+            self.estimate_used_size = m.get('EstimateUsedSize')
+
         if m.get('CveNum') is not None:
             self.cve_num = m.get('CveNum')
 

@@ -9,19 +9,22 @@ class OperateCommonOverallConfigRequest(DaraModel):
         self,
         client_token: str = None,
         config: str = None,
+        dry_run: bool = None,
         no_target_as_on: bool = None,
         source_ip: str = None,
         type: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. Use a different token for each request. The token supports only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The switch status. Valid values:
         # 
-        # - **on**: Enabled.
-        # - **off**: Disabled.
+        # - **on**: enabled
+        # - **off**: disabled
         # 
         # This parameter is required.
         self.config = config
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values: true: performs only a dry run without performing the actual request. false: performs the actual request. Default value: false.
+        self.dry_run = dry_run
         # Specifies whether asset configuration is required. Default value: **false**. Valid values:
         # - **true**: Required.
         # - **false**: Not required.
@@ -31,8 +34,8 @@ class OperateCommonOverallConfigRequest(DaraModel):
         self.source_ip = source_ip
         # The configuration type. Valid values:
         # 
-        # - **kdump_switch**: proactive defense experience optimization
-        # - **threat_detect**: adaptive threat detection capability
+        # - **kdump_switch**: proactive defense optimization
+        # - **threat_detect**: adaptive threat detection
         # - **suspicious_aggregation**: alert association
         # - **alidetect**: file detection
         # - **USER-ENABLE-SWITCH-TYPE_38857**: Linux entry service performs high-risk operations
@@ -70,8 +73,8 @@ class OperateCommonOverallConfigRequest(DaraModel):
         # - **USER-ENABLE-SWITCH-TYPE_54369**: Windows creates WMI auto-start items
         # - **USER-ENABLE-SWITCH-TYPE_50869**: Linux privilege escalation to execute high-risk commands
         # - **USER-ENABLE-SWITCH-TYPE_53272**: Linux kernel vulnerability exploitation for privilege escalation
-        # - **USER-ENABLE-SWITCH-TYPE_54395**: Linux privilege escalation to read/write sensitive files
-        # - **USER-ENABLE-SWITCH-TYPE_57897**: Linux suspected privilege escalation behavior
+        # - **USER-ENABLE-SWITCH-TYPE_54395**: Linux privilege escalation to read or write sensitive files
+        # - **USER-ENABLE-SWITCH-TYPE_57897**: Linux suspected privilege escalation
         # - **USER-ENABLE-SWITCH-TYPE_52825**: Windows privilege escalation to execute high-risk commands
         # - **USER-ENABLE-SWITCH-TYPE_5507**: Linux malicious driver
         # - **USER-ENABLE-SWITCH-TYPE_50876**: Linux anti-security software
@@ -119,6 +122,9 @@ class OperateCommonOverallConfigRequest(DaraModel):
         if self.config is not None:
             result['Config'] = self.config
 
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+
         if self.no_target_as_on is not None:
             result['NoTargetAsOn'] = self.no_target_as_on
 
@@ -137,6 +143,9 @@ class OperateCommonOverallConfigRequest(DaraModel):
 
         if m.get('Config') is not None:
             self.config = m.get('Config')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
 
         if m.get('NoTargetAsOn') is not None:
             self.no_target_as_on = m.get('NoTargetAsOn')

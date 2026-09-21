@@ -13,19 +13,22 @@ class AddAssetSelectionCriteriaRequest(DaraModel):
         client_token: str = None,
         criteria: str = None,
         criteria_operation: str = None,
+        dry_run: bool = None,
         selection_key: str = None,
         target_operation_list: List[main_models.AddAssetSelectionCriteriaRequestTargetOperationList] = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The conditions for searching assets. This parameter is in JSON format. Pay attention to the letter case when you specify this parameter.
         # > You can search for assets by instance ID, instance name, VPC ID, region, public IP address, and other conditions. Call the [DescribeCriteria](~~DescribeCriteria~~) operation to query the supported search conditions.
         self.criteria = criteria
-        # The operation type for criteria. Valid values:
+        # The operation type for the criteria. Valid values:
         # 
         # - **add**: adds assets.
         # - **del**: deletes assets.
         self.criteria_operation = criteria_operation
+        # Specifies whether to perform only a dry run. true: performs only a dry run without executing the actual operation. false: performs the actual operation. Default value: false.
+        self.dry_run = dry_run
         # The unique identifier of the asset selection.
         # 
         # This parameter is required.
@@ -53,6 +56,9 @@ class AddAssetSelectionCriteriaRequest(DaraModel):
         if self.criteria_operation is not None:
             result['CriteriaOperation'] = self.criteria_operation
 
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+
         if self.selection_key is not None:
             result['SelectionKey'] = self.selection_key
 
@@ -73,6 +79,9 @@ class AddAssetSelectionCriteriaRequest(DaraModel):
 
         if m.get('CriteriaOperation') is not None:
             self.criteria_operation = m.get('CriteriaOperation')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
 
         if m.get('SelectionKey') is not None:
             self.selection_key = m.get('SelectionKey')
@@ -95,10 +104,10 @@ class AddAssetSelectionCriteriaRequestTargetOperationList(DaraModel):
     ):
         # The operation type. Valid values:
         # 
-        # - **add**: adds the asset.
-        # - **del**: deletes the asset.
+        # - **add**: Add.
+        # - **del**: Delete.
         self.operation = operation
-        # The asset ID. If you select assets by machine, the value is the UUID of the machine. If you select assets by group, the value is the group ID. If you select assets by VPC, the value is the VPC ID.
+        # The asset ID. If you select assets by server, set this parameter to the UUID of the server. If you select assets by group, set this parameter to the group ID. If you select assets by VPC, set this parameter to the VPC ID.
         self.target = target
 
     def validate(self):

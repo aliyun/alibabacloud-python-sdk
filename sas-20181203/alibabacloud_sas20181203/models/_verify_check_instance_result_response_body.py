@@ -57,8 +57,8 @@ class VerifyCheckInstanceResultResponseBodyData(DaraModel):
         self.fail_instances = fail_instances
         # The operation code of the cloud service configuration check task. Valid values:
         # 
-        # - **Throttling**: Rate limited.
-        # - **ActionTrialUnauthorized**: Unauthorized error.
+        # - **Throttling**: rate limit.
+        # - **ActionTrialUnauthorized**: unauthorized error.
         self.operate_code = operate_code
         # The task ID.
         self.task_id = task_id

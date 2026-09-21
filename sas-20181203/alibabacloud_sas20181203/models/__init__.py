@@ -1470,6 +1470,9 @@ from ._get_aegis_container_plugin_rule_criteria_response import GetAegisContaine
 from ._get_agentless_task_count_request import GetAgentlessTaskCountRequest
 from ._get_agentless_task_count_response_body import GetAgentlessTaskCountResponseBody
 from ._get_agentless_task_count_response import GetAgentlessTaskCountResponse
+from ._get_agentless_task_count_batch_request import GetAgentlessTaskCountBatchRequest
+from ._get_agentless_task_count_batch_response_body import GetAgentlessTaskCountBatchResponseBody
+from ._get_agentless_task_count_batch_response import GetAgentlessTaskCountBatchResponse
 from ._get_agentless_task_used_size_estimate_request import GetAgentlessTaskUsedSizeEstimateRequest
 from ._get_agentless_task_used_size_estimate_response_body import GetAgentlessTaskUsedSizeEstimateResponseBody
 from ._get_agentless_task_used_size_estimate_response import GetAgentlessTaskUsedSizeEstimateResponse
@@ -3845,6 +3848,7 @@ from ._list_unknown_threat_detect_event_response_body import ListUnknownThreatDe
 from ._list_unknown_threat_detect_event_response_body import ListUnknownThreatDetectEventResponseBodyPageInfo
 from ._list_unknown_threat_detect_machine_response_body import ListUnknownThreatDetectMachineResponseBodyData
 from ._list_unknown_threat_detect_machine_response_body import ListUnknownThreatDetectMachineResponseBodyPageInfo
+from ._list_unknown_threat_detect_process_response_body import ListUnknownThreatDetectProcessResponseBodyDataTags
 from ._list_unknown_threat_detect_process_response_body import ListUnknownThreatDetectProcessResponseBodyData
 from ._list_unknown_threat_detect_process_response_body import ListUnknownThreatDetectProcessResponseBodyPageInfo
 from ._list_unknown_threat_detect_strategy_response_body import ListUnknownThreatDetectStrategyResponseBodyData
@@ -5419,6 +5423,9 @@ __all__ = [
     GetAgentlessTaskCountRequest,
     GetAgentlessTaskCountResponseBody,
     GetAgentlessTaskCountResponse,
+    GetAgentlessTaskCountBatchRequest,
+    GetAgentlessTaskCountBatchResponseBody,
+    GetAgentlessTaskCountBatchResponse,
     GetAgentlessTaskUsedSizeEstimateRequest,
     GetAgentlessTaskUsedSizeEstimateResponseBody,
     GetAgentlessTaskUsedSizeEstimateResponse,
@@ -7794,6 +7801,7 @@ __all__ = [
     ListUnknownThreatDetectEventResponseBodyPageInfo,
     ListUnknownThreatDetectMachineResponseBodyData,
     ListUnknownThreatDetectMachineResponseBodyPageInfo,
+    ListUnknownThreatDetectProcessResponseBodyDataTags,
     ListUnknownThreatDetectProcessResponseBodyData,
     ListUnknownThreatDetectProcessResponseBodyPageInfo,
     ListUnknownThreatDetectStrategyResponseBodyData,

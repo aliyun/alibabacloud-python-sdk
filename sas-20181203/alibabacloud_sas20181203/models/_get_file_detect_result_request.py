@@ -13,7 +13,7 @@ class GetFileDetectResultRequest(DaraModel):
         source_ip: str = None,
         type: int = None,
     ):
-        # The list of file identifiers. A maximum of 100 elements can be specified.
+        # The list of file identifiers. A maximum of 200 elements can be specified.
         # 
         # This parameter is required.
         self.hash_key_list = hash_key_list

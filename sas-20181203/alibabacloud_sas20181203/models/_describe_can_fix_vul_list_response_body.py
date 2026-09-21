@@ -15,7 +15,7 @@ class DescribeCanFixVulListResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The vulnerability information returned.
+        # The vulnerability information returned by the query.
         self.vul_records = vul_records
 
     def validate(self):
@@ -93,13 +93,13 @@ class DescribeCanFixVulListResponseBodyVulRecords(DaraModel):
         self.alias_name = alias_name
         # Indicates whether the vulnerability can be fixed in the console. Valid values:
         # 
-        # - **yes**: Fixable.
-        # - **no**: Not fixable.
+        # - **yes**: The vulnerability can be fixed.
+        # - **no**: The vulnerability cannot be fixed.
         self.can_fix = can_fix
-        # Specifies whether the software package that causes the vulnerability can be upgraded through Security Center. Valid values:
+        # Indicates whether the software package that causes the vulnerability can be upgraded by using Security Center. Valid values:
         # 
-        # - **true**: Supported.
-        # - **false**: Not supported.
+        # - **true**: The upgrade is supported.
+        # - **false**: The upgrade is not supported.
         self.can_update = can_update
         # The cluster ID.
         self.cluster_id = cluster_id
@@ -109,7 +109,7 @@ class DescribeCanFixVulListResponseBodyVulRecords(DaraModel):
         self.container_id = container_id
         # The extended content of the vulnerability information.
         self.extend_content_json = extend_content_json
-        # The timestamp when the vulnerability was first detected, in milliseconds.
+        # The timestamp when the vulnerability was first detected. Unit: milliseconds.
         self.first_ts = first_ts
         # The image name.
         self.image = image
@@ -123,7 +123,7 @@ class DescribeCanFixVulListResponseBodyVulRecords(DaraModel):
         self.internet_ip = internet_ip
         # The private IP address of the asset.
         self.intranet_ip = intranet_ip
-        # The timestamp when the vulnerability was last detected, in milliseconds.
+        # The timestamp when the vulnerability was last detected. Unit: milliseconds.
         self.last_ts = last_ts
         # The list of container image layers.
         self.layers = layers
@@ -133,7 +133,7 @@ class DescribeCanFixVulListResponseBodyVulRecords(DaraModel):
         # - **image**: Image.
         # - **container**: Container.
         self.malicious_source = malicious_source
-        # The timestamp when the vulnerability status was modified, in milliseconds.
+        # The timestamp when the vulnerability status was modified. Unit: milliseconds.
         self.modify_ts = modify_ts
         # The name of the vulnerability.
         self.name = name
@@ -141,11 +141,11 @@ class DescribeCanFixVulListResponseBodyVulRecords(DaraModel):
         self.namespace = namespace
         # The priority level of the vulnerability fix. Valid values:
         # 
-        # - **asap**: High.
-        # - **later**: Medium.
-        # - **nntf**: Low.
+        # - **asap**: high
+        # - **later**: medium
+        # - **nntf**: low
         # 
-        # > Fix vulnerabilities with the **High** priority level as soon as possible.
+        # > Fix vulnerabilities with the **high** priority level as soon as possible.
         self.necessity = necessity
         # The name of the pod.
         self.pod = pod
@@ -157,7 +157,7 @@ class DescribeCanFixVulListResponseBodyVulRecords(DaraModel):
         self.repo_name = repo_name
         # The namespace of the container image repository.
         self.repo_namespace = repo_namespace
-        # The timestamp of the scan, in milliseconds.
+        # The timestamp of the scan. Unit: milliseconds.
         self.scan_time = scan_time
         # The fix status of the vulnerability. Valid values:
         # - **1**: Unfixed.
@@ -178,7 +178,7 @@ class DescribeCanFixVulListResponseBodyVulRecords(DaraModel):
         self.target_type = target_type
         # The vulnerability type. Valid values:
         # - **cve**: system vulnerability
-        # - **sca**: application vulnerability.
+        # - **sca**: application vulnerability
         self.type = type
         # The UUID of the container image.
         self.uuid = uuid
@@ -467,7 +467,7 @@ class DescribeCanFixVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList(
         self.full_version = full_version
         # The SHA256 value of the container image layer digest.
         self.layer = layer
-        # The detailed information about the vulnerability match.
+        # The details of the vulnerability match.
         self.match_detail = match_detail
         # The rule hits.
         self.match_list = match_list
@@ -475,7 +475,7 @@ class DescribeCanFixVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList(
         self.name = name
         # The path of the software that contains the vulnerability.
         self.path = path
-        # The command used to fix the vulnerability.
+        # The command to fix the vulnerability.
         self.update_cmd = update_cmd
         # The version number of the software package.
         self.version = version

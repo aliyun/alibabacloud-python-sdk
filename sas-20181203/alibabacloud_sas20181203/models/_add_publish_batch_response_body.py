@@ -10,7 +10,7 @@ class AddPublishBatchResponseBody(DaraModel):
         batch_id: int = None,
         request_id: str = None,
     ):
-        # The ID of the release batch.
+        # The release batch ID.
         self.batch_id = batch_id
         # The request ID.
         self.request_id = request_id

@@ -10,12 +10,12 @@ class DescribeEventOnStageRequest(DaraModel):
         lang: str = None,
         resource_directory_account_id: int = None,
     ):
-        # The language of the request and response. Default value: **zh**. Valid values:
+        # The language type for the request and response. Default value: **zh**. Valid values:
         # 
         # - **zh**: Chinese
         # - **en**: English
         self.lang = lang
-        # The Alibaba Cloud account ID of the member accounts in the resource folder.
+        # The Alibaba Cloud account ID of the member accounts in the resource directory folder.
         # >You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
 

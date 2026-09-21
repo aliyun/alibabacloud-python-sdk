@@ -17,11 +17,11 @@ class DescribeVulWhitelistResponseBody(DaraModel):
         total_count: int = None,
         vul_whitelists: List[main_models.DescribeVulWhitelistResponseBodyVulWhitelists] = None,
     ):
-        # The number of entries on the current page when paging.
+        # The number of entries on the current page in the paged query.
         self.count = count
-        # The current page number when paging.
+        # The page number of the current page in the paged query.
         self.current_page = current_page
-        # The number of entries per page when paging.
+        # The number of entries per page in the paged query.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id

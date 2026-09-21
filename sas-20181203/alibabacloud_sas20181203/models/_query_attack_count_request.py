@@ -13,16 +13,18 @@ class QueryAttackCountRequest(DaraModel):
         source_ip: str = None,
         uuids: str = None,
     ):
-        # The source identifier of the request. Set this parameter to sas.
+        # The source of the request. Set this parameter to sas.
         self.from_ = from_
-        # The language of the request and response. Default value: **zh**. Valid values:
+        # The language of the content in the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English.
+        # - **en**: English
         self.lang = lang
+        # The Alibaba Cloud account ID of the member account in the resource directory.
+        # >Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
         # The IP address of the access source.
         self.source_ip = source_ip
-        # The UUID of the server. Separate multiple UUIDs with commas (,).
+        # The UUIDs of the servers. Separate multiple UUIDs with commas (,).
         # > Call the [DescribeCloudCenterInstances](https://help.aliyun.com/document_detail/141932.html) operation to obtain this parameter.
         self.uuids = uuids
 

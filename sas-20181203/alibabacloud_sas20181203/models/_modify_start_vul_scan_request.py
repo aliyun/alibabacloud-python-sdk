@@ -8,16 +8,23 @@ class ModifyStartVulScanRequest(DaraModel):
     def __init__(
         self,
         client_token: str = None,
+        dry_run: bool = None,
         resource_directory_account_id: int = None,
         types: str = None,
         uuids: str = None,
     ):
         # The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # - true: performs only a dry run without performing the actual operation.
+        # - false: performs the actual request.
+        # 
+        # Default value: false.
+        self.dry_run = dry_run
         # The Alibaba Cloud account ID of the member accounts in the resource folder.
         # > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
-        # Settings for the vulnerability types to detect by using the one-click scan feature. Valid values:
+        # Settings for the vulnerability types to be detected by the one-click scan feature. Valid values:
         # - **cve**: Linux software vulnerability.
         # - **sys**: Windows system vulnerability.
         # - **cms**: Web-CMS vulnerability.
@@ -27,7 +34,7 @@ class ModifyStartVulScanRequest(DaraModel):
         # - **sca**: Application vulnerability detected by software constituency parsing.
         # > If this parameter is left empty, all vulnerability types are detected.
         self.types = types
-        # The UUIDs of the servers. Separate multiple UUIDs with commas (,).
+        # The list of server UUIDs. Separate multiple UUIDs with commas (,).
         # 
         # 
         # > You can call the [DescribeCloudCenterInstances](https://help.aliyun.com/document_detail/421726.html) operation to obtain this parameter.
@@ -44,6 +51,9 @@ class ModifyStartVulScanRequest(DaraModel):
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
 
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+
         if self.resource_directory_account_id is not None:
             result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
 
@@ -59,6 +69,9 @@ class ModifyStartVulScanRequest(DaraModel):
         m = m or dict()
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
 
         if m.get('ResourceDirectoryAccountId') is not None:
             self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')

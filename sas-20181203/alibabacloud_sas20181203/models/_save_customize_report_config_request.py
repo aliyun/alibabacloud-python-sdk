@@ -29,106 +29,91 @@ class SaveCustomizeReportConfigRequest(DaraModel):
         target_uids: str = None,
         title: str = None,
     ):
-        # The grouping type. Valid values:
-        # 
-        # *   **ALIYUN_RG**
-        # *   **SAS_GROUP**
-        # 
-        # >  This parameter is supported only in version 2.0.0.
+        # The group type. Valid values:
+        # - **ALIYUN_RG**: Alibaba Cloud resource group.
+        # - **SAS_GROUP**: Security Center group.
+        # > This parameter is supported only in version 2.0.0.
         self.group_type = group_type
-        # Whether the new account is connected by default. Values: 
-        # - **true**: Yes. 
-        # - **false**: No. 
-        # > Only supported in version 2.0.0.
+        # Specifies whether newly added accounts are included by default. Valid values:
+        # - **true**: Yes.
+        # - **false**: No.
+        # > This parameter is supported only in version 2.0.0.
         self.member_account_sync_flag = member_account_sync_flag
-        # The time when the report is pinned. Unit: milliseconds.
+        # The pinned time. Unit: milliseconds.
         # 
-        # >  This parameter is supported only in version 2.0.0.
+        # > This parameter is supported only in version 2.0.0.
         self.pinned_time = pinned_time
-        # The email address of the recipient. Separate multiple email addresses with commas (,).
+        # The email addresses of contacts. Separate multiple email addresses with commas (,).
         # 
         # This parameter is required.
         self.recipients = recipients
-        # The most recent days for report statistics.
-        # 
-        # >  This parameter is supported only in version 2.0.0.
+        # The number of recent days for report statistics.
+        # > This parameter is supported only in version 2.0.0.
         self.report_days = report_days
-        # The end date on which the report is sent. The value is in the yyyy-MM-dd format.
-        # 
-        # >  This parameter is required if the ReportType parameter is set to 3.
+        # The end date for report statistics. Format: yyyy-MM-dd.
+        # > This parameter is required when ReportType is set to 3.
         self.report_end_date = report_end_date
-        # The ID of the report.
-        # 
-        # >  You can call the [DescribeCustomizeReportList](~~DescribeCustomizeReportList~~) operation to query the ID.
+        # The report ID.
+        # >Call [DescribeCustomizeReportList](~~DescribeCustomizeReportList~~) to obtain this parameter.
         self.report_id = report_id
         # The language of the report. Default value: **zh**. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.report_lang = report_lang
-        # The time range in which the report is sent. Valid values:
-        # 
-        # *   **1**: 00:00 to 06:00.
-        # *   **2**: 06:00 to 12:00.
-        # *   **3**: 12:00 to 18:00.
-        # *   **4**: 18:00 to 24:00.
+        # The report sending type. Valid values:
+        # - **1**: 0:00 to 6:00.
+        # - **2**: 6:00 to 12:00.
+        # - **3**: 12:00 to 18:00.
+        # - **4**: 18:00 to 24:00.
         self.report_send_type = report_send_type
-        # The start date on which the report is sent. The value is in the yyyy-MM-dd format.
-        # 
-        # >  This parameter is required if the ReportType parameter is set to 3.
+        # The start date for report statistics. Format: yyyy-MM-dd.
+        # > This parameter is required when ReportType is set to 3.
         self.report_start_date = report_start_date
-        # The status of the report. Valid values:
-        # 
-        # *   **0**: disabled.
-        # *   **1**: enabled.
+        # The report status. Valid values:
+        #  - **0**: disabled.
+        #  - **1**: enabled.
         # 
         # This parameter is required.
         self.report_status = report_status
-        # The type of the report. Valid values:
+        # The report type. Valid values:
         # 
-        # *   **0**: daily report.
-        # *   **1**: weekly report.
-        # *   **2**: monthly report.
-        # *   **3**: report whose statistics are collected within a custom time range.
-        # *   **4**: report of the most recent time range.
+        # - **0**: daily report.
+        # - **1**: weekly report.
+        # - **2**: monthly report.
+        # - **3**: custom period.
+        # - **4**: latest period.
         # 
         # This parameter is required.
         self.report_type = report_type
-        # The version of the report. Valid values:
-        # 
-        # *   **1.0.0**
-        # *   **2.0.0**
+        # The security report version. Valid values:
+        # - **1.0.0**
+        # - **2.0.0**
         self.report_version = report_version
+        # The Alibaba Cloud account ID of the member accounts in the resource folder.
+        # >Invoke [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
-        # The end time at which the report is sent. The value is in the HH:mm:ss format.
-        # 
-        # >  This parameter is required if the ReportType parameter is set to 0, 1, 2, or 4.
+        # The send end time. Format: HH:mm:ss.
+        # > This parameter is required when ReportType is set to 0, 1, 2, or 4.
         self.send_end_time = send_end_time
-        # The exact day within the sending period.
-        # 
-        # >  This parameter is supported only in version 2.0.0.
+        # The specific execution dates within the send period.
+        # > This parameter is supported only in version 2.0.0.
         self.send_period_days = send_period_days
-        # The interval at which the report is sent. Valid values:
-        # 
-        # *   **DAY**
-        # *   **WEEK**
-        # *   **MONTH**
-        # 
-        # >  This parameter is supported only in version 2.0.0.
+        # The send period type. Valid values:
+        # - **DAY**: day.
+        # - **WEEK**: week.
+        # - **MONTH**: month.
+        # > This parameter is supported only in version 2.0.0.
         self.send_period_type = send_period_type
-        # The start time at which the report is sent. The value is in the HH:mm:ss format.
-        # 
-        # >  This parameter is required if the ReportType parameter is set to 0, 1, 2, or 4.
+        # The send start time. Format: HH:mm:ss.
+        # > This parameter is required when ReportType is set to 0, 1, 2, or 4.
         self.send_start_time = send_start_time
-        # The groups.
-        # 
-        # >  This parameter is supported only in version 2.0.0.
+        # The targets within the group.
+        # > This parameter is supported only in version 2.0.0.
         self.target_groups = target_groups
-        # The ID of the Alibaba Cloud account. Separate multiple IDs with commas (,).
-        # 
-        # >  This parameter is supported only in version 2.0.0.
+        # The list of target users. Separate multiple values with commas (,).
+        # > This parameter is supported only in version 2.0.0.
         self.target_uids = target_uids
-        # The title of the report.
+        # The report name.
         # 
         # This parameter is required.
         self.title = title

@@ -2,29 +2,37 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import Dict
+
+from alibabacloud_sas20181203 import models as main_models
 from darabonba.model import DaraModel
 
-class CreateCycleTaskResponseBody(DaraModel):
+class GetAgentlessTaskCountBatchResponseBody(DaraModel):
     def __init__(
         self,
-        config_id: str = None,
+        data: Dict[str, main_models.DataValue] = None,
         request_id: str = None,
     ):
-        # The ID of the configuration.
-        self.config_id = config_id
+        # The statistics grouped by resource UUID. The key of the map is the resource UUID.
+        self.data = data
         # The request ID. Alibaba Cloud generates a unique identifier for each request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
-        pass
+        if self.data:
+            for v1 in self.data.values():
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.config_id is not None:
-            result['ConfigId'] = self.config_id
+        result['Data'] = {}
+        if self.data is not None:
+            for k1, v1 in self.data.items():
+                result['Data'][k1] = v1.to_map() if v1 else None
 
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -33,8 +41,11 @@ class CreateCycleTaskResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ConfigId') is not None:
-            self.config_id = m.get('ConfigId')
+        self.data = {}
+        if m.get('Data') is not None:
+            for k1, v1 in m.get('Data').items():
+                temp_model = main_models.DataValue()
+                self.data[k1] = temp_model.from_map(v1)
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')

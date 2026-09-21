@@ -20,66 +20,63 @@ class CreateUniBackupPolicyShrinkRequest(DaraModel):
         uni_region_id: str = None,
         uuid: str = None,
     ):
-        # The name of the database account.
+        # The username of the database account.
         self.account_name = account_name
         # The password of the database account.
         self.account_password = account_password
-        # Specifies whether the database is manually added. Valid values:
+        # Specifies whether the database is manually added by the user. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **true**: The database is manually added.
+        # - **false**: The database is not manually added.
         self.database_add_by_user = database_add_by_user
         # The type of the database. Valid values:
         # 
-        # *   **MYSQL**
-        # *   **ORACLE**
-        # *   **MSSQL**
+        # - **MYSQL**
+        # - **ORACLE**
+        # - **MSSQL**
         # 
         # This parameter is required.
         self.database_type = database_type
-        # The policy for full data backup. The value of this parameter is a JSON string. The JSON string contains the following fields:
+        # The full backup policy. The value is in JSON format and contains the following fields:
         # 
-        # *   **start**: the start time of a backup task.
-        # *   **interval**: the interval of backup tasks.
-        # *   **type**: the unit of the interval.
-        # *   **days**: the days of a week on which a backup task is performed.
+        # - **start**: the start time of the backup.
+        # - **interval**: the interval between backups.
+        # - **type**: the unit of the interval.
+        # - **days**: the days of the week on which backups are performed.
         # 
         # This parameter is required.
         self.full_plan_shrink = full_plan_shrink
-        # The policy for incremental data backup. The value of this parameter is a JSON string. The JSON string contains the following fields:
-        # 
-        # *   **start**: the start time of a backup task.
-        # *   **interval**: the interval of backup tasks.
-        # *   **type**: the unit of the interval.
-        # *   **days**: the days of a week on which a backup task is performed.
+        # The incremental backup policy. The value is in JSON format and contains the following fields:
+        # - **start**: the start time of the backup.
+        # - **interval**: the interval between backups.
+        # - **type**: the unit of the interval.
+        # - **days**: the days of the week on which backups are performed.
         # 
         # This parameter is required.
         self.inc_plan_shrink = inc_plan_shrink
-        # The ID of the Elastic Compute Service (ECS) instance.
-        # 
-        # >  You can call the [DescribeUniBackupDatabase](~~DescribeUniBackupDatabase~~) operation to query the IDs of ECS instances.
+        # The ID of the ECS instance.
+        # >You can call the [DescribeUniBackupDatabase](~~DescribeUniBackupDatabase~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The name of the anti-ransomware policy.
+        # The name of the anti-ransomware backup policy.
         # 
         # This parameter is required.
         self.policy_name = policy_name
-        # The retention period of backup data.
+        # The number of days for which backup data is retained.
         # 
         # This parameter is required.
         self.retention = retention
-        # The maximum network bandwidth that is allowed during data backup. Unit: bytes.
+        # The network bandwidth throttling for backup network bandwidth. Unit: bytes.
         # 
         # This parameter is required.
         self.speed_limiter = speed_limiter
-        # The region in which the server resides.
+        # The region in which the server protected by the backup policy resides.
         # 
         # This parameter is required.
         self.uni_region_id = uni_region_id
-        # The UUID of the server whose data is backed up based on the anti-ransomware policy.
-        # 
-        # >  You can call the [DescribeCloudCenterInstances](https://help.aliyun.com/document_detail/141932.html) operation to query the UUIDs of servers.
+        # The UUID of the server that is backed up by the database anti-ransomware feature.
+        # > You can call the [DescribeCloudCenterInstances](https://help.aliyun.com/document_detail/141932.html) operation to obtain the UUID of the server.
         self.uuid = uuid
 
     def validate(self):

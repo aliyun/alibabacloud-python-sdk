@@ -9,7 +9,7 @@ class CreateRdDefaultSyncListRequest(DaraModel):
         self,
         folder_ids: str = None,
     ):
-        # The list of folder IDs in the resource directory.
+        # The IDs of folders in the resource directory.
         # 
         # > You can call [GetRdTree](~~GetRdTree~~) to obtain folder IDs. Separate multiple folder IDs with commas (,). If you do not specify this parameter, the existing configuration list is cleared.
         self.folder_ids = folder_ids

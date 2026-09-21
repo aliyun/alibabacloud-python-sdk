@@ -16,11 +16,11 @@ class DescribeImageVulListResponseBody(DaraModel):
         total_count: int = None,
         vul_records: List[main_models.DescribeImageVulListResponseBodyVulRecords] = None,
     ):
-        # The page number of the current page in a paging query.
+        # The page number of the current page when paging is used.
         self.current_page = current_page
-        # The number of vulnerabilities displayed per page in a paging query. Default value: **10**, which indicates that 10 vulnerabilities are displayed per page.
+        # The number of vulnerabilities displayed per page when paging is used. Default value: **10**, which indicates that 10 vulnerabilities are displayed per page.
         self.page_size = page_size
-        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
         # The total number of vulnerabilities returned by the query.
         self.total_count = total_count
@@ -122,21 +122,21 @@ class DescribeImageVulListResponseBodyVulRecords(DaraModel):
         self.agentless_can_fix = agentless_can_fix
         # The alias of the vulnerability.
         self.alias_name = alias_name
-        # Indicates whether the vulnerability can be fixed in the console. Valid values:
+        # Indicates whether the vulnerability can be fixed from the console. Valid values:
         # 
         # - **yes**: Can be fixed.
         # - **no**: Cannot be fixed.
         self.can_fix = can_fix
-        # Indicates whether the software package that caused the vulnerability can be upgraded through Security Center. Valid values:
+        # Indicates whether the software package that causes the vulnerability can be upgraded through Security Center. Valid values:
         # 
         # - **true**: Upgrade is supported.
         # - **false**: Upgrade is not supported.
         self.can_update = can_update
         # The cluster ID.
         self.cluster_id = cluster_id
-        # The name of the cluster.
+        # The cluster name.
         self.cluster_name = cluster_name
-        # The ID of the container.
+        # The container ID.
         self.container_id = container_id
         # The extended content of the vulnerability information.
         self.extend_content_json = extend_content_json
@@ -168,16 +168,16 @@ class DescribeImageVulListResponseBodyVulRecords(DaraModel):
         self.name = name
         # The namespace.
         self.namespace = namespace
-        # The priority level for fixing the vulnerability. Valid values:
-        # - **asap**: High-priority vulnerability that must be fixed as soon as possible.
-        # - **later**: Medium-priority vulnerability that can be fixed later.
-        # - **nntf**: Low-priority vulnerability that does not need to be fixed for now.
+        # The priority of vulnerability fixing. Valid values:
+        # - **asap**: high-priority vulnerability
+        # - **later**: medium-priority vulnerability
+        # - **nntf**: low-priority vulnerability
         self.necessity = necessity
         # The pod.
         self.pod = pod
         # The ID of the vulnerability.
         self.primary_id = primary_id
-        # The details of the related vulnerability.
+        # The details of the associated vulnerability.
         self.related = related
         # The name of the container image repository.
         self.repo_name = repo_name
@@ -446,7 +446,7 @@ class DescribeImageVulListResponseBodyVulRecordsExtendContentJson(DaraModel):
         self.os = os
         # The operating system release version corresponding to the container image.
         self.os_release = os_release
-        # The list of software packages that caused the vulnerability.
+        # The list of software packages that cause the vulnerability.
         self.rpm_entity_list = rpm_entity_list
 
     def validate(self):

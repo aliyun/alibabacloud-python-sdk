@@ -23,7 +23,7 @@ class DescribeAllRegionsStatisticsRequest(DaraModel):
         # The asset name or public IP address.
         self.remark = remark
         # The ID of the Alibaba Cloud account of the member accounts in the resource folder.
-        # > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+        # > Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
         # The IP address of the access source.
         self.source_ip = source_ip

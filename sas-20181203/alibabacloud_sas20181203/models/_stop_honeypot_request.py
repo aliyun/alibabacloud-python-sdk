@@ -11,15 +11,13 @@ class StopHoneypotRequest(DaraModel):
         lang: str = None,
     ):
         # The honeypot ID.
-        # 
-        # >  You can call the [ListHoneypot](~~ListHoneypot~~) operation to obtain IDs of honeypots.
+        # > You can call the [ListHoneypot](~~ListHoneypot~~) operation to obtain this value.
         # 
         # This parameter is required.
         self.honeypot_id = honeypot_id
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
 
     def validate(self):

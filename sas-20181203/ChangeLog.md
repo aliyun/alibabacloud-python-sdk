@@ -1,3 +1,7 @@
+2026-09-21 Version: 10.2.0
+- Support API GetAgentlessTaskCountBatch.
+
+
 2026-09-15 Version: 10.1.4
 - Update API ChangeCheckScopeConfigInstance: add request parameters SelectionKey.
 - Update API CreateAgentlessScanTask: add request parameters From.

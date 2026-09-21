@@ -8,13 +8,20 @@ class ModifyCreateVulWhitelistRequest(DaraModel):
     def __init__(
         self,
         client_token: str = None,
+        dry_run: bool = None,
         reason: str = None,
         resource_directory_account_id: int = None,
         target_info: str = None,
         whitelist: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run. Valid values:
+        # - true: performs only a dry run without executing the actual operation.
+        # - false: performs the actual operation.
+        # 
+        # Default value: false.
+        self.dry_run = dry_run
         # The reason for adding the vulnerability whitelist.
         self.reason = reason
         # The Alibaba Cloud account ID of the member accounts in the resource folder.
@@ -26,16 +33,16 @@ class ModifyCreateVulWhitelistRequest(DaraModel):
         #     - **Uuid**: host asset
         # - **uuids**: The collection of host asset UUIDs. The field type is String.
         # - **groupIds**: The collection of server group IDs. The field type is Long.
-        # > If this value is empty, the whitelist applies to all hosts. If **type** is set to **GroupId**, **groupIds** cannot be empty. If **type** is set to **Uuid**, **uuids** cannot be empty.
+        # > If this parameter is left empty, the whitelist takes effect on all hosts. If **type** is set to **GroupId**, **groupIds** cannot be empty. If **type** is set to **Uuid**, **uuids** cannot be empty.
         self.target_info = target_info
         # The information about the vulnerability to add to the whitelist. The value is a JSON string that contains the following fields:
         # 
-        # - **Status**: The vulnerability status.
+        # - **Status**: The status of the vulnerability.
         # - **GmtLast**: The timestamp when the vulnerability was last detected. Unit: milliseconds.
         # - **LaterCount**: The number of medium-priority vulnerabilities.
         # - **AsapCount**: The number of high-priority vulnerabilities.
-        # - **Name**: The vulnerability name.
-        # - **Type**: The vulnerability type. Valid values:
+        # - **Name**: The name of the vulnerability.
+        # - **Type**: The type of the vulnerability. Valid values:
         # 
         #     - **cve**: Linux software vulnerability
         #     - **sys**: Windows system vulnerability
@@ -49,7 +56,7 @@ class ModifyCreateVulWhitelistRequest(DaraModel):
         # - **RuleModifyTime**: The time when the vulnerability was last published.
         # - **NntfCount**: The number of low-priority vulnerabilities.
         # - **TotalFixCount**: The total number of fixed vulnerabilities.
-        # - **Tags**: The vulnerability tags.
+        # - **Tags**: The tags of the vulnerability.
         # 
         # > You can call the [DescribeGroupedVul](~~DescribeGroupedVul~~) operation to obtain the vulnerability information to add to the whitelist.
         # 
@@ -66,6 +73,9 @@ class ModifyCreateVulWhitelistRequest(DaraModel):
             result = _map
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
 
         if self.reason is not None:
             result['Reason'] = self.reason
@@ -85,6 +95,9 @@ class ModifyCreateVulWhitelistRequest(DaraModel):
         m = m or dict()
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
 
         if m.get('Reason') is not None:
             self.reason = m.get('Reason')

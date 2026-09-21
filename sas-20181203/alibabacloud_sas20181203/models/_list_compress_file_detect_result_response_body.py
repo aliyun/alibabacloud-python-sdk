@@ -109,18 +109,18 @@ class ListCompressFileDetectResultResponseBodyResultList(DaraModel):
         # - **Hacktool**: Hacking tool.
         # - **Engtest**: DPI engine test program.
         # - **Downloader**: Downloader trojan.
-        # - **Virus**: File infector virus.
+        # - **Virus**: File-infecting virus.
         # - **Miner**: Mining programs.
         # - **Worm**: Worms.
-        # - **DDoS**: DDoS trojan.
-        # - **Malware**: Malware.
+        # - **DDoS**: DDoS Trojan.
+        # - **Malware**: Malicious program.
         # - **Backdoor**: Reverse shell backdoor.
-        # - **RiskWare**: Riskware.
+        # - **RiskWare**: Risky software.
         # - **Proxytool**: Proxy tool.
         # - **Suspicious**: Suspicious program.
         # - **MalScript**: Malicious script.
         # - **Rootkit**: Rootkit.
-        # - **Exploit**: Vulnerability exploits program.
+        # - **Exploit**: Vulnerability exploits.
         # 
         # > This parameter is invalid when Result is 0 or 3.
         self.virus_type = virus_type

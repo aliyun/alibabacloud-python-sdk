@@ -35,7 +35,7 @@ class DescribeImageGroupedVulListRequest(DaraModel):
         type: str = None,
         uuids: str = None,
     ):
-        # Specifies whether to filter by agentless fix capability. true: queries only vulnerabilities that support agentless fix. false: queries vulnerabilities that are not marked as supporting agentless fix. If this parameter is not specified, no filtering is applied based on this condition.
+        # Specifies whether to filter by agentless fix capability. If set to true, only vulnerabilities that support agentless fix are returned. If set to false, only vulnerabilities that are not marked as supporting agentless fix are returned. If not specified, no filtering is applied based on this condition.
         self.agentless_can_fix = agentless_can_fix
         # The alias of the vulnerability.
         self.alias_name = alias_name
@@ -54,7 +54,7 @@ class DescribeImageGroupedVulListRequest(DaraModel):
         self.image_layer = image_layer
         # The tag of the image.
         self.image_tag = image_tag
-        # Specifies whether to query vulnerabilities only for the latest image. If this parameter is not set, vulnerabilities for all images are queried. Valid values:
+        # Specifies whether to query vulnerabilities only for the latest image. If this parameter is not specified, vulnerabilities for all images are queried. Valid values:
         # 
         # - **0**: No.
         # - **1**: Yes.
@@ -66,11 +66,11 @@ class DescribeImageGroupedVulListRequest(DaraModel):
         # The name of the vulnerability.
         self.name = name
         # The priority level for fixing the vulnerability. Valid values:
-        # - **asap**: High-priority vulnerability that must be fixed as soon as possible.
+        # - **asap**: High-priority vulnerability that requires immediate fixing.
         # - **later**: Medium-priority vulnerability that can be fixed later.
         # - **nntf**: Low-priority vulnerability that does not need to be fixed for now.
         self.necessity = necessity
-        # The number of image vulnerabilities to display on each page in a paging query. Default value: **20**, which indicates 20 image vulnerabilities per page.
+        # Settings for the number of image vulnerabilities to display on each page in a paging query. Default value: **20**, which indicates that 20 image vulnerabilities are displayed on each page.
         self.page_size = page_size
         # The ID of the vulnerability patch.
         self.patch_id = patch_id

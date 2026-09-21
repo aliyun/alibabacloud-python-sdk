@@ -13,27 +13,28 @@ class ListInterceptionRulePageRequest(DaraModel):
         current_page: int = None,
         page_size: int = None,
     ):
-        # The ID of the container cluster.
+        # The ID of the container cluster to query.
+        # 
+        # This parameter must be the ID of an ACK cluster that has the container firewall feature enabled. Call DescribeClusterInfoList with Type set to interceptionSwitch, or call ListClusterInterceptionConfig to query available clusters.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
         # The query condition.
         self.criteria = criteria
-        # The type of the query condition. Valid values:
-        # 
-        # *   **ID**
-        # *   **RULE_NAME**
-        # *   **SRC_TARGET**
-        # *   **DST_TARGET**
-        # *   **DST_PORT**
-        # *   **RULE_SWITCH**
-        # *   **INTERCEPTOR_TYPE**
+        # The type of the search condition. Valid values:
+        # - **ID** 
+        # - **RULE_NAME**
+        # - **SRC_TARGET**
+        # - **DST_TARGET**
+        # - **DST_PORT**
+        # - **RULE_SWITCH**
+        # - **INTERCEPTOR_TYPE**
         self.criteria_type = criteria_type
-        # The number of the page to return.
+        # The page number of the current page when using paging.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The number of entries to return on each page.
+        # The number of entries per page when using paging.
         # 
         # This parameter is required.
         self.page_size = page_size

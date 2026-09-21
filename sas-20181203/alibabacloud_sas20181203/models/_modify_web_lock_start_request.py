@@ -19,22 +19,24 @@ class ModifyWebLockStartRequest(DaraModel):
     ):
         # The defense mode. Valid values:
         # 
-        # - **block**: block
-        # - **audit**: alert.
+        # - **block**: Block.
+        # - **audit**: Alert.
         # 
         # This parameter is required.
         self.defence_mode = defence_mode
         # The protection directories. Separate multiple directories with commas (,).
         # 
+        # The server automatically appends a forward slash (/) to the end of the directory path during storage. Use paths with a trailing slash to avoid matching inconsistencies.
+        # 
         # This parameter is required.
         self.dir = dir
-        # The folder that does not require web tamper proofing protection (excluded folder).
-        # > This parameter is required when the Defense mode **Mode** is set to the **blacklist** pattern.
+        # The directories that do not require web tamper-proofing protection (excluded directories).
+        # > This parameter is required when the protection mode **Mode** is set to **blacklist**.
         self.exclusive_dir = exclusive_dir
-        # The files that do not require web tamper proofing protection (excluded files).
-        # > This parameter is required when the Defense mode **Mode** is set to the **blacklist** pattern.
+        # The files that do not require web tamper-proofing protection (excluded files).
+        # > This parameter is required when the protection mode **Mode** is set to **blacklist**.
         self.exclusive_file = exclusive_file
-        # The file types that do not require web tamper proofing protection (excluded file types). Separate multiple file types with commas (,). Valid values:
+        # The file types that do not require web tamper-proofing protection (excluded file types). Separate multiple file types with semicolons (;). Valid values:
         # - php
         # - jsp
         # - asp
@@ -50,9 +52,9 @@ class ModifyWebLockStartRequest(DaraModel):
         # - gif
         # - png
         # 
-        # > This parameter is required when the Defense mode **Mode** is set to the **blacklist** pattern.
+        # > This parameter is required when the protection mode **Mode** is set to **blacklist**.
         self.exclusive_file_type = exclusive_file_type
-        # The file types that require web tamper proofing protection. Separate multiple file types with commas (,). Valid values:
+        # The file types that require web tamper-proofing protection. Separate multiple file types with semicolons (;). Valid values:
         # - php
         # - jsp
         # - asp
@@ -68,17 +70,18 @@ class ModifyWebLockStartRequest(DaraModel):
         # - gif
         # - png
         # 
-        # > This parameter is required when the Defense mode **Mode** is set to the **whitelist** pattern.
+        # > This parameter is required when the protection mode **Mode** is set to **whitelist**.
         self.inclusive_file_type = inclusive_file_type
-        # The local backup path used to back up the protection directories. The format of the protection directory path may differ between Linux servers and Windows servers. Make sure that you enter the path in the correct format. The following examples show the directory formats:
+        # The local backup path used to securely back up the protection directories.  
+        # The format of the protection directory path may differ between Linux servers and Windows servers. Make sure that you enter the correct format. The following directory formats are provided for reference:
         #  - Linux server: /usr/local/aegis/bak
-        #  - Windows server: C:\\Program Files (x86)\\Alibaba\\Aegis\\bak.
+        #  - Windows server: C:\\Program Files (x86)\\Alibaba\\Aegis\\bak
         # 
         # This parameter is required.
         self.local_backup_dir = local_backup_dir
         # The protection type. Valid values:
-        # - **whitelist**: whitelist mode. Protects the specified protection directories and file types.
-        # - **blacklist**: blacklist mode. Protects all subdirectories, file types, and specified files in the protection directories that are not excluded.
+        # - **whitelist**: Whitelist mode. Protects the specified protection directories and file types.
+        # - **blacklist**: Blacklist mode. Protects all subdirectories, file types, and specified files under the protection directories that are not excluded.
         # 
         # This parameter is required.
         self.mode = mode

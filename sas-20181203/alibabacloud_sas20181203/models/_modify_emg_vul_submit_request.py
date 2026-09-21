@@ -8,30 +8,31 @@ class ModifyEmgVulSubmitRequest(DaraModel):
     def __init__(
         self,
         client_token: str = None,
+        dry_run: bool = None,
         lang: str = None,
         name: str = None,
         resource_directory_account_id: int = None,
         user_agreement: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The language of the request and response. Default value: **zh**. Valid values:
+        # Specifies whether to perform a dry run. Valid values: true: performs a dry run without executing the actual operation. false: performs the actual operation. Default value: false.
+        self.dry_run = dry_run
+        # The language type of the request and response. Default value: **zh**. Valid values:
         # 
-        # - **zh**: Chinese.
-        # 
-        # - **en**: English.
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
         # The name of the vulnerability to query.
         # 
         # This parameter is required.
         self.name = name
         # The ID of the member account in the resource directory (Alibaba Cloud account).
-        # > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+        # >You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
         # Specifies whether to perform vulnerability detection. Valid values:
         # 
         # - **yes**: Perform vulnerability detection.
-        # 
         # - **no**: Do not perform vulnerability detection.
         # 
         # This parameter is required.
@@ -47,6 +48,9 @@ class ModifyEmgVulSubmitRequest(DaraModel):
             result = _map
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
 
         if self.lang is not None:
             result['Lang'] = self.lang
@@ -66,6 +70,9 @@ class ModifyEmgVulSubmitRequest(DaraModel):
         m = m or dict()
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
 
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')

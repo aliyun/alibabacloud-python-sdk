@@ -12,17 +12,19 @@ class DescribeCriteriaRequest(DaraModel):
         support_auto_tag: bool = None,
         value: str = None,
     ):
-        # The type of the asset. Valid values:
+        # The Asset Type to query. Valid values:
         # 
-        # *   Set the value to **ecs**, which specifies to query all Elastic Compute Service (ECS) instances.
+        # - **ecs**: queries all ECS servers.
         self.machine_types = machine_types
+        # The ID of the Alibaba Cloud account of the member accounts in the resource folder.
+        # >Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
-        # Specifies whether the keyword that you specify for fuzzy search can be automatically matched. Default value: **false**. Valid values:
+        # Specifies whether the fuzzy query field supports automatic matching. Default value: **false**. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Supported.
+        # - **false**: Not supported.
         self.support_auto_tag = support_auto_tag
-        # The keyword that you specify for fuzzy search when you query the asset.
+        # The fuzzy match value entered when querying assets.
         self.value = value
 
     def validate(self):

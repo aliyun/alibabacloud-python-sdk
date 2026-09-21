@@ -36,7 +36,7 @@ class DescribeEventLevelCountRequest(DaraModel):
         self.container_field_name = container_field_name
         # The value of the field that you want to query. Separate multiple values with commas (,).
         self.container_field_value = container_field_value
-        # The container IDs.
+        # The container ID.
         self.container_ids = container_ids
         # The source identifier of the request. Set this parameter to **sas**.
         self.from_ = from_

@@ -34,27 +34,31 @@ class ListAttackEventInfoRequest(DaraModel):
         # - 211: ASP WebShell upload
         # - 215: Special extension WebShell upload
         # - ai_webshell: WebShell upload intelligent defense
-        # - java_common_rce: Java common remote code execution (RCE) vulnerability blocked
+        # - java_common_rce: Java common RCE vulnerability blocked
         # - alinet_webrce: Adaptive web attack defense
         self.attack_type = attack_type
-        # The number of the page to return in a paged query.
+        # The number of the page to return in a paging query.
         self.current_page = current_page
         # The Attack Target Ports of the Attack Target.
         self.dst_port = dst_port
         # The timestamp of the end time.
+        # 
+        # This parameter is required. If this parameter is not specified, the API returns HTTP 400.
         self.end_time = end_time
-        # The language type for the request and response messages. Default value: **zh**. Valid values:
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
         # 
         # - **zh**: Chinese
         # - **en**: English
         self.lang = lang
-        # The maximum number of entries to return on each page in a paged query.
+        # The maximum number of entries to return on each page in a paging query.
         self.page_size = page_size
         # The Attack Source IP Addresses.
         self.src_ip = src_ip
         # The timestamp of the start time.
         # 
-        # This field is a UNIX timestamp. Unit: milliseconds.
+        # This parameter is a UNIX timestamp. Unit: milliseconds.
+        # 
+        # This parameter is required. If this parameter is not specified, the API returns HTTP 400.
         self.start_time = start_time
 
     def validate(self):

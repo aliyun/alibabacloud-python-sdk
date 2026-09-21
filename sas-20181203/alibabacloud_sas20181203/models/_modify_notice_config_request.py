@@ -9,6 +9,7 @@ class ModifyNoticeConfigRequest(DaraModel):
         self,
         biz_type: str = None,
         client_token: str = None,
+        dry_run: bool = None,
         focus_level: str = None,
         project: str = None,
         route: int = None,
@@ -19,11 +20,17 @@ class ModifyNoticeConfigRequest(DaraModel):
         # 
         # - **cms**: CloudMonitor push.
         self.biz_type = biz_type
-        # The client token that is used to ensure the idempotence of the request. Use a different token for each request. The token supports only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. Use a different token for each request. Only ASCII characters are supported. The token can be up to 64 characters in length.
         self.client_token = client_token
+        # Specifies whether to perform a dry run. Valid values:
+        # - true: performs a dry run without executing the actual operation.
+        # - false: performs the actual operation.
+        # 
+        # Default value: false.
+        self.dry_run = dry_run
         # The focus level. Separate multiple levels with commas (,).
         # 
-        # When **Project** is **yundun_soar_incident_generate** or **yundun_soar_incident_update**, valid values:
+        # When **Project** is set to **yundun_soar_incident_generate** or **yundun_soar_incident_update**, valid values:
         # 
         # - **CRITICAL**: Critical.
         # - **HIGH**: High.
@@ -31,7 +38,7 @@ class ModifyNoticeConfigRequest(DaraModel):
         # - **LOW**: Low.
         # - **INFO**: Informational.
         # 
-        # When **Project** is **yundun_sas_antiransomware_task**, valid values:
+        # When **Project** is set to **yundun_sas_antiransomware_task**, valid values:
         # 
         # - **Success**: Execution succeeded.
         # - **Failed**: Execution failed.
@@ -42,7 +49,7 @@ class ModifyNoticeConfigRequest(DaraModel):
         # - **yundun_security_Weekreport**: Security weekly report (email only)
         # - **sas_healthcheck**: Baseline check
         # - **yundun_defennce_antiRansomware_overflow**: Anti-ransomware storage space exceeded
-        # - **yundun_sas_cloudsiem_log**: Cloud Threat Detection and Response (CTDR) log excess notification
+        # - **yundun_sas_cloudsiem_log**: Threat analysis log excess notification
         # - **sas_suspicious**: Security alert
         # - **yundun_aegis_AV_true**: Precise defense
         # - **yundun_sas_ak_leakage AccessKey**: AccessKey leak intelligence
@@ -93,9 +100,9 @@ class ModifyNoticeConfigRequest(DaraModel):
         # 
         # #### When the BizType field is empty: valid values
         # - **0**: No limit.
-        # - **1**: Notifications are sent only between 08:00 and 22:00.
+        # - **1**: Notifications are sent only during 08:00-22:00.
         # 
-        # #### When the BizType field is `cms`: description
+        # #### When the BizType field is `cms`
         # Specifies the push frequency limit, in seconds. The minimum value is **60**.
         self.time_limit = time_limit
 
@@ -112,6 +119,9 @@ class ModifyNoticeConfigRequest(DaraModel):
 
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
 
         if self.focus_level is not None:
             result['FocusLevel'] = self.focus_level
@@ -137,6 +147,9 @@ class ModifyNoticeConfigRequest(DaraModel):
 
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
 
         if m.get('FocusLevel') is not None:
             self.focus_level = m.get('FocusLevel')

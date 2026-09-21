@@ -15,7 +15,7 @@ class AddCheckInstanceResultWhiteListResponseBody(DaraModel):
     ):
         # **[Deprecated]** The result of adding instances to the whitelist. This field is deprecated and can be ignored.
         self.data = data
-        # The unique identifier that Alibaba Cloud generated for the request.
+        # The request ID.
         self.request_id = request_id
         # The rule ID of the whitelist.
         self.rule_id = rule_id

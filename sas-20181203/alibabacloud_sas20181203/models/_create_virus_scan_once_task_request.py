@@ -10,6 +10,7 @@ class CreateVirusScanOnceTaskRequest(DaraModel):
     def __init__(
         self,
         client_token: str = None,
+        dry_run: bool = None,
         param: str = None,
         scan_path: List[str] = None,
         scan_type: str = None,
@@ -17,6 +18,12 @@ class CreateVirusScanOnceTaskRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run of the request. Valid values:
+        # - true: performs only a dry run without executing the actual operation.
+        # - false: performs the actual request.
+        # 
+        # Default value: false.
+        self.dry_run = dry_run
         # The extended information field:
         # - **additionType**: the extended scan type
         self.param = param
@@ -24,7 +31,7 @@ class CreateVirusScanOnceTaskRequest(DaraModel):
         self.scan_path = scan_path
         # The scan type of the virus scan. Valid values:
         # - **system**: system scan
-        # - **user**: custom scan.
+        # - **user**: custom scan
         self.scan_type = scan_type
         # The key that stores asset information.
         # > You can call the [GetAssetSelectionConfig](~~GetAssetSelectionConfig~~) operation to obtain this parameter.
@@ -40,6 +47,9 @@ class CreateVirusScanOnceTaskRequest(DaraModel):
             result = _map
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
 
         if self.param is not None:
             result['Param'] = self.param
@@ -59,6 +69,9 @@ class CreateVirusScanOnceTaskRequest(DaraModel):
         m = m or dict()
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
 
         if m.get('Param') is not None:
             self.param = m.get('Param')

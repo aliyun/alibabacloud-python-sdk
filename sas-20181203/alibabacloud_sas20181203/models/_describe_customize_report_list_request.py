@@ -15,35 +15,35 @@ class DescribeCustomizeReportListRequest(DaraModel):
         resource_directory_account_id: int = None,
         title: str = None,
     ):
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
-        # Specifies whether to pin the report. Valid values:
-        # 
-        # *   **false**
-        # *   **true**
+        # Specifies whether the report is pinned to the top. Valid values:
+        # - **false**: No.
+        # - **true**: Yes.
         self.pinned = pinned
-        # The state of the report. Valid values:
-        # 
-        # *   **0**: disabled
-        # *   **1**: enabled
+        # The report status. Valid values:
+        #  - **0**: Disabled.
+        #  - **1**: Enabled.
         self.report_status = report_status
-        # The type of the report. Valid values:
+        # The report type. Valid values:
         # 
-        # *   **0**: daily report
-        # *   **1**: weekly report
-        # *   **2**: monthly report
-        # *   **3**: report whose statistics are collected in a custom time range
+        # - **0**: Daily report.
+        # - **1**: Weekly report.
+        # - **2**: Monthly report.
+        # - **3**: Custom period.
         self.report_type = report_type
-        # The report version. Valid values:
-        # 
-        # *   **1.0.0**
-        # *   **2.0.0**
+        # The security report version. Valid values:
+        # - **1.0.0**
+        # - **2.0.0**
         self.report_version = report_version
+        # The Alibaba Cloud account ID of the member accounts in the resource directory folder.
+        # >You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
-        # The name of the report.
+        # The report name.
         self.title = title
 
     def validate(self):

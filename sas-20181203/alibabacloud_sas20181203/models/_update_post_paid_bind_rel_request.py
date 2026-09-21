@@ -14,6 +14,7 @@ class UpdatePostPaidBindRelRequest(DaraModel):
         auto_bind_version: int = None,
         bind_action: List[main_models.UpdatePostPaidBindRelRequestBindAction] = None,
         client_token: str = None,
+        dry_run: bool = None,
         product_code: str = None,
         update_if_necessary: bool = None,
     ):
@@ -22,7 +23,7 @@ class UpdatePostPaidBindRelRequest(DaraModel):
         # - **0**: Disabled.
         # - **1**: Enabled.
         self.auto_bind = auto_bind
-        # The edition to automatically bind when new assets are added. Valid values:
+        # The edition that is automatically bound when new assets are added. Valid values:
         # - **1**: Free Edition 
         # - **3**: Enterprise Edition
         # - **5**: Advanced Edition
@@ -31,9 +32,11 @@ class UpdatePostPaidBindRelRequest(DaraModel):
         self.auto_bind_version = auto_bind_version
         # The binding action parameter.
         self.bind_action = bind_action
-        # The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The abbreviated name of the cloud service. Valid values:
+        # Specifies whether to perform only a dry run of the request. Valid values: true: performs only a dry run without executing the actual operation. false: performs the actual operation. Default value: false.
+        self.dry_run = dry_run
+        # The abbreviation of the cloud service. Valid values:
         # - **sas**: Security Center
         self.product_code = product_code
         # Specifies whether to forcibly upgrade the edition.
@@ -64,6 +67,9 @@ class UpdatePostPaidBindRelRequest(DaraModel):
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
 
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+
         if self.product_code is not None:
             result['ProductCode'] = self.product_code
 
@@ -88,6 +94,9 @@ class UpdatePostPaidBindRelRequest(DaraModel):
 
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
 
         if m.get('ProductCode') is not None:
             self.product_code = m.get('ProductCode')

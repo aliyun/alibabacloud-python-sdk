@@ -171,12 +171,12 @@ class GetSecurityScoreRuleResponseBodySecurityScoreRuleListSecurityScoreItemList
         #   - XPRESS_INSTALL: Security Center service authorization is not enabled.
         #   - REINFORCE_SUSPICIOUS: The anti-virus feature is not enabled.
         #   - RANSOMWARE: The anti-ransomware policy is not enabled.
-        #   - WEB_LOCK: The web tamper-proofing feature is not enabled.
-        #   - VIRUS_SCHEDULE_SCAN: The epoch virus scan policy is not enabled.
+        #   - WEB_LOCK: The tamper-proofing feature is not enabled.
+        #   - VIRUS_SCHEDULE_SCAN: The periodic virus scan policy is not enabled.
         #   - IMAGE_REPO_SCAN: The container image scan scope is not configured.
         #   - IMAGE_SCAN_TASK: The one-click container image security risk scan has not been executed.
         # 
-        # - SS_ALARM: Pending alerting.
+        # - SS_ALARM: Pending alerts.
         #   - ALARM_SERIOUS: One unhandled high-risk alert event exists.
         #   - ALARM_SUSPICIOUS: One unhandled medium-risk alert event exists.
         #   - ALARM_REMIND: One unhandled low-risk alert event exists.
@@ -189,7 +189,7 @@ class GetSecurityScoreRuleResponseBodySecurityScoreRuleListSecurityScoreItemList
         #   - ERM_UNCHECK: One undetected emergency vulnerability exists.
         # 
         # - SS_HC: Baseline issues.
-        #   - WEAK_EXPLOIT: A weak password risk that is exposed to the Internet exists.
+        #   - WEAK_EXPLOIT: A weak password risk expose to the Internet exists.
         #   - WEAK_PASSWORD: A weak password risk exists.
         #   - HC_EXPLOIT: A high-risk intrusion vulnerability exists.
         #   - HC_OTHER_WARNING: A security configuration risk exists.
@@ -251,8 +251,8 @@ class GetSecurityScoreRuleResponseBodySecurityScoreCategoryList(DaraModel):
         title: str = None,
     ):
         # The category of the security score rule. Valid values:
-        # - **SS_SAS_HANDLE**: Security governance
-        # - **SS_SAS_RESPOND**: Security response
+        # - **SS_SAS_HANDLE**: Security governance.
+        # - **SS_SAS_RESPOND**: Security response.
         self.category = category
         # The deduction threshold of the security score rule category.
         self.score = score
@@ -382,22 +382,22 @@ class GetSecurityScoreRuleResponseBodySecurityScoreCategoryListSecurityRuleListS
         self.score = score
         # The deduction threshold of the individual item.
         self.score_threshold = score_threshold
-        # The type of the security score rule subkey. Valid values:
+        # The type of the security score rule sub-item.
         # 
-        # - **SS_SAS_WEAK_PW**: Pending weak passwords to fix
-        # - **SS_SAS_ALARM**: Pending Security Center alerting to handle
-        # - **SS_SAS_EMG_VUL**: Pending emergency vulnerabilities to fix
-        # - **SS_SAS_APP_VUL**: Pending application vulnerabilities to fix
-        # - **SS_SAS_SYS_VUL**: Pending system vulnerability to fix
-        # - **SS_SAS_CLOUD_HC**: Pending Cloud Security Posture Management (CSPM) risks to handle
-        # - **SS_SDDP_DATA_RISK**: Pending data security risks to remediate
-        # - **SS_WAF_API_RISK**: Pending API security risks to handle
-        # - **SS_DDOS_BH_ASSET**: Assets in Black Hole Activated status
-        # - **SS_SAS_AK_LEAK**: Unhandled AccessKey/SecretKey leak events
-        # - **SS_PRODUCT_CONNECT**: Security products not Normal connected
-        # - **SS_KEY_CONFIG**: Key feature configuration
-        # - **SS_PRODUCT_EXPIRE**: Products about to expire
-        # - **SS_AI_RISK**: AI application risks
+        # - **SS_SAS_WEAK_PW**: Pending weak passwords to fix.
+        # - **SS_SAS_ALARM**: Pending Security Center alerts to handle.
+        # - **SS_SAS_EMG_VUL**: Pending emergency vulnerabilities to fix.
+        # - **SS_SAS_APP_VUL**: Pending application vulnerabilities to fix.
+        # - **SS_SAS_SYS_VUL**: Pending system vulnerabilities to fix.
+        # - **SS_SAS_CLOUD_HC**: Pending Cloud Security Posture Management (CSPM) risks to handle.
+        # - **SS_SDDP_DATA_RISK**: Pending data security risks to remediate.
+        # - **SS_WAF_API_RISK**: Pending API security risks to handle.
+        # - **SS_DDOS_BH_ASSET**: Assets in Black Hole Activated status.
+        # - **SS_SAS_AK_LEAK**: Unhandled AccessKey/SecretKey leak events.
+        # - **SS_PRODUCT_CONNECT**: Security products not in Normal connection status.
+        # - **SS_KEY_CONFIG**: Key feature configuration.
+        # - **SS_PRODUCT_EXPIRE**: Products about to expire.
+        # - **SS_AI_RISK**: AI application risks.
         self.sub_rule_type = sub_rule_type
         # The name of the security score rule sub-item.
         self.title = title

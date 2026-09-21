@@ -11,8 +11,10 @@ class SubmitCheckRequest(DaraModel):
         scan_range: str = None,
         task_source: str = None,
     ):
+        # The Alibaba Cloud account ID of the member account in the resource directory.
+        # >You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
-        # The scan range. Valid values:
+        # The check scope. Valid values:
         # - **FULL**: scans all check items
         # - **POLICY**: scans custom-configured check items
         self.scan_range = scan_range

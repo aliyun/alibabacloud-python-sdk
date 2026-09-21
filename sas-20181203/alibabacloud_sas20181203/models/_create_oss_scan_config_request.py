@@ -16,6 +16,7 @@ class CreateOssScanConfigRequest(DaraModel):
         decompress_max_file_count: int = None,
         decompress_max_layer: int = None,
         decryption_list: List[str] = None,
+        dry_run: bool = None,
         enable: int = None,
         end_time: str = None,
         key_prefix_list: List[str] = None,
@@ -37,15 +38,17 @@ class CreateOssScanConfigRequest(DaraModel):
         self.bucket_name_list = bucket_name_list
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The maximum number of files to decompress. Minimum value: 1. Maximum value: 1000. When the maximum number of decompressed files is exceeded, the decompression operation stops. The detection of files that have already been decompressed is not affected.
+        # The maximum number of files to decompress. Minimum value: 1. Maximum value: 1000. When the maximum number of decompressed files is exceeded, the decompression operation stops immediately. The scanning of files that have already been decompressed is not affected.
         self.decompress_max_file_count = decompress_max_file_count
-        # The maximum number of decompression layers when multiple levels of nested compressed files exist. Minimum value: 1. Maximum value: 5. When the maximum number of decompression layers is exceeded, the decompression operation stops. The detection of files that have already been decompressed is not affected.
+        # The maximum number of decompression layers when nested compressed files exist. Minimum value: 1. Maximum value: 5. When the maximum number of decompression layers is exceeded, the decompression operation stops immediately. The scanning of files that have already been decompressed is not affected.
         self.decompress_max_layer = decompress_max_layer
         # The list of decryption types.
         self.decryption_list = decryption_list
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values: true: performs only a dry run without performing the actual request. false: performs the actual request. Default value: false.
+        self.dry_run = dry_run
         # Specifies whether to enable the policy. Valid values:
-        # - **1**: Enabled.
-        # - **0**: Disabled.
+        # - **1**: Enable.
+        # - **0**: Disable.
         self.enable = enable
         # The scan stop time, in the HH:mm:ss format.
         self.end_time = end_time
@@ -53,13 +56,13 @@ class CreateOssScanConfigRequest(DaraModel):
         self.key_prefix_list = key_prefix_list
         # The list of file suffixes to scan.
         self.key_suffix_list = key_suffix_list
-        # Specifies that only files whose last modification time is after the specified timestamp are scanned. Unit: milliseconds.
+        # Scans files whose last modification time is after the specified timestamp. Unit: milliseconds.
         self.last_modified_start_time = last_modified_start_time
         # The policy name.
         self.name = name
-        # Specifies whether to enable real-time incremental detection. If this parameter is set to true, the ScanDayList, StartTime, and EndTime parameters do not take effect.
+        # Specifies whether to enable real-time incremental scanning. If this parameter is set to true, the ScanDayList, StartTime, and EndTime parameters do not take effect.
         self.real_time_incr = real_time_incr
-        # The scan schedule. The number represents the day of the week.
+        # The scan schedule. The number indicates the day of the week.
         self.scan_day_list = scan_day_list
         # The business source. Valid values:
         # - **OSS**: OSS.
@@ -96,6 +99,9 @@ class CreateOssScanConfigRequest(DaraModel):
 
         if self.decryption_list is not None:
             result['DecryptionList'] = self.decryption_list
+
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
 
         if self.enable is not None:
             result['Enable'] = self.enable
@@ -151,6 +157,9 @@ class CreateOssScanConfigRequest(DaraModel):
 
         if m.get('DecryptionList') is not None:
             self.decryption_list = m.get('DecryptionList')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
 
         if m.get('Enable') is not None:
             self.enable = m.get('Enable')

@@ -56,8 +56,8 @@ class DescribeCanFixVulListRequest(DaraModel):
         self.digest = digest
         # The name of the container image.
         self.image = image
-        # The container image instance ID.
-        # > Invoke the [ListRepository](https://help.aliyun.com/document_detail/451339.html) operation of Container Registry and obtain the container image instance ID from the **InstanceId** response parameter.
+        # The ID of the container image instance.
+        # > Call the [ListRepository](https://help.aliyun.com/document_detail/451339.html) operation of Container Registry to obtain the container image instance ID from the **InstanceId** response parameter.
         self.instance_id = instance_id
         # The name of the vulnerability.
         self.name = name
@@ -68,7 +68,7 @@ class DescribeCanFixVulListRequest(DaraModel):
         # 
         # - **asap**: high
         # - **later**: medium
-        # - **nntf**: low.
+        # - **nntf**: low
         self.necessity = necessity
         # The maximum number of entries per page in a paging query. Default value: 20.
         self.page_size = page_size
@@ -86,13 +86,13 @@ class DescribeCanFixVulListRequest(DaraModel):
         # - **us-east-1**: US (Virginia)
         # - **us-west-1**: US (Silicon Valley)
         # - **eu-central-1**: Germany (Frankfurt)
-        # - **eu-west-1**: UK (London).
+        # - **eu-west-1**: UK (London)
         self.region_id = region_id
         # The ID of the image repository.
-        # > Call the [ListRepository](https://help.aliyun.com/document_detail/145293.html) operation of Container Registry and obtain the value of the **RepoId** response parameter.
+        # > Call the [ListRepository](https://help.aliyun.com/document_detail/145293.html) operation of Container Registry to obtain the image repository ID from the **RepoId** response parameter.
         self.repo_id = repo_id
-        # The container image instance ID.
-        # > Invoke the [ListRepository](https://help.aliyun.com/document_detail/451339.html) operation of Container Registry and obtain the container image instance ID from the **InstanceId** response parameter.
+        # The ID of the container image instance.
+        # > Call the [ListRepository](https://help.aliyun.com/document_detail/451339.html) operation of Container Registry to obtain the container image instance ID from the **InstanceId** response parameter.
         self.repo_instance_id = repo_instance_id
         # The name of the image repository.
         # > Fuzzy match is supported.
@@ -112,8 +112,10 @@ class DescribeCanFixVulListRequest(DaraModel):
         # - **us-east-1**: US (Virginia)
         # - **us-west-1**: US (Silicon Valley)
         # - **eu-central-1**: Germany (Frankfurt)
-        # - **eu-west-1**: UK (London).
+        # - **eu-west-1**: UK (London)
         self.repo_region_id = repo_region_id
+        # The ID of the Alibaba Cloud account of a member account in the resource folder.
+        # > You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
         # The scan scope. Valid values:
         # 
@@ -129,7 +131,7 @@ class DescribeCanFixVulListRequest(DaraModel):
         self.tag = tag
         # The vulnerability type. Valid values:
         # - **cve**: system vulnerability
-        # - **sca**: application vulnerability.
+        # - **sca**: application vulnerability
         # 
         # This parameter is required.
         self.type = type

@@ -43,11 +43,11 @@ class DescribeImageVulListRequest(DaraModel):
         self.alias_name = alias_name
         # The ID of the container cluster.
         self.cluster_id = cluster_id
-        # The name of the cluster.
+        # The cluster name.
         self.cluster_name = cluster_name
-        # The ID of the container.
+        # The container ID.
         self.container_id = container_id
-        # The page number of the page to return in the query results. Default value: **1**, which indicates the first page.
+        # The page number of the page to return in the query results. Default value: **1**, which indicates that the first page is returned.
         self.current_page = current_page
         # Specifies whether the vulnerability has been handled. Valid values:
         # - **y**: Handled.
@@ -57,7 +57,7 @@ class DescribeImageVulListRequest(DaraModel):
         self.digest = digest
         # Specifies whether to group results by image asset before pagination. If set to true, one vulnerability record is returned for each asset, and TotalCount indicates the total number of assets. If set to false or not specified, results are paginated by vulnerability record. Asset grouping is not applied when MaxId is specified.
         self.group_by_asset = group_by_asset
-        # The name of the container image.
+        # The container image name.
         self.image = image
         # The ID of the asset instance.
         self.instance_id = instance_id
@@ -69,12 +69,12 @@ class DescribeImageVulListRequest(DaraModel):
         self.name = name
         # The namespace.
         self.namespace = namespace
-        # The priority level for fixing the vulnerability. Valid values:
-        # - **asap**: High-priority vulnerability that must be fixed as soon as possible.
-        # - **later**: Medium-priority vulnerability that can be fixed later.
-        # - **nntf**: Low-priority vulnerability that does not need to be fixed for now.
+        # The priority of vulnerability fixing. Valid values:
+        # - **asap**: high-priority vulnerability
+        # - **later**: medium-priority vulnerability
+        # - **nntf**: low-priority vulnerability
         self.necessity = necessity
-        # The number of entries per page in a paged query. Default value: **10**, which indicates 10 vulnerability entries per page.
+        # Settings for paged query. The number of vulnerabilities to display on each page during paging. Default value: **10**, which indicates that 10 vulnerabilities are displayed on each page.
         self.page_size = page_size
         # The pod.
         self.pod = pod
@@ -90,8 +90,8 @@ class DescribeImageVulListRequest(DaraModel):
         self.repo_namespace = repo_namespace
         # The region ID of the container image repository.
         self.repo_region_id = repo_region_id
-        # The Alibaba Cloud account ID of the member accounts in the resource directory.
-        # >Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+        # The ID of the Alibaba Cloud account that is added as one of the member accounts in a resource folder.
+        # >Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
         # The vulnerability tag. Valid values:
         # 
@@ -106,11 +106,11 @@ class DescribeImageVulListRequest(DaraModel):
         self.status_list = status_list
         # The tag of the container image.
         self.tag = tag
-        # The type of vulnerability to query. Set the value to **cve**, which indicates container image vulnerabilities.
+        # The type of the vulnerability to query. Set the value to **cve**, which indicates container image vulnerabilities.
         # 
         # This parameter is required.
         self.type = type
-        # The UUIDs of asset instances. Separate multiple UUIDs with commas (,).
+        # The UUIDs of the asset instances. Separate multiple UUIDs with commas (,).
         self.uuids = uuids
 
     def validate(self):

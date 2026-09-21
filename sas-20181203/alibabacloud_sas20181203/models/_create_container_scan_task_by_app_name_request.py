@@ -11,11 +11,11 @@ class CreateContainerScanTaskByAppNameRequest(DaraModel):
         cluster_id: str = None,
         lang: str = None,
     ):
-        # The container application name.
+        # The container application names.
         self.app_names = app_names
         # The cluster ID.
         self.cluster_id = cluster_id
-        # The language type of the request and response.
+        # The language of the request and response. Valid values:
         # - **zh**: Chinese
         # - **en**: English
         self.lang = lang

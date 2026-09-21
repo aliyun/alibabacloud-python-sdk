@@ -13,7 +13,7 @@ class ListUnknownThreatDetectStrategyRequest(DaraModel):
         page_size: str = None,
         study_mode: str = None,
     ):
-        # The page number of the current page in a paging query.
+        # The page number of the current page when using paged query. This is used for paging.
         # 
         # This parameter is required.
         self.current_page = current_page
@@ -21,7 +21,7 @@ class ListUnknownThreatDetectStrategyRequest(DaraModel):
         self.id = id
         # The policy name.
         self.name = name
-        # The number of entries to display on each page in a paging query.
+        # The number of entries to display on each page when using paged query. This is used for paging.
         # 
         # This parameter is required.
         self.page_size = page_size

@@ -18,6 +18,7 @@ class ModifyServerlessAuthToMachineRequest(DaraModel):
         bind_uuid_list: List[str] = None,
         client_token: str = None,
         criteria: str = None,
+        dry_run: bool = None,
         logical_exp: str = None,
         ntm_version: str = None,
         pre_bind: int = None,
@@ -45,17 +46,19 @@ class ModifyServerlessAuthToMachineRequest(DaraModel):
         # 
         # > Obtain the IDs by calling the [ListMachineApps](~~ListMachineApps~~) operation.
         self.bind_app_list = bind_app_list
-        # The Asset Type. Valid values:
+        # The Asset Type for the operation. Valid values:
         # - **INSTANCE**: Instance.
         # - **APP**: Application.
         self.bind_asset_type = bind_asset_type
         # The list of asset UUIDs to bind.
         self.bind_uuid_list = bind_uuid_list
-        # The client token that is used to ensure the idempotence of the request. Use a different token for each request. The token supports only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. Use a different token for each request. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The search conditions for assets. This parameter is in JSON format. Pay attention to the letter case when you enter the parameter.
+        # The search conditions for assets. This parameter is in JSON format. Pay attention to letter case when you specify this parameter.
         # > You can search for assets by instance ID, instance name, VPC ID, region, public IP address, and other conditions. Call the [DescribeCriteria](~~DescribeCriteria~~) operation to query the supported search conditions.
         self.criteria = criteria
+        # Specifies whether to perform a dry run. true: performs only a check without executing the actual operation. false: performs the actual operation. Default value: false.
+        self.dry_run = dry_run
         # The logical relationship among multiple search conditions. Valid values:
         # - **OR**: Multiple conditions are evaluated using a logical OR.
         # - **AND**: Multiple conditions are evaluated using a logical AND.
@@ -116,6 +119,9 @@ class ModifyServerlessAuthToMachineRequest(DaraModel):
         if self.criteria is not None:
             result['Criteria'] = self.criteria
 
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+
         if self.logical_exp is not None:
             result['LogicalExp'] = self.logical_exp
 
@@ -167,6 +173,9 @@ class ModifyServerlessAuthToMachineRequest(DaraModel):
 
         if m.get('Criteria') is not None:
             self.criteria = m.get('Criteria')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
 
         if m.get('LogicalExp') is not None:
             self.logical_exp = m.get('LogicalExp')

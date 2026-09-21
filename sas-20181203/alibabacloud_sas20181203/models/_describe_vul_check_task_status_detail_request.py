@@ -22,6 +22,8 @@ class DescribeVulCheckTaskStatusDetailRequest(DaraModel):
         # The list of vulnerability types for the one-click scan.
         self.types = types
         # The UUID of the server to query.
+        # 
+        # This parameter is required. If this parameter is not specified, the API returns HTTP 503 with the error code ServiceUnavailable.
         self.uuid = uuid
 
     def validate(self):

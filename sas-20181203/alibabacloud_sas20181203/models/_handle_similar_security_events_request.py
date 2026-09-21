@@ -16,32 +16,34 @@ class HandleSimilarSecurityEventsRequest(DaraModel):
         source_ip: str = None,
         task_id: int = None,
     ):
-        # The rule for adding to the whitelist. For example, to add a whitelist rule based on file MD5 where the file contains the string "a", set this parameter to {"field":"md5","operate":"contains","fieldValue":"aa"}.
+        # The rule for adding to the whitelist. For example, to add a whitelist rule based on the file MD5 where the file contains the string "a", set this parameter to {"field":"md5","operate":"contains","fieldValue":"aa"}.
         self.mark_miss_param = mark_miss_param
-        # The operation type for batch processing similar alert events.
+        # The operation type for batch processing alert events of the same type.
         # >Call the [DescribeSecurityEventOperations](~~DescribeSecurityEventOperations~~) operation to obtain this parameter.
+        # 
+        # You can use kill_process to terminate a process. Obtain the specific valid operation values dynamically by calling the DescribeSecurityEventOperations operation.
         # 
         # This parameter is required.
         self.operation_code = operation_code
-        # The configuration of the sub-operation for alerting event handling. The value is in JSON format.
+        # The configuration of the sub-operation for handling alerting events. The value is in JSON format.
         # 
         # > This parameter is required when **OperationCode** is set to **kill_and_quara**, **block_ip**, or **virus_quara**. For other values of **OperationCode**, this parameter can be left empty.
         # 
         # > When **OperationCode** is set to **block_ip**, the following field is included:
-        # > - **expireTime**: the lock expiration time. Unit: milliseconds.
+        # > - **expireTime**: The lock expiration time. Unit: milliseconds.
         # >
         # > When **OperationCode** is set to **kill_and_quara**, the following field is included:
-        # > - **subOperation**: the scan method. Valid values:
-        # >     - **killAndQuaraFileByMd5andPath**: terminates the process and quarantines the quarantined file.
-        # >     - **killByMd5andPath**: terminates the running process.
+        # > - **subOperation**: The method used for trojan scan. Valid values:
+        # >     - **killAndQuaraFileByMd5andPath**: Terminates the process and moves the file to quarantined file.
+        # >     - **killByMd5andPath**: Terminates the running process.
         # >
         # > When **OperationCode** is set to **virus_quara**, the following field is included:
-        # > - **subOperation**: the scan method. Valid values:
-        # >    - **quaraFileByMd5andPath**: quarantines the source file of the process.
+        # > - **subOperation**: The method used for trojan scan. Valid values:
+        # >    - **quaraFileByMd5andPath**: Moves the source file of the process to quarantined file.
         self.operation_params = operation_params
         # The remarks for the operation.
         self.remark = remark
-        # The ID of the Alibaba Cloud account of member accounts in the resource folder.
+        # The ID of the Alibaba Cloud account of the member accounts in the resource folder.
         # >Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
         self.resource_owner_id = resource_owner_id

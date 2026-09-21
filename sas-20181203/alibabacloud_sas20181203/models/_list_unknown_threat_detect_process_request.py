@@ -17,23 +17,23 @@ class ListUnknownThreatDetectProcessRequest(DaraModel):
         process_path: str = None,
         remark: str = None,
         sha_256: str = None,
+        tag: str = None,
         uuid: str = None,
     ):
         # The analysis result. Valid values:
         # 
         # - **black**: abnormal process
-        # 
         # - **white**: normal process
         self.analyze_result = analyze_result
-        # The page number to return.
+        # The page number of the current page when using paged query. This is used for paging.
         self.current_page = current_page
-        # The end of the time range for the first detection, in milliseconds.
+        # The end of the time range during which the process was first detected. The value is a timestamp in milliseconds.
         self.first_time_end = first_time_end
-        # The start of the time range for the first detection, in milliseconds.
+        # The start of the time range during which the process was first detected. The value is a timestamp in milliseconds.
         self.first_time_start = first_time_start
-        # The MD5 value of the file.
+        # The MD5 hash of the file.
         self.md_5 = md_5
-        # The number of entries to return per page.
+        # The maximum number of entries per page when using paged query. This is used for paging.
         self.page_size = page_size
         # The file path.
         self.path = path
@@ -41,8 +41,10 @@ class ListUnknownThreatDetectProcessRequest(DaraModel):
         self.process_path = process_path
         # The server name or IP address.
         self.remark = remark
-        # The SHA-256 value of the file.
+        # The SHA-256 hash of the file.
         self.sha_256 = sha_256
+        # The label.
+        self.tag = tag
         # The UUID of the server to query.
         self.uuid = uuid
 
@@ -84,6 +86,9 @@ class ListUnknownThreatDetectProcessRequest(DaraModel):
         if self.sha_256 is not None:
             result['Sha256'] = self.sha_256
 
+        if self.tag is not None:
+            result['Tag'] = self.tag
+
         if self.uuid is not None:
             result['Uuid'] = self.uuid
 
@@ -120,6 +125,9 @@ class ListUnknownThreatDetectProcessRequest(DaraModel):
 
         if m.get('Sha256') is not None:
             self.sha_256 = m.get('Sha256')
+
+        if m.get('Tag') is not None:
+            self.tag = m.get('Tag')
 
         if m.get('Uuid') is not None:
             self.uuid = m.get('Uuid')

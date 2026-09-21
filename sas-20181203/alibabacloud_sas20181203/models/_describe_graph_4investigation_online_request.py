@@ -14,10 +14,14 @@ class DescribeGraph4InvestigationOnlineRequest(DaraModel):
         vertex_id: str = None,
     ):
         # The ID of the alert event. You can call [DescribeSuspEvents](~~DescribeSuspEvents~~) to obtain the alert event ID. The value is in the data.SuspEvents[index].UniqueInfo path.
+        # 
+        # This parameter is required. If this parameter is not specified, the API returns error code -101.
         self.anomaly_id = anomaly_id
         # The UUID of the asset associated with the alert event. You can call [DescribeSuspEvents](~~DescribeSuspEvents~~) to obtain the asset UUID. The value is in the data.SuspEvents[index].Uuid path.
+        # 
+        # This parameter is required. If this parameter is not specified, the API returns error code -101.
         self.anomaly_uuid = anomaly_uuid
-        # The language type for the request and response messages. Default value: **zh**. Valid values:
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
         # 
         # - **zh**: Chinese
         # - **en**: English

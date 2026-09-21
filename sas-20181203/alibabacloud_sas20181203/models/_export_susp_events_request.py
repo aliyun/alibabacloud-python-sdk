@@ -84,12 +84,12 @@ class ExportSuspEventsRequest(DaraModel):
         self.operate_error_code_list = operate_error_code_list
         # The maximum number of entries per page in a paged query. Default value: **20**.
         self.page_size = page_size
-        # The Alarm Metric of the alerting events to query. Valid values:
+        # The alert type of the alert events to query. Valid values:
         # 
         # - **Abnormal process behavior**
         # - **Web shell**
         # - **Unusual logon**
-        # - **Anomaly event**
+        # - **Abnormal event**
         # - **Sensitive file tampering**
         # - **Malicious process (cloud scan)**
         # - **Suspicious network connection**
@@ -102,7 +102,7 @@ class ExportSuspEventsRequest(DaraModel):
         # - **Web application threat detection**
         # - **Malicious script**
         # - **Threat intelligence**
-        # - **Malicious network connectivity behavior**
+        # - **Malicious network behavior**
         # - **Container cluster exception**
         # - **Web shell (local scan)**
         # - **Vulnerability exploits**
@@ -112,8 +112,8 @@ class ExportSuspEventsRequest(DaraModel):
         self.parent_event_types = parent_event_types
         # The remarks.
         self.remark = remark
-        # The ID of the Alibaba Cloud account of the member accounts in the resource directory.
-        # > You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+        # The ID of the member accounts in the resource folder.
+        # > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
         # The source IP address of the request. You do not need to specify this parameter. The system automatically obtains this value.
         self.source_ip = source_ip

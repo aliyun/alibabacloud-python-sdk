@@ -15,9 +15,9 @@ class CreateUnknownThreatDetectStrategyRequest(DaraModel):
     ):
         # The asset selection identifier.
         self.asset_selection_type = asset_selection_type
-        # The number of days after the model is initially created before learning ends.
+        # The number of days after the model is initially created before the learning phase ends.
         self.duration_days_after_init = duration_days_after_init
-        # The number of days after no new processes are added to the model before learning ends.
+        # The number of days after which the model ends when no new processes are added.
         self.duration_days_after_stop = duration_days_after_stop
         # The policy name.
         self.name = name

@@ -15,6 +15,8 @@ class SendCustomizeReportRequest(DaraModel):
         # 
         # This parameter is required.
         self.report_id = report_id
+        # The Alibaba Cloud account ID of the member accounts in the resource folder.
+        # >Invoke [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
 
     def validate(self):

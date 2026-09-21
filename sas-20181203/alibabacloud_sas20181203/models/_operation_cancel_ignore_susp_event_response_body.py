@@ -27,7 +27,7 @@ class OperationCancelIgnoreSuspEventResponseBody(DaraModel):
         # - **true**: Successful.
         # - **false**: Failed.
         self.success = success
-        # The time consumed by the task, in seconds.
+        # The time consumed by the task. Unit: seconds.
         self.time_cost = time_cost
 
     def validate(self):

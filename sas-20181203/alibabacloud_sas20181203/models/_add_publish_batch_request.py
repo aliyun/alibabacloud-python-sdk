@@ -16,17 +16,17 @@ class AddPublishBatchRequest(DaraModel):
         # 
         # This parameter is required.
         self.batch_name = batch_name
-        # The interval between two release batches.
+        # The interval between release batches.
         # 
         # This parameter is required.
         self.interval = interval
-        # The dimension based on which the asset is selected. Valid values:
+        # The dimension for asset selection. Valid values:
         # 
-        # *   **0**: selects the asset by instance.
-        # *   **1**: selects the asset by machine group.
-        # *   **2**: selects the asset by the ID of the instance that is deployed in the virtual private cloud (VPC).
+        # - **0**: server instance
+        # - **1**: server group
+        # - **2**: VPC-connected instance ID
         self.operation_base = operation_base
-        # The version to which you want to upgrade the agent.
+        # The target version to which you want to upgrade.
         # 
         # This parameter is required.
         self.upgrade_version = upgrade_version

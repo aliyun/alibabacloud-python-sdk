@@ -10,9 +10,9 @@ class SaveCustomizeReportConfigResponseBody(DaraModel):
         report_id: int = None,
         request_id: str = None,
     ):
-        # The ID of the report.
+        # The report ID.
         self.report_id = report_id
-        # The request ID.
+        # The request ID. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

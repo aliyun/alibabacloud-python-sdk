@@ -13,7 +13,7 @@ class AddCloudVendorAccountAKResponseBody(DaraModel):
         data: main_models.AddCloudVendorAccountAKResponseBodyData = None,
         request_id: str = None,
     ):
-        # The information about the added AK.
+        # The AK information that is added.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -79,7 +79,7 @@ class AddCloudVendorAccountAKResponseBodyData(DaraModel):
         self.secret_id = secret_id
         # The AK usage status. Valid values:
         # - **0**: In use.
-        # - **1**: Usage exception.
+        # - **1**: Abnormal.
         # - **2**: Validity verification in progress.
         # - **3**: Validity verification timed out.
         self.service_status = service_status
@@ -208,11 +208,11 @@ class AddCloudVendorAccountAKResponseBodyDataAuthModules(DaraModel):
         self.module_disp = module_disp
         # The module status. Valid values:
         # - **0**: In use.
-        # - **1**: Usage exception.
+        # - **1**: Abnormal.
         # - **2**: Validity verification in progress.
         # - **3**: Validity verification timed out.
         self.module_service_status = module_service_status
-        # The description of permissions associated with the module.
+        # The associate permission description for the module.
         self.module_statement = module_statement
 
     def validate(self):

@@ -9,6 +9,7 @@ class CreateAssetSelectionConfigRequest(DaraModel):
         self,
         business_type: str = None,
         client_token: str = None,
+        dry_run: bool = None,
         platform: str = None,
         target_type: str = None,
     ):
@@ -22,8 +23,10 @@ class CreateAssetSelectionConfigRequest(DaraModel):
         # 
         # This parameter is required.
         self.business_type = business_type
-        # The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. Use a different token for each request. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values: true: performs only a dry run without performing the actual operation. false: performs the actual request. Default value: false.
+        self.dry_run = dry_run
         # The operating system of the target asset. Valid values:
         # 
         # - **all**: all operating systems.
@@ -36,12 +39,12 @@ class CreateAssetSelectionConfigRequest(DaraModel):
         # >- **AGENTLESS_VUL_WHITE_LIST_[ID]**: the value is **all**.
         # >- **FILE_PROTECT_RULE_SWITCH_TYPE_[ID]**: the value is **linux**.
         self.platform = platform
-        # The target asset type. Valid values:
+        # The Asset Type of the target. Valid values:
         # 
         # - **all_instance**: all servers.
-        # - **instance**: select by server.
-        # - **group**: select by group.
-        # - **vpc**: select by VPC.
+        # - **instance**: selected by server.
+        # - **group**: selected by group.
+        # - **vpc**: selected by VPC.
         # 
         # This parameter is required.
         self.target_type = target_type
@@ -60,6 +63,9 @@ class CreateAssetSelectionConfigRequest(DaraModel):
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
 
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+
         if self.platform is not None:
             result['Platform'] = self.platform
 
@@ -75,6 +81,9 @@ class CreateAssetSelectionConfigRequest(DaraModel):
 
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
 
         if m.get('Platform') is not None:
             self.platform = m.get('Platform')

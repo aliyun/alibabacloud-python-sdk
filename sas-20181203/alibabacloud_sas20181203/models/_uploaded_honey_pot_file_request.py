@@ -15,8 +15,10 @@ class UploadedHoneyPotFileRequest(DaraModel):
         node_id: str = None,
         template_extra: str = None,
     ):
-        # The FileKey used to upload the file.
+        # The FileKey used for the uploaded file.
         # > Format: HONEYPOT_FILE/{timestamp}_{custom_file_name}
+        # 
+        # You must obtain this value by calling GetHoneyPotUploadPolicyInfo and use the returned Data.Key. Do not construct this value manually based on the format. First obtain the upload policy, then upload the file by using the policy, and finally call this operation to register the upload result.
         # 
         # This parameter is required.
         self.file_key = file_key
@@ -28,18 +30,20 @@ class UploadedHoneyPotFileRequest(DaraModel):
         # 
         # This parameter is required.
         self.file_type = file_type
-        # The name of the honeypot image.
+        # The honeypot image name.
+        # 
+        # Obtain valid values by calling ListAvailableHoneypot and using the HoneypotImageName field value from the response.
         # 
         # This parameter is required.
         self.honeypot_image_name = honeypot_image_name
-        # The language type of the request and response. Default value: **zh**. Valid values:
+        # The language of the content within the request and response. Default value: **zh**. Valid values:
         # 
         # - **zh**: Chinese
         # - **en**: English
         self.lang = lang
         # The ID of the honeypot management node.
-        # > Call the [ListHoneypotNode](~~ListHoneypotNode~~) operation to obtain this value.
-        # Note: This parameter is required. If this parameter is not specified, the API returns InvalidParam (400). Call ListHoneypotNode to obtain a valid NodeId.
+        # > Call [ListHoneypotNode](~~ListHoneypotNode~~) to obtain this value.
+        # Note: This parameter is required. If this parameter is not specified, the API returns InvalidParam(400). Call ListHoneypotNode to obtain a valid NodeId.
         self.node_id = node_id
         # The template prompt for the uploaded file.
         # 

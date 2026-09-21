@@ -13,16 +13,16 @@ class ModifyStrategyResponseBody(DaraModel):
         result: main_models.ModifyStrategyResponseBodyResult = None,
         success: bool = None,
     ):
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
-        # The result returned.
+        # The response result.
         self.result = result
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**: The request was successful.
-        # *   **false**: The request failed.
+        # - **true**: The request was successful.
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -70,7 +70,7 @@ class ModifyStrategyResponseBodyResult(DaraModel):
         self,
         strategy_id: int = None,
     ):
-        # The ID of the baseline check policy.
+        # The policy ID.
         self.strategy_id = strategy_id
 
     def validate(self):

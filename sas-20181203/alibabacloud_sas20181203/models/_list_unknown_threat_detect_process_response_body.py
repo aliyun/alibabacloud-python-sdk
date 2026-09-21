@@ -14,11 +14,11 @@ class ListUnknownThreatDetectProcessResponseBody(DaraModel):
         page_info: main_models.ListUnknownThreatDetectProcessResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # An array of process details.
+        # The returned data.
         self.data = data
         # The pagination information.
         self.page_info = page_info
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -74,9 +74,9 @@ class ListUnknownThreatDetectProcessResponseBodyPageInfo(DaraModel):
     ):
         # The number of entries on the current page.
         self.count = count
-        # The current page number.
+        # The page number of the current page in a paged query. This is used for paging.
         self.current_page = current_page
-        # The number of entries to return on each page.
+        # The maximum number of entries per page in a paged query. This is used for paging.
         self.page_size = page_size
         # The total number of entries.
         self.total_count = total_count
@@ -131,32 +131,36 @@ class ListUnknownThreatDetectProcessResponseBodyData(DaraModel):
         process_path: str = None,
         remark: str = None,
         sha_256: str = None,
+        tags: List[main_models.ListUnknownThreatDetectProcessResponseBodyDataTags] = None,
     ):
         # The analysis result. Valid values:
         # 
-        # - **black**: A malicious process.
-        # 
-        # - **white**: A normal process.
-        # 
-        # - **abnormal**: An abnormal process.
+        # - **black**: Malicious process.
+        # - **white**: Normal process.
+        # - **abnormal**: Abnormal process.
         self.analyze_result = analyze_result
         self.explanation_en = explanation_en
         self.explanation_zh = explanation_zh
-        # The timestamp of the first occurrence.
+        # The timestamp when the process was first detected.
         self.first_time = first_time
         # The MD5 hash of the file.
         self.md_5 = md_5
-        # The process ID.
+        # The process ID of the event.
         self.process_id = process_id
         # The process path.
         self.process_path = process_path
-        # Remarks about the process.
+        # The remarks.
         self.remark = remark
         # The SHA-256 hash of the file.
         self.sha_256 = sha_256
+        # The process labels.
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for v1 in self.tags:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -190,6 +194,11 @@ class ListUnknownThreatDetectProcessResponseBodyData(DaraModel):
         if self.sha_256 is not None:
             result['Sha256'] = self.sha_256
 
+        result['Tags'] = []
+        if self.tags is not None:
+            for k1 in self.tags:
+                result['Tags'].append(k1.to_map() if k1 else None)
+
         return result
 
     def from_map(self, m: dict = None):
@@ -220,6 +229,49 @@ class ListUnknownThreatDetectProcessResponseBodyData(DaraModel):
 
         if m.get('Sha256') is not None:
             self.sha_256 = m.get('Sha256')
+
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k1 in m.get('Tags'):
+                temp_model = main_models.ListUnknownThreatDetectProcessResponseBodyDataTags()
+                self.tags.append(temp_model.from_map(k1))
+
+        return self
+
+class ListUnknownThreatDetectProcessResponseBodyDataTags(DaraModel):
+    def __init__(
+        self,
+        tag_en: str = None,
+        tag_zh: str = None,
+    ):
+        # The English label of the process.
+        self.tag_en = tag_en
+        # The Chinese label of the process.
+        self.tag_zh = tag_zh
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.tag_en is not None:
+            result['TagEn'] = self.tag_en
+
+        if self.tag_zh is not None:
+            result['TagZh'] = self.tag_zh
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagEn') is not None:
+            self.tag_en = m.get('TagEn')
+
+        if m.get('TagZh') is not None:
+            self.tag_zh = m.get('TagZh')
 
         return self
 

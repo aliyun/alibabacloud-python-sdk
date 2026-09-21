@@ -66,14 +66,14 @@ class CreateContainerScanTaskByAppNameResponseBodyData(DaraModel):
         task_id: str = None,
         total_count: int = None,
     ):
-        # Indicates whether more scan tasks can be created. Valid values:
+        # Indicates whether you can continue to create scan tasks. Valid values:
         # 
-        # - **true**: More scan tasks can be created.
-        # - **false**: No more scan tasks can be created.
+        # - **true**: You can continue to create scan tasks.
+        # - **false**: You cannot continue to create scan tasks.
         self.can_create = can_create
-        # The timestamp when image information was collected, in milliseconds.
+        # The timestamp when image information was collected. Unit: milliseconds.
         self.collect_time = collect_time
-        # The timestamp when the scan task started running, in milliseconds.
+        # The timestamp when the scan task started running. Unit: milliseconds.
         self.exec_time = exec_time
         # The number of containers that have been scanned.
         self.finish_count = finish_count
@@ -84,14 +84,14 @@ class CreateContainerScanTaskByAppNameResponseBodyData(DaraModel):
         # - **SUCCESS**: The scan task was executed successfully.
         # - **TASK_NOT_SUPPORT_REGION**: The image is in a region that does not support scanning.
         # 
-        # > For the regions that support image security scanning, refer to the table of supported regions after the response parameters table in this document.
+        # > For the regions that support image security scanning, see the table of supported regions after the response parameters table in this topic.
         self.result = result
         # The status of the scan task. Valid values:
         # 
         # - **INIT**: Initializing.
         # - **PRE_ANALYZER**: Pre-analyzing.
-        # - **SUCCESS**: Execution succeeded.
-        # - **FAIL**: Execution failed.
+        # - **SUCCESS**: Succeeded.
+        # - **FAIL**: Failed.
         self.status = status
         # The ID of the scan task.
         self.task_id = task_id

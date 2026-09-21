@@ -21,22 +21,24 @@ class OperationSuspEventsRequest(DaraModel):
         self.from_ = from_
         # The operation to perform on the alert. Valid values:
         # 
-        # - **deal**: handles the alert (quarantine).
-        # - **ignore**: ignores the alert.
-        # - **mark_mis_info**: marks the alert as a false positive (adds it to the whitelist).
-        # - **rm_mark_mis_info**: unmarks the alert as a false positive (removes it from the whitelist).
-        # - **offline_handled**: marks the alert as handled.
+        # - **deal**: Handle the alert (quarantine).
+        # - **ignore**: Ignore the alert.
+        # - **mark_mis_info**: Mark as false positive (add to whitelist).
+        # - **rm_mark_mis_info**: Unmark as false positive (remove from whitelist).
+        # - **offline_handled**: Mark as handled.
         # 
         # This parameter is required.
         self.operation = operation
+        # The Alibaba Cloud account ID of a member account in the resource directory.
+        # > You can call [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
         # The IP address of the access source.
         self.source_ip = source_ip
         # The sub-operation type to perform when quarantining the alert event. Valid values:
         # 
-        # - **killAndQuaraFileByPidAndMd5andPath**: terminates the process by PID and quarantines the source file of the process.
-        # - **quaraFileByMd5andPath**: quarantines the source file of the process.
-        # - **killAndQuaraFileByMd5andPath**: terminates the process and quarantines the source file of the process.
+        # - **killAndQuaraFileByPidAndMd5andPath**: Terminate the process by PID and quarantine the source file of the process.
+        # - **quaraFileByMd5andPath**: Quarantine the source file of the process.
+        # - **killAndQuaraFileByMd5andPath**: Terminate the process and quarantine the source file of the process.
         self.sub_operation = sub_operation
         # The list of alert event IDs.
         # 
@@ -46,8 +48,8 @@ class OperationSuspEventsRequest(DaraModel):
         self.suspicious_event_ids = suspicious_event_ids
         # The type of the exception event to handle. Valid values:
         # 
-        # - **alarm**: alert.
-        # - **Empty**: exception.
+        # - **alarm**: alert
+        # - **Empty**: exception
         self.warn_type = warn_type
 
     def validate(self):

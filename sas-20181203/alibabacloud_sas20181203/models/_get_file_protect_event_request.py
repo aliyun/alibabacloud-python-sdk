@@ -9,7 +9,9 @@ class GetFileProtectEventRequest(DaraModel):
         self,
         id: int = None,
     ):
-        # The ID of the event.
+        # The event ID.
+        # 
+        # This parameter is required. If this parameter is not specified, the API returns HTTP 400 with error code -101. You can call ListFileProtectEvent to obtain valid event IDs.
         self.id = id
 
     def validate(self):

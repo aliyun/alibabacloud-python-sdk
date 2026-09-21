@@ -8,6 +8,7 @@ class CreateSimilarSecurityEventsQueryTaskRequest(DaraModel):
     def __init__(
         self,
         client_token: str = None,
+        dry_run: bool = None,
         resource_directory_account_id: int = None,
         resource_owner_id: int = None,
         security_event_id: int = None,
@@ -16,9 +17,16 @@ class CreateSimilarSecurityEventsQueryTaskRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run of the request. Valid values:
+        # 
+        # - true: performs only a dry run without executing the actual operation.
+        # - false: performs the actual operation.
+        # 
+        # Default value: false.
+        self.dry_run = dry_run
         self.resource_directory_account_id = resource_directory_account_id
         self.resource_owner_id = resource_owner_id
-        # The ID of the security alert.
+        # The ID of the alert event.
         # 
         # This parameter is required.
         self.security_event_id = security_event_id
@@ -37,6 +45,9 @@ class CreateSimilarSecurityEventsQueryTaskRequest(DaraModel):
             result = _map
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
 
         if self.resource_directory_account_id is not None:
             result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
@@ -59,6 +70,9 @@ class CreateSimilarSecurityEventsQueryTaskRequest(DaraModel):
         m = m or dict()
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
 
         if m.get('ResourceDirectoryAccountId') is not None:
             self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')

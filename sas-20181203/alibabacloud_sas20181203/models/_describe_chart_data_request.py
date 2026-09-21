@@ -23,15 +23,17 @@ class DescribeChartDataRequest(DaraModel):
         # 
         # > Call the [DescribeChartList](~~DescribeChartList~~) operation to obtain this parameter. This parameter is required if the report version is 2.0.0.
         self.chart_id = chart_id
-        # The language type for the request and response. Default value: **zh**. Valid values:
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
         # 
         # - **zh**: Chinese
-        # - **en**: English.
+        # - **en**: English
         self.lang = lang
         # The report ID.
         # 
         # > Call the [DescribeCustomizeReportList](~~DescribeCustomizeReportList~~) operation to obtain this parameter.
         self.report_id = report_id
+        # The Alibaba Cloud account ID of the member accounts in the resource directory.
+        # > Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
         # The end timestamp for statistics. Unit: milliseconds.
         self.time_end = time_end

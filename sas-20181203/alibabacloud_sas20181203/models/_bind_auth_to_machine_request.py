@@ -15,6 +15,7 @@ class BindAuthToMachineRequest(DaraModel):
         bind_all: bool = None,
         client_token: str = None,
         criteria: str = None,
+        dry_run: bool = None,
         is_pre_bind: int = None,
         logical_exp: str = None,
         ntm_version: str = None,
@@ -24,16 +25,16 @@ class BindAuthToMachineRequest(DaraModel):
         un_bind: List[str] = None,
     ):
         # The authorization version of the asset. Valid values:
-        # - **6**: Anti-virus Edition.
-        # - **5**: Premium Edition.
-        # - **3**: Enterprise Edition.
-        # - **7**: Ultimate Edition.
-        # - **10**: Value-added service Edition.
+        # - **6**: Anti-virus Edition
+        # - **5**: Advanced Edition
+        # - **3**: Enterprise Edition
+        # - **7**: Ultimate Edition
+        # - **10**: Value-added Service Edition
         self.auth_version = auth_version
         # Specifies whether to enable automatic binding. Valid values:
         # 
-        # - **0**: Disable automatic binding.
-        # - **1**: Enable automatic binding.
+        # - **0**: Disabled.
+        # - **1**: Enabled.
         self.auto_bind = auto_bind
         # The collection of UUIDs to bind.
         # 
@@ -46,9 +47,11 @@ class BindAuthToMachineRequest(DaraModel):
         self.bind_all = bind_all
         # The client token that is used to ensure the idempotence of the request. Use a different token for each request. The token supports only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The conditions for searching assets. This parameter is in JSON format. Pay attention to letter case when you specify this parameter.
-        # > You can search for assets by instance ID, instance name, VPC ID, region, or public IP address. Call the [DescribeCriteria](~~DescribeCriteria~~) operation to query the supported search conditions.
+        # The conditions for searching for assets. This parameter is in JSON format. Pay attention to letter case when you specify this parameter.
+        # > You can search for assets by instance ID, instance name, VPC ID, region, public IP address, and other conditions. Call the [DescribeCriteria](~~DescribeCriteria~~) operation to query the supported search conditions.
         self.criteria = criteria
+        # Specifies whether to perform a dry run. Valid values: true: performs a dry run without executing the actual operation. false: performs the actual operation. Default value: false.
+        self.dry_run = dry_run
         # Specifies whether this is a pre-binding operation. Valid values:
         # 
         # - **0**: No.
@@ -58,22 +61,22 @@ class BindAuthToMachineRequest(DaraModel):
         # > After pre-binding is enabled, the corresponding authorization quota is automatically bound to the specified servers after the purchase is completed.
         self.is_pre_bind = is_pre_bind
         # The logical relationship among multiple search conditions. Default value: **OR**. Valid values:
-        # - **OR**: The search conditions are evaluated using a logical OR.
-        # - **AND**: The search conditions are evaluated using a logical AND.
+        # - **OR**: The search conditions are evaluated with a logical OR.
+        # - **AND**: The search conditions are evaluated with a logical AND.
         self.logical_exp = logical_exp
-        # The order version associated with the pre-binding operation. Valid values:
+        # The order version associated with the pre-binding. Valid values:
         # 
-        # - **level7**: Anti-virus Edition.
-        # - **level3**: Premium Edition.
-        # - **level2**: Enterprise Edition.
-        # - **level8**: Ultimate Edition.
-        # - **level10**: Value-added service only.
+        # - **level7**: Anti-virus Edition
+        # - **level3**: Advanced Edition
+        # - **level2**: Enterprise Edition
+        # - **level8**: Ultimate Edition
+        # - **level10**: Value-added service only
         self.ntm_version = ntm_version
-        # The order ID associated with the pre-binding operation.
+        # The order ID associated with the pre-binding.
         self.pre_bind_order_id = pre_bind_order_id
         self.product_code = product_code
-        # The ID of the member accounts (Alibaba Cloud account) in the resource directory.
-        # >Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+        # The ID of the member account in the resource folder (Alibaba Cloud account).
+        # > Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
         # The collection of UUIDs to unbind.
         # > **Bind** and **UnBind** cannot both be empty.
@@ -104,6 +107,9 @@ class BindAuthToMachineRequest(DaraModel):
 
         if self.criteria is not None:
             result['Criteria'] = self.criteria
+
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
 
         if self.is_pre_bind is not None:
             result['IsPreBind'] = self.is_pre_bind
@@ -147,6 +153,9 @@ class BindAuthToMachineRequest(DaraModel):
 
         if m.get('Criteria') is not None:
             self.criteria = m.get('Criteria')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
 
         if m.get('IsPreBind') is not None:
             self.is_pre_bind = m.get('IsPreBind')

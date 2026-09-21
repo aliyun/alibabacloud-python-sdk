@@ -20,13 +20,13 @@ class DescribeGraph4InvestigationOnlineResponseBody(DaraModel):
         self.code = code
         # The response data.
         self.data = data
-        # The message returned for the request.
+        # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the API call was successful. Valid values:
-        # - **true**: The API call was successful.
-        # - **false**: The API call failed.
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):

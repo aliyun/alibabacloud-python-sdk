@@ -19,7 +19,7 @@ class GetDataTrendRequest(DaraModel):
         # - **VUL_NEW**: number of new vulnerability risks
         # - **VUL_OPERATE**: number of handled vulnerability risks
         # - **SUSP_NEW**: number of new alert risks
-        # - **SUSP_OPERATE**: number of handled alert risks.
+        # - **SUSP_OPERATE**: number of handled alert risks
         # 
         # This parameter is required.
         self.biz_types = biz_types
@@ -33,6 +33,8 @@ class GetDataTrendRequest(DaraModel):
         # 
         # This parameter is required.
         self.interval = interval
+        # The Alibaba Cloud account ID of the member accounts in the resource directory.
+        # > Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
         # The start timestamp of the query. Unit: milliseconds.
         # 

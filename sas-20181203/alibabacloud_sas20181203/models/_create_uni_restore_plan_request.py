@@ -20,8 +20,17 @@ class CreateUniRestorePlanRequest(DaraModel):
         # The unique identifier of the database backup client on the destination server for restoration.
         # >Call the [DescribeUniBackupDatabase](~~DescribeUniBackupDatabase~~) operation to obtain this parameter.
         self.instance_uuid = instance_uuid
-        # The ID of the anti-ransomware backup policy for the database.
+        # The ID of the database anti-ransomware backup policy.
         # >Call the [DescribeUniBackupPolicies](~~DescribeUniBackupPolicies~~) operation to obtain this parameter.
+        # 
+        # Before calling this operation, complete the following steps in order:
+        # 
+        # 1. Install the Security Center agent on the ECS instance and deploy a MySQL, Oracle, or MSSQL database.
+        # 2. Call the StartDiscoverDatabaseTask operation to discover databases.
+        # 3. Call the CreateUniBackupPolicy operation to create a backup policy and obtain the PolicyId.
+        # 4. Wait for the policy to complete at least one successful backup.
+        # 
+        # Dependency order: Database and agent preparation → Database discovery → Create backup policy → Successful backup → Create restoration task.
         # 
         # This parameter is required.
         self.policy_id = policy_id

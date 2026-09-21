@@ -94,6 +94,8 @@ class Client(OpenApiClient):
             query['Criteria'] = request.criteria
         if not DaraCore.is_null(request.criteria_operation):
             query['CriteriaOperation'] = request.criteria_operation
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.selection_key):
             query['SelectionKey'] = request.selection_key
         if not DaraCore.is_null(request.target_operation_list):
@@ -130,6 +132,8 @@ class Client(OpenApiClient):
             query['Criteria'] = request.criteria
         if not DaraCore.is_null(request.criteria_operation):
             query['CriteriaOperation'] = request.criteria_operation
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.selection_key):
             query['SelectionKey'] = request.selection_key
         if not DaraCore.is_null(request.target_operation_list):
@@ -266,6 +270,8 @@ class Client(OpenApiClient):
             query['CheckId'] = request.check_id
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.instance_list):
@@ -306,6 +312,8 @@ class Client(OpenApiClient):
             query['CheckId'] = request.check_id
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.instance_list):
@@ -358,6 +366,8 @@ class Client(OpenApiClient):
             query['CheckIds'] = request.check_ids
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.remark):
@@ -394,6 +404,8 @@ class Client(OpenApiClient):
             query['CheckIds'] = request.check_ids
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.remark):
@@ -2548,6 +2560,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.criteria):
             query['Criteria'] = request.criteria
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.is_pre_bind):
             query['IsPreBind'] = request.is_pre_bind
         if not DaraCore.is_null(request.logical_exp):
@@ -2600,6 +2614,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.criteria):
             query['Criteria'] = request.criteria
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.is_pre_bind):
             query['IsPreBind'] = request.is_pre_bind
         if not DaraCore.is_null(request.logical_exp):
@@ -2890,6 +2906,8 @@ class Client(OpenApiClient):
             query['Configure'] = request.configure
         if not DaraCore.is_null(request.cycle_days):
             query['CycleDays'] = request.cycle_days
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.enable_add_check):
             query['EnableAddCheck'] = request.enable_add_check
         if not DaraCore.is_null(request.enable_auto_check):
@@ -2954,6 +2972,8 @@ class Client(OpenApiClient):
             query['Configure'] = request.configure
         if not DaraCore.is_null(request.cycle_days):
             query['CycleDays'] = request.cycle_days
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.enable_add_check):
             query['EnableAddCheck'] = request.enable_add_check
         if not DaraCore.is_null(request.enable_auto_check):
@@ -3990,6 +4010,8 @@ class Client(OpenApiClient):
             query['BusinessType'] = request.business_type
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.platform):
             query['Platform'] = request.platform
         if not DaraCore.is_null(request.target_type):
@@ -4024,6 +4046,8 @@ class Client(OpenApiClient):
             query['BusinessType'] = request.business_type
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.platform):
             query['Platform'] = request.platform
         if not DaraCore.is_null(request.target_type):
@@ -5130,6 +5154,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.enable):
             query['Enable'] = request.enable
         if not DaraCore.is_null(request.first_date_str):
@@ -5178,6 +5204,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.enable):
             query['Enable'] = request.enable
         if not DaraCore.is_null(request.first_date_str):
@@ -7602,6 +7630,8 @@ class Client(OpenApiClient):
             query['DecompressMaxLayer'] = request.decompress_max_layer
         if not DaraCore.is_null(request.decryption_list):
             query['DecryptionList'] = request.decryption_list
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.enable):
             query['Enable'] = request.enable
         if not DaraCore.is_null(request.end_time):
@@ -7662,6 +7692,8 @@ class Client(OpenApiClient):
             query['DecompressMaxLayer'] = request.decompress_max_layer
         if not DaraCore.is_null(request.decryption_list):
             query['DecryptionList'] = request.decryption_list
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.enable):
             query['Enable'] = request.enable
         if not DaraCore.is_null(request.end_time):
@@ -7896,6 +7928,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         body = {}
         if not DaraCore.is_null(request.from_ecs):
             body['FromEcs'] = request.from_ecs
@@ -7940,6 +7974,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         body = {}
         if not DaraCore.is_null(request.from_ecs):
             body['FromEcs'] = request.from_ecs
@@ -7994,6 +8030,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.service_linked_role):
             query['ServiceLinkedRole'] = request.service_linked_role
         req = open_api_util_models.OpenApiRequest(
@@ -8024,6 +8062,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.service_linked_role):
             query['ServiceLinkedRole'] = request.service_linked_role
         req = open_api_util_models.OpenApiRequest(
@@ -8138,6 +8178,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.resource_directory_account_id):
             query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.resource_owner_id):
@@ -8176,6 +8218,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.resource_directory_account_id):
             query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.resource_owner_id):
@@ -8776,6 +8820,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.param):
             query['Param'] = request.param
         if not DaraCore.is_null(request.scan_path):
@@ -8812,6 +8858,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.param):
             query['Param'] = request.param
         if not DaraCore.is_null(request.scan_path):
@@ -40961,6 +41009,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_agentless_task_count_with_options_async(request, runtime)
 
+    def get_agentless_task_count_batch_with_options(
+        self,
+        request: main_models.GetAgentlessTaskCountBatchRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentlessTaskCountBatchResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.target_type):
+            query['TargetType'] = request.target_type
+        body = {}
+        if not DaraCore.is_null(request.uuid_list):
+            body['UuidList'] = request.uuid_list
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgentlessTaskCountBatch',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgentlessTaskCountBatchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_agentless_task_count_batch_with_options_async(
+        self,
+        request: main_models.GetAgentlessTaskCountBatchRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentlessTaskCountBatchResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.target_type):
+            query['TargetType'] = request.target_type
+        body = {}
+        if not DaraCore.is_null(request.uuid_list):
+            body['UuidList'] = request.uuid_list
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgentlessTaskCountBatch',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgentlessTaskCountBatchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_agentless_task_count_batch(
+        self,
+        request: main_models.GetAgentlessTaskCountBatchRequest,
+    ) -> main_models.GetAgentlessTaskCountBatchResponse:
+        runtime = RuntimeOptions()
+        return self.get_agentless_task_count_batch_with_options(request, runtime)
+
+    async def get_agentless_task_count_batch_async(
+        self,
+        request: main_models.GetAgentlessTaskCountBatchRequest,
+    ) -> main_models.GetAgentlessTaskCountBatchResponse:
+        runtime = RuntimeOptions()
+        return await self.get_agentless_task_count_batch_with_options_async(request, runtime)
+
     def get_agentless_task_used_size_estimate_with_options(
         self,
         request: main_models.GetAgentlessTaskUsedSizeEstimateRequest,
@@ -60288,6 +60414,8 @@ class Client(OpenApiClient):
             query['Remark'] = request.remark
         if not DaraCore.is_null(request.sha_256):
             query['Sha256'] = request.sha_256
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
         if not DaraCore.is_null(request.uuid):
             query['Uuid'] = request.uuid
         req = open_api_util_models.OpenApiRequest(
@@ -60336,6 +60464,8 @@ class Client(OpenApiClient):
             query['Remark'] = request.remark
         if not DaraCore.is_null(request.sha_256):
             query['Sha256'] = request.sha_256
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
         if not DaraCore.is_null(request.uuid):
             query['Uuid'] = request.uuid
         req = open_api_util_models.OpenApiRequest(
@@ -63324,6 +63454,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.reason):
             query['Reason'] = request.reason
         if not DaraCore.is_null(request.resource_directory_account_id):
@@ -63360,6 +63492,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.reason):
             query['Reason'] = request.reason
         if not DaraCore.is_null(request.resource_directory_account_id):
@@ -63676,6 +63810,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
         if not DaraCore.is_null(request.name):
@@ -63712,6 +63848,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
         if not DaraCore.is_null(request.name):
@@ -64866,6 +65004,8 @@ class Client(OpenApiClient):
             query['BizType'] = request.biz_type
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.focus_level):
             query['FocusLevel'] = request.focus_level
         if not DaraCore.is_null(request.project):
@@ -64906,6 +65046,8 @@ class Client(OpenApiClient):
             query['BizType'] = request.biz_type
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.focus_level):
             query['FocusLevel'] = request.focus_level
         if not DaraCore.is_null(request.project):
@@ -65032,6 +65174,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.from_):
             query['From'] = request.from_
         if not DaraCore.is_null(request.info):
@@ -65072,6 +65216,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.from_):
             query['From'] = request.from_
         if not DaraCore.is_null(request.info):
@@ -65132,6 +65278,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.edr_module_switch_shrink):
             query['EdrModuleSwitch'] = request.edr_module_switch_shrink
         if not DaraCore.is_null(request.post_paid_host_auto_bind):
@@ -65178,6 +65326,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.edr_module_switch_shrink):
             query['EdrModuleSwitch'] = request.edr_module_switch_shrink
         if not DaraCore.is_null(request.post_paid_host_auto_bind):
@@ -65900,6 +66050,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.criteria):
             query['Criteria'] = request.criteria
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.logical_exp):
             query['LogicalExp'] = request.logical_exp
         if not DaraCore.is_null(request.ntm_version):
@@ -65958,6 +66110,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.criteria):
             query['Criteria'] = request.criteria
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.logical_exp):
             query['LogicalExp'] = request.logical_exp
         if not DaraCore.is_null(request.ntm_version):
@@ -66088,6 +66242,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.resource_directory_account_id):
             query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.types):
@@ -66122,6 +66278,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.resource_directory_account_id):
             query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.types):
@@ -66638,6 +66796,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.config):
             query['Config'] = request.config
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.type):
             query['Type'] = request.type
         req = open_api_util_models.OpenApiRequest(
@@ -66670,6 +66830,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.config):
             query['Config'] = request.config
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.type):
             query['Type'] = request.type
         req = open_api_util_models.OpenApiRequest(
@@ -68204,6 +68366,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.config):
             query['Config'] = request.config
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.no_target_as_on):
             query['NoTargetAsOn'] = request.no_target_as_on
         if not DaraCore.is_null(request.source_ip):
@@ -68240,6 +68404,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.config):
             query['Config'] = request.config
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.no_target_as_on):
             query['NoTargetAsOn'] = request.no_target_as_on
         if not DaraCore.is_null(request.source_ip):
@@ -76680,6 +76846,8 @@ class Client(OpenApiClient):
             query['BindAction'] = request.bind_action
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
         if not DaraCore.is_null(request.update_if_necessary):
@@ -76718,6 +76886,8 @@ class Client(OpenApiClient):
             query['BindAction'] = request.bind_action
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
         if not DaraCore.is_null(request.update_if_necessary):
@@ -77074,6 +77244,8 @@ class Client(OpenApiClient):
             query['BusinessType'] = request.business_type
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.selection_key):
             query['SelectionKey'] = request.selection_key
         req = open_api_util_models.OpenApiRequest(
@@ -77106,6 +77278,8 @@ class Client(OpenApiClient):
             query['BusinessType'] = request.business_type
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.selection_key):
             query['SelectionKey'] = request.selection_key
         req = open_api_util_models.OpenApiRequest(
@@ -78114,6 +78288,8 @@ class Client(OpenApiClient):
             query['CheckIds'] = request.check_ids
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.task_source):
@@ -78150,6 +78326,8 @@ class Client(OpenApiClient):
             query['CheckIds'] = request.check_ids
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.task_source):

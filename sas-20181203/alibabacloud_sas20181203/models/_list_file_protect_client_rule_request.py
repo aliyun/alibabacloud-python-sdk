@@ -22,7 +22,7 @@ class ListFileProtectClientRuleRequest(DaraModel):
         # 
         # - 2: suspicious
         # 
-        # - 3: high-risk.
+        # - 3: high-risk
         self.alert_level = alert_level
         # The page number of the current page in a paged query.
         self.current_page = current_page
@@ -31,15 +31,15 @@ class ListFileProtectClientRuleRequest(DaraModel):
         # The operating system type. Valid values:
         # 
         # - **windows**: Windows
-        # - **linux**: Linux.
+        # - **linux**: Linux
         self.platform = platform
         # The rule action. Valid values:
         # 
-        # - **block**: blocks the request.
+        # - **block**: Block.
         # 
-        # - **monitor**: monitors the request.
+        # - **monitor**: Monitor.
         # 
-        # - **pass**: allows the request.
+        # - **pass**: Allow.
         self.rule_action = rule_action
         # The rule name.
         self.rule_name = rule_name

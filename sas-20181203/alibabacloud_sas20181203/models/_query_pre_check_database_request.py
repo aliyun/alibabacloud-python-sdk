@@ -13,9 +13,15 @@ class QueryPreCheckDatabaseRequest(DaraModel):
     ):
         # The unique identifier of the server database backup client.
         # > You can call the [DescribeUniBackupDatabase](~~DescribeUniBackupDatabase~~) operation to obtain this parameter.
+        # 
+        # You must specify at least one of TaskId and InstanceUuid. If neither is specified, the API returns HTTP 400 with error code -106.
         self.instance_uuid = instance_uuid
         # The ID of the database pre-check task.
         # > You can call the [StartPreCheckDatabase](~~StartPreCheckDatabase~~) operation to obtain this parameter.
+        # 
+        # You must specify at least one of TaskId and InstanceUuid. If neither is specified, the API returns HTTP 400 with error code -106.
+        # 
+        # Call DescribeUniBackupDatabase to obtain the InstanceUuid, and then pass it to StartPreCheckDatabase. The CreateMark returned by StartPreCheckDatabase is the TaskId required by this operation.
         self.task_id = task_id
         # The region ID of the database server.
         # 

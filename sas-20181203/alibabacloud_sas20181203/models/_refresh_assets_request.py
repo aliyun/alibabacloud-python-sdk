@@ -24,7 +24,7 @@ class RefreshAssetsRequest(DaraModel):
         self.cloud_asset_sub_type = cloud_asset_sub_type
         # The type of cloud product. Valid values:
         # 
-        # - **0**: server
+        # - **0**: cloud server
         # - **1**: load balancing
         # - **3**: ApsaraDB RDS database
         # - **4**: ApsaraDB for MongoDB database
@@ -38,12 +38,12 @@ class RefreshAssetsRequest(DaraModel):
         # - **14**: Apsara Devops
         # - **15**: access control
         # - **16**: Anti-DDoS
-        # - **17**: Web Application Firewall
+        # - **17**: Web application firewall
         # - **18**: OSS
         # - **19**: cloud-native relational database PolarDB
         # - **20**: ApsaraDB RDS for PostgreSQL database
-        # - **21**: Microservices Engine
-        # - **22**: File Storage NAS
+        # - **21**: microservices engine
+        # - **22**: file storage NAS
         # - **23**: Data Security Center
         # - **24**: EIP
         self.cloud_asset_type = cloud_asset_type
@@ -53,10 +53,10 @@ class RefreshAssetsRequest(DaraModel):
         # The server vendor. Valid values:
         # 
         # - **0**: Alibaba Cloud asset
-        # - **1**: asset outside the cloud
+        # - **1**: Non-cloud asset
         # - **2**: IDC asset
-        # - **3**, **4**, **5**, **7**: third-party cloud asset
-        # - **8**: lightweight asset
+        # - **3**, **4**, **5**, **7**: Third-party cloud asset
+        # - **8**: Lightweight asset
         self.vendor = vendor
 
     def validate(self):

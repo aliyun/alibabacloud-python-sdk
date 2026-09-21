@@ -11,9 +11,9 @@ class GetFileProtectEventResponseBody(DaraModel):
         data: main_models.GetFileProtectEventResponseBodyData = None,
         request_id: str = None,
     ):
-        # The details of the returned data.
+        # The returned data details.
         self.data = data
-        # The request ID.
+        # The request ID. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -69,65 +69,63 @@ class GetFileProtectEventResponseBodyData(DaraModel):
         user_name: str = None,
         uuid: str = None,
     ):
-        # The severity of alerts. Valid values:
+        # The alert notification level. Valid values:
         # 
-        # - 0: does not generate alerts
+        # - 0: No alert.
         # 
-        # - 1: sends notifications
+        # - 1: Reminder.
         # 
-        # - 2: suspicious
+        # - 2: Suspicious.
         # 
-        # - 3: high-risk
+        # - 3: High-risk.
         self.alert_level = alert_level
         # The event command line.
         self.cmd_line = cmd_line
-        # The path to the file.
+        # The file path.
         self.file_path = file_path
-        # The permissions to run the process.
+        # The process permissions.
         self.file_permission = file_permission
-        # The timestamp at which the event was first detected.
+        # The timestamp when the event first occurred.
         self.first_time = first_time
-        # The time when the event was handled.
+        # The time when the event was handled. The value is a UNIX timestamp. Unit: milliseconds.
         self.handle_time = handle_time
-        # The ID of the event.
+        # The unique ID.
         self.id = id
-        # The name of the instance.
+        # The instance name.
         self.instance_name = instance_name
         # The public IP address of the associated instance.
         self.internet_ip = internet_ip
         # The private IP address of the associated instance.
         self.intranet_ip = intranet_ip
-        # The time when the event last occurred.
+        # The timestamp when the event most recently occurred. The value is a UNIX timestamp. Unit: milliseconds.
         self.latest_time = latest_time
-        # The operation that the process performed on the file.
+        # The operation performed by the process on the file.
         self.operation = operation
-        # The type of the operating system. Valid values:
+        # The operating system type. Valid values:
         # 
-        # - **windows**: Windows
-        # 
-        # - **linux**: Linux
+        # - **windows**: Windows.
+        # - **linux**: Linux.
         self.platform = platform
-        # The path to the process.
+        # The process path.
         self.proc_path = proc_path
         # The process ID of the event.
         self.process_id = process_id
         # The remarks.
         self.remark = remark
-        # The name of the rule.
+        # The rule name.
         self.rule_name = rule_name
-        # The status of the event. Valid values:
+        # The event status. Valid values:
         # 
-        # - 0: not handled
-        # 
-        # - 1: handled
-        # 
-        # - 2: added to the whitelist
+        # - 0: Unhandled. 
+        # - 1: Manually handled.
+        # - 2: Whitelisted.
+        # - 3: Ignored.
         self.status = status
-        # User ID of the user who started the current process.
+        # The user ID that started the current process.
         self.user_id = user_id
         # The username that started the current process.
         self.user_name = user_name
-        # The UUID of the asset.
+        # The UUID of the asset instance.
         self.uuid = uuid
 
     def validate(self):

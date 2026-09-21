@@ -11,14 +11,15 @@ class SaveSuspEventUserSettingRequest(DaraModel):
         levels_on: str = None,
         resource_directory_account_id: int = None,
     ):
-        # The data source of the exception. Set the value to sas.
+        # The source of the exception event data. Set the value to sas.
         self.from_ = from_
-        # The severities of alert notifications. Valid values:
-        # 
-        # *   **remind**
-        # *   **suspicious**
-        # *   **serious**
+        # The alert level for alert notifications. Valid values:
+        # - **remind**: Reminder.
+        # - **suspicious**: Suspicious.
+        # - **serious**: Urgent.
         self.levels_on = levels_on
+        # The ID of the member account in the resource directory.
+        # >You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
 
     def validate(self):

@@ -18,31 +18,31 @@ class DescribePropertyCronDetailRequest(DaraModel):
         user: str = None,
         uuid: str = None,
     ):
-        # The page number of the page to return. Default value: **1**, which indicates that the first page is returned.
+        # The page number of the results to return. Default value: **1**, which indicates that the results start from page 1.
         self.current_page = current_page
         # Specifies whether fuzzy match is supported for the scheduled task path. Set this parameter to **1** to enable fuzzy match. Other values or an empty value indicate that fuzzy match is not supported.
         self.extend = extend
-        # The pagination token that marks the position from which you want to start reading. Leave this parameter empty to read from the beginning.
+        # The token that marks the current position from which to start reading. Leave this parameter empty to start reading from the beginning.
         # 
         # > You do not need to specify this parameter for the first call. The response includes the NextToken value for the second call. Each subsequent response includes the NextToken value for the next call.
         self.next_token = next_token
-        # Settings the number of scheduled task asset fingerprint information entries displayed per page in a paging query. Default value: **10**, which indicates that 10 entries of scheduled task asset fingerprint information are displayed per page.
+        # Settings the number of entries per page in a paging query. Default value: **10**, which indicates that 10 fingerprint entries of scheduled task assets are displayed per page.
         self.page_size = page_size
-        # The name or IP address of the server that you want to query.
+        # The name or IP address of the server to query.
         self.remark = remark
         # The Alibaba Cloud account ID of the member accounts in the resource folder.
         # >Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
-        # The task path that you want to query.
+        # The path of the scheduled task to query.
         self.source = source
         # Specifies whether to use the NextToken method to retrieve the vulnerability list data. If you use this parameter, TotalCount is no longer returned. Valid values:
         # 
         # - **true**: Use the NextToken method.
         # - **false**: Do not use the NextToken method.
         self.use_next_token = use_next_token
-        # The account name of the scheduled task that you want to query.
+        # The account name of the scheduled task to query.
         self.user = user
-        # The UUID of the server that you want to query.
+        # The UUID of the server to query.
         self.uuid = uuid
 
     def validate(self):

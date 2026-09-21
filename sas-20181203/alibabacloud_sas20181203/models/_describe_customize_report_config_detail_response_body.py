@@ -31,7 +31,7 @@ class DescribeCustomizeReportConfigDetailResponseBody(DaraModel):
         target_uids: str = None,
         title: str = None,
     ):
-        # The IDs of report chart configurations. Multiple IDs are separated by commas (,).
+        # The IDs of the report chart configurations. Multiple IDs are separated by commas (,).
         self.chart_ids = chart_ids
         # The group type. Valid values:
         # - **ALIYUN_RG**: ALIYUN_RG.
@@ -41,7 +41,7 @@ class DescribeCustomizeReportConfigDetailResponseBody(DaraModel):
         # - **0**: The report is not a default report.
         # - **1**: The report is a default report.
         self.is_default = is_default
-        # Indicates whether newly added accounts are included by default. Valid values:
+        # Indicates whether newly added accounts are connected by default. Valid values:
         # 
         # - **true**: Yes.
         # - **false**: No.

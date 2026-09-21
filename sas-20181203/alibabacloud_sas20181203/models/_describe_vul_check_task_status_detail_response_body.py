@@ -115,7 +115,7 @@ class DescribeVulCheckTaskStatusDetailResponseBodyTaskStatusesTaskStatusList(Dar
     ):
         # The failure code.
         self.code = code
-        # The completion status of the check. Valid values:
+        # The check completion status. Valid values:
         # 
         # - **0**: Unprocessed.
         # - **1**: Collecting.
@@ -127,7 +127,7 @@ class DescribeVulCheckTaskStatusDetailResponseBodyTaskStatusesTaskStatusList(Dar
         # - **cve**: Linux software vulnerability
         # - **sys**: Windows system vulnerability
         # - **cms**: Web-CMS vulnerability
-        # - **sca**: sca vulnerability
+        # - **sca**: SCA vulnerability
         self.type = type
 
     def validate(self):

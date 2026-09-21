@@ -16,7 +16,7 @@ class ListCompressFileDetectResultRequest(DaraModel):
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The unique identifier of the file. This parameter is required in practice. If this parameter is not specified, the API returns ServerError(400). The value must be the MD5 or SHA-256 hash of the file.
+        # The unique identifier of the file. This parameter is required in practice. If this parameter is not specified, the API returns ServerError (500). The value must be the MD5 or SHA-256 hash of the file.
         self.hash_key = hash_key
         # The maximum number of entries per page in a paging query. Default value: 20.
         # 

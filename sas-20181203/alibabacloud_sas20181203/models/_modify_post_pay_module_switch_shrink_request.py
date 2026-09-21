@@ -8,6 +8,7 @@ class ModifyPostPayModuleSwitchShrinkRequest(DaraModel):
     def __init__(
         self,
         client_token: str = None,
+        dry_run: bool = None,
         edr_module_switch_shrink: str = None,
         post_paid_host_auto_bind: int = None,
         post_paid_host_auto_bind_version: int = None,
@@ -17,6 +18,8 @@ class ModifyPostPayModuleSwitchShrinkRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request. Use a different token for each request. Only ASCII characters are supported. The token can be up to 64 characters in length.
         self.client_token = client_token
+        # Specifies whether to perform a dry run. Valid values: true: performs a check without executing the operation. false: executes the operation. Default value: false.
+        self.dry_run = dry_run
         self.edr_module_switch_shrink = edr_module_switch_shrink
         # Specifies whether to automatically bind new assets for host and container protection. Valid values:
         # 
@@ -67,6 +70,9 @@ class ModifyPostPayModuleSwitchShrinkRequest(DaraModel):
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
 
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+
         if self.edr_module_switch_shrink is not None:
             result['EdrModuleSwitch'] = self.edr_module_switch_shrink
 
@@ -91,6 +97,9 @@ class ModifyPostPayModuleSwitchShrinkRequest(DaraModel):
         m = m or dict()
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
 
         if m.get('EdrModuleSwitch') is not None:
             self.edr_module_switch_shrink = m.get('EdrModuleSwitch')
