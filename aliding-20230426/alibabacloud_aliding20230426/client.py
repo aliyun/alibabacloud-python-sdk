@@ -20848,6 +20848,104 @@ class Client(OpenApiClient):
         headers = main_models.InvokeAssistantHeaders()
         return await self.invoke_assistant_with_options_async(request, headers, runtime)
 
+    def invoke_container_with_options(
+        self,
+        request: main_models.InvokeContainerRequest,
+        tmp_header: main_models.InvokeContainerHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.InvokeContainerResponse:
+        request.validate()
+        headers = main_models.InvokeContainerShrinkHeaders()
+        Utils.convert(tmp_header, headers)
+        if not DaraCore.is_null(tmp_header.account_context):
+            headers.account_context_shrink = Utils.array_to_string_with_specified_style(tmp_header.account_context, 'accountContext', 'json')
+        body = {}
+        if not DaraCore.is_null(request.operation_id):
+            body['operationId'] = request.operation_id
+        if not DaraCore.is_null(request.params):
+            body['params'] = request.params
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.account_context_shrink):
+            real_headers['accountContext'] = DaraCore.to_json_string(headers.account_context_shrink)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'InvokeContainer',
+            version = '2023-04-26',
+            protocol = 'HTTPS',
+            pathname = f'/spi/ai/v1/container/invoke',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InvokeContainerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def invoke_container_with_options_async(
+        self,
+        request: main_models.InvokeContainerRequest,
+        tmp_header: main_models.InvokeContainerHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.InvokeContainerResponse:
+        request.validate()
+        headers = main_models.InvokeContainerShrinkHeaders()
+        Utils.convert(tmp_header, headers)
+        if not DaraCore.is_null(tmp_header.account_context):
+            headers.account_context_shrink = Utils.array_to_string_with_specified_style(tmp_header.account_context, 'accountContext', 'json')
+        body = {}
+        if not DaraCore.is_null(request.operation_id):
+            body['operationId'] = request.operation_id
+        if not DaraCore.is_null(request.params):
+            body['params'] = request.params
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.account_context_shrink):
+            real_headers['accountContext'] = DaraCore.to_json_string(headers.account_context_shrink)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'InvokeContainer',
+            version = '2023-04-26',
+            protocol = 'HTTPS',
+            pathname = f'/spi/ai/v1/container/invoke',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InvokeContainerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def invoke_container(
+        self,
+        request: main_models.InvokeContainerRequest,
+    ) -> main_models.InvokeContainerResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.InvokeContainerHeaders()
+        return self.invoke_container_with_options(request, headers, runtime)
+
+    async def invoke_container_async(
+        self,
+        request: main_models.InvokeContainerRequest,
+    ) -> main_models.InvokeContainerResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.InvokeContainerHeaders()
+        return await self.invoke_container_with_options_async(request, headers, runtime)
+
     def invoke_skill_with_sse(
         self,
         tmp_req: main_models.InvokeSkillRequest,

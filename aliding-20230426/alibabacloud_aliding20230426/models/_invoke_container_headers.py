@@ -1,0 +1,90 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import Dict
+
+from alibabacloud_aliding20230426 import models as main_models
+from darabonba.model import DaraModel
+
+class InvokeContainerHeaders(DaraModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: main_models.InvokeContainerHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+
+        if self.account_context is not None:
+            result['accountContext'] = self.account_context.to_map()
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+
+        if m.get('accountContext') is not None:
+            temp_model = main_models.InvokeContainerHeadersAccountContext()
+            self.account_context = temp_model.from_map(m.get('accountContext'))
+
+        return self
+
+class InvokeContainerHeadersAccountContext(DaraModel):
+    def __init__(
+        self,
+        account_id: str = None,
+        aliding_sso_ticket: str = None,
+        sso_ticket: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+        self.aliding_sso_ticket = aliding_sso_ticket
+        self.sso_ticket = sso_ticket
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+
+        if self.aliding_sso_ticket is not None:
+            result['alidingSsoTicket'] = self.aliding_sso_ticket
+
+        if self.sso_ticket is not None:
+            result['ssoTicket'] = self.sso_ticket
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+
+        if m.get('alidingSsoTicket') is not None:
+            self.aliding_sso_ticket = m.get('alidingSsoTicket')
+
+        if m.get('ssoTicket') is not None:
+            self.sso_ticket = m.get('ssoTicket')
+
+        return self
+

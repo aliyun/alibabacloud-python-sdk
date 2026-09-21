@@ -1010,6 +1010,11 @@ from ._invoke_assistant_headers import InvokeAssistantHeaders
 from ._invoke_assistant_request import InvokeAssistantRequest
 from ._invoke_assistant_response_body import InvokeAssistantResponseBody
 from ._invoke_assistant_response import InvokeAssistantResponse
+from ._invoke_container_headers import InvokeContainerHeaders
+from ._invoke_container_shrink_headers import InvokeContainerShrinkHeaders
+from ._invoke_container_request import InvokeContainerRequest
+from ._invoke_container_response_body import InvokeContainerResponseBody
+from ._invoke_container_response import InvokeContainerResponse
 from ._invoke_skill_headers import InvokeSkillHeaders
 from ._invoke_skill_shrink_headers import InvokeSkillShrinkHeaders
 from ._invoke_skill_request import InvokeSkillRequest
@@ -2328,6 +2333,12 @@ from ._invoke_assistant_request import InvokeAssistantRequestMessagesContentStru
 from ._invoke_assistant_request import InvokeAssistantRequestMessagesContentText
 from ._invoke_assistant_request import InvokeAssistantRequestMessagesContent
 from ._invoke_assistant_request import InvokeAssistantRequestMessages
+from ._invoke_assistant_response_body import InvokeAssistantResponseBodyMessagesContentA2uiMessagesAppendDataModel
+from ._invoke_assistant_response_body import InvokeAssistantResponseBodyMessagesContentA2uiMessagesCreateSurface
+from ._invoke_assistant_response_body import InvokeAssistantResponseBodyMessagesContentA2uiMessagesDeleteSurface
+from ._invoke_assistant_response_body import InvokeAssistantResponseBodyMessagesContentA2uiMessagesUpdateComponents
+from ._invoke_assistant_response_body import InvokeAssistantResponseBodyMessagesContentA2uiMessagesUpdateDataModel
+from ._invoke_assistant_response_body import InvokeAssistantResponseBodyMessagesContentA2uiMessages
 from ._invoke_assistant_response_body import InvokeAssistantResponseBodyMessagesContentAguiContentAguiEventList
 from ._invoke_assistant_response_body import InvokeAssistantResponseBodyMessagesContentAguiContent
 from ._invoke_assistant_response_body import InvokeAssistantResponseBodyMessagesContentCardCallback
@@ -2360,6 +2371,7 @@ from ._invoke_assistant_response_body import InvokeAssistantResponseBodyMessages
 from ._invoke_assistant_response_body import InvokeAssistantResponseBodyMessagesContentStructParts
 from ._invoke_assistant_response_body import InvokeAssistantResponseBodyMessagesContentStruct
 from ._invoke_assistant_response_body import InvokeAssistantResponseBodyMessages
+from ._invoke_container_headers import InvokeContainerHeadersAccountContext
 from ._invoke_skill_headers import InvokeSkillHeadersAccountContext
 from ._list_application_headers import ListApplicationHeadersAccountContext
 from ._list_application_response_body import ListApplicationResponseBodyData
@@ -3785,6 +3797,11 @@ __all__ = [
     InvokeAssistantRequest,
     InvokeAssistantResponseBody,
     InvokeAssistantResponse,
+    InvokeContainerHeaders,
+    InvokeContainerShrinkHeaders,
+    InvokeContainerRequest,
+    InvokeContainerResponseBody,
+    InvokeContainerResponse,
     InvokeSkillHeaders,
     InvokeSkillShrinkHeaders,
     InvokeSkillRequest,
@@ -5103,6 +5120,12 @@ __all__ = [
     InvokeAssistantRequestMessagesContentText,
     InvokeAssistantRequestMessagesContent,
     InvokeAssistantRequestMessages,
+    InvokeAssistantResponseBodyMessagesContentA2uiMessagesAppendDataModel,
+    InvokeAssistantResponseBodyMessagesContentA2uiMessagesCreateSurface,
+    InvokeAssistantResponseBodyMessagesContentA2uiMessagesDeleteSurface,
+    InvokeAssistantResponseBodyMessagesContentA2uiMessagesUpdateComponents,
+    InvokeAssistantResponseBodyMessagesContentA2uiMessagesUpdateDataModel,
+    InvokeAssistantResponseBodyMessagesContentA2uiMessages,
     InvokeAssistantResponseBodyMessagesContentAguiContentAguiEventList,
     InvokeAssistantResponseBodyMessagesContentAguiContent,
     InvokeAssistantResponseBodyMessagesContentCardCallback,
@@ -5135,6 +5158,7 @@ __all__ = [
     InvokeAssistantResponseBodyMessagesContentStructParts,
     InvokeAssistantResponseBodyMessagesContentStruct,
     InvokeAssistantResponseBodyMessages,
+    InvokeContainerHeadersAccountContext,
     InvokeSkillHeadersAccountContext,
     ListApplicationHeadersAccountContext,
     ListApplicationResponseBodyData,

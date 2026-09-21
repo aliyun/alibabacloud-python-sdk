@@ -621,6 +621,7 @@ class InvokeAssistantResponseBodyMessagesContentStructPartsDataPart(DaraModel):
 class InvokeAssistantResponseBodyMessagesContent(DaraModel):
     def __init__(
         self,
+        a_2ui_messages: List[main_models.InvokeAssistantResponseBodyMessagesContentA2uiMessages] = None,
         agui_content: main_models.InvokeAssistantResponseBodyMessagesContentAguiContent = None,
         card_callback: main_models.InvokeAssistantResponseBodyMessagesContentCardCallback = None,
         ding_card: main_models.InvokeAssistantResponseBodyMessagesContentDingCard = None,
@@ -630,6 +631,7 @@ class InvokeAssistantResponseBodyMessagesContent(DaraModel):
         text: main_models.InvokeAssistantResponseBodyMessagesContentText = None,
         type: str = None,
     ):
+        self.a_2ui_messages = a_2ui_messages
         self.agui_content = agui_content
         self.card_callback = card_callback
         self.ding_card = ding_card
@@ -641,6 +643,10 @@ class InvokeAssistantResponseBodyMessagesContent(DaraModel):
         self.type = type
 
     def validate(self):
+        if self.a_2ui_messages:
+            for v1 in self.a_2ui_messages:
+                 if v1:
+                    v1.validate()
         if self.agui_content:
             self.agui_content.validate()
         if self.card_callback:
@@ -661,6 +667,11 @@ class InvokeAssistantResponseBodyMessagesContent(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        result['a2uiMessages'] = []
+        if self.a_2ui_messages is not None:
+            for k1 in self.a_2ui_messages:
+                result['a2uiMessages'].append(k1.to_map() if k1 else None)
+
         if self.agui_content is not None:
             result['aguiContent'] = self.agui_content.to_map()
 
@@ -689,6 +700,12 @@ class InvokeAssistantResponseBodyMessagesContent(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.a_2ui_messages = []
+        if m.get('a2uiMessages') is not None:
+            for k1 in m.get('a2uiMessages'):
+                temp_model = main_models.InvokeAssistantResponseBodyMessagesContentA2uiMessages()
+                self.a_2ui_messages.append(temp_model.from_map(k1))
+
         if m.get('aguiContent') is not None:
             temp_model = main_models.InvokeAssistantResponseBodyMessagesContentAguiContent()
             self.agui_content = temp_model.from_map(m.get('aguiContent'))
@@ -1603,6 +1620,270 @@ class InvokeAssistantResponseBodyMessagesContentAguiContentAguiEventList(DaraMod
 
         if m.get('type') is not None:
             self.type = m.get('type')
+
+        return self
+
+class InvokeAssistantResponseBodyMessagesContentA2uiMessages(DaraModel):
+    def __init__(
+        self,
+        append_data_model: main_models.InvokeAssistantResponseBodyMessagesContentA2uiMessagesAppendDataModel = None,
+        create_surface: main_models.InvokeAssistantResponseBodyMessagesContentA2uiMessagesCreateSurface = None,
+        delete_surface: main_models.InvokeAssistantResponseBodyMessagesContentA2uiMessagesDeleteSurface = None,
+        profile: str = None,
+        update_components: main_models.InvokeAssistantResponseBodyMessagesContentA2uiMessagesUpdateComponents = None,
+        update_data_model: main_models.InvokeAssistantResponseBodyMessagesContentA2uiMessagesUpdateDataModel = None,
+        version: str = None,
+    ):
+        self.append_data_model = append_data_model
+        self.create_surface = create_surface
+        self.delete_surface = delete_surface
+        self.profile = profile
+        self.update_components = update_components
+        self.update_data_model = update_data_model
+        self.version = version
+
+    def validate(self):
+        if self.append_data_model:
+            self.append_data_model.validate()
+        if self.create_surface:
+            self.create_surface.validate()
+        if self.delete_surface:
+            self.delete_surface.validate()
+        if self.update_components:
+            self.update_components.validate()
+        if self.update_data_model:
+            self.update_data_model.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.append_data_model is not None:
+            result['appendDataModel'] = self.append_data_model.to_map()
+
+        if self.create_surface is not None:
+            result['createSurface'] = self.create_surface.to_map()
+
+        if self.delete_surface is not None:
+            result['deleteSurface'] = self.delete_surface.to_map()
+
+        if self.profile is not None:
+            result['profile'] = self.profile
+
+        if self.update_components is not None:
+            result['updateComponents'] = self.update_components.to_map()
+
+        if self.update_data_model is not None:
+            result['updateDataModel'] = self.update_data_model.to_map()
+
+        if self.version is not None:
+            result['version'] = self.version
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('appendDataModel') is not None:
+            temp_model = main_models.InvokeAssistantResponseBodyMessagesContentA2uiMessagesAppendDataModel()
+            self.append_data_model = temp_model.from_map(m.get('appendDataModel'))
+
+        if m.get('createSurface') is not None:
+            temp_model = main_models.InvokeAssistantResponseBodyMessagesContentA2uiMessagesCreateSurface()
+            self.create_surface = temp_model.from_map(m.get('createSurface'))
+
+        if m.get('deleteSurface') is not None:
+            temp_model = main_models.InvokeAssistantResponseBodyMessagesContentA2uiMessagesDeleteSurface()
+            self.delete_surface = temp_model.from_map(m.get('deleteSurface'))
+
+        if m.get('profile') is not None:
+            self.profile = m.get('profile')
+
+        if m.get('updateComponents') is not None:
+            temp_model = main_models.InvokeAssistantResponseBodyMessagesContentA2uiMessagesUpdateComponents()
+            self.update_components = temp_model.from_map(m.get('updateComponents'))
+
+        if m.get('updateDataModel') is not None:
+            temp_model = main_models.InvokeAssistantResponseBodyMessagesContentA2uiMessagesUpdateDataModel()
+            self.update_data_model = temp_model.from_map(m.get('updateDataModel'))
+
+        if m.get('version') is not None:
+            self.version = m.get('version')
+
+        return self
+
+class InvokeAssistantResponseBodyMessagesContentA2uiMessagesUpdateDataModel(DaraModel):
+    def __init__(
+        self,
+        path: str = None,
+        surface_id: str = None,
+        value: Any = None,
+    ):
+        self.path = path
+        self.surface_id = surface_id
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.path is not None:
+            result['path'] = self.path
+
+        if self.surface_id is not None:
+            result['surfaceId'] = self.surface_id
+
+        if self.value is not None:
+            result['value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('path') is not None:
+            self.path = m.get('path')
+
+        if m.get('surfaceId') is not None:
+            self.surface_id = m.get('surfaceId')
+
+        if m.get('value') is not None:
+            self.value = m.get('value')
+
+        return self
+
+class InvokeAssistantResponseBodyMessagesContentA2uiMessagesUpdateComponents(DaraModel):
+    def __init__(
+        self,
+        components: List[Any] = None,
+        surface_id: str = None,
+    ):
+        self.components = components
+        self.surface_id = surface_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.components is not None:
+            result['components'] = self.components
+
+        if self.surface_id is not None:
+            result['surfaceId'] = self.surface_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('components') is not None:
+            self.components = m.get('components')
+
+        if m.get('surfaceId') is not None:
+            self.surface_id = m.get('surfaceId')
+
+        return self
+
+class InvokeAssistantResponseBodyMessagesContentA2uiMessagesDeleteSurface(DaraModel):
+    def __init__(
+        self,
+        surface_id: str = None,
+    ):
+        self.surface_id = surface_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.surface_id is not None:
+            result['surfaceId'] = self.surface_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('surfaceId') is not None:
+            self.surface_id = m.get('surfaceId')
+
+        return self
+
+class InvokeAssistantResponseBodyMessagesContentA2uiMessagesCreateSurface(DaraModel):
+    def __init__(
+        self,
+        surface_id: str = None,
+    ):
+        self.surface_id = surface_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.surface_id is not None:
+            result['surfaceId'] = self.surface_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('surfaceId') is not None:
+            self.surface_id = m.get('surfaceId')
+
+        return self
+
+class InvokeAssistantResponseBodyMessagesContentA2uiMessagesAppendDataModel(DaraModel):
+    def __init__(
+        self,
+        path: str = None,
+        surface_id: str = None,
+        value: Any = None,
+    ):
+        self.path = path
+        self.surface_id = surface_id
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.path is not None:
+            result['path'] = self.path
+
+        if self.surface_id is not None:
+            result['surfaceId'] = self.surface_id
+
+        if self.value is not None:
+            result['value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('path') is not None:
+            self.path = m.get('path')
+
+        if m.get('surfaceId') is not None:
+            self.surface_id = m.get('surfaceId')
+
+        if m.get('value') is not None:
+            self.value = m.get('value')
 
         return self
 
