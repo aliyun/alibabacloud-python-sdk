@@ -12,10 +12,15 @@ class CreateAgentRequest(DaraModel):
         description: str = None,
         expire_after_seconds: int = None,
     ):
+        # The agent name. The name must be unique within the same tenant. Maximum length: 128 characters.
+        # 
         # This parameter is required.
         self.agent_name = agent_name
+        # The permission inheritance type of the agent, which specifies the permission source. Default value: HUMAN_BOUND.
         self.agent_type = agent_type
+        # The description of the agent. Maximum length: 512 characters.
         self.description = description
+        # The validity period of the automatically issued API key, in seconds. Valid values: 1 to 31536000 (up to 1 year).
         self.expire_after_seconds = expire_after_seconds
 
     def validate(self):

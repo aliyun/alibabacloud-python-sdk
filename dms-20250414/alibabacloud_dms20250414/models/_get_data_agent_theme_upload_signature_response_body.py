@@ -16,9 +16,9 @@ class GetDataAgentThemeUploadSignatureResponseBody(DaraModel):
     ):
         # The response struct.
         self.data = data
-        # The error code returned when the request fails.
+        # The error code. This parameter is returned only if the request fails.
         self.error_code = error_code
-        # The error message returned when the call fails.
+        # The error message returned if the request fails.
         self.error_message = error_message
         # The request ID, which is used to locate logs and troubleshoot issues.
         self.request_id = request_id
@@ -91,7 +91,7 @@ class GetDataAgentThemeUploadSignatureResponseBodyData(DaraModel):
     ):
         # The policy expiration time in ISO 8601 UTC format.
         self.expire_time = expire_time
-        # The target object key, which is exactly locked by the policy.
+        # The target object key that is exactly locked by the policy.
         self.object_key = object_key
         # The parameter set that specifies the derived key.
         self.oss_credential = oss_credential
@@ -105,11 +105,11 @@ class GetDataAgentThemeUploadSignatureResponseBodyData(DaraModel):
         self.oss_signature_version = oss_signature_version
         # The Base64-encoded value of the policy JSON.
         self.policy = policy
-        # The theme business identifier generated or reused for this request. Pass this identifier to the CreateDataAgentTheme operation after the upload is complete to register the metadata.
+        # The theme business ID generated or reused for this request. After the upload is complete, pass this ID to the CreateDataAgentTheme operation to register the metadata.
         self.theme_id = theme_id
         # The upload directory prefix.
         self.upload_dir = upload_dir
-        # The PostObject destination address over the public network.
+        # The PostObject target address over the public network.
         self.upload_host = upload_host
 
     def validate(self):

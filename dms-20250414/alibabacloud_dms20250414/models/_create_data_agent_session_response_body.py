@@ -20,7 +20,7 @@ class CreateDataAgentSessionResponseBody(DaraModel):
         self.data = data
         # The error code.
         self.error_code = error_code
-        # The error message returned when the request failed.
+        # The error message returned if the request failed.
         self.error_message = error_message
         # Id of the request
         self.request_id = request_id
@@ -93,9 +93,9 @@ class CreateDataAgentSessionResponseBodyData(DaraModel):
         self.agent_id = agent_id
         # The agent status.
         self.agent_status = agent_status
-        # The time when the session was created.
+        # The creation time of the session.
         self.create_time = create_time
-        # The basic information about the file.
+        # The basic information of the file.
         self.file = file
         # Indicates whether the session is saved to the favorites of the current user.
         self.saved = saved
@@ -197,8 +197,8 @@ class CreateDataAgentSessionResponseBodyDataSessionConfig(DaraModel):
         # The custom agent ID.
         self.custom_agent_id = custom_agent_id
         # The stage of the custom agent. Valid values:
-        # - **debug**: Debug stage.
-        # - **prod**: Production stage.
+        # - **debug**: the debugging stage.
+        # - **prod**: the production stage.
         self.custom_agent_stage = custom_agent_stage
         # Specifies whether to enable web search.
         self.enable_search = enable_search
@@ -215,16 +215,15 @@ class CreateDataAgentSessionResponseBodyDataSessionConfig(DaraModel):
         # The list of MCP server IDs in the session configuration.
         self.mcp_server_ids = mcp_server_ids
         # The mode. Valid values:
-        # - **ASK_DATA**: Ask data mode.
-        # - **ANALYSIS**: Analysis mode.
-        # - **INSIGHT**: Insight mode.
+        #  - **ASK_DATA**: the data query mode.
+        #  - **ANALYSIS**: the analysis mode.
+        #  - **INSIGHT**: the insight mode.
         self.mode = mode
         # The report page width.
         self.report_page_width = report_page_width
         # The report watermark.
         self.report_water_mark = report_water_mark
-        # The name of the user OSS bucket.
-        # - Analysis process files and report artifacts can be uploaded to the specified OSS bucket.
+        # The name of the user OSS bucket. Analysis process files and report artifacts can be uploaded to the specified OSS bucket.
         self.user_oss_bucket = user_oss_bucket
 
     def validate(self):

@@ -20,14 +20,15 @@ class ListDataAgentSessionRequest(DaraModel):
         title: str = None,
         workspace_id: str = None,
     ):
-        # The end time for session creation.
+        # The end time of the session creation time range.
         self.create_end_time = create_end_time
-        # The start time for session creation.
+        # The start time of the session creation time range.
         self.create_start_time = create_start_time
+        # The ID of the session creator.
         self.creator_id = creator_id
         # The custom agent ID.
         self.custom_agent_id = custom_agent_id
-        # The current Data Management unit.
+        # The current DMS unit.
         self.dmsunit = dmsunit
         # Specifies whether to retrieve only favorited sessions.
         self.is_saved = is_saved

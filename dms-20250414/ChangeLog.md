@@ -1,3 +1,38 @@
+2026-09-21 Version: 3.0.0
+- Support API ResetAgenticApiKey.
+- Delete API BatchCreateDataLakePartitions.
+- Delete API BatchDeleteDataLakePartitions.
+- Delete API BatchUpdateDataLakePartitions.
+- Delete API CreateDataLakeDatabase.
+- Delete API CreateDataLakeFunction.
+- Delete API CreateDataLakePartition.
+- Delete API CreateDataLakeTable.
+- Delete API DeleteDataLakeDatabase.
+- Delete API DeleteDataLakeFunction.
+- Delete API DeleteDataLakePartition.
+- Delete API DeleteDataLakeTable.
+- Delete API GetDataLakeCatalog.
+- Delete API GetDataLakeDatabase.
+- Delete API GetDataLakeFunction.
+- Delete API GetDataLakePartition.
+- Delete API GetDataLakeTable.
+- Delete API ListDataLakeCatalog.
+- Delete API ListDataLakeDatabase.
+- Delete API ListDataLakeFunction.
+- Delete API ListDataLakeFunctionName.
+- Delete API ListDataLakePartition.
+- Delete API ListDataLakePartitionByFilter.
+- Delete API ListDataLakePartitionName.
+- Delete API ListDataLakeTable.
+- Delete API ListDataLakeTableName.
+- Delete API ListDataLakeTablebaseInfo.
+- Delete API UpdateDataLakeDatabase.
+- Delete API UpdateDataLakeFunction.
+- Delete API UpdateDataLakePartition.
+- Delete API UpdateDataLakeTable.
+- Update API DescribeDataAgentSession: add response parameters Body.Data.Capabilities.
+
+
 2026-09-15 Version: 2.1.0
 - Support API CreateAgent.
 - Update API CreateDataAgentTheme: add request parameters WorkspaceId.

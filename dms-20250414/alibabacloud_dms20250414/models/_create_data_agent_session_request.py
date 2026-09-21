@@ -83,6 +83,7 @@ class CreateDataAgentSessionRequestSessionConfig(DaraModel):
         encrypt_type: str = None,
         kb_uuid_list: List[str] = None,
         language: str = None,
+        mcp_headers: List[main_models.CreateDataAgentSessionRequestSessionConfigMcpHeaders] = None,
         mcp_server_ids: List[str] = None,
         mode: str = None,
         report_page_width: int = None,
@@ -92,8 +93,8 @@ class CreateDataAgentSessionRequestSessionConfig(DaraModel):
         # The custom agent ID.
         self.custom_agent_id = custom_agent_id
         # The stage of the custom agent. Valid values:
-        # - **debug**: Debug stage.
-        # - **prod**: Production stage.
+        # - **debug**: the debugging stage.
+        # - **prod**: the production stage.
         self.custom_agent_stage = custom_agent_stage
         # Specifies whether to enable web search.
         self.enable_search = enable_search
@@ -107,23 +108,27 @@ class CreateDataAgentSessionRequestSessionConfig(DaraModel):
         # - **CHINESE**: Chinese.
         # - **ENGLISH**: English.
         self.language = language
+        # The list of MCP header configurations.
+        self.mcp_headers = mcp_headers
         # The list of MCP server IDs in the session configuration.
         self.mcp_server_ids = mcp_server_ids
         # The mode. Valid values:
-        # - **ASK_DATA**: Ask data mode.
-        # - **ANALYSIS**: Analysis mode.
-        # - **INSIGHT**: Insight mode.
+        #  - **ASK_DATA**: the data query mode.
+        #  - **ANALYSIS**: the analysis mode.
+        #  - **INSIGHT**: the insight mode.
         self.mode = mode
         # The report page width.
         self.report_page_width = report_page_width
         # The report watermark.
         self.report_water_mark = report_water_mark
-        # The name of the user OSS bucket.
-        # - Analysis process files and report artifacts can be uploaded to the specified OSS bucket.
+        # The name of the user OSS bucket. Analysis process files and report artifacts can be uploaded to the specified OSS bucket.
         self.user_oss_bucket = user_oss_bucket
 
     def validate(self):
-        pass
+        if self.mcp_headers:
+            for v1 in self.mcp_headers:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -150,6 +155,11 @@ class CreateDataAgentSessionRequestSessionConfig(DaraModel):
 
         if self.language is not None:
             result['Language'] = self.language
+
+        result['McpHeaders'] = []
+        if self.mcp_headers is not None:
+            for k1 in self.mcp_headers:
+                result['McpHeaders'].append(k1.to_map() if k1 else None)
 
         if self.mcp_server_ids is not None:
             result['McpServerIds'] = self.mcp_server_ids
@@ -191,6 +201,12 @@ class CreateDataAgentSessionRequestSessionConfig(DaraModel):
         if m.get('Language') is not None:
             self.language = m.get('Language')
 
+        self.mcp_headers = []
+        if m.get('McpHeaders') is not None:
+            for k1 in m.get('McpHeaders'):
+                temp_model = main_models.CreateDataAgentSessionRequestSessionConfigMcpHeaders()
+                self.mcp_headers.append(temp_model.from_map(k1))
+
         if m.get('McpServerIds') is not None:
             self.mcp_server_ids = m.get('McpServerIds')
 
@@ -205,6 +221,88 @@ class CreateDataAgentSessionRequestSessionConfig(DaraModel):
 
         if m.get('UserOssBucket') is not None:
             self.user_oss_bucket = m.get('UserOssBucket')
+
+        return self
+
+class CreateDataAgentSessionRequestSessionConfigMcpHeaders(DaraModel):
+    def __init__(
+        self,
+        mcp_header: List[main_models.CreateDataAgentSessionRequestSessionConfigMcpHeadersMcpHeader] = None,
+        mcp_server_id: str = None,
+    ):
+        # The MCP header configuration.
+        self.mcp_header = mcp_header
+        # The ID of the MCP server.
+        self.mcp_server_id = mcp_server_id
+
+    def validate(self):
+        if self.mcp_header:
+            for v1 in self.mcp_header:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['McpHeader'] = []
+        if self.mcp_header is not None:
+            for k1 in self.mcp_header:
+                result['McpHeader'].append(k1.to_map() if k1 else None)
+
+        if self.mcp_server_id is not None:
+            result['McpServerId'] = self.mcp_server_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.mcp_header = []
+        if m.get('McpHeader') is not None:
+            for k1 in m.get('McpHeader'):
+                temp_model = main_models.CreateDataAgentSessionRequestSessionConfigMcpHeadersMcpHeader()
+                self.mcp_header.append(temp_model.from_map(k1))
+
+        if m.get('McpServerId') is not None:
+            self.mcp_server_id = m.get('McpServerId')
+
+        return self
+
+class CreateDataAgentSessionRequestSessionConfigMcpHeadersMcpHeader(DaraModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The key to add to the header.
+        self.key = key
+        # The value to add to the header.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.key is not None:
+            result['Key'] = self.key
+
+        if self.value is not None:
+            result['Value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
 
         return self
 

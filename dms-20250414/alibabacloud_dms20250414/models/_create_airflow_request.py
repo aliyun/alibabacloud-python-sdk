@@ -35,59 +35,59 @@ class CreateAirflowRequest(DaraModel):
         # 
         # This parameter is required.
         self.airflow_name = airflow_name
-        # The Airflow version. Supported versions: 2.10 and 3.1.
+        # The Airflow version. Valid values: "3.2.2", "3.1.0", "2.10.4", and "3.0.6".
         self.airflow_version = airflow_version
-        # The compute specifications for the Airflow instance. Valid values: **SMALL**, **MEDIUM**, **LARGE**, **XLARGE**, or **X2LARGE**.
+        # The specification of the Airflow instance. Valid values: **SMALL**, **MEDIUM**, **LARGE**, **XLARGE**, and **X2LARGE**.
         # 
         # This parameter is required.
         self.app_spec = app_spec
-        # A client token to ensure request idempotence.
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
-        # The path to the DAG directory for Airflow to scan.
+        # The DAG directory scanned by Airflow.
         self.dags_dir = dags_dir
-        # A list of data mount configurations.
+        # The list of data mount information.
         self.data_mount_info_list = data_mount_info_list
         # The description of the Airflow instance.
         self.description = description
-        # Specifies whether to enable worker elasticity.
+        # Specifies whether to enable Worker elasticity.
         self.enable_serverless = enable_serverless
-        # The graceful shutdown timeout for workers, in seconds.
+        # The timeout period for the Worker to gracefully shut down.
         self.graceful_shutdown_timeout = graceful_shutdown_timeout
         # The name of the OSS bucket.
         # 
         # This parameter is required.
         self.oss_bucket_name = oss_bucket_name
-        # The OSS path for log storage.
+        # The OSS path for storing logs.
         # 
         # This parameter is required.
         self.oss_path = oss_path
-        # The path to the plugin directory for the Airflow instance to scan.
+        # The plugin directory scanned by the Airflow instance.
         self.plugins_dir = plugins_dir
-        # The path to the Python requirements file.
+        # The path of the package installation file.
         self.requirement_file = requirement_file
-        # The security group ID.
+        # The ID of the security group.
         # 
         # This parameter is required.
         self.security_group_id = security_group_id
-        # The path to the startup script in the Airflow container.
+        # The startup script of the Airflow container.
         self.startup_file = startup_file
-        # The vSwitch ID.
+        # The ID of the vSwitch.
         # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
-        # The VPC ID.
+        # VPC ID。
         # 
         # This parameter is required.
         self.vpc_id = vpc_id
-        # The number of elastic worker nodes.
+        # The number of extended Worker node replicas.
         # 
         # This parameter is required.
         self.worker_serverless_replicas = worker_serverless_replicas
-        # The ID of the DMS workspace.
+        # The ID of the Data Management workspace.
         # 
         # This parameter is required.
         self.workspace_id = workspace_id
-        # The ID of the zone where the instance will be created.
+        # The zone ID within the region.
         self.zone_id = zone_id
 
     def validate(self):

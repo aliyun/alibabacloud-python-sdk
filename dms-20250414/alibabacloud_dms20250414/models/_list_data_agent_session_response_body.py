@@ -22,7 +22,7 @@ class ListDataAgentSessionResponseBody(DaraModel):
     ):
         # The response struct.
         self.data = data
-        # The error code returned when the request is abnormal.
+        # The error code returned when the request fails.
         self.error_code = error_code
         # The error message returned when the call fails.
         self.error_message = error_message
@@ -250,9 +250,9 @@ class ListDataAgentSessionResponseBodyDataSessionConfig(DaraModel):
     ):
         # The custom agent ID.
         self.custom_agent_id = custom_agent_id
-        # The usage stage of the custom agent. Valid values:
+        # The stage of the custom agent. Valid values:
         # - **debug**: Debug stage.
-        # - **prod**: Production environment stage.
+        # - **prod**: Production stage.
         self.custom_agent_stage = custom_agent_stage
         # Specifies whether to enable web search.
         self.enable_search = enable_search
@@ -267,7 +267,7 @@ class ListDataAgentSessionResponseBodyDataSessionConfig(DaraModel):
         self.mode = mode
         # The name of the user OSS bucket.
         # 
-        # - Analysis process files and report outputs can be uploaded to the user-specified OSS bucket.
+        # Analysis process files and report outputs can be uploaded to the user-specified OSS bucket.
         self.user_oss_bucket = user_oss_bucket
 
     def validate(self):

@@ -11,11 +11,11 @@ class ModifyDataAgentThemeRequest(DaraModel):
         theme_id: str = None,
         theme_name: str = None,
     ):
-        # The description of the theme. Maximum length: 255 characters. A value of null indicates that the field is not modified. An empty string clears the field.
+        # The description. Maximum length: 255 characters. A null value indicates that the field is not modified, and an empty string clears the field.
         self.description = description
-        # The business identifier of the theme.
+        # The business ID of the theme.
         self.theme_id = theme_id
-        # The display name of the theme. Maximum length: 64 characters. A value of null indicates that the field is not modified. An empty string clears the field.
+        # The display name. Maximum length: 64 characters. A null value indicates that the field is not modified, and an empty string clears the field.
         self.theme_name = theme_name
 
     def validate(self):

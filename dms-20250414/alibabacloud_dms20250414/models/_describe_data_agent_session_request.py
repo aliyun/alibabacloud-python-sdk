@@ -11,7 +11,7 @@ class DescribeDataAgentSessionRequest(DaraModel):
         session_id: str = None,
         workspace_id: str = None,
     ):
-        # The current DMS unit.
+        # The current Data Management unit.
         self.dmsunit = dmsunit
         # The DataAgent session ID. You can obtain this ID by calling CreateDataAgentSession.
         self.session_id = session_id

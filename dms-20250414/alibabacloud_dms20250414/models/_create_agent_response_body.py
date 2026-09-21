@@ -14,10 +14,15 @@ class CreateAgentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The agent information and the automatically issued API key returned after the agent is created.
         self.data = data
+        # The status code of the request result. A value of success indicates success. A specific error code is returned upon failure.
         self.error_code = error_code
+        # The error message returned when the request fails. This parameter is empty when the request succeeds.
         self.error_message = error_message
+        # The unique ID of the request. You can use this ID for troubleshooting and tracing.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -79,14 +84,23 @@ class CreateAgentResponseBodyData(DaraModel):
         owner_id: str = None,
         status: str = None,
     ):
+        # The globally unique ID of the agent.
         self.agent_id = agent_id
+        # The agent name.
         self.agent_name = agent_name
+        # The permission inheritance type of the agent. Valid values: HUMAN_BOUND (inherits user permissions), PERMISSION_NARROW (narrows permissions), STANDALONE (operates as an independent identity principal without inheriting permissions from other principals).
         self.agent_type = agent_type
+        # The automatically issued API key for the new agent. The plaintext secret is returned only once in this response.
         self.api_key = api_key
+        # The time when the agent was created. The value is a time string in RFC 3339 format.
         self.created_at = created_at
+        # The creation method of the agent. Valid values: manual (manually created in the console), auto (automatic creation by the system). Agents created by this operation are always manual.
         self.creation_type = creation_type
+        # The description of the agent.
         self.description = description
+        # The user ID of the agent owner, which is the current user who initiated the creation request.
         self.owner_id = owner_id
+        # The status of the agent. Valid values: active (enabled), disabled (disabled), deleted (deleted). A newly created agent is always active.
         self.status = status
 
     def validate(self):
@@ -178,20 +192,35 @@ class CreateAgentResponseBodyDataApiKey(DaraModel):
         secret: str = None,
         source: str = None,
     ):
+        # The ID of the agent to which the API key belongs.
         self.agent_id = agent_id
+        # The name of the agent to which the API key belongs.
         self.agent_name = agent_name
+        # The permission inheritance type of the agent to which the API key belongs.
         self.agent_type = agent_type
+        # The time when the API key was created. The value is a time string in RFC 3339 format.
         self.created_at = created_at
+        # The user ID of the user who created the API key.
         self.creator_id = creator_id
+        # The name of the user who created the API key.
         self.creator_name = creator_name
+        # The description of the API key.
         self.description = description
+        # The expiration time of the API key. The value is a time string in RFC 3339 format.
         self.expire_time = expire_time
+        # The primary key ID of the API key.
         self.id = id
+        # Indicates whether the API key has been revoked.
         self.is_revoked = is_revoked
+        # The non-sensitive visible prefix of the API key plaintext, used to identify the credential. The plaintext secret is not returned again.
         self.key_prefix = key_prefix
+        # The time when the API key was last used. The value is a time string in RFC 3339 format. This parameter is empty if the API key has never been used.
         self.last_used_time = last_used_time
+        # The name of the API key.
         self.name = name
+        # The plaintext secret of the API key. This value is returned only once in this creation response. Store it securely. Subsequent API calls do not return the plaintext secret again.
         self.secret = secret
+        # The credential source. Valid values: console (issued from the console), oauth (issued through the OAuth flow), install_token (issued through the install-and-authenticate flow). The API key automatically issued by this operation is always console.
         self.source = source
 
     def validate(self):

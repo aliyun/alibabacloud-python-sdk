@@ -11,6 +11,7 @@ from ._agentic_database_object import AgenticDatabaseObject
 from ._agentic_dms_instance_sync_task import AgenticDmsInstanceSyncTask
 from ._agentic_dms_instance_sync_task_instance import AgenticDmsInstanceSyncTaskInstance
 from ._agentic_knowledge_view import AgenticKnowledgeView
+from ._agentic_resource_owner import AgenticResourceOwner
 from ._agentic_table_base_info import AgenticTableBaseInfo
 from ._agentic_table_column import AgenticTableColumn
 from ._agentic_table_column_engine_meta import AgenticTableColumnEngineMeta
@@ -31,6 +32,7 @@ from ._dlstorage_descriptor import DLStorageDescriptor
 from ._dltable import DLTable
 from ._dltable_input import DLTableInput
 from ._dltablebase_info import DLTablebaseInfo
+from ._data_agent_application import DataAgentApplication
 from ._data_agent_billing_instance import DataAgentBillingInstance
 from ._data_mount_info import DataMountInfo
 from ._dms_gateway_order import DmsGatewayOrder
@@ -63,17 +65,6 @@ from ._add_data_agent_memory_response import AddDataAgentMemoryResponse
 from ._add_user_to_data_agent_workspace_request import AddUserToDataAgentWorkspaceRequest
 from ._add_user_to_data_agent_workspace_response_body import AddUserToDataAgentWorkspaceResponseBody
 from ._add_user_to_data_agent_workspace_response import AddUserToDataAgentWorkspaceResponse
-from ._batch_create_data_lake_partitions_request import BatchCreateDataLakePartitionsRequest
-from ._batch_create_data_lake_partitions_shrink_request import BatchCreateDataLakePartitionsShrinkRequest
-from ._batch_create_data_lake_partitions_response_body import BatchCreateDataLakePartitionsResponseBody
-from ._batch_create_data_lake_partitions_response import BatchCreateDataLakePartitionsResponse
-from ._batch_delete_data_lake_partitions_request import BatchDeleteDataLakePartitionsRequest
-from ._batch_delete_data_lake_partitions_response_body import BatchDeleteDataLakePartitionsResponseBody
-from ._batch_delete_data_lake_partitions_response import BatchDeleteDataLakePartitionsResponse
-from ._batch_update_data_lake_partitions_request import BatchUpdateDataLakePartitionsRequest
-from ._batch_update_data_lake_partitions_shrink_request import BatchUpdateDataLakePartitionsShrinkRequest
-from ._batch_update_data_lake_partitions_response_body import BatchUpdateDataLakePartitionsResponseBody
-from ._batch_update_data_lake_partitions_response import BatchUpdateDataLakePartitionsResponse
 from ._check_data_agent_memory_config_request import CheckDataAgentMemoryConfigRequest
 from ._check_data_agent_memory_config_response_body import CheckDataAgentMemoryConfigResponseBody
 from ._check_data_agent_memory_config_response import CheckDataAgentMemoryConfigResponse
@@ -120,22 +111,6 @@ from ._create_data_agent_theme_response import CreateDataAgentThemeResponse
 from ._create_data_agent_workspace_request import CreateDataAgentWorkspaceRequest
 from ._create_data_agent_workspace_response_body import CreateDataAgentWorkspaceResponseBody
 from ._create_data_agent_workspace_response import CreateDataAgentWorkspaceResponse
-from ._create_data_lake_database_request import CreateDataLakeDatabaseRequest
-from ._create_data_lake_database_shrink_request import CreateDataLakeDatabaseShrinkRequest
-from ._create_data_lake_database_response_body import CreateDataLakeDatabaseResponseBody
-from ._create_data_lake_database_response import CreateDataLakeDatabaseResponse
-from ._create_data_lake_function_request import CreateDataLakeFunctionRequest
-from ._create_data_lake_function_shrink_request import CreateDataLakeFunctionShrinkRequest
-from ._create_data_lake_function_response_body import CreateDataLakeFunctionResponseBody
-from ._create_data_lake_function_response import CreateDataLakeFunctionResponse
-from ._create_data_lake_partition_request import CreateDataLakePartitionRequest
-from ._create_data_lake_partition_shrink_request import CreateDataLakePartitionShrinkRequest
-from ._create_data_lake_partition_response_body import CreateDataLakePartitionResponseBody
-from ._create_data_lake_partition_response import CreateDataLakePartitionResponse
-from ._create_data_lake_table_request import CreateDataLakeTableRequest
-from ._create_data_lake_table_shrink_request import CreateDataLakeTableShrinkRequest
-from ._create_data_lake_table_response_body import CreateDataLakeTableResponseBody
-from ._create_data_lake_table_response import CreateDataLakeTableResponse
 from ._create_one_meta_sql_template_request import CreateOneMetaSqlTemplateRequest
 from ._create_one_meta_sql_template_response_body import CreateOneMetaSqlTemplateResponseBody
 from ._create_one_meta_sql_template_response import CreateOneMetaSqlTemplateResponse
@@ -167,19 +142,6 @@ from ._delete_data_agent_skill_meta_response import DeleteDataAgentSkillMetaResp
 from ._delete_data_agent_workspace_request import DeleteDataAgentWorkspaceRequest
 from ._delete_data_agent_workspace_response_body import DeleteDataAgentWorkspaceResponseBody
 from ._delete_data_agent_workspace_response import DeleteDataAgentWorkspaceResponse
-from ._delete_data_lake_database_request import DeleteDataLakeDatabaseRequest
-from ._delete_data_lake_database_response_body import DeleteDataLakeDatabaseResponseBody
-from ._delete_data_lake_database_response import DeleteDataLakeDatabaseResponse
-from ._delete_data_lake_function_request import DeleteDataLakeFunctionRequest
-from ._delete_data_lake_function_response_body import DeleteDataLakeFunctionResponseBody
-from ._delete_data_lake_function_response import DeleteDataLakeFunctionResponse
-from ._delete_data_lake_partition_request import DeleteDataLakePartitionRequest
-from ._delete_data_lake_partition_shrink_request import DeleteDataLakePartitionShrinkRequest
-from ._delete_data_lake_partition_response_body import DeleteDataLakePartitionResponseBody
-from ._delete_data_lake_partition_response import DeleteDataLakePartitionResponse
-from ._delete_data_lake_table_request import DeleteDataLakeTableRequest
-from ._delete_data_lake_table_response_body import DeleteDataLakeTableResponseBody
-from ._delete_data_lake_table_response import DeleteDataLakeTableResponse
 from ._delete_document_request import DeleteDocumentRequest
 from ._delete_document_response_body import DeleteDocumentResponseBody
 from ._delete_document_response import DeleteDocumentResponse
@@ -258,22 +220,6 @@ from ._get_data_agent_theme_upload_signature_response import GetDataAgentThemeUp
 from ._get_data_agent_workspace_info_request import GetDataAgentWorkspaceInfoRequest
 from ._get_data_agent_workspace_info_response_body import GetDataAgentWorkspaceInfoResponseBody
 from ._get_data_agent_workspace_info_response import GetDataAgentWorkspaceInfoResponse
-from ._get_data_lake_catalog_request import GetDataLakeCatalogRequest
-from ._get_data_lake_catalog_response_body import GetDataLakeCatalogResponseBody
-from ._get_data_lake_catalog_response import GetDataLakeCatalogResponse
-from ._get_data_lake_database_request import GetDataLakeDatabaseRequest
-from ._get_data_lake_database_response_body import GetDataLakeDatabaseResponseBody
-from ._get_data_lake_database_response import GetDataLakeDatabaseResponse
-from ._get_data_lake_function_request import GetDataLakeFunctionRequest
-from ._get_data_lake_function_response_body import GetDataLakeFunctionResponseBody
-from ._get_data_lake_function_response import GetDataLakeFunctionResponse
-from ._get_data_lake_partition_request import GetDataLakePartitionRequest
-from ._get_data_lake_partition_shrink_request import GetDataLakePartitionShrinkRequest
-from ._get_data_lake_partition_response_body import GetDataLakePartitionResponseBody
-from ._get_data_lake_partition_response import GetDataLakePartitionResponse
-from ._get_data_lake_table_request import GetDataLakeTableRequest
-from ._get_data_lake_table_response_body import GetDataLakeTableResponseBody
-from ._get_data_lake_table_response import GetDataLakeTableResponse
 from ._get_list_mcp_server_tools_result_request import GetListMcpServerToolsResultRequest
 from ._get_list_mcp_server_tools_result_response_body import GetListMcpServerToolsResultResponseBody
 from ._get_list_mcp_server_tools_result_response import GetListMcpServerToolsResultResponse
@@ -352,37 +298,6 @@ from ._list_data_center_database_response import ListDataCenterDatabaseResponse
 from ._list_data_center_table_request import ListDataCenterTableRequest
 from ._list_data_center_table_response_body import ListDataCenterTableResponseBody
 from ._list_data_center_table_response import ListDataCenterTableResponse
-from ._list_data_lake_catalog_request import ListDataLakeCatalogRequest
-from ._list_data_lake_catalog_response_body import ListDataLakeCatalogResponseBody
-from ._list_data_lake_catalog_response import ListDataLakeCatalogResponse
-from ._list_data_lake_database_request import ListDataLakeDatabaseRequest
-from ._list_data_lake_database_response_body import ListDataLakeDatabaseResponseBody
-from ._list_data_lake_database_response import ListDataLakeDatabaseResponse
-from ._list_data_lake_function_request import ListDataLakeFunctionRequest
-from ._list_data_lake_function_response_body import ListDataLakeFunctionResponseBody
-from ._list_data_lake_function_response import ListDataLakeFunctionResponse
-from ._list_data_lake_function_name_request import ListDataLakeFunctionNameRequest
-from ._list_data_lake_function_name_response_body import ListDataLakeFunctionNameResponseBody
-from ._list_data_lake_function_name_response import ListDataLakeFunctionNameResponse
-from ._list_data_lake_partition_request import ListDataLakePartitionRequest
-from ._list_data_lake_partition_shrink_request import ListDataLakePartitionShrinkRequest
-from ._list_data_lake_partition_response_body import ListDataLakePartitionResponseBody
-from ._list_data_lake_partition_response import ListDataLakePartitionResponse
-from ._list_data_lake_partition_by_filter_request import ListDataLakePartitionByFilterRequest
-from ._list_data_lake_partition_by_filter_response_body import ListDataLakePartitionByFilterResponseBody
-from ._list_data_lake_partition_by_filter_response import ListDataLakePartitionByFilterResponse
-from ._list_data_lake_partition_name_request import ListDataLakePartitionNameRequest
-from ._list_data_lake_partition_name_response_body import ListDataLakePartitionNameResponseBody
-from ._list_data_lake_partition_name_response import ListDataLakePartitionNameResponse
-from ._list_data_lake_table_request import ListDataLakeTableRequest
-from ._list_data_lake_table_response_body import ListDataLakeTableResponseBody
-from ._list_data_lake_table_response import ListDataLakeTableResponse
-from ._list_data_lake_table_name_request import ListDataLakeTableNameRequest
-from ._list_data_lake_table_name_response_body import ListDataLakeTableNameResponseBody
-from ._list_data_lake_table_name_response import ListDataLakeTableNameResponse
-from ._list_data_lake_tablebase_info_request import ListDataLakeTablebaseInfoRequest
-from ._list_data_lake_tablebase_info_response_body import ListDataLakeTablebaseInfoResponseBody
-from ._list_data_lake_tablebase_info_response import ListDataLakeTablebaseInfoResponse
 from ._list_document_chunks_request import ListDocumentChunksRequest
 from ._list_document_chunks_response_body import ListDocumentChunksResponseBody
 from ._list_document_chunks_response import ListDocumentChunksResponse
@@ -423,6 +338,9 @@ from ._redeploy_airflow_response import RedeployAirflowResponse
 from ._remove_user_to_data_agent_workspace_request import RemoveUserToDataAgentWorkspaceRequest
 from ._remove_user_to_data_agent_workspace_response_body import RemoveUserToDataAgentWorkspaceResponseBody
 from ._remove_user_to_data_agent_workspace_response import RemoveUserToDataAgentWorkspaceResponse
+from ._reset_agentic_api_key_request import ResetAgenticApiKeyRequest
+from ._reset_agentic_api_key_response_body import ResetAgenticApiKeyResponseBody
+from ._reset_agentic_api_key_response import ResetAgenticApiKeyResponse
 from ._retrieve_knowledge_base_request import RetrieveKnowledgeBaseRequest
 from ._retrieve_knowledge_base_response_body import RetrieveKnowledgeBaseResponseBody
 from ._retrieve_knowledge_base_response import RetrieveKnowledgeBaseResponse
@@ -464,22 +382,6 @@ from ._update_data_agent_space_info_response import UpdateDataAgentSpaceInfoResp
 from ._update_data_agent_workspace_member_role_request import UpdateDataAgentWorkspaceMemberRoleRequest
 from ._update_data_agent_workspace_member_role_response_body import UpdateDataAgentWorkspaceMemberRoleResponseBody
 from ._update_data_agent_workspace_member_role_response import UpdateDataAgentWorkspaceMemberRoleResponse
-from ._update_data_lake_database_request import UpdateDataLakeDatabaseRequest
-from ._update_data_lake_database_shrink_request import UpdateDataLakeDatabaseShrinkRequest
-from ._update_data_lake_database_response_body import UpdateDataLakeDatabaseResponseBody
-from ._update_data_lake_database_response import UpdateDataLakeDatabaseResponse
-from ._update_data_lake_function_request import UpdateDataLakeFunctionRequest
-from ._update_data_lake_function_shrink_request import UpdateDataLakeFunctionShrinkRequest
-from ._update_data_lake_function_response_body import UpdateDataLakeFunctionResponseBody
-from ._update_data_lake_function_response import UpdateDataLakeFunctionResponse
-from ._update_data_lake_partition_request import UpdateDataLakePartitionRequest
-from ._update_data_lake_partition_shrink_request import UpdateDataLakePartitionShrinkRequest
-from ._update_data_lake_partition_response_body import UpdateDataLakePartitionResponseBody
-from ._update_data_lake_partition_response import UpdateDataLakePartitionResponse
-from ._update_data_lake_table_request import UpdateDataLakeTableRequest
-from ._update_data_lake_table_shrink_request import UpdateDataLakeTableShrinkRequest
-from ._update_data_lake_table_response_body import UpdateDataLakeTableResponseBody
-from ._update_data_lake_table_response import UpdateDataLakeTableResponse
 from ._update_document_request import UpdateDocumentRequest
 from ._update_document_response_body import UpdateDocumentResponseBody
 from ._update_document_response import UpdateDocumentResponse
@@ -533,6 +435,8 @@ from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDat
 from ._create_data_agent_accuracy_test_response_body import CreateDataAgentAccuracyTestResponseBodyData
 from ._create_data_agent_feedback_response_body import CreateDataAgentFeedbackResponseBodyData
 from ._create_data_agent_knowledge_base_response_body import CreateDataAgentKnowledgeBaseResponseBodyData
+from ._create_data_agent_session_request import CreateDataAgentSessionRequestSessionConfigMcpHeadersMcpHeader
+from ._create_data_agent_session_request import CreateDataAgentSessionRequestSessionConfigMcpHeaders
 from ._create_data_agent_session_request import CreateDataAgentSessionRequestSessionConfig
 from ._create_data_agent_session_response_body import CreateDataAgentSessionResponseBodyDataSessionConfig
 from ._create_data_agent_session_response_body import CreateDataAgentSessionResponseBodyData
@@ -556,6 +460,7 @@ from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBod
 from ._describe_data_agent_metrics_response_body import DescribeDataAgentMetricsResponseBodyDataMetrics
 from ._describe_data_agent_metrics_response_body import DescribeDataAgentMetricsResponseBodyData
 from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyDataArtifacts
+from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyDataCapabilities
 from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyDataChatHistoryLocations
 from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyDataDataSources
 from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyDataRecallResults
@@ -625,6 +530,7 @@ from ._modify_custom_agent_response_body import ModifyCustomAgentResponseBodyDat
 from ._modify_custom_agent_response_body import ModifyCustomAgentResponseBodyDataScheduleTaskConfig
 from ._modify_custom_agent_response_body import ModifyCustomAgentResponseBodyData
 from ._operate_custom_agent_response_body import OperateCustomAgentResponseBodyData
+from ._reset_agentic_api_key_response_body import ResetAgenticApiKeyResponseBodyData
 from ._retrieve_knowledge_base_response_body import RetrieveKnowledgeBaseResponseBodyDataMatches
 from ._retrieve_knowledge_base_response_body import RetrieveKnowledgeBaseResponseBodyDataResults
 from ._retrieve_knowledge_base_response_body import RetrieveKnowledgeBaseResponseBodyData
@@ -660,6 +566,7 @@ __all__ = [
     AgenticDmsInstanceSyncTask,
     AgenticDmsInstanceSyncTaskInstance,
     AgenticKnowledgeView,
+    AgenticResourceOwner,
     AgenticTableBaseInfo,
     AgenticTableColumn,
     AgenticTableColumnEngineMeta,
@@ -680,6 +587,7 @@ __all__ = [
     DLTable,
     DLTableInput,
     DLTablebaseInfo,
+    DataAgentApplication,
     DataAgentBillingInstance,
     DataMountInfo,
     DmsGatewayOrder,
@@ -712,17 +620,6 @@ __all__ = [
     AddUserToDataAgentWorkspaceRequest,
     AddUserToDataAgentWorkspaceResponseBody,
     AddUserToDataAgentWorkspaceResponse,
-    BatchCreateDataLakePartitionsRequest,
-    BatchCreateDataLakePartitionsShrinkRequest,
-    BatchCreateDataLakePartitionsResponseBody,
-    BatchCreateDataLakePartitionsResponse,
-    BatchDeleteDataLakePartitionsRequest,
-    BatchDeleteDataLakePartitionsResponseBody,
-    BatchDeleteDataLakePartitionsResponse,
-    BatchUpdateDataLakePartitionsRequest,
-    BatchUpdateDataLakePartitionsShrinkRequest,
-    BatchUpdateDataLakePartitionsResponseBody,
-    BatchUpdateDataLakePartitionsResponse,
     CheckDataAgentMemoryConfigRequest,
     CheckDataAgentMemoryConfigResponseBody,
     CheckDataAgentMemoryConfigResponse,
@@ -769,22 +666,6 @@ __all__ = [
     CreateDataAgentWorkspaceRequest,
     CreateDataAgentWorkspaceResponseBody,
     CreateDataAgentWorkspaceResponse,
-    CreateDataLakeDatabaseRequest,
-    CreateDataLakeDatabaseShrinkRequest,
-    CreateDataLakeDatabaseResponseBody,
-    CreateDataLakeDatabaseResponse,
-    CreateDataLakeFunctionRequest,
-    CreateDataLakeFunctionShrinkRequest,
-    CreateDataLakeFunctionResponseBody,
-    CreateDataLakeFunctionResponse,
-    CreateDataLakePartitionRequest,
-    CreateDataLakePartitionShrinkRequest,
-    CreateDataLakePartitionResponseBody,
-    CreateDataLakePartitionResponse,
-    CreateDataLakeTableRequest,
-    CreateDataLakeTableShrinkRequest,
-    CreateDataLakeTableResponseBody,
-    CreateDataLakeTableResponse,
     CreateOneMetaSqlTemplateRequest,
     CreateOneMetaSqlTemplateResponseBody,
     CreateOneMetaSqlTemplateResponse,
@@ -816,19 +697,6 @@ __all__ = [
     DeleteDataAgentWorkspaceRequest,
     DeleteDataAgentWorkspaceResponseBody,
     DeleteDataAgentWorkspaceResponse,
-    DeleteDataLakeDatabaseRequest,
-    DeleteDataLakeDatabaseResponseBody,
-    DeleteDataLakeDatabaseResponse,
-    DeleteDataLakeFunctionRequest,
-    DeleteDataLakeFunctionResponseBody,
-    DeleteDataLakeFunctionResponse,
-    DeleteDataLakePartitionRequest,
-    DeleteDataLakePartitionShrinkRequest,
-    DeleteDataLakePartitionResponseBody,
-    DeleteDataLakePartitionResponse,
-    DeleteDataLakeTableRequest,
-    DeleteDataLakeTableResponseBody,
-    DeleteDataLakeTableResponse,
     DeleteDocumentRequest,
     DeleteDocumentResponseBody,
     DeleteDocumentResponse,
@@ -907,22 +775,6 @@ __all__ = [
     GetDataAgentWorkspaceInfoRequest,
     GetDataAgentWorkspaceInfoResponseBody,
     GetDataAgentWorkspaceInfoResponse,
-    GetDataLakeCatalogRequest,
-    GetDataLakeCatalogResponseBody,
-    GetDataLakeCatalogResponse,
-    GetDataLakeDatabaseRequest,
-    GetDataLakeDatabaseResponseBody,
-    GetDataLakeDatabaseResponse,
-    GetDataLakeFunctionRequest,
-    GetDataLakeFunctionResponseBody,
-    GetDataLakeFunctionResponse,
-    GetDataLakePartitionRequest,
-    GetDataLakePartitionShrinkRequest,
-    GetDataLakePartitionResponseBody,
-    GetDataLakePartitionResponse,
-    GetDataLakeTableRequest,
-    GetDataLakeTableResponseBody,
-    GetDataLakeTableResponse,
     GetListMcpServerToolsResultRequest,
     GetListMcpServerToolsResultResponseBody,
     GetListMcpServerToolsResultResponse,
@@ -1001,37 +853,6 @@ __all__ = [
     ListDataCenterTableRequest,
     ListDataCenterTableResponseBody,
     ListDataCenterTableResponse,
-    ListDataLakeCatalogRequest,
-    ListDataLakeCatalogResponseBody,
-    ListDataLakeCatalogResponse,
-    ListDataLakeDatabaseRequest,
-    ListDataLakeDatabaseResponseBody,
-    ListDataLakeDatabaseResponse,
-    ListDataLakeFunctionRequest,
-    ListDataLakeFunctionResponseBody,
-    ListDataLakeFunctionResponse,
-    ListDataLakeFunctionNameRequest,
-    ListDataLakeFunctionNameResponseBody,
-    ListDataLakeFunctionNameResponse,
-    ListDataLakePartitionRequest,
-    ListDataLakePartitionShrinkRequest,
-    ListDataLakePartitionResponseBody,
-    ListDataLakePartitionResponse,
-    ListDataLakePartitionByFilterRequest,
-    ListDataLakePartitionByFilterResponseBody,
-    ListDataLakePartitionByFilterResponse,
-    ListDataLakePartitionNameRequest,
-    ListDataLakePartitionNameResponseBody,
-    ListDataLakePartitionNameResponse,
-    ListDataLakeTableRequest,
-    ListDataLakeTableResponseBody,
-    ListDataLakeTableResponse,
-    ListDataLakeTableNameRequest,
-    ListDataLakeTableNameResponseBody,
-    ListDataLakeTableNameResponse,
-    ListDataLakeTablebaseInfoRequest,
-    ListDataLakeTablebaseInfoResponseBody,
-    ListDataLakeTablebaseInfoResponse,
     ListDocumentChunksRequest,
     ListDocumentChunksResponseBody,
     ListDocumentChunksResponse,
@@ -1072,6 +893,9 @@ __all__ = [
     RemoveUserToDataAgentWorkspaceRequest,
     RemoveUserToDataAgentWorkspaceResponseBody,
     RemoveUserToDataAgentWorkspaceResponse,
+    ResetAgenticApiKeyRequest,
+    ResetAgenticApiKeyResponseBody,
+    ResetAgenticApiKeyResponse,
     RetrieveKnowledgeBaseRequest,
     RetrieveKnowledgeBaseResponseBody,
     RetrieveKnowledgeBaseResponse,
@@ -1113,22 +937,6 @@ __all__ = [
     UpdateDataAgentWorkspaceMemberRoleRequest,
     UpdateDataAgentWorkspaceMemberRoleResponseBody,
     UpdateDataAgentWorkspaceMemberRoleResponse,
-    UpdateDataLakeDatabaseRequest,
-    UpdateDataLakeDatabaseShrinkRequest,
-    UpdateDataLakeDatabaseResponseBody,
-    UpdateDataLakeDatabaseResponse,
-    UpdateDataLakeFunctionRequest,
-    UpdateDataLakeFunctionShrinkRequest,
-    UpdateDataLakeFunctionResponseBody,
-    UpdateDataLakeFunctionResponse,
-    UpdateDataLakePartitionRequest,
-    UpdateDataLakePartitionShrinkRequest,
-    UpdateDataLakePartitionResponseBody,
-    UpdateDataLakePartitionResponse,
-    UpdateDataLakeTableRequest,
-    UpdateDataLakeTableShrinkRequest,
-    UpdateDataLakeTableResponseBody,
-    UpdateDataLakeTableResponse,
     UpdateDocumentRequest,
     UpdateDocumentResponseBody,
     UpdateDocumentResponse,
@@ -1182,6 +990,8 @@ __all__ = [
     CreateDataAgentAccuracyTestResponseBodyData,
     CreateDataAgentFeedbackResponseBodyData,
     CreateDataAgentKnowledgeBaseResponseBodyData,
+    CreateDataAgentSessionRequestSessionConfigMcpHeadersMcpHeader,
+    CreateDataAgentSessionRequestSessionConfigMcpHeaders,
     CreateDataAgentSessionRequestSessionConfig,
     CreateDataAgentSessionResponseBodyDataSessionConfig,
     CreateDataAgentSessionResponseBodyData,
@@ -1205,6 +1015,7 @@ __all__ = [
     DescribeDataAgentMetricsResponseBodyDataMetrics,
     DescribeDataAgentMetricsResponseBodyData,
     DescribeDataAgentSessionResponseBodyDataArtifacts,
+    DescribeDataAgentSessionResponseBodyDataCapabilities,
     DescribeDataAgentSessionResponseBodyDataChatHistoryLocations,
     DescribeDataAgentSessionResponseBodyDataDataSources,
     DescribeDataAgentSessionResponseBodyDataRecallResults,
@@ -1274,6 +1085,7 @@ __all__ = [
     ModifyCustomAgentResponseBodyDataScheduleTaskConfig,
     ModifyCustomAgentResponseBodyData,
     OperateCustomAgentResponseBodyData,
+    ResetAgenticApiKeyResponseBodyData,
     RetrieveKnowledgeBaseResponseBodyDataMatches,
     RetrieveKnowledgeBaseResponseBodyDataResults,
     RetrieveKnowledgeBaseResponseBodyData,
