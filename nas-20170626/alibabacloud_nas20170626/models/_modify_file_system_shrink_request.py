@@ -7,24 +7,27 @@ from darabonba.model import DaraModel
 class ModifyFileSystemShrinkRequest(DaraModel):
     def __init__(
         self,
+        auto_upgrade_config_shrink: str = None,
         description: str = None,
         file_system_id: str = None,
         options_shrink: str = None,
     ):
-        # The file system description.
+        # The auto-scaling configuration.
+        self.auto_upgrade_config_shrink = auto_upgrade_config_shrink
+        # The description of the file system.
         # 
         # Limits:
         # 
         # - The description must be 2 to 128 characters in length.
-        # - The description must start with a letter or Chinese character and cannot start with `http://` or `https://`.
+        # - The description must start with a letter. It cannot start with `http://` or `https://`.
         # - The description can contain digits, colons (:), underscores (_), or hyphens (-).
         self.description = description
         # The file system ID.
         # 
         # - General-purpose NAS: `31a8e4****`.
         # 
-        # - Extreme NAS: must start with `extreme-`, for example, `extreme-0015****`.
-        # - CPFS: must start with `cpfs-`, for example, `cpfs-125487****`.
+        # - Extreme NAS: The ID must start with `extreme-`, for example, `extreme-0015****`.
+        # - Cloud Parallel File Storage (CPFS): The ID must start with `cpfs-`, for example, `cpfs-125487****`.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
@@ -39,6 +42,9 @@ class ModifyFileSystemShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.auto_upgrade_config_shrink is not None:
+            result['AutoUpgradeConfig'] = self.auto_upgrade_config_shrink
+
         if self.description is not None:
             result['Description'] = self.description
 
@@ -52,6 +58,9 @@ class ModifyFileSystemShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoUpgradeConfig') is not None:
+            self.auto_upgrade_config_shrink = m.get('AutoUpgradeConfig')
+
         if m.get('Description') is not None:
             self.description = m.get('Description')
 

@@ -9534,9 +9534,13 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.ModifyFileSystemShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.auto_upgrade_config):
+            request.auto_upgrade_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.auto_upgrade_config, 'AutoUpgradeConfig', 'json')
         if not DaraCore.is_null(tmp_req.options):
             request.options_shrink = Utils.array_to_string_with_specified_style(tmp_req.options, 'Options', 'json')
         query = {}
+        if not DaraCore.is_null(request.auto_upgrade_config_shrink):
+            query['AutoUpgradeConfig'] = request.auto_upgrade_config_shrink
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
         if not DaraCore.is_null(request.file_system_id):
@@ -9570,9 +9574,13 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.ModifyFileSystemShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.auto_upgrade_config):
+            request.auto_upgrade_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.auto_upgrade_config, 'AutoUpgradeConfig', 'json')
         if not DaraCore.is_null(tmp_req.options):
             request.options_shrink = Utils.array_to_string_with_specified_style(tmp_req.options, 'Options', 'json')
         query = {}
+        if not DaraCore.is_null(request.auto_upgrade_config_shrink):
+            query['AutoUpgradeConfig'] = request.auto_upgrade_config_shrink
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
         if not DaraCore.is_null(request.file_system_id):

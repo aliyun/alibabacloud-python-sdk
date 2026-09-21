@@ -1,3 +1,8 @@
+2026-09-21 Version: 3.7.3
+- Update API DescribeFileSystems: add response parameters Body.FileSystems.$.AutoUpgradeConfig.
+- Update API ModifyFileSystem: add request parameters AutoUpgradeConfig.
+
+
 2026-09-11 Version: 3.7.2
 - Update API CreateCpfsAccessPoint: add request parameters Tag.
 - Update API DescribeCpfsAccessPoints: add request parameters Tag.

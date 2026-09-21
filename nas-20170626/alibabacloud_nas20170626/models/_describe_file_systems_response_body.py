@@ -19,7 +19,7 @@ class DescribeFileSystemsResponseBody(DaraModel):
         self.file_systems = file_systems
         # The page number of the file system list.
         self.page_number = page_number
-        # The number of file systems per page.
+        # The number of file systems on each page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -112,6 +112,7 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(DaraModel):
         self,
         access_point_count: str = None,
         auto_snapshot_policy_id: str = None,
+        auto_upgrade_config: main_models.DescribeFileSystemsResponseBodyFileSystemsFileSystemAutoUpgradeConfig = None,
         bandwidth: int = None,
         capacity: int = None,
         charge_type: str = None,
@@ -147,6 +148,7 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(DaraModel):
     ):
         self.access_point_count = access_point_count
         self.auto_snapshot_policy_id = auto_snapshot_policy_id
+        self.auto_upgrade_config = auto_upgrade_config
         self.bandwidth = bandwidth
         self.capacity = capacity
         self.charge_type = charge_type
@@ -181,6 +183,8 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(DaraModel):
         self.zone_id = zone_id
 
     def validate(self):
+        if self.auto_upgrade_config:
+            self.auto_upgrade_config.validate()
         if self.ldap:
             self.ldap.validate()
         if self.mount_targets:
@@ -208,6 +212,9 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(DaraModel):
 
         if self.auto_snapshot_policy_id is not None:
             result['AutoSnapshotPolicyId'] = self.auto_snapshot_policy_id
+
+        if self.auto_upgrade_config is not None:
+            result['AutoUpgradeConfig'] = self.auto_upgrade_config.to_map()
 
         if self.bandwidth is not None:
             result['Bandwidth'] = self.bandwidth
@@ -314,6 +321,10 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(DaraModel):
 
         if m.get('AutoSnapshotPolicyId') is not None:
             self.auto_snapshot_policy_id = m.get('AutoSnapshotPolicyId')
+
+        if m.get('AutoUpgradeConfig') is not None:
+            temp_model = main_models.DescribeFileSystemsResponseBodyFileSystemsFileSystemAutoUpgradeConfig()
+            self.auto_upgrade_config = temp_model.from_map(m.get('AutoUpgradeConfig'))
 
         if m.get('Bandwidth') is not None:
             self.bandwidth = m.get('Bandwidth')
@@ -1036,6 +1047,57 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystemLdap(DaraModel):
 
         if m.get('URI') is not None:
             self.uri = m.get('URI')
+
+        return self
+
+class DescribeFileSystemsResponseBodyFileSystemsFileSystemAutoUpgradeConfig(DaraModel):
+    def __init__(
+        self,
+        capacity_used_ratio: int = None,
+        enabled: bool = None,
+        step: int = None,
+        time: int = None,
+    ):
+        self.capacity_used_ratio = capacity_used_ratio
+        self.enabled = enabled
+        self.step = step
+        self.time = time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.capacity_used_ratio is not None:
+            result['capacityUsedRatio'] = self.capacity_used_ratio
+
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+
+        if self.step is not None:
+            result['step'] = self.step
+
+        if self.time is not None:
+            result['time'] = self.time
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('capacityUsedRatio') is not None:
+            self.capacity_used_ratio = m.get('capacityUsedRatio')
+
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+
+        if m.get('step') is not None:
+            self.step = m.get('step')
+
+        if m.get('time') is not None:
+            self.time = m.get('time')
 
         return self
 

@@ -484,6 +484,7 @@ from ._describe_file_system_statistics_response_body import DescribeFileSystemSt
 from ._describe_file_system_statistics_response_body import DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem
 from ._describe_file_system_statistics_response_body import DescribeFileSystemStatisticsResponseBodyFileSystems
 from ._describe_file_systems_request import DescribeFileSystemsRequestTag
+from ._describe_file_systems_response_body import DescribeFileSystemsResponseBodyFileSystemsFileSystemAutoUpgradeConfig
 from ._describe_file_systems_response_body import DescribeFileSystemsResponseBodyFileSystemsFileSystemLdap
 from ._describe_file_systems_response_body import DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetClientMasterNodesClientMasterNode
 from ._describe_file_systems_response_body import DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetClientMasterNodes
@@ -571,6 +572,7 @@ from ._list_recycled_directories_and_files_response_body import ListRecycledDire
 from ._list_tag_resources_request import ListTagResourcesRequestTag
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResourcesTagResource
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
+from ._modify_file_system_request import ModifyFileSystemRequestAutoUpgradeConfig
 from ._modify_file_system_request import ModifyFileSystemRequestOptions
 from ._tag_resources_request import TagResourcesRequestTag
 from ._update_lifecycle_policy_request import UpdateLifecyclePolicyRequestDeleteRules
@@ -1060,6 +1062,7 @@ __all__ = [
     DescribeFileSystemStatisticsResponseBodyFileSystemsFileSystem,
     DescribeFileSystemStatisticsResponseBodyFileSystems,
     DescribeFileSystemsRequestTag,
+    DescribeFileSystemsResponseBodyFileSystemsFileSystemAutoUpgradeConfig,
     DescribeFileSystemsResponseBodyFileSystemsFileSystemLdap,
     DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetClientMasterNodesClientMasterNode,
     DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetClientMasterNodes,
@@ -1147,6 +1150,7 @@ __all__ = [
     ListTagResourcesRequestTag,
     ListTagResourcesResponseBodyTagResourcesTagResource,
     ListTagResourcesResponseBodyTagResources,
+    ModifyFileSystemRequestAutoUpgradeConfig,
     ModifyFileSystemRequestOptions,
     TagResourcesRequestTag,
     UpdateLifecyclePolicyRequestDeleteRules,
