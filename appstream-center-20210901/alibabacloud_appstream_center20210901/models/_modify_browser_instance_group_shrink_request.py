@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class ModifyBrowserInstanceGroupShrinkRequest(DaraModel):
     def __init__(
         self,
+        auth_notification_enabled: bool = None,
         browser_config_shrink: str = None,
         browser_instance_group_id: str = None,
         cloud_browser_name: str = None,
@@ -16,6 +17,8 @@ class ModifyBrowserInstanceGroupShrinkRequest(DaraModel):
         storage_policy_shrink: str = None,
         timers_shrink: str = None,
     ):
+        # Specifies whether to send notification emails for authorization and deauthorization.
+        self.auth_notification_enabled = auth_notification_enabled
         # The browser configuration.
         self.browser_config_shrink = browser_config_shrink
         # The ID of the cloud browser to modify.
@@ -43,6 +46,9 @@ class ModifyBrowserInstanceGroupShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.auth_notification_enabled is not None:
+            result['AuthNotificationEnabled'] = self.auth_notification_enabled
+
         if self.browser_config_shrink is not None:
             result['BrowserConfig'] = self.browser_config_shrink
 
@@ -71,6 +77,9 @@ class ModifyBrowserInstanceGroupShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AuthNotificationEnabled') is not None:
+            self.auth_notification_enabled = m.get('AuthNotificationEnabled')
+
         if m.get('BrowserConfig') is not None:
             self.browser_config_shrink = m.get('BrowserConfig')
 

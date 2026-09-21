@@ -18,19 +18,24 @@ class ListLlmTemplatesShrinkRequest(DaraModel):
     ):
         # The business type. This parameter is required when SmartModel is set to true.
         self.biz_type = biz_type
-        # The model code filter. Fuzzy match is supported.
+        # The model code used for filtering. Fuzzy match is supported.
         self.llm_code = llm_code
         # The model template IDs used for filtering.
         self.llm_template_ids_shrink = llm_template_ids_shrink
         # The ID of the associated model group.
         self.model_template_id = model_template_id
-        # The page number, starting from 1. Values 0 and 1 return the same result.
+        # The page number. Pages start from page 1. Both 0 and 1 return the same result.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
         # The ID of the model provider template.
         self.provider_template_id = provider_template_id
-        # Specifies whether to query smart models. If set to true, only LLMs under system preset smart models are returned, and BizType is required. Default value: false.
+        # Specifies whether to query smart models. Valid values:
+        # 
+        # - true: Only LLMs under system preset smart models are returned. In this case, BizType is required.
+        # - false: Smart model filtering is not applied.
+        # 
+        # Default value: false.
         self.smart_model = smart_model
 
     def validate(self):

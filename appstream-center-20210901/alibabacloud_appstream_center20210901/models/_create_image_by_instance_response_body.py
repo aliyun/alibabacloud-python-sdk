@@ -22,7 +22,7 @@ class CreateImageByInstanceResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values: true and false.
+        # Indicates whether the request was successful. A value of true indicates success. A value of false indicates failure.
         self.success = success
 
     def validate(self):
@@ -80,7 +80,7 @@ class CreateImageByInstanceResponseBodyData(DaraModel):
     ):
         # The WUYING image ID.
         self.image_id = image_id
-        # The task ID for creating the image.
+        # The ID of the image creation task.
         self.task_id = task_id
         # The image version.
         self.version_id = version_id

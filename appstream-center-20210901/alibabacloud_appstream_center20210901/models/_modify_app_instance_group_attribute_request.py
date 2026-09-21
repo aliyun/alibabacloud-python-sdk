@@ -34,10 +34,10 @@ class ModifyAppInstanceGroupAttributeRequest(DaraModel):
         self.network = network
         # The resource group object.
         self.node_pool = node_pool
-        # Specifies whether only one application can be opened per session.
+        # Specifies whether to allow only one application per session.
         # - If enabled, opening multiple applications within the delivery group allocates a separate session for each application, consuming more sessions.
         self.per_session_per_app = per_session_per_app
-        # The AppId of the pre-open application. If the `PreOpenMode` parameter is set to `SINGLE_APP`, the `PreOpenAppId` parameter cannot be an empty string.
+        # The AppId of the pre-open application. If the PreOpenMode parameter is set to `SINGLE_APP`, PreOpenAppId cannot be an empty string.
         self.pre_open_app_id = pre_open_app_id
         # The pre-open mode.
         self.pre_open_mode = pre_open_mode
@@ -47,7 +47,7 @@ class ModifyAppInstanceGroupAttributeRequest(DaraModel):
         self.product_type = product_type
         # The security policy.
         self.security_policy = security_policy
-        # The session disconnection retention duration, in minutes. After an end user session is disconnected, the session is retained for the duration specified here before being logged off. Set this parameter to `-1` to retain the session indefinitely. Valid values: -1 and 3 to 300. Default value: `15`.
+        # The session retention duration after disconnection, in minutes. After an end user session is disconnected, the session is retained for the duration specified here before being logged off. Set this parameter to `-1` to retain the session indefinitely. Valid values: -1 and 3 to 300. Default value: `15`.
         self.session_timeout = session_timeout
         # The storage policy.
         self.storage_policy = storage_policy
@@ -154,6 +154,7 @@ class ModifyAppInstanceGroupAttributeRequestStoragePolicy(DaraModel):
         self.storage_type_list = storage_type_list
         # The user data roaming configuration.
         self.user_profile = user_profile
+        # The user data roaming configuration.
         self.user_profile_follow = user_profile_follow
 
     def validate(self):
@@ -199,7 +200,9 @@ class ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfileFollow(DaraM
         file_system_id: str = None,
         profile_follow_switch: bool = None,
     ):
+        # The file system ID.
         self.file_system_id = file_system_id
+        # Specifies whether to enable user data roaming.
         self.profile_follow_switch = profile_follow_switch
 
     def validate(self):
@@ -273,7 +276,7 @@ class ModifyAppInstanceGroupAttributeRequestSecurityPolicy(DaraModel):
     ):
         # Specifies whether to reset after unbinding.
         self.reset_after_unbind = reset_after_unbind
-        # Specifies whether to skip user authorization verification.
+        # Specifies whether to skip user authorization check.
         self.skip_user_auth_check = skip_user_auth_check
 
     def validate(self):
@@ -308,7 +311,7 @@ class ModifyAppInstanceGroupAttributeRequestNodePool(DaraModel):
         node_capacity: int = None,
         node_pool_id: str = None,
     ):
-        # The number of concurrent sessions, which is the number of sessions that can be simultaneously connected to a single resource. If too many sessions are connected simultaneously, the application experience may degrade. The valid value range varies depending on the resource specification. You can call the ListNodeInstanceType operation to obtain the valid value range for each resource specification.
+        # The number of concurrent sessions, which is the number of sessions that can be simultaneously connected to a single resource. Too many simultaneous sessions may degrade the application experience. The valid value range varies depending on the resource specification. You can call the ListNodeInstanceType operation to obtain the valid value range for each resource specification.
         self.node_capacity = node_capacity
         # The resource group ID.
         self.node_pool_id = node_pool_id

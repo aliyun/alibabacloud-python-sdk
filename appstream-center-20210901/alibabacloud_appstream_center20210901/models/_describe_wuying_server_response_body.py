@@ -13,7 +13,7 @@ class DescribeWuyingServerResponseBody(DaraModel):
         data: main_models.DescribeWuyingServerResponseBodyData = None,
         request_id: str = None,
     ):
-        # The details of the development workstation.
+        # The details of the development host.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -64,22 +64,23 @@ class DescribeWuyingServerResponseBodyData(DaraModel):
         os_type: str = None,
         private_ip_sets: List[main_models.DescribeWuyingServerResponseBodyDataPrivateIpSets] = None,
         status: str = None,
+        support_asp: bool = None,
         system_disk_category: str = None,
         system_disk_size: int = None,
         wuying_server_id: str = None,
         wuying_server_name: str = None,
     ):
-        # The bandwidth. Unit: Mbit/s.
+        # The bandwidth size, in Mbit/s.
         self.bandwidth = bandwidth
         # The region ID.
         self.biz_region_id = biz_region_id
         # The billing type.
         self.charge_type = charge_type
-        # The time when the workstation was created.
+        # The creation time, in US English date and time format with a 12-hour clock.
         self.create_time = create_time
-        # The maximum number of private IP addresses per ENI, including the primary IP address.
+        # The maximum number of private IP addresses per NIC, including the primary IP address.
         self.eni_private_ip_address_quantity = eni_private_ip_address_quantity
-        # The time when the workstation expires.
+        # The expiration time, in US English date and time format with a 12-hour clock.
         self.expired_time = expired_time
         # The image ID.
         self.image_id = image_id
@@ -97,15 +98,17 @@ class DescribeWuyingServerResponseBodyData(DaraModel):
         self.os_type = os_type
         # The set of private IP addresses, including the primary and secondary IP addresses.
         self.private_ip_sets = private_ip_sets
-        # The status of the development workstation.
+        # The status of the development host.
         self.status = status
+        # Whether ASP streaming connection is supported.
+        self.support_asp = support_asp
         # The type of the system cloud disk.
         self.system_disk_category = system_disk_category
-        # The size of the system cloud disk. Unit: GB.
+        # The size of the system cloud disk, in GB.
         self.system_disk_size = system_disk_size
-        # The ID of the development workstation.
+        # The ID of the development host.
         self.wuying_server_id = wuying_server_id
-        # The name of the development workstation.
+        # The name of the development host.
         self.wuying_server_name = wuying_server_name
 
     def validate(self):
@@ -165,6 +168,9 @@ class DescribeWuyingServerResponseBodyData(DaraModel):
 
         if self.status is not None:
             result['Status'] = self.status
+
+        if self.support_asp is not None:
+            result['SupportASP'] = self.support_asp
 
         if self.system_disk_category is not None:
             result['SystemDiskCategory'] = self.system_disk_category
@@ -229,6 +235,9 @@ class DescribeWuyingServerResponseBodyData(DaraModel):
 
         if m.get('Status') is not None:
             self.status = m.get('Status')
+
+        if m.get('SupportASP') is not None:
+            self.support_asp = m.get('SupportASP')
 
         if m.get('SystemDiskCategory') is not None:
             self.system_disk_category = m.get('SystemDiskCategory')

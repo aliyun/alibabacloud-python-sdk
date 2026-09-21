@@ -12,6 +12,7 @@ class RestartWuyingServerRequest(DaraModel):
         product_type: str = None,
         wuying_server_id_list: List[str] = None,
     ):
+        # The product type.
         self.product_type = product_type
         # The list of workstation IDs.
         self.wuying_server_id_list = wuying_server_id_list

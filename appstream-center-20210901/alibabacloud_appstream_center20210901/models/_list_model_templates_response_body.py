@@ -18,7 +18,7 @@ class ListModelTemplatesResponseBody(DaraModel):
     ):
         # The list of returned data objects.
         self.data = data
-        # The current page number of the query results.
+        # The page number of the current query results.
         self.page_number = page_number
         # The number of query results per page.
         self.page_size = page_size
@@ -110,13 +110,11 @@ class ListModelTemplatesResponseBodyData(DaraModel):
         self.model_template_id = model_template_id
         # The template group name.
         self.name = name
-        # The group authorization scope. Valid values:
-        # - ALL_USER: all users.
-        # - USER_MIXED: user mixed (a mix of user groups and users, only for Common groups).
+        # The group authorization scope. Valid values: ALL_USER (all users) and USER_MIXED (a mix of user groups and users, only for Common groups).
         self.ref_scope = ref_scope
-        # The number of authorized users in the group. Returned only when ListModelTemplates is called with refScope=USER_MIXED. Otherwise null.
+        # The number of authorized users in the group. This value is returned only when ListModelTemplates is called and refScope is USER_MIXED. Otherwise, the value is null.
         self.user_count = user_count
-        # The number of authorized user groups in the group. Returned only when ListModelTemplates is called with refScope=USER_MIXED. Otherwise null.
+        # The number of authorized user groups in the group. This value is returned only when ListModelTemplates is called and refScope is USER_MIXED. Otherwise, the value is null.
         self.user_group_count = user_group_count
 
     def validate(self):

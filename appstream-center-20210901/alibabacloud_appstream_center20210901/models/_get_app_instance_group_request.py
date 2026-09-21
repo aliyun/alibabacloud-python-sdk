@@ -10,7 +10,7 @@ class GetAppInstanceGroupRequest(DaraModel):
         app_instance_group_id: str = None,
         product_type: str = None,
     ):
-        # The delivery group ID. You can call the [ListAppInstanceGroup](~~ListAppInstanceGroup~~) operation to obtain the ID.
+        # The ID of the delivery group. You can call the [ListAppInstanceGroup](~~ListAppInstanceGroup~~) operation to obtain the ID.
         # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id

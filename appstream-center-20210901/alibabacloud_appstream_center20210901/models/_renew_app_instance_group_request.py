@@ -25,22 +25,22 @@ class RenewAppInstanceGroupRequest(DaraModel):
         self.app_instance_group_id = app_instance_group_id
         # Specifies whether to enable automatic payment.
         self.auto_pay = auto_pay
-        # The numeric part of the resource purchase duration. This parameter is used together with `PeriodUnit` to represent the complete purchase duration.
+        # The numeric part of the resource purchase duration. This parameter is used together with PeriodUnit to specify the complete purchase duration.
         # 
         # This parameter is required.
         self.period = period
-        # The unit part of the resource purchase duration. This parameter is used together with `Period` to represent the complete purchase duration. Valid combinations of `Period` and `PeriodUnit`:
+        # The unit part of the resource purchase duration. This parameter is used together with Period to specify the complete purchase duration. Valid combinations of Period and PeriodUnit:
         # 
-        # - 1 Week
-        # - 1 Month
-        # - 2 Month
-        # - 3 Month
-        # - 6 Month
-        # - 1 Year
-        # - 2 Year
-        # - 3 Year
+        # - 1 Week (1 week)
+        # - 1 Month (1 month)
+        # - 2 Month (2 months)
+        # - 3 Month (3 months)
+        # - 6 Month (6 months)
+        # - 1 Year (1 year)
+        # - 2 Year (2 years)
+        # - 3 Year (3 years)
         # 
-        # > This parameter is case-sensitive. For example, `Week` is valid, but `week` is invalid. If the request parameters do not match the valid combinations listed above, such as `2 Week`, the call to this operation succeeds, but an error occurs during the order placement phase.
+        # > This parameter is case-sensitive. For example, `Week` is valid, but `week` is invalid. If the request parameters do not match the combinations listed above, such as `2 Week`, the call to this operation succeeds, but an error occurs during the order placement phase.
         # 
         # This parameter is required.
         self.period_unit = period_unit
@@ -50,8 +50,11 @@ class RenewAppInstanceGroupRequest(DaraModel):
         self.product_type = product_type
         # The promotion ID. You can obtain this value by calling the [GetResourcePrice](https://help.aliyun.com/document_detail/428503.html) operation.
         self.promotion_id = promotion_id
+        # The number of nodes to renew.
         self.renew_amount = renew_amount
+        # The renewal mode.
         self.renew_mode = renew_mode
+        # The list of node IDs to renew.
         self.renew_nodes = renew_nodes
 
     def validate(self):

@@ -39,8 +39,8 @@ class GetConnectionTicketResponseBody(DaraModel):
         self.task_status = task_status
         # The tenant ID (Alibaba Cloud account UID).
         self.tenant_id = tenant_id
-        # The credentials for connecting to the cloud application.
-        # > This parameter is returned only on non-initial calls.
+        # The credential for connecting to the cloud application.
+        # > This parameter is returned only for non-initial calls.
         self.ticket = ticket
 
     def validate(self):

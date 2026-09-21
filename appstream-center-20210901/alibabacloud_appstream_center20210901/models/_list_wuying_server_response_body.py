@@ -90,6 +90,7 @@ class ListWuyingServerResponseBodyWuyingServerList(DaraModel):
         create_time: str = None,
         data_disk: List[main_models.ListWuyingServerResponseBodyWuyingServerListDataDisk] = None,
         eni_private_ip_address_quantity: int = None,
+        erdma_status: str = None,
         expired_time: str = None,
         fota_version: str = None,
         image_id: str = None,
@@ -109,6 +110,7 @@ class ListWuyingServerResponseBodyWuyingServerList(DaraModel):
         sessions: List[main_models.ListWuyingServerResponseBodyWuyingServerListSessions] = None,
         status: str = None,
         sub_pay_type: str = None,
+        support_asp: bool = None,
         system_disk_category: str = None,
         system_disk_id: str = None,
         system_disk_performance_level: str = None,
@@ -123,43 +125,45 @@ class ListWuyingServerResponseBodyWuyingServerList(DaraModel):
         wuying_server_name: str = None,
         zone_id: str = None,
     ):
-        # The status of adding to the virtual node pool.
+        # The status of adding the workstation to a virtual node pool.
         self.add_virtual_node_pool_status = add_virtual_node_pool_status
-        # The tenant UID.
+        # The UID of the tenant.
         self.ali_uid = ali_uid
         # The bandwidth size. Unit: Mbit/s.
         self.bandwidth = bandwidth
         # The region.
         self.biz_region_id = biz_region_id
-        # The billing method.
+        # The payment method.
         self.charge_type = charge_type
-        # The creation time.
+        # The creation time in ISO 8601 format.
         self.create_time = create_time
         # The list of data cloud disks.
         self.data_disk = data_disk
-        # The maximum number of private IP addresses per ENI, including the primary IP address.
+        # The maximum number of private IP addresses per elastic network interface (ENI), including the primary IP address.
         self.eni_private_ip_address_quantity = eni_private_ip_address_quantity
-        # The expiration time.
+        # The eRDMA activation status. Valid values: disabled, enabling, enabled, and failed.
+        self.erdma_status = erdma_status
+        # The expiration time in ISO 8601 format.
         self.expired_time = expired_time
         # The FOTA version number.
         self.fota_version = fota_version
         # The image ID.
         self.image_id = image_id
-        # The image name.
+        # The name of the image.
         self.image_name = image_name
-        # The list of workspace instance information.
+        # The list of workstation instance information.
         self.instance_info_list = instance_info_list
-        # The maximum price of the spot instance.
+        # The maximum price for the spot instance.
         self.max_price = max_price
         # The internal IP address.
         self.network_interface_ip = network_interface_ip
         # The office network ID.
         self.office_site_id = office_site_id
-        # The office network name.
+        # The name of the office network.
         self.office_site_name = office_site_name
-        # The office network type.
+        # The network type of the office network.
         self.office_site_type = office_site_type
-        # The operating system type.
+        # The type of the operating system.
         self.os_type = os_type
         # The list of policy group IDs.
         self.policy_group_id_list = policy_group_id_list
@@ -177,15 +181,17 @@ class ListWuyingServerResponseBodyWuyingServerList(DaraModel):
         self.status = status
         # The sub-payment type.
         self.sub_pay_type = sub_pay_type
+        # Whether ASP streaming connection is supported.
+        self.support_asp = support_asp
         # The system cloud disk type.
         self.system_disk_category = system_disk_category
-        # The ID of the system cloud disk.
+        # The system cloud disk ID.
         self.system_disk_id = system_disk_id
-        # The system cloud disk performance level.
+        # The performance level (PL) of the system cloud disk.
         self.system_disk_performance_level = system_disk_performance_level
         # The system cloud disk size. Unit: GB.
         self.system_disk_size = system_disk_size
-        # The ID of the timer group.
+        # The timer group ID.
         self.timer_group_id = timer_group_id
         # The list of authorized users.
         self.users = users
@@ -193,7 +199,7 @@ class ListWuyingServerResponseBodyWuyingServerList(DaraModel):
         self.virtual_kubelet_ip = virtual_kubelet_ip
         # The virtual node pool ID.
         self.virtual_node_pool_id = virtual_node_pool_id
-        # Indicates whether the Virtual Kubelet needs to be upgraded.
+        # Indicates whether a VirtualKubelet upgrade is needed.
         self.vk_upgrade_needed = vk_upgrade_needed
         # The Virtual Kubelet version.
         self.vk_version = vk_version
@@ -254,6 +260,9 @@ class ListWuyingServerResponseBodyWuyingServerList(DaraModel):
 
         if self.eni_private_ip_address_quantity is not None:
             result['EniPrivateIpAddressQuantity'] = self.eni_private_ip_address_quantity
+
+        if self.erdma_status is not None:
+            result['ErdmaStatus'] = self.erdma_status
 
         if self.expired_time is not None:
             result['ExpiredTime'] = self.expired_time
@@ -317,6 +326,9 @@ class ListWuyingServerResponseBodyWuyingServerList(DaraModel):
 
         if self.sub_pay_type is not None:
             result['SubPayType'] = self.sub_pay_type
+
+        if self.support_asp is not None:
+            result['SupportASP'] = self.support_asp
 
         if self.system_disk_category is not None:
             result['SystemDiskCategory'] = self.system_disk_category
@@ -388,6 +400,9 @@ class ListWuyingServerResponseBodyWuyingServerList(DaraModel):
         if m.get('EniPrivateIpAddressQuantity') is not None:
             self.eni_private_ip_address_quantity = m.get('EniPrivateIpAddressQuantity')
 
+        if m.get('ErdmaStatus') is not None:
+            self.erdma_status = m.get('ErdmaStatus')
+
         if m.get('ExpiredTime') is not None:
             self.expired_time = m.get('ExpiredTime')
 
@@ -455,6 +470,9 @@ class ListWuyingServerResponseBodyWuyingServerList(DaraModel):
         if m.get('SubPayType') is not None:
             self.sub_pay_type = m.get('SubPayType')
 
+        if m.get('SupportASP') is not None:
+            self.support_asp = m.get('SupportASP')
+
         if m.get('SystemDiskCategory') is not None:
             self.system_disk_category = m.get('SystemDiskCategory')
 
@@ -502,7 +520,7 @@ class ListWuyingServerResponseBodyWuyingServerListSessions(DaraModel):
         resource_session_start_time: str = None,
         user_id: str = None,
     ):
-        # The start time of the session.
+        # The session start time in ISO 8601 format.
         self.resource_session_start_time = resource_session_start_time
         # The user ID.
         self.user_id = user_id
@@ -612,7 +630,9 @@ class ListWuyingServerResponseBodyWuyingServerListPrivateIpSets(DaraModel):
         primary: bool = None,
         private_ip_address: str = None,
     ):
-        # Indicates whether the IP address is the primary private IP address. A value of true indicates the primary private IP address. A value of false indicates a secondary private IP address.
+        # Indicates whether the IP address is the primary private IP address. Valid values:
+        # - true: The IP address is the primary private IP address.
+        # - false: The IP address is a secondary private IP address.
         self.primary = primary
         # The private IP address.
         self.private_ip_address = private_ip_address
@@ -689,15 +709,15 @@ class ListWuyingServerResponseBodyWuyingServerListDataDisk(DaraModel):
         data_disk_performance_level: str = None,
         data_disk_size: int = None,
     ):
-        # The data cloud disk type.
+        # The type of the data cloud disk.
         self.data_disk_category = data_disk_category
-        # The data cloud disk ID.
+        # The ID of the data cloud disk.
         self.data_disk_id = data_disk_id
-        # The data cloud disk sequence number.
+        # The sequence number of the data cloud disk.
         self.data_disk_no = data_disk_no
-        # The data cloud disk performance level.
+        # The performance level (PL) of the data cloud disk.
         self.data_disk_performance_level = data_disk_performance_level
-        # The data cloud disk size. Unit: GB.
+        # The size of the data cloud disk. Unit: GB.
         self.data_disk_size = data_disk_size
 
     def validate(self):

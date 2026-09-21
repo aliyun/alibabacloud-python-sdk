@@ -14,7 +14,7 @@ class ModifyNodePoolAmountRequest(DaraModel):
         node_pool: main_models.ModifyNodePoolAmountRequestNodePool = None,
         product_type: str = None,
     ):
-        # The delivery group ID.
+        # The ID of the delivery group.
         # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
@@ -70,9 +70,12 @@ class ModifyNodePoolAmountRequestNodePool(DaraModel):
     ):
         # The total number of subscription nodes after the upgrade.
         # 
+        # > 
+        # > - This value must be greater than the current number of purchased nodes (Amount) in the delivery group. Otherwise, the API returns InvalidAmount.UnIncrease.
+        # 
         # This parameter is required.
         self.node_amount = node_amount
-        # The subscription node modification mode.
+        # The modification mode for subscription nodes.
         self.pre_paid_node_amount_modify_mode = pre_paid_node_amount_modify_mode
         # The list of nodes whose billing type is to be modified.
         self.pre_paid_node_amount_modify_node_ids = pre_paid_node_amount_modify_node_ids

@@ -22,7 +22,7 @@ class ListAuthorizedUserGroupsResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
         # The list of user group information.
         self.user_groups = user_groups
@@ -83,12 +83,15 @@ class ListAuthorizedUserGroupsResponseBodyUserGroups(DaraModel):
     def __init__(
         self,
         app_instance_group_id: str = None,
+        app_instance_group_set_id: str = None,
         auth_mode: str = None,
         group_id: str = None,
         group_name: str = None,
     ):
         # The ID of the delivery group.
         self.app_instance_group_id = app_instance_group_id
+        # The ID of the delivery group set.
+        self.app_instance_group_set_id = app_instance_group_set_id
         # The authorization mode.
         self.auth_mode = auth_mode
         # The ID of the user group.
@@ -107,6 +110,9 @@ class ListAuthorizedUserGroupsResponseBodyUserGroups(DaraModel):
         if self.app_instance_group_id is not None:
             result['AppInstanceGroupId'] = self.app_instance_group_id
 
+        if self.app_instance_group_set_id is not None:
+            result['AppInstanceGroupSetId'] = self.app_instance_group_set_id
+
         if self.auth_mode is not None:
             result['AuthMode'] = self.auth_mode
 
@@ -122,6 +128,9 @@ class ListAuthorizedUserGroupsResponseBodyUserGroups(DaraModel):
         m = m or dict()
         if m.get('AppInstanceGroupId') is not None:
             self.app_instance_group_id = m.get('AppInstanceGroupId')
+
+        if m.get('AppInstanceGroupSetId') is not None:
+            self.app_instance_group_set_id = m.get('AppInstanceGroupSetId')
 
         if m.get('AuthMode') is not None:
             self.auth_mode = m.get('AuthMode')

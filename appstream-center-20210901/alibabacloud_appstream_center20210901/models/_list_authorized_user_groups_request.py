@@ -8,6 +8,7 @@ class ListAuthorizedUserGroupsRequest(DaraModel):
     def __init__(
         self,
         app_instance_group_id: str = None,
+        app_instance_group_set_id: str = None,
         group_id: str = None,
         group_name: str = None,
         page_number: int = None,
@@ -15,9 +16,9 @@ class ListAuthorizedUserGroupsRequest(DaraModel):
         product_type: str = None,
     ):
         # The ID of the delivery group.
-        # 
-        # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
+        # The ID of the delivery group set. You must specify either AppInstanceGroupSetId or AppInstanceGroupId, but not both.
+        self.app_instance_group_set_id = app_instance_group_set_id
         # The ID of the user group. This parameter is used for exact match.
         self.group_id = group_id
         # The name of the user group. This parameter is used for fuzzy match.
@@ -46,6 +47,9 @@ class ListAuthorizedUserGroupsRequest(DaraModel):
         if self.app_instance_group_id is not None:
             result['AppInstanceGroupId'] = self.app_instance_group_id
 
+        if self.app_instance_group_set_id is not None:
+            result['AppInstanceGroupSetId'] = self.app_instance_group_set_id
+
         if self.group_id is not None:
             result['GroupId'] = self.group_id
 
@@ -67,6 +71,9 @@ class ListAuthorizedUserGroupsRequest(DaraModel):
         m = m or dict()
         if m.get('AppInstanceGroupId') is not None:
             self.app_instance_group_id = m.get('AppInstanceGroupId')
+
+        if m.get('AppInstanceGroupSetId') is not None:
+            self.app_instance_group_set_id = m.get('AppInstanceGroupSetId')
 
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')

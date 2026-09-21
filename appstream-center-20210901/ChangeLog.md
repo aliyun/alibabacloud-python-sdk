@@ -1,3 +1,23 @@
+2026-09-21 Version: 5.8.0
+- Support API AuthorizeUsersForApp.
+- Support API CreateBrowserInstanceGroup.
+- Support API GetBrowserInstanceGroup.
+- Support API ListAuthorizedAppInstanceGroupByUser.
+- Support API ListAuthorizedUsers.
+- Support API ListBrowserInstanceGroup.
+- Update API AuthorizeInstanceGroup: add request parameters AppInstanceGroupSetId.
+- Update API CreateWuyingServer: add request parameters ErdmaEnabled.
+- Update API CreateWuyingServer: add request parameters GpuDriverVersion.
+- Update API DescribeWuyingServer: add response parameters Body.Data.SupportASP.
+- Update API GetConnectionTicket: add request parameters AppInstanceGroupSetId.
+- Update API ListAuthorizedUserGroups: add request parameters AppInstanceGroupSetId.
+- Update API ListAuthorizedUserGroups: add response parameters Body.UserGroups.$.AppInstanceGroupSetId.
+- Update API ListWuyingServer: add response parameters Body.WuyingServerList.$.ErdmaStatus.
+- Update API ListWuyingServer: add response parameters Body.WuyingServerList.$.SupportASP.
+- Update API ModifyBrowserInstanceGroup: add request parameters AuthNotificationEnabled.
+- Update API ModifyWuyingServerAttribute: add request parameters ErdmaEnabled.
+
+
 2026-08-25 Version: 5.7.0
 - Support API GetFileUploadInfo.
 

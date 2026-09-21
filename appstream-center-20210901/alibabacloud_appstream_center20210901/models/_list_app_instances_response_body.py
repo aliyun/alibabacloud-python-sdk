@@ -18,9 +18,9 @@ class ListAppInstancesResponseBody(DaraModel):
     ):
         # The list of queried application instances.
         self.app_instance_models = app_instance_models
-        # The page number of the query results to display. Specify this parameter.
+        # The page number of the query results to display. We recommend that you specify this parameter.
         self.page_number = page_number
-        # The number of query results per page. Maximum value: `100`. Specify this parameter.
+        # The number of query results per page. Maximum value: `100`. We recommend that you specify this parameter.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -101,9 +101,9 @@ class ListAppInstancesResponseBodyAppInstanceModels(DaraModel):
         self.app_instance_id = app_instance_id
         # The binding information between the instance and the user.
         self.bind_info = bind_info
-        # The billing type of the instance. Valid values:
-        # - **PrePaid**: subscription (prepaid).
-        # - **PostPaid**: pay-as-you-go (postpaid).
+        # The billing method of the instance. Valid values:
+        # - **PrePaid**: subscription.
+        # - **PostPaid**: pay-as-you-go.
         # > This parameter is returned only when the billing mode of the delivery group to which this instance belongs is resource-based billing (ChargeResourceMode=Node).
         self.charge_type = charge_type
         # The creation time.
@@ -112,7 +112,9 @@ class ListAppInstancesResponseBodyAppInstanceModels(DaraModel):
         self.gmt_modified = gmt_modified
         # The public IP address of the primary network interface controller (NIC). This value is returned only when the network policy (`StrategyType`) of the delivery group is set to mixed mode pattern (`Mixed`). Otherwise, this value is empty.
         self.main_eth_public_ip = main_eth_public_ip
+        # The NIC ID of the instance.
         self.network_interface_id = network_interface_id
+        # The private IP address of the egress traffic NIC.
         self.network_interface_ip = network_interface_ip
         # The ID of the node on which the instance runs.
         # > This parameter is returned only when the billing mode of the delivery group to which this instance belongs is resource-based billing (ChargeResourceMode=Node).
@@ -216,7 +218,7 @@ class ListAppInstancesResponseBodyAppInstanceModelsBindInfo(DaraModel):
         end_user_id: str = None,
         usage_duration: int = None,
     ):
-        # The end user ID bound to the instance.
+        # The ID of the end user bound to the instance.
         self.end_user_id = end_user_id
         # The usage duration of the instance. Unit: seconds.
         self.usage_duration = usage_duration

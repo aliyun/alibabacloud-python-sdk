@@ -18,13 +18,13 @@ class ListModelProviderTemplatesRequest(DaraModel):
         provider_name: str = None,
         provider_template_ids: List[str] = None,
     ):
-        # The Agent platform.
+        # The agent platform.
         self.agent_platform = agent_platform
-        # The Agent provider name.
+        # The name of the agent provider.
         # 
         # This parameter is required.
         self.agent_provider = agent_provider
-        # The business type.
+        # The business type. Not all business types are supported. Only business types within the supported range are valid. Refer to the listed enumeration values.
         # 
         # This parameter is required.
         self.biz_type = biz_type

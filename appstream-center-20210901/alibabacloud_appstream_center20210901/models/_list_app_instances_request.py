@@ -24,17 +24,17 @@ class ListAppInstancesRequest(DaraModel):
         self.app_instance_group_id = app_instance_group_id
         # The application instance ID.
         self.app_instance_id = app_instance_id
-        # The list of application instance IDs. Maximum length: 100.
+        # The list of application instance IDs. The maximum length is 100.
         self.app_instance_id_list = app_instance_id_list
         # Specifies whether to query information about deleted instances. If this parameter is set to true, the AppInstanceIdList parameter is required. Otherwise, a parameter error is returned.
         self.include_deleted = include_deleted
-        # The page number of the query results to display. Default value: `1`. Specify this parameter.
+        # The page number of the query results to display. Default value: `1`. We recommend that you specify this parameter.
         self.page_number = page_number
-        # The number of query results per page. Maximum value: `100`. Default value: `20`. Specify this parameter.
+        # The number of query results per page. Maximum value: `100`. Default value: `20`. We recommend that you specify this parameter.
         self.page_size = page_size
         # The list of application instance statuses.
         self.status = status
-        # The list of user IDs. Maximum length: 100.
+        # The list of user IDs. The maximum length is 100.
         self.user_id_list = user_id_list
 
     def validate(self):

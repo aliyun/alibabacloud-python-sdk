@@ -13,7 +13,9 @@ class ListModelProviderEndpointsResponseBody(DaraModel):
         data: List[main_models.ListModelProviderEndpointsResponseBodyData] = None,
         request_id: str = None,
     ):
+        # The returned data object.
         self.data = data
+        # The request ID, which uniquely identifies the request.
         self.request_id = request_id
 
     def validate(self):
@@ -58,9 +60,13 @@ class ListModelProviderEndpointsResponseBodyData(DaraModel):
         provider_name: str = None,
         provider_url: str = None,
     ):
+        # The provider description, such as Alibaba Cloud Bailian.
         self.description = description
+        # The list of all endpoints under the provider.
         self.endpoints = endpoints
+        # The provider name, such as bailian or moonshot.
         self.provider_name = provider_name
+        # The provider website URL, which is used to direct users to obtain an API key.
         self.provider_url = provider_url
 
     def validate(self):
@@ -119,11 +125,17 @@ class ListModelProviderEndpointsResponseBodyDataEndpoints(DaraModel):
         provider_url: str = None,
         tags: List[str] = None,
     ):
+        # The API compatibility type, such as openai-compatible or anthropic-compatible.
         self.api_type = api_type
+        # The API base URL, such as https://coding.dashscope.aliyuncs.com/v1.
         self.base_url = base_url
+        # The endpoint description, such as Coding Plan - OpenAI compatible protocol.
         self.description = description
+        # The endpoint identifier name, such as coding-openai or cn-beijing.
         self.name = name
+        # The provider URL.
         self.provider_url = provider_url
+        # The list of tags used for categorization and filtering, such as coding-plan, on-demand, or cn-beijing.
         self.tags = tags
 
     def validate(self):

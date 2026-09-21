@@ -22,6 +22,9 @@ class RenewWuyingServerRequest(DaraModel):
         # The discount ID.
         self.promotion_id = promotion_id
         # The workstation ID.
+        # 
+        # > 
+        # > - The workstation must have a completed order payment (AutoPay=true during creation or manually paid through the console payment page) before it can be renewed. Calling this API for an unpaid workstation returns WuyingServerError.NotFound.
         self.wuying_server_id = wuying_server_id
 
     def validate(self):

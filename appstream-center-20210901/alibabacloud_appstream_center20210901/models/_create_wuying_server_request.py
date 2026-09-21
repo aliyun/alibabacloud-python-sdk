@@ -17,6 +17,8 @@ class CreateWuyingServerRequest(DaraModel):
         biz_region_id: str = None,
         charge_type: str = None,
         data_disk: List[main_models.CreateWuyingServerRequestDataDisk] = None,
+        erdma_enabled: bool = None,
+        gpu_driver_version: str = None,
         host_name: str = None,
         idempotence_token: str = None,
         image_id: str = None,
@@ -38,7 +40,7 @@ class CreateWuyingServerRequest(DaraModel):
         virtual_node_pool_id: str = None,
         wuying_server_name: str = None,
     ):
-        # The number of workstations to create.
+        # The quantity.
         self.amount = amount
         # Specifies whether to enable automatic payment.
         self.auto_pay = auto_pay
@@ -46,71 +48,80 @@ class CreateWuyingServerRequest(DaraModel):
         self.auto_renew = auto_renew
         # The bandwidth value. This parameter takes effect only when NetworkStrategyType is set to DirectIp. Unit: Mbit/s. Valid values: 2 to 100.
         self.bandwidth = bandwidth
-        # The region ID.
+        # The region.
         self.biz_region_id = biz_region_id
-        # The billing method.
+        # The billing type.
         self.charge_type = charge_type
         # The list of data cloud disks.
         self.data_disk = data_disk
+        # Specifies whether to enable dedicated eRDMA network interfaces.
+        self.erdma_enabled = erdma_enabled
+        # The GPU driver configuration version, such as grid19.
+        self.gpu_driver_version = gpu_driver_version
         # The hostname. The following limits apply:
         # 
-        # - A period (.) or hyphen (-) cannot be used as the first or last character, and consecutive periods or hyphens are not allowed.
+        # - A period (.) or hyphen (-) cannot be used as the first or last character, and consecutive use is not allowed.
         # 
-        # - Windows workstations: The hostname must be 2 to 15 characters in length. It cannot contain periods (.). Consecutive hyphens are not allowed, and the hostname cannot be all digits. The hostname can contain uppercase and lowercase letters, digits, and hyphens (-).
+        # - Windows workstations: The hostname must be 2 to 15 characters in length. It cannot contain periods (.), consecutive hyphens, or consist entirely of digits. It can contain uppercase and lowercase letters, digits, and hyphens (-).
         # 
         # - Linux workstations:
         # 
-        #   - The hostname must be 2 to 64 characters in length and can contain multiple periods (.). Each segment separated by a period can contain uppercase and lowercase letters, digits, and hyphens (-).
+        #   - The hostname must be 2 to 64 characters in length and can contain multiple periods (.). Each segment between periods can contain uppercase and lowercase letters, digits, and hyphens (-).
         # 
-        #   - You can use the placeholder `${instance_id}` to include the instance ID in the HostName parameter. For example, if you set `HostName=k8s-${instance_id}` and the ECS instance ID is `i-123abc****`, the hostname is `k8s-i-123abc****`.
+        #   - You can use the placeholder `${instance_id}` to include the instance ID in the HostName parameter. For example, if you set `HostName=k8s-${instance_id}` and the created ECS instance ID is `i-123abc****`, the hostname of the instance is `k8s-i-123abc****`.
         # 
-        # - When you create multiple workstation instances at a time, you can use the `name_prefix[begin_number,bits]name_suffix` format to assign sequential hostnames. For example, if you set HostName to `ecd-[1,4]-test`, the hostname of the first workstation is `ecd-0001-test`, the hostname of the second workstation is `ecd-0002-test`, and so on.
+        # - When creating multiple workstation instances at a time, you can use the `name_prefix[begin_number,bits]name_suffix` naming format to uniformly name multiple workstations. For example, if you set Hostname to `ecd-[1,4]-test`, the hostname of the first workstation is `ecd-0001-test`, the hostname of the second workstation is `ecd-0002-test`, and so on.
         # 
         #   - `name_prefix`: The prefix of the hostname.
         # 
         #   - `[begin_number,bits]`: The sequential number in the hostname.
         # 
-        #     - `begin_number`: The starting number. Valid values: 0 to 999999. Default value: 0. If the value is invalid, it is set to 0.
+        #     - `begin_number`: The starting number. Valid values: 0 to 999999. Default value: 0. If an invalid value is specified, the value is set to 0.
         # 
-        #     - `bits`: The number of digits. Valid values: 1 to 6. Default value: 6. If the value is invalid, it is set to 6.
+        #     - `bits`: The number of digits. Valid values: 1 to 6. Default value: 6. If an invalid value is specified, the value is set to 6.
         # 
         #   - `name_suffix`: The suffix of the hostname.
         self.host_name = host_name
-        # The idempotence token that ensures the uniqueness of the operation.
+        # The idempotency token that ensures operation uniqueness.
         self.idempotence_token = idempotence_token
         # The image ID.
         self.image_id = image_id
+        # The maximum price.
         self.max_price = max_price
         # The network policy type (invite-only preview).
         self.network_strategy_type = network_strategy_type
         # The office network ID.
         self.office_site_id = office_site_id
-        # The logon password of the workstation.
+        # The workstation logon password.
         self.password = password
         # The subscription duration.
         self.period = period
-        # The unit of the subscription duration.
+        # The time unit.
         self.period_unit = period_unit
         # The discount ID.
         # 
         # 
-        # > If PromotionId is specified, the system attempts to apply the corresponding discount.
+        # > If PromotionId is specified, the corresponding discount is applied.
         self.promotion_id = promotion_id
+        # The savings plan ID.
         self.saving_plan_id = saving_plan_id
         # The workstation instance type.
         self.server_instance_type = server_instance_type
+        # The service port range.
         self.server_port_range = server_port_range
+        # The sub-billing type.
         self.sub_pay_type = sub_pay_type
-        # The type of the system cloud disk.
+        # The system cloud disk type.
         self.system_disk_category = system_disk_category
-        # The performance level of the system cloud disk.
+        # The system cloud disk performance level.
         self.system_disk_performance_level = system_disk_performance_level
-        # The size of the system cloud disk. Unit: GB.
+        # The system cloud disk size. Unit: GB.
         self.system_disk_size = system_disk_size
-        # The list of vSwitches in the office network.
+        # The list of office network vSwitches.
         self.v_switch_ids = v_switch_ids
+        # The virtual node pool ID.
         self.virtual_node_pool_id = virtual_node_pool_id
-        # The workstation name. When you create multiple workstations, a numeric suffix is automatically appended.
+        # The workstation name. When creating multiple workstations, a numeric suffix is automatically appended.
         self.wuying_server_name = wuying_server_name
 
     def validate(self):
@@ -146,6 +157,12 @@ class CreateWuyingServerRequest(DaraModel):
         if self.data_disk is not None:
             for k1 in self.data_disk:
                 result['DataDisk'].append(k1.to_map() if k1 else None)
+
+        if self.erdma_enabled is not None:
+            result['ErdmaEnabled'] = self.erdma_enabled
+
+        if self.gpu_driver_version is not None:
+            result['GpuDriverVersion'] = self.gpu_driver_version
 
         if self.host_name is not None:
             result['HostName'] = self.host_name
@@ -235,6 +252,12 @@ class CreateWuyingServerRequest(DaraModel):
                 temp_model = main_models.CreateWuyingServerRequestDataDisk()
                 self.data_disk.append(temp_model.from_map(k1))
 
+        if m.get('ErdmaEnabled') is not None:
+            self.erdma_enabled = m.get('ErdmaEnabled')
+
+        if m.get('GpuDriverVersion') is not None:
+            self.gpu_driver_version = m.get('GpuDriverVersion')
+
         if m.get('HostName') is not None:
             self.host_name = m.get('HostName')
 
@@ -304,11 +327,11 @@ class CreateWuyingServerRequestDataDisk(DaraModel):
         data_disk_performance_level: str = None,
         data_disk_size: int = None,
     ):
-        # The type of the data cloud disk.
+        # The data cloud disk type.
         self.data_disk_category = data_disk_category
-        # The performance level of the data cloud disk.
+        # The data cloud disk performance level.
         self.data_disk_performance_level = data_disk_performance_level
-        # The size of the data cloud disk.
+        # The data cloud disk size.
         self.data_disk_size = data_disk_size
 
     def validate(self):

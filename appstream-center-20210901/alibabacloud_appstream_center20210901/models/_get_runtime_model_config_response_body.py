@@ -64,7 +64,7 @@ class GetRuntimeModelConfigResponseBodyData(DaraModel):
         self.model_template_id = model_template_id
         # The model group name.
         self.model_template_name = model_template_name
-        # The model template association type (returned only when present).
+        # The model template association type (only when present).
         self.model_template_ref_type = model_template_ref_type
         # The resource group ID to which the runtime belongs (null if not assigned to a resource group).
         self.resource_group_id = resource_group_id
@@ -202,7 +202,7 @@ class GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoList(DaraMode
         published_time: str = None,
         risk_type: str = None,
     ):
-        # The credit consumption multiplier. An empty value indicates the model does not participate in credit-based billing.
+        # The credit consumption multiplier. A null value indicates that the model does not participate in credit-based billing.
         self.credit_multiplier = credit_multiplier
         # The model description.
         self.description = description
@@ -329,9 +329,9 @@ class GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoListCreditMul
         max: float = None,
         min: float = None,
     ):
-        # The maximum multiplier. An empty value indicates no upper limit. For example, Min=1 with an empty Max is displayed as 1x and above.
+        # The maximum multiplier. A null value indicates no upper limit. For example, Min=1 with a null Max is displayed as 1x and above.
         self.max = max
-        # The minimum multiplier. When equal to Max, it is a fixed multiplier. For example, Min=Max=2 is displayed as 2x.
+        # The minimum multiplier. When equal to Max, the multiplier is fixed. For example, Min=Max=2 is displayed as 2x.
         self.min = min
 
     def validate(self):

@@ -15,19 +15,16 @@ class DeleteImageResponseBody(DaraModel):
     ):
         # The status code. Valid values:
         # 
-        # - `200`: Success.
-        # - `400`: Error.
+        # - `200`: Succeeded.
+        # - `400`: Failed.
         self.code = code
-        # Indicates whether the deletion is successful. Valid values:
-        # 
-        # - true: Deletion succeeded.
-        # - false: Deletion failed.
+        # Indicates whether the deletion was successful.
         self.data = data
         # The error message returned when an error occurs.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

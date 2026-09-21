@@ -22,10 +22,6 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'cn-shanghai': 'appstream-center.cn-shanghai.aliyuncs.com',
-            'ap-southeast-1': 'appstream-center.ap-southeast-1.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('appstream-center', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -218,6 +214,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.app_instance_group_id):
             body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not DaraCore.is_null(request.app_instance_group_set_id):
+            body['AppInstanceGroupSetId'] = request.app_instance_group_set_id
         if not DaraCore.is_null(request.app_instance_persistent_id):
             body['AppInstancePersistentId'] = request.app_instance_persistent_id
         body_flat = {}
@@ -268,6 +266,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.app_instance_group_id):
             body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not DaraCore.is_null(request.app_instance_group_set_id):
+            body['AppInstanceGroupSetId'] = request.app_instance_group_set_id
         if not DaraCore.is_null(request.app_instance_persistent_id):
             body['AppInstancePersistentId'] = request.app_instance_persistent_id
         body_flat = {}
@@ -318,6 +318,108 @@ class Client(OpenApiClient):
     ) -> main_models.AuthorizeInstanceGroupResponse:
         runtime = RuntimeOptions()
         return await self.authorize_instance_group_with_options_async(request, runtime)
+
+    def authorize_users_for_app_with_options(
+        self,
+        tmp_req: main_models.AuthorizeUsersForAppRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AuthorizeUsersForAppResponse:
+        tmp_req.validate()
+        request = main_models.AuthorizeUsersForAppShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.user_meta):
+            request.user_meta_shrink = Utils.array_to_string_with_specified_style(tmp_req.user_meta, 'UserMeta', 'json')
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        body = {}
+        if not DaraCore.is_null(request.app_instance_group_id):
+            body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not DaraCore.is_null(request.authorize_user_ids):
+            body['AuthorizeUserIds'] = request.authorize_user_ids
+        if not DaraCore.is_null(request.product_type):
+            body['ProductType'] = request.product_type
+        if not DaraCore.is_null(request.un_authorize_user_ids):
+            body['UnAuthorizeUserIds'] = request.un_authorize_user_ids
+        if not DaraCore.is_null(request.user_meta_shrink):
+            body['UserMeta'] = request.user_meta_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AuthorizeUsersForApp',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AuthorizeUsersForAppResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def authorize_users_for_app_with_options_async(
+        self,
+        tmp_req: main_models.AuthorizeUsersForAppRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AuthorizeUsersForAppResponse:
+        tmp_req.validate()
+        request = main_models.AuthorizeUsersForAppShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.user_meta):
+            request.user_meta_shrink = Utils.array_to_string_with_specified_style(tmp_req.user_meta, 'UserMeta', 'json')
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        body = {}
+        if not DaraCore.is_null(request.app_instance_group_id):
+            body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not DaraCore.is_null(request.authorize_user_ids):
+            body['AuthorizeUserIds'] = request.authorize_user_ids
+        if not DaraCore.is_null(request.product_type):
+            body['ProductType'] = request.product_type
+        if not DaraCore.is_null(request.un_authorize_user_ids):
+            body['UnAuthorizeUserIds'] = request.un_authorize_user_ids
+        if not DaraCore.is_null(request.user_meta_shrink):
+            body['UserMeta'] = request.user_meta_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AuthorizeUsersForApp',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AuthorizeUsersForAppResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def authorize_users_for_app(
+        self,
+        request: main_models.AuthorizeUsersForAppRequest,
+    ) -> main_models.AuthorizeUsersForAppResponse:
+        runtime = RuntimeOptions()
+        return self.authorize_users_for_app_with_options(request, runtime)
+
+    async def authorize_users_for_app_async(
+        self,
+        request: main_models.AuthorizeUsersForAppRequest,
+    ) -> main_models.AuthorizeUsersForAppResponse:
+        runtime = RuntimeOptions()
+        return await self.authorize_users_for_app_with_options_async(request, runtime)
 
     def batch_create_llm_templates_with_options(
         self,
@@ -865,6 +967,224 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_app_instance_group_with_options_async(request, runtime)
 
+    def create_browser_instance_group_with_options(
+        self,
+        tmp_req: main_models.CreateBrowserInstanceGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateBrowserInstanceGroupResponse:
+        tmp_req.validate()
+        request = main_models.CreateBrowserInstanceGroupShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.browser_config):
+            request.browser_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.browser_config, 'BrowserConfig', 'json')
+        if not DaraCore.is_null(tmp_req.network):
+            request.network_shrink = Utils.array_to_string_with_specified_style(tmp_req.network, 'Network', 'json')
+        if not DaraCore.is_null(tmp_req.node_pool):
+            request.node_pool_shrink = Utils.array_to_string_with_specified_style(tmp_req.node_pool, 'NodePool', 'json')
+        if not DaraCore.is_null(tmp_req.policy):
+            request.policy_shrink = Utils.array_to_string_with_specified_style(tmp_req.policy, 'Policy', 'json')
+        if not DaraCore.is_null(tmp_req.security_policy):
+            request.security_policy_shrink = Utils.array_to_string_with_specified_style(tmp_req.security_policy, 'SecurityPolicy', 'json')
+        if not DaraCore.is_null(tmp_req.storage_policy):
+            request.storage_policy_shrink = Utils.array_to_string_with_specified_style(tmp_req.storage_policy, 'StoragePolicy', 'json')
+        if not DaraCore.is_null(tmp_req.tag):
+            request.tag_shrink = Utils.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
+        if not DaraCore.is_null(tmp_req.timers):
+            request.timers_shrink = Utils.array_to_string_with_specified_style(tmp_req.timers, 'Timers', 'json')
+        if not DaraCore.is_null(tmp_req.user_info):
+            request.user_info_shrink = Utils.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
+        if not DaraCore.is_null(tmp_req.users):
+            request.users_shrink = Utils.array_to_string_with_specified_style(tmp_req.users, 'Users', 'json')
+        body = {}
+        if not DaraCore.is_null(request.app_package_type):
+            body['AppPackageType'] = request.app_package_type
+        if not DaraCore.is_null(request.auth_notification_enabled):
+            body['AuthNotificationEnabled'] = request.auth_notification_enabled
+        if not DaraCore.is_null(request.auto_pay):
+            body['AutoPay'] = request.auto_pay
+        if not DaraCore.is_null(request.auto_renew):
+            body['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.biz_region_id):
+            body['BizRegionId'] = request.biz_region_id
+        if not DaraCore.is_null(request.browser_config_shrink):
+            body['BrowserConfig'] = request.browser_config_shrink
+        if not DaraCore.is_null(request.charge_resource_mode):
+            body['ChargeResourceMode'] = request.charge_resource_mode
+        if not DaraCore.is_null(request.charge_type):
+            body['ChargeType'] = request.charge_type
+        if not DaraCore.is_null(request.cloud_browser_name):
+            body['CloudBrowserName'] = request.cloud_browser_name
+        if not DaraCore.is_null(request.image_id):
+            body['ImageId'] = request.image_id
+        if not DaraCore.is_null(request.instance_type):
+            body['InstanceType'] = request.instance_type
+        if not DaraCore.is_null(request.max_amount):
+            body['MaxAmount'] = request.max_amount
+        if not DaraCore.is_null(request.network_shrink):
+            body['Network'] = request.network_shrink
+        if not DaraCore.is_null(request.node_pool_shrink):
+            body['NodePool'] = request.node_pool_shrink
+        if not DaraCore.is_null(request.os_type):
+            body['OsType'] = request.os_type
+        if not DaraCore.is_null(request.period):
+            body['Period'] = request.period
+        if not DaraCore.is_null(request.period_unit):
+            body['PeriodUnit'] = request.period_unit
+        if not DaraCore.is_null(request.policy_shrink):
+            body['Policy'] = request.policy_shrink
+        if not DaraCore.is_null(request.promotion_id):
+            body['PromotionId'] = request.promotion_id
+        if not DaraCore.is_null(request.security_policy_shrink):
+            body['SecurityPolicy'] = request.security_policy_shrink
+        if not DaraCore.is_null(request.storage_policy_shrink):
+            body['StoragePolicy'] = request.storage_policy_shrink
+        if not DaraCore.is_null(request.sub_pay_type):
+            body['SubPayType'] = request.sub_pay_type
+        if not DaraCore.is_null(request.tag_shrink):
+            body['Tag'] = request.tag_shrink
+        if not DaraCore.is_null(request.timers_shrink):
+            body['Timers'] = request.timers_shrink
+        if not DaraCore.is_null(request.user_group_ids):
+            body['UserGroupIds'] = request.user_group_ids
+        if not DaraCore.is_null(request.user_info_shrink):
+            body['UserInfo'] = request.user_info_shrink
+        if not DaraCore.is_null(request.users_shrink):
+            body['Users'] = request.users_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateBrowserInstanceGroup',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateBrowserInstanceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_browser_instance_group_with_options_async(
+        self,
+        tmp_req: main_models.CreateBrowserInstanceGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateBrowserInstanceGroupResponse:
+        tmp_req.validate()
+        request = main_models.CreateBrowserInstanceGroupShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.browser_config):
+            request.browser_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.browser_config, 'BrowserConfig', 'json')
+        if not DaraCore.is_null(tmp_req.network):
+            request.network_shrink = Utils.array_to_string_with_specified_style(tmp_req.network, 'Network', 'json')
+        if not DaraCore.is_null(tmp_req.node_pool):
+            request.node_pool_shrink = Utils.array_to_string_with_specified_style(tmp_req.node_pool, 'NodePool', 'json')
+        if not DaraCore.is_null(tmp_req.policy):
+            request.policy_shrink = Utils.array_to_string_with_specified_style(tmp_req.policy, 'Policy', 'json')
+        if not DaraCore.is_null(tmp_req.security_policy):
+            request.security_policy_shrink = Utils.array_to_string_with_specified_style(tmp_req.security_policy, 'SecurityPolicy', 'json')
+        if not DaraCore.is_null(tmp_req.storage_policy):
+            request.storage_policy_shrink = Utils.array_to_string_with_specified_style(tmp_req.storage_policy, 'StoragePolicy', 'json')
+        if not DaraCore.is_null(tmp_req.tag):
+            request.tag_shrink = Utils.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
+        if not DaraCore.is_null(tmp_req.timers):
+            request.timers_shrink = Utils.array_to_string_with_specified_style(tmp_req.timers, 'Timers', 'json')
+        if not DaraCore.is_null(tmp_req.user_info):
+            request.user_info_shrink = Utils.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
+        if not DaraCore.is_null(tmp_req.users):
+            request.users_shrink = Utils.array_to_string_with_specified_style(tmp_req.users, 'Users', 'json')
+        body = {}
+        if not DaraCore.is_null(request.app_package_type):
+            body['AppPackageType'] = request.app_package_type
+        if not DaraCore.is_null(request.auth_notification_enabled):
+            body['AuthNotificationEnabled'] = request.auth_notification_enabled
+        if not DaraCore.is_null(request.auto_pay):
+            body['AutoPay'] = request.auto_pay
+        if not DaraCore.is_null(request.auto_renew):
+            body['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.biz_region_id):
+            body['BizRegionId'] = request.biz_region_id
+        if not DaraCore.is_null(request.browser_config_shrink):
+            body['BrowserConfig'] = request.browser_config_shrink
+        if not DaraCore.is_null(request.charge_resource_mode):
+            body['ChargeResourceMode'] = request.charge_resource_mode
+        if not DaraCore.is_null(request.charge_type):
+            body['ChargeType'] = request.charge_type
+        if not DaraCore.is_null(request.cloud_browser_name):
+            body['CloudBrowserName'] = request.cloud_browser_name
+        if not DaraCore.is_null(request.image_id):
+            body['ImageId'] = request.image_id
+        if not DaraCore.is_null(request.instance_type):
+            body['InstanceType'] = request.instance_type
+        if not DaraCore.is_null(request.max_amount):
+            body['MaxAmount'] = request.max_amount
+        if not DaraCore.is_null(request.network_shrink):
+            body['Network'] = request.network_shrink
+        if not DaraCore.is_null(request.node_pool_shrink):
+            body['NodePool'] = request.node_pool_shrink
+        if not DaraCore.is_null(request.os_type):
+            body['OsType'] = request.os_type
+        if not DaraCore.is_null(request.period):
+            body['Period'] = request.period
+        if not DaraCore.is_null(request.period_unit):
+            body['PeriodUnit'] = request.period_unit
+        if not DaraCore.is_null(request.policy_shrink):
+            body['Policy'] = request.policy_shrink
+        if not DaraCore.is_null(request.promotion_id):
+            body['PromotionId'] = request.promotion_id
+        if not DaraCore.is_null(request.security_policy_shrink):
+            body['SecurityPolicy'] = request.security_policy_shrink
+        if not DaraCore.is_null(request.storage_policy_shrink):
+            body['StoragePolicy'] = request.storage_policy_shrink
+        if not DaraCore.is_null(request.sub_pay_type):
+            body['SubPayType'] = request.sub_pay_type
+        if not DaraCore.is_null(request.tag_shrink):
+            body['Tag'] = request.tag_shrink
+        if not DaraCore.is_null(request.timers_shrink):
+            body['Timers'] = request.timers_shrink
+        if not DaraCore.is_null(request.user_group_ids):
+            body['UserGroupIds'] = request.user_group_ids
+        if not DaraCore.is_null(request.user_info_shrink):
+            body['UserInfo'] = request.user_info_shrink
+        if not DaraCore.is_null(request.users_shrink):
+            body['Users'] = request.users_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateBrowserInstanceGroup',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateBrowserInstanceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_browser_instance_group(
+        self,
+        request: main_models.CreateBrowserInstanceGroupRequest,
+    ) -> main_models.CreateBrowserInstanceGroupResponse:
+        runtime = RuntimeOptions()
+        return self.create_browser_instance_group_with_options(request, runtime)
+
+    async def create_browser_instance_group_async(
+        self,
+        request: main_models.CreateBrowserInstanceGroupRequest,
+    ) -> main_models.CreateBrowserInstanceGroupResponse:
+        runtime = RuntimeOptions()
+        return await self.create_browser_instance_group_with_options_async(request, runtime)
+
     def create_image_by_instance_with_options(
         self,
         request: main_models.CreateImageByInstanceRequest,
@@ -1275,6 +1595,10 @@ class Client(OpenApiClient):
         body_flat = {}
         if not DaraCore.is_null(request.data_disk):
             body_flat['DataDisk'] = request.data_disk
+        if not DaraCore.is_null(request.erdma_enabled):
+            body['ErdmaEnabled'] = request.erdma_enabled
+        if not DaraCore.is_null(request.gpu_driver_version):
+            body['GpuDriverVersion'] = request.gpu_driver_version
         if not DaraCore.is_null(request.host_name):
             body['HostName'] = request.host_name
         if not DaraCore.is_null(request.idempotence_token):
@@ -1357,6 +1681,10 @@ class Client(OpenApiClient):
         body_flat = {}
         if not DaraCore.is_null(request.data_disk):
             body_flat['DataDisk'] = request.data_disk
+        if not DaraCore.is_null(request.erdma_enabled):
+            body['ErdmaEnabled'] = request.erdma_enabled
+        if not DaraCore.is_null(request.gpu_driver_version):
+            body['GpuDriverVersion'] = request.gpu_driver_version
         if not DaraCore.is_null(request.host_name):
             body['HostName'] = request.host_name
         if not DaraCore.is_null(request.idempotence_token):
@@ -2245,6 +2573,72 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_app_instance_group_with_options_async(request, runtime)
 
+    def get_browser_instance_group_with_options(
+        self,
+        request: main_models.GetBrowserInstanceGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetBrowserInstanceGroupResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetBrowserInstanceGroup',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetBrowserInstanceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_browser_instance_group_with_options_async(
+        self,
+        request: main_models.GetBrowserInstanceGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetBrowserInstanceGroupResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetBrowserInstanceGroup',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetBrowserInstanceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_browser_instance_group(
+        self,
+        request: main_models.GetBrowserInstanceGroupRequest,
+    ) -> main_models.GetBrowserInstanceGroupResponse:
+        runtime = RuntimeOptions()
+        return self.get_browser_instance_group_with_options(request, runtime)
+
+    async def get_browser_instance_group_async(
+        self,
+        request: main_models.GetBrowserInstanceGroupRequest,
+    ) -> main_models.GetBrowserInstanceGroupResponse:
+        runtime = RuntimeOptions()
+        return await self.get_browser_instance_group_with_options_async(request, runtime)
+
     def get_connection_ticket_with_options(
         self,
         request: main_models.GetConnectionTicketRequest,
@@ -2258,6 +2652,8 @@ class Client(OpenApiClient):
             body['AppId'] = request.app_id
         if not DaraCore.is_null(request.app_instance_group_id_list):
             body['AppInstanceGroupIdList'] = request.app_instance_group_id_list
+        if not DaraCore.is_null(request.app_instance_group_set_id):
+            body['AppInstanceGroupSetId'] = request.app_instance_group_set_id
         if not DaraCore.is_null(request.app_instance_id):
             body['AppInstanceId'] = request.app_instance_id
         if not DaraCore.is_null(request.app_instance_persistent_id):
@@ -2310,6 +2706,8 @@ class Client(OpenApiClient):
             body['AppId'] = request.app_id
         if not DaraCore.is_null(request.app_instance_group_id_list):
             body['AppInstanceGroupIdList'] = request.app_instance_group_id_list
+        if not DaraCore.is_null(request.app_instance_group_set_id):
+            body['AppInstanceGroupSetId'] = request.app_instance_group_set_id
         if not DaraCore.is_null(request.app_instance_id):
             body['AppInstanceId'] = request.app_instance_id
         if not DaraCore.is_null(request.app_instance_persistent_id):
@@ -3227,6 +3625,104 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_app_instances_with_options_async(request, runtime)
 
+    def list_authorized_app_instance_group_by_user_with_options(
+        self,
+        request: main_models.ListAuthorizedAppInstanceGroupByUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAuthorizedAppInstanceGroupByUserResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.app_instance_group_id):
+            query['AppInstanceGroupId'] = request.app_instance_group_id
+        if not DaraCore.is_null(request.app_instance_group_name):
+            query['AppInstanceGroupName'] = request.app_instance_group_name
+        if not DaraCore.is_null(request.app_name):
+            query['AppName'] = request.app_name
+        if not DaraCore.is_null(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.product_type):
+            query['ProductType'] = request.product_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAuthorizedAppInstanceGroupByUser',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAuthorizedAppInstanceGroupByUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_authorized_app_instance_group_by_user_with_options_async(
+        self,
+        request: main_models.ListAuthorizedAppInstanceGroupByUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAuthorizedAppInstanceGroupByUserResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.app_instance_group_id):
+            query['AppInstanceGroupId'] = request.app_instance_group_id
+        if not DaraCore.is_null(request.app_instance_group_name):
+            query['AppInstanceGroupName'] = request.app_instance_group_name
+        if not DaraCore.is_null(request.app_name):
+            query['AppName'] = request.app_name
+        if not DaraCore.is_null(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.product_type):
+            query['ProductType'] = request.product_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAuthorizedAppInstanceGroupByUser',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAuthorizedAppInstanceGroupByUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_authorized_app_instance_group_by_user(
+        self,
+        request: main_models.ListAuthorizedAppInstanceGroupByUserRequest,
+    ) -> main_models.ListAuthorizedAppInstanceGroupByUserResponse:
+        runtime = RuntimeOptions()
+        return self.list_authorized_app_instance_group_by_user_with_options(request, runtime)
+
+    async def list_authorized_app_instance_group_by_user_async(
+        self,
+        request: main_models.ListAuthorizedAppInstanceGroupByUserRequest,
+    ) -> main_models.ListAuthorizedAppInstanceGroupByUserResponse:
+        runtime = RuntimeOptions()
+        return await self.list_authorized_app_instance_group_by_user_with_options_async(request, runtime)
+
     def list_authorized_user_groups_with_options(
         self,
         request: main_models.ListAuthorizedUserGroupsRequest,
@@ -3236,6 +3732,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.app_instance_group_id):
             body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not DaraCore.is_null(request.app_instance_group_set_id):
+            body['AppInstanceGroupSetId'] = request.app_instance_group_set_id
         if not DaraCore.is_null(request.group_id):
             body['GroupId'] = request.group_id
         if not DaraCore.is_null(request.group_name):
@@ -3274,6 +3772,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.app_instance_group_id):
             body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not DaraCore.is_null(request.app_instance_group_set_id):
+            body['AppInstanceGroupSetId'] = request.app_instance_group_set_id
         if not DaraCore.is_null(request.group_id):
             body['GroupId'] = request.group_id
         if not DaraCore.is_null(request.group_name):
@@ -3316,6 +3816,112 @@ class Client(OpenApiClient):
     ) -> main_models.ListAuthorizedUserGroupsResponse:
         runtime = RuntimeOptions()
         return await self.list_authorized_user_groups_with_options_async(request, runtime)
+
+    def list_authorized_users_with_options(
+        self,
+        request: main_models.ListAuthorizedUsersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAuthorizedUsersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
+        if not DaraCore.is_null(request.user_id_fuzzy):
+            query['UserIdFuzzy'] = request.user_id_fuzzy
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.app_instance_group_id):
+            body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not DaraCore.is_null(request.app_instance_group_set_id):
+            body['AppInstanceGroupSetId'] = request.app_instance_group_set_id
+        if not DaraCore.is_null(request.app_instance_persistent_id):
+            body['AppInstancePersistentId'] = request.app_instance_persistent_id
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.product_type):
+            body['ProductType'] = request.product_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAuthorizedUsers',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAuthorizedUsersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_authorized_users_with_options_async(
+        self,
+        request: main_models.ListAuthorizedUsersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAuthorizedUsersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
+        if not DaraCore.is_null(request.user_id_fuzzy):
+            query['UserIdFuzzy'] = request.user_id_fuzzy
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.app_instance_group_id):
+            body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not DaraCore.is_null(request.app_instance_group_set_id):
+            body['AppInstanceGroupSetId'] = request.app_instance_group_set_id
+        if not DaraCore.is_null(request.app_instance_persistent_id):
+            body['AppInstancePersistentId'] = request.app_instance_persistent_id
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.product_type):
+            body['ProductType'] = request.product_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAuthorizedUsers',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAuthorizedUsersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_authorized_users(
+        self,
+        request: main_models.ListAuthorizedUsersRequest,
+    ) -> main_models.ListAuthorizedUsersResponse:
+        runtime = RuntimeOptions()
+        return self.list_authorized_users_with_options(request, runtime)
+
+    async def list_authorized_users_async(
+        self,
+        request: main_models.ListAuthorizedUsersRequest,
+    ) -> main_models.ListAuthorizedUsersResponse:
+        runtime = RuntimeOptions()
+        return await self.list_authorized_users_with_options_async(request, runtime)
 
     def list_bind_info_with_options(
         self,
@@ -3410,6 +4016,132 @@ class Client(OpenApiClient):
     ) -> main_models.ListBindInfoResponse:
         runtime = RuntimeOptions()
         return await self.list_bind_info_with_options_async(request, runtime)
+
+    def list_browser_instance_group_with_options(
+        self,
+        request: main_models.ListBrowserInstanceGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListBrowserInstanceGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_instance_group_set_id):
+            query['AppInstanceGroupSetId'] = request.app_instance_group_set_id
+        if not DaraCore.is_null(request.biz_region_id):
+            query['BizRegionId'] = request.biz_region_id
+        if not DaraCore.is_null(request.browser_instance_group_id):
+            query['BrowserInstanceGroupId'] = request.browser_instance_group_id
+        if not DaraCore.is_null(request.browser_instance_group_name):
+            query['BrowserInstanceGroupName'] = request.browser_instance_group_name
+        if not DaraCore.is_null(request.cloud_browser_name):
+            query['CloudBrowserName'] = request.cloud_browser_name
+        if not DaraCore.is_null(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        if not DaraCore.is_null(request.tier):
+            query['Tier'] = request.tier
+        body = {}
+        if not DaraCore.is_null(request.excluded_user_group_ids):
+            body['ExcludedUserGroupIds'] = request.excluded_user_group_ids
+        body_flat = {}
+        if not DaraCore.is_null(request.status):
+            body_flat['Status'] = request.status
+        if not DaraCore.is_null(request.user_group_ids):
+            body['UserGroupIds'] = request.user_group_ids
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListBrowserInstanceGroup',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListBrowserInstanceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_browser_instance_group_with_options_async(
+        self,
+        request: main_models.ListBrowserInstanceGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListBrowserInstanceGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_instance_group_set_id):
+            query['AppInstanceGroupSetId'] = request.app_instance_group_set_id
+        if not DaraCore.is_null(request.biz_region_id):
+            query['BizRegionId'] = request.biz_region_id
+        if not DaraCore.is_null(request.browser_instance_group_id):
+            query['BrowserInstanceGroupId'] = request.browser_instance_group_id
+        if not DaraCore.is_null(request.browser_instance_group_name):
+            query['BrowserInstanceGroupName'] = request.browser_instance_group_name
+        if not DaraCore.is_null(request.cloud_browser_name):
+            query['CloudBrowserName'] = request.cloud_browser_name
+        if not DaraCore.is_null(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        if not DaraCore.is_null(request.tier):
+            query['Tier'] = request.tier
+        body = {}
+        if not DaraCore.is_null(request.excluded_user_group_ids):
+            body['ExcludedUserGroupIds'] = request.excluded_user_group_ids
+        body_flat = {}
+        if not DaraCore.is_null(request.status):
+            body_flat['Status'] = request.status
+        if not DaraCore.is_null(request.user_group_ids):
+            body['UserGroupIds'] = request.user_group_ids
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListBrowserInstanceGroup',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListBrowserInstanceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_browser_instance_group(
+        self,
+        request: main_models.ListBrowserInstanceGroupRequest,
+    ) -> main_models.ListBrowserInstanceGroupResponse:
+        runtime = RuntimeOptions()
+        return self.list_browser_instance_group_with_options(request, runtime)
+
+    async def list_browser_instance_group_async(
+        self,
+        request: main_models.ListBrowserInstanceGroupRequest,
+    ) -> main_models.ListBrowserInstanceGroupResponse:
+        runtime = RuntimeOptions()
+        return await self.list_browser_instance_group_with_options_async(request, runtime)
 
     def list_desktop_agent_runtime_with_options(
         self,
@@ -5311,6 +6043,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.timers_shrink):
             query['Timers'] = request.timers_shrink
         body = {}
+        if not DaraCore.is_null(request.auth_notification_enabled):
+            body['AuthNotificationEnabled'] = request.auth_notification_enabled
         if not DaraCore.is_null(request.cloud_browser_name):
             body['CloudBrowserName'] = request.cloud_browser_name
         if not DaraCore.is_null(request.max_amount):
@@ -5367,6 +6101,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.timers_shrink):
             query['Timers'] = request.timers_shrink
         body = {}
+        if not DaraCore.is_null(request.auth_notification_enabled):
+            body['AuthNotificationEnabled'] = request.auth_notification_enabled
         if not DaraCore.is_null(request.cloud_browser_name):
             body['CloudBrowserName'] = request.cloud_browser_name
         if not DaraCore.is_null(request.max_amount):
@@ -5666,6 +6402,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyWuyingServerAttributeResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.erdma_enabled):
+            body['ErdmaEnabled'] = request.erdma_enabled
         if not DaraCore.is_null(request.password):
             body['Password'] = request.password
         if not DaraCore.is_null(request.product_type):
@@ -5700,6 +6438,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyWuyingServerAttributeResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.erdma_enabled):
+            body['ErdmaEnabled'] = request.erdma_enabled
         if not DaraCore.is_null(request.password):
             body['Password'] = request.password
         if not DaraCore.is_null(request.product_type):

@@ -13,11 +13,9 @@ class StopWuyingServerRequest(DaraModel):
         product_type: str = None,
         wuying_server_id_list: List[str] = None,
     ):
-        # Specifies whether to forcibly restart the workstation. Valid values:
-        # 
-        # - True: forcibly
-        # - False: not forcibly
+        # Specifies whether to forcibly restart the workstation.
         self.force = force
+        # The product type.
         self.product_type = product_type
         # The list of workstation IDs.
         self.wuying_server_id_list = wuying_server_id_list

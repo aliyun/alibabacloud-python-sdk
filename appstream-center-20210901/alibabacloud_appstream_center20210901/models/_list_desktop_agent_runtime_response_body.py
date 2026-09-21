@@ -109,7 +109,7 @@ class ListDesktopAgentRuntimeResponseBodyData(DaraModel):
         self.agent_instance_info_list = agent_instance_info_list
         # The list of authorized users.
         self.auth_users = auth_users
-        # Indicates whether a third-party channel has been configured for the agent runtime.
+        # Indicates whether a third-party channel is configured for the agent runtime.
         self.channel_configure = channel_configure
         # The list of third-party channels configured for the agent runtime.
         self.channel_configured_list = channel_configured_list
@@ -121,9 +121,9 @@ class ListDesktopAgentRuntimeResponseBodyData(DaraModel):
         self.desktop_status = desktop_status
         # Indicates whether there is an authorized user with authorization.
         self.has_auth_user = has_auth_user
-        # The management status list, parsed from the managementStatus composite value.
+        # The management status list, parsed from the managementStatus combined value.
         self.management_statuses = management_statuses
-        # Indicates whether a model has been configured for the agent runtime.
+        # Indicates whether a model is configured for the agent runtime.
         self.model_configure = model_configure
         # The active model template ID. This parameter is returned only when modelConfigure is set to true.
         self.model_template_id = model_template_id
@@ -135,7 +135,7 @@ class ListDesktopAgentRuntimeResponseBodyData(DaraModel):
         self.qr_code_configuring_list = qr_code_configuring_list
         # The region ID.
         self.region_id = region_id
-        # The region location (the Chinese mainland or outside China).
+        # The region location (the Chinese mainland or outside the Chinese mainland).
         self.region_location = region_location
         # The resource group information.
         self.resource_group = resource_group
@@ -304,9 +304,9 @@ class ListDesktopAgentRuntimeResponseBodyDataRiskInfo(DaraModel):
     ):
         # Indicates whether the agent has been uninstalled.
         self.agent_uninstalled = agent_uninstalled
-        # Indicates whether the third-party channel configuration has been modified (inconsistent with the administrator-distributed configuration).
+        # Indicates whether the third-party channel configuration has been modified (inconsistent with the configuration distributed by the administrator).
         self.channel_modified = channel_modified
-        # Indicates whether the model configuration has been modified (inconsistent with the administrator-distributed configuration).
+        # Indicates whether the model configuration has been modified (inconsistent with the configuration distributed by the administrator).
         self.model_modified = model_modified
 
     def validate(self):
@@ -395,17 +395,17 @@ class ListDesktopAgentRuntimeResponseBodyDataAgentInstanceInfoList(DaraModel):
         self.agent_instance_status = agent_instance_status
         # The agent instance version.
         self.agent_instance_version = agent_instance_version
-        # The agent platform (enum name, such as ENTERPRISE, JVS, or ENTERPRISE_JVS).
+        # The agent platform.
         self.agent_platform = agent_platform
-        # The agent provider (enum name, such as OPEN_CLAW or HERMES_AGENT).
+        # The agent provider.
         self.agent_provider = agent_provider
-        # Indicates whether a third-party channel has been configured for the agent instance.
+        # Indicates whether the agent instance has a third-party channel configured.
         self.channel_configure = channel_configure
         # The list of third-party channels configured for the agent instance.
         self.channel_configured_list = channel_configured_list
         # The deployment source.
         self.deployment_source = deployment_source
-        # Indicates whether a model has been configured for the agent instance.
+        # Indicates whether the agent instance has a model configured.
         self.model_configure = model_configure
         # The configured model group ID.
         self.model_template_id = model_template_id

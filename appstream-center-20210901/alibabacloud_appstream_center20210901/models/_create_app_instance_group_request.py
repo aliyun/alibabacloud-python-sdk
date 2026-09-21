@@ -55,7 +55,7 @@ class CreateAppInstanceGroupRequest(DaraModel):
         self.auto_pay = auto_pay
         # Specifies whether to enable auto-renewal.
         self.auto_renew = auto_renew
-        # The region ID of the delivery group. For information about supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
+        # The region ID of the delivery group. For more information about supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
         # 
         # This parameter is required.
         self.biz_region_id = biz_region_id
@@ -75,39 +75,39 @@ class CreateAppInstanceGroupRequest(DaraModel):
         self.network = network
         # The node pool object.
         self.node_pool = node_pool
-        # The subscription duration of the resource when `ChargeType` is set to `PrePaid`. This parameter is required. The unit is specified by `PeriodUnit`.
+        # The duration for which you want to purchase resources when `ChargeType` is set to `PrePaid`. This parameter is required in this case. The unit is specified by `PeriodUnit`.
         # 
-        # - If `PeriodUnit` is set to `Week`, valid values:
+        # - If `PeriodUnit` is set to `Week`, valid values of this parameter:
         # 
         #    - 1
         # 
-        # - If `PeriodUnit` is set to `Month`, valid values:
+        # - If `PeriodUnit` is set to `Month`, valid values of this parameter:
         # 
         #    - 1
         #    - 2
         #    - 3
         #    - 6
         # 
-        # - If `PeriodUnit` is set to `Year`, valid values:
+        # - If `PeriodUnit` is set to `Year`, valid values of this parameter:
         # 
         #    - 1
         #    - 2
         #    - 3
         # 
-        # > If `ChargeType` is set to `PostPaid`, set this parameter to 1.
+        # > When `ChargeType` is set to `PostPaid`, set this parameter to the fixed value 1.
         # 
         # This parameter is required.
         self.period = period
         # The unit of the subscription duration when `ChargeType` is set to `PrePaid`.
         # 
-        # > This parameter is case-sensitive. For example, `Week` is valid, but `week` is not.
-        # If the request parameters do not match the valid combinations, such as `2 Week`, the API call succeeds but an error occurs during the order placement.
+        # > This parameter is case-sensitive. For example, `Week` is valid, but `week` is invalid.
+        # In addition, if the request parameters do not match the valid combinations, such as `2 Week`, the API call succeeds but an error occurs during the order placement phase.
         # 
-        # > If `ChargeType` is set to `PostPaid`, set this parameter to `Month`.
+        # > When `ChargeType` is set to `PostPaid`, set this parameter to the fixed value `Month`.
         # 
         # This parameter is required.
         self.period_unit = period_unit
-        # The pre-opened AppId.
+        # The pre-opened application ID.
         self.pre_open_app_id = pre_open_app_id
         # The product type.
         # 
@@ -119,7 +119,7 @@ class CreateAppInstanceGroupRequest(DaraModel):
         self.runtime_policy = runtime_policy
         # The security policy.
         self.security_policy = security_policy
-        # The application recycling time, in minutes. After an end user disconnects from the cloud application for a period of time, the cloud application process exits. This period is the application recycling time. Set this parameter to `-1` if you do not want to recycle the application. Valid values: -1 and 3 to 300 (integer). Default value: `15`.
+        # The application recycling time, in minutes. After an end user disconnects from a cloud application for a period of time, the cloud application process exits. This period is the application recycling time. Set this parameter to `-1` if you do not want to recycle the application. Valid values: -1 and 3 to 300 (integer). Default value: `15`.
         # 
         # This parameter is required.
         self.session_timeout = session_timeout
@@ -131,9 +131,9 @@ class CreateAppInstanceGroupRequest(DaraModel):
         self.user_define_policy = user_define_policy
         # The list of authorized user group IDs.
         self.user_group_ids = user_group_ids
-        # The user information to be added to the delivery group as assigned users. This field is required if the `Users` parameter is specified.
+        # The information about the users to be added as assigned users of the delivery group. This parameter is required if the `Users` parameter is specified.
         self.user_info = user_info
-        # The list of usernames to be added to the delivery group as assigned users.
+        # The list of usernames to be added as assigned users of the delivery group.
         self.users = users
         # The display policy.
         self.video_policy = video_policy
@@ -355,27 +355,27 @@ class CreateAppInstanceGroupRequestVideoPolicy(DaraModel):
     ):
         # The frame rate (FPS).
         self.frame_rate = frame_rate
-        # The height of the resolution, in pixels.
+        # The height of the resolution. Unit: pixels.
         self.session_resolution_height = session_resolution_height
-        # The width of the resolution, in pixels.
+        # The width of the resolution. Unit: pixels.
         self.session_resolution_width = session_resolution_width
-        # The streaming mode. Used together with the `Webrtc` parameter to specify the protocol type.
+        # The streaming mode. This parameter is used together with the Webrtc parameter to specify the protocol type.
         # 
-        # - `Webrtc`=`true` and `StreamingMode`=`video`: WebRTC stream.
-        # - `Webrtc`=`false` and `StreamingMode`=`video`: video stream.
-        # - `Webrtc`=`false` and `StreamingMode`=`mix`: mixed stream.
+        # - Webrtc=`true` and StreamingMode=`video`: WebRTC streaming.
+        # - Webrtc=`false` and StreamingMode=`video`: video streaming.
+        # - Webrtc=`false` and StreamingMode=`mix`: hybrid streaming.
         self.streaming_mode = streaming_mode
         # Specifies whether to use adaptive resolution.
         # 
-        # - `true`: The session resolution follows the terminal display area. In this case, `SessionResolutionWidth` and `SessionResolutionHeight` are the maximum resolution values.
+        # - `true`: The session resolution follows the terminal display area changes. In this case, SessionResolutionWidth and SessionResolutionHeight specify the maximum resolution values.
         # 
-        # - `false`: The session resolution does not follow the terminal display area. In this case, the resolution is fixed to the values of `SessionResolutionWidth` and `SessionResolutionHeight`.
+        # - `false`: The session resolution does not follow the terminal display area changes. In this case, the resolution is fixed to the values of SessionResolutionWidth and SessionResolutionHeight.
         self.terminal_resolution_adaptive = terminal_resolution_adaptive
-        # Specifies whether to enable WebRTC. Used together with the `StreamingMode` parameter to specify the protocol type.
+        # Specifies whether to enable WebRTC. This parameter is used together with the StreamingMode parameter to specify the protocol type.
         # 
-        # - `Webrtc`=`true` and `StreamingMode`=`video`: WebRTC stream.
-        # - `Webrtc`=`false` and `StreamingMode`=`video`: video stream.
-        # - `Webrtc`=`false` and `StreamingMode`=`mix`: mixed stream.
+        # - Webrtc=`true` and StreamingMode=`video`: WebRTC streaming.
+        # - Webrtc=`false` and StreamingMode=`video`: video streaming.
+        # - Webrtc=`false` and StreamingMode=`mix`: hybrid streaming.
         self.webrtc = webrtc
 
     def validate(self):
@@ -433,7 +433,7 @@ class CreateAppInstanceGroupRequestUserInfo(DaraModel):
         self,
         type: str = None,
     ):
-        # The user account type.
+        # The type of the user account.
         self.type = type
 
     def validate(self):
@@ -461,7 +461,7 @@ class CreateAppInstanceGroupRequestUserDefinePolicy(DaraModel):
         self,
         custom_config: str = None,
     ):
-        # The custom policy content. The content must comply with the image version specifications. To use this parameter, submit a ticket to enable the whitelist.
+        # The custom policy content. The content must comply with the image version specifications. To use this parameter, submit a ticket to request whitelist access.
         self.custom_config = custom_config
 
     def validate(self):
@@ -531,12 +531,12 @@ class CreateAppInstanceGroupRequestStoragePolicyUserProfile(DaraModel):
         user_profile_switch: bool = None,
     ):
         # The remote storage path for user data roaming.
-        # - If not specified, the default value is the delivery group ID.
-        # - For cross-delivery-group (same VPC) user data roaming, set the same value for all delivery groups that participate in roaming.
+        # - If this parameter is not specified, the default value is the delivery group ID.
+        # - To enable user data roaming across delivery groups within the same VPC, set this parameter to the same value for all delivery groups involved.
         self.remote_storage_path = remote_storage_path
         # The remote storage type used for user data roaming.
         self.remote_storage_type = remote_storage_type
-        # The user data roaming switch.
+        # Specifies whether to enable user data roaming.
         self.user_profile_switch = user_profile_switch
 
     def validate(self):
@@ -618,20 +618,20 @@ class CreateAppInstanceGroupRequestRuntimePolicy(DaraModel):
         session_type: str = None,
         session_user_generation_mode: str = None,
     ):
-        # Specifies whether to enable debug mode. To call `GetDebugAppInstance` and `CreateImageFromAppInstanceGroup`, you must set this field to `ON`.
+        # Specifies whether to enable debug mode. To call the GetDebugAppInstance and CreateImageFromAppInstanceGroup operations, set this parameter to ON.
         self.debug_mode = debug_mode
-        # Specifies whether only one application is allowed per session.
-        # - When enabled, if multiple applications in the delivery group are opened, a separate session is allocated for each application, consuming more sessions.
+        # Specifies whether to allow only one application per session.
+        # - If enabled, opening multiple applications within a delivery group allocates a separate session for each application, which consumes more sessions.
         self.per_session_per_app = per_session_per_app
         # The persistent session scheduling mode.
         self.persistent_app_instance_schedule_mode = persistent_app_instance_schedule_mode
-        # The session pre-open switch.
-        # - If not specified, the default value is true.
+        # Specifies whether to enable session pre-opening.
+        # - If this parameter is not specified, the default value is true.
         self.session_pre_open = session_pre_open
         # The session type.
         self.session_type = session_type
-        # The generation mode of session users.
-        # - wyid: In this case, session pre-open (sessionPreOpen) must be set to false.
+        # The generation mode for session users.
+        # - wyid: In this mode, the session pre-open parameter SessionPreOpen must be set to false.
         self.session_user_generation_mode = session_user_generation_mode
 
     def validate(self):
@@ -701,42 +701,42 @@ class CreateAppInstanceGroupRequestNodePool(DaraModel):
         strategy_type: str = None,
         warm_up: bool = None,
     ):
-        # The maximum number of idle sessions. When this value is specified, auto scale-out is triggered only when the session usage exceeds `ScalingUsageThreshold` and the number of idle sessions in the current delivery group is less than `MaxIdleAppInstanceAmount`. Otherwise, the idle sessions are considered sufficient and no auto scale-out is performed. This parameter helps you flexibly control elastic scaling behavior and reduce costs.
+        # The maximum number of idle sessions. When this value is specified, automatic scale-out is triggered only when the session usage exceeds `ScalingUsageThreshold` and the number of idle sessions in the current delivery group is less than `MaxIdleAppInstanceAmount`. Otherwise, the idle sessions in the delivery group are considered sufficient and no automatic scale-out is performed. This parameter allows you to flexibly control elastic scaling behavior and reduce costs.
         self.max_idle_app_instance_amount = max_idle_app_instance_amount
-        # The maximum number of resources that can be created during scale-out. This field is required when `StrategyType` is set to `NODE_SCALING_BY_USAGE` (elastic resources).
+        # The maximum number of resources that can be created during scale-out. This parameter is required when `StrategyType` is set to `NODE_SCALING_BY_USAGE` (elastic resources).
         self.max_scaling_amount = max_scaling_amount
         # The number of resources to purchase. Valid values: 1 to 100.
         # 
         # >- This parameter is required for subscription resources.
-        # >- This parameter is required for pay-as-you-go resources when the scaling mode (`StrategyType`) is set to fixed quantity (`NODE_FIXED`) or auto scaling (`NODE_SCALING_BY_USAGE`).
+        # >- This parameter is required for pay-as-you-go resources when the scaling mode (`StrategyType`) is set to fixed quantity (`NODE_FIXED`) or automatic scaling (`NODE_SCALING_BY_USAGE`).
         self.node_amount = node_amount
-        # The number of concurrent sessions, which is the number of sessions that a single resource can handle simultaneously. Too many concurrent sessions may degrade the application experience. The valid values vary by resource specification. You can obtain the valid values for each specification by calling the ListNodeInstanceType operation.
+        # The number of concurrent sessions, which is the number of sessions that a single resource can handle simultaneously. Too many simultaneous sessions may degrade the application experience. The valid value range varies by resource specification. You can obtain the valid value range for each resource specification by calling the ListNodeInstanceType operation.
         self.node_capacity = node_capacity
         # The instance type ID of the resource to purchase. You can obtain the ID by calling the [ListNodeInstanceType](https://help.aliyun.com/document_detail/428502.html) operation.
         self.node_instance_type = node_instance_type
-        # The list of policy execution cycles. This field is required when `StrategyType` (scaling mode) is set to `NODE_SCALING_BY_SCHEDULE` (scheduled scaling).
+        # The list of policy execution schedules. This parameter is required when `StrategyType` (scaling mode) is set to `NODE_SCALING_BY_SCHEDULE` (scheduled scaling).
         self.recurrence_schedules = recurrence_schedules
-        # The maximum duration (in minutes) that a resource without session connections is retained. When no sessions are connected to a resource, a countdown starts based on this value. The resource is released when the countdown ends. Valid values: 5 to 120. Default value: 5. The following exceptions apply:
+        # The maximum duration (in minutes) that a resource without session connections is retained. When no sessions are connected to a resource, a countdown starts based on the duration specified here. The resource is released when the countdown ends. Valid values: 5 to 120. Default value: 5. The following exceptions apply:
         # 
-        # - If scale-in would trigger auto scale-out again, the scale-in is not performed to avoid repeated scaling operations.
-        # - If auto scale-out is triggered due to increased sessions during this period, the resource is not released as originally planned, and the countdown restarts.
+        # - If the scale-in would trigger automatic scale-out again, the scale-in is not performed to avoid repeated scale-in and scale-out operations.
+        # - If automatic scale-out is triggered due to an increase in sessions during this period, the resource is not released as originally planned, and the countdown restarts.
         self.scaling_down_after_idle_minutes = scaling_down_after_idle_minutes
-        # The number of resources created per scale-out operation. Valid values: 1 to 10. This field is required when `StrategyType` is set to `NODE_SCALING_BY_USAGE` (elastic resources).
+        # The number of resources created per scale-out operation. Valid values: 1 to 10. This parameter is required when `StrategyType` is set to `NODE_SCALING_BY_USAGE` (elastic resources).
         self.scaling_step = scaling_step
-        # The session usage threshold (%) that triggers auto scale-out. The formula for session usage is `Session usage = Current sessions ÷ (Total resources × Concurrent sessions per resource) × 100%`. This field is required when `StrategyType` is set to `NODE_SCALING_BY_USAGE` (elastic resources). Valid values: 0 to 100. Default value: 85.
+        # The upper threshold of session usage (%). Automatic scale-out is triggered when the session usage exceeds this threshold. The session usage is calculated as follows: `Session usage = Current sessions ÷ (Total resources × Concurrent sessions per resource) × 100%`. This parameter is required when `StrategyType` is set to `NODE_SCALING_BY_USAGE` (elastic resources). Valid values: 0 to 100. Default value: 85.
         self.scaling_usage_threshold = scaling_usage_threshold
-        # The date when the policy expires. Format: yyyy-MM-dd. The interval between the expiration date and the effective date must be between 7 days and 1 year (inclusive). This field is required when `StrategyType` (scaling mode) is set to `NODE_SCALING_BY_SCHEDULE` (scheduled scaling).
+        # The date when the policy expires. Format: yyyy-MM-dd. The interval between the expiration date and the effective date must be between 7 days and 1 year, inclusive. This parameter is required when `StrategyType` (scaling mode) is set to `NODE_SCALING_BY_SCHEDULE` (scheduled scaling).
         self.strategy_disable_date = strategy_disable_date
-        # The date when the policy takes effect. Format: yyyy-MM-dd. The date must be equal to or later than the current date. This field is required when `StrategyType` (scaling mode) is set to `NODE_SCALING_BY_SCHEDULE` (scheduled scaling).
+        # The date when the policy takes effect. Format: yyyy-MM-dd. The date must be equal to or later than the current date. This parameter is required when `StrategyType` (scaling mode) is set to `NODE_SCALING_BY_SCHEDULE` (scheduled scaling).
         self.strategy_enable_date = strategy_enable_date
         # The scaling mode.
         # 
         # > 
-        # >- `NODE_FIXED` (fixed quantity): applicable to subscription and pay-as-you-go resources.
-        # >- `NODE_SCALING_BY_USAGE` (auto scaling): applicable to subscription and pay-as-you-go resources.
-        # >- `NODE_SCALING_BY_SCHEDULE` (scheduled scaling): applicable only to pay-as-you-go resources.
+        # >- `NODE_FIXED` (Fixed Quantity): applicable to subscription and pay-as-you-go resources.
+        # >- `NODE_SCALING_BY_USAGE` (Automatic Scaling): applicable to subscription and pay-as-you-go resources.
+        # >- `NODE_SCALING_BY_SCHEDULE` (Scheduled Scaling): applicable only to pay-as-you-go resources.
         self.strategy_type = strategy_type
-        # Specifies whether to enable the resource prefetch policy. This field is required when `StrategyType` (scaling mode) is set to `NODE_SCALING_BY_SCHEDULE` (scheduled scaling).
+        # Specifies whether to enable the resource prefetch policy. This parameter is required when `StrategyType` (scaling mode) is set to `NODE_SCALING_BY_SCHEDULE` (scheduled scaling).
         self.warm_up = warm_up
 
     def validate(self):
@@ -846,17 +846,17 @@ class CreateAppInstanceGroupRequestNodePoolRecurrenceSchedules(DaraModel):
         recurrence_values: List[int] = None,
         timer_periods: List[main_models.CreateAppInstanceGroupRequestNodePoolRecurrenceSchedulesTimerPeriods] = None,
     ):
-        # The type of the policy execution cycle. You must specify both `RecurrenceType` and `RecurrenceValues`.
+        # The type of the policy execution schedule. You must specify both `RecurrenceType` and `RecurrenceValues`.
         self.recurrence_type = recurrence_type
-        # The list of values for the policy execution cycle.
+        # The list of values for the policy execution schedule.
         self.recurrence_values = recurrence_values
-        # The list of time periods for the policy execution cycle. Requirements for time period settings:
+        # The list of time periods for the policy execution schedule. Requirements for time period settings:
         # 
-        # - You can add up to 3 time periods.
+        # - You can add up to three time periods.
         # - Time periods cannot overlap.
         # - The interval between time periods must be at least 5 minutes.
         # - Each time period must be at least 15 minutes long.
-        # - All time periods combined cannot span across days.
+        # - All time periods combined must not span across days.
         self.timer_periods = timer_periods
 
     def validate(self):
@@ -955,13 +955,13 @@ class CreateAppInstanceGroupRequestNetwork(DaraModel):
         strategy_type: str = None,
         v_switch_ids: List[str] = None,
     ):
-        # The domain name rule configuration.
+        # The domain name rule configurations.
         self.domain_rules = domain_rules
-        # The duration (in minutes) after which the public IP address is updated upon the next logon. Minimum value: 60.
+        # The duration in minutes after which a public IP address triggers an update upon the next logon. Minimum value: 60. Unit: minutes.
         self.ip_expire_minutes = ip_expire_minutes
         # The office network ID.
         self.office_site_id = office_site_id
-        # The route configuration. This parameter can be configured only when the network policy type (`StrategyType`) is set to mixed mode (`Mixed`).
+        # The route configurations. This parameter can be configured only when the network policy type (StrategyType) is set to mixed mode (Mixed).
         self.routes = routes
         # The network policy type.
         self.strategy_type = strategy_type
@@ -1043,7 +1043,7 @@ class CreateAppInstanceGroupRequestNetworkRoutes(DaraModel):
         destination: str = None,
         mode: str = None,
     ):
-        # The access destination. CIDR format.
+        # The access destination in CIDR format.
         self.destination = destination
         # The network egress mode.
         self.mode = mode

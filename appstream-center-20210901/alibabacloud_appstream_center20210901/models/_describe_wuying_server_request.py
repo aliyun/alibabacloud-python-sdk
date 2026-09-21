@@ -9,7 +9,7 @@ class DescribeWuyingServerRequest(DaraModel):
         self,
         wuying_server_id: str = None,
     ):
-        # The ID of the development workstation.
+        # The ID of the development host.
         # 
         # This parameter is required.
         self.wuying_server_id = wuying_server_id

@@ -12,7 +12,7 @@ class ListOtaTaskRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The delivery group ID.
+        # The delivery group ID. You can call ListAppInstanceGroup to obtain the ID.
         # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id

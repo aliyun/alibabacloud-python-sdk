@@ -55,7 +55,10 @@ class ListTenantConfigResponseBodyTenantConfigModel(DaraModel):
     ):
         # Indicates whether resource expiration reminders are enabled.
         self.app_instance_group_expire_remind = app_instance_group_expire_remind
+        # The support type for creating shared session delivery groups.
         self.multi_session_support_type = multi_session_support_type
+        # The list of region IDs that support creating shared session delivery groups.
+        # Note: This field has a value only when the support type for creating shared session delivery groups is Specific.
         self.multi_session_supported_regions = multi_session_supported_regions
 
     def validate(self):

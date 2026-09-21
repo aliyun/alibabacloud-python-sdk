@@ -27,13 +27,15 @@ class ListNodeInstanceTypeRequest(DaraModel):
     ):
         # The region ID of the resource. For more information about supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
         self.biz_region_id = biz_region_id
+        # The billing type.
         self.charge_type = charge_type
         # The number of CPU cores.
         self.cpu = cpu
         # The number of GPUs.
         self.gpu = gpu
-        # The GPU memory size. This parameter is meaningful for GPU-accelerated cloud desktops. Unit: MB.
+        # The GPU memory size. This value is meaningful for GPU-accelerated cloud desktops. Unit: MB.
         self.gpu_memory = gpu_memory
+        # The current specification of the instance for specification change.
         self.instance_type_for_modify = instance_type_for_modify
         # The language type.
         self.language = language
@@ -45,6 +47,7 @@ class ListNodeInstanceTypeRequest(DaraModel):
         self.node_instance_type_family = node_instance_type_family
         # CPU/Memory
         self.order_by = order_by
+        # The specification change type.
         self.order_type = order_type
         # The supported operating system type.
         self.os_type = os_type

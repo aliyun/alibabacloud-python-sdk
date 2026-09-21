@@ -45,11 +45,11 @@ class ListDesktopAgentRuntimeRequest(DaraModel):
         self.agent_instance_versions = agent_instance_versions
         # The agent platform.
         self.agent_platform = agent_platform
-        # The list of agent platforms. If AgentPlatform is also specified, AgentPlatform takes precedence and this list is ignored.
+        # The list of agent platforms. If both AgentPlatformList and AgentPlatform are specified, AgentPlatform takes precedence and this list is ignored.
         self.agent_platform_list = agent_platform_list
         # The agent provider name.
         self.agent_provider = agent_provider
-        # The list of agent providers. If AgentProvider is also specified, AgentProvider takes precedence and this list is ignored.
+        # The list of agent providers. If both AgentProviderList and AgentProvider are specified, AgentProvider takes precedence and this list is ignored.
         self.agent_provider_list = agent_provider_list
         # The list of agent template IDs. A match occurs only when all valid templates are assigned.
         self.agent_template_ids = agent_template_ids
@@ -69,13 +69,13 @@ class ListDesktopAgentRuntimeRequest(DaraModel):
         self.desktop_names = desktop_names
         # The list of Cloud Desktop statuses.
         self.desktop_statuses = desktop_statuses
-        # Indicates whether an authorized user exists for authorization.
+        # Indicates whether authorization is granted to an authorized user.
         self.has_auth_user = has_auth_user
-        # Specifies whether a risk exists. This parameter is used to filter Cloud Desktops with or without risks and takes effect only when IncludeRiskInfo is set to true.
+        # Specifies whether risks exist. This parameter is used to filter Cloud Desktops with or without risks. It takes effect only when IncludeRiskInfo is set to true.
         # 
-        # Set this parameter to true to return only records with risks. Set this parameter to false to return only records without risks. If you do not specify this parameter, no filtering is applied.
+        # Set this parameter to true to return only records with risks. Set this parameter to false to return only records without risks. If this parameter is not specified, no filtering is applied.
         self.has_risk = has_risk
-        # Specifies whether to query and return risk information. Default value: false. If set to true, the response includes the RiskInfo field, and the HasRisk filter takes effect.
+        # Specifies whether to query and return risk information. Default value: false. If this parameter is set to true, the RiskInfo field is included in the response, and the HasRisk filter takes effect.
         self.include_risk_info = include_risk_info
         # The management status filter, such as Hibernated.
         self.management_status = management_status
@@ -85,7 +85,7 @@ class ListDesktopAgentRuntimeRequest(DaraModel):
         self.model_template_id = model_template_id
         # The office network ID.
         self.office_site_id = office_site_id
-        # The page number. Starts from 1. Values 0 and 1 return the same result.
+        # The page number, starting from 1. Values 0 and 1 return the same result.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size

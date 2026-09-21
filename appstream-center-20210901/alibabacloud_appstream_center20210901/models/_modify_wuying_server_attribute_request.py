@@ -7,13 +7,17 @@ from darabonba.model import DaraModel
 class ModifyWuyingServerAttributeRequest(DaraModel):
     def __init__(
         self,
+        erdma_enabled: bool = None,
         password: str = None,
         product_type: str = None,
         wuying_server_id: str = None,
         wuying_server_name: str = None,
     ):
+        # Specifies whether to enable dedicated eRDMA network interfaces. Only true is supported.
+        self.erdma_enabled = erdma_enabled
         # The logon password of the workstation.
         self.password = password
+        # The product type.
         self.product_type = product_type
         # The workstation ID.
         self.wuying_server_id = wuying_server_id
@@ -28,6 +32,9 @@ class ModifyWuyingServerAttributeRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.erdma_enabled is not None:
+            result['ErdmaEnabled'] = self.erdma_enabled
+
         if self.password is not None:
             result['Password'] = self.password
 
@@ -44,6 +51,9 @@ class ModifyWuyingServerAttributeRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ErdmaEnabled') is not None:
+            self.erdma_enabled = m.get('ErdmaEnabled')
+
         if m.get('Password') is not None:
             self.password = m.get('Password')
 

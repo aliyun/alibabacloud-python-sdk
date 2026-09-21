@@ -18,10 +18,10 @@ class UpdateModelTemplateRequest(DaraModel):
         # - **OpenClaw / AgenticComputer scenarios:**
         # Set the default model by using the `defaults.model.primary` field in the format of `provider name/model code`.
         # 
-        # - **HermesAgent scenarios:**
+        # - **HermesAgent scenario:**
         # Specify the provider name by using `model.provider` and the model code by using `model.default`.
         # 
-        # > Note:
+        # > :
         # > - When you modify the default model, the system verifies whether the specified provider and model code already exist in the model group.
         self.config = config
         # The template group description.

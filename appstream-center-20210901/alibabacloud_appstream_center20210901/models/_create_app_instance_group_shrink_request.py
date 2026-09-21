@@ -54,7 +54,7 @@ class CreateAppInstanceGroupShrinkRequest(DaraModel):
         self.auto_pay = auto_pay
         # Specifies whether to enable auto-renewal.
         self.auto_renew = auto_renew
-        # The region ID of the delivery group. For information about supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
+        # The region ID of the delivery group. For more information about supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
         # 
         # This parameter is required.
         self.biz_region_id = biz_region_id
@@ -74,39 +74,39 @@ class CreateAppInstanceGroupShrinkRequest(DaraModel):
         self.network_shrink = network_shrink
         # The node pool object.
         self.node_pool_shrink = node_pool_shrink
-        # The subscription duration of the resource when `ChargeType` is set to `PrePaid`. This parameter is required. The unit is specified by `PeriodUnit`.
+        # The duration for which you want to purchase resources when `ChargeType` is set to `PrePaid`. This parameter is required in this case. The unit is specified by `PeriodUnit`.
         # 
-        # - If `PeriodUnit` is set to `Week`, valid values:
+        # - If `PeriodUnit` is set to `Week`, valid values of this parameter:
         # 
         #    - 1
         # 
-        # - If `PeriodUnit` is set to `Month`, valid values:
+        # - If `PeriodUnit` is set to `Month`, valid values of this parameter:
         # 
         #    - 1
         #    - 2
         #    - 3
         #    - 6
         # 
-        # - If `PeriodUnit` is set to `Year`, valid values:
+        # - If `PeriodUnit` is set to `Year`, valid values of this parameter:
         # 
         #    - 1
         #    - 2
         #    - 3
         # 
-        # > If `ChargeType` is set to `PostPaid`, set this parameter to 1.
+        # > When `ChargeType` is set to `PostPaid`, set this parameter to the fixed value 1.
         # 
         # This parameter is required.
         self.period = period
         # The unit of the subscription duration when `ChargeType` is set to `PrePaid`.
         # 
-        # > This parameter is case-sensitive. For example, `Week` is valid, but `week` is not.
-        # If the request parameters do not match the valid combinations, such as `2 Week`, the API call succeeds but an error occurs during the order placement.
+        # > This parameter is case-sensitive. For example, `Week` is valid, but `week` is invalid.
+        # In addition, if the request parameters do not match the valid combinations, such as `2 Week`, the API call succeeds but an error occurs during the order placement phase.
         # 
-        # > If `ChargeType` is set to `PostPaid`, set this parameter to `Month`.
+        # > When `ChargeType` is set to `PostPaid`, set this parameter to the fixed value `Month`.
         # 
         # This parameter is required.
         self.period_unit = period_unit
-        # The pre-opened AppId.
+        # The pre-opened application ID.
         self.pre_open_app_id = pre_open_app_id
         # The product type.
         # 
@@ -118,7 +118,7 @@ class CreateAppInstanceGroupShrinkRequest(DaraModel):
         self.runtime_policy_shrink = runtime_policy_shrink
         # The security policy.
         self.security_policy_shrink = security_policy_shrink
-        # The application recycling time, in minutes. After an end user disconnects from the cloud application for a period of time, the cloud application process exits. This period is the application recycling time. Set this parameter to `-1` if you do not want to recycle the application. Valid values: -1 and 3 to 300 (integer). Default value: `15`.
+        # The application recycling time, in minutes. After an end user disconnects from a cloud application for a period of time, the cloud application process exits. This period is the application recycling time. Set this parameter to `-1` if you do not want to recycle the application. Valid values: -1 and 3 to 300 (integer). Default value: `15`.
         # 
         # This parameter is required.
         self.session_timeout = session_timeout
@@ -130,9 +130,9 @@ class CreateAppInstanceGroupShrinkRequest(DaraModel):
         self.user_define_policy_shrink = user_define_policy_shrink
         # The list of authorized user group IDs.
         self.user_group_ids = user_group_ids
-        # The user information to be added to the delivery group as assigned users. This field is required if the `Users` parameter is specified.
+        # The information about the users to be added as assigned users of the delivery group. This parameter is required if the `Users` parameter is specified.
         self.user_info_shrink = user_info_shrink
-        # The list of usernames to be added to the delivery group as assigned users.
+        # The list of usernames to be added as assigned users of the delivery group.
         self.users = users
         # The display policy.
         self.video_policy_shrink = video_policy_shrink

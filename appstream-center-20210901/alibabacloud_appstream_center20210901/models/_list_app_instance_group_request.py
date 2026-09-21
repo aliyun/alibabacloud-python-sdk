@@ -25,14 +25,15 @@ class ListAppInstanceGroupRequest(DaraModel):
         tag: List[main_models.ListAppInstanceGroupRequestTag] = None,
         user_group_ids: List[str] = None,
     ):
-        # The application image ID. You can obtain this value from the Image Management page in the WUYING Cloud Application console.
+        # The application image ID. You can obtain this value from the Image Management page in the WUYING Workspace console.
         self.app_center_image_id = app_center_image_id
         # The delivery group ID.
         self.app_instance_group_id = app_instance_group_id
-        # The delivery group name. Fuzzy matching is used for the query. For example, if you set the delivery group name to `OfficeApp`, all delivery groups whose names contain `OfficeApp` are returned, such as `MyOfficeApp` and `OfficeAppA`.
+        # The delivery group name. Fuzzy match is used for the query. For example, if you set the delivery group name to `OfficeApp`, all delivery groups whose names contain `OfficeApp` are returned, such as `MyOfficeApp` and `OfficeAppA`.
         self.app_instance_group_name = app_instance_group_name
         # The region ID of the delivery group. For more information about supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
         self.biz_region_id = biz_region_id
+        # The list of excluded authorized user group IDs.
         self.excluded_user_group_ids = excluded_user_group_ids
         # The specification type ID of the purchased resource. You can call the [ListNodeInstanceType](~~ListNodeInstanceType~~) operation to obtain this value.
         self.node_instance_type = node_instance_type
@@ -52,6 +53,7 @@ class ListAppInstanceGroupRequest(DaraModel):
         self.status = status
         # The list of tags.
         self.tag = tag
+        # The list of authorized user group IDs.
         self.user_group_ids = user_group_ids
 
     def validate(self):

@@ -12,6 +12,7 @@ class GetConnectionTicketRequest(DaraModel):
         access_type: str = None,
         app_id: str = None,
         app_instance_group_id_list: List[str] = None,
+        app_instance_group_set_id: str = None,
         app_instance_id: str = None,
         app_instance_persistent_id: str = None,
         app_policy_id: str = None,
@@ -23,11 +24,7 @@ class GetConnectionTicketRequest(DaraModel):
         product_type: str = None,
         task_id: str = None,
     ):
-        # The access type. If you do not specify this parameter, both types are displayed.
-        # 
-        # Valid values:
-        # - INTERNET: Internet access.
-        # - VPC: Express Connect access.
+        # The access type.
         self.access_type = access_type
         # The application ID.
         # 
@@ -35,9 +32,11 @@ class GetConnectionTicketRequest(DaraModel):
         self.app_id = app_id
         # The list of delivery groups.
         # 
-        # > - If you specify this parameter, application instances are allocated only from the specified authorized delivery groups.
+        # > - If you specify this parameter, application instances are allocated only from the specified and authorized delivery groups.
         # > - If you specify the `AppInstanceId` or `AppInstancePersistentId` parameter, this parameter is required.
         self.app_instance_group_id_list = app_instance_group_id_list
+        # The delivery group set ID used to obtain the connection credential.
+        self.app_instance_group_set_id = app_instance_group_set_id
         # The application instance ID.
         # 
         # > 
@@ -46,8 +45,9 @@ class GetConnectionTicketRequest(DaraModel):
         self.app_instance_id = app_instance_id
         # The persistent session ID.
         self.app_instance_persistent_id = app_instance_persistent_id
+        # The policy ID.
         self.app_policy_id = app_policy_id
-        # The application startup parameter. For information about how to obtain startup parameters, see [How to obtain application installation parameters and startup parameters](https://help.aliyun.com/document_detail/426045.html).
+        # The application startup parameter. This parameter is optional. You can refer to the method for specifying startup parameters in the image creation documentation and manually verify the startup parameters during image creation. This field is suitable for startup parameters with variable content, allowing API callers to set them flexibly. For more information about how to obtain startup parameters, see [How to obtain application installation parameters and startup parameters](https://help.aliyun.com/document_detail/426045.html).
         self.app_start_param = app_start_param
         # The application version. If you specify this parameter, only the specified version of the application is opened. If you do not specify this parameter, any authorized version of the application is opened.
         self.app_version = app_version
@@ -65,9 +65,9 @@ class GetConnectionTicketRequest(DaraModel):
         # 
         # This parameter is required.
         self.product_type = product_type
-        # The task ID.
+        # The node ID.
         # 
-        # > This parameter is required for non-initial calls. Use this parameter to query the task status and connection credentials.
+        # > This parameter is required for non-initial calls. Use this parameter query to invoke the node status and connection credential retrieval.
         self.task_id = task_id
 
     def validate(self):
@@ -86,6 +86,9 @@ class GetConnectionTicketRequest(DaraModel):
 
         if self.app_instance_group_id_list is not None:
             result['AppInstanceGroupIdList'] = self.app_instance_group_id_list
+
+        if self.app_instance_group_set_id is not None:
+            result['AppInstanceGroupSetId'] = self.app_instance_group_set_id
 
         if self.app_instance_id is not None:
             result['AppInstanceId'] = self.app_instance_id
@@ -129,6 +132,9 @@ class GetConnectionTicketRequest(DaraModel):
 
         if m.get('AppInstanceGroupIdList') is not None:
             self.app_instance_group_id_list = m.get('AppInstanceGroupIdList')
+
+        if m.get('AppInstanceGroupSetId') is not None:
+            self.app_instance_group_set_id = m.get('AppInstanceGroupSetId')
 
         if m.get('AppInstanceId') is not None:
             self.app_instance_id = m.get('AppInstanceId')
