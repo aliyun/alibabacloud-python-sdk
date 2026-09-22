@@ -7,6 +7,8 @@ from darabonba.model import DaraModel
 class UpdateServiceConfigRequest(DaraModel):
     def __init__(
         self,
+        client_token: str = None,
+        dry_run: bool = None,
         file_config: str = None,
         keyword_filter_libs: str = None,
         keyword_hit_libs: str = None,
@@ -19,13 +21,17 @@ class UpdateServiceConfigRequest(DaraModel):
         service_config: str = None,
         video_config: str = None,
     ):
+        # The client-generated idempotency token used to prevent duplicate operations caused by network retries. The token must be unique across requests and contain only printable ASCII characters (ASCII 32-126).
+        self.client_token = client_token
+        # Specifies whether to perform a dry run. When set to true, only parameter validation and business logic checks are performed without actually creating or updating resources.
+        self.dry_run = dry_run
         # The document configuration.
         self.file_config = file_config
         # The keyword filter libraries.
         self.keyword_filter_libs = keyword_filter_libs
         # The keyword hit libraries.
         self.keyword_hit_libs = keyword_hit_libs
-        # The machine-assisted moderation configuration.
+        # The human-machine moderation configuration.
         self.manual_machine_config = manual_machine_config
         # The region ID.
         self.region_id = region_id
@@ -50,6 +56,12 @@ class UpdateServiceConfigRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+
         if self.file_config is not None:
             result['FileConfig'] = self.file_config
 
@@ -87,6 +99,12 @@ class UpdateServiceConfigRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+
         if m.get('FileConfig') is not None:
             self.file_config = m.get('FileConfig')
 

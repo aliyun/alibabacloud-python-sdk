@@ -22,7 +22,7 @@ class QueryCallbackByPageResponseBody(DaraModel):
         self.items = items
         # The page size.
         self.page_size = page_size
-        # The ID assigned by the backend to uniquely identify a request. This ID can be used to troubleshoot issues.
+        # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
         # The total number of records.
         self.total_count = total_count

@@ -13,8 +13,11 @@ class MarkOssV2ResultResponseBody(DaraModel):
         request_id: str = None,
         success_request_ids: List[str] = None,
     ):
+        # The list of request IDs for failed operations.
         self.failure_request_ids = failure_request_ids
+        # The request ID assigned by the backend to uniquely identify a request. You can use this ID for troubleshooting.
         self.request_id = request_id
+        # The list of request IDs for successful operations.
         self.success_request_ids = success_request_ids
 
     def validate(self):

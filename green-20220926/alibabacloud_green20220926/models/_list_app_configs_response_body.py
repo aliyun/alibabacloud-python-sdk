@@ -58,6 +58,7 @@ class ListAppConfigsResponseBodyData(DaraModel):
         app_id: str = None,
         classify: str = None,
         custom_config: Dict[str, Any] = None,
+        custom_order_num: int = None,
         deploy_status: str = None,
         gmt_modified: str = None,
         name: str = None,
@@ -72,9 +73,11 @@ class ListAppConfigsResponseBodyData(DaraModel):
         self.classify = classify
         # The configuration details.
         self.custom_config = custom_config
+        # The sort number.
+        self.custom_order_num = custom_order_num
         # The publish status.
         self.deploy_status = deploy_status
-        # The last modification time.
+        # The last modified time.
         self.gmt_modified = gmt_modified
         # The name.
         self.name = name
@@ -103,6 +106,9 @@ class ListAppConfigsResponseBodyData(DaraModel):
 
         if self.custom_config is not None:
             result['CustomConfig'] = self.custom_config
+
+        if self.custom_order_num is not None:
+            result['CustomOrderNum'] = self.custom_order_num
 
         if self.deploy_status is not None:
             result['DeployStatus'] = self.deploy_status
@@ -137,6 +143,9 @@ class ListAppConfigsResponseBodyData(DaraModel):
 
         if m.get('CustomConfig') is not None:
             self.custom_config = m.get('CustomConfig')
+
+        if m.get('CustomOrderNum') is not None:
+            self.custom_order_num = m.get('CustomOrderNum')
 
         if m.get('DeployStatus') is not None:
             self.deploy_status = m.get('DeployStatus')

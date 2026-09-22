@@ -20,9 +20,9 @@ class DescribeOssV2ResultResponseBody(DaraModel):
         self.current_page = current_page
         # The data on the current page.
         self.items = items
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
+        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
         # The total number of entries.
         self.total_count = total_count
@@ -107,7 +107,7 @@ class DescribeOssV2ResultResponseBodyItems(DaraModel):
         task_id: str = None,
         url: str = None,
     ):
-        # The storage bucket.
+        # The OSS bucket.
         self.bucket = bucket
         # The error code.
         self.code = code
@@ -129,7 +129,7 @@ class DescribeOssV2ResultResponseBodyItems(DaraModel):
         self.labels_2 = labels_2
         # The manual disposition status.
         self.manual_freeze_action = manual_freeze_action
-        # The disposition time.
+        # The disposition time. Format: yyyy-MM-dd HH:mm:ss.
         self.manual_operate_time = manual_operate_time
         # The operator who performed the disposition.
         self.manual_operator = manual_operator
@@ -149,7 +149,7 @@ class DescribeOssV2ResultResponseBodyItems(DaraModel):
         self.scan_result = scan_result
         # Service code。
         self.service_code = service_code
-        # The automatic system freeze operation.
+        # The automatic freeze operation performed by the system.
         self.sys_disposal_status = sys_disposal_status
         # The task ID.
         self.task_id = task_id
@@ -338,7 +338,7 @@ class DescribeOssV2ResultResponseBodyItemsLabelDetails2(DaraModel):
         description: str = None,
         label: str = None,
     ):
-        # The confidence score.
+        # The confidence level.
         self.confidence = confidence
         # The label description.
         self.description = description
@@ -384,7 +384,7 @@ class DescribeOssV2ResultResponseBodyItemsLabelDetails(DaraModel):
         description: str = None,
         label: str = None,
     ):
-        # The confidence score.
+        # The confidence level.
         self.confidence = confidence
         # The label description.
         self.description = description

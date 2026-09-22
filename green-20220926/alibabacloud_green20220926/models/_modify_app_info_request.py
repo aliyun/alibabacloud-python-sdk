@@ -8,12 +8,15 @@ class ModifyAppInfoRequest(DaraModel):
     def __init__(
         self,
         app_id: str = None,
+        custom_order_num: int = None,
         name: str = None,
         region_id: str = None,
         resource_type: str = None,
     ):
         # App ID。
         self.app_id = app_id
+        # The sort number.
+        self.custom_order_num = custom_order_num
         # The app name.
         self.name = name
         # The region ID.
@@ -32,6 +35,9 @@ class ModifyAppInfoRequest(DaraModel):
         if self.app_id is not None:
             result['AppId'] = self.app_id
 
+        if self.custom_order_num is not None:
+            result['CustomOrderNum'] = self.custom_order_num
+
         if self.name is not None:
             result['Name'] = self.name
 
@@ -47,6 +53,9 @@ class ModifyAppInfoRequest(DaraModel):
         m = m or dict()
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+
+        if m.get('CustomOrderNum') is not None:
+            self.custom_order_num = m.get('CustomOrderNum')
 
         if m.get('Name') is not None:
             self.name = m.get('Name')

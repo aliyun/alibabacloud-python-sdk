@@ -2,13 +2,19 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._data_total_stat_value import DataTotalStatValue
 from ._config_bucket_prefix_filter_config_value import ConfigBucketPrefixFilterConfigValue
+from ._charts_value import ChartsValue
+from ._auth_info_config_value import AuthInfoConfigValue
 from ._add_answer_sample_request import AddAnswerSampleRequest
 from ._add_answer_sample_response_body import AddAnswerSampleResponseBody
 from ._add_answer_sample_response import AddAnswerSampleResponse
 from ._add_app_agent_request import AddAppAgentRequest
 from ._add_app_agent_response_body import AddAppAgentResponseBody
 from ._add_app_agent_response import AddAppAgentResponse
+from ._add_app_config_request import AddAppConfigRequest
+from ._add_app_config_response_body import AddAppConfigResponseBody
+from ._add_app_config_response import AddAppConfigResponse
 from ._add_image_lib_request import AddImageLibRequest
 from ._add_image_lib_response_body import AddImageLibResponseBody
 from ._add_image_lib_response import AddImageLibResponse
@@ -114,6 +120,28 @@ from ._export_text_scan_result_request import ExportTextScanResultRequest
 from ._export_text_scan_result_shrink_request import ExportTextScanResultShrinkRequest
 from ._export_text_scan_result_response_body import ExportTextScanResultResponseBody
 from ._export_text_scan_result_response import ExportTextScanResultResponse
+from ._get_ai_app_detail_request import GetAiAppDetailRequest
+from ._get_ai_app_detail_response_body import GetAiAppDetailResponseBody
+from ._get_ai_app_detail_response import GetAiAppDetailResponse
+from ._get_ai_app_detail_stat_request import GetAiAppDetailStatRequest
+from ._get_ai_app_detail_stat_response_body import GetAiAppDetailStatResponseBody
+from ._get_ai_app_detail_stat_response import GetAiAppDetailStatResponse
+from ._get_ai_app_detail_topo_request import GetAiAppDetailTopoRequest
+from ._get_ai_app_detail_topo_shrink_request import GetAiAppDetailTopoShrinkRequest
+from ._get_ai_app_detail_topo_response_body import GetAiAppDetailTopoResponseBody
+from ._get_ai_app_detail_topo_response import GetAiAppDetailTopoResponse
+from ._get_ai_app_node_detail_request import GetAiAppNodeDetailRequest
+from ._get_ai_app_node_detail_response_body import GetAiAppNodeDetailResponseBody
+from ._get_ai_app_node_detail_response import GetAiAppNodeDetailResponse
+from ._get_ai_app_overview_request import GetAiAppOverviewRequest
+from ._get_ai_app_overview_response_body import GetAiAppOverviewResponseBody
+from ._get_ai_app_overview_response import GetAiAppOverviewResponse
+from ._get_ai_app_stats_request import GetAiAppStatsRequest
+from ._get_ai_app_stats_response_body import GetAiAppStatsResponseBody
+from ._get_ai_app_stats_response import GetAiAppStatsResponse
+from ._get_ai_app_trace_detail_request import GetAiAppTraceDetailRequest
+from ._get_ai_app_trace_detail_response_body import GetAiAppTraceDetailResponseBody
+from ._get_ai_app_trace_detail_response import GetAiAppTraceDetailResponse
 from ._get_answer_import_progress_request import GetAnswerImportProgressRequest
 from ._get_answer_import_progress_response_body import GetAnswerImportProgressResponseBody
 from ._get_answer_import_progress_response import GetAnswerImportProgressResponse
@@ -144,6 +172,9 @@ from ._get_feature_config_response import GetFeatureConfigResponse
 from ._get_guard_log_stats_request import GetGuardLogStatsRequest
 from ._get_guard_log_stats_response_body import GetGuardLogStatsResponseBody
 from ._get_guard_log_stats_response import GetGuardLogStatsResponse
+from ._get_guard_status_request import GetGuardStatusRequest
+from ._get_guard_status_response_body import GetGuardStatusResponseBody
+from ._get_guard_status_response import GetGuardStatusResponse
 from ._get_image_scene_label_conf_request import GetImageSceneLabelConfRequest
 from ._get_image_scene_label_conf_response_body import GetImageSceneLabelConfResponseBody
 from ._get_image_scene_label_conf_response import GetImageSceneLabelConfResponse
@@ -179,6 +210,12 @@ from ._get_oss_check_task_info_response import GetOssCheckTaskInfoResponse
 from ._get_prompt_test_result_request import GetPromptTestResultRequest
 from ._get_prompt_test_result_response_body import GetPromptTestResultResponseBody
 from ._get_prompt_test_result_response import GetPromptTestResultResponse
+from ._get_qps_stats_request import GetQpsStatsRequest
+from ._get_qps_stats_response_body import GetQpsStatsResponseBody
+from ._get_qps_stats_response import GetQpsStatsResponse
+from ._get_risk_stats_request import GetRiskStatsRequest
+from ._get_risk_stats_response_body import GetRiskStatsResponseBody
+from ._get_risk_stats_response import GetRiskStatsResponse
 from ._get_scan_num_request import GetScanNumRequest
 from ._get_scan_num_response_body import GetScanNumResponseBody
 from ._get_scan_num_response import GetScanNumResponse
@@ -218,6 +255,21 @@ from ._get_upload_link_response import GetUploadLinkResponse
 from ._get_user_buy_status_request import GetUserBuyStatusRequest
 from ._get_user_buy_status_response_body import GetUserBuyStatusResponseBody
 from ._get_user_buy_status_response import GetUserBuyStatusResponse
+from ._init_ai_app_scan_request import InitAiAppScanRequest
+from ._init_ai_app_scan_response_body import InitAiAppScanResponseBody
+from ._init_ai_app_scan_response import InitAiAppScanResponse
+from ._list_ai_app_by_page_request import ListAiAppByPageRequest
+from ._list_ai_app_by_page_response_body import ListAiAppByPageResponseBody
+from ._list_ai_app_by_page_response import ListAiAppByPageResponse
+from ._list_ai_app_risk_event_request import ListAiAppRiskEventRequest
+from ._list_ai_app_risk_event_response_body import ListAiAppRiskEventResponseBody
+from ._list_ai_app_risk_event_response import ListAiAppRiskEventResponse
+from ._list_ai_app_risk_event_by_page_request import ListAiAppRiskEventByPageRequest
+from ._list_ai_app_risk_event_by_page_response_body import ListAiAppRiskEventByPageResponseBody
+from ._list_ai_app_risk_event_by_page_response import ListAiAppRiskEventByPageResponse
+from ._list_ai_app_warning_by_page_request import ListAiAppWarningByPageRequest
+from ._list_ai_app_warning_by_page_response_body import ListAiAppWarningByPageResponseBody
+from ._list_ai_app_warning_by_page_response import ListAiAppWarningByPageResponse
 from ._list_answer_lib_request import ListAnswerLibRequest
 from ._list_answer_lib_response_body import ListAnswerLibResponseBody
 from ._list_answer_lib_response import ListAnswerLibResponse
@@ -292,15 +344,25 @@ from ._query_callback_response import QueryCallbackResponse
 from ._query_callback_by_page_request import QueryCallbackByPageRequest
 from ._query_callback_by_page_response_body import QueryCallbackByPageResponseBody
 from ._query_callback_by_page_response import QueryCallbackByPageResponse
+from ._query_label_config_request import QueryLabelConfigRequest
+from ._query_label_config_response_body import QueryLabelConfigResponseBody
+from ._query_label_config_response import QueryLabelConfigResponse
 from ._recover_app_config_history_request import RecoverAppConfigHistoryRequest
 from ._recover_app_config_history_response_body import RecoverAppConfigHistoryResponseBody
 from ._recover_app_config_history_response import RecoverAppConfigHistoryResponse
 from ._stop_online_test_request import StopOnlineTestRequest
 from ._stop_online_test_response_body import StopOnlineTestResponseBody
 from ._stop_online_test_response import StopOnlineTestResponse
+from ._update_ai_app_scan_status_request import UpdateAiAppScanStatusRequest
+from ._update_ai_app_scan_status_response_body import UpdateAiAppScanStatusResponseBody
+from ._update_ai_app_scan_status_response import UpdateAiAppScanStatusResponse
 from ._update_backup_config_request import UpdateBackupConfigRequest
 from ._update_backup_config_response_body import UpdateBackupConfigResponseBody
 from ._update_backup_config_response import UpdateBackupConfigResponse
+from ._update_event_status_request import UpdateEventStatusRequest
+from ._update_event_status_shrink_request import UpdateEventStatusShrinkRequest
+from ._update_event_status_response_body import UpdateEventStatusResponseBody
+from ._update_event_status_response import UpdateEventStatusResponse
 from ._update_image_lib_request import UpdateImageLibRequest
 from ._update_image_lib_response_body import UpdateImageLibResponseBody
 from ._update_image_lib_response import UpdateImageLibResponse
@@ -311,6 +373,9 @@ from ._update_image_lib_free_inspection_response import UpdateImageLibFreeInspec
 from ._update_keyword_lib_request import UpdateKeywordLibRequest
 from ._update_keyword_lib_response_body import UpdateKeywordLibResponseBody
 from ._update_keyword_lib_response import UpdateKeywordLibResponse
+from ._update_meta_log_request import UpdateMetaLogRequest
+from ._update_meta_log_response_body import UpdateMetaLogResponseBody
+from ._update_meta_log_response import UpdateMetaLogResponse
 from ._update_oss_check_results_batch_feedback_request import UpdateOssCheckResultsBatchFeedbackRequest
 from ._update_oss_check_results_batch_feedback_response_body import UpdateOssCheckResultsBatchFeedbackResponseBody
 from ._update_oss_check_results_batch_feedback_response import UpdateOssCheckResultsBatchFeedbackResponse
@@ -329,7 +394,9 @@ from ._update_scan_result_feedback_response import UpdateScanResultFeedbackRespo
 from ._update_service_config_request import UpdateServiceConfigRequest
 from ._update_service_config_response_body import UpdateServiceConfigResponseBody
 from ._update_service_config_response import UpdateServiceConfigResponse
+from ._charts_value import ChartsValueY
 from ._add_answer_sample_response_body import AddAnswerSampleResponseBodyResult
+from ._add_app_config_response_body import AddAppConfigResponseBodyData
 from ._add_images_2lib_response_body import AddImages2LibResponseBodyData
 from ._add_keyword_lib_response_body import AddKeywordLibResponseBodyDataKeywordsResult
 from ._add_keyword_lib_response_body import AddKeywordLibResponseBodyData
@@ -345,6 +412,19 @@ from ._describe_online_test_result_response_body import DescribeOnlineTestResult
 from ._describe_oss_v2result_response_body import DescribeOssV2ResultResponseBodyItemsLabelDetails
 from ._describe_oss_v2result_response_body import DescribeOssV2ResultResponseBodyItemsLabelDetails2
 from ._describe_oss_v2result_response_body import DescribeOssV2ResultResponseBodyItems
+from ._get_ai_app_detail_response_body import GetAiAppDetailResponseBodyChartY
+from ._get_ai_app_detail_response_body import GetAiAppDetailResponseBodyChart
+from ._get_ai_app_detail_response_body import GetAiAppDetailResponseBodyRiskEventsLabels
+from ._get_ai_app_detail_response_body import GetAiAppDetailResponseBodyRiskEvents
+from ._get_ai_app_detail_topo_request import GetAiAppDetailTopoRequestTimeQuery
+from ._get_ai_app_detail_topo_response_body import GetAiAppDetailTopoResponseBodyData
+from ._get_ai_app_node_detail_response_body import GetAiAppNodeDetailResponseBodyEventDataLabels
+from ._get_ai_app_node_detail_response_body import GetAiAppNodeDetailResponseBodyEventData
+from ._get_ai_app_stats_response_body import GetAiAppStatsResponseBodyDataLabelStatChartTreeChart
+from ._get_ai_app_stats_response_body import GetAiAppStatsResponseBodyDataLabelStatChart
+from ._get_ai_app_stats_response_body import GetAiAppStatsResponseBodyDataY
+from ._get_ai_app_stats_response_body import GetAiAppStatsResponseBodyData
+from ._get_ai_app_trace_detail_response_body import GetAiAppTraceDetailResponseBodyLabels
 from ._get_backup_buckets_list_response_body import GetBackupBucketsListResponseBodyData
 from ._get_buckets_list_response_body import GetBucketsListResponseBodyData
 from ._get_cip_stats_response_body import GetCipStatsResponseBodyDataLabelStatChartImageTreeChar
@@ -358,6 +438,9 @@ from ._get_cip_stats_response_body import GetCipStatsResponseBodyDataZ
 from ._get_cip_stats_response_body import GetCipStatsResponseBodyData
 from ._get_feature_config_response_body import GetFeatureConfigResponseBodyData
 from ._get_guard_log_stats_response_body import GetGuardLogStatsResponseBodyData
+from ._get_guard_status_response_body import GetGuardStatusResponseBodyLogScanStatus
+from ._get_guard_status_response_body import GetGuardStatusResponseBodyProtectionStatus
+from ._get_guard_status_response_body import GetGuardStatusResponseBodyRealTimeStatus
 from ._get_keyword_import_result_response_body import GetKeywordImportResultResponseBodyData
 from ._get_keyword_lib_response_body import GetKeywordLibResponseBodyData
 from ._get_oss_check_freeze_result_response_body import GetOssCheckFreezeResultResponseBodyItemsLabelDetails
@@ -373,6 +456,7 @@ from ._get_oss_check_task_info_response_body import GetOssCheckTaskInfoResponseB
 from ._get_oss_check_task_info_response_body import GetOssCheckTaskInfoResponseBodyConfig
 from ._get_prompt_test_result_response_body import GetPromptTestResultResponseBodyResultLabelDetails
 from ._get_prompt_test_result_response_body import GetPromptTestResultResponseBodyResult
+from ._get_risk_stats_response_body import GetRiskStatsResponseBodyRiskStats
 from ._get_scan_result_response_body import GetScanResultResponseBodyDataItemsResult
 from ._get_scan_result_response_body import GetScanResultResponseBodyDataItems
 from ._get_scan_result_response_body import GetScanResultResponseBodyData
@@ -388,6 +472,15 @@ from ._get_text_scan_result_response_body import GetTextScanResultResponseBodyDa
 from ._get_text_scan_result_response_body import GetTextScanResultResponseBodyData
 from ._get_tune_proposal_by_id_response_body import GetTuneProposalByIdResponseBodyData
 from ._get_user_buy_status_response_body import GetUserBuyStatusResponseBodyData
+from ._init_ai_app_scan_response_body import InitAiAppScanResponseBodyAuthInfo
+from ._list_ai_app_by_page_response_body import ListAiAppByPageResponseBodyItemsRiskEventsLabels
+from ._list_ai_app_by_page_response_body import ListAiAppByPageResponseBodyItemsRiskEvents
+from ._list_ai_app_by_page_response_body import ListAiAppByPageResponseBodyItems
+from ._list_ai_app_risk_event_response_body import ListAiAppRiskEventResponseBodyData
+from ._list_ai_app_risk_event_by_page_response_body import ListAiAppRiskEventByPageResponseBodyItems
+from ._list_ai_app_warning_by_page_response_body import ListAiAppWarningByPageResponseBodyExt
+from ._list_ai_app_warning_by_page_response_body import ListAiAppWarningByPageResponseBodyItemsLabels
+from ._list_ai_app_warning_by_page_response_body import ListAiAppWarningByPageResponseBodyItems
 from ._list_answer_lib_response_body import ListAnswerLibResponseBodyData
 from ._list_app_config_history_response_body import ListAppConfigHistoryResponseBodyHistory
 from ._list_app_config_history_response_body import ListAppConfigHistoryResponseBodyPublish
@@ -417,13 +510,19 @@ from ._update_oss_check_results_freeze_response_body import UpdateOssCheckResult
 from ._update_oss_check_results_unfreeze_response_body import UpdateOssCheckResultsUnfreezeResponseBodyData
 
 __all__ = [
+    DataTotalStatValue,
     ConfigBucketPrefixFilterConfigValue,
+    ChartsValue,
+    AuthInfoConfigValue,
     AddAnswerSampleRequest,
     AddAnswerSampleResponseBody,
     AddAnswerSampleResponse,
     AddAppAgentRequest,
     AddAppAgentResponseBody,
     AddAppAgentResponse,
+    AddAppConfigRequest,
+    AddAppConfigResponseBody,
+    AddAppConfigResponse,
     AddImageLibRequest,
     AddImageLibResponseBody,
     AddImageLibResponse,
@@ -529,6 +628,28 @@ __all__ = [
     ExportTextScanResultShrinkRequest,
     ExportTextScanResultResponseBody,
     ExportTextScanResultResponse,
+    GetAiAppDetailRequest,
+    GetAiAppDetailResponseBody,
+    GetAiAppDetailResponse,
+    GetAiAppDetailStatRequest,
+    GetAiAppDetailStatResponseBody,
+    GetAiAppDetailStatResponse,
+    GetAiAppDetailTopoRequest,
+    GetAiAppDetailTopoShrinkRequest,
+    GetAiAppDetailTopoResponseBody,
+    GetAiAppDetailTopoResponse,
+    GetAiAppNodeDetailRequest,
+    GetAiAppNodeDetailResponseBody,
+    GetAiAppNodeDetailResponse,
+    GetAiAppOverviewRequest,
+    GetAiAppOverviewResponseBody,
+    GetAiAppOverviewResponse,
+    GetAiAppStatsRequest,
+    GetAiAppStatsResponseBody,
+    GetAiAppStatsResponse,
+    GetAiAppTraceDetailRequest,
+    GetAiAppTraceDetailResponseBody,
+    GetAiAppTraceDetailResponse,
     GetAnswerImportProgressRequest,
     GetAnswerImportProgressResponseBody,
     GetAnswerImportProgressResponse,
@@ -559,6 +680,9 @@ __all__ = [
     GetGuardLogStatsRequest,
     GetGuardLogStatsResponseBody,
     GetGuardLogStatsResponse,
+    GetGuardStatusRequest,
+    GetGuardStatusResponseBody,
+    GetGuardStatusResponse,
     GetImageSceneLabelConfRequest,
     GetImageSceneLabelConfResponseBody,
     GetImageSceneLabelConfResponse,
@@ -594,6 +718,12 @@ __all__ = [
     GetPromptTestResultRequest,
     GetPromptTestResultResponseBody,
     GetPromptTestResultResponse,
+    GetQpsStatsRequest,
+    GetQpsStatsResponseBody,
+    GetQpsStatsResponse,
+    GetRiskStatsRequest,
+    GetRiskStatsResponseBody,
+    GetRiskStatsResponse,
     GetScanNumRequest,
     GetScanNumResponseBody,
     GetScanNumResponse,
@@ -633,6 +763,21 @@ __all__ = [
     GetUserBuyStatusRequest,
     GetUserBuyStatusResponseBody,
     GetUserBuyStatusResponse,
+    InitAiAppScanRequest,
+    InitAiAppScanResponseBody,
+    InitAiAppScanResponse,
+    ListAiAppByPageRequest,
+    ListAiAppByPageResponseBody,
+    ListAiAppByPageResponse,
+    ListAiAppRiskEventRequest,
+    ListAiAppRiskEventResponseBody,
+    ListAiAppRiskEventResponse,
+    ListAiAppRiskEventByPageRequest,
+    ListAiAppRiskEventByPageResponseBody,
+    ListAiAppRiskEventByPageResponse,
+    ListAiAppWarningByPageRequest,
+    ListAiAppWarningByPageResponseBody,
+    ListAiAppWarningByPageResponse,
     ListAnswerLibRequest,
     ListAnswerLibResponseBody,
     ListAnswerLibResponse,
@@ -707,15 +852,25 @@ __all__ = [
     QueryCallbackByPageRequest,
     QueryCallbackByPageResponseBody,
     QueryCallbackByPageResponse,
+    QueryLabelConfigRequest,
+    QueryLabelConfigResponseBody,
+    QueryLabelConfigResponse,
     RecoverAppConfigHistoryRequest,
     RecoverAppConfigHistoryResponseBody,
     RecoverAppConfigHistoryResponse,
     StopOnlineTestRequest,
     StopOnlineTestResponseBody,
     StopOnlineTestResponse,
+    UpdateAiAppScanStatusRequest,
+    UpdateAiAppScanStatusResponseBody,
+    UpdateAiAppScanStatusResponse,
     UpdateBackupConfigRequest,
     UpdateBackupConfigResponseBody,
     UpdateBackupConfigResponse,
+    UpdateEventStatusRequest,
+    UpdateEventStatusShrinkRequest,
+    UpdateEventStatusResponseBody,
+    UpdateEventStatusResponse,
     UpdateImageLibRequest,
     UpdateImageLibResponseBody,
     UpdateImageLibResponse,
@@ -726,6 +881,9 @@ __all__ = [
     UpdateKeywordLibRequest,
     UpdateKeywordLibResponseBody,
     UpdateKeywordLibResponse,
+    UpdateMetaLogRequest,
+    UpdateMetaLogResponseBody,
+    UpdateMetaLogResponse,
     UpdateOssCheckResultsBatchFeedbackRequest,
     UpdateOssCheckResultsBatchFeedbackResponseBody,
     UpdateOssCheckResultsBatchFeedbackResponse,
@@ -744,7 +902,9 @@ __all__ = [
     UpdateServiceConfigRequest,
     UpdateServiceConfigResponseBody,
     UpdateServiceConfigResponse,
+    ChartsValueY,
     AddAnswerSampleResponseBodyResult,
+    AddAppConfigResponseBodyData,
     AddImages2LibResponseBodyData,
     AddKeywordLibResponseBodyDataKeywordsResult,
     AddKeywordLibResponseBodyData,
@@ -760,6 +920,19 @@ __all__ = [
     DescribeOssV2ResultResponseBodyItemsLabelDetails,
     DescribeOssV2ResultResponseBodyItemsLabelDetails2,
     DescribeOssV2ResultResponseBodyItems,
+    GetAiAppDetailResponseBodyChartY,
+    GetAiAppDetailResponseBodyChart,
+    GetAiAppDetailResponseBodyRiskEventsLabels,
+    GetAiAppDetailResponseBodyRiskEvents,
+    GetAiAppDetailTopoRequestTimeQuery,
+    GetAiAppDetailTopoResponseBodyData,
+    GetAiAppNodeDetailResponseBodyEventDataLabels,
+    GetAiAppNodeDetailResponseBodyEventData,
+    GetAiAppStatsResponseBodyDataLabelStatChartTreeChart,
+    GetAiAppStatsResponseBodyDataLabelStatChart,
+    GetAiAppStatsResponseBodyDataY,
+    GetAiAppStatsResponseBodyData,
+    GetAiAppTraceDetailResponseBodyLabels,
     GetBackupBucketsListResponseBodyData,
     GetBucketsListResponseBodyData,
     GetCipStatsResponseBodyDataLabelStatChartImageTreeChar,
@@ -773,6 +946,9 @@ __all__ = [
     GetCipStatsResponseBodyData,
     GetFeatureConfigResponseBodyData,
     GetGuardLogStatsResponseBodyData,
+    GetGuardStatusResponseBodyLogScanStatus,
+    GetGuardStatusResponseBodyProtectionStatus,
+    GetGuardStatusResponseBodyRealTimeStatus,
     GetKeywordImportResultResponseBodyData,
     GetKeywordLibResponseBodyData,
     GetOssCheckFreezeResultResponseBodyItemsLabelDetails,
@@ -788,6 +964,7 @@ __all__ = [
     GetOssCheckTaskInfoResponseBodyConfig,
     GetPromptTestResultResponseBodyResultLabelDetails,
     GetPromptTestResultResponseBodyResult,
+    GetRiskStatsResponseBodyRiskStats,
     GetScanResultResponseBodyDataItemsResult,
     GetScanResultResponseBodyDataItems,
     GetScanResultResponseBodyData,
@@ -803,6 +980,15 @@ __all__ = [
     GetTextScanResultResponseBodyData,
     GetTuneProposalByIdResponseBodyData,
     GetUserBuyStatusResponseBodyData,
+    InitAiAppScanResponseBodyAuthInfo,
+    ListAiAppByPageResponseBodyItemsRiskEventsLabels,
+    ListAiAppByPageResponseBodyItemsRiskEvents,
+    ListAiAppByPageResponseBodyItems,
+    ListAiAppRiskEventResponseBodyData,
+    ListAiAppRiskEventByPageResponseBodyItems,
+    ListAiAppWarningByPageResponseBodyExt,
+    ListAiAppWarningByPageResponseBodyItemsLabels,
+    ListAiAppWarningByPageResponseBodyItems,
     ListAnswerLibResponseBodyData,
     ListAppConfigHistoryResponseBodyHistory,
     ListAppConfigHistoryResponseBodyPublish,

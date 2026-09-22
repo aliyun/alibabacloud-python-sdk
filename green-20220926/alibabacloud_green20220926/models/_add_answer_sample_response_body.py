@@ -64,8 +64,6 @@ class AddAnswerSampleResponseBody(DaraModel):
 
         return self
 
-
-
 class AddAnswerSampleResponseBodyResult(DaraModel):
     def __init__(
         self,

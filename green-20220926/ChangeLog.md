@@ -1,3 +1,7 @@
+2026-09-22 Version: 1.13.4
+- Update API ExportCipStats: add request parameters Query.
+
+
 2026-08-07 Version: 1.12.0
 - Support API GetGuardLogStats.
 - Support API GetUploadContent.

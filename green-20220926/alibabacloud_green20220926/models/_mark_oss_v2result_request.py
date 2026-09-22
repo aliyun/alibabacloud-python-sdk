@@ -14,11 +14,24 @@ class MarkOssV2ResultRequest(DaraModel):
         start_date: str = None,
         task_name: str = None,
     ):
+        # The end time. The time format is YYYY-MM-DD HH:mm:ss.
         self.end_date = end_date
+        # The freeze type. This parameter is required when Operation is set to freeze. Valid values:
+        # - ACL: Modify file permissions.
+        # - COPY: Move the file directory. Description of the destination directory: 1. The file directory selected when the task was created takes priority. 2. If automatic freezing was not enabled during creation, or ACL freezing was configured, the directory selected during freezing in the console is used. 3. The default directory is alicip_riskfile_backup/.
         self.freeze_type = freeze_type
+        # The processing operation. Valid values:
+        # 
+        # - freeze: Freeze.
+        # - unfreeze: Unfreeze.
+        # - misreport: Non-violation false positive.
+        # - missOut: Violation missed.
         self.operation = operation
+        # The request ID.
         self.request_ids = request_ids
+        # The start time. The time format is YYYY-MM-DD HH:mm:ss.
         self.start_date = start_date
+        # The task name.
         self.task_name = task_name
 
     def validate(self):

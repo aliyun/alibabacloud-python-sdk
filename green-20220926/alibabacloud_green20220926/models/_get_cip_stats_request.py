@@ -38,12 +38,7 @@ class GetCipStatsRequest(DaraModel):
         self.start_date = start_date
         # The UID of the RAM user.
         self.sub_uid = sub_uid
-        # The type. Valid values:
-        # - **cip**: Content Moderation invocation usage statistics.
-        # - **risk_level**: Content Moderation risk level statistics.
-        # - **content_moderation**: AI safety guardrail content compliance risk level and tag statistics.
-        # - **sensitive_data**: AI safety guardrail sensitive data risk level and tag statistics.
-        # - **prompt_attack**: AI safety guardrail prompt risk level and tag statistics.
+        # The type. Valid values: **cip**: Content Moderation invoke volume statistics. **risk_level**: Content Moderation risk level statistics. **content_moderation**: AI security guardrail content compliance risk level and tag statistics. **sensitive_data**: AI security guardrail sensitive data risk level and tag statistics. **prompt_attack**: AI security guardrail prompt risk level and tag statistics.
         self.type = type
 
     def validate(self):

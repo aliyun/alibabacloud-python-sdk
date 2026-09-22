@@ -43,10 +43,10 @@ class Client(OpenApiClient):
             'cn-shanghai-finance-1': 'green.aliyuncs.com',
             'cn-north-2-gov-1': 'green.aliyuncs.com',
             'cn-shenzhen': 'green-cip.cn-shenzhen.aliyuncs.com',
-            'cn-shanghai': 'green-cip.cn-shanghai.aliyuncs.com',
-            'cn-hangzhou': 'green-cip.cn-hangzhou.aliyuncs.com',
             'cn-beijing': 'green-cip.cn-beijing.aliyuncs.com',
-            'ap-southeast-1': 'green-cip.ap-southeast-1.aliyuncs.com'
+            'cn-shanghai': 'green-cip.cn-shanghai.aliyuncs.com',
+            'ap-southeast-1': 'green-cip.ap-southeast-1.aliyuncs.com',
+            'cn-hangzhou': 'green-cip.cn-hangzhou.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('green', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -238,6 +238,96 @@ class Client(OpenApiClient):
     ) -> main_models.AddAppAgentResponse:
         runtime = RuntimeOptions()
         return await self.add_app_agent_with_options_async(request, runtime)
+
+    def add_app_config_with_options(
+        self,
+        request: main_models.AddAppConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddAppConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.classify):
+            query['Classify'] = request.classify
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.sys_app_id):
+            query['SysAppId'] = request.sys_app_id
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddAppConfig',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddAppConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_app_config_with_options_async(
+        self,
+        request: main_models.AddAppConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddAppConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.classify):
+            query['Classify'] = request.classify
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.sys_app_id):
+            query['SysAppId'] = request.sys_app_id
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddAppConfig',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddAppConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_app_config(
+        self,
+        request: main_models.AddAppConfigRequest,
+    ) -> main_models.AddAppConfigResponse:
+        runtime = RuntimeOptions()
+        return self.add_app_config_with_options(request, runtime)
+
+    async def add_app_config_async(
+        self,
+        request: main_models.AddAppConfigRequest,
+    ) -> main_models.AddAppConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.add_app_config_with_options_async(request, runtime)
 
     def add_image_lib_with_options(
         self,
@@ -2745,6 +2835,8 @@ class Client(OpenApiClient):
             body['ExportType'] = request.export_type
         if not DaraCore.is_null(request.label):
             body['Label'] = request.label
+        if not DaraCore.is_null(request.query):
+            body['Query'] = request.query
         if not DaraCore.is_null(request.resource_type):
             body['ResourceType'] = request.resource_type
         if not DaraCore.is_null(request.service_code):
@@ -2793,6 +2885,8 @@ class Client(OpenApiClient):
             body['ExportType'] = request.export_type
         if not DaraCore.is_null(request.label):
             body['Label'] = request.label
+        if not DaraCore.is_null(request.query):
+            body['Query'] = request.query
         if not DaraCore.is_null(request.resource_type):
             body['ResourceType'] = request.resource_type
         if not DaraCore.is_null(request.service_code):
@@ -3326,6 +3420,596 @@ class Client(OpenApiClient):
     ) -> main_models.ExportTextScanResultResponse:
         runtime = RuntimeOptions()
         return await self.export_text_scan_result_with_options_async(request, runtime)
+
+    def get_ai_app_detail_with_options(
+        self,
+        request: main_models.GetAiAppDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAiAppDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAiAppDetail',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAiAppDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_ai_app_detail_with_options_async(
+        self,
+        request: main_models.GetAiAppDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAiAppDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAiAppDetail',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAiAppDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_ai_app_detail(
+        self,
+        request: main_models.GetAiAppDetailRequest,
+    ) -> main_models.GetAiAppDetailResponse:
+        runtime = RuntimeOptions()
+        return self.get_ai_app_detail_with_options(request, runtime)
+
+    async def get_ai_app_detail_async(
+        self,
+        request: main_models.GetAiAppDetailRequest,
+    ) -> main_models.GetAiAppDetailResponse:
+        runtime = RuntimeOptions()
+        return await self.get_ai_app_detail_with_options_async(request, runtime)
+
+    def get_ai_app_detail_stat_with_options(
+        self,
+        request: main_models.GetAiAppDetailStatRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAiAppDetailStatResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAiAppDetailStat',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAiAppDetailStatResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_ai_app_detail_stat_with_options_async(
+        self,
+        request: main_models.GetAiAppDetailStatRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAiAppDetailStatResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAiAppDetailStat',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAiAppDetailStatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_ai_app_detail_stat(
+        self,
+        request: main_models.GetAiAppDetailStatRequest,
+    ) -> main_models.GetAiAppDetailStatResponse:
+        runtime = RuntimeOptions()
+        return self.get_ai_app_detail_stat_with_options(request, runtime)
+
+    async def get_ai_app_detail_stat_async(
+        self,
+        request: main_models.GetAiAppDetailStatRequest,
+    ) -> main_models.GetAiAppDetailStatResponse:
+        runtime = RuntimeOptions()
+        return await self.get_ai_app_detail_stat_with_options_async(request, runtime)
+
+    def get_ai_app_detail_topo_with_options(
+        self,
+        tmp_req: main_models.GetAiAppDetailTopoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAiAppDetailTopoResponse:
+        tmp_req.validate()
+        request = main_models.GetAiAppDetailTopoShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.time_query):
+            request.time_query_shrink = Utils.array_to_string_with_specified_style(tmp_req.time_query, 'TimeQuery', 'json')
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.time_query_shrink):
+            query['TimeQuery'] = request.time_query_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAiAppDetailTopo',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAiAppDetailTopoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_ai_app_detail_topo_with_options_async(
+        self,
+        tmp_req: main_models.GetAiAppDetailTopoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAiAppDetailTopoResponse:
+        tmp_req.validate()
+        request = main_models.GetAiAppDetailTopoShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.time_query):
+            request.time_query_shrink = Utils.array_to_string_with_specified_style(tmp_req.time_query, 'TimeQuery', 'json')
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.time_query_shrink):
+            query['TimeQuery'] = request.time_query_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAiAppDetailTopo',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAiAppDetailTopoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_ai_app_detail_topo(
+        self,
+        request: main_models.GetAiAppDetailTopoRequest,
+    ) -> main_models.GetAiAppDetailTopoResponse:
+        runtime = RuntimeOptions()
+        return self.get_ai_app_detail_topo_with_options(request, runtime)
+
+    async def get_ai_app_detail_topo_async(
+        self,
+        request: main_models.GetAiAppDetailTopoRequest,
+    ) -> main_models.GetAiAppDetailTopoResponse:
+        runtime = RuntimeOptions()
+        return await self.get_ai_app_detail_topo_with_options_async(request, runtime)
+
+    def get_ai_app_node_detail_with_options(
+        self,
+        request: main_models.GetAiAppNodeDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAiAppNodeDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.node_id):
+            query['NodeId'] = request.node_id
+        if not DaraCore.is_null(request.node_name):
+            query['NodeName'] = request.node_name
+        if not DaraCore.is_null(request.node_type):
+            query['NodeType'] = request.node_type
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAiAppNodeDetail',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAiAppNodeDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_ai_app_node_detail_with_options_async(
+        self,
+        request: main_models.GetAiAppNodeDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAiAppNodeDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.node_id):
+            query['NodeId'] = request.node_id
+        if not DaraCore.is_null(request.node_name):
+            query['NodeName'] = request.node_name
+        if not DaraCore.is_null(request.node_type):
+            query['NodeType'] = request.node_type
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAiAppNodeDetail',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAiAppNodeDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_ai_app_node_detail(
+        self,
+        request: main_models.GetAiAppNodeDetailRequest,
+    ) -> main_models.GetAiAppNodeDetailResponse:
+        runtime = RuntimeOptions()
+        return self.get_ai_app_node_detail_with_options(request, runtime)
+
+    async def get_ai_app_node_detail_async(
+        self,
+        request: main_models.GetAiAppNodeDetailRequest,
+    ) -> main_models.GetAiAppNodeDetailResponse:
+        runtime = RuntimeOptions()
+        return await self.get_ai_app_node_detail_with_options_async(request, runtime)
+
+    def get_ai_app_overview_with_options(
+        self,
+        request: main_models.GetAiAppOverviewRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAiAppOverviewResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAiAppOverview',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAiAppOverviewResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_ai_app_overview_with_options_async(
+        self,
+        request: main_models.GetAiAppOverviewRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAiAppOverviewResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAiAppOverview',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAiAppOverviewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_ai_app_overview(
+        self,
+        request: main_models.GetAiAppOverviewRequest,
+    ) -> main_models.GetAiAppOverviewResponse:
+        runtime = RuntimeOptions()
+        return self.get_ai_app_overview_with_options(request, runtime)
+
+    async def get_ai_app_overview_async(
+        self,
+        request: main_models.GetAiAppOverviewRequest,
+    ) -> main_models.GetAiAppOverviewResponse:
+        runtime = RuntimeOptions()
+        return await self.get_ai_app_overview_with_options_async(request, runtime)
+
+    def get_ai_app_stats_with_options(
+        self,
+        request: main_models.GetAiAppStatsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAiAppStatsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.by_month):
+            query['ByMonth'] = request.by_month
+        if not DaraCore.is_null(request.end_date):
+            query['EndDate'] = request.end_date
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.start_date):
+            query['StartDate'] = request.start_date
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAiAppStats',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAiAppStatsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_ai_app_stats_with_options_async(
+        self,
+        request: main_models.GetAiAppStatsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAiAppStatsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.by_month):
+            query['ByMonth'] = request.by_month
+        if not DaraCore.is_null(request.end_date):
+            query['EndDate'] = request.end_date
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.start_date):
+            query['StartDate'] = request.start_date
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAiAppStats',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAiAppStatsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_ai_app_stats(
+        self,
+        request: main_models.GetAiAppStatsRequest,
+    ) -> main_models.GetAiAppStatsResponse:
+        runtime = RuntimeOptions()
+        return self.get_ai_app_stats_with_options(request, runtime)
+
+    async def get_ai_app_stats_async(
+        self,
+        request: main_models.GetAiAppStatsRequest,
+    ) -> main_models.GetAiAppStatsResponse:
+        runtime = RuntimeOptions()
+        return await self.get_ai_app_stats_with_options_async(request, runtime)
+
+    def get_ai_app_trace_detail_with_options(
+        self,
+        request: main_models.GetAiAppTraceDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAiAppTraceDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.trace_id):
+            query['TraceId'] = request.trace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAiAppTraceDetail',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAiAppTraceDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_ai_app_trace_detail_with_options_async(
+        self,
+        request: main_models.GetAiAppTraceDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAiAppTraceDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.trace_id):
+            query['TraceId'] = request.trace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAiAppTraceDetail',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAiAppTraceDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_ai_app_trace_detail(
+        self,
+        request: main_models.GetAiAppTraceDetailRequest,
+    ) -> main_models.GetAiAppTraceDetailResponse:
+        runtime = RuntimeOptions()
+        return self.get_ai_app_trace_detail_with_options(request, runtime)
+
+    async def get_ai_app_trace_detail_async(
+        self,
+        request: main_models.GetAiAppTraceDetailRequest,
+    ) -> main_models.GetAiAppTraceDetailResponse:
+        runtime = RuntimeOptions()
+        return await self.get_ai_app_trace_detail_with_options_async(request, runtime)
 
     def get_answer_import_progress_with_options(
         self,
@@ -4051,7 +4735,12 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.GetGuardLogStatsResponse:
         request.validate()
-        req = open_api_util_models.OpenApiRequest()
+        query = {}
+        if not DaraCore.is_null(request.commodity_code):
+            query['CommodityCode'] = request.commodity_code
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
         params = open_api_util_models.Params(
             action = 'GetGuardLogStats',
             version = '2022-09-26',
@@ -4074,7 +4763,12 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.GetGuardLogStatsResponse:
         request.validate()
-        req = open_api_util_models.OpenApiRequest()
+        query = {}
+        if not DaraCore.is_null(request.commodity_code):
+            query['CommodityCode'] = request.commodity_code
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
         params = open_api_util_models.Params(
             action = 'GetGuardLogStats',
             version = '2022-09-26',
@@ -4104,6 +4798,80 @@ class Client(OpenApiClient):
     ) -> main_models.GetGuardLogStatsResponse:
         runtime = RuntimeOptions()
         return await self.get_guard_log_stats_with_options_async(request, runtime)
+
+    def get_guard_status_with_options(
+        self,
+        request: main_models.GetGuardStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetGuardStatusResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.commodity_code):
+            query['CommodityCode'] = request.commodity_code
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetGuardStatus',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetGuardStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_guard_status_with_options_async(
+        self,
+        request: main_models.GetGuardStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetGuardStatusResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.commodity_code):
+            query['CommodityCode'] = request.commodity_code
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetGuardStatus',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetGuardStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_guard_status(
+        self,
+        request: main_models.GetGuardStatusRequest,
+    ) -> main_models.GetGuardStatusResponse:
+        runtime = RuntimeOptions()
+        return self.get_guard_status_with_options(request, runtime)
+
+    async def get_guard_status_async(
+        self,
+        request: main_models.GetGuardStatusRequest,
+    ) -> main_models.GetGuardStatusResponse:
+        runtime = RuntimeOptions()
+        return await self.get_guard_status_with_options_async(request, runtime)
 
     def get_image_scene_label_conf_with_options(
         self,
@@ -5022,6 +5790,166 @@ class Client(OpenApiClient):
     ) -> main_models.GetPromptTestResultResponse:
         runtime = RuntimeOptions()
         return await self.get_prompt_test_result_with_options_async(request, runtime)
+
+    def get_qps_stats_with_options(
+        self,
+        request: main_models.GetQpsStatsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetQpsStatsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetQpsStats',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetQpsStatsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_qps_stats_with_options_async(
+        self,
+        request: main_models.GetQpsStatsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetQpsStatsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetQpsStats',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetQpsStatsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_qps_stats(
+        self,
+        request: main_models.GetQpsStatsRequest,
+    ) -> main_models.GetQpsStatsResponse:
+        runtime = RuntimeOptions()
+        return self.get_qps_stats_with_options(request, runtime)
+
+    async def get_qps_stats_async(
+        self,
+        request: main_models.GetQpsStatsRequest,
+    ) -> main_models.GetQpsStatsResponse:
+        runtime = RuntimeOptions()
+        return await self.get_qps_stats_with_options_async(request, runtime)
+
+    def get_risk_stats_with_options(
+        self,
+        request: main_models.GetRiskStatsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetRiskStatsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.classify):
+            query['Classify'] = request.classify
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetRiskStats',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetRiskStatsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_risk_stats_with_options_async(
+        self,
+        request: main_models.GetRiskStatsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetRiskStatsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.classify):
+            query['Classify'] = request.classify
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetRiskStats',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetRiskStatsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_risk_stats(
+        self,
+        request: main_models.GetRiskStatsRequest,
+    ) -> main_models.GetRiskStatsResponse:
+        runtime = RuntimeOptions()
+        return self.get_risk_stats_with_options(request, runtime)
+
+    async def get_risk_stats_async(
+        self,
+        request: main_models.GetRiskStatsRequest,
+    ) -> main_models.GetRiskStatsResponse:
+        runtime = RuntimeOptions()
+        return await self.get_risk_stats_with_options_async(request, runtime)
 
     def get_scan_num_with_options(
         self,
@@ -6062,6 +6990,424 @@ class Client(OpenApiClient):
     ) -> main_models.GetUserBuyStatusResponse:
         runtime = RuntimeOptions()
         return await self.get_user_buy_status_with_options_async(request, runtime)
+
+    def init_ai_app_scan_with_options(
+        self,
+        request: main_models.InitAiAppScanRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.InitAiAppScanResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.channel):
+            query['Channel'] = request.channel
+        if not DaraCore.is_null(request.commodity_code):
+            query['CommodityCode'] = request.commodity_code
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'InitAiAppScan',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InitAiAppScanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def init_ai_app_scan_with_options_async(
+        self,
+        request: main_models.InitAiAppScanRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.InitAiAppScanResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.channel):
+            query['Channel'] = request.channel
+        if not DaraCore.is_null(request.commodity_code):
+            query['CommodityCode'] = request.commodity_code
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'InitAiAppScan',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InitAiAppScanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def init_ai_app_scan(
+        self,
+        request: main_models.InitAiAppScanRequest,
+    ) -> main_models.InitAiAppScanResponse:
+        runtime = RuntimeOptions()
+        return self.init_ai_app_scan_with_options(request, runtime)
+
+    async def init_ai_app_scan_async(
+        self,
+        request: main_models.InitAiAppScanRequest,
+    ) -> main_models.InitAiAppScanResponse:
+        runtime = RuntimeOptions()
+        return await self.init_ai_app_scan_with_options_async(request, runtime)
+
+    def list_ai_app_by_page_with_options(
+        self,
+        request: main_models.ListAiAppByPageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAiAppByPageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAiAppByPage',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAiAppByPageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_ai_app_by_page_with_options_async(
+        self,
+        request: main_models.ListAiAppByPageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAiAppByPageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAiAppByPage',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAiAppByPageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_ai_app_by_page(
+        self,
+        request: main_models.ListAiAppByPageRequest,
+    ) -> main_models.ListAiAppByPageResponse:
+        runtime = RuntimeOptions()
+        return self.list_ai_app_by_page_with_options(request, runtime)
+
+    async def list_ai_app_by_page_async(
+        self,
+        request: main_models.ListAiAppByPageRequest,
+    ) -> main_models.ListAiAppByPageResponse:
+        runtime = RuntimeOptions()
+        return await self.list_ai_app_by_page_with_options_async(request, runtime)
+
+    def list_ai_app_risk_event_with_options(
+        self,
+        request: main_models.ListAiAppRiskEventRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAiAppRiskEventResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAiAppRiskEvent',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAiAppRiskEventResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_ai_app_risk_event_with_options_async(
+        self,
+        request: main_models.ListAiAppRiskEventRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAiAppRiskEventResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAiAppRiskEvent',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAiAppRiskEventResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_ai_app_risk_event(
+        self,
+        request: main_models.ListAiAppRiskEventRequest,
+    ) -> main_models.ListAiAppRiskEventResponse:
+        runtime = RuntimeOptions()
+        return self.list_ai_app_risk_event_with_options(request, runtime)
+
+    async def list_ai_app_risk_event_async(
+        self,
+        request: main_models.ListAiAppRiskEventRequest,
+    ) -> main_models.ListAiAppRiskEventResponse:
+        runtime = RuntimeOptions()
+        return await self.list_ai_app_risk_event_with_options_async(request, runtime)
+
+    def list_ai_app_risk_event_by_page_with_options(
+        self,
+        request: main_models.ListAiAppRiskEventByPageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAiAppRiskEventByPageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAiAppRiskEventByPage',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAiAppRiskEventByPageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_ai_app_risk_event_by_page_with_options_async(
+        self,
+        request: main_models.ListAiAppRiskEventByPageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAiAppRiskEventByPageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAiAppRiskEventByPage',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAiAppRiskEventByPageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_ai_app_risk_event_by_page(
+        self,
+        request: main_models.ListAiAppRiskEventByPageRequest,
+    ) -> main_models.ListAiAppRiskEventByPageResponse:
+        runtime = RuntimeOptions()
+        return self.list_ai_app_risk_event_by_page_with_options(request, runtime)
+
+    async def list_ai_app_risk_event_by_page_async(
+        self,
+        request: main_models.ListAiAppRiskEventByPageRequest,
+    ) -> main_models.ListAiAppRiskEventByPageResponse:
+        runtime = RuntimeOptions()
+        return await self.list_ai_app_risk_event_by_page_with_options_async(request, runtime)
+
+    def list_ai_app_warning_by_page_with_options(
+        self,
+        request: main_models.ListAiAppWarningByPageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAiAppWarningByPageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAiAppWarningByPage',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAiAppWarningByPageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_ai_app_warning_by_page_with_options_async(
+        self,
+        request: main_models.ListAiAppWarningByPageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAiAppWarningByPageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAiAppWarningByPage',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAiAppWarningByPageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_ai_app_warning_by_page(
+        self,
+        request: main_models.ListAiAppWarningByPageRequest,
+    ) -> main_models.ListAiAppWarningByPageResponse:
+        runtime = RuntimeOptions()
+        return self.list_ai_app_warning_by_page_with_options(request, runtime)
+
+    async def list_ai_app_warning_by_page_async(
+        self,
+        request: main_models.ListAiAppWarningByPageRequest,
+    ) -> main_models.ListAiAppWarningByPageResponse:
+        runtime = RuntimeOptions()
+        return await self.list_ai_app_warning_by_page_with_options_async(request, runtime)
 
     def list_answer_lib_with_options(
         self,
@@ -7374,6 +8720,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.app_id):
             query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.custom_order_num):
+            query['CustomOrderNum'] = request.custom_order_num
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
         if not DaraCore.is_null(request.region_id):
@@ -7408,6 +8756,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.app_id):
             query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.custom_order_num):
+            query['CustomOrderNum'] = request.custom_order_num
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
         if not DaraCore.is_null(request.region_id):
@@ -8195,6 +9545,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.query_callback_by_page_with_options_async(request, runtime)
 
+    def query_label_config_with_options(
+        self,
+        request: main_models.QueryLabelConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryLabelConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.classify):
+            query['Classify'] = request.classify
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryLabelConfig',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryLabelConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_label_config_with_options_async(
+        self,
+        request: main_models.QueryLabelConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryLabelConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.classify):
+            query['Classify'] = request.classify
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryLabelConfig',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryLabelConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_label_config(
+        self,
+        request: main_models.QueryLabelConfigRequest,
+    ) -> main_models.QueryLabelConfigResponse:
+        runtime = RuntimeOptions()
+        return self.query_label_config_with_options(request, runtime)
+
+    async def query_label_config_async(
+        self,
+        request: main_models.QueryLabelConfigRequest,
+    ) -> main_models.QueryLabelConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.query_label_config_with_options_async(request, runtime)
+
     def recover_app_config_history_with_options(
         self,
         request: main_models.RecoverAppConfigHistoryRequest,
@@ -8355,6 +9791,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.stop_online_test_with_options_async(request, runtime)
 
+    def update_ai_app_scan_status_with_options(
+        self,
+        request: main_models.UpdateAiAppScanStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAiAppScanStatusResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_ids):
+            query['AppIds'] = request.app_ids
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAiAppScanStatus',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAiAppScanStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_ai_app_scan_status_with_options_async(
+        self,
+        request: main_models.UpdateAiAppScanStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAiAppScanStatusResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_ids):
+            query['AppIds'] = request.app_ids
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAiAppScanStatus',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAiAppScanStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_ai_app_scan_status(
+        self,
+        request: main_models.UpdateAiAppScanStatusRequest,
+    ) -> main_models.UpdateAiAppScanStatusResponse:
+        runtime = RuntimeOptions()
+        return self.update_ai_app_scan_status_with_options(request, runtime)
+
+    async def update_ai_app_scan_status_async(
+        self,
+        request: main_models.UpdateAiAppScanStatusRequest,
+    ) -> main_models.UpdateAiAppScanStatusResponse:
+        runtime = RuntimeOptions()
+        return await self.update_ai_app_scan_status_with_options_async(request, runtime)
+
     def update_backup_config_with_options(
         self,
         request: main_models.UpdateBackupConfigRequest,
@@ -8436,6 +9950,104 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateBackupConfigResponse:
         runtime = RuntimeOptions()
         return await self.update_backup_config_with_options_async(request, runtime)
+
+    def update_event_status_with_options(
+        self,
+        tmp_req: main_models.UpdateEventStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateEventStatusResponse:
+        tmp_req.validate()
+        request = main_models.UpdateEventStatusShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.event_ids):
+            request.event_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.event_ids, 'EventIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.event_ids_shrink):
+            query['EventIds'] = request.event_ids_shrink
+        if not DaraCore.is_null(request.operation_code):
+            query['OperationCode'] = request.operation_code
+        if not DaraCore.is_null(request.operation_params):
+            query['OperationParams'] = request.operation_params
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateEventStatus',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateEventStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_event_status_with_options_async(
+        self,
+        tmp_req: main_models.UpdateEventStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateEventStatusResponse:
+        tmp_req.validate()
+        request = main_models.UpdateEventStatusShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.event_ids):
+            request.event_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.event_ids, 'EventIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.event_ids_shrink):
+            query['EventIds'] = request.event_ids_shrink
+        if not DaraCore.is_null(request.operation_code):
+            query['OperationCode'] = request.operation_code
+        if not DaraCore.is_null(request.operation_params):
+            query['OperationParams'] = request.operation_params
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateEventStatus',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateEventStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_event_status(
+        self,
+        request: main_models.UpdateEventStatusRequest,
+    ) -> main_models.UpdateEventStatusResponse:
+        runtime = RuntimeOptions()
+        return self.update_event_status_with_options(request, runtime)
+
+    async def update_event_status_async(
+        self,
+        request: main_models.UpdateEventStatusRequest,
+    ) -> main_models.UpdateEventStatusResponse:
+        runtime = RuntimeOptions()
+        return await self.update_event_status_with_options_async(request, runtime)
 
     def update_image_lib_with_options(
         self,
@@ -8702,6 +10314,88 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateKeywordLibResponse:
         runtime = RuntimeOptions()
         return await self.update_keyword_lib_with_options_async(request, runtime)
+
+    def update_meta_log_with_options(
+        self,
+        request: main_models.UpdateMetaLogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMetaLogResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.commodity_code):
+            query['CommodityCode'] = request.commodity_code
+        if not DaraCore.is_null(request.delivery_region):
+            query['DeliveryRegion'] = request.delivery_region
+        if not DaraCore.is_null(request.storage):
+            query['Storage'] = request.storage
+        if not DaraCore.is_null(request.ttl):
+            query['Ttl'] = request.ttl
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMetaLog',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMetaLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_meta_log_with_options_async(
+        self,
+        request: main_models.UpdateMetaLogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMetaLogResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.commodity_code):
+            query['CommodityCode'] = request.commodity_code
+        if not DaraCore.is_null(request.delivery_region):
+            query['DeliveryRegion'] = request.delivery_region
+        if not DaraCore.is_null(request.storage):
+            query['Storage'] = request.storage
+        if not DaraCore.is_null(request.ttl):
+            query['Ttl'] = request.ttl
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMetaLog',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMetaLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_meta_log(
+        self,
+        request: main_models.UpdateMetaLogRequest,
+    ) -> main_models.UpdateMetaLogResponse:
+        runtime = RuntimeOptions()
+        return self.update_meta_log_with_options(request, runtime)
+
+    async def update_meta_log_async(
+        self,
+        request: main_models.UpdateMetaLogRequest,
+    ) -> main_models.UpdateMetaLogResponse:
+        runtime = RuntimeOptions()
+        return await self.update_meta_log_with_options_async(request, runtime)
 
     def update_oss_check_results_batch_feedback_with_options(
         self,
@@ -9151,6 +10845,10 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            body['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.file_config):
             body['FileConfig'] = request.file_config
         if not DaraCore.is_null(request.keyword_filter_libs):
@@ -9201,6 +10899,10 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            body['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.file_config):
             body['FileConfig'] = request.file_config
         if not DaraCore.is_null(request.keyword_filter_libs):

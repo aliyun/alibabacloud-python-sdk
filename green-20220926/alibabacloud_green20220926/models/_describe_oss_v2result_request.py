@@ -19,13 +19,13 @@ class DescribeOssV2ResultRequest(DaraModel):
         self.bucket = bucket
         # The current page number.
         self.current_page = current_page
-        # The end time.
+        # The end time. Format: yyyy-MM-dd HH:mm:ss.
         self.end_date = end_date
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
         # The risk level.
         self.risk_level = risk_level
-        # The start time.
+        # The start time. Format: yyyy-MM-dd HH:mm:ss.
         self.start_date = start_date
         # The task name.
         self.task_name = task_name

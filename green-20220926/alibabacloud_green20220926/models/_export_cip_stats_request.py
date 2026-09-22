@@ -11,6 +11,7 @@ class ExportCipStatsRequest(DaraModel):
         end_date: str = None,
         export_type: str = None,
         label: str = None,
+        query: str = None,
         region_id: str = None,
         resource_type: str = None,
         service_code: str = None,
@@ -25,11 +26,13 @@ class ExportCipStatsRequest(DaraModel):
         # The end time of the query. Format: yyyy-MM-dd HH:mm:ss.
         self.end_date = end_date
         # The export type. Valid values:
-        # - **level**: export by risk level.
-        # - **label**: export by label.
+        # - **level**: Export by risk level.
+        # - **label**: Export by label.
         self.export_type = export_type
         # The task label to export.
         self.label = label
+        # The query condition.
+        self.query = query
         # The region ID.
         self.region_id = region_id
         # The resource type.
@@ -41,11 +44,11 @@ class ExportCipStatsRequest(DaraModel):
         # The UID of the RAM user.
         self.sub_uid = sub_uid
         # The type. Valid values:
-        # - **cip**: Content Moderation invocation volume statistics.
-        # - **risk_level**: Content Moderation risk level statistics.
-        # - **content_moderation**: AI safety guardrail content compliance risk level and tag statistics.
-        # - **sensitive_data**: AI safety guardrail sensitive data risk level and tag statistics.
-        # - **prompt_attack**: AI safety guardrail prompt risk level and tag statistics.
+        # - **cip**: Content Moderation invoke volume statistics.
+        # - **risk_level**: Content Moderation security risk level statistics.
+        # - **content_moderation**: AI Safety Guardrail content compliance risk level and tag statistics.
+        # - **sensitive_data**: AI Safety Guardrail sensitive data risk level and tag statistics.
+        # - **prompt_attack**: AI Safety Guardrail prompt risk level and tag statistics.
         self.type = type
 
     def validate(self):
@@ -67,6 +70,9 @@ class ExportCipStatsRequest(DaraModel):
 
         if self.label is not None:
             result['Label'] = self.label
+
+        if self.query is not None:
+            result['Query'] = self.query
 
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -101,6 +107,9 @@ class ExportCipStatsRequest(DaraModel):
 
         if m.get('Label') is not None:
             self.label = m.get('Label')
+
+        if m.get('Query') is not None:
+            self.query = m.get('Query')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

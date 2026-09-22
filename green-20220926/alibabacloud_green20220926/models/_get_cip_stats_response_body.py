@@ -17,7 +17,7 @@ class GetCipStatsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code, which is the same as the HTTP status code.
+        # The error code, which is consistent with the HTTP status code.
         self.code = code
         # The returned data.
         self.data = data
@@ -25,7 +25,7 @@ class GetCipStatsResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The further description of the error code.
         self.msg = msg
-        # The request ID assigned by the backend. You can use this ID to troubleshoot issues.
+        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -275,9 +275,9 @@ class GetCipStatsResponseBodyDataLabelStatChart(DaraModel):
         self.text_tree_chart = text_tree_chart
         # The total count.
         self.total_count = total_count
-        # The tree view.
+        # The tree chart.
         self.tree_chart = tree_chart
-        # The audio tree view.
+        # The audio tree chart.
         self.voice_tree_chart = voice_tree_chart
         # The X value of the coordinate point.
         self.x = x

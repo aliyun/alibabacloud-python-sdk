@@ -15,7 +15,7 @@ class GetGuardLogStatsResponseBody(DaraModel):
     ):
         # The data.
         self.data = data
-        # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
+        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
