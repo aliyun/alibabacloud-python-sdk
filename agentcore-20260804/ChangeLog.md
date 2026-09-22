@@ -1,3 +1,11 @@
+2026-09-22 Version: 2.1.1
+- Update API CreateManagedAgent: add request parameters body.subAgents.$.skills.
+- Update API CreateManagedAgent: add response parameters Body.data.subAgents.$.skills.
+- Update API GetManagedAgent: add response parameters Body.data.subAgents.$.skills.
+- Update API UpdateManagedAgent: add request parameters body.subAgents.$.skills.
+- Update API UpdateManagedAgent: add response parameters Body.data.subAgents.$.skills.
+
+
 2026-09-21 Version: 2.1.0
 - Support API GetWorkspaceAgenticFsMountRamAuthorizeUrl.
 - Support API ListSkillReferences.

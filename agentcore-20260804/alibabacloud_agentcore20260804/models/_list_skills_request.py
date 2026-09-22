@@ -17,11 +17,11 @@ class ListSkillsRequest(DaraModel):
         search: str = None,
         skill_name: str = None,
     ):
-        # The maximum number of entries to return per page.
+        # The maximum number of entries per page.
         self.max_results = max_results
         # The pagination token for the next page.
         self.next_token = next_token
-        # The sort field. The value download_count is supported. Default value: gmt_modified.
+        # The field by which to sort results. The value download_count is supported. Default value: gmt_modified.
         self.order_by = order_by
         # Filters results by owner.
         self.owner = owner

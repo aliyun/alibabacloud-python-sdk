@@ -17,7 +17,7 @@ class ListSkillsResponseBody(DaraModel):
     ):
         # The returned data.
         self.data = data
-        # The maximum number of entries to return per page.
+        # The maximum number of entries per page.
         self.max_results = max_results
         # The pagination token for the next page.
         self.next_token = next_token
@@ -153,8 +153,13 @@ class ListSkillsResponseBodyDataPageItems(DaraModel):
         self.description = description
         # The total number of downloads.
         self.download_count = download_count
+        # The draft mode. Valid values:
+        # - HEAD: The Skill has a persistent draft.
+        # - VERSIONED: Each edit creates a versioned draft.
+        # 
+        # The value is determined by the server. The caller uses this value to render the status column.
         self.draft_mode = draft_mode
-        # The version that is being edited.
+        # The version that is being edited. In HEAD draft mode, the value is HEAD.
         self.editing_version = editing_version
         # Indicates whether the Skill is enabled.
         self.enable = enable
@@ -168,7 +173,7 @@ class ListSkillsResponseBodyDataPageItems(DaraModel):
         self.online_cnt = online_cnt
         # The resource owner.
         self.owner = owner
-        # The version that is under review.
+        # The version that is under review. In HEAD draft mode, the value is HEAD.
         self.reviewing_version = reviewing_version
         # The visibility scope.
         self.scope = scope

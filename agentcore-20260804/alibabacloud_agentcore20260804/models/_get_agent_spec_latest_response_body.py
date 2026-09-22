@@ -67,7 +67,7 @@ class GetAgentSpecLatestResponseBodyData(DaraModel):
         self.content = content
         # The description.
         self.description = description
-        # The download count.
+        # The number of downloads.
         self.download_count = download_count
         # Indicates whether the AgentSpec is enabled.
         self.enable = enable
@@ -79,7 +79,7 @@ class GetAgentSpecLatestResponseBodyData(DaraModel):
         self.resource = resource
         # The visibility scope.
         self.scope = scope
-        # The list of skill references.
+        # The list of Skill references.
         self.skills = skills
         # The update time. This value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
@@ -199,7 +199,11 @@ class GetAgentSpecLatestResponseBodyDataSkills(DaraModel):
     ):
         # The name.
         self.name = name
+        # The Skill source type. Valid values:
+        # - REFERENCE: references AI Registry.
+        # - STATIC: statically bundled with the package.
         self.source_type = source_type
+        # The version selector for the reference. Defaults to LABEL/latest if omitted.
         self.version_selector = version_selector
 
     def validate(self):
@@ -242,7 +246,11 @@ class GetAgentSpecLatestResponseBodyDataSkillsVersionSelector(DaraModel):
         type: str = None,
         value: str = None,
     ):
+        # The version selector type. Valid values:
+        # - LABEL: selects by label.
+        # - VERSION: selects by specific version.
         self.type = type
+        # The selector value. If the type is LABEL, this value is a label name such as latest. If the type is VERSION, this value is a specific version number.
         self.value = value
 
     def validate(self):

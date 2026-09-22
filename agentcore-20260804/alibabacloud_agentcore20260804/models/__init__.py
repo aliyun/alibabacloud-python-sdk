@@ -496,6 +496,7 @@ from ._create_managed_agent_request import CreateManagedAgentRequestBodyRuntimeS
 from ._create_managed_agent_request import CreateManagedAgentRequestBodyRuntime
 from ._create_managed_agent_request import CreateManagedAgentRequestBodySkillsVersionSelector
 from ._create_managed_agent_request import CreateManagedAgentRequestBodySkills
+from ._create_managed_agent_request import CreateManagedAgentRequestBodySubAgentsSkills
 from ._create_managed_agent_request import CreateManagedAgentRequestBodySubAgents
 from ._create_managed_agent_request import CreateManagedAgentRequestBodyTemplateAiRegistry
 from ._create_managed_agent_request import CreateManagedAgentRequestBodyTemplate
@@ -521,6 +522,7 @@ from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyD
 from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataRuntime
 from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataSkillsVersionSelector
 from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataSkills
+from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataSubAgentsSkills
 from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataSubAgents
 from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataTemplateAiRegistry
 from ._create_managed_agent_response_body import CreateManagedAgentResponseBodyDataTemplate
@@ -655,6 +657,7 @@ from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataRun
 from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataRuntime
 from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataSkillsVersionSelector
 from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataSkills
+from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataSubAgentsSkills
 from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataSubAgents
 from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataTemplateAiRegistry
 from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataTemplate
@@ -888,6 +891,7 @@ from ._update_managed_agent_request import UpdateManagedAgentRequestBodyRuntimeS
 from ._update_managed_agent_request import UpdateManagedAgentRequestBodyRuntime
 from ._update_managed_agent_request import UpdateManagedAgentRequestBodySkillsVersionSelector
 from ._update_managed_agent_request import UpdateManagedAgentRequestBodySkills
+from ._update_managed_agent_request import UpdateManagedAgentRequestBodySubAgentsSkills
 from ._update_managed_agent_request import UpdateManagedAgentRequestBodySubAgents
 from ._update_managed_agent_request import UpdateManagedAgentRequestBodyTemplateAiRegistry
 from ._update_managed_agent_request import UpdateManagedAgentRequestBodyTemplate
@@ -913,6 +917,7 @@ from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyD
 from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataRuntime
 from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataSkillsVersionSelector
 from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataSkills
+from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataSubAgentsSkills
 from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataSubAgents
 from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataTemplateAiRegistry
 from ._update_managed_agent_response_body import UpdateManagedAgentResponseBodyDataTemplate
@@ -1507,6 +1512,7 @@ __all__ = [
     CreateManagedAgentRequestBodyRuntime,
     CreateManagedAgentRequestBodySkillsVersionSelector,
     CreateManagedAgentRequestBodySkills,
+    CreateManagedAgentRequestBodySubAgentsSkills,
     CreateManagedAgentRequestBodySubAgents,
     CreateManagedAgentRequestBodyTemplateAiRegistry,
     CreateManagedAgentRequestBodyTemplate,
@@ -1532,6 +1538,7 @@ __all__ = [
     CreateManagedAgentResponseBodyDataRuntime,
     CreateManagedAgentResponseBodyDataSkillsVersionSelector,
     CreateManagedAgentResponseBodyDataSkills,
+    CreateManagedAgentResponseBodyDataSubAgentsSkills,
     CreateManagedAgentResponseBodyDataSubAgents,
     CreateManagedAgentResponseBodyDataTemplateAiRegistry,
     CreateManagedAgentResponseBodyDataTemplate,
@@ -1666,6 +1673,7 @@ __all__ = [
     GetManagedAgentResponseBodyDataRuntime,
     GetManagedAgentResponseBodyDataSkillsVersionSelector,
     GetManagedAgentResponseBodyDataSkills,
+    GetManagedAgentResponseBodyDataSubAgentsSkills,
     GetManagedAgentResponseBodyDataSubAgents,
     GetManagedAgentResponseBodyDataTemplateAiRegistry,
     GetManagedAgentResponseBodyDataTemplate,
@@ -1899,6 +1907,7 @@ __all__ = [
     UpdateManagedAgentRequestBodyRuntime,
     UpdateManagedAgentRequestBodySkillsVersionSelector,
     UpdateManagedAgentRequestBodySkills,
+    UpdateManagedAgentRequestBodySubAgentsSkills,
     UpdateManagedAgentRequestBodySubAgents,
     UpdateManagedAgentRequestBodyTemplateAiRegistry,
     UpdateManagedAgentRequestBodyTemplate,
@@ -1924,6 +1933,7 @@ __all__ = [
     UpdateManagedAgentResponseBodyDataRuntime,
     UpdateManagedAgentResponseBodyDataSkillsVersionSelector,
     UpdateManagedAgentResponseBodyDataSkills,
+    UpdateManagedAgentResponseBodyDataSubAgentsSkills,
     UpdateManagedAgentResponseBodyDataSubAgents,
     UpdateManagedAgentResponseBodyDataTemplateAiRegistry,
     UpdateManagedAgentResponseBodyDataTemplate,

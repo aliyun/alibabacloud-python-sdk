@@ -54,7 +54,7 @@ class CreateSkillDraftRequestBody(DaraModel):
         # 
         # This parameter is required.
         self.skill_name = skill_name
-        # The draft version number to assign. If not specified, the version number is automatically incremented.
+        # The draft version number. If not specified, the version number is automatically incremented.
         self.target_version = target_version
 
     def validate(self):

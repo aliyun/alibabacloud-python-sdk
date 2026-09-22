@@ -15,7 +15,7 @@ class CreateManagedAgentRequest(DaraModel):
     ):
         # The request body.
         self.body = body
-        # The reserved idempotency token. The backend does not provide idempotency guarantees in the current version.
+        # The reserved idempotency token. The backend does not provide idempotency guarantees in the current release.
         self.client_token = client_token
 
     def validate(self):
@@ -64,7 +64,7 @@ class CreateManagedAgentRequestBody(DaraModel):
         template: main_models.CreateManagedAgentRequestBodyTemplate = None,
         tools: List[main_models.CreateManagedAgentRequestBodyTools] = None,
     ):
-        # Omit or set to [] during creation to indicate no AFS mounts. Set to null to reject. The total number of AFS and OSS mounts cannot exceed 10.
+        # The AgenticFS mount list. Omit or set to [] to indicate no AFS mounts. Set to null to reject. The total number of AFS and OSS mounts cannot exceed 10.
         self.agentic_fs_mounts = agentic_fs_mounts
         # The description of the managed agent.
         self.description = description
@@ -84,7 +84,7 @@ class CreateManagedAgentRequestBody(DaraModel):
         self.name = name
         # The network configuration.
         self.network = network
-        # The OSS mount list. A maximum of 10 entries are allowed.
+        # The OSS mount list. A maximum of 10 items are allowed.
         self.oss_mounts = oss_mounts
         # The runtime configuration.
         # 
@@ -305,7 +305,7 @@ class CreateManagedAgentRequestBodyTemplate(DaraModel):
         self,
         ai_registry: main_models.CreateManagedAgentRequestBodyTemplateAiRegistry = None,
     ):
-        # The AI registry template configuration.
+        # The AI Registry template configuration.
         self.ai_registry = ai_registry
 
     def validate(self):
@@ -336,11 +336,11 @@ class CreateManagedAgentRequestBodyTemplateAiRegistry(DaraModel):
         name: str = None,
         version: str = None,
     ):
-        # The name of the template in the AI registry.
+        # The name of the template in AI Registry.
         # 
         # This parameter is required.
         self.name = name
-        # The version of the template in the AI registry.
+        # The version of the template in AI Registry.
         self.version = version
 
     def validate(self):
@@ -374,6 +374,7 @@ class CreateManagedAgentRequestBodySubAgents(DaraModel):
         self,
         instruction: str = None,
         name: str = None,
+        skills: List[main_models.CreateManagedAgentRequestBodySubAgentsSkills] = None,
     ):
         # The sub-agent instruction.
         # 
@@ -383,9 +384,14 @@ class CreateManagedAgentRequestBodySubAgents(DaraModel):
         # 
         # This parameter is required.
         self.name = name
+        # The skills exclusively used by this sub-agent. Skill names must be unique within the same sub-agent. If not specified or an empty array is passed, no skills are configured.
+        self.skills = skills
 
     def validate(self):
-        pass
+        if self.skills:
+            for v1 in self.skills:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -398,6 +404,11 @@ class CreateManagedAgentRequestBodySubAgents(DaraModel):
         if self.name is not None:
             result['name'] = self.name
 
+        result['skills'] = []
+        if self.skills is not None:
+            for k1 in self.skills:
+                result['skills'].append(k1.to_map() if k1 else None)
+
         return result
 
     def from_map(self, m: dict = None):
@@ -407,6 +418,49 @@ class CreateManagedAgentRequestBodySubAgents(DaraModel):
 
         if m.get('name') is not None:
             self.name = m.get('name')
+
+        self.skills = []
+        if m.get('skills') is not None:
+            for k1 in m.get('skills'):
+                temp_model = main_models.CreateManagedAgentRequestBodySubAgentsSkills()
+                self.skills.append(temp_model.from_map(k1))
+
+        return self
+
+class CreateManagedAgentRequestBodySubAgentsSkills(DaraModel):
+    def __init__(
+        self,
+        name: str = None,
+        version: str = None,
+    ):
+        # The skill name used by the sub-agent. Declared as optional for compatibility, but the backend validates that each entry is required.
+        self.name = name
+        # The optional version number. If omitted, set to null, or left blank, the latest version is resolved.
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.name is not None:
+            result['name'] = self.name
+
+        if self.version is not None:
+            result['version'] = self.version
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+
+        if m.get('version') is not None:
+            self.version = m.get('version')
 
         return self
 
@@ -422,9 +476,13 @@ class CreateManagedAgentRequestBodySkills(DaraModel):
         # 
         # This parameter is required.
         self.name = name
+        # The skill source type. Valid values:
+        # - REFERENCE: referenced from AI Registry.
+        # - STATIC: statically bundled with the package.
         self.source_type = source_type
         # The skill version.
         self.version = version
+        # The version selector for the reference. Defaults to LABEL/latest if omitted. Currently supports LABEL/latest.
         self.version_selector = version_selector
 
     def validate(self):
@@ -473,7 +531,11 @@ class CreateManagedAgentRequestBodySkillsVersionSelector(DaraModel):
         type: str = None,
         value: str = None,
     ):
+        # The version selector type. Valid values:
+        # - LABEL: select by label.
+        # - VERSION: select by specific version.
         self.type = type
+        # The selector value. When the type is LABEL, specify a label name such as latest. When the type is VERSION, specify a specific version number.
         self.value = value
 
     def validate(self):
@@ -513,7 +575,7 @@ class CreateManagedAgentRequestBodyRuntime(DaraModel):
         # 
         # This parameter is required.
         self.compute = compute
-        # The sandbox auto-scaling and session configuration.
+        # The sandbox auto scaling and session configuration.
         self.hpa = hpa
         # The session policy configuration.
         # 
@@ -566,7 +628,7 @@ class CreateManagedAgentRequestBodyRuntimeSessionPolicy(DaraModel):
         header_name: str = None,
         type: str = None,
     ):
-        # The name of the HTTP header used for session affinity. This parameter takes effect when sessionPolicy.type is set to ISOLATED_HEADER_FIELD.
+        # The name of the HTTP header used for session affinity. This parameter takes effect only when sessionPolicy.type is set to ISOLATED_HEADER_FIELD.
         self.header_name = header_name
         # The session policy type.
         # 
@@ -608,15 +670,15 @@ class CreateManagedAgentRequestBodyRuntimeHpa(DaraModel):
         min_sandbox_count: int = None,
         session_ttl_seconds: int = None,
     ):
-        # Specifies whether to enable auto-scaling. This field is validated as required by the backend when hpa is present.
+        # Specifies whether to enable auto scaling. Required when hpa is present, as validated by the backend.
         self.enabled = enabled
-        # The maximum number of active sessions per sandbox. This field is validated as required by the backend when hpa is present.
+        # The maximum number of active sessions per sandbox. Required when hpa is present, as validated by the backend.
         self.max_concurrent_sessions_per_sandbox = max_concurrent_sessions_per_sandbox
-        # The maximum number of sandboxes. Required when HPA is enabled. The value must be greater than or equal to the minimum value.
+        # The maximum number of sandboxes. Required when HPA is enabled and must be greater than or equal to the minimum value.
         self.max_sandbox_count = max_sandbox_count
         # The minimum number of sandboxes. Required when HPA is enabled.
         self.min_sandbox_count = min_sandbox_count
-        # The time-to-live (TTL) for a session after inactivity, in seconds. This field is validated as required by the backend when hpa is present.
+        # The time-to-live for an inactive session, in seconds. Required when hpa is present, as validated by the backend.
         self.session_ttl_seconds = session_ttl_seconds
 
     def validate(self):
@@ -701,9 +763,9 @@ class CreateManagedAgentRequestBodyOssMounts(DaraModel):
         path: str = None,
         read_only: bool = None,
     ):
-        # The OSS bucket name. This field is validated as required by the backend for each mount entry.
+        # The OSS bucket name. Required for each mount item as validated by the backend.
         self.bucket_name = bucket_name
-        # The absolute mount path in the container. This field is validated as required by the backend for each mount entry.
+        # The absolute mount path in the container. Required for each mount item as validated by the backend.
         self.mount_path = mount_path
         # The relative object prefix within the bucket. If not specified, the entire bucket is mounted.
         self.path = path
@@ -904,15 +966,15 @@ class CreateManagedAgentRequestBodyModelQuota(DaraModel):
         period_type: str = None,
         usage_limit: int = None,
     ):
-        # Specifies whether to enable the token quota. Default value: true. Set to false to disable and delete existing quota rules.
+        # Specifies whether to enable token quota. Default value: true. Set to false to disable and delete existing quota rules.
         self.enabled = enabled
-        # The quota limit type. This field is validated as required by the backend when the quota is enabled. Fixed value: token.
+        # The quota limit type. Required when quota is enabled, as validated by the backend. Fixed value: token.
         self.limit_type = limit_type
-        # The statistical period of the quota. This field is validated as required by the backend when the quota is enabled. Valid values:
+        # The quota statistical period. Required when quota is enabled, as validated by the backend. Valid values:
         # - day: daily.
         # - month: monthly.
         self.period_type = period_type
-        # The maximum number of tokens that can be consumed within a single period. This field is validated as required by the backend when the quota is enabled. The value must be greater than 0.
+        # The maximum number of tokens allowed within a single period. Required when quota is enabled, as validated by the backend. The value must be greater than 0.
         self.usage_limit = usage_limit
 
     def validate(self):
@@ -1162,13 +1224,13 @@ class CreateManagedAgentRequestBodyAgenticFsMounts(DaraModel):
         read_only: bool = None,
         server: str = None,
     ):
-        # The subdirectory under /mnt/agenticfs/ in the container. This field is validated as required by the backend for each mount entry. Mount targets must not be duplicated or have parent-child overlaps.
+        # The subdirectory under /mnt/agenticfs/ in the container. Required for each mount item as validated by the backend. Mount targets must not be duplicated or have parent-child overlaps.
         self.mount_path = mount_path
-        # A non-empty relative directory that exists under the AccessPoint. This field is validated as required by the backend for each mount entry. Root directories, absolute paths, and parent directory segments are not allowed.
+        # The non-empty relative directory that exists under the AccessPoint. Required for each mount item as validated by the backend. Root directories, absolute paths, and parent directory segments are not allowed.
         self.path = path
         # Specifies whether to mount in read-only mode. Default value: false. This is not a RAM role read-only policy.
         self.read_only = read_only
-        # The AccessPoint domain name. This field is validated as required by the backend for each mount entry. Do not include the protocol, port, or path. Use the DomainName value from the NAS ListAccessPoints response.
+        # The AccessPoint domain name. Required for each mount item as validated by the backend. Do not include the protocol, port, or path. Use the DomainName from the NAS ListAccessPoints response.
         self.server = server
 
     def validate(self):
