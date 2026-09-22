@@ -1,3 +1,6 @@
+2026-09-22 Version: 7.11.6
+- Generated python 2014-05-26 for Ecs.
+
 2026-09-14 Version: 7.11.5
 - Update API CreateSimulatedSystemEvents: add request parameters TriggerRealOps.
 

@@ -23,7 +23,7 @@ class DescribeActivationsResponseBody(DaraModel):
         self.next_token = next_token
         # The page number.
         self.page_number = page_number
-        # The number of entries per page for paging.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id

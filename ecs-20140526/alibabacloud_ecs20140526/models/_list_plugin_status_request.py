@@ -29,7 +29,7 @@ class ListPluginStatusRequest(DaraModel):
         # 
         # Default value: 10.
         self.max_results = max_results
-        # The plugin name. The full character set is supported. The name can be up to 255 characters in length.
+        # The plugin name. Full character set is supported. The name can be up to 255 characters in length.
         # 
         # - If you do not specify this parameter, the status of all installed plugins on the instance is queried.
         # 
@@ -41,9 +41,9 @@ class ListPluginStatusRequest(DaraModel):
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # > This parameter is about to go offline. Use NextToken and MaxResults to perform a paging query instead.
+        # > This parameter will be offline soon. Use NextToken and MaxResults to complete paged query operations. Paging is handled by these parameters instead.
         self.page_number = page_number
-        # > This parameter is about to go offline. Use NextToken and MaxResults to perform a paging query instead.
+        # > This parameter will be offline soon. Use NextToken and MaxResults to complete paged query operations. Paging is handled by these parameters instead.
         self.page_size = page_size
         # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 

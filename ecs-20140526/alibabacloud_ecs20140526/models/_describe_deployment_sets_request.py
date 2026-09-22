@@ -40,7 +40,7 @@ class DescribeDeploymentSetsRequest(DaraModel):
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries per page for a paged query.
+        # The number of entries per page for the paged query.
         # 
         # Maximum value: 50.
         # 
@@ -54,12 +54,12 @@ class DescribeDeploymentSetsRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The deployment strategy. Valid values:
         # 
-        # - Availability: high availability.
-        # - AvailabilityGroup: high availability for deployment set groups.
-        # - LowLatency: low network latency.
+        # - Availability: high availability strategy.
+        # - AvailabilityGroup: high availability group strategy.
+        # - LowLatency: low network latency strategy.
         self.strategy = strategy
         # The deployment type. Valid values:
-        # - host: physical server
+        # - host: physical machine
         # - sw: vSwitch
         # - rack: rack
         # 

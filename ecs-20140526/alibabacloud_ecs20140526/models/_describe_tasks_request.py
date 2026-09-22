@@ -28,7 +28,7 @@ class DescribeTasksRequest(DaraModel):
         self.end_time = end_time
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number of the results.
+        # The page number of the query results.
         # 
         # Minimum value: 1.
         # 
@@ -55,7 +55,7 @@ class DescribeTasksRequest(DaraModel):
         # - ImportImage: import an image.
         # - ExportImage: export an image.
         # - RedeployInstance: redeploy an ECS instance.
-        # - ModifyDiskSpec: change the cloud disk type.
+        # - ModifyDiskSpec: change the type of a cloud disk.
         # - ArchiveSnapshot: archive a snapshot.
         self.task_action = task_action
         # The task group ID.

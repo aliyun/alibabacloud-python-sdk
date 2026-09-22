@@ -23,7 +23,7 @@ class DescribeManagedInstancesResponseBody(DaraModel):
         self.next_token = next_token
         # The page number of the managed instance list.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page as specified in the request.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -128,17 +128,17 @@ class DescribeManagedInstancesResponseBodyInstances(DaraModel):
         self.internet_ip = internet_ip
         # The internal IP address of the managed instance.
         self.intranet_ip = intranet_ip
-        # The number of times that Cloud Assistant tasks were run on the managed instance.
+        # The number of times that Cloud Assistant tasks have been executed on the managed instance.
         self.invocation_count = invocation_count
-        # The time when the last Cloud Assistant task was run.
+        # The time when the last Cloud Assistant task was executed. The time is displayed in ISO 8601 format in UTC.
         self.last_invoked_time = last_invoked_time
-        # The machine ID of the managed instance.
+        # The machine code of the managed instance.
         self.machine_id = machine_id
         # The operating system of the managed instance.
         self.os_type = os_type
-        # The version of the operating system.
+        # The version information of the operating system.
         self.os_version = os_version
-        # The registration time of the managed instance.
+        # The time when the managed instance was registered. The time is displayed in ISO 8601 format in UTC.
         self.registration_time = registration_time
         # The ID of the resource group to which the managed instance belongs.
         self.resource_group_id = resource_group_id
@@ -271,7 +271,7 @@ class DescribeManagedInstancesResponseBodyInstancesTags(DaraModel):
     ):
         # The tag key of the managed instance. Valid values of N: 1 to 20. The tag key cannot be an empty string.
         # 
-        # If you use a single tag to filter resources, the resource count with this tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources that have all specified tags attached cannot exceed 1,000. If the resource count exceeds 1,000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query resources.
+        # If you use a single tag to filter resources, the resource count with the specified tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources that have all specified tags attached cannot exceed 1,000. If the resource count exceeds 1,000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
         # 
         # The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.tag_key = tag_key

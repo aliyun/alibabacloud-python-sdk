@@ -30,16 +30,17 @@ class DescribeAutoProvisioningGroupsRequest(DaraModel):
         self.auto_provisioning_group_name = auto_provisioning_group_name
         # The list of statuses of auto-provisioning groups.
         self.auto_provisioning_group_status = auto_provisioning_group_status
+        # The type of the auto-provisioning group. Valid values: request, maintain, and candidate.
         self.auto_provisioning_group_types = auto_provisioning_group_types
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number of the paging query to return.
+        # The page number of the list to return in a paging query.
         # 
         # Minimum value: 1.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries per page in the paging query. Settings:
+        # The number of entries per page in a paging query.
         # 
         # Maximum value: 100.
         # 

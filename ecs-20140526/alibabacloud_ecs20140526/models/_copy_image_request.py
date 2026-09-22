@@ -27,18 +27,18 @@ class CopyImageRequest(DaraModel):
         resource_owner_id: int = None,
         tag: List[main_models.CopyImageRequestTag] = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The description of the copied image. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.destination_description = destination_description
-        # The name of the copied image. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `aliyun` or `acs:`. The name cannot contain `http://` or `https://`. The name can contain digits, periods (.), colons (:), underscores (_), and hyphens (-).
+        # The name of the copied image. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`. It can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
         self.destination_image_name = destination_image_name
-        # The ID of the destination region to which the image is copied.
+        # The ID of the destination region.
         self.destination_region_id = destination_region_id
         # Specifies whether to perform only a dry run. Valid values:
         # 
-        # - true: performs only a dry run. The system checks whether your AccessKey pair is valid, whether Resource Access Management (RAM) user authorization is complete, and whether the required parameters are specified. If the request fails the dry run, an error message is returned. If the request passes the dry run, the error code `DryRunOperation` is returned.
-        # - false: performs a dry run and sends the request. If the request passes the dry run, a 2XX HTTP status code is returned and the operation is Normal.
+        # - true: performs only a dry run. The system checks the request for potential issues, including the AccessKey pair, the authorization of the Resource Access Management (RAM) user, and whether required parameters are specified. If the request fails the dry run, the corresponding error message is returned. If the request passes the dry run, the error code `DryRunOperation` is returned.
+        # - false: performs a dry run and sends the Normal request. If the request passes the dry run, a 2XX HTTP status code is returned and the operation is performed.
         # 
         # Default value: false.
         self.dry_run = dry_run
@@ -48,7 +48,7 @@ class CopyImageRequest(DaraModel):
         # 
         # - true: encrypts the copied image.
         # - false: does not encrypt the copied image.
-        # - Not specified: determined by the backend. For more information, see the supplementary description below.
+        # - Not specified: depends on backend logic. For more information, see the supplementary description below.
         # 
         # Default value: not specified.
         self.encrypted = encrypted
@@ -66,7 +66,7 @@ class CopyImageRequest(DaraModel):
         self.region_id = region_id
         # The resource group ID of the copied image. If you do not set this parameter, the copied image belongs to the default resource group.
         # 
-        # > If you are a Resource Access Management (RAM) user and invoke this operation with the `ResourceGroupId` parameter left empty, take note of the following: if the RAM user does not have permissions on the default resource group, the error message `Forbidden: User not authorized to operate on the specified resource` is returned. Set the `ResourceGroupId` parameter to a resource group ID that the RAM user has permissions on, or grant the RAM user permissions on the default resource group by using the corresponding Alibaba Cloud account before you invoke this operation again. The `ResourceGroupId` parameter determines which resource group the replicated image belongs to.
+        # > If you are a Resource Access Management (RAM) user and invoke this operation with `ResourceGroupId` left empty, take note of the following: if the RAM user does not have permissions on the default resource group, the error message `Forbidden: User not authorized to operate on the specified resource` is returned. Settings a resource group ID that the RAM user has permissions on, or grant the RAM user permissions on the default resource group by using the corresponding Alibaba Cloud account before you invoke this operation again.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -197,9 +197,9 @@ class CopyImageRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the copied image. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
+        # The tag key of the copied image. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value of the copied image. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:`. The tag value cannot contain `http://` or `https://`.
+        # The tag value of the copied image. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:`. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

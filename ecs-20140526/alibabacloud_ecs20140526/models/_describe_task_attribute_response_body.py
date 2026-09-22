@@ -24,11 +24,11 @@ class DescribeTaskAttributeResponseBody(DaraModel):
         task_status: str = None,
         total_count: int = None,
     ):
-        # The time when the task was created.
+        # The time when the task was created. The time is displayed in ISO 8601 format in UTC.
         self.creation_time = creation_time
         # The number of failed tasks.
         self.failed_count = failed_count
-        # The time when the task was completed.
+        # The time when the task was completed. The time is displayed in ISO 8601 format in UTC.
         self.finished_time = finished_time
         self.operation_progress_set = operation_progress_set
         # The region ID.

@@ -20,7 +20,7 @@ class ModifyCommandRequest(DaraModel):
         timeout: int = None,
         working_dir: str = None,
     ):
-        # > This parameter is deprecated and does not take effect.
+        # > This parameter is deprecated and does not take effect even if specified.
         self.command_content = command_content
         # The command ID. You can call [DescribeCommands](https://help.aliyun.com/document_detail/64843.html) to query all available command IDs.
         # 
@@ -40,7 +40,7 @@ class ModifyCommandRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The maximum timeout period for the command to run on ECS instances. Unit: seconds. If the command cannot be completed within the specified timeout period, the command process is forcefully terminated by canceling the PID of the command.
+        # The maximum timeout period for the command to run on ECS instances. Unit: seconds. If the command cannot be completed within the specified timeout period, the command times out. When a timeout occurs, the command process is forcefully terminated by canceling the PID of the command.
         self.timeout = timeout
         # The execution path. The path can be up to 200 characters in length.
         self.working_dir = working_dir

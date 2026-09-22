@@ -22,16 +22,16 @@ class StopInstancesRequest(DaraModel):
     ):
         # The batch operation mode. Valid values:
         # 
-        # - AllTogether: all operations must succeed for the entire batch operation to be considered successful. If any operation fails, the entire batch operation fails and all executed operations are rolled back to the pre-operation state.
+        # - AllTogether: All operations must succeed for the entire batch operation to be considered successful. If any operation fails, the entire batch operation is considered failed, and all executed operations are rolled back to the pre-operation state.
         # 
-        # - SuccessFirst: each operation in the batch is executed independently. If an operation fails, other operations can still be executed and confirmed as successful. Successful operations are committed, and failed operations are marked as failed without affecting the results of other operations.
+        # - SuccessFirst: Each operation in the batch is executed independently. If an operation fails, other operations can still be executed and confirmed as successful. In this mode, successful operations are committed, and failed operations are marked as failed without affecting the results of other operations.
         # 
         # Default value: AllTogether.
         self.batch_optimization = batch_optimization
         # Specifies whether to send a dry run request. Valid values:
         # 
         # - true: sends a dry run request without stopping the instances. The system checks the required parameters, request format, and instance status. If the check fails, the corresponding error is returned. If the check succeeds, `DRYRUN.SUCCESS` is returned.
-        # > If the `BatchOptimization` parameter is set to `SuccessFirst`, the dry run result for `DryRun=true` returns only `DRYRUN.SUCCESS`.
+        # > If the BatchOptimization parameter is set to `SuccessFirst`, the dry run result for `DryRun=true` returns only `DRYRUN.SUCCESS`.
         # 
         # - false: sends a normal request. After the request passes the check, the instances are stopped.
         # 
@@ -45,7 +45,7 @@ class StopInstancesRequest(DaraModel):
         # 
         # Default value: false.
         self.force_stop = force_stop
-        # The instance IDs. Array length: 1 to 100.
+        # The instance ID array. Array length: 1 to 100.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -61,15 +61,15 @@ class StopInstancesRequest(DaraModel):
         #   - StopCharging: economical mode. After economical mode is enabled:
         #     - Billing for compute resources (vCPUs, memory, and GPUs), image license fees, and fixed bandwidth of static public IP addresses is suspended.
         #     - Billing for system disks, data disks, and fixed bandwidth of Elastic IP Addresses (EIPs) continues.
-        #     - Because compute resources are released, the instance may fail to restart due to insufficient resources. Try again later or change the instance type.
+        #     - Because compute resources are released, the instance may fail to start due to insufficient resources. Try again later or change the instance type.
         #     - If an EIP is associated with the instance before it is stopped, the IP address remains unchanged after the instance is restarted. Otherwise, the static public IP address may change, but the private IP address remains unchanged. 
         # 
         #     For more information, see [Economical mode](https://help.aliyun.com/document_detail/63353.html).
         #     >Notice: 
-        # If the instance does not support economical mode, the API does not return an error. Stopping the instance takes priority. Instance types that do not support economical mode include instances with local SSDs and subscription instances.
+        # If the instance does not support economical mode, the API does not return an error. The system prioritizes stopping the instance. Instance types that do not support economical mode include instances with local SSDs and subscription instances.
         #     
         # 
-        #   - KeepCharging: standard stop mode. After the instance is stopped, its resources are retained and billing continues. The instance type inventory and public IP address are also retained. If you stop the instance to replace the operating system, reinitialize a disk, change the instance type, or modify the private IP address, select this mode to avoid restart failures.
+        #   - KeepCharging: standard stop mode. After the instance is stopped, the instance resources are retained and billing continues. The ECS instance type inventory and public IP address are also retained. If you stop the instance to replace the operating system, reinitialize a disk, change the instance type, or modify the private IP address, select this mode to avoid startup failures.
         # 
         # Default value: If you [enable economical mode for VPC-connected instances](~~63353#default~~) and the conditions are met, the default value is `StopCharging`. Otherwise, the default value is `KeepCharging`.
         self.stopped_mode = stopped_mode

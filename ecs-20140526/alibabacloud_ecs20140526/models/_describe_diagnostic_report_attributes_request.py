@@ -14,7 +14,7 @@ class DescribeDiagnosticReportAttributesRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The diagnostic report ID.
+        # The ID of the diagnostic report.
         # 
         # This parameter is required.
         self.report_id = report_id

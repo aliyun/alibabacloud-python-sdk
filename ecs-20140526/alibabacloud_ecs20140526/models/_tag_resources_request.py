@@ -20,11 +20,11 @@ class TagResourcesRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the resource. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+        # The region ID of the resources. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The IDs of the resources. Array length: 1 to 50.
+        # The list of resource IDs. Array length: 1 to 50.
         # 
         # This parameter is required.
         self.resource_id = resource_id

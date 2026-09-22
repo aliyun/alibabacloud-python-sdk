@@ -25,7 +25,7 @@ class DescribeNetworkInterfaceAttributeRequest(DaraModel):
         # 
         # connectionTrackingConfiguration: queries the network connectivity tracking configuration.
         # 
-        # Default value:
+        # Default value: empty.
         self.attribute = attribute
         # The ID of the network interface controller (NIC).
         # 
@@ -33,7 +33,7 @@ class DescribeNetworkInterfaceAttributeRequest(DaraModel):
         self.network_interface_id = network_interface_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the network interface controller (NIC). You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+        # The region ID of the network interface controller (NIC). You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

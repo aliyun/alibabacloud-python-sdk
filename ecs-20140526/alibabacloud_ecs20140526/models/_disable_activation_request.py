@@ -22,7 +22,7 @@ class DisableActivationRequest(DaraModel):
         self.owner_id = owner_id
         # The region ID. The following regions are supported: China (Qingdao), China (Beijing), China (Zhangjiakou), China (Hohhot), China (Ulanqab), China (Hangzhou), China (Shanghai), China (Shenzhen), China (Heyuan), China (Guangzhou), China (Chengdu), Hong Kong (China), Singapore, Japan (Tokyo), US (Silicon Valley), and US (Virginia).
         # 
-        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the region IDs and other information.
         # 
         # This parameter is required.
         self.region_id = region_id

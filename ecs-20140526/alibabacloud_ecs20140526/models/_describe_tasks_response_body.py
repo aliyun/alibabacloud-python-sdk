@@ -17,9 +17,9 @@ class DescribeTasksResponseBody(DaraModel):
         task_set: main_models.DescribeTasksResponseBodyTaskSet = None,
         total_count: int = None,
     ):
-        # The page number of the current page in a paged query.
+        # The page number of the current page in the paging query.
         self.page_number = page_number
-        # The number of entries on the current page.
+        # The number of entries per page.
         self.page_size = page_size
         # The region ID.
         self.region_id = region_id

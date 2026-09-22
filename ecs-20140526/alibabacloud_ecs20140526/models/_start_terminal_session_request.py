@@ -25,14 +25,14 @@ class StartTerminalSessionRequest(DaraModel):
         target_server: str = None,
         username: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The command to run after the session is initiated. The command can be up to 512 characters in length.
         # 
         # > After you specify CommandLine, you cannot specify PortNumber or TargetServer.
         self.command_line = command_line
-        # The network type of the WebSocket URL required for the remote connection to the instance. Valid values:
-        # - Internet: public network. This is the default value.
+        # The network type of the WebSocket URL required for establishing a remote connection to the instance. Valid values:
+        # - Internet: Internet. This is the default value.
         # - Intranet: internal network.
         self.connection_type = connection_type
         # The session encryption configuration.
@@ -46,7 +46,7 @@ class StartTerminalSessionRequest(DaraModel):
         # The name of the password for the user when using Session Manager on a Windows instance. The name can be up to 255 characters in length.
         # When you want to use Session Manager on a Windows instance as a non-default user (System), specify both Username and this parameter. To reduce the risk of password leaks, store the plaintext password in the parameter repository of operations management and specify only the password name here. For more information, see [Encryption parameters](https://help.aliyun.com/document_detail/186828.html).
         self.password_name = password_name
-        # The port number of the ECS instance for data forwarding. After this parameter is set, the Cloud Assistant Agent forwards data to the specified port number for port forwarding. For example, SSH uses port 22.
+        # The port number of the ECS instance for data forwarding. After this parameter is set, Cloud Assistant Agent forwards data to the specified port for port forwarding. For example, SSH uses port 22.
         # 
         # Default value: empty, which indicates that no port number is set for data forwarding.
         self.port_number = port_number
@@ -173,16 +173,16 @@ class StartTerminalSessionRequestEncryptionOptions(DaraModel):
         # Specifies whether to enable end-to-end encryption for the session connection.
         self.enabled = enabled
         # The KMS key ID.
-        # Note:
+        # Precautions:
         # - Only KMS symmetric keys are supported.
         # - This parameter can be specified only when the encryption mode is set to Kms.
         self.kmskey_id = kmskey_id
-        # The encryption pattern. Valid values:
-        # - Auto: Uses automatically negotiated secret key encryption for the session.
+        # The secret key encryption pattern. Valid values:
+        # - Auto: Uses an automatically negotiated key to encrypt the session.
         # - Kms: Uses a KMS key to encrypt the session.
         # - Default value: Auto.
         # 
-        # Note:
+        # Precautions:
         # - This parameter can be specified only when session encryption is enabled.
         self.mode = mode
 

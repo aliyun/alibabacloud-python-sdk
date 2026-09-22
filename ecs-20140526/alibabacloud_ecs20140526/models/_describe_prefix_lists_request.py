@@ -36,7 +36,7 @@ class DescribePrefixListsRequest(DaraModel):
         # 
         # Default value: 10.
         self.max_results = max_results
-        # The pagination token. Set this parameter to the value of `NextToken` returned in the previous call. You do not need to set this parameter for the first request.
+        # The pagination token. Set this parameter to the `NextToken` value returned in the previous call. You do not need to set this parameter for the first request.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id

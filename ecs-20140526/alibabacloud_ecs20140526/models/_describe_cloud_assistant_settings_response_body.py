@@ -183,12 +183,12 @@ class DescribeCloudAssistantSettingsResponseBodySessionManagerConfig(DaraModel):
         self,
         session_manager_enabled: bool = None,
     ):
-        # Specifies whether the Cloud Assistant session feature is enabled. Valid values:
+        # The toggle for the Cloud Assistant session feature. Valid values:
         # * true: Enabled.
         # * false: Disabled.
         # 
-        # Note:
-        # * Enabling or disabling the session feature takes effect across all regions.
+        # Precautions:
+        # * Enabling or disabling the session feature takes effect in all regions.
         self.session_manager_enabled = session_manager_enabled
 
     def validate(self):
@@ -231,7 +231,7 @@ class DescribeCloudAssistantSettingsResponseBodyResourceUsageConfig(DaraModel):
         self.log_size_limit = log_size_limit
         # The maximum memory usage allowed for the Cloud Assistant Agent main process.
         self.memory_limit = memory_limit
-        # The maximum number of consecutive times that CPU or memory resources usage can exceed the limit. When this limit is reached, Cloud Assistant Agent automatically stops running.
+        # The maximum number of consecutive times that CPU or memory resources usage can exceed the limit. After this limit is reached, the Cloud Assistant Agent automatically stops running.
         self.overload_limit = overload_limit
 
     def validate(self):
@@ -404,11 +404,11 @@ class DescribeCloudAssistantSettingsResponseBodyAgentUpgradeConfig(DaraModel):
         time_zone: str = None,
     ):
         self.allowed_upgrade_windows = allowed_upgrade_windows
-        # Indicates whether Cloud Assistant Agent checks for and performs updates immediately upon startup.
+        # Indicates whether the Cloud Assistant Agent checks for and performs updates immediately upon startup.
         self.bootstrap_upgrade = bootstrap_upgrade
-        # Indicates whether Cloud Assistant Agent is prohibited from checking for and performing updates.
+        # Indicates whether the Cloud Assistant Agent is prohibited from checking for and performing updates.
         self.disable_upgrade = disable_upgrade
-        # Indicates whether the custom Agent upgrade configuration is enabled. If the value is false or empty, the default behavior is to attempt an upgrade every 30 minutes.
+        # Indicates whether the custom Agent upgrade configuration is enabled. If the query result is false or empty, the default behavior of attempting an upgrade every 30 minutes is retained.
         self.enabled = enabled
         # The time zone of the allowed upgrade time windows.
         self.time_zone = time_zone

@@ -16,7 +16,7 @@ class DescribeImageFromFamilyRequest(DaraModel):
     ):
         # The name of the image family.
         # 
-        # Image families are supported for custom images, public images, community images, and shared images. For more information, see [Image family overview](https://help.aliyun.com/document_detail/174241.html).
+        # Custom images, public images, community images, and shared images all support image families. For more information, see [Image family overview](https://help.aliyun.com/document_detail/174241.html).
         # 
         # This parameter is required.
         self.image_family = image_family

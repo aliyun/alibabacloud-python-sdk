@@ -22,15 +22,15 @@ class DescribeImagePipelineExecutionsRequest(DaraModel):
         status: str = None,
         tag: List[main_models.DescribeImagePipelineExecutionsRequestTag] = None,
     ):
-        # The ID of the image build task.
+        # The image build task ID.
         self.execution_id = execution_id
-        # The ID of the image template.
+        # The image template ID.
         self.image_pipeline_id = image_pipeline_id
-        # The maximum number of entries per page for paging. Valid values: 1 to 500.
+        # The maximum number of entries per page for paging queries. Valid values: 1 to 500.
         # 
         # Default value: 50.
         self.max_results = max_results
-        # The pagination token. Set this parameter to the value of NextToken returned in the previous call. You do not need to set this parameter for the first request.
+        # The query token. Set the value to the NextToken value returned in the previous call to this operation. You do not need to set this parameter for the first request.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -42,20 +42,20 @@ class DescribeImagePipelineExecutionsRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The status of the image build task. You can specify multiple values at the same time. Separate multiple values with commas (,). Example: `BUILDING,DISTRIBUTING`. Valid values:
         # 
-        # - PREPARING: The task is being prepared. Resources such as the temporary intermediate instance are being created.
-        # - REPAIRING: The task is being repaired. The source image is being repaired.
-        # - BUILDING: The task is being built. Custom commands are being run and the image is being created.
+        # - PREPARING: The task is being prepared. Resources such as temporary intermediate instances are being created.
+        # - REPAIRING: The source image is being repaired.
+        # - BUILDING: The task is building. Custom commands are being run and the image is being created.
         # - TESTING: The task is being tested. Custom test commands are being run.
-        # - DISTRIBUTING: The task is being distributed. Image copying and sharing are being performed.
+        # - DISTRIBUTING: The image is being distributed. Image copying and sharing are being performed.
         # - RELEASING: Resources are being reclaimed. Temporary resources generated during the build process are being released.
         # - SUCCESS: The task succeeded.
         # - PARTITION_SUCCESS: The task partially succeeded. The image was built, but exceptions may have occurred during distribution or resource cleanup.
-        # - FAILED: The task failed.
+        # - FAILED: The task failed to build the image.
         # - TEST_FAILED: The test failed. The image was created, but the test failed.
-        # - CANCELLING: The task is being canceled.
-        # - CANCELLED: The task was canceled.
+        # - CANCELLING: The build process is being canceled.
+        # - CANCELLED: The build process was canceled.
         # 
-        # > If this parameter is empty, image build tasks in all states are queried.
+        # > If this parameter is empty, image build tasks in all states are queried by default.
         self.status = status
         # The tags.
         self.tag = tag
@@ -154,9 +154,9 @@ class DescribeImagePipelineExecutionsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag. Valid values of N: 1 to 20.
+        # The tag key. Valid values of N: 1 to 20.
         self.key = key
-        # The value of the tag. Valid values of N: 1 to 20.
+        # The tag value. Valid values of N: 1 to 20.
         self.value = value
 
     def validate(self):

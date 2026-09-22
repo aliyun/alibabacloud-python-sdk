@@ -14,7 +14,7 @@ class DescribePortRangeListsResponseBody(DaraModel):
         port_range_lists: List[main_models.DescribePortRangeListsResponseBodyPortRangeLists] = None,
         request_id: str = None,
     ):
-        # The pagination token returned in this call. If this value is empty, no more data is available.
+        # The pagination token returned in this call. If the return value is empty, no more data is available.
         self.next_token = next_token
         # The port range list information.
         self.port_range_lists = port_range_lists
@@ -75,7 +75,7 @@ class DescribePortRangeListsResponseBodyPortRangeLists(DaraModel):
     ):
         # The number of associated resources.
         self.association_count = association_count
-        # The time when the port range list was created.
+        # The time when the port range list was created. The time is in ISO 8601 format and displayed in UTC.
         self.creation_time = creation_time
         # The description of the port range list.
         self.description = description

@@ -11,9 +11,9 @@ class CreateLaunchTemplateResponseBody(DaraModel):
         launch_template_version_number: int = None,
         request_id: str = None,
     ):
-        # The launch template ID.
+        # The ID of the launch template.
         self.launch_template_id = launch_template_id
-        # The launch template version number.
+        # The version number of the launch template.
         self.launch_template_version_number = launch_template_version_number
         # The request ID.
         self.request_id = request_id

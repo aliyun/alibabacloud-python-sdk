@@ -34,7 +34,7 @@ class ModifyCloudAssistantSettingsRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The Cloud Assistant resource usage configuration. This parameter takes effect only when the Cloud Assistant Agent version meets the following minimum requirements:
+        # The Cloud Assistant resource usage configuration. This setting takes effect only when the Cloud Assistant Agent version is not earlier than the following versions:
         # 
         # - Windows: 2.1.4.1065
         # 
@@ -203,8 +203,8 @@ class ModifyCloudAssistantSettingsRequestSessionManagerConfig(DaraModel):
         # * true: Enabled.
         # * false: Disabled.
         # 
-        # Note:
-        # * Enabling or disabling the session feature takes effect across all regions.
+        # Precautions:
+        # * Enabling or disabling the session feature takes effect in all regions.
         self.session_manager_enabled = session_manager_enabled
 
     def validate(self):
@@ -253,7 +253,7 @@ class ModifyCloudAssistantSettingsRequestResourceUsageConfig(DaraModel):
         # - Minimum value: 7.
         # - Maximum value: 365.
         self.log_file_count_limit = log_file_count_limit
-        # The maximum size of a single Cloud Assistant log file. You must specify the unit (B|KB|MB).
+        # The size limit of a single Cloud Assistant log file. You must specify the unit (B|KB|MB).
         # - Default value: 100MB.
         # - Minimum value: 10MB.
         # - Maximum value: 1024MB.
@@ -263,7 +263,7 @@ class ModifyCloudAssistantSettingsRequestResourceUsageConfig(DaraModel):
         # - Minimum value: 35MB.
         # - Maximum value: 1024MB.
         self.memory_limit = memory_limit
-        # The maximum number of consecutive times that CPU or memory resources usage can exceed the limit before the Cloud Assistant Agent automatically stops running.
+        # The maximum number of consecutive times that CPU or memory resources usage can exceed the limit. When this limit is reached, the Cloud Assistant Agent automatically stops running.
         # - Default value: 3.
         # - Minimum value: 3.
         self.overload_limit = overload_limit
@@ -336,18 +336,18 @@ class ModifyCloudAssistantSettingsRequestOssDeliveryConfig(DaraModel):
         # - AES256
         # - SM4
         self.encryption_algorithm = encryption_algorithm
-        # The ID of the customer master key (CMK) when the encryption method is set to KMS.
+        # The customer master key (CMK) ID when the encryption method is set to KMS.
         self.encryption_key_id = encryption_key_id
         # The OSS encryption method. Valid values:
-        # - Inherit: inherits the encryption method of the bucket.
-        # - OssManaged: OSS-managed encryption.
-        # - KMS: Key Management Service (KMS) encryption.
+        # - Inherit: Inherits the encryption method of the bucket.
+        # - OssManaged: Uses OSS-managed encryption.
+        # - KMS: Uses KMS-based encryption.
         self.encryption_type = encryption_type
-        # The directory prefix of the OSS bucket. The following limits apply:
+        # The directory prefix of the OSS bucket. Constraints:
         # - The prefix cannot exceed 254 characters in length.
         # - The prefix cannot start with a forward slash (/) or a backslash (\\).
         # 
-        # > Note: Set this parameter to an empty string ("") if no directory prefix is required. If a prefix was previously configured and is no longer needed, set this parameter to an empty string ("") to clear it.
+        # > Note: Pass an empty string ("") to indicate that no directory prefix is required. If a prefix was previously set and is no longer needed, pass an empty string ("") to clear it.
         self.prefix = prefix
 
     def validate(self):
@@ -413,17 +413,17 @@ class ModifyCloudAssistantSettingsRequestAgentUpgradeConfig(DaraModel):
         # 
         # The interval between time windows cannot be less than 1 hour.
         # 
-        # Format: Start time (HH:mm)-End time (HH:mm).
+        # Format: start time (HH:mm)-end time (HH:mm).
         # 
-        # Example: [
+        # For example, [
         # "02:00-03:00",
         # "05:00-06:00"
         # ]
-        # This indicates that upgrades are allowed daily from 02:00 to 03:00 and from 05:00 to 06:00 in the UTC time zone.
+        # indicates that upgrades are allowed daily from 02:00 to 03:00 and from 05:00 to 06:00 in the UTC time zone.
         self.allowed_upgrade_window = allowed_upgrade_window
-        # Specifies whether the Cloud Assistant Agent checks for updates and performs an upgrade immediately upon startup. Default value: true.
+        # Specifies whether the Cloud Assistant Agent checks for version updates and performs upgrades immediately upon startup. Default value: true.
         # 
-        # This parameter takes effect only when the Cloud Assistant Agent version meets the following minimum requirements:
+        # This setting takes effect only when the Cloud Assistant Agent version is not earlier than the following versions:
         # 
         # - Windows: 2.1.4.1065
         # 
@@ -431,20 +431,20 @@ class ModifyCloudAssistantSettingsRequestAgentUpgradeConfig(DaraModel):
         self.bootstrap_upgrade = bootstrap_upgrade
         # Specifies whether to prevent the Cloud Assistant Agent from checking for and performing updates. Default value: false.
         # 
-        # This parameter takes effect only when the Cloud Assistant Agent version meets the following minimum requirements:
+        # This setting takes effect only when the Cloud Assistant Agent version is not earlier than the following versions:
         # 
         # - Windows: 2.1.4.1065
         # 
         # - Linux: 2.2.4.1065
         self.disable_upgrade = disable_upgrade
-        # Specifies whether to enable the custom Agent upgrade configuration. If this parameter is set to false, the system attempts to upgrade the Agent every 30 minutes by default.
+        # Specifies whether to enable custom Agent upgrade configuration. If set to false, the default behavior of attempting an upgrade every 30 minutes is retained.
         # 
         # Default value: false.
         self.enabled = enabled
-        # The time zone for the allowed upgrade time windows. Default value: UTC.
-        # The time zone can be specified in the following formats:
-        # - Full time zone name, such as Asia/Shanghai or America/Los_Angeles.
-        # - GMT offset from Greenwich Mean Time, such as GMT+8:00 or GMT-7:00. Leading zeros are not supported for the hour value.
+        # The time zone for the allowed upgrade time windows. The default time zone is UTC.
+        # The time zone can be specified in the following two formats:
+        # - Full time zone name: such as Asia/Shanghai or America/Los_Angeles.
+        # - GMT offset from Greenwich Mean Time: such as GMT+8:00 or GMT-7:00. Leading zeros are not supported for the hour value.
         self.time_zone = time_zone
 
     def validate(self):

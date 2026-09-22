@@ -23,7 +23,7 @@ class DescribeAutoProvisioningGroupHistoryResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of scheduling tasks queried.
+        # The total number of queried scheduling tasks.
         self.total_count = total_count
 
     def validate(self):

@@ -77,7 +77,7 @@ class DescribeImageFromFamilyResponseBodyImage(DaraModel):
         # - i386
         # - x86_64
         self.architecture = architecture
-        # The time when the image was created.
+        # The time when the image was created. The time follows the ISO 8601 standard in UTC.
         self.creation_time = creation_time
         # The description of the image.
         self.description = description
@@ -91,7 +91,7 @@ class DescribeImageFromFamilyResponseBodyImage(DaraModel):
         # The alias of the image owner. Valid values:
         # - system: public image.
         # - self: your custom image.
-        # - others: shared image from other users.
+        # - others: public image of another user.
         # - marketplace: Alibaba Cloud Marketplace image.
         self.image_owner_alias = image_owner_alias
         # The image version.
@@ -104,7 +104,7 @@ class DescribeImageFromFamilyResponseBodyImage(DaraModel):
         self.is_subscribed = is_subscribed
         # Indicates whether cloud-init is supported.
         self.is_support_cloudinit = is_support_cloudinit
-        # Indicates whether the image can run on an I/O optimized instance.
+        # Indicates whether the image can be used on I/O optimized instances.
         self.is_support_io_optimized = is_support_io_optimized
         # The China-locale display name of the operating system.
         self.osname = osname
@@ -127,9 +127,9 @@ class DescribeImageFromFamilyResponseBodyImage(DaraModel):
         # - CreateFailed: failed to be created
         self.status = status
         self.tags = tags
-        # The type of resource that references the image. Valid values:
-        # - instance: One or more ECS instances have been created from the image.
-        # - none: No ECS instances have been created from the image.
+        # The type of resource to which the image is associated. Valid values:
+        # - instance: one or more ECS instances have been created from the image.
+        # - none: no ECS instances have been created from the image.
         self.usage = usage
 
     def validate(self):

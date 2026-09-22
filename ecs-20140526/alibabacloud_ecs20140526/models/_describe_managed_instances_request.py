@@ -43,22 +43,22 @@ class DescribeManagedInstancesRequest(DaraModel):
         self.instance_ip = instance_ip
         # The name of the managed instance.
         self.instance_name = instance_name
-        # The value of the MachineId parameter specified when registering the managed instance. A maximum of 36 characters are allowed.
-        # Example registration script:
+        # The value of the MachineId parameter specified when the managed instance was registered. The value can be up to 36 characters in length.
+        # Sample registration script:
         # ```
         # aliyun-service --register \\
-        #   --RegionId=ap-southeast-1 \\
+        #   --RegionId=cn-hangznou \\
         #   --ActivationId=xxxxxxxxxxx \\
         #   --ActivationCode=xxxxxxxxx \\
-        #   --MachineId=xxxxxx \\ # Optional parameter that specifies the unique identifier of the machine
+        #   --MachineId=xxxxxx \\ # Optional parameter that specifies the unique identifier of the machine.
         #   --ForceResue                 
         # ```
         # 
-        # - If MachineId and ForceResult are specified during registration, Cloud Assistant generates a fixed managed instance ID for this MachineId.
+        # - If MachineId and ForceResult are specified during registration, Cloud Assistant generates a fixed managed instance ID for the MachineId.
         # - If MachineId is not explicitly specified, Cloud Assistant automatically generates a MachineId value based on the hardware information of the machine.
         # - Recommendation: Explicitly specify MachineId and ForceResult to mark the mapping between managed instances and on-premises machines.
         self.machine_id = machine_id
-        # The maximum number of entries per page for a paging query.
+        # The maximum number of entries per page in a paging query.
         # 
         # Maximum value: 50.
         # 
@@ -78,7 +78,7 @@ class DescribeManagedInstancesRequest(DaraModel):
         self.page_number = page_number
         # > This parameter is about to be deprecated. Use NextToken and MaxResults to complete paging query operations.
         self.page_size = page_size
-        # The region ID. Currently supported regions: China (Qingdao), China (Beijing), China (Zhangjiakou), China (Hohhot), China (Ulanqab), China (Hangzhou), China (Shanghai), China (Shenzhen), China (Heyuan), China (Guangzhou), China (Chengdu), Hong Kong (China), Singapore, Japan (Tokyo), US (Silicon Valley), and US (Virginia).
+        # The region ID. The following regions are supported: China (Qingdao), China (Beijing), China (Zhangjiakou), China (Hohhot), China (Ulanqab), China (Hangzhou), China (Shanghai), China (Shenzhen), China (Heyuan), China (Guangzhou), China (Chengdu), Hong Kong (China), Singapore, Japan (Tokyo), US (Silicon Valley), and US (Virginia).
         # 
         # You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query region IDs and other information.
         # 
@@ -229,7 +229,7 @@ class DescribeManagedInstancesRequestTag(DaraModel):
     ):
         # The tag key of the managed instance. Valid values of N: 1 to 20. The tag key cannot be an empty string.
         # 
-        # If you use a single tag to filter resources, the resource count with this tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources that have all specified tags attached cannot exceed 1,000. If the resource count exceeds 1,000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query resources.
+        # If you use a single tag to filter resources, the resource count with the specified tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources that have all specified tags attached cannot exceed 1,000. If the resource count exceeds 1,000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
         # 
         # The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key

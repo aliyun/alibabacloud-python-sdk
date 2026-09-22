@@ -23,7 +23,7 @@ class DescribeCloudAssistantStatusRequest(DaraModel):
     ):
         # The list of instance IDs.
         self.instance_id = instance_id
-        # The maximum number of entries per page for a paged query. If **InstanceId** is specified, this parameter is ignored.
+        # The maximum number of entries per page for a paged query. If **InstanceId** is set, this parameter is ignored.
         # 
         # Maximum value: 50.
         # 

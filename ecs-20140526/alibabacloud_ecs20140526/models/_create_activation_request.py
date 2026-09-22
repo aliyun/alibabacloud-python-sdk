@@ -36,14 +36,14 @@ class CreateActivationRequest(DaraModel):
         # 
         # Instances registered with the activation code created by this operation use this name as a prefix to generate sequential instance names. You can also specify a new instance name when registering a managed instance to override this default value.
         # 
-        # When registering a managed instance, if you specify the InstanceName value, the name `<InstanceName>-001` is generated, where the number of digits in `001` depends on the number of digits in the `InstanceCount` value. If you do not specify the InstanceName value, the hostname of the host is used as the instance name.
+        # When registering a managed instance, if a value is specified for InstanceName, the name `<InstanceName>-001` is generated, where the number of digits in `001` depends on the number of digits in the `InstanceCount` value. If no value is specified for InstanceName, the hostname of the host is used as the instance name.
         self.instance_name = instance_name
         # The IP addresses of hosts that are allowed to use the activation code. The value can be an IPv4 address, an IPv6 address, or a CIDR block.
         self.ip_address_range = ip_address_range
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID. The following regions are supported: China (Qingdao), China (Beijing), China (Zhangjiakou), China (Hohhot), China (Ulanqab), China (Hangzhou), China (Shanghai), China (Shenzhen), China (Heyuan), China (Guangzhou), China (Chengdu), Hong Kong (China), Singapore, Japan (Tokyo), US (Silicon Valley), and US (Virginia).
-        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the region IDs and other information.
+        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query region IDs and other information.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -166,7 +166,7 @@ class CreateActivationRequestTag(DaraModel):
     ):
         # The tag key of the managed instance activation code. Valid values of N: 1 to 20. The tag key cannot be an empty string.
         # 
-        # If you use a single tag to filter resources, the resource count with this tag cannot exceed 1000. If you use multiple tags to filter resources, the resource count with all specified tags attached cannot exceed 1000. If the resource count exceeds 1000, use the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query resources.
+        # If you use a single tag to filter resources, the resource count with the tag cannot exceed 1000. If you use multiple tags to filter resources, the resource count with all the specified tags attached cannot exceed 1000. If the resource count exceeds 1000, use the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query resources.
         # 
         # The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key
