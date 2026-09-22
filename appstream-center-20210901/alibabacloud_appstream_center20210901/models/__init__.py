@@ -120,9 +120,15 @@ from ._list_app_instance_group_response import ListAppInstanceGroupResponse
 from ._list_app_instances_request import ListAppInstancesRequest
 from ._list_app_instances_response_body import ListAppInstancesResponseBody
 from ._list_app_instances_response import ListAppInstancesResponse
+from ._list_apps_by_app_instance_group_id_request import ListAppsByAppInstanceGroupIdRequest
+from ._list_apps_by_app_instance_group_id_response_body import ListAppsByAppInstanceGroupIdResponseBody
+from ._list_apps_by_app_instance_group_id_response import ListAppsByAppInstanceGroupIdResponse
 from ._list_authorized_app_instance_group_by_user_request import ListAuthorizedAppInstanceGroupByUserRequest
 from ._list_authorized_app_instance_group_by_user_response_body import ListAuthorizedAppInstanceGroupByUserResponseBody
 from ._list_authorized_app_instance_group_by_user_response import ListAuthorizedAppInstanceGroupByUserResponse
+from ._list_authorized_apps_by_user_request import ListAuthorizedAppsByUserRequest
+from ._list_authorized_apps_by_user_response_body import ListAuthorizedAppsByUserResponseBody
+from ._list_authorized_apps_by_user_response import ListAuthorizedAppsByUserResponse
 from ._list_authorized_user_groups_request import ListAuthorizedUserGroupsRequest
 from ._list_authorized_user_groups_response_body import ListAuthorizedUserGroupsResponseBody
 from ._list_authorized_user_groups_response import ListAuthorizedUserGroupsResponse
@@ -171,17 +177,29 @@ from ._list_ota_task_response import ListOtaTaskResponse
 from ._list_persistent_app_instances_request import ListPersistentAppInstancesRequest
 from ._list_persistent_app_instances_response_body import ListPersistentAppInstancesResponseBody
 from ._list_persistent_app_instances_response import ListPersistentAppInstancesResponse
+from ._list_published_app_instance_group_request import ListPublishedAppInstanceGroupRequest
+from ._list_published_app_instance_group_response_body import ListPublishedAppInstanceGroupResponseBody
+from ._list_published_app_instance_group_response import ListPublishedAppInstanceGroupResponse
+from ._list_published_apps_request import ListPublishedAppsRequest
+from ._list_published_apps_response_body import ListPublishedAppsResponseBody
+from ._list_published_apps_response import ListPublishedAppsResponse
 from ._list_regions_request import ListRegionsRequest
 from ._list_regions_response_body import ListRegionsResponseBody
 from ._list_regions_response import ListRegionsResponse
 from ._list_tag_cloud_resources_request import ListTagCloudResourcesRequest
 from ._list_tag_cloud_resources_response_body import ListTagCloudResourcesResponseBody
 from ._list_tag_cloud_resources_response import ListTagCloudResourcesResponse
+from ._list_tag_resources_request import ListTagResourcesRequest
+from ._list_tag_resources_response_body import ListTagResourcesResponseBody
+from ._list_tag_resources_response import ListTagResourcesResponse
 from ._list_tenant_config_response_body import ListTenantConfigResponseBody
 from ._list_tenant_config_response import ListTenantConfigResponse
 from ._list_wuying_server_request import ListWuyingServerRequest
 from ._list_wuying_server_response_body import ListWuyingServerResponseBody
 from ._list_wuying_server_response import ListWuyingServerResponse
+from ._list_zones_request import ListZonesRequest
+from ._list_zones_response_body import ListZonesResponseBody
+from ._list_zones_response import ListZonesResponse
 from ._log_off_all_sessions_in_app_instance_group_request import LogOffAllSessionsInAppInstanceGroupRequest
 from ._log_off_all_sessions_in_app_instance_group_response_body import LogOffAllSessionsInAppInstanceGroupResponseBody
 from ._log_off_all_sessions_in_app_instance_group_response import LogOffAllSessionsInAppInstanceGroupResponse
@@ -245,6 +263,9 @@ from ._stop_wuying_server_response import StopWuyingServerResponse
 from ._tag_cloud_resources_request import TagCloudResourcesRequest
 from ._tag_cloud_resources_response_body import TagCloudResourcesResponseBody
 from ._tag_cloud_resources_response import TagCloudResourcesResponse
+from ._tag_resources_request import TagResourcesRequest
+from ._tag_resources_response_body import TagResourcesResponseBody
+from ._tag_resources_response import TagResourcesResponse
 from ._unassign_wuying_server_private_addresses_request import UnassignWuyingServerPrivateAddressesRequest
 from ._unassign_wuying_server_private_addresses_response_body import UnassignWuyingServerPrivateAddressesResponseBody
 from ._unassign_wuying_server_private_addresses_response import UnassignWuyingServerPrivateAddressesResponse
@@ -254,6 +275,9 @@ from ._unbind_response import UnbindResponse
 from ._untag_cloud_resources_request import UntagCloudResourcesRequest
 from ._untag_cloud_resources_response_body import UntagCloudResourcesResponseBody
 from ._untag_cloud_resources_response import UntagCloudResourcesResponse
+from ._untag_resources_request import UntagResourcesRequest
+from ._untag_resources_response_body import UntagResourcesResponseBody
+from ._untag_resources_response import UntagResourcesResponse
 from ._update_app_instance_group_image_request import UpdateAppInstanceGroupImageRequest
 from ._update_app_instance_group_image_response_body import UpdateAppInstanceGroupImageResponseBody
 from ._update_app_instance_group_image_response import UpdateAppInstanceGroupImageResponse
@@ -372,8 +396,10 @@ from ._list_app_instance_group_response_body import ListAppInstanceGroupResponse
 from ._list_app_instance_group_response_body import ListAppInstanceGroupResponseBodyAppInstanceGroupModels
 from ._list_app_instances_response_body import ListAppInstancesResponseBodyAppInstanceModelsBindInfo
 from ._list_app_instances_response_body import ListAppInstancesResponseBodyAppInstanceModels
+from ._list_apps_by_app_instance_group_id_response_body import ListAppsByAppInstanceGroupIdResponseBodyApps
 from ._list_authorized_app_instance_group_by_user_response_body import ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModelsApps
 from ._list_authorized_app_instance_group_by_user_response_body import ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModels
+from ._list_authorized_apps_by_user_response_body import ListAuthorizedAppsByUserResponseBodyApps
 from ._list_authorized_user_groups_response_body import ListAuthorizedUserGroupsResponseBodyUserGroups
 from ._list_authorized_users_response_body import ListAuthorizedUsersResponseBodyUsers
 from ._list_bind_info_response_body import ListBindInfoResponseBodyBindInfoModels
@@ -417,9 +443,14 @@ from ._list_node_instance_type_response_body import ListNodeInstanceTypeResponse
 from ._list_nodes_response_body import ListNodesResponseBodyNodeModels
 from ._list_ota_task_response_body import ListOtaTaskResponseBodyTaskList
 from ._list_persistent_app_instances_response_body import ListPersistentAppInstancesResponseBodyPersistentAppInstanceModels
+from ._list_published_app_instance_group_response_body import ListPublishedAppInstanceGroupResponseBodyAppInstanceGroupModelsApps
+from ._list_published_app_instance_group_response_body import ListPublishedAppInstanceGroupResponseBodyAppInstanceGroupModels
+from ._list_published_apps_response_body import ListPublishedAppsResponseBodyApps
 from ._list_regions_response_body import ListRegionsResponseBodyRegionModels
 from ._list_tag_cloud_resources_response_body import ListTagCloudResourcesResponseBodyResourceTagsTags
 from ._list_tag_cloud_resources_response_body import ListTagCloudResourcesResponseBodyResourceTags
+from ._list_tag_resources_request import ListTagResourcesRequestTag
+from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
 from ._list_tenant_config_response_body import ListTenantConfigResponseBodyTenantConfigModel
 from ._list_wuying_server_response_body import ListWuyingServerResponseBodyWuyingServerListDataDisk
 from ._list_wuying_server_response_body import ListWuyingServerResponseBodyWuyingServerListInstanceInfoList
@@ -427,6 +458,7 @@ from ._list_wuying_server_response_body import ListWuyingServerResponseBodyWuyin
 from ._list_wuying_server_response_body import ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo
 from ._list_wuying_server_response_body import ListWuyingServerResponseBodyWuyingServerListSessions
 from ._list_wuying_server_response_body import ListWuyingServerResponseBodyWuyingServerList
+from ._list_zones_response_body import ListZonesResponseBodyListZonesModel
 from ._modify_app_instance_group_attribute_request import ModifyAppInstanceGroupAttributeRequestNetworkDomainRules
 from ._modify_app_instance_group_attribute_request import ModifyAppInstanceGroupAttributeRequestNetwork
 from ._modify_app_instance_group_attribute_request import ModifyAppInstanceGroupAttributeRequestNodePool
@@ -459,6 +491,7 @@ from ._remove_runtime_model_template_response_body import RemoveRuntimeModelTemp
 from ._tag_cloud_resources_request import TagCloudResourcesRequestTags
 from ._tag_cloud_resources_response_body import TagCloudResourcesResponseBodyFailedResourcesTags
 from ._tag_cloud_resources_response_body import TagCloudResourcesResponseBodyFailedResources
+from ._tag_resources_request import TagResourcesRequestTag
 from ._untag_cloud_resources_response_body import UntagCloudResourcesResponseBodyFailedResourcesTags
 from ._untag_cloud_resources_response_body import UntagCloudResourcesResponseBodyFailedResources
 from ._update_model_provider_template_request import UpdateModelProviderTemplateRequestConfig
@@ -582,9 +615,15 @@ __all__ = [
     ListAppInstancesRequest,
     ListAppInstancesResponseBody,
     ListAppInstancesResponse,
+    ListAppsByAppInstanceGroupIdRequest,
+    ListAppsByAppInstanceGroupIdResponseBody,
+    ListAppsByAppInstanceGroupIdResponse,
     ListAuthorizedAppInstanceGroupByUserRequest,
     ListAuthorizedAppInstanceGroupByUserResponseBody,
     ListAuthorizedAppInstanceGroupByUserResponse,
+    ListAuthorizedAppsByUserRequest,
+    ListAuthorizedAppsByUserResponseBody,
+    ListAuthorizedAppsByUserResponse,
     ListAuthorizedUserGroupsRequest,
     ListAuthorizedUserGroupsResponseBody,
     ListAuthorizedUserGroupsResponse,
@@ -633,17 +672,29 @@ __all__ = [
     ListPersistentAppInstancesRequest,
     ListPersistentAppInstancesResponseBody,
     ListPersistentAppInstancesResponse,
+    ListPublishedAppInstanceGroupRequest,
+    ListPublishedAppInstanceGroupResponseBody,
+    ListPublishedAppInstanceGroupResponse,
+    ListPublishedAppsRequest,
+    ListPublishedAppsResponseBody,
+    ListPublishedAppsResponse,
     ListRegionsRequest,
     ListRegionsResponseBody,
     ListRegionsResponse,
     ListTagCloudResourcesRequest,
     ListTagCloudResourcesResponseBody,
     ListTagCloudResourcesResponse,
+    ListTagResourcesRequest,
+    ListTagResourcesResponseBody,
+    ListTagResourcesResponse,
     ListTenantConfigResponseBody,
     ListTenantConfigResponse,
     ListWuyingServerRequest,
     ListWuyingServerResponseBody,
     ListWuyingServerResponse,
+    ListZonesRequest,
+    ListZonesResponseBody,
+    ListZonesResponse,
     LogOffAllSessionsInAppInstanceGroupRequest,
     LogOffAllSessionsInAppInstanceGroupResponseBody,
     LogOffAllSessionsInAppInstanceGroupResponse,
@@ -707,6 +758,9 @@ __all__ = [
     TagCloudResourcesRequest,
     TagCloudResourcesResponseBody,
     TagCloudResourcesResponse,
+    TagResourcesRequest,
+    TagResourcesResponseBody,
+    TagResourcesResponse,
     UnassignWuyingServerPrivateAddressesRequest,
     UnassignWuyingServerPrivateAddressesResponseBody,
     UnassignWuyingServerPrivateAddressesResponse,
@@ -716,6 +770,9 @@ __all__ = [
     UntagCloudResourcesRequest,
     UntagCloudResourcesResponseBody,
     UntagCloudResourcesResponse,
+    UntagResourcesRequest,
+    UntagResourcesResponseBody,
+    UntagResourcesResponse,
     UpdateAppInstanceGroupImageRequest,
     UpdateAppInstanceGroupImageResponseBody,
     UpdateAppInstanceGroupImageResponse,
@@ -834,8 +891,10 @@ __all__ = [
     ListAppInstanceGroupResponseBodyAppInstanceGroupModels,
     ListAppInstancesResponseBodyAppInstanceModelsBindInfo,
     ListAppInstancesResponseBodyAppInstanceModels,
+    ListAppsByAppInstanceGroupIdResponseBodyApps,
     ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModelsApps,
     ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModels,
+    ListAuthorizedAppsByUserResponseBodyApps,
     ListAuthorizedUserGroupsResponseBodyUserGroups,
     ListAuthorizedUsersResponseBodyUsers,
     ListBindInfoResponseBodyBindInfoModels,
@@ -879,9 +938,14 @@ __all__ = [
     ListNodesResponseBodyNodeModels,
     ListOtaTaskResponseBodyTaskList,
     ListPersistentAppInstancesResponseBodyPersistentAppInstanceModels,
+    ListPublishedAppInstanceGroupResponseBodyAppInstanceGroupModelsApps,
+    ListPublishedAppInstanceGroupResponseBodyAppInstanceGroupModels,
+    ListPublishedAppsResponseBodyApps,
     ListRegionsResponseBodyRegionModels,
     ListTagCloudResourcesResponseBodyResourceTagsTags,
     ListTagCloudResourcesResponseBodyResourceTags,
+    ListTagResourcesRequestTag,
+    ListTagResourcesResponseBodyTagResources,
     ListTenantConfigResponseBodyTenantConfigModel,
     ListWuyingServerResponseBodyWuyingServerListDataDisk,
     ListWuyingServerResponseBodyWuyingServerListInstanceInfoList,
@@ -889,6 +953,7 @@ __all__ = [
     ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo,
     ListWuyingServerResponseBodyWuyingServerListSessions,
     ListWuyingServerResponseBodyWuyingServerList,
+    ListZonesResponseBodyListZonesModel,
     ModifyAppInstanceGroupAttributeRequestNetworkDomainRules,
     ModifyAppInstanceGroupAttributeRequestNetwork,
     ModifyAppInstanceGroupAttributeRequestNodePool,
@@ -921,6 +986,7 @@ __all__ = [
     TagCloudResourcesRequestTags,
     TagCloudResourcesResponseBodyFailedResourcesTags,
     TagCloudResourcesResponseBodyFailedResources,
+    TagResourcesRequestTag,
     UntagCloudResourcesResponseBodyFailedResourcesTags,
     UntagCloudResourcesResponseBodyFailedResources,
     UpdateModelProviderTemplateRequestConfig

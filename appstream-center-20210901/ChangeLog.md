@@ -1,3 +1,14 @@
+2026-09-22 Version: 5.9.0
+- Support API ListAppsByAppInstanceGroupId.
+- Support API ListAuthorizedAppsByUser.
+- Support API ListPublishedAppInstanceGroup.
+- Support API ListPublishedApps.
+- Support API ListTagResources.
+- Support API ListZones.
+- Support API TagResources.
+- Support API UntagResources.
+
+
 2026-09-21 Version: 5.8.0
 - Support API AuthorizeUsersForApp.
 - Support API CreateBrowserInstanceGroup.
