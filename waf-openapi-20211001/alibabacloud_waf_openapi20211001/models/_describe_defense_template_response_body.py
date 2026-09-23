@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import Dict, Any
+
 from alibabacloud_waf_openapi20211001 import models as main_models
 from darabonba.model import DaraModel
 
@@ -11,9 +13,9 @@ class DescribeDefenseTemplateResponseBody(DaraModel):
         request_id: str = None,
         template: main_models.DescribeDefenseTemplateResponseBodyTemplate = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The details of the protection template.
+        # The template information.
         self.template = template
 
     def validate(self):
@@ -50,6 +52,7 @@ class DescribeDefenseTemplateResponseBodyTemplate(DaraModel):
         defense_scene: str = None,
         defense_sub_scene: str = None,
         description: str = None,
+        detail: Dict[str, Any] = None,
         gmt_modified: int = None,
         template_id: int = None,
         template_name: str = None,
@@ -57,39 +60,33 @@ class DescribeDefenseTemplateResponseBodyTemplate(DaraModel):
         template_status: int = None,
         template_type: str = None,
     ):
-        # The scenario in which the protection template is used. For more information, see the description of the **DefenseScene** parameter in the [CreateDefenseRule](~~CreateDefenseRule~~) operation.
+        # The protection scenario. For more information, see the **DefenseScene** parameter in [CreateDefenseRule](~~CreateDefenseRule~~).
         self.defense_scene = defense_scene
-        # The sub-scenario of the protection template. Valid values:
-        # 
-        # - **web**: the bot management template for website protection.
-        # 
-        # - **app**: the bot management template for app protection.
-        # 
-        # - **basic**: the basic bot management template.
-        # 
-        # - **bot_custom_acl**: the bot management template for custom protection rules.
+        # The protection template sub-scenario. Valid values:
+        # - **web**: bot management web protection scenario template.
+        # - **app**: bot management app protection scenario template.
+        # - **basic**: bot management basic protection template.
+        # - **bot_custom_acl**: bot management advanced custom rule protection template.
         self.defense_sub_scene = defense_sub_scene
         # The description of the protection template.
         self.description = description
-        # The most recent time the protection template was modified. This value is a UNIX timestamp. Unit: milliseconds.
+        # The detailed template information. For more information, see the Detail parameter in [CreateDefenseTemplate](https://help.aliyun.com/document_detail/461613.html).
+        self.detail = detail
+        # The time when the protection template was last modified.
         self.gmt_modified = gmt_modified
-        # The ID of the protection template.
+        # The ID of the protection rule template.
         self.template_id = template_id
-        # The name of the protection template.
+        # The template name.
         self.template_name = template_name
-        # The origin of the protection template. A value of **custom** indicates that the template is user-defined.
+        # The source of the protection template. The value custom indicates that the template is user-defined.
         self.template_origin = template_origin
         # The status of the protection template. Valid values:
-        # 
-        # - **0**: disabled.
-        # 
-        # - **1**: enabled.
+        # - **0**: Disabled.
+        # - **1**: Enabled.
         self.template_status = template_status
-        # The type of the protection template. Valid values:
-        # 
-        # - **user_default**: the default template.
-        # 
-        # - **user_custom**: a custom template.
+        # The protection templatetype. Valid values:
+        # - **user_default**: user default protection.
+        # - **user_custom**: user custom protection.
         self.template_type = template_type
 
     def validate(self):
@@ -108,6 +105,9 @@ class DescribeDefenseTemplateResponseBodyTemplate(DaraModel):
 
         if self.description is not None:
             result['Description'] = self.description
+
+        if self.detail is not None:
+            result['Detail'] = self.detail
 
         if self.gmt_modified is not None:
             result['GmtModified'] = self.gmt_modified
@@ -139,6 +139,9 @@ class DescribeDefenseTemplateResponseBodyTemplate(DaraModel):
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('Detail') is not None:
+            self.detail = m.get('Detail')
 
         if m.get('GmtModified') is not None:
             self.gmt_modified = m.get('GmtModified')

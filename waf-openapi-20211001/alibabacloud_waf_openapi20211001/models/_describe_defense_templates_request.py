@@ -24,10 +24,10 @@ class DescribeDefenseTemplatesRequest(DaraModel):
         # The protection scenario. For more information, see the **DefenseScene** parameter in [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html).
         self.defense_scene = defense_scene
         # The sub-scenario of the protection template. Valid values:
-        # - **web**: BOT management web protection scenario template.
-        # - **app**: BOT management app protection scenario template.
-        # - **basic**: BOT management basic protection template.
-        # - **bot_custom_acl**: BOT management advanced custom rule protection template.
+        # - **web**: bot management web protection scenario template.
+        # - **app**: bot management app protection scenario template.
+        # - **basic**: bot management basic protection template.
+        # - **bot_custom_acl**: bot management advanced custom rule protection template.
         self.defense_sub_scene = defense_sub_scene
         # The ID of the WAF instance.
         # 
@@ -35,9 +35,9 @@ class DescribeDefenseTemplatesRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The page number to return in a paging query request. Default value: **1**.
+        # The page number to return in a paging request. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page in a paging query. Default value: **20**.
+        # The number of entries per page when paging. Default value: **20**.
         self.page_size = page_size
         # The region where the WAF instance is deployed. Valid values:
         # 
@@ -45,7 +45,7 @@ class DescribeDefenseTemplatesRequest(DaraModel):
         # 
         # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The name of the protected object, protection group, or the ID of the protected asset.
+        # The name of the protected object, the name of the protected object group, or the ID of the protected asset.
         # 
         # > This parameter is used together with the ResourceType parameter. Both parameters must have values for filtering to take effect.
         self.resource = resource
@@ -61,8 +61,8 @@ class DescribeDefenseTemplatesRequest(DaraModel):
         # The name of the protection template to query.
         self.template_name = template_name
         # The templatetype of the protection template. Valid values:
-        # - **user_default**: user default protection.
-        # - **user_custom**: user custom protection.
+        # - **user_default**: default protection.
+        # - **user_custom**: custom protection.
         self.template_type = template_type
 
     def validate(self):

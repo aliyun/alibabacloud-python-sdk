@@ -7,13 +7,15 @@ from darabonba.model import DaraModel
 class DescribeChargeModuleRequest(DaraModel):
     def __init__(
         self,
+        charge_unit: str = None,
         pay_type: str = None,
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The billing method of the instance. Valid values:
-        # 
-        # - **POSTPAY**: a pay-as-you-go WAF instance.
+        # The pricing unit.
+        self.charge_unit = charge_unit
+        # The billing type of the instance. Valid values:
+        # - **POSTPAY**: pay-as-you-go WAF instance.
         # 
         # This parameter is required.
         self.pay_type = pay_type
@@ -23,7 +25,7 @@ class DescribeChargeModuleRequest(DaraModel):
         # 
         # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The Alibaba Cloud resource group ID.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):
@@ -34,6 +36,9 @@ class DescribeChargeModuleRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.charge_unit is not None:
+            result['ChargeUnit'] = self.charge_unit
+
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
 
@@ -47,6 +52,9 @@ class DescribeChargeModuleRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ChargeUnit') is not None:
+            self.charge_unit = m.get('ChargeUnit')
+
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
 

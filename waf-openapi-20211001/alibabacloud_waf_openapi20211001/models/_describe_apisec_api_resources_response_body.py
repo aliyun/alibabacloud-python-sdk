@@ -93,22 +93,22 @@ class DescribeApisecApiResourcesResponseBodyData(DaraModel):
         self.abnormal_num = abnormal_num
         # The number of account security events associated with the asset.
         self.account_event_num = account_event_num
-        # The total access volume in the last 30 days.
+        # The total number of access requests in the last 30 days.
         self.all_cnt = all_cnt
         # The API operation.
         self.api_format = api_format
         # The ID of the API.
         self.api_id = api_id
-        # The API information, which is a string converted from a JSON object constructed with a series of parameters. The parameters include:
+        # API-related information, which is a JSON string constructed from a series of parameters. The parameters include:
         # - **param_num**: the number of API parameters.
         # - **request_method**: the request method.
         # - **protocol**: the request protocol.
         # - **api_url**: the request URL.
         # - **poc_payload**: the request.
-        # - **request**: the request sample.
-        # - **response**: the response sample.
+        # - **request**: the request example.
+        # - **response**: the response example.
         # - **param**: the request parameters.
-        # > This field is returned only when the **ApiId** parameter is specified.
+        # > This value is returned only when the **ApiId** request parameter is specified.
         self.api_info = api_info
         # The request method of the API. Valid values:
         # - **GET**: GET request.
@@ -120,54 +120,54 @@ class DescribeApisecApiResourcesResponseBodyData(DaraModel):
         # - **PATCH**: PATCH request.
         # - **OPTIONS**: OPTIONS request.
         self.api_method = api_method
-        # The sensitive information involved in the API, which is a string converted from a JSON object constructed with a series of parameters. The parameters include:
-        # - **request_sensitive_list**: the list of sensitive data types in the request.
-        # - **response_sensitive_list**: the list of sensitive data types in the response.
+        # Sensitive information related to the API, which is a JSON string constructed from a series of parameters. The parameters include:
+        # - **request_sensitive_list**: the list of sensitive data types in requests.
+        # - **response_sensitive_list**: the list of sensitive data types in responses.
         # - **sensitive_list**: the list of sensitive data types.
         # - **sensitive_level**: the sensitivity level.
         self.api_sensitive = api_sensitive
-        # The sensitive data in the API request.
+        # The sensitive data in API requests.
         self.api_sensitive_request = api_sensitive_request
-        # The sensitive data in the API response.
+        # The sensitive data in API responses.
         self.api_sensitive_response = api_sensitive_response
         # The status of the API. Valid values:
-        # - **NewbornInterface**: newly added.
-        # - **OfflineInterface**: inactive.
-        # - **normal**: normal.
+        # - **NewbornInterface**: New.
+        # - **OfflineInterface**: Inactive.
+        # - **normal**: Normal.
         self.api_status = api_status
         # The business purpose of the API.
-        # > You can call [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) to obtain the supported business purposes.
+        # > Call [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) to obtain the supported business purposes.
         self.api_tag = api_tag
         # The service object. Valid values:
-        # - **PublicAPI**: public service.
-        # - **ThirdpartAPI**: third-party collaboration.
-        # - **InternalAPI**: internal office.
+        # - **PublicAPI**: Public service.
+        # - **ThirdpartAPI**: Third-party collaboration.
+        # - **InternalAPI**: Internal office.
         self.api_type = api_type
         # Specifies whether the API has an authentication field. Valid values:
-        # - **0**: has authentication.
-        # - **1**: does not have authentication.
+        # - **0**: Has authentication.
+        # - **1**: Does not have authentication.
         self.auth_flag = auth_flag
-        # The bot access volume in the last 30 days.
+        # The number of bot access requests in the last 30 days.
         self.bot_cnt = bot_cnt
-        # The cross-border access volume in the last 30 days.
+        # The number of cross-border access requests in the last 30 days.
         self.cross_border_cnt = cross_border_cnt
         # The number of security events associated with the API.
         self.event_num = event_num
-        # The list of API samples.
+        # The list of API examples.
         self.examples = examples
-        # The time when the API asset was first discovered, in UNIX timestamp (UTC) format. Unit: seconds.
+        # The time when the API asset was first discovered. The value is a UNIX timestamp (UTC), in seconds.
         self.farthest_ts = farthest_ts
         # Specifies whether the API is followed. Valid values:
-        # - **1**: followed.
-        # - **0**: not followed.
+        # - **1**: Followed.
+        # - **0**: Not followed.
         self.follow = follow
-        # The most recent access time of the API asset, in UNIX timestamp (UTC) format. Unit: seconds.
+        # The most recent access time of the API asset. The value is a UNIX timestamp (UTC), in seconds.
         self.lastest_ts = lastest_ts
         # The domain name or IP address to which the API operation belongs.
         self.matched_host = matched_host
         # The remarks.
         self.note = note
-        # The list of protected objects corresponding to the asset.
+        # The list of protected objects associated with the asset.
         self.resources = resources
 
     def validate(self):

@@ -9,6 +9,7 @@ class ModifyDefenseRuleRequest(DaraModel):
         self,
         defense_scene: str = None,
         defense_type: str = None,
+        dry_run: bool = None,
         instance_id: str = None,
         region_id: str = None,
         resource: str = None,
@@ -20,6 +21,10 @@ class ModifyDefenseRuleRequest(DaraModel):
         self.defense_scene = defense_scene
         # The type of the protection rule.
         self.defense_type = defense_type
+        # Specifies whether to enable the dry run mode. If you do not specify this parameter, a normal request is sent. Valid values:
+        # - **true**: A dry run request is sent. The system checks whether the request meets the execution conditions without performing the specified operation. If the dry run fails, the corresponding error code is returned. If the dry run succeeds, the error code Defense.Control.DryRunOperation is returned.
+        # - **false**: A normal request is sent. The specified operation is performed after the request passes the check.
+        self.dry_run = dry_run
         # Instance ID of the WAF instance.
         # 
         # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
@@ -37,7 +42,7 @@ class ModifyDefenseRuleRequest(DaraModel):
         self.resource = resource
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The details of the protection rule. The value is a string that is converted from a JSON object constructed by a series of parameters. When you configure this parameter, you must specify the rule ID and the protection rule configuration to modify. The following parameters are included:
+        # The details of the protection rule. The value is a string that is converted from a JSON object constructed by a series of parameters. When you configure this parameter, specify the rule ID and the protection rule configuration to modify. The following parameters are included:
         # 
         # - **id**: Long | Required | The rule ID.
         # 
@@ -62,6 +67,9 @@ class ModifyDefenseRuleRequest(DaraModel):
 
         if self.defense_type is not None:
             result['DefenseType'] = self.defense_type
+
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
 
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
@@ -90,6 +98,9 @@ class ModifyDefenseRuleRequest(DaraModel):
 
         if m.get('DefenseType') is not None:
             self.defense_type = m.get('DefenseType')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')

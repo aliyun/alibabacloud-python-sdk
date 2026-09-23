@@ -12,7 +12,7 @@ class CreateDefenseRuleResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The IDs of the created protection rules. Multiple IDs are separated by commas (,).
+        # The IDs of the created protection rules. Multiple protection rule IDs are separated by commas (,).
         self.rule_ids = rule_ids
 
     def validate(self):

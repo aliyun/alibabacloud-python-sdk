@@ -32,7 +32,7 @@ class CreateCloudResourceShrinkRequest(DaraModel):
         self.owner_user_id = owner_user_id
         # The forwarding configuration.
         self.redirect_shrink = redirect_shrink
-        # The region where the WAF instance is deployed. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
         # - **cn-hangzhou**: the Chinese mainland.
         # 

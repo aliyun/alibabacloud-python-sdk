@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
+from typing import List, Dict, Any
 
 from alibabacloud_waf_openapi20211001 import models as main_models
 from darabonba.model import DaraModel
@@ -58,6 +58,7 @@ class DescribeDefenseResourceTemplatesResponseBodyTemplates(DaraModel):
         defense_scene: str = None,
         defense_sub_scene: str = None,
         description: str = None,
+        detail: Dict[str, Any] = None,
         gmt_modified: int = None,
         template_id: int = None,
         template_name: str = None,
@@ -65,15 +66,17 @@ class DescribeDefenseResourceTemplatesResponseBodyTemplates(DaraModel):
         template_status: int = None,
         template_type: str = None,
     ):
-        # The protection scenario. For more information, refer to the **DefenseScene** parameter in [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html).
+        # The protection scenario. For more information, see the **DefenseScene** parameter in [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html).
         self.defense_scene = defense_scene
         # The sub-scenario of the protection template. Valid values:
-        # - **web**: the bot management web protection scenario template.
-        # - **app**: the bot management app protection scenario template.
-        # - **basic**: the bot management basic protection template.
+        # - **web**: bot management web protection scenario template.
+        # - **app**: bot management app protection scenario template.
+        # - **basic**: bot management basic protection template.
         self.defense_sub_scene = defense_sub_scene
         # The description of the template.
         self.description = description
+        # The detailed template information. For more information, see the Detail parameter in [CreateDefenseTemplate](https://help.aliyun.com/document_detail/461613.html).
+        self.detail = detail
         # The time when the protection template was created. The value is a UNIX timestamp. Unit: milliseconds.
         self.gmt_modified = gmt_modified
         # The ID of the protection template.
@@ -108,6 +111,9 @@ class DescribeDefenseResourceTemplatesResponseBodyTemplates(DaraModel):
         if self.description is not None:
             result['Description'] = self.description
 
+        if self.detail is not None:
+            result['Detail'] = self.detail
+
         if self.gmt_modified is not None:
             result['GmtModified'] = self.gmt_modified
 
@@ -138,6 +144,9 @@ class DescribeDefenseResourceTemplatesResponseBodyTemplates(DaraModel):
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('Detail') is not None:
+            self.detail = m.get('Detail')
 
         if m.get('GmtModified') is not None:
             self.gmt_modified = m.get('GmtModified')

@@ -17,6 +17,7 @@ class DescribeHybridCloudUnassignedMachinesRequest(DaraModel):
         resource_manager_resource_group_id: str = None,
     ):
         # The ID of the hybrid cloud cluster.
+        # > You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation and obtain the **Id** field value of the target hybrid cloud cluster from the **ClusterInfos** array in the response. If no cluster is available, call the [CreateHybridCloudCluster](https://help.aliyun.com/document_detail/2980286.html) operation to create a hybrid cloud cluster.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
@@ -30,9 +31,9 @@ class DescribeHybridCloudUnassignedMachinesRequest(DaraModel):
         self.instance_id = instance_id
         # The IP address of the server.
         self.ip = ip
-        # The page number to return in a paged query. Default value: **1**. For more information about paging, see the relevant parameter descriptions.
+        # The page number to return in a paged query. Default value: **1**. For more information about paging, see the PageSize parameter.
         self.page_number = page_number
-        # The number of entries per page in a paged query. Default value: **10**, which indicates that each page contains 10 entries. For more information about paging, see the relevant parameter descriptions.
+        # The number of entries per page in a paged query. Default value: **10**, which indicates that each page contains 10 entries. For more information about paging, see the PageNumber parameter.
         self.page_size = page_size
         # The region where the WAF instance is deployed. Valid values:
         # 

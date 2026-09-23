@@ -8,6 +8,7 @@ class DeleteDefenseRuleRequest(DaraModel):
     def __init__(
         self,
         defense_type: str = None,
+        dry_run: bool = None,
         instance_id: str = None,
         region_id: str = None,
         resource: str = None,
@@ -17,6 +18,10 @@ class DeleteDefenseRuleRequest(DaraModel):
     ):
         # The type of the protection rule.
         self.defense_type = defense_type
+        # Specifies whether to enable the DryRun dry run mode. If you do not specify this parameter, a normal request is sent. Valid values:
+        # - **true**: A dry run request is sent. The system checks whether the request meets the execution conditions without performing the specified operation. If the dry run fails, the corresponding error code is returned. If the dry run succeeds, the error code Defense.Control.DryRunOperation is returned.
+        # - **false**: A normal request is sent. The specified operation is performed after the request passes the check.
+        self.dry_run = dry_run
         # The ID of the WAF instance.
         # 
         # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
@@ -29,7 +34,7 @@ class DeleteDefenseRuleRequest(DaraModel):
         # 
         # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The protection object associated with the rule to delete.
+        # The protected object associated with the rule to delete.
         # > This parameter is required only when **DefenseType** is set to **resource**.
         self.resource = resource
         # The ID of the Alibaba Cloud resource group.
@@ -52,6 +57,9 @@ class DeleteDefenseRuleRequest(DaraModel):
             result = _map
         if self.defense_type is not None:
             result['DefenseType'] = self.defense_type
+
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
 
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
@@ -77,6 +85,9 @@ class DeleteDefenseRuleRequest(DaraModel):
         m = m or dict()
         if m.get('DefenseType') is not None:
             self.defense_type = m.get('DefenseType')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')

@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
+from typing import List, Dict, Any
 
 from alibabacloud_waf_openapi20211001 import models as main_models
 from darabonba.model import DaraModel
@@ -67,6 +67,7 @@ class DescribeDefenseTemplatesResponseBodyTemplates(DaraModel):
         defense_scene: str = None,
         defense_sub_scene: str = None,
         description: str = None,
+        detail: Dict[str, Any] = None,
         gmt_modified: int = None,
         template_id: int = None,
         template_name: str = None,
@@ -86,41 +87,43 @@ class DescribeDefenseTemplatesResponseBodyTemplates(DaraModel):
         # 
         # - **whitelist**: whitelist.
         # 
-        # - **region_block**: Location Blacklist.
+        # - **region_block**: location blacklist.
         # 
         # - **custom_response**: custom response.
         # 
-        # - **cc**: HTTP flood protection.
+        # - **cc**: HTTP flood mitigation.
         # 
         # - **tamperproof**: web tamper proofing.
         # 
         # - **dlp**: data leak prevention.
         # 
-        # - **bot_manager**: new BOT management.
+        # - **bot_manager**: new bot management.
         self.defense_scene = defense_scene
         # The sub-scenario of the protection template. Valid values:
-        # - **web**: BOT management web protection scenario template.
-        # - **app**: BOT management app protection scenario template.
-        # - **basic**: BOT management basic protection template.
-        # - **bot_custom_acl**: BOT management advanced custom rule protection template.
+        # - **web**: bot management web protection scenario template.
+        # - **app**: bot management app protection scenario template.
+        # - **basic**: bot management basic protection template.
+        # - **bot_custom_acl**: bot management advanced custom rule protection template.
         self.defense_sub_scene = defense_sub_scene
         # The description of the template.
         self.description = description
-        # The creation time of the protection template. The value is a timestamp in milliseconds.
+        # The detailed template information. For more information, see the Detail parameter in [CreateDefenseTemplate](https://help.aliyun.com/document_detail/461613.html).
+        self.detail = detail
+        # The time when the protection template was created. The value is a timestamp in milliseconds.
         self.gmt_modified = gmt_modified
         # The ID of the protection template.
         self.template_id = template_id
         # The name of the protection template.
         self.template_name = template_name
-        # The source of the protection template. The value is custom, which indicates user-defined.
+        # The source of the protection template. The value custom indicates that the template is user-defined.
         self.template_origin = template_origin
         # The status of the protection template. Valid values:
         # - **0**: disabled.
         # - **1**: enabled.
         self.template_status = template_status
         # The templatetype of the protection template. Valid values:
-        # - **user_default**: user default protection.
-        # - **user_custom**: user custom protection.
+        # - **user_default**: default protection.
+        # - **user_custom**: custom protection.
         self.template_type = template_type
 
     def validate(self):
@@ -139,6 +142,9 @@ class DescribeDefenseTemplatesResponseBodyTemplates(DaraModel):
 
         if self.description is not None:
             result['Description'] = self.description
+
+        if self.detail is not None:
+            result['Detail'] = self.detail
 
         if self.gmt_modified is not None:
             result['GmtModified'] = self.gmt_modified
@@ -170,6 +176,9 @@ class DescribeDefenseTemplatesResponseBodyTemplates(DaraModel):
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('Detail') is not None:
+            self.detail = m.get('Detail')
 
         if m.get('GmtModified') is not None:
             self.gmt_modified = m.get('GmtModified')

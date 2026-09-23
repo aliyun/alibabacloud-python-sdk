@@ -1,3 +1,7 @@
+2026-09-23 Version: 7.8.7
+- Update API DescribeApisecApiResources: add request parameters ApiIds.
+
+
 2026-08-12 Version: 7.8.4
 - Update API DescribeHybridCloudGroups: add request parameters GroupDisplayName.
 - Update API DescribeInstance: add response parameters Body.Details.AgenticApisec.

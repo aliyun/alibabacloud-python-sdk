@@ -40,6 +40,8 @@ class DescribeDefenseRuleStatisticsRequest(DaraModel):
         self.secondary_key = secondary_key
         # The ID of the protection template to query.
         # 
+        # > This operation supports querying protection templates under the new Bot Management (**bot_manager**) and new Web Core Protection (**waf_base**) scenarios. You can call [DescribeDefenseTemplates](https://help.aliyun.com/document_detail/2712643.html) to query the protection scenario (DefenseScene) of a protection template.
+        # 
         # This parameter is required.
         self.template_id = template_id
         # The tertiary query condition. The value cannot be the same as the primary or secondary query condition.

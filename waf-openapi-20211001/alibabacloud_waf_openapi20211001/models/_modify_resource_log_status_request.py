@@ -8,6 +8,7 @@ from darabonba.model import DaraModel
 class ModifyResourceLogStatusRequest(DaraModel):
     def __init__(
         self,
+        dry_run: bool = None,
         instance_id: str = None,
         region_id: str = None,
         resource: str = None,
@@ -16,9 +17,13 @@ class ModifyResourceLogStatusRequest(DaraModel):
         trace_config: main_models.ModifyResourceLogStatusRequestTraceConfig = None,
         trace_status: bool = None,
     ):
+        # Specifies whether to enable the dry run mode. If you do not specify this parameter, a normal request is sent. Valid values:
+        # - **true**: A dry run request is sent. The system checks whether the request meets the execution conditions without performing the specified operation. If the dry run fails, the corresponding error code is returned. If the dry run succeeds, the error code Log.Control.DryRunOperation is returned.
+        # - **false**: A normal request is sent. The specified operation is performed after the request passes the check.
+        self.dry_run = dry_run
         # Instance ID of the WAF instance.
         # 
-        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -48,9 +53,9 @@ class ModifyResourceLogStatusRequest(DaraModel):
         # 
         # - **true**: Enabled.
         # 
-        # - **false**: Disabled.
+        # - **false**: Shutdown.
         # 
-        # > To enable Tracing Analysis, you must first enable the log status **Status** for the protected object.
+        # > To enable Tracing Analysis, you must first enable the log status **Status** of the protected object.
         self.trace_status = trace_status
 
     def validate(self):
@@ -62,6 +67,9 @@ class ModifyResourceLogStatusRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
@@ -87,6 +95,9 @@ class ModifyResourceLogStatusRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
 

@@ -15,7 +15,7 @@ class ClearMajorProtectionBlackIpRequest(DaraModel):
     ):
         # The ID of the WAF instance.
         # 
-        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the current WAF instance.
+        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -34,6 +34,8 @@ class ClearMajorProtectionBlackIpRequest(DaraModel):
         # The ID of the critical event protection scenario template.
         # 
         # > This parameter must be set to the ID of a protection template of the critical event protection type. You can create this type of template only after purchasing the critical event protection upgrade.
+        # >
+        # > For more information about how to enable critical event protection and create a critical event protection rule template, see [Critical event protection](https://help.aliyun.com/document_detail/425591.html).
         # 
         # This parameter is required.
         self.template_id = template_id

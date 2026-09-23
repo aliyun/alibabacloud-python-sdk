@@ -21,7 +21,7 @@ class ModifyApisecModuleStatusRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region where the WAF instance resides. Valid values:
+        # The region where the WAF instance is deployed. Valid values:
         # 
         # - **cn-hangzhou**: the Chinese mainland.
         # 
@@ -35,7 +35,7 @@ class ModifyApisecModuleStatusRequest(DaraModel):
         # 
         # > You must specify at least one of **Resources** and **ResourceGroups**.
         self.resource_groups = resource_groups
-        # The Alibaba Cloud resource group ID.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The name of the protected object.
         # 

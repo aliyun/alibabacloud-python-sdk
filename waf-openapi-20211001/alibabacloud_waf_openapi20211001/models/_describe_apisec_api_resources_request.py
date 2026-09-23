@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from darabonba.model import DaraModel
 
 class DescribeApisecApiResourcesRequest(DaraModel):
@@ -9,6 +11,7 @@ class DescribeApisecApiResourcesRequest(DaraModel):
         self,
         api_format: str = None,
         api_id: str = None,
+        api_ids: List[str] = None,
         api_method: str = None,
         api_status: str = None,
         api_tag: str = None,
@@ -35,6 +38,8 @@ class DescribeApisecApiResourcesRequest(DaraModel):
         self.api_format = api_format
         # The ID of the API.
         self.api_id = api_id
+        # The list of API IDs.
+        self.api_ids = api_ids
         # The request method of the API. Valid values:
         # - **GET**: GET request.
         # - **POST**: POST request.
@@ -46,22 +51,22 @@ class DescribeApisecApiResourcesRequest(DaraModel):
         # - **OPTIONS**: OPTIONS request.
         self.api_method = api_method
         # The status of the API. Valid values:
-        # - **NewbornInterface**: newly added.
-        # - **OfflineInterface**: inactive.
-        # - **normal**: normal.
+        # - **NewbornInterface**: New.
+        # - **OfflineInterface**: Inactive.
+        # - **normal**: Normal.
         self.api_status = api_status
         # The business purpose of the API.
         # 
         # > You can call [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) to obtain the supported business purposes.
         self.api_tag = api_tag
         # The service object. Valid values:
-        # - **PublicAPI**: public service.
-        # - **ThirdpartAPI**: third-party collaboration.
-        # - **InternalAPI**: internal office.
+        # - **PublicAPI**: Public service.
+        # - **ThirdpartAPI**: Third-party collaboration.
+        # - **InternalAPI**: Internal office.
         self.api_type = api_type
         # Specifies whether the API has an authentication field. Valid values:
-        # - **0**: has authentication.
-        # - **1**: does not have authentication.
+        # - **0**: Has authentication.
+        # - **1**: Does not have authentication.
         self.auth_flag = auth_flag
         # The ID of the hybrid cloud cluster.
         # > This parameter applies only to hybrid cloud scenarios. You can call [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) to obtain hybrid cloud cluster information.
@@ -69,8 +74,8 @@ class DescribeApisecApiResourcesRequest(DaraModel):
         # The end time of the query, in UNIX timestamp (UTC) format. Unit: seconds.
         self.end_time = end_time
         # Specifies whether the API is followed. Valid values:
-        # - **1**: followed.
-        # - **0**: not followed.
+        # - **1**: Followed.
+        # - **0**: Not followed.
         self.follow = follow
         # The ID of the WAF instance.
         # 
@@ -92,14 +97,14 @@ class DescribeApisecApiResourcesRequest(DaraModel):
         # - **lastestTs**: most recent access time.
         self.order_key = order_key
         # The sort order. Valid values:
-        # - **desc**: descending order (default).
-        # - **asc**: ascending order.
+        # - **desc**: Descending order (default).
+        # - **asc**: Ascending order.
         self.order_way = order_way
-        # The page number to return in a paging query. Default value: **1**, which indicates that the first page is returned.
+        # The page number of the page to return in a paged query. Default value: **1**, which indicates the first page.
         self.page_number = page_number
-        # The number of entries to return on each page in a paging query. Default value: **10**, which indicates that each page contains 10 entries.
+        # The number of entries to return on each page in a paged query. Default value: **10**, which indicates 10 entries per page.
         self.page_size = page_size
-        # The region where the WAF instance is deployed. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
         # - **cn-hangzhou**: the Chinese mainland.
         # 
@@ -112,10 +117,10 @@ class DescribeApisecApiResourcesRequest(DaraModel):
         # The Alibaba Cloud resource group ID.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The sensitivity level of the API. Valid values:
-        # - **L1**: high sensitivity.
-        # - **L2**: medium sensitivity.
-        # - **L3**: low sensitivity.
-        # - **N**: not sensitive.
+        # - **L1**: High sensitivity.
+        # - **L2**: Medium sensitivity.
+        # - **L3**: Low sensitivity.
+        # - **N**: Not sensitive.
         self.sensitive_level = sensitive_level
         # The type of sensitive data in the response.
         # > You can call [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) to obtain the supported sensitive data types.
@@ -136,6 +141,9 @@ class DescribeApisecApiResourcesRequest(DaraModel):
 
         if self.api_id is not None:
             result['ApiId'] = self.api_id
+
+        if self.api_ids is not None:
+            result['ApiIds'] = self.api_ids
 
         if self.api_method is not None:
             result['ApiMethod'] = self.api_method
@@ -209,6 +217,9 @@ class DescribeApisecApiResourcesRequest(DaraModel):
 
         if m.get('ApiId') is not None:
             self.api_id = m.get('ApiId')
+
+        if m.get('ApiIds') is not None:
+            self.api_ids = m.get('ApiIds')
 
         if m.get('ApiMethod') is not None:
             self.api_method = m.get('ApiMethod')

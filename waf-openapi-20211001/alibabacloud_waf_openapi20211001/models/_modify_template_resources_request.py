@@ -12,6 +12,7 @@ class ModifyTemplateResourcesRequest(DaraModel):
         bind_assets: List[str] = None,
         bind_resource_groups: List[str] = None,
         bind_resources: List[str] = None,
+        dry_run: bool = None,
         instance_id: str = None,
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
@@ -20,15 +21,19 @@ class ModifyTemplateResourcesRequest(DaraModel):
         unbind_resource_groups: List[str] = None,
         unbind_resources: List[str] = None,
     ):
-        # The IDs of the protected assets to attach. The value is in the [**"XX1","XX2",...**] format.
+        # The IDs of the protected assets to associate, in the format of ["XX1","XX2",...].
         self.bind_assets = bind_assets
-        # The protected object groups to attach. The value is in the [**"group1","group2",...**] format.
+        # The protected object groups to associate, in the format of [**"group1","group2",...**].
         self.bind_resource_groups = bind_resource_groups
-        # The protected objects to attach. The value is in the [**"XX1","XX2",...**] format.
+        # The protected objects to associate, in the format of [**"XX1","XX2",...**].
         self.bind_resources = bind_resources
-        # The ID of the Web Application Firewall (WAF) instance.
+        # Specifies whether to enable the dry run mode. If you do not specify this parameter, a normal request is sent. Valid values:
+        # - **true**: A dry run request is sent. The system checks whether the request meets the execution conditions without performing the specified operation. If the dry run fails, the corresponding error code is returned. If the dry run succeeds, the error code Defense.Control.DryRunOperation is returned.
+        # - **false**: A normal request is sent. The specified operation is performed after the request passes the check.
+        self.dry_run = dry_run
+        # Instance ID of the WAF instance.
         # 
-        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -44,11 +49,11 @@ class ModifyTemplateResourcesRequest(DaraModel):
         # 
         # This parameter is required.
         self.template_id = template_id
-        # The IDs of the protected assets to detach. The value is in the [**"XX1","XX2",...**] format.
+        # The IDs of the protected assets to disassociate, in the format of ["XX1","XX2",...].
         self.unbind_assets = unbind_assets
-        # The protected object groups to detach. The value is in the [**"group1","group2",...**] format.
+        # The protected object groups to disassociate, in the format of [**"group1","group2",...**].
         self.unbind_resource_groups = unbind_resource_groups
-        # The protected objects to detach. The value is in the [**"XX1","XX2",...**] format.
+        # The protected objects to disassociate, in the format of [**"XX1","XX2",...**].
         self.unbind_resources = unbind_resources
 
     def validate(self):
@@ -67,6 +72,9 @@ class ModifyTemplateResourcesRequest(DaraModel):
 
         if self.bind_resources is not None:
             result['BindResources'] = self.bind_resources
+
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
 
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
@@ -101,6 +109,9 @@ class ModifyTemplateResourcesRequest(DaraModel):
 
         if m.get('BindResources') is not None:
             self.bind_resources = m.get('BindResources')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')

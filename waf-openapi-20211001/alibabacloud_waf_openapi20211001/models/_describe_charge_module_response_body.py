@@ -13,7 +13,7 @@ class DescribeChargeModuleResponseBody(DaraModel):
         charge_modules: List[main_models.DescribeChargeModuleResponseBodyChargeModules] = None,
         request_id: str = None,
     ):
-        # A list of billing modules for WAF.
+        # The list of WAF pricing module information.
         self.charge_modules = charge_modules
         # The ID of the request.
         self.request_id = request_id
@@ -57,108 +57,69 @@ class DescribeChargeModuleResponseBodyChargeModules(DaraModel):
         self,
         charge_mode: str = None,
         charge_mode_details: List[str] = None,
+        charge_unit: str = None,
         module_code: str = None,
         period_type: str = None,
         usage_type: str = None,
         usage_unit_factor: int = None,
     ):
-        # The pricing model of the billing module. Valid values:
-        # 
-        # - **NORMAL_PRICE**: tiered pricing.
-        # 
+        # The pricing mode of the pricing module. Valid values:
+        # - **NORMAL_PRICE**: standard pricing.
         # - **STEP_ACCUMULATION**: tiered pricing.
         self.charge_mode = charge_mode
-        # The detailed pricing information for the billing module.
+        # The pricing details of the pricing module.
         self.charge_mode_details = charge_mode_details
-        # The code of the billing module. Valid values:
-        # 
-        # - **domainCount**: the number of domain names added to WAF in CNAME record mode.
-        # 
-        # - **qps**: the peak queries per second (QPS).
-        # 
+        # The pricing unit.
+        self.charge_unit = charge_unit
+        # The pricing module identity. Valid values:
+        # - **domainCount**: the number of CNAME-connected domain names.
+        # - **qps**: the peak QPS.
         # - **request**: the basic traffic fee.
-        # 
         # - **ipBlacklistRuleCount**: the number of IP blacklist rules.
-        # 
-        # - **customAclBaseRuleCount**: the number of basic rules in custom protection rules.
-        # 
-        # - **customAclAdvanceRuleCount**: the number of advanced rules in custom protection rules.
-        # 
+        # - **customAclBaseRuleCount**: the number of Basic Policies in custom rules.
+        # - **customAclAdvanceRuleCount**: the number of advanced rules in custom rules.
         # - **antiScanRuleCount**: the number of scan protection rules.
-        # 
         # - **customResponseRuleCount**: the number of custom response rules.
-        # 
-        # - **ipv6**: IPv6 protection.
-        # 
+        # - **ipv6**: IPv6.
         # - **gslb**: intelligent load balancing.
-        # 
         # - **exclusiveIpCount**: the number of exclusive IP addresses.
-        # 
-        # - **ccRuleCount**: the number of HTTP flood protection rules.
-        # 
-        # - **regionBlockRuleCount**: the number of rules in the region blacklist.
-        # 
-        # - **tamperproofRuleCount**: the number of web tamper-proofing rules.
-        # 
-        # - **dlpRuleCount**: the number of data leakage prevention rules.
-        # 
-        # - **botTraffic**: the traffic fee for bot management.
-        # 
+        # - **ccRuleCount**: the number of HTTP flood mitigation rules.
+        # - **regionBlockRuleCount**: the number of Location Blacklist rules.
+        # - **tamperproofRuleCount**: the number of web tamper proofing rules.
+        # - **dlpRuleCount**: the number of information leak prevention rules.
+        # - **botTraffic**: the Bot management traffic fee.
         # - **aiWhiteListTemplateCount**: the number of intelligent whitelist templates.
-        # 
-        # - **apisecResourceCount**: the number of protected objects for which API security is enabled.
-        # 
-        # - **apisecTraffic**: the traffic fee for API security.
-        # 
+        # - **apisecResourceCount**: the number of protected objects with API security enabled.
+        # - **apisecTraffic**: the API security traffic fee.
         # - **compliance**: the number of protocol compliance templates.
-        # 
-        # - **riskTraffic**: the number of times that risk identification in bot management is matched.
-        # 
-        # - **assetStatus**: asset center.
-        # 
-        # - **nonPort**: custom ports protection.
-        # 
-        # - **customAclCaptcha**: the number of times that sliders are used for custom protection rules.
-        # 
-        # - **wafBaseTemplateCount**: the number of core web protection rules.
-        # 
+        # - **riskTraffic**: the number of risk identification hits in Bot management.
+        # - **assetStatus**: the asset center.
+        # - **nonPort**: non-standard ports.
+        # - **customAclCaptcha**: the number of custom rule slider verification attempts.
+        # - **wafBaseTemplateCount**: the number of web core protection rules.
         # - **instanceFee**: the WAF instance fee.
-        # 
         # - **spikeThrottleRuleCount**: the number of peak traffic throttling rules.
-        # 
-        # - **botWebTemplateCount**: the number of web protection templates in bot management.
-        # 
-        # - **botAppTemplateCount**: the number of app protection templates in bot management.
-        # 
-        # - **customAclBotRuleCount**: the number of advanced custom rules in bot management.
+        # - **botWebTemplateCount**: the number of web protection templates in Bot management.
+        # - **botAppTemplateCount**: the number of app protection templates in Bot management.
+        # - **customAclBotRuleCount**: the number of advanced custom rules in Bot management.
         self.module_code = module_code
-        # The billing cycle of the billing module. Valid values:
-        # 
+        # The billing period type of the pricing module. Valid values:
         # - **Hour**: hourly billing.
         self.period_type = period_type
-        # The usage type of the billing module. Valid values:
-        # 
+        # The usage type of the pricing module. Valid values:
         # - **template**: template.
-        # 
         # - **qps**: QPS.
-        # 
         # - **domain**: domain name.
-        # 
         # - **rule**: rule.
-        # 
         # - **ip**: IP address.
-        # 
         # - **resource**: protected object.
-        # 
-        # - **request**: request.
-        # 
+        # - **reqest**: request.
         # - **function**: feature enablement.
-        # 
         # - **time**: number of times.
         self.usage_type = usage_type
-        # The billing unit coefficient of the billing module.
+        # The billing unit factor of the pricing module.
         # 
-        # > The usage unit for the module is determined by multiplying the **UsageUnitFactor** by the **UsageType**.
+        # > The billing unit factor **UsageUnitFactor** multiplied by the usage type **UsageType** forms the billing unit of the module.
         self.usage_unit_factor = usage_unit_factor
 
     def validate(self):
@@ -174,6 +135,9 @@ class DescribeChargeModuleResponseBodyChargeModules(DaraModel):
 
         if self.charge_mode_details is not None:
             result['ChargeModeDetails'] = self.charge_mode_details
+
+        if self.charge_unit is not None:
+            result['ChargeUnit'] = self.charge_unit
 
         if self.module_code is not None:
             result['ModuleCode'] = self.module_code
@@ -196,6 +160,9 @@ class DescribeChargeModuleResponseBodyChargeModules(DaraModel):
 
         if m.get('ChargeModeDetails') is not None:
             self.charge_mode_details = m.get('ChargeModeDetails')
+
+        if m.get('ChargeUnit') is not None:
+            self.charge_unit = m.get('ChargeUnit')
 
         if m.get('ModuleCode') is not None:
             self.module_code = m.get('ModuleCode')

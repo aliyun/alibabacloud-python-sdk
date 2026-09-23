@@ -16,13 +16,13 @@ class DescribeBotRuleLabelsResponseBody(DaraModel):
         rule_labels: List[main_models.DescribeBotRuleLabelsResponseBodyRuleLabels] = None,
         total_count: int = None,
     ):
-        # The number of entries per page in a paged query. Valid values: 1 to 200. Default value: 20. This parameter is used for paging.
+        # The number of entries per page in a paged query. Valid values: 1 to 200. Default value: 20.
         self.max_results = max_results
-        # The pagination token for the next page. If a value is returned for this parameter, the next page exists.
+        # The pagination token for the next page. If a next page exists, this field returns a value.
         # 
-        # > If this parameter has a return value, the next page exists. Use the returned NextToken value as a request parameter to retrieve the next page of data. Repeat until no value is returned, which indicates that all data has been retrieved.
+        # > If this parameter returns a value, a next page exists. Use the returned **NextToken** as a request parameter to retrieve the next page of data. Repeat until no value is returned, which indicates that all data has been retrieved.
         self.next_token = next_token
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The list of bot management rule tags.
         self.rule_labels = rule_labels
@@ -93,7 +93,7 @@ class DescribeBotRuleLabelsResponseBodyRuleLabels(DaraModel):
         label_type: str = None,
         sub_scene: str = None,
     ):
-        # The crawler behavior corresponding to the rule tag.
+        # The crawler behavior corresponding to the rule tag. Valid values:
         # 
         # - **malicious**: malicious crawler.
         # - **suspicious**: suspected crawler.
@@ -101,30 +101,30 @@ class DescribeBotRuleLabelsResponseBodyRuleLabels(DaraModel):
         self.bot_behavior = bot_behavior
         # The default action. Valid values:
         # 
-        # - **block**: Block.
-        # - **monitor**: Monitor.
+        # - **block**: block.
+        # - **monitor**: monitor.
         # - **js**: JavaScript verification.
         # - **captcha**: slider CAPTCHA.
         # - **captcha_strict**: strict slider CAPTCHA.
-        # - **bypass**: Allow.
+        # - **bypass**: allow.
         self.default_action = default_action
         # The default configurations corresponding to the label.
         self.default_config = default_config
-        # The default status of the tag rule.
+        # The default status of the tag rule. Valid values:
         # 
-        # - **1**: The rule is enabled.
-        # - **0**: The rule is disabled.
+        # - **1**: enabled.
+        # - **0**: disabled.
         self.default_status = default_status
         # The bot management rule tag.
         self.label_key = label_key
-        # The tag status.
+        # The tag status. Valid values:
         # 
-        # - **online**: Online.
-        # - **wait_offline**: Pending offline.
+        # - **online**: online.
+        # - **wait_offline**: pending offline.
         self.label_status = label_status
         # The type of the bot rule tag.
         self.label_type = label_type
-        # The set of bot management protection scenarios to which the rule belongs. Multiple scenarios are separated by commas (,). Valid values:
+        # The collection of bot management protection scenarios to which the rule belongs. Multiple scenarios are separated by commas (,). Valid values:
         # 
         # - **web**: Web protection scenario.
         # - **app**: App protection scenario.

@@ -12,6 +12,8 @@ class CreateDefenseTemplateRequest(DaraModel):
         defense_scene: str = None,
         defense_sub_scene: str = None,
         description: str = None,
+        detail: str = None,
+        dry_run: bool = None,
         instance_id: str = None,
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
@@ -26,13 +28,23 @@ class CreateDefenseTemplateRequest(DaraModel):
         # 
         # This parameter is required.
         self.defense_scene = defense_scene
-        # The sub-scenario of the protection template. This parameter is supported only for advanced bot management scenarios.
+        # The sub-scenario of the protection template. This parameter is supported only for the advanced bot management scenario.
         self.defense_sub_scene = defense_sub_scene
         # The description of the protection template to create.
         self.description = description
+        # The detailed template information, which is a JSON-formatted string. Different key-value pairs represent different attributes of the protected object. For more information, see the Detail description.
+        # 
+        # > This parameter applies only to the new version of basic protection (**waf_base**) and the new version of bot management (**bot_manager**) protection scenarios. This parameter is required for the new version of bot management (**bot_manager**) protection scenario.
+        self.detail = detail
+        # Specifies whether to enable the dry run mode. If you do not specify this parameter, a normal request is sent. Valid values:
+        # 
+        # - **true**: A dry run request is sent. The system checks whether the request meets the execution conditions without performing the specified operation. If the dry run fails, the corresponding error code is returned. If the dry run succeeds, the error code Defense.Control.DryRunOperation is returned.
+        # 
+        # - **false**: A normal request is sent. The specified operation is performed after the request passes the check.
+        self.dry_run = dry_run
         # The ID of the WAF instance.
         # 
-        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
+        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to obtain the ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -44,7 +56,7 @@ class CreateDefenseTemplateRequest(DaraModel):
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The name of the protection template to create. The name must be 1 to 255 characters in length and can contain Chinese characters, letters, digits, underscores (_), periods (.), or hyphens (-).
+        # The name of the protection template to create. The name must be 1 to 255 characters in length and can contain Chinese characters, letters, digits, underscores (_), periods (.), and hyphens (-).
         # 
         # > Template names must be unique within the same protection scenario (**DefenseScene**).
         # 
@@ -67,10 +79,10 @@ class CreateDefenseTemplateRequest(DaraModel):
         # This parameter is required.
         self.template_type = template_type
         # The protected object groups to unbind when creating a default protection template. Use the format [**"group1","group2",……**].
-        # > This parameter takes effect only when you create a **default template** (the value of **TemplateType** is **user_default**).
+        # > This parameter takes effect only when creating a **default template** (when **TemplateType** is set to **user_default**).
         self.unbind_resource_groups = unbind_resource_groups
         # The protected objects to unbind when creating a default protection template. Use the format [**"XX1","XX2",……**].
-        # > This parameter takes effect only when you create a **default template** (the value of **TemplateType** is **user_default**).
+        # > This parameter takes effect only when creating a **default template** (when **TemplateType** is set to **user_default**).
         self.unbind_resources = unbind_resources
 
     def validate(self):
@@ -89,6 +101,12 @@ class CreateDefenseTemplateRequest(DaraModel):
 
         if self.description is not None:
             result['Description'] = self.description
+
+        if self.detail is not None:
+            result['Detail'] = self.detail
+
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
 
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
@@ -129,6 +147,12 @@ class CreateDefenseTemplateRequest(DaraModel):
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('Detail') is not None:
+            self.detail = m.get('Detail')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')

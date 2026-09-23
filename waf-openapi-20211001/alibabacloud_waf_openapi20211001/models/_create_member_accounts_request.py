@@ -15,25 +15,25 @@ class CreateMemberAccountsRequest(DaraModel):
         resource_manager_resource_group_id: str = None,
         source_ip: str = None,
     ):
-        # The ID of the WAF instance.
+        # Instance ID of the WAF instance.
         # 
-        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to view your current WAF instance ID.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of your current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The Alibaba Cloud account IDs of the members that you want to add. You can add up to 10 members at the same time.
+        # The list of WAF member account IDs to manage. You can add up to 10 member accounts at a time.
         # 
         # This parameter is required.
         self.member_account_ids = member_account_ids
-        # The region of the WAF instance. Valid values:
+        # The region where the WAF instance is deployed. Valid values:
         # 
-        # - **cn-hangzhou**: The Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland.
         # 
-        # - **ap-southeast-1**: Outside the Chinese mainland.
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The source IP address of the request. The system automatically obtains the value of this parameter.
+        # The source IP address of the request. You do not need to specify this parameter. The system automatically obtains the value.
         self.source_ip = source_ip
 
     def validate(self):

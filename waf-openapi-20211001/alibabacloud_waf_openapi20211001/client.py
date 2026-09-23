@@ -405,6 +405,8 @@ class Client(OpenApiClient):
     ) -> main_models.CopyDefenseTemplateResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.region_id):
@@ -439,6 +441,8 @@ class Client(OpenApiClient):
     ) -> main_models.CopyDefenseTemplateResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.region_id):
@@ -1091,6 +1095,8 @@ class Client(OpenApiClient):
             query['DefenseScene'] = request.defense_scene
         if not DaraCore.is_null(request.defense_type):
             query['DefenseType'] = request.defense_type
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.region_id):
@@ -1135,6 +1141,8 @@ class Client(OpenApiClient):
             query['DefenseScene'] = request.defense_scene
         if not DaraCore.is_null(request.defense_type):
             query['DefenseType'] = request.defense_type
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.region_id):
@@ -1195,6 +1203,10 @@ class Client(OpenApiClient):
             query['DefenseSubScene'] = request.defense_sub_scene
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.detail):
+            query['Detail'] = request.detail
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.region_id):
@@ -1245,6 +1257,10 @@ class Client(OpenApiClient):
             query['DefenseSubScene'] = request.defense_sub_scene
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.detail):
+            query['Detail'] = request.detail
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.region_id):
@@ -2875,6 +2891,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.defense_type):
             query['DefenseType'] = request.defense_type
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.region_id):
@@ -2915,6 +2933,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.defense_type):
             query['DefenseType'] = request.defense_type
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.region_id):
@@ -3053,6 +3073,8 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteDefenseTemplateResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.region_id):
@@ -3087,6 +3109,8 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteDefenseTemplateResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.region_id):
@@ -4391,6 +4415,8 @@ class Client(OpenApiClient):
             query['ApiFormat'] = request.api_format
         if not DaraCore.is_null(request.api_id):
             query['ApiId'] = request.api_id
+        if not DaraCore.is_null(request.api_ids):
+            query['ApiIds'] = request.api_ids
         if not DaraCore.is_null(request.api_method):
             query['ApiMethod'] = request.api_method
         if not DaraCore.is_null(request.api_status):
@@ -4463,6 +4489,8 @@ class Client(OpenApiClient):
             query['ApiFormat'] = request.api_format
         if not DaraCore.is_null(request.api_id):
             query['ApiId'] = request.api_id
+        if not DaraCore.is_null(request.api_ids):
+            query['ApiIds'] = request.api_ids
         if not DaraCore.is_null(request.api_method):
             query['ApiMethod'] = request.api_method
         if not DaraCore.is_null(request.api_status):
@@ -6681,6 +6709,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeChargeModuleResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.charge_unit):
+            query['ChargeUnit'] = request.charge_unit
         if not DaraCore.is_null(request.pay_type):
             query['PayType'] = request.pay_type
         if not DaraCore.is_null(request.region_id):
@@ -6713,6 +6743,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeChargeModuleResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.charge_unit):
+            query['ChargeUnit'] = request.charge_unit
         if not DaraCore.is_null(request.pay_type):
             query['PayType'] = request.pay_type
         if not DaraCore.is_null(request.region_id):
@@ -19141,6 +19173,8 @@ class Client(OpenApiClient):
             query['DefenseScene'] = request.defense_scene
         if not DaraCore.is_null(request.defense_type):
             query['DefenseType'] = request.defense_type
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.region_id):
@@ -19185,6 +19219,8 @@ class Client(OpenApiClient):
             query['DefenseScene'] = request.defense_scene
         if not DaraCore.is_null(request.defense_type):
             query['DefenseType'] = request.defense_type
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.region_id):
@@ -19327,6 +19363,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.defense_type):
             query['DefenseType'] = request.defense_type
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.region_id):
@@ -19367,6 +19405,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.defense_type):
             query['DefenseType'] = request.defense_type
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.region_id):
@@ -19511,6 +19551,10 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.detail):
+            query['Detail'] = request.detail
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.region_id):
@@ -19549,6 +19593,10 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.detail):
+            query['Detail'] = request.detail
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.region_id):
@@ -19599,6 +19647,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyDefenseTemplateStatusResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.region_id):
@@ -19635,6 +19685,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyDefenseTemplateStatusResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.region_id):
@@ -21291,6 +21343,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.trace_config):
             request.trace_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.trace_config, 'TraceConfig', 'json')
         query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.region_id):
@@ -21335,6 +21389,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.trace_config):
             request.trace_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.trace_config, 'TraceConfig', 'json')
         query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.region_id):
@@ -21395,6 +21451,8 @@ class Client(OpenApiClient):
             query['BindResourceGroups'] = request.bind_resource_groups
         if not DaraCore.is_null(request.bind_resources):
             query['BindResources'] = request.bind_resources
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.region_id):
@@ -21441,6 +21499,8 @@ class Client(OpenApiClient):
             query['BindResourceGroups'] = request.bind_resource_groups
         if not DaraCore.is_null(request.bind_resources):
             query['BindResources'] = request.bind_resources
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.region_id):
