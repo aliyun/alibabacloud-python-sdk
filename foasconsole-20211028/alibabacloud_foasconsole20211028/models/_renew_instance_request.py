@@ -22,7 +22,11 @@ class RenewInstanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The subscription period.
+        # The subscription period. Valid values:
+        # - Month: month.
+        # - Year: year.
+        # - Hour: hour.
+        # - Day: day.
         # 
         # This parameter is required.
         self.pricing_cycle = pricing_cycle

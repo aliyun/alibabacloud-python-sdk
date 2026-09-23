@@ -13,6 +13,8 @@ class CreateInstanceRequest(DaraModel):
         architecture_type: str = None,
         auto_renew: bool = None,
         charge_type: str = None,
+        default_ha_namespace_resource_spec: main_models.CreateInstanceRequestDefaultHaNamespaceResourceSpec = None,
+        default_namespace_resource_spec: main_models.CreateInstanceRequestDefaultNamespaceResourceSpec = None,
         duration: int = None,
         extra: str = None,
         ha: bool = None,
@@ -46,6 +48,10 @@ class CreateInstanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.charge_type = charge_type
+        # The default high-availability namespace resource configuration.
+        self.default_ha_namespace_resource_spec = default_ha_namespace_resource_spec
+        # The default namespace resource configuration.
+        self.default_namespace_resource_spec = default_namespace_resource_spec
         # The subscription duration.
         # 
         # > This parameter is required when ChargeType is set to PRE.
@@ -62,18 +68,18 @@ class CreateInstanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_name = instance_name
-        # The type of monitoring and alerting service. You can select ARMS or CloudMonitor.
+        # The type of the monitoring and alerting service. You can select ARMS or CloudMonitor.
         self.monitor_type = monitor_type
-        # The unit of the subscription duration. Valid values:
+        # The billing cycle of the subscription instance. Valid values:
         # 
-        # - **year**: year.
-        # - **month**: month.
+        # - **year**: yearly.
+        # - **month**: monthly.
         # 
         # > This parameter is required when ChargeType is set to PRE.
         self.pricing_cycle = pricing_cycle
         # The coupon code.
         self.promotion_code = promotion_code
-        # The region ID.
+        # The region.
         # 
         # This parameter is required.
         self.region = region
@@ -103,6 +109,10 @@ class CreateInstanceRequest(DaraModel):
         self.vpc_id = vpc_id
 
     def validate(self):
+        if self.default_ha_namespace_resource_spec:
+            self.default_ha_namespace_resource_spec.validate()
+        if self.default_namespace_resource_spec:
+            self.default_namespace_resource_spec.validate()
         if self.ha_resource_spec:
             self.ha_resource_spec.validate()
         if self.resource_spec:
@@ -127,6 +137,12 @@ class CreateInstanceRequest(DaraModel):
 
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
+
+        if self.default_ha_namespace_resource_spec is not None:
+            result['DefaultHaNamespaceResourceSpec'] = self.default_ha_namespace_resource_spec.to_map()
+
+        if self.default_namespace_resource_spec is not None:
+            result['DefaultNamespaceResourceSpec'] = self.default_namespace_resource_spec.to_map()
 
         if self.duration is not None:
             result['Duration'] = self.duration
@@ -193,6 +209,14 @@ class CreateInstanceRequest(DaraModel):
 
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
+
+        if m.get('DefaultHaNamespaceResourceSpec') is not None:
+            temp_model = main_models.CreateInstanceRequestDefaultHaNamespaceResourceSpec()
+            self.default_ha_namespace_resource_spec = temp_model.from_map(m.get('DefaultHaNamespaceResourceSpec'))
+
+        if m.get('DefaultNamespaceResourceSpec') is not None:
+            temp_model = main_models.CreateInstanceRequestDefaultNamespaceResourceSpec()
+            self.default_namespace_resource_spec = temp_model.from_map(m.get('DefaultNamespaceResourceSpec'))
 
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
@@ -300,7 +324,7 @@ class CreateInstanceRequestStorage(DaraModel):
         # - true: Use fully managed storage.
         # - false: Do not use fully managed storage.
         self.fully_managed = fully_managed
-        # The Object Storage Service (OSS) storage.
+        # The OSS storage configurations.
         self.oss = oss
 
     def validate(self):
@@ -407,7 +431,85 @@ class CreateInstanceRequestHaResourceSpec(DaraModel):
     ):
         # The number of CPUs for zone-disaster recovery.
         self.cpu = cpu
-        # The memory size for zone-disaster recovery.
+        # The memory size for zone-disaster recovery high availability (HA).
+        self.memory_gb = memory_gb
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu
+
+        if self.memory_gb is not None:
+            result['MemoryGB'] = self.memory_gb
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cpu') is not None:
+            self.cpu = m.get('Cpu')
+
+        if m.get('MemoryGB') is not None:
+            self.memory_gb = m.get('MemoryGB')
+
+        return self
+
+class CreateInstanceRequestDefaultNamespaceResourceSpec(DaraModel):
+    def __init__(
+        self,
+        cpu: int = None,
+        memory_gb: int = None,
+    ):
+        # The number of CPUs.
+        self.cpu = cpu
+        # The memory size. Unit: GB.
+        # 
+        # > The memory size must be 4 times the number of CPUs.
+        self.memory_gb = memory_gb
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu
+
+        if self.memory_gb is not None:
+            result['MemoryGB'] = self.memory_gb
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cpu') is not None:
+            self.cpu = m.get('Cpu')
+
+        if m.get('MemoryGB') is not None:
+            self.memory_gb = m.get('MemoryGB')
+
+        return self
+
+class CreateInstanceRequestDefaultHaNamespaceResourceSpec(DaraModel):
+    def __init__(
+        self,
+        cpu: int = None,
+        memory_gb: int = None,
+    ):
+        # The number of CPUs.
+        self.cpu = cpu
+        # The memory size. Unit: GB.
+        # 
+        # > The memory size must be 4 times the number of CPUs.
         self.memory_gb = memory_gb
 
     def validate(self):

@@ -20,11 +20,11 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = 'regional'
+        self._endpoint_rule = 'central'
         self._endpoint_map = {
-            'cn-qingdao': 'foasconsole.cn-qingdao.aliyuncs.com',
             'cn-wulanchabu': 'foasconsole.cn-wulanchabu.aliyuncs.com',
             'cn-beijing': 'foasconsole.cn-beijing.aliyuncs.com',
+            'cn-qingdao': 'foasconsole.cn-qingdao.aliyuncs.com',
             'cn-shanghai': 'foasconsole.cn-shanghai.aliyuncs.com',
             'cn-hongkong': 'foasconsole.cn-hongkong.aliyuncs.com',
             'cn-zhangjiakou': 'foasconsole.cn-zhangjiakou.aliyuncs.com',
@@ -39,8 +39,7 @@ class Client(OpenApiClient):
             'us-west-1': 'foasconsole.us-west-1.aliyuncs.com',
             'eu-central-1': 'foasconsole.eu-central-1.aliyuncs.com',
             'cn-shenzhen-finance-1': 'foasconsole.cn-shenzhen-finance-1.aliyuncs.com',
-            'cn-shanghai-finance-1': 'foasconsole.cn-shanghai-finance-1.aliyuncs.com',
-            'cn-north-2-gov-1': 'foasconsole.aliyuncs.com'
+            'cn-shanghai-finance-1': 'foasconsole.cn-shanghai-finance-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('foasconsole', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -405,6 +404,10 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.CreateInstanceShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.default_ha_namespace_resource_spec):
+            request.default_ha_namespace_resource_spec_shrink = Utils.array_to_string_with_specified_style(tmp_req.default_ha_namespace_resource_spec, 'DefaultHaNamespaceResourceSpec', 'json')
+        if not DaraCore.is_null(tmp_req.default_namespace_resource_spec):
+            request.default_namespace_resource_spec_shrink = Utils.array_to_string_with_specified_style(tmp_req.default_namespace_resource_spec, 'DefaultNamespaceResourceSpec', 'json')
         if not DaraCore.is_null(tmp_req.ha_resource_spec):
             request.ha_resource_spec_shrink = Utils.array_to_string_with_specified_style(tmp_req.ha_resource_spec, 'HaResourceSpec', 'json')
         if not DaraCore.is_null(tmp_req.ha_vswitch_ids):
@@ -424,6 +427,10 @@ class Client(OpenApiClient):
             body['AutoRenew'] = request.auto_renew
         if not DaraCore.is_null(request.charge_type):
             body['ChargeType'] = request.charge_type
+        if not DaraCore.is_null(request.default_ha_namespace_resource_spec_shrink):
+            body['DefaultHaNamespaceResourceSpec'] = request.default_ha_namespace_resource_spec_shrink
+        if not DaraCore.is_null(request.default_namespace_resource_spec_shrink):
+            body['DefaultNamespaceResourceSpec'] = request.default_namespace_resource_spec_shrink
         if not DaraCore.is_null(request.duration):
             body['Duration'] = request.duration
         if not DaraCore.is_null(request.extra):
@@ -485,6 +492,10 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.CreateInstanceShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.default_ha_namespace_resource_spec):
+            request.default_ha_namespace_resource_spec_shrink = Utils.array_to_string_with_specified_style(tmp_req.default_ha_namespace_resource_spec, 'DefaultHaNamespaceResourceSpec', 'json')
+        if not DaraCore.is_null(tmp_req.default_namespace_resource_spec):
+            request.default_namespace_resource_spec_shrink = Utils.array_to_string_with_specified_style(tmp_req.default_namespace_resource_spec, 'DefaultNamespaceResourceSpec', 'json')
         if not DaraCore.is_null(tmp_req.ha_resource_spec):
             request.ha_resource_spec_shrink = Utils.array_to_string_with_specified_style(tmp_req.ha_resource_spec, 'HaResourceSpec', 'json')
         if not DaraCore.is_null(tmp_req.ha_vswitch_ids):
@@ -504,6 +515,10 @@ class Client(OpenApiClient):
             body['AutoRenew'] = request.auto_renew
         if not DaraCore.is_null(request.charge_type):
             body['ChargeType'] = request.charge_type
+        if not DaraCore.is_null(request.default_ha_namespace_resource_spec_shrink):
+            body['DefaultHaNamespaceResourceSpec'] = request.default_ha_namespace_resource_spec_shrink
+        if not DaraCore.is_null(request.default_namespace_resource_spec_shrink):
+            body['DefaultNamespaceResourceSpec'] = request.default_namespace_resource_spec_shrink
         if not DaraCore.is_null(request.duration):
             body['Duration'] = request.duration
         if not DaraCore.is_null(request.extra):

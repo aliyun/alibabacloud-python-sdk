@@ -10,6 +10,8 @@ class CreateInstanceShrinkRequest(DaraModel):
         architecture_type: str = None,
         auto_renew: bool = None,
         charge_type: str = None,
+        default_ha_namespace_resource_spec_shrink: str = None,
+        default_namespace_resource_spec_shrink: str = None,
         duration: int = None,
         extra: str = None,
         ha: bool = None,
@@ -43,6 +45,10 @@ class CreateInstanceShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.charge_type = charge_type
+        # The default high-availability namespace resource configuration.
+        self.default_ha_namespace_resource_spec_shrink = default_ha_namespace_resource_spec_shrink
+        # The default namespace resource configuration.
+        self.default_namespace_resource_spec_shrink = default_namespace_resource_spec_shrink
         # The subscription duration.
         # 
         # > This parameter is required when ChargeType is set to PRE.
@@ -59,18 +65,18 @@ class CreateInstanceShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_name = instance_name
-        # The type of monitoring and alerting service. You can select ARMS or CloudMonitor.
+        # The type of the monitoring and alerting service. You can select ARMS or CloudMonitor.
         self.monitor_type = monitor_type
-        # The unit of the subscription duration. Valid values:
+        # The billing cycle of the subscription instance. Valid values:
         # 
-        # - **year**: year.
-        # - **month**: month.
+        # - **year**: yearly.
+        # - **month**: monthly.
         # 
         # > This parameter is required when ChargeType is set to PRE.
         self.pricing_cycle = pricing_cycle
         # The coupon code.
         self.promotion_code = promotion_code
-        # The region ID.
+        # The region.
         # 
         # This parameter is required.
         self.region = region
@@ -115,6 +121,12 @@ class CreateInstanceShrinkRequest(DaraModel):
 
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
+
+        if self.default_ha_namespace_resource_spec_shrink is not None:
+            result['DefaultHaNamespaceResourceSpec'] = self.default_ha_namespace_resource_spec_shrink
+
+        if self.default_namespace_resource_spec_shrink is not None:
+            result['DefaultNamespaceResourceSpec'] = self.default_namespace_resource_spec_shrink
 
         if self.duration is not None:
             result['Duration'] = self.duration
@@ -179,6 +191,12 @@ class CreateInstanceShrinkRequest(DaraModel):
 
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
+
+        if m.get('DefaultHaNamespaceResourceSpec') is not None:
+            self.default_ha_namespace_resource_spec_shrink = m.get('DefaultHaNamespaceResourceSpec')
+
+        if m.get('DefaultNamespaceResourceSpec') is not None:
+            self.default_namespace_resource_spec_shrink = m.get('DefaultNamespaceResourceSpec')
 
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')

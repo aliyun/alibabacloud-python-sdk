@@ -31,16 +31,20 @@ class QueryCreateInstancePriceRequest(DaraModel):
         self.architecture_type = architecture_type
         # Specifies whether to enable auto-renewal. Valid values:
         # 
-        # - **true**: enables auto-renewal.
-        # - **false**: does not enable auto-renewal. (Default)
+        # - **true**: Enabled.
+        # - **false**: Disabled (default).
         # 
-        # >This parameter is invalid for pay-as-you-go instances.
+        # > This parameter does not take effect for pay-as-you-go instances.
         self.auto_renew = auto_renew
-        # The billing type. Valid values:
+        # The billing method. Valid values:
+        # 
+        # - POST: pay-as-you-go.
+        # - PRE: subscription.
         # 
         # This parameter is required.
         self.charge_type = charge_type
         # The number of billing cycles.
+        # > When ChargeType is set to PRE, the Duration parameter is required.
         self.duration = duration
         # The extended reserved field.
         self.extra = extra
@@ -63,6 +67,9 @@ class QueryCreateInstancePriceRequest(DaraModel):
         # The storage information.
         self.storage = storage
         # Specifies whether to use a coupon. Valid values:
+        # 
+        # - true: Use a coupon.
+        # - false: Do not use a coupon.
         self.use_promotion_code = use_promotion_code
         # The vSwitch IDs.
         self.v_switch_ids = v_switch_ids
@@ -254,6 +261,7 @@ class QueryCreateInstancePriceRequestResourceSpec(DaraModel):
         # The number of CPUs.
         self.cpu = cpu
         # The memory size.
+        # > The memory size must be 4 times the number of CPUs.
         self.memory_gb = memory_gb
 
     def validate(self):

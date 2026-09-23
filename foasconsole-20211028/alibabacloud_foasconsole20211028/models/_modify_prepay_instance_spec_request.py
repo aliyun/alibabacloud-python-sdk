@@ -18,15 +18,19 @@ class ModifyPrepayInstanceSpecRequest(DaraModel):
         region: str = None,
         resource_spec: main_models.ModifyPrepayInstanceSpecRequestResourceSpec = None,
     ):
+        # Specifies whether to enable zone-disaster recovery resources for the workspace.
         self.ha = ha
+        # The resource specifications for zone-disaster recovery.
         self.ha_resource_spec = ha_resource_spec
+        # The list of vSwitch IDs in the secondary zone for zone-disaster recovery.
         self.ha_vswitch_ids = ha_vswitch_ids
+        # The ID of the secondary zone for zone-disaster recovery.
         self.ha_zone_id = ha_zone_id
         # The order instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region ID.
+        # The region.
         # 
         # This parameter is required.
         self.region = region
@@ -144,7 +148,9 @@ class ModifyPrepayInstanceSpecRequestHaResourceSpec(DaraModel):
         cpu: int = None,
         memory_gb: int = None,
     ):
+        # The number of CPUs for zone-disaster recovery resources.
         self.cpu = cpu
+        # The memory size of zone-disaster recovery resources, in GB. The value must be 4 times the number of CPUs.
         self.memory_gb = memory_gb
 
     def validate(self):

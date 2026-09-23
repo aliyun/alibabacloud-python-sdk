@@ -22,11 +22,11 @@ class DescribeInstancesRequest(DaraModel):
         resource_group_id: str = None,
         tags: List[main_models.DescribeInstancesRequestTags] = None,
     ):
-        # The architecture type.
+        # The processor architecture. Valid values: X86 and ARM.
         self.architecture_type = architecture_type
-        # The payment type.
+        # The billing method.
         self.charge_type = charge_type
-        # Specifies whether mixed billing is used.
+        # Specifies whether hybrid billing is used.
         self.elastic = elastic
         # The order instance ID.
         self.instance_id = instance_id
@@ -42,6 +42,7 @@ class DescribeInstancesRequest(DaraModel):
         # 
         # This parameter is required.
         self.region = region
+        # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
         # The tags of the instance.
         self.tags = tags

@@ -82,7 +82,7 @@ class QueryModifyInstancePriceResponseBodyPriceInfo(DaraModel):
         self.discount_amount = discount_amount
         # Indicates whether the enterprise discount is applied.
         self.is_contract_activity = is_contract_activity
-        # The Lingxiao request ID.
+        # The Lingxiao request ID of the call.
         self.lx_request_id = lx_request_id
         # The error message.
         self.message = message
@@ -92,9 +92,9 @@ class QueryModifyInstancePriceResponseBodyPriceInfo(DaraModel):
         self.original_amount = original_amount
         # The promotion rule group.
         self.rules = rules
-        # The discounted price based on the official website discount.
+        # The discounted price based on the list discount.
         self.stand_discount_price = stand_discount_price
-        # The official website discount price or direct sales contract discount price.
+        # The list discount price or direct sales contract discount price.
         self.stand_price = stand_price
         # The final price, which is the original price minus the discount.
         self.trade_amount = trade_amount
@@ -260,7 +260,7 @@ class QueryModifyInstancePriceResponseBodyPriceInfoOptionalPromotions(DaraModel)
         self.promotion_desc = promotion_desc
         # The coupon name.
         self.promotion_name = promotion_name
-        # The coupon ID.
+        # The coupon number.
         self.promotion_option_no = promotion_option_no
         # Indicates whether the coupon is selected. Valid values:
         # 
@@ -319,7 +319,7 @@ class QueryModifyInstancePriceResponseBodyPriceInfoDepreciateInfo(DaraModel):
     ):
         # The price reduction ratio.
         self.cheap_rate = cheap_rate
-        # The reduced list price total.
+        # The list price total after the price reduction.
         self.cheap_stand_amount = cheap_stand_amount
         # Indicates whether to display the price reduction percentage.
         self.is_show = is_show
@@ -327,7 +327,7 @@ class QueryModifyInstancePriceResponseBodyPriceInfoDepreciateInfo(DaraModel):
         self.month_price = month_price
         # The original list price total.
         self.original_stand_amount = original_stand_amount
-        # The price reduction start time.
+        # The price reduction start time in ISO 8601 format.
         self.start_time = start_time
 
     def validate(self):

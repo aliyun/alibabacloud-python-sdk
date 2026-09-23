@@ -92,9 +92,9 @@ class QueryConvertPrepayInstancePriceResponseBodyPriceInfo(DaraModel):
         self.original_amount = original_amount
         # The promotion rules.
         self.rules = rules
-        # The discounted price based on the official website discount.
+        # The discounted price based on the list discount.
         self.stand_discount_price = stand_discount_price
-        # The official website discount price or direct sales contract discount price.
+        # The list discount price or direct sales contract discount price.
         self.stand_price = stand_price
         # The final price, which is the original price minus the discount.
         self.trade_amount = trade_amount
@@ -319,15 +319,15 @@ class QueryConvertPrepayInstancePriceResponseBodyPriceInfoDepreciateInfo(DaraMod
     ):
         # The price reduction ratio.
         self.cheap_rate = cheap_rate
-        # The reduced list price total.
+        # The list price total after the price reduction.
         self.cheap_stand_amount = cheap_stand_amount
-        # Indicates whether to display the price reduction percentage.
+        # Indicates whether the price reduction is displayed.
         self.is_show = is_show
         # The equivalent monthly price.
         self.month_price = month_price
         # The original list price total.
         self.original_stand_amount = original_stand_amount
-        # The price reduction start time.
+        # The price reduction start time in ISO 8601 format.
         self.start_time = start_time
 
     def validate(self):

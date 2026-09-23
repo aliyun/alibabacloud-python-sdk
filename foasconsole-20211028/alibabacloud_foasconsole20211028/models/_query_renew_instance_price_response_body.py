@@ -14,7 +14,7 @@ class QueryRenewInstancePriceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The price information, including the price and discount rules.
+        # The price information, including the price and promotion rules.
         self.price_info = price_info
         # The request ID.
         self.request_id = request_id
@@ -90,11 +90,11 @@ class QueryRenewInstancePriceResponseBodyPriceInfo(DaraModel):
         self.optional_promotions = optional_promotions
         # The original price.
         self.original_amount = original_amount
-        # The promotion rules.
+        # The promotion rule group.
         self.rules = rules
-        # The promotional price based on the standard discount on the official website.
+        # The promotional price based on the standard website discount.
         self.stand_discount_price = stand_discount_price
-        # The standard discounted price on the official website or the direct sales contract discounted price.
+        # The list price with the website discount or direct sales contract discount applied.
         self.stand_price = stand_price
         # The final price, which is the original price minus the discount amount.
         self.trade_amount = trade_amount
@@ -260,7 +260,7 @@ class QueryRenewInstancePriceResponseBodyPriceInfoOptionalPromotions(DaraModel):
         self.promotion_desc = promotion_desc
         # The coupon name.
         self.promotion_name = promotion_name
-        # The coupon ID.
+        # The coupon number.
         self.promotion_option_no = promotion_option_no
         # Indicates whether the coupon is selected. Valid values:
         # 
@@ -321,13 +321,13 @@ class QueryRenewInstancePriceResponseBodyPriceInfoDepreciateInfo(DaraModel):
         self.cheap_rate = cheap_rate
         # The total list price after the price reduction.
         self.cheap_stand_amount = cheap_stand_amount
-        # Indicates whether to display the price reduction percentage.
+        # Indicates whether the price reduction percentage is displayed.
         self.is_show = is_show
-        # The monthly equivalent price.
+        # The equivalent monthly price.
         self.month_price = month_price
         # The original total list price.
         self.original_stand_amount = original_stand_amount
-        # The start time of the price reduction.
+        # The start time of the price reduction, in ISO 8601 format.
         self.start_time = start_time
 
     def validate(self):

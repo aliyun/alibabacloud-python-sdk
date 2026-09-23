@@ -15,15 +15,19 @@ class ModifyPrepayInstanceSpecShrinkRequest(DaraModel):
         region: str = None,
         resource_spec_shrink: str = None,
     ):
+        # Specifies whether to enable zone-disaster recovery resources for the workspace.
         self.ha = ha
+        # The resource specifications for zone-disaster recovery.
         self.ha_resource_spec_shrink = ha_resource_spec_shrink
+        # The list of vSwitch IDs in the secondary zone for zone-disaster recovery.
         self.ha_vswitch_ids_shrink = ha_vswitch_ids_shrink
+        # The ID of the secondary zone for zone-disaster recovery.
         self.ha_zone_id = ha_zone_id
         # The order instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region ID.
+        # The region.
         # 
         # This parameter is required.
         self.region = region

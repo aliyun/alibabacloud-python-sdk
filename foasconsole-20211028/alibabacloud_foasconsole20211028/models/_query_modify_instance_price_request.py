@@ -158,7 +158,7 @@ class QueryModifyInstancePriceRequestHaResourceSpec(DaraModel):
     ):
         # The number of CPUs for zone-disaster recovery.
         self.cpu = cpu
-        # The memory size for zone-disaster recovery.
+        # The active memory size for zone-disaster recovery.
         self.memory_gb = memory_gb
 
     def validate(self):

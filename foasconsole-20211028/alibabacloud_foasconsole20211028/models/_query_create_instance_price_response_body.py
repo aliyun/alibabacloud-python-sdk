@@ -80,7 +80,7 @@ class QueryCreateInstancePriceResponseBodyPriceInfo(DaraModel):
         self.depreciate_info = depreciate_info
         # The discount amount.
         self.discount_amount = discount_amount
-        # Indicates whether the enterprise customer discount is applied.
+        # Indicates whether an enterprise discount is applied.
         self.is_contract_activity = is_contract_activity
         # The Lingxiao request ID of the call.
         self.lx_request_id = lx_request_id
@@ -92,9 +92,9 @@ class QueryCreateInstancePriceResponseBodyPriceInfo(DaraModel):
         self.original_amount = original_amount
         # The promotion rules.
         self.rules = rules
-        # The promotional price based on the official website discount.
+        # The promotional price based on the standard discount from the official website.
         self.stand_discount_price = stand_discount_price
-        # The official website discounted price or direct sales contract discounted price.
+        # The standard discounted price on the official website or the direct sales contract discounted price.
         self.stand_price = stand_price
         # The final price, which is the original price minus the discount.
         self.trade_amount = trade_amount
@@ -217,7 +217,7 @@ class QueryCreateInstancePriceResponseBodyPriceInfoRules(DaraModel):
         description: str = None,
         rule_id: int = None,
     ):
-        # The promotion rule description.
+        # The description of the promotion rule.
         self.description = description
         # The promotion ID.
         self.rule_id = rule_id
@@ -263,6 +263,8 @@ class QueryCreateInstancePriceResponseBodyPriceInfoOptionalPromotions(DaraModel)
         # The coupon ID.
         self.promotion_option_no = promotion_option_no
         # Indicates whether the coupon is selected. Valid values:
+        # - true: Selected.
+        # - false: Not selected.
         self.selected = selected
 
     def validate(self):
@@ -313,15 +315,15 @@ class QueryCreateInstancePriceResponseBodyPriceInfoDepreciateInfo(DaraModel):
         original_stand_amount: str = None,
         start_time: str = None,
     ):
-        # The price reduction rate.
+        # The price reduction ratio.
         self.cheap_rate = cheap_rate
-        # The standard total price after the price reduction.
+        # The total list price after the price reduction.
         self.cheap_stand_amount = cheap_stand_amount
         # Indicates whether to display the price reduction percentage.
         self.is_show = is_show
         # The monthly equivalent price.
         self.month_price = month_price
-        # The original standard total price.
+        # The original total list price.
         self.original_stand_amount = original_stand_amount
         # The start time of the price reduction.
         self.start_time = start_time

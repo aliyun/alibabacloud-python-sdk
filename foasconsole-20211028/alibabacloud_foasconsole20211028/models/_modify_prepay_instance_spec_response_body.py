@@ -15,7 +15,7 @@ class ModifyPrepayInstanceSpecResponseBody(DaraModel):
         self.order_id = order_id
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

@@ -27,8 +27,8 @@ class DescribeInstancesResponseBody(DaraModel):
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
-        # - true: The request was successful.
-        # - false: The request failed.
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
         # The total number of instances.
         self.total_count = total_count
@@ -110,6 +110,7 @@ class DescribeInstancesResponseBodyInstances(DaraModel):
         cluster_status: str = None,
         cluster_used_resources: main_models.DescribeInstancesResponseBodyInstancesClusterUsedResources = None,
         cluster_used_storage: main_models.DescribeInstancesResponseBodyInstancesClusterUsedStorage = None,
+        deletion_protection: bool = None,
         elastic: bool = None,
         elastic_instance_id: str = None,
         elastic_order_state: str = None,
@@ -142,12 +143,15 @@ class DescribeInstancesResponseBodyInstances(DaraModel):
         zone_id: str = None,
     ):
         self.ansm = ansm
+        # The processor architecture.
         self.architecture_type = architecture_type
+        # The cluster ID.
         self.ask_cluster_id = ask_cluster_id
         # The billing method. Valid values:
         # - POST: pay-as-you-go.
         # - PRE: subscription.
         self.charge_type = charge_type
+        # The cluster state.
         self.cluster_state = cluster_state
         # The cluster status. Valid values:
         # - CREATING: Being created.
@@ -156,38 +160,50 @@ class DescribeInstancesResponseBodyInstances(DaraModel):
         # - DELETING: Being deleted.
         # - DELETED: Deleted.
         self.cluster_status = cluster_status
+        # The overall resource usage of the Flink service.
         self.cluster_used_resources = cluster_used_resources
         self.cluster_used_storage = cluster_used_storage
+        # Indicates whether deletion protection is enabled.
+        self.deletion_protection = deletion_protection
         self.elastic = elastic
         # The elastic order ID.
         self.elastic_instance_id = elastic_instance_id
         self.elastic_order_state = elastic_order_state
         self.elastic_resource_spec = elastic_resource_spec
+        # Indicates whether zone-disaster recovery resources are selected.
         self.ha = ha
+        # The zone-disaster recovery resource description.
         self.ha_resource_spec = ha_resource_spec
+        # The vSwitch group in the secondary zone for zone-disaster recovery.
         self.ha_vswitch_ids = ha_vswitch_ids
+        # The vSwitch group information for the secondary zone of zone-disaster recovery.
         self.ha_vswitch_info = ha_vswitch_info
+        # The secondary zone ID for zone-disaster recovery.
         self.ha_zone_id = ha_zone_id
+        # The domain name information added by the user.
+        # 
         # This parameter is required.
         self.host_aliases = host_aliases
         # The instance ID.
         self.instance_id = instance_id
         # The workspace name.
         self.instance_name = instance_name
+        # The type of the monitoring and alerting service. You can select ARMS or CloudMonitor.
         self.monitor_type = monitor_type
-        # The order status. Valid values:
-        # - NOT_INIT: The order is placed but components are not deployed.
+        # The order status of the Flink compute service. Valid values:
+        # - NOT_INIT: The order is placed but components are not yet deployed.
         # - NORMAL: Normal.
         # - CEASE: Expired.
         # - RELEASE: Overdue.
         self.order_state = order_state
         self.oss_info = oss_info
-        # The region of the instance.
+        # The region to which the instance belongs.
         self.region = region
-        # The time when the instance was created.
+        # The time when the instance was created. This value is a UNIX timestamp in milliseconds.
         self.resource_create_time = resource_create_time
-        # The expiration time.
+        # The time when the instance expires. This value is a UNIX timestamp in milliseconds.
         self.resource_expired_time = resource_expired_time
+        # The resource group.
         self.resource_group_id = resource_group_id
         # The resource ID.
         self.resource_id = resource_id
@@ -196,15 +212,17 @@ class DescribeInstancesResponseBodyInstances(DaraModel):
         # The storage information.
         self.storage = storage
         self.support_disaster_recovery_drill = support_disaster_recovery_drill
-        # The tags.
+        # The list of tags.
         self.tags = tags
         # The ID of the user to whom the instance belongs.
         self.uid = uid
-        # The vSwitch IDs.
+        # The vSwitch ID group.
         self.v_switch_ids = v_switch_ids
+        # The information about the primary vSwitch group.
         self.v_switch_info = v_switch_info
         # The VPC ID.
         self.vpc_id = vpc_id
+        # The VPC information.
         self.vpc_info = vpc_info
         # The zone ID of the instance.
         self.zone_id = zone_id
@@ -273,6 +291,9 @@ class DescribeInstancesResponseBodyInstances(DaraModel):
 
         if self.cluster_used_storage is not None:
             result['ClusterUsedStorage'] = self.cluster_used_storage.to_map()
+
+        if self.deletion_protection is not None:
+            result['DeletionProtection'] = self.deletion_protection
 
         if self.elastic is not None:
             result['Elastic'] = self.elastic
@@ -403,6 +424,9 @@ class DescribeInstancesResponseBodyInstances(DaraModel):
             temp_model = main_models.DescribeInstancesResponseBodyInstancesClusterUsedStorage()
             self.cluster_used_storage = temp_model.from_map(m.get('ClusterUsedStorage'))
 
+        if m.get('DeletionProtection') is not None:
+            self.deletion_protection = m.get('DeletionProtection')
+
         if m.get('Elastic') is not None:
             self.elastic = m.get('Elastic')
 
@@ -523,11 +547,21 @@ class DescribeInstancesResponseBodyInstancesVpcInfo(DaraModel):
         vpc_id: str = None,
         vpc_name: str = None,
     ):
+        # The VPC CIDR block.
         self.cidr_block = cidr_block
+        # The description of the VPC.
         self.description = description
+        # The region ID.
         self.region_id = region_id
+        # The VPC status. Valid values:
+        # 
+        # - Pending: Being configured.
+        # 
+        # - Available: Available.
         self.status = status
+        # The VPC ID.
         self.vpc_id = vpc_id
+        # The VPC name.
         self.vpc_name = vpc_name
 
     def validate(self):
@@ -592,13 +626,21 @@ class DescribeInstancesResponseBodyInstancesVSwitchInfo(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        # The number of available IP addresses in the vSwitch.
         self.available_ip_address_count = available_ip_address_count
+        # The description of the vSwitch group.
         self.description = description
+        # The region ID.
         self.region_id = region_id
+        # The vSwitch CIDR block.
         self.v_switch_cidr = v_switch_cidr
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # The name of the vSwitch.
         self.v_switch_name = v_switch_name
+        # VPC ID。
         self.vpc_id = vpc_id
+        # The zone ID of the workspace.
         self.zone_id = zone_id
 
     def validate(self):
@@ -709,7 +751,19 @@ class DescribeInstancesResponseBodyInstancesStorage(DaraModel):
         support_create_fully_managed_storage: bool = None,
         support_migration_progress_detection: bool = None,
     ):
+        # Specifies whether fully managed storage is selected. Valid values:
+        # - true: Used.
+        # - false: Not used.
         self.fully_managed = fully_managed
+        # The order status of fully managed storage. Valid values:
+        # 
+        # - NOT_INIT: The order is placed but components are not yet deployed.
+        # 
+        # - NORMAL: Normal.
+        # 
+        # - CEASE: Expired.
+        # 
+        # - RELEASE: Overdue.
         self.order_state = order_state
         # The OSS storage information.
         self.oss = oss
@@ -767,7 +821,7 @@ class DescribeInstancesResponseBodyInstancesStorageOss(DaraModel):
         self,
         bucket: str = None,
     ):
-        # The name of the OSS bucket.
+        # The name of the bound OSS bucket.
         self.bucket = bucket
 
     def validate(self):
@@ -838,6 +892,7 @@ class DescribeInstancesResponseBodyInstancesOssInfo(DaraModel):
     ):
         self.access_id = access_id
         self.access_key = access_key
+        # The name of the bound OSS bucket.
         self.bucket = bucket
         self.bucket_versioning_status = bucket_versioning_status
         self.endpoint = endpoint
@@ -935,13 +990,21 @@ class DescribeInstancesResponseBodyInstancesHaVSwitchInfo(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        # The number of available IP addresses in the vSwitch.
         self.available_ip_address_count = available_ip_address_count
+        # The description of the VPC.
         self.description = description
+        # The region.
         self.region_id = region_id
+        # The vSwitch CIDR block information.
         self.v_switch_cidr = v_switch_cidr
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # The vSwitch name.
         self.v_switch_name = v_switch_name
+        # The VPC ID.
         self.vpc_id = vpc_id
+        # The zone ID of the workspace.
         self.zone_id = zone_id
 
     def validate(self):
@@ -1012,7 +1075,9 @@ class DescribeInstancesResponseBodyInstancesHaResourceSpec(DaraModel):
         cpu: int = None,
         memory_gb: int = None,
     ):
+        # The number of CPUs for zone-disaster recovery.
         self.cpu = cpu
+        # The memory size of zone-disaster recovery resources.
         self.memory_gb = memory_gb
 
     def validate(self):
@@ -1047,7 +1112,9 @@ class DescribeInstancesResponseBodyInstancesElasticResourceSpec(DaraModel):
         cpu: int = None,
         memory_gb: int = None,
     ):
+        # The number of CPUs.
         self.cpu = cpu
+        # The amount of memory used.
         self.memory_gb = memory_gb
 
     def validate(self):
@@ -1136,6 +1203,7 @@ class DescribeInstancesResponseBodyInstancesClusterUsedResources(DaraModel):
         self.guaranteed_used_cpu = guaranteed_used_cpu
         self.guaranteed_used_memory = guaranteed_used_memory
         self.guaranteed_used_resource = guaranteed_used_resource
+        # Indicates whether zone-disaster recovery resources are selected.
         self.ha = ha
         self.ha_used_cpu = ha_used_cpu
         self.ha_used_memory = ha_used_memory
@@ -1257,7 +1325,29 @@ class DescribeInstancesResponseBodyInstancesClusterState(DaraModel):
         self.cluster_id = cluster_id
         self.cluster_stage = cluster_stage
         self.create_timeout = create_timeout
+        # The cluster status. Valid values:
+        # 
+        # - CREATING: Being created.
+        # 
+        # - RUNNING: Running.
+        # 
+        # - DISABLE: Invalid.
+        # 
+        # - DELETING: Being deleted.
+        # 
+        # - DELETED: Deleted.
         self.status = status
+        # The cluster status. Valid values:
+        # 
+        # - CREATING: Being created.
+        # 
+        # - RUNNING: Running.
+        # 
+        # - DISABLE: Invalid.
+        # 
+        # - DELETING: Being deleted.
+        # 
+        # - DELETED: Deleted.
         self.sub_status = sub_status
         self.url = url
         self.user_slb_dto = user_slb_dto
@@ -1443,7 +1533,14 @@ class DescribeInstancesResponseBodyInstancesClusterStateClusterStage(DaraModel):
     ):
         self.cluster_id = cluster_id
         self.current_stage = current_stage
+        # The error message.
         self.message = message
+        # The status of the project space. Valid values:
+        # - CREATING: Being created.
+        # - DELETING: Being deleted.
+        # - MODIFYING: Resource specifications are being modified.
+        # - SUCCESS: The previous operation was successful.
+        # - FAILED: The previous operation failed.
         self.status = status
         self.total_stage_with_weight = total_stage_with_weight
 

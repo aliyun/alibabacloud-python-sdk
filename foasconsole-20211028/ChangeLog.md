@@ -1,3 +1,6 @@
+2026-09-23 Version: 2.3.2
+- Generated python 2021-10-28 for foasconsole.
+
 2026-08-17 Version: 2.3.0
 - Support API CloseFlinkAiService.
 - Support API GetFlinkAiService.

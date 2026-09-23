@@ -119,6 +119,8 @@ from ._convert_hybrid_instance_request import ConvertHybridInstanceRequestResour
 from ._convert_hybrid_instance_response_body import ConvertHybridInstanceResponseBodyOrderInfo
 from ._convert_instance_request import ConvertInstanceRequestNamespaceResourceSpecsResourceSpec
 from ._convert_instance_request import ConvertInstanceRequestNamespaceResourceSpecs
+from ._create_instance_request import CreateInstanceRequestDefaultHaNamespaceResourceSpec
+from ._create_instance_request import CreateInstanceRequestDefaultNamespaceResourceSpec
 from ._create_instance_request import CreateInstanceRequestHaResourceSpec
 from ._create_instance_request import CreateInstanceRequestResourceSpec
 from ._create_instance_request import CreateInstanceRequestStorageOss
@@ -316,6 +318,8 @@ __all__ = [
     ConvertHybridInstanceResponseBodyOrderInfo,
     ConvertInstanceRequestNamespaceResourceSpecsResourceSpec,
     ConvertInstanceRequestNamespaceResourceSpecs,
+    CreateInstanceRequestDefaultHaNamespaceResourceSpec,
+    CreateInstanceRequestDefaultNamespaceResourceSpec,
     CreateInstanceRequestHaResourceSpec,
     CreateInstanceRequestResourceSpec,
     CreateInstanceRequestStorageOss,

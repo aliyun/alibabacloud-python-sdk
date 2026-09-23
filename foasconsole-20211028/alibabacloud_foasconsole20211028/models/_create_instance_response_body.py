@@ -61,7 +61,7 @@ class CreateInstanceResponseBodyOrderInfo(DaraModel):
         storage_instance_id: str = None,
         storage_order_id: int = None,
     ):
-        # The instance ID of the order.
+        # The order instance ID.
         self.instance_id = instance_id
         # The order ID.
         self.order_id = order_id

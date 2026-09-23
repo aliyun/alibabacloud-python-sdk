@@ -26,7 +26,7 @@ class DescribeNamespacesResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
         # - true: Successful.
         # - false: Failed.
@@ -119,7 +119,9 @@ class DescribeNamespacesResponseBodyNamespaces(DaraModel):
         self.gmt_create = gmt_create
         # The modification time.
         self.gmt_modified = gmt_modified
+        # The subscription resources allocated to the namespace.
         self.guaranteed_resource_spec = guaranteed_resource_spec
+        # Indicates whether zone-disaster recovery is enabled for the namespace.
         self.ha = ha
         # The name of the namespace.
         self.namespace = namespace
@@ -275,10 +277,11 @@ class DescribeNamespacesResponseBodyNamespacesResourceUsed(DaraModel):
         cu: float = None,
         memory_gb: float = None,
     ):
-        # The number of used CPUs.
+        # The number of CPUs used.
         self.cpu = cpu
+        # The number of compute units (CUs) used.
         self.cu = cu
-        # The amount of used memory.
+        # The amount of memory used.
         self.memory_gb = memory_gb
 
     def validate(self):
@@ -356,7 +359,9 @@ class DescribeNamespacesResponseBodyNamespacesGuaranteedResourceSpec(DaraModel):
         cpu: int = None,
         memory_gb: int = None,
     ):
+        # The number of CPUs for subscription resources.
         self.cpu = cpu
+        # The memory size for subscription resources. Unit: GB.
         self.memory_gb = memory_gb
 
     def validate(self):
@@ -391,7 +396,9 @@ class DescribeNamespacesResponseBodyNamespacesElasticResourceSpec(DaraModel):
         cpu: int = None,
         memory_gb: int = None,
     ):
+        # The maximum CPU limit for pay-as-you-go resources.
         self.cpu = cpu
+        # The maximum memory limit for pay-as-you-go resources. Unit: GB.
         self.memory_gb = memory_gb
 
     def validate(self):

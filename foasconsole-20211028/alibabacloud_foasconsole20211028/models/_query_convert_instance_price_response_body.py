@@ -80,7 +80,7 @@ class QueryConvertInstancePriceResponseBodyPriceInfo(DaraModel):
         self.depreciate_info = depreciate_info
         # The discount amount.
         self.discount_amount = discount_amount
-        # Indicates whether the enterprise discount is applied.
+        # Indicates whether an enterprise discount is applied.
         self.is_contract_activity = is_contract_activity
         # The Lingxiao request ID of the call.
         self.lx_request_id = lx_request_id
@@ -92,9 +92,9 @@ class QueryConvertInstancePriceResponseBodyPriceInfo(DaraModel):
         self.original_amount = original_amount
         # The promotion rules.
         self.rules = rules
-        # The discounted price based on the official website discount.
+        # The promotional price based on the standard discount from the official website.
         self.stand_discount_price = stand_discount_price
-        # The official website discounted price or direct sales contract discounted price.
+        # The standard discounted price on the official website or the direct sales contract discounted price.
         self.stand_price = stand_price
         # The final price, which is the original price minus the discount amount.
         self.trade_amount = trade_amount
@@ -319,15 +319,15 @@ class QueryConvertInstancePriceResponseBodyPriceInfoDepreciateInfo(DaraModel):
     ):
         # The price reduction ratio.
         self.cheap_rate = cheap_rate
-        # The standard total price after the price reduction.
+        # The total list price after the price reduction.
         self.cheap_stand_amount = cheap_stand_amount
         # Indicates whether to display the price reduction percentage.
         self.is_show = is_show
         # The equivalent monthly price.
         self.month_price = month_price
-        # The original standard total price.
+        # The original total list price.
         self.original_stand_amount = original_stand_amount
-        # The start time of the price reduction.
+        # The start time of the price reduction, in ISO 8601 format.
         self.start_time = start_time
 
     def validate(self):
