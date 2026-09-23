@@ -1,3 +1,8 @@
+2026-09-23 Version: 3.1.0
+- Support API DescribeCustomAgentMonitorMetrics.
+- Support API ListCustomAgentMonitorSessions.
+
+
 2026-09-21 Version: 3.0.0
 - Support API ResetAgenticApiKey.
 - Delete API BatchCreateDataLakePartitions.

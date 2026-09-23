@@ -2892,6 +2892,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_custom_agent_with_options_async(request, runtime)
 
+    def describe_custom_agent_monitor_metrics_with_options(
+        self,
+        request: main_models.DescribeCustomAgentMonitorMetricsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCustomAgentMonitorMetricsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.custom_agent_id):
+            query['CustomAgentId'] = request.custom_agent_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.granularity):
+            query['Granularity'] = request.granularity
+        if not DaraCore.is_null(request.query_type):
+            query['QueryType'] = request.query_type
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeCustomAgentMonitorMetrics',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeCustomAgentMonitorMetricsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_custom_agent_monitor_metrics_with_options_async(
+        self,
+        request: main_models.DescribeCustomAgentMonitorMetricsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCustomAgentMonitorMetricsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.custom_agent_id):
+            query['CustomAgentId'] = request.custom_agent_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.granularity):
+            query['Granularity'] = request.granularity
+        if not DaraCore.is_null(request.query_type):
+            query['QueryType'] = request.query_type
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeCustomAgentMonitorMetrics',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeCustomAgentMonitorMetricsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_custom_agent_monitor_metrics(
+        self,
+        request: main_models.DescribeCustomAgentMonitorMetricsRequest,
+    ) -> main_models.DescribeCustomAgentMonitorMetricsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_custom_agent_monitor_metrics_with_options(request, runtime)
+
+    async def describe_custom_agent_monitor_metrics_async(
+        self,
+        request: main_models.DescribeCustomAgentMonitorMetricsRequest,
+    ) -> main_models.DescribeCustomAgentMonitorMetricsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_custom_agent_monitor_metrics_with_options_async(request, runtime)
+
     def describe_data_agent_metrics_with_options(
         self,
         request: main_models.DescribeDataAgentMetricsRequest,
@@ -5537,6 +5627,100 @@ class Client(OpenApiClient):
     ) -> main_models.ListCustomAgentResponse:
         runtime = RuntimeOptions()
         return await self.list_custom_agent_with_options_async(request, runtime)
+
+    def list_custom_agent_monitor_sessions_with_options(
+        self,
+        request: main_models.ListCustomAgentMonitorSessionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCustomAgentMonitorSessionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.custom_agent_id):
+            query['CustomAgentId'] = request.custom_agent_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.query_type):
+            query['QueryType'] = request.query_type
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCustomAgentMonitorSessions',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCustomAgentMonitorSessionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_custom_agent_monitor_sessions_with_options_async(
+        self,
+        request: main_models.ListCustomAgentMonitorSessionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCustomAgentMonitorSessionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.custom_agent_id):
+            query['CustomAgentId'] = request.custom_agent_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.query_type):
+            query['QueryType'] = request.query_type
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCustomAgentMonitorSessions',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCustomAgentMonitorSessionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_custom_agent_monitor_sessions(
+        self,
+        request: main_models.ListCustomAgentMonitorSessionsRequest,
+    ) -> main_models.ListCustomAgentMonitorSessionsResponse:
+        runtime = RuntimeOptions()
+        return self.list_custom_agent_monitor_sessions_with_options(request, runtime)
+
+    async def list_custom_agent_monitor_sessions_async(
+        self,
+        request: main_models.ListCustomAgentMonitorSessionsRequest,
+    ) -> main_models.ListCustomAgentMonitorSessionsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_custom_agent_monitor_sessions_with_options_async(request, runtime)
 
     def list_data_agent_accuracy_test_instances_with_options(
         self,

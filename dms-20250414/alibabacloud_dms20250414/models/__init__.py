@@ -164,6 +164,9 @@ from ._delete_workspace_code_response import DeleteWorkspaceCodeResponse
 from ._describe_custom_agent_request import DescribeCustomAgentRequest
 from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBody
 from ._describe_custom_agent_response import DescribeCustomAgentResponse
+from ._describe_custom_agent_monitor_metrics_request import DescribeCustomAgentMonitorMetricsRequest
+from ._describe_custom_agent_monitor_metrics_response_body import DescribeCustomAgentMonitorMetricsResponseBody
+from ._describe_custom_agent_monitor_metrics_response import DescribeCustomAgentMonitorMetricsResponse
 from ._describe_data_agent_metrics_request import DescribeDataAgentMetricsRequest
 from ._describe_data_agent_metrics_response_body import DescribeDataAgentMetricsResponseBody
 from ._describe_data_agent_metrics_response import DescribeDataAgentMetricsResponse
@@ -262,6 +265,9 @@ from ._list_airflows_response import ListAirflowsResponse
 from ._list_custom_agent_request import ListCustomAgentRequest
 from ._list_custom_agent_response_body import ListCustomAgentResponseBody
 from ._list_custom_agent_response import ListCustomAgentResponse
+from ._list_custom_agent_monitor_sessions_request import ListCustomAgentMonitorSessionsRequest
+from ._list_custom_agent_monitor_sessions_response_body import ListCustomAgentMonitorSessionsResponseBody
+from ._list_custom_agent_monitor_sessions_response import ListCustomAgentMonitorSessionsResponse
 from ._list_data_agent_accuracy_test_instances_request import ListDataAgentAccuracyTestInstancesRequest
 from ._list_data_agent_accuracy_test_instances_response_body import ListDataAgentAccuracyTestInstancesResponseBody
 from ._list_data_agent_accuracy_test_instances_response import ListDataAgentAccuracyTestInstancesResponse
@@ -457,6 +463,8 @@ from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBod
 from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBodyDataKnowledgeSemanticConfigList
 from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBodyDataScheduleTaskConfig
 from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBodyData
+from ._describe_custom_agent_monitor_metrics_response_body import DescribeCustomAgentMonitorMetricsResponseBodyDataTrend
+from ._describe_custom_agent_monitor_metrics_response_body import DescribeCustomAgentMonitorMetricsResponseBodyData
 from ._describe_data_agent_metrics_response_body import DescribeDataAgentMetricsResponseBodyDataMetrics
 from ._describe_data_agent_metrics_response_body import DescribeDataAgentMetricsResponseBodyData
 from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyDataArtifacts
@@ -496,6 +504,8 @@ from ._list_custom_agent_response_body import ListCustomAgentResponseBodyDataCon
 from ._list_custom_agent_response_body import ListCustomAgentResponseBodyDataContentScheduleTaskConfig
 from ._list_custom_agent_response_body import ListCustomAgentResponseBodyDataContent
 from ._list_custom_agent_response_body import ListCustomAgentResponseBodyData
+from ._list_custom_agent_monitor_sessions_response_body import ListCustomAgentMonitorSessionsResponseBodyDataContent
+from ._list_custom_agent_monitor_sessions_response_body import ListCustomAgentMonitorSessionsResponseBodyData
 from ._list_data_agent_accuracy_test_instances_response_body import ListDataAgentAccuracyTestInstancesResponseBodyData
 from ._list_data_agent_accuracy_test_results_response_body import ListDataAgentAccuracyTestResultsResponseBodyDataContent
 from ._list_data_agent_accuracy_test_results_response_body import ListDataAgentAccuracyTestResultsResponseBodyData
@@ -719,6 +729,9 @@ __all__ = [
     DescribeCustomAgentRequest,
     DescribeCustomAgentResponseBody,
     DescribeCustomAgentResponse,
+    DescribeCustomAgentMonitorMetricsRequest,
+    DescribeCustomAgentMonitorMetricsResponseBody,
+    DescribeCustomAgentMonitorMetricsResponse,
     DescribeDataAgentMetricsRequest,
     DescribeDataAgentMetricsResponseBody,
     DescribeDataAgentMetricsResponse,
@@ -817,6 +830,9 @@ __all__ = [
     ListCustomAgentRequest,
     ListCustomAgentResponseBody,
     ListCustomAgentResponse,
+    ListCustomAgentMonitorSessionsRequest,
+    ListCustomAgentMonitorSessionsResponseBody,
+    ListCustomAgentMonitorSessionsResponse,
     ListDataAgentAccuracyTestInstancesRequest,
     ListDataAgentAccuracyTestInstancesResponseBody,
     ListDataAgentAccuracyTestInstancesResponse,
@@ -1012,6 +1028,8 @@ __all__ = [
     DescribeCustomAgentResponseBodyDataKnowledgeSemanticConfigList,
     DescribeCustomAgentResponseBodyDataScheduleTaskConfig,
     DescribeCustomAgentResponseBodyData,
+    DescribeCustomAgentMonitorMetricsResponseBodyDataTrend,
+    DescribeCustomAgentMonitorMetricsResponseBodyData,
     DescribeDataAgentMetricsResponseBodyDataMetrics,
     DescribeDataAgentMetricsResponseBodyData,
     DescribeDataAgentSessionResponseBodyDataArtifacts,
@@ -1051,6 +1069,8 @@ __all__ = [
     ListCustomAgentResponseBodyDataContentScheduleTaskConfig,
     ListCustomAgentResponseBodyDataContent,
     ListCustomAgentResponseBodyData,
+    ListCustomAgentMonitorSessionsResponseBodyDataContent,
+    ListCustomAgentMonitorSessionsResponseBodyData,
     ListDataAgentAccuracyTestInstancesResponseBodyData,
     ListDataAgentAccuracyTestResultsResponseBodyDataContent,
     ListDataAgentAccuracyTestResultsResponseBodyData,
