@@ -17,11 +17,17 @@ class GetLlmModelProvidersResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The backend response code.
         self.code = code
+        # The list of large language model service providers and available models.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The details of the backend exception.
         self.message = message
+        # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -93,12 +99,27 @@ class GetLlmModelProvidersResponseBodyData(DaraModel):
         provider_type: str = None,
         service_provider: str = None,
     ):
+        # The base URL of the model.
         self.base_url = base_url
+        # The enabling status.
         self.enabled = enabled
+        # The ID of the model service provider.
         self.id = id
+        # The list of models provided by the model service provider.
         self.llm_models = llm_models
+        # The source of the model service provider. Valid values:
+        # - BUILTIN_MODEL: built-in
+        # - BYOM: user-provided
         self.provider_source = provider_source
+        # The provider type. Valid values:
+        # - BAILIAN
+        # - DEEPSEEK
+        # - AI_STACK
+        # - VLLM
+        # - AGENT_ONE
+        # - DATAPHIN
         self.provider_type = provider_type
+        # The name of the model service provider.
         self.service_provider = service_provider
 
     def validate(self):
@@ -179,15 +200,35 @@ class GetLlmModelProvidersResponseBodyDataLlmModels(DaraModel):
         service_provider: str = None,
         tasks: List[str] = None,
     ):
+        # The Chinese name of the model.
         self.cn_name = cn_name
+        # The description of the model.
         self.description = description
+        # The list of available dimension values for the embedding model. This value is returned only for embedding models.
         self.embedding_dimensions = embedding_dimensions
+        # The enabling status.
         self.enabled = enabled
+        # The model invocation method. Valid values:
+        # - OPEN_AI
+        # - DASH_SCOPE
         self.invoke_type = invoke_type
+        # The model ID.
         self.model_id = model_id
+        # The list of model modality types. Valid values:
+        # - TEXT: text
+        # - IMAGE: image
+        # - AUDIO: audio
+        # - VIDEO: video
+        # - EMBEDDING: embedding
         self.model_types = model_types
+        # The name of the model.
         self.name = name
+        # The service provider.
         self.service_provider = service_provider
+        # The list of model task capabilities. Valid values:
+        # - ASR: speech recognition
+        # - TTS: speech synthesis
+        # - TRANSLATION: speech translation
         self.tasks = tasks
 
     def validate(self):

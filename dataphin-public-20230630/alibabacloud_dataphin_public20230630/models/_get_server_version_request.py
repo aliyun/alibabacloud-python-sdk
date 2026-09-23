@@ -4,23 +4,23 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class RemoveTenantMemberShrinkRequest(DaraModel):
+class GetServerVersionRequest(DaraModel):
     def __init__(
         self,
+        env: str = None,
         op_tenant_id: int = None,
         op_user_id: str = None,
-        remove_command_shrink: str = None,
     ):
+        # **[Deprecated]** The environment identifier. Valid values:
+        # - DEV: Development environment. 
+        # - PROD (default): Production environment.
+        self.env = env
         # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The ID of the operator user.
+        # The ID of the operation user.
         self.op_user_id = op_user_id
-        # The request command.
-        # 
-        # This parameter is required.
-        self.remove_command_shrink = remove_command_shrink
 
     def validate(self):
         pass
@@ -30,27 +30,27 @@ class RemoveTenantMemberShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.env is not None:
+            result['Env'] = self.env
+
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
 
         if self.op_user_id is not None:
             result['OpUserId'] = self.op_user_id
 
-        if self.remove_command_shrink is not None:
-            result['RemoveCommand'] = self.remove_command_shrink
-
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Env') is not None:
+            self.env = m.get('Env')
+
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
 
         if m.get('OpUserId') is not None:
             self.op_user_id = m.get('OpUserId')
-
-        if m.get('RemoveCommand') is not None:
-            self.remove_command_shrink = m.get('RemoveCommand')
 
         return self
 

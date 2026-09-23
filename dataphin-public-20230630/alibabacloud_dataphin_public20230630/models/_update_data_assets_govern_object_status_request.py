@@ -14,9 +14,14 @@ class UpdateDataAssetsGovernObjectStatusRequest(DaraModel):
         op_user_id: str = None,
         update_command: main_models.UpdateDataAssetsGovernObjectStatusRequestUpdateCommand = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator user.
         self.op_user_id = op_user_id
+        # The update command.
+        # 
         # This parameter is required.
         self.update_command = update_command
 
@@ -62,10 +67,16 @@ class UpdateDataAssetsGovernObjectStatusRequestUpdateCommand(DaraModel):
         remark: str = None,
         target_status: str = None,
     ):
+        # Specifies whether to notify the owner. This parameter takes effect only when the status is reverted to NEW.
         self.alert_owners = alert_owners
+        # The list of governance object IDs.
+        # 
         # This parameter is required.
         self.govern_object_ids = govern_object_ids
+        # The operation description.
         self.remark = remark
+        # The target status. Valid values: FINISHED / NEW / IGNORE / CANCEL_IGNORE.
+        # 
         # This parameter is required.
         self.target_status = target_status
 

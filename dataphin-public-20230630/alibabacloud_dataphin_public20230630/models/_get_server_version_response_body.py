@@ -2,26 +2,25 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from alibabacloud_dataphin_public20230630 import models as main_models
 from darabonba.model import DaraModel
 
-class UpdateComputeClusterResponseBody(DaraModel):
+class GetServerVersionResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
-        data: main_models.UpdateComputeClusterResponseBodyData = None,
+        data: str = None,
         http_status_code: int = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        # The backend response code.
+        # The error code. A value of OK indicates that the request is successful.
         self.code = code
-        # The save result.
+        # The Dataphin server version number.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The backend exception details.
+        # The error message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -29,8 +28,7 @@ class UpdateComputeClusterResponseBody(DaraModel):
         self.success = success
 
     def validate(self):
-        if self.data:
-            self.data.validate()
+        pass
 
     def to_map(self):
         result = dict()
@@ -41,7 +39,7 @@ class UpdateComputeClusterResponseBody(DaraModel):
             result['Code'] = self.code
 
         if self.data is not None:
-            result['Data'] = self.data.to_map()
+            result['Data'] = self.data
 
         if self.http_status_code is not None:
             result['HttpStatusCode'] = self.http_status_code
@@ -63,8 +61,7 @@ class UpdateComputeClusterResponseBody(DaraModel):
             self.code = m.get('Code')
 
         if m.get('Data') is not None:
-            temp_model = main_models.UpdateComputeClusterResponseBodyData()
-            self.data = temp_model.from_map(m.get('Data'))
+            self.data = m.get('Data')
 
         if m.get('HttpStatusCode') is not None:
             self.http_status_code = m.get('HttpStatusCode')
@@ -77,34 +74,6 @@ class UpdateComputeClusterResponseBody(DaraModel):
 
         if m.get('Success') is not None:
             self.success = m.get('Success')
-
-        return self
-
-class UpdateComputeClusterResponseBodyData(DaraModel):
-    def __init__(
-        self,
-        ds_id: int = None,
-    ):
-        # The cluster ID.
-        self.ds_id = ds_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        if self.ds_id is not None:
-            result['DsId'] = self.ds_id
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DsId') is not None:
-            self.ds_id = m.get('DsId')
 
         return self
 

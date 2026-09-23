@@ -100,10 +100,12 @@ class SyncDepartmentUserRequestSyncDepartmentUserCommandDeptUserMapping(DaraMode
     def __init__(
         self,
         department_id_list: List[str] = None,
+        source_type: str = None,
         source_user_id: str = None,
     ):
         # The list of department IDs to which the user belongs. If this parameter is left empty, the user-department affiliation is deleted.
         self.department_id_list = department_id_list
+        self.source_type = source_type
         # The user ID in the user system. This value is the unique identifier of the user.
         # 
         # This parameter is required.
@@ -120,6 +122,9 @@ class SyncDepartmentUserRequestSyncDepartmentUserCommandDeptUserMapping(DaraMode
         if self.department_id_list is not None:
             result['DepartmentIdList'] = self.department_id_list
 
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+
         if self.source_user_id is not None:
             result['SourceUserId'] = self.source_user_id
 
@@ -129,6 +134,9 @@ class SyncDepartmentUserRequestSyncDepartmentUserCommandDeptUserMapping(DaraMode
         m = m or dict()
         if m.get('DepartmentIdList') is not None:
             self.department_id_list = m.get('DepartmentIdList')
+
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
 
         if m.get('SourceUserId') is not None:
             self.source_user_id = m.get('SourceUserId')

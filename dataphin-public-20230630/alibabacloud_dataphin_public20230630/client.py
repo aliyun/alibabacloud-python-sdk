@@ -21,13 +21,6 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'cn-beijing': 'dataphin-public.cn-beijing.aliyuncs.com',
-            'cn-chengdu': 'dataphin-public.cn-chengdu.aliyuncs.com',
-            'cn-hangzhou': 'dataphin-public.cn-hangzhou.aliyuncs.com',
-            'cn-shanghai': 'dataphin-public.cn-shanghai.aliyuncs.com',
-            'cn-shenzhen': 'dataphin-public.cn-shenzhen.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('dataphin-public', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -16766,6 +16759,84 @@ class Client(OpenApiClient):
     ) -> main_models.GetSecuritySecretKeyResponse:
         runtime = RuntimeOptions()
         return await self.get_security_secret_key_with_options_async(request, runtime)
+
+    def get_server_version_with_options(
+        self,
+        request: main_models.GetServerVersionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetServerVersionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.env):
+            query['Env'] = request.env
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetServerVersion',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetServerVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_server_version_with_options_async(
+        self,
+        request: main_models.GetServerVersionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetServerVersionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.env):
+            query['Env'] = request.env
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not DaraCore.is_null(request.op_user_id):
+            query['OpUserId'] = request.op_user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetServerVersion',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetServerVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_server_version(
+        self,
+        request: main_models.GetServerVersionRequest,
+    ) -> main_models.GetServerVersionResponse:
+        runtime = RuntimeOptions()
+        return self.get_server_version_with_options(request, runtime)
+
+    async def get_server_version_async(
+        self,
+        request: main_models.GetServerVersionRequest,
+    ) -> main_models.GetServerVersionResponse:
+        runtime = RuntimeOptions()
+        return await self.get_server_version_with_options_async(request, runtime)
 
     def get_spark_local_client_info_with_options(
         self,

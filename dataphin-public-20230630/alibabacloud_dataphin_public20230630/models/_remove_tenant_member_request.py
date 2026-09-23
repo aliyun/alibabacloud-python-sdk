@@ -16,6 +16,7 @@ class RemoveTenantMemberRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator user.
         self.op_user_id = op_user_id
         # The request command.
         # 
@@ -62,10 +63,11 @@ class RemoveTenantMemberRequestRemoveCommand(DaraModel):
         source_id: str = None,
         source_type: str = None,
     ):
-        # The source ID of the user.
+        # The user source ID.
         # 
         # This parameter is required.
         self.source_id = source_id
+        # The source type.
         self.source_type = source_type
 
     def validate(self):

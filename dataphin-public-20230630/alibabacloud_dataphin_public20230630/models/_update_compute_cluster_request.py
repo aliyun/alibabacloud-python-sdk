@@ -15,12 +15,19 @@ class UpdateComputeClusterRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
+        # The cluster configuration.
+        # 
         # This parameter is required.
         self.cluster_config = cluster_config
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.id = id
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator user.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -74,15 +81,25 @@ class UpdateComputeClusterRequestClusterConfig(DaraModel):
         type: str = None,
         type_version: str = None,
     ):
+        # The list of cluster administrator IDs.
         self.cluster_admins = cluster_admins
+        # The cluster security control configuration.
         self.cluster_safety_control = cluster_safety_control
+        # The connection configuration items.
+        # 
         # This parameter is required.
         self.config_list = config_list
+        # The cluster description.
         self.des = des
+        # The cluster name.
+        # 
         # This parameter is required.
         self.name = name
+        # The cluster type.
+        # 
         # This parameter is required.
         self.type = type
+        # The cluster version.
         self.type_version = type_version
 
     def validate(self):
@@ -158,8 +175,12 @@ class UpdateComputeClusterRequestClusterConfigConfigList(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The configuration item.
+        # 
         # This parameter is required.
         self.key = key
+        # The value of the configuration item.
+        # 
         # This parameter is required.
         self.value = value
 
@@ -196,9 +217,11 @@ class UpdateComputeClusterRequestClusterConfigClusterSafetyControl(DaraModel):
         user_group_ids: List[str] = None,
         user_ids: List[str] = None,
     ):
-        # 管控模式。CREATE_COMPUTE_SOURCE：有创建计算源权限即可使用；USER_DEFINE：仅白名单用户/用户组可用
+        # The control mode.
         self.cluster_safety_auth_type = cluster_safety_auth_type
+        # The list of whitelist user group IDs.
         self.user_group_ids = user_group_ids
+        # The list of whitelist user IDs.
         self.user_ids = user_ids
 
     def validate(self):

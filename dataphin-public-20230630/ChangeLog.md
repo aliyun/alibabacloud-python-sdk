@@ -1,3 +1,8 @@
+2026-09-23 Version: 2.13.0
+- Support API GetServerVersion.
+- Update API SyncDepartmentUser: add request parameters SyncDepartmentUserCommand.DeptUserMapping.$.SourceType.
+
+
 2026-08-31 Version: 2.12.0
 - Support API CreateComputeCluster.
 - Support API DeleteComputeCluster.

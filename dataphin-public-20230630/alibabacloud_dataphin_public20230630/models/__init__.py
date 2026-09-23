@@ -680,6 +680,9 @@ from ._get_security_level_response import GetSecurityLevelResponse
 from ._get_security_secret_key_request import GetSecuritySecretKeyRequest
 from ._get_security_secret_key_response_body import GetSecuritySecretKeyResponseBody
 from ._get_security_secret_key_response import GetSecuritySecretKeyResponse
+from ._get_server_version_request import GetServerVersionRequest
+from ._get_server_version_response_body import GetServerVersionResponseBody
+from ._get_server_version_response import GetServerVersionResponse
 from ._get_spark_local_client_info_request import GetSparkLocalClientInfoRequest
 from ._get_spark_local_client_info_response_body import GetSparkLocalClientInfoResponseBody
 from ._get_spark_local_client_info_response import GetSparkLocalClientInfoResponse
@@ -3154,6 +3157,9 @@ __all__ = [
     GetSecuritySecretKeyRequest,
     GetSecuritySecretKeyResponseBody,
     GetSecuritySecretKeyResponse,
+    GetServerVersionRequest,
+    GetServerVersionResponseBody,
+    GetServerVersionResponse,
     GetSparkLocalClientInfoRequest,
     GetSparkLocalClientInfoResponseBody,
     GetSparkLocalClientInfoResponse,

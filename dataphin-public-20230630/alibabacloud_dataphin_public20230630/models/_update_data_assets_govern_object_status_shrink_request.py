@@ -11,9 +11,14 @@ class UpdateDataAssetsGovernObjectStatusShrinkRequest(DaraModel):
         op_user_id: str = None,
         update_command_shrink: str = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator user.
         self.op_user_id = op_user_id
+        # The update command.
+        # 
         # This parameter is required.
         self.update_command_shrink = update_command_shrink
 
