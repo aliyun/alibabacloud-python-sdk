@@ -40,15 +40,15 @@ class CreateKBSyncLinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.link_name = link_name
-        # The MCP Server address for DingTalk documents.
+        # The MCP Server endpoint for DingTalk documents.
         self.mcp_endpoint = mcp_endpoint
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The MCP Server address for DingTalk sheets.
+        # The MCP Server endpoint for DingTalk spreadsheets.
         self.sheet_mcp_endpoint = sheet_mcp_endpoint
-        # The source directory address for synchronization.
+        # The directory address of the synchronization source.
         # 
         # This parameter is required.
         self.source_dir = source_dir

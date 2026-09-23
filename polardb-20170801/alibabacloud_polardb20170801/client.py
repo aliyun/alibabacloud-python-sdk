@@ -7918,6 +7918,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
         if not DaraCore.is_null(request.target_dbcluster_id):
             query['TargetDBClusterId'] = request.target_dbcluster_id
         if not DaraCore.is_null(request.target_ip):
@@ -7972,6 +7974,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
         if not DaraCore.is_null(request.target_dbcluster_id):
             query['TargetDBClusterId'] = request.target_dbcluster_id
         if not DaraCore.is_null(request.target_ip):

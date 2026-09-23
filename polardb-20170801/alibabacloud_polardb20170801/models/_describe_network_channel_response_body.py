@@ -57,6 +57,7 @@ class DescribeNetworkChannelResponseBodyChannelInfos(DaraModel):
         self,
         channel_name: str = None,
         dbcluster_id: str = None,
+        eni_id: str = None,
         notes: str = None,
         region_id: str = None,
         target_dbcluster_id: str = None,
@@ -69,6 +70,7 @@ class DescribeNetworkChannelResponseBodyChannelInfos(DaraModel):
         self.channel_name = channel_name
         # The ID of the source cluster.
         self.dbcluster_id = dbcluster_id
+        self.eni_id = eni_id
         # The notes about the channel.
         self.notes = notes
         # The region ID.
@@ -97,6 +99,9 @@ class DescribeNetworkChannelResponseBodyChannelInfos(DaraModel):
 
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
+
+        if self.eni_id is not None:
+            result['EniId'] = self.eni_id
 
         if self.notes is not None:
             result['Notes'] = self.notes
@@ -128,6 +133,9 @@ class DescribeNetworkChannelResponseBodyChannelInfos(DaraModel):
 
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
+
+        if m.get('EniId') is not None:
+            self.eni_id = m.get('EniId')
 
         if m.get('Notes') is not None:
             self.notes = m.get('Notes')

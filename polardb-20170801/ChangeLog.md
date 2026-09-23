@@ -1,3 +1,8 @@
+2026-09-23 Version: 8.4.3
+- Update API CreateNetworkChannel: add request parameters SecurityGroupId.
+- Update API DescribeNetworkChannel: add response parameters Body.ChannelInfos.$.EniId.
+
+
 2026-09-21 Version: 8.4.2
 - Update API CreateApplication: add request parameters AgenticDBClusterId.
 

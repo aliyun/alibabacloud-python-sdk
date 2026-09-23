@@ -17,6 +17,7 @@ class CreateNetworkChannelRequest(DaraModel):
         resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        security_group_id: str = None,
         target_dbcluster_id: str = None,
         target_ip: str = None,
         target_port: str = None,
@@ -42,6 +43,7 @@ class CreateNetworkChannelRequest(DaraModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.security_group_id = security_group_id
         # The name of the destination instance.
         self.target_dbcluster_id = target_dbcluster_id
         # The IP address of the destination instance.
@@ -89,6 +91,9 @@ class CreateNetworkChannelRequest(DaraModel):
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
 
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+
         if self.target_dbcluster_id is not None:
             result['TargetDBClusterId'] = self.target_dbcluster_id
 
@@ -134,6 +139,9 @@ class CreateNetworkChannelRequest(DaraModel):
 
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
 
         if m.get('TargetDBClusterId') is not None:
             self.target_dbcluster_id = m.get('TargetDBClusterId')
