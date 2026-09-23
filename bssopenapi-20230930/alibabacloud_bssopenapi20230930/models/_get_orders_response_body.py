@@ -87,7 +87,7 @@ class GetOrdersResponseBodyData(DaraModel):
         self.order_list = order_list
         # The page number.
         self.page_num = page_num
-        # The number of entries per page. A maximum of 20 entries per page is recommended. A larger number may cause a timeout.
+        # The number of entries per page. A maximum of 20 entries per page is recommended. Excessive entries may cause a timeout.
         self.page_size = page_size
         # The total number of records.
         self.total_count = total_count

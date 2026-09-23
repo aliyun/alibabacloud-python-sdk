@@ -16,9 +16,9 @@ class QueryCostCenterRuleRequest(DaraModel):
     ):
         # The ID of the cost center.
         self.cost_center_id = cost_center_id
-        # List of enterprises and accounts. If empty, queries the current account itself.
+        # The list of enterprises and accounts. If this parameter is left empty, the current account is queried.
         self.ec_id_account_ids = ec_id_account_ids
-        # Primary marketplace ID. If empty, the marketplace ID of the current user is used by default.
+        # The ID of the primary marketplace. If this parameter is left empty, the marketplace ID of the current user is used by default.
         self.nbid = nbid
 
     def validate(self):
@@ -67,9 +67,9 @@ class QueryCostCenterRuleRequestEcIdAccountIds(DaraModel):
         account_ids: List[int] = None,
         ec_id: str = None,
     ):
-        # List of accounts to access. If empty, all accounts under the current entity ID are selected.
+        # The list of accounts to access. If this parameter is left empty, all accounts under the current entity ID are selected.
         self.account_ids = account_ids
-        # Enterprise entity ID.
+        # The enterprise entity ID.
         # 
         # This parameter is required.
         self.ec_id = ec_id

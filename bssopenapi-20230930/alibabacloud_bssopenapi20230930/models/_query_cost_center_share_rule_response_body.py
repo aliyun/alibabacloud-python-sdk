@@ -19,11 +19,11 @@ class QueryCostCenterShareRuleResponseBody(DaraModel):
     ):
         # The returned data list.
         self.data = data
-        # Reserved field.
+        # A reserved field.
         self.max_results = max_results
-        # The response metadata.
+        # The metadata of the response structure.
         self.metadata = metadata
-        # Reserved field.
+        # A reserved field.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -99,18 +99,19 @@ class QueryCostCenterShareRuleResponseBodyData(DaraModel):
         share_rule_type: str = None,
         to_cost_center_share_rule_details: List[main_models.QueryCostCenterShareRuleResponseBodyDataToCostCenterShareRuleDetails] = None,
     ):
-        # The source cost center rule details.
+        # The rule information of the source financial unit.
         self.from_cost_center_share_rule_details = from_cost_center_share_rule_details
+        # The last modification time.
         self.gmt_modified = gmt_modified
-        # The owner account ID of the cost center.
+        # The ID of the user to whom the financial unit belongs.
         self.owner_account_id = owner_account_id
-        # The sharing rule ID.
+        # The ID of the cost allocation rule.
         self.share_rule_id = share_rule_id
-        # The sharing rule name.
+        # The name of the cost allocation rule.
         self.share_rule_name = share_rule_name
-        # The sharing rule type.
+        # The type of the cost allocation rule.
         self.share_rule_type = share_rule_type
-        # The target cost center rule details.
+        # The rule information of the target financial unit.
         self.to_cost_center_share_rule_details = to_cost_center_share_rule_details
 
     def validate(self):
@@ -200,25 +201,25 @@ class QueryCostCenterShareRuleResponseBodyDataToCostCenterShareRuleDetails(DaraM
         root_cost_center_id: int = None,
         share_ratio: float = None,
     ):
-        # The cost center code.
+        # The code of the financial unit.
         self.cost_center_code = cost_center_code
-        # The cost center ID.
+        # The ID of the financial unit.
         self.cost_center_id = cost_center_id
-        # The cost center name.
+        # The name of the financial unit.
         self.cost_center_name = cost_center_name
         # The creation time.
         self.gmt_create = gmt_create
         # The modification time.
         self.gmt_modified = gmt_modified
-        # The owner account ID of the cost center.
+        # The ID of the user to whom the financial unit belongs.
         self.owner_account_id = owner_account_id
-        # The parent cost center ID.
+        # The ID of the parent financial unit.
         self.parent_cost_center_id = parent_cost_center_id
-        # The previous cost center ID.
+        # The ID of the preceding financial unit.
         self.prev_cost_center_id = prev_cost_center_id
-        # The root cost center ID.
+        # The ID of the root financial unit.
         self.root_cost_center_id = root_cost_center_id
-        # The sharing ratio.
+        # The cost allocation ratio.
         self.share_ratio = share_ratio
 
     def validate(self):
@@ -308,23 +309,23 @@ class QueryCostCenterShareRuleResponseBodyDataFromCostCenterShareRuleDetails(Dar
         prev_cost_center_id: int = None,
         root_cost_center_id: int = None,
     ):
-        # The cost center code.
+        # The code of the financial unit.
         self.cost_center_code = cost_center_code
-        # The cost center ID.
+        # The ID of the financial unit.
         self.cost_center_id = cost_center_id
-        # The cost center name.
+        # The name of the financial unit.
         self.cost_center_name = cost_center_name
         # The creation time.
         self.gmt_create = gmt_create
         # The modification time.
         self.gmt_modified = gmt_modified
-        # The owner account ID of the cost center.
+        # The ID of the user to whom the financial unit belongs.
         self.owner_account_id = owner_account_id
-        # The parent cost center ID.
+        # The ID of the parent financial unit.
         self.parent_cost_center_id = parent_cost_center_id
-        # The previous cost center ID.
+        # The ID of the preceding financial unit.
         self.prev_cost_center_id = prev_cost_center_id
-        # The root cost center ID.
+        # The ID of the root financial unit.
         self.root_cost_center_id = root_cost_center_id
 
     def validate(self):

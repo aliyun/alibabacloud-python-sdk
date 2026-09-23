@@ -15,15 +15,15 @@ class SubmitSlaCouponApplyResponseBody(DaraModel):
         valid_end_time: str = None,
         valid_start_time: str = None,
     ):
-        # Response structure metadata.
+        # The response struct metadata.
         self.metadata = metadata
-        # Unique request identifier used to tag a request for troubleshooting.
+        # The unique request ID, which is used to identify a request and troubleshoot issues.
         self.request_id = request_id
-        # Total claimed amount.
+        # The total claimed amount.
         self.sum_coupon = sum_coupon
-        # End time.
+        # The end time.
         self.valid_end_time = valid_end_time
-        # Start time.
+        # The start time.
         self.valid_start_time = valid_start_time
 
     def validate(self):

@@ -11,13 +11,13 @@ class DeleteCostCenterRequest(DaraModel):
         nbid: str = None,
         owner_account_id: int = None,
     ):
-        # Cost center ID.
+        # The cost center ID.
         # 
         # This parameter is required.
         self.cost_center_id = cost_center_id
-        # First-level marketplace ID. If left empty, the marketplace ID of the current user is used by default.
+        # The ID of the primary marketplace. If this parameter is left empty, the marketplace ID of the current user is used by default.
         self.nbid = nbid
-        # User ID of the cost center owner.
+        # The ID of the user who owns the cost center.
         # 
         # This parameter is required.
         self.owner_account_id = owner_account_id

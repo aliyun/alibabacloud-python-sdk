@@ -12,6 +12,9 @@ from ._add_coupon_deduct_tag_request import AddCouponDeductTagRequest
 from ._add_coupon_deduct_tag_shrink_request import AddCouponDeductTagShrinkRequest
 from ._add_coupon_deduct_tag_response_body import AddCouponDeductTagResponseBody
 from ._add_coupon_deduct_tag_response import AddCouponDeductTagResponse
+from ._add_credit_seats_request import AddCreditSeatsRequest
+from ._add_credit_seats_response_body import AddCreditSeatsResponseBody
+from ._add_credit_seats_response import AddCreditSeatsResponse
 from ._allocate_cost_center_resource_request import AllocateCostCenterResourceRequest
 from ._allocate_cost_center_resource_shrink_request import AllocateCostCenterResourceShrinkRequest
 from ._allocate_cost_center_resource_response_body import AllocateCostCenterResourceResponseBody
@@ -22,13 +25,6 @@ from ._cancel_fund_account_low_available_amount_alarm_response import CancelFund
 from ._check_account_exist_request import CheckAccountExistRequest
 from ._check_account_exist_response_body import CheckAccountExistResponseBody
 from ._check_account_exist_response import CheckAccountExistResponse
-from ._check_budget_name_exists_request import CheckBudgetNameExistsRequest
-from ._check_budget_name_exists_response_body import CheckBudgetNameExistsResponseBody
-from ._check_budget_name_exists_response import CheckBudgetNameExistsResponse
-from ._create_budget_request import CreateBudgetRequest
-from ._create_budget_shrink_request import CreateBudgetShrinkRequest
-from ._create_budget_response_body import CreateBudgetResponseBody
-from ._create_budget_response import CreateBudgetResponse
 from ._create_cost_center_request import CreateCostCenterRequest
 from ._create_cost_center_shrink_request import CreateCostCenterShrinkRequest
 from ._create_cost_center_response_body import CreateCostCenterResponseBody
@@ -37,6 +33,9 @@ from ._create_cost_center_rule_request import CreateCostCenterRuleRequest
 from ._create_cost_center_rule_shrink_request import CreateCostCenterRuleShrinkRequest
 from ._create_cost_center_rule_response_body import CreateCostCenterRuleResponseBody
 from ._create_cost_center_rule_response import CreateCostCenterRuleResponse
+from ._create_credit_seat_request import CreateCreditSeatRequest
+from ._create_credit_seat_response_body import CreateCreditSeatResponseBody
+from ._create_credit_seat_response import CreateCreditSeatResponse
 from ._create_fund_account_pay_relation_request import CreateFundAccountPayRelationRequest
 from ._create_fund_account_pay_relation_shrink_request import CreateFundAccountPayRelationShrinkRequest
 from ._create_fund_account_pay_relation_response_body import CreateFundAccountPayRelationResponseBody
@@ -52,9 +51,6 @@ from ._create_report_definition_request import CreateReportDefinitionRequest
 from ._create_report_definition_shrink_request import CreateReportDefinitionShrinkRequest
 from ._create_report_definition_response_body import CreateReportDefinitionResponseBody
 from ._create_report_definition_response import CreateReportDefinitionResponse
-from ._delete_budget_request import DeleteBudgetRequest
-from ._delete_budget_response_body import DeleteBudgetResponseBody
-from ._delete_budget_response import DeleteBudgetResponse
 from ._delete_cost_center_request import DeleteCostCenterRequest
 from ._delete_cost_center_response_body import DeleteCostCenterResponseBody
 from ._delete_cost_center_response import DeleteCostCenterResponse
@@ -69,12 +65,6 @@ from ._delete_coupon_deduct_tag_response import DeleteCouponDeductTagResponse
 from ._delete_report_definition_request import DeleteReportDefinitionRequest
 from ._delete_report_definition_response_body import DeleteReportDefinitionResponseBody
 from ._delete_report_definition_response import DeleteReportDefinitionResponse
-from ._describe_budget_request import DescribeBudgetRequest
-from ._describe_budget_response_body import DescribeBudgetResponseBody
-from ._describe_budget_response import DescribeBudgetResponse
-from ._describe_budgets_request import DescribeBudgetsRequest
-from ._describe_budgets_response_body import DescribeBudgetsResponseBody
-from ._describe_budgets_response import DescribeBudgetsResponse
 from ._describe_coupon_request import DescribeCouponRequest
 from ._describe_coupon_shrink_request import DescribeCouponShrinkRequest
 from ._describe_coupon_response_body import DescribeCouponResponseBody
@@ -184,6 +174,12 @@ from ._query_cost_center_share_rule_response import QueryCostCenterShareRuleResp
 from ._query_monthly_sla_list_request import QueryMonthlySlaListRequest
 from ._query_monthly_sla_list_response_body import QueryMonthlySlaListResponseBody
 from ._query_monthly_sla_list_response import QueryMonthlySlaListResponse
+from ._reduce_credit_seats_request import ReduceCreditSeatsRequest
+from ._reduce_credit_seats_response_body import ReduceCreditSeatsResponseBody
+from ._reduce_credit_seats_response import ReduceCreditSeatsResponse
+from ._renew_credit_seat_request import RenewCreditSeatRequest
+from ._renew_credit_seat_response_body import RenewCreditSeatResponseBody
+from ._renew_credit_seat_response import RenewCreditSeatResponse
 from ._save_cost_center_share_rule_request import SaveCostCenterShareRuleRequest
 from ._save_cost_center_share_rule_shrink_request import SaveCostCenterShareRuleShrinkRequest
 from ._save_cost_center_share_rule_response_body import SaveCostCenterShareRuleResponseBody
@@ -201,26 +197,26 @@ from ._set_saving_plan_user_deduct_rule_response import SetSavingPlanUserDeductR
 from ._submit_sla_coupon_apply_request import SubmitSlaCouponApplyRequest
 from ._submit_sla_coupon_apply_response_body import SubmitSlaCouponApplyResponseBody
 from ._submit_sla_coupon_apply_response import SubmitSlaCouponApplyResponse
-from ._update_budget_request import UpdateBudgetRequest
-from ._update_budget_shrink_request import UpdateBudgetShrinkRequest
-from ._update_budget_response_body import UpdateBudgetResponseBody
-from ._update_budget_response import UpdateBudgetResponse
+from ._upgrade_credit_seat_request import UpgradeCreditSeatRequest
+from ._upgrade_credit_seat_response_body import UpgradeCreditSeatResponseBody
+from ._upgrade_credit_seat_response import UpgradeCreditSeatResponse
 from ._dim_item import DimItemPageInfo
 from ._data_module_map_list_spn_type_map_list_value import DataModuleMapListSpnTypeMapListValueFilterModules
 from ._data_module_map_list_spn_type_map_list_value import DataModuleMapListSpnTypeMapListValueShowModules
 from ._add_coupon_deduct_tag_request import AddCouponDeductTagRequestEcIdAccountIds
 from ._add_coupon_deduct_tag_request import AddCouponDeductTagRequestTags
+from ._add_credit_seats_request import AddCreditSeatsRequestConfigs
+from ._add_credit_seats_response_body import AddCreditSeatsResponseBodyData
 from ._allocate_cost_center_resource_request import AllocateCostCenterResourceRequestResourceInstanceList
 from ._check_account_exist_request import CheckAccountExistRequestEcIdAccountIds
 from ._check_account_exist_response_body import CheckAccountExistResponseBodyData
-from ._create_budget_request import CreateBudgetRequestCycleQuota
-from ._create_budget_request import CreateBudgetRequestEcIdAccountIds
-from ._create_budget_request import CreateBudgetRequestQueryFilter
-from ._create_budget_request import CreateBudgetRequestWarnConfs
 from ._create_cost_center_request import CreateCostCenterRequestCostCenterEntityList
 from ._create_cost_center_response_body import CreateCostCenterResponseBodyCostCenterDtoList
 from ._create_cost_center_rule_request import CreateCostCenterRuleRequestFilterExpressionFilterValues
 from ._create_cost_center_rule_request import CreateCostCenterRuleRequestFilterExpression
+from ._create_credit_seat_request import CreateCreditSeatRequestSubscriptionConfigsConfigs
+from ._create_credit_seat_request import CreateCreditSeatRequestSubscriptionConfigs
+from ._create_credit_seat_response_body import CreateCreditSeatResponseBodyData
 from ._create_fund_account_pay_relation_request import CreateFundAccountPayRelationRequestEcIdAccountIds
 from ._create_fund_account_pay_relation_response_body import CreateFundAccountPayRelationResponseBodyData
 from ._create_invoice_request import CreateInvoiceRequestEcIdAccountIds
@@ -228,15 +224,6 @@ from ._create_invoice_response_body import CreateInvoiceResponseBodyData
 from ._delete_cost_center_rule_request import DeleteCostCenterRuleRequestFilterExpressionFilterValues
 from ._delete_cost_center_rule_request import DeleteCostCenterRuleRequestFilterExpression
 from ._delete_coupon_deduct_tag_request import DeleteCouponDeductTagRequestEcIdAccountIds
-from ._describe_budget_response_body import DescribeBudgetResponseBodyCycleQuota
-from ._describe_budget_response_body import DescribeBudgetResponseBodyEcIdAccountIdsFilter
-from ._describe_budget_response_body import DescribeBudgetResponseBodyQueryFilter
-from ._describe_budget_response_body import DescribeBudgetResponseBodyWarnConfs
-from ._describe_budgets_response_body import DescribeBudgetsResponseBodyDataCycleQuota
-from ._describe_budgets_response_body import DescribeBudgetsResponseBodyDataEcIdAccountIdsFilter
-from ._describe_budgets_response_body import DescribeBudgetsResponseBodyDataQueryFilter
-from ._describe_budgets_response_body import DescribeBudgetsResponseBodyDataWarnConfs
-from ._describe_budgets_response_body import DescribeBudgetsResponseBodyData
 from ._describe_coupon_request import DescribeCouponRequestEcIdAccountIds
 from ._describe_coupon_response_body import DescribeCouponResponseBodyDataShareUidList
 from ._describe_coupon_response_body import DescribeCouponResponseBodyData
@@ -324,15 +311,15 @@ from ._query_cost_center_share_rule_response_body import QueryCostCenterShareRul
 from ._query_cost_center_share_rule_response_body import QueryCostCenterShareRuleResponseBodyData
 from ._query_monthly_sla_list_request import QueryMonthlySlaListRequestEcIdAccountIds
 from ._query_monthly_sla_list_response_body import QueryMonthlySlaListResponseBodyData
+from ._reduce_credit_seats_response_body import ReduceCreditSeatsResponseBodyData
+from ._renew_credit_seat_response_body import RenewCreditSeatResponseBodyData
 from ._save_cost_center_share_rule_request import SaveCostCenterShareRuleRequestCreateShareRuleList
 from ._save_cost_center_share_rule_request import SaveCostCenterShareRuleRequestModifyShareRuleList
 from ._set_saving_plan_user_deduct_rule_request import SetSavingPlanUserDeductRuleRequestEcIdAccountIds
 from ._set_saving_plan_user_deduct_rule_request import SetSavingPlanUserDeductRuleRequestUserDeductRules
 from ._submit_sla_coupon_apply_request import SubmitSlaCouponApplyRequestEcIdAccountIds
-from ._update_budget_request import UpdateBudgetRequestCycleQuota
-from ._update_budget_request import UpdateBudgetRequestEcIdAccountIds
-from ._update_budget_request import UpdateBudgetRequestQueryFilter
-from ._update_budget_request import UpdateBudgetRequestWarnConfs
+from ._upgrade_credit_seat_request import UpgradeCreditSeatRequestConfigs
+from ._upgrade_credit_seat_response_body import UpgradeCreditSeatResponseBodyData
 
 __all__ = [
     DimItem,
@@ -345,6 +332,9 @@ __all__ = [
     AddCouponDeductTagShrinkRequest,
     AddCouponDeductTagResponseBody,
     AddCouponDeductTagResponse,
+    AddCreditSeatsRequest,
+    AddCreditSeatsResponseBody,
+    AddCreditSeatsResponse,
     AllocateCostCenterResourceRequest,
     AllocateCostCenterResourceShrinkRequest,
     AllocateCostCenterResourceResponseBody,
@@ -355,13 +345,6 @@ __all__ = [
     CheckAccountExistRequest,
     CheckAccountExistResponseBody,
     CheckAccountExistResponse,
-    CheckBudgetNameExistsRequest,
-    CheckBudgetNameExistsResponseBody,
-    CheckBudgetNameExistsResponse,
-    CreateBudgetRequest,
-    CreateBudgetShrinkRequest,
-    CreateBudgetResponseBody,
-    CreateBudgetResponse,
     CreateCostCenterRequest,
     CreateCostCenterShrinkRequest,
     CreateCostCenterResponseBody,
@@ -370,6 +353,9 @@ __all__ = [
     CreateCostCenterRuleShrinkRequest,
     CreateCostCenterRuleResponseBody,
     CreateCostCenterRuleResponse,
+    CreateCreditSeatRequest,
+    CreateCreditSeatResponseBody,
+    CreateCreditSeatResponse,
     CreateFundAccountPayRelationRequest,
     CreateFundAccountPayRelationShrinkRequest,
     CreateFundAccountPayRelationResponseBody,
@@ -385,9 +371,6 @@ __all__ = [
     CreateReportDefinitionShrinkRequest,
     CreateReportDefinitionResponseBody,
     CreateReportDefinitionResponse,
-    DeleteBudgetRequest,
-    DeleteBudgetResponseBody,
-    DeleteBudgetResponse,
     DeleteCostCenterRequest,
     DeleteCostCenterResponseBody,
     DeleteCostCenterResponse,
@@ -402,12 +385,6 @@ __all__ = [
     DeleteReportDefinitionRequest,
     DeleteReportDefinitionResponseBody,
     DeleteReportDefinitionResponse,
-    DescribeBudgetRequest,
-    DescribeBudgetResponseBody,
-    DescribeBudgetResponse,
-    DescribeBudgetsRequest,
-    DescribeBudgetsResponseBody,
-    DescribeBudgetsResponse,
     DescribeCouponRequest,
     DescribeCouponShrinkRequest,
     DescribeCouponResponseBody,
@@ -517,6 +494,12 @@ __all__ = [
     QueryMonthlySlaListRequest,
     QueryMonthlySlaListResponseBody,
     QueryMonthlySlaListResponse,
+    ReduceCreditSeatsRequest,
+    ReduceCreditSeatsResponseBody,
+    ReduceCreditSeatsResponse,
+    RenewCreditSeatRequest,
+    RenewCreditSeatResponseBody,
+    RenewCreditSeatResponse,
     SaveCostCenterShareRuleRequest,
     SaveCostCenterShareRuleShrinkRequest,
     SaveCostCenterShareRuleResponseBody,
@@ -534,26 +517,26 @@ __all__ = [
     SubmitSlaCouponApplyRequest,
     SubmitSlaCouponApplyResponseBody,
     SubmitSlaCouponApplyResponse,
-    UpdateBudgetRequest,
-    UpdateBudgetShrinkRequest,
-    UpdateBudgetResponseBody,
-    UpdateBudgetResponse,
+    UpgradeCreditSeatRequest,
+    UpgradeCreditSeatResponseBody,
+    UpgradeCreditSeatResponse,
     DimItemPageInfo,
     DataModuleMapListSpnTypeMapListValueFilterModules,
     DataModuleMapListSpnTypeMapListValueShowModules,
     AddCouponDeductTagRequestEcIdAccountIds,
     AddCouponDeductTagRequestTags,
+    AddCreditSeatsRequestConfigs,
+    AddCreditSeatsResponseBodyData,
     AllocateCostCenterResourceRequestResourceInstanceList,
     CheckAccountExistRequestEcIdAccountIds,
     CheckAccountExistResponseBodyData,
-    CreateBudgetRequestCycleQuota,
-    CreateBudgetRequestEcIdAccountIds,
-    CreateBudgetRequestQueryFilter,
-    CreateBudgetRequestWarnConfs,
     CreateCostCenterRequestCostCenterEntityList,
     CreateCostCenterResponseBodyCostCenterDtoList,
     CreateCostCenterRuleRequestFilterExpressionFilterValues,
     CreateCostCenterRuleRequestFilterExpression,
+    CreateCreditSeatRequestSubscriptionConfigsConfigs,
+    CreateCreditSeatRequestSubscriptionConfigs,
+    CreateCreditSeatResponseBodyData,
     CreateFundAccountPayRelationRequestEcIdAccountIds,
     CreateFundAccountPayRelationResponseBodyData,
     CreateInvoiceRequestEcIdAccountIds,
@@ -561,15 +544,6 @@ __all__ = [
     DeleteCostCenterRuleRequestFilterExpressionFilterValues,
     DeleteCostCenterRuleRequestFilterExpression,
     DeleteCouponDeductTagRequestEcIdAccountIds,
-    DescribeBudgetResponseBodyCycleQuota,
-    DescribeBudgetResponseBodyEcIdAccountIdsFilter,
-    DescribeBudgetResponseBodyQueryFilter,
-    DescribeBudgetResponseBodyWarnConfs,
-    DescribeBudgetsResponseBodyDataCycleQuota,
-    DescribeBudgetsResponseBodyDataEcIdAccountIdsFilter,
-    DescribeBudgetsResponseBodyDataQueryFilter,
-    DescribeBudgetsResponseBodyDataWarnConfs,
-    DescribeBudgetsResponseBodyData,
     DescribeCouponRequestEcIdAccountIds,
     DescribeCouponResponseBodyDataShareUidList,
     DescribeCouponResponseBodyData,
@@ -657,13 +631,13 @@ __all__ = [
     QueryCostCenterShareRuleResponseBodyData,
     QueryMonthlySlaListRequestEcIdAccountIds,
     QueryMonthlySlaListResponseBodyData,
+    ReduceCreditSeatsResponseBodyData,
+    RenewCreditSeatResponseBodyData,
     SaveCostCenterShareRuleRequestCreateShareRuleList,
     SaveCostCenterShareRuleRequestModifyShareRuleList,
     SetSavingPlanUserDeductRuleRequestEcIdAccountIds,
     SetSavingPlanUserDeductRuleRequestUserDeductRules,
     SubmitSlaCouponApplyRequestEcIdAccountIds,
-    UpdateBudgetRequestCycleQuota,
-    UpdateBudgetRequestEcIdAccountIds,
-    UpdateBudgetRequestQueryFilter,
-    UpdateBudgetRequestWarnConfs
+    UpgradeCreditSeatRequestConfigs,
+    UpgradeCreditSeatResponseBodyData
 ]

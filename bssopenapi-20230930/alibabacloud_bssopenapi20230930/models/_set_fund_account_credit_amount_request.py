@@ -7,19 +7,26 @@ from darabonba.model import DaraModel
 class SetFundAccountCreditAmountRequest(DaraModel):
     def __init__(
         self,
+        cancel_credit: str = None,
         credit_amount: str = None,
         currency: str = None,
         fund_account_id: int = None,
     ):
-        # Credit limit
+        # Specifies whether to cancel credit control. Valid values:
+        # - true: Cancel credit control.
+        # - false or empty: Set credit control.
+        # 
+        # When canceling credit control, CreditAmount must be set to 0.
+        self.cancel_credit = cancel_credit
+        # The credit limit.
         # 
         # This parameter is required.
         self.credit_amount = credit_amount
-        # Currency for the credit control limit. Currently, only CNY is supported in mainland China, and only USD is supported for international use.
+        # The currency of the credit limit. Currently, only CNY is supported for Chinese mainland accounts, and only USD is supported for international accounts.
         # 
         # This parameter is required.
         self.currency = currency
-        # Fund account ID. If not specified, the account owned by the current account (owner) is used by default.
+        # The fund account ID. If this parameter is not specified, the account owned by the current account is used by default.
         self.fund_account_id = fund_account_id
 
     def validate(self):
@@ -30,6 +37,9 @@ class SetFundAccountCreditAmountRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.cancel_credit is not None:
+            result['CancelCredit'] = self.cancel_credit
+
         if self.credit_amount is not None:
             result['CreditAmount'] = self.credit_amount
 
@@ -43,6 +53,9 @@ class SetFundAccountCreditAmountRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CancelCredit') is not None:
+            self.cancel_credit = m.get('CancelCredit')
+
         if m.get('CreditAmount') is not None:
             self.credit_amount = m.get('CreditAmount')
 

@@ -13,11 +13,11 @@ class CreateCostCenterRequest(DaraModel):
         cost_center_entity_list: List[main_models.CreateCostCenterRequestCostCenterEntityList] = None,
         nbid: str = None,
     ):
-        # Cost center entity list
+        # The list of cost center entities.
         # 
         # This parameter is required.
         self.cost_center_entity_list = cost_center_entity_list
-        # Primary marketplace ID. If empty, the marketplace ID of the current user is used by default.
+        # The primary marketplace ID. If this parameter is left empty, the marketplace ID of the current user is used by default.
         self.nbid = nbid
 
     def validate(self):
@@ -61,15 +61,15 @@ class CreateCostCenterRequestCostCenterEntityList(DaraModel):
         owner_account_id: int = None,
         parent_cost_center_id: int = None,
     ):
-        # Cost center name (must be unique within the same account)
+        # The cost center name. The name must be unique within the same account.
         # 
         # This parameter is required.
         self.cost_center_name = cost_center_name
-        # Owner user ID of the new cost center
+        # The owner user ID of the new cost center.
         # 
         # This parameter is required.
         self.owner_account_id = owner_account_id
-        # Parent cost center ID. A value of -1 indicates the root cost center.
+        # The parent cost center ID. A value of -1 indicates the root cost center.
         # 
         # This parameter is required.
         self.parent_cost_center_id = parent_cost_center_id

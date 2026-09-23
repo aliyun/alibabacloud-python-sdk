@@ -16,15 +16,15 @@ class SaveCostCenterShareRuleRequest(DaraModel):
         owner_account_id: int = None,
         remove_share_rule_list: List[int] = None,
     ):
-        # The list of sharing rules to create.
+        # The list of allocation rules to create.
         self.create_share_rule_list = create_share_rule_list
-        # The list of sharing rules to modify.
+        # The list of allocation rules to update.
         self.modify_share_rule_list = modify_share_rule_list
-        # The primary marketplace ID. If left empty, the marketplace ID of the current user is used by default.
+        # The ID of the level-1 sales channel. If this parameter is left empty, the ID of the sales channel to which the current user belongs is used by default.
         self.nbid = nbid
-        # The user ID of the cost center owner.
+        # The ID of the user who owns the financial unit.
         self.owner_account_id = owner_account_id
-        # The list of sharing rules to delete.
+        # The list of allocation rules to delete.
         self.remove_share_rule_list = remove_share_rule_list
 
     def validate(self):
@@ -98,21 +98,21 @@ class SaveCostCenterShareRuleRequestModifyShareRuleList(DaraModel):
         share_type: str = None,
         to_cost_center_list: List[int] = None,
     ):
-        # The list of source cost centers.
+        # The list of source financial units.
         self.from_cost_center_list = from_cost_center_list
-        # The list of sharing ratios.
+        # The list of allocation ratios.
         self.share_ratio_list = share_ratio_list
-        # The ID of the sharing rule.
+        # The ID of the allocation rule.
         # 
         # This parameter is required.
         self.share_rule_id = share_rule_id
-        # The name of the sharing rule.
+        # The name of the allocation rule.
         self.share_rule_name = share_rule_name
-        # The type of the sharing rule.
+        # The type of the allocation rule.
         # 
         # This parameter is required.
         self.share_type = share_type
-        # The list of target cost centers.
+        # The list of destination financial units.
         self.to_cost_center_list = to_cost_center_list
 
     def validate(self):
@@ -174,17 +174,17 @@ class SaveCostCenterShareRuleRequestCreateShareRuleList(DaraModel):
         share_type: str = None,
         to_cost_center_list: List[int] = None,
     ):
-        # The list of source cost centers.
+        # The list of source financial units.
         self.from_cost_center_list = from_cost_center_list
-        # The list of sharing ratios.
+        # The list of allocation ratios.
         self.share_ratio_list = share_ratio_list
-        # The name of the sharing rule.
+        # The name of the allocation rule.
         self.share_rule_name = share_rule_name
-        # The type of the sharing rule.
+        # The type of the allocation rule.
         # 
         # This parameter is required.
         self.share_type = share_type
-        # The list of target cost centers.
+        # The list of destination financial units.
         self.to_cost_center_list = to_cost_center_list
 
     def validate(self):

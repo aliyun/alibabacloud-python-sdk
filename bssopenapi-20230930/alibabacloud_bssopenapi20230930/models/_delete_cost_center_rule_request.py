@@ -14,12 +14,12 @@ class DeleteCostCenterRuleRequest(DaraModel):
         filter_expression: main_models.DeleteCostCenterRuleRequestFilterExpression = None,
         nbid: str = None,
     ):
-        # Financial unit ID.
+        # The cost center ID.
         self.cost_center_id = cost_center_id
-        # Rule expression.
-        # **This field does not need to be entered during the delete operation.**
+        # The rule expression.
+        # **This field does not need to be specified for delete operations.**
         self.filter_expression = filter_expression
-        # Level-1 marketplace ID. If empty, the marketplace ID of the current user is used by default.
+        # The primary marketplace ID. If left empty, the marketplace ID of the current user is used by default.
         self.nbid = nbid
 
     def validate(self):
@@ -130,13 +130,13 @@ class DeleteCostCenterRuleRequestFilterExpressionFilterValues(DaraModel):
         select_type: str = None,
         values: List[str] = None,
     ):
-        # The condition filter key.
+        # The filter condition key.
         self.code = code
-        # The condition filter key name.
+        # The name of the filter condition key.
         self.code_name = code_name
-        # The association between Code and value.
+        # The association between code and value.
         self.select_type = select_type
-        # The condition filter values.
+        # The filter condition values.
         self.values = values
 
     def validate(self):

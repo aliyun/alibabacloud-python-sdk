@@ -13,15 +13,15 @@ class SaveCostCenterShareRuleShrinkRequest(DaraModel):
         owner_account_id: int = None,
         remove_share_rule_list_shrink: str = None,
     ):
-        # The list of sharing rules to create.
+        # The list of allocation rules to create.
         self.create_share_rule_list_shrink = create_share_rule_list_shrink
-        # The list of sharing rules to modify.
+        # The list of allocation rules to update.
         self.modify_share_rule_list_shrink = modify_share_rule_list_shrink
-        # The primary marketplace ID. If left empty, the marketplace ID of the current user is used by default.
+        # The ID of the level-1 sales channel. If this parameter is left empty, the ID of the sales channel to which the current user belongs is used by default.
         self.nbid = nbid
-        # The user ID of the cost center owner.
+        # The ID of the user who owns the financial unit.
         self.owner_account_id = owner_account_id
-        # The list of sharing rules to delete.
+        # The list of allocation rules to delete.
         self.remove_share_rule_list_shrink = remove_share_rule_list_shrink
 
     def validate(self):

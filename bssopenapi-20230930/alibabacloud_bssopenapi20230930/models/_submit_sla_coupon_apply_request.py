@@ -15,15 +15,15 @@ class SubmitSlaCouponApplyRequest(DaraModel):
         month: int = None,
         nbid: str = None,
     ):
-        # Optional. Damaged record IDs.
+        # The IDs of the damaged records. This parameter is optional.
         self.damaged_ids = damaged_ids
-        # Enterprise and account list. If empty, the current account itself is queried.
+        # The list of enterprises and accounts. If this parameter is left empty, the current account is queried.
         self.ec_id_account_ids = ec_id_account_ids
-        # Required. Application month in the yyyyMM format.
+        # The claim month. This parameter is required. Format: yyyyMM.
         # 
         # This parameter is required.
         self.month = month
-        # Primary marketplace ID. If empty, the marketplace ID of the current user is used by default.
+        # The primary marketplace ID. If this parameter is left empty, the marketplace ID of the current user is used by default.
         self.nbid = nbid
 
     def validate(self):
@@ -78,9 +78,9 @@ class SubmitSlaCouponApplyRequestEcIdAccountIds(DaraModel):
         account_ids: List[int] = None,
         ec_id: str = None,
     ):
-        # List of accounts to access. If empty, all accounts under the current entity ID are selected.
+        # The list of accounts to access. If this parameter is left empty, all accounts under the current entity ID are selected.
         self.account_ids = account_ids
-        # Enterprise entity ID.
+        # The enterprise entity ID.
         self.ec_id = ec_id
 
     def validate(self):

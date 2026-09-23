@@ -17,9 +17,9 @@ class AllocateCostCenterResourceResponseBody(DaraModel):
     ):
         # The cost center ID.
         self.cost_center_id = cost_center_id
-        # Indicates whether the operation was successful.
+        # Indicates whether the operation is successful.
         self.is_success = is_success
-        # The metadata of the response struct.
+        # The metadata of the response.
         self.metadata = metadata
         # The owner of the cost center.
         self.owner_account_id = owner_account_id

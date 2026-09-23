@@ -12,13 +12,13 @@ class ModifyCostCenterRuleShrinkRequest(DaraModel):
         nbid: str = None,
         owner_account_id: int = None,
     ):
-        # Financial unit ID
+        # The financial unit ID.
         self.cost_center_id = cost_center_id
-        # Rule expression
+        # The rule expression.
         self.filter_expression_shrink = filter_expression_shrink
-        # Level-1 marketplace ID. If empty, the marketplace ID of the current user is used by default.
+        # The primary sales channel ID. If left empty, the channel ID of the current user is used by default.
         self.nbid = nbid
-        # Owner of the financial unit (deprecated)
+        # The owner of the financial unit. (Deprecated)
         self.owner_account_id = owner_account_id
 
     def validate(self):

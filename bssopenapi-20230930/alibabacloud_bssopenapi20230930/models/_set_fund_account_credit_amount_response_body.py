@@ -12,9 +12,9 @@ class SetFundAccountCreditAmountResponseBody(DaraModel):
         metadata: Any = None,
         request_id: str = None,
     ):
-        # Response metadata
+        # The response struct metadata.
         self.metadata = metadata
-        # Request ID
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

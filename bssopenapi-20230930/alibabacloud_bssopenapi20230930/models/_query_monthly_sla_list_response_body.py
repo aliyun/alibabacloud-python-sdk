@@ -21,7 +21,7 @@ class QueryMonthlySlaListResponseBody(DaraModel):
         self.current_page = current_page
         # The data list.
         self.data = data
-        # The response struct metadata.
+        # The response metadata.
         self.metadata = metadata
         # The number of entries per page.
         self.page_size = page_size
@@ -104,13 +104,13 @@ class QueryMonthlySlaListResponseBodyData(DaraModel):
     ):
         # The service availability.
         self.available_rate = available_rate
-        # The unique ID of the damage record, used for targeted claims.
+        # The unique identifier of the damaged record, which is used to call the applyCoupon operation for targeted claim.
         self.damaged_id = damaged_id
         # The instance ID.
         self.instance_id = instance_id
-        # The month in yyyyMM format.
+        # The month in the yyyyMM format.
         self.month = month
-        # The monthly service fee.
+        # The monthly service charge.
         self.monthly_service_charge = monthly_service_charge
         # The compensation description.
         self.pay_description = pay_description

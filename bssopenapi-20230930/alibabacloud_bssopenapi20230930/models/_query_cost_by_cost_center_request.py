@@ -13,19 +13,19 @@ class QueryCostByCostCenterRequest(DaraModel):
         metrics: str = None,
         owner_account_id: int = None,
     ):
-        # Billing month (format: YYYYMM)
+        # The billing cycle month in the format of YYYYMM.
         # 
         # This parameter is required.
         self.billing_month = billing_month
-        # Whether to display data rows with zero payable amount
+        # Specifies whether to display data rows with a payable amount of 0.
         self.display_zero_amount_bills = display_zero_amount_bills
-        # Whether to aggregate and display by cost center level
+        # Specifies whether to display results grouped by financial unit level.
         self.group_by_cost_center_level = group_by_cost_center_level
-        # Cost type
+        # The cost type.
         # 
         # This parameter is required.
         self.metrics = metrics
-        # Account ID that owns the resource
+        # The account ID of the resource ownership.
         self.owner_account_id = owner_account_id
 
     def validate(self):

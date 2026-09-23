@@ -14,9 +14,9 @@ class ModifyCostCenterResponseBody(DaraModel):
         metadata: Any = None,
         request_id: str = None,
     ):
-        # The list of data entries.
+        # The data list.
         self.cost_center_operate_dto = cost_center_operate_dto
-        # The metadata of the response.
+        # The response struct metadata.
         self.metadata = metadata
         # The request ID.
         self.request_id = request_id
@@ -68,11 +68,11 @@ class ModifyCostCenterResponseBodyCostCenterOperateDto(DaraModel):
         is_success: bool = None,
         owner_account_id: int = None,
     ):
-        # The ID of the cost center.
+        # The cost center ID.
         self.cost_center_id = cost_center_id
         # Indicates whether the operation is successful.
         self.is_success = is_success
-        # The ID of the owner to which the cost center belongs.
+        # The ID of the user who owns the cost center.
         self.owner_account_id = owner_account_id
 
     def validate(self):

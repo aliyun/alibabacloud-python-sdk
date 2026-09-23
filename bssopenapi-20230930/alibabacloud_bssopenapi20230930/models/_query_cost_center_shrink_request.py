@@ -20,9 +20,9 @@ class QueryCostCenterShrinkRequest(DaraModel):
         self.current_page = current_page
         # The list of enterprises and accounts. If this parameter is left empty, the current account is queried.
         self.ec_id_account_ids_shrink = ec_id_account_ids_shrink
-        # The ID of the primary sales channel. If this parameter is left empty, the sales channel ID of the current user is used by default.
+        # The ID of the primary marketplace. If this parameter is left empty, the marketplace ID of the current user is used by default.
         self.nbid = nbid
-        # The ID of the user who owns the financial unit.
+        # The ID of the user who owns the cost center.
         # 
         # This parameter is required.
         self.owner_account_id = owner_account_id
@@ -30,7 +30,7 @@ class QueryCostCenterShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The ID of the parent financial unit. A value of -1 indicates the root financial unit.
+        # The ID of the parent cost center. A value of -1 indicates the root cost center.
         # 
         # This parameter is required.
         self.parent_cost_center_id = parent_cost_center_id

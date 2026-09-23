@@ -15,13 +15,13 @@ class ModifyCostCenterRuleRequest(DaraModel):
         nbid: str = None,
         owner_account_id: int = None,
     ):
-        # Financial unit ID
+        # The financial unit ID.
         self.cost_center_id = cost_center_id
-        # Rule expression
+        # The rule expression.
         self.filter_expression = filter_expression
-        # Level-1 marketplace ID. If empty, the marketplace ID of the current user is used by default.
+        # The primary sales channel ID. If left empty, the channel ID of the current user is used by default.
         self.nbid = nbid
-        # Owner of the financial unit (deprecated)
+        # The owner of the financial unit. (Deprecated)
         self.owner_account_id = owner_account_id
 
     def validate(self):
@@ -73,15 +73,15 @@ class ModifyCostCenterRuleRequestFilterExpression(DaraModel):
         operands: List[Any] = None,
         operator_type: str = None,
     ):
-        # Operation type
+        # The operation type.
         self.expression_type = expression_type
-        # Sub-condition filter
+        # The sub-condition filter.
         self.filter_values = filter_values
-        # Filter condition (deprecated)
+        # The filter condition. (Deprecated)
         self.operand = operand
-        # Condition expression
+        # The conditional expression.
         self.operands = operands
-        # Relational expression
+        # The relational expression.
         self.operator_type = operator_type
 
     def validate(self):
@@ -138,13 +138,13 @@ class ModifyCostCenterRuleRequestFilterExpressionFilterValues(DaraModel):
         select_type: str = None,
         values: List[str] = None,
     ):
-        # Condition filter key
+        # The condition filter key.
         self.code = code
-        # Condition filter key name (deprecated)
+        # The condition filter key name. (Deprecated)
         self.code_name = code_name
-        # Association between code and value
+        # The association between the code and value.
         self.select_type = select_type
-        # Condition filter value list
+        # The list of condition filter values.
         self.values = values
 
     def validate(self):

@@ -15,7 +15,7 @@ class AllocateCostCenterResourceShrinkRequest(DaraModel):
     ):
         # The ID of the source cost center. This parameter is required.
         # 
-        # - 0 indicates that the cost center is unallocated.
+        # - 0 indicates the unallocated cost center.
         # - A value greater than 0 indicates an allocated cost center ID.
         self.from_cost_center_id = from_cost_center_id
         # The ID of the owner of the source cost center.
@@ -28,8 +28,8 @@ class AllocateCostCenterResourceShrinkRequest(DaraModel):
         self.resource_instance_list_shrink = resource_instance_list_shrink
         # The ID of the destination cost center. Valid values:
         # 
-        # - -1: moves the allocated resource to the unallocated state.
-        # - A value greater than 0: allocates the resource to the specified cost center.
+        # - -1: moves allocated resources back to the unallocated state.
+        # - A value greater than 0: allocates resources to the specified cost center.
         self.to_cost_center_id = to_cost_center_id
 
     def validate(self):

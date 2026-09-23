@@ -19,11 +19,11 @@ class GetOrdersRequest(DaraModel):
         product_type: str = None,
         subscription_type: str = None,
     ):
-        # The end of the order creation time range. If not specified, orders created within the most recent hour are queried. Format: YYYY-MM-ddTHH:mm:ssZ. Time zone: UTC.
+        # The end of the time range for order creation. By default, orders created within the most recent 1 hour are queried. Format: YYYY-MM-ddTHH:mm:ssZ. Time zone: UTC.
         self.create_time_end = create_time_end
-        # The start of the order creation time range. If not specified, orders created within the most recent hour are queried. Format: YYYY-MM-ddTHH:mm:ssZ. Time zone: UTC.
+        # The start of the time range for order creation. By default, orders created within the most recent 1 hour are queried. Format: YYYY-MM-ddTHH:mm:ssZ. Time zone: UTC.
         self.create_time_start = create_time_start
-        # The UID of a member account in an enterprise with multiple member accounts. Leave this parameter empty if this scenario does not apply.
+        # The UID of a member account in the enterprise multi-account management. Leave this parameter empty if this scenario does not apply.
         self.member_uid = member_uid
         # The order type. Valid values:
         # - New: new purchase.
@@ -47,9 +47,9 @@ class GetOrdersRequest(DaraModel):
         # The payment status. For non-refund orders, valid values:
         # - Unpaid: unpaid.
         # - Paid: paid.
-        # - Cancelled: canceled.
+        # - Cancelled: cancelled.
         # 
-        # > For refund orders, set this parameter to NULL.
+        # > For refund orders, this parameter can be set to NULL.
         self.payment_status = payment_status
         # The product code.
         self.product_code = product_code

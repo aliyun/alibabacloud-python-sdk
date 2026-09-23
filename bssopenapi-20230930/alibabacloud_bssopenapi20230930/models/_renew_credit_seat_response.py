@@ -7,12 +7,12 @@ from typing import Dict
 from alibabacloud_bssopenapi20230930 import models as main_models
 from darabonba.model import DaraModel
 
-class DeleteBudgetResponse(DaraModel):
+class RenewCreditSeatResponse(DaraModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
         status_code: int = None,
-        body: main_models.DeleteBudgetResponseBody = None,
+        body: main_models.RenewCreditSeatResponseBody = None,
     ):
         self.headers = headers
         self.status_code = status_code
@@ -47,7 +47,7 @@ class DeleteBudgetResponse(DaraModel):
             self.status_code = m.get('statusCode')
 
         if m.get('body') is not None:
-            temp_model = main_models.DeleteBudgetResponseBody()
+            temp_model = main_models.RenewCreditSeatResponseBody()
             self.body = temp_model.from_map(m.get('body'))
 
         return self

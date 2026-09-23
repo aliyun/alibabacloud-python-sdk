@@ -15,13 +15,13 @@ class QueryCostByCostCenterResponseBody(DaraModel):
         request_id: str = None,
         total_amount: str = None,
     ):
-        # Cost center consumption amount details list
+        # The list of cost center consumption amount details.
         self.consume_amount_list = consume_amount_list
-        # Response structure metadata
+        # The response structure metadata.
         self.metadata = metadata
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Sum of totalAllocatedAmount across all cost centers
+        # The sum of totalAllocatedAmount across all cost centers.
         self.total_amount = total_amount
 
     def validate(self):
@@ -86,29 +86,29 @@ class QueryCostByCostCenterResponseBodyConsumeAmountList(DaraModel):
         total_allocated_amount: str = None,
         total_allocated_amount_percent: str = None,
     ):
-        # Shared allocation amount
+        # The apportioned amount.
         self.allocated_amount = allocated_amount
-        # Cost center code
+        # The financial unit code.
         self.cost_center_code = cost_center_code
-        # Cost center ID
+        # The financial unit ID.
         self.cost_center_id = cost_center_id
-        # Cost center name
+        # The financial unit name.
         self.cost_center_name = cost_center_name
-        # Cost type amount
+        # The cost type amount.
         self.direct_amount = direct_amount
-        # Level
+        # The level.
         self.level = level
-        # Account ID that owns the resource
+        # The account ID of the resource ownership.
         self.owner_account_id = owner_account_id
-        # Account name that owns the resource
+        # The account name of the resource ownership.
         self.owner_account_name = owner_account_name
-        # Parent cost center ID
+        # The parent financial unit ID.
         self.parent_cost_center_id = parent_cost_center_id
-        # Previous cost center ID
+        # The preceding financial unit ID.
         self.pre_cost_center_id = pre_cost_center_id
-        # Total (sum of cost type amount and shared allocation amount)
+        # The total amount (the sum of the cost type amount and the apportioned amount).
         self.total_allocated_amount = total_allocated_amount
-        # Cost type amount percentage
+        # The percentage of the cost type amount.
         self.total_allocated_amount_percent = total_allocated_amount_percent
 
     def validate(self):

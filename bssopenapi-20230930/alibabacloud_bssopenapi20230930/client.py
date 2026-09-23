@@ -194,6 +194,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.add_coupon_deduct_tag_with_options_async(request, runtime)
 
+    def add_credit_seats_with_options(
+        self,
+        request: main_models.AddCreditSeatsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddCreditSeatsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.configs):
+            query['Configs'] = request.configs
+        if not DaraCore.is_null(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not DaraCore.is_null(request.product_type):
+            query['ProductType'] = request.product_type
+        if not DaraCore.is_null(request.seats):
+            query['Seats'] = request.seats
+        if not DaraCore.is_null(request.subscription_type):
+            query['SubscriptionType'] = request.subscription_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddCreditSeats',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddCreditSeatsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_credit_seats_with_options_async(
+        self,
+        request: main_models.AddCreditSeatsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddCreditSeatsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.configs):
+            query['Configs'] = request.configs
+        if not DaraCore.is_null(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not DaraCore.is_null(request.product_type):
+            query['ProductType'] = request.product_type
+        if not DaraCore.is_null(request.seats):
+            query['Seats'] = request.seats
+        if not DaraCore.is_null(request.subscription_type):
+            query['SubscriptionType'] = request.subscription_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddCreditSeats',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddCreditSeatsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_credit_seats(
+        self,
+        request: main_models.AddCreditSeatsRequest,
+    ) -> main_models.AddCreditSeatsResponse:
+        runtime = RuntimeOptions()
+        return self.add_credit_seats_with_options(request, runtime)
+
+    async def add_credit_seats_async(
+        self,
+        request: main_models.AddCreditSeatsRequest,
+    ) -> main_models.AddCreditSeatsResponse:
+        runtime = RuntimeOptions()
+        return await self.add_credit_seats_with_options_async(request, runtime)
+
     def allocate_cost_center_resource_with_options(
         self,
         tmp_req: main_models.AllocateCostCenterResourceRequest,
@@ -448,230 +538,6 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.check_account_exist_with_options_async(request, runtime)
 
-    def check_budget_name_exists_with_options(
-        self,
-        request: main_models.CheckBudgetNameExistsRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.CheckBudgetNameExistsResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.nbid):
-            query['Nbid'] = request.nbid
-        body = {}
-        if not DaraCore.is_null(request.budget_name):
-            body['BudgetName'] = request.budget_name
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query),
-            body = Utils.parse_to_map(body)
-        )
-        params = open_api_util_models.Params(
-            action = 'CheckBudgetNameExists',
-            version = '2023-09-30',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.CheckBudgetNameExistsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def check_budget_name_exists_with_options_async(
-        self,
-        request: main_models.CheckBudgetNameExistsRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.CheckBudgetNameExistsResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.nbid):
-            query['Nbid'] = request.nbid
-        body = {}
-        if not DaraCore.is_null(request.budget_name):
-            body['BudgetName'] = request.budget_name
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query),
-            body = Utils.parse_to_map(body)
-        )
-        params = open_api_util_models.Params(
-            action = 'CheckBudgetNameExists',
-            version = '2023-09-30',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.CheckBudgetNameExistsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def check_budget_name_exists(
-        self,
-        request: main_models.CheckBudgetNameExistsRequest,
-    ) -> main_models.CheckBudgetNameExistsResponse:
-        runtime = RuntimeOptions()
-        return self.check_budget_name_exists_with_options(request, runtime)
-
-    async def check_budget_name_exists_async(
-        self,
-        request: main_models.CheckBudgetNameExistsRequest,
-    ) -> main_models.CheckBudgetNameExistsResponse:
-        runtime = RuntimeOptions()
-        return await self.check_budget_name_exists_with_options_async(request, runtime)
-
-    def create_budget_with_options(
-        self,
-        tmp_req: main_models.CreateBudgetRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.CreateBudgetResponse:
-        tmp_req.validate()
-        request = main_models.CreateBudgetShrinkRequest()
-        Utils.convert(tmp_req, request)
-        if not DaraCore.is_null(tmp_req.cycle_quota):
-            request.cycle_quota_shrink = Utils.array_to_string_with_specified_style(tmp_req.cycle_quota, 'CycleQuota', 'json')
-        if not DaraCore.is_null(tmp_req.ec_id_account_ids):
-            request.ec_id_account_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
-        if not DaraCore.is_null(tmp_req.query_filter):
-            request.query_filter_shrink = Utils.array_to_string_with_specified_style(tmp_req.query_filter, 'QueryFilter', 'json')
-        if not DaraCore.is_null(tmp_req.warn_confs):
-            request.warn_confs_shrink = Utils.array_to_string_with_specified_style(tmp_req.warn_confs, 'WarnConfs', 'json')
-        query = {}
-        if not DaraCore.is_null(request.ec_id_account_ids_shrink):
-            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
-        if not DaraCore.is_null(request.nbid):
-            query['Nbid'] = request.nbid
-        body = {}
-        if not DaraCore.is_null(request.budget_name):
-            body['BudgetName'] = request.budget_name
-        if not DaraCore.is_null(request.budget_type):
-            body['BudgetType'] = request.budget_type
-        if not DaraCore.is_null(request.comment):
-            body['Comment'] = request.comment
-        if not DaraCore.is_null(request.cycle_end_period):
-            body['CycleEndPeriod'] = request.cycle_end_period
-        if not DaraCore.is_null(request.cycle_quota_shrink):
-            body['CycleQuota'] = request.cycle_quota_shrink
-        if not DaraCore.is_null(request.cycle_start_period):
-            body['CycleStartPeriod'] = request.cycle_start_period
-        if not DaraCore.is_null(request.cycle_type):
-            body['CycleType'] = request.cycle_type
-        if not DaraCore.is_null(request.metric):
-            body['Metric'] = request.metric
-        if not DaraCore.is_null(request.query_filter_shrink):
-            body['QueryFilter'] = request.query_filter_shrink
-        if not DaraCore.is_null(request.quota):
-            body['Quota'] = request.quota
-        if not DaraCore.is_null(request.quota_type):
-            body['QuotaType'] = request.quota_type
-        if not DaraCore.is_null(request.warn_confs_shrink):
-            body['WarnConfs'] = request.warn_confs_shrink
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query),
-            body = Utils.parse_to_map(body)
-        )
-        params = open_api_util_models.Params(
-            action = 'CreateBudget',
-            version = '2023-09-30',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.CreateBudgetResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_budget_with_options_async(
-        self,
-        tmp_req: main_models.CreateBudgetRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.CreateBudgetResponse:
-        tmp_req.validate()
-        request = main_models.CreateBudgetShrinkRequest()
-        Utils.convert(tmp_req, request)
-        if not DaraCore.is_null(tmp_req.cycle_quota):
-            request.cycle_quota_shrink = Utils.array_to_string_with_specified_style(tmp_req.cycle_quota, 'CycleQuota', 'json')
-        if not DaraCore.is_null(tmp_req.ec_id_account_ids):
-            request.ec_id_account_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
-        if not DaraCore.is_null(tmp_req.query_filter):
-            request.query_filter_shrink = Utils.array_to_string_with_specified_style(tmp_req.query_filter, 'QueryFilter', 'json')
-        if not DaraCore.is_null(tmp_req.warn_confs):
-            request.warn_confs_shrink = Utils.array_to_string_with_specified_style(tmp_req.warn_confs, 'WarnConfs', 'json')
-        query = {}
-        if not DaraCore.is_null(request.ec_id_account_ids_shrink):
-            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
-        if not DaraCore.is_null(request.nbid):
-            query['Nbid'] = request.nbid
-        body = {}
-        if not DaraCore.is_null(request.budget_name):
-            body['BudgetName'] = request.budget_name
-        if not DaraCore.is_null(request.budget_type):
-            body['BudgetType'] = request.budget_type
-        if not DaraCore.is_null(request.comment):
-            body['Comment'] = request.comment
-        if not DaraCore.is_null(request.cycle_end_period):
-            body['CycleEndPeriod'] = request.cycle_end_period
-        if not DaraCore.is_null(request.cycle_quota_shrink):
-            body['CycleQuota'] = request.cycle_quota_shrink
-        if not DaraCore.is_null(request.cycle_start_period):
-            body['CycleStartPeriod'] = request.cycle_start_period
-        if not DaraCore.is_null(request.cycle_type):
-            body['CycleType'] = request.cycle_type
-        if not DaraCore.is_null(request.metric):
-            body['Metric'] = request.metric
-        if not DaraCore.is_null(request.query_filter_shrink):
-            body['QueryFilter'] = request.query_filter_shrink
-        if not DaraCore.is_null(request.quota):
-            body['Quota'] = request.quota
-        if not DaraCore.is_null(request.quota_type):
-            body['QuotaType'] = request.quota_type
-        if not DaraCore.is_null(request.warn_confs_shrink):
-            body['WarnConfs'] = request.warn_confs_shrink
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query),
-            body = Utils.parse_to_map(body)
-        )
-        params = open_api_util_models.Params(
-            action = 'CreateBudget',
-            version = '2023-09-30',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.CreateBudgetResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_budget(
-        self,
-        request: main_models.CreateBudgetRequest,
-    ) -> main_models.CreateBudgetResponse:
-        runtime = RuntimeOptions()
-        return self.create_budget_with_options(request, runtime)
-
-    async def create_budget_async(
-        self,
-        request: main_models.CreateBudgetRequest,
-    ) -> main_models.CreateBudgetResponse:
-        runtime = RuntimeOptions()
-        return await self.create_budget_with_options_async(request, runtime)
-
     def create_cost_center_with_options(
         self,
         tmp_req: main_models.CreateCostCenterRequest,
@@ -843,6 +709,104 @@ class Client(OpenApiClient):
     ) -> main_models.CreateCostCenterRuleResponse:
         runtime = RuntimeOptions()
         return await self.create_cost_center_rule_with_options_async(request, runtime)
+
+    def create_credit_seat_with_options(
+        self,
+        request: main_models.CreateCreditSeatRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCreditSeatResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not DaraCore.is_null(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not DaraCore.is_null(request.product_type):
+            query['ProductType'] = request.product_type
+        if not DaraCore.is_null(request.subscription_configs):
+            query['SubscriptionConfigs'] = request.subscription_configs
+        if not DaraCore.is_null(request.subscription_type):
+            query['SubscriptionType'] = request.subscription_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCreditSeat',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCreditSeatResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_credit_seat_with_options_async(
+        self,
+        request: main_models.CreateCreditSeatRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCreditSeatResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not DaraCore.is_null(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not DaraCore.is_null(request.product_type):
+            query['ProductType'] = request.product_type
+        if not DaraCore.is_null(request.subscription_configs):
+            query['SubscriptionConfigs'] = request.subscription_configs
+        if not DaraCore.is_null(request.subscription_type):
+            query['SubscriptionType'] = request.subscription_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCreditSeat',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCreditSeatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_credit_seat(
+        self,
+        request: main_models.CreateCreditSeatRequest,
+    ) -> main_models.CreateCreditSeatResponse:
+        runtime = RuntimeOptions()
+        return self.create_credit_seat_with_options(request, runtime)
+
+    async def create_credit_seat_async(
+        self,
+        request: main_models.CreateCreditSeatRequest,
+    ) -> main_models.CreateCreditSeatResponse:
+        runtime = RuntimeOptions()
+        return await self.create_credit_seat_with_options_async(request, runtime)
 
     def create_fund_account_pay_relation_with_options(
         self,
@@ -1280,84 +1244,6 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_report_definition_with_options_async(request, runtime)
 
-    def delete_budget_with_options(
-        self,
-        request: main_models.DeleteBudgetRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.DeleteBudgetResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.nbid):
-            query['Nbid'] = request.nbid
-        body = {}
-        if not DaraCore.is_null(request.budget_name):
-            body['BudgetName'] = request.budget_name
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query),
-            body = Utils.parse_to_map(body)
-        )
-        params = open_api_util_models.Params(
-            action = 'DeleteBudget',
-            version = '2023-09-30',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.DeleteBudgetResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_budget_with_options_async(
-        self,
-        request: main_models.DeleteBudgetRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.DeleteBudgetResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.nbid):
-            query['Nbid'] = request.nbid
-        body = {}
-        if not DaraCore.is_null(request.budget_name):
-            body['BudgetName'] = request.budget_name
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query),
-            body = Utils.parse_to_map(body)
-        )
-        params = open_api_util_models.Params(
-            action = 'DeleteBudget',
-            version = '2023-09-30',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.DeleteBudgetResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_budget(
-        self,
-        request: main_models.DeleteBudgetRequest,
-    ) -> main_models.DeleteBudgetResponse:
-        runtime = RuntimeOptions()
-        return self.delete_budget_with_options(request, runtime)
-
-    async def delete_budget_async(
-        self,
-        request: main_models.DeleteBudgetRequest,
-    ) -> main_models.DeleteBudgetResponse:
-        runtime = RuntimeOptions()
-        return await self.delete_budget_with_options_async(request, runtime)
-
     def delete_cost_center_with_options(
         self,
         request: main_models.DeleteCostCenterRequest,
@@ -1693,178 +1579,6 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteReportDefinitionResponse:
         runtime = RuntimeOptions()
         return await self.delete_report_definition_with_options_async(request, runtime)
-
-    def describe_budget_with_options(
-        self,
-        request: main_models.DescribeBudgetRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.DescribeBudgetResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.nbid):
-            query['Nbid'] = request.nbid
-        body = {}
-        if not DaraCore.is_null(request.budget_name):
-            body['BudgetName'] = request.budget_name
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query),
-            body = Utils.parse_to_map(body)
-        )
-        params = open_api_util_models.Params(
-            action = 'DescribeBudget',
-            version = '2023-09-30',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.DescribeBudgetResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_budget_with_options_async(
-        self,
-        request: main_models.DescribeBudgetRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.DescribeBudgetResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.nbid):
-            query['Nbid'] = request.nbid
-        body = {}
-        if not DaraCore.is_null(request.budget_name):
-            body['BudgetName'] = request.budget_name
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query),
-            body = Utils.parse_to_map(body)
-        )
-        params = open_api_util_models.Params(
-            action = 'DescribeBudget',
-            version = '2023-09-30',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.DescribeBudgetResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_budget(
-        self,
-        request: main_models.DescribeBudgetRequest,
-    ) -> main_models.DescribeBudgetResponse:
-        runtime = RuntimeOptions()
-        return self.describe_budget_with_options(request, runtime)
-
-    async def describe_budget_async(
-        self,
-        request: main_models.DescribeBudgetRequest,
-    ) -> main_models.DescribeBudgetResponse:
-        runtime = RuntimeOptions()
-        return await self.describe_budget_with_options_async(request, runtime)
-
-    def describe_budgets_with_options(
-        self,
-        request: main_models.DescribeBudgetsRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.DescribeBudgetsResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.nbid):
-            query['Nbid'] = request.nbid
-        body = {}
-        if not DaraCore.is_null(request.budget_name):
-            body['BudgetName'] = request.budget_name
-        if not DaraCore.is_null(request.budget_type):
-            body['BudgetType'] = request.budget_type
-        if not DaraCore.is_null(request.expire_status):
-            body['ExpireStatus'] = request.expire_status
-        if not DaraCore.is_null(request.page_no):
-            body['PageNo'] = request.page_no
-        if not DaraCore.is_null(request.page_size):
-            body['PageSize'] = request.page_size
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query),
-            body = Utils.parse_to_map(body)
-        )
-        params = open_api_util_models.Params(
-            action = 'DescribeBudgets',
-            version = '2023-09-30',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.DescribeBudgetsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_budgets_with_options_async(
-        self,
-        request: main_models.DescribeBudgetsRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.DescribeBudgetsResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.nbid):
-            query['Nbid'] = request.nbid
-        body = {}
-        if not DaraCore.is_null(request.budget_name):
-            body['BudgetName'] = request.budget_name
-        if not DaraCore.is_null(request.budget_type):
-            body['BudgetType'] = request.budget_type
-        if not DaraCore.is_null(request.expire_status):
-            body['ExpireStatus'] = request.expire_status
-        if not DaraCore.is_null(request.page_no):
-            body['PageNo'] = request.page_no
-        if not DaraCore.is_null(request.page_size):
-            body['PageSize'] = request.page_size
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query),
-            body = Utils.parse_to_map(body)
-        )
-        params = open_api_util_models.Params(
-            action = 'DescribeBudgets',
-            version = '2023-09-30',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.DescribeBudgetsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_budgets(
-        self,
-        request: main_models.DescribeBudgetsRequest,
-    ) -> main_models.DescribeBudgetsResponse:
-        runtime = RuntimeOptions()
-        return self.describe_budgets_with_options(request, runtime)
-
-    async def describe_budgets_async(
-        self,
-        request: main_models.DescribeBudgetsRequest,
-    ) -> main_models.DescribeBudgetsResponse:
-        runtime = RuntimeOptions()
-        return await self.describe_budgets_with_options_async(request, runtime)
 
     def describe_coupon_with_options(
         self,
@@ -4822,6 +4536,186 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.query_monthly_sla_list_with_options_async(request, runtime)
 
+    def reduce_credit_seats_with_options(
+        self,
+        request: main_models.ReduceCreditSeatsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ReduceCreditSeatsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not DaraCore.is_null(request.product_type):
+            query['ProductType'] = request.product_type
+        if not DaraCore.is_null(request.subscription_type):
+            query['SubscriptionType'] = request.subscription_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ReduceCreditSeats',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ReduceCreditSeatsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reduce_credit_seats_with_options_async(
+        self,
+        request: main_models.ReduceCreditSeatsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ReduceCreditSeatsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not DaraCore.is_null(request.product_type):
+            query['ProductType'] = request.product_type
+        if not DaraCore.is_null(request.subscription_type):
+            query['SubscriptionType'] = request.subscription_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ReduceCreditSeats',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ReduceCreditSeatsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reduce_credit_seats(
+        self,
+        request: main_models.ReduceCreditSeatsRequest,
+    ) -> main_models.ReduceCreditSeatsResponse:
+        runtime = RuntimeOptions()
+        return self.reduce_credit_seats_with_options(request, runtime)
+
+    async def reduce_credit_seats_async(
+        self,
+        request: main_models.ReduceCreditSeatsRequest,
+    ) -> main_models.ReduceCreditSeatsResponse:
+        runtime = RuntimeOptions()
+        return await self.reduce_credit_seats_with_options_async(request, runtime)
+
+    def renew_credit_seat_with_options(
+        self,
+        request: main_models.RenewCreditSeatRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RenewCreditSeatResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not DaraCore.is_null(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not DaraCore.is_null(request.product_type):
+            query['ProductType'] = request.product_type
+        if not DaraCore.is_null(request.subscription_type):
+            query['SubscriptionType'] = request.subscription_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RenewCreditSeat',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RenewCreditSeatResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def renew_credit_seat_with_options_async(
+        self,
+        request: main_models.RenewCreditSeatRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RenewCreditSeatResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not DaraCore.is_null(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not DaraCore.is_null(request.product_type):
+            query['ProductType'] = request.product_type
+        if not DaraCore.is_null(request.subscription_type):
+            query['SubscriptionType'] = request.subscription_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RenewCreditSeat',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RenewCreditSeatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def renew_credit_seat(
+        self,
+        request: main_models.RenewCreditSeatRequest,
+    ) -> main_models.RenewCreditSeatResponse:
+        runtime = RuntimeOptions()
+        return self.renew_credit_seat_with_options(request, runtime)
+
+    async def renew_credit_seat_async(
+        self,
+        request: main_models.RenewCreditSeatRequest,
+    ) -> main_models.RenewCreditSeatResponse:
+        runtime = RuntimeOptions()
+        return await self.renew_credit_seat_with_options_async(request, runtime)
+
     def save_cost_center_share_rule_with_options(
         self,
         tmp_req: main_models.SaveCostCenterShareRuleRequest,
@@ -4931,6 +4825,8 @@ class Client(OpenApiClient):
     ) -> main_models.SetFundAccountCreditAmountResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.cancel_credit):
+            body['CancelCredit'] = request.cancel_credit
         if not DaraCore.is_null(request.credit_amount):
             body['CreditAmount'] = request.credit_amount
         if not DaraCore.is_null(request.currency):
@@ -4963,6 +4859,8 @@ class Client(OpenApiClient):
     ) -> main_models.SetFundAccountCreditAmountResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.cancel_credit):
+            body['CancelCredit'] = request.cancel_credit
         if not DaraCore.is_null(request.credit_amount):
             body['CreditAmount'] = request.credit_amount
         if not DaraCore.is_null(request.currency):
@@ -5260,60 +5158,30 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.submit_sla_coupon_apply_with_options_async(request, runtime)
 
-    def update_budget_with_options(
+    def upgrade_credit_seat_with_options(
         self,
-        tmp_req: main_models.UpdateBudgetRequest,
+        request: main_models.UpgradeCreditSeatRequest,
         runtime: RuntimeOptions,
-    ) -> main_models.UpdateBudgetResponse:
-        tmp_req.validate()
-        request = main_models.UpdateBudgetShrinkRequest()
-        Utils.convert(tmp_req, request)
-        if not DaraCore.is_null(tmp_req.cycle_quota):
-            request.cycle_quota_shrink = Utils.array_to_string_with_specified_style(tmp_req.cycle_quota, 'CycleQuota', 'json')
-        if not DaraCore.is_null(tmp_req.ec_id_account_ids):
-            request.ec_id_account_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
-        if not DaraCore.is_null(tmp_req.query_filter):
-            request.query_filter_shrink = Utils.array_to_string_with_specified_style(tmp_req.query_filter, 'QueryFilter', 'json')
-        if not DaraCore.is_null(tmp_req.warn_confs):
-            request.warn_confs_shrink = Utils.array_to_string_with_specified_style(tmp_req.warn_confs, 'WarnConfs', 'json')
+    ) -> main_models.UpgradeCreditSeatResponse:
+        request.validate()
         query = {}
-        if not DaraCore.is_null(request.ec_id_account_ids_shrink):
-            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
-        if not DaraCore.is_null(request.nbid):
-            query['Nbid'] = request.nbid
-        body = {}
-        if not DaraCore.is_null(request.budget_name):
-            body['BudgetName'] = request.budget_name
-        if not DaraCore.is_null(request.budget_type):
-            body['BudgetType'] = request.budget_type
-        if not DaraCore.is_null(request.comment):
-            body['Comment'] = request.comment
-        if not DaraCore.is_null(request.cycle_end_period):
-            body['CycleEndPeriod'] = request.cycle_end_period
-        if not DaraCore.is_null(request.cycle_quota_shrink):
-            body['CycleQuota'] = request.cycle_quota_shrink
-        if not DaraCore.is_null(request.cycle_start_period):
-            body['CycleStartPeriod'] = request.cycle_start_period
-        if not DaraCore.is_null(request.cycle_type):
-            body['CycleType'] = request.cycle_type
-        if not DaraCore.is_null(request.metric):
-            body['Metric'] = request.metric
-        if not DaraCore.is_null(request.original_budget_name):
-            body['OriginalBudgetName'] = request.original_budget_name
-        if not DaraCore.is_null(request.query_filter_shrink):
-            body['QueryFilter'] = request.query_filter_shrink
-        if not DaraCore.is_null(request.quota):
-            body['Quota'] = request.quota
-        if not DaraCore.is_null(request.quota_type):
-            body['QuotaType'] = request.quota_type
-        if not DaraCore.is_null(request.warn_confs_shrink):
-            body['WarnConfs'] = request.warn_confs_shrink
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.configs):
+            query['Configs'] = request.configs
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not DaraCore.is_null(request.product_type):
+            query['ProductType'] = request.product_type
+        if not DaraCore.is_null(request.subscription_type):
+            query['SubscriptionType'] = request.subscription_type
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query),
-            body = Utils.parse_to_map(body)
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
-            action = 'UpdateBudget',
+            action = 'UpgradeCreditSeat',
             version = '2023-09-30',
             protocol = 'HTTPS',
             pathname = '/',
@@ -5324,64 +5192,34 @@ class Client(OpenApiClient):
             body_type = 'json'
         )
         return DaraCore.from_map(
-            main_models.UpdateBudgetResponse(),
+            main_models.UpgradeCreditSeatResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def update_budget_with_options_async(
+    async def upgrade_credit_seat_with_options_async(
         self,
-        tmp_req: main_models.UpdateBudgetRequest,
+        request: main_models.UpgradeCreditSeatRequest,
         runtime: RuntimeOptions,
-    ) -> main_models.UpdateBudgetResponse:
-        tmp_req.validate()
-        request = main_models.UpdateBudgetShrinkRequest()
-        Utils.convert(tmp_req, request)
-        if not DaraCore.is_null(tmp_req.cycle_quota):
-            request.cycle_quota_shrink = Utils.array_to_string_with_specified_style(tmp_req.cycle_quota, 'CycleQuota', 'json')
-        if not DaraCore.is_null(tmp_req.ec_id_account_ids):
-            request.ec_id_account_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
-        if not DaraCore.is_null(tmp_req.query_filter):
-            request.query_filter_shrink = Utils.array_to_string_with_specified_style(tmp_req.query_filter, 'QueryFilter', 'json')
-        if not DaraCore.is_null(tmp_req.warn_confs):
-            request.warn_confs_shrink = Utils.array_to_string_with_specified_style(tmp_req.warn_confs, 'WarnConfs', 'json')
+    ) -> main_models.UpgradeCreditSeatResponse:
+        request.validate()
         query = {}
-        if not DaraCore.is_null(request.ec_id_account_ids_shrink):
-            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
-        if not DaraCore.is_null(request.nbid):
-            query['Nbid'] = request.nbid
-        body = {}
-        if not DaraCore.is_null(request.budget_name):
-            body['BudgetName'] = request.budget_name
-        if not DaraCore.is_null(request.budget_type):
-            body['BudgetType'] = request.budget_type
-        if not DaraCore.is_null(request.comment):
-            body['Comment'] = request.comment
-        if not DaraCore.is_null(request.cycle_end_period):
-            body['CycleEndPeriod'] = request.cycle_end_period
-        if not DaraCore.is_null(request.cycle_quota_shrink):
-            body['CycleQuota'] = request.cycle_quota_shrink
-        if not DaraCore.is_null(request.cycle_start_period):
-            body['CycleStartPeriod'] = request.cycle_start_period
-        if not DaraCore.is_null(request.cycle_type):
-            body['CycleType'] = request.cycle_type
-        if not DaraCore.is_null(request.metric):
-            body['Metric'] = request.metric
-        if not DaraCore.is_null(request.original_budget_name):
-            body['OriginalBudgetName'] = request.original_budget_name
-        if not DaraCore.is_null(request.query_filter_shrink):
-            body['QueryFilter'] = request.query_filter_shrink
-        if not DaraCore.is_null(request.quota):
-            body['Quota'] = request.quota
-        if not DaraCore.is_null(request.quota_type):
-            body['QuotaType'] = request.quota_type
-        if not DaraCore.is_null(request.warn_confs_shrink):
-            body['WarnConfs'] = request.warn_confs_shrink
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.configs):
+            query['Configs'] = request.configs
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not DaraCore.is_null(request.product_type):
+            query['ProductType'] = request.product_type
+        if not DaraCore.is_null(request.subscription_type):
+            query['SubscriptionType'] = request.subscription_type
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query),
-            body = Utils.parse_to_map(body)
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
-            action = 'UpdateBudget',
+            action = 'UpgradeCreditSeat',
             version = '2023-09-30',
             protocol = 'HTTPS',
             pathname = '/',
@@ -5392,20 +5230,20 @@ class Client(OpenApiClient):
             body_type = 'json'
         )
         return DaraCore.from_map(
-            main_models.UpdateBudgetResponse(),
+            main_models.UpgradeCreditSeatResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_budget(
+    def upgrade_credit_seat(
         self,
-        request: main_models.UpdateBudgetRequest,
-    ) -> main_models.UpdateBudgetResponse:
+        request: main_models.UpgradeCreditSeatRequest,
+    ) -> main_models.UpgradeCreditSeatResponse:
         runtime = RuntimeOptions()
-        return self.update_budget_with_options(request, runtime)
+        return self.upgrade_credit_seat_with_options(request, runtime)
 
-    async def update_budget_async(
+    async def upgrade_credit_seat_async(
         self,
-        request: main_models.UpdateBudgetRequest,
-    ) -> main_models.UpdateBudgetResponse:
+        request: main_models.UpgradeCreditSeatRequest,
+    ) -> main_models.UpgradeCreditSeatResponse:
         runtime = RuntimeOptions()
-        return await self.update_budget_with_options_async(request, runtime)
+        return await self.upgrade_credit_seat_with_options_async(request, runtime)

@@ -30,23 +30,23 @@ class QueryCostCenterRuleResponseBody(DaraModel):
         self.gmt_create = gmt_create
         # The modification time.
         self.gmt_modified = gmt_modified
-        # The ID of the cost center auto-allocation rule.
+        # The ID of the cost center automatic allocation rule.
         self.id = id
         # The deletion status. Valid values:
-        # * **0**: active.
-        # * **1**: inactive.
+        # * **0**: Active.
+        # * **1**: Inactive.
         self.is_deleted = is_deleted
-        # Response structure metadata.
+        # The response struct metadata.
         self.metadata = metadata
-        # The owner user of the cost center.
+        # The owner of the cost center.
         self.owner_account_id = owner_account_id
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
         # The root cost center ID.
         self.root_cost_center_id = root_cost_center_id
         # The status. Valid values:
-        # - on: active.
-        # - off: inactive.
+        # - on: Active.
+        # - off: Inactive.
         self.status = status
 
     def validate(self):
@@ -146,7 +146,7 @@ class QueryCostCenterRuleResponseBodyFilterExpression(DaraModel):
         self.filter_values = filter_values
         # The filter condition (deprecated).
         self.operand = operand
-        # The condition expression.
+        # The conditional expression.
         self.operands = operands
         # The relational expression.
         self.operator_type = operator_type
@@ -209,9 +209,9 @@ class QueryCostCenterRuleResponseBodyFilterExpressionFilterValues(DaraModel):
         self.code = code
         # The condition filter key name (deprecated).
         self.code_name = code_name
-        # The association between code and value.
+        # The association between the code and value.
         self.select_type = select_type
-        # The attribute value types corresponding to the module code. Valid values:
+        # The attribute value type corresponding to the module Code. Valid values:
         # - single_float: single value type.
         # - range_float: range value type.
         self.values = values

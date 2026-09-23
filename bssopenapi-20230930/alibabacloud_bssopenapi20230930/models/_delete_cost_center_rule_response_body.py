@@ -13,9 +13,9 @@ class DeleteCostCenterRuleResponseBody(DaraModel):
         metadata: Any = None,
         request_id: str = None,
     ):
-        # The ID of the financial unit allocation rule.
+        # The ID of the cost center allocation rule.
         self.data = data
-        # The response metadata.
+        # The response struct metadata.
         self.metadata = metadata
         # The request ID.
         self.request_id = request_id

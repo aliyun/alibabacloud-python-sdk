@@ -17,7 +17,7 @@ class QueryCostCenterResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of financial unit data.
+        # The list of cost center data.
         self.cost_center_dto_list = cost_center_dto_list
         # The current page number.
         self.current_page = current_page
@@ -100,20 +100,21 @@ class QueryCostCenterResponseBodyCostCenterDtoList(DaraModel):
         prev_cost_center_id: int = None,
         priority: int = None,
     ):
-        # The code of the financial unit.
+        # The code of the cost center.
         self.cost_center_code = cost_center_code
-        # The ID of the financial unit.
+        # The ID of the cost center.
         self.cost_center_id = cost_center_id
-        # The name of the financial unit. The name must be unique within the same account.
+        # The name of the cost center. The name must be unique within the same account.
         self.cost_center_name = cost_center_name
-        # The level of the financial unit node.
+        # The level of the cost center node.
         self.level = level
-        # The ID of the user who owns the financial unit.
+        # The ID of the user who owns the cost center.
         self.owner_account_id = owner_account_id
-        # The ID of the parent financial unit.
+        # The ID of the parent cost center.
         self.parent_cost_center_id = parent_cost_center_id
-        # The ID of the previous financial unit.
+        # The ID of the previous cost center.
         self.prev_cost_center_id = prev_cost_center_id
+        # The priority of the cost center.
         self.priority = priority
 
     def validate(self):

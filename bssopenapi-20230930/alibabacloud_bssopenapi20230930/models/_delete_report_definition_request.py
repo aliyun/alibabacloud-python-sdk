@@ -10,9 +10,9 @@ class DeleteReportDefinitionRequest(DaraModel):
         nbid: str = None,
         report_task_id: int = None,
     ):
-        # The ID of the primary sales channel. If this parameter is left empty, the ID of the sales channel to which the current user belongs is used by default.
+        # The primary sales channel ID. If this parameter is left empty, the channel ID of the current user is used by default.
         self.nbid = nbid
-        # The ID of the bill subscription task.
+        # The bill subscription task ID.
         # 
         # This parameter is required.
         self.report_task_id = report_task_id
