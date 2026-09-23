@@ -16,11 +16,11 @@ class ListServiceCredentialsResponseBody(DaraModel):
         request_id: str = None,
         service_credentials: List[main_models.ListServiceCredentialsResponseBodyServiceCredentials] = None,
     ):
-        # Indicates whether there is a next page of results.
+        # Indicates whether there is a next page.
         self.is_truncated = is_truncated
         # The maximum number of entries per page.
         self.max_results = max_results
-        # The token that is used to retrieve the next page of results.
+        # The token used to retrieve the next page of results.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -91,14 +91,18 @@ class ListServiceCredentialsResponseBodyServiceCredentials(DaraModel):
         user_principal_name: str = None,
     ):
         # The time when the service credential was created.
+        # 
+        # Format: RFC 3339 (UTC). Example: 2026-05-07T05:49:57Z.
         self.create_time = create_time
         # The expiration time. This field is not returned for permanent service credentials.
+        # 
+        # Format: RFC 3339 (UTC). Example: 2026-06-07T05:49:57Z.
         self.expiration_time = expiration_time
         # The ID of the service credential.
         self.service_credential_id = service_credential_id
         # The name of the service credential.
         self.service_credential_name = service_credential_name
-        # The service name of the Alibaba Cloud service.
+        # The Alibaba Cloud service name.
         self.service_name = service_name
         # The status of the service credential.
         self.status = status

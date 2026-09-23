@@ -13,7 +13,7 @@ class GetAccessKeyPolicyResponseBody(DaraModel):
     ):
         # The access key ID.
         self.access_key_id = access_key_id
-        # The network access restriction policy. The value is a JSON string. For more information, see the AccessKeyPolicy structure description in the SetAccessKeyPolicy documentation.
+        # The network access restriction policy. The value is a JSON-formatted string. For more information about the AccessKeyPolicy structure, see the SetAccessKeyPolicy documentation.
         self.access_key_policy = access_key_policy
         # The request ID.
         self.request_id = request_id

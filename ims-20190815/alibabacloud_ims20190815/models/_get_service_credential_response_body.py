@@ -56,8 +56,13 @@ class GetServiceCredentialResponseBodyServiceCredential(DaraModel):
         user_principal_name: str = None,
     ):
         # The creation time.
+        # 
+        # Format: RFC 3339 (UTC), for example, 2026-03-15T09:20:58Z.
         self.create_time = create_time
-        # The expiration time. This field is not returned for permanent service credentials.
+        # The expiration time.
+        # This field is not returned for permanent service credentials.
+        # 
+        # Format: RFC 3339 (UTC), for example, 2026-04-15T09:20:58Z.
         self.expiration_time = expiration_time
         # The service credential ID.
         self.service_credential_id = service_credential_id

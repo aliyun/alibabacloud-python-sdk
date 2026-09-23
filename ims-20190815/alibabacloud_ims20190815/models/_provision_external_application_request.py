@@ -10,13 +10,14 @@ class ProvisionExternalApplicationRequest(DaraModel):
         app_id: str = None,
         scopes: str = None,
     ):
-        # The ID of the application.
+        # The ID of the external application that was created by another Alibaba Cloud account and can be installed by the current account. The application IDs returned by `ListApplications` for the current account are not applicable. `ListExternalApplications` and `ListApplicationProvisionInfos` only query installed records and cannot discover external application IDs that have not been installed.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The permissions that are granted to the application. Separate multiple permissions with a semicolon (;).
+        # The permission scopes granted to the application. You can specify multiple scopes separated by semicolons (;).
         # 
-        # > For more information about the supported permissions, see [Overview](https://help.aliyun.com/document_detail/93693.html).
+        # 
+        # > For supported permission scopes, refer to "OAuth Scopes" in [OAuth application overview](https://help.aliyun.com/document_detail/93693.html).
         self.scopes = scopes
 
     def validate(self):

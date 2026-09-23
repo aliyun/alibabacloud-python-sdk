@@ -11,7 +11,7 @@ class UpdateLoginProfileResponseBody(DaraModel):
         login_profile: main_models.UpdateLoginProfileResponseBodyLoginProfile = None,
         request_id: str = None,
     ):
-        # The console logon settings.
+        # The console logon information.
         self.login_profile = login_profile
         # The request ID.
         self.request_id = request_id
@@ -55,27 +55,26 @@ class UpdateLoginProfileResponseBodyLoginProfile(DaraModel):
         update_date: str = None,
         user_principal_name: str = None,
     ):
-        # Indicates whether to automatically disable console logon for an inactive account. This feature is enabled by default and cannot be disabled.
+        # Indicates whether console logon is automatically disabled when the idle disable conditions are met. This feature is enabled by default and cannot be disabled.
         self.auto_disable_login_status = auto_disable_login_status
-        # Indicates whether MFA is enforced for the user.
+        # Indicates whether the user is required to enable multi-factor authentication (MFA).
         self.mfabind_required = mfabind_required
-        # Indicates whether the RAM user must reset the password at the next logon.
+        # Indicates whether the Resource Access Management (RAM) user is required to reset the password at the next logon.
         self.password_reset_required = password_reset_required
-        # The status of the initial password. An initial password is the one set when a logon profile is created or console logon is re-enabled.
+        # The status of the initial password. The initial password refers to the password that is set when console logon is newly created or re-enabled.
         # 
         # Valid values:
-        # 
-        # - "NotInitial": Not an initial password.
-        # 
-        # - "InitialValid": The initial password is valid.
-        # 
-        # - "InitialExpired": The initial password has expired.
+        # - NotInitial: The password is not an initial password.
+        # - InitialValid: The initial password is valid.
+        # - InitialExpired: The initial password has expired.
         self.password_status = password_status
-        # Indicates whether password logon to the console is enabled or disabled.
+        # Indicates whether console password logon is enabled or disabled.
         self.status = status
-        # The time when the logon profile was updated.
+        # The update time.
+        # 
+        # Format: RFC 3339 (UTC). Example: 2020-10-14T07:48:41Z.
         self.update_date = update_date
-        # The logon name of the RAM user.
+        # The logon name of the Resource Access Management (RAM) user.
         self.user_principal_name = user_principal_name
 
     def validate(self):

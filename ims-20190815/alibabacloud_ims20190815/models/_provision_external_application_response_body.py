@@ -13,7 +13,7 @@ class ProvisionExternalApplicationResponseBody(DaraModel):
         external_application: main_models.ProvisionExternalApplicationResponseBodyExternalApplication = None,
         request_id: str = None,
     ):
-        # The information about the external application.
+        # The external application information.
         self.external_application = external_application
         # The request ID.
         self.request_id = request_id
@@ -57,19 +57,19 @@ class ProvisionExternalApplicationResponseBodyExternalApplication(DaraModel):
         tenant_id: str = None,
         update_date: str = None,
     ):
-        # The name of the application principal. The value is in the `<app_name>@app.<account_id>.onaliyun.com` format.
+        # The application principal name in the format of `<app_name>@app.<account_id>.onaliyun.com`.
         self.app_principal_name = app_principal_name
-        # The time when the application was installed. The value is a timestamp.
+        # The installation timestamp.
         self.create_date = create_date
-        # The information about the scopes of permissions that are granted to the application.
+        # The permission scope information of the application.
         self.delegated_scope = delegated_scope
-        # The display name of the application.
+        # The display name.
         self.display_name = display_name
-        # The ID of the application.
+        # The external application ID.
         self.foreign_app_id = foreign_app_id
-        # The ID of the Alibaba Cloud account to which the external application belongs.
+        # The Alibaba Cloud account ID to which the external application is installed.
         self.tenant_id = tenant_id
-        # The update time. The value is a timestamp.
+        # The update timestamp.
         self.update_date = update_date
 
     def validate(self):

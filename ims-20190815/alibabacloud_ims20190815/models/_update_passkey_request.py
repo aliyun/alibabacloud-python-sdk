@@ -12,6 +12,8 @@ class UpdatePasskeyRequest(DaraModel):
         user_principal_name: str = None,
     ):
         # The ID of the passkey.
+        # 
+        # This parameter is required. If this parameter is not specified, the `MissingPasskeyId` error is returned.
         self.passkey_id = passkey_id
         # The name of the passkey.
         self.passkey_name = passkey_name

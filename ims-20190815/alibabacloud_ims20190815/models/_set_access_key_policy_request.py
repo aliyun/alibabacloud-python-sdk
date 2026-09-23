@@ -17,13 +17,13 @@ class SetAccessKeyPolicyRequest(DaraModel):
         # 
         # This parameter is required.
         self.access_key_policy = access_key_policy
-        # The AccessKey ID.
+        # The access key ID.
         # 
         # This parameter is required.
         self.user_access_key_id = user_access_key_id
         # The logon name of the RAM user. 
         # 
-        # If this parameter is left empty, the network access restriction policy is set for the specified AccessKey pair of the current user by default.
+        # If this parameter is left empty, the network access restriction policy is set for the specified access key of the current user by default.
         self.user_principal_name = user_principal_name
 
     def validate(self):

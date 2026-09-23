@@ -1,3 +1,12 @@
+2026-09-23 Version: 3.4.2
+- Update API GetApplicationProvisionInfo: add response parameters Body.ApplicationProvisionInfo.AppCategory.
+- Update API GetApplicationProvisionInfo: add response parameters Body.ApplicationProvisionInfo.AssignmentType.
+- Update API GetApplicationProvisionInfo: add response parameters Body.ApplicationProvisionInfo.NeedPrincipalConsent.
+- Update API ListApplicationProvisionInfos: add response parameters Body.ApplicationProvisionInfos.$.AppCategory.
+- Update API ListApplicationProvisionInfos: add response parameters Body.ApplicationProvisionInfos.$.AssignmentType.
+- Update API ListApplicationProvisionInfos: add response parameters Body.ApplicationProvisionInfos.$.NeedPrincipalConsent.
+
+
 2026-07-07 Version: 3.4.1
 - Generated python 2019-08-15 for Ims.
 

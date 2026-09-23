@@ -84,19 +84,25 @@ class ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicat
     def __init__(
         self,
         account_id: str = None,
+        app_category: str = None,
         app_id: str = None,
         app_name: str = None,
+        assignment_type: str = None,
         create_date: str = None,
         delegated_scope: main_models.ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScope = None,
         display_name: str = None,
+        need_principal_consent: bool = None,
         update_date: str = None,
     ):
         self.account_id = account_id
+        self.app_category = app_category
         self.app_id = app_id
         self.app_name = app_name
+        self.assignment_type = assignment_type
         self.create_date = create_date
         self.delegated_scope = delegated_scope
         self.display_name = display_name
+        self.need_principal_consent = need_principal_consent
         self.update_date = update_date
 
     def validate(self):
@@ -111,11 +117,17 @@ class ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicat
         if self.account_id is not None:
             result['AccountId'] = self.account_id
 
+        if self.app_category is not None:
+            result['AppCategory'] = self.app_category
+
         if self.app_id is not None:
             result['AppId'] = self.app_id
 
         if self.app_name is not None:
             result['AppName'] = self.app_name
+
+        if self.assignment_type is not None:
+            result['AssignmentType'] = self.assignment_type
 
         if self.create_date is not None:
             result['CreateDate'] = self.create_date
@@ -125,6 +137,9 @@ class ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicat
 
         if self.display_name is not None:
             result['DisplayName'] = self.display_name
+
+        if self.need_principal_consent is not None:
+            result['NeedPrincipalConsent'] = self.need_principal_consent
 
         if self.update_date is not None:
             result['UpdateDate'] = self.update_date
@@ -136,11 +151,17 @@ class ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicat
         if m.get('AccountId') is not None:
             self.account_id = m.get('AccountId')
 
+        if m.get('AppCategory') is not None:
+            self.app_category = m.get('AppCategory')
+
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
 
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
+
+        if m.get('AssignmentType') is not None:
+            self.assignment_type = m.get('AssignmentType')
 
         if m.get('CreateDate') is not None:
             self.create_date = m.get('CreateDate')
@@ -151,6 +172,9 @@ class ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicat
 
         if m.get('DisplayName') is not None:
             self.display_name = m.get('DisplayName')
+
+        if m.get('NeedPrincipalConsent') is not None:
+            self.need_principal_consent = m.get('NeedPrincipalConsent')
 
         if m.get('UpdateDate') is not None:
             self.update_date = m.get('UpdateDate')

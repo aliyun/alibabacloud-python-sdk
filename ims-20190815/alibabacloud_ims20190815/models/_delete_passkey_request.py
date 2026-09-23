@@ -12,7 +12,7 @@ class DeletePasskeyRequest(DaraModel):
     ):
         # The ID of the passkey.
         self.passkey_id = passkey_id
-        # The logon name of the RAM user.
+        # The logon name of the Resource Access Management (RAM) user.
         self.user_principal_name = user_principal_name
 
     def validate(self):

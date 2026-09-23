@@ -12,19 +12,15 @@ class UpdateServiceCredentialRequest(DaraModel):
         status: str = None,
         user_principal_name: str = None,
     ):
-        # The service credential ID.
+        # The ID of the service credential.
         # 
         # This parameter is required.
         self.service_credential_id = service_credential_id
-        # The name of the service credential. The name must be 1 to 128 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). Specify at least one of Status and ServiceCredentialName.
+        # The name of the service credential. The name must be 1 to 128 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). You must specify at least one of Status and ServiceCredentialName.
         self.service_credential_name = service_credential_name
-        # The status of the service credential. Valid values:
-        # - Active
-        # - Inactive
-        # 
-        # Specify at least one of Status and ServiceCredentialName.
+        # The status of the service credential. Valid values: Active, Inactive. You must specify at least one of Status and ServiceCredentialName.
         self.status = status
-        # The logon name of the Resource Access Management (RAM) user. If this parameter is not specified, the service credential of the identity that invokes this operation is modified.
+        # The logon name of the Resource Access Management (RAM) user. If not specified, the service credential of the current invoke identity is updated.
         self.user_principal_name = user_principal_name
 
     def validate(self):

@@ -12,21 +12,17 @@ class CreateServiceCredentialRequest(DaraModel):
         service_name: str = None,
         user_principal_name: str = None,
     ):
-        # The expiration time of the service credential, in days.
-        # Valid values: 1 to 36600.
-        # If this parameter is not specified, the service credential is permanently valid.
+        # The expiration period of the service credential, in days. Valid values: 1 to 36600. If this parameter is not specified, the service credential never expires.
         self.credential_age_days = credential_age_days
-        # The service credential name.
-        # The name must be 1 to 128 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_).
+        # The name of the service credential. The name must be 1 to 128 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_).
         # 
         # This parameter is required.
         self.service_credential_name = service_credential_name
-        # The Alibaba Cloud service name.
+        # The service name of the Alibaba Cloud service.
         # 
         # This parameter is required.
         self.service_name = service_name
-        # The logon name of the RAM user.
-        # If this parameter is left empty, a service credential is created for the current user by default.
+        # The logon name of the RAM user. If this parameter is left empty, the service credential is created for the current user by default.
         self.user_principal_name = user_principal_name
 
     def validate(self):

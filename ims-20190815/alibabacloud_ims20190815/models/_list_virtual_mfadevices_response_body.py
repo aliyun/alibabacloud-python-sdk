@@ -15,14 +15,12 @@ class ListVirtualMFADevicesResponseBody(DaraModel):
         request_id: str = None,
         virtual_mfadevices: main_models.ListVirtualMFADevicesResponseBodyVirtualMFADevices = None,
     ):
-        # Indicates whether the response is truncated. Valid values:
+        # Indicates whether the returned results are truncated. Valid values:
         # 
         # - true
-        # 
         # - false
         self.is_truncated = is_truncated
-        # The pagination token that is used in the next request to retrieve a new page of results.
-        # 
+        # The token for querying the next page of results.
         # > This parameter is returned only when `IsTruncated` is `true`.
         self.marker = marker
         # The request ID.

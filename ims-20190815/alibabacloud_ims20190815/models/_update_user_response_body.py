@@ -13,7 +13,7 @@ class UpdateUserResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The information about the RAM user.
+        # The Resource Access Management (RAM) user information.
         self.user = user
 
     def validate(self):
@@ -58,35 +58,38 @@ class UpdateUserResponseBodyUser(DaraModel):
         user_id: str = None,
         user_principal_name: str = None,
     ):
-        # The description.
+        # The comments.
         self.comments = comments
-        # The time when the RAM user was created.
+        # The time when the Resource Access Management (RAM) user was created.
+        # 
+        # Format: RFC 3339 (UTC). Example: 2020-10-12T09:12:00Z.
         self.create_date = create_date
-        # The display name of the RAM user.
+        # The display name of the Resource Access Management (RAM) user.
         self.display_name = display_name
-        # The email address of the RAM user.
+        # The email address of the Resource Access Management (RAM) user.
         # 
-        # > This parameter is valid only on the China site (aliyun.com).
+        # > This parameter is applicable only to China site (aliyun.com).
         self.email = email
-        # The last time when the RAM user logged on to the Alibaba Cloud Management Console.
+        # The most recent time when the Resource Access Management (RAM) user logged on to the console.
+        # 
+        # Format: RFC 3339 (UTC). Example: 2020-10-12T09:12:00Z.
         self.last_login_date = last_login_date
-        # The mobile phone number of the RAM user.
+        # The mobile phone number of the Resource Access Management (RAM) user.
         # 
-        # > This parameter is valid only on the China site (aliyun.com).
+        # > This parameter is applicable only to China site (aliyun.com).
         self.mobile_phone = mobile_phone
-        # The source of the RAM user. Valid values:
-        # 
-        # - Manual: The RAM user is manually created in the RAM console.
-        # 
-        # - SCIM: The RAM user is mapped by using System for Cross-domain Identity Management (SCIM).
-        # 
-        # - CloudSSO: The RAM user is mapped from a CloudSSO user.
+        # The synchronization type. Valid values:
+        # - Manual: The Resource Access Management (RAM) user was manually created in RAM.
+        # - SCIM: The Resource Access Management (RAM) user was created by using the System for Cross-domain Identity Management protocol.
+        # - CloudSSO: The user was created by using CloudSSO.
         self.provision_type = provision_type
-        # The time when the information about the RAM user was updated.
+        # The time when the Resource Access Management (RAM) user was last updated.
+        # 
+        # Format: RFC 3339 (UTC). Example: 2020-10-13T09:19:49Z.
         self.update_date = update_date
-        # The ID of the RAM user.
+        # The ID of the Resource Access Management (RAM) user.
         self.user_id = user_id
-        # The logon name of the RAM user.
+        # The logon name of the Resource Access Management (RAM) user.
         self.user_principal_name = user_principal_name
 
     def validate(self):

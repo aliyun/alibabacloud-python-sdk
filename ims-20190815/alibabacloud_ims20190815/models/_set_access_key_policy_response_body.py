@@ -11,7 +11,7 @@ class SetAccessKeyPolicyResponseBody(DaraModel):
         access_key_policy: str = None,
         request_id: str = None,
     ):
-        # The AccessKey ID.
+        # The access key ID.
         self.access_key_id = access_key_id
         # The network access restriction policy.
         # 

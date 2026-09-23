@@ -66,7 +66,7 @@ class UpdateApplicationResponseBodyApplication(DaraModel):
     ):
         # The validity period of the access token. Unit: seconds.
         self.access_token_validity = access_token_validity
-        # The ID of the Alibaba Cloud account to which the application belongs.
+        # The Alibaba Cloud account ID to which the application belongs.
         self.account_id = account_id
         # The application ID.
         self.app_id = app_id
@@ -74,27 +74,28 @@ class UpdateApplicationResponseBodyApplication(DaraModel):
         self.app_name = app_name
         # The application type.
         self.app_type = app_type
-        # The time when the application was created.
+        # The creation time.
+        # 
+        # Format: RFC 3339 (UTC). Example: 2020-10-23T08:06:57Z.
         self.create_date = create_date
-        # The information about the permissions that are granted on the application.
+        # The permission scope information of the application.
         self.delegated_scope = delegated_scope
         # The display name of the application.
         self.display_name = display_name
-        # Indicates whether the application can be installed by using other Alibaba Cloud accounts.
+        # Indicates whether the application is allowed to be installed by other accounts.
         self.is_multi_tenant = is_multi_tenant
         # The OAuth protocol version of the application. Valid values:
-        # 
-        # - `2.0`: OAuth 2.0
-        # 
-        # - `2.1`: OAuth 2.1
+        # + `2.0`: OAuth 2.0 protocol.
+        # + `2.1`: OAuth 2.1 protocol.
         self.protocol_version = protocol_version
-        # The redirect URLs.
         self.redirect_uris = redirect_uris
         # The validity period of the refresh token. Unit: seconds.
         self.refresh_token_validity = refresh_token_validity
-        # Indicates whether a secret is required.
+        # Indicates whether an application secret is required.
         self.secret_required = secret_required
-        # The time when the application was updated.
+        # The update time.
+        # 
+        # Format: RFC 3339 (UTC). Example: 2020-10-23T08:06:57Z.
         self.update_date = update_date
 
     def validate(self):
@@ -232,7 +233,6 @@ class UpdateApplicationResponseBodyApplicationDelegatedScope(DaraModel):
         self,
         predefined_scopes: main_models.UpdateApplicationResponseBodyApplicationDelegatedScopePredefinedScopes = None,
     ):
-        # The information about the permissions that are granted on the application.
         self.predefined_scopes = predefined_scopes
 
     def validate(self):

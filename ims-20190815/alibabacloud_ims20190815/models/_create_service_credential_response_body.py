@@ -56,20 +56,22 @@ class CreateServiceCredentialResponseBodyServiceCredential(DaraModel):
         status: str = None,
         user_principal_name: str = None,
     ):
-        # The time when the service credential was created.
+        # The time when the service credential was created. The time follows RFC 3339 (UTC). Example: 2026-01-01T10:05:24Z.
         self.create_time = create_time
-        # The expiration time of the service credential.
-        # This field is not returned for permanently valid service credentials.
+        # The expiration time of the service credential. This field is not returned for service credentials that never expire. The time follows RFC 3339 (UTC). Example: 2026-02-01T10:05:24Z.
         self.expiration_time = expiration_time
-        # The service credential ID.
+        # The ID of the service credential.
         self.service_credential_id = service_credential_id
-        # The service credential name.
+        # The name of the service credential.
         self.service_credential_name = service_credential_name
         # The secret of the service credential.
         self.service_credential_secret = service_credential_secret
-        # The Alibaba Cloud service name.
+        # The service name of the Alibaba Cloud service.
         self.service_name = service_name
-        # The status of the service credential.
+        # The status of the service credential. Valid values:
+        # - Active: enabled.
+        # - Inactive: disabled.
+        # - Expired: expired.
         self.status = status
         # The logon name of the RAM user.
         self.user_principal_name = user_principal_name

@@ -15,7 +15,7 @@ class GetServiceCredentialRequest(DaraModel):
         # This parameter is required.
         self.service_credential_id = service_credential_id
         # The logon name of the Resource Access Management (RAM) user.
-        # If not specified, the service credential of the current caller identity that invokes this operation is retrieved.
+        # If not specified, the service credential of the current identity that invokes this operation is retrieved.
         self.user_principal_name = user_principal_name
 
     def validate(self):
