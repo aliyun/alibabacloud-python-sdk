@@ -148,6 +148,9 @@ from ._patch_group_response import PatchGroupResponse
 from ._patch_organizational_unit_headers import PatchOrganizationalUnitHeaders
 from ._patch_organizational_unit_request import PatchOrganizationalUnitRequest
 from ._patch_organizational_unit_response import PatchOrganizationalUnitResponse
+from ._patch_organizational_unit_parent_id_headers import PatchOrganizationalUnitParentIdHeaders
+from ._patch_organizational_unit_parent_id_request import PatchOrganizationalUnitParentIdRequest
+from ._patch_organizational_unit_parent_id_response import PatchOrganizationalUnitParentIdResponse
 from ._patch_user_headers import PatchUserHeaders
 from ._patch_user_request import PatchUserRequest
 from ._patch_user_response import PatchUserResponse
@@ -354,6 +357,9 @@ __all__ = [
     PatchOrganizationalUnitHeaders,
     PatchOrganizationalUnitRequest,
     PatchOrganizationalUnitResponse,
+    PatchOrganizationalUnitParentIdHeaders,
+    PatchOrganizationalUnitParentIdRequest,
+    PatchOrganizationalUnitParentIdResponse,
     PatchUserHeaders,
     PatchUserRequest,
     PatchUserResponse,

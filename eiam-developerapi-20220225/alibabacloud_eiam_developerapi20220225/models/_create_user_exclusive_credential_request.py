@@ -21,6 +21,7 @@ class CreateUserExclusiveCredentialRequest(DaraModel):
         # 
         # This parameter is required.
         self.credential_content = credential_content
+        # The external unique identifier of the credential.
         self.credential_external_id = credential_external_id
         # The credential identifier.
         # 
@@ -42,6 +43,7 @@ class CreateUserExclusiveCredentialRequest(DaraModel):
         self.credential_type = credential_type
         # The credential description.
         self.description = description
+        # Specifies whether to return the encrypted ciphertext of the credential.
         self.return_ciphertext = return_ciphertext
 
     def validate(self):

@@ -1,3 +1,7 @@
+2026-09-23 Version: 1.9.0
+- Support API PatchOrganizationalUnitParentId.
+
+
 2026-07-30 Version: 1.8.0
 - Support API GetOAuthAuthorizationSession.
 

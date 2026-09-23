@@ -89,13 +89,14 @@ class ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCr
         aws_sts_token: main_models.ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialAwsStsToken = None,
         tencent_cloud_sts_token: main_models.ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialTencentCloudStsToken = None,
     ):
-        # The expiration time of the temporary access credentials for the cloud account role, in UNIX timestamp format and in seconds.
+        # The expiration time of the temporary access credentials for the cloud account role, in UNIX timestamp format (seconds).
         self.access_credential_expires_at = access_credential_expires_at
         # The temporary identity credentials (STS Token) for assuming an Alibaba Cloud RAM role.
         # > This field is returned only when the cloud account type associated with the cloud account role is Alibaba Cloud (alibaba_cloud).
         self.alibaba_cloud_sts_token = alibaba_cloud_sts_token
         # The STS Token representing an AWS role.
         self.aws_sts_token = aws_sts_token
+        # The STS Token representing a Tencent Cloud role.
         self.tencent_cloud_sts_token = tencent_cloud_sts_token
 
     def validate(self):
@@ -152,9 +153,13 @@ class ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCr
         tmp_secret_key: str = None,
         token: str = None,
     ):
+        # The STS Token expiration time (UTC).
         self.expiration = expiration
+        # The access key ID.
         self.tmp_secret_id = tmp_secret_id
+        # The secret access key.
         self.tmp_secret_key = tmp_secret_key
+        # The session security token of the temporary credentials.
         self.token = token
 
     def validate(self):
@@ -205,11 +210,11 @@ class ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCr
     ):
         # The access key ID.
         self.access_key_id = access_key_id
-        # The expiration time of the STS Token (UTC).
+        # The STS Token expiration time (UTC).
         self.expiration = expiration
         # The secret access key.
         self.secret_access_key = secret_access_key
-        # The session token of the temporary credentials.
+        # The session security token of the temporary credentials.
         self.session_token = session_token
 
     def validate(self):
@@ -262,7 +267,7 @@ class ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCr
         self.access_key_id = access_key_id
         # The access key secret.
         self.access_key_secret = access_key_secret
-        # The expiration time of the token (UTC).
+        # The token expiration time (UTC).
         self.expiration = expiration
         # The security token.
         self.security_token = security_token

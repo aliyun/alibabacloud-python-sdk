@@ -4,15 +4,15 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class ObtainCredentialRequest(DaraModel):
+class PatchOrganizationalUnitParentIdRequest(DaraModel):
     def __init__(
         self,
-        credential_identifier: str = None,
+        parent_id: str = None,
     ):
-        # The credential identifier.
+        # The ID of the parent organizational unit.
         # 
         # This parameter is required.
-        self.credential_identifier = credential_identifier
+        self.parent_id = parent_id
 
     def validate(self):
         pass
@@ -22,15 +22,15 @@ class ObtainCredentialRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.credential_identifier is not None:
-            result['credentialIdentifier'] = self.credential_identifier
+        if self.parent_id is not None:
+            result['parentId'] = self.parent_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('credentialIdentifier') is not None:
-            self.credential_identifier = m.get('credentialIdentifier')
+        if m.get('parentId') is not None:
+            self.parent_id = m.get('parentId')
 
         return self
 

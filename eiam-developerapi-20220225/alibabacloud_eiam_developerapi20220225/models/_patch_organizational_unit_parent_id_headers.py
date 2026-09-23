@@ -6,15 +6,14 @@ from typing import Dict
 
 from darabonba.model import DaraModel
 
-class ObtainCredentialHeaders(DaraModel):
+class PatchOrganizationalUnitParentIdHeaders(DaraModel):
     def __init__(
         self,
         common_headers: Dict[str, str] = None,
         authorization: str = None,
     ):
         self.common_headers = common_headers
-        # The authentication information. Format: Bearer ${access_token}. 
-        # > Enter the Access Token issued by IDaaS.
+        # The authentication information. Format: Bearer access_token.
         # 
         # This parameter is required.
         self.authorization = authorization

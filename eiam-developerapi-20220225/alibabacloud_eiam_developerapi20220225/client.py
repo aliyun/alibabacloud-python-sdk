@@ -22,14 +22,6 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'eu-central-1': 'eiam-developerapi.eu-central-1.aliyuncs.com',
-            'cn-hongkong': 'eiam-developerapi.cn-hongkong.aliyuncs.com',
-            'cn-hangzhou': 'eiam-developerapi.cn-hangzhou.aliyuncs.com',
-            'ap-southeast-5': 'eiam-developerapi.ap-southeast-5.aliyuncs.com',
-            'ap-southeast-1': 'eiam-developerapi.ap-southeast-1.aliyuncs.com',
-            'ap-northeast-2': 'eiam-developerapi.ap-northeast-2.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('eiam-developerapi', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -4016,6 +4008,104 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = main_models.PatchOrganizationalUnitHeaders()
         return await self.patch_organizational_unit_with_options_async(instance_id, application_id, organizational_unit_id, request, headers, runtime)
+
+    def patch_organizational_unit_parent_id_with_options(
+        self,
+        instance_id: str,
+        application_id: str,
+        organizational_unit_id: str,
+        request: main_models.PatchOrganizationalUnitParentIdRequest,
+        headers: main_models.PatchOrganizationalUnitParentIdHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.PatchOrganizationalUnitParentIdResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.parent_id):
+            body['parentId'] = request.parent_id
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.authorization):
+            real_headers['Authorization'] = str(headers.authorization)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'PatchOrganizationalUnitParentId',
+            version = '2022-02-25',
+            protocol = 'HTTPS',
+            pathname = f'/v2/{DaraURL.percent_encode(instance_id)}/{DaraURL.percent_encode(application_id)}/organizationalUnits/{DaraURL.percent_encode(organizational_unit_id)}/parentId',
+            method = 'PATCH',
+            auth_type = 'Anonymous',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.PatchOrganizationalUnitParentIdResponse(),
+            self.do_roarequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
+        )
+
+    async def patch_organizational_unit_parent_id_with_options_async(
+        self,
+        instance_id: str,
+        application_id: str,
+        organizational_unit_id: str,
+        request: main_models.PatchOrganizationalUnitParentIdRequest,
+        headers: main_models.PatchOrganizationalUnitParentIdHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.PatchOrganizationalUnitParentIdResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.parent_id):
+            body['parentId'] = request.parent_id
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.authorization):
+            real_headers['Authorization'] = str(headers.authorization)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'PatchOrganizationalUnitParentId',
+            version = '2022-02-25',
+            protocol = 'HTTPS',
+            pathname = f'/v2/{DaraURL.percent_encode(instance_id)}/{DaraURL.percent_encode(application_id)}/organizationalUnits/{DaraURL.percent_encode(organizational_unit_id)}/parentId',
+            method = 'PATCH',
+            auth_type = 'Anonymous',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.PatchOrganizationalUnitParentIdResponse(),
+            await self.do_roarequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
+        )
+
+    def patch_organizational_unit_parent_id(
+        self,
+        instance_id: str,
+        application_id: str,
+        organizational_unit_id: str,
+        request: main_models.PatchOrganizationalUnitParentIdRequest,
+    ) -> main_models.PatchOrganizationalUnitParentIdResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.PatchOrganizationalUnitParentIdHeaders()
+        return self.patch_organizational_unit_parent_id_with_options(instance_id, application_id, organizational_unit_id, request, headers, runtime)
+
+    async def patch_organizational_unit_parent_id_async(
+        self,
+        instance_id: str,
+        application_id: str,
+        organizational_unit_id: str,
+        request: main_models.PatchOrganizationalUnitParentIdRequest,
+    ) -> main_models.PatchOrganizationalUnitParentIdResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.PatchOrganizationalUnitParentIdHeaders()
+        return await self.patch_organizational_unit_parent_id_with_options_async(instance_id, application_id, organizational_unit_id, request, headers, runtime)
 
     def patch_user_with_options(
         self,

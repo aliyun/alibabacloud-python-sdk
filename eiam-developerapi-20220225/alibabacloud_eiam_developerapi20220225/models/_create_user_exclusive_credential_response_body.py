@@ -11,6 +11,7 @@ class CreateUserExclusiveCredentialResponseBody(DaraModel):
         credential_id: str = None,
         credential_identifier: str = None,
     ):
+        # The encrypted ciphertext of the credential.
         self.credential_ciphertext = credential_ciphertext
         # The credential ID.
         self.credential_id = credential_id
