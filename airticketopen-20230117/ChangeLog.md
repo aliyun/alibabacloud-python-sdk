@@ -1,3 +1,6 @@
+2026-09-24 Version: 8.1.4
+- Generated python 2023-01-17 for airticketOpen.
+
 2026-09-11 Version: 8.1.3
 - Update API Enrich: add response parameters Body.data.solution_list.$.journey_list.$.segment_list.$.fare_basis.
 - Update API Pricing: add response parameters Body.data.solution.journey_list.$.segment_list.$.fare_basis.
