@@ -32,15 +32,15 @@ class ImageTranslationProRequest(DaraModel):
         self.image_url = image_url
         # Specifies whether to translate text on the image subject. This parameter is optional. Default value: false. This helps you protect information and avoid translating embedded information such as product names.
         self.including_product_area = including_product_area
-        # The source language code. This parameter is required. For supported language directions, see [Language direction mapping](https://www.alibabacloud.com/help/en/document_detail/3041883.html).
+        # The source language code. This parameter is required. For supported language directions, see [Language Direction Mapping Table](https://www.alibabacloud.com/help/en/document_detail/3041883.html).
         # 
         # This parameter is required.
         self.source_language = source_language
-        # The target language code. This parameter is required. For supported language directions, see [Language direction mapping](https://www.alibabacloud.com/help/en/document_detail/3041883.html).
+        # The target language code. This parameter is required. For supported language directions, see [Language Direction Mapping Table](https://www.alibabacloud.com/help/en/document_detail/3041883.html).
         # 
         # This parameter is required.
         self.target_language = target_language
-        # Specifies whether to translate brand names on images. This parameter is optional. Default value: false. This helps you protect brand name information from being translated.
+        # Specifies whether to translate brand names on the image. This parameter is optional. Default value: false. This helps you protect brand name information from being translated.
         self.translating_brand_in_the_product = translating_brand_in_the_product
         # Specifies whether to return layout information such as text position, font, and color. When set to true, layer information is returned for secondary editing with an image editor. Default value: false.
         self.use_image_editor = use_image_editor

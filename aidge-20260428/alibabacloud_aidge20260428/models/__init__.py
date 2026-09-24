@@ -23,6 +23,9 @@ from ._didui_area_deduction_request import DiduiAreaDeductionRequest
 from ._didui_area_deduction_shrink_request import DiduiAreaDeductionShrinkRequest
 from ._didui_area_deduction_response_body import DiduiAreaDeductionResponseBody
 from ._didui_area_deduction_response import DiduiAreaDeductionResponse
+from ._didui_area_deduction_pro_request import DiduiAreaDeductionProRequest
+from ._didui_area_deduction_pro_response_body import DiduiAreaDeductionProResponseBody
+from ._didui_area_deduction_pro_response import DiduiAreaDeductionProResponse
 from ._document_translate_request import DocumentTranslateRequest
 from ._document_translate_response_body import DocumentTranslateResponseBody
 from ._document_translate_response import DocumentTranslateResponse
@@ -30,6 +33,9 @@ from ._ecom_video_recreation_request import EcomVideoRecreationRequest
 from ._ecom_video_recreation_shrink_request import EcomVideoRecreationShrinkRequest
 from ._ecom_video_recreation_response_body import EcomVideoRecreationResponseBody
 from ._ecom_video_recreation_response import EcomVideoRecreationResponse
+from ._general_rephotography_detection_request import GeneralRephotographyDetectionRequest
+from ._general_rephotography_detection_response_body import GeneralRephotographyDetectionResponseBody
+from ._general_rephotography_detection_response import GeneralRephotographyDetectionResponse
 from ._image_cropping_request import ImageCroppingRequest
 from ._image_cropping_response_body import ImageCroppingResponseBody
 from ._image_cropping_response import ImageCroppingResponse
@@ -65,9 +71,16 @@ from ._material_inspection_response import MaterialInspectionResponse
 from ._merchandise_placement_detection_request import MerchandisePlacementDetectionRequest
 from ._merchandise_placement_detection_response_body import MerchandisePlacementDetectionResponseBody
 from ._merchandise_placement_detection_response import MerchandisePlacementDetectionResponse
+from ._merchandise_placement_detection_pro_request import MerchandisePlacementDetectionProRequest
+from ._merchandise_placement_detection_pro_response_body import MerchandisePlacementDetectionProResponseBody
+from ._merchandise_placement_detection_pro_response import MerchandisePlacementDetectionProResponse
 from ._package_weight_size_check_request import PackageWeightSizeCheckRequest
 from ._package_weight_size_check_response_body import PackageWeightSizeCheckResponseBody
 from ._package_weight_size_check_response import PackageWeightSizeCheckResponse
+from ._pet_health_analysis_request import PetHealthAnalysisRequest
+from ._pet_health_analysis_shrink_request import PetHealthAnalysisShrinkRequest
+from ._pet_health_analysis_response_body import PetHealthAnalysisResponseBody
+from ._pet_health_analysis_response import PetHealthAnalysisResponse
 from ._prepaid_text_translate_request import PrepaidTextTranslateRequest
 from ._prepaid_text_translate_shrink_request import PrepaidTextTranslateShrinkRequest
 from ._prepaid_text_translate_response_body import PrepaidTextTranslateResponseBody
@@ -124,11 +137,16 @@ from ._didui_area_deduction_request import DiduiAreaDeductionRequestProducts
 from ._didui_area_deduction_response_body import DiduiAreaDeductionResponseBodyDataResultStage4AreaLabel
 from ._didui_area_deduction_response_body import DiduiAreaDeductionResponseBodyDataResult
 from ._didui_area_deduction_response_body import DiduiAreaDeductionResponseBodyData
+from ._didui_area_deduction_pro_response_body import DiduiAreaDeductionProResponseBodyData
 from ._document_translate_response_body import DocumentTranslateResponseBodyData
 from ._ecom_video_recreation_request import EcomVideoRecreationRequestInputProductInfo
 from ._ecom_video_recreation_request import EcomVideoRecreationRequestInput
 from ._ecom_video_recreation_request import EcomVideoRecreationRequestOutput
 from ._ecom_video_recreation_response_body import EcomVideoRecreationResponseBodyData
+from ._general_rephotography_detection_response_body import GeneralRephotographyDetectionResponseBodyDataResultGroundingRegions
+from ._general_rephotography_detection_response_body import GeneralRephotographyDetectionResponseBodyDataResultGrounding
+from ._general_rephotography_detection_response_body import GeneralRephotographyDetectionResponseBodyDataResult
+from ._general_rephotography_detection_response_body import GeneralRephotographyDetectionResponseBodyData
 from ._image_cropping_response_body import ImageCroppingResponseBodyData
 from ._image_matting_response_body import ImageMattingResponseBodyData
 from ._image_recognition_response_body import ImageRecognitionResponseBodyData
@@ -160,7 +178,10 @@ from ._merchandise_placement_detection_response_body import MerchandisePlacement
 from ._merchandise_placement_detection_response_body import MerchandisePlacementDetectionResponseBodyDataDataTopk
 from ._merchandise_placement_detection_response_body import MerchandisePlacementDetectionResponseBodyDataData
 from ._merchandise_placement_detection_response_body import MerchandisePlacementDetectionResponseBodyData
+from ._merchandise_placement_detection_pro_response_body import MerchandisePlacementDetectionProResponseBodyDataData
+from ._merchandise_placement_detection_pro_response_body import MerchandisePlacementDetectionProResponseBodyData
 from ._package_weight_size_check_response_body import PackageWeightSizeCheckResponseBodyData
+from ._pet_health_analysis_response_body import PetHealthAnalysisResponseBodyData
 from ._prepaid_text_translate_response_body import PrepaidTextTranslateResponseBodyDataTranslations
 from ._prepaid_text_translate_response_body import PrepaidTextTranslateResponseBodyData
 from ._product_hotspot_detection_response_body import ProductHotspotDetectionResponseBodyDataProductsBoxes
@@ -204,6 +225,9 @@ __all__ = [
     DiduiAreaDeductionShrinkRequest,
     DiduiAreaDeductionResponseBody,
     DiduiAreaDeductionResponse,
+    DiduiAreaDeductionProRequest,
+    DiduiAreaDeductionProResponseBody,
+    DiduiAreaDeductionProResponse,
     DocumentTranslateRequest,
     DocumentTranslateResponseBody,
     DocumentTranslateResponse,
@@ -211,6 +235,9 @@ __all__ = [
     EcomVideoRecreationShrinkRequest,
     EcomVideoRecreationResponseBody,
     EcomVideoRecreationResponse,
+    GeneralRephotographyDetectionRequest,
+    GeneralRephotographyDetectionResponseBody,
+    GeneralRephotographyDetectionResponse,
     ImageCroppingRequest,
     ImageCroppingResponseBody,
     ImageCroppingResponse,
@@ -246,9 +273,16 @@ __all__ = [
     MerchandisePlacementDetectionRequest,
     MerchandisePlacementDetectionResponseBody,
     MerchandisePlacementDetectionResponse,
+    MerchandisePlacementDetectionProRequest,
+    MerchandisePlacementDetectionProResponseBody,
+    MerchandisePlacementDetectionProResponse,
     PackageWeightSizeCheckRequest,
     PackageWeightSizeCheckResponseBody,
     PackageWeightSizeCheckResponse,
+    PetHealthAnalysisRequest,
+    PetHealthAnalysisShrinkRequest,
+    PetHealthAnalysisResponseBody,
+    PetHealthAnalysisResponse,
     PrepaidTextTranslateRequest,
     PrepaidTextTranslateShrinkRequest,
     PrepaidTextTranslateResponseBody,
@@ -305,11 +339,16 @@ __all__ = [
     DiduiAreaDeductionResponseBodyDataResultStage4AreaLabel,
     DiduiAreaDeductionResponseBodyDataResult,
     DiduiAreaDeductionResponseBodyData,
+    DiduiAreaDeductionProResponseBodyData,
     DocumentTranslateResponseBodyData,
     EcomVideoRecreationRequestInputProductInfo,
     EcomVideoRecreationRequestInput,
     EcomVideoRecreationRequestOutput,
     EcomVideoRecreationResponseBodyData,
+    GeneralRephotographyDetectionResponseBodyDataResultGroundingRegions,
+    GeneralRephotographyDetectionResponseBodyDataResultGrounding,
+    GeneralRephotographyDetectionResponseBodyDataResult,
+    GeneralRephotographyDetectionResponseBodyData,
     ImageCroppingResponseBodyData,
     ImageMattingResponseBodyData,
     ImageRecognitionResponseBodyData,
@@ -341,7 +380,10 @@ __all__ = [
     MerchandisePlacementDetectionResponseBodyDataDataTopk,
     MerchandisePlacementDetectionResponseBodyDataData,
     MerchandisePlacementDetectionResponseBodyData,
+    MerchandisePlacementDetectionProResponseBodyDataData,
+    MerchandisePlacementDetectionProResponseBodyData,
     PackageWeightSizeCheckResponseBodyData,
+    PetHealthAnalysisResponseBodyData,
     PrepaidTextTranslateResponseBodyDataTranslations,
     PrepaidTextTranslateResponseBodyData,
     ProductHotspotDetectionResponseBodyDataProductsBoxes,

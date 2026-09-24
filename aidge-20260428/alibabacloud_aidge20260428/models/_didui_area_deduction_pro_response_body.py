@@ -5,26 +5,24 @@ from __future__ import annotations
 from alibabacloud_aidge20260428 import models as main_models
 from darabonba.model import DaraModel
 
-class ImageTranslationPlusResponseBody(DaraModel):
+class DiduiAreaDeductionProResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
-        data: main_models.ImageTranslationPlusResponseBodyData = None,
+        data: main_models.DiduiAreaDeductionProResponseBodyData = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. This parameter is not returned if the call is successful.
+        # The error code.
         self.code = code
-        # The asynchronous task submit status.
+        # The submit status of the asynchronous task.
         self.data = data
-        # The error message. This parameter is not returned if the call is successful.
+        # The response message or failure description.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values:
-        # - true: The call is successful.
-        # - false: The call failed.
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -59,7 +57,7 @@ class ImageTranslationPlusResponseBody(DaraModel):
             self.code = m.get('Code')
 
         if m.get('Data') is not None:
-            temp_model = main_models.ImageTranslationPlusResponseBodyData()
+            temp_model = main_models.DiduiAreaDeductionProResponseBodyData()
             self.data = temp_model.from_map(m.get('Data'))
 
         if m.get('Message') is not None:
@@ -73,12 +71,12 @@ class ImageTranslationPlusResponseBody(DaraModel):
 
         return self
 
-class ImageTranslationPlusResponseBodyData(DaraModel):
+class DiduiAreaDeductionProResponseBodyData(DaraModel):
     def __init__(
         self,
         task_id: str = None,
     ):
-        # The asynchronous task ID. Use this ID to poll for results through the queryTaskResult operation.
+        # The ID of the asynchronous task, which is used to call QueryAsyncTaskResult to query the task result.
         self.task_id = task_id
 
     def validate(self):

@@ -13,16 +13,17 @@ class MerchandisePlacementDetectionRequest(DaraModel):
         rule: str = None,
         type: str = None,
     ):
-        # Specify this parameter to use a custom API version. If you created a custom API during the trial phase, you can find the corresponding ApiId in the product console under **Intelligent Inspection > API Management > My APIs**.
+        # Specify this parameter to use a custom API version. If you created a custom API during the trial phase, you can find the corresponding ApiId in the product console under Intelligent Inspection > API Management > My API.
         self.api_id = api_id
-        # The URL of the shelf or floor-stack photo to be recognized (accessible over the Internet or from OSS).
+        # The URL of the original shelf or floor stack image to be recognized (accessible over the Internet or through OSS).
         # 
         # This parameter is required.
         self.image_url = image_url
-        # The ID of the customer-specific SKU vector library, which determines which library is used for recall. The library must be created in advance through the library creation process.
+        # The ID of the customer-specific SKU vector library, which determines which library is used for retrieval. The library must be created in advance through the library creation process.
         self.rag_id = rag_id
+        # The custom rule. Enter a detection prompt as the workflow input parameter rule. When this parameter is specified, the type parameter is not required (a dedicated rule branch is used). If Rule is empty, you must specify Type to start detection.
         self.rule = rule
-        # The business type (reserved for future routing by business line). The current release supports skincare.
+        # The business type (reserved for future routing by business line). The current release supports skincare & lotion.
         self.type = type
 
     def validate(self):

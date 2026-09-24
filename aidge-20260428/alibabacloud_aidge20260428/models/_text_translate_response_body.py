@@ -22,7 +22,7 @@ class TextTranslateResponseBody(DaraModel):
         self.data = data
         # The error message. The value "Success" is returned for successful calls. For failed calls, a specific error message is returned, such as "The parameters contain sensitive information. Try other input."
         self.message = message
-        # The request ID, used to uniquely identify a request.
+        # The request ID, which uniquely identifies a single request.
         self.request_id = request_id
         # Indicates whether the call is successful. A value of true indicates success. A value of false indicates failure.
         self.success = success

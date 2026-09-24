@@ -636,6 +636,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.didui_area_deduction_with_options_async(request, runtime)
 
+    def didui_area_deduction_pro_with_options(
+        self,
+        request: main_models.DiduiAreaDeductionProRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DiduiAreaDeductionProResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        if not DaraCore.is_null(request.rag_id):
+            query['RagId'] = request.rag_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DiduiAreaDeductionPro',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DiduiAreaDeductionProResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def didui_area_deduction_pro_with_options_async(
+        self,
+        request: main_models.DiduiAreaDeductionProRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DiduiAreaDeductionProResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        if not DaraCore.is_null(request.rag_id):
+            query['RagId'] = request.rag_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DiduiAreaDeductionPro',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DiduiAreaDeductionProResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def didui_area_deduction_pro(
+        self,
+        request: main_models.DiduiAreaDeductionProRequest,
+    ) -> main_models.DiduiAreaDeductionProResponse:
+        runtime = RuntimeOptions()
+        return self.didui_area_deduction_pro_with_options(request, runtime)
+
+    async def didui_area_deduction_pro_async(
+        self,
+        request: main_models.DiduiAreaDeductionProRequest,
+    ) -> main_models.DiduiAreaDeductionProResponse:
+        runtime = RuntimeOptions()
+        return await self.didui_area_deduction_pro_with_options_async(request, runtime)
+
     def document_translate_with_options(
         self,
         request: main_models.DocumentTranslateRequest,
@@ -803,6 +877,76 @@ class Client(OpenApiClient):
     ) -> main_models.EcomVideoRecreationResponse:
         runtime = RuntimeOptions()
         return await self.ecom_video_recreation_with_options_async(request, runtime)
+
+    def general_rephotography_detection_with_options(
+        self,
+        request: main_models.GeneralRephotographyDetectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GeneralRephotographyDetectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GeneralRephotographyDetection',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GeneralRephotographyDetectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def general_rephotography_detection_with_options_async(
+        self,
+        request: main_models.GeneralRephotographyDetectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GeneralRephotographyDetectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GeneralRephotographyDetection',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GeneralRephotographyDetectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def general_rephotography_detection(
+        self,
+        request: main_models.GeneralRephotographyDetectionRequest,
+    ) -> main_models.GeneralRephotographyDetectionResponse:
+        runtime = RuntimeOptions()
+        return self.general_rephotography_detection_with_options(request, runtime)
+
+    async def general_rephotography_detection_async(
+        self,
+        request: main_models.GeneralRephotographyDetectionRequest,
+    ) -> main_models.GeneralRephotographyDetectionResponse:
+        runtime = RuntimeOptions()
+        return await self.general_rephotography_detection_with_options_async(request, runtime)
 
     def image_cropping_with_options(
         self,
@@ -1798,6 +1942,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.merchandise_placement_detection_with_options_async(request, runtime)
 
+    def merchandise_placement_detection_pro_with_options(
+        self,
+        request: main_models.MerchandisePlacementDetectionProRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MerchandisePlacementDetectionProResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        if not DaraCore.is_null(request.rule):
+            query['Rule'] = request.rule
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MerchandisePlacementDetectionPro',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MerchandisePlacementDetectionProResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def merchandise_placement_detection_pro_with_options_async(
+        self,
+        request: main_models.MerchandisePlacementDetectionProRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MerchandisePlacementDetectionProResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        if not DaraCore.is_null(request.rule):
+            query['Rule'] = request.rule
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MerchandisePlacementDetectionPro',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MerchandisePlacementDetectionProResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def merchandise_placement_detection_pro(
+        self,
+        request: main_models.MerchandisePlacementDetectionProRequest,
+    ) -> main_models.MerchandisePlacementDetectionProResponse:
+        runtime = RuntimeOptions()
+        return self.merchandise_placement_detection_pro_with_options(request, runtime)
+
+    async def merchandise_placement_detection_pro_async(
+        self,
+        request: main_models.MerchandisePlacementDetectionProRequest,
+    ) -> main_models.MerchandisePlacementDetectionProResponse:
+        runtime = RuntimeOptions()
+        return await self.merchandise_placement_detection_pro_with_options_async(request, runtime)
+
     def package_weight_size_check_with_options(
         self,
         request: main_models.PackageWeightSizeCheckRequest,
@@ -1871,6 +2093,92 @@ class Client(OpenApiClient):
     ) -> main_models.PackageWeightSizeCheckResponse:
         runtime = RuntimeOptions()
         return await self.package_weight_size_check_with_options_async(request, runtime)
+
+    def pet_health_analysis_with_options(
+        self,
+        tmp_req: main_models.PetHealthAnalysisRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PetHealthAnalysisResponse:
+        tmp_req.validate()
+        request = main_models.PetHealthAnalysisShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.image_url):
+            request.image_url_shrink = Utils.array_to_string_with_specified_style(tmp_req.image_url, 'ImageUrl', 'json')
+        query = {}
+        if not DaraCore.is_null(request.image_url_shrink):
+            query['ImageUrl'] = request.image_url_shrink
+        if not DaraCore.is_null(request.system_prompt):
+            query['SystemPrompt'] = request.system_prompt
+        if not DaraCore.is_null(request.user_prompt):
+            query['UserPrompt'] = request.user_prompt
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'PetHealthAnalysis',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PetHealthAnalysisResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pet_health_analysis_with_options_async(
+        self,
+        tmp_req: main_models.PetHealthAnalysisRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PetHealthAnalysisResponse:
+        tmp_req.validate()
+        request = main_models.PetHealthAnalysisShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.image_url):
+            request.image_url_shrink = Utils.array_to_string_with_specified_style(tmp_req.image_url, 'ImageUrl', 'json')
+        query = {}
+        if not DaraCore.is_null(request.image_url_shrink):
+            query['ImageUrl'] = request.image_url_shrink
+        if not DaraCore.is_null(request.system_prompt):
+            query['SystemPrompt'] = request.system_prompt
+        if not DaraCore.is_null(request.user_prompt):
+            query['UserPrompt'] = request.user_prompt
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'PetHealthAnalysis',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PetHealthAnalysisResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pet_health_analysis(
+        self,
+        request: main_models.PetHealthAnalysisRequest,
+    ) -> main_models.PetHealthAnalysisResponse:
+        runtime = RuntimeOptions()
+        return self.pet_health_analysis_with_options(request, runtime)
+
+    async def pet_health_analysis_async(
+        self,
+        request: main_models.PetHealthAnalysisRequest,
+    ) -> main_models.PetHealthAnalysisResponse:
+        runtime = RuntimeOptions()
+        return await self.pet_health_analysis_with_options_async(request, runtime)
 
     def prepaid_text_translate_with_options(
         self,
