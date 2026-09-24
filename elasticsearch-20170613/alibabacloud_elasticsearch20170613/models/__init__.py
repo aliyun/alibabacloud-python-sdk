@@ -238,6 +238,12 @@ from ._interrupt_elasticsearch_task_response import InterruptElasticsearchTaskRe
 from ._interrupt_logstash_task_request import InterruptLogstashTaskRequest
 from ._interrupt_logstash_task_response_body import InterruptLogstashTaskResponseBody
 from ._interrupt_logstash_task_response import InterruptLogstashTaskResponse
+from ._invoke_es_agent_request import InvokeEsAgentRequest
+from ._invoke_es_agent_response_body import InvokeEsAgentResponseBody
+from ._invoke_es_agent_response import InvokeEsAgentResponse
+from ._invoke_es_request_request import InvokeEsRequestRequest
+from ._invoke_es_request_response_body import InvokeEsRequestResponseBody
+from ._invoke_es_request_response import InvokeEsRequestResponse
 from ._list_ack_clusters_request import ListAckClustersRequest
 from ._list_ack_clusters_response_body import ListAckClustersResponseBody
 from ._list_ack_clusters_response import ListAckClustersResponse
@@ -1148,6 +1154,12 @@ __all__ = [
     InterruptLogstashTaskRequest,
     InterruptLogstashTaskResponseBody,
     InterruptLogstashTaskResponse,
+    InvokeEsAgentRequest,
+    InvokeEsAgentResponseBody,
+    InvokeEsAgentResponse,
+    InvokeEsRequestRequest,
+    InvokeEsRequestResponseBody,
+    InvokeEsRequestResponse,
     ListAckClustersRequest,
     ListAckClustersResponseBody,
     ListAckClustersResponse,

@@ -13,7 +13,9 @@ class UpdateInstanceResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.UpdateInstanceResponseBodyResult = None,
     ):
+        # The error code. This parameter is returned only when an exception occurs.
         self.code = code
+        # The error message. This parameter is returned only when an exception occurs.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -79,7 +81,7 @@ class UpdateInstanceResponseBodyResult(DaraModel):
         self.created_at = created_at
         # The instance name.
         self.description = description
-        # The internal-facing access endpoint of the instance for private network access.
+        # The internal-facing access domain name of the instance for private network access.
         self.domain = domain
         # The instance version.
         self.es_version = es_version
@@ -95,8 +97,8 @@ class UpdateInstanceResponseBodyResult(DaraModel):
         self.node_spec = node_spec
         # The billing method of the instance. Valid values:
         # 
-        # - prepaid: subscription.
-        # - postpaid: pay-as-you-go.
+        # - prepaid: Subscription.
+        # - postpaid: Pay-as-you-go.
         self.payment_type = payment_type
         # The status of the instance. Valid values:
         # 

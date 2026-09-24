@@ -1,3 +1,10 @@
+2026-09-24 Version: 5.4.0
+- Support API InvokeEsAgent.
+- Support API InvokeEsRequest.
+- Update API DescribeSnapshotSetting: add response parameters Body.Result.Indices.
+- Update API UpdateSnapshotSetting: add response parameters Body.Result.indices.
+
+
 2026-07-31 Version: 5.3.4
 - Update API DescribeInstance: add response parameters Body.Result.nodeSpec.diskPreference.
 - Update API EnableKibanaPvlNetwork: add request parameters body.managedSecurityGroup.

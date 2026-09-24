@@ -2,7 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict
+import json
+
+from typing import Dict, Generator, AsyncGenerator
 
 from alibabacloud_elasticsearch20170613 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
@@ -22,33 +24,6 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'us-west-1': 'elasticsearch.us-west-1.aliyuncs.com',
-            'us-east-1': 'elasticsearch.us-east-1.aliyuncs.com',
-            'na-south-1': 'elasticsearch.na-south-1.aliyuncs.com',
-            'eu-west-1': 'elasticsearch.eu-west-1.aliyuncs.com',
-            'eu-central-1': 'elasticsearch.eu-central-1.aliyuncs.com',
-            'cn-zhangjiakou': 'elasticsearch.cn-zhangjiakou.aliyuncs.com',
-            'cn-wulanchabu-gic-1': 'elasticsearch.cn-wulanchabu-gic-1.aliyuncs.com',
-            'cn-wulanchabu': 'elasticsearch.cn-wulanchabu.aliyuncs.com',
-            'cn-shenzhen': 'elasticsearch.cn-shenzhen.aliyuncs.com',
-            'cn-shanghai-finance-1': 'elasticsearch.cn-shanghai-finance-1.aliyuncs.com',
-            'cn-shanghai': 'elasticsearch.cn-shanghai.aliyuncs.com',
-            'cn-qingdao': 'elasticsearch.cn-qingdao.aliyuncs.com',
-            'cn-north-2-gov-1': 'elasticsearch.cn-north-2-gov-1.aliyuncs.com',
-            'cn-hongkong': 'elasticsearch.cn-hongkong.aliyuncs.com',
-            'cn-hangzhou-finance': 'elasticsearch.cn-hangzhou-finance.aliyuncs.com',
-            'cn-hangzhou': 'elasticsearch.cn-hangzhou.aliyuncs.com',
-            'cn-guangzhou': 'elasticsearch.cn-guangzhou.aliyuncs.com',
-            'cn-chengdu': 'elasticsearch.cn-chengdu.aliyuncs.com',
-            'cn-beijing': 'elasticsearch.cn-beijing.aliyuncs.com',
-            'ap-southeast-7': 'elasticsearch.ap-southeast-7.aliyuncs.com',
-            'ap-southeast-5': 'elasticsearch.ap-southeast-5.aliyuncs.com',
-            'ap-southeast-3': 'elasticsearch.ap-southeast-3.aliyuncs.com',
-            'ap-southeast-1': 'elasticsearch.ap-southeast-1.aliyuncs.com',
-            'ap-northeast-2': 'elasticsearch.ap-northeast-2.aliyuncs.com',
-            'ap-northeast-1': 'elasticsearch.ap-northeast-1.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('elasticsearch', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -6400,6 +6375,254 @@ class Client(OpenApiClient):
         headers = {}
         return await self.interrupt_logstash_task_with_options_async(instance_id, request, headers, runtime)
 
+    def invoke_es_agent_with_sse(
+        self,
+        request: main_models.InvokeEsAgentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> Generator[main_models.InvokeEsAgentResponse, None, None]:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.body):
+            body['body'] = request.body
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'InvokeEsAgent',
+            version = '2017-06-13',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/agent/acp',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi(params, req, runtime)
+        for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.InvokeEsAgentResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    async def invoke_es_agent_with_sse_async(
+        self,
+        request: main_models.InvokeEsAgentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> AsyncGenerator[main_models.InvokeEsAgentResponse, None, None]:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.body):
+            body['body'] = request.body
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'InvokeEsAgent',
+            version = '2017-06-13',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/agent/acp',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi_async(params, req, runtime)
+        async for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.InvokeEsAgentResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    def invoke_es_agent_with_options(
+        self,
+        request: main_models.InvokeEsAgentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.InvokeEsAgentResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.body):
+            body['body'] = request.body
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'InvokeEsAgent',
+            version = '2017-06-13',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/agent/acp',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InvokeEsAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def invoke_es_agent_with_options_async(
+        self,
+        request: main_models.InvokeEsAgentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.InvokeEsAgentResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.body):
+            body['body'] = request.body
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'InvokeEsAgent',
+            version = '2017-06-13',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/agent/acp',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InvokeEsAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def invoke_es_agent(
+        self,
+        request: main_models.InvokeEsAgentRequest,
+    ) -> main_models.InvokeEsAgentResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.invoke_es_agent_with_options(request, headers, runtime)
+
+    async def invoke_es_agent_async(
+        self,
+        request: main_models.InvokeEsAgentRequest,
+    ) -> main_models.InvokeEsAgentResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.invoke_es_agent_with_options_async(request, headers, runtime)
+
+    def invoke_es_request_with_options(
+        self,
+        instance_id: str,
+        request: main_models.InvokeEsRequestRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.InvokeEsRequestResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.credential_id):
+            query['credentialId'] = request.credential_id
+        if not DaraCore.is_null(request.method):
+            query['method'] = request.method
+        if not DaraCore.is_null(request.path):
+            query['path'] = request.path
+        if not DaraCore.is_null(request.system):
+            query['system'] = request.system
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = request.body
+        )
+        params = open_api_util_models.Params(
+            action = 'InvokeEsRequest',
+            version = '2017-06-13',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/instances/{DaraURL.percent_encode(instance_id)}/es-request',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InvokeEsRequestResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def invoke_es_request_with_options_async(
+        self,
+        instance_id: str,
+        request: main_models.InvokeEsRequestRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.InvokeEsRequestResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.credential_id):
+            query['credentialId'] = request.credential_id
+        if not DaraCore.is_null(request.method):
+            query['method'] = request.method
+        if not DaraCore.is_null(request.path):
+            query['path'] = request.path
+        if not DaraCore.is_null(request.system):
+            query['system'] = request.system
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = request.body
+        )
+        params = open_api_util_models.Params(
+            action = 'InvokeEsRequest',
+            version = '2017-06-13',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/instances/{DaraURL.percent_encode(instance_id)}/es-request',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InvokeEsRequestResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def invoke_es_request(
+        self,
+        instance_id: str,
+        request: main_models.InvokeEsRequestRequest,
+    ) -> main_models.InvokeEsRequestResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.invoke_es_request_with_options(instance_id, request, headers, runtime)
+
+    async def invoke_es_request_async(
+        self,
+        instance_id: str,
+        request: main_models.InvokeEsRequestRequest,
+    ) -> main_models.InvokeEsRequestResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.invoke_es_request_with_options_async(instance_id, request, headers, runtime)
+
     def list_ack_clusters_with_options(
         self,
         request: main_models.ListAckClustersRequest,
@@ -7770,6 +7993,8 @@ class Client(OpenApiClient):
             query['instanceId'] = request.instance_id
         if not DaraCore.is_null(request.lang):
             query['lang'] = request.lang
+        if not DaraCore.is_null(request.level):
+            query['level'] = request.level
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -7802,6 +8027,8 @@ class Client(OpenApiClient):
             query['instanceId'] = request.instance_id
         if not DaraCore.is_null(request.lang):
             query['lang'] = request.lang
+        if not DaraCore.is_null(request.level):
+            query['level'] = request.level
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)

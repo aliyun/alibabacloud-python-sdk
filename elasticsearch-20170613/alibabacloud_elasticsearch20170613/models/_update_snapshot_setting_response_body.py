@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_elasticsearch20170613 import models as main_models
 from darabonba.model import DaraModel
 
@@ -48,10 +50,13 @@ class UpdateSnapshotSettingResponseBodyResult(DaraModel):
     def __init__(
         self,
         enable: bool = None,
+        indices: List[str] = None,
         quartz_regex: str = None,
     ):
         # Indicates whether automatic backup is enabled.
         self.enable = enable
+        # The list of indexes to back up.
+        self.indices = indices
         # The automatic backup start time.
         self.quartz_regex = quartz_regex
 
@@ -66,6 +71,9 @@ class UpdateSnapshotSettingResponseBodyResult(DaraModel):
         if self.enable is not None:
             result['enable'] = self.enable
 
+        if self.indices is not None:
+            result['indices'] = self.indices
+
         if self.quartz_regex is not None:
             result['quartzRegex'] = self.quartz_regex
 
@@ -75,6 +83,9 @@ class UpdateSnapshotSettingResponseBodyResult(DaraModel):
         m = m or dict()
         if m.get('enable') is not None:
             self.enable = m.get('enable')
+
+        if m.get('indices') is not None:
+            self.indices = m.get('indices')
 
         if m.get('quartzRegex') is not None:
             self.quartz_regex = m.get('quartzRegex')

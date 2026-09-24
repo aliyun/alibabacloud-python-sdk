@@ -55,18 +55,37 @@ class ListDiagnosisItemsResponseBody(DaraModel):
 class ListDiagnosisItemsResponseBodyResult(DaraModel):
     def __init__(
         self,
+        billable: bool = None,
+        category: str = None,
         description: str = None,
         es_api_required: bool = None,
         key: str = None,
+        level: str = None,
         name: str = None,
+        sort_order: int = None,
+        supported_modes: List[str] = None,
     ):
-        # The description of the diagnostic item.
+        # Indicates whether billable tokens are consumed. The value is true when level is ADVANCED.
+        self.billable = billable
+        # The category code. You can use this value to group diagnostic items by category.
+        self.category = category
+        # The diagnostic item description.
         self.description = description
+        # Indicates whether the cluster API is accessed.
         self.es_api_required = es_api_required
-        # The identifier of the diagnostic item.
+        # The diagnostic item identifier.
         self.key = key
-        # The name of the diagnostic item.
+        # The diagnostic item level. Valid values:
+        # 
+        # - BASIC: basic inspection item (free).
+        # - ADVANCED: advanced inspection item (consumes billable tokens).
+        self.level = level
+        # The diagnostic item name.
         self.name = name
+        # The sort order number for display.
+        self.sort_order = sort_order
+        # The supported execution modes. Basic items support RULE and AGENT. Advanced items support only AGENT.
+        self.supported_modes = supported_modes
 
     def validate(self):
         pass
@@ -76,6 +95,12 @@ class ListDiagnosisItemsResponseBodyResult(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.billable is not None:
+            result['billable'] = self.billable
+
+        if self.category is not None:
+            result['category'] = self.category
+
         if self.description is not None:
             result['description'] = self.description
 
@@ -85,13 +110,28 @@ class ListDiagnosisItemsResponseBodyResult(DaraModel):
         if self.key is not None:
             result['key'] = self.key
 
+        if self.level is not None:
+            result['level'] = self.level
+
         if self.name is not None:
             result['name'] = self.name
+
+        if self.sort_order is not None:
+            result['sortOrder'] = self.sort_order
+
+        if self.supported_modes is not None:
+            result['supportedModes'] = self.supported_modes
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('billable') is not None:
+            self.billable = m.get('billable')
+
+        if m.get('category') is not None:
+            self.category = m.get('category')
+
         if m.get('description') is not None:
             self.description = m.get('description')
 
@@ -101,8 +141,17 @@ class ListDiagnosisItemsResponseBodyResult(DaraModel):
         if m.get('key') is not None:
             self.key = m.get('key')
 
+        if m.get('level') is not None:
+            self.level = m.get('level')
+
         if m.get('name') is not None:
             self.name = m.get('name')
+
+        if m.get('sortOrder') is not None:
+            self.sort_order = m.get('sortOrder')
+
+        if m.get('supportedModes') is not None:
+            self.supported_modes = m.get('supportedModes')
 
         return self
 

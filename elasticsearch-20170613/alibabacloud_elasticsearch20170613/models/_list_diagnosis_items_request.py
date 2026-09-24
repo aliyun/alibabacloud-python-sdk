@@ -9,9 +9,11 @@ class ListDiagnosisItemsRequest(DaraModel):
         self,
         instance_id: str = None,
         lang: str = None,
+        level: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
-        # The language of the request. Default value: the browser language. Valid values:
+        # The supported request language. Default value: the browser request language. Valid values:
         # 
         # - en: English
         # - zh: Simplified Chinese
@@ -19,6 +21,13 @@ class ListDiagnosisItemsRequest(DaraModel):
         # - es: Spanish
         # - fr: French
         self.lang = lang
+        # The diagnostic item level. Valid values:
+        # 
+        # - BASIC: basic inspection item (free).
+        # - ADVANCED: advanced inspection item (consumes billable tokens).
+        # 
+        # If this parameter is not specified, diagnostic items of all levels are returned.
+        self.level = level
 
     def validate(self):
         pass
@@ -34,6 +43,9 @@ class ListDiagnosisItemsRequest(DaraModel):
         if self.lang is not None:
             result['lang'] = self.lang
 
+        if self.level is not None:
+            result['level'] = self.level
+
         return result
 
     def from_map(self, m: dict = None):
@@ -43,6 +55,9 @@ class ListDiagnosisItemsRequest(DaraModel):
 
         if m.get('lang') is not None:
             self.lang = m.get('lang')
+
+        if m.get('level') is not None:
+            self.level = m.get('level')
 
         return self
 

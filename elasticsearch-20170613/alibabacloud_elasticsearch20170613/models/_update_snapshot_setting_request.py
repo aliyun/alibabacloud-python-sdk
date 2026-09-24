@@ -9,6 +9,7 @@ class UpdateSnapshotSettingRequest(DaraModel):
         self,
         body: str = None,
     ):
+        # The data backup configuration, including the automatic backup start time and the scheduled backup switch.
         self.body = body
 
     def validate(self):
