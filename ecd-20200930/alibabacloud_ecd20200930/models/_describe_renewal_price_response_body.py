@@ -222,9 +222,9 @@ class DescribeRenewalPriceResponseBodyPriceInfoPricePromotions(DaraModel):
         promotion_name: str = None,
         selected: bool = None,
     ):
-        # The promotion rule description.
+        # The description of the promotion rule.
         self.option_code = option_code
-        # The promotion description.
+        # The description of the promotion.
         self.promotion_desc = promotion_desc
         # The promotion ID.
         self.promotion_id = promotion_id

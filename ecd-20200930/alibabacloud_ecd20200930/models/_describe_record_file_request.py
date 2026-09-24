@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class DescribeRecordFileRequest(DaraModel):
     def __init__(
         self,
+        audit_status: str = None,
         desktop_id: str = None,
         end_time: str = None,
         end_user_id: str = None,
@@ -21,6 +22,13 @@ class DescribeRecordFileRequest(DaraModel):
         start_time: str = None,
         status: int = None,
     ):
+        # The audit status. Valid values:
+        # 
+        # - AI_ANALYZED: AI analysis completed.
+        # - REVIEWING: Under review.
+        # - REVIEWED: Reviewed.
+        # - UNREVIEWED: Not reviewed.
+        self.audit_status = audit_status
         # The Cloud Desktop ID.
         self.desktop_id = desktop_id
         # The end time of the query. Format: yyyyMMddHHmmss.
@@ -29,9 +37,9 @@ class DescribeRecordFileRequest(DaraModel):
         self.end_user_id = end_user_id
         # The name of the recording file.
         self.file_name = file_name
-        # The field used for sorting. If this parameter is not specified, the results are sorted by recording start time in descending order. Valid values:
+        # The field used for sorting. If not specified, results are sorted by recording start time in descending order. Valid values:
         # 
-        # - startTime: recording start time.
+        # - startTime: the recording start time.
         self.order_by = order_by
         # The sort order. Valid values:
         # 
@@ -40,7 +48,7 @@ class DescribeRecordFileRequest(DaraModel):
         self.order_sort = order_sort
         # The page number.
         self.page_number = page_number
-        # The maximum number of rows per page in a paging query.
+        # The maximum number of rows per page in a paged query. This parameter is used for paging.
         self.page_size = page_size
         # The type of the screen recording file. Valid values:
         # 
@@ -59,8 +67,8 @@ class DescribeRecordFileRequest(DaraModel):
         self.start_time = start_time
         # The status of the screen recording file. Valid values:
         # 
-        # - 0: uploaded.
-        # - 1: uploading.
+        # - 0: Upload succeeded.
+        # - 1: Uploading.
         self.status = status
 
     def validate(self):
@@ -71,6 +79,9 @@ class DescribeRecordFileRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.audit_status is not None:
+            result['AuditStatus'] = self.audit_status
+
         if self.desktop_id is not None:
             result['DesktopId'] = self.desktop_id
 
@@ -114,6 +125,9 @@ class DescribeRecordFileRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AuditStatus') is not None:
+            self.audit_status = m.get('AuditStatus')
+
         if m.get('DesktopId') is not None:
             self.desktop_id = m.get('DesktopId')
 

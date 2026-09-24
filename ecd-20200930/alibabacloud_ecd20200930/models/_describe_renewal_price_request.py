@@ -20,8 +20,8 @@ class DescribeRenewalPriceRequest(DaraModel):
     ):
         # The instance ID. The value depends on the resource type (ResourceType) for which you want to query the renewal price:
         # 
-        # * If `ResourceType` is set to `Desktop` (to query the renewal price of a cloud computer), set `InstanceId` to the cloud computer ID.
-        # * If `ResourceType` is set to `DesktopGroup` (to query the renewal price of a cloud computer pool), set `InstanceId` to the cloud computer pool ID.
+        # * If `ResourceType` is set to `Desktop` (to query the renewal price of a cloud desktop), set `InstanceId` to the cloud desktop ID.
+        # * If `ResourceType` is set to `DesktopGroup` (to query the renewal price of a cloud desktop pool), set `InstanceId` to the cloud desktop pool ID.
         # * If `ResourceType` is set to `Bandwidth` (to query the renewal price of premium Internet bandwidth), set `InstanceId` to the premium Internet bandwidth ID.
         self.instance_id = instance_id
         # The instance IDs. The values depend on the resource type (ResourceType) for which you want to query the renewal price.
@@ -37,11 +37,11 @@ class DescribeRenewalPriceRequest(DaraModel):
         self.period_unit = period_unit
         # The promotion ID.
         self.promotion_id = promotion_id
-        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Wuying Workspace.
+        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The user ID of the resource ownership user in reseller pattern. You do not need to specify this parameter in non-reseller pattern.
+        # The user ID of the resource ownership in the reseller pattern. You do not need to specify this parameter if you are not using the reseller pattern.
         self.reseller_owner_uid = reseller_owner_uid
         # The resource type.
         self.resource_type = resource_type

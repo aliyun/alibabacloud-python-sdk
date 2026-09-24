@@ -1,3 +1,33 @@
+2026-09-24 Version: 5.4.0
+- Support API GetAggregatedDesktops.
+- Support API QueryAuthUserConnectDurationList.
+- Update API CreateDesktops: add request parameters ReservePoolId.
+- Update API CreateNASFileSystem: add request parameters Capacity.
+- Update API CreateNASFileSystem: add request parameters FileSystemType.
+- Update API CreateNASFileSystem: add response parameters Body.ProtocolType.
+- Update API CreateTemplate: add request parameters InstanceName.
+- Update API CreateTemplate: add request parameters RegionConfigList.$.VirtualNodePoolId.
+- Update API DescribeCloudDiskGroupDrives: add response parameters Body.CloudDriveGroups.$.AuthDimension.
+- Update API DescribeDesktops: add request parameters ReservePoolId.
+- Update API DescribeDesktops: add response parameters Body.Desktops.$.ReservePoolId.
+- Update API DescribeDesktops: add response parameters Body.Desktops.$.ReservePoolName.
+- Update API DescribeDesktops: add response parameters Body.Desktops.$.ZoneId.
+- Update API DescribeGlobalDesktopRecords: add response parameters Body.Sessions.$.LatestSessionEndTime.
+- Update API DescribeNASFileSystems: add response parameters Body.FileSystems.$.Bandwidth.
+- Update API DescribeRecordFile: add request parameters AuditStatus.
+- Update API DescribeRecordFile: add response parameters Body.RecordFiles.$.AuditStatus.
+- Update API DescribeTemplates: add response parameters Body.Data.$.InstanceName.
+- Update API DescribeTemplates: add response parameters Body.Data.$.RegionConfigList.$.VirtualNodePoolId.
+- Update API DescribeVulDesktops: add request parameters ConnectionStatus.
+- Update API DescribeVulDesktops: add request parameters DesktopStatus.
+- Update API DescribeVulDesktops: add response parameters Body.VulDesktops.$.ConnectionStatus.
+- Update API DescribeVulDesktops: add response parameters Body.VulDesktops.$.DesktopStatus.
+- Update API GetConnectionTicket: add request parameters ClientType.
+- Update API ModifyTemplate: add request parameters InstanceName.
+- Update API ModifyTemplate: add request parameters RegionConfigList.$.VirtualNodePoolId.
+- Update API ModifyTemplateBaseInfo: add request parameters InstanceName.
+
+
 2026-09-07 Version: 5.3.0
 - Support API DescribePeripheralDrivers.
 - Support API DescribeVulDesktops.

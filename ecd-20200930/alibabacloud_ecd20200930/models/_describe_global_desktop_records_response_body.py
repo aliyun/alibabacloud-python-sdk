@@ -76,6 +76,7 @@ class DescribeGlobalDesktopRecordsResponseBodySessions(DaraModel):
         end_user_ids: List[str] = None,
         gpu_spec: str = None,
         latest_connection_time: int = None,
+        latest_session_end_time: str = None,
         memory: int = None,
         office_site_id: str = None,
         office_site_name: str = None,
@@ -96,7 +97,7 @@ class DescribeGlobalDesktopRecordsResponseBodySessions(DaraModel):
         self.connection_status = connection_status
         # The number of vCPUs.
         self.cpu = cpu
-        # The creation time of the cloud desktop. The time is in the ISO 8601 standard (UTC).
+        # The time when the cloud desktop was created. The time is in the ISO 8601 standard (UTC).
         self.creation_time = creation_time
         # The shared cloud desktop ID.
         self.desktop_group_id = desktop_group_id
@@ -116,6 +117,8 @@ class DescribeGlobalDesktopRecordsResponseBodySessions(DaraModel):
         self.gpu_spec = gpu_spec
         # The duration of the most recent connection to the cloud desktop. Unit: seconds.
         self.latest_connection_time = latest_connection_time
+        # The latest end time of the current session. The time is in the ISO 8601 standard (UTC): yyyy-MM-ddTHH:mm:ssZ.
+        self.latest_session_end_time = latest_session_end_time
         # The memory of the cloud desktop. Unit: MiB.
         self.memory = memory
         # The office network ID.
@@ -129,7 +132,7 @@ class DescribeGlobalDesktopRecordsResponseBodySessions(DaraModel):
         # - Windows
         # - Linux
         self.os_type = os_type
-        # The specific operating system model.
+        # The specific operating system version.
         self.platform = platform
         # The protocol type. Valid values:
         # 
@@ -144,7 +147,7 @@ class DescribeGlobalDesktopRecordsResponseBodySessions(DaraModel):
         self.session_idle_time = session_idle_time
         # The session details.
         self.sessions = sessions
-        # The UNIX timestamp of the cloud desktop status change. Unit: milliseconds.
+        # The UNIX timestamp when the cloud desktop status changed. Unit: milliseconds.
         self.status_change_time = status_change_time
         # The billing method of the cloud desktop. Valid values:
         # 
@@ -207,6 +210,9 @@ class DescribeGlobalDesktopRecordsResponseBodySessions(DaraModel):
 
         if self.latest_connection_time is not None:
             result['LatestConnectionTime'] = self.latest_connection_time
+
+        if self.latest_session_end_time is not None:
+            result['LatestSessionEndTime'] = self.latest_session_end_time
 
         if self.memory is not None:
             result['Memory'] = self.memory
@@ -297,6 +303,9 @@ class DescribeGlobalDesktopRecordsResponseBodySessions(DaraModel):
         if m.get('LatestConnectionTime') is not None:
             self.latest_connection_time = m.get('LatestConnectionTime')
 
+        if m.get('LatestSessionEndTime') is not None:
+            self.latest_session_end_time = m.get('LatestSessionEndTime')
+
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
 
@@ -358,8 +367,7 @@ class DescribeGlobalDesktopRecordsResponseBodySessionsSessions(DaraModel):
     ):
         # The end user ID.
         self.end_user_id = end_user_id
-        # The session creation time.
-        # The time is in the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
+        # The time when the session was created. The time is in the ISO 8601 standard (UTC): yyyy-MM-ddTHH:mm:ssZ.
         self.establishment_time = establishment_time
 
     def validate(self):

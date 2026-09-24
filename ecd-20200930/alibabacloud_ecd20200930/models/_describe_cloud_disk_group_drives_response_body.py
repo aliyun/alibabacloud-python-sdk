@@ -18,13 +18,13 @@ class DescribeCloudDiskGroupDrivesResponseBody(DaraModel):
     ):
         # The list of cloud disk team spaces.
         self.cloud_drive_groups = cloud_drive_groups
-        # The total number of entries.
+        # The total count.
         self.count = count
-        # The token for the next query. If NextToken is empty, no more results are available.
+        # The pagination token for the next query. If this parameter is empty, no more results are available.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful.
+        # Indicates whether the operation is successful.
         self.success = success
 
     def validate(self):
@@ -82,6 +82,7 @@ class DescribeCloudDiskGroupDrivesResponseBody(DaraModel):
 class DescribeCloudDiskGroupDrivesResponseBodyCloudDriveGroups(DaraModel):
     def __init__(
         self,
+        auth_dimension: str = None,
         create_time: str = None,
         directory_id: str = None,
         drive_id: str = None,
@@ -92,6 +93,8 @@ class DescribeCloudDiskGroupDrivesResponseBodyCloudDriveGroups(DaraModel):
         total_size: int = None,
         used_size: str = None,
     ):
+        # The authorization dimension.
+        self.auth_dimension = auth_dimension
         # The creation time. The time is in the ISO 8601 standard in the UTC format: yyyy-MM-ddTHH:mm:ssZ.
         self.create_time = create_time
         # The office network ID.
@@ -119,6 +122,9 @@ class DescribeCloudDiskGroupDrivesResponseBodyCloudDriveGroups(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.auth_dimension is not None:
+            result['AuthDimension'] = self.auth_dimension
+
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
 
@@ -150,6 +156,9 @@ class DescribeCloudDiskGroupDrivesResponseBodyCloudDriveGroups(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AuthDimension') is not None:
+            self.auth_dimension = m.get('AuthDimension')
+
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
 

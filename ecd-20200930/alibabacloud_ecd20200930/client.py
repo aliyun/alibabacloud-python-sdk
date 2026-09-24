@@ -4932,6 +4932,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.reseller_owner_uid):
             query['ResellerOwnerUid'] = request.reseller_owner_uid
+        if not DaraCore.is_null(request.reserve_pool_id):
+            query['ReservePoolId'] = request.reserve_pool_id
         if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not DaraCore.is_null(request.saving_plan_id):
@@ -5052,6 +5054,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.reseller_owner_uid):
             query['ResellerOwnerUid'] = request.reseller_owner_uid
+        if not DaraCore.is_null(request.reserve_pool_id):
+            query['ReservePoolId'] = request.reserve_pool_id
         if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not DaraCore.is_null(request.saving_plan_id):
@@ -5588,10 +5592,14 @@ class Client(OpenApiClient):
     ) -> main_models.CreateNASFileSystemResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.capacity):
+            query['Capacity'] = request.capacity
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
         if not DaraCore.is_null(request.encrypt_type):
             query['EncryptType'] = request.encrypt_type
+        if not DaraCore.is_null(request.file_system_type):
+            query['FileSystemType'] = request.file_system_type
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
         if not DaraCore.is_null(request.office_site_id):
@@ -5628,10 +5636,14 @@ class Client(OpenApiClient):
     ) -> main_models.CreateNASFileSystemResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.capacity):
+            query['Capacity'] = request.capacity
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
         if not DaraCore.is_null(request.encrypt_type):
             query['EncryptType'] = request.encrypt_type
+        if not DaraCore.is_null(request.file_system_type):
+            query['FileSystemType'] = request.file_system_type
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
         if not DaraCore.is_null(request.office_site_id):
@@ -7055,6 +7067,8 @@ class Client(OpenApiClient):
             body['Description'] = request.description
         if not DaraCore.is_null(request.image_id):
             body['ImageId'] = request.image_id
+        if not DaraCore.is_null(request.instance_name):
+            body['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.period):
             body['Period'] = request.period
         if not DaraCore.is_null(request.period_unit):
@@ -7127,6 +7141,8 @@ class Client(OpenApiClient):
             body['Description'] = request.description
         if not DaraCore.is_null(request.image_id):
             body['ImageId'] = request.image_id
+        if not DaraCore.is_null(request.instance_name):
+            body['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.period):
             body['Period'] = request.period
         if not DaraCore.is_null(request.period_unit):
@@ -12030,6 +12046,8 @@ class Client(OpenApiClient):
             query['QueryFotaUpdate'] = request.query_fota_update
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.reserve_pool_id):
+            query['ReservePoolId'] = request.reserve_pool_id
         if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not DaraCore.is_null(request.snapshot_policy_id):
@@ -12136,6 +12154,8 @@ class Client(OpenApiClient):
             query['QueryFotaUpdate'] = request.query_fota_update
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.reserve_pool_id):
+            query['ReservePoolId'] = request.reserve_pool_id
         if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not DaraCore.is_null(request.snapshot_policy_id):
@@ -15454,6 +15474,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeRecordFileResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.audit_status):
+            query['AuditStatus'] = request.audit_status
         if not DaraCore.is_null(request.desktop_id):
             query['DesktopId'] = request.desktop_id
         if not DaraCore.is_null(request.end_time):
@@ -15506,6 +15528,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeRecordFileResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.audit_status):
+            query['AuditStatus'] = request.audit_status
         if not DaraCore.is_null(request.desktop_id):
             query['DesktopId'] = request.desktop_id
         if not DaraCore.is_null(request.end_time):
@@ -17408,10 +17432,14 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeVulDesktopsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.connection_status):
+            query['ConnectionStatus'] = request.connection_status
         if not DaraCore.is_null(request.cve_id):
             query['CveId'] = request.cve_id
         if not DaraCore.is_null(request.desktop_id_list):
             query['DesktopIdList'] = request.desktop_id_list
+        if not DaraCore.is_null(request.desktop_status):
+            query['DesktopStatus'] = request.desktop_status
         if not DaraCore.is_null(request.include_fix_result):
             query['IncludeFixResult'] = request.include_fix_result
         if not DaraCore.is_null(request.language):
@@ -17464,10 +17492,14 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeVulDesktopsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.connection_status):
+            query['ConnectionStatus'] = request.connection_status
         if not DaraCore.is_null(request.cve_id):
             query['CveId'] = request.cve_id
         if not DaraCore.is_null(request.desktop_id_list):
             query['DesktopIdList'] = request.desktop_id_list
+        if not DaraCore.is_null(request.desktop_status):
+            query['DesktopStatus'] = request.desktop_status
         if not DaraCore.is_null(request.include_fix_result):
             query['IncludeFixResult'] = request.include_fix_result
         if not DaraCore.is_null(request.language):
@@ -18611,6 +18643,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.export_desktop_list_info_with_options_async(request, runtime)
 
+    def get_aggregated_desktops_with_options(
+        self,
+        request: main_models.GetAggregatedDesktopsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAggregatedDesktopsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.aggregation_factor):
+            query['AggregationFactor'] = request.aggregation_factor
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.search_region_id):
+            query['SearchRegionId'] = request.search_region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAggregatedDesktops',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAggregatedDesktopsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_aggregated_desktops_with_options_async(
+        self,
+        request: main_models.GetAggregatedDesktopsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAggregatedDesktopsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.aggregation_factor):
+            query['AggregationFactor'] = request.aggregation_factor
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.search_region_id):
+            query['SearchRegionId'] = request.search_region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAggregatedDesktops',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAggregatedDesktopsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_aggregated_desktops(
+        self,
+        request: main_models.GetAggregatedDesktopsRequest,
+    ) -> main_models.GetAggregatedDesktopsResponse:
+        runtime = RuntimeOptions()
+        return self.get_aggregated_desktops_with_options(request, runtime)
+
+    async def get_aggregated_desktops_async(
+        self,
+        request: main_models.GetAggregatedDesktopsRequest,
+    ) -> main_models.GetAggregatedDesktopsResponse:
+        runtime = RuntimeOptions()
+        return await self.get_aggregated_desktops_with_options_async(request, runtime)
+
     def get_async_task_with_options(
         self,
         request: main_models.GetAsyncTaskRequest,
@@ -18692,6 +18802,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetConnectionTicketResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_type):
+            query['ClientType'] = request.client_type
         if not DaraCore.is_null(request.command_content):
             query['CommandContent'] = request.command_content
         if not DaraCore.is_null(request.desktop_id):
@@ -18738,6 +18850,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetConnectionTicketResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_type):
+            query['ClientType'] = request.client_type
         if not DaraCore.is_null(request.command_content):
             query['CommandContent'] = request.command_content
         if not DaraCore.is_null(request.desktop_id):
@@ -24973,6 +25087,8 @@ class Client(OpenApiClient):
             body['Description'] = request.description
         if not DaraCore.is_null(request.image_id):
             body['ImageId'] = request.image_id
+        if not DaraCore.is_null(request.instance_name):
+            body['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.period):
             body['Period'] = request.period
         if not DaraCore.is_null(request.period_unit):
@@ -25043,6 +25159,8 @@ class Client(OpenApiClient):
             body['Description'] = request.description
         if not DaraCore.is_null(request.image_id):
             body['ImageId'] = request.image_id
+        if not DaraCore.is_null(request.instance_name):
+            body['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.period):
             body['Period'] = request.period
         if not DaraCore.is_null(request.period_unit):
@@ -25114,6 +25232,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
+        if not DaraCore.is_null(request.instance_name):
+            body['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.template_id):
             body['TemplateId'] = request.template_id
         if not DaraCore.is_null(request.template_name):
@@ -25146,6 +25266,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
+        if not DaraCore.is_null(request.instance_name):
+            body['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.template_id):
             body['TemplateId'] = request.template_id
         if not DaraCore.is_null(request.template_name):
@@ -25792,6 +25914,112 @@ class Client(OpenApiClient):
     ) -> main_models.QueryActiveUserStatisticResponse:
         runtime = RuntimeOptions()
         return await self.query_active_user_statistic_with_options_async(request, runtime)
+
+    def query_auth_user_connect_duration_list_with_options(
+        self,
+        request: main_models.QueryAuthUserConnectDurationListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryAuthUserConnectDurationListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.comparison_operator):
+            query['ComparisonOperator'] = request.comparison_operator
+        if not DaraCore.is_null(request.data_date):
+            query['DataDate'] = request.data_date
+        if not DaraCore.is_null(request.is_ad_user):
+            query['IsAdUser'] = request.is_ad_user
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.statistic_type):
+            query['StatisticType'] = request.statistic_type
+        if not DaraCore.is_null(request.threshold):
+            query['Threshold'] = request.threshold
+        if not DaraCore.is_null(request.user_name):
+            query['UserName'] = request.user_name
+        if not DaraCore.is_null(request.with_detail):
+            query['WithDetail'] = request.with_detail
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryAuthUserConnectDurationList',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryAuthUserConnectDurationListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_auth_user_connect_duration_list_with_options_async(
+        self,
+        request: main_models.QueryAuthUserConnectDurationListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryAuthUserConnectDurationListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.comparison_operator):
+            query['ComparisonOperator'] = request.comparison_operator
+        if not DaraCore.is_null(request.data_date):
+            query['DataDate'] = request.data_date
+        if not DaraCore.is_null(request.is_ad_user):
+            query['IsAdUser'] = request.is_ad_user
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.statistic_type):
+            query['StatisticType'] = request.statistic_type
+        if not DaraCore.is_null(request.threshold):
+            query['Threshold'] = request.threshold
+        if not DaraCore.is_null(request.user_name):
+            query['UserName'] = request.user_name
+        if not DaraCore.is_null(request.with_detail):
+            query['WithDetail'] = request.with_detail
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryAuthUserConnectDurationList',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryAuthUserConnectDurationListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_auth_user_connect_duration_list(
+        self,
+        request: main_models.QueryAuthUserConnectDurationListRequest,
+    ) -> main_models.QueryAuthUserConnectDurationListResponse:
+        runtime = RuntimeOptions()
+        return self.query_auth_user_connect_duration_list_with_options(request, runtime)
+
+    async def query_auth_user_connect_duration_list_async(
+        self,
+        request: main_models.QueryAuthUserConnectDurationListRequest,
+    ) -> main_models.QueryAuthUserConnectDurationListResponse:
+        runtime = RuntimeOptions()
+        return await self.query_auth_user_connect_duration_list_with_options_async(request, runtime)
 
     def query_end_user_history_usage_with_options(
         self,

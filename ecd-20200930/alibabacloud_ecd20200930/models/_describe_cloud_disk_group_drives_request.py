@@ -21,10 +21,10 @@ class DescribeCloudDiskGroupDrivesRequest(DaraModel):
         self.group_name = group_name
         # The number of entries per page for a paged query.
         # 
-        # - Maximum value: 100
-        # - Default value: 20
+        # - Maximum value: 100.
+        # - Default value: 20.
         self.max_results = max_results
-        # The token for the next query. If NextToken is empty, no more results are available.
+        # The pagination token for the next query. If this parameter is empty, no more results are available.
         self.next_token = next_token
         # The region ID.
         # 

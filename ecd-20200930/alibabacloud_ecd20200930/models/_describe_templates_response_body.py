@@ -20,7 +20,7 @@ class DescribeTemplatesResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The operation result. A value of `success` indicates success. Otherwise, an error message is returned.
+        # The modification result. A value of `success` indicates success. Otherwise, an error message is returned.
         self.code = code
         # The list of queried template information.
         self.data = data
@@ -34,7 +34,7 @@ class DescribeTemplatesResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation is successful.
+        # Indicates whether the operation was successful.
         self.success = success
         # The total number of entries.
         self.total_count = total_count
@@ -128,6 +128,7 @@ class DescribeTemplatesResponseBodyData(DaraModel):
         gmt_modified: str = None,
         image_id: str = None,
         image_type: str = None,
+        instance_name: str = None,
         period: int = None,
         period_unit: str = None,
         policy_group_id: str = None,
@@ -148,7 +149,7 @@ class DescribeTemplatesResponseBodyData(DaraModel):
     ):
         # Indicates whether automatic payment is enabled for subscription orders.
         self.auto_pay = auto_pay
-        # Indicates whether auto-renewal is enabled for the subscription shared cloud computer.
+        # Indicates whether auto-renewal is enabled for subscription shared cloud computers.
         self.auto_renew = auto_renew
         # The billing type of the cloud computer.
         self.charge_type = charge_type
@@ -158,21 +159,34 @@ class DescribeTemplatesResponseBodyData(DaraModel):
         self.default_language = default_language
         # The template description.
         self.description = description
-        # The creation time of the template (UTC).
+        # The time when the template was created (UTC).
         self.gmt_create = gmt_create
-        # The update time of the template (UTC).
+        # The time when the template was last updated (UTC).
         self.gmt_modified = gmt_modified
         # The image ID.
         self.image_id = image_id
         # The image type.
         self.image_type = image_type
-        # The subscription duration of the subscription shared cloud computer. This parameter takes effect only when ChargeType is set to PrePaid, and is required in that case. The unit is specified by PeriodUnit.
+        # The instance name.
+        self.instance_name = instance_name
+        # The subscription duration of the subscription shared cloud computer. This parameter takes effect and is required only when `ChargeType` is set to `PrePaid`. The unit is specified by `PeriodUnit`.
+        # - If `PeriodUnit` is set to `Month`, valid values:
+        #     - 1
+        #     - 2
+        #     - 3
+        #     - 6
+        # - If `PeriodUnit` is set to `Year`, valid values:
+        #     - 1
+        #     - 2
+        #     - 3
+        #     - 4
+        #     - 5
         self.period = period
-        # The unit of the subscription billing duration. Billable methods use this parameter to specify the time unit.
+        # The unit of the duration for the subscription billable methods.
         self.period_unit = period_unit
-        # The policy group ID.
+        # The policy ID.
         self.policy_group_id = policy_group_id
-        # Indicates whether the cloud computer automatically switches to pay-as-you-go billing after the duration plan is exhausted.
+        # Indicates whether the cloud computer automatically switches to pay-as-you-go billing after the duration package is exhausted.
         self.post_paid_after_used_up = post_paid_after_used_up
         # The product type.
         self.product_type = product_type
@@ -198,7 +212,7 @@ class DescribeTemplatesResponseBodyData(DaraModel):
         self.template_type = template_type
         # The scheduled task group ID.
         self.timer_group_id = timer_group_id
-        # The per-user usage duration plan.
+        # The per-user duration package.
         self.user_duration = user_duration
 
     def validate(self):
@@ -255,6 +269,9 @@ class DescribeTemplatesResponseBodyData(DaraModel):
 
         if self.image_type is not None:
             result['ImageType'] = self.image_type
+
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
 
         if self.period is not None:
             result['Period'] = self.period
@@ -349,6 +366,9 @@ class DescribeTemplatesResponseBodyData(DaraModel):
 
         if m.get('ImageType') is not None:
             self.image_type = m.get('ImageType')
+
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
 
         if m.get('Period') is not None:
             self.period = m.get('Period')
@@ -497,12 +517,13 @@ class DescribeTemplatesResponseBodyDataRegionConfigList(DaraModel):
         resource_instance_type: str = None,
         snapshot_policy_id: str = None,
         subnet_id: str = None,
+        virtual_node_pool_id: str = None,
         volume_encryption_enable: bool = None,
         volume_encryption_key: str = None,
     ):
         # The number of vCPUs included in the cloud computer specification.
         self.cpu_count = cpu_count
-        # The GPU memory information. This field is displayed only when the specification is a graphics-accelerated type.
+        # The GPU memory information. This field is displayed only when the specification is a graphics type.
         self.gpu_spec = gpu_spec
         # The memory size. Unit: MiB.
         self.memory_size = memory_size
@@ -516,6 +537,8 @@ class DescribeTemplatesResponseBodyDataRegionConfigList(DaraModel):
         self.snapshot_policy_id = snapshot_policy_id
         # The subnet ID.
         self.subnet_id = subnet_id
+        # The virtual node pool ID.
+        self.virtual_node_pool_id = virtual_node_pool_id
         # Indicates whether disk encryption is enabled.
         self.volume_encryption_enable = volume_encryption_enable
         # The KMS key ID used when disk encryption is enabled.
@@ -553,6 +576,9 @@ class DescribeTemplatesResponseBodyDataRegionConfigList(DaraModel):
         if self.subnet_id is not None:
             result['SubnetId'] = self.subnet_id
 
+        if self.virtual_node_pool_id is not None:
+            result['VirtualNodePoolId'] = self.virtual_node_pool_id
+
         if self.volume_encryption_enable is not None:
             result['VolumeEncryptionEnable'] = self.volume_encryption_enable
 
@@ -587,6 +613,9 @@ class DescribeTemplatesResponseBodyDataRegionConfigList(DaraModel):
         if m.get('SubnetId') is not None:
             self.subnet_id = m.get('SubnetId')
 
+        if m.get('VirtualNodePoolId') is not None:
+            self.virtual_node_pool_id = m.get('VirtualNodePoolId')
+
         if m.get('VolumeEncryptionEnable') is not None:
             self.volume_encryption_enable = m.get('VolumeEncryptionEnable')
 
@@ -603,7 +632,7 @@ class DescribeTemplatesResponseBodyDataDataDiskList(DaraModel):
     ):
         # The performance level of the data cloud disk.
         self.performance_level = performance_level
-        # The data cloud disk size. Unit: GiB.
+        # The size of the data cloud disk. Unit: GiB.
         self.size = size
 
     def validate(self):

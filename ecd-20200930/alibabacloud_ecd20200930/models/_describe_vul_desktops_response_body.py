@@ -26,9 +26,9 @@ class DescribeVulDesktopsResponseBody(DaraModel):
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of entries returned.
         self.total_count = total_count
-        # The list of cloud computers affected by the vulnerability.
+        # The details of cloud desktops affected by the vulnerability.
         self.vul_desktops = vul_desktops
 
     def validate(self):
@@ -87,9 +87,11 @@ class DescribeVulDesktopsResponseBodyVulDesktops(DaraModel):
     def __init__(
         self,
         config_group_id: str = None,
+        connection_status: str = None,
         cve_count: int = None,
         cves: List[main_models.DescribeVulDesktopsResponseBodyVulDesktopsCves] = None,
         desktop_id: str = None,
+        desktop_status: str = None,
         disabled: bool = None,
         first_found_time: str = None,
         fix_records: List[main_models.DescribeVulDesktopsResponseBodyVulDesktopsFixRecords] = None,
@@ -101,19 +103,23 @@ class DescribeVulDesktopsResponseBodyVulDesktops(DaraModel):
     ):
         # The configuration task ID.
         self.config_group_id = config_group_id
+        # The connection status of the cloud desktop.
+        self.connection_status = connection_status
         # The number of vulnerabilities.
         self.cve_count = cve_count
-        # The list of vulnerability details.
+        # The vulnerability details.
         self.cves = cves
-        # The ID of the cloud computer affected by the vulnerability.
+        # The ID of the cloud desktop affected by the vulnerability.
         self.desktop_id = desktop_id
+        # The running status of the cloud desktop.
+        self.desktop_status = desktop_status
         # Indicates whether the activation code is disabled.
         self.disabled = disabled
-        # The time when the vulnerability was first discovered.
+        # The time when the vulnerability was first detected. Format: yyyy-MM-dd HH:mm:ss.
         self.first_found_time = first_found_time
-        # The list of fix records for the cloud computer.
+        # The fix records of the cloud desktop.
         self.fix_records = fix_records
-        # The list of patch IDs.
+        # The patch IDs.
         self.patch_ids = patch_ids
         # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by WUYING Workspace.
         self.region_id = region_id
@@ -142,6 +148,9 @@ class DescribeVulDesktopsResponseBodyVulDesktops(DaraModel):
         if self.config_group_id is not None:
             result['ConfigGroupId'] = self.config_group_id
 
+        if self.connection_status is not None:
+            result['ConnectionStatus'] = self.connection_status
+
         if self.cve_count is not None:
             result['CveCount'] = self.cve_count
 
@@ -152,6 +161,9 @@ class DescribeVulDesktopsResponseBodyVulDesktops(DaraModel):
 
         if self.desktop_id is not None:
             result['DesktopId'] = self.desktop_id
+
+        if self.desktop_status is not None:
+            result['DesktopStatus'] = self.desktop_status
 
         if self.disabled is not None:
             result['Disabled'] = self.disabled
@@ -186,6 +198,9 @@ class DescribeVulDesktopsResponseBodyVulDesktops(DaraModel):
         if m.get('ConfigGroupId') is not None:
             self.config_group_id = m.get('ConfigGroupId')
 
+        if m.get('ConnectionStatus') is not None:
+            self.connection_status = m.get('ConnectionStatus')
+
         if m.get('CveCount') is not None:
             self.cve_count = m.get('CveCount')
 
@@ -197,6 +212,9 @@ class DescribeVulDesktopsResponseBodyVulDesktops(DaraModel):
 
         if m.get('DesktopId') is not None:
             self.desktop_id = m.get('DesktopId')
+
+        if m.get('DesktopStatus') is not None:
+            self.desktop_status = m.get('DesktopStatus')
 
         if m.get('Disabled') is not None:
             self.disabled = m.get('Disabled')
@@ -302,7 +320,7 @@ class DescribeVulDesktopsResponseBodyVulDesktopsCves(DaraModel):
         reference_url: str = None,
         release_time: str = None,
     ):
-        # The CVE ID.
+        # The CVE ID of the vulnerability.
         self.cve_id = cve_id
         # The vulnerability level.
         self.cve_level = cve_level
@@ -312,9 +330,9 @@ class DescribeVulDesktopsResponseBodyVulDesktopsCves(DaraModel):
         self.cve_url = cve_url
         # The vulnerability score.
         self.impact_score = impact_score
-        # The reference URL.
+        # The reference URL for the vulnerability details.
         self.reference_url = reference_url
-        # The release time. The time follows the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
+        # The release time. The time is in the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
         self.release_time = release_time
 
     def validate(self):

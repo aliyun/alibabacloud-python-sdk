@@ -19,7 +19,7 @@ class DescribeDesktopsResponseBody(DaraModel):
     ):
         # The details of the cloud desktops.
         self.desktops = desktops
-        # The pagination token that is used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        # The pagination token for the next query. If this parameter is empty, no more results are available.
         self.next_token = next_token
         # The page number of the current page in a paged query.
         self.page_number = page_number
@@ -148,6 +148,8 @@ class DescribeDesktopsResponseBodyDesktops(DaraModel):
         policy_group_name_list: List[str] = None,
         progress: str = None,
         protocol_type: str = None,
+        reserve_pool_id: str = None,
+        reserve_pool_name: str = None,
         resource_groups: List[main_models.DescribeDesktopsResponseBodyDesktopsResourceGroups] = None,
         serial_number: str = None,
         session_type: str = None,
@@ -163,6 +165,7 @@ class DescribeDesktopsResponseBodyDesktops(DaraModel):
         tags: List[main_models.DescribeDesktopsResponseBodyDesktopsTags] = None,
         volume_encryption_enabled: bool = None,
         volume_encryption_key: str = None,
+        zone_id: str = None,
         zone_type: str = None,
     ):
         # The account type.
@@ -248,9 +251,9 @@ class DescribeDesktopsResponseBodyDesktops(DaraModel):
         self.management_flags = management_flags
         # The memory size. Unit: MiB.
         self.memory = memory
-        # The ID of the secondary ENI created by the cloud desktop service for the RAM or AD user. This value cannot be modified.
+        # The ID of the secondary network interface controller (NIC) created by the cloud desktop service for the RAM or AD user. This value cannot be modified.
         self.network_interface_id = network_interface_id
-        # The IP address of the secondary ENI created by the cloud desktop service for the RAM or AD user.
+        # The IP address of the secondary NIC created by the cloud desktop service for the RAM or AD user.
         self.network_interface_ip = network_interface_ip
         # The office network ID.
         self.office_site_id = office_site_id
@@ -278,6 +281,8 @@ class DescribeDesktopsResponseBodyDesktops(DaraModel):
         self.progress = progress
         # The protocol type.
         self.protocol_type = protocol_type
+        self.reserve_pool_id = reserve_pool_id
+        self.reserve_pool_name = reserve_pool_name
         # The list of enterprise resource group information.
         self.resource_groups = resource_groups
         # The serial number of the terminal.
@@ -290,7 +295,7 @@ class DescribeDesktopsResponseBodyDesktops(DaraModel):
         self.snapshot_policy_id = snapshot_policy_id
         # The snapshot policy name.
         self.snapshot_policy_name = snapshot_policy_name
-        # The start time of the query. The time is in the ISO 8601 standard and in UTC+0, in the format of `yyyy-mm-ddthh:mm:ssz`.
+        # The start time of the query. The time is in the ISO 8601 standard and in UTC+0. Format: `yyyy-mm-ddthh:mm:ssz`.
         self.standard_start_time = standard_start_time
         # The time when the cloud desktop was first started. The time is in the ISO 8601 standard in UTC.
         self.start_time = start_time
@@ -308,6 +313,7 @@ class DescribeDesktopsResponseBodyDesktops(DaraModel):
         self.volume_encryption_enabled = volume_encryption_enabled
         # The ID of the Key Management Service (KMS) key used for disk encryption. You can call the [ListKeys](https://help.aliyun.com/document_detail/28951.html) operation to obtain the key ID.
         self.volume_encryption_key = volume_encryption_key
+        self.zone_id = zone_id
         # The type of the zone. Default value: `AvailabilityZone`, which indicates a regular cloud zone.
         self.zone_type = zone_type
 
@@ -517,6 +523,12 @@ class DescribeDesktopsResponseBodyDesktops(DaraModel):
         if self.protocol_type is not None:
             result['ProtocolType'] = self.protocol_type
 
+        if self.reserve_pool_id is not None:
+            result['ReservePoolId'] = self.reserve_pool_id
+
+        if self.reserve_pool_name is not None:
+            result['ReservePoolName'] = self.reserve_pool_name
+
         result['ResourceGroups'] = []
         if self.resource_groups is not None:
             for k1 in self.resource_groups:
@@ -567,6 +579,9 @@ class DescribeDesktopsResponseBodyDesktops(DaraModel):
 
         if self.volume_encryption_key is not None:
             result['VolumeEncryptionKey'] = self.volume_encryption_key
+
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
 
         if self.zone_type is not None:
             result['ZoneType'] = self.zone_type
@@ -754,6 +769,12 @@ class DescribeDesktopsResponseBodyDesktops(DaraModel):
         if m.get('ProtocolType') is not None:
             self.protocol_type = m.get('ProtocolType')
 
+        if m.get('ReservePoolId') is not None:
+            self.reserve_pool_id = m.get('ReservePoolId')
+
+        if m.get('ReservePoolName') is not None:
+            self.reserve_pool_name = m.get('ReservePoolName')
+
         self.resource_groups = []
         if m.get('ResourceGroups') is not None:
             for k1 in m.get('ResourceGroups'):
@@ -808,6 +829,9 @@ class DescribeDesktopsResponseBodyDesktops(DaraModel):
         if m.get('VolumeEncryptionKey') is not None:
             self.volume_encryption_key = m.get('VolumeEncryptionKey')
 
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+
         if m.get('ZoneType') is not None:
             self.zone_type = m.get('ZoneType')
 
@@ -857,7 +881,7 @@ class DescribeDesktopsResponseBodyDesktopsSessions(DaraModel):
         establishment_time: str = None,
         external_user_name: str = None,
     ):
-        # The ID of the user connected to the cloud desktop.
+        # The ID of the user who is connected to the cloud desktop.
         self.end_user_id = end_user_id
         # The time when the cloud desktop session was established. The time is in the ISO 8601 standard in UTC.
         self.establishment_time = establishment_time
@@ -994,7 +1018,7 @@ class DescribeDesktopsResponseBodyDesktopsOsUpdatePackages(DaraModel):
         kb: str = None,
         title: str = None,
     ):
-        # The NAS file system description.
+        # The description of the NAS file system.
         self.description = description
         # The KB number of the system patch.
         self.kb = kb
@@ -1118,7 +1142,7 @@ class DescribeDesktopsResponseBodyDesktopsDisks(DaraModel):
         # The disk category.
         # - cloud_efficiency (ultra cloud disk)
         #    - cloud_auto (ultra-fast cloud disk)
-        #    - cloud_essd (enhanced standard SSD cloud disk. Only specific types are supported.)
+        #    - cloud_essd (enhanced standard SSD. Only specific types are supported.)
         self.disk_category = disk_category
         # The disk ID.
         self.disk_id = disk_id

@@ -79,7 +79,7 @@ class DownloadCdsFileResponseBodyDownloadFileModel(DaraModel):
         self.download_url = download_url
         # Deprecated.
         self.expiration_second = expiration_second
-        # The expiration time of the file download URL.
+        # The expiration time of the file download URL. The time follows the ISO 8601 standard in UTC and is accurate to milliseconds. Format: yyyy-MM-ddTHH:mm:ss.SSSZ.
         self.expiration_time = expiration_time
         # The file ID.
         self.file_id = file_id

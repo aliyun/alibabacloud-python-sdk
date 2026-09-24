@@ -45,6 +45,7 @@ class DescribeDesktopsRequest(DaraModel):
         qos_rule_id: str = None,
         query_fota_update: bool = None,
         region_id: str = None,
+        reserve_pool_id: str = None,
         resource_group_id: str = None,
         snapshot_policy_id: str = None,
         sub_pay_type: str = None,
@@ -57,7 +58,7 @@ class DescribeDesktopsRequest(DaraModel):
         self.business_channel = business_channel
         # The billing method of the cloud computer.
         self.charge_type = charge_type
-        # The cloud computer pool ID. If `DesktopId` is specified, `DesktopGroupId` is ignored. If `DesktopId` is empty, the system retrieves the IDs of all cloud computers in the cloud computer pool specified by `DesktopGroupId`.
+        # The cloud computer pool ID. If `DesktopId` is specified, `DesktopGroupId` is ignored. If `DesktopId` is empty, the system retrieves the DesktopId values of all cloud computers in the cloud computer pool specified by `DesktopGroupId`.
         self.desktop_group_id = desktop_group_id
         # The cloud computer IDs. You can specify 1 to 100 IDs.
         self.desktop_id = desktop_id
@@ -65,7 +66,7 @@ class DescribeDesktopsRequest(DaraModel):
         self.desktop_name = desktop_name
         # The cloud computer status.
         self.desktop_status = desktop_status
-        # The cloud computer status list.
+        # The list of cloud computer statuses.
         self.desktop_status_list = desktop_status_list
         # The cloud computer specifications. You can call [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) to query the specification IDs supported by cloud computers.
         self.desktop_type = desktop_type
@@ -93,15 +94,16 @@ class DescribeDesktopsRequest(DaraModel):
         self.include_auto_snapshot_policy = include_auto_snapshot_policy
         # The management flag.
         self.management_flag = management_flag
-        # The maximum number of entries per page for a paged query.
+        # The number of entries per page for a paged query.
         # 
         # - Maximum value: 100.
         # - Default value: 10.
         self.max_results = max_results
-        # Specifies whether multiple resources exist.
+        # Specifies whether there are multiple resources.
         self.multi_resource = multi_resource
+        # The private IP address.
         self.network_interface_ip = network_interface_ip
-        # The pagination token that is used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        # The pagination token for the next query. If this parameter is empty, no more results are available.
         self.next_token = next_token
         # The office network ID.
         self.office_site_id = office_site_id
@@ -119,6 +121,7 @@ class DescribeDesktopsRequest(DaraModel):
         self.policy_group_id = policy_group_id
         # The protocol type.
         self.protocol_type = protocol_type
+        # The public IP address of the instance to query.
         self.public_ip = public_ip
         # The Internet bandwidth throttling rule ID.
         self.qos_rule_id = qos_rule_id
@@ -128,13 +131,14 @@ class DescribeDesktopsRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.reserve_pool_id = reserve_pool_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
         # The snapshot policy ID.
         self.snapshot_policy_id = snapshot_policy_id
         # The purchase method of the cloud computer.
         self.sub_pay_type = sub_pay_type
-        # The tags. A tag is a key-value pair that is used to mark resources. You can use tags to group and manage cloud computers for easy searching and batch operations. For more information, see [Use tags to manage cloud computers](https://help.aliyun.com/document_detail/203781.html).
+        # The tags. A tag consists of a key-value pair and is used to mark resources. You can use tags to group and manage cloud computers for easy searching and batch operations. For more information, see [Use tags to manage cloud computers](https://help.aliyun.com/document_detail/203781.html).
         self.tag = tag
         # The username.
         self.user_name = user_name
@@ -254,6 +258,9 @@ class DescribeDesktopsRequest(DaraModel):
 
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+
+        if self.reserve_pool_id is not None:
+            result['ReservePoolId'] = self.reserve_pool_id
 
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
@@ -381,6 +388,9 @@ class DescribeDesktopsRequest(DaraModel):
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
 
+        if m.get('ReservePoolId') is not None:
+            self.reserve_pool_id = m.get('ReservePoolId')
+
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
 
@@ -407,9 +417,9 @@ class DescribeDesktopsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. If you specify `Tag`, `Key` is required. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`, contain `http://` or `https://`, or consist of only spaces.
+        # The tag key. If you specify `Tag`, `Key` is required. The tag key cannot exceed 128 characters, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`. It also cannot consist of only spaces.
         self.key = key
-        # The tag value. The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`, or contain `http://` or `https://`.
+        # The tag value. The tag value cannot exceed 128 characters, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

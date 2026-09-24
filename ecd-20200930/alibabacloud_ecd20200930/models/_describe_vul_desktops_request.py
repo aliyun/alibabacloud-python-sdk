@@ -9,8 +9,10 @@ from darabonba.model import DaraModel
 class DescribeVulDesktopsRequest(DaraModel):
     def __init__(
         self,
+        connection_status: str = None,
         cve_id: str = None,
         desktop_id_list: List[str] = None,
+        desktop_status: str = None,
         include_fix_result: bool = None,
         language: str = None,
         max_results: int = None,
@@ -25,13 +27,20 @@ class DescribeVulDesktopsRequest(DaraModel):
         status_list: List[str] = None,
         vul_level: str = None,
     ):
-        # The CVE ID.
+        # The connection status of the cloud desktop. Valid values: CONNECTED and DISCONNECTED.
+        self.connection_status = connection_status
+        # The CVE ID of the vulnerability.
         self.cve_id = cve_id
-        # The list of cloud computer IDs.
+        # The list of cloud desktop IDs.
         self.desktop_id_list = desktop_id_list
+        # The running status of the cloud desktop.
+        self.desktop_status = desktop_status
         # Specifies whether to include patch update results.
         self.include_fix_result = include_fix_result
-        # The language type of the returned information.
+        # The language of the returned information. Valid values:
+        # 
+        # - **ch**: Chinese.
+        # - **en**: English.
         self.language = language
         # The number of entries per page in a paged query.
         # 
@@ -41,7 +50,7 @@ class DescribeVulDesktopsRequest(DaraModel):
         self.max_results = max_results
         # The pagination token for the next page.
         self.next_token = next_token
-        # Specifies whether to include only cloud computers on which fix tasks were executed in the current month.
+        # Specifies whether to include only cloud desktops that have had fix tasks executed in the current month.
         self.only_current_month_fix_attempted = only_current_month_fix_attempted
         # The page number of the current page in a paged query.
         self.page_number = page_number
@@ -53,17 +62,17 @@ class DescribeVulDesktopsRequest(DaraModel):
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The region ID used to filter cloud computer information for a specific region.
+        # The region ID used to filter cloud desktop information for a specific region.
         self.search_region_id = search_region_id
         # The list of vulnerability status details.
         self.status_list = status_list
-        # The security level of the intrusion prevention event. Valid values:
+        # The severity level of the intrusion prevention event. Valid values:
         # 
-        # - **low**: Low risk.
-        # - **medium**: Medium risk.
-        # - **critical**: High risk.
+        # - **low**: Low.
+        # - **medium**: Medium.
+        # - **critical**: Critical.
         # 
-        # > If you do not set this parameter, vulnerabilities of all security levels are queried.
+        # > If you do not set this parameter, vulnerabilities of all severity levels are queried.
         self.vul_level = vul_level
 
     def validate(self):
@@ -74,11 +83,17 @@ class DescribeVulDesktopsRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.connection_status is not None:
+            result['ConnectionStatus'] = self.connection_status
+
         if self.cve_id is not None:
             result['CveId'] = self.cve_id
 
         if self.desktop_id_list is not None:
             result['DesktopIdList'] = self.desktop_id_list
+
+        if self.desktop_status is not None:
+            result['DesktopStatus'] = self.desktop_status
 
         if self.include_fix_result is not None:
             result['IncludeFixResult'] = self.include_fix_result
@@ -123,11 +138,17 @@ class DescribeVulDesktopsRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ConnectionStatus') is not None:
+            self.connection_status = m.get('ConnectionStatus')
+
         if m.get('CveId') is not None:
             self.cve_id = m.get('CveId')
 
         if m.get('DesktopIdList') is not None:
             self.desktop_id_list = m.get('DesktopIdList')
+
+        if m.get('DesktopStatus') is not None:
+            self.desktop_status = m.get('DesktopStatus')
 
         if m.get('IncludeFixResult') is not None:
             self.include_fix_result = m.get('IncludeFixResult')

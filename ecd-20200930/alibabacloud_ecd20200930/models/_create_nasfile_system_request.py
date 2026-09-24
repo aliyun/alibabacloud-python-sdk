@@ -7,18 +7,24 @@ from darabonba.model import DaraModel
 class CreateNASFileSystemRequest(DaraModel):
     def __init__(
         self,
+        capacity: int = None,
         description: str = None,
         encrypt_type: str = None,
+        file_system_type: str = None,
         name: str = None,
         office_site_id: str = None,
         protocol_type: str = None,
         region_id: str = None,
         storage_type: str = None,
     ):
+        # The capacity.
+        self.capacity = capacity
         # The description of the NAS file system.
         self.description = description
-        # Specifies whether to use a Key Management Service (KMS) managed key to encrypt data stored in the file system. Encrypted data does not need to be decrypted during read and write operations.
+        # Specifies whether the file system uses a key managed by Key Management Service (KMS) to encrypt data stored on the file system. Encrypted data does not need to be decrypted during read and write operations.
         self.encrypt_type = encrypt_type
+        # The file system type.
+        self.file_system_type = file_system_type
         # The name of the NAS file system. The name must meet the following requirements: The name must be 2 to 128 characters in length and can contain letters and Chinese characters. The name must start with a letter or a Chinese character and cannot start with `http://` or `https://`. The name can contain digits, underscores (_), or hyphens (-).
         self.name = name
         # The office network ID.
@@ -42,11 +48,17 @@ class CreateNASFileSystemRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.capacity is not None:
+            result['Capacity'] = self.capacity
+
         if self.description is not None:
             result['Description'] = self.description
 
         if self.encrypt_type is not None:
             result['EncryptType'] = self.encrypt_type
+
+        if self.file_system_type is not None:
+            result['FileSystemType'] = self.file_system_type
 
         if self.name is not None:
             result['Name'] = self.name
@@ -67,11 +79,17 @@ class CreateNASFileSystemRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Capacity') is not None:
+            self.capacity = m.get('Capacity')
+
         if m.get('Description') is not None:
             self.description = m.get('Description')
 
         if m.get('EncryptType') is not None:
             self.encrypt_type = m.get('EncryptType')
+
+        if m.get('FileSystemType') is not None:
+            self.file_system_type = m.get('FileSystemType')
 
         if m.get('Name') is not None:
             self.name = m.get('Name')

@@ -17,6 +17,7 @@ class ModifyTemplateRequest(DaraModel):
         default_language: str = None,
         description: str = None,
         image_id: str = None,
+        instance_name: str = None,
         period: int = None,
         period_unit: str = None,
         policy_group_id: str = None,
@@ -44,11 +45,13 @@ class ModifyTemplateRequest(DaraModel):
         self.default_language = default_language
         # The description of the template. The description must meet the following requirements:
         # 
-        # - The description must be 2 to 256 characters in length. It cannot start with `http://` or `https://`.
+        # - The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         # - The description can contain Chinese characters, letters, digits, spaces, and special characters. Line breaks are supported.
         self.description = description
-        # The ID of the cloud computer image. You can query the ID on the Image Management page. System images and custom images are supported.
+        # The cloud computer image ID. You can query the ID on the image management page. System images, custom images, and other image types are supported.
         self.image_id = image_id
+        # The instance name.
+        self.instance_name = instance_name
         # The subscription duration of the subscription cloud computer. This parameter takes effect and is required only when `ChargeType` is set to `PrePaid`. The unit is specified by `PeriodUnit`.
         # - If `PeriodUnit` is set to `Month`, valid values:
         #     - 1
@@ -74,15 +77,15 @@ class ModifyTemplateRequest(DaraModel):
         self.region_config_list = region_config_list
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The tags of the cloud computer in key-value format. You can specify up to 20 tags.
+        # The cloud computer tags in key-value format. You can specify up to 20 tags.
         self.resource_tag_list = resource_tag_list
         # The site configuration management.
         self.site_config_list = site_config_list
         # The type of the system cloud disk.
         # 
-        # > Only high frequency and graphics cloud computer specifications support ESSD cloud disks.
+        # > Only high frequency and GPU-accelerated cloud computer specifications support ESSD cloud disks.
         self.system_disk_performance_level = system_disk_performance_level
-        # The size of the system cloud disk. Unit: GiB. Valid values: 40 to 500. The value must be a multiple of 10.
+        # The size of the system cloud disk. Unit: GiB. Valid values: 40 to 500, in increments of 10 GiB.
         # 
         # > The system cloud disk size cannot be smaller than the size of the configured image.
         self.system_disk_size = system_disk_size
@@ -92,13 +95,13 @@ class ModifyTemplateRequest(DaraModel):
         self.template_id = template_id
         # The name of the template. The name must meet the following requirements:
         # 
-        # - The name must be 2 to 126 characters in length.
-        # - The name must start with a letter or a Chinese character. It cannot start with `http://` or `https://`.
+        # - The name must be 2 to 126 characters in length and can contain letters and Chinese characters.
+        # - The name must start with a letter or a Chinese character. The name cannot start with `http://` or `https://`.
         # - The name can contain letters, digits, Chinese characters, colons (:), underscores (_), or hyphens (-). Periods (.) are not supported.
         self.template_name = template_name
         # The configuration group ID.
         self.timer_group_id = timer_group_id
-        # The per-user usage duration plan.
+        # The duration plan for a single user.
         self.user_duration = user_duration
 
     def validate(self):
@@ -146,6 +149,9 @@ class ModifyTemplateRequest(DaraModel):
 
         if self.image_id is not None:
             result['ImageId'] = self.image_id
+
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
 
         if self.period is not None:
             result['Period'] = self.period
@@ -222,6 +228,9 @@ class ModifyTemplateRequest(DaraModel):
 
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
+
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
 
         if m.get('Period') is not None:
             self.period = m.get('Period')
@@ -358,6 +367,7 @@ class ModifyTemplateRequestRegionConfigList(DaraModel):
         resource_instance_type: str = None,
         snapshot_policy_id: str = None,
         subnet_id: str = None,
+        virtual_node_pool_id: str = None,
         volume_encryption_enable: bool = None,
         volume_encryption_key: str = None,
     ):
@@ -367,10 +377,12 @@ class ModifyTemplateRequestRegionConfigList(DaraModel):
         self.region_id = region_id
         # The cloud computer specification ID.
         self.resource_instance_type = resource_instance_type
-        # The ID of the automatic snapshot policy.
+        # The automatic snapshot policy ID.
         self.snapshot_policy_id = snapshot_policy_id
         # The subnet ID.
         self.subnet_id = subnet_id
+        # The virtual node pool ID.
+        self.virtual_node_pool_id = virtual_node_pool_id
         # Specifies whether to enable disk encryption.
         self.volume_encryption_enable = volume_encryption_enable
         # The ID of the KMS key used when disk encryption is enabled.
@@ -399,6 +411,9 @@ class ModifyTemplateRequestRegionConfigList(DaraModel):
         if self.subnet_id is not None:
             result['SubnetId'] = self.subnet_id
 
+        if self.virtual_node_pool_id is not None:
+            result['VirtualNodePoolId'] = self.virtual_node_pool_id
+
         if self.volume_encryption_enable is not None:
             result['VolumeEncryptionEnable'] = self.volume_encryption_enable
 
@@ -424,6 +439,9 @@ class ModifyTemplateRequestRegionConfigList(DaraModel):
         if m.get('SubnetId') is not None:
             self.subnet_id = m.get('SubnetId')
 
+        if m.get('VirtualNodePoolId') is not None:
+            self.virtual_node_pool_id = m.get('VirtualNodePoolId')
+
         if m.get('VolumeEncryptionEnable') is not None:
             self.volume_encryption_enable = m.get('VolumeEncryptionEnable')
 
@@ -440,7 +458,7 @@ class ModifyTemplateRequestDataDiskList(DaraModel):
     ):
         # The performance level of the data cloud disk. Default value: `AutoPL`.
         self.performance_level = performance_level
-        # The size of the data cloud disk. Unit: GiB. Valid values: 40 to 2040. The value must be a multiple of 10.
+        # The size of the data cloud disk. Unit: GiB. Valid values: 40 to 2040, in increments of 10 GiB.
         self.size = size
 
     def validate(self):

@@ -79,30 +79,30 @@ class DescribeInvocationsResponseBodyInvocations(DaraModel):
         self.command_content = command_content
         # The script type.
         self.command_type = command_type
-        # The creation time of the task.
+        # The time when the task was created. The time follows the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
         self.creation_time = creation_time
         # The cloud desktop scenario. Valid values:
-        # - Classic: the classic cloud desktop scenario.
-        # - JvsClaw: the JVS Claw cloud desktop scenario.
+        # - Classic: Classic cloud desktop scenario.
+        # - JvsClaw: JVS Claw cloud desktop scenario.
         self.desktop_scenario = desktop_scenario
         # The end user ID.
         self.end_user_id = end_user_id
-        # The overall execution status of the script. The overall execution status depends on the combined execution status of all cloud desktops in this call. Valid values:
+        # The overall execution status of the script. The overall execution status is determined by the combined execution status of all cloud desktops in this invocation. Valid values:
         # 
         # - Pending: The system is validating or sending the command. The overall execution status is Pending if at least one cloud desktop has a script execution status of Pending.
         # - Running: The command is running on the cloud desktop. The overall execution status is Running if at least one cloud desktop has a script execution status of Running.
         # - Success: The overall execution status is Success if the script execution status on each cloud desktop is Stopped or Success, and at least one cloud desktop has a script execution status of Success.
-        # - Failed: The overall execution status is Failed if the script execution status on each cloud desktop is Stopped or Failed. The return value is Failed when one or more of the following statuses occur on a cloud desktop:
-        #     - Command validation failed (Invalid)
-        #     - Command delivery failed (Aborted)
-        #     - Command execution completed with a non-zero exit code (Failed)
-        #     - Command execution timed out (Timeout)
-        #     - Command execution encountered an exception (Error)
+        # - Failed: The overall execution status is Failed if the script execution status on each cloud desktop is Stopped or Failed. The return value is Failed if one or more of the following statuses occur on a cloud desktop:
+        #     - Command validation failed (Invalid).
+        #     - Command delivery failed (Aborted).
+        #     - Command execution completed but the exit code is non-zero (Failed).
+        #     - Command execution timed out (Timeout).
+        #     - Command execution encountered an exception (Error).
         # - Stopping: The task is being stopped. The overall execution status is Stopping if at least one instance has a script execution status of Stopping.
-        # - Stopped: The task has been stopped. The overall execution status is Stopped if the script execution status on all instances is Stopped. The return value is Stopped when the script execution status on an instance is one of the following:
-        #     - Task cancelled (Cancelled)
-        #     - Task terminated (Terminated)
-        # - PartialFailed: The overall execution status is PartialFailed if some instances succeeded and some instances failed. The overall execution status is PartialFailed if the script execution status on each instance is Success, Failed, or Stopped.
+        # - Stopped: The task is stopped. The overall execution status is Stopped if the script execution status on all instances is Stopped. The return value is Stopped if the script execution status on an instance is one of the following:
+        #     - Task cancelled (Cancelled).
+        #     - Task terminated (Terminated).
+        # - PartialFailed: The overall execution status is PartialFailed if some instances succeeded and some instances failed. The script execution status on each instance is Success, Failed, or Stopped.
         self.invocation_status = invocation_status
         # The total number of cloud desktops on which the script was executed.
         self.invoke_desktop_count = invoke_desktop_count
@@ -214,15 +214,15 @@ class DescribeInvocationsResponseBodyInvocationsInvokeDesktops(DaraModel):
         stop_time: str = None,
         update_time: str = None,
     ):
-        # The creation time of the script process.
+        # The time when the script process was created. The time follows the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
         self.creation_time = creation_time
         # The cloud desktop ID.
         self.desktop_id = desktop_id
         # The cloud desktop name.
         self.desktop_name = desktop_name
-        # The length of the truncated and discarded text after the text length in the Output field exceeded 24 KB.
+        # The length of the truncated and discarded text after the text length in the Output field exceeds 24 KB.
         self.dropped = dropped
-        # The error code indicating the reason for command delivery failure or execution failure. Valid values:
+        # The error code that indicates the reason for a command delivery failure or execution failure. Valid values:
         # 
         # - Empty: The command ran normally.
         # - InstanceNotExists: The specified cloud desktop does not exist or has been released.
@@ -239,7 +239,7 @@ class DescribeInvocationsResponseBodyInvocationsInvokeDesktops(DaraModel):
         # - ExecutionInterrupted: Command execution was interrupted.
         # - ExitCodeNonzero: Command execution completed with a non-zero exit code.
         self.error_code = error_code
-        # The detailed reason for command delivery failure or execution failure. Valid values:
+        # The detailed information about the reason for a command delivery failure or execution failure. Valid values:
         # 
         # - Empty: The command ran normally.
         # - the specified instance does not exists: The specified cloud desktop does not exist or has been released.
@@ -258,24 +258,24 @@ class DescribeInvocationsResponseBodyInvocationsInvokeDesktops(DaraModel):
         self.error_info = error_info
         # The exit code of the script process.
         self.exit_code = exit_code
-        # The end time of the script process.
+        # The time when the script process ended. The time follows the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
         self.finish_time = finish_time
-        # The script process status on a single cloud desktop.
+        # The script execution status on a single cloud desktop.
         self.invocation_status = invocation_status
         # jvs agent id。
         self.jvs_agent_id = jvs_agent_id
-        # The output information of the script process.
+        # The output of the script process.
         # 
-        # - If the request parameter `IncludeOutput` is set to false, Output is not returned.
-        # - If the request parameter `ContentEncoding` is set to Base64, Output is the Base64-encoded output information.
+        # - If the request parameter IncludeOutput is set to false, Output is not returned.
+        # - If the request parameter ContentEncoding is set to Base64, Output is the Base64-encoded output.
         self.output = output
         # The number of times the command was executed on the cloud desktop.
         self.repeats = repeats
-        # The time when the script process started running on the cloud desktop.
+        # The time when the script process started running on the cloud desktop. The time follows the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
         self.start_time = start_time
-        # The time when the execution was stopped, if StopInvocation was called.
+        # The time when the execution was stopped, if StopInvocation was called. The time follows the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
         self.stop_time = stop_time
-        # The update time of the task status.
+        # The time when the task status was last updated. The time follows the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
         self.update_time = update_time
 
     def validate(self):

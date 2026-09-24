@@ -14,11 +14,11 @@ class DescribeRecordFileResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The details of the recording files.
+        # The details of the recording file list.
         self.record_files = record_files
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -64,6 +64,7 @@ class DescribeRecordFileResponseBody(DaraModel):
 class DescribeRecordFileResponseBodyRecordFiles(DaraModel):
     def __init__(
         self,
+        audit_status: List[str] = None,
         desktop_id: str = None,
         desktop_name: str = None,
         end_user_id: str = None,
@@ -80,25 +81,27 @@ class DescribeRecordFileResponseBodyRecordFiles(DaraModel):
         resource_group_name: str = None,
         status: int = None,
     ):
+        # The audit status list.
+        self.audit_status = audit_status
         # The Cloud Desktop ID.
         self.desktop_id = desktop_id
-        # The name of the Cloud Desktop.
+        # The Cloud Desktop name.
         self.desktop_name = desktop_name
         # The name of the end user.
         self.end_user_id = end_user_id
         # The event details.
         self.event_details = event_details
-        # The name of the file.
+        # The file name.
         self.file_name = file_name
-        # The size of the file. Unit: bytes.
+        # The file size. Unit: bytes.
         self.file_size = file_size
         # The ID of the control policy.
         self.policy_id = policy_id
-        # The time when the recording ended. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+        # The recording end time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
         self.record_end_time = record_end_time
         # The expiration time of the screen recording file.
         self.record_expire = record_expire
-        # The time when the recording started. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+        # The recording start time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
         self.record_start_time = record_start_time
         # The type of the screen recording file. Valid values:
         # 
@@ -115,8 +118,8 @@ class DescribeRecordFileResponseBodyRecordFiles(DaraModel):
         self.resource_group_name = resource_group_name
         # The status of the screen recording file. Valid values:
         # 
-        # - 0: uploaded.
-        # - 1: uploading.
+        # - 0: Upload succeeded.
+        # - 1: Uploading.
         self.status = status
 
     def validate(self):
@@ -130,6 +133,9 @@ class DescribeRecordFileResponseBodyRecordFiles(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.audit_status is not None:
+            result['AuditStatus'] = self.audit_status
+
         if self.desktop_id is not None:
             result['DesktopId'] = self.desktop_id
 
@@ -181,6 +187,9 @@ class DescribeRecordFileResponseBodyRecordFiles(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AuditStatus') is not None:
+            self.audit_status = m.get('AuditStatus')
+
         if m.get('DesktopId') is not None:
             self.desktop_id = m.get('DesktopId')
 

@@ -16,18 +16,15 @@ class DeleteTemplatesResponseBody(DaraModel):
     ):
         # The details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # The operation result. The value `success` indicates success. Otherwise, an error message is returned.
+        # The operation result. A value of `success` indicates success. Otherwise, an error message is returned.
         self.code = code
         # The error code description.
         self.http_status_code = http_status_code
-        # The error message. This parameter is not returned when Code is `success`.
+        # The error message. This parameter is not returned if Code is `success`.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
-        # 
-        # - true: The call was successful.
-        # - false: The call failed.
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):

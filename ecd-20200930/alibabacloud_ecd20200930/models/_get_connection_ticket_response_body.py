@@ -15,11 +15,11 @@ class GetConnectionTicketResponseBody(DaraModel):
         task_status: str = None,
         ticket: str = None,
     ):
-        # The cloud computer ID.
+        # The ID of the cloud computer.
         self.desktop_id = desktop_id
         # The request ID.
         self.request_id = request_id
-        # The ticket used to connect to the user instance. Before you use the ticket, Base64-decode its content and save it as an xxx.ica file, and then open the file. The following Python code provides an example:
+        # The ticket used to connect to the user instance. Before you use the ticket, Base64-decode its content, save the decoded content as an xxx.ica file, and then open the file. Python code example:
         # 
         # ```
         # import base64
@@ -39,7 +39,7 @@ class GetConnectionTicketResponseBody(DaraModel):
         self.task_message = task_message
         # The task status.
         self.task_status = task_status
-        # The connection credential for the cloud computer.
+        # The connection credential of the cloud computer.
         self.ticket = ticket
 
     def validate(self):

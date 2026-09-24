@@ -11,6 +11,7 @@ class CreateNASFileSystemResponseBody(DaraModel):
         file_system_name: str = None,
         mount_target_domain: str = None,
         office_site_id: str = None,
+        protocol_type: str = None,
         request_id: str = None,
     ):
         # The NAS file system ID.
@@ -21,6 +22,8 @@ class CreateNASFileSystemResponseBody(DaraModel):
         self.mount_target_domain = mount_target_domain
         # The office network ID.
         self.office_site_id = office_site_id
+        # The protocol type.
+        self.protocol_type = protocol_type
         # The request ID.
         self.request_id = request_id
 
@@ -44,6 +47,9 @@ class CreateNASFileSystemResponseBody(DaraModel):
         if self.office_site_id is not None:
             result['OfficeSiteId'] = self.office_site_id
 
+        if self.protocol_type is not None:
+            result['ProtocolType'] = self.protocol_type
+
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
@@ -62,6 +68,9 @@ class CreateNASFileSystemResponseBody(DaraModel):
 
         if m.get('OfficeSiteId') is not None:
             self.office_site_id = m.get('OfficeSiteId')
+
+        if m.get('ProtocolType') is not None:
+            self.protocol_type = m.get('ProtocolType')
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')

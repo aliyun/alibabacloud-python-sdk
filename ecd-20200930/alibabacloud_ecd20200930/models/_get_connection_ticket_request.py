@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class GetConnectionTicketRequest(DaraModel):
     def __init__(
         self,
+        client_type: str = None,
         command_content: str = None,
         desktop_id: str = None,
         end_user_id: str = None,
@@ -18,12 +19,14 @@ class GetConnectionTicketRequest(DaraModel):
         task_id: str = None,
         uuid: str = None,
     ):
-        # Specifies a custom user-mode application that is automatically started after the credential is obtained.
+        # The client type.
+        self.client_type = client_type
+        # The custom user-mode application to configure. After the credential is obtained, the application is automatically started.
         # 
-        # - appPath: a value of the String type that specifies the application startup file path, such as `"C:\\Program Files (x86)\\000\\000.exe"`. Use double backslashes (\\\\) as path separators.
-        # - appParameter: a value of the String type that specifies the application startup parameters, such as `"meetingid 000 meetingname aaa"`. Separate parameters with spaces.
+        # - appPath: a value of the STRING type that specifies the path of the application startup file. Example: `"C:\\Program Files (x86)\\000\\000.exe"`. Use double backslashes (\\\\) as path separators.
+        # - appParameter: a value of the STRING type that specifies the application startup parameters. Example: `"meetingid 000 meetingname aaa"`. Separate parameters with spaces.
         self.command_content = command_content
-        # The ID of the cloud computer for which to generate a connection credential. This parameter is required to generate the credential.
+        # The ID of the cloud computer for which you want to generate a connection credential. This parameter is required to generate the credential.
         self.desktop_id = desktop_id
         # The username of the authorized user of the cloud computer. You must specify an existing authorized user of the cloud computer to generate the credential.
         self.end_user_id = end_user_id
@@ -49,6 +52,9 @@ class GetConnectionTicketRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.client_type is not None:
+            result['ClientType'] = self.client_type
+
         if self.command_content is not None:
             result['CommandContent'] = self.command_content
 
@@ -83,6 +89,9 @@ class GetConnectionTicketRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientType') is not None:
+            self.client_type = m.get('ClientType')
+
         if m.get('CommandContent') is not None:
             self.command_content = m.get('CommandContent')
 

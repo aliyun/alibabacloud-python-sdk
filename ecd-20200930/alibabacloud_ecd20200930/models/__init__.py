@@ -568,6 +568,9 @@ from ._export_desktop_group_info_response import ExportDesktopGroupInfoResponse
 from ._export_desktop_list_info_request import ExportDesktopListInfoRequest
 from ._export_desktop_list_info_response_body import ExportDesktopListInfoResponseBody
 from ._export_desktop_list_info_response import ExportDesktopListInfoResponse
+from ._get_aggregated_desktops_request import GetAggregatedDesktopsRequest
+from ._get_aggregated_desktops_response_body import GetAggregatedDesktopsResponseBody
+from ._get_aggregated_desktops_response import GetAggregatedDesktopsResponse
 from ._get_async_task_request import GetAsyncTaskRequest
 from ._get_async_task_response_body import GetAsyncTaskResponseBody
 from ._get_async_task_response import GetAsyncTaskResponse
@@ -782,6 +785,9 @@ from ._move_cds_file_response import MoveCdsFileResponse
 from ._query_active_user_statistic_request import QueryActiveUserStatisticRequest
 from ._query_active_user_statistic_response_body import QueryActiveUserStatisticResponseBody
 from ._query_active_user_statistic_response import QueryActiveUserStatisticResponse
+from ._query_auth_user_connect_duration_list_request import QueryAuthUserConnectDurationListRequest
+from ._query_auth_user_connect_duration_list_response_body import QueryAuthUserConnectDurationListResponseBody
+from ._query_auth_user_connect_duration_list_response import QueryAuthUserConnectDurationListResponse
 from ._query_end_user_history_usage_request import QueryEndUserHistoryUsageRequest
 from ._query_end_user_history_usage_response_body import QueryEndUserHistoryUsageResponseBody
 from ._query_end_user_history_usage_response import QueryEndUserHistoryUsageResponse
@@ -1144,6 +1150,7 @@ from ._disconnect_desktop_sessions_response_body import DisconnectDesktopSession
 from ._download_cds_file_response_body import DownloadCdsFileResponseBodyDownloadFileModel
 from ._export_desktop_group_info_request import ExportDesktopGroupInfoRequestTag
 from ._export_desktop_list_info_request import ExportDesktopListInfoRequestTag
+from ._get_aggregated_desktops_response_body import GetAggregatedDesktopsResponseBodyAggregations
 from ._get_async_task_response_body import GetAsyncTaskResponseBodyData
 from ._get_desktop_group_detail_response_body import GetDesktopGroupDetailResponseBodyDesktopsScaleTimerInfos
 from ._get_desktop_group_detail_response_body import GetDesktopGroupDetailResponseBodyDesktopsTimerInfos
@@ -1201,6 +1208,7 @@ from ._modify_timer_group_request import ModifyTimerGroupRequestConfigTimersSegm
 from ._modify_timer_group_request import ModifyTimerGroupRequestConfigTimers
 from ._move_cds_file_response_body import MoveCdsFileResponseBodyMoveCdsFileModel
 from ._query_active_user_statistic_response_body import QueryActiveUserStatisticResponseBodyUserStatisticList
+from ._query_auth_user_connect_duration_list_response_body import QueryAuthUserConnectDurationListResponseBodyAuthUserConnectDurationList
 from ._query_end_user_history_usage_response_body import QueryEndUserHistoryUsageResponseBodyUserUsageInfoListDesktopUsageList
 from ._query_end_user_history_usage_response_body import QueryEndUserHistoryUsageResponseBodyUserUsageInfoListUserGroupList
 from ._query_end_user_history_usage_response_body import QueryEndUserHistoryUsageResponseBodyUserUsageInfoList
@@ -1791,6 +1799,9 @@ __all__ = [
     ExportDesktopListInfoRequest,
     ExportDesktopListInfoResponseBody,
     ExportDesktopListInfoResponse,
+    GetAggregatedDesktopsRequest,
+    GetAggregatedDesktopsResponseBody,
+    GetAggregatedDesktopsResponse,
     GetAsyncTaskRequest,
     GetAsyncTaskResponseBody,
     GetAsyncTaskResponse,
@@ -2005,6 +2016,9 @@ __all__ = [
     QueryActiveUserStatisticRequest,
     QueryActiveUserStatisticResponseBody,
     QueryActiveUserStatisticResponse,
+    QueryAuthUserConnectDurationListRequest,
+    QueryAuthUserConnectDurationListResponseBody,
+    QueryAuthUserConnectDurationListResponse,
     QueryEndUserHistoryUsageRequest,
     QueryEndUserHistoryUsageResponseBody,
     QueryEndUserHistoryUsageResponse,
@@ -2367,6 +2381,7 @@ __all__ = [
     DownloadCdsFileResponseBodyDownloadFileModel,
     ExportDesktopGroupInfoRequestTag,
     ExportDesktopListInfoRequestTag,
+    GetAggregatedDesktopsResponseBodyAggregations,
     GetAsyncTaskResponseBodyData,
     GetDesktopGroupDetailResponseBodyDesktopsScaleTimerInfos,
     GetDesktopGroupDetailResponseBodyDesktopsTimerInfos,
@@ -2424,6 +2439,7 @@ __all__ = [
     ModifyTimerGroupRequestConfigTimers,
     MoveCdsFileResponseBodyMoveCdsFileModel,
     QueryActiveUserStatisticResponseBodyUserStatisticList,
+    QueryAuthUserConnectDurationListResponseBodyAuthUserConnectDurationList,
     QueryEndUserHistoryUsageResponseBodyUserUsageInfoListDesktopUsageList,
     QueryEndUserHistoryUsageResponseBodyUserUsageInfoListUserGroupList,
     QueryEndUserHistoryUsageResponseBodyUserUsageInfoList,

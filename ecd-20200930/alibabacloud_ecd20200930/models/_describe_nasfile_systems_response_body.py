@@ -14,9 +14,9 @@ class DescribeNASFileSystemsResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The NAS file system information.
+        # The NAS file system information list.
         self.file_systems = file_systems
-        # The pagination token for the next query. If NextToken is empty, no more results exist.
+        # The pagination token for the next query. An empty value indicates that no more results exist.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -66,6 +66,7 @@ class DescribeNASFileSystemsResponseBodyFileSystems(DaraModel):
         self,
         allow_operate_user_drive: bool = None,
         app_instance_groups: List[main_models.DescribeNASFileSystemsResponseBodyFileSystemsAppInstanceGroups] = None,
+        bandwidth: int = None,
         capacity: int = None,
         create_time: str = None,
         description: str = None,
@@ -95,12 +96,14 @@ class DescribeNASFileSystemsResponseBodyFileSystems(DaraModel):
         self.allow_operate_user_drive = allow_operate_user_drive
         # The list of cloud application delivery group objects bound to the UPM-supported NAS file system.
         self.app_instance_groups = app_instance_groups
+        # The bandwidth.
+        self.bandwidth = bandwidth
         # The total capacity of the NAS file system. Unit: GiB.
         # 
         # - If the storage type is Capacity, the capacity is fixed at 10 PiB (10485760 GiB).
         # - If the storage type is Performance, the capacity is fixed at 1 PiB (1048576 GiB).
         self.capacity = capacity
-        # The time when the NAS file system was created.
+        # The time when the NAS file system was created. The time is in the ISO 8601 format in UTC.
         self.create_time = create_time
         # The description of the NAS file system.
         self.description = description
@@ -128,6 +131,7 @@ class DescribeNASFileSystemsResponseBodyFileSystems(DaraModel):
         self.office_site_name = office_site_name
         # The list of office networks.
         self.office_sites = office_sites
+        # The product type of the NAS file system.
         self.product_type = product_type
         # Indicates whether the User Profile Management (UPM) feature is supported.
         self.profile_compatible = profile_compatible
@@ -140,12 +144,13 @@ class DescribeNASFileSystemsResponseBodyFileSystems(DaraModel):
         self.region_id = region_id
         # The storage mode of the NAS file system.
         self.scene = scene
+        # The capacity quota of the NAS file system.
         self.size_quota = size_quota
         # The storage type of the NAS file system.
         self.storage_type = storage_type
         # Indicates whether the SMB ACL feature is supported.
         self.support_acl = support_acl
-        # The zone ID.
+        # The zone.
         self.zone_id = zone_id
 
     def validate(self):
@@ -174,6 +179,9 @@ class DescribeNASFileSystemsResponseBodyFileSystems(DaraModel):
         if self.app_instance_groups is not None:
             for k1 in self.app_instance_groups:
                 result['AppInstanceGroups'].append(k1.to_map() if k1 else None)
+
+        if self.bandwidth is not None:
+            result['Bandwidth'] = self.bandwidth
 
         if self.capacity is not None:
             result['Capacity'] = self.capacity
@@ -263,6 +271,9 @@ class DescribeNASFileSystemsResponseBodyFileSystems(DaraModel):
             for k1 in m.get('AppInstanceGroups'):
                 temp_model = main_models.DescribeNASFileSystemsResponseBodyFileSystemsAppInstanceGroups()
                 self.app_instance_groups.append(temp_model.from_map(k1))
+
+        if m.get('Bandwidth') is not None:
+            self.bandwidth = m.get('Bandwidth')
 
         if m.get('Capacity') is not None:
             self.capacity = m.get('Capacity')

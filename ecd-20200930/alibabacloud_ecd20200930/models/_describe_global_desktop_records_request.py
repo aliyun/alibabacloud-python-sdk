@@ -30,8 +30,8 @@ class DescribeGlobalDesktopRecordsRequest(DaraModel):
         user_names: List[str] = None,
     ):
         # The business channel. Valid values:
-        # Enterprise: Enterprise Edition.
-        # Business: Business Edition.
+        # - Enterprise: Enterprise Edition.
+        # - Business: Business Edition.
         self.business_channel = business_channel
         # The cloud desktop ID. You can specify 1 to 100 IDs.
         self.desktop_id = desktop_id
@@ -39,9 +39,9 @@ class DescribeGlobalDesktopRecordsRequest(DaraModel):
         self.desktop_name = desktop_name
         # The list of cloud desktop statuses to include.
         self.desktop_status_list = desktop_status_list
-        # The cloud desktop specifications. You can call [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) to query the supported specification IDs for cloud desktops.
+        # The cloud desktop specifications. You can call [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) to query the specification IDs supported by cloud desktops.
         self.desktop_type = desktop_type
-        # The end time. The maximum interval between the start time and end time is 30 days. Supported format:
+        # The end time. The interval between the start time and end time cannot exceed 30 days. Supported format:
         # - Format: YYYY-MM-DDThh:mm:ssZ.
         self.end_time = end_time
         # The end user ID.
@@ -50,11 +50,11 @@ class DescribeGlobalDesktopRecordsRequest(DaraModel):
         self.exclude_desktop_status_list = exclude_desktop_status_list
         # The office network ID.
         self.office_site_id = office_site_id
-        # The sort field. If not specified, results are sorted by creation time in descending order. Valid values:
+        # The sort field. If this parameter is not specified, results are sorted by creation time in descending order. Valid values:
         # 
         # - uptime: sorts by cloud desktop uptime.
         self.order_by = order_by
-        # The page number of the current page when using paging.    
+        # The page number of the current page in a paged query.    
         # Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Maximum value: 100.
@@ -71,7 +71,7 @@ class DescribeGlobalDesktopRecordsRequest(DaraModel):
         # 
         # - ADVANCED: queries statistical records such as connection duration.
         self.scope = scope
-        # The sort order. Default value: ascending order. Valid values:
+        # The sort order. Default value: Asc. Valid values:
         # - Asc: ascending order.
         # - Desc: descending order.
         self.sort_type = sort_type
