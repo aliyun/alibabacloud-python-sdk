@@ -14,10 +14,15 @@ class AiTryOnResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code. This parameter is not returned if the call is successful.
         self.code = code
+        # The result struct.
         self.data = data
+        # The error message. This parameter is not returned if the call is successful.
         self.message = message
+        # The request ID. Used to uniquely identify a request.
         self.request_id = request_id
+        # Indicates whether the call is successful. Valid values: true and false.
         self.success = success
 
     def validate(self):
@@ -74,9 +79,13 @@ class AiTryOnResponseBodyData(DaraModel):
         image_width: str = None,
         usage_map: main_models.AiTryOnResponseBodyDataUsageMap = None,
     ):
+        # The height of the result image, in pixels.
         self.image_height = image_height
+        # The URL of the virtual try-on result image.
         self.image_url = image_url
+        # The width of the result image, in pixels.
         self.image_width = image_width
+        # The usage details.
         self.usage_map = usage_map
 
     def validate(self):
@@ -127,7 +136,9 @@ class AiTryOnResponseBodyDataUsageMap(DaraModel):
         processed_image_count: int = None,
         resolution: str = None,
     ):
+        # The number of processed images.
         self.processed_image_count = processed_image_count
+        # The resolution of the processed image.
         self.resolution = resolution
 
     def validate(self):

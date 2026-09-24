@@ -1725,6 +1725,8 @@ class Client(OpenApiClient):
             query['ImageUrl'] = request.image_url
         if not DaraCore.is_null(request.rag_id):
             query['RagId'] = request.rag_id
+        if not DaraCore.is_null(request.rule):
+            query['Rule'] = request.rule
         if not DaraCore.is_null(request.type):
             query['Type'] = request.type
         req = open_api_util_models.OpenApiRequest(
@@ -1759,6 +1761,8 @@ class Client(OpenApiClient):
             query['ImageUrl'] = request.image_url
         if not DaraCore.is_null(request.rag_id):
             query['RagId'] = request.rag_id
+        if not DaraCore.is_null(request.rule):
+            query['Rule'] = request.rule
         if not DaraCore.is_null(request.type):
             query['Type'] = request.type
         req = open_api_util_models.OpenApiRequest(

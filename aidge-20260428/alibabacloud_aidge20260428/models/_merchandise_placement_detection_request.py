@@ -10,6 +10,7 @@ class MerchandisePlacementDetectionRequest(DaraModel):
         api_id: str = None,
         image_url: str = None,
         rag_id: str = None,
+        rule: str = None,
         type: str = None,
     ):
         # Specify this parameter to use a custom API version. If you created a custom API during the trial phase, you can find the corresponding ApiId in the product console under **Intelligent Inspection > API Management > My APIs**.
@@ -20,6 +21,7 @@ class MerchandisePlacementDetectionRequest(DaraModel):
         self.image_url = image_url
         # The ID of the customer-specific SKU vector library, which determines which library is used for recall. The library must be created in advance through the library creation process.
         self.rag_id = rag_id
+        self.rule = rule
         # The business type (reserved for future routing by business line). The current release supports skincare.
         self.type = type
 
@@ -40,6 +42,9 @@ class MerchandisePlacementDetectionRequest(DaraModel):
         if self.rag_id is not None:
             result['RagId'] = self.rag_id
 
+        if self.rule is not None:
+            result['Rule'] = self.rule
+
         if self.type is not None:
             result['Type'] = self.type
 
@@ -55,6 +60,9 @@ class MerchandisePlacementDetectionRequest(DaraModel):
 
         if m.get('RagId') is not None:
             self.rag_id = m.get('RagId')
+
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
 
         if m.get('Type') is not None:
             self.type = m.get('Type')

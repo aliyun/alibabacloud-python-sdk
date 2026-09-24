@@ -1,3 +1,7 @@
+2026-09-24 Version: 5.7.1
+- Update API MerchandisePlacementDetection: add request parameters Rule.
+
+
 2026-09-20 Version: 5.7.0
 - Support API AiTryOn.
 
