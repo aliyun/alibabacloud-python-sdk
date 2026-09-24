@@ -31,7 +31,7 @@ class AddModelApplicationShrinkRequest(DaraModel):
         tts_config_shrink: str = None,
         usage_desc: str = None,
     ):
-        # The number of concurrent requests per second (CPS).
+        # The number of concurrent requests for the application.
         # 
         # This parameter is required.
         self.application_cps = application_cps
@@ -39,9 +39,9 @@ class AddModelApplicationShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.application_name = application_name
-        # Specifies whether to push an event notification when a call is connected. The default value is false.
+        # Specifies whether to enable call-connected event push. Disabled by default.
         self.call_connected_trigger_model = call_connected_trigger_model
-        # The scene name.
+        # The scenario name.
         self.dyvms_scene_name = dyvms_scene_name
         # The model code.
         # 
@@ -53,36 +53,36 @@ class AddModelApplicationShrinkRequest(DaraModel):
         self.mute_active = mute_active
         # The mute duration.
         self.mute_duration = mute_duration
-        # The number of consecutive mute events that trigger an automatic hang-up.
+        # The number of consecutive mute events before the system proactively hangs up the call.
         self.mute_hangup_num = mute_hangup_num
         self.owner_id = owner_id
         # The prompt.
         self.prompt = prompt
         # The qualification ID.
         self.qualification_id = qualification_id
-        # The name of the qualification.
+        # The qualification name.
         self.qualification_name = qualification_name
-        # The URL of the audio file for the opening line. This parameter is required if `StartWordType` is set to `1`.
+        # The URL of the recorded audio file for the opening statement. This parameter is required when the opening statement type is set to 1.
         self.recording_file = recording_file
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The source. The value must be `USER`.
+        # The source. Fixed value: USER.
         self.source = source
         # The speech script content.
         self.speech_content = speech_content
         # The speech script ID.
         self.speech_id = speech_id
-        # The opening line.
+        # The opening statement.
         # 
         # This parameter is required.
         self.start_word = start_word
-        # The type of the opening line.
+        # The type of the opening statement.
         self.start_word_type = start_word_type
-        # The TTS configuration, including voice, volume, speech speed, and more.
+        # The text-to-speech (TTS) configuration, including voice, volume, and speed.
         # 
         # This parameter is required.
         self.tts_config_shrink = tts_config_shrink
-        # The purpose of the application.
+        # The usage description.
         self.usage_desc = usage_desc
 
     def validate(self):

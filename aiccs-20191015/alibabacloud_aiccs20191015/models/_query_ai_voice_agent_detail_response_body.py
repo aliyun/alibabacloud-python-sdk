@@ -17,20 +17,18 @@ class QueryAiVoiceAgentDetailResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The detailed reason why the access was denied.
+        # The detailed reason why access was denied.
         self.access_denied_detail = access_denied_detail
-        # Status code.
+        # The status code.
         self.code = code
-        # The details of the agent.
+        # The agent details.
         self.data = data
-        # The description of the status code.
+        # The status code description.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the API call is successful. Possible values:
-        # 
-        # - **true**: The operation was successful.
-        # 
+        # Indicates whether the API call is successful. Valid values:
+        # - **true**: Successful.
         # - **false**: Failed.
         self.success = success
 
@@ -99,23 +97,23 @@ class QueryAiVoiceAgentDetailResponseBodyData(DaraModel):
         status: int = None,
         voice_style_name: str = None,
     ):
-        # The ID of the agent.
+        # The agent ID.
         self.agent_id = agent_id
-        # The name of the agent.
+        # The agent name.
         self.agent_name = agent_name
-        # The voice configuration for AI-powered outbound calls.
+        # The intelligent outbound call voice configuration.
         self.ai_voice_agent_call_config = ai_voice_agent_call_config
-        # The model configuration for the agent.
+        # The agent model configuration.
         self.ai_voice_agent_model_config = ai_voice_agent_model_config
-        # The name of the business scenario.
+        # The business scenario name.
         self.business_type_name = business_type_name
-        # The description of the agent.
+        # The agent description.
         self.description = description
-        # The name of the knowledge base.
+        # The knowledge base name.
         self.knowledge_name = knowledge_name
-        # The status of the agent.
+        # The agent status.
         self.status = status
-        # The name of the voice style.
+        # The language style name.
         self.voice_style_name = voice_style_name
 
     def validate(self):
@@ -219,23 +217,23 @@ class QueryAiVoiceAgentDetailResponseBodyDataAiVoiceAgentModelConfig(DaraModel):
         task_type: str = None,
         user_role: str = None,
     ):
-        # The configuration for the basic task.
+        # The basic task configuration.
         self.basic_task_description = basic_task_description
         # The business scenario.
         self.business_type = business_type
         # The list of subtask configurations.
         self.child_task_list = child_task_list
-        # Specifies whether custom exception handling is enabled.
+        # Indicates whether custom exception handling is enabled.
         self.custom_exception_enable = custom_exception_enable
-        # The ID of the custom exception file.
+        # The custom exception file ID.
         self.custom_exception_file_id = custom_exception_file_id
         # The name of the custom exception file.
         self.custom_exception_file_name = custom_exception_file_name
-        # This parameter is deprecated and will be removed in a future release.
+        # **[Deprecated]** This field is deprecated and will be removed in the future.
         self.custom_exception_list = custom_exception_list
-        # This parameter is deprecated and will be removed in a future release.
+        # **[Deprecated]** This field is deprecated and will be removed in the future.
         self.custom_exception_url_path = custom_exception_url_path
-        # The voice style.
+        # The language style.
         self.custom_exception_voice_style = custom_exception_voice_style
         # The description of the advanced task flow.
         self.flow_desc = flow_desc
@@ -243,21 +241,23 @@ class QueryAiVoiceAgentDetailResponseBodyDataAiVoiceAgentModelConfig(DaraModel):
         self.knowledge_doc_id_list = knowledge_doc_id_list
         # The list of knowledge document names.
         self.knowledge_doc_name_list = knowledge_doc_name_list
-        # A list of original file names for the knowledge base documents.
+        # The list of original file names of knowledge base documents.
         self.knowledge_doc_original_name_list = knowledge_doc_original_name_list
-        # Specifies whether the agent is associated with a knowledge base.
+        # Indicates whether a knowledge base is associated.
         self.knowledge_enable = knowledge_enable
-        # The ID of the knowledge base.
+        # The knowledge base ID.
         self.knowledge_id = knowledge_id
         # The main intent configuration.
         self.main_purpose = main_purpose
-        # The output tag configuration.
+        # The output tag configurations.
         self.output_tag_config = output_tag_config
         # The call variable configuration.
         self.phone_tag_config = phone_tag_config
         # The opening statement.
         self.prologue = prologue
+        # The URL of the opening greeting recording audio file. This field has a value only when StartWordType is set to 1.
         self.recording_file = recording_file
+        # The opening statement type. Valid values: 0: text. 1: recording.
         self.start_word_type = start_word_type
         # The system role.
         self.sys_role = sys_role
@@ -476,18 +476,19 @@ class QueryAiVoiceAgentDetailResponseBodyDataAiVoiceAgentModelConfigPhoneTagConf
     ):
         # The unique ID of the variable.
         self.id = id
-        # The description of the variable.
+        # The variable description.
         self.phone_tag_description = phone_tag_description
-        # A list of enumerated values for the variable. This parameter is returned only if the value of `PhoneTagType` is `ENUM`.
+        # The list of enumeration values for the variable. This field is present only when the variable value type is ENUM.
         self.phone_tag_enum = phone_tag_enum
-        # The key of the variable.
+        # The variable key name.
         self.phone_tag_key = phone_tag_key
-        # The name of the variable.
+        # The Chinese name of the variable.
         self.phone_tag_name = phone_tag_name
-        # Specifies whether the variable is required.
+        # Indicates whether the variable is required.
         self.phone_tag_required = phone_tag_required
+        # The source of the call variable.
         self.phone_tag_source = phone_tag_source
-        # The data type of the variable.
+        # The variable value type.
         self.phone_tag_type = phone_tag_type
 
     def validate(self):
@@ -567,11 +568,11 @@ class QueryAiVoiceAgentDetailResponseBodyDataAiVoiceAgentModelConfigPhoneTagConf
         id: str = None,
         value: str = None,
     ):
-        # The description of the enumerated value.
+        # The description of the enumeration value.
         self.description = description
-        # The unique ID of the enumerated value.
+        # The unique ID of the enum value.
         self.id = id
-        # The enumerated value.
+        # The enumeration value.
         self.value = value
 
     def validate(self):
@@ -617,13 +618,13 @@ class QueryAiVoiceAgentDetailResponseBodyDataAiVoiceAgentModelConfigOutputTagCon
     ):
         # The unique ID of the tag.
         self.id = id
-        # The description of the tag.
+        # The tag description.
         self.output_tag_description = output_tag_description
-        # The enumerated values for the tag. This parameter is returned only if the value of `OutputTagType` is `ENUM`.
+        # The tag enum values. This field is available only when the tag value type is ENUM.
         self.output_tag_enum = output_tag_enum
-        # The name of the tag.
+        # The tag name.
         self.output_tag_name = output_tag_name
-        # The data type of the tag.
+        # The tag value type.
         self.output_tag_type = output_tag_type
 
     def validate(self):
@@ -685,11 +686,11 @@ class QueryAiVoiceAgentDetailResponseBodyDataAiVoiceAgentModelConfigOutputTagCon
         id: str = None,
         value: str = None,
     ):
-        # The description of the enumerated value.
+        # The description of the tag enum value.
         self.description = description
-        # The unique ID of the enumerated value.
+        # The unique ID of the tag enum value.
         self.id = id
-        # The enumerated value.
+        # The tag enum value.
         self.value = value
 
     def validate(self):
@@ -733,15 +734,15 @@ class QueryAiVoiceAgentDetailResponseBodyDataAiVoiceAgentModelConfigMainPurpose(
         main_purpose_name: str = None,
         main_purpose_type: str = None,
     ):
-        # The ID of the main intent.
+        # The main intent ID.
         self.id = id
         # The description of the main intent.
         self.main_purpose_description = main_purpose_description
         # The list of valid values for the main intent.
         self.main_purpose_enum = main_purpose_enum
-        # The name of the main intent.
+        # The main intent name.
         self.main_purpose_name = main_purpose_name
-        # The value type of the main intent. Currently, only the `ENUM` type is supported.
+        # The value type of the main intent. Currently, only the ENUM type is supported.
         self.main_purpose_type = main_purpose_type
 
     def validate(self):
@@ -803,11 +804,11 @@ class QueryAiVoiceAgentDetailResponseBodyDataAiVoiceAgentModelConfigMainPurposeM
         id: str = None,
         value: str = None,
     ):
-        # The description of the value.
+        # The description of the valid value.
         self.description = description
-        # The unique ID of the value.
+        # The unique ID of the valid value.
         self.id = id
-        # The value.
+        # The valid value.
         self.value = value
 
     def validate(self):
@@ -850,11 +851,11 @@ class QueryAiVoiceAgentDetailResponseBodyDataAiVoiceAgentModelConfigCustomExcept
         reply: str = None,
         support_break: bool = None,
     ):
-        # Specifies whether to output the content as an exception tag.
+        # Specifies whether to output as an exception tag.
         self.exception_sign = exception_sign
         # The exception type.
         self.exception_type = exception_type
-        # The reply.
+        # The reply content.
         self.reply = reply
         # Specifies whether interruption is supported.
         self.support_break = support_break
@@ -904,9 +905,9 @@ class QueryAiVoiceAgentDetailResponseBodyDataAiVoiceAgentModelConfigChildTaskLis
         child_task_name: str = None,
         id: str = None,
     ):
-        # The description of the subtask.
+        # The subtask description.
         self.child_task_description = child_task_description
-        # The name of the subtask.
+        # The subtask name.
         self.child_task_name = child_task_name
         # The unique ID of the subtask.
         self.id = id
@@ -954,7 +955,7 @@ class QueryAiVoiceAgentDetailResponseBodyDataAiVoiceAgentCallConfig(DaraModel):
         self.event_config = event_config
         # The TTS configuration.
         self.tts_config = tts_config
-        # The ID of the hotword.
+        # The hot word ID.
         self.vocab_id = vocab_id
 
     def validate(self):
@@ -1008,26 +1009,32 @@ class QueryAiVoiceAgentDetailResponseBodyDataAiVoiceAgentCallConfigTtsConfig(Dar
         voice_code: str = None,
         voice_type: str = None,
     ):
+        # Indicates whether background sound is enabled.
         self.background_enabled = background_enabled
+        # The background sound ID.
         self.background_sound = background_sound
+        # The background sound volume. Valid values: 0: low. 1: medium. 2: high.
         self.background_volume = background_volume
+        # Indicates whether audio mixing is enabled.
         self.mixing_enabled = mixing_enabled
+        # The mixing template ID.
         self.mixing_template = mixing_template
-        # The TTS speech rate.
+        # The voice speed during TTS playback.
         # 
+        # > 
         # > - Valid values: -200 to 200. Default value: 0.
-        # >
-        # > - If this parameter is not specified, the speech rate configured for the large model application is used.
+        # > - If no value is specified, the voice speed configured in the large model application is used by default.
         self.tts_speed = tts_speed
         # The voice style.
         self.tts_style = tts_style
         # The TTS playback volume.
-        # 
+        # > 
         # > - Valid values: 0 to 100. Default value: 0.
-        # >
-        # > - If this parameter is not specified, the volume configured for the large model application is used.
+        # > - If no value is specified, the volume configured in the large model application is used by default.
         self.tts_volume = tts_volume
+        # The voice code.
         self.voice_code = voice_code
+        # The voice type. Valid values: SYSTEM: system voice. COSYCLONE: cloned voice. BL-CUSTOM: custom premium cloned voice.
         self.voice_type = voice_type
 
     def validate(self):
@@ -1114,29 +1121,26 @@ class QueryAiVoiceAgentDetailResponseBodyDataAiVoiceAgentCallConfigEventConfig(D
         mute_hangup_num: int = None,
         session_timeout: int = None,
     ):
-        # Specifies whether to hang up the call if an answering machine is detected.
+        # Specifies whether to hang up when an intelligent answering service is detected.
         self.call_assistant_hangup = call_assistant_hangup
-        # Whether answering machine detection is enabled.
+        # Specifies whether intelligent answering service detection is enabled.
         self.call_assistant_recognize = call_assistant_recognize
-        # Specifies whether to trigger the model on the first silence event.
+        # Specifies whether the first silence triggers the model.
         self.mute_active = mute_active
-        # Silence duration.
-        # 
-        # > - Maximum value: 15 s.
+        # The silence duration.
         # >
-        # > - Minimum value: 3 s.
+        # >- Maximum value: 15s.
+        # >- Minimum value: 3s.
         self.mute_duration = mute_duration
-        # The system automatically disconnects the call after a specified number of consecutive silence events.
-        # 
-        # > - Maximum value: 5.
+        # The number of consecutive silence events before the system proactively hangs up.
         # >
-        # > - Minimum value: 1.
+        # >- Maximum value: 5.
+        # >- Minimum value: 1.
         self.mute_hangup_num = mute_hangup_num
-        # The maximum call duration, in seconds. The call automatically disconnects when this duration is exceeded.
-        # 
-        # > - Maximum value: 3600.
+        # The maximum call duration. The call is automatically hung up after the timeout. Unit: seconds.
         # >
-        # > - Minimum value: 600.
+        # >- Maximum value: 3600.
+        # >- Minimum value: 600.
         self.session_timeout = session_timeout
 
     def validate(self):

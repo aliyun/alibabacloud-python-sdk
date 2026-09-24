@@ -10,10 +10,14 @@ class UpdateAiCallTaskRequest(DaraModel):
     def __init__(
         self,
         call_day: List[str] = None,
+        call_expire_date: str = None,
+        call_expire_minutes: int = None,
+        call_expire_type: int = None,
         call_retry_interval: int = None,
         call_retry_reason: List[str] = None,
         call_retry_times: int = None,
         call_time: List[str] = None,
+        callable_time: List[str] = None,
         line_encoding: str = None,
         line_phone_num: str = None,
         miss_call_retry: bool = None,
@@ -29,42 +33,65 @@ class UpdateAiCallTaskRequest(DaraModel):
         task_start_time: int = None,
         virtual_number: str = None,
     ):
-        # The days of the week when calls can be made.
+        # The callable days.
         # 
         # This parameter is required.
         self.call_day = call_day
-        # The retry interval in minutes. The maximum value is 120.
+        # The expiration date of outbound call details (the specific deadline). Format: YYYY-MM-DD HH:mm:ss.
+        self.call_expire_date = call_expire_date
+        # The expiration duration of outbound call details. Unit: minutes.
+        self.call_expire_minutes = call_expire_minutes
+        # The outbound call validity type. Valid values:
+        # 
+        # 0: Permanently valid.
+        # 1: Valid for a specified period after import.
+        # 2: Valid until a specified date.
+        self.call_expire_type = call_expire_type
+        # The retry interval. Unit: minutes. The maximum value is 120.
         self.call_retry_interval = call_retry_interval
-        # The call failure statuses that trigger a retry.
+        # The reasons for retrying failed calls.
         self.call_retry_reason = call_retry_reason
         # The number of retries. The maximum value is 3.
         self.call_retry_times = call_retry_times
-        # The callable time windows.
+        # The callable time periods.
         # 
         # This parameter is required.
         self.call_time = call_time
+        self.callable_time = callable_time
+        # The line encoding.
         self.line_encoding = line_encoding
+        # The customer-provided line number.
         self.line_phone_num = line_phone_num
         # Specifies whether to enable retry. Valid values:
         # 
-        # - `true`: Yes.
+        # - true: Enabled.
         # 
-        # - `false` (default): No.
+        # - false (default): Disabled.
         self.miss_call_retry = miss_call_retry
         self.owner_id = owner_id
+        # The number type. This parameter is used when the creation source is engine-based.
+        # 
+        # 0: Alibaba Cloud number.
+        # 
+        # 1: Customer-provided line.
         self.phone_type = phone_type
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The creation source. Valid values:
+        # 
+        # 0: Created by agent.
+        # 
+        # 1: Created by engine.
         self.source = source
-        # The startup method. Valid values:
+        # The start mode. Valid values:
         # 
-        # - `IMMEDIATE`: Start immediately.
+        # - IMMEDIATE: Starts immediately.
         # 
-        # - `SCHEDULE`: Start at a specified time.
+        # - SCHEDULE: Starts at a scheduled time.
         # 
         # This parameter is required.
         self.start_type = start_type
-        # The number of concurrent calls per second (CPS) for the task. The maximum value is 500.
+        # The task concurrency. The maximum value is 500.
         # 
         # This parameter is required.
         self.task_cps = task_cps
@@ -72,11 +99,11 @@ class UpdateAiCallTaskRequest(DaraModel):
         # 
         # This parameter is required.
         self.task_id = task_id
-        # The task name. The name must be unique within an Alibaba Cloud account.
+        # The task name. The name must be unique within the same account.
         # 
         # This parameter is required.
         self.task_name = task_name
-        # The scheduled start time for the task, specified as a Unix timestamp in milliseconds. This parameter is required when `StartType` is set to `SCHEDULE`.
+        # The preset start time of the task. The value is a UNIX timestamp in milliseconds. This parameter is valid and required when StartType is set to SCHEDULE. The task automatically starts at the time specified by this parameter.
         self.task_start_time = task_start_time
         # The service instance used for outbound calls.
         self.virtual_number = virtual_number
@@ -92,6 +119,15 @@ class UpdateAiCallTaskRequest(DaraModel):
         if self.call_day is not None:
             result['CallDay'] = self.call_day
 
+        if self.call_expire_date is not None:
+            result['CallExpireDate'] = self.call_expire_date
+
+        if self.call_expire_minutes is not None:
+            result['CallExpireMinutes'] = self.call_expire_minutes
+
+        if self.call_expire_type is not None:
+            result['CallExpireType'] = self.call_expire_type
+
         if self.call_retry_interval is not None:
             result['CallRetryInterval'] = self.call_retry_interval
 
@@ -103,6 +139,9 @@ class UpdateAiCallTaskRequest(DaraModel):
 
         if self.call_time is not None:
             result['CallTime'] = self.call_time
+
+        if self.callable_time is not None:
+            result['CallableTime'] = self.callable_time
 
         if self.line_encoding is not None:
             result['LineEncoding'] = self.line_encoding
@@ -153,6 +192,15 @@ class UpdateAiCallTaskRequest(DaraModel):
         if m.get('CallDay') is not None:
             self.call_day = m.get('CallDay')
 
+        if m.get('CallExpireDate') is not None:
+            self.call_expire_date = m.get('CallExpireDate')
+
+        if m.get('CallExpireMinutes') is not None:
+            self.call_expire_minutes = m.get('CallExpireMinutes')
+
+        if m.get('CallExpireType') is not None:
+            self.call_expire_type = m.get('CallExpireType')
+
         if m.get('CallRetryInterval') is not None:
             self.call_retry_interval = m.get('CallRetryInterval')
 
@@ -164,6 +212,9 @@ class UpdateAiCallTaskRequest(DaraModel):
 
         if m.get('CallTime') is not None:
             self.call_time = m.get('CallTime')
+
+        if m.get('CallableTime') is not None:
+            self.callable_time = m.get('CallableTime')
 
         if m.get('LineEncoding') is not None:
             self.line_encoding = m.get('LineEncoding')

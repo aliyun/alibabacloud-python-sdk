@@ -16,17 +16,17 @@ class ListTaskDetailResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The request status code. A return value of OK indicates that the request succeeded.
+        # The request status code. OK indicates that the request was successful.
         self.code = code
-        # Detailed job information.
+        # The task details.
         self.data = data
-        # Description of the status code.
+        # The description of the status code.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the API invocation succeeded. Valid values:
-        # - **true**: Succeeded.
-        # - **false**: Failed.
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -83,13 +83,13 @@ class ListTaskDetailResponseBodyData(DaraModel):
         record: List[main_models.ListTaskDetailResponseBodyDataRecord] = None,
         total: int = None,
     ):
-        # Number of items per page.
+        # The number of entries per page.
         self.page_no = page_no
-        # Current page number.
+        # The current page number.
         self.page_size = page_size
-        # List of job information.
+        # The list of task records.
         self.record = record
-        # Total number of jobs.
+        # The total number of tasks.
         self.total = total
 
     def validate(self):
@@ -155,34 +155,34 @@ class ListTaskDetailResponseBodyDataRecord(DaraModel):
         status_code_desc: str = None,
         tags: str = None,
     ):
-        # Called number.
+        # The called number.
         self.called = called
-        # Calling number.
+        # The caller number.
         self.caller = caller
-        # Hang-up direction. Valid values:
+        # The hangup direction. Valid values:
         # 
         # - **User**.
-        # - **Machine**.
+        # - **Robot**.
         self.direction = direction
-        # Call duration. Unit: seconds.
+        # The call duration. Unit: seconds.
         self.duration = duration
-        # End time.
+        # The end time in the YYYY-MM-DD HH:mm:ss format.
         self.end_time = end_time
-        # Record ID.
+        # The detail ID.
         self.id = id
-        # Current retry count.
+        # The current retry count.
         self.retry_cur_times = retry_cur_times
-        # Retry Count.
+        # The total number of retries.
         self.retry_times = retry_times
-        # Start Time.
+        # The start time in the YYYY-MM-DD HH:mm:ss format.
         self.start_time = start_time
-        # Detail status.
+        # The detail status.
         self.status = status
-        # Call status code.
+        # The call status code.
         self.status_code = status_code
-        # Call status code description.
+        # The description of the call status code.
         self.status_code_desc = status_code_desc
-        # Intent tags.
+        # The intent label.
         self.tags = tags
 
     def validate(self):

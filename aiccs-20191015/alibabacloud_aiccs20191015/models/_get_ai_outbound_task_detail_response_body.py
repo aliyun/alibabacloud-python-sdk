@@ -16,16 +16,16 @@ class GetAiOutboundTaskDetailResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Status code.
+        # The status code.
         self.code = code
-        # Outbound call job details.
+        # The details of the outbound call task.
         self.data = data
-        # Status code description.
+        # The description of the status code.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the API was invoked successfully.  
-        # - **true**: Succeeded.  
+        # Indicates whether the call was successful.
+        # - **true**: Successful.
         # - **false**: Failed.
         self.success = success
 
@@ -93,46 +93,46 @@ class GetAiOutboundTaskDetailResponseBodyData(DaraModel):
         task_id: int = None,
         type: int = None,
     ):
-        # Concurrency for automated outbound calls.
+        # The concurrency for automatic outbound calls.
         self.concurrent_rate = concurrent_rate
-        # Job description.
+        # The task description.
         self.description = description
-        # Task execution time.
+        # The task execution time. Time periods are configured by day of the week using a JSON object. The start and end values are in the HH:mm format.
         self.execution_time = execution_time
-        # Fixed outbound call ratio for predictive dialing.
+        # The fixed call rate for predictive outbound calls.
         self.forecast_call_rate = forecast_call_rate
-        # Skill group ID (for predictive outbound calls) or IVR ID (for automated outbound calls).
+        # The skill group ID (for predictive outbound calls) or IVR ID (for automatic outbound calls).
         self.handler_id = handler_id
-        # Skill group name or IVR name.
+        # The skill group name or IVR name.
         self.handler_name = handler_name
-        # Job name.
+        # The task name.
         self.name = name
-        # Called number deduplication policy.
+        # The callee number deduplication policy.
         # 
-        # - **0**: Remove duplicates.
-        # - **1**: Do not remove duplicates.
+        # - **0**: Deduplicate.
+        # - **1**: Do not deduplicate.
         self.num_repeated = num_repeated
-        # Outbound caller numbers.
+        # The outbound caller numbers.
         self.outbound_nums = outbound_nums
-        # Failed-call retry policy.
+        # The failed recall policy.
         self.recall_rule = recall_rule
-        # Job status. Valid values:  
+        # The task status. Valid values:
         # 
-        # - **0**: Not started.  
-        # - **1**: In progress.  
-        # - **2**: System paused.  
-        # - **3**: Manually paused.  
-        # - **4**: Completed.  
+        # - **0**: Not started.
+        # - **1**: In progress.
+        # - **2**: System paused.
+        # - **3**: Manually paused.
+        # - **4**: Completed.
         # - **5**: Stopped.
         self.status = status
-        # Task status description.
+        # The task status description.
         self.status_desc = status_desc
-        # Job ID.
+        # The task ID.
         self.task_id = task_id
-        # Task Type. Valid values:
+        # The task type. Valid values:
         # 
         # - **2**: Predictive outbound call.
-        # - **3**: Automated outbound call.
+        # - **3**: Automatic outbound call.
         self.type = type
 
     def validate(self):
@@ -241,9 +241,9 @@ class GetAiOutboundTaskDetailResponseBodyDataRecallRule(DaraModel):
         count: int = None,
         interval: int = None,
     ):
-        # Number of retries.
+        # The number of recall attempts.
         self.count = count
-        # Recall interval. Unit: minutes.
+        # The recall interval. Unit: minutes.
         self.interval = interval
 
     def validate(self):

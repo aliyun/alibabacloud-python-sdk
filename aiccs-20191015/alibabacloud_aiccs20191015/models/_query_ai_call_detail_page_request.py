@@ -30,68 +30,53 @@ class QueryAiCallDetailPageRequest(DaraModel):
         status: int = None,
         task_id: str = None,
     ):
-        # The batch ID. You can find this ID by clicking Details on the **Call Task Management** page.
+        # The batch ID. On the **Call Task Management** page, click Details to view the batch ID.
         self.batch_id = batch_id
         # The call result. Valid values:
-        # 
-        # - CALL_FORWARDING: Call Forwarding.
-        # 
-        # - INCOMING_CALL_BARRED: Incoming Call Barred.
-        # 
-        # - CALL_REJECTED: Call Rejected.
-        # 
+        # - CALL_FORWARDING: Call forwarding.
+        # - INCOMING_CALL_BARRED: Incoming call barred.
+        # - CALL_REJECTED: Call rejected.
         # - ANSWERED: Answered.
-        # 
-        # - USER_BUSY: User Busy.
-        # 
-        # - POWERED_OFF: Powered Off.
-        # 
-        # - NO_USER_RESPONSE: No User Response.
-        # 
-        # - OPERATOR_BLOCK: Operator Block.
-        # 
-        # - OTHERS: Others.
-        # 
-        # - SUSPEND: Suspend.
-        # 
-        # - CANCEL: Canceled by the caller.
-        # 
-        # - INVALID_NUMBER: Invalid Number.
-        # 
-        # - UNAVAILABLE: Unavailable.
-        # 
-        # - NETWORK_BUSY: Network Busy.
-        # 
-        # - NO_ANSWER: No Answer.
+        # - USER_BUSY: User busy.
+        # - POWERED_OFF: Powered off.
+        # - NO_USER_RESPONSE: Out of service area.
+        # - OPERATOR_BLOCK: Blocked by carrier.
+        # - OTHERS: Other status.
+        # - SUSPEND: Service suspended.
+        # - CANCEL: Caller canceled.
+        # - INVALID_NUMBER: Invalid number.
+        # - UNAVAILABLE: Temporarily unavailable.
+        # - NETWORK_BUSY: Network busy.
+        # - NO_ANSWER: No answer.
         self.call_result = call_result
         # The called number.
         self.called_number = called_number
-        # A list of up to 100 detail IDs.
+        # The list of task detail IDs. A maximum of 100 IDs can be specified.
         self.detail_ids = detail_ids
-        # The encryption method. Valid values: 0 (None), 1 (MD5), 2 (SHA256), and 3 (SM3).
+        # The encryption type. Valid values: 0: no encryption. 1: MD5. 2: SHA256. 3: SM3.
         self.encryption_type = encryption_type
-        # The end of the call time range. This value is a timestamp in milliseconds.
+        # The end calling time. This value is a UNIX timestamp. Unit: ms.
         self.end_calling_time = end_calling_time
-        # The end of the import time range. This value is a timestamp in milliseconds.
+        # The end import time. This value is a UNIX timestamp. Unit: ms.
         self.end_imported_time = end_imported_time
-        # The major intent. You can find this intent by clicking Agent Details on the [Communication Agent Management](https://aiccs.console.aliyun.com/agent/customize) page.
+        # The major intent. On the [Communication Agent Management](https://aiccs.console.aliyun.com/agent/customize) page, click the agent details to view the major intent.
         self.major_intent = major_intent
-        # The maximum conversation duration, in minutes.
+        # The maximum call duration. Unit: minutes.
         self.max_conversation_duration = max_conversation_duration
-        # The minimum conversation duration, in minutes.
+        # The minimum call duration. Unit: minutes.
         self.min_conversation_duration = min_conversation_duration
-        # A custom ID provided by the caller. This ID is returned in the receipt message for request tracking.
+        # The ID reserved for the caller. This ID is returned to the caller in the receipt message.
         self.out_id = out_id
         self.owner_id = owner_id
-        # The page number. The value must be greater than **0**. The default value is **1**.
+        # The current page number. The value must be greater than **0**. Default value: **1**.
         self.page_no = page_no
-        # The number of entries per page. The default value is **10**.
+        # The number of entries per page. Default value: **10**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The start of the call time range. This value is a timestamp in milliseconds.
+        # The start calling time. This value is a UNIX timestamp. Unit: ms.
         self.start_calling_time = start_calling_time
-        # The start of the import time range. This value is a timestamp in milliseconds.
+        # The start import time. This value is a UNIX timestamp. Unit: ms.
         self.start_imported_time = start_imported_time
         # The task status. Valid values:
         # 

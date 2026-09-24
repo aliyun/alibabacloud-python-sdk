@@ -14,19 +14,19 @@ class StartHotlineServiceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Status code. A value of "Success" indicates that the request succeeded.
+        # The status code. A value of Success indicates that the request was successful.
         self.code = code
-        # Token required to initiate a heartbeat, returned after a successful request.
+        # The token required to initiate a heartbeat. This parameter is returned when the request is successful.
         self.data = data
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Description of the status code.
+        # The description of the status code.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the API call succeeded.  
-        # - **true**: Succeeded.  
-        # - **false**: Failed.
+        # Indicates whether the API call was successful. Valid values:
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):

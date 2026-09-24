@@ -11,22 +11,21 @@ class GetIndexCurrentValueRequest(DaraModel):
         group_ids: str = None,
         instance_id: str = None,
     ):
-        # List of department IDs. Separate multiple IDs with commas (,).
+        # The list of department IDs. Separate multiple IDs with commas (,).
         # 
-        # You can call the [GetAllDepartment](https://help.aliyun.com/document_detail/2717975.html) API and check the **DepartmentId** field in the response to obtain department IDs.
+        # Call the [GetAllDepartment](https://help.aliyun.com/document_detail/2717975.html) operation and check the **DepartmentId** parameter in the response to obtain the department ID.
         # 
-        # > When this parameter is not empty:  
-        # > - If GroupIds is not empty, the system prioritizes querying data metrics for the skill groups specified by GroupIds.  
-        # > - If GroupIds is empty, the system prioritizes querying data metrics for the departments specified by this parameter.
+        # > When this parameter is not empty:
+        # > - If GroupIds is not empty, the query is performed based on the skill group list corresponding to GroupIds.
+        # > - If GroupIds is empty, the query is performed based on the department list corresponding to this parameter.
         self.dep_ids = dep_ids
-        # List of skill group IDs. Separate multiple IDs with commas (,).
+        # The list of skill group IDs. Separate multiple IDs with commas (,).
         # 
-        # You can call the [QuerySkillGroups](https://help.aliyun.com/document_detail/2717970.html) API and check the **SkillGroupId** field in the response to obtain skill group IDs.
+        # Call the [QuerySkillGroups](https://help.aliyun.com/document_detail/2717970.html) operation and check the **SkillGroupId** parameter in the response to obtain the skill group ID.
         # 
-        # > When this parameter is not empty, the system prioritizes querying data metrics for the specified skill groups.
+        # > When this parameter is not empty, the query is performed based on the skill group list corresponding to this parameter.
         self.group_ids = group_ids
-        # Artificial Intelligence Cloud Call Service (AICCS) instance ID.  
-        # You can obtain it from **Instance Management** in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+        # The AICCS instance ID. You can obtain the instance ID from <b>Instance Management</b> in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
         # 
         # > The AICCS instance ID is required.
         self.instance_id = instance_id

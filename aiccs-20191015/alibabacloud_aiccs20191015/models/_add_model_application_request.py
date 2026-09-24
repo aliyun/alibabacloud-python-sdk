@@ -32,7 +32,7 @@ class AddModelApplicationRequest(DaraModel):
         tts_config: main_models.AddModelApplicationRequestTtsConfig = None,
         usage_desc: str = None,
     ):
-        # The number of concurrent requests per second (CPS).
+        # The number of concurrent requests for the application.
         # 
         # This parameter is required.
         self.application_cps = application_cps
@@ -40,9 +40,9 @@ class AddModelApplicationRequest(DaraModel):
         # 
         # This parameter is required.
         self.application_name = application_name
-        # Specifies whether to push an event notification when a call is connected. The default value is false.
+        # Specifies whether to enable call-connected event push. Disabled by default.
         self.call_connected_trigger_model = call_connected_trigger_model
-        # The scene name.
+        # The scenario name.
         self.dyvms_scene_name = dyvms_scene_name
         # The model code.
         # 
@@ -54,36 +54,36 @@ class AddModelApplicationRequest(DaraModel):
         self.mute_active = mute_active
         # The mute duration.
         self.mute_duration = mute_duration
-        # The number of consecutive mute events that trigger an automatic hang-up.
+        # The number of consecutive mute events before the system proactively hangs up the call.
         self.mute_hangup_num = mute_hangup_num
         self.owner_id = owner_id
         # The prompt.
         self.prompt = prompt
         # The qualification ID.
         self.qualification_id = qualification_id
-        # The name of the qualification.
+        # The qualification name.
         self.qualification_name = qualification_name
-        # The URL of the audio file for the opening line. This parameter is required if `StartWordType` is set to `1`.
+        # The URL of the recorded audio file for the opening statement. This parameter is required when the opening statement type is set to 1.
         self.recording_file = recording_file
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The source. The value must be `USER`.
+        # The source. Fixed value: USER.
         self.source = source
         # The speech script content.
         self.speech_content = speech_content
         # The speech script ID.
         self.speech_id = speech_id
-        # The opening line.
+        # The opening statement.
         # 
         # This parameter is required.
         self.start_word = start_word
-        # The type of the opening line.
+        # The type of the opening statement.
         self.start_word_type = start_word_type
-        # The TTS configuration, including voice, volume, speech speed, and more.
+        # The text-to-speech (TTS) configuration, including voice, volume, and speed.
         # 
         # This parameter is required.
         self.tts_config = tts_config
-        # The purpose of the application.
+        # The usage description.
         self.usage_desc = usage_desc
 
     def validate(self):
@@ -264,27 +264,25 @@ class AddModelApplicationRequestTtsConfig(DaraModel):
         self.background_volume = background_volume
         # The account ID.
         self.customer_account_id = customer_account_id
-        # Specifies whether to enable mixing.
+        # Specifies whether to enable audio mixing.
         self.mixing_enabled = mixing_enabled
         # The mixing template ID.
         self.mixing_template = mixing_template
         # The resource ID.
         self.resource_id = resource_id
-        # The speech speed for TTS playback. Valid values: -200–200. The default value is 0.
+        # The speed for TTS variable playback. Valid values: -200 to 200. Default value: 0.
         self.tts_speed = tts_speed
         # The voice style.
         self.tts_style = tts_style
-        # The volume for TTS playback. Valid values: 0–100. The default value is 0.
+        # The volume for TTS variable playback. Valid values: 0 to 100. Default value: 0.
         self.tts_volume = tts_volume
         # The voice code.
         self.voice_code = voice_code
-        # The voice type.
+        # The voice type. Valid values:
         # 
-        # ```
-        # SYSTEM: System voice
-        # COSYCLONE: Cloned voice
-        # BL-CUSTOM: Premium custom cloned voice
-        # ```
+        # - SYSTEM: system voice.
+        # - COSYCLONE: cloned voice.
+        # - BL-CUSTOM: custom premium cloned voice.
         self.voice_type = voice_type
 
     def validate(self):

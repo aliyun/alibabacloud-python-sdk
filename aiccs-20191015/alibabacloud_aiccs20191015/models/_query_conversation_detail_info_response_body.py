@@ -17,21 +17,19 @@ class QueryConversationDetailInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details of the access denial.
+        # The access denied details.
         self.access_denied_detail = access_denied_detail
         # The status code.
         self.code = code
-        # The response data.
+        # The returned data.
         self.data = data
-        # The status code message.
+        # The description of the status code.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # - **true**: The request was successful.
-        # 
-        # - **false**: The request failed.
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: Successful.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -109,85 +107,68 @@ class QueryConversationDetailInfoResponseBodyData(DaraModel):
         status_msg: str = None,
         variables: List[main_models.QueryConversationDetailInfoResponseBodyDataVariables] = None,
     ):
-        # The unique call ID.
+        # The unique ID of the call.
         self.call_id = call_id
         # The call result. Valid values:
-        # 
-        # - `CALL_FORWARDING`: Call forwarding.
-        # 
-        # - `INCOMING_CALL_BARRED`: Incoming call barred.
-        # 
-        # - `CALL_REJECTED`: Call rejected.
-        # 
-        # - `ANSWERED`: Answered by user.
-        # 
-        # - `USER_BUSY`: Called party busy.
-        # 
-        # - `POWERED_OFF`: Powered off.
-        # 
-        # - `NO_USER_RESPONSE`: Out of service area.
-        # 
-        # - `OPERATOR_BLOCK`: Blocked by carrier.
-        # 
-        # - `OTHERS`: Other.
-        # 
-        # - `SUSPEND`: Suspended.
-        # 
-        # - `CANCEL`: Canceled by caller.
-        # 
-        # - `INVALID_NUMBER`: Invalid number.
-        # 
-        # - `UNAVAILABLE`: Temporarily unavailable.
-        # 
-        # - `NETWORK_BUSY`: Network busy.
-        # 
-        # - `NO_ANSWER`: No answer.
+        # - CALL_FORWARDING: Call forwarding.
+        # - INCOMING_CALL_BARRED: Incoming call barred.
+        # - CALL_REJECTED: Call rejected.
+        # - ANSWERED: Answered by user.
+        # - USER_BUSY: Callee busy.
+        # - POWERED_OFF: Powered off.
+        # - NO_USER_RESPONSE: Out of service area.
+        # - OPERATOR_BLOCK: Blocked by carrier.
+        # - OTHERS: Other status.
+        # - SUSPEND: Service suspended.
+        # - CANCEL: Canceled by caller.
+        # - INVALID_NUMBER: Invalid number.
+        # - UNAVAILABLE: Temporarily unavailable.
+        # - NETWORK_BUSY: Network busy.
+        # - NO_ANSWER: No answer.
         self.call_result = call_result
-        # The called number.
+        # The callee number.
         self.called_phone = called_phone
         # The caller number.
         self.caller_phone = caller_phone
-        # The conversation record. The structure is a JSON array in which entries are sorted by time. Example:
-        # 
+        # The chat record information. The structure is a JSON array, and the chat records are sorted in chronological order. The format is as follows:
         # ```json
         # [
         #     {
-        #         "content":"Conversation content",
-        #         "role":"Role", // Valid values: user, assistant
+        #         "content":"Chat content",
+        #         "role":"Role",//Valid values: user, assistant (robot)
         #     }
         # ]
         # ```
         self.conversation_record = conversation_record
-        # The duration of the call, in seconds. If the call was not connected, the value is 0.
+        # The call duration, in seconds. The value is 0 if the call is not connected.
         self.duration = duration
         self.encryption_type = encryption_type
         # The failure reason.
         self.failed_reason = failed_reason
-        # The party that hung up. Valid values:
+        # The hangup direction. Valid values:
         # 
-        # - **0**: user.
-        # 
-        # - **1**: assistant.
+        # - **0**: User.
+        # - **1**: Robot.
         self.hangup_direction = hangup_direction
-        # The primary intent.
+        # The major intent.
         self.major_intent = major_intent
-        # The business-specific ID that is passed in. You can use this unique ID to associate the call with your business.
+        # The external business serial number. You can use a unique ID for business association.
         self.out_id = out_id
-        # A list of output tags.
+        # The list of output tags.
         self.output_tags = output_tags
-        # The timestamp when the call was answered, in milliseconds.
+        # The time when the call was answered. This value is a UNIX timestamp in milliseconds.
         self.pick_up_time = pick_up_time
-        # The download URL for the recording file. This parameter is returned only after the recording file is generated.
+        # The download URL of the recording file. This field is available only after a recording file is generated.
         self.recording_file_download_url = recording_file_download_url
-        # The timestamp when the call ended, in milliseconds.
+        # The time when the call ended. This value is a UNIX timestamp in milliseconds.
         self.release_time = release_time
-        # The timestamp when the call was initiated, in milliseconds.
+        # The time when the call started. This value is a UNIX timestamp in milliseconds.
         self.start_call_time = start_call_time
-        # The call status code. For more information, see [Call status codes](https://help.aliyun.com/document_detail/112804.html) for the voice service.
+        # The call status code. For more information, see [Call status codes](https://help.aliyun.com/document_detail/112804.html) in Voice Messaging.
         self.status_code = status_code
-        # The status message returned by the carrier.
+        # The call status information returned by the carrier.
         self.status_msg = status_msg
-        # A list of variables associated with the call task.
+        # The list of call variables. These are the call variables associated with the call task you created.
         self.variables = variables
 
     def validate(self):
@@ -353,10 +334,11 @@ class QueryConversationDetailInfoResponseBodyDataVariables(DaraModel):
         self.name = name
         # Indicates whether the variable is required. Valid values:
         # 
-        # - `true`: The variable is required.
+        # - true: Required.
         # 
-        # - `false`: The variable is optional.
+        # - false: Not required.
         self.required = required
+        # The variable source.
         self.source = source
         # The variable value.
         self.value = value

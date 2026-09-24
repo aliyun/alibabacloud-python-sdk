@@ -16,16 +16,16 @@ class QueryTouchListResponseBody(DaraModel):
         result_data: main_models.QueryTouchListResponseBodyResultData = None,
         success: bool = None,
     ):
-        # Status code.
+        # The status code.
         self.code = code
-        # Description of the status code.
+        # The status code description.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Data result.
+        # The data result.
         self.result_data = result_data
-        # Indicates whether the API call succeeded. Valid values:  
-        # - **true**: Succeeded.  
+        # Indicates whether the API call was successful. Valid values:
+        # - **true**: Successful.
         # - **false**: Failed.
         self.success = success
 
@@ -87,21 +87,21 @@ class QueryTouchListResponseBodyResultData(DaraModel):
         total_page: int = None,
         total_results: int = None,
     ):
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Data.
+        # The data.
         self.data = data
         # Indicates whether the result is empty.
         self.empty = empty
-        # The page number of the next page.
+        # The next page number.
         self.next_page = next_page
-        # Page size.
+        # The page size.
         self.one_page_size = one_page_size
-        # Previous page number.
+        # The previous page number.
         self.previous_page = previous_page
-        # Total number of pages.
+        # The total number of pages.
         self.total_page = total_page
-        # Total number of query results.
+        # The total number of results.
         self.total_results = total_results
 
     def validate(self):
@@ -206,74 +206,74 @@ class QueryTouchListResponseBodyResultDataData(DaraModel):
         touch_type: int = None,
         user_touch_id: int = None,
     ):
-        # Tenant ID.
+        # The tenant ID.
         self.bu_id = bu_id
-        # Session ID.
+        # The session ID.
         self.channel_id = channel_id
-        # Contact channel.
+        # The touch channel.
         self.channel_type = channel_type
-        # Session end time. UNIX timestamp format (unit: milliseconds).
+        # The session end time. The value is a timestamp in milliseconds.
         self.close_time = close_time
-        # Skill group name.
+        # The skill group name.
         self.common_queue_name = common_queue_name
-        # Department ID.
+        # The department ID.
         self.dep_id = dep_id
-        # Extension fields.
+        # The extended fields.
         self.ext_attrs = ext_attrs
-        # Large object.
+        # The large field.
         self.ext_attrs_string = ext_attrs_string
-        # Feedback.
+        # The feedback.
         self.feedback = feedback
-        # Conversation pickup time, in UNIX timestamp format (unit: milliseconds).
+        # The session pickup time. The value is a timestamp in milliseconds.
         self.first_time = first_time
-        # Conversation initiator.
+        # The session initiator.
         self.from_id = from_id
-        # Creation Time, in UNIX timestamp format (unit: milliseconds).
+        # The creation time. The value is a timestamp in milliseconds.
         self.gmt_create = gmt_create
-        # Update Time. UNIX timestamp format (unit: milliseconds).
+        # The update time. The value is a timestamp in milliseconds.
         self.gmt_modified = gmt_modified
-        # Membership ID.
+        # The member ID.
         self.member_id = member_id
-        # Membership name.
+        # The member name.
         self.member_name = member_name
-        # Parent contact ID.
+        # The parent touch ID.
         self.parent_touch_id = parent_touch_id
-        # Skill group ID.
+        # The skill group ID.
         self.queue_id = queue_id
-        # Service agent ID.
+        # The agent ID.
         self.servicer_id = servicer_id
-        # Service agent name.
+        # The agent name.
         self.servicer_name = servicer_name
-        # Contact status. Valid values:  
-        # - **1**: Incoming call received.  
-        # - **2**: Agent has joined.  
-        # - **3**: In conversation.  
+        # The touch status. Valid values:
+        # - **1**: Queued.
+        # - **2**: Agent connected.
+        # - **3**: In call.
         # - **4**: Ended.
         self.status = status
-        # Change owner list.
+        # The transfer list.
         self.switch_user = switch_user
-        # Conversation recipient.
+        # The session receiver.
         self.to_id = to_id
-        # The reason why the session ended. Valid values:  
-        # - **0**: Unknown.  
-        # - **1**: Contact failed.  
-        # - **2**: Terminated by customer.  
-        # - **3**: Terminated by agent.  
-        # - **4**: Call abnormally interrupted.  
-        # - **5**: Terminated due to change owner.  
-        # - **6**: Terminated by system.
+        # The session end reason. Valid values:
+        # - **0**: Unknown.
+        # - **1**: Touch unsuccessful.
+        # - **2**: Customer terminated.
+        # - **3**: Agent terminated.
+        # - **4**: Call abnormally interrupted.
+        # - **5**: Transfer terminated.
+        # - **6**: System terminated.
         self.touch_content = touch_content
-        # End reason.
+        # The end reason.
         self.touch_end_reason = touch_end_reason
-        # Touch ID.
+        # The contact ID.
         self.touch_id = touch_id
-        # Conversation duration (unit: seconds).
+        # The session duration, in seconds.
         self.touch_time = touch_time
-        # Touch type. Valid values:
+        # The touch type. Valid values:
         # - **1**: Active touch.
         # - **2**: Passive touch.
         self.touch_type = touch_type
-        # User touch ID.
+        # The user touch ID.
         self.user_touch_id = user_touch_id
 
     def validate(self):
@@ -473,35 +473,35 @@ class QueryTouchListResponseBodyResultDataDataExtAttrs(DaraModel):
         online_session_source: int = None,
         out_call_route_number: str = None,
     ):
-        # Inbound call caller number.
+        # The calling number for inbound calls.
         self.ani = ani
-        # For outbound calls, this is the called number. For inbound calls, this is also the called number.
+        # The called number for both outbound and inbound calls.
         self.dnis = dnis
-        # Satisfaction Level. Valid values:  
-        # - **2**: Level 2 satisfaction.  
-        # - **3**: Level 3 satisfaction.  
-        # - **4**: Level 4 satisfaction.  
-        # - **5**: Level 5 satisfaction.
+        # The satisfaction level. Valid values:
+        # - **2**: 2-level satisfaction.
+        # - **3**: 3-level satisfaction.
+        # - **4**: 4-level satisfaction.
+        # - **5**: 5-level satisfaction.
         self.evaluation_level = evaluation_level
-        # Satisfaction rating. Valid values:
+        # The satisfaction score. Valid values:
         # - **1**: Very dissatisfied.
         # - **2**: Dissatisfied.
         # - **3**: Neutral.
         # - **4**: Satisfied.
         # - **5**: Very satisfied.
         self.evaluation_score = evaluation_score
-        # Evaluation solution.
+        # The evaluation Solutions.
         self.evaluation_solution = evaluation_solution
-        # Evaluation status. Valid values:
+        # The evaluation status. Valid values:
         # - **-1**: Evaluation not initiated.
         # - **0**: Not evaluated.
         # - **1**: Evaluated.
         self.evaluation_status = evaluation_status
-        # Duration until first response (unit: seconds).
+        # The first response duration, in seconds.
         self.online_join_resp_interval = online_join_resp_interval
-        # Online session source.
+        # The online session source.
         self.online_session_source = online_session_source
-        # Outbound call caller number.
+        # The calling number for outbound calls.
         self.out_call_route_number = out_call_route_number
 
     def validate(self):

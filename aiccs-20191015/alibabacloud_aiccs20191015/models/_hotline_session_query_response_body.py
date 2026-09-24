@@ -16,15 +16,15 @@ class HotlineSessionQueryResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Status code. A value of "Success" indicates that the request succeeded.
+        # The status code. A value of Success indicates that the request was successful.
         self.code = code
-        # Call data.
+        # The call data.
         self.data = data
-        # Description of the status code.
+        # The description of the status code.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the API call succeeded.
+        # Indicates whether the API call was successful.
         self.success = success
 
     def validate(self):
@@ -81,13 +81,13 @@ class HotlineSessionQueryResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # Call detail records.
+        # The call detail records.
         self.call_detail_record = call_detail_record
-        # Current page number.
+        # The current page number.
         self.page_number = page_number
-        # Number of items per page.
+        # The number of records per page.
         self.page_size = page_size
-        # Total number of records.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -169,122 +169,120 @@ class HotlineSessionQueryResponseBodyDataCallDetailRecord(DaraModel):
         servicer_name: str = None,
         trunk_call: str = None,
     ):
-        # Session ID. The acid in WebSocket after an incoming call.
+        # The session ID. The acid in the websocket after an inbound call.
         self.acid = acid
-        # Agent ID.  
-        # 
-        # > This field is null in non–change owner scenarios.
+        # The agent ID.
+        # > This value is Null in non-transfer scenarios.
         self.active_transfer_id = active_transfer_id
-        # Call duration, in seconds.  
+        # The call duration. Unit: seconds.
         # 
-        # > Unconnected calls do not include call duration.
+        # > No call duration is available in scenarios where the call is not connected.
         self.call_continue_time = call_continue_time
-        # Call result. Valid values:
+        # The call result. Valid values:
         # 
-        # - **normal**: Normal hang-up.
-        # - **touchRouteError**: Queue hang-up.
-        # - **touchInQueue**: Queue hang-up.
-        # - **touchInLoss**: Queue hang-up.
-        # - **userHangup**: User hang-up or IVR hang-up.
-        # - **sysHangup**: System hang-up or IVR hang-up.
-        # - **transferAgent**: User hang-up or IVR hang-up.
-        # - **dailing**: Agent hang-up or ring-off hang-up.
-        # - **TouchRingCallLoss**: Queue hang-up or ring-off hang-up.
+        # - **normal**: normal hangup.
+        # - **touchRouteError**: queue hangup.
+        # - **touchInQueue**: queue hangup.
+        # - **touchInLoss**: queue hangup.
+        # - **userHangup**: user hangup or IVR hangup.
+        # - **sysHangup**: system hangup or IVR hangup.
+        # - **transferAgent**: user hangup or IVR hangup.
+        # - **dailing**: agent hangup or ringing hangup.
+        # - **TouchRingCallLoss**: queue hangup or ringing hangup.
         self.call_result = call_result
-        # Call type. Valid values:
-        # - **1**: Outbound call
-        # - **2**: Inbound call
-        # - **3**: Change owner
+        # The call type. Valid values:
+        # - **1**: outbound call
+        # - **2**: inbound call
+        # - **3**: transferred call
         self.call_type = call_type
-        # Called number.
+        # The called number.
         self.called_number = called_number
-        # Calling party number, such as a user\\"s phone number, agent number, or machine number.
+        # The number of the caller. For example, a mobile phone number of a user, an agent number, or a robot number.
         self.calling_number = calling_number
-        # Call creation time.
+        # The time when the call was created. Format: YYYY-MM-DD HH:mm:ss.
         # 
-        # > - In outbound scenarios, this is the time when the outbound call was initiated.
-        # > - In inbound scenarios, this is the time when the call entered the ACC system.
+        # > - For outbound call scenarios, this is the time when the outbound call was initiated.
+        # - For inbound call scenarios, this is the time when the call entered the ACC system.
         self.create_time = create_time
-        # Satisfaction rating, indicated by star level. Valid values:
+        # The satisfaction rating level. Valid values:
         # 
-        # - **2**: Two-star satisfaction
-        # - **3**: Three-star satisfaction
-        # - **4**: Four-star satisfaction
-        # - **5**: Five-star satisfaction
+        # - **2**: 2-level satisfaction
+        # - **3**: 3-level satisfaction
+        # - **4**: 4-level satisfaction
+        # - **5**: 5-level satisfaction
         # 
-        # > This field has no data in outbound scenarios or scenarios where the call was not answered.
+        # > No data is available for outbound call scenarios or scenarios where the call is not connected.
         self.evaluation_level = evaluation_level
-        # Satisfaction score. Valid values:
-        # - **1**: Very dissatisfied
-        # - **2**: Dissatisfied
-        # - **3**: Neutral
-        # - **4**: Satisfied
-        # - **5**: Very satisfied
+        # The satisfaction rating score. Valid values:
+        # - **1**: Very dissatisfied.
+        # - **2**: Dissatisfied.
+        # - **3**: Average.
+        # - **4**: Satisfied.
+        # - **5**: Very satisfied.
         # 
-        # > This field has no data in outbound scenarios or scenarios where the call was not answered.
+        # > No data is available for outbound call scenarios or scenarios where the call is not connected.
         self.evaluation_score = evaluation_score
-        # Skill group ID.  
+        # The skill group ID.
         # 
-        # > When CallType is **1**, outbound call scenarios do not include skill group information.
+        # > When CallType is set to **1**, no skill group information is available for outbound call scenarios.
         self.group_id = group_id
-        # Skill group name.  
-        # > When CallType is **1**, outbound call scenarios do not include skill group information.
+        # The skill group name.
+        # > When CallType is set to **1**, no skill group information is available for outbound call scenarios.
         self.group_name = group_name
-        # Party that hung up. Valid values:  
+        # The party that hung up. Valid values:
         # 
-        # - **1**: System hung up  
-        # - **2**: Customer hung up  
-        # - **3**: Agent hung up  
-        # - **null**: Unknown
+        # - **1**: System hung up.
+        # - **2**: Customer hung up.
+        # - **3**: Agent hung up.
+        # - **null**: Unknown.
         self.hang_up_role = hang_up_role
-        # Hang-up time.
+        # The hang-up time. Format: YYYY-MM-DD HH:mm:ss.
         self.hang_up_time = hang_up_time
-        # The GUID of the call detail record.
+        # The globally unique ID of the call details.
         self.id = id
-        # Time when the call entered the queue for assignment.  
-        # 
-        # > Outbound call scenarios do not include queue entry time.
+        # The time when the call entered the queue for hotline assignment. Format: YYYY-MM-DD HH:mm:ss.
+        # > No queue entry time is available for outbound call scenarios.
         self.in_queue_time = in_queue_time
-        # Membership ID.
+        # The member ID.
         self.member_id = member_id
-        # Membership name.
+        # The member name.
         self.member_name = member_name
-        # The time when the hotline call is assigned and dequeued.
+        # The time when the call left the queue for hotline assignment. Format: YYYY-MM-DD HH:mm:ss.
         # 
-        # > Outbound scenarios do not have a dequeue time.
+        # > No queue exit time is available for outbound call scenarios.
         self.out_queue_time = out_queue_time
-        # Agent ID. The phone number to which the call is transferred.
-        # > This field is null in non-transfer scenarios.
+        # The agent ID or transferred phone number.
+        # > This value is Null in non-transfer scenarios.
         self.passive_transfer_id = passive_transfer_id
-        # The recipient of the transferred session. Valid values:
+        # The type of the party to which the session was transferred. Valid values:
         # - **1**: Agent ID.
         # - **2**: Transferred phone number.
         # 
-        # > This field is null in non-transfer scenarios.
+        # > This value is Null in non-transfer scenarios.
         self.passive_transfer_id_type = passive_transfer_id_type
-        # The time when the call is answered.
+        # The time when the call was answered. Format: YYYY-MM-DD HH:mm:ss.
         self.pick_up_time = pick_up_time
-        # Queue duration.
+        # The queue waiting duration.
         self.queue_up_continue_time = queue_up_continue_time
-        # Ringing duration, in seconds.
+        # The ringing duration. Unit: seconds.
         # 
-        # > Outbound scenarios do not have ringing duration.
+        # > No ringing duration is available for outbound call scenarios.
         self.ring_continue_time = ring_continue_time
-        # The time when ringing ends.
+        # The time when ringing ended. Format: YYYY-MM-DD HH:mm:ss.
         # 
-        # > Outbound scenarios do not have a ring end time.
+        # > No ringing end time is available for outbound call scenarios.
         self.ring_end_time = ring_end_time
-        # Ringing start time.  
+        # The time when ringing started. Format: YYYY-MM-DD HH:mm:ss.
         # 
-        # > Outbound call scenarios do not include ringing start time.
+        # > No ringing start time is available for outbound call scenarios.
         self.ring_start_time = ring_start_time
-        # Agent ID.  
-        # > In inbound scenarios, agent information is unavailable until the call is assigned to an agent.
+        # The agent ID.
+        # > No agent information is available before the call is assigned to an agent in inbound call scenarios.
         self.servicer_id = servicer_id
-        # Agent name.
-        # > Agent information is unavailable before the call is assigned to an agent in inbound scenarios.
+        # The agent name.
+        # > No agent information is available before the call is assigned to an agent in inbound call scenarios.
         self.servicer_name = servicer_name
-        # Long-distance call.
+        # The long-distance call.
         self.trunk_call = trunk_call
 
     def validate(self):

@@ -17,21 +17,19 @@ class PageQueryAgentListNewResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The access denied detail.
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The status code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The message that describes the status code.
+        # The status code description.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Specifies whether the request succeeded.
-        # 
-        # - **`true`**: The request succeeded.
-        # 
-        # - **`false`**: The request failed.
+        # Indicates whether the API call was successful.
+        # - **true**: Successful.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -100,7 +98,7 @@ class PageQueryAgentListNewResponseBodyData(DaraModel):
         self.page_no = page_no
         # The page size.
         self.page_size = page_size
-        # The total count.
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -166,36 +164,47 @@ class PageQueryAgentListNewResponseBodyDataList(DaraModel):
         latest_publish_time: str = None,
         modify_time: str = None,
         scene: str = None,
+        service_direction: str = None,
+        template_id: int = None,
+        template_name: str = None,
     ):
         # The agent ID.
         self.agent_id = agent_id
-        # The agent creation mode. Valid values:<br>
-        # `0`: Prompt mode (`PROMPT`). `1`: Conversation flow mode (`CONVERSATION`).<br>
+        # The agent building mode. Valid values:
+        # 
+        # - 0: prompt mode (PROMPT).
+        # - 1: dialog flow mode (CONVERSATION).
         self.agent_mode = agent_mode
         # The agent name.
         self.agent_name = agent_name
         # The application code.
         self.application_code = application_code
-        # The creation time.
+        # The creation time, in the format of YYYY-MM-DD HH:mm:ss.
         self.create_time = create_time
-        # The deployment branch ID.
+        # The ID of the branch being deployed.
         self.deploy_branch_id = deploy_branch_id
-        # The effective branch name.
+        # The name of the active branch.
         self.deploy_branch_name = deploy_branch_name
         # The agent description.
         self.description = description
-        # The effective version ID.
+        # The ID of the active version.
         self.effective_version_id = effective_version_id
-        # The effective version name.
+        # The name of the active version.
         self.effective_version_name = effective_version_name
-        # Specifies whether the agent can be used for outbound calls. A value of `true` means the agent\\"s current deployment branch has a published version.
+        # Indicates whether the agent is available for outbound calls. A value of True indicates that the current deployment branch of the agent has a published version and is available for outbound calls.
         self.is_available = is_available
-        # The most recent publish time.
+        # The latest version publish time, in the format of YYYY-MM-DD HH:mm:ss.
         self.latest_publish_time = latest_publish_time
-        # The last modified time.
+        # The last modification time, in the format of YYYY-MM-DD HH:mm:ss.
         self.modify_time = modify_time
-        # The scene.
+        # The scenario.
         self.scene = scene
+        # The service direction.
+        self.service_direction = service_direction
+        # The source template ID.
+        self.template_id = template_id
+        # The source template name.
+        self.template_name = template_name
 
     def validate(self):
         pass
@@ -247,6 +256,15 @@ class PageQueryAgentListNewResponseBodyDataList(DaraModel):
         if self.scene is not None:
             result['Scene'] = self.scene
 
+        if self.service_direction is not None:
+            result['ServiceDirection'] = self.service_direction
+
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+
         return result
 
     def from_map(self, m: dict = None):
@@ -292,6 +310,15 @@ class PageQueryAgentListNewResponseBodyDataList(DaraModel):
 
         if m.get('Scene') is not None:
             self.scene = m.get('Scene')
+
+        if m.get('ServiceDirection') is not None:
+            self.service_direction = m.get('ServiceDirection')
+
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
 
         return self
 

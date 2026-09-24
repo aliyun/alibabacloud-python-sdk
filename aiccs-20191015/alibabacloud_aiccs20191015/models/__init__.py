@@ -682,6 +682,7 @@ from ._page_query_agent_list_new_response_body import PageQueryAgentListNewRespo
 from ._query_ai_call_detail_page_response_body import QueryAiCallDetailPageResponseBodyDataList
 from ._query_ai_call_detail_page_response_body import QueryAiCallDetailPageResponseBodyData
 from ._query_ai_call_task_detail_response_body import QueryAiCallTaskDetailResponseBodyDataCallTimes
+from ._query_ai_call_task_detail_response_body import QueryAiCallTaskDetailResponseBodyDataCallableTimes
 from ._query_ai_call_task_detail_response_body import QueryAiCallTaskDetailResponseBodyData
 from ._query_ai_call_task_page_response_body import QueryAiCallTaskPageResponseBodyDataList
 from ._query_ai_call_task_page_response_body import QueryAiCallTaskPageResponseBodyData
@@ -1423,6 +1424,7 @@ __all__ = [
     QueryAiCallDetailPageResponseBodyDataList,
     QueryAiCallDetailPageResponseBodyData,
     QueryAiCallTaskDetailResponseBodyDataCallTimes,
+    QueryAiCallTaskDetailResponseBodyDataCallableTimes,
     QueryAiCallTaskDetailResponseBodyData,
     QueryAiCallTaskPageResponseBodyDataList,
     QueryAiCallTaskPageResponseBodyData,

@@ -1,3 +1,13 @@
+2026-09-24 Version: 5.4.3
+- Update API PageQueryAgentListNew: add request parameters InboundConfigurableOnly.
+- Update API PageQueryAgentListNew: add request parameters ServiceDirection.
+- Update API PageQueryAgentListNew: add request parameters TemplateId.
+- Update API PageQueryAgentListNew: add response parameters Body.Data.List.$.ServiceDirection.
+- Update API PageQueryAgentListNew: add response parameters Body.Data.List.$.TemplateId.
+- Update API PageQueryAgentListNew: add response parameters Body.Data.List.$.TemplateName.
+- Update API QueryAiVoiceAgentDetailNew: add response parameters Body.Data.ServiceDirection.
+
+
 2026-07-02 Version: 5.4.1
 - Generated python 2019-10-15 for aiccs.
 

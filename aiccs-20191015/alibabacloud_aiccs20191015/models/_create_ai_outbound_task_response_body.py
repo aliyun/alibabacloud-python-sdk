@@ -13,17 +13,17 @@ class CreateAiOutboundTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Request status code.
+        # The request status code.
         self.code = code
-        # Job ID.
+        # The task ID.
         self.data = data
-        # Description of the status code.
+        # The description of the status code.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the API invocation succeeded. Valid values:  
-        # - **true**: Succeeded.  
-        # - **false**: Failed.
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):

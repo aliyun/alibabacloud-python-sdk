@@ -12,13 +12,13 @@ class SendCcoSmartCallResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Request status code. A return value of "OK" indicates that the request succeeded.
+        # The request status code. OK indicates a successful request.
         self.code = code
-        # Unique receipt ID for this call.
+        # The unique receipt ID for this call.
         self.data = data
-        # Description of the status code.
+        # The description of the status code.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

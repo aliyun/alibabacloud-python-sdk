@@ -16,19 +16,17 @@ class ImportTaskNumberDatasResponseBody(DaraModel):
     ):
         # The detailed reason why access was denied.
         self.access_denied_detail = access_denied_detail
-        # The request status code. `OK` indicates that the request was successful.
+        # The request status code. OK indicates that the request was successful.
         self.code = code
         # The import batch ID.
         self.data = data
-        # The response message.
+        # The description of the status code.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # - **true**: The request succeeded.
-        # 
-        # - **false**: The request failed.
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: Successful.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):

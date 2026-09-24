@@ -18,33 +18,33 @@ class RobotCallRequest(DaraModel):
         resource_owner_id: int = None,
         robot_id: int = None,
     ):
-        # Called number.
+        # The called number.
         # 
         # This parameter is required.
         self.called_number = called_number
-        # Outbound caller number. View it in the Voice Service [Real Number Management](https://dyvmsnext.console.aliyun.com/number/list/normal) interface.
+        # The caller number for the outbound call. You can view this number on the [Real Number Management](https://dyvmsnext.console.aliyun.com/number/list/normal) page of the voice messaging service.
         # 
         # This parameter is required.
         self.called_show_number = called_show_number
-        # Whether to enable the number status detection identity. Valid values:  
+        # Specifies whether to enable the number status identification feature. Valid values:
         # 
-        # - **false** (Default Value): Disable.  
-        # - **true**: Enable.  
-        # > When enabled, the reason for unanswered calls will be recorded.
+        # - **false** (default): Disabled.
+        # - **true**: Enabled.
+        # >After this feature is enabled, the reason why a call is not answered is recorded.
         self.early_media_asr = early_media_asr
-        # An ID reserved for the caller. This ID will be returned to the caller through the receipt message. It must be 1 to 15 bytes in length.
+        # The ID reserved for the caller. This ID is returned to the caller through a receipt message. The value is 1 to 15 bytes in length.
         self.out_id = out_id
         self.owner_id = owner_id
-        # Parameter list for the robot, in JSON format. The total length must not exceed 512 bytes. You can view the parameters in [Script Management](https://aiccs.console.aliyun.com/patter/list) > **Details** > **Input Parameters**, or by using the [ListRobotParams](https://help.aliyun.com/document_detail/2717999.html) API.
+        # The parameter list of the robot in JSON format. The total length cannot exceed 512 bytes. You can view the parameters on the [Script Management](https://aiccs.console.aliyun.com/patter/list) > **Details** > **Input/Output Parameters** page or by calling the [ListRobotParams](https://help.aliyun.com/document_detail/2717999.html) operation.
         self.params = params
-        # Whether to record the call. Valid values:
+        # Specifies whether to record the call. Valid values:
         # 
         # - **false** (default): Do not record.
         # - **true**: Record.
         self.record_flag = record_flag
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Robot ID, which is the script ID. View the reviewed and approved script ID in the [Script Management](https://aiccs.console.aliyun.com/patter/list) interface.
+        # The robot ID, which is the script ID. You can view approved script IDs on the [Script Management](https://aiccs.console.aliyun.com/patter/list) page.
         # 
         # This parameter is required.
         self.robot_id = robot_id

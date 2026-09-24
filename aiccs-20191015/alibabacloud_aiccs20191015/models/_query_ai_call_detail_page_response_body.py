@@ -17,21 +17,19 @@ class QueryAiCallDetailPageResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The reason why the access request was denied.
+        # The detailed reason why access was denied.
         self.access_denied_detail = access_denied_detail
         # The status code.
         self.code = code
         # The returned data.
         self.data = data
-        # A description of the status code.
+        # The description of the status code.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values are:
-        # 
-        # - **true**: The request was successful.
-        # 
-        # - **false**: The request failed.
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: Successful.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -94,9 +92,9 @@ class QueryAiCallDetailPageResponseBodyData(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
-        # A list of task details.
+        # The list of task detail data.
         self.list = list
-        # The page number.
+        # The current page number.
         self.page_no = page_no
         # The page size.
         self.page_size = page_size
@@ -156,6 +154,8 @@ class QueryAiCallDetailPageResponseBodyDataList(DaraModel):
         branch_id: int = None,
         branch_name: str = None,
         branch_version_id: int = None,
+        call_expire_time: int = None,
+        call_id: str = None,
         call_result: str = None,
         called_number: str = None,
         calling_time: int = None,
@@ -177,64 +177,67 @@ class QueryAiCallDetailPageResponseBodyDataList(DaraModel):
     ):
         # The batch ID.
         self.batch_id = batch_id
+        # The branch ID.
         self.branch_id = branch_id
+        # The branch name.
         self.branch_name = branch_name
+        # The version ID.
         self.branch_version_id = branch_version_id
+        # The expiration time of the outbound call detail. Format: YYYY-MM-DD HH:mm:ss.
+        self.call_expire_time = call_expire_time
+        # The call ID.
+        self.call_id = call_id
         # The call result.
         self.call_result = call_result
         # The called number.
         self.called_number = called_number
-        # The call time, formatted as a timestamp in milliseconds.
+        # The calling time. This value is a UNIX timestamp. Unit: milliseconds.
         self.calling_time = calling_time
-        # The conversation duration, in seconds.
+        # The call duration. Unit: seconds.
         self.conversation_duration = conversation_duration
-        # The conversation record, formatted as a chronologically sorted JSON array. Each object has the following structure:
-        # 
+        # The chat record information. The structure is a JSON array, and the chat records are sorted in chronological order. The structure is as follows:
         # ```json
         # [
         #     {
-        #         "content":"The content of the message.",
-        #         "role":"The role of the speaker.", // Valid values: user, assistant
+        #         "content":"Chat content",
+        #         "role":"Role",//Valid values: user and assistant (bot).
         #     }
         # ]
         # ```
         self.conversation_record = conversation_record
-        # The conversation turn count.
+        # The number of conversation turns.
         self.conversation_turn_count = conversation_turn_count
         # The task detail ID.
         self.detail_id = detail_id
-        # The encryption type. Valid values are: 0 (no encryption), 1 (MD5), 2 (SHA256), and 3 (SM3).
+        # The encryption type. Valid values: 0: no encryption. 1: MD5. 2: SHA256. 3: SM3.
         self.encryption_type = encryption_type
-        # The failure reason. Provided only if the call fails.
+        # The reason for the call failure. This field is returned only when the call fails.
         self.failed_reason = failed_reason
-        # The import time, formatted as a timestamp in milliseconds.
+        # The import time. This value is a UNIX timestamp. Unit: milliseconds.
         self.imported_time = imported_time
         # The major intent.
         self.major_intent = major_intent
-        # A JSON object of key-value pairs for runtime variables.
+        # The variable information used at runtime. The information is stored in this field as key-value pairs.
         self.options = options
+        # The external business serial number reserved for external input. You can use a unique ID for business association.
         self.out_id = out_id
-        # The recording file path. Provided only after the recording file is generated.
+        # The download path of the recording file. This field is returned only after the recording file is generated.
         self.recording_file_path = recording_file_path
-        # The task detail status.
+        # The task detail status. Valid values:
+        # - 0: Initialization.
+        # - 1: Waiting for call.
+        # - 2: Waiting for retry.
+        # - 3: Calling.
+        # - 4: Call ended.
+        # - 5: Call failed.
         # 
-        # - 0: Initializing
-        # 
-        # - 1: Waiting to call
-        # 
-        # - 2: Waiting to retry
-        # 
-        # - 3: Calling
-        # 
-        # - 4: Call ended
-        # 
-        # - 5: Call failed
-        # 
-        # Only statuses 4 and 5 are terminal states.
+        # Only 4 and 5 are desired states.
         self.status = status
         # The task ID.
         self.task_id = task_id
+        # The version name.
         self.version_name = version_name
+        # The version number.
         self.version_no = version_no
 
     def validate(self):
@@ -256,6 +259,12 @@ class QueryAiCallDetailPageResponseBodyDataList(DaraModel):
 
         if self.branch_version_id is not None:
             result['BranchVersionId'] = self.branch_version_id
+
+        if self.call_expire_time is not None:
+            result['CallExpireTime'] = self.call_expire_time
+
+        if self.call_id is not None:
+            result['CallId'] = self.call_id
 
         if self.call_result is not None:
             result['CallResult'] = self.call_result
@@ -326,6 +335,12 @@ class QueryAiCallDetailPageResponseBodyDataList(DaraModel):
 
         if m.get('BranchVersionId') is not None:
             self.branch_version_id = m.get('BranchVersionId')
+
+        if m.get('CallExpireTime') is not None:
+            self.call_expire_time = m.get('CallExpireTime')
+
+        if m.get('CallId') is not None:
+            self.call_id = m.get('CallId')
 
         if m.get('CallResult') is not None:
             self.call_result = m.get('CallResult')

@@ -17,21 +17,19 @@ class QueryAiCallTaskPageResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The detailed reason for the access denial.
+        # The detailed reason for access denial.
         self.access_denied_detail = access_denied_detail
         # The status code.
         self.code = code
-        # The details of the tasks.
+        # The task details.
         self.data = data
-        # The error message. This parameter is returned only if the call fails.
+        # The error message. This parameter is not returned if the call is successful.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # - **true**: The request was successful.
-        # 
-        # - **false**: The request failed.
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: successful.
+        # - **false**: failed.
         self.success = success
 
     def validate(self):
@@ -94,13 +92,13 @@ class QueryAiCallTaskPageResponseBodyData(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
-        # The tasks.
+        # The task data.
         self.list = list
-        # The page number.
+        # The current page number.
         self.page_no = page_no
         # The number of entries per page.
         self.page_size = page_size
-        # The total number of entries.
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -156,6 +154,9 @@ class QueryAiCallTaskPageResponseBodyDataList(DaraModel):
         agent_name: str = None,
         application_code: str = None,
         application_name: str = None,
+        call_expire_date: str = None,
+        call_expire_minutes: int = None,
+        call_expire_type: int = None,
         calling_count: int = None,
         complete_rate: str = None,
         concurrent_count: int = None,
@@ -181,41 +182,44 @@ class QueryAiCallTaskPageResponseBodyDataList(DaraModel):
         self.agent_name = agent_name
         self.application_code = application_code
         self.application_name = application_name
-        # The number of calls in progress.
+        self.call_expire_date = call_expire_date
+        self.call_expire_minutes = call_expire_minutes
+        self.call_expire_type = call_expire_type
+        # The number of ongoing calls.
         self.calling_count = calling_count
-        # The completion rate of the task.
+        # The task completion rate.
         self.complete_rate = complete_rate
-        # The number of concurrent tasks.
+        # The task concurrency.
         self.concurrent_count = concurrent_count
-        # The time when the task was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+        # The creation time. This value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The number of calls made on the current day.
         self.day_call_count = day_call_count
-        # The connection rate of the current day. This is the number of connected calls on the current day divided by the total number of calls on the current day (`DayCallCount`).
+        # The daily connection rate. Daily connection rate = number of connections on the current day ÷ number of calls on the current day (DayCallCount).
         self.day_connect_rate = day_connect_rate
-        # The number of data entries imported on the current day.
+        # The amount of data imported on the current day.
         self.day_import_count = day_import_count
-        # The total number of failed tasks.
+        # The total number of failed task executions.
         self.failed_count = failed_count
-        # The historical connection rate. This is the historical number of connected calls divided by the total number of calls (`TotalCallCount`).
+        # The historical connection rate. Historical connection rate = historical number of connections ÷ total number of calls (TotalCallCount).
         self.history_connect_rate = history_connect_rate
-        # The time when the task actually starts. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+        # The actual start time of the task. This value is a UNIX timestamp in milliseconds.
         self.real_start_time = real_start_time
-        # The reason why the task failed to start.
+        # The reason for startup failure.
         self.start_failed_reason = start_failed_reason
-        # The time when the task is scheduled to start. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+        # The scheduled start time of the task. This value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
-        # The status of the task.
+        # The task status.
         self.status = status
-        # The total number of successful tasks.
+        # The total number of successful task executions.
         self.succeed_count = succeed_count
         # The task ID.
         self.task_id = task_id
         # The task name.
         self.task_name = task_name
-        # The total number of calls.
+        # The total number of calls made by the task.
         self.total_call_count = total_call_count
-        # The total number of tasks.
+        # The total number of task items.
         self.total_count = total_count
 
     def validate(self):
@@ -237,6 +241,15 @@ class QueryAiCallTaskPageResponseBodyDataList(DaraModel):
 
         if self.application_name is not None:
             result['ApplicationName'] = self.application_name
+
+        if self.call_expire_date is not None:
+            result['CallExpireDate'] = self.call_expire_date
+
+        if self.call_expire_minutes is not None:
+            result['CallExpireMinutes'] = self.call_expire_minutes
+
+        if self.call_expire_type is not None:
+            result['CallExpireType'] = self.call_expire_type
 
         if self.calling_count is not None:
             result['CallingCount'] = self.calling_count
@@ -307,6 +320,15 @@ class QueryAiCallTaskPageResponseBodyDataList(DaraModel):
 
         if m.get('ApplicationName') is not None:
             self.application_name = m.get('ApplicationName')
+
+        if m.get('CallExpireDate') is not None:
+            self.call_expire_date = m.get('CallExpireDate')
+
+        if m.get('CallExpireMinutes') is not None:
+            self.call_expire_minutes = m.get('CallExpireMinutes')
+
+        if m.get('CallExpireType') is not None:
+            self.call_expire_type = m.get('CallExpireType')
 
         if m.get('CallingCount') is not None:
             self.calling_count = m.get('CallingCount')

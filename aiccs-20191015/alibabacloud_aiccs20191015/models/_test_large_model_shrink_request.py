@@ -14,9 +14,9 @@ class TestLargeModelShrinkRequest(DaraModel):
         resource_owner_id: int = None,
         user_dialog_content: str = None,
     ):
-        # The base models.
+        # The foundation model.
         self.base_model_shrink = base_model_shrink
-        # The ID of the test scenario.
+        # The scenario ID.
         self.model_code = model_code
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account

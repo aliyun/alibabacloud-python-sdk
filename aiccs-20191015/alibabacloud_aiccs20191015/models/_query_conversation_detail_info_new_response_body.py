@@ -27,9 +27,9 @@ class QueryConversationDetailInfoNewResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
-        # - **true**: successful.
-        # - **false**: failed.
+        # Indicates whether the operation was successful. Valid values:
+        # - **true**: Successful.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -88,6 +88,7 @@ class QueryConversationDetailInfoNewResponseBodyData(DaraModel):
     def __init__(
         self,
         batch_id: str = None,
+        branch_id: int = None,
         call_id: str = None,
         call_result: str = None,
         called_phone: str = None,
@@ -116,38 +117,40 @@ class QueryConversationDetailInfoNewResponseBodyData(DaraModel):
     ):
         # The batch ID.
         self.batch_id = batch_id
+        # The branch ID.
+        self.branch_id = branch_id
         # The unique ID of the call.
         self.call_id = call_id
         # The call result. Valid values:
-        # - CALL_FORWARDING: call forwarding.
-        # - INCOMING_CALL_BARRED: incoming call barred.
-        # - CALL_REJECTED: call rejected.
-        # - ANSWERED: the user answered.
-        # - USER_BUSY: the callee is busy.
-        # - POWERED_OFF: the phone is powered off.
-        # - NO_USER_RESPONSE: out of service area.
-        # - OPERATOR_BLOCK: blocked by the carrier.
-        # - OTHERS: other status.
-        # - SUSPEND: the phone is suspended.
-        # - CANCEL: the caller canceled.
-        # - INVALID_NUMBER: invalid number.
-        # - UNAVAILABLE: temporarily unavailable.
-        # - NETWORK_BUSY: network busy.
-        # - NO_ANSWER: no answer.
+        # - CALL_FORWARDING: Call forwarding.
+        # - INCOMING_CALL_BARRED: Incoming call barred.
+        # - CALL_REJECTED: Call rejected.
+        # - ANSWERED: Answered by the user.
+        # - USER_BUSY: Callee busy.
+        # - POWERED_OFF: Powered off.
+        # - NO_USER_RESPONSE: Out of service area.
+        # - OPERATOR_BLOCK: Blocked by the carrier.
+        # - OTHERS: Other status.
+        # - SUSPEND: Service suspended.
+        # - CANCEL: Canceled by the caller.
+        # - INVALID_NUMBER: Invalid number.
+        # - UNAVAILABLE: Temporarily unavailable.
+        # - NETWORK_BUSY: Network busy.
+        # - NO_ANSWER: No answer.
         self.call_result = call_result
         # The callee number.
         self.called_phone = called_phone
         # The caller number.
         self.caller_phone = caller_phone
-        # The chat record information. The structure is a JSON array, and the chat records are sorted in chronological order. The structure is as follows:
+        # The chat record information. The structure is a JSON array, and the chat records are sorted in chronological order. The format is as follows:
         # ```json
         # [
         #     {
-        #         "content":"聊天内容",
-        #         "role":"角色",//Valid values: user and assistant (robot).
+        #         "content":"Chat content",
+        #         "role":"Role",//Valid values: user, assistant (robot)
         #     }
         # ]
-        # ```.
+        # ```
         self.conversation_record = conversation_record
         # The number of conversation turns.
         self.conversation_turn_count = conversation_turn_count
@@ -160,30 +163,30 @@ class QueryConversationDetailInfoNewResponseBodyData(DaraModel):
         self.failed_reason = failed_reason
         # The hangup direction. Valid values:
         # 
-        # - **0**: the user.
-        # - **1**: the robot.
+        # - **0**: User.
+        # - **1**: Robot.
         self.hangup_direction = hangup_direction
-        # The import time. This value is a UNIX timestamp. Unit: milliseconds.
+        # The import time. This value is a UNIX timestamp in milliseconds.
         self.imported_time = imported_time
         # The major intent.
         self.major_intent = major_intent
-        # The variable information used at runtime. The information is stored in this field as key-value pairs.
+        # The variable information used at runtime, stored in key-value format in this field.
         self.options = options
         # The external business serial number. You can use a unique ID for business association.
         self.out_id = out_id
         # The output tag information.
         self.output_tags = output_tags
-        # The time when the call was answered. This value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the call was answered. This value is a UNIX timestamp in milliseconds.
         self.pick_up_time = pick_up_time
         # The download URL of the recording file. This field is available only after a recording file is generated.
         self.recording_file_download_url = recording_file_download_url
-        # The time when the call ended. This value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the call ended. This value is a UNIX timestamp in milliseconds.
         self.release_time = release_time
-        # The time when the call started. This value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the call started. This value is a UNIX timestamp in milliseconds.
         self.start_call_time = start_call_time
         # The agent status.
         self.status = status
-        # The call status code. For more information, see [Call status codes](https://help.aliyun.com/document_detail/112804.html) in voice messaging.
+        # The call status code. For more information, see [Call status codes](https://help.aliyun.com/document_detail/112804.html) in Voice Messaging.
         self.status_code = status_code
         # The call status information returned by the carrier.
         self.status_msg = status_msg
@@ -209,6 +212,9 @@ class QueryConversationDetailInfoNewResponseBodyData(DaraModel):
             result = _map
         if self.batch_id is not None:
             result['BatchId'] = self.batch_id
+
+        if self.branch_id is not None:
+            result['BranchId'] = self.branch_id
 
         if self.call_id is not None:
             result['CallId'] = self.call_id
@@ -295,6 +301,9 @@ class QueryConversationDetailInfoNewResponseBodyData(DaraModel):
         m = m or dict()
         if m.get('BatchId') is not None:
             self.batch_id = m.get('BatchId')
+
+        if m.get('BranchId') is not None:
+            self.branch_id = m.get('BranchId')
 
         if m.get('CallId') is not None:
             self.call_id = m.get('CallId')

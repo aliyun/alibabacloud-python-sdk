@@ -17,29 +17,22 @@ class ImportTaskNumberDatasShrinkRequest(DaraModel):
         task_id: str = None,
     ):
         # The data type. Valid values:
-        # 
         # - EXCEL
-        # 
         # - JSON
-        # 
-        # 
-        #   >Notice: 
-        # 
-        #   API calls currently support only the JSON data type.
+        # >Notice: API calls currently support only the JSON data type.
         # 
         # This parameter is required.
         self.data_type = data_type
         self.encryption_type = encryption_type
         # The OSS file path. This parameter is optional.
-        # 
-        # > Importing data by specifying an OSS file path is not available because API calls currently support only the JSON data type.
+        # > API calls do not currently support the Excel data type. Therefore, uploading an OSS file path is currently unavailable.
         self.oss_file_name = oss_file_name
         self.owner_id = owner_id
-        # If `DataType` is set to `JSON`, you must use this parameter to upload the data. You can import up to 1,000 records per request.
+        # If DataType is set to JSON, upload data through this field. A maximum of 1000 records can be uploaded at a time.
         self.phone_number_list_shrink = phone_number_list_shrink
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the call task.
+        # The task ID.
         # 
         # This parameter is required.
         self.task_id = task_id

@@ -10,6 +10,7 @@ class ImportOneTaskPhoneNumberRequest(DaraModel):
     def __init__(
         self,
         encryption_type: int = None,
+        extension: str = None,
         out_id: str = None,
         owner_id: int = None,
         phone_number: str = None,
@@ -19,10 +20,12 @@ class ImportOneTaskPhoneNumberRequest(DaraModel):
         variables: Dict[str, Any] = None,
     ):
         self.encryption_type = encryption_type
-        # The external ID. We recommend that you use a unique ID to ensure idempotency. The value cannot exceed 128 characters.
+        # The extension number.
+        self.extension = extension
+        # The external serial number. We recommend that you use a unique ID. The value cannot exceed 128 characters.
         self.out_id = out_id
         self.owner_id = owner_id
-        # The phone number of the callee.
+        # The called phone number.
         # 
         # This parameter is required.
         self.phone_number = phone_number
@@ -32,11 +35,9 @@ class ImportOneTaskPhoneNumberRequest(DaraModel):
         # 
         # This parameter is required.
         self.task_id = task_id
-        # A list of variables in a map.
-        # 
-        # > The format of variables for an engine-based call task is as follows:
-        # >
-        # > - {"startWordParam.variable_key1":"variable_value1","promptParam.variable_key2":"variable_value2","bizParam.variable_key3":"variable_value3"}
+        # The variable list in Map format.
+        # > Variable format for engine-based voice call tasks:
+        # > - {"startWordParam.VariableKey1":"VariableValue1","promptParam.VariableKey2":"VariableValue2","bizParam.VariableKey3":"VariableValue3"}
         self.variables = variables
 
     def validate(self):
@@ -49,6 +50,9 @@ class ImportOneTaskPhoneNumberRequest(DaraModel):
             result = _map
         if self.encryption_type is not None:
             result['EncryptionType'] = self.encryption_type
+
+        if self.extension is not None:
+            result['Extension'] = self.extension
 
         if self.out_id is not None:
             result['OutId'] = self.out_id
@@ -77,6 +81,9 @@ class ImportOneTaskPhoneNumberRequest(DaraModel):
         m = m or dict()
         if m.get('EncryptionType') is not None:
             self.encryption_type = m.get('EncryptionType')
+
+        if m.get('Extension') is not None:
+            self.extension = m.get('Extension')
 
         if m.get('OutId') is not None:
             self.out_id = m.get('OutId')

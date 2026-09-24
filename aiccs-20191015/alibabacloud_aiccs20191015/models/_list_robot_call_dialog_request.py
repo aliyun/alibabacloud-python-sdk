@@ -13,11 +13,11 @@ class ListRobotCallDialogRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # Unique call ID. You can invoke the [RobotCall](https://help.aliyun.com/document_detail/2717996.html) API and check the **Data** field in the response to obtain it.
+        # The unique ID of the call. You can call the [RobotCall](https://help.aliyun.com/document_detail/2717996.html) operation and obtain the value from the **Data** field in the response.
         # 
         # This parameter is required.
         self.call_id = call_id
-        # Creation Time. Format: YYYY-MM-DD hh:mm:ss. The time must be precise. You can invoke the [RobotCall](https://help.aliyun.com/document_detail/2717996.html) API and view the **date** parameter in the **Response Header** of the response to obtain this value.
+        # The creation time. Format: YYYY-MM-DD hh:mm:ss. The time must be specified precisely. You can call the [RobotCall](https://help.aliyun.com/document_detail/2717996.html) operation and obtain the value from the **date** parameter in the **Response Header**.
         # 
         # This parameter is required.
         self.create_time = create_time

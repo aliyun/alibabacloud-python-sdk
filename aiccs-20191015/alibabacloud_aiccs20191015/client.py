@@ -21,33 +21,7 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'us-west-1': 'aiccs.aliyuncs.com',
-            'us-east-1': 'aiccs.aliyuncs.com',
-            'me-east-1': 'aiccs.aliyuncs.com',
-            'eu-west-1': 'aiccs.aliyuncs.com',
-            'eu-central-1': 'aiccs.aliyuncs.com',
-            'cn-zhangjiakou': 'aiccs.aliyuncs.com',
-            'cn-wulanchabu': 'aiccs.aliyuncs.com',
-            'cn-shenzhen-finance-1': 'aiccs.aliyuncs.com',
-            'cn-shenzhen': 'aiccs.aliyuncs.com',
-            'cn-shanghai-finance-1': 'aiccs.aliyuncs.com',
-            'cn-shanghai': 'aiccs.aliyuncs.com',
-            'cn-qingdao': 'aiccs.aliyuncs.com',
-            'cn-north-2-gov-1': 'aiccs.aliyuncs.com',
-            'cn-huhehaote': 'aiccs.aliyuncs.com',
-            'cn-hongkong': 'aiccs.aliyuncs.com',
-            'cn-hangzhou-finance': 'aiccs.aliyuncs.com',
-            'cn-hangzhou': 'aiccs.aliyuncs.com',
-            'cn-chengdu': 'aiccs.aliyuncs.com',
-            'cn-beijing-finance-1': 'aiccs.aliyuncs.com',
-            'cn-beijing': 'aiccs.aliyuncs.com',
-            'ap-southeast-5': 'aiccs.aliyuncs.com',
-            'ap-southeast-3': 'aiccs.aliyuncs.com',
-            'ap-southeast-1': 'aiccs.aliyuncs.com',
-            'ap-northeast-1': 'aiccs.aliyuncs.com'
-        }
+        self._endpoint_rule = 'central'
         self.check_config(config)
         self._endpoint = self.get_endpoint('aiccs', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -1717,6 +1691,8 @@ class Client(OpenApiClient):
             request.call_retry_reason_shrink = Utils.array_to_string_with_specified_style(tmp_req.call_retry_reason, 'CallRetryReason', 'json')
         if not DaraCore.is_null(tmp_req.call_time):
             request.call_time_shrink = Utils.array_to_string_with_specified_style(tmp_req.call_time, 'CallTime', 'json')
+        if not DaraCore.is_null(tmp_req.callable_time):
+            request.callable_time_shrink = Utils.array_to_string_with_specified_style(tmp_req.callable_time, 'CallableTime', 'json')
         query = {}
         if not DaraCore.is_null(request.agent_id):
             query['AgentId'] = request.agent_id
@@ -1724,6 +1700,12 @@ class Client(OpenApiClient):
             query['ApplicationCode'] = request.application_code
         if not DaraCore.is_null(request.call_day_shrink):
             query['CallDay'] = request.call_day_shrink
+        if not DaraCore.is_null(request.call_expire_date):
+            query['CallExpireDate'] = request.call_expire_date
+        if not DaraCore.is_null(request.call_expire_minutes):
+            query['CallExpireMinutes'] = request.call_expire_minutes
+        if not DaraCore.is_null(request.call_expire_type):
+            query['CallExpireType'] = request.call_expire_type
         if not DaraCore.is_null(request.call_retry_interval):
             query['CallRetryInterval'] = request.call_retry_interval
         if not DaraCore.is_null(request.call_retry_reason_shrink):
@@ -1732,6 +1714,8 @@ class Client(OpenApiClient):
             query['CallRetryTimes'] = request.call_retry_times
         if not DaraCore.is_null(request.call_time_shrink):
             query['CallTime'] = request.call_time_shrink
+        if not DaraCore.is_null(request.callable_time_shrink):
+            query['CallableTime'] = request.callable_time_shrink
         if not DaraCore.is_null(request.line_encoding):
             query['LineEncoding'] = request.line_encoding
         if not DaraCore.is_null(request.line_phone_num):
@@ -1791,6 +1775,8 @@ class Client(OpenApiClient):
             request.call_retry_reason_shrink = Utils.array_to_string_with_specified_style(tmp_req.call_retry_reason, 'CallRetryReason', 'json')
         if not DaraCore.is_null(tmp_req.call_time):
             request.call_time_shrink = Utils.array_to_string_with_specified_style(tmp_req.call_time, 'CallTime', 'json')
+        if not DaraCore.is_null(tmp_req.callable_time):
+            request.callable_time_shrink = Utils.array_to_string_with_specified_style(tmp_req.callable_time, 'CallableTime', 'json')
         query = {}
         if not DaraCore.is_null(request.agent_id):
             query['AgentId'] = request.agent_id
@@ -1798,6 +1784,12 @@ class Client(OpenApiClient):
             query['ApplicationCode'] = request.application_code
         if not DaraCore.is_null(request.call_day_shrink):
             query['CallDay'] = request.call_day_shrink
+        if not DaraCore.is_null(request.call_expire_date):
+            query['CallExpireDate'] = request.call_expire_date
+        if not DaraCore.is_null(request.call_expire_minutes):
+            query['CallExpireMinutes'] = request.call_expire_minutes
+        if not DaraCore.is_null(request.call_expire_type):
+            query['CallExpireType'] = request.call_expire_type
         if not DaraCore.is_null(request.call_retry_interval):
             query['CallRetryInterval'] = request.call_retry_interval
         if not DaraCore.is_null(request.call_retry_reason_shrink):
@@ -1806,6 +1798,8 @@ class Client(OpenApiClient):
             query['CallRetryTimes'] = request.call_retry_times
         if not DaraCore.is_null(request.call_time_shrink):
             query['CallTime'] = request.call_time_shrink
+        if not DaraCore.is_null(request.callable_time_shrink):
+            query['CallableTime'] = request.callable_time_shrink
         if not DaraCore.is_null(request.line_encoding):
             query['LineEncoding'] = request.line_encoding
         if not DaraCore.is_null(request.line_phone_num):
@@ -8834,6 +8828,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.encryption_type):
             query['EncryptionType'] = request.encryption_type
+        if not DaraCore.is_null(request.extension):
+            query['Extension'] = request.extension
         if not DaraCore.is_null(request.out_id):
             query['OutId'] = request.out_id
         if not DaraCore.is_null(request.owner_id):
@@ -8880,6 +8876,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.encryption_type):
             query['EncryptionType'] = request.encryption_type
+        if not DaraCore.is_null(request.extension):
+            query['Extension'] = request.extension
         if not DaraCore.is_null(request.out_id):
             query['OutId'] = request.out_id
         if not DaraCore.is_null(request.owner_id):
@@ -11198,6 +11196,8 @@ class Client(OpenApiClient):
             query['AgentId'] = request.agent_id
         if not DaraCore.is_null(request.agent_name):
             query['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.inbound_configurable_only):
+            query['InboundConfigurableOnly'] = request.inbound_configurable_only
         if not DaraCore.is_null(request.is_available):
             query['IsAvailable'] = request.is_available
         if not DaraCore.is_null(request.page_index):
@@ -11206,6 +11206,10 @@ class Client(OpenApiClient):
             query['PageNo'] = request.page_no
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.service_direction):
+            query['ServiceDirection'] = request.service_direction
+        if not DaraCore.is_null(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -11236,6 +11240,8 @@ class Client(OpenApiClient):
             query['AgentId'] = request.agent_id
         if not DaraCore.is_null(request.agent_name):
             query['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.inbound_configurable_only):
+            query['InboundConfigurableOnly'] = request.inbound_configurable_only
         if not DaraCore.is_null(request.is_available):
             query['IsAvailable'] = request.is_available
         if not DaraCore.is_null(request.page_index):
@@ -11244,6 +11250,10 @@ class Client(OpenApiClient):
             query['PageNo'] = request.page_no
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.service_direction):
+            query['ServiceDirection'] = request.service_direction
+        if not DaraCore.is_null(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -15173,9 +15183,17 @@ class Client(OpenApiClient):
             request.call_retry_reason_shrink = Utils.array_to_string_with_specified_style(tmp_req.call_retry_reason, 'CallRetryReason', 'json')
         if not DaraCore.is_null(tmp_req.call_time):
             request.call_time_shrink = Utils.array_to_string_with_specified_style(tmp_req.call_time, 'CallTime', 'json')
+        if not DaraCore.is_null(tmp_req.callable_time):
+            request.callable_time_shrink = Utils.array_to_string_with_specified_style(tmp_req.callable_time, 'CallableTime', 'json')
         query = {}
         if not DaraCore.is_null(request.call_day_shrink):
             query['CallDay'] = request.call_day_shrink
+        if not DaraCore.is_null(request.call_expire_date):
+            query['CallExpireDate'] = request.call_expire_date
+        if not DaraCore.is_null(request.call_expire_minutes):
+            query['CallExpireMinutes'] = request.call_expire_minutes
+        if not DaraCore.is_null(request.call_expire_type):
+            query['CallExpireType'] = request.call_expire_type
         if not DaraCore.is_null(request.call_retry_interval):
             query['CallRetryInterval'] = request.call_retry_interval
         if not DaraCore.is_null(request.call_retry_reason_shrink):
@@ -15184,6 +15202,8 @@ class Client(OpenApiClient):
             query['CallRetryTimes'] = request.call_retry_times
         if not DaraCore.is_null(request.call_time_shrink):
             query['CallTime'] = request.call_time_shrink
+        if not DaraCore.is_null(request.callable_time_shrink):
+            query['CallableTime'] = request.callable_time_shrink
         if not DaraCore.is_null(request.line_encoding):
             query['LineEncoding'] = request.line_encoding
         if not DaraCore.is_null(request.line_phone_num):
@@ -15245,9 +15265,17 @@ class Client(OpenApiClient):
             request.call_retry_reason_shrink = Utils.array_to_string_with_specified_style(tmp_req.call_retry_reason, 'CallRetryReason', 'json')
         if not DaraCore.is_null(tmp_req.call_time):
             request.call_time_shrink = Utils.array_to_string_with_specified_style(tmp_req.call_time, 'CallTime', 'json')
+        if not DaraCore.is_null(tmp_req.callable_time):
+            request.callable_time_shrink = Utils.array_to_string_with_specified_style(tmp_req.callable_time, 'CallableTime', 'json')
         query = {}
         if not DaraCore.is_null(request.call_day_shrink):
             query['CallDay'] = request.call_day_shrink
+        if not DaraCore.is_null(request.call_expire_date):
+            query['CallExpireDate'] = request.call_expire_date
+        if not DaraCore.is_null(request.call_expire_minutes):
+            query['CallExpireMinutes'] = request.call_expire_minutes
+        if not DaraCore.is_null(request.call_expire_type):
+            query['CallExpireType'] = request.call_expire_type
         if not DaraCore.is_null(request.call_retry_interval):
             query['CallRetryInterval'] = request.call_retry_interval
         if not DaraCore.is_null(request.call_retry_reason_shrink):
@@ -15256,6 +15284,8 @@ class Client(OpenApiClient):
             query['CallRetryTimes'] = request.call_retry_times
         if not DaraCore.is_null(request.call_time_shrink):
             query['CallTime'] = request.call_time_shrink
+        if not DaraCore.is_null(request.callable_time_shrink):
+            query['CallableTime'] = request.callable_time_shrink
         if not DaraCore.is_null(request.line_encoding):
             query['LineEncoding'] = request.line_encoding
         if not DaraCore.is_null(request.line_phone_num):
@@ -15702,6 +15732,8 @@ class Client(OpenApiClient):
             query['MutePushMode'] = request.mute_push_mode
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.pause_time):
+            query['PauseTime'] = request.pause_time
         if not DaraCore.is_null(request.prompt):
             query['Prompt'] = request.prompt
         if not DaraCore.is_null(request.qualification_id):
@@ -15816,6 +15848,8 @@ class Client(OpenApiClient):
             query['MutePushMode'] = request.mute_push_mode
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.pause_time):
+            query['PauseTime'] = request.pause_time
         if not DaraCore.is_null(request.prompt):
             query['Prompt'] = request.prompt
         if not DaraCore.is_null(request.qualification_id):

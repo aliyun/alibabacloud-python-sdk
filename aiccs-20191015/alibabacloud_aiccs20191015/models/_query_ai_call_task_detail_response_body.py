@@ -17,21 +17,19 @@ class QueryAiCallTaskDetailResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The access denial details. This parameter is returned only if RAM validation fails.
+        # The details about the access denial. This parameter is returned only when the RAM permission verification fails.
         self.access_denied_detail = access_denied_detail
-        # The status code.
+        # The error code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The error message. This parameter is returned only if the call fails.
+        # The error message. This parameter is not returned if the call is successful.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # - **true**
-        # 
-        # - **false**
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: Successful.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -94,7 +92,11 @@ class QueryAiCallTaskDetailResponseBodyData(DaraModel):
         application_code: str = None,
         application_name: str = None,
         call_days: List[str] = None,
+        call_expire_date: str = None,
+        call_expire_minutes: int = None,
+        call_expire_type: int = None,
         call_times: List[main_models.QueryAiCallTaskDetailResponseBodyDataCallTimes] = None,
+        callable_times: List[main_models.QueryAiCallTaskDetailResponseBodyDataCallableTimes] = None,
         caller_number: str = None,
         concurrent_count: int = None,
         line_encoding: str = None,
@@ -110,53 +112,72 @@ class QueryAiCallTaskDetailResponseBodyData(DaraModel):
         task_id: str = None,
         task_name: str = None,
     ):
-        # The ID of the deployed agent.
+        # The code of the published agent.
         self.agent_id = agent_id
-        # The name of the agent.
+        # The agent name.
         self.agent_name = agent_name
+        # The application code.
         self.application_code = application_code
+        # The application name.
         self.application_name = application_name
-        # The days of the week on which calls are permitted.
+        # The list of callable days.
         self.call_days = call_days
-        # The allowed call time windows.
+        # The expiration date of outbound call details (specific deadline) in the format of YYYY-MM-DD HH:mm:ss.
+        self.call_expire_date = call_expire_date
+        # The expiration duration of outbound call details. Unit: minutes.
+        self.call_expire_minutes = call_expire_minutes
+        # The expiration type of outbound calls. Valid values:
+        # 
+        # 0: permanently valid.
+        # 1: valid for a period of time after import.
+        # 2: valid until a specified time.
+        self.call_expire_type = call_expire_type
+        # The allowed call time periods.
         self.call_times = call_times
-        # The caller ID.
+        # The callable time periods of the current outbound call instance.
+        self.callable_times = callable_times
+        # The caller number.
         self.caller_number = caller_number
-        # The number of concurrent tasks.
+        # The task concurrency.
         self.concurrent_count = concurrent_count
+        # The line encoding.
         self.line_encoding = line_encoding
+        # The phone number of the custom line.
         self.line_phone_num = line_phone_num
+        # The phone number type. Valid values: 0 indicates an Alibaba Cloud number. 1 indicates a custom line provided by the customer.
         self.phone_type = phone_type
-        # The actual start time of the task. This value is a Unix timestamp in milliseconds.
+        # The actual start time of the task. This value is a timestamp in milliseconds.
         self.real_start_time = real_start_time
-        # The number of retries.
+        # The number of retry attempts.
         self.retry_count = retry_count
         # Indicates whether call retry is enabled. Valid values:
-        # 
-        # - `true`
-        # 
-        # - `false`
+        # - true: Enabled.
+        # - false: Not enabled.
         self.retry_enable = retry_enable
         # The retry interval. Unit: minutes.
         self.retry_interval = retry_interval
-        # The reasons for which a failed call can be retried.
+        # The list of failure reasons that allow retry.
         self.retry_reasons = retry_reasons
-        # The scheduled start time of the task. This value is a Unix timestamp in milliseconds.
+        # The scheduled start time of the task. This value is a timestamp in milliseconds.
         self.start_time = start_time
         # The start mode. Valid values:
         # 
-        # - `IMMEDIATE`: The task starts immediately.
+        # - IMMEDIATE: Start immediately.
         # 
-        # - `SCHEDULE`: The task starts at a scheduled time.
+        # - SCHEDULE: Start at a scheduled time.
         self.start_type = start_type
-        # The ID of the task.
+        # The task ID.
         self.task_id = task_id
-        # The name of the task.
+        # The task name.
         self.task_name = task_name
 
     def validate(self):
         if self.call_times:
             for v1 in self.call_times:
+                 if v1:
+                    v1.validate()
+        if self.callable_times:
+            for v1 in self.callable_times:
                  if v1:
                     v1.validate()
 
@@ -180,10 +201,24 @@ class QueryAiCallTaskDetailResponseBodyData(DaraModel):
         if self.call_days is not None:
             result['CallDays'] = self.call_days
 
+        if self.call_expire_date is not None:
+            result['CallExpireDate'] = self.call_expire_date
+
+        if self.call_expire_minutes is not None:
+            result['CallExpireMinutes'] = self.call_expire_minutes
+
+        if self.call_expire_type is not None:
+            result['CallExpireType'] = self.call_expire_type
+
         result['CallTimes'] = []
         if self.call_times is not None:
             for k1 in self.call_times:
                 result['CallTimes'].append(k1.to_map() if k1 else None)
+
+        result['CallableTimes'] = []
+        if self.callable_times is not None:
+            for k1 in self.callable_times:
+                result['CallableTimes'].append(k1.to_map() if k1 else None)
 
         if self.caller_number is not None:
             result['CallerNumber'] = self.caller_number
@@ -246,11 +281,26 @@ class QueryAiCallTaskDetailResponseBodyData(DaraModel):
         if m.get('CallDays') is not None:
             self.call_days = m.get('CallDays')
 
+        if m.get('CallExpireDate') is not None:
+            self.call_expire_date = m.get('CallExpireDate')
+
+        if m.get('CallExpireMinutes') is not None:
+            self.call_expire_minutes = m.get('CallExpireMinutes')
+
+        if m.get('CallExpireType') is not None:
+            self.call_expire_type = m.get('CallExpireType')
+
         self.call_times = []
         if m.get('CallTimes') is not None:
             for k1 in m.get('CallTimes'):
                 temp_model = main_models.QueryAiCallTaskDetailResponseBodyDataCallTimes()
                 self.call_times.append(temp_model.from_map(k1))
+
+        self.callable_times = []
+        if m.get('CallableTimes') is not None:
+            for k1 in m.get('CallableTimes'):
+                temp_model = main_models.QueryAiCallTaskDetailResponseBodyDataCallableTimes()
+                self.callable_times.append(temp_model.from_map(k1))
 
         if m.get('CallerNumber') is not None:
             self.caller_number = m.get('CallerNumber')
@@ -296,15 +346,52 @@ class QueryAiCallTaskDetailResponseBodyData(DaraModel):
 
         return self
 
+class QueryAiCallTaskDetailResponseBodyDataCallableTimes(DaraModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        start_time: str = None,
+    ):
+        # The end time in the format of HH:mm:ss.
+        self.end_time = end_time
+        # The start time in the format of HH:mm:ss.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+
+        return self
+
 class QueryAiCallTaskDetailResponseBodyDataCallTimes(DaraModel):
     def __init__(
         self,
         end_time: str = None,
         start_time: str = None,
     ):
-        # The end of the time window.
+        # The end time in the format of HH:mm:ss.
         self.end_time = end_time
-        # The beginning of the time window.
+        # The start time in the format of HH:mm:ss.
         self.start_time = start_time
 
     def validate(self):

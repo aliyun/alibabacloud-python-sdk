@@ -40,100 +40,99 @@ class SendCcoSmartCallRequest(DaraModel):
         voice_code_param: str = None,
         volume: int = None,
     ):
-        # Indicates whether the initial playback file can be interrupted. The default value is **true**, meaning the initial playback file can be interrupted.
+        # Specifies whether the opening audio file can be interrupted. Default value: **true**, which indicates the opening audio file can be interrupted.
         self.action_code_break = action_code_break
-        # Interrupts based on the user\\"s continuous speaking duration. Takes effect only when ActionCodeBreak is set to **true**. Unit: milliseconds.
+        # The duration threshold for interrupting based on continuous user speech. This parameter takes effect only when ActionCodeBreak is set to **true**. Unit: milliseconds.
         self.action_code_time_break = action_code_time_break
-        # Acoustic model ID.
+        # The acoustic model ID.
         self.asr_als_am_id = asr_als_am_id
-        # ASR foundation model.
+        # The ASR foundation model.
         # 
         # - **customer_service_8k**: Mandarin.
-        # - **dialect_customer_service_8k**: Strong accent.
+        # - **dialect_customer_service_8k**: Heavy accent.
         # - If only **asrModelId** is set, the specified ASR model is used.
         # - If only **AsrBaseId** is set, the specified ASR foundation model is used.
-        # - If neither is set, the default ASR foundation model is used. By default, **AsrBaseId** is **customer_service_8k**, which corresponds to the Mandarin ASR foundation model.
-        # - If both are set, ensure they correctly correspond to each other.
+        # - If neither is set, the default ASR foundation model is used. The default value of **AsrBaseId** is **customer_service_8k**, which indicates the ASR Mandarin foundation model.
+        # - If both are set, make sure they correspond correctly. 
         # 
-        # > When invoking the **SendCcoSmartCall** API, you must specify the ASR model to use. We recommend that you specify either **asrModelId** or **AsrBaseId**, but not both.
+        # > When you call the **SendCcoSmartCall** operation, specify the ASR model to use. Set either **asrModelId** or **AsrBaseId**.
         self.asr_base_id = asr_base_id
-        # The ASR model ID. You can view the ASR model ID on the [ASR Model Management Page](https://aiccs.console.aliyun.com/sentence/model/private?spm=a2c4g.11186623.0.0.7f9b2964fYSGv4).
+        # The ASR model ID. View the ASR model ID on the [ASR Model Management page](https://aiccs.console.aliyun.com/sentence/model/private?spm=a2c4g.11186623.0.0.7f9b2964fYSGv4).
         self.asr_model_id = asr_model_id
-        # Hotword ID. You can view the ASR hotword ID on the [ASR Hotword Management Page](https://aiccs.console.aliyun.com/sentence/vocab?spm=a2c4g.11186623.0.0.7f9bf965IKBpsi).
+        # The hot word ID. View the ASR hot word ID on the [ASR Hot Word Management page](https://aiccs.console.aliyun.com/sentence/vocab?spm=a2c4g.11186623.0.0.7f9bf965IKBpsi).
         self.asr_vocabulary_id = asr_vocabulary_id
-        # ID of the background audio file played during the conversation between the user and the robot. You can log on to the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview), choose **Intelligent Interaction > Audio File Management**, and click **View Details** to obtain the corresponding audio ID.
+        # The ID of the background audio file played during the conversation between the user and the robot. Log on to the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview), choose **Intelligent Interaction > Voice File Management**, and click **Details** to view the corresponding voice ID.
         self.background_file_code = background_file_code
-        # This parameter is not currently supported.
+        # This parameter is not supported.
         self.background_speed = background_speed
-        # This parameter is not currently supported.
+        # This parameter is not supported.
         self.background_volume = background_volume
-        # Callee number. Only numbers from the Chinese mainland are supported.
+        # The called number. Only numbers in the Chinese mainland are supported.
         # 
         # This parameter is required.
         self.called_number = called_number
-        # Called party display number. This must be a purchased number.
+        # The China-only caller ID displayed to the called party. The number must be a purchased number.
         # 
-        # You can log on to the [Contact Center console](https://aiccs.console.aliyun.com/overview?spm=a2c4g.11186623.0.0.7f9bf9658X6jte) to view your purchased numbers.
+        # Log on to the [Contact Center console](https://aiccs.console.aliyun.com/overview?spm=a2c4g.11186623.0.0.7f9bf9658X6jte) to view purchased numbers.
         # 
         # This parameter is required.
         self.called_show_number = called_show_number
-        # A dynamic extension ID reserved for the caller. This ID is returned in the webhook address and used as a developer identity for the customer.
+        # The dynamic extension ID reserved for the caller. This ID is returned in the callback URL for the caller\\"s development identifier.
         self.dynamic_id = dynamic_id
-        # The early media speech recognition identity. When set to true, it records the reason why the call was not answered. The default value is **false**, meaning this feature is disabled.
+        # The early media speech recognition flag. If set to true, the reason for unanswered calls is recorded. Default value: **false**, which indicates the feature is disabled.
         # 
-        # > To enable early media speech recognition, you must manually set this parameter to **true**.
+        # > To enable early media speech recognition, manually set this parameter to **true**.
         self.early_media_asr = early_media_asr
-        # Whether to execute ITN in post-processing.
+        # Specifies whether to perform Inverse Text Normalization (ITN) in post-processing.
         # 
-        # > When set to **true**, Chinese numerals are converted to Arabic numerals in the output. The default value is **false**.
+        # > When set to **true**, Chinese numerals are converted to Arabic numerals in the output. Default value: **false**.
         self.enable_itn = enable_itn
-        # Mute duration, used to set how long the user remains silent before the call ends. The unit is milliseconds, and the valid range is **1000–20000**.  
+        # The silence duration. Specifies how long the call ends after the user stops speaking. Unit: milliseconds. Valid values: **1000 to 20000**.
         # 
-        # - If the specified value is outside this range, the default MuteTime is **10000**.  
-        # - This parameter can be dynamically set during the call, and the last setting takes effect.
+        # - If the specified value is outside this range, the default value of **10000** is used.
+        # - This parameter can be dynamically set during the call. The last setting takes effect.
         self.mute_time = mute_time
-        # An ID reserved for the caller, which will ultimately be returned to the caller in the receipt message.  
-        # It is of string type and must be 1 to 15 bytes in length.
+        # The ID reserved for the caller. This ID is returned to the caller in the receipt message. The value is a string of 1 to 15 bytes.
         self.out_id = out_id
         self.owner_id = owner_id
-        # The pause duration. This parameter specifies how long a user must pause to indicate the end of a sentence. Unit: milliseconds. Valid values are **300–1200**. If the specified value is outside this range, PauseTime defaults to **800**.
+        # The pause duration. Specifies how long a user pause indicates the end of a sentence. Unit: milliseconds. Valid values: **300 to 1200**. If the specified value is outside this range, the default value of **800** is used.
         # 
-        # > The first setting takes effect; subsequent settings are ignored.
+        # > Only the first setting takes effect. Subsequent settings are ignored.
         self.pause_time = pause_time
-        # This parameter is not currently supported.
+        # This parameter is not supported.
         self.play_times = play_times
-        # Product name. Default value: **aiccs**.
+        # The product name. Default value: **aiccs**.
         self.prod_code = prod_code
-        # Whether to record during the call.
-        # - **true**: Yes.
-        # - **false**: No.
+        # Specifies whether to record the call. Valid values:
+        # - **true**: Record the call.
+        # - **false**: Do not record the call.
         self.record_flag = record_flag
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The maximum call duration, in seconds. The call is automatically disconnected after timeout.
+        # The maximum call duration. Unit: seconds. The call is automatically hung up after the timeout.
         self.session_timeout = session_timeout
-        # This parameter is currently not supported.
+        # This parameter is not supported.
         self.speed = speed
-        # Whether to configure TTS voice parameters.
-        # - If set to **true**, you must configure the voice style using the TtsStyle, TtsVolume, and TtsSpeed parameters.
-        # - If set to **false**, related parameters do not take effect, even if configured.
+        # Specifies whether to set TTS voice parameters. Valid values:
+        # - **true**: Set the voice style by using the TtsStyle, TtsVolume, and TtsSpeed parameters.
+        # - **false**: Do not set the related parameters. Even if they are set, they do not take effect.
         self.tts_conf = tts_conf
-        # The playback speed of the TTS variable. Valid values range from -200 to 200. The default value is 0.
+        # The voice speed for TTS variable playback. Valid values: -200 to 200. Default value: 0.
         self.tts_speed = tts_speed
-        # The voice style for TTS variable playback. The default value is **xiaoyun**. For available styles, see the voice style list.
+        # The voice style for TTS variable playback. Default value: **xiaoyun**. For specific styles, refer to the voice style list.
         self.tts_style = tts_style
-        # Playback volume for TTS variables. Valid values: **0–100**. Default value: **0**.
+        # The volume for TTS variable playback. Valid values: **0 to 100**. Default value: **0**.
         self.tts_volume = tts_volume
-        # The audio playback file for Intelligent outbound calls, which supports both network files and TTS. Multiple files and TTS parameters can be mixed and separated by commas (,). The replacement values for TTS parameters are specified in **VoiceCodeParam**.
+        # The intelligent outbound call audio file. Network files and text-to-speech (TTS) are supported. Multiple files and TTS parameters can be mixed and separated by commas (,). The replacement values for TTS parameters are specified in **VoiceCodeParam**.
         # 
-        # - When using a network file for playback: Set the VoiceCode parameter to a publicly accessible URL of the audio file. We recommend using a .wav audio file with a sampling frequency of 8000 Hz or 16000 Hz.
-        # - When using TTS for playback: Set the VoiceCode parameter to a variable name such as $name$, and define the corresponding content for this variable in VoiceCodeParam.
+        # - When the audio file is a network file: Set VoiceCode to a public network access audio file URL. Use a WAV format audio file with a sampling frequency of 8000 Hz or 16000 Hz.
+        # - When the audio file is TTS: Set VoiceCode to a variable name such as $name$, and set the corresponding content for the variable in VoiceCodeParam in **Settings**.
         # 
         # This parameter is required.
         self.voice_code = voice_code
-        # A JSON-formatted string for passing TTS parameters. It must correspond to the TTS parameters of VoiceCode.
+        # The TTS parameter string in JSON format. This parameter must correspond to the TTS parameters in VoiceCode.
         self.voice_code_param = voice_code_param
-        # Playback volume for user audio. Valid values: –4 to 4. We recommend setting it to 1.
+        # The volume for playing user audio. Valid values: -4 to 4. Set this parameter to 1.
         self.volume = volume
 
     def validate(self):

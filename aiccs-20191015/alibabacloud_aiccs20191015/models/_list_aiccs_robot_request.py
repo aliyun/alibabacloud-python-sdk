@@ -15,7 +15,7 @@ class ListAiccsRobotRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The robot name. You can view the robot name in the [Script Management](https://aiccs.console.aliyun.com/patter/list) interface.
+        # The robot name. View the robot name on the [Script Management](https://aiccs.console.aliyun.com/patter/list) page.
         self.robot_name = robot_name
 
     def validate(self):

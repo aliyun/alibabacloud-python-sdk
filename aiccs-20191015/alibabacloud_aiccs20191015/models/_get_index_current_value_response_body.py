@@ -15,16 +15,16 @@ class GetIndexCurrentValueResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Status code. A value of 200 indicates that the request succeeded.
+        # The status code. A value of 200 indicates that the request was successful.
         self.code = code
-        # List of data entries.
+        # The data list.
         self.data = data
-        # Description of the status code.
+        # The description of the status code.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the API call succeeded. Valid values:  
-        # - **true**: Succeeded.  
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: Successful.
         # - **false**: Failed.
         self.success = success
 

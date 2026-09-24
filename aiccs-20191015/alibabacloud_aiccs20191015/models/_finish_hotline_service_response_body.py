@@ -13,16 +13,16 @@ class FinishHotlineServiceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Status code. A return value of "Success" indicates that the request succeeded.
+        # The status code. A value of Success indicates that the request was successful.
         self.code = code
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Description of the status code.
+        # The description of the status code.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the API call succeeded.
-        # - **true**: Succeeded.
+        # Indicates whether the API call was successful. Valid values:
+        # - **true**: Successful.
         # - **false**: Failed.
         self.success = success
 

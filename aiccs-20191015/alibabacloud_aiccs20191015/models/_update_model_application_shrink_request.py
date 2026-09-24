@@ -34,6 +34,7 @@ class UpdateModelApplicationShrinkRequest(DaraModel):
         mute_hangup_num: int = None,
         mute_push_mode: str = None,
         owner_id: int = None,
+        pause_time: int = None,
         prompt: str = None,
         qualification_id: int = None,
         qualification_name: str = None,
@@ -49,7 +50,7 @@ class UpdateModelApplicationShrinkRequest(DaraModel):
         tts_config_shrink: str = None,
         usage_desc: str = None,
     ):
-        # The application code.
+        # The code of the application.
         # 
         # This parameter is required.
         self.application_code = application_code
@@ -57,75 +58,82 @@ class UpdateModelApplicationShrinkRequest(DaraModel):
         self.application_cps = application_cps
         # The name of the model application.
         self.application_name = application_name
-        # Specifies whether to hang up the call when a call assistant is detected.
+        # Specifies whether to hang up when an intelligent answering service is detected.
         self.call_assistant_hangup = call_assistant_hangup
         # Specifies whether to enable call assistant recognition.
         self.call_assistant_recognize = call_assistant_recognize
-        # Specifies whether to trigger the model immediately after the call is connected.
+        # Specifies whether to enable call-connected event push. This feature is disabled by default.
         self.call_connected_trigger_model = call_connected_trigger_model
-        # The allowed DTMF digits, specified as a comma-separated string such as `1,2,3`. You can specify a maximum of 20 digits.
+        # The enumeration of allowed key digits, specified as comma-separated text such as 1,2,3. A maximum of 20 values are supported.
         self.dtmf_allowed_digits = dtmf_allowed_digits
-        # Specifies whether to automatically validate the DTMF digits.
+        # Specifies whether to enable automatic key value validation.
         self.dtmf_auto_validate_enable = dtmf_auto_validate_enable
-        # The number of DTMF digits to collect. The value must be between 1 and 12.
+        # The number of DTMF key digits. Valid values: 1 to 12.
         self.dtmf_digit_count = dtmf_digit_count
-        # The timeout for DTMF input, in seconds. The value must be between 1 and 10.
+        # The DTMF input timeout period in seconds. Valid values: 1 to 10.
         self.dtmf_input_timeout = dtmf_input_timeout
-        # The action to take when the input is outside the allowed range. Valid values: `RETURN_MODEL` and `AUTO_RETRY`.
+        # The action to take when the input is out of range. Valid values:
+        # - RETURN_MODEL
+        # - AUTO_RETRY
         self.dtmf_out_of_range_action = dtmf_out_of_range_action
-        # The number of retry attempts. The value must be between 1 and 3. This parameter is effective only when `DtmfOutOfRangeAction` is set to `AUTO_RETRY`.
+        # The number of retry attempts (PlayTimes). Valid values: 1 to 3. This parameter takes effect only when DtmfOutOfRangeAction is set to AUTO_RETRY.
         self.dtmf_retry_play_times = dtmf_retry_play_times
-        # The custom text for the retry prompt. The text can contain a maximum of 50 characters. If this parameter is empty, the system uses the default prompt: "Invalid input. Please try again."
+        # The custom retry prompt text. The maximum length is 50 characters. If this parameter is left empty, the default prompt "Invalid input. Enter again." is used.
         self.dtmf_retry_prompt_text = dtmf_retry_prompt_text
+        # The maximum number of DTMF key sending attempts.
         self.dtmf_send_max_count = dtmf_send_max_count
+        # The timeout period for waiting for DTMF key sending.
         self.dtmf_send_wait_timeout = dtmf_send_wait_timeout
-        # The scene name.
+        # The name of the scenario.
         self.dyvms_scene_name = dyvms_scene_name
-        # Specifies whether to enable the collection of DTMF signals. The default value is `false`.
+        # Specifies whether to enable DTMF key collection. Default value: false.
         self.enable_dtmf_receive = enable_dtmf_receive
+        # Specifies whether to enable DTMF key sending.
         self.enable_dtmf_send = enable_dtmf_send
-        # Specifies whether to enable the Morse code configuration. The default value is `false`.
+        # Specifies whether to enable Morse code configuration. This feature is disabled by default.
         self.enable_morse = enable_morse
         # The interruption configuration.
         self.interrupt_config_shrink = interrupt_config_shrink
-        # The model code.
+        # The code of the model.
         self.model_code = model_code
-        # The model version.
+        # The version of the model.
         self.model_version = model_version
         # Specifies whether the first mute event triggers the model.
         self.mute_active = mute_active
         # The mute duration.
         self.mute_duration = mute_duration
-        # The number of consecutive mute events that trigger an automatic hang-up.
+        # The number of consecutive mute events before the system proactively hangs up.
         self.mute_hangup_num = mute_hangup_num
-        # 静音事件推送模式
+        # The push mode for mute events.
         self.mute_push_mode = mute_push_mode
         self.owner_id = owner_id
+        # The ASR recognition pause duration.
+        self.pause_time = pause_time
         # The prompt.
         self.prompt = prompt
-        # The qualification ID.
+        # The ID of the qualification.
         self.qualification_id = qualification_id
         # The name of the qualification.
         self.qualification_name = qualification_name
-        # The URL of the recording file.
+        # The URL of the recording audio file.
         self.recording_file = recording_file
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The session timeout, which is the maximum duration of a call.
+        # The maximum call duration.
         self.session_timeout = session_timeout
-        # The value must be `USER`.
+        # The source. Fixed value: USER.
         self.source = source
-        # The content of the speech.
+        # The content of the speech script.
         self.speech_content = speech_content
-        # The speech ID.
+        # The ID of the speech script.
         self.speech_id = speech_id
         # The opening statement.
         self.start_word = start_word
-        # The type of the opening statement. Valid values:
+        # The type of the opening statement.
         self.start_word_type = start_word_type
-        # The TTS configuration, such as voice, volume, and speech rate.
+        # The text-to-speech (TTS) configuration, including voice, volume, and speed.
         self.tts_config_shrink = tts_config_shrink
-        # The purpose of the application.
+        # The usage description.
         self.usage_desc = usage_desc
 
     def validate(self):
@@ -216,6 +224,9 @@ class UpdateModelApplicationShrinkRequest(DaraModel):
 
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+
+        if self.pause_time is not None:
+            result['PauseTime'] = self.pause_time
 
         if self.prompt is not None:
             result['Prompt'] = self.prompt
@@ -343,6 +354,9 @@ class UpdateModelApplicationShrinkRequest(DaraModel):
 
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+
+        if m.get('PauseTime') is not None:
+            self.pause_time = m.get('PauseTime')
 
         if m.get('Prompt') is not None:
             self.prompt = m.get('Prompt')

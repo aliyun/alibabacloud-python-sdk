@@ -37,75 +37,75 @@ class HotlineSessionQueryRequest(DaraModel):
         servicer_id_list: List[str] = None,
         servicer_name: str = None,
     ):
-        # Session ID. The acid received via WebSocket after an inbound call.
+        # The session ID. The acid in the websocket after an inbound call.
         self.acid = acid
-        # Session ID List.
+        # The list of session IDs.
         self.acid_list = acid_list
-        # Call result. Valid values:  
+        # The call result. Valid values:
         # 
-        # - **normal**: Normal hang-up.  
-        # - **touchRouteError**: Queue hang-up.  
-        # - **touchInQueue**: Queue hang-up.  
-        # - **touchInLoss**: Queue hang-up.  
-        # - **userHangup**: User hang-up or IVR hang-up.  
-        # - **sysHangup**: System hang-up or IVR hang-up.  
-        # - **transferAgent**: User hang-up or IVR hang-up.  
-        # - **dailing**: Agent hang-up during ringing.  
-        # - **TouchRingCallLoss**: Queue hang-up during ringing.
+        # - **normal**: normal hangup.
+        # - **touchRouteError**: queue hangup.
+        # - **touchInQueue**: queue hangup.
+        # - **touchInLoss**: queue hangup.
+        # - **userHangup**: user hangup or IVR hangup.
+        # - **sysHangup**: system hangup or IVR hangup.
+        # - **transferAgent**: user hangup or IVR hangup.
+        # - **dailing**: agent hangup or ringing hangup.
+        # - **TouchRingCallLoss**: queue hangup or ringing hangup.
         self.call_result = call_result
-        # List of call results.
+        # The list of call results.
         self.call_result_list = call_result_list
-        # Call Type. Valid values:
-        # - **1**: Outbound call.
-        # - **2**: Inbound call.
-        # - **3**: Change owner.
+        # The call type. Valid values:
+        # - **1**: outbound call.
+        # - **2**: inbound call.
+        # - **3**: transferred call.
         self.call_type = call_type
-        # Call Type List.
+        # The list of call types.
         self.call_type_list = call_type_list
-        # Calling party number, such as a user\\"s phone number, agent number, or machine number.
+        # The number of the caller. For example, a mobile phone number of a user, an agent number, or a robot number.
         self.called_number = called_number
-        # List of called numbers.
+        # The list of called numbers.
         self.called_number_list = called_number_list
-        # Calling party number, such as a user\\"s phone number, customer service agent number, or machine number.
+        # The number of the callee. For example, a mobile phone number of a user, an agent number, or a robot number.
         self.calling_number = calling_number
-        # List of calling numbers.
+        # The list of calling numbers.
         self.calling_number_list = calling_number_list
-        # Skill group ID.
+        # The ID of the skill group.
         self.group_id = group_id
-        # List of skill group IDs.
+        # The list of skill group IDs.
         self.group_id_list = group_id_list
-        # Skill group name.
+        # The name of the skill group.
         self.group_name = group_name
-        # Global unique ID (GUID) of the call detail.
+        # The globally unique ID of the call details.
         self.id = id
-        # AICCS instance ID.  
-        # You can obtain it in the **Instance Management** section of the left-side navigation pane in the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+        # The ID of the Artificial Intelligence Cloud Call Service (AICCS) instance.
+        # You can obtain the instance ID from <b>Instance Management</b> in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Membership ID.
+        # The member ID.
         self.member_id = member_id
-        # Membership List.
+        # The list of member IDs.
         self.member_id_list = member_id_list
-        # Membership name.
+        # The member name.
         self.member_name = member_name
-        # Current page number. The value must be greater than **0**. Default Value: **1**.
+        # The current page number. The value must be greater than **0**. Default value: **1**.
         self.page_no = page_no
-        # Page size. The value must be greater than **0**. Default value: **20**.
+        # The number of entries per page. The value must be greater than **0**. Default value: **20**.
         self.page_size = page_size
-        # Extension parameters.
+        # The extended parameters.
         self.params = params
-        # End UNIX timestamp. Unit: milliseconds.
+        # The end timestamp. Unit: milliseconds.
         self.query_end_time = query_end_time
-        # Start UNIX timestamp. Unit: ms.
+        # The start timestamp. Unit: milliseconds.
         self.query_start_time = query_start_time
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Agent ID.
+        # The agent ID.
         self.servicer_id = servicer_id
-        # List of agent IDs.
+        # The list of agent IDs.
         self.servicer_id_list = servicer_id_list
-        # Agent Name.
+        # The agent name.
         self.servicer_name = servicer_name
 
     def validate(self):

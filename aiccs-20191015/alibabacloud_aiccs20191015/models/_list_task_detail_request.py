@@ -18,9 +18,9 @@ class ListTaskDetailRequest(DaraModel):
         status_code: str = None,
         task_id: int = None,
     ):
-        # The callee number. You can view the callee number on the **Detail** interface of [**Task Management**](https://aiccs.console.aliyun.com/job/list).
+        # The called number. You can view the called number on the [**Task Management**](https://aiccs.console.aliyun.com/job/list) > **Details** page.
         self.called = called
-        # The detail ID. You can view the detail ID on the **Detail** interface of [**Task Management**](https://aiccs.console.aliyun.com/job/list).
+        # The detail ID. You can view the detail ID on the [**Task Management**](https://aiccs.console.aliyun.com/job/list) > **Details** page.
         self.id = id
         self.owner_id = owner_id
         # The current page number. The value must be greater than **0**. Default value: **1**.
@@ -29,14 +29,15 @@ class ListTaskDetailRequest(DaraModel):
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Detail status. Valid values:
+        # The detail status. Valid values:
+        # 
         # - **SUCCESS**: The outbound call succeeded.
         # - **FAIL**: The outbound call failed.
         # - **INIT**: The outbound call has not been made.
         self.status = status
-        # The call status code. For more information, see [Call Status Codes](https://help.aliyun.com/document_detail/112804.html) in Voice Service.
+        # The call status code. For more information, see [Call status codes](https://help.aliyun.com/document_detail/112804.html) in Voice Messaging.
         self.status_code = status_code
-        # The job ID. You can view the job ID on the [Task Management](https://aiccs.console.aliyun.com/job/list) page or obtain it by using the [ListTask](https://help.aliyun.com/document_detail/2718008.html) API.
+        # The task ID. You can view the task ID on the [Task Management](https://aiccs.console.aliyun.com/job/list) page or obtain it by calling the [ListTask](https://help.aliyun.com/document_detail/2718008.html) operation.
         # 
         # This parameter is required.
         self.task_id = task_id

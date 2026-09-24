@@ -19,50 +19,50 @@ class CreateAiOutboundTaskShrinkRequest(DaraModel):
         recall_rule_shrink: str = None,
         type: int = None,
     ):
-        # Concurrent call rate for automated outbound calls.
+        # The call concurrency for automatic outbound calls.
         self.concurrent_rate = concurrent_rate
-        # Job description. Length: 0 to 100 characters.
+        # The task description. The description can be up to 100 characters in length.
         self.description = description
-        # Job execution time, in JSON format.
+        # The task execution time. The value is in JSON format.
         # 
-        # > The end time must be later than the start time.
+        # > The end time (end) must be later than the start time (start).
         # 
         # This parameter is required.
         self.execution_time = execution_time
-        # Fixed outbound ratio for predictive dialing. Valid values: **≥1**.
+        # The fixed call ratio for predictive outbound calls. Valid values: **≥ 1**.
         self.forecast_call_rate = forecast_call_rate
-        # The skill group ID (for predictive outbound calls) or IVR ID (for automated outbound calls). You can obtain this information in the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+        # The skill group ID (for predictive outbound calls) or IVR ID (for automatic outbound calls). You can obtain this information from the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
         # 
         # This parameter is required.
         self.handler_id = handler_id
-        # AICCS instance ID.  
-        # You can obtain it from **Instance Management** in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+        # The ID of the Artificial Intelligence Cloud Call Service (AICCS) instance.
+        # You can obtain the instance ID from **Instance Management** in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Job name. Length: 1 to 15 characters.
+        # The task name. The name must be 1 to 15 characters in length.
         # 
         # This parameter is required.
         self.name = name
-        # Called number deduplication policy. Valid values:
-        # - **0**: Remove duplicates within the job.
-        # - **1**: Do not remove duplicates.
+        # The callee number deduplication policy. Valid values:
+        # - **0**: deduplicate within the task.
+        # - **1**: no deduplication.
         # 
         # This parameter is required.
         self.num_repeated = num_repeated
-        # Outbound caller numbers.  
+        # The outbound caller numbers.
         # 
-        # > Must be purchased numbers. Separate multiple numbers with commas (,).
+        # > The numbers must be purchased numbers. Separate multiple numbers with commas (,).
         # 
         # This parameter is required.
         self.outbound_nums_shrink = outbound_nums_shrink
-        # Failed call retry policy.  
+        # The failed call retry policy.
         # 
-        # > If empty, no retries are performed.
+        # > If the value is empty, no retry is performed.
         self.recall_rule_shrink = recall_rule_shrink
-        # Task Type. Valid values:  
-        # - **2**: Predictive outbound call.  
-        # - **3**: Automated outbound call.
+        # The task type. Valid values:
+        # - **2**: predictive outbound call.
+        # - **3**: automatic outbound call.
         # 
         # This parameter is required.
         self.type = type
