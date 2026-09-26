@@ -1,3 +1,10 @@
+2026-09-26 Version: 9.0.0
+- Update API TicketPageQueryProduct: add response parameters Body.Data.Products.$.SellerAgent.
+- Update API TicketPageQueryProduct: delete response parameters Body.Data.Products.$.SupplierName.
+- Update API TicketQueryProduct: add response parameters Body.Data.Product.SellerAgent.
+- Update API TicketQueryProduct: delete response parameters Body.Data.Product.SupplierName.
+
+
 2026-09-24 Version: 8.1.4
 - Generated python 2023-01-17 for airticketOpen.
 

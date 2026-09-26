@@ -112,10 +112,10 @@ class TicketQueryProductResponseBodyDataProduct(DaraModel):
         refund_rule: main_models.TicketQueryProductResponseBodyDataProductRefundRule = None,
         region: main_models.TicketQueryProductResponseBodyDataProductRegion = None,
         scenic_id: int = None,
+        seller_agent: main_models.TicketQueryProductResponseBodyDataProductSellerAgent = None,
         session: main_models.TicketQueryProductResponseBodyDataProductSession = None,
         settle_price_calculate_type: int = None,
         spu: main_models.TicketQueryProductResponseBodyDataProductSpu = None,
-        supplier_name: str = None,
         ticket_kind: main_models.TicketQueryProductResponseBodyDataProductTicketKind = None,
         use_rule: main_models.TicketQueryProductResponseBodyDataProductUseRule = None,
     ):
@@ -131,10 +131,10 @@ class TicketQueryProductResponseBodyDataProduct(DaraModel):
         self.refund_rule = refund_rule
         self.region = region
         self.scenic_id = scenic_id
+        self.seller_agent = seller_agent
         self.session = session
         self.settle_price_calculate_type = settle_price_calculate_type
         self.spu = spu
-        self.supplier_name = supplier_name
         self.ticket_kind = ticket_kind
         self.use_rule = use_rule
 
@@ -145,6 +145,8 @@ class TicketQueryProductResponseBodyDataProduct(DaraModel):
             self.refund_rule.validate()
         if self.region:
             self.region.validate()
+        if self.seller_agent:
+            self.seller_agent.validate()
         if self.session:
             self.session.validate()
         if self.spu:
@@ -195,6 +197,9 @@ class TicketQueryProductResponseBodyDataProduct(DaraModel):
         if self.scenic_id is not None:
             result['ScenicId'] = self.scenic_id
 
+        if self.seller_agent is not None:
+            result['SellerAgent'] = self.seller_agent.to_map()
+
         if self.session is not None:
             result['Session'] = self.session.to_map()
 
@@ -203,9 +208,6 @@ class TicketQueryProductResponseBodyDataProduct(DaraModel):
 
         if self.spu is not None:
             result['Spu'] = self.spu.to_map()
-
-        if self.supplier_name is not None:
-            result['SupplierName'] = self.supplier_name
 
         if self.ticket_kind is not None:
             result['TicketKind'] = self.ticket_kind.to_map()
@@ -256,6 +258,10 @@ class TicketQueryProductResponseBodyDataProduct(DaraModel):
         if m.get('ScenicId') is not None:
             self.scenic_id = m.get('ScenicId')
 
+        if m.get('SellerAgent') is not None:
+            temp_model = main_models.TicketQueryProductResponseBodyDataProductSellerAgent()
+            self.seller_agent = temp_model.from_map(m.get('SellerAgent'))
+
         if m.get('Session') is not None:
             temp_model = main_models.TicketQueryProductResponseBodyDataProductSession()
             self.session = temp_model.from_map(m.get('Session'))
@@ -266,9 +272,6 @@ class TicketQueryProductResponseBodyDataProduct(DaraModel):
         if m.get('Spu') is not None:
             temp_model = main_models.TicketQueryProductResponseBodyDataProductSpu()
             self.spu = temp_model.from_map(m.get('Spu'))
-
-        if m.get('SupplierName') is not None:
-            self.supplier_name = m.get('SupplierName')
 
         if m.get('TicketKind') is not None:
             temp_model = main_models.TicketQueryProductResponseBodyDataProductTicketKind()
@@ -903,6 +906,41 @@ class TicketQueryProductResponseBodyDataProductSession(DaraModel):
 
         if m.get('SessionStartTime') is not None:
             self.session_start_time = m.get('SessionStartTime')
+
+        return self
+
+class TicketQueryProductResponseBodyDataProductSellerAgent(DaraModel):
+    def __init__(
+        self,
+        agent_name: str = None,
+        agent_type: int = None,
+    ):
+        self.agent_name = agent_name
+        self.agent_type = agent_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.agent_name is not None:
+            result['AgentName'] = self.agent_name
+
+        if self.agent_type is not None:
+            result['AgentType'] = self.agent_type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentName') is not None:
+            self.agent_name = m.get('AgentName')
+
+        if m.get('AgentType') is not None:
+            self.agent_type = m.get('AgentType')
 
         return self
 
