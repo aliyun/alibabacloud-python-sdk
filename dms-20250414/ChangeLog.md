@@ -1,3 +1,8 @@
+2026-09-28 Version: 4.0.0
+- Delete API DescribeCustomAgentMonitorMetrics.
+- Delete API ListCustomAgentMonitorSessions.
+
+
 2026-09-23 Version: 3.1.0
 - Support API DescribeCustomAgentMonitorMetrics.
 - Support API ListCustomAgentMonitorSessions.
