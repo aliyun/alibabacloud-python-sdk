@@ -1,3 +1,8 @@
+2026-09-29 Version: 0.5.0
+- Support API DecommissionGovernance.
+- Support API OpenGovernanceService.
+
+
 2026-06-24 Version: 0.4.1
 - Update API GenerateEvaluationReport: add request parameters EvaluationDomain.
 - Update API ListEvaluationMetadata: add request parameters EvaluationDomain.

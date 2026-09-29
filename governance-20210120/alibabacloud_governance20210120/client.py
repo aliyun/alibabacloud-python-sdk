@@ -21,12 +21,6 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'eu-central-1': 'governance.eu-central-1.aliyuncs.com',
-            'cn-shanghai-finance-1': 'governance.cn-shanghai-finance-1.aliyuncs.com',
-            'cn-hangzhou': 'governance.cn-hangzhou.aliyuncs.com',
-            'ap-southeast-1': 'governance.ap-southeast-1.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('governance', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -209,6 +203,76 @@ class Client(OpenApiClient):
     ) -> main_models.CreateAccountFactoryBaselineResponse:
         runtime = RuntimeOptions()
         return await self.create_account_factory_baseline_with_options_async(request, runtime)
+
+    def decommission_governance_with_options(
+        self,
+        request: main_models.DecommissionGovernanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DecommissionGovernanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DecommissionGovernance',
+            version = '2021-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DecommissionGovernanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def decommission_governance_with_options_async(
+        self,
+        request: main_models.DecommissionGovernanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DecommissionGovernanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DecommissionGovernance',
+            version = '2021-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DecommissionGovernanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def decommission_governance(
+        self,
+        request: main_models.DecommissionGovernanceRequest,
+    ) -> main_models.DecommissionGovernanceResponse:
+        runtime = RuntimeOptions()
+        return self.decommission_governance_with_options(request, runtime)
+
+    async def decommission_governance_async(
+        self,
+        request: main_models.DecommissionGovernanceRequest,
+    ) -> main_models.DecommissionGovernanceResponse:
+        runtime = RuntimeOptions()
+        return await self.decommission_governance_with_options_async(request, runtime)
 
     def delete_account_factory_baseline_with_options(
         self,
@@ -1257,6 +1321,76 @@ class Client(OpenApiClient):
     ) -> main_models.ListEvaluationScoreHistoryResponse:
         runtime = RuntimeOptions()
         return await self.list_evaluation_score_history_with_options_async(request, runtime)
+
+    def open_governance_service_with_options(
+        self,
+        request: main_models.OpenGovernanceServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OpenGovernanceServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'OpenGovernanceService',
+            version = '2021-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OpenGovernanceServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def open_governance_service_with_options_async(
+        self,
+        request: main_models.OpenGovernanceServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OpenGovernanceServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'OpenGovernanceService',
+            version = '2021-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OpenGovernanceServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def open_governance_service(
+        self,
+        request: main_models.OpenGovernanceServiceRequest,
+    ) -> main_models.OpenGovernanceServiceResponse:
+        runtime = RuntimeOptions()
+        return self.open_governance_service_with_options(request, runtime)
+
+    async def open_governance_service_async(
+        self,
+        request: main_models.OpenGovernanceServiceRequest,
+    ) -> main_models.OpenGovernanceServiceResponse:
+        runtime = RuntimeOptions()
+        return await self.open_governance_service_with_options_async(request, runtime)
 
     def run_evaluation_with_options(
         self,

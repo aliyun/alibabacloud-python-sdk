@@ -8,6 +8,9 @@ from ._batch_enroll_accounts_response import BatchEnrollAccountsResponse
 from ._create_account_factory_baseline_request import CreateAccountFactoryBaselineRequest
 from ._create_account_factory_baseline_response_body import CreateAccountFactoryBaselineResponseBody
 from ._create_account_factory_baseline_response import CreateAccountFactoryBaselineResponse
+from ._decommission_governance_request import DecommissionGovernanceRequest
+from ._decommission_governance_response_body import DecommissionGovernanceResponseBody
+from ._decommission_governance_response import DecommissionGovernanceResponse
 from ._delete_account_factory_baseline_request import DeleteAccountFactoryBaselineRequest
 from ._delete_account_factory_baseline_response_body import DeleteAccountFactoryBaselineResponseBody
 from ._delete_account_factory_baseline_response import DeleteAccountFactoryBaselineResponse
@@ -46,6 +49,9 @@ from ._list_evaluation_results_response import ListEvaluationResultsResponse
 from ._list_evaluation_score_history_request import ListEvaluationScoreHistoryRequest
 from ._list_evaluation_score_history_response_body import ListEvaluationScoreHistoryResponseBody
 from ._list_evaluation_score_history_response import ListEvaluationScoreHistoryResponse
+from ._open_governance_service_request import OpenGovernanceServiceRequest
+from ._open_governance_service_response_body import OpenGovernanceServiceResponseBody
+from ._open_governance_service_response import OpenGovernanceServiceResponse
 from ._run_evaluation_request import RunEvaluationRequest
 from ._run_evaluation_shrink_request import RunEvaluationShrinkRequest
 from ._run_evaluation_response_body import RunEvaluationResponseBody
@@ -98,6 +104,9 @@ __all__ = [
     CreateAccountFactoryBaselineRequest,
     CreateAccountFactoryBaselineResponseBody,
     CreateAccountFactoryBaselineResponse,
+    DecommissionGovernanceRequest,
+    DecommissionGovernanceResponseBody,
+    DecommissionGovernanceResponse,
     DeleteAccountFactoryBaselineRequest,
     DeleteAccountFactoryBaselineResponseBody,
     DeleteAccountFactoryBaselineResponse,
@@ -136,6 +145,9 @@ __all__ = [
     ListEvaluationScoreHistoryRequest,
     ListEvaluationScoreHistoryResponseBody,
     ListEvaluationScoreHistoryResponse,
+    OpenGovernanceServiceRequest,
+    OpenGovernanceServiceResponseBody,
+    OpenGovernanceServiceResponse,
     RunEvaluationRequest,
     RunEvaluationShrinkRequest,
     RunEvaluationResponseBody,
