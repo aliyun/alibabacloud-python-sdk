@@ -10,7 +10,7 @@ class CreateJobResponseBody(DaraModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the job created by this request.
+        # The ID of the job created by this call.
         self.job_id = job_id
         # The request ID, which is used for diagnostics and troubleshooting.
         self.request_id = request_id

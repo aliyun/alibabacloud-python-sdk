@@ -1,3 +1,7 @@
+2026-10-08 Version: 1.11.6
+- Update API CreateJob: add request parameters body.DataSources.$.RoleArn.
+
+
 2026-09-18 Version: 1.11.5
 - Update API GetJob: add response parameters Body.RequestCPU.
 - Update API GetJob: add response parameters Body.RequestGPU.
