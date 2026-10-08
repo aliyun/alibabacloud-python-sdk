@@ -18,6 +18,7 @@ class SyncDepartmentUserRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator user.
         self.op_user_id = op_user_id
         # The request command.
         # 
@@ -103,10 +104,11 @@ class SyncDepartmentUserRequestSyncDepartmentUserCommandDeptUserMapping(DaraMode
         source_type: str = None,
         source_user_id: str = None,
     ):
-        # The list of department IDs to which the user belongs. If this parameter is left empty, the user-department affiliation is deleted.
+        # The list of department IDs to which the user belongs. If this parameter is left empty, the user affiliation is deleted.
         self.department_id_list = department_id_list
+        # The user source type.
         self.source_type = source_type
-        # The user ID in the user system. This value is the unique identifier of the user.
+        # The user ID in the user system. This is the unique identifier of the user.
         # 
         # This parameter is required.
         self.source_user_id = source_user_id

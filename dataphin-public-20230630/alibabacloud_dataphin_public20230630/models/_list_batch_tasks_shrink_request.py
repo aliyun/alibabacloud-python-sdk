@@ -4,22 +4,17 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class CreateRowPermissionShrinkRequest(DaraModel):
+class ListBatchTasksShrinkRequest(DaraModel):
     def __init__(
         self,
-        create_row_permission_command_shrink: str = None,
+        batch_task_query_shrink: str = None,
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # The request command.
-        # 
         # This parameter is required.
-        self.create_row_permission_command_shrink = create_row_permission_command_shrink
-        # The tenant ID.
-        # 
+        self.batch_task_query_shrink = batch_task_query_shrink
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The ID of the operator.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -30,8 +25,8 @@ class CreateRowPermissionShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.create_row_permission_command_shrink is not None:
-            result['CreateRowPermissionCommand'] = self.create_row_permission_command_shrink
+        if self.batch_task_query_shrink is not None:
+            result['BatchTaskQuery'] = self.batch_task_query_shrink
 
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
@@ -43,8 +38,8 @@ class CreateRowPermissionShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('CreateRowPermissionCommand') is not None:
-            self.create_row_permission_command_shrink = m.get('CreateRowPermissionCommand')
+        if m.get('BatchTaskQuery') is not None:
+            self.batch_task_query_shrink = m.get('BatchTaskQuery')
 
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')

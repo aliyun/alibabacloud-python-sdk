@@ -88,41 +88,39 @@ class CreateDatasetRequestCreateCommand(DaraModel):
         version_config: main_models.CreateDatasetRequestCreateCommandVersionConfig = None,
     ):
         self.api_info = api_info
-        # The dataset content type. Valid values: GENERAL, TEXT, AUDIO, VIDEO, IMAGE, TABLE, and INDEX.
+        # The dataset content type. Valid values: GENERAL, TEXT, AUDIO, VIDEO, IMAGE, TABLE, INDEX.
         # 
         # This parameter is required.
         self.content_type = content_type
-        # The data domain ID.
+        # **The subject domain ID.**
         self.data_cell_id = data_cell_id
-        # The description.
+        # **The description.**
         self.description = description
-        # The directory. Obtained from the file service by using the fileId.
+        # **The folder (retrieved from the file service using fileId).**
         # 
         # This parameter is required.
         self.dir_name = dir_name
-        # The file ID.
+        # **The file ID.**
         self.file_id = file_id
-        # The metastore type.
+        # The metastore type. Valid values: POSTGRESQL, MYSQL, STREAM_TABLE, MILVUS.
         self.metadata_storage_type = metadata_storage_type
         # The dataset name.
         # 
         # This parameter is required.
         self.name = name
-        # The list of owner IDs, separated by commas.
+        # The list of owner IDs. Separate multiple IDs with commas.
         self.owner = owner
-        # The dataset scenarios. Valid values:
-        # - OFFLINE: Offline. This is the default value.
-        # - REALTIME: Real-time.
+        # The dataset scenarios. Valid values: OFFLINE (offline, default), REALTIME (real-time).
         # 
         # This parameter is required.
         self.scenario = scenario
-        # The storage type.
+        # The storage type. Valid values: OSS, S3.
         self.storage_type = storage_type
-        # The dataset type. Valid values: FILE, TABLE, and HYBRID.
+        # The dataset type. Valid values: FILE, TABLE, HYBRID.
         # 
         # This parameter is required.
         self.type = type
-        # The version number. If this parameter is not specified, the default version V1 is used.
+        # The version number. If not specified, the default version V1 is used.
         self.version = version
         # The version configuration.
         self.version_config = version_config
@@ -242,9 +240,9 @@ class CreateDatasetRequestCreateCommandVersionConfig(DaraModel):
         self.file_storage_config = file_storage_config
         # The metastore configuration.
         self.metadata_storage_config = metadata_storage_config
-        # The real-time meta table configuration. This parameter takes effect when metadataStorageType is set to STREAM_TABLE.
+        # The real-time meta table configuration. Takes effect when metadataStorageType is STREAM_TABLE.
         self.realtime_meta_table_config = realtime_meta_table_config
-        # **Version description.**
+        # **The version description.**
         self.version_description = version_description
 
     def validate(self):
@@ -301,7 +299,7 @@ class CreateDatasetRequestCreateCommandVersionConfigRealtimeMetaTableConfig(Dara
         project_id: int = None,
         table_schema: main_models.CreateDatasetRequestCreateCommandVersionConfigRealtimeMetaTableConfigTableSchema = None,
     ):
-        # The data source type of the meta table. Currently, only KAFKA is supported.
+        # The meta table datasource config type. Only KAFKA is supported in this release.
         # 
         # This parameter is required.
         self.datasource_type = datasource_type
@@ -309,7 +307,7 @@ class CreateDatasetRequestCreateCommandVersionConfigRealtimeMetaTableConfig(Dara
         # 
         # This parameter is required.
         self.meta_table_name = meta_table_name
-        # The project ID to which the meta table belongs. Cross-project references are supported.
+        # The project ID of the meta table. Cross-project access is supported.
         # 
         # This parameter is required.
         self.project_id = project_id
@@ -361,7 +359,7 @@ class CreateDatasetRequestCreateCommandVersionConfigRealtimeMetaTableConfigTable
         self,
         columns: List[main_models.CreateDatasetRequestCreateCommandVersionConfigRealtimeMetaTableConfigTableSchemaColumns] = None,
     ):
-        # The list of fields.
+        # The column list.
         self.columns = columns
 
     def validate(self):
@@ -406,23 +404,23 @@ class CreateDatasetRequestCreateCommandVersionConfigRealtimeMetaTableConfigTable
     ):
         # The field description.
         self.comment = comment
-        # The child class of the array element. This parameter is valid only when type is set to ARRAY.
+        # The array element subtype. Valid only when type is ARRAY.
         self.element_type = element_type
-        # The maximum capacity of the array. This parameter is valid only when type is set to ARRAY. Default value: 4096.
+        # The maximum array capacity. Valid only when type is ARRAY. Default value: 4096.
         self.max_capacity = max_capacity
         # The field name.
         # 
         # This parameter is required.
         self.name = name
-        # Indicates whether the field is a primary key.
+        # Specifies whether the field is a primary key.
         self.pk = pk
         # The field type.
         # 
         # This parameter is required.
         self.type = type
-        # Indicates whether the field is a URL.
+        # Specifies whether the field is a URL.
         self.url = url
-        # The vector index configuration. Configure this parameter when the field type is FLOAT_VECTOR, FLOAT16_VECTOR, or BFLOAT16_VECTOR. This parameter is used to specify the vector dimensions, index type, and similarity metric.
+        # The vector index configuration. Configure this parameter when the field type is FLOAT_VECTOR, FLOAT16_VECTOR, or BFLOAT16_VECTOR. Use it to set the dimensions, index type, and similarity metric.
         self.vector_index_config = vector_index_config
 
     def validate(self):
@@ -506,13 +504,13 @@ class CreateDatasetRequestCreateCommandVersionConfigRealtimeMetaTableConfigTable
         # 
         # This parameter is required.
         self.embedding_model = embedding_model
-        # The index build parameters, which vary by index type. For example, HNSW requires {M:30, efConstruction:360}, and IVF_FLAT requires {nlist:128}.
+        # The index build parameters. Varies by index type. For example, HNSW requires {M:30, efConstruction:360} and IVF_FLAT requires {nlist:128}.
         self.index_params = index_params
-        # The index type. PostgreSQL supports IVFFlat and HNSW. Milvus supports all index types.
+        # The index type. PG supports IVFFlat and HNSW. Milvus supports all types.
         # 
         # This parameter is required.
         self.index_type = index_type
-        # The similarity type. Default value: COSINE. Valid values: COSINE, L2, and IP.
+        # The similarity type. Default value: COSINE. Valid values: COSINE, L2, IP.
         # 
         # This parameter is required.
         self.similarity_type = similarity_type
@@ -573,15 +571,15 @@ class CreateDatasetRequestCreateCommandVersionConfigMetadataStorageConfig(DaraMo
         table_name: str = None,
         table_schema: main_models.CreateDatasetRequestCreateCommandVersionConfigMetadataStorageConfigTableSchema = None,
     ):
-        # The data source ID.
+        # The datasource config ID.
         # 
         # This parameter is required.
         self.data_source_id = data_source_id
-        # The data source name.
+        # The datasource config name.
         self.data_source_name = data_source_name
         # The development database/schema.
         self.dev_schema = dev_schema
-        # The storage destination (new table or existing table).
+        # Specifies whether to store metadata in a new table or an existing table.
         # 
         # This parameter is required.
         self.metadata_storage_mode = metadata_storage_mode
@@ -667,7 +665,7 @@ class CreateDatasetRequestCreateCommandVersionConfigMetadataStorageConfigTableSc
         self,
         columns: List[main_models.CreateDatasetRequestCreateCommandVersionConfigMetadataStorageConfigTableSchemaColumns] = None,
     ):
-        # The list of fields.
+        # The column list.
         self.columns = columns
 
     def validate(self):
@@ -712,21 +710,21 @@ class CreateDatasetRequestCreateCommandVersionConfigMetadataStorageConfigTableSc
     ):
         # The field description.
         self.comment = comment
-        # The child class of the array element. This parameter is valid only when type is set to ARRAY.
+        # The array element subtype. Valid only when type is ARRAY.
         self.element_type = element_type
-        # The maximum capacity of the array. This parameter is valid only when type is set to ARRAY. Default value: 4096.
+        # The maximum array capacity. Valid only when type is ARRAY. Default value: 4096.
         self.max_capacity = max_capacity
         # The field name.
         # 
         # This parameter is required.
         self.name = name
-        # Indicates whether the field is a primary key.
+        # Specifies whether the field is a primary key.
         self.pk = pk
         # The field type.
         # 
         # This parameter is required.
         self.type = type
-        # Indicates whether the field is a URL.
+        # Specifies whether the field is a URL.
         self.url = url
         # The vector index configuration.
         self.vector_index_config = vector_index_config
@@ -812,13 +810,13 @@ class CreateDatasetRequestCreateCommandVersionConfigMetadataStorageConfigTableSc
         # 
         # This parameter is required.
         self.embedding_model = embedding_model
-        # The index build parameters, which vary by index type. For example, HNSW requires {M:30, efConstruction:360}, and IVF_FLAT requires {nlist:128}.
+        # The index build parameters. Varies by index type. For example, HNSW requires {M:30, efConstruction:360} and IVF_FLAT requires {nlist:128}.
         self.index_params = index_params
-        # The index type. PostgreSQL supports IVFFlat and HNSW. Milvus supports all index types.
+        # The index type. PG supports IVFFlat and HNSW. Milvus supports all types.
         # 
         # This parameter is required.
         self.index_type = index_type
-        # The similarity type. Default value: COSINE. Valid values: COSINE, L2, and IP.
+        # The similarity type. Default value: COSINE. Valid values: COSINE, L2, IP.
         # 
         # This parameter is required.
         self.similarity_type = similarity_type
@@ -876,11 +874,11 @@ class CreateDatasetRequestCreateCommandVersionConfigFileStorageConfig(DaraModel)
         mount_path: str = None,
         prod_path: str = None,
     ):
-        # The data source ID.
+        # The datasource config ID.
         # 
         # This parameter is required.
         self.data_source_id = data_source_id
-        # The data source name.
+        # The datasource config name.
         self.data_source_name = data_source_name
         # The development path. Not required for basic projects.
         self.dev_path = dev_path

@@ -4,23 +4,21 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class CreateRowPermissionShrinkRequest(DaraModel):
+class StopPipelineIntegratedTaskShrinkRequest(DaraModel):
     def __init__(
         self,
-        create_row_permission_command_shrink: str = None,
+        context_shrink: str = None,
         op_tenant_id: int = None,
         op_user_id: str = None,
+        stop_command_shrink: str = None,
     ):
-        # The request command.
-        # 
         # This parameter is required.
-        self.create_row_permission_command_shrink = create_row_permission_command_shrink
-        # The tenant ID.
-        # 
+        self.context_shrink = context_shrink
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The ID of the operator.
         self.op_user_id = op_user_id
+        # This parameter is required.
+        self.stop_command_shrink = stop_command_shrink
 
     def validate(self):
         pass
@@ -30,8 +28,8 @@ class CreateRowPermissionShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.create_row_permission_command_shrink is not None:
-            result['CreateRowPermissionCommand'] = self.create_row_permission_command_shrink
+        if self.context_shrink is not None:
+            result['Context'] = self.context_shrink
 
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
@@ -39,18 +37,24 @@ class CreateRowPermissionShrinkRequest(DaraModel):
         if self.op_user_id is not None:
             result['OpUserId'] = self.op_user_id
 
+        if self.stop_command_shrink is not None:
+            result['StopCommand'] = self.stop_command_shrink
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('CreateRowPermissionCommand') is not None:
-            self.create_row_permission_command_shrink = m.get('CreateRowPermissionCommand')
+        if m.get('Context') is not None:
+            self.context_shrink = m.get('Context')
 
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')
 
         if m.get('OpUserId') is not None:
             self.op_user_id = m.get('OpUserId')
+
+        if m.get('StopCommand') is not None:
+            self.stop_command_shrink = m.get('StopCommand')
 
         return self
 

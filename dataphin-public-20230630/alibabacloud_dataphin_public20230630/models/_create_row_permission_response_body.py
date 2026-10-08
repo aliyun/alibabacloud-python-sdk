@@ -14,17 +14,17 @@ class CreateRowPermissionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. A value of OK indicates that the request was successful.
+        # The error code. OK indicates that the request is successful.
         self.code = code
         # The creation result.
         self.data = data
         # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
-        # The error message returned if the request failed.
+        # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

@@ -4,22 +4,17 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class CreateRowPermissionShrinkRequest(DaraModel):
+class BatchHandoverAssetShrinkRequest(DaraModel):
     def __init__(
         self,
-        create_row_permission_command_shrink: str = None,
+        handover_command_shrink: str = None,
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # The request command.
-        # 
         # This parameter is required.
-        self.create_row_permission_command_shrink = create_row_permission_command_shrink
-        # The tenant ID.
-        # 
+        self.handover_command_shrink = handover_command_shrink
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The ID of the operator.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -30,8 +25,8 @@ class CreateRowPermissionShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.create_row_permission_command_shrink is not None:
-            result['CreateRowPermissionCommand'] = self.create_row_permission_command_shrink
+        if self.handover_command_shrink is not None:
+            result['HandoverCommand'] = self.handover_command_shrink
 
         if self.op_tenant_id is not None:
             result['OpTenantId'] = self.op_tenant_id
@@ -43,8 +38,8 @@ class CreateRowPermissionShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('CreateRowPermissionCommand') is not None:
-            self.create_row_permission_command_shrink = m.get('CreateRowPermissionCommand')
+        if m.get('HandoverCommand') is not None:
+            self.handover_command_shrink = m.get('HandoverCommand')
 
         if m.get('OpTenantId') is not None:
             self.op_tenant_id = m.get('OpTenantId')

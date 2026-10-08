@@ -51,6 +51,10 @@ from ._batch_create_kg_relation_request import BatchCreateKgRelationRequest
 from ._batch_create_kg_relation_shrink_request import BatchCreateKgRelationShrinkRequest
 from ._batch_create_kg_relation_response_body import BatchCreateKgRelationResponseBody
 from ._batch_create_kg_relation_response import BatchCreateKgRelationResponse
+from ._batch_handover_asset_request import BatchHandoverAssetRequest
+from ._batch_handover_asset_shrink_request import BatchHandoverAssetShrinkRequest
+from ._batch_handover_asset_response_body import BatchHandoverAssetResponseBody
+from ._batch_handover_asset_response import BatchHandoverAssetResponse
 from ._check_compute_source_connectivity_request import CheckComputeSourceConnectivityRequest
 from ._check_compute_source_connectivity_shrink_request import CheckComputeSourceConnectivityShrinkRequest
 from ._check_compute_source_connectivity_response_body import CheckComputeSourceConnectivityResponseBody
@@ -65,6 +69,10 @@ from ._check_data_source_connectivity_response import CheckDataSourceConnectivit
 from ._check_data_source_connectivity_by_id_request import CheckDataSourceConnectivityByIdRequest
 from ._check_data_source_connectivity_by_id_response_body import CheckDataSourceConnectivityByIdResponseBody
 from ._check_data_source_connectivity_by_id_response import CheckDataSourceConnectivityByIdResponse
+from ._check_data_source_connectivity_on_resource_group_request import CheckDataSourceConnectivityOnResourceGroupRequest
+from ._check_data_source_connectivity_on_resource_group_shrink_request import CheckDataSourceConnectivityOnResourceGroupShrinkRequest
+from ._check_data_source_connectivity_on_resource_group_response_body import CheckDataSourceConnectivityOnResourceGroupResponseBody
+from ._check_data_source_connectivity_on_resource_group_response import CheckDataSourceConnectivityOnResourceGroupResponse
 from ._check_project_has_dependency_request import CheckProjectHasDependencyRequest
 from ._check_project_has_dependency_response_body import CheckProjectHasDependencyResponseBody
 from ._check_project_has_dependency_response import CheckProjectHasDependencyResponse
@@ -445,6 +453,9 @@ from ._get_catalog_asset_details_request import GetCatalogAssetDetailsRequest
 from ._get_catalog_asset_details_shrink_request import GetCatalogAssetDetailsShrinkRequest
 from ._get_catalog_asset_details_response_body import GetCatalogAssetDetailsResponseBody
 from ._get_catalog_asset_details_response import GetCatalogAssetDetailsResponse
+from ._get_check_connectivity_job_by_job_id_request import GetCheckConnectivityJobByJobIdRequest
+from ._get_check_connectivity_job_by_job_id_response_body import GetCheckConnectivityJobByJobIdResponseBody
+from ._get_check_connectivity_job_by_job_id_response import GetCheckConnectivityJobByJobIdResponse
 from ._get_check_connectivity_jobs_request import GetCheckConnectivityJobsRequest
 from ._get_check_connectivity_jobs_response_body import GetCheckConnectivityJobsResponseBody
 from ._get_check_connectivity_jobs_response import GetCheckConnectivityJobsResponse
@@ -683,6 +694,10 @@ from ._get_security_secret_key_response import GetSecuritySecretKeyResponse
 from ._get_server_version_request import GetServerVersionRequest
 from ._get_server_version_response_body import GetServerVersionResponseBody
 from ._get_server_version_response import GetServerVersionResponse
+from ._get_source_table_meta_request import GetSourceTableMetaRequest
+from ._get_source_table_meta_shrink_request import GetSourceTableMetaShrinkRequest
+from ._get_source_table_meta_response_body import GetSourceTableMetaResponseBody
+from ._get_source_table_meta_response import GetSourceTableMetaResponse
 from ._get_spark_local_client_info_request import GetSparkLocalClientInfoRequest
 from ._get_spark_local_client_info_response_body import GetSparkLocalClientInfoResponseBody
 from ._get_spark_local_client_info_response import GetSparkLocalClientInfoResponse
@@ -716,6 +731,9 @@ from ._get_supplement_dagrun_response import GetSupplementDagrunResponse
 from ._get_supplement_dagrun_instance_request import GetSupplementDagrunInstanceRequest
 from ._get_supplement_dagrun_instance_response_body import GetSupplementDagrunInstanceResponseBody
 from ._get_supplement_dagrun_instance_response import GetSupplementDagrunInstanceResponse
+from ._get_table_request import GetTableRequest
+from ._get_table_response_body import GetTableResponseBody
+from ._get_table_response import GetTableResponse
 from ._get_table_column_lineage_by_task_id_request import GetTableColumnLineageByTaskIdRequest
 from ._get_table_column_lineage_by_task_id_shrink_request import GetTableColumnLineageByTaskIdShrinkRequest
 from ._get_table_column_lineage_by_task_id_response_body import GetTableColumnLineageByTaskIdResponseBody
@@ -804,6 +822,10 @@ from ._list_authorized_data_service_api_details_request import ListAuthorizedDat
 from ._list_authorized_data_service_api_details_shrink_request import ListAuthorizedDataServiceApiDetailsShrinkRequest
 from ._list_authorized_data_service_api_details_response_body import ListAuthorizedDataServiceApiDetailsResponseBody
 from ._list_authorized_data_service_api_details_response import ListAuthorizedDataServiceApiDetailsResponse
+from ._list_batch_tasks_request import ListBatchTasksRequest
+from ._list_batch_tasks_shrink_request import ListBatchTasksShrinkRequest
+from ._list_batch_tasks_response_body import ListBatchTasksResponseBody
+from ._list_batch_tasks_response import ListBatchTasksResponse
 from ._list_batch_templates_request import ListBatchTemplatesRequest
 from ._list_batch_templates_shrink_request import ListBatchTemplatesShrinkRequest
 from ._list_batch_templates_response_body import ListBatchTemplatesResponseBody
@@ -911,6 +933,9 @@ from ._list_project_members_request import ListProjectMembersRequest
 from ._list_project_members_shrink_request import ListProjectMembersShrinkRequest
 from ._list_project_members_response_body import ListProjectMembersResponseBody
 from ._list_project_members_response import ListProjectMembersResponse
+from ._list_project_roles_request import ListProjectRolesRequest
+from ._list_project_roles_response_body import ListProjectRolesResponseBody
+from ._list_project_roles_response import ListProjectRolesResponse
 from ._list_projects_request import ListProjectsRequest
 from ._list_projects_shrink_request import ListProjectsShrinkRequest
 from ._list_projects_response_body import ListProjectsResponseBody
@@ -959,6 +984,10 @@ from ._list_row_permission_by_user_id_request import ListRowPermissionByUserIdRe
 from ._list_row_permission_by_user_id_shrink_request import ListRowPermissionByUserIdShrinkRequest
 from ._list_row_permission_by_user_id_response_body import ListRowPermissionByUserIdResponseBody
 from ._list_row_permission_by_user_id_response import ListRowPermissionByUserIdResponse
+from ._list_schedule_templates_request import ListScheduleTemplatesRequest
+from ._list_schedule_templates_shrink_request import ListScheduleTemplatesShrinkRequest
+from ._list_schedule_templates_response_body import ListScheduleTemplatesResponseBody
+from ._list_schedule_templates_response import ListScheduleTemplatesResponse
 from ._list_security_classify_request import ListSecurityClassifyRequest
 from ._list_security_classify_shrink_request import ListSecurityClassifyShrinkRequest
 from ._list_security_classify_response_body import ListSecurityClassifyResponseBody
@@ -987,6 +1016,9 @@ from ._list_tenant_members_request import ListTenantMembersRequest
 from ._list_tenant_members_shrink_request import ListTenantMembersShrinkRequest
 from ._list_tenant_members_response_body import ListTenantMembersResponseBody
 from ._list_tenant_members_response import ListTenantMembersResponse
+from ._list_tenant_roles_request import ListTenantRolesRequest
+from ._list_tenant_roles_response_body import ListTenantRolesResponseBody
+from ._list_tenant_roles_response import ListTenantRolesResponse
 from ._list_user_group_members_request import ListUserGroupMembersRequest
 from ._list_user_group_members_shrink_request import ListUserGroupMembersShrinkRequest
 from ._list_user_group_members_response_body import ListUserGroupMembersResponseBody
@@ -1093,9 +1125,17 @@ from ._search_kg_by_semantic_request import SearchKgBySemanticRequest
 from ._search_kg_by_semantic_shrink_request import SearchKgBySemanticShrinkRequest
 from ._search_kg_by_semantic_response_body import SearchKgBySemanticResponseBody
 from ._search_kg_by_semantic_response import SearchKgBySemanticResponse
+from ._start_pipeline_integrated_task_request import StartPipelineIntegratedTaskRequest
+from ._start_pipeline_integrated_task_shrink_request import StartPipelineIntegratedTaskShrinkRequest
+from ._start_pipeline_integrated_task_response_body import StartPipelineIntegratedTaskResponseBody
+from ._start_pipeline_integrated_task_response import StartPipelineIntegratedTaskResponse
 from ._stop_ad_hoc_task_request import StopAdHocTaskRequest
 from ._stop_ad_hoc_task_response_body import StopAdHocTaskResponseBody
 from ._stop_ad_hoc_task_response import StopAdHocTaskResponse
+from ._stop_pipeline_integrated_task_request import StopPipelineIntegratedTaskRequest
+from ._stop_pipeline_integrated_task_shrink_request import StopPipelineIntegratedTaskShrinkRequest
+from ._stop_pipeline_integrated_task_response_body import StopPipelineIntegratedTaskResponseBody
+from ._stop_pipeline_integrated_task_response import StopPipelineIntegratedTaskResponse
 from ._submit_assets_off_shelve_request import SubmitAssetsOffShelveRequest
 from ._submit_assets_off_shelve_shrink_request import SubmitAssetsOffShelveShrinkRequest
 from ._submit_assets_off_shelve_response_body import SubmitAssetsOffShelveResponseBody
@@ -1373,10 +1413,14 @@ from ._batch_create_kg_relation_request import BatchCreateKgRelationRequestCreat
 from ._batch_create_kg_relation_request import BatchCreateKgRelationRequestCreateCommand
 from ._batch_create_kg_relation_response_body import BatchCreateKgRelationResponseBodyCreateResultSuccessRelationList
 from ._batch_create_kg_relation_response_body import BatchCreateKgRelationResponseBodyCreateResult
+from ._batch_handover_asset_request import BatchHandoverAssetRequestHandoverCommand
+from ._batch_handover_asset_response_body import BatchHandoverAssetResponseBodyData
 from ._check_compute_source_connectivity_request import CheckComputeSourceConnectivityRequestCheckCommandConfigList
 from ._check_compute_source_connectivity_request import CheckComputeSourceConnectivityRequestCheckCommand
 from ._check_data_source_connectivity_request import CheckDataSourceConnectivityRequestCheckCommandConfigItemList
 from ._check_data_source_connectivity_request import CheckDataSourceConnectivityRequestCheckCommand
+from ._check_data_source_connectivity_on_resource_group_request import CheckDataSourceConnectivityOnResourceGroupRequestCheckCommandConfigItemList
+from ._check_data_source_connectivity_on_resource_group_request import CheckDataSourceConnectivityOnResourceGroupRequestCheckCommand
 from ._check_resource_permission_request import CheckResourcePermissionRequestCheckCommandResourceList
 from ._check_resource_permission_request import CheckResourcePermissionRequestCheckCommand
 from ._check_resource_permission_response_body import CheckResourcePermissionResponseBodyResourcePermissionList
@@ -1608,6 +1652,8 @@ from ._get_asset_mapping_relations_request import GetAssetMappingRelationsReques
 from ._get_asset_mapping_relations_response_body import GetAssetMappingRelationsResponseBodyMappingRelationList
 from ._get_asset_type_attribute_codes_response_body import GetAssetTypeAttributeCodesResponseBodyDataEnumValues
 from ._get_asset_type_attribute_codes_response_body import GetAssetTypeAttributeCodesResponseBodyData
+from ._get_batch_task_info_response_body import GetBatchTaskInfoResponseBodyTaskInfoConditionScheduleParamList
+from ._get_batch_task_info_response_body import GetBatchTaskInfoResponseBodyTaskInfoContextParamList
 from ._get_batch_task_info_response_body import GetBatchTaskInfoResponseBodyTaskInfoCustomScheduleConfig
 from ._get_batch_task_info_response_body import GetBatchTaskInfoResponseBodyTaskInfoParamList
 from ._get_batch_task_info_response_body import GetBatchTaskInfoResponseBodyTaskInfoSparkClientInfo
@@ -1666,6 +1712,7 @@ from ._get_catalog_asset_details_response_body import GetCatalogAssetDetailsResp
 from ._get_catalog_asset_details_response_body import GetCatalogAssetDetailsResponseBodyDataSimpleNodeInfosProject
 from ._get_catalog_asset_details_response_body import GetCatalogAssetDetailsResponseBodyDataSimpleNodeInfos
 from ._get_catalog_asset_details_response_body import GetCatalogAssetDetailsResponseBodyData
+from ._get_check_connectivity_job_by_job_id_response_body import GetCheckConnectivityJobByJobIdResponseBodyData
 from ._get_check_connectivity_jobs_response_body import GetCheckConnectivityJobsResponseBodyData
 from ._get_cluster_queue_info_by_env_response_body import GetClusterQueueInfoByEnvResponseBodyData
 from ._get_compute_cluster_response_body import GetComputeClusterResponseBodyClusterConfigClusterSafetyControl
@@ -1845,6 +1892,10 @@ from ._get_security_classify_response_body import GetSecurityClassifyResponseBod
 from ._get_security_identify_result_response_body import GetSecurityIdentifyResultResponseBodySecurityIdentifyResultInfo
 from ._get_security_level_response_body import GetSecurityLevelResponseBodySecurityLevelInfo
 from ._get_security_secret_key_response_body import GetSecuritySecretKeyResponseBodySecuritySecretKeyInfo
+from ._get_source_table_meta_request import GetSourceTableMetaRequestContext
+from ._get_source_table_meta_request import GetSourceTableMetaRequestQuery
+from ._get_source_table_meta_response_body import GetSourceTableMetaResponseBodyDataColumns
+from ._get_source_table_meta_response_body import GetSourceTableMetaResponseBodyData
 from ._get_spark_local_client_info_response_body import GetSparkLocalClientInfoResponseBodyData
 from ._get_standard_request import GetStandardRequestStandardGetQuery
 from ._get_standard_response_body import GetStandardResponseBodyStandardInfoAttributeWithValueListAttributeMonitorConfig
@@ -1917,6 +1968,13 @@ from ._get_supplement_dagrun_instance_response_body import GetSupplementDagrunIn
 from ._get_supplement_dagrun_instance_response_body import GetSupplementDagrunInstanceResponseBodyInstanceListNodeInfoOwnerList
 from ._get_supplement_dagrun_instance_response_body import GetSupplementDagrunInstanceResponseBodyInstanceListNodeInfo
 from ._get_supplement_dagrun_instance_response_body import GetSupplementDagrunInstanceResponseBodyInstanceList
+from ._get_table_response_body import GetTableResponseBodyDataInstructions
+from ._get_table_response_body import GetTableResponseBodyDataSimpleNodeInfosBizUnit
+from ._get_table_response_body import GetTableResponseBodyDataSimpleNodeInfosOwners
+from ._get_table_response_body import GetTableResponseBodyDataSimpleNodeInfosProject
+from ._get_table_response_body import GetTableResponseBodyDataSimpleNodeInfos
+from ._get_table_response_body import GetTableResponseBodyDataStreamTableConfig
+from ._get_table_response_body import GetTableResponseBodyData
 from ._get_table_column_lineage_by_task_id_request import GetTableColumnLineageByTaskIdRequestTableColumnLineageByTaskIdQuery
 from ._get_table_column_lineage_by_task_id_response_body import GetTableColumnLineageByTaskIdResponseBodyData
 from ._get_table_column_lineages_request import GetTableColumnLineagesRequestFilterQuery
@@ -1998,6 +2056,9 @@ from ._list_authorized_data_service_api_details_response_body import ListAuthori
 from ._list_authorized_data_service_api_details_response_body import ListAuthorizedDataServiceApiDetailsResponseBodyResultDataAuthorizedProdReturnParameters
 from ._list_authorized_data_service_api_details_response_body import ListAuthorizedDataServiceApiDetailsResponseBodyResultData
 from ._list_authorized_data_service_api_details_response_body import ListAuthorizedDataServiceApiDetailsResponseBodyResult
+from ._list_batch_tasks_request import ListBatchTasksRequestBatchTaskQuery
+from ._list_batch_tasks_response_body import ListBatchTasksResponseBodyPageResultResultData
+from ._list_batch_tasks_response_body import ListBatchTasksResponseBodyPageResult
 from ._list_batch_templates_request import ListBatchTemplatesRequestListQuery
 from ._list_batch_templates_response_body import ListBatchTemplatesResponseBodyPageResultTemplateList
 from ._list_batch_templates_response_body import ListBatchTemplatesResponseBodyPageResult
@@ -2119,6 +2180,7 @@ from ._list_pipelines_response_body import ListPipelinesResponseBodyData
 from ._list_project_members_request import ListProjectMembersRequestListQuery
 from ._list_project_members_response_body import ListProjectMembersResponseBodyPageResultProjectMemberList
 from ._list_project_members_response_body import ListProjectMembersResponseBodyPageResult
+from ._list_project_roles_response_body import ListProjectRolesResponseBodyRoleList
 from ._list_projects_request import ListProjectsRequestListQuery
 from ._list_projects_response_body import ListProjectsResponseBodyPageResultProjectList
 from ._list_projects_response_body import ListProjectsResponseBodyPageResult
@@ -2197,6 +2259,12 @@ from ._list_row_permission_by_user_id_response_body import ListRowPermissionByUs
 from ._list_row_permission_by_user_id_response_body import ListRowPermissionByUserIdResponseBodyPageResultDataTables
 from ._list_row_permission_by_user_id_response_body import ListRowPermissionByUserIdResponseBodyPageResultData
 from ._list_row_permission_by_user_id_response_body import ListRowPermissionByUserIdResponseBodyPageResult
+from ._list_schedule_templates_request import ListScheduleTemplatesRequestListScheduleTemplatesCommand
+from ._list_schedule_templates_response_body import ListScheduleTemplatesResponseBodyListScheduleTemplatesResponseResultDataConditionScheduleParamList
+from ._list_schedule_templates_response_body import ListScheduleTemplatesResponseBodyListScheduleTemplatesResponseResultDataCustomIntervalConfig
+from ._list_schedule_templates_response_body import ListScheduleTemplatesResponseBodyListScheduleTemplatesResponseResultDataCustomIntervalConfigs
+from ._list_schedule_templates_response_body import ListScheduleTemplatesResponseBodyListScheduleTemplatesResponseResultData
+from ._list_schedule_templates_response_body import ListScheduleTemplatesResponseBodyListScheduleTemplatesResponse
 from ._list_security_classify_request import ListSecurityClassifyRequestListQuery
 from ._list_security_classify_response_body import ListSecurityClassifyResponseBodyClassifyListResultClassifyList
 from ._list_security_classify_response_body import ListSecurityClassifyResponseBodyClassifyListResult
@@ -2237,6 +2305,7 @@ from ._list_tenant_members_request import ListTenantMembersRequestListQuery
 from ._list_tenant_members_response_body import ListTenantMembersResponseBodyPageResultUserListUserGroupList
 from ._list_tenant_members_response_body import ListTenantMembersResponseBodyPageResultUserList
 from ._list_tenant_members_response_body import ListTenantMembersResponseBodyPageResult
+from ._list_tenant_roles_response_body import ListTenantRolesResponseBodyRoleList
 from ._list_user_group_members_request import ListUserGroupMembersRequestListQuery
 from ._list_user_group_members_response_body import ListUserGroupMembersResponseBodyPageResultMemberListCreator
 from ._list_user_group_members_response_body import ListUserGroupMembersResponseBodyPageResultMemberListUserInfo
@@ -2289,6 +2358,12 @@ from ._revoke_resource_permission_request import RevokeResourcePermissionRequest
 from ._search_kg_by_semantic_request import SearchKgBySemanticRequestSearchCommand
 from ._search_kg_by_semantic_response_body import SearchKgBySemanticResponseBodyDataSearchResults
 from ._search_kg_by_semantic_response_body import SearchKgBySemanticResponseBodyData
+from ._start_pipeline_integrated_task_request import StartPipelineIntegratedTaskRequestContext
+from ._start_pipeline_integrated_task_request import StartPipelineIntegratedTaskRequestStartCommand
+from ._stop_pipeline_integrated_task_request import StopPipelineIntegratedTaskRequestContext
+from ._stop_pipeline_integrated_task_request import StopPipelineIntegratedTaskRequestStopCommand
+from ._stop_pipeline_integrated_task_response_body import StopPipelineIntegratedTaskResponseBodyDataDevOpsActionResDTOList
+from ._stop_pipeline_integrated_task_response_body import StopPipelineIntegratedTaskResponseBodyData
 from ._submit_assets_off_shelve_request import SubmitAssetsOffShelveRequestSubmitCommand
 from ._submit_assets_off_shelve_response_body import SubmitAssetsOffShelveResponseBodyDataResultList
 from ._submit_assets_off_shelve_response_body import SubmitAssetsOffShelveResponseBodyData
@@ -2324,6 +2399,8 @@ from ._update_asset_attributes_response_body import UpdateAssetAttributesRespons
 from ._update_asset_attributes_response_body import UpdateAssetAttributesResponseBodyData
 from ._update_basic_project_request import UpdateBasicProjectRequestUpdateCommandWhiteLists
 from ._update_basic_project_request import UpdateBasicProjectRequestUpdateCommand
+from ._update_batch_task_request import UpdateBatchTaskRequestUpdateCommandConditionScheduleParamList
+from ._update_batch_task_request import UpdateBatchTaskRequestUpdateCommandContextParamList
 from ._update_batch_task_request import UpdateBatchTaskRequestUpdateCommandCustomScheduleConfig
 from ._update_batch_task_request import UpdateBatchTaskRequestUpdateCommandParamList
 from ._update_batch_task_request import UpdateBatchTaskRequestUpdateCommandSparkClientInfo
@@ -2528,6 +2605,10 @@ __all__ = [
     BatchCreateKgRelationShrinkRequest,
     BatchCreateKgRelationResponseBody,
     BatchCreateKgRelationResponse,
+    BatchHandoverAssetRequest,
+    BatchHandoverAssetShrinkRequest,
+    BatchHandoverAssetResponseBody,
+    BatchHandoverAssetResponse,
     CheckComputeSourceConnectivityRequest,
     CheckComputeSourceConnectivityShrinkRequest,
     CheckComputeSourceConnectivityResponseBody,
@@ -2542,6 +2623,10 @@ __all__ = [
     CheckDataSourceConnectivityByIdRequest,
     CheckDataSourceConnectivityByIdResponseBody,
     CheckDataSourceConnectivityByIdResponse,
+    CheckDataSourceConnectivityOnResourceGroupRequest,
+    CheckDataSourceConnectivityOnResourceGroupShrinkRequest,
+    CheckDataSourceConnectivityOnResourceGroupResponseBody,
+    CheckDataSourceConnectivityOnResourceGroupResponse,
     CheckProjectHasDependencyRequest,
     CheckProjectHasDependencyResponseBody,
     CheckProjectHasDependencyResponse,
@@ -2922,6 +3007,9 @@ __all__ = [
     GetCatalogAssetDetailsShrinkRequest,
     GetCatalogAssetDetailsResponseBody,
     GetCatalogAssetDetailsResponse,
+    GetCheckConnectivityJobByJobIdRequest,
+    GetCheckConnectivityJobByJobIdResponseBody,
+    GetCheckConnectivityJobByJobIdResponse,
     GetCheckConnectivityJobsRequest,
     GetCheckConnectivityJobsResponseBody,
     GetCheckConnectivityJobsResponse,
@@ -3160,6 +3248,10 @@ __all__ = [
     GetServerVersionRequest,
     GetServerVersionResponseBody,
     GetServerVersionResponse,
+    GetSourceTableMetaRequest,
+    GetSourceTableMetaShrinkRequest,
+    GetSourceTableMetaResponseBody,
+    GetSourceTableMetaResponse,
     GetSparkLocalClientInfoRequest,
     GetSparkLocalClientInfoResponseBody,
     GetSparkLocalClientInfoResponse,
@@ -3193,6 +3285,9 @@ __all__ = [
     GetSupplementDagrunInstanceRequest,
     GetSupplementDagrunInstanceResponseBody,
     GetSupplementDagrunInstanceResponse,
+    GetTableRequest,
+    GetTableResponseBody,
+    GetTableResponse,
     GetTableColumnLineageByTaskIdRequest,
     GetTableColumnLineageByTaskIdShrinkRequest,
     GetTableColumnLineageByTaskIdResponseBody,
@@ -3281,6 +3376,10 @@ __all__ = [
     ListAuthorizedDataServiceApiDetailsShrinkRequest,
     ListAuthorizedDataServiceApiDetailsResponseBody,
     ListAuthorizedDataServiceApiDetailsResponse,
+    ListBatchTasksRequest,
+    ListBatchTasksShrinkRequest,
+    ListBatchTasksResponseBody,
+    ListBatchTasksResponse,
     ListBatchTemplatesRequest,
     ListBatchTemplatesShrinkRequest,
     ListBatchTemplatesResponseBody,
@@ -3388,6 +3487,9 @@ __all__ = [
     ListProjectMembersShrinkRequest,
     ListProjectMembersResponseBody,
     ListProjectMembersResponse,
+    ListProjectRolesRequest,
+    ListProjectRolesResponseBody,
+    ListProjectRolesResponse,
     ListProjectsRequest,
     ListProjectsShrinkRequest,
     ListProjectsResponseBody,
@@ -3436,6 +3538,10 @@ __all__ = [
     ListRowPermissionByUserIdShrinkRequest,
     ListRowPermissionByUserIdResponseBody,
     ListRowPermissionByUserIdResponse,
+    ListScheduleTemplatesRequest,
+    ListScheduleTemplatesShrinkRequest,
+    ListScheduleTemplatesResponseBody,
+    ListScheduleTemplatesResponse,
     ListSecurityClassifyRequest,
     ListSecurityClassifyShrinkRequest,
     ListSecurityClassifyResponseBody,
@@ -3464,6 +3570,9 @@ __all__ = [
     ListTenantMembersShrinkRequest,
     ListTenantMembersResponseBody,
     ListTenantMembersResponse,
+    ListTenantRolesRequest,
+    ListTenantRolesResponseBody,
+    ListTenantRolesResponse,
     ListUserGroupMembersRequest,
     ListUserGroupMembersShrinkRequest,
     ListUserGroupMembersResponseBody,
@@ -3570,9 +3679,17 @@ __all__ = [
     SearchKgBySemanticShrinkRequest,
     SearchKgBySemanticResponseBody,
     SearchKgBySemanticResponse,
+    StartPipelineIntegratedTaskRequest,
+    StartPipelineIntegratedTaskShrinkRequest,
+    StartPipelineIntegratedTaskResponseBody,
+    StartPipelineIntegratedTaskResponse,
     StopAdHocTaskRequest,
     StopAdHocTaskResponseBody,
     StopAdHocTaskResponse,
+    StopPipelineIntegratedTaskRequest,
+    StopPipelineIntegratedTaskShrinkRequest,
+    StopPipelineIntegratedTaskResponseBody,
+    StopPipelineIntegratedTaskResponse,
     SubmitAssetsOffShelveRequest,
     SubmitAssetsOffShelveShrinkRequest,
     SubmitAssetsOffShelveResponseBody,
@@ -3850,10 +3967,14 @@ __all__ = [
     BatchCreateKgRelationRequestCreateCommand,
     BatchCreateKgRelationResponseBodyCreateResultSuccessRelationList,
     BatchCreateKgRelationResponseBodyCreateResult,
+    BatchHandoverAssetRequestHandoverCommand,
+    BatchHandoverAssetResponseBodyData,
     CheckComputeSourceConnectivityRequestCheckCommandConfigList,
     CheckComputeSourceConnectivityRequestCheckCommand,
     CheckDataSourceConnectivityRequestCheckCommandConfigItemList,
     CheckDataSourceConnectivityRequestCheckCommand,
+    CheckDataSourceConnectivityOnResourceGroupRequestCheckCommandConfigItemList,
+    CheckDataSourceConnectivityOnResourceGroupRequestCheckCommand,
     CheckResourcePermissionRequestCheckCommandResourceList,
     CheckResourcePermissionRequestCheckCommand,
     CheckResourcePermissionResponseBodyResourcePermissionList,
@@ -4085,6 +4206,8 @@ __all__ = [
     GetAssetMappingRelationsResponseBodyMappingRelationList,
     GetAssetTypeAttributeCodesResponseBodyDataEnumValues,
     GetAssetTypeAttributeCodesResponseBodyData,
+    GetBatchTaskInfoResponseBodyTaskInfoConditionScheduleParamList,
+    GetBatchTaskInfoResponseBodyTaskInfoContextParamList,
     GetBatchTaskInfoResponseBodyTaskInfoCustomScheduleConfig,
     GetBatchTaskInfoResponseBodyTaskInfoParamList,
     GetBatchTaskInfoResponseBodyTaskInfoSparkClientInfo,
@@ -4143,6 +4266,7 @@ __all__ = [
     GetCatalogAssetDetailsResponseBodyDataSimpleNodeInfosProject,
     GetCatalogAssetDetailsResponseBodyDataSimpleNodeInfos,
     GetCatalogAssetDetailsResponseBodyData,
+    GetCheckConnectivityJobByJobIdResponseBodyData,
     GetCheckConnectivityJobsResponseBodyData,
     GetClusterQueueInfoByEnvResponseBodyData,
     GetComputeClusterResponseBodyClusterConfigClusterSafetyControl,
@@ -4322,6 +4446,10 @@ __all__ = [
     GetSecurityIdentifyResultResponseBodySecurityIdentifyResultInfo,
     GetSecurityLevelResponseBodySecurityLevelInfo,
     GetSecuritySecretKeyResponseBodySecuritySecretKeyInfo,
+    GetSourceTableMetaRequestContext,
+    GetSourceTableMetaRequestQuery,
+    GetSourceTableMetaResponseBodyDataColumns,
+    GetSourceTableMetaResponseBodyData,
     GetSparkLocalClientInfoResponseBodyData,
     GetStandardRequestStandardGetQuery,
     GetStandardResponseBodyStandardInfoAttributeWithValueListAttributeMonitorConfig,
@@ -4394,6 +4522,13 @@ __all__ = [
     GetSupplementDagrunInstanceResponseBodyInstanceListNodeInfoOwnerList,
     GetSupplementDagrunInstanceResponseBodyInstanceListNodeInfo,
     GetSupplementDagrunInstanceResponseBodyInstanceList,
+    GetTableResponseBodyDataInstructions,
+    GetTableResponseBodyDataSimpleNodeInfosBizUnit,
+    GetTableResponseBodyDataSimpleNodeInfosOwners,
+    GetTableResponseBodyDataSimpleNodeInfosProject,
+    GetTableResponseBodyDataSimpleNodeInfos,
+    GetTableResponseBodyDataStreamTableConfig,
+    GetTableResponseBodyData,
     GetTableColumnLineageByTaskIdRequestTableColumnLineageByTaskIdQuery,
     GetTableColumnLineageByTaskIdResponseBodyData,
     GetTableColumnLineagesRequestFilterQuery,
@@ -4475,6 +4610,9 @@ __all__ = [
     ListAuthorizedDataServiceApiDetailsResponseBodyResultDataAuthorizedProdReturnParameters,
     ListAuthorizedDataServiceApiDetailsResponseBodyResultData,
     ListAuthorizedDataServiceApiDetailsResponseBodyResult,
+    ListBatchTasksRequestBatchTaskQuery,
+    ListBatchTasksResponseBodyPageResultResultData,
+    ListBatchTasksResponseBodyPageResult,
     ListBatchTemplatesRequestListQuery,
     ListBatchTemplatesResponseBodyPageResultTemplateList,
     ListBatchTemplatesResponseBodyPageResult,
@@ -4596,6 +4734,7 @@ __all__ = [
     ListProjectMembersRequestListQuery,
     ListProjectMembersResponseBodyPageResultProjectMemberList,
     ListProjectMembersResponseBodyPageResult,
+    ListProjectRolesResponseBodyRoleList,
     ListProjectsRequestListQuery,
     ListProjectsResponseBodyPageResultProjectList,
     ListProjectsResponseBodyPageResult,
@@ -4674,6 +4813,12 @@ __all__ = [
     ListRowPermissionByUserIdResponseBodyPageResultDataTables,
     ListRowPermissionByUserIdResponseBodyPageResultData,
     ListRowPermissionByUserIdResponseBodyPageResult,
+    ListScheduleTemplatesRequestListScheduleTemplatesCommand,
+    ListScheduleTemplatesResponseBodyListScheduleTemplatesResponseResultDataConditionScheduleParamList,
+    ListScheduleTemplatesResponseBodyListScheduleTemplatesResponseResultDataCustomIntervalConfig,
+    ListScheduleTemplatesResponseBodyListScheduleTemplatesResponseResultDataCustomIntervalConfigs,
+    ListScheduleTemplatesResponseBodyListScheduleTemplatesResponseResultData,
+    ListScheduleTemplatesResponseBodyListScheduleTemplatesResponse,
     ListSecurityClassifyRequestListQuery,
     ListSecurityClassifyResponseBodyClassifyListResultClassifyList,
     ListSecurityClassifyResponseBodyClassifyListResult,
@@ -4714,6 +4859,7 @@ __all__ = [
     ListTenantMembersResponseBodyPageResultUserListUserGroupList,
     ListTenantMembersResponseBodyPageResultUserList,
     ListTenantMembersResponseBodyPageResult,
+    ListTenantRolesResponseBodyRoleList,
     ListUserGroupMembersRequestListQuery,
     ListUserGroupMembersResponseBodyPageResultMemberListCreator,
     ListUserGroupMembersResponseBodyPageResultMemberListUserInfo,
@@ -4766,6 +4912,12 @@ __all__ = [
     SearchKgBySemanticRequestSearchCommand,
     SearchKgBySemanticResponseBodyDataSearchResults,
     SearchKgBySemanticResponseBodyData,
+    StartPipelineIntegratedTaskRequestContext,
+    StartPipelineIntegratedTaskRequestStartCommand,
+    StopPipelineIntegratedTaskRequestContext,
+    StopPipelineIntegratedTaskRequestStopCommand,
+    StopPipelineIntegratedTaskResponseBodyDataDevOpsActionResDTOList,
+    StopPipelineIntegratedTaskResponseBodyData,
     SubmitAssetsOffShelveRequestSubmitCommand,
     SubmitAssetsOffShelveResponseBodyDataResultList,
     SubmitAssetsOffShelveResponseBodyData,
@@ -4801,6 +4953,8 @@ __all__ = [
     UpdateAssetAttributesResponseBodyData,
     UpdateBasicProjectRequestUpdateCommandWhiteLists,
     UpdateBasicProjectRequestUpdateCommand,
+    UpdateBatchTaskRequestUpdateCommandConditionScheduleParamList,
+    UpdateBatchTaskRequestUpdateCommandContextParamList,
     UpdateBatchTaskRequestUpdateCommandCustomScheduleConfig,
     UpdateBatchTaskRequestUpdateCommandParamList,
     UpdateBatchTaskRequestUpdateCommandSparkClientInfo,

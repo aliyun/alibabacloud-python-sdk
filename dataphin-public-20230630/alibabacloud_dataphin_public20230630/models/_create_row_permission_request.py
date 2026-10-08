@@ -22,6 +22,7 @@ class CreateRowPermissionRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -67,7 +68,7 @@ class CreateRowPermissionRequestCreateRowPermissionCommand(DaraModel):
         rules: List[main_models.CreateRowPermissionRequestCreateRowPermissionCommandRules] = None,
         tables: List[main_models.CreateRowPermissionRequestCreateRowPermissionCommandTables] = None,
     ):
-        # The mapping fields.
+        # The mapping columns.
         # 
         # This parameter is required.
         self.mapping_columns = mapping_columns
@@ -159,11 +160,11 @@ class CreateRowPermissionRequestCreateRowPermissionCommandTables(DaraModel):
         mapping_column_name: str = None,
         resource_id: str = None,
     ):
-        # The field of the table.
+        # The table column.
         # 
         # This parameter is required.
         self.column_name = column_name
-        # The name of the mapping field.
+        # The name of the mapping column.
         # 
         # This parameter is required.
         self.mapping_column_name = mapping_column_name
@@ -218,7 +219,7 @@ class CreateRowPermissionRequestCreateRowPermissionCommandRules(DaraModel):
         # 
         # This parameter is required.
         self.expressions = expressions
-        # Specifies whether the rule is deleted.
+        # Specifies whether to delete the rule.
         self.is_delete = is_delete
         # The name of the rule.
         # 
@@ -388,7 +389,7 @@ class CreateRowPermissionRequestCreateRowPermissionCommandRulesExpressions(DaraM
         type: str = None,
         values: List[str] = None,
     ):
-        # The name of the mapping field.
+        # The name of the mapping column.
         # 
         # This parameter is required.
         self.mapping_column_name = mapping_column_name
@@ -458,13 +459,13 @@ class CreateRowPermissionRequestCreateRowPermissionCommandMappingColumns(DaraMod
         column_name: str = None,
         column_type: str = None,
     ):
-        # The description of the mapping field.
+        # The description of the mapping column.
         self.column_desc = column_desc
-        # The name of the mapping field.
+        # The name of the mapping column.
         # 
         # This parameter is required.
         self.column_name = column_name
-        # The type of the mapping field.
+        # The type of the mapping column.
         # 
         # This parameter is required.
         self.column_type = column_type

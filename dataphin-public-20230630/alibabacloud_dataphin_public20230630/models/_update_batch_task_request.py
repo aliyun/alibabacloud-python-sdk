@@ -62,12 +62,19 @@ class UpdateBatchTaskRequest(DaraModel):
 class UpdateBatchTaskRequestUpdateCommand(DaraModel):
     def __init__(
         self,
+        base_schedule_template_id: int = None,
         code: str = None,
+        condition_schedule_enable: bool = None,
+        condition_schedule_param_list: List[main_models.UpdateBatchTaskRequestUpdateCommandConditionScheduleParamList] = None,
+        condition_schedule_template_id: int = None,
+        context_param_list: List[main_models.UpdateBatchTaskRequestUpdateCommandContextParamList] = None,
         cron_expression: str = None,
         custom_schedule_config: main_models.UpdateBatchTaskRequestUpdateCommandCustomScheduleConfig = None,
         data_source_catalog: str = None,
         data_source_id: str = None,
         data_source_schema: str = None,
+        dev_http_path: str = None,
+        dev_resource_group_id: str = None,
         develop_owner_id_list: List[str] = None,
         engine: str = None,
         file_id: int = None,
@@ -75,19 +82,30 @@ class UpdateBatchTaskRequestUpdateCommand(DaraModel):
         node_description: str = None,
         node_output_name_list: List[str] = None,
         node_status: int = None,
+        ops_owner_id_list: List[str] = None,
         param_list: List[main_models.UpdateBatchTaskRequestUpdateCommandParamList] = None,
         priority: int = None,
+        prod_http_path: str = None,
         project_id: int = None,
         python_module_list: List[str] = None,
+        resource_group_id: str = None,
         schedule_period: str = None,
         spark_client_info: main_models.UpdateBatchTaskRequestUpdateCommandSparkClientInfo = None,
+        task_tag_list: List[str] = None,
         task_type: int = None,
         up_stream_list: List[main_models.UpdateBatchTaskRequestUpdateCommandUpStreamList] = None,
+        valid_end_date: str = None,
+        valid_start_date: str = None,
     ):
+        self.base_schedule_template_id = base_schedule_template_id
         # The code of the node.
         # 
         # This parameter is required.
         self.code = code
+        self.condition_schedule_enable = condition_schedule_enable
+        self.condition_schedule_param_list = condition_schedule_param_list
+        self.condition_schedule_template_id = condition_schedule_template_id
+        self.context_param_list = context_param_list
         # The cron expression for automatic scheduling. Refer to Linux cron expressions.
         self.cron_expression = cron_expression
         # The custom schedule interval configuration.
@@ -98,6 +116,8 @@ class UpdateBatchTaskRequestUpdateCommand(DaraModel):
         self.data_source_id = data_source_id
         # The schema for database SQL nodes. This parameter applies only to datasource types that require a schema, such as Oracle.
         self.data_source_schema = data_source_schema
+        self.dev_http_path = dev_http_path
+        self.dev_resource_group_id = dev_resource_group_id
         # The list of development owner IDs.
         self.develop_owner_id_list = develop_owner_id_list
         # The execution engine for the node, such as for Python nodes. Valid values:
@@ -122,16 +142,19 @@ class UpdateBatchTaskRequestUpdateCommand(DaraModel):
         # - 2: Paused.
         # - 3: Dry run.
         self.node_status = node_status
+        self.ops_owner_id_list = ops_owner_id_list
         # The list of custom parameters.
         self.param_list = param_list
         # The scheduling priority of the node. Valid values: 1 to 9. A larger value indicates a lower priority.
         self.priority = priority
+        self.prod_http_path = prod_http_path
         # The ID of the project to which the node belongs.
         # 
         # This parameter is required.
         self.project_id = project_id
         # The third-party Python packages required by the node.
         self.python_module_list = python_module_list
+        self.resource_group_id = resource_group_id
         # The schedule period. Valid values:
         # - YEARLY
         # - MONTHLY
@@ -142,6 +165,7 @@ class UpdateBatchTaskRequestUpdateCommand(DaraModel):
         self.schedule_period = schedule_period
         # The Spark client information.
         self.spark_client_info = spark_client_info
+        self.task_tag_list = task_tag_list
         # The node type. Valid values:
         # - 1: Hive_SQL.
         # - 5: MaxCompute_SQL.
@@ -152,8 +176,18 @@ class UpdateBatchTaskRequestUpdateCommand(DaraModel):
         self.task_type = task_type
         # The upstream dependencies.
         self.up_stream_list = up_stream_list
+        self.valid_end_date = valid_end_date
+        self.valid_start_date = valid_start_date
 
     def validate(self):
+        if self.condition_schedule_param_list:
+            for v1 in self.condition_schedule_param_list:
+                 if v1:
+                    v1.validate()
+        if self.context_param_list:
+            for v1 in self.context_param_list:
+                 if v1:
+                    v1.validate()
         if self.custom_schedule_config:
             self.custom_schedule_config.validate()
         if self.param_list:
@@ -172,8 +206,27 @@ class UpdateBatchTaskRequestUpdateCommand(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.base_schedule_template_id is not None:
+            result['BaseScheduleTemplateId'] = self.base_schedule_template_id
+
         if self.code is not None:
             result['Code'] = self.code
+
+        if self.condition_schedule_enable is not None:
+            result['ConditionScheduleEnable'] = self.condition_schedule_enable
+
+        result['ConditionScheduleParamList'] = []
+        if self.condition_schedule_param_list is not None:
+            for k1 in self.condition_schedule_param_list:
+                result['ConditionScheduleParamList'].append(k1.to_map() if k1 else None)
+
+        if self.condition_schedule_template_id is not None:
+            result['ConditionScheduleTemplateId'] = self.condition_schedule_template_id
+
+        result['ContextParamList'] = []
+        if self.context_param_list is not None:
+            for k1 in self.context_param_list:
+                result['ContextParamList'].append(k1.to_map() if k1 else None)
 
         if self.cron_expression is not None:
             result['CronExpression'] = self.cron_expression
@@ -189,6 +242,12 @@ class UpdateBatchTaskRequestUpdateCommand(DaraModel):
 
         if self.data_source_schema is not None:
             result['DataSourceSchema'] = self.data_source_schema
+
+        if self.dev_http_path is not None:
+            result['DevHttpPath'] = self.dev_http_path
+
+        if self.dev_resource_group_id is not None:
+            result['DevResourceGroupId'] = self.dev_resource_group_id
 
         if self.develop_owner_id_list is not None:
             result['DevelopOwnerIdList'] = self.develop_owner_id_list
@@ -211,6 +270,9 @@ class UpdateBatchTaskRequestUpdateCommand(DaraModel):
         if self.node_status is not None:
             result['NodeStatus'] = self.node_status
 
+        if self.ops_owner_id_list is not None:
+            result['OpsOwnerIdList'] = self.ops_owner_id_list
+
         result['ParamList'] = []
         if self.param_list is not None:
             for k1 in self.param_list:
@@ -219,17 +281,26 @@ class UpdateBatchTaskRequestUpdateCommand(DaraModel):
         if self.priority is not None:
             result['Priority'] = self.priority
 
+        if self.prod_http_path is not None:
+            result['ProdHttpPath'] = self.prod_http_path
+
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
 
         if self.python_module_list is not None:
             result['PythonModuleList'] = self.python_module_list
 
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+
         if self.schedule_period is not None:
             result['SchedulePeriod'] = self.schedule_period
 
         if self.spark_client_info is not None:
             result['SparkClientInfo'] = self.spark_client_info.to_map()
+
+        if self.task_tag_list is not None:
+            result['TaskTagList'] = self.task_tag_list
 
         if self.task_type is not None:
             result['TaskType'] = self.task_type
@@ -239,12 +310,39 @@ class UpdateBatchTaskRequestUpdateCommand(DaraModel):
             for k1 in self.up_stream_list:
                 result['UpStreamList'].append(k1.to_map() if k1 else None)
 
+        if self.valid_end_date is not None:
+            result['ValidEndDate'] = self.valid_end_date
+
+        if self.valid_start_date is not None:
+            result['ValidStartDate'] = self.valid_start_date
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseScheduleTemplateId') is not None:
+            self.base_schedule_template_id = m.get('BaseScheduleTemplateId')
+
         if m.get('Code') is not None:
             self.code = m.get('Code')
+
+        if m.get('ConditionScheduleEnable') is not None:
+            self.condition_schedule_enable = m.get('ConditionScheduleEnable')
+
+        self.condition_schedule_param_list = []
+        if m.get('ConditionScheduleParamList') is not None:
+            for k1 in m.get('ConditionScheduleParamList'):
+                temp_model = main_models.UpdateBatchTaskRequestUpdateCommandConditionScheduleParamList()
+                self.condition_schedule_param_list.append(temp_model.from_map(k1))
+
+        if m.get('ConditionScheduleTemplateId') is not None:
+            self.condition_schedule_template_id = m.get('ConditionScheduleTemplateId')
+
+        self.context_param_list = []
+        if m.get('ContextParamList') is not None:
+            for k1 in m.get('ContextParamList'):
+                temp_model = main_models.UpdateBatchTaskRequestUpdateCommandContextParamList()
+                self.context_param_list.append(temp_model.from_map(k1))
 
         if m.get('CronExpression') is not None:
             self.cron_expression = m.get('CronExpression')
@@ -261,6 +359,12 @@ class UpdateBatchTaskRequestUpdateCommand(DaraModel):
 
         if m.get('DataSourceSchema') is not None:
             self.data_source_schema = m.get('DataSourceSchema')
+
+        if m.get('DevHttpPath') is not None:
+            self.dev_http_path = m.get('DevHttpPath')
+
+        if m.get('DevResourceGroupId') is not None:
+            self.dev_resource_group_id = m.get('DevResourceGroupId')
 
         if m.get('DevelopOwnerIdList') is not None:
             self.develop_owner_id_list = m.get('DevelopOwnerIdList')
@@ -283,6 +387,9 @@ class UpdateBatchTaskRequestUpdateCommand(DaraModel):
         if m.get('NodeStatus') is not None:
             self.node_status = m.get('NodeStatus')
 
+        if m.get('OpsOwnerIdList') is not None:
+            self.ops_owner_id_list = m.get('OpsOwnerIdList')
+
         self.param_list = []
         if m.get('ParamList') is not None:
             for k1 in m.get('ParamList'):
@@ -292,11 +399,17 @@ class UpdateBatchTaskRequestUpdateCommand(DaraModel):
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
 
+        if m.get('ProdHttpPath') is not None:
+            self.prod_http_path = m.get('ProdHttpPath')
+
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
 
         if m.get('PythonModuleList') is not None:
             self.python_module_list = m.get('PythonModuleList')
+
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
 
         if m.get('SchedulePeriod') is not None:
             self.schedule_period = m.get('SchedulePeriod')
@@ -304,6 +417,9 @@ class UpdateBatchTaskRequestUpdateCommand(DaraModel):
         if m.get('SparkClientInfo') is not None:
             temp_model = main_models.UpdateBatchTaskRequestUpdateCommandSparkClientInfo()
             self.spark_client_info = temp_model.from_map(m.get('SparkClientInfo'))
+
+        if m.get('TaskTagList') is not None:
+            self.task_tag_list = m.get('TaskTagList')
 
         if m.get('TaskType') is not None:
             self.task_type = m.get('TaskType')
@@ -313,6 +429,12 @@ class UpdateBatchTaskRequestUpdateCommand(DaraModel):
             for k1 in m.get('UpStreamList'):
                 temp_model = main_models.UpdateBatchTaskRequestUpdateCommandUpStreamList()
                 self.up_stream_list.append(temp_model.from_map(k1))
+
+        if m.get('ValidEndDate') is not None:
+            self.valid_end_date = m.get('ValidEndDate')
+
+        if m.get('ValidStartDate') is not None:
+            self.valid_start_date = m.get('ValidStartDate')
 
         return self
 
@@ -621,6 +743,124 @@ class UpdateBatchTaskRequestUpdateCommandCustomScheduleConfig(DaraModel):
 
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+
+        return self
+
+class UpdateBatchTaskRequestUpdateCommandContextParamList(DaraModel):
+    def __init__(
+        self,
+        default_value: str = None,
+        desc: str = None,
+        param_key: str = None,
+    ):
+        self.default_value = default_value
+        self.desc = desc
+        self.param_key = param_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.default_value is not None:
+            result['DefaultValue'] = self.default_value
+
+        if self.desc is not None:
+            result['Desc'] = self.desc
+
+        if self.param_key is not None:
+            result['ParamKey'] = self.param_key
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DefaultValue') is not None:
+            self.default_value = m.get('DefaultValue')
+
+        if m.get('Desc') is not None:
+            self.desc = m.get('Desc')
+
+        if m.get('ParamKey') is not None:
+            self.param_key = m.get('ParamKey')
+
+        return self
+
+class UpdateBatchTaskRequestUpdateCommandConditionScheduleParamList(DaraModel):
+    def __init__(
+        self,
+        condition_name: str = None,
+        cron_expression: str = None,
+        enable: bool = None,
+        follow_schedule_param: bool = None,
+        node_status: int = None,
+        schedule_condition_json: str = None,
+        schedule_time: str = None,
+    ):
+        self.condition_name = condition_name
+        self.cron_expression = cron_expression
+        self.enable = enable
+        self.follow_schedule_param = follow_schedule_param
+        self.node_status = node_status
+        self.schedule_condition_json = schedule_condition_json
+        self.schedule_time = schedule_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.condition_name is not None:
+            result['ConditionName'] = self.condition_name
+
+        if self.cron_expression is not None:
+            result['CronExpression'] = self.cron_expression
+
+        if self.enable is not None:
+            result['Enable'] = self.enable
+
+        if self.follow_schedule_param is not None:
+            result['FollowScheduleParam'] = self.follow_schedule_param
+
+        if self.node_status is not None:
+            result['NodeStatus'] = self.node_status
+
+        if self.schedule_condition_json is not None:
+            result['ScheduleConditionJson'] = self.schedule_condition_json
+
+        if self.schedule_time is not None:
+            result['ScheduleTime'] = self.schedule_time
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConditionName') is not None:
+            self.condition_name = m.get('ConditionName')
+
+        if m.get('CronExpression') is not None:
+            self.cron_expression = m.get('CronExpression')
+
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+
+        if m.get('FollowScheduleParam') is not None:
+            self.follow_schedule_param = m.get('FollowScheduleParam')
+
+        if m.get('NodeStatus') is not None:
+            self.node_status = m.get('NodeStatus')
+
+        if m.get('ScheduleConditionJson') is not None:
+            self.schedule_condition_json = m.get('ScheduleConditionJson')
+
+        if m.get('ScheduleTime') is not None:
+            self.schedule_time = m.get('ScheduleTime')
 
         return self
 

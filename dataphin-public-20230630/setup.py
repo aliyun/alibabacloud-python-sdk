@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_dataphin_public20230630.
 
-Created on 23/09/2026
+Created on 08/10/2026
 
 @author: Alibaba Cloud SDK
 """

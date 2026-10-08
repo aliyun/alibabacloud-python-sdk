@@ -1,3 +1,48 @@
+2026-10-08 Version: 2.14.0
+- Support API BatchHandoverAsset.
+- Support API CheckDataSourceConnectivityOnResourceGroup.
+- Support API GetCheckConnectivityJobByJobId.
+- Support API GetSourceTableMeta.
+- Support API GetTable.
+- Support API ListBatchTasks.
+- Support API ListProjectRoles.
+- Support API ListScheduleTemplates.
+- Support API ListTenantRoles.
+- Support API StartPipelineIntegratedTask.
+- Support API StopPipelineIntegratedTask.
+- Update API GetBatchTaskInfo: add response parameters Body.TaskInfo.BaseScheduleTemplateId.
+- Update API GetBatchTaskInfo: add response parameters Body.TaskInfo.BaseScheduleTemplateName.
+- Update API GetBatchTaskInfo: add response parameters Body.TaskInfo.ConditionScheduleEnable.
+- Update API GetBatchTaskInfo: add response parameters Body.TaskInfo.ConditionScheduleParamList.
+- Update API GetBatchTaskInfo: add response parameters Body.TaskInfo.ConditionScheduleTemplateId.
+- Update API GetBatchTaskInfo: add response parameters Body.TaskInfo.ConditionScheduleTemplateName.
+- Update API GetBatchTaskInfo: add response parameters Body.TaskInfo.ContextParamList.
+- Update API GetBatchTaskInfo: add response parameters Body.TaskInfo.DevHttpPath.
+- Update API GetBatchTaskInfo: add response parameters Body.TaskInfo.DevResourceGroupId.
+- Update API GetBatchTaskInfo: add response parameters Body.TaskInfo.DevResourceGroupName.
+- Update API GetBatchTaskInfo: add response parameters Body.TaskInfo.ProdHttpPath.
+- Update API GetBatchTaskInfo: add response parameters Body.TaskInfo.ResourceGroupId.
+- Update API GetBatchTaskInfo: add response parameters Body.TaskInfo.ResourceGroupName.
+- Update API GetBatchTaskInfo: add response parameters Body.TaskInfo.TaskTagList.
+- Update API GetBatchTaskInfo: add response parameters Body.TaskInfo.ValidEndDate.
+- Update API GetBatchTaskInfo: add response parameters Body.TaskInfo.ValidStartDate.
+- Update API ListTables: add request parameters ListQuery.OwnerId.
+- Update API ListTables: add request parameters ListQuery.SubTypes.
+- Update API UpdateBatchTask: add request parameters UpdateCommand.BaseScheduleTemplateId.
+- Update API UpdateBatchTask: add request parameters UpdateCommand.ConditionScheduleEnable.
+- Update API UpdateBatchTask: add request parameters UpdateCommand.ConditionScheduleParamList.
+- Update API UpdateBatchTask: add request parameters UpdateCommand.ConditionScheduleTemplateId.
+- Update API UpdateBatchTask: add request parameters UpdateCommand.ContextParamList.
+- Update API UpdateBatchTask: add request parameters UpdateCommand.DevHttpPath.
+- Update API UpdateBatchTask: add request parameters UpdateCommand.DevResourceGroupId.
+- Update API UpdateBatchTask: add request parameters UpdateCommand.OpsOwnerIdList.
+- Update API UpdateBatchTask: add request parameters UpdateCommand.ProdHttpPath.
+- Update API UpdateBatchTask: add request parameters UpdateCommand.ResourceGroupId.
+- Update API UpdateBatchTask: add request parameters UpdateCommand.TaskTagList.
+- Update API UpdateBatchTask: add request parameters UpdateCommand.ValidEndDate.
+- Update API UpdateBatchTask: add request parameters UpdateCommand.ValidStartDate.
+
+
 2026-09-23 Version: 2.13.0
 - Support API GetServerVersion.
 - Update API SyncDepartmentUser: add request parameters SyncDepartmentUserCommand.DeptUserMapping.$.SourceType.

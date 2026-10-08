@@ -4,27 +4,21 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class SyncDepartmentUserResponseBody(DaraModel):
+class CheckDataSourceConnectivityOnResourceGroupResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
-        data: bool = None,
+        data: str = None,
         http_status_code: int = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        # The request error code. OK indicates a successful request.
         self.code = code
-        # The response result.
         self.data = data
-        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
-        # The request error message.
         self.message = message
-        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

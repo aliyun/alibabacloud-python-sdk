@@ -85,13 +85,23 @@ class GetBatchTaskInfoResponseBody(DaraModel):
 class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
     def __init__(
         self,
+        base_schedule_template_id: int = None,
+        base_schedule_template_name: str = None,
         code: str = None,
+        condition_schedule_enable: bool = None,
+        condition_schedule_param_list: List[main_models.GetBatchTaskInfoResponseBodyTaskInfoConditionScheduleParamList] = None,
+        condition_schedule_template_id: int = None,
+        condition_schedule_template_name: str = None,
+        context_param_list: List[main_models.GetBatchTaskInfoResponseBodyTaskInfoContextParamList] = None,
         cron_expression: str = None,
         custom_schedule_config: main_models.GetBatchTaskInfoResponseBodyTaskInfoCustomScheduleConfig = None,
         dag_id: str = None,
         data_source_catalog: str = None,
         data_source_id: str = None,
         data_source_schema: str = None,
+        dev_http_path: str = None,
+        dev_resource_group_id: str = None,
+        dev_resource_group_name: str = None,
         develop_owner_id: str = None,
         develop_owner_id_list: List[str] = None,
         develop_owner_name: str = None,
@@ -116,19 +126,32 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
         param_list: List[main_models.GetBatchTaskInfoResponseBodyTaskInfoParamList] = None,
         paused: bool = None,
         priority: int = None,
+        prod_http_path: str = None,
         project_id: int = None,
         published: bool = None,
         remark: str = None,
         rerunable: bool = None,
+        resource_group_id: str = None,
+        resource_group_name: str = None,
         schedule_period: str = None,
         schedule_type: int = None,
         spark_client_info: main_models.GetBatchTaskInfoResponseBodyTaskInfoSparkClientInfo = None,
         status: str = None,
+        task_tag_list: List[str] = None,
         task_type: int = None,
         up_stream_list: List[main_models.GetBatchTaskInfoResponseBodyTaskInfoUpStreamList] = None,
+        valid_end_date: str = None,
+        valid_start_date: str = None,
     ):
+        self.base_schedule_template_id = base_schedule_template_id
+        self.base_schedule_template_name = base_schedule_template_name
         # The task code.
         self.code = code
+        self.condition_schedule_enable = condition_schedule_enable
+        self.condition_schedule_param_list = condition_schedule_param_list
+        self.condition_schedule_template_id = condition_schedule_template_id
+        self.condition_schedule_template_name = condition_schedule_template_name
+        self.context_param_list = context_param_list
         # The cron expression for automatic scheduling. Refer to the Linux cron expression syntax.
         self.cron_expression = cron_expression
         # The custom scheduling interval configuration.
@@ -141,6 +164,9 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
         self.data_source_id = data_source_id
         # The schema for database SQL nodes. This parameter takes effect only for data source types that require a schema, such as Oracle.
         self.data_source_schema = data_source_schema
+        self.dev_http_path = dev_http_path
+        self.dev_resource_group_id = dev_resource_group_id
+        self.dev_resource_group_name = dev_resource_group_name
         # The user ID of the development owner.
         self.develop_owner_id = develop_owner_id
         # The list of development owner IDs.
@@ -192,6 +218,7 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
         self.paused = paused
         # The scheduling priority of the node. Valid values: 1 to 9. A larger value indicates a lower priority.
         self.priority = priority
+        self.prod_http_path = prod_http_path
         # The project ID.
         self.project_id = project_id
         # Indicates whether the task is published.
@@ -200,6 +227,8 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
         self.remark = remark
         # Indicates whether the node can be rerun.
         self.rerunable = rerunable
+        self.resource_group_id = resource_group_id
+        self.resource_group_name = resource_group_name
         # The scheduling period. Valid values:
         # - YEARLY
         # - MONTHLY
@@ -219,12 +248,23 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
         # - 1: Submitted.
         # - 100: In development.
         self.status = status
+        self.task_tag_list = task_tag_list
         # The task type. For more information, refer to the API operation for creating a batch task.
         self.task_type = task_type
         # The upstream dependencies.
         self.up_stream_list = up_stream_list
+        self.valid_end_date = valid_end_date
+        self.valid_start_date = valid_start_date
 
     def validate(self):
+        if self.condition_schedule_param_list:
+            for v1 in self.condition_schedule_param_list:
+                 if v1:
+                    v1.validate()
+        if self.context_param_list:
+            for v1 in self.context_param_list:
+                 if v1:
+                    v1.validate()
         if self.custom_schedule_config:
             self.custom_schedule_config.validate()
         if self.param_list:
@@ -243,8 +283,33 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.base_schedule_template_id is not None:
+            result['BaseScheduleTemplateId'] = self.base_schedule_template_id
+
+        if self.base_schedule_template_name is not None:
+            result['BaseScheduleTemplateName'] = self.base_schedule_template_name
+
         if self.code is not None:
             result['Code'] = self.code
+
+        if self.condition_schedule_enable is not None:
+            result['ConditionScheduleEnable'] = self.condition_schedule_enable
+
+        result['ConditionScheduleParamList'] = []
+        if self.condition_schedule_param_list is not None:
+            for k1 in self.condition_schedule_param_list:
+                result['ConditionScheduleParamList'].append(k1.to_map() if k1 else None)
+
+        if self.condition_schedule_template_id is not None:
+            result['ConditionScheduleTemplateId'] = self.condition_schedule_template_id
+
+        if self.condition_schedule_template_name is not None:
+            result['ConditionScheduleTemplateName'] = self.condition_schedule_template_name
+
+        result['ContextParamList'] = []
+        if self.context_param_list is not None:
+            for k1 in self.context_param_list:
+                result['ContextParamList'].append(k1.to_map() if k1 else None)
 
         if self.cron_expression is not None:
             result['CronExpression'] = self.cron_expression
@@ -263,6 +328,15 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
 
         if self.data_source_schema is not None:
             result['DataSourceSchema'] = self.data_source_schema
+
+        if self.dev_http_path is not None:
+            result['DevHttpPath'] = self.dev_http_path
+
+        if self.dev_resource_group_id is not None:
+            result['DevResourceGroupId'] = self.dev_resource_group_id
+
+        if self.dev_resource_group_name is not None:
+            result['DevResourceGroupName'] = self.dev_resource_group_name
 
         if self.develop_owner_id is not None:
             result['DevelopOwnerId'] = self.develop_owner_id
@@ -338,6 +412,9 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
         if self.priority is not None:
             result['Priority'] = self.priority
 
+        if self.prod_http_path is not None:
+            result['ProdHttpPath'] = self.prod_http_path
+
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
 
@@ -349,6 +426,12 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
 
         if self.rerunable is not None:
             result['Rerunable'] = self.rerunable
+
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+
+        if self.resource_group_name is not None:
+            result['ResourceGroupName'] = self.resource_group_name
 
         if self.schedule_period is not None:
             result['SchedulePeriod'] = self.schedule_period
@@ -362,6 +445,9 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
         if self.status is not None:
             result['Status'] = self.status
 
+        if self.task_tag_list is not None:
+            result['TaskTagList'] = self.task_tag_list
+
         if self.task_type is not None:
             result['TaskType'] = self.task_type
 
@@ -370,12 +456,45 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
             for k1 in self.up_stream_list:
                 result['UpStreamList'].append(k1.to_map() if k1 else None)
 
+        if self.valid_end_date is not None:
+            result['ValidEndDate'] = self.valid_end_date
+
+        if self.valid_start_date is not None:
+            result['ValidStartDate'] = self.valid_start_date
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BaseScheduleTemplateId') is not None:
+            self.base_schedule_template_id = m.get('BaseScheduleTemplateId')
+
+        if m.get('BaseScheduleTemplateName') is not None:
+            self.base_schedule_template_name = m.get('BaseScheduleTemplateName')
+
         if m.get('Code') is not None:
             self.code = m.get('Code')
+
+        if m.get('ConditionScheduleEnable') is not None:
+            self.condition_schedule_enable = m.get('ConditionScheduleEnable')
+
+        self.condition_schedule_param_list = []
+        if m.get('ConditionScheduleParamList') is not None:
+            for k1 in m.get('ConditionScheduleParamList'):
+                temp_model = main_models.GetBatchTaskInfoResponseBodyTaskInfoConditionScheduleParamList()
+                self.condition_schedule_param_list.append(temp_model.from_map(k1))
+
+        if m.get('ConditionScheduleTemplateId') is not None:
+            self.condition_schedule_template_id = m.get('ConditionScheduleTemplateId')
+
+        if m.get('ConditionScheduleTemplateName') is not None:
+            self.condition_schedule_template_name = m.get('ConditionScheduleTemplateName')
+
+        self.context_param_list = []
+        if m.get('ContextParamList') is not None:
+            for k1 in m.get('ContextParamList'):
+                temp_model = main_models.GetBatchTaskInfoResponseBodyTaskInfoContextParamList()
+                self.context_param_list.append(temp_model.from_map(k1))
 
         if m.get('CronExpression') is not None:
             self.cron_expression = m.get('CronExpression')
@@ -395,6 +514,15 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
 
         if m.get('DataSourceSchema') is not None:
             self.data_source_schema = m.get('DataSourceSchema')
+
+        if m.get('DevHttpPath') is not None:
+            self.dev_http_path = m.get('DevHttpPath')
+
+        if m.get('DevResourceGroupId') is not None:
+            self.dev_resource_group_id = m.get('DevResourceGroupId')
+
+        if m.get('DevResourceGroupName') is not None:
+            self.dev_resource_group_name = m.get('DevResourceGroupName')
 
         if m.get('DevelopOwnerId') is not None:
             self.develop_owner_id = m.get('DevelopOwnerId')
@@ -471,6 +599,9 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
 
+        if m.get('ProdHttpPath') is not None:
+            self.prod_http_path = m.get('ProdHttpPath')
+
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
 
@@ -482,6 +613,12 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
 
         if m.get('Rerunable') is not None:
             self.rerunable = m.get('Rerunable')
+
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+
+        if m.get('ResourceGroupName') is not None:
+            self.resource_group_name = m.get('ResourceGroupName')
 
         if m.get('SchedulePeriod') is not None:
             self.schedule_period = m.get('SchedulePeriod')
@@ -496,6 +633,9 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
         if m.get('Status') is not None:
             self.status = m.get('Status')
 
+        if m.get('TaskTagList') is not None:
+            self.task_tag_list = m.get('TaskTagList')
+
         if m.get('TaskType') is not None:
             self.task_type = m.get('TaskType')
 
@@ -504,6 +644,12 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
             for k1 in m.get('UpStreamList'):
                 temp_model = main_models.GetBatchTaskInfoResponseBodyTaskInfoUpStreamList()
                 self.up_stream_list.append(temp_model.from_map(k1))
+
+        if m.get('ValidEndDate') is not None:
+            self.valid_end_date = m.get('ValidEndDate')
+
+        if m.get('ValidStartDate') is not None:
+            self.valid_start_date = m.get('ValidStartDate')
 
         return self
 
@@ -796,6 +942,134 @@ class GetBatchTaskInfoResponseBodyTaskInfoCustomScheduleConfig(DaraModel):
 
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+
+        return self
+
+class GetBatchTaskInfoResponseBodyTaskInfoContextParamList(DaraModel):
+    def __init__(
+        self,
+        default_value: str = None,
+        desc: str = None,
+        param_key: str = None,
+    ):
+        # This parameter is required.
+        self.default_value = default_value
+        # This parameter is required.
+        self.desc = desc
+        # This parameter is required.
+        self.param_key = param_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.default_value is not None:
+            result['DefaultValue'] = self.default_value
+
+        if self.desc is not None:
+            result['Desc'] = self.desc
+
+        if self.param_key is not None:
+            result['ParamKey'] = self.param_key
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DefaultValue') is not None:
+            self.default_value = m.get('DefaultValue')
+
+        if m.get('Desc') is not None:
+            self.desc = m.get('Desc')
+
+        if m.get('ParamKey') is not None:
+            self.param_key = m.get('ParamKey')
+
+        return self
+
+class GetBatchTaskInfoResponseBodyTaskInfoConditionScheduleParamList(DaraModel):
+    def __init__(
+        self,
+        condition_name: str = None,
+        cron_expression: str = None,
+        enable: bool = None,
+        follow_schedule_param: bool = None,
+        node_status: int = None,
+        schedule_condition_json: str = None,
+        schedule_time: str = None,
+    ):
+        # This parameter is required.
+        self.condition_name = condition_name
+        # This parameter is required.
+        self.cron_expression = cron_expression
+        # This parameter is required.
+        self.enable = enable
+        # This parameter is required.
+        self.follow_schedule_param = follow_schedule_param
+        # This parameter is required.
+        self.node_status = node_status
+        # This parameter is required.
+        self.schedule_condition_json = schedule_condition_json
+        # This parameter is required.
+        self.schedule_time = schedule_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.condition_name is not None:
+            result['ConditionName'] = self.condition_name
+
+        if self.cron_expression is not None:
+            result['CronExpression'] = self.cron_expression
+
+        if self.enable is not None:
+            result['Enable'] = self.enable
+
+        if self.follow_schedule_param is not None:
+            result['FollowScheduleParam'] = self.follow_schedule_param
+
+        if self.node_status is not None:
+            result['NodeStatus'] = self.node_status
+
+        if self.schedule_condition_json is not None:
+            result['ScheduleConditionJson'] = self.schedule_condition_json
+
+        if self.schedule_time is not None:
+            result['ScheduleTime'] = self.schedule_time
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConditionName') is not None:
+            self.condition_name = m.get('ConditionName')
+
+        if m.get('CronExpression') is not None:
+            self.cron_expression = m.get('CronExpression')
+
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+
+        if m.get('FollowScheduleParam') is not None:
+            self.follow_schedule_param = m.get('FollowScheduleParam')
+
+        if m.get('NodeStatus') is not None:
+            self.node_status = m.get('NodeStatus')
+
+        if m.get('ScheduleConditionJson') is not None:
+            self.schedule_condition_json = m.get('ScheduleConditionJson')
+
+        if m.get('ScheduleTime') is not None:
+            self.schedule_time = m.get('ScheduleTime')
 
         return self
 
