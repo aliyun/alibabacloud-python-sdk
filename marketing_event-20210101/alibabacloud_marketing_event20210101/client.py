@@ -666,6 +666,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.find_guest_ticket_record_with_options_async(request, runtime)
 
+    def mos_check_in_with_options(
+        self,
+        request: main_models.MosCheckInRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MosCheckInResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.activity_id):
+            body['ActivityId'] = request.activity_id
+        if not DaraCore.is_null(request.ext_param):
+            body['ExtParam'] = request.ext_param
+        if not DaraCore.is_null(request.qr_code):
+            body['QrCode'] = request.qr_code
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'MosCheckIn',
+            version = '2021-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MosCheckInResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def mos_check_in_with_options_async(
+        self,
+        request: main_models.MosCheckInRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MosCheckInResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.activity_id):
+            body['ActivityId'] = request.activity_id
+        if not DaraCore.is_null(request.ext_param):
+            body['ExtParam'] = request.ext_param
+        if not DaraCore.is_null(request.qr_code):
+            body['QrCode'] = request.qr_code
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'MosCheckIn',
+            version = '2021-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MosCheckInResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def mos_check_in(
+        self,
+        request: main_models.MosCheckInRequest,
+    ) -> main_models.MosCheckInResponse:
+        runtime = RuntimeOptions()
+        return self.mos_check_in_with_options(request, runtime)
+
+    async def mos_check_in_async(
+        self,
+        request: main_models.MosCheckInRequest,
+    ) -> main_models.MosCheckInResponse:
+        runtime = RuntimeOptions()
+        return await self.mos_check_in_with_options_async(request, runtime)
+
     def query_all_activity_info_with_options(
         self,
         request: main_models.QueryAllActivityInfoRequest,

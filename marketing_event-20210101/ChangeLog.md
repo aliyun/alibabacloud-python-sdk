@@ -1,3 +1,7 @@
+2026-10-08 Version: 1.4.0
+- Support API MosCheckIn.
+
+
 2026-09-09 Version: 1.3.0
 - Support API AddAgendaSumRecordFlowPop.
 

@@ -23,6 +23,9 @@ from ._find_guest_credentials_record_response import FindGuestCredentialsRecordR
 from ._find_guest_ticket_record_request import FindGuestTicketRecordRequest
 from ._find_guest_ticket_record_response_body import FindGuestTicketRecordResponseBody
 from ._find_guest_ticket_record_response import FindGuestTicketRecordResponse
+from ._mos_check_in_request import MosCheckInRequest
+from ._mos_check_in_response_body import MosCheckInResponseBody
+from ._mos_check_in_response import MosCheckInResponse
 from ._query_all_activity_info_request import QueryAllActivityInfoRequest
 from ._query_all_activity_info_response_body import QueryAllActivityInfoResponseBody
 from ._query_all_activity_info_response import QueryAllActivityInfoResponse
@@ -101,6 +104,9 @@ __all__ = [
     FindGuestTicketRecordRequest,
     FindGuestTicketRecordResponseBody,
     FindGuestTicketRecordResponse,
+    MosCheckInRequest,
+    MosCheckInResponseBody,
+    MosCheckInResponse,
     QueryAllActivityInfoRequest,
     QueryAllActivityInfoResponseBody,
     QueryAllActivityInfoResponse,
