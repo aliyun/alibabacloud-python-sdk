@@ -1,3 +1,6 @@
+2026-10-08 Version: 4.8.3
+- Generated python 2023-03-30 for FC.
+
 2026-08-20 Version: 4.8.2
 - Update API PauseSession: add request parameters fileSystemOnly.
 

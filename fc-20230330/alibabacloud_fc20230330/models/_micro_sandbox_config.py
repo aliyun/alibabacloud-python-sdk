@@ -15,14 +15,17 @@ class MicroSandboxConfig(DaraModel):
         registry_config: main_models.RegistryConfig = None,
         start_command: str = None,
     ):
-        # The ID of the ACR Enterprise Edition image repository instance. Used in pair with MicroSandbox images. This parameter is optional. If not provided, the server resolves it as needed.
+        # The instance ID of the Container Registry (ACR) Enterprise Edition image repository. This parameter is used together with MicroSandbox images. This parameter is optional. If not provided, the server resolves it as needed.
         self.acr_instance_id = acr_instance_id
         # The image address.
         self.image = image
+        # The operating system type.
         self.os_type = os_type
+        # The ready command.
         self.ready_command = ready_command
         # The image repository configuration.
         self.registry_config = registry_config
+        # The start command.
         self.start_command = start_command
 
     def validate(self):

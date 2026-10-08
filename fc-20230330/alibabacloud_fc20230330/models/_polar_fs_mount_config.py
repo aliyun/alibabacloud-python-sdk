@@ -7,11 +7,13 @@ from darabonba.model import DaraModel
 class PolarFsMountConfig(DaraModel):
     def __init__(
         self,
+        extra_options: str = None,
         instance_id: str = None,
         mount_dir: str = None,
         read_only: bool = None,
         remote_dir: str = None,
     ):
+        self.extra_options = extra_options
         # The ID of the PolarFS file system instance to mount.
         self.instance_id = instance_id
         # The local mount directory in the function\\"s runtime environment.
@@ -29,6 +31,9 @@ class PolarFsMountConfig(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.extra_options is not None:
+            result['extraOptions'] = self.extra_options
+
         if self.instance_id is not None:
             result['instanceId'] = self.instance_id
 
@@ -45,6 +50,9 @@ class PolarFsMountConfig(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('extraOptions') is not None:
+            self.extra_options = m.get('extraOptions')
+
         if m.get('instanceId') is not None:
             self.instance_id = m.get('instanceId')
 
