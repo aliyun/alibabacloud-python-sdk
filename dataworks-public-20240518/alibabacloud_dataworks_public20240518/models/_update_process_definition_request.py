@@ -241,28 +241,20 @@ class UpdateProcessDefinitionRequestApprovalNodes(DaraModel):
     ):
         # The approver type for the node. Valid values:
         # 
+        # 
+        # 
+        # 
         # - `DataWorksProjectRole`: A workspace role.
-        # 
         # - `DataWorksProjectMember`: A workspace member.
-        # 
-        # - `TableAdministrator`: A table administrator.
-        # 
-        # - `TableOrProjectAdministrator`: The administrator of the table or project.
-        # 
+        # - `TableAdministrator`: A table owner.
+        # - `TableOrProjectAdministrator`: The administrator of the table or workspace.
         # - `AliyunResourceOwner`: An Alibaba Cloud account.
-        # 
         # - `MaxComputeRole`: A MaxCompute administrator.
-        # 
         # - `DLFAdmin`: A DlfLegacy administrator.
-        # 
         # - `DLFNextAdmin`: A DLFNext administrator.
-        # 
         # - `TenantRole`: A tenant role.
-        # 
         # - `EmrAdministrator`: An EMR administrator.
-        # 
         # - `LindormAdministrator`: A Lindorm administrator.
-        # 
         # - `AliyunRamUser`: A RAM user.
         self.account_type = account_type
         # Specifies the approvers. The required value depends on the `AccountType`:

@@ -97,18 +97,22 @@ class UpdateDataQualityRuleTemplateRequestSamplingConfig(DaraModel):
         setting_config: str = None,
     ):
         # The name of the metric to be sampled. Valid values:
+        # 
+        # 
+        # 
+        # 
         # - Count: the number of table rows.
-        # - Min: the minimum value of a field.
-        # - Max: the maximum value of a field.
-        # - Avg: the average value of a field.
-        # - DistinctCount: the number of distinct values of a field.
-        # - DistinctPercent: the ratio of the number of distinct values of a field to the number of data rows.
-        # - DuplicatedCount: the number of duplicate values of a field.
-        # - DuplicatedPercent: the ratio of the number of duplicate values of a field to the number of data rows.
+        # - Min: the minimum value of a column.
+        # - Max: the maximum value of a column.
+        # - Avg: the average value of a column.
+        # - DistinctCount: the number of distinct values of a column.
+        # - DistinctPercent: the ratio of the number of distinct values of a column to the number of data rows.
+        # - DuplicatedCount: the number of duplicate values of a column.
+        # - DuplicatedPercent: the ratio of the number of duplicate values of a column to the number of data rows.
         # - TableSize: the size of the table.
-        # - NullValueCount: the number of rows in which the field is null.
-        # - NullValuePercent: the percentage of rows in which the field is null.
-        # - GroupCount: the number of data rows corresponding to each value after the field values are aggregated.
+        # - NullValueCount: the number of rows in which the column is null.
+        # - NullValuePercent: the percentage of rows in which the column is null.
+        # - GroupCount: the number of data rows corresponding to each value after the column values are aggregated.
         # - CountNotIn: the number of rows whose values do not match the enumerated values.
         # - CountDistinctNotIn: the number of distinct values that do not match the enumerated values.
         # - UserDefinedSql: sample collection by using custom SQL.

@@ -10,7 +10,7 @@ class CreatePipelineRunResponseBody(DaraModel):
         id: str = None,
         request_id: str = None,
     ):
-        # The unique identifier of the publish process.
+        # The unique identifier of the deployment process.
         self.id = id
         # The request ID. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id

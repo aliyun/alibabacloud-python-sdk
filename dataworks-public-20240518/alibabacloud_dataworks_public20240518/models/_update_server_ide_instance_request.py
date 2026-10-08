@@ -478,7 +478,7 @@ class UpdateServerIdeInstanceRequestCredentialConfigConfigsRoles(DaraModel):
         role_type: str = None,
         user_info: main_models.UpdateServerIdeInstanceRequestCredentialConfigConfigsRolesUserInfo = None,
     ):
-        # The Alibaba Cloud account ID of the principal that assumes the role.
+        # The Alibaba Cloud account ID of the principal that owns the role to be assumed.
         self.assume_role_for = assume_role_for
         # The policy used to further restrict the role permissions.
         self.policy = policy

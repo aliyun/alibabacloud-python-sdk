@@ -31,7 +31,7 @@ class ListAlertRulesShrinkRequest(DaraModel):
         self.receiver = receiver
         # The IDs of the scheduling tasks.
         self.task_ids_shrink = task_ids_shrink
-        # The alert triggering condition.
+        # The list of alert types.
         self.types_shrink = types_shrink
 
     def validate(self):

@@ -174,7 +174,11 @@ class CreateDataQualityAlertRuleRequestNotificationReceivers(DaraModel):
     ):
         # The additional configuration required for the alert recipient. When ReceiverType is set to DingdingUrl, you can set `{"atAll":true}` to @ all members.
         self.extension = extension
-        # The object type of the alerting accept object.
+        # The alert recipient type.
+        # 
+        # 
+        # 
+        # 
         # - AliUid
         # - WebhookUrl
         # - DingdingUrl

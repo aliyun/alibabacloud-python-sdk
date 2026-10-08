@@ -202,11 +202,17 @@ class GetPipelineRunResponseBodyPipelineStages(DaraModel):
         self.step = step
         # The type of the deployment stage.
         # 
+        # 
+        # 
+        # 
         # Valid values:
+        # 
+        # 
+        # 
         # 
         # - Deploy: deploy operation
         # - Check: check operation
-        # - Offline: offline operation
+        # - Offline: undeploy operation
         # - Build: build operation
         # - Delete: delete operation
         self.type = type

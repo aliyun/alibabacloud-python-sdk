@@ -38,15 +38,7 @@ class ListWorkflowsShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The field used for sorting. Fields such as TriggerTime and StartedTime are supported. The value of this parameter is in the Sort field + Sort by (Desc/Asc) format. By default, results are sorted in ascending order. Valid values:
-        # 
-        # - ModifyTime (Desc/Asc)
-        # 
-        # - CreateTime (Desc/Asc)
-        # 
-        # - Id (Desc/Asc)
-        # 
-        # Default value: Id Desc.
+        # The field used for sorting. Fields such as ModifyTime and CreateTime are supported. Format: sort field + sort order (Desc/Asc). Asc can be omitted. Valid values: ModifyTime (Desc/Asc), CreateTime (Desc/Asc), and Id (Desc/Asc). Default value: Id Desc.
         self.sort_by = sort_by
         # List of tags. A result is returned if it matches any one of the specified tags.
         self.tags_shrink = tags_shrink

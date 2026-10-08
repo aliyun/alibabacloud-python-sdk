@@ -199,7 +199,7 @@ class UpdateDataQualityScanRequestRuntimeResource(DaraModel):
         id: str = None,
         image: str = None,
     ):
-        # The default number of CUs configured for task running.
+        # The CU consumption configured for task execution.
         self.cu = cu
         # The ID of the resource group.
         self.id = id
@@ -375,17 +375,18 @@ class UpdateDataQualityScanRequestComputeResourceRuntime(DaraModel):
         hive_conf: Dict[str, Any] = None,
         spark_conf: Dict[str, Any] = None,
     ):
-        # The engine type. These settings are only supported for the EMR compute engine.This setting? Valid values:
+        # The engine type. These settings are only supported for the EMR compute engine. Valid values:
+        # 
+        # 
+        # 
         # 
         # - Hive: Hive SQL
-        # 
         # - Spark: Spark SQL
-        # 
         # - Kyuubi
         self.engine = engine
-        # Additional Hive engine parameters. Currently, only the mapreduce.job.queuename parameter is supported.
+        # Additional Hive engine parameters. Currently, only the mapreduce.job.queuename parameter is supported to configure the queue.
         self.hive_conf = hive_conf
-        # Additional Spark engine parameters. Currently, only the spark.yarn.queue parameter is supported.
+        # Additional Spark engine parameters. Currently, only the spark.yarn.queue parameter is supported to configure the queue.
         self.spark_conf = spark_conf
 
     def validate(self):

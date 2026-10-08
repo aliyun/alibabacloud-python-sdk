@@ -1,3 +1,8 @@
+2026-10-08 Version: 9.9.2
+- Update API ListTaskOperationLogs: add response parameters Body.PagingInfo.OperationLogs.$.ObjectType.
+- Update API ListTaskOperationLogs: add response parameters Body.PagingInfo.OperationLogs.$.TaskInstanceId.
+
+
 2026-09-21 Version: 9.9.1
 - Update API CreateAgentSession: add request parameters Params.Meta.InitialConfigOptions.ProjectId.
 

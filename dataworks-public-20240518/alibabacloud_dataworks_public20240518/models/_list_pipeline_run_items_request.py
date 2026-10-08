@@ -14,7 +14,7 @@ class ListPipelineRunItemsRequest(DaraModel):
     ):
         # The page number, for pagination.
         self.page_number = page_number
-        # The requested page number, used for pagination.
+        # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
         # The workflow task ID. To obtain the ID, see [ListPipelineRuns](https://help.aliyun.com/document_detail/438042.html).
         # 

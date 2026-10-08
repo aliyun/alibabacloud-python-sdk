@@ -12,7 +12,7 @@ class ListDIJobMetricsShrinkRequest(DaraModel):
         metric_name_shrink: str = None,
         start_time: int = None,
     ):
-        # The ID of the synchronization task.
+        # The instance ID.
         self.dijob_id = dijob_id
         # The end of the time range to query.
         # 

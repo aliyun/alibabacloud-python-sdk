@@ -47,19 +47,25 @@ class ListDataSourcesRequest(DaraModel):
         self.project_id = project_id
         # The field that you want to use to sort the data sources. Valid values:
         # 
-        # - CreateTime
         # 
-        # - Id
         # 
-        # - Name
+        # 
+        # - CreateTime: creation time
+        # - Id: data source ID
+        # - Name: data source name
+        # 
+        # 
+        # 
         # 
         # Default value: CreateTime
         self.sort_by = sort_by
         # The tag of the data source. This parameter specifies a filter condition.
         # 
-        # - You can specify multiple tags, which are in the logical AND relation. For example, you can query the data sources that contain the following tags: `["tag1", "tag2", "tag3"]`.
         # 
-        # - If you do not configure this parameter, tag-based filtering is not performed. You can specify up to 10 tags.
+        # 
+        # 
+        # - You can specify multiple tags, which are in the logical AND relation. For example, you can query the data sources that contain the following tags: `["tag1", "tag2", "tag3"]`.
+        # - If you do not configure this parameter or leave it empty, tag-based filtering is not performed. You can specify up to 10 tags.
         self.tags = tags
         # The data source types. This parameter specifies a filter condition. You can specify multiple data source types.
         self.types = types

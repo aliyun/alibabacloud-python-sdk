@@ -20,7 +20,7 @@ class StartDIJobShrinkRequest(DaraModel):
         # 
         # - If the system performs the forcible rerun operation, all steps start to rerun.
         self.force_to_rerun = force_to_rerun
-        # The ID of the synchronization task.
+        # The instance ID.
         self.id = id
         # The settings for starting real-time synchronization.
         # 

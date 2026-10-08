@@ -152,7 +152,7 @@ class ListResourceGroupsResponseBodyPagingInfoResourceGroupList(DaraModel):
         self.id = id
         # The name of the resource group.
         self.name = name
-        # The ID of the order for the resource group.
+        # The order instance ID for the resource group.
         self.order_instance_id = order_instance_id
         # The billing method of the resource group. `PrePaid` indicates subscription and `PostPaid` indicates pay-as-you-go.
         self.payment_type = payment_type

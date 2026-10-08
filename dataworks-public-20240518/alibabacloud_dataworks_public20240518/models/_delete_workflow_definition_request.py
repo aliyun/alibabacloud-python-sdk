@@ -10,9 +10,12 @@ class DeleteWorkflowDefinitionRequest(DaraModel):
         id: str = None,
         project_id: int = None,
     ):
-        # The unique identifier of the data development workflow.
+        # The unique identifier of the Data Studio workflow.
         # 
-        # >Notice: This field was of the Long type in SDK versions earlier than 8.0.0 and is of the String type in SDK 8.0.0 and later. **This change does not affect normal SDK usage, and the parameter is still returned in the type defined in the SDK**. Only when you upgrade the SDK across version 8.0.0, the type change may cause project compilation failures, and you need to manually correct the data type.
+        # 
+        # 
+        # 
+        # > &lt;notice&gt;This field was of the Long type in SDK versions earlier than 8.0.0 and is of the String type in SDK 8.0.0 and later. **This change does not affect normal SDK usage, and the parameter is still returned in the type defined in the SDK**. Only when you upgrade the SDK across version 8.0.0, the type change may cause project compilation failures, and you need to manually correct the data type.&gt;&lt;/notice&gt;
         # 
         # This parameter is required.
         self.id = id

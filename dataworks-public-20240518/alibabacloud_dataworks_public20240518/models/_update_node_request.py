@@ -21,9 +21,23 @@ class UpdateNodeRequest(DaraModel):
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The unique identifier of the Data Studio node.
+        # The FlowSpec information that describes the node. For the specification, see FlowSpec.
         # 
-        # > This field is of the Long type in SDK versions prior to 8.0.0, and of the String type in SDK versions 8.0.0 and later. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+        # 
+        # 
+        # ### How to quickly obtain a FlowSpec template
+        # 
+        # 
+        # 
+        # Open the node in Data Studio, click Versions on the right, view the latest version, and view the scheduling configuration to obtain the FlowSpec description of the current node. Use this description to quickly build a template that meets the requirements.
+        # 
+        # 
+        # 
+        # ### How to specify node content
+        # 
+        # 
+        # 
+        # Specify the node content in `$.spec.nodes[*].script.content`.
         # 
         # This parameter is required.
         self.spec = spec

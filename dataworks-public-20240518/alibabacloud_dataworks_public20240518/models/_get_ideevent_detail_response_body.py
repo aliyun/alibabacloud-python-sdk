@@ -131,7 +131,7 @@ class GetIDEEventDetailResponseBodyEventDetailTableModel(DaraModel):
         self.columns = columns
         # The remarks of the table.
         self.comment = comment
-        # The name of the data source to which the table belongs.
+        # The unique identifier of the data source to which the table belongs.
         self.data_source_name = data_source_name
         # The environment in which the table is used. Valid values:
         # 
@@ -141,7 +141,7 @@ class GetIDEEventDetailResponseBodyEventDetailTableModel(DaraModel):
         self.env = env
         # The lifecycle of the table. Unit: day.
         self.life_cycle = life_cycle
-        # The path of the table.
+        # The Location information of the external table.
         self.location = location
         # The name of the table.
         self.table_name = table_name
@@ -279,7 +279,7 @@ class GetIDEEventDetailResponseBodyEventDetailFileExecutionCommand(DaraModel):
     ):
         # The code in the file of the current version.
         self.content = content
-        # The name of the data source with which the file is associated.
+        # The unique identifier of the data source with which the file is associated.
         self.data_source_name = data_source_name
         # The file ID.
         self.file_id = file_id
@@ -346,7 +346,7 @@ class GetIDEEventDetailResponseBodyEventDetailDeletedFile(DaraModel):
         self.content = content
         # The latest version number of the file.
         self.current_version = current_version
-        # The name of the data source with which the file is associated.
+        # The unique identifier of the data source with which the file is associated.
         self.data_source_name = data_source_name
         # The file ID.
         self.file_id = file_id
@@ -364,17 +364,15 @@ class GetIDEEventDetailResponseBodyEventDetailDeletedFile(DaraModel):
         self.parent_file_id = parent_file_id
         # The module to which the file belongs. Valid values:
         # 
-        # - NORMAL: The file is used for DataStudio.
         # 
+        # 
+        # 
+        # - NORMAL: The file is used for Data Studio.
         # - MANUAL: The file is used for a manually triggered node.
-        # 
         # - MANUAL_BIZ: The file is used for a manually triggered workflow.
-        # 
-        # - SKIP: The file is used for a dry-run node in DataStudio.
-        # 
+        # - SKIP: The file is used for a dry-run node in Data Studio.
         # - ADHOCQUERY: The file is used for an ad hoc query.
-        # 
-        # - COMPONENT: The file is used for a script template.
+        # - COMPONENT: The file is used for component management.
         self.use_type = use_type
 
     def validate(self):
@@ -500,17 +498,15 @@ class GetIDEEventDetailResponseBodyEventDetailCommittedFile(DaraModel):
         self.node_id = node_id
         # The module to which the file belongs. Valid values:
         # 
-        # - NORMAL: The file is used for DataStudio.
         # 
+        # 
+        # 
+        # - NORMAL: The file is used for Data Studio.
         # - MANUAL: The file is used for a manually triggered node.
-        # 
         # - MANUAL_BIZ: The file is used for a manually triggered workflow.
-        # 
-        # - SKIP: The file is used for a dry-run node in DataStudio.
-        # 
+        # - SKIP: The file is used for a dry-run node in Data Studio.
         # - ADHOCQUERY: The file is used for an ad hoc query.
-        # 
-        # - COMPONENT: The file is used for a script template.
+        # - COMPONENT: The file is used for component management.
         self.use_type = use_type
 
     def validate(self):
@@ -614,19 +610,25 @@ class GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration(Dar
         resource_group_id: int = None,
         scheduler_type: str = None,
     ):
-        # The interval at which the node corresponding to the file is rerun. Unit: milliseconds.
+        # The interval at which the node corresponding to the file is automatically rerun. Unit: milliseconds.
         self.auto_rerun_interval_millis = auto_rerun_interval_millis
-        # The number of times that the node corresponding to the file can be rerun.
+        # The number of automatic reruns.
         self.auto_rerun_times = auto_rerun_times
         # The cron expression that is used to schedule the node corresponding to the file.
         self.cron_express = cron_express
         # The type of the scheduling cycle of the node that corresponds to the file. Valid values: NOT_DAY and DAY. The value NOT_DAY indicates that the node is scheduled to run by minute or hour. The value DAY indicates that the node is scheduled to run by day, week, or month.
         # 
-        # This parameter corresponds to the Scheduling Cycle parameter in the Schedule section of the Properties tab on the DataStudio page in the [DataWorks console](https://workbench.data.aliyun.com/console).
+        # 
+        # 
+        # 
+        # This parameter corresponds to the Scheduling Cycle parameter in the Schedule section of the Properties tab on the Data Studio page in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.cycle_type = cycle_type
         # The ID of the node on which the node that corresponds to the file depends when the DependentType parameter is set to USER_DEFINE. Multiple IDs are separated by commas (,).
         # 
-        # The value of this parameter is equivalent to the ID of the node that you specified after you select Other Nodes for Cross-Cycle Dependency (Original Previous-Cycle Dependency) in the Dependencies section of the Properties tab on the DataStudio page in the [DataWorks console](https://workbench.data.aliyun.com/console).
+        # 
+        # 
+        # 
+        # The value of this parameter is equivalent to the ID of the node that you specified after you select Other Nodes for Cross-Cycle Dependency (Original Previous-Cycle Dependency) in the Dependencies section of the Properties tab on the Data Studio page in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.dependent_node_id_list = dependent_node_id_list
         # The type of the cross-cycle scheduling dependency of the node. Valid values:
         # 
@@ -644,17 +646,24 @@ class GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration(Dar
         self.output_list = output_list
         # The scheduling parameters of the node.
         # 
-        # This parameter corresponds to the Scheduling Parameter section of the Properties tab on the DataStudio page in the [DataWorks console](https://workbench.data.aliyun.com/console). For more information about the configurations of scheduling parameters, see [Configure scheduling parameters](https://help.aliyun.com/document_detail/137548.html).
+        # 
+        # 
+        # 
+        # This parameter corresponds to the Scheduling Parameter section of the Properties tab on the Data Studio page in the [DataWorks console](https://workbench.data.aliyun.com/console). For more information about the configurations of scheduling parameters, see [Configure scheduling parameters](https://help.aliyun.com/document_detail/137548.html).
         self.para_value = para_value
         # Indicates whether the node that corresponds to the file can be rerun. Valid values:
         # 
+        # 
+        # 
+        # 
         # - ALL_ALLOWED: The node can be rerun regardless of whether it is successfully run or fails to run.
-        # 
         # - FAILURE_ALLOWED: The node can be rerun only after it fails to run.
-        # 
         # - ALL_DENIED: The node cannot be rerun regardless of whether it is successfully run or fails to run.
         # 
-        # This parameter corresponds to the Rerun parameter in the Schedule section of the Properties tab on the DataStudio page in the [DataWorks console](https://workbench.data.aliyun.com/console).
+        # 
+        # 
+        # 
+        # This parameter corresponds to the Rerun parameter in the Schedule section of the Properties tab on the Data Studio page in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.rerun_mode = rerun_mode
         # The ID of the resource group that is used to run the node that corresponds to the file. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/173913.html) operation to query the available resource groups in the workspace.
         self.resource_group_id = resource_group_id
@@ -780,11 +789,17 @@ class GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfigurationOutp
     ):
         # The output name of the current file.
         # 
-        # This parameter corresponds to the Output Name parameter under Output Name of Current Node in the Dependencies section of the Properties tab on the DataStudio page in the [DataWorks console](https://workbench.data.aliyun.com/console).
+        # 
+        # 
+        # 
+        # This parameter corresponds to the Output Name parameter under Output Name of Current Node in the Dependencies section of the Properties tab on the Data Studio page in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.output = output
         # The output table name of the current file.
         # 
-        # This parameter corresponds to the Output Table Name parameter under Output Name of Current Node in the Dependencies section of the Properties tab on the DataStudio page in the [DataWorks console](https://workbench.data.aliyun.com/console).
+        # 
+        # 
+        # 
+        # This parameter corresponds to the Output Table Name parameter under Output Name of Current Node in the Dependencies section of the Properties tab on the Data Studio page in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.ref_table_name = ref_table_name
 
     def validate(self):
@@ -821,7 +836,10 @@ class GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfigurationInpu
     ):
         # The output name of the parent file on which the current file depends.
         # 
-        # This parameter corresponds to the Output Name of Ancestor Node parameter under Parent Nodes in the Dependencies section of the Properties tab on the DataStudio page in the [DataWorks console](https://workbench.data.aliyun.com/console).
+        # 
+        # 
+        # 
+        # This parameter corresponds to the Output Name of Ancestor Node parameter under Parent Nodes in the Dependencies section of the Properties tab on the Data Studio page in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.input = input
         # The mode of the configuration file dependency. Valid values:
         # 
@@ -870,7 +888,7 @@ class GetIDEEventDetailResponseBodyEventDetailCommittedFileFilePropertyContent(D
         self.business_id = business_id
         # The latest version number of the file.
         self.current_version = current_version
-        # The name of the data source with which the file is associated.
+        # The unique identifier of the data source with which the file is associated.
         self.data_source_name = data_source_name
         # The ID of the folder to which the file belongs. You can call the [GetFolder](https://help.aliyun.com/document_detail/173952.html) operation to query the details of the file based on the folder ID.
         self.folder_id = folder_id

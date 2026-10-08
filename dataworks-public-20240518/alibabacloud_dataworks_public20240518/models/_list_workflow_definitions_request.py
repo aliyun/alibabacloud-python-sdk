@@ -16,19 +16,16 @@ class ListWorkflowDefinitionsRequest(DaraModel):
     ):
         # The name of the workflow. Fuzzy search is supported.
         self.name = name
-        # Filter condition: The type of the workflow. The default value is CycleWorkflow.
-        # 
-        # Valid values:
-        # 
-        # - CycleWorkflow
-        # 
-        # - ManualWorkflow
+        # The ID of the owner, which is the account UID of the workspace administrator. To view the UID, log on to the Alibaba Cloud console and go to the Security Management section of Account Management.
         self.owner = owner
         # The page number of the data to retrieve, used for pagination.
         self.page_number = page_number
-        # The page number of the data to retrieve, used for pagination.
+        # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace configuration page to query the ID.
+        # 
+        # 
+        # 
         # 
         # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
         # 

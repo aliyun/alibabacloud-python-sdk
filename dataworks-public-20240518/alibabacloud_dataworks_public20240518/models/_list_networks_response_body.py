@@ -69,7 +69,7 @@ class ListNetworksResponseBodyPagingInfo(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries that meet the conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -140,7 +140,7 @@ class ListNetworksResponseBodyPagingInfoNetworkList(DaraModel):
         self.resource_group_id = resource_group_id
         # The security group ID.
         self.security_group_id = security_group_id
-        # The status of the network resource. Valid values: Pending, Creating, Running, Deleting, and Deleted.
+        # The status of the network resource. Valid values: Pending: waiting; Creating: being created; Running: running normally; Deleting: being deleted; Deleted: deleted.
         self.status = status
         # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id

@@ -135,11 +135,7 @@ class ListWorkflowsResponseBodyPagingInfoWorkflows(DaraModel):
         self.create_user = create_user
         # The description.
         self.description = description
-        # The environment of the workspace. Valid values:
-        # 
-        # - Prod
-        # 
-        # - Dev
+        # The environment of the workspace. Valid values: Prod (production) and Dev (development).
         self.env_type = env_type
         # The workflow ID.
         self.id = id
@@ -282,13 +278,7 @@ class ListWorkflowsResponseBodyPagingInfoWorkflowsTrigger(DaraModel):
         self.cron = cron
         # The end time of the time range during which the workflow is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
         self.end_time = end_time
-        # The running mode of the workflow after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values:
-        # 
-        # - Pause
-        # 
-        # - Skip
-        # 
-        # - Normal
+        # The running mode of the workflow after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values: Pause (paused), Skip (dry run), and Normal (normal execution).
         self.recurrence = recurrence
         # The start time of the time range during which the workflow is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
         self.start_time = start_time

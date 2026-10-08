@@ -214,18 +214,22 @@ class CreateDataQualityRuleRequestSamplingConfig(DaraModel):
         setting_config: str = None,
     ):
         # The name of the metric to be sampled. You do not need to specify this parameter when a template is used.
+        # 
+        # 
+        # 
+        # 
         # - Count: the number of rows in the table.
-        # - Min: the minimum value of the field.
-        # - Max: the maximum value of the field.
-        # - Avg: the average value of the field.
-        # - DistinctCount: the number of distinct values of the field.
-        # - DistinctPercent: the ratio of the number of distinct values of the field to the number of data rows.
-        # - DuplicatedCount: the number of duplicate values of the field.
-        # - DuplicatedPercent: the ratio of the number of duplicate values of the field to the number of data rows.
+        # - Min: the minimum value of the column.
+        # - Max: the maximum value of the column.
+        # - Avg: the average value of the column.
+        # - DistinctCount: the number of distinct values of the column.
+        # - DistinctPercent: the ratio of the number of distinct values of the column to the number of data rows.
+        # - DuplicatedCount: the number of duplicate values of the column.
+        # - DuplicatedPercent: the ratio of the number of duplicate values of the column to the number of data rows.
         # - TableSize: the size of the table.
-        # - NullValueCount: the number of rows in which the field is null.
-        # - NullValuePercent: the ratio of rows in which the field is null.
-        # - GroupCount: the values aggregated by field value and the corresponding number of data rows for each value.
+        # - NullValueCount: the number of rows in which the column is null.
+        # - NullValuePercent: the ratio of rows in which the column is null.
+        # - GroupCount: the values aggregated by column value and the corresponding number of data rows for each value.
         # - CountNotIn: the number of rows whose enum values do not match.
         # - CountDistinctNotIn: the number of distinct values that do not match the enum values.
         # - UserDefinedSql: collects samples by using a custom SQL statement.

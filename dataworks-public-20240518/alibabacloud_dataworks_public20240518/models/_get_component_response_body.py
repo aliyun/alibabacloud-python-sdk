@@ -69,13 +69,13 @@ class GetComponentResponseBodyComponent(DaraModel):
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.modify_time = modify_time
-        # Parameter
+        # The name.
         self.name = name
         # The ID of the task owner.
         self.owner = owner
         # The DataWorks workspace ID.
         self.project_id = project_id
-        # The region ID, such as ap-southeast-1. The region ID is automatically parsed from your endpoint.
+        # The region information, usually the region where the service is located. For example, cn-shanghai specifies China (Shanghai), and cn-zhangjiakou specifies China (Zhangjiakou). You do not need to specify RegionId because it is automatically parsed from the endpoint that you call.
         self.region_id = region_id
         # The FlowSpec information for this workflow. For more information, see [FlowSpec](https://github.com/aliyun/alibabacloud-dataworks-tool-dflow/).
         self.spec = spec

@@ -12,7 +12,7 @@ class DeleteDIJobResponseBody(DaraModel):
     ):
         # The request ID. You can troubleshoot issues based on the ID.
         self.request_id = request_id
-        # true
+        # Indicates whether the call was successful. Valid values: true: successful; false: failed.
         self.success = success
 
     def validate(self):

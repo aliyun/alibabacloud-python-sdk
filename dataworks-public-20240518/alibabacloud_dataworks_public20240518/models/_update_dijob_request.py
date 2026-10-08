@@ -169,62 +169,89 @@ class UpdateDIJobRequestTransformationRules(DaraModel):
         self.rule_action_type = rule_action_type
         # The rule expression, specified as a JSON string.
         # 
+        # 
+        # 
+        # 
         # 1. Rename rule (`Rename`)
         # 
-        # - Example: `{"expression":"${srcDatasourceName}_${srcDatabaseName}_0922"}`
         # 
+        # 
+        # 
+        # - Example: `{"expression":"${srcDatasourceName}_${srcDatabaseName}_0922"}`
         # - `expression`: The expression for the rename transformation rule. The expression supports variables, including `${srcDatasourceName}` (source data source name), `${srcDatabaseName}` (source database name), and `${srcTableName}` (source table name).
+        # 
+        # 
+        # 
         # 
         # 2. Add column rule (`AddColumn`)
         # 
+        # 
+        # 
+        # 
         # - Example: `{"columns":[{"columnName":"my_add_column","columnValueType":"Constant","columnValue":"123"}]}`
-        # 
-        # - If this rule is not specified, no columns are added.
-        # 
+        # - If this rule is not specified, no columns are added or copied.
         # - `columnName`: The name of the column to add.
-        # 
         # - `columnValueType`: The value type of the added column. Valid values: `Constant` and `Variable`.
-        # 
         # - `columnValue`: The value of the added column. If `columnValueType` is `Constant`, the value is a custom constant of the string type. If `columnValueType` is `Variable`, the value is a built-in variable. Valid built-in variables: `EXECUTE_TIME` (execution time, Long type), `DB_NAME_SRC` (source database name, String type), `DATASOURCE_NAME_SRC` (source data source name, String type), `TABLE_NAME_SRC` (source table name, String type), `DB_NAME_DEST` (destination database name, String type), `DATASOURCE_NAME_DEST` (destination data source name, String type), `TABLE_NAME_DEST` (destination table name, String type), and `DB_NAME_SRC_TRANSED` (transformed database name, String type).
+        # 
+        # 
+        # 
         # 
         # 3. Define primary key rule (`DefinePrimaryKey`)
         # 
+        # 
+        # 
+        # 
         # - Example: `{"columns":["ukcolumn1","ukcolumn2"]}`
-        # 
         # - If this rule is not specified, the primary key of the source is used by default.
+        # - Data Integration does not modify the structure of an existing destination table. If a specified primary key column does not exist in the table, the synchronization job fails to start.
+        # - When a destination table is automatically created, Data Integration includes the defined primary key columns in the structure. If a specified primary key column is not in the destination column set, the synchronization job fails to start.
         # 
-        # - Data Integration does not modify the structure of an existing destination table. If a specified primary key column does not exist in the table, the synchronization job fails.
         # 
-        # - When a destination table is automatically created, Data Integration includes the defined primary key columns in the structure. If a specified primary key column is not in the destination column set, the synchronization job fails.
+        # 
         # 
         # 4. DML handling rule (`HandleDml`)
         # 
+        # 
+        # 
+        # 
         # - Example: `{"dmlPolicies":[{"dmlType":"Delete","dmlAction":"Filter","filterCondition":"id > 1"}]}`
-        # 
         # - If this rule is not specified, the default action for `Insert`, `Update`, and `Delete` operations is `Normal`.
-        # 
         # - `dmlType`: The DML operation type. Valid values: `Insert`, `Update`, and `Delete`.
-        # 
         # - `dmlAction`: The DML handling policy. Valid values: `Normal` (process the operation), `Ignore` (ignore the operation), `Filter` (conditionally process the operation, used when `dmlType` is `Update` or `Delete`), and `LogicalDelete` (perform a logical delete).
-        # 
         # - `filterCondition`: The DML filter condition, used when `dmlAction` is `Filter`.
+        # 
+        # 
+        # 
         # 
         # 5. Incremental condition rule (`DefineIncrementalCondition`)
         # 
-        # - Example: `{"where":"id > 0"}`
         # 
+        # 
+        # 
+        # - Example: `{"where":"id > 0"}`
         # - The `WHERE` clause for the incremental condition.
+        # 
+        # 
+        # 
         # 
         # 6. Periodic scheduling rule (`DefineCycleScheduleSettings`)
         # 
-        # - Example: `{"cronExpress":" * * * * * *", "cycleType":"1"}`
         # 
+        # 
+        # 
+        # - Example: `{"cronExpress":" * * * * * *", "cycleType":"1"}`
         # - Specifies the scheduling parameters for a periodic job.
+        # 
+        # 
+        # 
         # 
         # 7. Define partition key rule (`DefinePartitionKey`)
         # 
-        # - Example: `{"columns":["id"]}`
         # 
+        # 
+        # 
+        # - Example: `{"columns":["id"]}`
         # - Specifies the partition key.
         self.rule_expression = rule_expression
         # The name of the transformation rule. The name must be unique for a specific combination of `RuleActionType` and `RuleTargetType` and can be up to 50 characters long.
@@ -793,27 +820,14 @@ class UpdateDIJobRequestJobSettingsDdlHandlingSettings(DaraModel):
     ):
         # The handling action. Valid values:
         # 
+        # 
+        # 
+        # 
         # - `Ignore`: Ignores the DDL message.
-        # 
-        # - `Critical`: Reports an error and terminates the synchronization job.
-        # 
+        # - `Critical`: Reports an error.
         # - `Normal`: Processes the DDL message normally.
         self.action = action
-        # The DDL type. Valid values:
-        # 
-        # - `RenameColumn`
-        # 
-        # - `ModifyColumn`
-        # 
-        # - `CreateTable`
-        # 
-        # - `TruncateTable`
-        # 
-        # - `DropTable`
-        # 
-        # - `DropColumn`
-        # 
-        # - `AddColumn`
+        # The DDL type. Valid values: RenameColumn (rename a column), ModifyColumn (modify a column), CreateTable (create a table), TruncateTable (clear a table), DropTable (delete a table), DropColumn (delete a column), and AddColumn (add a column).
         self.type = type
 
     def validate(self):

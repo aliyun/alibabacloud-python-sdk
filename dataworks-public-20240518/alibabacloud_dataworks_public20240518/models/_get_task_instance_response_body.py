@@ -164,7 +164,10 @@ class GetTaskInstanceResponseBodyTaskInstance(DaraModel):
         self.task_type = task_type
         # The timeout period for task execution. Unit: seconds.
         # 
-        # Note: The scheduling system rounds the configured value to the nearest hour.
+        # 
+        # 
+        # 
+        # Note: The scheduling system rounds the configured value to whole hours.
         self.timeout = timeout
         # The running mode when triggered. This parameter takes effect when TriggerType is set to Scheduler. Valid values:
         # 

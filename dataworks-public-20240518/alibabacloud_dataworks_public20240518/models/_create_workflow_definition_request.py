@@ -16,10 +16,20 @@ class CreateWorkflowDefinitionRequest(DaraModel):
         self.project_id = project_id
         # The FlowSpec information that describes the workflow. For more information about the specification, see [FlowSpec](https://github.com/aliyun/alibabacloud-dataworks-tool-dflow).
         # 
-        # > How to quickly obtain a FlowSpec template?
-        # > - Open a workflow in DataStudio, and then click "Show Spec" in the upper-right corner to obtain the FlowSpec description of the current workflow. You can use this FlowSpec description to quickly build a template that meets your requirements.
         # 
-        # >Notice: This operation only supports creating a workflow. Internal nodes described in FlowSpec are not created.
+        # 
+        # 
+        # > How to quickly obtain a FlowSpec template?
+        # > 
+        # > 
+        # > 
+        # > 
+        # > - Open a workflow in Data Studio, and then click "Show Spec" in the upper-right corner to obtain the FlowSpec description of the current workflow. You can use this FlowSpec description to quickly build a template that meets your requirements.
+        # 
+        # 
+        # 
+        # 
+        # > &lt;notice&gt;This operation only supports creating a workflow. Internal nodes described in FlowSpec are not created.&gt;&lt;/notice&gt;
         # 
         # This parameter is required.
         self.spec = spec

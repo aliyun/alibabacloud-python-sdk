@@ -59,6 +59,11 @@ class GetWorkflowDefinitionResponseBodyWorkflowDefinition(DaraModel):
         # The time when the workflow was created. This value is a UNIX timestamp.
         self.create_time = create_time
         # The ID of the workflow.
+        # 
+        # 
+        # 
+        # 
+        # > This field is of type Long in SDK versions earlier than 8.0.0 and String in SDK version 8.0.0 and later. This change does not affect normal SDK usage; the parameter is still returned according to the type defined in the SDK. Upgrading the SDK across version 8.0.0 may cause compilation failures due to the type change. In this case, manually update the data type.
         self.id = id
         # The time when the workflow was last modified. This value is a UNIX timestamp.
         self.modify_time = modify_time
@@ -70,7 +75,7 @@ class GetWorkflowDefinitionResponseBodyWorkflowDefinition(DaraModel):
         self.project_id = project_id
         # The FlowSpec field information about the workflow. For more information, see [FlowSpec](https://github.com/aliyun/alibabacloud-dataworks-tool-dflow/).
         self.spec = spec
-        # The ID of the workflow on the scheduling side after publishing.
+        # The ID of the workflow on the scheduling side after deployment.
         self.workflow_id = workflow_id
 
     def validate(self):

@@ -24,9 +24,15 @@ class CreateNodeRequest(DaraModel):
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The scenario in which the node is created. This parameter determines whether the node is created in the manual node area or the data development area. DATAWORKS_MANUAL_WORKFLOW can be used only when ContainerId is specified and the container is a manual workflow.
+        # The scenario in which the node is created. This parameter determines whether the node is created in the manual node area or the Data Studio area. DATAWORKS_MANUAL_WORKFLOW can be used only when ContainerId is specified and the container is a manual workflow.
+        # 
+        # 
+        # 
         # 
         # Valid values:
+        # 
+        # 
+        # 
         # 
         # - DATAWORKS_PROJECT: project directory.
         # - DATAWORKS_MANUAL_WORKFLOW: manual workflow.
@@ -36,14 +42,35 @@ class CreateNodeRequest(DaraModel):
         self.scene = scene
         # The FlowSpec information that describes the node. For more information about the specification, see [FlowSpec](https://github.com/aliyun/alibabacloud-dataworks-tool-dflow).
         # 
+        # 
+        # 
+        # 
         # > How to quickly obtain a FlowSpec template?
-        # > - In DataStudio, open a node, click Versions on the right side, view the latest version, and then view the scheduling configuration. This provides the FlowSpec description for the current node. You can use the FlowSpec description in the version to quickly build a template that meets your requirements.
+        # > 
+        # > 
+        # > 
+        # > 
+        # > - In Data Studio, open a node, click Versions on the right side, view the latest version, and then view the scheduling configuration. This provides the FlowSpec description for the current node. You can use the FlowSpec description in the version to quickly build a template that meets your requirements.
+        # 
+        # 
+        # 
         # 
         # > How to specify the node content?
-        # > - Specify the node content in the $.spec.nodes[*].script.content field.
+        # > 
+        # > 
+        # > 
+        # > 
+        # > - Specify the node content in the $.spec.nodes[\\*\\].script.content field.
+        # 
+        # 
+        # 
         # 
         # > How to configure the content of a batch synchronization node?
-        # > - Write a script by following Step 4 in [Configure a batch synchronization node by using the code editor](https://www.alibabacloud.com/help/en/dataworks/user-guide/configure-a-batch-synchronization-node-by-using-the-code-editor), and specify the content in the $.spec.nodes[*].script.content field. Alternatively, create a batch synchronization node on the page and obtain the script content by viewing the version.
+        # > 
+        # > 
+        # > 
+        # > 
+        # > - Write a script by following Step 4 in [Configure a batch synchronization node by using the code editor](https://www.alibabacloud.com/help/en/dataworks/user-guide/configure-a-batch-synchronization-node-by-using-the-code-editor), and specify the content in the $.spec.nodes[\\*\\].script.content field. Alternatively, create a batch synchronization node on the page and obtain the script content by viewing the version.
         # 
         # This parameter is required.
         self.spec = spec

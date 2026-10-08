@@ -31,12 +31,13 @@ class ListParametersShrinkRequest(DaraModel):
         self.project_id = project_id
         # The scope of the parameter. The default value is Project. Other values are not supported.
         self.scope = scope
-        # The field to sort the parameters by. Specify the value in the "FieldName SortOrder" format. The Asc sort order is optional. Supported values are:
+        # The list of fields to sort the parameters by. Specify the value in the "FieldName SortOrder" format. The Asc sort order is optional. Supported values are:
+        # 
+        # 
+        # 
         # 
         # - ModifyTime (Desc/Asc)
-        # 
         # - CreateTime (Desc/Asc)
-        # 
         # - Name (Desc/Asc)
         self.sort_by = sort_by
         # The type of the parameter. Valid values:

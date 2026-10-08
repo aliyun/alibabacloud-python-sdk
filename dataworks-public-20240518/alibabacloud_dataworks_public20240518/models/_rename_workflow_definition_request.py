@@ -17,13 +17,11 @@ class RenameWorkflowDefinitionRequest(DaraModel):
         # 
         # This parameter is required.
         self.id = id
-        # The unique identifier of the workflow.
-        # 
-        # > Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+        # The new name of the workflow.
         # 
         # This parameter is required.
         self.name = name
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID. You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace configuration page to query the ID. You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
         # 
         # This parameter is required.
         self.project_id = project_id

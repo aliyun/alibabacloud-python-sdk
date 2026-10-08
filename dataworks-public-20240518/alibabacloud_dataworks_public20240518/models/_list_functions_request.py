@@ -22,7 +22,10 @@ class ListFunctionsRequest(DaraModel):
         self.page_number = page_number
         # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
-        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Storage Management page to obtain the ID.
+        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the ID.
+        # 
+        # 
+        # 
         # 
         # This parameter specifies the DataWorks workspace for this API call operation.
         # 

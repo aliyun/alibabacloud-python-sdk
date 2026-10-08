@@ -32,15 +32,14 @@ class UpdateDIAlarmRuleRequest(DaraModel):
         self.id = id
         # The metric type in the alert rule. Valid values:
         # 
-        # - Heartbeat
         # 
-        # - FailoverCount
         # 
-        # - Delay
         # 
-        # - DdlReport
-        # 
-        # - ResourceUtilization
+        # - Heartbeat: task status alert
+        # - FailoverCount: failover count alert
+        # - Delay: task latency alert
+        # - DdlReport: DDL notification
+        # - ResourceUtilization: resource group utilization
         self.metric_type = metric_type
         # The name of the alert rule.
         self.name = name
@@ -139,7 +138,7 @@ class UpdateDIAlarmRuleRequestTriggerConditions(DaraModel):
     ):
         # This parameter is deprecated and replaced by the DdlTypes parameter.
         self.ddl_report_tags = ddl_report_tags
-        # The types of DDL operations for which the alert rule takes effect.
+        # The types of DDL operations for which the alert rule takes effect. This setting takes effect only for DDL notifications.
         self.ddl_types = ddl_types
         # The time interval for alert calculation. Unit: minutes.
         self.duration = duration
@@ -323,13 +322,13 @@ class UpdateDIAlarmRuleRequestNotificationSettingsNotificationChannels(DaraModel
     ):
         # The alert notification method. Valid values:
         # 
-        # - Mail
         # 
-        # - Phone
         # 
-        # - Sms
         # 
-        # - Ding
+        # - Mail: email
+        # - Phone: phone call
+        # - Sms: SMS
+        # - Ding: DingTalk
         self.channels = channels
         # The severity level. Valid values:
         # 

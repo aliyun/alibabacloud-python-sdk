@@ -150,7 +150,11 @@ class UpdateImageRequestSupported(DaraModel):
         task_types: List[str] = None,
     ):
         # The image sub-module. Valid values:
-        # - Scheduler: data development.
+        # 
+        # 
+        # 
+        # 
+        # - Scheduler: Data Studio.
         self.module = module
         # The list of node types supported by the image.
         self.task_types = task_types

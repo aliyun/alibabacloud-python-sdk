@@ -97,15 +97,17 @@ class GetTaskResponseBodyTask(DaraModel):
         # 
         # - Dev: development environment
         self.env_type = env_type
-        # The instance ID.
+        # The unique identifier of the task.
         self.id = id
         # The input information.
         self.inputs = inputs
         # The instance generation mode. Valid values:
         # 
-        # - T+1
         # 
-        # - Immediately
+        # 
+        # 
+        # - T+1: generated the next day
+        # - Immediately: generated immediately
         self.instance_mode = instance_mode
         # The modification time.
         self.modify_time = modify_time
@@ -397,11 +399,12 @@ class GetTaskResponseBodyTaskTrigger(DaraModel):
         self.end_time = end_time
         # The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values:
         # 
-        # - Pause
         # 
-        # - Skip
         # 
-        # - Normal
+        # 
+        # - Pause: paused
+        # - Skip: dry run
+        # - Normal: normal operation
         self.recurrence = recurrence
         # The start time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
         self.start_time = start_time
@@ -798,11 +801,12 @@ class GetTaskResponseBodyTaskSubTasksSubTasksTrigger(DaraModel):
         self.end_time = end_time
         # The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values:
         # 
-        # - Pause
         # 
-        # - Skip
         # 
-        # - Normal
+        # 
+        # - Pause: paused
+        # - Skip: dry run
+        # - Normal: normal operation
         self.recurrence = recurrence
         # The start time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
         self.start_time = start_time
@@ -864,7 +868,7 @@ class GetTaskResponseBodyTaskSubTasksSubTasksRuntimeResource(DaraModel):
         image: str = None,
         resource_group_id: str = None,
     ):
-        # The default number of CUs configured for task running.
+        # The number of CUs configured for task running.
         self.cu = cu
         # The ID of the image configured for task running.
         self.image = image
@@ -975,7 +979,7 @@ class GetTaskResponseBodyTaskRuntimeResource(DaraModel):
         image: str = None,
         resource_group_id: str = None,
     ):
-        # The default number of compute units (CUs) configured for task running.
+        # The number of compute units (CUs) configured for task running.
         self.cu = cu
         # The ID of the image configured for task running.
         self.image = image
@@ -1079,12 +1083,12 @@ class GetTaskResponseBodyTaskOutputsVariables(DaraModel):
         self.name = name
         # The type. Valid values:
         # 
+        # 
+        # 
+        # 
         # - Constant: constant
-        # 
-        # - PassThrough: node output
-        # 
+        # - PassThrough: parameter node output
         # - System: variable
-        # 
         # - NodeOutput: script output
         self.type = type
         # The value of the variable.
@@ -1197,12 +1201,12 @@ class GetTaskResponseBodyTaskInputsVariables(DaraModel):
         self.name = name
         # The type. Valid values:
         # 
+        # 
+        # 
+        # 
         # - Constant: constant
-        # 
-        # - PassThrough: node output
-        # 
+        # - PassThrough: parameter node output
         # - System: variable
-        # 
         # - NodeOutput: script output
         self.type = type
         # The value of the variable.
@@ -1259,7 +1263,7 @@ class GetTaskResponseBodyTaskDependencies(DaraModel):
         self.type = type
         # The identifier of the output of the ancestor task. This parameter is returned only if `same-cycle scheduling dependencies` and the node input are configured.
         self.upstream_output = upstream_output
-        # The ancestor task ID. This parameter is returned only if `cross-cycle scheduling dependencies` or `same-cycle scheduling dependencies` and the node input are not configured.
+        # The ID of the upstream task. This field is returned for cross-cycle dependencies on other nodes, or for same-cycle dependencies when input content is not configured. It is not returned in other cases.
         self.upstream_task_id = upstream_task_id
 
     def validate(self):

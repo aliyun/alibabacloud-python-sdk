@@ -54,7 +54,7 @@ class ListNodeDependenciesResponseBodyPagingInfo(DaraModel):
         page_size: str = None,
         total_count: str = None,
     ):
-        # The list of dependent nodes returned by the query.
+        # The list of dependency nodes returned by the query.
         self.nodes = nodes
         # The page number of the requested data, used for pagination.
         self.page_number = page_number
@@ -130,27 +130,30 @@ class ListNodeDependenciesResponseBodyPagingInfoNodes(DaraModel):
         task_id: int = None,
         trigger: main_models.ListNodeDependenciesResponseBodyPagingInfoNodesTrigger = None,
     ):
-        # The timestamp when the data development node was created.
+        # The timestamp when the Data Studio node was created.
         self.create_time = create_time
         # The data source.
         self.data_source = data_source
         # The description of the node.
         self.description = description
-        # The unique identifier of the DataStudio node.
+        # The unique identifier of the Data Studio node.
         # 
-        # >Notice: This field was of the Long type in SDK versions earlier than 8.0.0 and is of the String type in SDK 8.0.0 and later. **This change does not affect normal SDK usage. The parameter is still returned in the type defined in the SDK.** Only when you upgrade across SDK version 8.0.0, the type change may cause project compilation failures, and you must manually correct the data type.
+        # 
+        # 
+        # 
+        # > &lt;notice&gt;This field was of the Long type in SDK versions earlier than 8.0.0 and is of the String type in SDK 8.0.0 and later. **This change does not affect normal SDK usage. The parameter is still returned in the type defined in the SDK.** Only when you upgrade across SDK version 8.0.0, the type change may cause project compilation failures, and you must manually correct the data type.&gt;&lt;/notice&gt;
         self.id = id
         # The node inputs.
         self.inputs = inputs
-        # The timestamp when the data development node was last modified.
+        # The timestamp when the Data Studio node was last modified.
         self.modify_time = modify_time
-        # The name of the data development node.
+        # The name of the Data Studio node.
         self.name = name
         # The node outputs.
         self.outputs = outputs
-        # The owner of the data development node.
+        # The owner of the Data Studio node.
         self.owner = owner
-        # The ID of the workspace to which the data development node belongs.
+        # The ID of the workspace to which the Data Studio node belongs.
         self.project_id = project_id
         # The scheduling type.
         # 
@@ -344,9 +347,15 @@ class ListNodeDependenciesResponseBodyPagingInfoNodesTrigger(DaraModel):
         self.timezone = timezone
         # The trigger type.
         # 
+        # 
+        # 
+        # 
         # Valid values:
         # 
-        # - Scheduler: Timed scheduling.
+        # 
+        # 
+        # 
+        # - Scheduler: Periodic scheduling.
         # - Manual: Manual scheduling.
         # - Streaming: Streaming scheduler.
         self.type = type

@@ -60,7 +60,7 @@ class ListDIJobEventsResponseBodyPagingInfo(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries that meet the conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -152,15 +152,14 @@ class ListDIJobEventsResponseBodyPagingInfoDIJobEvent(DaraModel):
         self.status = status
         # The type of the alert event.
         # 
-        # - Heartbeat
         # 
-        # - Delay
         # 
-        # - FailoverCount
         # 
-        # - DdlReport
-        # 
-        # - ResourceUtilization
+        # - Heartbeat: task heartbeat alert.
+        # - Delay: task latency alert.
+        # - FailoverCount: failover count alert.
+        # - DdlReport: DDL notification.
+        # - ResourceUtilization: resource group utilization.
         self.type = type
 
     def validate(self):

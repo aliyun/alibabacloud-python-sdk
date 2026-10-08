@@ -19,9 +19,9 @@ class SubmitFileRequest(DaraModel):
         # 
         # This parameter is required.
         self.file_id = file_id
-        # The DataWorks workspace ID. You can log on to the DataWorks console and go to the Workspace page to query the ID. You must specify either this parameter or the ProjectIdentifier parameter to identify the DataWorks workspace when you call this operation.
+        # The DataWorks workspace ID. You can log on to the DataWorks console and go to the workspace configuration page to query the ID. You must specify either this parameter or the ProjectIdentifier parameter to identify the DataWorks workspace when you call this operation.
         self.project_id = project_id
-        # The name of the DataWorks workspace. You can log on to the DataWorks console and go to the Workspace page to query the workspace name. You must specify either this parameter or the ProjectId parameter to identify the DataWorks workspace when you call this operation.
+        # The name of the DataWorks workspace. You can log on to the DataWorks console and go to the workspace configuration page to query the workspace name. You must specify either this parameter or the ProjectId parameter to identify the DataWorks workspace when you call this operation.
         self.project_identifier = project_identifier
         # Whether to skip the pre-deployment check after the file is submitted:
         # 

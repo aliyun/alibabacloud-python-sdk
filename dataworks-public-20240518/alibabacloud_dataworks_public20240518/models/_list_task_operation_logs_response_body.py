@@ -15,7 +15,7 @@ class ListTaskOperationLogsResponseBody(DaraModel):
     ):
         # The pagination information.
         self.paging_info = paging_info
-        # The request ID.
+        # The request ID, which is used to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -54,13 +54,13 @@ class ListTaskOperationLogsResponseBodyPagingInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The operation logs.
+        # The list of operation logs.
         self.operation_logs = operation_logs
         # The page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -113,20 +113,30 @@ class ListTaskOperationLogsResponseBodyPagingInfoOperationLogs(DaraModel):
     def __init__(
         self,
         create_time: int = None,
+        object_type: str = None,
         operation_content: str = None,
         operation_seq: int = None,
         task_id: int = None,
+        task_instance_id: int = None,
         user: str = None,
     ):
-        # The time when the operation log was generated.
+        # The time when the operation logs are generated.
+        # 
+        # The format is a 13-digit number, such as `1710239005403`.
         self.create_time = create_time
+        # The object type. Valid values:
+        # - Task: node
+        # - TaskInstance: node instance
+        self.object_type = object_type
         # The operation content.
         self.operation_content = operation_content
-        # The serial number of the operation.
+        # The operation sequence number.
         self.operation_seq = operation_seq
-        # The ID of the task on which the operation was performed.
+        # The ID of the node on which the operation was performed.
         self.task_id = task_id
-        # The account ID of the operator.
+        # The ID of the node instance on which the operation was performed.
+        self.task_instance_id = task_instance_id
+        # The account ID of the user who performed the operation.
         self.user = user
 
     def validate(self):
@@ -140,6 +150,9 @@ class ListTaskOperationLogsResponseBodyPagingInfoOperationLogs(DaraModel):
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
 
+        if self.object_type is not None:
+            result['ObjectType'] = self.object_type
+
         if self.operation_content is not None:
             result['OperationContent'] = self.operation_content
 
@@ -148,6 +161,9 @@ class ListTaskOperationLogsResponseBodyPagingInfoOperationLogs(DaraModel):
 
         if self.task_id is not None:
             result['TaskId'] = self.task_id
+
+        if self.task_instance_id is not None:
+            result['TaskInstanceId'] = self.task_instance_id
 
         if self.user is not None:
             result['User'] = self.user
@@ -159,6 +175,9 @@ class ListTaskOperationLogsResponseBodyPagingInfoOperationLogs(DaraModel):
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
 
+        if m.get('ObjectType') is not None:
+            self.object_type = m.get('ObjectType')
+
         if m.get('OperationContent') is not None:
             self.operation_content = m.get('OperationContent')
 
@@ -167,6 +186,9 @@ class ListTaskOperationLogsResponseBodyPagingInfoOperationLogs(DaraModel):
 
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
+
+        if m.get('TaskInstanceId') is not None:
+            self.task_instance_id = m.get('TaskInstanceId')
 
         if m.get('User') is not None:
             self.user = m.get('User')

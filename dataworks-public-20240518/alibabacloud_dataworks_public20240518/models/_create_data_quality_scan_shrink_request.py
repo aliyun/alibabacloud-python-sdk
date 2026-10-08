@@ -35,11 +35,11 @@ class CreateDataQualityScanShrinkRequest(DaraModel):
         self.owner = owner
         # The definition of execution parameters for the data quality monitoring.
         self.parameters_shrink = parameters_shrink
-        # The DataWorks workspace ID. You can log on to the DataWorks console and go to the workspace configuration page to obtain the workspace ID. This parameter is required to specify the target DataWorks workspace for this API operation.
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/overview) and go to the workspace configuration page to obtain the workspace ID. This parameter is required to specify the target DataWorks workspace for this API operation.
         self.project_id = project_id
         # The resource group used during execution of the data quality monitoring.
         self.runtime_resource_shrink = runtime_resource_shrink
-        # Spec code for the content of the data quality monitoring.
+        # Spec code for the content of the data quality monitoring. For more information, see [Data quality Spec configuration description](https://help.aliyun.com/document_detail/2963394.html).
         self.spec = spec
         # The trigger configurations of the data quality monitoring task.
         self.trigger_shrink = trigger_shrink

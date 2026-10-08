@@ -103,7 +103,7 @@ class GetBusinessResponseBodyData(DaraModel):
         self.owner = owner
         # The ID of the DataWorks workspace to which the business process belongs.
         self.project_id = project_id
-        # The functional module to which the business process belongs. Valid values: NORMAL (DataStudio) and MANUAL_BIZ (manual business process).
+        # The functional module to which the business process belongs. Valid values: NORMAL (Data Studio) and MANUAL_BIZ (manual business process).
         self.use_type = use_type
 
     def validate(self):

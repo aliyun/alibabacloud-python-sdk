@@ -15,7 +15,7 @@ class GetProjectRoleResponseBody(DaraModel):
     ):
         # The details of the workspace role.
         self.project_role = project_role
-        # The request ID.
+        # The request ID. You can use this ID to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

@@ -32,7 +32,10 @@ class ListMyApplicationsShrinkRequest(DaraModel):
         self.next_token = next_token
         # The number of entries per page. Default value: 10. Maximum value: 200.
         self.page_size = page_size
-        # Filters by resource with exact or wildcard matching. The resource description is constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).
+        # Filters by resource with exact or generalized matching. The resource description is constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).
+        # 
+        # 
+        # 
         # 
         # See also: [ResourceSchema documentation for International site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         self.resource_shrink = resource_shrink

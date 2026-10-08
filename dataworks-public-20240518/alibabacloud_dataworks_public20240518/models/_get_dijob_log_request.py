@@ -18,7 +18,7 @@ class GetDIJobLogRequest(DaraModel):
         self.dijob_id = dijob_id
         # The failover ID.
         self.failover_id = failover_id
-        # The node ID.
+        # The task ID.
         self.id = id
         # The instance ID.
         self.instance_id = instance_id

@@ -117,7 +117,7 @@ class DataQualityResultRule(DaraModel):
         self.error_handlers = error_handlers
         # The rule ID.
         self.id = id
-        # The name of the rule. The name can be up to 255 characters in length and can contain digits, letters, and punctuation marks.
+        # The name of the rule. The name can be up to 255 characters in length and can contain digits, English letters, Chinese characters, and half-width or full-width punctuation marks.
         self.name = name
         # The DataWorks workspace ID.
         self.project_id = project_id
@@ -377,7 +377,7 @@ class DataQualityResultRuleErrorHandlers(DaraModel):
         error_data_filter: str = None,
         type: str = None,
     ):
-        # The SQL statement that is used to filter failed tasks. If the rule is defined by custom SQL statements, you must specify an SQL statement to filter failed tasks.
+        # For a custom SQL rule, you must specify an SQL statement to filter problematic data.
         self.error_data_filter = error_data_filter
         # The type of the operation.
         self.type = type
@@ -415,7 +415,7 @@ class DataQualityResultRuleCheckingConfig(DaraModel):
         thresholds: main_models.DataQualityResultRuleCheckingConfigThresholds = None,
         type: str = None,
     ):
-        # The method that is used to query the referenced samples. To obtain some types of thresholds, you need to query reference values. In this example, an expression is used to indicate the query method of referenced samples.
+        # Some types of thresholds require querying reference samples and aggregating their values to calculate the comparison threshold. An expression specifies how to query these reference samples.
         self.referenced_samples_filter = referenced_samples_filter
         # The threshold settings.
         self.thresholds = thresholds

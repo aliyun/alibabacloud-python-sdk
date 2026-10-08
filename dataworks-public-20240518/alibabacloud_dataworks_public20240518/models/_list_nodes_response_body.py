@@ -54,7 +54,7 @@ class ListNodesResponseBodyPagingInfo(DaraModel):
         page_size: str = None,
         total_count: str = None,
     ):
-        # The list of data development nodes.
+        # The list of Data Studio nodes.
         self.nodes = nodes
         # The page number for pagination.
         self.page_number = page_number
@@ -130,29 +130,44 @@ class ListNodesResponseBodyPagingInfoNodes(DaraModel):
         task_id: int = None,
         trigger: main_models.ListNodesResponseBodyPagingInfoNodesTrigger = None,
     ):
-        # The timestamp when the data development node was created.
+        # The timestamp when the Data Studio node was created.
         self.create_time = create_time
         # The data source.
         self.data_source = data_source
         # The node description.
         self.description = description
-        # The unique identifier of the data development node.
+        # The unique identifier of the Data Studio node.
         # 
-        # >Notice: This field was of the Long type in SDK versions earlier than 8.0.0 and is of the String type in SDK 8.0.0 and later. **This change does not affect normal SDK usage, and the parameter is still returned in the type defined in the SDK**. Only when upgrading across SDK version 8.0.0, the type change may cause project compilation failures, and you must manually correct the data type.
+        # 
+        # 
+        # 
+        # > &lt;notice&gt;This field was of the Long type in SDK versions earlier than 8.0.0 and is of the String type in SDK 8.0.0 and later. **This change does not affect normal SDK usage, and the parameter is still returned in the type defined in the SDK**. Only when upgrading across SDK version 8.0.0, the type change may cause project compilation failures, and you must manually correct the data type.&gt;&lt;/notice&gt;
         self.id = id
         # The node inputs.
         self.inputs = inputs
-        # The timestamp when the data development node was last modified.
+        # The timestamp when the Data Studio node was last modified.
         self.modify_time = modify_time
         # The node name.
         self.name = name
         # The node outputs.
         self.outputs = outputs
-        # The owner of the data development node.
+        # The owner of the Data Studio node.
         self.owner = owner
         # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace management page to view the ID.
         self.project_id = project_id
         # The scheduling type.
+        # 
+        # 
+        # 
+        # 
+        # Valid values:
+        # 
+        # 
+        # 
+        # 
+        # - Normal: The task is executed normally.
+        # - Pause: The node is paused and blocks downstream nodes that depend on it.
+        # - Skip: The node performs a dry run. The system immediately returns success with a run duration of 0 seconds, does not block downstream nodes, and does not consume resources.
         self.recurrence = recurrence
         # The resource group information.
         self.runtime_resource = runtime_resource
@@ -444,10 +459,20 @@ class ListNodesResponseBodyPagingInfoNodesStrategy(DaraModel):
         timeout: int = None,
     ):
         # The mode for generating instances.
+        # 
+        # 
+        # 
+        # 
+        # Valid values: T+1 and Immediately.
         self.instance_mode = instance_mode
         # The retry time interval, in milliseconds.
         self.rerun_interval = rerun_interval
         # The mode that specifies whether reruns are allowed.
+        # 
+        # 
+        # 
+        # 
+        # Valid values: Allowed, Denied, and FailureAllowed.
         self.rerun_mode = rerun_mode
         # The number of retries.
         self.rerun_times = rerun_times

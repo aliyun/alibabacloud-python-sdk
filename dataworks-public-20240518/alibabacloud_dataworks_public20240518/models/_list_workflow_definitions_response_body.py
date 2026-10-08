@@ -58,7 +58,7 @@ class ListWorkflowDefinitionsResponseBodyPagingInfo(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries that meet the conditions.
         self.total_count = total_count
         # The workflows.
         self.workflow_definitions = workflow_definitions

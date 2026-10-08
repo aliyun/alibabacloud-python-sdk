@@ -17,6 +17,11 @@ class ListNodesRequest(DaraModel):
         scene: str = None,
     ):
         # Leave this parameter empty if not specified. The filter condition: within the specified container. Specify the container ID. This parameter is not related to the resource group (ResourceGroupId).
+        # 
+        # 
+        # 
+        # 
+        # This field was of the Long type in SDK versions earlier than 8.0.0 and is of the String type in SDK 8.0.0 and later. This change does not affect normal SDK usage; the field is returned in the type defined in the SDK. When upgrading across SDK version 8.0.0, the type change may cause compilation failures. In this case, manually correct the data type.
         self.container_id = container_id
         # The node name. Fuzzy match is supported.
         self.name = name
@@ -44,12 +49,13 @@ class ListNodesRequest(DaraModel):
         # 
         # - Denied: The node cannot be rerun regardless of whether it runs successfully or fails.
         self.rerun_mode = rerun_mode
-        # The scene in which the node resides. Leave this parameter empty if not specified. This parameter corresponds to the partition of the left-side navigation pane in DataStudio. Valid values:
+        # The scene in which the node resides. Leave this parameter empty if not specified. This parameter corresponds to the partition of the left-side navigation pane in Data Studio. Valid values:
+        # 
+        # 
+        # 
         # 
         # - DataworksProject: project folder.
-        # 
         # - DataworksManualWorkflow: manual workflow.
-        # 
         # - DataworksManualTask: manual node.
         self.scene = scene
 

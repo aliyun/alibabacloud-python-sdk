@@ -52,7 +52,10 @@ class CreateImageShrinkRequest(DaraModel):
         self.namespace = namespace
         # The image ID from the image provider. This parameter is required when referencing a DataWorks official image.
         self.provider_image_id = provider_image_id
-        # The image reference data type. Valid values:
+        # The image reference type. Valid values:
+        # 
+        # 
+        # 
         # 
         # - ACR: ACR image repository.
         # - DataWorks: DataWorks official image.

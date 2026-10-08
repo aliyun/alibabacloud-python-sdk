@@ -72,7 +72,7 @@ class GetNodeResponseBodyNode(DaraModel):
         self.project_id = project_id
         # The FlowSpec field information about this node. For more information, see [FlowSpec](https://github.com/aliyun/alibabacloud-dataworks-tool-dflow).
         self.spec = spec
-        # The ID of the corresponding scheduling task after the node is published.
+        # The ID of the corresponding scheduling task after the node is deployed.
         self.task_id = task_id
 
     def validate(self):

@@ -21,7 +21,7 @@ class GrantMemberProjectRolesShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.role_codes_shrink = role_codes_shrink
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/product/ms_menu), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the IDs of the accounts used by the members in the workspace.
+        # The DataWorks account ID. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/product/ms_menu), choose More &gt; Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the IDs of the accounts used by the members in the workspace.
         # 
         # This parameter is required.
         self.user_id = user_id

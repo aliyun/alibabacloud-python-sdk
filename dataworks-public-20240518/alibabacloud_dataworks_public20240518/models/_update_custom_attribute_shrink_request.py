@@ -15,11 +15,11 @@ class UpdateCustomAttributeShrinkRequest(DaraModel):
         search_filter_enabled: bool = None,
         value_enums_shrink: str = None,
     ):
-        # The new description for the custom attribute. It must be 256 characters or less.
+        # The new description for the custom attribute. It must be less than 256 characters.
         self.comment = comment
         # Whether to display the custom attribute in the UI.
         self.display_enabled = display_enabled
-        # The new display name for the custom attribute. It must be 128 characters or less.
+        # The new display name for the custom attribute. It must be less than 128 characters.
         self.display_name = display_name
         # The applicable entity types. This parameter supports specific types and wildcard formats, such as `*-table` and `*-column`. For example:
         # 

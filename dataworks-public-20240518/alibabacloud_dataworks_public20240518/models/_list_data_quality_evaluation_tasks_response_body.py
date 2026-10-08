@@ -13,7 +13,7 @@ class ListDataQualityEvaluationTasksResponseBody(DaraModel):
         paging_info: main_models.ListDataQualityEvaluationTasksResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
-        # The paged query result of quality evaluation nodes.
+        # The paged query result of quality evaluation tasks.
         self.paging_info = paging_info
         # The API request ID.
         self.request_id = request_id
@@ -126,11 +126,11 @@ class ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationT
         self.data_source_id = data_source_id
         # The description of the data quality evaluation task. The description can be up to 65,535 characters in length.
         self.description = description
-        # The callback settings during the epoch of data quality evaluation task instances. Currently, only one hook that blocks a scheduling node instance is supported.
+        # The callback settings during the lifecycle of data quality evaluation task instances. Currently, only one hook that blocks a scheduling node instance is supported.
         self.hooks = hooks
         # The ID of the data quality evaluation task.
         self.id = id
-        # The name of the data quality evaluation task. The name can contain digits, letters, Chinese characters, and half-width or full-width punctuation marks. The name can be up to 255 characters in length.
+        # The name of the data quality evaluation task. The name can contain digits, English letters, Chinese characters, and half-width or full-width punctuation marks. The name can be up to 255 characters in length.
         self.name = name
         # The alert configuration.
         self.notifications = notifications
@@ -343,7 +343,7 @@ class ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationT
         condition: str = None,
         notifications: List[main_models.ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotifications] = None,
     ):
-        # The cause that triggers the notification.
+        # The condition that triggers the notification.
         self.condition = condition
         # The alert settings.
         self.notifications = notifications
@@ -521,7 +521,7 @@ class ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationT
         condition: str = None,
         type: str = None,
     ):
-        # The cause that triggers the hook.
+        # The condition that triggers the hook.
         self.condition = condition
         # The type of the follow-up action. Valid values:
         # - BlockTaskInstance: Blocks the execution of a DataWorks node instance.

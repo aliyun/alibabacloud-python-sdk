@@ -20,9 +20,11 @@ class ListComputeResourcesRequest(DaraModel):
     ):
         # The environment type of the computing resource. Valid values:
         # 
-        # - Dev
         # 
-        # - Prod
+        # 
+        # 
+        # - Dev: development environment.
+        # - Prod: production environment.
         self.env_type = env_type
         # The name of the computing resource.
         self.name = name

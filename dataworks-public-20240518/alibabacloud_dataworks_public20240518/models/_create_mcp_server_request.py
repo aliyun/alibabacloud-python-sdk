@@ -75,9 +75,9 @@ class CreateMcpServerRequestVisibilityScope(DaraModel):
         project_ids: List[str] = None,
         user_ids: List[str] = None,
     ):
-        # The list of project IDs that are visible. This parameter takes effect when Visibility is set to `PROJECT`.
+        # The IDs of the projects in which the MCP Server is visible. This parameter takes effect when Visibility is set to `PROJECT`.
         self.project_ids = project_ids
-        # The list of user IDs that are visible. This parameter takes effect when Visibility is set to `USER`.
+        # The IDs of the users to whom the MCP Server is visible. This parameter takes effect when Visibility is set to `USER`.
         self.user_ids = user_ids
 
     def validate(self):

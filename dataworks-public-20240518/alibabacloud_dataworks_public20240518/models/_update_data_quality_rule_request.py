@@ -145,18 +145,22 @@ class UpdateDataQualityRuleRequestSamplingConfig(DaraModel):
         setting_config: str = None,
     ):
         # The name of the metric to sample. This parameter is not required when a template is used.
+        # 
+        # 
+        # 
+        # 
         # - Count: the number of rows in the table.
-        # - Min: the minimum value of the field.
-        # - Max: the maximum value of the field.
-        # - Avg: the average value of the field.
-        # - DistinctCount: the number of distinct values in the field.
-        # - DistinctPercent: the ratio of the number of distinct values in the field to the total number of rows.
-        # - DuplicatedCount: the number of duplicate values in the field.
-        # - DuplicatedPercent: the ratio of the number of duplicate values in the field to the total number of rows.
+        # - Min: the minimum value of the column.
+        # - Max: the maximum value of the column.
+        # - Avg: the average value of the column.
+        # - DistinctCount: the number of distinct values in the column.
+        # - DistinctPercent: the ratio of the number of distinct values in the column to the total number of rows.
+        # - DuplicatedCount: the number of duplicate values in the column.
+        # - DuplicatedPercent: the ratio of the number of duplicate values in the column to the total number of rows.
         # - TableSize: the size of the table.
-        # - NullValueCount: the number of rows in which the field is null.
-        # - NullValuePercent: the percentage of rows in which the field is null.
-        # - GroupCount: the number of data rows for each value after aggregation by field value.
+        # - NullValueCount: the number of rows in which the column is null.
+        # - NullValuePercent: the percentage of rows in which the column is null.
+        # - GroupCount: the number of data rows for each value after aggregation by column value.
         # - CountNotIn: the number of rows that do not match the enumerated values.
         # - CountDistinctNotIn: the number of distinct values that do not match the enumerated values.
         # - UserDefinedSql: sample collection by using custom SQL.

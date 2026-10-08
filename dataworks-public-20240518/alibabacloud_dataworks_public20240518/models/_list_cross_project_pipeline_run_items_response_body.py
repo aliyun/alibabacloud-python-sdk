@@ -68,7 +68,7 @@ class ListCrossProjectPipelineRunItemsResponseBodyData(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The list of publish items for the root objects and their child objects that are included in the cross-workspace publish pipeline.
+        # The list of publish items for the root objects and their child objects that are fixed in the cross-workspace publish pipeline.
         self.pipeline_run_items = pipeline_run_items
         # The request ID.
         self.request_id = request_id

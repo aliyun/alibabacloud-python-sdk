@@ -37,8 +37,11 @@ class UpdateWorkflowShrinkRequest(DaraModel):
         self.id = id
         # The instance generation mode. Valid values:
         # 
+        # 
+        # 
+        # 
         # - T+1: Instances are generated the next day.
-        # - Immediately: Instances are generated immediately. Periodic instances are generated only if the scheduled time of the workflow is at least 10 minutes after the workflow is published. During the full instance generation period (22:00 to 24:00), real-time instance generation is not available. You can submit and publish workflows during this period, but instances are not regenerated after submission.
+        # - Immediately: Instances are generated immediately. Periodic instances are generated only if the scheduled time of the workflow is at least 10 minutes after the workflow is deployed. During the full instance generation period (22:00 to 24:00), real-time instance generation is not available. You can submit and deploy workflows during this period, but instances are not regenerated after submission.
         self.instance_mode = instance_mode
         # The name.
         # 

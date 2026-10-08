@@ -69,7 +69,7 @@ class GetWorkflowInstanceResponseBodyWorkflowInstance(DaraModel):
         workflow_parameters: str = None,
         workflow_task_instance_id: int = None,
     ):
-        # The data timestamp.
+        # The business date.
         self.biz_date = biz_date
         # The creation time.
         self.create_time = create_time
@@ -77,9 +77,11 @@ class GetWorkflowInstanceResponseBodyWorkflowInstance(DaraModel):
         self.create_user = create_user
         # The environment of the workspace. Valid values:
         # 
-        # - Prod
         # 
-        # - Dev
+        # 
+        # 
+        # - Prod: production environment
+        # - Dev: development environment
         self.env_type = env_type
         # The time when the instance finished running.
         self.finished_time = finished_time
@@ -131,7 +133,7 @@ class GetWorkflowInstanceResponseBodyWorkflowInstance(DaraModel):
         # 
         # - TriggerWorkflow: Triggered Workflow
         self.type = type
-        # The unified pipeline instance ID. For all pipeline instances triggered under the same data timestamp in a single trigger, this field value is identical.
+        # The unified workflow instance ID. This field has the same value for all workflow instances for the same business date within a single trigger.
         self.unified_workflow_instance_id = unified_workflow_instance_id
         # The ID of the workflow to which the instance belongs.
         self.workflow_id = workflow_id

@@ -13,9 +13,17 @@ class ExecPipelineRunStageResponseBody(DaraModel):
         # The request ID. Used for locating logs and troubleshooting issues.
         self.request_id = request_id
         # Indicates whether the call is successful. Valid values:
+        # 
+        # 
+        # 
+        # 
         # - true: The call is successful.
         # - false: The call failed.
-        # >Notice: This only indicates whether the stage is triggered, not the execution result of the publish stage.
+        # 
+        # 
+        # 
+        # 
+        # > &lt;notice&gt;This only indicates whether the stage is triggered, not the execution result of the deployment stage.&gt;&lt;/notice&gt;
         self.success = success
 
     def validate(self):

@@ -133,7 +133,7 @@ class ListComponentsResponseBodyPagingInfoComponents(DaraModel):
         self.description = description
         # The input parameters.
         self.inputs = inputs
-        # The timestamp when the publishing process was modified.
+        # The timestamp when the deployment process was modified.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.modify_time = modify_time

@@ -20,11 +20,7 @@ class UnTagDataAssetsRequest(DaraModel):
         # 
         # This parameter is required.
         self.data_asset_ids = data_asset_ids
-        # The type of the data asset. Valid values:
-        # 
-        # - ACS::DataWorks::Table
-        # 
-        # - ACS::DataWorks::Task
+        # The type of the data asset. Valid values: ACS::DataWorks::Table (data table) and ACS::DataWorks::Task (scheduled task).
         # 
         # This parameter is required.
         self.data_asset_type = data_asset_type

@@ -210,6 +210,10 @@ class ListTaskInstancesResponseBodyPagingInfoTaskInstances(DaraModel):
         # The value is a 13-digit number, such as `1710239005403`.
         self.started_time = started_time
         # The run status of the instance. Valid values:
+        # 
+        # 
+        # 
+        # 
         # - NotRun: not run.
         # - Running: running.
         # - WaitTime: waiting for the TriggerTime to arrive.
@@ -217,7 +221,7 @@ class ListTaskInstancesResponseBodyPagingInfoTaskInstances(DaraModel):
         # - WaitResource: waiting for resources.
         # - Failure: execution failed.
         # - Success: execution succeeded.
-        # - Checking: submitted for qualityrule check.
+        # - Checking: submitted for data quality check.
         # - WaitTrigger: waiting for an external trigger. Trigger-based nodes enter this status after the waiting period.
         self.status = status
         # The ID of the corresponding node.
@@ -228,7 +232,10 @@ class ListTaskInstancesResponseBodyPagingInfoTaskInstances(DaraModel):
         self.task_type = task_type
         # The timeout period for node execution, in seconds.
         # 
-        # Note: The scheduling system rounds the configured value to the nearest hour.
+        # 
+        # 
+        # 
+        # Note: The scheduling system rounds the configured value to whole hours.
         self.timeout = timeout
         # The run mode at the time of triggering. This parameter takes effect when TriggerType is set to Scheduler. Valid values:
         # - Pause: paused.
@@ -256,12 +263,16 @@ class ListTaskInstancesResponseBodyPagingInfoTaskInstances(DaraModel):
         # The ID of the workflow instance to which the instance belongs.
         self.workflow_instance_id = workflow_instance_id
         # The type of the workflow instance to which the instance belongs. Valid values:
+        # 
+        # 
+        # 
+        # 
         # - SmokeTest: smoke test.
         # - SupplementData: data backfill.
         # - Manual: manually triggered.
         # - ManualWorkflow: manual workflow.
         # - Normal: periodic scheduling.
-        # - ManualFlow: manually triggered workflow.
+        # - ManualFlow: manually executed business flow.
         self.workflow_instance_type = workflow_instance_type
         # The name of the workflow to which the instance belongs.
         self.workflow_name = workflow_name

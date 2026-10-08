@@ -543,7 +543,10 @@ class CreateDIJobRequestSourceDataSourceSettingsDataSourceProperties(DaraModel):
     ):
         # Specify either this parameter or DataSourceName. This parameter specifies custom data source connection configuration information, including the instance ID, access identity, and instance region.
         # 
-        # This parameter supports only datasource config in instance pattern (ConnectionPropertiesMode). Different data sources have different property specifications. For more information, see [Data source connection information ConnectionProperties](https://help.aliyun.com/document_detail/2852465.html).
+        # 
+        # 
+        # 
+        # This parameter supports only data source configuration in instance mode (ConnectionPropertiesMode). Different data sources have different property specifications. For more information, see [Data source connection information ConnectionProperties](https://help.aliyun.com/document_detail/2852465.html).
         self.connection_properties = connection_properties
         # The database encoding.
         self.encoding = encoding
@@ -1077,7 +1080,10 @@ class CreateDIJobRequestDestinationDataSourceSettingsDataSourceProperties(DaraMo
     ):
         # Specify either this parameter or DataSourceName. This parameter specifies custom data source connection configuration information, including the instance ID, access identity, and instance region.
         # 
-        # This parameter supports only datasource config in instance pattern (ConnectionPropertiesMode). Different data sources have different property specifications. For more information, see [Data source connection information ConnectionProperties](https://help.aliyun.com/document_detail/2852465.html).
+        # 
+        # 
+        # 
+        # This parameter supports only data source configuration in instance mode (ConnectionPropertiesMode). Different data sources have different property specifications. For more information, see [Data source connection information ConnectionProperties](https://help.aliyun.com/document_detail/2852465.html).
         self.connection_properties = connection_properties
 
     def validate(self):

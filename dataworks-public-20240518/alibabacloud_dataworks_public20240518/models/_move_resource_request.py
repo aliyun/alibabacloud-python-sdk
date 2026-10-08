@@ -17,13 +17,19 @@ class MoveResourceRequest(DaraModel):
         # 
         # This parameter is required.
         self.id = id
-        # The unique identifier of the Data Studio file resource.
+        # The destination path, without the file resource name.
         # 
-        # > Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. However, compilation failures may occur due to the type change only when upgrading the SDK across version 8.0.0. In this case, you must manually update the data type.
+        # 
+        # 
+        # 
+        # For example, to move `math.py` to `root/demo/math.py`, set this parameter to `root/demo`.
         # 
         # This parameter is required.
         self.path = path
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the ID.
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace configuration page to obtain the ID.
+        # 
+        # 
+        # 
         # 
         # You can use this parameter to specify the DataWorks workspace on which you want to perform the API operation.
         # 

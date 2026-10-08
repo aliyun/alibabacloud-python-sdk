@@ -140,7 +140,10 @@ class ListDataAssetsRequestTags(DaraModel):
     ):
         # The custom tag key specified by the user.
         # 
-        # The tag key can be up to 64 characters in length, cannot start with `dw:`, and supports only letters, digits, and the following special characters: `-@#*<>|[]()+=&%$!~`.
+        # 
+        # 
+        # 
+        # The tag key can be up to 64 characters in length, cannot start with `dw:`, and supports only Chinese characters, letters, digits, and the following special characters: `-@#*<>|[]()+=&%$!~`.
         self.key = key
         # The tag value.
         self.value = value

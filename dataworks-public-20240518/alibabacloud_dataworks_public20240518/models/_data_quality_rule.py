@@ -33,7 +33,7 @@ class DataQualityRule(DaraModel):
         self.error_handlers = error_handlers
         # The rule ID.
         self.id = id
-        # The rule name. The name can contain digits, letters, Chinese characters, and half-width or full-width punctuation marks. The name can be up to 255 characters in length.
+        # The rule name. The name can contain digits, English letters, Chinese characters, and half-width or full-width punctuation marks. The name can be up to 255 characters in length.
         self.name = name
         # The DataWorks workspace ID.
         self.project_id = project_id

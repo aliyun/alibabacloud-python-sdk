@@ -90,7 +90,7 @@ class ListDIJobMetricsResponseBodyPagingInfoJobMetrics(DaraModel):
     ):
         # The name of the metric.
         self.name = name
-        # The metric data.
+        # The metric series, consisting of sampling times and sampled values at different points in time.
         self.series_list = series_list
 
     def validate(self):

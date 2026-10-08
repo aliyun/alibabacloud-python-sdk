@@ -11,11 +11,11 @@ class ExecPipelineRunStageRequest(DaraModel):
         id: str = None,
         project_id: int = None,
     ):
-        # The code of the publish flow stage. For the specific value, see the response of the GetPipelineRun operation.
+        # The code of the deployment process stage. For the specific value, see the response of the GetPipelineRun operation.
         # 
         # This parameter is required.
         self.code = code
-        # The unique identifier of the publish flow.
+        # The unique identifier of the deployment process.
         # 
         # This parameter is required.
         self.id = id

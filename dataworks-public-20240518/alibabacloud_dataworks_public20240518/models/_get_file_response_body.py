@@ -205,9 +205,12 @@ class GetFileResponseBodyDataNodeConfiguration(DaraModel):
         self.auto_rerun_times = auto_rerun_times
         # The Cron Expression for timed scheduling of the file.
         self.cron_express = cron_express
-        # The type of recurrence, including NOT_DAY (minute, hour) and DAY (day, week, month).
+        # The type of scheduling cycle, including NOT_DAY (minute, hour) and DAY (day, week, month).
         # 
-        # This parameter corresponds to "Schedule Configuration > Time Properties > Recurrence" for a Data Development job in the [DataWorks console](https://workbench.data.aliyun.com/console).
+        # 
+        # 
+        # 
+        # This parameter corresponds to "Schedule Configuration &gt; Time Properties &gt; Scheduling Cycle" for a Data Development job in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.cycle_type = cycle_type
         # When the DependentType parameter is set to USER_DEFINE, this parameter specifies the IDs of the nodes on which the current file depends. Separate multiple node IDs with commas (,).
         # 
@@ -225,7 +228,10 @@ class GetFileResponseBodyDataNodeConfiguration(DaraModel):
         self.dependent_type = dependent_type
         # The UNIX timestamp, in milliseconds, when automatic scheduling stops.
         # 
-        # This parameter corresponds to the millisecond UNIX timestamp of the end time configured in the "Scan Configuration > Time Properties > Effective Date" setting for a Data Development job in the [DataWorks console](https://workbench.data.aliyun.com/console).
+        # 
+        # 
+        # 
+        # This parameter corresponds to the millisecond UNIX timestamp of the end time configured in the "Schedule Configuration &gt; Time Properties &gt; Effective Date" setting for a Data Development job in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.end_effect_date = end_effect_date
         # Schedule Configuration > Previous Cycle > Whether to ignore the upstream dry-run property.
         self.ignore_parent_skip_running_property = ignore_parent_skip_running_property
@@ -241,28 +247,35 @@ class GetFileResponseBodyDataNodeConfiguration(DaraModel):
         self.output_parameters = output_parameters
         # Schedule parameter.
         # 
-        # This parameter corresponds to the "Scan Configuration > Parameters" setting for a Data Development job in the [DataWorks console](https://workbench.data.aliyun.com/console). You can refer to the [Schedule Parameters](https://help.aliyun.com/document_detail/137548.html) documentation for configuration details.
+        # 
+        # 
+        # 
+        # This parameter corresponds to the "Schedule Configuration &gt; Parameters" setting for a Data Development job in the [DataWorks console](https://workbench.data.aliyun.com/console). You can refer to the [Schedule Parameters](https://help.aliyun.com/document_detail/137548.html) documentation for configuration details.
         self.para_value = para_value
         # Rerun property. Valid values:
         # 
+        # 
+        # 
+        # 
         # - ALL_ALLOWED: The job can be rerun regardless of whether it previously Succeeded or failed.
-        # 
         # - FAILURE_ALLOWED: The job cannot be rerun if it previously Succeeded, but can be rerun if it previously failed.
-        # 
         # - ALL_DENIED: The job cannot be rerun regardless of whether it previously Succeeded or failed.
         # 
-        # This parameter corresponds to the "Scan Configuration > Time Properties > Rerun Property" setting for a Data Development job in the [DataWorks console](https://workbench.data.aliyun.com/console).
+        # 
+        # 
+        # 
+        # This parameter corresponds to the "Schedule Configuration &gt; Time Properties &gt; Rerun Property" setting for a Data Development job in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.rerun_mode = rerun_mode
         # The resource group used when the file is published as a Job and executed. You can call [ListResourceGroups](https://help.aliyun.com/document_detail/173913.html) to obtain the list of available resource groups in the workspace.
         self.resource_group_id = resource_group_id
         # The schedule type. Valid values:
         # 
+        # 
+        # 
+        # 
         # - NORMAL: Normal scheduling task.
-        # 
-        # - MANUAL: One-time task, which is not included in regular scheduling and corresponds to a node in a manually triggered workflow.
-        # 
+        # - MANUAL: Manually triggered task, which is not included in regular scheduling and corresponds to a node in a manually triggered workflow.
         # - PAUSE: Paused task.
-        # 
         # - SKIP: Dry-run task, which is included in regular scheduling but is immediately marked as Succeeded when scheduled.
         self.scheduler_type = scheduler_type
         # The UNIX timestamp (in milliseconds) indicating when automatic scheduling starts.
@@ -273,13 +286,18 @@ class GetFileResponseBodyDataNodeConfiguration(DaraModel):
         # 
         # This parameter corresponds to the "Start Method" setting under "Configuration > Time Properties" in the right-side navigation bar on the editing page for EMR Spark Streaming and EMR Streaming SQL Data Development jobs in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.start_immediately = start_immediately
-        # Indicates whether to skip execution. Valid values:
+        # Indicates whether to pause scheduling. Valid values:
         # 
-        # - true: Skip execution.
         # 
-        # - false: Do not skip execution.
         # 
-        # This parameter corresponds to the setting "Schedule Type" under "Schedule Configuration > Time Properties" for a Data Development job in the [DataWorks console](https://workbench.data.aliyun.com/console), when it is set to "skip execution".
+        # 
+        # - true: Pause scheduling.
+        # - false: Do not pause scheduling.
+        # 
+        # 
+        # 
+        # 
+        # This parameter corresponds to the setting "Schedule Type" under "Schedule Configuration &gt; Time Properties" for a Data Development job in the [DataWorks console](https://workbench.data.aliyun.com/console), when it is set to "pause scheduling".
         self.stop = stop
         # Timeout definition for scheduling configuration.
         self.timeout = timeout
@@ -473,25 +491,32 @@ class GetFileResponseBodyDataNodeConfigurationOutputParameters(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The description of the output parameter in the edge zone context.
+        # The description of the output parameter in the node context.
         self.description = description
         # The parameter name of the output parameter in the node context.
         # 
         # This parameter corresponds to the "Parameter Name" field under "Schedule Configuration > Node Context > Output Parameters of This Node" for a Data Development job in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.parameter_name = parameter_name
-        # The type of the expression for the edge zone context output parameter. Valid values are as follows:
+        # The type of the expression for the node context output parameter. Valid values are as follows:
+        # 
+        # 
+        # 
         # 
         # - 1: constant
-        # 
         # - 2: variable
-        # 
         # - 3: pass-through variable from a parameter node
         # 
-        # This parameter corresponds to the "Type" field in the "Scan Configuration > Edge Zone Context > Output Parameters of This Node" section for a Data Development job in the [DataWorks console](https://workbench.data.aliyun.com/console).
-        self.type = type
-        # The expression of the output parameter in the edge zone context.
         # 
-        # This parameter corresponds to the "Value" field in the "Scan Configuration > Edge Zone Context > Output Parameters of This Node" section for a Data Development job in the [DataWorks console](https://workbench.data.aliyun.com/console).
+        # 
+        # 
+        # This parameter corresponds to the "Type" field in the "Schedule Configuration &gt; Node Context &gt; Output Parameters of This Node" section for a Data Development job in the [DataWorks console](https://workbench.data.aliyun.com/console).
+        self.type = type
+        # The expression of the output parameter in the node context.
+        # 
+        # 
+        # 
+        # 
+        # This parameter corresponds to the "Value" field in the "Schedule Configuration &gt; Node Context &gt; Output Parameters of This Node" section for a Data Development job in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.value = value
 
     def validate(self):
@@ -540,11 +565,17 @@ class GetFileResponseBodyDataNodeConfigurationOutputList(DaraModel):
     ):
         # Output name of the file.
         # 
-        # This parameter corresponds to the value in the "Output Name" column when "Same Cycle" is selected under "Scan Configuration > Schedule Dependency" for a Data Development job in the [DataWorks console](https://workbench.data.aliyun.com/console).
+        # 
+        # 
+        # 
+        # This parameter corresponds to the value in the "Output Name" column when "Same Cycle" is selected under "Schedule Configuration &gt; Schedule Dependency" for a Data Development job in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.output = output
         # Output value of the file.
         # 
-        # This parameter corresponds to the value in the "Output Table" column when "Same Cycle" is selected under "Scan Configuration > Schedule Dependency" for a Data Development job in the [DataWorks console](https://workbench.data.aliyun.com/console).
+        # 
+        # 
+        # 
+        # This parameter corresponds to the value in the "Output Table" column when "Same Cycle" is selected under "Schedule Configuration &gt; Schedule Dependency" for a Data Development job in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.ref_table_name = ref_table_name
 
     def validate(self):
@@ -736,7 +767,7 @@ class GetFileResponseBodyDataFile(DaraModel):
         self.file_id = file_id
         # Name of the file.
         self.file_name = file_name
-        # The code type of the file. Different file types use different code. For more information, see [DataWorks Edge Zone Collection](https://help.aliyun.com/document_detail/600169.html).
+        # The code type of the file. Different file types use different code. For more information, see [DataWorks nodes](https://help.aliyun.com/document_detail/600169.html).
         self.file_type = file_type
         # Indicates whether the resource file needs to be uploaded to MaxCompute.
         # Configure this parameter only when the file is a MaxCompute resource file.
@@ -745,25 +776,23 @@ class GetFileResponseBodyDataFile(DaraModel):
         self.last_edit_time = last_edit_time
         # The Alibaba Cloud User ID of the user who last edited the file.
         self.last_edit_user = last_edit_user
-        # The ID of the scheduling task generated in the CDN mapping system after the file is submitted.
+        # The ID of the scheduling task generated in the scheduling system after the file is submitted.
         self.node_id = node_id
         # Alibaba Cloud User ID of the file owner.
         self.owner = owner
-        # If the current file is an internal file of a composite edge zone file, this field identifies the ID of the corresponding composite edge zone file.
+        # If the current file is an internal file of a combined node file, this field identifies the ID of the corresponding combined node file.
         self.parent_id = parent_id
         # The function module to which the file belongs. Valid values:
         # 
-        # - NORMAL: Data Development.
         # 
-        # - MANUAL: One-time task.
         # 
+        # 
+        # - NORMAL: Data Studio.
+        # - MANUAL: Manually triggered task.
         # - MANUAL_BIZ: Manually triggered workflow.
-        # 
-        # - SKIP: Dry-run scheduling in Data Development.
-        # 
+        # - SKIP: Dry-run scheduling in Data Studio.
         # - ADHOCQUERY: Ad-hoc query.
-        # 
-        # - COMPONENT: Widget Management.
+        # - COMPONENT: Component Management.
         self.use_type = use_type
 
     def validate(self):

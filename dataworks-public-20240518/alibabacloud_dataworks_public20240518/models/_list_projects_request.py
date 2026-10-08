@@ -25,7 +25,7 @@ class ListProjectsRequest(DaraModel):
         # 
         # This parameter is used to query the information about workspaces that belong to a specific resource group.
         self.aliyun_resource_group_id = aliyun_resource_group_id
-        # The tags.
+        # The list of tags. This parameter queries workspaces that have any of the specified tag key-value pairs.
         self.aliyun_resource_tags = aliyun_resource_tags
         # Specifies whether the development environment is enabled. Valid values:
         # 
@@ -33,11 +33,7 @@ class ListProjectsRequest(DaraModel):
         # 
         # - false: The development environment is disabled. In this case, only the production environment is used in a workspace.
         self.dev_environment_enabled = dev_environment_enabled
-        # Specifies whether the Develop role is disabled. Valid values:
-        # 
-        # - false (default)
-        # 
-        # - true
+        # Specifies whether the developer role is disabled. Valid values: false (enabled, default) and true (disabled). This parameter filters workspaces by whether the developer role is enabled or disabled.
         self.dev_role_disabled = dev_role_disabled
         # The IDs of the DataWorks workspaces.
         self.ids = ids
@@ -53,25 +49,7 @@ class ListProjectsRequest(DaraModel):
         # 
         # - false: Scheduling of PAI tasks is disabled.
         self.pai_task_enabled = pai_task_enabled
-        # The status of the workspaces. Valid values:
-        # 
-        # - Available
-        # 
-        # - Initializing
-        # 
-        # - InitFailed
-        # 
-        # - Forbidden
-        # 
-        # - Deleting
-        # 
-        # - DeleteFailed
-        # 
-        # - Frozen
-        # 
-        # - Updating
-        # 
-        # - UpdateFailed
+        # The status of the workspaces. Valid values: Available (running normally), Initializing (initializing), InitFailed (initialization failed), Forbidden (manually disabled), Deleting (being deleted), DeleteFailed (deletion failed), Frozen (frozen due to overdue payments), Updating (being updated), and UpdateFailed (update failed). This parameter filters workspaces by the specified status.
         self.status = status
 
     def validate(self):

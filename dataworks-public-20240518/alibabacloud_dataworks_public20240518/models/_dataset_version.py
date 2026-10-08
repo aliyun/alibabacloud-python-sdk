@@ -25,7 +25,7 @@ class DatasetVersion(DaraModel):
     ):
         # The dataset version description.
         self.comment = comment
-        # Creation time (milliseconds)
+        # Creation time, represented by a timestamp in milliseconds
         self.create_time = create_time
         # The creator ID.
         self.creator_id = creator_id
@@ -33,23 +33,28 @@ class DatasetVersion(DaraModel):
         self.dataset_id = dataset_id
         # The dataset version ID.
         self.id = id
-        # The storage import configuration for the dataset; required configuration varies by storage type.
+        # The storage import configuration for the dataset. The required configuration varies by storage type.
         # 
-        # **NAS**
         # 
-        # Refer to the return values from the file storage API DescribeFileSystems.
+        # <details>
+        # <summary>NAS</summary>
+        # For values, see the response of the File Storage NAS DescribeFileSystems API.
+        # 
         # 
         # ```JSON
         # {
-        # "fileSystemId": "3b6XXX89c9", // The file system ID.
-        # "fileSystemStorageType":  "Performance" // The file system storage type.
-        # "vpcId": "vpc-uf66oxxxrqge1t2gson7s" // The VPC ID of the mount point.
+        #   "fileSystemId": "3b6XXX89c9", // The file system ID.
+        #   "fileSystemStorageType": "Performance", // The file system storage type.
+        #   "vpcId": "vpc-uf66oxxxrqge1t2gson7s" // The VPC ID of the mount point.
         # }
         # ```
+        # 
+        # 
+        # </details>
         self.import_info = import_info
         # The PAI dataset label.
         self.labels = labels
-        # Modification time (milliseconds)
+        # Modification time, represented by a timestamp in milliseconds
         self.modify_time = modify_time
         # The mount path. Defaults to /mnt/data.
         self.mount_path = mount_path

@@ -18,19 +18,19 @@ class ListProjectRolesShrinkRequest(DaraModel):
         self.codes_shrink = codes_shrink
         # The list of workspace role names.
         self.names_shrink = names_shrink
-        # The page number. Used for paging.
+        # The requested page number. Used for pagination.
         self.page_number = page_number
         # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
         # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace management page to obtain the ID.
         # 
-        # This parameter specifies the DataWorks workspace for this API invoke operation.
+        # This parameter specifies the DataWorks workspace to use for this API call.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The type of the workspace role. Valid values:
-        # - UserCustom: user-defined role.
-        # - System: system role.
+        # The role type of the workspace. Valid values:
+        # - UserCustom: user-defined role
+        # - System: system role
         self.type = type
 
     def validate(self):

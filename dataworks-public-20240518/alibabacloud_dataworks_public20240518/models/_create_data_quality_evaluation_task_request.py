@@ -42,6 +42,12 @@ class CreateDataQualityEvaluationTaskRequest(DaraModel):
         # This parameter is required.
         self.project_id = project_id
         # The extended configuration. The value is a JSON-formatted string. This parameter takes effect only for EMR-type data quality monitors.
+        # 
+        # 
+        # 
+        # 
+        # - queue: The YARN queue used for EMR data quality checks. By default, the queue configured for the current project is used.
+        # - sqlEngine: The SQL engine used for EMR data quality checks. Valid values: HIVE_SQL and SPARK_SQL.
         self.runtime_conf = runtime_conf
         # The monitored object of the data quality monitor.
         # 
@@ -357,8 +363,22 @@ class CreateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificati
         receiver_values: List[str] = None,
     ):
         # The additional parameter settings for sending alerts. The value is in JSON format. The following keys are supported:
+        # 
+        # 
+        # 
+        # 
+        # - atAll: Specifies whether to mention all members in the group when sending DingTalk alerts. This setting takes effect when ReceiverType is DingdingUrl.
         self.extension = extension
         # The type of the alert recipient.
+        # 
+        # 
+        # 
+        # 
+        # - WebhookUrl: Custom webhook URL.
+        # - FeishuUrl: Lark alert URL.
+        # - DingdingUrl: DingTalk alert URL.
+        # - WeixinUrl: WeCom alert URL.
+        # - AliUid: Alibaba Cloud user ID.
         self.receiver_type = receiver_type
         # The alert recipients.
         self.receiver_values = receiver_values
@@ -434,6 +454,11 @@ class CreateDataQualityEvaluationTaskRequestHooks(DaraModel):
         # 2. Specify multiple combinations of rule severity type and rule check status, such as `(${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")`. This means that the condition is met if any executed rule with a severity of High has a check result of Critical, or any rule with a severity of Normal has a check result of Critical, or any rule with a severity of Normal has a check result of Error. The enumerated values of severity in the conditional expression are consistent with those of severity in DataQualityRule, and the enumerated values of status are consistent with those of status in DataQualityResult.
         self.condition = condition
         # The hook type. Currently, only one type is supported:
+        # 
+        # 
+        # 
+        # 
+        # - BlockTaskInstance: Blocks the scheduling task from continuing to run. If the data quality monitor is triggered by a scheduling task, Hook.Condition is evaluated after quality monitoring completes to determine whether the scheduling task is blocked from continuing.
         self.type = type
 
     def validate(self):
@@ -490,6 +515,12 @@ class CreateDataQualityEvaluationTaskRequestDataQualityRules(DaraModel):
         # The parameters required for sample collection.
         self.sampling_config = sampling_config
         # The severity level of the rule for the business (corresponding to strong or weak rules on the page). Valid values:
+        # 
+        # 
+        # 
+        # 
+        # - Normal
+        # - High
         self.severity = severity
         # The unique identifier of the rule template referenced by the rule.
         self.template_code = template_code
@@ -655,6 +686,11 @@ class CreateDataQualityEvaluationTaskRequestDataQualityRulesErrorHandlers(DaraMo
         # The SQL statement specified by the user to filter problematic data. This is required for custom SQL rules.
         self.error_data_filter = error_data_filter
         # The handler type:
+        # 
+        # 
+        # 
+        # 
+        # - SaveErrorData: Retains problematic data.
         self.type = type
 
     def validate(self):
@@ -695,6 +731,15 @@ class CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfig(DaraM
         # The verification threshold settings.
         self.thresholds = thresholds
         # The threshold calculation method.
+        # 
+        # 
+        # 
+        # 
+        # - Fixed
+        # - Fluctation
+        # - FluctationDiscreate
+        # - Auto
+        # - Average
         self.type = type
 
     def validate(self):
@@ -803,6 +848,16 @@ class CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresh
         # Rules of the fixed value type can also use expressions to configure thresholds. If both are configured, the expression takes precedence over Operator and Value.
         self.expression = expression
         # The comparison operator.
+        # 
+        # 
+        # 
+        # 
+        # - &gt;
+        # - &gt;=
+        # - &lt;
+        # - &lt;=
+        # - !=
+        # - =
         self.operator = operator
         # The threshold value.
         self.value = value
@@ -857,6 +912,16 @@ class CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresh
         # Rules of the fixed value type can also use expressions to configure thresholds. If both are configured, the expression takes precedence over Operator and Value.
         self.expression = expression
         # The comparison operator.
+        # 
+        # 
+        # 
+        # 
+        # - &gt;
+        # - &gt;=
+        # - &lt;
+        # - &lt;=
+        # - !=
+        # - =
         self.operator = operator
         # The threshold value.
         self.value = value
@@ -911,6 +976,16 @@ class CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresh
         # Rules of the fixed value type can also use expressions to configure thresholds. If both are configured, the expression takes precedence over Operator and Value.
         self.expression = expression
         # The comparison operator.
+        # 
+        # 
+        # 
+        # 
+        # - &gt;
+        # - &gt;=
+        # - &lt;
+        # - &lt;=
+        # - !=
+        # - =
         self.operator = operator
         # The threshold value.
         self.value = value

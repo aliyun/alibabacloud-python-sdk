@@ -104,7 +104,7 @@ class GetCrossProjectPipelineRunResponseBodyData(DaraModel):
         self.object_id = object_id
         # The name of the deployment object.
         self.object_name = object_name
-        # The object type of the publish object.
+        # The type of the deployment object.
         self.object_type = object_type
         # The version of the deployment object.
         self.object_version = object_version

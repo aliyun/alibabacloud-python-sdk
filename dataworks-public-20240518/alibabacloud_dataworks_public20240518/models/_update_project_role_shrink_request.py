@@ -22,7 +22,10 @@ class UpdateProjectRoleShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.module_permissions_shrink = module_permissions_shrink
-        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/workspace/list) and go to the Storage Management page to obtain the ID.
+        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/workspace/list) and go to the Workspace Management page to obtain the ID.
+        # 
+        # 
+        # 
         # 
         # This parameter specifies the DataWorks workspace for this API invocation.
         # 

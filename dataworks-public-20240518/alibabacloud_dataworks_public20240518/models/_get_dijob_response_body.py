@@ -73,7 +73,7 @@ class GetDIJobResponseBodyPagingInfo(DaraModel):
         self.description = description
         # The settings for the destination data source.
         self.destination_data_source_settings = destination_data_source_settings
-        # The type of the destination data source. Valid values: `Hologres`, `OSS-HDFS`, `OSS`, `MaxCompute`, `LogHub`, `StarRocks`, `DataHub`, `AnalyticDB for MySQL`, `Kafka`, and `Hive`.
+        # The type of the destination data source. Valid values: `Hologres`, `OSS-HDFS`, `OSS`, `MaxCompute`, `LogHub`, `StarRocks`, `DataHub`, `AnalyticDB_For_MySQL`, `Kafka`, and `Hive`.
         self.destination_data_source_type = destination_data_source_type
         # The job ID.
         self.id = id
@@ -83,16 +83,14 @@ class GetDIJobResponseBodyPagingInfo(DaraModel):
         self.job_settings = job_settings
         # The status of the job. Valid values:
         # 
-        # - `Finished`: The job is complete.
         # 
+        # 
+        # 
+        # - `Finished`: The job completed successfully.
         # - `Failed`: The job failed.
-        # 
         # - `Running`: The job is running.
-        # 
         # - `Initialized`: The job is initialized but has not started.
-        # 
         # - `Stopping`: The job is being stopped.
-        # 
         # - `Stop`: The job is stopped.
         self.job_status = job_status
         # The job type.

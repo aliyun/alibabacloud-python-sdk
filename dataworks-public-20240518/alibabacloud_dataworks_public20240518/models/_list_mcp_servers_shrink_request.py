@@ -18,7 +18,7 @@ class ListMcpServersShrinkRequest(DaraModel):
         self.next_token = next_token
         # The search keyword for a fuzzy search on MCP Server names.
         self.q = q
-        # The visibility level for filtering the results.
+        # The visibility levels for filtering the results. You can specify multiple levels.
         self.visibility_shrink = visibility_shrink
 
     def validate(self):

@@ -192,7 +192,7 @@ class ListFileVersionsResponseBodyDataFileVersions(DaraModel):
         self.node_id = node_id
         # The current status of the file version. Valid values: COMMITTING (committing), COMMITTED or CHECK_OK (committed), PACKAGED (ready for deployment), DEPLOYING (deploying), DEPLOYED (deployed), and CANCELLED (deployment canceled).
         self.status = status
-        # The functional module to which the file belongs. Valid values: NORMAL (DataStudio), MANUAL (manual node), MANUAL_BIZ (manual workflow), SKIP (dry-run scheduling in DataStudio), ADHOCQUERY (ad hoc query), and COMPONENT (component management).
+        # The functional module to which the file belongs. Valid values: NORMAL (Data Studio), MANUAL (manual node), MANUAL_BIZ (manual workflow), SKIP (dry-run scheduling in Data Studio), ADHOCQUERY (ad hoc query), and COMPONENT (component management).
         self.use_type = use_type
 
     def validate(self):

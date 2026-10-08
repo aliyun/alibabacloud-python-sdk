@@ -108,9 +108,9 @@ class UpdateSkillRequestVisibilityScope(DaraModel):
         project_ids: List[str] = None,
         user_ids: List[str] = None,
     ):
-        # The list of visible project IDs.
+        # The IDs of the projects in which the Skill is visible.
         self.project_ids = project_ids
-        # The list of visible user IDs.
+        # The IDs of the users to whom the Skill is visible.
         self.user_ids = user_ids
 
     def validate(self):

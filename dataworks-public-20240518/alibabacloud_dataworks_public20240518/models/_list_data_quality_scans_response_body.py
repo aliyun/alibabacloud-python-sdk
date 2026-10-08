@@ -60,7 +60,7 @@ class ListDataQualityScansResponseBodyPageInfo(DaraModel):
         self.page_number = page_number
         # The number of records per page. Default value: 10.
         self.page_size = page_size
-        # The total number of records returned.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):

@@ -24,11 +24,9 @@ class RerunWorkflowInstancesRequest(DaraModel):
     ):
         # The business date used for matching manual workflow instances.
         self.bizdate = bizdate
-        # The end trigger time of the manual workflow instance used for matching. This parameter must be used together with the StartTriggerTime.
+        # The end trigger time (creation time) of the manual workflow instance used for matching. This parameter must be used together with the StartTriggerTime.
         self.end_trigger_time = end_trigger_time
-        # The environment of the workspace. Valid values:
-        # 
-        # Prod Dev
+        # The environment of the workspace. Valid values: Prod (production) and Dev (development).
         self.env_type = env_type
         # The match conditions for internal instances of manual workflow instances.
         self.filter = filter
@@ -43,16 +41,8 @@ class RerunWorkflowInstancesRequest(DaraModel):
         # The start trigger time (creation time) of the manual workflow instance used for matching. This parameter must be used together with EndTriggerTime.
         self.start_trigger_time = start_trigger_time
         # The status used for matching manual workflow instances.
-        # 
-        # Valid values:
-        # 
-        # - Success
-        # 
-        # - Failure
         self.status = status
-        # The type of the workflow instance. Valid values:
-        # 
-        # ManualWorkflow.
+        # The type of the workflow instance. Valid value: ManualWorkflow (manual workflow).
         # 
         # This parameter is required.
         self.type = type

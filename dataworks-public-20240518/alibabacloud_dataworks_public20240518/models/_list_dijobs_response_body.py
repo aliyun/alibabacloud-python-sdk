@@ -124,7 +124,7 @@ class ListDIJobsResponseBodyPagingInfoDIJobs(DaraModel):
     ):
         # This parameter is deprecated. Use the `Id` parameter instead.
         self.dijob_id = dijob_id
-        # The type of the destination data source. Valid values: `Hologres`, `OSS-HDFS`, `OSS`, `MaxCompute`, `LogHub`, `StarRocks`, `DataHub`, `AnalyticDB_For_MySQL`, `Kafka`, and `Hive`.
+        # The type of the destination data source. Valid values: `Hologres`, `OSS-HDFS`, `OSS`, `MaxCompute`, `Loghub`, `STARROCKS`, `DataHub`, `ANALYTICDB_FOR_MYSQL`, `Kafka`, and `Hive`.
         self.destination_data_source_type = destination_data_source_type
         # The ID of the Data Integration job.
         self.id = id
@@ -159,7 +159,7 @@ class ListDIJobsResponseBodyPagingInfoDIJobs(DaraModel):
         self.owner = owner
         # The ID of the DataWorks workspace that contains the job.
         self.project_id = project_id
-        # The type of the source data source. Valid values: `PolarDB`, `MySQL`, `Kafka`, `LogHub`, `Hologres`, `Oracle`, `OceanBase`, `MongoDB`, `RedShift`, `Hive`, `SQLServer`, `Doris`, and `ClickHouse`.
+        # The type of the source data source. Valid values: `PolarDB`, `MySQL`, `Kafka`, `Loghub`, `Hologres`, `Oracle`, `OceanBase`, `MongoDB`, `RedShift`, `Hive`, `SqlServer`, `Doris`, and `ClickHouse`.
         self.source_data_source_type = source_data_source_type
 
     def validate(self):

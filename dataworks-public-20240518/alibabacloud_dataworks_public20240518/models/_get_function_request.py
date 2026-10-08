@@ -16,7 +16,10 @@ class GetFunctionRequest(DaraModel):
         # 
         # This parameter is required.
         self.id = id
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace configuration page to query the ID.
+        # 
+        # 
+        # 
         # 
         # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
         self.project_id = project_id

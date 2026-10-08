@@ -17,7 +17,7 @@ class UpdateComputeResourceRequest(DaraModel):
         # 
         # This parameter is required.
         self.connection_properties = connection_properties
-        # The category of the computing resource to be added. Different types have different subtypes and corresponding parameter schema constraints. Examples: InstanceMode and UrlMode.
+        # The category of the computing resource to be added. Different types have different subtypes and corresponding parameter schema constraints. Examples: InstanceMode (instance mode) and UrlMode (connection string mode).
         self.connection_properties_mode = connection_properties_mode
         # The description of the computing resource. The maximum length is 3000 characters.
         self.description = description

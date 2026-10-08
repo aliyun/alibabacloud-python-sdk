@@ -31,8 +31,11 @@ class CreateCrossProjectPipelineRunRequest(DaraModel):
         self.project_id = project_id
         # The deployment type. Valid values:
         # 
-        # - Offline: Offline deployment.
-        # - Online: Online deployment.
+        # 
+        # 
+        # 
+        # - Offline: Deployment to take the object offline.
+        # - Online: Deployment to bring the object online.
         # 
         # This parameter is required.
         self.type = type

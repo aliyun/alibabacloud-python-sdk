@@ -13,11 +13,19 @@ class GetWorkflowDefinitionRequest(DaraModel):
     ):
         # The ID of the workflow.
         # 
+        # 
+        # 
+        # 
+        # > This field is of type Long in SDK versions earlier than 8.0.0 and String in SDK version 8.0.0 and later. This change does not affect normal SDK usage; the parameter is still returned according to the type defined in the SDK. Upgrading the SDK across version 8.0.0 may cause compilation failures due to the type change. In this case, manually update the data type.
+        # 
         # This parameter is required.
         self.id = id
         # Specifies whether the query result includes the script content of internal nodes in the workflow definition. For nodes with large content, this may cause high network transmission latency.
         self.include_script_content = include_script_content
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace management page to query the ID.
+        # 
+        # 
+        # 
         # 
         # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
         self.project_id = project_id

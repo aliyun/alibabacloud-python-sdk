@@ -544,7 +544,7 @@ class ExecuteAdhocWorkflowInstanceRequestTasksDependencies(DaraModel):
         self,
         upstream_output: str = None,
     ):
-        # The output identifier of the dependent task.
+        # The output identifier of the upstream task.
         self.upstream_output = upstream_output
 
     def validate(self):

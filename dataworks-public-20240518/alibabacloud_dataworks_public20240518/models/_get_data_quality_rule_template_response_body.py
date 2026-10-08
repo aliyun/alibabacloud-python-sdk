@@ -141,18 +141,22 @@ class GetDataQualityRuleTemplateResponseBodyDataQualityRuleTemplateSamplingConfi
         setting_config: str = None,
     ):
         # The name of the metric to be sampled:
+        # 
+        # 
+        # 
+        # 
         # - Count: the number of rows in the table.
-        # - Min: the minimum value of the field.
-        # - Max: the maximum value of the field.
-        # - Avg: the average value of the field.
-        # - DistinctCount: the number of distinct values of the field.
-        # - DistinctPercent: the ratio of the number of distinct values of the field to the number of data rows.
-        # - DuplicatedCount: the number of duplicate values of the field.
-        # - DuplicatedPercent: the ratio of the number of duplicate values of the field to the number of data rows.
+        # - Min: the minimum value of the column.
+        # - Max: the maximum value of the column.
+        # - Avg: the average value of the column.
+        # - DistinctCount: the number of distinct values of the column.
+        # - DistinctPercent: the ratio of the number of distinct values of the column to the number of data rows.
+        # - DuplicatedCount: the number of duplicate values of the column.
+        # - DuplicatedPercent: the ratio of the number of duplicate values of the column to the number of data rows.
         # - TableSize: the size of the table.
-        # - NullValueCount: the number of rows in which the field is null.
-        # - NullValuePercent: the percentage of rows in which the field is null.
-        # - GroupCount: the number of data rows corresponding to each value after aggregation by field value.
+        # - NullValueCount: the number of rows in which the column is null.
+        # - NullValuePercent: the percentage of rows in which the column is null.
+        # - GroupCount: the number of data rows corresponding to each value after aggregation by column value.
         # - CountNotIn: the number of rows whose enumerated values do not match.
         # - CountDistinctNotIn: the number of distinct values whose enumerated values do not match.
         # - UserDefinedSql: collects samples by using a custom SQL statement.

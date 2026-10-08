@@ -27,7 +27,7 @@ class UpdateTaskAsyncShrinkRequest(DaraModel):
         timeout: int = None,
         trigger_shrink: str = None,
     ):
-        # The client unique code of the node, which uniquely identifies a node. This code is used for asynchronous operations and idempotence. If you do not specify this parameter during creation, the system automatically generates one. The code is uniquely bound to the resource ID. When updating or deleting a resource, if you specify this parameter, it must be the same as the client unique code specified during creation.
+        # The client unique code of the node, used to uniquely identify a node. This code is used for asynchronous processing and idempotence. If you do not specify this parameter when creating a node, the system automatically generates a value and binds it to the resource ID. If you specify this parameter when updating or deleting a resource, the value must match the client unique code used when the resource was created.
         self.client_unique_code = client_unique_code
         # The associated data source information.
         self.data_source_shrink = data_source_shrink
@@ -36,7 +36,6 @@ class UpdateTaskAsyncShrinkRequest(DaraModel):
         # The description.
         self.description = description
         # The project environment. Valid values:
-        # 
         # - Prod: production
         # - Dev: development
         self.env_type = env_type
@@ -47,8 +46,8 @@ class UpdateTaskAsyncShrinkRequest(DaraModel):
         # The input information.
         self.inputs_shrink = inputs_shrink
         # The instance generation mode. Valid values:
-        # - T+1: Generates instances the next day.
-        # - Immediately: Generates instances immediately. Note: Only periodic instances whose scheduled time is at least 10 minutes after the node publish time are generated. During the full instance generation period (22:00 to 24:00), real-time instance generation is not available. You can submit and publish nodes, but new nodes do not automatically generate instances.
+        # - T+1: generates instances the next day.
+        # - Immediately: generates instances immediately. Note: only periodic instances whose scheduled time is more than 10 minutes after the node publish time are generated normally. During the full-to-instance conversion period (22:00–24:00), real-time instance conversion is not supported. You can submit and publish nodes, but new nodes are not automatically converted to instances.
         self.instance_mode = instance_mode
         # The name.
         self.name = name
@@ -58,20 +57,24 @@ class UpdateTaskAsyncShrinkRequest(DaraModel):
         self.owner = owner
         # The retry time interval, in milliseconds. The value cannot exceed 1800000.
         self.rerun_interval = rerun_interval
-        # Specifies whether the node can be rerun. Valid values:
-        # - AllDenied: Cannot be rerun regardless of success or failure.
-        # - FailureAllowed: Can be rerun only upon failure.
-        # - AllAllowed: Can be rerun regardless of success or failure.
+        # The configuration that specifies whether the node can be rerun. Valid values:
+        # 
+        # 
+        # 
+        # 
+        # - AllDenied: the node cannot be rerun regardless of whether it succeeds or fails.
+        # - FailureAllowed: the node can be rerun only if it fails.
+        # - AllAllowed: the node can be rerun regardless of whether it succeeds or fails.
         self.rerun_mode = rerun_mode
-        # The number of retries. This parameter takes effect when the node is configured to allow reruns.
+        # The number of retries. This parameter takes effect only when the node is configured to allow reruns.
         self.rerun_times = rerun_times
-        # The runtime environment configuration, such as schedule resource group information.
+        # The runtime environment configuration, such as the resource group information.
         self.runtime_resource_shrink = runtime_resource_shrink
-        # The script information.
+        # The runtime script information.
         self.script_shrink = script_shrink
-        # The list of data asset tags to bind.
+        # The list of data asset tags to attach.
         self.tags_shrink = tags_shrink
-        # The timeout setting for scheduling configuration.
+        # The timeout period defined in the scheduling configuration.
         self.timeout = timeout
         # The trigger method of the node.
         self.trigger_shrink = trigger_shrink

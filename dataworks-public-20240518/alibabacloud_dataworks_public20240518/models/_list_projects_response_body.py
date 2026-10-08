@@ -136,11 +136,7 @@ class ListProjectsResponseBodyPagingInfoProjects(DaraModel):
         # 
         # - false: The development environment is disabled. In this case, only the production environment is used in the workspace.
         self.dev_environment_enabled = dev_environment_enabled
-        # Indicates whether the Develop role is disabled. Valid values:
-        # 
-        # - false (default)
-        # 
-        # - true
+        # Indicates whether the developer role is disabled. Valid values: false (enabled) and true (disabled).
         self.dev_role_disabled = dev_role_disabled
         # The display name of the workspace.
         self.display_name = display_name
@@ -156,25 +152,7 @@ class ListProjectsResponseBodyPagingInfoProjects(DaraModel):
         # 
         # - false: Scheduling of PAI tasks is disabled.
         self.pai_task_enabled = pai_task_enabled
-        # The status of the workspace. Valid values:
-        # 
-        # - Available
-        # 
-        # - Initializing
-        # 
-        # - InitFailed
-        # 
-        # - Forbidden
-        # 
-        # - Deleting
-        # 
-        # - DeleteFailed
-        # 
-        # - Frozen
-        # 
-        # - Updating
-        # 
-        # - UpdateFailed
+        # The status of the workspace. Valid values: Available (running normally), Initializing (initializing), InitFailed (initialization failed), Forbidden (manually disabled), Deleting (being deleted), DeleteFailed (deletion failed), Frozen (frozen due to overdue payments), Updating (being updated), and UpdateFailed (update failed).
         self.status = status
 
     def validate(self):

@@ -61,9 +61,11 @@ class GetProjectMemberResponseBodyProjectMember(DaraModel):
         self.roles = roles
         # The status of the Workspace member.
         # 
-        # - Normal: The member is active.
         # 
-        # - Disabled: The member is disabled.
+        # 
+        # 
+        # - Normal: The member is active.
+        # - Forbidden: The member is disabled.
         self.status = status
         # The ID of the user.
         self.user_id = user_id

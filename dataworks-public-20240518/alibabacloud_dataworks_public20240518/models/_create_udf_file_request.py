@@ -51,7 +51,7 @@ class CreateUdfFileRequest(DaraModel):
         self.parameter_description = parameter_description
         # The DataWorks workspace ID. To find this, click the wrench icon in the upper-right corner and navigate to the workspace management page.
         self.project_id = project_id
-        # The unique identifier of the DataWorks workspace, which is the identifier at the top of the Data Studio page where you switch workspaces.
+        # The unique identifier of the DataWorks workspace, which is the English identifier at the top of the Data Studio page where you switch workspaces.
         self.project_identifier = project_identifier
         # A comma-separated list of resource names referenced by the function, corresponding to the resource list field in the Create Function form.
         # 

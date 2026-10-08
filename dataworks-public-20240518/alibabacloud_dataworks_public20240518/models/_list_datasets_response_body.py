@@ -69,7 +69,7 @@ class ListDatasetsResponseBodyPagingInfo(DaraModel):
         self.page_number = page_number
         # The number of entries on this page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

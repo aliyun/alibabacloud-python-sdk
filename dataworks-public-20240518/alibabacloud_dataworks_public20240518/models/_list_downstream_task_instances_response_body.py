@@ -168,8 +168,18 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances(DaraModel):
         # The baseline ID.
         self.baseline_id = baseline_id
         # The business date.
+        # 
+        # 
+        # 
+        # 
+        # The value is a 13-digit number, such as 1710239005403.
         self.bizdate = bizdate
         # The creation time.
+        # 
+        # 
+        # 
+        # 
+        # The value is a 13-digit number, such as 1710239005403.
         self.create_time = create_time
         # The account ID of the user who created the instance.
         self.create_user = create_user
@@ -178,12 +188,28 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances(DaraModel):
         # The description.
         self.description = description
         # The environment of the target data source. Valid values:
+        # 
+        # 
+        # 
+        # 
+        # - Dev: development environment.
+        # - Prod: production environment.
         self.env_type = env_type
         # The time when the instance finished running.
+        # 
+        # 
+        # 
+        # 
+        # The value is a 13-digit number, such as 1710239005403.
         self.finished_time = finished_time
         # The unique identifier of the task instance.
         self.id = id
         # The modification time.
+        # 
+        # 
+        # 
+        # 
+        # The value is a 13-digit number, such as 1710239005403.
         self.modify_time = modify_time
         # The account ID of the user who last modified the instance.
         self.modify_user = modify_user
@@ -206,10 +232,34 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances(DaraModel):
         # The resource group information associated with the instance.
         self.runtime_resource = runtime_resource
         # The time when the instance started running.
+        # 
+        # 
+        # 
+        # 
+        # The value is a 13-digit number, such as 1710239005403.
         self.started_time = started_time
-        # The run status of the instance.
+        # The run status of the instance. Valid values:
+        # 
+        # 
+        # 
+        # 
+        # - NotRun: not run.
+        # - Running: running.
+        # - WaitTime: waiting for TriggerTime to arrive.
+        # - CheckingCondition: checking branch conditions.
+        # - WaitResource: waiting for resources.
+        # - Failure: execution failed.
+        # - Success: execution succeeded.
+        # - Checking: submitted for data quality check.
+        # - WaitTrigger: waiting for an external trigger. Trigger-based nodes enter this status after the waiting time elapses.
         self.status = status
-        # The dependency type.
+        # The dependency type. Valid values:
+        # 
+        # 
+        # 
+        # 
+        # - Normal: dependency within the same scheduling cycle.
+        # - CrossCycle: cross-cycle dependency.
         self.step_type = step_type
         # The ID of the corresponding node.
         self.task_id = task_id
@@ -218,10 +268,20 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances(DaraModel):
         # The type of the corresponding node.
         self.task_type = task_type
         # The timeout period for node execution. Unit: seconds.
+        # 
+        # 
+        # 
+        # 
+        # Note: The scheduling system rounds the configured value to whole hours.
         self.timeout = timeout
         # The run mode at the time of triggering. This parameter takes effect when TriggerType is set to Scheduler.
         self.trigger_recurrence = trigger_recurrence
         # The scheduled trigger time.
+        # 
+        # 
+        # 
+        # 
+        # The value is a 13-digit number, such as 1710239005403.
         self.trigger_time = trigger_time
         # The trigger type.
         self.trigger_type = trigger_type
@@ -577,7 +637,13 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstances(D
         dependency_type: str = None,
         task_instance: main_models.ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTaskInstance = None,
     ):
-        # The dependency type.
+        # The dependency type. Valid values:
+        # 
+        # 
+        # 
+        # 
+        # - Normal: dependency within the same scheduling cycle.
+        # - CrossCycle: cross-cycle dependency.
         self.dependency_type = dependency_type
         # The task instance.
         self.task_instance = task_instance
@@ -649,8 +715,18 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTa
         # The baseline ID.
         self.baseline_id = baseline_id
         # The business date.
+        # 
+        # 
+        # 
+        # 
+        # The value is a 13-digit number, such as 1710239005403.
         self.bizdate = bizdate
         # The creation time.
+        # 
+        # 
+        # 
+        # 
+        # The value is a 13-digit number, such as 1710239005403.
         self.create_time = create_time
         # The account ID of the user who created the instance.
         self.create_user = create_user
@@ -659,12 +735,28 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTa
         # The description.
         self.description = description
         # The environment of the target data source. Valid values:
+        # 
+        # 
+        # 
+        # 
+        # - Dev: development environment.
+        # - Prod: production environment.
         self.env_type = env_type
         # The time when the instance finished running.
+        # 
+        # 
+        # 
+        # 
+        # The value is a 13-digit number, such as 1710239005403.
         self.finished_time = finished_time
         # The unique identifier of the task instance.
         self.id = id
         # The modification time.
+        # 
+        # 
+        # 
+        # 
+        # The value is a 13-digit number, such as 1710239005403.
         self.modify_time = modify_time
         # The account ID of the user who last modified the instance.
         self.modify_user = modify_user
@@ -685,8 +777,26 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTa
         # The runtime environment configuration, such as resource group information.
         self.runtime_resource = runtime_resource
         # The time when the instance started running.
+        # 
+        # 
+        # 
+        # 
+        # The value is a 13-digit number, such as 1710239005403.
         self.started_time = started_time
-        # The run status of the instance.
+        # The run status of the instance. Valid values:
+        # 
+        # 
+        # 
+        # 
+        # - NotRun: not run.
+        # - Running: running.
+        # - WaitTime: waiting for TriggerTime to arrive.
+        # - CheckingCondition: checking branch conditions.
+        # - WaitResource: waiting for resources.
+        # - Failure: execution failed.
+        # - Success: execution succeeded.
+        # - Checking: submitted for data quality check.
+        # - WaitTrigger: waiting for an external trigger. Trigger-based nodes enter this status after the waiting time elapses.
         self.status = status
         # The ID of the corresponding node.
         self.task_id = task_id
@@ -695,6 +805,11 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTa
         # The type of the corresponding node.
         self.task_type = task_type
         # The timeout period for node execution. Unit: seconds.
+        # 
+        # 
+        # 
+        # 
+        # Note: The scheduling system rounds the configured value to whole hours.
         self.timeout = timeout
         # The run mode when triggered. This parameter takes effect when TriggerType is set to Scheduler. Valid values:
         # - Pause: paused.
@@ -702,14 +817,34 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTa
         # - Normal: normal execution.
         self.trigger_recurrence = trigger_recurrence
         # The scheduled trigger time.
+        # 
+        # 
+        # 
+        # 
+        # The value is a 13-digit number, such as 1710239005403.
         self.trigger_time = trigger_time
-        # The trigger type.
+        # The trigger type. Valid values:
+        # 
+        # 
+        # 
+        # 
+        # - Scheduler: triggered by a scheduling cycle.
+        # - Manual: manually triggered.
         self.trigger_type = trigger_type
         # The ID of the workflow to which the instance belongs.
         self.workflow_id = workflow_id
         # The ID of the workflow instance to which the instance belongs.
         self.workflow_instance_id = workflow_instance_id
-        # The type of the workflow instance to which the instance belongs.
+        # The type of the workflow instance to which the instance belongs. Valid values:
+        # 
+        # 
+        # 
+        # 
+        # - Normal: scheduled execution.
+        # - Manual: manual task.
+        # - SmokeTest: test.
+        # - SupplementData: data backfill.
+        # - ManualWorkflow: manual workflow.
         self.workflow_instance_type = workflow_instance_type
         # The name of the workflow to which the instance belongs.
         self.workflow_name = workflow_name

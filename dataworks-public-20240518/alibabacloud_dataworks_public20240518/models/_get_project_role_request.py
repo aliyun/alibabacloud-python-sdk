@@ -34,7 +34,7 @@ class GetProjectRoleRequest(DaraModel):
         # 
         # This parameter is required.
         self.code = code
-        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the workspace ID.
+        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Configuration page to obtain the workspace ID.
         # 
         # This parameter is required.
         self.project_id = project_id

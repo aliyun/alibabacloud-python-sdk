@@ -12,11 +12,7 @@ class UpdateNodeResponseBody(DaraModel):
     ):
         # The request ID. You can troubleshoot issues based on the ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # - true
-        # 
-        # - false
+        # Indicates whether the request was successful. Valid values: true (successful) and false (failed).
         self.success = success
 
     def validate(self):

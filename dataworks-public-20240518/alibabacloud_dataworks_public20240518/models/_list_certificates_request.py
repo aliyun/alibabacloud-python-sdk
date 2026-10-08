@@ -23,7 +23,7 @@ class ListCertificatesRequest(DaraModel):
         self.end_create_time = end_create_time
         # The name of the certificate file. Fuzzy match by file name is supported.
         self.name = name
-        # The order in which you want to sort the certificate files. Valid values: Desc: descending order ASC: ascending order Default value: Asc
+        # The order in which you want to sort the certificate files. Valid values: Desc: descending order Asc: ascending order Default value: Asc
         self.order = order
         # The page number. Default value: 1.
         self.page_number = page_number

@@ -63,11 +63,7 @@ class GetComputeResourceResponseBodyComputeResource(DaraModel):
         type: str = None,
         whether_default: bool = None,
     ):
-        # The specific connection configuration details for the computing resource, including the connection address, access identity, and environment information. envType, which specifies the computing resource environment, is a property of this object. Valid values:
-        # 
-        # - Dev
-        # 
-        # - Prod Different types of computing resources have different attribute specifications under various configuration modes (ConnectionPropertiesMode).
+        # The specific connection configuration details for the computing resource, including the connection address, access identity, and environment information. envType, which specifies the computing resource environment, is a property of this object. Valid values: Dev: development environment; Prod: production environment. Different types of computing resources have different attribute specifications under various configuration modes (ConnectionPropertiesMode).
         self.connection_properties = connection_properties
         # The addition category of the computing resource. Different types will have different subtypes, each with corresponding parameter constraints. For instance:
         # 

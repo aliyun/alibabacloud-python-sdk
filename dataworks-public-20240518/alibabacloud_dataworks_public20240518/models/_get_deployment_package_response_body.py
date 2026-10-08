@@ -147,7 +147,10 @@ class GetDeploymentPackageResponseBodyDataDeployment(DaraModel):
         status: int = None,
         to_environment: int = None,
     ):
-        # The check status of the nodes involved in the deployment package. When the target environment is the development environment (toEnvironment=1), you can publish the file to the production environment only when the Status of the deployment package is 1 and CheckingStatus is empty.
+        # The check status of the nodes involved in the deployment package. When the target environment is the development environment (toEnvironment=1), you can deploy the file to the production environment only when the Status of the deployment package is 1 and CheckingStatus is empty.
+        # 
+        # 
+        # 
         # 
         # - 7: The check failed.
         # - 8: The check is in progress.
@@ -175,7 +178,10 @@ class GetDeploymentPackageResponseBodyDataDeployment(DaraModel):
         # - 1: successful
         # - 2: failed
         self.status = status
-        # The target environment to which the file information is published. Valid values:
+        # The target environment to which the file information is deployed. Valid values:
+        # 
+        # 
+        # 
         # 
         # - 1: development environment
         # - 2: production environment
@@ -268,13 +274,16 @@ class GetDeploymentPackageResponseBodyDataDeployedItems(DaraModel):
         self.file_version = file_version
         # The status of the deployed item. Valid values:
         # 
-        # - UNPUBLISHED(0): not published
-        # - SUCCESS(1): published successfully
-        # - ERROR(2): publishing failed
+        # 
+        # 
+        # 
+        # - UNPUBLISHED(0): not deployed
+        # - SUCCESS(1): deployed successfully
+        # - ERROR(2): deployment failed
         # - CLONED(3): cloned successfully
-        # - DEPLOY_ERROR(4): publishing failed
+        # - DEPLOY_ERROR(4): deployment failed
         # - CLONING(5): cloning in progress
-        # - REJECT(6): publishing rejected
+        # - REJECT(6): deployment rejected
         self.status = status
 
     def validate(self):

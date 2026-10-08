@@ -15,7 +15,7 @@ class UpdateComponentRequest(DaraModel):
         # 
         # This parameter is required.
         self.component_id = component_id
-        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace configuration page to query the ID.
         # 
         # This parameter is required.
         self.project_id = project_id

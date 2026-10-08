@@ -34,9 +34,31 @@ class ListSchemasRequest(DaraModel):
         self.page_size = page_size
         # The parent entity ID. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html). For the Hologres metadata crawler type, you can call the ListDatabases operation to query the settings of the `ParentMetaEntityId` parameter.
         # 
+        # 
+        # 
+        # 
         # Configure the `ParentMetaEntityId` parameter in the `${EntityType}:${Instance ID or escaped URL}:${Catalog identifier}:${Database name}` format. If a level does not exist, leave the level empty.
         # 
+        # 
+        # 
+        # 
         # > If you want to query the information about a MaxCompute schema, specify an empty string at the Instance ID level as a placeholder and a MaxCompute project name at the Database name level. Make sure that the schema feature is enabled for the MaxCompute project.
+        # 
+        # 
+        # 
+        # 
+        # Common ParentMetaEntityId formats:
+        # 
+        # 
+        # 
+        # 
+        # - `maxcompute-project:::project_name`: The MaxCompute project must have the schema feature enabled.
+        # - `holo-database:instance_id::database_name`
+        # 
+        # 
+        # 
+        # 
+        # `instance_id`: Hologres instance ID. `database_name`: database name. `project_name`: MaxCompute project name.
         # 
         # This parameter is required.
         self.parent_meta_entity_id = parent_meta_entity_id

@@ -10,9 +10,9 @@ class UpdateTaskAsyncResponseBody(DaraModel):
         operation_id: str = None,
         request_id: str = None,
     ):
-        # The operation ID, which is used to obtain the result of the asynchronous node update. You can call the UpdateTaskAsync operation to obtain the result.
+        # The operation ID, used to retrieve the result of the asynchronous node update. You can obtain this value from the `UpdateTaskAsync` operation.
         self.operation_id = operation_id
-        # The request ID. You can use this ID to troubleshoot issues.
+        # The unique ID of this request. If an error occurs, you can use this ID to troubleshoot the issue.
         self.request_id = request_id
 
     def validate(self):

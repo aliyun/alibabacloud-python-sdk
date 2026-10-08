@@ -14,7 +14,7 @@ class UpdateMetaEntityResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The result of the update operation.
+        # The updated entity or the result of the write operation.
         self.result = result
         # Indicates whether the request was successful.
         self.success = success

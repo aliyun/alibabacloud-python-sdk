@@ -15,7 +15,7 @@ class DeleteDIAlarmRuleRequest(DaraModel):
         self.dialarm_rule_id = dialarm_rule_id
         # The ID of the synchronization task.
         self.dijob_id = dijob_id
-        # The ID of the synchronization task.
+        # The alert rule ID.
         self.id = id
 
     def validate(self):

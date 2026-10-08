@@ -22,7 +22,7 @@ class MetaEntityAttributeDef(DaraModel):
         self.allowed_values = allowed_values
         # Attribute description
         self.description = description
-        # Indicates whether the attribute appears on the product page. Default is true.
+        # Indicates whether the attribute appears on the details page. Default is true.
         self.display_enabled = display_enabled
         # Display name. It can be up to 32 characters long.
         self.display_name = display_name

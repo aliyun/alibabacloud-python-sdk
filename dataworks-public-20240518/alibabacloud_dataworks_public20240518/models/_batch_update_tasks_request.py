@@ -230,7 +230,7 @@ class BatchUpdateTasksRequestTasksTrigger(DaraModel):
         # - Skip: dry run
         # - Normal: normal execution
         self.recurrence = recurrence
-        # The effective period of the epoch trigger. This parameter takes effect only when type is set to Scheduler. Format: `yyyy-mm-dd hh:mm:ss`.
+        # The time when the periodic trigger takes effect. This parameter takes effect only when type is set to Scheduler. Format: `yyyy-mm-dd hh:mm:ss`.
         self.start_time = start_time
         # The trigger type. Valid values:
         # - Scheduler: triggered by scheduling cycle

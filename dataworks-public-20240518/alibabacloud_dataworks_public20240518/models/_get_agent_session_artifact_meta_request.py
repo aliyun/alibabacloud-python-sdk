@@ -59,9 +59,9 @@ class GetAgentSessionArtifactMetaRequestParams(DaraModel):
         artifact_path: str = None,
         session_id: str = None,
     ):
-        # The path of the artifact.
+        # The path of the artifact. Required.
         self.artifact_path = artifact_path
-        # The ID of the session.
+        # The ID of the session. Required.
         self.session_id = session_id
 
     def validate(self):

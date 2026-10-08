@@ -55,7 +55,10 @@ class CreateImageRequest(DaraModel):
         self.namespace = namespace
         # The image ID from the image provider. This parameter is required when referencing a DataWorks official image.
         self.provider_image_id = provider_image_id
-        # The image reference data type. Valid values:
+        # The image reference type. Valid values:
+        # 
+        # 
+        # 
         # 
         # - ACR: ACR image repository.
         # - DataWorks: DataWorks official image.
@@ -181,7 +184,11 @@ class CreateImageRequestSupported(DaraModel):
         task_types: List[str] = None,
     ):
         # The image sub-module. Valid values:
-        # - Scheduler: DataStudio.
+        # 
+        # 
+        # 
+        # 
+        # - Scheduler: Data Studio.
         self.module = module
         # The list of supported node types.
         self.task_types = task_types

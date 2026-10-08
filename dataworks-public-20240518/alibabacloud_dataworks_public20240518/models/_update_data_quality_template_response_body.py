@@ -12,7 +12,7 @@ class UpdateDataQualityTemplateResponseBody(DaraModel):
     ):
         # The API request ID, which is generated as a UUID.
         self.request_id = request_id
-        # Indicates whether the rule template is updated.
+        # Indicates whether the rule template is updated successfully.
         self.success = success
 
     def validate(self):

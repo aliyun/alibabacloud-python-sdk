@@ -91,7 +91,7 @@ class GetDataQualityScanResponseBodyDataQualityScan(DaraModel):
         self.project_id = project_id
         # The resource group used during the running of the data quality monitor.
         self.runtime_resource = runtime_resource
-        # Spec code for the content of the data quality monitoring.
+        # Spec code for the content of the data quality monitoring. For more information, see [Data quality Spec configuration description](https://help.aliyun.com/document_detail/2963394.html).
         self.spec = spec
         # The trigger configurations of the data quality monitoring task.
         self.trigger = trigger

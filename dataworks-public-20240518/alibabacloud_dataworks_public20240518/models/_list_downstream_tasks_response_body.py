@@ -165,19 +165,11 @@ class ListDownstreamTasksResponseBodyPagingInfoTasks(DaraModel):
         self.data_source = data_source
         # The description of the task.
         self.description = description
-        # The environment of the workspace. Valid values:
-        # 
-        # - Prod
-        # 
-        # - Dev
+        # The environment of the workspace. Valid values: Prod (production) and Dev (development).
         self.env_type = env_type
         # The task ID.
         self.id = id
-        # The instance generation mode. Valid values:
-        # 
-        # - T+1
-        # 
-        # - Immediately
+        # The instance generation mode. Valid values: T+1 (generate the next day) and Immediately (generate immediately).
         self.instance_mode = instance_mode
         # The modification time.
         self.modify_time = modify_time
@@ -490,7 +482,7 @@ class ListDownstreamTasksResponseBodyPagingInfoTasksRuntimeResource(DaraModel):
         image: str = None,
         resource_group_id: str = None,
     ):
-        # The default number of compute units (CUs) configured for task running.
+        # The number of compute units (CUs) configured for task running.
         self.cu = cu
         # The ID of the image configured for task running.
         self.image = image
@@ -636,19 +628,11 @@ class ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask(DaraModel):
         self.data_source = data_source
         # The description.
         self.description = description
-        # The environment of the workspace. Valid values:
-        # 
-        # - Prod
-        # 
-        # - Dev
+        # The environment of the workspace. Valid values: Prod (production) and Dev (development).
         self.env_type = env_type
         # The task ID.
         self.id = id
-        # The instance generation mode. Valid values:
-        # 
-        # - T+1
-        # 
-        # - Immediately
+        # The instance generation mode. Valid values: T+1 (generate the next day) and Immediately (generate immediately).
         self.instance_mode = instance_mode
         # The modification time.
         self.modify_time = modify_time
@@ -853,13 +837,7 @@ class ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskTrigger(DaraMo
         self.cron = cron
         # The end time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
         self.end_time = end_time
-        # The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values:
-        # 
-        # - Pause
-        # 
-        # - Skip
-        # 
-        # - Normal
+        # The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values: Pause (paused), Skip (dry run), and Normal (normal execution).
         self.recurrence = recurrence
         # The start time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
         self.start_time = start_time
@@ -929,7 +907,7 @@ class ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskRuntimeResourc
         image: str = None,
         resource_group_id: str = None,
     ):
-        # The default number of compute units (CUs) configured for task running.
+        # The number of compute units (CUs) configured for task running.
         self.cu = cu
         # The ID of the image configured for task running.
         self.image = image

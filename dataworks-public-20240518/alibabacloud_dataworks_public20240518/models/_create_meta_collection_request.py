@@ -14,19 +14,19 @@ class CreateMetaCollectionRequest(DaraModel):
     ):
         # The collection description.
         self.description = description
-        # The ID of the collection.
+        # The name of the collection.
         # 
         # This parameter is required.
         self.name = name
         # The parent collection ID.
         self.parent_id = parent_id
-        # The collection name.
+        # The collection type. Valid values:
         # 
-        # - Category
         # 
-        # - Album
         # 
-        # - AlbumCategory: Album subcategory.
+        # - Category: category.
+        # - Album: data album.
+        # - AlbumCategory: album subcategory.
         # 
         # This parameter is required.
         self.type = type

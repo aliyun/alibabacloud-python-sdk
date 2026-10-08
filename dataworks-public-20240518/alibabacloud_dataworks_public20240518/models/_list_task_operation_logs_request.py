@@ -13,21 +13,19 @@ class ListTaskOperationLogsRequest(DaraModel):
         page_size: int = None,
         project_env: str = None,
     ):
-        # The operation date, accurate to the day. The default value is the current day. You can query only the operation logs generated within the previous 31 days.
+        # The date of the operation, accurate to the day. Default value: the current day. You can query operation logs from the past 31 days. The value is a timestamp.
         self.date = date
-        # The task ID.
+        # The node ID.
         # 
         # This parameter is required.
         self.id = id
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number. Pages start from 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # The environment of the workspace. Valid values:
-        # 
-        # - Prod: production environment
-        # 
-        # - Dev: development environment
+        # The project environment. Valid values:
+        # - Prod: production
+        # - Dev: development
         self.project_env = project_env
 
     def validate(self):

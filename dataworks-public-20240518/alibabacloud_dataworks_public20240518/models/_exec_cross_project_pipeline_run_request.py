@@ -10,7 +10,7 @@ class ExecCrossProjectPipelineRunRequest(DaraModel):
         pipeline_run_id: str = None,
         project_id: int = None,
     ):
-        # The ID of the cross-workspace publish flow.
+        # The ID of the cross-workspace deployment flow.
         # 
         # This parameter is required.
         self.pipeline_run_id = pipeline_run_id

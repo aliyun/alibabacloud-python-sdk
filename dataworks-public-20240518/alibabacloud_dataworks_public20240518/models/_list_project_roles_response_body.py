@@ -15,7 +15,7 @@ class ListProjectRolesResponseBody(DaraModel):
     ):
         # The pagination information.
         self.paging_info = paging_info
-        # The request ID. Used for locating logs and troubleshooting issues.
+        # The request ID. Used to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -54,13 +54,13 @@ class ListProjectRolesResponseBodyPagingInfo(DaraModel):
         project_roles: List[main_models.ListProjectRolesResponseBodyPagingInfoProjectRoles] = None,
         total_count: str = None,
     ):
-        # The page number. Used for paging.
+        # The requested page number. Used for pagination.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
         # The list of workspace roles.
         self.project_roles = project_roles
-        # The total number of entries that meet the conditions.
+        # The total number of entries that meet the filter conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -118,16 +118,16 @@ class ListProjectRolesResponseBodyPagingInfoProjectRoles(DaraModel):
         project_id: int = None,
         type: str = None,
     ):
-        # The code of the workspace role.
+        # The role code of the workspace.
         self.code = code
         self.module_permissions = module_permissions
-        # The name of the workspace role.
+        # The role name of the workspace.
         self.name = name
         # The ID of the DataWorks workspace.
         # 
-        # Note: For default system workspace roles, the ProjectId returns a fixed value of -1.
+        # Note: For system default workspace roles, ProjectId returns a fixed value of -1.
         self.project_id = project_id
-        # The type of the workspace role.
+        # The role type of the workspace.
         self.type = type
 
     def validate(self):

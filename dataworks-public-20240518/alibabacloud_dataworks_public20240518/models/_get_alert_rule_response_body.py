@@ -137,6 +137,9 @@ class GetAlertRuleResponseBodyAlertRuleTriggerCondition(DaraModel):
         self.target = target
         # The type of the alert trigger. Valid values:
         # 
+        # 
+        # 
+        # 
         # - Finished: instance completed.
         # - UnFinished: instance not completed.
         # - Error: instance failed.
@@ -148,8 +151,8 @@ class GetAlertRuleResponseBodyAlertRuleTriggerCondition(DaraModel):
         # - InstanceKeyword: failed instance contains keyword.
         # - InstanceErrorCount: number of failed instances.
         # - InstanceErrorPercentage: percentage of failed instances.
-        # - ResourceGroupPercentage: schedule resource utilization.
-        # - ResourceGroupWaitCount: number of instances waiting for schedule resources.
+        # - ResourceGroupPercentage: resource group utilization.
+        # - ResourceGroupWaitCount: number of instances waiting for resource group resources.
         self.type = type
 
     def validate(self):
@@ -697,6 +700,9 @@ class GetAlertRuleResponseBodyAlertRuleNotificationReceivers(DaraModel):
         self.extension = extension
         # The type of the alert recipient. Valid values:
         # 
+        # 
+        # 
+        # 
         # - AliUid: Alibaba Cloud UID.
         # - ShiftSchedule: shift schedule.
         # - TaskOwner: node owner. Applicable to custom alerting and event alerting.
@@ -704,7 +710,7 @@ class GetAlertRuleResponseBodyAlertRuleNotificationReceivers(DaraModel):
         # - WebhookUrl: custom webhook URL.
         # - DingdingUrl: DingTalk webhook URL.
         # - FeishuUrl: Lark webhook URL.
-        # - WeixinUrl: WeChat webhook URL.
+        # - WeixinUrl: WeCom webhook URL.
         self.receiver_type = receiver_type
         # The values of the alert recipient.
         self.receiver_values = receiver_values

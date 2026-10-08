@@ -33,7 +33,7 @@ class ListAlertRulesRequest(DaraModel):
         self.receiver = receiver
         # The IDs of the scheduling tasks.
         self.task_ids = task_ids
-        # The alert triggering condition.
+        # The list of alert types.
         self.types = types
 
     def validate(self):

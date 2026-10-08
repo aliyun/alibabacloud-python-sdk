@@ -30,7 +30,7 @@ class UpdateTaskAsyncRequest(DaraModel):
         timeout: int = None,
         trigger: main_models.UpdateTaskAsyncRequestTrigger = None,
     ):
-        # The client unique code of the node, which uniquely identifies a node. This code is used for asynchronous operations and idempotence. If you do not specify this parameter during creation, the system automatically generates one. The code is uniquely bound to the resource ID. When updating or deleting a resource, if you specify this parameter, it must be the same as the client unique code specified during creation.
+        # The client unique code of the node, used to uniquely identify a node. This code is used for asynchronous processing and idempotence. If you do not specify this parameter when creating a node, the system automatically generates a value and binds it to the resource ID. If you specify this parameter when updating or deleting a resource, the value must match the client unique code used when the resource was created.
         self.client_unique_code = client_unique_code
         # The associated data source information.
         self.data_source = data_source
@@ -39,7 +39,6 @@ class UpdateTaskAsyncRequest(DaraModel):
         # The description.
         self.description = description
         # The project environment. Valid values:
-        # 
         # - Prod: production
         # - Dev: development
         self.env_type = env_type
@@ -50,8 +49,8 @@ class UpdateTaskAsyncRequest(DaraModel):
         # The input information.
         self.inputs = inputs
         # The instance generation mode. Valid values:
-        # - T+1: Generates instances the next day.
-        # - Immediately: Generates instances immediately. Note: Only periodic instances whose scheduled time is at least 10 minutes after the node publish time are generated. During the full instance generation period (22:00 to 24:00), real-time instance generation is not available. You can submit and publish nodes, but new nodes do not automatically generate instances.
+        # - T+1: generates instances the next day.
+        # - Immediately: generates instances immediately. Note: only periodic instances whose scheduled time is more than 10 minutes after the node publish time are generated normally. During the full-to-instance conversion period (22:00–24:00), real-time instance conversion is not supported. You can submit and publish nodes, but new nodes are not automatically converted to instances.
         self.instance_mode = instance_mode
         # The name.
         self.name = name
@@ -61,20 +60,24 @@ class UpdateTaskAsyncRequest(DaraModel):
         self.owner = owner
         # The retry time interval, in milliseconds. The value cannot exceed 1800000.
         self.rerun_interval = rerun_interval
-        # Specifies whether the node can be rerun. Valid values:
-        # - AllDenied: Cannot be rerun regardless of success or failure.
-        # - FailureAllowed: Can be rerun only upon failure.
-        # - AllAllowed: Can be rerun regardless of success or failure.
+        # The configuration that specifies whether the node can be rerun. Valid values:
+        # 
+        # 
+        # 
+        # 
+        # - AllDenied: the node cannot be rerun regardless of whether it succeeds or fails.
+        # - FailureAllowed: the node can be rerun only if it fails.
+        # - AllAllowed: the node can be rerun regardless of whether it succeeds or fails.
         self.rerun_mode = rerun_mode
-        # The number of retries. This parameter takes effect when the node is configured to allow reruns.
+        # The number of retries. This parameter takes effect only when the node is configured to allow reruns.
         self.rerun_times = rerun_times
-        # The runtime environment configuration, such as schedule resource group information.
+        # The runtime environment configuration, such as the resource group information.
         self.runtime_resource = runtime_resource
-        # The script information.
+        # The runtime script information.
         self.script = script
-        # The list of data asset tags to bind.
+        # The list of data asset tags to attach.
         self.tags = tags
-        # The timeout setting for scheduling configuration.
+        # The timeout period defined in the scheduling configuration.
         self.timeout = timeout
         # The trigger method of the node.
         self.trigger = trigger
@@ -252,25 +255,28 @@ class UpdateTaskAsyncRequestTrigger(DaraModel):
         start_time: str = None,
         type: str = None,
     ):
-        # The cron expression. This parameter takes effect when type is set to Scheduler.
+        # The cron expression. This parameter takes effect when Type is set to Scheduler.
         self.cron = cron
-        # The epoch type. This parameter takes effect when Type is set to Scheduler and the cron expression specifies timed scheduling within a specific hour. Default value: Daily. Valid values:
-        # - Daily: daily scheduling
-        # - NotDaily: hourly scheduling
+        # The scheduling cycle type. This parameter takes effect when Type is set to Scheduler and the cron expression specifies a timed scheduling at a specific hour. Default value: Daily. Valid values:
+        # 
+        # 
+        # 
+        # 
+        # - Daily: daily scheduling.
+        # - NotDaily: hourly scheduling.
         self.cycle_type = cycle_type
-        # The time when the periodic trigger expires. This parameter takes effect when type is set to Scheduler. Format: `yyyy-mm-dd hh:mm:ss`.
+        # The time when the periodic trigger expires. This parameter takes effect when Type is set to Scheduler. The format is `yyyy-mm-dd hh:mm:ss`.
         self.end_time = end_time
-        # The run mode when the trigger fires. This parameter takes effect when type is set to Scheduler. Valid values:
-        # - Pause: paused
-        # - Skip: dry run
-        # - Normal: normal execution
+        # The run mode when the trigger fires. This parameter takes effect when Type is set to Scheduler. Valid values:
+        # - Pause: paused.
+        # - Skip: dry run.
+        # - Normal: normal run.
         self.recurrence = recurrence
-        # The effective period of the epoch trigger. This parameter takes effect when type is set to Scheduler. Format: `yyyy-mm-dd hh:mm:ss`.
+        # The time at which the scheduled trigger takes effect. This parameter takes effect when Type is set to Scheduler. The format is `yyyy-mm-dd hh:mm:ss`.
         self.start_time = start_time
         # The trigger type. Valid values:
-        # 
-        # - Scheduler: periodic scheduling trigger
-        # - Manual: manual trigger
+        # - Scheduler: scheduled periodic trigger.
+        # - Manual: manual trigger.
         self.type = type
 
     def validate(self):
@@ -406,11 +412,11 @@ class UpdateTaskAsyncRequestRuntimeResource(DaraModel):
         image: str = None,
         resource_group_id: str = None,
     ):
-        # The CU consumption configured for the node.
+        # The CU consumption for the node runtime configuration.
         self.cu = cu
-        # The image ID configured for the node.
+        # The image ID for the node runtime configuration.
         self.image = image
-        # The identifier of the schedule resource group configured for the node.
+        # The identifier of the schedule resource group for the node runtime configuration.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -508,12 +514,11 @@ class UpdateTaskAsyncRequestOutputsVariables(DaraModel):
     ):
         # The variable name.
         self.name = name
-        # The type. Valid values:
-        # 
-        # - Constant: constant
-        # - PassThrough: parameter node output
-        # - System: variable
-        # - NodeOutput: script output
+        # The variable type. Valid values:
+        # - Constant: constant.
+        # - PassThrough: output of a pass-through parameter node.
+        # - System: system variable.
+        # - NodeOutput: script output.
         # 
         # This parameter is required.
         self.type = type
@@ -625,12 +630,11 @@ class UpdateTaskAsyncRequestInputsVariables(DaraModel):
     ):
         # The variable name.
         self.name = name
-        # The type. Valid values:
-        # 
-        # - Constant: constant
-        # - PassThrough: parameter node output
-        # - System: variable
-        # - NodeOutput: script output
+        # The variable type. Valid values:
+        # - Constant: constant.
+        # - PassThrough: output of a pass-through parameter node.
+        # - System: system variable.
+        # - NodeOutput: script output.
         # 
         # This parameter is required.
         self.type = type
@@ -677,17 +681,16 @@ class UpdateTaskAsyncRequestDependencies(DaraModel):
         upstream_task_id: int = None,
     ):
         # The dependency type. Valid values:
-        # 
-        # - CrossCycleDependsOnChildren: cross-cycle dependency on first-level child nodes
-        # - CrossCycleDependsOnSelf: cross-cycle dependency on the current node
-        # - CrossCycleDependsOnOtherNode: cross-cycle dependency on other nodes
-        # - Normal: same-cycle dependency
+        # - CrossCycleDependsOnChildren: cross-cycle dependency on first-level child nodes.
+        # - CrossCycleDependsOnSelf: cross-cycle dependency on the node itself.
+        # - CrossCycleDependsOnOtherNode: cross-cycle dependency on other nodes.
+        # - Normal: same-cycle dependency.
         # 
         # This parameter is required.
         self.type = type
-        # The output identifier of the upstream node. This field is returned when the dependency type is same-cycle dependency and input content is set.
+        # The output identifier of the upstream node. This field is returned for same-cycle dependencies when the input content is configured.
         self.upstream_output = upstream_output
-        # The ID of the upstream node. This field is returned when the dependency type is cross-cycle dependency on other nodes or same-cycle dependency without input content set. It is not returned in other cases.
+        # The ID of the upstream node. This field is returned for cross-cycle dependencies on other nodes and for same-cycle dependencies when no input content is configured. It is not returned in other cases.
         self.upstream_task_id = upstream_task_id
 
     def validate(self):

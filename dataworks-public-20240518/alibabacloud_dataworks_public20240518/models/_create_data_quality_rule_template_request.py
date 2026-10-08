@@ -99,18 +99,21 @@ class CreateDataQualityRuleTemplateRequestSamplingConfig(DaraModel):
     ):
         # The name of the sampling metric. Valid values:
         # 
+        # 
+        # 
+        # 
         # - Count: the number of table rows.
-        # - Min: the minimum value of a field.
-        # - Max: the maximum value of a field.
-        # - Avg: the average value of a field.
-        # - DistinctCount: the number of distinct values in a field.
+        # - Min: the minimum value of a column.
+        # - Max: the maximum value of a column.
+        # - Avg: the average value of a column.
+        # - DistinctCount: the number of distinct values in a column.
         # - DistinctPercent: the ratio of distinct values to the total number of rows.
-        # - DuplicatedCount: the number of duplicate values in a field.
+        # - DuplicatedCount: the number of duplicate values in a column.
         # - DuplicatedPercent: the ratio of duplicate values to the total number of rows.
         # - TableSize: the table size.
-        # - NullValueCount: the number of rows where the field value is null.
-        # - NullValuePercent: the ratio of rows where the field value is null.
-        # - GroupCount: the count of rows for each value after aggregation by field value.
+        # - NullValueCount: the number of rows where the column value is null.
+        # - NullValuePercent: the ratio of rows where the column value is null.
+        # - GroupCount: the count of rows for each value after aggregation by column value.
         # - CountNotIn: the number of rows that do not match the enumerated values.
         # - CountDistinctNotIn: the number of distinct values that do not match the enumerated values.
         # - UserDefinedSql: sample collection through a custom SQL statement.

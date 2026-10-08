@@ -23,7 +23,10 @@ class GetDeploymentPackageRequest(DaraModel):
         # 
         # This parameter specifies the DataWorks workspace for this API call.
         self.project_id = project_id
-        # The unique identifier of the DataWorks workspace, which is the English identifier displayed at the top of the DataStudio page for switching workspaces.
+        # The unique identifier of the DataWorks workspace, which is the English identifier displayed at the top of the Data Studio page for switching workspaces.
+        # 
+        # 
+        # 
         # 
         # You must specify either this parameter or ProjectId to determine the DataWorks workspace for this API call.
         self.project_identifier = project_identifier

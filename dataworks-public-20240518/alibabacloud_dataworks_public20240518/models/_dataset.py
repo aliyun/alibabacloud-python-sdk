@@ -24,7 +24,7 @@ class Dataset(DaraModel):
         readme: str = None,
         storage_type: str = None,
     ):
-        # The description of the dataset. The length cannot exceed 1024 characters.
+        # The description of the dataset. The length must be less than 1024 characters.
         self.comment = comment
         # The creation time. This value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
@@ -32,13 +32,16 @@ class Dataset(DaraModel):
         self.creator_id = creator_id
         # The data type. Valid values:
         # 
-        # *   COMMON
-        # *   PIC
-        # *   TEXT
-        # *   TABLE
-        # *   VIDEO
-        # *   AUDIO
-        # *   INDEX
+        # 
+        # 
+        # 
+        # - COMMON: general
+        # - PIC: image
+        # - TEXT: text
+        # - TABLE: table
+        # - VIDEO: video
+        # - AUDIO: audio
+        # - INDEX: index
         self.data_type = data_type
         # The dataset ID.
         self.id = id
@@ -48,7 +51,7 @@ class Dataset(DaraModel):
         self.latest_version = latest_version
         # The modification time. This value is a UNIX timestamp in milliseconds.
         self.modify_time = modify_time
-        # The dataset name. It must be a non-empty string and cannot exceed 128 characters.
+        # The dataset name. It must be a non-empty string and must be less than 128 characters.
         self.name = name
         # The source of the dataset. Currently supported sources:
         # 

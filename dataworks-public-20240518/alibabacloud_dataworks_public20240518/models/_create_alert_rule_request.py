@@ -578,7 +578,7 @@ class CreateAlertRuleRequestNotification(DaraModel):
         self.channels = channels
         # The alert interval, in minutes. Valid values: 5 to 10000.
         self.interval_in_minutes = interval_in_minutes
-        # The maximum number of alerts within a calendar year. Valid values: 1 to 10000.
+        # The maximum number of alerts within a calendar day. Valid values: 1 to 10000.
         self.maximum = maximum
         # The alert recipients.
         # 

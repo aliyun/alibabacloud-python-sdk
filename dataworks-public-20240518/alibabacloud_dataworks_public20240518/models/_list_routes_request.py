@@ -19,7 +19,7 @@ class ListRoutesRequest(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The unique identifier of the general quota.
+        # The unique identifier of the general-purpose resource group.
         # 
         # This parameter is required.
         self.resource_group_id = resource_group_id
