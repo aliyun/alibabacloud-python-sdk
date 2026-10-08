@@ -20946,6 +20946,104 @@ class Client(OpenApiClient):
         headers = main_models.InvokeContainerHeaders()
         return await self.invoke_container_with_options_async(request, headers, runtime)
 
+    def invoke_page_with_options(
+        self,
+        request: main_models.InvokePageRequest,
+        tmp_header: main_models.InvokePageHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.InvokePageResponse:
+        request.validate()
+        headers = main_models.InvokePageShrinkHeaders()
+        Utils.convert(tmp_header, headers)
+        if not DaraCore.is_null(tmp_header.account_context):
+            headers.account_context_shrink = Utils.array_to_string_with_specified_style(tmp_header.account_context, 'accountContext', 'json')
+        body = {}
+        if not DaraCore.is_null(request.operation_id):
+            body['operationId'] = request.operation_id
+        if not DaraCore.is_null(request.params):
+            body['params'] = request.params
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.account_context_shrink):
+            real_headers['accountContext'] = DaraCore.to_json_string(headers.account_context_shrink)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'InvokePage',
+            version = '2023-04-26',
+            protocol = 'HTTPS',
+            pathname = f'/spi/ai/v1/page/invoke',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InvokePageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def invoke_page_with_options_async(
+        self,
+        request: main_models.InvokePageRequest,
+        tmp_header: main_models.InvokePageHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.InvokePageResponse:
+        request.validate()
+        headers = main_models.InvokePageShrinkHeaders()
+        Utils.convert(tmp_header, headers)
+        if not DaraCore.is_null(tmp_header.account_context):
+            headers.account_context_shrink = Utils.array_to_string_with_specified_style(tmp_header.account_context, 'accountContext', 'json')
+        body = {}
+        if not DaraCore.is_null(request.operation_id):
+            body['operationId'] = request.operation_id
+        if not DaraCore.is_null(request.params):
+            body['params'] = request.params
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.account_context_shrink):
+            real_headers['accountContext'] = DaraCore.to_json_string(headers.account_context_shrink)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'InvokePage',
+            version = '2023-04-26',
+            protocol = 'HTTPS',
+            pathname = f'/spi/ai/v1/page/invoke',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InvokePageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def invoke_page(
+        self,
+        request: main_models.InvokePageRequest,
+    ) -> main_models.InvokePageResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.InvokePageHeaders()
+        return self.invoke_page_with_options(request, headers, runtime)
+
+    async def invoke_page_async(
+        self,
+        request: main_models.InvokePageRequest,
+    ) -> main_models.InvokePageResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.InvokePageHeaders()
+        return await self.invoke_page_with_options_async(request, headers, runtime)
+
     def invoke_skill_with_sse(
         self,
         tmp_req: main_models.InvokeSkillRequest,
@@ -23251,6 +23349,108 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = main_models.ListTicketOperateRecordHeaders()
         return await self.list_ticket_operate_record_with_options_async(request, headers, runtime)
+
+    def list_user_authorized_resources_with_options(
+        self,
+        request: main_models.ListUserAuthorizedResourcesRequest,
+        tmp_header: main_models.ListUserAuthorizedResourcesHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListUserAuthorizedResourcesResponse:
+        request.validate()
+        headers = main_models.ListUserAuthorizedResourcesShrinkHeaders()
+        Utils.convert(tmp_header, headers)
+        if not DaraCore.is_null(tmp_header.account_context):
+            headers.account_context_shrink = Utils.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        body = {}
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.permission_code):
+            body['PermissionCode'] = request.permission_code
+        if not DaraCore.is_null(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.account_context_shrink):
+            real_headers['AccountContext'] = DaraCore.to_json_string(headers.account_context_shrink)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListUserAuthorizedResources',
+            version = '2023-04-26',
+            protocol = 'HTTPS',
+            pathname = f'/ai/v1/skill/listUserAuthorizedResources',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListUserAuthorizedResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_user_authorized_resources_with_options_async(
+        self,
+        request: main_models.ListUserAuthorizedResourcesRequest,
+        tmp_header: main_models.ListUserAuthorizedResourcesHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListUserAuthorizedResourcesResponse:
+        request.validate()
+        headers = main_models.ListUserAuthorizedResourcesShrinkHeaders()
+        Utils.convert(tmp_header, headers)
+        if not DaraCore.is_null(tmp_header.account_context):
+            headers.account_context_shrink = Utils.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        body = {}
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.permission_code):
+            body['PermissionCode'] = request.permission_code
+        if not DaraCore.is_null(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.account_context_shrink):
+            real_headers['AccountContext'] = DaraCore.to_json_string(headers.account_context_shrink)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListUserAuthorizedResources',
+            version = '2023-04-26',
+            protocol = 'HTTPS',
+            pathname = f'/ai/v1/skill/listUserAuthorizedResources',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListUserAuthorizedResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_user_authorized_resources(
+        self,
+        request: main_models.ListUserAuthorizedResourcesRequest,
+    ) -> main_models.ListUserAuthorizedResourcesResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.ListUserAuthorizedResourcesHeaders()
+        return self.list_user_authorized_resources_with_options(request, headers, runtime)
+
+    async def list_user_authorized_resources_async(
+        self,
+        request: main_models.ListUserAuthorizedResourcesRequest,
+    ) -> main_models.ListUserAuthorizedResourcesResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.ListUserAuthorizedResourcesHeaders()
+        return await self.list_user_authorized_resources_with_options_async(request, headers, runtime)
 
     def list_workspaces_with_options(
         self,

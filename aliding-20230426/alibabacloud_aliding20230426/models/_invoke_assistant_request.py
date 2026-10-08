@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List, Any, Dict
+from typing import List, Dict, Any
 
 from alibabacloud_aliding20230426 import models as main_models
 from darabonba.model import DaraModel
@@ -193,7 +193,10 @@ class InvokeAssistantRequestMessagesContent(DaraModel):
         card_callback: main_models.InvokeAssistantRequestMessagesContentCardCallback = None,
         ding_card: main_models.InvokeAssistantRequestMessagesContentDingCard = None,
         ding_normal_card: main_models.InvokeAssistantRequestMessagesContentDingNormalCard = None,
+        extensions: List[str] = None,
         markdown: main_models.InvokeAssistantRequestMessagesContentMarkdown = None,
+        metadata: Dict[str, Any] = None,
+        parts: List[main_models.InvokeAssistantRequestMessagesContentParts] = None,
         struct_view: main_models.InvokeAssistantRequestMessagesContentStructView = None,
         text: main_models.InvokeAssistantRequestMessagesContentText = None,
         type: str = None,
@@ -201,7 +204,10 @@ class InvokeAssistantRequestMessagesContent(DaraModel):
         self.card_callback = card_callback
         self.ding_card = ding_card
         self.ding_normal_card = ding_normal_card
+        self.extensions = extensions
         self.markdown = markdown
+        self.metadata = metadata
+        self.parts = parts
         self.struct_view = struct_view
         self.text = text
         # This parameter is required.
@@ -216,6 +222,10 @@ class InvokeAssistantRequestMessagesContent(DaraModel):
             self.ding_normal_card.validate()
         if self.markdown:
             self.markdown.validate()
+        if self.parts:
+            for v1 in self.parts:
+                 if v1:
+                    v1.validate()
         if self.struct_view:
             self.struct_view.validate()
         if self.text:
@@ -235,8 +245,19 @@ class InvokeAssistantRequestMessagesContent(DaraModel):
         if self.ding_normal_card is not None:
             result['dingNormalCard'] = self.ding_normal_card.to_map()
 
+        if self.extensions is not None:
+            result['extensions'] = self.extensions
+
         if self.markdown is not None:
             result['markdown'] = self.markdown.to_map()
+
+        if self.metadata is not None:
+            result['metadata'] = self.metadata
+
+        result['parts'] = []
+        if self.parts is not None:
+            for k1 in self.parts:
+                result['parts'].append(k1.to_map() if k1 else None)
 
         if self.struct_view is not None:
             result['structView'] = self.struct_view.to_map()
@@ -263,9 +284,21 @@ class InvokeAssistantRequestMessagesContent(DaraModel):
             temp_model = main_models.InvokeAssistantRequestMessagesContentDingNormalCard()
             self.ding_normal_card = temp_model.from_map(m.get('dingNormalCard'))
 
+        if m.get('extensions') is not None:
+            self.extensions = m.get('extensions')
+
         if m.get('markdown') is not None:
             temp_model = main_models.InvokeAssistantRequestMessagesContentMarkdown()
             self.markdown = temp_model.from_map(m.get('markdown'))
+
+        if m.get('metadata') is not None:
+            self.metadata = m.get('metadata')
+
+        self.parts = []
+        if m.get('parts') is not None:
+            for k1 in m.get('parts'):
+                temp_model = main_models.InvokeAssistantRequestMessagesContentParts()
+                self.parts.append(temp_model.from_map(k1))
 
         if m.get('structView') is not None:
             temp_model = main_models.InvokeAssistantRequestMessagesContentStructView()
@@ -722,6 +755,118 @@ class InvokeAssistantRequestMessagesContentStructViewPartsDataPart(DaraModel):
         m = m or dict()
         if m.get('data') is not None:
             self.data = m.get('data')
+
+        return self
+
+class InvokeAssistantRequestMessagesContentParts(DaraModel):
+    def __init__(
+        self,
+        data: Any = None,
+        file: main_models.InvokeAssistantRequestMessagesContentPartsFile = None,
+        kind: str = None,
+        metadata: Dict[str, Any] = None,
+        text: str = None,
+    ):
+        self.data = data
+        self.file = file
+        self.kind = kind
+        self.metadata = metadata
+        self.text = text
+
+    def validate(self):
+        if self.file:
+            self.file.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.data is not None:
+            result['data'] = self.data
+
+        if self.file is not None:
+            result['file'] = self.file.to_map()
+
+        if self.kind is not None:
+            result['kind'] = self.kind
+
+        if self.metadata is not None:
+            result['metadata'] = self.metadata
+
+        if self.text is not None:
+            result['text'] = self.text
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            self.data = m.get('data')
+
+        if m.get('file') is not None:
+            temp_model = main_models.InvokeAssistantRequestMessagesContentPartsFile()
+            self.file = temp_model.from_map(m.get('file'))
+
+        if m.get('kind') is not None:
+            self.kind = m.get('kind')
+
+        if m.get('metadata') is not None:
+            self.metadata = m.get('metadata')
+
+        if m.get('text') is not None:
+            self.text = m.get('text')
+
+        return self
+
+class InvokeAssistantRequestMessagesContentPartsFile(DaraModel):
+    def __init__(
+        self,
+        bytes: str = None,
+        mime_type: str = None,
+        name: str = None,
+        uri: str = None,
+    ):
+        self.bytes = bytes
+        self.mime_type = mime_type
+        self.name = name
+        self.uri = uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.bytes is not None:
+            result['bytes'] = self.bytes
+
+        if self.mime_type is not None:
+            result['mimeType'] = self.mime_type
+
+        if self.name is not None:
+            result['name'] = self.name
+
+        if self.uri is not None:
+            result['uri'] = self.uri
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bytes') is not None:
+            self.bytes = m.get('bytes')
+
+        if m.get('mimeType') is not None:
+            self.mime_type = m.get('mimeType')
+
+        if m.get('name') is not None:
+            self.name = m.get('name')
+
+        if m.get('uri') is not None:
+            self.uri = m.get('uri')
 
         return self
 

@@ -1015,6 +1015,11 @@ from ._invoke_container_shrink_headers import InvokeContainerShrinkHeaders
 from ._invoke_container_request import InvokeContainerRequest
 from ._invoke_container_response_body import InvokeContainerResponseBody
 from ._invoke_container_response import InvokeContainerResponse
+from ._invoke_page_headers import InvokePageHeaders
+from ._invoke_page_shrink_headers import InvokePageShrinkHeaders
+from ._invoke_page_request import InvokePageRequest
+from ._invoke_page_response_body import InvokePageResponseBody
+from ._invoke_page_response import InvokePageResponse
 from ._invoke_skill_headers import InvokeSkillHeaders
 from ._invoke_skill_shrink_headers import InvokeSkillShrinkHeaders
 from ._invoke_skill_request import InvokeSkillRequest
@@ -1121,6 +1126,11 @@ from ._list_ticket_operate_record_request import ListTicketOperateRecordRequest
 from ._list_ticket_operate_record_shrink_request import ListTicketOperateRecordShrinkRequest
 from ._list_ticket_operate_record_response_body import ListTicketOperateRecordResponseBody
 from ._list_ticket_operate_record_response import ListTicketOperateRecordResponse
+from ._list_user_authorized_resources_headers import ListUserAuthorizedResourcesHeaders
+from ._list_user_authorized_resources_shrink_headers import ListUserAuthorizedResourcesShrinkHeaders
+from ._list_user_authorized_resources_request import ListUserAuthorizedResourcesRequest
+from ._list_user_authorized_resources_response_body import ListUserAuthorizedResourcesResponseBody
+from ._list_user_authorized_resources_response import ListUserAuthorizedResourcesResponse
 from ._list_workspaces_headers import ListWorkspacesHeaders
 from ._list_workspaces_shrink_headers import ListWorkspacesShrinkHeaders
 from ._list_workspaces_request import ListWorkspacesRequest
@@ -2321,6 +2331,8 @@ from ._invoke_assistant_request import InvokeAssistantRequestMessagesContentDing
 from ._invoke_assistant_request import InvokeAssistantRequestMessagesContentDingNormalCardDynamicDataSourceConfigs
 from ._invoke_assistant_request import InvokeAssistantRequestMessagesContentDingNormalCard
 from ._invoke_assistant_request import InvokeAssistantRequestMessagesContentMarkdown
+from ._invoke_assistant_request import InvokeAssistantRequestMessagesContentPartsFile
+from ._invoke_assistant_request import InvokeAssistantRequestMessagesContentParts
 from ._invoke_assistant_request import InvokeAssistantRequestMessagesContentStructViewPartsDataPart
 from ._invoke_assistant_request import InvokeAssistantRequestMessagesContentStructViewPartsReasonPart
 from ._invoke_assistant_request import InvokeAssistantRequestMessagesContentStructViewPartsRecommendPartRecommends
@@ -2372,6 +2384,7 @@ from ._invoke_assistant_response_body import InvokeAssistantResponseBodyMessages
 from ._invoke_assistant_response_body import InvokeAssistantResponseBodyMessagesContentStruct
 from ._invoke_assistant_response_body import InvokeAssistantResponseBodyMessages
 from ._invoke_container_headers import InvokeContainerHeadersAccountContext
+from ._invoke_page_headers import InvokePageHeadersAccountContext
 from ._invoke_skill_headers import InvokeSkillHeadersAccountContext
 from ._list_application_headers import ListApplicationHeadersAccountContext
 from ._list_application_response_body import ListApplicationResponseBodyData
@@ -2482,6 +2495,8 @@ from ._list_ticket_operate_record_response_body import ListTicketOperateRecordRe
 from ._list_ticket_operate_record_response_body import ListTicketOperateRecordResponseBodyRecordsTicketMemoAttachments
 from ._list_ticket_operate_record_response_body import ListTicketOperateRecordResponseBodyRecordsTicketMemo
 from ._list_ticket_operate_record_response_body import ListTicketOperateRecordResponseBodyRecords
+from ._list_user_authorized_resources_headers import ListUserAuthorizedResourcesHeadersAccountContext
+from ._list_user_authorized_resources_response_body import ListUserAuthorizedResourcesResponseBodyContent
 from ._list_workspaces_headers import ListWorkspacesHeadersAccountContext
 from ._list_workspaces_request import ListWorkspacesRequestTenantContext
 from ._list_workspaces_response_body import ListWorkspacesResponseBodyWorkspacesIcon
@@ -3802,6 +3817,11 @@ __all__ = [
     InvokeContainerRequest,
     InvokeContainerResponseBody,
     InvokeContainerResponse,
+    InvokePageHeaders,
+    InvokePageShrinkHeaders,
+    InvokePageRequest,
+    InvokePageResponseBody,
+    InvokePageResponse,
     InvokeSkillHeaders,
     InvokeSkillShrinkHeaders,
     InvokeSkillRequest,
@@ -3908,6 +3928,11 @@ __all__ = [
     ListTicketOperateRecordShrinkRequest,
     ListTicketOperateRecordResponseBody,
     ListTicketOperateRecordResponse,
+    ListUserAuthorizedResourcesHeaders,
+    ListUserAuthorizedResourcesShrinkHeaders,
+    ListUserAuthorizedResourcesRequest,
+    ListUserAuthorizedResourcesResponseBody,
+    ListUserAuthorizedResourcesResponse,
     ListWorkspacesHeaders,
     ListWorkspacesShrinkHeaders,
     ListWorkspacesRequest,
@@ -5108,6 +5133,8 @@ __all__ = [
     InvokeAssistantRequestMessagesContentDingNormalCardDynamicDataSourceConfigs,
     InvokeAssistantRequestMessagesContentDingNormalCard,
     InvokeAssistantRequestMessagesContentMarkdown,
+    InvokeAssistantRequestMessagesContentPartsFile,
+    InvokeAssistantRequestMessagesContentParts,
     InvokeAssistantRequestMessagesContentStructViewPartsDataPart,
     InvokeAssistantRequestMessagesContentStructViewPartsReasonPart,
     InvokeAssistantRequestMessagesContentStructViewPartsRecommendPartRecommends,
@@ -5159,6 +5186,7 @@ __all__ = [
     InvokeAssistantResponseBodyMessagesContentStruct,
     InvokeAssistantResponseBodyMessages,
     InvokeContainerHeadersAccountContext,
+    InvokePageHeadersAccountContext,
     InvokeSkillHeadersAccountContext,
     ListApplicationHeadersAccountContext,
     ListApplicationResponseBodyData,
@@ -5269,6 +5297,8 @@ __all__ = [
     ListTicketOperateRecordResponseBodyRecordsTicketMemoAttachments,
     ListTicketOperateRecordResponseBodyRecordsTicketMemo,
     ListTicketOperateRecordResponseBodyRecords,
+    ListUserAuthorizedResourcesHeadersAccountContext,
+    ListUserAuthorizedResourcesResponseBodyContent,
     ListWorkspacesHeadersAccountContext,
     ListWorkspacesRequestTenantContext,
     ListWorkspacesResponseBodyWorkspacesIcon,

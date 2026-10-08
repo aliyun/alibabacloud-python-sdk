@@ -1,3 +1,11 @@
+2026-10-08 Version: 2.58.0
+- Support API InvokePage.
+- Support API ListUserAuthorizedResources.
+- Update API InvokeAssistant: add request parameters body.messages.$.content.extensions.
+- Update API InvokeAssistant: add request parameters body.messages.$.content.metadata.
+- Update API InvokeAssistant: add request parameters body.messages.$.content.parts.
+
+
 2026-09-21 Version: 2.57.0
 - Support API InvokeContainer.
 - Update API InvokeAssistant: add response parameters Body.messages.$.content.a2uiMessages.
