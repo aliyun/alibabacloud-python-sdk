@@ -9,6 +9,7 @@ class CheckIntlFixPriceDomainStatusRequest(DaraModel):
         self,
         domain: str = None,
     ):
+        # The domain name.
         self.domain = domain
 
     def validate(self):

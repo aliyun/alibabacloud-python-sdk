@@ -14,13 +14,25 @@ class QueryTaskListRequest(DaraModel):
         page_size: int = None,
         user_client_ip: str = None,
     ):
+        # Start time of the creation date range for the query, expressed as the number of milliseconds since 00:00 on January 1, 1970, UTC. Currently, queries are supported only by day.
         self.begin_create_time = begin_create_time
+        # End time of the creation date range for the query, expressed as the number of milliseconds since 00:00 on January 1, 1970, UTC. Currently, queries are supported only by day.
         self.end_create_time = end_create_time
+        # Language for API error messages. Valid values:  
+        # - **zh**: Chinese.  
+        # - **en**: English.  
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # Page number for paging.
+        # 
         # This parameter is required.
         self.page_num = page_num
+        # Page size for paging.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # User IP address.
         self.user_client_ip = user_client_ip
 
     def validate(self):

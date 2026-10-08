@@ -11,9 +11,19 @@ class QueryDnsHostRequest(DaraModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # The ID of the domain name instance. Call the QueryDomainList API to obtain this ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The language for returned error messages. Valid values:
+        # 
+        # - **zh**: Chinese.
+        # 
+        # - **en**: English.
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # The user\\"s IP address.
         self.user_client_ip = user_client_ip
 
     def validate(self):

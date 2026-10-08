@@ -18,12 +18,13 @@ class QueryTaskDetailListRequest(DaraModel):
     ):
         # The domain name.
         self.domain_name = domain_name
-        # The instance ID of the domain name.
-        self.instance_id = instance_id
-        # The language of the error message to return if the request fails. Valid value:
+        # The domain name instance ID.
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # > You can call <props="china">[QueryDomainByDomainName](https://help.aliyun.com/document_detail/442021.html)<props="intl">[QueryDomainByDomainName](https://help.aliyun.com/document_detail/121704.html) to query the domain name instance ID.
+        self.instance_id = instance_id
+        # The language of the error message returned by the operation. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         # 
         # Default value: **en**.
         self.lang = lang
@@ -31,22 +32,21 @@ class QueryTaskDetailListRequest(DaraModel):
         # 
         # This parameter is required.
         self.page_num = page_num
-        # The number of entries to return on each page. Maximum value: **1000**.
+        # The number of entries per page. Maximum value: **1000**.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The task ID.
+        # The task number. This is the TaskNo value returned by a successfully executed task.
         # 
         # This parameter is required.
         self.task_no = task_no
-        # The task status. Valid value:
-        # 
-        # *   **0**: waiting for execution
-        # *   **1**: being executed
-        # *   **2**: successful
-        # *   **3**: failed
+        # The task status. Valid values:
+        # - **0**: Waiting to be executed.
+        # - **1**: Executing.
+        # - **2**: Successful.
+        # - **3**: Failed.
         self.task_status = task_status
-        # The IP address of the client. Set the value to **127.0.0.1**.
+        # The user IP address. You can set this parameter to **127.0.0.1**.
         self.user_client_ip = user_client_ip
 
     def validate(self):

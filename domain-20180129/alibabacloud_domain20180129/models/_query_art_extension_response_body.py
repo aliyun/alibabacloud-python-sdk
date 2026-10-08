@@ -19,16 +19,27 @@ class QueryArtExtensionResponseBody(DaraModel):
         subject: str = None,
         title: str = None,
     ):
+        # Creation time.
         self.date_or_period = date_or_period
+        # Dimensions.
         self.dimensions = dimensions
+        # Art features.
         self.features = features
+        # Inscriptions and markings.
         self.inscriptions_and_markings = inscriptions_and_markings
+        # Artist or creator.
         self.maker = maker
+        # Materials and techniques.
         self.materials_and_techniques = materials_and_techniques
+        # Art categorization.
         self.object_type = object_type
+        # Reference.
         self.reference = reference
+        # Unique request access token.
         self.request_id = request_id
+        # Art subject.
         self.subject = subject
+        # Name.
         self.title = title
 
     def validate(self):

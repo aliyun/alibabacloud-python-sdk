@@ -13,12 +13,25 @@ class SubmitOperationAuditInfoRequest(DaraModel):
         id: int = None,
         lang: str = None,
     ):
+        # The information to be reviewed. The displayed information varies by business type.
         self.audit_info = audit_info
+        # The business type. Valid values:
+        # 
+        # **1**: Transfer a domain name offline, that is, transfer the domain name from the current Alibaba Cloud account to another Alibaba Cloud account.
+        # 
         # This parameter is required.
         self.audit_type = audit_type
+        # The domain name. You can specify one or more domain names, separated by commas (,).
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # The review ID.
         self.id = id
+        # The language of the error message returned by the API. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
+        # 
+        # Default value: **en**.
         self.lang = lang
 
     def validate(self):

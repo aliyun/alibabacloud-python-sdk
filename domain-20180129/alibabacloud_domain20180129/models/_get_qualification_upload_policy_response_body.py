@@ -16,13 +16,21 @@ class GetQualificationUploadPolicyResponseBody(DaraModel):
         request_id: str = None,
         signature: str = None,
     ):
+        # Access ID.
         self.accessid = accessid
+        # File path.
         self.dir = dir
+        # Expiration time.
         self.expire = expire
+        # OSS Endpoint.
         self.host = host
+        # Encryption policy.
         self.policy = policy
+        # File prefix.
         self.prefix = prefix
+        # Request ID.
         self.request_id = request_id
+        # Signature data.
         self.signature = signature
 
     def validate(self):

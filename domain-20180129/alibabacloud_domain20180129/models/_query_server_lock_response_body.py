@@ -19,16 +19,31 @@ class QueryServerLockResponseBody(DaraModel):
         start_date: str = None,
         user_id: str = None,
     ):
+        # Domain instance ID.
         self.domain_instance_id = domain_instance_id
+        # The queried domain name.
         self.domain_name = domain_name
+        # Expiration Time.
         self.expire_date = expire_date
+        # Creation Time.
         self.gmt_create = gmt_create
+        # Updated At.
         self.gmt_modified = gmt_modified
+        # Registry lock instance ID.
         self.lock_instance_id = lock_instance_id
+        # Lock product ID.
         self.lock_product_id = lock_product_id
+        # Request ID.
         self.request_id = request_id
+        # Registry lock status. Valid values:
+        # 
+        # - 1: Disabled
+        # - 2: Enabled
+        # - 3: Shutdown
         self.server_lock_status = server_lock_status
+        # The time when the lock takes effect.
         self.start_date = start_date
+        # User UID.
         self.user_id = user_id
 
     def validate(self):

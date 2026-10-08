@@ -11,7 +11,9 @@ class CreateIntlFixedPriceDomainOrderResponseBody(DaraModel):
         module: main_models.CreateIntlFixedPriceDomainOrderResponseBodyModule = None,
         request_id: str = None,
     ):
+        # The returned object.
         self.module = module
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -50,9 +52,13 @@ class CreateIntlFixedPriceDomainOrderResponseBodyModule(DaraModel):
         pay_price: int = None,
         pay_url: str = None,
     ):
+        # The domain name.
         self.domain = domain
+        # The order number.
         self.order_no = order_no
+        # The transaction price.
         self.pay_price = pay_price
+        # The payment URL.
         self.pay_url = pay_url
 
     def validate(self):

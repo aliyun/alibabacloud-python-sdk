@@ -16,15 +16,36 @@ class QueryTransferInListRequest(DaraModel):
         submission_start_date: int = None,
         user_client_ip: str = None,
     ):
+        # The domain name, which supports prefix matching (fuzzy query).
         self.domain_name = domain_name
+        # The language of error messages returned by the API. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # The page number of the domain name list.
+        # 
         # This parameter is required.
         self.page_num = page_num
+        # The page size for paging the domain name list.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Transfer status. Valid values:  
+        # - **INIT**: Submit transfer-in.  
+        # - **AUTHORIZATION**: Authorize transfer-in (email verification).  
+        # - **NAME_VERIFICATION**: Name review.  
+        # - **PASSWORD_VERIFICATION**: Transfer password verification.  
+        # - **PENDING**: Transfer-in in progress.  
+        # - **SUCCESS**: Transfer-in succeeded.  
+        # - **FAIL**: Transfer-in failed.
         self.simple_transfer_in_status = simple_transfer_in_status
+        # End time for submitting the domain name list for transfer-in.
         self.submission_end_date = submission_end_date
+        # The start time for submitting the domain name list for transfer-in.
         self.submission_start_date = submission_start_date
+        # The user IP address, which can be set to **127.0.0.1**.
         self.user_client_ip = user_client_ip
 
     def validate(self):

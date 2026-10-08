@@ -13,7 +13,9 @@ class QueryFailingReasonListForQualificationResponseBody(DaraModel):
         data: List[main_models.QueryFailingReasonListForQualificationResponseBodyData] = None,
         request_id: str = None,
     ):
+        # List of domain name qualification verification failures.
         self.data = data
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -56,7 +58,9 @@ class QueryFailingReasonListForQualificationResponseBodyData(DaraModel):
         date: str = None,
         fail_reason: str = None,
     ):
+        # Review date.
         self.date = date
+        # Reason for domain name qualification verification failure.
         self.fail_reason = fail_reason
 
     def validate(self):

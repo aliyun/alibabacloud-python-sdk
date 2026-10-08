@@ -15,15 +15,33 @@ class SaveSingleTaskForUpdatingContactInfoRequest(DaraModel):
         registrant_profile_id: int = None,
         user_client_ip: str = None,
     ):
+        # Specifies whether to add a transfer-out restriction. This parameter takes effect only when **ContactType** is **registrant**. It indicates whether to restrict domain transfer-out for 60 days after the registrant is updated. Default value: **false**, which means no transfer-out restriction is applied.
         self.add_transfer_lock = add_transfer_lock
+        # Contact type. Valid values:
+        # - **registrant**
+        # - **admin**
+        # - **billing**
+        # - **tech**
+        # 
         # This parameter is required.
         self.contact_type = contact_type
+        # Domain name.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # Domain instance ID.
         self.instance_id = instance_id
+        # Language of error messages returned by the API. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # Information template ID.
+        # 
         # This parameter is required.
         self.registrant_profile_id = registrant_profile_id
+        # User IP address.
         self.user_client_ip = user_client_ip
 
     def validate(self):

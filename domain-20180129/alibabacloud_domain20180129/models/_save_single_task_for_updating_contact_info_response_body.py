@@ -10,7 +10,9 @@ class SaveSingleTaskForUpdatingContactInfoResponseBody(DaraModel):
         request_id: str = None,
         task_no: str = None,
     ):
+        # Unique request ID.
         self.request_id = request_id
+        # Job number.
         self.task_no = task_no
 
     def validate(self):

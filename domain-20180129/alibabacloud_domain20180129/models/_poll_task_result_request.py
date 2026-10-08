@@ -16,15 +16,33 @@ class PollTaskResultRequest(DaraModel):
         task_result_status: int = None,
         user_client_ip: str = None,
     ):
+        # Domain name.
         self.domain_name = domain_name
+        # Domain instance ID.
+        # 
+        # The system automatically generates this after the information template is created successfully. You can invoke the [QueryRegistrantProfiles](https://help.aliyun.com/document_detail/67701.html) API to query the information template ID.
         self.instance_id = instance_id
+        # Language of error messages returned by the API. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
+        # 
+        # Default value is **en**.
         self.lang = lang
+        # Page number.
+        # 
         # This parameter is required.
         self.page_num = page_num
+        # Page size. Maximum value is **1000**.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Job number.
         self.task_no = task_no
+        # Task result status. Valid values:
+        # - **2**: Succeeded.
+        # - **3**: Failed.
         self.task_result_status = task_result_status
+        # User IP address. It can be set to **127.0.0.1**.
         self.user_client_ip = user_client_ip
 
     def validate(self):

@@ -26,23 +26,41 @@ class QueryContactInfoResponseBody(DaraModel):
         zh_registrant_name: str = None,
         zh_registrant_organization: str = None,
     ):
+        # Mailing address (English).
         self.address = address
+        # City (English).
         self.city = city
+        # Country code. For example, **CN** represents China and **US** represents the United States.
         self.country = country
+        # Domain registration date.
         self.create_date = create_date
+        # Mailbox.
         self.email = email
+        # Postal code.
         self.postal_code = postal_code
+        # Province (English).
         self.province = province
+        # Contact name (English).
         self.registrant_name = registrant_name
+        # Registrant name (English).
         self.registrant_organization = registrant_organization
+        # Unique request access token.
         self.request_id = request_id
+        # The country code for the telephone number. For example, the country code for China is **86**.
         self.tel_area = tel_area
+        # Telephone extension number.
         self.tel_ext = tel_ext
+        # Telephone number.
         self.telephone = telephone
+        # Mailing address (in Chinese).
         self.zh_address = zh_address
+        # City (Chinese).
         self.zh_city = zh_city
+        # Province (Chinese).
         self.zh_province = zh_province
+        # Contact name (Chinese).
         self.zh_registrant_name = zh_registrant_name
+        # Registrant name (Chinese).
         self.zh_registrant_organization = zh_registrant_organization
 
     def validate(self):

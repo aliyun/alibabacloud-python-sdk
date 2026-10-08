@@ -11,8 +11,14 @@ class CheckDomainSunriseClaimResponseBody(DaraModel):
         request_id: str = None,
         result: int = None,
     ):
+        # The trademark keyword key provided by the TMDB database.
         self.claim_key = claim_key
+        # Unique request access token.
         self.request_id = request_id
+        # Result. Valid values:
+        # - **0**: Not a trademark keyword or not in the claim domain lifecycle.
+        # - **1**: In the sunrise domain lifecycle.
+        # - **2**: In the claim domain lifecycle.
         self.result = result
 
     def validate(self):

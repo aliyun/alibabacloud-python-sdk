@@ -11,9 +11,17 @@ class FuzzyMatchDomainSensitiveWordRequest(DaraModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # The domain name keyword (a term contained in the domain name excluding its suffix). Separate multiple keywords with commas (,).
+        # 
         # This parameter is required.
         self.keyword = keyword
+        # The language of the error message returned by the API. Valid values:  
+        # - **zh**: Chinese  
+        # - **en**: English  
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # The User IP address. You can set this parameter to **127.0.0.1**.
         self.user_client_ip = user_client_ip
 
     def validate(self):

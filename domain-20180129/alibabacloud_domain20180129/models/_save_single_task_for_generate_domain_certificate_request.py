@@ -11,18 +11,9 @@ class SaveSingleTaskForGenerateDomainCertificateRequest(DaraModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
-        # The domain name.
-        # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The language of the error message to return if the request fails. Valid values:
-        # 
-        # *   **zh**: Chinese.
-        # *   **en**: English.
-        # 
-        # Default value: **en**.
         self.lang = lang
-        # The IP address of the client.
         self.user_client_ip = user_client_ip
 
     def validate(self):

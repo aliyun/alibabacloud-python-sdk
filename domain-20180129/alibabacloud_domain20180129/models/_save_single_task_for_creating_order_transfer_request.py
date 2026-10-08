@@ -18,18 +18,35 @@ class SaveSingleTaskForCreatingOrderTransferRequest(DaraModel):
         use_promotion: bool = None,
         user_client_ip: str = None,
     ):
+        # Domain name transfer-in password.
+        # 
         # This parameter is required.
         self.authorization_code = authorization_code
+        # Coupon number.
         self.coupon_no = coupon_no
+        # Domain name.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # Language for error messages returned by the API. Valid values:
+        # - **zh**: Chinese;
+        # - **en**: English.
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # Is transfer-in of premium domain names allowed. Default value: **false**.
         self.permit_premium_transfer = permit_premium_transfer
+        # Coupon number.
         self.promotion_no = promotion_no
+        # ID of the domain name registrant profile that has passed identity verification.
+        # 
         # This parameter is required.
         self.registrant_profile_id = registrant_profile_id
+        # Is a coupon used.
         self.use_coupon = use_coupon
+        # Is a coupon used.
         self.use_promotion = use_promotion
+        # User IP address.
         self.user_client_ip = user_client_ip
 
     def validate(self):

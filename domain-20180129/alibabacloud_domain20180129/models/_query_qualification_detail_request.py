@@ -12,11 +12,22 @@ class QueryQualificationDetailRequest(DaraModel):
         qualification_type: str = None,
         user_client_ip: str = None,
     ):
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The language of the error message returned by the API. Valid values:
+        # 
+        # - zh: Chinese
+        # - en: English
+        # 
+        # Default value: en.
         self.lang = lang
+        # API type for qualification verification. Fixed value: **knet**.
+        # 
         # This parameter is required.
         self.qualification_type = qualification_type
+        # User IP address.
         self.user_client_ip = user_client_ip
 
     def validate(self):

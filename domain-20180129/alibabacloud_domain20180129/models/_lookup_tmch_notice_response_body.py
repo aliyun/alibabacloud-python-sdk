@@ -18,10 +18,15 @@ class LookupTmchNoticeResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.claims = claims
+        # The TMCH notification ID.
         self.id = id
+        # The trademark label.
         self.label = label
+        # The end time of the trademark notice.
         self.not_after = not_after
+        # The start time of the trademark notice.
         self.not_before = not_before
+        # A unique identifier for the request.
         self.request_id = request_id
 
     def validate(self):

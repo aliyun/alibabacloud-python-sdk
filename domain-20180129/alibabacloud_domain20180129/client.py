@@ -21,6 +21,9 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'central'
+        self._endpoint_map = {
+            'ap-southeast-1': 'domain-intl.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('domain', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -1553,6 +1556,84 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteRegistrantProfileResponse:
         runtime = RuntimeOptions()
         return await self.delete_registrant_profile_with_options_async(request, runtime)
+
+    def domain_knowledge_retrieve_with_options(
+        self,
+        request: main_models.DomainKnowledgeRetrieveRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DomainKnowledgeRetrieveResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.global_top_n):
+            query['GlobalTopN'] = request.global_top_n
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.site):
+            query['Site'] = request.site
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DomainKnowledgeRetrieve',
+            version = '2018-01-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DomainKnowledgeRetrieveResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def domain_knowledge_retrieve_with_options_async(
+        self,
+        request: main_models.DomainKnowledgeRetrieveRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DomainKnowledgeRetrieveResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.global_top_n):
+            query['GlobalTopN'] = request.global_top_n
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.site):
+            query['Site'] = request.site
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DomainKnowledgeRetrieve',
+            version = '2018-01-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DomainKnowledgeRetrieveResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def domain_knowledge_retrieve(
+        self,
+        request: main_models.DomainKnowledgeRetrieveRequest,
+    ) -> main_models.DomainKnowledgeRetrieveResponse:
+        runtime = RuntimeOptions()
+        return self.domain_knowledge_retrieve_with_options(request, runtime)
+
+    async def domain_knowledge_retrieve_async(
+        self,
+        request: main_models.DomainKnowledgeRetrieveRequest,
+    ) -> main_models.DomainKnowledgeRetrieveResponse:
+        runtime = RuntimeOptions()
+        return await self.domain_knowledge_retrieve_with_options_async(request, runtime)
 
     def domain_special_biz_cancel_with_options(
         self,
@@ -8169,6 +8250,8 @@ class Client(OpenApiClient):
             query['Email'] = request.email
         if not DaraCore.is_null(request.enable_domain_proxy):
             query['EnableDomainProxy'] = request.enable_domain_proxy
+        if not DaraCore.is_null(request.expected_punycode):
+            query['ExpectedPunycode'] = request.expected_punycode
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
         if not DaraCore.is_null(request.permit_premium_activation):
@@ -8261,6 +8344,8 @@ class Client(OpenApiClient):
             query['Email'] = request.email
         if not DaraCore.is_null(request.enable_domain_proxy):
             query['EnableDomainProxy'] = request.enable_domain_proxy
+        if not DaraCore.is_null(request.expected_punycode):
+            query['ExpectedPunycode'] = request.expected_punycode
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
         if not DaraCore.is_null(request.permit_premium_activation):

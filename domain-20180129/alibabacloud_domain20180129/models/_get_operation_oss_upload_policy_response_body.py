@@ -15,13 +15,19 @@ class GetOperationOssUploadPolicyResponseBody(DaraModel):
         request_id: str = None,
         signature: str = None,
     ):
+        # Access ID.
         self.accessid = accessid
+        # Encrypted policy.
         self.encoded_policy = encoded_policy
+        # Expiration time.
         self.expire_time = expire_time
+        # File directory.
         self.file_dir = file_dir
         # OSS Endpoint。
         self.host = host
+        # Request ID.
         self.request_id = request_id
+        # Signature data.
         self.signature = signature
 
     def validate(self):

@@ -14,11 +14,27 @@ class QueryDomainGroupListRequest(DaraModel):
         show_deleting_group: bool = None,
         user_client_ip: str = None,
     ):
+        # The user-defined domain group name.
         self.domain_group_name = domain_group_name
+        # The language of error messages in the response. Valid values:
+        # 
+        # - **zh**: Chinese
+        # 
+        # - **en**: English
+        # 
+        # The default value is **en**.
         self.lang = lang
         self.order_by_type = order_by_type
         self.order_key_type = order_key_type
+        # Specifies whether to show domain groups that are being deleted. Valid values:
+        # 
+        # - **false**
+        # 
+        # - **true**
+        # 
+        # The default value is **false**.
         self.show_deleting_group = show_deleting_group
+        # The client IP address. You can set this parameter to **127.0.0.1**.
         self.user_client_ip = user_client_ip
 
     def validate(self):

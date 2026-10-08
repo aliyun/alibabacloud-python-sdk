@@ -10,7 +10,9 @@ class SaveSingleTaskForAddingDSRecordResponseBody(DaraModel):
         request_id: str = None,
         task_no: str = None,
     ):
+        # Unique request access token.
         self.request_id = request_id
+        # Job number.
         self.task_no = task_no
 
     def validate(self):

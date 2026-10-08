@@ -14,6 +14,7 @@ class QueryDomainGroupListResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.data = data
+        # The unique request ID.
         self.request_id = request_id
 
     def validate(self):

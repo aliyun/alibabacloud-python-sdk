@@ -16,15 +16,29 @@ class SaveSingleTaskForCreatingOrderRedeemRequest(DaraModel):
         use_promotion: bool = None,
         user_client_ip: str = None,
     ):
+        # Coupon number.
         self.coupon_no = coupon_no
+        # Current expiration time of the domain name, represented as the number of milliseconds since 00:00:00 UTC on January 1, 1970.
+        # 
         # This parameter is required.
         self.current_expiration_date = current_expiration_date
+        # Domain name to be redeemed.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # Language of error messages returned by the API. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # Coupon number.
         self.promotion_no = promotion_no
+        # Is a coupon used.
         self.use_coupon = use_coupon
+        # Is a coupon used.
         self.use_promotion = use_promotion
+        # User IP address.
         self.user_client_ip = user_client_ip
 
     def validate(self):

@@ -10,7 +10,9 @@ class QueryEnsAssociationResponseBody(DaraModel):
         address: str = None,
         request_id: str = None,
     ):
+        # The wallet address in the ENS system.
         self.address = address
+        # Unique request access token.
         self.request_id = request_id
 
     def validate(self):

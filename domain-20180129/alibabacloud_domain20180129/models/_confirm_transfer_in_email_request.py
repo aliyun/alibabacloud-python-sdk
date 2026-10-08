@@ -14,11 +14,17 @@ class ConfirmTransferInEmailRequest(DaraModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # Domain name list
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # Mailbox
+        # 
         # This parameter is required.
         self.email = email
+        # Language of the error message returned by the API. Valid enumeration values: zh (Chinese); en (English). Default value is en.
         self.lang = lang
+        # User IP
         self.user_client_ip = user_client_ip
 
     def validate(self):

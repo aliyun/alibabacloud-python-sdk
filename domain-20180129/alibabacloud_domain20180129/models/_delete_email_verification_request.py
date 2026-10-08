@@ -11,9 +11,17 @@ class DeleteEmailVerificationRequest(DaraModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # Email addresses to be deleted, separated by commas (,).
+        # 
         # This parameter is required.
         self.email = email
+        # Language of the error message returned by the API. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # User IP address, which can be set to 127.0.0.1.
         self.user_client_ip = user_client_ip
 
     def validate(self):

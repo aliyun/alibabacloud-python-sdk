@@ -12,10 +12,19 @@ class SaveDomainGroupRequest(DaraModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # Domain group ID. If this parameter is not provided, a new group is created. If it is provided, the domain group name is updated.
         self.domain_group_id = domain_group_id
+        # Domain Name Group Name.
+        # 
         # This parameter is required.
         self.domain_group_name = domain_group_name
+        # Language for error messages returned by the API. Valid values:  
+        # - **zh**: Chinese;  
+        # - **en**: English.  
+        # 
+        # Default value is **en**.
         self.lang = lang
+        # User IP address.
         self.user_client_ip = user_client_ip
 
     def validate(self):

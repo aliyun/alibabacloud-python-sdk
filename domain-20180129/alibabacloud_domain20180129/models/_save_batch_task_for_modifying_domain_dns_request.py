@@ -15,12 +15,29 @@ class SaveBatchTaskForModifyingDomainDnsRequest(DaraModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # Specifies whether to use Alibaba Cloud DNS servers. Valid values:
+        # 
+        # - **true**: Yes.
+        # 
+        # - **false**: No.
+        # 
         # This parameter is required.
         self.aliyun_dns = aliyun_dns
+        # The domain names.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # The new DNS servers. This parameter is required if **AliyunDns** is set to **false**.
         self.domain_name_server = domain_name_server
+        # The language of API error messages. Valid values:
+        # 
+        # - **zh**: Chinese.
+        # 
+        # - **en**: English.
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # The user IP address. You can set this parameter to **127.0.0.1**.
         self.user_client_ip = user_client_ip
 
     def validate(self):

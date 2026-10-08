@@ -59,6 +59,9 @@ from ._delete_email_verification_response import DeleteEmailVerificationResponse
 from ._delete_registrant_profile_request import DeleteRegistrantProfileRequest
 from ._delete_registrant_profile_response_body import DeleteRegistrantProfileResponseBody
 from ._delete_registrant_profile_response import DeleteRegistrantProfileResponse
+from ._domain_knowledge_retrieve_request import DomainKnowledgeRetrieveRequest
+from ._domain_knowledge_retrieve_response_body import DomainKnowledgeRetrieveResponseBody
+from ._domain_knowledge_retrieve_response import DomainKnowledgeRetrieveResponse
 from ._domain_special_biz_cancel_request import DomainSpecialBizCancelRequest
 from ._domain_special_biz_cancel_response_body import DomainSpecialBizCancelResponseBody
 from ._domain_special_biz_cancel_response import DomainSpecialBizCancelResponse
@@ -412,6 +415,7 @@ from ._confirm_transfer_in_email_response_body import ConfirmTransferInEmailResp
 from ._create_intl_fixed_price_domain_order_response_body import CreateIntlFixedPriceDomainOrderResponseBodyModule
 from ._delete_email_verification_response_body import DeleteEmailVerificationResponseBodyFailList
 from ._delete_email_verification_response_body import DeleteEmailVerificationResponseBodySuccessList
+from ._domain_knowledge_retrieve_response_body import DomainKnowledgeRetrieveResponseBodyData
 from ._fuzzy_match_domain_sensitive_word_response_body import FuzzyMatchDomainSensitiveWordResponseBodyMatchedSentiveWordsMatchedSensitiveWord
 from ._fuzzy_match_domain_sensitive_word_response_body import FuzzyMatchDomainSensitiveWordResponseBodyMatchedSentiveWords
 from ._get_intl_fix_price_domain_list_url_response_body import GetIntlFixPriceDomainListUrlResponseBodyModule
@@ -572,6 +576,9 @@ __all__ = [
     DeleteRegistrantProfileRequest,
     DeleteRegistrantProfileResponseBody,
     DeleteRegistrantProfileResponse,
+    DomainKnowledgeRetrieveRequest,
+    DomainKnowledgeRetrieveResponseBody,
+    DomainKnowledgeRetrieveResponse,
     DomainSpecialBizCancelRequest,
     DomainSpecialBizCancelResponseBody,
     DomainSpecialBizCancelResponse,
@@ -925,6 +932,7 @@ __all__ = [
     CreateIntlFixedPriceDomainOrderResponseBodyModule,
     DeleteEmailVerificationResponseBodyFailList,
     DeleteEmailVerificationResponseBodySuccessList,
+    DomainKnowledgeRetrieveResponseBodyData,
     FuzzyMatchDomainSensitiveWordResponseBodyMatchedSentiveWordsMatchedSensitiveWord,
     FuzzyMatchDomainSensitiveWordResponseBodyMatchedSentiveWords,
     GetIntlFixPriceDomainListUrlResponseBodyModule,

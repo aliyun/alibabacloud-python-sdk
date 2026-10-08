@@ -13,6 +13,7 @@ class BatchFuzzyMatchDomainSensitiveWordResponseBody(DaraModel):
         request_id: str = None,
         sensitive_word_match_result_list: main_models.BatchFuzzyMatchDomainSensitiveWordResponseBodySensitiveWordMatchResultList = None,
     ):
+        # The request ID.
         self.request_id = request_id
         self.sensitive_word_match_result_list = sensitive_word_match_result_list
 

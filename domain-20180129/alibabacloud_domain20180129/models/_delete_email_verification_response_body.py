@@ -14,8 +14,11 @@ class DeleteEmailVerificationResponseBody(DaraModel):
         request_id: str = None,
         success_list: List[main_models.DeleteEmailVerificationResponseBodySuccessList] = None,
     ):
+        # List of email addresses for which deletion failed.
         self.fail_list = fail_list
+        # Request ID.
         self.request_id = request_id
+        # List of successfully deleted email addresses.
         self.success_list = success_list
 
     def validate(self):
@@ -74,8 +77,11 @@ class DeleteEmailVerificationResponseBodySuccessList(DaraModel):
         email: str = None,
         message: str = None,
     ):
+        # Returned code.
         self.code = code
+        # Email address that was successfully deleted.
         self.email = email
+        # Message returned upon successful deletion of the email address.
         self.message = message
 
     def validate(self):
@@ -117,8 +123,11 @@ class DeleteEmailVerificationResponseBodyFailList(DaraModel):
         email: str = None,
         message: str = None,
     ):
+        # Returned code.
         self.code = code
+        # Email address for which deletion failed.
         self.email = email
+        # Message returned upon failure to delete the email address.
         self.message = message
 
     def validate(self):

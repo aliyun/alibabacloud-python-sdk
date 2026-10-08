@@ -11,9 +11,19 @@ class QueryDomainByInstanceIdRequest(DaraModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # The domain instance ID. Call the [QueryDomainList](https://help.aliyun.com/document_detail/67712.html) API to get this ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The language of API error messages. Valid values:
+        # 
+        # - **zh**: Chinese.
+        # 
+        # - **en**: English.
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # The user\\"s IP address. You can use **127.0.0.1**.
         self.user_client_ip = user_client_ip
 
     def validate(self):

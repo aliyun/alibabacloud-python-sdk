@@ -11,9 +11,17 @@ class QueryTransferInByInstanceIdRequest(DaraModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Language of the error message returned by the API. Valid values:
+        # - **zh**: Chinese;
+        # - **en**: English.
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # User IP address.
         self.user_client_ip = user_client_ip
 
     def validate(self):

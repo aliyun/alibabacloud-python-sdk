@@ -12,11 +12,25 @@ class QueryContactInfoRequest(DaraModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # The contact type. Valid values:  
+        # - **registrant**: Domain name registrant.  
+        # - **tech**: Technical contact.  
+        # - **admin**: Administrative contact.  
+        # - **billing**: Billing contact.
+        # 
         # This parameter is required.
         self.contact_type = contact_type
+        # Domain name.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # Language of error messages returned by the API. Valid values:  
+        # - **zh**: Chinese.  
+        # - **en**: English.  
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # User IP address.
         self.user_client_ip = user_client_ip
 
     def validate(self):

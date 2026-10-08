@@ -19,20 +19,20 @@ class QueryDomainListResponseBody(DaraModel):
         total_item_num: int = None,
         total_page_num: int = None,
     ):
-        # The page number.
+        # The current page number.
         self.current_page_num = current_page_num
         self.data = data
-        # Indicates whether the current page is followed by a page.
+        # Indicates whether a next page is available.
         self.next_page = next_page
-        # The number of entries per page.
+        # The number of domain names per page.
         self.page_size = page_size
-        # Indicates whether the current page is preceded by a page.
+        # Indicates whether a previous page is available.
         self.pre_page = pre_page
-        # The ID of the request.
+        # The unique request ID.
         self.request_id = request_id
-        # The total number of domain names returned.
+        # The total number of domain names.
         self.total_item_num = total_item_num
-        # The total number of pages returned.
+        # The total number of pages.
         self.total_page_num = total_page_num
 
     def validate(self):

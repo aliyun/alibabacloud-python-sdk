@@ -13,7 +13,9 @@ class QueryDSRecordResponseBody(DaraModel):
         dsrecord_list: List[main_models.QueryDSRecordResponseBodyDSRecordList] = None,
         request_id: str = None,
     ):
+        # List of DS records.
         self.dsrecord_list = dsrecord_list
+        # Unique request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -58,9 +60,33 @@ class QueryDSRecordResponseBodyDSRecordList(DaraModel):
         digest_type: int = None,
         key_tag: int = None,
     ):
+        # Encryption algorithm number. For more information, see [Domain Name System Security (DNSSEC) Algorithm Numbers](https://www.iana.org/assignments/dns-sec-alg-numbers/dns-sec-alg-numbers.xhtml). Valid values:
+        #  - **1**: RSA/MD5;
+        #  - **2**: Diffie-Hellman;
+        #  - **3**: DSA/SHA-1;
+        #  - **5**: RSA/SHA-1;
+        #  - **6**: DSA-NSEC3-SHA1;
+        #  - **7**: RSASHA1-NSEC3-SHA1;
+        #  - **8**: RSA/SHA-256;
+        #  - **10**: RSA/SHA-512;
+        #  - **12**: GOST R 34.10-2001;
+        #  - **13**: ECDSA Curve P-256 with SHA-256;
+        #  - **14**: ECDSA Curve P-384 with SHA-384;
+        #  - **15**: Ed25519;
+        #  - **16**: Ed448;
+        #  - **252**: Reserved for Indirect Keys;
+        #  - **253**: private algorithm;
+        #  - **254**: private algorithm OID.
         self.algorithm = algorithm
+        # Digest value.
         self.digest = digest
+        # Digest algorithm type. For more information, see [Delegation Signer (DS) Resource Record (RR) Type Digest Algorithms](https://www.iana.org/assignments/ds-rr-types/ds-rr-types.xhtml). Valid values:
+        #  - **1**: SHA-1;
+        #  - **2**: SHA-256;
+        #  - **3**: GOST R 34.11-94;
+        #  - **4**: SHA-384.
         self.digest_type = digest_type
+        # Key tag used to identify DNSSEC records. It is an integer less than 65536.
         self.key_tag = key_tag
 
     def validate(self):

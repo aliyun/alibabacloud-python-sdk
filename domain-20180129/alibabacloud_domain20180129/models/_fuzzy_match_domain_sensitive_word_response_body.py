@@ -15,9 +15,14 @@ class FuzzyMatchDomainSensitiveWordResponseBody(DaraModel):
         matched_sentive_words: main_models.FuzzyMatchDomainSensitiveWordResponseBodyMatchedSentiveWords = None,
         request_id: str = None,
     ):
+        # Indicates whether the domain name contains sensitive words. Valid values:  
+        # - **true**: The domain name contains sensitive words.  
+        # - **false**: The domain name does not contain sensitive words.
         self.exist = exist
+        # The domain name keyword that was passed in.
         self.keyword = keyword
         self.matched_sentive_words = matched_sentive_words
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

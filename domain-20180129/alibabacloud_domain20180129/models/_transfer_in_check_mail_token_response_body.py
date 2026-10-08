@@ -15,6 +15,7 @@ class TransferInCheckMailTokenResponseBody(DaraModel):
         success_list: main_models.TransferInCheckMailTokenResponseBodySuccessList = None,
     ):
         self.fail_list = fail_list
+        # The request ID.
         self.request_id = request_id
         self.success_list = success_list
 

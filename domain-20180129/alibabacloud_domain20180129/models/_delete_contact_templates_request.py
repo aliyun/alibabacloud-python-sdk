@@ -10,8 +10,13 @@ class DeleteContactTemplatesRequest(DaraModel):
         registrant_profile_ids: str = None,
         user_client_ip: str = None,
     ):
+        # The IDs of the contact templates to delete. Separate multiple values with commas (,).
+        # 
+        # The system automatically generates an ID upon successful creation of a contact template. You can invoke the [QueryRegistrantProfiles](https://help.aliyun.com/document_detail/67701.html) API to query the template IDs.
+        # 
         # This parameter is required.
         self.registrant_profile_ids = registrant_profile_ids
+        # User IP address. You can set this parameter to **127.0.0.1**.
         self.user_client_ip = user_client_ip
 
     def validate(self):

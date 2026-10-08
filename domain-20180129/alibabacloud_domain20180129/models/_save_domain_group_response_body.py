@@ -16,13 +16,26 @@ class SaveDomainGroupResponseBody(DaraModel):
         request_id: str = None,
         total_number: int = None,
     ):
+        # Indicates whether the group is being deleted.  
+        # > For groups containing more than 1,000 domain names, deletion is an asynchronous procedure that requires some time for the system to process. During this period, this field is **true**.
         self.being_deleted = being_deleted
+        # Creation Time of the domain name group.
         self.creation_date = creation_date
+        # Domain group ID.
         self.domain_group_id = domain_group_id
+        # Domain Name Group Name.
         self.domain_group_name = domain_group_name
+        # Status of the domain name group. Valid values:  
+        # - **PROCESSING**: Processing;  
+        # - **COMPLETE**: Complete.  
+        # 
+        # > In cases such as setting a group via a file or replacing a group with more than 1,000 domain names, the operation is asynchronous and requires waiting for system processing. During this time, this field is **PROCESSING**.
         self.domain_group_status = domain_group_status
+        # Updated At time of the domain name group.
         self.modification_date = modification_date
+        # Unique request identity.
         self.request_id = request_id
+        # Quantity of domain names.
         self.total_number = total_number
 
     def validate(self):

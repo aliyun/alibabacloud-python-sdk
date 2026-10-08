@@ -12,10 +12,20 @@ class CheckProcessingServerLockApplyRequest(DaraModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # The domain name to be checked.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # Registration period in years. Unit: **year(s)**. Valid range: **1 to 10** years.
         self.fee_period = fee_period
+        # Language of error messages returned by the API. Valid values:
+        # 
+        # - zh: Chinese
+        # - en: English
+        # 
+        # Default value: en.
         self.lang = lang
+        # User IP address. You can set it to **127.0.0.1**.
         self.user_client_ip = user_client_ip
 
     def validate(self):

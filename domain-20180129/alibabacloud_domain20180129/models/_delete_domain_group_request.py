@@ -11,9 +11,17 @@ class DeleteDomainGroupRequest(DaraModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # Domain name group ID. You can obtain it by using the [QueryDomainGroupList](https://help.aliyun.com/document_detail/69362.html) API.
+        # 
         # This parameter is required.
         self.domain_group_id = domain_group_id
+        # Language of the error message returned by the API. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # User IP address. You can set it to **127.0.0.1**.
         self.user_client_ip = user_client_ip
 
     def validate(self):

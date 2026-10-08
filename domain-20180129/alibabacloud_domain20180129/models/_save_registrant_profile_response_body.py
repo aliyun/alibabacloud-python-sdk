@@ -10,7 +10,9 @@ class SaveRegistrantProfileResponseBody(DaraModel):
         registrant_profile_id: int = None,
         request_id: str = None,
     ):
+        # Registrant profile ID.
         self.registrant_profile_id = registrant_profile_id
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

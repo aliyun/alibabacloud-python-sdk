@@ -10,7 +10,9 @@ class QueryLocalEnsAssociationResponseBody(DaraModel):
         address: str = None,
         request_id: str = None,
     ):
+        # The ENS address recorded in the Alibaba Cloud system.
         self.address = address
+        # Unique request access token.
         self.request_id = request_id
 
     def validate(self):

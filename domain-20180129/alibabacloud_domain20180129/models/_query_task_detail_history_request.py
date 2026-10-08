@@ -16,15 +16,35 @@ class QueryTaskDetailHistoryRequest(DaraModel):
         task_status: int = None,
         user_client_ip: str = None,
     ):
+        # Domain name.
         self.domain_name = domain_name
+        # Domain name cursor.
         self.domain_name_cursor = domain_name_cursor
+        # Language of error messages returned by the API. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # Page size.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Task detail cursor.
         self.task_detail_no_cursor = task_detail_no_cursor
+        # Job number.
+        # 
+        # > You can obtain the job number by calling the [QueryTaskList](https://help.aliyun.com/document_detail/67709.html) API.
+        # 
         # This parameter is required.
         self.task_no = task_no
+        # Job status. Valid values:
+        # - **0**: Waiting to execute.
+        # - **1**: Executing.
+        # - **2**: Succeeded.
+        # - **3**: Failed.
         self.task_status = task_status
+        # User IP address.
         self.user_client_ip = user_client_ip
 
     def validate(self):

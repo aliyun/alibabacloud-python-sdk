@@ -17,11 +17,17 @@ class QueryTaskDetailHistoryResponseBody(DaraModel):
         pre_page_cursor: main_models.QueryTaskDetailHistoryResponseBodyPrePageCursor = None,
         request_id: str = None,
     ):
+        # Current page cursor.
         self.current_page_cursor = current_page_cursor
+        # Cursor for the next page.
         self.next_page_cursor = next_page_cursor
+        # Task detail information.
         self.objects = objects
+        # Paging size.
         self.page_size = page_size
+        # Cursor for the previous page.
         self.pre_page_cursor = pre_page_cursor
+        # Unique Request access token.
         self.request_id = request_id
 
     def validate(self):
@@ -107,17 +113,51 @@ class QueryTaskDetailHistoryResponseBodyPrePageCursor(DaraModel):
         try_count: int = None,
         update_time: str = None,
     ):
+        # Task creation time.
         self.create_time = create_time
+        # Domain name.
         self.domain_name = domain_name
+        # Result of task execution.
         self.error_msg = error_msg
+        # Domain instance ID.
         self.instance_id = instance_id
+        # Task detail number.
         self.task_detail_no = task_detail_no
+        # Task number.
         self.task_no = task_no
+        # Task Status. Valid values:
+        # - **WAITING_EXECUTE**: Waiting for execution.
+        # - **EXECUTING**: Executing.
+        # - **EXECUTE_SUCCESS**: Execution succeeded.
+        # - **EXECUTE_FAILURE**: Execution failed.
         self.task_status = task_status
+        # Task status code. Valid values:  
+        # - **0**: Waiting for execution.  
+        # - **1**: Executing.  
+        # - **2**: Execution succeeded.  
+        # - **3**: Execution failed.
         self.task_status_code = task_status_code
+        # Task Type. Valid values:
+        # - **CHG_HOLDER**: Modify registrant information.
+        # - **CHG_DNS**: Modify DNS.
+        # - **SET_WHOIS_PROTECT**: Enable privacy protection.
+        # - **UPDATE_ADMIN_CONTACT**: Modify administrative contact information.
+        # - **UPDATE_BILLING_CONTACT**: Modify billing contact information.
+        # - **UPDATE_TECH_CONTACT**: Modify technical contact information.
+        # - **SET_UPDATE_PROHIBITED**: Enable domain name edit lock.
+        # - **SET_TRANSFER_PROHIBITED**: Enable domain name transfer lock.
+        # - **ORDER_ACTIVATE**: Create a registration order.
+        # - **ORDER_RENEW**: Create a renewal order.
+        # - **ORDER_REDEEM**: Create a redemption order.
+        # - **CREATE_DNSHOST**: Create a DNS host.
+        # - **UPDATE_DNSHOST**: Update a DNS host.
+        # - **SYNC_DNSHOST**: Synchronize a DNS host.
         self.task_type = task_type
+        # Description of the task type.
         self.task_type_description = task_type_description
+        # Number of retries for the task detail.
         self.try_count = try_count
+        # The most recent running time of the task details.
         self.update_time = update_time
 
     def validate(self):
@@ -222,17 +262,51 @@ class QueryTaskDetailHistoryResponseBodyObjects(DaraModel):
         try_count: int = None,
         update_time: str = None,
     ):
+        # The creation time of the job.
         self.create_time = create_time
+        # The domain name.
         self.domain_name = domain_name
+        # The result of the job execution.
         self.error_msg = error_msg
+        # The instance ID of the domain name.
         self.instance_id = instance_id
+        # Task detail number.
         self.task_detail_no = task_detail_no
+        # The job number.
         self.task_no = task_no
+        # Task Status. Valid values:  
+        # - **WAITING_EXECUTE**: Waiting for execution.  
+        # - **EXECUTING**: Executing.  
+        # - **EXECUTE_SUCCESS**: Execution succeeded.  
+        # - **EXECUTE_FAILURE**: Execution failed.
         self.task_status = task_status
+        # The job status code. Valid values:
+        # - **0**: Waiting for execution.
+        # - **1**: Executing.
+        # - **2**: Succeeded.
+        # - **3**: Failed.
         self.task_status_code = task_status_code
+        # The task type. Valid values:
+        # - **CHG_HOLDER**: Modify registrant information.
+        # - **CHG_DNS**: Modify DNS settings.
+        # - **SET_WHOIS_PROTECT**: Enable privacy protection.
+        # - **UPDATE_ADMIN_CONTACT**: Update administrative contact information.
+        # - **UPDATE_BILLING_CONTACT**: Update billing contact information.
+        # - **UPDATE_TECH_CONTACT**: Update technical contact information.
+        # - **SET_UPDATE_PROHIBITED**: Enable the Edit Lock for the domain name.
+        # - **SET_TRANSFER_PROHIBITED**: Enable the transfer lock for the domain name.
+        # - **ORDER_ACTIVATE**: Create a registration order.
+        # - **ORDER_RENEW**: Create a renewal order.
+        # - **ORDER_REDEEM**: Create a redemption order.
+        # - **CREATE_DNSHOST**: Create a DNS host.
+        # - **UPDATE_DNSHOST**: Update a DNS host.
+        # - **SYNC_DNSHOST**: Synchronize a DNS host.
         self.task_type = task_type
+        # Task Type description.
         self.task_type_description = task_type_description
+        # Number of retries for the task detail.
         self.try_count = try_count
+        # The running time of the most recent job execution.
         self.update_time = update_time
 
     def validate(self):
@@ -337,17 +411,51 @@ class QueryTaskDetailHistoryResponseBodyNextPageCursor(DaraModel):
         try_count: int = None,
         update_time: str = None,
     ):
+        # Creation time of the job.
         self.create_time = create_time
+        # Domain name.
         self.domain_name = domain_name
+        # Result of task execution.
         self.error_msg = error_msg
+        # Domain name instance ID.
         self.instance_id = instance_id
+        # Task detail number.
         self.task_detail_no = task_detail_no
+        # Job number.
         self.task_no = task_no
+        # Task Status. Valid values:
+        # - **WAITING_EXECUTE**: Waiting for execution.
+        # - **EXECUTING**: Executing.
+        # - **EXECUTE_SUCCESS**: Succeeded.
+        # - **EXECUTE_FAILURE**: Failed.
         self.task_status = task_status
+        # Task status code. Valid values:
+        # - **0**: Waiting for execution.
+        # - **1**: Executing.
+        # - **2**: Succeeded.
+        # - **3**: Failed.
         self.task_status_code = task_status_code
+        # Task Type. Valid values:
+        # - **CHG_HOLDER**: Modify registrant information.
+        # - **CHG_DNS**: Modify DNS.
+        # - **SET_WHOIS_PROTECT**: Enable privacy protection.
+        # - **UPDATE_ADMIN_CONTACT**: Modify administrator contact information.
+        # - **UPDATE_BILLING_CONTACT**: Modify billing contact information.
+        # - **UPDATE_TECH_CONTACT**: Modify technical contact information.
+        # - **SET_UPDATE_PROHIBITED**: Enable Edit Lock.
+        # - **SET_TRANSFER_PROHIBITED**: Enable transfer lock.
+        # - **ORDER_ACTIVATE**: Create a registration order.
+        # - **ORDER_RENEW**: Create a renewal order.
+        # - **ORDER_REDEEM**: Create a redemption order.
+        # - **CREATE_DNSHOST**: Create a DNS host.
+        # - **UPDATE_DNSHOST**: Update a DNS host.
+        # - **SYNC_DNSHOST**: Synchronize a DNS host.
         self.task_type = task_type
+        # Task Type Description.
         self.task_type_description = task_type_description
+        # Number of retries for the task details.
         self.try_count = try_count
+        # The most recent running time of the job details.
         self.update_time = update_time
 
     def validate(self):
@@ -452,17 +560,51 @@ class QueryTaskDetailHistoryResponseBodyCurrentPageCursor(DaraModel):
         try_count: int = None,
         update_time: str = None,
     ):
+        # Job Creation Time.
         self.create_time = create_time
+        # Domain name.
         self.domain_name = domain_name
+        # Result of task execution.
         self.error_msg = error_msg
+        # Domain instance ID.
         self.instance_id = instance_id
+        # Task detail ID.
         self.task_detail_no = task_detail_no
+        # Job number.
         self.task_no = task_no
+        # Task Status. Valid values:  
+        # - **WAITING_EXECUTE**: Waiting for execution.  
+        # - **EXECUTING**: Executing.  
+        # - **EXECUTE_SUCCESS**: Execution succeeded.  
+        # - **EXECUTE_FAILURE**: Execution failed.
         self.task_status = task_status
+        # Job Status code. Valid values:  
+        # - **0**: Waiting to execute.  
+        # - **1**: Executing.  
+        # - **2**: Succeeded.  
+        # - **3**: Failed.
         self.task_status_code = task_status_code
+        # Task Type. Valid values:  
+        # - **CHG_HOLDER**: Modify registrant information.  
+        # - **CHG_DNS**: Modify DNS.  
+        # - **SET_WHOIS_PROTECT**: Enable privacy protection.  
+        # - **UPDATE_ADMIN_CONTACT**: Modify administrative contact information.  
+        # - **UPDATE_BILLING_CONTACT**: Modify billing contact information.  
+        # - **UPDATE_TECH_CONTACT**: Modify technical contact information.  
+        # - **SET_UPDATE_PROHIBITED**: Enable domain name edit lock.  
+        # - **SET_TRANSFER_PROHIBITED**: Enable domain name transfer lock.  
+        # - **ORDER_ACTIVATE**: Create a registration order.  
+        # - **ORDER_RENEW**: Create a renewal order.  
+        # - **ORDER_REDEEM**: Create a redemption order.  
+        # - **CREATE_DNSHOST**: Create a DNS host.  
+        # - **UPDATE_DNSHOST**: Update a DNS host.  
+        # - **SYNC_DNSHOST**: Synchronize a DNS host.
         self.task_type = task_type
+        # Description of the task type.
         self.task_type_description = task_type_description
+        # Retry Count of job details.
         self.try_count = try_count
+        # The most recent task execution time.
         self.update_time = update_time
 
     def validate(self):

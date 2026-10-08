@@ -1,3 +1,8 @@
+2026-10-08 Version: 5.1.1
+- Update API SaveBatchTaskForCreatingOrderActivate: add request parameters OrderActivateParam.$.ExpectedPunycode.
+- Update API SaveSingleTaskForCreatingOrderActivate: add request parameters ExpectedPunycode.
+
+
 2026-05-27 Version: 5.0.4
 - Update API CreateIntlFixedPriceDomainOrder: add request parameters ProductType.
 - Update API QueryDomainByDomainName: add response parameters Body.CnnicPrivacyServiceStatus.

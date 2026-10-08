@@ -30,27 +30,79 @@ class QueryTransferInByInstanceIdResponseBody(DaraModel):
         user_id: str = None,
         whois_mail_status: bool = None,
     ):
+        # Domain name.
         self.domain_name = domain_name
+        # Mailbox to which the domain name transfer-in confirmation email was sent.
         self.email = email
+        # The expiration time of the domain name transfer-in.
         self.expiration_date = expiration_date
+        # The UNIX timestamp indicating when the transfer-in expires.
         self.expiration_date_long = expiration_date_long
+        # Instance ID.
         self.instance_id = instance_id
+        # The update time of the transfer-in information.
         self.modification_date = modification_date
+        # The UNIX timestamp indicating when the transfer-in information was updated.
         self.modification_date_long = modification_date_long
+        # Indicates whether email verification is required.
         self.need_mail_check = need_mail_check
+        # Progress bar chart type for the transfer procedure. Valid values:  
+        # - **0**: Both email verification and naming review are required;  
+        # - **1**: Email verification is required, but naming review is not;  
+        # - **2**: Naming review is required, but email verification is not;  
+        # - **3**: Neither email verification nor naming review is required.
         self.progress_bar_type = progress_bar_type
+        # Unique request access token.
         self.request_id = request_id
+        # The error code indicating the reason for transfer failure. Valid values:
+        # - **clientCancelled**: You canceled the domain transfer-in.
+        # - **clientRejected**: The original registrar rejected the domain transfer-in (or you performed a rejection operation through the original registrar).
+        # - **serverCancelled**: The domain name registry canceled the transfer.
+        # - **transferProhibited**: The domain is in a transfer-prohibited status.
+        # - **transferExpired**: You did not complete the required transfer confirmation within the validity period.
+        # - **nameVerificationFailed**: The domain naming review did not pass.
+        # - **transferSubmitted**: Another user has already submitted a transfer request for this domain.
         self.result_code = result_code
+        # The time when the transfer succeeded or failed.
         self.result_date = result_date
+        # The UNIX timestamp indicating when the transfer succeeded or failed.
         self.result_date_long = result_date_long
+        # Description of the failure reason when the transfer failed.
         self.result_msg = result_msg
+        # Transfer status. Valid values:  
+        # - **INIT**: Transfer-in submitted;  
+        # - **AUTHORIZATION**: Authorization for transfer-in (email verification);  
+        # - **NAME_VERIFICATION**: Naming review;  
+        # - **PASSWORD_VERIFICATION**: Transfer password verification;  
+        # - **PENDING**: Transfer-in in progress;  
+        # - **SUCCESS**: Transfer-in succeeded;  
+        # - **FAIL**: Transfer-in failed.
         self.simple_transfer_in_status = simple_transfer_in_status
+        # Detailed domain name transfer-in status. Valid values:  
+        # - **10**: Initial status;  
+        # - **11**: Email verification token link has been sent;  
+        # - **19**: Token link has been successfully verified;  
+        # - **20**: Naming review has been submitted;  
+        # - **21**: Naming review failed;  
+        # - **29**: Naming review succeeded;  
+        # - **31**: Transfer password is incorrect;  
+        # - **39**: Transfer-in submission succeeded;  
+        # - **50**: Customer canceled the transfer-in;  
+        # - **51**: Transfer-in failed;  
+        # - **52**: Transfer-in expired;  
+        # - **59**: Transfer-in succeeded.
         self.status = status
+        # Transfer request submission time.
         self.submission_date = submission_date
+        # UNIX timestamp of the transfer request submission time.
         self.submission_date_long = submission_date_long
+        # Time when the transfer password was successfully submitted.
         self.transfer_authorization_code_submission_date = transfer_authorization_code_submission_date
+        # UNIX timestamp of the time when the transfer password was successfully submitted.
         self.transfer_authorization_code_submission_date_long = transfer_authorization_code_submission_date_long
+        # User ID.
         self.user_id = user_id
+        # Indicates whether the registrant\\"s mailbox was scraped from WHOIS. When the domain transfer-in is in the authorization (email verification) phase and this field is **false**, it means the registrant\\"s mailbox was not obtained via WHOIS scraping, and manual processing is required.
         self.whois_mail_status = whois_mail_status
 
     def validate(self):

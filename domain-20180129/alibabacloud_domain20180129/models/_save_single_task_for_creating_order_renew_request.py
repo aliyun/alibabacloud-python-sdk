@@ -18,18 +18,44 @@ class SaveSingleTaskForCreatingOrderRenewRequest(DaraModel):
         use_promotion: bool = None,
         user_client_ip: str = None,
     ):
+        # The coupon number.
         self.coupon_no = coupon_no
+        # The current expiration date of the domain name. This value is a Unix timestamp in milliseconds, representing the time elapsed since 00:00:00 UTC on January 1, 1970.
+        # 
         # This parameter is required.
         self.current_expiration_date = current_expiration_date
+        # The domain name to renew.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # The language of error messages returned by the API. Valid values:
+        # 
+        # - **zh**: Chinese.
+        # 
+        # - **en**: English.
+        # 
+        # The default value is **en**.
         self.lang = lang
         self.permit_premium_renew = permit_premium_renew
+        # The promotion number.
         self.promotion_no = promotion_no
+        # The renewal period, in years. The value must be an integer from **1** to **10**.
+        # 
         # This parameter is required.
         self.subscription_duration = subscription_duration
+        # Specifies whether to use a coupon. Valid values:
+        # 
+        # - **false**: Do not use a coupon.
+        # 
+        # - **true**: Use a coupon.
         self.use_coupon = use_coupon
+        # Specifies whether to use a promotion. Valid values:
+        # 
+        # - **false**: Do not use a promotion.
+        # 
+        # - **true**: Use a promotion.
         self.use_promotion = use_promotion
+        # The user\\"s IP address. You can set this parameter to **127.0.0.1**.
         self.user_client_ip = user_client_ip
 
     def validate(self):

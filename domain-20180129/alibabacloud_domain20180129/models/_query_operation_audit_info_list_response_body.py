@@ -19,13 +19,21 @@ class QueryOperationAuditInfoListResponseBody(DaraModel):
         total_item_num: int = None,
         total_page_num: int = None,
     ):
+        # Current page number.
         self.current_page_num = current_page_num
+        # Review data.
         self.data = data
+        # Indicates whether there is a next page.
         self.next_page = next_page
+        # Number of records per page.
         self.page_size = page_size
+        # Indicates whether a previous page exists.
         self.pre_page = pre_page
+        # Request ID.
         self.request_id = request_id
+        # Total number of records.
         self.total_item_num = total_item_num
+        # Total number of pages.
         self.total_page_num = total_page_num
 
     def validate(self):
@@ -111,14 +119,31 @@ class QueryOperationAuditInfoListResponseBodyData(DaraModel):
         remark: str = None,
         update_time: int = None,
     ):
+        # Information pending review.
         self.audit_info = audit_info
+        # Review status. Valid values:
+        # 
+        # - **0**: Information to be completed.
+        # - **1**, **2**, **3**, **4**: Under review.
+        # - **5**: Review failed.
+        # - **6**: Review succeeded.
+        # - **7**: Review canceled.
         self.audit_status = audit_status
+        # Review type. Valid value:
+        # 
+        # **1**: Offline domain name transfer.
         self.audit_type = audit_type
+        # Name of the reviewed business.
         self.business_name = business_name
+        # Record creation time.
         self.create_time = create_time
+        # Domain name.
         self.domain_name = domain_name
+        # Review record ID.
         self.id = id
+        # Review remark.
         self.remark = remark
+        # Record update time.
         self.update_time = update_time
 
     def validate(self):

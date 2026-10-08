@@ -12,9 +12,13 @@ class QueryIntlFixedPriceOrderListRequest(DaraModel):
         page_size: int = None,
         status: int = None,
     ):
+        # The business ID.
         self.biz_id = biz_id
+        # The page number.
         self.current_page = current_page
+        # The number of entries per page.
         self.page_size = page_size
+        # The order status.
         self.status = status
 
     def validate(self):

@@ -12,11 +12,21 @@ class SaveSingleTaskForDeletingDnsHostRequest(DaraModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # DNS name.
+        # 
         # This parameter is required.
         self.dns_name = dns_name
+        # Instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Language of error messages returned by the API. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # User IP address.
         self.user_client_ip = user_client_ip
 
     def validate(self):

@@ -10,7 +10,9 @@ class SaveTaskForSubmittingDomainDeleteResponseBody(DaraModel):
         request_id: str = None,
         task_no: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The job number.
         self.task_no = task_no
 
     def validate(self):

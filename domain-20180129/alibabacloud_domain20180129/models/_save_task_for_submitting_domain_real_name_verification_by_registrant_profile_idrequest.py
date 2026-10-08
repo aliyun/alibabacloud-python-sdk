@@ -13,13 +13,21 @@ class SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDReques
         registrant_profile_id: int = None,
         user_client_ip: str = None,
     ):
+        # The domain name to submit for real-name verification.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # The ID of the domain name instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The language of the error message to return. Valid values: `zh` (Chinese) and `en` (English). Default value: `en`.
         self.lang = lang
+        # The ID of the registrant profile to use for real-name verification.
+        # 
         # This parameter is required.
         self.registrant_profile_id = registrant_profile_id
+        # The IP address of the client that makes the request.
         self.user_client_ip = user_client_ip
 
     def validate(self):

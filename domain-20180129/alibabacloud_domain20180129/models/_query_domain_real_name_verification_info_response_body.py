@@ -16,13 +16,32 @@ class QueryDomainRealNameVerificationInfoResponseBody(DaraModel):
         request_id: str = None,
         submission_date: str = None,
     ):
+        # Domain name.
         self.domain_name = domain_name
+        # Base64-encoded image of the real-name verification certificate. Requirements for the image:  
+        # - Format must be **jpg** or **bmp**.  
+        # - Original image size must be between **55 KB and 1 MB**.
         self.identity_credential = identity_credential
+        # Certificate number used for real-name verification, such as an identity card number or Unified Social Credit Code.
         self.identity_credential_no = identity_credential_no
+        # The type of certificate used for real-name verification. Valid values:  
+        # - **SFZ**: Identity card.  
+        # - **HZ**: Passport.  
+        # - **YYZZ**: Business license.  
+        # - **ORG**: Organization code certificate.  
+        # - **XYDM**: Unified Social Credit Code certificate.  
+        # - **TXZ**: Mainland Travel Permits for Hong Kong and Macao Residents.  
+        # 
+        # If your certificate type is not listed above, see the section [Supported Certificate Types for Real-Name Verification](https://help.aliyun.com/document_detail/72209.html) for the corresponding value.  
+        # > You must select the certificate type that matches the certificate you provide.
         self.identity_credential_type = identity_credential_type
+        # Download URL of the real-name verification image.
         self.identity_credential_url = identity_credential_url
+        # Instance ID.
         self.instance_id = instance_id
+        # Unique request access token.
         self.request_id = request_id
+        # Updated At.
         self.submission_date = submission_date
 
     def validate(self):

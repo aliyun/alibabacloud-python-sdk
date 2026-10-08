@@ -15,9 +15,18 @@ class QueryQualificationDetailResponseBody(DaraModel):
         request_id: str = None,
         track_id: str = None,
     ):
+        # Review Status. Valid values:  
+        # 
+        # - 0: Information pending completion.  
+        # - 1, 2, 3, 4: Under review.  
+        # - 5: Review failed.  
+        # - 6: Review succeeded.  
+        # - 7: Review canceled.
         self.audit_status = audit_status
         self.credentials = credentials
+        # Request ID.
         self.request_id = request_id
+        # Business trail ID for qualification verification.
         self.track_id = track_id
 
     def validate(self):

@@ -50,40 +50,146 @@ class QueryDomainByInstanceIdResponseBody(DaraModel):
     ):
         self.cnnic_privacy_service_status = cnnic_privacy_service_status
         self.dns_list = dns_list
+        # The ID of the domain name group. You can call the [QueryDomainGroupList](https://help.aliyun.com/document_detail/69362.html) operation to obtain the ID of the domain name group.
         self.domain_group_id = domain_group_id
+        # The name of the domain name group.
         self.domain_group_name = domain_group_name
         self.domain_lifecycle_status = domain_lifecycle_status
+        # The domain name.
         self.domain_name = domain_name
+        # Indicates whether the domain name privacy protection service is enabled.
         self.domain_name_proxy_service = domain_name_proxy_service
+        # The status of the domain name review. Valid values:
+        # 
+        # - **NONAUDIT**: The domain name is not verified.
+        # 
+        # - **SUCCEED**: The domain name is verified.
+        # 
+        # - **FAILED**: The domain name fails to be verified.
+        # 
+        # - **AUDITING**: The domain name is being verified.
         self.domain_name_verification_status = domain_name_verification_status
+        # The status of the domain name. Valid values:
+        # 
+        # - 1: The domain name needs to be renewed.
+        # 
+        # - 2: The domain name needs to be redeemed.
+        # 
+        # - 3: The domain name is normal.
         self.domain_status = domain_status
+        # The type of the domain name. Valid values:
+        # 
+        # - New gTLD.
+        # 
+        # - gTLD.
+        # 
+        # - ccTLD.
         self.domain_type = domain_type
+        # The email address of the domain name registrant.
         self.email = email
+        # Indicates whether the DNS resolution for the domain name is suspended. Valid values:
+        # 
+        # - **false**: The DNS resolution for the domain name is not suspended.
+        # 
+        # - **true**: The DNS resolution for the domain name is suspended.
         self.email_verification_client_hold = email_verification_client_hold
+        # Indicates whether the email address of the domain name registrant is verified. Valid values:
+        # 
+        # - **0**: The email address is not verified.
+        # 
+        # - **1**: The email address is verified.
         self.email_verification_status = email_verification_status
+        # The number of days from the expiration date to the current date.
         self.expiration_curr_date_diff = expiration_curr_date_diff
+        # The expiration date of the domain name.
         self.expiration_date = expiration_date
+        # The expiration timestamp of the domain name.
         self.expiration_date_long = expiration_date_long
+        # The expiration status of the domain name. Valid values:
+        # 
+        # - **1**: The domain name has not expired.
+        # 
+        # - **2**: The domain name has expired.
         self.expiration_date_status = expiration_date_status
+        # The instance ID of the domain name.
         self.instance_id = instance_id
+        # Indicates whether the domain name is a premium domain name. Valid values:
+        # 
+        # - **true**: a premium domain name.
+        # 
+        # - **false**: not a premium domain name.
         self.premium = premium
         self.privacy_service_status = privacy_service_status
+        # The real-name verification status of the domain name. Valid values:
+        # 
+        # - **NONAUDIT**: The real-name verification is not performed.
+        # 
+        # - **SUCCEED**: The real-name verification is successful.
+        # 
+        # - **FAILED**: The real-name verification fails.
+        # 
+        # - **AUDITING**: The real-name verification is in progress.
+        # 
+        # > The real-name verification status of a domain name is a composite status of domain name review and real-name verification. The real-name verification of a domain name is successful only when both the domain name review and real-name verification are successful.
         self.real_name_status = real_name_status
+        # The name of the contact person.
         self.registrant_name = registrant_name
+        # The registrant of the domain name.
         self.registrant_organization = registrant_organization
+        # The type of the domain name registrant. Valid values:
+        # 
+        # - **1**: an individual.
+        # 
+        # - **2**: an enterprise.
         self.registrant_type = registrant_type
+        # The status of the domain name registrant. Valid values:
+        # 
+        # - **PENDING**: The information about the domain name registrant is being modified.
+        # 
+        # - **NORMAL**: The information about the domain name registrant is not being modified.
         self.registrant_updating_status = registrant_updating_status
+        # The registration date of the domain name.
         self.registration_date = registration_date
+        # The registration timestamp of the domain name.
         self.registration_date_long = registration_date_long
+        # The remarks of the domain name.
         self.remark = remark
+        # The request ID.
         self.request_id = request_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.tag = tag
+        # The status of the domain name transfer. Valid values:
+        # 
+        # - **NORMAL**: The domain name is not being transferred out of Alibaba Cloud.
+        # 
+        # - **PENDING**: The domain name is being transferred out of Alibaba Cloud.
         self.transfer_out_status = transfer_out_status
+        # The status of the domain name transfer lock. Valid values:
+        # 
+        # - **NONE_SETTING**: The domain name transfer lock is not enabled.
+        # 
+        # - **OPEN**: The domain name transfer lock is enabled.
+        # 
+        # - **CLOSE**: The domain name transfer lock is disabled.
         self.transfer_prohibition_lock = transfer_prohibition_lock
+        # The status of the security lock for the domain name. Valid values:
+        # 
+        # - **NONE_SETTING**: The security lock is not enabled.
+        # 
+        # - **OPEN**: The security lock is enabled.
+        # 
+        # - **CLOSE**: The security lock is disabled.
         self.update_prohibition_lock = update_prohibition_lock
+        # The user ID (UID) of the Alibaba Cloud account.
         self.user_id = user_id
+        # The contact person in Chinese.
+        # 
+        # > This parameter is applicable only to the China site.
         self.zh_registrant_name = zh_registrant_name
+        # The registrant of the domain name in Chinese.
+        # 
+        # > This parameter is applicable only to the China site.
         self.zh_registrant_organization = zh_registrant_organization
 
     def validate(self):

@@ -16,14 +16,43 @@ class SaveBatchTaskForUpdatingContactInfoByRegistrantProfileIdRequest(DaraModel)
         transfer_out_prohibited: bool = None,
         user_client_ip: str = None,
     ):
+        # The contact type to modify. Valid values:
+        # 
+        # - **registrant**: The domain name\\"s registrant.
+        # 
+        # - **admin**: The administrative contact for the domain name.
+        # 
+        # - **billing**: The billing contact.
+        # 
+        # - **tech**: The technical contact.
+        # 
         # This parameter is required.
         self.contact_type = contact_type
+        # An array of domain names to update.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # The language of the error message that is returned if the request fails. Valid values:
+        # 
+        # - **zh**: Chinese.
+        # 
+        # - **en**: English.
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # The ID of the registrant profile. This ID is automatically generated when you create a registrant profile. You can find registrant profile IDs by calling the [QueryRegistrantProfiles](https://help.aliyun.com/document_detail/67701.html) operation.
+        # 
         # This parameter is required.
         self.registrant_profile_id = registrant_profile_id
+        # Specifies whether to enable the transfer lock. This parameter is valid only when **ContactType** is set to **registrant**. If enabled, this feature prevents the domain name from being transferred for 60 days after the registrant information is modified.
+        # 
+        # - **true**: Enables the lock, which prevents the domain name from being transferred out.
+        # 
+        # - **false**: Disables the lock, which allows the domain name to be transferred out.
+        # 
+        # Default value: **false**.
         self.transfer_out_prohibited = transfer_out_prohibited
+        # The IP address of the client. You can set this parameter to **127.0.0.1**.
         self.user_client_ip = user_client_ip
 
     def validate(self):

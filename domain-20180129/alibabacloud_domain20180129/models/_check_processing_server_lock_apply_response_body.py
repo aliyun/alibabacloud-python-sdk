@@ -10,7 +10,12 @@ class CheckProcessingServerLockApplyResponseBody(DaraModel):
         exists: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether the domain name has a registry lock service request with the **Processing** status at the domain name registry. Valid values:
+        # 
+        # - true: exists
+        # - false: does not exist
         self.exists = exists
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

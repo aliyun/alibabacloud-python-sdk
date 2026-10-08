@@ -13,10 +13,22 @@ class SubmitOperationCredentialsRequest(DaraModel):
         lang: str = None,
         reg_type: int = None,
     ):
+        # Review record ID.
         self.audit_record_id = audit_record_id
+        # Review type. Valid value:  
+        # **1**: Offline domain name transfer.
         self.audit_type = audit_type
+        # Certificate materials pending review.
         self.credentials = credentials
+        # Language of the error message returned by the API. Valid values:  
+        # - **zh**: Chinese.  
+        # - **en**: English.  
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # Registrant type. Valid values:  
+        # - **1**: Individual.  
+        # - **2**: Enterprise.
         self.reg_type = reg_type
 
     def validate(self):

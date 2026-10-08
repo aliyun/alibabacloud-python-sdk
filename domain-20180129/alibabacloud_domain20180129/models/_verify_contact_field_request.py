@@ -28,25 +28,61 @@ class VerifyContactFieldRequest(DaraModel):
         zh_registrant_name: str = None,
         zh_registrant_organization: str = None,
     ):
+        # Street address (in English).
         self.address = address
+        # City (in English).
         self.city = city
+        # Country code, such as **CN** or **US**.
         self.country = country
+        # Domain name.
         self.domain_name = domain_name
+        # Email address.
         self.email = email
+        # Language of the error message returned by the API. Valid values:  
+        # - **zh**: Chinese.  
+        # - **en**: English.  
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # Postal code.
         self.postal_code = postal_code
+        # Province (in English).
         self.province = province
+        # Contact name (in English).
         self.registrant_name = registrant_name
+        # Registrant name (in English).
         self.registrant_organization = registrant_organization
+        # Registrant type. Valid values:  
+        # - **1**: Individual.  
+        # - **2**: Enterprise.
         self.registrant_type = registrant_type
+        # Telephone country code, for example, **86** for China.
         self.tel_area = tel_area
+        # Extension number.
         self.tel_ext = tel_ext
+        # Telephone number.
         self.telephone = telephone
+        # User IP address, which can be set to **127.0.0.1**.
         self.user_client_ip = user_client_ip
+        # Detailed address (in Chinese).
+        # 
+        # > This parameter applies only to the China site (aliyun.com).
         self.zh_address = zh_address
+        # City (in Chinese).  
+        # 
+        # > This parameter applies only to the China site (aliyun.com).
         self.zh_city = zh_city
+        # Province (in Chinese).  
+        # 
+        # > This parameter applies only to the China site (aliyun.com).
         self.zh_province = zh_province
+        # Contact name (in Chinese).  
+        # 
+        # > This parameter applies only to the China site (aliyun.com).
         self.zh_registrant_name = zh_registrant_name
+        # Registrant name (in Chinese).
+        # 
+        # > This parameter applies only to the China site (aliyun.com).
         self.zh_registrant_organization = zh_registrant_organization
 
     def validate(self):

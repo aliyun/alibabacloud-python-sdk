@@ -19,12 +19,31 @@ class CheckDomainResponseBody(DaraModel):
         request_id: str = None,
         static_price_info: main_models.CheckDomainResponseBodyStaticPriceInfo = None,
     ):
+        # Indicates whether the domain name can be registered. Valid values:  
+        # - **1**: Registrable.  
+        # - **3**: Pre-registration.  
+        # - **4**: Deletion reservation available.  
+        # - **0**: Not registrable.  
+        # - **-1**: Abnormal.  
+        # - **-2**: Registration paused.  
+        # - **-3**: Blacklisted.
         self.avail = avail
+        # The queried domain name.
         self.domain_name = domain_name
+        # Indicates whether dynamic pricing is enabled. Valid values:  
+        # - **true**: Yes.  
+        # - **false**: No.
         self.dynamic_check = dynamic_check
+        # Indicates whether the domain name is a premium term. Valid values:  
+        # - **true**: Yes.  
+        # - **false**: No.
         self.premium = premium
+        # Registration price for premium domain names.
         self.price = price
+        # The reason for non-registrability returned by the domain name registry.  
+        # > The reason may vary depending on the domain name registry.
         self.reason = reason
+        # Unique request access token.
         self.request_id = request_id
         self.static_price_info = static_price_info
 

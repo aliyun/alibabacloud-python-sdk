@@ -11,9 +11,13 @@ class SaveSingleTaskForApplyQuickTransferOutOpenlyRequest(DaraModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # The domain name.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # The language of the returned error message. Valid values: zh (Chinese) and en (English). The default is en.
         self.lang = lang
+        # The user\\"s client IP.
         self.user_client_ip = user_client_ip
 
     def validate(self):

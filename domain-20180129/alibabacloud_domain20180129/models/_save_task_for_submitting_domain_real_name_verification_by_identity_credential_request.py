@@ -16,15 +16,25 @@ class SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialRequest
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # The domain names to be verified in bulk.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # The Base64-encoded content of the identity credential file.
+        # 
         # This parameter is required.
         self.identity_credential = identity_credential
+        # The ID number of the identity credential.
+        # 
         # This parameter is required.
         self.identity_credential_no = identity_credential_no
+        # The type of the identity credential. Valid values: IDC, Passport, and OfficerAcademy.
+        # 
         # This parameter is required.
         self.identity_credential_type = identity_credential_type
+        # The response language. Valid values: zh-CN and en-US. The default is en-US.
         self.lang = lang
+        # The client IP address.
         self.user_client_ip = user_client_ip
 
     def validate(self):

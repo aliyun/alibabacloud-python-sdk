@@ -11,9 +11,17 @@ class QueryEmailVerificationRequest(DaraModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # The Email to be queried.
+        # 
         # This parameter is required.
         self.email = email
+        # Language of the error message returned by the API. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
+        # 
+        # Default Value is **en**.
         self.lang = lang
+        # User IP address, which can be set to **127.0.0.1**.
         self.user_client_ip = user_client_ip
 
     def validate(self):

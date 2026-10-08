@@ -10,7 +10,9 @@ class CheckMaxYearOfServerLockResponseBody(DaraModel):
         max_year: int = None,
         request_id: str = None,
     ):
+        # Maximum number of years that can be purchased.
         self.max_year = max_year
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

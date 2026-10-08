@@ -18,13 +18,31 @@ class SaveBatchTaskForCreatingOrderRedeemRequest(DaraModel):
         use_promotion: bool = None,
         user_client_ip: str = None,
     ):
+        # Coupon number.
         self.coupon_no = coupon_no
+        # Language of error messages returned by the API. Valid values:  
+        # - **zh**: Chinese;  
+        # - **en**: English.  
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # List of job details.
+        # 
         # This parameter is required.
         self.order_redeem_param = order_redeem_param
+        # Coupon number.
         self.promotion_no = promotion_no
+        # Is coupon used? Valid values:  
+        # 
+        # - **false**: No.  
+        # - **true**: Yes.
         self.use_coupon = use_coupon
+        # Is coupon used? Valid values:  
+        # 
+        # - **false**: No.  
+        # - **true**: Yes.
         self.use_promotion = use_promotion
+        # User IP address. You can set it to **127.0.0.1**.
         self.user_client_ip = user_client_ip
 
     def validate(self):
@@ -97,7 +115,9 @@ class SaveBatchTaskForCreatingOrderRedeemRequestOrderRedeemParam(DaraModel):
         current_expiration_date: int = None,
         domain_name: str = None,
     ):
+        # Current expiration date of the domain name, represented as the number of milliseconds from 00:00 UTC on January 1, 1970, to the domain’s current expiration date.
         self.current_expiration_date = current_expiration_date
+        # Domain name. If multiple domain names are involved, pass a domain name list. You can obtain the domain name list by using the [QueryDomainList](https://help.aliyun.com/document_detail/67712.html) API.
         self.domain_name = domain_name
 
     def validate(self):

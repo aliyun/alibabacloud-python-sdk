@@ -15,14 +15,29 @@ class QueryChangeLogListRequest(DaraModel):
         start_date: int = None,
         user_client_ip: str = None,
     ):
+        # The domain name for which to query change logs.
         self.domain_name = domain_name
+        # The end of the time range to query, specified as a Unix timestamp in milliseconds.
         self.end_date = end_date
+        # The language for API error messages. Valid values:
+        # 
+        # - **zh**: Chinese.
+        # 
+        # - **en**: English.
+        # 
+        # Defaults to **en**.
         self.lang = lang
+        # The page number. The minimum value is **1**.
+        # 
         # This parameter is required.
         self.page_num = page_num
+        # The number of entries to return per page. The value must be between **1** and **100**.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The start of the time range to query, specified as a Unix timestamp in milliseconds.
         self.start_date = start_date
+        # The user\\"s IP address. You can set this parameter to **127.0.0.1**.
         self.user_client_ip = user_client_ip
 
     def validate(self):

@@ -13,7 +13,9 @@ class QueryDnsHostResponseBody(DaraModel):
         dns_host_list: List[main_models.QueryDnsHostResponseBodyDnsHostList] = None,
         request_id: str = None,
     ):
+        # A list of DNS hosts.
         self.dns_host_list = dns_host_list
+        # A unique ID for the request.
         self.request_id = request_id
 
     def validate(self):
@@ -56,7 +58,9 @@ class QueryDnsHostResponseBodyDnsHostList(DaraModel):
         dns_name: str = None,
         ip_list: List[str] = None,
     ):
+        # The DNS name.
         self.dns_name = dns_name
+        # A list of IP addresses.
         self.ip_list = ip_list
 
     def validate(self):

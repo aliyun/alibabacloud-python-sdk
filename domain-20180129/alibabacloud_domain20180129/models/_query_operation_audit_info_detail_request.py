@@ -10,8 +10,15 @@ class QueryOperationAuditInfoDetailRequest(DaraModel):
         audit_record_id: int = None,
         lang: str = None,
     ):
+        # Review record ID.
+        # 
         # This parameter is required.
         self.audit_record_id = audit_record_id
+        # Language for error messages in API responses. Valid values:  
+        # - **zh**: Chinese.  
+        # - **en**: English.  
+        # 
+        # Default value: **en**.
         self.lang = lang
 
     def validate(self):

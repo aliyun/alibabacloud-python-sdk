@@ -48,115 +48,138 @@ class QueryDomainByDomainNameResponseBody(DaraModel):
         zh_registrant_name: str = None,
         zh_registrant_organization: str = None,
     ):
+        # The status of the privacy protection service for .cn domain names.
         self.cnnic_privacy_service_status = cnnic_privacy_service_status
         self.dns_list = dns_list
-        # The ID of the domain name group. You can call the [QueryDomainGroupList](https://help.aliyun.com/document_detail/69362.html) operation to query the ID of the domain name group.
+        # The ID of the domain group. You can obtain the ID by calling the [QueryDomainGroupList](https://help.aliyun.com/document_detail/69362.html) operation.
         self.domain_group_id = domain_group_id
-        # The name of the domain name group.
+        # The name of the domain group.
         self.domain_group_name = domain_group_name
         # The domain name.
         self.domain_name = domain_name
-        # Indicates whether privacy protection is enabled for the domain name.
+        # Indicates whether privacy protection is enabled.
         self.domain_name_proxy_service = domain_name_proxy_service
-        # The status of name auditing for the domain name. Valid values:
+        # The status of the domain name review. Valid values:
         # 
-        # *   **NONAUDIT**: The name auditing for the domain name is not performed.
-        # *   **SUCCEED**: The name auditing for the domain name is successful.
-        # *   **FAILED**: The name auditing for the domain name fails.
-        # *   **AUDITING**: The name auditing for the domain name is in progress.
+        # - **NONAUDIT**: Not reviewed.
+        # 
+        # - **SUCCEED**: Successful.
+        # 
+        # - **FAILED**: Failed.
+        # 
+        # - **AUDITING**: In review.
         self.domain_name_verification_status = domain_name_verification_status
         # The status of the domain name. Valid values:
         # 
-        # *   1: The domain name needs to be renewed.
-        # *   2: The domain name needs to be redeemed.
-        # *   3: The domain name is normal.
+        # - **1**: Renewal required.
+        # 
+        # - **2**: Redemption required.
+        # 
+        # - **3**: Active.
         self.domain_status = domain_status
         # The type of the domain name. Valid values:
         # 
-        # *   New gTLD
-        # *   gTLD
-        # *   ccTLD
+        # - New gTLD
+        # 
+        # - gTLD
+        # 
+        # - ccTLD
         self.domain_type = domain_type
-        # The email address of the domain name registrant.
+        # The registrant\\"s email.
         self.email = email
-        # Indicates whether the domain name is in the ClientHold state.
+        # Indicates whether the domain name has a `clientHold` status due to email verification failure.
         self.email_verification_client_hold = email_verification_client_hold
-        # Indicates whether the email address passes verification. Valid values:
+        # The email verification status. Valid values:
         # 
-        # *   **0**: The email address fails the verification.
-        # *   **1**: The email address passes the verification.
+        # - **0**: Not verified.
+        # 
+        # - **1**: Verified.
         self.email_verification_status = email_verification_status
-        # The number of days from the expiration date of the domain name to the current date.
+        # The number of days until the expiration date.
         self.expiration_curr_date_diff = expiration_curr_date_diff
-        # The expiration date.
+        # The expiration date of the domain name.
         self.expiration_date = expiration_date
-        # The timestamp generated when the domain name expired.
+        # The timestamp of the expiration date.
         self.expiration_date_long = expiration_date_long
-        # Indicates whether the domain name expires. Valid values:
+        # The expiration status of the domain name. Valid values:
         # 
-        # *   **1**: The domain name does not expire.
-        # *   **2**: The domain name expires.
+        # - **1**: The domain name has not expired.
+        # 
+        # - **2**: The domain name has expired.
         self.expiration_date_status = expiration_date_status
         # The instance ID of the domain name.
         self.instance_id = instance_id
-        # Indicates whether the domain name is a premium domain name.
+        # Indicates whether the domain name is a premium domain.
         self.premium = premium
+        # The status of the privacy protection service.
         self.privacy_service_status = privacy_service_status
-        # The status of real-name verification for the domain name. Valid values:
+        # The real-name verification status of the domain name. Valid values:
         # 
-        # *   **NONAUDIT**: The real-name verification is not performed.
-        # *   **SUCCEED**: The real-name verification is successful.
-        # *   **FAILED**: The real-name verification fails.
-        # *   **AUDITING**: The real-name verification is in progress.
+        # - **NONAUDIT**: Not verified.
+        # 
+        # - **SUCCEED**: Successful.
+        # 
+        # - **FAILED**: Failed.
+        # 
+        # - **AUDITING**: In review.
         self.real_name_status = real_name_status
-        # The name of the contact.
+        # The name of the individual registrant or the contact person for an organization.
         self.registrant_name = registrant_name
-        # The registrant of the domain name.
+        # The name of the registrant organization.
         self.registrant_organization = registrant_organization
-        # The type of contact who registers the domain name. Valid values:
+        # The type of the registrant. Valid values:
         # 
-        # *   **1**: individual.
-        # *   **2**: enterprise.
+        # - **1**: Individual.
+        # 
+        # - **2**: Enterprise.
         self.registrant_type = registrant_type
-        # The status of the information about the domain name registrant. Valid values:
+        # The status of registrant information updates. Valid values:
         # 
-        # *   **PENDING**: The information about the domain name registrant is being modified.
-        # *   **NORMAL**: normal.
+        # - **PENDING**: The registrant information is being updated.
+        # 
+        # - **NORMAL**: No update is in progress.
         self.registrant_updating_status = registrant_updating_status
+        # The registrar of the domain name.
         self.registrar = registrar
-        # The time when the domain name was registered.
+        # The registration date of the domain name.
         self.registration_date = registration_date
-        # The timestamp generated when the domain name was registered.
+        # The timestamp of the registration date.
         self.registration_date_long = registration_date_long
-        # The remarks on the domain name.
+        # The user-provided remark for the domain name.
         self.remark = remark
-        # The request ID.
+        # The unique request ID.
         self.request_id = request_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The tags attached to the domain name.
         self.tag = tag
-        # The transfer status of the domain name. Valid values:
+        # The status of the domain transfer out. Valid values:
         # 
-        # *   **NORMAL**: The domain name is normal.
-        # *   **PENDING**: The domain name is being transferred out from Alibaba Cloud.
+        # - **NORMAL**: The domain name is not being transferred out.
+        # 
+        # - **PENDING**: The domain name is being transferred out from HiChina.
         self.transfer_out_status = transfer_out_status
-        # The status of the transfer lock for the domain name. Valid values:
+        # The status of the domain transfer lock. Valid values:
         # 
-        # *   **NONE_SETTING**: No transfer lock is configured.
-        # *   **OPEN**: The transfer lock is enabled.
-        # *   **CLOSE**: The transfer lock is disabled.
+        # - **NONE_SETTING**: Not set.
+        # 
+        # - **OPEN**: Enabled.
+        # 
+        # - **CLOSE**: Disabled.
         self.transfer_prohibition_lock = transfer_prohibition_lock
-        # The status of the security lock for the domain name. Valid values:
+        # The status of the domain name security lock. Valid values:
         # 
-        # *   **NONE_SETTING**: No security lock is configured.
-        # *   **OPEN**: The security lock is enabled.
-        # *   **CLOSE**: The security lock is disabled.
+        # - **NONE_SETTING**: Not set.
+        # 
+        # - **OPEN**: Enabled.
+        # 
+        # - **CLOSE**: Disabled.
         self.update_prohibition_lock = update_prohibition_lock
-        # The user ID.
+        # The ID of the Alibaba Cloud account.
         self.user_id = user_id
-        # The Chinese name of the domain name contact.
+        # The name of the contact person in Chinese.
         self.zh_registrant_name = zh_registrant_name
-        # The Chinese name of the domain name registrant.
+        # The name of the registrant in Chinese.
         self.zh_registrant_organization = zh_registrant_organization
 
     def validate(self):

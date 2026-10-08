@@ -10,7 +10,9 @@ class SaveRegistrantProfileRealNameVerificationResponseBody(DaraModel):
         registrant_profile_id: int = None,
         request_id: str = None,
     ):
+        # The ID of the retrieved information template.
         self.registrant_profile_id = registrant_profile_id
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

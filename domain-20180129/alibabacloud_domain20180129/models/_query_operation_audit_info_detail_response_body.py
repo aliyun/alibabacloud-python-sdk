@@ -18,15 +18,32 @@ class QueryOperationAuditInfoDetailResponseBody(DaraModel):
         request_id: str = None,
         update_time: int = None,
     ):
+        # Review information.
         self.audit_info = audit_info
+        # Review Status. Valid values:  
+        # - **0**: Pending supplementary information.  
+        # - **1**, **2**, **3**, **4**: Under review.  
+        # - **5**: Review failed.  
+        # - **6**: Review succeeded.  
+        # - **7**: Review canceled.
         self.audit_status = audit_status
+        # Review Type. Valid value:  
+        # 
+        # **1**: Offline domain name transfer.
         self.audit_type = audit_type
+        # Name of the reviewed business.
         self.business_name = business_name
+        # Record creation time.
         self.create_time = create_time
+        # Domain name.
         self.domain_name = domain_name
+        # Review record ID.
         self.id = id
+        # Review remark.
         self.remark = remark
+        # Request ID.
         self.request_id = request_id
+        # Record update time.
         self.update_time = update_time
 
     def validate(self):

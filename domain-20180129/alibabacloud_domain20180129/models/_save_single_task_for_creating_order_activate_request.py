@@ -17,6 +17,7 @@ class SaveSingleTaskForCreatingOrderActivateRequest(DaraModel):
         domain_name: str = None,
         email: str = None,
         enable_domain_proxy: bool = None,
+        expected_punycode: str = None,
         lang: str = None,
         permit_premium_activation: bool = None,
         postal_code: str = None,
@@ -41,39 +42,146 @@ class SaveSingleTaskForCreatingOrderActivateRequest(DaraModel):
         zh_registrant_name: str = None,
         zh_registrant_organization: str = None,
     ):
+        # The detailed address in English.
+        # 
+        # > This parameter is available and required only when the **RegistrantProfileId** parameter is not specified. If you do not specify this parameter, the domain name registration fails.
         self.address = address
+        # Specifies whether to use Alibaba Cloud DNS servers. Valid values: **true** and **false**. Default value: **true**.
+        # 
+        # > - If you set this parameter to **true**, you do not need to specify the **Dns1** and **Dns2** parameters. Otherwise, the specified **Dns1** and **Dns2** parameters do not take effect.
+        # - If you set this parameter to **false**, you must specify the **Dns1** and **Dns2** parameters.
         self.aliyun_dns = aliyun_dns
+        # The city name in English.
+        # 
+        # > This parameter is available and required only when the **RegistrantProfileId** parameter is not specified. If you do not specify this parameter, the domain name registration fails.
         self.city = city
+        # The country code, such as **CN**.
+        # 
+        # > This parameter is available and required only when the **RegistrantProfileId** parameter is not specified. If you do not specify this parameter, the domain name registration fails.
         self.country = country
+        # The ID of the voucher. Default value: a string.
         self.coupon_no = coupon_no
+        # The first custom DNS server.
+        # 
+        # > - This parameter is available and required only when the **AliyunDns** parameter is set to **false**.
+        # - Make sure that the custom DNS server is correct. Otherwise, the registration may fail.
         self.dns_1 = dns_1
+        # The second custom DNS server.
+        # 
+        # > - This parameter is available and required only when the **AliyunDns** parameter is set to **false**.
+        # - Make sure that the custom DNS server is correct. Otherwise, the registration may fail.
         self.dns_2 = dns_2
+        # The domain name that you want to register.
+        # > When you register a domain name, you must specify the registrant information. If you do not specify the registrant information, the domain name registration fails. You can specify the RegistrantProfileId parameter to use a registrant profile that defines the registrant information.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # The email address.
+        # 
+        # > This parameter is available and required only when the **RegistrantProfileId** parameter is not specified. If you do not specify this parameter, the domain name registration fails.
         self.email = email
+        # Specifies whether to enable the domain name privacy protection service. Valid values:
+        # - **true**: Enable.
+        # - **false**: Do not enable.
+        # 
+        # Default value: **true**.
         self.enable_domain_proxy = enable_domain_proxy
+        # The domain name in Punycode format. This parameter can be left empty.
+        self.expected_punycode = expected_punycode
+        # The language of the error message returned by the API operation. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # Specifies whether to allow the registration of premium domain names. Valid values:
+        # - **false**: Not allowed.
+        # - **true**: Allowed.              
+        # 
+        # Default value: **false**.
         self.permit_premium_activation = permit_premium_activation
+        # The postal code.
+        # 
+        # > This parameter is available and required only when the **RegistrantProfileId** parameter is not specified. If you do not specify this parameter, the domain name registration fails.
         self.postal_code = postal_code
+        # The ID of the coupon.
         self.promotion_no = promotion_no
+        # The province name in English.
+        # 
+        # > This parameter is available and required only when the **RegistrantProfileId** parameter is not specified. If you do not specify this parameter, the domain name registration fails.
         self.province = province
+        # The name of the domain name contact in English.
+        # 
+        # > This parameter is available and required only when the **RegistrantProfileId** parameter is not specified. If you do not specify this parameter, the domain name registration fails.
         self.registrant_name = registrant_name
+        # The name of the domain name registrant in English.
+        # 
+        # > This parameter is available and required only when the **RegistrantProfileId** parameter is not specified. If you do not specify this parameter, the domain name registration fails.
         self.registrant_organization = registrant_organization
+        # The ID of the domain name registrant profile. The profile contains information such as the registrant name, contact name, phone number, and email address. You can use only a real-name verified registrant profile to register a domain name. If you have created a registrant profile, you can call the [QueryRegistrantProfiles](~~QueryRegistrantProfiles~~) operation to query the profile ID.
+        # 
+        # > After you specify this parameter, you do not need to specify the **RegistrantType**, **ZhRegistrantOrganization**, **ZhRegistrantName**, **ZhProvince**, **ZhCity**, **ZhAddress**, **RegistrantOrganization**, **RegistrantName**, **Province**, **City**, **Address**, **PostalCode**, **Country**, **TelArea**, **Telephone**, **TelExt**, or **Email** parameter.
         self.registrant_profile_id = registrant_profile_id
+        # The type of the domain name registrant. Valid values:
+        # - **1**: Individual.
+        # - **2**: Enterprise or organization.
+        # 
+        # > This parameter is available and required only when the **RegistrantProfileId** parameter is not specified. If you do not specify this parameter, the domain name registration fails.
         self.registrant_type = registrant_type
+        # None.
         self.resource_group_id = resource_group_id
+        # The subscription duration. Unit: **year**. Default value: **1 year**. Maximum value: **10 years**.
         self.subscription_duration = subscription_duration
+        # The country code for the phone number, such as **86** for China.
+        # 
+        # > This parameter is available and required only when the **RegistrantProfileId** parameter is not specified. If you do not specify this parameter, the domain name registration fails.
         self.tel_area = tel_area
+        # The extension number.
+        # 
+        # > This parameter is available and required only when the **RegistrantProfileId** parameter is not specified. If you do not specify this parameter, the domain name registration fails.
         self.tel_ext = tel_ext
+        # The phone number.
+        # 
+        # > This parameter is available and required only when the **RegistrantProfileId** parameter is not specified. If you do not specify this parameter, the domain name registration fails.
         self.telephone = telephone
+        # Specifies whether to allow the registration of trademark domain names. Valid values:
+        # - **false**: Not allowed.
+        # - **true**: Allowed.
         self.trademark_domain_activation = trademark_domain_activation
+        # Specifies whether to use a voucher. Valid values:
+        # 
+        # - **true**: Use.
+        # - **false**: Do not use.
+        # 
+        # Default value: **false**.
         self.use_coupon = use_coupon
+        # Specifies whether to use a coupon. Valid values:
+        # - **false**: Not allowed.
+        # - **true**: Allowed.
+        # 
+        # Default value: **false**.
         self.use_promotion = use_promotion
+        # The IP address of the client. You can set this parameter to **127.0.0.1**.
         self.user_client_ip = user_client_ip
+        # The detailed address in Chinese.
+        # 
+        # > This parameter is applicable only to the China site. This parameter is available and required only when the **RegistrantProfileId** parameter is not specified. If you do not specify this parameter, the domain name registration fails.
         self.zh_address = zh_address
+        # The city name in Chinese.
+        # 
+        # > This parameter is applicable only to the China site. This parameter is available and required only when the **RegistrantProfileId** parameter is not specified. If you do not specify this parameter, the domain name registration fails.
         self.zh_city = zh_city
+        # The province name in Chinese.
+        # 
+        # > This parameter is applicable only to the China site. This parameter is available and required only when the **RegistrantProfileId** parameter is not specified. If you do not specify this parameter, the domain name registration fails.
         self.zh_province = zh_province
+        # The name of the domain name contact in Chinese.
+        # 
+        # > This parameter is applicable only to the China site. This parameter is available and required only when the **RegistrantProfileId** parameter is not specified. If you do not specify this parameter, the domain name registration fails.
         self.zh_registrant_name = zh_registrant_name
+        # The name of the domain name registrant in Chinese.
+        # 
+        # > This parameter is applicable only to the China site. This parameter is available and required only when the **RegistrantProfileId** parameter is not specified. If you do not specify this parameter, the domain name registration fails.
         self.zh_registrant_organization = zh_registrant_organization
 
     def validate(self):
@@ -113,6 +221,9 @@ class SaveSingleTaskForCreatingOrderActivateRequest(DaraModel):
 
         if self.enable_domain_proxy is not None:
             result['EnableDomainProxy'] = self.enable_domain_proxy
+
+        if self.expected_punycode is not None:
+            result['ExpectedPunycode'] = self.expected_punycode
 
         if self.lang is not None:
             result['Lang'] = self.lang
@@ -216,6 +327,9 @@ class SaveSingleTaskForCreatingOrderActivateRequest(DaraModel):
 
         if m.get('EnableDomainProxy') is not None:
             self.enable_domain_proxy = m.get('EnableDomainProxy')
+
+        if m.get('ExpectedPunycode') is not None:
+            self.expected_punycode = m.get('ExpectedPunycode')
 
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')

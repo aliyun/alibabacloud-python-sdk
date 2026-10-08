@@ -12,10 +12,19 @@ class CheckTransferInFeasibilityRequest(DaraModel):
         transfer_authorization_code: str = None,
         user_client_ip: str = None,
     ):
+        # The domain name to be validated.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # The language of the error message returned by the API. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # The transfer-in password for the domain name.
         self.transfer_authorization_code = transfer_authorization_code
+        # The user IP address. You can set it to **127.0.0.1**.
         self.user_client_ip = user_client_ip
 
     def validate(self):

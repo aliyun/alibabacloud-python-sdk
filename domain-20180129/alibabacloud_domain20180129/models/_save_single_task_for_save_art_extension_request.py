@@ -20,18 +20,35 @@ class SaveSingleTaskForSaveArtExtensionRequest(DaraModel):
         subject: str = None,
         title: str = None,
     ):
+        # Creation time.
         self.date_or_period = date_or_period
+        # Dimensions.
         self.dimensions = dimensions
+        # Domain name.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # Artistic features.
         self.features = features
+        # Inscriptions and markings.
         self.inscriptions_and_markings = inscriptions_and_markings
+        # Language of the error message returned by the API. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # Artist or creator.
         self.maker = maker
+        # Materials and techniques.
         self.materials_and_techniques = materials_and_techniques
+        # Artwork category.
         self.object_type = object_type
+        # Reference.
         self.reference = reference
+        # Art subject.
         self.subject = subject
+        # Name.
         self.title = title
 
     def validate(self):

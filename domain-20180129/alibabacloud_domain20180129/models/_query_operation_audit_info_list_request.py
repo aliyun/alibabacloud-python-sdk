@@ -14,11 +14,29 @@ class QueryOperationAuditInfoListRequest(DaraModel):
         page_num: int = None,
         page_size: int = None,
     ):
+        # Review status. Valid values:
+        # 
+        # - **0**: Information pending completion.
+        # - **1**, **2**, **3**, **4**: Under review.
+        # - **5**: Review failed.
+        # - **6**: Review succeeded.
+        # - **7**: Review canceled.
         self.audit_status = audit_status
+        # Review type. Valid value:
+        # 
+        # **1**: Offline domain name transfer.
         self.audit_type = audit_type
+        # Domain name to query.
         self.domain_name = domain_name
+        # Language of error messages returned by the API. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # Page number.
         self.page_num = page_num
+        # Number of records per page.
         self.page_size = page_size
 
     def validate(self):

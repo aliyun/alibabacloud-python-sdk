@@ -11,9 +11,17 @@ class TransferInCheckMailTokenRequest(DaraModel):
         token: str = None,
         user_client_ip: str = None,
     ):
+        # The language of the error message returned by the operation. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # The token received in the email.
+        # 
         # This parameter is required.
         self.token = token
+        # The IP address of the user.
         self.user_client_ip = user_client_ip
 
     def validate(self):

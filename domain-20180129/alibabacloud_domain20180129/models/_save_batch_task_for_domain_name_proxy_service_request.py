@@ -15,12 +15,24 @@ class SaveBatchTaskForDomainNameProxyServiceRequest(DaraModel):
         status: bool = None,
         user_client_ip: str = None,
     ):
+        # List of domain names, separated by commas (,).
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # Language for error messages returned by the API. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
+        # 
+        # Default value: **en**.
         self.lang = lang
         self.service_type = service_type
+        # Enabled or shutdown status. Valid values:
+        # - **true**: Enabled.
+        # - **false**: Shutdown.
+        # 
         # This parameter is required.
         self.status = status
+        # User IP address.
         self.user_client_ip = user_client_ip
 
     def validate(self):

@@ -11,7 +11,9 @@ class CheckIntlFixPriceDomainStatusResponseBody(DaraModel):
         module: main_models.CheckIntlFixPriceDomainStatusResponseBodyModule = None,
         request_id: str = None,
     ):
+        # The returned object.
         self.module = module
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -53,12 +55,27 @@ class CheckIntlFixPriceDomainStatusResponseBodyModule(DaraModel):
         price: int = None,
         reg_date: int = None,
     ):
+        # The currency. Valid values:
+        # 
+        # - RMB: Chinese Yuan.
+        # 
+        # - USD: US Dollar.
         self.currency = currency
+        # The expiration date of the domain name. After this date, the domain name requires renewal.
         self.dead_date = dead_date
+        # The domain name.
         self.domain = domain
+        # The sale deadline of the domain name. After this time, the domain name is no longer available for sale.
         self.end_time = end_time
+        # Indicates whether the domain name is a premium domain name. Valid values:
+        # 
+        # - true: The domain name is a premium domain name.
+        # 
+        # - false: The domain name is not a premium domain name.
         self.premium = premium
+        # The price.
         self.price = price
+        # The registration date of the domain name.
         self.reg_date = reg_date
 
     def validate(self):

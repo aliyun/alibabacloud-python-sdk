@@ -10,7 +10,9 @@ class SaveBatchTaskForUpdatingContactInfoByRegistrantProfileIdResponseBody(DaraM
         request_id: str = None,
         task_no: str = None,
     ):
+        # A unique ID for the request.
         self.request_id = request_id
+        # The ID of the asynchronous task.
         self.task_no = task_no
 
     def validate(self):

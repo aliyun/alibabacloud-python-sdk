@@ -13,7 +13,9 @@ class QueryFailReasonForDomainRealNameVerificationResponseBody(DaraModel):
         data: List[main_models.QueryFailReasonForDomainRealNameVerificationResponseBodyData] = None,
         request_id: str = None,
     ):
+        # List of reasons for identity verification failure.
         self.data = data
+        # Unique request access token.
         self.request_id = request_id
 
     def validate(self):
@@ -57,8 +59,15 @@ class QueryFailReasonForDomainRealNameVerificationResponseBodyData(DaraModel):
         domain_name_verification_status: str = None,
         fail_reason: str = None,
     ):
+        # Date.
         self.date = date
+        # Review Status. Valid values:  
+        # - **NONAUDIT**: Not authenticated.  
+        # - **SUCCEED**: Succeeded.  
+        # - **FAILED**: Review failed.  
+        # - **AUDITING**: Under review.
         self.domain_name_verification_status = domain_name_verification_status
+        # Reason for real-name verification failure.
         self.fail_reason = fail_reason
 
     def validate(self):

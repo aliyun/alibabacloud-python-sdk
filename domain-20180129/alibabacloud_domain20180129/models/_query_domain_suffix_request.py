@@ -10,7 +10,15 @@ class QueryDomainSuffixRequest(DaraModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # The language of the error message in the API response. Valid values:
+        # 
+        # - **zh**: Chinese.
+        # 
+        # - **en**: English.
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # The user IP address.
         self.user_client_ip = user_client_ip
 
     def validate(self):

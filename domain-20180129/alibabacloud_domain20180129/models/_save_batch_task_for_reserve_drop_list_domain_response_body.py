@@ -10,7 +10,9 @@ class SaveBatchTaskForReserveDropListDomainResponseBody(DaraModel):
         request_id: str = None,
         task_no: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The task ID.
         self.task_no = task_no
 
     def validate(self):

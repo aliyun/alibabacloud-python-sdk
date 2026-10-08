@@ -13,7 +13,9 @@ class QueryIntlFixedPriceOrderListResponseBody(DaraModel):
         module: main_models.QueryIntlFixedPriceOrderListResponseBodyModule = None,
         request_id: str = None,
     ):
+        # The response object.
         self.module = module
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -53,10 +55,15 @@ class QueryIntlFixedPriceOrderListResponseBodyModule(DaraModel):
         total_item_num: int = None,
         total_page_num: int = None,
     ):
+        # The current page number.
         self.current_page_num = current_page_num
+        # The order list data.
         self.data = data
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries.
         self.total_item_num = total_item_num
+        # The total number of pages.
         self.total_page_num = total_page_num
 
     def validate(self):
@@ -123,13 +130,26 @@ class QueryIntlFixedPriceOrderListResponseBodyModuleData(DaraModel):
         update_time: int = None,
         user_id: str = None,
     ):
+        # The business ID.
         self.biz_id = biz_id
+        # The creation time.
         self.create_time = create_time
+        # The domain name.
         self.domain = domain
+        # The order type. Valid values:
+        # - 11: international fixed-price.
         self.order_type = order_type
+        # The price.
         self.price = price
+        # The order status. Valid values:
+        # - 5: Transaction closed.
+        # - 6: Paid.
+        # - 7: Pending production.
+        # - 9: Transaction completed.
         self.status = status
+        # The update time.
         self.update_time = update_time
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

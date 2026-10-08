@@ -12,11 +12,21 @@ class SaveSingleTaskForDeletingDSRecordRequest(DaraModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # Domain name.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # Key tag, used to identify DNSSEC records. It is an integer value less than 65536.
+        # 
         # This parameter is required.
         self.key_tag = key_tag
+        # Language of error messages returned by the API. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # User IP address.
         self.user_client_ip = user_client_ip
 
     def validate(self):

@@ -14,11 +14,27 @@ class SaveBatchTaskForTransferProhibitionLockRequest(DaraModel):
         status: bool = None,
         user_client_ip: str = None,
     ):
+        # The domain names for which you want to enable or disable the transfer prohibition lock.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # The language of the error message that is returned if the request fails. Valid values:
+        # 
+        # - **zh**: Chinese
+        # 
+        # - **en**: English
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # Specifies whether to enable or disable the transfer prohibition lock. Valid values:
+        # 
+        # - **true**: Enable the transfer prohibition lock.
+        # 
+        # - **false**: Disable the transfer prohibition lock.
+        # 
         # This parameter is required.
         self.status = status
+        # The client IP address.
         self.user_client_ip = user_client_ip
 
     def validate(self):

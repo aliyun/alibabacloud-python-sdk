@@ -15,9 +15,13 @@ class SubmitEmailVerificationResponseBody(DaraModel):
         request_id: str = None,
         success_list: List[main_models.SubmitEmailVerificationResponseBodySuccessList] = None,
     ):
+        # List of emails for which verification messages already exist.
         self.exist_list = exist_list
+        # List of emails for which verification messages failed to send.
         self.fail_list = fail_list
+        # Request ID.
         self.request_id = request_id
+        # List of emails for which verification messages were sent successfully.
         self.success_list = success_list
 
     def validate(self):
@@ -91,8 +95,11 @@ class SubmitEmailVerificationResponseBodySuccessList(DaraModel):
         email: str = None,
         message: str = None,
     ):
+        # Returned code.
         self.code = code
+        # Email address for verification.
         self.email = email
+        # Returned message.
         self.message = message
 
     def validate(self):
@@ -134,8 +141,11 @@ class SubmitEmailVerificationResponseBodyFailList(DaraModel):
         email: str = None,
         message: str = None,
     ):
+        # The returned code.
         self.code = code
+        # Email address for verification.
         self.email = email
+        # The returned message.
         self.message = message
 
     def validate(self):
@@ -177,8 +187,11 @@ class SubmitEmailVerificationResponseBodyExistList(DaraModel):
         email: str = None,
         message: str = None,
     ):
+        # Returned code.
         self.code = code
+        # Email address for verification.
         self.email = email
+        # Returned message.
         self.message = message
 
     def validate(self):

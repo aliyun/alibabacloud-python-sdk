@@ -12,10 +12,24 @@ class SubmitEmailVerificationRequest(DaraModel):
         send_if_exist: bool = None,
         user_client_ip: str = None,
     ):
+        # The mailbox that requires verification. Separate multiple mailboxes with commas (,).
+        # 
         # This parameter is required.
         self.email = email
+        # The language of the error message returned by the API. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
+        # 
+        # Default Value: **en**.
         self.lang = lang
+        # Specifies whether to resend the verification email if it already exists. Valid values:
+        # 
+        # - **true**: Resend the verification email.
+        # - **false**: Do not resend the verification email.
+        # 
+        # Default Value: **false**.
         self.send_if_exist = send_if_exist
+        # The user IP address. You can set it to 127.0.0.1.
         self.user_client_ip = user_client_ip
 
     def validate(self):

@@ -10,8 +10,17 @@ class GetOperationOssUploadPolicyRequest(DaraModel):
         audit_type: int = None,
         lang: str = None,
     ):
+        # Review type. Valid value:  
+        # 
+        # **1**: Offline domain name transfer.
+        # 
         # This parameter is required.
         self.audit_type = audit_type
+        # Language of error messages returned by the API. Valid values:  
+        # - **zh**: Chinese.  
+        # - **en**: English.  
+        # 
+        # Default value: **en**.
         self.lang = lang
 
     def validate(self):

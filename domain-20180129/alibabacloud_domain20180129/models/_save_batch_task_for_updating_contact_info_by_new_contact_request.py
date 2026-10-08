@@ -32,30 +32,65 @@ class SaveBatchTaskForUpdatingContactInfoByNewContactRequest(DaraModel):
         zh_registrant_name: str = None,
         zh_registrant_organization: str = None,
     ):
+        # Specific address.
         self.address = address
+        # City.
         self.city = city
+        # Contact type. Valid values:  
+        # - **registrant**: Registrant.  
+        # - **admin**: Administrator.  
+        # - **billing**: Billing contact.  
+        # - **tech**: Technical contact.
+        # 
         # This parameter is required.
         self.contact_type = contact_type
+        # Country code, such as **CN** or **US**.
         self.country = country
+        # Domain name list.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # Mailbox.
         self.email = email
+        # Language of error messages returned by the API. Valid values:  
+        # - **zh**: Chinese.  
+        # - **en**: English.  
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # Postal code.
         self.postal_code = postal_code
+        # Province.
         self.province = province
+        # Contact name.
         self.registrant_name = registrant_name
+        # Registrant organization name.
         self.registrant_organization = registrant_organization
+        # Domain registrant type. Valid values:  
+        # - **1**: Individual.  
+        # - **2**: Enterprise.
+        # 
         # This parameter is required.
         self.registrant_type = registrant_type
+        # Telephone country code.
         self.tel_area = tel_area
+        # Extension number.
         self.tel_ext = tel_ext
+        # Telephone number.
         self.telephone = telephone
+        # Whether to add a transfer-out prohibition restriction. This parameter only takes effect when **ContactType** is **registrant**, indicating whether the domain name is restricted from transfer-out for 60 days after the registrant is modified. The default value is **false**, which means transfer-out is not restricted.
         self.transfer_out_prohibited = transfer_out_prohibited
+        # User IP.
         self.user_client_ip = user_client_ip
+        # Chinese address.
         self.zh_address = zh_address
+        # Chinese city.
         self.zh_city = zh_city
+        # Chinese province.
         self.zh_province = zh_province
+        # Chinese contact name.
         self.zh_registrant_name = zh_registrant_name
+        # Chinese registrant organization name.
         self.zh_registrant_organization = zh_registrant_organization
 
     def validate(self):

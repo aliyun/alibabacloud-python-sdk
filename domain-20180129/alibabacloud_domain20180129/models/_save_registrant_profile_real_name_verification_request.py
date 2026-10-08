@@ -32,29 +32,109 @@ class SaveRegistrantProfileRealNameVerificationRequest(DaraModel):
         zh_registrant_name: str = None,
         zh_registrant_organization: str = None,
     ):
+        # Detailed address (in English).  
+        # 
+        # > This parameter is available and required only when the **RegistrantProfileId** parameter is not provided. Failure to provide it will cause domain registration to fail.
         self.address = address
+        # City (in English).  
+        # 
+        # > This parameter is active and required only when the **RegistrantProfileId** parameter is not provided. If this parameter is not provided, domain name registration will fail.
         self.city = city
+        # Country code, such as **CN**.
+        # 
+        # > This parameter is active and required only when the **RegistrantProfileId** parameter is not provided. Failure to provide it will cause domain registration to fail.
         self.country = country
+        # Email address.  
+        # 
+        # > This parameter is available and required only when the **RegistrantProfileId** parameter is not provided. Failure to provide it will cause domain registration to fail.
         self.email = email
+        # Base64-encoded image of the identity verification document. Image requirements:  
+        # - Format must be **jpg** or **bmp**.  
+        # - Original image size must be between **55 KB and 1 MB**.
         self.identity_credential = identity_credential
+        # Certificate number for identity verification.
         self.identity_credential_no = identity_credential_no
+        # Type of certificate used for identity verification. Valid values:  
+        # - **SFZ**: Identity card.  
+        # - **HZ**: Passport.  
+        # - **YYZZ**: Business license.  
+        # - **ORG**: Organization code certificate.  
+        # - **XYDM**: Unified Social Credit Code certificate.  
+        # - **TXZ**: Mainland Travel Permits for Hong Kong and Macao Residents.  
+        # 
+        # > For more certificate types, see [Supported Certificate Types for Identity Verification](https://help.aliyun.com/document_detail/72209.html).
         self.identity_credential_type = identity_credential_type
+        # Language of the error message returned by the API. Valid values:  
+        # - **zh**: Chinese  
+        # - **en**: English  
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # Postal code.  
+        # 
+        # > This parameter is available and required only when the **RegistrantProfileId** parameter is not provided. Failure to provide it will cause domain registration to fail.
         self.postal_code = postal_code
+        # Province (in English).  
+        # 
+        # > This parameter is active and required only when the **RegistrantProfileId** parameter is not provided. If this parameter is not provided, domain name registration will fail.
         self.province = province
+        # Domain name contact (in English).  
+        # 
+        # > This parameter is active and required only when the **RegistrantProfileId** parameter is not provided. If this parameter is not provided, domain name registration will fail.
         self.registrant_name = registrant_name
+        # Registrant name (in English).
+        # 
+        # > This parameter is active and required only when the **RegistrantProfileId** parameter is not provided. Failure to provide it will cause domain registration to fail.
         self.registrant_organization = registrant_organization
+        # ID of the registrant profile template to be saved.  
+        # 
+        # The system automatically generates this ID after a registrant profile is successfully created. You can invoke the [QueryRegistrantProfiles](https://help.aliyun.com/document_detail/67701.html) API to query the registrant profile ID.
         self.registrant_profile_id = registrant_profile_id
+        # Templatetype. Valid values:  
+        # - **common**: General template.  
+        # - **cnnic**: CNNIC template.  
+        # 
+        # > The CNNIC template is supported only on the Alibaba Cloud international site (alibabacloud.com). Domains under the CNNIC registry, such as ".cn" and ".中国", registered on the Alibaba Cloud international site must use the CNNIC template. Other domains must use the general template.
         self.registrant_profile_type = registrant_profile_type
+        # Type of the registrant. Valid values:  
+        # - **1**: Individual.  
+        # - **2**: Enterprise or organization.  
+        # 
+        # > This parameter is available and required only when the **RegistrantProfileId** parameter is not provided. Failure to provide it will cause domain registration to fail.
         self.registrant_type = registrant_type
+        # Telephone country code.
+        # 
+        # > For example, the telephone country code for China is **86**.
         self.tel_area = tel_area
+        # Extension number.
+        # 
+        # > This parameter is active and required only when the **RegistrantProfileId** parameter is not provided. Failure to provide it will cause domain registration to fail.
         self.tel_ext = tel_ext
+        # Telephone number.  
+        # 
+        # > This parameter is available and required only when the **RegistrantProfileId** parameter is not provided. Failure to provide it will cause domain registration to fail.
         self.telephone = telephone
+        # User IP address. You can set it to **127.0.0.1**.
         self.user_client_ip = user_client_ip
+        # Full address (in Chinese).
+        # 
+        # > This parameter applies only to the China site (aliyun.com). It is active and required only when the **RegistrantProfileId** parameter is not provided. Failure to provide it will cause domain registration to fail.
         self.zh_address = zh_address
+        # City (in Chinese).  
+        # 
+        # > This parameter applies only to the China site (aliyun.com). It is active and required only when the **RegistrantProfileId** parameter is not provided. If this parameter is not provided, domain name registration will fail.
         self.zh_city = zh_city
+        # Province (in Chinese).  
+        # 
+        # > This parameter applies only to the China site (aliyun.com). It is available and required only when the **RegistrantProfileId** parameter is not provided. Failure to provide it will cause domain registration to fail.
         self.zh_province = zh_province
+        # Domain name contact (in Chinese).  
+        # 
+        # > This parameter applies only to the China site (aliyun.com). It is active and required only when the **RegistrantProfileId** parameter is not provided. If this parameter is not provided, domain name registration will fail.
         self.zh_registrant_name = zh_registrant_name
+        # Registrant name (in Chinese).
+        # 
+        # > This parameter applies only to the China site (aliyun.com). It is active and required only when the **RegistrantProfileId** parameter is not provided. Failure to provide it will cause domain registration to fail.
         self.zh_registrant_organization = zh_registrant_organization
 
     def validate(self):

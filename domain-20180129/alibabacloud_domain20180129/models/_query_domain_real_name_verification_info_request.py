@@ -12,10 +12,21 @@ class QueryDomainRealNameVerificationInfoRequest(DaraModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # Domain name.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # Specifies whether to retrieve the real-name verification image. Valid values:  
+        # - **true**: Retrieve the image.  
+        # - **false**: Do not retrieve the image.
         self.fetch_image = fetch_image
+        # Language of error messages returned by the API. Valid values:  
+        # - **zh**: Chinese.  
+        # - **en**: English.  
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # User IP address.
         self.user_client_ip = user_client_ip
 
     def validate(self):

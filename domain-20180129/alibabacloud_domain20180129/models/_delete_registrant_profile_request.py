@@ -11,9 +11,17 @@ class DeleteRegistrantProfileRequest(DaraModel):
         registrant_profile_id: int = None,
         user_client_ip: str = None,
     ):
+        # The language of the error message returned by the API. Valid values:  
+        # - **zh**: Chinese.  
+        # - **en**: English.  
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # The ID of the domain name registrant profile to delete. You can call the [QueryRegistrantProfiles](https://help.aliyun.com/document_detail/67701.html) API to query the profile ID.
+        # 
         # This parameter is required.
         self.registrant_profile_id = registrant_profile_id
+        # The User IP address. You can set it to 127.0.0.1.
         self.user_client_ip = user_client_ip
 
     def validate(self):

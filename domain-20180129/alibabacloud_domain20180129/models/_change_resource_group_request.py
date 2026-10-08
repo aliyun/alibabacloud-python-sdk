@@ -13,12 +13,25 @@ class ChangeResourceGroupRequest(DaraModel):
         resource_type: str = None,
         user_client_ip: str = None,
     ):
+        # The language in which error messages are returned by the API. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
+        # 
+        # Default value: **zh**.
         self.lang = lang
+        # The ID of the resource group to which you want to shift the domain name.
+        # 
+        # You can view the resource group ID in the [Resource Management Console](https://resourcemanager.console.aliyun.com/resource-groups).
+        # 
         # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
+        # The resource ID of the domain name.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
+        # The resource type of the domain name. This parameter is fixed to “Domain” and does not need to be specified.
         self.resource_type = resource_type
+        # The IP address of the user client.
         self.user_client_ip = user_client_ip
 
     def validate(self):

@@ -10,8 +10,15 @@ class CancelOperationAuditRequest(DaraModel):
         audit_record_id: int = None,
         lang: str = None,
     ):
+        # The audit record ID. You can query the audit record ID by using the [QueryOperationAuditInfoList](https://help.aliyun.com/document_detail/172568.html) API.
+        # 
         # This parameter is required.
         self.audit_record_id = audit_record_id
+        # The language of the error message returned by the API. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
+        # 
+        # Default value: **en**.
         self.lang = lang
 
     def validate(self):

@@ -15,6 +15,7 @@ class ConfirmTransferInEmailResponseBody(DaraModel):
         success_list: main_models.ConfirmTransferInEmailResponseBodySuccessList = None,
     ):
         self.fail_list = fail_list
+        # Unique request access token
         self.request_id = request_id
         self.success_list = success_list
 

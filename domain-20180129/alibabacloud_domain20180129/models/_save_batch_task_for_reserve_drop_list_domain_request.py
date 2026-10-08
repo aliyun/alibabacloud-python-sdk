@@ -13,8 +13,12 @@ class SaveBatchTaskForReserveDropListDomainRequest(DaraModel):
         contact_template_id: str = None,
         domains: List[main_models.SaveBatchTaskForReserveDropListDomainRequestDomains] = None,
     ):
+        # The contact template ID.
+        # 
         # This parameter is required.
         self.contact_template_id = contact_template_id
+        # The domain list.
+        # 
         # This parameter is required.
         self.domains = domains
 
@@ -59,8 +63,20 @@ class SaveBatchTaskForReserveDropListDomainRequestDomains(DaraModel):
         dns_2: str = None,
         domain_name: str = None,
     ):
+        # The first custom DNS server.
+        # 
+        # > - This parameter is required only if you set **AliyunDns** to **false**.
+        # 
+        # - Make sure that your custom DNS servers are valid. Otherwise, the domain reservation may fail.
         self.dns_1 = dns_1
+        # The second custom DNS server.
+        # 
+        # > - This parameter is required only if you set **AliyunDns** to **false**.
+        # 
+        # - Make sure that your custom DNS servers are valid. Otherwise, the domain reservation may fail.
         self.dns_2 = dns_2
+        # The domain name to reserve.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
 

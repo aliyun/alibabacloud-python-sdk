@@ -10,7 +10,9 @@ class SaveBatchTaskForTransferOutByAuthorizationCodeResponseBody(DaraModel):
         request_id: str = None,
         task_no: str = None,
     ):
+        # The unique ID for the request.
         self.request_id = request_id
+        # The ID of the batch transfer-out task.
         self.task_no = task_no
 
     def validate(self):

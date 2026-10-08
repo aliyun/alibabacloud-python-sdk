@@ -19,28 +19,26 @@ class QueryRegistrantProfilesResponseBody(DaraModel):
         total_item_num: int = None,
         total_page_num: int = None,
     ):
-        # The page number returned.
+        # The current page number.
         self.current_page_num = current_page_num
-        # Indicates whether the current page is followed by a page. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether there is a next page. Valid values:
+        # - **true**: Yes.
+        # - **false**: No.
         self.next_page = next_page
-        # The number of entries returned on each page. Default value: **0**. Maximum value: **5000**.
+        # The number of records per page. Default value: **0**. Maximum value: **5000**.
         self.page_size = page_size
-        # Indicates whether the current page is preceded by a page. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether there is a previous page. Valid values:
+        # - **true**: Yes.
+        # - **false**: No.
         self.pre_page = pre_page
         self.registrant_profiles = registrant_profiles
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of records.
         # 
-        # >  This parameter indicates the total number of queried registrant profiles. If multiple registrant profiles are queried, the information about these profiles is returned in sequence by profile.
+        # > The total number of records refers to the number of registrant profiles returned by the query. When there are multiple registrant profiles, the next profile is displayed after the previous one.
         self.total_item_num = total_item_num
-        # The total number of returned pages.
+        # The total number of pages.
         self.total_page_num = total_page_num
 
     def validate(self):

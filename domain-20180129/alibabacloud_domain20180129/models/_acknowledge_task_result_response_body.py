@@ -10,7 +10,9 @@ class AcknowledgeTaskResultResponseBody(DaraModel):
         request_id: str = None,
         result: int = None,
     ):
+        # Unique request access token.
         self.request_id = request_id
+        # Quantity of successfully confirmed items.
         self.result = result
 
     def validate(self):

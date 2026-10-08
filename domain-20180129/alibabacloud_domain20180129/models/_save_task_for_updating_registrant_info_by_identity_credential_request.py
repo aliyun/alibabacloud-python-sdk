@@ -34,37 +34,87 @@ class SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest(DaraModel):
         zh_registrant_name: str = None,
         zh_registrant_organization: str = None,
     ):
+        # Specific address.
         self.address = address
+        # City.
         self.city = city
+        # Country code, such as **CN** or **US**.
         self.country = country
+        # List of domain names.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # Mailbox.
         self.email = email
+        # Base64-encoded image of the identity verification document. Image requirements:
+        # - Format must be **jpg** or **bmp**.
+        # - Original image size must be between **55 KB and 1 MB**.
+        # 
         # This parameter is required.
         self.identity_credential = identity_credential
+        # Certificate number used for identity verification, such as an ID card number or Unified Social Credit Code.
+        # 
         # This parameter is required.
         self.identity_credential_no = identity_credential_no
+        # Identity verification certificate type. Valid values:
+        # - **SFZ**: Identity card.
+        # - **HZ**: Passport.
+        # - **YYZZ**: Business license.
+        # - **ORG**: Organization code certificate.
+        # - **XYDM**: Unified Social Credit Code certificate.
+        # - **TXZ**: Mainland Travel Permits for Hong Kong and Macao Residents.
+        # 
+        # If your certificate type is not listed above, see [Supported identity verification certificate types](https://help.aliyun.com/document_detail/72209.html) for valid values of other certificate types.
+        # 
+        # > You must select the certificate type that matches the document you are submitting.
+        # 
         # This parameter is required.
         self.identity_credential_type = identity_credential_type
+        # Language of the error message returned by the API. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # Postal code.
         self.postal_code = postal_code
+        # Province.
         self.province = province
+        # Contact name.
         self.registrant_name = registrant_name
+        # Registrant organization name.
         self.registrant_organization = registrant_organization
+        # Domain registrant type. Valid values:
+        # - **1**: Individual.
+        # - **2**: Organization.
+        # 
         # This parameter is required.
         self.registrant_type = registrant_type
+        # Telephone country code.
+        # 
         # This parameter is required.
         self.tel_area = tel_area
+        # Telephone extension number.
         self.tel_ext = tel_ext
+        # Telephone number.
+        # 
         # This parameter is required.
         self.telephone = telephone
+        # Whether to add a transfer-out prohibition restriction. This indicates whether modifying the registrant imposes a 60-day restriction on domain name transfer-out. Default value: **false**, which means transfer-out is not restricted.
+        # 
         # This parameter is required.
         self.transfer_out_prohibited = transfer_out_prohibited
+        # User IP address.
         self.user_client_ip = user_client_ip
+        # Chinese address.
         self.zh_address = zh_address
+        # Chinese city name.
         self.zh_city = zh_city
+        # Chinese province name.
         self.zh_province = zh_province
+        # Chinese contact name.
         self.zh_registrant_name = zh_registrant_name
+        # Chinese registrant organization name.
         self.zh_registrant_organization = zh_registrant_organization
 
     def validate(self):

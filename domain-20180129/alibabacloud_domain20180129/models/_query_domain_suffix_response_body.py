@@ -13,6 +13,7 @@ class QueryDomainSuffixResponseBody(DaraModel):
         request_id: str = None,
         suffix_list: main_models.QueryDomainSuffixResponseBodySuffixList = None,
     ):
+        # The request ID.
         self.request_id = request_id
         self.suffix_list = suffix_list
 

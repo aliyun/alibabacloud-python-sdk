@@ -11,9 +11,19 @@ class CancelTaskRequest(DaraModel):
         task_no: str = None,
         user_client_ip: str = None,
     ):
+        # Language of the error message returned by the API. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # Job number.
+        # 
+        # >You can query the job number by using the [QueryTaskList](https://help.aliyun.com/document_detail/67709.html) API.
+        # 
         # This parameter is required.
         self.task_no = task_no
+        # User IP address.
         self.user_client_ip = user_client_ip
 
     def validate(self):

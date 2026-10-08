@@ -13,9 +13,17 @@ class AcknowledgeTaskResultRequest(DaraModel):
         task_detail_no: List[str] = None,
         user_client_ip: str = None,
     ):
+        # Language of the error message returned by the API. Valid values:
+        # - **zh**: Chinese;
+        # - **en**: English.
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # List of task detail numbers.
+        # 
         # This parameter is required.
         self.task_detail_no = task_detail_no
+        # User IP address.
         self.user_client_ip = user_client_ip
 
     def validate(self):

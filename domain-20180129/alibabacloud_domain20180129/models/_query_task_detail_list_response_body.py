@@ -19,14 +19,14 @@ class QueryTaskDetailListResponseBody(DaraModel):
         total_item_num: int = None,
         total_page_num: int = None,
     ):
-        # The page number returned.
+        # The current page number.
         self.current_page_num = current_page_num
         self.data = data
-        # Indicates whether the current page is followed by a page.
+        # Indicates whether a next page exists.
         self.next_page = next_page
         # The number of entries per page.
         self.page_size = page_size
-        # Indicates whether the current page is preceded by a page.
+        # Indicates whether a previous page exists.
         self.pre_page = pre_page
         # The request ID.
         self.request_id = request_id

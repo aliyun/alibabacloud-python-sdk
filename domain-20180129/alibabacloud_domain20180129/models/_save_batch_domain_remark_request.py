@@ -12,10 +12,19 @@ class SaveBatchDomainRemarkRequest(DaraModel):
         remark: str = None,
         user_client_ip: str = None,
     ):
+        # List of instance IDs. We recommend grouping them in sets of **10**, with a maximum of **50** per group, separated by commas (,).
+        # 
         # This parameter is required.
         self.instance_ids = instance_ids
+        # Language of the error message returned by the API. Valid values:  
+        # - **zh**: Chinese;  
+        # - **en**: English.  
+        # 
+        # Default value: **en**. This parameter is Required.
         self.lang = lang
+        # Remark information.
         self.remark = remark
+        # User IP address, which can be set to **127.0.0.1**.
         self.user_client_ip = user_client_ip
 
     def validate(self):

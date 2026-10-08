@@ -12,11 +12,21 @@ class SaveSingleTaskForAssociatingEnsRequest(DaraModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # ENS address.
+        # 
         # This parameter is required.
         self.address = address
+        # Domain name.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # Language of the error message returned by the API. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # User IP address.
         self.user_client_ip = user_client_ip
 
     def validate(self):

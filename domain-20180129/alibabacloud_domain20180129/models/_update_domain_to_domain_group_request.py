@@ -17,15 +17,39 @@ class UpdateDomainToDomainGroupRequest(DaraModel):
         replace: bool = None,
         user_client_ip: str = None,
     ):
+        # The data source for the domain names. Valid values:
+        # 
+        # - **1**: custom input.
+        # 
+        # - **2**: file upload.
+        # 
         # This parameter is required.
         self.data_source = data_source
+        # The ID of the domain name group. Call the [QueryDomainGroupList](https://help.aliyun.com/document_detail/69362.html) API to get this ID.
+        # 
         # This parameter is required.
         self.domain_group_id = domain_group_id
+        # An array of domain names. This parameter is required when DataSource is set to 1 (custom input).
         self.domain_name = domain_name
+        # The Base64-encoded content of a file. This parameter is required if you set DataSource to 2. The file must be in **.xls** or **.xlsx** format, contain one domain name per line, and not exceed 2 MB.
         self.file_to_upload = file_to_upload
+        # The language of API error messages. Valid values:
+        # 
+        # - **zh**: Chinese
+        # 
+        # - **en**: English
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # Specifies whether to replace the existing domain names in the group. Valid values:
+        # 
+        # - **false**: Adds the new domain names to the group.
+        # 
+        # - **true**: Replaces all existing domain names in the group with the new ones.
+        # 
         # This parameter is required.
         self.replace = replace
+        # The user IP address. You can set this parameter to **127.0.0.1**.
         self.user_client_ip = user_client_ip
 
     def validate(self):

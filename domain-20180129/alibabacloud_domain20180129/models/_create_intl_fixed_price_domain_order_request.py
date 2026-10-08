@@ -13,9 +13,17 @@ class CreateIntlFixedPriceDomainOrderRequest(DaraModel):
         expected_price: int = None,
         product_type: int = None,
     ):
+        # Specifies whether to enable automatic payment. Valid values:
+        # 
+        # - false (default): manual payment.
+        # 
+        #  - true: automatic payment.
         self.auto_pay = auto_pay
+        # The contact ID.
         self.contact_id = contact_id
+        # The domain name.
         self.domain = domain
+        # The expected price.
         self.expected_price = expected_price
         self.product_type = product_type
 

@@ -18,13 +18,35 @@ class SaveBatchTaskForCreatingOrderRenewRequest(DaraModel):
         use_promotion: bool = None,
         user_client_ip: str = None,
     ):
+        # The coupon ID.
         self.coupon_no = coupon_no
+        # The language of the error messages. Valid values:
+        # 
+        # - **zh**: Chinese.
+        # 
+        # - **en**: English.
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # The parameters for each domain name to be renewed.
+        # 
         # This parameter is required.
         self.order_renew_param = order_renew_param
+        # The promotion ID.
         self.promotion_no = promotion_no
+        # Specifies whether to use a coupon. Valid values:
+        # 
+        # - **false**: Do not use a coupon.
+        # 
+        # - **true**: Use a coupon.
         self.use_coupon = use_coupon
+        # Specifies whether to use a promotion. Valid values:
+        # 
+        # - **false**: Do not use a promotion.
+        # 
+        # - **true**: Use a promotion.
         self.use_promotion = use_promotion
+        # The user\\"s IP address. You can set this parameter to **127.0.0.1**.
         self.user_client_ip = user_client_ip
 
     def validate(self):
@@ -99,9 +121,13 @@ class SaveBatchTaskForCreatingOrderRenewRequestOrderRenewParam(DaraModel):
         permit_premium_renew: bool = None,
         subscription_duration: int = None,
     ):
+        # The current expiration date of the domain name, expressed in milliseconds since 00:00:00 UTC on January 1, 1970.
         self.current_expiration_date = current_expiration_date
+        # The domain name that you want to renew. You can obtain a list of your domain names by calling the [QueryDomainList](https://help.aliyun.com/document_detail/67712.html) operation.
         self.domain_name = domain_name
+        # Specifies whether to allow the renewal of premium domain names. Default value: false.
         self.permit_premium_renew = permit_premium_renew
+        # The renewal duration, in years. Default value: **1**. Valid values: **1** to **10**.
         self.subscription_duration = subscription_duration
 
     def validate(self):

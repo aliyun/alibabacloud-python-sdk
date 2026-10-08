@@ -10,8 +10,12 @@ class SetupDomainAutoRenewRequest(DaraModel):
         instance_id: str = None,
         operation: str = None,
     ):
+        # The instance ID of the domain name.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The operation type.
+        # 
         # This parameter is required.
         self.operation = operation
 

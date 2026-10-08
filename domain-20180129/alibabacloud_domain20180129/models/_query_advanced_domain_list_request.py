@@ -40,36 +40,105 @@ class QueryAdvancedDomainListRequest(DaraModel):
         trade_type: int = None,
         user_client_ip: str = None,
     ):
+        # Domain group ID.
         self.domain_group_id = domain_group_id
+        # Sorting field based on lexicographic order of domain names. Valid values:  
+        # - **false**: Descending order  
+        # - **true**: Ascending order
         self.domain_name_sort = domain_name_sort
+        # Domain status. Valid values:
+        # - **0**: All.
+        # - **1**: Renewal required urgently.
+        # - **2**: Redemption required urgently.
+        # - **3**: Normal.
+        # - **4**: Transferring out from HiChina.
+        # - **5**: Registrant information being modified.
+        # - **6**: Identity verification not completed.
+        # - **7**: Review failed; re-initiate identity verification.
+        # - **8**: Under review.
         self.domain_status = domain_status
+        # End time for expiration date range query, represented as the number of milliseconds since 00:00:00 UTC on January 1, 1970.
         self.end_expiration_date = end_expiration_date
+        # End length for domain name length range query.
         self.end_length = end_length
+        # The end time of the registration date range query, expressed as the number of milliseconds since 00:00 on January 1, 1970, UTC.
         self.end_registration_date = end_registration_date
+        # Excluded keyword.
         self.excluded = excluded
+        # Keyword to exclude at the beginning.
         self.excluded_prefix = excluded_prefix
+        # Keyword to exclude at the end.
         self.excluded_suffix = excluded_suffix
+        # Sorting field based on expiration date. Valid values:
+        # - **false**: Descending order.
+        # - **true**: Ascending order.
         self.expiration_date_sort = expiration_date_sort
+        # Domain name composition information:  
+        # - **11**: Numeric-only domain name  
+        # - **12**: Letter-only domain name  
+        # - **13**: Mixed domain name (combination of letters and numbers)  
+        # - **14**: Chinese domain name
         self.form = form
+        # Indicates whether the domain is a premium domain. Valid values:  
+        # - **false**: No  
+        # - **true**: Yes  
+        # 
+        # Default value: false.
         self.is_premium_domain = is_premium_domain
+        # Keyword.
         self.key_word = key_word
+        # Keyword at the beginning.
         self.key_word_prefix = key_word_prefix
+        # Keyword at the end.
         self.key_word_suffix = key_word_suffix
+        # The language of error messages returned by the API. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # Page number for paging. The minimum value is **0**.
+        # 
         # This parameter is required.
         self.page_num = page_num
+        # Page size for paging. The minimum value is **1** and the maximum value is **200**.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Domain name type. Valid values:
+        # - **New gTLD** (new top-level domain).
+        # - **gTLD** (generic top-level domain).
+        # - **ccTLD** (country code top-level domain).
+        # - **other** (other top-level domains not listed above).
         self.product_domain_type = product_domain_type
+        # Sorting field, used to sort by domain name type. Valid values:
+        # - **false**: Descending order.
+        # - **true**: Ascending order.
         self.product_domain_type_sort = product_domain_type_sort
+        # Sorting field based on registration date. Valid values:
+        # - **false**: Descending order.
+        # - **true**: Ascending order.
         self.registration_date_sort = registration_date_sort
+        # Resource group ID.
         self.resource_group_id = resource_group_id
+        # Start time for expiration date range query, represented as the number of milliseconds since 00:00:00 UTC on January 1, 1970.
         self.start_expiration_date = start_expiration_date
+        # The starting length for domain name length range queries.
         self.start_length = start_length
+        # The start time of the registration date range query, expressed as the number of milliseconds since 00:00 on January 1, 1970, UTC.
         self.start_registration_date = start_registration_date
+        # List of suffixes to query, separated by commas (",").
         self.suffixs = suffixs
+        # List of tags.
         self.tag = tag
+        # Publishing status. Valid values:  
+        # - **2**: Fixed-price listing published  
+        # - **13**: Negotiable-price listing published  
+        # - **4**: Auction listing published  
+        # - **6**: Priced push listing published  
+        # - **-1**: Domain trading not published
         self.trade_type = trade_type
+        # User IP address.
         self.user_client_ip = user_client_ip
 
     def validate(self):
@@ -274,7 +343,9 @@ class QueryAdvancedDomainListRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # Tag key.
         self.key = key
+        # Tag value of the instance.
         self.value = value
 
     def validate(self):

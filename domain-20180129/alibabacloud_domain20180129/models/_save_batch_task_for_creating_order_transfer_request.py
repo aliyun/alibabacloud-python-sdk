@@ -18,13 +18,30 @@ class SaveBatchTaskForCreatingOrderTransferRequest(DaraModel):
         use_promotion: bool = None,
         user_client_ip: str = None,
     ):
+        # Coupon number.
         self.coupon_no = coupon_no
+        # Language of the error message returned by the API. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
+        # 
+        # Default value is **en**.
         self.lang = lang
+        # List of job details.
+        # 
         # This parameter is required.
         self.order_transfer_param = order_transfer_param
+        # Coupon number.
         self.promotion_no = promotion_no
+        # Is a coupon used? Valid values:
+        # 
+        # - **false**: No.
+        # - **true**: Yes.
         self.use_coupon = use_coupon
+        # Whether to use a coupon. Valid values:
+        # - **false**: Do not use.
+        # - **true**: Use.
         self.use_promotion = use_promotion
+        # User IP address, which can be set to **127.0.0.1**.
         self.user_client_ip = user_client_ip
 
     def validate(self):
@@ -99,9 +116,18 @@ class SaveBatchTaskForCreatingOrderTransferRequestOrderTransferParam(DaraModel):
         permit_premium_transfer: bool = None,
         registrant_profile_id: int = None,
     ):
+        # Domain name transfer-in password. If multiple domain names are involved, pass the passwords as a list.
         self.authorization_code = authorization_code
+        # Domain name. If multiple domain names are involved, pass them as a list.
         self.domain_name = domain_name
+        # Is transfer-in of premium domain names allowed? Valid values:
+        # 
+        # - **false**: Allowed.
+        # - **true**: Not allowed.
+        # 
+        # Default value: **false**.
         self.permit_premium_transfer = permit_premium_transfer
+        # ID of an identity-verified domain name registrant profile. You can obtain this ID by invoking the [QueryRegistrantProfileRealNameVerificationInfo](https://help.aliyun.com/document_detail/69359.htm?spm=a2c4g.11186623.0.0.5096253c12PfdB) API.
         self.registrant_profile_id = registrant_profile_id
 
     def validate(self):

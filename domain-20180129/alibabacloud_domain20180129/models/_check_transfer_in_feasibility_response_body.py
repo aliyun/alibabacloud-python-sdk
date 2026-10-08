@@ -13,10 +13,17 @@ class CheckTransferInFeasibilityResponseBody(DaraModel):
         product_id: str = None,
         request_id: str = None,
     ):
+        # Indicates whether the domain name can be transferred in. Valid values:
+        # - **true**: The domain name can be transferred in.
+        # - **false**: The domain name cannot be transferred in.
         self.can_transfer = can_transfer
+        # The error code returned when the domain name cannot be transferred in.
         self.code = code
+        # The error description returned when the domain name cannot be transferred in.
         self.message = message
+        # The product ID of the domain name.
         self.product_id = product_id
+        # The unique request access token.
         self.request_id = request_id
 
     def validate(self):

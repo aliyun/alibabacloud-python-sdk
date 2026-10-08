@@ -11,9 +11,17 @@ class CheckDomainSunriseClaimRequest(DaraModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # The domain name to query.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # Language of error messages returned by the API. Valid values:
+        # - **zh**: Chinese;
+        # - **en**: English.
+        # 
+        # Default value is **en**.
         self.lang = lang
+        # User IP address. You can set it to **127.0.0.1**.
         self.user_client_ip = user_client_ip
 
     def validate(self):

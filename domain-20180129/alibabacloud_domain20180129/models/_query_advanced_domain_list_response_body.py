@@ -19,13 +19,20 @@ class QueryAdvancedDomainListResponseBody(DaraModel):
         total_item_num: int = None,
         total_page_num: int = None,
     ):
+        # Current page number.
         self.current_page_num = current_page_num
         self.data = data
+        # Indicates whether a next page exists.
         self.next_page = next_page
+        # Paging size.
         self.page_size = page_size
+        # Indicates whether a previous page exists.
         self.pre_page = pre_page
+        # Unique request access token.
         self.request_id = request_id
+        # Total number of records.
         self.total_item_num = total_item_num
+        # Total number of pages.
         self.total_page_num = total_page_num
 
     def validate(self):

@@ -12,11 +12,24 @@ class QueryFailReasonForDomainRealNameVerificationRequest(DaraModel):
         real_name_verification_action: str = None,
         user_client_ip: str = None,
     ):
+        # Domain name.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # Language of error messages returned by the API. Valid values:  
+        # - **zh**: Chinese.  
+        # - **en**: English.  
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # Review Type. Valid values:  
+        # - **ACTIVATE**: New registration.  
+        # - **CHGHOLDER**: Change of holder.  
+        # - **TRANSFER**: Transfer-in.
+        # 
         # This parameter is required.
         self.real_name_verification_action = real_name_verification_action
+        # User IP address.
         self.user_client_ip = user_client_ip
 
     def validate(self):

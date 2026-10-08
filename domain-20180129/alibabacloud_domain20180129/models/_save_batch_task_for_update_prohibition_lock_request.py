@@ -14,11 +14,27 @@ class SaveBatchTaskForUpdateProhibitionLockRequest(DaraModel):
         status: bool = None,
         user_client_ip: str = None,
     ):
+        # The domain names.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # The language of the error message to be returned. Valid values:
+        # 
+        # - **zh**: Chinese
+        # 
+        # - **en**: English
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # Specifies whether to enable or disable the update prohibition lock. Valid values:
+        # 
+        # - **true**: enables the lock.
+        # 
+        # - **false**: disables the lock.
+        # 
         # This parameter is required.
         self.status = status
+        # The user IP address.
         self.user_client_ip = user_client_ip
 
     def validate(self):

@@ -16,13 +16,27 @@ class QueryTransferOutInfoResponseBody(DaraModel):
         status: int = None,
         transfer_authorization_code_send_date: str = None,
     ):
+        # Mailbox to which the transfer password was sent.
         self.email = email
+        # Expiration time of the obtained transfer password.
         self.expiration_date = expiration_date
+        # Time when the transfer-out request was received from the domain name registry.
         self.pending_request_date = pending_request_date
+        # Unique request access token.
         self.request_id = request_id
+        # Encoding of the transfer-out failure reason.
         self.result_code = result_code
+        # Description of the transfer-out failure reason.
         self.result_msg = result_msg
+        # Transfer-out status. Valid values:  
+        # - **1**: Phone authentication required;  
+        # - **2**: Mailbox authentication required;  
+        # - **3**: Transfer password already obtained;  
+        # - **4**: Transfer-out in progress (transfer request received from the domain name registry);  
+        # - **5**: Transfer-out succeeded;  
+        # - **8**: Transfer-out failed.
         self.status = status
+        # Time when the transfer password was obtained.
         self.transfer_authorization_code_send_date = transfer_authorization_code_send_date
 
     def validate(self):

@@ -10,8 +10,13 @@ class SetDefaultRegistrantProfileRequest(DaraModel):
         registrant_profile_id: int = None,
         user_client_ip: str = None,
     ):
+        # The ID of the contact template to be set as default.
+        # 
+        # The system automatically generates this ID after the template is successfully created. You can invoke the [QueryRegistrantProfiles](https://help.aliyun.com/document_detail/67701.html) API to query the template ID.
+        # 
         # This parameter is required.
         self.registrant_profile_id = registrant_profile_id
+        # The user IP address. The default value is **127.0.0.1**.
         self.user_client_ip = user_client_ip
 
     def validate(self):

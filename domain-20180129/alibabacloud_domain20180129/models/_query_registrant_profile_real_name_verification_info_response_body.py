@@ -16,13 +16,29 @@ class QueryRegistrantProfileRealNameVerificationInfoResponseBody(DaraModel):
         request_id: str = None,
         submission_date: str = None,
     ):
+        # The Base64-encoded image of the identity verification documents.
         self.identity_credential = identity_credential
+        # The certificate number used for identity verification.
         self.identity_credential_no = identity_credential_no
+        # The type of certificate used for identity verification. Valid values:  
+        # - **SFZ**: Identity card.  
+        # - **HZ**: Passport.  
+        # - **YYZZ**: Business license.  
+        # - **ORG**: Organization code certificate.  
+        # - **XYDM**: Unified Social Credit Code certificate.  
+        # - **TXZ**: Mainland Travel Permits for Hong Kong and Macao Residents.  
+        # 
+        # > For more certificate types, see [Certificate Types Supported for Identity Verification](https://help.aliyun.com/document_detail/72209.html).
         self.identity_credential_type = identity_credential_type
+        # The download URL of the identity verification image.
         self.identity_credential_url = identity_credential_url
+        # The update time of the identity verification documents.
         self.modification_date = modification_date
+        # The ID of the queried information template.
         self.registrant_profile_id = registrant_profile_id
+        # The request ID.
         self.request_id = request_id
+        # The submission time of the identity verification documents.
         self.submission_date = submission_date
 
     def validate(self):

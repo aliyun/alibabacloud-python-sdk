@@ -10,7 +10,11 @@ class ChangeResourceGroupResponseBody(DaraModel):
         request_id: str = None,
         result: str = None,
     ):
+        # The unique ID of this request.
         self.request_id = request_id
+        # Operation result. Valid values:
+        # - **true**: The operation succeeded.
+        # - **false**: The operation failed.
         self.result = result
 
     def validate(self):

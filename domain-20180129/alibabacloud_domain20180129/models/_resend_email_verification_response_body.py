@@ -14,8 +14,11 @@ class ResendEmailVerificationResponseBody(DaraModel):
         request_id: str = None,
         success_list: List[main_models.ResendEmailVerificationResponseBodySuccessList] = None,
     ):
+        # List of failed verification email sends.
         self.fail_list = fail_list
+        # Request ID.
         self.request_id = request_id
+        # List of successfully sent verification emails.
         self.success_list = success_list
 
     def validate(self):
@@ -74,8 +77,11 @@ class ResendEmailVerificationResponseBodySuccessList(DaraModel):
         email: str = None,
         message: str = None,
     ):
+        # Return code.
         self.code = code
+        # Verified mailbox.
         self.email = email
+        # Return message.
         self.message = message
 
     def validate(self):
@@ -117,8 +123,11 @@ class ResendEmailVerificationResponseBodyFailList(DaraModel):
         email: str = None,
         message: str = None,
     ):
+        # Return code.
         self.code = code
+        # Verified mailbox.
         self.email = email
+        # Return message.
         self.message = message
 
     def validate(self):

@@ -17,11 +17,17 @@ class QueryTaskInfoHistoryResponseBody(DaraModel):
         pre_page_cursor: main_models.QueryTaskInfoHistoryResponseBodyPrePageCursor = None,
         request_id: str = None,
     ):
+        # Cursor for the current page.
         self.current_page_cursor = current_page_cursor
+        # Cursor for the next page.
         self.next_page_cursor = next_page_cursor
+        # Job information.
         self.objects = objects
+        # Page size.
         self.page_size = page_size
+        # Cursor for the previous page.
         self.pre_page_cursor = pre_page_cursor
+        # Unique request access token.
         self.request_id = request_id
 
     def validate(self):
@@ -104,14 +110,45 @@ class QueryTaskInfoHistoryResponseBodyPrePageCursor(DaraModel):
         task_type: str = None,
         task_type_description: str = None,
     ):
+        # User IP address when submitting the job.
         self.clientip = clientip
+        # Job creation time.
         self.create_time = create_time
+        # Job creation time.
         self.create_time_long = create_time_long
+        # Task number.
         self.task_no = task_no
+        # Number of domain names included in the job.
         self.task_num = task_num
+        # Task Status. Valid values:  
+        # - **WAITING_EXECUTE**: Waiting for execution;  
+        # - **EXECUTING**: Executing;  
+        # - **COMPLETE**: Execution completed.
         self.task_status = task_status
+        # Task status code. Valid values:  
+        # - **1**: Waiting for execution;  
+        # - **2**: Executing;  
+        # - **3**: Execution completed.
         self.task_status_code = task_status_code
+        # Task Type. Valid values:  
+        # - **CHG_HOLDER**: Modify registrant information;  
+        # - **CHG_DNS**: Modify DNS;  
+        # - **SET_WHOIS_PROTECT**: Enable privacy protection;  
+        # - **UPDATE_ADMIN_CONTACT**: Update administrative contact;  
+        # - **UPDATE_BILLING_CONTACT**: Update billing contact;  
+        # - **UPDATE_TECH_CONTACT**: Update technical contact;  
+        # - **SET_UPDATE_PROHIBITED**: Enable domain name edit lock;  
+        # - **SET_TRANSFER_PROHIBITED**: Enable domain name transfer lock;  
+        # - **ORDER_ACTIVATE**: Create a registration order;  
+        # - **ORDER_RENEW**: Create a renewal order;  
+        # - **ORDER_REDEEM**: Create a redemption order;  
+        # - **CREATE_DNSHOST**: Create a DNS host;  
+        # - **UPDATE_DNSHOST**: Update a DNS host;  
+        # - **UPDATE_REGISTRANT_CONTACT**: Update registrant contact;  
+        # - **DELETE_DOMAIN**: Delete a domain name;  
+        # - **SYNC_DNSHOST**: Synchronize DNS host.
         self.task_type = task_type
+        # Task type description.
         self.task_type_description = task_type_description
 
     def validate(self):
@@ -195,14 +232,45 @@ class QueryTaskInfoHistoryResponseBodyObjects(DaraModel):
         task_type: str = None,
         task_type_description: str = None,
     ):
+        # User IP address when submitting the task.
         self.clientip = clientip
+        # Task creation time.
         self.create_time = create_time
+        # Task creation time.
         self.create_time_long = create_time_long
+        # Job number.
         self.task_no = task_no
+        # Number of domain names included in the job.
         self.task_num = task_num
+        # Task status. Valid values:
+        # - **WAITING_EXECUTE**: Waiting for execution;
+        # - **EXECUTING**: Executing;
+        # - **COMPLETE**: Execution completed.
         self.task_status = task_status
+        # Task status code. Valid values:
+        # - **1**: Waiting for execution;
+        # - **2**: Executing;
+        # - **3**: Execution completed.
         self.task_status_code = task_status_code
+        # Task Type. Valid values:
+        # - **CHG_HOLDER**: Modify owner information;
+        # - **CHG_DNS**: Modify DNS;
+        # - **SET_WHOIS_PROTECT**: Enable privacy protection;
+        # - **UPDATE_ADMIN_CONTACT**: Modify administrative contact information;
+        # - **UPDATE_BILLING_CONTACT**: Modify billing contact information;
+        # - **UPDATE_TECH_CONTACT**: Modify technical contact information;
+        # - **SET_UPDATE_PROHIBITED**: Enable domain name edit lock;
+        # - **SET_TRANSFER_PROHIBITED**: Enable domain name transfer lock;
+        # - **ORDER_ACTIVATE**: Create a registration order;
+        # - **ORDER_RENEW**: Create a renewal order;
+        # - **ORDER_REDEEM**: Create a redemption order;
+        # - **CREATE_DNSHOST**: Create a DNS host;
+        # - **UPDATE_DNSHOST**: Update a DNS host;
+        # - **UPDATE_REGISTRANT_CONTACT**: Modify registrant contact information;
+        # - **DELETE_DOMAIN**: Delete a domain name;
+        # - **SYNC_DNSHOST**: Synchronize a DNS host.
         self.task_type = task_type
+        # Task type description.
         self.task_type_description = task_type_description
 
     def validate(self):
@@ -286,14 +354,45 @@ class QueryTaskInfoHistoryResponseBodyNextPageCursor(DaraModel):
         task_type: str = None,
         task_type_description: str = None,
     ):
+        # User IP address when the job was submitted.
         self.clientip = clientip
+        # Creation Time of the job.
         self.create_time = create_time
+        # Creation Time of the job.
         self.create_time_long = create_time_long
+        # Job number.
         self.task_no = task_no
+        # Number of domain names included in the job.
         self.task_num = task_num
+        # Task Status. Valid values:  
+        # - **WAITING_EXECUTE**: Waiting to execute;  
+        # - **EXECUTING**: Executing;  
+        # - **COMPLETE**: Execution completed.
         self.task_status = task_status
+        # Job status code. Valid values:  
+        # - **1**: Waiting to execute;  
+        # - **2**: Executing;  
+        # - **3**: Execution completed.
         self.task_status_code = task_status_code
+        # Task Type. Valid values:  
+        # - **CHG_HOLDER**: Modify registrant information;  
+        # - **CHG_DNS**: Modify DNS;  
+        # - **SET_WHOIS_PROTECT**: Enable privacy protection;  
+        # - **UPDATE_ADMIN_CONTACT**: Modify administrative contact information;  
+        # - **UPDATE_BILLING_CONTACT**: Modify billing contact information;  
+        # - **UPDATE_TECH_CONTACT**: Modify technical contact information;  
+        # - **SET_UPDATE_PROHIBITED**: Enable domain name Edit Lock;  
+        # - **SET_TRANSFER_PROHIBITED**: Enable domain name transfer lock;  
+        # - **ORDER_ACTIVATE**: Create a registration order;  
+        # - **ORDER_RENEW**: Create a renewal order;  
+        # - **ORDER_REDEEM**: Create a redemption order;  
+        # - **CREATE_DNSHOST**: Create a DNS host;  
+        # - **UPDATE_DNSHOST**: Update a DNS host;  
+        # - **UPDATE_REGISTRANT_CONTACT**: Modify registrant contact information;  
+        # - **DELETE_DOMAIN**: Delete a domain name;  
+        # - **SYNC_DNSHOST**: Synchronize DNS host.
         self.task_type = task_type
+        # Task type description.
         self.task_type_description = task_type_description
 
     def validate(self):
@@ -377,14 +476,45 @@ class QueryTaskInfoHistoryResponseBodyCurrentPageCursor(DaraModel):
         task_type: str = None,
         task_type_description: str = None,
     ):
+        # User IP address when the job was submitted.
         self.clientip = clientip
+        # Job creation time.
         self.create_time = create_time
+        # Job creation UNIX timestamp.
         self.create_time_long = create_time_long
+        # Job number.
         self.task_no = task_no
+        # Number of domain names included in the job.
         self.task_num = task_num
+        # Task Status. Valid values:
+        # - **WAITING_EXECUTE**: Waiting for execution;
+        # - **EXECUTING**: Executing;
+        # - **COMPLETE**: Execution completed.
         self.task_status = task_status
+        # Job status code. Valid values:  
+        # - **1**: Waiting for execution  
+        # - **2**: Executing  
+        # - **3**: Execution completed
         self.task_status_code = task_status_code
+        # Job type. Valid values:  
+        # - **CHG_HOLDER**: Modify registrant information  
+        # - **CHG_DNS**: Modify DNS  
+        # - **SET_WHOIS_PROTECT**: Enable privacy protection  
+        # - **UPDATE_ADMIN_CONTACT**: Modify administrator contact information  
+        # - **UPDATE_BILLING_CONTACT**: Modify billing contact information  
+        # - **UPDATE_TECH_CONTACT**: Modify technical contact information  
+        # - **SET_UPDATE_PROHIBITED**: Enable domain name edit lock  
+        # - **SET_TRANSFER_PROHIBITED**: Enable domain name transfer lock  
+        # - **ORDER_ACTIVATE**: Create registration order  
+        # - **ORDER_RENEW**: Create renewal order  
+        # - **ORDER_REDEEM**: Create redemption order  
+        # - **CREATE_DNSHOST**: Create DNS host  
+        # - **UPDATE_DNSHOST**: Update DNS host  
+        # - **UPDATE_REGISTRANT_CONTACT**: Modify registrant contact  
+        # - **DELETE_DOMAIN**: Delete domain name  
+        # - **SYNC_DNSHOST**: Synchronize DNS host
         self.task_type = task_type
+        # Task Type description.
         self.task_type_description = task_type_description
 
     def validate(self):

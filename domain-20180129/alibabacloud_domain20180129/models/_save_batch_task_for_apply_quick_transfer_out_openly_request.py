@@ -13,8 +13,11 @@ class SaveBatchTaskForApplyQuickTransferOutOpenlyRequest(DaraModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # The domain names to transfer out.
         self.domain_names = domain_names
+        # The language of returned error messages. Valid values: zh (Chinese) and en (English). Default value: en.
         self.lang = lang
+        # The IP address of the user\\"s client.
         self.user_client_ip = user_client_ip
 
     def validate(self):

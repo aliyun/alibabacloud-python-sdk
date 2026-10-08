@@ -12,6 +12,8 @@ class SaveBatchTaskForTransferOutByAuthorizationCodeRequest(DaraModel):
         self,
         transfer_out_param_list: List[main_models.SaveBatchTaskForTransferOutByAuthorizationCodeRequestTransferOutParamList] = None,
     ):
+        # A list of domain names to transfer out, each with its authorization code.
+        # 
         # This parameter is required.
         self.transfer_out_param_list = transfer_out_param_list
 
@@ -49,7 +51,9 @@ class SaveBatchTaskForTransferOutByAuthorizationCodeRequestTransferOutParamList(
         authorization_code: str = None,
         domain_name: str = None,
     ):
+        # The authorization code for the domain name.
         self.authorization_code = authorization_code
+        # The domain name to transfer out.
         self.domain_name = domain_name
 
     def validate(self):

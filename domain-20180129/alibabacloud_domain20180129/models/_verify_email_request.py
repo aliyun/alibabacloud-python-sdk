@@ -11,9 +11,19 @@ class VerifyEmailRequest(DaraModel):
         token: str = None,
         user_client_ip: str = None,
     ):
+        # Language of the error message returned by the API. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
+        # 
+        # Default value: **en**.
         self.lang = lang
+        # Token code included in the email verification link.
+        # 
+        # After the verification email is sent successfully, you can log on to the mailbox to be verified and view the token code.
+        # 
         # This parameter is required.
         self.token = token
+        # User IP address. You can set it to 127.0.0.1.
         self.user_client_ip = user_client_ip
 
     def validate(self):
