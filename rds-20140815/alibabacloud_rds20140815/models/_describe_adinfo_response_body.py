@@ -14,17 +14,16 @@ class DescribeADInfoResponseBody(DaraModel):
         request_id: str = None,
         user_name: str = None,
     ):
-        # The DNS information about the AD domain.
+        # The DNS information of the AD domain.
         self.addns = addns
-        # The service IP address of the AD domain.
+        # The IP address of the AD domain server.
         self.adserver_ip_address = adserver_ip_address
         # The status of the AD domain. Valid values:
-        # 
-        # *   **-1**: The instance is being added to the AD domain.
-        # *   **0**: The instance fails to be added to the AD domain.
-        # *   **1**: The instance is added to the AD domain.
+        # * **-1**: The instance is being joined to the AD domain.
+        # * **0**: Failed to join the AD domain.
+        # * **1**: Joined the AD domain.
         self.adstatus = adstatus
-        # The cause of the error.
+        # The reason for the exception.
         self.abnormal_reason = abnormal_reason
         # The request ID.
         self.request_id = request_id

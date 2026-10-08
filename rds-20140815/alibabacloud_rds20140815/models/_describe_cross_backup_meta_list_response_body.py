@@ -18,18 +18,18 @@ class DescribeCrossBackupMetaListResponseBody(DaraModel):
         total_page_count: int = None,
         total_record_count: int = None,
     ):
-        # The instance to which the cross-region backup file belongs.
+        # The instance to which the cross-region backup set belongs.
         self.dbinstance_name = dbinstance_name
         self.items = items
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries on the current page.
         self.page_record_count = page_record_count
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of pages returned.
+        # The total number of pages.
         self.total_page_count = total_page_count
-        # The total number of returned entries.
+        # The total number of entries.
         self.total_record_count = total_record_count
 
     def validate(self):

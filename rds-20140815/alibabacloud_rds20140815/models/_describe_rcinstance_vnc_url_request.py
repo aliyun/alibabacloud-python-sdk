@@ -11,10 +11,10 @@ class DescribeRCInstanceVncUrlRequest(DaraModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The database engine. Valid values:
+        # The database engine type. Valid values:
         # 
-        # *   **mssql**: SQL Server
-        # *   **mysql**: MySQL
+        # - **mssql**: SQL Server
+        # - **mysql**: MySQL
         self.db_type = db_type
         # The instance ID.
         self.instance_id = instance_id

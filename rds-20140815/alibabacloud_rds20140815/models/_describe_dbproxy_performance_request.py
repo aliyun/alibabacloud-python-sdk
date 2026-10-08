@@ -19,49 +19,54 @@ class DescribeDBProxyPerformanceRequest(DaraModel):
         resource_owner_id: int = None,
         start_time: str = None,
     ):
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # The instance ID. You can call DescribeDBInstances to obtain the instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # A reserved parameter. You do not need to specify this parameter.
+        # A reserved parameter. You do not need to configure this parameter.
         self.dbproxy_engine_type = dbproxy_engine_type
         # The type of the database proxy instance. Valid values:
-        # 
-        # *   common: the general-purpose database proxy
-        # *   exclusive: the dedicated database proxy
+        # - common: general-purpose database proxy
+        # - exclusive: dedicated database proxy
         self.dbproxy_instance_type = dbproxy_instance_type
-        # Dimension.
+        # The aggregation dimension. Valid values. The service and server values cannot be specified at the same time.
+        # 
+        # - service: aggregates monitoring metrics by proxy endpoint.
+        # 
+        # - node: aggregates monitoring metrics by proxy node.
+        # 
+        # - server: aggregates monitoring metrics by database node.
         self.dimension = dimension
-        # The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The end time of the query. The end time must be later than the start time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The performance metrics that you want to query.
+        # The performance metrics.
         # 
-        # If the instance runs MySQL, you can query only the **Maxscale_CpuUsage** performance metric, which indicates the CPU utilization of the instance.
+        # RDS MySQL supports only **Maxscale_CpuUsage**: CPU utilization.
         # 
-        # If the instance runs PostgreSQL, you can query the following performance metrics:
+        # RDS PostgreSQL supports the following performance metrics:
         # 
-        # *   **Maxscale_TotalConns**: the number of connections per second
-        # *   **Maxscale_CurrentConns**: the number of connections that are established
-        # *   **Maxscale_DownFlows**: outbound traffic
-        # *   **Maxscale_UpFlows**: inbound traffic
-        # *   **Maxscale_QPS**: QPS
-        # *   **Maxscale_MemUsage**: memory usage
-        # *   **Maxscale_CpuUsage**: CPU utilization
+        # - **Maxscale_TotalConns**: connection rate
+        # - **Maxscale_CurrentConns**: current connections
+        # - **Maxscale_DownFlows**: outbound traffic
+        # - **Maxscale_UpFlows**: inbound traffic
+        # - **Maxscale_QPS**: request rate (QPS)
+        # - **Maxscale_MemUsage**: memory utilization
+        # - **Maxscale_CpuUsage**: CPU utilization
         # 
-        # If you want to query more than one performance metric, separate the performance metrics with commas (,). You can specify up to six performance metrics in a single request.
+        # To query multiple performance metrics, separate them with commas (,). You can query up to six performance metrics at a time.
         # 
         # This parameter is required.
         self.metrics_name = metrics_name
         self.owner_id = owner_id
-        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # The region ID. You can call DescribeRegions to obtain the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The start time of the query. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
         # 
         # This parameter is required.
         self.start_time = start_time

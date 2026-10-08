@@ -16,17 +16,17 @@ class DescribeReadDBInstanceDelayRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The primary instance ID. You can call the DescribeDBInstances operation to query the primary instance ID.
+        # The primary instance ID. You can invoke DescribeDBInstances to obtain this value.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The read-only instance ID. You can call the DescribeDBInstances operation to query the read-only instance ID.
+        # The read-only instance ID. You can invoke DescribeDBInstances to obtain this value.
         # 
         # This parameter is required.
         self.read_instance_id = read_instance_id
-        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # The region ID. You can call DescribeRegions to obtain this value.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

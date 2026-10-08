@@ -29,56 +29,20 @@ class DescribeRCInstanceHistoryEventsRequest(DaraModel):
     ):
         self.event_publish_time = event_publish_time
         self.not_before = not_before
-        # The lifecycle state of the system event. This parameter is valid only when the **InstanceEventCycleStatus.N** parameter is not specified. Valid values:
-        # 
-        # *   **Scheduled**
-        # *   **Avoided**
-        # *   **Executing**
-        # *   **Executed**
-        # *   **Canceled**
-        # *   **Failed**
-        # *   **Inquiring**
         self.event_cycle_status = event_cycle_status
-        # The IDs of one or more system events.
         self.event_id = event_id
-        # The system event type. This parameter is valid only when the **InstanceEventType.N** parameter is not specified. Valid values:
-        # 
-        # *   **SystemMaintenance.Reboot**: The instance was restarted due to system maintenance.
-        # *   **SystemMaintenance.Redeploy**: The instance was redeployed due to system maintenance.
-        # *   **SystemFailure.Reboot**: The instance was restarted due to system failures.
-        # *   **SystemFailure.Redeploy**: The instance was redeployed due to system failures.
-        # *   **SystemFailure.Delete**: The instance was released due to an instance creation failure.
-        # *   **InstanceFailure.Reboot**: The instance was restarted due to an instance error.
-        # *   **InstanceExpiration.Stop**: The subscription instance was stopped due to expiration.
-        # *   **InstanceExpiration.Delete**: The subscription instance was released due to expiration.
-        # *   **AccountUnbalanced.Stop**: The pay-as-you-go instance is stopped due to an overdue payment.
-        # *   **AccountUnbalanced.Delete**: The pay-as-you-go instance was released due to an overdue payment.
-        # 
-        # >  The values of this parameter are applicable only to instance system events, but not to disk system events.
         self.event_type = event_type
-        # The reserved parameter. This parameter is not supported.
         self.impact_level = impact_level
-        # The lifecycle states of system events.
         self.instance_event_cycle_status = instance_event_cycle_status
-        # The type of system event N.
         self.instance_event_type = instance_event_type
-        # The instance ID. If you do not specify an instance ID, system events of all instances in the specified region are queried.
         self.instance_id = instance_id
-        # The reserved parameter. This parameter is not supported.
         self.max_results = max_results
-        # The page number of the returned page.
         self.page_number = page_number
-        # The maximum number of entries returned per page.
         self.page_size = page_size
-        # The ID of the region where the instance resides.
-        # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group that you want to query.
         self.resource_group_id = resource_group_id
-        # The ID of resource N.
         self.resource_id = resource_id
-        # An array that consists of the tags that are supported by system events.
         self.tag = tag
 
     def validate(self):
@@ -211,9 +175,7 @@ class DescribeRCInstanceHistoryEventsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag that is added to the resource.
         self.key = key
-        # The value of tag N of the port list.
         self.value = value
 
     def validate(self):
@@ -248,9 +210,7 @@ class DescribeRCInstanceHistoryEventsRequestNotBefore(DaraModel):
         end: str = None,
         start: str = None,
     ):
-        # The end time of the scheduled execution period for the system event. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
         self.end = end
-        # The start time of the scheduled execution period for the system event. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
         self.start = start
 
     def validate(self):
@@ -285,9 +245,7 @@ class DescribeRCInstanceHistoryEventsRequestEventPublishTime(DaraModel):
         end: str = None,
         start: str = None,
     ):
-        # The end of the time range in which to query published system events. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
         self.end = end
-        # The beginning of the time range in which to query published system events. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
         self.start = start
 
     def validate(self):

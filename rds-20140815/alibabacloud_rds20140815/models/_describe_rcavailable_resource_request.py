@@ -21,6 +21,7 @@ class DescribeRCAvailableResourceRequest(DaraModel):
         scope: str = None,
         spot_duration: int = None,
         spot_strategy: str = None,
+        support_case: str = None,
         system_disk_category: str = None,
         zone_id: str = None,
     ):
@@ -40,6 +41,7 @@ class DescribeRCAvailableResourceRequest(DaraModel):
         self.scope = scope
         self.spot_duration = spot_duration
         self.spot_strategy = spot_strategy
+        self.support_case = support_case
         self.system_disk_category = system_disk_category
         self.zone_id = zone_id
 
@@ -93,6 +95,9 @@ class DescribeRCAvailableResourceRequest(DaraModel):
         if self.spot_strategy is not None:
             result['SpotStrategy'] = self.spot_strategy
 
+        if self.support_case is not None:
+            result['SupportCase'] = self.support_case
+
         if self.system_disk_category is not None:
             result['SystemDiskCategory'] = self.system_disk_category
 
@@ -144,6 +149,9 @@ class DescribeRCAvailableResourceRequest(DaraModel):
 
         if m.get('SpotStrategy') is not None:
             self.spot_strategy = m.get('SpotStrategy')
+
+        if m.get('SupportCase') is not None:
+            self.support_case = m.get('SupportCase')
 
         if m.get('SystemDiskCategory') is not None:
             self.system_disk_category = m.get('SystemDiskCategory')

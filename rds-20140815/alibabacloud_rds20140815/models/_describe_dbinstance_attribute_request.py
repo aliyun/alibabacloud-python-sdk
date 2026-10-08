@@ -11,16 +11,15 @@ class DescribeDBInstanceAttributeRequest(DaraModel):
         expired: str = None,
         resource_owner_id: int = None,
     ):
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-        # 
-        # >Notice: Do not query the details of multiple instances at a time by using multiple instance IDs. Otherwise, the query times out and fails.
+        # The instance ID. You can call DescribeDBInstances to obtain the instance ID.
+        # >Warning: Do not specify multiple instance IDs for batch queries. Otherwise, the query times out and fails.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # Specifies whether the instance expires. Valid values:
+        # The expiration status of the instance. Valid values:
         # 
-        # *   **True**
-        # *   **False**
+        # * **True**: The instance has expired.
+        # * **False**: The instance has not expired.
         self.expired = expired
         self.resource_owner_id = resource_owner_id
 

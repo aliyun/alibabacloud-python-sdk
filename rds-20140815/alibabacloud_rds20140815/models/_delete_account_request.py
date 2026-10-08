@@ -14,11 +14,11 @@ class DeleteAccountRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The name of the account.
+        # The name of the database account that you want to delete.
         # 
         # This parameter is required.
         self.account_name = account_name
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # The instance ID. You can call DescribeDBInstances to obtain the instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id

@@ -13,7 +13,7 @@ class DescribeDBInstanceSSLRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # The instance ID. You can call [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) to query the instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id

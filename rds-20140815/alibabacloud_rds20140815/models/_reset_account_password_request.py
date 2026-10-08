@@ -15,19 +15,19 @@ class ResetAccountPasswordRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The username of the account.
+        # The name of the database account.
         # 
         # This parameter is required.
         self.account_name = account_name
         # The new password.
         # 
-        # > *   The value must be 8 to 32 characters in length.
-        # > *   The value must contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters.
-        # > *   The following special characters are supported: ! @ # $ & % ^ \\* ( ) _ + - =
+        # > * The password must be 8 to 32 characters in length.
+        # > * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+        # > * Special characters include `!@#$&%^*()_+-=`
         # 
         # This parameter is required.
         self.account_password = account_password
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # The instance ID. You can call DescribeDBInstances to obtain the instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id

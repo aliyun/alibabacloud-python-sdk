@@ -21,48 +21,50 @@ class ModifyComputeBurstConfigRequest(DaraModel):
         resource_owner_account: str = None,
         scale_max_cpus: str = None,
         scale_max_memory: str = None,
+        scale_max_rcu: float = None,
+        scale_min_rcu: float = None,
         switch_time: str = None,
         switch_time_mode: str = None,
         task_id: str = None,
     ):
-        # This parameter is set to **disabled** if the assured serverless feature is disabled.
+        # Set this parameter to **disabled** to disable the committed serverless feature.
         self.burst_status = burst_status
-        # The client token that is used to ensure the idempotence of requests and prevent repeated requests from being submitted. You can use the client to generate the value, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The CPU utilization threshold for **scale-out**. Valid values: 60 to 90. Unit: %.
+        # The CPU utilization threshold for elastic **scale-out**. Valid values: 60 to 90. Unit: %.
         self.cpu_enlarge_threshold = cpu_enlarge_threshold
-        # The CPU utilization threshold for **scale-in**. Valid values: 30 to 55. Unit: %.
+        # The CPU utilization threshold for elastic **scale-in**. Valid values: 30 to 55. Unit: %.
         self.cpu_shrink_threshold = cpu_shrink_threshold
-        # The reserved parameter. This parameter is not supported.
+        # A reserved parameter. This parameter is not supported.
         self.crontab_job_id = crontab_job_id
         # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The memory usage threshold for **scale-out**. Valid values: 60 to 90. Unit: %.
+        # The memory utilization threshold for elastic **scale-out**. Valid values: 60 to 90. Unit: %.
         self.memory_enlarge_threshold = memory_enlarge_threshold
-        # The memory usage threshold for **scale-in**. Valid values: 30 to 55. Unit: %.
+        # The memory utilization threshold for elastic **scale-in**. Valid values: 30 to 55. Unit: %.
         self.memory_shrink_threshold = memory_shrink_threshold
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
-        # The maximum number of CPU cores for elastic scaling. The maximum value cannot exceed twice the initial CPU configuration.
+        # The maximum number of CPUs for elastic scale-out. The value can be up to twice the initial CPU configuration of the instance.
         self.scale_max_cpus = scale_max_cpus
-        # The maximum memory for elastic scaling. The value cannot exceed twice the instance\\"s initial memory size. Unit: GB. Step size: 2 GB.
+        # The maximum memory for elastic scale-out. The value can be up to twice the initial memory configuration of the instance. Unit: GB. The value is adjusted in increments of 2 GB.
         self.scale_max_memory = scale_max_memory
-        # The time when the specified entry takes effect. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
-        # 
-        # >  This parameter is required only if **SwitchTimeMode** is set to **2**.
+        self.scale_max_rcu = scale_max_rcu
+        self.scale_min_rcu = scale_min_rcu
+        # The specified time at which the modification takes effect. Format: `yyyy-MM-ddTHH:mm:ssZ` (UTC).
+        # > This parameter is required when **SwitchTimeMode** is set to **2**.
         self.switch_time = switch_time
         # The effective policy. Valid values:
-        # 
-        # *   **0**: Immediately takes effect.
-        # *   **1**: Takes effect within the maintenance window. You can call the **ModifyDBInstanceMaintainTime** operation to change the maintenance window of an instance.
-        # *   **2**: Takes effect at a specified point in time.
+        # - **0**: The modification takes effect immediately.
+        # - **1**: The modification takes effect during the maintenance window. You can call the **ModifyDBInstanceMaintainTime** operation to modify the maintenance window.
+        # - **2**: The modification takes effect at a specified point in time.
         self.switch_time_mode = switch_time_mode
-        # The reserved parameter. This parameter is not supported.
+        # A reserved parameter. This parameter is not supported.
         self.task_id = task_id
 
     def validate(self):
@@ -114,6 +116,12 @@ class ModifyComputeBurstConfigRequest(DaraModel):
 
         if self.scale_max_memory is not None:
             result['ScaleMaxMemory'] = self.scale_max_memory
+
+        if self.scale_max_rcu is not None:
+            result['ScaleMaxRcu'] = self.scale_max_rcu
+
+        if self.scale_min_rcu is not None:
+            result['ScaleMinRcu'] = self.scale_min_rcu
 
         if self.switch_time is not None:
             result['SwitchTime'] = self.switch_time
@@ -169,6 +177,12 @@ class ModifyComputeBurstConfigRequest(DaraModel):
 
         if m.get('ScaleMaxMemory') is not None:
             self.scale_max_memory = m.get('ScaleMaxMemory')
+
+        if m.get('ScaleMaxRcu') is not None:
+            self.scale_max_rcu = m.get('ScaleMaxRcu')
+
+        if m.get('ScaleMinRcu') is not None:
+            self.scale_min_rcu = m.get('ScaleMinRcu')
 
         if m.get('SwitchTime') is not None:
             self.switch_time = m.get('SwitchTime')

@@ -24,59 +24,56 @@ class DescribeActiveOperationTasksRequest(DaraModel):
         status: int = None,
         task_type: str = None,
     ):
-        # The filter condition that is used to return tasks based on the settings of task cancellation. Default value: -1. Valid values:
+        # Specifies whether the task can be canceled. Default value: -1. Valid values:
         # 
-        # *   **-1**: returns all tasks.
-        # *   **0**: returns only tasks that cannot be canceled.
-        # *   **1**: returns only tasks that can be canceled.
+        # - **-1**: all tasks.
+        # - **0**: Only tasks that cannot be canceled are returned.
+        # - **1**: Only tasks that can be canceled are returned.
         self.allow_cancel = allow_cancel
-        # The filter condition that is used to return tasks based on the settings of the switching time. Default value: -1. Valid values:
-        # 
-        # *   **-1**: returns all tasks.
-        # *   **0**: returns only tasks for which the switching time cannot be changed.
-        # *   **1**: returns only tasks for which the switching time can be changed.
+        # Specifies whether the task time can be modified. Default value: -1. Valid values:
+        # - **-1**: all tasks.
+        # - **0**: Only tasks whose time cannot be modified are returned.
+        # - **1**: Only tasks whose time can be modified are returned.
         self.allow_change = allow_change
-        # The filter condition that is used to return tasks based on the task level. Default value: all. Valid values:
+        # The task level. Default value: all. Valid values:
         # 
-        # *   **all**: all types
-        # *   **S0**: returns the tasks of the exception fixing level.
-        # *   **S1**: returns the tasks of the system O\\&M level.
+        # - **all**: all levels.
+        # - **S0**: Only tasks at the exception recovery level are returned.
+        # - **S1**: Only tasks at the system O&M level are returned.
         self.change_level = change_level
-        # The type of the database. Default value: all. Valid values: mysql, pgsql, and mssql.
+        # The database type. Default value: all. Valid values: mysql, pgsql, and mssql.
         self.db_type = db_type
-        # The name of the instance. You can leave this parameter empty. If you configure this parameter, you can specify the name only of one instance.
+        # The instance name. This parameter is optional. You can specify at most one instance name.
         self.ins_name = ins_name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number. The value must be greater than 0. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 25. Maximum value: 100.
         self.page_size = page_size
-        # The name of the service. Valid values: RDS, POLARDB, MongoDB, and Redis. For RDS instances, set the value to RDS.
+        # The product name. Valid values: RDS, POLARDB, MongoDB, and Redis. For ApsaraDB RDS instances, set this parameter to RDS.
         self.product_id = product_id
         # The region ID of the pending event. You can call the DescribeRegions operation to query the most recent region list.
-        # 
-        # >  The value **all** indicates all regions.
+        # > Set this parameter to **all** to specify all region IDs.
         self.region = region
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The status of the task, which is used as a filter condition to return tasks.
-        # 
-        # *   **-1**: all tasks
-        # *   **3**: pending
-        # *   **4**: being processed
-        # *   **5**: completed
-        # *   **6**: failed
-        # *   **7**: canceled
+        # The task status. This parameter is used to filter the returned tasks. Valid values:
+        # * **-1**: all tasks.
+        # * **3**: pending tasks.
+        # * **4**: in-progress tasks.
+        # * **5**: succeeded tasks.
+        # * **6**: failed tasks.
+        # * **7**: canceled tasks.
         self.status = status
-        # The type of the task. Valid values:
+        # The task type. Valid values:
         # 
-        # *   **rds_apsaradb_ha**: primary/secondary switchover
-        # *   **rds_apsaradb_transfer**: instance migration
-        # *   **rds_apsaradb_upgrade**: update of the minor engine version
-        # *   **rds_apsaradb_maxscale**: update of the minor version of the proxy
-        # *   **all**: all types
+        # * **rds_apsaradb_ha**: primary/secondary node switch.
+        # * **rds_apsaradb_transfer**: instance migration.
+        # * **rds_apsaradb_upgrade**: minor engine version update.
+        # * **rds_apsaradb_maxscale**: proxy minor version upgrade.
+        # * **all**: all task types.
         self.task_type = task_type
 
     def validate(self):

@@ -15,20 +15,20 @@ class ModifyCustinsResourceRequest(DaraModel):
         restore_original_specification: str = None,
         target_value: int = None,
     ):
-        # The deadline for the modification.
+        # The adjustment time.
         self.adjust_deadline = adjust_deadline
-        # The instance ID. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/26232.html) operation to query the instance ID.
+        # The instance ID. You can call [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) to obtain the instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The increase rate in percentage.
+        # The increase ratio. Unit: %.
         self.increase_ratio = increase_ratio
         self.resource_owner_id = resource_owner_id
         # The resource type.
         self.resource_type = resource_type
-        # The original value. This parameter must be specified when the **ResourceType** parameter is set to **instance**.
+        # The original value. This parameter is required when **ResourceType** is set to **instance**.
         self.restore_original_specification = restore_original_specification
-        # The target value. This parameter is available only if you set the ScalingRuleType parameter to TargetTrackingScalingRule or PredictiveScalingRule. The value must be greater than 0 and can contain up to three decimal places.
+        # The target value. This parameter is applicable to target tracking rules and predictive rules. The value of TargetValue can contain up to three decimal places and must be greater than 0.
         self.target_value = target_value
 
     def validate(self):

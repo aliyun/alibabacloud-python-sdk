@@ -16,25 +16,23 @@ class RebuildDBInstanceRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The instance ID.
+        # The instance ID in the dedicated cluster.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The dedicated cluster ID. You can call the DescribeDedicatedHostGroups operation to query the dedicated cluster ID.
+        # The dedicated cluster ID. You can call DescribeDedicatedHostGroups to query the dedicated cluster ID.
         # 
         # This parameter is required.
         self.dedicated_host_group_id = dedicated_host_group_id
-        # The ID of the host on which the system rebuilds the secondary instance.
-        # 
-        # >  If you do not specify this parameter, the system preferentially rebuilds the secondary instance on the original host on which the secondary instance resides. If the remaining storage of the original host is insufficient, the system rebuilds the secondary instance on a host on which the primary instance does not reside. If no suitable hosts are found, the system reports an error that indicates insufficient storage.
+        # The ID of the host on which the secondary instance is to be rebuilt.
+        # >If you do not specify this parameter, the secondary instance is preferentially rebuilt on the original host. If the original host does not have sufficient space, the system selects a host that does not contain the primary instance. If no host with sufficient space is found, an insufficient space error is returned.
         self.dedicated_host_id = dedicated_host_id
         self.owner_id = owner_id
-        # The role of the secondary instance that you want to rebuild. Valid values:
-        # 
-        # *   **FOLLOWER**: secondary instance
-        # *   **LOG**: logger instance
+        # The type of secondary instance to rebuild. Valid values:
+        # * **FOLLOWER**: secondary node.
+        # * **LOG**: log node.
         self.rebuild_node_type = rebuild_node_type
-        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # The region ID. You can call DescribeRegions to query the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

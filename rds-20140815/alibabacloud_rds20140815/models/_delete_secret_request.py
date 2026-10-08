@@ -21,12 +21,11 @@ class DeleteSecretRequest(DaraModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-        # 
-        # >  If you specify this parameter, you must also specify the **SecretName** parameter. parameter.
+        # >This parameter must be specified together with **SecretName**.
         self.db_instance_id = db_instance_id
-        # The engine of the database.
+        # The database engine type.
         # 
-        # > Only MySQL is supported.
+        # > This parameter currently supports only the value MySQL.
         # 
         # This parameter is required.
         self.engine = engine
@@ -39,14 +38,13 @@ class DeleteSecretRequest(DaraModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The Alibaba Cloud Resource Name (ARN) of the credential for the created Data API account. You can call the CreateSecret operation to obtain the value of this parameter.
-        # 
-        # >  You must specify one of the SecretArn and **SecretName** parameters.
+        # The user credential of the Data API account that has been created. You can call the createSecret operation to query the value of this parameter.
+        # >You must specify either **SecretName** or this parameter.
         self.secret_arn = secret_arn
-        # The name of the credential.
+        # The name of the user credential.
         # 
-        # > *   You must specify one of **SecretArn** and SecretName.
-        # > *   If you specify this parameter, you must also specify **DbInstanceId**.
+        # > * You must specify either **SecretArn** or this parameter.
+        # > * This parameter must be specified together with **DbInstanceId**.
         self.secret_name = secret_name
 
     def validate(self):

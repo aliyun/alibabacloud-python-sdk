@@ -11,8 +11,11 @@ class EnableBackupEncryptionRequest(DaraModel):
         encryption_key: str = None,
         resource_owner_id: int = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # The backup encryption key.
         self.encryption_key = encryption_key
         self.resource_owner_id = resource_owner_id
 

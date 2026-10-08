@@ -14,7 +14,7 @@ class ListTagResourcesResponseBody(DaraModel):
         request_id: str = None,
         tag_resources: main_models.ListTagResourcesResponseBodyTagResources = None,
     ):
-        # You must specify the token that is obtained from the previous query as the value of NextToken.
+        # The token used to return more results. If a query does not return all results, pass in the token returned from the previous query to continue the query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id

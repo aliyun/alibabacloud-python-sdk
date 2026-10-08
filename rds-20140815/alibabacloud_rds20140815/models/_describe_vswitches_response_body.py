@@ -16,15 +16,15 @@ class DescribeVSwitchesResponseBody(DaraModel):
         total_count: int = None,
         v_switchs: List[main_models.DescribeVSwitchesResponseBodyVSwitchs] = None,
     ):
-        # The page number of the returned page.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries returned on each page. The value of this parameter is the same as the value of the **PageSize** parameter in the request parameters.
+        # The number of entries per page. This value corresponds to the value specified for the **PageSize** request parameter.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of returned entries.
+        # The total number of entries returned.
         self.total_count = total_count
-        # Details of the vSwitches.
+        # The list of vSwitch information.
         self.v_switchs = v_switchs
 
     def validate(self):
@@ -95,21 +95,21 @@ class DescribeVSwitchesResponseBodyVSwitchs(DaraModel):
         # 
         # This parameter is required.
         self.available_ip_address_count = available_ip_address_count
-        # The CIDR block of the vSwitch.
+        # The vSwitch CIDR block.
         self.cidr_block = cidr_block
         # The description of the vSwitch.
         self.description = description
-        # Indicates whether the vSwitch is the default vSwitch. Valid values:
+        # Indicates whether the vSwitch is the default vSwitch.
         # 
-        # *   **true**
-        # *   **false**
+        # * **true**: The vSwitch is the default vSwitch.
+        # * **false**: The vSwitch is not the default vSwitch.
         self.is_default = is_default
         # The ID of the zone to which the vSwitch belongs.
         self.iz_no = iz_no
         # The status of the vSwitch. Valid values:
         # 
-        # *   **Pending**: The vSwitch is being specified.
-        # *   **Available**: The vSwitch is available.
+        # * **Pending**: The vSwitch is being configured.
+        # * **Available**: The vSwitch is available.
         self.status = status
         # The vSwitch ID.
         self.v_switch_id = v_switch_id

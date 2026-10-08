@@ -11,9 +11,9 @@ class UpgradeDBProxyInstanceKernelVersionResponseBody(DaraModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # The ID of the database proxy of the instance.
+        # The proxy ID.
         self.dbinstance_name = dbinstance_name
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The task ID.
         self.task_id = task_id

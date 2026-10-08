@@ -25,49 +25,87 @@ class ImportUserBackupFileRequest(DaraModel):
         source_info: str = None,
         zone_id: str = None,
     ):
-        # A JSON array that consists of the information about the full backup file stored as an object in an OSS bucket. Example: `{"Bucket":"test", "Object":"test/test_db_employees.xb","Location":"ap-southeast-1"}`
+        # A JSON array that describes the backup file information in the OSS bucket. Example:
+        # `{"Bucket":"test", "Object":"test/test_db_employees.xb","Location":"ap-southeast-1"}`
         # 
-        # The JSON array contains the following fields:
-        # 
-        # *   **Bucket**: The name of the OSS bucket in which the full backup file is stored as an object. You can call the [GetBucket](https://help.aliyun.com/document_detail/31965.html) operation to query the name of the bucket.
-        # *   **Object**: The path of the full backup file that is stored as an object in the OSS bucket. You can call the [GetObject](https://help.aliyun.com/document_detail/31980.html) operation to query the path of the object.
-        # *   **Location**: The ID of the region in which the OSS bucket is located. You can call the [GetBucketLocation](https://help.aliyun.com/document_detail/31967.html) operation to query the region of the bucket.
+        # The following list describes the parameters in the array:
+        # * **Bucket**: the name of the OSS bucket that stores the backup file. You can call [GetBucket](https://help.aliyun.com/document_detail/31965.html) to query the bucket name.
+        # * **Object**: the full path of the backup file in the directory. You can call [GetObject](https://help.aliyun.com/document_detail/31980.html) to query the path.
+        # * **Location**: the region ID of the OSS bucket. You can call [GetBucketLocation](https://help.aliyun.com/document_detail/31967.html) to query the region ID.
         self.backup_file = backup_file
-        # The region ID of the OSS bucket where the full backup file of the self-managed MySQL database is located. You can call the DescribeRegions operation to query the most recent region list.
+        # The region ID of the OSS bucket that stores the backup file of the self-managed MySQL 5.7 database. You can call DescribeRegions to query the region ID.
         self.bucket_region = bucket_region
+        # Specifies whether to automatically set up replication. Valid values:
+        # - true: automatically sets up replication. The `MasterInfo` parameter is required.
+        # - false: does not set up replication.
+        # 
+        # > This parameter takes effect only for native replication instances. You must specify the `DBInstanceId` parameter when you call this operation.
         self.build_replication = build_replication
-        # The description of the full backup file.
+        # The description of the user backup to be imported.
         self.comment = comment
         # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The version of the database engine that is run on the self-managed MySQL database and ApsaraDB RDS for MySQL instance. Set the value to **5.7**.
+        # The version of the MySQL database engine. Valid values: **5.7** and **8.0**.
         self.engine_version = engine_version
+        # A JSON array that contains the master information for setting up MySQL replication (case-sensitive). Example:
+        # 
+        # ```
+        # {"masterIp":"172.20.xx.xx","masterPort":"3306","masterUser":"replica","masterPassword":"W33uopkehBQ="}
+        # 
+        # ```
+        # 
+        # The following list describes the parameters in the array:
+        # - `masterIp`: the IP address of the primary database.
+        # - `masterPort`: the port of the primary database.
+        # - `masterUser`: the replication account of the primary database.
+        # - `masterPassword`: the password of the replication account for the primary database. The password must be Base64-encoded.
+        # 
+        # > This parameter takes effect only for native replication instances. You must specify the `DBInstanceId` parameter when you call this operation.
         self.master_info = master_info
+        # The import mode. Valid values:
+        # 
+        # - oss: imports the backup from OSS.
+        # - stream: imports the backup over the network.
         self.mode = mode
         self.owner_id = owner_id
-        # The region ID of the instance. You can call the DescribeRegions operation to query the most recent region list.
+        # The region ID of the ApsaraDB RDS instance. You can call DescribeRegions to query the region ID.
         # 
-        # > *   The value of this parameter is the ID of the region in which you want to create the instance.
-        # > *   The value of this parameter must be consistent with the value of **BucketRegion**.
+        # > * The value of this parameter specifies the region ID in which you want to create the ApsaraDB RDS instance.
+        # > * The value must be the same as the value of the **BucketRegion** parameter.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group ID. You can call the DescribeDBInstanceAttribute operation to query the resource group ID.
+        # The resource group ID. You can call DescribeDBInstanceAttribute to query the resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The amount of storage that is required to restore the data of the full backup file. Unit: GB.
+        # The storage space required to restore the user backup. Unit: GB.
         # 
-        # > *   The default value of this parameter is 5 times the size of the full backup file.
-        # > *   The minimum value of this parameter is 20.
+        # > * The default value is five times the size of the backup file.
+        # > * The minimum value is 20.
         self.restore_size = restore_size
-        # The retention period of the full backup file. Unit: days. Valid values: any **non-zero** positive integer.
+        # The retention period of the user backup file. Unit: days. The value must be an integer greater than **0**.
         self.retention = retention
-        self.source_info = source_info
-        # The zone ID. You can call the DescribeRegions operation to query the zone ID.
+        # A JSON array that provides the source information for the full backup (case-sensitive). Example:
         # 
-        # > *   If you specify this parameter, the system creates a snapshot in single-digit seconds, which greatly reduces the time that is required to import the full backup file.
-        # > *   When you call the CreateDBInstance operation to create an instance by using the full backup file, the instance is created in the zone that you specify for this parameter.
+        # ```
+        # {"sourceIp":"172.20.xx
+        # .xx","sourcePort":"9999"}
+        # 
+        # ```
+        # 
+        # The following list describes the parameters in the array:
+        # 
+        # - `sourceIp`: the source IP address.
+        # 
+        # - `sourcePort`: the Netcat listening port on the source.
+        # 
+        # > This parameter takes effect only for native replication instances. You must specify the `DBInstanceId` parameter when you call this operation.
+        self.source_info = source_info
+        # The zone ID. You can call DescribeRegions to query the zone ID.
+        # 
+        # > * After you specify a zone, the system creates a second-level snapshot in the zone, which significantly reduces the time required for backup import.
+        # > * When you call CreateDBInstance to create an instance from the user backup, this zone is the zone in which the new instance resides.
         self.zone_id = zone_id
 
     def validate(self):

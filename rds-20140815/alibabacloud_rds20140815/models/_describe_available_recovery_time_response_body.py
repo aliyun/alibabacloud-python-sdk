@@ -13,11 +13,11 @@ class DescribeAvailableRecoveryTimeResponseBody(DaraModel):
         region_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the cross-region data backup file.
+        # The ID of the cross-region backup file.
         self.cross_backup_id = cross_backup_id
-        # The start time from which data can be restored. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The start time of the restorable time range for the cross-region backup file. The time follows the format: yyyy-MM-ddTHH:mm:ssZ (UTC).
         self.recovery_begin_time = recovery_begin_time
-        # The end time to which data can be restored. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The end time of the restorable time range for the cross-region backup file. The time follows the format: yyyy-MM-ddTHH:mm:ssZ (UTC).
         self.recovery_end_time = recovery_end_time
         # The region where the source instance resides.
         self.region_id = region_id

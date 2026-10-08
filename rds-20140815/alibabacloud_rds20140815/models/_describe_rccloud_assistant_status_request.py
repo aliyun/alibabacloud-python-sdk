@@ -17,30 +17,12 @@ class DescribeRCCloudAssistantStatusRequest(DaraModel):
         page_size: int = None,
         region_id: str = None,
     ):
-        # The list of instance IDs.
         self.instance_ids = instance_ids
-        # The maximum number of entries per page. If you specify `InstanceId`, this parameter does not take effect.
-        # 
-        # Maximum value: 50.
-        # 
-        # Default value: 10.
         self.max_results = max_results
-        # The token that marks the end of the current returned page. If this parameter is empty, the data is queried from the first entry.
         self.next_token = next_token
-        # The operating system type of the instance. Only **Linux** is supported.
-        # 
-        # Valid values:
-        # 
-        # *   Windows
-        # *   Linux
-        # *   FreeBSD
         self.ostype = ostype
-        # >  This parameter will be removed in the future. We recommend that you use `NextToken` and `MaxResults` for a paged query.
         self.page_number = page_number
-        # >  This parameter will be removed in the future. We recommend that you use `NextToken` and `MaxResults` for a paged query.
         self.page_size = page_size
-        # The ID of the region where the instance resides.
-        # 
         # This parameter is required.
         self.region_id = region_id
 

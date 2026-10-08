@@ -10,10 +10,9 @@ class CheckCreateDdrDBInstanceResponseBody(DaraModel):
         is_valid: str = None,
         request_id: str = None,
     ):
-        # Indicates whether the data of the source instance can be restored across regions. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the disaster recovery instance can be created. Valid values:
+        # - **true**
+        # - **false**
         self.is_valid = is_valid
         # The request ID.
         self.request_id = request_id

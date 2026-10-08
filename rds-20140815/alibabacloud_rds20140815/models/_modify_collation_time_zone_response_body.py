@@ -13,7 +13,7 @@ class ModifyCollationTimeZoneResponseBody(DaraModel):
         task_id: str = None,
         timezone: str = None,
     ):
-        # The character set collation of the instance.
+        # The system character set collation.
         self.collation = collation
         # The instance ID.
         self.dbinstance_id = dbinstance_id

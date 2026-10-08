@@ -11,7 +11,7 @@ class CreateYouhuiForOrderResponseBody(DaraModel):
         request_id: str = None,
         youhui_id: str = None,
     ):
-        # The response parameters.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id

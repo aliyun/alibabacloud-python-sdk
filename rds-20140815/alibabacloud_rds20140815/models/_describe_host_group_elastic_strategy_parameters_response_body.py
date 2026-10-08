@@ -14,15 +14,15 @@ class DescribeHostGroupElasticStrategyParametersResponseBody(DaraModel):
         memory_zoom: int = None,
         request_id: str = None,
     ):
-        # The CPU utilization of the instance. Unit: percentage.
+        # The current CPU utilization of the instance. Unit: %.
         self.cpu_shar = cpu_shar
-        # The number of CPU cores used by the instance. Unit: cores.
+        # The CPU usage of the instance. Unit: cores.
         self.cpu_zoom = cpu_zoom
         # The number of I/O requests.
         self.iops_zoom = iops_zoom
-        # The maximum number of concurrent connections supported by the instance type.
+        # The maximum number of concurrent connections for the instance type.
         self.max_conn_zoom = max_conn_zoom
-        # The total memory size of the instance in the dedicated cluster. Unit: MB.
+        # The total memory of instances in the current dedicated cluster. Unit: MB.
         self.memory_zoom = memory_zoom
         # The request ID.
         self.request_id = request_id

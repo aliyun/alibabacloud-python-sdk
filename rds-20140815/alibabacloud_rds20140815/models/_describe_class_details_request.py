@@ -18,35 +18,39 @@ class DescribeClassDetailsRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The code of the instance type.
+        # The instance type code.
         # 
         # This parameter is required.
         self.class_code = class_code
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the generated token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The commodity code of the instance. Valid values:
+        # The commodity code. Valid values:
         # 
-        # *   **bards_intl**: The instance is a pay-as-you-go primary instance.
-        # *   **rds_intl**: The instance is a subscription primary instance.
-        # *   **rords_intl**: The instance is a pay-as-you-go read-only instance.
-        # *   **rds_rordspre_public_intl**: The instance is a subscription read-only instance.
+        # * **bards**: pay-as-you-go primary instance
+        # * **rds**: subscription primary instance
+        # * **rords**: pay-as-you-go read-only instance
+        # * **rds_rordspre_public_cn**: subscription read-only instance
+        # * **bards_intl**: pay-as-you-go primary instance
+        # * **rds_intl**: subscription primary instance
+        # * **rords_intl**: pay-as-you-go read-only instance
+        # * **rds_rordspre_public_intl**: subscription read-only instance
         # 
         # This parameter is required.
         self.commodity_code = commodity_code
-        # The type of the database engine.
+        # The database engine type.
         # 
         # This parameter is required.
         self.engine = engine
-        # The database engine version of the instance.
+        # The database engine version.
         # 
         # This parameter is required.
         self.engine_version = engine_version
         self.owner_id = owner_id
-        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # The region ID. You can call the DescribeRegions operation to query available region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group ID. You can call the DescribeDBInstanceAttribute operation to query the resource group ID.
+        # The resource group ID. You can call the DescribeDBInstanceAttribute operation to obtain this value.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

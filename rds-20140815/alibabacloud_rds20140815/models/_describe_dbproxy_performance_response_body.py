@@ -17,9 +17,9 @@ class DescribeDBProxyPerformanceResponseBody(DaraModel):
         request_id: str = None,
         start_time: str = None,
     ):
-        # The instance ID.
+        # The ID of the monitored instance.
         self.dbinstance_id = dbinstance_id
-        # An internal parameter. You do not need to specify this parameter.
+        # An internal parameter. You can ignore this parameter.
         self.dbproxy_engine_type = dbproxy_engine_type
         # The end time of the query.
         self.end_time = end_time

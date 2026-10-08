@@ -11,19 +11,18 @@ class DescribeQuickSaleConfigRequest(DaraModel):
         engine: str = None,
         region_id: str = None,
     ):
-        # The product code. Valid values:
+        # The commodity code. Valid values:
         # 
-        # *   rds: The instance is a subscription instance.
-        # *   bards: The instance is a pay-as-you-go instance.
+        # - rds: subscription
+        # - bards: pay-as-you-go
         self.commodity = commodity
-        # The database engine of the instance. Valid values:
-        # 
-        # *   **MySQL**
-        # *   **SQLServer**
-        # *   **PostgreSQL**
-        # *   **MariaDB**
+        # The database engine. Valid values:
+        # * **MySQL**
+        # * **SQLServer**
+        # * **PostgreSQL**
+        # * **MariaDB**
         self.engine = engine
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the available regions.
         self.region_id = region_id
 
     def validate(self):

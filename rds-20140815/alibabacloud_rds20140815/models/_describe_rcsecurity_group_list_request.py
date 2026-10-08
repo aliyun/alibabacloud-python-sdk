@@ -11,13 +11,9 @@ class DescribeRCSecurityGroupListRequest(DaraModel):
         security_group_id: str = None,
         vpc_id: str = None,
     ):
-        # The region ID.
-        # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the security group.
         self.security_group_id = security_group_id
-        # The ID of the virtual private cloud (VPC) to which the security group belongs.
         self.vpc_id = vpc_id
 
     def validate(self):

@@ -15,30 +15,28 @@ class DescribeWhitelistTemplateResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code returned. Valid values:
-        # 
-        # *   **200**: success
-        # *   **400**: client error
-        # *   **401**: identity authentication failed
-        # *   **404**: request page not found
-        # *   **500**: server error
+        # The response code. Valid values:
+        # - **200**: Normal.
+        # - **400**: Client fault.
+        # - **401**: Authentication failed.
+        # - **404**: Request page not found.
+        # - **500**: Server fault.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The HTTP status code returned. Valid values:
-        # 
-        # *   **200**: success
-        # *   **400**: client error
-        # *   **500**: server error
+        # The HTTP status code. Valid values:
+        # - **200**: Success.
+        # - **400**: Client error.
+        # - **500**: Server error.
         self.http_status_code = http_status_code
-        # The response parameters.
+        # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The request was successful.
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -98,7 +96,7 @@ class DescribeWhitelistTemplateResponseBodyData(DaraModel):
         self,
         template: main_models.DescribeWhitelistTemplateResponseBodyDataTemplate = None,
     ):
-        # The information about the IP whitelist template.
+        # The whitelist template information.
         self.template = template
 
     def validate(self):
@@ -134,11 +132,11 @@ class DescribeWhitelistTemplateResponseBodyDataTemplate(DaraModel):
     ):
         # The primary key of the data table.
         self.id = id
-        # The IP addresses.
+        # The IP address list.
         self.ips = ips
-        # The ID of the whitelist template.
+        # The whitelist template ID.
         self.template_id = template_id
-        # The name of the IP whitelist template.
+        # The whitelist template name.
         self.template_name = template_name
         # The user ID.
         self.user_id = user_id

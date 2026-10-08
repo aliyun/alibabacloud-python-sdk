@@ -21,31 +21,15 @@ class ModifyRCInstanceAttributeRequest(DaraModel):
         security_group_id: str = None,
         security_group_ids: List[str] = None,
     ):
-        # Specifies whether to enable the release protection feature for the instance. Valid values:
-        # 
-        # - **true**: enables the release protection feature.
-        # - **false** (default): does not enable the release protection feature.
         self.deletion_protection = deletion_protection
         self.enable_jumbo_frame = enable_jumbo_frame
-        # The hostname of the instance.
         self.host_name = host_name
-        # The instance ID.
         self.instance_id = instance_id
         self.instance_ids = instance_ids
         self.instance_name = instance_name
-        # The new password of the instance.
-        # 
-        # *   The value must be 8 to 30 characters in length.
-        # *   The value must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `()` ~ ! @ # $ % ^ & \\* - _ + = \\`
         self.password = password
-        # Specifies whether to restart the instance. Valid values:
-        # 
-        # *   **true**
-        # *   **false** (default)
         self.reboot = reboot
-        # The region ID of the instance. You can call the DescribeRegions operation to query the most recent region list.
         self.region_id = region_id
-        # The ID of the security group to which the instance is added.
         self.security_group_id = security_group_id
         self.security_group_ids = security_group_ids
 

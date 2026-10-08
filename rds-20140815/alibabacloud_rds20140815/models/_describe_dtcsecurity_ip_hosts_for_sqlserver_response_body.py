@@ -17,7 +17,7 @@ class DescribeDTCSecurityIpHostsForSQLServerResponseBody(DaraModel):
     ):
         # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The number of distributed transaction whitelists.
+        # The number of entries in the distributed transaction whitelist.
         self.ip_host_pair_num = ip_host_pair_num
         self.items = items
         # The request ID.

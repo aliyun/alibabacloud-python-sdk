@@ -15,30 +15,28 @@ class ModifyWhitelistTemplateResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code returned. Valid values:
-        # 
-        # *   **200**: success
-        # *   **400**: client error
-        # *   **401**: identity authentication failed
-        # *   **404**: request page not found
-        # *   **500**: server error
+        # The response code. Valid values:
+        # - **200**: Normal.
+        # - **400**: Client error.
+        # - **401**: Authentication failed.
+        # - **404**: Request page not found.
+        # - **500**: Server error.
         self.code = code
-        # The data returned.
+        # The returned data list.
         self.data = data
-        # The HTTP status code returned. Valid values:
-        # 
-        # *   **200**: success
-        # *   **400**: client error
-        # *   **500**: server error
+        # The HTTP status code. Valid values:
+        # - **200**: Normal.
+        # - **400**: Client error.
+        # - **500**: Server error.
         self.http_status_code = http_status_code
         # The returned message.
         self.message = message
-        # The request ID.
+        # The request ID. Each request has a unique ID, which facilitates troubleshooting.
         self.request_id = request_id
         # Indicates whether the request is successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Successful.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -98,10 +96,9 @@ class ModifyWhitelistTemplateResponseBodyData(DaraModel):
         self,
         status: str = None,
     ):
-        # The status code returned. Valid values:
-        # 
-        # *   **ok**: The request is successful.
-        # *   **error**: The request fails.
+        # The return status. Valid values:
+        # - **ok**: Normal return.
+        # - **error**: Error return.
         self.status = status
 
     def validate(self):

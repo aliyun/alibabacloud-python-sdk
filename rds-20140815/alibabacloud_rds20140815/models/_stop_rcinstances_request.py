@@ -15,16 +15,9 @@ class StopRCInstancesRequest(DaraModel):
         region_id: str = None,
         stopped_mode: str = None,
     ):
-        # The batch operation mode. Set the value to **AllTogether**. In this mode, if all instances are stopped, a success message is returned. If an instance fails the verification, none of the instances can be stopped and an error message is returned.
         self.batch_optimization = batch_optimization
-        # Specifies whether to forcefully stop the instance. Valid values:
-        # 
-        # *   **true**: forcefully stops the instance. If an instance fails to stop due to system or network issues, a forced stop can be triggered, **though it may result in data loss.**
-        # *   **false**: does not forcefully stop the instance. This is the default value.
         self.force_stop = force_stop
-        # The node IDs.
         self.instance_ids = instance_ids
-        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
         self.region_id = region_id
         self.stopped_mode = stopped_mode
 

@@ -14,7 +14,7 @@ class DescribeDBInstancePromoteActivityRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the Alibaba Cloud account.
+        # The ID of the current Alibaba Cloud account.
         # 
         # This parameter is required.
         self.ali_uid = ali_uid

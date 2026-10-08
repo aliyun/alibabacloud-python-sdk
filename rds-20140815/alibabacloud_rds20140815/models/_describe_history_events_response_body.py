@@ -16,11 +16,11 @@ class DescribeHistoryEventsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The events.
+        # The event list.
         self.items = items
-        # The page number. Valid values: any non-zero positive integer. Default value: **1**.
+        # The page number.
         self.page_number = page_number
-        # The number of entries per page. Default value: 30.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -91,21 +91,21 @@ class DescribeHistoryEventsResponseBodyItems(DaraModel):
         time: str = None,
         type: str = None,
     ):
-        # The details of the data.
+        # The data overview.
         self.data = data
-        # The task ID
+        # The task ID.
         self.id = id
-        # The region ID.
+        # The region.
         self.region = region
         # The event source.
         self.source = source
-        # The database engine version.
+        # The database version.
         self.specversion = specversion
         # The name of the pending event.
         self.subject = subject
-        # The amount of time that has elapsed from the start time of the query. Unit: seconds.
+        # The elapsed time of the query task. Unit: seconds.
         self.time = time
-        # The event type. For more information, see [View the event history of an ApsaraDB RDS instance](https://help.aliyun.com/document_detail/129759.html).
+        # The event type.
         self.type = type
 
     def validate(self):
@@ -203,17 +203,23 @@ class DescribeHistoryEventsResponseBodyItemsData(DaraModel):
         start_time: str = None,
         uid: str = None,
     ):
-        # The cloud service type of the application group. Valid values: **web** and native. The value web indicates a web application. The value **native** indicates a local application.
+        # The cloud service type of the application group. Valid values:
+        # - **web**: web application.
+        # - **native**: on-premises application.
         self.cms_product = cms_product
-        # The database engine.
+        # The database type.
         self.db_type = db_type
         # The pagination parameter.
         self.detail_impact = detail_impact
-        # The details of the instance operation.
+        # The instance operation details.
         self.detail_reason = detail_reason
-        # The time when the alert was closed. The time follows the ISO 8601 standard in the *yyyy-mm-dd*t*hh:mm*z format. The time is displayed in UTC.
+        # The alert end time.
         self.end_time = end_time
-        # The system event category. For more information, see [View the event history of an ApsaraDB RDS instance](https://help.aliyun.com/document_detail/129759.html).
+        # The system event categorization. Valid values:
+        # - **Exception**: abnormal event.
+        # - **Optimize**: optimization events.
+        # - **Notification**: notification event.
+        # - **Maintenance**: scheduled maintenance event.
         self.event_category = event_category
         # The event code.
         self.event_code = event_code
@@ -221,27 +227,38 @@ class DescribeHistoryEventsResponseBodyItemsData(DaraModel):
         self.event_detail = event_detail
         # The event ID.
         self.event_id = event_id
-        # The event impact.
+        # The event impact overview.
         self.event_impact = event_impact
-        # The event level. For more information, see [View the event history of an ApsaraDB RDS instance](https://help.aliyun.com/document_detail/129759.html).
+        # The event level. Valid values:
+        # - **INFO**: notification.
+        # - **WARN**: warning.
+        # - **CRITICAL**: critical.
         self.event_level = event_level
-        # The event source.
+        # The source of the event operation.
         self.event_reason = event_reason
-        # The status of the alert event. Valid values:
-        # 
-        # *   **1**: pending
-        # *   **2**: ignored
-        # *   **4**: confirmed
-        # *   **8**: marked as false positive
-        # *   **16**: handling
-        # *   **32**: handled
-        # *   **64**: expired
+        # The event status. Valid values:
+        # - **Inquiring**: inquiring.
+        # - **Scheduled**: scheduled.
+        # - **Running**: running.
+        # - **Succeed**: completed.
+        # - **Failed**: failed.
+        # - **Canceled**: canceled.
         self.event_status = event_status
-        # The event type. Valid values:
+        # The system event type. Valid values: 
+        # - **SystemMaintenance.Reboot**: The instance is restarted due to system maintenance.
+        # - **SystemMaintenance.Redeploy**: The instance is redeployed due to system maintenance.
+        # - **SystemFailure.Reboot**: The instance is restarted due to a system error.
+        # - **SystemFailure.Redeploy**: The instance is redeployed due to a system error.
+        # - **SystemFailure.Delete**: The instance is released due to an instance creation failure.
+        # - **InstanceFailure.Reboot**: The instance is restarted due to an instance error.
+        # - **InstanceExpiration.Stop**: The instance is stopped due to subscription expiration.
+        # - **InstanceExpiration.Delete**: The instance is released due to subscription expiration.
+        # - **AccountUnbalanced.Stop**: The pay-as-you-go instance is stopped due to an overdue payment.
+        # - **AccountUnbalanced.Delete**: The pay-as-you-go instance is released due to an overdue payment.
         self.event_type = event_type
-        # The creation time. The time follows the ISO 8601 standard in the *yyyy-mm-dd*t*hh:mm*z format. The time is displayed in UTC.
+        # The time when the event was created.
         self.gmt_created = gmt_created
-        # The update time. The time follows the ISO 8601 standard in the *yyyy-mm-dd*t*hh:mm*z format. The time is displayed in UTC.
+        # The time when the event was last updated.
         self.gmt_modified = gmt_modified
         # The handling status.
         self.handle_status = handle_status
@@ -251,19 +268,24 @@ class DescribeHistoryEventsResponseBodyItemsData(DaraModel):
         self.instance_id = instance_id
         # The instance name.
         self.instance_name = instance_name
-        # Indicates whether the alert is closed. Valid values: **0**: closed. **1**: not closed.
+        # Indicates whether the event is closed. Valid values:
+        # - **0**: closed.
+        # - **1**: open.
         self.is_closed = is_closed
-        # The service name.
+        # The product name.
         self.product = product
-        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # The region ID.
         self.region_id = region_id
-        # The resource type. The value is fixed as **INSTANCE**.
+        # The resource type. Valid values:
+        # - **Instance**: instance resource.
+        # - **Host**: host resource.
+        # - **User**: user resource.
         self.resource_type = resource_type
         # The type of the source data.
         self.source_type = source_type
-        # The start time. The time follows the ISO 8601 standard in the *yyyy-mm-dd*t*hh:mm*z format. The time is displayed in UTC.
+        # The start time.
         self.start_time = start_time
-        # The ID of the resource owner.
+        # The ID of the user who owns the resource.
         self.uid = uid
 
     def validate(self):

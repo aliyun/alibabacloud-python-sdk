@@ -11,15 +11,15 @@ class DescribeDBInstanceReplicationRequest(DaraModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # The instance ID. You can call DescribeDBInstances to query the instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # The region ID. You can call DescribeRegions to query the available regions.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group ID. You can leave this parameter empty.
+        # The resource group ID. This parameter can be left empty.
         self.resource_group_id = resource_group_id
 
     def validate(self):

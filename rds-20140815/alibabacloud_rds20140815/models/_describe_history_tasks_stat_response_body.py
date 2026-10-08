@@ -13,7 +13,7 @@ class DescribeHistoryTasksStatResponseBody(DaraModel):
         items: List[main_models.DescribeHistoryTasksStatResponseBodyItems] = None,
         request_id: str = None,
     ):
-        # The queried tasks.
+        # The list of task information.
         self.items = items
         # The request ID.
         self.request_id = request_id
@@ -58,15 +58,14 @@ class DescribeHistoryTasksStatResponseBodyItems(DaraModel):
         status: str = None,
         total_count: int = None,
     ):
-        # The status of the task. Valid values:
-        # 
-        # *   **Scheduled**
-        # *   **Running**
-        # *   **Succeed**
-        # *   **Failed**
-        # *   **Cancelling**
-        # *   **Canceled**
-        # *   **Waiting**
+        # The task status. Valid values:
+        # - **Scheduled**: Waiting to be executed.
+        # - **Running**: Running.
+        # - **Succeed**: Succeeded.
+        # - **Failed**: Failed.
+        # - **Cancelling**: Being stopped.
+        # - **Canceled**: Stopped.
+        # - **Waiting**: Waiting for the scheduled time.
         self.status = status
         # The total number of tasks.
         self.total_count = total_count

@@ -19,46 +19,44 @@ class DescribeDetachedBackupsRequest(DaraModel):
         resource_owner_id: int = None,
         start_time: str = None,
     ):
-        # The ID of the backup set.
+        # The backup set ID.
         self.backup_id = backup_id
-        # The backup method. Valid values:
+        # The backup mode. Valid values:
         # 
-        # *   **Automated**
-        # *   **Manual**
+        # - **Automated**: automatic backup.
+        # - **Manual**: manual backup.
         self.backup_mode = backup_mode
-        # The status of the backup set. Valid values:
-        # 
-        # *   **Success**
-        # *   **Failed**
+        # The backup set status. Valid values:
+        # - **Success**: The backup is complete.
+        # - **Failed**: The backup failed.
         self.backup_status = backup_status
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # The instance ID. You can call DescribeDBInstances to query the instance ID.
         self.dbinstance_id = dbinstance_id
-        # The end of the time range to query. The end time must be later than the start time.
+        # The end time of the query. The end time must be later than the start time.
         # 
-        # Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # Format: <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z (UTC).
         self.end_time = end_time
-        # The page number. Pages start from page 1.
+        # The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type.
         # 
-        # > The default value is 1.
+        # > Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Valid values:
+        # - **30**
+        # - **50**
+        # - **100**
         # 
-        # *   **30**
-        # *   **50**
-        # *   **100**
-        # 
-        # > The default value is **30**.
+        # > Default value: **30**.
         self.page_size = page_size
-        # The region ID of the instance.
+        # The region in which the instance resides.
         # 
         # This parameter is required.
         self.region = region
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_id = resource_owner_id
-        # The beginning of the time range to query.
+        # The start time of the query.
         # 
-        # Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # Format: <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z (UTC).
         self.start_time = start_time
 
     def validate(self):

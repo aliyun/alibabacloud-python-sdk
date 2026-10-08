@@ -30,28 +30,87 @@ class ModifyDBInstanceShrinkRequest(DaraModel):
         switch_time: str = None,
         target_minor_version: str = None,
     ):
+        # Specifies whether to automatically use coupons. Valid values:
+        # * **true** (default): Automatically uses coupons.
+        # * **false**: Does not automatically use coupons.
+        # 
+        # > After a coupon is used, the amount deducted by the coupon is not refunded if you downgrade the instance specifications.
         self.auto_use_coupon = auto_use_coupon
+        # Specifies whether to enable the [I/O burst feature for premium performance disks](https://help.aliyun.com/document_detail/2340501.html). Valid values:
+        # 
+        # - **true**: Enabled.
+        # - **false**: Disabled.
         self.bursting_enabled = bursting_enabled
+        # The instance edition. Valid values:
+        # 
+        # - **Basic**: Basic Edition
+        # - **HighAvailability**: High-availability Edition
+        # - **cluster**: Cluster Edition
         self.category = category
+        # <props="china">Specifies whether to enable the [cold data archiving feature](https://help.aliyun.com/document_detail/2701832.html) for general-purpose cloud disks. Valid values:
+        # 
+        # - <props="china">**true**: Enabled.
+        # 
+        # - <props="china">**false**: Disabled.
+        # 
+        # <props="intl">Reserved parameter.
         self.cold_data_enabled = cold_data_enabled
+        # The instance type. For more information, see [Instance types](https://help.aliyun.com/document_detail/26312.html).
         self.dbinstance_class = dbinstance_class
+        # The instance ID. You can call DescribeDBInstances to query the instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The [target storage capacity](https://help.aliyun.com/document_detail/26312.html), in GB. You can call the [DescribeAvailableClasses](https://help.aliyun.com/document_detail/610393.html) operation to query the available storage capacity range for the target instance type.
+        # 
+        # > * You must specify at least one of this parameter and the **DBInstanceClass** parameter.
+        # > * You can call [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/610394.html) to query the current storage capacity of the instance.
         self.dbinstance_storage = dbinstance_storage
+        # The instance storage type. Valid values:
+        # 
+        # * **general_essd**: premium performance disk (recommended)
+        # * **cloud_essd**: PL1 ESSD
+        # * **cloud_essd2**: PL2 ESSD
+        # * **cloud_essd3**: PL3 ESSD
         self.dbinstance_storage_type = dbinstance_storage_type
+        # The node information.
         self.dbnodes_shrink = dbnodes_shrink
+        # The type of specification change. Valid values:
+        # 
+        # - **Up** (default): Upgrades a subscription instance or upgrades/downgrades a pay-as-you-go instance.
+        # - **Down**: Downgrades a subscription instance.
         self.direction = direction
+        # The time when the new configurations take effect. Valid values:
+        # > **Changing some configurations may affect the instance**. Read the impact section in the [feature documentation](https://help.aliyun.com/document_detail/96061.html) before you configure this parameter. Perform the operation during off-peak hours.
+        # * **Immediate** (default): The new configurations take effect immediately.
+        # * **MaintainTime**: The new configurations take effect during the [maintenance window](https://help.aliyun.com/document_detail/610402.html).
+        # * **ScheduleTime**: The new configurations take effect at a specified time. The specified time must be at least 12 hours later than the current time. The actual switchover time follows the formula: EffectiveTime = ScheduleTime + SwitchTime.
         self.effective_time = effective_time
+        # Specifies whether to enable the [Buffer Pool Extension (BPE) feature](https://help.aliyun.com/document_detail/2527067.html) for premium performance disks. Valid values:
+        # 
+        # - **1**: Enabled.
+        # - **0**: Disabled.
         self.io_acceleration_enabled = io_acceleration_enabled
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The parameter template ID.
         self.parameter_group_id = parameter_group_id
+        # The parameters and their values. All parameter values are of the STRING type. You can call DescribeParameterTemplates to query parameter names and values.
+        # 
+        # > If you specify the **ParameterGroupId** parameter and both the ParameterGroupId and Parameters parameters modify the same parameter, the modification specified by the Parameters parameter takes precedence.
         self.parameters_shrink = parameters_shrink
+        # The coupon code.
         self.promotion_code = promotion_code
+        # The name of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The scheduled time for executing the parameter modification. The EffectiveTime parameter must be set to ScheduleTime. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+        # > The specified time must be later than the current time (the time when the call is made).
         self.switch_time = switch_time
+        # The [minor engine version](https://help.aliyun.com/document_detail/126002.html) of the PostgreSQL instance. If the specification change fails because the current minor engine version is not supported, specify the minor engine version to **upgrade the minor engine version during the specification change**.
+        # 
+        # Format: `rds_postgres_<major version>00_<minor version>`. Example for version 12 with minor version 20200830: `rds_postgres_1200_20200830`.
         self.target_minor_version = target_minor_version
 
     def validate(self):

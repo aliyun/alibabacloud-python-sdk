@@ -1,3 +1,42 @@
+2026-10-08 Version: 16.0.0
+- Support API AddRCInstancesToDeploymentSet.
+- Support API RemoveRCInstancesFromDeploymentSet.
+- Support API ShareRCDeploymentSet.
+- Update API CloneDBInstance: add request parameters Tag.
+- Update API CreateDatabase: add request parameters AccountName.
+- Update API CreateDatabase: add request parameters AccountPrivilege.
+- Update API CreateDatabase: add request parameters CollationName.
+- Update API DescribeBackupPolicy: add response parameters Body.IncBackupInterval.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.Items.$.DrReplicaInfo.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.Items.$.NodePerformance.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.Items.$.WarmStandbyInfo.
+- Update API DescribeRCAvailableResource: add request parameters SupportCase.
+- Update API DescribeRCDeploymentSets: add response parameters Body.DeploymentSets.$.AccountId.
+- Update API DescribeRCInstances: add request parameters ClusterId.
+- Update API DescribeRCInstances: add request parameters DescriptionForFuzzy.
+- Update API DescribeRCInstances: add response parameters Body.RCInstances.$.ClusterId.
+- Update API DescribeRCVCluster: add response parameters Body.ClusterId.
+- Update API DescribeRCVCluster: add response parameters Body.ClusterName.
+- Update API DescribeRCVCluster: add response parameters Body.MysqlOperator.
+- Update API DescribeRCVCluster: add response parameters Body.Region.
+- Update API DescribeRCVCluster: add response parameters Body.SupportDiskPerformanceLevel.
+- Update API DescribeRCVCluster: add response parameters Body.VpcId.
+- Update API ListRCVClusters: add response parameters Body.VClusters.$.ClusterName.
+- Update API ListRCVClusters: add response parameters Body.VClusters.$.MysqlOperator.
+- Update API ListRCVClusters: add response parameters Body.VClusters.$.Status.
+- Update API ModifyBackupPolicy: add request parameters EnablePitrProtection.
+- Update API ModifyBackupPolicy: add request parameters IncBackupInterval.
+- Update API ModifyBackupPolicy: add response parameters Body.EnableIncrementDataBackup.
+- Update API ModifyBackupPolicy: add response parameters Body.EnablePitrProtection.
+- Update API ModifyBackupPolicy: add response parameters Body.IncBackupInterval.
+- Update API ModifyComputeBurstConfig: add request parameters ScaleMaxRcu.
+- Update API ModifyComputeBurstConfig: add request parameters ScaleMinRcu.
+- Update API ModifyRCInstance: add request parameters BusinessInfo.
+- Update API ModifyTaskInfo: update request parameters ResourceOwnerAccount' type has changed.
+- Update API ModifyTaskInfo: update request parameters ResourceOwnerAccount' format has changed.
+- Update API RenewInstance: add request parameters CompressionMode.
+
+
 2026-05-12 Version: 15.9.1
 - Update API DescribeRCDisks: add request parameters DiskType.
 

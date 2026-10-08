@@ -16,13 +16,16 @@ class DescribeRCImageListRequest(DaraModel):
         region_id: str = None,
         type: str = None,
     ):
-        # The image architecture. Valid values:
+        # The system architecture of the image. Valid values:
         # 
-        # *   x86_64
-        # *   arm64
+        # - x86_64.
+        # - arm64.
         self.architecture = architecture
+        # The image ID.
         self.image_id = image_id
+        # The image name.
         self.image_name = image_name
+        # Queries available images for the specified instance type.
         self.instance_type = instance_type
         # The page number.
         self.page_number = page_number
@@ -32,7 +35,7 @@ class DescribeRCImageListRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The image type. Set the value to **self**.
+        # The image type. Currently, only **self** is supported.
         self.type = type
 
     def validate(self):

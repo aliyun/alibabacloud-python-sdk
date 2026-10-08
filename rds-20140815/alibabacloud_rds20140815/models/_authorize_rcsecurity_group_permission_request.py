@@ -17,14 +17,14 @@ class AuthorizeRCSecurityGroupPermissionRequest(DaraModel):
     ):
         # The direction of the rule. Valid values:
         # 
-        # *   **ingress**: the inbound security group rule.
-        # *   **egress**: the outbound security group rule.
+        # - **ingress**: inbound.
+        # - **egress**: outbound.
         self.direction = direction
         # The region ID.
         self.region_id = region_id
-        # The ID of the security group.
+        # The security group ID.
         self.security_group_id = security_group_id
-        # The information about the security group.
+        # The security group information.
         self.security_group_permissions = security_group_permissions
 
     def validate(self):
@@ -84,35 +84,34 @@ class AuthorizeRCSecurityGroupPermissionRequestSecurityGroupPermissions(DaraMode
         source_cidr_ip: str = None,
         source_port_range: str = None,
     ):
-        # The destination CIDR block for outbound access control. CIDR blocks and IPv4 addresses are supported.
+        # The destination IP address range for outbound authorization. CIDR format and IPv4 IP address ranges are supported.
         self.dest_cidr_ip = dest_cidr_ip
-        # The protocol type supported by the rule. The value is not case-sensitive. Valid values:
-        # 
-        # *   **ICMP**
-        # *   **GRE**
-        # *   **TCP**
-        # *   **UDP**
-        # *   **ALL**: All protocols are supported.
+        # The protocol type. This parameter is case-insensitive. Valid values: 
+        #          
+        # - **ICMP**
+        # - **GRE**
+        # - **TCP**
+        # - **UDP**
+        # - **ALL**: all protocols.
         self.ip_protocol = ip_protocol
-        # The action that you want to specify in the rule.
+        # The authorization policy.
         self.policy = policy
-        # The range of destination ports that correspond to the transport layer protocol of the destination security group. Valid values:
-        # 
-        # *   The value is in the X/Y format when IpProtocol is set to TCP or UDP. X specifies the start port number and Y specifies the end port number. X and Y range from **1** to **65535**. The start port number and the end port number are separated by a forward slash (/). Correct example: **1/200**. Incorrect example: **200/1**.
-        # *   Valid value when IpProtocol is set to ICMP: **-1/-1**.
-        # *   Valid value when IpProtocol is set to GRE: **-1/-1**.
-        # *   Valid value when IpProtocol is set to ALL: **-1/-1**.
+        # The range of destination ports for the transport layer protocol. Valid values:
+        # - TCP/UDP: valid values are **1** to **65535**. Separate the start port and the end port with a forward slash (/). Example of a valid value: **1/200**. Example of an invalid value: **200/1**.
+        # - ICMP: **-1/-1**.
+        # - GRE: **-1/-1**.
+        # - If IpProtocol is set to all: **-1/-1**.
         self.port_range = port_range
-        # The priority of the rule. Valid values: 1 to 100. A smaller value indicates a higher priority. When multiple security group rules have the same priority, drop rules take precedence.
+        # The priority of the rule. Valid values: 1 to 100. A smaller value indicates a higher priority. If two security group rules have the same priority, the deny rule takes precedence.
         self.priority = priority
-        # The source CIDR block for inbound access control. CIDR blocks and IPv4 addresses are supported.
+        # The source IP address range for inbound authorization. CIDR format and IPv4 IP address ranges are supported.
         self.source_cidr_ip = source_cidr_ip
-        # The range of port numbers that correspond to the transport layer protocol for the source security group. Valid values:
+        # The range of source ports for the transport layer protocol. Valid values:
         # 
-        # *   The value is in the X/Y format when IpProtocol is set to TCP or UDP. X specifies the start port number and Y specifies the end port number. X and Y range from **1** to **65535**. The start port number and the end port number are separated by a forward slash (/). Correct example: **1/200**. Incorrect example: **200/1**.
-        # *   Valid value when IpProtocol is set to ICMP: **-1/-1**.
-        # *   Valid value when IpProtocol is set to GRE: **-1/-1**.
-        # *   Valid value when IpProtocol is set to ALL: **-1/-1**.
+        # - TCP/UDP: valid values are **1** to **65535**. Separate the start port and the end port with a forward slash (/). Example of a valid value: **1/200**. Example of an invalid value: **200/1**.
+        # - ICMP: **-1/-1**.
+        # - GRE: **-1/-1**.
+        # - If IpProtocol is set to all: **-1/-1**.
         self.source_port_range = source_port_range
 
     def validate(self):

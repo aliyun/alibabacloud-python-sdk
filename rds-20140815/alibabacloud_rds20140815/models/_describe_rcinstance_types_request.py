@@ -15,15 +15,10 @@ class DescribeRCInstanceTypesRequest(DaraModel):
         instance_type_family: str = None,
         region_id: str = None,
     ):
-        # The commodity code of the instance.
         self.commodity_code = commodity_code
-        # The database engine. Set the value to MySQL.
         self.engine = engine
-        # The instance types.
         self.instance_type = instance_type
-        # The instance family. You can call the **DescribeRCInstanceTypeFamilies** operation to query the instance families of instances.
         self.instance_type_family = instance_type_family
-        # The region ID.
         self.region_id = region_id
 
     def validate(self):

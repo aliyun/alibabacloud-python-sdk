@@ -15,13 +15,13 @@ class ModifyEventInfoResponseBody(DaraModel):
     ):
         # The error code.
         self.error_code = error_code
-        # The error ID.
+        # The error event ID.
         self.error_event_id = error_event_id
         # The request ID.
         self.request_id = request_id
         # The number of successful records.
         self.success_count = success_count
-        # The ID of the successful event.
+        # The successful event ID.
         self.success_event_id = success_event_id
 
     def validate(self):

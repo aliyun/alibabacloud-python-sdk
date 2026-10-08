@@ -16,29 +16,28 @@ class ModifyDbProxyInstanceSslRequest(DaraModel):
     ):
         # A reserved parameter. You do not need to specify this parameter.
         self.dbproxy_engine_type = dbproxy_engine_type
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # The instance ID. You can call DescribeDBInstances to query the instance ID.
         # 
         # This parameter is required.
         self.db_instance_id = db_instance_id
-        # The dedicated proxy endpoint of the instance.
+        # The endpoint for which you want to enable SSL encryption.
         # 
         # This parameter is required.
         self.db_proxy_connect_string = db_proxy_connect_string
-        # The ID of the proxy endpoint. You can call the DescribeDBProxyEndpoint operation to query the ID of the proxy endpoint.
+        # The ID of the database proxy endpoint. You can call DescribeDBProxyEndpoint to query the ID.
         # 
         # This parameter is required.
         self.db_proxy_endpoint_id = db_proxy_endpoint_id
-        # The SSL configuration setting that you want to apply on the instance. Valid values:
+        # The operation that you want to perform on SSL encryption. Valid values:
+        # * 0: Disables SSL encryption.
+        # * 1: Enables SSL encryption or changes the endpoint for which SSL encryption is enabled.
+        # * 2: Updates the validity period of the SSL certificate.
         # 
-        # *   0: disables SSL encryption.
-        # *   1: enables SSL encryption or modifies the endpoint that requires SSL encryption.
-        # *   2: updates the validity period of the SSL certificate.
-        # 
-        # > This setting causes your instance to restart. Proceed with caution.
+        # >The preceding operations restart the instance. Proceed with caution.
         # 
         # This parameter is required.
         self.db_proxy_ssl_enabled = db_proxy_ssl_enabled
-        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # The region ID. You can call DescribeRegions to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):

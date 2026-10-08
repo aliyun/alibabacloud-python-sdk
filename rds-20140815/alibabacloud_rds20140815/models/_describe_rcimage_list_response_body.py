@@ -17,11 +17,11 @@ class DescribeRCImageListResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information about the images.
+        # The image information.
         self.images = images
         # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
         # The region ID.
         self.region_id = region_id
@@ -108,15 +108,16 @@ class DescribeRCImageListResponseBodyImages(DaraModel):
         status: str = None,
         usage: str = None,
     ):
-        # The image architecture. Valid values:
+        # The system architecture of the image. Valid values:
         # 
-        # *   x86_64
-        # *   arm64
+        # - x86_64.
+        # - arm64.
         self.architecture = architecture
         # The time when the image was created.
         self.creation_time = creation_time
         # The description of the image.
         self.description = description
+        # The mapping between cloud disks and snapshots in the image.
         self.disk_device_mappings = disk_device_mappings
         # The image ID.
         self.image_id = image_id
@@ -124,35 +125,40 @@ class DescribeRCImageListResponseBodyImages(DaraModel):
         self.image_name = image_name
         # The image version.
         self.image_version = image_version
-        # Indicates whether the image is a public image. Public images include public images provided by Alibaba Cloud and custom images published as community images.
+        # Indicates whether the image is a public image. Public images include Alibaba Cloud-provided public images and custom images that you have published as community images.
         # 
-        # *   **true**: The image is a public image.
-        # *   **false**: The image is not a public image.
+        # - **true**: The image is a public image.
+        # - **false**: The image is not a public image.
         self.is_public = is_public
+        # Indicates whether the image supports RDS Custom instances. Valid values:
+        # 
+        # - **true**: Supported.
+        # - **false**: Not supported.
         self.is_support_rds_custom = is_support_rds_custom
-        # The display name of the operating system in Chinese.
+        # The Chinese display name of the operating system.
         self.osname = osname
-        # The display name of the operating system in English.
+        # The English display name of the operating system.
         self.osname_en = osname_en
         # The type of the operating system. Valid values:
         # 
-        # *   **windows**
-        # *   **linux**
+        # - **windows**.
+        # - **linux**.
         self.ostype = ostype
+        # The operating system platform.
         self.platform = platform
-        # The image size. Unit: GiB.
+        # The size of the image. Unit: GiB.
         self.size = size
-        # The image status. Valid values:
+        # The status of the image. Valid values:
         # 
-        # *   **Unavailable**
-        # *   **Available**
-        # *   **Creating**
-        # *   **CreateFailed**
+        # - **UnAvailable**: Unavailable.
+        # - **Available**: Available.
+        # - **Creating**: Being created.
+        # - **CreateFailed**: Creation failed.
         self.status = status
-        # Indicates whether the image is used by the RDS Custom instance. Valid values:
+        # Indicates whether the image is used by RDS Custom instances. Valid values:
         # 
-        # *   **instance**: The image is used to create one or more RDS Custom instances.
-        # *   **none**: The image is not used to create RDS Custom instances.
+        # - **instance**: One or more RDS Custom instances have been created.
+        # - **none**: No RDS Custom instances have been created.
         self.usage = usage
 
     def validate(self):
@@ -280,8 +286,14 @@ class DescribeRCImageListResponseBodyImagesDiskDeviceMappings(DaraModel):
         size: str = None,
         type: str = None,
     ):
+        # The device information of the cloud disk, such as `/dev/xvdb`.
         self.device = device
+        # The size of the cloud disk. Unit: GiB.
         self.size = size
+        # The type of the cloud disk.
+        # 
+        # - **system**: System cloud disk.
+        # - **data**: Data cloud disk.
         self.type = type
 
     def validate(self):

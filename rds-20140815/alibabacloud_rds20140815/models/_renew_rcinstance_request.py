@@ -26,40 +26,47 @@ class RenewRCInstanceRequest(DaraModel):
     ):
         # Specifies whether to enable automatic payment. Valid values:
         # 
-        # *   **true**: enables the feature. You must make sure that your account balance is sufficient.
-        # *   **false**: disables the feature. An unpaid order is generated.
+        # - **true**: Automatic payment is enabled. Make sure that your account balance is sufficient.
+        # - **false**: Only an order is generated. No payment is made.
         # 
-        # >  Default value: true. If your account balance is insufficient, you can set AutoPay to false to generate an unpaid order. Then, you can log on to the ApsaraDB RDS console to complete the payment.
+        # 
+        # 
+        # 
+        # > Default value: true. If your payment method has insufficient balance, set AutoPay to false. In this case, an unpaid order is generated. You can log on to the ApsaraDB RDS console to pay for the order.
+        # >
         self.auto_pay = auto_pay
-        # Specifies whether to enable auto-renewal for the instance. Valid values:
+        # Specifies whether to enable auto-renewal. Valid values:
         # 
-        # *   **true**
-        # *   **false** (default)
+        # * **true**: Auto-renewal is enabled.
+        # * **false** (default): Auto-renewal is disabled.
         self.auto_renew = auto_renew
-        # Specifies whether to use a coupon. Default value: false. Valid values:
-        # 
-        # *   **true**: uses a coupon.
-        # *   **false**: does not use a coupon.
+        # Specifies whether to use coupons. Valid values:
+        # * **true** (default): Coupons are used.
+        # * **false**: Coupons are not used.
         self.auto_use_coupon = auto_use_coupon
         # The additional information about the order.
         self.business_info = business_info
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The commodity code of the instance.
+        # The commodity code.
         # 
-        # Default value: **rds_customprepaid_public_intl**.
+        # <props="china">Default value: **rds_customprepaid_public_cn**.
+        # 
+        # 
+        # 
+        # <props="intl">Default value: **rds_customprepaid_public_intl**.
         # 
         # This parameter is required.
         self.commodity_code = commodity_code
         # The ID of the RDS Custom instance.
         self.instance_id = instance_id
         self.owner_id = owner_id
-        # The billing method of the instance. Set the value to **PrePaid**, which indicates the subscription billing method.
+        # The billing method of the target instance. Only **Prepaid** (upfront, subscription) is supported.
         self.pay_type = pay_type
-        # Specifies whether the instance is a subscription instance. Valid values:
+        # Specifies whether to use annual subscription. Valid values:
         # 
-        # *   **true**
-        # *   **false** (default)
+        # - **true**: Annual subscription is used.
+        # - **false** (default): Annual subscription is not used.
         self.period_align = period_align
         # The coupon code.
         self.promotion_code = promotion_code
@@ -67,20 +74,19 @@ class RenewRCInstanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resources.
+        # The resource.
         self.resource = resource
         self.resource_owner_account = resource_owner_account
-        # The unit of the renewal period specified by the **UsedTime** parameter. Valid values:
+        # The unit of the renewal duration specified by the **UsedTime** parameter. Valid values:
         # 
-        # *   **1**: year
-        # *   **2** (default): month
+        # - **1**: year
+        # - **2** (default): month
         # 
         # This parameter is required.
         self.time_type = time_type
-        # The subscription duration of the instance. Valid values:
-        # 
-        # *   If you set the **TimeType** parameter to **1**, the value of the UsedTime parameter ranges from **1 to 5**. Unit: year.
-        # *   If you set the **TimeType** parameter to **2**, the value of the UsedTime parameter ranges from **1 to 11**. Unit: month.
+        # The subscription duration. Valid values:
+        # * If **TimeType** is set to **1** (year), the valid values of UsedTime are **1 to 5**.
+        # * If **TimeType** is set to **2** (month), the valid values of UsedTime are **1 to 11**.
         # 
         # This parameter is required.
         self.used_time = used_time

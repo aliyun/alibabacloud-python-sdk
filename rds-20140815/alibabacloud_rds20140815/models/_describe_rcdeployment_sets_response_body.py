@@ -18,15 +18,10 @@ class DescribeRCDeploymentSetsResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.deployment_sets = deployment_sets
-        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
         self.page_size = page_size
-        # The region ID.
         self.region_id = region_id
-        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -119,6 +114,7 @@ class DescribeRCDeploymentSetsResponseBodyDeploymentSets(DaraModel):
 class DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet(DaraModel):
     def __init__(
         self,
+        account_id: str = None,
         capacities: main_models.DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacities = None,
         create_time: str = None,
         deployment_set_description: str = None,
@@ -133,6 +129,7 @@ class DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet(DaraModel)
         strategy: str = None,
         tags: main_models.DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTags = None,
     ):
+        self.account_id = account_id
         self.capacities = capacities
         self.create_time = create_time
         self.deployment_set_description = deployment_set_description
@@ -160,6 +157,9 @@ class DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet(DaraModel)
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+
         if self.capacities is not None:
             result['Capacities'] = self.capacities.to_map()
 
@@ -203,6 +203,9 @@ class DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet(DaraModel)
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+
         if m.get('Capacities') is not None:
             temp_model = main_models.DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacities()
             self.capacities = temp_model.from_map(m.get('Capacities'))

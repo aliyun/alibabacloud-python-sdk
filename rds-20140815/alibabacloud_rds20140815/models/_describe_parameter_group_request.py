@@ -14,11 +14,11 @@ class DescribeParameterGroupRequest(DaraModel):
         resource_owner_id: int = None,
     ):
         self.owner_id = owner_id
-        # The parameter template ID. You can call the DescribeParameterGroups operation to query the parameter template ID.
+        # The parameter template ID. You can call the [DescribeParameterGroups](~~DescribeParameterGroups~~) operation to query the parameter template ID.
         # 
         # This parameter is required.
         self.parameter_group_id = parameter_group_id
-        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

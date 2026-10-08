@@ -13,7 +13,7 @@ class DeleteDBInstanceEndpointAddressRequest(DaraModel):
         dbinstance_id: str = None,
         resource_owner_id: int = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
+        # The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
         # 
         # The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
@@ -21,11 +21,11 @@ class DeleteDBInstanceEndpointAddressRequest(DaraModel):
         # 
         # This parameter is required.
         self.connection_string = connection_string
-        # The endpoint ID of the instance. You can call the DescribeDBInstanceEndpoints operation to query the endpoint ID.
+        # The endpoint ID of the instance. You can call DescribeDBInstanceEndpoints to query the endpoint ID.
         # 
         # This parameter is required.
         self.dbinstance_endpoint_id = dbinstance_endpoint_id
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # The instance ID. You can call DescribeDBInstances to query the instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id

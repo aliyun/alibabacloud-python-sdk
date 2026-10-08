@@ -8,6 +8,9 @@ from ._accept_rcinquired_system_event_response import AcceptRCInquiredSystemEven
 from ._activate_migration_target_instance_request import ActivateMigrationTargetInstanceRequest
 from ._activate_migration_target_instance_response_body import ActivateMigrationTargetInstanceResponseBody
 from ._activate_migration_target_instance_response import ActivateMigrationTargetInstanceResponse
+from ._add_rcinstances_to_deployment_set_request import AddRCInstancesToDeploymentSetRequest
+from ._add_rcinstances_to_deployment_set_response_body import AddRCInstancesToDeploymentSetResponseBody
+from ._add_rcinstances_to_deployment_set_response import AddRCInstancesToDeploymentSetResponse
 from ._add_tags_to_resource_request import AddTagsToResourceRequest
 from ._add_tags_to_resource_response_body import AddTagsToResourceResponseBody
 from ._add_tags_to_resource_response import AddTagsToResourceResponse
@@ -1134,6 +1137,9 @@ from ._release_instance_public_connection_response import ReleaseInstancePublicC
 from ._release_read_write_splitting_connection_request import ReleaseReadWriteSplittingConnectionRequest
 from ._release_read_write_splitting_connection_response_body import ReleaseReadWriteSplittingConnectionResponseBody
 from ._release_read_write_splitting_connection_response import ReleaseReadWriteSplittingConnectionResponse
+from ._remove_rcinstances_from_deployment_set_request import RemoveRCInstancesFromDeploymentSetRequest
+from ._remove_rcinstances_from_deployment_set_response_body import RemoveRCInstancesFromDeploymentSetResponseBody
+from ._remove_rcinstances_from_deployment_set_response import RemoveRCInstancesFromDeploymentSetResponse
 from ._remove_tags_from_resource_request import RemoveTagsFromResourceRequest
 from ._remove_tags_from_resource_response_body import RemoveTagsFromResourceResponseBody
 from ._remove_tags_from_resource_response import RemoveTagsFromResourceResponse
@@ -1182,6 +1188,9 @@ from ._run_rcinstances_request import RunRCInstancesRequest
 from ._run_rcinstances_shrink_request import RunRCInstancesShrinkRequest
 from ._run_rcinstances_response_body import RunRCInstancesResponseBody
 from ._run_rcinstances_response import RunRCInstancesResponse
+from ._share_rcdeployment_set_request import ShareRCDeploymentSetRequest
+from ._share_rcdeployment_set_response_body import ShareRCDeploymentSetResponseBody
+from ._share_rcdeployment_set_response import ShareRCDeploymentSetResponse
 from ._start_dbinstance_request import StartDBInstanceRequest
 from ._start_dbinstance_response_body import StartDBInstanceResponseBody
 from ._start_dbinstance_response import StartDBInstanceResponse
@@ -1268,6 +1277,7 @@ from ._upgrade_dbproxy_instance_kernel_version_response import UpgradeDBProxyIns
 from ._validate_import_task_request import ValidateImportTaskRequest
 from ._validate_import_task_response_body import ValidateImportTaskResponseBody
 from ._validate_import_task_response import ValidateImportTaskResponse
+from ._add_rcinstances_to_deployment_set_response_body import AddRCInstancesToDeploymentSetResponseBodyResults
 from ._add_tags_to_resource_request import AddTagsToResourceRequestTag
 from ._attach_rcinstances_response_body import AttachRCInstancesResponseBodyResponses
 from ._attach_whitelist_template_to_instance_response_body import AttachWhitelistTemplateToInstanceResponseBodyData
@@ -1275,6 +1285,8 @@ from ._authorize_rcsecurity_group_permission_request import AuthorizeRCSecurityG
 from ._calculate_dbinstance_weight_response_body import CalculateDBInstanceWeightResponseBodyItemsDBInstanceWeight
 from ._calculate_dbinstance_weight_response_body import CalculateDBInstanceWeightResponseBodyItems
 from ._clone_dbinstance_request import CloneDBInstanceRequestServerlessConfig
+from ._clone_dbinstance_request import CloneDBInstanceRequestTag
+from ._clone_dbinstance_shrink_request import CloneDBInstanceShrinkRequestTag
 from ._create_dbinstance_request import CreateDBInstanceRequestServerlessConfig
 from ._create_dbinstance_request import CreateDBInstanceRequestTag
 from ._create_dbinstance_shrink_request import CreateDBInstanceShrinkRequestTag
@@ -1350,6 +1362,7 @@ from ._describe_custins_resource_info_response_body import DescribeCustinsResour
 from ._describe_dbinstance_attribute_response_body import DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeBabelfishConfig
 from ._describe_dbinstance_attribute_response_body import DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDBClusterNodesDBClusterNode
 from ._describe_dbinstance_attribute_response_body import DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDBClusterNodes
+from ._describe_dbinstance_attribute_response_body import DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDrReplicaInfo
 from ._describe_dbinstance_attribute_response_body import DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtraDBInstanceIds
 from ._describe_dbinstance_attribute_response_body import DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra
 from ._describe_dbinstance_attribute_response_body import DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeReadOnlyDBInstanceIdsReadOnlyDBInstanceId
@@ -1357,6 +1370,7 @@ from ._describe_dbinstance_attribute_response_body import DescribeDBInstanceAttr
 from ._describe_dbinstance_attribute_response_body import DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeServerlessConfig
 from ._describe_dbinstance_attribute_response_body import DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeSlaveZonesSlaveZone
 from ._describe_dbinstance_attribute_response_body import DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeSlaveZones
+from ._describe_dbinstance_attribute_response_body import DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeWarmStandbyInfo
 from ._describe_dbinstance_attribute_response_body import DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute
 from ._describe_dbinstance_attribute_response_body import DescribeDBInstanceAttributeResponseBodyItems
 from ._describe_dbinstance_by_tags_response_body import DescribeDBInstanceByTagsResponseBodyItemsDBInstanceTagTagsTag
@@ -1588,6 +1602,7 @@ from ._describe_rcsecurity_group_permission_response_body import DescribeRCSecur
 from ._describe_rcsnapshots_request import DescribeRCSnapshotsRequestTag
 from ._describe_rcsnapshots_response_body import DescribeRCSnapshotsResponseBodySnapshotsTag
 from ._describe_rcsnapshots_response_body import DescribeRCSnapshotsResponseBodySnapshots
+from ._describe_rcvcluster_response_body import DescribeRCVClusterResponseBodyMysqlOperator
 from ._describe_rds_resource_settings_response_body import DescribeRdsResourceSettingsResponseBodyRdsInstanceResourceSettingsRdsInstanceResourceSetting
 from ._describe_rds_resource_settings_response_body import DescribeRdsResourceSettingsResponseBodyRdsInstanceResourceSettings
 from ._describe_read_dbinstance_delay_response_body import DescribeReadDBInstanceDelayResponseBodyItemsItemsReadDBInstanceNames
@@ -1655,6 +1670,7 @@ from ._get_db_proxy_instance_ssl_response_body import GetDbProxyInstanceSslRespo
 from ._get_db_proxy_instance_ssl_response_body import GetDbProxyInstanceSslResponseBodyDbProxyCertListItems
 from ._list_classes_response_body import ListClassesResponseBodyItems
 from ._list_import_tasks_response_body import ListImportTasksResponseBodyItems
+from ._list_rcvclusters_response_body import ListRCVClustersResponseBodyVClustersMysqlOperator
 from ._list_rcvclusters_response_body import ListRCVClustersResponseBodyVClusters
 from ._list_tag_resources_request import ListTagResourcesRequestTag
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResourcesTagResource
@@ -1683,6 +1699,7 @@ from ._pre_check_create_order_for_delete_dbnodes_response_body import PreCheckCr
 from ._precheck_duck_dbdependency_response_body import PrecheckDuckDBDependencyResponseBodyFailedCheckItems
 from ._query_notify_response_body import QueryNotifyResponseBodyDataNotifyItemList
 from ._query_notify_response_body import QueryNotifyResponseBodyData
+from ._remove_rcinstances_from_deployment_set_response_body import RemoveRCInstancesFromDeploymentSetResponseBodyResults
 from ._remove_tags_from_resource_request import RemoveTagsFromResourceRequestTag
 from ._run_rccommand_request import RunRCCommandRequestResourceTags
 from ._run_rccommand_request import RunRCCommandRequestTags
@@ -1703,6 +1720,9 @@ __all__ = [
     ActivateMigrationTargetInstanceRequest,
     ActivateMigrationTargetInstanceResponseBody,
     ActivateMigrationTargetInstanceResponse,
+    AddRCInstancesToDeploymentSetRequest,
+    AddRCInstancesToDeploymentSetResponseBody,
+    AddRCInstancesToDeploymentSetResponse,
     AddTagsToResourceRequest,
     AddTagsToResourceResponseBody,
     AddTagsToResourceResponse,
@@ -2829,6 +2849,9 @@ __all__ = [
     ReleaseReadWriteSplittingConnectionRequest,
     ReleaseReadWriteSplittingConnectionResponseBody,
     ReleaseReadWriteSplittingConnectionResponse,
+    RemoveRCInstancesFromDeploymentSetRequest,
+    RemoveRCInstancesFromDeploymentSetResponseBody,
+    RemoveRCInstancesFromDeploymentSetResponse,
     RemoveTagsFromResourceRequest,
     RemoveTagsFromResourceResponseBody,
     RemoveTagsFromResourceResponse,
@@ -2877,6 +2900,9 @@ __all__ = [
     RunRCInstancesShrinkRequest,
     RunRCInstancesResponseBody,
     RunRCInstancesResponse,
+    ShareRCDeploymentSetRequest,
+    ShareRCDeploymentSetResponseBody,
+    ShareRCDeploymentSetResponse,
     StartDBInstanceRequest,
     StartDBInstanceResponseBody,
     StartDBInstanceResponse,
@@ -2963,6 +2989,7 @@ __all__ = [
     ValidateImportTaskRequest,
     ValidateImportTaskResponseBody,
     ValidateImportTaskResponse,
+    AddRCInstancesToDeploymentSetResponseBodyResults,
     AddTagsToResourceRequestTag,
     AttachRCInstancesResponseBodyResponses,
     AttachWhitelistTemplateToInstanceResponseBodyData,
@@ -2970,6 +2997,8 @@ __all__ = [
     CalculateDBInstanceWeightResponseBodyItemsDBInstanceWeight,
     CalculateDBInstanceWeightResponseBodyItems,
     CloneDBInstanceRequestServerlessConfig,
+    CloneDBInstanceRequestTag,
+    CloneDBInstanceShrinkRequestTag,
     CreateDBInstanceRequestServerlessConfig,
     CreateDBInstanceRequestTag,
     CreateDBInstanceShrinkRequestTag,
@@ -3045,6 +3074,7 @@ __all__ = [
     DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeBabelfishConfig,
     DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDBClusterNodesDBClusterNode,
     DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDBClusterNodes,
+    DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDrReplicaInfo,
     DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtraDBInstanceIds,
     DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra,
     DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeReadOnlyDBInstanceIdsReadOnlyDBInstanceId,
@@ -3052,6 +3082,7 @@ __all__ = [
     DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeServerlessConfig,
     DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeSlaveZonesSlaveZone,
     DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeSlaveZones,
+    DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeWarmStandbyInfo,
     DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute,
     DescribeDBInstanceAttributeResponseBodyItems,
     DescribeDBInstanceByTagsResponseBodyItemsDBInstanceTagTagsTag,
@@ -3283,6 +3314,7 @@ __all__ = [
     DescribeRCSnapshotsRequestTag,
     DescribeRCSnapshotsResponseBodySnapshotsTag,
     DescribeRCSnapshotsResponseBodySnapshots,
+    DescribeRCVClusterResponseBodyMysqlOperator,
     DescribeRdsResourceSettingsResponseBodyRdsInstanceResourceSettingsRdsInstanceResourceSetting,
     DescribeRdsResourceSettingsResponseBodyRdsInstanceResourceSettings,
     DescribeReadDBInstanceDelayResponseBodyItemsItemsReadDBInstanceNames,
@@ -3350,6 +3382,7 @@ __all__ = [
     GetDbProxyInstanceSslResponseBodyDbProxyCertListItems,
     ListClassesResponseBodyItems,
     ListImportTasksResponseBodyItems,
+    ListRCVClustersResponseBodyVClustersMysqlOperator,
     ListRCVClustersResponseBodyVClusters,
     ListTagResourcesRequestTag,
     ListTagResourcesResponseBodyTagResourcesTagResource,
@@ -3378,6 +3411,7 @@ __all__ = [
     PrecheckDuckDBDependencyResponseBodyFailedCheckItems,
     QueryNotifyResponseBodyDataNotifyItemList,
     QueryNotifyResponseBodyData,
+    RemoveRCInstancesFromDeploymentSetResponseBodyResults,
     RemoveTagsFromResourceRequestTag,
     RunRCCommandRequestResourceTags,
     RunRCCommandRequestTags,

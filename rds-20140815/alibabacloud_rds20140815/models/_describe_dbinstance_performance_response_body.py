@@ -19,14 +19,14 @@ class DescribeDBInstancePerformanceResponseBody(DaraModel):
     ):
         # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The end time of the query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # The end time of the query. Format: <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z (UTC).
         self.end_time = end_time
-        # The database engine of the instance.
+        # The database engine type.
         self.engine = engine
         self.performance_keys = performance_keys
         # The request ID.
         self.request_id = request_id
-        # The start time of the query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # The start time of the query. Format: <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z (UTC).
         self.start_time = start_time
 
     def validate(self):

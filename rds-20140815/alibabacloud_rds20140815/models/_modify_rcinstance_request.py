@@ -9,6 +9,7 @@ class ModifyRCInstanceRequest(DaraModel):
         self,
         auto_pay: bool = None,
         auto_use_coupon: bool = None,
+        business_info: str = None,
         direction: str = None,
         dry_run: bool = None,
         instance_id: str = None,
@@ -18,32 +19,45 @@ class ModifyRCInstanceRequest(DaraModel):
         reboot_when_finished: bool = None,
         region_id: str = None,
     ):
-        # Specifies whether to enable the automatic payment feature. Valid values:
-        # 
-        # *   **true** (default): enables the feature. You must make sure that your account balance is sufficient.
-        # *   **false**: disables the feature. An unpaid order is generated.
-        # 
-        # >  If your account balance is insufficient, you can set AutoPay to false. In this case, an unpaid order is generated. You can complete the payment in the Expenses and Costs console.
+        # Specifies whether to enable automatic payment. Valid values:
+        # - **true** (default): Automatic payment is enabled. Make sure that your account balance is sufficient.
+        # - **false**: An order is generated but payment is not automatically made.
+        # > If your payment method balance is insufficient, set the parameter AutoPay to false. An unpaid order is generated, and you can log on to the ApsaraDB RDS console to complete the payment.
+        # >
         self.auto_pay = auto_pay
+        # Specifies whether to automatically use coupons. Valid values:
+        # * **true** (default): Coupons are automatically used.
+        # * **false**: Coupons are not used.
+        # 
+        # > If you use coupons and then perform a downgrade, the amount deducted by coupons is not refunded.
         self.auto_use_coupon = auto_use_coupon
-        # The type of the change that you want to perform on the instance. Valid values:
-        # 
-        # >  This parameter is optional. The system can automatically determine whether the instance change is an upgrade or a downgrade. If you want to specify this parameter, take note of the following items:
-        # 
-        # *   **Upgrade** (default): upgrades the instance type. Make sure that your account balance is sufficient.
-        # *   **Down**: downgrades the instance type. If the new instance type specified by InstanceType has lower specifications than the current instance type, set Direction to Down.
+        self.business_info = business_info
+        # The type of the Upgrade/Downgrade. Valid values:
+        # > This parameter does not need to be uploaded. The system can automatically determine whether the change is an upgrade or a downgrade. If you upload this parameter, follow the rules below.
+        # - **Up** (default): Upgrades the instance type. Make sure that your account payment method balance is sufficient.
+        # - **Down**: Downgrades the instance type. Set Direction to down when the instance type specified by InstanceType is lower than the current instance type.
         self.direction = direction
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-        # 
-        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, service limits, and resource inventory.
-        # *   **false**: performs a dry run and performs the actual request. If the request passes the dry run, the operation is performed.
+        # Specifies whether to perform a dry run. Valid values:
+        # * **true**: Performs a dry run without creating the instance. The system checks items such as the request parameters, request format, service limits, and available resources.
+        # * **false** (default): Sends the request. If the request passes the check, the instance is created.
         self.dry_run = dry_run
         # The instance ID.
         self.instance_id = instance_id
-        # The new instance type. For more information about the instance types that are supported by RDS Custom instances, see [Instance types of RDS Custom instances](https://help.aliyun.com/document_detail/2844823.html).
+        # The target instance type. For information about the instance types supported by RDS Custom instances, see [RDS Custom instance types](https://help.aliyun.com/document_detail/2844823.html).
         self.instance_type = instance_type
+        # The coupon code.
         self.promotion_code = promotion_code
+        # The restart time of the instance.
+        # 
+        # - If **RebootWhenFinished** is set to **false** and the instance status is **Running**, you **must** set a restart time within 48 hours.
+        # - The time follows the ISO 8601 standard in UTC+0. Format: `yyyy-MM-ddTHH:mmZ`.
         self.reboot_time = reboot_time
+        # Specifies whether to immediately restart the instance after the specification change is complete. Valid values:
+        # 
+        # - **true** (default): The instance is restarted immediately.
+        # - **false**: The instance is not restarted.
+        # 
+        # > If the instance is in the **Stopped** state, the instance remains in the Stopped state and is not restarted even if you set `RebootWhenFinished=true`.
         self.reboot_when_finished = reboot_when_finished
         # The region ID of the instance.
         self.region_id = region_id
@@ -61,6 +75,9 @@ class ModifyRCInstanceRequest(DaraModel):
 
         if self.auto_use_coupon is not None:
             result['AutoUseCoupon'] = self.auto_use_coupon
+
+        if self.business_info is not None:
+            result['BusinessInfo'] = self.business_info
 
         if self.direction is not None:
             result['Direction'] = self.direction
@@ -95,6 +112,9 @@ class ModifyRCInstanceRequest(DaraModel):
 
         if m.get('AutoUseCoupon') is not None:
             self.auto_use_coupon = m.get('AutoUseCoupon')
+
+        if m.get('BusinessInfo') is not None:
+            self.business_info = m.get('BusinessInfo')
 
         if m.get('Direction') is not None:
             self.direction = m.get('Direction')

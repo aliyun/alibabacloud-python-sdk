@@ -16,16 +16,16 @@ class DescribeMarketingActivityResponseBody(DaraModel):
         region_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the Alibaba Cloud account.
+        # The Alibaba Cloud account ID.
         self.ali_uid = ali_uid
-        # *   China site: 26842
-        # *   International site: 26888
+        # - Chinese site: 26842
+        # - International site: 26888
         self.bid = bid
-        # The activity parameters
+        # The campaign parameters.
         self.items = items
         # The region ID.
         self.region_id = region_id
-        # The request ID.
+        # Id of the request
         # 
         # This parameter is required.
         self.request_id = request_id
@@ -113,35 +113,32 @@ class DescribeMarketingActivityResponseBodyItems(DaraModel):
         upgrade_reference_price: str = None,
         upgrade_storage_type: str = None,
     ):
-        # The RDS edition of the instance. Valid values:
-        # 
-        # *   **Basic**: RDS Basic Edition
-        # *   **HighAvailability**: RDS High-availability Edition
-        # *   **AlwaysOn**: RDS Cluster Edition
-        # *   **Finance**: RDS Enterprise Edition
+        # The instance edition. Valid values:
+        # * **Basic**: Basic Edition.
+        # * **HighAvailability**: High-availability Edition.
+        # * **AlwaysOn**: Cluster Edition.
+        # * **Finance**: RDS Enterprise Edition.
         self.category = category
-        # The payment type. Valid values:
-        # 
-        # *   POSTPAY: pay-as-you-go
-        # *   PREPAY: subscription
+        # The billing method. Valid values:
+        # - POSTPAY: pay-as-you-go.
+        # - PREPAY: subscription.
         self.charge_type = charge_type
-        # The instance type. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html) and [Read-only ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/145759.html).
+        # The instance type. For more information, see [Primary instance types](https://help.aliyun.com/document_detail/26312.html) and [Read-only instance types](https://help.aliyun.com/document_detail/145759.html).
         self.class_code = class_code
-        # The instance family. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/57184.html).
+        # The instance family. For more information, see [Instance families](https://help.aliyun.com/document_detail/57184.html).
         self.class_group = class_group
-        # The number of CPU cores that are supported by the instance type. Unit: cores.
+        # The number of CPU cores for the instance type. Unit: cores.
         self.cpu = cpu
-        # The disk capacity per node. Unit: GB.
+        # The disk storage size per node. Unit: GB.
         self.disk_size = disk_size
-        # The database engine of the instance. Valid values:
-        # 
-        # *   MySQL
-        # *   SQLServer
-        # *   PostgreSQL
-        # *   PPAS
-        # *   MariaDB
+        # The database engine. Valid values:
+        # - MySQL
+        # - SQLServer
+        # - PostgreSQL
+        # - PPAS
+        # - MariaDB
         self.engine = engine
-        # The version of the database engine.
+        # The database engine version.
         self.engine_version = engine_version
         # The instance ID.
         self.instance_id = instance_id
@@ -149,43 +146,42 @@ class DescribeMarketingActivityResponseBodyItems(DaraModel):
         self.instance_name = instance_name
         # The maximum number of concurrent connections.
         self.max_connections = max_connections
-        # The maximum I/O throughput. Unit: Mbit/s.
+        # The maximum I/O bandwidth. Unit: Mbit/s.
         self.max_iombps = max_iombps
         # The maximum IOPS.
         self.max_iops = max_iops
         # The memory size.
         self.memory = memory
-        # The storage type of the instance. Valid values:
-        # 
-        # *   **local_ssd**: local SSD
-        # *   **cloud_ssd**: standard SSD
-        # *   **cloud_essd**: performance level 1 (PL1) enhanced SSD (ESSD)
-        # *   **cloud_essd2**: PL2 ESSD
-        # *   **cloud_essd3**: PL3 ESSD
+        # The instance storage type. Valid values:
+        # * **local_ssd**: local SSD.
+        # * **cloud_ssd**: standard SSD cloud disk.
+        # * **cloud_essd**: PL1 ESSD cloud disk.
+        # * **cloud_essd2**: PL2 ESSD cloud disk.
+        # * **cloud_essd3**: PL3 ESSD cloud disk.
         self.storage_type = storage_type
-        # The RDS edition after the upgrade.
+        # The upgrade instance edition.
         self.upgrade_category = upgrade_category
-        # The instance type after the upgrade.
+        # The upgrade instance type.
         self.upgrade_class_code = upgrade_class_code
-        # The instance family after the upgrade.
+        # The upgrade instance family.
         self.upgrade_class_group = upgrade_class_group
         # The number of CPU cores after the upgrade.
         self.upgrade_cpu = upgrade_cpu
-        # The description of the upgrade.
+        # The upgrade description.
         self.upgrade_desc_content = upgrade_desc_content
-        # The disk capacity after the upgrade.
+        # The disk size after the upgrade.
         self.upgrade_disk_size = upgrade_disk_size
         # The maximum number of concurrent connections after the upgrade.
         self.upgrade_max_connections = upgrade_max_connections
-        # The maximum I/O throughput after the upgrade. Unit: Mbit/s.
+        # The maximum I/O bandwidth after the upgrade. Unit: Mbit/s.
         self.upgrade_max_iombps = upgrade_max_iombps
         # The maximum IOPS after the upgrade.
         self.upgrade_max_iops = upgrade_max_iops
         # The memory size after the upgrade.
         self.upgrade_memory = upgrade_memory
-        # The reference price of the upgrade.
+        # The reference price for the upgrade.
         self.upgrade_reference_price = upgrade_reference_price
-        # The storage type after the upgrade.
+        # The instance storage type after the upgrade.
         self.upgrade_storage_type = upgrade_storage_type
 
     def validate(self):

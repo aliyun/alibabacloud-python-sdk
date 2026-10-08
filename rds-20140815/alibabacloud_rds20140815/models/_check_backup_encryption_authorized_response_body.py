@@ -11,8 +11,13 @@ class CheckBackupEncryptionAuthorizedResponseBody(DaraModel):
         request_id: str = None,
         role_arn: str = None,
     ):
+        # Indicates whether the account is authorized. Valid values:
+        # * 0: Not authorized.
+        # * 1: Authorized.
         self.authorization_state = authorization_state
+        # The request ID.
         self.request_id = request_id
+        # The Alibaba Resource Name (ARN) of the service-linked role associated with Cloud Hardware Security Module (CloudHSM) for backup encryption.
         self.role_arn = role_arn
 
     def validate(self):

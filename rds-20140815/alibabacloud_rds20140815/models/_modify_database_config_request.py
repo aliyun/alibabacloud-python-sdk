@@ -22,21 +22,20 @@ class ModifyDatabaseConfigRequest(DaraModel):
         self.dbinstance_id = dbinstance_id
         # The database name.
         # 
-        # >  You can specify only one database name.
+        # > Specifying multiple database names is not supported.
         # 
         # This parameter is required.
         self.dbname = dbname
-        # The database property that you want to modify.
+        # The database attribute that you want to modify.
         # 
-        # *   **If you want to modify a property of the database**, set this parameter to the name of the database property.
-        # *   **If you want to archive data from the database to an OSS bucket**, specify the database status. If you set this parameter to `covert_online_db_to_cold_storage`, the system converts an online database to a cold storage database. If you set this parameter to `convert_cold_storage_db_to_online`, the system converts a cold storage database to an online database.
+        # - **Modify database attributes feature**: Enter the attribute name of the target database.
+        # - **Data archiving to OSS feature**: Enter the status of the target database. Set this parameter to `covert_online_db_to_cold_storage` to convert an online database to a cold storage database, or set this parameter to `convert_cold_storage_db_to_online` to convert a cold storage database to an online database.
         # 
         # This parameter is required.
         self.database_property_name = database_property_name
-        # The value of the database property that you want to modify.
-        # 
-        # *   **If you want to modify a property of the database**, set this parameter to the property value.
-        # *   **If you want to archive data from the database to an OSS bucket**, set this parameter to **1**. The system converts a database to a cold storage database or an online database.
+        # The value of the database attribute that you want to modify.
+        # - **Modify database attributes feature**: Enter the attribute value of the target database.
+        # - **Data archiving to OSS feature**: Set this parameter to **1** to convert the target database to cold storage or online status.
         # 
         # This parameter is required.
         self.database_property_value = database_property_value

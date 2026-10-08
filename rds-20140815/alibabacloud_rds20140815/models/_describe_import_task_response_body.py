@@ -20,17 +20,32 @@ class DescribeImportTaskResponseBody(DaraModel):
         task_name: str = None,
         task_type: str = None,
     ):
+        # The account name.
         self.account = account
+        # The Milvus version number.
         self.db_version = db_version
+        # The detailed information about the task.
         self.detail = detail
+        # The request ID.
         self.request_id = request_id
+        # The category of the source instance.
+        # 
+        # - **ECS**: Alibaba Cloud ECS.
+        # - **other**: Other.
         self.source_category = source_category
+        # The source IP address.
         self.source_ip = source_ip
+        # The source MySQL port.
         self.source_port = source_port
+        # The task status.
         self.status = status
+        # The name of the destination disaster recovery instance for the switchover.
         self.target_instance_name = target_instance_name
+        # The task ID.
         self.task_id = task_id
+        # The task name.
         self.task_name = task_name
+        # The task type. This parameter is used to query tasks of specific types. Separate multiple task types with commas (,). A maximum of 30 task types are supported. If this parameter is left empty, tasks of all types are queried.
         self.task_type = task_type
 
     def validate(self):

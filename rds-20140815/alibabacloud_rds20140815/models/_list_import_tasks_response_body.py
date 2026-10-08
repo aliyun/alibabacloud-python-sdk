@@ -15,8 +15,14 @@ class ListImportTasksResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # None.
         self.items = items
+        # The number of entries per page. Valid values: **1 to 100**.
+        # 
+        # Default value: **30**.
+        # >If you specify this parameter, the **PageSize** and **PageNumber** parameters are not available.
         self.max_results = max_results
+        # The pagination token.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
@@ -78,12 +84,19 @@ class ListImportTasksResponseBodyItems(DaraModel):
         task_name: str = None,
         task_type: str = None,
     ):
+        # The creation time in UTC. The time follows the format of YYYY-MM-DDTHH:mm:ssZ.
         self.created_time = created_time
+        # The kernel version number.
         self.db_version = db_version
+        # The task status.
         self.status = status
+        # The instance ID of the target instance.
         self.target_instance_name = target_instance_name
+        # The task ID.
         self.task_id = task_id
+        # The task name.
         self.task_name = task_name
+        # The task type.
         self.task_type = task_type
 
     def validate(self):

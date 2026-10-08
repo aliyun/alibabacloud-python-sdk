@@ -27,31 +27,31 @@ class DescribeDBInstancesByPerformanceRequest(DaraModel):
         proxy_id: str = None,
     ):
         self.tag = tag
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The ID of the instance.
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Valid values: any non-zero positive integer.
+        # The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type.
         # 
         # Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: **5** to **100**.
+        # The number of entries per page. Valid values: **5** to **100**.
         # 
         # Default value: **30**.
         self.page_size = page_size
-        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) operation to query the available regions.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The sorting basis.
+        # The sorting criterion.
         self.sort_key = sort_key
         # The sorting method.
         self.sort_method = sort_method
-        # The tags that are added to the instances. Each tag is a key-value pair that consists of two parts: TagKey and TagValue. Format: `{"key1":"value1"}`.
+        # The tags that are bound to the instances you want to query. The tags include TagKey and TagValue. Format: `{"key1":"value1"}`.
         self.tags = tags
         # The ID of the proxy mode.
         self.proxy_id = proxy_id
@@ -174,9 +174,9 @@ class DescribeDBInstancesByPerformanceRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag 1 that is added to the instances.
+        # Queries instances that are bound to the tag Tag.1.key.
         self.key = key
-        # The value of tag 1 that is added to the instances.
+        # Queries instances that are bound to the tag Tag.1.value.
         self.value = value
 
     def validate(self):

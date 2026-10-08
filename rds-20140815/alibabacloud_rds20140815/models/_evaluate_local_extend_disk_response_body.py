@@ -13,13 +13,17 @@ class EvaluateLocalExtendDiskResponseBody(DaraModel):
         local_upgrade_disk_limit: int = None,
         request_id: str = None,
     ):
-        # Indicates whether the instance is available. Valid values: true and false.
+        # Indicates whether the expansion is available. Valid values:
+        # 
+        # - **true**: Available.
+        # 
+        # - **false**: Not available.
         self.available = available
         # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The data transfer type supported by the instance.
+        # The transfer type of the database instance.
         self.dbinstance_trans_type = dbinstance_trans_type
-        # The maximum value of the local disk. Unit: GB.
+        # The maximum capacity of the local disk. Unit: GB.
         self.local_upgrade_disk_limit = local_upgrade_disk_limit
         # The request ID.
         self.request_id = request_id

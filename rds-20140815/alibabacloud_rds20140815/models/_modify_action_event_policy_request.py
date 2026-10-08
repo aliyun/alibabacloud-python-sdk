@@ -13,15 +13,14 @@ class ModifyActionEventPolicyRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # Specifies whether to enable the event history feature. Valid values:
-        # 
-        # *   **True**
-        # *   **False**
+        # Specifies whether to enable the historical events feature. Valid values:
+        # * **True**
+        # * **False**
         # 
         # This parameter is required.
         self.enable_event_log = enable_event_log
         self.owner_id = owner_id
-        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # The region ID. You can call DescribeRegions to query the available regions.
         # 
         # This parameter is required.
         self.region_id = region_id

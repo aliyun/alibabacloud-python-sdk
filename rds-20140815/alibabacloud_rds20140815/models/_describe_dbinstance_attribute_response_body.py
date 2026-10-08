@@ -14,7 +14,7 @@ class DescribeDBInstanceAttributeResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.items = items
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -122,6 +122,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(DaraModel)
         deletion_protection: bool = None,
         disaster_recovery_info: str = None,
         disaster_recovery_instances: str = None,
+        dr_replica_info: main_models.DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDrReplicaInfo = None,
         engine: str = None,
         engine_version: str = None,
         expire_time: str = None,
@@ -146,6 +147,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(DaraModel)
         max_iombps: int = None,
         max_iops: int = None,
         multiple_temp_upgrade: bool = None,
+        node_performance: str = None,
         optimized_writes_info: str = None,
         pgbouncer_enabled: str = None,
         pay_type: str = None,
@@ -172,6 +174,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(DaraModel)
         vector_support_status: str = None,
         vpc_cloud_instance_id: str = None,
         vpc_id: str = None,
+        warm_standby_info: main_models.DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeWarmStandbyInfo = None,
         zone_id: str = None,
         kind_code: str = None,
     ):
@@ -214,6 +217,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(DaraModel)
         self.deletion_protection = deletion_protection
         self.disaster_recovery_info = disaster_recovery_info
         self.disaster_recovery_instances = disaster_recovery_instances
+        self.dr_replica_info = dr_replica_info
         self.engine = engine
         self.engine_version = engine_version
         self.expire_time = expire_time
@@ -238,6 +242,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(DaraModel)
         self.max_iombps = max_iombps
         self.max_iops = max_iops
         self.multiple_temp_upgrade = multiple_temp_upgrade
+        self.node_performance = node_performance
         self.optimized_writes_info = optimized_writes_info
         self.pgbouncer_enabled = pgbouncer_enabled
         self.pay_type = pay_type
@@ -264,6 +269,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(DaraModel)
         self.vector_support_status = vector_support_status
         self.vpc_cloud_instance_id = vpc_cloud_instance_id
         self.vpc_id = vpc_id
+        self.warm_standby_info = warm_standby_info
         self.zone_id = zone_id
         self.kind_code = kind_code
 
@@ -272,6 +278,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(DaraModel)
             self.babelfish_config.validate()
         if self.dbcluster_nodes:
             self.dbcluster_nodes.validate()
+        if self.dr_replica_info:
+            self.dr_replica_info.validate()
         if self.extra:
             self.extra.validate()
         if self.read_only_dbinstance_ids:
@@ -280,6 +288,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(DaraModel)
             self.serverless_config.validate()
         if self.slave_zones:
             self.slave_zones.validate()
+        if self.warm_standby_info:
+            self.warm_standby_info.validate()
 
     def to_map(self):
         result = dict()
@@ -403,6 +413,9 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(DaraModel)
         if self.disaster_recovery_instances is not None:
             result['DisasterRecoveryInstances'] = self.disaster_recovery_instances
 
+        if self.dr_replica_info is not None:
+            result['DrReplicaInfo'] = self.dr_replica_info.to_map()
+
         if self.engine is not None:
             result['Engine'] = self.engine
 
@@ -474,6 +487,9 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(DaraModel)
 
         if self.multiple_temp_upgrade is not None:
             result['MultipleTempUpgrade'] = self.multiple_temp_upgrade
+
+        if self.node_performance is not None:
+            result['NodePerformance'] = self.node_performance
 
         if self.optimized_writes_info is not None:
             result['OptimizedWritesInfo'] = self.optimized_writes_info
@@ -552,6 +568,9 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(DaraModel)
 
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
+
+        if self.warm_standby_info is not None:
+            result['WarmStandbyInfo'] = self.warm_standby_info.to_map()
 
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
@@ -682,6 +701,10 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(DaraModel)
         if m.get('DisasterRecoveryInstances') is not None:
             self.disaster_recovery_instances = m.get('DisasterRecoveryInstances')
 
+        if m.get('DrReplicaInfo') is not None:
+            temp_model = main_models.DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDrReplicaInfo()
+            self.dr_replica_info = temp_model.from_map(m.get('DrReplicaInfo'))
+
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
 
@@ -754,6 +777,9 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(DaraModel)
 
         if m.get('MultipleTempUpgrade') is not None:
             self.multiple_temp_upgrade = m.get('MultipleTempUpgrade')
+
+        if m.get('NodePerformance') is not None:
+            self.node_performance = m.get('NodePerformance')
 
         if m.get('OptimizedWritesInfo') is not None:
             self.optimized_writes_info = m.get('OptimizedWritesInfo')
@@ -836,11 +862,58 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(DaraModel)
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
 
+        if m.get('WarmStandbyInfo') is not None:
+            temp_model = main_models.DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeWarmStandbyInfo()
+            self.warm_standby_info = temp_model.from_map(m.get('WarmStandbyInfo'))
+
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
 
         if m.get('kindCode') is not None:
             self.kind_code = m.get('kindCode')
+
+        return self
+
+class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeWarmStandbyInfo(DaraModel):
+    def __init__(
+        self,
+        ins_name: str = None,
+        region: str = None,
+        unit_code: str = None,
+    ):
+        self.ins_name = ins_name
+        self.region = region
+        self.unit_code = unit_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.ins_name is not None:
+            result['InsName'] = self.ins_name
+
+        if self.region is not None:
+            result['Region'] = self.region
+
+        if self.unit_code is not None:
+            result['UnitCode'] = self.unit_code
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InsName') is not None:
+            self.ins_name = m.get('InsName')
+
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+
+        if m.get('UnitCode') is not None:
+            self.unit_code = m.get('UnitCode')
 
         return self
 
@@ -1088,6 +1161,49 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtraDBInst
         m = m or dict()
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
+
+        return self
+
+class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDrReplicaInfo(DaraModel):
+    def __init__(
+        self,
+        ins_name: str = None,
+        region: str = None,
+        unit_code: str = None,
+    ):
+        self.ins_name = ins_name
+        self.region = region
+        self.unit_code = unit_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.ins_name is not None:
+            result['InsName'] = self.ins_name
+
+        if self.region is not None:
+            result['Region'] = self.region
+
+        if self.unit_code is not None:
+            result['UnitCode'] = self.unit_code
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InsName') is not None:
+            self.ins_name = m.get('InsName')
+
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+
+        if m.get('UnitCode') is not None:
+            self.unit_code = m.get('UnitCode')
 
         return self
 

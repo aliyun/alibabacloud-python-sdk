@@ -18,37 +18,36 @@ class DescribeMigrateTaskByIdResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The type of the migration task. Valid values:
+        # The type of the backup migration task. Valid values:
         # 
-        # *   **FULL**: The migration task migrates full backup files that can be used to restore the full data of the instance.
-        # *   **UPDF**: The migration task migrates incremental or log backup files that can be used to restore the incremental data of the instance.
+        # - **FULL**: The restore operation is performed by using a full backup file.
+        # - **UPDF**: The incremental data is restored by using an incremental backup file or log file.
         self.backup_mode = backup_mode
-        # The time when the migration task was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the backup migration task was created. The time follows the ISO 8601 standard in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
         self.create_time = create_time
         # The instance ID.
         self.dbinstance_name = dbinstance_name
-        # The name of the database.
+        # The database name.
         self.dbname = dbname
-        # The description of the migration task.
+        # The description of the backup migration task.
         self.description = description
-        # The time when the migration task was completed. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the backup migration task ended. The time follows the ISO 8601 standard in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
         self.end_time = end_time
-        # Indicates whether the imported data overwrites the existing data. Valid values:
+        # Indicates whether the import is an overwrite import. Valid values: 
         # 
-        # *   **False**: The imported data does not overwrite the existing data.
-        # *   **True**: The imported data overwrites the existing data.
+        # - **False**: No.
+        # - **True**: Yes.
         self.is_dbreplaced = is_dbreplaced
-        # The ID of the migration task.
+        # The ID of the OSS backup migration task.
         self.migrate_task_id = migrate_task_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The status of the migration task. Valid values:
-        # 
-        # *   **NoStart**: The task has not started.
-        # *   **Running**:The task is in progress.
-        # *   **Success**: The task is successful.
-        # *   **Failed**: The task failed.
-        # *   **Waiting**: The task is waiting for an incremental backup file to be imported.
+        # The status of the backup migration task. Valid values:
+        # - **NoStart**: Not started.
+        # - **Running**: Running.
+        # - **Success**: Succeeded.
+        # - **Failed**: Failed.
+        # - **Waiting**: Waiting for incremental backup file import.
         self.status = status
 
     def validate(self):

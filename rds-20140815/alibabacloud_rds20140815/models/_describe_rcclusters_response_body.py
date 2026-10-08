@@ -13,9 +13,7 @@ class DescribeRCClustersResponseBody(DaraModel):
         clusters: List[main_models.DescribeRCClustersResponseBodyClusters] = None,
         request_id: str = None,
     ):
-        # The information about the clusters.
         self.clusters = clusters
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -63,18 +61,9 @@ class DescribeRCClustersResponseBodyClusters(DaraModel):
         vpc_id: str = None,
     ):
         self.cluster_id = cluster_id
-        # The cluster name.
         self.cluster_name = cluster_name
-        # The time when the cluster was created.
         self.create_time = create_time
         self.profile = profile
-        # The cluster status. Valid values:
-        # 
-        # *   **Pending**
-        # *   **Running**
-        # *   **Starting**
-        # *   **Stopping**
-        # *   **Stopped**
         self.status = status
         self.vpc_id = vpc_id
 

@@ -21,9 +21,9 @@ class DescribeModifyParameterLogResponseBody(DaraModel):
     ):
         # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The database engine of the instance.
+        # The database engine type.
         self.engine = engine
-        # The database engine version of the instance.
+        # The database engine version.
         self.engine_version = engine_version
         self.items = items
         # The page number.
@@ -32,7 +32,7 @@ class DescribeModifyParameterLogResponseBody(DaraModel):
         self.page_record_count = page_record_count
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of log records.
         self.total_record_count = total_record_count
 
     def validate(self):

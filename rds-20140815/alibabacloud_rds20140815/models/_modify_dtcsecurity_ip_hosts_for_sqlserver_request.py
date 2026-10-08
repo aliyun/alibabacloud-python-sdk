@@ -17,26 +17,25 @@ class ModifyDTCSecurityIpHostsForSQLServerRequest(DaraModel):
         security_token: str = None,
         white_list_group_name: str = None,
     ):
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # The instance ID. You can call DescribeDBInstances to query the instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # The region ID. You can call DescribeDBInstanceAttribute to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The IP address of the ECS instance and the hostname of the Windows computer. Format: `IP address,Hostname`. Separate multiple entries with semicolon (;).
-        # 
-        # >  For more information about how to query the computer hostname, see [Configure a distributed transaction whitelist](https://help.aliyun.com/document_detail/124321.html).
+        # The IP addresses of ECS instances and the computer names of the Windows operating systems. Format: `ip,hostname`. Separate multiple instances with semicolons (;).
+        # >For more information about how to view the computer name, see [Configure a distributed transaction whitelist](https://help.aliyun.com/document_detail/124321.html).
         # 
         # This parameter is required.
         self.security_ip_hosts = security_ip_hosts
         self.security_token = security_token
-        # The name of the IP address whitelist.
+        # The name of the whitelist group.
         # 
         # This parameter is required.
         self.white_list_group_name = white_list_group_name

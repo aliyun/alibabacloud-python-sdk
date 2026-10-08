@@ -13,7 +13,9 @@ class DescribeMaskingRulesResponseBody(DaraModel):
         data: main_models.DescribeMaskingRulesResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -49,6 +51,7 @@ class DescribeMaskingRulesResponseBodyData(DaraModel):
         self,
         rules: List[main_models.DescribeMaskingRulesResponseBodyDataRules] = None,
     ):
+        # The list of encryption or masking rules.
         self.rules = rules
 
     def validate(self):
@@ -88,10 +91,15 @@ class DescribeMaskingRulesResponseBodyDataRules(DaraModel):
         rule_config: main_models.DescribeMaskingRulesResponseBodyDataRulesRuleConfig = None,
         rule_name: str = None,
     ):
+        # The default encryption or masking algorithm.
         self.default_algo = default_algo
+        # Indicates whether the rule is enabled.
         self.enabled = enabled
+        # The rule algorithms. You can specify multiple algorithms. Masking algorithms can include additional parameters. Format: {name: algorithm1}, {name: algorithm2, params: {masking position, masking length}}.
         self.masking_algo = masking_algo
+        # The rule configuration.
         self.rule_config = rule_config
+        # The rule name.
         self.rule_name = rule_name
 
     def validate(self):
@@ -147,8 +155,11 @@ class DescribeMaskingRulesResponseBodyDataRulesRuleConfig(DaraModel):
         databases: List[str] = None,
         tables: List[str] = None,
     ):
+        # The list of columns.
         self.columns = columns
+        # The list of databases.
         self.databases = databases
+        # The list of tables.
         self.tables = tables
 
     def validate(self):

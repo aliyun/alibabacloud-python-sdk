@@ -14,11 +14,11 @@ class DescribeRCInstanceIpAddressResponseBody(DaraModel):
         request_id: str = None,
         total: str = None,
     ):
-        # An array that consists of details of the instance.
+        # The details of instances to which the assets that are assigned public IP addresses belong.
         self.rcinstance_list = rcinstance_list
         # The request ID.
         self.request_id = request_id
-        # The total number of the assets.
+        # The total number of assets that are assigned public IP addresses returned.
         self.total = total
 
     def validate(self):
@@ -70,18 +70,18 @@ class DescribeRCInstanceIpAddressResponseBodyRCInstanceList(DaraModel):
         instance_type: str = None,
         ip_address_config: List[main_models.DescribeRCInstanceIpAddressResponseBodyRCInstanceListIpAddressConfig] = None,
     ):
-        # The ID of the RDS Custom instance.
+        # The Custom instance ID.
         self.instance_id = instance_id
-        # The instance name.
+        # The Custom instance name.
         self.instance_name = instance_name
         # The DDoS mitigation status of the instance. Valid values:
         # 
-        # *   **normal**
-        # *   **abnormal**
+        # - **normal**: Normal.
+        # - **abnormal**: Under attack.
         self.instance_status = instance_status
-        # The type of the asset. The value is fixed to **ecs**.
+        # The type of the assets that are assigned public IP addresses. The value is fixed as **ecs**.
         self.instance_type = instance_type
-        # An array that consists of the details of the asset.
+        # The details of the assets that are assigned public IP addresses.
         self.ip_address_config = ip_address_config
 
     def validate(self):
@@ -150,38 +150,38 @@ class DescribeRCInstanceIpAddressResponseBodyRCInstanceListIpAddressConfig(DaraM
         is_full_protection: int = None,
         region_id: str = None,
     ):
-        # The basic protection threshold for the asset. Unit: Mbit/s.
+        # The basic DDoS Mitigation Threshold of the assets that are assigned public IP addresses. Unit: Mbit/s.
         self.blackhole_threshold = blackhole_threshold
-        # The traffic scrubbing threshold for the asset measured in Mbit/s. Unit: Mbit/s.
+        # The traffic scrubbing threshold of the assets that are assigned public IP addresses. Unit: Mbit/s.
         self.defense_bps_threshold = defense_bps_threshold
-        # The traffic scrubbing threshold for the asset measured in packets per second (PPS). Unit: packets per second (pps).
+        # The message rate scrubbing threshold of the assets that are assigned public IP addresses. Unit: pps.
         self.defense_pps_threshold = defense_pps_threshold
-        # The burstable protection threshold for the asset. Unit: Mbit/s.
+        # The DDoS burstable Mitigation Threshold of the assets that are assigned public IP addresses. Unit: Mbit/s.
         self.elastic_threshold = elastic_threshold
-        # The IP address of the asset.
+        # The IP address of the assets that are assigned public IP addresses.
         self.instance_ip = instance_ip
-        # The DDoS mitigation status of the asset. Valid values:
+        # The DDoS mitigation status of the assets that are assigned public IP addresses. Valid values:
         # 
-        # *   **mitigating**
-        # *   **blackholed**
-        # *   **normal**
+        # - **mitigating**: Cleaning.
+        # - **blackholed**: Black Hole Activated.
+        # - **normal**: Normal.
         self.ip_status = ip_status
-        # The IP version of the instance. Valid values:
+        # The IP protocol version of the instance. Valid values:
         # 
-        # *   **v4**
-        # *   **v6**
+        # - **v4**
+        # - **v6**
         self.ip_version = ip_version
-        # Indicates whether the asset is added to the instance. Valid values:
+        # Indicates whether the assets that are assigned public IP addresses is attached to Anti-DDoS Origin. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Attached.
+        # - **false**: Not attached.
         self.is_bgppack = is_bgppack
-        # Indicates whether best-effort protection is enabled for the asset. Valid values:
+        # Indicates whether best-effort protection is enabled for the assets that are assigned public IP addresses in Anti-DDoS Origin. Valid values:
         # 
-        # *   **0**: Best-effort protection is disabled.
-        # *   **1**: Best-effort protection is enabled.
+        # - **0**: Best-effort protection is not enabled.
+        # - **1**: Best-effort protection is enabled.
         self.is_full_protection = is_full_protection
-        # The region code of the asset.
+        # The region encoding of the assets that are assigned public IP addresses.
         self.region_id = region_id
 
     def validate(self):

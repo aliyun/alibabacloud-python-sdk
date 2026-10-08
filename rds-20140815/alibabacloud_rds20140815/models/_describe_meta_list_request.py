@@ -21,45 +21,39 @@ class DescribeMetaListRequest(DaraModel):
         restore_time: str = None,
         restore_type: str = None,
     ):
-        # The ID of the backup set from which you want to restore data. You can call the DescribeBackups operation to query the IDs of data backup files.
-        # 
-        # >  This parameter is required when you set the **RestoreType** parameter to **BackupSetID**.
+        # The ID of the backup set used for the query. You can call DescribeBackups to query the backup set ID.
+        # > This parameter is required when **RestoreType** is set to **BackupSetID**.
         self.backup_set_id = backup_set_id
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the generated token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # The instance ID. You can call DescribeDBInstances to query the instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The name of the database to query. The system implements exact match based on the value of this parameter and returns the name of the matched database and the names of all tables contained in the database.
-        # 
-        # > If you leave this parameter empty, the system returns all databases that are created on the instance.
+        # The name of the database to query. This parameter supports exact match and returns the specified database name and all tables in the database.
+        # > If you leave this parameter empty, a list of all databases is returned.
         self.get_db_name = get_db_name
         self.owner_id = owner_id
-        # The number of the page to return. Valid values: any non-zero positive integer.**** Default value: **1**.
-        # 
-        # > This parameter only takes effect when you specify the **PageSize** parameter.
+        # The page number. Valid values: greater than **0** and up to the maximum value of Integer. Default value: **1**.
+        # > This parameter takes effect only when it is specified together with **PageSize**.
         self.page_index = page_index
-        # The number of entries to return on each page. Default value: **1**.
-        # 
-        # > This parameter only takes effect when you specify the **PageIndex** parameter.
+        # The number of entries per page. Default value: **1**.
+        # > This parameter takes effect only when it is specified together with **PageIndex**.
         self.page_size = page_size
-        # The name of the database to query. The system implements fuzzy match based on the value of this parameter and returns only the name of the matched database.
-        # 
-        # > For example, if you set the value to `test`, the system returns `testdb1` and `testdb2`. Then, you can specify the **GetDbName** parameter to query tables in the required database.
+        # The name of the database to query. This parameter supports fuzzy match and returns only the matched database names without table names.
+        # > For example, if you specify `test`, the databases `testdb1` and `testdb2` are matched. After you identify the target database, specify the exact database name by using the **GetDbName** parameter to query all tables in the database.
         self.pattern = pattern
         # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The point in time to which you want to restore data. The specified point in time must be earlier than the current time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC. You can call the DescribeBackups operation to query the restorable time range.
-        # 
-        # >  This parameter must be specified when the **RestoreType** parameter is set to **RestoreTime**.
+        # The point in time used for the query. The value must be earlier than the current time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC). You can call DescribeBackups to query available time points.
+        # > This parameter is required when **RestoreType** is set to **RestoreTime**.
         self.restore_time = restore_time
-        # The restoration method that you want to use. Valid values:
+        # The restoration method. Valid values:
         # 
-        # *   **BackupSetID**: Data is restored from the backup set. If you use this value, you must also specify the **BackupSetID** parameter.
-        # *   **RestoreTime**: Data is restored to a specific point in time. If you use this value, you must also specify the **RestoreTime** parameter.
+        # * **BackupSetID**: Restores data from a backup set. You must also specify the **BackupSetID** parameter.
+        # * **RestoreTime**: Restores data to a point in time. You must also specify the **RestoreTime** parameter.
         # 
         # Default value: **BackupSetID**.
         self.restore_type = restore_type

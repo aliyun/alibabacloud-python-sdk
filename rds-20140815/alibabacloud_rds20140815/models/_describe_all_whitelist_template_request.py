@@ -18,10 +18,10 @@ class DescribeAllWhitelistTemplateRequest(DaraModel):
     ):
         # Specifies whether to enable fuzzy search. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Enabled.
+        # - **false**: Disabled.
         self.fuzzy_search = fuzzy_search
-        # The number of entries to return on each page. Enumerated valid values: 10, 30, and 50.
+        # The number of records per page. Valid values: 10, 30, and 50.
         # 
         # This parameter is required.
         self.max_records_per_page = max_records_per_page
@@ -29,13 +29,13 @@ class DescribeAllWhitelistTemplateRequest(DaraModel):
         # 
         # This parameter is required.
         self.page_numbers = page_numbers
-        # The region ID.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) operation to query the available regions.
         self.region_id = region_id
-        # The resource group ID. For more information about resource groups, see related documentation.
+        # The resource group ID. For more information about resource groups, see What is a resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The name of the IP whitelist template. If you specify this parameter when you perform a fuzzy search, you can call the DescribeWhitelistTemplate operation to query the name of the whitelist template during the fuzzy search.
+        # The name of the whitelist template. Specify this parameter for fuzzy search. Fuzzy match is supported for template names. You can call the DescribeWhitelistTemplate operation to obtain the template name.
         self.template_name = template_name
 
     def validate(self):

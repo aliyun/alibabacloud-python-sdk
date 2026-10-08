@@ -16,13 +16,13 @@ class DetachGadInstanceMemberRequest(DaraModel):
         # 
         # This parameter is required.
         self.gad_instance_name = gad_instance_name
-        # The ID of the instance that serves as the unit node you want to remove. You can call the DescribeGadInstances query the instance ID.
+        # The ID of the ApsaraDB RDS instance that corresponds to the unit node you want to remove. You can call DescribeGadInstances to query the instance ID.
         # 
         # This parameter is required.
         self.member_instance_name = member_instance_name
-        # The region ID of the central node. You can call the DescribeGadInstances operation to query the region ID.
+        # The region ID of the central node in the cluster. You can call DescribeGadInstances to query the region ID.
         self.region_id = region_id
-        # The resource group ID. You can call the DescribeDBInstanceAttribute operation to query the resource group ID.
+        # The resource group ID. You can call DescribeDBInstanceAttribute to query the resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):

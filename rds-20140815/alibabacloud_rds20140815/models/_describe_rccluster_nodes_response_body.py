@@ -14,11 +14,8 @@ class DescribeRCClusterNodesResponseBody(DaraModel):
         page: main_models.DescribeRCClusterNodesResponseBodyPage = None,
         request_id: str = None,
     ):
-        # The details of the nodes.
         self.nodes = nodes
-        # The pagination information.
         self.page = page
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -71,11 +68,8 @@ class DescribeRCClusterNodesResponseBodyPage(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The page number.
         self.page_number = page_number
-        # The maximum number of entries returned per page.
         self.page_size = page_size
-        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -127,47 +121,18 @@ class DescribeRCClusterNodesResponseBodyNodes(DaraModel):
         runtime_version: str = None,
         state: str = None,
     ):
-        # The time when the node was created.
         self.creation_time = creation_time
-        # The container version.
         self.docker_version = docker_version
-        # The image ID of the node.
         self.image_id = image_id
-        # The node ID.
         self.instance_id = instance_id
-        # The node role. Valid values:
-        # 
-        # *   **Master**: master node
-        # *   **Worker**: worker node
         self.instance_role = instance_role
-        # The IP address.
         self.ip_addresses = ip_addresses
-        # Indicates whether the node is provided by Alibaba Cloud. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.is_aliyun_node = is_aliyun_node
-        # The node name, which is the identifier of the RDS Custom node in the cluster.
         self.node_name = node_name
-        # The node pool ID.
         self.node_pool_id = node_pool_id
-        # Indicates whether the node is ready. Valid values:
-        # 
-        # *   **Ready**: The node is ready.
-        # *   **NotReady**: The node is not ready.
-        # *   **Unknown**: The status of the node is unknown.
-        # *   **Offline**: The node is offline.
         self.node_status = node_status
         self.pod_count = pod_count
-        # The runtime of the ACK cluster.
         self.runtime_version = runtime_version
-        # The node status. Valid values:
-        # 
-        # *   **pending**
-        # *   **running**
-        # *   **starting**
-        # *   **stopping**
-        # *   **stopped**
         self.state = state
 
     def validate(self):

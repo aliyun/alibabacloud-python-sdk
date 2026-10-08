@@ -13,7 +13,7 @@ class QueryNotifyResponseBody(DaraModel):
         data: main_models.QueryNotifyResponseBodyData = None,
         request_id: str = None,
     ):
-        # The response parameters.
+        # The returned data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -54,13 +54,13 @@ class QueryNotifyResponseBodyData(DaraModel):
         page_size: int = None,
         total_record_count: int = None,
     ):
-        # The details of notifications.
+        # The list of notifications.
         self.notify_item_list = notify_item_list
-        # The page number of the page returned.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned on each page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of records.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -125,58 +125,50 @@ class QueryNotifyResponseBodyDataNotifyItemList(DaraModel):
         template_name: str = None,
         type: str = None,
     ):
-        # The ID of the Alibaba Cloud account.
+        # The ID of the current Alibaba Cloud account.
         self.ali_uid = ali_uid
-        # Indicates whether the notification has been confirmed. You can call the [ConfirmNotify](https://help.aliyun.com/document_detail/610444.html) operation to mark the notification as confirmed. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the notification has been confirmed, that is, whether the [ConfirmNotify](https://help.aliyun.com/document_detail/610444.html) operation has been called to mark the notification as confirmed. Valid values:
+        # * **true**: The notification has been confirmed.
+        # * **false**: The notification has not been confirmed.
         self.confirm_flag = confirm_flag
-        # The UID of the contact who called the [ConfirmNotify](https://help.aliyun.com/document_detail/610444.html) operation to mark the notification as confirmed. The contact belongs to the current Alibaba Cloud account.
+        # The UID of the notification recipient under the current Alibaba Cloud account who called the [ConfirmNotify](https://help.aliyun.com/document_detail/610444.html) operation to mark the notification as confirmed.
         # 
-        # The value **0** indicates that the notification is automatically confirmed by the system.
+        # A return value of **0** indicates that the notification was automatically confirmed by the system.
         self.confirmor = confirmor
         # The time when the notification was created.
         self.gmt_created = gmt_created
         # The time when the notification was modified.
         self.gmt_modified = gmt_modified
-        # The ID of the notification.
+        # The notification ID.
         self.id = id
-        # The number of times that repeatedly sent notifications are blocked.
+        # The number of times that duplicate notifications were blocked.
         self.idempotent_count = idempotent_count
-        # This parameter ensures the idempotence of the notification and prevents the notification from being repeatedly sent.
+        # The idempotency identifier used to prevent duplicate notifications from being sent.
         self.idempotent_id = idempotent_id
         # The level of the notification. Valid values:
-        # 
-        # *   **help**
-        # *   **success**
-        # *   **warning**
-        # *   **error**
-        # *   **loading**
-        # *   **notice**
+        # * **help**: help
+        # * **success**: execution succeeded
+        # * **warning**: warning
+        # * **error**: execution failed
+        # * **loading**: task in progress
+        # * **notice**: general
         self.level = level
-        # The element in the notification template. This parameter is a JSON string. Fields in the JSON string vary based on the value of the **TemplateName** parameter.
-        # 
-        # *   If the **TemplateName** parameter is **RenewalRecommend**, the JSON string contains the following fields:
-        # 
-        #     *   **instanceName**: the ID of the instance that is about to expire
-        #     *   **reservedTime**: the remaining validity period of the instance in days
-        # 
-        # *   If the **TemplateName** parameter is **InstanceCreateFailed**, the JSON string contains the following fields:
-        # 
-        #     *   **orderId**: the ID of the order to purchase the instance
-        #     *   **reason**: the cause of the instance creation failure
+        # The elements in the notification template, which are represented as a JSON string. The parameters in the JSON string vary based on the value of **TemplateName**.
+        # * If **TemplateName** is set to **RenewalRecommend**:
+        #     * **instanceName**: the ID of the instance that is about to expire.
+        #     * **reservedTime**: the number of remaining days.
+        # * If **TemplateName** is set to **InstanceCreateFailed**:
+        #     * **orderId**: the order ID for the instance purchase.
+        #     * **reason**: the reason why the instance failed to be created.
         self.notify_element = notify_element
-        # The template of the notification. Valid values:
-        # 
-        # *   **RenewalRecommend**: The template that is used to notify of renewal suggestions.
-        # *   **InstanceCreateFailed**: The template that is used to notify that an instance fails to be created and is refunded.
+        # The notification template. Valid values:
+        # * **RenewalRecommend**: renewal recommendation
+        # * **InstanceCreateFailed**: instance creation failed with refund
         self.template_name = template_name
-        # The type of the notification. Valid values:
-        # 
-        # *   **Sell**: sales notification
-        # *   **Operation**: O\\&M notification
-        # *   **Promotion**: promotion notification
+        # The notification type. Valid values:
+        # * **Sell**: sale-related notification
+        # * **Operation**: O&M notification
+        # * **Promotion**: promotional notification
         self.type = type
 
     def validate(self):

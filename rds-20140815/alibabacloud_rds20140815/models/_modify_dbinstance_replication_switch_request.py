@@ -17,18 +17,17 @@ class ModifyDBInstanceReplicationSwitchRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # Specifies whether to enable the native replication feature. Valid values:
-        # 
-        # *   **ON**
-        # *   **OFF**
+        # Specifies whether to enable or disable native replication mode. Valid values:
+        # - **ON**: Enable native replication.
+        # - **OFF**: Disable native replication.
         # 
         # This parameter is required.
         self.external_replication = external_replication
-        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group ID. You can leave this parameter empty.
+        # The resource group ID. This parameter can be left empty.
         self.resource_group_id = resource_group_id
         self.resource_owner_id = resource_owner_id
 

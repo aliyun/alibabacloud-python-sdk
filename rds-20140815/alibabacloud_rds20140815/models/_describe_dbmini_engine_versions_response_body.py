@@ -19,15 +19,15 @@ class DescribeDBMiniEngineVersionsResponseBody(DaraModel):
     ):
         # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The number of entries returned per page.
+        # The number of records per page.
         self.max_records_per_page = max_records_per_page
-        # The details of the minor engine version.
+        # The list of minor engine versions.
         self.minor_version_items = minor_version_items
-        # The page number returned.
+        # The current page number.
         self.page_numbers = page_numbers
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -104,53 +104,48 @@ class DescribeDBMiniEngineVersionsResponseBodyMinorVersionItems(DaraModel):
         status_desc: str = None,
         tag: str = None,
     ):
-        # The PostgreSQL version to which the minor engine version corresponds. For more information, see [Release notes for AliPG](https://help.aliyun.com/document_detail/126002.html).
-        # 
-        # >  This parameter is available only for instances that run **PostgreSQL**.
+        # The community minor version that corresponds to the minor engine version.
         self.community_minor_version = community_minor_version
-        # The database engine that corresponds to the minor engine version.
+        # The database engine that corresponds to the minor version.
         self.engine = engine
-        # The database engine version that corresponds to the minor engine version.
+        # The database engine version that corresponds to the minor version.
         self.engine_version = engine_version
         # The expiration time of the minor engine version.
         self.expire_date = expire_date
         # The expiration status of the minor engine version. Valid values:
         # 
-        # *   **vaild**
-        # *   **expired**
+        # - **vaild**: Milvus version is valid.
+        # - **expired**: Milvus version has expired.
         # 
-        # >  If the minor engine version is in the Offline state, the minor engine version is discontinued. In this case, ignore the expiration status. If the minor engine version is in the Online state and the expiration state is expired, the minor engine version expires. If the expiration state is vaild, the minor engine version is still in its lifecycle.
+        # > If the offline status is Offline, Milvus version has been taken offline and the expiration status is ignored. If the offline status is Online and the expiration status is expired, Milvus version has exceeded its lifecycle. If the offline status is Online and the expiration status is vaild, Milvus version is still within its lifecycle.
         self.expire_status = expire_status
-        # An internal parameter. You do not need to specify this parameter.
+        # An internal parameter. You can ignore this parameter.
         self.is_hotfix_version = is_hotfix_version
-        # The minor engine version.
+        # The version number of the minor engine version.
         self.minor_version = minor_version
-        # The RDS edition of the instance that runs the minor engine version. Valid values:
-        # 
-        # *   **Basic**: RDS Basic Edition
-        # *   **HighAvailability**: RDS High-availability Edition
-        # *   **Finance**: RDS Enterprise Edition
+        # The instance edition that corresponds to the minor version. Valid values:
+        # * **Basic**: Basic Edition.
+        # * **HighAvailability**: high-availability series.
+        # * **Finance**: RDS Enterprise Edition.
         self.node_type = node_type
-        # The URL of the release notes for the minor engine version.
+        # The URL of the release notes for the minor version.
         self.release_note = release_note
         # The release type. Valid values:
-        # 
-        # *   **LTS**: a long-term version
-        # *   **BETA**: a preview version
+        # * **LTS**: Long-term support version.
+        # * **BETA**: Preview version.
         self.release_type = release_type
-        # The status of the minor engine version. Valid values:
+        # The offline status of the minor engine version. Valid values:
+        # - **Offline**: Milvus version has been taken offline.
+        # - **Online**: Milvus version is online.
         # 
-        # *   **Offline**: discontinued
-        # *   **Online**: available
-        # 
-        # >  If the minor engine version is in the Offline state, the minor engine version is discontinued. In this case, ignore the expiration status. If the minor engine version is in the Online state and the expiration state is expired, the minor engine version expires. If the expiration state is vaild, the minor engine version is still in its lifecycle.
+        # > If the offline status is Offline, Milvus version has been taken offline and the expiration status is ignored. If the offline status is Online and the expiration status is expired, Milvus version has exceeded its lifecycle. If the offline status is Online and the expiration status is vaild, Milvus version is still within its lifecycle.
         self.status_desc = status_desc
         # The tag that corresponds to the minor engine version. Valid values:
         # 
-        # *   **pgsql_docker_image**: tag of common instances
-        # *   **pgsql_babelfish_image**: tag of instances for which Babelfish is enabled
+        # - **pgsql_docker_image**: general instance tag.
+        # - **pgsql_babelfish_image**: Babelfish instance tag.
         # 
-        # >  This parameter is available only for instances that run **PostgreSQL**.
+        # > This value is returned only for **PostgreSQL**.
         self.tag = tag
 
     def validate(self):

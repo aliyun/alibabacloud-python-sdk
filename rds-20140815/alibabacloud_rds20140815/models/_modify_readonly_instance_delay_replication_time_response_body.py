@@ -12,9 +12,9 @@ class ModifyReadonlyInstanceDelayReplicationTimeResponseBody(DaraModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # The ID of the read-only instance.
+        # The instance ID of the read-only instance.
         self.dbinstance_id = dbinstance_id
-        # The latency at which to replicate data from the primary instance to the read-only instance. Unit: seconds.
+        # The delayed replication time. Unit: seconds.
         self.read_sqlreplication_time = read_sqlreplication_time
         # The request ID.
         self.request_id = request_id

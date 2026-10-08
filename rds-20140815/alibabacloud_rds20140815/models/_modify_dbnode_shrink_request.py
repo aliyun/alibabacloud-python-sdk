@@ -21,12 +21,17 @@ class ModifyDBNodeShrinkRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # Specifies whether to automatically complete the payment. Valid values:
+        # Specifies whether to automatically complete automatic payment. Valid values:
         # 
-        # 1.  **true**: automatically completes the payment. Make sure that your account balance is sufficient.
-        # 2.  **false**: does not automatically complete the payment. An unpaid order is generated.
+        # 1. **true**: Automatic payment is automatically completed. Make sure that your account balance is sufficient.
         # 
-        # >  The default value is true. If your account balance is insufficient, you can set the AutoPay parameter to false to generate an unpaid order. Then, you can log on to the ApsaraDB RDS console to pay for the order.
+        # 1. **false**: An order is generated but no payment is made.
+        # 
+        # 
+        # 
+        # 
+        # > Default value: true. If your payment method has insufficient balance, set AutoPay to false. In this case, an unpaid order is generated. You can log on to the ApsaraDB RDS console to complete automatic payment.
+        # >
         self.auto_pay = auto_pay
         # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
@@ -34,36 +39,31 @@ class ModifyDBNodeShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The new storage capacity of the instance. Unit: GB For more information, see [Instance types](https://help.aliyun.com/document_detail/26312.html).
+        # The new instance storage capacity. Unit: GB. For details, see [Instance types](https://help.aliyun.com/document_detail/26312.html).
         self.dbinstance_storage = dbinstance_storage
         # The storage type of the instance. Valid values:
-        # 
-        # *   **cloud_essd**: performance level 1 (PL1) enhanced SSD (ESSD)
-        # *   **cloud_essd2**: PL2 ESSD
-        # *   **cloud_essd3**: PL3 ESSD
+        # * **cloud_essd**: PL1 ESSD
+        # * **cloud_essd2**: PL2 ESSD
+        # * **cloud_essd3**: PL3 ESSD
         self.dbinstance_storage_type = dbinstance_storage_type
-        # The information about the node.
-        # 
-        # >  This parameter is used for ApsaraDB RDS for MySQL instances that run RDS Cluster Edition.
+        # The node information.
+        # > This parameter is used for MySQL Cluster Edition instances.
         self.dbnode_shrink = dbnode_shrink
-        # Specifies whether to perform a dry run. Valid values: Valid values:
-        # 
-        # *   **true**: performs a dry run and does not perform the actual request. The system checks items such as the request parameters, request format, service limits, and available resources.
-        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, the operation is performed.
+        # Specifies whether to perform a dry run for this node modification. Valid values:
+        # * **true**: A dry run is performed without executing the modification. The system checks items such as request parameters, request format, business limits, and inventory.
+        # * **false**: A request is sent. After the request passes the check, the modification is directly executed. This is the default value.
         self.dry_run = dry_run
-        # The time when you want the change to take effect. Valid values:
-        # 
-        # *   **Immediate** (default): The change immediately takes effect.
-        # *   **MaintainTime**: The effective time is within the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+        # The effective period. Valid values:
+        # * **Immediate** (default): The modification takes effect immediately.
+        # * **MaintainTime**: The modification takes effect during the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
         self.effective_time = effective_time
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # Specifies whether to asynchronously perform the operation. Valid values:
+        # Specifies whether to asynchronously execute the provisioning. Valid values:
+        # * **true**: The request only submits an order, and the modification is asynchronously executed. This is the default value.
+        # * **false**: After the request passes the check, the modification is directly executed.
         # 
-        # *   **true** (default): sends only the order. The operation is asynchronously performed.
-        # *   **false**: sends the request. After the request passes the check, the operation is directly performed.
-        # 
-        # >  The default value is true, which indicates that the change operation is asynchronously performed. If you set this parameter to false, the change operation is simultaneously performed. This prolongs the response time of the operation.
+        # > Default value: true. The modification is asynchronously executed. If you set this parameter to false, the modification is synchronously executed, and the response time is relatively longer.
         self.produce_async = produce_async
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

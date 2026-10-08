@@ -15,7 +15,7 @@ class DescribeAvailableRecoveryTimeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the cross-region data backup file. You can call the DescribeCrossRegionBackups operation to query the backup file ID.
+        # The ID of the cross-region backup file. You can call the DescribeCrossRegionBackups operation to query the backup set ID.
         # 
         # This parameter is required.
         self.cross_backup_id = cross_backup_id

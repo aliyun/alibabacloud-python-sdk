@@ -18,14 +18,13 @@ class DescribeDBInstanceNetInfoForChannelRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The ID of the instance. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/26232.html) operation to query the instance ID.
+        # The instance ID. You can call DescribeDBInstances to query the instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The type of the endpoint to query. Valid values:
-        # 
-        # *   **0**: a regular endpoint. This is the default value.
-        # *   **1**: a read/write splitting endpoint that is assigned after the shared proxy feature is enabled.
+        # The type of endpoint to query. Valid values:
+        # * **0** (default): regular endpoints.
+        # * **1**: read/write splitting endpoints of the shared database proxy.
         self.dbinstance_net_rwsplit_type = dbinstance_net_rwsplit_type
         # An internal parameter. You do not need to specify this parameter.
         self.flag = flag

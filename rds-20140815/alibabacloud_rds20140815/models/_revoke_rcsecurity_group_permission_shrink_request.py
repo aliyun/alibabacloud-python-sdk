@@ -12,18 +12,9 @@ class RevokeRCSecurityGroupPermissionShrinkRequest(DaraModel):
         security_group_id: str = None,
         security_group_rule_id_list_shrink: str = None,
     ):
-        # The direction of the security group rules that you want to delete. Valid values:
-        # 
-        # *   **ingress**: inbound security group rules.
-        # *   **egress**: outbound security group rules.
-        # 
-        # >  You can specify security group rules only in the same direction in a request.
         self.direction = direction
-        # The region ID.
         self.region_id = region_id
-        # The ID of the security group.
         self.security_group_id = security_group_id
-        # The IDs of the security group rules that you want to delete.
         self.security_group_rule_id_list_shrink = security_group_rule_id_list_shrink
 
     def validate(self):

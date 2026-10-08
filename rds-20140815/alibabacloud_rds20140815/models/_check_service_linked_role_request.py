@@ -16,8 +16,7 @@ class CheckServiceLinkedRoleRequest(DaraModel):
     ):
         self.owner_id = owner_id
         # The region ID.
-        # 
-        # >  You can specify any region for this parameter, which does not affect your query results. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
+        # > This parameter does not affect the query result. You can specify any region ID. You can call the DescribeRegions operation to query available region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -25,9 +24,8 @@ class CheckServiceLinkedRoleRequest(DaraModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The SLR name.
-        # 
-        # >  For more information about the SLRs supported by ApsaraDB RDS, see [Service-linked roles](https://help.aliyun.com/document_detail/342840.html).
+        # The service-linked role.
+        # > For more information about the service-linked roles supported by ApsaraDB RDS, see [Service-linked roles](https://help.aliyun.com/document_detail/342840.html).
         # 
         # This parameter is required.
         self.service_linked_role = service_linked_role

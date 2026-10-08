@@ -15,33 +15,32 @@ class ModifyRCDiskSpecRequest(DaraModel):
         region_id: str = None,
     ):
         # Specifies whether to enable automatic payment. Valid values:
+        # - **true** (default): Automatic payment is enabled. Make sure that your account balance is sufficient.
+        # - **false**: Only an order is generated. No payment is made.
         # 
-        # *   **true (default)**: automatically completes the payment. Make sure that your account balance is sufficient.
-        # *   **false**: does not automatically complete the payment. An unpaid order is generated.
-        # 
-        # >  If your account balance is insufficient, you can set the AutoPay parameter to false. In this case, an unpaid order is generated. You can complete the payment in the Expenses and Costs console.
+        # > If your payment method has an insufficient balance, set AutoPay to false. An unpaid order is generated. You can log on to the ApsaraDB RDS console to complete the payment.
+        # >
         self.auto_pay = auto_pay
-        # The new disk type. Valid values:
-        # 
-        # *   **cloud_essd**: ESSD.
-        # *   **cloud_auto**: ESSD AutoPL disk
-        # 
-        # This parameter is empty by default.
+        # The type of the cloud disk. Valid values:
+        # - **cloud_essd** (default): ESSD cloud disk.
+        # - **cloud_auto**: ESSD AutoPL cloud disk.
+        # - **cloud_ssd**: standard SSD.
         self.disk_category = disk_category
         # The cloud disk ID.
         self.disk_id = disk_id
-        # Specifies whether to perform a dry run. Valid values: Valid values:
-        # 
-        # *   **true**: performs a dry run and does not perform the actual request. The system checks the request parameters, request syntax, limits, and available resources.
-        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, the operation is performed.
+        # Specifies whether to perform a dry run for this operation. Valid values:
+        # * **true**: A dry run is performed without executing the change. The check items include request parameters, request format, business limits, and inventory.
+        # * **false** (default): A normal request is sent. After the check is passed, the change is directly executed.
         self.dry_run = dry_run
-        # The PL of the disk. Valid values:
+        # The performance level (PL) of the ESSD cloud disk. Valid values:
         # 
-        # *   **PL1** (default): A single ESSD can deliver up to 50,000 random read/write IOPS.
-        # *   **PL2**: A single ESSD delivers up to 100,000 random read/write IOPS.
-        # *   **PL3**: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+        # - **PL1** (default): A maximum of 50,000 random read/write IOPS per disk.
+        # 
+        # - **PL2**: A maximum of 100,000 random read/write IOPS per disk.
+        # 
+        # - **PL3**: A maximum of 1,000,000 random read/write IOPS per disk.
         self.performance_level = performance_level
-        # The ID of the region in which the instance resides.
+        # The region ID of the instance.
         self.region_id = region_id
 
     def validate(self):

@@ -17,7 +17,7 @@ class DescribeUpgradeMajorVersionTasksRequest(DaraModel):
         target_major_version: str = None,
         task_id: int = None,
     ):
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # The instance ID. You can call DescribeDBInstances to obtain the instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
@@ -25,7 +25,7 @@ class DescribeUpgradeMajorVersionTasksRequest(DaraModel):
         self.owner_id = owner_id
         # The page number.
         # 
-        # Pages start from 1.
+        # Valid values: a value greater than 0 that does not exceed the maximum value of Integer.
         # 
         # Default value: **1**.
         self.page_number = page_number
@@ -37,16 +37,15 @@ class DescribeUpgradeMajorVersionTasksRequest(DaraModel):
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The major engine version of the new instance. Valid values:
-        # 
-        # *   **10.0**
-        # *   **11.0**
-        # *   **12.0**
-        # *   **13.0**
-        # *   **14.0**
-        # *   **15.0**
+        # The major engine version after the upgrade. Valid values:
+        # * **10.0**
+        # * **11.0**
+        # * **12.0**
+        # * **13.0**
+        # * **14.0**
+        # * **15.0**
         self.target_major_version = target_major_version
-        # A reserved parameter. You do not need to specify this parameter.
+        # A reserved parameter. You do not need to configure this parameter.
         self.task_id = task_id
 
     def validate(self):

@@ -16,17 +16,9 @@ class DescribeRCClusterNodesRequest(DaraModel):
     ):
         self.cluster_id = cluster_id
         self.node_pool_id = node_pool_id
-        # The page number.
         self.page_number = page_number
-        # The number of entries per page. Valid values: **1 to 100**.
-        # 
-        # Default value: **30**.
         self.page_size = page_size
-        # The region ID.
         self.region_id = region_id
-        # The virtual private cloud (VPC) ID.
-        # 
-        # >  This is a reserved parameter.
         self.vpc_id = vpc_id
 
     def validate(self):

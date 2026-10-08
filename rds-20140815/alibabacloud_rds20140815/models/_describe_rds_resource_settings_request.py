@@ -13,10 +13,9 @@ class DescribeRdsResourceSettingsRequest(DaraModel):
         resource_owner_id: int = None,
     ):
         self.owner_id = owner_id
-        # The location of the notification.
-        # 
-        # *   noticeBar: notification bar
-        # *   popUp: popup
+        # The resource niche. Valid values:
+        # - noticeBar: notification bar.
+        # - popUp: pop-up dialog box.
         # 
         # This parameter is required.
         self.resource_niche = resource_niche

@@ -20,43 +20,42 @@ class DescribeClassDetailsResponseBody(DaraModel):
         reference_price: str = None,
         request_id: str = None,
     ):
-        # The RDS edition of the instance. Valid values:
-        # 
-        # *   **Basic**: RDS Basic Edition
-        # *   **HighAvailability**: RDS High-availability Edition
-        # *   **AlwaysOn**: RDS Cluster Edition
-        # *   **Finance**: RDS Enterprise Edition
+        # The edition. Valid values:
+        # * **Basic**: Basic Edition
+        # * **HighAvailability**: High-availability Edition
+        # * **AlwaysOn**: Cluster Edition
+        # * **Finance**: RDS Enterprise Edition
         self.category = category
-        # The code of the instance type.
+        # The instance type code.
         self.class_code = class_code
-        # The instance family of the instance.
+        # The instance family.
         self.class_group = class_group
-        # The number of CPU cores that are supported by the instance type. Unit: cores.
+        # The number of CPU cores for the instance type. Unit: cores.
         self.cpu = cpu
-        # The storage type of the instance. Valid values:
-        # 
-        # *   **local_ssd**: local SSDs
-        # *   **cloud_ssd**: standard SSDs
-        # *   **cloud_essd**: enhanced SSDs (ESSDs) of performance level 1 (PL1)
-        # *   **cloud_essd2**: ESSDs of PL2
-        # *   **cloud_essd3**: ESSD of PL3
+        # The storage type. Valid values:
+        # * **local_ssd**: local SSD
+        # * **cloud_ssd**: standard SSD
+        # * **cloud_essd**: PL1 ESSD
+        # * **cloud_essd2**: PL2 ESSD
+        # * **cloud_essd3**: PL3 ESSD
         self.dbinstance_storage_type = dbinstance_storage_type
-        # The architecture of the instance.
+        # The architecture.
         self.instruction_set_arch = instruction_set_arch
         # The maximum number of connections.
         self.max_connections = max_connections
-        # The maximum I/O bandwidth that is supported by the instance type. Unit: Mbit/s.
+        # The maximum I/O bandwidth for the instance type. Unit: Mbit/s.
         self.max_iombps = max_iombps
-        # The maximum input/output operations per second (IOPS) that is supported by the instance type. Unit: operations per second.
+        # The maximum IOPS for the instance type. Unit: operations per second.
         self.max_iops = max_iops
-        # The memory size. Unit: GB.
+        # The memory capacity. Unit: GB.
         self.memory_class = memory_class
         # The price.
         # 
-        # Unit: cents (US dollars).
+        # <props="china">Unit: cents (CNY).
+        # <props="intl">Unit: cents (USD).
         # 
-        # > *   If you set the CommodityCode parameter to a value that indicates the pay-as-you-go billing method, the ReferencePrice parameter specifies the hourly fee that you must pay.
-        # > *   If you set the CommodityCode parameter to a value that indicates the subscription billing method, the ReferencePrice parameter specifies the monthly fee that you must pay.
+        # > * If you set the CommodityCode parameter to a pay-as-you-go commodity code, the hourly price is returned.
+        # > * If you set the CommodityCode parameter to a subscription commodity code, the monthly price is returned.
         self.reference_price = reference_price
         # The request ID.
         self.request_id = request_id

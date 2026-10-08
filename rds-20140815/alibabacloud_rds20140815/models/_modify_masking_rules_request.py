@@ -22,17 +22,27 @@ class ModifyMaskingRulesRequest(DaraModel):
         rule_config: main_models.ModifyMaskingRulesRequestRuleConfig = None,
         rule_name: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # The database name.
         self.dbname = dbname
+        # The name of the default encryption or masking algorithm.
         self.default_algo = default_algo
+        # Specifies whether the rule is enabled. Valid values: true and false.
         self.enabled = enabled
+        # The rule algorithms. You can specify multiple algorithms. Masking algorithms can include additional parameters. Format: {name: algorithm1}, {name: algorithm2, params: {encryption position, encryption length}}.
         self.masking_algo = masking_algo
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The rule configuration in JSON string format.
         self.rule_config = rule_config
+        # The name of the rule to modify.
+        # 
         # This parameter is required.
         self.rule_name = rule_name
 
@@ -125,8 +135,11 @@ class ModifyMaskingRulesRequestRuleConfig(DaraModel):
         databases: List[str] = None,
         tables: List[str] = None,
     ):
+        # The list of columns.
         self.columns = columns
+        # The list of databases.
         self.databases = databases
+        # The list of tables.
         self.tables = tables
 
     def validate(self):

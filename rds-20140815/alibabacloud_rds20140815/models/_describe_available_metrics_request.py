@@ -11,7 +11,7 @@ class DescribeAvailableMetricsRequest(DaraModel):
         resource_group_id: str = None,
         resource_owner_id: int = None,
     ):
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # The instance ID. You can call DescribeDBInstances to obtain the instance ID.
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name

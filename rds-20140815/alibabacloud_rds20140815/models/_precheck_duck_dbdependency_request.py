@@ -13,7 +13,7 @@ class PrecheckDuckDBDependencyRequest(DaraModel):
         resource_owner_id: int = None,
         target_mode: str = None,
     ):
-        # The primary instance ID.
+        # The instance ID of the primary instance.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id

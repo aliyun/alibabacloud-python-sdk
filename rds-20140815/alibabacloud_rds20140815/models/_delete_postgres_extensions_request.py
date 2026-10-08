@@ -19,21 +19,21 @@ class DeletePostgresExtensionsRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # The instance ID. You can call DescribeDBInstances to query the instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The database on which the extension is installed. If you want to specify multiple databases, separate the databases with commas (,).
+        # The database in which the extension is installed. Separate multiple databases with commas (,).
         # 
         # This parameter is required.
         self.dbnames = dbnames
-        # The name of the extension. If you want to specify multiple extensions, separate the extension names with commas (,).
+        # The extension name. Separate multiple extensions with commas (,).
         # 
         # This parameter is required.
         self.extensions = extensions
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

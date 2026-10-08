@@ -12,11 +12,11 @@ class ConfirmNotifyRequest(DaraModel):
         confirmor: int = None,
         notify_id_list: List[int] = None,
     ):
-        # The ID of the Alibaba Cloud account that is used to confirm the notification. You can set this parameter to **0**, which indicates that the notification is confirmed by the system.
+        # The Alibaba Cloud account ID of the user who confirms the notification. You can also set this parameter to **0**, which indicates that the notification is automatically confirmed by the system.
         # 
         # This parameter is required.
         self.confirmor = confirmor
-        # The notification IDs.
+        # The list of notification IDs.
         # 
         # This parameter is required.
         self.notify_id_list = notify_id_list

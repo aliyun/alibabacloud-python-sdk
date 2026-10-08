@@ -13,9 +13,9 @@ class DescribeDBInstanceEndpointsResponseBody(DaraModel):
         data: main_models.DescribeDBInstanceEndpointsResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -54,12 +54,12 @@ class DescribeDBInstanceEndpointsResponseBodyData(DaraModel):
         ip_version: str = None,
     ):
         self.dbinstance_endpoints = dbinstance_endpoints
-        # The name of the instance.
+        # The instance name.
         self.dbinstance_name = dbinstance_name
-        # The version of the IP protocol. Valid values:
+        # The IP address protocol version. Valid values:
         # 
-        # *   **ipv4**
-        # *   **ipv6**
+        # - **ipv4**
+        # - **ipv6**
         self.ip_version = ip_version
 
     def validate(self):

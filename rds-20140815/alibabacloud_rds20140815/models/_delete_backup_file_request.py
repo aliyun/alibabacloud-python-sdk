@@ -16,18 +16,18 @@ class DeleteBackupFileRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # You can specify only the ID of a backup file whose backup policy is Single-database Backup. You can specify the IDs of up to 100 backup files at a time. Separate the IDs with commas (,). You can call the DescribeBackups operation to query the IDs of data backup files.
+        # The backup set IDs. Only backup set IDs of individual database backup policies are supported. You can specify up to 100 backup set IDs at a time. Separate multiple IDs with commas (,). You can call DescribeBackups to obtain the backup set IDs.
         self.backup_id = backup_id
-        # The time before which the backup files you want to delete are generated. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # Deletes backup files that were created before the specified point in time. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
         self.backup_time = backup_time
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # The instance ID. You can call DescribeDBInstances to obtain the instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The name of the database.
+        # The database name.
         self.dbname = dbname
         self.owner_id = owner_id
-        # The region ID. You can call the DescribeDBInstanceAttribute operation to query the region ID.
+        # The region ID. You can call DescribeDBInstanceAttribute to obtain the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

@@ -21,17 +21,13 @@ class ResetAccountRequest(DaraModel):
         self.account_name = account_name
         # The new password of the privileged account.
         # 
-        # > 
-        # 
-        # *   The password must be 8 to 32 characters in length.
-        # 
-        # *   It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
-        # 
-        # *   It can contain the following special characters: `! @ # $ & ; % ^ * () _ + - =`.
+        # > * The password must be 8 to 32 characters in length.
+        # > * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+        # > * Special characters include `!@#$&%^*()_+-=`.
         # 
         # This parameter is required.
         self.account_password = account_password
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # The instance ID. You can call DescribeDBInstances to query the instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id

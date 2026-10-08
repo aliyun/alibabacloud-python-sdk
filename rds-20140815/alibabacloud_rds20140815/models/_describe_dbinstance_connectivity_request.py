@@ -27,7 +27,7 @@ class DescribeDBInstanceConnectivityRequest(DaraModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The source IP address.
+        # The source IP address of the user.
         # 
         # This parameter is required.
         self.source_ip_address = source_ip_address

@@ -27,89 +27,81 @@ class MigrateToOtherZoneRequest(DaraModel):
         zone_id_slave_1: str = None,
         zone_id_slave_2: str = None,
     ):
-        # The RDS edition of the instance. Valid values:
+        # The instance edition. Valid values:
         # 
-        # *   **Basic**: RDS Basic Edition
-        # *   **HighAvailability**: RDS High-availability Edition
-        # *   **AlwaysOn**: SQL Server on RDS Cluster Edition
-        # *   **cluster**: MySQL on RDS Cluster Edition
-        # *   **Finance**: RDS Enterprise Edition
+        # * **Basic**: Basic Edition
+        # * **HighAvailability**: High-availability Edition
+        # * **AlwaysOn**: SQL Server Cluster Edition
+        # * **cluster**: MySQL Cluster Edition
+        # * **Finance**: RDS Enterprise Edition
         self.category = category
         self.custom_extra_info = custom_extra_info
-        # The new instance type of the instance. You can change the instance type of the instance. You cannot change the storage type of the instance. If you set **IsModifySpec** to **true**, you must specify at least one of DBInstanceClass and **DBInstanceStorage**.
+        # The target instance type of the destination instance. Only the instance type can be changed. The storage type cannot be changed.
+        # When the **IsModifySpec** parameter settings require **true**, you must specify at least one of this parameter and **DBInstanceStorage**.
         # 
         # For more information about instance types, see [Primary ApsaraDB RDS for MySQL instance types](https://help.aliyun.com/document_detail/276975.html).
         self.dbinstance_class = dbinstance_class
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # The instance ID. You can call DescribeDBInstances to query the instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The new storage capacity of the instance. If you set **IsModifySpec** to **true**, you must specify at least one of DBInstanceStorage and **DBInstanceClass**.
+        # The destination storage capacity. When the **IsModifySpec** parameter settings require **true**, you must specify at least one of this parameter and **DBInstanceClass**.
         # 
-        # Unit: GB. The available storage capacity range varies based on the instance type of the instance. For more information, see [Primary ApsaraDB RDS for MySQL instance types](https://help.aliyun.com/document_detail/276975.html).
+        # Unit: GB.
+        # Valid values: The storage capacity varies based on the instance type. For more information, see [Primary ApsaraDB RDS for MySQL instance types](https://help.aliyun.com/document_detail/276975.html).
         self.dbinstance_storage = dbinstance_storage
-        # The storage type of the instance. Valid values:
-        # 
-        # *   **local_ssd**: local SSD. This is the recommended storage type.
-        # *   **general_essd**: general Enterprise SSD (ESSD). This is the recommended storage type.
-        # *   **cloud_essd**: PL1 ESSD
-        # *   **cloud_essd2**: PL2 ESSD
-        # *   **cloud_essd3**: PL3 ESSD
-        # *   **cloud_ssd**: standard SSD. This storage type is not recommended. Standard SSDs are no longer available for purchase in some Alibaba Cloud regions.
-        # 
-        # The default value of this parameter is determined by the instance type specified by the **DBInstanceClass** parameter.
-        # 
-        # *   If the instance type specifies the local SSD storage type, the default value of this parameter is **local_ssd**.
-        # *   If the instance type specifies the standard SSD or ESSD storage type, the default value of this parameter is **cloud_essd**.
-        # 
-        # >  Serverless instances support only PL1 ESSDs and general ESSDs.
+        # The instance storage type. Valid values:
+        # - cloud_essd: PL1 ESSD cloud disk.
+        # - cloud_essd2: PL2 ESSD cloud disk.
+        # - cloud_essd3: PL3 ESSD cloud disk.
+        # - cloud_ssd: standard SSD (not recommended because standard SSDs are no longer available for purchase in some regions).
         self.dbinstance_storage_type = dbinstance_storage_type
-        # The time when you want the change to take effect. Valid values:
+        # The effective period. Valid values:
+        # * **Immediate**: The migration takes effect immediately. This is the default value.
+        # * **MaintainTime**: The migration takes effect during the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+        # * **ScheduleTime**: The migration takes effect at a custom time.
         # 
-        # *   **Immediately** (default): The change immediately takes effect.
-        # *   **MaintainTime**: The change takes effect during the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
-        # *   **ScheduleTime**: The change takes effect at the point in time that you specify.
-        # 
-        # >  If you set this parameter to **ScheduleTime**, you must specify the **SwitchTime** parameter.
+        # > If you set this parameter to **ScheduleTime**, you must also specify the **SwitchTime** parameter.
         self.effective_time = effective_time
-        # A reserved parameter.
+        # Specifies whether to enable the Buffer Pool Extension (BPE) feature for premium performance disks. Valid values:
+        # 
+        #  - **1**: Enable.
+        #  - **0**: Disable.
+        # 
+        # > For more information about the BPE feature, see [Buffer Pool Extension (BPE)](https://help.aliyun.com/document_detail/2527067.html).
         self.io_acceleration_enabled = io_acceleration_enabled
-        # Specifies whether to change the specifications of the instance during the cross-zone migration. Valid values:
+        # Specifies whether to change the instance specifications during zone migration.
         # 
-        # *   **true**: You want to change the specifications of the instance during the cross-zone migration. If you set this parameter to **true**, you must specify at least one of **DBInstanceClass** and **DBInstanceStorage**.
-        # *   **false** (default): You do not want to change the specifications of the instance during the cross-zone migration.
+        # - **true**: Change the specifications. When this parameter is set to **true**, you must specify at least one of the **DBInstanceClass** and **DBInstanceStorage** parameters.
+        # - **false**: Do not change the specifications. This is the default value.
         # 
-        # > This parameter applies only to instances that run MySQL.
+        # > This parameter is applicable only to ApsaraDB RDS for MySQL instances.
         self.is_modify_spec = is_modify_spec
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The migration time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
-        # 
-        # > This parameter is used with **EffectiveTime**. You must specify this parameter only when **EffectiveTime** is set to **ScheduleTime**.
+        # The custom time at which the zone switch takes effect. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+        # > This parameter is used together with the **EffectiveTime** parameter and is required only when **EffectiveTime** is set to **ScheduleTime**.
         self.switch_time = switch_time
-        # The ID of the virtual private cloud (VPC). Do not change the VPC of the instance when you migrate the instance across zones.
+        # The virtual private cloud (VPC) ID. The VPC cannot be changed during instance migration and must remain the same.
         # 
-        # *   This parameter must be specified when the instance resides in a VPC.
-        # *   If the instance runs SQL Server, you can change the VPC of the instance.
+        # - This parameter is required when you migrate a VPC-connected instance to a different zone.
+        # - If the instance engine is SQL Server, the VPC can be changed during instance migration.
         self.vpcid = vpcid
         # The vSwitch ID.
-        # 
-        # *   This parameter must be specified when the instance resides in a VPC. You can call the DescribeVSwitches operation to query existing vSwitches.
-        # *   If the instance runs PostgreSQL or SQL Server and a secondary zone is specified for the instance, you can specify multiple vSwitch IDs, each of which corresponds to a zone. Separate the vSwitch IDs with commas (,).
+        # - This parameter is required when you migrate a VPC-connected instance to a different zone. You can invoke DescribeVSwitches to query the vSwitches that have been created.
+        # - When you perform instance migration for an ApsaraDB RDS for PostgreSQL or SQL Server instance to a different zone with a secondary zone configured, you can specify multiple vSwitch IDs separated by commas (,), corresponding to the zones.
         self.v_switch_id = v_switch_id
-        # The ID of the destination zone. You can call the DescribeRegions operation to query the most recent region list.
+        # The ID of the destination zone. You can call DescribeRegions to query the zone ID.
         # 
         # This parameter is required.
         self.zone_id = zone_id
-        # The secondary zone 1 of the instance.
-        # 
-        # >  This parameter must be configured if the instance runs RDS editions other than RDS Basic Edition.
+        # The secondary zone 1.
+        # > This parameter is required for instances that are not of the Basic Edition.
         self.zone_id_slave_1 = zone_id_slave_1
-        # The secondary zone 2 of the instance.
-        # 
-        # >  You can specify this parameter only for instances that run RDS Enterprise Edition.
+        # The secondary zone 2.
+        # > This parameter is applicable only to RDS Enterprise Edition instances.
         self.zone_id_slave_2 = zone_id_slave_2
 
     def validate(self):

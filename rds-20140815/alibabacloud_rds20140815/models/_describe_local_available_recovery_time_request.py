@@ -19,7 +19,7 @@ class DescribeLocalAvailableRecoveryTimeRequest(DaraModel):
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
-        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # The region ID. You can call DescribeRegions to obtain the region ID.
         self.region = region
         # The resource group ID.
         self.resource_group_id = resource_group_id

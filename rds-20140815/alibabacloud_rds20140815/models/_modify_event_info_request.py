@@ -13,20 +13,24 @@ class ModifyEventInfoRequest(DaraModel):
         region_id: str = None,
         security_token: str = None,
     ):
-        # The action-related parameters. You can add action-related parameters based on your business requirements. The parameter value varies with the value of the TaskAction parameter.
+        # The action-related parameters, which can be an extension based on business requirements. When taskAction is set to modifySwitchTime, set ActionParams to `{"recoverMode": "xxx", "recoverTime": "xxx"}`.
+        # 
+        # recoverMode specifies the task recovery pattern. Valid values:
+        # - **timePoint**: Executes at a specified point in time.
+        # - **immediate**: Executes immediately.
+        # 
+        # recoverTime specifies the recovery time in UTC+0. Format: yyyy-MM-ddTHH:mm:ssZ. This parameter is required when recoverMode is set to timePoint.
         self.action_params = action_params
-        # The event handling action. Valid values:
-        # 
-        # *   **archive**
-        # *   **undo**
-        # 
-        # >  This parameter is required.
+        # The event action. Valid values:
+        # - **archive**: Archives the event.
+        # - **undo**: Does not process the event.
+        # > This parameter is required.
         self.event_action = event_action
-        # The event ID. You can call the DescribeEvents operation to obtain the IDs of the events. Separate multiple event IDs with commas (,). You can specify up to 20 event IDs.
+        # The event ID. You can call the DescribeEvents operation to query event IDs. To query multiple events, separate the event IDs with commas (,). A maximum of 20 event IDs are supported.
         # 
         # This parameter is required.
         self.event_id = event_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) operation to query the most recent region list.
+        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

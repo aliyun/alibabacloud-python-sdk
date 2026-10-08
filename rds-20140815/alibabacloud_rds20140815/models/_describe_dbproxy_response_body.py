@@ -33,54 +33,50 @@ class DescribeDBProxyResponseBody(DaraModel):
         self.dbproxy_connect_string_items = dbproxy_connect_string_items
         # An internal parameter. You can ignore this parameter.
         self.dbproxy_engine_type = dbproxy_engine_type
-        # The version of the proxy instance.
+        # The current minor version of the proxy instance.
         self.dbproxy_instance_current_minor_version = dbproxy_instance_current_minor_version
-        # The latest version that is available for the proxy instance.
+        # The latest minor version of the proxy instance.
         self.dbproxy_instance_latest_minor_version = dbproxy_instance_latest_minor_version
         self.dbproxy_instance_minor_versions = dbproxy_instance_minor_versions
         # The name of the proxy instance.
         self.dbproxy_instance_name = dbproxy_instance_name
-        # The number of proxies that are enabled on the instance.
+        # The number of enabled proxy instances.
         self.dbproxy_instance_num = dbproxy_instance_num
-        # This parameter is available only for ApsaraDB RDS for PostgreSQL instances. The specifications of the proxy instance that is enabled.
+        # This parameter is supported only for ApsaraDB RDS for PostgreSQL. The actual specification size of the proxy instance.
         # 
-        # Format: `Number of cores/Memory capacity`.
+        # Format: `CPU/Memory`.
         # 
-        # For example, a value of 4/8 indicates that the proxy instance has 4 cores and 8 GB of memory.
+        # Example: 4/8 indicates 4 CPU cores and 8 GB of memory.
         self.dbproxy_instance_size = dbproxy_instance_size
-        # The status of the proxy instance.
-        # 
-        # *   DBInstanceClassChanging: The specifications of the proxy instance are being changed.
-        # *   Creating: The proxy instance is being created.
-        # *   Running: The proxy instance is running.
-        # *   Deleting: The proxy instance is being deleted.
+        # The running status of the proxy instance. Valid values:
+        # - DBInstanceClassChanging: The specification is being changed.
+        # - Creating: The instance is being created.
+        # - Running: The instance is running.
+        # - Deleting: The instance is being deleted.
         self.dbproxy_instance_status = dbproxy_instance_status
-        # The type of the database proxy that is enabled on the instance. Valid values:
+        # The type of the proxy service. Valid values:
+        # - 1: shared database proxy
+        # - 2: dedicated database proxy
+        # - 3: general-purpose database proxy
         # 
-        # *   1: shared database proxy
-        # *   2: dedicated database proxy
-        # *   3: general-purpose database proxy
-        # 
-        # >  ApsaraDB RDS for PostgreSQL does not support shared database proxies.
+        # > ApsaraDB RDS for PostgreSQL does not support shared database proxies.
         self.dbproxy_instance_type = dbproxy_instance_type
-        # An internal parameter. You do not need to specify this parameter.
+        # An internal parameter. You can ignore this parameter.
         self.dbproxy_kind_code = dbproxy_kind_code
         self.dbproxy_nodes = dbproxy_nodes
-        # The status of persistence connections. Valid values:
-        # 
-        # *   **Enabled**
-        # *   **Disabled**
-        # *   **Unsupported**
+        # The persistent connection status. Valid values:
+        # - **Enabled**: Persistent connections are enabled.
+        # - **Disabled**: Persistent connections are disabled.
+        # - **Unsupported**: The instance does not support persistent connections.
         self.dbproxy_persistent_connection_status = dbproxy_persistent_connection_status
-        # The status of the database proxy.
-        # 
-        # *   Shutdown: disabled
-        # *   Startup: enabled
+        # The status of the database proxy feature. Valid values:
+        # - Shutdown: disabled
+        # - Startup: enabled
         self.dbproxy_service_status = dbproxy_service_status
         self.db_proxy_endpoint_items = db_proxy_endpoint_items
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):

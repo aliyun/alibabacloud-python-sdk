@@ -10,7 +10,7 @@ class DescribeHostWebShellResponseBody(DaraModel):
         login_url: str = None,
         request_id: str = None,
     ):
-        # The webshell URL.
+        # The WebShell logon URL.
         self.login_url = login_url
         # The request ID.
         self.request_id = request_id

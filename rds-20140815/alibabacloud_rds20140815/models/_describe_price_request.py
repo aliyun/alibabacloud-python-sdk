@@ -37,109 +37,106 @@ class DescribePriceRequest(DaraModel):
         self.client_token = client_token
         # The commodity code of the instance. Valid values:
         # 
-        # *   **bards**: The instance is a pay-as-you-go primary instance. This value is available at the China site (aliyun.com).
-        # *   **rds** (default): The instance is a subscription primary instance. This value is available at the China site (aliyun.com).
-        # *   **rords**: The instance is a pay-as-you-go read-only instance. This value is available at the China site (aliyun.com).
-        # *   **rds_rordspre_public_cn**: The instance is a subscription read-only instance. This value is available at the China site (aliyun.com).
-        # *   **bards_intl**: The instance is a pay-as-you-go primary instance. This value is available at the international site (alibabacloud.com).
-        # *   **rds_intl**: The instance is a subscription primary instance. This value is available at the international site (alibabacloud.com).
-        # *   **rords_intl**: The instance is a pay-as-you-go read-only instance. This value is available at the international site (alibabacloud.com).
-        # *   **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available at the international site (alibabacloud.com).
+        # * **bards**: pay-as-you-go primary instance (China site)
+        # * **rds** (default): subscription primary instance (China site)
+        # * **rords**: pay-as-you-go read-only instance (China site)
+        # * **rds_rordspre_public_cn**: subscription read-only instance (China site)
+        # * **bards_intl**: pay-as-you-go primary instance (international site)
+        # * **rds_intl**: subscription primary instance (international site)
+        # * **rords_intl**: pay-as-you-go read-only instance (international site)
+        # * **rds_rordspre_public_intl**: subscription read-only instance (international site)
         # 
-        # >  If you want to query the price of a read-only instance, you must specify this parameter.
+        # > This parameter is required when you query the price of a read-only instance.
         self.commodity_code = commodity_code
-        # The instance type of the instance. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
+        # The instance type. For more information, see [Primary instance types](https://help.aliyun.com/document_detail/26312.html).
         # 
         # This parameter is required.
         self.dbinstance_class = dbinstance_class
-        # The ID of the instance for which you want to change the specifications or the instance that you want to renew.
-        # 
-        # > *   If you want to query the price of a specification change order or a renewal order, you must specify this parameter.
-        # > *   If the instance is a read-only instance, you must set this parameter to the ID of its primary instance.
+        # Instance ID of the instance for which you want to change the specifications or renew.
+        # > - This parameter is required when you query the price for a specification change or renewal.
+        # > - If the instance is a read-only instance, specify instance ID of its primary instance.
         self.dbinstance_id = dbinstance_id
-        # The storage capacity of the instance. Unit: GB. You can increase the storage capacity at a step size of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
+        # The instance storage space. Unit: GB. The value increases in increments of 5 GB. For more information about the value range, see [Instance types](https://help.aliyun.com/document_detail/26312.html).
         # 
         # This parameter is required.
         self.dbinstance_storage = dbinstance_storage
-        # The storage type of the new instance. Valid values:
-        # 
-        # *   **general_essd**: premium Enterprise SSD (ESSD)
-        # *   **local_ssd**: premium local SSD
-        # *   **cloud_ssd**: standard SSD
-        # *   **cloud_essd**: performance level 1 (PL1) ESSD
-        # *   **cloud_essd2**: PL2 ESSD
-        # *   **cloud_essd3**: PL3 ESSD
+        # The instance storage type. Valid values:
+        # * **general_essd**: Premium ESSD
+        # * **local_ssd**: Premium Local SSDs
+        # * **cloud_ssd**: standard SSD
+        # * **cloud_essd**: PL1 ESSD cloud disk
+        # * **cloud_essd2**: PL2 ESSD cloud disk
+        # * **cloud_essd3**: PL3 ESSD cloud disk
         self.dbinstance_storage_type = dbinstance_storage_type
-        # The information about the node.
-        # 
-        # >  This parameter is supported for ApsaraDB RDS for MySQL instances that run RDS Cluster Edition.
+        # The node information.
+        # > This parameter is used for ApsaraDB RDS for MySQL instances in the cluster edition.
         self.dbnode = dbnode
-        # The database engine of the instance. Valid values:
-        # 
-        # *   **MySQL**
-        # *   **SQLServer**
-        # *   **PostgreSQL**
-        # *   **MariaDB**
+        # The database engine. Valid values:
+        # * **MySQL**
+        # * **SQLServer**
+        # * **PostgreSQL**
+        # * **MariaDB**
         # 
         # This parameter is required.
         self.engine = engine
-        # The database engine version of the instance. Valid values:
+        # <props="china">The database engine version. Valid values:
+        # - **MySQL**: **5.5**, **5.6**, **5.7**, **8.0**
+        # - **SQL Server**: **08r2_ent_ha** (cloud disk, discontinued), **2008r2** (Premium Local SSDs, discontinued), **2012** (Enterprise Edition Basic), **2012_ent_ha**, **2012_std_ha**, **2012_web**, **2014_ent_ha**, **2014_std_ha**, **2016_ent_ha**, **2016_std_ha**, **2016_web**, **2017_ent**, **2017_std_ha**, **2017_web**, **2019_ent**, **2019_std_ha**, **2019_web**, **2022_ent**, **2022_std_ha**, **2022_web**
+        # - **PostgreSQL**: **10.0**, **11.0**, **12.0**, **13.0**, **14.0**, **15.0**
+        # - **MariaDB**: **10.3**
         # 
-        # *   Valid values if you set Engine to **MySQL**: **5.5**, **5.6**, **5.7**, and **8.0**
-        # *   Valid values if you set Engine to **SQL Server**: **08r2_ent_ha**(cloud disks, discontinued), **2008r2**(high-performance local disks, discontinued), **2012** (SQL Server EE Basic)**2012_ent_ha**, **2012_std_ha**, **2012_web**, **2016_ent_ha**, **2016_std_ha**, **2016_web**, **2017_ent**, **2017_std_ha**, **2017_web**, **2019_ent**, **2019_std_ha**, **2019_web**, **2022_ent**, **2022_std_ha**, and **2022_web**
-        # *   Valid values if you set Engine to **PostgreSQL**: **10.0**, **11.0**, **12.0**, **13.0**, **14.0**, and **15.0**
-        # *   Valid value if you set Engine to **MariaDB**: **10.3**
         # 
-        # >  The following information describes the valid values when you set Engine to SQLServer: `_ent` specifies SQL Server EE on RDS Cluster Edition, `_ent_ha` specifies SQL Server EE, `_std_ha` specifies SQL Server SE, and `_web` specifies SQL Server Web.
+        # 
+        # <props="intl">The database engine version. Valid values:
+        # - **MySQL**: **5.5**, **5.6**, **5.7**, **8.0**
+        # - **SQL Server**: **08r2_ent_ha** (cloud disk, discontinued), **2008r2** (Premium Local SSDs, discontinued), **2012** (Enterprise Edition Basic), **2012_ent_ha**, **2012_std_ha**, **2012_web**, **2014_ent_ha**, **2014_std_ha**, **2016_ent_ha**, **2016_std_ha**, **2016_web**, **2017_ent**, **2017_std_ha**, **2017_web**, **2019_ent**, **2019_std_ha**, **2019_web**, **2022_ent**, **2022_std_ha**, **2022_web**
+        # - **PostgreSQL**: **10.0**, **11.0**, **12.0**, **13.0**, **14.0**, **15.0**
+        # - **MariaDB**: **10.3**
+        # 
+        # > For SQL Server instances, `_ent` indicates Enterprise Edition (Cluster), `_ent_ha` indicates Enterprise Edition, `_std_ha` indicates Standard Edition, and `_web` indicates Web Edition.
         # 
         # This parameter is required.
         self.engine_version = engine_version
-        # The role of the instance. Valid values:
-        # 
-        # *   **0**: primary instance
-        # *   **3**: read-only instance
+        # The instance type. Valid values:
+        # * **0**: primary instance
+        # * **3**: read-only instance
         self.instance_used_type = instance_used_type
         # The order type. Valid values:
-        # 
-        # *   **BUY**
-        # *   **RENEW**
-        # *   **UPGRADE**
-        # *   **DOWNGRADE**
+        # * **BUY**: purchase
+        # * **RENEW**: renewal
+        # * **UPGRADE**: upgrade
+        # * **DOWNGRADE**: downgrade
         self.order_type = order_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The billing method of the instance. Valid values:
-        # 
-        # *   **Prepaid**: subscription
-        # *   **Postpaid**: pay-as-you-go
+        # * **Prepaid**: subscription
+        # * **Postpaid**: pay-as-you-go
         self.pay_type = pay_type
-        # The number of instances that you want to purchase. Valid values: **0 to 30**.
+        # The number of instances to purchase. Valid values: **0 to 30**.
         # 
         # This parameter is required.
         self.quantity = quantity
-        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # The region ID. You can call DescribeRegions to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The settings of the serverless instance.
-        # 
-        # > ApsaraDB RDS for MariaDB does not support serverless instances.
+        # The settings of the serverless ApsaraDB RDS instance.
+        # > MariaDB does not support serverless instances.
         self.serverless_config = serverless_config
-        # The billing cycle of the subscription instance. This parameter is required when **CommodityCode** is set to **rds**, **rds_rordspre_public_cn**, **rds_intl**, or **rds_rordspre_public_intl**. Valid values:
-        # 
-        # *   **Year**
-        # *   **Month**
+        # The subscription type. This parameter is required when **CommodityCode** is set to **rds**, **rds_rordspre_public_cn**, **rds_intl**, or **rds_rordspre_public_intl**. Valid values:
+        # * **Year**: yearly subscription
+        # * **Month**: monthly subscription
         self.time_type = time_type
-        # The subscription duration of the instance.
-        # 
-        # *   If you set the **TimeType** parameter to **Year**, the value of the UsedTime parameter ranges from **1 to 100**.
-        # *   If you set the **TimeType** parameter to **Month**, the value of the UsedTime parameter ranges from **1 to 999**.
+        # The subscription duration. Valid values:
+        # * If **TimeType** is set to **Year**, the value of UsedTime ranges from **1 to 100**.
+        # * If **TimeType** is set to **Month**, the value of UsedTime ranges from **1 to 999**.
         # 
         # Default value: **1**.
         self.used_time = used_time
-        # The zone ID of the primary instance. You can call the DescribeRegions operation to query the most recent zone list.
+        # The zone ID of the primary node. You can call DescribeRegions to query the most recent zone list.
         # 
-        # >  If you specify a virtual private cloud (VPC) and a vSwitch, this parameter is required to identify the zone for the vSwitch.
+        # > If you specify a VPC and a vSwitch, this parameter is required to match the zone of the specified vSwitch.
         self.zone_id = zone_id
 
     def validate(self):
@@ -305,9 +302,9 @@ class DescribePriceRequestServerlessConfig(DaraModel):
         max_capacity: float = None,
         min_capacity: float = None,
     ):
-        # The maximum number of RDS Capacity Units (RCUs).
+        # The maximum value of the automatic scaling range for the RDS Capacity Unit (RCU) of the instance.
         self.max_capacity = max_capacity
-        # The minimum number of RCUs.
+        # The minimum value of the automatic scaling range for the RDS Capacity Unit (RCU) of the instance.
         self.min_capacity = min_capacity
 
     def validate(self):
@@ -342,7 +339,7 @@ class DescribePriceRequestDBNode(DaraModel):
         class_code: str = None,
         zone_id: str = None,
     ):
-        # The instance type of the node.
+        # The node specifications.
         self.class_code = class_code
         # The zone ID of the node.
         self.zone_id = zone_id

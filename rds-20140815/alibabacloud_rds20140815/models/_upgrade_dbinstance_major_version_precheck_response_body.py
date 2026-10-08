@@ -16,7 +16,7 @@ class UpgradeDBInstanceMajorVersionPrecheckResponseBody(DaraModel):
         self.dbinstance_name = dbinstance_name
         # The request ID.
         self.request_id = request_id
-        # The new major engine version of the instance.
+        # The major engine version of the target instance.
         self.target_major_version = target_major_version
         # The task ID.
         self.task_id = task_id

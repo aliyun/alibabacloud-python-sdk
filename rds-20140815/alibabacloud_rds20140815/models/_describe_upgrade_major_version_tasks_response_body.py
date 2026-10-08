@@ -16,7 +16,7 @@ class DescribeUpgradeMajorVersionTasksResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The tasks for major engine version upgrades.
+        # The list of major engine version upgrade tasks.
         self.items = items
         # The page number.
         self.page_number = page_number
@@ -24,7 +24,7 @@ class DescribeUpgradeMajorVersionTasksResponseBody(DaraModel):
         self.page_record_count = page_record_count
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -101,65 +101,74 @@ class DescribeUpgradeMajorVersionTasksResponseBodyItems(DaraModel):
         zero_down_time_connection_string: str = None,
         zero_down_time_port: int = None,
     ):
-        # The time when the system collects the statistics.
+        # The statistics information collection pattern.
         # 
         # Valid values:
-        # 
-        # *   **After**: The system collects the statistics after a switchover.
-        # *   **Before**: The system collects the statistics before a switchover.
+        # - **After**: Upgrade after the cutover.
+        # - **Before**: Upgrade before the cutover.
         self.collect_stat_mode = collect_stat_mode
-        # The details of the task.
+        # The detailed information about the task.
         self.detail = detail
-        # The end time of the task.
+        # The end time of the major engine version upgrade.
         # 
-        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC. Unit: milliseconds.
+        # The value is a UNIX timestamp. Unit: milliseconds.
         self.end_time = end_time
-        # The status of the task.
-        # 
-        # *   **Success**: The task is successful.
-        # *   **Failed**: The task failed.
-        # *   **Running**: The task is in the phase in which data is being migrated to a new instance.
+        # The final result of the task. Valid values:
+        # * **Success**: The task is successful.
+        # * **Failed**: The task failed.
+        # * **Running**: The migration is in progress.
         self.result = result
-        # The ID of the original instance.
+        # The ID of the original instance before the upgrade.
         self.source_ins_name = source_ins_name
-        # The major engine version of the original instance.
+        # The version of the original instance before the upgrade.
         self.source_major_version = source_major_version
-        # The start time of the task.
+        # The start time of the major engine version upgrade.
         # 
-        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC. Unit: milliseconds.
+        # The value is a UNIX timestamp. Unit: milliseconds.
         self.start_time = start_time
-        # The end time of the switching from the original instance to the new instance.
+        # The end time of the instance switchover from the original instance to the new instance.
         # 
-        # Expressed in Unix timestamp. Unit: milliseconds.
+        # The value is a UNIX timestamp. Unit: milliseconds.
         self.switch_end_time = switch_end_time
-        # The time at which your workloads are switched over from the original instance to the new instance.
+        # The time of the instance switchover from the original instance to the new instance.
         # 
-        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC. Unit: milliseconds.
+        # The value is a UNIX timestamp. Unit: milliseconds.
         self.switch_time = switch_time
-        # The ID of the new instance.
+        # The ID of the new instance after the upgrade.
         self.target_ins_name = target_ins_name
-        # The major engine version of the new instance. Valid values:
-        # 
-        # *   **10.0**
-        # *   **11.0**
-        # *   **12.0**
-        # *   **13.0**
-        # *   **14.0**
-        # *   **15.0**
+        # The major engine version after the upgrade. Valid values:
+        # * **10.0**
+        # * **11.0**
+        # * **12.0**
+        # * **13.0**
+        # * **14.0**
+        # * **15.0**
         self.target_major_version = target_major_version
         # The task ID.
         self.task_id = task_id
         # The upgrade mode.
         # 
         # Valid values:
-        # 
-        # *   **clone**: The system does not migrate data to the new instance and does not switch your workloads over to the new instance.
-        # *   **switch**: The system migrates data to the new instance and switches your workloads over to the new instance.
+        # - **clone**: no cutover
+        # - **switch**: cutover
         self.upgrade_mode = upgrade_mode
+        # Indicates whether a cutover is performed.
+        # 
+        # - **true**: A cutover is performed.
+        # - **false**: No cutover is performed.
         self.cut_over = cut_over
+        # The estimated synchronization time for the logical replication lag. Unit: seconds.
+        # > This parameter is used only for **zero-downtime** major engine version upgrades.
         self.total_logic_rep_delay_time = total_logic_rep_delay_time
+        # The size of the logical replication lag. Unit: MB.
+        # 
+        # > This parameter is used only for **zero-downtime** major engine version upgrades.
         self.total_logic_rep_latency_mb = total_logic_rep_latency_mb
+        # The temporary internal endpoint of the higher-version instance for the zero-downtime major engine version upgrade. The format is `****.pg.rds.aliyuncs.com`.
+        # > This parameter is used only for **zero-downtime** major engine version upgrades.
         self.zero_down_time_connection_string = zero_down_time_connection_string
+        # The port of the higher-version instance, which is the same as the port of the source instance.
+        # > This parameter is used only for **zero-downtime** major engine version upgrades.
         self.zero_down_time_port = zero_down_time_port
 
     def validate(self):

@@ -17,29 +17,27 @@ class ModifyInstanceCrossBackupPolicyResponseBody(DaraModel):
         retent_type: int = None,
         retention: int = None,
     ):
-        # The status of the cross-region backup feature on the instance. Valid values:
-        # 
-        # *   **Disable**
-        # *   **Enable**
+        # The status of the cross-region backup feature. Valid values:
+        # * **Disable**: Disabled.
+        # * **Enable**: Enabled.
         self.backup_enabled = backup_enabled
-        # The ID of the region in which the cross-region backup files of the instance are stored.
+        # The ID of the destination region for cross-region backup.
         self.cross_backup_region = cross_backup_region
-        # The policy that is used to save the cross-region backup files of the instance. Default value: **1**. The value 1 indicates that all cross-region backup files are saved.
+        # The type of cross-region backup retention. Default value: **1**, which indicates that all backups are retained.
         self.cross_backup_type = cross_backup_type
         # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The status of the cross-region log backup feature on the instance. Valid values:
-        # 
-        # *   **Disable**
-        # *   **Enable**
+        # The status of cross-region log backup. Valid values:
+        # * **Disable**: Disabled.
+        # * **Enable**: Enabled.
         self.log_backup_enabled = log_backup_enabled
         # The region ID of the source instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
         self.region_id = region_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The policy that is used to retain the cross-region backup files of the instance. Default value: **1**. The value 1 indicates that the cross-region backup files of the instance are retained based on the specified retention period.
+        # The cross-region backup retention method. Default value: **1**, which indicates retention by duration.
         self.retent_type = retent_type
-        # The number of days for which the cross-region backup files of the instance are retained. Valid values: **7 to 1825**.
+        # The number of days for which cross-region backups are retained. Valid values: **7 to 1825**.
         self.retention = retention
 
     def validate(self):

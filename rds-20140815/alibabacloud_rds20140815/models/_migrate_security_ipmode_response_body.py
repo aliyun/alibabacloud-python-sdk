@@ -11,25 +11,11 @@ class MigrateSecurityIPModeResponseBody(DaraModel):
         request_id: str = None,
         security_ipmode: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The whitelist mode after the change, which is the enhanced whitelist mode.
-        # 
-        # Valid values:
-        # 
-        # *   safety
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     enhanced whitelist mode
-        # 
-        #     <!-- -->
+        # The whitelist mode after the switch, which is the enhanced whitelist mode.
         self.security_ipmode = security_ipmode
 
     def validate(self):

@@ -18,7 +18,7 @@ class DescribeReadDBInstanceDelayResponseBody(DaraModel):
     ):
         # The primary instance ID.
         self.dbinstance_id = dbinstance_id
-        # The latency of data replication. Unit: seconds.
+        # The latency, in seconds.
         self.delay_time = delay_time
         self.items = items
         # The read-only instance ID.

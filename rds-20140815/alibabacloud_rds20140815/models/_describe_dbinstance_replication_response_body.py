@@ -22,28 +22,30 @@ class DescribeDBInstanceReplicationResponseBody(DaraModel):
         request_id: str = None,
         slave_status_list: List[main_models.DescribeDBInstanceReplicationResponseBodySlaveStatusList] = None,
     ):
-        # Indicates whether the native replication mods is enabled. Valid values:
-        # 
-        # *   **ON**
-        # *   **OFF**
+        # Indicates whether native replication mode is enabled. Valid values:
+        # - **ON**: Enabled.
+        # - **OFF**: Disabled.
         self.external_replication = external_replication
+        # The executed global transaction identifier.
         self.gtid_executed = gtid_executed
-        # COMPLETED: 导入完成，INIT: 初始化，IMPORTING: 正在导入
+        # The import status, which indicates whether full data is successfully imported.
         self.import_status = import_status
-        # The replication latency. Unit: seconds.
+        # The current replication delay, in seconds.
         self.replication_delay = replication_delay
         # The replication error message.
         self.replication_error_message = replication_error_message
+        # The IP address of the replication endpoint.
         self.replication_ip = replication_ip
+        # The port of the replication endpoint.
         self.replication_port = replication_port
-        # The source of the native replication.
+        # The replication source of native replication.
         self.replication_source = replication_source
         # The current replication status. Valid values:
         # 
-        # *   **Running**
-        # *   **Connecting**
-        # *   **Stopped**
-        # *   **Error**
+        # - **Running**: Running.
+        # - **Connecting**: Connecting.
+        # - **Stopped**: Stopped.
+        # - **Error**: Error.
         self.replication_state = replication_state
         # The request ID.
         self.request_id = request_id
@@ -164,15 +166,15 @@ class DescribeDBInstanceReplicationResponseBodySlaveStatusList(DaraModel):
     ):
         self.channel_name = channel_name
         self.executed_gtid_set = executed_gtid_set
-        # 0表示无错误，其他值表示具体的错误代码
+        # A value of 0 indicates no error. Other values indicate specific error codes.
         self.last_errno = last_errno
-        # 0表示无错误，其他值表示IO线程的错误代码
+        # A value of 0 indicates no error. Other values indicate error codes of the I/O thread.
         self.last_io_errno = last_io_errno
-        # IO线程的错误信息描述
+        # The error message description of the I/O thread.
         self.last_io_error = last_io_error
-        # 0表示无错误，其他值表示SQL线程的错误代码
+        # A value of 0 indicates no error. Other values indicate error codes of the SQL thread.
         self.last_sql_errno = last_sql_errno
-        # SQL线程的错误信息描述
+        # The error message description of the SQL thread.
         self.last_sql_error = last_sql_error
         self.master_host = master_host
         self.master_user = master_user
@@ -184,10 +186,10 @@ class DescribeDBInstanceReplicationResponseBodySlaveStatusList(DaraModel):
         self.replicate_wild_do_table = replicate_wild_do_table
         self.replicate_wild_ignore_table = replicate_wild_ignore_table
         self.seconds_behind_master = seconds_behind_master
-        # Yes: 运行中，No: 已停止
+        # Valid values: Yes (running) and No (stopped).
         self.slave_io_running = slave_io_running
         self.slave_io_state = slave_io_state
-        # Yes: 运行中，No: 已停止
+        # Valid values: Yes (running) and No (stopped).
         self.slave_sql_running = slave_sql_running
         self.slave_sql_running_state = slave_sql_running_state
 

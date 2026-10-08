@@ -14,8 +14,9 @@ class StopRCInstanceRequest(DaraModel):
     ):
         # Specifies whether to forcefully stop the instance. Valid values:
         # 
-        # *   **true**
-        # *   **false** (default)
+        # -   **true**: Forcefully stops the instance.
+        # 
+        # -   **false** (default): Gracefully stops the instance.
         self.force_stop = force_stop
         # The instance ID.
         # 
@@ -23,6 +24,14 @@ class StopRCInstanceRequest(DaraModel):
         self.instance_id = instance_id
         # The region ID.
         self.region_id = region_id
+        # The stop mode of the instance. Valid values:
+        # 
+        #   - StopCharging: economical mode. After economical mode is enabled:
+        #     - Billing for compute resources is suspended.
+        #     - Billing for system cloud disks and data cloud disks continues.
+        #     - Because compute resources are released, the instance may fail to start due to insufficient resources. Try again later or change the instance type. 
+        # 
+        #   - KeepCharging: standard mode. Billing continues after the instance is stopped.
         self.stopped_mode = stopped_mode
 
     def validate(self):

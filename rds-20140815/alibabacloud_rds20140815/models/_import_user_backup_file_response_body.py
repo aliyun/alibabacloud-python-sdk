@@ -11,11 +11,11 @@ class ImportUserBackupFileResponseBody(DaraModel):
         request_id: str = None,
         status: bool = None,
     ):
-        # The ID of the full backup file.
+        # The user backup ID.
         self.backup_id = backup_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the full backup file is successfully imported into the instance. If the full backup file is successfully imported, **true** is returned. Otherwise, an error message is returned.
+        # Indicates whether the user backup is imported. The value **true** is returned if the import is successful. Otherwise, an error message is returned.
         self.status = status
 
     def validate(self):

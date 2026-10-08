@@ -18,38 +18,37 @@ class RestoreTableRequest(DaraModel):
         restore_time: str = None,
         table_meta: str = None,
     ):
-        # The backup set ID. You can call the DescribeBackups operation to obtain the backup set ID.
+        # The backup set ID. You can call the DescribeBackups operation to query the backup set list.
         # 
-        # >  You must specify at least one of **BackupId** or **RestoreTime** parameters.
+        # > You must specify at least one of **BackupId** and **RestoreTime**.
         self.backup_id = backup_id
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the generated token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # Specifies whether to enable the fast restoration feature for individual databases and tables. Valid values:
+        # Specifies whether to enable fast restoration for individual databases and tables. Valid values:
+        # * **true**: Enabled.
+        # * **false**: Disabled.
         # 
-        # *   **true**: enables the feature.
-        # *   **false**: disables the feature.
-        # 
-        # > For more information, see [Restore individual databases and tables of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/103175.html).
+        # > For more information about fast restoration for individual databases and tables, see [Restore individual databases and tables](https://help.aliyun.com/document_detail/103175.html).
         self.instant_recovery = instant_recovery
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The point in time to which you want to restore data. The point in time must fall within the specified log backup retention period. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # Any point in time within the backup retention period. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
         # 
-        # > *   You must specify at least one of **BackupId** and **RestoreTime**.
-        # > *   You must enable the log backup feature. For more information, see [Back up an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/98818.html).
+        # > * You must specify at least one of **BackupId** and **RestoreTime**.
+        # > * [Log backup](https://help.aliyun.com/document_detail/98818.html) must be enabled for the instance.
         self.restore_time = restore_time
-        # The names of the databases and tables that you want to restore for the source instance.
+        # The databases and tables to restore.
+        # > ApsaraDB RDS for PostgreSQL supports only the restoration of specific databases, not specific tables.
         # 
-        # >  ApsaraDB RDS for PostgreSQL allows you to restore only specified databases, not tables.
+        # - ApsaraDB RDS for MySQL format: ```[{"type":"db","name":"<Database 1 name>","newname":"<New database 1 name>","tables":[{"type":"table","name":"<Table 1 name in database 1>","newname":"<New table 1 name>"},{"type":"table","name":"<Table 2 name in database 1>","newname":"<New table 2 name>"}]},{"type":"db","name":"<Database 2 name>","newname":"<New database 2 name>","tables":[{"type":"table","name":"<Table 3 name in database 2>","newname":"<New table 3 name>"},{"type":"table","name":"<Table 4 name in database 2>","newname":"<New table 4 name>"}]}]```
         # 
-        # *   ApsaraDB RDS for MySQL: `[{"type":"db","name":"<The name of Database 1 on the source instance>","newname":"<The name of Database 1 on the destination instance>","tables":[{"type":"table","name":"<The name of Table 1 in Database 1 on the source instance>","newname":"<The name of Table 1 in Database 1 on the destination instance>"},{"type":"table","name":"<The name of Table 2 in Database 1 on the source instance>","newname":"<The name of Table 2 in Database 1 on the destination instance>"}]},{"type":"db","name":"<The name of Database 2 on the source instance>","newname":"<The name of Database 2 on the destination instance>","tables":[{"type":"table","name":"<The name of Table 3 in Database 2 on the source instance>","newname":"<The name of Table 3 in Database 2 on the destination instance>"},{"type":"table","name":"<The name of Table 4 in Database 2 on the source instance>","newname":"<The name of Table 4 in Database 2 on the destination instance>"}]}]`
-        # *   ApsaraDB RDS for PostgreSQL: `[{"type":"db","name":"<The name of Database 1 on the source instance 1>","newname":"<The name of Database 1 on the destination instance>"}]`
+        # - ApsaraDB RDS for PostgreSQL format: ```[{"type":"db","name":"<Database 1 name>","newname":"<New database 1 name>"}]```
         # 
         # This parameter is required.
         self.table_meta = table_meta

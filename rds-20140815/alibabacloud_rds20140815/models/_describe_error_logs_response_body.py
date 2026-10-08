@@ -19,11 +19,11 @@ class DescribeErrorLogsResponseBody(DaraModel):
         self.items = items
         # The page number.
         self.page_number = page_number
-        # The number of error logs on the current page.
+        # The number of error log entries on the current page.
         self.page_record_count = page_record_count
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_record_count = total_record_count
 
     def validate(self):

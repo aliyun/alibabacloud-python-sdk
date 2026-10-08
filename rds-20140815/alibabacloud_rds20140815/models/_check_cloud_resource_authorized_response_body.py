@@ -12,13 +12,12 @@ class CheckCloudResourceAuthorizedResponseBody(DaraModel):
         role_arn: str = None,
     ):
         # The authorization status. Valid values:
-        # 
-        # *   **1**: authorized
-        # *   **0**: not authorized
+        # - **1**: Authorized.
+        # - **0**: Not authorized.
         self.authorization_state = authorization_state
         # The request ID.
         self.request_id = request_id
-        # The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://help.aliyun.com/document_detail/93689.html).
+        # The global resource descriptor of the role, which is used to specify a specific role. For details, see [RAM role overview](https://help.aliyun.com/document_detail/93689.html).
         self.role_arn = role_arn
 
     def validate(self):

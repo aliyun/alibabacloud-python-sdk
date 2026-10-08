@@ -10,9 +10,9 @@ class CreateParameterGroupResponseBody(DaraModel):
         parameter_group_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the parameter template. You can call the [DescribeParameterGroups](https://help.aliyun.com/document_detail/144491.html) operation to query the IDs of parameter templates.
+        # The parameter template ID. You can call the [DescribeParameterGroups](https://help.aliyun.com/document_detail/144491.html) operation to query the parameter template ID.
         self.parameter_group_id = parameter_group_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

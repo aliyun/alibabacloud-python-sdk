@@ -18,7 +18,7 @@ class DescribeInstanceCrossBackupPolicyRequest(DaraModel):
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
-        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

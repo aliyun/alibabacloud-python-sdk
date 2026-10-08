@@ -11,8 +11,11 @@ class ModifyDBInstanceResponseBody(DaraModel):
         order_id: int = None,
         request_id: str = None,
     ):
+        # The instance ID. You can call [DescribeDBInstances](https://help.aliyun.com/document_detail/2628785.html) to query the instance ID.
         self.dbinstance_id = dbinstance_id
+        # The order ID.
         self.order_id = order_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

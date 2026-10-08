@@ -19,57 +19,53 @@ class DescribeAvailableClassesRequest(DaraModel):
         resource_owner_id: int = None,
         zone_id: str = None,
     ):
-        # The RDS edition of the instance. Valid values:
+        # The instance edition. Valid values:
+        # * Regular instances
+        #     * **Basic**: Basic Edition
+        #     * **HighAvailability**: high-availability series
+        #     * **cluster**: Cluster Edition (applicable only to MySQL and PostgreSQL)
+        #     * **AlwaysOn**: SQL Server Cluster Edition
+        #     * **Finance**: RDS Enterprise Edition
+        # * Serverless instances
+        #     * **serverless_basic**: Serverless Basic Edition (applicable only to MySQL and PostgreSQL)
+        #     * **serverless_standard**: Serverless high availability series (applicable only to MySQL and PostgreSQL)
+        #     * **serverless_ha**: SQL Server Serverless high availability series
         # 
-        # *   Regular instance
-        # 
-        #     *   **Basic**: RDS Basic Edition
-        #     *   **HighAvailability**: RDS High-availability Edition
-        #     *   **cluster**: RDS Cluster Edition for ApsaraDB RDS for MySQL
-        #     *   **AlwaysOn**: RDS Cluster Edition for ApsaraDB RDS for SQL Server
-        #     *   **Finance**: RDS Enterprise Edition
-        # 
-        # *   Serverless instance
-        # 
-        #     *   **serverless_basic**: RDS Basic Edition. This edition is available only for serverless instances that run MySQL and PostgreSQL.
-        #     *   **serverless_standard**: RDS High-availability Edition for ApsaraDB RDS for MySQL.
-        #     *   **serverless_ha**: RDS High-availability Edition for ApsaraDB RDS for SQL Server.
-        # 
-        #     > If you create a serverless instance, you must specify this parameter.
+        #     > This parameter is required when you create a serverless instance.
         # 
         # This parameter is required.
         self.category = category
         # The commodity code of the instance. Valid values:
         # 
-        # *   **bards**: The instance is a pay-as-you-go primary instance. This value is available at the China site (aliyun.com).
-        # *   **rds**: The instance is a subscription primary instance. This value is available at the China site (aliyun.com).
-        # *   **rords**: The instance is a pay-as-you-go read-only instance. This value is available at the China site (aliyun.com).
-        # *   **rds_rordspre_public_cn**: The instance is a subscription read-only instance. This value is available at the China site (aliyun.com).
-        # *   **bards_intl**: The instance is a pay-as-you-go primary instance. This value is available at the International site (alibabacloud.com).
-        # *   **rds_intl**: The instance is a subscription primary instance. This value is available at the International site (alibabacloud.com).
-        # *   **rords_intl**: The instance is a pay-as-you-go read-only instance. This value is available at the International site (alibabacloud.com).
-        # *   **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available at the International site (alibabacloud.com).
-        # *   **rds_serverless_public_cn**: The instance is a serverless instance. This value is available at the China site (aliyun.com).
-        # *   **rds_serverless_public_intl**: The instance is a serverless instance. This value is available at the International site (alibabacloud.com).
+        # - **bards**: pay-as-you-go primary instance (China site)
+        # - **rds**: subscription primary instance (China site)
+        # - **rords**: pay-as-you-go read-only instance (China site)
+        # - **rds_rordspre_public_cn**: subscription read-only instance (China site)
+        # - **bards_intl**: pay-as-you-go primary instance (international site)
+        # - **rds_intl**: subscription primary instance (international site)
+        # - **rords_intl**: pay-as-you-go read-only instance (international site)
+        # - **rds_rordspre_public_intl**: subscription read-only instance (international site)
+        # - **rds_serverless_public_cn**: serverless (China site)
+        # - **rds_serverless_public_intl**: serverless (international site)
         # 
-        # > If you want to query the price of a read-only instance, you must specify this parameter.
+        # > This parameter is required when you query a read-only instance.
         self.commodity_code = commodity_code
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
         self.dbinstance_id = dbinstance_id
-        # The storage type of the instance. Valid values:
+        # The instance storage type. Valid values:
+        # * **general_essd**: premium performance disk
+        # * **local_ssd**: local SSD
+        # * **cloud_ssd**: standard SSD
+        # * **cloud_essd0**: PL0 ESSD cloud disk
+        # * **cloud_essd**: PL1 ESSD cloud disk
+        # * **cloud_essd2**: PL2 ESSD cloud disk
+        # * **cloud_essd3**: PL3 ESSD cloud disk
         # 
-        # *   **local_ssd**: local SSD. This is the recommended storage type.
-        # *   **cloud_ssd**: standard SSD.
-        # *   **cloud_essd**: performance level 1 (PL1) Enterprise SSD (ESSD)
-        # *   **cloud_essd2**: PL2 ESSD
-        # *   **cloud_essd3**: PL3 ESSD
-        # 
-        # >  Serverless instances use only PL1 ESSDs. If you want to create a serverless instance, you must set this parameter to **cloud_essd**.
+        # > Serverless instances support only PL1 ESSD cloud disks. Set this parameter to **cloud_essd**.
         # 
         # This parameter is required.
         self.dbinstance_storage_type = dbinstance_storage_type
-        # The database engine that is run by the instance. Valid values:
-        # 
+        # The database engine of the instance. Valid values:
         # * **MySQL**
         # * **SQLServer**
         # * **PostgreSQL**
@@ -78,42 +74,36 @@ class DescribeAvailableClassesRequest(DaraModel):
         # This parameter is required.
         self.engine = engine
         # The database engine version of the instance. Valid values:
-        # 
-        # *   Regular instance
-        # 
-        #     *   Valid values if you set Engine to MySQL: **5.5, 5.6, 5.7, and 8.0**
-        #     *   Valid values if you set Engine to SQLServer: **2008r2, 08r2_ent_ha, 2012, 2012_ent_ha, 2012_std_ha, 2012_web, 2014_std_ha, 2016_ent_ha, 2016_std_ha, 2016_web, 2017_std_ha, 2017_ent, 2019_std_ha, and 2019_ent**
-        #     *   Valid values if you set Engine to PostgreSQL: **10.0, 11.0, 12.0, 13.0, 14.0, and 15.0**
-        #     *   Valid value when you set Engine to MariaDB: **10.3**
-        # 
-        # *   Serverless instance
-        # 
-        #     *   Valid values if you set Engine to MySQL: **5.7** and **8.0**
-        #     *   Valid values if you set Engine to SQLServer: **2016_std_sl**, **2017_std_sl**, and **2019_std_sl**
-        #     *   Valid value if you set Engine to PostgreSQL: **14.0**
+        # - Regular instances
+        #     - MySQL: **5.5, 5.6, 5.7, 8.0**
+        #     - SQL Server: **2008r2, 08r2_ent_ha, 2012, 2012_ent_ha, 2012_std_ha, 2012_web, 2014_std_ha, 2016_ent_ha, 2016_std_ha, 2016_web, 2017_std_ha, 2017_ent, 2019_std_ha, 2019_ent**
+        #     - PostgreSQL: **10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0**
+        #     - MariaDB: **10.3**
+        # - Serverless instances
+        #     - MySQL: **5.7**, **8.0**
+        #     - SQL Server: **2016_std_sl**, **2017_std_sl**, **2019_std_sl**
+        #     - PostgreSQL: **14.0, 15.0, 16.0, 17.0**
         # 
         #     > ApsaraDB RDS for MariaDB does not support serverless instances.
         # 
         # This parameter is required.
         self.engine_version = engine_version
         # The billing method of the instance. Valid values:
-        # 
-        # *   **Prepaid**: subscription
-        # *   **Postpaid**: pay-as-you-go
-        # *   **Serverless**: serverless
+        # * **Prepaid**: subscription
+        # * **Postpaid**: pay-as-you-go
+        # * **Serverless**: serverless
         # 
         # > ApsaraDB RDS for MariaDB does not support serverless instances.
         self.instance_charge_type = instance_charge_type
-        # The type of order. Set the value to **BUY**
+        # The order type. The only valid value is **BUY**.
         self.order_type = order_type
-        # The region ID of the instance. You can call the DescribeDBInstanceAttribute operation to query the region ID of the instance.
+        # The region ID of the instance. You can call the DescribeDBInstanceAttribute operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_id = resource_owner_id
-        # The zone ID of the instance. You can call the DescribeDBInstanceAttribute operation to query the zone ID of the instance.
-        # 
-        # >  If the DescribeDBInstanceAttribute operation returns multiple zones, you must specify only one of the returned zones. For example, if the DescribeDBInstanceAttribute operation returns `cn-hangzhou-MAZ9(g,h)`, you can set this parameter to `cn-hangzhou-g` or `cn-hangzhou-h`.
+        # The zone ID of the instance. You can call the DescribeDBInstanceAttribute operation to query the zone ID.
+        # >If DescribeDBInstanceAttribute returns a multi-zone value (such as `cn-hangzhou-MAZ9(g,h)`), specify a single zone. Example: `cn-hangzhou-g` or `cn-hangzhou-j`.
         # 
         # This parameter is required.
         self.zone_id = zone_id

@@ -15,13 +15,13 @@ class DescribeRCMetricListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code returned.
+        # The status code.
         self.code = code
-        # The monitoring data.
+        # The list of monitoring data.
         self.datapoints = datapoints
-        # The message that is returned for the request.
+        # The returned message.
         # 
-        # >  If the request is successful, **Successful** is returned. If the request fails, an error message that contains information such as an error code is returned.
+        # > This parameter returns **Successful** if the request is successful. If the request fails, an error message such as an error code is returned.
         self.message = message
         # The pagination token.
         self.next_token = next_token
@@ -31,8 +31,8 @@ class DescribeRCMetricListResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The request was successful.
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):

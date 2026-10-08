@@ -14,16 +14,16 @@ class DeleteUserBackupFileRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the full backup file. You can call the ListUserBackupFiles operation to query the information about all full backup files in a region.
+        # The user backup ID. You can call ListUserBackupFiles to obtain the ID.
         # 
         # This parameter is required.
         self.backup_id = backup_id
         self.owner_id = owner_id
-        # The region ID of the instance. You can call the DescribeRegions operation to query the most recent region list.
+        # The region ID. You can call DescribeRegions to obtain the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group ID. You can call the DescribeDBInstanceAttribute operation to query the resource group ID.
+        # The resource group ID. You can call DescribeDBInstanceAttribute to obtain the ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

@@ -19,7 +19,7 @@ class TagResourcesRequest(DaraModel):
         tag: List[main_models.TagResourcesRequestTag] = None,
     ):
         self.owner_id = owner_id
-        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -29,7 +29,13 @@ class TagResourcesRequest(DaraModel):
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The type of the resource. Set the value to **INSTANCE**.
+        # The resource type. Valid values:
+        # 
+        # - **INSTANCE**: regular ApsaraDB RDS instance.
+        # - **CUSTOM**: RDS Custom instance.
+        # - **CUSTOMDEPLOYMENTSET**: RDS Custom deployment set.
+        # - **CUSTOMDISK**: RDS Custom cloud disk.
+        # - **CUSTOMSNAPSHOT**: RDS Custom snapshot.
         # 
         # This parameter is required.
         self.resource_type = resource_type
@@ -106,11 +112,13 @@ class TagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag. You can create N tag keys at a time. Valid values of N: **1** to **20**. The value of this parameter cannot be an empty string.
+        # The tag key. Empty values and duplicate values are **not allowed**.
+        # 
+        # > An existing tag key is overwritten by a new tag key with the same name.
         # 
         # This parameter is required.
         self.key = key
-        # The value of the tag. You can create N tag values at a time. Valid values of N: **1** to **20**. The value of this parameter can be an empty string.
+        # The tag value. Empty values are **allowed**.
         self.value = value
 
     def validate(self):

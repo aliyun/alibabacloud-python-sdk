@@ -19,11 +19,11 @@ class DescribeSQLLogReportListResponseBody(DaraModel):
         self.items = items
         # The page number.
         self.page_number = page_number
-        # The number of SQL log reports on the current page.
+        # The number of SQL log running reports on the current page.
         self.page_record_count = page_record_count
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of entries returned.
         self.total_record_count = total_record_count
 
     def validate(self):

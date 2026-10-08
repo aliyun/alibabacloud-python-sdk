@@ -11,9 +11,9 @@ class ModifyRCInstanceDescriptionRequest(DaraModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The instance name.
+        # The name of the RDS Custom instance.
         # 
-        # >  The name must be 2 to 255 characters in length and can contain letters, digits, `underscores (_)`, and `hyphens (-)`. It must start with a letter.
+        # > The name must be 2 to 255 characters in length and must start with a letter or a Chinese character. It can contain digits, underscores (_), or hyphens (-).
         self.instance_description = instance_description
         # The instance ID.
         self.instance_id = instance_id

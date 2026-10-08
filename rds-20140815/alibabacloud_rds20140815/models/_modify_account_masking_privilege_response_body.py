@@ -14,13 +14,13 @@ class ModifyAccountMaskingPrivilegeResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # Returned data
+        # The returned data.
         self.data = data
-        # Return message
+        # The returned message.
         self.message = message
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation succeeded
+        # Indicates whether the operation was successful.
         self.success = success
 
     def validate(self):

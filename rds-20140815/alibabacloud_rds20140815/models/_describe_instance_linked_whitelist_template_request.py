@@ -17,9 +17,9 @@ class DescribeInstanceLinkedWhitelistTemplateRequest(DaraModel):
         # 
         # This parameter is required.
         self.ins_name = ins_name
-        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query available regions.
         self.region_id = region_id
-        # The resource group ID. You can leave this parameter empty.
+        # The resource group ID. This parameter can be left empty.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

@@ -18,13 +18,13 @@ class DescribeRCSnapshotsResponseBody(DaraModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The details of snapshots.
+        # The snapshot information.
         self.snapshots = snapshots
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -103,70 +103,65 @@ class DescribeRCSnapshotsResponseBodySnapshots(DaraModel):
         tag: List[main_models.DescribeRCSnapshotsResponseBodySnapshotsTag] = None,
         usage: str = None,
     ):
-        # Indicates whether the snapshot can be shared and used to create or roll back a cloud disk. Valid values:
-        # 
-        # *   true
-        # *   false
+        # Indicates whether the snapshot can be used to create cloud disks, roll back cloud disks, or share snapshots. Valid values:
+        # - true: Available.
+        # - false: Not available.
         self.available = available
         # The snapshot type. Valid values:
-        # 
-        # *   Standard: standard snapshot
-        # *   Flash: local snapshot This value will be deprecated. The local snapshot feature is replaced with the instant access feature.
-        # *   archive: archived snapshot
+        # - Standard: standard snapshot.
+        # - Flash: local snapshot. This value will be deprecated. Local snapshots have been replaced by the instant access feature.
+        # - archive: archived snapshot.
         self.category = category
         # The creation time. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The snapshot description.
+        # The description of the snapshot.
         self.description = description
-        # Indicates whether the snapshot was encrypted. Valid values:
-        # 
-        # *   true
-        # *   false
+        # Indicates whether the snapshot is encrypted. Valid values:
+        # - true: Encrypted.
+        # - false: Not encrypted.
         self.encrypted = encrypted
-        # This parameter is deprecated.
+        # **[Deprecated]** This parameter is deprecated and does not need to be specified.
         self.instant_access = instant_access
         self.last_modified_time = last_modified_time
-        # The progress of the snapshot creation task in percentage.
+        # The progress of snapshot creation, in percentage.
         self.progress = progress
         # The region ID.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         # The snapshot ID.
         self.snapshot_id = snapshot_id
         # The snapshot name.
         self.snapshot_name = snapshot_name
-        # The snapshot type. Valid values:
-        # 
-        # *   auto or timer: automatically created snapshot
-        # *   user: manually created snapshot
-        # *   all: all snapshot types
+        # The type of automatic creation. Valid values:
+        # - auto or timer: automatic snapshot.
+        # - user: manual snapshot.
+        # - all: all automatic creation types.
         self.snapshot_type = snapshot_type
-        # The ID of the original disk. This parameter is retained even after the original disk for which the snapshot was created is released.
+        # The ID of the source cloud disk. This field is retained even if the source cloud disk of the snapshot has been released.
         self.source_disk_id = source_disk_id
-        # The storage capacity of the original disk. Unit: GiB.
+        # The capacity of the source cloud disk. Unit: GiB.
         self.source_disk_size = source_disk_size
-        # The type of the original disk. Valid values:
-        # 
-        # *   SYSTEM: system disk
-        # *   DATA: data disk
+        # The type of the source cloud disk. Valid values:
+        # - SYSTEM: system cloud disk.
+        # - DATA: data cloud disk.
         self.source_disk_type = source_disk_type
-        # The type of the source disk.
+        # The type of the source cloud disk.
         # 
-        # >  This parameter will be removed in the future. To ensure future compatibility, we recommend that you use other parameters.
+        # >This parameter will be deprecated. To ensure compatibility, use other parameters instead.
         self.source_storage_type = source_storage_type
         # The snapshot status. Valid values:
-        # 
-        # *   progressing: The snapshot is being created.
-        # *   accomplished: The snapshot is created.
-        # *   failed: The snapshot fails to be created.
+        # - progressing: The snapshot is being created.
+        # - accomplished: The snapshot is created.
+        # - failed: The snapshot failed to be created.
         self.status = status
+        # The tag details.
         self.tag = tag
-        # Indicates whether the snapshot is used to create custom images or disks. Valid values:
-        # 
-        # *   image: The snapshot is used to create custom images.
-        # *   disk: The snapshot is used to create disks.
-        # *   image_disk: The snapshot is used to create custom images and data disks.
-        # *   none: The snapshot is not used to create custom images or disks.
+        # Indicates whether the snapshot has been used to create images or cloud disks. Valid values:
+        # - image: The snapshot has been used to create custom images.
+        # - disk: The snapshot has been used to create cloud disks.
+        # - image_disk: The snapshot has been used to create both data cloud disks and custom images.
+        # - none: The snapshot has not been used.
         self.usage = usage
 
     def validate(self):
@@ -317,7 +312,9 @@ class DescribeRCSnapshotsResponseBodySnapshotsTag(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):

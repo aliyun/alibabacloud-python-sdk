@@ -15,13 +15,13 @@ class DescribeReplicationLinkLogsResponseBody(DaraModel):
         request_id: str = None,
         total_size: int = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The items.
+        # The records.
         self.items = items
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of records.
         self.total_size = total_size
 
     def validate(self):
@@ -90,56 +90,55 @@ class DescribeReplicationLinkLogsResponseBodyItems(DaraModel):
         task_status: str = None,
         task_type: str = None,
     ):
-        # The details of the task.
+        # The task details.
         self.detail = detail
-        # The creation time. The time is displayed in UTC.
+        # The creation time in UTC.
         self.gmt_created = gmt_created
-        # The modification time. The time is displayed in UTC.
+        # The modification time in UTC.
         self.gmt_modified = gmt_modified
-        # The synchronization information. This parameter is a reserved parameter.
+        # The synchronization information. This is a reserved field.
         self.replication_info = replication_info
-        # The status of the synchronization. Valid values:
+        # The synchronization status. Valid values:
         # 
-        # *   **steaming**: The synchronization is in progress.
-        # *   **finish**: The synchronization is complete.
-        # *   **disconnect**: The synchronization is disconnected.
+        # - **steaming**: Synchronizing.
+        # - **finish**: Completed.
+        # - **disconnect**: Disconnected.
         self.replication_state = replication_state
-        # The account of the database that is used for data synchronization.
+        # The database account used for data synchronization.
         self.replicator_account = replicator_account
-        # The password of the account.
+        # The password of the synchronization account.
         self.replicator_password = replicator_password
-        # The endpoint of the source instance.
+        # The address of the source instance.
         self.source_address = source_address
-        # The type of the source instance. Valid values:
+        # The category of the source instance. Valid values:
         # 
-        # *   other: other instances
-        # *   aliyunRDS: an ApsaraDB RDS instance
+        # - other: Other.
+        # - aliyunRDS: ApsaraDB RDS instance.
         self.source_category = source_category
-        # The port number of the source instance.
+        # The port of the source instance.
         self.source_port = source_port
-        # The destination instance ID.
+        # The ID of the target instance.
         self.target_instance_id = target_instance_id
-        # The ID of the task.
+        # The task ID.
         self.task_id = task_id
-        # The name of the task.
+        # The task name.
         self.task_name = task_name
-        # The stage of the task. Valid values:
+        # The task stage. Valid values:
         # 
-        # *   **precheck**: the precheck stage.
-        # *   **basebackup**: the basic backup stage.
-        # *   **startup**: the startup stage.
-        # *   **increment**: the incremental synchronization stage.
+        # - **precheck**: Dry run.
+        # - **basebackup**: Basic backup.
+        # - **startup**: Startup.
+        # - **increment**: Incremental synchronization.
         self.task_stage = task_stage
-        # The status of the task. Valid values:
+        # The task status. Valid values:
         # 
-        # *   **success**
-        # *   **failure**
-        # *   **running**
+        # - **success**: Succeeded.
+        # - **failure**: Failed.
+        # - **running**: Running.
         self.task_status = task_status
-        # The type of the task. Valid values:
-        # 
-        # *   **create**: creates a synchronization link.
-        # *   **create-dryrun**: performs a precheck before a synchronization link is created.
+        # The task type. Valid values:
+        # - **create**: Create a replication link.
+        # - **create-dryrun**: Dry run for creating a replication link.
         self.task_type = task_type
 
     def validate(self):

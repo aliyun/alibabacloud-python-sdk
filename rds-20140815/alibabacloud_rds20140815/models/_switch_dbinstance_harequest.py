@@ -16,25 +16,23 @@ class SwitchDBInstanceHARequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # The instance ID. You can call DescribeDBInstances to query the instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The time when the switching takes effect. Valid values:
-        # 
-        # *   **Immediate**: The switching immediately takes effect.
-        # *   **MaintainTime**: The switching takes effect during the maintenance time.
+        # The effective period. Valid values:
+        # * **Immediate**: The switchover is executed immediately.
+        # * **MaintainTime**: The switchover is executed during the maintenance window.
         # 
         # Default value: **Immediate**.
         self.effective_time = effective_time
-        # Specifies whether to enable forcible switching. Valid values:
-        # 
-        # *   **Yes**
-        # *   **No**
+        # The switchover method. Valid values:
+        # * **Yes**: A forced switchover is performed.
+        # * **No**: A non-forced switchover is performed.
         # 
         # Default value: **No**.
         self.force = force
-        # The secondary instance ID. You can call the DescribeDBInstanceHAConfig operation to query the secondary instance ID.
+        # The unique ID of the secondary instance. You can call DescribeDBInstanceHAConfig to query this value.
         # 
         # This parameter is required.
         self.node_id = node_id

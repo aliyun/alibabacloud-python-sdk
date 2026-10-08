@@ -31,19 +31,18 @@ class RemoveTagsFromResourceRequest(DaraModel):
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # The region ID. You can call the DescribeRegions operation to query available region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group ID. You can call the ListResourceGroups operation to query the resource group ID.
+        # The resource group ID. You can call the ListResourceGroups operation to obtain the resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # A set of a TagKey and a TagValue that you use to unbind the tag. Format: {"key1":"value1"}.
-        # 
-        # >  You cannot specify an empty string for TagKey. You can specify an empty string for TagValue.
+        # The tags to unbind, including TagKey and TagValue. Format: {"key1":"value1"}.
+        # >TagKey cannot be empty. TagValue can be empty.
         self.tags = tags
-        # The ID of the proxy mode.
+        # The proxy mode ID.
         self.proxy_id = proxy_id
 
     def validate(self):
@@ -140,9 +139,9 @@ class RemoveTagsFromResourceRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The TagKey of the first tag that you want to unbind. Each tag consists of a TagKey and a TagValue. You can specify up to five tags in a single request. You cannot specify an empty string as the tag key. You can specify an empty string as the tag value.
+        # The TagKey of the first tag to unbind. The tags to unbind include TagKey and TagValue. You can specify up to 5 pairs at a time. TagKey cannot be empty. TagValue can be empty.
         self.key = key
-        # The TagValue of the first tag that you want to unbind. Each tag consists of a TagKey and a TagValue. You can specify up to five tags in a single request. You cannot specify an empty string as the tag key. You can specify an empty string as the tag value.
+        # The TagValue of the first tag to unbind. The tags to unbind include TagKey and TagValue. You can specify up to 5 pairs at a time. TagKey cannot be empty. TagValue can be empty.
         self.value = value
 
     def validate(self):

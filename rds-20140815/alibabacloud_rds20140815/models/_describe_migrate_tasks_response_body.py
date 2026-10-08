@@ -22,11 +22,11 @@ class DescribeMigrateTasksResponseBody(DaraModel):
         self.items = items
         # The page number of the returned page.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_record_count = page_record_count
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries that meet the specified conditions.
         self.total_record_count = total_record_count
 
     def validate(self):

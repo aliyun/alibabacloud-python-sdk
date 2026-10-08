@@ -17,10 +17,11 @@ class DescribeParameterGroupsResponseBody(DaraModel):
         self.parameter_groups = parameter_groups
         # The request ID.
         self.request_id = request_id
-        # Indicates whether parameter templates exist in the specified region. Valid values:
-        # *   true
-        # *   false
-        # >Notice: This parameter is deprecated.
+        # **[Deprecated]** Indicates whether the specified region has parameter templates. Valid values:
+        # 
+        # * true: No parameter templates exist.
+        # * false: Parameter templates exist.
+        # >Warning: This parameter is deprecated and is not recommended.
         self.signal_for_optimize_params = signal_for_optimize_params
 
     def validate(self):

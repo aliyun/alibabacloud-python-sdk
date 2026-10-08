@@ -19,23 +19,20 @@ class CreateMigrateTaskRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The type of the migration task. Valid values:
-        # 
-        # *   **FULL**: The migration task migrates full backup files.
-        # *   **UPDF**: The migration task migrates incremental or log backup files.
+        # The type of the cloud migration task. Valid values:
+        # * **FULL**: performs a restore operation by using a full backup file. This value is applicable to first-time migrations or full data recovery scenarios.
+        # * **UPDF**: restores incremental data by using an incremental backup file or log file. This value is applicable to incremental synchronization scenarios where a full backup already exists.
         # 
         # This parameter is required.
         self.backup_mode = backup_mode
-        # The consistency check method for the database. Valid values:
+        # The consistency check method after the database is brought online. This parameter takes effect only when IsOnlineDB is set to True. Valid values:
         # 
-        # *   **SyncExecuteDBCheck**: synchronous database check
-        # *   **AsyncExecuteDBCheck**: asynchronous database check
+        # - **SyncExecuteDBCheck**: performs a synchronous database check. This value is applicable to scenarios that require high data consistency.
+        # - **AsyncExecuteDBCheck**: performs an asynchronous database check. This value provides higher performance but may delay the detection of potential issues.
         # 
-        # Default value: **AsyncExecuteDBCheck** (compatible with SQL Server 2008 R2)
-        # 
-        # >  This parameter is valid when **IsOnlineDB** is set to **True**.
+        # Default value: **AsyncExecuteDBCheck** (compatible with SQL Server 2008 R2).
         self.check_dbmode = check_dbmode
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # The instance ID. You can call DescribeDBInstances to query the instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
@@ -43,37 +40,32 @@ class CreateMigrateTaskRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbname = dbname
-        # Specifies whether to make the restored database data available for user access. Valid values:
+        # Specifies whether to bring the restored database online so that users can access it. Valid values:
         # 
-        # *   **True**
-        # *   **False**
+        # * **True**: Brings the database online.
+        # * **False**: Does not bring the database online.
         # 
-        # >  Set the value to **True** for instances that run SQL Server 2008 R2.
+        # > * For SQL Server 2008 R2, this value is always True.
+        # > * When **IsOnlineDB** is set to **True**, **BackupMode** must be set to **FULL**.
+        # > * When **IsOnlineDB** is set to **False**, **BackupMode** must be set to **UPDF**.
         # 
         # This parameter is required.
         self.is_online_db = is_online_db
-        # The migration task ID.
+        # The migration task ID. Valid values:
         # 
-        # *   If you set **BackupMode** to **FULL**, the value of this parameter is empty. The full backup mode is compatible with instance that runs SQL Server 2008 R2.
-        # *   If you set **BackupMode** to **UPDF**, the value of this parameter is the ID of the required full migration task.
-        # 
-        # > *   If you set **IsOnlineDB** to **True**, the value of **BackupMode** must be **FULL**.
-        # > *   If you set **IsOnlineDB** to **False**, the value of **BackupMode** must be **UPDF**.
+        # - When **BackupMode** is set to **FULL**, leave this parameter empty (compatible with SQL Server 2008 R2).
+        # - When **BackupMode** is set to **UPDF**, set this parameter to the ID of the corresponding FULL task. You can call DescribeMigrateTasks to query the task ID.
         self.migrate_task_id = migrate_task_id
-        # The shared URL of the backup file in the OSS bucket. The URL must be encoded.
+        # The shared URL of the backup file on OSS (URL-encoded). If multiple URLs exist, separate them with vertical bars (|) before encoding, and then pass the encoded value.
         # 
-        # If you specify multiple URLs, separate them with vertical bars (|) and then encode them.
-        # 
-        # >  This parameter is required for instances that run SQL Server 2008 R2.
+        # > This parameter is required for SQL Server 2008 R2.
         self.ossurls = ossurls
-        # The information about the backup file in the OSS bucket. The values consist of three parts that are separated by colons (:):
+        # The OSS file information, which consists of the following three parts separated by colons (:):
+        # - **OSS endpoint**: oss-ap-southeast-1.aliyuncs.com.
+        # - **OSS bucket name**: rdsmssqlsingapore.
+        # - **Backup file name on OSS**: autotest_2008R2_TestMigration_FULL.bak.
         # 
-        # *   OSS endpoint: oss-ap-southeast-1.aliyuncs.com.
-        # *   Name of the OSS bucket: rdsmssqlsingapore.
-        # *   Key of the backup file in the OSS bucket: autotest_2008R2_TestMigration_FULL.bak.
-        # 
-        # > *   This parameter is optional for instances that run SQL Server 2008 R2.
-        # > *   This parameter is required for instances that run a major engine version later than SQL Server 2008 R2.
+        # > This parameter is required for SQL Server versions later than SQL Server 2008 R2.
         self.oss_object_positions = oss_object_positions
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account

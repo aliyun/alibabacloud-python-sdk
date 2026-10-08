@@ -21,59 +21,53 @@ class ModifyDBInstanceTDERequest(DaraModel):
         role_arn: str = None,
         tdestatus: str = None,
     ):
-        # The file that contains the certificate.\\
+        # The certificate file.
+        # 
         # Format:
+        # - Public endpoint: `oss-<RegionId>.aliyuncs.com:<BucketName>:<CertificateFileName (with file extension)>`
+        # - Internal network endpoint: `oss-<RegionId>-internal.aliyuncs.com:<BucketName>:<CertificateFileName (with file extension)>`
         # 
-        # *   Public endpoint: `oss-<The ID of the region>.aliyuncs.com:<The name of the bucket>:<The name of the certificate file>` (The file name contains the extension.)
-        # *   Internal endpoint: `oss-<The ID of the region>-internal.aliyuncs.com:<The name of the bucket>:<The name of the certificate file>` (The file name contains the extension.)
-        # 
-        # > *   This parameter is available when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
-        # > *   You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
+        # > - This parameter is active only for SQL Server 2019 Standard Edition, 2022 Standard Edition, 2025 Standard Edition, and SQL Server Enterprise instance instances.
+        # > - You can call [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) to query active region IDs.
         self.certificate = certificate
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # The instance ID. You can call DescribeDBInstances to query the instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The name of the database for which you want to enable TDE. You can specify up to 50 database names in a single request. If you specify multiple database names, separate the database names with commas (,).
-        # 
-        # > This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
+        # The name of the database for which you want to enable TDE. You can specify multiple database names separated by commas (,). You can specify up to 50 database names.
+        # > This parameter is active and required only for SQL Server 2019 Standard Edition, 2022 Standard Edition, 2025 Standard Edition, and SQL Server Enterprise instance instances.
         self.dbname = dbname
-        # The ID of the custom key.
-        # 
-        # > This parameter is available when the instance runs MySQL or PostgreSQL.
+        # The custom key ID.
+        # > This parameter is available only for ApsaraDB RDS for MySQL and ApsaraDB RDS for PostgreSQL instances.
         self.encryption_key = encryption_key
-        # Specifies whether to replace the key. Valid values:
+        # Specifies whether to rotate the key. Valid values:
+        # - **true**: Rotate the key.
+        # - **false** (default): Do not rotate the key.
         # 
-        # *   **true**
-        # *   **false** (default)
-        # 
-        # >  This parameter is available for only ApsaraDB RDS for PostgreSQL instances.
+        # > This parameter is available only for ApsaraDB RDS for PostgreSQL instances.
         self.is_rotate = is_rotate
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The password of the certificate.
-        # 
-        # > This parameter is available when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
+        # The certificate password.
+        # > This parameter is active only for SQL Server 2019 Standard Edition, 2022 Standard Edition, 2025 Standard Edition, and SQL Server Enterprise instance instances.
         self.pass_word = pass_word
-        # The file that contains the private key of the certificate.\\
+        # The private key file.
+        # 
         # Format:
+        # - Public endpoint: `oss-<RegionId>.aliyuncs.com:<BucketName>:<PrivateKeyFileName (with file extension)>`
+        # - Internal network endpoint: `oss-<RegionId>-internal.aliyuncs.com:<BucketName>:<PrivateKeyFileName (with file extension)>`
         # 
-        # *   Public endpoint: `oss-<The ID of the region>.aliyuncs.com:<The name of the bucket>:<The name of the file that contains the private key>` (The file name contains the extension.)
-        # *   Internal endpoint: `oss-<The ID of the region>-internal.aliyuncs.com:<The name of the bucket>:<The name of the file that contains the private key>` (The file name contains the extension.)
-        # 
-        # > *   This parameter is available when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
-        # > *   You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
+        # > - This parameter is active only for SQL Server 2019 Standard Edition, 2022 Standard Edition, 2025 Standard Edition, and SQL Server Enterprise instance instances.
+        # > - You can call [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) to query active region IDs.
         self.private_key = private_key
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://help.aliyun.com/document_detail/93689.html).
-        # 
-        # > This parameter is available when the instance runs MySQL or PostgreSQL.
+        # The global resource descriptor of the RAM role. The resource descriptor is used to specify a RAM role. For details, see [RAM role overview](https://help.aliyun.com/document_detail/93689.html).
+        # > This parameter is available only for ApsaraDB RDS for MySQL and ApsaraDB RDS for PostgreSQL instances.
         self.role_arn = role_arn
-        # The status of TDE. Valid values:
-        # 
-        # *   **Enabled**
-        # *   **Disabled**
+        # The TDE status. Valid values:
+        # - **Enabled** 
+        # - **Disabled**
         # 
         # This parameter is required.
         self.tdestatus = tdestatus

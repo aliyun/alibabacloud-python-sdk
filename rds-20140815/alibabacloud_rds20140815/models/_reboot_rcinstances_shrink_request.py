@@ -13,17 +13,10 @@ class RebootRCInstancesShrinkRequest(DaraModel):
         reboot_time: str = None,
         region_id: str = None,
     ):
-        # The batch operation mode. Set the value to **AllTogether**. In this mode, if all specified instances are restarted, a success message is returned. If an instance fails the verification, none of the specified instances can be restarted and an error message is returned.
         self.batch_optimization = batch_optimization
-        # Specifies whether to forcefully restart the instance. Valid values:
-        # 
-        # *   **true**
-        # *   **false** (default)
         self.force_reboot = force_reboot
-        # The node IDs.
         self.instance_ids_shrink = instance_ids_shrink
         self.reboot_time = reboot_time
-        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):

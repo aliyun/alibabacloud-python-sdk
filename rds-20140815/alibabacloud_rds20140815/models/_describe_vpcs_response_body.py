@@ -16,10 +16,15 @@ class DescribeVpcsResponseBody(DaraModel):
         total_count: int = None,
         vpcs: List[main_models.DescribeVpcsResponseBodyVpcs] = None,
     ):
+        # The current page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
+        # The list of VPCs.
         self.vpcs = vpcs
 
     def validate(self):
@@ -89,16 +94,27 @@ class DescribeVpcsResponseBodyVpcs(DaraModel):
         vpc_id: str = None,
         vpc_name: str = None,
     ):
+        # The Alibaba Cloud account ID.
         self.ali_uid = ali_uid
+        # The business ID.
         self.bid = bid
+        # The CIDR block of the VPC.
         self.cidr_block = cidr_block
+        # The time when the VPC was created.
         self.gmt_create = gmt_create
+        # The time when the VPC was last modified.
         self.gmt_modified = gmt_modified
+        # Indicates whether the VPC is the default VPC.
         self.is_default = is_default
+        # The region ID.
         self.region_no = region_no
+        # The VPC status.
         self.status = status
+        # The vSwitch information.
         self.v_switchs = v_switchs
+        # The ID of the VPC.
         self.vpc_id = vpc_id
+        # The name of the VPC.
         self.vpc_name = vpc_name
 
     def validate(self):
@@ -201,13 +217,21 @@ class DescribeVpcsResponseBodyVpcsVSwitchs(DaraModel):
         v_switch_id: str = None,
         v_switch_name: str = None,
     ):
+        # The vSwitch CIDR block.
         self.cidr_block = cidr_block
+        # The time when the vSwitch was created.
         self.gmt_create = gmt_create
+        # The time when the vSwitch was last modified.
         self.gmt_modified = gmt_modified
+        # Indicates whether the vSwitch is the default vSwitch.
         self.is_default = is_default
+        # The zone ID.
         self.iz_no = iz_no
+        # The vSwitch status.
         self.status = status
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # The vSwitch name.
         self.v_switch_name = v_switch_name
 
     def validate(self):

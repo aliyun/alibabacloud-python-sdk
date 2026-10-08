@@ -16,15 +16,15 @@ class DescribeActiveOperationTasksResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The details about the O\\&M task.
+        # The list of O&M tasks.
         self.items = items
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number. The value must be greater than 0. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Valid values: 1 to 100. Default value: 25.
+        # The number of entries per page. Default value: 25. Maximum value: 100.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of task records returned.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -111,72 +111,71 @@ class DescribeActiveOperationTasksResponseBodyItems(DaraModel):
         task_type_en: str = None,
         task_type_zh: str = None,
     ):
-        # Indicates whether the task can be canceled. The value 1 indicates that the task can be canceled. The value 0 indicates that the task cannot be canceled.
+        # Indicates whether the task can be canceled. A value of 1 indicates that the task can be canceled. A value of 0 indicates that the task cannot be canceled.
         self.allow_cancel = allow_cancel
-        # Indicates whether the switching time can be changed. The value 1 indicates that the switching time can be changed. The value 0 indicates that the switching time cannot be changed.
+        # Indicates whether the task time can be modified. A value of 1 indicates that the time can be modified. A value of 0 indicates that the time cannot be modified.
         self.allow_change = allow_change
-        # The code of the task level. The value S1 indicates the system O\\&M level. The value S0 indicates the exception fixing level.
+        # The event level code. S1 indicates system O&M. S0 indicates risk recovery.
         self.change_level = change_level
-        # The level of the task in English.
+        # The event level in English.
         self.change_level_en = change_level_en
-        # The level of the task in Chinese.
+        # The event level in Chinese.
         self.change_level_zh = change_level_zh
-        # The time when the task was created. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
+        # The creation time. The time is in UTC and follows the format of YYYY-MM-DDTHH:mm:ssZ.
         self.created_time = created_time
         # The current zone.
         self.current_avz = current_avz
-        # The type of the database. Valid values: mysql, pgsql, and mssql.
+        # The database type, such as mysql, pgsql, or mssql.
         self.db_type = db_type
-        # The minor engine version.
+        # The Milvus version number.
         self.db_version = db_version
-        # The deadline of the switching time for the task. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
+        # The latest deadline by which the task execution time can be adjusted. The time is in UTC and follows the format of YYYY-MM-DDTHH:mm:ssZ.
         self.deadline = deadline
-        # The ID of the task.
+        # The task ID.
         self.id = id
-        # The impact of the task.
+        # The event impact.
         self.impact = impact
-        # The impact of the task in English.
+        # The event impact in English.
         self.impact_en = impact_en
-        # The impact of the task in Chinese.
+        # The event impact in Chinese.
         self.impact_zh = impact_zh
-        # The alias and description of the instance.
+        # The instance alias or instance description.
         self.ins_comment = ins_comment
-        # The instance ID.
+        # The instance name.
         self.ins_name = ins_name
-        # The time after the modification. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
+        # The modification time. The time is in UTC and follows the format of YYYY-MM-DDTHH:mm:ssZ.
         self.modified_time = modified_time
-        # The required preparation period between the task start time and the switching time. The time is displayed in the HH:mm:ss format.
+        # The preparation time required between the start time and the switchover time. The format is HH:mm:ss.
         self.prepare_interval = prepare_interval
-        # The region ID of the pending task.
+        # The region ID of the pending event.
         self.region = region
-        # The information about the execution result.
+        # The execution result information.
         self.result_info = result_info
-        # The time when the task was executed. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
+        # The time when the backend executes the task. The time is in UTC and follows the format of YYYY-MM-DDTHH:mm:ssZ.
         self.start_time = start_time
-        # The task status.
-        # 
-        # *   **3**: pending
-        # *   **4**: being processed
-        # *   **5**: completed
-        # *   **6**: failed
-        # *   **7**: canceled
+        # The task status. Valid values:
+        # * **3**: pending.
+        # * **4**: in progress.
+        # * **5**: succeeded.
+        # * **6**: failed.
+        # * **7**: canceled.
         self.status = status
-        # The subtasks of the instance.
+        # The instance shards.
         self.sub_ins_names = sub_ins_names
-        # The switching time of the task. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
+        # The time when the backend initiates the switchover. The time is in UTC and follows the format of YYYY-MM-DDTHH:mm:ssZ.
         self.switch_time = switch_time
         # The task parameters.
         self.task_params = task_params
-        # The type of the O\\&M task. Valid values:
+        # The task type. Valid values:
         # 
-        # *   **rds_apsaradb_ha**: primary/secondary switchover
-        # *   **rds_apsaradb_transfer**: instance migration
-        # *   **rds_apsaradb_upgrade**: update of the minor engine version
-        # *   **rds_apsaradb_maxscale**: minor version update of the database proxy
+        # * **rds_apsaradb_ha**: primary/secondary node switch.
+        # * **rds_apsaradb_transfer**: instance migration.
+        # * **rds_apsaradb_upgrade**: minor engine version update.
+        # * **rds_apsaradb_maxscale**: proxy minor version upgrade.
         self.task_type = task_type
-        # The reason for the task in English.
+        # The task reason in English.
         self.task_type_en = task_type_en
-        # The reason for the task in Chinese.
+        # The task reason in Chinese.
         self.task_type_zh = task_type_zh
 
     def validate(self):

@@ -17,29 +17,28 @@ class DescribeUpgradeMajorVersionPrecheckTaskRequest(DaraModel):
         target_major_version: str = None,
         task_id: int = None,
     ):
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # The instance ID. You can call DescribeDBInstances to obtain the instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number.
+        # The page number of the pre-upgrade check report.
         # 
-        # Valid values: any non-zero positive integer. Default value: 1
+        # Valid values: a value greater than 0 that does not exceed the maximum value of the Integer data type. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of records per page in the major engine version upgrade check report.
         # 
         # Valid values:
-        # 
-        # *   30 (default)
-        # *   50
-        # *   100
+        # - 30 (default)
+        # - 50
+        # - 100
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The new major engine version of the instance. The new major engine version must be later than the original major engine version.
+        # The target instance version. The value must be greater than the current major engine version of the instance.
         self.target_major_version = target_major_version
-        # The ID of the upgrade check task. You can obtain the ID of the upgrade check task from the **TaskId** parameter in the response to the UpgradeDBInstanceMajorVersionPrecheck operation.
+        # The ID of the pre-upgrade check task. You can obtain this value from the **TaskId** response parameter after you call the UpgradeDBInstanceMajorVersionPrecheck operation to perform a pre-upgrade check.
         self.task_id = task_id
 
     def validate(self):

@@ -14,16 +14,16 @@ class CreateYouhuiForOrderRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The activity ID.
+        # The ID of the ticket that was created.
         # 
         # This parameter is required.
         self.activity_id = activity_id
         self.owner_id = owner_id
-        # The promotion ID. You can call the GetResourcePrice operation to query the promotion ID.
+        # The promotion ID. You can call the GetResourcePrice operation to obtain this value.
         # 
         # This parameter is required.
         self.promotion_id = promotion_id
-        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # The region ID. You can call the DescribeRegions operation to query available region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id

@@ -12,7 +12,7 @@ class DeleteReplicationLinkResponseBody(DaraModel):
         task_id: int = None,
         task_name: str = None,
     ):
-        # The ID of the DR instance.
+        # The instance ID of the disaster recovery instance.
         self.dbinstance_id = dbinstance_id
         # The request ID.
         self.request_id = request_id

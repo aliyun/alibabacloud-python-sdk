@@ -25,18 +25,19 @@ class DescribeAccountsResponseBody(DaraModel):
         self.request_id = request_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The first time when the system admin account was enabled. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the super administrator (SA) account was first activated. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         # 
-        # >  This parameter is returned only for instances that run SQL Server.
+        # > This parameter is returned only for ApsaraDB RDS for SQL Server instances.
         self.system_admin_account_first_activation_time = system_admin_account_first_activation_time
-        # Indicates whether the system admin account was enabled. Valid values:
+        # Indicates whether the super administrator (SA) account is activated. Valid values:
         # 
-        # *   **true**: The system admin account was enabled.
-        # *   **false**: The system admin account was disabled.
+        # - **True**: Activated.
+        # - **False**: Not activated.
         # 
-        # >  The [system admin account](https://help.aliyun.com/document_detail/170736.html) is supported only for the instances that run SQL Server. If the instance runs SQL Server, a value is returned for this parameter. If the instance runs a different database engine, no value is returned for this parameter.
+        # 
+        # > Only ApsaraDB RDS for SQL Server instances support the [super administrator (SA) account](https://help.aliyun.com/document_detail/170736.html), and this parameter has a return value. For instances of other engines, the return value is empty.
         self.system_admin_account_status = system_admin_account_status
-        # The total number of entries that are returned.
+        # The total number of records.
         self.total_record_count = total_record_count
 
     def validate(self):

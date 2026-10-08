@@ -12,9 +12,15 @@ class AuthorizeBackupEncryptionResponseBody(DaraModel):
         request_id: str = None,
         role_arn: str = None,
     ):
+        # The authorization status of the account. Valid values:
+        # * 0: Not authorized.
+        # * 1: Authorized.
         self.authorization_state = authorization_state
+        # The error message returned by the operation.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The Alibaba Resource Name (ARN) of the service-linked role associated with backup encryption.
         self.role_arn = role_arn
 
     def validate(self):

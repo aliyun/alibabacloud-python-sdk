@@ -18,19 +18,20 @@ class DescribeRCSnapshotsRequest(DaraModel):
         snapshot_ids: str = None,
         tag: List[main_models.DescribeRCSnapshotsRequestTag] = None,
     ):
-        # The cloud disk ID.
+        # The ID of the cloud disk.
         self.disk_id = disk_id
         self.instance_id = instance_id
         # The page number.
         self.page_number = page_number
         # The number of entries per page. Valid values: **30** to **100**. Default value: **30**.
         self.page_size = page_size
-        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # The region ID. You can call DescribeRegions to query available regions.
         self.region_id = region_id
-        # The snapshot IDs.
+        # The IDs of snapshots.
         # 
-        # You can specify a maximum of 100 IDs. Separate multiple IDs with commas (,).
+        # You can specify multiple snapshot IDs separated by commas (,). A maximum of 100 IDs can be specified.
         self.snapshot_ids = snapshot_ids
+        # The tag details.
         self.tag = tag
 
     def validate(self):
@@ -103,7 +104,9 @@ class DescribeRCSnapshotsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag value.
         self.key = key
+        # The tag key.
         self.value = value
 
     def validate(self):

@@ -17,17 +17,17 @@ class DescribeMarketingActivityRequest(DaraModel):
         resource_owner_id: int = None,
         upgrade_code: str = None,
     ):
-        # The ID of the Alibaba Cloud account.
+        # The Alibaba Cloud account ID.
         # 
         # This parameter is required.
         self.ali_uid = ali_uid
-        # *   China site: 26842
-        # *   International site: 26888
+        # - Chinese site: 26842
+        # - International site: 26888
         self.bid = bid
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         self.owner_id = owner_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) to query the available regions.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -35,7 +35,7 @@ class DescribeMarketingActivityRequest(DaraModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The service name.
+        # The product name.
         # 
         # This parameter is required.
         self.upgrade_code = upgrade_code

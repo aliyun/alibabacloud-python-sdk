@@ -32,128 +32,119 @@ class UpgradeDBInstanceMajorVersionRequest(DaraModel):
         zone_id_slave_2: str = None,
     ):
         self.allow_ddl = allow_ddl
-        # Specify the point in time at which the system collects the statistics of the instance.
+        # Specifies when to execute statistics information collection on the database.
+        # - **Before**: Execute collection before the switchover. This ensures business stability. If the instance has a large data volume, the upgrade may take a long time.
+        # - **After**: Execute collection after the switchover. The upgrade is faster. Accessing tables without generated statistics information after the upgrade may cause inaccurate execution plans. During peak hours, this may cause the database to break down.
         # 
-        # *   **Before**: The system collects the statistics of the instance before the switchover to ensure service stability. If the instance contains a large amount of data, the upgrade may require a long period of time.
-        # *   **After**: The system collects the statistics of the instance after the switchover to accelerate the upgrade. After the upgrade, if you access tables for which no statistics are generated, the query plans may be inaccurate, and your database service may be unavailable during peak hours.
-        # 
-        # >  If you set the SwitchOver parameter to false, the value Before specifies that the system collects the statistics of the instance before the instance starts to process read and write requests, and the value After specifies that the system collects the statistics of the instance after the instance starts to process read and write requests.
+        # > For non-switchover scenarios, "before switchover" means statistics information is collected before the new instance is opened for read/write, and "after switchover" means statistics information is collected after the new instance is opened for read/write.
         self.collect_stat_mode = collect_stat_mode
         self.custom_extra_info = custom_extra_info
-        # The new instance type of the instance. The new CPU and memory specifications of the instance must be higher than or equal to the original CPU and memory specifications. If you set the **UpgradeMode** parameter to **inPlaceUpgrade**, you **do not need to configure** this parameter.
+        # The instance type after the upgrade. The CPU and memory configurations must be greater than or equal to those of the original instance type. If **UpgradeMode** is set to **inPlaceUpgrade** or **zeroDownTimeUpgrade**, **you do not need to configure** this parameter.
         # 
-        # For example, you can upgrade the instance type from `pg.n2.small.2c` to `pg.n2.medium.2c`. The pg.n2.small.2c instance type provides 1 CPU core and 2 GB of memory. The pg.n2.medium.2c instance type provides 2 CPU cores and 4 GB of memory.
+        # For example, if the original instance type is `pg.n2.small.2c` with 1 CPU core and 2 GB of memory, you can upgrade it to `pg.n2.medium.2c` with 2 CPU cores and 4 GB of memory.
         # 
-        # >  For more information about the instance types of ApsaraDB RDS for PostgreSQL instances, see [Instance types for primary ApsaraDB RDS for PostgreSQL instances](https://help.aliyun.com/document_detail/276990.html).
+        # > For the instance type codes of ApsaraDB RDS for PostgreSQL, refer to [Primary ApsaraDB RDS for PostgreSQL instance types](https://help.aliyun.com/document_detail/276990.html).
         self.dbinstance_class = dbinstance_class
-        # The ID of the original instance.
+        # The instance ID of the original instance.
         self.dbinstance_id = dbinstance_id
-        # The new storage capacity of the instance. Unit: GB If you set the **UpgradeMode** parameter to **inPlaceUpgrade**, you **do not need to configure** this parameter.
+        # The instance storage capacity after the upgrade. Unit: GB. If **UpgradeMode** (upgrade pattern) is set to **inPlaceUpgrade** or **zeroDownTimeUpgrade**, **you do not need to configure** this parameter.
         # 
         # Valid values:
+        # - **PL1 ESSD cloud disk**: 20 GB to 3200 GB
+        # - **PL2 ESSD cloud disk**: 500 GB to 3200 GB
+        # - **PL3 ESSD cloud disk**: 1500 GB to 3200 GB
+        # - **Premium performance disk**: 40 GB to 2000 GB
         # 
-        # *   **PL1 ESSD**: 20 GB to 32,000 GB
-        # *   **PL2 ESSD**: 500 GB to 3,200 GB
-        # *   **PL3 ESSD**: 1,500 GB to 3,200 GB
-        # *   **General ESSD**: 40 GB to 2,000 GB
-        # 
-        # >  If the original instance uses local disks, you can reduce the storage capacity of the instance when you upgrade the major engine version of the instance. For more information about the minimum storage capacity, see [Upgrade the major engine version](https://help.aliyun.com/document_detail/203309.html).
+        # > When upgrading the major engine version of an instance with Premium Local SSDs, storage capacity reduction is supported. For the minimum storage capacity, refer to [Upgrade the major engine version of a database](https://help.aliyun.com/document_detail/203309.html).
         self.dbinstance_storage = dbinstance_storage
-        # The storage type of the instance that runs the required major engine version.
+        # The storage type of the instance after the upgrade.
         # 
         # Valid values:
+        # - **cloud_ssd**: standard SSD
+        # - **cloud_essd**: PL1 ESSD
+        # - **cloud_essd2**: PL2 ESSD
+        # - **cloud_essd3**: PL3 ESSD
+        # - **general_essd**: premium performance disk
         # 
-        # *   **cloud_ssd**: standard SSD
-        # *   **cloud_essd**: performance level 1 (PL1) Enterprise SSD (ESSD)
-        # *   **cloud_essd2**: PL2 ESSD
-        # *   **cloud_essd3**: PL3 ESSD
-        # *   **general_essd**: general ESSD
         # 
-        # The major engine version upgrade feature is developed based on snapshots for cloud disks. You can select a storage type after the upgrade based on the following items:
-        # 
-        # *   If the original instance uses standard SSDs, set this parameter to cloud_ssd.
-        # *   If the original instance uses ESSDs, set this parameter to cloud_essd, cloud_essd2, cloud_essd3, or general_essd.
-        # *   If the original instance uses local SSDs, set this parameter to cloud_essd, cloud_essd2, cloud_essd3, or general_essd.
+        # The major engine version upgrade feature is based on cloud disk snapshots. The supported storage types after the upgrade are as follows:
+        # - If the original instance uses a standard SSD, you can select standard SSD.
+        # - If the original instance uses an ESSD cloud disk, you can select PL1 ESSD, PL2 ESSD, PL3 ESSD, or premium performance disk.
+        # - If the original instance uses Premium Local SSDs, you can select PL1 ESSD, PL2 ESSD, PL3 ESSD, or premium performance disk.
         self.dbinstance_storage_type = dbinstance_storage_type
-        # The network type of the new instance. Set the value to VPC. The major engine version upgrade feature is supported only for instances that reside in VPCs.
+        # The network type of the instance after the upgrade. Set this parameter to VPC. Only VPC-connected instances support major engine version upgrades.
         # 
-        # If the original instance resides in the classic network, you must migrate the instance to a VPC before you call this operation. For more information about how to view or change the network type of an instance, see [Change the network type of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96761.html).
+        # If the network type is classic network, switch to VPC first. For information about how to view or switch the network type, refer to [Switch the network type](https://help.aliyun.com/document_detail/96761.html).
         self.instance_network_type = instance_network_type
-        # The billing method. Set the value to Postpaid.
+        # The billing method of the instance. Set this parameter to Postpaid for pay-as-you-go billing.
         # 
-        # >  For more information about how to change the billing method of an instance after the upgrade, see [Change the billing method of an instance from pay-as-you-go to subscription](https://help.aliyun.com/document_detail/96743.html).
+        # > If you want to change the billing method after the upgrade, refer to [Switch from pay-as-you-go to subscription](https://help.aliyun.com/document_detail/96743.html).
         # 
         # This parameter is required.
         self.pay_type = pay_type
-        # A reserved parameter. You do not need to specify this parameter.
+        # Reserved parameter. You do not need to configure this parameter.
         self.period = period
-        # The internal IP address of the new instance. You do not need to specify this parameter. The system automatically assigns an internal IP address based on the values of the VPCId and vSwitchId parameters.
+        # You do not need to configure this parameter. It specifies the internal IP address of the target instance. The system automatically assigns an IP address based on VPCId and vSwitchId by default.
         self.private_ip_address = private_ip_address
         self.resource_owner_id = resource_owner_id
-        # Specifies whether to switch your workloads over to the instance that runs the required major engine version based on your business requirements.
+        # The switchover configuration. Specifies whether to switch traffic to the new version instance based on your business requirements.
         # 
         # Valid values:
         # 
-        # *   **true**: The system automatically switches workloads over to the instance. This configuration method is used to perform an upgrade after you verify that the new major engine version is compatible with your workloads.
-        # *   **false**: The system does not automatically switch your workloads over to the instance. In most cases, this configuration method is used to test whether the new major engine version is compatible with your workloads before you perform the upgrade.
+        # - **true**: Switchover is performed and automatic switchover is enabled. This option is typically used to execute the formal upgrade after confirming that your business can run stably on the new version.
+        # - **false**: Switchover is not performed and automatic switchover is not enabled. This option is typically used to test the compatibility of your application with the new version before the formal upgrade.
         # 
-        # > 
-        # 
-        # *   If you set this parameter to true, you must take note of the following items:
-        # 
-        #     *   After the switchover is complete, you cannot roll your workloads back to the original instance. Proceed with caution.
-        #     *   During the switchover, the original instance processes only read requests. We recommend that you perform the switchover during off-peak hours.
-        #     *   If read-only instances are attached to the original instance, you can set this parameter only to false. In this case, the read-only instances that are attached to the original instance cannot be cloned. After the upgrade is complete, you must create read-only instances for the instance.
-        # 
-        # *   If you set this parameter to false, you must take note of the following items:
-        # 
-        #     *   The data migration does not interrupt your workloads on the original instance.
-        #     *   After data is migrated to the instance that runs the required major engine version, you must update the endpoint configuration in your application. This update requires you to replace the endpoint of the original instance with the endpoint of the instance that runs the required major engine version. For more information about how to view the endpoint of an instance, see [Viewing and change of the internal and public endpoints and port numbers](https://help.aliyun.com/document_detail/96788.html).
+        # > - If you select switchover:
+        # >     - Switchover cannot be rolled back after execution. Proceed with caution.
+        # >     - During the switchover procedure, the original instance becomes read-only and writes are not allowed. Execute the switchover during off-peak hours.
+        # >     - If read-only instances are created for the original instance, you cannot select switchover. You can only upgrade the instance without switchover, and the original read-only instances are not cloned. After the upgrade, create new PostgreSQL read-only instances for the new version instance.
+        # > - If you do not select switchover:
+        # >     - The business on the original instance is not affected during migration.
+        # >     - To upgrade the instance without switchover, change the database connection address in your application to the database connection address of the new instance after migration is complete. For information about how to view the connection address, refer to [View or modify the internal and public endpoints and port numbers](https://help.aliyun.com/document_detail/96788.html).
         self.switch_over = switch_over
-        # A reserved parameter. You do not need to specify this parameter.
+        # Reserved parameter. You do not need to configure this parameter.
         self.switch_time = switch_time
-        # The point in time at which the workloads are switched over. This parameter is used together with the SwitchOver parameter. This parameter is available only when you set the **SwitchOver** parameter to **true**.
+        # This parameter is used together with SwitchOver and takes effect only when **SwitchOver** is set to **true**. Specifies the switchover time.
         # 
         # Valid values:
-        # 
-        # *   **Immediate**: The workloads are immediately switched over.
-        # *   **MaintainTime**: The workloads are switched over within the maintenance window that you specify. You can call the ModifyDBInstanceMaintainTime operation to change the maintenance window of an instance.
+        # - **Immediate**: The switchover takes effect immediately.
+        # - **MaintainTime**: The switchover takes effect during the maintenance window. You can call the ModifyDBInstanceMaintainTime operation to modify the maintenance window.
         self.switch_time_mode = switch_time_mode
-        # The major engine version of the new instance. The value of this parameter must be the major engine version on which an upgrade check is performed.
+        # The target major engine version of the instance after the upgrade. This value must be the same as the target version specified during the pre-upgrade check.
         # 
-        # >  You can call the UpgradeDBInstanceMajorVersionPrecheck operation to perform an upgrade check.
+        # > You can call the UpgradeDBInstanceMajorVersionPrecheck operation to perform a pre-upgrade check for the major engine version upgrade.
         self.target_major_version = target_major_version
-        # The upgrade mode. This parameter is required when you set the **SwitchOver** parameter to **true**. Valid values:
+        # The upgrade pattern. Configure this parameter when **SwitchOver** is set to **true**. Valid values:
         # 
-        # *   **inPlaceUpgrade**: local upgrade. The major engine version upgrade is performed on the original instance, and no new instance is created. After the upgrade, the original instance runs the required major engine version and inherits the original orders, name, tags, alert rules in CloudMonitor, and backup settings.
-        # *   **blueGreenDeployment**: blue-green deployment. After the major engine version of the instance is upgraded, the original instance is retained and a new instance is created. Fees are generated for the new instance based on the billing method that you specified. However, no fees are generated for the creation of the new instance. After the upgrade is complete, fees are generated for both the original and new instances and the new instance cannot enjoy the discounts provided for the original instance.
+        # - **inPlaceUpgrade**: In-place upgrade. The major engine version upgrade task is executed on the original instance without creating a new version instance. After the upgrade, the original instance inherits the existing order, instance name, tags, CloudMonitor alert rules, and backup rules.
+        # - **blueGreenDeployment**: Blue-green deployment. The major engine version upgrade retains the original instance and creates a new version instance. The new instance is free of charge during creation. After the new instance is created, fees are incurred and the billing method may change. After the upgrade, both the original and new instances incur fees, and the new instance does not inherit the discounts of the original instance.
+        # - **zeroDownTimeUpgrade**: Zero-downtime upgrade. The system uses pg_upgrade to upgrade the original instance to the target version and uses native logical replication for incremental updates. Active switchover is supported during the upgrade procedure, and you can validate the higher version instance before the switchover. From the start of the upgrade until the active switchover, the instance maintains normal read/write operations. During the switchover, the read-only duration is at the second level.
         self.upgrade_mode = upgrade_mode
-        # A reserved parameter. You do not need to specify this parameter.
+        # Reserved parameter. You do not need to configure this parameter.
         self.used_time = used_time
-        # The virtual private cloud (VPC) ID of the instance. If you set the **UpgradeMode** parameter to **inPlaceUpgrade**, you **do not need to configure** this parameter.
+        # The VPC ID. If **UpgradeMode** is set to **inPlaceUpgrade** or **zeroDownTimeUpgrade**, **you do not need to configure** this parameter.
         # 
         # You can call the DescribeDBInstanceAttribute operation to query the VPC ID of the original instance.
         self.vpcid = vpcid
-        # The vSwitch ID of the instance that runs the required major engine version. If you set the **UpgradeMode** parameter to **inPlaceUpgrade**, you **do not need to configure** this parameter.
+        # The vSwitch ID of the target instance. If **UpgradeMode** (upgrade pattern) is set to **inPlaceUpgrade** or **zeroDownTimeUpgrade**, **you do not need to configure** this parameter.
+        # - If the original instance is a Basic Edition instance, specify the vSwitch ID of the target instance.
+        # - If the original instance is a high-availability series instance, you can specify the vSwitch IDs of the target primary and secondary instances, separated by commas (,).
         # 
-        # *   If the original instance runs RDS Basic Edition, configure the vSwitch ID for the instance that runs the required major engine version.
-        # *   If the original instance runs RDS High-availability Edition, configure the vSwitch IDs for the instance that runs the required major engine version and its secondary instance. Separate the vSwitch IDs with commas (,).
-        # 
-        # >  The vSwitches that you specify must reside in the same zone as the original instance. You can call the DescribeVSwitches operation to query the vSwitch IDs.
+        # > The target vSwitch must be in the same zone as the original instance. You can call the DescribeVSwitches operation to query vSwitches.
         self.v_switch_id = v_switch_id
-        # The ID of the zone to which the primary instance that runs the required major engine version belongs. If you set the **UpgradeMode** parameter to **inPlaceUpgrade**, you **do not need to configure** this parameter.
+        # The primary zone ID of the target instance. If **UpgradeMode** is set to **inPlaceUpgrade** or **zeroDownTimeUpgrade**, **you do not need to configure** this parameter.
         # 
         # You can call the DescribeRegions operation to query zone IDs.
         # 
-        # You can select a zone that belongs to the region in which the original instance resides.
+        # ApsaraDB RDS for PostgreSQL allows you to deploy the new instance in a different zone within the same region as the original instance after the upgrade.
         self.zone_id = zone_id
-        # The ID of the zone to which the secondary instance runs the required major engine version belongs. This parameter is available only when the original instance runs RDS High-availability Edition. If you set the **UpgradeMode** parameter to **inPlaceUpgrade**, you **do not need to configure** this parameter.
+        # This parameter can be configured only when the original instance is a high-availability series instance. Specifies the secondary zone ID of the target instance. If **UpgradeMode** (upgrade pattern) is set to **inPlaceUpgrade** or **zeroDownTimeUpgrade**, **you do not need to configure** this parameter.
         # 
-        # You can select a zone that belongs to the region in which the original instance resides.
+        # ApsaraDB RDS for PostgreSQL allows you to deploy the new secondary instance in a different zone within the same region as the original instance after the upgrade.
         # 
         # You can call the DescribeRegions operation to query zone IDs.
         self.zone_id_slave_1 = zone_id_slave_1
-        # A reserved parameter. You do not need to specify this parameter.
+        # Reserved parameter. You do not need to configure this parameter.
         self.zone_id_slave_2 = zone_id_slave_2
 
     def validate(self):

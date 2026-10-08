@@ -79,21 +79,21 @@ class DescribeCustinsResourceInfoResponseBodyData(DaraModel):
         origin_max_iops: str = None,
         origin_memory: str = None,
     ):
-        # The deadline for the CPU adjustment.
+        # The deadline for CPU adjustment.
         self.cpu_adjust_deadline = cpu_adjust_deadline
-        # The maximum percentage of the system CPU resources that the instance can use.
+        # The maximum adjustable CPU ratio.
         self.cpu_adjustable_max_ratio = cpu_adjustable_max_ratio
-        # The maximum CPU utilization.
+        # The maximum CPU usage.
         self.cpu_adjustable_max_value = cpu_adjustable_max_value
-        # The CPU utilization.
+        # The CPU usage.
         self.cpu_increase_ratio = cpu_increase_ratio
-        # The CPU utilization. Unit: percentage.
+        # The CPU usage. Unit: %.
         self.cpu_increase_ratio_value = cpu_increase_ratio_value
         # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The maximum IOPS.
+        # The maximum number of I/O requests per second.
         self.iops_adjustable_max_value = iops_adjustable_max_value
-        # The deadline for the adjustment of the maximum number of connections.
+        # The deadline for maximum connection adjustment.
         self.max_conn_adjust_deadline = max_conn_adjust_deadline
         # The maximum number of concurrent connections.
         self.max_conn_adjustable_max_value = max_conn_adjustable_max_value
@@ -101,29 +101,29 @@ class DescribeCustinsResourceInfoResponseBodyData(DaraModel):
         self.max_conn_increase_ratio = max_conn_increase_ratio
         # The maximum number of concurrent connections.
         self.max_conn_increase_ratio_value = max_conn_increase_ratio_value
-        # The deadline for the adjustment of the maximum IOPS.
+        # The deadline for maximum IOPS adjustment.
         self.max_iops_adjust_deadline = max_iops_adjust_deadline
-        # The maximum IOPS.
+        # The maximum number of I/O requests per second.
         self.max_iops_increase_ratio = max_iops_increase_ratio
-        # The maximum IOPS that can be supported by the instance.
+        # The maximum number of I/O requests per second.
         self.max_iops_increase_ratio_value = max_iops_increase_ratio_value
-        # The maximum percentage of the system memory that the instance can use.
+        # The maximum adjustable memory ratio.
         self.mem_adjustable_max_ratio = mem_adjustable_max_ratio
-        # The maximum value of the resources to be evaluated.
+        # The maximum value of the resource to be evaluated.
         self.mem_adjustable_max_value = mem_adjustable_max_value
-        # The deadline for the memory adjustment.
+        # The deadline for memory adjustment.
         self.memory_adjust_deadline = memory_adjust_deadline
-        # The memory increase percentage.
+        # The memory increase ratio.
         self.memory_increase_ratio = memory_increase_ratio
         # The memory usage. Unit: MB.
         self.memory_increase_ratio_value = memory_increase_ratio_value
-        # The number of CPUs of the instance.
+        # The number of CPU cores of the instance.
         self.origin_cpu = origin_cpu
         # The maximum number of concurrent connections.
         self.origin_max_conn = origin_max_conn
-        # The maximum IOPS.
+        # The maximum number of I/O requests per second.
         self.origin_max_iops = origin_max_iops
-        # The actual memory used. Unit: MB.
+        # The actual memory usage. Unit: MB.
         self.origin_memory = origin_memory
 
     def validate(self):

@@ -22,15 +22,22 @@ class DescribeVpcsRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 20.
         self.page_size = page_size
+        # The cloud product type.
         self.product = product
+        # The region ID.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
+        # The ID of the VPC. Specify this parameter to query a specific VPC.
         self.vpc_id = vpc_id
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):

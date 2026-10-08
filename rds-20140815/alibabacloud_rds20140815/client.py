@@ -247,6 +247,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.activate_migration_target_instance_with_options_async(request, runtime)
 
+    def add_rcinstances_to_deployment_set_with_options(
+        self,
+        request: main_models.AddRCInstancesToDeploymentSetRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddRCInstancesToDeploymentSetResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.deployment_set_group_no):
+            query['DeploymentSetGroupNo'] = request.deployment_set_group_no
+        if not DaraCore.is_null(request.deployment_set_id):
+            query['DeploymentSetId'] = request.deployment_set_id
+        if not DaraCore.is_null(request.force):
+            query['Force'] = request.force
+        if not DaraCore.is_null(request.rcinstance_ids):
+            query['RCInstanceIds'] = request.rcinstance_ids
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddRCInstancesToDeploymentSet',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddRCInstancesToDeploymentSetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_rcinstances_to_deployment_set_with_options_async(
+        self,
+        request: main_models.AddRCInstancesToDeploymentSetRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddRCInstancesToDeploymentSetResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.deployment_set_group_no):
+            query['DeploymentSetGroupNo'] = request.deployment_set_group_no
+        if not DaraCore.is_null(request.deployment_set_id):
+            query['DeploymentSetId'] = request.deployment_set_id
+        if not DaraCore.is_null(request.force):
+            query['Force'] = request.force
+        if not DaraCore.is_null(request.rcinstance_ids):
+            query['RCInstanceIds'] = request.rcinstance_ids
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddRCInstancesToDeploymentSet',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddRCInstancesToDeploymentSetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_rcinstances_to_deployment_set(
+        self,
+        request: main_models.AddRCInstancesToDeploymentSetRequest,
+    ) -> main_models.AddRCInstancesToDeploymentSetResponse:
+        runtime = RuntimeOptions()
+        return self.add_rcinstances_to_deployment_set_with_options(request, runtime)
+
+    async def add_rcinstances_to_deployment_set_async(
+        self,
+        request: main_models.AddRCInstancesToDeploymentSetRequest,
+    ) -> main_models.AddRCInstancesToDeploymentSetResponse:
+        runtime = RuntimeOptions()
+        return await self.add_rcinstances_to_deployment_set_with_options_async(request, runtime)
+
     def add_tags_to_resource_with_options(
         self,
         request: main_models.AddTagsToResourceRequest,
@@ -2120,6 +2206,8 @@ class Client(OpenApiClient):
             query['ServerlessConfig'] = request.serverless_config_shrink
         if not DaraCore.is_null(request.table_meta):
             query['TableMeta'] = request.table_meta
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
         if not DaraCore.is_null(request.used_time):
             query['UsedTime'] = request.used_time
         if not DaraCore.is_null(request.vpcid):
@@ -2216,6 +2304,8 @@ class Client(OpenApiClient):
             query['ServerlessConfig'] = request.serverless_config_shrink
         if not DaraCore.is_null(request.table_meta):
             query['TableMeta'] = request.table_meta
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
         if not DaraCore.is_null(request.used_time):
             query['UsedTime'] = request.used_time
         if not DaraCore.is_null(request.vpcid):
@@ -4148,8 +4238,14 @@ class Client(OpenApiClient):
     ) -> main_models.CreateDatabaseResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.account_name):
+            query['AccountName'] = request.account_name
+        if not DaraCore.is_null(request.account_privilege):
+            query['AccountPrivilege'] = request.account_privilege
         if not DaraCore.is_null(request.character_set_name):
             query['CharacterSetName'] = request.character_set_name
+        if not DaraCore.is_null(request.collation_name):
+            query['CollationName'] = request.collation_name
         if not DaraCore.is_null(request.dbdescription):
             query['DBDescription'] = request.dbdescription
         if not DaraCore.is_null(request.dbinstance_id):
@@ -4190,8 +4286,14 @@ class Client(OpenApiClient):
     ) -> main_models.CreateDatabaseResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.account_name):
+            query['AccountName'] = request.account_name
+        if not DaraCore.is_null(request.account_privilege):
+            query['AccountPrivilege'] = request.account_privilege
         if not DaraCore.is_null(request.character_set_name):
             query['CharacterSetName'] = request.character_set_name
+        if not DaraCore.is_null(request.collation_name):
+            query['CollationName'] = request.collation_name
         if not DaraCore.is_null(request.dbdescription):
             query['DBDescription'] = request.dbdescription
         if not DaraCore.is_null(request.dbinstance_id):
@@ -19566,6 +19668,8 @@ class Client(OpenApiClient):
             query['SpotDuration'] = request.spot_duration
         if not DaraCore.is_null(request.spot_strategy):
             query['SpotStrategy'] = request.spot_strategy
+        if not DaraCore.is_null(request.support_case):
+            query['SupportCase'] = request.support_case
         if not DaraCore.is_null(request.system_disk_category):
             query['SystemDiskCategory'] = request.system_disk_category
         if not DaraCore.is_null(request.zone_id):
@@ -19624,6 +19728,8 @@ class Client(OpenApiClient):
             query['SpotDuration'] = request.spot_duration
         if not DaraCore.is_null(request.spot_strategy):
             query['SpotStrategy'] = request.spot_strategy
+        if not DaraCore.is_null(request.support_case):
+            query['SupportCase'] = request.support_case
         if not DaraCore.is_null(request.system_disk_category):
             query['SystemDiskCategory'] = request.system_disk_category
         if not DaraCore.is_null(request.zone_id):
@@ -20938,8 +21044,12 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeRCInstancesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.description_for_fuzzy):
+            query['DescriptionForFuzzy'] = request.description_for_fuzzy
         if not DaraCore.is_null(request.host_ip):
             query['HostIp'] = request.host_ip
         if not DaraCore.is_null(request.image_id):
@@ -20990,8 +21100,12 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeRCInstancesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.description_for_fuzzy):
+            query['DescriptionForFuzzy'] = request.description_for_fuzzy
         if not DaraCore.is_null(request.host_ip):
             query['HostIp'] = request.host_ip
         if not DaraCore.is_null(request.image_id):
@@ -27534,8 +27648,12 @@ class Client(OpenApiClient):
             query['EnableBackupLog'] = request.enable_backup_log
         if not DaraCore.is_null(request.enable_increment_data_backup):
             query['EnableIncrementDataBackup'] = request.enable_increment_data_backup
+        if not DaraCore.is_null(request.enable_pitr_protection):
+            query['EnablePitrProtection'] = request.enable_pitr_protection
         if not DaraCore.is_null(request.high_space_usage_protection):
             query['HighSpaceUsageProtection'] = request.high_space_usage_protection
+        if not DaraCore.is_null(request.inc_backup_interval):
+            query['IncBackupInterval'] = request.inc_backup_interval
         if not DaraCore.is_null(request.local_log_retention_hours):
             query['LocalLogRetentionHours'] = request.local_log_retention_hours
         if not DaraCore.is_null(request.local_log_retention_space):
@@ -27620,8 +27738,12 @@ class Client(OpenApiClient):
             query['EnableBackupLog'] = request.enable_backup_log
         if not DaraCore.is_null(request.enable_increment_data_backup):
             query['EnableIncrementDataBackup'] = request.enable_increment_data_backup
+        if not DaraCore.is_null(request.enable_pitr_protection):
+            query['EnablePitrProtection'] = request.enable_pitr_protection
         if not DaraCore.is_null(request.high_space_usage_protection):
             query['HighSpaceUsageProtection'] = request.high_space_usage_protection
+        if not DaraCore.is_null(request.inc_backup_interval):
+            query['IncBackupInterval'] = request.inc_backup_interval
         if not DaraCore.is_null(request.local_log_retention_hours):
             query['LocalLogRetentionHours'] = request.local_log_retention_hours
         if not DaraCore.is_null(request.local_log_retention_space):
@@ -27886,6 +28008,10 @@ class Client(OpenApiClient):
             query['ScaleMaxCpus'] = request.scale_max_cpus
         if not DaraCore.is_null(request.scale_max_memory):
             query['ScaleMaxMemory'] = request.scale_max_memory
+        if not DaraCore.is_null(request.scale_max_rcu):
+            query['ScaleMaxRcu'] = request.scale_max_rcu
+        if not DaraCore.is_null(request.scale_min_rcu):
+            query['ScaleMinRcu'] = request.scale_min_rcu
         if not DaraCore.is_null(request.switch_time):
             query['SwitchTime'] = request.switch_time
         if not DaraCore.is_null(request.switch_time_mode):
@@ -27946,6 +28072,10 @@ class Client(OpenApiClient):
             query['ScaleMaxCpus'] = request.scale_max_cpus
         if not DaraCore.is_null(request.scale_max_memory):
             query['ScaleMaxMemory'] = request.scale_max_memory
+        if not DaraCore.is_null(request.scale_max_rcu):
+            query['ScaleMaxRcu'] = request.scale_max_rcu
+        if not DaraCore.is_null(request.scale_min_rcu):
+            query['ScaleMinRcu'] = request.scale_min_rcu
         if not DaraCore.is_null(request.switch_time):
             query['SwitchTime'] = request.switch_time
         if not DaraCore.is_null(request.switch_time_mode):
@@ -33248,6 +33378,8 @@ class Client(OpenApiClient):
             query['AutoPay'] = request.auto_pay
         if not DaraCore.is_null(request.auto_use_coupon):
             query['AutoUseCoupon'] = request.auto_use_coupon
+        if not DaraCore.is_null(request.business_info):
+            query['BusinessInfo'] = request.business_info
         if not DaraCore.is_null(request.direction):
             query['Direction'] = request.direction
         if not DaraCore.is_null(request.dry_run):
@@ -33294,6 +33426,8 @@ class Client(OpenApiClient):
             query['AutoPay'] = request.auto_pay
         if not DaraCore.is_null(request.auto_use_coupon):
             query['AutoUseCoupon'] = request.auto_use_coupon
+        if not DaraCore.is_null(request.business_info):
+            query['BusinessInfo'] = request.business_info
         if not DaraCore.is_null(request.direction):
             query['Direction'] = request.direction
         if not DaraCore.is_null(request.dry_run):
@@ -36445,6 +36579,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.release_read_write_splitting_connection_with_options_async(request, runtime)
 
+    def remove_rcinstances_from_deployment_set_with_options(
+        self,
+        request: main_models.RemoveRCInstancesFromDeploymentSetRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveRCInstancesFromDeploymentSetResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.deployment_set_id):
+            query['DeploymentSetId'] = request.deployment_set_id
+        if not DaraCore.is_null(request.rcinstance_ids):
+            query['RCInstanceIds'] = request.rcinstance_ids
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveRCInstancesFromDeploymentSet',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveRCInstancesFromDeploymentSetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_rcinstances_from_deployment_set_with_options_async(
+        self,
+        request: main_models.RemoveRCInstancesFromDeploymentSetRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveRCInstancesFromDeploymentSetResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.deployment_set_id):
+            query['DeploymentSetId'] = request.deployment_set_id
+        if not DaraCore.is_null(request.rcinstance_ids):
+            query['RCInstanceIds'] = request.rcinstance_ids
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveRCInstancesFromDeploymentSet',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveRCInstancesFromDeploymentSetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_rcinstances_from_deployment_set(
+        self,
+        request: main_models.RemoveRCInstancesFromDeploymentSetRequest,
+    ) -> main_models.RemoveRCInstancesFromDeploymentSetResponse:
+        runtime = RuntimeOptions()
+        return self.remove_rcinstances_from_deployment_set_with_options(request, runtime)
+
+    async def remove_rcinstances_from_deployment_set_async(
+        self,
+        request: main_models.RemoveRCInstancesFromDeploymentSetRequest,
+    ) -> main_models.RemoveRCInstancesFromDeploymentSetResponse:
+        runtime = RuntimeOptions()
+        return await self.remove_rcinstances_from_deployment_set_with_options_async(request, runtime)
+
     def remove_tags_from_resource_with_options(
         self,
         request: main_models.RemoveTagsFromResourceRequest,
@@ -36570,6 +36782,8 @@ class Client(OpenApiClient):
             query['AutoUseCoupon'] = request.auto_use_coupon
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.compression_mode):
+            query['CompressionMode'] = request.compression_mode
         if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         if not DaraCore.is_null(request.owner_id):
@@ -36616,6 +36830,8 @@ class Client(OpenApiClient):
             query['AutoUseCoupon'] = request.auto_use_coupon
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.compression_mode):
+            query['CompressionMode'] = request.compression_mode
         if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         if not DaraCore.is_null(request.owner_id):
@@ -38202,6 +38418,80 @@ class Client(OpenApiClient):
     ) -> main_models.RunRCInstancesResponse:
         runtime = RuntimeOptions()
         return await self.run_rcinstances_with_options_async(request, runtime)
+
+    def share_rcdeployment_set_with_options(
+        self,
+        request: main_models.ShareRCDeploymentSetRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ShareRCDeploymentSetResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.deployment_set_id):
+            query['DeploymentSetId'] = request.deployment_set_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ShareRCDeploymentSet',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ShareRCDeploymentSetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def share_rcdeployment_set_with_options_async(
+        self,
+        request: main_models.ShareRCDeploymentSetRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ShareRCDeploymentSetResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.deployment_set_id):
+            query['DeploymentSetId'] = request.deployment_set_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ShareRCDeploymentSet',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ShareRCDeploymentSetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def share_rcdeployment_set(
+        self,
+        request: main_models.ShareRCDeploymentSetRequest,
+    ) -> main_models.ShareRCDeploymentSetResponse:
+        runtime = RuntimeOptions()
+        return self.share_rcdeployment_set_with_options(request, runtime)
+
+    async def share_rcdeployment_set_async(
+        self,
+        request: main_models.ShareRCDeploymentSetRequest,
+    ) -> main_models.ShareRCDeploymentSetResponse:
+        runtime = RuntimeOptions()
+        return await self.share_rcdeployment_set_with_options_async(request, runtime)
 
     def start_dbinstance_with_options(
         self,

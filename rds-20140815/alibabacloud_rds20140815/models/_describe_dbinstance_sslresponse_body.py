@@ -29,91 +29,96 @@ class DescribeDBInstanceSSLResponseBody(DaraModel):
         server_key: str = None,
         tls_version: str = None,
     ):
-        # The method that is used to verify the instance. This parameter is supported only when the instance runs PostgreSQL with cloud disks.
-        # 
-        # *   **cert**
-        # *   **prefer**
-        # *   **verify-ca**
-        # *   **verify-full** (supported only when the instance runs PostgreSQL 12 or later)
+        # The authentication method of the ApsaraDB RDS for PostgreSQL instance with cloud disks. Valid values:
+        # - **cert**
+        # - **prefer**
+        # - **verify-ca**
+        # - **verify-full** (supported by ApsaraDB RDS for PostgreSQL 12 and later)
         self.acl = acl
-        # The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with cloud disks. Valid values:
-        # 
-        # *   **aliyun**: a cloud certificate
-        # *   **custom**: a custom certificate
+        # The server certificate type of the ApsaraDB RDS for PostgreSQL instance with cloud disks. Valid values:
+        # - **aliyun**: The cloud certificate is used.
+        # - **custom**: A custom certificate is used.
         self.catype = catype
-        # The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with cloud disks.
+        # The public key of the client certificate authority (CA) for the ApsaraDB RDS for PostgreSQL instance with cloud disks.
         self.client_cacert = client_cacert
-        # The time when the public key of the CA that issues client certificates expires. This parameter is supported only when the instance runs PostgreSQL with cloud disks. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format and must be in UTC.
+        # The expiration time of the public key of the client certificate authorization authority (CA) for the ApsaraDB RDS for PostgreSQL instance with cloud disks. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         # 
-        # This parameter is not supported.
+        # This parameter is not supported. You can ignore this parameter.
         self.client_cacert_expire_time = client_cacert_expire_time
-        # The certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with cloud disks.
+        # The client certificate revocation certificate file of the ApsaraDB RDS for PostgreSQL instance with cloud disks.
         self.client_cert_revocation_list = client_cert_revocation_list
-        # The endpoint that is protected by SSL encryption.
+        # The endpoint that is protected by SSL.
         self.connection_string = connection_string
-        # Indicates whether the [forceful SSL encryption](https://help.aliyun.com/document_detail/95715.html) feature is enabled. This parameter is supported only for RDS for SQL Server instances.
+        # Indicates whether the [forced Secure Sockets Layer (SSL) encryption feature](https://help.aliyun.com/document_detail/95715.html) is enabled for the ApsaraDB RDS for SQL Server instance. Valid values:
         # 
-        # *   **1**: The feature is enabled.
-        # *   **0**: The feature is disabled.
+        # - **1**: Enabled.
+        # - **0**: Disabled.
         self.force_encryption = force_encryption
-        # The status of the SSL link. This parameter is supported only when the instance runs PostgreSQL with cloud disks.
+        # The current SSL link configuration status of the ApsaraDB RDS for PostgreSQL instance with cloud disks. Valid values:
         # 
-        # *   **success**: The SSL link is successfully configured.
-        # *   **setting**: The SSL link is being configured.
-        # *   **failed**: The SSL link failed to be configured.
+        # - **success**: Successful.
+        # - **setting**: Being configured.
+        # - **failed**: Failed.
         self.last_modify_status = last_modify_status
-        # The reason why the SSL link stays in the current state. This parameter is supported only when the instance runs PostgreSQL with cloud disks.
+        # The reason for the current SSL link configuration status of the ApsaraDB RDS for PostgreSQL instance with cloud disks.
         self.modify_status_reason = modify_status_reason
-        # The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with cloud disks. Valid values:
-        # 
-        # *   **cert**
-        # *   **prefer**
-        # *   **verify-ca**
-        # *   **verify-full** (supported only when the instance runs PostgreSQL 12 or later)
+        # The authentication method for replication permissions of the ApsaraDB RDS for PostgreSQL instance with cloud disks. Valid values:
+        # - **cert**
+        # - **prefer**
+        # - **verify-ca**
+        # - **verify-full** (supported by ApsaraDB RDS for PostgreSQL 12 and later)
         self.replication_acl = replication_acl
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the SSL certificate needs to be updated. Valid values:
         # 
-        # >  An SSL certificate remains valid for one year. Before the used SSL certificate expires, you must update the validity period of the SSL certificate. If you do not update the validity period of the SSL certificate, your application or client that uses encrypted network connections cannot connect to your RDS instance.
+        # > The SSL certificate is valid for one year. If the certificate is not renewed after it expires, client programs that use encrypted connections cannot connect to the instance.
+        # <details>
+        # <summary>MySQL and SQL Server</summary>
         # 
-        # **RDS instances that run MySQL and SQL Server**
+        # - **No**: No update is required.
+        # - **Yes**: An update is required.
+        # </details>
         # 
-        # *   **No**: The SSL certificate does not need to be updated.
-        # *   **Yes**: The SSL certificate needs to be updated.
+        # <details>
+        # <summary>PostgreSQL</summary>
         # 
-        # **RDS instances that run PostgreSQL**
+        # - **0**: No update is required.
+        # - **1**: An update is required.
         # 
-        # *   **0**: The SSL certificate does not need to be updated.
-        # *   **1**: The SSL certificate needs to be updated.
+        # </details>
         self.require_update = require_update
-        # The server certificate that needs to be updated. This parameter is supported only when the instance runs PostgreSQL with cloud disk.
+        # The list of server certificates that need to be updated for the ApsaraDB RDS for PostgreSQL instance with cloud disks.
         self.require_update_item = require_update_item
-        # The reason why the server certificate needs to be updated. This parameter is supported only when the instance runs PostgreSQL with cloud disks.
+        # The reason why the certificates need to be updated for the ApsaraDB RDS for PostgreSQL instance with cloud disks.
         self.require_update_reason = require_update_reason
-        # The time when the server certificate was created. This parameter is supported only when the instance runs PostgreSQL with cloud disks. In addition, this parameter is valid only when the CAType parameter value is aliyun.
+        # The creation time of the server certificate for the ApsaraDB RDS for PostgreSQL instance with cloud disks. This parameter is valid only when CAType is set to aliyun.
         self.sslcreate_time = sslcreate_time
-        # Indicates whether SSL encryption is enabled. Valid values:
+        # The SSL encryption status. Valid values:
+        # <details>
+        # <summary>MySQL and SQL Server</summary>
         # 
-        # **RDS instances that run MySQL and SQL Server**
+        # - **Yes**: Enabled.
+        # - **No**: Disabled.
+        # </details>
         # 
-        # *   **Yes**: SSL encryption is enabled.
-        # *   **No**: SSL encryption is disabled.
+        # <details>
+        # <summary>PostgreSQL</summary>
         # 
-        # **RDS instances that run PostgreSQL**
+        # - **on**: Enabled.
+        # - **off**: Disabled.
         # 
-        # *   **on**: SSL encryption is enabled.
-        # *   **off**: SSL encryption is disabled.
+        # </details>
         self.sslenabled = sslenabled
-        # The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format and must be in UTC.
+        # The expiration time of the SSL certificate. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.sslexpire_time = sslexpire_time
-        # The URL of the certificate that is used to issue the server certificate. This parameter is supported only when the instance runs PostgreSQL with cloud disk.
+        # The URL of the CA certificate that is used to issue the server certificate for the ApsaraDB RDS for PostgreSQL instance with cloud disks.
         self.server_caurl = server_caurl
-        # The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with cloud disks.
+        # The content of the server certificate for the ApsaraDB RDS for PostgreSQL instance with cloud disks.
         self.server_cert = server_cert
-        # The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with cloud disks.
+        # The private key of the server certificate for the ApsaraDB RDS for PostgreSQL instance with cloud disks.
         self.server_key = server_key
-        # The [minimum Transport Layer Security (TLS) version](https://help.aliyun.com/document_detail/95715.html). Valid values: 1.0, 1.1, and 1.2. This parameter is supported only for ApsaraDB RDS for SQL Server instances.
+        # The specified [minimum TLS version](https://help.aliyun.com/document_detail/95715.html) for the ApsaraDB RDS for SQL Server instance. Valid values: 1.0, 1.1, and 1.2.
         self.tls_version = tls_version
 
     def validate(self):

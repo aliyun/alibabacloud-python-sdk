@@ -10,7 +10,7 @@ class DescribeAnalyticdbByPrimaryDBInstanceResponseBody(DaraModel):
         analytic_dbcount: int = None,
         request_id: str = None,
     ):
-        # The number of associated analytic instances.
+        # The number of associated analytical instances.
         self.analytic_dbcount = analytic_dbcount
         # The request ID.
         self.request_id = request_id

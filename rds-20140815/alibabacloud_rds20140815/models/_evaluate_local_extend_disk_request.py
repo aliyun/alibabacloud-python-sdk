@@ -20,7 +20,7 @@ class EvaluateLocalExtendDiskRequest(DaraModel):
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
         self.owner_id = owner_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) to query available regions.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -28,7 +28,7 @@ class EvaluateLocalExtendDiskRequest(DaraModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The new storage capacity. Unit: GB.
+        # The storage capacity after the expansion. Unit: GB.
         self.storage = storage
 
     def validate(self):

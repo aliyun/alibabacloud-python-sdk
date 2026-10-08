@@ -12,13 +12,13 @@ class CreateCloudMigrationTaskResponseBody(DaraModel):
         task_id: int = None,
         task_name: str = None,
     ):
-        # The name of the instance.
+        # The name of the target instance.
         self.dbinstance_name = dbinstance_name
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the task.
+        # The task ID.
         self.task_id = task_id
-        # The name of the task.
+        # The task name.
         self.task_name = task_name
 
     def validate(self):

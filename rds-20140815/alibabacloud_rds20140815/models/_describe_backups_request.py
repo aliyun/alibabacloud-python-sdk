@@ -18,45 +18,41 @@ class DescribeBackupsRequest(DaraModel):
         resource_owner_id: int = None,
         start_time: str = None,
     ):
-        # The ID of the backup set.
+        # The backup set ID.
         self.backup_id = backup_id
         # The backup mode. Valid values:
-        # 
-        # *   **Automated**
-        # *   **Manual**
+        # * **Automated**: automatic backup
+        # * **Manual**: manual backup
         self.backup_mode = backup_mode
         # The status of the backup set. Valid values:
-        # 
-        # *   **Success**
-        # *   **Failed**
+        # * **Success**: The backup is complete.
+        # * **Failed**: The backup failed.
         self.backup_status = backup_status
         # The backup type. Valid values:
-        # 
-        # *   **FullBackup**: full backup
-        # *   **IncrementalBackup**: incremental backup
+        # * **FullBackup**: full backup
+        # * **IncrementalBackup**: incremental backup
         self.backup_type = backup_type
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # The instance ID. You can call DescribeDBInstances to obtain the instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # The end time of the query. The end time must be later than the start time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z (UTC).
         # 
-        # > We recommend that you specify a time range that is as short as possible to avoid timeout.
+        # > Narrow down the time range when you use this operation to query backup sets. A large time range may cause a timeout.
         self.end_time = end_time
-        # The number of the page to return. Valid values: any non-zero positive integer.
+        # The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type.
         # 
         # Default value: **1**.
         self.page_number = page_number
         # The number of entries per page. Valid values:
-        # 
-        # *   **30**
-        # *   **50**
-        # *   **100**
+        # * **30**
+        # * **50**
+        # * **100**
         # 
         # Default value: **30**.
         self.page_size = page_size
         self.resource_owner_id = resource_owner_id
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # The start time of the query. Format: <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z (UTC).
         self.start_time = start_time
 
     def validate(self):

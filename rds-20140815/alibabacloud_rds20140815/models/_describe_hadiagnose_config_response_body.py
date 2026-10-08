@@ -12,10 +12,9 @@ class DescribeHADiagnoseConfigResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The availability check method of the instance. Valid values:
-        # 
-        # *   **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
-        # *   **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
+        # The availability check method that Alibaba Cloud uses for the ApsaraDB RDS instance. Valid values:
+        # - **LONG**: persistent connection.
+        # - **SHORT**: short-lived connection.
         self.tcp_connection_type = tcp_connection_type
 
     def validate(self):

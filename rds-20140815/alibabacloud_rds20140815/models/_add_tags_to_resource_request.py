@@ -23,17 +23,16 @@ class AddTagsToResourceRequest(DaraModel):
         proxy_id: str = None,
     ):
         self.tag = tag
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the generated token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The instance ID.
-        # 
-        # >  You can enter up to 30 instance IDs in a single request. If you enter more than one instance ID, you must separate the instance IDs with commas (,).
+        # > You can specify up to 30 instance IDs for a batch operation. Separate multiple instance IDs with commas (,).
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query available region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -41,9 +40,8 @@ class AddTagsToResourceRequest(DaraModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The tags that you want to add. Each tag consists of a tag key and a tag value. You can specify a maximum of five tags in the following format for each request: {"key1":"value1","key2":"value2"...}.
-        # 
-        # >  The tag key is required and the tag value is optional.
+        # The list of tags to bind, including TagKey and TagValue. You can specify up to 5 pairs at a time. Format: {"key1":"value1","key2":"value2"...}.
+        # > TagKey cannot be empty, but TagValue can be empty.
         self.tags = tags
         # The ID of the proxy mode.
         self.proxy_id = proxy_id
@@ -136,17 +134,15 @@ class AddTagsToResourceRequest(DaraModel):
 
         return self
 
-
-
 class AddTagsToResourceRequestTag(DaraModel):
     def __init__(
         self,
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the first tag that you want to add. Each tag consists of a tag key and a tag value. You can specify up to five tags in a single request. You cannot specify an empty string as the tag key. You can specify an empty string as the tag value.
+        # The key of the first tag. Each tag consists of a TagKey and a TagValue. You can specify up to 5 pairs at a time. TagKey cannot be empty, but TagValue can be empty.
         self.key = key
-        # The tag value of the first tag that you want to add. Each tag consists of a tag key and a tag value. You can specify up to five tags in a single request. You cannot specify an empty string as the tag key. You can specify an empty string as the tag value.
+        # The value of the first tag. Each tag consists of a TagKey and a TagValue. You can specify up to 5 pairs at a time. TagKey cannot be empty, but TagValue can be empty.
         self.value = value
 
     def validate(self):

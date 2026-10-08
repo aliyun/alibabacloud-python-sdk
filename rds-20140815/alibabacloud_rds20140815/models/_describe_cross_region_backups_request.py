@@ -21,34 +21,35 @@ class DescribeCrossRegionBackupsRequest(DaraModel):
         resource_owner_id: int = None,
         start_time: str = None,
     ):
-        # The ID of the backup file.
+        # The user backup ID.
         self.backup_id = backup_id
-        # The ID of the cross-region data backup file.
-        # 
-        # >  You must specify the **CrossBackupId** parameter. Alternatively, you must specify the **StartTime** and **EndTime** parameters.
+        # The cross-region backup file ID.
+        # >You must specify either **CrossBackupId** or the time range parameters (**StartTime** and **EndTime**).
         self.cross_backup_id = cross_backup_id
-        # The ID of the region in which the cross-region data backup file is stored.
+        # The ID of the destination region for cross-region backup.
         self.cross_backup_region = cross_backup_region
         # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The end time of the query. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format (UTC).
+        # 
+        # > For non-UTC+0 time zones, subtract 8 hours from the actual time before passing the value.
         self.end_time = end_time
         self.owner_id = owner_id
-        # The page number. Valid values: any non-zero positive integer.
+        # The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type.
         # 
         # Default value: **1**.
         self.page_number = page_number
         # The number of entries per page. Valid values:
         # 
-        # *   **30**
-        # *   **50**
-        # *   **100**
+        # * **30**
+        # * **50**
+        # * **100**
         # 
         # Default value: 30.
         self.page_size = page_size
-        # The region ID.
+        # The region ID of the instance.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -56,7 +57,9 @@ class DescribeCrossRegionBackupsRequest(DaraModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The start time of the query. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format (UTC).
+        # 
+        # > For non-UTC+0 time zones, subtract 8 hours from the actual time before passing the value.
         self.start_time = start_time
 
     def validate(self):

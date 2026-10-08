@@ -24,53 +24,46 @@ class ModifyDBProxyInstanceRequest(DaraModel):
         resource_owner_id: int = None,
         v_switch_ids: str = None,
     ):
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # The instance ID. You can call DescribeDBInstances to obtain the instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # A deprecated parameter. You do not need to specify this parameter.
+        # A deprecated parameter. You do not need to configure this parameter.
         self.dbproxy_engine_type = dbproxy_engine_type
-        # The number of database proxies. If you set this parameter to 0, the database proxy feature is disabled for the instance. Valid values: **1** to **16**.
-        # 
-        # >  The capability of the database proxy feature to process requests increases with the number of database proxies that are enabled. You can monitor the load on the instance and specify an appropriate number of database proxies based on the load monitoring data.
+        # The number of proxy instances. If this parameter is set to 0, the proxy service of this type is disabled for the instance. Valid values: **1** to **16**.
+        # > More proxy instances can handle more requests. You can check the load of proxy instances based on monitoring data and then specify an appropriate number of proxy instances.
         # 
         # This parameter is required.
         self.dbproxy_instance_num = dbproxy_instance_num
-        # The database proxy type. Valid values:
-        # 
-        # *   **common**: general-purpose database proxy
-        # *   **exclusive** (default): dedicated database proxy
+        # The type of the database proxy instance. Valid values:
+        # - **common**: general-purpose database proxy
+        # - **exclusive**: dedicated database proxy (default)
         # 
         # This parameter is required.
         self.dbproxy_instance_type = dbproxy_instance_type
-        # List of proxy nodes.
-        # 
-        # > This parameter must be passed when the current proxy instance is deployed in multiple availability zones.
+        # The list of proxy nodes.
+        # > This parameter is required when the current proxy instance uses multi-active zone deployment.
         self.dbproxy_nodes = dbproxy_nodes
-        # The point in time that you want to specify. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
-        # 
-        # >  If the **EffectiveTime** parameter is set to **SpecificTime**, you must specify this parameter.
+        # The specified time for the modification to take effect. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+        # > This parameter is required when **EffectiveTime** is set to **SpecificTime**.
         self.effective_specific_time = effective_specific_time
-        # The effective time. Valid values:
+        # The effective period. Valid values:
         # 
-        # *   **Immediate**: The effective time is immediate.
-        # *   **MaintainTime**: The effective time is within the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
-        # *   **SpecificTime**: The effective time is a specified point in time.
+        # * **Immediate**: The modification takes effect immediately.
+        # * **MaintainTime**: The modification takes effect during the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+        # * **SpecificTime**: The modification takes effect at a specified time.
         # 
         # Default value: **MaintainTime**.
         self.effective_time = effective_time
-        # The list of available zones for migration agents.
-        # 
-        # > Currently, only RDS MySQL cloud disk version agent instance migration is supported.
+        # The list of active zones for proxy migration.
+        # > Currently, only ApsaraDB RDS for MySQL proxy instances with cloud disks support active zone migration.
         self.migrate_az = migrate_az
         self.owner_id = owner_id
-        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # The region ID. You can call DescribeRegions to obtain the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the vSwitch in the destination zone. You can call the [DescribeVSwitches](https://help.aliyun.com/document_detail/610431.html) operation to query existing vSwitches.
-        # 
-        # >  Only database proxies for ApsaraDB RDS for MySQL instances that use cloud disks can be migrated to different zones.
+        # A deprecated parameter. You do not need to configure this parameter.
         self.v_switch_ids = v_switch_ids
 
     def validate(self):
@@ -189,15 +182,14 @@ class ModifyDBProxyInstanceRequestMigrateAZ(DaraModel):
         dest_vswitch_id: str = None,
         dest_vpc_id: str = None,
     ):
-        # The proxy connection address ID. You can obtain it through the DescribeDBProxyEndpoint interface.
-        # 
-        # > This parameter is required when MigrateAZ is selected.
+        # The proxy endpoint ID. You can call DescribeDBProxyEndpoint to obtain the proxy endpoint ID.
+        # > This parameter is required when **MigrateAZ** is specified.
         self.db_proxy_endpoint_id = db_proxy_endpoint_id
-        # The target VSwitchId corresponding to the proxy instance migration.
-        # 
-        # > This parameter is required when MigrateAZ is selected.
+        # The ID of the destination vSwitch for the proxy instance migration.
+        # > This parameter is required when **MigrateAZ** is specified.
         self.dest_vswitch_id = dest_vswitch_id
-        # The target vpc id corresponding to the proxy instance migration.
+        # The ID of the destination VPC for the proxy instance migration.
+        # > This parameter is required when **MigrateAZ** is specified.
         self.dest_vpc_id = dest_vpc_id
 
     def validate(self):
@@ -239,14 +231,14 @@ class ModifyDBProxyInstanceRequestDBProxyNodes(DaraModel):
         node_counts: str = None,
         zone_id: str = None,
     ):
-        # The number of cpu cores for the node, valid values: **1** to **16**.
-        # >This parameter is required when selecting **DBProxyNodes**.
+        # The number of CPU cores for the node. Valid values: **1** to **16**.
+        # > This parameter is required when **DBProxyNodes** is specified.
         self.cpu_cores = cpu_cores
-        # The number of proxy nodes in the availability zone, valid values: **1** to **16**.
-        # >This parameter is required when selecting **DBProxyNodes**.
+        # The number of proxy nodes in the zone. Valid values: **1** to **2**.
+        # > This parameter is required when **DBProxyNodes** is specified.
         self.node_counts = node_counts
-        # The id of the availability zone where the node is located.
-        # >This parameter is required when selecting **DBProxyNodes**.
+        # The zone ID of the node.
+        # > This parameter is required when **DBProxyNodes** is specified.
         self.zone_id = zone_id
 
     def validate(self):

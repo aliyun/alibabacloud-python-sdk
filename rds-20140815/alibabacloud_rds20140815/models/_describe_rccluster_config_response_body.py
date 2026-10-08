@@ -11,9 +11,9 @@ class DescribeRCClusterConfigResponseBody(DaraModel):
         expiration: str = None,
         request_id: str = None,
     ):
-        # The kubeconfig file of the cluster.
+        # The cluster access configuration.
         self.config = config
-        # The expiration time of the kubeconfig file. Format: the UTC time in the RFC3339 format.
+        # The expiration time of the KubeConfig. Format: UTC time in RFC 3339 format.
         self.expiration = expiration
         # The request ID.
         self.request_id = request_id

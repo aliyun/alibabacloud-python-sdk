@@ -17,30 +17,28 @@ class DescribeAllWhitelistTemplateResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code returned. Valid values:
-        # 
-        # *   **200**: success
-        # *   **400**: client error
-        # *   **401**: identity authentication failed
-        # *   **404**: request page not found
-        # *   **500**: server error
+        # The response code. Valid values:
+        # - **200**: Normal.
+        # - **400**: Client fault.
+        # - **401**: Authentication failed.
+        # - **404**: Request page not found.
+        # - **500**: Server fault.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The HTTP status code returned. Valid values:
-        # 
-        # *   **200**: success
-        # *   **400**: client error
-        # *   **500**: server error
+        # The HTTP status code. Valid values:
+        # - **200**: Success.
+        # - **400**: Client error.
+        # - **500**: Server error.
         self.http_status_code = http_status_code
-        # The response parameters.
+        # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Successful.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -108,23 +106,21 @@ class DescribeAllWhitelistTemplateResponseBodyData(DaraModel):
     ):
         # The page number.
         self.curr_page_numbers = curr_page_numbers
-        # Indicates whether the data that meets the conditions is displayed on the next page. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether there is a next page of data that meets the conditions. Valid values:
+        # - **true**: Yes.
+        # - **false**: No.
         self.has_next = has_next
-        # Indicates whether the data that meets the conditions is displayed on the previous page. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether there is a previous page of data that meets the conditions. Valid values:
+        # - **true**: Yes.
+        # - **false**: No.
         self.has_prev = has_prev
-        # The number of entries to return on each page.
+        # The number of records per page.
         self.max_records_per_page = max_records_per_page
-        # The information about whitelist templates that are returned by page.
+        # The whitelist template information returned by page.
         self.templates = templates
-        # The total number of pages returned.
+        # The total number of pages.
         self.total_page_numbers = total_page_numbers
-        # The total number of entries returned.
+        # The total number of records.
         self.total_records = total_records
 
     def validate(self):
@@ -202,11 +198,11 @@ class DescribeAllWhitelistTemplateResponseBodyDataTemplates(DaraModel):
     ):
         # The primary key of the data table.
         self.id = id
-        # The IP addresses.
+        # The IP address list.
         self.ips = ips
-        # The ID of the whitelist template.
+        # The whitelist template ID.
         self.template_id = template_id
-        # The name of the whitelist template.
+        # The whitelist template name.
         self.template_name = template_name
         # The user ID.
         self.user_id = user_id

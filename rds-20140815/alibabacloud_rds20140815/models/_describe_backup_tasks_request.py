@@ -18,23 +18,21 @@ class DescribeBackupTasksRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the backup task.
+        # The backup task ID.
         self.backup_job_id = backup_job_id
-        # The status of the backup task. Valid values:
+        # The backup task status. Valid values:
+        # * **NoStart**: not started
+        # * **Progressing**: in progress
         # 
-        # *   **NoStart**
-        # *   **Progressing**
-        # 
-        # By default, this operation returns backup tasks in both states.
+        # Default value: all statuses.
         self.backup_job_status = backup_job_status
         # The backup mode. Valid values:
-        # 
-        # *   **Automated**
-        # *   **Manual**
+        # * **Automated**: automatic backup
+        # * **Manual**: manual backup
         self.backup_mode = backup_mode
-        # Specifies the client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # The instance ID. You can call DescribeDBInstances to query the instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id

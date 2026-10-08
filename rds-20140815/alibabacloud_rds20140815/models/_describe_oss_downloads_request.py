@@ -18,12 +18,12 @@ class DescribeOssDownloadsRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The migration task ID. You can call the DescribeMigrateTasks operation to query the migration task ID.
+        # The ID of the migration task. You can call the DescribeMigrateTasks operation to query the migration task ID.
         # 
         # This parameter is required.
         self.migrate_task_id = migrate_task_id
         self.owner_id = owner_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

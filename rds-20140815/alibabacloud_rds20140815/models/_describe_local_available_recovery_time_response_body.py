@@ -14,9 +14,9 @@ class DescribeLocalAvailableRecoveryTimeResponseBody(DaraModel):
     ):
         # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The start of the time range to which the instance can be restored.
+        # The start time of the restorable time range for backups.
         self.recovery_begin_time = recovery_begin_time
-        # The end of the time range to which the instance can be restored.
+        # The end time of the restorable time range for backups.
         self.recovery_end_time = recovery_end_time
         # The request ID.
         self.request_id = request_id

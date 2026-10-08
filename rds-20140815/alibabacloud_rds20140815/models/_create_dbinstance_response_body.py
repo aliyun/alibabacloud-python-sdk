@@ -20,44 +20,43 @@ class CreateDBInstanceResponseBody(DaraModel):
     ):
         # The internal endpoint of the instance.
         self.connection_string = connection_string
-        # The instance ID. If the value of the **Amount** parameter is greater than **1**, more than one instance ID is returned. The number of instance IDs that are returned is the same as the value of the Amount parameter. The returned instance IDs are separated by commas (,).
+        # The instance ID. If you set the **Amount** parameter to a value greater than **1**, the number of instance IDs that corresponds to the value is returned, separated by commas.
         # 
-        # For example, if the value of the **Amount** parameter is **3**, three instance IDs are returned. Examples: `rm-uf6wjk5*****1,rm-uf6wjk5*****2,rm-uf6wjk5*****3`
+        # For example, if **Amount** is set to **3**, three instance IDs are returned. Example:
+        # `rm-uf6wjk5*****1，rm-uf6wjk5*****2，rm-uf6wjk5*****3`
         self.dbinstance_id = dbinstance_id
-        # Indicates that the system performed a dry run.
+        # Indicates that a dry run is performed before the instance is created.
         # 
-        # *   The value is fixed as **true**.
-        # *   If the system does not perform a dry run, this parameter is not returned.
+        # * The return value is always **true**.
+        # * If no dry run is performed, this parameter is not returned.
         self.dry_run = dry_run
-        # Indicates whether the request passed the dry run. Valid values:
+        # Indicates whether the dry run for instance creation passed. Valid values:
+        # * **true**: The dry run passed.
+        # * **false**: The dry run failed.
         # 
-        # *   **true**
-        # *   **false**
-        # 
-        # > *   If the system does not perform a dry run, this parameter is not returned.
-        # > *   If the request failed the dry run, an error message is returned.
+        # > * If no dry run is performed, this parameter is not returned.
+        # > * If the dry run fails, the corresponding error is returned.
         self.dry_run_result = dry_run_result
-        # The message that indicates whether multiple instances are created.
+        # The message for the batch creation task.
         # 
-        # > The parameter is returned only when the value of the **Amount** parameter is greater than 1.
+        # > This parameter is returned only when the **Amount** parameter is greater than 1.
         self.message = message
         # The order ID.
         self.order_id = order_id
-        # The internal IP address and port number that are used to connect to the instance.
+        # The port number that corresponds to the internal endpoint of the instance.
         self.port = port
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the specified tag is added to the instance. Valid values:
+        # Indicates whether tags are successfully bound to the instance. Valid values:
+        # * **true**: Tags are successfully bound.
+        # * **false**: Tags failed to be bound.
         # 
-        # *   **true**: The specified tag is added to the instance.
-        # *   **false**: The specified tag fails to be added to the instance.
-        # 
-        # > If you do not add a tag to the instance, this parameter is not returned.
+        # > If no tags are bound to the instance, this parameter is not returned.
         self.tag_result = tag_result
-        # The ID of the task that is run to create multiple instances.
+        # The task ID of the batch creation task.
         # 
-        # *   This parameter is returned only when the value of **Amount** is greater than 1.
-        # *   The **TaskID** parameter cannot be used to query a task.
+        # * This parameter is returned only when the **Amount** parameter is greater than 1.
+        # * Querying tasks by **TaskId** is not supported at this time.
         self.task_id = task_id
 
     def validate(self):

@@ -15,16 +15,16 @@ class DescribeCrossRegionBackupDBInstanceRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The instance ID. Up to 30 instance IDs are allowed in a single request. If you enter more than one instance ID, separate them with commas (,).
+        # The instance ID. You can specify up to 30 instance IDs at a time. Separate multiple instance IDs with commas (,).
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
-        # The number of the page to return. Valid values: any non-zero positive integer.
+        # The page number. Valid values: any integer greater than 0 that does not exceed the maximum value of the Integer data type.
         # 
         # Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return per page. Default value: 30.
+        # The number of entries per page. Default value: 30.
         self.page_size = page_size
-        # The ID of the region.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

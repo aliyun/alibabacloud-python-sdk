@@ -13,9 +13,9 @@ class DescribeSlotsResponseBody(DaraModel):
         request_id: str = None,
         slots: List[main_models.DescribeSlotsResponseBodySlots] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information about the replication slot.
+        # The list of replication slots of the instance.
         self.slots = slots
 
     def validate(self):
@@ -66,28 +66,25 @@ class DescribeSlotsResponseBodySlots(DaraModel):
     ):
         # The name of the database in which the replication slot resides.
         self.database = database
-        # The extension used by the replication slot.
+        # The plugin used by the replication slot.
         self.plugin = plugin
-        # The replication slot name.
+        # The name of the replication slot.
         self.slot_name = slot_name
-        # The replication slot status. Valid values:
-        # 
-        # *   ACTIVE
-        # *   INACTIVE
+        # The status of the replication slot. Valid values:
+        # - ACTIVE: Active.
+        # - INACTIVE: Inactive.
         self.slot_status = slot_status
-        # The replication slot type. Valid values:
-        # 
-        # *   physical
-        # *   logical
+        # The type of the replication slot. Valid values:
+        # - physical: Physical.
+        # - logical: Logical.
         self.slot_type = slot_type
-        # The latency of the logical subscription on the subscriber node that corresponds to the current replication slot. Unit: seconds.
+        # The specific latency of the logical subscription on the subscriber corresponding to the current replication slot. Unit: seconds.
         self.sub_replay_lag = sub_replay_lag
-        # Indicates whether the replication slot is a temporary replication slot. Valid values:
-        # 
-        # *   true
-        # *   false
+        # Indicates whether the replication slot is temporary. Valid values:
+        # - true: The replication slot is temporary.
+        # - false: The replication slot is not temporary.
         self.temporary = temporary
-        # The number of logs accumulated in the replication slot.
+        # The amount of logs accumulated by the replication slot.
         self.wal_delay = wal_delay
 
     def validate(self):

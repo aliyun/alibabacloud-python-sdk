@@ -13,12 +13,13 @@ class DescribeInstanceKeywordsRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The type of reserved keyword to query. Valid values:
+        # The type of reserved keywords, which indicates whether the reserved keywords are for account names or database names. Valid values:
         # 
-        # *   **account**
-        # *   **database**
+        # - **account**
         # 
-        # >  This parameter is required.
+        # - **database**
+        # 
+        # > This parameter is required.
         self.key = key
         self.owner_account = owner_account
         self.owner_id = owner_id

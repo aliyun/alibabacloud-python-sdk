@@ -16,13 +16,13 @@ class DescribeCloudMigrationResultResponseBody(DaraModel):
         request_id: str = None,
         total_size: int = None,
     ):
-        # The details about the cloud migration task.
+        # The list of cloud migration tasks.
         self.items = items
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The maximum number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_size = total_size
@@ -99,49 +99,49 @@ class DescribeCloudMigrationResultResponseBodyItems(DaraModel):
         task_id: int = None,
         task_name: str = None,
     ):
-        # The details about the migration task.
+        # The migration details.
         self.detail = detail
         # The time when the task was created.
         self.gmt_created = gmt_created
-        # The time when the task was modified.
+        # The time when the task was last modified.
         self.gmt_modified = gmt_modified
-        # The migration phase of the migration task.
+        # The migration stage. Valid values:
         # 
-        # *   **precheck**: precheck
-        # *   **basebackup**: full data backup
-        # *   **startup**: link establishment
-        # *   **increment**: incremental data synchronization
-        # *   **switch**: cloud migration-triggered switchover
-        # *   **success**: cloud migration completed
+        # - **precheck**: Precheck.
+        # - **basebackup**: Full backup.
+        # - **startup**: Link setup.
+        # - **increment**: Incremental synchronization.
+        # - **switch**: Cloud switchover.
+        # - **success**: Migration completed.
         self.migrate_stage = migrate_stage
-        # The information about the replication link.
+        # The replication task information.
         self.replication_info = replication_info
-        # The status of data replication.
+        # The replication status. Valid values:
         # 
-        # *   **unstarted**
-        # *   **catchup**
-        # *   **streaming**
-        # *   **disconnect**
-        # *   **finish**
+        # - **unstarted**: Not started.
+        # - **catchup**: Catching up.
+        # - **streaming**: Streaming.
+        # - **disconnect**: Disconnected.
+        # - **finish**: Completed.
         self.replication_state = replication_state
         # The username.
         self.source_account = source_account
-        # The environment in which the self-managed PostgreSQL instance runs.
+        # The type of the self-managed PostgreSQL database. Valid values:
         # 
-        # *   **idcOnVpc**: The self-managed PostgreSQL instance resides in a data center. The data center can communicate with the VPC to which the ApsaraDB RDS for PostgreSQL instance belongs.
-        # *   **ecsOnVpc**: The self-managed PostgreSQL instance resides on an ECS instance.
+        # - **idcOnVpc**: A self-managed PostgreSQL database in an IDC that is connected to a VPC.
+        # - **ecsOnVpc**: A self-managed PostgreSQL database on an Alibaba Cloud ECS instance.
         self.source_category = source_category
-        # The private IP address that is used to connect to the self-managed PostgreSQL instance.
+        # The internal IP address of the self-managed PostgreSQL database.
         self.source_ip_address = source_ip_address
         # The password.
         self.source_password = source_password
-        # The port number that is used to connect to the self-managed PostgreSQL instance.
+        # The port of the self-managed PostgreSQL database.
         self.source_port = source_port
-        # The time when the switchover was performed.
+        # The switchover time.
         self.switch_time = switch_time
-        # A reserved parameter. The return value of this parameter is empty.
+        # A reserved parameter. The query result is empty.
         self.target_eip = target_eip
-        # The ID of the destination instance.
+        # The instance ID of the target instance.
         self.target_instance_name = target_instance_name
         # The task ID.
         self.task_id = task_id

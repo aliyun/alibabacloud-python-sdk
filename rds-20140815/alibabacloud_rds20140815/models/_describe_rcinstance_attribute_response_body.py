@@ -62,84 +62,104 @@ class DescribeRCInstanceAttributeResponseBody(DaraModel):
         vpc_attributes: main_models.DescribeRCInstanceAttributeResponseBodyVpcAttributes = None,
         zone_id: str = None,
     ):
+        # Indicates whether auto-renewal is enabled for the instance. Valid values:
+        # 
+        # * **true**: Enabled.
+        # * **false**: Disabled.
         self.auto_renew = auto_renew
         # The ID of the cluster to which the instance belongs.
-        # 
-        # >  This parameter will be deprecated. We recommend that you use other parameters to ensure compatibility.
+        # >This parameter will be deprecated. For better compatibility, use other parameters.
         self.cluster_id = cluster_id
-        # The number of CPU cores.
+        # The number of vCPUs.
         self.cpu = cpu
+        # Indicates whether the instance has joined an ACK cluster. Valid values:
+        # 
+        # - **1**: Yes.
+        # - **0**: No.
         self.create_mode = create_mode
         # The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The performance mode of the burstable instance.
+        # The running mode of the burstable instance.
         self.credit_specification = credit_specification
         self.data_disks = data_disks
+        # The database type. Valid values:
+        # 
+        # - **mssql**: SQL Server
+        # - **mysql**: MySQL
         self.db_type = db_type
-        # The attributes of the dedicated hosts.
+        # The dedicated host attributes.
         self.dedicated_host_attribute = dedicated_host_attribute
+        # Indicates whether the release protection feature is enabled. Valid values:
+        # * **true**: Enabled.
+        # * **false**: Disabled.
         self.deletion_protection = deletion_protection
-        # The ID of the deployment set.
+        # The deployment set ID.
         self.deployment_set_id = deployment_set_id
         # The instance description.
         self.description = description
-        # The reserved parameter.
+        # A reserved parameter.
         self.disk_type = disk_type
-        # The Elastic Compute Service (ECS) instance family.
+        # The corresponding ECS instance family.
         self.ecs_instance_type = ecs_instance_type
-        # The elastic IP address (EIP) associated with the instance.
+        # The elastic IP address (EIP) binding information.
         self.eip_address = eip_address
-        # Indicates whether the Jumbo Frame feature is enabled for the instance. Valid values:
+        # Indicates whether the Jumbo frame feature is enabled for the instance. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Enabled.
+        # 
+        # - **false**: Disabled.
         self.enable_jumbo_frame = enable_jumbo_frame
         # The expiration time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC.
         self.expired_time = expired_time
+        # The number of GPUs.
         self.gpu = gpu
+        # The GPU type.
         self.gpu_types = gpu_types
-        # The instance hostname.
+        # The hostname of the instance.
         self.host_name = host_name
-        # The storage type of the host. Valid values:
-        # 
-        # *   **dhg_cloud_ssd**: ESSD
-        # *   **dhg_local_ssd**: local SSD
+        # The host storage type. Valid values:
+        # * **dhg_cloud_ssd**: ESSD cloud disk.
+        # * **dhg_local_ssd**: local standard SSD.
         self.host_type = host_type
-        # The image ID of the instance.
+        # The ID of the image that the instance is running.
         self.image_id = image_id
         self.inner_ip_address = inner_ip_address
+        # The billing method. Valid values:
+        # * **PrePaid**: subscription
+        # * **PostPaid**: pay-as-you-go
         self.instance_charge_type = instance_charge_type
         # The instance ID.
         self.instance_id = instance_id
         # The instance name.
         self.instance_name = instance_name
-        # The network type. Valid values:
-        # 
-        # *   **classic**
-        # *   **vpc**
+        # The network type. Valid values: 
+        #          
+        # - **classic**: classic network.
+        # - **vpc**: VPC.
         self.instance_network_type = instance_network_type
-        # The instance type of the instance.
+        # The instance type.
         self.instance_type = instance_type
-        # The billing method for network usage. Valid values:
+        # The billing method for Internet bandwidth. Valid values:
         # 
-        # *   **PayByBandwidth**: pay-by-bandwidth
-        # *   **PayByTraffic**: pay-by-data-transfer
+        # - **PayByBandwidth**: pay-by-bandwidth.
+        # - **PayByTraffic**: pay-by-data-transfer.
         # 
-        # >  If the **pay-by-traffic** billing method is used for network usage, the maximum inbound and outbound bandwidths are used as the upper limits of bandwidths instead of guaranteed performance specifications. In scenarios in which demands exceed resource supplies, the maximum bandwidths may not be reached. If you want guaranteed bandwidths for your instance, use the **pay-by-bandwidth** billing method for network usage.
+        # > In the **pay-by-data-transfer** mode, the peak inbound and outbound bandwidths are both bandwidth upper limits and are not guaranteed. When resource contention occurs, the peak bandwidth may be throttled. If your business requires guaranteed bandwidth, use the **pay-by-bandwidth** mode.
         self.internet_charge_type = internet_charge_type
-        # The maximum inbound bandwidth from the Internet. Unit: Mbit/s.
+        # The maximum inbound Internet bandwidth. Unit: Mbit/s.
         self.internet_max_bandwidth_in = internet_max_bandwidth_in
-        # The maximum outbound bandwidth to the Internet. Unit: Mbit/s.
+        # The maximum outbound Internet bandwidth. Unit: Mbit/s.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
-        # Indicates whether the instance is I/O optimized.
+        # Indicates whether the instance is an I/O optimized instance.
         # 
-        # *   **optimized**: The instance is I/O optimized.
-        # *   **none**: The instance is not I/O optimized.
+        # - **optimized**: I/O optimization enabled.
+        # - **none**: not I/O optimized.
         self.io_optimized = io_optimized
         # The name of the key pair.
         self.key_pair_name = key_pair_name
-        # The memory capacity of the instance. Unit: MiB.
+        # The memory size. Unit: MiB.
         self.memory = memory
+        # The node type. If **rds_vnode** is returned, the node is a container node.
         self.node_type = node_type
         self.operation_locks = operation_locks
         self.public_ip_address = public_ip_address
@@ -147,33 +167,41 @@ class DescribeRCInstanceAttributeResponseBody(DaraModel):
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.security_group_ids = security_group_ids
         # The serial number of the instance.
         self.serial_number = serial_number
+        # The bidding strategy for the pay-as-you-go instance. Valid values:
+        # 
+        # - **NoSpot**: a regular pay-as-you-go instance.
+        # - **SpotAsPriceGo**: the system automatically bids, following the current market price.
         self.spot_strategy = spot_strategy
         # The instance status. Valid values:
         # 
-        # *   **Pending**
-        # *   **Running**
-        # *   **Starting**
-        # *   **Stopping**
-        # *   **Stopped**
+        # - **Pending**: being created.
+        # - **Running**: running.
+        # - **Starting**: starting.
+        # - **Stopping**: stopping.
+        # - **Stopped**: stopped.
         self.status = status
-        # Indicates whether the billing of the instance continues after the instance is stopped. Valid values:
+        # Indicates whether the instance continues to be billed after it is stopped. Valid values:
         # 
-        # *   **KeepCharging**: The billing of the instance continues after the instance is stopped, and resources are retained for the instance.
-        # *   **StopCharging**: The billing of the instance stops after the instance is stopped. After the instance is stopped, resources such as CPU cores, memory resources, and public IP address are released. The instance may be unable to restart if some required resources are out of stock in the current region.
-        # *   **Not-applicable**: The No Fees for Stopped Instances feature is not supported for the instance.
+        # - **KeepCharging**: The instance continues to be billed after it is stopped. Inventory resources are reserved for the instance.
+        # - **StopCharging**: The instance is not billed after it is stopped. After the instance is stopped, its resources such as vCPUs, memory, and public IP addresses are released. Whether the instance can be restarted depends on the available resource inventory in the current region.
+        # - **Not-applicable**: The instance does not support the No Fees for Stopped Instances feature.
         self.stopped_mode = stopped_mode
+        # The system cloud disk specifications.
         self.system_disk = system_disk
         self.tags = tags
-        self.user_data = user_data
-        # The virtual LAN (VLAN) ID of the instance.
+        # The custom data of the instance, in Base64-encoded format.
         # 
-        # >  This parameter will be deprecated. We recommend that you use other parameters to ensure compatibility.
+        # > If the instance does not have custom data, an empty string is returned.
+        self.user_data = user_data
+        # The VLAN ID of the instance.
+        # > This parameter will be deprecated. For better compatibility, use other parameters.
         self.vlan_id = vlan_id
-        # The virtual private cloud (VPC) attributes of the instance.
+        # The VPC attributes.
         self.vpc_attributes = vpc_attributes
         # The zone ID.
         self.zone_id = zone_id
@@ -535,7 +563,7 @@ class DescribeRCInstanceAttributeResponseBodyVpcAttributes(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The network address translation (NAT) IP address of the instance. The NAT IP address is used by instances in different VPCs for communication.
+        # The IP address of the cloud service, which is used for network communication between VPC-connected cloud services.
         self.nat_ip_address = nat_ip_address
         self.private_ip_address = private_ip_address
         # The vSwitch ID.
@@ -705,10 +733,28 @@ class DescribeRCInstanceAttributeResponseBodySystemDisk(DaraModel):
         system_disk_performance_level: str = None,
         system_disk_size: int = None,
     ):
+        # A reserved parameter.
         self.delete_with_instance = delete_with_instance
+        # Indicates whether the cloud disk is encrypted. Valid values:
+        # 
+        # - **true**: Encrypted.
+        # - **false**: Not encrypted.
         self.encrypted = encrypted
+        # The type of the system cloud disk. Valid values:
+        # 
+        # - **cloud_efficiency**: ultra cloud disk.
+        # - **cloud_ssd**: standard SSD.
+        # - **cloud_essd**: ESSD.
+        # - **cloud_auto**: premium performance disk.
         self.system_disk_category = system_disk_category
+        # The performance level (PL) of the system cloud disk when it is an ESSD. When the system cloud disk is a standard SSD, this parameter is not returned. Valid values:
+        # 
+        # - **PL0**
+        # - **PL1**
+        # - **PL2**
+        # - **PL3**
         self.system_disk_performance_level = system_disk_performance_level
+        # The size of the system cloud disk. Unit: GiB.
         self.system_disk_size = system_disk_size
 
     def validate(self):
@@ -906,18 +952,17 @@ class DescribeRCInstanceAttributeResponseBodyEipAddress(DaraModel):
         internet_charge_type: str = None,
         ip_address: str = None,
     ):
-        # The EIP ID.
+        # The ID of the EIP.
         self.allocation_id = allocation_id
-        # The maximum Internet bandwidth of the EIP. Unit: Mbit/s.
+        # The Internet bandwidth throttling of the EIP. Unit: Mbit/s.
         self.bandwidth = bandwidth
-        # The billing method of the Internet-facing instance. Valid values:
+        # The billing method for the public network instance. Valid values:
         # 
-        # *   **paybytraffic:** pay-by-data-transfer
-        # *   **paybybandwidth**: pay-by-bandwidth
-        # 
-        # >  If the **pay-by-traffic** billing method is used for network usage, the maximum inbound and outbound bandwidths are used as the upper limits of bandwidths instead of guaranteed performance specifications. In scenarios in which demands exceed resource supplies, the maximum bandwidths may not be reached. If you want guaranteed bandwidths for your instance, use the **pay-by-bandwidth** billing method for network usage.
+        # - **paybytraffic**: pay-by-data-transfer.
+        # - **paybybandwidth**: pay-by-bandwidth.
+        # > In **pay-by-data-transfer** mode, the peak inbound and outbound bandwidths are both bandwidth upper limits and are not guaranteed. When resource contention occurs, the peak bandwidth may be throttled. If your business requires guaranteed bandwidth, use the **pay-by-bandwidth** mode.
         self.internet_charge_type = internet_charge_type
-        # The EIP.
+        # The EIP address.
         self.ip_address = ip_address
 
     def validate(self):
@@ -964,7 +1009,7 @@ class DescribeRCInstanceAttributeResponseBodyDedicatedHostAttribute(DaraModel):
         dedicated_host_id: str = None,
         dedicated_host_name: str = None,
     ):
-        # The ID of the dedicated host.
+        # The dedicated host ID.
         self.dedicated_host_id = dedicated_host_id
         # The name of the dedicated host.
         self.dedicated_host_name = dedicated_host_name

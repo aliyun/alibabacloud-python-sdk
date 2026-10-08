@@ -15,13 +15,18 @@ class DescribeAccountMaskingPrivilegeRequest(DaraModel):
         resource_owner_id: int = None,
         user_name: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # The database name.
         self.dbname = dbname
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The account name. You can specify a specific account to query.
         self.user_name = user_name
 
     def validate(self):

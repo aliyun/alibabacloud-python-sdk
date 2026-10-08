@@ -24,7 +24,7 @@ class DescribeBinlogFilesResponseBody(DaraModel):
         self.page_record_count = page_record_count
         # The request ID.
         self.request_id = request_id
-        # The total size of the log file.
+        # The total size of the log files.
         self.total_file_size = total_file_size
         # The total number of log files.
         self.total_record_count = total_record_count

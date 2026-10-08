@@ -10,7 +10,9 @@ class CheckRegionSupportBackupEncryptionResponseBody(DaraModel):
         request_id: str = None,
         support_backup_encryption: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether backup encryption is supported. Valid values: true and false.
         self.support_backup_encryption = support_backup_encryption
 
     def validate(self):

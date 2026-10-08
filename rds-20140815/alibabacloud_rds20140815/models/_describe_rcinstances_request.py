@@ -7,7 +7,9 @@ from darabonba.model import DaraModel
 class DescribeRCInstancesRequest(DaraModel):
     def __init__(
         self,
+        cluster_id: str = None,
         description: str = None,
+        description_for_fuzzy: str = None,
         host_ip: str = None,
         image_id: str = None,
         instance_id: str = None,
@@ -21,31 +23,47 @@ class DescribeRCInstancesRequest(DaraModel):
         tag: str = None,
         vpc_id: str = None,
     ):
+        self.cluster_id = cluster_id
         self.description = description
+        self.description_for_fuzzy = description_for_fuzzy
+        # Queries instances by host IP address.
         self.host_ip = host_ip
         self.image_id = image_id
-        # The instance ID.
+        # The instance ID. This parameter is used to query a single instance.
+        # 
+        # > If no instance ID is specified (neither **InstanceId** nor **InstanceIds** is passed), the operation returns detailed information about all RDS Custom instances in the specified region.
         self.instance_id = instance_id
+        # The instance IDs.
+        # 
+        # This parameter is used to query multiple instances at a time. Separate multiple instance IDs with commas (,). A maximum of 100 IDs are supported. Input format: `["InstanceID1","InstanceID2"]`.
+        # 
+        # > If both **InstanceIds** and **InstanceId** are specified, the value of **InstanceIds** takes precedence.
         self.instance_ids = instance_ids
+        # The instance name.
         self.instance_name = instance_name
-        # The page number.
+        # The page number of the instance status list.
         # 
-        # Page starts from page 1.
-        # 
-        # Default value: 1.
+        # Minimum value: 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page for a paged query.
         # 
-        # Maximum value: 100.
-        # 
-        # Default value: 10.
+        # Maximum value: 100. Default value: 10.
         self.page_size = page_size
+        # Queries instances by public IP address.
         self.public_ip = public_ip
-        # The region ID.
+        # The region ID. This parameter is required.
         self.region_id = region_id
+        # The instance status. Valid values:
+        # 
+        # - **Pending**: Being created.
+        # - **Running**: Running.
+        # - **Starting**: Being started.
+        # - **Stopping**: Being stopped.
+        # - **Stopped**: Stopped.
         self.status = status
+        # Queries instances by the specified tag. Input format: `{"TagKey":"TagValue"}`.
         self.tag = tag
-        # The virtual private cloud (VPC) ID.
+        # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -56,8 +74,14 @@ class DescribeRCInstancesRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+
         if self.description is not None:
             result['Description'] = self.description
+
+        if self.description_for_fuzzy is not None:
+            result['DescriptionForFuzzy'] = self.description_for_fuzzy
 
         if self.host_ip is not None:
             result['HostIp'] = self.host_ip
@@ -99,8 +123,14 @@ class DescribeRCInstancesRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('DescriptionForFuzzy') is not None:
+            self.description_for_fuzzy = m.get('DescriptionForFuzzy')
 
         if m.get('HostIp') is not None:
             self.host_ip = m.get('HostIp')

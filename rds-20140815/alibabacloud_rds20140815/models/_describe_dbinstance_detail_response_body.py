@@ -13,15 +13,15 @@ class DescribeDBInstanceDetailResponseBody(DaraModel):
         region_id: str = None,
         request_id: str = None,
     ):
-        # Indicates whether the instance is in the active state.
+        # The activation state.
         self.activation_state = activation_state
-        # The ID of the instance.
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The type of the license.
+        # The license type.
         self.license_type = license_type
-        # The region ID of the instance.
+        # The region ID.
         self.region_id = region_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

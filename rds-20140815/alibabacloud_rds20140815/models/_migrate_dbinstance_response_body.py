@@ -11,7 +11,7 @@ class MigrateDBInstanceResponseBody(DaraModel):
         request_id: str = None,
         task_id: int = None,
     ):
-        # The serial number of the task in the migration task queue. When the serial number becomes 0, the system starts the migration.
+        # The migration queue number. When the number is 0, the migration switchover is performed.
         self.migration_id = migration_id
         # The request ID.
         self.request_id = request_id

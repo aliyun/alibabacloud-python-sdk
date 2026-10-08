@@ -19,21 +19,21 @@ class DescribeSlowLogsRequest(DaraModel):
         sort_key: str = None,
         start_time: str = None,
     ):
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # The instance ID. You can call DescribeDBInstances to query the instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the database.
         self.dbname = dbname
-        # The end of the time range to query. The end time must be later than the start time. The time span between the start time and the end time cannot exceed 31 days. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*Z format. The time must be in UTC.
+        # The end date of the query. The end date must be later than or equal to the start date, and the interval between the start date and the end date cannot exceed 31 days. Format: <i>yyyy-MM-dd</i>Z (UTC).
         # 
-        # >  If the end date of the query is the same as the start date of the query, you can query the logs that are generated at 08:00 on the start date of the query. You can query the slow logs within a maximum time range of 24 hours.
+        # > If the end date is the same as the start date, the query starts from 08:00 on the start date and covers up to 24 hours of slow query log statistics.
         # 
         # This parameter is required.
         self.end_time = end_time
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Pages start from 1.
+        # The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type.
         # 
         # Default value: **1**.
         self.page_number = page_number
@@ -41,16 +41,15 @@ class DescribeSlowLogsRequest(DaraModel):
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The dimension based on which the system sorts the entries to return. Valid values:
+        # The sorting criterion. Valid values:
+        # * **TotalExecutionCounts**: sorted by total number of executions in descending order.
+        # * **TotalQueryTimes**: sorted by total execution duration in descending order.
+        # * **TotalLogicalReads**: sorted by total number of logical reads in descending order.
+        # * **TotalPhysicalReads**: sorted by total number of physical reads in descending order.
         # 
-        # *   **TotalExecutionCounts**: The system sorts the entries to return based on the number of times that SQL statements are executed.
-        # *   **TotalQueryTimes**: The system sorts the entries to return based on the total execution duration.
-        # *   **TotalLogicalReads**: The system sorts the entries to return based on the total number of logical reads.
-        # *   **TotalPhysicalReads**: The system sorts the entries to return based on the total number of physical reads.
-        # 
-        # > This parameter is supported only for instances that run SQL Server 2008 R2.
+        # > This parameter is supported only for SQL Server 2008 R2 instances.
         self.sort_key = sort_key
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*Z format. The time must be in UTC.
+        # The start date of the query. Format: <i>yyyy-MM-dd</i>Z (UTC).
         # 
         # This parameter is required.
         self.start_time = start_time

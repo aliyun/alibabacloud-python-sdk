@@ -12,13 +12,13 @@ class DescribeActiveOperationMaintainConfResponseBody(DaraModel):
         has_config: int = None,
         request_id: str = None,
     ):
-        # Configuration Information
+        # The configuration information.
         self.config = config
-        # Whether a configuration has been set; for the first access, hasConfig is 0  
-        # * 1: Yes  
-        # * 0: No
+        # Indicates whether the configuration has been set. The value is 0 for the first access. Valid values:
+        # * 1: Yes. 
+        # * 0: No.
         self.has_config = has_config
-        # Request ID
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -66,25 +66,25 @@ class DescribeActiveOperationMaintainConfResponseBodyConfig(DaraModel):
         modified_time: str = None,
         status: int = None,
     ):
-        # Creation Time, formatted as YYYY-MM-DDTHH:mm:ssZ
+        # The creation time in the format of YYYY-MM-DDTHH:mm:ssZ.
         self.created_time = created_time
-        # Cycle time, with multiple values concatenated by English commas  
-        # * When cycleType is Week, values 1–7 represent Monday–Sunday  
-        # * When cycleType is Month, values 1–28 are allowed
+        # The cycle time. Multiple values are separated by commas (,).
+        # * If cycleType is set to Week, valid values are 1 to 7, which represent Monday to Sunday.
+        # * If cycleType is set to Month, valid values are 1 to 28.
         self.cycle_time = cycle_time
-        # Cycle type, either Month or Week
+        # The cycle type. Valid values: Month and Week.
         self.cycle_type = cycle_type
-        # End time of the O&M time window, in UTC  
-        # Default: 20:00:00Z
+        # The end time of the O&M time window in UTC.
+        # Default value: 20:00:00Z.
         self.maintain_end_time = maintain_end_time
-        # Start time of the O&M time window, in UTC  
-        # Default: 18:00:00Z
+        # The start time of the O&M time window in UTC.
+        # Default value: 18:00:00Z.
         self.maintain_start_time = maintain_start_time
-        # Updated At, formatted as YYYY-MM-DDTHH:mm:ssZ, for example, 2018-05-30T14:30:00Z
+        # The modification time in the format of YYYY-MM-DDTHH:mm:ssZ, such as 2018-05-30T14:30:00Z.
         self.modified_time = modified_time
-        # Whether it is effective  
-        # * 1: Valid  
-        # * 2: Invalid
+        # Indicates whether the configuration is effective. Valid values: 
+        # * 1: Valid. 
+        # * 2: Invalid.
         self.status = status
 
     def validate(self):

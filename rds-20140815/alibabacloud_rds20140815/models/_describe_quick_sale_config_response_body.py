@@ -13,14 +13,14 @@ class DescribeQuickSaleConfigResponseBody(DaraModel):
         items: Dict[str, Any] = None,
         request_id: str = None,
     ):
-        # The product code. Valid values:
+        # The commodity code. Valid values:
         # 
-        # *   rds: The instance is a subscription instance.
-        # *   bards: The instance is a pay-as-you-go instance.
+        # - rds: subscription
+        # - bards: pay-as-you-go
         self.commodity = commodity
-        # The configuration details of the product.
+        # The commodity configuration details.
         self.items = items
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

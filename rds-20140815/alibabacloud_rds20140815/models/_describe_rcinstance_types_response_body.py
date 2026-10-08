@@ -13,9 +13,7 @@ class DescribeRCInstanceTypesResponseBody(DaraModel):
         instance_types: main_models.DescribeRCInstanceTypesResponseBodyInstanceTypes = None,
         request_id: str = None,
     ):
-        # The information about the instance types.
         self.instance_types = instance_types
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -51,7 +49,6 @@ class DescribeRCInstanceTypesResponseBodyInstanceTypes(DaraModel):
         self,
         instance_type: List[main_models.DescribeRCInstanceTypesResponseBodyInstanceTypesInstanceType] = None,
     ):
-        # The instance types.
         self.instance_type = instance_type
 
     def validate(self):
@@ -92,15 +89,11 @@ class DescribeRCInstanceTypesResponseBodyInstanceTypesInstanceType(DaraModel):
         jumbo_frame_support: bool = None,
         memory_size: int = None,
     ):
-        # The maximum number of CPU cores.
         self.cpu_core_count = cpu_core_count
         self.disk_quantity = disk_quantity
-        # The ID of the instance family.
         self.instance_type_family = instance_type_family
-        # The instance type of the instance.
         self.instance_type_id = instance_type_id
         self.jumbo_frame_support = jumbo_frame_support
-        # The memory size of the instance type. Unit: GiB.
         self.memory_size = memory_size
 
     def validate(self):

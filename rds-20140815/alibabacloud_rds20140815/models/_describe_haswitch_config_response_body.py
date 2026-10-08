@@ -11,14 +11,13 @@ class DescribeHASwitchConfigResponseBody(DaraModel):
         manual_hatime: str = None,
         request_id: str = None,
     ):
-        # The status of the automatic primary/secondary switchover feature. Valid values:
-        # 
-        # *   **Auto:** The automatic primary/secondary switchover feature is enabled. The system automatically switches your workloads over from the instance to its secondary instance in the event of a fault.
-        # *   **Manual:** The automatic primary/secondary switchover feature is temporarily disabled.
+        # The automatic primary/secondary switchover setting. Valid values:
+        # * **Auto**: The system automatically switches over between the primary and secondary instances upon a fault.
+        # * **Manual**: Automatic switchover has been temporarily disabled.
         self.haconfig = haconfig
-        # The time when the automatic primary/secondary switchover feature is enabled again. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The deadline for the temporary disabling of automatic switchover. The time follows the ISO 8601 standard in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
         self.manual_hatime = manual_hatime
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -13,9 +13,7 @@ class DescribeRCSecurityGroupListResponseBody(DaraModel):
         rcsecurity_groups: List[main_models.DescribeRCSecurityGroupListResponseBodyRCSecurityGroups] = None,
         request_id: str = None,
     ):
-        # The basic information about the security groups.
         self.rcsecurity_groups = rcsecurity_groups
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -63,24 +61,13 @@ class DescribeRCSecurityGroupListResponseBodyRCSecurityGroups(DaraModel):
         security_group_type: str = None,
         vpc_id: str = None,
     ):
-        # The number of instances that can be added to the security group.
         self.available_instance_amount = available_instance_amount
-        # The time when the security group was created. The time follows the ISO 8601 standard and is in the `yyyy-MM-ddThh:mmZ` format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The description of the security group.
         self.description = description
-        # The number of instances that are added to the security group.
-        # 
         # This parameter is required.
         self.instance_count = instance_count
-        # The ID of the security group.
         self.security_group_id = security_group_id
-        # The type of the security group. Valid values:
-        # 
-        # *   **normal**: a normal security group.
-        # *   **enterprise**: an advanced security group.
         self.security_group_type = security_group_type
-        # The ID of the VPC to which the security group belongs.
         self.vpc_id = vpc_id
 
     def validate(self):

@@ -13,10 +13,35 @@ class DescribeDBInstanceCLSResponseBody(DaraModel):
         request_id: str = None,
         white_list_mode: bool = None,
     ):
+        # The encryption algorithm. Valid values:
+        # 
+        # - AES_128_CBC
+        # - AES_128_GCM
+        # - AES_128_CTR
+        # - AES_128_ECB
+        # - AES_256_CBC
+        # - AES_256_GCM
+        # - AES_256_CTR
+        # - AES_256_ECB
+        # - SM4_128_CBC
+        # - SM4_128_GCM
+        # - SM4_128_CTR
+        # - SM4_128_ECB
         self.algorithm = algorithm
+        # The custom KMS master key ID.
+        # 
+        # >  This parameter takes effect only when the column encryption key pattern is set to kms_key. If this parameter is not specified, the current column encryption key settings of the database remain unchanged.
         self.encryption_key = encryption_key
+        # The column encryption key mode. Valid values:
+        # 
+        # - client_key: configures a user-generated random key on the client side.
+        # - kms_key: configures a custom key by using Alibaba Cloud Key Management Service (KMS).
+        # 
+        # >  After an instance is configured to use KMS for key management, you can no longer switch back to the client-side random key mode.
         self.encryption_key_mode = encryption_key_mode
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the whitelist mode is enabled.
         self.white_list_mode = white_list_mode
 
     def validate(self):

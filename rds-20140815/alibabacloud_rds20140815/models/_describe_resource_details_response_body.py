@@ -25,40 +25,39 @@ class DescribeResourceDetailsResponseBody(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The storage that is occupied by data backup files, excluding archived backup files, on the instance. Unit: bytes.
+        # The storage space occupied by data backups, excluding archived backups. Unit: bytes.
         self.backup_data_size = backup_data_size
-        # The size of the backup log. Unit: bytes.
+        # The size of backup logs. Unit: bytes.
         self.backup_log_size = backup_log_size
-        # The size of the backup data. Unit: MB.
+        # The backup size. Unit: MB.
         self.backup_size = backup_size
-        # The disk capacity of the instance.
+        # The disk capacity.
         self.db_instance_storage = db_instance_storage
-        # The name of the proxy instance.
+        # The name of the database proxy instance.
         self.db_proxy_instance_name = db_proxy_instance_name
-        # The total storage used. The value is the sum of the DataSize and LogSize values. Unit: bytes. The value -1 indicates that no data files or log files are stored.
+        # The used storage space, which consists of the space occupied by data files and log files. Unit: bytes. A value of -1 indicates that no data is available.
         self.disk_used = disk_used
-        # The storage type of the instance.
+        # The instance storage type.
         self.instance_storage_type = instance_storage_type
-        # The rule for the IP address whitelist of the instance.
+        # The RDS whitelist group specifications.
         self.rds_ecs_security_group_rel = rds_ecs_security_group_rel
         # The region ID.
         self.region = region
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The IP address whitelist of the instance. For more information, see [Configure IP address whitelists](https://help.aliyun.com/document_detail/43185.html). If the returned IP address whitelist contains more than one entry, these entries are separated with commas (,). Each entry is unique and up to 1,000 entries are returned. The entries in the IP address whitelist must be in one of the following formats:
+        # The [IP whitelist](https://help.aliyun.com/document_detail/43185.html) of the instance. Separate multiple entries with commas (,). Each entry must be unique. A maximum of 1,000 entries are supported. The following two formats are supported:
+        # * IP address format, such as 10.10.XX.XX.
+        # * CIDR format, such as 10.10.XX.XX/24, where 24 indicates the length of the prefix in the IP address. The prefix length ranges from 1 to 32.
         # 
-        # *   IP addresses, such as 10.10.XX.XX.
-        # *   CIDR blocks, such as 10.10.XX.XX/24. In this example, 24 indicates that the prefix of each IP address in the IP address whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
-        # 
-        # If this parameter is not specified, the default IP address whitelist is used.
+        # If this parameter is not specified, the whitelist information of the default group of the original instance is used.
         self.security_iplist = security_iplist
         # The vSwitch ID.
         # 
-        # >  The vSwitch must belong to the same zone as the instance.
+        # > The vSwitch must belong to the same zone as the ApsaraDB RDS instance.
         self.v_switch_id = v_switch_id
-        # The ID of the virtual private cloud (VPC).
+        # VPC ID。
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -172,7 +171,7 @@ class DescribeResourceDetailsResponseBodyRdsEcsSecurityGroupRel(DaraModel):
         self,
         security_group_name: str = None,
     ):
-        # The name of the security group.
+        # The security group name.
         self.security_group_name = security_group_name
 
     def validate(self):

@@ -15,44 +15,39 @@ class CreateBackupRequest(DaraModel):
         dbname: str = None,
         resource_owner_id: int = None,
     ):
-        # The backup type of the instance. Valid values:
-        # 
-        # *   **Logical**: logical backup
-        # *   **Physical**: physical backup
-        # *   **Snapshot**: snapshot backup
+        # The backup type. Valid values:
+        # * **Logical**: logical backup. Only MySQL instances with local disks support this type.
+        # * **Physical**: physical backup. MySQL instances with local disks, SQL Server instances, and PostgreSQL instances support this type.
+        # * **Snapshot**: snapshot backup. MySQL instances with cloud disks, SQL Server instances, PostgreSQL instances, and MariaDB instances support this type.
         # 
         # Default value: **Physical**.
         # 
-        # > *   You can perform a logical backup only when databases are created on the instance.
-        # > *   When you perform a snapshot backup on an ApsaraDB RDS for MariaDB instance, you must set this parameter to **Physical**.
-        # > *   For more information about the supported backup types, see [Use the data backup feature](https://help.aliyun.com/document_detail/98818.html).
-        # > *   When you perform a snapshot backup on an ApsaraDB RDS for SQL Server instance that uses cloud disks, you must set this parameter to **Snapshot**.
+        # > * When you use logical backup, the database must contain data (the data cannot be empty).
+        # > * MariaDB instances support only snapshot backup. However, set this parameter to **Physical**.
         self.backup_method = backup_method
+        # - **SQL Server**: When the BackupStrategy parameter is set to db, the BackupMethod parameter is set to Physical, and the BackupType parameter is set to FullBackup, you can specify the retention period of the backup set. Valid values: 7 to 730 days, or -1 (long-term retention (LTR)).
+        # - **MySQL**: You can specify the retention period of the backup set. Valid values: 7 to 730 days, or -1 (long-term retention (LTR)).
         self.backup_retention_period = backup_retention_period
-        # The backup policy. Valid values:
+        # The backup strategy. Valid values:
+        # * **db**: single-database backup
+        # * **instance**: instance backup
         # 
-        # *   **db**: a database-level backup.
-        # *   **instance**: an instance-level backup.
-        # 
-        # > You can specify this parameter when you perform a logical backup on an ApsaraDB RDS for MySQL instance. You can also specify this parameter when you perform a full physical backup on an ApsaraDB RDS for SQL Server instance.
+        # > This parameter takes effect only when the following conditions are met:
+        # > - MySQL: The **BackupMethod** parameter is set to **Logical**.
+        # > - SQL Server: The **BackupType** parameter is set to **FullBackup**.
         self.backup_strategy = backup_strategy
-        # The backup method. Valid values:
+        # The backup method for SQL Server instances. Valid values:
+        # * **Auto** (default): automatically selects full backup or incremental backup.
+        # * **FullBackup**: full backup.
         # 
-        # *   **Auto**: full or incremental backup that is automatically selected
-        # *   **FullBackup**: full backup
-        # 
-        # Default value: **Auto**.
-        # 
-        # > *   You must set this parameter only when the instance runs SQL Server.
-        # > *   This parameter is valid only when you set the **BackupMethod** parameter to **Physical**.
+        # > This parameter takes effect only when the **BackupMethod** parameter is set to **Physical**.
         self.backup_type = backup_type
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # The instance ID. You can call DescribeDBInstances to query the instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The names of the databases whose data you want to back up. Separate the names of the databases with commas (,).
-        # 
-        # > You can specify this parameter when you perform a logical backup on individual databases of an ApsaraDB RDS for MySQL instance. You can also specify this parameter when you perform a full physical backup on individual databases of an ApsaraDB RDS for SQL Server instance.
+        # The list of databases. Separate multiple databases with commas (,).
+        # > This parameter takes effect only when the **BackupStrategy** parameter is set to **db**.
         self.dbname = dbname
         self.resource_owner_id = resource_owner_id
 

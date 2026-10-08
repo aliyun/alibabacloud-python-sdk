@@ -10,7 +10,7 @@ class ReceiveDBInstanceResponseBody(DaraModel):
         guard_dbinstance_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the disaster recovery instance after the switchover.
+        # The instance ID of the disaster recovery instance after the switchover is complete.
         self.guard_dbinstance_id = guard_dbinstance_id
         # The request ID.
         self.request_id = request_id

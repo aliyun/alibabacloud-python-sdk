@@ -73,419 +73,371 @@ class CreateDBInstanceShrinkRequest(DaraModel):
         zone_id_slave_1: str = None,
         zone_id_slave_2: str = None,
     ):
-        # The number of ApsaraDB RDS for MySQL instances that you want to create. The parameter takes effect only when you create multiple ApsaraDB RDS for MySQL instances at a time by using a single request.
+        # The number of ApsaraDB RDS for MySQL instances to create. This parameter applies only to batch creation of ApsaraDB RDS for MySQL instances.
         # 
         # Valid values: **1** to **20**. Default value: **1**.
         # 
-        # > *   If you want to create multiple ApsaraDB RDS for MySQL instances at a time by using a single request, you can add tags to all the instances by using the **Tag.Key** parameter and the **Tag.Value** parameter. After the instances are created, you can manage the instances based on the tags.
-        # > *   After you submit a request to create multiple ApsaraDB RDS for MySQL instances, this operation returns **TaskId**, **RequestId**, and **Message**. You can call the DescribeDBInstanceAttribute operation to query the information about an instance.
-        # > *   If the value of the **Engine** parameter is not **MySQL** and the value of the Amount parameter is greater than **1**, this operation fails and returns an error code `InvalidParam.Engine`.
+        # > - When creating multiple ApsaraDB RDS for MySQL instances, consider using **Tag.Key** and **Tag.Value** to tag all instances in the same batch, so that you can manage them by tag after creation.
+        # > - After multiple ApsaraDB RDS for MySQL instances are created, the operation returns only **TaskId**, **RequestId**, and **Message**. Other details are not returned. To query the details of individual instances, call DescribeDBInstanceAttribute.
+        # > - If **engine** is not set to **MySQL** and this parameter is set to a value greater than **1**, the operation fails and returns the error code `InvalidParam.Engine`.
         self.amount = amount
         # Specifies whether to automatically create a proxy. Valid values:
         # 
-        # *   **true**: automatically creates a database proxy. By default, a general-purpose database proxy is created.
-        # *   **false**: does not automatically create a database proxy.
+        # - **true**: enables automatic automatic creation. The default proxy type is general-purpose.
+        # 
+        # - **false**: disables automatic automatic creation.
         self.auto_create_proxy = auto_create_proxy
         # Specifies whether to enable automatic payment. Valid values:
         # 
-        # *   **true**: enables the feature. Make sure that your account balance is sufficient when you enable automatic payment.
-        # *   **false**: does not automatically complete the payment. An unpaid order is generated.
+        # - **true**: enables automatic payment. Make sure that your account balance is sufficient.
+        # - **false**: generates an order without deducting fees.
         # 
-        # >  Default value: true. If your account balance is insufficient, you can set AutoPay to false to generate an unpaid order. Then, you can log on to the ApsaraDB RDS console to complete the payment.
+        # 
+        # 
+        # 
+        # > The default value is true. If your payment method has insufficient balance, set AutoPay to false. This generates an unpaid order, which you can pay for in the ApsaraDB RDS console.
+        # >
         self.auto_pay = auto_pay
-        # Specifies whether to enable auto-renewal for the instance. You must specify this parameter only if the instance uses the subscription billing method. Valid values:
+        # Specifies whether to enable auto-renewal for the instance. This parameter is valid only for subscription instances. Valid values:
+        # - **true**
+        # - **false**
         # 
-        # *   **true**
-        # *   **false**
-        # 
-        # > *   The auto-renewal cycle is one month for a monthly subscription.
-        # > *   The auto-renewal cycle is one year for a yearly subscription.
+        # > - If you purchase the instance on a monthly basis, the auto-renewal cycle is one month.
+        # > - If you purchase the instance on a yearly basis, the auto-renewal cycle is one year.
         self.auto_renew = auto_renew
-        # Specifies whether to use a coupon. Default value: false. Valid values:
+        # Specifies whether to use a coupon. Valid values:
+        # * **true**: uses a coupon.
+        # * **false** (default): does not use a coupon.
         # 
-        # *   **true**
-        # *   **false**
-        # 
-        # >  If you downgrade the specifications of an instance after you use coupons, the used coupons cannot be refunded.
+        # > If you use a coupon and then perform a downgrade, the amount offset by the coupon is not refunded.
         self.auto_use_coupon = auto_use_coupon
-        # The configuration of the Babelfish feature for the instance that runs PostgreSQL.
+        # The Babelfish configuration for ApsaraDB RDS for PostgreSQL instances.
         # 
-        # Format:{"babelfishEnabled":"true","migrationMode":"xxxxxxx","masterUsername":"xxxxxxx","masterUserPassword":"xxxxxxxx"}
+        # Configuration format: {"babelfishEnabled":"true","migrationMode":"xxxxxxx","masterUsername":"xxxxxxx","masterUserPassword":"xxxxxxxx"}
         # 
-        # The following list describes the fields in the format:
-        # 
-        # *   **babelfishEnabled**: specifies whether to enable Babelfish for the instance. If you set this field to **true**, you enable Babelfish for the instance. If you leave this parameter empty, Babelfish is disabled for the instance.
-        # *   **migrationMode**: The migration mode of the instance. Valid values: **single-db** and **multi-db**.
-        # *   **masterUsername**: The username of the administrator account. The username can contain lowercase letters, digits, and underscores (_). It must start with a letter and end with a letter or digit. It can be up to 63 characters in length and cannot start with pg.
-        # *   **masterUserPassword**: The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters: `! @ # $ % ^ & * ( ) _ + - =`.
+        # The parameters are described as follows:
+        # - **babelfishEnabled**: specifies whether to enable Babelfish. Set to **true** to enable. Babelfish is disabled by default if this parameter is not configured.
+        # - **migrationMode**: the database mode. Set to **single-db** for single-database mode or **multi-db** for multi-database mode.
+        # - **masterUsername**: the initial administrator account name. The name can contain lowercase letters, digits, and underscores (_), must start with a letter, must end with a letter or digit, can be up to 63 characters in length, and cannot start with pg.
+        # - **masterUserPassword**: the password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The password must be 8 to 32 characters in length. Special characters include `! @ # $ % ^ & * () _ + - =`.
         # 
         # > This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://help.aliyun.com/document_detail/428613.html).
         self.babelfish_config = babelfish_config
-        # A deprecated parameter. You do not need to specify this parameter.
         self.bpe_enabled = bpe_enabled
-        # Specifies whether to enable the I/O burst feature of Premium ESSDs. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
-        # 
-        # >  For more information about the I/O burst feature of general ESSDs, see [What are Premium ESSDs?](https://help.aliyun.com/document_detail/2340501.html)
+        # Specifies whether to enable the I/O performance burst feature for premium performance disks (cloud disks). Valid values:
+        # * **true**: enabled.
+        # * **false**: disabled.
+        # > For more information about the I/O performance burst feature for premium performance disks, see [What is a premium performance disk](https://help.aliyun.com/document_detail/2340501.html).
         self.bursting_enabled = bursting_enabled
-        # The additional business information about the instance.
+        # The business extension parameter.
         self.business_info = business_info
-        # The RDS edition of the instance. Valid values:
+        # The instance edition. Valid values:
+        # * Regular instances
+        #     * **Basic**: Basic Edition.
+        #     * **HighAvailability**: High-availability Edition.
+        #     * **cluster**: MySQL or PostgreSQL Cluster Edition.
+        #     * **AlwaysOn**: SQL Server Cluster Edition.
+        #     * **Finance**: RDS Enterprise Edition.
+        #     > This parameter is required when you create a SQL Server Enterprise Cluster Edition<props="china">, Basic Edition Standard Edition, or Basic Edition Enterprise Edition instance. For example, to create a Basic Edition 2022 Enterprise Cluster Edition (2022_ent) instance, set this parameter to Basic.
+        # * Serverless instances
+        #     * **serverless_basic**: Serverless Basic Edition. (Applicable to MySQL and PostgreSQL only.)
+        #     * **serverless_standard**: Serverless High-availability Edition. (Applicable to MySQL and PostgreSQL only.)
+        #     * **serverless_ha**: SQL Server Serverless High-availability Edition.
         # 
-        # *   Regular RDS instance
-        # 
-        #     *   **Basic**: RDS Basic Edition
-        #     *   **HighAvailability**: RDS High-availability Edition
-        #     *   **cluster**: RDS Cluster Edition for ApsaraDB RDS for MySQL or PostgreSQL
-        #     *   **AlwaysOn**: RDS Cluster Edition for ApsaraDB RDS for SQL Server
-        #     *   **Finance**: RDS Basic Edition for serverless instances
-        # 
-        # *   Serverless RDS instance
-        # 
-        #     *   **serverless_basic**: RDS Basic Edition for serverless instances. This edition is available only for instances that run MySQL and PostgreSQL.
-        #     *   **serverless_standard**: RDS High-availability Edition for serverless instances. This edition is available only for instances that run MySQL and PostgreSQL.
-        #     *   **serverless_ha**: RDS High-availability Edition for serverless instances. This edition is available only for instances that run SQL Server.
-        # 
-        # > This parameter is required if PayType is set to Serverless.
+        #     > This parameter is required when PayType is set to Serverless.
         self.category = category
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotency of the request. The token is generated by the client and must be unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # Specifies whether to enable the data archiving feature of Premium ESSDs. Valid values:
+        # Specifies whether to enable the [cold data archiving](https://help.aliyun.com/document_detail/2701832.html) feature for premium performance disks (cloud disks). Valid values:
         # 
-        # *   **true**
-        # *   **false**
-        # 
-        # >  For more information about the data archiving feature of Premium ESSDs, see [Use the data archiving feature](https://help.aliyun.com/document_detail/2701832.html).
+        # - **true**: enabled.
+        # - **false**: disabled.
         self.cold_data_enabled = cold_data_enabled
-        # The connection mode of the instance. Valid values:
+        # The access mode of the instance. Valid values:
+        # * **Standard**: standard access mode.
+        # * **Safe**: database proxy mode.
         # 
-        # *   **Standard**: standard mode
-        # *   **Safe**: database proxy mode
-        # 
-        # ApsaraDB RDS automatically assigns a connection mode to the instance.
-        # 
-        # > SQL Server 2012, SQL Server 2016, and SQL Server 2017 support only the standard mode.
+        # The default value is allocated by the RDS system.
+        # > SQL Server 2012, 2016, and 2017 support only standard access mode.
         self.connection_mode = connection_mode
-        # The internal endpoint that is used to connect to the instance.
-        self.connection_string = connection_string
-        # The policy based on which multiple instances are created. The parameter takes effect only when the value of the **Amount** parameter is greater than 1. Valid values:
+        # The internal endpoint of the database.
         # 
-        # *   **Atomicity** (default): atomicity. The instances are all created together. If one instance cannot be created, none of the instances are created.
-        # *   **Partial**: non-atomicity. Each instance is independently created. The failure in creating an instance does not affect the creation of the other instances.
+        # The endpoint format is `xxx.mysql.rds.aliyuncs.com`, where `xxx` is the prefix of the instance ID, such as rm-uf6wjk5***.
+        self.connection_string = connection_string
+        # The batch instance creation strategy. This parameter takes effect only when **Amount** is greater than 1. Valid values:
+        # * **Atomicity** (default): atomic. All instances in the same batch must be created successfully. If any instance fails to be created, all instances in the batch fail.
+        # * **Partial**: non-atomic. The creation of each instance is independent of other instances in the same batch.
         self.create_strategy = create_strategy
         self.custom_extra_info = custom_extra_info
-        # The instance type of the instance. You can specify an instance type of the standard or YiTian product type. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
+        # The instance type. You can specify a standard or YiTian instance type. For details, see [Primary instance types](https://help.aliyun.com/document_detail/26312.html).
         # 
-        # To create a serverless instance, set this parameter to one of the following values:
+        # To create a serverless instance, use one of the following values:
         # 
-        # *   If you want to create a serverless instance that runs MySQL on RDS Basic Edition, set this parameter to **mysql.n2.serverless.1c**.
-        # *   If you want to create a serverless instance that runs MySQL on RDS High-availability Edition, set this parameter to **mysql.n2.serverless.2c**.
-        # *   If you want to create a serverless instance that runs SQL Server, set this parameter to **mssql.mem2.serverless.s2**.
-        # *   If you want to create a serverless instance that runs PostgreSQL on RDS Basic Edition, set this parameter to **pg.n2.serverless.1c**.
-        # *   If you want to create a serverless instance that runs PostgreSQL on RDS High-availability Edition, set this parameter to **pg.n2.serverless.2c**.
+        # - MySQL Basic Edition: **mysql.n2.serverless.1c**
+        # - MySQL High-availability Edition: **mysql.n2.serverless.2c**
+        # - SQL Server: **mssql.mem2.serverless.s2**
+        # - PostgreSQL Basic Edition: **pg.n2.serverless.1c**
+        # - PostgreSQL High-availability Edition: **pg.n2.serverless.2c**
         # 
         # This parameter is required.
         self.dbinstance_class = dbinstance_class
-        # The instance name. The value must be 2 to 255 characters in length The name can contain letters, digits, and hyphens (-) and must start with a letter.
-        # 
-        # >  The value cannot start with http:// or https://.
+        # The instance name. The name must be 2 to 255 characters in length. It must start with a Chinese character or an English letter, and can contain digits, Chinese characters, English letters, and hyphens (-).
+        # >The name cannot start with http:// or https://.
         self.dbinstance_description = dbinstance_description
-        # The network connection type of the instance. The value of this parameter is fixed as **Intranet**, indicating an internal network connection.
+        # The network connectivity type of the instance. Set this parameter to **Intranet**, which indicates an internal network connection.
         # 
         # This parameter is required.
         self.dbinstance_net_type = dbinstance_net_type
-        # The storage capacity of the instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
+        # The instance storage capacity. Unit: GB. The value increments in steps of 5 GB. For the valid values, see [Instance types](https://help.aliyun.com/document_detail/26312.html).
         # 
         # This parameter is required.
         self.dbinstance_storage = dbinstance_storage
-        # The storage type of the instance. Valid values:
+        # The instance storage type. Valid values:
+        # * **local_ssd**: instance with Premium Local SSDs (recommended).
+        # * **general_essd**: premium performance disk (recommended).
+        # * **cloud_essd**: PL1 ESSD.
+        # * **cloud_essd2**: PL2 ESSD.
+        # * **cloud_essd3**: PL3 ESSD.
+        # * **cloud_ssd**: standard SSD (not recommended. No longer available in some regions).
         # 
-        # *   **local_ssd**: Premium Local SSD (recommended)
-        # *   **general_essd**: Premium Enterprise SSD (ESSD) (recommend)
-        # *   **cloud_essd**: PL1 ESSD
-        # *   **cloud_essd2**: PL2 ESSD
-        # *   **cloud_essd3**: PL3 ESSD
-        # *   **cloud_ssd**: standard SSD. This storage type is not recommended. Standard SSDs are no longer available for purchase in some Alibaba Cloud regions.
+        # The default value of this parameter is automatically determined based on the instance type specified in **DBInstanceClass**:
+        # * If the instance type is an instance with Premium Local SSDs, the default value is **local_ssd**.
+        # * If the instance type is a cloud disk type, the default value is **cloud_essd**.
         # 
-        # The default value of this parameter is determined by the instance type specified by the **DBInstanceClass** parameter.
-        # 
-        # *   If the instance type specifies the Premium Local SSD storage type, the default value of this parameter is **local_ssd**.
-        # *   If the instance type specifies the cloud disk storage type, the default value of this parameter is **cloud_essd**.
-        # 
-        # >  Serverless instances support only PL1 ESSDs and Premium ESSDs.
+        # > Serverless instances support only PL1 ESSDs and premium performance disks.
         self.dbinstance_storage_type = dbinstance_storage_type
-        # Specifies whether the table name is case-sensitive. Valid values:
-        # 
-        # *   **true**: Table names are not case-sensitive. This is the default value.
-        # *   **false**: Table names are case-sensitive.
+        # Specifies whether table names are case-insensitive. Valid values:
+        # * **true**: case-insensitive (default).
+        # * **false**: case-sensitive.
         self.dbis_ignore_case = dbis_ignore_case
-        # The parameter template ID. You can call the DescribeParameterGroups operation to query the parameter template ID.
-        # 
-        # >  This parameter is available if you want to create an instance that runs MySQL or PostgreSQL. If you do not configure this parameter, the default parameter template is used. If you want to use a custom parameter template, you can customize a parameter template and set this parameter to the ID of the custom template.
+        # The parameter template ID. You can call DescribeParameterGroups to query the ID.
+        # > This parameter is supported only for MySQL and PostgreSQL instances. If you do not specify this parameter, the system default parameter template is used. You can also create a custom parameter template and specify it here.
         self.dbparam_group_id = dbparam_group_id
-        # The time zone of the instance. This parameter takes effect only when you set **Engine** to **MySQL** or **PostgreSQL**.
+        # The time zone of the instance. This parameter takes effect only when **Engine** is set to **MySQL** or **PostgreSQL**.
         # 
-        # *   **Engine** is set to **MySQL**:
+        # - When **Engine** is **MySQL**:
+        #     - This parameter configures the UTC time zone. Valid values: **-12:59** to **+13:00**.
+        #     - Instances with Premium Local SSDs support named time zones, such as Asia/Hong_Kong. For more information about named time zones, see [Named time zone reference](https://help.aliyun.com/document_detail/297356.html).
+        # - When **Engine** is **PostgreSQL**:
+        #     - This parameter configures a named time zone. UTC time zones are not supported. For more information about named time zones, see [Named time zone reference](https://help.aliyun.com/document_detail/297356.html).
+        #     - This parameter can be configured only for PostgreSQL instances with cloud disks.
         # 
-        #     *   This time zone is in UTC. Valid values: \\*\\*-12:59\\*\\* to **+13:00**.
-        #     *   If the instance uses Premium Local SSDs, you can specify the name of the time zone. For example, you can specify the Asia/Hong_Kong time zone. For more information, see [Time zones](https://help.aliyun.com/document_detail/297356.html).
-        # 
-        # *   **Engine** is set to **PostgreSQL**.
-        # 
-        #     *   This time zone is not in UTC. For more information, see [Time zones](https://help.aliyun.com/document_detail/297356.html).
-        #     *   You can configure this parameter only when the RDS instance uses cloud disks.
-        # 
-        # > *   You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance.
-        # > *   If you do not specify this parameter, the system automatically assigns the default time zone of the region in which the instance resides.
+        # > - You can configure the time zone when creating a primary instance. Read-only instances do not support custom time zones and inherit the time zone of the primary instance.
+        # > - If you do not specify this parameter, the system selects a default time zone based on the region where you purchase the instance.
         self.dbtime_zone = dbtime_zone
-        # The ID of the dedicated cluster to which the instance belongs.
+        # The ID of the dedicated host group.
         # 
-        # If you create the instance in a dedicated cluster, you must specify this parameter.
+        # This parameter is required when you create an ApsaraDB RDS instance in a dedicated cluster.
         # 
-        # *   You can call the DescribeDedicatedHostGroups operation to query the information about the dedicated cluster.
-        # *   If no dedicated clusters are created, you can call the CreateDedicatedHostGroup operation to create a dedicated cluster.
+        # - You can call DescribeDedicatedHostGroups to query the host group information.
+        # - If you have not created a host group, call CreateDedicatedHostGroup to create one.
         self.dedicated_host_group_id = dedicated_host_group_id
-        # Specifies whether to enable the release protection feature for the instance. This feature is available only for pay-as-you-go instances. Valid values:
-        # 
-        # *   **true**: enables the feature.
-        # *   **false** (default): disables the feature.
+        # Specifies whether to enable the release protection feature for the RDS instance. This parameter is supported only for pay-as-you-go instances. Valid values:
+        # * **true**: enables release protection.
+        # * **false**: disables release protection (default).
         self.deletion_protection = deletion_protection
-        # Specifies whether to perform a dry run. Default value: false. Valid values:
-        # 
-        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, service limits, and insufficient inventory errors.
-        # *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, the instance is created.
+        # Specifies whether to perform a dry run for this instance creation operation. Valid values:
+        # * **true**: performs a dry run without creating the instance. The dry run checks the request parameters, request format, business limits, and resource availability.
+        # * **false**: sends a normal request and creates the instance directly after the check passes (default).
         self.dry_run = dry_run
-        # The ID of the key that is used for cloud disk encryption in the region in which the instance is deployed. If this parameter is specified, cloud disk encryption is enabled and you must also specify the **RoleARN** parameter. Cloud disk encryption cannot be disabled after it is enabled.
+        # The ID of the cloud disk encryption key in the same region. Specifying this parameter enables cloud disk encryption (which cannot be disabled after it is enabled) and requires you to also specify **RoleARN**.
         # 
-        # You can obtain the ID of the key in the Key Management Service (KMS) console or create a key. For more information, see [Create a key](https://help.aliyun.com/document_detail/181610.html).
+        # You can view the key ID in the Key Management Service console or create a new key. For more information, see [Create a key](https://help.aliyun.com/document_detail/181610.html).
         # 
-        # > *   This parameter is not required when you create an instance that runs MySQL, PostgreSQL, or SQL Server. You need to only specify the **RoleARN** parameter to create an instance that has cloud disk encryption enabled by using the obtained key ID.
-        # > *   You can configure RAM authorization to require a RAM user to enable cloud disk encryption when the RAM user is used to create an instance. If cloud disk encryption is disabled during the instance creation, the creation operation fails. To complete the configuration, you can attach the following policy to the RAM user: `{"Version":"1","Statement":[{"Effect":"Deny","Action":"rds:CreateDBInstance","Resource":"*","Condition":{"StringEquals":{"rds:DiskEncryptionRequired":"false"}}}]}`
-        # 
-        # 
-        # >Warning: The configuration also affects the CreateOrder operation that is called to create instances in the console.
+        # > - For ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, and ApsaraDB RDS for SQL Server instances, you can omit this parameter and specify only **RoleARN** to create a cloud disk-encrypted instance using a service key.
+        # > - To allow RAM users to create instances only when cloud disk encryption is enabled, configure the following RAM authorization policy. If cloud disk encryption is not enabled, the RAM user cannot create instances:
+        # `{"Version":"1","Statement":[{"Effect":"Deny","Action":"rds:CreateDBInstance","Resource":"*","Condition":{"StringEquals":{"rds:DiskEncryptionRequired":"false"}}}]}`
+        # >Warning: This configuration also affects the CreateOrder operation that is called when you create an instance in the console.
         self.encryption_key = encryption_key
-        # The database engine of the instance. Valid values:
-        # 
-        # *   **MySQL**
-        # *   **SQLServer**
-        # *   **PostgreSQL**
-        # *   **MariaDB**
+        # The database engine type. Valid values:
+        # * **MySQL**
+        # * **SQLServer**
+        # * **PostgreSQL**
+        # * **MariaDB**
         # 
         # This parameter is required.
         self.engine = engine
-        # The database engine version of the instance.
+        # The database engine version. Valid values:
+        # * Regular instances
+        #     * MySQL: **5.5**, **5.6**, **5.7**, **8.0**
+        #     * SQL Server: **08r2_ent_ha** (cloud disk, discontinued), **2008r2** (Premium Local SSD, discontinued), **2012** (Enterprise Edition single-node), **2012_ent_ha**, **2012_std_ha**, **2012_web**, **2014_ent_ha**, **2014_std_ha**, **2016_ent_ha**, **2016_std_ha**, **2016_web**, **2017_ent**, **2017_std_ha**, **2017_web**, **2019_ent**, **2019_std_ha**, **2019_web**, **2022_ent**, **2022_std_ha**, **2022_web**, **2025_ent**, **2025_std**
+        #     * PostgreSQL: **10.0**, **11.0**, **12.0**, **13.0**, **14.0**, **15.0**, **16.0**, **17.0**, **18.0**
+        #     * MariaDB: **10.3**, **10.6**
+        # * Serverless instances
+        #     * MySQL: **5.7**, **8.0**
+        #     * SQL Server: **2016_std_sl**, **2017_std_sl**, **2019_std_sl**
+        #     * PostgreSQL: **14.0**, **15.0**, **16.0**, **17.0**, **18.0**
         # 
-        # *   Regular RDS instance
-        # 
-        #     *   Valid values when you set Engine to MySQL: **5.5**, **5.6**, **5.7**, and **8.0**
-        #     *   Valid values when you set Engine to SQLServer: **08r2_ent_ha**(cloud disks, discontinued), **2008r2**(premium local disks, discontinued), **2012**(SQL Server EE Basic), **2012_ent_ha**, **2012_std_ha**, **2012_web**, **2014_ent_ha**, **2014_std_ha**, **2016_ent_ha**, **2016_std_ha**, **2016_web**, **2017_ent**, **2017_std_ha**, **2017_web**, **2019_ent**, **2019_std_ha**, **2019_web**, **2022_ent**, **2022_std_ha**, and **2022_web**
-        #     *   Valid values when you set Engine to PostgreSQL: **10.0**, **11.0**, **12.0**, **13.0**, **14.0**, **15.0**, **16.0**, and **17.0**
-        #     *   Valid values when you set Engine to MariaDB: **10.3** and **10.6**
-        # 
-        # *   Serverless RDS instance
-        # 
-        #     *   Valid values when you set Engine to MySQL: **5.7** and **8.0**
-        #     *   Valid values when you set Engine to SQLServer: **2016_std_sl**, **2017_std_sl**, and **2019_std_sl**
-        #     *   Valid values when you set Engine to PostgreSQL: **14.0**, **15.0**, **16.0**, and **17.0**
-        # 
-        # > 
-        # 
-        # *   ApsaraDB RDS for MariaDB does not support serverless instances.
-        # 
-        # *   RDS instances that run SQL Server: `_ent` specifies SQL Server EE (Always On), `_ent_ha` specifies SQL Server EE, `_std_ha` specifies SQL Server SE, and `_web` specifies SQL Server Web.
-        # 
-        # *   RDS instances that run SQL Server 2014 are not available for purchase on the international site (alibabacloud.com).
-        # 
-        # *   Babelfish is supported only for RDS instances that run PostgreSQL 15.
+        # > - MariaDB does not support serverless instances.
+        # > - In SQL Server instance versions, `_ent` indicates Enterprise Cluster Edition, `_ent_ha` indicates Enterprise Edition, `_std_ha` indicates Standard Edition, and `_web` indicates Web Edition.
+        # > - SQL Server 2014 instances are not available on the international site.
+        # > - Babelfish for ApsaraDB RDS for PostgreSQL instances support only major version 15.0.
         # 
         # This parameter is required.
         self.engine_version = engine_version
+        # Specifies whether to enable [ApsaraDB RDS for MySQL native replication](https://help.aliyun.com/document_detail/2856526.html). Valid values:
+        # - **ON**: enabled.
+        # - **OFF**: disabled.
         self.external_replication = external_replication
         # The network type of the instance. Valid values:
         # 
-        # *   **VPC**: virtual private cloud (VPC)
-        # *   **Classic**: classic network
+        # * **VPC**: virtual private cloud.
+        # * **Classic**: classic network.
         # 
-        # > 
-        # 
-        # *   If the instance runs MySQL and uses cloud disks, you must set this parameter to **VPC**.
-        # 
-        # *   If the instance runs PostgreSQL or MariaDB, you must set this parameter to **VPC**.
-        # 
-        # *   If the instance runs SQL Server Basic or SQL Server Web, you can set this parameter to VPC or Classic. If the instance runs other database engines, you must set this parameter to **VPC**.
+        # > * ApsaraDB RDS for MySQL cloud disk instances support only VPCs. Set this parameter to **VPC**.
+        # > * ApsaraDB RDS for PostgreSQL and MariaDB instances support only VPCs. Set this parameter to **VPC**.
+        # > * ApsaraDB RDS for SQL Server Basic Edition and Web Edition instances support both classic networks and VPCs. All other instances support only VPCs. Set this parameter to **VPC**.
         self.instance_network_type = instance_network_type
-        # Specifies whether to enable Buffer Pool Extension (BPE) of Premium ESSDs. Valid values:
+        # Specifies whether to enable the [Buffer Pool Extension (BPE)](https://help.aliyun.com/document_detail/2527067.html) feature for premium performance disks (cloud disks). Valid values:
         # 
-        # *   **1**: enables BPE.
-        # *   **0**: disables BPE.
-        # 
-        # >  For more information about Buffer Pool Extension(BPE) of Premium ESSDs, see [Buffer Pool Extension(BPE)](https://help.aliyun.com/document_detail/2527067.html).
+        #  - **1**: enabled.
+        #  - **0**: disabled.
         self.io_acceleration_enabled = io_acceleration_enabled
-        # Specifies whether to enable the 16K atomic write feature. Valid values:
+        # Specifies whether to enable the [16KB atomic write](https://help.aliyun.com/document_detail/2858761.html) feature. Valid values:
         # 
-        # *   **optimized**: enables the 16K atomic write feature.
-        # *   **none** (default): does not enable the 16K atomic write feature.
-        # 
-        # >  For more information, see [Use the 16K atomic write feature](https://help.aliyun.com/document_detail/2858761.html).
+        # - **optimized**: enabled.
+        # - **none** (default): disabled.
         self.optimized_writes = optimized_writes
         # The billing method of the instance. Valid values:
-        # 
-        # *   **Postpaid**: pay-as-you-go.
-        # *   **Prepaid**: subscription.
-        # *   **Serverless**: serverless. This value is not supported for instances that run MariaDB. For more information, see [Overview of serverless ApsaraDB RDS for MySQL instances](https://help.aliyun.com/document_detail/411291.html), [Overview of serverless ApsaraDB RDS for SQL Server instances](https://help.aliyun.com/document_detail/604344.html), and [Overview of serverless ApsaraDB RDS for PostgreSQL instances](https://help.aliyun.com/document_detail/607742.html).
-        # 
-        # > The system automatically generates a purchase order and completes the payment.
+        # - **Postpaid**: pay-as-you-go.
+        # - **Prepaid**: subscription.
+        # - **Serverless**: serverless billing method. MariaDB instances do not support this billing method. For more information, see [Overview of MySQL Serverless instances](https://help.aliyun.com/document_detail/411291.html), [Overview of SQL Server Serverless instances](https://help.aliyun.com/document_detail/604344.html), and [Overview of PostgreSQL Serverless instances](https://help.aliyun.com/document_detail/607742.html).
+        # >The system automatically generates and pays for the order. No manual payment confirmation is required.
         # 
         # This parameter is required.
         self.pay_type = pay_type
-        # The unit of the subscription duration. Valid values:
+        # The subscription type of the prepaid instance. Valid values:
+        # * **Year**: subscription on a yearly basis.
+        # * **Month**: subscription on a monthly basis.
         # 
-        # *   **Year**
-        # *   **Month**
-        # 
-        # >  If you set the PayType parameter to **Prepaid**, you must specify this parameter.
+        # > This parameter is required if the billing method is **Prepaid**.
         self.period = period
-        # The port. You can initialize the port when you create the instance.
-        # 
-        # *   Valid values if the instance runs MySQL: 1000 to 65534
-        # *   Valid values if the instance runs PostgreSQL, SQL Server, or MariaDB: 1000 to 5999
+        # The port to initialize when creating the ApsaraDB RDS instance. Valid values:
+        # - MySQL: 1000 to 65534
+        # - PostgreSQL, SQL Server, MariaDB: 1000 to 5999
         self.port = port
-        # The private IP address of the instance. The private IP address must be within the CIDR block that is supported by the specified vSwitch. ApsaraDB RDS automatically assigns a private IP address to the instance based on the values of the **VPCId** and **vSwitchId** parameters.
+        # Settings for the internal network IP address of the instance. The IP address must be within the address range of the specified vSwitch. By default, the system automatically allocates an IP address based on **VPCId** and **vSwitchId**.
         self.private_ip_address = private_ip_address
         # The coupon code.
         self.promotion_code = promotion_code
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) operation to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_id = resource_owner_id
-        # The Alibaba Cloud Resource Name (ARN) that is provided by your Alibaba Cloud account for Resource Access Management (RAM) users. RAM users can use the ARN to connect to ApsaraDB RDS to Key Management Service (KMS). You can call the CheckCloudResourceAuthorized operation to query the ARN.
-        # 
-        # >  When you enable the encryption, you must specify the RoleARN.
+        # The global resource descriptor (ARN) that grants the RDS service account authorization to access KMS on behalf of the primary account. You can call CheckCloudResourceAuthorized to query the ARN information.
+        # >Notice: You must specify **RoleARN** when you enable cloud disk encryption.
         self.role_arn = role_arn
-        # The IP address whitelist of the instance. For more information, see [Configure an IP address whitelist](https://help.aliyun.com/document_detail/43185.html). Separate multiple IP addresses or CIDR blocks with commas (,). You can add up to 1,000 IP addresses or CIDR blocks to the whitelist. The entries in the IP address whitelist must be in one of the following formats:
-        # 
-        # *   IP addresses, such as 10.10.XX.XX.
-        # *   CIDR blocks, such as 10.10.XX.XX/24. In this example, 24 indicates that the prefix of each IP address in the IP address whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
+        # The [IP whitelist](https://help.aliyun.com/document_detail/43185.html) of the instance. Separate multiple entries with commas (,). Duplicate entries are not allowed. You can add up to 1,000 IP addresses or CIDR blocks to a single instance. The following formats are supported:
+        # * IP address format, for example: 10.10.XX.XX.
+        # * CIDR block format, for example: 10.10.XX.XX/24 (classless inter-domain routing, where 24 indicates the length of the prefix in the address, ranging from 1 to 32).
         # 
         # This parameter is required.
         self.security_iplist = security_iplist
-        # The settings of the serverless instance. These parameters are required only when you create a serverless instance.
-        # 
-        # >  ApsaraDB RDS for MariaDB does not support serverless instances.
+        # The settings for the serverless ApsaraDB RDS instance. This parameter is required when you create a serverless instance.
+        # >MariaDB does not support serverless instances.
         self.serverless_config_shrink = serverless_config_shrink
-        # Specifies whether to enable the automatic storage expansion feature for the instance. This feature is supported if the instance runs MySQL or PostgreSQL. Valid values:
+        # Specifies whether to enable automatic storage expansion. This parameter is supported only for MySQL and PostgreSQL instances. Valid values:
+        # * **Enable**: enables automatic storage expansion.
+        # * **Disable**: disables automatic storage expansion (default).
         # 
-        # *   **Enable**: enables the feature.
-        # *   **Disable** (default): disables the feature.
-        # 
-        # >  After the instance is created, you can call the ModifyDasInstanceConfig operation to adjust the settings. For more information, see [Configure automatic storage expansion](https://help.aliyun.com/document_detail/173826.html).
+        # >You can also call ModifyDasInstanceConfig after the instance is created to adjust this setting. For more information, see [Configure automatic storage expansion](https://help.aliyun.com/document_detail/173826.html).
         self.storage_auto_scale = storage_auto_scale
-        # The threshold in percentage based on which automatic storage expansion is triggered.
+        # The threshold (percentage) that triggers automatic storage expansion. Valid values:
+        # * **10**
+        # * **20**
+        # * **30**
+        # * **40**
+        # * **50**
         # 
-        # *   **10**
-        # *   **20**
-        # *   **30**
-        # *   **40**
-        # *   **50**
-        # 
-        # >  If you set the **StorageAutoScale** parameter to **Enable**, you must specify this parameter.
+        # >This parameter is required when **StorageAutoScale** is set to **Enable**.
         self.storage_threshold = storage_threshold
-        # The maximum storage capacity that is allowed for automatic storage expansion. The storage capacity of the instance cannot exceed the maximum storage capacity. Unit: GB.
+        # The maximum total storage capacity allowed for automatic storage expansion. Automatic storage expansion does not cause the total storage capacity of the instance to exceed this value. Unit: GB.
         # 
-        # > *   Valid values: an integer greater than or equal to 0.
-        # > *   If you set **StorageAutoScale** to **Enable**, you must specify this parameter.
+        # > - The value must be greater than or equal to 0.
+        # > - This parameter is required when **StorageAutoScale** is set to **Enable**.
         self.storage_upper_bound = storage_upper_bound
-        # A deprecated parameter. You do not need to specify this parameter.
+        # This parameter is deprecated. You do not need to configure it.
         self.system_dbcharset = system_dbcharset
-        # The tags that are added to instances.
+        # The list of tags.
         self.tag = tag
-        # The ID of the host to which the logger instance belongs in the specified dedicated cluster.
+        # The host ID of the logger instance in the dedicated cluster.
         # 
-        # If you want to create an instance that runs RDS Enterprise Edition in a dedicated cluster, you must specify this parameter. If you do not specify this parameter, the system automatically assigns a host.
+        # This parameter is required when you create an ApsaraDB RDS Enterprise Edition instance in a dedicated cluster. If you do not specify this parameter, the system automatically assigns a host.
         # 
-        # *   You can call the DescribeDedicatedHosts operation to query the host in the dedicated cluster.
-        # *   If no hosts are created, you can call the CreateDedicatedHost operation to create a host.
+        # - You can call DescribeDedicatedHosts to query the host information in the dedicated cluster.
+        # - If you have not added a host, call CreateDedicatedHost to add one.
         self.target_dedicated_host_id_for_log = target_dedicated_host_id_for_log
-        # The ID of the host to which the instance belongs in the specified dedicated cluster.
+        # The host ID of the primary instance in the dedicated cluster.
         # 
-        # If you create the instance in a dedicated cluster, you must specify this parameter. If you do not specify this parameter, the system automatically assigns a host.
+        # This parameter is required when you create an ApsaraDB RDS instance in a dedicated cluster. If you do not specify this parameter, the system automatically assigns a host.
         # 
-        # *   You can call the DescribeDedicatedHosts operation to query the host in the dedicated cluster.
-        # *   If no hosts are created, you can call the CreateDedicatedHost operation to create a host.
+        # - You can call DescribeDedicatedHosts to query the host information in the host group.
+        # - If you have not added a host, call CreateDedicatedHost to add one.
         self.target_dedicated_host_id_for_master = target_dedicated_host_id_for_master
-        # The ID of the host to which the secondary instance belongs in the specified dedicated cluster.
+        # The host ID of the secondary instance in the dedicated cluster.
         # 
-        # If you want to create an instance that runs RDS High-availability Edition or RDS Enterprise Edition in a dedicated cluster, you must specify this parameter. If you do not specify this parameter, the system automatically assigns a host.
+        # This parameter is required when you create an ApsaraDB RDS High-availability Edition or RDS Enterprise Edition instance in a dedicated cluster. If you do not specify this parameter, the system automatically allocates a host by default.
         # 
-        # *   You can call the DescribeDedicatedHosts operation to query the host in the dedicated cluster.
-        # *   If no hosts are created, you can call the CreateDedicatedHost operation to create a host.
+        # - You can call DescribeDedicatedHosts to query the host information in the dedicated cluster.
+        # - If you have not added a host, call CreateDedicatedHost to add one.
         self.target_dedicated_host_id_for_slave = target_dedicated_host_id_for_slave
-        # The minor engine version of the instance. This parameter is required only when you create an instance that runs MySQL or PostgreSQL. The value format varies based on the database engine of the instance.
+        # The minor engine version of the RDS instance to create. This parameter is required only when you create a MySQL or PostgreSQL instance.
+        # Format:
+        # * MySQL: `<instance version>_<numeric version number>`. For example, `rds_20200229`, `xcluster_20200229`, or `xcluster80_20200229`. The prefixes are described as follows:
+        #     * rds: high availability series or Basic Edition.
+        #     * xcluster: MySQL 5.7 RDS Enterprise Edition.
+        #     * xcluster80: MySQL 8.0 RDS Enterprise Edition.
         # 
-        # *   If you create an instance that runs MySQL, the value is in the following format: `<RDS edition>_<Minor engine version>`. Examples: `rds_20200229`, `xcluster_20200229`, and `xcluster80_20200229`.
+        #     > You can call DescribeDBMiniEngineVersions to query the numeric version number. For differences between versions, see [AliSQL minor version release notes](https://help.aliyun.com/document_detail/96060.html).
+        # * PostgreSQL: `rds_postgres_<major version>00_<minor version number>`. For example, `rds_postgres_1400_20220830`. The fields are described as follows:
+        #     * 1400: PostgreSQL major version 14.
+        #     * 20220830: AliPG minor engine version. You can call DescribeDBMiniEngineVersions to query the minor version number. For differences between versions, see [PostgreSQL minor version release notes](https://help.aliyun.com/document_detail/126002.html).
         # 
-        #     *   rds: The instance runs RDS Basic Edition or RDS High-availability Edition.
-        #     *   xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
-        #     *   xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
-        # 
-        #     > You can call the DescribeDBMiniEngineVersions operation to query the minor engine version. For more information about the differences between minor engine versions of AliSQL, see [Release notes](https://help.aliyun.com/document_detail/96060.html).
-        # 
-        # *   If you create an instance that runs PostgreSQL, the value is in the following format: `rds_postgres_<Major engine version>00_<Minor engine version>`. Example: `rds_postgres_1400_20220830`.
-        # 
-        #     *   1400: The major engine version is PostgreSQL 14.
-        #     *   20220830: the AliPG version. You can call the DescribeDBMiniEngineVersions operation to query the AliPG version. For more information about minor engine versions, see [Release notes for AliPG](https://help.aliyun.com/document_detail/126002.html).
-        # 
-        #     > If you configure the **BabelfishConfig** parameter for your instance that runs PostgreSQL and set the babelfishEnabled field to true, the value of this parameter is in the following format: `rds_postgres_Major engine version00_AliPG version_babelfish`.
+        #     > If Babelfish is enabled in **BabelfishConfig**, the minor version format for ApsaraDB RDS for PostgreSQL instances is: `rds_postgres_<major version>00_<AliPG minor version>_babelfish`.
         self.target_minor_version = target_minor_version
-        # The subscription duration of the instance. Valid values:
+        # The subscription duration. Valid values:
+        # * If **Period** is set to **Year**, **UsedTime** can be set to **1 to 5**.
+        # * If **Period** is set to **Month**, **UsedTime** can be set to **1 to 11**.
         # 
-        # *   If you set the **Period** parameter to **Year**, the value of the **UsedTime** parameter ranges from **1 to 5**.
-        # *   If you set the **Period** parameter to **Month**, the value of the **UsedTime** parameter ranges from **1 to 11**.
-        # 
-        # >  If you set the PayType parameter to **Prepaid**, you must also specify this parameter.
+        # > This parameter is required if the billing method is **Prepaid**.
         self.used_time = used_time
-        # The ID of the full backup file. You can call the ListUserBackupFiles operation to query the ID of the full backup file. If you want to create an instance by using the data of a backup file, you must specify this parameter.
+        # The user backup ID. You can call ListUserBackupFiles to query the ID. Specifying this parameter creates an instance from a user backup.
         # 
-        # This parameter is supported only when the following requirements are met:
-        # 
-        # *   The **PayType** parameter is set to **Postpaid**.
-        # *   The **Engine** parameter is set to **MySQL**.
-        # *   The **EngineVersion** parameter is set to **5.7**.
-        # *   The **Category** parameter is set to **Basic**.
+        # The following restrictions apply when you specify this parameter:
+        # - **PayType** must be set to **Postpaid**.
+        # - **Engine** must be set to **MySQL**.
+        # - **EngineVersion** must be set to **5.7**.
+        # - **Category** must be set to **Basic**.
         self.user_backup_id = user_backup_id
-        # The ID of the VPC to which the instance belongs.
-        # 
-        # > This parameter is available when you set the **InstanceNetworkType** parameter to **VPC**.
+        # The VPC ID.
+        # >This parameter takes effect only when **InstanceNetworkType** is set to **VPC**, which indicates the network type is VPC.
         self.vpcid = vpcid
         # The vSwitch ID.
         # 
-        # *   **Relations with zones**: Specify the vSwitch ID based on the zones in which the vSwitch belongs to. If you specify two vSwitch IDs, make sure that the vSwitch IDs match the zone IDs specified by the ZoneId and ZoneIdSlave1 parameters.
-        # *   **Limits on the network type**: Set **InstanceNetworkType** to **VPC**.
-        # *   **Limits on multiple vSwitch IDs**: If you set **ZoneSlaveId1** to a value that is not **Auto**, you must specify the IDs of two vSwitches for this parameter and separate the IDs with a comma (,).
-        # *   **Limits on characters**: The value cannot contain `spaces` or the following characters: `!` `#` `￥` `&` `%`
+        # - **Zone correspondence**: The zone of the vSwitch must correspond to the zone of the primary node (ZoneId) and the zone of the secondary node (ZoneIdSlave1). If you specify two vSwitch IDs, their order must match the order of ZoneId and ZoneSlaveId1.
+        # - **Network type requirement**: **InstanceNetworkType** must be set to **VPC**.
+        # - **Multiple vSwitch requirement**: If you specify **ZoneSlaveId1** (the zone ID of the secondary node) and it is not set to **Auto**, you must specify two vSwitch IDs separated by a comma (,).
+        # - **Character restriction**: VSwitchId cannot contain special characters such as spaces, `!`, `#`, `￥`, `&`, or `%`.
         self.v_switch_id = v_switch_id
-        # The entries in the whitelist. If you enter multiple IP addresses or CIDR blocks, you must separate the IP addresses or CIDR blocks with commas (,). Do not add spaces preceding or following the commas. Example: `192.168.0.1,172.16.213.9`.
+        # The whitelist. If you need to configure multiple IP addresses, separate them with commas (,) without spaces before or after the commas. Example: `192.168.0.1,172.16.213.9`.
         self.whitelist_template_list = whitelist_template_list
-        # The zone ID of the primary instance.
+        # The zone ID of the primary node.
         # 
-        # *   If you specify a virtual private cloud (VPC) and a vSwitch, you must specify the ID of the zone to which the specified vSwitch belongs. Otherwise, the instance cannot be created.
-        # *   If the instance runs RDS High-availability Edition, you must specify the **ZoneIdSlave1** parameter. The ZoneIdSlave1 parameter specifies whether to use the single-zone deployment method or the multi-zone deployment method.
-        # *   If the instance runs RDS Enterprise Edition, you must specify the **ZoneIdSlave1** and **ZoneIdSlave2** parameters. The ZoneIdSlave1 and ZoneIdSlave2 parameters specify whether to use the single-zone deployment method or the multi-zone deployment method.
-        # *   If the instance runs MySQL on RDS Cluster Edition, you must specify the **ZoneIdSlave1** parameter for the RDS cluster that has two nodes and the **ZoneIdSlave1** and **ZoneIdSlave2** parameters for the RDS cluster that has three nodes.
+        # - If you specify a VPC and a vSwitch, you must set this parameter to the zone ID of the vSwitch. Otherwise, the instance cannot be created.
+        # - For high availability series instances, you must also specify **ZoneIdSlave1** to determine whether the instance uses single-zone or multi-zone deployment.
+        # - For RDS Enterprise Edition instances, you must also specify **ZoneIdSlave1** and **ZoneIdSlave2** to determine whether the instance uses single-zone or multi-zone deployment.
+        # - For RDS Cluster Edition instances, two-node clusters require **ZoneIdSlave1**, and three-node clusters require both **ZoneIdSlave1** and **ZoneIdSlave2**.
         self.zone_id = zone_id
-        # The zone ID of the secondary instance.
+        # The zone ID of the secondary node.
         # 
-        # *   If you set this parameter to **Auto**, the multi-zone deployment method is used and the zone of the secondary instance is automatically configured.
-        # *   If you set this parameter to the same value as the **ZoneId** parameter, the single-zone deployment method is used.
-        # *   If you set this parameter to a value that is different from the value of the **ZoneId** parameter, the multiple-zone deployment method is used.
+        # - If you set this parameter to **Auto**, the instance uses multi-zone deployment and the system automatically selects a zone for the secondary node.
+        # - If this parameter is the same as **ZoneId**, the instance uses single-zone deployment.
+        # - If this parameter is different from **ZoneId**, the instance uses multi-zone deployment.
         self.zone_id_slave_1 = zone_id_slave_1
-        # The zone ID of the other secondary node. When you create an ApsaraDB RDS for MySQL cluster, you can create one to two secondary nodes for the cluster. This parameter applies if you create a cluster that contains two secondary nodes.
+        # The zone ID of the second secondary node. ApsaraDB RDS for MySQL Cluster Edition instances support creating one or two secondary nodes when you create the instance. If you need this, use this parameter to specify the zone of the second secondary node.
         self.zone_id_slave_2 = zone_id_slave_2
 
     def validate(self):
@@ -888,18 +840,18 @@ class CreateDBInstanceShrinkRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. You can use this parameter to add tags to the instance.
+        # The tag key. Specifying this parameter binds a tag to the instance.
         # 
-        # *   If the specified tag key is an existing key, the system directly adds the tag key to the instance. You can call the ListTagResources to query the existing tag.
-        # *   If the specified tag key does not exist, the system creates the tag key and adds the tag key to the instance.
-        # *   The value cannot be an empty string.
-        # *   This parameter must be used together with the **Tag.Value** parameter.
+        # * If the specified tag key already exists, the tag is directly bound to the instance. You can call ListTagResources to query existing tags.
+        # * If the specified tag key does not exist, the tag key is created and then bound to the instance.
+        # * Empty strings are not allowed.
+        # * This parameter must be used together with **Tag.Value**.
         self.key = key
-        # The tag value. You can use this parameter to add tags to the instance.
+        # The tag value corresponding to the tag key. Specifying this parameter binds a tag to the instance.
         # 
-        # *   If the specified tag value is found in the specified tag key, the system directly adds the tag value to the instance. You can call the ListTagResources to query the existing tag.
-        # *   If the specified tag value is not found in the specified tag key, the system creates the tag value and adds the tag value to the instance.
-        # *   This parameter must be used together with the **Tag.Key** parameter.
+        # * If the specified tag value already exists under the corresponding tag key, the tag value is directly bound to the instance. You can call ListTagResources to query existing tags.
+        # * If the specified tag value does not exist under the corresponding tag key, the tag value is created and then bound to the instance.
+        # * This parameter must be used together with **Tag.Key**.
         self.value = value
 
     def validate(self):

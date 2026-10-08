@@ -13,7 +13,7 @@ class DescribeRCNodePoolResponseBody(DaraModel):
         node_pool_list: List[main_models.DescribeRCNodePoolResponseBodyNodePoolList] = None,
         request_id: str = None,
     ):
-        # The node pool information.
+        # The list of node pool information.
         self.node_pool_list = node_pool_list
         # The request ID.
         self.request_id = request_id
@@ -86,73 +86,70 @@ class DescribeRCNodePoolResponseBodyNodePoolList(DaraModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
-        # Indicates whether to enable automatic payment. Valid values:
-        # 
-        # *   **true** (default): enables the feature. You must make sure that your account balance is sufficient.
-        # *   **false**: disables the feature. An unpaid order is generated.
+        # Indicates whether automatic payment is enabled. Valid values:
+        # - **true** (default): Automatic payment is enabled. Make sure that your account balance is sufficient.
+        # - **false**: Only an order is generated. No payment is made.
         self.auto_pay = auto_pay
-        # Indicates whether to enable auto-renewal for the instance. Valid values:
+        # Indicates whether auto-renewal is enabled for the instance. Valid values:
         # 
-        # *   **true** (default)
-        # *   **false**
+        # * **true** (default): Enabled.
+        # * **false**: Disabled.
         self.auto_renew = auto_renew
-        # The ID of the container cluster in which the RDS Custom instance resides.
+        # The ID of the RDS Custom container cluster.
         self.cluster_id = cluster_id
-        # Indicates whether to add the instance to the ACK cluster.
+        # Indicates whether the node is allowed to join an ACK cluster.
         self.create_mode = create_mode
-        # The data disks.
+        # The list of data cloud disks.
         self.data_disk = data_disk
-        # The ID of the deployment set.
+        # The deployment set ID.
         self.deployment_set_id = deployment_set_id
         # The instance description.
         self.description = description
-        # The instance hostname.
+        # The hostname of the instance.
         self.host_name = host_name
         # The ID of the image used by the instance.
         self.image_id = image_id
-        # The billing method. Valid value:
-        # 
-        # *   **Prepaid**: subscription
-        # *   **Postpaid**: pay-as-you-go
+        # The billing method. Valid values:
+        # * **Prepaid**: subscription.
+        # * **Postpaid**: pay-as-you-go.
         self.instance_charge_type = instance_charge_type
         # The instance name.
         self.instance_name = instance_name
         # The instance type.
         self.instance_type = instance_type
-        # The reserved parameter. This parameter is not supported.
+        # A reserved parameter. This parameter is not supported.
         self.internet_charge_type = internet_charge_type
-        # The reserved parameter. This parameter is not supported.
+        # A reserved parameter. This parameter is not supported.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
-        # The reserved parameter. This parameter is not supported.
+        # A reserved parameter. This parameter is not supported.
         self.io_optimized = io_optimized
-        # The key pair name.
+        # The name of the key pair.
         self.key_pair_name = key_pair_name
         # The node pool ID.
         self.node_pool_id = node_pool_id
         # The name of the node pool.
         self.node_pool_name = node_pool_name
-        # The password of the root user of the instance.
+        # The password of the root account of the instance.
         self.password = password
-        # The subscription duration.
+        # The subscription duration of the resource.
         self.period = period
-        # The unit of the subscription period. Valid values:
-        # 
-        # *   **Year**
-        # *   **Month** (default)
+        # The unit of the subscription billable methods duration. Valid values:
+        # - **Year**: year.
+        # - **Month** (default): month.
         self.period_unit = period_unit
         # The region ID of the instance.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The reserved parameter. This parameter is not supported.
+        # A reserved parameter. This parameter is not supported.
         self.security_enhancement_strategy = security_enhancement_strategy
         # The security group ID.
         self.security_group_id = security_group_id
-        # The reserved parameter. This parameter is not supported.
+        # A reserved parameter. This parameter is not supported.
         self.spot_strategy = spot_strategy
-        # The specification of the system disk.
+        # The system cloud disk specifications.
         self.system_disk = system_disk
-        # The tags.
+        # The list of tags.
         self.tag = tag
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
@@ -379,9 +376,9 @@ class DescribeRCNodePoolResponseBodyNodePoolListTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag keys.
+        # The tag key.
         self.key = key
-        # The tag value.
+        # The tag value that corresponds to the tag key.
         self.value = value
 
     def validate(self):
@@ -417,16 +414,16 @@ class DescribeRCNodePoolResponseBodyNodePoolListSystemDisk(DaraModel):
         performance_level: str = None,
         size: int = None,
     ):
-        # The type of the system disk. Set the value to **cloud_essd**, which indicates ESSDs.
+        # The type of the system cloud disk. Only **cloud_essd** (Enterprise SSD (ESSD)) is supported.
         self.category = category
-        # The performance level of the ESSD. Valid values:
+        # The performance level (PL) of the standard SSD. Valid values:
         # 
-        # *   **PL0**: A single ESSD delivers up to 10,000 random read/write IOPS.
-        # *   **PL1**: A single ESSD delivers up to 50,000 random read/write IOPS.
-        # *   **PL2**: A single ESSD delivers up to 100,000 random read/write IOPS.
-        # *   **PL3**: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+        # - **PL0**: A maximum of 10,000 random read/write IOPS per cloud disk.
+        # - **PL1**: A maximum of 50,000 random read/write IOPS per cloud disk.
+        # - **PL2**: A maximum of 100,000 random read/write IOPS per cloud disk.
+        # - **PL3**: A maximum of 1,000,000 random read/write IOPS per cloud disk.
         self.performance_level = performance_level
-        # The size of the system disk. Unit: GiB.
+        # The size of the system cloud disk. Unit: GiB.
         self.size = size
 
     def validate(self):
@@ -470,23 +467,23 @@ class DescribeRCNodePoolResponseBodyNodePoolListDataDisk(DaraModel):
         performance_level: str = None,
         size: int = None,
     ):
-        # The type of the data disk. Set the value to **cloud_essd**, which indicates Enterprise SSDs (ESSDs).
+        # The type of the data cloud disk. Only **cloud_essd** (ESSD cloud disk) is supported.
         self.category = category
-        # The reserved parameter. This parameter is not supported.
+        # A reserved parameter. This parameter is not supported.
         self.delete_with_instance = delete_with_instance
-        # Indicates whether to encrypt the cloud disk. Valid values:
+        # Indicates whether the cloud disk is encrypted. Valid values:
         # 
-        # *   **true**
-        # *   **false** (default)
+        # - **true**: Encrypted.
+        # - **false** (default): Not encrypted.
         self.encrypted = encrypted
-        # The performance level of the ESSD. Valid values:
+        # The performance level (PL) of the standard SSD. Valid values:
         # 
-        # *   **PL0**: A single ESSD delivers up to 10,000 random read/write IOPS.
-        # *   **PL1**: A single ESSD delivers up to 50,000 random read/write IOPS.
-        # *   **PL2**: A single ESSD delivers up to 100,000 random read/write IOPS.
-        # *   **PL3**: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+        # - **PL0**: A maximum of 10,000 random read/write IOPS per cloud disk.
+        # - **PL1**: A maximum of 50,000 random read/write IOPS per cloud disk.
+        # - **PL2**: A maximum of 100,000 random read/write IOPS per cloud disk.
+        # - **PL3**: A maximum of 1,000,000 random read/write IOPS per cloud disk.
         self.performance_level = performance_level
-        # The data disk size. Unit: GiB.
+        # The size of the data cloud disk. Unit: GiB.
         self.size = size
 
     def validate(self):

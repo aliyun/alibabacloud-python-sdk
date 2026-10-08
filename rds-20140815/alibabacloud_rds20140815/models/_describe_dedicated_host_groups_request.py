@@ -16,15 +16,15 @@ class DescribeDedicatedHostGroupsRequest(DaraModel):
     ):
         # The dedicated cluster ID.
         self.dedicated_host_group_id = dedicated_host_group_id
-        # The image based on which the hosts in the dedicated clusters are created. Valid values:
+        # The host image based on which you want to query dedicated clusters. Valid values:
         # 
-        # *   **WindowsWithMssqlStdLicense**: a Windows image that contains the licenses of SQL Server Standard Edition
-        # *   **WindowsWithMssqlEntLisence**: a Windows image that contains the licenses of SQL Server Enterprise Edition
-        # *   **WindowsWithMssqlWebLisence**: a Windows image that contains the licenses of SQL Server Web Edition
-        # *   **AliLinux**: a Linux image
+        # * **WindowsWithMssqlStdLicense**: Windows (with SQL Server Standard Edition license).
+        # * **WindowsWithMssqlEntLisence**: Windows (with SQL Server Enterprise Edition license).
+        # * **WindowsWithMssqlWebLisence**: Windows (with SQL Server Web Edition license).
+        # * **AliLinux**: Linux.
         self.image_category = image_category
         self.owner_id = owner_id
-        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # The region ID. You can call the DescribeRegions operation to query available region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id

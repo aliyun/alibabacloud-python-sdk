@@ -19,22 +19,22 @@ class DescribeCrossRegionBackupsResponseBody(DaraModel):
         start_time: str = None,
         total_record_count: int = None,
     ):
-        # The end of the time range to query.
+        # The end time of the query.
         self.end_time = end_time
         self.items = items
-        # The page number. Pages start from page 1.
+        # The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type.
         # 
         # Default value: **1**.
         self.page_number = page_number
-        # The number of cross-region data backup files on the current page.
+        # The number of backup files on the current page.
         self.page_record_count = page_record_count
         # The region ID of the instance.
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
-        # The beginning of the time range to query.
+        # The start time of the query.
         self.start_time = start_time
-        # The total number of entries that are returned.
+        # The total number of records.
         self.total_record_count = total_record_count
 
     def validate(self):

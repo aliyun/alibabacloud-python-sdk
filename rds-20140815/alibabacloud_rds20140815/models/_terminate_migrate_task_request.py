@@ -13,11 +13,11 @@ class TerminateMigrateTaskRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # The ID of the ApsaraDB RDS for SQL Server instance. You can call DescribeDBInstances to query the instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The migration task ID. You can call the DescribeMigrateTasks operation to query the migration task ID.
+        # The ID of the backup migration task. You can call DescribeMigrateTasks to query the task ID.
         # 
         # This parameter is required.
         self.migrate_task_id = migrate_task_id

@@ -10,9 +10,9 @@ class DescribeBackupDatabaseResponseBody(DaraModel):
         database_names: str = None,
         request_id: str = None,
     ):
-        # The name of the database. Format: "db1,db2".
+        # The database names, in the format of "db1,db2".
         self.database_names = database_names
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

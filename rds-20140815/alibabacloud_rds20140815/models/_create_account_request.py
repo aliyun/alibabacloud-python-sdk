@@ -18,62 +18,35 @@ class CreateAccountRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter.
-        # 
-        # > : The name cannot start with http:// or https://.
+        # The description of the account. The description must be 2 to 256 characters in length. It must start with a letter or a Chinese character and can contain digits, Chinese characters, letters, underscores (_), and hyphens (-).
+        # >The description cannot start with `http://` or `https://`.
         self.account_description = account_description
         # The name of the database account.
         # 
-        # 
-        # *   The name must be unique.
-        # 
-        # *   The name can contain lowercase letters, digits, and underscores (_). For MySQL databases, the name can contain uppercase letters.
-        # 
-        # *   The name must start with a letter and end with a letter or digit.
-        # 
-        # *   For MySQL databases, the name of the privileged account cannot be the same as that of the standard account. For example, if the name of the privileged account is `Test1`, the name of the standard account cannot be `test1`.
-        # 
-        # *   The length of the value must meet the following requirements:
-        # 
-        #     *   If the instance runs MySQL 5.7 or MySQL 8.0, the value must be 2 to 32 characters in length.
-        #     *   If the instance runs MySQL 5.6, the value must be 2 to 16 characters in length.
-        #     *   If the instance runs SQL Server, the value must be 2 to 64 characters in length.
-        #     *   If the instance runs PostgreSQL with cloud disks, the value must be 2 to 63 characters in length.
-        #     *   If the instance runs PostgreSQL with local disks, the value must be 2 to 16 characters in length.
-        #     *   If the instance runs MariaDB, the value must be 2 to 16 characters in length.
-        # 
-        # *   For more information about invalid characters, see [Forbidden keywords](https://help.aliyun.com/document_detail/26317.html).
+        # > The name must be unique and can contain uppercase letters (supported only by MySQL), lowercase letters, digits, or underscores. For specific naming conventions, refer to the tutorials for each engine: [Create a MySQL account](https://help.aliyun.com/document_detail/96089.html), [Create a PostgreSQL account](https://help.aliyun.com/document_detail/96753.html), [Create a SQL Server account](https://help.aliyun.com/document_detail/95810.html), [Create a MariaDB account](https://help.aliyun.com/document_detail/97132.html).
         # 
         # This parameter is required.
         self.account_name = account_name
-        # The password of the account.
-        #  
-        # 
-        # *   The value must be 8 to 32 characters in length.
-        # 
-        # *   The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
-        # 
-        # *   Special characters include `! @ # $ % ^ & * ( ) _ + - =`
+        # The password of the database account.
+        # > * The password must be 8 to 32 characters in length.
+        # > * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (`!@#$%^&*()_+-=`).
         # 
         # This parameter is required.
         self.account_password = account_password
-        # The account type. Valid values:
+        # The type of the account. Valid values:
         # 
-        # *   **Normal** (default): standard account.
-        # *   **Super**: privileged account.
-        # *   **Sysadmin**: system admin account. The account type is available only for ApsaraDB RDS for SQL Server instances.
-        # 
-        # Before you create a system admin account, check whether the instance meets all prerequisites. For more information, see [Create a system admin account](https://help.aliyun.com/document_detail/170736.html).
+        # - **Normal** (default): standard account.
+        # - **Super**: privileged account. You can create at most one privileged account per instance.
+        # - **Sysadmin** (SQL Server instances only): database account with SA permissions. Before you create this account, check whether the instance meets the [prerequisites](https://help.aliyun.com/document_detail/170736.html).
+        # - **GlobalRO** (SQL Server instances only): global read-only account. You can create at most two global read-only accounts per instance. The database engine version of the instance must be SQL Server 2016 or later, and the instance type must be dedicated or general-purpose.
         self.account_type = account_type
-        # Specifies whether to use a password policy.
-        # 
-        # > 
-        # 
-        # *   This parameter is available only for ApsaraDB RDS for SQL Server instances that do not belong to the shared instance family and do not run SQL Server 2008 R2.
-        # 
-        # *   Before you call this operation, you must configure a password policy for the account of your instance. For more information, see [Configure a password policy for the account of an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/2848317.html).
+        # The [account password policy](https://help.aliyun.com/document_detail/2845728.html) for the SQL Server instance. Valid values:
+        # - **true**: The policy is applied.
+        # - **false**: The policy is not applied.
+        # > - If you set this parameter to true, you must first [configure the SQL Server account password policy](https://help.aliyun.com/document_detail/2848317.html).
+        # > - This parameter does not support SQL Server instances of the [shared instance type](https://help.aliyun.com/document_detail/57184.html), [2008 R2 edition](https://help.aliyun.com/document_detail/145468.html), or [serverless type](https://help.aliyun.com/document_detail/603466.html).
         self.check_policy = check_policy
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # The instance ID. You can call [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) to query the instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id

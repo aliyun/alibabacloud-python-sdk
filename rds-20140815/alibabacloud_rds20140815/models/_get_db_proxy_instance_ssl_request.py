@@ -13,11 +13,11 @@ class GetDbProxyInstanceSslRequest(DaraModel):
     ):
         # A reserved parameter. You do not need to specify this parameter.
         self.dbproxy_engine_type = dbproxy_engine_type
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # The instance ID. You can call DescribeDBInstances to query the instance ID.
         # 
         # This parameter is required.
         self.db_instance_id = db_instance_id
-        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # The region ID. You can call DescribeRegions to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):

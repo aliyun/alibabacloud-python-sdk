@@ -20,11 +20,11 @@ class DescribeRCInstancesResponseBody(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The details of the instance.
+        # The instance information.
         self.rcinstances = rcinstances
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -83,6 +83,7 @@ class DescribeRCInstancesResponseBodyRCInstances(DaraModel):
     def __init__(
         self,
         auto_renew: bool = None,
+        cluster_id: str = None,
         cluster_name: str = None,
         cpu: int = None,
         create_mode: str = None,
@@ -118,56 +119,89 @@ class DescribeRCInstancesResponseBodyRCInstances(DaraModel):
         zone_id: str = None,
     ):
         self.auto_renew = auto_renew
+        self.cluster_id = cluster_id
         # The cluster name.
         self.cluster_name = cluster_name
+        # The number of vCPUs.
         self.cpu = cpu
+        # Indicates whether the instance can be added to an ACK cluster. If the parameter settings for this field is **1**, the created instance can be added to an ACK cluster by calling the **AttachRCInstances** API operation, which enables efficient management of container applications.
+        # 
+        # - **1**: Yes.
+        # - **0** (default): No.
         self.create_mode = create_mode
         # The database type.
         self.db_type = db_type
+        # The deployment set ID.
         self.deployment_set_id = deployment_set_id
-        # The instance description.
+        # The description.
         self.description = description
         self.ecs_host_name = ecs_host_name
+        # The time when the instance expires. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC+0.
+        # 
+        # > The expiration time displayed on the console is UTC+8.
         self.expired_time = expired_time
-        # The time when the task was created. The time is displayed in GMT.
+        # The task creation time (GMT).
         self.gmt_created = gmt_created
         # The host IP address.
         self.host_ip = host_ip
         # The host name.
         self.host_name = host_name
+        # The image ID.
         self.image_id = image_id
+        # The billing method. Valid values:
+        # * **PrePaid**: subscription.
+        # * **PostPaid**: pay-as-you-go.
         self.instance_charge_type = instance_charge_type
         # The instance ID.
         self.instance_id = instance_id
+        # The instance name.
         self.instance_name = instance_name
+        # The instance type.
+        # 
+        # For more information, see [RDS Custom instance type list](https://help.aliyun.com/document_detail/2844823.html).
         self.instance_type = instance_type
+        # The instance family.
+        # 
+        # For more information, see [RDS Custom instance type list](https://help.aliyun.com/document_detail/2844823.html).
         self.instance_type_family = instance_type_family
+        # The memory size. Unit: MiB.
         self.memory = memory
+        # The node type. If the value **rds_vnode** is returned, the node is a container node.
         self.node_type = node_type
         self.osname = osname
         self.ostype = ostype
+        # The public IP address of the instance.
         self.public_ip = public_ip
         # The region ID.
         self.region_id = region_id
+        # The security group ID.
         self.security_group_id = security_group_id
+        # The bidding strategy for pay-as-you-go instances. Valid values:
+        # 
+        # - **NoSpot**: A regular pay-as-you-go instance.
+        # - **SpotAsPriceGo**: The system automatically bids, following the current market price.
         self.spot_strategy = spot_strategy
         self.start_time = start_time
         # The instance status. Valid values:
         # 
-        # *   **Pending**
-        # *   **Running**
-        # *   **Starting**
-        # *   **Stopping**
-        # *   **Stopped**
+        # - **Pending**: Being created.
+        # - **Running**: Running.
+        # - **Starting**: Being started.
+        # - **Stopping**: Being stopped.
+        # - **Stopped**: Stopped.
         # 
-        # >  If the value returned for the DescribeRCInstances operation is different from the value that is returned for the **DescribeRCInstanceAttribute** operation, the value returned for the **DescribeRCInstanceAttribute** operation shall prevail.
+        # > The instance status returned by this operation may be delayed. If the value differs from the value returned by the **DescribeRCInstanceAttribute** operation, the value returned by **DescribeRCInstanceAttribute** prevails.
         self.status = status
         self.stopped_mode = stopped_mode
+        # The details of the instances and tags.
         self.tag_resources = tag_resources
+        # The tag details.
         self.tags = tags
+        # The VPC attributes.
         self.vpc_attributes = vpc_attributes
-        # The VPC ID.
+        # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -189,6 +223,9 @@ class DescribeRCInstancesResponseBodyRCInstances(DaraModel):
             result = _map
         if self.auto_renew is not None:
             result['AutoRenew'] = self.auto_renew
+
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
 
         if self.cluster_name is not None:
             result['ClusterName'] = self.cluster_name
@@ -299,6 +336,9 @@ class DescribeRCInstancesResponseBodyRCInstances(DaraModel):
         m = m or dict()
         if m.get('AutoRenew') is not None:
             self.auto_renew = m.get('AutoRenew')
+
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
 
         if m.get('ClusterName') is not None:
             self.cluster_name = m.get('ClusterName')
@@ -416,9 +456,13 @@ class DescribeRCInstancesResponseBodyRCInstancesVpcAttributes(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # A reserved parameter.
         self.nat_ip_address = nat_ip_address
+        # The private IP address.
         self.private_ip_address = private_ip_address
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -467,9 +511,16 @@ class DescribeRCInstancesResponseBodyRCInstancesTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The resource ID.
         self.resource_id = resource_id
+        # The resource type.
+        # 
+        # - `ALIYUN::RDS::INSTANCE`: ApsaraDB RDS instance.
+        # - `ALIYUN::RDS::CUSTOM`: RDS Custom instance.
         self.resource_type = resource_type
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -518,9 +569,16 @@ class DescribeRCInstancesResponseBodyRCInstancesTagResources(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The resource ID.
         self.resource_id = resource_id
+        # The resource type.
+        # 
+        # - `ALIYUN::RDS::INSTANCE`: ApsaraDB RDS instance.
+        # - `ALIYUN::RDS::CUSTOM`: RDS Custom instance.
         self.resource_type = resource_type
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):

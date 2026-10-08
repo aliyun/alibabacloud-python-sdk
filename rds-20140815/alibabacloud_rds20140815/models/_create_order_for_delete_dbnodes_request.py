@@ -26,12 +26,17 @@ class CreateOrderForDeleteDBNodesRequest(DaraModel):
         resource_owner_id: int = None,
         zone_id: str = None,
     ):
-        # Specifies whether to automatically complete the payment. Valid values:
+        # Specifies whether to automatically complete automatic payment. Valid values:
         # 
-        # 1.  **true**: You must make sure that your account balance is sufficient.
-        # 2.  **false**: An unpaid order is generated.
+        # 1. **true**: automatically completes automatic payment. Make sure that your account balance is sufficient.
         # 
-        # >  Default value: true. If your account balance is insufficient, you can set the AutoPay parameter to false to generate an unpaid order. Then, you can log on to the ApsaraDB RDS console to complete the payment.
+        # 1. **false**: generates the order without completing automatic payment.
+        # 
+        # 
+        # 
+        # 
+        # > Default value: true. If your payment method has insufficient balance, set AutoPay to false. In this case, an unpaid order is generated. You can log on to the ApsaraDB RDS console to complete automatic payment.
+        # >
         self.auto_pay = auto_pay
         # The additional business information about the instance.
         self.business_info = business_info
@@ -39,36 +44,35 @@ class CreateOrderForDeleteDBNodesRequest(DaraModel):
         self.client_token = client_token
         # The commodity code. Valid values:
         # 
-        # *   **bards**: The instance is a pay-as-you-go primary instance.
-        # *   **rds**: The instance is a subscription primary instance.
-        # *   **rords**: The instance is a pay-as-you-go read-only instance.
-        # *   **rds_rordspre_public_cn**: The instance is a subscription read-only instance.
-        # *   **bards_intl**: The instance is a pay-as-you-go primary instance.
-        # *   **rds_intl**: The instance is a subscription primary instance.
-        # *   **rords_intl**: The instance is a pay-as-you-go read-only instance.
-        # *   **rds_rordspre_public_intl**: The instance is a subscription read-only instance.
+        # * **bards**: pay-as-you-go primary instance
+        # * **rds**: subscription primary instance
+        # * **rords**: pay-as-you-go read-only instance
+        # * **rds_rordspre_public_cn**: subscription read-only instance
+        # * **bards_intl**: pay-as-you-go primary instance
+        # * **rds_intl**: subscription primary instance
+        # * **rords_intl**: pay-as-you-go read-only instance
+        # * **rds_rordspre_public_intl**: subscription read-only instance
         # 
         # This parameter is required.
         self.commodity_code = commodity_code
-        # The instance ID. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) operation to query the ID of the instance.
+        # The instance ID. You can call [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) to query the instance ID.
         self.dbinstance_id = dbinstance_id
-        # An array that consists of information about the ID of the node.
+        # The list of node IDs.
         self.dbnode_id = dbnode_id
-        # The database engine version of the instance. Valid values:
+        # The current database engine version. Valid values:
         # 
-        # Valid values if you set Engine to MySQL: **5.5, 5.6, 5.7, and 8.0**
+        # MySQL: **5.5, 5.6, 5.7, 8.0**
         self.engine_version = engine_version
-        # The type of the database node. Valid values:
-        # 
-        # *   **Master**: the primary node
-        # *   **Slave**: the secondary node
+        # The database node type. Valid values:
+        # - **Master**: primary node
+        # - **Slave**: secondary node
         self.node_type = node_type
         self.owner_id = owner_id
         # The coupon code.
         self.promotion_code = promotion_code
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) operation to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) to query the most recent region list.
         self.region_id = region_id
-        # The resources.
+        # The resource.
         self.resource = resource
         # The resource group ID.
         self.resource_group_id = resource_group_id

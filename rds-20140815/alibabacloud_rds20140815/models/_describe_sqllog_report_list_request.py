@@ -17,33 +17,31 @@ class DescribeSQLLogReportListRequest(DaraModel):
         resource_owner_id: int = None,
         start_time: str = None,
     ):
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # The instance ID. You can call DescribeDBInstances to obtain the instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time must be in UTC.**
-        # 
-        # >  The end time must be later than the start time.
+        # The end time of the query. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+        # > The end time must be later than the start time.
         # 
         # This parameter is required.
         self.end_time = end_time
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Valid values: any **non-zero** positive integer.
+        # The page number. The value must be greater than **0** and cannot exceed the maximum value of the Integer data type.
         # 
-        # Default value: **1**.
+        # Default value: **1**
         self.page_number = page_number
         # The number of entries per page. Valid values:
+        # - **30**
+        # - **50**
+        # - **100**
         # 
-        # *   **30**
-        # *   **50**
-        # *   **100**
-        # 
-        # Default value: **30**.
+        # Default value: **30**
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The start time of the query. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         # 
         # This parameter is required.
         self.start_time = start_time

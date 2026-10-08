@@ -14,18 +14,18 @@ class ReplaceRCInstanceSystemDiskRequest(DaraModel):
         password: str = None,
         region_id: str = None,
     ):
-        # The image ID that is used when you reinstall the OS.
+        # The ID of the image to use when reinstalling the operating system.
         self.image_id = image_id
         # The instance ID.
         self.instance_id = instance_id
-        # The reserved parameter. This parameter is not supported.
+        # A reserved parameter. This parameter is not supported.
         self.is_local_disk = is_local_disk
-        # The name of the new key pair. If you do not specify this parameter, you must reset the key pair after the OS is reinstalled.
+        # The name of the new key pair. If you do not specify this parameter, you must reset the key pair after the reinstallation is complete.
         self.key_pair_name = key_pair_name
-        # The new logon password of the RDS Custom instance. If you do not specify this parameter, you must reset the logon password after the OS is reinstalled.
+        # The new logon password of the RDS Custom instance. If you do not specify this parameter, you must reset the logon password after the reinstallation is complete.
         # 
-        # *   The value must be 8 to 30 characters in length.
-        # *   The value must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: ( ) \\` ~ ! @ # $ % ^ & \\* - _ + =
+        # - The password must be 8 to 30 characters in length.
+        # - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters are: ()`~!@#$%^&*-_+=.
         self.password = password
         # The region ID.
         self.region_id = region_id

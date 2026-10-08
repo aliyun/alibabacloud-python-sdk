@@ -12,16 +12,16 @@ class CreateSecretResponseBody(DaraModel):
         secret_name: str = None,
         success: bool = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The Alibaba Cloud Resource Name (ARN) of the credential for the created Data API account.
+        # The user credential of the created Data API account.
         self.secret_arn = secret_arn
-        # The name of the credential.
+        # The name of the user credential.
         self.secret_name = secret_name
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**: The request was successful.
-        # *   **false**: The request failed.
+        # - **true**: The request was successful.
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):

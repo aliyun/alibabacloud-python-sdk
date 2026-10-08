@@ -11,9 +11,9 @@ class ModifyDBInstanceSecurityGroupRuleResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code returned.
+        # The response code.
         self.code = code
-        # The information about the status code.
+        # The response code message.
         self.message = message
         # The request ID.
         self.request_id = request_id

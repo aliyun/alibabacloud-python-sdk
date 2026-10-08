@@ -10,12 +10,8 @@ class AcceptRCInquiredSystemEventRequest(DaraModel):
         event_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the system event.
-        # 
         # This parameter is required.
         self.event_id = event_id
-        # The region ID of the system event.
-        # 
         # This parameter is required.
         self.region_id = region_id
 

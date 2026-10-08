@@ -17,11 +17,16 @@ class DescribeDBInstanceSwitchLogResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
+        # The instance name.
         self.dbinstance_name = dbinstance_name
         self.items = items
+        # The current page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_record_count = page_record_count
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries on the current page.
         self.total_record_count = total_record_count
 
     def validate(self):

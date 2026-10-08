@@ -18,23 +18,24 @@ class SwitchOverMajorVersionUpgradeRequest(DaraModel):
         switchover_timeout: int = None,
         type: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The instance name.
         self.dbinstance_name = dbinstance_name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) operation to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) to query available regions.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The timeout period for the switchover operation. The operation is canceled after it has been performed for a time period that exceeds the value. Unit: seconds. Valid value: 10 to 3600.
+        # The maximum tolerable time for the switchover, in seconds. If the switchover exceeds this time, it is canceled. Valid values: 10 to 3600.
         self.switchover_timeout = switchover_timeout
-        # The type of the switchover operation. Valid values:
-        # 
-        # *   switch
-        # *   cancel
-        # *   interrupt
+        # The type of switchover operation. Valid values:
+        # * switch: performs the switchover.
+        # * cancel: cancels the switchover.
+        # * interrupt: interrupts the switchover.
         self.type = type
 
     def validate(self):

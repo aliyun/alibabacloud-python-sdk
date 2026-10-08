@@ -11,11 +11,11 @@ class DeleteGadInstanceRequest(DaraModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the global active database cluster. You can call the GadInstanceName operation to query the cluster ID.
+        # The ID of the ApsaraDB RDS global active database cluster that you want to delete. You can call DescribeGadInstances to query the cluster ID.
         # 
         # This parameter is required.
         self.gad_instance_name = gad_instance_name
-        # The region ID of the central node of the global active database cluster. The central node refers to the primary node. You can call the DescribeGadInstances operation to query the region ID.
+        # The region ID of the central node (primary node) in the cluster. You can call DescribeGadInstances to query the region ID.
         self.region_id = region_id
         # The resource group ID. You can call the DescribeDBInstanceAttribute operation to query the resource group ID.
         self.resource_group_id = resource_group_id
