@@ -1,3 +1,8 @@
+2026-10-08 Version: 3.9.3
+- Update API GetInstanceDetail: add response parameters Body.OrderProgress.
+- Update API ListInstances: add request parameters VersionType.
+
+
 2026-09-07 Version: 3.9.1
 - Update API GetInstanceDetail: add response parameters Body.AutoReissueFlag.
 - Update API GetInstanceDetail: add response parameters Body.DeploymentResourceCount.

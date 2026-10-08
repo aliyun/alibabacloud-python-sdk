@@ -18,10 +18,9 @@ class ListInstancesRequest(DaraModel):
         server_deploy_flag: int = None,
         show_size: int = None,
         status: str = None,
+        version_type: str = None,
     ):
-        # Specifies whether the instance is managed. Valid values:
-        # - 1: Managed.
-        # - 0: Not managed.
+        # Specifies whether the instance is managed. Valid values: 1 (managed) and 0 (not managed).
         self.auto_reissue_flag = auto_reissue_flag
         # The CA brand. Valid values: WoSign, CFCA, DigiCert, GeoTrust, GlobalSign, vTrus, and Alibaba.
         self.brand = brand
@@ -33,31 +32,31 @@ class ListInstancesRequest(DaraModel):
         self.certificate_status = certificate_status
         # The type of the certificate. Valid values: DV, OV, and EV.
         self.certificate_type = certificate_type
-        # The page number of the current page in a paged query. Default value: **1**.
+        # The page number of the current page in a paging query. Settings the current page number. Default value: **1**.
         self.current_page = current_page
-        # The instance type. Valid values:
-        # - BUY: formal certificate.
-        # - TEST: test certificate.
+        # The instance type. Valid values: BUY (official certificate) and TEST (test certificate).
         self.instance_type = instance_type
         # The keyword for fuzzy search. Matches domain names, instance names, or corresponding resource IDs.
         self.keyword = keyword
         # The resource group ID.
         self.resource_group_id = resource_group_id
         # Specifies whether to return only instances that meet server deployment conditions. Valid values:
-        # - 1: Yes.
-        # - 0: No.
+        # - 1: is.
+        # - 0: no.
         self.server_deploy_flag = server_deploy_flag
-        # The number of instances to display per page in a paged query. Default value: **10**. Maximum value: **100**.
+        # The number of instances to display per page in a paging query. Settings the number of instances displayed per page. Default value: **10**. Maximum value: **100**.
         self.show_size = show_size
         # The instance status. Valid values:
         # - **inactive**: Pending use.
-        # - **pending**: Under review. The latest certificate is being reviewed.
+        # - **pending**: Under review. The latest certificate is being submitted for review.
         # - **willExpire**: The instance is about to expire.
         # - **expired**: The instance has expired.
         # - **refund**: Refunded.
         # - **normal**: Normal.
-        # - **closed**: Closed. The instance is unavailable.
+        # - **closed**: Shutdown and unavailable.
         self.status = status
+        # The version type. Valid values: basic (Basic Edition), standard (Standard Edition), professional (Professional Edition), and ultimate (Ultimate Edition).
+        self.version_type = version_type
 
     def validate(self):
         pass
@@ -100,6 +99,9 @@ class ListInstancesRequest(DaraModel):
         if self.status is not None:
             result['Status'] = self.status
 
+        if self.version_type is not None:
+            result['VersionType'] = self.version_type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -136,6 +138,9 @@ class ListInstancesRequest(DaraModel):
 
         if m.get('Status') is not None:
             self.status = m.get('Status')
+
+        if m.get('VersionType') is not None:
+            self.version_type = m.get('VersionType')
 
         return self
 

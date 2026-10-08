@@ -21,6 +21,7 @@ class GetCertificateDetailResponseBody(DaraModel):
         company_id: int = None,
         contact_id: int = None,
         csr: str = None,
+        deployment_desc: str = None,
         domain: str = None,
         exist_private_key: bool = None,
         finger_print: str = None,
@@ -35,16 +36,16 @@ class GetCertificateDetailResponseBody(DaraModel):
         tags: List[main_models.GetCertificateDetailResponseBodyTags] = None,
         using_product_list: List[str] = None,
     ):
-        # The certificate algorithm. Valid values:
+        # The certificate algorithm.
         # 
         # - **RSA**: RSA algorithm.
         # - **ECC**: ECC algorithm.
-        # - **SM2**: SM2 encryption algorithm.
+        # - **SM2**: SM2 algorithm.
         self.algorithm = algorithm
-        # The global certificate ID in the format of certificate ID + "-" + site region ID. This is commonly used across Alibaba Cloud services.
-        #   --For the China site, the format is certificate ID + "-cn-hangzhou".
-        # For the China site, the format is certificate ID + "-ap-southeast-1".
-        # For example, if the certificate ID is 123, the CertIdentifier on the China site is "123-cn-hangzhou", and the CertIdentifier on the China site is "123-ap-southeast-1".
+        # The global certificate ID in the format of certificate ID + "-" + site region ID. This ID is commonly used across Alibaba Cloud services.
+        #   --For the China site, the value is certificate ID + "-cn-hangzhou".
+        # For the International site, the value is certificate ID + "-ap-southeast-1".
+        # For example, if the certificate ID is 123, the CertIdentifier on the China site is "123-cn-hangzhou", and the CertIdentifier on the International site is "123-ap-southeast-1".
         self.cert_identifier = cert_identifier
         # The certificate chain information list.
         self.certificate_chain_list = certificate_chain_list
@@ -52,26 +53,34 @@ class GetCertificateDetailResponseBody(DaraModel):
         self.certificate_id = certificate_id
         # The certificate name.
         self.certificate_name = certificate_name
-        # The certificate source. Valid values:
-        # - BUY: purchased certificate.
-        # - TEST: test certificate.
-        # - UPLOAD: uploaded certificate.
+        # The certificate source.
+        # - BUY: Purchased certificate.
+        # - TEST: Test certificate.
+        # - UPLOAD: Uploaded certificate.
         self.certificate_source = certificate_source
-        # The certificate status. Valid values:
-        # - **issued**: issued.
-        # - **revoked**: revoked.
-        # - **willExpire**: about to expire.
-        # - **expired**: expired.
+        # The certificate status.
+        # - **issued**: Issued.
+        # - **revoked**: Revoked.
+        # - **willExpire**: About to expire.
+        # - **expired**: Expired.
         self.certificate_status = certificate_status
         # The common domain name.
         self.common_name = common_name
-        # The company information ID associated with the certificate application. This field is empty for DV certificates.
+        # The company information ID associated with the certificate application. This value is empty for DV certificates.
         self.company_id = company_id
         # The contact ID.
         self.contact_id = contact_id
         # The certificate signing request (CSR) used to issue the certificate.
         self.csr = csr
-        # All domain names contained in the certificate. Multiple domain names are separated by commas.
+        # The deployment information in JSON format:
+        # 
+        # --Scope: Valid values are all/server. The value is all if the certificate has a private key, or server if it does not.
+        # 
+        # --ServerName: The name of the server associated with the certificate instance.
+        # 
+        # --ResourceInstanceId: The resource identifier of the server associated with the certificate instance.
+        self.deployment_desc = deployment_desc
+        # All domain names included in the certificate. Multiple domain names are separated by commas (,).
         self.domain = domain
         # Indicates whether a private key exists on the backend for the current certificate. Valid values:
         # 
@@ -82,7 +91,7 @@ class GetCertificateDetailResponseBody(DaraModel):
         self.finger_print = finger_print
         # The instance ID.
         self.instance_id = instance_id
-        # The entity that issued the certificate.
+        # The certificate issue authority.
         self.issuer = issuer
         # The key algorithm length.
         # - The RSA algorithm length is typically 2048, 3072, or 4096.
@@ -92,7 +101,7 @@ class GetCertificateDetailResponseBody(DaraModel):
         self.not_after = not_after
         # The start time of the certificate validity period.
         self.not_before = not_before
-        # The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this ID to troubleshoot issues.
+        # The request ID. Alibaba Cloud generates a unique identifier for each request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
         # The certificate serial number.
         self.serial = serial
@@ -100,7 +109,7 @@ class GetCertificateDetailResponseBody(DaraModel):
         self.subject_alternative_names = subject_alternative_names
         # The tag list.
         self.tags = tags
-        # The list of cloud services to which the current certificate is deployed.
+        # The list of Alibaba Cloud services to which the certificate is currently deployed.
         self.using_product_list = using_product_list
 
     def validate(self):
@@ -152,6 +161,9 @@ class GetCertificateDetailResponseBody(DaraModel):
 
         if self.csr is not None:
             result['Csr'] = self.csr
+
+        if self.deployment_desc is not None:
+            result['DeploymentDesc'] = self.deployment_desc
 
         if self.domain is not None:
             result['Domain'] = self.domain
@@ -233,6 +245,9 @@ class GetCertificateDetailResponseBody(DaraModel):
 
         if m.get('Csr') is not None:
             self.csr = m.get('Csr')
+
+        if m.get('DeploymentDesc') is not None:
+            self.deployment_desc = m.get('DeploymentDesc')
 
         if m.get('Domain') is not None:
             self.domain = m.get('Domain')
@@ -326,7 +341,7 @@ class GetCertificateDetailResponseBodyCertificateChainList(DaraModel):
         remain_day: int = None,
         subject: str = None,
     ):
-        # The issuer name in the certificate chain.
+        # The issuer name of the certificate chain.
         self.issuer = issuer
         # The end time of the certificate validity period.
         self.not_after = not_after
@@ -334,7 +349,7 @@ class GetCertificateDetailResponseBodyCertificateChainList(DaraModel):
         self.not_before = not_before
         # The remaining days of the certificate chain validity period.
         self.remain_day = remain_day
-        # The common name in the certificate chain.
+        # The common name of the certificate chain.
         self.subject = subject
 
     def validate(self):

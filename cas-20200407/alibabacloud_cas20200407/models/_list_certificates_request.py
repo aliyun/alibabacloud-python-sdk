@@ -15,33 +15,26 @@ class ListCertificatesRequest(DaraModel):
         resource_group_id: str = None,
         show_size: int = None,
     ):
-        # The source of the certificate.
-        # 
-        # - BUY: A purchased certificate.
-        # 
-        # - TEST: A test certificate.
-        # 
-        # - UPLOAD: An uploaded certificate.
+        # The source of the certificate. Valid values:
+        # - BUY: a formal certificate.
+        # - TEST: a test certificate.
+        # - UPLOAD: an uploaded certificate.
         self.certificate_source = certificate_source
-        # The status of the certificate.
-        # 
-        # - **issued**: The certificate is issued.
-        # 
-        # - **revoked**: The certificate is revoked.
-        # 
-        # - **willExpire**: The certificate is about to expire.
-        # 
-        # - **expired**: The certificate has expired.
+        # The status of the certificate. Valid values:
+        # - **issued**: Issued.
+        # - **revoked**: Revoked.
+        # - **willExpire**: About to expire.
+        # - **expired**: Expired.
         self.certificate_status = certificate_status
-        # The page number. Default value: 1.
+        # The page number of the current page.
         self.current_page = current_page
         # The ID of the instance.
         self.instance_id = instance_id
-        # A keyword for a fuzzy query. The keyword can be a domain name, a certificate name, or a resource ID.
+        # The keyword for fuzzy match. The keyword is matched against domain names, names, and corresponding resource IDs.
         self.keyword = keyword
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The number of entries to return on each page. Default value: 10. Maximum value: 100.
+        # The number of entries per page. Default value: 10. Maximum value: 100.
         self.show_size = show_size
 
     def validate(self):

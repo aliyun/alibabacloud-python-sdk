@@ -4788,6 +4788,8 @@ class Client(OpenApiClient):
             query['ShowSize'] = request.show_size
         if not DaraCore.is_null(request.status):
             query['Status'] = request.status
+        if not DaraCore.is_null(request.version_type):
+            query['VersionType'] = request.version_type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -4836,6 +4838,8 @@ class Client(OpenApiClient):
             query['ShowSize'] = request.show_size
         if not DaraCore.is_null(request.status):
             query['Status'] = request.status
+        if not DaraCore.is_null(request.version_type):
+            query['VersionType'] = request.version_type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

@@ -21,26 +21,26 @@ class UploadUserCertificateRequest(DaraModel):
         sign_private_key: str = None,
         tags: List[main_models.UploadUserCertificateRequestTags] = None,
     ):
-        # The non-China SM certificate content in PEM format.
+        # The content of the non-SM certificate in PEM format.
         self.cert = cert
-        # The client token that is used to ensure the idempotence of the request.
+        # The client token used to ensure the idempotence of the request.
         self.client_token = client_token
-        # The encryption certificate content of the China SM certificate in PEM format. This field is invalid when Cert and Key are not empty.
+        # The content of the SM encryption certificate in PEM format. This field is ignored if Cert and Key are not empty.
         self.encrypt_cert = encrypt_cert
-        # The private key content of the encryption certificate of the China SM certificate in PEM format. This field is invalid when Cert and Key are not empty.
+        # The private key of the SM encryption certificate in PEM format. This field is ignored if Cert and Key are not empty.
         self.encrypt_private_key = encrypt_private_key
-        # The private key content of the non-China SM certificate in PEM format.
+        # The private key of the non-SM certificate in PEM format.
         self.key = key
-        # The custom certificate name. Maximum length: 63 characters. All character types are supported, including letters, digits, and underscores.
-        # > Certificate names must be unique within the same user account.
+        # The custom name of the certificate. Maximum length: 63 characters. Supports all character types, including letters, digits, and underscores.
+        # > Certificate names must be unique within the same account.
         # 
         # This parameter is required.
         self.name = name
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The signing certificate content of the China SM certificate in PEM format. This field is invalid when Cert and Key are not empty.
+        # The content of the SM signing certificate in PEM format. This field is ignored if Cert and Key are not empty.
         self.sign_cert = sign_cert
-        # The private key content of the signing certificate of the China SM certificate in PEM format. This field is invalid when Cert and Key are not empty.
+        # The private key of the SM signing certificate in PEM format. This field is ignored if Cert and Key are not empty.
         self.sign_private_key = sign_private_key
         # The list of tags.
         self.tags = tags
