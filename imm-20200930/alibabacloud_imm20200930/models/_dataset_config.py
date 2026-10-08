@@ -14,6 +14,7 @@ class DatasetConfig(DaraModel):
     ):
         # The content awareness configuration.
         self.insights = insights
+        # The reverse image search configuration.
         self.reverse_image = reverse_image
         # The intelligent clustering configuration.
         self.smart_cluster = smart_cluster

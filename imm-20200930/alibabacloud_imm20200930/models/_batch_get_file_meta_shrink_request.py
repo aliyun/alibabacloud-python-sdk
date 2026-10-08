@@ -12,21 +12,21 @@ class BatchGetFileMetaShrinkRequest(DaraModel):
         uris_shrink: str = None,
         with_fields_shrink: str = None,
     ):
-        # The name of the dataset.[](~~478160~~)
+        # The name of the dataset. For more information about how to obtain the dataset name, refer to [Create a dataset](https://help.aliyun.com/document_detail/478160.html).
         # 
         # This parameter is required.
         self.dataset_name = dataset_name
-        # The name of the project.[](~~478153~~)
+        # The name of the project. For more information about how to obtain the project name, refer to [Create a project](https://help.aliyun.com/document_detail/478153.html).
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The array of object URIs. You can specify up to 100 object URIs in an array.
+        # The list of file URIs. A maximum of 100 URIs are supported.
         # 
         # This parameter is required.
         self.uris_shrink = uris_shrink
-        # The fields to return. If you specify this parameter, only specified metadata fields are returned. You can use this parameter to control the size of the response.
+        # The list of fields to be returned. If you specify this parameter, only the values of the specified fields are returned, instead of all existing metadata fields. This parameter can be used to reduce the size of the returned struct.
         # 
-        # If you do not specify this parameter or leave this parameter empty, the operation returns all metadata fields.
+        # If you do not specify this parameter or leave it empty, all fields are returned.
         self.with_fields_shrink = with_fields_shrink
 
     def validate(self):

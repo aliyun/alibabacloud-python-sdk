@@ -15,13 +15,13 @@ class QueryFigureClustersResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The face groups.
+        # The list of figure clusters.
         self.figure_clusters = figure_clusters
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # The pagination token.
         self.next_token = next_token
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The total number of face groups that matches the current query conditions.
+        # The total number of face clusters that meet the current query conditions.
         self.total_count = total_count
 
     def validate(self):

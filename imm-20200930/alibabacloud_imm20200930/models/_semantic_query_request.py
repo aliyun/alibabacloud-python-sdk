@@ -22,30 +22,29 @@ class SemanticQueryRequest(DaraModel):
         # 
         # This parameter is required.
         self.dataset_name = dataset_name
-        # The maximum number of entries to return. Valid values: 1 to 1000.
+        # The maximum number of data records to return in this request. Value range: (0,100].
         self.max_results = max_results
-        # The types of the media that you want to query. Default value:
-        # 
-        # ["image"]
+        # The media types to search. If this parameter is left empty, the default value is:
         self.media_types = media_types
-        # This parameter is no longer available.
+        # This parameter is no longer provided.
         self.next_token = next_token
         # The name of the project.
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The content of the query that you input.
+        # <notice>Either this parameter or the SourceURI parameter must be specified.</notice>
+        # The content for semantic search.
         self.query = query
-        # > Either this parameter or the Query parameter must be specified. This parameter is valid only for image searches on datasets configured with a search-by-image workflow.
+        # <notice>Either this parameter or the Query parameter must be specified. This parameter is currently valid only when the search type is specified as image and the dataset is configured with a workflow template for image-to-image search.</notice>
+        # The storage address of the source data used for retrieval. The storage address supports OSS URIs.
         # 
-        # URI of the source data for retrieval.
-        # The URI must be in the oss\\://${Bucket}/${Object} format. ${Bucket} specifies the name of the OSS bucket that is in the same region as the current project. ${Object} specifies the full path of the file that contains the file name extension.
+        # The OSS address format is oss://${Bucket}/${Object}, where ${Bucket} is the name of the OSS bucket that resides in the same region as the current project, and ${Object} is the full path of the file including the file name extension.
         # 
-        # Contact us if you need to configure a workflow template.
+        # If you need to configure the corresponding workflow template, [contact us](https://help.aliyun.com/document_detail/84454.html).
         self.source_uri = source_uri
-        # > Either this parameter or the SourceURI parameter must be specified.
+        # Specifies the specific fields to return instead of all existing metadata fields. This helps reduce the size of the returned struct.
         # 
-        # The content of the query that you input.
+        # If this parameter is left empty, all fields are returned.
         self.with_fields = with_fields
 
     def validate(self):

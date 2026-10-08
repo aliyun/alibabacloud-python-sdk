@@ -15,19 +15,19 @@ class FuzzyQueryResponseBody(DaraModel):
         request_id: str = None,
         total_hits: int = None,
     ):
-        # The files.
+        # The list of file information.
         self.files = files
-        # A pagination token.
+        # The token used for pagination when the total number of files exceeds the value of MaxResults.
         # 
-        # It can be used in the next request to retrieve a new page of results.
+        # When you list file information next time, set NextToken to this value to return the remaining results.
         # 
-        # If NextToken is empty, no next page exists.
+        # This parameter is returned only when not all files are returned.
         # 
         # This parameter is required.
         self.next_token = next_token
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The number of hits.
+        # The number of matched records.
         self.total_hits = total_hits
 
     def validate(self):

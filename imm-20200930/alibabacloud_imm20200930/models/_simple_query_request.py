@@ -21,59 +21,52 @@ class SimpleQueryRequest(DaraModel):
         with_fields: List[str] = None,
         without_total_hits: bool = None,
     ):
-        # The aggregations.
-        # 
-        # >  If you perform an aggregate query, the aggregation returned in the response contains only statistical results, not the actual metadata.
+        # The list of aggregation field information.
+        # >Notice: When you use an aggregation query, only the aggregation results are returned, and the list of matched metadata is not returned.</notice>
         self.aggregations = aggregations
-        # The name of the dataset.[](~~478160~~)
+        # The name of the dataset. For more information about how to obtain the dataset name, see [Create a dataset](https://help.aliyun.com/document_detail/478160.html).
         # 
         # This parameter is required.
         self.dataset_name = dataset_name
-        # *   If the Aggregations parameter is not specified, this parameter specifies the maximum number of files that can be returned. Valid values: 1 to 100.
-        # *   If the Aggregations parameter is specified, this parameter specifies the maximum number of aggregation groups that can be returned. Valid values: 0 to 2000.
-        # *   If you do not specify this parameter or set the parameter to 0, the default value of 100 is used.
+        # - When you perform a query for files without specifying the Aggregations parameter, this parameter specifies the maximum number of files to return. Valid values: 0 to 100.
+        # 
+        # - When you specify the Aggregations parameter for aggregation statistics, this parameter specifies the maximum number of groups to return. Valid values: 0 to 2000.
+        # 
+        # - If you do not specify this parameter or set it to 0, the default value is 100.
         self.max_results = max_results
-        # The pagination token is used in the next request to retrieve a new page of results if the total number of results exceeds the value of the MaxResults parameter.
+        # The token used for pagination when the total number of files exceeds the value of MaxResults.
         # 
-        # The next call to the operation returns results lexicographically after the NextToken parameter value.
+        # The list of files is returned in lexicographical order starting from NextToken.
         # 
-        # You do not need to specify this parameter in your initial request.
+        # Set this parameter to empty when you call this operation for the first time.
         self.next_token = next_token
-        # The sort order. Valid values:
+        # The sort order of the sort fields. Valid values:
         # 
-        # *   asc: sorts the results in ascending order.
-        # *   desc: sorts the results in descending order. This is the default value.
+        # - asc: ascending order
         # 
-        # *   You can specify multiple sort orders that are separated by commas. Example: asc,desc.
-        # 
-        # *   The number of elements in the Order parameter must be less than or equal to the number of elements in the Sort parameter. For example, if the value of the Sort parameter is Size,Filename, you can set the Order parameter to desc,asc.
-        # 
-        # *   If the number of sort orders is less than the number of sort fields, the sort fields for which no sorting orders are explicitly specified use the asc order by default. For example, if you set Sort to Size,Filename and Order to asc, the Filename field defaults to the value of asc.
+        # - desc: descending order (default)
+        # >- You can separate multiple sort orders with commas (,), for example, asc,desc.
+        # > - The number of sort orders cannot exceed the number of sort fields. That is, the number of elements in the Order parameter must be less than or equal to the number of elements in the Sort parameter. For example, if Sort is set to Size,Filename, Order can be set to "asc,desc".
+        # > - If the number of sort orders is less than the number of sort fields, the default sort order for the unspecified fields is desc. For example, if Sort is set to Size,Filename and Order is set to asc, the default sort order for Filename is desc, which means descending order.
         self.order = order
-        # The name of the project.[](~~478153~~)
+        # The name of the project. For more information about how to obtain the project name, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The query conditions.
+        # The simple query conditions. Click the link on the left to view details.
         self.query = query
-        # The sort fields. For more information, see [Supported fields and operators](https://help.aliyun.com/document_detail/2743991.html).
-        # 
-        # > 
-        # 
-        # *   If you specify multiple sort fields, separate them with commas (,), as in Size,Filename.
-        # 
-        # *   You can specify up to five sort fields.
-        # 
-        # *   The order of the sort fields determines their precedence in the sorting process.
+        # The list of sort fields. For more information, see [Supported fields and operators](https://help.aliyun.com/document_detail/2743991.html).
+        # > - You can separate multiple sort fields with commas (,), for example, Size,Filename.
+        # > - You can specify a maximum of 5 sort fields.
+        # > - The order of the sort fields determines the sorting priority.
         self.sort = sort
-        # The fields that you want to include in the response. You can use this parameter to reduce the size of the response.
+        # Specifies the specific fields to return instead of all existing metadata fields. This can be used to reduce the size of the returned struct.
         # 
-        # If you do not specify this parameter or leave this parameter empty, the operation returns all metadata fields.
+        # If you do not specify this parameter or leave it empty, all fields are returned.
         self.with_fields = with_fields
-        # Specifies whether to return the total number of hits. Valid values:
-        # 
-        # *   true
-        # *   false
+        # Specifies whether to return the total number of matched records. Valid values:
+        # - true: The TotalHits field is not returned.
+        # - false: The TotalHits field is returned.
         self.without_total_hits = without_total_hits
 
     def validate(self):
@@ -169,17 +162,7 @@ class SimpleQueryRequestAggregations(DaraModel):
     ):
         # The name of the field. For more information about supported fields, see [Supported fields and operators](https://help.aliyun.com/document_detail/2743991.html).
         self.field = field
-        # The operator.
-        # 
-        # Enumerated values:
-        # 
-        # *   average: calculates the average number.
-        # *   min: finds the minimum value.
-        # *   max: finds the maximum value.
-        # *   count: counts the number of results.
-        # *   distinct: counts the number of distinct results.
-        # *   sum: calculates the sum of all matching results..
-        # *   group: counts the number of results by group. The results are sorted by the count number in descending order.
+        # The operator for the aggregation field.
         self.operation = operation
 
     def validate(self):

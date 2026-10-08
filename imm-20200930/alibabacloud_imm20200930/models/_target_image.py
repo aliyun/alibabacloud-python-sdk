@@ -97,31 +97,31 @@ class TargetImageSprites(DaraModel):
         tile_width: int = None,
         uri: str = None,
     ):
-        # Image format
+        # Format
         # 
         # This parameter is required.
         self.format = format
-        # Time interval between sprites, in seconds
+        # Interval
         self.interval = interval
-        # Margin around the sprite grid, in pixels
+        # Margin
         self.margin = margin
         self.mode = mode
-        # Total number of sprites to generate
+        # Number
         self.number = number
-        # Padding between sprite tiles, in pixels
+        # Pad
         self.pad = pad
-        # Output height after scaling, in pixels
+        # ScaleHeight
         self.scale_height = scale_height
-        # Scaling method
+        # ScaleType
         self.scale_type = scale_type
-        # Output width after scaling, in pixels
+        # ScaleWidth
         self.scale_width = scale_width
         # StartTime
         self.start_time = start_time
         self.threshold = threshold
-        # Height of each sprite tile, in pixels
+        # TileHeight
         self.tile_height = tile_height
-        # Width of each sprite tile, in pixels
+        # TileWidth
         self.tile_width = tile_width
         # URI
         # 
@@ -240,27 +240,27 @@ class TargetImageSnapshots(DaraModel):
         uri: str = None,
         width: float = None,
     ):
-        # Image format
+        # Format
         # 
         # This parameter is required.
         self.format = format
-        # Output height, in pixels
+        # Height
         self.height = height
-        # Time interval between snapshots, in seconds
+        # Interval
         self.interval = interval
         self.mode = mode
-        # The sequence number of the snapshot.
+        # Number
         self.number = number
-        # Scaling method
+        # ScaleType
         self.scale_type = scale_type
-        # The start time of the snapshot.
+        # StartTime
         self.start_time = start_time
         self.threshold = threshold
-        # OSS URI where snapshots are stored
+        # URI
         # 
         # This parameter is required.
         self.uri = uri
-        # The width of the snapshot.
+        # Width
         self.width = width
 
     def validate(self):
@@ -354,23 +354,23 @@ class TargetImageAnimations(DaraModel):
         # 
         # This parameter is required.
         self.format = format
-        # Animation frame rate, in frames per second
+        # FrameRate
         self.frame_rate = frame_rate
         # Height
         self.height = height
-        # Time interval between animation frames, in seconds
+        # Interval
         self.interval = interval
-        # Total number of animation frames to generate
+        # Number
         self.number = number
-        # Scaling method
+        # ScaleType
         self.scale_type = scale_type
         # StartTime
         self.start_time = start_time
-        # The URI of the animation.
+        # URI
         # 
         # This parameter is required.
         self.uri = uri
-        # Output width, in pixels
+        # Width
         self.width = width
 
     def validate(self):

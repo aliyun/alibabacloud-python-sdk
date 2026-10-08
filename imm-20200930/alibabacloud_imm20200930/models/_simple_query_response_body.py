@@ -16,21 +16,21 @@ class SimpleQueryResponseBody(DaraModel):
         request_id: str = None,
         total_hits: int = None,
     ):
-        # The aggregations. This parameter is returned only when the value of the Aggregations request parameter is not empty.
+        # The list of aggregation field information. This parameter is returned only when Aggregations in the request is not empty.
         self.aggregations = aggregations
-        # The files. This parameter is returned only when the value of the Aggregations request parameter is empty.
+        # The list of file information. This parameter is returned only when Aggregations in the request is empty.
         self.files = files
-        # The pagination token is used in the next request to retrieve a new page of results if the total number of results exceeds the value of the MaxResults parameter.
+        # The token used for pagination when the total number of files exceeds the value of MaxResults.
         # 
-        # It can be used in the next request to retrieve a new page of results.
+        # When you list file information next time, set NextToken to this value to return the remaining results.
         # 
-        # If NextToken is empty, no next page exists.
+        # This parameter has a value only when not all files are returned.
         # 
         # This parameter is required.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The number of total hits.
+        # The number of matched records.
         self.total_hits = total_hits
 
     def validate(self):
@@ -102,13 +102,13 @@ class SimpleQueryResponseBodyAggregations(DaraModel):
         operation: str = None,
         value: float = None,
     ):
-        # The name of the field.
+        # The name of the aggregation field.
         self.field = field
-        # The grouped aggregations. This parameter is returned only when the group operator is specified in the Aggregations request parameter.
+        # The list of grouping and aggregation results. This parameter is returned only when an Operation of the group type exists in Aggregations of the request.
         self.groups = groups
-        # The operator.
+        # The aggregation operation for the aggregation field.
         self.operation = operation
-        # The statistical result.
+        # The statistical result of the aggregation.
         self.value = value
 
     def validate(self):
@@ -163,9 +163,9 @@ class SimpleQueryResponseBodyAggregationsGroups(DaraModel):
         count: int = None,
         value: str = None,
     ):
-        # The number of results in the grouped aggregation.
+        # The total count of the grouping and aggregation.
         self.count = count
-        # The value for the grouped aggregation.
+        # The value of the grouping and aggregation.
         self.value = value
 
     def validate(self):

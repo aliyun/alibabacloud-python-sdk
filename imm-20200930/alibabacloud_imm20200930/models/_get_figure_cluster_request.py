@@ -11,15 +11,15 @@ class GetFigureClusterRequest(DaraModel):
         object_id: str = None,
         project_name: str = None,
     ):
-        # The dataset name.[](~~CreateDataset~~)
+        # The name of the dataset. For more information about how to obtain the dataset name, see [CreateDataset](~~CreateDataset~~).
         # 
         # This parameter is required.
         self.dataset_name = dataset_name
-        # The ID of the face clustering task. You can obtain the ID from the face clustering information returned after you call the [QueryFigureClusters](~~QueryFigureClusters~~) operation.
+        # The object ID of the clustering group. You can obtain the object ID from the face group information returned by [QueryFigureClusters](~~QueryFigureClusters~~).
         # 
         # This parameter is required.
         self.object_id = object_id
-        # The project name.[](~~CreateProject~~)
+        # The name of the project. For more information about how to obtain the project name, see [CreateProject](~~CreateProject~~).
         # 
         # This parameter is required.
         self.project_name = project_name

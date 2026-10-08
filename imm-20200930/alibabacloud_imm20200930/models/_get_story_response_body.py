@@ -11,9 +11,9 @@ class GetStoryResponseBody(DaraModel):
         request_id: str = None,
         story: main_models.Story = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The information about the story.
+        # The detailed information about the story.
         self.story = story
 
     def validate(self):

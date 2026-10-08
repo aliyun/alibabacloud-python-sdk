@@ -128,7 +128,7 @@ class GenerateVideoPlaylistResponseBodyVideoPlaylist(DaraModel):
         # The video resolution.
         self.resolution = resolution
         # The token generated for the video Media Playlist. You can use this parameter to construct the addresses of the generated TS files.
-        # > Based on the returned Token value, you can construct the addresses of the transcoded TS files. The format is: oss://${Bucket}/${Object}-${Token}-${Index}.ts, where oss://${Bucket}/${Object} is the Target URI specified in the input parameters, ${Token} is the returned parameter, and ${Index} is the sequence number of the TS file.
+        # > Based on the returned Token value, you can construct the addresses of the transcoded TS files. The format is: oss://${Bucket}/${Object}-${Token}-${Index}.ts, where oss://${Bucket}/${Object} is the Target URI from the input parameters, ${Token} is the returned parameter, and ${Index} is the sequence number of the TS file.
         self.token = token
         # The OSS URI of the video Media Playlist.
         self.uri = uri
@@ -185,7 +185,7 @@ class GenerateVideoPlaylistResponseBodySubtitlePlaylist(DaraModel):
         # > The language is obtained from the subtitle stream information of the source video specified by SourceURI. If the source video does not contain language information, an empty value is returned.
         self.language = language
         # The token generated for the subtitle Media Playlist. You can use this parameter to construct the addresses of the generated subtitle files.
-        # > Based on the returned Token value, you can construct the addresses of the transcoded subtitle files. The format is: oss://${Bucket}/${Object}-${Token}_${Index}.ts, where oss://${Bucket}/${Object} is the Subtitle URI specified in the input parameters, ${Token} is the returned parameter, and ${Index} is the sequence number of the subtitle file.
+        # > Based on the returned Token value, you can construct the addresses of the transcoded subtitle files. The format is: oss://${Bucket}/${Object}-${Token}_${Index}.ts, where oss://${Bucket}/${Object} is the Subtitle URI from the input parameters, ${Token} is the returned parameter, and ${Index} is the sequence number of the subtitle.
         self.token = token
         # The OSS URI of the subtitle Media Playlist.
         self.uri = uri

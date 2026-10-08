@@ -10,6 +10,7 @@ class SmartClusterConfig(DaraModel):
         self,
         figure: main_models.FigureClusterConfig = None,
     ):
+        # The figure clustering configuration.
         self.figure = figure
 
     def validate(self):

@@ -10,17 +10,15 @@ class GetProjectRequest(DaraModel):
         project_name: str = None,
         with_statistics: bool = None,
     ):
-        # The project name. For information about how to obtain the project name, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
+        # The name of the project. For more information about how to obtain the project name, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
         # 
         # This parameter is required.
         self.project_name = project_name
-        # Specifies whether to collect file statistics. Default value: false, which indicates that file statistics are not collected.
+        # Specifies whether to collect file statistics. Default value: false.
+        # - true: File statistics are collected. The FileCount and TotalFileSize fields in the Project struct are accurate and valid.
+        # - false: File statistics are not collected. The FileCount and TotalFileSize fields in the Project struct may be inaccurate or both be 0.
         # 
-        # - File statistics are collected. The FileCount and TotalFileSize values in the returned Project struct are valid.
-        # 
-        # - File statistics are not collected. The FileCount and TotalFileSize values in the returned Project struct may be inaccurate or zero.
-        # 
-        # >Notice: Only files in datasets created before December 20, 2025 can be counted.
+        # >Notice: File statistics are supported only for datasets created before December 20, 2025.
         self.with_statistics = with_statistics
 
     def validate(self):

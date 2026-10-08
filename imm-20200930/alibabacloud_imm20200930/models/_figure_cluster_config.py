@@ -14,13 +14,13 @@ class FigureClusterConfig(DaraModel):
         enabled_features: List[str] = None,
         min_entity_count: int = None,
     ):
-        # Whether to automatically group similar figures into clusters.
+        # Specifies whether to allow IMM to perform classification tasks on files in the dataset. Default value: False.
         self.auto_clustering = auto_clustering
-        # Whether to automatically generate metadata for each cluster, such as a representative cover image.
+        # Indicates whether IMM is allowed to perform automatic creation of new groups. Default value: False.
         self.auto_generate = auto_generate
-        # An array of strings specifying the clustering strategies to use.
+        # The features supported by figure clustering.
         self.enabled_features = enabled_features
-        # The minimum number of figures required to form a cluster.
+        # The minimum threshold for the number of entities when automatic generation of new groups is allowed. Default value: 3.
         self.min_entity_count = min_entity_count
 
     def validate(self):

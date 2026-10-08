@@ -19,33 +19,33 @@ class UpdateProjectShrinkRequest(DaraModel):
         tag_shrink: str = None,
         template_id: str = None,
     ):
-        # The maximum number of bindings for each dataset. Valid values: 1 to 10.
+        # The maximum number of bindings per dataset. Valid values: 1 to 10.
         self.dataset_max_bind_count = dataset_max_bind_count
-        # The maximum number of metadata entities in each dataset.
-        # >This is a reserved parameter and is not enforced during use.
+        # The maximum number of metadata entities per dataset.
+        # > Reserved parameter. No actual limit is imposed during use.
         self.dataset_max_entity_count = dataset_max_entity_count
-        # The maximum number of files in each dataset. Valid values: 1 to 100000000.
+        # The maximum number of files per dataset. Valid values: 1 to 100000000.
         self.dataset_max_file_count = dataset_max_file_count
-        # The maximum number of metadata relationships in each dataset.
-        # >This is a reserved parameter and is not enforced during use.
+        # The maximum number of metadata relations per dataset.
+        # > Reserved parameter. No actual limit is imposed during use.
         self.dataset_max_relation_count = dataset_max_relation_count
-        # The maximum total file size in each dataset. After the limit is exceeded, no more indexes can be added. Unit: bytes.
+        # The maximum total size of files in each dataset. If the limit is exceeded, no more indexes can be added. Unit: bytes.
         self.dataset_max_total_file_size = dataset_max_total_file_size
-        # The project description. The description must be 1 to 256 characters in length.
+        # The description of the project. The description must be 1 to 256 characters in length.
         self.description = description
         # The maximum number of datasets in the project. Valid values: 1 to 1000000000.
         self.project_max_dataset_count = project_max_dataset_count
-        # The project name. For information about how to obtain the project name, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
+        # The name of the project. For more information about how to obtain the project name, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The service role that grants Intelligent Media Management (IMM) permissions to access other cloud resources such as Object Storage Service (OSS).
+        # The service role that is authorized for Intelligent Media Management (IMM) to access other cloud resources such as Object Storage Service (OSS).
         # 
-        # To customize a service role, create a regular service role in the Resource Access Management (RAM) console and grant permissions to the role. For more information, see [Create a regular service role](https://help.aliyun.com/document_detail/116800.html) and [Grant permissions to a role](https://help.aliyun.com/document_detail/116147.html).
+        # To use a custom service role, you can create a regular service role in the Resource Access Management (RAM) console and grant permissions to the role. For more information, see [Create a regular service role](https://help.aliyun.com/document_detail/116800.html) and [Grant permissions to a RAM role](https://help.aliyun.com/document_detail/116147.html).
         self.service_role = service_role
         # The list of tags.
         self.tag_shrink = tag_shrink
-        # The workflow template ID. For more information, see [Workflow templates and operators](https://help.aliyun.com/document_detail/466304.html).
+        # The ID of the workflow template. For more information, see [Workflow templates and operators](https://help.aliyun.com/document_detail/466304.html).
         self.template_id = template_id
 
     def validate(self):

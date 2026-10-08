@@ -11,9 +11,9 @@ class GetFigureClusterResponseBody(DaraModel):
         figure_cluster: main_models.FigureCluster = None,
         request_id: str = None,
     ):
-        # The information about the face cluster.
+        # The detailed information of the clustering group.
         self.figure_cluster = figure_cluster
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

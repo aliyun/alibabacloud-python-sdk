@@ -13,9 +13,9 @@ class ContextualRetrievalResponseBody(DaraModel):
         request_id: str = None,
         results: List[main_models.File] = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The list of files retrieved. The document structure and content are contained in File.Elements.
+        # The list of retrieved files. The document-related structural content is included in File.Elements.
         self.results = results
 
     def validate(self):

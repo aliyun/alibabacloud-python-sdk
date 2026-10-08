@@ -15,7 +15,7 @@ class BatchGetFigureClusterShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.dataset_name = dataset_name
-        # The cluster IDs.
+        # The array of group object IDs.
         # 
         # This parameter is required.
         self.object_ids_shrink = object_ids_shrink

@@ -12,6 +12,7 @@ class InsightsConfig(DaraModel):
         language: str = None,
         video: main_models.VideoInsightsConfig = None,
     ):
+        # The image content-aware configuration.
         self.image = image
         # The language.
         self.language = language

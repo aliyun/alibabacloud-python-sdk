@@ -24,57 +24,57 @@ class QueryStoriesShrinkRequest(DaraModel):
         story_type: str = None,
         with_empty_stories: bool = None,
     ):
-        # The time range in which stories were created.
+        # The creation time range of the story.
         self.create_time_range_shrink = create_time_range_shrink
-        # The custom labels in key-value pairs.
+        # The custom label key-value pairs. Only stories that match the specified label pairs are returned.
         self.custom_labels = custom_labels
-        # The name of the dataset.[](~~478160~~)
+        # The name of the dataset. For more information about how to obtain the name, see [Create a dataset](https://help.aliyun.com/document_detail/478160.html).
         # 
         # This parameter is required.
         self.dataset_name = dataset_name
-        # The IDs of the face clusters.
+        # The IDs of the figure clusters.
         self.figure_cluster_ids_shrink = figure_cluster_ids_shrink
-        # The maximum number of entries to return. Valid values: 1 to 100. Default value: 100.
+        # The maximum number of entries to return in a single call. Valid values: 1 to 100. Default value: 100.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. If you do not specify this token in the next request, results are returned from the beginning.
+        # The pagination token. If this parameter is left empty, the query starts from the beginning. To query the next page, set this parameter to the NextToken value returned in the previous call.
         self.next_token = next_token
-        # The ID of the story.
+        # The ID of the story object.
         self.object_id = object_id
-        # The sort order. Valid values:
+        # The sorting order. Valid values:
         # 
-        # - asc: in ascending order.
+        # - asc: Ascending order.
         # 
-        # - desc: in descending order.
+        # - desc: Descending order.
         self.order = order
-        # The name of the project.[](~~478153~~)
+        # The name of the project. For more information about how to obtain the name, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The sort field. Valid values:
+        # The field used for sorting. Valid values:
         # 
-        # - CreateTime: sorts by story creation time.
+        # - CreateTime: Sorts by story creation time.
         # 
-        # - StoryName: sorts by story name.
+        # - StoryName: Sorts by story name.
         # 
-        # - StoryStartTime: sorts by story start time.
+        # - StoryStartTime: Sorts by story start time.
         # 
-        # - StoryEndTime: sorts by story end time.
+        # - StoryEndTime: Sorts by story end time.
         self.sort = sort
-        # The time range for the creation time of the last photo or video in the story.
+        # The end time range of the photos or videos in the story.
         self.story_end_time_range_shrink = story_end_time_range_shrink
         # The name of the story.
         self.story_name = story_name
-        # The time range for the creation time of the first photo or video in the story.
+        # The start time range of the photos or videos in the story.
         self.story_start_time_range_shrink = story_start_time_range_shrink
-        # The subtype of the story. For a list of valid values, see [Story types and subtypes](https://help.aliyun.com/document_detail/2743998.html).
+        # The subtype of the story. For valid values, see [Story types and subtypes](https://help.aliyun.com/document_detail/2743998.html).
         self.story_sub_type = story_sub_type
-        # The type of the story. For a list of valid values, see [Story types and subtypes](https://help.aliyun.com/document_detail/2743998.html).
+        # The type of the story. For valid values, see [Story types and subtypes](https://help.aliyun.com/document_detail/2743998.html).
         self.story_type = story_type
         # Specifies whether to return empty stories. Valid values:
         # 
-        # - true (The default value)
+        # - true: Returns empty stories. This is the default value.
         # 
-        # - false
+        # - false: Does not return empty stories.
         self.with_empty_stories = with_empty_stories
 
     def validate(self):

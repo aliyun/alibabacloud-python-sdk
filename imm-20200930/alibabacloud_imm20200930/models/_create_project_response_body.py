@@ -11,9 +11,9 @@ class CreateProjectResponseBody(DaraModel):
         project: main_models.Project = None,
         request_id: str = None,
     ):
-        # The project information. Click Project to view details.
+        # The project information. For more information, see Project.
         self.project = project
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

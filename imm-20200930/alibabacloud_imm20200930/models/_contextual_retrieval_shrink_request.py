@@ -13,21 +13,21 @@ class ContextualRetrievalShrinkRequest(DaraModel):
         recall_only: bool = None,
         smart_cluster_ids_shrink: str = None,
     ):
-        # The dataset.
+        # The dataset used for retrieval.
         # 
         # This parameter is required.
         self.dataset_name = dataset_name
-        # The conversation or tool invocation history. The latest message is at the end of the list (with an index number of n-1), whereas the earliest message is at the beginning of the list (with an index number of 0). Historical messages must be provided in user-assistant pairs. The maximum number of messages that you can specify is 2\\*n+1. The current question cannot exceed 1,000 characters in length. The maximum number of historical messages allowed is 100.
+        # The conversation history and tool calling history. The latest message is at the end (index n-1), and the oldest message is at the beginning (index 0). The messages must be in user-assistant pairs, with a total count of 2*n+1, and the length of the latest question cannot exceed 1,000 characters. The conversation history is limited to 100 messages.
         # 
         # This parameter is required.
         self.messages_shrink = messages_shrink
-        # The name of the project. For more information, see [CreateProject](https://help.aliyun.com/zh/imm/getting-started/create-a-project-1?spm=a2c4g.11186623.help-menu-search-62354.d_0).
+        # The name of the project. For more information about how to obtain the project name, see [Create a project](https://www.alibabacloud.com/help/en/imm/getting-started/create-a-project-1).
         # 
         # This parameter is required.
         self.project_name = project_name
-        # Indicates whether to enable recall-only (embedding-based search). If you set this parameter to true, returned results have not been re-ranked and can be ranked in custom order. Default value: false.
+        # Specifies whether to enable only the recall process (embedding search). If this parameter is set to true, the returned data is not reranked, which allows you to customize the reranking process. Default value: false.
         self.recall_only = recall_only
-        # The IDs of clusters from which results are retrieved.
+        # The list of smart cluster IDs, which are used to retrieve files within specific smart clusters.
         self.smart_cluster_ids_shrink = smart_cluster_ids_shrink
 
     def validate(self):

@@ -13,9 +13,9 @@ class BatchGetFigureClusterResponseBody(DaraModel):
         figure_clusters: List[main_models.FigureCluster] = None,
         request_id: str = None,
     ):
-        # The clusters.
+        # The list of figure clusters.
         self.figure_clusters = figure_clusters
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

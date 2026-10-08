@@ -11,19 +11,18 @@ class GetDatasetRequest(DaraModel):
         project_name: str = None,
         with_statistics: bool = None,
     ):
-        # The name of the dataset. You can obtain the name of the dataset from the response of the [CreateDataset](https://help.aliyun.com/document_detail/478160.html) operation.
+        # The name of the dataset. For more information about how to obtain the dataset name, see [Create a dataset](https://help.aliyun.com/document_detail/478160.html).
         # 
         # This parameter is required.
         self.dataset_name = dataset_name
-        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # The name of the project. For more information about how to obtain the project name, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
         # 
         # This parameter is required.
         self.project_name = project_name
-        # Specifies whether to enable real-time retrieval of file statistics. Default value: false.
-        # 
-        # - If you set the value to true, FileCount and TotalFileSize in the response return true and valid values.
-        # 
-        # - If you set the value to false, FileCount and TotalFileSize in the response return invalid values or 0.
+        # Specifies whether to collect file statistics. Valid values:
+        # - true: File statistics are collected. The FileCount and TotalFileSize fields in the Dataset struct are valid.
+        # - false: File statistics are not collected. The FileCount and TotalFileSize fields in the Dataset struct may be incorrect or both 0.
+        # Default value: false.
         self.with_statistics = with_statistics
 
     def validate(self):

@@ -21,29 +21,29 @@ class UpdateDatasetRequest(DaraModel):
         template_id: str = None,
         workflow_parameters: List[main_models.WorkflowParameter] = None,
     ):
-        # The maximum number of bindings for each dataset. Valid values: 1 to 10.
+        # The maximum number of bindings per dataset. Valid values: 1 to 10.
         self.dataset_max_bind_count = dataset_max_bind_count
         # The maximum number of metadata entities (including data files, file relationships, and clustering groups) in each dataset. The maximum value is 2^63-1.
-        # >This is a reserved parameter and is not enforced during use.
+        # > This is a reserved parameter and no actual limits are enforced.
         self.dataset_max_entity_count = dataset_max_entity_count
         # The maximum number of files in each dataset. Valid values: 1 to 100000000.
         self.dataset_max_file_count = dataset_max_file_count
         # The maximum number of metadata relationships in each dataset. The maximum value is 2^63-1.
-        # >This is a reserved parameter and is not enforced during use.
+        # > This is a reserved parameter and no actual limits are enforced.
         self.dataset_max_relation_count = dataset_max_relation_count
-        # The maximum total file size in each dataset. After this limit is exceeded, no more indexes can be added. The maximum value is 2^63-1. Unit: bytes.
+        # The maximum total size of files in each dataset. If the limit is exceeded, no more indexes can be added. The maximum value is 2^63-1. Unit: bytes.
         self.dataset_max_total_file_size = dataset_max_total_file_size
-        # The dataset name. For information about how to obtain the dataset name, see [Create a dataset](https://help.aliyun.com/document_detail/478160.html).
+        # The name of the dataset. For more information about how to obtain the dataset name, see [Create a dataset](https://help.aliyun.com/document_detail/478160.html).
         # 
         # This parameter is required.
         self.dataset_name = dataset_name
         # The description of the dataset.
         self.description = description
-        # The project name. For information about how to obtain the project name, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
+        # The name of the project. For more information about how to obtain the project name, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The workflow template ID. For more information, see [Workflow templates and operators](https://help.aliyun.com/document_detail/466304.html).
+        # The ID of the workflow template. For more information, see [Workflow templates and operators](https://help.aliyun.com/document_detail/466304.html).
         self.template_id = template_id
         # Invalid parameter.
         self.workflow_parameters = workflow_parameters

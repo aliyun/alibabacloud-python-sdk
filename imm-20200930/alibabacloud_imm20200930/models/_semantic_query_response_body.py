@@ -13,9 +13,9 @@ class SemanticQueryResponseBody(DaraModel):
         files: List[main_models.File] = None,
         request_id: str = None,
     ):
-        # The files.
+        # The list of files.
         self.files = files
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

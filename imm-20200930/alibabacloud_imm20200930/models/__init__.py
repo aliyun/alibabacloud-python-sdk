@@ -79,6 +79,7 @@ from ._mns import MNS
 from ._message import Message
 from ._meta_data import MetaData
 from ._model_specification import ModelSpecification
+from ._multilingual_content_entry import MultilingualContentEntry
 from ._notification import Notification
 from ._ocrcontents import OCRContents
 from ._octree_option import OctreeOption
@@ -682,6 +683,7 @@ __all__ = [
     Message,
     MetaData,
     ModelSpecification,
+    MultilingualContentEntry,
     Notification,
     OCRContents,
     OctreeOption,

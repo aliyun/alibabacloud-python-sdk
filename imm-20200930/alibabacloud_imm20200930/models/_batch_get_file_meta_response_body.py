@@ -13,7 +13,7 @@ class BatchGetFileMetaResponseBody(DaraModel):
         files: List[main_models.File] = None,
         request_id: str = None,
     ):
-        # The metadata returned.
+        # The file metadata.
         self.files = files
         # The request ID.
         self.request_id = request_id

@@ -11,7 +11,7 @@ class UpdateProjectResponseBody(DaraModel):
         project: main_models.Project = None,
         request_id: str = None,
     ):
-        # The project information. Click Project for details.
+        # The project information. For more information, see Project.
         self.project = project
         # The request ID.
         self.request_id = request_id

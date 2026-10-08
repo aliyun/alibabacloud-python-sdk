@@ -27,24 +27,24 @@ class CreateDatasetRequest(DaraModel):
         self.dataset_max_entity_count = dataset_max_entity_count
         # The maximum number of files per dataset. Valid values: 1 to 100000000. Default value: 100000000.
         self.dataset_max_file_count = dataset_max_file_count
-        # The maximum number of metadata relationships per dataset. Default value: 100000000000.
+        # The maximum number of metadata relations per dataset. Default value: 100000000000.
         self.dataset_max_relation_count = dataset_max_relation_count
-        # The maximum total file size per dataset, in bytes. After this limit is exceeded, no more indexes can be added. Default value: 90000000000000000.
+        # The maximum total size of files per dataset. If the limit is exceeded, no more indexes can be added. Default value: 90000000000000000. Unit: bytes.
         self.dataset_max_total_file_size = dataset_max_total_file_size
-        # The dataset name. The name must be unique within the same project. The following naming rules apply:
+        # The name of the dataset. The name must be unique within a project. The name must meet the following requirements:
         # - The name must be 1 to 128 characters in length.
         # - The name can contain only letters, digits, hyphens (-), and underscores (_).
         # - The name must start with a letter or an underscore (_).
         # 
         # This parameter is required.
         self.dataset_name = dataset_name
-        # The description of the dataset. The description can be 1 to 256 characters in length. Default value: empty.
+        # The description of the dataset. The description must be 1 to 256 characters in length. Default value: empty.
         self.description = description
-        # The project name. For information about how to obtain the project name, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
+        # The name of the project. For more information about how to obtain the project name, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The workflow template ID. For more information, see [Workflow templates and operators](https://help.aliyun.com/document_detail/466304.html). Default value: empty.
+        # The ID of the workflow template. For more information, see [Workflow templates and operators](https://help.aliyun.com/document_detail/466304.html). Default value: empty.
         self.template_id = template_id
         # Invalid parameter.
         self.workflow_parameters = workflow_parameters

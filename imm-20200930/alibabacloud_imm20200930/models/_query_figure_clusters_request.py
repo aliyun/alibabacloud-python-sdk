@@ -19,55 +19,29 @@ class QueryFigureClustersRequest(DaraModel):
         update_time_range: main_models.TimeRange = None,
         with_total_count: bool = None,
     ):
-        # The time range within which the face group was created.
+        # The time range during which the face clusters were created.
         self.create_time_range = create_time_range
-        # The custom labels, which can be used as query conditions.
+        # The query conditions for custom labels.
         self.custom_labels = custom_labels
-        # The name of the dataset. You can obtain the name of the dataset from the response of the [CreateDataset](https://help.aliyun.com/document_detail/478160.html) operation.
+        # The name of the dataset. For more information about how to obtain the dataset name, see [Create a dataset](https://help.aliyun.com/document_detail/478160.html).
         # 
         # This parameter is required.
         self.dataset_name = dataset_name
-        # The maximum number of entries to return. Valid values: 0 to 100. Default value: 100.
+        # The maximum number of data records to return in this call. Valid values: 0 to 100. If this parameter is not specified or is set to 0, the default value 100 is used.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+        # The pagination token. If this parameter is left empty or set to None, the query starts from the beginning.
         self.next_token = next_token
         # The sort order. Default value: asc.
-        # 
-        # Valid values:
-        # 
-        # - asc: ascending order.
-        # 
-        # - desc: descending order.
         self.order = order
-        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # The name of the project. For more information about how to obtain the project name, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The sort field. If you leave this parameter empty, the group ID is used as the sort field.
-        # 
-        # Valid values:
-        # 
-        # - ImageCount: the number of images.
-        # 
-        # - VideoCount: the number of videos.
-        # 
-        # - ProjectName: the name of the project.
-        # 
-        # - DatasetName: the name of the dataset.
-        # 
-        # - CreateTime: the point in time when the group is created.
-        # 
-        # - UpdateTime: the most recent point in time when the group is updated.
-        # 
-        # - Gender: the gender.
-        # 
-        # - FaceCount: the number of faces.
-        # 
-        # - GroupName: the name of the group.
+        # The field used for sorting. By default, this parameter is left empty, which indicates that the results are sorted by cluster ID.
         self.sort = sort
-        # The time range within which the face group was last updated.
+        # The time range during which the face clusters were updated.
         self.update_time_range = update_time_range
-        # Specifies whether to return the total number of face groups that match the current query conditions. Default value: false.
+        # Specifies whether to return the total number of face clusters that meet the current query conditions. Default value: false, which indicates that the total number of clusters is not returned.
         self.with_total_count = with_total_count
 
     def validate(self):

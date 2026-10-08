@@ -17,7 +17,7 @@ class BatchGetFigureClusterRequest(DaraModel):
         # 
         # This parameter is required.
         self.dataset_name = dataset_name
-        # The cluster IDs.
+        # The array of group object IDs.
         # 
         # This parameter is required.
         self.object_ids = object_ids

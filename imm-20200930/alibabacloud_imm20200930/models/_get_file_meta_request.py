@@ -14,25 +14,25 @@ class GetFileMetaRequest(DaraModel):
         uri: str = None,
         with_fields: List[str] = None,
     ):
-        # The name of the dataset.[](~~478160~~)
+        # The name of the dataset. For more information about how to obtain the dataset name, refer to [Create a dataset](https://help.aliyun.com/document_detail/478160.html).
         # 
         # This parameter is required.
         self.dataset_name = dataset_name
-        # The name of the project.[](~~478153~~)
+        # The name of the project. For more information about how to obtain the project name, refer to [Create a project](https://help.aliyun.com/document_detail/478153.html).
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The URI of the file. Make sure that the file is indexed\\*\\*\\*\\*.
+        # The URI of the file. Make sure that the file has been **indexed**.
         # 
-        # Specify the OSS URI in the oss\\://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+        # The OSS URI format is oss://${Bucket}/${Object}, where `${Bucket}` is the name of the OSS bucket that resides in the same region as the current project, and `${Object}` is the full path of the file including the file name extension.
         # 
-        # Specify the URI of the file in Photo and Drive Service in the pds\\://domains/${domain}/drives/${drive}/files/${file}/revisions/${revision} format.
+        # The PDS URI format is pds://domains/${domain}/drives/${drive}/files/${file}/revisions/${revision}.
         # 
         # This parameter is required.
         self.uri = uri
-        # The metadata fields that you want to include in the response. You can use this parameter to reduce the size of the response.
+        # Specifies the specific fields to return, instead of all existing metadata fields. You can use this parameter to reduce the size of the returned struct.
         # 
-        # If you do not specify this parameter or leave this parameter empty, the operation returns all metadata fields of the file.
+        # If you do not specify this parameter or leave it empty, all fields are returned.
         self.with_fields = with_fields
 
     def validate(self):

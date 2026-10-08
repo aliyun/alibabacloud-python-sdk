@@ -20,7 +20,7 @@ class TargetVideo(DaraModel):
         # - true: Disabled. The output file does not contain a video stream.
         # - false (default): Not disabled.
         self.disable_video = disable_video
-        # The video filter parameters. This parameter does not take effect when **TranscodeVideo** is empty or **TranscodeVideo.Codec** is set to copy.
+        # The video processing parameters. This parameter does not take effect when the **TranscodeVideo** parameter is empty or when **TranscodeVideo.Codec** is set to copy.
         # 
         # > This parameter is not supported for the GenerateVideoPlaylist API.
         self.filter_video = filter_video
@@ -102,8 +102,8 @@ class TargetVideoTranscodeVideo(DaraModel):
     ):
         # Specifies whether to enable adaptive long/short side mode. Valid values:
         # 
-        # - true: Enabled. The format of the **Resolution** parameter is `LongSide×ShortSide`.
-        # - false (default): Disabled. The format of the **Resolution** parameter is `Width×Height`.
+        # - true: Enabled. The format of the **Resolution** parameter is `long side × short side`.
+        # - false (default): Disabled. The format of the **Resolution** parameter is `width × height`.
         self.adaptive_resolution_direction = adaptive_resolution_direction
         # The number of consecutive B-frames. Default value: 3.
         self.bframes = bframes
@@ -127,7 +127,7 @@ class TargetVideoTranscodeVideo(DaraModel):
         # 
         # > This parameter takes effect only when used together with the **CRF** parameter.
         self.buffer_size = buffer_size
-        # Specifies the constant quality mode. This parameter is mutually exclusive with **Bitrate**. Valid values: [0,51]. A higher value results in lower quality. Recommended values: [18,38].
+        # Specifies the constant quality mode. This parameter is mutually exclusive with the **Bitrate** parameter. The value range is [0,51]. A larger value results in lower video quality. The recommended value range is [18,38].
         self.crf = crf
         # The video encoding format. Valid values:
         # 
@@ -153,7 +153,7 @@ class TargetVideoTranscodeVideo(DaraModel):
         # 
         # > This parameter is not supported for the GenerateVideoPlaylist API.
         self.gopsize = gopsize
-        # The maximum bitrate limit for variable bitrate. When using this parameter, you must specify the BufferSize parameter.
+        # The maximum bitrate limit for variable bitrate. When using this parameter, the BufferSize parameter must be specified.
         # 
         # > This parameter takes effect only when used together with the **CRF** parameter.
         self.max_bitrate = max_bitrate
@@ -171,10 +171,10 @@ class TargetVideoTranscodeVideo(DaraModel):
         self.pixel_format = pixel_format
         # The number of reference frames. Default value: 2.
         self.refs = refs
-        # The resolution of the output video in the format of `WidthxHeight`. The default value is the same as the playback resolution of the source video. You can configure both width and height, or configure only width or height. You can also use the **AdaptiveResolutionDirection** parameter to configure both long and short sides, or configure only the long side or short side. The value range for a single side is (0,4096].
+        # The resolution of the output video in the format of `widthxheight`. The default value is the same as the playback resolution of the source video. You can specify both width and height, or specify only width or height. You can also use the **AdaptiveResolutionDirection** parameter to specify both long and short sides, or only the long side or short side. The value range for a single side is (0,4096].
         # 
-        # - Example 1: If **AdaptiveResolutionDirection** is false, `1280x720` sets the width to 1280 and the height to 720. `1280x` sets the width to 1280 and keeps the height the same as the source video. `x720` sets the height to 720 and keeps the width the same as the source video.
-        # - Example 2: If **AdaptiveResolutionDirection** is true, `1280x720` sets the long side to 1280 and the short side to 720. `1280x` sets the long side to 1280 and keeps the short side the same as the source video. `x720` sets the short side to 720 and keeps the long side the same as the source video.
+        # - Example 1: If **AdaptiveResolutionDirection** is false, `1280x720` sets the width to 1280 and height to 720. `1280x` sets the width to 1280 and keeps the height the same as the source video. `x720` sets the height to 720 and keeps the width the same as the source video.
+        # - Example 2: If **AdaptiveResolutionDirection** is true, `1280x720` sets the long side to 1280 and short side to 720. `1280x` sets the long side to 1280 and keeps the short side the same as the source video. `x720` sets the short side to 720 and keeps the long side the same as the source video.
         # 
         # > If the source video contains rotation information, the width/height and long/short side determination is based on the post-rotation state, which is the playback resolution.
         self.resolution = resolution
@@ -190,7 +190,7 @@ class TargetVideoTranscodeVideo(DaraModel):
         # 
         # > This parameter must be set together with the **Resolution** parameter.
         self.resolution_option = resolution_option
-        # The clockwise rotation angle of the video in degrees. Valid values:
+        # The clockwise rotation degree of the video. Valid values:
         # 
         # - 0 (default)
         # - 90
@@ -199,21 +199,21 @@ class TargetVideoTranscodeVideo(DaraModel):
         self.rotation = rotation
         # The scaling mode. Valid values:
         # 
-        # - stretch (default): Fixes the width/height or long/short sides and forcibly scales the video to fill the blank area by stretching.
-        # - crop: Scales proportionally to the minimum resolution that extends beyond the specified width/height or long/short side rectangle, and then center-crops the excess area.
-        # - fill: Scales proportionally to the maximum resolution within the specified width/height or long/short side rectangle, and then center-fills the blank area with black.
-        # - fit: Scales proportionally to the maximum resolution within the specified width/height or long/short side rectangle.
+        # - stretch (default): Fixed width/height or long/short sides. Forces scaling and stretches to fill blank areas.
+        # - crop: Proportional scaling. Scales to the minimum resolution that extends beyond the specified width/height or long/short side rectangle, then center-crops the excess.
+        # - fill: Proportional scaling. Scales to the maximum resolution within the specified width/height or long/short side rectangle, then fills blank areas with black using center alignment.
+        # - fit: Proportional scaling. Scales to the maximum resolution within the specified width/height or long/short side rectangle.
         # 
         # > This parameter must be set together with the **Resolution** parameter.
         self.scale_type = scale_type
-        # Enables the Narrowband HD mode. Valid values:
+        # Enables the lightweight HD mode. Valid values:
         # 
         # 0: Default value. Disabled.
         # 
-        # 1: Uses the Narrowband HD mode for transcoding.
-        # > For optimal results, use the officially recommended Bitrate or CRF parameters for video transcoding with Narrowband HD.
+        # 1: Uses the lightweight HD mode for transcoding.
+        # > For optimal results, use the officially recommended Bitrate or CRF parameters for video transcoding encoding with lightweight HD.
         # >
-        # >Notice: Narrowband HD supports only H.264/H.265 formats, only yuv420p, 8-bit depth, and does not support multi-target video transcoding output or video concatenation. For more information, see [Narrowband HD overview](https://help.aliyun.com/document_detail/2984556.html).
+        # >Notice: Lightweight HD supports only h.264/h.265 formats, only yuv420p, 8-bit depth, and does not support multi-target video transcoding output or video concatenation. For more information, see [Lightweight HD product introduction](https://help.aliyun.com/document_detail/2984556.html).
         self.video_slim = video_slim
 
     def validate(self):
@@ -346,7 +346,7 @@ class TargetVideoFilterVideo(DaraModel):
         speed: float = None,
         watermarks: List[main_models.TargetVideoFilterVideoWatermarks] = None,
     ):
-        # Applies mosaic processing to a rectangular area of the video to remove logos or station watermarks.
+        # Blurs a rectangular area of the video to remove logos, station marks, and similar elements.
         self.delogos = delogos
         # The video desensitization configuration.
         # 
@@ -354,7 +354,7 @@ class TargetVideoFilterVideo(DaraModel):
         # 
         # - This parameter is applicable only to the CreateMediaConvertTask API.
         self.desensitization = desensitization
-        # The video playback speed setting. Valid values: [0.5,1.0]. Default value: 1.0.
+        # The video playback speed setting. Value range: [0.5,1.0]. Default value: 1.0.
         # 
         # > - This is the ratio of the transcoded media file playback speed to the source media file default playback speed, not speed-up transcoding.
         # 
@@ -445,39 +445,39 @@ class TargetVideoFilterVideoWatermarks(DaraModel):
     ):
         # The border color of the watermark text. The format is #RRGGBB. Default value: #000000. Values such as "red" and "green" are also supported.
         # 
-        # >Notice:  This parameter takes effect only when the `Type` parameter is set to `text`.</notice>
+        # >Notice:  This parameter takes effect when the `Type` parameter is set to `text`.</notice>
         self.border_color = border_color
-        # The border width of the text watermark, in pixels (px). The value must be an integer. Valid values: [0,4096]. Default value: 0.
+        # The border width of the text watermark, in pixels (px). The value must be an integer. Value range: [0,4096]. Default value: 0.
         # 
-        # >Notice:  This parameter takes effect only when the `Type` parameter is set to `text`.</notice>
+        # >Notice:  This parameter takes effect when the `Type` parameter is set to `text`.</notice>
         self.border_width = border_width
-        # The content of the text watermark. Default value: empty.
+        # The content of the text watermark. The default value is empty.
         # 
-        # >Notice:  This parameter takes effect only when the `Type` parameter is set to `text`.</notice>
+        # >Notice:  This parameter takes effect when the `Type` parameter is set to `text`.</notice>
         self.content = content
         # The duration for which the watermark is displayed, in seconds (s). The default value is until the end of the video.
         self.duration = duration
-        # The meanings differ depending on whether the value is an integer or a decimal:
+        # The meanings differ depending on whether the value is an integer or decimal:
         # 
-        # - 0 (default): Both the offset in pixels and the ratio of horizontal offset to the output resolution height are 0.
-        # - Integer: The offset in pixels (px). Valid values: [1,4096].
-        # - Decimal: The ratio of horizontal offset to the output resolution height. Valid values: (0,1).
+        # - 0 (default): Both the offset in pixels and the ratio of horizontal offset to output resolution height are 0.
+        # - Integer: The offset in pixels (px). Value range: [1,4096].
+        # - Decimal: The ratio of horizontal offset to output resolution height. Value range: (0,1).
         self.dx = dx
-        # The meanings differ depending on whether the value is an integer or a decimal:
+        # The meanings differ depending on whether the value is an integer or decimal:
         # 
-        # - 0 (default): Both the offset in pixels and the ratio of vertical offset to the output resolution height are 0.
+        # - 0 (default): Both the offset in pixels and the ratio of vertical offset to output resolution height are 0.
         # 
-        # - Integer: The offset in pixels (px). Valid values: [1,4096].
+        # - Integer: The offset in pixels (px). Value range: [1,4096].
         # 
-        # - Decimal: The ratio of vertical offset to the output resolution height. Valid values: (0,1).
+        # - Decimal: The ratio of vertical offset to output resolution height. Value range: (0,1).
         self.dy = dy
-        # The font opacity of the text watermark. Valid values: (0,1]. Default value: 1, which indicates fully opaque.
+        # The font transparency of the text watermark. Value range: (0,1]. Default value: 1, which indicates fully opaque.
         # 
-        # >Notice:  This parameter takes effect only when the `Type` parameter is set to `text`.</notice>
+        # >Notice:  This parameter takes effect when the `Type` parameter is set to `text`.</notice>
         self.font_apha = font_apha
         # The font color of the watermark text. The format is #RRGGBB. Default value: #000000. Values such as "red" and "green" are also supported.
         # 
-        # >Notice:  This parameter takes effect only when the `Type` parameter is set to `text`.</notice>
+        # >Notice:  This parameter takes effect when the `Type` parameter is set to `text`.</notice>
         self.font_color = font_color
         # The font name of the text watermark. Valid values:
         # 
@@ -486,16 +486,16 @@ class TargetVideoFilterVideoWatermarks(DaraModel):
         # - SourceHanSerif-Regular
         # - SourceHanSerif-Bold
         # 
-        # >Notice:  This parameter takes effect only when the `Type` parameter is set to `text`.</notice>
+        # >Notice:  This parameter takes effect when the `Type` parameter is set to `text`.</notice>
         self.font_name = font_name
-        # The font size of the text watermark. Default value: 16. The value must be an integer. Valid values: (4,120).
+        # The font size of the text watermark. Default value: 16. The value must be an integer. Value range: (4,120).
         # 
-        # >Notice:  This parameter takes effect only when the `Type` parameter is set to `text`.</notice>
+        # >Notice:  This parameter takes effect when the `Type` parameter is set to `text`.</notice>
         self.font_size = font_size
-        # The height of the watermark image. The default value is the original height of the watermark image. The meanings differ depending on whether the value is an integer or a decimal:
+        # The height of the watermark image. The default value is the original height of the watermark image. The meanings differ depending on whether the value is an integer or decimal:
         # 
-        # - Integer: The height in pixels (px). Valid values: [1,4096].
-        # - Decimal: The ratio relative to the output video resolution height. Valid values: (0,1).
+        # - Integer: The pixel value of the logo removal height, in pixels (px). Value range: [1,4096].
+        # - Decimal: The ratio relative to the output video resolution height. Value range: (0,1).
         self.height = height
         # The reference position for adding the watermark. Valid values:
         # 
@@ -515,12 +515,12 @@ class TargetVideoFilterVideoWatermarks(DaraModel):
         # 
         # The OSS URI format is `oss://<bucket>/<object>`, where `<bucket>` is the name of an OSS bucket in the same region as the current project, and `<object>` is the full path of the file including the file name extension.
         # 
-        # >Notice:  This parameter takes effect only when the `Type` parameter is set to `file`.</notice>
+        # >Notice:  This parameter takes effect when the `Type` parameter is set to `file`.</notice>
         self.uri = uri
-        # The width of the watermark image. The default value is the original width of the watermark image. The meanings differ depending on whether the value is an integer or a decimal:
+        # The width of the watermark image. The default value is the original width of the watermark image. The meanings differ depending on whether the value is an integer or decimal:
         # 
-        # - Integer: The width in pixels (px). Valid values: [1,4096].
-        # - Decimal: The ratio relative to the output video resolution width. Valid values: (0,1).
+        # - Integer: The pixel value of the logo removal width, in pixels (px). Value range: [1,4096].
+        # - Decimal: The ratio relative to the output video resolution width. Value range: (0,1).
         self.width = width
 
     def validate(self):
@@ -686,14 +686,23 @@ class TargetVideoFilterVideoDesensitizationLicensePlate(DaraModel):
         scale_ratio: float = None,
         transparency: float = None,
     ):
+        # The blur radius. Value range: 1 to 100. A larger value typically results in a more blurred area.
         self.blur_radius = blur_radius
         # The license plate confidence threshold, which sets the lower limit of confidence for license plate recognition. If the confidence value of a detected license plate is lower than this threshold, the license plate is not desensitized.
-        # - Valid values: 0.0 to 1.0.
+        # - Value range: 0.0 to 1.0.
         # - Default value: 0.0 (no confidence filtering is performed).
         self.confidence = confidence
-        # The minimum license plate size threshold, which sets the minimum size of license plates to be desensitized. If the width or height of a detected license plate is smaller than this threshold, the license plate is not desensitized. Unit: pixels. Default value: 0, which indicates no size restriction on license plates.
+        # The minimum license plate size threshold, which sets the minimum size of license plates to be desensitized. If the width or height of a detected license plate is smaller than this threshold, the license plate is not desensitized. Unit: pixels. Default value: 0, which indicates no restriction on license plate size.
         self.min_size = min_size
+        # The detection box scaling ratio. Value range: 0.1 to 5.0. Scales both the width and height of the detection box based on its center.
+        # • > 1.0: Enlarges the blur area.
+        # • < 1.0: Reduces the blur area.
+        # • = 1.0: Uses the original detection box.
         self.scale_ratio = scale_ratio
+        # The transparency and edge feathering intensity of the blur area. Value range: 0.0 to 1.0.
+        # • 0.0: Displays the full blur effect.
+        # • 1.0: No blur processing is performed. Only the original image is displayed.
+        # • 0.0 to 1.0: A larger value results in a higher proportion of the original image, a smaller actual blur radius, and typically a larger edge feathering range.
         self.transparency = transparency
 
     def validate(self):
@@ -749,14 +758,23 @@ class TargetVideoFilterVideoDesensitizationFace(DaraModel):
         scale_ratio: float = None,
         transparency: float = None,
     ):
+        # The blur radius. Value range: 1 to 100. A larger value typically results in a more blurred area.
         self.blur_radius = blur_radius
         # The face confidence threshold, which sets the lower limit of confidence for face recognition. If the confidence value of a detected face is lower than this threshold, the face is not desensitized.
-        # - Valid values: 0.0 to 1.0.
+        # - Value range: 0.0 to 1.0.
         # - Default value: 0.0 (no confidence filtering is performed).
         self.confidence = confidence
-        # The minimum face size threshold, which sets the minimum size of faces to be desensitized. If the width or height of a detected face is smaller than this threshold, the face is not desensitized. Unit: pixels. Default value: 0, which indicates no size restriction on faces.
+        # The minimum face size threshold, which sets the minimum size of faces to be desensitized. If the width or height of a detected face is smaller than this threshold, the face is not desensitized. Unit: pixels. Default value: 0, which indicates no restriction on face size.
         self.min_size = min_size
+        # The detection box scaling ratio. Value range: 0.1 to 5.0. Scales both the width and height of the detection box based on its center.
+        # • > 1.0: Enlarges the blur area.
+        # • < 1.0: Reduces the blur area.
+        # • = 1.0: Uses the original detection box.
         self.scale_ratio = scale_ratio
+        # The transparency and edge feathering intensity of the blur area. Value range: 0.0 to 1.0.
+        # • 0.0: Displays the full blur effect.
+        # • 1.0: No blur processing is performed. Only the original image is displayed.
+        # • 0.0 to 1.0: A larger value results in a higher proportion of the original image, a smaller actual blur radius, and typically a larger edge feathering range.
         self.transparency = transparency
 
     def validate(self):
@@ -816,22 +834,22 @@ class TargetVideoFilterVideoDelogos(DaraModel):
     ):
         # The duration for which the mosaic is applied, in seconds (s). The default value is until the end of the video.
         self.duration = duration
-        # The meanings differ depending on whether the value is an integer or a decimal:
+        # The meanings differ depending on whether the value is an integer or decimal:
         # 
-        # - 0 (default): Both the offset in pixels and the ratio of horizontal offset to the output resolution height are 0.
-        # - Integer: The offset in pixels (px). Valid values: [1,4096].
-        # - Decimal: The ratio of horizontal offset to the output resolution height. Valid values: (0,1).
+        # - 0 (default): Both the offset in pixels and the ratio of horizontal offset to output resolution height are 0.
+        # - Integer: The offset in pixels (px). Value range: [1,4096].
+        # - Decimal: The ratio of horizontal offset to output resolution height. Value range: (0,1).
         self.dx = dx
-        # Default value: 0. The meanings differ depending on whether the value is an integer or a decimal:
+        # Default value: 0. The meanings differ depending on whether the value is an integer or decimal:
         # 
-        # - 0 (default): Both the offset in pixels and the ratio of vertical offset to the output resolution height are 0.
-        # - Integer: The offset in pixels (px). Valid values: [1,4096].
-        # - Decimal: The ratio of vertical offset to the output resolution height. Valid values: (0,1).
+        # - 0 (default): Both the offset in pixels and the ratio of vertical offset to output resolution height are 0.
+        # - Integer: The offset in pixels (px). Value range: [1,4096].
+        # - Decimal: The ratio of vertical offset to output resolution height. Value range: (0,1).
         self.dy = dy
-        # The height of the mosaic. The default value is the decimal 1.0, which fills the entire output video height. The meanings differ depending on whether the value is an integer or a decimal:
+        # The height of the mosaic. The default value is the decimal 1.0, which fills the entire output video height. The meanings differ depending on whether the value is an integer or decimal:
         # 
-        # - Integer: The height in pixels (px). Valid values: [1,4096].
-        # - Decimal: The ratio relative to the output video resolution height. Valid values: (0,1).
+        # - Integer: The pixel value, in pixels (px). Value range: [1,4096].
+        # - Decimal: The ratio relative to the output video resolution height. Value range: (0,1).
         self.height = height
         # The reference position for adding the mosaic. Valid values:
         # 
@@ -842,10 +860,10 @@ class TargetVideoFilterVideoDelogos(DaraModel):
         self.refer_pos = refer_pos
         # The start time for adding the mosaic, in seconds (s). The default value is the start time of the video.
         self.start_time = start_time
-        # The width of the mosaic. The default value is the decimal 1.0, which fills the entire output video width. The meanings differ depending on whether the value is an integer or a decimal:
+        # The width of the mosaic. The default value is the decimal 1.0, which fills the entire output video width. The meanings differ depending on whether the value is an integer or decimal:
         # 
-        # - Integer: The width in pixels (px). Valid values: [1,4096].
-        # - Decimal: The ratio relative to the output video resolution width. Valid values: (0,1).
+        # - Integer: The pixel value, in pixels (px). Value range: [1,4096].
+        # - Decimal: The ratio relative to the output video resolution width. Value range: (0,1).
         self.width = width
 
     def validate(self):

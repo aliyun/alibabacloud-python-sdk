@@ -14,11 +14,11 @@ class QueryStoriesResponseBody(DaraModel):
         request_id: str = None,
         stories: List[main_models.Story] = None,
     ):
-        # The pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        # The pagination token. An empty value indicates that all data has been read.
         self.next_token = next_token
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The stories.
+        # The list of queried stories.
         self.stories = stories
 
     def validate(self):

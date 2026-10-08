@@ -24,26 +24,7 @@ class Client(OpenApiClient):
         super().__init__(config)
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
-            'cn-beijing-gov-1': 'imm-vpc.cn-beijing-gov-1.aliyuncs.com',
-            'us-west-1': 'imm.us-west-1.aliyuncs.com',
-            'us-east-1': 'imm.us-east-1.aliyuncs.com',
-            'eu-west-1': 'imm.eu-west-1.aliyuncs.com',
-            'eu-central-1': 'imm.eu-central-1.aliyuncs.com',
-            'cn-zhangjiakou': 'imm.cn-zhangjiakou.aliyuncs.com',
-            'cn-wulanchabu': 'imm.cn-wulanchabu.aliyuncs.com',
-            'cn-shenzhen': 'imm.cn-shenzhen.aliyuncs.com',
-            'cn-shanghai': 'imm.cn-shanghai.aliyuncs.com',
-            'cn-qingdao': 'imm.cn-qingdao.aliyuncs.com',
-            'cn-north-2-gov-1': 'imm.cn-north-2-gov-1.aliyuncs.com',
-            'cn-hongkong': 'imm.cn-hongkong.aliyuncs.com',
-            'cn-hangzhou': 'imm.cn-hangzhou.aliyuncs.com',
-            'cn-guangzhou': 'imm.cn-guangzhou.aliyuncs.com',
-            'cn-chengdu': 'imm.cn-chengdu.aliyuncs.com',
-            'cn-beijing': 'imm.cn-beijing.aliyuncs.com',
-            'ap-southeast-5': 'imm.ap-southeast-5.aliyuncs.com',
-            'ap-southeast-2': 'imm.ap-southeast-2.aliyuncs.com',
-            'ap-southeast-1': 'imm.ap-southeast-1.aliyuncs.com',
-            'ap-south-1': 'imm.ap-south-1.aliyuncs.com'
+            'cn-beijing-gov-1': 'imm-vpc.cn-beijing-gov-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('imm', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)

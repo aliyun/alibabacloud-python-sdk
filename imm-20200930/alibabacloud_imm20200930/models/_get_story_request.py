@@ -11,15 +11,15 @@ class GetStoryRequest(DaraModel):
         object_id: str = None,
         project_name: str = None,
     ):
-        # The name of the dataset.[](~~478160~~)
+        # The name of the dataset. For more information about how to obtain the dataset name, see [Create a dataset](https://help.aliyun.com/document_detail/478160.html).
         # 
         # This parameter is required.
         self.dataset_name = dataset_name
-        # The ID of the story.
+        # The ID of the story object whose information you want to retrieve.
         # 
         # This parameter is required.
         self.object_id = object_id
-        # The name of the project.[](~~478153~~)
+        # The name of the project. For more information about how to obtain the project name, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
         # 
         # This parameter is required.
         self.project_name = project_name
