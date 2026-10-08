@@ -14,27 +14,30 @@ class ListHistoricalSkillGroupReportRequest(DaraModel):
         page_size: int = None,
         skill_group_id_list: str = None,
         start_time: int = None,
+        summarize_by_instance_id: bool = None,
     ):
-        # End time of the historical data to retrieve, formatted as a UNIX timestamp in milliseconds. This parameter is optional. The default value is the current time. The time precision for statistics is hourly, rounded down to the previous hour, and uses an open interval. For example, if the start time is 11:12:20 and the end time is 11:45:50, the aligned input time range becomes [11:00:00, 12:00:00), meaning greater than or equal to 11:00:00 and less than 12:00:00.
+        # The end time of the historical data to retrieve. Specify a UNIX timestamp in milliseconds. This parameter is optional. Default value: the current time. The statistical time precision is in hours. The end time is rounded up to the nearest hour, and the interval is open. For example, if the start time is 11:12:20 and the end time is 11:45:50, the aligned time range is [11:00:00, 12:00:00), which means greater than or equal to 11:00:00 and less than 12:00:00.
         self.end_time = end_time
-        # Instance ID.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Media type. The default value is Audio. Other valid values include Chat and Video.
+        # The media type. Default value: Audio. Valid values: Audio, Chat, and Video.
         self.media_type = media_type
-        # Page number, ranging from 1 to 100.
+        # The page number. Valid values: 1 to 100.
         # 
         # This parameter is required.
         self.page_number = page_number
-        # Page size, ranging from 1 to 100.
+        # The number of entries per page. Valid values: 1 to 100.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # List of skill group IDs to query, provided as a JSON array string. Each array element is a skill group ID. This parameter is optional. The default value is empty, which means all skill groups in the current page are queried.
+        # The list of skill group IDs to query. The value is a character string in the JSON array format, where each array element is a skill group ID. This parameter is optional. Default value: empty. An empty value indicates that all skill groups in the current paging are queried.
         self.skill_group_id_list = skill_group_id_list
-        # Start time of the historical data to retrieve, formatted as a UNIX timestamp in milliseconds. This parameter is optional. The default value is 00:00:00 of the current day. The earliest allowed value is 180 days before the current time. The time precision for statistics is hourly, rounded down to the previous hour, and uses a closed interval.
+        # The start time of the historical data to retrieve. Specify a UNIX timestamp in milliseconds. This parameter is optional. Default value: 00:00:00 on the current day. The earliest allowed time is 180 days before the current time. The statistical time precision is in hours. The start time is rounded down to the nearest hour, and the interval is closed.
         self.start_time = start_time
+        # Specifies whether to aggregate data by instance ID.
+        self.summarize_by_instance_id = summarize_by_instance_id
 
     def validate(self):
         pass
@@ -65,6 +68,9 @@ class ListHistoricalSkillGroupReportRequest(DaraModel):
         if self.start_time is not None:
             result['StartTime'] = self.start_time
 
+        if self.summarize_by_instance_id is not None:
+            result['SummarizeByInstanceId'] = self.summarize_by_instance_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -89,6 +95,9 @@ class ListHistoricalSkillGroupReportRequest(DaraModel):
 
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+
+        if m.get('SummarizeByInstanceId') is not None:
+            self.summarize_by_instance_id = m.get('SummarizeByInstanceId')
 
         return self
 

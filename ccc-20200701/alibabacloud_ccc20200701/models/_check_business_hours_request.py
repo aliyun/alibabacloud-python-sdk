@@ -10,8 +10,11 @@ class CheckBusinessHoursRequest(DaraModel):
         instance_id: str = None,
         time: int = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The 13-digit timestamp. If this parameter is not specified, the current time is used by default.
         self.time = time
 
     def validate(self):

@@ -1,3 +1,7 @@
+2026-10-08 Version: 2.34.1
+- Update API ListHistoricalSkillGroupReport: add request parameters SummarizeByInstanceId.
+
+
 2026-09-16 Version: 2.34.0
 - Support API CheckBusinessHours.
 

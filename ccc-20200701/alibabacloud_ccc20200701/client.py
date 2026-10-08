@@ -12047,6 +12047,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.summarize_by_instance_id):
+            query['SummarizeByInstanceId'] = request.summarize_by_instance_id
         body = {}
         if not DaraCore.is_null(request.skill_group_id_list):
             body['SkillGroupIdList'] = request.skill_group_id_list
@@ -12089,6 +12091,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.summarize_by_instance_id):
+            query['SummarizeByInstanceId'] = request.summarize_by_instance_id
         body = {}
         if not DaraCore.is_null(request.skill_group_id_list):
             body['SkillGroupIdList'] = request.skill_group_id_list
