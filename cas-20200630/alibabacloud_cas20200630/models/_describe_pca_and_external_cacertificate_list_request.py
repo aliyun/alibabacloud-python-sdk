@@ -14,11 +14,11 @@ class DescribePcaAndExternalCACertificateListRequest(DaraModel):
     ):
         # The current page number.
         self.current_page = current_page
-        # One or more certificate identifiers, separated by commas.
+        # The certificate identifiers. Separate multiple identifiers with commas (,).
         self.identifiers = identifiers
-        # The keyword for a fuzzy search on the name, domain name, and SAN fields.
+        # The search keyword. Fuzzy search by name, domain name, or SANs is supported.
         self.key_word = key_word
-        # The number of entries to return per page. The default value is 50.
+        # The number of records to display per page. Default value: 50.
         self.show_size = show_size
 
     def validate(self):

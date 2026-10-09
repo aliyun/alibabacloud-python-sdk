@@ -16,45 +16,38 @@ class DescribeCACertificateListRequest(DaraModel):
         show_size: int = None,
         valid_status: str = None,
     ):
-        # The status of the CA. Valid values:
+        # The current status of the CA. Valid values:
         # 
         # - issue: enabled.
-        # 
         # - forbidden: disabled.
-        # 
         # - revoke: revoked.
         self.ca_status = ca_status
         # The type of the CA. Valid values:
         # 
         # - root: root CA.
-        # 
-        # - subRoot: intermediate CA.
-        # 
-        # - externalCa: an imported external CA.
+        # - subRoot: subordinate CA.
+        # - externalCa: externally imported CA.
         self.cert_type = cert_type
-        # The page number. Default value: 1.
+        # The page number of the current page in a paging query. Settings: specify the desired page number. Default value: **1**.
         self.current_page = current_page
         # The unique identifier of the CA certificate.
         # 
-        # > Call [DescribeCACertificateList](https://help.aliyun.com/document_detail/328095.html) to query the unique identifiers of all CA certificates.
+        # > You can call [DescribeCACertificateList](https://help.aliyun.com/document_detail/328095.html) to query the unique identifiers of all CA certificates.
         self.identifier = identifier
-        # The issuer of the CA. Valid values:
+        # The issuing authority of the CA. Valid values:
         # 
         # - local: private certificate.
-        # 
-        # - iTrusChina: a trusted CA.
-        # 
-        # - external: an imported external CA.
+        # - iTrusChina: compliance CA.
+        # - external: externally imported.
         self.issuer_type = issuer_type
         # The resource group ID. You can obtain this ID by calling the [ListResources](https://help.aliyun.com/document_detail/2716559.html) operation.
         self.resource_group_id = resource_group_id
-        # The number of entries to return on each page. Default value: 20.
+        # The number of CA certificates per page in a paging query. Settings: specify the desired number of entries per page. Default value: **20**.
         self.show_size = show_size
-        # The validity status of the CA. Valid values:
+        # The time-based validity status of the CA. Valid values:
         # 
-        # - valid: The CA certificate is valid.
-        # 
-        # - notValid: The CA certificate has expired.
+        # - valid: The CA is within its validity period.
+        # - notValid: The CA has expired.
         self.valid_status = valid_status
 
     def validate(self):

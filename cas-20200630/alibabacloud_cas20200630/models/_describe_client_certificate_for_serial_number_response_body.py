@@ -13,9 +13,9 @@ class DescribeClientCertificateForSerialNumberResponseBody(DaraModel):
         certificate_list: List[main_models.DescribeClientCertificateForSerialNumberResponseBodyCertificateList] = None,
         request_id: str = None,
     ):
-        # Details of the client or server certificates.
+        # The details of the client certificates or server certificates.
         self.certificate_list = certificate_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -78,55 +78,48 @@ class DescribeClientCertificateForSerialNumberResponseBodyCertificateList(DaraMo
         x_509certificate: str = None,
         years: int = None,
     ):
-        # The expiration time of the certificate.
+        # The expiration date of the certificate. The format is YYYY-MM-DD.
         self.after_date = after_date
-        # The encryption algorithm of the certificate. Valid values:
+        # The encryption algorithm type of the certificate. Valid values:
         # 
-        # - **RSA**: The RSA algorithm.
-        # 
-        # - **ECC**: The ECC algorithm.
-        # 
-        # - **SM2**: The SM2 algorithm.
+        # - **RSA**: RSA algorithm.
+        # - **ECC**: ECC algorithm.
+        # - **SM2**: SM2 algorithm.
         self.algorithm = algorithm
-        # The issuance time of the certificate.
+        # The issuance date of the certificate. The format is YYYY-MM-DD.
         self.before_date = before_date
         # The type of the certificate.
         self.certificate_type = certificate_type
         # The common name of the certificate.
         self.common_name = common_name
-        # The two-letter country code of the issuer.
+        # The code of the country where the organization associated with the subordinate CA certificate that issued this certificate is located.
         # 
-        # For more information about country codes, see the **Country codes** section in [Manage company profiles](https://help.aliyun.com/document_detail/198289.html).
+        # For more information about country codes, see the **International codes** section in [Manage company information](https://help.aliyun.com/document_detail/198289.html).
         self.country_code = country_code
         # The unique identifier of the certificate.
         self.identifier = identifier
         # The key length of the certificate.
         self.key_size = key_size
-        # The city of the issuer.
+        # The name of the city where the organization associated with the subordinate CA certificate that issued this certificate is located.
         self.locality = locality
         # The MD5 fingerprint of the certificate.
         self.md_5 = md_5
-        # The organization of the issuer.
+        # The name of the organization associated with the subordinate CA certificate that issued this certificate.
         self.organization = organization
-        # The organizational unit of the issuer.
+        # The name of the department in the organization associated with the subordinate CA certificate that issued this certificate.
         self.organization_unit = organization_unit
-        # The identifier of the issuer. This parameter is returned only if the certificate is issued by Alibaba Cloud.
+        # If this parameter is not empty, the client certificate is issued by Alibaba Cloud.
         self.parent_identifier = parent_identifier
-        # The subject alternative name (SAN) extension, which specifies identifiers such as email addresses, domain names, URIs, and IP addresses.
+        # The Subject Alternative Name (SAN) extension of the certificate, which indicates other domain names or IP addresses associated with the certificate.
         # 
-        # A JSON string that represents an array of SAN objects. Each object contains the following parameters:
+        # This parameter is represented as a string converted from a JSON array. Each element in the JSON array is a structure that corresponds to a SAN extension. Each SAN extension structure contains the following parameters:
         # 
-        # - **Type**: The type of the extension. This parameter is an integer. Valid values:
-        # 
-        #   - **1**: email address.
-        # 
-        #   - **2**: domain name.
-        # 
-        #   - **6**: uniform resource identifier (URI).
-        # 
-        #   - **7**: IP address.
-        # 
-        # - **Value**: The content of the extension. This parameter is a string.
+        # - **Type**: An Integer value that indicates the type of the extension. Valid values:
+        # 	- **1**: an email address.
+        # 	- **2**: a domain name.
+        # 	- **6**: a Uniform Resource Identifier (URI).
+        # 	- **7**: an IP address.
+        # - **Value**: A String value that indicates the content of the extension.
         self.sans = sans
         # The serial number of the certificate.
         self.serial_number = serial_number
@@ -134,44 +127,27 @@ class DescribeClientCertificateForSerialNumberResponseBodyCertificateList(DaraMo
         self.sha_2 = sha_2
         # The signature algorithm of the certificate.
         self.sign_algorithm = sign_algorithm
-        # <props="china">The state or province of the issuer.
-        # <props="intl">The state or province of the issuer.
+        # <props="china">The name of the province, municipality, or autonomous region where the organization associated with the subordinate CA certificate that issued this certificate is located.
+        # <props="intl">The name of the province or state where the organization associated with the subordinate CA certificate that issued this certificate is located.
         self.state = state
         # The status of the certificate. Valid values:
         # 
-        # - **ISSUE**: The certificate is issued.
-        # 
-        # - **REVOKE**: The certificate is revoked.
+        # - **ISSUE**: issued.
+        # - **REVOKE**: revoked.
         self.status = status
-        # The distinguished name (DN) of the certificate. The DN contains information about the certificate subject, including:
+        # The distinguished name (DN) attribute of the certificate, which indicates the subject of the certificate. The DN contains the following information:
         # 
-        # - **C**: Country.
-        # 
-        # - **O**: Organization.
-        # 
-        # - **OU**: Organizational unit.
-        # 
-        # - **L**: City.
-        # 
-        # <props="china">
-        # 
-        # - **ST**: State or province.
-        # 
-        # 
-        # 
-        # 
-        # <props="intl">
-        # 
-        # - **ST**: State or province.
-        # 
-        # 
-        # 
-        # 
-        # - **CN**: Common name.
+        # - **C**: The country.
+        # - **O**: The organization.
+        # - **OU**: The department.
+        # - **L**: The city.
+        # <props="china">- **ST**: The province, municipality, or autonomous region.
+        # <props="intl">- **ST**: The province or state.
+        # - **CN**: The common name.
         self.subject_dn = subject_dn
-        # The certificate content.
+        # The content of the certificate.
         self.x_509certificate = x_509certificate
-        # This parameter is deprecated.
+        # The validity period of the certificate. Unit: years.
         self.years = years
 
     def validate(self):

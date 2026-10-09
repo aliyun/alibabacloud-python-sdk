@@ -21,17 +21,17 @@ class ListCertResponseBody(DaraModel):
     ):
         # The current page number.
         self.current_page = current_page
-        # The list of certificates.
+        # The data source ID to which the certificates belong.
         self.list = list
-        # The maximum number of entries returned.
+        # The maximum number of entries to return.
         self.max_results = max_results
-        # A token to retrieve the next page of results. If this value is empty, all results have been returned.
+        # The token for the next query. If this parameter is empty, no more results exist.
         self.next_token = next_token
-        # The number of pages.
+        # The total number of pages.
         self.page_count = page_count
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The page size.
+        # The total size of the certificate. Unit: bytes.
         self.show_size = show_size
         # The total number of certificates.
         self.total_count = total_count
@@ -129,61 +129,56 @@ class ListCertResponseBodyList(DaraModel):
         subject_dn: str = None,
         tags: List[str] = None,
     ):
-        # The expiration time of the certificate.
+        # The expiration time of the certificate in UTC/GMT.
         self.after_date = after_date
-        # The expiration time of the client certificate. This value is a UNIX timestamp. Unit: milliseconds.
-        # 
-        # > The **BeforeTime** and **AfterTime** parameters must be both left empty or both specified.
+        # The service expiration time of the client certificate, in timestamp format. Unit: milliseconds.
+        # >The **BeforeTime** and **AfterTime** parameters must both be empty or both be specified.
         self.after_time = after_time
-        # The public key algorithm.
+        # The algorithm type.
         self.algorithm = algorithm
-        # The alias of the certificate.
+        # The name of the issued certificate.
         self.alias_name = alias_name
-        # The issuance time of the certificate.
+        # The issuance time of the certificate in UTC/GMT.
         self.before_date = before_date
-        # The issuance time of the client certificate. This value is a UNIX timestamp. Unit: milliseconds.
+        # The issuance time of the client certificate, in timestamp format. The default value is the time when you call this operation. Unit: milliseconds.
         # 
-        # > The **BeforeTime** and **AfterTime** parameters must be both left empty or both specified.
+        # >The **BeforeTime** and **AfterTime** parameters must both be empty or both be specified.
         self.before_time = before_time
-        # The type of the certificate. Valid values:
+        # The certificate type. Valid values:
         # 
-        # - `free`: Free certificate.
-        # 
-        # - `cas`: Alibaba Cloud Security certificate.
-        # 
-        # - `upload`: A user-uploaded certificate.
+        # - free: free certificate.
+        # - cas: China Security certificate.
+        # - upload: custom upload.
         self.certificate_type = certificate_type
-        # The primary domain name of the certificate.
+        # The primary domain name bound to the certificate.
         self.common_name = common_name
-        # A unique, user-defined identifier for the certificate.
+        # The user-defined identifier, which serves as a unique key.
         self.custom_identifier = custom_identifier
-        # A JSON string containing extended attributes.
+        # The extended field.
         self.extra = extra
-        # The ID of the data source to which the certificate order belongs.
+        # The data source ID of the certificate order.
         self.id = id
-        # The unique identifier of the certificate.
+        # The certificate identifier.
         self.identifier = identifier
-        # Specifies if the private key is exportable. Valid values:
+        # Indicates whether the certificate can be used. Valid values:
         # 
-        # - `true`: The private key is exportable.
-        # 
-        # - `false`: The private key is not exportable.
+        # - true: The certificate can be used.
+        # - false: The certificate cannot be used.
         self.key_exportable = key_exportable
-        # The organization specified in the certificate.
+        # The organization of the certificate.
         self.organization = organization
-        # The organizational unit (OU) specified in the certificate.
+        # The name of the company or organization to which the certificate purchaser belongs.
         self.organization_unit = organization_unit
         # The certificate serial number.
         self.serial_number = serial_number
-        # The status of the certificate. Valid values:
+        # The certificate status. Valid values:
         # 
-        # - `ISSUE`: Issued.
-        # 
-        # - `REVOKE`: Revoked.
+        # - ISSUE: Normal.
+        # - REVOKE: Revoked.
         self.status = status
-        # The distinguished name (DN) of the certificate subject.
+        # The subscription relationship ID.
         self.subject_dn = subject_dn
-        # The tags of the certificate.
+        # The certificate tags.
         self.tags = tags
 
     def validate(self):

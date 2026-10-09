@@ -23,7 +23,7 @@ class CreateClientCertificateWithCsrResponseBody(DaraModel):
         self.certificate_chain = certificate_chain
         # The unique identifier of the client certificate.
         self.identifier = identifier
-        # The request ID. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
+        # The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
         # The certificate serial number.
         self.serial_number = serial_number

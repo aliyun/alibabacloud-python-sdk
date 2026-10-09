@@ -1,3 +1,7 @@
+2026-10-09 Version: 2.1.4
+- Update API AssignCertificateCount: add request parameters CaIdentifier.
+
+
 2026-08-18 Version: 2.1.3
 - Generated python 2020-06-30 for cas.
 

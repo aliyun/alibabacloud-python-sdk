@@ -21,13 +21,13 @@ class DescribePcaAndExternalCACertificateListResponseBody(DaraModel):
         self.certificate_list = certificate_list
         # The current page number.
         self.current_page = current_page
-        # The number of entries on the current page.
+        # The number of entries in the list.
         self.page_count = page_count
         # The request ID.
         self.request_id = request_id
-        # The number of entries to return on each page. Default value: 50.
+        # The number of records to display per page. Default value: 50.
         self.show_size = show_size
-        # The total number of entries.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -114,49 +114,62 @@ class DescribePcaAndExternalCACertificateListResponseBodyCertificateList(DaraMod
         x_509certificate: str = None,
         years: int = None,
     ):
-        # The expiration time of the certificate.
+        # The certificate expiration time. The value is a timestamp in milliseconds.
         self.after_date = after_date
-        # The algorithm of the certificate.
+        # The certificate ID.
         self.algorithm = algorithm
-        # The time at which the certificate is issued.
+        # The certificate issuance time. The value is a timestamp in milliseconds.
         self.before_date = before_date
-        # The type of the certificate.
+        # The certificate type.
         self.certificate_type = certificate_type
-        # The primary domain name that is bound to the certificate.
+        # The primary domain name bound to the certificate.
         self.common_name = common_name
         # The country code of the certificate.
         self.country_code = country_code
-        # The ID of the certificate.
+        # The certificate ID.
         self.identifier = identifier
-        # The key size of the certificate. Unit: bits.
+        # The size of the certificate key. Unit: GB.
         self.key_size = key_size
-        # The city in which the organization is located.
+        # The primary domain name bound to the certificate.
         self.locality = locality
-        # The MD5 value of the certificate.
+        # The MD5 value bound to the certificate.
         self.md_5 = md_5
-        # The organization to which the certificate belongs.
+        # The certificate organization.
         self.organization = organization
-        # The certificate authority (CA) that issued the certificate.
+        # The certification authority that issued the certificate.
         self.organization_unit = organization_unit
-        # The ID of the parent certificate.
+        # The parent certificate ID.
         self.parent_identifier = parent_identifier
-        # All domain names that are bound to the certificate.
+        # All domain names bound to the certificate.
         self.sans = sans
-        # The serial number of the certificate.
+        # The certificate serial number.
         self.serial_number = serial_number
-        # The primary domain name that is bound to the certificate.
+        # The primary domain name bound to the certificate.
         self.sha_2 = sha_2
-        # The signature algorithm of the certificate. Valid values:
+        # The certificate signature algorithm. Valid values:
+        # - **prefix**: Prefix match.
+        # - **match**: Exact match.
+        # - **any**: Match all.
         self.sign_algorithm = sign_algorithm
-        # The status of the certificate. Valid values:
+        # The certificate state. Valid values:
+        # - **success**: Effective.
+        # - **checking**: Checking whether the domain name is on Alibaba Cloud Dynamic Route for CDN.
+        # - **cname_error**: The domain name is not pointed to an Alibaba Cloud Global Accelerator (GA) instance.
+        # - **domain_invalid**: The domain name contains invalid characters.
+        # - **unsupport_wildcard**: Wildcard domain names are not supported.
         self.state = state
-        # The status of the certificate. Valid values:
+        # The certificate status. Valid values:
+        # - **payed**: Paid.
+        # - **checking**: Being reviewed.
+        # - **issued**: Issued.
+        # - **revoked**: Revoked.
+        # - **checked_fail**: Review failed.
         self.status = status
-        # The subject of the certificate.
+        # The certificate subject (owner), represented in DN format.
         self.subject_dn = subject_dn
-        # The content of the X.509 certificate.
+        # The x.509 certificate.
         self.x_509certificate = x_509certificate
-        # The validity period of the certificate, in years.
+        # The number of years for which the certificate was purchased.
         self.years = years
 
     def validate(self):

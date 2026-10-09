@@ -95,7 +95,7 @@ class DescribeCACertificateResponseBodyCertificate(DaraModel):
         x_509certificate: str = None,
         years: int = None,
     ):
-        # The expiration date of the CA certificate. The value is a UNIX timestamp. Unit: milliseconds.
+        # The expiration date of the CA certificate. The value is a timestamp in milliseconds.
         self.after_date = after_date
         # The encryption algorithm type of the CA certificate. Valid values:
         # 
@@ -103,15 +103,15 @@ class DescribeCACertificateResponseBodyCertificate(DaraModel):
         # - **ECC**: ECC algorithm.
         # - **SM2**: SM2 (Chinese national cryptographic) algorithm.
         self.algorithm = algorithm
-        # The issuance date of the CA certificate. The value is a UNIX timestamp. Unit: milliseconds.
+        # The issuance date of the CA certificate. The value is a timestamp in milliseconds.
         self.before_date = before_date
         # The complete certificate chain.
         self.ca_cert_chain = ca_cert_chain
         # The number of certificates issued by the private CA instance.
         self.cert_issued_count = cert_issued_count
-        # The maximum validity period for certificates issued by the CA, as specified by the certMaxTime of the CA.
+        # The maximum validity period for certificates issued by the CA, specified by certMaxTime. Unit: days.
         self.cert_max_time = cert_max_time
-        # The number of remaining certificate quotas that can be allocated.
+        # The number of remaining certificate quotas available for allocation.
         self.cert_remaining_count = cert_remaining_count
         # The total number of purchased certificate quotas.
         self.cert_total_count = cert_total_count
@@ -120,7 +120,7 @@ class DescribeCACertificateResponseBodyCertificate(DaraModel):
         # - **ROOT**: root CA certificate.
         # - **SUB_ROOT**: sub-CA certificate.
         self.certificate_type = certificate_type
-        # The identifier of the hardware security module (HSM) cluster. (The CA is enabled through an HSM.)
+        # The identifier of the hardware security module (HSM) cluster. (The CA is enabled by using an HSM.)
         self.cluster_id = cluster_id
         # The common name or abbreviation of the organization associated with the CA certificate.
         self.common_name = common_name
@@ -128,9 +128,9 @@ class DescribeCACertificateResponseBodyCertificate(DaraModel):
         # 
         # For more information about country codes, see the **International codes** section in [Manage company information](https://help.aliyun.com/document_detail/198289.html).
         self.country_code = country_code
-        # The validity period of the CRL, ranging from 1 to 365 days.
+        # The CRL validity period, ranging from 1 to 365 days.
         self.crl_day = crl_day
-        # The certificate revocation list (CRL) status (enabled or disabled).
+        # The certificate revocation list (CRL) status (enabling status).
         self.crl_status = crl_status
         # The CRL URL.
         self.crl_url = crl_url
@@ -138,17 +138,17 @@ class DescribeCACertificateResponseBodyCertificate(DaraModel):
         self.full_algorithm = full_algorithm
         # The unique identifier of the CA certificate.
         self.identifier = identifier
-        # The issuing authority of the CA. Valid values:
+        # The issuing CA authority. Valid values:
         # 
         # - local: private certificate.
         # - iTrusChina: compliant CA.
         # - external: externally imported.
         self.issuer_type = issuer_type
-        # The key index position in the HSM. (The CA is enabled through an HSM.)
+        # The key index position in the HSM. (The CA is enabled by using an HSM.)
         self.key_index = key_index
         # The key length of the CA certificate.
         self.key_size = key_size
-        # The name of the city where the organization associated with the CA certificate is located.
+        # The city where the organization associated with the CA certificate is located.
         self.locality = locality
         # The MD5 fingerprint of the CA certificate.
         self.md_5 = md_5
@@ -162,7 +162,7 @@ class DescribeCACertificateResponseBodyCertificate(DaraModel):
         self.parent_identifier = parent_identifier
         # The ID of the resource group to which the certificate belongs.
         self.resource_group_id = resource_group_id
-        # This parameter is deprecated.
+        # **[Deprecated]** This parameter is deprecated.
         self.sans = sans
         # The serial number of the CA certificate.
         self.serial_number = serial_number
@@ -170,8 +170,8 @@ class DescribeCACertificateResponseBodyCertificate(DaraModel):
         self.sha_2 = sha_2
         # The signature algorithm of the CA certificate.
         self.sign_algorithm = sign_algorithm
-        # <props="china">The name of the province, municipality, or autonomous region where the organization associated with the CA certificate is located.
-        # <props="intl">The name of the province or state where the organization associated with the CA certificate is located.
+        # <props="china">The province, municipality, or autonomous region where the organization associated with the CA certificate is located.
+        # <props="intl">The province or state where the organization associated with the CA certificate is located.
         self.state = state
         # The status of the CA certificate. Valid values:
         # 
@@ -180,13 +180,13 @@ class DescribeCACertificateResponseBodyCertificate(DaraModel):
         self.status = status
         # The subject attributes of the CA certificate, which include the following information:
         # 
-        # - **C**: the country code of the organization.
-        # - **O**: the name of the organization.
-        # - **OU**: the department of the organization.
-        # - **L**: the city where the organization is located.
-        # <props="china">- **ST**: the province, municipality, or autonomous region where the organization is located.
-        # <props="intl">- **ST**: the province or state where the organization is located.
-        # - **CN**: the common name or abbreviation of the organization.
+        # - **C**: The country code of the organization.
+        # - **O**: The name of the organization.
+        # - **OU**: The department of the organization.
+        # - **L**: The city where the organization is located.
+        # <props="china">- **ST**: The province, municipality, or autonomous region where the organization is located.
+        # <props="intl">- **ST**: The province or state where the organization is located.
+        # - **CN**: The common name or abbreviation of the organization.
         self.subject_dn = subject_dn
         # The list of tags.
         self.tags = tags

@@ -7,12 +7,15 @@ from darabonba.model import DaraModel
 class AssignCertificateCountRequest(DaraModel):
     def __init__(
         self,
+        ca_identifier: str = None,
         cert_total_count: int = None,
         id: int = None,
     ):
+        # The identifier of the CA certificate.
+        self.ca_identifier = ca_identifier
         # The total number of certificate records.
         self.cert_total_count = cert_total_count
-        # The ID of the data source.
+        # The ID of the data source to which the certificate belongs.
         self.id = id
 
     def validate(self):
@@ -23,6 +26,9 @@ class AssignCertificateCountRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.ca_identifier is not None:
+            result['CaIdentifier'] = self.ca_identifier
+
         if self.cert_total_count is not None:
             result['CertTotalCount'] = self.cert_total_count
 
@@ -33,6 +39,9 @@ class AssignCertificateCountRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CaIdentifier') is not None:
+            self.ca_identifier = m.get('CaIdentifier')
+
         if m.get('CertTotalCount') is not None:
             self.cert_total_count = m.get('CertTotalCount')
 

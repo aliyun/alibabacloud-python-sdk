@@ -12,7 +12,7 @@ class GetCaInstanceCrlAddressRequest(DaraModel):
     ):
         # The CA certificate identifier.
         self.ca_identifier = ca_identifier
-        # The zone ID of the China CAS instance.
+        # The zone ID of the China Application Security (CAS) instance.
         self.uuid = uuid
 
     def validate(self):

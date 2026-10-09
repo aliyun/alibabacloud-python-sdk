@@ -46,14 +46,14 @@ class CreateClientCertificateWithCsrRequest(DaraModel):
         # - **ECC_512**: The signature algorithm is Sha256WithECDSA.
         # - **SM2_256**: The signature algorithm is SM3WithSM2.
         # 
-        # The encryption algorithm of the client certificate must be the same as that of the sub-CA certificate, but the key length can be different. For example, if the key algorithm of the sub-CA certificate is RSA_2048, the key algorithm of the client certificate must be RSA_1024, RSA_2048, or RSA_4096.
+        # The encryption algorithm of the client certificate must be the same as that of the sub-CA certificate, but the key length can be different. For example, if the key algorithm of the sub-CA certificate is RSA_2048, the key algorithm of the client certificate must be one of RSA_1024, RSA_2048, or RSA_4096.
         # 
         # >You can call [DescribeCACertificate](https://help.aliyun.com/document_detail/465954.html) to query the key algorithm of the sub-CA certificate.
         self.algorithm = algorithm
         # The asynchronous processing flag. If the value is "true", the backend service issues the certificate asynchronously.
         # After the request is submitted, you can call the ListClientCertificate operation to obtain the latest certificate.
         self.asynchronous_flag = asynchronous_flag
-        # The issuance time of the client certificate in UNIX timestamp format. Default value: the time when you call this operation. Unit: seconds.
+        # The issuance time of the client certificate in UNIX timestamp format. The default value is the time when you call this operation. Unit: seconds.
         # 
         # >The **BeforeTime** and **AfterTime** parameters must both be empty or both be specified.
         self.before_time = before_time
@@ -62,7 +62,7 @@ class CreateClientCertificateWithCsrRequest(DaraModel):
         self.common_name = common_name
         # The country code. Example: **CN** or **US**.
         self.country = country
-        # The CSR content. You can use OpenSSL or Keytool to generate a CSR. For more information, see [How to create a CSR file](https://help.aliyun.com/document_detail/42218.html).
+        # The CSR content. You can use OpenSSL or Keytool to generate a CSR. For more information, see [How do I create a CSR file](https://help.aliyun.com/document_detail/42218.html).
         # <props="china">You can also create a CSR in the SSL Certificates Service console. For more information, see [Create a CSR](https://help.aliyun.com/document_detail/313297.html).
         self.csr = csr
         # The custom identifier, which serves as a unique key.
@@ -78,8 +78,8 @@ class CreateClientCertificateWithCsrRequest(DaraModel):
         self.days = days
         # Specifies whether to include the Certificate Revocation List (CRL) address. Valid values:
         # 
-        # - 0: No.
-        # - 1: Yes.
+        # - 0: no.
+        # - 1: yes.
         self.enable_crl = enable_crl
         # Specifies whether to immediately return the digital certificate. Valid values:
         # - **0**: does not return the certificate. This is the default value.
@@ -87,7 +87,7 @@ class CreateClientCertificateWithCsrRequest(DaraModel):
         # - **2**: returns the certificate and its certificate chain.
         self.immediately = immediately
         # The name of the city where the certificate organization is located. Chinese characters, English characters, and other characters are supported.
-        # Default value: the name of the city where the sub-CA certificate organization that issues this certificate is located.
+        # The default value is the name of the city where the sub-CA certificate organization that issues this certificate is located.
         self.locality = locality
         # The certificate validity period. Unit: months.
         self.months = months
@@ -110,14 +110,14 @@ class CreateClientCertificateWithCsrRequest(DaraModel):
         # - **5**: ediPartyName (5): Electronic Data Interchange (EDI) party name.
         # - **6**: uniformResourceIdentifier (6): Uniform Resource Identifier (URI).
         # - **7**: iPAddress (7): IP address.
-        # - **8**: registeredID (8): registered ID (object identifier OID).
+        # - **8**: registeredID (8): registered ID (Object Identifier, OID).
         self.san_type = san_type
         # The specific SAN extension information of the client certificate. You can enter multiple values separated by commas (,).
         # 
         # 1. otherName (0): other name
         # 
-        # - Example: 1.3.6.1.4.1.311.20.2.3 (OID) + user@domain.com (UPN - User Principal Name)
-        # - Description: A custom extension type that typically consists of a specific OID (object identifier) and a corresponding value. In Windows environments, it is commonly used to store UPN (User Principal Name), such as zhangsan@company.com for smart card logon.
+        # - Example: 1.3.6.1.4.1.311.20.2.3 (OID) + user@domain.com (UPN, User Principal Name)
+        # - Description: A custom extension type that typically consists of a specific OID (Object Identifier) and a corresponding value. In Windows environments, it is commonly used to store UPN (User Principal Name), such as zhangsan@company.com for smart card logon.
         # 
         # 2. rfc822Name (1): RFC 822 name (email address)
         # 
@@ -131,22 +131,22 @@ class CreateClientCertificateWithCsrRequest(DaraModel):
         # - Description: An early email system address standard with a complex structure that includes attributes such as country (C), administration domain (ADMD), organization (O), surname (S), and given name (G). It is rarely used in modern Internet HTTPS certificates and is mostly found in traditional European government, enterprise, or military communication systems.
         # 4. directoryName (4): directory name
         # - Example: CN=IT Department, OU=Tech, O=Company Ltd, L=Beijing, ST=Beijing, C=CN
-        # - Description: A standard X.500 distinguished name (DN). It is typically used to explicitly identify the complete hierarchical information of an organization, department, or entity in a certificate. It is commonly found in enterprise internal root certificates or specific government digital certificates.
+        # - Description: A standard X.500 distinguished name (DN). It is typically used to explicitly identify the full hierarchical information of an organization, department, or entity in a certificate. It is commonly found in enterprise internal root certificates or specific government digital certificates.
         # 5. ediPartyName (5): EDI party name
         # - Example: nameAssigner=GlobalTradeOrg, partyName=SupplierA
-        # - Description: Used specifically in the Electronic Data Interchange (EDI) domain. It identifies a specific party in business message exchanges (such as order and invoice transmissions) and typically includes the assigning organization (nameAssigner) and the party name (partyName).
+        # - Description: Used specifically in the Electronic Data Interchange (EDI) domain. It identifies a specific party in business message exchanges (such as order and invoice transmissions) and typically includes the name-assigning authority (nameAssigner) and the party name (partyName).
         # 6. uniformResourceIdentifier (6): Uniform Resource Identifier (URI)
         # - Example: http://www.example.com/verify,https://api.test.cn/status
         # - Description: A standard URL format that must include a protocol prefix (such as http:// or https://). It can point to a specific network resource address.
         # 7. iPAddress (7): IP address
         # - Example: 192.168.1.100 (IPv4), 2001:0db8:85a3::8a2e:0370:7334 (IPv6)
         # - Description: Directly binds to a server IP address. It is commonly used for internal systems without domain names, API servers, or specific services that can only be accessed through a public IP address. Note: Public IP certificates typically require strict Organization Validation (OV).
-        # 8. registeredID (8): registered ID (object identifier OID)
+        # 8. registeredID (8): registered ID (Object Identifier, OID)
         # - Example: 1.2.3.4.55.6.5.99, 2.5.29.17
         # - Description: A unique numeric identifier assigned by international standards organizations. It is rarely used directly as a subject name in certificates and is more commonly used as a unique identity code or policy identifier within systems.
         self.san_value = san_value
-        # <props="china">The name of the province, municipality, or autonomous region where the certificate organization is located. Chinese characters, English characters, and other characters are supported. Default value: the name of the province, municipality, or autonomous region where the sub-CA certificate organization that issues this certificate is located.
-        # <props="intl">The name of the province or state where the certificate organization is located. Chinese characters, English characters, and other characters are supported. Default value: the name of the province or state where the sub-CA certificate organization that issues this certificate is located.
+        # <props="china">The name of the province, municipality, or autonomous region where the certificate organization is located. Chinese characters, English characters, and other characters are supported. The default value is the name of the province, municipality, or autonomous region where the sub-CA certificate organization that issues this certificate is located.
+        # <props="intl">The name of the province or state where the certificate organization is located. Chinese characters, English characters, and other characters are supported. The default value is the name of the province or state where the sub-CA certificate organization that issues this certificate is located.
         self.state = state
         # The tag list.
         self.tags = tags

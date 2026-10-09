@@ -13,7 +13,7 @@ class DescribeClientCertificateStatusForSerialNumberResponseBody(DaraModel):
         certificate_status: List[main_models.DescribeClientCertificateStatusForSerialNumberResponseBodyCertificateStatus] = None,
         request_id: str = None,
     ):
-        # An array of objects, where each object contains the status of a queried certificate.
+        # The certificate status details.
         self.certificate_status = certificate_status
         # The request ID.
         self.request_id = request_id
@@ -59,18 +59,16 @@ class DescribeClientCertificateStatusForSerialNumberResponseBodyCertificateStatu
         serial_number: str = None,
         status: str = None,
     ):
-        # The time when the certificate was revoked.
+        # The date when the certificate was revoked. This value is a UNIX timestamp in milliseconds.
         # 
-        # > This parameter is returned only when **Status** is **revoked**.
+        # > This parameter is returned only when **Status** is **revoked** (indicating that the certificate has been revoked).
         self.revoke_time = revoke_time
         # The serial number of the certificate.
         self.serial_number = serial_number
         # The current status of the certificate. Valid values:
         # 
-        # - **good**: The certificate is not revoked.
-        # 
-        # - **revoked**: The certificate is revoked.
-        # 
+        # - **good**: The certificate has not been revoked.
+        # - **revoked**: The certificate has been revoked.
         # - **unknown**: The server cannot determine the status of the certificate.
         self.status = status
 
