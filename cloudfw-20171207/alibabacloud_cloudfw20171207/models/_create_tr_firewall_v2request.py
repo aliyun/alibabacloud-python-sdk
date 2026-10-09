@@ -29,7 +29,9 @@ class CreateTrFirewallV2Request(DaraModel):
         tr_attachment_zones: List[str] = None,
         transit_router_id: str = None,
     ):
-        # The ID of the CEN instance. This parameter is required. Create a CEN instance in the CEN console before calling this operation, and ensure that an Enterprise Edition transit router has been created.
+        # The ID of the CEN instance. Create a CEN instance in the CEN console first and make sure that an Enterprise Edition transit router has been created.
+        # 
+        # > Note: Although this parameter is marked as not required in the schema, it is actually required. If this parameter is not specified, the ErrorParameters (400) error is returned.
         self.cen_id = cen_id
         # The zone ID used by the firewall connection.
         self.firewall_attachment_zone = firewall_attachment_zone
@@ -42,11 +44,11 @@ class CreateTrFirewallV2Request(DaraModel):
         # - **PrimaryStandby**: Primary/standby mode.
         # - **MultiPrimary**: Active-active mode.
         # 
-        # > If this parameter is not specified, the system automatically selects a deployment mode based on the capabilities of the transit router. If an invalid value is specified, the error ErrorFwServiceMode (-360437) is returned. MultiPrimary mode does not support specifying zones.
+        # > If this parameter is not specified, the system automatically selects a deployment mode based on the capabilities of the transit router. If an invalid value is specified, the ErrorFwServiceMode (-360437) error is returned. The MultiPrimary mode does not support specifying zones.
         self.firewall_service_mode = firewall_service_mode
         # The list of zone IDs used by the firewall service.
         self.firewall_service_zones = firewall_service_zones
-        # The subnet CIDR block used to store the firewall ENI in the firewall VPC in automatic mode.
+        # The subnet CIDR block used to store the firewall elastic network interface (ENI) in the firewall VPC in automatic mode.
         self.firewall_subnet_cidr = firewall_subnet_cidr
         # The CIDR block of the firewall VPC in automatic mode.
         self.firewall_vpc_cidr = firewall_vpc_cidr
@@ -59,9 +61,13 @@ class CreateTrFirewallV2Request(DaraModel):
         # - **zh** (default): Chinese
         # - **en**: English
         self.lang = lang
-        # The region ID of the Enterprise Edition transit router. This parameter is required.
+        # The region ID of the Enterprise Edition transit router.
+        # 
+        # > Note: Although this parameter is marked as not required in the schema, it is actually required. If this parameter is not specified, the ErrorParameters (400) error is returned.
         self.region_no = region_no
-        # The routing mode. This parameter is required. Valid values: managed (automatic mode) and manual (manual mode). In managed mode, you must specify FirewallVpcCidr, FirewallSubnetCidr, TrAttachmentSlaveCidr, and TrAttachmentMasterCidr. In manual mode, you must specify FirewallVpcId, FirewallVswitchId, TrAttachmentSlaveZone, and TrAttachmentMasterZone.
+        # The routing mode. Valid values: managed (automatic mode) and manual (manual mode). In managed mode, only FirewallVpcCidr is required. The FirewallSubnetCidr, TrAttachmentSlaveCidr, and TrAttachmentMasterCidr parameters are deprecated and do not need to be specified. In manual mode, specify FirewallVpcId, FirewallVswitchId, TrAttachmentSlaveZone, and TrAttachmentMasterZone.
+        # 
+        # > Note: Although this parameter is marked as not required in the schema, it is actually required. If this parameter is not specified, the ErrorParameters (400) error is returned.
         self.route_mode = route_mode
         # The primary subnet CIDR block used to connect to the TR in the firewall VPC in automatic mode.
         self.tr_attachment_master_cidr = tr_attachment_master_cidr
@@ -73,7 +79,9 @@ class CreateTrFirewallV2Request(DaraModel):
         self.tr_attachment_slave_zone = tr_attachment_slave_zone
         # The list of zone IDs used by the TR connection.
         self.tr_attachment_zones = tr_attachment_zones
-        # The ID of the Enterprise Edition transit router instance. This parameter is required. The transit router must belong to the CEN instance specified by CenId.
+        # The ID of the Enterprise Edition transit router instance. The transit router must belong to the CEN instance specified by CenId.
+        # 
+        # > Note: Although this parameter is marked as not required in the schema, it is actually required. If this parameter is not specified, the ErrorParameters (400) error is returned.
         self.transit_router_id = transit_router_id
 
     def validate(self):

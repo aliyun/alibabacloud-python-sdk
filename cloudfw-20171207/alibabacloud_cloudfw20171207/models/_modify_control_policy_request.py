@@ -37,7 +37,7 @@ class ModifyControlPolicyRequest(DaraModel):
     ):
         # The action that the access control policy performs on the traffic that passes through the firewall. Valid values:
         # - **accept**: allows access.
-        # - **drop**: deny access.
+        # - **drop**: deny.
         # - **log**: monitors the traffic.
         self.acl_action = acl_action
         # The unique ID of the access control policy.
@@ -46,7 +46,7 @@ class ModifyControlPolicyRequest(DaraModel):
         # 
         # This parameter is required.
         self.acl_uuid = acl_uuid
-        # The application type supported by the access control policy. Valid values:
+        # The application type supported by the access control policy. The following application types are supported:
         # 
         # - **ANY**
         # - **HTTP**
@@ -89,7 +89,7 @@ class ModifyControlPolicyRequest(DaraModel):
         # - If **DestinationType** is set to net, **Destination** is a destination CIDR block. Example: 1.2.XX.XX/24.
         # - If **DestinationType** is set to group, **Destination** is a destination address book name. Example: db_group.
         # - If **DestinationType** is set to domain, **Destination** is a destination domain name. Example: *.aliyuncs.com.
-        # - If **DestinationType** is set to location, **Destination** is a destination area. For specific area positional encoding, see the subsequent sections. Example: ["BJ11", "ZB"\\].
+        # - If **DestinationType** is set to location, **Destination** is a destination area. For more information about area positional encoding, see the following sections. Example: ["BJ11", "ZB"\\].
         self.destination = destination
         # The type of the destination address in the access control policy. Valid values:
         # 
@@ -100,8 +100,8 @@ class ModifyControlPolicyRequest(DaraModel):
         self.destination_type = destination_type
         # The traffic direction of the access control policy. Valid values:
         # 
-        # - **in**: inbound traffic access control
-        # - **out**: outbound traffic access control
+        # - **in**: inbound traffic
+        # - **out**: outbound traffic
         self.direction = direction
         # The domain name resolution method of the access control policy. Valid values:
         # 
@@ -111,14 +111,14 @@ class ModifyControlPolicyRequest(DaraModel):
         self.domain_resolve_type = domain_resolve_type
         # Specifies whether to perform a dry run.
         self.dry_run = dry_run
-        # The end time of the Policy Validity Period for the access control policy. The value is a UNIX timestamp in seconds format. The time must be on the hour or half hour and must be at least 30 minutes later than the start time. Settings for the access control policy validity period.
+        # The end time of the Policy Validity Period of the access control policy. The value is a UNIX timestamp in seconds format. The time must be on the hour or half hour and must be at least 30 minutes later than the start time. Settings for the end time.
         # > If RepeatType is set to Permanent, this parameter is left empty. If RepeatType is set to None, Daily, Weekly, or Monthly, this parameter is required.
         self.end_time = end_time
         # The language of the request and response. Valid values:
         # - **zh** (default): Chinese
         # - **en**: English
         self.lang = lang
-        # The security protocol type in the access control policy. Valid values:
+        # The security protocol type in the access control policy. The following protocol types are supported:
         # 
         # - **ANY**
         # - **TCP**
@@ -127,20 +127,20 @@ class ModifyControlPolicyRequest(DaraModel):
         # 
         # > **ANY** indicates that the policy applies to all protocol types.
         # 
-        # > If the traffic direction is outbound and the destination address is a threat intelligence address book or cloud service address book of the domain type, you can configure only the TCP or ANY protocol. If you select TCP, the application can be HTTP, HTTPS, SMTP, SMTPS, or SSL. If you select ANY, the application can only be ANY.
+        # > If the traffic direction is outbound and the destination address is a threat intelligence address book or cloud service address book of the domain type, you can set the protocol to TCP or ANY. If you select TCP, the application can be set to HTTP, HTTPS, SMTP, SMTPS, or SSL. If you select ANY, the application can only be set to ANY.
         self.proto = proto
         # The enabling status of the access control policy. Valid values:
         # 
         # - true: The policy is enabled.
-        # - false: The policy is in shutdown state.
+        # - false: The policy is disabled.
         self.release = release
-        # The days of a week or of a month on which the access control policy takes effect. Settings for the Policy Validity Period recurrence days.
-        # - If RepeatType is set to `Permanent`, `None`, or `Daily`, RepeatDays is an empty collection.
+        # The days of a week or of a month on which the access control policy takes effect. Settings for the Policy Validity Period.
+        # - If RepeatType is set to `Permanent`, `None`, or `Daily`, RepeatDays is an empty array.
         #   Example: []
-        # - If RepeatType is set to Weekly, RepeatDays cannot be empty.
+        # - If RepeatType is set to Weekly, RepeatDays must not be empty.
         #   Example: [0, 6]
         # > If RepeatType is set to Weekly, the values in RepeatDays cannot be repeated.
-        # - If RepeatType is set to `Monthly`, RepeatDays cannot be empty.
+        # - If RepeatType is set to `Monthly`, RepeatDays must not be empty.
         #   Example: [1, 31]
         # > If RepeatType is set to Monthly, the values in RepeatDays cannot be repeated.
         self.repeat_days = repeat_days
@@ -161,7 +161,7 @@ class ModifyControlPolicyRequest(DaraModel):
         # 
         # - If **SourceType** is set to net, **Source** is a source CIDR block. Example: 1.2.XX.XX/24.
         # - If **SourceType** is set to group, **Source** is a source address book name. Example: db_group.
-        # - If **SourceType** is set to location, **Source** is a source area. For specific area positional encoding, see the subsequent sections. Example: ["BJ11", "ZB"\\].
+        # - If **SourceType** is set to location, **Source** is a source area. For more information about area positional encoding, see the following sections. Example: ["BJ11", "ZB"\\].
         self.source = source
         # The type of the source address in the access control policy. Valid values:
         # 
@@ -169,7 +169,7 @@ class ModifyControlPolicyRequest(DaraModel):
         # - **group**: source address book
         # - **location**: source region
         self.source_type = source_type
-        # The start time of the Policy Validity Period for the access control policy. The value is a UNIX timestamp in seconds format. The time must be on the hour or half hour and must be at least 30 minutes earlier than the end time. Settings for the access control policy validity period.
+        # The start time of the Policy Validity Period of the access control policy. The value is a UNIX timestamp in seconds format. The time must be on the hour or half hour and must be at least 30 minutes earlier than the end time. Settings for the start time.
         # > If RepeatType is set to Permanent, this parameter is left empty. If RepeatType is set to None, Daily, Weekly, or Monthly, this parameter is required.
         self.start_time = start_time
 

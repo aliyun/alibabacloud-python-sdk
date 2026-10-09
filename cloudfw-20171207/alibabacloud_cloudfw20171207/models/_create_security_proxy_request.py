@@ -27,21 +27,22 @@ class CreateSecurityProxyRequest(DaraModel):
     ):
         # The deployment mode of the firewall service. Valid values:
         # 
-        # - PrimaryStandby: active/standby mode
-        # - MultiPrimary: active-active mode
+        # - **PrimaryStandby**: primary/standby mode.
+        # - **MultiPrimary**: active-active mode.
         self.firewall_service_mode = firewall_service_mode
         # The list of zone IDs used by the firewall service.
         self.firewall_service_zones = firewall_service_zones
         # The security protection switch. Valid values:
-        # - **open**: enabled
-        # - **close**: disabled
+        # 
+        # - **open**: Enabled.
+        # - **close**: Disabled.
         self.firewall_switch = firewall_switch
         # The zone of the firewall vSwitch.
         self.fw_vswitch_zone_id = fw_vswitch_zone_id
-        # The language of the response. Valid values:
+        # The language of the response message. Valid values:
         # 
-        # - **zh** (default): Chinese
-        # - **en**: English
+        # - **zh** (default): Chinese.
+        # - **en**: English.
         self.lang = lang
         # The ID of the NAT gateway.
         # 
@@ -51,7 +52,7 @@ class CreateSecurityProxyRequest(DaraModel):
         # 
         # This parameter is required.
         self.nat_route_entry_list = nat_route_entry_list
-        # The name of the NAT firewall. The name can contain uppercase and lowercase letters, Chinese characters, digits, and underscores (_). The name must be 4 to 50 characters in length and cannot start with an underscore.
+        # The name of the NAT firewall. The name must be 4 to 50 characters in length and can contain uppercase and lowercase letters, Chinese characters, digits, and underscores (_). It cannot start with an underscore.
         # 
         # This parameter is required.
         self.proxy_name = proxy_name
@@ -61,23 +62,25 @@ class CreateSecurityProxyRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_no = region_no
-        # Specifies whether to enable strict mode.
+        # Specifies whether to enable strict mode. Valid values:
         # 
         # - 1: Enable strict mode.
         # - 0: Disable strict mode.
         self.strict_mode = strict_mode
-        # The VPC-connected instance ID.
+        # The ID of the VPC.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id
-        # Specifies whether to use the automatic vSwitch mode. Valid values:
-        # - **true**: automatic mode
-        # - **false**: manual mode
-        # > The default value of VswitchAuto is true. If VswitchAuto is set to true, VswitchCidr is required and must be a valid CIDR block. If VswitchAuto is set to false, VswitchId is required.
+        # Specifies whether to use the automatic mode for the vSwitch. Valid values:
+        # 
+        # - **true**: automatic mode.
+        # - **false**: manual mode.
+        # 
+        # > Default value: true. If VswitchAuto is set to true, VswitchCidr is required and must be a valid CIDR block. If VswitchAuto is set to false, VswitchId is required.
         self.vswitch_auto = vswitch_auto
-        # The CIDR block of the vSwitch. This parameter is required when the vSwitch is in automatic mode.
+        # The CIDR block of the vSwitch. This parameter is required when the automatic mode is used for the vSwitch.
         self.vswitch_cidr = vswitch_cidr
-        # The vSwitch ID. This parameter is required when the vSwitch is in manual mode.
+        # The ID of the vSwitch. This parameter is required when the manual mode is used for the vSwitch.
         self.vswitch_id = vswitch_id
 
     def validate(self):
@@ -198,15 +201,15 @@ class CreateSecurityProxyRequestNatRouteEntryList(DaraModel):
         # 
         # This parameter is required.
         self.destination_cidr = destination_cidr
-        # The next hop address of the original NAT gateway.
+        # The next hop of the original NAT gateway.
         # 
         # This parameter is required.
         self.next_hop_id = next_hop_id
-        # The network type of the next hop. Valid values: NatGateway.
+        # The network type of the next hop. Valid value: NatGateway.
         # 
         # This parameter is required.
         self.next_hop_type = next_hop_type
-        # The route table that contains the default route of the NAT gateway.
+        # The ID of the route table to which the default route of the NAT gateway belongs.
         # 
         # This parameter is required.
         self.route_table_id = route_table_id

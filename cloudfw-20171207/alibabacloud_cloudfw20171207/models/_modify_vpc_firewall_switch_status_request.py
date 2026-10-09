@@ -14,9 +14,9 @@ class ModifyVpcFirewallSwitchStatusRequest(DaraModel):
     ):
         # The status of the virtual private cloud (VPC) firewall. Valid values:
         # 
-        # - **open**: enabled.
+        # - **open**: Enable.
         # 
-        # - **close**: disabled.
+        # - **close**: Disable.
         # 
         # This parameter is required.
         self.firewall_switch = firewall_switch

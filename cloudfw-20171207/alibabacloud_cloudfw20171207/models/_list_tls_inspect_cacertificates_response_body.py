@@ -16,7 +16,7 @@ class ListTlsInspectCACertificatesResponseBody(DaraModel):
     ):
         # The list of certificates.
         self.certificates = certificates
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries.
         self.total_count = total_count
@@ -68,43 +68,40 @@ class ListTlsInspectCACertificatesResponseBodyCertificates(DaraModel):
         alias_name: str = None,
         ca_cert_id: str = None,
         ca_cert_type: str = None,
+        cert_chain_expiration_time: int = None,
         expiration_time: int = None,
         key_size: int = None,
         parent_ca_cert_id: str = None,
         sign_algorithm: str = None,
         status: str = None,
     ):
-        # The encryption algorithm of the CA certificate. Valid values:
-        # 
-        # - **RSA**: the RSA algorithm.
-        # 
-        # - **ECC**: the ECC algorithm.
-        # 
-        # - **SM2**: the SM2 algorithm.
+        # The encryption algorithm type of the CA certificate. Valid values:
+        # - **RSA**: RSA algorithm.
+        # - **ECC**: ECC algorithm.
+        # - **SM2**: SM2 (Chinese national cryptographic) algorithm.
         self.algorithm = algorithm
-        # The alias of the certificate.
+        # The certificate alias.
         self.alias_name = alias_name
-        # The ID of the CA certificate.
+        # The CA certificate ID.
         self.ca_cert_id = ca_cert_id
         # The type of the CA certificate. Valid values:
         # 
-        # - **ROOT**: a root CA certificate.
-        # 
-        # - **SUB_ROOT**: a subordinate CA certificate.
+        # - **ROOT**: Root CA certificate.
+        # - **SUB_ROOT**: Subordinate CA certificate.
         self.ca_cert_type = ca_cert_type
+        # The certificate chain expiration timestamp.
+        self.cert_chain_expiration_time = cert_chain_expiration_time
         # The expiration timestamp.
         self.expiration_time = expiration_time
         # The key length of the CA certificate.
         self.key_size = key_size
-        # The ID of the parent CA certificate.
+        # The parent CA certificate ID.
         self.parent_ca_cert_id = parent_ca_cert_id
         # The signature algorithm of the CA certificate.
         self.sign_algorithm = sign_algorithm
-        # The status of the certificate. Valid values:
-        # 
-        # - **ISSUE**: enabled.
-        # 
-        # - **REVOKE**: revoked.
+        # The certificate status. Valid values:
+        # - **ISSUE**: Enabled.
+        # - **REVOKE**: Revoked.
         self.status = status
 
     def validate(self):
@@ -126,6 +123,9 @@ class ListTlsInspectCACertificatesResponseBodyCertificates(DaraModel):
 
         if self.ca_cert_type is not None:
             result['CaCertType'] = self.ca_cert_type
+
+        if self.cert_chain_expiration_time is not None:
+            result['CertChainExpirationTime'] = self.cert_chain_expiration_time
 
         if self.expiration_time is not None:
             result['ExpirationTime'] = self.expiration_time
@@ -157,6 +157,9 @@ class ListTlsInspectCACertificatesResponseBodyCertificates(DaraModel):
 
         if m.get('CaCertType') is not None:
             self.ca_cert_type = m.get('CaCertType')
+
+        if m.get('CertChainExpirationTime') is not None:
+            self.cert_chain_expiration_time = m.get('CertChainExpirationTime')
 
         if m.get('ExpirationTime') is not None:
             self.expiration_time = m.get('ExpirationTime')

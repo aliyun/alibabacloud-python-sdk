@@ -27,17 +27,26 @@ class ModifyAddressBookRequest(DaraModel):
         tag_list: List[main_models.ModifyAddressBookRequestTagList] = None,
         tag_relation: str = None,
     ):
-        # The list of labels for pods in the ACK cluster.
+        # The list of pod labels in the ACK cluster.
+        # 
+        # > A maximum of 10 labels are supported.
         self.ack_labels = ack_labels
-        # The list of namespaces for pods in the ACK cluster.
+        # The list of pod namespaces in the ACK cluster.
+        # > A maximum of 10 namespaces are supported.
         self.ack_namespaces = ack_namespaces
-        # The addresses in the address book. Separate multiple addresses with commas (,). Use a space to separate an address from its description. This parameter is required when GroupType is set to **ip**, **port**, or **domain**.
+        # The list of addresses in the address book. Separate multiple addresses with commas (,). For each address element, separate the address and the description with a space. You must specify this parameter when GroupType is set to **ip**, **port**, or **domain**.
+        # 
+        # - If GroupType is set to **ip**, enter IP addresses in the address list. Example: 1.2.XX.XX/32 Development CIDR block,10.0.0.X/24,1.2.XX.XX/24 Test CIDR block.
+        # 
+        # - If GroupType is set to **port**, enter ports or port ranges in the address list. Example: 80/80 HTTP port,100/200,3306 Database port.
+        # 
+        # - If GroupType is set to **domain**, enter domain names in the address list. Example: demo1.aliyun.com Test domain name,demo2.aliyun.com,www.aliyun.com Alibaba Cloud official website.
         self.address_list = address_list
         # The list of member accounts in the asset address book.
         self.asset_member_uids = asset_member_uids
-        # The cloud address book, including the list of regions and resource types.
+        # The asset address book, region, and resource type list.
         self.asset_region_resource_types = asset_region_resource_types
-        # Indicates whether the public IP addresses of Elastic Compute Service (ECS) instances that match the specified tags are automatically added to the address book.
+        # Specifies if the automatic addition of the public IP addresses of Elastic Compute Service (ECS) instances that match the new labels to the address book is enabled.
         self.auto_add_tag_ecs = auto_add_tag_ecs
         # The idempotency token.
         self.client_token = client_token
@@ -45,25 +54,30 @@ class ModifyAddressBookRequest(DaraModel):
         # 
         # This parameter is required.
         self.description = description
-        # Specifies whether to perform a dry run.
+        # The dry run mode.
         self.dry_run = dry_run
         # The name of the address book.
         # 
         # This parameter is required.
         self.group_name = group_name
-        # The unique ID of the address book.
+        # The UUID of the address book.
+        # 
+        # > To obtain the value, call the [DescribeAddressBook](~~DescribeAddressBook~~) operation.
         # 
         # This parameter is required.
         self.group_uuid = group_uuid
         # The language type.
         self.lang = lang
         # The modification mode.
+        # 
+        # > If GroupType is set to **ip**, **ipv6**, **port**, or **domain** and this parameter is not specified, the **Cover** mode is used by default to modify the address book.
+        # >Notice: If GroupType is set to **tag**, this parameter must be left empty.</notice>
         self.modify_mode = modify_mode
-        # The source IP address of the request.
+        # The source IP address of the requester.
         self.source_ip = source_ip
         # The list of ECS tags.
         self.tag_list = tag_list
-        # The logical relationship among multiple ECS tags.
+        # The relationship between multiple ECS tags.
         self.tag_relation = tag_relation
 
     def validate(self):
@@ -589,9 +603,9 @@ class ModifyAddressBookRequestAckLabels(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the label for pods in the ACK cluster.
+        # The key of the pod label in the ACK cluster.
         self.key = key
-        # The value of the label for pods in the ACK cluster.
+        # The value of the pod label in the ACK cluster.
         self.value = value
 
     def validate(self):

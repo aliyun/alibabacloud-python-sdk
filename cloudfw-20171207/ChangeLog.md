@@ -1,3 +1,9 @@
+2026-10-09 Version: 9.4.4
+- Update API DeleteControlPolicy: add request parameters ClientToken.
+- Update API DeleteControlPolicy: add request parameters DryRun.
+- Update API DeleteControlPolicy: add response parameters Body.DryRun.
+
+
 2026-08-13 Version: 9.4.2
 - Update API AddControlPolicy: add request parameters ClientToken.
 - Update API AddControlPolicy: add request parameters DryRun.

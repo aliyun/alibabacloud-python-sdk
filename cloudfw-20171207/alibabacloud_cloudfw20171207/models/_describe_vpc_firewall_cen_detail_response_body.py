@@ -18,19 +18,19 @@ class DescribeVpcFirewallCenDetailResponseBody(DaraModel):
         vpc_firewall_id: str = None,
         vpc_firewall_name: str = None,
     ):
-        # The connectivity type of the virtual private cloud (VPC) firewall. Valid values: **cen**, which indicates Cloud Enterprise Network.
+        # The connection type of the virtual private cloud (VPC) firewall. Valid values: **cen**, which indicates CEN.
         self.connect_type = connect_type
-        # The switch status of the virtual private cloud (VPC) firewall. Valid values:
+        # The status of the virtual private cloud (VPC) firewall. Valid values:
         # 
-        # - **opened**: Enabled.
+        # - **opened**: enabled.
         # 
-        # - **closed**: Shutdown.
+        # - **closed**: shutdown.
         # 
-        # - **notconfigured**: Not configured.
+        # - **notconfigured**: not configured.
         self.firewall_switch_status = firewall_switch_status
         # The VPC used by the firewall.
         self.firewall_vpc = firewall_vpc
-        # The VPC details.
+        # The details of the VPC.
         self.local_vpc = local_vpc
         # The request ID.
         self.request_id = request_id
@@ -125,13 +125,13 @@ class DescribeVpcFirewallCenDetailResponseBodyLocalVpc(DaraModel):
         self.attachment_id = attachment_id
         # The connection name of the network instance.
         self.attachment_name = attachment_name
-        # The CIDR blocks protected by the virtual private cloud (VPC) firewall.
+        # The list of CIDR blocks protected by the virtual private cloud (VPC) firewall.
         self.defend_cidr_list = defend_cidr_list
-        # The network interface controller (NIC) list.
+        # The list of elastic network interfaces (ENIs).
         self.eni_list = eni_list
-        # The ID of the vSwitch specified when the routing mode is manual.
+        # The ID of the vSwitch specified when the routing mode is set to manual.
         self.manual_vswitch_id = manual_vswitch_id
-        # The VPC instance ID used to create a VPC firewall.
+        # The ID of the VPC for which the virtual private cloud (VPC) firewall is created.
         self.network_instance_id = network_instance_id
         # The name of the network instance.
         self.network_instance_name = network_instance_name
@@ -147,14 +147,14 @@ class DescribeVpcFirewallCenDetailResponseBodyLocalVpc(DaraModel):
         # 
         # - manual: manual mode.
         self.route_mode = route_mode
-        # Indicates whether the routing mode supports manual mode. Valid values:
+        # Indicates whether manual routing mode is supported. Valid values:
         # 
         # - **1**: Supported.
         # - **0**: Not supported.
         self.support_manual_mode = support_manual_mode
-        # The instance ID of the CEN-TR.
+        # The instance ID of the CEN transit router (CEN-TR).
         self.transit_router_id = transit_router_id
-        # The version of the CEN transit router (CEN-TR). Valid values:
+        # The edition of the CEN transit router (CEN-TR). Valid values:
         # 
         # - **Basic**: Basic Edition.
         # 
@@ -390,13 +390,13 @@ class DescribeVpcFirewallCenDetailResponseBodyLocalVpcEniList(DaraModel):
         eni_vswitch_id: str = None,
         eni_zone_id: str = None,
     ):
-        # The instance ID of the elastic network interface (ENI) that serves as the network interface controller (NIC) in the VPC.
+        # The instance ID of the elastic network interface (ENI) in the VPC.
         self.eni_id = eni_id
-        # The private IP of the elastic network interface (ENI) that serves as the network interface controller (NIC) in the VPC.
+        # The private IP address of the elastic network interface (ENI) in the VPC.
         self.eni_private_ip_address = eni_private_ip_address
-        # The vSwitch ID of the elastic network interface (ENI) that serves as the network interface controller (NIC) in the VPC.
+        # The vSwitch ID of the elastic network interface (ENI) in the VPC.
         self.eni_vswitch_id = eni_vswitch_id
-        # The zone ID where the elastic network interface (ENI) that serves as the network interface controller (NIC) is active.
+        # The zone ID of the elastic network interface (ENI).
         self.eni_zone_id = eni_zone_id
 
     def validate(self):
@@ -455,9 +455,9 @@ class DescribeVpcFirewallCenDetailResponseBodyFirewallVpc(DaraModel):
         # - **1**: Allowed.
         # - **0**: Not allowed.
         self.allow_configuration = allow_configuration
-        # The deployment mode of the VPC firewall service. Valid values: **PrimaryStandby** (active/standby mode) and **MultiPrimary** (active-active mode).
+        # The deployment mode of the VPC firewall service. Valid values: **PrimaryStandby** (primary/standby mode) and **MultiPrimary** (active-active mode).
         self.firewall_service_mode = firewall_service_mode
-        # The zone IDs used by the VPC firewall service.
+        # The list of zone IDs used by the VPC firewall service.
         self.firewall_service_zones = firewall_service_zones
         # The secondary zone ID of the firewall.
         self.standby_zone_id = standby_zone_id

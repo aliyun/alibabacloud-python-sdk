@@ -11,12 +11,13 @@ class ModifyTrFirewallV2ConfigurationRequest(DaraModel):
         firewall_name: str = None,
         lang: str = None,
     ):
-        # The instance ID of the virtual private cloud (VPC) firewall.
+        # The instance ID of the VPC firewall. You can call DescribeTrFirewallsV2List to obtain the ID.
         # 
-        # > FirewallId and FirewallName are both required. If either is not provided, an ErrorParameters(400) error is returned. You can call DescribeTrFirewallsV2List to obtain the FirewallId.
+        # > Note: FirewallId and FirewallName are jointly required. Both parameters must be provided at the same time. If either parameter is missing, the operation returns a 400 error.
         self.firewall_id = firewall_id
-        # The instance name of the virtual private cloud (VPC) firewall.
-        # > FirewallId and FirewallName are both required. If either is not provided, an ErrorParameters(400) error is returned.
+        # The instance name of the VPC firewall.
+        # 
+        # > Note: FirewallId and FirewallName are jointly required. Both parameters must be provided at the same time. If either parameter is missing, the operation returns a 400 error.
         self.firewall_name = firewall_name
         # The language of the content within the response. Valid values:
         # 

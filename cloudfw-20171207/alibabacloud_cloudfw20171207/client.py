@@ -24,30 +24,7 @@ class Client(OpenApiClient):
         self._endpoint_map = {
             'ap-southeast-1': 'cloudfw.ap-southeast-1.aliyuncs.com',
             'cn-hangzhou': 'cloudfw.cn-hangzhou.aliyuncs.com',
-            'cn-qingdao': 'cloudfw.aliyuncs.com',
-            'cn-zhangjiakou': 'cloudfw.aliyuncs.com',
-            'cn-huhehaote': 'cloudfw.aliyuncs.com',
-            'cn-wulanchabu': 'cloudfw.aliyuncs.com',
-            'cn-heyuan': 'cloudfw.aliyuncs.com',
-            'cn-chengdu': 'cloudfw.aliyuncs.com',
-            'ap-northeast-1': 'cloudfw.aliyuncs.com',
-            'ap-southeast-5': 'cloudfw.aliyuncs.com',
-            'ap-southeast-3': 'cloudfw.ap-southeast-1.aliyuncs.com',
-            'cn-shenzhen': 'cloudfw.aliyuncs.com',
-            'cn-beijing': 'cloudfw.aliyuncs.com',
-            'cn-shanghai': 'cloudfw.aliyuncs.com',
-            'cn-guangzhou': 'cloudfw.aliyuncs.com',
-            'cn-hongkong': 'cloudfw.aliyuncs.com',
-            'us-east-1': 'cloudfw.aliyuncs.com',
-            'us-west-1': 'cloudfw.aliyuncs.com',
-            'eu-west-1': 'cloudfw.aliyuncs.com',
-            'eu-central-1': 'cloudfw.aliyuncs.com',
-            'me-east-1': 'cloudfw.aliyuncs.com',
-            'cn-shenzhen-finance-1': 'cloudfw.aliyuncs.com',
-            'cn-shanghai-finance-1': 'cloudfw.aliyuncs.com',
-            'cn-hangzhou-finance': 'cloudfw.aliyuncs.com',
-            'cn-beijing-finance-1': 'cloudfw.aliyuncs.com',
-            'cn-north-2-gov-1': 'cloudfw.aliyuncs.com'
+            'ap-southeast-3': 'cloudfw.ap-southeast-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('cloudfw', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -3205,8 +3182,12 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.acl_uuid):
             query['AclUuid'] = request.acl_uuid
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.direction):
             query['Direction'] = request.direction
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
         if not DaraCore.is_null(request.source_ip):
@@ -3239,8 +3220,12 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.acl_uuid):
             query['AclUuid'] = request.acl_uuid
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.direction):
             query['Direction'] = request.direction
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
         if not DaraCore.is_null(request.source_ip):
