@@ -4,13 +4,13 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class UpdatePipelineResponseBody(DaraModel):
+class MetaSchemaValue(DaraModel):
     def __init__(
         self,
-        request_id: str = None,
+        type: str = None,
     ):
-        # The request ID, used to locate the request for troubleshooting.
-        self.request_id = request_id
+        # The dataset field types. Valid values: text, long, double, and json.
+        self.type = type
 
     def validate(self):
         pass
@@ -20,15 +20,15 @@ class UpdatePipelineResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
+        if self.type is not None:
+            result['type'] = self.type
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
+        if m.get('type') is not None:
+            self.type = m.get('type')
 
         return self
 

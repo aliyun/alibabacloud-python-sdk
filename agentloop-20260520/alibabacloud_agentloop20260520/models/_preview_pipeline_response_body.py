@@ -14,11 +14,11 @@ class PreviewPipelineResponseBody(DaraModel):
         meta: main_models.PreviewPipelineResponseBodyMeta = None,
         request_id: str = None,
     ):
-        # `data` is a collection of sample rows (maps within an array) that contains only the first N rows (up to 5 by default) and does not reflect the complete write plan.
+        # The collection of sample rows for the preview result. Each row is a key-value structure. The array contains only the first N rows, up to 5 rows by default, and does not reflect the complete write plan.
         self.data = data
         # The query metadata.
         self.meta = meta
-        # The request ID, which is used to locate and troubleshoot issues.
+        # The request ID. You can use this ID to locate the request when you troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -73,46 +73,52 @@ class PreviewPipelineResponseBodyMeta(DaraModel):
         processed_rows: int = None,
         progress: str = None,
         scan_bytes: int = None,
+        schema: Dict[str, main_models.MetaSchemaValue] = None,
         terms: List[Dict[str, Any]] = None,
         where_query: str = None,
     ):
-        # The aggregation analysis SPL statement.
+        # The SPL statement for aggregation analysis.
         self.agg_query = agg_query
-        # `meta.columnTypes` provides the mapping from column names to data types (string / long / double / json).
+        # The list of data types for each column. This field provides a mapping from column names to data types, such as string, long, double, and json.
         self.column_types = column_types
         # The number of matched log entries.
         self.count = count
-        # The number of CPU cores consumed.
+        # The number of consumed CPU cores.
         self.cpu_cores = cpu_cores
-        # The CPU time consumed, in seconds.
+        # The consumed CPU time in seconds.
         self.cpu_sec = cpu_sec
-        # The query duration, in milliseconds.
+        # The query duration in milliseconds.
         self.elapsed_millisecond = elapsed_millisecond
-        # Indicates whether the query is an SQL query.
+        # Specifies whether an SQL query is used.
         self.has_sql = has_sql
-        # Indicates whether nanosecond-level ordering is enabled.
+        # Specifies whether nanosecond-level ordering is enabled.
         self.is_accurate = is_accurate
         # The list of result column names.
         self.keys = keys
-        # The maximum number of rows that can be returned.
+        # The maximum number of rows returned in the result.
         self.limited = limited
-        # The query mode identifier.
+        # The identifier of the query mode.
         self.mode = mode
-        # The number of data bytes processed.
+        # The number of bytes of processed data.
         self.processed_bytes = processed_bytes
         # The number of processed log rows.
         self.processed_rows = processed_rows
-        # The Simple Log Service (SLS) query progress. A value of Complete indicates that the query is complete.
+        # The Simple Log Service (SLS) query progress. A value of Complete indicates that the query is completed.
         self.progress = progress
-        # The number of raw data bytes scanned.
+        # The number of bytes of scanned raw data.
         self.scan_bytes = scan_bytes
-        # The type and aggregation information of columns.
+        # The dataset schema of the final pipeline output. The keys are field names, and the type in the values supports text, long, double, and json. The field order is determined by the keys.
+        self.schema = schema
+        # The column types and aggregation information.
         self.terms = terms
-        # The filter condition SPL statement.
+        # The SPL statement for the filter condition.
         self.where_query = where_query
 
     def validate(self):
-        pass
+        if self.schema:
+            for v1 in self.schema.values():
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -163,6 +169,11 @@ class PreviewPipelineResponseBodyMeta(DaraModel):
 
         if self.scan_bytes is not None:
             result['scanBytes'] = self.scan_bytes
+
+        result['schema'] = {}
+        if self.schema is not None:
+            for k1, v1 in self.schema.items():
+                result['schema'][k1] = v1.to_map() if v1 else None
 
         if self.terms is not None:
             result['terms'] = self.terms
@@ -218,6 +229,12 @@ class PreviewPipelineResponseBodyMeta(DaraModel):
 
         if m.get('scanBytes') is not None:
             self.scan_bytes = m.get('scanBytes')
+
+        self.schema = {}
+        if m.get('schema') is not None:
+            for k1, v1 in m.get('schema').items():
+                temp_model = main_models.MetaSchemaValue()
+                self.schema[k1] = temp_model.from_map(v1)
 
         if m.get('terms') is not None:
             self.terms = m.get('terms')

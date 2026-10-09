@@ -1,3 +1,18 @@
+2026-10-09 Version: 2.3.8
+- Update API CreatePipeline: add request parameters body.executePolicy.continuous.
+- Update API CreatePipeline: add request parameters body.source.trajectory.
+- Update API GetPipeline: add response parameters Body.scheduleType.
+- Update API GetPipeline: add response parameters Body.executePolicy.continuous.
+- Update API GetPipeline: add response parameters Body.source.trajectory.
+- Update API ListPipelines: add response parameters Body.pipelines.$.executePolicy.continuous.
+- Update API ListPipelines: add response parameters Body.pipelines.$.source.inputFields.
+- Update API ListPipelines: add response parameters Body.pipelines.$.source.trajectory.
+- Update API PreviewPipeline: add request parameters body.source.trajectory.
+- Update API PreviewPipeline: add response parameters Body.meta.schema.
+- Update API UpdatePipeline: add request parameters body.executePolicy.continuous.
+- Update API UpdatePipeline: add request parameters body.source.trajectory.
+
+
 2026-09-21 Version: 2.3.7
 - Update API UpdateDataset: add request parameters body.renames.
 

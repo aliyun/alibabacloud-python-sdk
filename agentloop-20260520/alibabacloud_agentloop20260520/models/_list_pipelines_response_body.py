@@ -219,21 +219,31 @@ class ListPipelinesResponseBodyPipelinesSource(DaraModel):
     def __init__(
         self,
         dataset: main_models.ListPipelinesResponseBodyPipelinesSourceDataset = None,
+        input_fields: List[main_models.ListPipelinesResponseBodyPipelinesSourceInputFields] = None,
         logstore: main_models.ListPipelinesResponseBodyPipelinesSourceLogstore = None,
+        trajectory: main_models.ListPipelinesResponseBodyPipelinesSourceTrajectory = None,
         type: str = None,
     ):
         # The dataset datasource config in the current AgentSpace.
         self.dataset = dataset
+        self.input_fields = input_fields
         # The Simple Log Service (SLS) Logstore datasource config.
         self.logstore = logstore
+        self.trajectory = trajectory
         # The data source type. Valid values: logstore or dataset.
         self.type = type
 
     def validate(self):
         if self.dataset:
             self.dataset.validate()
+        if self.input_fields:
+            for v1 in self.input_fields:
+                 if v1:
+                    v1.validate()
         if self.logstore:
             self.logstore.validate()
+        if self.trajectory:
+            self.trajectory.validate()
 
     def to_map(self):
         result = dict()
@@ -243,8 +253,16 @@ class ListPipelinesResponseBodyPipelinesSource(DaraModel):
         if self.dataset is not None:
             result['dataset'] = self.dataset.to_map()
 
+        result['inputFields'] = []
+        if self.input_fields is not None:
+            for k1 in self.input_fields:
+                result['inputFields'].append(k1.to_map() if k1 else None)
+
         if self.logstore is not None:
             result['logstore'] = self.logstore.to_map()
+
+        if self.trajectory is not None:
+            result['trajectory'] = self.trajectory.to_map()
 
         if self.type is not None:
             result['type'] = self.type
@@ -257,12 +275,86 @@ class ListPipelinesResponseBodyPipelinesSource(DaraModel):
             temp_model = main_models.ListPipelinesResponseBodyPipelinesSourceDataset()
             self.dataset = temp_model.from_map(m.get('dataset'))
 
+        self.input_fields = []
+        if m.get('inputFields') is not None:
+            for k1 in m.get('inputFields'):
+                temp_model = main_models.ListPipelinesResponseBodyPipelinesSourceInputFields()
+                self.input_fields.append(temp_model.from_map(k1))
+
         if m.get('logstore') is not None:
             temp_model = main_models.ListPipelinesResponseBodyPipelinesSourceLogstore()
             self.logstore = temp_model.from_map(m.get('logstore'))
 
+        if m.get('trajectory') is not None:
+            temp_model = main_models.ListPipelinesResponseBodyPipelinesSourceTrajectory()
+            self.trajectory = temp_model.from_map(m.get('trajectory'))
+
         if m.get('type') is not None:
             self.type = m.get('type')
+
+        return self
+
+class ListPipelinesResponseBodyPipelinesSourceTrajectory(DaraModel):
+    def __init__(
+        self,
+        enrich: main_models.ListPipelinesResponseBodyPipelinesSourceTrajectoryEnrich = None,
+    ):
+        self.enrich = enrich
+
+    def validate(self):
+        if self.enrich:
+            self.enrich.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.enrich is not None:
+            result['enrich'] = self.enrich.to_map()
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enrich') is not None:
+            temp_model = main_models.ListPipelinesResponseBodyPipelinesSourceTrajectoryEnrich()
+            self.enrich = temp_model.from_map(m.get('enrich'))
+
+        return self
+
+class ListPipelinesResponseBodyPipelinesSourceTrajectoryEnrich(DaraModel):
+    def __init__(
+        self,
+        columns: List[str] = None,
+        enabled: bool = None,
+    ):
+        self.columns = columns
+        self.enabled = enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.columns is not None:
+            result['columns'] = self.columns
+
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('columns') is not None:
+            self.columns = m.get('columns')
+
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
 
         return self
 
@@ -309,6 +401,41 @@ class ListPipelinesResponseBodyPipelinesSourceLogstore(DaraModel):
 
         if m.get('query') is not None:
             self.query = m.get('query')
+
+        return self
+
+class ListPipelinesResponseBodyPipelinesSourceInputFields(DaraModel):
+    def __init__(
+        self,
+        name: str = None,
+        type: str = None,
+    ):
+        self.name = name
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.name is not None:
+            result['name'] = self.name
+
+        if self.type is not None:
+            result['type'] = self.type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+
+        if m.get('type') is not None:
+            self.type = m.get('type')
 
         return self
 
@@ -697,10 +824,12 @@ class ListPipelinesResponseBodyPipelinesSinkConditionDefaultSinkDataset(DaraMode
 class ListPipelinesResponseBodyPipelinesExecutePolicy(DaraModel):
     def __init__(
         self,
+        continuous: main_models.ListPipelinesResponseBodyPipelinesExecutePolicyContinuous = None,
         mode: str = None,
         run_once: main_models.ListPipelinesResponseBodyPipelinesExecutePolicyRunOnce = None,
         scheduled: main_models.ListPipelinesResponseBodyPipelinesExecutePolicyScheduled = None,
     ):
+        self.continuous = continuous
         # The scheduling mode. Valid values:
         # - RunOnce: one-time execution.
         # - Scheduled: periodic scheduling.
@@ -711,6 +840,8 @@ class ListPipelinesResponseBodyPipelinesExecutePolicy(DaraModel):
         self.scheduled = scheduled
 
     def validate(self):
+        if self.continuous:
+            self.continuous.validate()
         if self.run_once:
             self.run_once.validate()
         if self.scheduled:
@@ -721,6 +852,9 @@ class ListPipelinesResponseBodyPipelinesExecutePolicy(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.continuous is not None:
+            result['continuous'] = self.continuous.to_map()
+
         if self.mode is not None:
             result['mode'] = self.mode
 
@@ -734,6 +868,10 @@ class ListPipelinesResponseBodyPipelinesExecutePolicy(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('continuous') is not None:
+            temp_model = main_models.ListPipelinesResponseBodyPipelinesExecutePolicyContinuous()
+            self.continuous = temp_model.from_map(m.get('continuous'))
+
         if m.get('mode') is not None:
             self.mode = m.get('mode')
 
@@ -818,6 +956,33 @@ class ListPipelinesResponseBodyPipelinesExecutePolicyRunOnce(DaraModel):
 
         if m.get('toTime') is not None:
             self.to_time = m.get('toTime')
+
+        return self
+
+class ListPipelinesResponseBodyPipelinesExecutePolicyContinuous(DaraModel):
+    def __init__(
+        self,
+        from_time: int = None,
+    ):
+        self.from_time = from_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.from_time is not None:
+            result['fromTime'] = self.from_time
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fromTime') is not None:
+            self.from_time = m.get('fromTime')
 
         return self
 

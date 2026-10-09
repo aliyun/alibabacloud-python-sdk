@@ -18,6 +18,7 @@ from ._offline_experiment_config import OfflineExperimentConfig
 from ._prompt_template_item import PromptTemplateItem
 from ._run_strategies import RunStrategies
 from ._evaluator_variable_extractor_mapping_value import EvaluatorVariableExtractorMappingValue
+from ._meta_schema_value import MetaSchemaValue
 from ._add_dataset_data_request import AddDatasetDataRequest
 from ._add_dataset_data_response_body import AddDatasetDataResponseBody
 from ._add_dataset_data_response import AddDatasetDataResponse
@@ -220,6 +221,7 @@ from ._update_pipeline_response import UpdatePipelineResponse
 from ._create_context_store_request import CreateContextStoreRequestConfigSource
 from ._create_context_store_request import CreateContextStoreRequestConfig
 from ._create_evaluator_skill_request import CreateEvaluatorSkillRequestFiles
+from ._create_pipeline_request import CreatePipelineRequestExecutePolicyContinuous
 from ._create_pipeline_request import CreatePipelineRequestExecutePolicyRunOnce
 from ._create_pipeline_request import CreatePipelineRequestExecutePolicyScheduled
 from ._create_pipeline_request import CreatePipelineRequestExecutePolicy
@@ -236,6 +238,8 @@ from ._create_pipeline_request import CreatePipelineRequestSink
 from ._create_pipeline_request import CreatePipelineRequestSourceDataset
 from ._create_pipeline_request import CreatePipelineRequestSourceInputFields
 from ._create_pipeline_request import CreatePipelineRequestSourceLogstore
+from ._create_pipeline_request import CreatePipelineRequestSourceTrajectoryEnrich
+from ._create_pipeline_request import CreatePipelineRequestSourceTrajectory
 from ._create_pipeline_request import CreatePipelineRequestSource
 from ._describe_regions_response_body import DescribeRegionsResponseBodyRegions
 from ._execute_query_request import ExecuteQueryRequestAnnotationFilterConditions
@@ -251,6 +255,7 @@ from ._get_evaluator_response_body import GetEvaluatorResponseBodyEvaluator
 from ._get_evaluator_skill_response_body import GetEvaluatorSkillResponseBodySkillFiles
 from ._get_evaluator_skill_response_body import GetEvaluatorSkillResponseBodySkillVersions
 from ._get_evaluator_skill_response_body import GetEvaluatorSkillResponseBodySkill
+from ._get_pipeline_response_body import GetPipelineResponseBodyExecutePolicyContinuous
 from ._get_pipeline_response_body import GetPipelineResponseBodyExecutePolicyRunOnce
 from ._get_pipeline_response_body import GetPipelineResponseBodyExecutePolicyScheduled
 from ._get_pipeline_response_body import GetPipelineResponseBodyExecutePolicy
@@ -267,6 +272,8 @@ from ._get_pipeline_response_body import GetPipelineResponseBodySink
 from ._get_pipeline_response_body import GetPipelineResponseBodySourceDataset
 from ._get_pipeline_response_body import GetPipelineResponseBodySourceInputFields
 from ._get_pipeline_response_body import GetPipelineResponseBodySourceLogstore
+from ._get_pipeline_response_body import GetPipelineResponseBodySourceTrajectoryEnrich
+from ._get_pipeline_response_body import GetPipelineResponseBodySourceTrajectory
 from ._get_pipeline_response_body import GetPipelineResponseBodySource
 from ._get_pipeline_stats_response_body import GetPipelineStatsResponseBodySummary
 from ._get_pipeline_stats_response_body import GetPipelineStatsResponseBodyTimeSeries
@@ -280,6 +287,7 @@ from ._list_evaluation_tasks_response_body import ListEvaluationTasksResponseBod
 from ._list_evaluator_skills_response_body import ListEvaluatorSkillsResponseBodySkills
 from ._list_evaluators_response_body import ListEvaluatorsResponseBodyEvaluators
 from ._list_pipeline_runs_response_body import ListPipelineRunsResponseBodyRuns
+from ._list_pipelines_response_body import ListPipelinesResponseBodyPipelinesExecutePolicyContinuous
 from ._list_pipelines_response_body import ListPipelinesResponseBodyPipelinesExecutePolicyRunOnce
 from ._list_pipelines_response_body import ListPipelinesResponseBodyPipelinesExecutePolicyScheduled
 from ._list_pipelines_response_body import ListPipelinesResponseBodyPipelinesExecutePolicy
@@ -292,7 +300,10 @@ from ._list_pipelines_response_body import ListPipelinesResponseBodyPipelinesSin
 from ._list_pipelines_response_body import ListPipelinesResponseBodyPipelinesSinkDataset
 from ._list_pipelines_response_body import ListPipelinesResponseBodyPipelinesSink
 from ._list_pipelines_response_body import ListPipelinesResponseBodyPipelinesSourceDataset
+from ._list_pipelines_response_body import ListPipelinesResponseBodyPipelinesSourceInputFields
 from ._list_pipelines_response_body import ListPipelinesResponseBodyPipelinesSourceLogstore
+from ._list_pipelines_response_body import ListPipelinesResponseBodyPipelinesSourceTrajectoryEnrich
+from ._list_pipelines_response_body import ListPipelinesResponseBodyPipelinesSourceTrajectory
 from ._list_pipelines_response_body import ListPipelinesResponseBodyPipelinesSource
 from ._list_pipelines_response_body import ListPipelinesResponseBodyPipelines
 from ._preview_pipeline_request import PreviewPipelineRequestPipelineNodes
@@ -300,6 +311,8 @@ from ._preview_pipeline_request import PreviewPipelineRequestPipeline
 from ._preview_pipeline_request import PreviewPipelineRequestSourceDataset
 from ._preview_pipeline_request import PreviewPipelineRequestSourceInputFields
 from ._preview_pipeline_request import PreviewPipelineRequestSourceLogstore
+from ._preview_pipeline_request import PreviewPipelineRequestSourceTrajectoryEnrich
+from ._preview_pipeline_request import PreviewPipelineRequestSourceTrajectory
 from ._preview_pipeline_request import PreviewPipelineRequestSource
 from ._preview_pipeline_response_body import PreviewPipelineResponseBodyMeta
 from ._run_pipeline_request import RunPipelineRequestOutput
@@ -307,6 +320,7 @@ from ._update_context_store_request import UpdateContextStoreRequestConfigSource
 from ._update_context_store_request import UpdateContextStoreRequestConfig
 from ._update_dataset_request import UpdateDatasetRequestRenames
 from ._update_evaluator_skill_request import UpdateEvaluatorSkillRequestFiles
+from ._update_pipeline_request import UpdatePipelineRequestExecutePolicyContinuous
 from ._update_pipeline_request import UpdatePipelineRequestExecutePolicyRunOnce
 from ._update_pipeline_request import UpdatePipelineRequestExecutePolicyScheduled
 from ._update_pipeline_request import UpdatePipelineRequestExecutePolicy
@@ -323,6 +337,8 @@ from ._update_pipeline_request import UpdatePipelineRequestSink
 from ._update_pipeline_request import UpdatePipelineRequestSourceDataset
 from ._update_pipeline_request import UpdatePipelineRequestSourceInputFields
 from ._update_pipeline_request import UpdatePipelineRequestSourceLogstore
+from ._update_pipeline_request import UpdatePipelineRequestSourceTrajectoryEnrich
+from ._update_pipeline_request import UpdatePipelineRequestSourceTrajectory
 from ._update_pipeline_request import UpdatePipelineRequestSource
 
 __all__ = [
@@ -342,6 +358,7 @@ __all__ = [
     PromptTemplateItem,
     RunStrategies,
     EvaluatorVariableExtractorMappingValue,
+    MetaSchemaValue,
     AddDatasetDataRequest,
     AddDatasetDataResponseBody,
     AddDatasetDataResponse,
@@ -544,6 +561,7 @@ __all__ = [
     CreateContextStoreRequestConfigSource,
     CreateContextStoreRequestConfig,
     CreateEvaluatorSkillRequestFiles,
+    CreatePipelineRequestExecutePolicyContinuous,
     CreatePipelineRequestExecutePolicyRunOnce,
     CreatePipelineRequestExecutePolicyScheduled,
     CreatePipelineRequestExecutePolicy,
@@ -560,6 +578,8 @@ __all__ = [
     CreatePipelineRequestSourceDataset,
     CreatePipelineRequestSourceInputFields,
     CreatePipelineRequestSourceLogstore,
+    CreatePipelineRequestSourceTrajectoryEnrich,
+    CreatePipelineRequestSourceTrajectory,
     CreatePipelineRequestSource,
     DescribeRegionsResponseBodyRegions,
     ExecuteQueryRequestAnnotationFilterConditions,
@@ -575,6 +595,7 @@ __all__ = [
     GetEvaluatorSkillResponseBodySkillFiles,
     GetEvaluatorSkillResponseBodySkillVersions,
     GetEvaluatorSkillResponseBodySkill,
+    GetPipelineResponseBodyExecutePolicyContinuous,
     GetPipelineResponseBodyExecutePolicyRunOnce,
     GetPipelineResponseBodyExecutePolicyScheduled,
     GetPipelineResponseBodyExecutePolicy,
@@ -591,6 +612,8 @@ __all__ = [
     GetPipelineResponseBodySourceDataset,
     GetPipelineResponseBodySourceInputFields,
     GetPipelineResponseBodySourceLogstore,
+    GetPipelineResponseBodySourceTrajectoryEnrich,
+    GetPipelineResponseBodySourceTrajectory,
     GetPipelineResponseBodySource,
     GetPipelineStatsResponseBodySummary,
     GetPipelineStatsResponseBodyTimeSeries,
@@ -604,6 +627,7 @@ __all__ = [
     ListEvaluatorSkillsResponseBodySkills,
     ListEvaluatorsResponseBodyEvaluators,
     ListPipelineRunsResponseBodyRuns,
+    ListPipelinesResponseBodyPipelinesExecutePolicyContinuous,
     ListPipelinesResponseBodyPipelinesExecutePolicyRunOnce,
     ListPipelinesResponseBodyPipelinesExecutePolicyScheduled,
     ListPipelinesResponseBodyPipelinesExecutePolicy,
@@ -616,7 +640,10 @@ __all__ = [
     ListPipelinesResponseBodyPipelinesSinkDataset,
     ListPipelinesResponseBodyPipelinesSink,
     ListPipelinesResponseBodyPipelinesSourceDataset,
+    ListPipelinesResponseBodyPipelinesSourceInputFields,
     ListPipelinesResponseBodyPipelinesSourceLogstore,
+    ListPipelinesResponseBodyPipelinesSourceTrajectoryEnrich,
+    ListPipelinesResponseBodyPipelinesSourceTrajectory,
     ListPipelinesResponseBodyPipelinesSource,
     ListPipelinesResponseBodyPipelines,
     PreviewPipelineRequestPipelineNodes,
@@ -624,6 +651,8 @@ __all__ = [
     PreviewPipelineRequestSourceDataset,
     PreviewPipelineRequestSourceInputFields,
     PreviewPipelineRequestSourceLogstore,
+    PreviewPipelineRequestSourceTrajectoryEnrich,
+    PreviewPipelineRequestSourceTrajectory,
     PreviewPipelineRequestSource,
     PreviewPipelineResponseBodyMeta,
     RunPipelineRequestOutput,
@@ -631,6 +660,7 @@ __all__ = [
     UpdateContextStoreRequestConfig,
     UpdateDatasetRequestRenames,
     UpdateEvaluatorSkillRequestFiles,
+    UpdatePipelineRequestExecutePolicyContinuous,
     UpdatePipelineRequestExecutePolicyRunOnce,
     UpdatePipelineRequestExecutePolicyScheduled,
     UpdatePipelineRequestExecutePolicy,
@@ -647,5 +677,7 @@ __all__ = [
     UpdatePipelineRequestSourceDataset,
     UpdatePipelineRequestSourceInputFields,
     UpdatePipelineRequestSourceLogstore,
+    UpdatePipelineRequestSourceTrajectoryEnrich,
+    UpdatePipelineRequestSourceTrajectory,
     UpdatePipelineRequestSource
 ]

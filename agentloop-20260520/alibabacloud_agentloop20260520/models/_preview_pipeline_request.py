@@ -15,13 +15,13 @@ class PreviewPipelineRequest(DaraModel):
         source: main_models.PreviewPipelineRequestSource = None,
         to_time: int = None,
     ):
-        # The start time of the preview data window, in UNIX seconds.
+        # The start time of the preview data window. The value is a UNIX timestamp in seconds.
         self.from_time = from_time
-        # The pipeline configuration, which defines the node orchestration.
+        # The pipeline configuration, including node orchestration.
         self.pipeline = pipeline
-        # The pipeline data source.
+        # The data source of the pipeline.
         self.source = source
-        # The end time of the preview data window, in UNIX seconds.
+        # The end time of the preview data window. The value is a UNIX timestamp in seconds.
         self.to_time = to_time
 
     def validate(self):
@@ -73,15 +73,18 @@ class PreviewPipelineRequestSource(DaraModel):
         dataset: main_models.PreviewPipelineRequestSourceDataset = None,
         input_fields: List[main_models.PreviewPipelineRequestSourceInputFields] = None,
         logstore: main_models.PreviewPipelineRequestSourceLogstore = None,
+        trajectory: main_models.PreviewPipelineRequestSourceTrajectory = None,
         type: str = None,
     ):
-        # The Dataset datasource config under the current AgentSpace.
+        # The dataset datasource config in the current AgentSpace.
         self.dataset = dataset
-        # The input fields and field types. This parameter applies to all data source types.
+        # The input fields and their data types. This applies to all data source types.
         self.input_fields = input_fields
-        # The SLS Logstore datasource config.
+        # The Simple Log Service Logstore datasource config.
         self.logstore = logstore
-        # The data source type. Currently, Simple Log Service (SLS) is supported.
+        # The configuration of trajectory data. This parameter is optional and takes effect only when the type is set to trace. It retrieves ATIF standard trajectory data from the trajectory cleaning service and extends the data based on features.
+        self.trajectory = trajectory
+        # The type of the data source. Simple Log Service is currently supported.
         self.type = type
 
     def validate(self):
@@ -93,6 +96,8 @@ class PreviewPipelineRequestSource(DaraModel):
                     v1.validate()
         if self.logstore:
             self.logstore.validate()
+        if self.trajectory:
+            self.trajectory.validate()
 
     def to_map(self):
         result = dict()
@@ -109,6 +114,9 @@ class PreviewPipelineRequestSource(DaraModel):
 
         if self.logstore is not None:
             result['logstore'] = self.logstore.to_map()
+
+        if self.trajectory is not None:
+            result['trajectory'] = self.trajectory.to_map()
 
         if self.type is not None:
             result['type'] = self.type
@@ -131,8 +139,79 @@ class PreviewPipelineRequestSource(DaraModel):
             temp_model = main_models.PreviewPipelineRequestSourceLogstore()
             self.logstore = temp_model.from_map(m.get('logstore'))
 
+        if m.get('trajectory') is not None:
+            temp_model = main_models.PreviewPipelineRequestSourceTrajectory()
+            self.trajectory = temp_model.from_map(m.get('trajectory'))
+
         if m.get('type') is not None:
             self.type = m.get('type')
+
+        return self
+
+class PreviewPipelineRequestSourceTrajectory(DaraModel):
+    def __init__(
+        self,
+        enrich: main_models.PreviewPipelineRequestSourceTrajectoryEnrich = None,
+    ):
+        # Trajectory enrichment: mounts trajectory data into the cleaning results based on the trace_id. When writing data to a dataset, the data is stored in the fixed agent_trajectory column, and the column value is the JSON content of the trajectory.
+        self.enrich = enrich
+
+    def validate(self):
+        if self.enrich:
+            self.enrich.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.enrich is not None:
+            result['enrich'] = self.enrich.to_map()
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enrich') is not None:
+            temp_model = main_models.PreviewPipelineRequestSourceTrajectoryEnrich()
+            self.enrich = temp_model.from_map(m.get('enrich'))
+
+        return self
+
+class PreviewPipelineRequestSourceTrajectoryEnrich(DaraModel):
+    def __init__(
+        self,
+        columns: List[str] = None,
+        enabled: bool = None,
+    ):
+        # The list of enrichment columns. This parameter is retained for compatibility. The current implementation outputs only the fixed agent_trajectory column, and this parameter no longer affects the output.
+        self.columns = columns
+        # Specifies whether to enable trajectory enrichment.
+        self.enabled = enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.columns is not None:
+            result['columns'] = self.columns
+
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('columns') is not None:
+            self.columns = m.get('columns')
+
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
 
         return self
 
@@ -143,11 +222,11 @@ class PreviewPipelineRequestSourceLogstore(DaraModel):
         project: str = None,
         query: str = None,
     ):
-        # The name of the SLS Logstore.
+        # The name of the Simple Log Service Logstore.
         self.logstore = logstore
-        # The name of the SLS project.
+        # The name of the Simple Log Service project.
         self.project = project
-        # The data filtered query statement in SLS query/analysis syntax.
+        # The filtered query statement (Simple Log Service query and analysis syntax).
         self.query = query
 
     def validate(self):
@@ -188,9 +267,9 @@ class PreviewPipelineRequestSourceInputFields(DaraModel):
         name: str = None,
         type: str = None,
     ):
-        # The field name.
+        # The name of the field.
         self.name = name
-        # The field type. Valid values: text, long, double, and json.
+        # The type of the field. Valid values: text, long, double, and json.
         self.type = type
 
     def validate(self):
@@ -227,7 +306,7 @@ class PreviewPipelineRequestSourceDataset(DaraModel):
     ):
         # The name of the source dataset.
         self.dataset = dataset
-        # The filter condition for dataset data.
+        # The filter condition for the dataset data.
         self.filter = filter
 
     def validate(self):
@@ -299,11 +378,11 @@ class PreviewPipelineRequestPipelineNodes(DaraModel):
         parameters: Dict[str, Any] = None,
         type: str = None,
     ):
-        # The node ID.
+        # The ID of the node.
         self.id = id
-        # The node parameters in key-value format. The parameters vary based on the node type.
+        # The parameters of the node. The parameters are in key-value format and vary based on the node type.
         self.parameters = parameters
-        # The node type.
+        # The type of the node.
         self.type = type
 
     def validate(self):
