@@ -1,3 +1,6 @@
+2026-10-09 Version: 1.22.1
+- Generated python 2024-06-28 for DianJin.
+
 2026-09-09 Version: 1.22.0
 - Support API QueryAmount.
 

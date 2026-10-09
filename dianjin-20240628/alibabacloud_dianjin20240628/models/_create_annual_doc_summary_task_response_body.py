@@ -16,21 +16,21 @@ class CreateAnnualDocSummaryTaskResponseBody(DaraModel):
         success: bool = None,
         time: str = None,
     ):
-        # Processing time in milliseconds
+        # The execution duration.
         self.cost = cost
-        # Response data. This is the task ID.
+        # The response data, which is the task ID.
         self.data = data
-        # Data type
+        # The data type.
         self.data_type = data_type
-        # Error code
+        # The error code.
         self.err_code = err_code
-        # Error message
+        # The error message.
         self.message = message
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request succeeded
+        # Indicates whether the request is successful.
         self.success = success
-        # Timestamp
+        # The timestamp.
         self.time = time
 
     def validate(self):

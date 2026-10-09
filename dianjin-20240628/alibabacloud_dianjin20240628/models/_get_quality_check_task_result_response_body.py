@@ -19,21 +19,21 @@ class GetQualityCheckTaskResultResponseBody(DaraModel):
         success: bool = None,
         time: str = None,
     ):
-        # Processing time, in milliseconds
+        # The duration.
         self.cost = cost
-        # Response data
+        # The response data.
         self.data = data
-        # Data type
+        # The data type.
         self.data_type = data_type
-        # Error code
+        # The error code.
         self.err_code = err_code
-        # Error message
+        # The error message.
         self.message = message
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Whether the request succeeded
+        # Indicates whether the request is successful.
         self.success = success
-        # Timestamp
+        # The timestamp.
         self.time = time
 
     def validate(self):
@@ -111,19 +111,19 @@ class GetQualityCheckTaskResultResponseBodyData(DaraModel):
         status: str = None,
         task_id: str = None,
     ):
-        # Original conversation content
+        # The original conversation content.
         self.conversation_list = conversation_list
-        # Task creation time. This is when the task was submitted
+        # The time when the task was created and submitted.
         self.gmt_create = gmt_create
-        # System execution end time
+        # The time when the system finished execution.
         self.gmt_end = gmt_end
-        # System execution start time
+        # The time when the system started execution.
         self.gmt_start = gmt_start
-        # Quality check result set
+        # The quality check results.
         self.quality_check_list = quality_check_list
-        # Task status
+        # The task status.
         self.status = status
-        # Task ID
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -211,33 +211,33 @@ class GetQualityCheckTaskResultResponseBodyDataQualityCheckList(DaraModel):
         rule_type: str = None,
         sub_node_col: List[Any] = None,
     ):
-        # Rule business type
+        # The business type of the rule.
         self.biz_type = biz_type
-        # Reason for passing or failing the quality check
+        # The explanation for why the check passed or failed.
         self.check_explanation = check_explanation
-        # Whether the quality check passed
+        # Indicates whether the quality check passed.
         self.check_passed = check_passed
-        # Description of the quality check process
+        # The description of the quality check process.
         self.check_process = check_process
-        # Whether the rule matched
+        # Indicates whether the rule was hit.
         self.checked = checked
-        # Quality check completion time
+        # The quality check completion time.
         self.gmt_end = gmt_end
-        # Quality check start time
+        # The quality check start time.
         self.gmt_start = gmt_start
-        # Internal quality check mode
+        # The internal quality check mode.
         self.mode = mode
-        # Original dialogue list
+        # The original dialogue list.
         self.origin_dialogue = origin_dialogue
-        # Quality check group ID
+        # The quality check group ID.
         self.quality_group_id = quality_group_id
-        # Quality check item description
+        # The quality check item description.
         self.rule_description = rule_description
-        # Quality check item ID
+        # The quality check item ID.
         self.rule_id = rule_id
-        # Rule direction. 0: negative, 1: positive
+        # The polarity type of the rule. Valid values: 0: negative. 1: positive.
         self.rule_type = rule_type
-        # Child node
+        # The child node.
         self.sub_node_col = sub_node_col
 
     def validate(self):
@@ -360,25 +360,25 @@ class GetQualityCheckTaskResultResponseBodyDataQualityCheckListOriginDialogue(Da
         role: str = None,
         type: str = None,
     ):
-        # Start time of this utterance, in milliseconds relative to the start of the conversation
+        # The start time of the utterance, as an offset in milliseconds from the start of the conversation.
         self.begin = begin
-        # Start time of this utterance
+        # The start time of the utterance.
         self.begin_time = begin_time
-        # Dialogue content
+        # The specific content of the dialogue.
         self.content = content
-        # Unique identifier for the dialogue role
+        # The unique identifier of the dialogue role.
         self.customer_id = customer_id
-        # Agent ID
+        # The customer service ID.
         self.customer_service_id = customer_service_id
-        # Agent type
+        # The agent type.
         self.customer_service_type = customer_service_type
-        # End time of this utterance, in milliseconds relative to the start of the conversation
+        # The end time of the utterance, as an offset in milliseconds from the start of the conversation.
         self.end = end
-        # Unique identifier for this utterance. Assigned internally
+        # The unique identifier of the sentence, which is assigned internally.
         self.id = id
-        # Role
+        # The role.
         self.role = role
-        # Content type
+        # The type of the dialogue content.
         self.type = type
 
     def validate(self):
@@ -466,19 +466,19 @@ class GetQualityCheckTaskResultResponseBodyDataConversationList(DaraModel):
         dialogue_list: List[main_models.GetQualityCheckTaskResultResponseBodyDataConversationListDialogueList] = None,
         gmt_service: str = None,
     ):
-        # Call type:
+        # The call type.
         self.call_type = call_type
-        # Customer ID
+        # The customer ID.
         self.customer_id = customer_id
-        # Customer name
+        # The customer name.
         self.customer_name = customer_name
-        # Agent ID
+        # The customer service ID.
         self.customer_service_id = customer_service_id
-        # Agent name
+        # The customer service name.
         self.customer_service_name = customer_service_name
-        # Dialogue details list
+        # The list of dialogue details.
         self.dialogue_list = dialogue_list
-        # Conversation time
+        # The conversation time.
         self.gmt_service = gmt_service
 
     def validate(self):
@@ -559,25 +559,25 @@ class GetQualityCheckTaskResultResponseBodyDataConversationListDialogueList(Dara
         role: str = None,
         type: str = None,
     ):
-        # Start time of this utterance, in milliseconds relative to the start of the conversation
+        # The start time of the utterance, as an offset in milliseconds from the start of the conversation.
         self.begin = begin
-        # Start time of this utterance
+        # The start time of the utterance.
         self.begin_time = begin_time
-        # Dialogue content
+        # The specific content of the dialogue.
         self.content = content
-        # Unique identifier for the dialogue role
+        # The unique identifier of the dialogue role.
         self.customer_id = customer_id
-        # Agent ID
+        # The customer service ID.
         self.customer_service_id = customer_service_id
-        # Agent type
+        # The agent type.
         self.customer_service_type = customer_service_type
-        # End time of this utterance, in milliseconds relative to the start of the conversation
+        # The end time of the utterance, as an offset in milliseconds from the start of the conversation.
         self.end = end
-        # Unique identifier for this utterance. Assigned internally
+        # The unique identifier of the utterance. This value is assigned internally.
         self.id = id
-        # Role
+        # The role.
         self.role = role
-        # Content type
+        # The type of the dialogue content.
         self.type = type
 
     def validate(self):

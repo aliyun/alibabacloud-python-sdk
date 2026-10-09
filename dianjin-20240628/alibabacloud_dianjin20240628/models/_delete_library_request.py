@@ -9,7 +9,7 @@ class DeleteLibraryRequest(DaraModel):
         self,
         library_id: str = None,
     ):
-        # Document library ID
+        # The document library ID.
         # 
         # This parameter is required.
         self.library_id = library_id

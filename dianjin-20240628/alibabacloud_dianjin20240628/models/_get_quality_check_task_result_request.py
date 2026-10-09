@@ -9,7 +9,7 @@ class GetQualityCheckTaskResultRequest(DaraModel):
         self,
         task_id: str = None,
     ):
-        # Task ID
+        # The task ID.
         # 
         # This parameter is required.
         self.task_id = task_id

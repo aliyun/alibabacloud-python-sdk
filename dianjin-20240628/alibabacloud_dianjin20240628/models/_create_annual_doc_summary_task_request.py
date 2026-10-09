@@ -16,19 +16,19 @@ class CreateAnnualDocSummaryTaskRequest(DaraModel):
         instruction: str = None,
         model_id: str = None,
     ):
-        # List of years to analyze
+        # The list of analysis years.
         # 
         # This parameter is required.
         self.ana_years = ana_years
-        # List of document information
+        # The list of document information.
         # 
         # This parameter is required.
         self.doc_infos = doc_infos
-        # Enable table extraction. Default is true.
+        # Specifies whether to enable tables. Default value: true.
         self.enable_table = enable_table
-        # Instruction
+        # The instruction.
         self.instruction = instruction
-        # Model ID
+        # The model ID.
         # 
         # This parameter is required.
         self.model_id = model_id
@@ -96,21 +96,21 @@ class CreateAnnualDocSummaryTaskRequestDocInfos(DaraModel):
         library_id: str = None,
         start_page: int = None,
     ):
-        # Document ID
+        # The document ID.
         # 
         # This parameter is required.
         self.doc_id = doc_id
-        # Document year
+        # The document year.
         # 
         # This parameter is required.
         self.doc_year = doc_year
-        # End page number
+        # The end page.
         self.end_page = end_page
-        # Document library ID
+        # The document library ID.
         # 
         # This parameter is required.
         self.library_id = library_id
-        # Start page number
+        # The start page.
         self.start_page = start_page
 
     def validate(self):

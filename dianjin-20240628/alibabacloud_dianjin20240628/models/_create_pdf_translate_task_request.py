@@ -13,21 +13,21 @@ class CreatePdfTranslateTaskRequest(DaraModel):
         model_id: str = None,
         translate_to: str = None,
     ):
-        # Document ID
+        # The document ID.
         # 
         # This parameter is required.
         self.doc_id = doc_id
-        # Domain knowledge used as reference during translation
+        # The domain knowledge referenced during translation.
         self.knowledge = knowledge
-        # Document library ID
+        # The document library ID.
         # 
         # This parameter is required.
         self.library_id = library_id
-        # Model ID
+        # The model ID.
         # 
         # This parameter is required.
         self.model_id = model_id
-        # Target language. Default is Chinese
+        # The target language. Default value: Chinese.
         self.translate_to = translate_to
 
     def validate(self):
