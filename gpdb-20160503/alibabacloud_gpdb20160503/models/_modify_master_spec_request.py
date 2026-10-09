@@ -9,6 +9,7 @@ class ModifyMasterSpecRequest(DaraModel):
         self,
         dbinstance_description: str = None,
         dbinstance_id: str = None,
+        effective_time: str = None,
         master_aispec: str = None,
         master_cu: int = None,
         resource_group_id: str = None,
@@ -17,27 +18,30 @@ class ModifyMasterSpecRequest(DaraModel):
         self.dbinstance_description = dbinstance_description
         # The instance ID.
         # 
-        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a region.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a region.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # This parameter must be specified if you want to change coordinator nodes to AI coordinator nodes.
-        # >-  You cannot specify the MasterAISpec and MasterCU parameters at the same time.
-        # >- You can change coordinator nodes to AI coordinator nodes only in specific regions and zones.
-        # >- Only AnalyticDB for PostgreSQL V7.0 instances of Basic Edition support AI coordinator nodes.
-        # >- You can view the valid values of this parameter on the configuration change page of coordinator nodes.
+        # The effective period of the specification change. Valid values: 
+        # - **Immediately** (default): The change takes effect immediately.
+        # - **MaintainTime**: The change takes effect during the maintenance window of the instance.
+        self.effective_time = effective_time
+        # If you want to change the master node to a MasterAI node, specify this parameter.
+        # 
+        # > - This parameter and MasterCU cannot be specified at the same time.
+        # >- Only specific regions and zones support changing the master node to a MasterAI node.
+        # >- Only AnalyticDB for PostgreSQL V7.0 Basic Edition instances support MasterAI nodes.
+        # >- You can view all valid values of this parameter on the specification change page for the master node.
         self.master_aispec = master_aispec
-        # The specifications of coordinator node resources. Valid values:
-        # 
-        # *   2 CU
-        # *   4 CU
-        # *   8 CU
-        # *   16 CU
-        # *   32 CU
-        # 
-        # >  You are charged for coordinator node resources of more than 8 compute units (CUs).
+        # The master resources. Valid values: 
+        # - 2 CU 
+        # - 4 CU 
+        # - 8 CU 
+        # - 16 CU 
+        # - 32 CU 
+        # > Master resources greater than 8 CU incur additional fees.
         self.master_cu = master_cu
-        # The ID of the resource group to which the instance belongs. For information about how to obtain the ID of a resource group, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
+        # The ID of the resource group to which the instance belongs. For information about how to obtain the resource group ID, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -53,6 +57,9 @@ class ModifyMasterSpecRequest(DaraModel):
 
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
+
+        if self.effective_time is not None:
+            result['EffectiveTime'] = self.effective_time
 
         if self.master_aispec is not None:
             result['MasterAISpec'] = self.master_aispec
@@ -72,6 +79,9 @@ class ModifyMasterSpecRequest(DaraModel):
 
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
+
+        if m.get('EffectiveTime') is not None:
+            self.effective_time = m.get('EffectiveTime')
 
         if m.get('MasterAISpec') is not None:
             self.master_aispec = m.get('MasterAISpec')

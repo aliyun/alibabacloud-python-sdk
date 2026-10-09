@@ -4,17 +4,14 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class CreateSupabaseProjectResponseBody(DaraModel):
+class CreateSupabaseBackupResponseBody(DaraModel):
     def __init__(
         self,
-        order_id: str = None,
-        project_id: str = None,
+        backup_job_id: int = None,
         request_id: str = None,
     ):
-        # The associated order ID.
-        self.order_id = order_id
-        # The Supabase instance ID.
-        self.project_id = project_id
+        # The ID of the backup job. You can call ListSupabaseBackupJobs to query the status and progress of the corresponding job.
+        self.backup_job_id = backup_job_id
         # The request ID.
         self.request_id = request_id
 
@@ -26,11 +23,8 @@ class CreateSupabaseProjectResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.order_id is not None:
-            result['OrderId'] = self.order_id
-
-        if self.project_id is not None:
-            result['ProjectId'] = self.project_id
+        if self.backup_job_id is not None:
+            result['BackupJobId'] = self.backup_job_id
 
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -39,11 +33,8 @@ class CreateSupabaseProjectResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('OrderId') is not None:
-            self.order_id = m.get('OrderId')
-
-        if m.get('ProjectId') is not None:
-            self.project_id = m.get('ProjectId')
+        if m.get('BackupJobId') is not None:
+            self.backup_job_id = m.get('BackupJobId')
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')

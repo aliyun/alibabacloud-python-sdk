@@ -14,16 +14,15 @@ class ModifyMasterSpecResponseBody(DaraModel):
     ):
         # The instance ID.
         self.db_instance_id = db_instance_id
-        # The returned message.
+        # The error message.
         # 
-        # This parameter is returned only if the request fails.
+        # This parameter is returned only when the API call fails.
         self.error_message = error_message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **false**
-        # *   **true**
+        # The execution status of the operation. Valid values:
+        # - **false**: The operation failed.
+        # - **true**: The operation succeeded.
         self.status = status
 
     def validate(self):

@@ -14,11 +14,10 @@ class ResetSupabaseProjectPasswordRequest(DaraModel):
     ):
         # The password of the database account.
         # - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
-        # - The following special characters are supported: `!@#$%^&*()_+-=`
+        # - The supported special characters are: `!@#$%^&*()_+-=`
         # - The password must be 8 to 32 characters in length.
-        # 
-        # This parameter is required.
         self.account_password = account_password
+        # The Supabase Dashboard password.
         self.dashboard_password = dashboard_password
         # The Supabase instance ID.
         # 

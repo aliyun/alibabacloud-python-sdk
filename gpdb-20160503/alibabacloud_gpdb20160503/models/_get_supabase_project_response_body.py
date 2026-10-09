@@ -36,40 +36,43 @@ class GetSupabaseProjectResponseBody(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        # The auto-pause duration in hours.
         self.applied_idle_time_hours = applied_idle_time_hours
-        # Indicates whether **auto start and stop** is enabled. Valid values:
+        # Specifies whether **auto start/stop** is enabled.
+        # 
+        # Valid values:
         # - true: Enabled. After this feature is enabled, Supabase automatically pauses and resumes based on traffic conditions.
-        # - false: Disabled. After this feature is disabled, the auto start and stop feature of Supabase is turned off.
+        # - false: Disabled. After this feature is disabled, the auto start/stop feature of Supabase is turned off.
         self.auto_scale = auto_scale
         # The creation time.
         self.create_time = create_time
         # The database whitelist.
         self.dbsecurity_ip_list = dbsecurity_ip_list
-        # The Supabase Dashboard password. This parameter is not in use.
+        # The Supabase Dashboard password (not currently used).
         self.dashboard_password = dashboard_password
-        # The Supabase Dashboard username. This parameter is not in use.
+        # The Supabase Dashboard username (not currently used).
         self.dashboard_user_name = dashboard_user_name
-        # The performance level of the cloud disk. Valid values:
+        # The cloud disk performance level. Valid values:
         # - PL0
         # - PL1
         self.disk_performance_level = disk_performance_level
         # The database engine type.
         self.engine = engine
-        # The database engine version.
+        # The database DPI engine version.
         self.engine_version = engine_version
-        # The elastic network interface (ENI) ID. The network interface controller (NIC) ID of the instance.
+        # The elastic network interface controller (NIC) ID.
         self.eni = eni
         # The current instance version.
         self.instance_version = instance_version
         # Indicates whether the project is a lightweight edition.
         self.lightweight = lightweight
-        # The billing type. Valid values:
+        # The billing method. Valid values:
         # 
         # - POSTPAY: pay-as-you-go.
         # 
         # - PREPAY: subscription.
         self.pay_type = pay_type
-        # The internal network connection string of the Supabase Dashboard.
+        # The Supabase Dashboard internal network connection string.
         self.private_connect_url = private_connect_url
         # The detailed description of the Supabase project.
         self.project_description = project_description
@@ -79,7 +82,7 @@ class GetSupabaseProjectResponseBody(DaraModel):
         self.project_name = project_name
         # The Supabase instance specifications.
         self.project_spec = project_spec
-        # The public network connection string of the Supabase Dashboard.
+        # The Supabase Dashboard public network connection string.
         self.public_connect_url = public_connect_url
         # The region ID.
         # 
@@ -87,11 +90,11 @@ class GetSupabaseProjectResponseBody(DaraModel):
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
-        # The list of IP addresses in the IP whitelist group, separated by commas (,).
+        # The list of IP addresses in the IP whitelist group, separated by commas.
         self.security_ip_list = security_ip_list
         # The Supabase instance status.
         self.status = status
-        # The storage size. Unit: GB.
+        # The storage size, in GB.
         self.storage_size = storage_size
         # The storage type. Valid values:
         # - **cloud_essd_pl0**

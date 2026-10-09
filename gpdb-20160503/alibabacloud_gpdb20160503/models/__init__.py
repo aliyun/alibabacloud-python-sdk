@@ -143,6 +143,9 @@ from ._create_streaming_job_request import CreateStreamingJobRequest
 from ._create_streaming_job_shrink_request import CreateStreamingJobShrinkRequest
 from ._create_streaming_job_response_body import CreateStreamingJobResponseBody
 from ._create_streaming_job_response import CreateStreamingJobResponse
+from ._create_supabase_backup_request import CreateSupabaseBackupRequest
+from ._create_supabase_backup_response_body import CreateSupabaseBackupResponseBody
+from ._create_supabase_backup_response import CreateSupabaseBackupResponse
 from ._create_supabase_project_request import CreateSupabaseProjectRequest
 from ._create_supabase_project_response_body import CreateSupabaseProjectResponseBody
 from ._create_supabase_project_response import CreateSupabaseProjectResponse
@@ -467,6 +470,9 @@ from ._describe_streaming_data_source_response import DescribeStreamingDataSourc
 from ._describe_streaming_job_request import DescribeStreamingJobRequest
 from ._describe_streaming_job_response_body import DescribeStreamingJobResponseBody
 from ._describe_streaming_job_response import DescribeStreamingJobResponse
+from ._describe_supabase_backup_policy_request import DescribeSupabaseBackupPolicyRequest
+from ._describe_supabase_backup_policy_response_body import DescribeSupabaseBackupPolicyResponseBody
+from ._describe_supabase_backup_policy_response import DescribeSupabaseBackupPolicyResponse
 from ._describe_support_features_request import DescribeSupportFeaturesRequest
 from ._describe_support_features_response_body import DescribeSupportFeaturesResponseBody
 from ._describe_support_features_response import DescribeSupportFeaturesResponse
@@ -547,6 +553,12 @@ from ._get_supabase_project_api_keys_response import GetSupabaseProjectApiKeysRe
 from ._get_supabase_project_dashboard_account_request import GetSupabaseProjectDashboardAccountRequest
 from ._get_supabase_project_dashboard_account_response_body import GetSupabaseProjectDashboardAccountResponseBody
 from ._get_supabase_project_dashboard_account_response import GetSupabaseProjectDashboardAccountResponse
+from ._get_supabase_project_spec_request import GetSupabaseProjectSpecRequest
+from ._get_supabase_project_spec_response_body import GetSupabaseProjectSpecResponseBody
+from ._get_supabase_project_spec_response import GetSupabaseProjectSpecResponse
+from ._get_supabase_update_version_request import GetSupabaseUpdateVersionRequest
+from ._get_supabase_update_version_response_body import GetSupabaseUpdateVersionResponseBody
+from ._get_supabase_update_version_response import GetSupabaseUpdateVersionResponse
 from ._get_upload_document_job_request import GetUploadDocumentJobRequest
 from ._get_upload_document_job_response_body import GetUploadDocumentJobResponseBody
 from ._get_upload_document_job_response import GetUploadDocumentJobResponse
@@ -653,6 +665,12 @@ from ._list_streaming_data_sources_response import ListStreamingDataSourcesRespo
 from ._list_streaming_jobs_request import ListStreamingJobsRequest
 from ._list_streaming_jobs_response_body import ListStreamingJobsResponseBody
 from ._list_streaming_jobs_response import ListStreamingJobsResponse
+from ._list_supabase_backup_jobs_request import ListSupabaseBackupJobsRequest
+from ._list_supabase_backup_jobs_response_body import ListSupabaseBackupJobsResponseBody
+from ._list_supabase_backup_jobs_response import ListSupabaseBackupJobsResponse
+from ._list_supabase_data_backups_request import ListSupabaseDataBackupsRequest
+from ._list_supabase_data_backups_response_body import ListSupabaseDataBackupsResponseBody
+from ._list_supabase_data_backups_response import ListSupabaseDataBackupsResponse
 from ._list_supabase_project_tags_request import ListSupabaseProjectTagsRequest
 from ._list_supabase_project_tags_response_body import ListSupabaseProjectTagsResponseBody
 from ._list_supabase_project_tags_response import ListSupabaseProjectTagsResponse
@@ -754,6 +772,9 @@ from ._modify_streaming_job_response import ModifyStreamingJobResponse
 from ._modify_supabase_auto_scale_policy_request import ModifySupabaseAutoScalePolicyRequest
 from ._modify_supabase_auto_scale_policy_response_body import ModifySupabaseAutoScalePolicyResponseBody
 from ._modify_supabase_auto_scale_policy_response import ModifySupabaseAutoScalePolicyResponse
+from ._modify_supabase_backup_policy_request import ModifySupabaseBackupPolicyRequest
+from ._modify_supabase_backup_policy_response_body import ModifySupabaseBackupPolicyResponseBody
+from ._modify_supabase_backup_policy_response import ModifySupabaseBackupPolicyResponse
 from ._modify_supabase_project_description_request import ModifySupabaseProjectDescriptionRequest
 from ._modify_supabase_project_description_response_body import ModifySupabaseProjectDescriptionResponseBody
 from ._modify_supabase_project_description_response import ModifySupabaseProjectDescriptionResponse
@@ -890,6 +911,9 @@ from ._update_dbinstance_plan_response import UpdateDBInstancePlanResponse
 from ._update_saas_service_version_request import UpdateSaasServiceVersionRequest
 from ._update_saas_service_version_response_body import UpdateSaasServiceVersionResponseBody
 from ._update_saas_service_version_response import UpdateSaasServiceVersionResponse
+from ._update_supabase_version_request import UpdateSupabaseVersionRequest
+from ._update_supabase_version_response_body import UpdateSupabaseVersionResponseBody
+from ._update_supabase_version_response import UpdateSupabaseVersionResponse
 from ._upgrade_dbinstance_request import UpgradeDBInstanceRequest
 from ._upgrade_dbinstance_response_body import UpgradeDBInstanceResponseBody
 from ._upgrade_dbinstance_response import UpgradeDBInstanceResponse
@@ -1084,6 +1108,7 @@ from ._get_statement_result_response_body import GetStatementResultResponseBodyD
 from ._get_statement_result_response_body import GetStatementResultResponseBodyDataRecords
 from ._get_statement_result_response_body import GetStatementResultResponseBodyData
 from ._get_supabase_project_api_keys_response_body import GetSupabaseProjectApiKeysResponseBodyApiKeys
+from ._get_supabase_project_spec_response_body import GetSupabaseProjectSpecResponseBodyItems
 from ._get_upload_document_job_response_body import GetUploadDocumentJobResponseBodyChunkResult
 from ._get_upload_document_job_response_body import GetUploadDocumentJobResponseBodyJob
 from ._get_upload_document_job_response_body import GetUploadDocumentJobResponseBodyUsage
@@ -1134,6 +1159,8 @@ from ._list_slow_sqlrecords_response_body import ListSlowSQLRecordsResponseBodyI
 from ._list_streaming_data_services_response_body import ListStreamingDataServicesResponseBodyServiceItems
 from ._list_streaming_data_sources_response_body import ListStreamingDataSourcesResponseBodyDataSourceItems
 from ._list_streaming_jobs_response_body import ListStreamingJobsResponseBodyJobItems
+from ._list_supabase_backup_jobs_response_body import ListSupabaseBackupJobsResponseBodyItems
+from ._list_supabase_data_backups_response_body import ListSupabaseDataBackupsResponseBodyItems
 from ._list_supabase_project_tags_request import ListSupabaseProjectTagsRequestTag
 from ._list_supabase_project_tags_response_body import ListSupabaseProjectTagsResponseBodyTagResources
 from ._list_supabase_projects_response_body import ListSupabaseProjectsResponseBodyItems
@@ -1342,6 +1369,9 @@ __all__ = [
     CreateStreamingJobShrinkRequest,
     CreateStreamingJobResponseBody,
     CreateStreamingJobResponse,
+    CreateSupabaseBackupRequest,
+    CreateSupabaseBackupResponseBody,
+    CreateSupabaseBackupResponse,
     CreateSupabaseProjectRequest,
     CreateSupabaseProjectResponseBody,
     CreateSupabaseProjectResponse,
@@ -1666,6 +1696,9 @@ __all__ = [
     DescribeStreamingJobRequest,
     DescribeStreamingJobResponseBody,
     DescribeStreamingJobResponse,
+    DescribeSupabaseBackupPolicyRequest,
+    DescribeSupabaseBackupPolicyResponseBody,
+    DescribeSupabaseBackupPolicyResponse,
     DescribeSupportFeaturesRequest,
     DescribeSupportFeaturesResponseBody,
     DescribeSupportFeaturesResponse,
@@ -1746,6 +1779,12 @@ __all__ = [
     GetSupabaseProjectDashboardAccountRequest,
     GetSupabaseProjectDashboardAccountResponseBody,
     GetSupabaseProjectDashboardAccountResponse,
+    GetSupabaseProjectSpecRequest,
+    GetSupabaseProjectSpecResponseBody,
+    GetSupabaseProjectSpecResponse,
+    GetSupabaseUpdateVersionRequest,
+    GetSupabaseUpdateVersionResponseBody,
+    GetSupabaseUpdateVersionResponse,
     GetUploadDocumentJobRequest,
     GetUploadDocumentJobResponseBody,
     GetUploadDocumentJobResponse,
@@ -1852,6 +1891,12 @@ __all__ = [
     ListStreamingJobsRequest,
     ListStreamingJobsResponseBody,
     ListStreamingJobsResponse,
+    ListSupabaseBackupJobsRequest,
+    ListSupabaseBackupJobsResponseBody,
+    ListSupabaseBackupJobsResponse,
+    ListSupabaseDataBackupsRequest,
+    ListSupabaseDataBackupsResponseBody,
+    ListSupabaseDataBackupsResponse,
     ListSupabaseProjectTagsRequest,
     ListSupabaseProjectTagsResponseBody,
     ListSupabaseProjectTagsResponse,
@@ -1953,6 +1998,9 @@ __all__ = [
     ModifySupabaseAutoScalePolicyRequest,
     ModifySupabaseAutoScalePolicyResponseBody,
     ModifySupabaseAutoScalePolicyResponse,
+    ModifySupabaseBackupPolicyRequest,
+    ModifySupabaseBackupPolicyResponseBody,
+    ModifySupabaseBackupPolicyResponse,
     ModifySupabaseProjectDescriptionRequest,
     ModifySupabaseProjectDescriptionResponseBody,
     ModifySupabaseProjectDescriptionResponse,
@@ -2089,6 +2137,9 @@ __all__ = [
     UpdateSaasServiceVersionRequest,
     UpdateSaasServiceVersionResponseBody,
     UpdateSaasServiceVersionResponse,
+    UpdateSupabaseVersionRequest,
+    UpdateSupabaseVersionResponseBody,
+    UpdateSupabaseVersionResponse,
     UpgradeDBInstanceRequest,
     UpgradeDBInstanceResponseBody,
     UpgradeDBInstanceResponse,
@@ -2283,6 +2334,7 @@ __all__ = [
     GetStatementResultResponseBodyDataRecords,
     GetStatementResultResponseBodyData,
     GetSupabaseProjectApiKeysResponseBodyApiKeys,
+    GetSupabaseProjectSpecResponseBodyItems,
     GetUploadDocumentJobResponseBodyChunkResult,
     GetUploadDocumentJobResponseBodyJob,
     GetUploadDocumentJobResponseBodyUsage,
@@ -2333,6 +2385,8 @@ __all__ = [
     ListStreamingDataServicesResponseBodyServiceItems,
     ListStreamingDataSourcesResponseBodyDataSourceItems,
     ListStreamingJobsResponseBodyJobItems,
+    ListSupabaseBackupJobsResponseBodyItems,
+    ListSupabaseDataBackupsResponseBodyItems,
     ListSupabaseProjectTagsRequestTag,
     ListSupabaseProjectTagsResponseBodyTagResources,
     ListSupabaseProjectsResponseBodyItems,

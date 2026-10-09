@@ -4717,6 +4717,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_streaming_job_with_options_async(request, runtime)
 
+    def create_supabase_backup_with_options(
+        self,
+        request: main_models.CreateSupabaseBackupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSupabaseBackupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSupabaseBackup',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSupabaseBackupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_supabase_backup_with_options_async(
+        self,
+        request: main_models.CreateSupabaseBackupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSupabaseBackupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSupabaseBackup',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSupabaseBackupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_supabase_backup(
+        self,
+        request: main_models.CreateSupabaseBackupRequest,
+    ) -> main_models.CreateSupabaseBackupResponse:
+        runtime = RuntimeOptions()
+        return self.create_supabase_backup_with_options(request, runtime)
+
+    async def create_supabase_backup_async(
+        self,
+        request: main_models.CreateSupabaseBackupRequest,
+    ) -> main_models.CreateSupabaseBackupResponse:
+        runtime = RuntimeOptions()
+        return await self.create_supabase_backup_with_options_async(request, runtime)
+
     def create_supabase_project_with_options(
         self,
         request: main_models.CreateSupabaseProjectRequest,
@@ -4728,8 +4802,12 @@ class Client(OpenApiClient):
             query['AccountPassword'] = request.account_password
         if not DaraCore.is_null(request.auto_scale):
             query['AutoScale'] = request.auto_scale
+        if not DaraCore.is_null(request.backup_id):
+            query['BackupId'] = request.backup_id
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.create_options):
+            query['CreateOptions'] = request.create_options
         if not DaraCore.is_null(request.disk_performance_level):
             query['DiskPerformanceLevel'] = request.disk_performance_level
         if not DaraCore.is_null(request.engine_version):
@@ -4748,6 +4826,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.security_iplist):
             query['SecurityIPList'] = request.security_iplist
+        if not DaraCore.is_null(request.src_project_id):
+            query['SrcProjectId'] = request.src_project_id
         if not DaraCore.is_null(request.storage_size):
             query['StorageSize'] = request.storage_size
         if not DaraCore.is_null(request.tags):
@@ -4790,8 +4870,12 @@ class Client(OpenApiClient):
             query['AccountPassword'] = request.account_password
         if not DaraCore.is_null(request.auto_scale):
             query['AutoScale'] = request.auto_scale
+        if not DaraCore.is_null(request.backup_id):
+            query['BackupId'] = request.backup_id
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.create_options):
+            query['CreateOptions'] = request.create_options
         if not DaraCore.is_null(request.disk_performance_level):
             query['DiskPerformanceLevel'] = request.disk_performance_level
         if not DaraCore.is_null(request.engine_version):
@@ -4810,6 +4894,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.security_iplist):
             query['SecurityIPList'] = request.security_iplist
+        if not DaraCore.is_null(request.src_project_id):
+            query['SrcProjectId'] = request.src_project_id
         if not DaraCore.is_null(request.storage_size):
             query['StorageSize'] = request.storage_size
         if not DaraCore.is_null(request.tags):
@@ -13763,6 +13849,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_streaming_job_with_options_async(request, runtime)
 
+    def describe_supabase_backup_policy_with_options(
+        self,
+        request: main_models.DescribeSupabaseBackupPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSupabaseBackupPolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSupabaseBackupPolicy',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSupabaseBackupPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_supabase_backup_policy_with_options_async(
+        self,
+        request: main_models.DescribeSupabaseBackupPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSupabaseBackupPolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSupabaseBackupPolicy',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSupabaseBackupPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_supabase_backup_policy(
+        self,
+        request: main_models.DescribeSupabaseBackupPolicyRequest,
+    ) -> main_models.DescribeSupabaseBackupPolicyResponse:
+        runtime = RuntimeOptions()
+        return self.describe_supabase_backup_policy_with_options(request, runtime)
+
+    async def describe_supabase_backup_policy_async(
+        self,
+        request: main_models.DescribeSupabaseBackupPolicyRequest,
+    ) -> main_models.DescribeSupabaseBackupPolicyResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_supabase_backup_policy_with_options_async(request, runtime)
+
     def describe_support_features_with_options(
         self,
         request: main_models.DescribeSupportFeaturesRequest,
@@ -16058,6 +16218,150 @@ class Client(OpenApiClient):
     ) -> main_models.GetSupabaseProjectDashboardAccountResponse:
         runtime = RuntimeOptions()
         return await self.get_supabase_project_dashboard_account_with_options_async(request, runtime)
+
+    def get_supabase_project_spec_with_options(
+        self,
+        request: main_models.GetSupabaseProjectSpecRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSupabaseProjectSpecResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSupabaseProjectSpec',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSupabaseProjectSpecResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_supabase_project_spec_with_options_async(
+        self,
+        request: main_models.GetSupabaseProjectSpecRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSupabaseProjectSpecResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSupabaseProjectSpec',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSupabaseProjectSpecResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_supabase_project_spec(
+        self,
+        request: main_models.GetSupabaseProjectSpecRequest,
+    ) -> main_models.GetSupabaseProjectSpecResponse:
+        runtime = RuntimeOptions()
+        return self.get_supabase_project_spec_with_options(request, runtime)
+
+    async def get_supabase_project_spec_async(
+        self,
+        request: main_models.GetSupabaseProjectSpecRequest,
+    ) -> main_models.GetSupabaseProjectSpecResponse:
+        runtime = RuntimeOptions()
+        return await self.get_supabase_project_spec_with_options_async(request, runtime)
+
+    def get_supabase_update_version_with_options(
+        self,
+        request: main_models.GetSupabaseUpdateVersionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSupabaseUpdateVersionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSupabaseUpdateVersion',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSupabaseUpdateVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_supabase_update_version_with_options_async(
+        self,
+        request: main_models.GetSupabaseUpdateVersionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSupabaseUpdateVersionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSupabaseUpdateVersion',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSupabaseUpdateVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_supabase_update_version(
+        self,
+        request: main_models.GetSupabaseUpdateVersionRequest,
+    ) -> main_models.GetSupabaseUpdateVersionResponse:
+        runtime = RuntimeOptions()
+        return self.get_supabase_update_version_with_options(request, runtime)
+
+    async def get_supabase_update_version_async(
+        self,
+        request: main_models.GetSupabaseUpdateVersionRequest,
+    ) -> main_models.GetSupabaseUpdateVersionResponse:
+        runtime = RuntimeOptions()
+        return await self.get_supabase_update_version_with_options_async(request, runtime)
 
     def get_upload_document_job_with_options(
         self,
@@ -19109,6 +19413,206 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_streaming_jobs_with_options_async(request, runtime)
 
+    def list_supabase_backup_jobs_with_options(
+        self,
+        request: main_models.ListSupabaseBackupJobsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSupabaseBackupJobsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.backup_mode):
+            query['BackupMode'] = request.backup_mode
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSupabaseBackupJobs',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSupabaseBackupJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_supabase_backup_jobs_with_options_async(
+        self,
+        request: main_models.ListSupabaseBackupJobsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSupabaseBackupJobsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.backup_mode):
+            query['BackupMode'] = request.backup_mode
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSupabaseBackupJobs',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSupabaseBackupJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_supabase_backup_jobs(
+        self,
+        request: main_models.ListSupabaseBackupJobsRequest,
+    ) -> main_models.ListSupabaseBackupJobsResponse:
+        runtime = RuntimeOptions()
+        return self.list_supabase_backup_jobs_with_options(request, runtime)
+
+    async def list_supabase_backup_jobs_async(
+        self,
+        request: main_models.ListSupabaseBackupJobsRequest,
+    ) -> main_models.ListSupabaseBackupJobsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_supabase_backup_jobs_with_options_async(request, runtime)
+
+    def list_supabase_data_backups_with_options(
+        self,
+        request: main_models.ListSupabaseDataBackupsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSupabaseDataBackupsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not DaraCore.is_null(request.backup_mode):
+            query['BackupMode'] = request.backup_mode
+        if not DaraCore.is_null(request.backup_status):
+            query['BackupStatus'] = request.backup_status
+        if not DaraCore.is_null(request.data_type):
+            query['DataType'] = request.data_type
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSupabaseDataBackups',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSupabaseDataBackupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_supabase_data_backups_with_options_async(
+        self,
+        request: main_models.ListSupabaseDataBackupsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSupabaseDataBackupsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not DaraCore.is_null(request.backup_mode):
+            query['BackupMode'] = request.backup_mode
+        if not DaraCore.is_null(request.backup_status):
+            query['BackupStatus'] = request.backup_status
+        if not DaraCore.is_null(request.data_type):
+            query['DataType'] = request.data_type
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSupabaseDataBackups',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSupabaseDataBackupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_supabase_data_backups(
+        self,
+        request: main_models.ListSupabaseDataBackupsRequest,
+    ) -> main_models.ListSupabaseDataBackupsResponse:
+        runtime = RuntimeOptions()
+        return self.list_supabase_data_backups_with_options(request, runtime)
+
+    async def list_supabase_data_backups_async(
+        self,
+        request: main_models.ListSupabaseDataBackupsRequest,
+    ) -> main_models.ListSupabaseDataBackupsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_supabase_data_backups_with_options_async(request, runtime)
+
     def list_supabase_project_tags_with_options(
         self,
         request: main_models.ListSupabaseProjectTagsRequest,
@@ -21162,6 +21666,8 @@ class Client(OpenApiClient):
             query['DBInstanceDescription'] = request.dbinstance_description
         if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.effective_time):
+            query['EffectiveTime'] = request.effective_time
         if not DaraCore.is_null(request.master_aispec):
             query['MasterAISpec'] = request.master_aispec
         if not DaraCore.is_null(request.master_cu):
@@ -21198,6 +21704,8 @@ class Client(OpenApiClient):
             query['DBInstanceDescription'] = request.dbinstance_description
         if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.effective_time):
+            query['EffectiveTime'] = request.effective_time
         if not DaraCore.is_null(request.master_aispec):
             query['MasterAISpec'] = request.master_aispec
         if not DaraCore.is_null(request.master_cu):
@@ -22067,6 +22575,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_supabase_auto_scale_policy_with_options_async(request, runtime)
 
+    def modify_supabase_backup_policy_with_options(
+        self,
+        request: main_models.ModifySupabaseBackupPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifySupabaseBackupPolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.backup_retention_period):
+            query['BackupRetentionPeriod'] = request.backup_retention_period
+        if not DaraCore.is_null(request.enable_recovery_point):
+            query['EnableRecoveryPoint'] = request.enable_recovery_point
+        if not DaraCore.is_null(request.preferred_backup_period):
+            query['PreferredBackupPeriod'] = request.preferred_backup_period
+        if not DaraCore.is_null(request.preferred_backup_time):
+            query['PreferredBackupTime'] = request.preferred_backup_time
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.recovery_point_period):
+            query['RecoveryPointPeriod'] = request.recovery_point_period
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifySupabaseBackupPolicy',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifySupabaseBackupPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_supabase_backup_policy_with_options_async(
+        self,
+        request: main_models.ModifySupabaseBackupPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifySupabaseBackupPolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.backup_retention_period):
+            query['BackupRetentionPeriod'] = request.backup_retention_period
+        if not DaraCore.is_null(request.enable_recovery_point):
+            query['EnableRecoveryPoint'] = request.enable_recovery_point
+        if not DaraCore.is_null(request.preferred_backup_period):
+            query['PreferredBackupPeriod'] = request.preferred_backup_period
+        if not DaraCore.is_null(request.preferred_backup_time):
+            query['PreferredBackupTime'] = request.preferred_backup_time
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.recovery_point_period):
+            query['RecoveryPointPeriod'] = request.recovery_point_period
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifySupabaseBackupPolicy',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifySupabaseBackupPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_supabase_backup_policy(
+        self,
+        request: main_models.ModifySupabaseBackupPolicyRequest,
+    ) -> main_models.ModifySupabaseBackupPolicyResponse:
+        runtime = RuntimeOptions()
+        return self.modify_supabase_backup_policy_with_options(request, runtime)
+
+    async def modify_supabase_backup_policy_async(
+        self,
+        request: main_models.ModifySupabaseBackupPolicyRequest,
+    ) -> main_models.ModifySupabaseBackupPolicyResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_supabase_backup_policy_with_options_async(request, runtime)
+
     def modify_supabase_project_description_with_options(
         self,
         request: main_models.ModifySupabaseProjectDescriptionRequest,
@@ -22890,8 +23492,6 @@ class Client(OpenApiClient):
             query['FileName'] = request.file_name
         if not DaraCore.is_null(request.file_url):
             query['FileUrl'] = request.file_url
-        if not DaraCore.is_null(request.filter):
-            query['Filter'] = request.filter
         if not DaraCore.is_null(request.graph_enhance):
             query['GraphEnhance'] = request.graph_enhance
         if not DaraCore.is_null(request.graph_search_args_shrink):
@@ -22935,6 +23535,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.content):
             body['Content'] = request.content
+        if not DaraCore.is_null(request.filter):
+            body['Filter'] = request.filter
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query),
             body = Utils.parse_to_map(body)
@@ -22980,8 +23582,6 @@ class Client(OpenApiClient):
             query['FileName'] = request.file_name
         if not DaraCore.is_null(request.file_url):
             query['FileUrl'] = request.file_url
-        if not DaraCore.is_null(request.filter):
-            query['Filter'] = request.filter
         if not DaraCore.is_null(request.graph_enhance):
             query['GraphEnhance'] = request.graph_enhance
         if not DaraCore.is_null(request.graph_search_args_shrink):
@@ -23025,6 +23625,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.content):
             body['Content'] = request.content
+        if not DaraCore.is_null(request.filter):
+            body['Filter'] = request.filter
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query),
             body = Utils.parse_to_map(body)
@@ -26005,6 +26607,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.update_saas_service_version_with_options_async(request, runtime)
 
+    def update_supabase_version_with_options(
+        self,
+        request: main_models.UpdateSupabaseVersionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateSupabaseVersionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.minor_version):
+            query['MinorVersion'] = request.minor_version
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateSupabaseVersion',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateSupabaseVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_supabase_version_with_options_async(
+        self,
+        request: main_models.UpdateSupabaseVersionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateSupabaseVersionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.minor_version):
+            query['MinorVersion'] = request.minor_version
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateSupabaseVersion',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateSupabaseVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_supabase_version(
+        self,
+        request: main_models.UpdateSupabaseVersionRequest,
+    ) -> main_models.UpdateSupabaseVersionResponse:
+        runtime = RuntimeOptions()
+        return self.update_supabase_version_with_options(request, runtime)
+
+    async def update_supabase_version_async(
+        self,
+        request: main_models.UpdateSupabaseVersionRequest,
+    ) -> main_models.UpdateSupabaseVersionResponse:
+        runtime = RuntimeOptions()
+        return await self.update_supabase_version_with_options_async(request, runtime)
+
     def upgrade_dbinstance_with_options(
         self,
         request: main_models.UpgradeDBInstanceRequest,
@@ -26020,6 +26700,8 @@ class Client(OpenApiClient):
             query['DBInstanceGroupCount'] = request.dbinstance_group_count
         if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.effective_time):
+            query['EffectiveTime'] = request.effective_time
         if not DaraCore.is_null(request.instance_spec):
             query['InstanceSpec'] = request.instance_spec
         if not DaraCore.is_null(request.master_node_num):
@@ -26078,6 +26760,8 @@ class Client(OpenApiClient):
             query['DBInstanceGroupCount'] = request.dbinstance_group_count
         if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.effective_time):
+            query['EffectiveTime'] = request.effective_time
         if not DaraCore.is_null(request.instance_spec):
             query['InstanceSpec'] = request.instance_spec
         if not DaraCore.is_null(request.master_node_num):
@@ -26144,6 +26828,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.effective_time):
+            query['EffectiveTime'] = request.effective_time
         if not DaraCore.is_null(request.major_version):
             query['MajorVersion'] = request.major_version
         if not DaraCore.is_null(request.minor_version):
@@ -26184,6 +26870,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.effective_time):
+            query['EffectiveTime'] = request.effective_time
         if not DaraCore.is_null(request.major_version):
             query['MajorVersion'] = request.major_version
         if not DaraCore.is_null(request.minor_version):

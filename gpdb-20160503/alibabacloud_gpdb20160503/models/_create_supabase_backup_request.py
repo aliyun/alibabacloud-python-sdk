@@ -4,19 +4,20 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class CreateSupabaseProjectResponseBody(DaraModel):
+class CreateSupabaseBackupRequest(DaraModel):
     def __init__(
         self,
-        order_id: str = None,
         project_id: str = None,
-        request_id: str = None,
+        region_id: str = None,
     ):
-        # The associated order ID.
-        self.order_id = order_id
-        # The Supabase instance ID.
+        # Instance ID of the Supabase instance. You can obtain instance ID on the Supabase page in the console.
+        # 
+        # This parameter is required.
         self.project_id = project_id
-        # The request ID.
-        self.request_id = request_id
+        # The region ID.
+        # 
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query available region IDs.
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -26,27 +27,21 @@ class CreateSupabaseProjectResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.order_id is not None:
-            result['OrderId'] = self.order_id
-
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
 
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('OrderId') is not None:
-            self.order_id = m.get('OrderId')
-
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
 
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
 
         return self
 

@@ -12,7 +12,9 @@ class CreateSupabaseProjectRequest(DaraModel):
         self,
         account_password: str = None,
         auto_scale: bool = None,
+        backup_id: str = None,
         client_token: str = None,
+        create_options: str = None,
         disk_performance_level: str = None,
         engine_version: str = None,
         lightweight: bool = None,
@@ -22,6 +24,7 @@ class CreateSupabaseProjectRequest(DaraModel):
         project_spec: str = None,
         region_id: str = None,
         security_iplist: str = None,
+        src_project_id: str = None,
         storage_size: int = None,
         tags: List[main_models.CreateSupabaseProjectRequestTags] = None,
         used_time: str = None,
@@ -29,7 +32,7 @@ class CreateSupabaseProjectRequest(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The password of the initial account.
+        # The initial account password.
         # 
         # Password rules:
         # 
@@ -39,11 +42,17 @@ class CreateSupabaseProjectRequest(DaraModel):
         # 
         # This parameter is required.
         self.account_password = account_password
-        # Specifies whether to enable auto start/stop. If this parameter is not specified, the default value is false.
+        # Specifies whether to enable auto-start and auto-stop. If you do not specify this parameter, the default value is false.
         self.auto_scale = auto_scale
-        # The idempotency token. Ensures that duplicate requests do not result in duplicate operations.
+        # The backup set ID.
+        # 
+        # > You can call [ListSupabaseDataBackups](https://help.aliyun.com/document_detail/3064623.html) to view the IDs of all backup sets under the target Supabase project.
+        self.backup_id = backup_id
+        # The client token. It is used to ensure idempotence and prevent duplicate requests from executing the same operation.
         self.client_token = client_token
-        # The performance level (PL) of the cloud disk. If this parameter is not specified, the default value PL0 is used.
+        # The optional creation parameters. The default value is empty.
+        self.create_options = create_options
+        # The performance level of the cloud disk. If you do not specify this parameter, the default value is PL0.
         # 
         # Valid values:
         # 
@@ -52,23 +61,24 @@ class CreateSupabaseProjectRequest(DaraModel):
         # - PL2
         # - PL3
         self.disk_performance_level = disk_performance_level
-        # The DPI engine version. If this parameter is not specified, the default value PG15 is used. PG17 and later versions support the data sandbox (branch) feature.
+        # The DPI engine version. If you do not specify this parameter, the default value is PG15. PostgreSQL 17 and later versions support the data sandbox (branch) feature.
         # 
         # Valid values:
         # 
         # - PG15: PostgreSQL 15.
         # - PG17: PostgreSQL 17, which supports the data sandbox feature.
         self.engine_version = engine_version
+        # Specifies whether the project is the lightweight edition.
         self.lightweight = lightweight
-        # The billing type. If this parameter is not specified, the default value Free is used.
+        # The billing method. If you do not specify this parameter, the default value is Free.
         # 
         # Valid values:
         # 
-        # - Free: Free tier.
-        # - Postpaid: Pay-as-you-go.
-        # - Prepaid: Subscription.
+        # - Free: the free billing method.
+        # - Postpaid: pay-as-you-go.
+        # - Prepaid: subscription.
         self.pay_type = pay_type
-        # The unit of the subscription duration. This parameter takes effect only when PayType is set to PrePay. If this parameter is not specified, the default value Month is used.
+        # The unit of the subscription duration. This parameter takes effect only when PayType is set to Prepaid. If you do not specify this parameter, the default value is Month.
         # 
         # Valid values:
         # 
@@ -80,25 +90,28 @@ class CreateSupabaseProjectRequest(DaraModel):
         # Naming rules:
         # 
         # - The name must be 1 to 128 characters in length.
-        # - The name can contain letters, digits, hyphens (-), and underscores (_).
+        # - The name can contain only letters, digits, hyphens (-), and underscores (_).
         # - The name must start with a letter or an underscore (_).
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The specifications of the Supabase project. The Free billing type uses free-tier specifications. For paid billing types, the specifications must match those available in the console.
+        # The specifications of the Supabase project. The free billing method uses the free specifications. For paid billing methods, the specifications must be consistent with those available in the console.
         # 
         # This parameter is required.
         self.project_spec = project_spec
-        # The region ID. Specifies the region in which to create the project.
+        # The region ID.
         self.region_id = region_id
-        # The IP address whitelist. Separate multiple IP addresses or CIDR blocks with commas (,). If this parameter is not specified, the default value 0.0.0.0/0 is used.
+        # The IP address whitelist. Separate multiple IP addresses or CIDR blocks with commas (,). If you do not specify this parameter, the default value 0.0.0.0/0 is used.
         # 
         # This parameter is required.
         self.security_iplist = security_iplist
-        # The storage size, in GB. If this parameter is not specified for non-Free billing types, the default value is 1 GB.
+        # The ID of the Supabase project to which the backup set belongs.
+        self.src_project_id = src_project_id
+        # The storage capacity. Unit: GB. If you do not specify this parameter for a non-free billing method, the default value is 1.
         self.storage_size = storage_size
+        # The list of tags.
         self.tags = tags
-        # The subscription duration. This parameter takes effect only when PayType is set to PrePay. If this parameter is not specified, the default value is 1.
+        # The subscription duration of the resource. This parameter takes effect only when PayType is set to Prepaid. If you do not specify this parameter, the default value is 1.
         self.used_time = used_time
         # The vSwitch ID. This parameter is required. The zone of the vSwitch must be the same as the value of ZoneId.
         # 
@@ -108,7 +121,7 @@ class CreateSupabaseProjectRequest(DaraModel):
         # 
         # This parameter is required.
         self.vpc_id = vpc_id
-        # The zone ID. The zone of the vSwitch specified by VSwitchId must be the same as this parameter value.
+        # The zone ID. The zone of the vSwitch specified by VSwitchId must be the same as the value of this parameter.
         # 
         # This parameter is required.
         self.zone_id = zone_id
@@ -130,8 +143,14 @@ class CreateSupabaseProjectRequest(DaraModel):
         if self.auto_scale is not None:
             result['AutoScale'] = self.auto_scale
 
+        if self.backup_id is not None:
+            result['BackupId'] = self.backup_id
+
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+
+        if self.create_options is not None:
+            result['CreateOptions'] = self.create_options
 
         if self.disk_performance_level is not None:
             result['DiskPerformanceLevel'] = self.disk_performance_level
@@ -159,6 +178,9 @@ class CreateSupabaseProjectRequest(DaraModel):
 
         if self.security_iplist is not None:
             result['SecurityIPList'] = self.security_iplist
+
+        if self.src_project_id is not None:
+            result['SrcProjectId'] = self.src_project_id
 
         if self.storage_size is not None:
             result['StorageSize'] = self.storage_size
@@ -190,8 +212,14 @@ class CreateSupabaseProjectRequest(DaraModel):
         if m.get('AutoScale') is not None:
             self.auto_scale = m.get('AutoScale')
 
+        if m.get('BackupId') is not None:
+            self.backup_id = m.get('BackupId')
+
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+
+        if m.get('CreateOptions') is not None:
+            self.create_options = m.get('CreateOptions')
 
         if m.get('DiskPerformanceLevel') is not None:
             self.disk_performance_level = m.get('DiskPerformanceLevel')
@@ -219,6 +247,9 @@ class CreateSupabaseProjectRequest(DaraModel):
 
         if m.get('SecurityIPList') is not None:
             self.security_iplist = m.get('SecurityIPList')
+
+        if m.get('SrcProjectId') is not None:
+            self.src_project_id = m.get('SrcProjectId')
 
         if m.get('StorageSize') is not None:
             self.storage_size = m.get('StorageSize')
@@ -249,7 +280,13 @@ class CreateSupabaseProjectRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. Limits:
+        # 
+        # - It cannot be an empty string.
+        # - It can be up to 128 characters in length.
+        # - It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
+        # The tag value. The value can be an empty string. It can be up to 128 characters in length and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

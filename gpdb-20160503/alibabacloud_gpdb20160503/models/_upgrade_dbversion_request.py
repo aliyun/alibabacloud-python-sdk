@@ -8,6 +8,7 @@ class UpgradeDBVersionRequest(DaraModel):
     def __init__(
         self,
         dbinstance_id: str = None,
+        effective_time: str = None,
         major_version: str = None,
         minor_version: str = None,
         owner_id: int = None,
@@ -15,20 +16,28 @@ class UpgradeDBVersionRequest(DaraModel):
         switch_time: str = None,
         switch_time_mode: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
+        # 
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in the specified region, including instance IDs.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # This parameter is no longer used and does not need to be specified.
+        # The effective period. Valid values:
+        # * **Immediate** (default): The upgrade takes effect immediately.
+        # * **MaintainTime**: The upgrade takes effect during the O&M window. For more information, see ModifyDBInstanceMaintainTime.
+        self.effective_time = effective_time
+        # **[Deprecated]** This parameter is deprecated. You do not need to specify this parameter.
         self.major_version = major_version
-        # The minor version of the instance.
+        # The minor version.
         self.minor_version = minor_version
         self.owner_id = owner_id
-        # The region ID of the instance.
+        # The region ID.
+        # 
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query available region IDs.
         self.region_id = region_id
-        # This parameter is no longer used and does not need to be specified.
+        # **[Deprecated]** This parameter is deprecated. You do not need to specify this parameter.
         self.switch_time = switch_time
-        # This parameter is no longer used and does not need to be specified.
+        # **[Deprecated]** This parameter is deprecated. You do not need to specify this parameter.
         self.switch_time_mode = switch_time_mode
 
     def validate(self):
@@ -41,6 +50,9 @@ class UpgradeDBVersionRequest(DaraModel):
             result = _map
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
+
+        if self.effective_time is not None:
+            result['EffectiveTime'] = self.effective_time
 
         if self.major_version is not None:
             result['MajorVersion'] = self.major_version
@@ -66,6 +78,9 @@ class UpgradeDBVersionRequest(DaraModel):
         m = m or dict()
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
+
+        if m.get('EffectiveTime') is not None:
+            self.effective_time = m.get('EffectiveTime')
 
         if m.get('MajorVersion') is not None:
             self.major_version = m.get('MajorVersion')

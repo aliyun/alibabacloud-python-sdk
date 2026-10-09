@@ -1,3 +1,17 @@
+2026-10-09 Version: 5.12.0
+- Support API CreateSupabaseBackup.
+- Support API DescribeSupabaseBackupPolicy.
+- Support API GetSupabaseProjectSpec.
+- Support API GetSupabaseUpdateVersion.
+- Support API ListSupabaseBackupJobs.
+- Support API ListSupabaseDataBackups.
+- Support API ModifySupabaseBackupPolicy.
+- Support API UpdateSupabaseVersion.
+- Update API CreateSupabaseProject: add request parameters BackupId.
+- Update API CreateSupabaseProject: add request parameters CreateOptions.
+- Update API CreateSupabaseProject: add request parameters SrcProjectId.
+
+
 2026-09-14 Version: 5.11.1
 - Update API GetSupabaseProject: add response parameters Body.AppliedIdleTimeHours.
 - Update API ModifySupabaseAutoScalePolicy: add request parameters IdleTimeHours.

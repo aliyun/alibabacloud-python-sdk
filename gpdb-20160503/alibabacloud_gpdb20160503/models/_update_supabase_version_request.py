@@ -4,19 +4,20 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class GetSupabaseProjectRequest(DaraModel):
+class UpdateSupabaseVersionRequest(DaraModel):
     def __init__(
         self,
+        minor_version: str = None,
         project_id: str = None,
         region_id: str = None,
     ):
-        # The Supabase instance ID. You can obtain this value from the Supabase page in the console.
+        # The target minor version. You can query the supported upgrade versions for the current project by calling GetSupabaseUpdateVersion.
+        self.minor_version = minor_version
+        # The ID of the Supabase project.
         # 
         # This parameter is required.
         self.project_id = project_id
         # The region ID.
-        # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query available region IDs.
         self.region_id = region_id
 
     def validate(self):
@@ -27,6 +28,9 @@ class GetSupabaseProjectRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.minor_version is not None:
+            result['MinorVersion'] = self.minor_version
+
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
 
@@ -37,6 +41,9 @@ class GetSupabaseProjectRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('MinorVersion') is not None:
+            self.minor_version = m.get('MinorVersion')
+
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
 
