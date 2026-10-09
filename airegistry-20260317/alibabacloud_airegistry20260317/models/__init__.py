@@ -69,6 +69,9 @@ from ._online_skill_response import OnlineSkillResponse
 from ._publish_skill_version_request import PublishSkillVersionRequest
 from ._publish_skill_version_response_body import PublishSkillVersionResponseBody
 from ._publish_skill_version_response import PublishSkillVersionResponse
+from ._redraft_skill_version_request import RedraftSkillVersionRequest
+from ._redraft_skill_version_response_body import RedraftSkillVersionResponseBody
+from ._redraft_skill_version_response import RedraftSkillVersionResponse
 from ._submit_prompt_version_request import SubmitPromptVersionRequest
 from ._submit_prompt_version_response_body import SubmitPromptVersionResponseBody
 from ._submit_prompt_version_response import SubmitPromptVersionResponse
@@ -187,6 +190,9 @@ __all__ = [
     PublishSkillVersionRequest,
     PublishSkillVersionResponseBody,
     PublishSkillVersionResponse,
+    RedraftSkillVersionRequest,
+    RedraftSkillVersionResponseBody,
+    RedraftSkillVersionResponse,
     SubmitPromptVersionRequest,
     SubmitPromptVersionResponseBody,
     SubmitPromptVersionResponse,

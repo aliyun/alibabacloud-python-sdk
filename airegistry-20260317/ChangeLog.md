@@ -1,3 +1,7 @@
+2026-10-09 Version: 1.1.0
+- Support API RedraftSkillVersion.
+
+
 2026-09-20 Version: 1.0.2
 - Update API GetSkillDetail: add response parameters Body.Data.DraftMode.
 - Update API ListSkills: add response parameters Body.Data.PageItems.$.DraftMode.

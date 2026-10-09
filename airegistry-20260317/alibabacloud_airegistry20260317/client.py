@@ -1828,6 +1828,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.publish_skill_version_with_options_async(request, runtime)
 
+    def redraft_skill_version_with_options(
+        self,
+        request: main_models.RedraftSkillVersionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RedraftSkillVersionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not DaraCore.is_null(request.skill_name):
+            query['SkillName'] = request.skill_name
+        if not DaraCore.is_null(request.skill_version):
+            query['SkillVersion'] = request.skill_version
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RedraftSkillVersion',
+            version = '2026-03-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RedraftSkillVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def redraft_skill_version_with_options_async(
+        self,
+        request: main_models.RedraftSkillVersionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RedraftSkillVersionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not DaraCore.is_null(request.skill_name):
+            query['SkillName'] = request.skill_name
+        if not DaraCore.is_null(request.skill_version):
+            query['SkillVersion'] = request.skill_version
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RedraftSkillVersion',
+            version = '2026-03-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RedraftSkillVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def redraft_skill_version(
+        self,
+        request: main_models.RedraftSkillVersionRequest,
+    ) -> main_models.RedraftSkillVersionResponse:
+        runtime = RuntimeOptions()
+        return self.redraft_skill_version_with_options(request, runtime)
+
+    async def redraft_skill_version_async(
+        self,
+        request: main_models.RedraftSkillVersionRequest,
+    ) -> main_models.RedraftSkillVersionResponse:
+        runtime = RuntimeOptions()
+        return await self.redraft_skill_version_with_options_async(request, runtime)
+
     def submit_prompt_version_with_options(
         self,
         request: main_models.SubmitPromptVersionRequest,
