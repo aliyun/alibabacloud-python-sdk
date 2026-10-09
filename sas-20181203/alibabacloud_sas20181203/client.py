@@ -51737,10 +51737,14 @@ class Client(OpenApiClient):
 
     def list_agentless_task_with_options(
         self,
-        request: main_models.ListAgentlessTaskRequest,
+        tmp_req: main_models.ListAgentlessTaskRequest,
         runtime: RuntimeOptions,
     ) -> main_models.ListAgentlessTaskResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ListAgentlessTaskShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.task_id_list):
+            request.task_id_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.task_id_list, 'TaskIdList', 'json')
         query = {}
         if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
@@ -51770,6 +51774,8 @@ class Client(OpenApiClient):
             query['TargetType'] = request.target_type
         if not DaraCore.is_null(request.task_id):
             query['TaskId'] = request.task_id
+        if not DaraCore.is_null(request.task_id_list_shrink):
+            query['TaskIdList'] = request.task_id_list_shrink
         if not DaraCore.is_null(request.uuid):
             query['Uuid'] = request.uuid
         req = open_api_util_models.OpenApiRequest(
@@ -51793,10 +51799,14 @@ class Client(OpenApiClient):
 
     async def list_agentless_task_with_options_async(
         self,
-        request: main_models.ListAgentlessTaskRequest,
+        tmp_req: main_models.ListAgentlessTaskRequest,
         runtime: RuntimeOptions,
     ) -> main_models.ListAgentlessTaskResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ListAgentlessTaskShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.task_id_list):
+            request.task_id_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.task_id_list, 'TaskIdList', 'json')
         query = {}
         if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
@@ -51826,6 +51836,8 @@ class Client(OpenApiClient):
             query['TargetType'] = request.target_type
         if not DaraCore.is_null(request.task_id):
             query['TaskId'] = request.task_id
+        if not DaraCore.is_null(request.task_id_list_shrink):
+            query['TaskIdList'] = request.task_id_list_shrink
         if not DaraCore.is_null(request.uuid):
             query['Uuid'] = request.uuid
         req = open_api_util_models.OpenApiRequest(

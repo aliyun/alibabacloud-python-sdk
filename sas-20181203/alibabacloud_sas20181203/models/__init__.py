@@ -1891,6 +1891,7 @@ from ._list_agentless_risk_uuid_request import ListAgentlessRiskUuidRequest
 from ._list_agentless_risk_uuid_response_body import ListAgentlessRiskUuidResponseBody
 from ._list_agentless_risk_uuid_response import ListAgentlessRiskUuidResponse
 from ._list_agentless_task_request import ListAgentlessTaskRequest
+from ._list_agentless_task_shrink_request import ListAgentlessTaskShrinkRequest
 from ._list_agentless_task_response_body import ListAgentlessTaskResponseBody
 from ._list_agentless_task_response import ListAgentlessTaskResponse
 from ._list_asset_clean_config_response_body import ListAssetCleanConfigResponseBody
@@ -5844,6 +5845,7 @@ __all__ = [
     ListAgentlessRiskUuidResponseBody,
     ListAgentlessRiskUuidResponse,
     ListAgentlessTaskRequest,
+    ListAgentlessTaskShrinkRequest,
     ListAgentlessTaskResponseBody,
     ListAgentlessTaskResponse,
     ListAssetCleanConfigResponseBody,

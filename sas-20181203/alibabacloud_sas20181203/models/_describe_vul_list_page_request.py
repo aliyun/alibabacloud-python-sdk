@@ -14,27 +14,23 @@ class DescribeVulListPageRequest(DaraModel):
         vul_name_like: str = None,
         vul_type: str = None,
     ):
-        # The number of the page to return.
+        # The number of the current page in a paged query.
         self.current_page = current_page
-        # The Common Vulnerabilities and Exposures (CVE) ID of the vulnerability.
+        # The CVE ID of the vulnerability.
         self.cve_id = cve_id
-        # The number of entries to return on each page.
+        # The maximum number of entries to display per page in a paged query.
         self.page_size = page_size
-        # Indicates whether the application protection feature is supported. Valid values:
-        # 
-        # - **0**: no.
-        # 
-        # - **1**: yes.
+        # Specifies whether runtime application self-protection (RASP) is supported. Valid values:
+        # - **0**: Not supported.
+        # - **1**: Supported.
         self.rasp_defend = rasp_defend
         # The name of the vulnerability.
         self.vul_name_like = vul_name_like
-        # The type of the vulnerabilities. Valid values:
+        # The type of vulnerability to query. Valid values:
         # 
-        # - **cve**: Linux software vulnerability.
-        # 
-        # - **sys**: Windows system vulnerability.
-        # 
-        # - **app**: Application vulnerability that is detected by using web scanner.
+        # - cve: Linux software vulnerability
+        # - sys: Windows system vulnerability
+        # - app: application vulnerability
         self.vul_type = vul_type
 
     def validate(self):

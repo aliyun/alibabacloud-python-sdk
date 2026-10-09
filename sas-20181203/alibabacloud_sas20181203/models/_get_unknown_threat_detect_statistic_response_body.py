@@ -54,16 +54,17 @@ class GetUnknownThreatDetectStatisticResponseBodyData(DaraModel):
         open_machine_count: int = None,
         studying_machine_count: int = None,
     ):
+        # The number of servers that have blocking events.
         self.block_event_machine_count = block_event_machine_count
         # The number of servers under control.
         self.block_machine_count = block_machine_count
         # The total number of servers.
         self.machine_count = machine_count
-        # The number of servers in warning status.
+        # The number of servers in warning mode.
         self.monitor_machine_count = monitor_machine_count
         # The number of servers with the service enabled.
         self.open_machine_count = open_machine_count
-        # The number of servers in learning status.
+        # The number of servers in the learning state.
         self.studying_machine_count = studying_machine_count
 
     def validate(self):

@@ -17,19 +17,19 @@ class ListUnknownThreatDetectMachineRequest(DaraModel):
         study_time_start: int = None,
         uuid: str = None,
     ):
-        # The page number of the current page when using paging.
+        # The page number of the current page in a paged query.
         self.current_page = current_page
         self.event_status = event_status
-        # The maximum number of entries per page when using paging.
+        # The maximum number of entries to display per page in a paged query.
         self.page_size = page_size
         # The server name or IP address.
         self.remark = remark
-        # The running status of the machine. Valid values:
+        # The machine running status. Valid values:
         # 
-        # - **monitoring**: Warning.
-        # - **blocking**: Blocking.
-        # - **studying**: Learning.
-        # - **study_finish**: Learning completed.
+        # - **monitoring**: warning in progress
+        # - **blocking**: under control
+        # - **studying**: learning in progress
+        # - **study_finish**: learning completed
         self.status = status
         # The whitelist mode. Valid values:
         # 

@@ -15,6 +15,7 @@ class HandleUnknownThreatDetectEventRequest(DaraModel):
     ):
         # The list of event IDs.
         self.event_id_list = event_id_list
+        # The handling remarks.
         self.handle_remark = handle_remark
         # The event handling status. Valid values:
         # 

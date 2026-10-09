@@ -1,3 +1,7 @@
+2026-10-09 Version: 10.2.1
+- Update API ListAgentlessTask: add request parameters TaskIdList.
+
+
 2026-09-21 Version: 10.2.0
 - Support API GetAgentlessTaskCountBatch.
 

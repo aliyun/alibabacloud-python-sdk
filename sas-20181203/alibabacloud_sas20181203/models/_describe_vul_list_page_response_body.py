@@ -16,9 +16,9 @@ class DescribeVulListPageResponseBody(DaraModel):
     ):
         # The response parameters.
         self.data = data
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -73,27 +73,25 @@ class DescribeVulListPageResponseBodyData(DaraModel):
         release_time: int = None,
         title: str = None,
     ):
-        # The common vulnerabilities and exposures (CVE) ID of the vulnerability.
+        # The CVE ID.
         self.cve_id = cve_id
-        # The extended field for Server Guard.
+        # The Server Guard extended field.
         self.ext_aegis = ext_aegis
-        # The primary key ID of the database.
+        # The primary key ID in the database.
         self.id = id
-        # Indicates whether the vulnerability was detected based on version comparison. Valid values:
+        # Indicates whether version comparison is supported. Valid values:
         # 
-        # - 1: The vulnerability was detected based on version comparison.
-        # 
-        # - 0: The vulnerability was not detected based on version comparison.
+        # - 1: Yes.
+        # - 0: No.
         self.is_aegis = is_aegis
-        # Indicates whether the vulnerability was detected based on proof of concept (POC) verification. Valid values:
+        # Indicates whether proof-of-concept (PoC) verification is supported. Valid values:
         # 
-        # - 1: The vulnerability was detected based on POC verification.
-        # 
-        # - 0: The vulnerability was not detected based on POC verification.
+        # - 1: Yes.
+        # - 0: No.
         self.is_sas = is_sas
-        # The ID of the vulnerability.
+        # The ID.
         self.other_id = other_id
-        # The time when the vulnerability was disclosed.
+        # The release time in UTC (ISO 8601 format), for example, 2022-12-13T08:00Z.
         self.release_time = release_time
         # The name of the vulnerability.
         self.title = title

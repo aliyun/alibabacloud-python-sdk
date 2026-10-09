@@ -22,7 +22,7 @@ class GetAgentlessTaskCountBatchRequest(DaraModel):
         # - **6**: parallel sandbox
         # - **7**: security fix
         self.target_type = target_type
-        # The list of resource UUIDs to query. The list can contain 1 to 100 elements.
+        # The list of UUIDs of the resources to query. You can specify 1 to 100 UUIDs.
         # 
         # This parameter is required.
         self.uuid_list = uuid_list

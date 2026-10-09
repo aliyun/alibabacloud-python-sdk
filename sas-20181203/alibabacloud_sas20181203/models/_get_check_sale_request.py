@@ -11,8 +11,8 @@ class GetCheckSaleRequest(DaraModel):
     ):
         # The region of the Security Center instance. Valid values:
         # 
-        # - **cn-hangzhou:** China
-        # - **ap-southeast-1:** outside China.
+        # - **cn-hangzhou:** the Chinese mainland
+        # - **ap-southeast-1:** outside the Chinese mainland
         self.region_id = region_id
 
     def validate(self):

@@ -2,11 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
-
 from darabonba.model import DaraModel
 
-class ListAgentlessTaskRequest(DaraModel):
+class ListAgentlessTaskShrinkRequest(DaraModel):
     def __init__(
         self,
         current_page: int = None,
@@ -23,7 +21,7 @@ class ListAgentlessTaskRequest(DaraModel):
         target_name: str = None,
         target_type: int = None,
         task_id: str = None,
-        task_id_list: List[str] = None,
+        task_id_list_shrink: str = None,
         uuid: str = None,
     ):
         # The page number of the current page in a paging query.
@@ -69,7 +67,7 @@ class ListAgentlessTaskRequest(DaraModel):
         # The ID of the root task. Specify this parameter when you query the list of subtasks under a root task.
         self.task_id = task_id
         # The list of task IDs to return. You can specify up to 100 IDs. You must specify RootTask and cannot specify this parameter together with TaskId. If RootTask is set to true, root tasks are queried. If RootTask is set to false, subtasks are queried, and cross-root task queries are allowed. If RootTaskId is specified, the intersection is returned.
-        self.task_id_list = task_id_list
+        self.task_id_list_shrink = task_id_list_shrink
         # The UUID of the server to query.
         self.uuid = uuid
 
@@ -123,8 +121,8 @@ class ListAgentlessTaskRequest(DaraModel):
         if self.task_id is not None:
             result['TaskId'] = self.task_id
 
-        if self.task_id_list is not None:
-            result['TaskIdList'] = self.task_id_list
+        if self.task_id_list_shrink is not None:
+            result['TaskIdList'] = self.task_id_list_shrink
 
         if self.uuid is not None:
             result['Uuid'] = self.uuid
@@ -176,7 +174,7 @@ class ListAgentlessTaskRequest(DaraModel):
             self.task_id = m.get('TaskId')
 
         if m.get('TaskIdList') is not None:
-            self.task_id_list = m.get('TaskIdList')
+            self.task_id_list_shrink = m.get('TaskIdList')
 
         if m.get('Uuid') is not None:
             self.uuid = m.get('Uuid')

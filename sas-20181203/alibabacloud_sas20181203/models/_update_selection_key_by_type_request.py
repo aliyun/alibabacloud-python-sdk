@@ -12,20 +12,19 @@ class UpdateSelectionKeyByTypeRequest(DaraModel):
         dry_run: bool = None,
         selection_key: str = None,
     ):
-        # The business type of asset selection. Valid values:
+        # The business type of the asset selection. Valid values:
         # 
-        # - **VIRUS_SCAN_CYCLE_CONFIG**: trojan scan configuration.
-        # - **VIRUS_SCAN_ONCE_TASK**: trojan scan one-time scan.
-        # - **AGENTLESS_MALICIOUS_WHITE_LIST_[ID]**: agentless detection alert whitelisting rule.
-        # - **AGENTLESS_VUL_WHITE_LIST_[ID]**: agentless detection vulnerability whitelisting rule.
-        # - **FILE_PROTECT_RULE_SWITCH_TYPE_[ID]**: core file protection.
+        # - **VIRUS_SCAN_CYCLE_CONFIG**: virus scan cycle configuration
+        # - **VIRUS_SCAN_ONCE_TASK**: one-time virus scan task
+        # - **AGENTLESS_MALICIOUS_WHITE_LIST_[ID]**: agentless detection alert whitelist rule
+        # - **AGENTLESS_VUL_WHITE_LIST_[ID]**: agentless detection vulnerability whitelist rule
+        # - **FILE_PROTECT_RULE_SWITCH_TYPE_[ID]**: core file protection
         self.business_type = business_type
-        # The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token used to ensure the idempotence of the request. Use a different token for different requests. Only ASCII characters are supported. The token can be up to 64 characters in length.
         self.client_token = client_token
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-        # 
-        # - true: performs only a dry run without performing the actual operation.
-        # - false: performs the actual request.
+        # Specifies whether to perform only a dry run for this request. Valid values:
+        # - true: performs only a dry run without executing the actual operation.
+        # - false: executes the request normally.
         # 
         # Default value: false.
         self.dry_run = dry_run

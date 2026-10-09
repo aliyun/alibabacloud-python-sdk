@@ -72,11 +72,11 @@ class ListUnknownThreatDetectMachineResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of entries on the current page when using paging.
+        # The number of entries displayed on the current page in a paged query.
         self.count = count
-        # The page number of the current page when using paging.
+        # The page number of the current page in a paged query.
         self.current_page = current_page
-        # The maximum number of entries per page when using paging.
+        # The maximum number of entries to display per page in a paged query.
         self.page_size = page_size
         # The total number of entries.
         self.total_count = total_count
@@ -137,6 +137,7 @@ class ListUnknownThreatDetectMachineResponseBodyData(DaraModel):
         study_start_time: int = None,
         uuid: str = None,
     ):
+        # The number of days the policy has been in effect.
         self.effect_days = effect_days
         # The instance name.
         self.instance_name = instance_name
@@ -144,23 +145,28 @@ class ListUnknownThreatDetectMachineResponseBodyData(DaraModel):
         self.internet_ip = internet_ip
         # The private IP address.
         self.intranet_ip = intranet_ip
+        # The number of malicious processes.
         self.malicious_process_count = malicious_process_count
+        # The number of normal events.
         self.normal_event_count = normal_event_count
+        # The plug-in status.
         self.plugin_status = plugin_status
         # The number of processes.
         self.process_count = process_count
+        # The number of recent deviation behaviors.
         self.recent_deviation_behavior_count = recent_deviation_behavior_count
-        # The running status of the machine. Valid values:
+        # The machine running status. Valid values:
         # 
-        # - **monitoring**: Warning.
-        # - **blocking**: Blocking.
-        # - **studying**: Learning.
+        # - **monitoring**: warning in progress
+        # - **blocking**: under control
+        # - **studying**: learning in progress
         self.status = status
         # The whitelist mode. Valid values:
         # 
         # - **hash**: process hash
         # - **path**: process path
         self.study_mode = study_mode
+        # The number of remaining learning days.
         self.study_remain_days = study_remain_days
         # The timestamp when learning started.
         self.study_start_time = study_start_time

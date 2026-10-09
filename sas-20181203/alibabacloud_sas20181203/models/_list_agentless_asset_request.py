@@ -19,30 +19,31 @@ class ListAgentlessAssetRequest(DaraModel):
         scan_region_id: str = None,
         target_type: int = None,
     ):
-        # The page number in a paginated query.
+        # The page number in a paged query.
         self.current_page = current_page
-        # The type of the cloud disk. Values:
+        # The type of the cloud disk. Valid values:
         # 
-        # - **system**: System disk
+        # - **system**: system cloud disk
         # 
-        # - **data**: Data disk
+        # - **data**: data cloud disk
         self.disk_type = disk_type
         # The ID of the asset instance.
         self.instance_id = instance_id
+        # The list of asset instance IDs to query.
         self.instance_ids = instance_ids
         # The name of the asset instance.
         self.instance_name = instance_name
-        # The maximum number of items to return per page in a paginated query.
+        # The maximum number of entries per page in a paged query.
         self.page_size = page_size
         # The type of the operating system.
         self.platform = platform
         # The region ID.
         self.scan_region_id = scan_region_id
-        # The type of the detection target. Values:
+        # The object type of the detection target. Valid values:
         # 
-        # - **3**: User snapshot
+        # - **3**: user snapshot
         # 
-        # - **4**: User-defined image
+        # - **4**: user-defined image
         self.target_type = target_type
 
     def validate(self):
