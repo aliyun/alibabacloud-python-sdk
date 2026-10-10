@@ -15,13 +15,13 @@ class CreateSchemaShrinkRequest(DaraModel):
     ):
         # The description.
         self.description = description
-        # The schema ID.
+        # schema id
         self.id = id
         # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The list of fields.
+        # The list of properties.
         self.properties_shrink = properties_shrink
         # The request ID.
         self.request_id = request_id

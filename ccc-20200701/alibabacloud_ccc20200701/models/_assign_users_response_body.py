@@ -16,7 +16,7 @@ class AssignUsersResponseBody(DaraModel):
     ):
         # The response code.
         self.code = code
-        # The returned data, which is the same as the workflow ID.
+        # The data. The content is the same as the workflow ID.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code

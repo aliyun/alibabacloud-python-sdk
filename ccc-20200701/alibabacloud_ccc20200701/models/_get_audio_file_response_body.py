@@ -14,15 +14,15 @@ class GetAudioFileResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Response code.
+        # The response code.
         self.code = code
-        # Audio file data.
+        # The audio file data.
         self.data = data
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Response message.
+        # The response message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -82,19 +82,19 @@ class GetAudioFileResponseBodyData(DaraModel):
         oss_file_key: str = None,
         updated_time: str = None,
     ):
-        # Audio file name.
+        # The name of the audio file.
         self.audio_file_name = audio_file_name
-        # Audio resource ID, the UUID of the audio file.
+        # The audio resource ID, which is the unique identifier of the audio file.
         self.audio_resource_id = audio_resource_id
-        # Creation Time of the audio resource.
+        # The time when the audio resource was created. The format is YYYY-MM-DD HH:mm:ss.S.
         self.created_time = created_time
-        # Instance ID.
+        # The instance ID.
         self.instance_id = instance_id
-        # Display name of the audio.
+        # The display name of the audio file.
         self.name = name
-        # Key of the audio resource file in OSS.
+        # The key of the audio resource file in OSS.
         self.oss_file_key = oss_file_key
-        # Last Updated At of the audio resource.
+        # The time when the audio resource was last modified. The format is YYYY-MM-DD HH:mm:ss.S.
         self.updated_time = updated_time
 
     def validate(self):

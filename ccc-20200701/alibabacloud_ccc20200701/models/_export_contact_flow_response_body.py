@@ -26,7 +26,7 @@ class ExportContactFlowResponseBody(DaraModel):
         self.message = message
         # The response parameters.
         self.params = params
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

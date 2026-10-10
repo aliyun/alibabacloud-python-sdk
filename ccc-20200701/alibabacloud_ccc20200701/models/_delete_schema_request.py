@@ -17,7 +17,7 @@ class DeleteSchemaRequest(DaraModel):
         self.instance_id = instance_id
         # The request ID.
         self.request_id = request_id
-        # The schema ID.
+        # schema id
         # 
         # This parameter is required.
         self.schema_id = schema_id

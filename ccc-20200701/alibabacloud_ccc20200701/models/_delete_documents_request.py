@@ -14,7 +14,7 @@ class DeleteDocumentsRequest(DaraModel):
         request_id: str = None,
         schema_id: str = None,
     ):
-        # A list of document IDs.
+        # The list of document IDs.
         self.document_ids = document_ids
         # The instance ID.
         # 
@@ -22,7 +22,7 @@ class DeleteDocumentsRequest(DaraModel):
         self.instance_id = instance_id
         # The request ID.
         self.request_id = request_id
-        # The schema ID.
+        # schema id
         # 
         # This parameter is required.
         self.schema_id = schema_id

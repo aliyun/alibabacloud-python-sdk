@@ -109,23 +109,25 @@ class GetCallDetailRecordResponseBodyData(DaraModel):
     ):
         # The list of agent events.
         self.agent_events = agent_events
-        # The IDs of the agents who are involved in the call. Multiple IDs are separated by commas.
+        # The list of agent IDs. This indicates the agents that the call passed through. Multiple values are separated by commas.
         self.agent_ids = agent_ids
-        # The names of the agents who are involved in the call. Multiple names are separated by commas.
+        # The list of agent names. This indicates the agents that the call passed through. Multiple values are separated by commas.
         self.agent_names = agent_names
+        # The intelligent analysis report of the call.
         self.analytics_report = analytics_report
+        # Indicates whether the intelligent analysis report is generated.
         self.analytics_report_ready = analytics_report_ready
         # The call duration, in seconds.
         self.call_duration = call_duration
         # The called number.
         self.called_number = called_number
-        # The location of the called number.
+        # The location information of the called number.
         self.callee_location = callee_location
-        # The location of the calling number.
+        # The location information of the calling number.
         self.caller_location = caller_location
         # The calling number.
         self.calling_number = calling_number
-        # The reason why the call ended. Note: The \\`Voicemail\\`, \\`QueuingFailed\\`, \\`QueuingTimeout\\`, \\`QueuingOverflow\\`, and \\`IVRException\\` reasons are returned only if you configure the hang-up reason node. If you do not configure this node and the IVR flow does not include a module to transfer the call to an agent, the default reason is \\`AbandonedInIVR\\`.
+        # The reason why the call ended. Note: Disconnect reasons such as voice mail, transfer to agent failure, queue timeout, queue overflow, and IVR exception are displayed only if the customer configures a disconnect reason node. If the node is not configured and the IVR does not contain a transfer to agent module, the disconnect reason defaults to IVR abandoned.
         self.contact_disposition = contact_disposition
         # The call ID.
         self.contact_id = contact_id
@@ -133,36 +135,39 @@ class GetCallDetailRecordResponseBodyData(DaraModel):
         self.contact_type = contact_type
         # The list of customer events.
         self.customer_events = customer_events
-        # The state of the early media. An exception occurred during the early media phase, which is when the customer is being called. An exception at this stage can cause the call to fail. This parameter provides possible reasons for the connection failure based on an analysis of the early media state.
+        # The early media state. This refers to an exception that occurs during the early media phase, which is usually the phase of calling the customer. An exception in this phase causes the call to fail. Therefore, this state indicates the possible reason for the unanswered call based on the analysis of the early media state.
         self.early_media_state = early_media_state
-        # The time when the call was connected. This parameter is empty if the call was not connected. The value is a UNIX timestamp, in milliseconds.
+        # The time when the call was established. If the call was not established, this value is empty. The time is formatted as a UNIX timestamp in milliseconds.
         self.established_time = established_time
         # The instance ID.
         self.instance_id = instance_id
         # The list of IVR events.
         self.ivr_events = ivr_events
+        # The reason for disconnection when transferring to an external line.
         self.outside_number_release_reason = outside_number_release_reason
         # The list of queue events.
         self.queue_events = queue_events
-        # Indicates whether the recording was generated. A value of \\`false\\` is returned if the call was not connected.
+        # Indicates whether the recording has been generated. If the call has not been established, false is returned.
         self.recording_ready = recording_ready
-        # The release initiator.
+        # The party that disconnected the call.
+        # [_single.resp.200.props.Data.ReleaseInitiator.enum.agent ]The agent.
+        # [_single.resp.200.props.Data.ReleaseInitiator.enum.customer ]The customer.
         self.release_initiator = release_initiator
-        # The reason why the call ended. The value is usually the SIP code followed by a text description.
+        # The reason why the call ended. This is usually in the format of a SIP code followed by a text description.
         self.release_reason = release_reason
-        # The time when the call ended. This is the time when the last party of the call hangs up. The value is a UNIX timestamp, in milliseconds.
+        # The end time of the call. This is the time when the last participant in the call hung up. The time is formatted as a UNIX timestamp in milliseconds.
         self.release_time = release_time
-        # The satisfaction score. The value and its meaning are defined by you.
+        # The satisfaction survey result. The values and meanings of the satisfaction survey are customized by the customer.
         self.satisfaction = satisfaction
-        # The channel through which the satisfaction survey was initiated.
+        # The channel used to initiate the satisfaction survey.
         self.satisfaction_survey_channel = satisfaction_survey_channel
-        # Indicates whether a satisfaction survey was initiated.
+        # Indicates whether a satisfaction survey was sent.
         self.satisfaction_survey_offered = satisfaction_survey_offered
-        # The IDs of the skill groups to which the agents involved in the call belong. Multiple IDs are separated by commas.
+        # The IDs of the skill groups to which the agents participating in the call belong. Multiple skill group IDs are separated by commas.
         self.skill_group_ids = skill_group_ids
-        # The names of the skill groups to which the agents involved in the call belong. Multiple names are separated by commas.
+        # The names of the skill groups to which the agents participating in the call belong. Multiple skill group names are separated by commas.
         self.skill_group_names = skill_group_names
-        # The time when the call started. For an inbound call, this is the time when the call enters the IVR. For an outbound call, this is the time when the call is initiated. The value is a UNIX timestamp, in milliseconds.
+        # The start time of the call. For inbound calls, the time is calculated from when the call enters the IVR. For outbound calls, the time is calculated from when the call starts to connect. The time is formatted as a UNIX timestamp in milliseconds.
         self.start_time = start_time
 
     def validate(self):
@@ -406,11 +411,11 @@ class GetCallDetailRecordResponseBodyDataQueueEvents(DaraModel):
         queue_name: str = None,
         queue_type: int = None,
     ):
-        # The sequence of events.
+        # The event sequence.
         self.event_sequence = event_sequence
         # The contact flow ID.
         self.flow_id = flow_id
-        # The queue ID. If the call is routed to a skill group, this is the skill group ID. If the call is routed to an agent, this is the agent ID.
+        # The queue ID. If the queue is a skill group queue, this is the skill group ID. If the queue is an agent personal queue, this is the agent ID.
         self.queue_id = queue_id
         # The queue name.
         self.queue_name = queue_name
@@ -477,7 +482,7 @@ class GetCallDetailRecordResponseBodyDataQueueEventsEventSequence(DaraModel):
     ):
         # The event type.
         self.event = event
-        # The time when the event occurred. The value is a UNIX timestamp, in milliseconds.
+        # The timestamp when the event occurred. The time is formatted as a UNIX timestamp in milliseconds.
         self.event_time = event_time
 
     def validate(self):
@@ -513,11 +518,11 @@ class GetCallDetailRecordResponseBodyDataIvrEvents(DaraModel):
         flow_id: str = None,
         flow_type: str = None,
     ):
-        # The sequence of events.
+        # The event sequence.
         self.event_sequence = event_sequence
-        # The ID of the IVR contact flow.
+        # The IVR contact flow ID.
         self.flow_id = flow_id
-        # The type of the contact flow.
+        # The contact flow type.
         self.flow_type = flow_type
 
     def validate(self):
@@ -568,7 +573,7 @@ class GetCallDetailRecordResponseBodyDataIvrEventsEventSequence(DaraModel):
     ):
         # The event type.
         self.event = event
-        # The time when the event occurred. The value is a UNIX timestamp, in milliseconds.
+        # The timestamp when the event occurred. The time is formatted as a UNIX timestamp in milliseconds.
         self.event_time = event_time
 
     def validate(self):
@@ -603,9 +608,9 @@ class GetCallDetailRecordResponseBodyDataCustomerEvents(DaraModel):
         customer_id: str = None,
         event_sequence: List[main_models.GetCallDetailRecordResponseBodyDataCustomerEventsEventSequence] = None,
     ):
-        # The customer ID. This is usually the customer\\"s phone number.
+        # The customer ID, which is usually the customer phone number.
         self.customer_id = customer_id
-        # The sequence of events.
+        # The event sequence.
         self.event_sequence = event_sequence
 
     def validate(self):
@@ -650,7 +655,7 @@ class GetCallDetailRecordResponseBodyDataCustomerEventsEventSequence(DaraModel):
     ):
         # The event type.
         self.event = event
-        # The time when the event occurred. The value is a UNIX timestamp, in milliseconds.
+        # The timestamp when the event occurred. The time is formatted as a UNIX timestamp in milliseconds.
         self.event_time = event_time
 
     def validate(self):
@@ -687,9 +692,13 @@ class GetCallDetailRecordResponseBodyDataAnalyticsReport(DaraModel):
         satisfaction: main_models.GetCallDetailRecordResponseBodyDataAnalyticsReportSatisfaction = None,
         todo_list: main_models.GetCallDetailRecordResponseBodyDataAnalyticsReportTodoList = None,
     ):
+        # The analysis result of customer emotion.
         self.emotion = emotion
+        # The analysis result of problem resolution.
         self.problem_solving = problem_solving
+        # The analysis result of customer satisfaction.
         self.satisfaction = satisfaction
+        # The analysis result of to-do items.
         self.todo_list = todo_list
 
     def validate(self):
@@ -748,8 +757,11 @@ class GetCallDetailRecordResponseBodyDataAnalyticsReportTodoList(DaraModel):
         task_id: str = None,
         tasks: List[str] = None,
     ):
+        # Indicates whether the to-do item analysis task is executed successfully.
         self.success = success
+        # The ID of the to-do item analysis task.
         self.task_id = task_id
+        # The list of to-do items generated by the analysis.
         self.tasks = tasks
 
     def validate(self):
@@ -792,9 +804,13 @@ class GetCallDetailRecordResponseBodyDataAnalyticsReportSatisfaction(DaraModel):
         success: bool = None,
         task_id: str = None,
     ):
+        # The remark for customer satisfaction analysis.
         self.remark = remark
+        # The description of the customer satisfaction analysis.
         self.satisfaction_description = satisfaction_description
+        # Indicates whether the satisfaction analysis task is executed successfully.
         self.success = success
+        # The ID of the satisfaction analysis task.
         self.task_id = task_id
 
     def validate(self):
@@ -844,10 +860,15 @@ class GetCallDetailRecordResponseBodyDataAnalyticsReportProblemSolving(DaraModel
         success: bool = None,
         task_id: str = None,
     ):
+        # The customer problem identified by the analysis.
         self.problem = problem
+        # The Solutions generated by the analysis.
         self.solution = solution
+        # Indicates whether the customer problem is resolved.
         self.solved = solved
+        # Indicates whether the problem resolution analysis task is executed successfully.
         self.success = success
+        # The ID of the problem resolution analysis task.
         self.task_id = task_id
 
     def validate(self):
@@ -903,10 +924,15 @@ class GetCallDetailRecordResponseBodyDataAnalyticsReportEmotion(DaraModel):
         task_id: str = None,
         type: str = None,
     ):
+        # The confidence level of customer emotion recognition.
         self.confidence = confidence
+        # The remark for customer emotion analysis.
         self.remark = remark
+        # Indicates whether the emotion analysis task is executed successfully.
         self.success = success
+        # The ID of the emotion analysis task.
         self.task_id = task_id
+        # The customer emotion type identified.
         self.type = type
 
     def validate(self):
@@ -965,7 +991,7 @@ class GetCallDetailRecordResponseBodyDataAgentEvents(DaraModel):
         self.agent_id = agent_id
         # The agent name.
         self.agent_name = agent_name
-        # The sequence of events.
+        # The event sequence.
         self.event_sequence = event_sequence
         # The skill group ID.
         self.skill_group_id = skill_group_id
@@ -1023,11 +1049,11 @@ class GetCallDetailRecordResponseBodyDataAgentEventsEventSequence(DaraModel):
         event: str = None,
         event_time: int = None,
     ):
-        # The event duration, in seconds.
+        # The duration of the event, in seconds.
         self.duration = duration
         # The event type.
         self.event = event
-        # The time when the event occurred. The value is a UNIX timestamp, in milliseconds.
+        # The timestamp when the event occurred. The time is formatted as a UNIX timestamp in milliseconds.
         self.event_time = event_time
 
     def validate(self):

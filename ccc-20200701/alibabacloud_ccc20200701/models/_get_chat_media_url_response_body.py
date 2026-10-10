@@ -16,17 +16,17 @@ class GetChatMediaUrlResponseBody(DaraModel):
         params: List[str] = None,
         request_id: str = None,
     ):
-        # Response code.
+        # The response code.
         self.code = code
-        # Response data.
+        # The returned data.
         self.data = data
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Response message.
+        # The response message.
         self.message = message
-        # Response parameters.
+        # The response parameters.
         self.params = params
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

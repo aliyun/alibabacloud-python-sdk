@@ -95,19 +95,17 @@ class GetSummaryTemplateResponseBodyData(DaraModel):
     ):
         # The ID of the summary category.
         self.category_id = category_id
-        # The user who edited the template.
+        # The template editor.
         self.editor = editor
         # The instance ID.
         self.instance_id = instance_id
-        # The name of the template.
+        # The template name.
         self.name = name
         # The list of template fields.
         self.property_list = property_list
-        # The status code.
-        # 
-        # - Enabled: The template is enabled.
-        # 
-        # - Disabled: The template is disabled.
+        # The status code. Valid values:
+        # - Enabled: Enabled.
+        # - Disabled: Disabled.
         self.state = state
         # The template ID.
         self.template_id = template_id
@@ -203,15 +201,15 @@ class GetSummaryTemplateResponseBodyDataPropertyList(DaraModel):
     ):
         # Indicates whether the field is an array.
         self.array = array
-        # The extended properties.
+        # The extended attributes.
         self.attributes = attributes
-        # The time when the field was created.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.created_time = created_time
-        # The user who created the field.
+        # The creator.
         self.creator = creator
         # The data type.
         self.data_type = data_type
-        # The description of the field.
+        # The field description.
         self.description = description
         # Indicates whether the field is disabled.
         self.disabled = disabled
@@ -219,21 +217,21 @@ class GetSummaryTemplateResponseBodyDataPropertyList(DaraModel):
         self.display_name = display_name
         # The display order in the list.
         self.display_order = display_order
-        # The type of the editor.
+        # The editor type.
         self.editor_type = editor_type
         # The maximum length.
         self.max_length = max_length
-        # The maximum value of the number.
+        # The maximum numeric value.
         self.maximum = maximum
         # The minimum length.
         self.min_length = min_length
-        # The minimum value of the number.
+        # The minimum numeric value.
         self.minimum = minimum
-        # The name of the field.
+        # The field name.
         self.name = name
-        # The validation rule that is specified by a regular expression.
+        # The regular expression validation rule.
         self.pattern = pattern
-        # The error message that is returned when the regular expression fails to pass the validation.
+        # The error message for regular expression validation.
         self.pattern_error_message = pattern_error_message
         # Indicates whether the field is read-only.
         self.read_only = read_only
@@ -241,7 +239,7 @@ class GetSummaryTemplateResponseBodyDataPropertyList(DaraModel):
         self.required = required
         # Indicates whether the field is a system field.
         self.system = system
-        # The time when the field was last updated.
+        # The update time. The value is a UNIX timestamp in milliseconds.
         self.updated_time = updated_time
 
     def validate(self):

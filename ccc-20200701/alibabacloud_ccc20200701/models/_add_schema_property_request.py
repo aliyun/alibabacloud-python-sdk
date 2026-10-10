@@ -13,13 +13,13 @@ class AddSchemaPropertyRequest(DaraModel):
         request_id: str = None,
         schema_id: str = None,
     ):
-        # Instance ID.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Field
+        # The property.
         self.property = property
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
         # schema id
         # 
@@ -87,43 +87,43 @@ class AddSchemaPropertyRequestProperty(DaraModel):
         read_only: bool = None,
         required: bool = None,
     ):
-        # Is array
+        # Specifies whether the property is an array.
         self.array = array
-        # Extension attributes
+        # The extended attributes.
         self.attributes = attributes
-        # Data type
+        # The data type.
         # 
         # This parameter is required.
         self.data_type = data_type
-        # Description.
+        # The description.
         self.description = description
-        # Is disabled
+        # Specifies whether the property is disabled.
         self.disabled = disabled
-        # Name
+        # The display name.
         self.display_name = display_name
-        # List display order
+        # The display order in the list.
         self.display_order = display_order
-        # Editor type
+        # The editor type.
         self.editor_type = editor_type
-        # Maximum length
+        # The maximum length.
         self.max_length = max_length
-        # Maximum numeric value
+        # The maximum numeric value.
         self.maximum = maximum
-        # Minimum length
+        # The minimum length.
         self.min_length = min_length
-        # Minimum numeric value
+        # The minimum numeric value.
         self.minimum = minimum
-        # Name
+        # The display name.
         # 
         # This parameter is required.
         self.name = name
-        # Regular expression validation rule
+        # The regular expression validation rule.
         self.pattern = pattern
-        # Regular expression validation error message
+        # The error message for regular expression validation.
         self.pattern_error_message = pattern_error_message
-        # Is read-only
+        # Specifies whether the property is read-only.
         self.read_only = read_only
-        # Is required
+        # Specifies whether the property is required.
         self.required = required
 
     def validate(self):

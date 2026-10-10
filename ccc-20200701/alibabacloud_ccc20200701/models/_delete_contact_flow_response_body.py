@@ -16,9 +16,9 @@ class DeleteContactFlowResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The message returned for the request.
+        # The response message.
         self.message = message
-        # The unique ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

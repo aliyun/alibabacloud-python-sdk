@@ -25,7 +25,7 @@ class GetTicketResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The response message.
         self.message = message
-        # The list of incorrect parameters.
+        # The list of error parameters.
         self.params = params
         # The request ID.
         self.request_id = request_id
@@ -111,73 +111,64 @@ class GetTicketResponseBodyData(DaraModel):
         title: str = None,
         updated_time: int = None,
     ):
-        # The ID of the assignee.
+        # The assignee ID.
         self.assignee = assignee
-        # The name of the assignee.
+        # The assignee name.
         self.assignee_name = assignee_name
         # The ticket category ID.
         self.category_id = category_id
-        # The name of the ticket category.
+        # The ticket category name.
         self.category_name = category_name
-        # The reason for closing the ticket.
-        # 
-        # - Completed
-        # 
-        # - Terminated
+        # The reason for closing the ticket. Valid values:
+        # - Completed: Completed.
+        # - Terminated: Canceled.
         self.close_code = close_code
-        # The comment.
+        # The handling comments.
         self.comment = comment
-        # The fields of the ticket.
+        # The ticket field information.
         self.context = context
-        # The time when the ticket was created.
+        # The time when the ticket was created. The value is a UNIX timestamp in milliseconds.
         self.created_time = created_time
-        # The ID of the creator.
+        # The creator ID.
         self.creator = creator
-        # The name of the creator.
+        # The creator name.
         self.creator_name = creator_name
-        # The ID of the current node.
+        # The current node ID.
         self.current_task_id = current_task_id
-        # The name of the current node.
+        # The current node name.
         self.current_task_name = current_task_name
-        # The time when the current node started.
+        # The start time of the current node. The value is a UNIX timestamp in milliseconds.
         self.current_task_start_time = current_task_start_time
-        # The customer ID. This is the customer ID in the customer profile of Cloud Contact Center.
+        # The customer ID in the customer profile of Cloud Call Center.
         self.customer_id = customer_id
-        # The time when the ticket processing was completed.
+        # The completion time of ticket processing. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
         # The instance ID.
         self.instance_id = instance_id
         # The call ID.
         self.job_id = job_id
-        # The source of the ticket.
-        # 
+        # The ticket source. Valid values:
         # - AUDIO: Voice service.
-        # 
-        # - CHAT: Web service.
-        # 
-        # - Console: Created in the ticket console.
+        # - CHAT: Online service.
+        # - Console: Created from the ticket console.
         self.source = source
-        # The time when the ticket processing started.
+        # The start time of ticket processing. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
-        # The ticket status.
-        # 
-        # - Processing
-        # 
-        # - Withdrawal
-        # 
-        # - Rejected
-        # 
-        # - Closed
+        # The ticket status. Valid values:
+        # - Processing: Processing.
+        # - Withdrawal: Withdrawn.
+        # - Rejected: Rejected.
+        # - Closed: Closed.
         self.state = state
         # The ticket template ID.
         self.template_id = template_id
-        # The version of the ticket template.
+        # The ticket template version.
         self.template_version = template_version
         # The ticket ID.
         self.ticket_id = ticket_id
         # The ticket title.
         self.title = title
-        # The time of the last update.
+        # The time of the last update. The value is a UNIX timestamp in milliseconds.
         self.updated_time = updated_time
 
     def validate(self):

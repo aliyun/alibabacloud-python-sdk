@@ -19,7 +19,7 @@ class ExportContactFlowRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

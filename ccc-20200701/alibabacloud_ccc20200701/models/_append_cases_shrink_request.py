@@ -11,7 +11,7 @@ class AppendCasesShrinkRequest(DaraModel):
         instance_id: str = None,
         body_shrink: str = None,
     ):
-        # The predictive campaign ID.
+        # The predictive outbound campaign ID.
         # 
         # This parameter is required.
         self.campaign_id = campaign_id
@@ -19,7 +19,7 @@ class AppendCasesShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The list of cases to be added.
+        # The list of outbound call cases in the request body.
         self.body_shrink = body_shrink
 
     def validate(self):

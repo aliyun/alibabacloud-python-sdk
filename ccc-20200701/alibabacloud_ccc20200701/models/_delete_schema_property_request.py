@@ -16,13 +16,13 @@ class DeleteSchemaPropertyRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The field name.
+        # The property name.
         # 
         # This parameter is required.
         self.property_name = property_name
         # The request ID.
         self.request_id = request_id
-        # The schema ID.
+        # schema id
         # 
         # This parameter is required.
         self.schema_id = schema_id

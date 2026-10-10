@@ -16,7 +16,7 @@ class GetContactFlowResponseBody(DaraModel):
     ):
         # The response code.
         self.code = code
-        # The response data.
+        # The data.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -88,30 +88,30 @@ class GetContactFlowResponseBodyData(DaraModel):
     ):
         # The contact flow ID.
         self.contact_flow_id = contact_flow_id
-        # The time when the contact flow draft was created.
+        # The time when the contact flow draft was created. The format is YYYY-MM-DD HH:mm:ss.S.
         self.created_time = created_time
-        # IVR content.
+        # The IVR content.
         self.definition = definition
         # The version description.
         self.description = description
-        # The draft ID. This is the ID of the editable draft version for the current contact flow.
+        # The draft ID, which is the ID of the editable draft version corresponding to the current contact flow.
         self.draft_id = draft_id
-        # The agent login name of the current editor of this draft.
+        # The logon name of the agent currently editing this draft.
         self.editor = editor
         # The instance ID.
         self.instance_id = instance_id
         # The IVR name.
         self.name = name
-        # Indicates whether the contact flow is published.
-        # True: Published
-        # False: Not published
+        # Specifies whether the contact flow is published. Valid values:
+        # - True: Published.
+        # - False: Not published.
         self.published = published
-        # The flow type:<br>
-        # MAIN_FLOW (main flow)<br>
-        # SUB_FLOW (child flow)<br>
-        # SURVEY_FLOW (survey flow)<br><br><br>
+        # The flow type. Valid values:   
+        # - MAIN_FLOW: main flow  
+        # - SUB_FLOW: sub-flow  
+        # - SURVEY_FLOW: satisfaction survey flow
         self.type = type
-        # The time when the contact flow was last updated.
+        # The time of the last modification. The format is YYYY-MM-DD HH:mm:ss.S.
         self.updated_time = updated_time
 
     def validate(self):

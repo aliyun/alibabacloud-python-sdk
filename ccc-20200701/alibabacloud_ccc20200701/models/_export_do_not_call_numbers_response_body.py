@@ -18,13 +18,13 @@ class ExportDoNotCallNumbersResponseBody(DaraModel):
     ):
         # The response code.
         self.code = code
-        # The OSS download link for the exported file. The link is valid for 24 hours.
+        # The data, which is the OSS download URL for the export result. The URL is valid for 24 hours.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
         # The response message.
         self.message = message
-        # The response parameters.
+        # The list of error parameters.
         self.params = params
         # The request ID.
         self.request_id = request_id

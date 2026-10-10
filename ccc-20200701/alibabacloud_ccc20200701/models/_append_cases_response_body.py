@@ -18,6 +18,7 @@ class AppendCasesResponseBody(DaraModel):
     ):
         # The response code.
         self.code = code
+        # The list of processing results for appending outbound call cases.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -85,8 +86,11 @@ class AppendCasesResponseBodyData(DaraModel):
         phone_number: str = None,
         reference_id: str = None,
     ):
+        # The custom variables of the contact, represented as a JSON string.
         self.custom_variables = custom_variables
+        # The phone number of the contact.
         self.phone_number = phone_number
+        # The unique identifier of the contact in the customer\\"s business system.
         self.reference_id = reference_id
 
     def validate(self):

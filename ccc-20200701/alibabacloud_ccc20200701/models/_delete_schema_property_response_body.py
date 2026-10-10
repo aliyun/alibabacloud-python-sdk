@@ -21,7 +21,7 @@ class DeleteSchemaPropertyResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The error message.
         self.message = message
-        # The information about error parameters.
+        # The error parameter information.
         self.params = params
         # The request ID.
         self.request_id = request_id

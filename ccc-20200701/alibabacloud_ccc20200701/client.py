@@ -11738,6 +11738,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_flash_sms_templates_with_options_async(request, runtime)
 
+    def list_function_metas_with_options(
+        self,
+        request: main_models.ListFunctionMetasRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListFunctionMetasResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.has_http_trigger):
+            query['HasHttpTrigger'] = request.has_http_trigger
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListFunctionMetas',
+            version = '2020-07-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListFunctionMetasResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_function_metas_with_options_async(
+        self,
+        request: main_models.ListFunctionMetasRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListFunctionMetasResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.has_http_trigger):
+            query['HasHttpTrigger'] = request.has_http_trigger
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListFunctionMetas',
+            version = '2020-07-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListFunctionMetasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_function_metas(
+        self,
+        request: main_models.ListFunctionMetasRequest,
+    ) -> main_models.ListFunctionMetasResponse:
+        runtime = RuntimeOptions()
+        return self.list_function_metas_with_options(request, runtime)
+
+    async def list_function_metas_async(
+        self,
+        request: main_models.ListFunctionMetasRequest,
+    ) -> main_models.ListFunctionMetasResponse:
+        runtime = RuntimeOptions()
+        return await self.list_function_metas_with_options_async(request, runtime)
+
     def list_group_chat_messages_with_options(
         self,
         request: main_models.ListGroupChatMessagesRequest,

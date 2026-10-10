@@ -12,7 +12,7 @@ class DeleteDocumentsShrinkRequest(DaraModel):
         request_id: str = None,
         schema_id: str = None,
     ):
-        # A list of document IDs.
+        # The list of document IDs.
         self.document_ids_shrink = document_ids_shrink
         # The instance ID.
         # 
@@ -20,7 +20,7 @@ class DeleteDocumentsShrinkRequest(DaraModel):
         self.instance_id = instance_id
         # The request ID.
         self.request_id = request_id
-        # The schema ID.
+        # schema id
         # 
         # This parameter is required.
         self.schema_id = schema_id

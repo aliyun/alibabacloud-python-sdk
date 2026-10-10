@@ -18,7 +18,7 @@ class DeleteInstanceResponseBody(DaraModel):
     ):
         # The response code.
         self.code = code
-        # The ID of the delete task.
+        # The returned result, which is the ID of the deletion task.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code

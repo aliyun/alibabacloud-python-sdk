@@ -90,21 +90,23 @@ class GetInstanceResponseBodyData(DaraModel):
     ):
         # The list of administrators.
         self.admin_list = admin_list
+        # The agent type used by the instance.
         self.agent_type = agent_type
         # The ID of the Alibaba Cloud account to which the instance belongs.
         self.aliyun_uid = aliyun_uid
+        # The chatbot business unit associated with the instance.
         self.chatbot_business_unit = chatbot_business_unit
-        # The URL of the Cloud Contact Center instance homepage. This URL is formed by combining the base URL of Cloud Contact Center and the instance ID.
+        # The URL of the Cloud Call Center instance. This URL is used to access the homepage of the instance and consists of a specific Cloud Call Center URL and the instance ID.
         self.console_url = console_url
         # The description of the instance.
         self.description = description
-        # The domain name of the instance. It is globally unique.
+        # The globally unique domain name of the instance.
         self.domain_name = domain_name
         # The instance ID.
         self.id = id
         # The instance name.
         self.name = name
-        # The list of numbers.
+        # The list of phone numbers.
         self.number_list = number_list
         # The instance status.
         self.status = status
@@ -222,9 +224,9 @@ class GetInstanceResponseBodyDataNumberList(DaraModel):
         usage: str = None,
         user_id: str = None,
     ):
-        # Indicates whether the number is active.
+        # Indicates whether the phone number is available.
         self.active = active
-        # The city where the number is registered.
+        # The city to which the phone number belongs.
         self.city = city
         # The ID of the contact flow (IVR) associated with the phone number.
         self.contact_flow_id = contact_flow_id
@@ -232,13 +234,13 @@ class GetInstanceResponseBodyDataNumberList(DaraModel):
         self.instance_id = instance_id
         # The phone number.
         self.number = number
-        # The province where the number is registered.
+        # The province to which the phone number belongs.
         self.province = province
-        # The list of skill groups associated with the number.
+        # The list of skill groups associated with the phone number.
         self.skill_groups = skill_groups
-        # The purpose of the number.
+        # The usage of the phone number.
         self.usage = usage
-        # The agent ID. If this parameter is not empty, the number is a personal outbound number for the agent.
+        # The agent ID. If this parameter is not empty, the phone number is a personal outbound phone number of the agent.
         self.user_id = user_id
 
     def validate(self):
@@ -334,7 +336,7 @@ class GetInstanceResponseBodyDataNumberListSkillGroups(DaraModel):
         self.display_name = display_name
         # The instance ID.
         self.instance_id = instance_id
-        # The name of the skill group.
+        # The skill group name.
         self.name = name
         # The number of phone numbers associated with the skill group.
         self.phone_number_count = phone_number_count
@@ -405,7 +407,9 @@ class GetInstanceResponseBodyDataChatbotBusinessUnit(DaraModel):
         unit_id: int = None,
         unit_key: str = None,
     ):
+        # The ID of the chatbot business unit.
         self.unit_id = unit_id
+        # The identifier of the chatbot business unit.
         self.unit_key = unit_key
 
     def validate(self):
@@ -448,19 +452,19 @@ class GetInstanceResponseBodyDataAdminList(DaraModel):
         user_id: str = None,
         work_mode: str = None,
     ):
-        # The name of the administrator.
+        # The display name of the administrator.
         self.display_name = display_name
-        # The mailbox.
+        # The email address.
         self.email = email
-        # The agent\\"s extension number.
+        # The extension number of the agent.
         self.extension = extension
         # The instance ID.
         self.instance_id = instance_id
-        # The agent\\"s logon name.
+        # The logon name of the agent.
         self.login_name = login_name
-        # The agent\\"s personal phone number.
+        # The personal phone number of the agent.
         self.mobile = mobile
-        # The role ID. The format is: Role\\@Instance ID.
+        # The role ID, in the format of Role@Instance ID.
         self.role_id = role_id
         # The role name.
         self.role_name = role_name
