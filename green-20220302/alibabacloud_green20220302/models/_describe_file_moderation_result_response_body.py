@@ -75,7 +75,7 @@ class DescribeFileModerationResultResponseBodyData(DaraModel):
         risk_level: str = None,
         url: str = None,
     ):
-        # The AccountId specified in the request.
+        # The AccountId specified by the caller.
         self.account_id = account_id
         # The data ID.
         self.data_id = data_id
@@ -87,7 +87,7 @@ class DescribeFileModerationResultResponseBodyData(DaraModel):
         self.page_summary = page_summary
         # The risk level.
         self.risk_level = risk_level
-        # The file download URL.
+        # The URL for downloading the file.
         self.url = url
 
     def validate(self):
@@ -169,7 +169,7 @@ class DescribeFileModerationResultResponseBodyDataPageSummary(DaraModel):
         self.image_summary = image_summary
         # The total number of pages.
         self.page_sum = page_sum
-        # The document authenticity verification risk summary.
+        # The document forgery detection risk summary.
         self.risk_summary = risk_summary
         # The text summary information.
         self.text_summary = text_summary
@@ -320,9 +320,9 @@ class DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummary(DaraMod
     ):
         # The extended information.
         self.ext = ext
-        # The list of hit authenticity verification risk labels.
+        # The list of matched forgery detection risk labels.
         self.risk_labels = risk_labels
-        # The overall risk level of the document, which is the highest level among all hit labels.
+        # The overall risk level of the document, which is the highest level among all matched labels.
         self.risk_level = risk_level
 
     def validate(self):
@@ -375,9 +375,9 @@ class DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryRiskLabe
         description: str = None,
         label: str = None,
     ):
-        # The label confidence score.
+        # The confidence score of the label.
         self.confidence = confidence
-        # The Chinese description of the risk label.
+        # The description of the risk label in Chinese.
         self.description = description
         # The risk label.
         self.label = label
@@ -419,7 +419,7 @@ class DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExt(Dara
         self,
         aigc_data: main_models.DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcData = None,
     ):
-        # The detection details of AI-generated content.
+        # The details of AI-generated or synthetic content detection.
         self.aigc_data = aigc_data
 
     def validate(self):
@@ -450,9 +450,9 @@ class DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcD
         aigc: main_models.DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDataAIGC = None,
         explain: str = None,
     ):
-        # The implicit identifier information of AI-generated content.
+        # The implicit label information of AI-generated or synthetic content.
         self.aigc = aigc
-        # The comprehensive analysis report of large model authenticity verification.
+        # The comprehensive analysis report for forgery detection by the large language model.
         self.explain = explain
 
     def validate(self):
@@ -498,7 +498,7 @@ class DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcD
         self.content_producer = content_producer
         # The content propagator code.
         self.content_propagator = content_propagator
-        # The content attribute declared by the implicit identifier.
+        # The content attribute declared by the implicit label.
         self.label = label
         # The content production ID.
         self.produce_id = produce_id
@@ -743,6 +743,7 @@ class DescribeFileModerationResultResponseBodyDataPageResultTextResult(DaraModel
         description: str = None,
         descriptions: str = None,
         labels: str = None,
+        result: List[main_models.DescribeFileModerationResultResponseBodyDataPageResultTextResultResult] = None,
         risk_level: str = None,
         risk_tips: str = None,
         risk_words: str = None,
@@ -756,11 +757,13 @@ class DescribeFileModerationResultResponseBodyDataPageResultTextResult(DaraModel
         self.descriptions = descriptions
         # The label values.
         self.labels = labels
+        # The text plus version result.
+        self.result = result
         # The risk level.
         self.risk_level = risk_level
-        # The details of the hit risk.
+        # The hit risk details.
         self.risk_tips = risk_tips
-        # The risk keywords that are hit.
+        # The hit risk keywords.
         self.risk_words = risk_words
         # The service.
         self.service = service
@@ -770,7 +773,10 @@ class DescribeFileModerationResultResponseBodyDataPageResultTextResult(DaraModel
         self.text_segment = text_segment
 
     def validate(self):
-        pass
+        if self.result:
+            for v1 in self.result:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -785,6 +791,11 @@ class DescribeFileModerationResultResponseBodyDataPageResultTextResult(DaraModel
 
         if self.labels is not None:
             result['Labels'] = self.labels
+
+        result['Result'] = []
+        if self.result is not None:
+            for k1 in self.result:
+                result['Result'].append(k1.to_map() if k1 else None)
 
         if self.risk_level is not None:
             result['RiskLevel'] = self.risk_level
@@ -817,6 +828,12 @@ class DescribeFileModerationResultResponseBodyDataPageResultTextResult(DaraModel
         if m.get('Labels') is not None:
             self.labels = m.get('Labels')
 
+        self.result = []
+        if m.get('Result') is not None:
+            for k1 in m.get('Result'):
+                temp_model = main_models.DescribeFileModerationResultResponseBodyDataPageResultTextResultResult()
+                self.result.append(temp_model.from_map(k1))
+
         if m.get('RiskLevel') is not None:
             self.risk_level = m.get('RiskLevel')
 
@@ -834,6 +851,188 @@ class DescribeFileModerationResultResponseBodyDataPageResultTextResult(DaraModel
 
         if m.get('TextSegment') is not None:
             self.text_segment = m.get('TextSegment')
+
+        return self
+
+class DescribeFileModerationResultResponseBodyDataPageResultTextResultResult(DaraModel):
+    def __init__(
+        self,
+        confidence: float = None,
+        customized_hit: List[main_models.DescribeFileModerationResultResponseBodyDataPageResultTextResultResultCustomizedHit] = None,
+        description: str = None,
+        label: str = None,
+        risk_level: str = None,
+        risk_positions: List[main_models.DescribeFileModerationResultResponseBodyDataPageResultTextResultResultRiskPositions] = None,
+        risk_words: str = None,
+    ):
+        # The label confidence score.
+        self.confidence = confidence
+        # The custom vocabulary hit results.
+        self.customized_hit = customized_hit
+        # The description corresponding to the label.
+        self.description = description
+        # The text label in page results.
+        self.label = label
+        # The risk level.
+        self.risk_level = risk_level
+        # The positions of the violation words.
+        self.risk_positions = risk_positions
+        # The hit violation words.
+        self.risk_words = risk_words
+
+    def validate(self):
+        if self.customized_hit:
+            for v1 in self.customized_hit:
+                 if v1:
+                    v1.validate()
+        if self.risk_positions:
+            for v1 in self.risk_positions:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.confidence is not None:
+            result['Confidence'] = self.confidence
+
+        result['CustomizedHit'] = []
+        if self.customized_hit is not None:
+            for k1 in self.customized_hit:
+                result['CustomizedHit'].append(k1.to_map() if k1 else None)
+
+        if self.description is not None:
+            result['Description'] = self.description
+
+        if self.label is not None:
+            result['Label'] = self.label
+
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
+
+        result['RiskPositions'] = []
+        if self.risk_positions is not None:
+            for k1 in self.risk_positions:
+                result['RiskPositions'].append(k1.to_map() if k1 else None)
+
+        if self.risk_words is not None:
+            result['RiskWords'] = self.risk_words
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Confidence') is not None:
+            self.confidence = m.get('Confidence')
+
+        self.customized_hit = []
+        if m.get('CustomizedHit') is not None:
+            for k1 in m.get('CustomizedHit'):
+                temp_model = main_models.DescribeFileModerationResultResponseBodyDataPageResultTextResultResultCustomizedHit()
+                self.customized_hit.append(temp_model.from_map(k1))
+
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
+
+        self.risk_positions = []
+        if m.get('RiskPositions') is not None:
+            for k1 in m.get('RiskPositions'):
+                temp_model = main_models.DescribeFileModerationResultResponseBodyDataPageResultTextResultResultRiskPositions()
+                self.risk_positions.append(temp_model.from_map(k1))
+
+        if m.get('RiskWords') is not None:
+            self.risk_words = m.get('RiskWords')
+
+        return self
+
+class DescribeFileModerationResultResponseBodyDataPageResultTextResultResultRiskPositions(DaraModel):
+    def __init__(
+        self,
+        end_pos: int = None,
+        risk_word: str = None,
+        start_pos: int = None,
+    ):
+        # The end position.
+        self.end_pos = end_pos
+        # The violation word.
+        self.risk_word = risk_word
+        # The start position.
+        self.start_pos = start_pos
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.end_pos is not None:
+            result['EndPos'] = self.end_pos
+
+        if self.risk_word is not None:
+            result['RiskWord'] = self.risk_word
+
+        if self.start_pos is not None:
+            result['StartPos'] = self.start_pos
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndPos') is not None:
+            self.end_pos = m.get('EndPos')
+
+        if m.get('RiskWord') is not None:
+            self.risk_word = m.get('RiskWord')
+
+        if m.get('StartPos') is not None:
+            self.start_pos = m.get('StartPos')
+
+        return self
+
+class DescribeFileModerationResultResponseBodyDataPageResultTextResultResultCustomizedHit(DaraModel):
+    def __init__(
+        self,
+        key_words: str = None,
+        lib_name: str = None,
+    ):
+        # The hit keyword.
+        self.key_words = key_words
+        # The vocabulary name.
+        self.lib_name = lib_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.key_words is not None:
+            result['KeyWords'] = self.key_words
+
+        if self.lib_name is not None:
+            result['LibName'] = self.lib_name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('KeyWords') is not None:
+            self.key_words = m.get('KeyWords')
+
+        if m.get('LibName') is not None:
+            self.lib_name = m.get('LibName')
 
         return self
 

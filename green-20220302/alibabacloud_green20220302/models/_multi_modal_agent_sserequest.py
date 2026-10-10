@@ -11,9 +11,9 @@ class MultiModalAgentSSERequest(DaraModel):
         service_parameters: str = None,
         stream: str = None,
     ):
-        # The unique identifier of the whiteboard application. To obtain the whiteboard application ID, see [CreateApp](https://help.aliyun.com/document_detail/204234.html).
+        # The unique identifier of the whiteboard application. To obtain the whiteboard application ID, refer to [CreateApp](https://help.aliyun.com/document_detail/204234.html).
         self.app_id = app_id
-        # The parameter set required by the moderation service, in JSON string format. The input parameter for text content is content (String), the custom data ID is DataId (String), and the cache type is CacheType (String, valid value: ephemeral).
+        # The parameter set required by the moderation service, in JSON string format. The text content input parameter is content (String), the custom data ID is DataId (String), and the cache type is CacheType (String, valid value: ephemeral).
         self.service_parameters = service_parameters
         # Specifies whether to use streaming output.
         self.stream = stream

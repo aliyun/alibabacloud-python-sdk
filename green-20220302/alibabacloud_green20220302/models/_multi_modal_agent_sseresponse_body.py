@@ -73,13 +73,13 @@ class MultiModalAgentSSEResponseBodyData(DaraModel):
     ):
         # The timestamp when the session was created.
         self.created = created
-        # The value of dataId passed in the API request. This field is not returned if dataId is not specified in the request.
+        # The value of DataId passed in the API request. This field is not returned if DataId is not specified in the request.
         self.data_id = data_id
-        # If streaming output is used, this field is null during generation. When generation ends, this field is set to stop if the generation stopped due to a stop token.
+        # For streaming output, this value is null during generation. When generation ends, the value is stop if the generation stopped due to a stop token.
         self.finish_reason = finish_reason
         # The output result.
         self.output = output
-        # The credits usage.
+        # The credits usage information.
         self.usage = usage
 
     def validate(self):

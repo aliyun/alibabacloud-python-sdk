@@ -1,3 +1,8 @@
+2026-10-10 Version: 3.6.8
+- Update API ImageModeration: add response parameters Body.Data.Frame.
+- Update API ImageModeration: add response parameters Body.Data.FrameNum.
+
+
 2026-08-19 Version: 3.5.6
 - Generated python 2022-03-02 for Green.
 
