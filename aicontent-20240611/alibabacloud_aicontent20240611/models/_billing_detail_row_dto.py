@@ -32,29 +32,53 @@ class BillingDetailRowDTO(DaraModel):
         total_tokens: float = None,
         usage_detail: str = None,
     ):
+        # The actual payment amount (after discount), rounded to 8 decimal places.
         self.amount = amount
+        # API Key ID
         self.api_key_id = api_key_id
+        # The API key name.
         self.api_key_name = api_key_name
+        # The number of cache creation tokens (explicit cache writes).
         self.cache_creation_tokens = cache_creation_tokens
+        # The number of tokens that hit the cache.
         self.cached_tokens = cached_tokens
+        # The department ID. A value of 0 indicates that no department is associated.
         self.client_id = client_id
+        # The department name.
         self.client_name = client_name
+        # The discount coefficient. A value of 1.0 indicates no discount.
         self.discount = discount
+        # The number of input tokens, including cached tokens and cache creation tokens.
         self.input_tokens = input_tokens
+        # The member user ID for a member row. The value is 0 for a department row.
         self.member_user_id = member_user_id
+        # The member name for a member row. The value is empty for a department row.
         self.member_user_name = member_user_name
+        # The JSON of other metering field mapping, such as video duration and image count. Fields with a value of 0 are not included in the output.
         self.metrics = metrics
+        # The model identifier.
         self.model_code = model_code
+        # The model ID.
         self.model_id = model_id
+        # The model name.
         self.model_name = model_name
+        # The model symbol (provider identifier).
         self.model_symbol = model_symbol
+        # The model type.
         self.model_type = model_type
+        # The model version number.
         self.model_version = model_version
+        # The number of output tokens.
         self.output_tokens = output_tokens
+        # The number of reasoning tokens.
         self.reasoning_tokens = reasoning_tokens
+        # The unique request ID.
         self.request_id = request_id
+        # The request time as a UNIX timestamp in seconds.
         self.request_time = request_time
+        # The total number of tokens.
         self.total_tokens = total_tokens
+        # The raw JSON of the usage details.
         self.usage_detail = usage_detail
 
     def validate(self):

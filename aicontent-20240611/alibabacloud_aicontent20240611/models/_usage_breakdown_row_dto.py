@@ -23,25 +23,29 @@ class UsageBreakdownRowDTO(DaraModel):
         model_type: str = None,
         summary_time: int = None,
     ):
+        # The API key ID. A value of 0 indicates that historical data is not broken down by API key.
         self.api_key_id = api_key_id
+        # The API key name, corresponding to api_key_id.
         self.api_key_name = api_key_name
-        # Department ID; 0 indicates no associated department
+        # The department ID. A value of 0 indicates no affiliated department.
         self.client_id = client_id
-        # Department name
+        # The department name.
         self.client_name = client_name
+        # The member ID for a member row. The value is 0 for a department row.
         self.member_user_id = member_user_id
+        # The member name for a member row. The value is empty for a department row.
         self.member_user_name = member_user_name
-        # Array of usage metrics, containing only entries with non-zero values
+        # The usage metric array. Only entries with non-zero values are included.
         self.metrics = metrics
-        # Model identifier
+        # The model identifier.
         self.model_code = model_code
-        # Model ID
+        # The model ID.
         self.model_id = model_id
-        # Model name
+        # The model name.
         self.model_name = model_name
-        # Statistics scope
+        # The statistical dimension.
         self.model_type = model_type
-        # Statistics time point, Unix timestamp (seconds)
+        # The statistical time point, in UNIX timestamp (seconds).
         self.summary_time = summary_time
 
     def validate(self):

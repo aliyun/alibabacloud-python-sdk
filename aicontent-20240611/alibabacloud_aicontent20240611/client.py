@@ -25,8 +25,6 @@ class Client(OpenApiClient):
         super().__init__(config)
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
-            'cn-beijing': 'aicontent.cn-beijing.aliyuncs.com',
-            'cn-hangzhou': 'aicontent.cn-hangzhou.aliyuncs.com',
             'cn-shanghai': 'aicontent.aliyuncs.com',
             'public': 'aicontent.aliyuncs.com'
         }
@@ -4050,6 +4048,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.model_router_batch_disable_member_api_keys_with_options_async(id, request, headers, runtime)
+
+    def model_router_batch_renew_member_api_keys_with_options(
+        self,
+        id: str,
+        request: main_models.ModelRouterBatchRenewMemberApiKeysRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterBatchRenewMemberApiKeysResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.expire_at):
+            body['expireAt'] = request.expire_at
+        if not DaraCore.is_null(request.user_ids):
+            body['userIds'] = request.user_ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterBatchRenewMemberApiKeys',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(id)}/member-apikeys/renew',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterBatchRenewMemberApiKeysResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_batch_renew_member_api_keys_with_options_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterBatchRenewMemberApiKeysRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterBatchRenewMemberApiKeysResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.expire_at):
+            body['expireAt'] = request.expire_at
+        if not DaraCore.is_null(request.user_ids):
+            body['userIds'] = request.user_ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterBatchRenewMemberApiKeys',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/clients/{DaraURL.percent_encode(id)}/member-apikeys/renew',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterBatchRenewMemberApiKeysResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_batch_renew_member_api_keys(
+        self,
+        id: str,
+        request: main_models.ModelRouterBatchRenewMemberApiKeysRequest,
+    ) -> main_models.ModelRouterBatchRenewMemberApiKeysResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_batch_renew_member_api_keys_with_options(id, request, headers, runtime)
+
+    async def model_router_batch_renew_member_api_keys_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterBatchRenewMemberApiKeysRequest,
+    ) -> main_models.ModelRouterBatchRenewMemberApiKeysResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_batch_renew_member_api_keys_with_options_async(id, request, headers, runtime)
 
     def model_router_batch_reset_member_authorization_with_options(
         self,
@@ -10569,6 +10651,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.model_router_query_user_list_with_options_async(request, headers, runtime)
 
+    def model_router_renew_api_key_with_options(
+        self,
+        id: str,
+        request: main_models.ModelRouterRenewApiKeyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterRenewApiKeyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.expire_at):
+            body['expireAt'] = request.expire_at
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterRenewApiKey',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/apikeys/{DaraURL.percent_encode(id)}/renew',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterRenewApiKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_renew_api_key_with_options_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterRenewApiKeyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterRenewApiKeyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.expire_at):
+            body['expireAt'] = request.expire_at
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterRenewApiKey',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/apikeys/{DaraURL.percent_encode(id)}/renew',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterRenewApiKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_renew_api_key(
+        self,
+        id: str,
+        request: main_models.ModelRouterRenewApiKeyRequest,
+    ) -> main_models.ModelRouterRenewApiKeyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_renew_api_key_with_options(id, request, headers, runtime)
+
+    async def model_router_renew_api_key_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterRenewApiKeyRequest,
+    ) -> main_models.ModelRouterRenewApiKeyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_renew_api_key_with_options_async(id, request, headers, runtime)
+
     def model_router_reset_member_authorization_with_options(
         self,
         client_id: str,
@@ -11240,6 +11402,86 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.model_router_transfer_to_member_with_options_async(client_id, id, request, headers, runtime)
+
+    def model_router_update_api_key_status_with_options(
+        self,
+        id: str,
+        request: main_models.ModelRouterUpdateApiKeyStatusRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterUpdateApiKeyStatusResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.status):
+            body['status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterUpdateApiKeyStatus',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/apikeys/{DaraURL.percent_encode(id)}/status',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterUpdateApiKeyStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_router_update_api_key_status_with_options_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterUpdateApiKeyStatusRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModelRouterUpdateApiKeyStatusResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.status):
+            body['status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModelRouterUpdateApiKeyStatus',
+            version = '20240611',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/modelRouter/open/apikeys/{DaraURL.percent_encode(id)}/status',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModelRouterUpdateApiKeyStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_router_update_api_key_status(
+        self,
+        id: str,
+        request: main_models.ModelRouterUpdateApiKeyStatusRequest,
+    ) -> main_models.ModelRouterUpdateApiKeyStatusResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.model_router_update_api_key_status_with_options(id, request, headers, runtime)
+
+    async def model_router_update_api_key_status_async(
+        self,
+        id: str,
+        request: main_models.ModelRouterUpdateApiKeyStatusRequest,
+    ) -> main_models.ModelRouterUpdateApiKeyStatusResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.model_router_update_api_key_status_with_options_async(id, request, headers, runtime)
 
     def model_router_update_billing_rule_with_options(
         self,

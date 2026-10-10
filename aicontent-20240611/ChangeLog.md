@@ -1,3 +1,8 @@
+2026-10-10 Version: 7.10.0
+- Support API ModelRouterBatchRenewMemberApiKeys.
+- Support API ModelRouterRenewApiKey.
+
+
 2026-08-31 Version: 7.8.0
 - Support API ModelRouterMiguDownloadSource.
 - Support API ModelRouterMiguUploadSource.

@@ -10,7 +10,9 @@ class DepartmentRoleCmd(DaraModel):
         client_id: int = None,
         role_code: str = None,
     ):
+        # The department ID.
         self.client_id = client_id
+        # The role code.
         self.role_code = role_code
 
     def validate(self):
