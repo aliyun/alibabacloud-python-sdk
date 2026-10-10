@@ -15,25 +15,25 @@ class CreateGroupFileRequest(DaraModel):
         source_tags: str = None,
         tenant_id: str = None,
     ):
-        # 资料描述
+        # The description of the AI assistant.
         self.description = description
-        # 当前空间物理目录ID；省略/root使用空间根，首次可能初始化根目录；引用目录不可写
+        # The folder ID.
         self.directory_id = directory_id
-        # 当前用户在当前租户上传的SOURCE/OSS文件记录ID；须先完成文件PUT
+        # The file record ID. This parameter is optional and corresponds to settings.file_record_id.
         # 
         # This parameter is required.
         self.file_record_id = file_record_id
-        # 协作空间 ID
+        # The project group ID.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # 资料显示名；最终名称沿用Provider规则
+        # The name.
         # 
         # This parameter is required.
         self.name = name
-        # 资料标签，JSON字符串列表
+        # The source tags.
         self.source_tags = source_tags
-        # 租户ID，公共参数；缺省时使用调用方默认租户
+        # The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):

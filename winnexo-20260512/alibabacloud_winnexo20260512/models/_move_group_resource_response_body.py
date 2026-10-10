@@ -15,19 +15,19 @@ class MoveGroupResourceResponseBody(DaraModel):
         source_id: str = None,
         target_directory_id: str = None,
     ):
-        # 业务状态码，成功为200
+        # The business status code. A value of 200 indicates success.
         self.code = code
-        # 协作空间 ID
+        # The collaboration space ID.
         self.group_id = group_id
-        # 错误描述
+        # The error description.
         self.message = message
-        # 请求追踪ID
+        # The request trace ID.
         self.request_id = request_id
-        # 移动前的目录 ID
+        # The directory ID before the move.
         self.source_directory_id = source_directory_id
-        # 移动的资料 ID，移动前后保持不变
+        # The ID of the moved resource. This value remains unchanged before and after the move.
         self.source_id = source_id
-        # 移动后的目录 ID
+        # The directory ID after the move.
         self.target_directory_id = target_directory_id
 
     def validate(self):

@@ -15,23 +15,23 @@ class CreateGroupTextRequest(DaraModel):
         tenant_id: str = None,
         text_content: str = None,
     ):
-        # 资料描述
+        # The description of the AI assistant.
         self.description = description
-        # 当前空间物理目录ID；省略/root使用空间根，首次可能初始化根目录；引用目录不可写
+        # The folder ID.
         self.directory_id = directory_id
-        # 协作空间 ID
+        # The project group ID.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # 资料显示名；最终名称沿用Provider规则
+        # The image name.
         # 
         # This parameter is required.
         self.name = name
-        # 资料标签，JSON字符串列表
+        # The source tags.
         self.source_tags = source_tags
-        # 租户ID，公共参数；缺省时使用调用方默认租户
+        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
-        # 纯文本正文，不能全为空白；Provider沿用去首尾空白规则
+        # The message content for text messages.
         # 
         # This parameter is required.
         self.text_content = text_content

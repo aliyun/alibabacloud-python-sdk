@@ -1,3 +1,6 @@
+2026-10-10 Version: 1.5.1
+- Generated python 2026-05-12 for WinNexo.
+
 2026-09-18 Version: 1.5.0
 - Support API CreateGroupAliDingDoc.
 - Support API CreateGroupDirectory.

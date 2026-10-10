@@ -16,31 +16,31 @@ class ReplaceGroupSourceFileRequest(DaraModel):
         source_id: str = None,
         tenant_id: str = None,
     ):
-        # 新文件名；省略或空字符串保留原文件名，用户自定义展示名沿用现有保护规则
+        # The new file name. This parameter is optional. If you do not specify this parameter or set it to an empty string, the original file name is retained.
         self.file_name = file_name
-        # 已上传新文件的 OSS 持久化地址，使用上传接口返回值
+        # The OSS persistent storage path of the replacement file.
         # 
         # This parameter is required.
         self.file_path = file_path
-        # 已上传新文件的访问 URL，可能携带临时签名
+        # The OSS persistent storage path of the replacement file.
         # 
         # This parameter is required.
         self.file_public_url = file_public_url
-        # 已上传新文件的文件记录 ID
+        # The file record ID of the replacement file.
         # 
         # This parameter is required.
         self.file_record_id = file_record_id
-        # 是否等待解析完成；默认 false 异步受理，true 同步等待，网关超时 300000ms
+        # Specifies whether to synchronously wait for re-parsing to complete. Default value: false, which means the task is asynchronously enqueued.
         self.force_sync = force_sync
-        # 资料所属协作空间 ID
+        # The project group ID.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # 当前空间物理 GROUP 资料 ID；引用资料只读
+        # The data source ID.
         # 
         # This parameter is required.
         self.source_id = source_id
-        # 租户ID，公共参数；缺省时使用调用方默认租户
+        # The tenant ID. This is a common parameter. In winnexo-cli, pass this parameter explicitly by using `--tenant-id`.
         self.tenant_id = tenant_id
 
     def validate(self):

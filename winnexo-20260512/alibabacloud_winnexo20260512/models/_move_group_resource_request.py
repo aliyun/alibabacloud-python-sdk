@@ -13,23 +13,23 @@ class MoveGroupResourceRequest(DaraModel):
         target_directory_id: str = None,
         tenant_id: str = None,
     ):
-        # 协作空间 ID
+        # The collaboration space ID.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # 资料当前所在的空间物理目录真实 ID，不支持 root 哨兵
+        # The real ID of the physical directory in the space where the resource currently resides. The root sentinel is not supported.
         # 
         # This parameter is required.
         self.source_directory_id = source_directory_id
-        # 待移动的物理 GROUP 资料 ID；引用资料只读
+        # The physical GROUP resource ID to be moved. Referenced resources are read-only.
         # 
         # This parameter is required.
         self.source_id = source_id
-        # 同一空间目标物理目录真实 ID，必须与源目录不同
+        # The real ID of the target physical directory in the same space. This value must be different from the source directory ID.
         # 
         # This parameter is required.
         self.target_directory_id = target_directory_id
-        # 租户ID，公共参数；缺省时使用调用方默认租户
+        # The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
 
     def validate(self):

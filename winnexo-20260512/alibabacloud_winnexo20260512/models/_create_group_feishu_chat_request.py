@@ -19,29 +19,29 @@ class CreateGroupFeishuChatRequest(DaraModel):
         tenant_id: str = None,
         update_frequency: main_models.CreateGroupFeishuChatRequestUpdateFrequency = None,
     ):
-        # 飞书群聊ID，以oc_开头，需当前用户有权读取
+        # The DingTalk group chat session ID.
         # 
         # This parameter is required.
         self.chat_id = chat_id
-        # 资料描述
+        # The pipeline description.
         self.description = description
-        # 空间物理目录ID；省略/root使用空间根，首次可能初始化根目录
+        # The folder ID.
         self.directory_id = directory_id
-        # 协作空间 ID
+        # The project group ID.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # 历史起始时间，YYYY-MM-DD或YYYY-MM-DD HH:MM:SS；省略读取全部可见历史
+        # The start time for historical messages. The value must be in the YYYY-MM-DD or YYYY-MM-DD HH:MM:SS format. If this parameter is not specified, all visible historical messages are retrieved.
         self.history_start_time = history_start_time
-        # 分析指令
+        # The meeting notes content (optional). The notes are used for auxiliary analysis.
         self.notes = notes
-        # 运营对象名称，用于来源追溯
+        # The digital employee name (operating object name, optional).
         self.operating_object_name = operating_object_name
-        # 资料标签JSON字符串列表
+        # The source tags.
         self.source_tags = source_tags
-        # 租户ID，公共参数；缺省时使用调用方默认租户
+        # The tenant ID. This is a common parameter. You can pass it explicitly by using --tenant-id in winnexo-cli.
         self.tenant_id = tenant_id
-        # Source级同步配置
+        # The feature update frequency.
         self.update_frequency = update_frequency
 
     def validate(self):
@@ -127,11 +127,11 @@ class CreateGroupFeishuChatRequestUpdateFrequency(DaraModel):
         enabled: bool = None,
         preset: str = None,
     ):
-        # 五段 cron，优先于 preset
+        # The cron expression for the timed scheduling task.
         self.cron = cron
-        # 是否启用同步，默认true
+        # **Enable/Disable**
         self.enabled = enabled
-        # 同步预设：hourly 或 daily_2am
+        # The synchronization preset: hourly or daily_2am.
         self.preset = preset
 
     def validate(self):

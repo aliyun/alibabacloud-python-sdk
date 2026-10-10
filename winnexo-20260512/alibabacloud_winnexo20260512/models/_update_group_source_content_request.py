@@ -13,21 +13,21 @@ class UpdateGroupSourceContentRequest(DaraModel):
         source_id: str = None,
         tenant_id: str = None,
     ):
-        # 更新后的完整正文，可为空字符串；TEXT 存储时去首尾空白；支持 TEXT/本地 txt、md FILE，已有 skip_parse 资料沿用免解析与本地文件扩展名规则
+        # The returned content.
         # 
         # This parameter is required.
         self.content = content
-        # 是否等待解析完成；默认 false 异步受理，true 同步等待，网关超时 300000ms
+        # Specifies whether to force synchronization.
         self.force_sync = force_sync
-        # 资料所属协作空间 ID
+        # The project group ID.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # 当前空间物理 GROUP 资料 ID；引用资料只读
+        # The original project ID.
         # 
         # This parameter is required.
         self.source_id = source_id
-        # 租户ID，公共参数；缺省时使用调用方默认租户
+        # The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):

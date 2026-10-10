@@ -15,19 +15,19 @@ class ReparseGroupSourceResponseBody(DaraModel):
         source_type: str = None,
         status: str = None,
     ):
-        # 业务状态码；成功为200
+        # The status code.
         self.code = code
-        # 错误描述
+        # The description of the status code.
         self.message = message
-        # 操作后的资料名称，沿用已有名称维护规则
+        # The file name.
         self.name = name
-        # 请求追踪ID
+        # The request trace ID.
         self.request_id = request_id
-        # 资料 ID；替换、编辑、重新解析均保持该 ID
+        # The data source ID.
         self.source_id = source_id
-        # 资料类型
+        # The data source type.
         self.source_type = source_type
-        # 当前资料状态；RUNNING 表示处理中，异步受理不代表解析完成
+        # The status.
         self.status = status
 
     def validate(self):

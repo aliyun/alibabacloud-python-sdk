@@ -18,25 +18,25 @@ class CreateGroupTextResponseBody(DaraModel):
         source_id: str = None,
         status: str = None,
     ):
-        # 业务状态码，成功为200
+        # The response code.
         self.code = code
-        # 解析并绑定的真实目录ID
+        # The folder ID.
         self.directory_id = directory_id
-        # 创建时间，ISO8601格式
+        # The creation time.
         self.gmt_create = gmt_create
-        # 协作空间ID
+        # The project group ID.
         self.group_id = group_id
-        # 错误描述
+        # The prompt message.
         self.message = message
-        # Provider处理后的实际资料名称
+        # The image name.
         self.name = name
-        # 请求追踪ID
+        # The request ID.
         self.request_id = request_id
-        # 资料范围，固定GROUP
+        # The permission scope.
         self.scope = scope
-        # 新建资料ID
+        # The unique identifier on the business system side, that is, the business ID.
         self.source_id = source_id
-        # 实际资料状态；RUNNING表示处理中，FAILED表示创建处理失败
+        # The status.
         self.status = status
 
     def validate(self):

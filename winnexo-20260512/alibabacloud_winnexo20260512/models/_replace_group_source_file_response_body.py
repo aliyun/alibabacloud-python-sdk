@@ -18,25 +18,27 @@ class ReplaceGroupSourceFileResponseBody(DaraModel):
         source_type: str = None,
         status: str = None,
     ):
-        # 业务状态码；成功为200
+        # The business status code. A value of 200 indicates success. A failure returns a backend error code (ERR.* / InvalidParameter.*).
         self.code = code
-        # 替换后的文件 OSS 地址
+        # The OSS persistent storage path of the replacement file.
         self.file_path = file_path
-        # 替换后的文件访问 URL
+        # The OSS persistent storage path of the replacement file.
         self.file_public_url = file_public_url
-        # 替换后的文件记录 ID
+        # The file record ID of the replacement file.
         self.file_record_id = file_record_id
-        # 错误描述
+        # The description of the status code.
         self.message = message
-        # 操作后的资料名称，沿用已有名称维护规则
+        # The image name.
         self.name = name
-        # 请求追踪ID
+        # The request trace ID.
         self.request_id = request_id
-        # 资料 ID；替换、编辑、重新解析均保持该 ID
+        # The data source ID.
         self.source_id = source_id
-        # 资料类型
+        # The data source type. The value is fixed as FILE.
         self.source_type = source_type
-        # 当前资料状态；RUNNING 表示处理中，异步受理不代表解析完成
+        # The data source status. Valid values:
+        # - **1**: Online.
+        # - **0**: Offline.
         self.status = status
 
     def validate(self):

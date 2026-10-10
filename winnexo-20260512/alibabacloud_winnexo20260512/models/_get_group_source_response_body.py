@@ -22,33 +22,40 @@ class GetGroupSourceResponseBody(DaraModel):
         source_type: str = None,
         status: str = None,
     ):
-        # 业务状态码
+        # The error code.
         self.code = code
-        # 资料描述
+        # The pipeline description.
         self.description = description
-        # 创建时间，ISO8601格式
+        # The time when the resource was created.
         self.gmt_create = gmt_create
-        # 修改时间，ISO8601格式
+        # The time when the resource was last modified, in ISO 8601 format.
         self.gmt_modified = gmt_modified
-        # 本次授权读取的协作空间ID
+        # The project group ID.
         self.group_id = group_id
-        # 错误描述
+        # The description of the status code.
         self.message = message
-        # 资料名称
+        # The name.
         self.name = name
-        # 请求追踪ID
+        # The request trace ID.
         self.request_id = request_id
-        # 资料实际范围；引用资料保留 PERSONAL 或 TENANT
+        # The permission scope.
         self.scope = scope
-        # 资料ID
+        # The data source ID.
         self.source_id = source_id
-        # 知识归属类型，沿用 Source 分类
+        # The knowledge base ownership type. Valid values:
+        # 
+        # - aliding_kb_doc: DingTalk knowledge base document.
+        # - normal: Common knowledge.
         self.source_kind = source_kind
-        # 资料标签JSON字符串列表
+        # The resource tags. This parameter is optional. The value is a JSON string list, such as ["tagA","tagB"].
         self.source_tags = source_tags
-        # 资料类型，例如 TEXT、FILE、ONLINE_DOC、FEISHU
+        # The type of the resource source. Valid values:
+        # 
+        # - ExportTaskId: The resource export ID.
+        # - TaskId: The module execution task ID.
+        # - StatePath: The OSS path where the resource state is stored.
         self.source_type = source_type
-        # 当前资料状态，例如 READY、RUNNING、FAILED
+        # The resource status. The initial status during the creation process is typically PENDING. If the on_create operation fails, the status is FAILED.
         self.status = status
 
     def validate(self):

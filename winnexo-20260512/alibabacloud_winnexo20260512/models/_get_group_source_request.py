@@ -11,15 +11,15 @@ class GetGroupSourceRequest(DaraModel):
         source_id: str = None,
         tenant_id: str = None,
     ):
-        # 协作空间 ID
+        # The project group ID.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # 空间内可读的资料ID，支持有效引用资料
+        # The ID of the personal FILE data source to be replaced. The ID is unique within the tenant.
         # 
         # This parameter is required.
         self.source_id = source_id
-        # 租户ID，公共参数；缺省时使用调用方默认租户
+        # The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):
