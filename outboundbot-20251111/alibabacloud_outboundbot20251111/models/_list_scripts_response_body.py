@@ -30,7 +30,7 @@ class ListScriptsResponseBody(DaraModel):
         self.params = params
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful.
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -101,11 +101,11 @@ class ListScriptsResponseBodyData(DaraModel):
     ):
         # The page number, starting from 1.
         self.page_number = page_number
-        # The number of records per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The data list.
+        # The list of scripts.
         self.scripts = scripts
-        # The total number of records that match the conditions.
+        # The total number of entries that meet the conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -157,6 +157,8 @@ class ListScriptsResponseBodyData(DaraModel):
 class ListScriptsResponseBodyDataScripts(DaraModel):
     def __init__(
         self,
+        builder_type: str = None,
+        chatbot_id: str = None,
         concurrency: int = None,
         created_time: int = None,
         description: str = None,
@@ -170,9 +172,13 @@ class ListScriptsResponseBodyDataScripts(DaraModel):
         status: str = None,
         updated_time: int = None,
     ):
+        # The chatbot builder type.
+        self.builder_type = builder_type
+        # The chatbot instance ID.
+        self.chatbot_id = chatbot_id
         # The concurrency.
         self.concurrency = concurrency
-        # The creation time, in millisecond-level timestamp.
+        # The creation time, in milliseconds.
         self.created_time = created_time
         # The description.
         self.description = description
@@ -184,15 +190,15 @@ class ListScriptsResponseBodyDataScripts(DaraModel):
         self.nlu_access_type = nlu_access_type
         # The NLU engine type.
         self.nlu_engine = nlu_engine
-        # The phone number bound to the scenario.
+        # The phone number bound to the script.
         self.number = number
         # The published version ID.
         self.published_version_id = published_version_id
-        # The scenario ID.
+        # The script ID.
         self.script_id = script_id
-        # The scenario status.
+        # The script status.
         self.status = status
-        # The update time, in millisecond-level timestamp.
+        # The update time, in milliseconds.
         self.updated_time = updated_time
 
     def validate(self):
@@ -203,6 +209,12 @@ class ListScriptsResponseBodyDataScripts(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.builder_type is not None:
+            result['BuilderType'] = self.builder_type
+
+        if self.chatbot_id is not None:
+            result['ChatbotId'] = self.chatbot_id
+
         if self.concurrency is not None:
             result['Concurrency'] = self.concurrency
 
@@ -243,6 +255,12 @@ class ListScriptsResponseBodyDataScripts(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BuilderType') is not None:
+            self.builder_type = m.get('BuilderType')
+
+        if m.get('ChatbotId') is not None:
+            self.chatbot_id = m.get('ChatbotId')
+
         if m.get('Concurrency') is not None:
             self.concurrency = m.get('Concurrency')
 

@@ -26,9 +26,9 @@ class UpdateScriptVersionShrinkRequest(DaraModel):
         self.script_id = script_id
         # The dialogue capability configuration.
         self.script_profile_shrink = script_profile_shrink
-        # The TTS configuration.
+        # The Text-to-Speech (TTS) configuration.
         self.synthesizer_config_shrink = synthesizer_config_shrink
-        # The ASR configuration.
+        # The Automatic Speech Recognition (ASR) configuration.
         self.transcriber_config_shrink = transcriber_config_shrink
         # The version ID.
         self.version_id = version_id

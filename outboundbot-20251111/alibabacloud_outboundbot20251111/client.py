@@ -3025,10 +3025,14 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.script_ids):
             request.script_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.script_ids, 'ScriptIds', 'json')
         body = {}
+        if not DaraCore.is_null(request.builder_type):
+            body['BuilderType'] = request.builder_type
         if not DaraCore.is_null(request.instance_id):
             body['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.name):
             body['Name'] = request.name
+        if not DaraCore.is_null(request.nlu_engine):
+            body['NluEngine'] = request.nlu_engine
         if not DaraCore.is_null(request.page_number):
             body['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -3067,10 +3071,14 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.script_ids):
             request.script_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.script_ids, 'ScriptIds', 'json')
         body = {}
+        if not DaraCore.is_null(request.builder_type):
+            body['BuilderType'] = request.builder_type
         if not DaraCore.is_null(request.instance_id):
             body['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.name):
             body['Name'] = request.name
+        if not DaraCore.is_null(request.nlu_engine):
+            body['NluEngine'] = request.nlu_engine
         if not DaraCore.is_null(request.page_number):
             body['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):

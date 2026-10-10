@@ -1,3 +1,10 @@
+2026-10-10 Version: 1.6.1
+- Update API ListScripts: add request parameters BuilderType.
+- Update API ListScripts: add request parameters NluEngine.
+- Update API ListScripts: add response parameters Body.Data.Scripts.$.BuilderType.
+- Update API ListScripts: add response parameters Body.Data.Scripts.$.ChatbotId.
+
+
 2026-09-14 Version: 1.6.0
 - Support API GetRecording.
 

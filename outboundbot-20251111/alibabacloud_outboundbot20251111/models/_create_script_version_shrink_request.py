@@ -28,9 +28,9 @@ class CreateScriptVersionShrinkRequest(DaraModel):
         self.script_profile_shrink = script_profile_shrink
         # The source version ID.
         self.source_version_id = source_version_id
-        # The TTS configuration.
+        # The Text-to-Speech (TTS) configuration.
         self.synthesizer_config_shrink = synthesizer_config_shrink
-        # The ASR configuration.
+        # The Automatic Speech Recognition (ASR) configuration.
         self.transcriber_config_shrink = transcriber_config_shrink
 
     def validate(self):
