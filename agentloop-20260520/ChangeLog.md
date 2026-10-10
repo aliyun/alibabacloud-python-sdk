@@ -1,3 +1,42 @@
+2026-10-10 Version: 2.3.9
+- Update API CreateContextStore: add request parameters body.config.audit.
+- Update API CreateContextStore: add request parameters body.config.extractionPolicy.
+- Update API CreateContextStore: add request parameters body.config.scopePolicy.
+- Update API CreateContextStore: add request parameters body.config.storagePolicy.
+- Update API CreateContextStore: add request parameters body.config.source.dataset.
+- Update API CreateContextStore: add request parameters body.config.source.trajectory.
+- Update API CreateContextStore: add request parameters body.config.source.type.
+- Update API CreateContextStore: add response parameters Body.strategyVersion.
+- Update API DeleteContextStore: add request parameters deleteOutputDataset.
+- Update API GetContextStore: add response parameters Body.config.audit.
+- Update API GetContextStore: add response parameters Body.config.extractionPolicy.
+- Update API GetContextStore: add response parameters Body.config.innerSource.
+- Update API GetContextStore: add response parameters Body.config.observability.
+- Update API GetContextStore: add response parameters Body.config.outputDataset.
+- Update API GetContextStore: add response parameters Body.config.scopePolicy.
+- Update API GetContextStore: add response parameters Body.config.sourceStatus.
+- Update API GetContextStore: add response parameters Body.config.storagePolicy.
+- Update API GetContextStore: add response parameters Body.config.strategyVersion.
+- Update API GetContextStore: add response parameters Body.config.source.dataset.
+- Update API GetContextStore: add response parameters Body.config.source.trajectory.
+- Update API GetContextStore: add response parameters Body.config.source.type.
+- Update API ListContextStores: add request parameters sourceType.
+- Update API ListContextStores: add response parameters Body.results.$.sourceType.
+- Update API ListContextStores: add response parameters Body.results.$.storageMode.
+- Update API SearchContext: add request parameters body.includeInactive.
+- Update API SearchContext: add request parameters body.scope.
+- Update API SearchContext: add response parameters Body.auditStatus.
+- Update API SearchContext: add response parameters Body.recallEventId.
+- Update API UpdateContextStore: add request parameters body.changeNote.
+- Update API UpdateContextStore: add request parameters body.config.audit.
+- Update API UpdateContextStore: add request parameters body.config.extractionPolicy.
+- Update API UpdateContextStore: add request parameters body.config.scopePolicy.
+- Update API UpdateContextStore: add request parameters body.config.storagePolicy.
+- Update API UpdateContextStore: add request parameters body.config.source.dataset.
+- Update API UpdateContextStore: add request parameters body.config.source.trajectory.
+- Update API UpdateContextStore: add response parameters Body.strategyVersion.
+
+
 2026-10-09 Version: 2.3.8
 - Update API CreatePipeline: add request parameters body.executePolicy.continuous.
 - Update API CreatePipeline: add request parameters body.source.trajectory.

@@ -1398,8 +1398,12 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.DeleteContextStoreResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.delete_output_dataset):
+            query['deleteOutputDataset'] = request.delete_output_dataset
         req = open_api_util_models.OpenApiRequest(
-            headers = headers
+            headers = headers,
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'DeleteContextStore',
@@ -1426,8 +1430,12 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.DeleteContextStoreResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.delete_output_dataset):
+            query['deleteOutputDataset'] = request.delete_output_dataset
         req = open_api_util_models.OpenApiRequest(
-            headers = headers
+            headers = headers,
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'DeleteContextStore',
@@ -3598,6 +3606,8 @@ class Client(OpenApiClient):
             query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.source_type):
+            query['sourceType'] = request.source_type
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -3635,6 +3645,8 @@ class Client(OpenApiClient):
             query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.source_type):
+            query['sourceType'] = request.source_type
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -4927,12 +4939,16 @@ class Client(OpenApiClient):
             body['filter'] = request.filter
         if not DaraCore.is_null(request.formatted):
             body['formatted'] = request.formatted
+        if not DaraCore.is_null(request.include_inactive):
+            body['includeInactive'] = request.include_inactive
         if not DaraCore.is_null(request.limit):
             body['limit'] = request.limit
         if not DaraCore.is_null(request.query):
             body['query'] = request.query
         if not DaraCore.is_null(request.retrieval_option):
             body['retrievalOption'] = request.retrieval_option
+        if not DaraCore.is_null(request.scope):
+            body['scope'] = request.scope
         if not DaraCore.is_null(request.threshold):
             body['threshold'] = request.threshold
         req = open_api_util_models.OpenApiRequest(
@@ -4969,12 +4985,16 @@ class Client(OpenApiClient):
             body['filter'] = request.filter
         if not DaraCore.is_null(request.formatted):
             body['formatted'] = request.formatted
+        if not DaraCore.is_null(request.include_inactive):
+            body['includeInactive'] = request.include_inactive
         if not DaraCore.is_null(request.limit):
             body['limit'] = request.limit
         if not DaraCore.is_null(request.query):
             body['query'] = request.query
         if not DaraCore.is_null(request.retrieval_option):
             body['retrievalOption'] = request.retrieval_option
+        if not DaraCore.is_null(request.scope):
+            body['scope'] = request.scope
         if not DaraCore.is_null(request.threshold):
             body['threshold'] = request.threshold
         req = open_api_util_models.OpenApiRequest(
@@ -5206,6 +5226,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.client_token):
             query['clientToken'] = request.client_token
         body = {}
+        if not DaraCore.is_null(request.change_note):
+            body['changeNote'] = request.change_note
         if not DaraCore.is_null(request.config):
             body['config'] = request.config
         if not DaraCore.is_null(request.context_type):
@@ -5248,6 +5270,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.client_token):
             query['clientToken'] = request.client_token
         body = {}
+        if not DaraCore.is_null(request.change_note):
+            body['changeNote'] = request.change_note
         if not DaraCore.is_null(request.config):
             body['config'] = request.config
         if not DaraCore.is_null(request.context_type):

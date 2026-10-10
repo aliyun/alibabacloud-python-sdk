@@ -89,7 +89,9 @@ class ListContextStoresResponseBodyResults(DaraModel):
         description: str = None,
         region_id: str = None,
         service_names: List[str] = None,
+        source_type: str = None,
         status: str = None,
+        storage_mode: str = None,
         update_time: str = None,
     ):
         # The name of the AgentSpace to which the context store belongs.
@@ -108,8 +110,10 @@ class ListContextStoresResponseBodyResults(DaraModel):
         self.region_id = region_id
         # The list of service names. This parameter has a value only for context stores of the experience type. The service names are used together with the data source AgentSpace to locate trace data sources.
         self.service_names = service_names
+        self.source_type = source_type
         # The status of the context store. Valid values: ACTIVE, INITIALIZING, and FAILED.
         self.status = status
+        self.storage_mode = storage_mode
         # The time when the context store was last updated, in ISO 8601 UTC format.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
@@ -144,8 +148,14 @@ class ListContextStoresResponseBodyResults(DaraModel):
         if self.service_names is not None:
             result['serviceNames'] = self.service_names
 
+        if self.source_type is not None:
+            result['sourceType'] = self.source_type
+
         if self.status is not None:
             result['status'] = self.status
+
+        if self.storage_mode is not None:
+            result['storageMode'] = self.storage_mode
 
         if self.update_time is not None:
             result['updateTime'] = self.update_time
@@ -175,8 +185,14 @@ class ListContextStoresResponseBodyResults(DaraModel):
         if m.get('serviceNames') is not None:
             self.service_names = m.get('serviceNames')
 
+        if m.get('sourceType') is not None:
+            self.source_type = m.get('sourceType')
+
         if m.get('status') is not None:
             self.status = m.get('status')
+
+        if m.get('storageMode') is not None:
+            self.storage_mode = m.get('storageMode')
 
         if m.get('updateTime') is not None:
             self.update_time = m.get('updateTime')
