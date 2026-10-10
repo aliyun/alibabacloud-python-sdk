@@ -6175,6 +6175,106 @@ class Client(OpenApiClient):
         headers = {}
         return await self.subscribe_with_options_async(headers, runtime)
 
+    def untag_resources_with_options(
+        self,
+        tmp_req: main_models.UntagResourcesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UntagResourcesResponse:
+        tmp_req.validate()
+        request = main_models.UntagResourcesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.resource_id):
+            request.resource_id_shrink = Utils.array_to_string_with_specified_style(tmp_req.resource_id, 'resourceId', 'json')
+        if not DaraCore.is_null(tmp_req.tag_key):
+            request.tag_key_shrink = Utils.array_to_string_with_specified_style(tmp_req.tag_key, 'tagKey', 'json')
+        query = {}
+        if not DaraCore.is_null(request.all):
+            query['all'] = request.all
+        if not DaraCore.is_null(request.resource_id_shrink):
+            query['resourceId'] = request.resource_id_shrink
+        if not DaraCore.is_null(request.resource_type):
+            query['resourceType'] = request.resource_type
+        if not DaraCore.is_null(request.tag_key_shrink):
+            query['tagKey'] = request.tag_key_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UntagResources',
+            version = '2025-03-10',
+            protocol = 'HTTPS',
+            pathname = f'/dlf/v1/tags',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.UntagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def untag_resources_with_options_async(
+        self,
+        tmp_req: main_models.UntagResourcesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UntagResourcesResponse:
+        tmp_req.validate()
+        request = main_models.UntagResourcesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.resource_id):
+            request.resource_id_shrink = Utils.array_to_string_with_specified_style(tmp_req.resource_id, 'resourceId', 'json')
+        if not DaraCore.is_null(tmp_req.tag_key):
+            request.tag_key_shrink = Utils.array_to_string_with_specified_style(tmp_req.tag_key, 'tagKey', 'json')
+        query = {}
+        if not DaraCore.is_null(request.all):
+            query['all'] = request.all
+        if not DaraCore.is_null(request.resource_id_shrink):
+            query['resourceId'] = request.resource_id_shrink
+        if not DaraCore.is_null(request.resource_type):
+            query['resourceType'] = request.resource_type
+        if not DaraCore.is_null(request.tag_key_shrink):
+            query['tagKey'] = request.tag_key_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UntagResources',
+            version = '2025-03-10',
+            protocol = 'HTTPS',
+            pathname = f'/dlf/v1/tags',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.UntagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def untag_resources(
+        self,
+        request: main_models.UntagResourcesRequest,
+    ) -> main_models.UntagResourcesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.untag_resources_with_options(request, headers, runtime)
+
+    async def untag_resources_async(
+        self,
+        request: main_models.UntagResourcesRequest,
+    ) -> main_models.UntagResourcesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.untag_resources_with_options_async(request, headers, runtime)
+
     def update_role_with_options(
         self,
         request: main_models.UpdateRoleRequest,

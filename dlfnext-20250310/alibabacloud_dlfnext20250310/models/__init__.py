@@ -38,6 +38,7 @@ from ._predicate import Predicate
 from ._prepay_resource import PrepayResource
 from ._received_share import ReceivedShare
 from ._receiver import Receiver
+from ._resource_tag import ResourceTag
 from ._role import Role
 from ._row_filter import RowFilter
 from ._schema import Schema
@@ -51,6 +52,7 @@ from ._table_compaction import TableCompaction
 from ._table_compaction_history import TableCompactionHistory
 from ._table_snapshot import TableSnapshot
 from ._table_summary import TableSummary
+from ._tag_resource import TagResource
 from ._transform import Transform
 from ._transform_input import TransformInput
 from ._user import User
@@ -226,6 +228,9 @@ from ._submit_query_request import SubmitQueryRequest
 from ._submit_query_response_body import SubmitQueryResponseBody
 from ._submit_query_response import SubmitQueryResponse
 from ._subscribe_response import SubscribeResponse
+from ._untag_resources_request import UntagResourcesRequest
+from ._untag_resources_shrink_request import UntagResourcesShrinkRequest
+from ._untag_resources_response import UntagResourcesResponse
 from ._update_role_request import UpdateRoleRequest
 from ._update_role_response import UpdateRoleResponse
 from ._update_role_users_request import UpdateRoleUsersRequest
@@ -279,6 +284,7 @@ __all__ = [
     PrepayResource,
     ReceivedShare,
     Receiver,
+    ResourceTag,
     Role,
     RowFilter,
     Schema,
@@ -292,6 +298,7 @@ __all__ = [
     TableCompactionHistory,
     TableSnapshot,
     TableSummary,
+    TagResource,
     Transform,
     TransformInput,
     User,
@@ -467,6 +474,9 @@ __all__ = [
     SubmitQueryResponseBody,
     SubmitQueryResponse,
     SubscribeResponse,
+    UntagResourcesRequest,
+    UntagResourcesShrinkRequest,
+    UntagResourcesResponse,
     UpdateRoleRequest,
     UpdateRoleResponse,
     UpdateRoleUsersRequest,

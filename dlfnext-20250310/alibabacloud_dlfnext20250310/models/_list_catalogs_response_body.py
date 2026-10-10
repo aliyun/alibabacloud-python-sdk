@@ -14,11 +14,11 @@ class ListCatalogsResponseBody(DaraModel):
         next_page_token: str = None,
         prepay_resource: List[main_models.PrepayResource] = None,
     ):
-        # A list of catalogs.
+        # The list of catalogs.
         self.catalogs = catalogs
-        # The token to retrieve the next page of results. If this parameter is null, all results have been returned.
+        # The pagination token used to retrieve the next page of results. A null value indicates that the current query has reached the last page of results.
         self.next_page_token = next_page_token
-        # A list of subscription computing resources.
+        # The list of subscription compute resources.
         self.prepay_resource = prepay_resource
 
     def validate(self):
