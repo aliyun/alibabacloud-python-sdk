@@ -32,6 +32,10 @@ from ._create_credential_request import CreateCredentialRequest
 from ._create_credential_shrink_request import CreateCredentialShrinkRequest
 from ._create_credential_response_body import CreateCredentialResponseBody
 from ._create_credential_response import CreateCredentialResponse
+from ._create_custom_agent_request import CreateCustomAgentRequest
+from ._create_custom_agent_shrink_request import CreateCustomAgentShrinkRequest
+from ._create_custom_agent_response_body import CreateCustomAgentResponseBody
+from ._create_custom_agent_response import CreateCustomAgentResponse
 from ._create_external_agent_request import CreateExternalAgentRequest
 from ._create_external_agent_shrink_request import CreateExternalAgentShrinkRequest
 from ._create_external_agent_response_body import CreateExternalAgentResponseBody
@@ -91,6 +95,9 @@ from ._delete_agent_spec_version_response import DeleteAgentSpecVersionResponse
 from ._delete_credential_request import DeleteCredentialRequest
 from ._delete_credential_response_body import DeleteCredentialResponseBody
 from ._delete_credential_response import DeleteCredentialResponse
+from ._delete_custom_agent_request import DeleteCustomAgentRequest
+from ._delete_custom_agent_response_body import DeleteCustomAgentResponseBody
+from ._delete_custom_agent_response import DeleteCustomAgentResponse
 from ._delete_external_agent_request import DeleteExternalAgentRequest
 from ._delete_external_agent_response_body import DeleteExternalAgentResponseBody
 from ._delete_external_agent_response import DeleteExternalAgentResponse
@@ -159,6 +166,9 @@ from ._get_agent_spec_version_response import GetAgentSpecVersionResponse
 from ._get_credential_request import GetCredentialRequest
 from ._get_credential_response_body import GetCredentialResponseBody
 from ._get_credential_response import GetCredentialResponse
+from ._get_custom_agent_request import GetCustomAgentRequest
+from ._get_custom_agent_response_body import GetCustomAgentResponseBody
+from ._get_custom_agent_response import GetCustomAgentResponse
 from ._get_external_agent_request import GetExternalAgentRequest
 from ._get_external_agent_response_body import GetExternalAgentResponseBody
 from ._get_external_agent_response import GetExternalAgentResponse
@@ -243,6 +253,9 @@ from ._list_connectors_response import ListConnectorsResponse
 from ._list_credentials_request import ListCredentialsRequest
 from ._list_credentials_response_body import ListCredentialsResponseBody
 from ._list_credentials_response import ListCredentialsResponse
+from ._list_custom_agents_request import ListCustomAgentsRequest
+from ._list_custom_agents_response_body import ListCustomAgentsResponseBody
+from ._list_custom_agents_response import ListCustomAgentsResponse
 from ._list_external_agents_request import ListExternalAgentsRequest
 from ._list_external_agents_response_body import ListExternalAgentsResponseBody
 from ._list_external_agents_response import ListExternalAgentsResponse
@@ -349,6 +362,10 @@ from ._update_credential_request import UpdateCredentialRequest
 from ._update_credential_shrink_request import UpdateCredentialShrinkRequest
 from ._update_credential_response_body import UpdateCredentialResponseBody
 from ._update_credential_response import UpdateCredentialResponse
+from ._update_custom_agent_request import UpdateCustomAgentRequest
+from ._update_custom_agent_shrink_request import UpdateCustomAgentShrinkRequest
+from ._update_custom_agent_response_body import UpdateCustomAgentResponseBody
+from ._update_custom_agent_response import UpdateCustomAgentResponse
 from ._update_external_agent_request import UpdateExternalAgentRequest
 from ._update_external_agent_shrink_request import UpdateExternalAgentShrinkRequest
 from ._update_external_agent_response_body import UpdateExternalAgentResponseBody
@@ -458,6 +475,47 @@ from ._create_credential_request import CreateCredentialRequestBodyResourceRefs
 from ._create_credential_request import CreateCredentialRequestBody
 from ._create_credential_response_body import CreateCredentialResponseBodyDataResourceRefs
 from ._create_credential_response_body import CreateCredentialResponseBodyData
+from ._create_custom_agent_request import CreateCustomAgentRequestBodyAgenticFsMounts
+from ._create_custom_agent_request import CreateCustomAgentRequestBodyArtifactCode
+from ._create_custom_agent_request import CreateCustomAgentRequestBodyArtifactContainer
+from ._create_custom_agent_request import CreateCustomAgentRequestBodyArtifact
+from ._create_custom_agent_request import CreateCustomAgentRequestBodyEnvironmentVariables
+from ._create_custom_agent_request import CreateCustomAgentRequestBodyEnvironment
+from ._create_custom_agent_request import CreateCustomAgentRequestBodyHealthCheck
+from ._create_custom_agent_request import CreateCustomAgentRequestBodyLoggingSls
+from ._create_custom_agent_request import CreateCustomAgentRequestBodyLogging
+from ._create_custom_agent_request import CreateCustomAgentRequestBodyNetworkAccessInternet
+from ._create_custom_agent_request import CreateCustomAgentRequestBodyNetworkAccessVpc
+from ._create_custom_agent_request import CreateCustomAgentRequestBodyNetwork
+from ._create_custom_agent_request import CreateCustomAgentRequestBodyOssMounts
+from ._create_custom_agent_request import CreateCustomAgentRequestBodyProtocolPaths
+from ._create_custom_agent_request import CreateCustomAgentRequestBodyProtocol
+from ._create_custom_agent_request import CreateCustomAgentRequestBodyRuntimeCompute
+from ._create_custom_agent_request import CreateCustomAgentRequestBodyRuntimeHpa
+from ._create_custom_agent_request import CreateCustomAgentRequestBodyRuntimeSessionPolicy
+from ._create_custom_agent_request import CreateCustomAgentRequestBodyRuntime
+from ._create_custom_agent_request import CreateCustomAgentRequestBody
+from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataAgenticFsMounts
+from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataArtifactCode
+from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataArtifactContainer
+from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataArtifact
+from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataEnvironmentVariables
+from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataEnvironment
+from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataHealthCheck
+from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataLatestExecutionError
+from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataLoggingSls
+from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataLogging
+from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataNetworkAccessInternet
+from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataNetworkAccessVpc
+from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataNetwork
+from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataOssMounts
+from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataProtocolPaths
+from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataProtocol
+from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataRuntimeCompute
+from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataRuntimeHpa
+from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataRuntimeSessionPolicy
+from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataRuntime
+from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyData
 from ._create_external_agent_request import CreateExternalAgentRequestBodyModelQuota
 from ._create_external_agent_request import CreateExternalAgentRequestBodyModel
 from ._create_external_agent_request import CreateExternalAgentRequestBodySkills
@@ -599,6 +657,7 @@ from ._create_workspace_response_body import CreateWorkspaceResponseBodyData
 from ._debug_model_request import DebugModelRequestBody
 from ._debug_model_response_body import DebugModelResponseBodyData
 from ._delete_credential_response_body import DeleteCredentialResponseBodyData
+from ._delete_custom_agent_response_body import DeleteCustomAgentResponseBodyData
 from ._delete_external_agent_response_body import DeleteExternalAgentResponseBodyData
 from ._delete_identity_provider_response_body import DeleteIdentityProviderResponseBodyData
 from ._delete_managed_agent_response_body import DeleteManagedAgentResponseBodyData
@@ -625,6 +684,27 @@ from ._get_agent_spec_version_response_body import GetAgentSpecVersionResponseBo
 from ._get_credential_response_body import GetCredentialResponseBodyDataBoundAgents
 from ._get_credential_response_body import GetCredentialResponseBodyDataResourceRefs
 from ._get_credential_response_body import GetCredentialResponseBodyData
+from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataAgenticFsMounts
+from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataArtifactCode
+from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataArtifactContainer
+from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataArtifact
+from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataEnvironmentVariables
+from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataEnvironment
+from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataHealthCheck
+from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataLatestExecutionError
+from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataLoggingSls
+from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataLogging
+from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataNetworkAccessInternet
+from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataNetworkAccessVpc
+from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataNetwork
+from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataOssMounts
+from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataProtocolPaths
+from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataProtocol
+from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataRuntimeCompute
+from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataRuntimeHpa
+from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataRuntimeSessionPolicy
+from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataRuntime
+from ._get_custom_agent_response_body import GetCustomAgentResponseBodyData
 from ._get_external_agent_response_body import GetExternalAgentResponseBodyDataExternalAgentStatus
 from ._get_external_agent_response_body import GetExternalAgentResponseBodyDataModelQuota
 from ._get_external_agent_response_body import GetExternalAgentResponseBodyDataModel
@@ -776,6 +856,9 @@ from ._list_connector_models_response_body import ListConnectorModelsResponseBod
 from ._list_connectors_response_body import ListConnectorsResponseBodyItems
 from ._list_credentials_response_body import ListCredentialsResponseBodyItemsResourceRefs
 from ._list_credentials_response_body import ListCredentialsResponseBodyItems
+from ._list_custom_agents_response_body import ListCustomAgentsResponseBodyItemsProtocolPaths
+from ._list_custom_agents_response_body import ListCustomAgentsResponseBodyItemsProtocol
+from ._list_custom_agents_response_body import ListCustomAgentsResponseBodyItems
 from ._list_external_agents_response_body import ListExternalAgentsResponseBodyItems
 from ._list_identity_providers_response_body import ListIdentityProvidersResponseBodyItemsMetadata
 from ._list_identity_providers_response_body import ListIdentityProvidersResponseBodyItems
@@ -855,6 +938,47 @@ from ._update_credential_request import UpdateCredentialRequestBodyResourceRefs
 from ._update_credential_request import UpdateCredentialRequestBody
 from ._update_credential_response_body import UpdateCredentialResponseBodyDataResourceRefs
 from ._update_credential_response_body import UpdateCredentialResponseBodyData
+from ._update_custom_agent_request import UpdateCustomAgentRequestBodyAgenticFsMounts
+from ._update_custom_agent_request import UpdateCustomAgentRequestBodyArtifactCode
+from ._update_custom_agent_request import UpdateCustomAgentRequestBodyArtifactContainer
+from ._update_custom_agent_request import UpdateCustomAgentRequestBodyArtifact
+from ._update_custom_agent_request import UpdateCustomAgentRequestBodyEnvironmentVariables
+from ._update_custom_agent_request import UpdateCustomAgentRequestBodyEnvironment
+from ._update_custom_agent_request import UpdateCustomAgentRequestBodyHealthCheck
+from ._update_custom_agent_request import UpdateCustomAgentRequestBodyLoggingSls
+from ._update_custom_agent_request import UpdateCustomAgentRequestBodyLogging
+from ._update_custom_agent_request import UpdateCustomAgentRequestBodyNetworkAccessInternet
+from ._update_custom_agent_request import UpdateCustomAgentRequestBodyNetworkAccessVpc
+from ._update_custom_agent_request import UpdateCustomAgentRequestBodyNetwork
+from ._update_custom_agent_request import UpdateCustomAgentRequestBodyOssMounts
+from ._update_custom_agent_request import UpdateCustomAgentRequestBodyProtocolPaths
+from ._update_custom_agent_request import UpdateCustomAgentRequestBodyProtocol
+from ._update_custom_agent_request import UpdateCustomAgentRequestBodyRuntimeCompute
+from ._update_custom_agent_request import UpdateCustomAgentRequestBodyRuntimeHpa
+from ._update_custom_agent_request import UpdateCustomAgentRequestBodyRuntimeSessionPolicy
+from ._update_custom_agent_request import UpdateCustomAgentRequestBodyRuntime
+from ._update_custom_agent_request import UpdateCustomAgentRequestBody
+from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataAgenticFsMounts
+from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataArtifactCode
+from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataArtifactContainer
+from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataArtifact
+from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataEnvironmentVariables
+from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataEnvironment
+from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataHealthCheck
+from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataLatestExecutionError
+from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataLoggingSls
+from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataLogging
+from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataNetworkAccessInternet
+from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataNetworkAccessVpc
+from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataNetwork
+from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataOssMounts
+from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataProtocolPaths
+from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataProtocol
+from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataRuntimeCompute
+from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataRuntimeHpa
+from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataRuntimeSessionPolicy
+from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataRuntime
+from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyData
 from ._update_external_agent_request import UpdateExternalAgentRequestBodyModelQuota
 from ._update_external_agent_request import UpdateExternalAgentRequestBodyModel
 from ._update_external_agent_request import UpdateExternalAgentRequestBodySkills
@@ -1048,6 +1172,10 @@ __all__ = [
     CreateCredentialShrinkRequest,
     CreateCredentialResponseBody,
     CreateCredentialResponse,
+    CreateCustomAgentRequest,
+    CreateCustomAgentShrinkRequest,
+    CreateCustomAgentResponseBody,
+    CreateCustomAgentResponse,
     CreateExternalAgentRequest,
     CreateExternalAgentShrinkRequest,
     CreateExternalAgentResponseBody,
@@ -1107,6 +1235,9 @@ __all__ = [
     DeleteCredentialRequest,
     DeleteCredentialResponseBody,
     DeleteCredentialResponse,
+    DeleteCustomAgentRequest,
+    DeleteCustomAgentResponseBody,
+    DeleteCustomAgentResponse,
     DeleteExternalAgentRequest,
     DeleteExternalAgentResponseBody,
     DeleteExternalAgentResponse,
@@ -1175,6 +1306,9 @@ __all__ = [
     GetCredentialRequest,
     GetCredentialResponseBody,
     GetCredentialResponse,
+    GetCustomAgentRequest,
+    GetCustomAgentResponseBody,
+    GetCustomAgentResponse,
     GetExternalAgentRequest,
     GetExternalAgentResponseBody,
     GetExternalAgentResponse,
@@ -1259,6 +1393,9 @@ __all__ = [
     ListCredentialsRequest,
     ListCredentialsResponseBody,
     ListCredentialsResponse,
+    ListCustomAgentsRequest,
+    ListCustomAgentsResponseBody,
+    ListCustomAgentsResponse,
     ListExternalAgentsRequest,
     ListExternalAgentsResponseBody,
     ListExternalAgentsResponse,
@@ -1365,6 +1502,10 @@ __all__ = [
     UpdateCredentialShrinkRequest,
     UpdateCredentialResponseBody,
     UpdateCredentialResponse,
+    UpdateCustomAgentRequest,
+    UpdateCustomAgentShrinkRequest,
+    UpdateCustomAgentResponseBody,
+    UpdateCustomAgentResponse,
     UpdateExternalAgentRequest,
     UpdateExternalAgentShrinkRequest,
     UpdateExternalAgentResponseBody,
@@ -1474,6 +1615,47 @@ __all__ = [
     CreateCredentialRequestBody,
     CreateCredentialResponseBodyDataResourceRefs,
     CreateCredentialResponseBodyData,
+    CreateCustomAgentRequestBodyAgenticFsMounts,
+    CreateCustomAgentRequestBodyArtifactCode,
+    CreateCustomAgentRequestBodyArtifactContainer,
+    CreateCustomAgentRequestBodyArtifact,
+    CreateCustomAgentRequestBodyEnvironmentVariables,
+    CreateCustomAgentRequestBodyEnvironment,
+    CreateCustomAgentRequestBodyHealthCheck,
+    CreateCustomAgentRequestBodyLoggingSls,
+    CreateCustomAgentRequestBodyLogging,
+    CreateCustomAgentRequestBodyNetworkAccessInternet,
+    CreateCustomAgentRequestBodyNetworkAccessVpc,
+    CreateCustomAgentRequestBodyNetwork,
+    CreateCustomAgentRequestBodyOssMounts,
+    CreateCustomAgentRequestBodyProtocolPaths,
+    CreateCustomAgentRequestBodyProtocol,
+    CreateCustomAgentRequestBodyRuntimeCompute,
+    CreateCustomAgentRequestBodyRuntimeHpa,
+    CreateCustomAgentRequestBodyRuntimeSessionPolicy,
+    CreateCustomAgentRequestBodyRuntime,
+    CreateCustomAgentRequestBody,
+    CreateCustomAgentResponseBodyDataAgenticFsMounts,
+    CreateCustomAgentResponseBodyDataArtifactCode,
+    CreateCustomAgentResponseBodyDataArtifactContainer,
+    CreateCustomAgentResponseBodyDataArtifact,
+    CreateCustomAgentResponseBodyDataEnvironmentVariables,
+    CreateCustomAgentResponseBodyDataEnvironment,
+    CreateCustomAgentResponseBodyDataHealthCheck,
+    CreateCustomAgentResponseBodyDataLatestExecutionError,
+    CreateCustomAgentResponseBodyDataLoggingSls,
+    CreateCustomAgentResponseBodyDataLogging,
+    CreateCustomAgentResponseBodyDataNetworkAccessInternet,
+    CreateCustomAgentResponseBodyDataNetworkAccessVpc,
+    CreateCustomAgentResponseBodyDataNetwork,
+    CreateCustomAgentResponseBodyDataOssMounts,
+    CreateCustomAgentResponseBodyDataProtocolPaths,
+    CreateCustomAgentResponseBodyDataProtocol,
+    CreateCustomAgentResponseBodyDataRuntimeCompute,
+    CreateCustomAgentResponseBodyDataRuntimeHpa,
+    CreateCustomAgentResponseBodyDataRuntimeSessionPolicy,
+    CreateCustomAgentResponseBodyDataRuntime,
+    CreateCustomAgentResponseBodyData,
     CreateExternalAgentRequestBodyModelQuota,
     CreateExternalAgentRequestBodyModel,
     CreateExternalAgentRequestBodySkills,
@@ -1615,6 +1797,7 @@ __all__ = [
     DebugModelRequestBody,
     DebugModelResponseBodyData,
     DeleteCredentialResponseBodyData,
+    DeleteCustomAgentResponseBodyData,
     DeleteExternalAgentResponseBodyData,
     DeleteIdentityProviderResponseBodyData,
     DeleteManagedAgentResponseBodyData,
@@ -1641,6 +1824,27 @@ __all__ = [
     GetCredentialResponseBodyDataBoundAgents,
     GetCredentialResponseBodyDataResourceRefs,
     GetCredentialResponseBodyData,
+    GetCustomAgentResponseBodyDataAgenticFsMounts,
+    GetCustomAgentResponseBodyDataArtifactCode,
+    GetCustomAgentResponseBodyDataArtifactContainer,
+    GetCustomAgentResponseBodyDataArtifact,
+    GetCustomAgentResponseBodyDataEnvironmentVariables,
+    GetCustomAgentResponseBodyDataEnvironment,
+    GetCustomAgentResponseBodyDataHealthCheck,
+    GetCustomAgentResponseBodyDataLatestExecutionError,
+    GetCustomAgentResponseBodyDataLoggingSls,
+    GetCustomAgentResponseBodyDataLogging,
+    GetCustomAgentResponseBodyDataNetworkAccessInternet,
+    GetCustomAgentResponseBodyDataNetworkAccessVpc,
+    GetCustomAgentResponseBodyDataNetwork,
+    GetCustomAgentResponseBodyDataOssMounts,
+    GetCustomAgentResponseBodyDataProtocolPaths,
+    GetCustomAgentResponseBodyDataProtocol,
+    GetCustomAgentResponseBodyDataRuntimeCompute,
+    GetCustomAgentResponseBodyDataRuntimeHpa,
+    GetCustomAgentResponseBodyDataRuntimeSessionPolicy,
+    GetCustomAgentResponseBodyDataRuntime,
+    GetCustomAgentResponseBodyData,
     GetExternalAgentResponseBodyDataExternalAgentStatus,
     GetExternalAgentResponseBodyDataModelQuota,
     GetExternalAgentResponseBodyDataModel,
@@ -1792,6 +1996,9 @@ __all__ = [
     ListConnectorsResponseBodyItems,
     ListCredentialsResponseBodyItemsResourceRefs,
     ListCredentialsResponseBodyItems,
+    ListCustomAgentsResponseBodyItemsProtocolPaths,
+    ListCustomAgentsResponseBodyItemsProtocol,
+    ListCustomAgentsResponseBodyItems,
     ListExternalAgentsResponseBodyItems,
     ListIdentityProvidersResponseBodyItemsMetadata,
     ListIdentityProvidersResponseBodyItems,
@@ -1871,6 +2078,47 @@ __all__ = [
     UpdateCredentialRequestBody,
     UpdateCredentialResponseBodyDataResourceRefs,
     UpdateCredentialResponseBodyData,
+    UpdateCustomAgentRequestBodyAgenticFsMounts,
+    UpdateCustomAgentRequestBodyArtifactCode,
+    UpdateCustomAgentRequestBodyArtifactContainer,
+    UpdateCustomAgentRequestBodyArtifact,
+    UpdateCustomAgentRequestBodyEnvironmentVariables,
+    UpdateCustomAgentRequestBodyEnvironment,
+    UpdateCustomAgentRequestBodyHealthCheck,
+    UpdateCustomAgentRequestBodyLoggingSls,
+    UpdateCustomAgentRequestBodyLogging,
+    UpdateCustomAgentRequestBodyNetworkAccessInternet,
+    UpdateCustomAgentRequestBodyNetworkAccessVpc,
+    UpdateCustomAgentRequestBodyNetwork,
+    UpdateCustomAgentRequestBodyOssMounts,
+    UpdateCustomAgentRequestBodyProtocolPaths,
+    UpdateCustomAgentRequestBodyProtocol,
+    UpdateCustomAgentRequestBodyRuntimeCompute,
+    UpdateCustomAgentRequestBodyRuntimeHpa,
+    UpdateCustomAgentRequestBodyRuntimeSessionPolicy,
+    UpdateCustomAgentRequestBodyRuntime,
+    UpdateCustomAgentRequestBody,
+    UpdateCustomAgentResponseBodyDataAgenticFsMounts,
+    UpdateCustomAgentResponseBodyDataArtifactCode,
+    UpdateCustomAgentResponseBodyDataArtifactContainer,
+    UpdateCustomAgentResponseBodyDataArtifact,
+    UpdateCustomAgentResponseBodyDataEnvironmentVariables,
+    UpdateCustomAgentResponseBodyDataEnvironment,
+    UpdateCustomAgentResponseBodyDataHealthCheck,
+    UpdateCustomAgentResponseBodyDataLatestExecutionError,
+    UpdateCustomAgentResponseBodyDataLoggingSls,
+    UpdateCustomAgentResponseBodyDataLogging,
+    UpdateCustomAgentResponseBodyDataNetworkAccessInternet,
+    UpdateCustomAgentResponseBodyDataNetworkAccessVpc,
+    UpdateCustomAgentResponseBodyDataNetwork,
+    UpdateCustomAgentResponseBodyDataOssMounts,
+    UpdateCustomAgentResponseBodyDataProtocolPaths,
+    UpdateCustomAgentResponseBodyDataProtocol,
+    UpdateCustomAgentResponseBodyDataRuntimeCompute,
+    UpdateCustomAgentResponseBodyDataRuntimeHpa,
+    UpdateCustomAgentResponseBodyDataRuntimeSessionPolicy,
+    UpdateCustomAgentResponseBodyDataRuntime,
+    UpdateCustomAgentResponseBodyData,
     UpdateExternalAgentRequestBodyModelQuota,
     UpdateExternalAgentRequestBodyModel,
     UpdateExternalAgentRequestBodySkills,

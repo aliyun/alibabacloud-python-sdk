@@ -685,6 +685,102 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_credential_with_options_async(workspace_id, request, headers, runtime)
 
+    def create_custom_agent_with_options(
+        self,
+        workspace_id: str,
+        tmp_req: main_models.CreateCustomAgentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCustomAgentResponse:
+        tmp_req.validate()
+        request = main_models.CreateCustomAgentShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCustomAgent',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/custom-agents',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCustomAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_custom_agent_with_options_async(
+        self,
+        workspace_id: str,
+        tmp_req: main_models.CreateCustomAgentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCustomAgentResponse:
+        tmp_req.validate()
+        request = main_models.CreateCustomAgentShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCustomAgent',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/custom-agents',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCustomAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_custom_agent(
+        self,
+        workspace_id: str,
+        request: main_models.CreateCustomAgentRequest,
+    ) -> main_models.CreateCustomAgentResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_custom_agent_with_options(workspace_id, request, headers, runtime)
+
+    async def create_custom_agent_async(
+        self,
+        workspace_id: str,
+        request: main_models.CreateCustomAgentRequest,
+    ) -> main_models.CreateCustomAgentResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_custom_agent_with_options_async(workspace_id, request, headers, runtime)
+
     def create_external_agent_with_options(
         self,
         workspace_id: str,
@@ -2124,6 +2220,82 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_credential_with_options_async(workspace_id, credential_id, request, headers, runtime)
+
+    def delete_custom_agent_with_options(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        request: main_models.DeleteCustomAgentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCustomAgentResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCustomAgent',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/custom-agents/{DaraURL.percent_encode(agent_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCustomAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_custom_agent_with_options_async(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        request: main_models.DeleteCustomAgentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCustomAgentResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCustomAgent',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/custom-agents/{DaraURL.percent_encode(agent_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCustomAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_custom_agent(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        request: main_models.DeleteCustomAgentRequest,
+    ) -> main_models.DeleteCustomAgentResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_custom_agent_with_options(workspace_id, agent_id, request, headers, runtime)
+
+    async def delete_custom_agent_async(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        request: main_models.DeleteCustomAgentRequest,
+    ) -> main_models.DeleteCustomAgentResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_custom_agent_with_options_async(workspace_id, agent_id, request, headers, runtime)
 
     def delete_external_agent_with_options(
         self,
@@ -3892,6 +4064,82 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_credential_with_options_async(workspace_id, credential_id, request, headers, runtime)
+
+    def get_custom_agent_with_options(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        request: main_models.GetCustomAgentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCustomAgentResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCustomAgent',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/custom-agents/{DaraURL.percent_encode(agent_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCustomAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_custom_agent_with_options_async(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        request: main_models.GetCustomAgentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCustomAgentResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCustomAgent',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/custom-agents/{DaraURL.percent_encode(agent_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCustomAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_custom_agent(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        request: main_models.GetCustomAgentRequest,
+    ) -> main_models.GetCustomAgentResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_custom_agent_with_options(workspace_id, agent_id, request, headers, runtime)
+
+    async def get_custom_agent_async(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        request: main_models.GetCustomAgentRequest,
+    ) -> main_models.GetCustomAgentResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_custom_agent_with_options_async(workspace_id, agent_id, request, headers, runtime)
 
     def get_external_agent_with_options(
         self,
@@ -6136,6 +6384,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_credentials_with_options_async(workspace_id, request, headers, runtime)
+
+    def list_custom_agents_with_options(
+        self,
+        workspace_id: str,
+        request: main_models.ListCustomAgentsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCustomAgentsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCustomAgents',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/custom-agents',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCustomAgentsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_custom_agents_with_options_async(
+        self,
+        workspace_id: str,
+        request: main_models.ListCustomAgentsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCustomAgentsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCustomAgents',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/custom-agents',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCustomAgentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_custom_agents(
+        self,
+        workspace_id: str,
+        request: main_models.ListCustomAgentsRequest,
+    ) -> main_models.ListCustomAgentsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_custom_agents_with_options(workspace_id, request, headers, runtime)
+
+    async def list_custom_agents_async(
+        self,
+        workspace_id: str,
+        request: main_models.ListCustomAgentsRequest,
+    ) -> main_models.ListCustomAgentsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_custom_agents_with_options_async(workspace_id, request, headers, runtime)
 
     def list_external_agents_with_options(
         self,
@@ -9016,6 +9348,106 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_credential_with_options_async(workspace_id, credential_id, request, headers, runtime)
+
+    def update_custom_agent_with_options(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        tmp_req: main_models.UpdateCustomAgentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCustomAgentResponse:
+        tmp_req.validate()
+        request = main_models.UpdateCustomAgentShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateCustomAgent',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/custom-agents/{DaraURL.percent_encode(agent_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateCustomAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_custom_agent_with_options_async(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        tmp_req: main_models.UpdateCustomAgentRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCustomAgentResponse:
+        tmp_req.validate()
+        request = main_models.UpdateCustomAgentShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateCustomAgent',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/custom-agents/{DaraURL.percent_encode(agent_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateCustomAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_custom_agent(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        request: main_models.UpdateCustomAgentRequest,
+    ) -> main_models.UpdateCustomAgentResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_custom_agent_with_options(workspace_id, agent_id, request, headers, runtime)
+
+    async def update_custom_agent_async(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        request: main_models.UpdateCustomAgentRequest,
+    ) -> main_models.UpdateCustomAgentResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_custom_agent_with_options_async(workspace_id, agent_id, request, headers, runtime)
 
     def update_external_agent_with_options(
         self,

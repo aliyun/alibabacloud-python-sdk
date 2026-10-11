@@ -1,3 +1,11 @@
+2026-10-11 Version: 2.2.0
+- Support API CreateCustomAgent.
+- Support API DeleteCustomAgent.
+- Support API GetCustomAgent.
+- Support API ListCustomAgents.
+- Support API UpdateCustomAgent.
+
+
 2026-09-22 Version: 2.1.1
 - Update API CreateManagedAgent: add request parameters body.subAgents.$.skills.
 - Update API CreateManagedAgent: add response parameters Body.data.subAgents.$.skills.
