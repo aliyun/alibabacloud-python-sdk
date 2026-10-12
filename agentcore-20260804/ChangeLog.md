@@ -1,3 +1,29 @@
+2026-10-12 Version: 2.2.1
+- Update API CreateExternalAgent: add request parameters body.skills.$.sourceType.
+- Update API CreateExternalAgent: add request parameters body.skills.$.versionSelector.
+- Update API CreateExternalAgent: add response parameters Body.data.configuredSkills.
+- Update API CreateExternalAgent: add response parameters Body.data.skills.$.appliedVersion.
+- Update API CreateExternalAgent: add response parameters Body.data.skills.$.fromTemplate.
+- Update API CreateExternalAgent: add response parameters Body.data.skills.$.resolvedVersion.
+- Update API CreateExternalAgent: add response parameters Body.data.skills.$.sourceType.
+- Update API CreateExternalAgent: add response parameters Body.data.skills.$.versionSelector.
+- Update API GetExternalAgent: add response parameters Body.data.configuredSkills.
+- Update API GetExternalAgent: add response parameters Body.data.skills.$.appliedVersion.
+- Update API GetExternalAgent: add response parameters Body.data.skills.$.fromTemplate.
+- Update API GetExternalAgent: add response parameters Body.data.skills.$.resolvedVersion.
+- Update API GetExternalAgent: add response parameters Body.data.skills.$.sourceType.
+- Update API GetExternalAgent: add response parameters Body.data.skills.$.versionSelector.
+- Update API ListUsers: add request parameters email.
+- Update API UpdateExternalAgent: add request parameters body.skills.$.sourceType.
+- Update API UpdateExternalAgent: add request parameters body.skills.$.versionSelector.
+- Update API UpdateExternalAgent: add response parameters Body.data.configuredSkills.
+- Update API UpdateExternalAgent: add response parameters Body.data.skills.$.appliedVersion.
+- Update API UpdateExternalAgent: add response parameters Body.data.skills.$.fromTemplate.
+- Update API UpdateExternalAgent: add response parameters Body.data.skills.$.resolvedVersion.
+- Update API UpdateExternalAgent: add response parameters Body.data.skills.$.sourceType.
+- Update API UpdateExternalAgent: add response parameters Body.data.skills.$.versionSelector.
+
+
 2026-10-11 Version: 2.2.0
 - Support API CreateCustomAgent.
 - Support API DeleteCustomAgent.

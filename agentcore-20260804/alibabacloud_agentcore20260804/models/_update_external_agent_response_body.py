@@ -17,17 +17,17 @@ class UpdateExternalAgentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The business status code. The value is SUCCESS when the request succeeds.
+        # The business status code. The value is SUCCESS if the request is successful.
         self.code = code
         # The details of the updated external agent.
         self.data = data
-        # The HTTP status code. The value is 200 when the request succeeds.
+        # The HTTP status code. A value of 200 indicates success.
         self.http_status_code = http_status_code
         # The request processing result message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -86,6 +86,7 @@ class UpdateExternalAgentResponseBodyData(DaraModel):
     def __init__(
         self,
         agent_id: str = None,
+        configured_skills: List[main_models.UpdateExternalAgentResponseBodyDataConfiguredSkills] = None,
         create_mode: str = None,
         created_at: str = None,
         deploy_type: str = None,
@@ -108,6 +109,8 @@ class UpdateExternalAgentResponseBodyData(DaraModel):
     ):
         # The external agent ID.
         self.agent_id = agent_id
+        # Includes only the skills added or overridden by the user, excluding inherited items from templates. The resource model reads this field to preserve update semantics. Creation and update operations still use the skills in the request.
+        self.configured_skills = configured_skills
         # The creation mode.
         self.create_mode = create_mode
         # The creation time in RFC 3339 format.
@@ -118,23 +121,23 @@ class UpdateExternalAgentResponseBodyData(DaraModel):
         self.description = description
         # The runtime status information reported by the external agent.
         self.external_agent_status = external_agent_status
-        # The agent instruction that guides the behavior of the agent.
+        # The agent instructions used to guide the behavior of the agent.
         self.instruction = instruction
         # The latest specification version number.
         self.latest_spec_version = latest_spec_version
         # The processing status of the latest specification version. Valid values:
-        # - pending: Pending.
-        # - processing: Processing.
-        # - waiting_retry: Waiting for retry.
-        # - succeeded: Succeeded.
-        # - failed: Failed.
-        # - superseded: Superseded by a newer version.
+        # - pending: pending
+        # - processing: processing
+        # - waiting_retry: waiting for retry
+        # - succeeded: succeeded
+        # - failed: failed
+        # - superseded: superseded by a new version
         self.latest_version_status = latest_version_status
         # The model configuration. Available only when modelSource is set to PLATFORM.
         self.model = model
-        # The model configuration source. PLATFORM indicates that the platform parses and delivers the model configuration. RUNTIME indicates that the external runtime manages the model independently, and the model parameter cannot be specified at the same time. Valid values:
-        # - PLATFORM: platform model.
-        # - RUNTIME: runtime model.
+        # The source of the model configuration. PLATFORM indicates that the platform parses and delivers the model configuration. RUNTIME indicates that the external runtime manages the model independently, and the model parameter cannot be passed at the same time. Valid values:
+        # - PLATFORM: Platform model.
+        # - RUNTIME: Runtime model.
         self.model_source = model_source
         # The name of the external agent.
         self.name = name
@@ -144,13 +147,7 @@ class UpdateExternalAgentResponseBodyData(DaraModel):
         self.runtime = runtime
         # The list of skill configurations.
         self.skills = skills
-        # The external agent status. Valid values:
-        # - Creating: Being created.
-        # - Running: Running.
-        # - Failed: Failed.
-        # - Updating: Being updated.
-        # - Deleting: Being deleted.
-        # - Deleted: Deleted.
+        # The status of the external agent. Valid values: Creating, Running, Failed, Updating, Deleting, and Deleted.
         self.status = status
         # The agent template configuration.
         self.template = template
@@ -162,6 +159,10 @@ class UpdateExternalAgentResponseBodyData(DaraModel):
         self.workspace_id = workspace_id
 
     def validate(self):
+        if self.configured_skills:
+            for v1 in self.configured_skills:
+                 if v1:
+                    v1.validate()
         if self.external_agent_status:
             self.external_agent_status.validate()
         if self.model:
@@ -184,6 +185,11 @@ class UpdateExternalAgentResponseBodyData(DaraModel):
             result = _map
         if self.agent_id is not None:
             result['agentId'] = self.agent_id
+
+        result['configuredSkills'] = []
+        if self.configured_skills is not None:
+            for k1 in self.configured_skills:
+                result['configuredSkills'].append(k1.to_map() if k1 else None)
 
         if self.create_mode is not None:
             result['createMode'] = self.create_mode
@@ -252,6 +258,12 @@ class UpdateExternalAgentResponseBodyData(DaraModel):
         m = m or dict()
         if m.get('agentId') is not None:
             self.agent_id = m.get('agentId')
+
+        self.configured_skills = []
+        if m.get('configuredSkills') is not None:
+            for k1 in m.get('configuredSkills'):
+                temp_model = main_models.UpdateExternalAgentResponseBodyDataConfiguredSkills()
+                self.configured_skills.append(temp_model.from_map(k1))
 
         if m.get('createMode') is not None:
             self.create_mode = m.get('createMode')
@@ -399,11 +411,11 @@ class UpdateExternalAgentResponseBodyDataTemplateAiRegistry(DaraModel):
         name: str = None,
         version: str = None,
     ):
-        # The name of the template in AI Registry.
+        # The name of the template in the AI Registry.
         # 
         # This parameter is required.
         self.name = name
-        # The version of the template in AI Registry.
+        # The version of the template in the AI Registry.
         # 
         # This parameter is required.
         self.version = version
@@ -437,15 +449,101 @@ class UpdateExternalAgentResponseBodyDataTemplateAiRegistry(DaraModel):
 class UpdateExternalAgentResponseBodyDataSkills(DaraModel):
     def __init__(
         self,
+        applied_version: str = None,
+        from_template: bool = None,
         name: str = None,
+        resolved_version: str = None,
+        source_type: str = None,
         version: str = None,
+        version_selector: main_models.UpdateExternalAgentResponseBodyDataSkillsVersionSelector = None,
     ):
+        # The applied version in the runtime. This is a read-only field.
+        self.applied_version = applied_version
+        # Indicates whether the skill is from a fixed template. This is a read-only field. Template items cannot be removed.
+        self.from_template = from_template
         # The skill name.
-        # 
-        # This parameter is required.
         self.name = name
+        # The current target version. This is a read-only field.
+        self.resolved_version = resolved_version
+        # The source type of the skill. Valid values:
+        # - REFERENCE: References the AI Registry.
+        # - STATIC: Statically provided with the package.
+        self.source_type = source_type
         # The skill version.
         self.version = version
+        # The referenced version selector, which defaults to LABEL/latest if omitted.
+        self.version_selector = version_selector
+
+    def validate(self):
+        if self.version_selector:
+            self.version_selector.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.applied_version is not None:
+            result['appliedVersion'] = self.applied_version
+
+        if self.from_template is not None:
+            result['fromTemplate'] = self.from_template
+
+        if self.name is not None:
+            result['name'] = self.name
+
+        if self.resolved_version is not None:
+            result['resolvedVersion'] = self.resolved_version
+
+        if self.source_type is not None:
+            result['sourceType'] = self.source_type
+
+        if self.version is not None:
+            result['version'] = self.version
+
+        if self.version_selector is not None:
+            result['versionSelector'] = self.version_selector.to_map()
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('appliedVersion') is not None:
+            self.applied_version = m.get('appliedVersion')
+
+        if m.get('fromTemplate') is not None:
+            self.from_template = m.get('fromTemplate')
+
+        if m.get('name') is not None:
+            self.name = m.get('name')
+
+        if m.get('resolvedVersion') is not None:
+            self.resolved_version = m.get('resolvedVersion')
+
+        if m.get('sourceType') is not None:
+            self.source_type = m.get('sourceType')
+
+        if m.get('version') is not None:
+            self.version = m.get('version')
+
+        if m.get('versionSelector') is not None:
+            temp_model = main_models.UpdateExternalAgentResponseBodyDataSkillsVersionSelector()
+            self.version_selector = temp_model.from_map(m.get('versionSelector'))
+
+        return self
+
+class UpdateExternalAgentResponseBodyDataSkillsVersionSelector(DaraModel):
+    def __init__(
+        self,
+        type: str = None,
+        value: str = None,
+    ):
+        # The type of the version selector. Valid values:
+        # - LABEL: By label.
+        # - VERSION: By specific version.
+        self.type = type
+        # The value of the selector. When the type is LABEL, this is the label name, such as latest. When the type is VERSION, this is the specific version number.
+        self.value = value
 
     def validate(self):
         pass
@@ -455,21 +553,21 @@ class UpdateExternalAgentResponseBodyDataSkills(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.name is not None:
-            result['name'] = self.name
+        if self.type is not None:
+            result['type'] = self.type
 
-        if self.version is not None:
-            result['version'] = self.version
+        if self.value is not None:
+            result['value'] = self.value
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('name') is not None:
-            self.name = m.get('name')
+        if m.get('type') is not None:
+            self.type = m.get('type')
 
-        if m.get('version') is not None:
-            self.version = m.get('version')
+        if m.get('value') is not None:
+            self.value = m.get('value')
 
         return self
 
@@ -484,7 +582,7 @@ class UpdateExternalAgentResponseBodyDataModel(DaraModel):
         self.model_connection_id = model_connection_id
         # The upstream model name.
         self.model_name = model_name
-        # The model token quota configuration and the quota usage status in the current cycle. This field is empty if no quota is configured.
+        # The model token quota configuration and usage status for the current cycle. This field is empty if no quota is configured.
         self.quota = quota
 
     def validate(self):
@@ -534,15 +632,15 @@ class UpdateExternalAgentResponseBodyDataModelQuota(DaraModel):
     ):
         # Indicates whether the quota is enabled. This field is not returned if no quota is configured.
         self.enabled = enabled
-        # The quota limit type. Currently, only token is supported.
+        # The quota limit type. Only token is supported.
         self.limit_type = limit_type
-        # Indicates whether the quota has been exceeded in the current cycle. This is a read-only field returned by the backend.
+        # Indicates whether the quota is exceeded for the current cycle. This is a read-only field returned by the backend.
         self.over_limit = over_limit
-        # The quota statistical period. day indicates a daily period. month indicates a monthly period.
+        # The quota statistical period. A value of day indicates daily, and a value of month indicates monthly.
         self.period_type = period_type
         # The gateway quota rule status. This is a read-only field returned by the backend.
         self.rule_status = rule_status
-        # The maximum number of tokens that can be consumed within a single cycle.
+        # The maximum number of tokens allowed to be consumed in a single cycle.
         self.usage_limit = usage_limit
         # The number of tokens consumed in the current cycle. This is a read-only field returned by the backend.
         self.used_amount = used_amount
@@ -612,10 +710,10 @@ class UpdateExternalAgentResponseBodyDataExternalAgentStatus(DaraModel):
         local_ip: str = None,
         runtime: str = None,
     ):
-        # The heartbeat status. ONLINE indicates that the most recent heartbeat has not exceeded the configured timeout threshold. STALE indicates that the heartbeat has timed out. UNKNOWN indicates that the heartbeat is missing or has an invalid format. Valid values:
-        # - ONLINE: Online.
-        # - STALE: Heartbeat expired.
-        # - UNKNOWN: Unknown.
+        # The heartbeat status. ONLINE indicates that the latest heartbeat has not exceeded the configured timeout threshold. STALE indicates that the heartbeat has timed out. UNKNOWN indicates that the heartbeat is missing or the format is invalid. Valid values:
+        # - ONLINE: online
+        # - STALE: heartbeat expired
+        # - UNKNOWN: unknown
         self.heartbeat_status = heartbeat_status
         # The last active time of the external agent in RFC 3339 format.
         self.last_active_at = last_active_at
@@ -667,6 +765,106 @@ class UpdateExternalAgentResponseBodyDataExternalAgentStatus(DaraModel):
 
         if m.get('runtime') is not None:
             self.runtime = m.get('runtime')
+
+        return self
+
+class UpdateExternalAgentResponseBodyDataConfiguredSkills(DaraModel):
+    def __init__(
+        self,
+        name: str = None,
+        source_type: str = None,
+        version: str = None,
+        version_selector: main_models.UpdateExternalAgentResponseBodyDataConfiguredSkillsVersionSelector = None,
+    ):
+        # The name of the skill in the Workspace AI Registry.
+        # 
+        # This parameter is required.
+        self.name = name
+        # The source type of the skill. Valid values:
+        # - REFERENCE: References the AI Registry.
+        # - STATIC: Statically provided with the package.
+        self.source_type = source_type
+        # The legacy compatibility field. Use sourceType and versionSelector for new requests.
+        self.version = version
+        # The referenced version selector. If omitted, the default is LABEL/latest. Currently, only LABEL/latest is supported.
+        self.version_selector = version_selector
+
+    def validate(self):
+        if self.version_selector:
+            self.version_selector.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.name is not None:
+            result['name'] = self.name
+
+        if self.source_type is not None:
+            result['sourceType'] = self.source_type
+
+        if self.version is not None:
+            result['version'] = self.version
+
+        if self.version_selector is not None:
+            result['versionSelector'] = self.version_selector.to_map()
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+
+        if m.get('sourceType') is not None:
+            self.source_type = m.get('sourceType')
+
+        if m.get('version') is not None:
+            self.version = m.get('version')
+
+        if m.get('versionSelector') is not None:
+            temp_model = main_models.UpdateExternalAgentResponseBodyDataConfiguredSkillsVersionSelector()
+            self.version_selector = temp_model.from_map(m.get('versionSelector'))
+
+        return self
+
+class UpdateExternalAgentResponseBodyDataConfiguredSkillsVersionSelector(DaraModel):
+    def __init__(
+        self,
+        type: str = None,
+        value: str = None,
+    ):
+        # The type of the version selector. Valid values:
+        # - LABEL: By label.
+        # - VERSION: By specific version.
+        self.type = type
+        # The value of the selector. When the type is LABEL, this is the label name, such as latest. When the type is VERSION, this is the specific version number.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.type is not None:
+            result['type'] = self.type
+
+        if self.value is not None:
+            result['value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('type') is not None:
+            self.type = m.get('type')
+
+        if m.get('value') is not None:
+            self.value = m.get('value')
 
         return self
 

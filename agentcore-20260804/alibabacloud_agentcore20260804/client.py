@@ -7946,6 +7946,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListUsersResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.email):
+            query['email'] = request.email
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.name):
@@ -7983,6 +7985,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListUsersResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.email):
+            query['email'] = request.email
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.name):
