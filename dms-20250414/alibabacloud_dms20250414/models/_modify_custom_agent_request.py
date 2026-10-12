@@ -30,24 +30,24 @@ class ModifyCustomAgentRequest(DaraModel):
         workspace_id: str = None,
     ):
         self.callback_config = callback_config
-        # The custom agent ID.
+        # The ID of the custom agent.
         # 
         # This parameter is required.
         self.custom_agent_id = custom_agent_id
         # The current DMS unit.
         self.dmsunit = dmsunit
         # The specified data scope in **JSON character string format**.
-        # - Common parameter description
-        #   - tableFlag: true indicates a specified data scope.
+        # - General parameter description
+        #   - tableFlag: true specifies the data scope.
         #   - scope: personal is a fixed value.
-        #   - personal: pass parameters for file or database types.
+        #   - personal: parameters for file and database types.
         # 
-        # **File type**. Pass parameters in the following format:
+        # **File type**: pass parameters in the following format:
         # - DataSourceType: remote_data_center is a fixed value.
         # - FileId: the file ID.
-        # - Database: the database name returned by the ListDataCenterTable operation, which is typically the file name.
-        # - Tables: the table name returned by the ListDataCenterTable operation.
-        # - TableIds: the TableId returned by the ListDataCenterTable operation.
+        # - Database: the database name returned by the ListDataCenterTable operation, which is usually the file name.
+        # - Tables: the table names returned by the ListDataCenterTable operation.
+        # - TableIds: the table IDs returned by the ListDataCenterTable operation.
         # - RegionId: the current region.
         # ```
         # {
@@ -68,16 +68,16 @@ class ModifyCustomAgentRequest(DaraModel):
         # }
         # ```
         # 
-        # **Database type**. Pass parameters as follows:
+        # **Database type**: pass parameters as follows:
         # - DataSourceType: database is a fixed value.
-        # - DmsInstanceId: the DMS instance ID returned by the data center operation.
-        # - DmsDatabaseId: the DMS database ID returned by the data center operation.
-        # - FileId: the instance name (deprecated).
-        # - DbName: the database name returned by the data center operation.
-        # - Database: the database name returned by the data center operation.
-        # - Tables: the table name returned by the data center operation.
-        # - TableIds: the TableId returned by the data center operation.
-        # - Engine: the engine type (mysql or postgresql).
+        # - DmsInstanceId: the DMS instance ID returned by the Data Center operation.
+        # - DmsDatabaseId: the DMS database ID returned by the Data Center operation.
+        # - FileId: the instance name. **[Deprecated]**
+        # - DbName: the database name returned by the Data Center operation.
+        # - Database: the database name returned by the Data Center operation.
+        # - Tables: the table names returned by the Data Center operation.
+        # - TableIds: the table IDs returned by the Data Center operation.
+        # - Engine: the engine type, such as mysql or postgresql.
         # - RegionId: the current region.
         # ```
         # {
@@ -106,13 +106,13 @@ class ModifyCustomAgentRequest(DaraModel):
         self.description = description
         # The execution configuration.
         self.execution_config = execution_config
-        # The instruction.
+        # The instructions.
         # - Input limit: up to 10,000 characters.
         self.instruction = instruction
         # The knowledge.
         # - Input limit: up to 10,000 characters.
         self.knowledge = knowledge
-        # The external knowledge base list.
+        # The external knowledge bases.
         self.knowledge_config_list = knowledge_config_list
         self.knowledge_semantic_config_list = knowledge_semantic_config_list
         # The name of the custom agent.
@@ -122,12 +122,19 @@ class ModifyCustomAgentRequest(DaraModel):
         # The scheduled task configuration.
         self.schedule_task_config = schedule_task_config
         # The text report format.
-        #  - Input limit: up to 10,000 characters.
+        # - Input limit: up to 10,000 characters.
         self.text_report_config = text_report_config
+        # The list of user-specified skills.
         self.user_specified_skill_list = user_specified_skill_list
         # The web report format.
         # - Input limit: up to 50,000 characters.
         self.web_report_config = web_report_config
+        # The web report theme. Valid values:
+        # - default: default.
+        # - journal: journal.
+        # - legacy: classic.
+        # - neobrutalism: stylized.
+        # - infographic: infographic.
         self.web_report_theme = web_report_theme
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -287,7 +294,7 @@ class ModifyCustomAgentRequestScheduleTaskConfig(DaraModel):
         query: str = None,
         related_session_id: str = None,
     ):
-        # The cron expression for timed scheduling.
+        # The cron expression for periodic scheduling.
         self.cron_expression = cron_expression
         # The query for the scheduled task.
         self.query = query
@@ -384,12 +391,13 @@ class ModifyCustomAgentRequestKnowledgeConfigList(DaraModel):
         kb_uuid: str = None,
         mcp_server_id: str = None,
     ):
-        # The access type.
-        # 
-        # - mcp: access through MCP.
+        # The access type. If this parameter is not specified, the default value is mcp. Valid values:
+        # - mcp: access through MCP. You must pass the McpServerId parameter.
+        # - dms_kb: access through DMS knowledge base. You must pass the KbUuid parameter.
         self.access_type = access_type
+        # The knowledge base ID.
         self.kb_uuid = kb_uuid
-        # The ID of the MCP Server.
+        # The ID of the MCP server.
         self.mcp_server_id = mcp_server_id
 
     def validate(self):
@@ -433,6 +441,7 @@ class ModifyCustomAgentRequestExecutionConfig(DaraModel):
         skip_sql_confirm: bool = None,
         skip_web_report_confirm: bool = None,
     ):
+        # Specifies whether to prohibit appending data sources during the session.
         self.forbidden_append_data_source = forbidden_append_data_source
         # Specifies whether to disable user inquiries during the process.
         self.skip_ask_human = skip_ask_human
@@ -440,7 +449,7 @@ class ModifyCustomAgentRequestExecutionConfig(DaraModel):
         self.skip_plan = skip_plan
         # Specifies whether to skip all SQL confirmations.
         self.skip_sql_confirm = skip_sql_confirm
-        # Specifies whether to skip the web report rendering confirmation.
+        # Specifies whether to skip the web report generation confirmation.
         self.skip_web_report_confirm = skip_web_report_confirm
 
     def validate(self):

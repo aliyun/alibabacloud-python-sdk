@@ -20,14 +20,13 @@ class CreateCustomAgentResponseBody(DaraModel):
         self.data = data
         # The error code.
         self.error_code = error_code
-        # The error message returned when the request failed.
+        # The error message returned when the call fails.
         self.error_message = error_message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # - True: The request was successful.                                 
-        # - False: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - True: The request is successful.
+        # - False: The request fails.
         self.success = success
 
     def validate(self):
@@ -112,7 +111,7 @@ class CreateCustomAgentResponseBodyData(DaraModel):
         web_report_theme: str = None,
         workspace_id: str = None,
     ):
-        # The Alibaba Cloud account ID of the parent account.
+        # The primary Alibaba Cloud account ID.
         self.aliyun_parent_uid = aliyun_parent_uid
         # The Alibaba Cloud account ID.
         self.aliyun_uid = aliyun_uid
@@ -137,11 +136,11 @@ class CreateCustomAgentResponseBodyData(DaraModel):
         self.gmt_modified = gmt_modified
         # The instruction.
         self.instruction = instruction
-        # Indicates whether a periodic task is configured.
+        # Indicates whether a scheduled task is configured.
         self.is_schedule_task = is_schedule_task
         # The knowledge.
         self.knowledge = knowledge
-        # The external knowledge base.
+        # The external knowledge bases.
         self.knowledge_config_list = knowledge_config_list
         self.knowledge_semantic_config_list = knowledge_semantic_config_list
         # The modifier.
@@ -150,7 +149,7 @@ class CreateCustomAgentResponseBodyData(DaraModel):
         self.modifier_user_name = modifier_user_name
         # The name of the custom agent.
         self.name = name
-        # The next run time of the periodic task.
+        # The next execution time of the scheduled task.
         # - Timestamp format.
         self.next_runtime = next_runtime
         # The offline time.
@@ -159,17 +158,24 @@ class CreateCustomAgentResponseBodyData(DaraModel):
         self.region = region
         # The ID of the referenced historical session.
         self.related_session_id = related_session_id
-        # The publish time.
+        # The release time.
         self.release_time = release_time
-        # The periodic task configuration.
+        # The scheduled task configuration.
         self.schedule_task_config = schedule_task_config
         # The status of the custom agent.
         self.status = status
         # The text report format.
         self.text_report_config = text_report_config
+        # The list of user-specified skills.
         self.user_specified_skill_list = user_specified_skill_list
         # The web report format.
         self.web_report_config = web_report_config
+        # The web report theme. Valid values:
+        # - default: Default.
+        # - journal: Journal.
+        # - legacy: Legacy.
+        # - neobrutalism: Neobrutalism.
+        # - infographic: Infographic.
         self.web_report_theme = web_report_theme
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -413,9 +419,9 @@ class CreateCustomAgentResponseBodyDataScheduleTaskConfig(DaraModel):
         query: str = None,
         related_session_id: str = None,
     ):
-        # The cron expression for time-based scheduling.
+        # The cron expression for periodic scheduling.
         self.cron_expression = cron_expression
-        # The query for the scheduled task.
+        # The query for the periodic task.
         self.query = query
         # The ID of the referenced historical session.
         self.related_session_id = related_session_id
@@ -510,12 +516,13 @@ class CreateCustomAgentResponseBodyDataKnowledgeConfigList(DaraModel):
         kb_uuid: str = None,
         mcp_server_id: str = None,
     ):
-        # The access type.
-        # 
-        # - mcp: access through MCP.
+        # The access type. Valid values:
+        # - mcp: MCP access.
+        # - dms_kb: DMS knowledge base access.
         self.access_type = access_type
+        # The knowledge base ID.
         self.kb_uuid = kb_uuid
-        # The ID of the MCP Server.
+        # The ID of the MCP server.
         self.mcp_server_id = mcp_server_id
 
     def validate(self):
@@ -559,6 +566,7 @@ class CreateCustomAgentResponseBodyDataExecutionConfig(DaraModel):
         skip_sql_confirm: bool = None,
         skip_web_report_confirm: bool = None,
     ):
+        # Specifies whether to prohibit appending data sources during a session.
         self.forbidden_append_data_source = forbidden_append_data_source
         # Specifies whether to disable user inquiries during the process.
         self.skip_ask_human = skip_ask_human

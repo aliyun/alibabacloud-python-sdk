@@ -18,28 +18,29 @@ class ListDataAgentWorkspaceRequest(DaraModel):
         workspace_name: str = None,
         workspace_type: str = None,
     ):
+        # The ID of the creator used to search for workspaces.
         self.creator = creator
         # The current DMS unit.
         self.dmsunit = dmsunit
-        # The maximum number of entries per page.
+        # The maximum number of results per page.
         self.max_results = max_results
-        # The pagination token.
+        # The next token.
         self.next_token = next_token
         # The sort order.
         self.order = order
-        # The name of the field by which to sort.
+        # The sort field name.
         self.order_by = order_by
         # The page number.
         # 
         # This parameter is required.
         self.page_number = page_number
-        # The number of records per page.
+        # The number of entries per page.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The workspace name.
+        # The name of the workspace.
         self.workspace_name = workspace_name
-        # The type of workspace to query.
+        # The workspace type.
         # 
         # This parameter is required.
         self.workspace_type = workspace_type

@@ -1,3 +1,9 @@
+2026-10-12 Version: 4.1.0
+- Support API DescribeCustomAgentMonitorMetrics.
+- Support API ListCustomAgentMonitorSessions.
+- Update API DescribeDataAgentSession: add response parameters Body.Data.Messages.
+
+
 2026-09-28 Version: 4.0.0
 - Delete API DescribeCustomAgentMonitorMetrics.
 - Delete API ListCustomAgentMonitorSessions.

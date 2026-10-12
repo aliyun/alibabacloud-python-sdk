@@ -22,11 +22,11 @@ class ListDataAgentWorkspaceResponseBody(DaraModel):
         self.data = data
         # The error code.
         self.error_code = error_code
-        # The error message returned if the call failed.
+        # The error message returned when the call fails.
         self.error_message = error_message
-        # The maximum number of entries per page.
+        # The maximum number of results per page.
         self.max_results = max_results
-        # The pagination token.
+        # The next token.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -181,22 +181,25 @@ class ListDataAgentWorkspaceResponseBodyDataContent(DaraModel):
         workspace_name: str = None,
         workspace_status: str = None,
     ):
-        # The creation time of the workspace, in milliseconds (UNIX timestamp).
+        # The time when the workspace was created. The value is a timestamp in milliseconds.
         self.create_time = create_time
         # The UID of the workspace creator.
         self.creator = creator
+        # The name of the workspace creator.
         self.creator_name = creator_name
         # The description of the workspace.
         self.description = description
         # Indicates whether session sharing is enabled for the workspace.
         self.is_session_share_enabled = is_session_share_enabled
-        # The most recent modification time of the workspace, in milliseconds (UNIX timestamp).
+        # The time when the workspace was last modified. The value is a timestamp in milliseconds.
         self.modify_time = modify_time
-        # The role name of the user in the workspace.
+        # The name of the user\\"s role in the workspace.
         self.role_name = role_name
+        # The number of running sessions in the workspace.
         self.running_session_count = running_session_count
-        # The number of members in the workspace.
+        # The total number of members in the workspace.
         self.total_member = total_member
+        # The total number of sessions in the workspace.
         self.total_session_count = total_session_count
         # The workspace type.
         self.type = type
