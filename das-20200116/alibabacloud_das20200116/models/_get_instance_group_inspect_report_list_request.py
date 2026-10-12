@@ -13,16 +13,16 @@ class GetInstanceGroupInspectReportListRequest(DaraModel):
         report_type: str = None,
         start_time: int = None,
     ):
-        # Optional. By default, the default Agent is used. You can also specify the Agent that was generated after DAS Agent was activated or that was manually created.
+        # Optional. By default, the default agent is used. You can also specify the ID of an agent that is generated after DAS Agent is activated or manually created.
         self.agent_id = agent_id
-        # The end timestamp.
+        # The end time of the query. The time is a UNIX timestamp in milliseconds.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # Reserved parameter.
+        # The reserved parameter.
         self.group_id = group_id
         self.report_type = report_type
-        # The start timestamp.
+        # The start time of the query. The time is a UNIX timestamp in milliseconds.
         # 
         # This parameter is required.
         self.start_time = start_time

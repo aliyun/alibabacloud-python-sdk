@@ -36,7 +36,7 @@ class DescribeAuditLogsRequest(DaraModel):
     ):
         # The request ID.
         self.async_request_id = async_request_id
-        # The IP address of the request client.
+        # The IP address of the client that sends the request.
         self.client_ip = client_ip
         # The client type.
         self.client_ua = client_ua
@@ -46,19 +46,19 @@ class DescribeAuditLogsRequest(DaraModel):
         self.database_name = database_name
         # The range of affected rows.
         self.effect_row_range = effect_row_range
-        # The end time of the alert log. The value is a UNIX timestamp in milliseconds.
+        # The end time of the alert logs. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # The range of the execution time.
+        # The execution time range.
         self.execute_time_range = execute_time_range
         # The name of the asset instance.
         self.instance_name = instance_name
         # The network type. Valid values:
         # 
-        # - **default** (default): non-Alibaba Cloud service.
+        # - **default**: Non-Alibaba Cloud services. This is the default value.
         # 
-        # - **aliyun**: Alibaba Cloud service.
+        # - **aliyun**: Alibaba Cloud services.
         self.ip_type = ip_type
-        # The language of the request and response. Default value: zh_cn. Valid values:
+        # The language type of the request and response messages. Default value: zh_cn. Valid values:
         # 
         # - zh_cn: Chinese.
         # - en_us: English.
@@ -70,13 +70,13 @@ class DescribeAuditLogsRequest(DaraModel):
         self.log_source = log_source
         # The operation type.
         self.operate_type = operate_type
-        # The key of the OSS storage object.
+        # The key of the OSS object.
         self.oss_object_key = oss_object_key
-        # The maximum number of records per page. Default value: 10.
+        # The maximum number of entries per page. Default value: 10.
         self.page_size = page_size
-        # The name of the product to which the data asset belongs. Valid values: **RDS, PolarDB, PolarDB-X 2.0**, and others.
+        # The name of the product to which the data asset belongs. Valid values include **RDS**, **PolarDB**, and **PolarDB-X 2.0**.
         self.product_code = product_code
-        # The ID that corresponds to the product name to which the data object belongs. Valid values:
+        # The ID of the product to which the data object belongs. Valid values:
         # 
         # - 3: ADB-MYSQL
         # - 5: RDS
@@ -86,17 +86,17 @@ class DescribeAuditLogsRequest(DaraModel):
         # - 11: MongoDB
         # - 25: Redis
         self.product_id = product_id
-        # Specifies whether to use aggregate query.
+        # Specifies whether to perform an aggregate query.
         self.rule_agg_query = rule_agg_query
         # The rule type.
         self.rule_category = rule_category
         # The rule ID.
         self.rule_id = rule_id
-        # The name of the audit policy.
+        # The name of the audit rule.
         self.rule_name = rule_name
         # The content of the SQL statement.
         self.sql_text = sql_text
-        # The start time of the alert log, in milliseconds.
+        # The start time of the alert logs. Unit: milliseconds.
         self.start_time = start_time
         # The username.
         self.user_name = user_name

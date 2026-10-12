@@ -16,10 +16,10 @@ class ModifyDasOpsConfigRequest(DaraModel):
     ):
         # Specifies whether to enable DAS Alibaba Cloud Managed Services. Valid values:
         # 
-        # - **true**: Enable.
-        # - **false**: Disable. Shutdown only turns off the feature but does not unsubscribe from the service. To unsubscribe, go to the unsubscription management page.
+        # - **true**: Enabled.
+        # - **false**: Disabled. Note that shutdown only disables the feature, but does not cancel your subscription. To cancel your subscription, go to the Unsubscription Management page.
         self.enable = enable
-        # A reserved parameter.
+        # The reserved parameter.
         self.filters = filters
         # The database instance ID.
         # 
@@ -74,9 +74,9 @@ class ModifyDasOpsConfigRequestFilters(DaraModel):
     ):
         # The filter parameter.
         # 
-        # > For supported filter parameters and their values, see **Supplementary description of request parameters**.
+        # > For supported filter parameters and their valid values, see **Supplementary description of request parameters**.
         self.key = key
-        # A reserved parameter.
+        # The reserved parameter.
         self.value = value
 
     def validate(self):

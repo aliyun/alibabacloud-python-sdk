@@ -21,9 +21,9 @@ class DescribeAuditLogsResponseBody(DaraModel):
         self.async_request_id = async_request_id
         # The current page number.
         self.current_page = current_page
-        # The client IP addresses in the SQL log records.
+        # The IP addresses of the clients in the SQL log records.
         self.items = items
-        # The page size for the paged query. This value indicates the number of records per page for paging.
+        # The number of entries per page in the paged query.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -124,31 +124,29 @@ class DescribeAuditLogsResponseBodyItems(DaraModel):
         warn_level: str = None,
         warn_level_name: str = None,
     ):
-        # The client IP address in the query.
+        # The IP address of the client in the query.
         self.client_ip = client_ip
-        # The client port number in the query.
+        # The port number of the client in the query.
         self.client_port = client_port
         # The client type.
         self.client_ua = client_ua
         # The column name.
         self.column_name = column_name
-        # The alert time, in milliseconds.
+        # The alert time. Unit: milliseconds.
         self.creation_time = creation_time
         # The database name.
         self.database_name = database_name
         # The number of affected rows.
         self.effect_row = effect_row
-        # The execution status. Valid values:
-        # - 0: failed.
-        # - 1: succeeded.
+        # The execution status. Valid values: 0: Failed. 1: Successful.
         self.execute_status = execute_status
-        # The execution duration, in milliseconds.
+        # The execution duration. Unit: milliseconds.
         self.execute_time = execute_time
         # The primary key ID.
         self.id = id
         # Indicates whether the alert is in the whitelist.
         self.in_white_list = in_white_list
-        # The audit status of the instance.
+        # The instance audit status.
         self.instance_audit_status = instance_audit_status
         # The description of the data asset instance.
         self.instance_description = instance_description
@@ -156,25 +154,25 @@ class DescribeAuditLogsResponseBodyItems(DaraModel):
         self.instance_name = instance_name
         # The network type. Valid values:
         # 
-        # **default** (default): non-Alibaba Cloud service.
+        # **default**: Non-Alibaba Cloud services. This is the default value.
         # 
-        # **aliyun**: Alibaba Cloud service.
+        # **aliyun**: Alibaba Cloud services.
         self.ip_type = ip_type
         # The data source.
         self.log_source = log_source
-        # The log execution time.
+        # The log execution time. The value is a UNIX timestamp in milliseconds.
         self.log_time = log_time
         # The raw log content.
         self.message = message
         # The operation type.
         self.operate_type = operate_type
-        # The key of the OSS storage object.
+        # The key of the OSS object.
         self.oss_object_key = oss_object_key
         # The MaxCompute package name.
         self.package_name = package_name
-        # The name of the product to which the data asset belongs. Valid values: RDS, PolarDB, PolarDB-X 2.0, and others.
+        # The name of the product to which the data asset belongs. Valid values include RDS, PolarDB, and PolarDB-X 2.0.
         self.product_code = product_code
-        # The ID that corresponds to the product name to which the data object belongs. Valid values:
+        # The ID of the product to which the data object belongs. Valid values:
         # 
         # - 3: ADB-MYSQL
         # - 5: RDS
@@ -186,27 +184,27 @@ class DescribeAuditLogsResponseBodyItems(DaraModel):
         self.product_id = product_id
         # The rule type.
         self.rule_category = rule_category
-        # The audit policy ID.
+        # The audit rule ID.
         self.rule_id = rule_id
-        # The name of the audit policy.
+        # The name of the audit rule.
         self.rule_name = rule_name
         # The SQL statement.
         self.sql_text = sql_text
-        # The table name used in the query.
+        # The name of the table used in the query.
         self.table_name = table_name
         # The user UID.
         self.user_id = user_id
         # The username.
         self.user_name = user_name
         # The risk level. Valid values:
-        # - **1**: low.
-        # - **2**: medium.
-        # - **3**: high.
+        # - **1**: Low risk.
+        # - **2**: Medium risk.
+        # - **3**: High risk.
         self.warn_level = warn_level
         # The risk level name. Valid values:
-        # - Low.
-        # - Medium.
-        # - High.
+        # - Low risk.
+        # - Medium risk.
+        # - High risk.
         self.warn_level_name = warn_level_name
 
     def validate(self):

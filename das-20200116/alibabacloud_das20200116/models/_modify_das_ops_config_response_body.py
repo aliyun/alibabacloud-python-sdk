@@ -20,12 +20,12 @@ class ModifyDasOpsConfigResponseBody(DaraModel):
         self.data = data
         # The returned message.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # - **true**: The request was successful.
-        # - **false**: The request failed.
+        # - **true**: Successful.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -87,30 +87,30 @@ class ModifyDasOpsConfigResponseBodyData(DaraModel):
         start_time: int = None,
         status: str = None,
     ):
-        # The payment method.
+        # The billing method.
         self.charge_type = charge_type
-        # The Alibaba Cloud Managed Services instance ID.
+        # The instance ID of Alibaba Cloud Managed Services.
         self.commodity_instance_id = commodity_instance_id
-        # Indicates whether DAS Economy Edition is enabled.
+        # Indicates whether the DAS Economy Edition is enabled.
         self.eco_enable = eco_enable
-        # Indicates whether the Alibaba Cloud Managed Services feature is enabled (including DAS Economy Edition).
+        # Indicates whether the Alibaba Cloud Managed Services feature (including DAS Economy Edition) is enabled.
         self.enable = enable
         # The end time. The value is a UNIX timestamp. Unit: milliseconds.
         self.end_time = end_time
         # Indicates whether Alibaba Cloud Managed Services is enabled.
         self.ops_enable = ops_enable
-        # The order ID.
+        # The ID of the order.
         self.order_id = order_id
-        # The start time.
+        # The start time of Alibaba Cloud Managed Services. The format is a UNIX timestamp. Unit: milliseconds.
         self.start_time = start_time
-        # The task status. Valid values:
-        # - **INIT**: Pending scheduling.
+        # The status of the task. Valid values:
+        # - **INIT**: Pending.
         # - **RUNNING**: Running.
         # - **FAILED**: Failed.
         # - **CANCELED**: Canceled.
         # - **COMPLETED**: Completed.
         # 
-        # > When the task is in the **COMPLETED** state, you can view the task result.
+        # > When the task is in the **COMPLETED** state, you can view the task results.
         self.status = status
 
     def validate(self):

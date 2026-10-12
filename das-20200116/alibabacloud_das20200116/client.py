@@ -172,6 +172,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.agent_id):
             query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.forwarded_props):
+            query['ForwardedProps'] = request.forwarded_props
         if not DaraCore.is_null(request.message):
             query['Message'] = request.message
         if not DaraCore.is_null(request.resume):
@@ -217,6 +219,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.agent_id):
             query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.forwarded_props):
+            query['ForwardedProps'] = request.forwarded_props
         if not DaraCore.is_null(request.message):
             query['Message'] = request.message
         if not DaraCore.is_null(request.resume):
@@ -262,6 +266,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.agent_id):
             query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.forwarded_props):
+            query['ForwardedProps'] = request.forwarded_props
         if not DaraCore.is_null(request.message):
             query['Message'] = request.message
         if not DaraCore.is_null(request.resume):
@@ -298,6 +304,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.agent_id):
             query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.forwarded_props):
+            query['ForwardedProps'] = request.forwarded_props
         if not DaraCore.is_null(request.message):
             query['Message'] = request.message
         if not DaraCore.is_null(request.resume):

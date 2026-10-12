@@ -16,18 +16,18 @@ class GetInstanceGroupInspectReportListResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The response status code.
+        # The returned status code.
         self.code = code
         # List<ReportStatus>
         self.data = data
-        # The response message.
-        # >If the request is successful, **Successful** is returned. If the request fails, exception information such as an error code is returned.
+        # The returned message.
+        # > If the request is successful, **Successful** is returned. If the request fails, an error message such as an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
-        # * **true**: The request is successful.
-        # * **false**: The request fails.
+        # Indicates whether the request was successful. Valid values:
+        # * **true**: The request was successful.
+        # * **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -90,13 +90,19 @@ class GetInstanceGroupInspectReportListResponseBodyData(DaraModel):
         report_id: str = None,
         status: str = None,
     ):
-        # The time when the task was created.
+        # The time when the task was created. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
-        # The date of the diagnosis.
+        # The diagnosis date in the YYYY-MM-DD format.
         self.report_date = report_date
         # The report ID.
         self.report_id = report_id
-        # The task status. Valid values: WAITING_UNREADY = 0, WAITING_READY = 1, PROCESSING = 2, FINISHED = 3, ERROR = 4, STOPPED = -1.
+        # The task status. Valid values:
+        # - 0: WAITING_UNREADY.
+        # - 1: WAITING_READY.
+        # - 2: PROCESSING.
+        # - 3: FINISHED.
+        # - 4: ERROR.
+        # - -1: STOPPED.
         self.status = status
 
     def validate(self):

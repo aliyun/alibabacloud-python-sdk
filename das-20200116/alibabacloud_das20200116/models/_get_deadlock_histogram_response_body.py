@@ -26,9 +26,9 @@ class GetDeadlockHistogramResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # - **true**: The request is successful.
+        # - **true**: The request was successful.
         # - **false**: The request failed.
         self.success = success
 
@@ -96,7 +96,7 @@ class GetDeadlockHistogramResponseBodyData(DaraModel):
         task_id: str = None,
         user_id: str = None,
     ):
-        # The end time of the analysis task range.
+        # The end time of the analysis task range. The time is a UNIX timestamp in milliseconds.
         self.end_time = end_time
         # The instance ID.
         self.instance_id = instance_id
@@ -104,13 +104,13 @@ class GetDeadlockHistogramResponseBodyData(DaraModel):
         self.lock_number = lock_number
         # The node ID. This parameter is used for PolarDB for MySQL clusters.
         self.node_id = node_id
-        # The start time of the analysis task range.
+        # The start time of the analysis task range. The time is a UNIX timestamp in milliseconds.
         self.start_time = start_time
         # The task status. Valid values:
-        # - **SUCCESS**: The analysis is successful.
-        # - **FAILED**: The analysis failed or encountered an exception.
+        # - **SUCCESS**: The analysis was successful.
+        # - **FAILED**: The analysis is abnormal or failed.
         self.status = status
-        # The full deadlock analysis task ID.
+        # The ID of the full deadlock analysis task.
         self.task_id = task_id
         # The user ID.
         self.user_id = user_id

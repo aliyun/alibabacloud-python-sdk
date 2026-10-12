@@ -39,11 +39,11 @@ class ChatResponseBody(DaraModel):
         self.agent_id = agent_id
         # The response content.
         self.content = content
-        # Indicates whether the content is incremental.
+        # Specifies whether the content is incremental.
         self.delta = delta
-        # The step type of STEP_STARTED, such as task.
+        # The step type for STEP_STARTED, such as task.
         self.kind = kind
-        # The display name of the sub-agent for STEP_STARTED.
+        # The display name of the child agent for STEP_STARTED.
         self.label = label
         # The message ID.
         self.message_id = message_id
@@ -61,17 +61,17 @@ class ChatResponseBody(DaraModel):
         self.run_id = run_id
         # The execution step name.
         self.step_name = step_name
-        # The step status of STEP_FINISHED, such as completed.
+        # The step status for STEP_FINISHED, such as completed.
         self.step_status = step_status
-        # The callback utility class.
+        # The callback tool class.
         self.task_tracker_id = task_tracker_id
         # The thread ID.
         self.thread_id = thread_id
         # The event timestamp.
         self.timestamp = timestamp
-        # The error that occurred during tool invocation.
+        # The error that occurred when invoking the tool.
         self.tool_call_error = tool_call_error
-        # The tool invocation ID.
+        # The tool call ID.
         self.tool_call_id = tool_call_id
         # The tool name.
         self.tool_call_name = tool_call_name

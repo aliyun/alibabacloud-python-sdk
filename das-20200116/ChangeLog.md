@@ -1,3 +1,7 @@
+2026-10-12 Version: 4.0.1
+- Update API Chat: add request parameters ForwardedProps.
+
+
 2026-09-21 Version: 4.0.0
 - Support API DescribeAuditLogs.
 - Support API DescribeDasOpsConfig.
