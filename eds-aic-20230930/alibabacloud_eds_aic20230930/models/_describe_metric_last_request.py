@@ -18,33 +18,30 @@ class DescribeMetricLastRequest(DaraModel):
         period: int = None,
         start_time: str = None,
     ):
-        # For instance-level monitoring, specify a list of Cloud Phone instance IDs.
-        # 
-        # <props="china">
-        # 
-        # For matrix-level monitoring, specify a list of matrix IDs.
+        # The list of cloud phone instance IDs for instance-level monitoring.
+        # <props="china">The list of matrix IDs for matrix-level monitoring.
         self.android_instance_ids = android_instance_ids
-        # The end time for the query.
+        # The end time for querying the monitoring metric. The time format is YYYY-MM-DD HH:mm:ss.
         self.end_time = end_time
         # The list of instance IDs.
         self.instance_ids = instance_ids
-        # The number of monitoring data records to return on each page for a paged query.
+        # The page size of the returned monitoring data, used for paged query.
         # 
-        # The default value is 1000. This means that 1000 monitoring data records are returned per page.
+        # Default value: 1000, indicating 1,000 monitoring data entries per page.
         self.length = length
         # The list of monitoring metrics.
         # 
         # This parameter is required.
         self.metric_names = metric_names
-        # The token that marks the start of the current read position. If you leave this parameter empty, the query starts from the beginning.
+        # The token that marks the position from which to start reading. An empty value indicates that the query starts from the beginning.
         self.next_token = next_token
-        # The statistic period for monitoring data.
+        # The statistical period for the monitoring data.
         # 
         # Valid values: 60, 900, and 3600.
         # 
         # Unit: seconds.
         self.period = period
-        # The start time for the query.
+        # The start time for querying the monitoring metric. The time format is YYYY-MM-DD HH:mm:ss.
         self.start_time = start_time
 
     def validate(self):

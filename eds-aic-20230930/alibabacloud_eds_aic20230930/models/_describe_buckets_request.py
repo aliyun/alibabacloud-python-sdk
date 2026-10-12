@@ -9,7 +9,7 @@ class DescribeBucketsRequest(DaraModel):
         self,
         file_type: str = None,
     ):
-        # The type of the OSS file.
+        # The OSS file type.
         # 
         # > This parameter is not yet available.
         self.file_type = file_type

@@ -32,43 +32,42 @@ class CreateMobileAgentPackageRequest(DaraModel):
         # Specifies whether to enable automatic payment. Valid values:
         # 
         # - **true**: Automatic payment is enabled. Make sure that your account balance is sufficient.
-        # - **false** (default): Only an order is generated. No payment is made.
+        # - **false** (default): Only an order is generated and no payment is deducted.
         # 
         # 
         # 
         # 
-        # > If your payment method has an insufficient balance, set this parameter to false. An unpaid order is generated. You can log on to the Elastic Cloud Phone console to complete the payment.
+        # > If the balance of your payment method is insufficient, you can set this parameter to false. In this case, an unpaid order is generated, and you can log on to the WUYING Cloud Phone console to complete the payment.
         # >
         self.auto_pay = auto_pay
         # Specifies whether to enable auto-renewal for the instance. Valid values:
         # 
-        # * **true**: Auto-renewal is enabled.
-        # * **false** (default): Auto-renewal is disabled.
+        # * **true**: Yes.
+        # * **false** (default): No.
         self.auto_renew = auto_renew
-        # The region where the instance resides. Currently, only cn-hangzhou is supported.
+        # The region where the instance resides. Only cn-hangzhou is supported.
         self.biz_region_id = biz_region_id
         self.channel_cookie = channel_cookie
-        # The credit quota.
+        # The credit amount.
         self.credit_amount = credit_amount
         # The credit limit configuration.
         self.credit_config = credit_config
+        # The image ID.
         self.image_id = image_id
         # The name of the node instance.
         self.instance_name = instance_name
-        # The resource plan specification.
+        # The specification of the resource plan.
         self.mobile_agent_package_spec = mobile_agent_package_spec
         self.package_spec_id = package_spec_id
-        # The redirect URL after a successful payment.
+        # The redirect URL for the payment success page.
         self.paid_callback_url = paid_callback_url
-        # The duration for which you want to purchase the resource. The unit is specified by `PeriodUnit`.
+        # The subscription duration of the resource. The unit is specified by PeriodUnit.
         self.period = period
-        # The unit of the duration for which you want to purchase the resource.
-        # 
-        # Valid values:
-        # - **Month**: month.
-        # - **Year**: year.
+        # The unit of the subscription duration of the resource. Valid values:
+        # - **Month**: Month.
+        # - **Year**: Year.
         self.period_unit = period_unit
-        # The ID of the promotional campaign.
+        # The promotion ID.
         self.promotion_id = promotion_id
         # The tags.
         self.tag = tag

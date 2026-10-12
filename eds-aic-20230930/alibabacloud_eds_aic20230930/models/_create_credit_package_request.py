@@ -17,27 +17,25 @@ class CreateCreditPackageRequest(DaraModel):
     ):
         # Specifies whether to enable automatic payment. Valid values:
         # 
-        # - **true**: enables automatic payment. Make sure that your account balance is sufficient.
-        # - **false** (default): generates an order without charging your account.
+        # - **true**: Enables automatic payment. Make sure that your account balance is sufficient.
+        # - **false** (default): Generates an order without deducting payment.
         # 
         # 
         # 
         # 
-        # > If your payment method has an insufficient balance, set this parameter to false. An unpaid order is generated, and you can log on to the Elastic Cloud Phone console to complete the payment.
+        # > If the balance of your payment method is insufficient, set this parameter to false. An unpaid order is generated. You can log on to the WUYING Cloud Phone console to complete the payment.
         self.auto_pay = auto_pay
         self.channel_cookie = channel_cookie
         # The number of credits.
         self.credit_amount = credit_amount
         self.package_amount = package_amount
-        # The duration for which you want to purchase the resource. The unit is specified by PeriodUnit.
+        # The subscription duration of the purchased resource. The unit is specified by PeriodUnit.
         self.period = period
-        # The unit of the duration for which you want to purchase the resource.
-        # 
-        # Valid values:
-        # - **Month**: month.
-        # - **Year**: year.
+        # The unit of the subscription duration for the purchased resource. Valid values:
+        # - **Month**: Month.
+        # - **Year**: Year.
         self.period_unit = period_unit
-        # The ID of the promotional campaign.
+        # The ID of the promotion.
         self.promotion_id = promotion_id
 
     def validate(self):

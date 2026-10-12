@@ -101,7 +101,6 @@ class DescribeAgentTaskResponseBodyTasks(DaraModel):
         # The list of uploaded task artifacts.
         self.artifacts = artifacts
         # The current status of the task. Valid values:
-        # 
         # - PENDING: The task is being created.
         # - RUNNING: The task is running.
         # - COMPLETED: The task is completed.
@@ -109,27 +108,26 @@ class DescribeAgentTaskResponseBodyTasks(DaraModel):
         # - TIMEOUT: The task execution timed out.
         self.current_status = current_status
         # The source of the digest. Valid values:
-        # 
-        # - PROMPT_AUTO: auto-generated.
-        # - RESULT_AUTO: result refinement.
-        # - USER: user-edited.
+        # - PROMPT_AUTO: Automatically generated.
+        # - RESULT_AUTO: Refined from the result.
+        # - USER: Edited by the user.
         self.digest_source = digest_source
-        # The Mobile node ID.
+        # The ID of the mobile node.
         self.instance_id = instance_id
         self.reason = reason
         # The time when the task was created, in ISO 8601 format.
         self.running_at = running_at
-        # The number of steps executed.
+        # The number of executed steps.
         self.steps = steps
-        # The task digest text, up to 25 characters.
+        # The task digest text, with a maximum of 25 characters.
         self.task_digest = task_digest
-        # The task duration. This field is returned only when CurrentStatus is FAILED or COMPLETED.
+        # The time consumed by the task. This field is returned only when CurrentStatus is FAILED or COMPLETED.
         self.task_duration = task_duration
-        # The task ID, which is globally unique.
+        # The globally unique task ID.
         self.task_id = task_id
-        # The task result in the desired state. This field is returned only when CurrentStatus is COMPLETED or FAILED.
+        # The node task result (desired state). This field is returned only when CurrentStatus is COMPLETED or FAILED.
         self.task_result = task_result
-        # The user instruction in natural language. The Agent performs operations based on this instruction.
+        # The user instruction in natural language based on which the agent performs operations.
         self.user_prompt = user_prompt
 
     def validate(self):
@@ -243,7 +241,7 @@ class DescribeAgentTaskResponseBodyTasksArtifacts(DaraModel):
     ):
         # The MIME type.
         self.content_type = content_type
-        # The OSS pre-signed download URL.
+        # The presigned OSS download URL.
         self.download_url = download_url
         # The file name.
         self.name = name

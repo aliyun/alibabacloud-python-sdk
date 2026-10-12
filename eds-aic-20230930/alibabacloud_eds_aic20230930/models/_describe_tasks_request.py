@@ -24,33 +24,33 @@ class DescribeTasksRequest(DaraModel):
         task_type: str = None,
         task_types: List[str] = None,
     ):
-        # The ID of the cloud phone instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The name of the cloud phone instance.
+        # The instance name.
         self.instance_name = instance_name
-        # The ID of the command execution. You can set the value to the last returned request ID.
+        # The command execution ID. You can enter the requestId returned by the previous operation.
         self.invoke_id = invoke_id
-        # The level of the task. A value of 1 specifies a batch task. A value of 2 specifies an instance-level task.
+        # The task level. A value of 1 indicates a batch task. A value of 2 indicates an instance-level task.
         self.level = level
-        # The maximum number of entries per page. Valid values: 1 to 100. Default value: 10.
+        # The maximum number of entries per page for a paged query. Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. If the parameter is left empty, the data is queried from the first entry.
+        # The token that specifies the starting position for reading. If this parameter is left empty, the reading starts from the beginning.
         self.next_token = next_token
-        # The extension field.
+        # The extended field.
         self.param = param
-        # The ID of the parent task.
+        # The parent task ID.
         self.parent_task_id = parent_task_id
-        # The IDs of the resources.
+        # The list of resource IDs.
         self.resource_ids = resource_ids
-        # The IDs of the tasks.
+        # The list of task IDs.
         self.task_ids = task_ids
-        # The state of the task.
+        # The task status.
         self.task_status = task_status
-        # The status of the tasks.
+        # The list of task statuses.
         self.task_statuses = task_statuses
-        # The type of the task.
+        # The task type.
         self.task_type = task_type
-        # The types of the tasks.
+        # The list of task types.
         self.task_types = task_types
 
     def validate(self):

@@ -15,7 +15,7 @@ class DescribeSpecResponseBody(DaraModel):
         spec_info_model: List[main_models.DescribeSpecResponseBodySpecInfoModel] = None,
         total_count: int = None,
     ):
-        # The token to use for the next request to retrieve a new page of results. If this parameter is empty, all results have been returned.
+        # The token that indicates the position up to which the data is retrieved. An empty value indicates that all data has been retrieved.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -88,11 +88,11 @@ class DescribeSpecResponseBodySpecInfoModel(DaraModel):
         self.core = core
         # The maximum number of instances.
         self.max_phone_count = max_phone_count
-        # The memory size in GB.
+        # The memory size.
         self.memory = memory
         # The minimum number of instances.
         self.min_phone_count = min_phone_count
-        # The number of instances.
+        # The number of cloud phone instances.
         self.phone_count = phone_count
         # The resolution of the cloud phone instance.
         self.resolution = resolution
@@ -102,7 +102,7 @@ class DescribeSpecResponseBodySpecInfoModel(DaraModel):
         self.spec_status = spec_status
         # The specification type.
         self.spec_type = spec_type
-        # The size of the system disk, in GB.
+        # The system cloud disk size. Unit: GB.
         self.system_disk_size = system_disk_size
 
     def validate(self):

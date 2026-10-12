@@ -17,12 +17,13 @@ class ModifyJVSInstanceRequest(DaraModel):
         instance_ids: List[str] = None,
         instance_name: str = None,
     ):
-        # The target version, such as 2607W1. Set this parameter to latest to automatically resolve to the latest available version.
+        # The target version of AI Engine, such as 2607W1. You can also set this parameter to latest to automatically resolve to the latest available version.
         self.agent_version = agent_version
         # Specifies whether to apply the configuration to all instances.
         self.apply_to_all = apply_to_all
-        # The credit quota configuration. If you submit the configuration multiple times, the latest configuration overwrites the previous one.
+        # The credit limit configuration. Subsequent quota configurations overwrite previous ones.
         self.credit_config = credit_config
+        # The image ID.
         self.image_id = image_id
         # The list of instance IDs.
         self.instance_ids = instance_ids
@@ -95,11 +96,7 @@ class ModifyJVSInstanceRequestCreditConfig(DaraModel):
     ):
         # The quota limit.
         self.credit_limit = credit_limit
-        # The dimension of the current credit. Valid values:
-        # 
-        # - total: Total usage limit.
-        # - month: Monthly. The quota resets based on the resource activation time cycle.
-        # - day: Daily. The quota resets at 00:00.
+        # The period of the current credit.
         self.limit_period = limit_period
 
     def validate(self):

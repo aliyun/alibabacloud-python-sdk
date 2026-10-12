@@ -15,11 +15,11 @@ class DescribeMetricTopResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The number of entries returned.
+        # The total number of entries.
         self.count = count
-        # The instance monitoring data.
+        # The list of instance monitoring results.
         self.metric_total_model = metric_total_model
-        # The token to retrieve the next page of results. If the results are not fully returned in a single query, this parameter is not empty. You can use this token in a subsequent query to retrieve the next page of results.
+        # The token for the next query. If a single query does not return all results, the returned NextToken is not empty. You can use the returned NextToken in subsequent queries to continue the query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -77,12 +77,12 @@ class DescribeMetricTopResponseBodyMetricTotalModel(DaraModel):
         instance_id: str = None,
         metric_model_list: List[main_models.DescribeMetricTopResponseBodyMetricTotalModelMetricModelList] = None,
     ):
-        # For instance-level monitoring, this is the cloud phone instance ID.
-        # <props="china">For matrix-level monitoring, this is the matrix ID.
+        # For instance-level monitoring, the cloud phone instance ID is returned. 
+        # <props="china">For matrix-level monitoring, the matrix ID is returned.
         self.android_instance_id = android_instance_id
         # The instance ID.
         self.instance_id = instance_id
-        # The monitoring data of metrics.
+        # The list of metric monitoring results.
         self.metric_model_list = metric_model_list
 
     def validate(self):
@@ -131,9 +131,9 @@ class DescribeMetricTopResponseBodyMetricTotalModelMetricModelList(DaraModel):
         data_points: List[main_models.DescribeMetricTopResponseBodyMetricTotalModelMetricModelListDataPoints] = None,
         metric_name: str = None,
     ):
-        # The monitoring data points.
+        # The monitoring statistical data points.
         self.data_points = data_points
-        # The name of the metric.
+        # The name of the monitoring metric.
         self.metric_name = metric_name
 
     def validate(self):
@@ -182,26 +182,22 @@ class DescribeMetricTopResponseBodyMetricTotalModelMetricModelListDataPoints(Dar
         timestamp: int = None,
     ):
         # The average value. Unit: %.
-        # 
-        # > The unit is bps when the metric is \\`instance_in_traffic\\` or \\`instance_out_traffic\\`.
+        # > If the monitoring metric is instance_in_traffic or instance_out_traffic, the unit is bps.
         self.average = average
         # The ID.
         self.id = id
         # The maximum value. Unit: %.
-        # 
-        # > The unit is bps when the metric is \\`instance_in_traffic\\` or \\`instance_out_traffic\\`.
+        # > If the monitoring metric is instance_in_traffic or instance_out_traffic, the unit is bps.
         self.maximum = maximum
         # The minimum value.
-        # 
-        # > The unit is bps when the metric is \\`instance_in_traffic\\` or \\`instance_out_traffic\\`.
+        # > If the monitoring metric is instance_in_traffic or instance_out_traffic, the unit is bps.
         self.minimum = minimum
         # The name.
         self.name = name
-        # The properties.
-        # 
-        # > A JSON string that contains the extension properties.
+        # The property information.
+        # > The extended property information string in JSON format is returned.
         self.properties = properties
-        # The timestamp of the data point. Unit: milliseconds.
+        # The statistical timestamp. Unit: milliseconds.
         self.timestamp = timestamp
 
     def validate(self):

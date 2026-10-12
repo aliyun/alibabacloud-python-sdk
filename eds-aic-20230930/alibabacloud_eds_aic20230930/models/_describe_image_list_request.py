@@ -21,13 +21,13 @@ class DescribeImageListRequest(DaraModel):
         status: str = None,
         system_type: str = None,
     ):
-        # An array of tag objects.
+        # The array of tag objects.
         self.image_biz_tags = image_biz_tags
         # The image ID.
         self.image_id = image_id
         # The image name.
         self.image_name = image_name
-        # > This parameter is not yet available.
+        # > This parameter is not yet available for public use.
         self.image_package_type = image_package_type
         # The image type.
         # 
@@ -35,12 +35,13 @@ class DescribeImageListRequest(DaraModel):
         self.image_type = image_type
         # The instance type.
         self.instance_type = instance_type
-        # The maximum number of entries to return on each page for a paged query. Valid values: 1 to 100. Default value: 20.
+        # The maximum number of entries per page for a paged query. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
-        # The token that specifies the position from which to start the query. If you leave this parameter empty, the query starts from the beginning.
+        # The position from which the read operation starts. An empty value indicates that the read operation starts from the beginning.
         self.next_token = next_token
         # The status of the image.
         self.status = status
+        # The operating system type.
         self.system_type = system_type
 
     def validate(self):

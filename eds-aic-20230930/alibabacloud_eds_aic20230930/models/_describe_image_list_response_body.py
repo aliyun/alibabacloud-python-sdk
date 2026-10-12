@@ -17,7 +17,7 @@ class DescribeImageListResponseBody(DaraModel):
     ):
         # The returned data.
         self.data = data
-        # The token that is used to start the next query. An empty value indicates that all data has been returned.
+        # The position from which the current call returns the read data. An empty value indicates that all data has been read.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -90,21 +90,21 @@ class DescribeImageListResponseBodyData(DaraModel):
         status: str = None,
         system_type: str = None,
     ):
-        # The ID of the Alibaba Cloud account.
+        # The Alibaba Cloud account ID.
         self.ali_uid = ali_uid
         # The description.
         self.description = description
-        # The time when the image was created.
+        # The creation time.
         self.gmt_create = gmt_create
-        # The time when the image was last modified.
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # An array of tag objects.
+        # The array of tag objects.
         self.image_biz_tags = image_biz_tags
         # The image ID.
         self.image_id = image_id
         # The image name.
         self.image_name = image_name
-        # The image distribution information by region. The key is the region and the value is the distribution information.
+        # The image distribution region information. The key is the region and the value is the distribution information.
         self.image_region_distribute_map = image_region_distribute_map
         # The list of available regions.
         self.image_region_list = image_region_list
@@ -114,7 +114,7 @@ class DescribeImageListResponseBodyData(DaraModel):
         self.image_version = image_version
         # The language.
         self.language = language
-        # The time when the image was published.
+        # The release time. The time format is YYYY-MM-DD HH:mm:ss.
         self.release_time = release_time
         # The rendering type.
         self.rendering_type = rendering_type

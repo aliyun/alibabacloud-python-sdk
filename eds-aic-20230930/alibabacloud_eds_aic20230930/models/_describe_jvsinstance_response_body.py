@@ -19,9 +19,9 @@ class DescribeJVSInstanceResponseBody(DaraModel):
     ):
         # The returned result object.
         self.data = data
-        # The maximum number of entries returned per page.
+        # The maximum number of results returned in this request.
         self.max_results = max_results
-        # The token that indicates the current position from which to start reading. An empty value indicates reading from the beginning.
+        # The token that specifies the starting position for the next query. An empty value indicates that the query starts from the beginning.
         self.next_token = next_token
         self.pending_upgrade_count = pending_upgrade_count
         # The request ID.
@@ -102,22 +102,22 @@ class DescribeJVSInstanceResponseBodyData(DaraModel):
         used_credit: List[main_models.DescribeJVSInstanceResponseBodyDataUsedCredit] = None,
     ):
         self.agent_version = agent_version
-        # The creation time.
+        # The creation time. The time is in UTC and follows the ISO 8601 standard.
         self.create_time = create_time
-        # The credit quota configuration. Subsequent quota configurations overwrite previous configurations.
+        # The credit limit configuration. Subsequent quota configurations overwrite previous configurations.
         self.credit_config = credit_config
-        # The expiration time.
+        # The expiration time. The time is in UTC and follows the ISO 8601 standard.
         self.expire_time = expire_time
         self.installed_skills = installed_skills
         # The instance ID.
         self.instance_id = instance_id
         # This parameter is not supported.
         self.jvs_package_id = jvs_package_id
-        # The modification time.
+        # The modification time. The time is in UTC and follows the ISO 8601 standard.
         self.modify_time = modify_time
         # The instance status.
         self.status = status
-        # The used credits.
+        # The used credit.
         self.used_credit = used_credit
 
     def validate(self):
@@ -333,15 +333,9 @@ class DescribeJVSInstanceResponseBodyDataCreditConfig(DaraModel):
         credit_limit: int = None,
         limit_period: str = None,
     ):
-        # The quota limit. Valid values:
-        # - 0: not available for use.
-        # - >0: the quota is configured based on the numeric value.
-        # - -1: unlimited.
+        # The limit value.
         self.credit_limit = credit_limit
-        # The quota period. Valid values:
-        # - total: The total usage limit.
-        # - month: Monthly. The quota resets based on the resource activation time as one cycle.
-        # - day: Daily. The quota resets at 00:00.
+        # The limit period.
         self.limit_period = limit_period
 
     def validate(self):

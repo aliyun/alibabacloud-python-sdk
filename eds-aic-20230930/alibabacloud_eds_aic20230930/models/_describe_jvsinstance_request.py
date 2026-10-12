@@ -15,7 +15,7 @@ class DescribeJVSInstanceRequest(DaraModel):
     ):
         # The list of instance IDs.
         self.instance_ids = instance_ids
-        # The number of entries per page.
+        # The maximum number of results per page.
         self.max_results = max_results
         # The pagination token.
         self.next_token = next_token

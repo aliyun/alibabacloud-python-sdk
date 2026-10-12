@@ -19,29 +19,25 @@ class DescribeMetricTopRequest(DaraModel):
         start_time: str = None,
     ):
         # For instance-level monitoring, specify a list of cloud phone instance IDs.
-        # 
-        # <props="china">
-        # 
-        # For matrix-level monitoring, specify a list of matrix IDs.
+        # <props="china">For matrix-level monitoring, specify a list of matrix IDs.
         self.android_instance_ids = android_instance_ids
-        # The end time of the query.
+        # The end time of the query for the monitoring metric. Specify the time in the YYYY-MM-DD HH:mm:ss format.
         self.end_time = end_time
         # The list of instance IDs.
         self.instance_ids = instance_ids
-        # The number of entries to return on each page. This parameter is used for paged queries.
-        # 
-        # > The maximum value is 100 when the metric is \\`instance_in_traffic\\` or \\`instance_out_traffic\\`.
+        # The number of entries to return on each page for the monitoring data. This parameter is used for paging in a paged query.
+        # > If the monitoring metric is instance_in_traffic or instance_out_traffic, the maximum value is 100.
         self.length = length
-        # The list of metrics.
+        # The list of monitoring metrics.
         # 
         # This parameter is required.
         self.metric_names = metric_names
-        # The token that marks the start of the next page of results. If you leave this parameter empty, the query starts from the beginning.
+        # The token that marks the position from which to start reading. If this parameter is left empty, the query starts from the beginning.
         self.next_token = next_token
         # The statistical period of the monitoring data.
         # Unit: seconds.
         self.period = period
-        # The start time of the query.
+        # The start time of the query for the monitoring metric. Specify the time in the YYYY-MM-DD HH:mm:ss format.
         self.start_time = start_time
 
     def validate(self):

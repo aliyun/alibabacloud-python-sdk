@@ -21,16 +21,17 @@ class DescribeSpecRequest(DaraModel):
     ):
         # The region ID.
         self.biz_region_id = biz_region_id
+        # The billing method. A value of PrePaid indicates subscription. A value of PostPaid indicates pay-as-you-go.
         self.charge_type = charge_type
         # The cloud phone matrix specification.
         self.matrix_spec = matrix_spec
-        # The maximum number of entries to return per page. Valid values: 1 to 100. Default value: 100.
+        # The maximum number of entries per page for a paged query. Valid values: 1 to 100. Default value: 100.
         self.max_results = max_results
-        # The position from which to start the query. Leave this parameter empty to query from the beginning.
+        # The token that specifies the position from which the query starts. If you leave this parameter empty, the query starts from the beginning.
         self.next_token = next_token
-        # The purchase mode of the cloud phone.
+        # The purchase mode for cloud phones.
         self.sale_mode = sale_mode
-        # A list of specification IDs.
+        # The list of specification IDs.
         self.spec_ids = spec_ids
         # The specification status.
         self.spec_status = spec_status

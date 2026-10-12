@@ -17,11 +17,11 @@ class DescribeCreditPackageResponseBody(DaraModel):
         total_count: int = None,
         total_exhausted_credit: str = None,
     ):
-        # The credit booster package information.
+        # The information about the credit boost packages.
         self.credits_package_infos = credits_package_infos
         # Indicates whether this is the first purchase.
         self.is_first_purchase = is_first_purchase
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The total number of available credits.
         self.total_available_credits = total_available_credits
@@ -100,20 +100,20 @@ class DescribeCreditPackageResponseBodyCreditsPackageInfos(DaraModel):
         expired_time: str = None,
         total_credits: str = None,
     ):
-        # The number of available credits in the current credit booster package.
+        # The number of available credits in the current credit boost package.
         self.available_credits = available_credits
         self.create_time = create_time
-        # The ID of the credit booster package.
+        # The ID of the credit boost package.
         self.credit_package_id = credit_package_id
-        # The status of the credit booster package.
+        # The status of the credit boost package.
         self.credit_package_status = credit_package_status
-        # The effective period of the credit booster package.
+        # The effective period of the credit boost package. The time format is YYYY-MM-DD HH:mm:ss.
         self.effective_time = effective_time
-        # The number of consumed credits in the current credit booster package.
+        # The number of consumed credits in the current credit boost package.
         self.exhausted_credits = exhausted_credits
-        # The expiration time of the credit booster package.
+        # The expiration time of the credit boost package. The time format is YYYY-MM-DD HH:mm:ss.
         self.expired_time = expired_time
-        # The total number of credits in the current credit booster package.
+        # The total number of credits in the current credit boost package.
         self.total_credits = total_credits
 
     def validate(self):

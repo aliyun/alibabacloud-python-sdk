@@ -18,13 +18,13 @@ class DescribeEdgeMobileAgentPackagesResponseBody(DaraModel):
     ):
         # The actual number of entries returned on the current page.
         self.max_results = max_results
-        # The pagination token for the next page. An empty value indicates that no more data exists.
+        # The pagination token for the next page. An empty value indicates that no more data is available.
         self.next_token = next_token
         # The list of packages.
         self.packages = packages
         # The request ID.
         self.request_id = request_id
-        # The total number of records.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -89,9 +89,9 @@ class DescribeEdgeMobileAgentPackagesResponseBodyPackages(DaraModel):
         package_spec: str = None,
         status: str = None,
     ):
-        # The device type.
+        # The device class.
         self.device_class = device_class
-        # The expiration time.
+        # The expiration time. The time format is YYYY-MM-DD HH:mm:ss.
         self.expire_date = expire_date
         # The list of license keys.
         self.license_keys = license_keys

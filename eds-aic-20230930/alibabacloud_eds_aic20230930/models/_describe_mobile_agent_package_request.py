@@ -20,7 +20,7 @@ class DescribeMobileAgentPackageRequest(DaraModel):
         self.instance_ids = instance_ids
         # The list of packages.
         self.package_ids = package_ids
-        # The package specification.
+        # The package specifications.
         self.package_spec = package_spec
         # The package status.
         self.package_status = package_status

@@ -16,13 +16,13 @@ class RunAgentTaskResponseBody(DaraModel):
         request_id: str = None,
         tasks: List[main_models.RunAgentTaskResponseBodyTasks] = None,
     ):
-        # The status code of the operation.
+        # The status code of the API operation.
         self.code = code
         # The number of tasks.
         self.count = count
-        # The response message.
+        # The message returned by the API operation.
         self.message = message
-        # The request ID.
+        # The unique ID of the request.
         self.request_id = request_id
         # The list of tasks.
         self.tasks = tasks
@@ -90,40 +90,28 @@ class RunAgentTaskResponseBodyTasks(DaraModel):
         user_prompt: str = None,
     ):
         # The current status of the task. Valid values:
-        # 
-        # PENDING: The task is being created.
-        # 
-        # RUNNING: The task is running.
-        # 
-        # COMPLETED: The task is completed.
-        # 
-        # FAILED: The task failed.
-        # 
-        # TIMEOUT: The task timed out.
-        # 
-        # CALL_FOR_USER: Waiting for user action.
-        # 
-        # PAUSING: The task is being paused.
-        # 
-        # PAUSED: The task is paused.
-        # 
-        # CANCELLING: The task is being canceled.
-        # 
-        # CANCELED: The task is canceled.
-        # 
-        # STOPPED: The task is stopped.
-        # 
-        # TIMEOUT: The task timed out.
+        # - PENDING: The task is being created.
+        # - RUNNING: The task is running.
+        # - COMPLETED: The task is completed.
+        # - FAILED: The task failed.
+        # - TIMEOUT: The task execution timed out.
+        # - CALL_FOR_USER: The task is waiting for user operations.
+        # - PAUSING: The task is being paused.
+        # - PAUSED: The task is paused.
+        # - CANCELLING: The task is being canceled.
+        # - CANCELED: The task is canceled.
+        # - STOPPED: The task is stopped.
+        # - TIMEOUT: The task timed out.
         self.current_status = current_status
-        # The Mobile node ID.
+        # The ID of the Mobile node.
         self.instance_id = instance_id
-        # The time when the task was created, in ISO 8601 format.
+        # The time when the task was created. The time is in the ISO 8601 format.
         self.running_at = running_at
-        # The session ID. Tasks with the same session ID share context.
+        # The session ID. Tasks with the same session ID share the context.
         self.session_id = session_id
-        # The task ID, which is globally unique.
+        # The globally unique ID of the task.
         self.task_id = task_id
-        # The user instruction in natural language. The Agent performs operations based on this instruction.
+        # The user prompt in natural language. The agent performs operations based on this prompt.
         self.user_prompt = user_prompt
 
     def validate(self):

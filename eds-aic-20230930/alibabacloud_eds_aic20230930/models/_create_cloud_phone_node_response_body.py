@@ -116,7 +116,7 @@ class CreateCloudPhoneNodeResponseBodyNetworkPackageOrderModel(DaraModel):
         bandwidth_package_id: str = None,
         bandwidth_package_order_id: str = None,
     ):
-        # The ID of the Internet Shared Bandwidth instance.
+        # The ID of the Internet Shared Bandwidth.
         self.bandwidth_package_id = bandwidth_package_id
         # The bandwidth plan order ID.
         self.bandwidth_package_order_id = bandwidth_package_order_id

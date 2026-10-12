@@ -28,12 +28,13 @@ class ChangeCloudPhoneNodeRequest(DaraModel):
         self.instance_type = instance_type
         # The cloud phone matrix ID.
         self.node_id = node_id
-        # The number of cloud phone instances. Call the [DescribeSpec](https://help.aliyun.com/document_detail/2807299.html) operation to query the maximum and minimum instance count limits.
+        # The number of cloud phone instances. You can call [DescribeSpec](https://help.aliyun.com/document_detail/2807299.html) to query the maximum and minimum instance count limits.
         self.phone_count = phone_count
-        # The device storage size. Valid values: 10 GiB to 4000 GiB. If this parameter is left empty, the current size is retained.
+        # The device storage size. Valid range: 10 GiB to 4000 GiB. If this parameter is left empty, the original size is retained.
         self.phone_data_volume = phone_data_volume
-        # The promotion ID.
+        # The promotional activity ID.
         self.promotion_id = promotion_id
+        # The shared storage size. Unit: GiB.
         self.share_data_volume = share_data_volume
         self.swap_size = swap_size
         # The upstream bandwidth throttling. Unit: Mbit/s.

@@ -19,23 +19,23 @@ class DescribeCreditDetailRequest(DaraModel):
         page_size: str = None,
         start_time: int = None,
     ):
-        # The list of agent types, used to filter credit change details by specified agent types.
+        # The agent types. This parameter is used to filter credit change details by agent type.
         self.agent_types = agent_types
-        # The end time.
+        # The end time. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # The list of instance IDs.
+        # The instance IDs.
         self.instance_ids = instance_ids
-        # The maximum number of entries to read in this request.
+        # The maximum number of entries to return for this query.
         self.max_results = max_results
-        # The token for the next query. If a query does not return all results, the returned NextToken is not empty. You can pass the returned NextToken in the next query to continue retrieving results.
+        # The token for the next query. If a query does not return all results, the returned NextToken is not empty. You can pass the returned NextToken in the next query to continue the query.
         self.next_token = next_token
-        # The list of package or credit booster pack IDs.
+        # The package IDs.
         self.package_ids = package_ids
-        # The page number for pagination. Default value: 1.
+        # The page number. Default value: 1.
         self.page_num = page_num
         # The number of entries per page.
         self.page_size = page_size
-        # The start time.
+        # The start time. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
 
     def validate(self):

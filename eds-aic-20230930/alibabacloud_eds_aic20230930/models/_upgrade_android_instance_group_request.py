@@ -19,8 +19,9 @@ class UpgradeAndroidInstanceGroupRequest(DaraModel):
         self.increase_number_of_instance = increase_number_of_instance
         # The ID of the instance group.
         self.instance_group_id = instance_group_id
+        # The redirect URL for the payment success page.
         self.paid_call_back_url = paid_call_back_url
-        # The promotion ID.
+        # The ID of the promotion.
         self.promotion_id = promotion_id
 
     def validate(self):

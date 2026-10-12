@@ -1,3 +1,8 @@
+2026-10-12 Version: 4.37.0
+- Support API CreateMobileAgentTask.
+- Support API ModifyMobileAgentPackage.
+
+
 2026-09-21 Version: 4.36.0
 - Support API UpdateCloudPhoneNodeSystemImage.
 - Update API CreateMobileAgentPackage: add request parameters Tag.

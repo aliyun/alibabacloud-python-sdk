@@ -17,10 +17,7 @@ class DescribeSkillsRequest(DaraModel):
     ):
         # The keyword in the skill name or skill description.
         self.keyword = keyword
-        # The language type. The skill description is returned in this language.
-        # 
-        # Valid values:
-        # 
+        # The language type. The skill description is returned in the specified language. Valid values:
         # - en: English.
         # - zh-CN: Chinese.
         self.language = language

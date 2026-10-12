@@ -15,11 +15,11 @@ class DescribeMetricLastResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The number of records.
+        # The total count.
         self.count = count
-        # The instance monitoring data.
+        # The list of instance monitoring results.
         self.metric_total_model = metric_total_model
-        # The token for the next query. If not all results are returned in a single query, the returned NextToken is not empty. You can use the returned NextToken in the next query to query the next page.
+        # The token for the next query. If a single query does not return all results, the returned NextToken is not empty. You can pass the returned NextToken in the next query to continue querying.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -76,10 +76,10 @@ class DescribeMetricLastResponseBodyMetricTotalModel(DaraModel):
         android_instance_id: str = None,
         metric_model_list: List[main_models.DescribeMetricLastResponseBodyMetricTotalModelMetricModelList] = None,
     ):
-        # For instance-level monitoring, the Cloud Phone instance ID is returned.
-        # <props="china">For matrix-level monitoring, the matrix ID is returned.
+        # The cloud phone instance ID returned for instance-level monitoring. 
+        # <props="china">The matrix ID returned for matrix-level monitoring.
         self.android_instance_id = android_instance_id
-        # The monitoring data for metrics.
+        # The list of metric monitoring results.
         self.metric_model_list = metric_model_list
 
     def validate(self):
@@ -123,13 +123,13 @@ class DescribeMetricLastResponseBodyMetricTotalModelMetricModelList(DaraModel):
         metric_name: str = None,
         process_last_infos: List[main_models.DescribeMetricLastResponseBodyMetricTotalModelMetricModelListProcessLastInfos] = None,
     ):
-        # The monitoring data points.
+        # The list of monitoring statistics data points.
         self.data_points = data_points
-        # The name of the metric.
+        # The name of the monitoring metric.
         self.metric_name = metric_name
-        # The process monitoring metrics.
+        # The list of process monitoring metrics.
         # 
-        # > This parameter is returned when the metric is \\`process_cpu\\` or \\`process_memory\\`.
+        # > This parameter is returned when the monitoring metric is process_cpu or process_memory.
         self.process_last_infos = process_last_infos
 
     def validate(self):
@@ -190,7 +190,7 @@ class DescribeMetricLastResponseBodyMetricTotalModelMetricModelListProcessLastIn
         process_ids: List[int] = None,
         timestamp: int = None,
     ):
-        # The CPU utilization. Unit: %.
+        # The CPU usage. Unit: %.
         self.cpu_usage = cpu_usage
         # The memory usage. Unit: %.
         self.memory_usage = memory_usage
@@ -198,7 +198,7 @@ class DescribeMetricLastResponseBodyMetricTotalModelMetricModelListProcessLastIn
         self.name = name
         # The list of process IDs.
         self.process_ids = process_ids
-        # The timestamp of the statistics. Unit: milliseconds.
+        # The statistical timestamp. Unit: milliseconds.
         self.timestamp = timestamp
 
     def validate(self):
@@ -255,20 +255,17 @@ class DescribeMetricLastResponseBodyMetricTotalModelMetricModelListDataPoints(Da
         timestamp: int = None,
     ):
         # The average value. Unit: %.
-        # 
-        # > The unit is bps when the metric is \\`bandwidth_package_usage_out\\` or \\`bandwidth_package_usage_in\\`.
+        # > The unit is bps when the monitoring metric is bandwidth_package_usage_out or bandwidth_package_usage_in.
         self.average = average
         # The GPU ID.
         self.gpu_id = gpu_id
         # The maximum value. Unit: %.
-        # 
-        # > The unit is bps when the metric is \\`bandwidth_package_usage_out\\` or \\`bandwidth_package_usage_in\\`.
+        # > The unit is bps when the monitoring metric is bandwidth_package_usage_out or bandwidth_package_usage_in.
         self.maximum = maximum
         # The minimum value. Unit: %.
-        # 
-        # > The unit is bps when the metric is \\`bandwidth_package_usage_out\\` or \\`bandwidth_package_usage_in\\`.
+        # > The unit is bps when the monitoring metric is bandwidth_package_usage_out or bandwidth_package_usage_in.
         self.minimum = minimum
-        # The timestamp of the statistics. Unit: milliseconds.
+        # The statistical timestamp. Unit: milliseconds.
         self.timestamp = timestamp
 
     def validate(self):

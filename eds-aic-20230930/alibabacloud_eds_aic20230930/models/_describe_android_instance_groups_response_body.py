@@ -15,9 +15,9 @@ class DescribeAndroidInstanceGroupsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The details of the instance groups.
+        # The details of the instance group.
         self.instance_group_model = instance_group_model
-        # The pagination token that indicates the position up to which data has been read in the current call. An empty value indicates that all data has been read.
+        # The token that indicates the read position returned by the current call. An empty value indicates that all data has been read.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -119,24 +119,24 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(DaraModel):
         # The architecture type.
         self.architecture_type = architecture_type
         # The number of available instances.
-        # 
-        # > Available means the instance status is not "being deleted" or "deleted".
+        # > Available indicates that the instance status is neither Deleting nor Deleted.
         self.available_instance_amount = available_instance_amount
-        # The ID of the bandwidth package.
+        # The ID of the bandwidth plan.
         self.bandwidth_package_id = bandwidth_package_id
-        # The status of the bandwidth package.
+        # The status of the bandwidth plan.
         # Valid values:
-        # - Creating: being created.
-        # - Releasing: being released.
-        # - InUse: in use.
-        # - Failed: failed.
-        # - Expired: expired.
-        # - Available: unbound and being billed.
+        # - Creating: creating
+        # - Releasing: releasing
+        # - InUse: in use
+        # - Failed: failed
+        # - Expired: expired
+        # - Available: available and unbound, billing in progress
         self.bandwidth_package_status = bandwidth_package_status
-        # The type of the bandwidth package.
+        # The type of the bandwidth plan.
         self.bandwidth_package_type = bandwidth_package_type
-        # The public network bandwidth limit rules for the instance group.
+        # The Internet bandwidth throttling rules for the instance group.
         self.bind_qos_rules = bind_qos_rules
+        # The order source. CLOUDPHONE indicates AI Cloud Phone.
         self.channel = channel
         # The billing method.
         self.charge_type = charge_type
@@ -144,9 +144,9 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(DaraModel):
         self.cpu = cpu
         # The disk information.
         self.disks = disks
-        # > This parameter is not publicly available.
+        # > This parameter is not available for public use.
         self.enable_ipv_6 = enable_ipv_6
-        # The reason for the creation failure.
+        # The cause of the creation failure.
         self.error_code = error_code
         # The creation time.
         self.gmt_create = gmt_create
@@ -160,38 +160,38 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(DaraModel):
         self.image_version = image_version
         # The list of installed applications.
         self.installed_app_list = installed_app_list
-        # The instance group ID.
+        # The ID of the instance group.
         self.instance_group_id = instance_group_id
-        # The instance group name.
+        # The name of the instance group.
         self.instance_group_name = instance_group_name
         # The instance group specifications.
         self.instance_group_spec = instance_group_spec
         # The description of the instance group specifications.
         self.instance_group_spec_describe = instance_group_spec_describe
-        # The instance group status.
+        # The status of the instance group.
         self.instance_group_status = instance_group_status
-        # > This parameter is not publicly available.
+        # > This parameter is not available for public use.
         self.ipv_6bandwidth = ipv_6bandwidth
         # The memory size.
         self.memory = memory
         # The network type of the instance.
-        # 
-        # > This field is returned only for instance groups with standard networking.
+        # > Currently, this field is returned only for instance groups in the standard network.
         self.network_type = network_type
         # The number of instances in the instance group.
         self.number_of_instances = number_of_instances
         # The network ID.
         self.office_site_id = office_site_id
+        # The ID of the plan package for the AI Cloud Phone.
         self.package_id = package_id
-        # The policy ID.
+        # The ID of the policy.
         self.policy_group_id = policy_group_id
         # The region ID.
         self.region_id = region_id
         # The rendering method of the instance group.
         self.rendering_type = rendering_type
-        # The height of the resolution.
+        # The resolution height.
         self.resolution_height = resolution_height
-        # The width of the resolution.
+        # The resolution width.
         self.resolution_width = resolution_width
         # The sales mode.
         self.sale_mode = sale_mode
@@ -521,7 +521,7 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelDisks(DaraModel
         disk_size: int = None,
         disk_type: str = None,
     ):
-        # The disk size (unit: GB).
+        # The disk size. Unit: GB.
         self.disk_size = disk_size
         # The disk type.
         self.disk_type = disk_type
@@ -558,9 +558,9 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRules(Da
         instance_qos_rule: List[main_models.DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRulesInstanceQosRule] = None,
         total_count: int = None,
     ):
-        # The public network bandwidth limit rule bound to the instance.
+        # The Internet bandwidth throttling rules bound to the instances.
         self.instance_qos_rule = instance_qos_rule
-        # The total number of public network bandwidth limit rules for the instance group.
+        # The total number of Internet bandwidth throttling rules for the instance group.
         self.total_count = total_count
 
     def validate(self):
@@ -605,7 +605,7 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRulesIns
     ):
         # The instance ID.
         self.instance_id = instance_id
-        # The ID of the public network bandwidth limit rule (applies only to premium bandwidth).
+        # The ID of the Internet bandwidth throttling rule (applies only to premium bandwidth).
         self.qos_rule_id = qos_rule_id
 
     def validate(self):

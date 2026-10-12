@@ -27,29 +27,32 @@ class DescribeAndroidInstanceGroupsRequest(DaraModel):
     ):
         # The region ID.
         self.biz_region_id = biz_region_id
-        # The billing type.
-        # [_single.params.ChargeType.enum. PrePaid]subscription
+        # The billing method.
+        # [_single.params.ChargeType.enum. PrePaid]Subscription.
         self.charge_type = charge_type
-        # The list of instance group IDs.
+        # The IDs of the instance groups.
         self.instance_group_ids = instance_group_ids
-        # The instance group name. Fuzzy match is supported.
+        # The name of the instance group. Fuzzy match is supported.
         self.instance_group_name = instance_group_name
+        # The instance version. A value of basic indicates a Wuying Cloud Phone instance, and a value of EnterpriseAi indicates a JVS Mobile instance.
         self.instance_version = instance_version
         # The ID of the key pair.
         self.key_pair_id = key_pair_id
-        # The maximum number of entries per page for a paged query. Valid values: 1 to 100. Default value: 100.
+        # The maximum number of entries to return on each page in a paging query. Valid values: 1 to 100. Default value: 100.
         self.max_results = max_results
-        # The pagination token that indicates the position from which to start reading. An empty value indicates reading from the beginning.
+        # The token that indicates the starting position for the query. If this parameter is left empty, the query starts from the beginning.
         self.next_token = next_token
-        # The policy ID.
+        # The ID of the policy.
         self.policy_group_id = policy_group_id
         # The purchase mode of the cloud phone.
         self.sale_mode = sale_mode
+        # The sort field. A value of CreationTime indicates the creation time, and a value of ExpiredTime indicates the expiration time.
         self.sort_key = sort_key
+        # The sort order. A value of ASC indicates ascending order, and a value of DESC indicates descending order.
         self.sort_type = sort_type
-        # The instance group status.
+        # The status of the instance group.
         self.status = status
-        # The tags of the instance group. You can bind up to 20 tags to each instance.
+        # The tags of the instance group. You can add up to 20 tags to each instance.
         self.tags = tags
 
     def validate(self):
@@ -165,10 +168,10 @@ class DescribeAndroidInstanceGroupsRequestTags(DaraModel):
         value: str = None,
     ):
         # The tag key. You can specify 1 to 20 tag keys.
-        # >Notice: The tag key can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
+        # >Notice: A tag key can be up to 128 characters in length. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
         self.key = key
         # The tag value.
-        # >Notice: The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # >Notice: A tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

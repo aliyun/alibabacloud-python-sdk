@@ -19,17 +19,17 @@ class DescribeBucketsResponseBody(DaraModel):
     ):
         # The error code.
         # 
-        # > This parameter is returned only when the call fails.
+        # > This parameter is returned only when an error occurs during the API call.
         self.code = code
         # The returned result object.
         self.data = data
-        # The return status code of the request.
+        # The HTTP status code.
         self.http_status_code = http_status_code
         # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The result of the request.
+        # The request result.
         self.success = success
 
     def validate(self):
@@ -101,17 +101,17 @@ class DescribeBucketsResponseBodyData(DaraModel):
         oss_object_list: List[main_models.DescribeBucketsResponseBodyDataOssObjectList] = None,
         region_id: str = None,
     ):
-        # The name of the bucket.
+        # The bucket name.
         self.bucket_name = bucket_name
-        # The public endpoint that is used to access the bucket.
+        # The public endpoint used to access the bucket.
         self.extranet_endpoint = extranet_endpoint
-        # The time when the bucket was created.
+        # The creation time.
         self.gmt_created = gmt_created
-        # The internal endpoint that is used by a same-region ECS instance to access the bucket.
+        # The internal endpoint used by ECS instances in the same region to access the bucket.
         self.intranet_endpoint = intranet_endpoint
-        # The storage path, such as a path in Hadoop Distributed File System (HDFS) or OSS.
+        # The storage path, such as HDFS or OSS.
         self.location = location
-        # The information about the objects in the bucket.
+        # The information about objects in the bucket.
         self.oss_object_list = oss_object_list
         # The region ID.
         self.region_id = region_id
@@ -193,43 +193,37 @@ class DescribeBucketsResponseBodyDataOssObjectList(DaraModel):
         storage_class: str = None,
         type: str = None,
     ):
-        # The name of the bucket.
+        # The bucket name.
         self.bucket_name = bucket_name
-        # The Entity Tag (ETag) is created when an object is generated. It is used to identify the content of an object.
+        # The ETag (Entity Tag) is created when an object is generated and is used to identify the content of the object.
         # 
-        # - For an object created by a PutObject request, the ETag value is the MD5 hash of the object content.
+        # - For an object created by a PutObject request, the ETag is the MD5 hash of the object content.
         # 
-        # - For an object created by other methods, the ETag value is a unique value generated based on specific calculation rules. It is not the MD5 hash of the object content.
+        # - For an object created by other methods, the ETag is a unique value generated based on specific calculation rules, but it is not the MD5 hash of the object content.
         # 
-        # - The ETag value can be used to check if the object content has changed. Do not use the ETag value as the MD5 hash to verify the data integrity of the object.
+        # - You can use the ETag to check whether the object content has changed. Do not use the ETag as the MD5 hash to verify the data integrity of the object content.
         self.etag = etag
         # The tag key.
         self.key = key
         # The time when the object was last modified.
         self.last_modified = last_modified
-        # The information about the bucket owner.
+        # The bucket owner information.
         self.owner = owner
-        # The information about database recovery if the database type is MSSQL. The value is a JSON string that contains the following parameters:
-        # 
-        # - **name**: The name of the database.
-        # 
-        # - **files**: The path of the database file.
+        # The database restoration information when the restored database type is MSSQL. The value is a JSON string that contains the following fields:
+        # - **name**: The database name.
+        # - **files**: The database file path.
         self.restore_info = restore_info
-        # The size of the file. Unit: KB.
+        # The file size. Unit: KB.
         self.size = size
         # The storage class of the bucket. Valid values:
         # 
-        # - Standard (default): Standard
-        # 
-        # - IA: Infrequent Access
-        # 
-        # - Archive: Archive Storage
-        # 
-        # - ColdArchive: Cold Archive
-        # 
-        # - DeepColdArchive: Deep Cold Archive
+        # - Standard: Standard storage (default).
+        # - IA: Infrequent Access.
+        # - Archive: Archive.
+        # - ColdArchive: Cold Archive.
+        # - DeepColdArchive: Deep Cold Archive.
         self.storage_class = storage_class
-        # The type of the trigger method.
+        # The trigger type.
         self.type = type
 
     def validate(self):

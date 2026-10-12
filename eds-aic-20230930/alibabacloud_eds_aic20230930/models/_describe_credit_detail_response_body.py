@@ -13,7 +13,7 @@ class DescribeCreditDetailResponseBody(DaraModel):
         data: main_models.DescribeCreditDetailResponseBodyData = None,
         request_id: str = None,
     ):
-        # The response object.
+        # The returned data object.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -60,11 +60,11 @@ class DescribeCreditDetailResponseBodyData(DaraModel):
         self.details = details
         # The token for the next query.
         self.next_token = next_token
-        # The page number for pagination. Default value: 1.
+        # The page number. Default value: 1.
         self.page_num = page_num
         # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
-        # The total number of detail records.
+        # The total number of records.
         self.total_count = total_count
         # The total credit change.
         self.total_credit_change = total_credit_change
@@ -148,19 +148,19 @@ class DescribeCreditDetailResponseBodyDataDetails(DaraModel):
         total_tokens: int = None,
         ttft_ms: int = None,
     ):
-        # The agent type. This field is populated only when querying by a single agent type.
+        # The agent type. This field is populated only when you query by a single agent type.
         self.agent_type = agent_type
         # The API key name.
         self.api_key_name = api_key_name
         # The number of cached tokens.
         self.cached_tokens = cached_tokens
-        # The time when the change occurred.
+        # The time when the change occurred. The time is in UTC and follows the ISO 8601 standard.
         self.change_time = change_time
         # The credit change amount.
         self.credit_change = credit_change
         # The task description.
         self.description = description
-        # The model inference duration, in milliseconds.
+        # The model inference duration in milliseconds.
         self.duration_ms = duration_ms
         # The number of input tokens.
         self.input_tokens = input_tokens
@@ -180,7 +180,7 @@ class DescribeCreditDetailResponseBodyDataDetails(DaraModel):
         self.task_id = task_id
         # The total number of tokens.
         self.total_tokens = total_tokens
-        # The response time of the first token, in milliseconds.
+        # The first token response time, in milliseconds.
         self.ttft_ms = ttft_ms
 
     def validate(self):

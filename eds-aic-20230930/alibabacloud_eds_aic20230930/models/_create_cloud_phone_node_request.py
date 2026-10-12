@@ -57,9 +57,9 @@ class CreateCloudPhoneNodeRequest(DaraModel):
         # This parameter is required.
         self.biz_region_id = biz_region_id
         self.channel_cookie = channel_cookie
-        # The billing type. Only subscription is supported.
+        # The billing method. Only subscription is supported.
         self.charge_type = charge_type
-        # The number of cloud phone matrices to purchase.
+        # The Quantity of the cloud phone matrix.
         self.count = count
         # The display settings.
         self.display_config = display_config
@@ -67,8 +67,7 @@ class CreateCloudPhoneNodeRequest(DaraModel):
         self.down_bandwidth_limit = down_bandwidth_limit
         # The image ID.
         self.image_id = image_id
-        # The instance type.
-        # > To purchase more instance types, [contact pre-sales support](https://smartservice.console.aliyun.com/service/pre-sales-chat?spm=5176.6d6ecb63.0.0.729adda2VqVQx7).
+        # The instance type. > To purchase more instance types, you can [contact pre-sales support](https://smartservice.console.aliyun.com/service/pre-sales-chat?spm=5176.6d6ecb63.0.0.729adda2VqVQx7).
         self.instance_type = instance_type
         self.is_single_img_disk = is_single_img_disk
         # The office network ID.
@@ -79,18 +78,20 @@ class CreateCloudPhoneNodeRequest(DaraModel):
         self.network_type = network_type
         # The name of the cloud phone matrix.
         self.node_name = node_name
+        # The redirect URL for the payment success page.
         self.paid_call_back_url = paid_call_back_url
-        # The subscription duration. The unit is specified by PeriodUnit.
+        # The subscription period of the resource. The unit is specified by `PeriodUnit`.
         # 
-        # - If PeriodUnit is set to **year**, the value can only be 1.
-        # - If PeriodUnit is set to **month**, valid values are 1, 2, 3, and 6.
+        # - If `PeriodUnit` is set to **year**, the only valid value is 1.
+        # - If `PeriodUnit` is set to **month**, valid values are 1, 2, 3, and 6.
         self.period = period
-        # The unit of the subscription duration.
+        # The unit of the subscription period.
         self.period_unit = period_unit
         # The number of cloud phone instances to create in a single matrix.
         self.phone_count = phone_count
         # The size of the independent device storage. Unit: GiB.
         self.phone_data_volume = phone_data_volume
+        # The ID of the promotion.
         self.promotion_id = promotion_id
         # The height of the resolution. Unit: pixels.
         self.resolution_height = resolution_height
@@ -98,9 +99,9 @@ class CreateCloudPhoneNodeRequest(DaraModel):
         self.resolution_width = resolution_width
         # The size of the shared device storage. Unit: GiB.
         # 
-        # > The minimum value of the shared device storage must be greater than the number of instances in the matrix multiplied by 10 GiB.
+        # > The minimum size of the shared device storage must be greater than the number of instances in the matrix multiplied by 10 GiB.
         self.server_share_data_volume = server_share_data_volume
-        # The specifications of the cloud phone matrix.
+        # The specification of the cloud phone matrix.
         # 
         # This parameter is required.
         self.server_type = server_type
@@ -111,7 +112,7 @@ class CreateCloudPhoneNodeRequest(DaraModel):
         self.tag = tag
         # The upstream bandwidth throttling. Unit: Mbit/s.
         self.up_bandwidth_limit = up_bandwidth_limit
-        # Specifies whether to use a template during creation. Set this parameter to `Random` to use a random template from the template list. Alternatively, specify a template ID to use that template.
+        # Specifies whether to use a template during creation. If you want to use a random template from the template list, set the value to `Random`. If you specify a template ID, the specified template is used.
         self.use_template = use_template
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
@@ -396,12 +397,12 @@ class CreateCloudPhoneNodeRequestNetworkInfo(DaraModel):
         self.bandwidth_package_name = bandwidth_package_name
         # The private CIDR block.
         self.cidr_block = cidr_block
-        # The billable methods of the bandwidth plan. Valid values:
+        # The Billable methods of the bandwidth plan. Valid values:
         # 
         # <props="china">
         # 
         # - **PayByBandwidth** (default): pay-by-bandwidth.
-        # - **PayBy95**: pay-by-95th-percentile. IPv6 Internet bandwidth does not support pay-by-95th-percentile billing by default. To use this billing method, contact your account manager.
+        # - **PayBy95**: pay-by-95th-percentile-bandwidth. IPv6 Internet bandwidth does not support pay-by-95th-percentile-bandwidth by default. To use this billing method, contact your account manager.
         # 
         # 
         # <props="intl">
@@ -412,10 +413,11 @@ class CreateCloudPhoneNodeRequestNetworkInfo(DaraModel):
         self.ip_ratio = ip_ratio
         # The line type.
         self.isp = isp
-        # The maximum bandwidth of the bandwidth plan. Unit: Mbit/s. The total bandwidth of all instances that use this bandwidth plan is subject to this limit.
+        # The peak bandwidth limit of the bandwidth plan. Unit: Mbit/s. The total bandwidth of all instances that use this bandwidth plan is subject to this limit.
         self.limited_bandwidth = limited_bandwidth
+        # The redirect URL for the payment success page.
         self.paid_callback_url = paid_callback_url
-        # The billing type.
+        # The billing method.
         self.pay_type = pay_type
         # The visibility scope.
         self.visible_type = visible_type
@@ -497,7 +499,7 @@ class CreateCloudPhoneNodeRequestDisplayConfig(DaraModel):
     ):
         # The DPI. Valid values: 72 to 600.
         self.dpi = dpi
-        # > This parameter is not yet available for public use.
+        # > This parameter is not available.
         self.fps = fps
         # Specifies whether to lock the resolution.
         self.lock_resolution = lock_resolution

@@ -66,6 +66,9 @@ from ._create_key_pair_response import CreateKeyPairResponse
 from ._create_mobile_agent_package_request import CreateMobileAgentPackageRequest
 from ._create_mobile_agent_package_response_body import CreateMobileAgentPackageResponseBody
 from ._create_mobile_agent_package_response import CreateMobileAgentPackageResponse
+from ._create_mobile_agent_task_request import CreateMobileAgentTaskRequest
+from ._create_mobile_agent_task_response_body import CreateMobileAgentTaskResponseBody
+from ._create_mobile_agent_task_response import CreateMobileAgentTaskResponse
 from ._create_policy_group_request import CreatePolicyGroupRequest
 from ._create_policy_group_shrink_request import CreatePolicyGroupShrinkRequest
 from ._create_policy_group_response_body import CreatePolicyGroupResponseBody
@@ -281,6 +284,9 @@ from ._modify_jvsinstance_response import ModifyJVSInstanceResponse
 from ._modify_key_pair_name_request import ModifyKeyPairNameRequest
 from ._modify_key_pair_name_response_body import ModifyKeyPairNameResponseBody
 from ._modify_key_pair_name_response import ModifyKeyPairNameResponse
+from ._modify_mobile_agent_package_request import ModifyMobileAgentPackageRequest
+from ._modify_mobile_agent_package_response_body import ModifyMobileAgentPackageResponseBody
+from ._modify_mobile_agent_package_response import ModifyMobileAgentPackageResponse
 from ._modify_policy_group_request import ModifyPolicyGroupRequest
 from ._modify_policy_group_shrink_request import ModifyPolicyGroupShrinkRequest
 from ._modify_policy_group_response_body import ModifyPolicyGroupResponseBody
@@ -420,6 +426,7 @@ from ._create_cloud_phone_node_response_body import CreateCloudPhoneNodeResponse
 from ._create_cloud_phone_node_response_body import CreateCloudPhoneNodeResponseBodyNodeInfos
 from ._create_key_pair_response_body import CreateKeyPairResponseBodyData
 from ._create_mobile_agent_package_request import CreateMobileAgentPackageRequestTag
+from ._create_mobile_agent_task_response_body import CreateMobileAgentTaskResponseBodyData
 from ._create_policy_group_request import CreatePolicyGroupRequestNetRedirectPolicyRules
 from ._create_policy_group_request import CreatePolicyGroupRequestNetRedirectPolicy
 from ._create_policy_group_request import CreatePolicyGroupRequestWatermark
@@ -518,6 +525,7 @@ from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagRe
 from ._modify_display_config_request import ModifyDisplayConfigRequestDisplayConfig
 from ._modify_instance_group_spec_response_body import ModifyInstanceGroupSpecResponseBodyOrderInfo
 from ._modify_jvsinstance_request import ModifyJVSInstanceRequestCreditConfig
+from ._modify_mobile_agent_package_request import ModifyMobileAgentPackageRequestTag
 from ._modify_policy_group_request import ModifyPolicyGroupRequestNetRedirectPolicyRules
 from ._modify_policy_group_request import ModifyPolicyGroupRequestNetRedirectPolicy
 from ._modify_policy_group_request import ModifyPolicyGroupRequestWatermark
@@ -618,6 +626,9 @@ __all__ = [
     CreateMobileAgentPackageRequest,
     CreateMobileAgentPackageResponseBody,
     CreateMobileAgentPackageResponse,
+    CreateMobileAgentTaskRequest,
+    CreateMobileAgentTaskResponseBody,
+    CreateMobileAgentTaskResponse,
     CreatePolicyGroupRequest,
     CreatePolicyGroupShrinkRequest,
     CreatePolicyGroupResponseBody,
@@ -833,6 +844,9 @@ __all__ = [
     ModifyKeyPairNameRequest,
     ModifyKeyPairNameResponseBody,
     ModifyKeyPairNameResponse,
+    ModifyMobileAgentPackageRequest,
+    ModifyMobileAgentPackageResponseBody,
+    ModifyMobileAgentPackageResponse,
     ModifyPolicyGroupRequest,
     ModifyPolicyGroupShrinkRequest,
     ModifyPolicyGroupResponseBody,
@@ -972,6 +986,7 @@ __all__ = [
     CreateCloudPhoneNodeResponseBodyNodeInfos,
     CreateKeyPairResponseBodyData,
     CreateMobileAgentPackageRequestTag,
+    CreateMobileAgentTaskResponseBodyData,
     CreatePolicyGroupRequestNetRedirectPolicyRules,
     CreatePolicyGroupRequestNetRedirectPolicy,
     CreatePolicyGroupRequestWatermark,
@@ -1070,6 +1085,7 @@ __all__ = [
     ModifyDisplayConfigRequestDisplayConfig,
     ModifyInstanceGroupSpecResponseBodyOrderInfo,
     ModifyJVSInstanceRequestCreditConfig,
+    ModifyMobileAgentPackageRequestTag,
     ModifyPolicyGroupRequestNetRedirectPolicyRules,
     ModifyPolicyGroupRequestNetRedirectPolicy,
     ModifyPolicyGroupRequestWatermark,

@@ -14,13 +14,13 @@ class DescribeEdgeMobileAgentPackagesRequest(DaraModel):
         package_ids: str = None,
         status: str = None,
     ):
-        # The device type filter. Valid values: BOX, PHONE, PAD, and OTHER.
+        # The device class filter. Valid values: BOX, PHONE, PAD, and OTHER.
         self.device_class = device_class
         # The list of license keys. Separate multiple keys with commas.
         self.license_keys = license_keys
-        # The maximum number of entries per page. Valid values: 1 to 100. Default value: 20.
+        # The maximum number of entries to return per page. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
-        # The pagination token. Leave this parameter empty for the first query. For subsequent queries, use the value returned in the previous response.
+        # The pagination token. Leave this parameter empty for the first query. For subsequent queries, obtain the token from the previous response.
         self.next_token = next_token
         # The list of package IDs. Separate multiple IDs with commas.
         self.package_ids = package_ids

@@ -15,13 +15,13 @@ class DescribeTasksResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The objects that are returned.
+        # The list of returned result objects.
         self.data = data
-        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        # The token that specifies the starting position for reading. If this parameter is left empty, the reading starts from the beginning.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -100,45 +100,45 @@ class DescribeTasksResponseBodyData(DaraModel):
         self.error_code = error_code
         # The error message.
         self.error_msg = error_msg
-        # The total number of failed subtasks.
+        # The total number of failed child tasks.
         self.failed_child_count = failed_child_count
-        # The end time of the task.
+        # The end time of the task. The time is displayed in UTC and follows the ISO 8601 standard.
         self.finish_time = finish_time
-        # The ID of the cloud phone instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The name of the cloud phone instance.
+        # The instance name.
         self.instance_name = instance_name
-        # The state of the cloud phone instance.
+        # The instance status.
         self.instance_status = instance_status
-        # The ID of the command execution.
+        # The command execution ID.
         self.invoke_id = invoke_id
-        # The level of the task.
+        # The task level.
         self.level = level
         # The operator.
         self.operator = operator
-        # The parameters of the task.
+        # The task parameters.
         self.param = param
-        # The ID of the parent task.
+        # The parent task ID.
         self.parent_task_id = parent_task_id
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
-        # The ID of the resource.
+        # The resource ID.
         self.resource_id = resource_id
-        # The execution result of the task.
+        # The task execution result.
         self.result = result
-        # The total number of the subtasks that are running.
+        # The total number of running child tasks.
         self.running_child_count = running_child_count
-        # The start time of the task.
+        # The start time of the task. The time is displayed in UTC and follows the ISO 8601 standard.
         self.start_time = start_time
-        # The total number of successfully executed subtasks.
+        # The total number of successful child tasks.
         self.success_child_count = success_child_count
-        # The ID of the task.
+        # The task ID.
         self.task_id = task_id
-        # The state of the task.
+        # The task status.
         self.task_status = task_status
-        # The type of the task.
+        # The task type.
         self.task_type = task_type
-        # The total number of subtasks of the current batch task.
+        # The total number of child tasks for the current batch task.
         self.total_child_count = total_child_count
 
     def validate(self):

@@ -17,14 +17,15 @@ class ExpandDataVolumeRequest(DaraModel):
         promotion_id: str = None,
         share_data_volume: int = None,
     ):
-        # Specifies whether to enable automatic payment. The default value is false.
+        # Specifies whether to enable automatic payment. Default value: false.
         self.auto_pay = auto_pay
         # The region ID.
         self.biz_region_id = biz_region_id
-        # The IDs of the cloud phone matrices.
+        # The list of cloud phone matrix IDs.
         self.node_ids = node_ids
+        # The redirect URL for the payment success page.
         self.paid_call_back_url = paid_call_back_url
-        # The size of the instance storage. Unit: GiB.
+        # The size of the device storage for the instance. Unit: GiB.
         self.phone_data_volume = phone_data_volume
         # The promotion ID.
         self.promotion_id = promotion_id

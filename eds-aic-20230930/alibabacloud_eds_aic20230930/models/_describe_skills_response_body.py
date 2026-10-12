@@ -100,15 +100,15 @@ class DescribeSkillsResponseBodySkillInfo(DaraModel):
     ):
         # The skill category.
         self.category = category
-        # The creation time.
+        # The creation time. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
         # The skill description.
         self.description = description
         # The OSS download URL of the skill icon.
         self.icon_oss_url = icon_oss_url
-        # The number of instances that have the skill installed.
+        # The number of instances on which the skill is installed.
         self.installed_count = installed_count
-        # The information about the installed instances.
+        # The information about the instances on which the skill is installed.
         self.installed_instances = installed_instances
         # The skill summary.
         self.instruction = instruction
@@ -118,15 +118,15 @@ class DescribeSkillsResponseBodySkillInfo(DaraModel):
         self.skill_name = skill_name
         # The skill source.
         self.skill_source = skill_source
-        # The skill lifecycle status.
+        # The lifecycle status of the skill.
         self.skill_status = skill_status
-        # The source node ID of the skill created from a conversation. This value is empty for user-uploaded skills.
+        # The source node ID of the skill created from a conversation. This parameter is empty if the skill is uploaded by a user.
         self.source_instance_id = source_instance_id
         # The skill status.
         self.status = status
         # The skill type.
         self.type = type
-        # The skill version.
+        # The skill version number.
         self.version = version
 
     def validate(self):

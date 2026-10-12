@@ -36,45 +36,57 @@ class DescribeAndroidInstancesRequest(DaraModel):
     ):
         # The list of instance IDs.
         self.android_instance_ids = android_instance_ids
-        # The instance name.
+        # The name of the instance.
         self.android_instance_name = android_instance_name
-        # The application management policy ID.
+        # The ID of the application control rule.
         self.app_manage_policy_id = app_manage_policy_id
-        # The user ID assigned to the instance, which is the China Wuying convenience account ID.
+        # The ID of the user assigned to the instance, which is the Wuying convenience user ID.
         self.authorized_user_id = authorized_user_id
-        # <props="china">The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/2807298.html) to query the list of regions that support purchasing cloud phones of different editions (Instance Edition or Matrix Edition).
+        # <props="china">The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/2807298.html) operation to query the list of regions where different versions of cloud phones (instance edition and matrix edition) are available for purchase.
+        # 
+        # <props="intl">The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/2807298.html) operation to query the list of regions where cloud phones are available for purchase.
         self.biz_region_id = biz_region_id
-        # The billing type.
+        # The billing method.
         self.charge_type = charge_type
-        # The instance group ID.
+        # The ID of the instance group.
         self.instance_group_id = instance_group_id
         # The list of instance group IDs.
         self.instance_group_ids = instance_group_ids
-        # The instance group name.
+        # The name of the instance group.
         self.instance_group_name = instance_group_name
         # The instance version. Default value: basic, which queries Wuying cloud phone instances.
         self.instance_version = instance_version
-        # The ID of the bound key pair.
+        # The ID of the associated key pair.
         self.key_pair_id = key_pair_id
-        # The maximum number of entries per page for a paged query. Valid values: 1 to 100. Default value: 100.
+        # The maximum number of entries per page for paging. Valid values: 1 to 100. Default value: 100.
         self.max_results = max_results
-        # The pagination token that indicates the position from which to start reading. Leave this parameter empty to read from the beginning.
+        # The token that specifies the starting position for the next query. An empty value indicates that the query starts from the beginning.
         self.next_token = next_token
         # <props="china">The matrix ID.
+        # <props="intl">This parameter is not publicly available.
         self.node_id = node_id
         # <props="china">The name of the matrix.
+        # <props="intl">This parameter is not publicly available.
         self.node_name = node_name
-        # The cloud phone network IDs.
+        # The ID of the cloud phone network.
         self.office_site_ids = office_site_ids
         # The private IP address of the instance.
         self.private_ip_address = private_ip_address
-        # The IDs of the public network rate limiting rule groups. These are rate limiting rules for instances in the basic shared network.
+        # The ID of the public network throttling rule group. This specifies the throttling rules for instances in the basic shared network.
         self.qos_rule_ids = qos_rule_ids
-        # The sales mode.
+        # The sale mode.
         self.sale_mode = sale_mode
         # The sort key used when querying resources.
+        # 
+        # This parameter must be used together with SortType. Valid values: CreationTime and ExpiredTime.
+        # 
+        # If you set this parameter to CreationTime, the resources are sorted by creation time. If you set this parameter to ExpiredTime, the resources are sorted by expiration time.
+        # 
+        # By default, resources are sorted in descending order of creation time.
         self.sort_key = sort_key
-        # The sort order. Default value: descending order. Valid values:
+        # The sort order. Default value: DESC. Valid values:
+        # - ASC: ascending order
+        # - DESC: descending order
         self.sort_type = sort_type
         # The instance status.
         self.status = status

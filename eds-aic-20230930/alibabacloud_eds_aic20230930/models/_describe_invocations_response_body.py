@@ -71,17 +71,17 @@ class DescribeInvocationsResponseBodyData(DaraModel):
         output: str = None,
         start_time: str = None,
     ):
-        # The time when the command finished running.
+        # The end time of the command execution. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.finish_time = finish_time
-        # The ID of the instance where the command was run.
+        # The instance ID on which the current command is executed.
         self.instance_id = instance_id
-        # The ID of the command execution.
+        # The command execution ID.
         self.invocation_id = invocation_id
-        # The status of the command execution.
+        # The execution status of the command.
         self.invocation_status = invocation_status
         # The output of the command execution.
         self.output = output
-        # The time when the command started to run.
+        # The start time of the command execution. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.start_time = start_time
 
     def validate(self):

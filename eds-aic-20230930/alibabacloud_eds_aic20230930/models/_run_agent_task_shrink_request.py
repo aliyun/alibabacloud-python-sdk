@@ -21,25 +21,25 @@ class RunAgentTaskShrinkRequest(DaraModel):
         timeout_seconds: int = None,
         user_prompt: str = None,
     ):
-        # The region ID of the Mobile node.
+        # The ID of the region where the Mobile node resides.
         self.biz_region_id = biz_region_id
-        # The list of Mobile node IDs. A maximum of 100 nodes are supported per request.
+        # The list of Mobile node IDs. A single request supports up to 100 nodes.
         self.instance_ids = instance_ids
-        # The maximum number of execution steps for the task. This prevents infinite loops. Valid values: 30 to 1000. Default value: 1000.
+        # The maximum number of execution steps for the task to prevent infinite loops. Valid values: 50 to 1000. Default value: 50.
         self.max_steps = max_steps
-        # The runtime configuration that carries the runtime parameters (skills) for this task.
+        # The runtime configuration that contains the runtime parameters such as skills for the current task.
         self.run_config_shrink = run_config_shrink
-        # Specifies whether to write the task artifacts to the user\\"s OSS bucket.
+        # Specifies whether to save the task artifacts to your OSS.
         self.save_artifacts = save_artifacts
-        # The scheduling plan ID. When specified, the execution record is associated with the corresponding scheduled node, which facilitates aggregate query by scheduling dimension through aggregation.
+        # The ID of the scheduling plan. When specified, the execute record is associated with the corresponding scheduled node, which facilitates aggregate query by scheduling aggregation dimension.
         self.schedule_id = schedule_id
-        # An array of target objects. Each element contains an InstanceId and a SessionId.
+        # The list of targets. Each element is an object that contains an InstanceId and a SessionId.
         self.targets = targets
-        # The task configuration ID. This parameter is used to trigger a task with the specified configuration.
+        # The ID of the task configuration. This parameter is used to trigger a task with the specified configuration.
         self.task_config_id = task_config_id
-        # The task timeout period, in seconds. Valid values: 300 to 3600. Default value: 3600.
+        # The timeout period of the task in seconds. Valid values: 300 to 3600. Default value: 3600.
         self.timeout_seconds = timeout_seconds
-        # The user instruction in natural language. The Agent performs operations based on this instruction.
+        # The user prompt in natural language. The agent performs operations based on this prompt.
         self.user_prompt = user_prompt
 
     def validate(self):
@@ -130,9 +130,9 @@ class RunAgentTaskShrinkRequestTargets(DaraModel):
         instance_id: str = None,
         session_id: str = None,
     ):
-        # The Mobile node ID, such as acp-xxx.
+        # The ID of the Mobile node, such as acp-xxx.
         self.instance_id = instance_id
-        # The session ID. Tasks with the same session ID share context, such as ses-260702-21b****.
+        # The session ID. Tasks with the same session ID share the context, such as ses-260702-21b****.
         self.session_id = session_id
 
     def validate(self):

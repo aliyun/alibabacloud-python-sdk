@@ -26,28 +26,29 @@ class DescribeBackupFilesRequest(DaraModel):
     ):
         # The instance ID.
         self.android_instance_id = android_instance_id
-        # The instance name. Fuzzy match is supported.
+        # The name of the instance. Fuzzy match is supported.
         self.android_instance_name = android_instance_name
-        # Specifies whether to perform a full device backup.
+        # Specifies whether the backup is a full-device backup.
         self.backup_all = backup_all
-        # The backup file ID.
+        # The ID of the backup file.
         self.backup_file_id = backup_file_id
-        # The backup file name. Fuzzy match is supported.
+        # The name of the backup file. Fuzzy match is supported.
         self.backup_file_name = backup_file_name
         # The description. Fuzzy match is supported.
         self.description = description
-        # Queries backup files created before the specified time.
+        # The end time to query backup files. Specify the time in the YYYY-MM-DD HH:mm:ss format.
         self.end_time = end_time
         # The owner of the backup file.
         self.end_user_id = end_user_id
-        # The instance group ID.
+        # The ID of the instance group.
         self.instance_group_id = instance_group_id
-        # The maximum number of entries per page for a paged query. Valid values: 1 to 100. Default value: 10.
+        # The maximum number of entries per page for a paging query. Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
-        # The pagination token that indicates the position from which to start reading. Leave this parameter empty to start reading from the beginning.
+        # The token that specifies the position from which the query starts. If this parameter is left empty, the query starts from the beginning.
         self.next_token = next_token
+        # The sales mode. Valid values: Instance (cloud phone instance mode) and Node (cloud phone matrix mode).
         self.sale_mode = sale_mode
-        # Queries backup files created after the specified time.
+        # The start time to query backup files. Specify the time in the YYYY-MM-DD HH:mm:ss format.
         self.start_time = start_time
         # The list of backup file statuses.
         self.status_list = status_list

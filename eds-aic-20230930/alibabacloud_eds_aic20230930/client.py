@@ -2112,6 +2112,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_mobile_agent_package_with_options_async(request, runtime)
 
+    def create_mobile_agent_task_with_options(
+        self,
+        request: main_models.CreateMobileAgentTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateMobileAgentTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.input_param):
+            query['InputParam'] = request.input_param
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.node_ids):
+            query['NodeIds'] = request.node_ids
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateMobileAgentTask',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateMobileAgentTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_mobile_agent_task_with_options_async(
+        self,
+        request: main_models.CreateMobileAgentTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateMobileAgentTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.input_param):
+            query['InputParam'] = request.input_param
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.node_ids):
+            query['NodeIds'] = request.node_ids
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateMobileAgentTask',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateMobileAgentTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_mobile_agent_task(
+        self,
+        request: main_models.CreateMobileAgentTaskRequest,
+    ) -> main_models.CreateMobileAgentTaskResponse:
+        runtime = RuntimeOptions()
+        return self.create_mobile_agent_task_with_options(request, runtime)
+
+    async def create_mobile_agent_task_async(
+        self,
+        request: main_models.CreateMobileAgentTaskRequest,
+    ) -> main_models.CreateMobileAgentTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.create_mobile_agent_task_with_options_async(request, runtime)
+
     def create_policy_group_with_options(
         self,
         tmp_req: main_models.CreatePolicyGroupRequest,
@@ -8127,6 +8217,80 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyKeyPairNameResponse:
         runtime = RuntimeOptions()
         return await self.modify_key_pair_name_with_options_async(request, runtime)
+
+    def modify_mobile_agent_package_with_options(
+        self,
+        request: main_models.ModifyMobileAgentPackageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyMobileAgentPackageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.package_id):
+            query['PackageId'] = request.package_id
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyMobileAgentPackage',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyMobileAgentPackageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_mobile_agent_package_with_options_async(
+        self,
+        request: main_models.ModifyMobileAgentPackageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyMobileAgentPackageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.package_id):
+            query['PackageId'] = request.package_id
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyMobileAgentPackage',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyMobileAgentPackageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_mobile_agent_package(
+        self,
+        request: main_models.ModifyMobileAgentPackageRequest,
+    ) -> main_models.ModifyMobileAgentPackageResponse:
+        runtime = RuntimeOptions()
+        return self.modify_mobile_agent_package_with_options(request, runtime)
+
+    async def modify_mobile_agent_package_async(
+        self,
+        request: main_models.ModifyMobileAgentPackageRequest,
+    ) -> main_models.ModifyMobileAgentPackageResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_mobile_agent_package_with_options_async(request, runtime)
 
     def modify_policy_group_with_options(
         self,

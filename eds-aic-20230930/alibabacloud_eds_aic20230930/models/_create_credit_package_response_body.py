@@ -16,12 +16,12 @@ class CreateCreditPackageResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the credit booster pack.
+        # The ID of the credit top-up package.
         self.credit_package_id = credit_package_id
         self.credit_package_ids = credit_package_ids
-        # The effective period of the credit booster pack.
+        # The effective period of the credit top-up package. The time format is YYYY-MM-DD HH:mm:ss.
         self.effective_time = effective_time
-        # The time when the credit booster pack expires.
+        # The expiration time of the credit top-up package. The time format is YYYY-MM-DD HH:mm:ss.
         self.expired_time = expired_time
         # The order ID.
         self.order_id = order_id

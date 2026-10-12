@@ -18,9 +18,9 @@ class DescribeMobileAgentPackageResponseBody(DaraModel):
     ):
         # The status code. A value of 200 indicates success.
         self.code = code
-        # The response message.
+        # The message returned by the API operation.
         self.message = message
-        # The list of package information.
+        # The list of packages.
         self.package_list = package_list
         # The request ID.
         self.request_id = request_id
@@ -94,7 +94,7 @@ class DescribeMobileAgentPackageResponseBodyPackageList(DaraModel):
         tags: List[main_models.DescribeMobileAgentPackageResponseBodyPackageListTags] = None,
         used_credit: str = None,
     ):
-        # The expiration time.
+        # The expiration time. The time format is YYYY-MM-DD HH:mm:ss.
         self.expired_at = expired_at
         # The list of node instance IDs.
         self.instance_ids = instance_ids
@@ -102,16 +102,16 @@ class DescribeMobileAgentPackageResponseBodyPackageList(DaraModel):
         self.package_credit = package_credit
         # The package ID.
         self.package_id = package_id
-        # The package specification.
+        # The package specifications.
         self.package_spec = package_spec
         self.package_spec_name = package_spec_name
         # The package status.
         self.package_status = package_status
         self.period_end_time = period_end_time
         self.period_start_time = period_start_time
-        # The labels.
+        # The tags.
         self.tags = tags
-        # The number of credits that have been used.
+        # The number of used credits.
         self.used_credit = used_credit
 
     def validate(self):
@@ -208,9 +208,9 @@ class DescribeMobileAgentPackageResponseBodyPackageListTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The label key.
+        # The tag key.
         self.key = key
-        # The label value.
+        # The tag value.
         self.value = value
 
     def validate(self):
