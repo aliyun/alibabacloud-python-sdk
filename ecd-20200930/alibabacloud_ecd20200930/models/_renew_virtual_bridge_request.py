@@ -20,13 +20,13 @@ class RenewVirtualBridgeRequest(DaraModel):
         self.auto_pay = auto_pay
         # Specifies whether to enable auto-renewal.
         self.auto_renew = auto_renew
-        # The virtual bridge ID.
+        # The ID of the virtual bridge.
         # 
         # This parameter is required.
         self.bridge_id = bridge_id
         # The payment callback URL.
         self.paid_call_back_url = paid_call_back_url
-        # The renewal duration. The valid values of this parameter are determined by the value of the `PeriodUnit` parameter.
+        # The renewal duration. The valid values depend on the value of the `PeriodUnit` parameter.
         # 
         # - If `PeriodUnit` is set to `Month`, valid values are 1, 2, 3, and 6.
         # - If `PeriodUnit` is set to `Year`, valid values are 1, 2, and 3.
@@ -37,7 +37,7 @@ class RenewVirtualBridgeRequest(DaraModel):
         self.period_unit = period_unit
         # The promotion ID.
         self.promotion_id = promotion_id
-        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by WUYING Workspace.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Wuying Workspace.
         # 
         # This parameter is required.
         self.region_id = region_id

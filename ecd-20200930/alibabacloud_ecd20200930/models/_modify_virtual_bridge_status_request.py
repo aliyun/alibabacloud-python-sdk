@@ -11,15 +11,15 @@ class ModifyVirtualBridgeStatusRequest(DaraModel):
         region_id: str = None,
         status: str = None,
     ):
-        # The virtual bridge ID.
+        # The ID of the virtual bridge.
         # 
         # This parameter is required.
         self.bridge_id = bridge_id
-        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The virtual bridge status.
+        # The status of the virtual bridge.
         # 
         # This parameter is required.
         self.status = status

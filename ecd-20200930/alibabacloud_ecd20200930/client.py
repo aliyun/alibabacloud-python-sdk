@@ -10877,6 +10877,112 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_config_group_with_options_async(request, runtime)
 
+    def describe_console_messages_with_options(
+        self,
+        request: main_models.DescribeConsoleMessagesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeConsoleMessagesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.business_channel):
+            query['BusinessChannel'] = request.business_channel
+        if not DaraCore.is_null(request.client_types):
+            query['ClientTypes'] = request.client_types
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.message_ids):
+            query['MessageIds'] = request.message_ids
+        if not DaraCore.is_null(request.message_level):
+            query['MessageLevel'] = request.message_level
+        if not DaraCore.is_null(request.message_type):
+            query['MessageType'] = request.message_type
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.target_ids):
+            query['TargetIds'] = request.target_ids
+        if not DaraCore.is_null(request.target_type):
+            query['TargetType'] = request.target_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeConsoleMessages',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeConsoleMessagesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_console_messages_with_options_async(
+        self,
+        request: main_models.DescribeConsoleMessagesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeConsoleMessagesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.business_channel):
+            query['BusinessChannel'] = request.business_channel
+        if not DaraCore.is_null(request.client_types):
+            query['ClientTypes'] = request.client_types
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.message_ids):
+            query['MessageIds'] = request.message_ids
+        if not DaraCore.is_null(request.message_level):
+            query['MessageLevel'] = request.message_level
+        if not DaraCore.is_null(request.message_type):
+            query['MessageType'] = request.message_type
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.target_ids):
+            query['TargetIds'] = request.target_ids
+        if not DaraCore.is_null(request.target_type):
+            query['TargetType'] = request.target_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeConsoleMessages',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeConsoleMessagesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_console_messages(
+        self,
+        request: main_models.DescribeConsoleMessagesRequest,
+    ) -> main_models.DescribeConsoleMessagesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_console_messages_with_options(request, runtime)
+
+    async def describe_console_messages_async(
+        self,
+        request: main_models.DescribeConsoleMessagesRequest,
+    ) -> main_models.DescribeConsoleMessagesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_console_messages_with_options_async(request, runtime)
+
     def describe_customized_list_headers_with_options(
         self,
         request: main_models.DescribeCustomizedListHeadersRequest,
@@ -27976,6 +28082,76 @@ class Client(OpenApiClient):
     ) -> main_models.RunCommandResponse:
         runtime = RuntimeOptions()
         return await self.run_command_with_options_async(request, runtime)
+
+    def send_console_message_with_options(
+        self,
+        request: main_models.SendConsoleMessageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SendConsoleMessageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.message_id):
+            query['MessageId'] = request.message_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SendConsoleMessage',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SendConsoleMessageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def send_console_message_with_options_async(
+        self,
+        request: main_models.SendConsoleMessageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SendConsoleMessageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.message_id):
+            query['MessageId'] = request.message_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SendConsoleMessage',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SendConsoleMessageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def send_console_message(
+        self,
+        request: main_models.SendConsoleMessageRequest,
+    ) -> main_models.SendConsoleMessageResponse:
+        runtime = RuntimeOptions()
+        return self.send_console_message_with_options(request, runtime)
+
+    async def send_console_message_async(
+        self,
+        request: main_models.SendConsoleMessageRequest,
+    ) -> main_models.SendConsoleMessageResponse:
+        runtime = RuntimeOptions()
+        return await self.send_console_message_with_options_async(request, runtime)
 
     def send_verify_code_with_options(
         self,

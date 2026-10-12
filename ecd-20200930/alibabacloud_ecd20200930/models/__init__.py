@@ -331,6 +331,9 @@ from ._describe_cloud_drive_users_response import DescribeCloudDriveUsersRespons
 from ._describe_config_group_request import DescribeConfigGroupRequest
 from ._describe_config_group_response_body import DescribeConfigGroupResponseBody
 from ._describe_config_group_response import DescribeConfigGroupResponse
+from ._describe_console_messages_request import DescribeConsoleMessagesRequest
+from ._describe_console_messages_response_body import DescribeConsoleMessagesResponseBody
+from ._describe_console_messages_response import DescribeConsoleMessagesResponse
 from ._describe_customized_list_headers_request import DescribeCustomizedListHeadersRequest
 from ._describe_customized_list_headers_response_body import DescribeCustomizedListHeadersResponseBody
 from ._describe_customized_list_headers_response import DescribeCustomizedListHeadersResponse
@@ -856,6 +859,9 @@ from ._revoke_coordinate_privilege_response import RevokeCoordinatePrivilegeResp
 from ._run_command_request import RunCommandRequest
 from ._run_command_response_body import RunCommandResponseBody
 from ._run_command_response import RunCommandResponse
+from ._send_console_message_request import SendConsoleMessageRequest
+from ._send_console_message_response_body import SendConsoleMessageResponseBody
+from ._send_console_message_response import SendConsoleMessageResponse
 from ._send_verify_code_request import SendVerifyCodeRequest
 from ._send_verify_code_response_body import SendVerifyCodeResponseBody
 from ._send_verify_code_response import SendVerifyCodeResponse
@@ -1007,6 +1013,12 @@ from ._describe_cloud_drive_groups_response_body import DescribeCloudDriveGroups
 from ._describe_cloud_drive_permissions_response_body import DescribeCloudDrivePermissionsResponseBodyCloudDrivePermissionModels
 from ._describe_cloud_drive_users_response_body import DescribeCloudDriveUsersResponseBodyCloudDriveUsers
 from ._describe_config_group_response_body import DescribeConfigGroupResponseBodyData
+from ._describe_console_messages_response_body import DescribeConsoleMessagesResponseBodyMessageListContentConfigs
+from ._describe_console_messages_response_body import DescribeConsoleMessagesResponseBodyMessageListHyperLinkConfigs
+from ._describe_console_messages_response_body import DescribeConsoleMessagesResponseBodyMessageListImageInfoList
+from ._describe_console_messages_response_body import DescribeConsoleMessagesResponseBodyMessageListMetaData
+from ._describe_console_messages_response_body import DescribeConsoleMessagesResponseBodyMessageListTitleConfigs
+from ._describe_console_messages_response_body import DescribeConsoleMessagesResponseBodyMessageList
 from ._describe_customized_list_headers_response_body import DescribeCustomizedListHeadersResponseBodyHeaders
 from ._describe_desktop_group_sessions_response_body import DescribeDesktopGroupSessionsResponseBodySessionsTerminalInfo
 from ._describe_desktop_group_sessions_response_body import DescribeDesktopGroupSessionsResponseBodySessions
@@ -1562,6 +1574,9 @@ __all__ = [
     DescribeConfigGroupRequest,
     DescribeConfigGroupResponseBody,
     DescribeConfigGroupResponse,
+    DescribeConsoleMessagesRequest,
+    DescribeConsoleMessagesResponseBody,
+    DescribeConsoleMessagesResponse,
     DescribeCustomizedListHeadersRequest,
     DescribeCustomizedListHeadersResponseBody,
     DescribeCustomizedListHeadersResponse,
@@ -2087,6 +2102,9 @@ __all__ = [
     RunCommandRequest,
     RunCommandResponseBody,
     RunCommandResponse,
+    SendConsoleMessageRequest,
+    SendConsoleMessageResponseBody,
+    SendConsoleMessageResponse,
     SendVerifyCodeRequest,
     SendVerifyCodeResponseBody,
     SendVerifyCodeResponse,
@@ -2238,6 +2256,12 @@ __all__ = [
     DescribeCloudDrivePermissionsResponseBodyCloudDrivePermissionModels,
     DescribeCloudDriveUsersResponseBodyCloudDriveUsers,
     DescribeConfigGroupResponseBodyData,
+    DescribeConsoleMessagesResponseBodyMessageListContentConfigs,
+    DescribeConsoleMessagesResponseBodyMessageListHyperLinkConfigs,
+    DescribeConsoleMessagesResponseBodyMessageListImageInfoList,
+    DescribeConsoleMessagesResponseBodyMessageListMetaData,
+    DescribeConsoleMessagesResponseBodyMessageListTitleConfigs,
+    DescribeConsoleMessagesResponseBodyMessageList,
     DescribeCustomizedListHeadersResponseBodyHeaders,
     DescribeDesktopGroupSessionsResponseBodySessionsTerminalInfo,
     DescribeDesktopGroupSessionsResponseBodySessions,

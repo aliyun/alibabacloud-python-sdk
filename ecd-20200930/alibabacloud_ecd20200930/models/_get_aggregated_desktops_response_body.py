@@ -13,7 +13,7 @@ class GetAggregatedDesktopsResponseBody(DaraModel):
         aggregations: main_models.GetAggregatedDesktopsResponseBodyAggregations = None,
         request_id: str = None,
     ):
-        # The list of aggregation field information.
+        # The list of aggregated field information.
         # >Notice: When you use an aggregate query, only aggregation results are returned. The list of matched metadata is not returned.
         self.aggregations = aggregations
         # Id of the request

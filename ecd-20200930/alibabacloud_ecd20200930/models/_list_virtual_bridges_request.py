@@ -20,13 +20,13 @@ class ListVirtualBridgesRequest(DaraModel):
         # The maximum number of entries to return. Valid values: 1 to 500.
         # Default value: 500.
         self.max_results = max_results
-        # The token for the next query. If NextToken is empty, no more results exist.
+        # The token used to start the next query. An empty NextToken indicates that no more results are available.
         self.next_token = next_token
         # The office network ID.
         # 
-        # > The `DirectoryId` parameter will be deprecated. Use this parameter instead.
+        # > The `DirectoryId` parameter is deprecated. Use this parameter instead.
         self.office_site_id = office_site_id
-        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by WUYING Workspace.
+        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the list of regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id

@@ -1,3 +1,8 @@
+2026-10-12 Version: 5.5.0
+- Support API DescribeConsoleMessages.
+- Support API SendConsoleMessage.
+
+
 2026-09-24 Version: 5.4.0
 - Support API GetAggregatedDesktops.
 - Support API QueryAuthUserConnectDurationList.

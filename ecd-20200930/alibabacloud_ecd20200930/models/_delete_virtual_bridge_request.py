@@ -10,11 +10,11 @@ class DeleteVirtualBridgeRequest(DaraModel):
         bridge_id: str = None,
         region_id: str = None,
     ):
-        # The virtual bridge ID.
+        # The ID of the virtual bridge.
         # 
         # This parameter is required.
         self.bridge_id = bridge_id
-        # The region ID. Call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by WUYING Workspace.
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions supported by WUYING Workspace.
         # 
         # This parameter is required.
         self.region_id = region_id

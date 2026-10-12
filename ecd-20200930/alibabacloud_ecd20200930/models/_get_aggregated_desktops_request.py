@@ -11,7 +11,11 @@ class GetAggregatedDesktopsRequest(DaraModel):
         region_id: str = None,
         search_region_id: str = None,
     ):
-        # The aggregation factor.
+        # The aggregation factor. Valid values:
+        # - directory_id: office network ID
+        # - region: region
+        # - policy_group_id: cloud desktop policy ID
+        # - status: cloud desktop status
         self.aggregation_factor = aggregation_factor
         # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the list of regions supported by WUYING Workspace.
         self.region_id = region_id
