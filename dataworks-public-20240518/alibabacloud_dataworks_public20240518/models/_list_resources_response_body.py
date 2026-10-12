@@ -15,7 +15,7 @@ class ListResourcesResponseBody(DaraModel):
     ):
         # The pagination information.
         self.paging_info = paging_info
-        # The unique ID of this request. You can use this ID to troubleshoot issues.
+        # The ID of the request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -54,13 +54,13 @@ class ListResourcesResponseBodyPagingInfo(DaraModel):
         resources: List[main_models.ListResourcesResponseBodyPagingInfoResources] = None,
         total_count: int = None,
     ):
-        # The page number of the request, used for pagination.
+        # The number of the page to return.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The list of resources returned by the query.
+        # The resources returned by the query.
         self.resources = resources
-        # The total number of entries that meet the filter conditions.
+        # The total number of entries that meet the conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -132,7 +132,7 @@ class ListResourcesResponseBodyPagingInfoResources(DaraModel):
         self.data_source = data_source
         # The unique identifier of the file resource.
         # 
-        # >Notice: This field was of the Long type in SDK versions earlier than 8.0.0 and is of the String type in SDK 8.0.0 and later. **This change does not affect normal SDK usage. The parameter is still returned in the type defined in the SDK**. Only when you upgrade across SDK version 8.0.0, the type change may cause project compilation failures, and you need to manually correct the data type.
+        # >Notice: Before SDK 8.0.0, this field is of the Long type. In SDK 8.0.0 and later, this field is of the String type. **This change does not affect the normal use of the SDK, and the parameter is still returned based on the type defined in the SDK**. Only when you upgrade the SDK across version 8.0.0, the type change may cause project compilation failures. In this case, you must manually correct the data type.
         self.id = id
         # The timestamp when the file resource was last modified.
         self.modify_time = modify_time
@@ -144,28 +144,22 @@ class ListResourcesResponseBodyPagingInfoResources(DaraModel):
         self.project_id = project_id
         # The script information.
         self.script = script
-        # The source path of the file resource. This field is empty when the type is Local.
+        # The source path of the file resource. This parameter is empty when the type is local.
         self.source_path = source_path
-        # The source storage type of the file resource.
+        # The source storage type of the file resource. Valid values:
         # 
-        # Valid values:
-        # 
-        # - Local: local storage.
-        # - Oss: Object Storage Service.
+        # - Local: local storage
+        # - Oss: Object Storage Service (OSS)
         self.source_type = source_type
-        # The target storage path of the file resource.
+        # The destination storage path of the file resource.
         self.target_path = target_path
-        # The target storage type of the file resource.
+        # The destination storage type of the file resource. Valid values:
         # 
-        # Valid values:
-        # 
-        # - Gateway: gateway.
-        # - Oss: Object Storage Service.
-        # - Hdfs: HDFS file storage system.
+        # - Gateway: gateway
+        # - Oss: Object Storage Service (OSS)
+        # - Hdfs: Hadoop Distributed File System (HDFS)
         self.target_type = target_type
-        # The resource file type.
-        # 
-        # Valid values:
+        # The type of the resource. Valid values:
         # 
         # - Python
         # - Jar
@@ -277,9 +271,9 @@ class ListResourcesResponseBodyPagingInfoResourcesScript(DaraModel):
         path: str = None,
         runtime: main_models.ListResourcesResponseBodyPagingInfoResourcesScriptRuntime = None,
     ):
-        # The script ID.
+        # The ID of the script.
         # 
-        # >Notice: This field was of the Long type in SDK versions earlier than 8.0.0 and is of the String type in SDK 8.0.0 and later. **This change does not affect normal SDK usage. The parameter is still returned in the type defined in the SDK**. Only when you upgrade across SDK version 8.0.0, the type change may cause project compilation failures, and you need to manually correct the data type.
+        # >Notice: Before SDK 8.0.0, this field is of the Long type. In SDK 8.0.0 and later, this field is of the String type. **This change does not affect the normal use of the SDK, and the parameter is still returned based on the type defined in the SDK**. Only when you upgrade the SDK across version 8.0.0, the type change may cause project compilation failures. In this case, you must manually correct the data type.
         self.id = id
         # The path of the script.
         self.path = path

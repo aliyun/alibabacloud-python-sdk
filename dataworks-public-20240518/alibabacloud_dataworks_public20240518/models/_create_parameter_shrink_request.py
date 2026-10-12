@@ -15,9 +15,9 @@ class CreateParameterShrinkRequest(DaraModel):
         scope: str = None,
         type: str = None,
     ):
-        # The description of the parameter.
+        # The description.
         self.description = description
-        # The parameter name. It must be unique within the workspace, be prefixed with `workspace.`, and not exceed 255 characters. The part of the name after the prefix must start with a letter and can contain only letters, digits, and underscores (_).
+        # The name of the parameter. It must be unique within the workspace. It must start with "workspace.". The subsequent content must start with a letter and can contain only letters, underscores, and digits. The total length of the name cannot exceed 255 characters.
         # 
         # This parameter is required.
         self.name = name
@@ -25,23 +25,20 @@ class CreateParameterShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.owner = owner
-        # The workspace ID. This parameter is required when `Scope` is set to `Project`.
+        # The workspace ID. This parameter is required when Scope is set to Project.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The value configurations for the parameter. A configuration for the production environment is required. If you provide duplicate configurations for an environment, only the first one is used.
+        # The parameter value configurations. This parameter is required for the production environment. If duplicate environment configurations exist in the array, the subsequent configurations do not take effect.
         # 
         # This parameter is required.
         self.properties_shrink = properties_shrink
-        # The scope of the parameter. The default value is `Project`. No other values are currently supported.
+        # The scope of the parameter. Default value: Project. Other types are currently not supported.
         self.scope = scope
-        # The type of the parameter.
-        # 
-        # - `PlainConstant`: plaintext constant.
-        # 
-        # - `SecretConstant`: secret constant.
-        # 
-        # - `Variable`: variable.
+        # The type. Valid values:
+        # - PlainConstant: plaintext constant.
+        # - SecretConstant: ciphertext constant.
+        # - Variable: variable.
         # 
         # This parameter is required.
         self.type = type

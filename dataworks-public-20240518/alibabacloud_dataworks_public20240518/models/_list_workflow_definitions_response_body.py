@@ -15,7 +15,7 @@ class ListWorkflowDefinitionsResponseBody(DaraModel):
     ):
         # The pagination information.
         self.paging_info = paging_info
-        # The request ID.
+        # The request ID. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -54,13 +54,13 @@ class ListWorkflowDefinitionsResponseBodyPagingInfo(DaraModel):
         total_count: int = None,
         workflow_definitions: List[main_models.ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitions] = None,
     ):
-        # The page number.
+        # The number of the page to return.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries returned on each page.
         self.page_size = page_size
-        # The total number of entries that meet the conditions.
+        # The total number of entries that meet the specified conditions.
         self.total_count = total_count
-        # The workflows.
+        # The list of queried workflows.
         self.workflow_definitions = workflow_definitions
 
     def validate(self):
@@ -124,17 +124,17 @@ class ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitions(DaraModel
     ):
         # The timestamp when the workflow was created.
         self.create_time = create_time
-        # Description
+        # The description of the workflow.
         self.description = description
         # The unique identifier of the workflow.
         # 
-        # > Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+        # >Notice: Before SDK version 8.0.0, this field is of the Long type. In SDK version 8.0.0 and later, this field is of the String type. **This change does not affect the normal use of the SDK. The parameter is still returned based on the type defined in the SDK**. However, if you upgrade the SDK across version 8.0.0, the type change may cause project compilation failures. In this case, you must manually correct the data type.
         self.id = id
         # The timestamp when the workflow was last modified.
         self.modify_time = modify_time
         # The name of the workflow.
         self.name = name
-        # Owner
+        # The owner of the workflow.
         self.owner = owner
         # The ID of the DataWorks workspace to which the workflow belongs.
         # 
@@ -142,12 +142,9 @@ class ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitions(DaraModel
         self.project_id = project_id
         # The script information.
         self.script = script
-        # The type of the workflow.
-        # 
-        # Valid values:
+        # The type of the workflow. Valid values:
         # 
         # - CycleWorkflow
-        # 
         # - ManualWorkflow
         self.type = type
 
@@ -230,11 +227,11 @@ class ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitionsScript(Dar
     ):
         # The ID of the script.
         # 
-        # > This field is of type Long in SDK versions prior to 8.0.0, and of type String in SDK version 8.0.0 and later. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures due to the type change may occur only when upgrading the SDK across version 8.0.0, in which case users need to manually correct the data type.
+        # >Notice: Before SDK version 8.0.0, this field is of the Long type. In SDK version 8.0.0 and later, this field is of the String type. **This change does not affect the normal use of the SDK. The parameter is still returned based on the type defined in the SDK**. However, if you upgrade the SDK across version 8.0.0, the type change may cause project compilation failures. In this case, you must manually correct the data type.
         self.id = id
-        # The script path.
+        # The path of the script.
         self.path = path
-        # Runtime
+        # The runtime.
         self.runtime = runtime
 
     def validate(self):
@@ -276,7 +273,7 @@ class ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitionsScriptRunt
         self,
         command: str = None,
     ):
-        # Command
+        # The command.
         self.command = command
 
     def validate(self):

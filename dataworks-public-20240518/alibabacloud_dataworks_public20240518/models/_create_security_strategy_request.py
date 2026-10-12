@@ -20,33 +20,33 @@ class CreateSecurityStrategyRequest(DaraModel):
         schema_name: str = None,
         workspaces: List[int] = None,
     ):
-        # A client-generated token that ensures request idempotency, preventing duplicate operations if you retry the request.
+        # The idempotency parameter. This parameter is used to prevent duplicate operations caused by multiple calls.
         self.client_token = client_token
-        # The content of the strategy. This value is constrained by the `SecurityStrategySchema`.
+        # The policy content. The content is constrained by SecurityStrategySchema.
         # 
         # This parameter is required.
         self.content = content
-        # **The control scope. Valid values: Workspace and Tenant.**
+        # The control scope.
         # 
         # This parameter is required.
         self.control_dw_scope = control_dw_scope
-        # **Control module**
+        # The control module.
         # 
         # This parameter is required.
         self.control_module = control_module
-        # **Control submodule**
+        # The control submodule.
         self.control_sub_module = control_sub_module
-        # **Strategy description**
+        # The description of the policy.
         self.description = description
-        # **Strategy name**
+        # The policy name.
         # 
         # This parameter is required.
         self.name = name
-        # **Schema template name**
+        # The name of the schema template.
         # 
         # This parameter is required.
         self.schema_name = schema_name
-        # A list of associated workspace IDs.
+        # The list of associated workspace IDs.
         self.workspaces = workspaces
 
     def validate(self):
@@ -132,29 +132,29 @@ class CreateSecurityStrategyRequestContent(DaraModel):
         system_policy_display_name: str = None,
         system_policy_name: str = None,
     ):
-        # The control scope. This corresponds to the `controlDwScope` property of the `SecurityStrategySchema` associated with the current strategy.
+        # The control scope. This is the name of the SecurityStrategySchema associated with the current policy.
         self.control_dw_scope = control_dw_scope
-        # The control module. This corresponds to the `controlModule` property of the `SecurityStrategySchema` associated with the current strategy.
+        # The control module. This is the controlModule of the SecurityStrategySchema associated with the current policy.
         # 
         # This parameter is required.
         self.control_module = control_module
-        # The control submodule. This corresponds to the `controlSubModule` property of the `SecurityStrategySchema` associated with the current strategy.
+        # The control submodule. This is the controlSubModule of the SecurityStrategySchema associated with the current policy.
         self.control_sub_module = control_sub_module
-        # A list of controllers.
+        # The list of control items.
         # 
-        # **Note:** Valid controllers depend on the selected schema. For more information, see the controller definitions and the list of controllers for each schema.
+        # Note: Valid control items depend on the selected schema. Refer to the controller definitions and the control item list for each schema.
         self.controllers = controllers
-        # The `displayName` property of the `SecurityStrategySchema` associated with the current strategy.
+        # The display name of the SecurityStrategySchema associated with the current policy.
         self.display_name = display_name
-        # The `displayNameEn` property of the `SecurityStrategySchema` associated with the current strategy.
+        # The English display name of the SecurityStrategySchema associated with the current policy.
         self.display_name_en = display_name_en
-        # The `name` property of the `SecurityStrategySchema` associated with the current strategy.
+        # The name of the SecurityStrategySchema associated with the current policy.
         # 
         # This parameter is required.
         self.name = name
-        # The `systemPolicyDisplayName` property of the `SecurityStrategySchema` associated with the current strategy.
+        # The name of the SecurityStrategySchema associated with the current policy.
         self.system_policy_display_name = system_policy_display_name
-        # The `systemPolicyName` property of the `SecurityStrategySchema` associated with the current strategy.
+        # The name of the SecurityStrategySchema associated with the current policy.
         self.system_policy_name = system_policy_name
 
     def validate(self):
@@ -253,31 +253,31 @@ class CreateSecurityStrategyRequestContentControllers(DaraModel):
     ):
         # The default value for Basic Edition.
         self.basic_edition_default_value = basic_edition_default_value
-        # The valid value interval for Basic Edition, in the format `[min, max]`.
+        # The valid value range for Basic Edition, in the format of [min, max].
         self.basic_edition_interval_value = basic_edition_interval_value
-        # The controller identifier. For valid values, see the list of controllers for each schema.
+        # The identifier of the control item. For valid values, refer to the control item list for each schema.
         self.controller = controller
-        # The value type. Valid values: `Boolean`, `Integer`, `Long`, and `String`.
+        # The value type. Valid values: Boolean, Integer, Long, and String.
         self.controller_value_type = controller_value_type
         # The display name.
         self.display_name = display_name
         # The English display name.
         self.display_name_en = display_name_en
-        # Specifies whether to enable this controller.
+        # Specifies whether to enable the control item.
         self.enable = enable
         # The default value for Enterprise Edition.
         self.enterprise_edition_default_value = enterprise_edition_default_value
-        # The valid value interval for Enterprise Edition, in the format `[min, max]`.
+        # The valid value range for Enterprise Edition, in the format of [min, max].
         self.enterprise_edition_interval_value = enterprise_edition_interval_value
         # The default value for Professional Edition.
         self.professional_edition_default_value = professional_edition_default_value
-        # The valid value interval for Professional Edition, in the format `[min, max]`.
+        # The valid value range for Professional Edition, in the format of [min, max].
         self.professional_edition_interval_value = professional_edition_interval_value
         # The default value for Standard Edition.
         self.standard_edition_default_value = standard_edition_default_value
-        # The valid value interval for Standard Edition, in the format `[min, max]`.
+        # The valid value range for Standard Edition, in the format of [min, max].
         self.standard_edition_interval_value = standard_edition_interval_value
-        # The user-configured value. The type of this value depends on the `ControllerValueType` parameter.
+        # The user-configured value. The type depends on `ControllerValueType`.
         self.user_config_value = user_config_value
 
     def validate(self):

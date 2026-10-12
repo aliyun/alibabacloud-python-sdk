@@ -15,15 +15,15 @@ class CreateMcpServerRequest(DaraModel):
         visibility: str = None,
         visibility_scope: main_models.CreateMcpServerRequestVisibilityScope = None,
     ):
-        # The connection configuration of the MCP Server.
+        # The connection configuration of the MCP server.
         self.config = config
-        # The name of the MCP Server. The name must be unique at the tenant level. It must start with a lowercase letter and can contain only `a-z`, `0-9`, `_`, and `-`.
+        # The name of the MCP server. It must be unique at the tenant level. It must start with a lowercase letter and can contain only lowercase letters (`a-z`), digits (`0-9`), underscores (`_`), and hyphens (`-`).
         # 
         # This parameter is required.
         self.name = name
         # The visibility level.
         self.visibility = visibility
-        # The visibility scope. The corresponding field is used based on the Visibility value.
+        # The visibility scope. Specify the corresponding fields based on the value of Visibility.
         self.visibility_scope = visibility_scope
 
     def validate(self):
@@ -75,9 +75,9 @@ class CreateMcpServerRequestVisibilityScope(DaraModel):
         project_ids: List[str] = None,
         user_ids: List[str] = None,
     ):
-        # The IDs of the projects in which the MCP Server is visible. This parameter takes effect when Visibility is set to `PROJECT`.
+        # The list of visible project IDs. This parameter takes effect when Visibility is set to `PROJECT`.
         self.project_ids = project_ids
-        # The IDs of the users to whom the MCP Server is visible. This parameter takes effect when Visibility is set to `USER`.
+        # The list of visible user IDs. This parameter takes effect when Visibility is set to `USER`.
         self.user_ids = user_ids
 
     def validate(self):
@@ -113,11 +113,11 @@ class CreateMcpServerRequestConfig(DaraModel):
         transport: str = None,
         url: str = None,
     ):
-        # The custom request headers (key-value pairs). Reserved headers cannot be overwritten.
+        # The custom request headers in key-value pairs. Reserved headers cannot be overwritten.
         self.custom_headers = custom_headers
         # The transport protocol.
         self.transport = transport
-        # The service URL of the MCP Server. The URL must start with `https://`.
+        # The service URL of the MCP server. It must start with `https://`.
         self.url = url
 
     def validate(self):

@@ -9,7 +9,7 @@ class DeleteDataSourceSharedRuleRequest(DaraModel):
         self,
         id: int = None,
     ):
-        # The sharing rule ID.
+        # The ID of the data source sharing rule. You can call the ListDataSourceSharedRules operation to query existing sharing rules and their IDs.
         # 
         # This parameter is required.
         self.id = id

@@ -12,9 +12,9 @@ class GetImageTestResultResponseBody(DaraModel):
         success: bool = None,
         test_result: main_models.GetImageTestResultResponseBodyTestResult = None,
     ):
-        # The request ID, which is used to locate logs and troubleshoot issues.
+        # The ID of the request. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
         # The details of the image test result.
         self.test_result = test_result
@@ -68,32 +68,32 @@ class GetImageTestResultResponseBodyTestResult(DaraModel):
         self.image_id = image_id
         # The test result message.
         self.message = message
-        # The operation time, represented as a 64-bit timestamp.
+        # The operation time. The value is a 64-bit timestamp.
         self.operate_time = operate_time
-        # The process ID.
+        # The ID of the process.
         self.process_id = process_id
-        # The image publish status. Valid values:
+        # The publishing status of the image. Valid values:
         # - Untest: Not tested.
-        # - Testing: Testing in progress.
+        # - Testing: Testing.
         # - TestFailed: Test failed.
-        # - Unpublished: Not published.
-        # - Publishing: Publishing in progress.
+        # - Unpublished: Unpublished.
+        # - Publishing: Publishing.
         # - Published: Published.
-        # - PublishFailed: Publish failed.
-        # - Building: Building in progress.
+        # - PublishFailed: Publishing failed.
+        # - Building: Building.
         # - BuildSuccess: Build succeeded.
         # - BuildFailed: Build failed.
-        # - Accelerating: Acceleration in progress.
+        # - Accelerating: Accelerating.
         # - AccelerateSuccess: Acceleration succeeded.
         # - AccelerateFailed: Acceleration failed.
         self.publish_stage = publish_stage
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The test process status. Valid values:
+        # The status of the test process. Valid values:
         # - running: Running.
         # - completed: Completed.
         # - failed: Failed.
-        # - cancelled: Cancelled.
+        # - cancelled: Canceled.
         self.status = status
 
     def validate(self):

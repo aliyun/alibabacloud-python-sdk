@@ -9,7 +9,7 @@ class GetNetworkRequest(DaraModel):
         self,
         id: int = None,
     ):
-        # The network ID.
+        # The ID of the network resource.
         # 
         # This parameter is required.
         self.id = id

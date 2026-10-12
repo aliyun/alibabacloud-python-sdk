@@ -18,45 +18,37 @@ class ListResourceGroupsShrinkRequest(DaraModel):
         sort_by: str = None,
         statuses_shrink: str = None,
     ):
-        # The Alibaba Cloud resource group ID.
+        # The ID of the Alibaba Cloud resource group.
         self.aliyun_resource_group_id = aliyun_resource_group_id
-        # The list of Alibaba Cloud tags.
+        # The Alibaba Cloud tags.
         self.aliyun_resource_tags_shrink = aliyun_resource_tags_shrink
-        # The name of the resource group. Fuzzy search is supported.
+        # The name of the resource group for fuzzy match.
         self.name = name
         # The page number.
         self.page_number = page_number
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # The billing method of the resource group. Valid values include:
+        # The billing method of the resource group. Valid values:
         # 
-        # - `PrePaid`: subscription.
-        # 
-        # - `PostPaid`: pay-as-you-go.
+        # - PrePaid: Subscription.
+        # - PostPaid: Pay-as-you-go.
         self.payment_type = payment_type
-        # The ID of the workspace.
+        # The ID of the workspace to which the resource group belongs.
         self.project_id = project_id
-        # The types of the resource groups to query. **If this parameter is not specified, general-purpose resource groups are queried by default.**
+        # The types of the resource groups to query. **If this parameter is left empty, general-purpose resource groups are queried by default.**
         self.resource_group_types_shrink = resource_group_types_shrink
-        # The sorting criterion for the results. The format is `FieldName SortOrder`. `SortOrder` can be `Asc` (ascending) or `Desc` (descending). If you do not specify `SortOrder`, the default is `Asc`. The following fields are supported:
+        # The fields by which to sort the results. You can sort the results by fields such as scheduled time and start time. The format is \\"Sort field+Sort order (Desc/Asc)\\". Asc can be omitted. Valid values for the sort field:
         # 
-        # - `Id`: Resource group ID
+        # - Id (Desc/Asc): The ID of the resource group.
+        # - Name (Desc/Asc): The name of the resource group.
+        # - Remark (Desc/Asc): The description of the resource group.
+        # - Type (Desc/Asc): The type of the resource group.
+        # - Status (Desc/Asc): The status of the resource group.
+        # - Spec (Desc/Asc): The specifications of the resource group.
+        # - CreateUser (Desc/Asc): The creator of the resource group.
+        # - CreateTime (Desc/Asc): The time when the resource group was created.
         # 
-        # - `Name`: Resource group name
-        # 
-        # - `Remark`: Resource group remarks
-        # 
-        # - `Type`: Resource group type
-        # 
-        # - `Status`: Resource group status
-        # 
-        # - `Spec`: Resource group specifications
-        # 
-        # - `CreateUser`: The user who created the resource group
-        # 
-        # - `CreateTime`: The time when the resource group was created
-        # 
-        # Default value: `CreateTime Asc`
+        # Default value: CreateTime Asc.
         self.sort_by = sort_by
         # The statuses of the resource groups to query.
         self.statuses_shrink = statuses_shrink

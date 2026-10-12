@@ -10,9 +10,9 @@ class RerunWorkflowInstancesResponseBody(DaraModel):
         operation_id: str = None,
         request_id: str = None,
     ):
-        # The operation ID. You can use this value to query the creation result via the GetRerunWorkflowInstancesResult operation.
+        # The operation ID. You can use this field to call the GetRerunWorkflowInstancesResult operation to query the result of the operation.
         self.operation_id = operation_id
-        # The request ID. Used for troubleshooting and log tracking.
+        # The ID of the request. You can use this ID to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

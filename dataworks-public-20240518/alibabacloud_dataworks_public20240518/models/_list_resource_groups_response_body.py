@@ -16,9 +16,9 @@ class ListResourceGroupsResponseBody(DaraModel):
     ):
         # The pagination information.
         self.paging_info = paging_info
-        # The request ID. You can use this ID to locate logs and troubleshoot issues.
+        # The request ID. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -69,7 +69,7 @@ class ListResourceGroupsResponseBodyPagingInfo(DaraModel):
         self.page_size = page_size
         # The list of resource groups.
         self.resource_group_list = resource_group_list
-        # The total number of entries.
+        # The total number of data entries.
         self.total_count = total_count
 
     def validate(self):
@@ -136,65 +136,50 @@ class ListResourceGroupsResponseBodyPagingInfoResourceGroupList(DaraModel):
         spec: main_models.ListResourceGroupsResponseBodyPagingInfoResourceGroupListSpec = None,
         status: str = None,
     ):
-        # The Alibaba Cloud resource group ID.
+        # The ID of the Alibaba Cloud resource group.
         self.aliyun_resource_group_id = aliyun_resource_group_id
-        # A list of Alibaba Cloud tags.
+        # The Alibaba Cloud tags.
         self.aliyun_resource_tags = aliyun_resource_tags
-        # The creation time of the resource group, as a 64-bit timestamp.
+        # The time when the resource group was created. The value is a 64-bit timestamp.
         self.create_time = create_time
-        # The user ID of the creator.
+        # The ID of the user who created the resource group.
         self.create_user = create_user
-        # The ID of the default Virtual Private Cloud (VPC) bound to the general-purpose resource group.
+        # The ID of the default VPC associated with the general-purpose resource group.
         self.default_vpc_id = default_vpc_id
-        # The ID of the default vSwitch bound to the general-purpose resource group.
+        # The ID of the default vSwitch associated with the general-purpose resource group.
         self.default_vswicth_id = default_vswicth_id
         # The unique identifier of the resource group.
         self.id = id
         # The name of the resource group.
         self.name = name
-        # The order instance ID for the resource group.
+        # The order instance ID of the resource group.
         self.order_instance_id = order_instance_id
-        # The billing method of the resource group. `PrePaid` indicates subscription and `PostPaid` indicates pay-as-you-go.
+        # The billing method of the resource group. Valid values: PrePaid (subscription) and PostPaid (pay-as-you-go).
         self.payment_type = payment_type
-        # The description of the resource group.
+        # The remark of the resource group.
         self.remark = remark
         # The type of the resource group. Valid values:
-        # 
-        # - `CommonV2`: The new general-purpose resource group.
-        # 
-        # - `ExclusiveDataIntegration`: The exclusive resource group for data integration.
-        # 
-        # - `ExclusiveScheduler`: The exclusive resource group for scheduling.
-        # 
-        # - `ExclusiveDataService`: The exclusive resource group for data services.
+        # - CommonV2: General-purpose resource group V2.
+        # - ExclusiveDataIntegration: Exclusive data integration resource group.
+        # - ExclusiveScheduler: Exclusive scheduling resource group.
+        # - ExclusiveDataService: Exclusive data service resource group.
         self.resource_group_type = resource_group_type
         # The specifications of the resource group.
         self.spec = spec
-        # The status of the resource group. Valid values:
+        # The status of the resource group to query. Valid values:
         # 
-        # - `Normal`: Running.
-        # 
-        # - `Stop`: Frozen due to expiration.
-        # 
-        # - `Deleted`: Released.
-        # 
-        # - `Creating`: Creation in progress.
-        # 
-        # - `CreateFailed`: Creation failed.
-        # 
-        # - `Updating`: Update in progress.
-        # 
-        # - `UpdateFailed`: Update failed.
-        # 
-        # - `Deleting`: Release in progress.
-        # 
-        # - `DeleteFailed`: Release failed.
-        # 
-        # - `Timeout`: The operation timed out.
-        # 
-        # - `Freezed`: Frozen.
-        # 
-        # - `Starting`: Starting.
+        # - Normal: The resource group is running or in service.
+        # - Stop: The resource group is frozen because it has expired.
+        # - Deleted: The resource group is released or destroyed.
+        # - Creating: The resource group is being created.
+        # - CreateFailed: The resource group fails to be created.
+        # - Updating: The resource group is being updated, scaled out, scaled in, or reconfigured.
+        # - UpdateFailed: The resource group fails to be updated, scaled, or upgraded.
+        # - Deleting: The resource group is being released or destroyed.
+        # - DeleteFailed: The resource group fails to be released or destroyed.
+        # - Timeout: The operation times out.
+        # - Freezed: The resource group is frozen.
+        # - Starting: The resource group is being started.
         self.status = status
 
     def validate(self):
@@ -312,9 +297,9 @@ class ListResourceGroupsResponseBodyPagingInfoResourceGroupListSpec(DaraModel):
         amount: int = None,
         standard: str = None,
     ):
-        # The number of resource units.
+        # The quantity.
         self.amount = amount
-        # The resource specifications.
+        # The specification details.
         self.standard = standard
 
     def validate(self):

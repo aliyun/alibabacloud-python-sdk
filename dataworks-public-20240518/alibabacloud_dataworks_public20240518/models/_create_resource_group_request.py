@@ -27,37 +27,33 @@ class CreateResourceGroupRequest(DaraModel):
         self.aliyun_resource_group_id = aliyun_resource_group_id
         # The list of Alibaba Cloud tags.
         self.aliyun_resource_tags = aliyun_resource_tags
-        # Specifies whether auto-renewal is enabled.
+        # Specifies whether to enable auto-renewal.
         self.auto_renew_enabled = auto_renew_enabled
-        # The client idempotency token that is used to ensure the idempotence of the create resource group operation.
+        # The client token that is used to ensure the idempotence of the request.
         # 
         # This parameter is required.
         self.client_token = client_token
-        # The name of the common resource group. The name must start with a letter and can contain letters, digits, and underscores (_), up to 128 characters.
+        # The name of the general-purpose resource group. It must start with a letter and can contain letters, digits, and underscores (_). It can be up to 128 characters in length.
         # 
         # This parameter is required.
         self.name = name
-        # The payment duration.
+        # The billing duration.
         self.payment_duration = payment_duration
-        # The unit of the payment duration. Valid values:
-        # - Month: monthly subscription.
-        # - Year: yearly subscription.
+        # The unit of the billing duration. Month indicates months, and Year indicates years.
         self.payment_duration_unit = payment_duration_unit
-        # The payment type of the resource group. Valid values:
-        # - PrePaid: subscription.
-        # - PostPaid: pay-as-you-go.
+        # The billing method of the resource group. PrePaid indicates subscription, and PostPaid indicates pay-as-you-go.
         # 
         # This parameter is required.
         self.payment_type = payment_type
-        # The remarks for the common resource group. The remarks can contain letters, Chinese characters, digits, and underscores (_), up to 128 characters.
+        # The remark of the general-purpose resource group. It can contain letters, Chinese characters, digits, and underscores (_). It can be up to 128 characters in length.
         self.remark = remark
-        # The resource group specification, in CUs. This parameter is required when the payment type is PrePaid.
+        # The specifications of the resource group. Unit: CU. This parameter is required when the billing method of the resource group is PrePaid.
         self.spec = spec
-        # The ID of the VPC to associate by default.
+        # The ID of the default VPC.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id
-        # The ID of the vSwitch to associate by default.
+        # The ID of the default vSwitch.
         # 
         # This parameter is required.
         self.vswitch_id = vswitch_id
@@ -162,9 +158,9 @@ class CreateResourceGroupRequestAliyunResourceTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of the tag.
         self.key = key
-        # The tag value.
+        # The value of the tag.
         self.value = value
 
     def validate(self):

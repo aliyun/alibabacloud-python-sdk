@@ -17,33 +17,33 @@ class CreateSecurityStrategyShrinkRequest(DaraModel):
         schema_name: str = None,
         workspaces_shrink: str = None,
     ):
-        # A client-generated token that ensures request idempotency, preventing duplicate operations if you retry the request.
+        # The idempotency parameter. This parameter is used to prevent duplicate operations caused by multiple calls.
         self.client_token = client_token
-        # The content of the strategy. This value is constrained by the `SecurityStrategySchema`.
+        # The policy content. The content is constrained by SecurityStrategySchema.
         # 
         # This parameter is required.
         self.content_shrink = content_shrink
-        # **The control scope. Valid values: Workspace and Tenant.**
+        # The control scope.
         # 
         # This parameter is required.
         self.control_dw_scope = control_dw_scope
-        # **Control module**
+        # The control module.
         # 
         # This parameter is required.
         self.control_module = control_module
-        # **Control submodule**
+        # The control submodule.
         self.control_sub_module = control_sub_module
-        # **Strategy description**
+        # The description of the policy.
         self.description = description
-        # **Strategy name**
+        # The policy name.
         # 
         # This parameter is required.
         self.name = name
-        # **Schema template name**
+        # The name of the schema template.
         # 
         # This parameter is required.
         self.schema_name = schema_name
-        # A list of associated workspace IDs.
+        # The list of associated workspace IDs.
         self.workspaces_shrink = workspaces_shrink
 
     def validate(self):

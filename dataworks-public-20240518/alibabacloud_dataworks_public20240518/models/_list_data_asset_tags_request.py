@@ -12,15 +12,13 @@ class ListDataAssetTagsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The type of the tag. Valid values:
-        # 
+        # The tag type.
         # - Normal
-        # 
         # - System
         self.category = category
         # The tag key.
         self.key = key
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number. Pages start from 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size

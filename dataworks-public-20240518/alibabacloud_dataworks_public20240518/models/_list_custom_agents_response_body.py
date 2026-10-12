@@ -13,7 +13,7 @@ class ListCustomAgentsResponseBody(DaraModel):
         paging_info: main_models.ListCustomAgentsResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
-        # The paging information.
+        # The pagination information.
         self.paging_info = paging_info
         # The request ID.
         self.request_id = request_id
@@ -58,9 +58,9 @@ class ListCustomAgentsResponseBodyPagingInfo(DaraModel):
         self.agents = agents
         # The maximum number of entries returned in this response.
         self.max_results = max_results
-        # The token to retrieve the next page of results. This parameter is empty when there are no more results to return.
+        # The token for the next page. An empty value indicates that the last page is reached.
         self.next_token = next_token
-        # The total number of entries that meet the filter criteria.
+        # The total number of entries that meet the query conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -121,25 +121,25 @@ class ListCustomAgentsResponseBodyPagingInfoAgents(DaraModel):
         name: str = None,
         visibility: str = None,
     ):
-        # The ID of the user who created the agent.
+        # **The creator ID.**
         self.creator_id = creator_id
-        # A description of the custom agent.
+        # **The description.**
         self.description = description
-        # The display name of the custom agent.
+        # **The display name.**
         self.display_name = display_name
-        # The time when the agent was created, provided in milliseconds since the Unix epoch.
+        # **The creation time (UNIX timestamp in milliseconds).**
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_create_time = gmt_create_time
-        # The time when the agent was last modified, provided in milliseconds since the Unix epoch.
+        # **The last modification time (UNIX timestamp in milliseconds).**
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_modified_time = gmt_modified_time
-        # The ID of the user who last modified the agent.
+        # **The last modifier ID.**
         self.modifier_id = modifier_id
-        # The name of the custom agent.
+        # **The agent name.**
         self.name = name
-        # The visibility level of the custom agent.
+        # **The visibility level.**
         self.visibility = visibility
 
     def validate(self):

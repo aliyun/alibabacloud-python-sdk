@@ -13,7 +13,7 @@ class ListParametersResponseBody(DaraModel):
         paging_info: main_models.ListParametersResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
-        # The pagination information.
+        # The response data.
         self.paging_info = paging_info
         # The request ID.
         self.request_id = request_id
@@ -56,11 +56,11 @@ class ListParametersResponseBodyPagingInfo(DaraModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries returned per page.
         self.page_size = page_size
-        # A list of parameters.
+        # The list of parameters.
         self.parameters = parameters
-        # The total number of parameters.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -126,35 +126,36 @@ class ListParametersResponseBodyPagingInfoParameters(DaraModel):
         type: str = None,
         version: int = None,
     ):
-        # The time when the parameter was created. This value is a UNIX timestamp in milliseconds.
+        # The creation time.
+        # 
+        # The value is a 13-digit number, such as `1640000000000`.
         self.create_time = create_time
-        # The Alibaba Cloud account ID of the creator.
+        # The user who created the parameter.
         self.create_user = create_user
-        # The parameter description.
+        # The description.
         self.description = description
         # The parameter ID.
         self.id = id
-        # The time when the parameter was last modified. This value is a UNIX timestamp in milliseconds.
+        # The modification time.
+        # 
+        # The value is a 13-digit number, such as `1640000000000`.
         self.modify_time = modify_time
-        # The Alibaba Cloud account ID of the user who last modified the parameter.
+        # The user who last modified the parameter.
         self.modify_user = modify_user
         # The parameter name.
         self.name = name
-        # The Alibaba Cloud account ID of the owner.
+        # The owner.
         self.owner = owner
         # The workspace ID.
         self.project_id = project_id
-        # The environment-specific values for the parameter.
+        # The parameter value configuration.
         self.properties = properties
-        # The parameter scope.
+        # The scope of the parameter.
         self.scope = scope
         # The parameter type. Valid values:
-        # 
-        # - `PlainConstant`: a plaintext constant
-        # 
-        # - `SecretConstant`: an encrypted constant
-        # 
-        # - `Variable`: a variable
+        # - PlainConstant: plaintext constant.
+        # - SecretConstant: ciphertext constant.
+        # - Variable: variable.
         self.type = type
         # The version number.
         self.version = version
@@ -265,11 +266,9 @@ class ListParametersResponseBodyPagingInfoParametersProperties(DaraModel):
         env_type: str = None,
         value: str = None,
     ):
-        # The environment type. Valid values:
-        # 
-        # - `Prod`: production environment
-        # 
-        # - `Dev`: development environment
+        # The project environment. Valid values:
+        # - Prod: production environment.
+        # - Dev: development environment.
         self.env_type = env_type
         # The parameter value.
         self.value = value

@@ -17,9 +17,9 @@ class UpdateMcpServerRequest(DaraModel):
         visibility: str = None,
         visibility_scope: main_models.UpdateMcpServerRequestVisibilityScope = None,
     ):
-        # The new custom request headers (key-value pairs).
+        # The new custom request headers in key-value pairs.
         self.custom_headers = custom_headers
-        # The name of the MCP Server to update.
+        # The name of the MCP server to update.
         # 
         # This parameter is required.
         self.name = name
@@ -29,7 +29,7 @@ class UpdateMcpServerRequest(DaraModel):
         self.url = url
         # The new visibility level.
         self.visibility = visibility
-        # The new visibility scope. Provide the corresponding field based on the Visibility setting.
+        # The new visibility scope. Specify the corresponding fields based on the `Visibility` value.
         self.visibility_scope = visibility_scope
 
     def validate(self):
@@ -90,9 +90,9 @@ class UpdateMcpServerRequestVisibilityScope(DaraModel):
         project_ids: List[str] = None,
         user_ids: List[str] = None,
     ):
-        # The list of visible project IDs. This parameter takes effect only when Visibility is set to `PROJECT`.
+        # The list of visible project IDs. This field takes effect when `Visibility` is set to `PROJECT`.
         self.project_ids = project_ids
-        # The list of visible user IDs. This parameter takes effect only when Visibility is set to `USER`.
+        # The list of visible user IDs. This field takes effect when `Visibility` is set to `USER`.
         self.user_ids = user_ids
 
     def validate(self):

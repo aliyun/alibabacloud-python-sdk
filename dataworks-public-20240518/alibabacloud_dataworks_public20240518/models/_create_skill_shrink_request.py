@@ -16,26 +16,23 @@ class CreateSkillShrinkRequest(DaraModel):
         visibility: str = None,
         visibility_scope_shrink: str = None,
     ):
-        # The **downloadable URL (HTTP/HTTPS) of the bundle.zip file**. This parameter is mutually exclusive with SkillMdOverride.
+        # The **download URL of the bundle.zip file** (HTTP or HTTPS). This parameter and SkillMdOverride are mutually exclusive.
         self.bundle_url = bundle_url
-        # The **Skill description**.
+        # The **skill description**.
         self.description = description
-        # The extension metadata in key-value pairs.
+        # The extended metadata in key-value pairs.
         self.extra_shrink = extra_shrink
-        # The **Skill name**, which must be unique within the current account.
+        # The **skill name**. The name must be unique within the current account.
         # 
         # This parameter is required.
         self.name = name
-        # The SKILL.md body content. This parameter is mutually exclusive with BundleUrl. If no bundle is provided, use this field to create a lightweight Skill that contains only a SKILL.md file.
+        # The content of the SKILL.md file. This parameter and BundleUrl are mutually exclusive. If you do not provide a bundle, use this parameter to create a lightweight skill that contains only the SKILL.md file.
         self.skill_md_override = skill_md_override
         # The **version note**.
         self.version_note = version_note
-        # The **visibility level**. Valid values:
-        # - TENANT: Visible within the account.
-        # - PROJECT: Visible to specified projects.
-        # - USER: Visible to specified users.
+        # The **visibility level**. Valid values: TENANT (visible to the entire tenant), PROJECT (visible to specific projects), and USER (visible to specific users).
         self.visibility = visibility
-        # The visibility scope. The corresponding field is determined by the Visibility parameter.
+        # The visibility scope. Specify the corresponding field based on the value of Visibility.
         self.visibility_scope_shrink = visibility_scope_shrink
 
     def validate(self):

@@ -22,17 +22,17 @@ class CreateAgentRequest(DaraModel):
         visibility: str = None,
         visibility_scope: main_models.CreateAgentRequestVisibilityScope = None,
     ):
-        # The list of child Agents that can be called by this Agent.
+        # The list of child agents that can be called by this agent.
         self.callable_agents = callable_agents
-        # The description of the Agent.
+        # The description of the agent.
         self.description = description
-        # The display name of the Agent.
+        # The display name of the agent.
         self.display_name = display_name
-        # The extended metadata (key-value pairs).
+        # The extended metadata in key-value pairs.
         self.metadata = metadata
         # The model configuration.
         self.model = model
-        # The Agent name, which must be unique within the current account.
+        # The name of the agent. The name must be unique within the current account.
         # 
         # This parameter is required.
         self.name = name
@@ -44,10 +44,10 @@ class CreateAgentRequest(DaraModel):
         self.tools = tools
         # The visibility level.<br>
         # `TENANT`: Visible within the account.<br>
-        # `PROJECT`: Visible to a specified project.<br>
+        # `PROJECT`: Visible to specified projects.<br>
         # `USER`: Visible to specified users.
         self.visibility = visibility
-        # The visibility scope. The corresponding field is determined by the Visibility parameter.
+        # The visibility scope. The corresponding field is used based on the visibility level.
         self.visibility_scope = visibility_scope
 
     def validate(self):
@@ -165,9 +165,9 @@ class CreateAgentRequestVisibilityScope(DaraModel):
         project_ids: List[str] = None,
         user_ids: List[str] = None,
     ):
-        # The list of project IDs to which the Agent is visible. This parameter takes effect only when Visibility is set to `PROJECT`.
+        # The list of visible project IDs. This parameter takes effect when Visibility is set to `PROJECT`.
         self.project_ids = project_ids
-        # The list of user IDs to which the Agent is visible. This parameter takes effect only when Visibility is set to `USER`.
+        # The list of visible user IDs. This parameter takes effect when Visibility is set to `USER`.
         self.user_ids = user_ids
 
     def validate(self):
@@ -201,7 +201,7 @@ class CreateAgentRequestTools(DaraModel):
         self,
         name: str = None,
     ):
-        # The McpServer name.
+        # The name of the McpServer.
         self.name = name
 
     def validate(self):
@@ -229,7 +229,7 @@ class CreateAgentRequestSkills(DaraModel):
         self,
         name: str = None,
     ):
-        # The skill name.
+        # The name of the skill.
         self.name = name
 
     def validate(self):
@@ -257,7 +257,7 @@ class CreateAgentRequestCallableAgents(DaraModel):
         self,
         name: str = None,
     ):
-        # The Agent name.
+        # The name of the agent.
         self.name = name
 
     def validate(self):

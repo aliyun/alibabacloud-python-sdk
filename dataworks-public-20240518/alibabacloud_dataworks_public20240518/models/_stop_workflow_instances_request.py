@@ -12,9 +12,9 @@ class StopWorkflowInstancesRequest(DaraModel):
         comment: str = None,
         ids: List[int] = None,
     ):
-        # The remarks.
+        # The comment.
         self.comment = comment
-        # The workflow instance IDs.
+        # The list of workflow instance IDs. You can call the ListWorkflowInstances operation to query workflow instance IDs.
         # 
         # This parameter is required.
         self.ids = ids

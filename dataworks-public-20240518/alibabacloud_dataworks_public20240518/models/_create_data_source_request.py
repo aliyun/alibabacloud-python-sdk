@@ -14,33 +14,33 @@ class CreateDataSourceRequest(DaraModel):
         project_id: int = None,
         type: str = None,
     ):
-        # The connection properties of the data source, including the endpoint, access identity, and environment context. The envType property is a member of this object and specifies the data source environment. Valid values:
-        # - Dev: development environment.
-        # - Prod: production environment.
+        # The specific connection configuration of the data source, including the endpoint, access identity, and environment context. The envType property of this object specifies the data source environment. Valid values:
+        # - Dev: Development environment.
+        # - Prod: Production environment.
         # 
-        # Different data source types have different property specifications under different connection patterns (ConnectionPropertiesMode). For more information, see [Data source connection properties ConnectionProperties](https://help.aliyun.com/document_detail/2852465.html).
+        # Different data source types have different property specifications in different configuration patterns (ConnectionPropertiesMode). For more information, see [ConnectionProperties](https://help.aliyun.com/document_detail/2852465.html).
         # 
         # This parameter is required.
         self.connection_properties = connection_properties
-        # The connection mode of the data source. Different types have different subtypes with different parameter constraints. For example, a MySQL data source supports the following modes:
-        # - InstanceMode (instance mode)
-        # - UrlMode (connection string mode)
+        # The category in which the data source is added. Different data source types have different subtypes and parameter constraints. For example, a MySQL data source supports the following modes:
+        # - InstanceMode: Instance mode.
+        # - UrlMode: Connection string mode.
         # 
         # This parameter is required.
         self.connection_properties_mode = connection_properties_mode
         # The description of the data source. The description can be up to 3,000 characters in length.
         self.description = description
-        # The name of the data source. The name can contain letters, digits, and underscores (_), and cannot start with a digit or underscore. The name can be up to 255 characters in length.
+        # The name of the data source. The name can contain letters, digits, and underscores (_), and cannot start with a digit or an underscore. The name can be up to 255 characters in length.
         # 
         # This parameter is required.
         self.name = name
         # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/overview) and go to the Workspace Management page to obtain the ID.
         # 
-        # This parameter specifies the DataWorks workspace for this API call.
+        # This parameter specifies the DataWorks workspace used for this API call.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The type of the data source. More than 70 data source types are supported. For more information about the enumerated data source types, refer to References: [Data source type list](https://help.aliyun.com/document_detail/2852465.html).
+        # The type of the data source. More than 70 data source types are supported. References: [Data source types](https://help.aliyun.com/document_detail/2852465.html).
         # 
         # This parameter is required.
         self.type = type

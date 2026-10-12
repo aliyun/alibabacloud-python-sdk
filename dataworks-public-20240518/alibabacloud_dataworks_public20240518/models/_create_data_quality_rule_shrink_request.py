@@ -20,11 +20,11 @@ class CreateDataQualityRuleShrinkRequest(DaraModel):
     ):
         # The sample check settings.
         self.checking_config_shrink = checking_config_shrink
-        # The description of the rule. The maximum length is 500 characters.
+        # The description of the rule. The description can be up to 500 characters in length.
         self.description = description
-        # Specifies whether to enable the data quality rule.
+        # Specifies whether the quality rule is enabled.
         self.enabled = enabled
-        # The list of issue handlers for the data quality rule check.
+        # The list of handlers for quality rule check issues.
         self.error_handlers_shrink = error_handlers_shrink
         # The name of the rule.
         # 
@@ -36,13 +36,13 @@ class CreateDataQualityRuleShrinkRequest(DaraModel):
         self.project_id = project_id
         # The settings required for sample collection.
         self.sampling_config_shrink = sampling_config_shrink
-        # The severity of the rule for the business (corresponding to the strong/weak rule on the page). Valid values:
+        # The severity level of the rule for business operations, which corresponds to strong and weak rules on the page. Valid values:
         # - Normal
         # - High
         self.severity = severity
         # The object monitored by the rule.
         self.target_shrink = target_shrink
-        # The unique identifier of the rule template that the rule references.
+        # The unique identifier of the rule template referenced by the rule.
         self.template_code = template_code
 
     def validate(self):

@@ -10,13 +10,11 @@ class UpdateComputeResourceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The request ID. Used to locate logs and troubleshoot issues.
+        # The request ID. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the computing resource was modified successfully:
-        # 
-        # - true: Yes
-        # 
-        # - false: No
+        # Specifies whether the compute resource is updated:
+        # - true: Yes.
+        # - false: No.
         self.success = success
 
     def validate(self):

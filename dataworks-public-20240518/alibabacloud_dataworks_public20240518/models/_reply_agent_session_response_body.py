@@ -13,9 +13,9 @@ class ReplyAgentSessionResponseBody(DaraModel):
         json_rpc_response: main_models.ReplyAgentSessionResponseBodyJsonRpcResponse = None,
         request_id: str = None,
     ):
-        # The JSON-RPC response. Returns Result on success or Error on protocol errors.
+        # The JSON-RPC response. Returns Result on success and Error on protocol errors.
         self.json_rpc_response = json_rpc_response
-        # The request ID for this call, which can be used for troubleshooting.
+        # The request ID for the current call, which can be used for troubleshooting.
         self.request_id = request_id
 
     def validate(self):
@@ -55,15 +55,15 @@ class ReplyAgentSessionResponseBodyJsonRpcResponse(DaraModel):
         result: main_models.ReplyAgentSessionResponseBodyJsonRpcResponseResult = None,
         timestamp: int = None,
     ):
-        # The JSON-RPC fault information. For example, DAEMON_PERMISSION_UNAVAILABLE is returned when the daemon reply feature is not enabled.
+        # The JSON-RPC fault message. For example, DAEMON_PERMISSION_UNAVAILABLE is returned when the daemon reply feature is not enabled.
         self.error = error
-        # The JSON-RPC correlation ID for this reply request.
+        # The JSON-RPC correlation ID for the current reply request.
         self.id = id
         # The JSON-RPC protocol version.
         self.jsonrpc = jsonrpc
-        # The reply processing result. This only indicates whether the reply was accepted, not whether the original task has completed.
+        # The reply processing result. It only indicates whether the current reply is accepted, and does not indicate that the original task execution is completed.
         self.result = result
-        # The response time. This is a UNIX timestamp, in milliseconds.
+        # The response time. It is a UNIX timestamp in milliseconds.
         self.timestamp = timestamp
 
     def validate(self):
@@ -120,7 +120,7 @@ class ReplyAgentSessionResponseBodyJsonRpcResponseResult(DaraModel):
         self,
         accepted: bool = None,
     ):
-        # Indicates whether the daemon accepted the reply. A value of true indicates that the daemon accepted the reply. A value of false indicates that the reply was not accepted. Possible reasons include an unknown request, an already processed request, an expired request, or a nonexistent session. You cannot determine the specific reason from this value.
+        # Indicates whether the daemon accepts the current reply. A value of true indicates that the reply is accepted. A value of false indicates that the reply is not accepted, which may be because the request is unknown, already processed, expired, or the session does not exist. The specific cause cannot be distinguished based on this value.
         self.accepted = accepted
 
     def validate(self):

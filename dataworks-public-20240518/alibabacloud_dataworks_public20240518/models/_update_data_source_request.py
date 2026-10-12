@@ -13,29 +13,25 @@ class UpdateDataSourceRequest(DaraModel):
         id: int = None,
         project_id: int = None,
     ):
-        # The connection configurations of the data source, including the connection address, access identity, and environment information. The envType parameter specifies the environment in which the data source is used. Valid values of the envType parameter:
+        # The specific connection configuration of the data source, including the endpoint, access identity, and environment context. The EnvType property of the data source environment is a member attribute of this object. Valid values:
+        # - Dev: development environment.
+        # - Prod: production environment.
         # 
-        # - Dev: development environment
-        # 
-        # - Prod: production environment
-        # 
-        # The parameters that you need to configure for the data source vary based on the mode in which the data source is added. For more information, see [Data source connection information (ConnectionProperties)](https://help.aliyun.com/document_detail/2852465.html).
+        # Different types of data sources have different attribute specifications in different configuration patterns (ConnectionPropertiesMode). For more information, see [Connection properties](https://help.aliyun.com/document_detail/2852465.html).
         # 
         # This parameter is required.
         self.connection_properties = connection_properties
-        # The mode in which the data source is added. The mode varies based on the data source type. Valid values:
-        # 
-        # - InstanceMode: instance mode
-        # 
-        # - UrlMode: connection string mode
+        # The category used to add the data source. Different types have different subtypes and corresponding parameter constraints. Examples:
+        # - InstanceMode: instance mode.
+        # - UrlMode: connection string mode.
         self.connection_properties_mode = connection_properties_mode
-        # The description of the data source. The description cannot exceed 3,000 characters in length.
+        # The description of the data source. The description can be up to 3,000 characters in length.
         self.description = description
-        # The data source ID.
+        # The unique identifier of the data source.
         # 
         # This parameter is required.
         self.id = id
-        # The DataWorks workspace ID.
+        # The ID of the DataWorks workspace.
         # 
         # This parameter is required.
         self.project_id = project_id

@@ -9,7 +9,7 @@ class GetResourceGroupRequest(DaraModel):
         self,
         id: str = None,
     ):
-        # The unique identifier of the resource group.
+        # The unique identifier of the general resource group.
         # 
         # This parameter is required.
         self.id = id

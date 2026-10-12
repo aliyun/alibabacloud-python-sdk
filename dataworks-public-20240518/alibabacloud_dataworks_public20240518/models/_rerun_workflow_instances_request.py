@@ -22,31 +22,42 @@ class RerunWorkflowInstancesRequest(DaraModel):
         type: str = None,
         workflow_id: int = None,
     ):
-        # The business date used for matching manual workflow instances.
+        # The data timestamp specified for the manual workflow instance run, used for matching.
+        # 
+        # The value is a 13-digit number, such as `1710239005403`.
         self.bizdate = bizdate
-        # The end trigger time (creation time) of the manual workflow instance used for matching. This parameter must be used together with the StartTriggerTime.
+        # The end trigger time (creation time) of the manual workflow instance used for matching. This parameter must be used together with StartTriggerTime.
+        # 
+        # The value is a 13-digit number, such as `1710239005403`.
         self.end_trigger_time = end_trigger_time
-        # The environment of the workspace. Valid values: Prod (production) and Dev (development).
+        # The project environment. Valid values:
+        # 
+        # - Prod: Production.
+        # - Dev: Development.
         self.env_type = env_type
-        # The match conditions for internal instances of manual workflow instances.
+        # The matching conditions for the internal instances of the manual workflow instance.
         self.filter = filter
-        # The instance IDs used for matching manual workflow instances.
+        # The list of manual workflow instance IDs used for matching.
         self.ids = ids
-        # The manual workflow name, used for fuzzy matching.
+        # The name of the manual workflow used for fuzzy matching.
         self.name = name
         # The project ID.
         # 
         # This parameter is required.
         self.project_id = project_id
         # The start trigger time (creation time) of the manual workflow instance used for matching. This parameter must be used together with EndTriggerTime.
+        # 
+        # The value is a 13-digit number, such as `1710239005403`.
         self.start_trigger_time = start_trigger_time
-        # The status used for matching manual workflow instances.
+        # The running status of the manual workflow instance used for matching.
         self.status = status
-        # The type of the workflow instance. Valid value: ManualWorkflow (manual workflow).
+        # The type of the workflow instance. Valid values:
+        # 
+        # - ManualWorkflow: Manual workflow.
         # 
         # This parameter is required.
         self.type = type
-        # The workflow ID.
+        # The ID of the workflow.
         # 
         # This parameter is required.
         self.workflow_id = workflow_id
@@ -142,15 +153,15 @@ class RerunWorkflowInstancesRequestFilter(DaraModel):
         task_name: str = None,
         task_types: List[str] = None,
     ):
-        # Specifies whether to rerun the matched instances and all downstream instances.
+        # Specifies whether to rerun the matched instances and all their downstream instances.
         self.rerun_downstream_enabled = rerun_downstream_enabled
-        # The internal task IDs used for matching manual workflow instances.
+        # The task IDs of the internal tasks in the manual workflow used for matching.
         self.task_ids = task_ids
-        # The statuses of internal tasks used for matching manual workflow instances.
+        # The running statuses of the internal instances of the manual workflow instance used for matching.
         self.task_instance_statuses = task_instance_statuses
-        # The internal task name used for matching the manual workflow instance.
+        # The name of the internal task in the manual workflow used for matching.
         self.task_name = task_name
-        # Match internal tasks within the manual workflow by type.
+        # The types of the internal tasks in the manual workflow used for matching.
         self.task_types = task_types
 
     def validate(self):

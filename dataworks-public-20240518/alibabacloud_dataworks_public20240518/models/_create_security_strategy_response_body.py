@@ -10,9 +10,9 @@ class CreateSecurityStrategyResponseBody(DaraModel):
         id: int = None,
         request_id: str = None,
     ):
-        # The security strategy ID.
+        # The security policy ID.
         self.id = id
-        # The request ID.
+        # The API request ID.
         self.request_id = request_id
 
     def validate(self):

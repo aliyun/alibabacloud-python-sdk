@@ -13,9 +13,9 @@ class ListWorkflowsResponseBody(DaraModel):
         paging_info: main_models.ListWorkflowsResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
-        # Pagination information.
+        # The pagination information.
         self.paging_info = paging_info
-        # The request ID.
+        # The request ID. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -58,9 +58,9 @@ class ListWorkflowsResponseBodyPagingInfo(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
-        # The workflows.
+        # The list of workflows.
         self.workflows = workflows
 
     def validate(self):
@@ -127,31 +127,35 @@ class ListWorkflowsResponseBodyPagingInfoWorkflows(DaraModel):
         tags: List[main_models.ListWorkflowsResponseBodyPagingInfoWorkflowsTags] = None,
         trigger: main_models.ListWorkflowsResponseBodyPagingInfoWorkflowsTrigger = None,
     ):
-        # The unique code of the client. This parameter is used to create a workflow asynchronously and implement the idempotence of the workflow. If you do not specify this parameter when you create the workflow, the system automatically generates a unique code. The unique code is uniquely associated with the workflow ID. If you specify this parameter when you update or delete the workflow, the value of this parameter must be the unique code that is used to create the workflow.
+        # The client unique code of the workflow, which is used to implement asynchronous processing and idempotence. If you do not specify this parameter when creating a workflow, the system automatically generates one and uniquely binds it to the resource ID. If you specify this parameter when updating or deleting a resource, it must be the same as the client unique code used during creation.
         self.client_unique_code = client_unique_code
         # The creation time.
+        # 
+        # The value is a 13-digit timestamp, such as `1710239005403`.
         self.create_time = create_time
-        # The account ID of the creator.
+        # The account ID of the user who created the workflow.
         self.create_user = create_user
         # The description.
         self.description = description
-        # The environment of the workspace. Valid values: Prod (production) and Dev (development).
+        # The project environment.
         self.env_type = env_type
-        # The workflow ID.
+        # The unique identifier of the workflow.
         self.id = id
         # The modification time.
+        # 
+        # The value is a 13-digit timestamp, such as `1710239005403`.
         self.modify_time = modify_time
-        # The account ID of the modifier.
+        # The account ID of the user who last modified the workflow.
         self.modify_user = modify_user
         # The name.
         self.name = name
         # The account ID of the owner.
         self.owner = owner
-        # The parameters.
+        # The list of parameters.
         self.parameters = parameters
-        # The workspace ID.
+        # The project ID.
         self.project_id = project_id
-        # The task tag.
+        # The task tags.
         self.tags = tags
         # The trigger method.
         self.trigger = trigger
@@ -274,19 +278,24 @@ class ListWorkflowsResponseBodyPagingInfoWorkflowsTrigger(DaraModel):
         start_time: str = None,
         type: str = None,
     ):
-        # The CRON expression. This parameter takes effect only if the Type parameter is set to Scheduler.
+        # The cron expression. This parameter takes effect only when Type is set to Scheduler.
         self.cron = cron
-        # The end time of the time range during which the workflow is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
+        # The expiration time of the periodic trigger. This parameter takes effect only when Type is set to Scheduler.
+        # 
+        # The format is `yyyy-MM-dd HH:mm:ss`, such as `9999-01-01 00:00:00`. The example does not include a time zone identifier.
         self.end_time = end_time
-        # The running mode of the workflow after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values: Pause (paused), Skip (dry run), and Normal (normal execution).
+        # The running mode upon triggering. This parameter takes effect only when Type is set to Scheduler. Valid values:
+        # - Pause: Paused.
+        # - Skip: Dry run.
+        # - Normal: Normal execution.
         self.recurrence = recurrence
-        # The start time of the time range during which the workflow is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
+        # The effective period of the epoch trigger. This parameter takes effect only when Type is set to Scheduler.
+        # 
+        # The format is `yyyy-MM-dd HH:mm:ss`, such as `1970-01-01 00:00:00`. The example does not include a time zone identity.
         self.start_time = start_time
         # The trigger type. Valid values:
-        # 
-        # - Scheduler: scheduling cycle-based trigger
-        # 
-        # - Manual: manual trigger
+        # - Scheduler: Triggered by a scheduling cycle.
+        # - Manual: Triggered manually.
         self.type = type
 
     def validate(self):
@@ -339,9 +348,9 @@ class ListWorkflowsResponseBodyPagingInfoWorkflowsTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of a tag.
+        # The tag key.
         self.key = key
-        # The value of a tag.
+        # The tag value.
         self.value = value
 
     def validate(self):

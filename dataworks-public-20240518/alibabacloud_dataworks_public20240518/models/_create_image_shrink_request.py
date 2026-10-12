@@ -22,51 +22,48 @@ class CreateImageShrinkRequest(DaraModel):
         repository_name: str = None,
         supported_shrink: str = None,
     ):
-        # The image visibility. Valid values:
-        # - Public: visible to all users.
-        # - Private: visible only to the creator.
+        # The visibility of the image. Valid values:
+        # - Public: The image is visible to all users.
+        # - Private: The image is visible only to the creator.
         self.accessibility = accessibility
-        # The VPC ID associated with the ACR instance. This parameter is required when referencing an ACR image.
+        # The ID of the virtual private cloud (VPC) associated with the ACR instance. This parameter is required if you reference an ACR image.
         self.acr_associated_vpc_id = acr_associated_vpc_id
-        # The ACR instance ID. This parameter is required when referencing an ACR image.
+        # The ACR instance ID. This parameter is required if you reference an ACR image.
         self.acr_instance_id = acr_instance_id
-        # The image build configuration.
+        # The build configuration of the image.
         self.build_config_shrink = build_config_shrink
-        # The client idempotency token.
+        # The client token that is used to ensure idempotence.
         # 
         # This parameter is required.
         self.client_token = client_token
-        # The image description, up to 128 characters.
+        # The description of the image. The description can be up to 128 characters in length.
         self.description = description
-        # Specifies whether to synchronize the image to MaxCompute. Specify this parameter when referencing an ACR image. Default value: false.
+        # Specifies whether to synchronize the image to MaxCompute. Specify this parameter when you reference an ACR image. Default value: false.
         self.enable_sync_max_compute = enable_sync_max_compute
-        # The image URI. This parameter is required when referencing an ACR image.
+        # The URI of the image. This parameter is required if you reference an ACR image.
         self.image_uri = image_uri
-        # The image name, which can contain lowercase letters, digits, and underscores (_), up to 128 characters.
+        # The name of the image. The name can contain lowercase letters, digits, and underscores (_), and can be up to 128 characters in length.
         # 
         # This parameter is required.
         self.name = name
-        # The image namespace. Set this parameter to DataWorks Default when referencing a DataWorks official image.
+        # The namespace of the image. If you reference a DataWorks official image, set this parameter to DataWorks Default.
         # 
         # This parameter is required.
         self.namespace = namespace
-        # The image ID from the image provider. This parameter is required when referencing a DataWorks official image.
+        # The ID of the image provided by the image provider. This parameter is required if you reference a DataWorks official image.
         self.provider_image_id = provider_image_id
-        # The image reference type. Valid values:
-        # 
-        # 
-        # 
+        # The reference data type of the image. Valid values:
         # 
         # - ACR: ACR image repository.
         # - DataWorks: DataWorks official image.
         # 
         # This parameter is required.
         self.provider_type = provider_type
-        # The image repository name. Set this parameter to DataWorks Default when referencing a DataWorks official image.
+        # The name of the image repository. If you reference a DataWorks official image, set this parameter to DataWorks Default.
         # 
         # This parameter is required.
         self.repository_name = repository_name
-        # The image sub-purpose.
+        # The sub-purpose of the image.
         # 
         # This parameter is required.
         self.supported_shrink = supported_shrink

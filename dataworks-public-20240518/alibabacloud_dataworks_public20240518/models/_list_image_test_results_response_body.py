@@ -133,11 +133,11 @@ class ListImageTestResultsResponseBodyPagingInfoTestResultList(DaraModel):
         self.image_id = image_id
         # The test result message.
         self.message = message
-        # The operation time, represented as a 64-bit timestamp.
+        # The operation time, which is a 64-bit timestamp.
         self.operate_time = operate_time
         # The process ID.
         self.process_id = process_id
-        # The publish stage of the image.
+        # The image publishing stage.
         self.publish_stage = publish_stage
         # The resource group ID.
         self.resource_group_id = resource_group_id

@@ -16,11 +16,11 @@ class ListLineageRelationshipsRequest(DaraModel):
         src_entity_id: str = None,
         src_entity_name: str = None,
     ):
-        # The destination entity ID. You can use the table or field ID returned by the ListTables or ListColumns operation, or use a custom entity ID.
+        # The ID of the destination entity. You can refer to the table or field ID returned by the ListTables or ListColumns operation, or use a custom entity ID.
         # 
         # This parameter is required.
         self.dst_entity_id = dst_entity_id
-        # The destination entity name. Fuzzy match is supported.
+        # The name of the destination entity. Fuzzy match is supported.
         self.dst_entity_name = dst_entity_name
         # The sort order. Default value: Asc. Valid values:
         # 
@@ -29,17 +29,17 @@ class ListLineageRelationshipsRequest(DaraModel):
         self.order = order
         # The page number. Default value: 1.
         self.page_number = page_number
-        # The page size. Default value: 10. Maximum value: 100.
+        # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
-        # The sort field. Default value: Name.
+        # The field used for sorting. Default value: Name.
         self.sort_by = sort_by
-        # The source entity ID. You can use the table or field ID returned by the ListTables or ListColumns operation, or use a custom entity ID.
+        # The ID of the source entity. You can refer to the table or field ID returned by the ListTables or ListColumns operation, or use a custom entity ID.
         # 
-        # To obtain a table or field entity ID, first call ListCrawlers to obtain the MetaEntityId of the metadata crawler. For types that contain a data catalog level, such as DLF and StarRocks, call ListCatalogs to obtain the catalog ID. Then call ListDatabases to obtain the database ID. If necessary, call ListSchemas to obtain the schema ID. Finally, call ListTables or ListColumns to obtain the table or field ID.
+        # To obtain the entity ID of a table or field, first call ListCrawlers to obtain the MetaEntityId of the metadata crawler. For types that include a data catalog hierarchy, such as DLF and StarRocks, call ListCatalogs to obtain the catalog ID. Then, call ListDatabases to obtain the database ID, and call ListSchemas to obtain the schema ID if necessary. Finally, call ListTables or ListColumns to obtain the table or field ID.
         # 
         # This parameter is required.
         self.src_entity_id = src_entity_id
-        # The source entity name. Fuzzy match is supported.
+        # The name of the source entity. Fuzzy match is supported.
         self.src_entity_name = src_entity_name
 
     def validate(self):

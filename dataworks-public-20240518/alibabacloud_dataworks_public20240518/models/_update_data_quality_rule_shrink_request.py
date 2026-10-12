@@ -18,27 +18,27 @@ class UpdateDataQualityRuleShrinkRequest(DaraModel):
         severity: str = None,
         template_code: str = None,
     ):
-        # The sample verification settings.
+        # The sample check settings.
         self.checking_config_shrink = checking_config_shrink
-        # The rule description. The maximum length is 500 characters.
+        # The description of the rule. It can be up to 500 characters in length.
         self.description = description
         # Specifies whether the rule is enabled.
         self.enabled = enabled
-        # The list of issue handlers for data quality rule verification.
+        # The list of error handlers for quality rule check issues.
         self.error_handlers_shrink = error_handlers_shrink
-        # The rule ID.
+        # The ID of the rule.
         # 
         # This parameter is required.
         self.id = id
-        # The rule name. The name can be a combination of digits, English letters, Chinese characters, and half-width or full-width punctuation. The maximum length is 255 characters.
+        # The name of the rule. The name can contain digits, letters, Chinese characters, and half-width or full-width punctuation marks. It can be up to 255 characters in length.
         self.name = name
-        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Settings page to obtain the workspace ID.
+        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Configuration page to obtain the workspace ID.
         # 
         # This parameter is required.
         self.project_id = project_id
         # The settings required for sample collection.
         self.sampling_config_shrink = sampling_config_shrink
-        # The severity level of the rule for the business (corresponding to strong/weak rules on the page). Valid values:
+        # The severity level of the rule for the business, which corresponds to the strong or weak rule on the page. Valid values:
         # - Normal
         # - High
         self.severity = severity

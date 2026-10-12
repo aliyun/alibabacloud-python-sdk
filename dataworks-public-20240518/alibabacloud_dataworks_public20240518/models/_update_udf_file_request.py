@@ -20,42 +20,39 @@ class UpdateUdfFileRequest(DaraModel):
         return_value: str = None,
         udf_description: str = None,
     ):
-        # The class name where the function is defined, corresponding to the class name field in the Create Function form.
+        # The name of the class where the function is defined, which corresponds to the class name in the create function form.
         # 
         # This parameter is required.
         self.class_name = class_name
-        # The command format for invoking the function, corresponding to the command format field in the Create Function form.
+        # The command format used to call the function, which corresponds to the command format in the create function form.
         self.cmd_description = cmd_description
-        # An example demonstrating how to call the function, corresponding to the example field in the Create Function form.
+        # The call example of the function, which corresponds to the example in the create function form.
         self.example = example
-        # The path to the folder containing the function file.
+        # The path of the folder where the function file is located.
         self.file_folder_path = file_folder_path
-        # The file ID.
+        # The ID of the file.
         # 
         # This parameter is required.
         self.file_id = file_id
-        # The function category, corresponding to the function type field in the Create Function form. Valid values: MATH (mathematical functions), AGGREGATE (aggregate functions), STRING (string processing functions), DATE (date processing functions), ANALYTIC (window functions), and OTHER (other functions).
+        # The category of the function, which corresponds to the function type in the create function form. Valid values: MATH (mathematical operation functions), AGGREGATE (aggregate functions), STRING (string processing functions), DATE (date processing functions), ANALYTIC (window functions), and OTHER (other functions).
         # 
         # This parameter is required.
         self.function_type = function_type
-        # The description of the function input parameters, corresponding to the Parameter Description field in the Create Function form.
+        # The description of the input parameters for the function, which corresponds to the parameter description in the create function form.
         self.parameter_description = parameter_description
-        # The DataWorks workspace ID. To find this, click the wrench icon in the upper-right corner and navigate to the workspace management page.
+        # The ID of the DataWorks workspace. You can view the ID on the Workspace Management page by clicking the Settings icon in the upper-right corner.
         self.project_id = project_id
-        # The unique identifier of the DataWorks workspace, which is the English identifier at the top of the Data Studio page where you switch workspaces.
+        # The unique identifier of the DataWorks workspace, which is the English identifier displayed when you switch workspaces at the top of the Data Studio page.
         # 
-        # 
-        # 
-        # 
-        # Either this parameter or ProjectId must be specified to identify the target DataWorks workspace for this API call.
+        # You must specify either this parameter or the ProjectId parameter to determine the DataWorks workspace for the API call.
         self.project_identifier = project_identifier
-        # A comma-separated list of resource names referenced by the function, corresponding to the resource list field in the Create Function form.
+        # The list of resource names referenced by the function. Separate multiple resource names with commas (,). This corresponds to the resources in the create function form.
         # 
         # This parameter is required.
         self.resources = resources
-        # The return value description, corresponding to the return value field in the Create Function form.
+        # The description of the return value of the function, which corresponds to the return value in the create function form.
         self.return_value = return_value
-        # The function purpose description, corresponding to the description field in the Create Function form.
+        # The description of the function purpose, which corresponds to the description in the create function form.
         self.udf_description = udf_description
 
     def validate(self):

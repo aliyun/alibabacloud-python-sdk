@@ -18,36 +18,34 @@ class ListWorkflowsShrinkRequest(DaraModel):
         tags_shrink: str = None,
         trigger_type: str = None,
     ):
-        # The environment of the workspace. Valid values:
-        # 
-        # - Prod: production environment
-        # 
-        # - Dev: development environment
+        # The project environment.
         self.env_type = env_type
-        # The IDs of the workflows. You can query multiple workflows at a time by workflow ID.
+        # The list of workflow IDs. You can specify multiple workflow IDs to query multiple workflows at a time.
         self.ids_shrink = ids_shrink
-        # The name of the workflow. Fuzzy match is supported.
+        # The name. Fuzzy match is supported.
         self.name = name
-        # The account ID of the workflow owner.
+        # The account ID of the owner.
         self.owner = owner
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number. Pages start from 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # The workspace ID.
+        # The project ID.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The field used for sorting. Fields such as ModifyTime and CreateTime are supported. Format: sort field + sort order (Desc/Asc). Asc can be omitted. Valid values: ModifyTime (Desc/Asc), CreateTime (Desc/Asc), and Id (Desc/Asc). Default value: Id Desc.
+        # The sort field. You can sort by fields such as modification time and creation time. The format is \\"SortField+SortOrder(Desc/Asc)\\", where Asc can be omitted. Valid values for the sort field:
+        # - ModifyTime (Desc/Asc)
+        # - CreateTime (Desc/Asc)
+        # - Id (Desc/Asc)
+        # 
+        # Default value: Id Desc.
         self.sort_by = sort_by
-        # List of tags. A result is returned if it matches any one of the specified tags.
+        # The list of tags. If a workflow matches any of the specified tags, it is returned in the result.
         self.tags_shrink = tags_shrink
-        # The trigger type.
-        # 
+        # The trigger type. Valid values:
         # - Scheduler
-        # 
         # - Manual
-        # 
         # - TriggerWorkflow
         self.trigger_type = trigger_type
 

@@ -19,17 +19,17 @@ class CreateAgentShrinkRequest(DaraModel):
         visibility: str = None,
         visibility_scope_shrink: str = None,
     ):
-        # The list of child Agents that can be called by this Agent.
+        # The list of child agents that can be called by this agent.
         self.callable_agents_shrink = callable_agents_shrink
-        # The description of the Agent.
+        # The description of the agent.
         self.description = description
-        # The display name of the Agent.
+        # The display name of the agent.
         self.display_name = display_name
-        # The extended metadata (key-value pairs).
+        # The extended metadata in key-value pairs.
         self.metadata_shrink = metadata_shrink
         # The model configuration.
         self.model_shrink = model_shrink
-        # The Agent name, which must be unique within the current account.
+        # The name of the agent. The name must be unique within the current account.
         # 
         # This parameter is required.
         self.name = name
@@ -41,10 +41,10 @@ class CreateAgentShrinkRequest(DaraModel):
         self.tools_shrink = tools_shrink
         # The visibility level.<br>
         # `TENANT`: Visible within the account.<br>
-        # `PROJECT`: Visible to a specified project.<br>
+        # `PROJECT`: Visible to specified projects.<br>
         # `USER`: Visible to specified users.
         self.visibility = visibility
-        # The visibility scope. The corresponding field is determined by the Visibility parameter.
+        # The visibility scope. The corresponding field is used based on the visibility level.
         self.visibility_scope_shrink = visibility_scope_shrink
 
     def validate(self):

@@ -10,9 +10,9 @@ class UpdateDataQualityAlertRuleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the alert rule is updated.
+        # Indicates whether the alert rule was updated successfully.
         self.success = success
 
     def validate(self):

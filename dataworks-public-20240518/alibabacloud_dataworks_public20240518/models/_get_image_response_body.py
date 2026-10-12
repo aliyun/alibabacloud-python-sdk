@@ -16,9 +16,9 @@ class GetImageResponseBody(DaraModel):
     ):
         # The image details.
         self.image = image
-        # The request ID, which is used to locate logs and troubleshoot issues.
+        # The request ID. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -87,10 +87,10 @@ class GetImageResponseBodyImage(DaraModel):
         version: str = None,
     ):
         # The image visibility. Valid values:
-        # - Public: visible to all users.
-        # - Private: visible only to the creator.
+        # - Public: Visible to all users.
+        # - Private: Visible only to the creator.
         self.accessibility = accessibility
-        # The VPC ID associated with the ACR instance.
+        # The ID of the VPC associated with the ACR instance.
         self.acr_associated_vpc_id = acr_associated_vpc_id
         # ACR Endpoint
         self.acr_endpoint = acr_endpoint
@@ -98,13 +98,13 @@ class GetImageResponseBodyImage(DaraModel):
         self.acr_instance_id = acr_instance_id
         # The image build configuration.
         self.build_config = build_config
-        # The creation time, represented as a 64-bit timestamp.
+        # The creation time. The value is a 64-bit timestamp.
         self.created_time = created_time
         # The ID of the creator.
         self.creator = creator
         # The image description.
         self.description = description
-        # Indicates whether synchronization with MaxCompute is enabled.
+        # Indicates whether MaxCompute synchronization is enabled.
         self.enable_sync_max_compute = enable_sync_max_compute
         # The image ID.
         self.id = id
@@ -116,7 +116,7 @@ class GetImageResponseBodyImage(DaraModel):
         self.image_vpc_uri = image_vpc_uri
         # Indicates whether the image is the default image.
         self.is_default = is_default
-        # The last modification time, represented as a 64-bit timestamp.
+        # The last modified time. The value is a 64-bit timestamp.
         self.last_modified_time = last_modified_time
         # The ID of the modifier.
         self.modifier = modifier
@@ -126,36 +126,37 @@ class GetImageResponseBodyImage(DaraModel):
         self.namespace = namespace
         # Indicates whether the image is an official image.
         self.official = official
-        # The image ID from the image provider.
+        # The image ID of the provider.
         self.provider_image_id = provider_image_id
         # The image reference data type. Valid values:
+        # 
         # - ACR: ACR image repository.
         # - DataWorks: DataWorks official image.
         self.provider_type = provider_type
         # The publish status. Valid values:
-        # - Untest: not tested.
-        # - Testing: being tested.
-        # - TestFailed: test failed.
-        # - Unpublished: not published.
-        # - Publishing: being published.
-        # - Published: published.
-        # - PublishFailed: publish failed.
-        # - Building: being built.
-        # - BuildSuccess: build succeeded.
-        # - BuildFailed: build failed.
-        # - Accelerating: being accelerated.
-        # - AccelerateSuccess: acceleration succeeded.
-        # - AccelerateFailed: acceleration failed.
+        # - Untest: The image is not tested.
+        # - Testing: The image is being tested.
+        # - TestFailed: The test failed.
+        # - Unpublished: The image is unpublished.
+        # - Publishing: The image is being published.
+        # - Published: The image is published.
+        # - PublishFailed: The publication failed.
+        # - Building: The image is being built.
+        # - BuildSuccess: The build succeeded.
+        # - BuildFailed: The build failed.
+        # - Accelerating: The image is being accelerated.
+        # - AccelerateSuccess: The acceleration succeeded.
+        # - AccelerateFailed: The acceleration failed.
         self.publish_stage = publish_stage
         # The repository name.
         self.repository_name = repository_name
         # The image size.
         self.size = size
         # The image status. Valid values:
-        # - Disabled: disabled.
-        # - Expired: expired.
-        # - Available: active.
-        # - ReadOnly: read-only.
+        # - Disabled: The image is disabled.
+        # - Expired: The image has expired.
+        # - Available: The image is available.
+        # - ReadOnly: The image is read-only.
         self.status = status
         # The supported modules and task types.
         self.supported = supported
@@ -350,7 +351,7 @@ class GetImageResponseBodyImageSupported(DaraModel):
         task_types: List[str] = None,
     ):
         # The supported module. Valid values:
-        # - Scheduler: scheduling.
+        # - Scheduler: Scheduling.
         self.module = module
         # The list of supported task types.
         self.task_types = task_types
@@ -389,7 +390,7 @@ class GetImageResponseBodyImageBuildConfig(DaraModel):
     ):
         # The build type.
         self.build_type = build_type
-        # The list of pre-installation scripts.
+        # The list of pre-installation execution scripts.
         self.package_installation_scripts = package_installation_scripts
 
     def validate(self):
@@ -432,7 +433,7 @@ class GetImageResponseBodyImageBuildConfigPackageInstallationScripts(DaraModel):
         content: str = None,
         type: str = None,
     ):
-        # The script content. If the content contains package names, separate them with commas (,).
+        # The script content. If the content is a list of installation package names, separate the names with commas (,).
         self.content = content
         # The script type.
         self.type = type

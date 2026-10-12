@@ -15,21 +15,21 @@ class CreateDataAssetTagRequest(DaraModel):
         value_type: str = None,
         values: List[str] = None,
     ):
-        # The label description.
+        # The tag description.
         self.description = description
-        # The label key.
+        # The tag key.
         # 
         # This parameter is required.
         self.key = key
-        # The list of label administrators.
+        # The list of tag administrators.
         self.managers = managers
-        # The label value type. Valid values:
+        # The tag value type. Valid values:
         # - Boolean
         # - Int
         # - String
         # - Double
         self.value_type = value_type
-        # The list of label values.
+        # The list of tag values.
         self.values = values
 
     def validate(self):

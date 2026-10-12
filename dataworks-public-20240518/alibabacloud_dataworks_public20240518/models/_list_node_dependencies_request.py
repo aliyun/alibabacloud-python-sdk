@@ -12,22 +12,19 @@ class ListNodeDependenciesRequest(DaraModel):
         page_size: int = None,
         project_id: int = None,
     ):
-        # The unique identifier of the Data Studio node.
+        # The unique identifier of the data development node.
         # 
-        # 
-        # 
-        # 
-        # > &lt;notice&gt;This field was of the Long type in SDK versions earlier than 8.0.0 and was changed to the String type in SDK 8.0.0 and later. **This change does not affect normal SDK usage, and the parameter is still returned in the type defined in the SDK**. Only when you upgrade across SDK version 8.0.0, the type change may cause project compilation failures, and you must manually correct the data type.&gt;&lt;/notice&gt;
+        # >Notice: This field is of the Long type in SDK versions earlier than 8.0.0, and of the String type in SDK version 8.0.0 and later. **This change does not affect the normal use of the SDK. The parameter is still returned based on the data type defined in the SDK**. The type change may cause project compilation failures only when you upgrade the SDK across version 8.0.0. In this case, you must manually correct the data type.
         # 
         # This parameter is required.
         self.id = id
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number. Pages start from 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
-        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace settings page to obtain the workspace ID.
+        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace configuration page to obtain the workspace ID.
         # 
-        # This parameter specifies the DataWorks workspace for this API call.
+        # This parameter specifies the DataWorks workspace used for this API call.
         # 
         # This parameter is required.
         self.project_id = project_id

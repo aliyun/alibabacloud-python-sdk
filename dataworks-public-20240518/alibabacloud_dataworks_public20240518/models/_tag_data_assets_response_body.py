@@ -10,9 +10,11 @@ class TagDataAssetsResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values: true (successful) and false (failed).
+        # Indicates whether the call was successful. Valid values:
+        # - true: The call was successful.
+        # - false: The call failed.
         self.success = success
 
     def validate(self):

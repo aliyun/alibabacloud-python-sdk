@@ -20,8 +20,8 @@ class ExecuteAdhocWorkflowInstanceRequest(DaraModel):
         # The business date. The value is a timestamp.
         self.biz_date = biz_date
         # The project environment. Valid values:
-        # - Prod: production
-        # - Dev: development
+        # - Prod: production.
+        # - Dev: development.
         self.env_type = env_type
         # The name.
         # 
@@ -113,7 +113,7 @@ class ExecuteAdhocWorkflowInstanceRequestTasks(DaraModel):
         timeout: int = None,
         type: str = None,
     ):
-        # The client unique code of the task, which is used to uniquely identify a task.
+        # The client unique code of the task, which uniquely identifies the task.
         # 
         # This parameter is required.
         self.client_unique_code = client_unique_code
@@ -133,13 +133,13 @@ class ExecuteAdhocWorkflowInstanceRequestTasks(DaraModel):
         # 
         # This parameter is required.
         self.owner = owner
-        # The runtime environment configuration, such as resource group information.
+        # The runtime environment configurations, such as the resource group information.
         # 
         # This parameter is required.
         self.runtime_resource = runtime_resource
-        # The script information for running the task.
+        # The script information.
         self.script = script
-        # The timeout period for task execution. Unit: seconds.
+        # The timeout period for task execution, in seconds.
         self.timeout = timeout
         # The task type.
         # 
@@ -293,11 +293,11 @@ class ExecuteAdhocWorkflowInstanceRequestTasksRuntimeResource(DaraModel):
         image: str = None,
         resource_group_id: str = None,
     ):
-        # The compute unit (CU) consumption configured for the task.
+        # The CU consumption configured for task execution.
         self.cu = cu
-        # The image ID configured for the task.
+        # The ID of the image configured for task execution.
         self.image = image
-        # The identifier of the schedule resource group configured for the task.
+        # The identifier of the scheduling resource group configured for task execution.
         # 
         # This parameter is required.
         self.resource_group_id = resource_group_id
@@ -443,7 +443,7 @@ class ExecuteAdhocWorkflowInstanceRequestTasksOutputsTaskOutputs(DaraModel):
         self,
         output: str = None,
     ):
-        # The output identifier.
+        # The output identifier. Example: pre.odps_sql_demo_0.
         self.output = output
 
     def validate(self):
@@ -510,7 +510,7 @@ class ExecuteAdhocWorkflowInstanceRequestTasksInputsVariables(DaraModel):
     ):
         # The variable name.
         self.name = name
-        # The variable value. Specify the value in the format of `Upstream task Output:Upstream task output variable name`.
+        # The variable value. Specify it in the `Upstream task Output:upstream task output variable name` format.
         self.value = value
 
     def validate(self):
@@ -544,7 +544,7 @@ class ExecuteAdhocWorkflowInstanceRequestTasksDependencies(DaraModel):
         self,
         upstream_output: str = None,
     ):
-        # The output identifier of the upstream task.
+        # The output identifier of the upstream task. Required when DependencyType is set to Normal.
         self.upstream_output = upstream_output
 
     def validate(self):
@@ -572,7 +572,7 @@ class ExecuteAdhocWorkflowInstanceRequestTasksDataSource(DaraModel):
         self,
         name: str = None,
     ):
-        # The data source name.
+        # The name of the data source.
         self.name = name
 
     def validate(self):

@@ -15,7 +15,7 @@ class CreateSkillResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # -
+        # The skill details.
         self.skill = skill
 
     def validate(self):
@@ -59,23 +59,23 @@ class CreateSkillResponseBodySkill(DaraModel):
         visibility: str = None,
         visibility_scope: main_models.CreateSkillResponseBodySkillVisibilityScope = None,
     ):
-        # The SKILL.md body content.
+        # The content of the SKILL.md file.
         self.body = body
-        # The creator ID.
+        # The ID of the creator.
         self.creator_id = creator_id
-        # The Skill description.
+        # The skill description.
         self.description = description
-        # The creation time, in millisecond-level UNIX timestamp.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_create_time = gmt_create_time
-        # The last modification time, in millisecond-level UNIX timestamp.
+        # The update time. The value is a UNIX timestamp in milliseconds.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_modified_time = gmt_modified_time
-        # The ID of the user who last modified the Skill.
+        # The ID of the last modifier.
         self.modifier_id = modifier_id
-        # The Skill name.
+        # The skill name.
         self.name = name
         # The visibility level.
         self.visibility = visibility
@@ -158,9 +158,9 @@ class CreateSkillResponseBodySkillVisibilityScope(DaraModel):
         project_ids: List[str] = None,
         user_ids: List[str] = None,
     ):
-        # The list of visible project IDs.
+        # The IDs of the visible projects.
         self.project_ids = project_ids
-        # The list of visible user IDs. This parameter takes effect only when Visibility is set to `USER`.
+        # The IDs of the visible users. This field is returned only when Visibility is set to USER.
         self.user_ids = user_ids
 
     def validate(self):

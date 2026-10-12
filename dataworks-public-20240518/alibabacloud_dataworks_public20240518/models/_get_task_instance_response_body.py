@@ -13,9 +13,9 @@ class GetTaskInstanceResponseBody(DaraModel):
         request_id: str = None,
         task_instance: main_models.GetTaskInstanceResponseBodyTaskInstance = None,
     ):
-        # The request ID, which is used to locate logs and troubleshoot issues.
+        # The ID of the request. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # The detailed information about the task instance.
+        # The details of the task instance.
         self.task_instance = task_instance
 
     def validate(self):
@@ -92,35 +92,35 @@ class GetTaskInstanceResponseBodyTaskInstance(DaraModel):
     ):
         # The baseline ID.
         self.baseline_id = baseline_id
-        # The business date.
+        # The business date. The value is a 13-digit UNIX timestamp in milliseconds.
         self.bizdate = bizdate
-        # The creation time.
+        # The creation time. The value is a 13-digit UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The account ID of the user who created the instance.
         self.create_user = create_user
-        # The data source information associated with the instance.
+        # The information about the data source associated with the instance.
         self.data_source = data_source
         # The description.
         self.description = description
-        # The completion time.
+        # The completion time. The value is a 13-digit UNIX timestamp in milliseconds.
         self.finished_time = finished_time
-        # The unique identifier of the node instance.
+        # The unique identifier of the task instance.
         self.id = id
         # The input information.
         self.inputs = inputs
-        # The modification time.
+        # The update time. The value is a 13-digit UNIX timestamp in milliseconds.
         self.modify_time = modify_time
-        # The account ID of the user who modified the instance.
+        # The account ID of the user who updated the instance.
         self.modify_user = modify_user
-        # The type of the most recent operation on the instance.
+        # The type of the latest operation on the instance.
         self.operation_type = operation_type
         # The output information.
         self.outputs = outputs
-        # The account ID of the node owner.
+        # The account ID of the task owner.
         self.owner = owner
-        # The period number. Indicates which scheduling cycle of the day the task instance is in.
+        # The period number. This indicates the sequence of the execution cycle for the task instance on the current day.
         self.period_number = period_number
-        # The running priority of the task. Minimum value: 1. Maximum value: 8. A larger value indicates a higher priority. Default value: 1.
+        # The execution priority of the task. Valid values: 1 to 8. A larger value indicates a higher priority. Default value: 1.
         self.priority = priority
         # The project environment. Valid values:
         # - Prod: Production.
@@ -128,83 +128,80 @@ class GetTaskInstanceResponseBodyTaskInstance(DaraModel):
         self.project_env = project_env
         # The project ID.
         self.project_id = project_id
-        # The rerun configuration of the task. Valid values:
-        # - AllDenied: reruns are not allowed regardless of whether the task fails or succeeds.
-        # - AllAllowed: reruns are allowed regardless of whether the task fails or succeeds.
-        # - FailureAllowed: reruns are allowed only when the task fails.
+        # The configuration that specifies whether the task can be rerun. Valid values:
+        # - AllDenied: The task cannot be rerun regardless of whether it fails or succeeds.
+        # - AllAllowed: The task can be rerun regardless of whether it fails or succeeds.
+        # - FailureAllowed: The task can be rerun only if it fails.
         self.rerun_mode = rerun_mode
-        # The current run number. The value starts from 1 by default.
+        # The current number of runs. Default value: 1.
         self.run_number = run_number
         # The runtime information of the instance.
         self.runtime = runtime
-        # The resource group information associated with the instance.
+        # The information about the resource group associated with the instance.
         self.runtime_resource = runtime_resource
-        # The running script information.
+        # The information about the execution script.
         self.script = script
-        # The start time of the run.
+        # The start time. The value is a 13-digit UNIX timestamp in milliseconds.
         self.started_time = started_time
-        # The instance running status. Valid values:
+        # The running status of the instance. Valid values:
         # - NotRun: Not run.
         # - Running: Running.
-        # - WaitTime: Waiting for the TriggerTime to arrive.
+        # - WaitTime: Waiting for the trigger time.
         # - CheckingCondition: Checking branch conditions.
         # - WaitResource: Waiting for resources.
         # - Failure: Execution failed.
         # - Success: Execution succeeded.
         # - Checking: Submitted for data quality check.
-        # - WaitTrigger: Waiting for an external trigger. Trigger-based nodes enter this status after the waiting time elapses.
+        # - WaitTrigger: Waiting for an external trigger. Triggered nodes change to this status after the waiting time.
         self.status = status
-        # The list of node tags.
+        # The list of task tags.
         self.tags = tags
-        # The ID of the corresponding task.
+        # The ID of the task.
         self.task_id = task_id
-        # The name of the corresponding task.
+        # The name of the task.
         self.task_name = task_name
-        # The type of the corresponding task.
+        # The type of the task.
         self.task_type = task_type
-        # The timeout period for task execution. Unit: seconds.
+        # The timeout period for task execution, in seconds.
         # 
-        # 
-        # 
-        # 
-        # Note: The scheduling system rounds the configured value to whole hours.
+        # Note: The scheduling system rounds the configured value to the nearest hour.
         self.timeout = timeout
-        # The running mode when triggered. This parameter takes effect when TriggerType is set to Scheduler. Valid values:
+        # The run mode upon trigger. This parameter takes effect only when TriggerType is set to Scheduler. Valid values:
         # 
-        # - Normal: a normal scheduled task that is scheduled on a regular basis.
-        # - Manual: a manual task that is not scheduled on a regular basis.
-        # - Pause: a paused task that is scheduled on a regular basis but is set to failed when scheduling starts.
-        # - Skip: a dry-run task that is scheduled on a regular basis but is set to succeeded when scheduling starts.
-        # - SkipUnchoose: a task that is not selected in a temporary workflow. This value exists only in temporary workflows. The task is set to succeeded when scheduling starts.
-        # - SkipCycle: a weekly or monthly task whose running cycle has not arrived. The task is scheduled on a regular basis but is set to succeeded when scheduling starts.
-        # - ConditionUnchoose: a downstream node that is not selected by an upstream branch (IF) node. The task directly becomes a dry run.
-        # - RealtimeDeprecated: an expired periodic instance generated in real time. The task is set to succeeded.
-        # - PauseCalendar: the instance is paused because a calendar is referenced.
-        # - SkipCalendar: the instance is a dry run because a calendar is referenced.
+        # - Normal: The task is a normal scheduled task and is scheduled on a daily basis.
+        # - Manual: The task is a manual task and is not scheduled on a daily basis.
+        # - Pause: The task is paused. It is scheduled on a daily basis, but is directly set to failed when the scheduling is triggered.
+        # - Skip: The task performs a dry run. It is scheduled on a daily basis, but is directly set to successful when the scheduling is triggered.
+        # - SkipUnchoose: The task is an unselected task in a temporary workflow. It exists only in temporary workflows and is directly set to successful when the scheduling is triggered.
+        # - SkipCycle: The task is a weekly or monthly task that has not reached its execution cycle. It is scheduled on a daily basis, but is directly set to successful when the scheduling is triggered.
+        # - ConditionUnchoose: The downstream node is not selected by an upstream branch (IF) node. The task is directly set to a dry run.
+        # - RealtimeDeprecated: The task is an expired periodic instance generated in real time. It is directly set to successful.
+        # - PauseCalendar: The instance is paused due to a referenced calendar.
+        # - SkipCalendar: The instance performs a dry run due to a referenced calendar.
         self.trigger_recurrence = trigger_recurrence
-        # The scheduled trigger time.
+        # The scheduled trigger time. The value is a 13-digit UNIX timestamp in milliseconds.
         self.trigger_time = trigger_time
         # The trigger type. You can obtain the trigger type from the Trigger.Type response parameter of the GetTask operation. Valid values:
-        # - Scheduler: triggered by a scheduling cycle.
-        # - Manual: manually triggered.
+        # - Scheduler: The task is triggered by a scheduling cycle.
+        # - Manual: The task is triggered manually.
         self.trigger_type = trigger_type
-        # The unified workflow instance ID. All task instances within the same business date under a single trigger share the same value for this field.
+        # The unified workflow instance ID. The value of this field is the same for all task instances within a specific business date under a single trigger.
         self.unified_workflow_instance_id = unified_workflow_instance_id
-        # The time when the instance entered the waiting-for-resource state.
+        # The time when the instance starts waiting for resources.
         self.waiting_resource_time = waiting_resource_time
-        # The time when the instance entered the waiting-for-scheduled-time state.
+        # The time when the instance starts waiting for the scheduled trigger. The value is a 13-digit UNIX timestamp in milliseconds.
         self.waiting_trigger_time = waiting_trigger_time
         # The ID of the workflow to which the task instance belongs.
         self.workflow_id = workflow_id
         # The ID of the workflow instance to which the task instance belongs.
         self.workflow_instance_id = workflow_instance_id
         # The type of the workflow instance to which the task instance belongs. Valid values:
-        # - SmokeTest: test.
-        # - SupplementData: data backfill.
-        # - Manual: manual task.
-        # - ManualWorkflow: manual workflow.
-        # - Normal: periodic scheduling.
-        # - ManualFlow: manually executed business flow.
+        # - SmokeTest: The instance is a smoke test.
+        # - SupplementData: The instance is for data backfill.
+        # - Manual: The instance is a manual task.
+        # - ManualWorkflow: The instance is a manual workflow.
+        # - Normal: The instance uses periodic scheduling.
+        # - ManualFlow: The instance is a manually executed business flow.
         self.workflow_instance_type = workflow_instance_type
         # The name of the workflow to which the task instance belongs.
         self.workflow_name = workflow_name
@@ -495,9 +492,9 @@ class GetTaskInstanceResponseBodyTaskInstanceTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The label key.
+        # The tag key.
         self.key = key
-        # The label value.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -532,7 +529,7 @@ class GetTaskInstanceResponseBodyTaskInstanceScript(DaraModel):
         content: str = None,
         parameters: str = None,
     ):
-        # The script content.
+        # The content of the script.
         self.content = content
         # The list of script parameters.
         self.parameters = parameters
@@ -570,11 +567,11 @@ class GetTaskInstanceResponseBodyTaskInstanceRuntimeResource(DaraModel):
         image: str = None,
         resource_group_id: str = None,
     ):
-        # The compute unit (CU) consumption configured for the task.
+        # The compute unit (CU) consumption configured for task execution.
         self.cu = cu
-        # The image ID configured for the task.
+        # The ID of the image configured for task execution.
         self.image = image
-        # The identifier of the schedule resource group configured for the task.
+        # The identifier of the scheduling resource group configured for task execution.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -615,9 +612,9 @@ class GetTaskInstanceResponseBodyTaskInstanceRuntime(DaraModel):
         gateway: str = None,
         process_id: str = None,
     ):
-        # The machine on which the task runs.
+        # The machine on which the task is executed.
         self.gateway = gateway
-        # The unique ID of the run.
+        # The unique ID of the execution process.
         self.process_id = process_id
 
     def validate(self):
@@ -709,11 +706,11 @@ class GetTaskInstanceResponseBodyTaskInstanceOutputsVariables(DaraModel):
     ):
         # The name of the variable.
         self.name = name
-        # The type. Valid values:
-        # - Constant: constant.
-        # - PassThrough: output of a parameter node.
-        # - System: variable.
-        # - NodeOutput: script output.
+        # The type of the variable. Valid values:
+        # - Constant: The variable is a constant.
+        # - PassThrough: The variable is the output of a parameter node.
+        # - System: The variable is a system variable.
+        # - NodeOutput: The variable is the script output.
         self.type = type
         # The value of the variable.
         self.value = value
@@ -823,11 +820,11 @@ class GetTaskInstanceResponseBodyTaskInstanceInputsVariables(DaraModel):
     ):
         # The name of the variable.
         self.name = name
-        # The type. Valid values:
-        # - Constant: constant.
-        # - PassThrough: output of a parameter node.
-        # - System: variable.
-        # - NodeOutput: script output.
+        # The type of the variable. Valid values:
+        # - Constant: The variable is a constant.
+        # - PassThrough: The variable is the output of a parameter node.
+        # - System: The variable is a system variable.
+        # - NodeOutput: The variable is the script output.
         self.type = type
         # The value of the variable.
         self.value = value

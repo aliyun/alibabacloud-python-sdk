@@ -24,12 +24,12 @@ class UpdateImageRequest(DaraModel):
         supported: main_models.UpdateImageRequestSupported = None,
     ):
         # The image visibility. Valid values:
-        # - Public: visible to all users.
-        # - Private: visible only to the creator.
+        # - Public: Visible to all users.
+        # - Private: Visible only to the creator.
         self.accessibility = accessibility
-        # The VPC ID associated with the ACR instance. This parameter is required when referencing an ACR image.
+        # The ID of the VPC associated with the ACR instance. This parameter is required when you reference an ACR image.
         self.acr_associated_vpc_id = acr_associated_vpc_id
-        # The Container Registry (ACR) instance ID. This parameter is required when referencing an ACR image.
+        # The ID of the Container Registry (ACR) instance. This parameter is required when you reference an ACR image.
         self.acr_instance_id = acr_instance_id
         # The image build configuration.
         self.build_config = build_config
@@ -39,15 +39,15 @@ class UpdateImageRequest(DaraModel):
         # 
         # This parameter is required.
         self.id = id
-        # The image URI. This parameter is required when referencing an ACR image.
+        # The image URI. This parameter is required when you reference an ACR image.
         self.image_uri = image_uri
         # The image name.
         self.name = name
-        # The image namespace. Set this parameter to DataWorks Default when referencing a DataWorks official image.
+        # The image namespace. If you reference an official DataWorks image, set this parameter to DataWorks Default.
         self.namespace = namespace
-        # The provider image ID. This parameter is required when referencing a DataWorks official image.
+        # The ID of the image provided by the provider. This parameter is required when you reference an official DataWorks image.
         self.provider_image_id = provider_image_id
-        # The image repository name. Set this parameter to DataWorks Default when referencing a DataWorks official image.
+        # The image repository name. If you reference an official DataWorks image, set this parameter to DataWorks Default.
         self.repository_name = repository_name
         # The image sub-purpose.
         self.supported = supported
@@ -150,13 +150,9 @@ class UpdateImageRequestSupported(DaraModel):
         task_types: List[str] = None,
     ):
         # The image sub-module. Valid values:
-        # 
-        # 
-        # 
-        # 
         # - Scheduler: Data Studio.
         self.module = module
-        # The list of node types supported by the image.
+        # The list of task types supported by the image.
         self.task_types = task_types
 
     def validate(self):
@@ -236,7 +232,7 @@ class UpdateImageRequestBuildConfigPackageInstallationScripts(DaraModel):
         content: str = None,
         type: str = None,
     ):
-        # The script content. If the content consists of package names, separate them with commas (,).
+        # The script content. If the content specifies package names, separate them with commas.
         self.content = content
         # The script type.
         self.type = type

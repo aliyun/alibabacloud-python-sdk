@@ -10,11 +10,11 @@ class DeleteDataSourceSharedRuleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The request ID. You can locate logs and troubleshoot issues based on the ID.
+        # The request ID. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the sharing rule was deleted. Valid values:
-        # -true: The sharing rule was deleted.
-        # -false: The sharing rule failed to be deleted.
+        # Indicates whether the data source sharing rule was deleted. Valid values:
+        # - true: The request was successful.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):

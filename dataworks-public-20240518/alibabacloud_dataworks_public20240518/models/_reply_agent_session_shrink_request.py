@@ -11,11 +11,11 @@ class ReplyAgentSessionShrinkRequest(DaraModel):
         jsonrpc: str = None,
         params_shrink: str = None,
     ):
-        # The JSON-RPC correlation ID for this reply request. The response returns this value as-is. This is different from PermissionRequestId.
+        # The JSON-RPC correlation ID for the current reply request. It is returned as-is in the response and is different from PermissionRequestId.
         # 
         # This parameter is required.
         self.id = id
-        # The JSON-RPC protocol version. Fixed value: 2.0.
+        # The JSON-RPC protocol version. Fixed to 2.0.
         self.jsonrpc = jsonrpc
         # The user interaction reply parameters.
         # 

@@ -16,9 +16,9 @@ class ListNetworksResponseBody(DaraModel):
     ):
         # The pagination information.
         self.paging_info = paging_info
-        # The ID of the request. It is used to locate logs and troubleshoot problems.
+        # The ID of the request. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -63,13 +63,13 @@ class ListNetworksResponseBodyPagingInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The network resources of the serverless resource group.
+        # The list of detailed information about the network resources in the general resource group.
         self.network_list = network_list
         # The page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The total number of entries that meet the conditions.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -132,19 +132,19 @@ class ListNetworksResponseBodyPagingInfoNetworkList(DaraModel):
     ):
         # The time when the network resource was created. The value is a 64-bit timestamp.
         self.create_time = create_time
-        # The ID of the user who creates the network resource.
+        # The ID of the user who created the network resource.
         self.create_user = create_user
-        # The network ID.
+        # The ID of the network resource.
         self.id = id
-        # The ID of the serverless resource group.
+        # The unique identifier of the general resource group to which the network resource belongs.
         self.resource_group_id = resource_group_id
-        # The security group ID.
+        # The security group ID of the network resource.
         self.security_group_id = security_group_id
-        # The status of the network resource. Valid values: Pending: waiting; Creating: being created; Running: running normally; Deleting: being deleted; Deleted: deleted.
+        # The current status of the network resource. A value of Pending indicates that the resource is waiting. A value of Creating indicates that the resource is being created. A value of Running indicates that the resource is running normally. A value of Deleting indicates that the resource is being deleted. A value of Deleted indicates that the resource is deleted.
         self.status = status
-        # The ID of the virtual private cloud (VPC).
+        # The VPC ID of the network resource.
         self.vpc_id = vpc_id
-        # The VSwitch ID.
+        # The vSwitch ID of the network resource.
         self.vswitch_id = vswitch_id
 
     def validate(self):

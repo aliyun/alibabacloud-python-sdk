@@ -18,13 +18,13 @@ class UpdateDataQualityAlertRuleRequest(DaraModel):
     ):
         # The alert condition of the data quality monitoring alert rule.
         self.condition = condition
-        # The alert rule ID.
+        # The ID of the alert rule.
         self.id = id
         # The alert notification configuration.
         self.notification = notification
-        # The project ID.
+        # The ID of the project.
         self.project_id = project_id
-        # The monitoring target of the data quality monitoring alert rule.
+        # The target of the data quality monitoring alert rule.
         self.target = target
 
     def validate(self):
@@ -82,7 +82,7 @@ class UpdateDataQualityAlertRuleRequestTarget(DaraModel):
         ids: List[int] = None,
         type: str = None,
     ):
-        # The list of monitoring target IDs. Currently, only one ID can be specified.
+        # The list of monitored target IDs. Currently, only one ID is supported.
         self.ids = ids
         # The type of the monitored object. Only DataQualityScan is supported.
         self.type = type
@@ -119,7 +119,7 @@ class UpdateDataQualityAlertRuleRequestNotification(DaraModel):
         channels: List[str] = None,
         receivers: List[main_models.UpdateDataQualityAlertRuleRequestNotificationReceivers] = None,
     ):
-        # The list of notification channels. You can set both Email and Sms at the same time. In other cases, only one channel can be specified.
+        # The list of notification channels. You can configure both Email and Sms simultaneously. For other cases, only one channel can be configured.
         # 
         # This parameter is required.
         self.channels = channels
@@ -167,9 +167,9 @@ class UpdateDataQualityAlertRuleRequestNotificationReceivers(DaraModel):
         receiver_type: str = None,
         receiver_values: List[str] = None,
     ):
-        # The additional configuration required for the alert recipient. When ReceiverType is set to DingdingUrl, you can set `{"atAll":true}` to @ all members.
+        # The additional configuration required for the alert recipient. When ReceiverType is set to DingdingUrl, you can set `{"atAll":true}` to mention all members.
         self.extension = extension
-        # The alerting accept object type. Valid values:
+        # The type of the alert recipient.
         # - AliUid
         # - WebhookUrl
         # - DingdingUrl
@@ -181,7 +181,7 @@ class UpdateDataQualityAlertRuleRequestNotificationReceivers(DaraModel):
         # 
         # This parameter is required.
         self.receiver_type = receiver_type
-        # The values of the alert recipients.
+        # The value of the alert recipient.
         self.receiver_values = receiver_values
 
     def validate(self):

@@ -11,7 +11,7 @@ class UpdateMcpServerResponseBody(DaraModel):
         mcp_server: main_models.UpdateMcpServerResponseBodyMcpServer = None,
         request_id: str = None,
     ):
-        # The MCP Server details.
+        # The details of the MCP server.
         self.mcp_server = mcp_server
         # The request ID.
         self.request_id = request_id
@@ -53,15 +53,15 @@ class UpdateMcpServerResponseBodyMcpServer(DaraModel):
     ):
         # The creation time.
         # 
-        # The value is a 13-digit number, for example, `1780555634000`.
+        # The value is a 13-digit number, such as `1780555634000`.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_create_time = gmt_create_time
-        # The last modification time, in millisecond-level timestamp.
+        # **The last modification time as a millisecond timestamp.**
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_modified_time = gmt_modified_time
-        # The MCP Server name.
+        # **The name of the MCP server.**
         self.name = name
 
     def validate(self):

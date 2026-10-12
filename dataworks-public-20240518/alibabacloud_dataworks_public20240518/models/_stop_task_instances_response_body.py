@@ -15,7 +15,7 @@ class StopTaskInstancesResponseBody(DaraModel):
     ):
         # The request ID, which is used to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # The result information of the batch operation. The structure is a map in which instance IDs are used as keys and result information is used as values.
+        # The result information of the batch operation. The structure is a map where the task instance ID is the key and the result information is the value.
         self.success_info = success_info
 
     def validate(self):

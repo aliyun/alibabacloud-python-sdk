@@ -54,11 +54,11 @@ class ListDataQualityScanRunsResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The list of data quality scan runs.
+        # The list of data quality monitoring run records.
         self.data_quality_scan_runs = data_quality_scan_runs
-        # The page number. The default value is 1.
+        # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. The default value is 10.
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
         # The total number of entries.
         self.total_count = total_count
@@ -118,24 +118,23 @@ class ListDataQualityScanRunsResponseBodyPageInfoDataQualityScanRuns(DaraModel):
         parameters: List[main_models.ListDataQualityScanRunsResponseBodyPageInfoDataQualityScanRunsParameters] = None,
         status: str = None,
     ):
-        # The start time of the data quality scan run.
+        # The start time of the data quality monitoring run.
+        # 
+        # The value is a 13-digit number, such as `1710239005403`.
         self.create_time = create_time
-        # The end time of the data quality scan run.
+        # The end time of the data quality monitoring run.
+        # 
+        # The value is a 13-digit number, such as `1710239005403`.
         self.finish_time = finish_time
-        # The ID of the data quality scan run.
+        # The ID of the data quality monitoring run record.
         self.id = id
-        # The parameters used for the run.
+        # The parameter settings used during the actual run.
         self.parameters = parameters
-        # The status of the data quality scan run. Valid values:
-        # 
+        # The current run status. Valid values:
         # - Pass
-        # 
         # - Running
-        # 
         # - Error
-        # 
         # - Warn
-        # 
         # - Fail
         self.status = status
 

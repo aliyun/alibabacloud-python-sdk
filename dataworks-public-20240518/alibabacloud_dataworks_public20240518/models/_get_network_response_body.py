@@ -12,9 +12,9 @@ class GetNetworkResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The information about the network resource.
+        # The details of the network resource.
         self.network = network
-        # The request ID.
+        # The ID of the request. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -67,29 +67,24 @@ class GetNetworkResponseBodyNetwork(DaraModel):
     ):
         # The time when the network resource was created. The value is a 64-bit timestamp.
         self.create_time = create_time
-        # The ID of the user who creates the network resource.
+        # The ID of the user who created the network resource.
         self.create_user = create_user
-        # The network ID.
+        # The ID of the network resource.
         self.id = id
-        # The ID of the serverless resource group.
+        # The ID of the resource group to which the network resource belongs.
         self.resource_group_id = resource_group_id
-        # The security group ID.
+        # The security group ID of the network resource.
         self.security_group_id = security_group_id
-        # The status of the network resource. Valid values:
-        # 
-        # - Pending: The network resource is waiting to be created.
-        # 
-        # - Creating: The network resource is being created.
-        # 
-        # - Running: The network resource is running as expected.
-        # 
-        # - Deleting: The network resource is being deleted.
-        # 
-        # - Deleted: The network resource is deleted.
+        # The current status of the network resource. Valid values:
+        # - Pending: The resource is pending.
+        # - Creating: The resource is being created.
+        # - Running: The resource is running.
+        # - Deleting: The resource is being deleted.
+        # - Deleted: The resource is deleted.
         self.status = status
-        # The ID of the virtual private cloud (VPC).
+        # The VPC ID of the network resource.
         self.vpc_id = vpc_id
-        # The VSwitch ID.
+        # The vSwitch ID of the network resource.
         self.vswitch_id = vswitch_id
 
     def validate(self):

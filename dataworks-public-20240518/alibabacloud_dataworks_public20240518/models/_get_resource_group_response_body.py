@@ -14,11 +14,11 @@ class GetResourceGroupResponseBody(DaraModel):
         resource_group: main_models.GetResourceGroupResponseBodyResourceGroup = None,
         success: bool = None,
     ):
-        # The ID of the request, which is used to locate logs and troubleshoot issues.
+        # The request ID. You can use this ID to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # The detailed information of the resource group.
+        # The resource group details.
         self.resource_group = resource_group
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -77,13 +77,13 @@ class GetResourceGroupResponseBodyResourceGroup(DaraModel):
         self.aliyun_resource_group_id = aliyun_resource_group_id
         # The list of Alibaba Cloud tags.
         self.aliyun_resource_tags = aliyun_resource_tags
-        # The creation time, represented as a 64-bit timestamp.
+        # The creation time, which is a 64-bit timestamp.
         self.create_time = create_time
         # The ID of the user who created the resource group.
         self.create_user = create_user
-        # The ID of the default VPC bound to the resource group.
+        # The ID of the default VPC associated with the general resource group.
         self.default_vpc_id = default_vpc_id
-        # The ID of the default vSwitch bound to the resource group.
+        # The ID of the default vSwitch associated with the general resource group.
         self.default_vswitch_id = default_vswitch_id
         # The unique identifier of the resource group.
         self.id = id
@@ -92,35 +92,29 @@ class GetResourceGroupResponseBodyResourceGroup(DaraModel):
         # The order instance ID of the resource group.
         self.order_instance_id = order_instance_id
         # The billing method of the resource group. Valid values:
-        # 
         # - PrePaid: subscription.
         # - PostPaid: pay-as-you-go.
         self.payment_type = payment_type
-        # The remarks of the resource group.
+        # The remarks for the resource group.
         self.remark = remark
         # The type of the resource group. Valid values:
-        # 
-        # 
-        # 
-        # 
-        # - CommonV2: new-version general-purpose resource group.
+        # - CommonV2: general resource group V2.
         # - ExclusiveDataIntegration: exclusive data integration resource group.
         # - ExclusiveScheduler: exclusive scheduling resource group.
         # - ExclusiveDataService: exclusive data service resource group.
         self.resource_group_type = resource_group_type
-        # The specifications of the resource group.
+        # The resource group specification.
         self.spec = spec
-        # The status of the resource group. Valid values:
-        # 
-        # - Normal: normal (running/in service).
+        # The status of the queried resource group. Valid values:
+        # - Normal: normal (running or in service).
         # - Stop: frozen (expired).
-        # - Deleted: deleted (released/destroyed).
-        # - Creating: being created.
+        # - Deleted: deleted (released or destroyed).
+        # - Creating: creating.
         # - CreateFailed: creation failed.
-        # - Updating: being updated (scaling out/scaling in/specification change in progress).
-        # - UpdateFailed: update failed (scale-out failed/upgrade failed).
-        # - Deleting: being deleted (being released/being destroyed).
-        # - DeleteFailed: deletion failed (release failed/destruction failed).
+        # - Updating: updating (scaling in, scaling out, or changing specifications).
+        # - UpdateFailed: update failed (scale-in failed or upgrade failed).
+        # - Deleting: deleting (releasing or destroying).
+        # - DeleteFailed: deletion failed (release failed or destruction failed).
         # - Timeout: operation timed out.
         # - Freezed: frozen.
         # - Starting: starting.

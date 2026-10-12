@@ -54,13 +54,13 @@ class ListNodesResponseBodyPagingInfo(DaraModel):
         page_size: str = None,
         total_count: str = None,
     ):
-        # The list of Data Studio nodes.
+        # The list of data development nodes.
         self.nodes = nodes
-        # The page number for pagination.
+        # The page number of the requested data.
         self.page_number = page_number
-        # The number of records per page.
+        # The number of entries displayed per page.
         self.page_size = page_size
-        # The total number of records that meet the conditions.
+        # The total number of entries that meet the conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -130,54 +130,41 @@ class ListNodesResponseBodyPagingInfoNodes(DaraModel):
         task_id: int = None,
         trigger: main_models.ListNodesResponseBodyPagingInfoNodesTrigger = None,
     ):
-        # The timestamp when the Data Studio node was created.
+        # The timestamp when the data development node was created.
         self.create_time = create_time
         # The data source.
         self.data_source = data_source
-        # The node description.
+        # The description of the node.
         self.description = description
-        # The unique identifier of the Data Studio node.
-        # 
-        # 
-        # 
-        # 
-        # > &lt;notice&gt;This field was of the Long type in SDK versions earlier than 8.0.0 and is of the String type in SDK 8.0.0 and later. **This change does not affect normal SDK usage, and the parameter is still returned in the type defined in the SDK**. Only when upgrading across SDK version 8.0.0, the type change may cause project compilation failures, and you must manually correct the data type.&gt;&lt;/notice&gt;
+        # The unique identifier of the data development node.
+        # >Notice: This field is of the Long type in SDK versions earlier than 8.0.0 and of the String type in SDK 8.0.0 and later. **This change does not affect the normal use of the SDK. The parameter is still returned based on the type defined in the SDK**. The type change may cause project compilation to fail only when you upgrade the SDK across version 8.0.0. In this case, you must manually correct the data type.
         self.id = id
-        # The node inputs.
+        # The node input.
         self.inputs = inputs
-        # The timestamp when the Data Studio node was last modified.
+        # The timestamp when the data development node was last modified.
         self.modify_time = modify_time
-        # The node name.
+        # The name of the node.
         self.name = name
-        # The node outputs.
+        # The node output.
         self.outputs = outputs
-        # The owner of the Data Studio node.
+        # The owner of the data development node.
         self.owner = owner
-        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace management page to view the ID.
+        # The ID of the DataWorks workspace. You can logon to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace storage management page to view the ID.
         self.project_id = project_id
-        # The scheduling type.
-        # 
-        # 
-        # 
-        # 
-        # Valid values:
-        # 
-        # 
-        # 
-        # 
-        # - Normal: The task is executed normally.
-        # - Pause: The node is paused and blocks downstream nodes that depend on it.
-        # - Skip: The node performs a dry run. The system immediately returns success with a run duration of 0 seconds, does not block downstream nodes, and does not consume resources.
+        # The scheduling type. Valid values:
+        # - Normal: The node runs normally.
+        # - Pause: The node is paused, and the execution of downstream nodes that depend on the current node is blocked.
+        # - Skip: The node is set to dry run. The system directly returns a success response with an execution duration of 0 seconds. This does not block the execution of downstream nodes or consume resources.
         self.recurrence = recurrence
         # The resource group information.
         self.runtime_resource = runtime_resource
         # The script information.
         self.script = script
-        # The scheduling strategy.
+        # The scheduling policy.
         self.strategy = strategy
-        # The tag information. Not currently in use.
+        # The tag information. This field is currently not used.
         self.tags = tags
-        # The scheduling task ID.
+        # The ID of the scheduling task.
         self.task_id = task_id
         # The trigger.
         self.trigger = trigger
@@ -339,25 +326,17 @@ class ListNodesResponseBodyPagingInfoNodesTrigger(DaraModel):
     ):
         # The cron expression for scheduling.
         self.cron = cron
-        # The end time of the trigger validity period.
-        # 
-        # The format is `yyyy-MM-dd HH:mm:ss`. For example, `9999-01-01 00:00:00`. This example does not include a time zone identifier.
+        # The end time of the trigger validity period. The format is `yyyy-MM-dd HH:mm:ss`, such as `9999-01-01 00:00:00`. This example does not include a time zone identifier.
         self.end_time = end_time
         # The trigger ID.
-        # 
-        # >Notice: This field was of the Long type in SDK versions earlier than 8.0.0 and is of the String type in SDK 8.0.0 and later. **This change does not affect normal SDK usage, and the parameter is still returned in the type defined in the SDK**. Only when upgrading across SDK version 8.0.0, the type change may cause project compilation failures, and you need to manually correct the data type.
+        # >Notice: This field is of the Long type in SDK versions earlier than 8.0.0 and of the String type in SDK 8.0.0 and later. **This change does not affect the normal use of the SDK. The parameter is still returned based on the type defined in the SDK**. The type change may cause project compilation to fail only when you upgrade the SDK across version 8.0.0. In this case, you must manually correct the data type.
         self.id = id
-        # The start time of the validity period of the trigger.
-        # 
-        # The format is `yyyy-MM-dd HH:mm:ss`. Example: `1970-01-01 00:00:00`. This example does not include a time zone identifier.
+        # The start time of the trigger validity period. The format is `yyyy-MM-dd HH:mm:ss`, such as `1970-01-01 00:00:00`. This example does not include a time zone identifier.
         self.start_time = start_time
         # The time zone.
         self.timezone = timezone
-        # The trigger type.
-        # 
-        # Valid values:
-        # 
-        # - Scheduler: timed scheduling.
+        # The trigger type. Valid values:
+        # - Scheduler: periodic scheduling.
         # - Manual: manual trigger.
         # - Steaming: streaming task.
         self.type = type
@@ -418,9 +397,9 @@ class ListNodesResponseBodyPagingInfoNodesTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of the tag.
         self.key = key
-        # The tag value.
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -458,21 +437,16 @@ class ListNodesResponseBodyPagingInfoNodesStrategy(DaraModel):
         rerun_times: int = None,
         timeout: int = None,
     ):
-        # The mode for generating instances.
-        # 
-        # 
-        # 
-        # 
-        # Valid values: T+1 and Immediately.
+        # The mode for generating instances. Valid values:
+        # - T+1
+        # - Immediately
         self.instance_mode = instance_mode
         # The retry time interval, in milliseconds.
         self.rerun_interval = rerun_interval
-        # The mode that specifies whether reruns are allowed.
-        # 
-        # 
-        # 
-        # 
-        # Valid values: Allowed, Denied, and FailureAllowed.
+        # The rerun mode. Valid values:
+        # - Allowed
+        # - Denied
+        # - FailureAllowed
         self.rerun_mode = rerun_mode
         # The number of retries.
         self.rerun_times = rerun_times
@@ -531,8 +505,7 @@ class ListNodesResponseBodyPagingInfoNodesScript(DaraModel):
         runtime: main_models.ListNodesResponseBodyPagingInfoNodesScriptRuntime = None,
     ):
         # The script ID.
-        # 
-        # >Notice: This field was of the Long type in SDK versions earlier than 8.0.0 and is of the String type in SDK 8.0.0 and later. **This change does not affect normal SDK usage, and the parameter is still returned in the type defined in the SDK**. Only when upgrading across SDK version 8.0.0, the type change may cause project compilation failures, and you need to manually correct the data type.
+        # >Notice: This field is of the Long type in SDK versions earlier than 8.0.0 and of the String type in SDK 8.0.0 and later. **This change does not affect the normal use of the SDK. The parameter is still returned based on the type defined in the SDK**. The type change may cause project compilation to fail only when you upgrade the SDK across version 8.0.0. In this case, you must manually correct the data type.
         self.id = id
         # The script path.
         self.path = path
@@ -578,7 +551,7 @@ class ListNodesResponseBodyPagingInfoNodesScriptRuntime(DaraModel):
         self,
         command: str = None,
     ):
-        # The command, which is used to distinguish node types.
+        # The command used to distinguish node types.
         self.command = command
 
     def validate(self):
@@ -607,7 +580,7 @@ class ListNodesResponseBodyPagingInfoNodesRuntimeResource(DaraModel):
         resource_group: str = None,
         resource_group_id: str = None,
     ):
-        # The identifier of the resource group. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/173913.html) operation to obtain the resource group identifier.
+        # The identifier of the resource group. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/173913.html) operation to obtain the identifier of the resource group.
         self.resource_group = resource_group
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -721,13 +694,13 @@ class ListNodesResponseBodyPagingInfoNodesOutputsVariables(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The artifact type.
+        # The type of the artifact.
         self.artifact_type = artifact_type
-        # The variable ID.
+        # The ID of the variable.
         # 
-        # >Notice: This field was of the Long type in SDK versions earlier than 8.0.0 and is of the String type in SDK 8.0.0 and later. **This change does not affect normal SDK usage, and the parameter is still returned in the type defined in the SDK**. Only when upgrading across SDK version 8.0.0, the type change may cause project compilation failures, and you need to manually correct the data type.
+        # >Notice: This field is of the Long type in SDK versions earlier than 8.0.0, and of the String type in SDK 8.0.0 and later. **This change does not affect the normal use of the SDK. The parameter is still returned based on the type defined in the SDK**. The type change may cause project compilation failures only when you upgrade the SDK across version 8.0.0. In this case, you must manually correct the data type.
         self.id = id
-        # The variable name.
+        # The name of the variable.
         self.name = name
         # The node to which the variable belongs.
         self.node = node
@@ -737,14 +710,14 @@ class ListNodesResponseBodyPagingInfoNodesOutputsVariables(DaraModel):
         # - Workflow
         # - Workspace
         self.scope = scope
-        # The variable type. Valid values:
+        # The type of the variable. Valid values:
         # - NoKvVariableExpression
         # - Constant
         # - PassThrough
         # - System
         # - NodeOutput
         self.type = type
-        # The variable value.
+        # The value of the variable.
         self.value = value
 
     def validate(self):
@@ -810,7 +783,7 @@ class ListNodesResponseBodyPagingInfoNodesOutputsVariablesNode(DaraModel):
         self,
         output: str = None,
     ):
-        # The node outputs.
+        # The node output.
         self.output = output
 
     def validate(self):
@@ -867,9 +840,9 @@ class ListNodesResponseBodyPagingInfoNodesOutputsNodeOutputs(DaraModel):
         data: str = None,
         ref_table_name: str = None,
     ):
-        # The node outputs.
+        # The node output.
         self.data = data
-        # The target data table that identifies the node output. This field provides a semantic name that helps users quickly identify the output content. It is used only for display and annotation purposes and has no actual logical constraints.
+        # The name of the destination data table generated by the node. This field provides a semantic name that is easy to understand and helps users quickly identify the output content. It is used only for display and remarks, and has no actual logical constraints.
         self.ref_table_name = ref_table_name
 
     def validate(self):
@@ -981,13 +954,13 @@ class ListNodesResponseBodyPagingInfoNodesInputsVariables(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The artifact type.
+        # The type of the artifact.
         self.artifact_type = artifact_type
-        # The variable ID.
+        # The ID of the variable.
         # 
-        # >Notice: This field was of the Long type in SDK versions earlier than 8.0.0 and is of the String type in SDK 8.0.0 and later. **This change does not affect normal SDK usage, and the parameter is still returned in the type defined in the SDK**. Only when upgrading across SDK version 8.0.0, the type change may cause project compilation failures, and you need to manually correct the data type.
+        # >Notice: This field is of the Long type in SDK versions earlier than 8.0.0, and of the String type in SDK 8.0.0 and later. **This change does not affect the normal use of the SDK. The parameter is still returned based on the type defined in the SDK**. The type change may cause project compilation failures only when you upgrade the SDK across version 8.0.0. In this case, you must manually correct the data type.
         self.id = id
-        # The variable name.
+        # The name of the variable.
         self.name = name
         # The node to which the variable belongs.
         self.node = node
@@ -1004,7 +977,7 @@ class ListNodesResponseBodyPagingInfoNodesInputsVariables(DaraModel):
         # - System
         # - NodeOutput
         self.type = type
-        # The variable value.
+        # The value of the variable.
         self.value = value
 
     def validate(self):
@@ -1070,7 +1043,7 @@ class ListNodesResponseBodyPagingInfoNodesInputsVariablesNode(DaraModel):
         self,
         output: str = None,
     ):
-        # The node outputs.
+        # The node output.
         self.output = output
 
     def validate(self):
@@ -1127,9 +1100,9 @@ class ListNodesResponseBodyPagingInfoNodesInputsNodeOutputs(DaraModel):
         data: str = None,
         ref_table_name: str = None,
     ):
-        # The node outputs.
+        # The node output.
         self.data = data
-        # The target data table that identifies the node output. This field provides a semantic name that helps users quickly identify the output content. It is used only for display and annotation purposes and has no actual logical constraints.
+        # The name of the destination data table generated by the node. This field provides a semantic name that is easy to understand and helps users quickly identify the output content. It is used only for display and remarks, and has no actual logical constraints.
         self.ref_table_name = ref_table_name
 
     def validate(self):
@@ -1164,9 +1137,9 @@ class ListNodesResponseBodyPagingInfoNodesDataSource(DaraModel):
         name: str = None,
         type: str = None,
     ):
-        # The data source name.
+        # The name of the data source.
         self.name = name
-        # The data source type.
+        # The type of the data source.
         self.type = type
 
     def validate(self):

@@ -125,18 +125,18 @@ class ListTaskOperationLogsResponseBodyPagingInfoOperationLogs(DaraModel):
         # The format is a 13-digit number, such as `1710239005403`.
         self.create_time = create_time
         # The object type. Valid values:
-        # - Task: node
-        # - TaskInstance: node instance
+        # - Task: task.
+        # - TaskInstance: task instance.
         self.object_type = object_type
         # The operation content.
         self.operation_content = operation_content
         # The operation sequence number.
         self.operation_seq = operation_seq
-        # The ID of the node on which the operation was performed.
+        # The ID of the operated task.
         self.task_id = task_id
-        # The ID of the node instance on which the operation was performed.
+        # The ID of the operated task instance.
         self.task_instance_id = task_instance_id
-        # The account ID of the user who performed the operation.
+        # The account ID of the operator.
         self.user = user
 
     def validate(self):

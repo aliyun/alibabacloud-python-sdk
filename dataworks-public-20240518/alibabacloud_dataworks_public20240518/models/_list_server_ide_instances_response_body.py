@@ -15,7 +15,7 @@ class ListServerIdeInstancesResponseBody(DaraModel):
         paging_info: main_models.ListServerIdeInstancesResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
-        # The maximum number of records returned in this response.
+        # The maximum number of entries returned in the current response.
         self.max_results = max_results
         # The pagination token for the next page. An empty value indicates that no more results are available.
         self.next_token = next_token
@@ -76,9 +76,9 @@ class ListServerIdeInstancesResponseBodyPagingInfo(DaraModel):
         self.instances = instances
         # The current page number.
         self.page_number = page_number
-        # The number of records per page.
+        # The number of entries returned on the current page.
         self.page_size = page_size
-        # The total number of records that match the filter conditions.
+        # The total number of entries that meet the query conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -151,39 +151,39 @@ class ListServerIdeInstancesResponseBodyPagingInfoInstances(DaraModel):
     ):
         # The time when the instance was created. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The credential injection configuration of the instance. After this feature is enabled, you can use the default RAM role chain or specify a custom RAM role.
+        # The credential injection configuration of the instance. After this feature is enabled, you can use the default Resource Access Management (RAM) role chain or specify a custom RAM role.
         self.credential_config = credential_config
-        # The number of CUs used by the instance.
+        # The number of compute units (CUs) used by the instance.
         self.cu = cu
-        # The list of datasets mounted to the instance.
+        # The datasets mounted to the instance.
         self.datasets = datasets
         # The reason why the instance entered the failed state.
         self.fail_reason = fail_reason
         # The ID of the image used by the instance.
         self.image_id = image_id
-        # The image name.
+        # The name of the image.
         self.image_name = image_name
-        # The image URL.
+        # The URL of the image.
         self.image_url = image_url
-        # The personal development environment instance ID.
+        # The ID of the personal development environment instance.
         self.instance_id = instance_id
-        # The personal development environment instance name.
+        # The name of the personal development environment instance.
         self.instance_name = instance_name
-        # The account ID of the user who owns the instance.
+        # The account ID of the user that owns the instance.
         self.owner_id = owner_id
         # The DataWorks workspace ID.
         self.project_id = project_id
-        # The DataWorks workspace name.
+        # The name of the DataWorks workspace.
         self.project_name = project_name
         # The internal numeric ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The resource group name.
+        # The name of the resource group.
         self.resource_group_name = resource_group_name
         # The instance status. Valid values: Creating, Starting, Running, Stopping, Stopped, Updating, Deleting, DELETED, Failed, Arrearage, Saving, SaveFailed, and Saved.
         self.status = status
         # The time when the instance was last updated. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
-        # The VPC configuration used by the instance.
+        # The virtual private cloud (VPC) configuration used by the instance.
         self.user_vpc = user_vpc
 
     def validate(self):
@@ -400,15 +400,15 @@ class ListServerIdeInstancesResponseBodyPagingInfoInstancesUserVpcForwardInfos(D
     ):
         # The list of access types.
         self.access_type = access_type
-        # The name of the target container.
+        # The name of the destination container.
         self.container_name = container_name
         # The instance ID of the elastic IP address (EIP).
         self.eip_allocation_id = eip_allocation_id
-        # Indicates whether the port forwarding configuration is enabled.
+        # Specifies whether the port forwarding configuration is enabled.
         self.enable = enable
         # The mapped public port.
         self.external_port = external_port
-        # The target port in the instance container.
+        # The destination port in the instance container.
         self.forward_port = forward_port
         # The name of the port forwarding configuration.
         self.name = name
@@ -495,15 +495,15 @@ class ListServerIdeInstancesResponseBodyPagingInfoInstancesDatasets(DaraModel):
         uri: str = None,
         version: int = None,
     ):
-        # The custom mount properties of the dataset. The content is passed as mount options.
+        # The custom mount attributes of the dataset. The content is passed as mount options.
         self.ext_options = ext_options
         # The dataset identifier.
         self.identifier = identifier
         # The mount path of the dataset in the instance.
         self.mount_path = mount_path
-        # Indicates whether the dataset is mounted in read-only mode.
+        # Specifies whether the dataset is mounted in read-only mode.
         self.read_only = read_only
-        # The URI of the storage service directory for direct mounting.
+        # The URI of the storage service directory used for direct mounting.
         self.uri = uri
         # The dataset version number.
         self.version = version
@@ -567,9 +567,9 @@ class ListServerIdeInstancesResponseBodyPagingInfoInstancesCredentialConfig(Dara
     ):
         # The environment variable role key.
         self.aliyun_env_role_key = aliyun_env_role_key
-        # The list of credential configurations.
+        # The credential configurations.
         self.configs = configs
-        # Indicates whether credential injection is enabled.
+        # Specifies whether credential injection is enabled.
         self.enable = enable
 
     def validate(self):
@@ -621,11 +621,11 @@ class ListServerIdeInstancesResponseBodyPagingInfoInstancesCredentialConfigConfi
     ):
         # The identifier key of the credential configuration.
         self.key = key
-        # The list of roles in the credential configuration.
+        # The roles in the credential configuration.
         self.roles = roles
         # The credential configuration type. Valid values:
-        # - Role: single role assumption.
-        # - RoleChain: role chain assumption.
+        # - Role: single role assumption
+        # - RoleChain: role chain assumption
         self.type = type
 
     def validate(self):
@@ -677,17 +677,17 @@ class ListServerIdeInstancesResponseBodyPagingInfoInstancesCredentialConfigConfi
         role_type: str = None,
         user_info: main_models.ListServerIdeInstancesResponseBodyPagingInfoInstancesCredentialConfigConfigsRolesUserInfo = None,
     ):
-        # The Alibaba Cloud account ID of the entity that owns the role to be assumed.
+        # The Alibaba Cloud account ID of the entity to which the assumed role belongs.
         self.assume_role_for = assume_role_for
         # The policy used to further restrict the permissions of the role.
         self.policy = policy
         # The Alibaba Cloud Resource Name (ARN) of the RAM role.
         self.role_arn = role_arn
         # The role assumption type. Valid values:
-        # - service: assumed by a service.
-        # - user: assumed by a user.
+        # - service: assumed by a service
+        # - user: assumed by a user
         self.role_type = role_type
-        # The information about the delegated user.
+        # The information about the proxied user.
         self.user_info = user_info
 
     def validate(self):
@@ -746,14 +746,14 @@ class ListServerIdeInstancesResponseBodyPagingInfoInstancesCredentialConfigConfi
     ):
         # The temporary AccessKey ID used for credential injection.
         self.access_key_id = access_key_id
-        # The account ID of the delegated user.
+        # The account ID of the proxied user.
         self.id = id
         # The temporary security token used for credential injection.
         self.security_token = security_token
         # The user type. Valid values:
-        # - customer: Alibaba Cloud account.
-        # - sub: RAM user.
-        # - AssumedRoleUser: RAM role.
+        # - customer: Alibaba Cloud account
+        # - sub: RAM user
+        # - AssumedRoleUser: RAM role
         self.type = type
 
     def validate(self):

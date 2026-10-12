@@ -32,33 +32,33 @@ class ListTaskInstancesRequest(DaraModel):
         workflow_instance_id: int = None,
         workflow_instance_type: str = None,
     ):
-        # The business date. This is typically 00:00:00 of the day before the scheduled time of the periodic instance. The value is a millisecond-level timestamp, such as 1743350400000.
+        # The business date. Typically, this is 00:00:00 of the day before the scheduled time of the periodic instance, in the format of a millisecond-level timestamp, such as 1743350400000.
         # 
         # This parameter is required.
         self.bizdate = bizdate
-        # The filter. The value is in JSON format. Multiple filter conditions are combined with AND logic. Currently supported fields: `startedTimeStart, startedTimeEnd, finishedTimeStart, finishedTimeEnd, createTimeStart, createTimeEnd`
+        # The filter conditions in JSON format. Multiple filter conditions are combined with the AND logical operator. Supported fields: `startedTimeStart`, `startedTimeEnd`, `finishedTimeStart`, `finishedTimeEnd`, `createTimeStart`, and `createTimeEnd`.
         self.filter = filter
-        # The instance ID. If an instance has been rerun, specifying this parameter returns the historical information including reruns. You can use RunNumber to distinguish each historical record.
+        # The task instance ID. A task instance may be rerun. If you specify this parameter, the response includes historical rerun records, which are distinguished by RunNumber.
         self.id = id
-        # The list of instance IDs. You can use this parameter to query multiple instances in a batch.
+        # The task instance IDs. You can specify multiple task instance IDs to query task instances in batches.
         self.ids = ids
-        # The account ID of the node owner.
+        # The account ID of the task owner.
         self.owner = owner
         # The page number. Pages start from 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 10. Maximum value: 500.
         self.page_size = page_size
         # The project environment. Valid values:
-        # - Prod: production.
-        # - Dev: development.
+        # - Prod: production
+        # - Dev: development
         self.project_env = project_env
         # The project ID.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The schedule resource information. Specify the identifier of the schedule resource group.
+        # The resource group information. Specify the identifier of the scheduling resource group.
         self.runtime_resource = runtime_resource
-        # The sort field. Supports fields such as scheduled time and start time. The format is "sort field + sort order (Desc/Asc)". Asc can be omitted. Valid values:
+        # The sort field. Fields such as scheduled time and start time are supported. The format is \\"Sort field + Sort order (Desc/Asc)\\", where Asc can be omitted. Valid values for the sort field:
         # 
         # - `TriggerTime (Desc/Asc)`
         # 
@@ -72,44 +72,44 @@ class ListTaskInstancesRequest(DaraModel):
         # 
         #   Default value: `Id Desc`
         self.sort_by = sort_by
-        # The status of the instance. Valid values:
-        # - `NotRun`: not run.
-        # - `Running`: running.
-        # - `Failure`: failed.
-        # - `Success`: succeeded.
-        # - `WaitTime`: waiting for the scheduled time.
-        # - `WaitResource`: waiting for resources.
+        # The status of the task instance. Valid values:
+        # - `NotRun`: not run
+        # - `Running`: running
+        # - `Failure`: failed
+        # - `Success`: successful
+        # - `WaitTime`: waiting for scheduled time
+        # - `WaitResource`: waiting for resources
         self.status = status
-        # The ID of the corresponding node.
+        # The ID of the task.
         self.task_id = task_id
-        # The list of node IDs. You can use this parameter to query instances of multiple nodes in a batch.
+        # The task IDs. You can specify multiple task IDs to query task instances in batches.
         self.task_ids = task_ids
-        # The name of the corresponding node. Fuzzy match is supported.
+        # The task name. Fuzzy match is supported.
         self.task_name = task_name
-        # The node type. For the TaskType values of each node, see [DataWorks nodes](https://help.aliyun.com/document_detail/600169.html).
+        # The task type. For the valid values of TaskType for each node, see [DataWorks node types](https://help.aliyun.com/document_detail/600169.html).
         self.task_type = task_type
-        # The run mode at the time of triggering. This parameter takes effect only when TriggerType is set to Scheduler. Valid values:
-        # - Pause: paused.
-        # - Skip: dry run.
-        # - Normal: normal run.
+        # The run mode upon triggering. This parameter takes effect only when TriggerType is set to Scheduler. Valid values:
+        # - Pause: pause
+        # - Skip: dry run
+        # - Normal: normal run
         self.trigger_recurrence = trigger_recurrence
         # The trigger type. Valid values:
-        # - Scheduler: triggered by periodic scheduling.
-        # - Manual: manually triggered.
+        # - Scheduler: periodic scheduling
+        # - Manual: manual
         self.trigger_type = trigger_type
-        # The unified workflow instance ID. All instances within the same business date under a single trigger share the same value for this field.
+        # The unified workflow instance ID. This value is the same for all task instances within a specific business date under a single trigger.
         self.unified_workflow_instance_id = unified_workflow_instance_id
-        # The ID of the workflow to which the instance belongs.
+        # The ID of the associated workflow.
         self.workflow_id = workflow_id
-        # The ID of the workflow instance to which the instance belongs.
+        # The ID of the associated workflow instance.
         self.workflow_instance_id = workflow_instance_id
-        # The type of the workflow instance to which the instance belongs. Valid values:
-        # - SmokeTest: test.
-        # - Manual: manual node.
-        # - SupplementData: data backfill.
-        # - ManualWorkflow: manual workflow.
-        # - Normal: periodic scheduling.
-        # - TriggerWorkflow: trigger-based workflow.
+        # The type of the workflow instance. Valid values:
+        # - SmokeTest: test
+        # - Manual: manual task
+        # - SupplementData: data backfill
+        # - ManualWorkflow: manual workflow
+        # - Normal: periodic scheduling
+        # - TriggerWorkflow: triggered workflow
         self.workflow_instance_type = workflow_instance_type
 
     def validate(self):

@@ -15,7 +15,7 @@ class CreateDataQualityAlertRuleRequest(DaraModel):
         project_id: int = None,
         target: main_models.CreateDataQualityAlertRuleRequestTarget = None,
     ):
-        # The alert condition of the data quality monitoring alert rule.
+        # The alert condition for the data quality monitoring alert rule.
         # 
         # This parameter is required.
         self.condition = condition
@@ -27,7 +27,7 @@ class CreateDataQualityAlertRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The monitored target of the data quality monitoring alert rule.
+        # The target of the data quality monitoring alert rule.
         # 
         # This parameter is required.
         self.target = target
@@ -81,7 +81,7 @@ class CreateDataQualityAlertRuleRequestTarget(DaraModel):
         ids: List[int] = None,
         type: str = None,
     ):
-        # The list of monitored target IDs. Currently, only one ID can be specified.
+        # The list of monitored target IDs. Currently, only one ID is supported.
         # 
         # This parameter is required.
         self.ids = ids
@@ -122,7 +122,7 @@ class CreateDataQualityAlertRuleRequestNotification(DaraModel):
         channels: List[str] = None,
         receivers: List[main_models.CreateDataQualityAlertRuleRequestNotificationReceivers] = None,
     ):
-        # The list of channels. You can set both `Email` and `Sms` at the same time. In other cases, only one channel can be set.
+        # The list of channels. You can specify both `Email` and `Sms` at the same time. For other types, you can specify only one channel.
         # 
         # This parameter is required.
         self.channels = channels
@@ -172,13 +172,9 @@ class CreateDataQualityAlertRuleRequestNotificationReceivers(DaraModel):
         receiver_type: str = None,
         receiver_values: List[str] = None,
     ):
-        # The additional configuration required for the alert recipient. When ReceiverType is set to DingdingUrl, you can set `{"atAll":true}` to @ all members.
+        # The additional configuration required for the alert recipient. When ReceiverType is set to DingdingUrl, you can set `{"atAll":true}` to mention all members.
         self.extension = extension
-        # The alert recipient type.
-        # 
-        # 
-        # 
-        # 
+        # The type of the alert recipient.
         # - AliUid
         # - WebhookUrl
         # - DingdingUrl

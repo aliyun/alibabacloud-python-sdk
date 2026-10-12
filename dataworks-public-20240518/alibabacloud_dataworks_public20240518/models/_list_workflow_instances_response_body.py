@@ -15,7 +15,7 @@ class ListWorkflowInstancesResponseBody(DaraModel):
     ):
         # The pagination information.
         self.paging_info = paging_info
-        # The request ID. Used for locating logs and troubleshooting issues.
+        # The request ID. You can use this ID to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -140,23 +140,23 @@ class ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances(DaraModel):
         # 
         # The value is a 13-digit number, such as `1710239005403`.
         self.create_time = create_time
-        # The account ID of the user who created the instance.
+        # The account ID of the user who created the workflow instance.
         self.create_user = create_user
         # The project environment. Valid values:
-        # - Prod (production)
-        # - Dev (development)
+        # - Prod (Production)
+        # - Dev (Development)
         self.env_type = env_type
-        # The finish time.
+        # The completion time.
         # 
         # The value is a 13-digit number, such as `1710239005403`.
         self.finished_time = finished_time
         # The unique identifier of the workflow instance.
         self.id = id
-        # The modification time.
+        # The update time.
         # 
         # The value is a 13-digit number, such as `1710239005403`.
         self.modify_time = modify_time
-        # The account ID of the user who last modified the instance.
+        # The account ID of the user who updated the workflow instance.
         self.modify_user = modify_user
         # The name.
         self.name = name
@@ -169,32 +169,32 @@ class ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances(DaraModel):
         # The value is a 13-digit number, such as `1710239005403`.
         self.started_time = started_time
         # The running status of the workflow instance. Valid values:
-        # - NotRun: not run
-        # - Running: running
-        # - WaitTime: waiting for TriggerTime
-        # - CheckingCondition: checking branch conditions
-        # - WaitResource: waiting for resources
-        # - Failure: failed
-        # - Success: succeeded
-        # - Checking: submitted for data quality check
+        # - NotRun: Not run.
+        # - Running: Running.
+        # - WaitTime: Waiting for the trigger time.
+        # - CheckingCondition: Checking branch conditions.
+        # - WaitResource: Waiting for resources.
+        # - Failure: Failed.
+        # - Success: Successful.
+        # - Checking: Submitted for data quality check.
         self.status = status
-        # The node tags.
+        # The task tags.
         self.tags = tags
         # The type of the workflow instance. Valid values:
-        # - Normal: periodic scheduling
-        # - Manual: manual task
-        # - SmokeTest: test
-        # - SupplementData: data backfill
-        # - ManualWorkflow: manual workflow
-        # - TriggerWorkflow: trigger-based workflow
+        # - Normal: Periodic scheduling.
+        # - Manual: Manual task.
+        # - SmokeTest: Smoke test.
+        # - SupplementData: Data backfill.
+        # - ManualWorkflow: Manual workflow.
+        # - TriggerWorkflow: Triggered workflow.
         self.type = type
-        # The unified workflow instance ID. All workflow instances within the same business date under a specific trigger share the same value for this field.
+        # The unified workflow instance ID. The value of this field is the same for all workflow instances within a specific business date under a single trigger.
         self.unified_workflow_instance_id = unified_workflow_instance_id
         # The ID of the workflow to which the instance belongs.
         self.workflow_id = workflow_id
         # The workflow parameters.
         self.workflow_parameters = workflow_parameters
-        # The task instance ID corresponding to the workflow instance.
+        # The ID of the task instance corresponding to the workflow instance.
         self.workflow_task_instance_id = workflow_task_instance_id
 
     def validate(self):

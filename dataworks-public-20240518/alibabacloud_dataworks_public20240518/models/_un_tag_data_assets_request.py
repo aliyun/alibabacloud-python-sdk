@@ -16,23 +16,25 @@ class UnTagDataAssetsRequest(DaraModel):
         project_id: int = None,
         tags: List[main_models.UnTagDataAssetsRequestTags] = None,
     ):
-        # The data asset IDs.
+        # The unique IDs of the data assets.
         # 
         # This parameter is required.
         self.data_asset_ids = data_asset_ids
-        # The type of the data asset. Valid values: ACS::DataWorks::Table (data table) and ACS::DataWorks::Task (scheduled task).
+        # The type of the data asset. Valid values:
+        # - Data table (ACS::DataWorks::Table)
+        # - Scheduled task (ACS::DataWorks::Task)
         # 
         # This parameter is required.
         self.data_asset_type = data_asset_type
-        # The environment of the workspace to which the data asset belongs. Valid values:
+        # The workspace environment to which the data asset belongs. Valid values:
         # 
         # - Dev: development environment
         # 
         # - Prod: production environment
         self.env_type = env_type
-        # The DataWorks workspace ID.
+        # The ID of the workspace.
         self.project_id = project_id
-        # The tags that you want to remove.
+        # The tags to disassociate.
         # 
         # This parameter is required.
         self.tags = tags

@@ -15,7 +15,7 @@ class GetBusinessResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details of the business process.
+        # The details of the business flow.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -23,7 +23,7 @@ class GetBusinessResponseBody(DaraModel):
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID. You can use this ID to troubleshoot issues.
+        # The request ID. You can use the ID to troubleshoot issues when an error occurs.
         self.request_id = request_id
         # Indicates whether the call was successful. Valid values:
         # 
@@ -93,17 +93,17 @@ class GetBusinessResponseBodyData(DaraModel):
         project_id: str = None,
         use_type: str = None,
     ):
-        # The ID of the business process.
+        # The ID of the business flow.
         self.business_id = business_id
-        # The name of the business process. The name must be unique within the same workspace.
+        # The name of the business flow. The name must be unique within the same workspace.
         self.business_name = business_name
-        # The description of the business process.
+        # The description of the business flow.
         self.description = description
-        # The Alibaba Cloud user ID of the business process owner.
+        # The Alibaba Cloud user ID of the business flow owner.
         self.owner = owner
-        # The ID of the DataWorks workspace to which the business process belongs.
+        # The ID of the DataWorks workspace to which the business flow belongs.
         self.project_id = project_id
-        # The functional module to which the business process belongs. Valid values: NORMAL (Data Studio) and MANUAL_BIZ (manual business process).
+        # The functional module to which the business flow belongs. Valid values: NORMAL (Data Studio) and MANUAL_BIZ (Manual business flow).
         self.use_type = use_type
 
     def validate(self):

@@ -18,24 +18,24 @@ class ListLineagesRequest(DaraModel):
         src_entity_id: str = None,
         src_entity_name: str = None,
     ):
-        # The destination entity ID. You can use the table or column ID returned by the ListTables or ListColumns operation, or a custom entity ID.
+        # The destination entity ID. You can refer to the table or column ID returned by the ListTables or ListColumns operation, or use a custom entity ID.
         self.dst_entity_id = dst_entity_id
         # The destination entity name. Fuzzy match is supported.
         self.dst_entity_name = dst_entity_name
         # Specifies whether to return lineage relationship information. Default value: false.
         self.need_attach_relationship = need_attach_relationship
-        # The sort direction. Default value: Asc. Valid values:
-        # - Asc: ascending order.
-        # - Desc: descending order.
+        # The sort order. Default value: Asc. Valid values:
+        # - Asc: ascending order
+        # - Desc: descending order
         self.order = order
         # The page number. Default value: 1.
         self.page_number = page_number
-        # The page size. Default value: 10. Maximum value: 100.
+        # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
         self.recent_days = recent_days
-        # The sort field. Default value: Name, which sorts by lineage entity name.
+        # The sort field. Default value: Name. The entities are sorted by lineage entity name.
         self.sort_by = sort_by
-        # The source entity ID. You can use the table or column ID returned by the ListTables or ListColumns operation, or a custom entity ID.
+        # The source entity ID. You can refer to the table or column ID returned by the ListTables or ListColumns operation, or use a custom entity ID.
         self.src_entity_id = src_entity_id
         # The source entity name. Fuzzy match is supported.
         self.src_entity_name = src_entity_name

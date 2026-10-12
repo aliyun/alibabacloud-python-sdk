@@ -13,9 +13,9 @@ class CreateImageResponseBody(DaraModel):
     ):
         # The ID of the created image.
         self.image_id = image_id
-        # The request ID, which is used for locating logs and troubleshooting.
+        # The ID of the request. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

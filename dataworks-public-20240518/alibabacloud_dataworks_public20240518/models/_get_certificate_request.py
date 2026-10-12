@@ -10,11 +10,11 @@ class GetCertificateRequest(DaraModel):
         id: int = None,
         project_id: int = None,
     ):
-        # The unique ID of the certificate file.
+        # The ID of the certificate file, which is the unique identifier of the certificate file.
         # 
         # This parameter is required.
         self.id = id
-        # The ID of the project to which the certificate file belongs.
+        # The ID of the project to which the certificate file belongs. You can also call the ListProjects operation to query the workspace ID under the current tenant.
         # 
         # This parameter is required.
         self.project_id = project_id

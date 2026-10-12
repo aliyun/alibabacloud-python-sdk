@@ -17,13 +17,21 @@ class DataQualityRuleTemplate(DaraModel):
         tenant_id: int = None,
         visible_scope: str = None,
     ):
+        # The sample check settings.
         self.checking_config = checking_config
+        # The globally unique code of the rule template.
         self.code = code
+        # The category directory where the custom template is stored. Levels are separated by forward slashes.
         self.directory_path = directory_path
+        # The name of the rule template.
         self.name = name
+        # The DataWorks workspace ID.
         self.project_id = project_id
+        # The sample collection settings.
         self.sampling_config = sampling_config
+        # The DataWorks tenant ID.
         self.tenant_id = tenant_id
+        # The visibility scope of the template.
         self.visible_scope = visible_scope
 
     def validate(self):
@@ -100,8 +108,11 @@ class DataQualityRuleTemplateSamplingConfig(DaraModel):
         metric_parameters: str = None,
         setting_config: str = None,
     ):
+        # The name of the sampled metric.
         self.metric = metric
+        # The parameters required for sample collection.
         self.metric_parameters = metric_parameters
+        # The runtime parameter setting statements inserted before the execution of the sampling statement. The maximum length is 1,000 characters. Currently, only MaxCompute is supported.
         self.setting_config = setting_config
 
     def validate(self):
@@ -142,7 +153,9 @@ class DataQualityRuleTemplateCheckingConfig(DaraModel):
         referenced_samples_filter: str = None,
         type: str = None,
     ):
+        # The expression used to query referenced samples. Some threshold types require querying referenced samples and aggregating their values to derive the comparison threshold.
         self.referenced_samples_filter = referenced_samples_filter
+        # The threshold calculation method.
         self.type = type
 
     def validate(self):

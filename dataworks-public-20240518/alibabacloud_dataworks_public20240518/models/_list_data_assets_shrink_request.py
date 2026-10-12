@@ -22,17 +22,17 @@ class ListDataAssetsShrinkRequest(DaraModel):
         self.asset_domain_id = asset_domain_id
         # The ID of the asset category.
         self.category_uuid = category_uuid
-        # The list of unique data asset IDs.
+        # The list of unique IDs of the data assets.
         self.data_asset_ids_shrink = data_asset_ids_shrink
-        # The Asset Type of the data asset. Valid values:
+        # The asset type of the data asset.
         # 
-        # - ACS::DataWorks::Table: data table.
+        # - DataWorks table (ACS::DataWorks::Table)
         # 
-        # - ACS::DataWorks::Task: scheduling node.
+        # - DataWorks scheduled task (ACS::DataWorks::Task)
         self.data_asset_type = data_asset_type
         # The workspace environment to which the data asset belongs. Valid values:
-        # - Dev: development environment.
-        # - Prod: production environment.
+        # - Dev: development environment
+        # - Prod: production environment
         self.env_type = env_type
         # The name of the asset. Fuzzy search by name is supported.
         self.name = name
@@ -42,9 +42,9 @@ class ListDataAssetsShrinkRequest(DaraModel):
         self.page_size = page_size
         # The ID of the workspace.
         self.project_id = project_id
-        # The list of tags associated with data assets. Tags are used as query filters:
-        # - Multiple values have an OR relationship. For example, `["key1:v1", "key2:v1", "key3:v1"]` queries data assets that contain any one of the specified tags.
-        # - If this parameter is not specified or is left empty, no tag-based filtering is applied.
+        # The list of tags associated with the data assets. This parameter is used to filter query results based on tags:
+        # - Multiple values are evaluated with an OR logical operator. For example, if you specify `["key1:v1", "key2:v1", "key3:v1"]`, the system queries data assets that contain at least one of the specified tags.
+        # - If this parameter is not specified or is left empty, no tag-based filtering is performed.
         self.tags_shrink = tags_shrink
 
     def validate(self):

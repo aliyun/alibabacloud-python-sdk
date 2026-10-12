@@ -15,13 +15,13 @@ class UpdateDataQualityAlertRuleShrinkRequest(DaraModel):
     ):
         # The alert condition of the data quality monitoring alert rule.
         self.condition = condition
-        # The alert rule ID.
+        # The ID of the alert rule.
         self.id = id
         # The alert notification configuration.
         self.notification_shrink = notification_shrink
-        # The project ID.
+        # The ID of the project.
         self.project_id = project_id
-        # The monitoring target of the data quality monitoring alert rule.
+        # The target of the data quality monitoring alert rule.
         self.target_shrink = target_shrink
 
     def validate(self):

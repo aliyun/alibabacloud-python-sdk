@@ -10,13 +10,11 @@ class UpdateDataSourceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The request ID.
+        # The ID of the request. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # Whether the data source has been modified:
-        # 
-        # - true: Yes
-        # 
-        # - false: no
+        # Indicates whether the data source was updated. Valid values:
+        # - true: yes.
+        # - false: no.
         self.success = success
 
     def validate(self):

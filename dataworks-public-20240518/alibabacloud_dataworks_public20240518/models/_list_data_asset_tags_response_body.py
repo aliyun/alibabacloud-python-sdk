@@ -13,9 +13,9 @@ class ListDataAssetTagsResponseBody(DaraModel):
         paging_info: main_models.ListDataAssetTagsResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
-        # The pagination information.
+        # The paginated query results for the tag list.
         self.paging_info = paging_info
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -54,13 +54,13 @@ class ListDataAssetTagsResponseBodyPagingInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The tags.
+        # The list of tags.
         self.data_asset_tags = data_asset_tags
         # The page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -123,31 +123,31 @@ class ListDataAssetTagsResponseBodyPagingInfoDataAssetTags(DaraModel):
         value_type: str = None,
         values: List[str] = None,
     ):
-        # The type of the tag.
-        # 
-        # Valid values:
-        # 
+        # The tag type.
         # - Normal
-        # 
         # - System
         self.category = category
-        # The time when the tag was created.
+        # The creation time of the tag.
+        # 
+        # The value is a 13-digit number, such as `1735890003000`.
         self.create_time = create_time
         # The creator of the tag.
         self.create_user = create_user
-        # The description of the tag.
+        # The description.
         self.description = description
         # The tag key.
         self.key = key
-        # The tag administrators.
+        # The list of tag administrators.
         self.managers = managers
-        # The time when the tag was last modified.
+        # The last modification time of the tag.
+        # 
+        # The value is a 13-digit number, such as `1735890003000`.
         self.modify_time = modify_time
         # The user who last modified the tag.
         self.modify_user = modify_user
         # The type of the tag value.
         self.value_type = value_type
-        # The tag values.
+        # The list of tag values.
         self.values = values
 
     def validate(self):

@@ -17,8 +17,8 @@ class ExecuteAdhocWorkflowInstanceShrinkRequest(DaraModel):
         # The business date. The value is a timestamp.
         self.biz_date = biz_date
         # The project environment. Valid values:
-        # - Prod: production
-        # - Dev: development
+        # - Prod: production.
+        # - Dev: development.
         self.env_type = env_type
         # The name.
         # 
