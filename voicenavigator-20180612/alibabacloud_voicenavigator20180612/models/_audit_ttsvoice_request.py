@@ -12,6 +12,7 @@ class AuditTTSVoiceRequest(DaraModel):
         engine: str = None,
         ext_params: str = None,
         instance_id: str = None,
+        nls_service_type: str = None,
         pitch_rate: str = None,
         secret_key: str = None,
         speech_rate: str = None,
@@ -31,6 +32,7 @@ class AuditTTSVoiceRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        self.nls_service_type = nls_service_type
         self.pitch_rate = pitch_rate
         # The AccessKey secret.
         self.secret_key = secret_key
@@ -38,7 +40,7 @@ class AuditTTSVoiceRequest(DaraModel):
         # 
         # This parameter is required.
         self.speech_rate = speech_rate
-        # The preview text.
+        # The audition text.
         # 
         # This parameter is required.
         self.text = text
@@ -73,6 +75,9 @@ class AuditTTSVoiceRequest(DaraModel):
 
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+
+        if self.nls_service_type is not None:
+            result['NlsServiceType'] = self.nls_service_type
 
         if self.pitch_rate is not None:
             result['PitchRate'] = self.pitch_rate
@@ -110,6 +115,9 @@ class AuditTTSVoiceRequest(DaraModel):
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+
+        if m.get('NlsServiceType') is not None:
+            self.nls_service_type = m.get('NlsServiceType')
 
         if m.get('PitchRate') is not None:
             self.pitch_rate = m.get('PitchRate')

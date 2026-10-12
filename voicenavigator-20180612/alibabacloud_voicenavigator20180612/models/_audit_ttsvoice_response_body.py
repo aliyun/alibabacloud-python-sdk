@@ -10,7 +10,7 @@ class AuditTTSVoiceResponseBody(DaraModel):
         audition_url: str = None,
         request_id: str = None,
     ):
-        # The preview URL.
+        # The audition URL.
         self.audition_url = audition_url
         # The request ID.
         self.request_id = request_id

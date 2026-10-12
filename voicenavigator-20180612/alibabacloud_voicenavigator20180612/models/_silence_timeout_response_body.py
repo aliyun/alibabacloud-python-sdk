@@ -13,15 +13,15 @@ class SilenceTimeoutResponseBody(DaraModel):
         request_id: str = None,
         text_response: str = None,
     ):
-        # The system\\"s next action.
+        # The action.
         self.action = action
-        # Parameters for the action defined in the Action parameter.
+        # The action parameters.
         self.action_params = action_params
-        # Indicates whether the action is interruptible.
+        # Indicates whether the action can be interrupted.
         self.interruptible = interruptible
         # The request ID.
         self.request_id = request_id
-        # The text response to play to the user.
+        # The text response.
         self.text_response = text_response
 
     def validate(self):

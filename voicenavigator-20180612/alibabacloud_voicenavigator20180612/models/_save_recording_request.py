@@ -17,33 +17,33 @@ class SaveRecordingRequest(DaraModel):
         type: str = None,
         voice_slice_recording_list: str = None,
     ):
-        # The ID of the conversation.
+        # The session ID.
         # 
         # This parameter is required.
         self.conversation_id = conversation_id
-        # The duration of the recording, in seconds.
+        # The duration of the recording.
         # 
         # This parameter is required.
         self.duration = duration
-        # The name of the recording file.
+        # The file name.
         # 
         # This parameter is required.
         self.file_name = file_name
-        # The storage path of the recording file, such as a path in Object Storage Service (OSS).
+        # The file path.
         # 
         # This parameter is required.
         self.file_path = file_path
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the account that owns the instance.
+        # The ID of the account to which the instance belongs.
         self.instance_owner_id = instance_owner_id
-        # The Unix timestamp, in milliseconds, when the recording started.
+        # The start time of the recording.
         # 
         # This parameter is required.
         self.start_time = start_time
-        # The type of the recording file. Example: Source.
+        # The type of the recording file.
         # 
         # This parameter is required.
         self.type = type

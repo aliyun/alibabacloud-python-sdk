@@ -21,19 +21,20 @@ class ListConversationsRequest(DaraModel):
         rounds_left_range: int = None,
         rounds_right_range: int = None,
     ):
+        # The AB test ID.
         self.ab_test_id = ab_test_id
-        # The left boundary of the start time range.
+        # The lower bound of the start time range.
         self.begin_time_left_range = begin_time_left_range
-        # The right boundary of the start time range.
+        # The upper bound of the start time range.
         self.begin_time_right_range = begin_time_right_range
         # The calling number.
         self.calling_number = calling_number
         self.debug_conversation = debug_conversation
-        # The instance list.
+        # The instance IDs.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Specifies whether the session is in a sandbox environment.
+        # Specifies whether the sandbox mode is enabled.
         self.is_sand_box = is_sand_box
         # The page number.
         # 
@@ -43,13 +44,13 @@ class ListConversationsRequest(DaraModel):
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The query condition.
+        # The query conditions.
         self.query = query
         # The result.
         self.result = result
-        # The left boundary of the rounds query range.
+        # The lower bound of the conversation rounds range.
         self.rounds_left_range = rounds_left_range
-        # The right boundary of the rounds query range.
+        # The upper bound of the conversation rounds range.
         self.rounds_right_range = rounds_right_range
 
     def validate(self):

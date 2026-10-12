@@ -10,9 +10,9 @@ class DescribeConversationContextResponseBody(DaraModel):
         conversation_context: str = None,
         request_id: str = None,
     ):
-        # The conversation context, returned as a JSON string.
+        # The session context data.
         self.conversation_context = conversation_context
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

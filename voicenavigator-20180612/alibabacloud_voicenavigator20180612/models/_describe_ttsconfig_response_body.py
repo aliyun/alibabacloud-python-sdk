@@ -18,6 +18,7 @@ class DescribeTTSConfigResponseBody(DaraModel):
         request_id: str = None,
         speech_rate: int = None,
         tts_overrides: str = None,
+        tts_overrides_uuid: str = None,
         voice: str = None,
         volume: int = None,
     ):
@@ -41,6 +42,8 @@ class DescribeTTSConfigResponseBody(DaraModel):
         self.speech_rate = speech_rate
         # The TTS correction dictionary.
         self.tts_overrides = tts_overrides
+        # The TTS correction dictionary ID.
+        self.tts_overrides_uuid = tts_overrides_uuid
         # The voice.
         self.voice = voice
         # The volume.
@@ -87,6 +90,9 @@ class DescribeTTSConfigResponseBody(DaraModel):
         if self.tts_overrides is not None:
             result['TtsOverrides'] = self.tts_overrides
 
+        if self.tts_overrides_uuid is not None:
+            result['TtsOverridesUuid'] = self.tts_overrides_uuid
+
         if self.voice is not None:
             result['Voice'] = self.voice
 
@@ -129,6 +135,9 @@ class DescribeTTSConfigResponseBody(DaraModel):
 
         if m.get('TtsOverrides') is not None:
             self.tts_overrides = m.get('TtsOverrides')
+
+        if m.get('TtsOverridesUuid') is not None:
+            self.tts_overrides_uuid = m.get('TtsOverridesUuid')
 
         if m.get('Voice') is not None:
             self.voice = m.get('Voice')

@@ -20,11 +20,11 @@ class BeginDialogueRequest(DaraModel):
         # 
         # This parameter is required.
         self.calling_number = calling_number
-        # The conversation ID.
+        # The session ID.
         # 
         # This parameter is required.
         self.conversation_id = conversation_id
-        # The conversation context.
+        # The session context.
         self.initial_context = initial_context
         # The instance ID.
         # 

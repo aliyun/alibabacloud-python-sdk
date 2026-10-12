@@ -96,6 +96,7 @@ class ListConversationsResponseBodyConversations(DaraModel):
         sand_box: bool = None,
         skill_group: str = None,
         start_time: int = None,
+        voice: str = None,
     ):
         self.ab_test_name = ab_test_name
         # The called number.
@@ -106,33 +107,35 @@ class ListConversationsResponseBodyConversations(DaraModel):
         self.conversation_id = conversation_id
         self.ds_report = ds_report
         self.ds_report_titles = ds_report_titles
-        # The reason for hanging up. Valid values:
-        #      1: Normal completion.
-        #      2: Bot hung up after unrecognized input.
-        #      3: Hung up due to silence timeout.
-        #      4: User hung up after unrecognized input.
-        #      5: User hung up without reason.
-        #      6: Transferred to human agent due to intent match.
-        #      7: Transferred to human agent due to unrecognized input.
-        #      8: No interaction from the user side.
-        #      9: System exception interruption.
-        #      10: Transferred to IVR due to intent match.
-        #      11: Transferred to IVR due to unrecognized input.
+        # The reason for ending the session. Valid values:
+        # 1. Normal completion.
+        # 2. Hangup by the bot after unrecognized input.
+        # 3. Hangup due to silence timeout.
+        # 4. Hangup by the user after unrecognized input.
+        # 5. Hangup by the user without a reason.
+        # 6. Transfer to a human agent due to matched intent.
+        # 7. Transfer to a human agent after unrecognized input.
+        # 8. No interaction from the user.
+        # 9. Interruption due to a system exception.
+        # 10. Transfer to IVR due to matched intent.
+        # 11. Transfer to IVR after unrecognized input.
         self.end_reason = end_reason
         # The end time.
         self.end_time = end_time
-        # Indicates whether the last playback was completed when the session ended.
+        # Specifies whether the last prompt was fully played before the session ended.
         self.has_last_playback_completed = has_last_playback_completed
-        # Indicates whether the session was transferred to a human agent.
+        # Specifies whether the session was transferred to a human agent.
         self.has_to_agent = has_to_agent
         # The number of conversation rounds.
         self.rounds = rounds
-        # Indicates whether the session is in a sandbox environment.
+        # Specifies whether the sandbox mode is enabled.
         self.sand_box = sand_box
         # The skill group.
         self.skill_group = skill_group
         # The start time.
         self.start_time = start_time
+        # The text-to-speech (TTS) voice used for the call.
+        self.voice = voice
 
     def validate(self):
         pass
@@ -184,6 +187,9 @@ class ListConversationsResponseBodyConversations(DaraModel):
         if self.start_time is not None:
             result['StartTime'] = self.start_time
 
+        if self.voice is not None:
+            result['Voice'] = self.voice
+
         return result
 
     def from_map(self, m: dict = None):
@@ -229,6 +235,9 @@ class ListConversationsResponseBodyConversations(DaraModel):
 
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+
+        if m.get('Voice') is not None:
+            self.voice = m.get('Voice')
 
         return self
 

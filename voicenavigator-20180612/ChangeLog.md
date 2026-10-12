@@ -1,3 +1,7 @@
+2026-10-12 Version: 2.0.7
+- Update API ListConversations: add response parameters Body.Conversations.$.Voice.
+
+
 2026-08-13 Version: 2.0.4
 - Update API DescribeTTSConfig: add response parameters Body.BackgroundMusicName.
 - Update API ModifyTTSConfig: add request parameters BackgroundMusicName.

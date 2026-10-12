@@ -12,9 +12,11 @@ class ModifyAsrConfigRequest(DaraModel):
         asr_class_vocabulary_id: str = None,
         asr_customization_id: str = None,
         asr_overrides: str = None,
+        asr_overrides_uuid: str = None,
         asr_vocabulary_id: str = None,
         config_level: int = None,
         engine: str = None,
+        engine_xunfei: str = None,
         entry_id: str = None,
         nls_service_type: str = None,
     ):
@@ -27,7 +29,9 @@ class ModifyAsrConfigRequest(DaraModel):
         # The dataset ID.
         self.asr_customization_id = asr_customization_id
         self.asr_overrides = asr_overrides
-        # The hotword ID. View the ASR hotword ID on the [ASR Hotword Management page](https://aiccs.console.aliyun.com/sentence/vocab?spm=a2c4g.11186623.0.0.7f9bf965IKBpsi).
+        # The ASR error correction dictionary ID.
+        self.asr_overrides_uuid = asr_overrides_uuid
+        # The hotword ID. You can view the ASR hotword ID on the [ASR Hotword Management page](https://aiccs.console.aliyun.com/sentence/vocab?spm=a2c4g.11186623.0.0.7f9bf965IKBpsi).
         self.asr_vocabulary_id = asr_vocabulary_id
         # The policy level. Valid values:
         # 
@@ -37,6 +41,8 @@ class ModifyAsrConfigRequest(DaraModel):
         self.config_level = config_level
         # The TTS engine.
         self.engine = engine
+        # The iFLYTEK ASR configuration parameters.
+        self.engine_xunfei = engine_xunfei
         # The entity ID corresponding to config_level.
         self.entry_id = entry_id
         # NluServiceType
@@ -65,6 +71,9 @@ class ModifyAsrConfigRequest(DaraModel):
         if self.asr_overrides is not None:
             result['AsrOverrides'] = self.asr_overrides
 
+        if self.asr_overrides_uuid is not None:
+            result['AsrOverridesUuid'] = self.asr_overrides_uuid
+
         if self.asr_vocabulary_id is not None:
             result['AsrVocabularyId'] = self.asr_vocabulary_id
 
@@ -73,6 +82,9 @@ class ModifyAsrConfigRequest(DaraModel):
 
         if self.engine is not None:
             result['Engine'] = self.engine
+
+        if self.engine_xunfei is not None:
+            result['EngineXunfei'] = self.engine_xunfei
 
         if self.entry_id is not None:
             result['EntryId'] = self.entry_id
@@ -99,6 +111,9 @@ class ModifyAsrConfigRequest(DaraModel):
         if m.get('AsrOverrides') is not None:
             self.asr_overrides = m.get('AsrOverrides')
 
+        if m.get('AsrOverridesUuid') is not None:
+            self.asr_overrides_uuid = m.get('AsrOverridesUuid')
+
         if m.get('AsrVocabularyId') is not None:
             self.asr_vocabulary_id = m.get('AsrVocabularyId')
 
@@ -107,6 +122,9 @@ class ModifyAsrConfigRequest(DaraModel):
 
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
+
+        if m.get('EngineXunfei') is not None:
+            self.engine_xunfei = m.get('EngineXunfei')
 
         if m.get('EntryId') is not None:
             self.entry_id = m.get('EntryId')

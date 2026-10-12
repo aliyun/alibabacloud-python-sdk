@@ -88,6 +88,7 @@ class GetAsrConfigResponseBodyData(DaraModel):
         asr_class_vocabulary_id: str = None,
         asr_customization_id: str = None,
         asr_overrides: str = None,
+        asr_overrides_uuid: str = None,
         asr_vocabulary_id: str = None,
         engine: str = None,
         engine_xufei: str = None,
@@ -102,6 +103,8 @@ class GetAsrConfigResponseBodyData(DaraModel):
         # The ASR dataset ID.
         self.asr_customization_id = asr_customization_id
         self.asr_overrides = asr_overrides
+        # The ASR correction dictionary ID.
+        self.asr_overrides_uuid = asr_overrides_uuid
         # The hotword ID. You can view the ASR hotword ID on the [ASR Hotword Management page](https://aiccs.console.aliyun.com/sentence/vocab?spm=a2c4g.11186623.0.0.7f9bf965IKBpsi).
         self.asr_vocabulary_id = asr_vocabulary_id
         # The speech engine.
@@ -134,6 +137,9 @@ class GetAsrConfigResponseBodyData(DaraModel):
         if self.asr_overrides is not None:
             result['AsrOverrides'] = self.asr_overrides
 
+        if self.asr_overrides_uuid is not None:
+            result['AsrOverridesUuid'] = self.asr_overrides_uuid
+
         if self.asr_vocabulary_id is not None:
             result['AsrVocabularyId'] = self.asr_vocabulary_id
 
@@ -164,6 +170,9 @@ class GetAsrConfigResponseBodyData(DaraModel):
 
         if m.get('AsrOverrides') is not None:
             self.asr_overrides = m.get('AsrOverrides')
+
+        if m.get('AsrOverridesUuid') is not None:
+            self.asr_overrides_uuid = m.get('AsrOverridesUuid')
 
         if m.get('AsrVocabularyId') is not None:
             self.asr_vocabulary_id = m.get('AsrVocabularyId')

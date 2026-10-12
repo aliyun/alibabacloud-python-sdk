@@ -21,10 +21,6 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'cn-hangzhou': 'voicenavigator.cn-hangzhou.aliyuncs.com',
-            'cn-shanghai': 'voicenavigator.cn-shanghai.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('voicenavigator', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -151,6 +147,8 @@ class Client(OpenApiClient):
             query['ExtParams'] = request.ext_params
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.nls_service_type):
+            query['NlsServiceType'] = request.nls_service_type
         if not DaraCore.is_null(request.pitch_rate):
             query['PitchRate'] = request.pitch_rate
         if not DaraCore.is_null(request.secret_key):
@@ -199,6 +197,8 @@ class Client(OpenApiClient):
             query['ExtParams'] = request.ext_params
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.nls_service_type):
+            query['NlsServiceType'] = request.nls_service_type
         if not DaraCore.is_null(request.pitch_rate):
             query['PitchRate'] = request.pitch_rate
         if not DaraCore.is_null(request.secret_key):
@@ -2439,12 +2439,16 @@ class Client(OpenApiClient):
             query['AsrCustomizationId'] = request.asr_customization_id
         if not DaraCore.is_null(request.asr_overrides):
             query['AsrOverrides'] = request.asr_overrides
+        if not DaraCore.is_null(request.asr_overrides_uuid):
+            query['AsrOverridesUuid'] = request.asr_overrides_uuid
         if not DaraCore.is_null(request.asr_vocabulary_id):
             query['AsrVocabularyId'] = request.asr_vocabulary_id
         if not DaraCore.is_null(request.config_level):
             query['ConfigLevel'] = request.config_level
         if not DaraCore.is_null(request.engine):
             query['Engine'] = request.engine
+        if not DaraCore.is_null(request.engine_xunfei):
+            query['EngineXunfei'] = request.engine_xunfei
         if not DaraCore.is_null(request.entry_id):
             query['EntryId'] = request.entry_id
         if not DaraCore.is_null(request.nls_service_type):
@@ -2485,12 +2489,16 @@ class Client(OpenApiClient):
             query['AsrCustomizationId'] = request.asr_customization_id
         if not DaraCore.is_null(request.asr_overrides):
             query['AsrOverrides'] = request.asr_overrides
+        if not DaraCore.is_null(request.asr_overrides_uuid):
+            query['AsrOverridesUuid'] = request.asr_overrides_uuid
         if not DaraCore.is_null(request.asr_vocabulary_id):
             query['AsrVocabularyId'] = request.asr_vocabulary_id
         if not DaraCore.is_null(request.config_level):
             query['ConfigLevel'] = request.config_level
         if not DaraCore.is_null(request.engine):
             query['Engine'] = request.engine
+        if not DaraCore.is_null(request.engine_xunfei):
+            query['EngineXunfei'] = request.engine_xunfei
         if not DaraCore.is_null(request.entry_id):
             query['EntryId'] = request.entry_id
         if not DaraCore.is_null(request.nls_service_type):
@@ -2823,6 +2831,8 @@ class Client(OpenApiClient):
             query['SpeechRate'] = request.speech_rate
         if not DaraCore.is_null(request.tts_overrides):
             query['TtsOverrides'] = request.tts_overrides
+        if not DaraCore.is_null(request.tts_overrides_uuid):
+            query['TtsOverridesUuid'] = request.tts_overrides_uuid
         if not DaraCore.is_null(request.voice):
             query['Voice'] = request.voice
         if not DaraCore.is_null(request.volume):
@@ -2875,6 +2885,8 @@ class Client(OpenApiClient):
             query['SpeechRate'] = request.speech_rate
         if not DaraCore.is_null(request.tts_overrides):
             query['TtsOverrides'] = request.tts_overrides
+        if not DaraCore.is_null(request.tts_overrides_uuid):
+            query['TtsOverridesUuid'] = request.tts_overrides_uuid
         if not DaraCore.is_null(request.voice):
             query['Voice'] = request.voice
         if not DaraCore.is_null(request.volume):

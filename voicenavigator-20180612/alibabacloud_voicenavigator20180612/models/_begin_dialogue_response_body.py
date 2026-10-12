@@ -13,11 +13,11 @@ class BeginDialogueResponseBody(DaraModel):
         request_id: str = None,
         text_response: str = None,
     ):
-        # The action to perform.
+        # The action.
         self.action = action
         # The action parameters.
         self.action_params = action_params
-        # Specifies whether the IVR playback can be interrupted.
+        # Indicates whether the IVR announcement can be interrupted.
         self.interruptible = interruptible
         # The request ID.
         self.request_id = request_id

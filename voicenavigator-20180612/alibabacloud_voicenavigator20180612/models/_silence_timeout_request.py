@@ -12,13 +12,13 @@ class SilenceTimeoutRequest(DaraModel):
         instance_id: str = None,
         instance_owner_id: int = None,
     ):
-        # The ID of the conversation.
+        # The session ID.
         # 
         # This parameter is required.
         self.conversation_id = conversation_id
-        # The context of the conversation.
+        # The session information context.
         self.initial_context = initial_context
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

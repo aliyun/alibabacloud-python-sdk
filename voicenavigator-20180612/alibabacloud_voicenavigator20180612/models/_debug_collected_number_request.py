@@ -11,15 +11,15 @@ class DebugCollectedNumberRequest(DaraModel):
         instance_id: str = None,
         number: str = None,
     ):
-        # The ID of the conversation.
+        # The session ID.
         # 
         # This parameter is required.
         self.conversation_id = conversation_id
-        # The ID of the Voice Navigator instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The collected number.
+        # The collected digit input.
         self.number = number
 
     def validate(self):
