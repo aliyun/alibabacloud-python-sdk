@@ -24,27 +24,27 @@ class GetDatasetJobResponseBody(DaraModel):
     ):
         # The total number of completed files.
         self.completed_file_count = completed_file_count
-        # The time when the task was started.
+        # The time when the job was started, in UTC. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.create_time = create_time
-        # The task description.
+        # The job description.
         self.description = description
         # The total number of failed files.
         self.failed_file_count = failed_file_count
-        # The time when the task was finished.
+        # The time when the job ended, in UTC. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.finish_time = finish_time
-        # The task operation.
+        # The job action.
         self.job_action = job_action
-        # The task pattern.
+        # The job mode.
         self.job_mode = job_mode
-        # The task details.
+        # The job details.
         self.job_spec = job_spec
         # The list of task logs.
         self.logs = logs
         # The request ID.
         self.request_id = request_id
-        # The task status.
+        # The job status.
         self.status = status
-        # The total number of files for the task.
+        # The total number of files in the job.
         self.total_file_count = total_file_count
 
     def validate(self):

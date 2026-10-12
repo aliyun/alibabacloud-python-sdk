@@ -10,19 +10,15 @@ class UpdateExperimentRequest(DaraModel):
         accessibility: str = None,
         name: str = None,
     ):
-        # The visibility of the experiment in the workspace. Valid values:
-        # 
+        # The visibility of the workspace. Valid values:
         # - PRIVATE: The experiment is visible only to you and the administrator in the workspace.
-        # 
-        # - PUBLIC: The experiment is visible to everyone in the workspace.
+        # - PUBLIC: The experiment is visible to all users in the workspace.
         self.accessibility = accessibility
-        # The name of the experiment. The naming convention is as follows:
+        # The name of the experiment. The name must meet the following rules:
         # 
-        # - Must start with a lowercase or uppercase letter.
-        # 
-        # - Can contain lowercase letters, uppercase letters, digits, underscores (_), and hyphens (-).
-        # 
-        # - The length must be 1 to 63 characters.
+        # - The name must start with a lowercase or uppercase letter.
+        # - The name can contain uppercase letters, lowercase letters, digits, underscores (_), or hyphens (-).
+        # - The name must be 1 to 63 characters in length.
         self.name = name
 
     def validate(self):

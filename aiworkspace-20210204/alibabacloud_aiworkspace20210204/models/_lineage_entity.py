@@ -14,13 +14,13 @@ class LineageEntity(DaraModel):
         name: str = None,
         qualified_name: str = None,
     ):
-        # The entity\\"s attributes.
+        # Attributes
         self.attributes = attributes
-        # The entity type.
+        # The type of the data lineage entity.
         self.entity_type = entity_type
-        # The entity\\"s name.
+        # The name of the data lineage entity.
         self.name = name
-        # The entity\\"s qualified name.
+        # The unique qualified name of the data lineage entity.
         self.qualified_name = qualified_name
 
     def validate(self):

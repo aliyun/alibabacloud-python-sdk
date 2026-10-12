@@ -10,9 +10,10 @@ class GetMemberRequest(DaraModel):
         member_id: str = None,
         user_id: str = None,
     ):
-        # The member UID. You must specify either UserId or MemberId. You cannot specify both.
+        # The member UID. You must specify either UserId or MemberId. You cannot specify both at the same time.
         self.member_id = member_id
-        # The user UID. For more information about how to view the user UID, see [ListWorkspaceUsers](https://help.aliyun.com/document_detail/449133.html). You must specify either UserId or MemberId. You cannot specify both.
+        # The user UID. For information about how to view the user UID, see [ListWorkspaceUsers](https://help.aliyun.com/document_detail/449133.html).
+        # You must specify either UserId or MemberId. You cannot specify both at the same time.
         self.user_id = user_id
 
     def validate(self):

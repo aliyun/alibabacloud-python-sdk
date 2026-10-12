@@ -14,13 +14,13 @@ class Relationship(DaraModel):
         relationship_guid: str = None,
         relationship_type: str = None,
     ):
-        # A collection of key-value pairs providing additional details about the relationship.
+        # Attributes
         self.attributes = attributes
-        # The channel or system through which the relationship is established.
+        # The data channel to which the lineage relationship belongs.
         self.data_channel = data_channel
-        # The globally unique identifier (GUID) for the relationship.
+        # The globally unique identifier of the lineage relationship.
         self.relationship_guid = relationship_guid
-        # Specifies the type of relationship.
+        # The type of the lineage relationship.
         self.relationship_type = relationship_type
 
     def validate(self):

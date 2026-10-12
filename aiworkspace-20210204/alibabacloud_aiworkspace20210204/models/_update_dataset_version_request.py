@@ -25,8 +25,10 @@ class UpdateDatasetVersionRequest(DaraModel):
         self.dataset_task_ram_role = dataset_task_ram_role
         # The custom description of the dataset, which is used to distinguish different datasets.
         self.description = description
-        # The extended field in JsonString format. When DLC uses the dataset, you can specify the default mount path of the dataset by configuring the mountPath field.
+        # The extended field in JsonString format.
+        # When Deep Learning Containers (DLC) uses the dataset, you can specify the default mount path of the dataset by configuring the mountPath field.
         self.options = options
+        # The list of user metric collection endpoints.
         self.user_metrics_endpoints = user_metrics_endpoints
 
     def validate(self):

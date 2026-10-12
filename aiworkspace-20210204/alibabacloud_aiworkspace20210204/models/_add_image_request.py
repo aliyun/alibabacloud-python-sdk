@@ -29,7 +29,7 @@ class AddImageRequest(DaraModel):
         self.accessibility = accessibility
         # The description of the image.
         self.description = description
-        # The image ID. If this parameter is not specified, the system automatically generates one. The format is image- followed by 18 uppercase or lowercase letters or digits.
+        # The image ID. If you do not specify this parameter, the system automatically generates one. The format is image- followed by 18 uppercase or lowercase letters or digits.
         self.image_id = image_id
         # The image URI, which can be duplicated. For information about how to view the image URI, see [ListImage](https://help.aliyun.com/document_detail/449118.html).
         # 
@@ -67,12 +67,13 @@ class AddImageRequest(DaraModel):
         self.name = name
         # The image size, in GB.
         self.size = size
-        # The image source ID. When the image source type is Build, the source ID corresponds to the image build ID.
+        # The image source ID. If the image source type is Build, the source ID corresponds to the image build ID.
         self.source_id = source_id
         # The image source type. Valid values:
         # - Import: import.
         # - Build: generate.
         self.source_type = source_type
+        # The user ID (UID) of the image creator.
         self.user_id = user_id
         # The ID of the workspace to which the image belongs. For information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
         self.workspace_id = workspace_id

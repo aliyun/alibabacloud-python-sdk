@@ -19,8 +19,9 @@ class CreateWorkspaceRoleRequest(DaraModel):
         self.module_permissions = module_permissions
         # (Required) The custom role name. The name must be unique within the same workspace. The name can contain letters, digits, underscores (_), and hyphens (-), and cannot exceed 64 characters in length.
         self.role_name = role_name
-        # The role type. Valid values: custom (custom role). Only custom roles are supported. This is the default value.
+        # The role type. Valid values: custom: custom role. Only custom roles are supported. This is the default value.
         self.role_type = role_type
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

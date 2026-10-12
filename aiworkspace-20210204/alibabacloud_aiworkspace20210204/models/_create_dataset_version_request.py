@@ -15,6 +15,7 @@ class CreateDatasetVersionRequest(DaraModel):
         data_source_type: str = None,
         dataset_task_ram_role: str = None,
         description: str = None,
+        dry_run: bool = None,
         import_info: str = None,
         labels: List[main_models.Label] = None,
         options: str = None,
@@ -24,44 +25,46 @@ class CreateDatasetVersionRequest(DaraModel):
         uri: str = None,
         user_metrics_endpoints: List[main_models.UserMetricsEndpoint] = None,
     ):
-        # The number of dataset files.
+        # The number of files in the dataset.
         self.data_count = data_count
-        # The size of space occupied by dataset files. Unit: bytes.
+        # The size of the space occupied by the dataset files. Unit: bytes.
         self.data_size = data_size
-        # The data source type. Separate multiple values with commas (,). Valid values:
+        # The data source type. Separate multiple values with commas. Valid values:
         # 
-        # - NAS: Alibaba Cloud Network Attached Storage (NAS).
+        # - NAS: Alibaba Cloud File Storage NAS.
         # 
         # - OSS: Alibaba Cloud Object Storage Service (OSS).
         # 
         # - CPFS
         # 
-        # > The DataSourceType of the version must be consistent with the DataSourceType of the dataset. Validation is performed against the dataset when a version is created.
+        # Note: The DataSourceType of the version must be the same as the DataSourceType of the dataset. The system validates this when you create the version.
         # 
         # This parameter is required.
         self.data_source_type = data_source_type
         # UserMetricsEndpoints
         self.dataset_task_ram_role = dataset_task_ram_role
-        # The custom description of the dataset version, used to distinguish different dataset versions.
+        # The custom description of the dataset version. You can use this description to distinguish between different dataset versions.
         self.description = description
+        # Specifies whether to perform only a dry run without actually creating the dataset version.
+        self.dry_run = dry_run
         # The storage import configuration of the dataset. OSS, NAS, and CPFS are supported.
         # 
         # <details>
         # <summary>OSS</summary>
         # {<BR>
-        #   "region": "${region}",//Region ID<BR>
-        #   "bucket": "${bucket}",//Bucket name<BR>
-        #   "path": "${path}" //File path<BR>
+        #   "region": "${region}",// The region ID.<BR>
+        #   "bucket": "${bucket}",// The bucket name.<BR>
+        #   "path": "${path}" // The file path.<BR>
         # }<BR>
         # </details>
         # 
         # <details>
         # <summary>NAS</summary>
         # {<BR>
-        #   "region": "${region}",//Region ID<BR>
-        #   "fileSystemId": "${file_system_id}", //File system ID<BR>
-        #   "path": "${path}", //File system path<BR>
-        #   "mountTarget": "${mount_target}" //File system mount target<BR>
+        #   "region": "${region}",// The region ID.<BR>
+        #   "fileSystemId": "${file_system_id}", // The file system ID.<BR>
+        #   "path": "${path}", // The file system path.<BR>
+        #   "mountTarget": "${mount_target}" // The mount target of the file system.<BR>
         # }<BR>
         # </details>
         # 
@@ -69,56 +72,56 @@ class CreateDatasetVersionRequest(DaraModel):
         # <details>
         # <summary>CPFS</summary>
         # {<BR>
-        #   "region": "${region}",//Region ID<BR>
-        #   "fileSystemId": "${file_system_id}", //File system ID<BR>
-        #   "protocolServiceId":"${protocol_service_id}", //File system protocol service<BR>
-        #   "exportId": "${export_id}", //File system export directory<BR>
-        #   "path": "${path}",  //File system path<BR>
+        #   "region": "${region}",// The region ID.<BR>
+        #   "fileSystemId": "${file_system_id}", // The file system ID.<BR>
+        #   "protocolServiceId":"${protocol_service_id}", // The protocol service of the file system.<BR>
+        #   "exportId": "${export_id}", // The export directory of the file system.<BR>
+        #   "path": "${path}",  // The file system path.<BR>
         # }<BR>
         # </details>
         # 
         # <details>
-        # <summary>Lingjun CPFS</summary>
+        # <summary>CPFS for AI computing</summary>
         # {<BR>
-        #   "region": "${region}",//Region ID<BR>
-        #   "fileSystemId": "${file_system_id}", //File system ID<BR>
-        #   "path": "${path}",  //File system path<BR>
-        #   "mountTarget": "${mount_target}" //File system mount target, specific to Lingjun edition<BR>
-        #   "isVpcMount": boolean, //Whether it is a VPC mount target, specific to Lingjun edition<BR>
+        #   "region": "${region}",// The region ID.<BR>
+        #   "fileSystemId": "${file_system_id}", // The file system ID.<BR>
+        #   "path": "${path}",  // The file system path.<BR>
+        #   "mountTarget": "${mount_target}" // The mount target of the file system. This parameter is specific to the AI computing edition.<BR>
+        #   "isVpcMount": boolean, // Specifies whether the mount target is a VPC mount target. This parameter is specific to the AI computing edition.<BR>
         # }<BR>
         # </details>
         self.import_info = import_info
-        # The list of dataset version labels.
+        # The list of labels for the dataset version.
         self.labels = labels
-        # The extended field in JsonString format.
-        # When DLC uses a dataset, you can specify the default mount path of the dataset by configuring the mountPath field.
+        # The extended field. The value is a JSON string. When DLC uses the dataset, you can configure the mountPath field to specify the default mount path for the dataset.
         self.options = options
         # The property of the dataset. Valid values:
-        # - FILE: file.
-        # - DIRECTORY: folder.
+        # - FILE: file
+        # - DIRECTORY: directory
         # 
         # This parameter is required.
         self.property = property
-        # The data source ID.
-        # - If SourceType is USER, SourceId can be customized.
-        # - If SourceType is ITAG, which indicates a dataset generated from iTAG annotation results, SourceId is the iTAG task ID.
-        # - If SourceType is PAI_PUBLIC_DATASET, which indicates a dataset created from a PAI public dataset, SourceId is empty by default.
+        # The source ID.
+        # - If SourceType is set to USER, you can specify a custom SourceId.
+        # - If SourceType is set to ITAG, the dataset is generated from the labeling results of the iTAG module, and SourceId is the task ID in iTAG.
+        # - If SourceType is set to PAI_PUBLIC_DATASET, the dataset is created from a PAI public dataset, and SourceId is empty by default.
         self.source_id = source_id
-        # The data source type. Default value: USER. Valid values:
+        # The source type. Default value: USER. Valid values:
         # - PAI-PUBLIC-DATASET: PAI public dataset.
-        # - ITAG: dataset generated from iTAG annotation results.
+        # - ITAG: dataset generated from the labeling results of the iTAG module.
         # - USER: user-registered dataset.
         self.source_type = source_type
-        # Examples of Uri configurations:
+        # The URI. Configuration examples:
         # - If the data source type is OSS: `oss://bucket.endpoint/object`
         # - If the data source type is NAS:
-        # General-purpose NAS format: `nas://<nasfisid>.region/subpath/to/dir/`;
-        # CPFS 1.0: `nas://<cpfs-fsid>.region/subpath/to/dir/`;
-        # CPFS 2.0: `nas://<cpfs-fsid>.region/<protocolserviceid>/`.
-        # CPFS 1.0 and CPFS 2.0 are distinguished by the format of the fsid: CPFS 1.0 format is cpfs-<8 ASCII characters>; CPFS 2.0 format is cpfs-<16 ASCII characters>.
+        #   For general-purpose NAS, the format is `nas://<nasfisid>.region/subpath/to/dir/`.
+        #   For CPFS 1.0, the format is `nas://<cpfs-fsid>.region/subpath/to/dir/`.
+        #   For CPFS 2.0, the format is `nas://<cpfs-fsid>.region/<protocolserviceid>/`.
+        #   CPFS 1.0 and CPFS 2.0 are distinguished by the format of the fsid: the format for CPFS 1.0 is cpfs-<8 ASCII characters>, and the format for CPFS 2.0 is cpfs-<16 ASCII characters>.
         # 
         # This parameter is required.
         self.uri = uri
+        # The list of user metric collection endpoints.
         self.user_metrics_endpoints = user_metrics_endpoints
 
     def validate(self):
@@ -150,6 +153,9 @@ class CreateDatasetVersionRequest(DaraModel):
 
         if self.description is not None:
             result['Description'] = self.description
+
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
 
         if self.import_info is not None:
             result['ImportInfo'] = self.import_info
@@ -197,6 +203,9 @@ class CreateDatasetVersionRequest(DaraModel):
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
 
         if m.get('ImportInfo') is not None:
             self.import_info = m.get('ImportInfo')

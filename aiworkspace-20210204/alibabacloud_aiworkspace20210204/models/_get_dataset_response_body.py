@@ -44,15 +44,15 @@ class GetDatasetResponseBody(DaraModel):
         workspace_id: str = None,
     ):
         # The workspace visibility. Valid values:
-        # - PRIVATE: Only the dataset owner and administrators in the workspace can access the dataset.
-        # - PUBLIC: All members in the workspace can access the dataset.
+        # - PRIVATE: Only the dataset owner and administrators within the workspace can access the dataset.
+        # - PUBLIC: All members of the workspace can access the dataset.
         # - ROLE_PUBLIC: Only specified workspace roles can access the dataset. For the role list, see AccessibleRoleIdList. The dataset owner and administrators always have access under this condition.
         self.accessibility = accessibility
-        # The list of workspace role names that can access the dataset. This field takes effect when Accessibility is ROLE_PUBLIC. IDs starting with PAI are basic role IDs, and IDs starting with role- are custom role IDs.
+        # The list of workspace role names that can access the dataset. This parameter takes effect only when Accessibility is set to ROLE_PUBLIC. Role IDs starting with PAI are basic role IDs, and role IDs starting with role- are custom role IDs.
         self.accessible_role_id_list = accessible_role_id_list
         # The data source type. Valid values:
-        # - OSS: Alibaba Cloud Object Storage Service (OSS).
-        # - NAS: Alibaba Cloud Apsara File Storage NAS (NAS).
+        # - OSS: Object Storage Service (OSS).
+        # - NAS: Apsara File Storage NAS (NAS).
         self.data_source_type = data_source_type
         # The data type of the dataset. Valid values:
         # 
@@ -74,9 +74,9 @@ class GetDatasetResponseBody(DaraModel):
         # 
         # - ADVANCED: Advanced. Only supported for OSS type. Each version supports metadata management for up to 1 million files.
         self.edition = edition
-        # The creation time.
+        # The creation time, in UTC, in the ISO 8601 format of YYYY-MM-DDTHH:mm:ss.sssZ.
         self.gmt_create_time = gmt_create_time
-        # The update time.
+        # The update time, in UTC, in the ISO 8601 format of YYYY-MM-DDTHH:mm:ss.sssZ.
         self.gmt_modified_time = gmt_modified_time
         # The storage import configuration of the dataset. OSS, NAS, and CPFS are supported.
         # 
@@ -116,8 +116,8 @@ class GetDatasetResponseBody(DaraModel):
         # "region": "${region}",//Region ID<BR>
         # "fileSystemId": "${file_system_id}", //File system ID<BR>
         # "path": "${path}", //File system path<BR>
-        # "mountTarget": "${mount_target}" //File system mount target, specific to Lingjun edition<BR>
-        # "isVpcMount": boolean, //Whether it is a VPC mount target, specific to Lingjun edition<BR>
+        # "mountTarget": "${mount_target}" //File system mount target, specific to Lingjun<BR>
+        # "isVpcMount": boolean, //Specifies whether the mount target is a VPC mount target, specific to Lingjun<BR>
         # }<BR>
         # </details>
         self.import_info = import_info
@@ -127,11 +127,11 @@ class GetDatasetResponseBody(DaraModel):
         self.labels = labels
         # The latest version of the dataset.
         self.latest_version = latest_version
-        # The permission when the dataset is mounted. Valid values:
+        # The permission when the dataset is mounted.
         # - RO: read-only mount.
-        # - RW: read-write mount.
+        # - RW: read/write mount.
         self.mount_access = mount_access
-        # The list of workspace role names that have read and write permission on the dataset. IDs starting with PAI are basic role IDs, and IDs starting with role- are custom role IDs. If the list contains "*", all roles have read and write permission.
+        # The list of workspace role names that have read and write permission on the dataset. Role IDs starting with PAI are basic role IDs, and role IDs starting with role- are custom role IDs. If the list contains "*", all roles have read and write permission.
         self.mount_access_read_write_role_id_list = mount_access_read_write_role_id_list
         # The dataset name.
         self.name = name
@@ -152,22 +152,22 @@ class GetDatasetResponseBody(DaraModel):
         self.provider_type = provider_type
         # The request ID.
         self.request_id = request_id
-        # The source relationship of the shared dataset. This field is valid only when IsShared is true.
+        # The source relationship of the shared dataset. This parameter is valid only when IsShared is true.
         self.shared_from = shared_from
         # The sharing configuration of the current dataset.
         self.sharing_config = sharing_config
-        # The source dataset ID of the iTag labeling dataset.
+        # The source dataset ID of the iTAG annotation dataset.
         self.source_dataset_id = source_dataset_id
-        # The source dataset version of the labeling dataset.
+        # The source dataset version of the annotation dataset.
         self.source_dataset_version = source_dataset_version
         # The source ID of the initial version v1. Valid values:
         # - If SourceType is USER, SourceId can be customized.
-        # - If SourceType is ITAG, which indicates a dataset generated from iTAG labeling results, SourceId is the iTAG task ID.
+        # - If SourceType is ITAG, which indicates a dataset generated from iTAG annotation results, SourceId is the iTAG task ID.
         # - If SourceType is PAI_PUBLIC_DATASET, which indicates a dataset created from a PAI public dataset, SourceId is empty by default.
         self.source_id = source_id
         # The source type of the initial version v1.
         self.source_type = source_type
-        # The labeling template of the iTag labeling dataset.
+        # The annotation template of the iTAG annotation dataset.
         self.tag_template_type = tag_template_type
         # The URI of the initial version v1. Example formats:
         # - If the data source type is OSS: `oss://bucket.endpoint/object`.
@@ -412,7 +412,7 @@ class GetDatasetResponseBodySharingConfig(DaraModel):
         self,
         shared_to: List[main_models.DatasetShareRelationship] = None,
     ):
-        # The list of sharing configuration relationships.
+        # The list of sharing configurations.
         self.shared_to = shared_to
 
     def validate(self):

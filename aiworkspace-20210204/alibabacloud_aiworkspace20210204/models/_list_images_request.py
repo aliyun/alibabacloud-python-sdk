@@ -20,77 +20,58 @@ class ListImagesRequest(DaraModel):
         verbose: bool = None,
         workspace_id: str = None,
     ):
-        # The visibility of the image. This parameter is valid only for custom images.
+        # The visibility of the image. Currently only takes effect for custom images.
         # 
-        # - PUBLIC: The image is public.
-        # 
-        # - PRIVATE: The image is private.
+        # - PUBLIC: Public.
+        # - PRIVATE: Private.
         self.accessibility = accessibility
+        # The image URI.
         self.image_uri = image_uri
-        # The filter conditions for labels. Separate multiple conditions with commas (,).
-        # The format for a single filter condition is `Key=Value`.
-        # The supported values for Key are:
+        # The label filter conditions. Separate multiple conditions with commas (,).
+        # The format of a single filter condition is `Key=Value`.
+        # Valid values of Key:
         # 
         # - system.chipType
-        # 
-        # - system.dsw\\.cudaVersion
-        # 
-        # - system.dsw\\.fromImageId
-        # 
-        # - system.dsw\\.fromInstanceId
-        # 
-        # - system.dsw\\.id
-        # 
-        # - system.dsw\\.os
-        # 
-        # - system.dsw\\.osVersion
-        # 
-        # - system.dsw\\.resourceType
-        # 
-        # - system.dsw\\.rootImageId
-        # 
-        # - system.dsw\\.stage
-        # 
-        # - system.dsw\\.tag
-        # 
-        # - system.dsw\\.type
-        # 
+        # - system.dsw.cudaVersion
+        # - system.dsw.fromImageId
+        # - system.dsw.fromInstanceId
+        # - system.dsw.id
+        # - system.dsw.os
+        # - system.dsw.osVersion
+        # - system.dsw.resourceType
+        # - system.dsw.rootImageId
+        # - system.dsw.stage
+        # - system.dsw.tag
+        # - system.dsw.type
         # - system.framework
-        # 
         # - system.origin
-        # 
         # - system.pythonVersion
-        # 
         # - system.source
-        # 
         # - system.supported.dlc
-        # 
         # - system.supported.dsw
         self.labels = labels
-        # The name of the image. Fuzzy search is supported.
+        # The image name. Fuzzy match is supported.
         self.name = name
+        # The options. Currently supports ExactMatchName for exact match search on Name.
         self.options = options
-        # The order in which to sort the results of a paged query. This parameter is used with SortBy. The default value is ASC.
-        # 
-        # - ASC: ascending order.
-        # 
-        # - DESC: descending order.
+        # The sort order for the specified sort field in a paged query. Used together with SortBy. Default value: ASC.
+        # - ASC: Ascending order.
+        # - DESC: Descending order.
         self.order = order
-        # The page number of the image list. The value starts from 1. The default value is 1.
+        # The page number of the image list. Minimum value: 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page for a paged query. The default value is 20.
+        # The number of entries per page for a paged query. Default value: 20.
         self.page_size = page_size
-        # Performs a fuzzy search by image name and description.
+        # Fuzzy searches by image name and description.
         self.query = query
-        # The field to use for sorting in a paged query. Currently, only the GmtCreateTime field is used for sorting.
+        # The sort field for a paged query. Currently, the GmtCreateTime field is used for sorting.
         self.sort_by = sort_by
         # Specifies whether to display non-essential information. Non-essential information currently includes Labels. Valid values:
         # 
         # - true: Includes non-essential information.
-        # 
         # - false: Does not include non-essential information.
         self.verbose = verbose
-        # The workspace ID. For more information about how to obtain a workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
+        # The workspace ID. For information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
         self.workspace_id = workspace_id
 
     def validate(self):

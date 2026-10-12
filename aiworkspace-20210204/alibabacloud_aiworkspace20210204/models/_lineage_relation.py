@@ -11,11 +11,11 @@ class LineageRelation(DaraModel):
         relationship_guid: str = None,
         src_entity_qualified_name: str = None,
     ):
-        # The fully qualified name of the target entity in the relationship.
+        # The unique qualified name of the destination data lineage entity.
         self.dest_entity_qualified_name = dest_entity_qualified_name
-        # The system-assigned unique identifier (GUID) for the relationship.
+        # The globally unique identifier of the data lineage relationship.
         self.relationship_guid = relationship_guid
-        # The fully qualified name of the source entity in the relationship.
+        # The unique qualified name of the source data lineage entity.
         self.src_entity_qualified_name = src_entity_qualified_name
 
     def validate(self):

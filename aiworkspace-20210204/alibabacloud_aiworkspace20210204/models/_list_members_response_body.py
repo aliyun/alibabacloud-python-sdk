@@ -14,11 +14,11 @@ class ListMembersResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of workspace members.
+        # The list of members.
         self.members = members
         # The request ID.
         self.request_id = request_id
-        # Total number of members that match the filter criteria.
+        # The total number of members that meet the filter conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -73,27 +73,24 @@ class ListMembersResponseBodyMembers(DaraModel):
         roles: List[str] = None,
         user_id: str = None,
     ):
-        # Account name of the member.
+        # The account name of the member.
         self.account_name = account_name
-        # Account type. Valid values:
-        # 
-        # - 1: Alibaba Cloud account
-        # 
-        # - 5: RAM user
-        # 
-        # - 6: RAM role
+        # The account type of the member. Valid values:
+        # - 1: Alibaba Cloud account.
+        # - 5: RAM user.
+        # - 6: RAM role.
         self.account_type = account_type
-        # Display name of the member.
+        # The display name of the member.
         self.display_name = display_name
-        # Time when the member was added, in UTC. Format: ISO 8601.
+        # The creation time in UTC. The time follows the ISO 8601 standard.
         self.gmt_create_time = gmt_create_time
-        # Member ID.
+        # The member ID.
         self.member_id = member_id
-        # Username of the member.
+        # The username.
         self.member_name = member_name
-        # Roles assigned to the member.
+        # The list of roles.
         self.roles = roles
-        # Alibaba Cloud account ID of the member.
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

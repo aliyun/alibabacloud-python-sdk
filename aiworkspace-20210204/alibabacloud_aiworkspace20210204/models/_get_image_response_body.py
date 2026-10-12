@@ -26,33 +26,31 @@ class GetImageResponseBody(DaraModel):
         workspace_id: str = None,
     ):
         # The visibility of the image. Valid values:
-        # 
-        # - PUBLIC: All members in the current workspace can perform operations on the image.
-        # 
-        # - PRIVATE: Only the creator can perform operations on the image.
+        # - PUBLIC: All members of the current workspace can access the image.
+        # - PRIVATE: Only the creator can access the image.
         self.accessibility = accessibility
-        # The description of the image.
+        # The image description.
         self.description = description
-        # The time when the image was created. The time is in UTC and the format is ISO 8601.
+        # The creation time of the image in UTC, in ISO 8601 format.
         self.gmt_create_time = gmt_create_time
-        # The time when the image was last modified. The time is in UTC and the format is ISO 8601.
+        # The modification time of the image in UTC, in ISO 8601 format.
         self.gmt_modified_time = gmt_modified_time
-        # The URL of the image, including the version number.
+        # The image address, including the version number.
         self.image_uri = image_uri
-        # A list of image labels. This is an array. Each item in the array contains a Key and a Value field.
-        # Official images have the following label: the key is system.official and the value is true.
+        # The list of image labels. This is an array in which each element contains the Key and Value fields.
+        # Official images have the following label: Key is system.official and Value is true.
         self.labels = labels
-        # The name of the image.
+        # The image name.
         self.name = name
         # The Alibaba Cloud account of the creator.
         self.parent_user_id = parent_user_id
         # The request ID.
         self.request_id = request_id
-        # The size of the image in bytes.
+        # The image size, in bytes.
         self.size = size
-        # The ID of the image source.
+        # The image source ID.
         self.source_id = source_id
-        # The type of the image source.
+        # The image source type.
         self.source_type = source_type
         # The UID of the user who created the image.
         self.user_id = user_id

@@ -30,32 +30,35 @@ class GetDatasetVersionResponseBody(DaraModel):
         user_metrics_endpoints: List[main_models.UserMetricsEndpoint] = None,
         version_name: str = None,
     ):
-        # The data volume.
+        # The data count.
         self.data_count = data_count
         # The dataset size.
         self.data_size = data_size
-        # The data source type.
+        # The data source type. Valid values:
+        # - NAS: File Storage NAS.
+        # - CPFS: Cloud Parallel File Storage.
+        # - OSS: Object Storage Service (OSS).
         # 
         # This parameter is required.
         self.data_source_type = data_source_type
-        # The primary resource ID.
+        # The primary ID of the resource.
         self.dataset_id = dataset_id
         # DatasetTaskRamRole
         self.dataset_task_ram_role = dataset_task_ram_role
         # The version description.
         self.description = description
-        # The creation time.
+        # The creation time. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ss.sssZ format.
         self.gmt_create_time = gmt_create_time
-        # The last modification time.
+        # The last modification time. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ss.sssZ format.
         self.gmt_modified_time = gmt_modified_time
         # The storage import configuration of the dataset. OSS, NAS, and CPFS are supported.
         # 
         # <details>
         # <summary>OSS</summary>
         # {
-        # "region": "${region}",//The region ID.
-        # "bucket": "${bucket}",//The bucket name.
-        # "path": "${path}" //The file path.
+        # "region": "${region}",// The region ID
+        # "bucket": "${bucket}",// The bucket name
+        # "path": "${path}" // The file path
         # }
         # </details>
         # 
@@ -71,32 +74,38 @@ class GetDatasetVersionResponseBody(DaraModel):
         # 
         # 
         # <details>
-        # <summary>Intelligent computing CPFS</summary>
+        # <summary>AI CPFS</summary>
         # Block content
         # </details>
         self.import_info = import_info
-        # The resource labels.
+        # The resource tags.
         self.labels = labels
-        # The permission when the dataset is mounted. Valid values:
-        # - RO: read-only mount
-        # - RW: read and write mount
+        # The permissions when the dataset is mounted. Valid values:
+        # - RO: Read-only mount.
+        # - RW: Read/write mount.
         self.mount_access = mount_access
-        # The extension field.
+        # The extended fields.
         self.options = options
-        # The property of the dataset.
+        # The property of the dataset. Valid values:
+        # - DIRECTORY: Directory.
+        # - FILE: File.
         # 
         # This parameter is required.
         self.property = property
         # Id of the request
         self.request_id = request_id
-        # The dataset source ID.
+        # The source ID of the dataset.
         self.source_id = source_id
-        # The data source type.
+        # The source type. Valid values:
+        # - ENHANCE: Data augmentation.
+        # - ADDVERSION: Added version.
+        # - CLEANING: Data cleaning.
         self.source_type = source_type
         # The URI configuration example.
         # 
         # This parameter is required.
         self.uri = uri
+        # The list of user metric collection endpoints.
         self.user_metrics_endpoints = user_metrics_endpoints
         # The dataset version.
         self.version_name = version_name

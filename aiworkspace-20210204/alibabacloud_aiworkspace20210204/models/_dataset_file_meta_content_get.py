@@ -25,79 +25,59 @@ class DatasetFileMetaContentGet(DaraModel):
         tags: str = None,
         uri: str = None,
     ):
-        # The comment on the file.
+        # The file comment.
         self.comment = comment
-        # The MIME type of the file. It includes a type and a subtype.
+        # The MIME type of the file, which includes the type and subtype.
         self.content_type = content_type
         # The file size in bytes.
         self.data_size = data_size
         # The ID of the dataset file metadata.
         self.dataset_file_meta_id = dataset_file_meta_id
-        # The time when the file was created. The time is in the ISO 8601 format.
+        # The creation time of the file in ISO 8601 format.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.file_create_time = file_create_time
-        # The path of the folder where the OSS, NAS, or CPFS file is located.
+        # The directory path of the OSS, NAS, or CPFS file.
         self.file_dir = file_dir
-        # The fingerprint of the file. This value ensures the uniqueness of the file content. The value changes if the file content is modified. For OSS files, the ETag is used. For NAS files, the MD5 hash is used.
+        # The fingerprint of the file. This value is used to determine the uniqueness of the file content and changes when the file content is modified. The ETag is used for OSS files, and the MD5 value is used for NAS files.
         self.file_finger_print = file_finger_print
         # The file name.
         self.file_name = file_name
-        # The file type. This is the same as the Multipurpose Internet Mail Extensions (MIME) type.
+        # The file type. This is the same as the MIME type.
         self.file_type = file_type
-        # The time when the file was last modified. The time is in the ISO 8601 format.
+        # The last modification time of the file in ISO 8601 format.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.file_update_time = file_update_time
-        # The specific metadata of the file. This metadata cannot be used for retrieval. The format is a JSON string.
+        # The specific metadata of the file in JSON string format. This metadata does not support search capabilities.
         self.meta_attributes = meta_attributes
-        # The ID of the job that builds the semantic index.
+        # The task ID for building the semantic index.
         self.semantic_index_job_id = semantic_index_job_id
         # The time when the semantic index was built.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.semantic_index_update_time = semantic_index_update_time
+        # The status of the file metadata. ACTIVE indicates that the metadata is valid, and DELETED indicates that the metadata is deleted.
         self.status = status
-        # The time when the tag was last modified. The time is in the ISO 8601 format.
+        # The last modification time of the tags in ISO 8601 format.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.tag_update_time = tag_update_time
-        # A collection of tags for the metadata. It includes the following groups:
-        # 
-        # - Algorithm tag group:
-        # 
-        #   - ai: A list of tag names aggregated from all algorithmic tagging tasks for a single metadata record.
-        # 
-        # - User-defined tag group:
-        # 
-        #   - user: A list of tag names that a user adds to a single metadata record.
-        # 
-        #   - user-delete-ai-tags: A list of tag names from the algorithm tag group that the user wants to delete from a single metadata record.
+        # The collection of tags for this metadata, including:
+        # - Algorithm tag groups:
+        #   - ai: A list of tag names summarized from all algorithm tagging tasks for a single metadata entry.
+        # - User-defined tag groups:
+        #   - user: A list of tag names added by the user for a single metadata entry.
+        #   - user-delete-ai-tags: A list of tag names to be deleted by the user from the algorithm tag group for a single metadata entry.
         self.tags = tags
-        # The unique URI of the file. This URI records the unique path of the file. Paths for files in OSS and NAS are supported.
-        # 
+        # The unique URI of the file. This URI records the unique path of the file. File paths in OSS and NAS are supported.
         # <details>
-        # 
-        # <summary>
-        # 
-        # OSS
-        # 
-        # </summary>
-        # 
-        # oss\\://${bucket}/${path}
-        # 
+        # <summary>OSS</summary>
+        # oss://${bucket}/${path}
         # </details>
-        # 
         # <details>
-        # 
-        # <summary>
-        # 
-        # NAS
-        # 
-        # </summary>
-        # 
-        # nas\\://${fileSystemId}/${path}
-        # 
+        # <summary>NAS</summary>
+        # nas://${fileSystemId}/${path}
         # </details>
         self.uri = uri
 

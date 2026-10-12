@@ -14,11 +14,11 @@ class ListImagesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of images.
+        # The image list.
         self.images = images
         # The request ID.
         self.request_id = request_id
-        # The total number of returned images.
+        # The total number of images returned.
         self.total_count = total_count
 
     def validate(self):
@@ -80,34 +80,32 @@ class ListImagesResponseBodyImages(DaraModel):
         workspace_id: str = None,
     ):
         # The visibility of the image. Valid values:
-        # 
-        # - PUBLIC: All members in the current workspace can perform operations on the image.
-        # 
-        # - PRIVATE: Only the creator can perform operations on the image.
+        # - PUBLIC: All members of the current workspace can operate on the image.
+        # - PRIVATE: Only the creator can operate on the image.
         self.accessibility = accessibility
         # The image description.
         self.description = description
-        # The time when the image was created. The time is in UTC and the format is ISO 8601.
+        # The creation time in UTC, in ISO 8601 format.
         self.gmt_create_time = gmt_create_time
-        # The time when the image was last modified. The time is in UTC and the format is ISO 8601.
+        # The modification time in UTC, in ISO 8601 format.
         self.gmt_modified_time = gmt_modified_time
         # The image ID.
         self.image_id = image_id
-        # The image URL, which includes the version number.
+        # The image URI, including the version number.
         self.image_uri = image_uri
-        # The list of image labels.
+        # The image label list.
         self.labels = labels
         # The image name.
         self.name = name
-        # The UID of the Alibaba Cloud account that created the image.
+        # The UID of the Alibaba Cloud account of the creator.
         self.parent_user_id = parent_user_id
-        # The image size in bytes.
+        # The image size, in bytes.
         self.size = size
-        # The ID of the image source.
+        # The image source ID.
         self.source_id = source_id
-        # The type of the image source.
+        # The image source type.
         self.source_type = source_type
-        # The UID of the Alibaba Cloud account that created the image.
+        # The UID of the Alibaba Cloud account of the creator.
         self.user_id = user_id
         # The workspace ID.
         self.workspace_id = workspace_id

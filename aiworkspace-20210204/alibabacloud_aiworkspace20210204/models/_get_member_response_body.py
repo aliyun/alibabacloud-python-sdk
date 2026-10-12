@@ -18,10 +18,11 @@ class GetMemberResponseBody(DaraModel):
         roles: List[str] = None,
         user_id: str = None,
     ):
+        # The account type of the member. Valid values: 1: primary account. 5: sub-account. 6: role account.
         self.account_type = account_type
         # The display name of the member.
         self.display_name = display_name
-        # The time when the member was created. The time is in Coordinated Universal Time (UTC) and the format is ISO 8601.
+        # The creation time in UTC, in ISO 8601 format.
         self.gmt_create_time = gmt_create_time
         # The member ID.
         self.member_id = member_id

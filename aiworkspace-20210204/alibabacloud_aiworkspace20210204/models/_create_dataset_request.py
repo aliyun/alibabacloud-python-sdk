@@ -18,6 +18,7 @@ class CreateDatasetRequest(DaraModel):
         data_type: str = None,
         dataset_task_ram_role: str = None,
         description: str = None,
+        dry_run: bool = None,
         edition: str = None,
         import_info: str = None,
         labels: List[main_models.Label] = None,
@@ -38,139 +39,139 @@ class CreateDatasetRequest(DaraModel):
         version_labels: List[main_models.Label] = None,
         workspace_id: str = None,
     ):
-        # The visibility of the workspace. Valid values:
-        # - PRIVATE (default): visible only to yourself and administrators within the workspace.
-        # - PUBLIC: visible to all users in the workspace.
-        # - ROLE_PUBLIC: visible to specified workspace roles. For the role list, refer to AccessibleRoleIdList. Under this condition, the dataset owner and administrators always have visibility.
+        # The workspace visibility. Valid values:
+        # - PRIVATE: Visible only to the creator and administrators in the workspace. This is the default value.
+        # - PUBLIC: Visible to all users in the workspace.
+        # - ROLE_PUBLIC: Visible to specified workspace roles. For the role list, refer to AccessibleRoleIdList. The dataset owner and administrators always have visibility regardless of the specified roles.
         self.accessibility = accessibility
-        # Takes effect when Accessibility is set to ROLE_PUBLIC. The list of workspace role names that can view the dataset. IDs starting with PAI are basic role IDs, and IDs starting with role- are custom role IDs.
+        # Takes effect only when Accessibility is set to ROLE_PUBLIC. The list of workspace role names that have visibility to the dataset. Role IDs starting with PAI are basic role IDs, and those starting with role- are custom role IDs.
         self.accessible_role_id_list = accessible_role_id_list
         # The number of files in the dataset.
         self.data_count = data_count
-        # The size of space occupied by the dataset files. Unit: bytes.
+        # The storage space occupied by the dataset files. Unit: bytes.
         self.data_size = data_size
         # The data source type. Valid values:
         # - OSS: Alibaba Cloud Object Storage Service (OSS).
-        # - NAS: Alibaba Cloud Apsara File Storage NAS General Purpose.
-        # - EXTREMENAS: Alibaba Cloud Apsara File Storage NAS Extreme.
-        # - CPFS: Alibaba Cloud Cloud Parallel File Storage (CPFS) General Purpose.
-        # - BMCPFS: Alibaba Cloud Cloud Parallel File Storage (CPFS) AI Edition. 
+        # - NAS: Alibaba Cloud File Storage NAS (General-purpose).
+        # - EXTREMENAS: Alibaba Cloud File Storage NAS (Extreme).
+        # - CPFS: Alibaba Cloud Cloud Paralleled File System (CPFS) (General-purpose).
+        # - BMCPFS: Alibaba Cloud Cloud Paralleled File System (CPFS) (AI-optimized). 
         # - MAXCOMPUTE: Alibaba Cloud MaxCompute.
-        # - URL: public HTTP/HTTPS URL.
+        # - URL: A public HTTP or HTTPS URL.
         # 
         # This parameter is required.
         self.data_source_type = data_source_type
         # The data type of the dataset. Default value: COMMON. Valid values:
-        # - COMMON: common.
-        # - PIC: image.
-        # - TEXT: text.
-        # - VIDEO: video.
-        # - AUDIO: audio.
+        # - COMMON: Common data.
+        # - PIC: Image data.
+        # - TEXT: Text data.
+        # - VIDEO: Video data.
+        # - AUDIO: Audio data.
         self.data_type = data_type
         # DatasetTaskRamRole
         self.dataset_task_ram_role = dataset_task_ram_role
-        # The custom description of the dataset to distinguish it from other datasets.
+        # The custom description of the dataset, which is used to distinguish it from other datasets.
         self.description = description
-        # The dataset type. Default value: BASIC. Valid values:
-        # 
-        # - BASIC: basic. Does not support dataset file metadata management.
-        # - ADVANCED: advanced. Only supported for OSS type. Each version supports up to 1 million file metadata entries.
-        # - LOGICAL: logical. Only supported for OSS type. Each version supports up to 3 million file metadata entries.
+        # Specifies whether to perform only a dry run without actually creating the dataset.
+        self.dry_run = dry_run
+        # The dataset edition. Default value: BASIC. Valid values:
+        # - BASIC: Basic edition. Does not support file metadata management for the dataset.
+        # - ADVANCED: Advanced edition. Only OSS datasets are supported. Each version supports metadata management for up to 1 million files.
+        # - LOGICAL: Logical edition. Only OSS datasets are supported. Each version supports metadata management for up to 3 million files.
         self.edition = edition
         # The storage import configuration of the dataset. OSS, NAS, and CPFS are supported.
         # 
         # <details>
         # <summary>OSS</summary>
         # {<BR>
-        # "region": "${region}",//Region ID<BR>
-        # "bucket": "${bucket}",//Bucket name<BR>
-        # "path": "${path}" //File path<BR>
+        # "region": "${region}",// The region ID.<BR>
+        # "bucket": "${bucket}",// The bucket name.<BR>
+        # "path": "${path}" // The file path.<BR>
         # }<BR>
         # </details>
         # 
         # <details>
         # <summary>NAS</summary>
         # {<BR>
-        # "region": "${region}",//Region ID<BR>
-        # "fileSystemId": "${file_system_id}", //File system ID<BR>
-        # "path": "${path}", //File system path<BR>
-        # "mountTarget": "${mount_target}" //File system mount target<BR>
+        # "region": "${region}",// The region ID.<BR>
+        # "fileSystemId": "${file_system_id}", // The file system ID.<BR>
+        # "path": "${path}", // The file system path.<BR>
+        # "mountTarget": "${mount_target}" // The mount target of the file system.<BR>
         # }<BR>
         # </details>
         # 
         # <details>
         # <summary>CPFS</summary>
         # {<BR>
-        # "region": "${region}",//Region ID<BR>
-        # "fileSystemId": "${file_system_id}", //File system ID<BR>
-        # "protocolServiceId":"${protocol_service_id}", //File system protocol service<BR>
-        # "exportId": "${export_id}", //File system export directory<BR>
-        # "path": "${path}", //File system path<BR>
+        # "region": "${region}",// The region ID.<BR>
+        # "fileSystemId": "${file_system_id}", // The file system ID.<BR>
+        # "protocolServiceId":"${protocol_service_id}", // The protocol service of the file system.<BR>
+        # "exportId": "${export_id}", // The export directory of the file system.<BR>
+        # "path": "${path}", // The file system path.<BR>
         # }<BR>
         # </details>
         # 
         # <details>
-        # <summary>AI Edition CPFS</summary>
+        # <summary>AI-optimized CPFS</summary>
         # {<BR>
-        # "region": "${region}",//Region ID<BR>
-        # "fileSystemId": "${file_system_id}", //File system ID<BR>
-        # "path": "${path}", //File system path<BR>
-        # "mountTarget": "${mount_target}" //File system mount target, specific to AI Edition<BR>
-        # "isVpcMount": boolean, //Whether it is a VPC mount target, specific to AI Edition<BR>
+        # "region": "${region}",// The region ID.<BR>
+        # "fileSystemId": "${file_system_id}", // The file system ID.<BR>
+        # "path": "${path}", // The file system path.<BR>
+        # "mountTarget": "${mount_target}", // The mount target of the file system. Specific to the AI-optimized edition.<BR>
+        # "isVpcMount": boolean, // Specifies whether the mount target is a VPC mount target. Specific to the AI-optimized edition.<BR>
         # }<BR>
         # </details>
         self.import_info = import_info
         # The list of labels.
         self.labels = labels
-        # The list of workspace role names that have read and write permissions when the dataset is mounted. IDs starting with PAI are basic role IDs, and IDs starting with role- are custom role IDs. If the list contains "*", all roles have read and write permissions.
+        # The list of workspace role names that have read and write permissions when the dataset is mounted. Role IDs starting with PAI are basic role IDs, and those starting with role- are custom role IDs. If the list contains an asterisk (*), all roles have read and write permissions.
         # - Specified roles: ["PAI.AlgoOperator", "role-hiuwpd01ncrokkgp21"]
-        # - All accounts: ["*"]
+        # - All roles: ["*"]
         # - Dataset creator only: []
         self.mount_access_read_write_role_id_list = mount_access_read_write_role_id_list
-        # The name of the dataset. Naming rules:
-        # - Must start with a lowercase letter, uppercase letter, digit, or Chinese character.
-        # - Can contain underscores (_) or hyphens (-).
-        # - Must be 1 to 127 characters in length.
+        # The name of the dataset. The naming rules are as follows:
+        # - The name must start with a lowercase letter, an uppercase letter, a digit, or a Chinese character.
+        # - The name can contain underscores (_) and hyphens (-).
+        # - The name must be 1 to 127 characters in length.
         # 
         # This parameter is required.
         self.name = name
-        # The extended field in JsonString format.
-        # When DLC uses the dataset, you can specify the default mount path of the dataset by configuring the mountPath field.
+        # The extended fields in JSON string format. When DLC uses the dataset, you can configure the mountPath field to specify the default mount path of the dataset.
         self.options = options
         # The property of the dataset. Valid values:
-        # - FILE: file.
-        # - DIRECTORY: folder.
+        # - FILE: File.
+        # - DIRECTORY: Directory.
         # 
         # This parameter is required.
         self.property = property
-        # The dataset provider. Cannot be set to pai.
+        # The provider of the dataset. You cannot set this parameter to pai.
         self.provider = provider
-        # The data source provider type of the dataset. Valid values:
-        # - Ecs (default)
-        # - Lingjun
+        # The data source type of the dataset. Valid values:
+        # - Ecs: Elastic Compute Service (ECS). This is the default value.
+        # - Lingjun: Lingjun.
         self.provider_type = provider_type
-        # The source dataset ID of the annotation dataset.
+        # The ID of the source dataset from which the labeled dataset is generated.
         self.source_dataset_id = source_dataset_id
-        # The source dataset version of the annotation dataset.
+        # The version of the source dataset from which the labeled dataset is generated.
         self.source_dataset_version = source_dataset_version
-        # The data source ID.
-        # - If SourceType is USER, SourceId can be customized.
-        # - If SourceType is ITAG, which indicates a dataset generated from iTAG annotation results, SourceId is the iTAG task ID.
-        # - If SourceType is PAI_PUBLIC_DATASET, which indicates a dataset created from a PAI public dataset, SourceId is empty by default.
+        # The ID of the data source.
+        # - When SourceType is set to USER, SourceId can be customized.
+        # - When SourceType is set to ITAG, which indicates that the dataset is generated from the labeling results of the iTAG module, SourceId is the iTAG task ID.
+        # - When SourceType is set to PAI_PUBLIC_DATASET, which indicates that the dataset is created from a PAI public dataset, SourceId is empty by default.
         self.source_id = source_id
         # The data source type. Default value: USER.
         self.source_type = source_type
-        # Examples of Uri configurations:
+        # The URI configuration examples are as follows:
         # - If the data source type is OSS: `oss://bucket.endpoint/object`
         # - If the data source type is NAS:
-        # General Purpose NAS format: `nas://<nasfisid>.region/subpath/to/dir/`;
-        # CPFS 1.0: `nas://<cpfs-fsid>.region/subpath/to/dir/`;
-        # CPFS 2.0: `nas://<cpfs-fsid>.region/<protocolserviceid>/`.
-        # CPFS 1.0 and CPFS 2.0 are distinguished by the fsid format: CPFS 1.0 format is cpfs-<8 ASCII characters>; CPFS 2.0 format is cpfs-<16 ASCII characters>.
+        # For general-purpose NAS, the format is `nas://<nasfisid>.region/subpath/to/dir/`.
+        # For CPFS 1.0, the format is `nas://<cpfs-fsid>.region/subpath/to/dir/`.
+        # For CPFS 2.0, the format is `nas://<cpfs-fsid>.region/<protocolserviceid>/`.
+        # CPFS 1.0 and CPFS 2.0 are distinguished by the format of the fsid: the format for CPFS 1.0 is cpfs-<8 ASCII characters>, and the format for CPFS 2.0 is cpfs-<16 ASCII characters>.
         # 
         # This parameter is required.
         self.uri = uri
-        # The Alibaba Cloud account ID of the dataset owner. Workspace owners and administrators have permissions to create datasets for specified workspace members.
+        # The Alibaba Cloud account ID of the dataset owner. The workspace owner and administrators have the permissions to create datasets for specified workspace members.
         self.user_id = user_id
         # UserMetricsEndpoints
         self.user_metrics_endpoints = user_metrics_endpoints
@@ -178,8 +179,8 @@ class CreateDatasetRequest(DaraModel):
         self.version_description = version_description
         # The list of labels for the initial version.
         self.version_labels = version_labels
-        # The ID of the workspace where the dataset resides. For information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
-        # If this parameter is not specified, the default workspace is used. If the default workspace does not exist, an error is returned.
+        # The ID of the workspace to which the dataset belongs. For more information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
+        # If you do not configure this parameter, the default workspace is used. If the default workspace does not exist, an error is reported.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -224,6 +225,9 @@ class CreateDatasetRequest(DaraModel):
 
         if self.description is not None:
             result['Description'] = self.description
+
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
 
         if self.edition is not None:
             result['Edition'] = self.edition
@@ -315,6 +319,9 @@ class CreateDatasetRequest(DaraModel):
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
 
         if m.get('Edition') is not None:
             self.edition = m.get('Edition')

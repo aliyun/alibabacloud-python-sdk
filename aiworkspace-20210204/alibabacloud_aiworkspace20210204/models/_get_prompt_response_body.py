@@ -21,17 +21,17 @@ class GetPromptResponseBody(DaraModel):
         # - PUBLIC: All members in the current workspace can access the prompt.
         # - PRIVATE: Only the creator can access the prompt.
         self.accessibility = accessibility
-        # The creation time.
+        # The creation time in UTC, formatted as YYYY-MM-DDTHH:mm:ssZ in the ISO 8601 standard.
         self.create_time = create_time
-        # The prompt description.
+        # The description of the prompt.
         self.description = description
-        # The prompt content.
+        # The content of the prompt.
         self.framework_content = framework_content
-        # The prompt template framework type.
+        # The framework type of the prompt template.
         self.framework_type = framework_type
-        # The modification time.
+        # The modification time in UTC, formatted as YYYY-MM-DDTHH:mm:ssZ in the ISO 8601 standard.
         self.modify_time = modify_time
-        # The prompt name.
+        # The name of the prompt.
         self.prompt_name = prompt_name
         # The request ID.
         self.request_id = request_id

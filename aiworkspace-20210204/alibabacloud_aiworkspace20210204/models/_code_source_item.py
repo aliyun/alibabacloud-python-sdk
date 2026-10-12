@@ -23,27 +23,27 @@ class CodeSourceItem(DaraModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
-        # The visibility of the code source configuration.
+        # The visibility of the code configuration.
         self.accessibility = accessibility
         # The clone mode. Valid values:
-        # - 0: Create a new subdirectory.
+        # - 0: Create a subdirectory.
         # - 1: Tile to the current directory.
         self.clone_type = clone_type
         # The code branch.
         self.code_branch = code_branch
         # The code commit ID.
         self.code_commit = code_commit
-        # The code repository URL.
+        # The address of the code repository.
         self.code_repo = code_repo
-        # The token used as the access code for the code repository.
+        # The token used to access code in the repository.
         self.code_repo_access_token = code_repo_access_token
-        # The username used as the access code for the code repository.
+        # The username used to access code in the repository.
         self.code_repo_user_name = code_repo_user_name
-        # The code source configuration ID.
+        # The code configuration ID.
         self.code_source_id = code_source_id
         # The detailed description.
         self.description = description
-        # The display name of the code source configuration.
+        # The name of the code source configuration.
         self.display_name = display_name
         # The creation time.
         self.gmt_create_time = gmt_create_time
@@ -51,7 +51,7 @@ class CodeSourceItem(DaraModel):
         self.gmt_modify_time = gmt_modify_time
         # The local mount path of the code.
         self.mount_path = mount_path
-        # The creator ID.
+        # The ID of the creator.
         self.user_id = user_id
         # The workspace ID.
         self.workspace_id = workspace_id

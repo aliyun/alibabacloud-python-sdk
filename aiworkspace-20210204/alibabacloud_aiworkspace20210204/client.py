@@ -63,27 +63,7 @@ class Client(OpenApiClient):
             'eu-west-1-oxs': 'aiworkspace.aliyuncs.com',
             'me-east-1': 'aiworkspace.aliyuncs.com',
             'rus-west-1-pop': 'aiworkspace.aliyuncs.com',
-            'cn-wulanchabu': 'aiworkspace.cn-wulanchabu.aliyuncs.com',
-            'cn-shenzhen': 'aiworkspace.cn-shenzhen.aliyuncs.com',
-            'cn-shanghai': 'aiworkspace.cn-shanghai.aliyuncs.com',
-            'cn-hongkong': 'aiworkspace.cn-hongkong.aliyuncs.com',
-            'cn-heyuan': 'aiworkspace.cn-heyuan.aliyuncs.com',
-            'cn-hangzhou': 'aiworkspace.cn-hangzhou.aliyuncs.com',
-            'cn-guangzhou': 'aiworkspace.cn-guangzhou.aliyuncs.com	',
-            'cn-beijing': 'aiworkspace.cn-beijing.aliyuncs.com',
-            'ap-southeast-8': 'aiworkspace.ap-southeast-8.aliyuncs.com',
-            'ap-southeast-7': 'aiworkspace.ap-southeast-7.aliyuncs.com',
-            'ap-southeast-3': 'aiworkspace.ap-southeast-3.aliyuncs.com',
-            'ap-southeast-1': 'aiworkspace.ap-southeast-1.aliyuncs.com',
-            'ap-northeast-2': 'aiworkspace.ap-northeast-2.aliyuncs.com',
-            'ap-northeast-1': 'aiworkspace.ap-northeast-1.aliyuncs.com',
-            'eu-central-1': 'aiworkspace.eu-central-1.aliyuncs.com',
-            'na-south-1': 'aiworkspace.na-south-1.aliyuncs.com',
-            'us-east-1': 'aiworkspace.us-east-1.aliyuncs.com',
-            'us-southeast-1': 'aiworkspace.us-southeast-1.aliyuncs.com',
-            'us-west-1': 'aiworkspace.us-west-1.aliyuncs.com',
-            'ap-south-1': 'aiworkspace.ap-south-1.aliyuncs.com',
-            'cn-shanghai-finance-1': 'aiworkspace.cn-shanghai-finance-1.aliyuncs.com'
+            'cn-guangzhou': 'aiworkspace.cn-guangzhou.aliyuncs.com	'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('aiworkspace', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -792,6 +772,8 @@ class Client(OpenApiClient):
             body['DatasetTaskRamRole'] = request.dataset_task_ram_role
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
+        if not DaraCore.is_null(request.dry_run):
+            body['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.edition):
             body['Edition'] = request.edition
         if not DaraCore.is_null(request.import_info):
@@ -874,6 +856,8 @@ class Client(OpenApiClient):
             body['DatasetTaskRamRole'] = request.dataset_task_ram_role
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
+        if not DaraCore.is_null(request.dry_run):
+            body['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.edition):
             body['Edition'] = request.edition
         if not DaraCore.is_null(request.import_info):
@@ -1327,6 +1311,8 @@ class Client(OpenApiClient):
             body['DatasetTaskRamRole'] = request.dataset_task_ram_role
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
+        if not DaraCore.is_null(request.dry_run):
+            body['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.import_info):
             body['ImportInfo'] = request.import_info
         if not DaraCore.is_null(request.labels):
@@ -1382,6 +1368,8 @@ class Client(OpenApiClient):
             body['DatasetTaskRamRole'] = request.dataset_task_ram_role
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
+        if not DaraCore.is_null(request.dry_run):
+            body['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.import_info):
             body['ImportInfo'] = request.import_info
         if not DaraCore.is_null(request.labels):
