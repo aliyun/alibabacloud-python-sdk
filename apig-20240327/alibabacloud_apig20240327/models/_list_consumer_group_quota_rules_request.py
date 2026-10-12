@@ -12,9 +12,13 @@ class ListConsumerGroupQuotaRulesRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The ID of the gateway. This parameter is optional. If specified, the results are filtered by the exact gateway ID.
         self.gateway_id = gateway_id
+        # The keyword for the rule name. This parameter is optional. If specified, the results are filtered by fuzzy match on the rule name.
         self.keyword = keyword
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10. Valid values: 1 to 500.
         self.page_size = page_size
 
     def validate(self):

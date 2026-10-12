@@ -54,7 +54,7 @@ class UpdateHttpApiRequest(DaraModel):
         self.remove_base_path_on_forward = remove_base_path_on_forward
         # The API versioning configuration.
         self.version_config = version_config
-        # The idempotent request identifier. If you call this operation for the same HTTP API with the same clientToken value and request parameters, the result of the first successful call is returned.
+        # The idempotency token. If you call this operation for the same HTTP API by using the same clientToken value and request parameters, the result of the first successful call is returned.
         self.client_token = client_token
         # Specifies whether to perform only a dry run. If this parameter is set to true, all synchronous validations identical to an actual update are performed, but no configurations are updated and no side effects are produced. If this parameter is not specified or is set to false, the behavior is the same as the existing version.
         self.dry_run = dry_run

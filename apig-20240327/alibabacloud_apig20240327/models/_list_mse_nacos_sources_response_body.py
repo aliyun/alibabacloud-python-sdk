@@ -15,11 +15,11 @@ class ListMseNacosSourcesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code.
+        # The response status code.
         self.code = code
-        # The returned data.
+        # The response data.
         self.data = data
-        # The response message returned.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id

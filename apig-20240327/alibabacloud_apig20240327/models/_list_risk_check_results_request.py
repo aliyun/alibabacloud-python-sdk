@@ -12,9 +12,13 @@ class ListRiskCheckResultsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The maximum number of entries to return in this request.
         self.max_results = max_results
+        # The pagination token.
         self.next_token = next_token
+        # The page number. Default value: 1 (DefaultPageNumber).
         self.page_number = page_number
+        # The number of entries per page. Default value: 10 (DefaultPageSize).
         self.page_size = page_size
 
     def validate(self):

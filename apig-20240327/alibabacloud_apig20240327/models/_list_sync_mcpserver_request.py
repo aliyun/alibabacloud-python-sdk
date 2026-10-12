@@ -11,8 +11,11 @@ class ListSyncMCPServerRequest(DaraModel):
         namespace: str = None,
         source_id: str = None,
     ):
+        # The AI gateway ID. This parameter is required. If this parameter is not specified, the API returns InvalidParameter.IsEmpty(400).
         self.gateway_id = gateway_id
+        # The Nacos namespace ID. This parameter is required. If this parameter is not specified, the API returns InvalidParameter.IsEmpty(400).
         self.namespace = namespace
+        # The Nacos service source ID. In a single Nacos source scenario, this parameter can be omitted because the server automatically populates the unique source. In a multi-Nacos source scenario, this parameter is required. Otherwise, a parameter error indicating that sourceId is empty is returned. If the gateway has no Nacos source, the error ErrServiceSourceNotFound is returned.
         self.source_id = source_id
 
     def validate(self):

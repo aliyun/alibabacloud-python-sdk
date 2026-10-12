@@ -21,11 +21,11 @@ class HiMarketAuthCodeConfig(DaraModel):
         self.authorization_endpoint = authorization_endpoint
         # The OAuth2 client ID.
         self.client_id = client_id
-        # The OAuth2 client secret. The secret is AES-encrypted when stored.
+        # The OAuth2 client secret, which is AES-encrypted when stored.
         self.client_secret = client_secret
         # The OIDC issuer URL.
         self.issuer = issuer
-        # The JWKS public key set URI, used for token signature verification.
+        # The JWKS public key set URI, which is used for token signature verification.
         self.jwk_set_uri = jwk_set_uri
         # The OAuth2 callback URL.
         self.redirect_uri = redirect_uri

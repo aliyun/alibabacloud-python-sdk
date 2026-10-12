@@ -15,9 +15,13 @@ class GetBatchImportTaskResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response status code.
         self.code = code
+        # The response data.
         self.data = data
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -72,13 +76,21 @@ class GetBatchImportTaskResponseBodyData(DaraModel):
         task_type: str = None,
         total_count: int = None,
     ):
+        # The time when the task was created. The time is in UTC and follows the RFC 3339 format.
         self.create_time = create_time
+        # The error message.
         self.error_message = error_message
+        # The number of processed items.
         self.processed_count = processed_count
+        # The task result details.
         self.result = result
+        # The task status. Valid values: Pending, Running, Success, PartialSuccess, and Failed.
         self.status = status
+        # The task ID.
         self.task_id = task_id
+        # The task type.
         self.task_type = task_type
+        # The total count.
         self.total_count = total_count
 
     def validate(self):
@@ -156,12 +168,19 @@ class GetBatchImportTaskResponseBodyDataResult(DaraModel):
         import_request: main_models.GetBatchImportTaskResponseBodyDataResultImportRequest = None,
         success_items: List[main_models.GetBatchImportTaskResponseBodyDataResultSuccessItems] = None,
     ):
+        # The API type.
         self.api_type = api_type
+        # Indicates whether the task is in dry run mode.
         self.dry_run = dry_run
+        # The list of dry run results.
         self.dry_run_results = dry_run_results
+        # The list of APIs that failed to be processed.
         self.failure_items = failure_items
+        # The gateway instance ID.
         self.gateway_id = gateway_id
+        # The formal import request body. This field is returned only for dry run tasks and can be resubmitted as the request body of BatchImportHttpApis. The dryRun parameter is fixed to false. Temporary specFileUrl values are still subject to URL expiration constraints.
         self.import_request = import_request
+        # The list of successfully processed APIs.
         self.success_items = success_items
 
     def validate(self):
@@ -257,9 +276,13 @@ class GetBatchImportTaskResponseBodyDataResultSuccessItems(DaraModel):
         error_message: str = None,
         file_name: str = None,
     ):
+        # The ID of the API.
         self.api_id = api_id
+        # The API name. The value unknown is returned if the name cannot be identified.
         self.api_name = api_name
+        # The error message.
         self.error_message = error_message
+        # The file name.
         self.file_name = file_name
 
     def validate(self):
@@ -313,14 +336,23 @@ class GetBatchImportTaskResponseBodyDataResultImportRequest(DaraModel):
         strategy: str = None,
         with_gateway_extension: bool = None,
     ):
+        # Specifies whether to allow overwriting existing APIs.
         self.allow_update = allow_update
+        # The API type.
         self.api_type = api_type
+        # Specifies whether the request is in dry run mode. This parameter is fixed to false in the formal import request body.
         self.dry_run = dry_run
+        # The gateway instance ID.
         self.gateway_id = gateway_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The download URL of the OAS ZIP file, which is consistent with the dry run request.
         self.spec_file_url = spec_file_url
+        # The OSS configuration of the OAS file, which is consistent with the dry run request.
         self.spec_oss_config = spec_oss_config
+        # The conflict merge strategy used during import.
         self.strategy = strategy
+        # Specifies whether to import with gateway extension configurations.
         self.with_gateway_extension = with_gateway_extension
 
     def validate(self):
@@ -400,8 +432,11 @@ class GetBatchImportTaskResponseBodyDataResultImportRequestSpecOssConfig(DaraMod
         object_key: str = None,
         region_id: str = None,
     ):
+        # The name of the OSS bucket.
         self.bucket_name = bucket_name
+        # The object key of the specification file in the OSS bucket.
         self.object_key = object_key
+        # The region ID of the OSS bucket.
         self.region_id = region_id
 
     def validate(self):
@@ -444,9 +479,13 @@ class GetBatchImportTaskResponseBodyDataResultFailureItems(DaraModel):
         error_message: str = None,
         file_name: str = None,
     ):
+        # The ID of the API.
         self.api_id = api_id
+        # The API name. The value unknown is returned if the name cannot be identified.
         self.api_name = api_name
+        # The error message.
         self.error_message = error_message
+        # The file name.
         self.file_name = file_name
 
     def validate(self):
@@ -495,9 +534,13 @@ class GetBatchImportTaskResponseBodyDataResultDryRunResults(DaraModel):
         error: str = None,
         file_name: str = None,
     ):
+        # The API name. The value unknown is returned if the name cannot be identified.
         self.api_name = api_name
+        # The dry run details, including the operations, routes, components, and error or warning messages planned for creation or update in this file.
         self.dry_run_info = dry_run_info
+        # The dry run error message.
         self.error = error
+        # The file name.
         self.file_name = file_name
 
     def validate(self):
@@ -553,14 +596,23 @@ class GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfo(DaraModel)
         success_routes: List[main_models.GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoSuccessRoutes] = None,
         warning_messages: List[str] = None,
     ):
+        # The list of dry run error messages.
         self.error_messages = error_messages
+        # The basic information about the existing HTTP API matched during import.
         self.exist_http_api_info = exist_http_api_info
+        # The list of data structures that failed the dry run.
         self.failure_components = failure_components
+        # The list of REST API operations that failed the dry run.
         self.failure_operations = failure_operations
+        # The list of routes that failed the dry run.
         self.failure_routes = failure_routes
+        # The list of data structures that passed the dry run.
         self.success_components = success_components
+        # The list of REST API operations that passed the dry run.
         self.success_operations = success_operations
+        # The list of routes that passed the dry run.
         self.success_routes = success_routes
+        # The list of dry run warning messages.
         self.warning_messages = warning_messages
 
     def validate(self):
@@ -693,7 +745,9 @@ class GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoSuccessRout
         action: str = None,
         name: str = None,
     ):
+        # The action type to be performed after the dry run.
         self.action = action
+        # The name of the route.
         self.name = name
 
     def validate(self):
@@ -730,9 +784,13 @@ class GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoSuccessOper
         name: str = None,
         path: str = None,
     ):
+        # The action type to be performed after the dry run.
         self.action = action
+        # The HTTP method of the REST API operation.
         self.method = method
+        # The name of the REST API operation.
         self.name = name
+        # The path of the REST API operation.
         self.path = path
 
     def validate(self):
@@ -779,7 +837,9 @@ class GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoSuccessComp
         action: str = None,
         name: str = None,
     ):
+        # The action type to be performed after the dry run.
         self.action = action
+        # The name of the data structure.
         self.name = name
 
     def validate(self):
@@ -814,7 +874,9 @@ class GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoFailureRout
         error_message: str = None,
         name: str = None,
     ):
+        # The reason why the dry run failed.
         self.error_message = error_message
+        # The name of the route.
         self.name = name
 
     def validate(self):
@@ -850,8 +912,11 @@ class GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoFailureOper
         method: str = None,
         path: str = None,
     ):
+        # The reason why the dry run failed.
         self.error_message = error_message
+        # The HTTP method of the REST API operation.
         self.method = method
+        # The path of the REST API operation.
         self.path = path
 
     def validate(self):
@@ -892,7 +957,9 @@ class GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoFailureComp
         error_message: str = None,
         name: str = None,
     ):
+        # The reason why the dry run failed.
         self.error_message = error_message
+        # The name of the data structure.
         self.name = name
 
     def validate(self):
@@ -931,11 +998,17 @@ class GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoExistHttpAp
         type: str = None,
         version_info: main_models.GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoExistHttpApiInfoVersionInfo = None,
     ):
+        # The base path of the API.
         self.base_path = base_path
+        # The gateway instance ID.
         self.gateway_id = gateway_id
+        # The ID of the HTTP API.
         self.http_api_id = http_api_id
+        # The name of the API.
         self.name = name
+        # The API type.
         self.type = type
+        # The API versioning information.
         self.version_info = version_info
 
     def validate(self):
@@ -999,10 +1072,15 @@ class GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoExistHttpAp
         scheme: str = None,
         version: str = None,
     ):
+        # Indicates whether versioning is enabled.
         self.enable = enable
+        # The key in the specified header parameter when the header versioning scheme is used.
         self.header_name = header_name
+        # The key in the specified query parameter when the query versioning scheme is used.
         self.query_name = query_name
+        # The versioning scheme.
         self.scheme = scheme
+        # The version number.
         self.version = version
 
     def validate(self):

@@ -21,18 +21,31 @@ class ListGlobalPoliciesRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The attached resource type to filter by. This parameter takes effect only when globalPolicyType is set to BlackOrWhite. If this parameter is not specified, Gateway, Domain, and Route resources are queried.
         self.attach_resource_type = attach_resource_type
+        # The policy class name. Separate multiple values with commas (server-side strings.Split).
         self.class_name = class_name
+        # The enabling status to filter by.
         self.enable = enable
+        # The environment ID to filter by.
         self.environment_id = environment_id
+        # The gateway ID to filter by (attachment dimension).
         self.gateway_id = gateway_id
+        # The global policy type.
         self.global_policy_type = global_policy_type
+        # The IP content to filter by. A LIKE match is performed on the config field.
         self.ip_access_control_content = ip_access_control_content
+        # The protocol layer to filter by. L4 queries config entries that contain L4. L7 queries config entries that do not contain L4.
         self.ip_access_control_protocol_layer = ip_access_control_protocol_layer
+        # The resource name to filter by. A LIKE match is performed on the config field.
         self.ip_access_control_resource_name = ip_access_control_resource_name
+        # The IP access control type to filter by. A LIKE match is performed on the config field.
         self.ip_access_control_type = ip_access_control_type
+        # The exact policy name to filter by.
         self.name = name
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):

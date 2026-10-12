@@ -18,33 +18,33 @@ class ListPluginsRequest(DaraModel):
         plugin_class_name: str = None,
         with_attachment_info: bool = None,
     ):
-        # The ID of the attached resource.
+        # The ID of the mounted resource.
         self.attach_resource_id = attach_resource_id
-        # The type of the attachment point supported by the policy.
+        # The type of mount point supported by the policy.
         # 
         # - HttpApi: HttpApi.
         # - Operation: Operation of HttpApi.
-        # - GatewayRoute: gateway route.
-        # - GatewayService: gateway service.
-        # - GatewayServicePort: gateway service port.
-        # - Domain: gateway domain name.
-        # - Gateway: gateway.
+        # - GatewayRoute: Gateway route.
+        # - GatewayService: Gateway service.
+        # - GatewayServicePort: Gateway service port.
+        # - Domain: Gateway domain name.
+        # - Gateway: Gateway.
         self.attach_resource_type = attach_resource_type
         # The ID of the gateway instance used to filter results.
         self.gateway_id = gateway_id
         # The gateway type used to filter results. Valid values: **AI** and **API**.
         self.gateway_type = gateway_type
-        # Specifies whether the response includes built-in AI plugins installed by the system. Default value: false.
+        # Specifies whether the response includes built-in AI plug-ins installed by the system. Default value: false.
         self.include_builtin_ai_gateway = include_builtin_ai_gateway
         # The page number.
         self.page_number = page_number
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the plugin type used to filter results.
+        # The ID of the plug-in type used to filter results.
         self.plugin_class_id = plugin_class_id
-        # The name of the plugin type used to filter results.
+        # The name of the plug-in type used to filter results.
         self.plugin_class_name = plugin_class_name
-        # Specifies whether the response includes the plugin attachment information corresponding to attachResourceId.
+        # Specifies whether the response includes the plug-in mounting information corresponding to attachResourceId.
         self.with_attachment_info = with_attachment_info
 
     def validate(self):

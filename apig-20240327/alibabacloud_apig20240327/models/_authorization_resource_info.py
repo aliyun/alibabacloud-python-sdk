@@ -11,11 +11,11 @@ class AuthorizationResourceInfo(DaraModel):
         parent_resource_id: str = None,
         resource_id: str = None,
     ):
-        # Environment ID.
+        # The environment ID.
         self.environment_id = environment_id
-        # Parent resource ID.
+        # The parent resource ID.
         self.parent_resource_id = parent_resource_id
-        # Resource ID.
+        # The resource ID.
         self.resource_id = resource_id
 
     def validate(self):

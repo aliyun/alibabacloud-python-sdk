@@ -15,8 +15,11 @@ class ListPluginWorkspaceResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response status code.
         self.code = code
+        # The response data.
         self.data = data
+        # The response message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -75,9 +78,13 @@ class ListPluginWorkspaceResponseBodyData(DaraModel):
         repo_name: str = None,
         workspace_id: str = None,
     ):
+        # The Codeup organization ID.
         self.organization_id = organization_id
+        # The Codeup repository ID.
         self.repo_id = repo_id
+        # The repository name (the English ID of the plugin).
         self.repo_name = repo_name
+        # The workspace ID (prefixed with plw-).
         self.workspace_id = workspace_id
 
     def validate(self):

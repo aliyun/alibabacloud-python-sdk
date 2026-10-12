@@ -100,6 +100,8 @@ from ._transport_certificate_info import TransportCertificateInfo
 from ._transport_encryption_info import TransportEncryptionInfo
 from ._validation_options import ValidationOptions
 from ._http_api_api_info_deploy_cnt_map_value import HttpApiApiInfoDeployCntMapValue
+from ._data_path_configs_field_paths_value import DataPathConfigsFieldPathsValue
+from ._data_field_paths_value import DataFieldPathsValue
 from ._add_gateway_quota_rule_request import AddGatewayQuotaRuleRequest
 from ._add_gateway_quota_rule_response_body import AddGatewayQuotaRuleResponseBody
 from ._add_gateway_quota_rule_response import AddGatewayQuotaRuleResponse
@@ -127,6 +129,9 @@ from ._batch_update_http_api_operation_response import BatchUpdateHttpApiOperati
 from ._change_resource_group_request import ChangeResourceGroupRequest
 from ._change_resource_group_response_body import ChangeResourceGroupResponseBody
 from ._change_resource_group_response import ChangeResourceGroupResponse
+from ._check_commodity_status_request import CheckCommodityStatusRequest
+from ._check_commodity_status_response_body import CheckCommodityStatusResponseBody
+from ._check_commodity_status_response import CheckCommodityStatusResponse
 from ._create_ai_model_card_request import CreateAiModelCardRequest
 from ._create_ai_model_card_response_body import CreateAiModelCardResponseBody
 from ._create_ai_model_card_response import CreateAiModelCardResponse
@@ -136,6 +141,9 @@ from ._create_ai_model_provider_response import CreateAiModelProviderResponse
 from ._create_and_attach_policy_request import CreateAndAttachPolicyRequest
 from ._create_and_attach_policy_response_body import CreateAndAttachPolicyResponseBody
 from ._create_and_attach_policy_response import CreateAndAttachPolicyResponse
+from ._create_chat_session_request import CreateChatSessionRequest
+from ._create_chat_session_response_body import CreateChatSessionResponseBody
+from ._create_chat_session_response import CreateChatSessionResponse
 from ._create_consumer_request import CreateConsumerRequest
 from ._create_consumer_response_body import CreateConsumerResponseBody
 from ._create_consumer_response import CreateConsumerResponse
@@ -148,6 +156,9 @@ from ._create_consumer_authorization_rules_response import CreateConsumerAuthori
 from ._create_consumer_group_request import CreateConsumerGroupRequest
 from ._create_consumer_group_response_body import CreateConsumerGroupResponseBody
 from ._create_consumer_group_response import CreateConsumerGroupResponse
+from ._create_developer_request import CreateDeveloperRequest
+from ._create_developer_response_body import CreateDeveloperResponseBody
+from ._create_developer_response import CreateDeveloperResponse
 from ._create_domain_request import CreateDomainRequest
 from ._create_domain_response_body import CreateDomainResponseBody
 from ._create_domain_response import CreateDomainResponse
@@ -190,6 +201,12 @@ from ._create_policy_response import CreatePolicyResponse
 from ._create_policy_attachment_request import CreatePolicyAttachmentRequest
 from ._create_policy_attachment_response_body import CreatePolicyAttachmentResponseBody
 from ._create_policy_attachment_response import CreatePolicyAttachmentResponse
+from ._create_product_category_request import CreateProductCategoryRequest
+from ._create_product_category_response_body import CreateProductCategoryResponseBody
+from ._create_product_category_response import CreateProductCategoryResponse
+from ._create_product_ref_request import CreateProductRefRequest
+from ._create_product_ref_response_body import CreateProductRefResponseBody
+from ._create_product_ref_response import CreateProductRefResponse
 from ._create_risk_check_task_request import CreateRiskCheckTaskRequest
 from ._create_risk_check_task_response_body import CreateRiskCheckTaskResponseBody
 from ._create_risk_check_task_response import CreateRiskCheckTaskResponse
@@ -251,6 +268,18 @@ from ._delete_policy_response_body import DeletePolicyResponseBody
 from ._delete_policy_response import DeletePolicyResponse
 from ._delete_policy_attachment_response_body import DeletePolicyAttachmentResponseBody
 from ._delete_policy_attachment_response import DeletePolicyAttachmentResponse
+from ._delete_portal_request import DeletePortalRequest
+from ._delete_portal_response_body import DeletePortalResponseBody
+from ._delete_portal_response import DeletePortalResponse
+from ._delete_product_request import DeleteProductRequest
+from ._delete_product_response_body import DeleteProductResponseBody
+from ._delete_product_response import DeleteProductResponse
+from ._delete_product_category_request import DeleteProductCategoryRequest
+from ._delete_product_category_response_body import DeleteProductCategoryResponseBody
+from ._delete_product_category_response import DeleteProductCategoryResponse
+from ._delete_product_ref_request import DeleteProductRefRequest
+from ._delete_product_ref_response_body import DeleteProductRefResponseBody
+from ._delete_product_ref_response import DeleteProductRefResponse
 from ._delete_secret_response_body import DeleteSecretResponseBody
 from ._delete_secret_response import DeleteSecretResponse
 from ._delete_service_response_body import DeleteServiceResponseBody
@@ -279,6 +308,12 @@ from ._get_ai_model_card_response import GetAiModelCardResponse
 from ._get_ai_model_provider_request import GetAiModelProviderRequest
 from ._get_ai_model_provider_response_body import GetAiModelProviderResponseBody
 from ._get_ai_model_provider_response import GetAiModelProviderResponse
+from ._get_api_path_field_config_request import GetApiPathFieldConfigRequest
+from ._get_api_path_field_config_response_body import GetApiPathFieldConfigResponseBody
+from ._get_api_path_field_config_response import GetApiPathFieldConfigResponse
+from ._get_api_path_field_template_request import GetApiPathFieldTemplateRequest
+from ._get_api_path_field_template_response_body import GetApiPathFieldTemplateResponseBody
+from ._get_api_path_field_template_response import GetApiPathFieldTemplateResponse
 from ._get_batch_export_task_request import GetBatchExportTaskRequest
 from ._get_batch_export_task_response_body import GetBatchExportTaskResponseBody
 from ._get_batch_export_task_response import GetBatchExportTaskResponse
@@ -296,6 +331,9 @@ from ._get_dashboard_request import GetDashboardRequest
 from ._get_dashboard_shrink_request import GetDashboardShrinkRequest
 from ._get_dashboard_response_body import GetDashboardResponseBody
 from ._get_dashboard_response import GetDashboardResponse
+from ._get_developer_request import GetDeveloperRequest
+from ._get_developer_response_body import GetDeveloperResponseBody
+from ._get_developer_response import GetDeveloperResponse
 from ._get_domain_request import GetDomainRequest
 from ._get_domain_response_body import GetDomainResponseBody
 from ._get_domain_response import GetDomainResponse
@@ -316,6 +354,12 @@ from ._get_gateway_quota_rule_subject_usage_response import GetGatewayQuotaRuleS
 from ._get_gateway_resource_quota_usage_request import GetGatewayResourceQuotaUsageRequest
 from ._get_gateway_resource_quota_usage_response_body import GetGatewayResourceQuotaUsageResponseBody
 from ._get_gateway_resource_quota_usage_response import GetGatewayResourceQuotaUsageResponse
+from ._get_hi_market_consumer_request import GetHiMarketConsumerRequest
+from ._get_hi_market_consumer_response_body import GetHiMarketConsumerResponseBody
+from ._get_hi_market_consumer_response import GetHiMarketConsumerResponse
+from ._get_hi_market_consumer_credential_request import GetHiMarketConsumerCredentialRequest
+from ._get_hi_market_consumer_credential_response_body import GetHiMarketConsumerCredentialResponseBody
+from ._get_hi_market_consumer_credential_response import GetHiMarketConsumerCredentialResponse
 from ._get_http_api_request import GetHttpApiRequest
 from ._get_http_api_response_body import GetHttpApiResponseBody
 from ._get_http_api_response import GetHttpApiResponse
@@ -741,6 +785,7 @@ from ._batch_import_http_apis_request import BatchImportHttpApisRequestSpecOssCo
 from ._batch_import_http_apis_response_body import BatchImportHttpApisResponseBodyData
 from ._batch_remove_consumer_group_consumers_response_body import BatchRemoveConsumerGroupConsumersResponseBodyData
 from ._batch_update_http_api_operation_request import BatchUpdateHttpApiOperationRequestAuthConfig
+from ._check_commodity_status_response_body import CheckCommodityStatusResponseBodyCommodities
 from ._create_ai_model_card_request import CreateAiModelCardRequestAvailablePaths
 from ._create_ai_model_card_request import CreateAiModelCardRequestCredit
 from ._create_ai_model_card_request import CreateAiModelCardRequestMeta
@@ -754,12 +799,14 @@ from ._create_ai_model_provider_response_body import CreateAiModelProviderRespon
 from ._create_ai_model_provider_response_body import CreateAiModelProviderResponseBodyDataModelCards
 from ._create_ai_model_provider_response_body import CreateAiModelProviderResponseBodyData
 from ._create_and_attach_policy_response_body import CreateAndAttachPolicyResponseBodyData
+from ._create_chat_session_response_body import CreateChatSessionResponseBodyData
 from ._create_consumer_response_body import CreateConsumerResponseBodyData
 from ._create_consumer_authorization_rule_response_body import CreateConsumerAuthorizationRuleResponseBodyData
 from ._create_consumer_authorization_rules_request import CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier
 from ._create_consumer_authorization_rules_request import CreateConsumerAuthorizationRulesRequestAuthorizationRules
 from ._create_consumer_authorization_rules_response_body import CreateConsumerAuthorizationRulesResponseBodyData
 from ._create_consumer_group_response_body import CreateConsumerGroupResponseBodyData
+from ._create_developer_response_body import CreateDeveloperResponseBodyData
 from ._create_domain_response_body import CreateDomainResponseBodyData
 from ._create_environment_response_body import CreateEnvironmentResponseBodyData
 from ._create_gateway_request import CreateGatewayRequestLogConfigSls
@@ -791,6 +838,8 @@ from ._create_plugin_class_response_body import CreatePluginClassResponseBodyDat
 from ._create_plugin_workspace_response_body import CreatePluginWorkspaceResponseBodyData
 from ._create_policy_response_body import CreatePolicyResponseBodyData
 from ._create_policy_attachment_response_body import CreatePolicyAttachmentResponseBodyData
+from ._create_product_category_response_body import CreateProductCategoryResponseBodyData
+from ._create_product_ref_request import CreateProductRefRequestApigRefConfig
 from ._create_risk_check_task_response_body import CreateRiskCheckTaskResponseBodyData
 from ._create_secret_response_body import CreateSecretResponseBodyData
 from ._create_service_request import CreateServiceRequestServiceConfigsValidationOptions
@@ -819,6 +868,9 @@ from ._get_ai_model_provider_response_body import GetAiModelProviderResponseBody
 from ._get_ai_model_provider_response_body import GetAiModelProviderResponseBodyDataModelCardsMeta
 from ._get_ai_model_provider_response_body import GetAiModelProviderResponseBodyDataModelCards
 from ._get_ai_model_provider_response_body import GetAiModelProviderResponseBodyData
+from ._get_api_path_field_config_response_body import GetApiPathFieldConfigResponseBodyDataPathConfigs
+from ._get_api_path_field_config_response_body import GetApiPathFieldConfigResponseBodyData
+from ._get_api_path_field_template_response_body import GetApiPathFieldTemplateResponseBodyData
 from ._get_batch_export_task_response_body import GetBatchExportTaskResponseBodyDataResultFailureItems
 from ._get_batch_export_task_response_body import GetBatchExportTaskResponseBodyDataResultSuccessItems
 from ._get_batch_export_task_response_body import GetBatchExportTaskResponseBodyDataResult
@@ -844,6 +896,7 @@ from ._get_consumer_response_body import GetConsumerResponseBodyData
 from ._get_consumer_group_response_body import GetConsumerGroupResponseBodyData
 from ._get_dashboard_request import GetDashboardRequestFilter
 from ._get_dashboard_response_body import GetDashboardResponseBodyData
+from ._get_developer_response_body import GetDeveloperResponseBodyData
 from ._get_domain_response_body import GetDomainResponseBodyDataStatisticsInfo
 from ._get_domain_response_body import GetDomainResponseBodyData
 from ._get_environment_response_body import GetEnvironmentResponseBodyDataStatisticsInfo
@@ -872,6 +925,8 @@ from ._get_gateway_quota_rule_subject_usage_response_body import GetGatewayQuota
 from ._get_gateway_quota_rule_subject_usage_response_body import GetGatewayQuotaRuleSubjectUsageResponseBodyData
 from ._get_gateway_resource_quota_usage_response_body import GetGatewayResourceQuotaUsageResponseBodyDataItems
 from ._get_gateway_resource_quota_usage_response_body import GetGatewayResourceQuotaUsageResponseBodyData
+from ._get_hi_market_consumer_response_body import GetHiMarketConsumerResponseBodyData
+from ._get_hi_market_consumer_credential_response_body import GetHiMarketConsumerCredentialResponseBodyData
 from ._get_mcp_server_response_body import GetMcpServerResponseBodyDataAssembledSources
 from ._get_mcp_server_response_body import GetMcpServerResponseBodyDataDomainInfos
 from ._get_mcp_server_response_body import GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices
@@ -1180,6 +1235,8 @@ __all__ = [
     TransportEncryptionInfo,
     ValidationOptions,
     HttpApiApiInfoDeployCntMapValue,
+    DataPathConfigsFieldPathsValue,
+    DataFieldPathsValue,
     AddGatewayQuotaRuleRequest,
     AddGatewayQuotaRuleResponseBody,
     AddGatewayQuotaRuleResponse,
@@ -1207,6 +1264,9 @@ __all__ = [
     ChangeResourceGroupRequest,
     ChangeResourceGroupResponseBody,
     ChangeResourceGroupResponse,
+    CheckCommodityStatusRequest,
+    CheckCommodityStatusResponseBody,
+    CheckCommodityStatusResponse,
     CreateAiModelCardRequest,
     CreateAiModelCardResponseBody,
     CreateAiModelCardResponse,
@@ -1216,6 +1276,9 @@ __all__ = [
     CreateAndAttachPolicyRequest,
     CreateAndAttachPolicyResponseBody,
     CreateAndAttachPolicyResponse,
+    CreateChatSessionRequest,
+    CreateChatSessionResponseBody,
+    CreateChatSessionResponse,
     CreateConsumerRequest,
     CreateConsumerResponseBody,
     CreateConsumerResponse,
@@ -1228,6 +1291,9 @@ __all__ = [
     CreateConsumerGroupRequest,
     CreateConsumerGroupResponseBody,
     CreateConsumerGroupResponse,
+    CreateDeveloperRequest,
+    CreateDeveloperResponseBody,
+    CreateDeveloperResponse,
     CreateDomainRequest,
     CreateDomainResponseBody,
     CreateDomainResponse,
@@ -1270,6 +1336,12 @@ __all__ = [
     CreatePolicyAttachmentRequest,
     CreatePolicyAttachmentResponseBody,
     CreatePolicyAttachmentResponse,
+    CreateProductCategoryRequest,
+    CreateProductCategoryResponseBody,
+    CreateProductCategoryResponse,
+    CreateProductRefRequest,
+    CreateProductRefResponseBody,
+    CreateProductRefResponse,
     CreateRiskCheckTaskRequest,
     CreateRiskCheckTaskResponseBody,
     CreateRiskCheckTaskResponse,
@@ -1331,6 +1403,18 @@ __all__ = [
     DeletePolicyResponse,
     DeletePolicyAttachmentResponseBody,
     DeletePolicyAttachmentResponse,
+    DeletePortalRequest,
+    DeletePortalResponseBody,
+    DeletePortalResponse,
+    DeleteProductRequest,
+    DeleteProductResponseBody,
+    DeleteProductResponse,
+    DeleteProductCategoryRequest,
+    DeleteProductCategoryResponseBody,
+    DeleteProductCategoryResponse,
+    DeleteProductRefRequest,
+    DeleteProductRefResponseBody,
+    DeleteProductRefResponse,
     DeleteSecretResponseBody,
     DeleteSecretResponse,
     DeleteServiceResponseBody,
@@ -1359,6 +1443,12 @@ __all__ = [
     GetAiModelProviderRequest,
     GetAiModelProviderResponseBody,
     GetAiModelProviderResponse,
+    GetApiPathFieldConfigRequest,
+    GetApiPathFieldConfigResponseBody,
+    GetApiPathFieldConfigResponse,
+    GetApiPathFieldTemplateRequest,
+    GetApiPathFieldTemplateResponseBody,
+    GetApiPathFieldTemplateResponse,
     GetBatchExportTaskRequest,
     GetBatchExportTaskResponseBody,
     GetBatchExportTaskResponse,
@@ -1376,6 +1466,9 @@ __all__ = [
     GetDashboardShrinkRequest,
     GetDashboardResponseBody,
     GetDashboardResponse,
+    GetDeveloperRequest,
+    GetDeveloperResponseBody,
+    GetDeveloperResponse,
     GetDomainRequest,
     GetDomainResponseBody,
     GetDomainResponse,
@@ -1396,6 +1489,12 @@ __all__ = [
     GetGatewayResourceQuotaUsageRequest,
     GetGatewayResourceQuotaUsageResponseBody,
     GetGatewayResourceQuotaUsageResponse,
+    GetHiMarketConsumerRequest,
+    GetHiMarketConsumerResponseBody,
+    GetHiMarketConsumerResponse,
+    GetHiMarketConsumerCredentialRequest,
+    GetHiMarketConsumerCredentialResponseBody,
+    GetHiMarketConsumerCredentialResponse,
     GetHttpApiRequest,
     GetHttpApiResponseBody,
     GetHttpApiResponse,
@@ -1821,6 +1920,7 @@ __all__ = [
     BatchImportHttpApisResponseBodyData,
     BatchRemoveConsumerGroupConsumersResponseBodyData,
     BatchUpdateHttpApiOperationRequestAuthConfig,
+    CheckCommodityStatusResponseBodyCommodities,
     CreateAiModelCardRequestAvailablePaths,
     CreateAiModelCardRequestCredit,
     CreateAiModelCardRequestMeta,
@@ -1834,12 +1934,14 @@ __all__ = [
     CreateAiModelProviderResponseBodyDataModelCards,
     CreateAiModelProviderResponseBodyData,
     CreateAndAttachPolicyResponseBodyData,
+    CreateChatSessionResponseBodyData,
     CreateConsumerResponseBodyData,
     CreateConsumerAuthorizationRuleResponseBodyData,
     CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier,
     CreateConsumerAuthorizationRulesRequestAuthorizationRules,
     CreateConsumerAuthorizationRulesResponseBodyData,
     CreateConsumerGroupResponseBodyData,
+    CreateDeveloperResponseBodyData,
     CreateDomainResponseBodyData,
     CreateEnvironmentResponseBodyData,
     CreateGatewayRequestLogConfigSls,
@@ -1871,6 +1973,8 @@ __all__ = [
     CreatePluginWorkspaceResponseBodyData,
     CreatePolicyResponseBodyData,
     CreatePolicyAttachmentResponseBodyData,
+    CreateProductCategoryResponseBodyData,
+    CreateProductRefRequestApigRefConfig,
     CreateRiskCheckTaskResponseBodyData,
     CreateSecretResponseBodyData,
     CreateServiceRequestServiceConfigsValidationOptions,
@@ -1899,6 +2003,9 @@ __all__ = [
     GetAiModelProviderResponseBodyDataModelCardsMeta,
     GetAiModelProviderResponseBodyDataModelCards,
     GetAiModelProviderResponseBodyData,
+    GetApiPathFieldConfigResponseBodyDataPathConfigs,
+    GetApiPathFieldConfigResponseBodyData,
+    GetApiPathFieldTemplateResponseBodyData,
     GetBatchExportTaskResponseBodyDataResultFailureItems,
     GetBatchExportTaskResponseBodyDataResultSuccessItems,
     GetBatchExportTaskResponseBodyDataResult,
@@ -1924,6 +2031,7 @@ __all__ = [
     GetConsumerGroupResponseBodyData,
     GetDashboardRequestFilter,
     GetDashboardResponseBodyData,
+    GetDeveloperResponseBodyData,
     GetDomainResponseBodyDataStatisticsInfo,
     GetDomainResponseBodyData,
     GetEnvironmentResponseBodyDataStatisticsInfo,
@@ -1952,6 +2060,8 @@ __all__ = [
     GetGatewayQuotaRuleSubjectUsageResponseBodyData,
     GetGatewayResourceQuotaUsageResponseBodyDataItems,
     GetGatewayResourceQuotaUsageResponseBodyData,
+    GetHiMarketConsumerResponseBodyData,
+    GetHiMarketConsumerCredentialResponseBodyData,
     GetMcpServerResponseBodyDataAssembledSources,
     GetMcpServerResponseBodyDataDomainInfos,
     GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices,

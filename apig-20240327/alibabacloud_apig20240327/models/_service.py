@@ -39,7 +39,7 @@ class Service(DaraModel):
         update_timestamp: int = None,
         versions: List[main_models.ServiceVersions] = None,
     ):
-        # The address information, including IP addresses or domain name lists.
+        # The address information, which is a list of IP addresses or domain names.
         self.addresses = addresses
         # The agent service configuration.
         self.agent_service_config = agent_service_config
@@ -69,7 +69,7 @@ class Service(DaraModel):
         self.name = name
         # The namespace.
         self.namespace = namespace
-        # The configuration for removing abnormal instances.
+        # The outlier detection configuration for removing abnormal instances.
         self.outlier_detection = outlier_detection
         # The circuit-broken endpoints.
         self.outlier_endpoints = outlier_endpoints
@@ -91,7 +91,7 @@ class Service(DaraModel):
         self.source_type = source_type
         # The unhealthy endpoints.
         self.unhealthy_endpoints = unhealthy_endpoints
-        # The time when the service was created.
+        # The time when the service was updated.
         self.update_timestamp = update_timestamp
         # The list of service versions.
         self.versions = versions

@@ -25,11 +25,11 @@ class PluginClassInfo(DaraModel):
         wasm_language: str = None,
         wasm_url: str = None,
     ):
-        # The plugin class alias.
+        # The alias of the plugin class.
         self.alias = alias
         # The configuration example (JSON string).
         self.config_example = config_example
-        # The plugin class description.
+        # The description of the plugin class.
         self.description = description
         # The execution priority.
         self.execute_priority = execute_priority
@@ -41,7 +41,7 @@ class PluginClassInfo(DaraModel):
         self.inner_plugin = inner_plugin
         # The plugin running mode.
         self.mode = mode
-        # The plugin class name.
+        # The name of the plugin class.
         self.name = name
         # The plugin class ID.
         self.plugin_class_id = plugin_class_id
@@ -57,7 +57,7 @@ class PluginClassInfo(DaraModel):
         self.version_description = version_description
         # The Wasm programming language.
         self.wasm_language = wasm_language
-        # The Wasm file download URL.
+        # The download URL of the Wasm file.
         self.wasm_url = wasm_url
 
     def validate(self):

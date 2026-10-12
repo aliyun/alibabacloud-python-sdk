@@ -15,10 +15,13 @@ class GetMigrationNamespacedServicesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response status code.
         self.code = code
+        # The response data.
         self.data = data
+        # The response message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -66,6 +69,7 @@ class GetMigrationNamespacedServicesResponseBodyData(DaraModel):
         self,
         namespaced_services: List[main_models.GetMigrationNamespacedServicesResponseBodyDataNamespacedServices] = None,
     ):
+        # The list of services grouped by namespace.
         self.namespaced_services = namespaced_services
 
     def validate(self):
@@ -102,7 +106,9 @@ class GetMigrationNamespacedServicesResponseBodyDataNamespacedServices(DaraModel
         namespace: str = None,
         services: List[main_models.GetMigrationNamespacedServicesResponseBodyDataNamespacedServicesServices] = None,
     ):
+        # The Kubernetes namespace.
         self.namespace = namespace
+        # The list of migratable services in the namespace.
         self.services = services
 
     def validate(self):
@@ -145,7 +151,9 @@ class GetMigrationNamespacedServicesResponseBodyDataNamespacedServicesServices(D
         name: str = None,
         slb_id: str = None,
     ):
+        # The service name. After you select a Server Load Balancer (SLB) instance, the frontend populates this value into the serviceName field.
         self.name = name
+        # The ID of the load balancing instance associated with the service.
         self.slb_id = slb_id
 
     def validate(self):

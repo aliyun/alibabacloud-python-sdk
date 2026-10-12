@@ -14,9 +14,9 @@ class TagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.TagResourcesRequestTag] = None,
     ):
-        # The resource IDs. A maximum of 50 subkeys are supported.
+        # The resource IDs. You can specify up to 50 subkeys.
         self.resource_id = resource_id
-        # The resource type used for the tagging operation. Set this to Gateway.
+        # The resource type used for the tagging operation. Set this parameter to Gateway.
         self.resource_type = resource_type
         # The list of labels.
         self.tag = tag

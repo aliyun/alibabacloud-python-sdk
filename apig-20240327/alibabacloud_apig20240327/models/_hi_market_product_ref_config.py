@@ -55,19 +55,19 @@ class HiMarketProductRefConfigApigRefConfig(DaraModel):
         model_api_id: str = None,
         model_api_name: str = None,
     ):
-        # The associated Agent API ID.
+        # The ID of the associated Agent API.
         self.agent_api_id = agent_api_id
-        # The Agent API name.
+        # The name of the Agent API.
         self.agent_api_name = agent_api_name
-        # The associated MCP route ID.
+        # The ID of the associated MCP route.
         self.mcp_route_id = mcp_route_id
-        # The associated MCP Server ID.
+        # The ID of the associated MCP Server.
         self.mcp_server_id = mcp_server_id
-        # The MCP Server name.
+        # The name of the MCP Server.
         self.mcp_server_name = mcp_server_name
-        # The associated Model API ID.
+        # The ID of the associated Model API.
         self.model_api_id = model_api_id
-        # The Model API name.
+        # The name of the Model API.
         self.model_api_name = model_api_name
 
     def validate(self):

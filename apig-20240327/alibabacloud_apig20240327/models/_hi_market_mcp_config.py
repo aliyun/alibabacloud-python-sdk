@@ -15,9 +15,9 @@ class HiMarketMcpConfig(DaraModel):
         meta: main_models.HiMarketMcpConfigMeta = None,
         tools: str = None,
     ):
-        # The MCP Server configuration.
+        # The MCP server configuration.
         self.mcp_server_config = mcp_server_config
-        # The MCP Server name.
+        # The MCP server name.
         self.mcp_server_name = mcp_server_name
         # The metadata.
         self.meta = meta

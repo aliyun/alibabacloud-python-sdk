@@ -23,9 +23,9 @@ class ListMcpServersRequest(DaraModel):
         # 
         # This parameter is required.
         self.gateway_id = gateway_id
-        # Fuzzy searches for MCP servers by API name.
+        # The keyword used to fuzzy match MCP servers by name.
         self.name_like = name_like
-        # The page number, starting from 1. Default value: 1.
+        # The page number. Pages start from page 1. Default value: 1.
         # 
         # This parameter is required.
         self.page_number = page_number

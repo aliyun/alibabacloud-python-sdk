@@ -13,13 +13,13 @@ class HttpApiVersionInfo(DaraModel):
         scheme: str = None,
         version: str = None,
     ):
-        # Specifies whether to enable versioning.
+        # Indicates whether versioning control is enabled.
         self.enable = enable
-        # The key in the specified header when the header versioning solution is used.
+        # The key in the specified Header parameter for the Header versioning scheme.
         self.header_name = header_name
-        # The key in the specified query parameter when the query versioning solution is used.
+        # The key in the specified query parameter for the Query versioning scheme.
         self.query_name = query_name
-        # The versioning solution.
+        # The versioning scheme.
         self.scheme = scheme
         # The version number.
         self.version = version

@@ -16,11 +16,6 @@ class HttpApiDomainInfo(DaraModel):
         # The domain name.
         self.name = name
         # The protocol.
-        # 
-        # Valid values:
-        # 
-        # *   HTTPS
-        # *   HTTP
         self.protocol = protocol
 
     def validate(self):

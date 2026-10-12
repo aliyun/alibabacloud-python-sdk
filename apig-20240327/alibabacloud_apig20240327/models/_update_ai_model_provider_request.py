@@ -16,7 +16,7 @@ class UpdateAiModelProviderRequest(DaraModel):
         # 
         # This parameter is required.
         self.display_name = display_name
-        # The complete set of AI service IDs to bind to the model provider. If this parameter is not specified, the existing bindings are retained. If an empty array is specified, all bindings are cleared. Duplicate and empty values are normalized.
+        # The complete set of AI service IDs to bind to the model provider. If this parameter is not specified, the existing bindings are retained. If an empty array is passed, all bindings are cleared. Duplicate and empty values are normalized.
         self.service_ids = service_ids
 
     def validate(self):

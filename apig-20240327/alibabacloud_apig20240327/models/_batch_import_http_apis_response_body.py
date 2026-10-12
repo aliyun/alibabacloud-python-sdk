@@ -13,9 +13,13 @@ class BatchImportHttpApisResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response status code.
         self.code = code
+        # The response data.
         self.data = data
+        # The response message.
         self.message = message
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -63,6 +67,7 @@ class BatchImportHttpApisResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
+        # The asynchronous task ID. You can call the GetBatchImportTask operation to query the task progress.
         self.task_id = task_id
 
     def validate(self):

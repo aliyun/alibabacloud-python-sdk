@@ -35,15 +35,15 @@ class CreateGatewayRequest(DaraModel):
         # 
         # - Unknown: unknown.
         self.gateway_edition = gateway_edition
-        # The running mode for AI multi-tenant V2. Default value: ENTERPRISE. This parameter is allowed only when gatewayType is AI and gatewayEdition is MultiTenantServerless.
+        # The running mode for AI multi-tenant V2. Default value: ENTERPRISE. This parameter can be specified only when gatewayType is set to AI and gatewayEdition is set to MultiTenantServerless.
         self.gateway_mode = gateway_mode
-        # The gateway type. This parameter must be explicitly set to AI for AI Serverless or multi-tenant gateways.
+        # The gateway type. This parameter must be explicitly set to AI for AI Serverless or multi-tenant editions.
         self.gateway_type = gateway_type
         # The gateway log configuration.
         self.log_config = log_config
-        # The gateway name. This parameter is required for all gateway editions.
+        # The gateway name. This parameter is required for all editions.
         self.name = name
-        # The network access configuration. This parameter is required. If not provided, the service returns InvalidParameter.IsEmpty (400).
+        # The network access configuration. This parameter is required. If this parameter is not specified, the service returns an InvalidParameter.IsEmpty (400) error.
         self.network_access_config = network_access_config
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -51,9 +51,9 @@ class CreateGatewayRequest(DaraModel):
         self.spec = spec
         # The list of tags.
         self.tag = tag
-        # The VPC ID. This parameter is required for all gateway editions.
+        # The virtual private cloud (VPC) ID. This parameter is required for all editions.
         self.vpc_id = vpc_id
-        # The zone configuration. This parameter is required for all gateway editions.
+        # The zone configuration. This parameter is required for all editions.
         self.zone_config = zone_config
 
     def validate(self):
@@ -350,7 +350,7 @@ class CreateGatewayRequestLogConfigSls(DaraModel):
         self,
         enable: bool = None,
     ):
-        # Specifies whether to enable log collection.
+        # Specifies whether to enable SLS log collection.
         self.enable = enable
 
     def validate(self):

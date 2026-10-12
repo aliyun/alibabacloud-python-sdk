@@ -16,24 +16,17 @@ class HttpApiParameter(DaraModel):
     ):
         # The default value of the parameter.
         self.default_value = default_value
-        # The parameter description.
+        # The description.
         self.description = description
-        # The sample value of the parameter.
+        # The example value of the parameter.
         self.example_value = example_value
-        # The parameter name.
+        # The name of the parameter.
         # 
         # This parameter is required.
         self.name = name
-        # Specifies whether the parameter is required.
+        # Indicates whether the parameter is required.
         self.required = required
-        # The parameter type.
-        # 
-        # Valid values:
-        # 
-        # *   Integer
-        # *   Number
-        # *   String
-        # *   Boolean
+        # The type of the parameter.
         # 
         # This parameter is required.
         self.type = type

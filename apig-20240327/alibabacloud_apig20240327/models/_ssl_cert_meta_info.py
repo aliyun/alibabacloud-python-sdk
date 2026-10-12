@@ -29,17 +29,17 @@ class SslCertMetaInfo(DaraModel):
     ):
         # The algorithm.
         self.algorithm = algorithm
-        # The certificate ID.
+        # The unique certificate ID.
         self.cert_id = cert_id
-        # The certificate ID.
+        # The certificate identifier.
         self.cert_identifier = cert_identifier
         # The certificate name.
         self.cert_name = cert_name
-        # The name.
+        # The common name.
         self.common_name = common_name
         # The domain name.
         self.domain = domain
-        # The certificate matching the domain name.
+        # The certificate matched to the domain name.
         self.domain_match_cert = domain_match_cert
         # The certificate fingerprint.
         self.fingerprint = fingerprint
@@ -51,17 +51,17 @@ class SslCertMetaInfo(DaraModel):
         self.issuer = issuer
         # The key size.
         self.key_size = key_size
-        # The md5 value.
+        # The MD5 value.
         self.md_5 = md_5
-        # The time when the certificate expires.
+        # The expiration time.
         self.not_after_timestamp = not_after_timestamp
-        # The time when the certificate starts to take effect.
+        # The start time.
         self.not_before_timestamp = not_before_timestamp
         # sans
         self.sans = sans
         # The serial number.
         self.serial_no = serial_no
-        # The sha2 value.
+        # The SHA-2 value.
         self.sha_2 = sha_2
         # The signature algorithm.
         self.sign_algorithm = sign_algorithm

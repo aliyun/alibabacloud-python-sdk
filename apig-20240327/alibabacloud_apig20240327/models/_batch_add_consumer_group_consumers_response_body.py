@@ -75,7 +75,7 @@ class BatchAddConsumerGroupConsumersResponseBodyData(DaraModel):
         self.failed_consumer_ids = failed_consumer_ids
         # The list of consumer IDs that already exist in the consumer group and were skipped.
         self.skipped_consumer_ids = skipped_consumer_ids
-        # The list of consumer IDs successfully added to the consumer group.
+        # The list of consumer IDs that were successfully added to the consumer group.
         self.success_consumer_ids = success_consumer_ids
 
     def validate(self):

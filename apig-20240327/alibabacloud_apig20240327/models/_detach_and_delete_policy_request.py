@@ -9,7 +9,7 @@ class DetachAndDeletePolicyRequest(DaraModel):
         self,
         policy_attachment_id: str = None,
     ):
-        # The policy association ID.
+        # The policy attachment ID.
         self.policy_attachment_id = policy_attachment_id
 
     def validate(self):

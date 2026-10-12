@@ -11,6 +11,7 @@ class UpdateAuthorizationRuleRequest(DaraModel):
         self,
         resources: List[str] = None,
     ):
+        # The new list of authorized resources. In MCP Tool scenarios, this is a set of tool names. An empty array returns ErrInvalidParameterWithEmpty.
         self.resources = resources
 
     def validate(self):

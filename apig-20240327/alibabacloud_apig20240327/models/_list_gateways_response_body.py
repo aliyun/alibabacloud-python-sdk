@@ -156,14 +156,22 @@ class ListGatewaysResponseBodyDataItems(DaraModel):
         zones: List[main_models.ListGatewaysResponseBodyDataItemsZones] = None,
     ):
         # The billing method. Valid values:
+        # 
+        # - POSTPAY: pay-as-you-go.
+        # - PREPAY: subscription.
         self.charge_type = charge_type
         # The source from which the gateway was created. Valid values:
+        # - Console: the console.
         self.create_from = create_from
         # The creation timestamp. Unit: milliseconds.
         self.create_timestamp = create_timestamp
         # The expiration timestamp for subscription instances. Unit: milliseconds.
         self.expire_timestamp = expire_timestamp
-        # The gateway instance edition.
+        # The gateway instance edition. Valid values:
+        # 
+        # - Professional: standard instance.
+        # 
+        # - Serverless: Serverless instance.
         self.gateway_edition = gateway_edition
         # The gateway ID.
         self.gateway_id = gateway_id
@@ -175,9 +183,9 @@ class ListGatewaysResponseBodyDataItems(DaraModel):
         self.gateway_mode = gateway_mode
         # The gateway type.
         self.gateway_type = gateway_type
-        # Indicates whether the gateway instance was created before the AI gateway was released.
+        # Indicates whether the gateway instance was created before the AI gateway feature was released.
         self.legacy = legacy
-        # The list of gateway entry addresses.
+        # The list of gateway ingress addresses.
         self.load_balancers = load_balancers
         # The gateway name.
         self.name = name
@@ -187,9 +195,19 @@ class ListGatewaysResponseBodyDataItems(DaraModel):
         self.resource_group_id = resource_group_id
         # The security group information of the gateway.
         self.security_group = security_group
-        # The gateway specification.
+        # The gateway specification. Valid values:
+        # - apigw.small.x1: small specification.
         self.spec = spec
         # The gateway status. Valid values:
+        # - Running: The gateway is running.
+        # - Creating: The gateway is being created.
+        # - CreateFailed: The gateway failed to be created.
+        # - Upgrading: The gateway is being upgraded.
+        # - UpgradeFailed: The gateway failed to be upgraded.
+        # - Restarting: The gateway is being restarted.
+        # - RestartFailed: The gateway failed to be restarted.
+        # - Deleting: The gateway is being released.
+        # - DeleteFailed: The gateway failed to be released.
         self.status = status
         # The list of second-level domain names.
         self.sub_domain_infos = sub_domain_infos
@@ -616,10 +634,14 @@ class ListGatewaysResponseBodyDataItemsLoadBalancers(DaraModel):
         # The load balancing address.
         self.address = address
         # The protocol version. Valid values:
+        # - ipv4: IPv4.
+        # - ipv6: IPv6.
         self.address_ip_version = address_ip_version
         # The load balancing address type. Valid values:
+        # - Internet: public network.
+        # - Intranet: private network.
         self.address_type = address_type
-        # Indicates whether this is the default entry address of the gateway.
+        # Indicates whether this is the default ingress address of the gateway.
         self.gateway_default = gateway_default
         # The list of IPv4 addresses.
         self.ipv_4addresses = ipv_4addresses
@@ -628,12 +650,17 @@ class ListGatewaysResponseBodyDataItemsLoadBalancers(DaraModel):
         # The load balancing instance ID.
         self.load_balancer_id = load_balancer_id
         # The load balancing provisioning pattern of the gateway. Valid values:
+        # - Managed: managed by the cloud-native API gateway.
         self.mode = mode
         # The list of listening ports.
         self.ports = ports
-        # The status of the load balancing instance.
+        # The status of the load balancing instance. Valid values:
+        # - Ready: active.
+        # - NotCreate: No instance is associated.
         self.status = status
         # The load balancing type of the gateway. Valid values:
+        # - NLB: Network Load Balancer (NLB).
+        # - CLB: Classic Load Balancer (CLB).
         self.type = type
 
     def validate(self):
@@ -732,7 +759,9 @@ class ListGatewaysResponseBodyDataItemsLoadBalancersPorts(DaraModel):
     ):
         # The port number.
         self.port = port
-        # The protocol.
+        # The protocol. Valid values:
+        # - TCP.
+        # - UDP.
         self.protocol = protocol
 
     def validate(self):

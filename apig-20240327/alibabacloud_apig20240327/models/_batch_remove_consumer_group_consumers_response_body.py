@@ -73,9 +73,9 @@ class BatchRemoveConsumerGroupConsumersResponseBodyData(DaraModel):
     ):
         # The list of consumer IDs that failed to be removed.
         self.failed_consumer_ids = failed_consumer_ids
-        # The list of consumer IDs skipped because they are not in the consumer group.
+        # The list of consumer IDs that were skipped because they are not in the consumer group.
         self.skipped_consumer_ids = skipped_consumer_ids
-        # The list of consumer IDs successfully removed from the consumer group.
+        # The list of consumer IDs that were successfully removed from the consumer group.
         self.success_consumer_ids = success_consumer_ids
 
     def validate(self):

@@ -23,11 +23,11 @@ class AgentServiceConfig(DaraModel):
         # 
         # This parameter is required.
         self.address = address
-        # The custom configuration. Required when provider is set to custom.
+        # The custom configuration. This parameter is required when provider is set to custom.
         self.custom_config = custom_config
-        # The DashScope service configuration. Required when provider is set to qwen. The appCredentials parameter cannot be empty, and each entry must have non-empty appId and apiKey values.
+        # The DashScope service configuration. This parameter is required when provider is set to qwen. The appCredentials parameter cannot be empty, and each entry must have non-empty appId and apiKey values.
         self.dash_scope_config = dash_scope_config
-        # The Dify service configuration. Required when provider is set to dify. The botType and apiKey parameters cannot be empty.
+        # The Dify service configuration. This parameter is required when provider is set to dify. The botType and apiKey parameters cannot be empty.
         self.dify_config = dify_config
         # Specifies whether to enable health check.
         self.enable_health_check = enable_health_check

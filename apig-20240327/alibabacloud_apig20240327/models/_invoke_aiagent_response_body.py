@@ -15,8 +15,11 @@ class InvokeAIAgentResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response status code.
         self.code = code
+        # The response data.
         self.data = data
+        # The response message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -68,8 +71,11 @@ class InvokeAIAgentResponseBodyData(DaraModel):
         headers: Dict[str, str] = None,
         http_code: int = None,
     ):
+        # The response body of the debug result.
         self.body = body
+        # The response headers, such as Content-Type: text/event-stream.
         self.headers = headers
+        # The HTTP status code of the debug result.
         self.http_code = http_code
 
     def validate(self):

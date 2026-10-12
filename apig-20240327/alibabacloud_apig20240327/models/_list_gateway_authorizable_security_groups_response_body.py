@@ -15,11 +15,11 @@ class ListGatewayAuthorizableSecurityGroupsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code.
+        # The response status code.
         self.code = code
-        # The returned data.
+        # The response data.
         self.data = data
-        # The response message returned.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -69,7 +69,7 @@ class ListGatewayAuthorizableSecurityGroupsResponseBodyData(DaraModel):
         self,
         items: List[main_models.ListGatewayAuthorizableSecurityGroupsResponseBodyDataItems] = None,
     ):
-        # The security groups.
+        # The list of security groups.
         self.items = items
 
     def validate(self):
@@ -112,12 +112,11 @@ class ListGatewayAuthorizableSecurityGroupsResponseBodyDataItems(DaraModel):
         self.name = name
         # The security group ID.
         self.security_group_id = security_group_id
-        # The type of the security group. Valid values:
-        # 
-        # *   Normal: general security group
-        # *   Enterprise: enterprise security group
+        # The security group type. Valid values:
+        # - Normal: Custom security group.
+        # - Enterprise: Advanced security group.
         self.type = type
-        # The virtual private cloud (VPC) ID.
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):

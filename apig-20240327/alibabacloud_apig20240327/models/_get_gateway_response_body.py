@@ -99,7 +99,7 @@ class GetGatewayResponseBodyData(DaraModel):
         # - PREPAY: subscription.
         self.charge_type = charge_type
         # The source from which the gateway was created. Valid values:
-        # - Console: the console.
+        # - Console: Console.
         self.create_from = create_from
         # The creation timestamp. Unit: milliseconds.
         self.create_timestamp = create_timestamp
@@ -109,13 +109,13 @@ class GetGatewayResponseBodyData(DaraModel):
         self.expire_timestamp = expire_timestamp
         # The gateway instance edition. Valid values:
         # 
-        # - Professional: standard instance.
+        # - Professional: Standard instance.
         # 
         # - Serverless: Serverless instance.
         self.gateway_edition = gateway_edition
         # The gateway ID.
         self.gateway_id = gateway_id
-        # The running mode for AI multi-tenant V2. Default value: ENTERPRISE. Only AI + MultiTenantServerless allows this parameter. Valid values:
+        # The running mode of AI multi-tenant V2. Default value: ENTERPRISE. Only AI + MultiTenantServerless allows this parameter. Valid values:
         # - ENTERPRISE: default.
         # - STANDARD: allowed only for AI multi-tenant V2.
         self.gateway_mode = gateway_mode
@@ -138,22 +138,22 @@ class GetGatewayResponseBodyData(DaraModel):
         # The security group of the gateway.
         self.security_group = security_group
         # The gateway specification. Valid values:
-        # - apigw.small.x1: small specification.
+        # - apigw.small.x1: Small specification.
         self.spec = spec
         # The gateway status. Valid values:
-        # - Running: The gateway is running.
-        # - Creating: The gateway is being created.
-        # - CreateFailed: The gateway failed to be created.
-        # - Upgrading: The gateway is being upgraded.
-        # - UpgradeFailed: The gateway failed to be upgraded.
-        # - Restarting: The gateway is being restarted.
-        # - RestartFailed: The gateway failed to be restarted.
-        # - Deleting: The gateway is being released.
-        # - DeleteFailed: The gateway failed to be released.
+        # - Running: Running.
+        # - Creating: Being created.
+        # - CreateFailed: Creation failed.
+        # - Upgrading: Being upgraded.
+        # - UpgradeFailed: Upgrade failed.
+        # - Restarting: Being restarted.
+        # - RestartFailed: Restart failed.
+        # - Deleting: Being released.
+        # - DeleteFailed: Release failed.
         self.status = status
         # The resource tags.
         self.tags = tags
-        # The target version of the gateway. When this value differs from version, a version upgrade can be performed.
+        # The target version of the gateway. If this value differs from version, a version upgrade can be performed.
         self.target_version = target_version
         # The tenant ID returned in STANDARD mode.
         self.tenant_id = tenant_id
@@ -672,13 +672,13 @@ class GetGatewayResponseBodyDataLoadBalancers(DaraModel):
     ):
         # The load balancing address.
         self.address = address
-        # The protocol version. Valid values:
+        # The IP version. Valid values:
         # - ipv4: IPv4.
         # - ipv6: IPv6.
         self.address_ip_version = address_ip_version
         # The load balancing address type. Valid values:
-        # - Internet: public network.
-        # - Intranet: private network.
+        # - Internet: Public network.
+        # - Intranet: Private network.
         self.address_type = address_type
         # Indicates whether this is the default ingress address of the gateway.
         self.gateway_default = gateway_default
@@ -689,7 +689,7 @@ class GetGatewayResponseBodyDataLoadBalancers(DaraModel):
         # The load balancing instance ID.
         self.load_balancer_id = load_balancer_id
         # The load balancing mode of the gateway. Valid values:
-        # - Managed: managed by Cloud-native API Gateway.
+        # - Managed: Managed by Cloud-native API Gateway.
         self.mode = mode
         # The list of listening ports.
         self.ports = ports

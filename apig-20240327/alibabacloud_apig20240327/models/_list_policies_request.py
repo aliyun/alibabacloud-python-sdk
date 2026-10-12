@@ -14,17 +14,17 @@ class ListPoliciesRequest(DaraModel):
         with_attachments: bool = None,
         with_system_policy: bool = None,
     ):
-        # The ID of the attachment point.
+        # The attachment point ID.
         self.attach_resource_id = attach_resource_id
         # The type of attachment point supported by the policy.
         # 
-        # - HttpApi: HttpApi.
-        # - Operation: Operation of HttpApi.
-        # - GatewayRoute: gateway route.
-        # - GatewayService: gateway service.
-        # - GatewayServicePort: gateway service port.
-        # - Domain: gateway domain name.
-        # - Gateway: gateway.
+        # - HttpApi: HTTP API.
+        # - Operation: Operation of an HTTP API.
+        # - GatewayRoute: Gateway route.
+        # - GatewayService: Gateway service.
+        # - GatewayServicePort: Gateway service port.
+        # - Domain: Gateway domain name.
+        # - Gateway: Gateway.
         self.attach_resource_type = attach_resource_type
         # The environment ID.
         self.environment_id = environment_id

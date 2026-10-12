@@ -67,7 +67,7 @@ class CreateConsumerResponseBodyData(DaraModel):
         self,
         consumer_id: str = None,
     ):
-        # The consumer ID.
+        # The API consumer ID.
         self.consumer_id = consumer_id
 
     def validate(self):

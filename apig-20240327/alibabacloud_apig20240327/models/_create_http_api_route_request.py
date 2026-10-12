@@ -144,10 +144,10 @@ class CreateHttpApiRouteRequestMcpRouteConfig(DaraModel):
         self.exposed_uri_path = exposed_uri_path
         # Specifies whether to enable MCP observability. Default value: false.
         self.mcp_statistics_enable = mcp_statistics_enable
-        # The Terms of Service. Valid values:
-        # - TCP.
-        # - HTTP.
-        # - DUBBO.
+        # The service protocol. Valid values:
+        # - TCP
+        # - HTTP
+        # - DUBBO
         self.protocol = protocol
 
     def validate(self):
@@ -189,10 +189,10 @@ class CreateHttpApiRouteRequestBackendConfig(DaraModel):
         services: List[main_models.CreateHttpApiRouteRequestBackendConfigServices] = None,
     ):
         # The backend service scenario. Valid values:
-        # - SingleService: single service.
-        # - MultiServiceByRatio: multiple services with ratio-based canary release.
-        # - Mock: mock service.
-        # - Redirect: redirect service.
+        # - SingleService: Single service.
+        # - MultiServiceByRatio: Multi-service canary release by ratio.
+        # - Mock: Mock service.
+        # - Redirect: Redirect service.
         self.scene = scene
         # The list of backend services.
         self.services = services
@@ -255,15 +255,15 @@ class CreateHttpApiRouteRequestBackendConfigServices(DaraModel):
         self.namespace = namespace
         # The service port. Do not specify this parameter for dynamic ports.
         self.port = port
-        # The Terms of Service. Valid values:
-        # - HTTP.
-        # - HTTPS.
+        # The service protocol. Valid values:
+        # - HTTP
+        # - HTTPS
         self.protocol = protocol
         # The service ID.
         self.service_id = service_id
         # The service source type. Used in HTTP-to-Dubbo transcoding scenarios.
         self.source_type = source_type
-        # The service version. This parameter takes effect only in tag-based scenarios.
+        # The service version. This parameter takes effect only in the by-tag scenario.
         self.version = version
         # The percentage value of the traffic ratio.
         self.weight = weight

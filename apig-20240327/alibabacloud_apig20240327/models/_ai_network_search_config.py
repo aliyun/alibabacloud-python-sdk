@@ -28,7 +28,7 @@ class AiNetworkSearchConfig(DaraModel):
         self.need_reference = need_reference
         # The plug-in running status.
         self.plugin_status = plugin_status
-        # The format template for reference content. The template must contain at least one %s placeholder.
+        # The format template for reference content. Must contain at least one %s placeholder.
         self.reference_format = reference_format
         # The reference location.
         self.reference_location = reference_location
@@ -133,13 +133,13 @@ class AiNetworkSearchConfigSearchRewrite(DaraModel):
         service_id: str = None,
         timeout_millisecond: int = None,
     ):
-        # Specifies whether to enable search query rewriting.
+        # Specifies whether to enable search term rewriting.
         self.enable = enable
-        # The maximum number of search queries after rewriting.
+        # The maximum number of search terms after rewriting.
         self.max_count = max_count
         # The name of the model used for rewriting.
         self.model_name = model_name
-        # The ID of the rewriting service.
+        # The rewriting service ID.
         self.service_id = service_id
         # The timeout period for the rewriting request, in milliseconds.
         self.timeout_millisecond = timeout_millisecond

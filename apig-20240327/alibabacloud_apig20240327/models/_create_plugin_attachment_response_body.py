@@ -67,7 +67,7 @@ class CreatePluginAttachmentResponseBodyData(DaraModel):
         self,
         plugin_attachment_id: str = None,
     ):
-        # The plug-in mount ID.
+        # The plug-in attachment ID.
         self.plugin_attachment_id = plugin_attachment_id
 
     def validate(self):

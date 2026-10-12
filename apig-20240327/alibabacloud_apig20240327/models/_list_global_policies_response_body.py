@@ -15,8 +15,11 @@ class ListGlobalPoliciesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response status code.
         self.code = code
+        # The response data.
         self.data = data
+        # The response message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -69,9 +72,13 @@ class ListGlobalPoliciesResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: int = None,
     ):
+        # object
         self.items = items
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries.
         self.total_size = total_size
 
     def validate(self):

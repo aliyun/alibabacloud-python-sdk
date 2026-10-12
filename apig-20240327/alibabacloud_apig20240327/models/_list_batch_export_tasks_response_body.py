@@ -17,11 +17,17 @@ class ListBatchExportTasksResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # The response status code.
         self.code = code
+        # The response data.
         self.data = data
+        # The maximum number of records returned in this request.
         self.max_results = max_results
+        # The response message.
         self.message = message
+        # The pagination token for the next query. This value is empty when no more results are available.
         self.next_token = next_token
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -84,9 +90,13 @@ class ListBatchExportTasksResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: int = None,
     ):
+        # The list of tasks, returned in reverse chronological order with the most recent tasks first.
         self.items = items
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of tasks.
         self.total_size = total_size
 
     def validate(self):
@@ -147,13 +157,26 @@ class ListBatchExportTasksResponseBodyDataItems(DaraModel):
         task_type: str = None,
         total_count: int = None,
     ):
+        # The task creation time. Format: yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\".
         self.create_time = create_time
+        # The error message.
         self.error_message = error_message
+        # The gateway instance ID associated with the task.
         self.gateway_id = gateway_id
+        # The number of processed items.
         self.processed_count = processed_count
+        # The task status. Valid values:
+        # - Pending: The task is pending.
+        # - Running: The task is running.
+        # - Success: All items succeeded.
+        # - PartialSuccess: Some items succeeded.
+        # - Failed: All items failed.
         self.status = status
+        # The task ID.
         self.task_id = task_id
+        # The task type.
         self.task_type = task_type
+        # The total number of tasks.
         self.total_count = total_count
 
     def validate(self):

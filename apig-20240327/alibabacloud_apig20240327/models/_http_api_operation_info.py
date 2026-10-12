@@ -24,43 +24,31 @@ class HttpApiOperationInfo(DaraModel):
         response: main_models.HttpApiResponseContract = None,
         status: str = None,
     ):
-        # The authentication configurations of the operation.
+        # The authentication configuration.
         self.auth_config = auth_config
         # The creation timestamp.
         self.create_timestamp = create_timestamp
-        # The backend service deployment information of the operation.
+        # The backend service deployment information for the API operation.
         self.deploy_configs = deploy_configs
-        # The operation description.
+        # The description.
         self.description = description
-        # Specifies whether to enable authentication.
+        # Indicates whether authentication is enabled.
         self.enable_auth = enable_auth
-        # The HTTP method of the operation.
-        # 
-        # Valid values:
-        # 
-        # *   TRACE
-        # *   HEAD
-        # *   DELETE
-        # *   POST
-        # *   GET
-        # *   CONNECT
-        # *   OPTIONS
-        # *   PUT
-        # *   PATCH
+        # The HTTP method of the API operation.
         self.method = method
-        # The mocked parameters of the operation.
+        # The mock parameter settings for the API operation.
         self.mock = mock
-        # The operation name.
+        # The name of the API operation.
         self.name = name
-        # The operation ID.
+        # The ID of the API operation.
         self.operation_id = operation_id
-        # The operation path.
+        # The path of the API operation.
         self.path = path
-        # The request parameters of the operation.
+        # The request parameter definition of the API operation.
         self.request = request
-        # The response parameters of the operation.
+        # The response parameter definition of the API operation.
         self.response = response
-        # The operation publishing status on the instance.
+        # The publish status of the API operation on the gateway.
         self.status = status
 
     def validate(self):

@@ -15,9 +15,13 @@ class ListConsumerGroupQuotaRulesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The response data.
         self.data = data
+        # The response message.
         self.message = message
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -68,9 +72,13 @@ class ListConsumerGroupQuotaRulesResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: int = None,
     ):
+        # The list of rules.
         self.items = items
+        # The current page number.
         self.page_number = page_number
+        # The current page size.
         self.page_size = page_size
+        # The total number of entries.
         self.total_size = total_size
 
     def validate(self):
@@ -134,16 +142,31 @@ class ListConsumerGroupQuotaRulesResponseBodyDataItems(DaraModel):
         timezone: str = None,
         window_alignment: str = None,
     ):
+        # The ID of the gateway.
         self.gateway_id = gateway_id
+        # The name of the gateway. Falls back to the gateway ID if the name is unavailable.
         self.gateway_name = gateway_name
+        # The period multiplier, which specifies the number of days before the quota resets. A positive integer is returned for custom periods. This field is not returned for calendar-based periods.
         self.period_multiplier = period_multiplier
+        # The period type.
         self.period_type = period_type
+        # The quota dimension.
         self.quota_dimension = quota_dimension
+        # The quota limit.
         self.quota_limit = quota_limit
+        # The ID of the rule.
         self.rule_id = rule_id
+        # The name of the rule.
         self.rule_name = rule_name
+        # The status of the rule. Valid values:
+        # - enabled
+        # - disabled
         self.rule_status = rule_status
+        # The time zone.
         self.timezone = timezone
+        # The window alignment type. Valid values:
+        # - calendar: calendar-based period.
+        # - epoch: custom period.
         self.window_alignment = window_alignment
 
     def validate(self):

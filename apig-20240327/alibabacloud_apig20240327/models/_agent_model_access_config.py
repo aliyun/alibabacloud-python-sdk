@@ -12,7 +12,7 @@ class AgentModelAccessConfig(DaraModel):
         consumer_ids: List[str] = None,
         model_api_id: str = None,
     ):
-        # The list of consumer IDs that represent the Agent to access the Model API. The Model API ID and consumer ID together identify the Agent identity, and the configuration takes effect for all current and future routes of the Model API. Specify at least one consumer. The consumer must be enabled and must have direct Consumer authorization for the Model API in the default environment of the target gateway, with the authorization publish status being Success. Different Agents cannot bind the same consumer to the same Model API. ConsumerGroup is not supported.
+        # The list of API consumer IDs that represent the Agent to access the Model API. The Model API ID and API consumer ID together identify the Agent identity, and the configuration takes effect on all current and future routes of the Model API. Specify at least one API consumer. The API consumer must be enabled and must have direct Consumer authorization for the Model API in the default environment of the target gateway, with the authorization publish status being Success. Different Agents cannot bind the same API consumer to the same Model API. ConsumerGroup is not supported.
         # 
         # This parameter is required.
         self.consumer_ids = consumer_ids

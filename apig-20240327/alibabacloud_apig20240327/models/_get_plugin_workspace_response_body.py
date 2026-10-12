@@ -13,10 +13,13 @@ class GetPluginWorkspaceResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response status code.
         self.code = code
+        # The response data.
         self.data = data
+        # The response message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -69,11 +72,17 @@ class GetPluginWorkspaceResponseBodyData(DaraModel):
         wasm_url: str = None,
         workspace_id: str = None,
     ):
+        # The Codeup organization ID.
         self.organization_id = organization_id
+        # The ID of the most recent pipeline run. This parameter is not returned if the plugin has never been built.
         self.pipeline_run_id = pipeline_run_id
+        # The Codeup repository ID.
         self.repo_id = repo_id
+        # The repository name (the English ID of the plugin).
         self.repo_name = repo_name
+        # The OSS download URL of the compiled WASM build output. This parameter is returned only when the pipeline status is SUCCESS.
         self.wasm_url = wasm_url
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

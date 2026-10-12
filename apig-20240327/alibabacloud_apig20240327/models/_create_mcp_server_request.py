@@ -27,15 +27,15 @@ class CreateMcpServerRequest(DaraModel):
     ):
         # The list of assembly sources. This parameter is required when type is set to AssemblyMCP.
         self.assembled_sources = assembled_sources
-        # The backend service configuration for the route. This parameter is required. You must provide the backend service configuration (including scene and services). If this parameter is omitted, the API returns InvalidParameter.WithValue(400).
+        # The backend service configuration for the route. This parameter is required. You must specify the backend service configuration, including scene and services. If this parameter is not specified, the API returns InvalidParameter.WithValue(400).
         self.backend_config = backend_config
         # The creation source type. Valid values:
         # 
         # - ApiGatewayHttpToMCP: gateway-managed HTTP-to-MCP conversion.
-        # - ApiGatewayProxyMcpHosting: gateway-managed MCP direct proxy.
+        # - ApiGatewayProxyMcpHosting: gateway-managed direct MCP proxy.
         # - ApiGatewayAssembly: gateway MCP assembly.
         # - NacosHttpToMCP: gateway-managed Nacos-synced HTTP-to-MCP conversion.
-        # - NacosMcpHosting: gateway-managed Nacos-synced MCP direct proxy.
+        # - NacosMcpHosting: gateway-managed Nacos-synced direct MCP proxy.
         self.create_from_type = create_from_type
         # The description of the MCP server.
         self.description = description
@@ -47,9 +47,9 @@ class CreateMcpServerRequest(DaraModel):
         # 
         # This parameter is required.
         self.gateway_id = gateway_id
-        # The canary release routing configurations.
+        # The canary release route configurations.
         self.gray_mcp_server_configs = gray_mcp_server_configs
-        # The route match rule. When type is set to RealMCP, the match parameter is required and you must provide a route matching rule.
+        # The route match rule. When type is set to RealMCP, the match parameter is required and you must specify a route match rule.
         self.match = match
         # The HTTP-to-MCP configuration.
         self.mcp_server_config = mcp_server_config
@@ -59,11 +59,11 @@ class CreateMcpServerRequest(DaraModel):
         # 
         # This parameter is required.
         self.name = name
-        # The protocol type. This parameter is required. You must explicitly specify the protocol type (HTTP/HTTPS/SSE/StreamableHTTP). If this parameter is omitted, the API returns InvalidParameter.WithValue(400).
+        # The protocol type. This parameter is required. You must explicitly specify the protocol type (HTTP/HTTPS/SSE/StreamableHTTP). If this parameter is not specified, the API returns InvalidParameter.WithValue(400).
         self.protocol = protocol
         # The type. Valid values:
         # 
-        # - RealMCP: standard MCP service.
+        # - RealMCP: a standard MCP service.
         # 
         # This parameter is required.
         self.type = type
@@ -238,7 +238,7 @@ class CreateMcpServerRequestGrayMcpServerConfigs(DaraModel):
     ):
         # The backend configuration.
         self.backend_config = backend_config
-        # The route matching rule.
+        # The route match rule.
         self.match = match
         # The route ID.
         self.route_id = route_id
@@ -449,7 +449,7 @@ class CreateMcpServerRequestBackendConfigServices(DaraModel):
         # - HTTP
         # - HTTPS
         self.protocol = protocol
-        # The service ID. The serviceId is the ID of a backend service registered under the gateway. You can call the ListServices operation (with gatewayId specified) to query available service IDs.
+        # The service ID. The serviceId must be a backend service ID that is registered under the gateway. You can call the ListServices operation (with the gatewayId parameter) to query available service IDs.
         self.service_id = service_id
         # The service version.
         self.version = version

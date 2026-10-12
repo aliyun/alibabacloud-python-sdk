@@ -115,7 +115,7 @@ class JwtIdentityConfigJwtTokenConfig(DaraModel):
         self.key = key
         # Indicates whether the request is passed through.
         self.pass_ = pass_
-        # The location where the JWT is stored.
+        # The position where the JWT is stored.
         self.position = position
         # The prefix configuration.
         self.prefix = prefix

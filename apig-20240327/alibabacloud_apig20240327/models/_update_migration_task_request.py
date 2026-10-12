@@ -19,13 +19,21 @@ class UpdateMigrationTaskRequest(DaraModel):
         virtual_services: List[main_models.UpdateMigrationTaskRequestVirtualServices] = None,
         weight: int = None,
     ):
+        # The namespace of the source cluster (for SLB traffic switching).
         self.cluster_namespace = cluster_namespace
+        # The task description. For DNS-based Engine updates, only this field is modified.
         self.description = description
+        # The SLB service name.
         self.service_name = service_name
+        # The SLB instance ID. Required when the task is in the Initial state with SLB traffic switching. The type is determined by the prefix (lb- or nlb-).
         self.slb_id = slb_id
+        # The traffic switching method. Required when advancing from the Initial state.
         self.switch_type = switch_type
+        # Required. The update target. Determines whether to advance the task status or perform an engine operation.
         self.target = target
+        # The list of backend server group bindings.
         self.virtual_services = virtual_services
+        # The traffic switching weight for the legacy flow. Valid values: 0 to 100. Takes effect when the target is set to Engine.
         self.weight = weight
 
     def validate(self):
@@ -106,9 +114,13 @@ class UpdateMigrationTaskRequestVirtualServices(DaraModel):
         virtual_service_group_id: str = None,
         virtual_service_group_name: str = None,
     ):
+        # The port. Valid values: 1 to 65535.
         self.port = port
+        # The protocol. Required for CLB.
         self.protocol = protocol
+        # CLB VServerGroupId / NLB ServerGroupId
         self.virtual_service_group_id = virtual_service_group_id
+        # The group name.
         self.virtual_service_group_name = virtual_service_group_name
 
     def validate(self):

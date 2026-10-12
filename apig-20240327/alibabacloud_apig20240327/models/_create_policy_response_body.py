@@ -19,7 +19,7 @@ class CreatePolicyResponseBody(DaraModel):
         self.data = data
         # The response message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

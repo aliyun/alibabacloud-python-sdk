@@ -13,8 +13,11 @@ class GetRiskNotificationResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response status code.
         self.code = code
+        # The risk detection result.
         self.data = data
+        # The response message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -66,8 +69,11 @@ class GetRiskNotificationResponseBodyData(DaraModel):
         is_mute: bool = None,
         risk_code: str = None,
     ):
+        # The gateway ID.
         self.gateway_id = gateway_id
+        # Indicates whether the notification for the risk item is muted.
         self.is_mute = is_mute
+        # The code of the risk item.
         self.risk_code = risk_code
 
     def validate(self):

@@ -10,7 +10,7 @@ class GatewayLogConfig(DaraModel):
         self,
         sls_config: main_models.GatewayLogConfigSlsConfig = None,
     ):
-        # The Simple Log Service configurations.
+        # The Simple Log Service (SLS) log configuration.
         self.sls_config = sls_config
 
     def validate(self):
@@ -40,7 +40,7 @@ class GatewayLogConfigSlsConfig(DaraModel):
         self,
         enable: bool = None,
     ):
-        # Specifies whether to activate Simple Log Service.
+        # Indicates whether SLS logging is enabled.
         self.enable = enable
 
     def validate(self):

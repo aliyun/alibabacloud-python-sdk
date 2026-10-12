@@ -85,7 +85,7 @@ class GetPluginClassResponseBodyData(DaraModel):
         self.publish_status = publish_status
         # The plug-in type.
         self.type = type
-        # The Wasm plug-in programming language.
+        # The programming language of the Wasm plug-in.
         self.wasm_language = wasm_language
 
     def validate(self):

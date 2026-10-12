@@ -72,7 +72,7 @@ class ListConsumersResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # The list of consumers.
+        # The list of API consumer information.
         self.items = items
         # The page number.
         self.page_number = page_number
@@ -138,7 +138,7 @@ class ListConsumersResponseBodyDataItems(DaraModel):
         name: str = None,
         update_timestamp: int = None,
     ):
-        # The consumer ID.
+        # The API consumer ID.
         self.consumer_id = consumer_id
         # The creation timestamp.
         self.create_timestamp = create_timestamp
@@ -146,9 +146,9 @@ class ListConsumersResponseBodyDataItems(DaraModel):
         self.deploy_status = deploy_status
         # The description.
         self.description = description
-        # Indicates whether the consumer is enabled.
+        # Indicates whether the API consumer is enabled.
         self.enable = enable
-        # The consumer name.
+        # The API consumer name.
         self.name = name
         # The update timestamp.
         self.update_timestamp = update_timestamp

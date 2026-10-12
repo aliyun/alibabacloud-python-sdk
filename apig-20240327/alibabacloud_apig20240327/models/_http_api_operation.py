@@ -21,31 +21,19 @@ class HttpApiOperation(DaraModel):
         request: main_models.HttpApiRequestContract = None,
         response: main_models.HttpApiResponseContract = None,
     ):
-        # The authentication configurations.
+        # The authentication configuration.
         self.auth_config = auth_config
-        # The deployment configurations.
+        # The deployment configuration.
         self.deploy_configs = deploy_configs
         # The operation description.
         self.description = description
-        # Specifies whether to enable authentication.
+        # Indicates whether authentication is enabled.
         self.enable_auth = enable_auth
-        # The HTTP method.
-        # 
-        # Valid values:
-        # 
-        # *   TRACE
-        # *   HEAD
-        # *   DELETE
-        # *   POST
-        # *   GET
-        # *   CONNECT
-        # *   OPTIONS
-        # *   PUT
-        # *   PATCH
+        # The method.
         # 
         # This parameter is required.
         self.method = method
-        # The mocking configuration of the operation. This field takes effect only when the API publishing scenario is Mock.
+        # The mock configuration of the operation. This configuration takes effect only when the API is published in Mock mode.
         self.mock = mock
         # The operation name.
         # 
@@ -55,9 +43,9 @@ class HttpApiOperation(DaraModel):
         # 
         # This parameter is required.
         self.path = path
-        # The request parameters of the operation.
+        # The request parameter definition of the operation.
         self.request = request
-        # The response parameters of the operation.
+        # The response parameter definition of the operation.
         self.response = response
 
     def validate(self):

@@ -17,16 +17,17 @@ class CreateSourceRequest(DaraModel):
         type: str = None,
     ):
         # The gateway ID.
+        # > Note: This parameter is required. If this parameter is not specified, the API returns a 400 InvalidParameter.IsEmpty error.
         self.gateway_id = gateway_id
-        # The Container Service source configuration.
+        # The container service source configuration.
         self.k_8s_source_config = k_8s_source_config
         # The MSE Nacos source configuration.
         self.nacos_source_config = nacos_source_config
         # The resource group ID.
         self.resource_group_id = resource_group_id
         # The source type. Valid values:
-        # - MSE_NACOS: Microservices Engine (MSE) Nacos.
-        # - K8S: Container Service.
+        # - MSE_NACOS: MSE Nacos.
+        # - K8S: container service.
         self.type = type
 
     def validate(self):
@@ -114,7 +115,7 @@ class CreateSourceRequestK8sSourceConfig(DaraModel):
     ):
         # The list of gateway security group authorization rule configurations.
         self.authorize_security_group_rules = authorize_security_group_rules
-        # The Container Service cluster ID.
+        # The container service cluster ID.
         self.cluster_id = cluster_id
 
     def validate(self):

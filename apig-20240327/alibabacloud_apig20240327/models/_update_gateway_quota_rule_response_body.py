@@ -76,7 +76,7 @@ class UpdateGatewayQuotaRuleResponseBodyData(DaraModel):
         self.accepted = accepted
         # The conflict preview.
         self.conflict_preview = conflict_preview
-        # Indicates whether this is a dry run.
+        # Indicates whether the request is a dry run.
         self.dry_run = dry_run
         # The rule ID.
         self.rule_id = rule_id
@@ -186,9 +186,9 @@ class UpdateGatewayQuotaRuleResponseBodyDataConflictPreviewItems(DaraModel):
         subject_name: str = None,
         subject_type: str = None,
     ):
-        # The period type of the existing conflicting rule on the consumer subject. Valid values: day (daily), week (weekly), month (monthly).
+        # The period type of the existing conflicting rule on the consumer subject. Valid values: day (daily), week (weekly), and month (monthly).
         self.conflict_period_type = conflict_period_type
-        # The type of the existing conflicting rule on the consumer subject. Valid values: calendar (calendar period) and epoch (custom period).
+        # The type of the existing conflicting rule on the consumer subject. A value of calendar indicates a calendar-period rule. A value of epoch indicates a custom-period rule.
         self.conflict_type = conflict_type
         # The consumer ID. Use subjectId instead.
         self.consumer_id = consumer_id

@@ -13,11 +13,11 @@ class HttpApiResponseContract(DaraModel):
         content_type: str = None,
         items: List[main_models.HttpApiResponseContractItems] = None,
     ):
-        # The content type.
+        # The response content type.
         # 
         # This parameter is required.
         self.content_type = content_type
-        # The response definition.
+        # The response definitions.
         self.items = items
 
     def validate(self):
@@ -64,11 +64,11 @@ class HttpApiResponseContractItems(DaraModel):
     ):
         # The response code.
         self.code = code
-        # The response description.
+        # The description.
         self.description = description
-        # The sample value.
+        # The example value.
         self.example = example
-        # The JSON definition description of the response body.
+        # The JSON schema definition of the response body.
         self.json_schema = json_schema
 
     def validate(self):

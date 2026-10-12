@@ -33,13 +33,13 @@ class ListHttpApisRequest(DaraModel):
         self.gateway_type = gateway_type
         # The search keyword. Supports fuzzy match by API name or exact search by API ID.
         self.keyword = keyword
-        # Searches for an HTTP API by exact name match.
+        # Searches for an exact match by name.
         self.name = name
         # The page number, starting from 1. Default value: 1.
         self.page_number = page_number
         # The page size. Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         # The type of the HTTP API. You can specify multiple types separated by commas (,). Valid values:
         # - Http
@@ -61,7 +61,7 @@ class ListHttpApisRequest(DaraModel):
         self.with_environment_info_by_id = with_environment_info_by_id
         # Specifies whether to include ingress information.
         self.with_ingress_info = with_ingress_info
-        # The plug-in ID. If specified, the response includes plug-in publishing information for the specified plug-in.
+        # The plug-in ID. If specified, the response includes plug-in publishing information based on this plug-in ID.
         self.with_plugin_attachment_by_plugin_id = with_plugin_attachment_by_plugin_id
         # Specifies whether to include policy information.
         self.with_policy_configs = with_policy_configs

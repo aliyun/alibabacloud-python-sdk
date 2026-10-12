@@ -12,6 +12,7 @@ class UpdateGatewayElasticPolicyRequest(DaraModel):
         self,
         elastic_policy: main_models.UpdateGatewayElasticPolicyRequestElasticPolicy = None,
     ):
+        # The elastic policy object.
         self.elastic_policy = elastic_policy
 
     def validate(self):
@@ -46,11 +47,17 @@ class UpdateGatewayElasticPolicyRequestElasticPolicy(DaraModel):
         max_units: int = None,
         time_policy_list: List[main_models.UpdateGatewayElasticPolicyRequestElasticPolicyTimePolicyList] = None,
     ):
+        # Specifies whether to enable the elastic policy. A value of false indicates that the elastic policy is disabled. When the elastic policy is disabled, other fields are not validated and the system directly proceeds with the disabling process.
         self.elastic_enabled = elastic_enabled
+        # The policy type.
         self.elastic_type = elastic_type
+        # The time periods during which AutoHPA is allowed to scale out, specified by startTime and endTime.
         self.enable_scale_time_policy_list = enable_scale_time_policy_list
+        # Specifies whether to enable the AutoHPA load alert threshold.
         self.load_warning_threshold = load_warning_threshold
+        # The maximum number of replicas. This parameter is required for AutoHPA.
         self.max_units = max_units
+        # The list of scheduled policies.
         self.time_policy_list = time_policy_list
 
     def validate(self):
@@ -127,8 +134,11 @@ class UpdateGatewayElasticPolicyRequestElasticPolicyTimePolicyList(DaraModel):
         start_time: str = None,
         units: int = None,
     ):
+        # The O&M end time in the HH:mm format.
         self.end_time = end_time
+        # The O&M start time in the HH:mm format.
         self.start_time = start_time
+        # The number of replicas.
         self.units = units
 
     def validate(self):
@@ -169,7 +179,9 @@ class UpdateGatewayElasticPolicyRequestElasticPolicyEnableScaleTimePolicyList(Da
         end_time: str = None,
         start_time: str = None,
     ):
+        # The O&M end time in the HH:mm format.
         self.end_time = end_time
+        # The O&M start time in the HH:mm format.
         self.start_time = start_time
 
     def validate(self):

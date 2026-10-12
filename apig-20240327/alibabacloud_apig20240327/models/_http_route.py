@@ -28,7 +28,7 @@ class HttpRoute(DaraModel):
         self.backend = backend
         # Indicates whether the route is a system built-in route.
         self.builtin = builtin
-        # The creation time, in ms.
+        # The creation time, in milliseconds.
         self.create_timestamp = create_timestamp
         # The deployment status.
         self.deploy_status = deploy_status
@@ -40,7 +40,7 @@ class HttpRoute(DaraModel):
         self.environment_info = environment_info
         # The route publish status.
         self.gateway_status = gateway_status
-        # The route matching rule.
+        # The route matching rules.
         self.match = match
         # The MCP server information.
         self.mcp_server_info = mcp_server_info
@@ -48,7 +48,7 @@ class HttpRoute(DaraModel):
         self.name = name
         # The HttpApi route ID.
         self.route_id = route_id
-        # The update time, in ms.
+        # The update time, in milliseconds.
         self.update_timestamp = update_timestamp
 
     def validate(self):
@@ -292,7 +292,7 @@ class HttpRouteEnvironmentInfo(DaraModel):
         self.gateway_info = gateway_info
         # The environment name.
         self.name = name
-        # The list of default second-level domain names of the environment.
+        # The list of default subdomain names for the environment.
         self.sub_domains = sub_domains
 
     def validate(self):
@@ -412,7 +412,7 @@ class HttpRouteEnvironmentInfoGatewayInfo(DaraModel):
         gateway_id: str = None,
         name: str = None,
     ):
-        # The gateway instance edition. Valid values: Professional, Serverless, MultiTenantServerless, and Unknown.
+        # The gateway instance edition. Valid values: Professional, Serverless, MultiTenantServerless, Unknown.
         self.gateway_edition = gateway_edition
         # The gateway ID.
         self.gateway_id = gateway_id

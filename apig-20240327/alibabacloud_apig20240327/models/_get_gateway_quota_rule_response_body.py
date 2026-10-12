@@ -102,9 +102,9 @@ class GetGatewayQuotaRuleResponseBodyData(DaraModel):
         self.rule_status = rule_status
         # The number of associated subjects.
         self.subject_count = subject_count
-        # The rule subject type. Valid values: consumer or consumer_group.
+        # The rule subject type. Valid values: consumer and consumer_group.
         self.subject_type = subject_type
-        # The general subject list bound to this rule. Returned only when withSubjects is set to true.
+        # The list of general subjects bound to this rule. Returned only when withSubjects is set to true.
         self.subjects = subjects
         # The time zone corresponding to the calendar period, in UTC+x format.
         self.timezone = timezone
@@ -237,7 +237,7 @@ class GetGatewayQuotaRuleResponseBodyDataSubjects(DaraModel):
         self.id = id
         # The subject name.
         self.name = name
-        # The subject type. Valid values: consumer or consumer_group.
+        # The subject type. Valid values: consumer and consumer_group.
         self.subject_type = subject_type
 
     def validate(self):

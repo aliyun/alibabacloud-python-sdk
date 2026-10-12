@@ -108,11 +108,11 @@ class AiCacheConfigVectorConfig(DaraModel):
         timeout: int = None,
         type: str = None,
     ):
-        # The API key of the vector database.
+        # The vector database API key.
         self.api_key = api_key
         # The vector collection ID.
         self.collection_id = collection_id
-        # The service address of the vector database.
+        # The vector database service address.
         self.service_host = service_host
         # The similarity threshold.
         self.threshold = threshold

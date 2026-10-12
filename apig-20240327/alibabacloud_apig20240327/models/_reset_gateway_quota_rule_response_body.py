@@ -19,9 +19,9 @@ class ResetGatewayQuotaRuleResponseBody(DaraModel):
         self.code = code
         # The response data.
         self.data = data
-        # The message.
+        # The message content.
         self.message = message
-        # The request ID.
+        # The unique identifier of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -128,7 +128,7 @@ class ResetGatewayQuotaRuleResponseBodyDataConflictPreview(DaraModel):
         items: List[main_models.ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems] = None,
         total_conflict_count: int = None,
     ):
-        # The conflict hash.
+        # The hash of the conflict snapshot.
         self.conflict_hash = conflict_hash
         # The list of conflicting subjects.
         self.items = items
@@ -187,9 +187,9 @@ class ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems(DaraModel):
         subject_type: str = None,
     ):
         # The period type of the existing conflicting rule on the subject. Valid values:
-        # - day: The period of the existing conflicting rule is daily.
-        # - week: The period of the existing conflicting rule is weekly.
-        # - month: The period of the existing conflicting rule is monthly.
+        # - day: daily.
+        # - week: weekly.
+        # - month: monthly.
         self.conflict_period_type = conflict_period_type
         # The type of the existing conflicting rule on the subject. Valid values:
         # - calendar: The existing conflicting rule uses a calendar period.
@@ -204,8 +204,8 @@ class ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems(DaraModel):
         # The name of the conflicting subject.
         self.subject_name = subject_name
         # The type of the conflicting subject. Valid values:
-        # - consumer
-        # - consumer_group
+        # - consumer: consumer.
+        # - consumer_group: consumer group.
         self.subject_type = subject_type
 
     def validate(self):

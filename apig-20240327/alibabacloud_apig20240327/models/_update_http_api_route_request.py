@@ -215,7 +215,7 @@ class UpdateHttpApiRouteRequestBackendConfigServices(DaraModel):
         self.group_name = group_name
         # The HTTP-to-Dubbo protocol conversion configuration. Only supported for SingleService MSE_NACOS DUBBO backends of HTTP APIs.
         self.http_dubbo_transcoder = http_dubbo_transcoder
-        # The target model name. This field is shared by multiple existing model backend scenarios. The specific routing or model rewrite semantics are determined by backendConfig.scene. This field is required for the SemanticRouter scenario. If not specified in the AiAutoRouter scenario, the default model of the AI service is used.
+        # The target model name. This field is shared by multiple existing model backend scenarios. The specific routing or model rewrite semantics are determined by backendConfig.scene. This field is required for the SemanticRouter scenario. If this field is not specified for the AiAutoRouter scenario, the default model of the AI service is used.
         self.model_name = model_name
         # The service namespace. Used in HTTP-to-Dubbo conversion scenarios.
         self.namespace = namespace

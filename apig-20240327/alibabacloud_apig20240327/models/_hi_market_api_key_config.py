@@ -16,7 +16,7 @@ class HiMarketApiKeyConfig(DaraModel):
     ):
         # The list of credentials.
         self.credentials = credentials
-        # The name of the location from which the API key is extracted.
+        # The name of the location from which the API key is fetched.
         self.key = key
         # The source type of the API key.
         self.source = source

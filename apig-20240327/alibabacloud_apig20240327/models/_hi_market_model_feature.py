@@ -25,7 +25,7 @@ class HiMarketModelFeature(DaraModel):
         self.model = model
         # Indicates whether streaming output is supported.
         self.streaming = streaming
-        # The temperature parameter that controls the randomness of generation.
+        # The temperature parameter that controls the randomness of the generated output.
         self.temperature = temperature
         # Indicates whether web search is supported.
         self.web_search = web_search

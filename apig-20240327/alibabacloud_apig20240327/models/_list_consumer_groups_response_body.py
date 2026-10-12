@@ -78,7 +78,7 @@ class ListConsumerGroupsResponseBodyData(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The total number of consumer groups that match the conditions.
+        # The total number of consumer groups that match the specified conditions.
         self.total_size = total_size
 
     def validate(self):

@@ -14,8 +14,11 @@ class BatchUpdateHttpApiOperationRequest(DaraModel):
         enable_auth: bool = None,
         operation_ids: List[str] = None,
     ):
+        # The authentication configuration. This parameter is required when enableAuth is set to true.
         self.auth_config = auth_config
+        # Specifies whether to enable consumer authentication. If set to true, a valid authConfig must be provided. If set to false, authConfig is not validated and the existing configuration remains unchanged.
         self.enable_auth = enable_auth
+        # The list of operation IDs to update in batches. This parameter cannot be empty.
         self.operation_ids = operation_ids
 
     def validate(self):
@@ -58,7 +61,9 @@ class BatchUpdateHttpApiOperationRequestAuthConfig(DaraModel):
         auth_mode: str = None,
         auth_type: str = None,
     ):
+        # The authentication mode.
         self.auth_mode = auth_mode
+        # The authentication type.
         self.auth_type = auth_type
 
     def validate(self):

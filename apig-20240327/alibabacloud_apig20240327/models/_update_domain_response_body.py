@@ -67,7 +67,7 @@ class UpdateDomainResponseBodyData(DaraModel):
         self,
         deploy_revision_id: str = None,
     ):
-        # The publish version ID.
+        # The deployment revision ID.
         self.deploy_revision_id = deploy_revision_id
 
     def validate(self):

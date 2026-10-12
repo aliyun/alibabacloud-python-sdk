@@ -15,10 +15,13 @@ class ListSyncMCPServerResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The response data.
         self.data = data
+        # The response message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -67,7 +70,9 @@ class ListSyncMCPServerResponseBodyData(DaraModel):
         domain_ids: List[str] = None,
         mcp_servers: List[str] = None,
     ):
+        # The list of domain name IDs bound to the Nacos MCP export of the gateway, excluding the default domain name. If no configuration exists, an empty array [] is returned.
         self.domain_ids = domain_ids
+        # The list of synchronized (whitelisted) MCP server names, obtained from the AllowMcpServers field in the MCP Bridge registration configuration. If no configuration exists, an empty array [] is returned.
         self.mcp_servers = mcp_servers
 
     def validate(self):

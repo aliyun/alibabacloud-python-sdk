@@ -15,10 +15,13 @@ class ListGatewayLoadBalancersResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response status code.
         self.code = code
+        # The response data.
         self.data = data
+        # The response message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -66,6 +69,7 @@ class ListGatewayLoadBalancersResponseBodyData(DaraModel):
         self,
         items: List[main_models.ListGatewayLoadBalancersResponseBodyDataItems] = None,
     ):
+        # The instances.
         self.items = items
 
     def validate(self):
@@ -118,23 +122,41 @@ class ListGatewayLoadBalancersResponseBodyDataItems(DaraModel):
         v_server_group_meta_info: str = None,
         virtual_server_group_list: List[main_models.ListGatewayLoadBalancersResponseBodyDataItemsVirtualServerGroupList] = None,
     ):
+        # Indicates whether this is the default ingress of the gateway.
         self.default_gateway_ingress = default_gateway_ingress
+        # Indicates whether the load balancer can be edited. This parameter serves as an edit switch for load balancers that are being migrated.
         self.edit_enable = edit_enable
+        # The gateway ID.
         self.gateway_id = gateway_id
+        # The load balancer address (IP address or domain name).
         self.load_balancer_address = load_balancer_address
+        # The IP version.
         self.load_balancer_address_ip_version = load_balancer_address_ip_version
+        # The address type.
         self.load_balancer_address_type = load_balancer_address_type
+        # The load balancer availability status.
         self.load_balancer_available_status = load_balancer_available_status
+        # The load balancer instance ID.
         self.load_balancer_id = load_balancer_id
+        # The binding mode.
         self.load_balancer_mode = load_balancer_mode
+        # The load balancer name.
         self.load_balancer_name = load_balancer_name
+        # The load balancer specification.
         self.load_balancer_spec = load_balancer_spec
+        # The association status.
         self.load_balancer_status = load_balancer_status
+        # The load balancer type.
         self.load_balancer_type = load_balancer_type
+        # The zone mappings.
         self.load_balancer_zone_mappings = load_balancer_zone_mappings
+        # The list of listener ports.
         self.ports = ports
+        # The gateway service weight, which ranges from 0 to 100. This parameter is used in migration and traffic shifting scenarios.
         self.service_weight = service_weight
+        # The VServerGroup metadata.
         self.v_server_group_meta_info = v_server_group_meta_info
+        # The list of virtual server groups.
         self.virtual_server_group_list = virtual_server_group_list
 
     def validate(self):
@@ -292,8 +314,11 @@ class ListGatewayLoadBalancersResponseBodyDataItemsVirtualServerGroupList(DaraMo
         virtual_service_group_id: str = None,
         virtual_service_group_name: str = None,
     ):
+        # The list of associated listeners.
         self.listeners = listeners
+        # The virtual server group ID. For CLB, this is the VServerGroupId. For NLB, this is the ServerGroupId.
         self.virtual_service_group_id = virtual_service_group_id
+        # The group name.
         self.virtual_service_group_name = virtual_service_group_name
 
     def validate(self):
@@ -342,7 +367,9 @@ class ListGatewayLoadBalancersResponseBodyDataItemsVirtualServerGroupListListene
         port: int = None,
         protocol: str = None,
     ):
+        # The listener port.
         self.port = port
+        # The listener protocol. No backend enumeration validation is performed. The actual values are returned from SLB or NLB OpenAPI. Common values include tcp, udp, http, https, and tls.
         self.protocol = protocol
 
     def validate(self):
@@ -377,7 +404,9 @@ class ListGatewayLoadBalancersResponseBodyDataItemsPorts(DaraModel):
         port: int = None,
         protocol: str = None,
     ):
+        # The port.
         self.port = port
+        # The port protocol.
         self.protocol = protocol
 
     def validate(self):
@@ -414,9 +443,13 @@ class ListGatewayLoadBalancersResponseBodyDataItemsLoadBalancerZoneMappings(Dara
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        # The list of load balancer addresses in the zone.
         self.load_balancer_addresses = load_balancer_addresses
+        # The zone status.
         self.status = status
+        # The vSwitch ID that corresponds to the zone.
         self.v_switch_id = v_switch_id
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -478,14 +511,23 @@ class ListGatewayLoadBalancersResponseBodyDataItemsLoadBalancerZoneMappingsLoadB
         private_ipv_6hc_status: str = None,
         public_ipv_4address: str = None,
     ):
+        # The Elastic IP Address (EIP) allocation ID that corresponds to the public address.
         self.allocation_id = allocation_id
+        # The ID of the elastic network interface (ENI).
         self.eni_id = eni_id
+        # The list of private IPv4 addresses.
         self.ipv_4local_addresses = ipv_4local_addresses
+        # The public IPv6 address.
         self.ipv_6address = ipv_6address
+        # The list of private IPv6 addresses.
         self.ipv_6local_addresses = ipv_6local_addresses
+        # The private IPv4 address.
         self.private_ipv_4address = private_ipv_4address
+        # The health check status of the private IPv4 address.
         self.private_ipv_4hc_status = private_ipv_4hc_status
+        # The health check status of the private IPv6 address.
         self.private_ipv_6hc_status = private_ipv_6hc_status
+        # The public IPv4 address.
         self.public_ipv_4address = public_ipv_4address
 
     def validate(self):

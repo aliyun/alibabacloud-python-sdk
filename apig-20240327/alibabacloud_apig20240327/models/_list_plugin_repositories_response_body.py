@@ -15,10 +15,13 @@ class ListPluginRepositoriesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response status code.
         self.code = code
+        # The response data.
         self.data = data
+        # The response message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -74,8 +77,11 @@ class ListPluginRepositoriesResponseBodyData(DaraModel):
         organization_name: str = None,
         repositories: List[main_models.ListPluginRepositoriesResponseBodyDataRepositories] = None,
     ):
+        # The Codeup organization ID.
         self.organization_id = organization_id
+        # The organization name.
         self.organization_name = organization_name
+        # The list of repositories under the organization.
         self.repositories = repositories
 
     def validate(self):
@@ -124,7 +130,9 @@ class ListPluginRepositoriesResponseBodyDataRepositories(DaraModel):
         repository_id: str = None,
         repository_name: str = None,
     ):
+        # The Codeup repository ID (numeric string).
         self.repository_id = repository_id
+        # The repository name.
         self.repository_name = repository_name
 
     def validate(self):

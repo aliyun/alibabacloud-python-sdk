@@ -23,9 +23,9 @@ class ListHttpApiRoutesRequest(DaraModel):
         with_consumer_info_by_id: str = None,
         with_plugin_attachment_by_plugin_id: str = None,
     ):
-        # The backend service name. You can use this name to filter routes.
+        # The backend service name. You can use this parameter to filter routes.
         self.backend_service_name = backend_service_name
-        # Filters the API list by a specific consumer authorization rule ID. The response includes only authorized APIs.
+        # Filters the API list by a specific consumer authorization rule ID. The API list in the response contains only authorized APIs.
         self.consumer_authorization_rule_id = consumer_authorization_rule_id
         # The deployment status of the route.
         self.deploy_statuses = deploy_statuses
@@ -33,25 +33,25 @@ class ListHttpApiRoutesRequest(DaraModel):
         self.domain_id = domain_id
         # The environment ID.
         self.environment_id = environment_id
-        # Specifies whether this is a deployment scenario.
+        # Specifies whether the request is for a deployment scenario.
         self.for_deploy = for_deploy
         # The cloud-native API gateway ID.
         self.gateway_id = gateway_id
         # The route name.
         self.name = name
-        # Fuzzy match by route name.
+        # Performs a fuzzy match by route name.
         self.name_like = name_like
-        # The page number, starting from 1. Default value: 1.
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The page size. Valid range: 1 to 100. Default value: 10.
+        # The number of entries per page. Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
-        # Fuzzy match by route path.
+        # Performs a fuzzy match by route path.
         self.path_like = path_like
         # Includes consumer authorization information in the response.
         self.with_auth_policy_info = with_auth_policy_info
-        # Includes the authorization rule list of the specified consumer ID for each route in the response.
+        # Includes the authorization rule list of the specified consumer ID in each route in the response.
         self.with_consumer_info_by_id = with_consumer_info_by_id
-        # Includes the plug-in attachment information of the specified plug-in ID for each route in the response.
+        # Includes the mount information of the specified plug-in ID in each route in the response.
         self.with_plugin_attachment_by_plugin_id = with_plugin_attachment_by_plugin_id
 
     def validate(self):

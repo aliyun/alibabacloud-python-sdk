@@ -16,7 +16,7 @@ class AiPolicyRedisConfig(DaraModel):
     ):
         # The Redis database number.
         self.database_number = database_number
-        # The Redis host address.
+        # The Redis hostname.
         self.host = host
         # The Redis password.
         self.password = password

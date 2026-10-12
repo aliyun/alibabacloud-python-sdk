@@ -94,9 +94,9 @@ class CreateAiModelCardResponseBodyData(DaraModel):
         self.model_name = model_name
         # The model provider identifier.
         self.model_provider = model_provider
-        # The source of the model card. Currently, user is returned.
+        # The source of the model card. The current value is user.
         self.source = source
-        # The last update time of the model card, in the format of yyyy-MM-dd HH:mm:ss.
+        # The last update time of the model card, in the yyyy-MM-dd HH:mm:ss format.
         self.update_time = update_time
 
     def validate(self):
@@ -265,7 +265,7 @@ class CreateAiModelCardResponseBodyDataCredit(DaraModel):
         self.input_cost = input_cost
         # The output token cost, in Credits per million tokens.
         self.output_cost = output_cost
-        # The billing type. Currently, fixed is returned.
+        # The billing type. The current value is fixed.
         self.type = type
 
     def validate(self):
@@ -314,7 +314,7 @@ class CreateAiModelCardResponseBodyDataAvailablePaths(DaraModel):
     ):
         # The model invocation path.
         self.path = path
-        # The protocol type corresponding to the path.
+        # The protocol type of the path.
         self.type = type
 
     def validate(self):

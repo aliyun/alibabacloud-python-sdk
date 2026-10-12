@@ -23,29 +23,29 @@ class AiServiceConfig(DaraModel):
         provider: str = None,
         vertex_service_config: main_models.AiServiceConfigVertexServiceConfig = None,
     ):
-        # API key generation mode.
+        # The generation mode of the API key.
         self.api_key_generate_mode = api_key_generate_mode
-        # The service endpoint.
+        # The service address.
         self.address = address
-        # The API keys.
+        # The list of API keys.
         self.api_keys = api_keys
-        # Bedrock service configuration.
+        # The configuration specific to the Bedrock service.
         self.bedrock_service_config = bedrock_service_config
-        # Supported compatible protocols.
+        # The list of compatible protocols supported by the service.
         self.compatible_protocols = compatible_protocols
-        # Default model name.
+        # The name of the default model.
         self.default_model_name = default_model_name
-        # Specifies whether to enable health check.
+        # Indicates whether health check is enabled.
         self.enable_health_check = enable_health_check
-        # Enable outlier detection.
+        # Indicates whether outlier detection is enabled.
         self.enable_outlier_detection = enable_outlier_detection
-        # PAI-EAS service configuration settings.
+        # The configuration specific to the PAI-EAS service.
         self.pai_easservice_config = pai_easservice_config
-        # The LLM protocols.
+        # The list of model protocols.
         self.protocols = protocols
-        # The Large Language Model (LLM) provider.
+        # The large language model provider.
         self.provider = provider
-        # Vertex AI service configuration.
+        # The configuration of the Vertex AI service.
         self.vertex_service_config = vertex_service_config
 
     def validate(self):
@@ -152,17 +152,17 @@ class AiServiceConfigVertexServiceConfig(DaraModel):
         vertex_region: str = None,
         vertex_token_refresh_ahead: int = None,
     ):
-        # Gemini safety settings.
+        # The safety filtering level settings for the Gemini model.
         self.gemini_safety_setting = gemini_safety_setting
-        # Vertex AI authentication key.
+        # The authentication key for Vertex AI.
         self.vertex_auth_key = vertex_auth_key
-        # Vertex AI auth service name.
+        # The service name of the authentication service used by Vertex AI.
         self.vertex_auth_service_name = vertex_auth_service_name
-        # Vertex AI project ID.
+        # The Google Cloud project ID.
         self.vertex_project_id = vertex_project_id
-        # Vertex AI region.
+        # The Google Cloud region where the Vertex AI service is located.
         self.vertex_region = vertex_region
-        # Vertex token refresh lead time.
+        # The number of seconds before the access token expires to refresh it in advance.
         self.vertex_token_refresh_ahead = vertex_token_refresh_ahead
 
     def validate(self):
@@ -223,13 +223,13 @@ class AiServiceConfigPaiEASServiceConfig(DaraModel):
         service_name: str = None,
         workspace_id: str = None,
     ):
-        # Type of endpoint.
+        # The connection type: private network (vpc) or public network (public).
         self.endpoint_type = endpoint_type
-        # Service identifier.
+        # The service ID.
         self.service_id = service_id
-        # Name of the service.
+        # The service name.
         self.service_name = service_name
-        # Workspace identifier.
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -277,11 +277,11 @@ class AiServiceConfigBedrockServiceConfig(DaraModel):
         aws_region: str = None,
         aws_secret_key: str = None,
     ):
-        # AWS-AccessKey
+        # The AWS access key.
         self.aws_access_key = aws_access_key
-        # AWS-Region
+        # The AWS region.
         self.aws_region = aws_region
-        # AWS-SecretKey
+        # The AWS secret key.
         self.aws_secret_key = aws_secret_key
 
     def validate(self):

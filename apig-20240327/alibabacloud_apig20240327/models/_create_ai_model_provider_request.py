@@ -23,7 +23,7 @@ class CreateAiModelProviderRequest(DaraModel):
         # 
         # This parameter is required.
         self.gateway_id = gateway_id
-        # The model provider identifier.
+        # The identifier of the model provider.
         # 
         # This parameter is required.
         self.provider = provider

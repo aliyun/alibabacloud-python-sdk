@@ -67,7 +67,7 @@ class GetSecretValueResponseBodyData(DaraModel):
         self,
         secret_data: str = None,
     ):
-        # The key value.
+        # The secret value.
         self.secret_data = secret_data
 
     def validate(self):

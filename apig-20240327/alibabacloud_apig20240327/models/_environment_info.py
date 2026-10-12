@@ -21,23 +21,23 @@ class EnvironmentInfo(DaraModel):
         sub_domain_infos: List[main_models.SubDomainInfo] = None,
         update_timestamp: int = None,
     ):
-        # The environment alias.
+        # The alias.
         self.alias = alias
         # The creation timestamp.
         self.create_timestamp = create_timestamp
-        # Specifies whether the environment is the default environment.
+        # Indicates whether the environment is the default environment.
         self.default = default
-        # The environment descriptiont.
+        # The environment description.
         self.description = description
         # The environment ID.
         self.environment_id = environment_id
-        # The instance information.
+        # The gateway information.
         self.gateway_info = gateway_info
         # The environment name.
         self.name = name
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The subdomains.
+        # The subdomain list.
         self.sub_domain_infos = sub_domain_infos
         # The update timestamp.
         self.update_timestamp = update_timestamp

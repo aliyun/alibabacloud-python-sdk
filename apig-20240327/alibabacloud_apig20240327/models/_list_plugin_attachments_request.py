@@ -19,9 +19,9 @@ class ListPluginAttachmentsRequest(DaraModel):
     ):
         # The mount resource ID.
         self.attach_resource_id = attach_resource_id
-        # The plug-in mount point type. Not enabled yet.
+        # The plug-in mount point type. This parameter is not yet enabled.
         self.attach_resource_type = attach_resource_type
-        # The mount point types. Separate multiple values with commas.
+        # The mount point types. Separate multiple types with commas.
         self.attach_resource_types = attach_resource_types
         # The environment ID.
         self.environment_id = environment_id
@@ -29,11 +29,11 @@ class ListPluginAttachmentsRequest(DaraModel):
         self.gateway_id = gateway_id
         # The page number. Default value: 1.
         self.page_number = page_number
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
         # The plug-in ID.
         self.plugin_id = plugin_id
-        # Specifies whether to return the parent resource mount.
+        # Specifies whether to return parent resource mounts.
         self.with_parent_resource = with_parent_resource
 
     def validate(self):

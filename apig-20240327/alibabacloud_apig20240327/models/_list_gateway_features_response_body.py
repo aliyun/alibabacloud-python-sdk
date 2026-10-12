@@ -107,7 +107,7 @@ class ListGatewayFeaturesResponseBodyDataItems(DaraModel):
         definition: main_models.ListGatewayFeaturesResponseBodyDataItemsDefinition = None,
         value: str = None,
     ):
-        # The runtime constraints calculated based on the current gateway form. Only returned for certain features.
+        # The runtime constraints calculated based on the current gateway form. Only returned for specific features.
         self.constraints = constraints
         # The parameter definition.
         self.definition = definition
@@ -177,14 +177,14 @@ class ListGatewayFeaturesResponseBodyDataItemsDefinition(DaraModel):
         # The display name of the parameter.
         self.display_name = display_name
         # The parameter group. Valid values:
-        # - Telemetry: observability-related parameter.
-        # - Engine: engine-related parameter.
+        # - Telemetry: An observability parameter.
+        # - Engine: An engine parameter.
         self.group = group
         # The input type of the parameter. Valid values:
-        # - Trigger: toggle.
-        # - Input: text input.
-        # - SingleSelect: single-select.
-        # - MultiSelect: multi-select.
+        # - Trigger: Toggle.
+        # - Input: Text input.
+        # - SingleSelect: Single-select.
+        # - MultiSelect: Multi-select.
         self.input_type = input_type
         # The maximum length supported by the parameter value. This is valid only when the value type is string.
         self.max_length = max_length
@@ -332,7 +332,7 @@ class ListGatewayFeaturesResponseBodyDataItemsDefinitionValueOptions(DaraModel):
         key: str = None,
         label: str = None,
     ):
-        # The key used to pass the parameter.
+        # The pass parameter key.
         self.key = key
         # The display value.
         self.label = label
@@ -368,7 +368,7 @@ class ListGatewayFeaturesResponseBodyDataItemsConstraints(DaraModel):
         self,
         body_max_size_limit: int = None,
     ):
-        # The maximum body collection size per request in bytes. This value is returned based on the managed form of the gateway deployment cluster. Only the log-request-response feature returns this field.
+        # The maximum body collection size per request, in bytes. This value is returned based on the managed form of the gateway deployment cluster. Only the log-request-response feature returns this field.
         self.body_max_size_limit = body_max_size_limit
 
     def validate(self):

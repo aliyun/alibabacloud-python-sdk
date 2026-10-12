@@ -17,7 +17,7 @@ class HiMarketPortalDeployConfig(DaraModel):
         self.message = message
         # The deployment platform type.
         self.platform = platform
-        # The SAE (Serverless App Engine) deployment configuration.
+        # The Serverless App Engine (SAE) deployment configuration.
         self.sae_config = sae_config
         # The deployment status.
         self.status = status
@@ -80,7 +80,7 @@ class HiMarketPortalDeployConfigSaeConfig(DaraModel):
         self.namespace_id = namespace_id
         # The OIDC role name used for SAE to access other cloud resources.
         self.oidc_role_name = oidc_role_name
-        # The region ID of SAE.
+        # The region ID where SAE is deployed.
         self.region_id = region_id
         # The number of instance replicas.
         self.replicas = replicas

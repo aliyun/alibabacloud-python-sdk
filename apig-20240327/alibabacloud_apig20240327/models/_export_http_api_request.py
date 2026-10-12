@@ -14,7 +14,7 @@ class ExportHttpApiRequest(DaraModel):
         gateway_id: str = None,
         operation_ids: List[str] = None,
     ):
-        # Specifies whether to export the plug-in configuration.
+        # Specifies whether to export plug-in configurations.
         self.extension_config = extension_config
         # The gateway instance ID. This parameter is required when you export gateway extension information.
         self.gateway_id = gateway_id
@@ -64,15 +64,15 @@ class ExportHttpApiRequestExtensionConfig(DaraModel):
         with_policy: bool = None,
         with_service: bool = None,
     ):
-        # Specifies whether to export the consumer authorization configuration for operations or routes.
+        # Specifies whether to export consumer authorization configurations for operations or routes.
         self.with_auth_config = with_auth_config
-        # Specifies whether to export the authorized consumers.
+        # Specifies whether to export authorized consumers.
         self.with_auth_consumer = with_auth_consumer
-        # Specifies whether to export the plug-in configuration.
+        # Specifies whether to export plug-in configurations.
         self.with_plugin = with_plugin
-        # Specifies whether to export the policy configuration.
+        # Specifies whether to export policy configurations.
         self.with_policy = with_policy
-        # Specifies whether to export the backend service.
+        # Specifies whether to export backend services.
         self.with_service = with_service
 
     def validate(self):

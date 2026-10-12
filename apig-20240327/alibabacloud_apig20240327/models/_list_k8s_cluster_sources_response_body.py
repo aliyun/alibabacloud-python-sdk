@@ -15,9 +15,13 @@ class ListK8sClusterSourcesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response status code.
         self.code = code
+        # The response data.
         self.data = data
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -65,6 +69,7 @@ class ListK8sClusterSourcesResponseBodyData(DaraModel):
         self,
         items: List[main_models.ListK8sClusterSourcesResponseBodyDataItems] = None,
     ):
+        # The list of Kubernetes clusters that can be added.
         self.items = items
 
     def validate(self):
@@ -101,7 +106,9 @@ class ListK8sClusterSourcesResponseBodyDataItems(DaraModel):
         cluster_id: str = None,
         name: str = None,
     ):
+        # The container service cluster ID.
         self.cluster_id = cluster_id
+        # The container service cluster name.
         self.name = name
 
     def validate(self):

@@ -20,7 +20,7 @@ class AiTokenRateLimitConfig(DaraModel):
         self.enable_global_rules = enable_global_rules
         # The list of global throttling rules. Only the LimitByGlobal type is allowed.
         self.global_rules = global_rules
-        # The running status of the plugin.
+        # The running status of the plug-in.
         self.plugin_status = plugin_status
         # The Redis configuration.
         self.redis_config = redis_config

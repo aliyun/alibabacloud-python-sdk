@@ -1,3 +1,20 @@
+2026-10-12 Version: 11.5.0
+- Support API CheckCommodityStatus.
+- Support API CreateChatSession.
+- Support API CreateDeveloper.
+- Support API CreateProductCategory.
+- Support API CreateProductRef.
+- Support API DeletePortal.
+- Support API DeleteProduct.
+- Support API DeleteProductCategory.
+- Support API DeleteProductRef.
+- Support API GetApiPathFieldConfig.
+- Support API GetApiPathFieldTemplate.
+- Support API GetDeveloper.
+- Support API GetHiMarketConsumer.
+- Support API GetHiMarketConsumerCredential.
+
+
 2026-09-17 Version: 11.4.0
 - Support API GetGatewayResourceQuotaUsage.
 

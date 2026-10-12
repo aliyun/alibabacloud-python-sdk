@@ -67,7 +67,7 @@ class CreatePolicyAttachmentResponseBodyData(DaraModel):
         self,
         policy_attachment_id: str = None,
     ):
-        # The policy mount ID.
+        # The policy attachment ID.
         self.policy_attachment_id = policy_attachment_id
 
     def validate(self):

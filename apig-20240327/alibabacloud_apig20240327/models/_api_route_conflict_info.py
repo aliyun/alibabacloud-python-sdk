@@ -13,9 +13,9 @@ class ApiRouteConflictInfo(DaraModel):
         conflicts: List[main_models.ApiRouteConflictInfoConflicts] = None,
         domain_info: main_models.ApiRouteConflictInfoDomainInfo = None,
     ):
-        # The conflicts.
+        # The list of conflict information.
         self.conflicts = conflicts
-        # The conflicting routes.
+        # The conflicting domain information.
         self.domain_info = domain_info
 
     def validate(self):
@@ -61,7 +61,7 @@ class ApiRouteConflictInfoDomainInfo(DaraModel):
         domain_id: str = None,
         name: str = None,
     ):
-        # The domain name ID.
+        # The domain ID.
         self.domain_id = domain_id
         # The domain name.
         self.name = name
@@ -102,20 +102,18 @@ class ApiRouteConflictInfoConflicts(DaraModel):
         resource_type: str = None,
         route_info: main_models.ApiRouteConflictInfoConflictsRouteInfo = None,
     ):
-        # The details about the conflicts.
+        # The list of conflict details.
         self.details = details
-        # For APIs, conflicts exist in the specific environment. If the conflict object is a route, ignore.
+        # For an API, the conflict exists in a specific environment. If the conflicting object is a route, this field is ignored.
         self.environment_info = environment_info
-        # The conflicting resource ID.
+        # The conflicting resource ID, which is the API ID.
         self.resource_id = resource_id
-        # The conflicting resource name.
+        # The conflicting resource name, which is the API name.
         self.resource_name = resource_name
-        # The type of the conflicting resource.
+        # The conflicting resource type. Valid values:
         # 
-        # Valid values:
-        # 
-        # *   RestApi
-        # *   HttpApiRoute
+        # - RestApi
+        # - HttpApiRoute
         self.resource_type = resource_type
         # The route information.
         self.route_info = route_info
@@ -267,9 +265,15 @@ class ApiRouteConflictInfoConflictsDetails(DaraModel):
     ):
         # The matching rule information of the conflicting target.
         self.conflicting_match = conflicting_match
-        # The matching rule information of the object being detected.
+        # The matching rule information of the detected target.
         self.detected_match = detected_match
-        # The conflict level. Valid values: Critical, Warning, and Informational.
+        # The conflict level. Valid values:
+        # 
+        # - Critical
+        # 
+        # - Warning
+        # 
+        # - Informational
         self.level = level
 
     def validate(self):
@@ -315,9 +319,9 @@ class ApiRouteConflictInfoConflictsDetailsDetectedMatch(DaraModel):
         match: main_models.HttpRouteMatch = None,
         operation_info: main_models.ApiRouteConflictInfoConflictsDetailsDetectedMatchOperationInfo = None,
     ):
-        # The matching rule information of the object being detected.
+        # The matching rule information of the detected target.
         self.match = match
-        # If the object is an API, the conflicting operation information needs to be returned.
+        # When the detected target is an API, the conflicting operation information is returned.
         self.operation_info = operation_info
 
     def validate(self):
@@ -396,7 +400,7 @@ class ApiRouteConflictInfoConflictsDetailsConflictingMatch(DaraModel):
     ):
         # The matching rule.
         self.match = match
-        # The corresponding operation information if the conflicting target is an API.
+        # When the conflicting target is an API, this indicates the corresponding operation information.
         self.operation_info = operation_info
 
     def validate(self):

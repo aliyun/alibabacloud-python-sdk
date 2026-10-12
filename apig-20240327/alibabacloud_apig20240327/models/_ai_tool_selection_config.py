@@ -13,13 +13,13 @@ class AiToolSelectionConfig(DaraModel):
         query_rewriting: main_models.AiToolSelectionConfigQueryRewriting = None,
         tool_reranking: main_models.AiToolSelectionConfigToolReranking = None,
     ):
-        # The enable conditions configuration. Controls when the overall feature is triggered.
+        # The enable condition configuration that controls when the overall feature is triggered.
         self.enable_conditions = enable_conditions
         # The plug-in running status.
         self.plugin_status = plugin_status
-        # The query rewrite configuration. Rewrites user queries before tool reranking to improve matching precision.
+        # The query rewrite configuration that rewrites user queries before tool reranking to improve matching precision.
         self.query_rewriting = query_rewriting
-        # The tool reranking configuration. Uses a model to rank and filter candidate tools.
+        # The tool reranking configuration that uses a model to sort and filter candidate tools.
         self.tool_reranking = tool_reranking
 
     def validate(self):
@@ -205,11 +205,11 @@ class AiToolSelectionConfigQueryRewriting(DaraModel):
     ):
         # The context selection configuration.
         self.context_selection = context_selection
-        # Specifies whether query rewrite is enabled.
+        # Indicates whether query rewrite is enabled.
         self.enabled = enabled
         # The fallback strategy.
         self.fallback_strategy = fallback_strategy
-        # The maximum number of output tokens for rewriting.
+        # The maximum number of output tokens for the rewriting result.
         self.max_output_tokens = max_output_tokens
         # The rewriting model service configuration.
         self.model_service = model_service
@@ -290,7 +290,7 @@ class AiToolSelectionConfigQueryRewritingTriggerConditions(DaraModel):
         self,
         message_count_threshold: int = None,
     ):
-        # The number of conversation turns after which rewriting is triggered.
+        # The conversation turn threshold. Rewriting is triggered when the number of conversation turns exceeds this value.
         self.message_count_threshold = message_count_threshold
 
     def validate(self):

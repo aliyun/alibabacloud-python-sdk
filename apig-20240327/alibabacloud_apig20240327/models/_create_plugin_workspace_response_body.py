@@ -13,10 +13,13 @@ class CreatePluginWorkspaceResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response status code.
         self.code = code
+        # The response data.
         self.data = data
+        # The response message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -65,7 +68,9 @@ class CreatePluginWorkspaceResponseBodyData(DaraModel):
         repo_id: str = None,
         workspace_id: str = None,
     ):
+        # The Codeup repository ID, which is a numeric string.
         self.repo_id = repo_id
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

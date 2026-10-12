@@ -145,7 +145,7 @@ class ListConsumerGroupConsumersResponseBodyDataItems(DaraModel):
         self.description = description
         # Indicates whether the consumer is enabled.
         self.enable = enable
-        # The time when the consumer joined the consumer group, in Unix millisecond timestamp.
+        # The time when the consumer joined the consumer group. The value is a UNIX timestamp in milliseconds.
         self.join_timestamp = join_timestamp
         # The consumer name.
         self.name = name

@@ -34,9 +34,9 @@ class HttpApiPolicyConfigs(DaraModel):
         self.ai_token_rate_limit_config = ai_token_rate_limit_config
         # The AI tool selection configuration.
         self.ai_tool_selection_config = ai_tool_selection_config
-        # Indicates whether the policy is enabled.
+        # Indicates whether the feature is enabled.
         self.enable = enable
-        # The read-only compatible reference. GetHttpApi returns policyId/policyAttachmentId for ModelAPI AiTokenRateLimit. This must be stripped before write path persistence and is not used as a bind/unbind instruction.
+        # The read-only compatible reference. GetHttpApi returns the policyId and policyAttachmentId for ModelAPI AiTokenRateLimit. This field must be stripped before write-path persistence and is not used as a bind or unbind instruction.
         self.policy_reference = policy_reference
         # The semantic routing configuration.
         self.semantic_router_config = semantic_router_config

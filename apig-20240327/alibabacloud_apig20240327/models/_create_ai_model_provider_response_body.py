@@ -89,9 +89,9 @@ class CreateAiModelProviderResponseBodyData(DaraModel):
         self.model_count = model_count
         # The model provider ID.
         self.model_provider_id = model_provider_id
-        # The model provider identifier.
+        # The identifier of the model provider.
         self.provider = provider
-        # The provider source type.
+        # The source type of the provider.
         self.source = source
         # The last update time in the yyyy-MM-ddTHH:mm:ssZ format.
         self.update_time = update_time
@@ -198,11 +198,11 @@ class CreateAiModelProviderResponseBodyDataModelCards(DaraModel):
     ):
         # The list of available paths for the model.
         self.available_paths = available_paths
-        # The model credits consumption configuration.
+        # The credits consumption configuration of the model.
         self.credit = credit
-        # The model capability features.
+        # The capability features of the model.
         self.features = features
-        # The gateway instance ID to which the model card belongs.
+        # The instance ID of the gateway to which the model card belongs.
         self.gateway_id = gateway_id
         # The model metadata.
         self.meta = meta
@@ -210,7 +210,7 @@ class CreateAiModelProviderResponseBodyDataModelCards(DaraModel):
         self.model_card_id = model_card_id
         # The model name.
         self.model_name = model_name
-        # The model provider identifier to which the model card belongs.
+        # The identifier of the model provider to which the model card belongs.
         self.model_provider = model_provider
         # The model source.
         self.source = source

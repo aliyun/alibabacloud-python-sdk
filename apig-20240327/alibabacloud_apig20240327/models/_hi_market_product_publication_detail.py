@@ -14,7 +14,7 @@ class HiMarketProductPublicationDetail(DaraModel):
         product_type: str = None,
         publication_id: str = None,
     ):
-        # The portal ID.
+        # Portal ID
         self.portal_id = portal_id
         # The portal name.
         self.portal_name = portal_name
@@ -24,7 +24,7 @@ class HiMarketProductPublicationDetail(DaraModel):
         self.product_name = product_name
         # The product type.
         self.product_type = product_type
-        # The product publish ID.
+        # The product publication ID.
         self.publication_id = publication_id
 
     def validate(self):

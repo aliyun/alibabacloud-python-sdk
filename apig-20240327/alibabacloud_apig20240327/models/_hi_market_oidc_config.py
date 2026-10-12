@@ -20,7 +20,7 @@ class HiMarketOidcConfig(DaraModel):
     ):
         # The OAuth2 Authorization Code configuration.
         self.auth_code_config = auth_code_config
-        # Indicates whether the OIDC configuration is enabled.
+        # Specifies whether to enable the OIDC configuration.
         self.enabled = enabled
         # The authorization type.
         self.grant_type = grant_type
@@ -102,7 +102,7 @@ class HiMarketOidcConfigIdentityMapping(DaraModel):
         user_id_field: str = None,
         user_name_field: str = None,
     ):
-        # The custom field mappings.
+        # The custom field mapping.
         self.custom_fields = custom_fields
         # The identity field name that corresponds to the email address.
         self.email_field = email_field

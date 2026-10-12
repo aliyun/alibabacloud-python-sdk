@@ -17,7 +17,7 @@ class UpdateAiModelCardRequest(DaraModel):
         model_name: str = None,
         model_provider: str = None,
     ):
-        # The list of invocation paths supported by the model. Each item must include both path and type. The list is overwritten as a whole during updates.
+        # The list of invocation paths supported by the model. Each item must include both path and type. The entire list is overwritten during an update.
         self.available_paths = available_paths
         # The credit billing information of the model. Only the fixed type is supported. The unit is Credits per million tokens. If not specified, all cost values default to 0.
         self.credit = credit
@@ -25,7 +25,7 @@ class UpdateAiModelCardRequest(DaraModel):
         self.features = features
         # The token limits and input/output modality information of the model.
         self.meta = meta
-        # The model name. The name must be unique within the same AI gateway instance and model provider. Maximum length: 256 characters.
+        # The model name. The name must be unique within the same AI gateway instance and the same model provider. Maximum length: 256 characters.
         # 
         # This parameter is required.
         self.model_name = model_name
@@ -170,11 +170,11 @@ class UpdateAiModelCardRequestCredit(DaraModel):
         output_cost: float = None,
         type: str = None,
     ):
-        # The cache hit token cost in Credits per million tokens. The value must be greater than or equal to 0. Default value: 0.
+        # The cost of cache-hit tokens, in Credits per million tokens. The value must be greater than or equal to 0. Default value: 0.
         self.cache_cost = cache_cost
-        # The input token cost in Credits per million tokens. The value must be greater than or equal to 0. Default value: 0.
+        # The cost of input tokens, in Credits per million tokens. The value must be greater than or equal to 0. Default value: 0.
         self.input_cost = input_cost
-        # The output token cost in Credits per million tokens. The value must be greater than or equal to 0. Default value: 0.
+        # The cost of output tokens, in Credits per million tokens. The value must be greater than or equal to 0. Default value: 0.
         self.output_cost = output_cost
         # The billing type. Only fixed is supported. Default value: fixed.
         self.type = type

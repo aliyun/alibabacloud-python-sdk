@@ -81,7 +81,7 @@ class GetConsumerGroupResponseBodyData(DaraModel):
         self.create_timestamp = create_timestamp
         # The consumer group description.
         self.description = description
-        # The gateway type. Valid values: API or AI.
+        # The gateway type. Valid values: API and AI.
         self.gateway_type = gateway_type
         # The consumer group name.
         self.name = name

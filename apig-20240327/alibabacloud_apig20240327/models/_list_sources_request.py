@@ -13,19 +13,15 @@ class ListSourcesRequest(DaraModel):
         resource_group_id: str = None,
         type: str = None,
     ):
-        # The instance ID.
+        # The gateway ID.
         self.gateway_id = gateway_id
-        # The page number of the page to return. Pages start from page 1. Default value: 1.
+        # The page number. Pages start from 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
+        # The resource group ID used to filter results. This parameter is also used for RAM authentication.
         self.resource_group_id = resource_group_id
-        # The type by which you want to query sources.
-        # 
-        # Valid values:
-        # 
-        # *   K8S
-        # *   MSE_NACOS
+        # The source type used to filter the query results.
         self.type = type
 
     def validate(self):

@@ -16,12 +16,19 @@ class BatchExportHttpApisRequest(DaraModel):
         format: str = None,
         gateway_id: str = None,
     ):
+        # The list of API IDs to export.
+        # 
         # This parameter is required.
         self.api_ids = api_ids
+        # The API type.
+        # 
         # This parameter is required.
         self.api_type = api_type
+        # The export extension configuration. When this configuration is specified for a REST API, gatewayId is required. This configuration is required for batch export of HTTP APIs.
         self.extension_config = extension_config
+        # The export format. Valid values: json and yaml. Default value: yaml.
         self.format = format
+        # The gateway instance ID. This parameter is required when extensionConfig is specified for a REST API. This parameter is required for batch export of HTTP APIs.
         self.gateway_id = gateway_id
 
     def validate(self):
@@ -79,10 +86,15 @@ class BatchExportHttpApisRequestExtensionConfig(DaraModel):
         with_policy: bool = None,
         with_service: bool = None,
     ):
+        # Specifies whether to export the consumer authorization configuration.
         self.with_auth_config = with_auth_config
+        # Specifies whether to export the authorized consumers.
         self.with_auth_consumer = with_auth_consumer
+        # Specifies whether to export the plugin configuration.
         self.with_plugin = with_plugin
+        # Specifies whether to export the policy configuration.
         self.with_policy = with_policy
+        # Specifies whether to export the backend service.
         self.with_service = with_service
 
     def validate(self):

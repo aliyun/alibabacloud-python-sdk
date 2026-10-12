@@ -16,7 +16,7 @@ class ListAiModelCardsRequest(DaraModel):
         # 
         # This parameter is required.
         self.gateway_id = gateway_id
-        # The fuzzy match keyword for the model provider identifier or model name. If left empty, all model cards under the current gateway are queried.
+        # The keyword for fuzzy match against the model provider identifier or model name. If this parameter is left empty, all model cards under the current gateway are queried.
         self.keyword = keyword
         # The page number. Default value: 1. The value must be greater than or equal to 1.
         self.page_number = page_number

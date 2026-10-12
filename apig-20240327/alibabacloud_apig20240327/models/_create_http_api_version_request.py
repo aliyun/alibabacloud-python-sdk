@@ -10,6 +10,7 @@ class CreateHttpApiVersionRequest(DaraModel):
         self,
         version_config: main_models.HttpApiVersionConfig = None,
     ):
+        # The API versioning configuration.
         self.version_config = version_config
 
     def validate(self):

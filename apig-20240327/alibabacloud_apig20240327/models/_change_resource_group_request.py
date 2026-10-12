@@ -12,11 +12,11 @@ class ChangeResourceGroupRequest(DaraModel):
         resource_type: str = None,
         service: str = None,
     ):
-        # The ID of the destination resource group. You can view resource group IDs in the Resource Management console.
+        # The ID of the destination resource group. You can view the ID in the Resource Management console.
         self.resource_group_id = resource_group_id
         # The ID of the resource to be moved. The value must match the specified ResourceType.
         self.resource_id = resource_id
-        # The resource type. The value is case-sensitive and must exactly match one of the valid values.
+        # The resource type. This parameter is case-sensitive and must exactly match one of the valid values.
         self.resource_type = resource_type
         # The cloud service identifier. Fixed as APIG. You generally do not need to specify this parameter.
         self.service = service

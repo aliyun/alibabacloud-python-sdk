@@ -12,8 +12,9 @@ class ListGatewayErrorAccessLogsResponseBody(DaraModel):
         data: List[Dict[str, str]] = None,
         request_id: str = None,
     ):
+        # The list of log entries. Each entry is a mapping from field names to field values.
         self.data = data
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

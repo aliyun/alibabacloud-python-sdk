@@ -83,8 +83,8 @@ class GetTraceConfigResponseBodyData(DaraModel):
         trace_type: str = None,
     ):
         # Indicates whether Tracing Analysis is enabled. Valid values:
-        # - true: enabled.
-        # - false: shutdown.
+        # - true: Enabled.
+        # - false: Shutdown.
         self.enable = enable
         # The sampling ratio.
         self.sample_ratio = sample_ratio

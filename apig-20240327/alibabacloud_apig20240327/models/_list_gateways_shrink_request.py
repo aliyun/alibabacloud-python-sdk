@@ -21,7 +21,7 @@ class ListGatewaysShrinkRequest(DaraModel):
         self.gateway_id = gateway_id
         # The gateway type.
         self.gateway_type = gateway_type
-        # The keyword for full match search. Case-insensitive.
+        # The keyword for full match search. The search is case-insensitive.
         self.keyword = keyword
         # The gateway name for exact match query.
         self.name = name

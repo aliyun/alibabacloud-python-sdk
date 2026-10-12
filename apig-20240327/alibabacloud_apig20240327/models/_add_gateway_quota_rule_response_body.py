@@ -19,7 +19,7 @@ class AddGatewayQuotaRuleResponseBody(DaraModel):
         self.code = code
         # The response data.
         self.data = data
-        # The message content.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id

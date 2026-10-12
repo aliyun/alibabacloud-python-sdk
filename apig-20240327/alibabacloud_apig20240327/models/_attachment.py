@@ -33,7 +33,7 @@ class Attachment(DaraModel):
         # - Domain: gateway domain name.
         # - Gateway: gateway.
         self.attach_resource_type = attach_resource_type
-        # The environment to which the mounted resource belongs. If the environment ID is *, the mounted resource of the policy is not associated with any environment.
+        # The environment to which the mounted resource belongs. If the environment ID is returned as *, the mounted resource of the policy is not associated with any environment.
         self.environment_id = environment_id
         # The gateway to which the mounted resource belongs.
         self.gateway_id = gateway_id

@@ -14,7 +14,7 @@ class UpdateEnvironmentRequest(DaraModel):
         # 
         # This parameter is required.
         self.alias = alias
-        # The description of the environment. You can specify information such as the purpose and owner of the environment.
+        # The description of the environment. You can specify information such as the purpose of the environment and the owner.
         self.description = description
 
     def validate(self):

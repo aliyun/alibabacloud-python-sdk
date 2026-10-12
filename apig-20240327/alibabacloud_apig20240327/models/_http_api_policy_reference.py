@@ -10,7 +10,7 @@ class HttpApiPolicyReference(DaraModel):
         policy_attachment_id: str = None,
         policy_id: str = None,
     ):
-        # The policy attachment ID.
+        # The policy mount ID.
         self.policy_attachment_id = policy_attachment_id
         # The policy ID.
         self.policy_id = policy_id

@@ -12,7 +12,7 @@ class HiMarketHmacConfig(DaraModel):
         self,
         credentials: List[main_models.HiMarketHmacConfigCredentials] = None,
     ):
-        # The list of credentials.
+        # The credential list.
         self.credentials = credentials
 
     def validate(self):

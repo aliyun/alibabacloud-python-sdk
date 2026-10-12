@@ -35,7 +35,7 @@ class UpdateAndAttachPolicyRequest(DaraModel):
         # 
         # This parameter is required.
         self.attach_resource_type = attach_resource_type
-        # The configuration information. A JSON string.
+        # The configuration information. The value is a JSON string.
         # 
         # This parameter is required.
         self.config = config

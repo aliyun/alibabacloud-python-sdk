@@ -122,11 +122,11 @@ class GetDomainResponseBodyData(DaraModel):
         self.domain_id = domain_id
         # The domain name scope.
         self.domain_scope = domain_scope
-        # Specifies whether to enable forced HTTPS redirect when the protocol type is set to HTTPS.
+        # Specifies whether to enable forced HTTPS redirect when the HTTPS protocol type is configured.
         self.force_https = force_https
         # The HTTP/2 setting.
         self.http_2option = http_2option
-        # The certificate issue authority.
+        # The certification authority.
         self.issuer = issuer
         # Indicates whether mutual TLS (mTLS) authentication is enabled.
         self.m_tlsenabled = m_tlsenabled
@@ -136,10 +136,10 @@ class GetDomainResponseBodyData(DaraModel):
         self.not_after_timstamp = not_after_timstamp
         # The certificate effective period.
         self.not_before_timestamp = not_before_timestamp
-        # The protocol type supported by the domain name. Valid values:
+        # The protocol type supported by the domain name.
         # 
-        # - HTTP: only HTTP is supported.
-        # - HTTPS: only HTTPS is supported.
+        # - HTTP: Only the HTTP protocol is supported.
+        # - HTTPS: Only the HTTPS protocol is supported.
         self.protocol = protocol
         # The resource group ID.
         self.resource_group_id = resource_group_id

@@ -18,7 +18,7 @@ class SubDomainInfo(DaraModel):
         self.name = name
         # The network type.
         self.network_type = network_type
-        # The protocol type supported by the subdomain. Valid values: HTTP, HTTPS.
+        # The protocol type supported by the subdomain. Valid values: HTTP and HTTPS.
         self.protocol = protocol
 
     def validate(self):

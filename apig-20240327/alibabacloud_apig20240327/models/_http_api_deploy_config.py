@@ -40,7 +40,7 @@ class HttpApiDeployConfig(DaraModel):
         self.custom_domain_ids = custom_domain_ids
         # The list of custom domain name information.
         self.custom_domain_infos = custom_domain_infos
-        # Specifies whether to enable gateway system models. This parameter takes effect only when the publishing scenario is AiAutoRouter. Default value: false. This field is used for backward compatibility with older clients. If systemModelTiers is not submitted, true indicates that all three tiers of system models are enabled, and false indicates that all are disabled.
+        # Specifies whether to enable gateway system models. This parameter takes effect only when the publishing scenario is AiAutoRouter. Default value: false. This parameter is used for backward compatibility with earlier clients. If systemModelTiers is not submitted, true indicates that all three tiers of system models are enabled, and false indicates that all are disabled.
         self.enable_system_models = enable_system_models
         # The list of environment domain name IDs. If not specified, all environment domain names are bound. An empty array indicates that no environment domain names are bound.
         self.env_domain_ids = env_domain_ids
@@ -58,7 +58,7 @@ class HttpApiDeployConfig(DaraModel):
         self.mock = mock
         # The list of policy configurations.
         self.policy_configs = policy_configs
-        # The current online routing mode of the REST API. ordinary indicates per-operation routing, and compressed indicates single-prefix routing for the API. This field is not returned for non-REST APIs.
+        # The current online routing mode of the REST API. ordinary indicates per-operation routing, and compressed indicates single-prefix routing for the API. This parameter is not returned for non-REST APIs.
         self.rest_api_route_mode = rest_api_route_mode
         # The backend service information.
         self.route_backend = route_backend
@@ -323,7 +323,7 @@ class HttpApiDeployConfigServiceConfigs(DaraModel):
         version: str = None,
         weight: int = None,
     ):
-        # The capability tier for intelligent routing candidates. Specify this parameter only when the publishing scenario is AiAutoRouter. Valid values: economy, standard, and premium.
+        # The capability tier of the intelligent routing candidate. Specify this parameter only when the publishing scenario is AiAutoRouter. Valid values: economy, standard, and premium.
         self.capability_tier = capability_tier
         # The gateway service ID.
         self.gateway_service_id = gateway_service_id

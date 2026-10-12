@@ -250,7 +250,7 @@ class GetResourceOverviewResponseBodyDataGateway(DaraModel):
     ):
         # The number of running gateways.
         self.running_count = running_count
-        # The total number of gateway instances.
+        # The number of gateway instances.
         self.total_count = total_count
 
     def validate(self):
@@ -287,7 +287,7 @@ class GetResourceOverviewResponseBodyDataApi(DaraModel):
     ):
         # The number of published APIs.
         self.published_count = published_count
-        # The total number of APIs.
+        # The number of APIs.
         self.total_count = total_count
 
     def validate(self):

@@ -72,11 +72,11 @@ class ListPluginsResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # The plugin list.
+        # The list of plug-ins.
         self.items = items
         # The page number.
         self.page_number = page_number
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
         # The total number of entries.
         self.total_size = total_size
@@ -135,13 +135,13 @@ class ListPluginsResponseBodyDataItems(DaraModel):
         plugin_class_info: main_models.ListPluginsResponseBodyDataItemsPluginClassInfo = None,
         plugin_id: str = None,
     ):
-        # The plugin attachment information.
+        # The plug-in mounting information.
         self.attachment_info = attachment_info
         # The gateway information.
         self.gateway_info = gateway_info
-        # The plugin type information.
+        # The plug-in type information.
         self.plugin_class_info = plugin_class_info
-        # The plugin ID.
+        # The plug-in ID.
         self.plugin_id = plugin_id
 
     def validate(self):
@@ -208,11 +208,11 @@ class ListPluginsResponseBodyDataItemsPluginClassInfo(DaraModel):
         self.execute_priority = execute_priority
         # The execution stage.
         self.execute_stage = execute_stage
-        # The plugin name.
+        # The plug-in name.
         self.name = name
-        # The plugin type ID.
+        # The plug-in type ID.
         self.plugin_class_id = plugin_class_id
-        # The plugin source.
+        # The plug-in source.
         self.source = source
         # The version.
         self.version = version
@@ -324,9 +324,9 @@ class ListPluginsResponseBodyDataItemsAttachmentInfo(DaraModel):
         enable: str = None,
         plugin_attachment_id: str = None,
     ):
-        # Indicates whether the plugin is enabled.
+        # Indicates whether the plug-in is enabled.
         self.enable = enable
-        # The plugin attachment ID.
+        # The plug-in mounting ID.
         self.plugin_attachment_id = plugin_attachment_id
 
     def validate(self):

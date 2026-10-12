@@ -20,7 +20,7 @@ class ListAiModelProvidersRequest(DaraModel):
         self.page_number = page_number
         # The number of entries per page. Default value: 10. Valid values: 1 to 500.
         self.page_size = page_size
-        # The fuzzy match condition for the model provider identifier. If left empty, all model providers under the current gateway are queried.
+        # The fuzzy match condition for the model provider identifier. If this parameter is left empty, all model providers under the current gateway are queried.
         self.provider = provider
 
     def validate(self):

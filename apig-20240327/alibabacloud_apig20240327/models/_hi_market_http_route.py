@@ -15,7 +15,7 @@ class HiMarketHttpRoute(DaraModel):
         domains: List[main_models.HiMarketDomain] = None,
         match: main_models.HiMarketHttpRouteMatch = None,
     ):
-        # Indicates whether the route is a built-in route.
+        # Indicates whether this is a built-in route.
         self.builtin = builtin
         # The route description.
         self.description = description

@@ -17,7 +17,7 @@ class ListExternalServicesRequest(DaraModel):
         self.importable_only = importable_only
         # The maximum number of results to return. Valid range: (0, 100]. Default value: 10.
         self.limit = limit
-        # Fuzzy search by API name.
+        # Fuzzy match by API name.
         self.name_like = name_like
         # The workspace ID of the PAI-EAS service.
         self.pai_workspace_id = pai_workspace_id

@@ -28,7 +28,7 @@ class UpdateDomainRequest(DaraModel):
         self.client_cacert = client_cacert
         # The scope of the domain name.
         self.domain_scope = domain_scope
-        # Specifies whether to enable forced HTTPS redirect when the protocol type is set to HTTPS. This parameter is required when the protocol is HTTPS.
+        # Specifies whether to enable forced HTTPS redirect when the HTTPS protocol type is set. When the protocol is HTTPS, forceHttps is required.
         self.force_https = force_https
         # The HTTP/2 settings.
         self.http_2option = http_2option
@@ -36,8 +36,8 @@ class UpdateDomainRequest(DaraModel):
         self.m_tlsenabled = m_tlsenabled
         # The protocol type supported by the domain name.
         # 
-        # - HTTP: Only HTTP is supported.
-        # - HTTPS: Only HTTPS is supported.
+        # - HTTP: Only the HTTP protocol is supported.
+        # - HTTPS: Only the HTTPS protocol is supported.
         self.protocol = protocol
         # The cipher suite configuration.
         self.tls_cipher_suites_config = tls_cipher_suites_config

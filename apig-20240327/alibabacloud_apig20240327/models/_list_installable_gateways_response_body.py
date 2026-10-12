@@ -15,8 +15,11 @@ class ListInstallableGatewaysResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response status code.
         self.code = code
+        # The response data.
         self.data = data
+        # The response message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -69,9 +72,13 @@ class ListInstallableGatewaysResponseBodyData(DaraModel):
         page_size: str = None,
         total_size: str = None,
     ):
+        # The list of gateways.
         self.items = items
+        # The page number.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The total number of entries.
         self.total_size = total_size
 
     def validate(self):
@@ -131,12 +138,19 @@ class ListInstallableGatewaysResponseBodyDataItems(DaraModel):
         installed_plugin_version: str = None,
         name: str = None,
     ):
+        # The database engine version of the gateway DPI engine.
         self.engine_version = engine_version
+        # The gateway ID.
         self.gateway_id = gateway_id
+        # The gateway status. The value is passed through from the GatewayPhase enumeration, such as Running or Creating.
         self.gateway_phase = gateway_phase
+        # Indicates whether the plugin can be installed on the gateway.
         self.installable = installable
+        # The reason why the plugin cannot be installed.
         self.installable_false_reason_type = installable_false_reason_type
+        # The version number of another version of the same plugin class that is already installed on the gateway.
         self.installed_plugin_version = installed_plugin_version
+        # The gateway name.
         self.name = name
 
     def validate(self):

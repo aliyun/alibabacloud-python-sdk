@@ -23,7 +23,7 @@ class DomainInfo(DaraModel):
         tls_min: str = None,
         update_timestamp: int = None,
     ):
-        # The certificate identity from SSL Certificates Service.
+        # The certificate identity in SSL Certificates Service.
         self.cert_identifier = cert_identifier
         # The client CA certificate.
         self.client_cacert = client_cacert

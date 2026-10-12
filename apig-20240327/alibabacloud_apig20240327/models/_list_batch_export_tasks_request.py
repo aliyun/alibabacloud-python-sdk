@@ -16,13 +16,21 @@ class ListBatchExportTasksRequest(DaraModel):
         start_time: str = None,
         statuses: str = None,
     ):
+        # The end of the creation time range. Format: yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\".
         self.end_time = end_time
+        # The gateway instance ID. If specified, only tasks under this gateway are returned.
         self.gateway_id = gateway_id
+        # The maximum number of tasks to return in a single request.
         self.max_results = max_results
+        # The paging token that indicates the start position of the next query.
         self.next_token = next_token
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The start of the creation time range. Format: yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\".
         self.start_time = start_time
+        # The list of task statuses. Separate multiple statuses with commas (,).
         self.statuses = statuses
 
     def validate(self):

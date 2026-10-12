@@ -88,10 +88,7 @@ class HttpDubboTranscoderMethodMapList(DaraModel):
         self.method_path = method_path
         # The parameter mapping list.
         self.param_maps_list = param_maps_list
-        # The header pass-through type. Valid values:
-        # - PASS_ALL: Pass through all headers.
-        # - PASS_NOT: Do not pass through headers.
-        # - PASS_ASSIGN: Pass through specified headers.
+        # The header pass-through type. Valid values: PASS_ALL: passes through all headers. PASS_NOT: does not pass through headers. PASS_ASSIGN: passes through specified parameters.
         self.pass_through_all_headers = pass_through_all_headers
         # The list of specified pass-through headers.
         self.pass_through_list = pass_through_list
@@ -163,11 +160,7 @@ class HttpDubboTranscoderMethodMapListParamMapsList(DaraModel):
     ):
         # The key used to extract the input parameter.
         self.extract_key = extract_key
-        # The input parameter location. Valid values:
-        # - ALL_QUERY_PARAMETER: Request parameter.
-        # - ALL_HEADER: Request header.
-        # - ALL_PATH: URI of the request.
-        # - ALL_BODY: Request body.
+        # The input parameter location. Valid values: ALL_QUERY_PARAMETER: request parameter. ALL_HEADER: request header. ALL_PATH: URI of the request. ALL_BODY: request body.
         self.extract_key_spec = extract_key_spec
         # The backend parameter type.
         self.mapping_type = mapping_type

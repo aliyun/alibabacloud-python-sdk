@@ -12,19 +12,13 @@ class HttpApiBackendMatchCondition(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The key of the matching condition.
+        # The match key.
         self.key = key
-        # The operator. Exact match, prefix match, and regular expressions are supported.
-        # 
-        # Valid values:
-        # 
-        # *   equal
-        # *   regex
-        # *   prefix
+        # The operator. Three matching methods are supported: exact match, prefix match, and regular expression.
         self.operator = operator
-        # The match type. Query and Header parameters can be matched.
+        # The match type. Supports matching by query parameter or header parameter.
         self.type = type
-        # The value of the matching condition.
+        # The match value.
         self.value = value
 
     def validate(self):

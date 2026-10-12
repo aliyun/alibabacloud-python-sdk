@@ -58,13 +58,13 @@ class CreateConsumerAuthorizationRulesRequestAuthorizationRules(DaraModel):
         self.consumer_group_id = consumer_group_id
         # The consumer ID.
         self.consumer_id = consumer_id
-        # The expiration mode. Currently only LongTerm is supported.
+        # The expiration mode. Currently, only LongTerm is supported.
         self.expire_mode = expire_mode
         # The expiration timestamp. Unit: milliseconds.
         self.expire_timestamp = expire_timestamp
         # The principal type.
         self.principal_type = principal_type
-        # The resource identifier. Serves as a unique identifier for space reuse by non-standard code sources.
+        # The resource identifier, which serves as a unique identifier for space reuse by non-standard code sources.
         self.resource_identifier = resource_identifier
         # The resource type.
         self.resource_type = resource_type

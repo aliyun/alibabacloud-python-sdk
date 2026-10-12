@@ -15,8 +15,11 @@ class GetGatewayElasticPolicyResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response status code.
         self.code = code
+        # The response data.
         self.data = data
+        # The response message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -69,9 +72,13 @@ class GetGatewayElasticPolicyResponseBodyData(DaraModel):
         elastic_type: str = None,
         gateway_id: str = None,
     ):
+        # The elastic policy configuration, deserialized from the elastic_config JSON field in the database.
         self.elastic_policy = elastic_policy
+        # The KubeOne AutoScaleStrategy instance ID.
         self.elastic_strategy_id = elastic_strategy_id
+        # The elastic policy type.
         self.elastic_type = elastic_type
+        # The gateway ID.
         self.gateway_id = gateway_id
 
     def validate(self):
@@ -125,12 +132,19 @@ class GetGatewayElasticPolicyResponseBodyDataElasticPolicy(DaraModel):
         max_units: int = None,
         time_policy_list: List[main_models.GetGatewayElasticPolicyResponseBodyDataElasticPolicyTimePolicyList] = None,
     ):
+        # The time periods during which AutoHPA scale-out is prohibited.
         self.disable_scale_time_policy_list = disable_scale_time_policy_list
+        # Indicates whether elastic scaling is enabled.
         self.elastic_enabled = elastic_enabled
+        # The policy type.
         self.elastic_type = elastic_type
+        # The time periods during which AutoHPA scale-out is allowed.
         self.enable_scale_time_policy_list = enable_scale_time_policy_list
+        # The load alert threshold switch for AutoHPA.
         self.load_warning_threshold = load_warning_threshold
+        # The maximum number of replicas for AutoHPA.
         self.max_units = max_units
+        # The list of CronHPA scheduled policies. Each entry includes units (number of replicas), startTime, and endTime.
         self.time_policy_list = time_policy_list
 
     def validate(self):
@@ -222,8 +236,11 @@ class GetGatewayElasticPolicyResponseBodyDataElasticPolicyTimePolicyList(DaraMod
         start_time: str = None,
         units: int = None,
     ):
+        # The O&M end time in the HH:mm format.
         self.end_time = end_time
+        # The O&M start time in the HH:mm format.
         self.start_time = start_time
+        # The number of replicas.
         self.units = units
 
     def validate(self):
@@ -264,7 +281,9 @@ class GetGatewayElasticPolicyResponseBodyDataElasticPolicyEnableScaleTimePolicyL
         end_time: str = None,
         start_time: str = None,
     ):
+        # The O&M end time in the HH:mm format.
         self.end_time = end_time
+        # The O&M start time in the HH:mm format.
         self.start_time = start_time
 
     def validate(self):
@@ -299,7 +318,9 @@ class GetGatewayElasticPolicyResponseBodyDataElasticPolicyDisableScaleTimePolicy
         end_time: str = None,
         start_time: str = None,
     ):
+        # The O&M end time in the HH:mm format.
         self.end_time = end_time
+        # The O&M start time in the HH:mm format.
         self.start_time = start_time
 
     def validate(self):
