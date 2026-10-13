@@ -14,10 +14,15 @@ class SyntaxCheckAndTransformSqlConversionTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data body returned by the operation. For the field structure, see the child field descriptions.
         self.data = data
+        # The error code. An empty string is returned if the call is successful.
         self.err_code = err_code
+        # The error message. An empty string is returned if the call is successful.
         self.err_message = err_message
+        # The request ID, which is used to locate and troubleshoot issues with this call.
         self.request_id = request_id
+        # Indicates whether the call is successful. Valid values: true and false. If the call fails, use errCode and errMessage to troubleshoot the issue.
         self.success = success
 
     def validate(self):
@@ -71,6 +76,7 @@ class SyntaxCheckAndTransformSqlConversionTaskResponseBodyData(DaraModel):
         self,
         task_id: int = None,
     ):
+        # The task ID that uniquely identifies a task.
         self.task_id = task_id
 
     def validate(self):

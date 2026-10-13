@@ -12,9 +12,14 @@ class ListDataCheckConfigRequest(DaraModel):
         src_table: str = None,
         task_id: int = None,
     ):
+        # The page number. Default value: 1.
         self.page_index = page_index
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The source table name for fuzzy search.
         self.src_table = src_table
+        # The ID of the data validation task.
+        # 
         # This parameter is required.
         self.task_id = task_id
 

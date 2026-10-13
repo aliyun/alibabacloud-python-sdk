@@ -11,9 +11,13 @@ class ListDataCheckReportStepByJobIdRequest(DaraModel):
         page_index: int = None,
         page_size: int = None,
     ):
+        # The verification sub-job ID.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # The page number.
         self.page_index = page_index
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):

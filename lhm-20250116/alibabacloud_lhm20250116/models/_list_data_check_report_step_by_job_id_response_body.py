@@ -19,13 +19,21 @@ class ListDataCheckReportStepByJobIdResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The data list returned by the operation. For the element structure, see the child field descriptions.
         self.data = data
+        # The error code. An empty string is returned if the call is successful.
         self.err_code = err_code
+        # The error message. An empty string is returned if the call is successful.
         self.err_message = err_message
+        # The page number, starting from 1.
         self.page_index = page_index
+        # The page size, which is the number of records returned per page.
         self.page_size = page_size
+        # The request ID, which is used to locate and troubleshoot issues with this call.
         self.request_id = request_id
+        # Indicates whether the call is successful. A value of true indicates success. A value of false indicates failure. If the call fails, check errCode and errMessage for troubleshooting.
         self.success = success
+        # The total number of records that meet the query conditions. This value is used for pagination.
         self.total_count = total_count
 
     def validate(self):
@@ -121,24 +129,50 @@ class ListDataCheckReportStepByJobIdResponseBodyData(DaraModel):
         step_id: str = None,
         target_pt_name: str = None,
     ):
+        # The shard boundary information.
         self.boundary = boundary
+        # The number of verified fields.
         self.check_colum_count = check_colum_count
+        # The destination data volume. For single SQL verification, this indicates the data volume of the destination result set. For data volume verification and full verification, this indicates the total data volume on the destination.
         self.dst_count = dst_count
+        # The SQL statement executed on the destination.
         self.dst_sql = dst_sql
+        # The error message.
         self.err_message = err_message
+        # The reserved field.
         self.extra = extra
+        # The job end time.
         self.gmt_end = gmt_end
+        # The job start time.
         self.gmt_start = gmt_start
+        # Indicates whether the data is consistent. Valid values:
+        # - 0: Inconsistent.
+        # - 1: Consistent.
         self.is_consistent = is_consistent
+        # The number of verified metrics.
         self.metric_colum_count = metric_colum_count
+        # The number of metrics that passed verification.
         self.metric_pass_colum_count = metric_pass_colum_count
+        # The number of fields that passed verification.
         self.pass_colum_count = pass_colum_count
+        # The unique ID of the verification result.
         self.result_id = result_id
+        # The source partition name.
         self.source_pt_name = source_pt_name
+        # The source data volume. For single SQL verification, this indicates the data volume of the source result set. For data volume verification and full verification, this indicates the total data volume on the source.
         self.src_count = src_count
+        # The SQL statement executed on the source.
         self.src_sql = src_sql
+        # The task status. Valid values:
+        # - 0: Created.
+        # - 1: Running.
+        # - 2: Completed.
+        # - 3: Stopped.
+        # - 4: Canceled.
         self.status = status
+        # The step ID, which uniquely identifies an execution step within the job.
         self.step_id = step_id
+        # The destination partition name.
         self.target_pt_name = target_pt_name
 
     def validate(self):

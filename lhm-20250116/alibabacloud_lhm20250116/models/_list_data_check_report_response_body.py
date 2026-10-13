@@ -19,13 +19,21 @@ class ListDataCheckReportResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The data list returned by the operation. For the structure of each element, see the child field descriptions.
         self.data = data
+        # The error code. An empty string is returned if the call is successful.
         self.err_code = err_code
+        # The error message. An empty string is returned if the call is successful.
         self.err_message = err_message
+        # The page number, starting from 1.
         self.page_index = page_index
+        # The page size, which is the number of records returned per page.
         self.page_size = page_size
+        # The request ID, which is used to locate and troubleshoot issues with this call.
         self.request_id = request_id
+        # Indicates whether the call is successful. A value of true indicates success. A value of false indicates failure. If the call fails, check errCode and errMessage for details.
         self.success = success
+        # The total number of records that match the query conditions. This value is used for pagination.
         self.total_count = total_count
 
     def validate(self):
@@ -153,56 +161,117 @@ class ListDataCheckReportResponseBodyData(DaraModel):
         threshold: float = None,
         total_count_threshold: str = None,
     ):
+        # The validation job (batch) ID.
         self.batch_id = batch_id
+        # The number of columns checked.
         self.check_colum_count = check_colum_count
+        # The check result. Valid values:
+        # 
+        # - 0: No records.
+        # - 1: Passed.
+        # - 2: Failed.
         self.check_result = check_result
+        # The number of rows compared.
         self.compare_row_count = compare_row_count
+        # The job completion rate.
         self.completion_rate = completion_rate
+        # The difference rate.
         self.diff_rate = diff_rate
+        # The primary key or composite primary key of the destination. This is the comparison column on the destination used during row-by-row, column-by-column comparison.
         self.dst_compare_column = dst_compare_column
         self.dst_hint = dst_hint
+        # The metric field of the destination.
         self.dst_metric_name = dst_metric_name
+        # The SQL list of the destination.
         self.dst_sql_list = dst_sql_list
+        # The error message.
         self.error_msg = error_msg
+        # The execution time of this check report detail.
         self.exec_time = exec_time
+        # The expected number of different rows.
         self.exp_diff_count = exp_diff_count
+        # The completion time.
         self.finish_time = finish_time
+        # Indicates whether the check is skipped.
         self.is_skipped = is_skipped
+        # The ID of the check sub-job.
         self.job_id = job_id
+        # The job status. Valid values:
+        # 
+        # - 0: INIT (pending).
+        # - 1: RUNNING (running).
+        # - 2: FINISHED (completed).
+        # - 3: STOPPED (stopped).
+        # - 4: FAIL (failed).
+        # - 6: READY (ready).
+        # - 7: SKIPPED (skipped).
         self.job_status = job_status
+        # The number of metrics checked.
         self.metric_colum_count = metric_colum_count
+        # The number of metrics that passed the check.
         self.metric_pass_colum_count = metric_pass_colum_count
+        # The number of rows that exist only on the destination.
         self.only_dst_count = only_dst_count
+        # The number of rows that exist only on the source.
         self.only_src_count = only_src_count
+        # The number of columns that passed the check.
         self.pass_colum_count = pass_colum_count
+        # The actual number of different rows.
         self.real_diff_count = real_diff_count
+        # The actual number of identical rows.
         self.real_same_count = real_same_count
+        # The ID of the check result.
         self.result_id = result_id
+        # The name of the source column.
         self.source_column = source_column
+        # The number of rows in the source data.
         self.source_count = source_count
+        # The source data source.
         self.source_data_source = source_data_source
+        # The error message of the source.
         self.source_error = source_error
+        # The GROUP BY clause of the source.
         self.source_group_clause = source_group_clause
+        # The source partition.
         self.source_partition = source_partition
+        # The name of the source table.
         self.source_table = source_table
+        # The data type of the source.
         self.source_type = source_type
+        # The WHERE clause of the source.
         self.source_where_clause = source_where_clause
+        # The primary key or composite primary key of the source. This is the comparison column on the source used during row-by-row, column-by-column comparison.
         self.src_compare_column = src_compare_column
         self.src_hint = src_hint
+        # The metric field of the source.
         self.src_metric_name = src_metric_name
+        # The SQL list of the source.
         self.src_sql_list = src_sql_list
+        # The column of the destination.
         self.target_column = target_column
+        # The number of rows in the destination data.
         self.target_count = target_count
+        # The data source of the destination.
         self.target_data_source = target_data_source
+        # The error message of the destination.
         self.target_error = target_error
+        # The GROUP BY clause of the destination.
         self.target_group_clause = target_group_clause
+        # The destination partition.
         self.target_partition = target_partition
+        # The destination table.
         self.target_table = target_table
+        # The destination data source type.
         self.target_type = target_type
+        # The destination WHERE clause.
         self.target_where_clause = target_where_clause
+        # The ID of the validation task configuration.
         self.task_config_id = task_config_id
+        # The validation template name.
         self.template_name = template_name
+        # The threshold.
         self.threshold = threshold
+        # The threshold for comparing grouped data volumes.
         self.total_count_threshold = total_count_threshold
 
     def validate(self):

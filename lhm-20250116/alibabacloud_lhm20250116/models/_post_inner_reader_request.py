@@ -11,7 +11,9 @@ class PostInnerReaderRequest(DaraModel):
         data_source_descriptor: main_models.PostInnerReaderRequestDataSourceDescriptor = None,
         data_source_name: str = None,
     ):
+        # The fallback description used when the data source is missing. Use this parameter to pass the complete data source description information in the request parameters (Plan B).
         self.data_source_descriptor = data_source_descriptor
+        # The data source name. The discovery task uses this field as the dimension identifier.
         self.data_source_name = data_source_name
 
     def validate(self):
@@ -47,6 +49,7 @@ class PostInnerReaderRequestDataSourceDescriptor(DaraModel):
         self,
         ds_name: str = None,
     ):
+        # The data source name. Exact match and fuzzy match are supported.
         self.ds_name = ds_name
 
     def validate(self):

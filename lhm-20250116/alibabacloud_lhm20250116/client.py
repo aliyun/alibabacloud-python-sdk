@@ -1832,6 +1832,162 @@ class Client(OpenApiClient):
         headers = {}
         return await self.exec_meta_data_component_name_with_options_async(request, headers, runtime)
 
+    def exec_meta_profiling_skill_job_disable_with_options(
+        self,
+        request: main_models.ExecMetaProfilingSkillJobDisableRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ExecMetaProfilingSkillJobDisableResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.ds_id):
+            body['dsId'] = request.ds_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExecMetaProfilingSkillJobDisable',
+            version = '2025-01-16',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/meta/skill/profiling/job/disable',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ExecMetaProfilingSkillJobDisableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def exec_meta_profiling_skill_job_disable_with_options_async(
+        self,
+        request: main_models.ExecMetaProfilingSkillJobDisableRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ExecMetaProfilingSkillJobDisableResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.ds_id):
+            body['dsId'] = request.ds_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExecMetaProfilingSkillJobDisable',
+            version = '2025-01-16',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/meta/skill/profiling/job/disable',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ExecMetaProfilingSkillJobDisableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def exec_meta_profiling_skill_job_disable(
+        self,
+        request: main_models.ExecMetaProfilingSkillJobDisableRequest,
+    ) -> main_models.ExecMetaProfilingSkillJobDisableResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.exec_meta_profiling_skill_job_disable_with_options(request, headers, runtime)
+
+    async def exec_meta_profiling_skill_job_disable_async(
+        self,
+        request: main_models.ExecMetaProfilingSkillJobDisableRequest,
+    ) -> main_models.ExecMetaProfilingSkillJobDisableResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.exec_meta_profiling_skill_job_disable_with_options_async(request, headers, runtime)
+
+    def exec_meta_profiling_task_run_with_options(
+        self,
+        request: main_models.ExecMetaProfilingTaskRunRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ExecMetaProfilingTaskRunResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.batch_no):
+            body['batchNo'] = request.batch_no
+        if not DaraCore.is_null(request.component_id):
+            body['componentId'] = request.component_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExecMetaProfilingTaskRun',
+            version = '2025-01-16',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/meta/profiling/task/runNow',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ExecMetaProfilingTaskRunResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def exec_meta_profiling_task_run_with_options_async(
+        self,
+        request: main_models.ExecMetaProfilingTaskRunRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ExecMetaProfilingTaskRunResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.batch_no):
+            body['batchNo'] = request.batch_no
+        if not DaraCore.is_null(request.component_id):
+            body['componentId'] = request.component_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExecMetaProfilingTaskRun',
+            version = '2025-01-16',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/meta/profiling/task/runNow',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ExecMetaProfilingTaskRunResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def exec_meta_profiling_task_run(
+        self,
+        request: main_models.ExecMetaProfilingTaskRunRequest,
+    ) -> main_models.ExecMetaProfilingTaskRunResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.exec_meta_profiling_task_run_with_options(request, headers, runtime)
+
+    async def exec_meta_profiling_task_run_async(
+        self,
+        request: main_models.ExecMetaProfilingTaskRunRequest,
+    ) -> main_models.ExecMetaProfilingTaskRunResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.exec_meta_profiling_task_run_with_options_async(request, headers, runtime)
+
     def exec_sql_trans_single_script_translate_with_options(
         self,
         request: main_models.ExecSqlTransSingleScriptTranslateRequest,
@@ -2015,6 +2171,86 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.exec_workflow_connectivity_with_options_async(request, headers, runtime)
+
+    def get_all_rules_summary_with_options(
+        self,
+        request: main_models.GetAllRulesSummaryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAllRulesSummaryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.source):
+            query['source'] = request.source
+        if not DaraCore.is_null(request.target):
+            query['target'] = request.target
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAllRulesSummary',
+            version = '2025-01-16',
+            protocol = 'HTTPS',
+            pathname = f'/api/bigdata/sql-translator/open/rules',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAllRulesSummaryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_all_rules_summary_with_options_async(
+        self,
+        request: main_models.GetAllRulesSummaryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAllRulesSummaryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.source):
+            query['source'] = request.source
+        if not DaraCore.is_null(request.target):
+            query['target'] = request.target
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAllRulesSummary',
+            version = '2025-01-16',
+            protocol = 'HTTPS',
+            pathname = f'/api/bigdata/sql-translator/open/rules',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAllRulesSummaryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_all_rules_summary(
+        self,
+        request: main_models.GetAllRulesSummaryRequest,
+    ) -> main_models.GetAllRulesSummaryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_all_rules_summary_with_options(request, headers, runtime)
+
+    async def get_all_rules_summary_async(
+        self,
+        request: main_models.GetAllRulesSummaryRequest,
+    ) -> main_models.GetAllRulesSummaryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_all_rules_summary_with_options_async(request, headers, runtime)
 
     def get_bwm_migration_submit_instance_list_with_options(
         self,
@@ -2343,6 +2579,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_bwm_migration_workflow_submit_start_with_options_async(request, headers, runtime)
+
+    def get_category_detail_with_options(
+        self,
+        request: main_models.GetCategoryDetailRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCategoryDetailResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.category):
+            body['category'] = request.category
+        if not DaraCore.is_null(request.source):
+            body['source'] = request.source
+        if not DaraCore.is_null(request.target):
+            body['target'] = request.target
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCategoryDetail',
+            version = '2025-01-16',
+            protocol = 'HTTPS',
+            pathname = f'/api/bigdata/sql-translator/open/rules/categories',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCategoryDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_category_detail_with_options_async(
+        self,
+        request: main_models.GetCategoryDetailRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCategoryDetailResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.category):
+            body['category'] = request.category
+        if not DaraCore.is_null(request.source):
+            body['source'] = request.source
+        if not DaraCore.is_null(request.target):
+            body['target'] = request.target
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCategoryDetail',
+            version = '2025-01-16',
+            protocol = 'HTTPS',
+            pathname = f'/api/bigdata/sql-translator/open/rules/categories',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCategoryDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_category_detail(
+        self,
+        request: main_models.GetCategoryDetailRequest,
+    ) -> main_models.GetCategoryDetailResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_category_detail_with_options(request, headers, runtime)
+
+    async def get_category_detail_async(
+        self,
+        request: main_models.GetCategoryDetailRequest,
+    ) -> main_models.GetCategoryDetailResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_category_detail_with_options_async(request, headers, runtime)
 
     def get_cron_exec_time_with_options(
         self,
@@ -3360,6 +3680,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_lhm_dwresource_group_status_with_options_async(request, headers, runtime)
 
+    def get_meta_compare_increment_db_overview_with_options(
+        self,
+        request: main_models.GetMetaCompareIncrementDbOverviewRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMetaCompareIncrementDbOverviewResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.catalog_name):
+            body['catalogName'] = request.catalog_name
+        if not DaraCore.is_null(request.db_name):
+            body['dbName'] = request.db_name
+        if not DaraCore.is_null(request.is_summary):
+            body['isSummary'] = request.is_summary
+        if not DaraCore.is_null(request.task_id):
+            body['taskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMetaCompareIncrementDbOverview',
+            version = '2025-01-16',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/meta/profiling/result/databases/overviewOfCompareIncrement',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMetaCompareIncrementDbOverviewResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_meta_compare_increment_db_overview_with_options_async(
+        self,
+        request: main_models.GetMetaCompareIncrementDbOverviewRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMetaCompareIncrementDbOverviewResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.catalog_name):
+            body['catalogName'] = request.catalog_name
+        if not DaraCore.is_null(request.db_name):
+            body['dbName'] = request.db_name
+        if not DaraCore.is_null(request.is_summary):
+            body['isSummary'] = request.is_summary
+        if not DaraCore.is_null(request.task_id):
+            body['taskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMetaCompareIncrementDbOverview',
+            version = '2025-01-16',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/meta/profiling/result/databases/overviewOfCompareIncrement',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMetaCompareIncrementDbOverviewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_meta_compare_increment_db_overview(
+        self,
+        request: main_models.GetMetaCompareIncrementDbOverviewRequest,
+    ) -> main_models.GetMetaCompareIncrementDbOverviewResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_meta_compare_increment_db_overview_with_options(request, headers, runtime)
+
+    async def get_meta_compare_increment_db_overview_async(
+        self,
+        request: main_models.GetMetaCompareIncrementDbOverviewRequest,
+    ) -> main_models.GetMetaCompareIncrementDbOverviewResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_meta_compare_increment_db_overview_with_options_async(request, headers, runtime)
+
     def get_meta_oss_temp_key_with_options(
         self,
         request: main_models.GetMetaOssTempKeyRequest,
@@ -3427,6 +3835,86 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_meta_oss_temp_key_with_options_async(request, headers, runtime)
+
+    def get_meta_profiling_result_db_overview_with_options(
+        self,
+        request: main_models.GetMetaProfilingResultDbOverviewRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMetaProfilingResultDbOverviewResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.is_summary):
+            query['isSummary'] = request.is_summary
+        if not DaraCore.is_null(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMetaProfilingResultDbOverview',
+            version = '2025-01-16',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/meta/profiling/result/databases/overviewOfTaskDimension',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMetaProfilingResultDbOverviewResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_meta_profiling_result_db_overview_with_options_async(
+        self,
+        request: main_models.GetMetaProfilingResultDbOverviewRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMetaProfilingResultDbOverviewResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.is_summary):
+            query['isSummary'] = request.is_summary
+        if not DaraCore.is_null(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMetaProfilingResultDbOverview',
+            version = '2025-01-16',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/meta/profiling/result/databases/overviewOfTaskDimension',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMetaProfilingResultDbOverviewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_meta_profiling_result_db_overview(
+        self,
+        request: main_models.GetMetaProfilingResultDbOverviewRequest,
+    ) -> main_models.GetMetaProfilingResultDbOverviewResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_meta_profiling_result_db_overview_with_options(request, headers, runtime)
+
+    async def get_meta_profiling_result_db_overview_async(
+        self,
+        request: main_models.GetMetaProfilingResultDbOverviewRequest,
+    ) -> main_models.GetMetaProfilingResultDbOverviewResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_meta_profiling_result_db_overview_with_options_async(request, headers, runtime)
 
     def get_sql_conversion_progress_with_options(
         self,
@@ -4596,6 +5084,498 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_meta_data_component_page_with_options_async(request, headers, runtime)
 
+    def list_meta_profiling_result_catalog_page_with_options(
+        self,
+        request: main_models.ListMetaProfilingResultCatalogPageRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMetaProfilingResultCatalogPageResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.catalog_name):
+            body['catalogName'] = request.catalog_name
+        if not DaraCore.is_null(request.db_name):
+            body['dbName'] = request.db_name
+        if not DaraCore.is_null(request.group_by):
+            body['groupBy'] = request.group_by
+        if not DaraCore.is_null(request.need_total_count):
+            body['needTotalCount'] = request.need_total_count
+        if not DaraCore.is_null(request.order_by):
+            body['orderBy'] = request.order_by
+        if not DaraCore.is_null(request.order_direction):
+            body['orderDirection'] = request.order_direction
+        if not DaraCore.is_null(request.page_index):
+            body['pageIndex'] = request.page_index
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.task_id):
+            body['taskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMetaProfilingResultCatalogPage',
+            version = '2025-01-16',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/meta/profiling/result/catalogs/pageOfTaskDimension',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMetaProfilingResultCatalogPageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_meta_profiling_result_catalog_page_with_options_async(
+        self,
+        request: main_models.ListMetaProfilingResultCatalogPageRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMetaProfilingResultCatalogPageResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.catalog_name):
+            body['catalogName'] = request.catalog_name
+        if not DaraCore.is_null(request.db_name):
+            body['dbName'] = request.db_name
+        if not DaraCore.is_null(request.group_by):
+            body['groupBy'] = request.group_by
+        if not DaraCore.is_null(request.need_total_count):
+            body['needTotalCount'] = request.need_total_count
+        if not DaraCore.is_null(request.order_by):
+            body['orderBy'] = request.order_by
+        if not DaraCore.is_null(request.order_direction):
+            body['orderDirection'] = request.order_direction
+        if not DaraCore.is_null(request.page_index):
+            body['pageIndex'] = request.page_index
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.task_id):
+            body['taskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMetaProfilingResultCatalogPage',
+            version = '2025-01-16',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/meta/profiling/result/catalogs/pageOfTaskDimension',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMetaProfilingResultCatalogPageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_meta_profiling_result_catalog_page(
+        self,
+        request: main_models.ListMetaProfilingResultCatalogPageRequest,
+    ) -> main_models.ListMetaProfilingResultCatalogPageResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_meta_profiling_result_catalog_page_with_options(request, headers, runtime)
+
+    async def list_meta_profiling_result_catalog_page_async(
+        self,
+        request: main_models.ListMetaProfilingResultCatalogPageRequest,
+    ) -> main_models.ListMetaProfilingResultCatalogPageResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_meta_profiling_result_catalog_page_with_options_async(request, headers, runtime)
+
+    def list_meta_profiling_result_table_page_with_options(
+        self,
+        request: main_models.ListMetaProfilingResultTablePageRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMetaProfilingResultTablePageResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.component_type):
+            body['componentType'] = request.component_type
+        if not DaraCore.is_null(request.data_range):
+            body['dataRange'] = request.data_range
+        if not DaraCore.is_null(request.data_size):
+            body['dataSize'] = request.data_size
+        if not DaraCore.is_null(request.data_unit):
+            body['dataUnit'] = request.data_unit
+        if not DaraCore.is_null(request.db_name):
+            body['dbName'] = request.db_name
+        if not DaraCore.is_null(request.group_by):
+            body['groupBy'] = request.group_by
+        if not DaraCore.is_null(request.is_partitioned):
+            body['isPartitioned'] = request.is_partitioned
+        if not DaraCore.is_null(request.is_summary):
+            body['isSummary'] = request.is_summary
+        if not DaraCore.is_null(request.migration_status):
+            body['migrationStatus'] = request.migration_status
+        if not DaraCore.is_null(request.need_total_count):
+            body['needTotalCount'] = request.need_total_count
+        if not DaraCore.is_null(request.order_by):
+            body['orderBy'] = request.order_by
+        if not DaraCore.is_null(request.order_direction):
+            body['orderDirection'] = request.order_direction
+        if not DaraCore.is_null(request.page_index):
+            body['pageIndex'] = request.page_index
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.table_name):
+            body['tableName'] = request.table_name
+        if not DaraCore.is_null(request.task_id):
+            body['taskId'] = request.task_id
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMetaProfilingResultTablePage',
+            version = '2025-01-16',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/meta/profiling/result/tables/pageOfTaskDimension',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMetaProfilingResultTablePageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_meta_profiling_result_table_page_with_options_async(
+        self,
+        request: main_models.ListMetaProfilingResultTablePageRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMetaProfilingResultTablePageResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.component_type):
+            body['componentType'] = request.component_type
+        if not DaraCore.is_null(request.data_range):
+            body['dataRange'] = request.data_range
+        if not DaraCore.is_null(request.data_size):
+            body['dataSize'] = request.data_size
+        if not DaraCore.is_null(request.data_unit):
+            body['dataUnit'] = request.data_unit
+        if not DaraCore.is_null(request.db_name):
+            body['dbName'] = request.db_name
+        if not DaraCore.is_null(request.group_by):
+            body['groupBy'] = request.group_by
+        if not DaraCore.is_null(request.is_partitioned):
+            body['isPartitioned'] = request.is_partitioned
+        if not DaraCore.is_null(request.is_summary):
+            body['isSummary'] = request.is_summary
+        if not DaraCore.is_null(request.migration_status):
+            body['migrationStatus'] = request.migration_status
+        if not DaraCore.is_null(request.need_total_count):
+            body['needTotalCount'] = request.need_total_count
+        if not DaraCore.is_null(request.order_by):
+            body['orderBy'] = request.order_by
+        if not DaraCore.is_null(request.order_direction):
+            body['orderDirection'] = request.order_direction
+        if not DaraCore.is_null(request.page_index):
+            body['pageIndex'] = request.page_index
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.table_name):
+            body['tableName'] = request.table_name
+        if not DaraCore.is_null(request.task_id):
+            body['taskId'] = request.task_id
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMetaProfilingResultTablePage',
+            version = '2025-01-16',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/meta/profiling/result/tables/pageOfTaskDimension',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMetaProfilingResultTablePageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_meta_profiling_result_table_page(
+        self,
+        request: main_models.ListMetaProfilingResultTablePageRequest,
+    ) -> main_models.ListMetaProfilingResultTablePageResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_meta_profiling_result_table_page_with_options(request, headers, runtime)
+
+    async def list_meta_profiling_result_table_page_async(
+        self,
+        request: main_models.ListMetaProfilingResultTablePageRequest,
+    ) -> main_models.ListMetaProfilingResultTablePageResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_meta_profiling_result_table_page_with_options_async(request, headers, runtime)
+
+    def list_meta_profiling_result_udf_page_with_options(
+        self,
+        request: main_models.ListMetaProfilingResultUdfPageRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMetaProfilingResultUdfPageResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.catalog_name):
+            body['catalogName'] = request.catalog_name
+        if not DaraCore.is_null(request.component_type):
+            body['componentType'] = request.component_type
+        if not DaraCore.is_null(request.db_name):
+            body['dbName'] = request.db_name
+        if not DaraCore.is_null(request.func_name):
+            body['funcName'] = request.func_name
+        if not DaraCore.is_null(request.group_by):
+            body['groupBy'] = request.group_by
+        if not DaraCore.is_null(request.is_summary):
+            body['isSummary'] = request.is_summary
+        if not DaraCore.is_null(request.need_total_count):
+            body['needTotalCount'] = request.need_total_count
+        if not DaraCore.is_null(request.order_by):
+            body['orderBy'] = request.order_by
+        if not DaraCore.is_null(request.order_direction):
+            body['orderDirection'] = request.order_direction
+        if not DaraCore.is_null(request.page_index):
+            body['pageIndex'] = request.page_index
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.task_id):
+            body['taskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMetaProfilingResultUdfPage',
+            version = '2025-01-16',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/meta/profiling/result/udf/pageOfTaskDimension',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMetaProfilingResultUdfPageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_meta_profiling_result_udf_page_with_options_async(
+        self,
+        request: main_models.ListMetaProfilingResultUdfPageRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMetaProfilingResultUdfPageResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.catalog_name):
+            body['catalogName'] = request.catalog_name
+        if not DaraCore.is_null(request.component_type):
+            body['componentType'] = request.component_type
+        if not DaraCore.is_null(request.db_name):
+            body['dbName'] = request.db_name
+        if not DaraCore.is_null(request.func_name):
+            body['funcName'] = request.func_name
+        if not DaraCore.is_null(request.group_by):
+            body['groupBy'] = request.group_by
+        if not DaraCore.is_null(request.is_summary):
+            body['isSummary'] = request.is_summary
+        if not DaraCore.is_null(request.need_total_count):
+            body['needTotalCount'] = request.need_total_count
+        if not DaraCore.is_null(request.order_by):
+            body['orderBy'] = request.order_by
+        if not DaraCore.is_null(request.order_direction):
+            body['orderDirection'] = request.order_direction
+        if not DaraCore.is_null(request.page_index):
+            body['pageIndex'] = request.page_index
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.task_id):
+            body['taskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMetaProfilingResultUdfPage',
+            version = '2025-01-16',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/meta/profiling/result/udf/pageOfTaskDimension',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMetaProfilingResultUdfPageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_meta_profiling_result_udf_page(
+        self,
+        request: main_models.ListMetaProfilingResultUdfPageRequest,
+    ) -> main_models.ListMetaProfilingResultUdfPageResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_meta_profiling_result_udf_page_with_options(request, headers, runtime)
+
+    async def list_meta_profiling_result_udf_page_async(
+        self,
+        request: main_models.ListMetaProfilingResultUdfPageRequest,
+    ) -> main_models.ListMetaProfilingResultUdfPageResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_meta_profiling_result_udf_page_with_options_async(request, headers, runtime)
+
+    def list_meta_profiling_skill_job_page_with_options(
+        self,
+        request: main_models.ListMetaProfilingSkillJobPageRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMetaProfilingSkillJobPageResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.component_ids):
+            body['componentIds'] = request.component_ids
+        if not DaraCore.is_null(request.ds_id):
+            body['dsId'] = request.ds_id
+        if not DaraCore.is_null(request.ds_name):
+            body['dsName'] = request.ds_name
+        if not DaraCore.is_null(request.ds_type):
+            body['dsType'] = request.ds_type
+        if not DaraCore.is_null(request.group_by):
+            body['groupBy'] = request.group_by
+        if not DaraCore.is_null(request.is_display_system_task):
+            body['isDisplaySystemTask'] = request.is_display_system_task
+        if not DaraCore.is_null(request.job_id):
+            body['jobId'] = request.job_id
+        if not DaraCore.is_null(request.job_name):
+            body['jobName'] = request.job_name
+        if not DaraCore.is_null(request.need_total_count):
+            body['needTotalCount'] = request.need_total_count
+        if not DaraCore.is_null(request.order_by):
+            body['orderBy'] = request.order_by
+        if not DaraCore.is_null(request.order_direction):
+            body['orderDirection'] = request.order_direction
+        if not DaraCore.is_null(request.page_index):
+            body['pageIndex'] = request.page_index
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMetaProfilingSkillJobPage',
+            version = '2025-01-16',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/meta/skill/profiling/job/page',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMetaProfilingSkillJobPageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_meta_profiling_skill_job_page_with_options_async(
+        self,
+        request: main_models.ListMetaProfilingSkillJobPageRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMetaProfilingSkillJobPageResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.component_ids):
+            body['componentIds'] = request.component_ids
+        if not DaraCore.is_null(request.ds_id):
+            body['dsId'] = request.ds_id
+        if not DaraCore.is_null(request.ds_name):
+            body['dsName'] = request.ds_name
+        if not DaraCore.is_null(request.ds_type):
+            body['dsType'] = request.ds_type
+        if not DaraCore.is_null(request.group_by):
+            body['groupBy'] = request.group_by
+        if not DaraCore.is_null(request.is_display_system_task):
+            body['isDisplaySystemTask'] = request.is_display_system_task
+        if not DaraCore.is_null(request.job_id):
+            body['jobId'] = request.job_id
+        if not DaraCore.is_null(request.job_name):
+            body['jobName'] = request.job_name
+        if not DaraCore.is_null(request.need_total_count):
+            body['needTotalCount'] = request.need_total_count
+        if not DaraCore.is_null(request.order_by):
+            body['orderBy'] = request.order_by
+        if not DaraCore.is_null(request.order_direction):
+            body['orderDirection'] = request.order_direction
+        if not DaraCore.is_null(request.page_index):
+            body['pageIndex'] = request.page_index
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMetaProfilingSkillJobPage',
+            version = '2025-01-16',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/meta/skill/profiling/job/page',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMetaProfilingSkillJobPageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_meta_profiling_skill_job_page(
+        self,
+        request: main_models.ListMetaProfilingSkillJobPageRequest,
+    ) -> main_models.ListMetaProfilingSkillJobPageResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_meta_profiling_skill_job_page_with_options(request, headers, runtime)
+
+    async def list_meta_profiling_skill_job_page_async(
+        self,
+        request: main_models.ListMetaProfilingSkillJobPageRequest,
+    ) -> main_models.ListMetaProfilingSkillJobPageResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_meta_profiling_skill_job_page_with_options_async(request, headers, runtime)
+
     def post_inner_convert_with_options(
         self,
         request: main_models.PostInnerConvertRequest,
@@ -4844,6 +5824,118 @@ class Client(OpenApiClient):
         headers = {}
         return await self.post_inner_upload_convert_package_with_options_async(request, headers, runtime)
 
+    def save_skill_audit_record_with_options(
+        self,
+        request: main_models.SaveSkillAuditRecordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SaveSkillAuditRecordResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.batch_id):
+            body['batchId'] = request.batch_id
+        if not DaraCore.is_null(request.cid):
+            body['cid'] = request.cid
+        if not DaraCore.is_null(request.dry_run_status):
+            body['dryRunStatus'] = request.dry_run_status
+        if not DaraCore.is_null(request.ext_info):
+            body['extInfo'] = request.ext_info
+        if not DaraCore.is_null(request.record_type):
+            body['recordType'] = request.record_type
+        if not DaraCore.is_null(request.script_transform_result):
+            body['scriptTransformResult'] = request.script_transform_result
+        if not DaraCore.is_null(request.script_transform_status):
+            body['scriptTransformStatus'] = request.script_transform_status
+        if not DaraCore.is_null(request.source_dialect):
+            body['sourceDialect'] = request.source_dialect
+        if not DaraCore.is_null(request.source_sql_script):
+            body['sourceSqlScript'] = request.source_sql_script
+        if not DaraCore.is_null(request.target_dialect):
+            body['targetDialect'] = request.target_dialect
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SaveSkillAuditRecord',
+            version = '2025-01-16',
+            protocol = 'HTTPS',
+            pathname = f'/api/bigdata/sql-translator/open/skill-audit/save',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SaveSkillAuditRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def save_skill_audit_record_with_options_async(
+        self,
+        request: main_models.SaveSkillAuditRecordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SaveSkillAuditRecordResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.batch_id):
+            body['batchId'] = request.batch_id
+        if not DaraCore.is_null(request.cid):
+            body['cid'] = request.cid
+        if not DaraCore.is_null(request.dry_run_status):
+            body['dryRunStatus'] = request.dry_run_status
+        if not DaraCore.is_null(request.ext_info):
+            body['extInfo'] = request.ext_info
+        if not DaraCore.is_null(request.record_type):
+            body['recordType'] = request.record_type
+        if not DaraCore.is_null(request.script_transform_result):
+            body['scriptTransformResult'] = request.script_transform_result
+        if not DaraCore.is_null(request.script_transform_status):
+            body['scriptTransformStatus'] = request.script_transform_status
+        if not DaraCore.is_null(request.source_dialect):
+            body['sourceDialect'] = request.source_dialect
+        if not DaraCore.is_null(request.source_sql_script):
+            body['sourceSqlScript'] = request.source_sql_script
+        if not DaraCore.is_null(request.target_dialect):
+            body['targetDialect'] = request.target_dialect
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SaveSkillAuditRecord',
+            version = '2025-01-16',
+            protocol = 'HTTPS',
+            pathname = f'/api/bigdata/sql-translator/open/skill-audit/save',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SaveSkillAuditRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def save_skill_audit_record(
+        self,
+        request: main_models.SaveSkillAuditRecordRequest,
+    ) -> main_models.SaveSkillAuditRecordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.save_skill_audit_record_with_options(request, headers, runtime)
+
+    async def save_skill_audit_record_async(
+        self,
+        request: main_models.SaveSkillAuditRecordRequest,
+    ) -> main_models.SaveSkillAuditRecordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.save_skill_audit_record_with_options_async(request, headers, runtime)
+
     def single_sql_dry_run_with_options(
         self,
         request: main_models.SingleSqlDryRunRequest,
@@ -4923,6 +6015,122 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.single_sql_dry_run_with_options_async(request, headers, runtime)
+
+    def skill_add_meta_profiling_job_with_options(
+        self,
+        request: main_models.SkillAddMetaProfilingJobRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SkillAddMetaProfilingJobResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.component_id):
+            body['componentId'] = request.component_id
+        if not DaraCore.is_null(request.job_desc):
+            body['jobDesc'] = request.job_desc
+        if not DaraCore.is_null(request.job_id):
+            body['jobId'] = request.job_id
+        if not DaraCore.is_null(request.job_name):
+            body['jobName'] = request.job_name
+        if not DaraCore.is_null(request.meta_ids):
+            body['metaIds'] = request.meta_ids
+        if not DaraCore.is_null(request.plugin_id):
+            body['pluginId'] = request.plugin_id
+        if not DaraCore.is_null(request.profiling_flag):
+            body['profilingFlag'] = request.profiling_flag
+        if not DaraCore.is_null(request.profiling_permission):
+            body['profilingPermission'] = request.profiling_permission
+        if not DaraCore.is_null(request.profiling_rule):
+            body['profilingRule'] = request.profiling_rule
+        if not DaraCore.is_null(request.profiling_schema_list):
+            body['profilingSchemaList'] = request.profiling_schema_list
+        if not DaraCore.is_null(request.profiling_type):
+            body['profilingType'] = request.profiling_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SkillAddMetaProfilingJob',
+            version = '2025-01-16',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/meta/skill/profiling/job',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SkillAddMetaProfilingJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def skill_add_meta_profiling_job_with_options_async(
+        self,
+        request: main_models.SkillAddMetaProfilingJobRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SkillAddMetaProfilingJobResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.component_id):
+            body['componentId'] = request.component_id
+        if not DaraCore.is_null(request.job_desc):
+            body['jobDesc'] = request.job_desc
+        if not DaraCore.is_null(request.job_id):
+            body['jobId'] = request.job_id
+        if not DaraCore.is_null(request.job_name):
+            body['jobName'] = request.job_name
+        if not DaraCore.is_null(request.meta_ids):
+            body['metaIds'] = request.meta_ids
+        if not DaraCore.is_null(request.plugin_id):
+            body['pluginId'] = request.plugin_id
+        if not DaraCore.is_null(request.profiling_flag):
+            body['profilingFlag'] = request.profiling_flag
+        if not DaraCore.is_null(request.profiling_permission):
+            body['profilingPermission'] = request.profiling_permission
+        if not DaraCore.is_null(request.profiling_rule):
+            body['profilingRule'] = request.profiling_rule
+        if not DaraCore.is_null(request.profiling_schema_list):
+            body['profilingSchemaList'] = request.profiling_schema_list
+        if not DaraCore.is_null(request.profiling_type):
+            body['profilingType'] = request.profiling_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SkillAddMetaProfilingJob',
+            version = '2025-01-16',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/meta/skill/profiling/job',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SkillAddMetaProfilingJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def skill_add_meta_profiling_job(
+        self,
+        request: main_models.SkillAddMetaProfilingJobRequest,
+    ) -> main_models.SkillAddMetaProfilingJobResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.skill_add_meta_profiling_job_with_options(request, headers, runtime)
+
+    async def skill_add_meta_profiling_job_async(
+        self,
+        request: main_models.SkillAddMetaProfilingJobRequest,
+    ) -> main_models.SkillAddMetaProfilingJobResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.skill_add_meta_profiling_job_with_options_async(request, headers, runtime)
 
     def syntax_check_and_transform_sql_conversion_task_with_options(
         self,

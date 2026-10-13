@@ -13,10 +13,17 @@ class PostInnerReaderResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The business data returned by the operation (in string format). The specific content varies by operation.
         self.data = data
+        # The error code. This value is an empty string if the call is successful.
         self.err_code = err_code
+        # The error message. This value is an empty string if the call is successful.
         self.err_message = err_message
+        # The request ID, which uniquely identifies this call. Provide this value when troubleshooting issues.
         self.request_id = request_id
+        # Indicates whether the call is successful. Valid values:
+        # - true: Successful.
+        # - false: Failed. Troubleshoot by using errCode and errMessage.
         self.success = success
 
     def validate(self):

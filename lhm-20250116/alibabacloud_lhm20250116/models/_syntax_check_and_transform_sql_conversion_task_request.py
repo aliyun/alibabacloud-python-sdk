@@ -9,6 +9,8 @@ class SyntaxCheckAndTransformSqlConversionTaskRequest(DaraModel):
         self,
         task_id: int = None,
     ):
+        # The task ID that uniquely identifies a task.
+        # 
         # This parameter is required.
         self.task_id = task_id
 

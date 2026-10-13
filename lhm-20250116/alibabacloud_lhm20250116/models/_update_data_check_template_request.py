@@ -23,17 +23,35 @@ class UpdateDataCheckTemplateRequest(DaraModel):
         template_name: str = None,
         weak_content_rule: main_models.UpdateDataCheckTemplateRequestWeakContentRule = None,
     ):
+        # The list of metric check rules for basic data types. This field is required when checkType is set to 1 (metric comparison).
         self.basic_metric_rules = basic_metric_rules
+        # The check rule type. Valid values:
+        # - 0: data volume comparison.
+        # - 1: metric comparison.
+        # - 2: weak content comparison.
+        # - 3: custom comparison.
+        # - 4: full-text comparison.
+        # - 5: null rate comparison.
         self.check_type = check_type
+        # The list of complex data type metric check rules. Used when checkType is set to 1 (metric comparison).
         self.complex_metric_rules = complex_metric_rules
+        # The list of datasource engine relationships (datasource engines associated with the template).
         self.ds_engine_rels = ds_engine_rels
+        # The full-text comparison rule. This parameter has a value when checkType is set to 4 (full-text comparison). Refer to the child fields for the field structure.
         self.fulltext_rule = fulltext_rule
+        # The list of metric check rules. This parameter has a value when checkType is set to 1 (metric comparison).
         self.metric_rules = metric_rules
+        # The list of null value rate check rules. This parameter has a value when checkType is set to 5 (null value rate comparison).
         self.null_rules = null_rules
+        # The request ID, which is used to locate and troubleshoot issues of this call.
         self.request_id = request_id
+        # The template description.
         self.template_desc = template_desc
+        # The check template ID (logical foreign key) that uniquely identifies a check template.
         self.template_id = template_id
+        # The check template name.
         self.template_name = template_name
+        # The weak content check rule. This parameter has a value and is required when checkType is set to 2 (weak content comparison). For the field structure, see the child field descriptions.
         self.weak_content_rule = weak_content_rule
 
     def validate(self):
@@ -180,9 +198,13 @@ class UpdateDataCheckTemplateRequestWeakContentRule(DaraModel):
         rule_id: str = None,
         weak_content_algorithm: str = None,
     ):
+        # The filter column name expression.
         self.filter_column_expression = filter_column_expression
+        # The filter column types, separated by vertical bars (|).
         self.filter_column_types = filter_column_types
+        # The rule ID that uniquely identifies a check rule.
         self.rule_id = rule_id
+        # The weak content algorithm name: md5 or crc32.
         self.weak_content_algorithm = weak_content_algorithm
 
     def validate(self):
@@ -230,8 +252,11 @@ class UpdateDataCheckTemplateRequestNullRules(DaraModel):
         null_values: str = None,
         rule_id: str = None,
     ):
+        # The data type group that identifies the data type category to which the check rule applies. Valid values: integers from 0 to 7. For the description of each value, see the enumeration values.
         self.data_type_group = data_type_group
+        # The null values, stored in JSON format.
         self.null_values = null_values
+        # The rule ID that uniquely identifies a check rule.
         self.rule_id = rule_id
 
     def validate(self):
@@ -291,26 +316,47 @@ class UpdateDataCheckTemplateRequestMetricRules(DaraModel):
         rule_id: str = None,
         set_decimal_scale: int = None,
     ):
+        # The check methods (metric calculation methods). Separate multiple values with commas (,), such as SUM,AVG,MIN,MAX. The values must be within the range allowed by the templatetype.
         self.check_methods = check_methods
+        # Specifies whether to control floating-point precision. Valid values: 0 (no) and 1 (yes).
         self.control_float_precision = control_float_precision
+        # The data type category. Valid values: 0 (native data type) and 1 (complex data type).
         self.data_type_classify = data_type_classify
+        # The data type group that identifies the data type category to which the check rule applies. Valid values: integers from 0 to 7. For the description of each value, see the enumeration values.
         self.data_type_group = data_type_group
+        # The list of data types to which the check rule applies. Configure this field as needed.
         self.data_type_list = data_type_list
+        # The data types. Configure this field as needed.
         self.data_types = data_types
+        # The difference tolerance type. Valid values: 0 (unified) and 1 (custom). Default value: 0.
         self.diff_tolerate_type = diff_tolerate_type
+        # The difference tolerance values. For the unified type, this is a single value, such as {"SAME": 0}. For the custom type, values are set separately for each configured tolerance type, such as {"SUM": 0.01, "AVG": 0.001}.
         self.diff_tolerate_values = diff_tolerate_values
+        # Specifies whether to enable decimal scale control for DECIMAL type comparison. Valid values: 0 (no) and 1 (yes).
         self.enable_decimal_scale = enable_decimal_scale
+        # The filter column names, separated by commas.
         self.filter_column_name = filter_column_name
+        # **[Deprecated]** Use the filterColumnName field instead. This field was retained because the previous platform could not be modified.
         self.filter_columns = filter_columns
+        # The number of decimal places for floating-point values.
         self.float_precision = float_precision
+        # Specifies whether to ignore trailing zero differences in the decimal part. Valid values: 0 (no) and 1 (yes).
         self.ignore_decimal_diff = ignore_decimal_diff
+        # Specifies whether to ignore trailing zeros in the decimal scale for DECIMAL type comparison. Valid values: 0 (no) and 1 (yes).
         self.ignore_decimal_scale_suffix_zero = ignore_decimal_scale_suffix_zero
+        # Specifies whether to ignore the difference between null values and empty strings. Valid values: 0 (no) and 1 (yes).
         self.ignore_empty_diff = ignore_empty_diff
+        # Specifies whether to ignore zero values for numeric types. Valid values: 0 (no) and 1 (yes).
         self.ignore_numeric_zero = ignore_numeric_zero
+        # Specifies whether to ignore empty strings and null values for string types. Valid values: 0 (no) and 1 (yes).
         self.ignore_string_empty = ignore_string_empty
+        # Specifies whether to ignore the difference between null values and zero values. Valid values: 0 (no) and 1 (yes).
         self.ignore_zero_diff = ignore_zero_diff
+        # Specifies whether to enable count (data volume) check. Valid values: 0 (no) and 1 (yes). Default value: 1.
         self.is_count_check = is_count_check
+        # The rule ID that uniquely identifies a check rule.
         self.rule_id = rule_id
+        # The specific decimal scale value for DECIMAL type comparison.
         self.set_decimal_scale = set_decimal_scale
 
     def validate(self):
@@ -475,23 +521,70 @@ class UpdateDataCheckTemplateRequestFulltextRule(DaraModel):
         line_samples_value: int = None,
         rule_id: str = None,
     ):
+        # The check mode. Valid values:
+        # - 0: row-by-row overall comparison.
+        # - 1: row-by-row column-by-column comparison.
+        # - 2: both row-by-row overall comparison and row-by-row column-by-column comparison.
         self.check_mode = check_mode
+        # The equality comparison type for row-by-row column-by-column comparison. Valid values:
+        # - 0: all field types.
+        # - 1: native primitive data types.
+        # - 2: complex data types.
+        # - 3: custom.
         self.column_equal_cmp_type = column_equal_cmp_type
+        # The custom type list for equality comparison during row-by-row column-by-column comparison. Separate multiple values with commas.
         self.column_equal_cmp_values = column_equal_cmp_values
+        # Specifies whether to enable cosine similarity during row-by-row column-by-column comparison. Valid values:
+        # - 0: Disabled.
+        # - 1: Enabled.
         self.column_is_cosine = column_is_cosine
+        # Specifies whether to ignore differences between null values and empty strings during row-by-row column-by-column comparison. Valid values:
+        # - 0: Not ignored.
+        # - 1: Ignored.
         self.column_is_ignore_null = column_is_ignore_null
+        # Specifies whether to ignore differences between null values and 0 values during row-by-row column-by-column comparison. Valid values:
+        # - 0: Not ignored.
+        # - 1: Ignored.
         self.column_is_ignore_zero = column_is_ignore_zero
+        # Specifies whether to enable sampling during row-by-row column-by-column comparison. Valid values:
+        # - 0: Disabled.
+        # - 1: Enabled.
         self.column_is_samples = column_is_samples
+        # The sampling method for row-by-row column-by-column comparison. Valid values:
+        # - 0: by row.
+        # - 1: by percentage.
         self.column_samples_type = column_samples_type
+        # The sampling value for row-by-row column-by-column comparison. The meaning depends on the sampling method: the number of rows when sampling by row, or the percentage value when sampling by percentage.
         self.column_samples_value = column_samples_value
+        # The size comparison type for row-by-row column-by-column comparison. Valid values:
+        # - 0: all complex data types.
+        # - 1: custom.
         self.column_size_cmp_type = column_size_cmp_type
+        # The custom type list for size comparison during row-by-row column-by-column comparison. Separate multiple values with commas.
         self.column_size_cmp_values = column_size_cmp_values
+        # Specifies whether to enable primary key or composite primary key existence check. Valid values:
+        # - 0: Disabled.
+        # - 1: Enabled.
         self.is_primary_key_check = is_primary_key_check
+        # The row-by-row comparison method. Valid values:
+        # - 0: md5.
+        # - 1: crc32.
         self.line_check_type = line_check_type
+        # Specifies whether to print all columns in the difference details during row-by-row comparison. Valid values:
+        # - 0: Not printed.
+        # - 1: Printed.
         self.line_is_print_all = line_is_print_all
+        # Specifies whether to enable sampling during row-by-row comparison. Valid values:
+        # - 0: Disabled.
+        # - 1: Enabled.
         self.line_is_samples = line_is_samples
+        # The sampling method for row-by-row comparison. Valid values:
+        # - 0: by row.
+        # - 1: by percentage.
         self.line_samples_type = line_samples_type
+        # The sampling value for row-by-row comparison. The meaning depends on the sampling method: the number of rows when sampling by row, or the percentage value when sampling by percentage.
         self.line_samples_value = line_samples_value
+        # The rule ID that uniquely identifies a check rule.
         self.rule_id = rule_id
 
     def validate(self):
@@ -623,8 +716,11 @@ class UpdateDataCheckTemplateRequestDsEngineRels(DaraModel):
         ds_type: str = None,
         engine_types: List[str] = None,
     ):
+        # The datasource engine configuration ID.
         self.ds_engine_id = ds_engine_id
+        # The datasource type, such as Hive or MaxCompute.
         self.ds_type = ds_type
+        # The list of covered check engine types, such as Tez or MapReduce. When specified as a string, separate multiple values with commas.
         self.engine_types = engine_types
 
     def validate(self):
@@ -684,26 +780,47 @@ class UpdateDataCheckTemplateRequestComplexMetricRules(DaraModel):
         rule_id: str = None,
         set_decimal_scale: int = None,
     ):
+        # The check methods (metric calculation methods). Separate multiple values with commas, such as SUM,AVG,MIN,MAX. The values must be within the range allowed by the templatetype.
         self.check_methods = check_methods
+        # Specifies whether to control floating-point precision. Valid values: 0 (no) and 1 (yes).
         self.control_float_precision = control_float_precision
+        # The data type category. Valid values: 0 (native data type) and 1 (complex data type).
         self.data_type_classify = data_type_classify
+        # The data type group that identifies the data type category to which the check rule applies. Valid values: integers from 0 to 7. For the description of each value, see the enumeration values.
         self.data_type_group = data_type_group
+        # The list of data types to which the check rule applies. Configure this field as needed.
         self.data_type_list = data_type_list
+        # The data types. Configure this field as needed.
         self.data_types = data_types
+        # The difference tolerance type. Valid values: 0 (unified) and 1 (custom). Default value: 0.
         self.diff_tolerate_type = diff_tolerate_type
+        # The difference tolerance values. For the unified type, this is a single value, such as {"SAME": 0}. For the custom type, values are set separately for each configured tolerance type, such as {"SUM": 0.01, "AVG": 0.001}.
         self.diff_tolerate_values = diff_tolerate_values
+        # Specifies whether to enable decimal scale control for DECIMAL type comparison. Valid values: 0 (no) and 1 (yes).
         self.enable_decimal_scale = enable_decimal_scale
+        # The filter column names, separated by commas.
         self.filter_column_name = filter_column_name
+        # **[Deprecated]** Use the filterColumnName field instead. This field was retained because the previous platform could not be modified.
         self.filter_columns = filter_columns
+        # The number of decimal places for floating-point values.
         self.float_precision = float_precision
+        # Specifies whether to ignore trailing zero differences in the decimal part. Valid values: 0 (no) and 1 (yes).
         self.ignore_decimal_diff = ignore_decimal_diff
+        # Specifies whether to ignore trailing zeros in the decimal scale for DECIMAL type comparison. Valid values: 0 (no) and 1 (yes).
         self.ignore_decimal_scale_suffix_zero = ignore_decimal_scale_suffix_zero
+        # Specifies whether to ignore the difference between null values and empty strings. Valid values: 0 (no) and 1 (yes).
         self.ignore_empty_diff = ignore_empty_diff
+        # Specifies whether to ignore zero values for numeric types. Valid values: 0 (no) and 1 (yes).
         self.ignore_numeric_zero = ignore_numeric_zero
+        # Specifies whether to ignore empty strings and null values for string types. Valid values: 0 (no) and 1 (yes).
         self.ignore_string_empty = ignore_string_empty
+        # Specifies whether to ignore the difference between null values and zero values. Valid values: 0 (no) and 1 (yes).
         self.ignore_zero_diff = ignore_zero_diff
+        # Specifies whether to enable count (data volume) check. Valid values: 0 (no) and 1 (yes). Default value: 1.
         self.is_count_check = is_count_check
+        # The rule ID that uniquely identifies a check rule.
         self.rule_id = rule_id
+        # The specific decimal scale value for DECIMAL type comparison.
         self.set_decimal_scale = set_decimal_scale
 
     def validate(self):
@@ -871,26 +988,47 @@ class UpdateDataCheckTemplateRequestBasicMetricRules(DaraModel):
         rule_id: str = None,
         set_decimal_scale: int = None,
     ):
+        # The check methods (metric calculation methods). Separate multiple values with commas, such as SUM,AVG,MIN,MAX. The values must be within the range allowed by the templatetype.
         self.check_methods = check_methods
+        # Specifies whether to control floating-point precision. Valid values: 0 (no) and 1 (yes).
         self.control_float_precision = control_float_precision
+        # The data type category. Valid values: 0 (native data type) and 1 (complex data type).
         self.data_type_classify = data_type_classify
+        # The data type group that identifies the data type category to which the check rule applies. Valid values: integers from 0 to 7. For the description of each value, see the enumeration values.
         self.data_type_group = data_type_group
+        # The list of data types to which the check rule applies. Configure this field as needed.
         self.data_type_list = data_type_list
+        # The data types. Configure this field as needed.
         self.data_types = data_types
+        # The difference tolerance type. Valid values: 0 (unified) and 1 (custom). Default value: 0.
         self.diff_tolerate_type = diff_tolerate_type
+        # The difference tolerance values. For the unified type, this is a single value, such as {"SAME": 0}. For the custom type, values are set separately for each configured tolerance type, such as {"SUM": 0.01, "AVG": 0.001}.
         self.diff_tolerate_values = diff_tolerate_values
+        # Specifies whether to enable decimal scale control for DECIMAL type comparison. Valid values: 0 (no) and 1 (yes).
         self.enable_decimal_scale = enable_decimal_scale
+        # The filter column names, separated by commas.
         self.filter_column_name = filter_column_name
+        # **[Deprecated]** Use the filterColumnName field instead. This field was retained because the previous platform could not be modified.
         self.filter_columns = filter_columns
+        # The number of decimal places for floating-point values.
         self.float_precision = float_precision
+        # Specifies whether to ignore trailing zero differences in the decimal part. Valid values: 0 (no) and 1 (yes).
         self.ignore_decimal_diff = ignore_decimal_diff
+        # Specifies whether to ignore trailing zeros in the decimal scale for DECIMAL type comparison. Valid values: 0 (no) and 1 (yes).
         self.ignore_decimal_scale_suffix_zero = ignore_decimal_scale_suffix_zero
+        # Specifies whether to ignore the difference between null values and empty strings. Valid values: 0 (no) and 1 (yes).
         self.ignore_empty_diff = ignore_empty_diff
+        # Specifies whether to ignore zero values for numeric types. Valid values: 0 (no) and 1 (yes).
         self.ignore_numeric_zero = ignore_numeric_zero
+        # Specifies whether to ignore empty strings and null values for string types. Valid values: 0 (no) and 1 (yes).
         self.ignore_string_empty = ignore_string_empty
+        # Specifies whether to ignore the difference between null values and zero values. Valid values: 0 (no) and 1 (yes).
         self.ignore_zero_diff = ignore_zero_diff
+        # Specifies whether to enable count (data volume) check. Valid values: 0 (no) and 1 (yes). Default value: 1.
         self.is_count_check = is_count_check
+        # The rule ID that uniquely identifies a check rule.
         self.rule_id = rule_id
+        # The specific decimal scale value for DECIMAL type comparison.
         self.set_decimal_scale = set_decimal_scale
 
     def validate(self):

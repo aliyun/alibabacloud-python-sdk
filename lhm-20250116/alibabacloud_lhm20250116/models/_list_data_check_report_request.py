@@ -14,12 +14,31 @@ class ListDataCheckReportRequest(DaraModel):
         page_size: int = None,
         table_name: str = None,
     ):
+        # The validation job (batch) ID.
+        # 
         # This parameter is required.
         self.batch_id = batch_id
+        # Filters by validation result. Valid values:
+        # 
+        # - 0: No records.
+        # - 1: Passed.
+        # - 2: Failed.
         self.check_result = check_result
+        # Filters by job status. Valid values:
+        # 
+        # - 0: INIT (pending).
+        # - 1: RUNNING (running).
+        # - 2: FINISHED (completed).
+        # - 3: STOPPED (stopped).
+        # - 4: FAIL (failed).
+        # - 6: READY (ready).
+        # - 7: SKIPPED (skipped).
         self.job_status = job_status
+        # The page number. Minimum value: 1. Default value: 1.
         self.page_index = page_index
+        # The number of entries per page.
         self.page_size = page_size
+        # The table name to filter by.
         self.table_name = table_name
 
     def validate(self):

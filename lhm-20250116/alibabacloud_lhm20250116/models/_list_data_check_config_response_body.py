@@ -19,13 +19,21 @@ class ListDataCheckConfigResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The data list returned by the operation. For the element structure, see the child field descriptions.
         self.data = data
+        # The error code. An empty string is returned if the call is successful.
         self.err_code = err_code
+        # The error message. An empty string is returned if the call is successful.
         self.err_message = err_message
+        # The page number, starting from 1.
         self.page_index = page_index
+        # The page size, which is the number of records returned per page.
         self.page_size = page_size
+        # The request ID, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the call is successful. A value of true indicates success. A value of false indicates failure. If the call fails, check errCode and errMessage for details.
         self.success = success
+        # The total number of records that match the query conditions. This value is used for pagination.
         self.total_count = total_count
 
     def validate(self):
@@ -139,42 +147,86 @@ class ListDataCheckConfigResponseBodyData(DaraModel):
         task_id: int = None,
         total_count_threshold: float = None,
     ):
+        # The check algorithm.
         self.algorithm = algorithm
+        # The batch size.
         self.batch_size = batch_size
+        # The check type.
         self.check_type = check_type
+        # The compare type. Valid values: =, !=, >, <, >=, <=, contains, not contains, and ==.
         self.comparator = comparator
+        # The reserved field.
         self.extra = extra
+        # The group data volume compare threshold.
         self.group_count_threshold = group_count_threshold
+        # The primary key ID.
         self.id = id
+        # Indicates whether a full table count is performed.
         self.is_full_table_count = is_full_table_count
+        # Indicates whether the check is skipped.
         self.is_skipped = is_skipped
+        # The metric type. Valid values:
+        # - CUSTOM_METRIC_NUM: built-in NUM mode.
+        # - CUSTOM_METRIC_LEN: built-in LEN mode.
+        # - CUSTOM_METRIC_MIX: built-in MIX mode.
         self.metric_type = metric_type
+        # Indicates whether all columns of the source are checked. Valid values:
+        # - 0: No.
+        # - 1: Yes.
         self.source_check_all_column = source_check_all_column
+        # The source table fields. You can specify multiple fields separated by commas (,).
         self.source_columns = source_columns
+        # The source compare key.
         self.source_compare_key = source_compare_key
+        # The name of the source data source.
         self.source_data_source = source_data_source
+        # The GROUP BY clause for the source table.
         self.source_group_clause = source_group_clause
+        # The hint for the source.
         self.source_hint = source_hint
+        # The ID of the source data source.
         self.source_id = source_id
+        # The source partition.
         self.source_partition = source_partition
+        # The SQL statement for the source.
         self.source_sql = source_sql
+        # The source table.
         self.source_table = source_table
+        # The type of the source data source.
         self.source_type = source_type
+        # The WHERE clause for the source table.
         self.source_where_clause = source_where_clause
+        # Indicates whether all columns of the target are checked. Valid values:
+        # - 0: No.
+        # - 1: Yes.
         self.target_check_all_column = target_check_all_column
+        # The target table fields. You can specify multiple fields separated by commas (,).
         self.target_columns = target_columns
+        # The target compare key.
         self.target_compare_key = target_compare_key
+        # The target data source.
         self.target_data_source = target_data_source
+        # The GROUP BY clause for the target table.
         self.target_group_clause = target_group_clause
+        # The hint for the target.
         self.target_hint = target_hint
+        # The ID of the target data source.
         self.target_id = target_id
+        # The target partition.
         self.target_partition = target_partition
+        # The SQL statement for the target.
         self.target_sql = target_sql
+        # The target table.
         self.target_table = target_table
+        # The type of the target data source.
         self.target_type = target_type
+        # The WHERE clause for the target table.
         self.target_where_clause = target_where_clause
+        # The configuration details.
         self.task_config_info = task_config_info
+        # The batch ID.
         self.task_id = task_id
+        # The total data volume compare threshold.
         self.total_count_threshold = total_count_threshold
 
     def validate(self):

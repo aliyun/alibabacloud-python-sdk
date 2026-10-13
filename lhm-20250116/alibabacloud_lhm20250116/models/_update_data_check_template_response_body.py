@@ -12,9 +12,13 @@ class UpdateDataCheckTemplateResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code. An empty string is returned if the call is successful.
         self.err_code = err_code
+        # The error message. An empty string is returned if the call is successful.
         self.err_message = err_message
+        # The request ID, which is used to locate and troubleshoot issues of this call.
         self.request_id = request_id
+        # Indicates whether the call is successful. A value of true indicates success. A value of false indicates failure. If the call fails, check errCode and errMessage for troubleshooting.
         self.success = success
 
     def validate(self):
