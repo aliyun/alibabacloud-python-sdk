@@ -2,28 +2,27 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
-
 from darabonba.model import DaraModel
 
 class MigrateApplicationRequest(DaraModel):
     def __init__(
         self,
-        app_ids: List[str] = None,
+        app_ids: str = None,
         cmd: str = None,
         config: str = None,
         raw_data: str = None,
         region_id: str = None,
     ):
-        # The list of application IDs.
+        # appIds
         self.app_ids = app_ids
         # The operation command. Valid values:
-        # - export: Export.
-        # - import: Import.
+        # - export: export
+        # - import: import
+        # - clone: clone
         self.cmd = cmd
         # Specifies whether to export the application binary. Default value: false.
         self.config = config
-        # The raw data for the application to be imported, which is sourced from the JSON file of the exported application.
+        # The row data of the imported application, which is sourced from the JSON file of the exported application.
         self.raw_data = raw_data
         # regionId
         self.region_id = region_id

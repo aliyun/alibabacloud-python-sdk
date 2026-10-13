@@ -12,19 +12,18 @@ class QuerySlsLogStoreListRequest(DaraModel):
         page_size: int = None,
         type: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The number of the page to return. Pages start from Page 1.
+        # The page number. Pages start from 1.
         self.current_page = current_page
-        # The number of entries to return on each page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The type of data that is collected by Log Service. Valid values:
+        # The Simple Log Service collection type. Valid values:
         # 
-        # - file: the file type
-        # 
-        # - stdout: the standard output type
+        # - file: File.
+        # - stdout: Standard output.
         # 
         # This parameter is required.
         self.type = type

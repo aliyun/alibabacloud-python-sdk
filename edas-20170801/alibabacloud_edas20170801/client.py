@@ -4875,6 +4875,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_k8s_services_with_options_async(request, headers, runtime)
 
+    def get_migrate_application_with_options(
+        self,
+        request: main_models.GetMigrateApplicationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMigrateApplicationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.migration_id):
+            query['migrationId'] = request.migration_id
+        if not DaraCore.is_null(request.migration_type):
+            query['migrationType'] = request.migration_type
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMigrateApplication',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/pop/v5/k8s/migrateK8sApp',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMigrateApplicationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_migrate_application_with_options_async(
+        self,
+        request: main_models.GetMigrateApplicationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMigrateApplicationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.migration_id):
+            query['migrationId'] = request.migration_id
+        if not DaraCore.is_null(request.migration_type):
+            query['migrationType'] = request.migration_type
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMigrateApplication',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/pop/v5/k8s/migrateK8sApp',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMigrateApplicationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_migrate_application(
+        self,
+        request: main_models.GetMigrateApplicationRequest,
+    ) -> main_models.GetMigrateApplicationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_migrate_application_with_options(request, headers, runtime)
+
+    async def get_migrate_application_async(
+        self,
+        request: main_models.GetMigrateApplicationRequest,
+    ) -> main_models.GetMigrateApplicationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_migrate_application_with_options_async(request, headers, runtime)
+
     def get_package_storage_credential_with_options(
         self,
         headers: Dict[str, str],

@@ -12,7 +12,7 @@ class MigrateApplicationResponseBody(DaraModel):
         message: str = None,
         data: main_models.MigrateApplicationResponseBodyData = None,
     ):
-        # The status code.
+        # The API status code.
         self.code = code
         # The additional information.
         self.message = message

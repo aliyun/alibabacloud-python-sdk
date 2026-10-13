@@ -16,15 +16,15 @@ class QuerySlsLogStoreListResponseBody(DaraModel):
         result: List[main_models.QuerySlsLogStoreListResponseBodyResult] = None,
         total_size: int = None,
     ):
-        # The HTTP status code that is returned.
+        # The status code.
         self.code = code
-        # The message that is returned.
+        # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The configurations of Log Service for the application.
+        # The Simple Log Service configuration results.
         self.result = result
-        # The number of log sources configured for the application.
+        # The total number of Simple Log Service configurations.
         self.total_size = total_size
 
     def validate(self):
@@ -89,21 +89,20 @@ class QuerySlsLogStoreListResponseBodyResult(DaraModel):
         project: str = None,
         source: str = None,
     ):
-        # The type of the logging service.
+        # The Simple Log Service type.
         self.consumer_side = consumer_side
-        # The time when the logging service was created.
+        # The creation time. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
-        # The URL of the logging service.
+        # The Simple Log Service link.
         self.link = link
-        # The name of the Logstore.
+        # The Logstore name.
         self.logstore = logstore
-        # The name of the project.
+        # The project name.
         self.project = project
-        # The source of logs. Valid values:
+        # The log source. Valid values:
         # 
-        # - Standard output: stdout.log
-        # 
-        # - File log: the directory that stores logs
+        # - Standard output: stdout.log.
+        # - File log: the collection path.
         self.source = source
 
     def validate(self):

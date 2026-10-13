@@ -13,13 +13,13 @@ class InsertClusterResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The information about the cluster that was created.
+        # The created cluster entity.
         self.cluster = cluster
-        # The HTTP status code that is returned.
+        # The status code.
         self.code = code
-        # The additional information that is returned.
+        # The additional information.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -74,30 +74,33 @@ class InsertClusterResponseBodyCluster(DaraModel):
         region_id: str = None,
         vpc_id: str = None,
     ):
-        # The ID of cluster.
+        # The ID of the cluster.
         self.cluster_id = cluster_id
         # The name of the cluster.
         self.cluster_name = cluster_name
         # The type of the cluster. Valid values:
         # 
-        # *   2: ECS cluster
-        # *   3: self-managed Kubernetes cluster in EDAS
-        # *   5: Kubernetes cluster
+        # - 2: ECS cluster.
+        # - 3: EDAS built-in Kubernetes cluster.
+        # - 5: Kubernetes cluster.
         self.cluster_type = cluster_type
-        # The provider of the IaaS resources that are used in the cluster.
+        # The provider.
         self.iaas_provider = iaas_provider
-        # The network type of the cluster. Valid values:
+        # The network type. Valid values:
         # 
-        # *   1: classic network
-        # *   2\\. VPC
+        # - 1: Classic network.
+        # 
+        # - 2: VPC.
         self.network_mode = network_mode
-        # **This parameter is deprecated.** The CPU overcommit ratio supported by the Docker cluster. Valid values:
+        # **[Deprecated]** The CPU overselling ratio for Docker clusters. Valid values:
         # 
-        # *   2: 1:2, which means that resources are overcommitted by 1:2.
-        # *   4: 1:4, which means that resources are overcommitted by 1:4.
-        # *   8: 1:8, which means that resources are overcommitted by 1:8.
+        # - 2: 1:2 ratio.
+        # 
+        # - 4: 1:4 ratio.
+        # 
+        # - 8: 1:8 ratio.
         self.oversold_factor = oversold_factor
-        # The ID of the region in which the cluster resides.
+        # The region ID of the cluster.
         self.region_id = region_id
         # The ID of the VPC.
         self.vpc_id = vpc_id

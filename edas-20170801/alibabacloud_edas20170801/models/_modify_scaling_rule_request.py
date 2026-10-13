@@ -38,95 +38,86 @@ class ModifyScalingRuleRequest(DaraModel):
         v_switch_ids: str = None,
         vpc_id: str = None,
     ):
-        # Set the value to true if scale-outs are allowed.
+        # Must be set to true if auto scaling is used.
         self.accept_eula = accept_eula
-        # The ID of the application.
+        # The application ID.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The ID of the instance group to which the application is deployed.
+        # The deployment group ID.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The relationship among the conditions that trigger a scale-in.
+        # The trigger condition. Valid values:
         # 
-        # - OR: one of the conditions
-        # 
-        # - AND: all conditions
+        # - OR: Any condition.
+        # - AND: All conditions.
         self.in_condition = in_condition
-        # The CPU utilization that triggers a scale-in.
+        # The trigger metric: CPU utilization.
         self.in_cpu = in_cpu
-        # The duration in which the metric threshold is exceeded. Unit: minutes.
+        # The duration, in minutes.
         self.in_duration = in_duration
-        # Specifies whether to allow scale-ins.
+        # Specifies whether to include the scale-in rule. Valid values:
         # 
-        # - true: allows scale-ins.
-        # 
-        # - false: does not allow scale-ins.
+        # - true: Included.
+        # - false: Not included.
         self.in_enable = in_enable
-        # The minimum number of instances that must be retained in each group when a scale-in is performed.
+        # The minimum number of instances to retain when the group scales in.
         self.in_instance_num = in_instance_num
-        # The system load that triggers a scale-in.
+        # The trigger metric: system load.
         self.in_load = in_load
-        # The minimum service latency that triggers a scale-in. The lower limit is 0. Unit: milliseconds.
+        # The trigger metric: service latency. Unit: milliseconds. Minimum value: 0.
         self.in_rt = in_rt
-        # The number of instances that are removed during each scale-in.
+        # The number of instances to scale in at a time.
         self.in_step = in_step
-        # The key pair that is used to log on to the instance. This parameter takes effect only if you choose to create instances based on the specifications of an existing instance during a scale-out.
+        # The name of the logon key pair for the instance. This parameter is valid only when the existing instance rule is used for auto scaling.
         self.key_pair_name = key_pair_name
-        # The multi-zone scaling policy. Valid values:
-        # 
-        # - PRIORITY: The vSwitch that is first selected has the highest priority.
-        # 
-        # - BALANCE: This policy evenly distributes instances across zones in which the vSwitches reside.
+        # The multi-zone scaling policy for auto scaling. Valid values:
+        # - PRIORITY: Priority policy.
+        # - BALANCE: Balanced distribution policy.
         self.multi_az_policy = multi_az_policy
-        # The CPU utilization that triggers a scale-out.
+        # The trigger metric: CPU utilization.
         self.out_cpu = out_cpu
-        # The relationship among the conditions that trigger a scale-out.
+        # The trigger condition. Valid values:
         # 
-        # - OR: one of the conditions
-        # 
-        # - AND: all conditions
+        # - OR: Any condition.
+        # - AND: All conditions.
         self.out_condition = out_condition
-        # The duration in which the metric threshold is exceeded. Unit: minutes.
+        # The duration, in minutes.
         self.out_duration = out_duration
-        # Specifies whether to allow scale-outs.
+        # Specifies whether to include the scale-out rule.
         self.out_enable = out_enable
-        # The maximum number of instances in each group when a scale-out is performed.
+        # The maximum number of instances when the group scales out.
         self.out_instance_num = out_instance_num
-        # The system load that triggers a scale-out.
+        # The trigger metric: system load.
         self.out_load = out_load
-        # The minimum service latency that triggers a scale-out. The lower limit is 0. Unit: milliseconds.
+        # The trigger metric: service latency. Unit: milliseconds. Minimum value: 0.
         self.out_rt = out_rt
-        # The number of instances that are added during each scale-out.
+        # The number of instances to scale out at a time.
         self.out_step = out_step
-        # The password that is used to log on to the instance. This parameter takes effect only if you choose to create instances based on the specifications of an existing instance during a scale-out.
+        # The logon password of the instance. This parameter is valid only when the existing instance rule is used for auto scaling.
         self.password = password
-        # The source of the instance to be added during a scale-out. Valid values:
+        # The source of instances for scale-out. Valid values:
+        # - NEW: Elastic resources.
+        # - AVAILABLE: Existing resources. To prioritize existing resources, use AVAILABLE_FIRST.
         # 
-        # - NEW: elastic resources
-        # 
-        # - AVAILABLE: existing resources If you prefer existing resources to elastic resources, set this parameter to AVAILABLE_FIRST.
-        # 
-        # If you set this parameter to NEW or AVAILABLE_FIRST, you must specify the auto-scaling parameters. If you set this parameter to NEW, instances are created based on a launch template or the specifications of an existing instance.
+        # If you set this parameter to NEW or AVAILABLE_FIRST, you must specify auto scaling parameters. Auto scaling includes two modes: launch template and existing instance rule.
         self.resource_from = resource_from
-        # The instance handling mode during a scale-in. Valid values:
-        # 
-        # - release: When a scale-in is performed, instances that are no longer used are released.
-        # 
-        # - recycle: When a scale-in is performed, instances that are no longer used are stopped and reclaimed.
+        # The reclamation mode for scale-in. Valid values:
+        # - release: Release mode.
+        # - recycle: Stop and reclaim mode.
         self.scaling_policy = scaling_policy
-        # The ID of the launch template that is used to create instances during a scale-out. This parameter takes effect only if you set the OutEnable parameter to true. This parameter takes precedence over the TemplateInstanceId parameter.
+        # The launch template ID for auto scaling. This parameter is valid only when OutEnable is set to true, and it has a higher priority than TemplateInstanceId.
         self.template_id = template_id
-        # The ID of the instance whose specifications are used to create instances during a scale-out. This parameter is valid only when you set the OutEnable parameter to true.
+        # The instance ID for the existing instance rule of auto scaling. This parameter is valid only when OutEnable is set to true.
         self.template_instance_id = template_instance_id
-        # The name of the instance whose specifications are used to create instances during a scale-out. This parameter takes effect only if you specify the TemplateInstanceId parameter.
+        # The instance name for the existing instance rule of auto scaling. This parameter is valid only when TemplateInstanceId is specified.
         self.template_instance_name = template_instance_name
-        # The version of the launch template that is used to create instances during a scale-out. This parameter takes effect only if you set the OutEnable parameter to true. To use the default template version, set this parameter to `-1`. Otherwise, set this parameter to the version that you want to use.
+        # The launch template version for auto scaling. This parameter is valid only when OutEnable is set to true. Set this parameter to `-1` to use the default template version, or set it to a specific version number.
         self.template_version = template_version
-        # The IDs of the vSwitches that are associated with the VPC. Separate multiple IDs with commas (,).
+        # The list of vSwitch IDs in the VPC. Separate multiple IDs with commas (,).
         self.v_switch_ids = v_switch_ids
-        # The ID of the virtual private cloud (VPC) that is associated with the instances created based on a launch template or the specifications of an existing instance.
+        # The VPC ID associated with the launch template or existing instance rule for auto scaling.
         self.vpc_id = vpc_id
 
     def validate(self):

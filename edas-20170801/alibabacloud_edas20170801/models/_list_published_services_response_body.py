@@ -15,12 +15,12 @@ class ListPublishedServicesResponseBody(DaraModel):
         published_services_list: main_models.ListPublishedServicesResponseBodyPublishedServicesList = None,
         request_id: str = None,
     ):
-        # The response code.
+        # The code.
         self.code = code
-        # The returned message.
+        # The message.
         self.message = message
         self.published_services_list = published_services_list
-        # The unique ID of the request.
+        # The unique request ID.
         self.request_id = request_id
 
     def validate(self):

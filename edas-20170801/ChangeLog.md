@@ -1,3 +1,9 @@
+2026-10-13 Version: 2.0.0
+- Support API GetMigrateApplication.
+- Update API MigrateApplication: update request parameters appIds' type has changed.
+- Update API MigrateApplication: delete request parameters appIds.$.
+
+
 2026-10-08 Version: 1.2.0
 - Support API MigrateApplication.
 

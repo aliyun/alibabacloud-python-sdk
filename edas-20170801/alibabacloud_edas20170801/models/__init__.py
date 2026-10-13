@@ -165,6 +165,9 @@ from ._get_k8s_cluster_response import GetK8sClusterResponse
 from ._get_k8s_services_request import GetK8sServicesRequest
 from ._get_k8s_services_response_body import GetK8sServicesResponseBody
 from ._get_k8s_services_response import GetK8sServicesResponse
+from ._get_migrate_application_request import GetMigrateApplicationRequest
+from ._get_migrate_application_response_body import GetMigrateApplicationResponseBody
+from ._get_migrate_application_response import GetMigrateApplicationResponse
 from ._get_package_storage_credential_response_body import GetPackageStorageCredentialResponseBody
 from ._get_package_storage_credential_response import GetPackageStorageCredentialResponse
 from ._get_scaling_rules_request import GetScalingRulesRequest
@@ -567,6 +570,9 @@ from ._get_k8s_cluster_response_body import GetK8sClusterResponseBodyClusterPage
 from ._get_k8s_cluster_response_body import GetK8sClusterResponseBodyClusterPage
 from ._get_k8s_services_response_body import GetK8sServicesResponseBodyServicesServicePorts
 from ._get_k8s_services_response_body import GetK8sServicesResponseBodyServices
+from ._get_migrate_application_response_body import GetMigrateApplicationResponseBodyDataResultExtraInfo
+from ._get_migrate_application_response_body import GetMigrateApplicationResponseBodyDataResult
+from ._get_migrate_application_response_body import GetMigrateApplicationResponseBodyData
 from ._get_package_storage_credential_response_body import GetPackageStorageCredentialResponseBodyCredential
 from ._get_scaling_rules_response_body import GetScalingRulesResponseBodyDataRuleListRule
 from ._get_scaling_rules_response_body import GetScalingRulesResponseBodyDataRuleList
@@ -898,6 +904,9 @@ __all__ = [
     GetK8sServicesRequest,
     GetK8sServicesResponseBody,
     GetK8sServicesResponse,
+    GetMigrateApplicationRequest,
+    GetMigrateApplicationResponseBody,
+    GetMigrateApplicationResponse,
     GetPackageStorageCredentialResponseBody,
     GetPackageStorageCredentialResponse,
     GetScalingRulesRequest,
@@ -1300,6 +1309,9 @@ __all__ = [
     GetK8sClusterResponseBodyClusterPage,
     GetK8sServicesResponseBodyServicesServicePorts,
     GetK8sServicesResponseBodyServices,
+    GetMigrateApplicationResponseBodyDataResultExtraInfo,
+    GetMigrateApplicationResponseBodyDataResult,
+    GetMigrateApplicationResponseBodyData,
     GetPackageStorageCredentialResponseBodyCredential,
     GetScalingRulesResponseBodyDataRuleListRule,
     GetScalingRulesResponseBodyDataRuleList,

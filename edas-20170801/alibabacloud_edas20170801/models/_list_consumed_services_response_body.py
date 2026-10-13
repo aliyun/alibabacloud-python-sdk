@@ -15,10 +15,10 @@ class ListConsumedServicesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code.
+        # The code.
         self.code = code
         self.consumed_services_list = consumed_services_list
-        # The returned message.
+        # The message.
         self.message = message
         # The unique request ID.
         self.request_id = request_id

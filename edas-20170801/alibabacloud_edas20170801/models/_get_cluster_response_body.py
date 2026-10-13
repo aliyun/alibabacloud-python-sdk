@@ -13,13 +13,13 @@ class GetClusterResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The information about the cluster.
+        # The cluster information.
         self.cluster = cluster
-        # The HTTP status code that is returned.
+        # The status code.
         self.code = code
-        # The detailed information that is returned.
+        # The detailed message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -85,77 +85,60 @@ class GetClusterResponseBodyCluster(DaraModel):
         update_time: int = None,
         vpc_id: str = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # The import status of the cluster. Valid values:
-        # 
-        # - 1: The cluster is imported.
-        # 
-        # - 2: The cluster fails to be imported.
-        # 
-        # - 3: The cluster is being imported.
-        # 
-        # - 4: The cluster is deleted.
-        # 
-        # - 0: The cluster is not imported.
+        # The cluster import status. Valid values:
+        # - 1: Imported.
+        # - 2: Import failed.
+        # - 3: Importing.
+        # - 4: Cluster deleted.
+        # - 0: Not imported.
         self.cluster_import_status = cluster_import_status
-        # The name of the cluster.
+        # The cluster name.
         self.cluster_name = cluster_name
-        # The type of the cluster. Valid values:
-        # 
-        # - 0: regular Docker cluster
-        # 
-        # - 1: Swarm cluster
-        # 
-        # - 2: Elastic Compute Service (ECS) cluster
-        # 
-        # - 3: self-managed Kubernetes cluster in EDAS
-        # 
-        # - 4: cluster in which Pandora automatically registers applications
-        # 
-        # - 5: ACK cluster
+        # The cluster type. Valid values:
+        # - 0: Common Docker cluster.
+        # - 1: Swarm cluster.
+        # - 2: ECS cluster.
+        # - 3: EDAS self-managed Kubernetes cluster.
+        # - 4: Pandora auto-registered application cluster.
+        # - 5: Container Service Kubernetes cluster.
         self.cluster_type = cluster_type
         # The total number of CPU cores.
         self.cpu = cpu
         # The number of used CPU cores.
         self.cpu_used = cpu_used
-        # The time when the cluster was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The timestamp when the cluster was created.
         self.create_time = create_time
-        # The ID of the Container Service for Kubernetes (ACK) cluster.
+        # The Container Service cluster ID.
         self.cs_cluster_id = cs_cluster_id
-        # The description of the cluster.
+        # The description.
         self.description = description
-        # The provider of Infrastructure as a Service (IaaS) resources used in the cluster.
+        # The IaaS resource provider.
         self.iaas_provider = iaas_provider
-        # The total size of memory. Unit: MB.
+        # The total memory. Unit: MB.
         self.mem = mem
-        # The size of used memory. Unit: MB.
+        # The amount of used memory. Unit: MB.
         self.mem_used = mem_used
-        # The network type of the cluster. Valid values:
-        # 
-        # - 1: classic network
-        # 
-        # - 2: virtual private cloud (VPC)
+        # The network type. Valid values:
+        # - 1: Classic network.
+        # - 2: VPC.
         self.network_mode = network_mode
         # The number of ECS instances.
         self.node_num = node_num
-        # The overcommit ratio supported by a Docker cluster. Valid values:
-        # 
-        # - 1: 1:1, which means that resources are not overcommitted.
-        # 
-        # - 2: 1:2, which means that resources are overcommitted by 1:2.
-        # 
-        # - 4: 1:4, which means that resources are overcommitted by 1:4.
-        # 
-        # - 8: 1:8, which means that resources are overcommitted by 1:8.
+        # The CPU overselling ratio for Docker clusters. Valid values:
+        # - 1: 1:1 ratio. No overselling.
+        # - 2: 1:2 overselling ratio.
+        # - 4: 1:4 overselling ratio.
+        # - 8: 1:8 overselling ratio.
         self.oversold_factor = oversold_factor
-        # The ID of the region where the cluster resides.
+        # The region ID.
         self.region_id = region_id
-        # The subtype of the Kubernetes cluster. Valid values: ManagedKubernetes, Ask, and ExternalKubernetes. ManagedKubernetes refers to the ACK cluster. Ask refers to the Serverless Kubernetes (ASK) cluster. ExternalKubernetes refers to the external cluster.
+        # The subtype of the Kubernetes cluster. ManagedKubernetes indicates an ACK cluster, Ask indicates an ASK cluster, and ExternalKubernetes indicates an external cluster.
         self.sub_cluster_type = sub_cluster_type
-        # The time when the cluster was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The timestamp when the cluster was last modified.
         self.update_time = update_time
-        # The ID of the virtual private cloud (VPC).
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
