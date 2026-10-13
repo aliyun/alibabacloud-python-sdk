@@ -14,16 +14,17 @@ class CreateTicketResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details of the permission error. An empty string is returned if the permissions are sufficient.
         self.access_denied_detail = access_denied_detail
-        # The return code of the request result.
+        # The return code of the API request.
         self.code = code
-        # The return value is the work order number.
+        # The return value, which is the ticket ID.
         self.data = data
-        # The error message. If success is set to false, the message is returned.
+        # The error message. This parameter is returned when the value of Success is false.
         self.message = message
-        # The unique ID of the API request. The requestID is unique for each call.
+        # The unique ID of the request. Each request has a unique ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. A value of true indicates that the call is normal.
+        # Indicates whether the API call was successful. A value of true indicates that the call was successful.
         self.success = success
 
     def validate(self):

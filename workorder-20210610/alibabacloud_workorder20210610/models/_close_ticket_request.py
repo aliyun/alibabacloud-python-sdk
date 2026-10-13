@@ -10,11 +10,11 @@ class CloseTicketRequest(DaraModel):
         ticket_id: str = None,
         uid: str = None,
     ):
-        # Work Order Number
+        # The ticket ID.
         # 
         # This parameter is required.
         self.ticket_id = ticket_id
-        # The UID of the Alibaba Cloud account. You can view your UID in the profile picture in the upper-right corner of the DMS console.
+        # The user UID. You can find your UID by clicking the profile picture in the upper-right corner of the DMS console.
         self.uid = uid
 
     def validate(self):

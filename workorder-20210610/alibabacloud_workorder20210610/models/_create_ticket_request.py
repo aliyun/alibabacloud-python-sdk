@@ -19,28 +19,23 @@ class CreateTicketRequest(DaraModel):
         severity: int = None,
         title: str = None,
     ):
-        # The ID of the problem category. You can obtain the returned value from the ListCategories operation by using the CategoryId parameter.
+        # The ID of the issue category. Obtain this ID from the ListCategories operation.
         # 
         # This parameter is required.
         self.category_id = category_id
-        # Submit the Alibaba Cloud UID of the account, which is required for the MPK virtual market scene.
+        # The Alibaba Cloud UID of the account that submits the ticket. This parameter is required for Marketplace reseller scenarios.
         self.creator_id = creator_id
-        # The description of the ticket. Only pure text format is supported.
+        # The description of the issue in the ticket. Only plain text is supported.
         # 
         # This parameter is required.
         self.description = description
-        # sdahkjdshga@qq.com
+        # The contact email address for the ticket.
         self.email = email
-        # The list of attachment names, GetAttachmentUploadUrl the ObjectKey field returned by the interface.
+        # A list of attachment names. Use the ObjectKey value returned by the GetAttachmentUploadUrl operation.
         self.file_name_list = file_name_list
-        # Sensitive information
+        # Sensitive information.
         self.secret_info = secret_info
-        # Enumeration value, 1 for general problem, 2 for urgent problem
-        # 
-        # Enumeration values:
-        # 
-        # *   1: regular.
-        # *   2: emergency.
+        # An enumeration value. A value of 1 indicates a normal issue. A value of 2 indicates an urgent issue.
         # 
         # This parameter is required.
         self.severity = severity
@@ -119,9 +114,9 @@ class CreateTicketRequestSecretInfo(DaraModel):
         content: str = None,
         file_name_list: List[str] = None,
     ):
-        # Sensitive information-text content
+        # The text of the sensitive information.
         self.content = content
-        # Sensitive Information-Attachment Name List
+        # A list of attachment names for the sensitive information.
         self.file_name_list = file_name_list
 
     def validate(self):

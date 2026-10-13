@@ -14,11 +14,17 @@ class GetMqConsumerTagResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details of the permission error. An empty string is returned if you have the required permissions.
         self.access_denied_detail = access_denied_detail
+        # The return code of the API request.
         self.code = code
+        # The return value. This is the unique tag for your Message Queue (MQ) consumer.
         self.data = data
+        # The error message. This parameter is returned when \\`success\\` is \\`false\\`.
         self.message = message
+        # The unique identifier of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful. A value of \\`true\\` indicates success. A value of \\`false\\` indicates failure.
         self.success = success
 
     def validate(self):

@@ -13,14 +13,15 @@ class CloseTicketResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Details about the permission error. An empty string is returned if you have the required permissions.
         self.access_denied_detail = access_denied_detail
-        # The return code of the request result.
+        # The return code of the request.
         self.code = code
-        # The error message. If success is set to false, the message is returned.
+        # The error message. The message is returned if \\`Success\\` is \\`false\\`.
         self.message = message
-        # The ID of the request.
+        # The unique request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. A value of true indicates that the call is normal.
+        # Indicates whether the call was successful. A value of \\`true\\` indicates a successful call.
         self.success = success
 
     def validate(self):

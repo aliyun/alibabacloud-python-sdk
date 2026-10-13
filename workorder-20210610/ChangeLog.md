@@ -1,3 +1,7 @@
+2026-10-13 Version: 1.0.2
+- Update API GetTicket: add response parameters Body.Data.CreatorName.
+
+
 2025-12-25 Version: 1.0.1
 - Update API CloseTicket: add response parameters Body.AccessDeniedDetail.
 - Update API CreateTicket: add response parameters Body.AccessDeniedDetail.

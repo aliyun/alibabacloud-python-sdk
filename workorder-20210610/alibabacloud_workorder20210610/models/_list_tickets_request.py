@@ -19,27 +19,27 @@ class ListTicketsRequest(DaraModel):
         ticket_id_list: List[str] = None,
         uid: str = None,
     ):
-        # The deadline for ticket creation. This parameter is used in conjunction with StartDate to query tickets submitted within the specified start and end time ranges.
+        # The end time when the ticket was created. Use this parameter with StartDate to query tickets created within a specific time range.
         self.end_date = end_date
-        # The ticket keyword, which is used for fuzzy search to match the content of the Description field when a ticket is created.
+        # The keyword for a fuzzy search. The keyword is used to match the content of the Description field of the ticket.
         self.keyword = keyword
-        # Paging query page number parameters
+        # The page number for a paged query.
         # 
         # This parameter is required.
         self.page_number = page_number
-        # The number of entries queried by page parameter
+        # The number of entries to return on each page.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The time when the ticket was created. This parameter is used with EndDate to query tickets that are created within the specified start and end time ranges.
+        # The start time when the ticket was created. Use this parameter with EndDate to query tickets created within a specific time range.
         self.start_date = start_date
-        # Multiple ticket statuses
+        # A list of ticket statuses.
         self.status_list = status_list
-        # Work Order Number
+        # The ticket ID.
         self.ticket_id = ticket_id
-        # Multiple job numbers
+        # A list of ticket IDs.
         self.ticket_id_list = ticket_id_list
-        # UID
+        # The UID.
         self.uid = uid
 
     def validate(self):

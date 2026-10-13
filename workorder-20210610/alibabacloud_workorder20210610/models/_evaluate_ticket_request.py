@@ -13,21 +13,21 @@ class EvaluateTicketRequest(DaraModel):
         ticket_id: str = None,
         uid: str = None,
     ):
-        # Comment
+        # The content of the evaluation.
         self.content = content
-        # Rating star 1-5 stars
+        # The rating, from 1 to 5 stars.
         # 
         # This parameter is required.
         self.score = score
-        # Whether to resolve
+        # Indicates whether the issue was resolved.
         # 
         # This parameter is required.
         self.solved = solved
-        # The ID of the ticket.
+        # The ticket ID.
         # 
         # This parameter is required.
         self.ticket_id = ticket_id
-        # UID
+        # The UID.
         self.uid = uid
 
     def validate(self):

@@ -17,16 +17,17 @@ class ListTicketNotesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details of the permission error. An empty string is returned if you have the required permissions.
         self.access_denied_detail = access_denied_detail
-        # The return code of the request result.
+        # The return code for the API request.
         self.code = code
-        # Return value, that is, the dialog record list data of the specified ticket
+        # The return value, which is a list of communication records for the specified ticket.
         self.data = data
-        # The error message. If success is set to false, the message is returned.
+        # The error message. This parameter is returned when \\`Success\\` is \\`false\\`.
         self.message = message
-        # The unique ID of the API request. The requestID is unique for each call.
+        # The unique ID of the request. Each request has a unique ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. A value of true indicates that the call is normal.
+        # Indicates whether the call was successful. A value of \\`true\\` indicates a successful call.
         self.success = success
 
     def validate(self):
@@ -99,21 +100,21 @@ class ListTicketNotesResponseBodyData(DaraModel):
         type: int = None,
         user: main_models.ListTicketNotesResponseBodyDataUser = None,
     ):
-        # Attachment List
+        # The list of attachments.
         self.attachments = attachments
-        # The timestamp when the communication message was created.
+        # The UNIX timestamp when the communication message was created.
         self.create_time = create_time
-        # Work order communication record object
+        # The ticket communication record object.
         self.dialog = dialog
-        # The unique ID of the conversation record.
+        # The unique ID of the communication record.
         self.dialog_id = dialog_id
-        # Communication message status field, reference value Unread=1, Read=2
+        # The status of the communication message. Valid values: \\`1\\`: Unread. \\`2\\`: Read.
         self.status = status
-        # Fields Not Used
+        # This parameter is not in use.
         self.tip = tip
-        # Conversation Type 1 card, that is, schema 2 Text, that is, content
+        # The type of communication. Valid values: \\`1\\`: Card, which corresponds to \\`Schema\\`. \\`2\\`: Text, which corresponds to \\`Content\\`.
         self.type = type
-        # Conversation of users
+        # The user in the communication.
         self.user = user
 
     def validate(self):
@@ -198,10 +199,9 @@ class ListTicketNotesResponseBodyDataUser(DaraModel):
         name: str = None,
         role: int = None,
     ):
-        # Dialog User Name
+        # The name of the user.
         self.name = name
-        # Dialogue user role, distinguish between agent and user.
-        # 2 represents agent, 3 represents user.
+        # The role of the user in the communication. This parameter distinguishes between customer service agents and customers. Valid values: \\`2\\`: Customer service agent. \\`3\\`: Customer.
         self.role = role
 
     def validate(self):
@@ -236,9 +236,9 @@ class ListTicketNotesResponseBodyDataDialog(DaraModel):
         content: str = None,
         schema: str = None,
     ):
-        # Work order communication content
+        # The content of the ticket communication.
         self.content = content
-        # The ticket communication record system card will be used when the system card docking capability is opened in the future. At present, the content can be used to obtain plain text content.
+        # The system card for the ticket communication record. This parameter is reserved for future use. Currently, you can use the \\`Content\\` parameter to retrieve the plain text.
         self.schema = schema
 
     def validate(self):
@@ -273,9 +273,9 @@ class ListTicketNotesResponseBodyDataAttachments(DaraModel):
         name: str = None,
         url: str = None,
     ):
-        # Attachment Name
+        # The name of the attachment.
         self.name = name
-        # Temporary Accessible Attachment Address
+        # A temporary URL to access the attachment.
         self.url = url
 
     def validate(self):

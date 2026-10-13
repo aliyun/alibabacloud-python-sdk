@@ -13,14 +13,15 @@ class EvaluateTicketResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details of the permission error. An empty string is returned if you have the required permissions.
         self.access_denied_detail = access_denied_detail
-        # The response code.
+        # The status code.
         self.code = code
-        # The error message. If success is set to false, the message is returned.
+        # The error message. This parameter is returned only when the \\`Success\\` parameter is \\`false\\`.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values: The value true indicates a success. The value false indicates a failure.
+        # Indicates whether the call was successful. A value of \\`true\\` indicates that the call succeeded. A value of \\`false\\` indicates that the call failed.
         self.success = success
 
     def validate(self):

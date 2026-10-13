@@ -14,16 +14,17 @@ class ReplyTicketResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The detailed information about the permission error. If you have the required permissions, an empty string is returned.
         self.access_denied_detail = access_denied_detail
-        # The response code.
+        # The status code.
         self.code = code
-        # The returned value is the dialogID of the response to the ticket.
+        # The dialog ID of the ticket reply.
         self.data = data
-        # The error message. If success is set to false, the message is returned.
+        # The error message. This parameter is returned when the value of Success is false.
         self.message = message
-        # The unique ID of the API request. The requestid is unique for each call.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the call is successful. A value of true indicates that the call is normal.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

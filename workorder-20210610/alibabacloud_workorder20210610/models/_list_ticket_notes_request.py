@@ -10,11 +10,11 @@ class ListTicketNotesRequest(DaraModel):
         ticket_id: str = None,
         uid: str = None,
     ):
-        # Work Order Number
+        # The ticket ID.
         # 
         # This parameter is required.
         self.ticket_id = ticket_id
-        # UID
+        # The UID.
         self.uid = uid
 
     def validate(self):

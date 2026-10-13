@@ -13,21 +13,21 @@ class ReplyTicketShrinkRequest(DaraModel):
         ticket_id: str = None,
         uid: str = None,
     ):
-        # Content of the ticket reply
+        # The content of the reply to the ticket.
         # 
         # This parameter is required.
         self.content = content
-        # Encryption status
+        # Specifies whether to encrypt the content.
         # 
         # This parameter is required.
         self.encrypt = encrypt
-        # The list of attachment names, GetAttachmentUploadUrl the ObjectKey field returned by the interface.
+        # A list of attachment names. This is the ObjectKey field returned by the GetAttachmentUploadUrl operation.
         self.file_name_list_shrink = file_name_list_shrink
-        # The ID of the ticket.
+        # The ticket ID.
         # 
         # This parameter is required.
         self.ticket_id = ticket_id
-        # Alibaba Cloud UID
+        # The Alibaba Cloud account ID (UID).
         self.uid = uid
 
     def validate(self):

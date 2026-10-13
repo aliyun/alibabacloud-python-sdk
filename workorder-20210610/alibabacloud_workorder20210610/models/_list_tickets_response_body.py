@@ -20,22 +20,23 @@ class ListTicketsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The details of the permission error. If you have the required permissions, an empty string is returned.
         self.access_denied_detail = access_denied_detail
-        # The return code of the request result.
+        # The return code of the request.
         self.code = code
-        # The return value is my ticket list data.
+        # The list of your tickets.
         self.data = data
-        # The error message. If success is set to false, the message is returned.
+        # The error message. This parameter is returned only when the value of success is false.
         self.message = message
-        # Page number of the paging query parameter
+        # The page number of the paged query.
         self.page_number = page_number
-        # The number of entries per page in a pagination query parameter.
+        # The number of entries returned on each page.
         self.page_size = page_size
-        # The unique ID of the API request. The requestID is unique for each call.
+        # The unique ID of the request. A unique ID is returned for each request.
         self.request_id = request_id
-        # Indicates whether the call is successful. A value of true indicates that the call is normal.
+        # Indicates whether the call was successful. A value of true indicates that the call was successful.
         self.success = success
-        # The total number of query results, that is, the total number of my ticket records.
+        # The total number of query results, which is the total number of your tickets.
         self.total_count = total_count
 
     def validate(self):
@@ -121,11 +122,11 @@ class ListTicketsResponseBodyData(DaraModel):
         ticket_id: str = None,
         title: str = None,
     ):
-        # The status of the ticket. The reference values are as follows 1, "assigned", "Pending Response", 2, "handling", "handling", 3, "wait_feedback", "Pending feedback", 4: "feedback", "Feedback", 5, "wait_confirm", "To be confirmed", 6, "confirmed", "Completed"
+        # The ticket status. Valid values: assigned (Pending response), dealing (In progress), wait_feedback (Waiting for feedback), feedback (Feedback received), wait_confirm (Pending confirmation), and confirmed (Completed).
         self.status = status
-        # Work Order Number
+        # The ticket ID.
         self.ticket_id = ticket_id
-        # The title of the ticket.
+        # The ticket title.
         self.title = title
 
     def validate(self):
@@ -168,9 +169,9 @@ class ListTicketsResponseBodyDataStatus(DaraModel):
         label: str = None,
         value: str = None,
     ):
-        # Status description, if completed
+        # The description of the status. Example: Completed.
         self.label = label
-        # A status value, such as 6, represents completed
+        # The value of the status. For example, a value of 6 indicates that the ticket is completed.
         self.value = value
 
     def validate(self):

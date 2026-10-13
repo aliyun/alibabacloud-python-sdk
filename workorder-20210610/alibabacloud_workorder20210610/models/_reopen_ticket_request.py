@@ -11,15 +11,15 @@ class ReopenTicketRequest(DaraModel):
         ticket_id: str = None,
         uid: str = None,
     ):
-        # Reply content of rework order
+        # The content of the reply to reopen the ticket.
         # 
         # This parameter is required.
         self.content = content
-        # Work Order Number
+        # The ticket ID.
         # 
         # This parameter is required.
         self.ticket_id = ticket_id
-        # UID
+        # The UID.
         self.uid = uid
 
     def validate(self):
