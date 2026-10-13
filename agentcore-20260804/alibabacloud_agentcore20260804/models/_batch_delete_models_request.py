@@ -46,8 +46,6 @@ class BatchDeleteModelsRequest(DaraModel):
 
         return self
 
-
-
 class BatchDeleteModelsRequestBody(DaraModel):
     def __init__(
         self,

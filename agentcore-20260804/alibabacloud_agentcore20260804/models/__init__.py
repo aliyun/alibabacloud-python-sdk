@@ -5,6 +5,10 @@ from __future__ import annotations
 from ._data_resource_value import DataResourceValue
 from ._data_i18n_value import DataI18nValue
 from ._items_i18n_value import ItemsI18nValue
+from ._add_memories_request import AddMemoriesRequest
+from ._add_memories_shrink_request import AddMemoriesShrinkRequest
+from ._add_memories_response_body import AddMemoriesResponseBody
+from ._add_memories_response import AddMemoriesResponse
 from ._batch_delete_models_request import BatchDeleteModelsRequest
 from ._batch_delete_models_shrink_request import BatchDeleteModelsShrinkRequest
 from ._batch_delete_models_response_body import BatchDeleteModelsResponseBody
@@ -55,6 +59,10 @@ from ._create_mcp_request import CreateMcpRequest
 from ._create_mcp_shrink_request import CreateMcpShrinkRequest
 from ._create_mcp_response_body import CreateMcpResponseBody
 from ._create_mcp_response import CreateMcpResponse
+from ._create_memory_store_request import CreateMemoryStoreRequest
+from ._create_memory_store_shrink_request import CreateMemoryStoreShrinkRequest
+from ._create_memory_store_response_body import CreateMemoryStoreResponseBody
+from ._create_memory_store_response import CreateMemoryStoreResponse
 from ._create_model_request import CreateModelRequest
 from ._create_model_shrink_request import CreateModelShrinkRequest
 from ._create_model_response_body import CreateModelResponseBody
@@ -110,6 +118,12 @@ from ._delete_managed_agent_response import DeleteManagedAgentResponse
 from ._delete_mcp_request import DeleteMcpRequest
 from ._delete_mcp_response_body import DeleteMcpResponseBody
 from ._delete_mcp_response import DeleteMcpResponse
+from ._delete_memory_request import DeleteMemoryRequest
+from ._delete_memory_response_body import DeleteMemoryResponseBody
+from ._delete_memory_response import DeleteMemoryResponse
+from ._delete_memory_store_request import DeleteMemoryStoreRequest
+from ._delete_memory_store_response_body import DeleteMemoryStoreResponseBody
+from ._delete_memory_store_response import DeleteMemoryStoreResponse
 from ._delete_model_request import DeleteModelRequest
 from ._delete_model_response_body import DeleteModelResponseBody
 from ._delete_model_response import DeleteModelResponse
@@ -187,6 +201,15 @@ from ._get_mcp_response import GetMcpResponse
 from ._get_mcp_market_item_request import GetMcpMarketItemRequest
 from ._get_mcp_market_item_response_body import GetMcpMarketItemResponseBody
 from ._get_mcp_market_item_response import GetMcpMarketItemResponse
+from ._get_memory_request import GetMemoryRequest
+from ._get_memory_response_body import GetMemoryResponseBody
+from ._get_memory_response import GetMemoryResponse
+from ._get_memory_store_request import GetMemoryStoreRequest
+from ._get_memory_store_response_body import GetMemoryStoreResponseBody
+from ._get_memory_store_response import GetMemoryStoreResponse
+from ._get_memory_task_request import GetMemoryTaskRequest
+from ._get_memory_task_response_body import GetMemoryTaskResponseBody
+from ._get_memory_task_response import GetMemoryTaskResponse
 from ._get_model_request import GetModelRequest
 from ._get_model_response_body import GetModelResponseBody
 from ._get_model_response import GetModelResponse
@@ -274,6 +297,18 @@ from ._list_mcp_tools_response import ListMcpToolsResponse
 from ._list_mcps_request import ListMcpsRequest
 from ._list_mcps_response_body import ListMcpsResponseBody
 from ._list_mcps_response import ListMcpsResponse
+from ._list_memories_request import ListMemoriesRequest
+from ._list_memories_response_body import ListMemoriesResponseBody
+from ._list_memories_response import ListMemoriesResponse
+from ._list_memory_session_messages_request import ListMemorySessionMessagesRequest
+from ._list_memory_session_messages_response_body import ListMemorySessionMessagesResponseBody
+from ._list_memory_session_messages_response import ListMemorySessionMessagesResponse
+from ._list_memory_sessions_request import ListMemorySessionsRequest
+from ._list_memory_sessions_response_body import ListMemorySessionsResponseBody
+from ._list_memory_sessions_response import ListMemorySessionsResponse
+from ._list_memory_stores_request import ListMemoryStoresRequest
+from ._list_memory_stores_response_body import ListMemoryStoresResponseBody
+from ._list_memory_stores_response import ListMemoryStoresResponse
 from ._list_model_connections_request import ListModelConnectionsRequest
 from ._list_model_connections_response_body import ListModelConnectionsResponseBody
 from ._list_model_connections_response import ListModelConnectionsResponse
@@ -334,6 +369,10 @@ from ._reset_user_password_request import ResetUserPasswordRequest
 from ._reset_user_password_shrink_request import ResetUserPasswordShrinkRequest
 from ._reset_user_password_response_body import ResetUserPasswordResponseBody
 from ._reset_user_password_response import ResetUserPasswordResponse
+from ._search_memories_request import SearchMemoriesRequest
+from ._search_memories_shrink_request import SearchMemoriesShrinkRequest
+from ._search_memories_response_body import SearchMemoriesResponseBody
+from ._search_memories_response import SearchMemoriesResponse
 from ._submit_agent_spec_version_request import SubmitAgentSpecVersionRequest
 from ._submit_agent_spec_version_shrink_request import SubmitAgentSpecVersionShrinkRequest
 from ._submit_agent_spec_version_response_body import SubmitAgentSpecVersionResponseBody
@@ -386,6 +425,14 @@ from ._update_mcp_template_config_request import UpdateMcpTemplateConfigRequest
 from ._update_mcp_template_config_shrink_request import UpdateMcpTemplateConfigShrinkRequest
 from ._update_mcp_template_config_response_body import UpdateMcpTemplateConfigResponseBody
 from ._update_mcp_template_config_response import UpdateMcpTemplateConfigResponse
+from ._update_memory_request import UpdateMemoryRequest
+from ._update_memory_shrink_request import UpdateMemoryShrinkRequest
+from ._update_memory_response_body import UpdateMemoryResponseBody
+from ._update_memory_response import UpdateMemoryResponse
+from ._update_memory_store_request import UpdateMemoryStoreRequest
+from ._update_memory_store_shrink_request import UpdateMemoryStoreShrinkRequest
+from ._update_memory_store_response_body import UpdateMemoryStoreResponseBody
+from ._update_memory_store_response import UpdateMemoryStoreResponse
 from ._update_model_request import UpdateModelRequest
 from ._update_model_shrink_request import UpdateModelShrinkRequest
 from ._update_model_response_body import UpdateModelResponseBody
@@ -439,6 +486,11 @@ from ._verify_workspace_agentic_fs_mount_ram_authorization_response import Verif
 from ._verify_workspace_oss_mount_ram_authorization_request import VerifyWorkspaceOssMountRamAuthorizationRequest
 from ._verify_workspace_oss_mount_ram_authorization_response_body import VerifyWorkspaceOssMountRamAuthorizationResponseBody
 from ._verify_workspace_oss_mount_ram_authorization_response import VerifyWorkspaceOssMountRamAuthorizationResponse
+from ._add_memories_request import AddMemoriesRequestBodyMessages
+from ._add_memories_request import AddMemoriesRequestBodyScope
+from ._add_memories_request import AddMemoriesRequestBody
+from ._add_memories_response_body import AddMemoriesResponseBodyDataMemories
+from ._add_memories_response_body import AddMemoriesResponseBodyData
 from ._batch_delete_models_request import BatchDeleteModelsRequestBody
 from ._batch_delete_models_response_body import BatchDeleteModelsResponseBodyData
 from ._batch_upload_skills_via_oss_request import BatchUploadSkillsViaOssRequestBody
@@ -636,6 +688,8 @@ from ._create_mcp_response_body import CreateMcpResponseBodyDataDeploymentConfig
 from ._create_mcp_response_body import CreateMcpResponseBodyDataMarketSource
 from ._create_mcp_response_body import CreateMcpResponseBodyDataTemplate
 from ._create_mcp_response_body import CreateMcpResponseBodyData
+from ._create_memory_store_request import CreateMemoryStoreRequestBody
+from ._create_memory_store_response_body import CreateMemoryStoreResponseBodyData
 from ._create_model_request import CreateModelRequestBodyCapabilities
 from ._create_model_request import CreateModelRequestBody
 from ._create_model_response_body import CreateModelResponseBodyDataCapabilities
@@ -665,6 +719,7 @@ from ._delete_custom_agent_response_body import DeleteCustomAgentResponseBodyDat
 from ._delete_external_agent_response_body import DeleteExternalAgentResponseBodyData
 from ._delete_identity_provider_response_body import DeleteIdentityProviderResponseBodyData
 from ._delete_managed_agent_response_body import DeleteManagedAgentResponseBodyData
+from ._delete_memory_store_response_body import DeleteMemoryStoreResponseBodyData
 from ._delete_model_response_body import DeleteModelResponseBodyData
 from ._delete_model_connection_response_body import DeleteModelConnectionResponseBodyData
 from ._delete_team_response_body import DeleteTeamResponseBodyData
@@ -775,6 +830,13 @@ from ._get_mcp_response_body import GetMcpResponseBodyDataMarketSource
 from ._get_mcp_response_body import GetMcpResponseBodyDataTemplate
 from ._get_mcp_response_body import GetMcpResponseBodyData
 from ._get_mcp_market_item_response_body import GetMcpMarketItemResponseBodyData
+from ._get_memory_response_body import GetMemoryResponseBodyDataContent
+from ._get_memory_response_body import GetMemoryResponseBodyDataScope
+from ._get_memory_response_body import GetMemoryResponseBodyData
+from ._get_memory_store_response_body import GetMemoryStoreResponseBodyData
+from ._get_memory_task_response_body import GetMemoryTaskResponseBodyDataError
+from ._get_memory_task_response_body import GetMemoryTaskResponseBodyDataMemories
+from ._get_memory_task_response_body import GetMemoryTaskResponseBodyData
 from ._get_model_response_body import GetModelResponseBodyDataCapabilities
 from ._get_model_response_body import GetModelResponseBodyData
 from ._get_model_connection_response_body import GetModelConnectionResponseBodyData
@@ -897,6 +959,12 @@ from ._list_mcps_response_body import ListMcpsResponseBodyItemsDeploymentConfigR
 from ._list_mcps_response_body import ListMcpsResponseBodyItemsDeploymentConfig
 from ._list_mcps_response_body import ListMcpsResponseBodyItemsMarketSource
 from ._list_mcps_response_body import ListMcpsResponseBodyItems
+from ._list_memories_response_body import ListMemoriesResponseBodyItemsContent
+from ._list_memories_response_body import ListMemoriesResponseBodyItemsScope
+from ._list_memories_response_body import ListMemoriesResponseBodyItems
+from ._list_memory_session_messages_response_body import ListMemorySessionMessagesResponseBodyItems
+from ._list_memory_sessions_response_body import ListMemorySessionsResponseBodyItems
+from ._list_memory_stores_response_body import ListMemoryStoresResponseBodyItems
 from ._list_model_connections_response_body import ListModelConnectionsResponseBodyItemsModels
 from ._list_model_connections_response_body import ListModelConnectionsResponseBodyItems
 from ._list_models_response_body import ListModelsResponseBodyItemsCapabilities
@@ -929,6 +997,13 @@ from ._publish_skill_version_request import PublishSkillVersionRequestBody
 from ._redraft_skill_version_request import RedraftSkillVersionRequestBody
 from ._reset_user_password_request import ResetUserPasswordRequestBody
 from ._reset_user_password_response_body import ResetUserPasswordResponseBodyData
+from ._search_memories_request import SearchMemoriesRequestBodyScope
+from ._search_memories_request import SearchMemoriesRequestBody
+from ._search_memories_response_body import SearchMemoriesResponseBodyDataMemoriesMemoryContent
+from ._search_memories_response_body import SearchMemoriesResponseBodyDataMemoriesMemoryScope
+from ._search_memories_response_body import SearchMemoriesResponseBodyDataMemoriesMemory
+from ._search_memories_response_body import SearchMemoriesResponseBodyDataMemories
+from ._search_memories_response_body import SearchMemoriesResponseBodyData
 from ._submit_agent_spec_version_request import SubmitAgentSpecVersionRequestBody
 from ._submit_skill_version_request import SubmitSkillVersionRequestBody
 from ._update_agent_imchannel_request import UpdateAgentIMChannelRequestBodyChannelConfig
@@ -1121,6 +1196,12 @@ from ._update_mcp_template_config_response_body import UpdateMcpTemplateConfigRe
 from ._update_mcp_template_config_response_body import UpdateMcpTemplateConfigResponseBodyDataMarketSource
 from ._update_mcp_template_config_response_body import UpdateMcpTemplateConfigResponseBodyDataTemplate
 from ._update_mcp_template_config_response_body import UpdateMcpTemplateConfigResponseBodyData
+from ._update_memory_request import UpdateMemoryRequestBody
+from ._update_memory_response_body import UpdateMemoryResponseBodyDataContent
+from ._update_memory_response_body import UpdateMemoryResponseBodyDataScope
+from ._update_memory_response_body import UpdateMemoryResponseBodyData
+from ._update_memory_store_request import UpdateMemoryStoreRequestBody
+from ._update_memory_store_response_body import UpdateMemoryStoreResponseBodyData
 from ._update_model_request import UpdateModelRequestBodyCapabilities
 from ._update_model_request import UpdateModelRequestBody
 from ._update_model_response_body import UpdateModelResponseBodyDataCapabilities
@@ -1156,6 +1237,10 @@ __all__ = [
     DataResourceValue,
     DataI18nValue,
     ItemsI18nValue,
+    AddMemoriesRequest,
+    AddMemoriesShrinkRequest,
+    AddMemoriesResponseBody,
+    AddMemoriesResponse,
     BatchDeleteModelsRequest,
     BatchDeleteModelsShrinkRequest,
     BatchDeleteModelsResponseBody,
@@ -1206,6 +1291,10 @@ __all__ = [
     CreateMcpShrinkRequest,
     CreateMcpResponseBody,
     CreateMcpResponse,
+    CreateMemoryStoreRequest,
+    CreateMemoryStoreShrinkRequest,
+    CreateMemoryStoreResponseBody,
+    CreateMemoryStoreResponse,
     CreateModelRequest,
     CreateModelShrinkRequest,
     CreateModelResponseBody,
@@ -1261,6 +1350,12 @@ __all__ = [
     DeleteMcpRequest,
     DeleteMcpResponseBody,
     DeleteMcpResponse,
+    DeleteMemoryRequest,
+    DeleteMemoryResponseBody,
+    DeleteMemoryResponse,
+    DeleteMemoryStoreRequest,
+    DeleteMemoryStoreResponseBody,
+    DeleteMemoryStoreResponse,
     DeleteModelRequest,
     DeleteModelResponseBody,
     DeleteModelResponse,
@@ -1338,6 +1433,15 @@ __all__ = [
     GetMcpMarketItemRequest,
     GetMcpMarketItemResponseBody,
     GetMcpMarketItemResponse,
+    GetMemoryRequest,
+    GetMemoryResponseBody,
+    GetMemoryResponse,
+    GetMemoryStoreRequest,
+    GetMemoryStoreResponseBody,
+    GetMemoryStoreResponse,
+    GetMemoryTaskRequest,
+    GetMemoryTaskResponseBody,
+    GetMemoryTaskResponse,
     GetModelRequest,
     GetModelResponseBody,
     GetModelResponse,
@@ -1425,6 +1529,18 @@ __all__ = [
     ListMcpsRequest,
     ListMcpsResponseBody,
     ListMcpsResponse,
+    ListMemoriesRequest,
+    ListMemoriesResponseBody,
+    ListMemoriesResponse,
+    ListMemorySessionMessagesRequest,
+    ListMemorySessionMessagesResponseBody,
+    ListMemorySessionMessagesResponse,
+    ListMemorySessionsRequest,
+    ListMemorySessionsResponseBody,
+    ListMemorySessionsResponse,
+    ListMemoryStoresRequest,
+    ListMemoryStoresResponseBody,
+    ListMemoryStoresResponse,
     ListModelConnectionsRequest,
     ListModelConnectionsResponseBody,
     ListModelConnectionsResponse,
@@ -1485,6 +1601,10 @@ __all__ = [
     ResetUserPasswordShrinkRequest,
     ResetUserPasswordResponseBody,
     ResetUserPasswordResponse,
+    SearchMemoriesRequest,
+    SearchMemoriesShrinkRequest,
+    SearchMemoriesResponseBody,
+    SearchMemoriesResponse,
     SubmitAgentSpecVersionRequest,
     SubmitAgentSpecVersionShrinkRequest,
     SubmitAgentSpecVersionResponseBody,
@@ -1537,6 +1657,14 @@ __all__ = [
     UpdateMcpTemplateConfigShrinkRequest,
     UpdateMcpTemplateConfigResponseBody,
     UpdateMcpTemplateConfigResponse,
+    UpdateMemoryRequest,
+    UpdateMemoryShrinkRequest,
+    UpdateMemoryResponseBody,
+    UpdateMemoryResponse,
+    UpdateMemoryStoreRequest,
+    UpdateMemoryStoreShrinkRequest,
+    UpdateMemoryStoreResponseBody,
+    UpdateMemoryStoreResponse,
     UpdateModelRequest,
     UpdateModelShrinkRequest,
     UpdateModelResponseBody,
@@ -1590,6 +1718,11 @@ __all__ = [
     VerifyWorkspaceOssMountRamAuthorizationRequest,
     VerifyWorkspaceOssMountRamAuthorizationResponseBody,
     VerifyWorkspaceOssMountRamAuthorizationResponse,
+    AddMemoriesRequestBodyMessages,
+    AddMemoriesRequestBodyScope,
+    AddMemoriesRequestBody,
+    AddMemoriesResponseBodyDataMemories,
+    AddMemoriesResponseBodyData,
     BatchDeleteModelsRequestBody,
     BatchDeleteModelsResponseBodyData,
     BatchUploadSkillsViaOssRequestBody,
@@ -1787,6 +1920,8 @@ __all__ = [
     CreateMcpResponseBodyDataMarketSource,
     CreateMcpResponseBodyDataTemplate,
     CreateMcpResponseBodyData,
+    CreateMemoryStoreRequestBody,
+    CreateMemoryStoreResponseBodyData,
     CreateModelRequestBodyCapabilities,
     CreateModelRequestBody,
     CreateModelResponseBodyDataCapabilities,
@@ -1816,6 +1951,7 @@ __all__ = [
     DeleteExternalAgentResponseBodyData,
     DeleteIdentityProviderResponseBodyData,
     DeleteManagedAgentResponseBodyData,
+    DeleteMemoryStoreResponseBodyData,
     DeleteModelResponseBodyData,
     DeleteModelConnectionResponseBodyData,
     DeleteTeamResponseBodyData,
@@ -1926,6 +2062,13 @@ __all__ = [
     GetMcpResponseBodyDataTemplate,
     GetMcpResponseBodyData,
     GetMcpMarketItemResponseBodyData,
+    GetMemoryResponseBodyDataContent,
+    GetMemoryResponseBodyDataScope,
+    GetMemoryResponseBodyData,
+    GetMemoryStoreResponseBodyData,
+    GetMemoryTaskResponseBodyDataError,
+    GetMemoryTaskResponseBodyDataMemories,
+    GetMemoryTaskResponseBodyData,
     GetModelResponseBodyDataCapabilities,
     GetModelResponseBodyData,
     GetModelConnectionResponseBodyData,
@@ -2048,6 +2191,12 @@ __all__ = [
     ListMcpsResponseBodyItemsDeploymentConfig,
     ListMcpsResponseBodyItemsMarketSource,
     ListMcpsResponseBodyItems,
+    ListMemoriesResponseBodyItemsContent,
+    ListMemoriesResponseBodyItemsScope,
+    ListMemoriesResponseBodyItems,
+    ListMemorySessionMessagesResponseBodyItems,
+    ListMemorySessionsResponseBodyItems,
+    ListMemoryStoresResponseBodyItems,
     ListModelConnectionsResponseBodyItemsModels,
     ListModelConnectionsResponseBodyItems,
     ListModelsResponseBodyItemsCapabilities,
@@ -2080,6 +2229,13 @@ __all__ = [
     RedraftSkillVersionRequestBody,
     ResetUserPasswordRequestBody,
     ResetUserPasswordResponseBodyData,
+    SearchMemoriesRequestBodyScope,
+    SearchMemoriesRequestBody,
+    SearchMemoriesResponseBodyDataMemoriesMemoryContent,
+    SearchMemoriesResponseBodyDataMemoriesMemoryScope,
+    SearchMemoriesResponseBodyDataMemoriesMemory,
+    SearchMemoriesResponseBodyDataMemories,
+    SearchMemoriesResponseBodyData,
     SubmitAgentSpecVersionRequestBody,
     SubmitSkillVersionRequestBody,
     UpdateAgentIMChannelRequestBodyChannelConfig,
@@ -2272,6 +2428,12 @@ __all__ = [
     UpdateMcpTemplateConfigResponseBodyDataMarketSource,
     UpdateMcpTemplateConfigResponseBodyDataTemplate,
     UpdateMcpTemplateConfigResponseBodyData,
+    UpdateMemoryRequestBody,
+    UpdateMemoryResponseBodyDataContent,
+    UpdateMemoryResponseBodyDataScope,
+    UpdateMemoryResponseBodyData,
+    UpdateMemoryStoreRequestBody,
+    UpdateMemoryStoreResponseBodyData,
     UpdateModelRequestBodyCapabilities,
     UpdateModelRequestBody,
     UpdateModelResponseBodyDataCapabilities,

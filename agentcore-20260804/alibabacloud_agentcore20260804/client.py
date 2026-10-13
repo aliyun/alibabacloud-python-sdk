@@ -41,6 +41,98 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_memories_with_options(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        tmp_req: main_models.AddMemoriesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.AddMemoriesResponse:
+        tmp_req.validate()
+        request = main_models.AddMemoriesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddMemories',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/memorystores/{DaraURL.percent_encode(memory_store_name)}/memories',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddMemoriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_memories_with_options_async(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        tmp_req: main_models.AddMemoriesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.AddMemoriesResponse:
+        tmp_req.validate()
+        request = main_models.AddMemoriesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddMemories',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/memorystores/{DaraURL.percent_encode(memory_store_name)}/memories',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddMemoriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_memories(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        request: main_models.AddMemoriesRequest,
+    ) -> main_models.AddMemoriesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.add_memories_with_options(workspace_id, memory_store_name, request, headers, runtime)
+
+    async def add_memories_async(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        request: main_models.AddMemoriesRequest,
+    ) -> main_models.AddMemoriesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.add_memories_with_options_async(workspace_id, memory_store_name, request, headers, runtime)
+
     def batch_delete_models_with_options(
         self,
         workspace_id: str,
@@ -1240,6 +1332,102 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.create_mcp_with_options_async(workspace_id, request, headers, runtime)
+
+    def create_memory_store_with_options(
+        self,
+        workspace_id: str,
+        tmp_req: main_models.CreateMemoryStoreRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateMemoryStoreResponse:
+        tmp_req.validate()
+        request = main_models.CreateMemoryStoreShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateMemoryStore',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/memorystores',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateMemoryStoreResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_memory_store_with_options_async(
+        self,
+        workspace_id: str,
+        tmp_req: main_models.CreateMemoryStoreRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateMemoryStoreResponse:
+        tmp_req.validate()
+        request = main_models.CreateMemoryStoreShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateMemoryStore',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/memorystores',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateMemoryStoreResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_memory_store(
+        self,
+        workspace_id: str,
+        request: main_models.CreateMemoryStoreRequest,
+    ) -> main_models.CreateMemoryStoreResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_memory_store_with_options(workspace_id, request, headers, runtime)
+
+    async def create_memory_store_async(
+        self,
+        workspace_id: str,
+        request: main_models.CreateMemoryStoreRequest,
+    ) -> main_models.CreateMemoryStoreResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_memory_store_with_options_async(workspace_id, request, headers, runtime)
 
     def create_model_with_options(
         self,
@@ -2608,6 +2796,162 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_mcp_with_options_async(mcp_server_id, workspace_id, request, headers, runtime)
+
+    def delete_memory_with_options(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        memory_id: str,
+        request: main_models.DeleteMemoryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteMemoryResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteMemory',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/memorystores/{DaraURL.percent_encode(memory_store_name)}/memories/{DaraURL.percent_encode(memory_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteMemoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_memory_with_options_async(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        memory_id: str,
+        request: main_models.DeleteMemoryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteMemoryResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteMemory',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/memorystores/{DaraURL.percent_encode(memory_store_name)}/memories/{DaraURL.percent_encode(memory_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteMemoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_memory(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        memory_id: str,
+        request: main_models.DeleteMemoryRequest,
+    ) -> main_models.DeleteMemoryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_memory_with_options(workspace_id, memory_store_name, memory_id, request, headers, runtime)
+
+    async def delete_memory_async(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        memory_id: str,
+        request: main_models.DeleteMemoryRequest,
+    ) -> main_models.DeleteMemoryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_memory_with_options_async(workspace_id, memory_store_name, memory_id, request, headers, runtime)
+
+    def delete_memory_store_with_options(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        request: main_models.DeleteMemoryStoreRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteMemoryStoreResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteMemoryStore',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/memorystores/{DaraURL.percent_encode(memory_store_name)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteMemoryStoreResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_memory_store_with_options_async(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        request: main_models.DeleteMemoryStoreRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteMemoryStoreResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteMemoryStore',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/memorystores/{DaraURL.percent_encode(memory_store_name)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteMemoryStoreResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_memory_store(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        request: main_models.DeleteMemoryStoreRequest,
+    ) -> main_models.DeleteMemoryStoreResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_memory_store_with_options(workspace_id, memory_store_name, request, headers, runtime)
+
+    async def delete_memory_store_async(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        request: main_models.DeleteMemoryStoreRequest,
+    ) -> main_models.DeleteMemoryStoreResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_memory_store_with_options_async(workspace_id, memory_store_name, request, headers, runtime)
 
     def delete_model_with_options(
         self,
@@ -4596,6 +4940,242 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_mcp_market_item_with_options_async(workspace_id, market_item_id, request, headers, runtime)
+
+    def get_memory_with_options(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        memory_id: str,
+        request: main_models.GetMemoryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMemoryResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMemory',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/memorystores/{DaraURL.percent_encode(memory_store_name)}/memories/{DaraURL.percent_encode(memory_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMemoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_memory_with_options_async(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        memory_id: str,
+        request: main_models.GetMemoryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMemoryResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMemory',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/memorystores/{DaraURL.percent_encode(memory_store_name)}/memories/{DaraURL.percent_encode(memory_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMemoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_memory(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        memory_id: str,
+        request: main_models.GetMemoryRequest,
+    ) -> main_models.GetMemoryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_memory_with_options(workspace_id, memory_store_name, memory_id, request, headers, runtime)
+
+    async def get_memory_async(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        memory_id: str,
+        request: main_models.GetMemoryRequest,
+    ) -> main_models.GetMemoryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_memory_with_options_async(workspace_id, memory_store_name, memory_id, request, headers, runtime)
+
+    def get_memory_store_with_options(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        request: main_models.GetMemoryStoreRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMemoryStoreResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMemoryStore',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/memorystores/{DaraURL.percent_encode(memory_store_name)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMemoryStoreResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_memory_store_with_options_async(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        request: main_models.GetMemoryStoreRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMemoryStoreResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMemoryStore',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/memorystores/{DaraURL.percent_encode(memory_store_name)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMemoryStoreResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_memory_store(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        request: main_models.GetMemoryStoreRequest,
+    ) -> main_models.GetMemoryStoreResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_memory_store_with_options(workspace_id, memory_store_name, request, headers, runtime)
+
+    async def get_memory_store_async(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        request: main_models.GetMemoryStoreRequest,
+    ) -> main_models.GetMemoryStoreResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_memory_store_with_options_async(workspace_id, memory_store_name, request, headers, runtime)
+
+    def get_memory_task_with_options(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        task_id: str,
+        request: main_models.GetMemoryTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMemoryTaskResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMemoryTask',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/memorystores/{DaraURL.percent_encode(memory_store_name)}/memory-tasks/{DaraURL.percent_encode(task_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMemoryTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_memory_task_with_options_async(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        task_id: str,
+        request: main_models.GetMemoryTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMemoryTaskResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMemoryTask',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/memorystores/{DaraURL.percent_encode(memory_store_name)}/memory-tasks/{DaraURL.percent_encode(task_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMemoryTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_memory_task(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        task_id: str,
+        request: main_models.GetMemoryTaskRequest,
+    ) -> main_models.GetMemoryTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_memory_task_with_options(workspace_id, memory_store_name, task_id, request, headers, runtime)
+
+    async def get_memory_task_async(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        task_id: str,
+        request: main_models.GetMemoryTaskRequest,
+    ) -> main_models.GetMemoryTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_memory_task_with_options_async(workspace_id, memory_store_name, task_id, request, headers, runtime)
 
     def get_model_with_options(
         self,
@@ -7009,6 +7589,386 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_mcps_with_options_async(workspace_id, request, headers, runtime)
 
+    def list_memories_with_options(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        request: main_models.ListMemoriesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMemoriesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['agentId'] = request.agent_id
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.session_id):
+            query['sessionId'] = request.session_id
+        if not DaraCore.is_null(request.user_id):
+            query['userId'] = request.user_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMemories',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/memorystores/{DaraURL.percent_encode(memory_store_name)}/memories',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMemoriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_memories_with_options_async(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        request: main_models.ListMemoriesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMemoriesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['agentId'] = request.agent_id
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.session_id):
+            query['sessionId'] = request.session_id
+        if not DaraCore.is_null(request.user_id):
+            query['userId'] = request.user_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMemories',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/memorystores/{DaraURL.percent_encode(memory_store_name)}/memories',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMemoriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_memories(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        request: main_models.ListMemoriesRequest,
+    ) -> main_models.ListMemoriesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_memories_with_options(workspace_id, memory_store_name, request, headers, runtime)
+
+    async def list_memories_async(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        request: main_models.ListMemoriesRequest,
+    ) -> main_models.ListMemoriesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_memories_with_options_async(workspace_id, memory_store_name, request, headers, runtime)
+
+    def list_memory_session_messages_with_options(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        request: main_models.ListMemorySessionMessagesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMemorySessionMessagesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['agentId'] = request.agent_id
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.session_id):
+            query['sessionId'] = request.session_id
+        if not DaraCore.is_null(request.user_id):
+            query['userId'] = request.user_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMemorySessionMessages',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/memorystores/{DaraURL.percent_encode(memory_store_name)}/messages',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMemorySessionMessagesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_memory_session_messages_with_options_async(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        request: main_models.ListMemorySessionMessagesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMemorySessionMessagesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['agentId'] = request.agent_id
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.session_id):
+            query['sessionId'] = request.session_id
+        if not DaraCore.is_null(request.user_id):
+            query['userId'] = request.user_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMemorySessionMessages',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/memorystores/{DaraURL.percent_encode(memory_store_name)}/messages',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMemorySessionMessagesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_memory_session_messages(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        request: main_models.ListMemorySessionMessagesRequest,
+    ) -> main_models.ListMemorySessionMessagesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_memory_session_messages_with_options(workspace_id, memory_store_name, request, headers, runtime)
+
+    async def list_memory_session_messages_async(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        request: main_models.ListMemorySessionMessagesRequest,
+    ) -> main_models.ListMemorySessionMessagesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_memory_session_messages_with_options_async(workspace_id, memory_store_name, request, headers, runtime)
+
+    def list_memory_sessions_with_options(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        request: main_models.ListMemorySessionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMemorySessionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['agentId'] = request.agent_id
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.user_id):
+            query['userId'] = request.user_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMemorySessions',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/memorystores/{DaraURL.percent_encode(memory_store_name)}/sessions',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMemorySessionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_memory_sessions_with_options_async(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        request: main_models.ListMemorySessionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMemorySessionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['agentId'] = request.agent_id
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.user_id):
+            query['userId'] = request.user_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMemorySessions',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/memorystores/{DaraURL.percent_encode(memory_store_name)}/sessions',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMemorySessionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_memory_sessions(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        request: main_models.ListMemorySessionsRequest,
+    ) -> main_models.ListMemorySessionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_memory_sessions_with_options(workspace_id, memory_store_name, request, headers, runtime)
+
+    async def list_memory_sessions_async(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        request: main_models.ListMemorySessionsRequest,
+    ) -> main_models.ListMemorySessionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_memory_sessions_with_options_async(workspace_id, memory_store_name, request, headers, runtime)
+
+    def list_memory_stores_with_options(
+        self,
+        workspace_id: str,
+        request: main_models.ListMemoryStoresRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMemoryStoresResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMemoryStores',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/memorystores',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMemoryStoresResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_memory_stores_with_options_async(
+        self,
+        workspace_id: str,
+        request: main_models.ListMemoryStoresRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMemoryStoresResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMemoryStores',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/memorystores',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMemoryStoresResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_memory_stores(
+        self,
+        workspace_id: str,
+        request: main_models.ListMemoryStoresRequest,
+    ) -> main_models.ListMemoryStoresResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_memory_stores_with_options(workspace_id, request, headers, runtime)
+
+    async def list_memory_stores_async(
+        self,
+        workspace_id: str,
+        request: main_models.ListMemoryStoresRequest,
+    ) -> main_models.ListMemoryStoresResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_memory_stores_with_options_async(workspace_id, request, headers, runtime)
+
     def list_model_connections_with_options(
         self,
         workspace_id: str,
@@ -8669,6 +9629,98 @@ class Client(OpenApiClient):
         headers = {}
         return await self.reset_user_password_with_options_async(workspace_id, request, headers, runtime)
 
+    def search_memories_with_options(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        tmp_req: main_models.SearchMemoriesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchMemoriesResponse:
+        tmp_req.validate()
+        request = main_models.SearchMemoriesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SearchMemories',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/memorystores/{DaraURL.percent_encode(memory_store_name)}/memories/search',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SearchMemoriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def search_memories_with_options_async(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        tmp_req: main_models.SearchMemoriesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchMemoriesResponse:
+        tmp_req.validate()
+        request = main_models.SearchMemoriesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SearchMemories',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/memorystores/{DaraURL.percent_encode(memory_store_name)}/memories/search',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SearchMemoriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def search_memories(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        request: main_models.SearchMemoriesRequest,
+    ) -> main_models.SearchMemoriesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.search_memories_with_options(workspace_id, memory_store_name, request, headers, runtime)
+
+    async def search_memories_async(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        request: main_models.SearchMemoriesRequest,
+    ) -> main_models.SearchMemoriesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.search_memories_with_options_async(workspace_id, memory_store_name, request, headers, runtime)
+
     def submit_agent_spec_version_with_options(
         self,
         workspace_id: str,
@@ -9948,6 +11000,202 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_mcp_template_config_with_options_async(workspace_id, mcp_server_id, request, headers, runtime)
+
+    def update_memory_with_options(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        memory_id: str,
+        tmp_req: main_models.UpdateMemoryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMemoryResponse:
+        tmp_req.validate()
+        request = main_models.UpdateMemoryShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMemory',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/memorystores/{DaraURL.percent_encode(memory_store_name)}/memories/{DaraURL.percent_encode(memory_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMemoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_memory_with_options_async(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        memory_id: str,
+        tmp_req: main_models.UpdateMemoryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMemoryResponse:
+        tmp_req.validate()
+        request = main_models.UpdateMemoryShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMemory',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/memorystores/{DaraURL.percent_encode(memory_store_name)}/memories/{DaraURL.percent_encode(memory_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMemoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_memory(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        memory_id: str,
+        request: main_models.UpdateMemoryRequest,
+    ) -> main_models.UpdateMemoryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_memory_with_options(workspace_id, memory_store_name, memory_id, request, headers, runtime)
+
+    async def update_memory_async(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        memory_id: str,
+        request: main_models.UpdateMemoryRequest,
+    ) -> main_models.UpdateMemoryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_memory_with_options_async(workspace_id, memory_store_name, memory_id, request, headers, runtime)
+
+    def update_memory_store_with_options(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        tmp_req: main_models.UpdateMemoryStoreRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMemoryStoreResponse:
+        tmp_req.validate()
+        request = main_models.UpdateMemoryStoreShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMemoryStore',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/memorystores/{DaraURL.percent_encode(memory_store_name)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMemoryStoreResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_memory_store_with_options_async(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        tmp_req: main_models.UpdateMemoryStoreRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMemoryStoreResponse:
+        tmp_req.validate()
+        request = main_models.UpdateMemoryStoreShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMemoryStore',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/memorystores/{DaraURL.percent_encode(memory_store_name)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMemoryStoreResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_memory_store(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        request: main_models.UpdateMemoryStoreRequest,
+    ) -> main_models.UpdateMemoryStoreResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_memory_store_with_options(workspace_id, memory_store_name, request, headers, runtime)
+
+    async def update_memory_store_async(
+        self,
+        workspace_id: str,
+        memory_store_name: str,
+        request: main_models.UpdateMemoryStoreRequest,
+    ) -> main_models.UpdateMemoryStoreResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_memory_store_with_options_async(workspace_id, memory_store_name, request, headers, runtime)
 
     def update_model_with_options(
         self,
