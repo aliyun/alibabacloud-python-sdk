@@ -18,14 +18,14 @@ class DescribeMetaListResponseBody(DaraModel):
         total_page_count: int = None,
         total_record_count: int = None,
     ):
-        # The instance name.
+        # The name of the instance.
         self.dbinstance_name = dbinstance_name
         self.items = items
         # The page number.
         self.page_number = page_number
         # The number of entries on the current page.
         self.page_record_count = page_record_count
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The total number of pages.
         self.total_page_count = total_page_count

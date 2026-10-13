@@ -17,40 +17,40 @@ class DescribeDBMiniEngineVersionsRequest(DaraModel):
         resource_owner_id: int = None,
         storage_type: str = None,
     ):
-        # The instance ID. You can call the DescribeDBInstances operation to query the ID.
+        # The ID of the instance. You can call the DescribeDBInstances operation to query the ID.
         # 
-        # > For ApsaraDB RDS for PostgreSQL instances, if you specify an instance ID, only minor versions later than the current minor version of the instance are returned.
+        # > For an ApsaraDB RDS for PostgreSQL instance, if you specify the instance ID, the system queries only the minor engine versions that are later than the current minor engine version of the instance.
         self.dbinstance_id = dbinstance_id
-        # The dedicated cluster ID. You can call the DescribeDedicatedHostGroups operation to query the ID.
+        # The ID of the dedicated cluster. You can call the DescribeDedicatedHostGroups operation to query the ID.
         self.dedicated_host_group_id = dedicated_host_group_id
-        # The database engine. Set the value to **MySQL** or **PostgreSQL**.
+        # The database engine. Valid values: **MySQL** and **PostgreSQL**.
         self.engine = engine
         # The database engine version. Valid values:
-        # * MySQL: **8.0**, **5.7**, **5.6**, **5.5**
-        # * PostgreSQL: **17.0**, **16.0**, **15.0**, **14.0**, **13.0**, **12.0**, **11.0**, **10.0**
+        # * MySQL: **8.0**, **5.7**, **5.6**, and **5.5**.
+        # * PostgreSQL: **17.0**, **16.0**, **15.0**, **14.0**, **13.0**, **12.0**, **11.0**, and **10.0**.
         self.engine_version = engine_version
-        # The minor engine version number. Specify this parameter to query the details of the specified minor version.
+        # The minor engine version number of the instance. Specify this parameter to query the details of a specific minor engine version.
         # 
         # > This parameter is applicable only to ApsaraDB RDS for MySQL.
         self.minor_version_tag = minor_version_tag
         # The instance edition. Valid values:
         # * **Basic**: Basic Edition.
-        # * **HighAvailability**: high-availability series.
+        # * **HighAvailability**: High-availability Edition.
         # * **cluster**: Cluster Edition.
         # * **Finance**: RDS Enterprise Edition.
         self.node_type = node_type
-        # The region ID. You can call the DescribeRegions operation to query the ID.
+        # The region ID. You can call the DescribeRegions operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_id = resource_owner_id
         # The instance storage type. Valid values:
-        # * **local_ssd**: Premium Local SSDs.
+        # * **local_ssd**: premium local SSD.
         # * **general_essd**: premium performance disk.
-        # * **cloud_ssd**: standard SSDs.
-        # * **cloud_essd**: PL1 ESSDs.
-        # * **cloud_essd2**: PL2 ESSDs.
-        # * **cloud_essd3**: PL3 ESSDs.
+        # * **cloud_ssd**: standard SSD.
+        # * **cloud_essd**: PL1 ESSD.
+        # * **cloud_essd2**: PL2 ESSD.
+        # * **cloud_essd3**: PL3 ESSD.
         self.storage_type = storage_type
 
     def validate(self):

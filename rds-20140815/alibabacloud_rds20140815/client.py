@@ -4980,6 +4980,8 @@ class Client(OpenApiClient):
             query['DBName'] = request.dbname
         if not DaraCore.is_null(request.is_online_db):
             query['IsOnlineDB'] = request.is_online_db
+        if not DaraCore.is_null(request.keep_cdc):
+            query['KeepCDC'] = request.keep_cdc
         if not DaraCore.is_null(request.migrate_task_id):
             query['MigrateTaskId'] = request.migrate_task_id
         if not DaraCore.is_null(request.ossurls):
@@ -5028,6 +5030,8 @@ class Client(OpenApiClient):
             query['DBName'] = request.dbname
         if not DaraCore.is_null(request.is_online_db):
             query['IsOnlineDB'] = request.is_online_db
+        if not DaraCore.is_null(request.keep_cdc):
+            query['KeepCDC'] = request.keep_cdc
         if not DaraCore.is_null(request.migrate_task_id):
             query['MigrateTaskId'] = request.migrate_task_id
         if not DaraCore.is_null(request.ossurls):
@@ -5088,6 +5092,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not DaraCore.is_null(request.dbname):
             query['DBName'] = request.dbname
+        if not DaraCore.is_null(request.keep_cdc):
+            query['KeepCDC'] = request.keep_cdc
         if not DaraCore.is_null(request.migrate_task_id):
             query['MigrateTaskId'] = request.migrate_task_id
         if not DaraCore.is_null(request.owner_account):
@@ -5132,6 +5138,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not DaraCore.is_null(request.dbname):
             query['DBName'] = request.dbname
+        if not DaraCore.is_null(request.keep_cdc):
+            query['KeepCDC'] = request.keep_cdc
         if not DaraCore.is_null(request.migrate_task_id):
             query['MigrateTaskId'] = request.migrate_task_id
         if not DaraCore.is_null(request.owner_account):

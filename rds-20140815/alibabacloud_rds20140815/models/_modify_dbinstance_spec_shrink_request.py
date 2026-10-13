@@ -42,24 +42,32 @@ class ModifyDBInstanceSpecShrinkRequest(DaraModel):
         zone_id_slave_1: str = None,
     ):
         self.allocate_strategy = allocate_strategy
-        # Specifies whether to enable [major engine version upgrade](https://help.aliyun.com/document_detail/127458.html) for the SQL Server instance. Valid values:
+        # Specifies whether to perform a [major engine version upgrade](https://help.aliyun.com/document_detail/127458.html) for the ApsaraDB RDS for SQL Server instance. Valid values:
+        # - **true**: performs the upgrade.
+        # - **false** (default): does not perform the upgrade.
+        # 
+        # > - When you perform a major engine version upgrade, you must also specify other required parameters, including DBInstanceId, EngineVersion, DBInstanceClass, Category, ZoneId, and VSwitchId.
+        # > - If you want to upgrade the instance to the High-availability Edition or Cluster Edition, you must also specify the ZoneIdSlave1 parameter.
         self.allow_major_version_upgrade = allow_major_version_upgrade
-        # Specifies whether to use coupons to offset fees. Valid values:
+        # Specifies whether to use vouchers to offset fees. Valid values:
+        # 
+        # - **true** (default): uses vouchers.
+        # - **false**: does not use vouchers.
         self.auto_use_coupon = auto_use_coupon
         # Specifies whether to enable the [I/O performance burst feature for Premium ESSDs](https://help.aliyun.com/document_detail/2340501.html). Valid values:
         # 
-        # - **true**: Enabled.
-        # - **false**: Disabled.
+        # - **true**: enables the feature.
+        # - **false**: disables the feature.
         self.bursting_enabled = bursting_enabled
         # The [instance edition](https://help.aliyun.com/document_detail/53509.html). Valid values:
-        # > This parameter is required if **EngineVersion** is set to a SQL Server version number.
+        # > This parameter is required when **EngineVersion** is set to a SQL Server version number.
         # <details>
         # <summary>Regular ApsaraDB RDS instances</summary>
         # 
         # - **Basic**: Basic Edition
         # - **HighAvailability**: High-availability Edition
         # - **AlwaysOn**: SQL Server Cluster Edition
-        # - **Cluster**: MySQL Cluster Edition.
+        # - **Cluster**: MySQL Cluster Edition
         # - <props="china">**Finance**: Enterprise Edition
         # 
         # </details>
@@ -67,102 +75,145 @@ class ModifyDBInstanceSpecShrinkRequest(DaraModel):
         # <details>
         # <summary>Serverless ApsaraDB RDS instances (not supported for MariaDB)</summary>
         # 
-        # - **serverless_basic**: Serverless Basic Edition (applicable only to MySQL and PostgreSQL)
-        # - **serverless_standard**: Serverless High-availability Edition (applicable only to MySQL and PostgreSQL)
-        # - **serverless_ha**: Serverless High-availability Edition (applicable only to SQL Server)
+        # - **serverless_basic**: Serverless Basic Edition (MySQL and PostgreSQL only)
+        # - **serverless_standard**: Serverless High-availability Edition (MySQL and PostgreSQL only)
+        # - **serverless_ha**: Serverless High-availability Edition (SQL Server only)
         # 
         # </details>
         self.category = category
-        # The [cold data archiving feature](https://help.aliyun.com/document_detail/2701832.html) for premium performance disks. Valid values:
+        # Specifies whether to enable the [data archiving feature for Premium ESSDs](https://help.aliyun.com/document_detail/2701832.html). Valid values:
+        # 
+        # - **true**: enables the feature.
+        # 
+        # - **false**: disables the feature.
         self.cold_data_enabled = cold_data_enabled
-        # The MySQL [storage compression feature](https://help.aliyun.com/document_detail/2861985.html). Valid values:
+        # Specifies whether to enable the [storage compression feature](https://help.aliyun.com/document_detail/2861985.html) for ApsaraDB RDS for MySQL. Valid values:
+        # 
+        # - **on**: enables the feature.
+        # - **off**: disables the feature.
         self.compression_mode = compression_mode
-        # The [target instance type](https://help.aliyun.com/document_detail/26312.html). You can call [DescribeAvailableClasses](https://help.aliyun.com/document_detail/610393.html) to query the instance types to which the instance can be changed.
+        # The [target instance type](https://help.aliyun.com/document_detail/26312.html). You can call the [DescribeAvailableClasses](https://help.aliyun.com/document_detail/610393.html) operation to query the available instance types for specification changes.
+        # 
+        # > * You must specify at least one of this parameter and **DBInstanceStorage**.
+        # > * You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/610394.html) operation to view the current instance type.
         self.dbinstance_class = dbinstance_class
-        # The instance ID. You can call [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) to query the instance ID.
+        # The instance ID. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) operation to query the instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The [target storage capacity](https://help.aliyun.com/document_detail/26312.html). Unit: GB. You can call [DescribeAvailableClasses](https://help.aliyun.com/document_detail/610393.html) to query the available storage capacity range for the target instance type.
+        # The [target storage capacity](https://help.aliyun.com/document_detail/26312.html). Unit: GB. You can call the [DescribeAvailableClasses](https://help.aliyun.com/document_detail/610393.html) operation to query the available storage capacity range for the target instance type.
+        # 
+        # > * You must specify at least one of this parameter and **DBInstanceClass**.
+        # > * You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/610394.html) operation to view the current storage capacity of the instance.
         self.dbinstance_storage = dbinstance_storage
         # The instance storage type. Valid values:
+        # * **local_ssd**: premium local SSD
+        # * **cloud_ssd**: standard SSD (not recommended. Sales have stopped in some regions)
+        # * **cloud_essd**: PL1 ESSD
+        # * **cloud_essd2**: PL2 ESSD
+        # * **cloud_essd3**: PL3 ESSD
+        # * **general_essd**: Premium ESSD
+        # 
+        # If you want to change the instance storage type, take note of the following items:
+        # <props="china">* If you change the instance storage type from ESSD to Premium ESSD, other parameters such as the instance type and storage capacity must remain the same as the original values and cannot be modified.
+        # 
+        # <props="china">* For ApsaraDB RDS for MySQL or MariaDB instances whose instance storage type is standard SSD, you can set this parameter to `cloud_essd` to [upgrade the instance storage type to ESSD](https://help.aliyun.com/document_detail/314678.html). To perform the upgrade, you must specify both **DBInstanceClass** and **DBInstanceStorage**, and their values must be the same as the current values of the instance.
+        # 
+        # <props="china">* For ApsaraDB RDS for PostgreSQL instances, you can upgrade standard SSDs to [ESSDs of any PL](https://help.aliyun.com/document_detail/96750.html), but **you cannot downgrade ESSDs to standard SSDs**.
+        # 
+        # <props="intl">For ApsaraDB RDS for PostgreSQL instances, you can upgrade standard SSDs to [ESSDs of any PL](https://help.aliyun.com/document_detail/96750.html), but **you cannot downgrade ESSDs to standard SSDs**.
         self.dbinstance_storage_type = dbinstance_storage_type
         # The dedicated cluster ID.
         self.dedicated_host_group_id = dedicated_host_group_id
-        # The type of specification change. Valid values:
+        # The type of the specification change. Valid values:
         # 
-        # - **Up** (default): upgrade of a subscription instance or upgrade/downgrade of a pay-as-you-go instance.
-        # - **Down**: downgrade of a subscription instance.
-        # - **TempUpgrade**: elastic specification change of a subscription ApsaraDB RDS for SQL Server instance. This value is required for elastic specification changes.
-        # - **Serverless**: configuration of elastic settings for a serverless instance.
+        # - **Up** (default): upgrade for subscription instances, and upgrade or downgrade for pay-as-you-go instances.
+        # - **Down**: downgrade for subscription instances.
+        # - **TempUpgrade**: elastic specification change for subscription ApsaraDB RDS for SQL Server instances. This value is required for elastic specification changes.
+        # - **Serverless**: configuration for adjusting the elastic settings of serverless instances.
         # 
-        # > If you want to change only the **DBInstanceStorageType** parameter, for example, from standard SSD to ESSD, leave this parameter empty.
+        # > If you only change the **DBInstanceStorageType** parameter, such as changing standard SSDs to ESSDs, leave this parameter empty.
         self.direction = direction
-        # The time when the new configurations take effect. Valid values:
-        # > **Changing certain configurations may affect the instance**. Read the [impact section in the feature documentation](https://help.aliyun.com/document_detail/96061.html) before configuring this parameter. Perform this operation during off-peak hours.
-        # * **Immediate** (default): The new configurations take effect immediately.
-        # * **MaintainTime**: The new configurations take effect during the [maintenance window](https://help.aliyun.com/document_detail/610402.html).
-        # * **ScheduleTime**: The new configurations take effect at a specified time. The specified time must be at least 12 hours later than the current time. The actual switchover time follows the rule: EffectiveTime = ScheduleTime + SwitchTime.
+        # The effective time of the new configurations. Valid values:
+        # > **Changing some configurations may affect the instance**. Read the [Impact section in the feature documentation](https://help.aliyun.com/document_detail/96061.html) carefully before you configure this parameter. We recommend that you do this during off-peak hours.
+        # * **Immediate** (default): takes effect immediately.
+        # * **MaintainTime**: takes effect within the [maintenance window](https://help.aliyun.com/document_detail/610402.html).
+        # * **ScheduleTime**: takes effect at a specified time. The specified time must be at least 12 hours later than the current time, and the actual switchover time follows the formula: EffectiveTime = ScheduleTime + SwitchTime.
         self.effective_time = effective_time
         # The database engine version. Valid values:
         # <details>
         # <summary>Regular ApsaraDB RDS instances</summary>
         # 
-        # - MySQL: 5.5, 5.6, 5.7, 8.0
-        # - SQL Server: 2008r2, 08r2_ent_ha, 2012, 2012_ent_ha, 2012_std_ha, 2012_web, 2014_std_ha, 2016_ent_ha, 2016_std_ha, 2016_web, 2017_std_ha, 2017_ent, 2019_std_ha, 2019_ent, 2022_web, 2022_std_ha, 2022_ent, 2025_std, 2025_ent
-        # - PostgreSQL: 10.0, 11.0, 12.0, 13.0, 14.0, 15.0
+        # - MySQL: 5.5, 5.6, 5.7, and 8.0
+        # - SQL Server: 2008r2, 08r2_ent_ha, 2012, 2012_ent_ha, 2012_std_ha, 2012_web, 2014_std_ha, 2016_ent_ha, 2016_std_ha, 2016_web, 2017_std_ha, 2017_ent, 2019_std_ha, 2019_ent, 2022_web, 2022_std_ha, 2022_ent, 2025_std, and 2025_ent
+        # - PostgreSQL: 10.0, 11.0, 12.0, 13.0, 14.0, and 15.0
         # - MariaDB: 10.3
         # 
         # </details>
         # 
         # <details>
-        # <summary>Serverless ApsaraDB RDS instances (MariaDB is not supported)</summary>
+        # <summary>Serverless ApsaraDB RDS instances (not supported for MariaDB)</summary>
         # 
-        # - MySQL: 5.7, 8.0
-        # - SQL Server: 2016_std_sl, 2017_std_sl, 2019_std_sl
-        # - PostgreSQL: 14.0, 15.0, 16.0
+        # - MySQL: 5.7 and 8.0
+        # - SQL Server: 2016_std_sl, 2017_std_sl, and 2019_std_sl
+        # - PostgreSQL: 14.0, 15.0, and 16.0
         # 
         # </details>
         self.engine_version = engine_version
-        # The [Buffer Pool Extension (BPE) feature](https://help.aliyun.com/document_detail/2527067.html) for premium performance disks. Valid values:
+        # Specifies whether to enable the [Buffer Pool Extension (BPE) feature for Premium ESSDs](https://help.aliyun.com/document_detail/2527067.html). Valid values:
         # 
-        # -  **1**: Enabled.
-        # -  **0**: Not enabled.
+        # -  **1**: enables the feature.
+        # -  **0**: disables the feature.
         self.io_acceleration_enabled = io_acceleration_enabled
-        # Specifies whether to enable the MySQL [16KB atomic write feature](https://help.aliyun.com/document_detail/2858761.html). Valid values:
+        # Specifies whether to enable the [16KB atomic write feature](https://help.aliyun.com/document_detail/2858761.html) for ApsaraDB RDS for MySQL. Valid values:
+        # 
+        # - **optimized**: enables the feature.
+        # - **none**: disables the feature.
         self.optimized_writes = optimized_writes
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The billing method of the instance. Valid values:
+        # The current billing method of the instance. Valid values:
         # - **Postpaid**: pay-as-you-go.
         # - **Prepaid**: subscription.
-        # - **Serverless** (not supported for MariaDB instances): serverless billing method.
+        # - **Serverless** (not supported for ApsaraDB RDS for MariaDB instances): serverless.
         # 
-        # > To change the billing method to Serverless, you **must configure the following parameters**: automatic start and stop (AutoPause), scaling range (MaxCapacity and MinCapacity), and elastic policy (SwitchForce). For more information, see [Introduction to MySQL Serverless instances](https://help.aliyun.com/document_detail/411291.html), [Introduction to SQL Server Serverless instances](https://help.aliyun.com/document_detail/604344.html), and [Introduction to PostgreSQL Serverless instances](https://help.aliyun.com/document_detail/607742.html).
+        # > To change the billing method to serverless, **you must configure** the auto-start and auto-stop (AutoPause), scaling range (MaxCapacity and MinCapacity), and elastic policy (SwitchForce) in subsequent parameters. For more information, see [Overview of serverless ApsaraDB RDS for MySQL instances](https://help.aliyun.com/document_detail/411291.html), [Overview of serverless ApsaraDB RDS for SQL Server instances](https://help.aliyun.com/document_detail/604344.html), and [Overview of serverless ApsaraDB RDS for PostgreSQL instances](https://help.aliyun.com/document_detail/607742.html).
         self.pay_type = pay_type
         # The coupon code.
         self.promotion_code = promotion_code
-        # The [target instance type of read-only instances](https://help.aliyun.com/document_detail/276980.html) when you perform an Upgrade/Downgrade to change a MySQL high availability (HA) instance with Premium Local SSDs to a cloud disk instance. This parameter is active only when the instance meets the requirements.
+        # The [target instance type of the read-only instance](https://help.aliyun.com/document_detail/276980.html) when you change an ApsaraDB RDS for MySQL High-availability Edition instance with premium local SSDs to a cloud disk instance.
         self.read_only_dbinstance_class = read_only_dbinstance_class
         # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The serverless instance configuration for the specification change.
+        # The configurations for changing the serverless instance.
         self.serverless_configuration_shrink = serverless_configuration_shrink
-        # A deprecated parameter. You do not need to configure this parameter.
+        # **[Deprecated]** This parameter is deprecated and does not need to be configured.
         self.source_biz = source_biz
-        # The time at which the specification change is performed. **Perform the specification change during off-peak hours.**
+        # The time when the specification change is performed. **We recommend that you perform the specification change during off-peak hours**.
+        # 
+        # Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC time).
+        # 
+        # > - The specified time **must be later than the current time** (the time when the call is initiated). Otherwise, the specification change task will fail. After the task fails, you must wait for the order to be automatically canceled before you can initiate the call again.
+        # > - If you only increase the storage capacity or change the ESSD storage type, the specification change is performed immediately after submission because it does not affect your business. You do not need to configure this parameter.
         self.switch_time = switch_time
-        # The [minor engine version](https://help.aliyun.com/document_detail/126002.html) of the PostgreSQL instance. If the specification change fails because the minor engine version is not supported, specify this parameter to **upgrade the minor engine version during the specification change**.
+        # The [minor engine version](https://help.aliyun.com/document_detail/126002.html) of the ApsaraDB RDS for PostgreSQL instance. When you change the instance type and an error indicates that the minor engine version is not supported, you must specify the minor engine version **to upgrade the minor engine version during the instance type change**.
+        # 
+        # Format: `rds_postgres_<Major version>00_<Minor version>`. For example, for version 12 and minor version 20200830: `rds_postgres_1200_20200830`.
         self.target_minor_version = target_minor_version
-        # The duration of the SQL Server [elastic upgrade](https://help.aliyun.com/document_detail/95665.html). Unit: days.
+        # The duration of the [elastic upgrade](https://help.aliyun.com/document_detail/95665.html) for the ApsaraDB RDS for SQL Server instance. Unit: days.
         self.used_time = used_time
-        # The vSwitch ID. The zone of the vSwitch must correspond to the zone ID specified in **ZoneId**.
+        # The vSwitch ID. The zone where the vSwitch resides must correspond to the zone ID specified in **ZoneId**.
+        # 
+        # - The network type (**InstanceNetworkType**) must be **VPC**.
+        # - If you specify ZoneSlaveId1 (the secondary zone ID), you must specify two vSwitch IDs and separate them with a comma (,).
+        # > You only need to specify the vSwitch when you upgrade the major engine version of an ApsaraDB RDS for SQL Server instance (AllowMajorVersionUpgrade) or when you switch the vSwitch.
         self.v_switch_id = v_switch_id
         # The zone ID.
         self.zone_id = zone_id
-        # The zone ID of the secondary node. If this value is the same as **ZoneId**, the instance uses single-zone deployment. If this value is different from **ZoneId**, the instance uses multi-zone deployment.
+        # The zone ID of the secondary node. If this value is the same as the value of **ZoneId**, it is a single-zone deployment. If this value is different from the value of **ZoneId**, it is a multi-zone deployment.
+        # > You only need to specify the secondary zone when you upgrade the major engine version of an ApsaraDB RDS for SQL Server instance (AllowMajorVersionUpgrade), or you need to configure this parameter when switching the secondary zone.
         self.zone_id_slave_1 = zone_id_slave_1
 
     def validate(self):

@@ -67,23 +67,23 @@ class DescribeCurrentModifyOrderResponseBodyModifyOrder(DaraModel):
     ):
         # The instance family.
         self.class_group = class_group
-        # The number of CPU cores for the instance type. Unit: cores.
+        # The number of CPU cores that correspond to the instance specifications. Unit: cores.
         self.cpu = cpu
         # The instance ID.
         self.db_instance_id = db_instance_id
         # The effective period. Valid values:
-        # * **Immediate** (default): The specification change takes effect immediately.
-        # * **MaintainTime**: The specification change takes effect during the maintenance window. For more information, see [ModifyDBInstanceMaintainTime](https://help.aliyun.com/document_detail/610402.html).
+        # * **Immediate** (default): The changes take effect immediately.
+        # * **MaintainTime**: The changes take effect within the maintenance window. For more information, see [ModifyDBInstanceMaintainTime](https://help.aliyun.com/document_detail/610402.html).
         self.effective_time = effective_time
         # The mark.
         self.mark = mark
-        # The memory capacity for the instance type. Unit: GB.
+        # The memory capacity that corresponds to the instance specifications. Unit: GB.
         self.memory_class = memory_class
         # The task status.
         self.status = status
-        # The storage description.
+        # The storage information.
         self.storage = storage
-        # The target instance type for the specification change.
+        # The target instance specifications for the specification change.
         self.target_dbinstance_class = target_dbinstance_class
 
     def validate(self):

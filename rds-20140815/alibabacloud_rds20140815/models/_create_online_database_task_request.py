@@ -11,31 +11,34 @@ class CreateOnlineDatabaseTaskRequest(DaraModel):
         client_token: str = None,
         dbinstance_id: str = None,
         dbname: str = None,
+        keep_cdc: bool = None,
         migrate_task_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The consistency check method after the database is open. Valid values:
-        # * **SyncExecuteDBCheck**: synchronous database check.
-        # * **AsyncExecuteDBCheck**: asynchronous database check.
+        # The consistency check method used after the database is opened. Valid values:
+        # * **SyncExecuteDBCheck**: Executes the database check synchronously.
+        # * **AsyncExecuteDBCheck**: Executes the database check asynchronously.
         # 
-        # >Compatible with SQL Server 2008 R2.
+        # > Compatible with SQL Server 2008 R2.
         # 
         # This parameter is required.
         self.check_dbmode = check_dbmode
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can generate the value of this parameter on the client side. The value must be unique across different requests and can contain a maximum of 64 ASCII characters. The value cannot contain non-ASCII characters.
         self.client_token = client_token
-        # The instance ID. You can call DescribeDBInstances to query the instance ID.
+        # Instance ID of the instance. You can call the DescribeDBInstances operation to query instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The database name.
+        # The name of the database.
         # 
         # This parameter is required.
         self.dbname = dbname
-        # The migration task ID.
+        # Specifies whether to retain the database-level and table-level Change Data Capture (CDC) settings and the data in change tables. Regardless of the value of this parameter, CDC jobs are not rebuilt.
+        self.keep_cdc = keep_cdc
+        # The ID of the migration task.
         # 
         # This parameter is required.
         self.migrate_task_id = migrate_task_id
@@ -63,6 +66,9 @@ class CreateOnlineDatabaseTaskRequest(DaraModel):
 
         if self.dbname is not None:
             result['DBName'] = self.dbname
+
+        if self.keep_cdc is not None:
+            result['KeepCDC'] = self.keep_cdc
 
         if self.migrate_task_id is not None:
             result['MigrateTaskId'] = self.migrate_task_id
@@ -94,6 +100,9 @@ class CreateOnlineDatabaseTaskRequest(DaraModel):
 
         if m.get('DBName') is not None:
             self.dbname = m.get('DBName')
+
+        if m.get('KeepCDC') is not None:
+            self.keep_cdc = m.get('KeepCDC')
 
         if m.get('MigrateTaskId') is not None:
             self.migrate_task_id = m.get('MigrateTaskId')

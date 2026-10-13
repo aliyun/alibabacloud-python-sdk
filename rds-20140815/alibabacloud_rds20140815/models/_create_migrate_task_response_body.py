@@ -15,14 +15,14 @@ class CreateMigrateTaskResponseBody(DaraModel):
         task_id: str = None,
     ):
         # The type of the cloud migration task. Valid values:
-        # * **FULL**: performs a restore operation by using a full backup file.
+        # * **FULL**: restores data by using a full backup file.
         # * **UPDF**: restores incremental data by using an incremental backup file or log file.
         self.backup_mode = backup_mode
         # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The database name.
+        # The name of the database.
         self.dbname = dbname
-        # The migration task ID.
+        # The ID of the migration task.
         self.migrate_task_id = migrate_task_id
         # The request ID.
         self.request_id = request_id

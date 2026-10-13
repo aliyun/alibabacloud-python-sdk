@@ -16,15 +16,15 @@ class DescribeCloudMigrationPrecheckResultResponseBody(DaraModel):
         request_id: str = None,
         total_size: int = None,
     ):
-        # The details about the assessment report.
+        # The list of pre-check reports for one-click cloud migration.
         self.items = items
         # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The maximum number of entries per page.
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of queried entries.
         self.total_size = total_size
 
     def validate(self):
@@ -95,7 +95,7 @@ class DescribeCloudMigrationPrecheckResultResponseBodyItems(DaraModel):
         task_id: int = None,
         task_name: str = None,
     ):
-        # The content of the assessment report.
+        # The content of the pre-check report for cloud migration.
         self.detail = detail
         # The time when the task was created.
         self.gmt_created = gmt_created
@@ -103,24 +103,24 @@ class DescribeCloudMigrationPrecheckResultResponseBodyItems(DaraModel):
         self.gmt_modified = gmt_modified
         # The username.
         self.source_account = source_account
-        # The environment in which the self-managed PostgreSQL instance runs.
+        # The type of the self-managed PostgreSQL database. Valid values:
         # 
-        # *   **idcOnVpc**: The self-managed PostgreSQL instance resides in a data center. The data center can communicate with the VPC to which the ApsaraDB RDS for PostgreSQL instance belongs.
-        # *   **ecsOnVpc**: The self-managed PostgreSQL instance resides on an ECS instance.
+        # - **idcOnVpc**: a self-managed PostgreSQL database in an on-premises data center that is connected to a VPC.
+        # - **ecsOnVpc**: a self-managed PostgreSQL database on an Alibaba Cloud ECS instance.
         self.source_category = source_category
-        # The private IP address that is used to connect to the self-managed PostgreSQL instance.
+        # The internal IP address of the self-managed PostgreSQL database.
         self.source_ip_address = source_ip_address
         # The password.
         self.source_password = source_password
-        # The port number that is used to connect to the self-managed PostgreSQL instance.
+        # The port of the self-managed PostgreSQL database.
         self.source_port = source_port
-        # A reserved parameter. The return value of this parameter is empty.
+        # A reserved parameter. The query result is empty.
         self.target_eip = target_eip
-        # The instance ID.
+        # The instance ID of the target instance.
         self.target_instance_name = target_instance_name
-        # The task ID.
+        # The ID of the task.
         self.task_id = task_id
-        # The task name.
+        # The name of the task.
         self.task_name = task_name
 
     def validate(self):

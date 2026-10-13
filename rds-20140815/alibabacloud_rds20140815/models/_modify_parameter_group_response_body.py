@@ -10,9 +10,9 @@ class ModifyParameterGroupResponseBody(DaraModel):
         parameter_group_id: str = None,
         request_id: str = None,
     ):
-        # The parameter template ID.
+        # The ID of the parameter template.
         self.parameter_group_id = parameter_group_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

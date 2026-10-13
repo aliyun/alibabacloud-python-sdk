@@ -12,13 +12,13 @@ class ModifyImportTaskResponseBody(DaraModel):
         task_id: int = None,
         task_name: str = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The status of the data import task.
         self.status = status
-        # The task ID.
+        # The ID of the task.
         self.task_id = task_id
-        # The task name.
+        # The name of the task.
         self.task_name = task_name
 
     def validate(self):

@@ -20,43 +20,43 @@ class CreateDBInstanceResponseBody(DaraModel):
     ):
         # The internal endpoint of the instance.
         self.connection_string = connection_string
-        # The instance ID. If you set the **Amount** parameter to a value greater than **1**, the number of instance IDs that corresponds to the value is returned, separated by commas.
+        # The instance ID. If you set the **Amount** parameter to a value greater than **1**, the response contains the specified number of instance IDs separated by commas.
         # 
-        # For example, if **Amount** is set to **3**, three instance IDs are returned. Example:
-        # `rm-uf6wjk5*****1，rm-uf6wjk5*****2，rm-uf6wjk5*****3`
+        # For example, if you set the **Amount** parameter to **3**, the response contains three instance IDs. Example:
+        # `rm-uf6wjk5*****1,rm-uf6wjk5*****2,rm-uf6wjk5*****3`
         self.dbinstance_id = dbinstance_id
-        # Indicates that a dry run is performed before the instance is created.
+        # Indicates whether a dry run was performed before the instance was created.
         # 
-        # * The return value is always **true**.
+        # * The value is fixed to **true**.
         # * If no dry run is performed, this parameter is not returned.
         self.dry_run = dry_run
-        # Indicates whether the dry run for instance creation passed. Valid values:
+        # Indicates whether the dry run passed. Valid values:
         # * **true**: The dry run passed.
         # * **false**: The dry run failed.
         # 
         # > * If no dry run is performed, this parameter is not returned.
         # > * If the dry run fails, the corresponding error is returned.
         self.dry_run_result = dry_run_result
-        # The message for the batch creation task.
+        # The prompt message for the batch creation task.
         # 
-        # > This parameter is returned only when the **Amount** parameter is greater than 1.
+        # > This parameter is returned only when the **Amount** parameter is set to a value greater than 1.
         self.message = message
         # The order ID.
         self.order_id = order_id
-        # The port number that corresponds to the internal endpoint of the instance.
+        # The port number of the internal endpoint of the instance.
         self.port = port
         # The request ID.
         self.request_id = request_id
-        # Indicates whether tags are successfully bound to the instance. Valid values:
-        # * **true**: Tags are successfully bound.
-        # * **false**: Tags failed to be bound.
+        # Indicates whether the instance was successfully tagged. Valid values:
+        # * **true**: The instance was successfully tagged.
+        # * **false**: The instance failed to be tagged.
         # 
         # > If no tags are bound to the instance, this parameter is not returned.
         self.tag_result = tag_result
         # The task ID of the batch creation task.
         # 
-        # * This parameter is returned only when the **Amount** parameter is greater than 1.
-        # * Querying tasks by **TaskId** is not supported at this time.
+        # * This parameter is returned only when the **Amount** parameter is set to a value greater than 1.
+        # * You cannot query the task by using the **TaskId** value.
         self.task_id = task_id
 
     def validate(self):

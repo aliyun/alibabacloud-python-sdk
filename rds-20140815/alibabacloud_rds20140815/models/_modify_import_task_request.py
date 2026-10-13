@@ -13,23 +13,23 @@ class ModifyImportTaskRequest(DaraModel):
         region_id: str = None,
         task_id: str = None,
     ):
-        # The instance ID. You can call DescribeDBInstances to query the instance ID.
+        # Instance ID of the instance. You can call the DescribeDBInstances operation to query instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # Valid values:
+        # The operation to perform. Valid values:
         # 
-        # - RETRY_IMPORT: retries the import task.
-        # - CANCEL: cancels the task.
+        # - RETRY_IMPORT: Retries the import.
+        # - CANCEL: Cancels the task.
         # 
         # This parameter is required.
         self.operation = operation
         self.owner_id = owner_id
-        # The ID of the destination region. You can call DescribeRegions to query region IDs.
+        # The ID of the destination region. You can call the DescribeRegions operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The task ID.
+        # The ID of the task.
         # 
         # This parameter is required.
         self.task_id = task_id
