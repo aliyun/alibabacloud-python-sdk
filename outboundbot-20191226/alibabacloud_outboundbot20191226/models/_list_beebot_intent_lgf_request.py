@@ -22,13 +22,13 @@ class ListBeebotIntentLgfRequest(DaraModel):
         # 
         # This parameter is required.
         self.intent_id = intent_id
-        # The utterance template.
+        # The utterance template for the intent.
         self.lgf_text = lgf_text
         # The page number.
         # 
         # This parameter is required.
         self.page_number = page_number
-        # Number of items
+        # The number of entries per page.
         # 
         # This parameter is required.
         self.page_size = page_size

@@ -17,45 +17,37 @@ class ListJobGroupsRequest(DaraModel):
         search_text: str = None,
         start_time: int = None,
     ):
-        # Specifies whether to retrieve the query results asynchronously.
+        # Specifies whether to asynchronously obtain the query results.
         self.async_query = async_query
-        # The end of the time range for the query, based on the creation time of the job group. Specify the time as a UNIX timestamp in milliseconds.
+        # The end time to filter job groups by creation time. Use a UNIX timestamp in milliseconds.
         self.end_time = end_time
         # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Filters results by job status. To specify multiple statuses, separate them with commas. The statuses are combined with a logical OR. Valid values:
-        # 
-        # - **Draft**: The job group is a draft.
-        # 
-        # - **Scheduling**: The job group is being scheduled.
-        # 
-        # - **Executing**: The job group is executing.
-        # 
-        # - **Completed**: The job group has completed.
-        # 
-        # - **Paused**: The job group is paused.
-        # 
-        # - **Failed**: The job group has failed.
-        # 
-        # - **Cancelled**: The job group is canceled.
-        # 
-        # - **Initializing**: The job group is initializing.
+        # The filter condition. Filters by job status. You can specify multiple statuses separated by commas. The logical OR operator is used. Valid values:
+        # - **Draft**: Draft.
+        # - **Scheduling**: Scheduling.
+        # - **Executing**: Executing.
+        # - **Completed**: Completed.
+        # - **Paused**: Paused.
+        # - **Failed**: Failed.
+        # - **Cancelled**: Cancelled.
+        # - **Initializing**: Initializing.
         self.job_group_status_filter = job_group_status_filter
-        # Specifies whether to return only job groups with minimum concurrency enabled.
+        # Specifies whether to query tasks with a valid minimum concurrency guarantee.
         self.only_min_concurrency_enabled = only_min_concurrency_enabled
         # The page number.
         # 
         # This parameter is required.
         self.page_number = page_number
-        # The number of entries to return per page.
+        # The number of entries per page.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The search text.
+        # The search keyword.
         self.search_text = search_text
-        # The start of the time range for the query, based on the creation time of the job group. Specify the time as a UNIX timestamp in milliseconds.
+        # The start time to filter job groups by creation time. Use a UNIX timestamp in milliseconds.
         self.start_time = start_time
 
     def validate(self):

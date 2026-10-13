@@ -21,11 +21,11 @@ class QueryScriptsByStatusResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The returned message.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The scenarios.
+        # The list of scenarios.
         self.scripts = scripts
         # Indicates whether the request was successful.
         self.success = success
@@ -90,13 +90,13 @@ class QueryScriptsByStatusResponseBodyScripts(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The list of scenarios.
+        # The list of scenario details.
         self.list = list
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
-        # The total number of entries.
+        # The total count.
         self.total_count = total_count
 
     def validate(self):
@@ -169,9 +169,9 @@ class QueryScriptsByStatusResponseBodyScriptsList(DaraModel):
         self.debug_version = debug_version
         # The industry.
         self.industry = industry
-        # Indicates whether the debug version is a draft.
+        # Indicates whether the debug version is in the draft state.
         self.is_debug_drafted = is_debug_drafted
-        # Indicates whether the version is a draft.
+        # Indicates whether the version is in the draft state.
         self.is_drafted = is_drafted
         # The scenario.
         self.scene = scene
@@ -182,30 +182,19 @@ class QueryScriptsByStatusResponseBodyScriptsList(DaraModel):
         # The scenario name.
         self.script_name = script_name
         # The status of the application version. Valid values:
-        # 
-        # - **DRAFTED**: The script is a draft.
-        # 
-        # - **INITIALIZE_IN_PROGRESS**: The script is being initialized.
-        # 
-        # - **PUBLISHED**: The script is published.
-        # 
-        # - **PUBLISH_IN_PROGRESS**: The script is being published.
-        # 
-        # - **ROLLBACK_IN_PROGRESS**: The script is being rolled back.
-        # 
-        # - **EXAMINE_IN_PROGRESS**: The script is pending approval.
-        # 
-        # - **PUBLISHED_AND_EXAMINE_IN_PROGRESS**: The script is published and pending approval.
-        # 
-        # - **PUBLISH_FAILED**: The script failed to be published.
-        # 
-        # - **ROLLBACK_FAILED**: The script failed to be rolled back.
-        # 
-        # - **IMPORT_IN_PROGRESS**: The script is being imported.
-        # 
-        # - **IMPORT_FAILED**: The script failed to be imported.
+        # - **DRAFTED**: Draft.
+        # - **INITIALIZE_IN_PROGRESS**: Initializing.
+        # - **PUBLISHED**: Published.
+        # - **PUBLISH_IN_PROGRESS**: Publishing.
+        # - **ROLLBACK_IN_PROGRESS**: Rolling back.
+        # - **EXAMINE_IN_PROGRESS**: Pending review.
+        # - **PUBLISHED_AND_EXAMINE_IN_PROGRESS**: Published and pending review.
+        # - **PUBLISH_FAILED**: Publish failed.
+        # - **ROLLBACK_FAILED**: Rollback failed.
+        # - **IMPORT_IN_PROGRESS**: Importing.
+        # - **IMPORT_FAILED**: Import failed.
         self.status = status
-        # The time when the script was last updated.
+        # The update time. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):

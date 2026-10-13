@@ -15,9 +15,9 @@ class TaskPreparingRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the account that owns the instance.
+        # The ID of the account to which the instance belongs.
         self.instance_owner_id = instance_owner_id
-        # The job ID.
+        # The node ID.
         # 
         # This parameter is required.
         self.job_id = job_id

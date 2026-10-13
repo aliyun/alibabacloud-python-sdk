@@ -17,9 +17,9 @@ class ModifyDialogueFlowResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The JSON string that defines the dialogue flow.
+        # The dialog flow data.
         self.dialogue_flow_definition = dialogue_flow_definition
-        # The dialogue flow ID.
+        # The dialog flow ID.
         self.dialogue_flow_id = dialogue_flow_id
         # The HTTP status code.
         self.http_status_code = http_status_code

@@ -19,31 +19,29 @@ class ListAnnotationMissionRequest(DaraModel):
         page_index: int = None,
         page_size: int = None,
     ):
-        # Annotation mission ID
+        # The ID of the annotation task.
         self.annotation_mission_id = annotation_mission_id
-        # Annotation mission name
+        # The name of the annotation task.
         self.annotation_mission_name = annotation_mission_name
-        # Annotation status filter. Deprecated.
+        # The annotation status filter. This parameter is deprecated.
         self.annotation_status_list_filter = annotation_status_list_filter
-        # Annotation status filter
+        # The annotation status filter.
         # 
-        # > Format: [1]. You can specify multiple values. Valid values:
+        # > The format is [1]. You can select multiple filter conditions. The valid values are as follows:
         # 
-        # - 1: In progress
-        # 
-        # - 2: Completed
-        # 
-        # - 3: Closed
+        # - 1: In progress.
+        # - 2: Completed.
+        # - 3: Closed.
         self.annotation_status_list_string_filter = annotation_status_list_string_filter
-        # End time of the annotation mission creation filter
+        # The end time for the annotation task creation filter.
         self.create_time_end_filter = create_time_end_filter
-        # Start time of the annotation mission creation filter
+        # The start time for the annotation task creation filter.
         self.create_time_start_filter = create_time_start_filter
-        # Instance ID
+        # The instance ID.
         self.instance_id = instance_id
-        # Page number
+        # The page number.
         self.page_index = page_index
-        # Number of entries per page
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):

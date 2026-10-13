@@ -17,17 +17,17 @@ class GetAnnotationMissionTagInfoListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Status code
+        # The API status code.
         self.code = code
-        # Response data
+        # The returned data.
         self.data = data
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Response message
+        # The message returned by the API.
         self.message = message
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call succeeded. A value of true indicates success. A value of false indicates failure.
+        # Indicates whether the call was successful. Valid values: true: The call was successful. false: The call failed.
         self.success = success
 
     def validate(self):
@@ -89,11 +89,11 @@ class GetAnnotationMissionTagInfoListResponseBodyData(DaraModel):
         message: str = None,
         success: bool = None,
     ):
-        # Tag list
+        # The list of tags.
         self.annotation_mission_tag_info_list = annotation_mission_tag_info_list
-        # Response message
+        # The message returned by the API.
         self.message = message
-        # Indicates whether the call succeeded. A value of true indicates success. A value of false indicates failure.
+        # Indicates whether the call was successful. Valid values: true: The call was successful. false: The call failed.
         self.success = success
 
     def validate(self):
@@ -146,17 +146,17 @@ class GetAnnotationMissionTagInfoListResponseBodyDataAnnotationMissionTagInfoLis
         instance_id: str = None,
         tenant_id: str = None,
     ):
-        # Tag description
+        # The tag description.
         self.annotation_mission_tag_info_description = annotation_mission_tag_info_description
-        # Tag ID
+        # The tag ID.
         self.annotation_mission_tag_info_id = annotation_mission_tag_info_id
-        # Tag name
+        # The tag name.
         self.annotation_mission_tag_info_name = annotation_mission_tag_info_name
-        # Indicates whether the tag is deleted. A value of true indicates that the tag is deleted.
+        # Indicates whether the tag is deleted.
         self.delete = delete
-        # Instance ID
+        # The instance ID.
         self.instance_id = instance_id
-        # Tenant ID
+        # The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):

@@ -17,17 +17,19 @@ class ListAnnotationMissionSessionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code of the API call.
+        # The API status code.
         self.code = code
         # The data.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # Additional information. If the call is successful, \\`success\\` is returned. If the call fails, a specific error code is returned.
+        # The additional information. If the request is successful, success is returned. If the request fails, a specific error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful. A value of \\`true\\` indicates success. A value of \\`false\\` indicates failure.
+        # Indicates whether the call is successful. Valid values:
+        # - true: The call is successful.
+        # - false: The call fails.
         self.success = success
 
     def validate(self):
@@ -93,13 +95,15 @@ class ListAnnotationMissionSessionResponseBodyData(DaraModel):
     ):
         # The task ID.
         self.annotation_mission_id = annotation_mission_id
-        # The list of sessions.
+        # The session list.
         self.annotation_mission_session_list = annotation_mission_session_list
-        # Additional information. If the call is successful, \\`success\\` is returned. If the call fails, a specific error code is returned.
+        # The additional information. If the request is successful, success is returned. If the request fails, a specific error code is returned.
         self.message = message
-        # Indicates whether the call was successful. \\`true\\` indicates success. \\`false\\` indicates failure.
+        # Indicates whether the call is successful. Valid values:
+        # - true: The call is successful.
+        # - false: The call fails.
         self.success = success
-        # The total number of entries.
+        # The total count.
         self.total_count = total_count
 
     def validate(self):
@@ -171,37 +175,33 @@ class ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionList(D
         session_id: str = None,
         version: int = None,
     ):
-        # The list of chats.
+        # The chat list.
         self.annotation_mission_chat_list = annotation_mission_chat_list
-        # The task ID.
+        # The annotation mission ID.
         self.annotation_mission_id = annotation_mission_id
         # The session ID.
         self.annotation_mission_session_id = annotation_mission_session_id
-        # The annotation status.
-        # 
-        # - 0: UNDO
-        # 
-        # - 1: DOING
-        # 
-        # - 2: DONE
-        # 
-        # - 3: CLOSED
+        # The annotation status. Valid values:
+        # - 0: Pending (UNDO).
+        # - 1: In progress (DOING).
+        # - 2: Completed (DONE).
+        # - 3: Canceled (CLOSED).
         self.annotation_status = annotation_status
-        # The time when the session was created.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # Debug conversation
+        # The debug conversation.
         self.debug_conversation = debug_conversation
         # The instance ID.
         self.instance_id = instance_id
-        # The task group ID.
+        # The job group ID.
         self.job_group_id = job_group_id
         # The task ID.
         self.job_id = job_id
-        # The time when the session was last modified.
+        # The modification time. The value is a UNIX timestamp in milliseconds.
         self.modified_time = modified_time
         # The scenario ID.
         self.script_id = script_id
-        # The ID of the task in the outbound call system, or the ID of the conversation in the navigation system.
+        # The session ID. This is the task ID for outbound robots and the conversation ID for voice navigator robots.
         self.session_id = session_id
         # The version number.
         self.version = version
@@ -331,83 +331,70 @@ class ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionListAn
         tag_annotation_status: int = None,
         translation_error: int = None,
     ):
-        # The result of manual ASR annotation, used to calculate character accuracy.
+        # The manual ASR annotation text result, which is used to calculate the character accuracy rate.
         self.annotation_asr_result = annotation_asr_result
-        # The table of language model annotation information for the annotation task chat.
+        # The language model annotation information list for the chat annotation task.
         self.annotation_mission_chat_customization_data_info_list = annotation_mission_chat_customization_data_info_list
-        # The chat ID.
+        # chat id
         self.annotation_mission_chat_id = annotation_mission_chat_id
-        # The list of chat intents.
+        # The chat intent list.
         self.annotation_mission_chat_intent_user_say_info_list = annotation_mission_chat_intent_user_say_info_list
-        # The list of mappings between chat annotation information and attached tags.
+        # The list of tag mappings bound to the annotation chat.
         self.annotation_mission_chat_tag_info_list = annotation_mission_chat_tag_info_list
-        # The table of hotword annotation information for the annotation task chat.
+        # The hot word annotation information list for the chat annotation task.
         self.annotation_mission_chat_vocabulary_info_list = annotation_mission_chat_vocabulary_info_list
-        # The task ID.
+        # The annotation mission ID.
         self.annotation_mission_id = annotation_mission_id
         # The session ID.
         self.annotation_mission_session_id = annotation_mission_session_id
-        # The annotation status of the chat.
-        # 
-        # - 0: UNDO
-        # 
-        # - 1: DOING
-        # 
-        # - 2: DONE
-        # 
-        # - 3: CLOSED
+        # The chat annotation status. Valid values:
+        # - 0: Pending (UNDO).
+        # - 1: In progress (DOING).
+        # - 2: Completed (DONE).
+        # - 3: Canceled (CLOSED).
         self.annotation_status = annotation_status
-        # The content of the bot\\"s reply.
+        # The reply content of the robot.
         self.answer = answer
-        # The status of Automatic Speech Recognition (ASR) annotation.
-        # 
-        # - 0: UNDO
-        # 
-        # - 1: DOING
-        # 
-        # - 2: DONE
-        # 
-        # - 3: CLOSED
+        # The ASR annotation status. Valid values:
+        # - 0: Pending (UNDO).
+        # - 1: In progress (DOING).
+        # - 2: Completed (DONE).
+        # - 3: Canceled (CLOSED).
         self.asr_annotation_status = asr_annotation_status
-        # The time when the chat was created.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The instance ID.
         self.instance_id = instance_id
-        # The status of semantic tagging.
-        # 
-        # - 0: UNDO
-        # 
-        # - 1: DOING
-        # 
-        # - 2: DONE
-        # 
-        # - 3: CLOSED
+        # The semantic annotation status. Valid values:
+        # - 0: Pending (UNDO).
+        # - 1: In progress (DOING).
+        # - 2: Completed (DONE).
+        # - 3: Canceled (CLOSED).
         self.intent_annotation_status = intent_annotation_status
-        # The time when the chat was last modified.
+        # The modification time. The value is a UNIX timestamp in milliseconds.
         self.modified_time = modified_time
-        # The time when the chat was triggered.
+        # The trigger time. The value is a UNIX timestamp in milliseconds.
         self.occur_time = occur_time
-        # The ASR result.
+        # The ASR recognition result.
         self.original_asr_result = original_asr_result
         # The sequence ID.
         self.sequence_id = sequence_id
-        # The annotation action. 1: Correct. 20: Matching error, not optimized. 21: Matching error, optimized. 3: Uncovered. 4: Invalid.
+        # The annotation action. Valid values:
+        # - 1: Correct.
+        # - 20: Matching error, not optimized.
+        # - 21: Matching error, optimized.
+        # - 3: Not covered.
+        # - 4: Invalid.
         self.sub_status = sub_status
-        # The status of tag annotation.
-        # 
-        # - 0: UNDO
-        # 
-        # - 1: DOING
-        # 
-        # - 2: DONE
-        # 
-        # - 3: CLOSED
+        # The tag annotation status. Valid values:
+        # - 0: Pending (UNDO).
+        # - 1: In progress (DOING).
+        # - 2: Completed (DONE).
+        # - 3: Canceled (CLOSED).
         self.tag_annotation_status = tag_annotation_status
-        # Indicates a transcription error.
-        # 
-        # - 0: No
-        # 
-        # - 1: Yes
+        # Indicates whether a transcription error occurred. Valid values:
+        # - 0: No.
+        # - 1: Yes.
         self.translation_error = translation_error
 
     def validate(self):
@@ -603,33 +590,33 @@ class ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionListAn
         vocabulary_name: str = None,
         vocabulary_weight: int = None,
     ):
-        # The chat ID.
+        # ChatID
         self.annotation_mission_chat_id = annotation_mission_chat_id
-        # The ID.
+        # ID
         self.annotation_mission_chat_vocabulary_info_id = annotation_mission_chat_vocabulary_info_id
         # The task ID.
         self.annotation_mission_id = annotation_mission_id
         # The session ID.
         self.annotation_mission_session_id = annotation_mission_session_id
-        # Created
+        # Indicates whether the item is created.
         self.create = create
-        # The time when the resource was created.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # Deleted
+        # Indicates whether the item is deleted.
         self.delete = delete
         # The instance ID.
         self.instance_id = instance_id
-        # The time when the hotword was last modified.
+        # The modification time. The value is a UNIX timestamp in milliseconds.
         self.modified_time = modified_time
-        # The content of the hotword annotation.
+        # The hot word annotation content.
         self.vocabulary = vocabulary
         # The description.
         self.vocabulary_description = vocabulary_description
-        # The hotword ID.
+        # The hot word ID.
         self.vocabulary_id = vocabulary_id
-        # The name of the vocabulary.
+        # The vocabulary name.
         self.vocabulary_name = vocabulary_name
-        # The weight of the hotword. The value ranges from -6 to 5.
+        # The hot word weight. Valid values: -6 to 5.
         self.vocabulary_weight = vocabulary_weight
 
     def validate(self):
@@ -745,27 +732,27 @@ class ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionListAn
         instance_id: str = None,
         modified_time: int = None,
     ):
-        # The chat ID.
+        # ChatID
         self.annotation_mission_chat_id = annotation_mission_chat_id
-        # The ID of the chat tag information for the comment.
+        # The ID of the annotation chat tag.
         self.annotation_mission_chat_tag_info_id = annotation_mission_chat_tag_info_id
         # The task ID.
         self.annotation_mission_id = annotation_mission_id
         # The session ID.
         self.annotation_mission_session_id = annotation_mission_session_id
-        # The tag ID.
+        # TagID
         self.annotation_mission_tag_info_id = annotation_mission_tag_info_id
-        # The tag name.
+        # The name of the tag.
         self.annotation_mission_tag_info_name = annotation_mission_tag_info_name
-        # Create
+        # Indicates whether the item is created.
         self.create = create
-        # The time when the tag was created.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # Delete.
+        # Indicates whether the item is deleted.
         self.delete = delete
         # The instance ID.
         self.instance_id = instance_id
-        # The time when the tag was last modified.
+        # The modification time. The value is a UNIX timestamp in milliseconds.
         self.modified_time = modified_time
 
     def validate(self):
@@ -865,23 +852,23 @@ class ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionListAn
         intent_id: int = None,
         modified_time: int = None,
     ):
-        # The chat ID.
+        # ChatID
         self.annotation_mission_chat_id = annotation_mission_chat_id
-        # The ID.
+        # ID
         self.annotation_mission_chat_intent_user_say_info_id = annotation_mission_chat_intent_user_say_info_id
         # The annotation task ID.
         self.annotation_mission_id = annotation_mission_id
         # The session ID.
         self.annotation_mission_session_id = annotation_mission_session_id
-        # The bot ID.
+        # The robot ID.
         self.bot_id = bot_id
-        # The modified query.
+        # The modified question.
         self.content = content
-        # Created.
+        # Indicates whether the item is created.
         self.create = create
-        # The time when the intent was created.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # Deleted
+        # Indicates whether the item is deleted.
         self.delete = delete
         # The dialog ID.
         self.dialog_id = dialog_id
@@ -889,7 +876,7 @@ class ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionListAn
         self.instance_id = instance_id
         # The intent ID.
         self.intent_id = intent_id
-        # The time when the intent was last modified.
+        # The modification time. The value is a UNIX timestamp in milliseconds.
         self.modified_time = modified_time
 
     def validate(self):
@@ -1002,19 +989,19 @@ class ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionListAn
         instance_id: str = None,
         modified_time: int = None,
     ):
-        # The ID.
+        # ID
         self.annotation_mission_chat_customization_data_info_id = annotation_mission_chat_customization_data_info_id
-        # The chat ID.
+        # ChatID
         self.annotation_mission_chat_id = annotation_mission_chat_id
         # The task ID.
         self.annotation_mission_id = annotation_mission_id
         # The session ID.
         self.annotation_mission_session_id = annotation_mission_session_id
-        # The text of the voice annotation.
+        # The speech annotation text.
         self.content = content
-        # Indicates whether the data is created.
+        # Indicates whether the item is created.
         self.create = create
-        # The time when the information was created.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The description.
         self.customization_data_description = customization_data_description
@@ -1024,11 +1011,11 @@ class ListAnnotationMissionSessionResponseBodyDataAnnotationMissionSessionListAn
         self.customization_data_name = customization_data_name
         # The weight of the language model data.
         self.customization_data_weight = customization_data_weight
-        # Indicates whether the data is deleted.
+        # Indicates whether the item is deleted.
         self.delete = delete
         # The instance ID.
         self.instance_id = instance_id
-        # The time when the information was last modified.
+        # The modification time. The value is a UNIX timestamp in milliseconds.
         self.modified_time = modified_time
 
     def validate(self):

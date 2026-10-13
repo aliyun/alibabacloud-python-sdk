@@ -22,7 +22,7 @@ class QueryScriptsByStatusRequest(DaraModel):
         # 
         # This parameter is required.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         # 
         # This parameter is required.
         self.page_size = page_size

@@ -22,29 +22,29 @@ class SearchTaskResponseBody(DaraModel):
         total: int = None,
         variable_names: List[str] = None,
     ):
-        # Request status code
+        # The request status code.
         self.code = code
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Labels available for filtering.
+        # The label information that can be used as filter conditions.
         # 
-        # > Displays all labels with enumeration values in this job group.
+        # > Displays all label information with enumerated values in this job group.
         self.labels = labels
-        # Response message
+        # The message returned by the API operation.
         self.message = message
-        # Page number
+        # The page number.
         self.page_index = page_index
-        # Number of items per page
+        # The number of entries per page.
         self.page_size = page_size
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # List of tasks
+        # The list of tasks.
         self.search_task_info_list = search_task_info_list
-        # Indicates whether the request succeeded
+        # Indicates whether the request is successful.
         self.success = success
-        # Total number of items
+        # The total number of entries.
         self.total = total
-        # Complete list of label keys
+        # The full set of label name keys.
         self.variable_names = variable_names
 
     def validate(self):
@@ -178,313 +178,198 @@ class SearchTaskResponseBodySearchTaskInfoList(DaraModel):
         user_id: str = None,
         user_name: str = None,
     ):
-        # Actual execution time
+        # The actual execution time. The value is a UNIX timestamp in milliseconds.
         self.actual_time = actual_time
-        # Call duration, in milliseconds
+        # The call duration, in milliseconds.
         self.call_duration = call_duration
-        # Call duration
+        # The call duration.
         self.call_duration_display = call_duration_display
-        # Called number
+        # The called number.
         self.called_number = called_number
-        # Calling number
+        # The calling number.
         self.calling_number = calling_number
-        # Exception details
+        # The exception information.
         self.dial_exception = dial_exception
-        # Exception codes shown on the remarks page
+        # The field used for displaying remarks on the page.
         self.dial_exception_codes = dial_exception_codes
-        # Exception details
+        # The exception information.
         self.dial_exception_old = dial_exception_old
-        # Indicates whether the called party answered
+        # Indicates whether the call is answered.
         self.has_answered = has_answered
-        # Indicates whether the call ended due to rejection
+        # Indicates whether the call is hung up due to unrecognized intent.
         self.has_hang_up_by_rejection = has_hang_up_by_rejection
-        # Indicates whether the last audio playback completed before hangup
+        # Indicates whether the last sentence is fully played before hanging up.
         self.has_last_playback_completed = has_last_playback_completed
-        # Indicates whether the conversation ended
+        # Indicates whether the dialogue is completed.
         self.has_reached_end_of_flow = has_reached_end_of_flow
-        # Instance ID
+        # The instance ID.
         self.instance_id = instance_id
-        # Job group ID
+        # The job group ID.
         self.job_group_id = job_group_id
-        # Job group name
+        # The name of the job group.
         self.job_group_name = job_group_name
-        # Job ID
+        # The job ID.
         self.job_id = job_id
-        # Job status
+        # The job status. Valid values:
         # 
-        # - 0: Scheduling
-        # 
-        # - 1: Executing
-        # 
-        # - 2: Succeeded
-        # 
-        # - 3: Paused
-        # 
-        # - 4: Failed
-        # 
-        # - 5: Cancelled
+        # - 0: Scheduling.
+        # - 1: Executing.
+        # - 2: Succeeded (Reached).
+        # - 3: Paused.
+        # - 4: Failed (Not connected - Busy).
+        # - 5: Cancelled.
         self.job_status = job_status
-        # Display text for job status
+        # The display content of the job status. Valid values:
         # 
-        # - 0: Scheduling
-        # 
-        # - 1: Executing
-        # 
-        # - 2: Succeeded
-        # 
-        # - 3: Paused
-        # 
-        # - 4: Failed
-        # 
-        # - 5: Cancelled
+        # - 0: Scheduling.
+        # - 1: Executing.
+        # - 2: Succeeded (Reached).
+        # - 3: Paused.
+        # - 4: Failed (Not connected - Busy).
+        # - 5: Cancelled.
         self.job_status_name = job_status_name
-        # Job status
+        # The task status. Valid values:
         # 
-        # - Scheduling (0)
-        # 
-        # - Executing (1)
-        # 
-        # - Completed—Reached (2)
-        # 
-        # - Paused (3)
-        # 
-        # - Failed—Line busy (4)
-        # 
-        # - Cancelled (5)
+        # - Scheduling: Scheduling (0).
+        # - Executing: Executing (1).
+        # - Succeeded: Reached (2).
+        # - Paused: Paused (3).
+        # - Failed: Not connected - Busy (4).
+        # - Cancelled: Cancelled (5).
         self.job_status_string = job_status_string
-        # Labels matched for this outbound call
+        # The label hit status of the current outbound call.
         self.labels = labels
-        # Ringing duration, in seconds
+        # The ringing duration, in seconds.
         self.recording_duration = recording_duration
-        # Scenario name
+        # The scenario name.
         self.script_name = script_name
-        # Task creation time
+        # The task creation time. The value is a UNIX timestamp in seconds.
         self.task_create_time = task_create_time
-        # Reason why the task ended
-        # 
-        # - FINISHED(1,"Normal completion")
-        # 
-        # - CHATBOT_HANGUP_AFTER_NOANSWER(2, "Robot hangup after rejection")
-        # 
-        # - CHATBOT_HANGUP_AFTER_SILENCE(3, "Robot hangup after silence timeout")
-        # 
-        # - CLIENT_HANGUP_AFTER_NOANSWER(4, "Client hangup after rejection")
-        # 
-        # - CLIENT_HANGUP(5, "Client hangup without reason")
-        # 
-        # - TRANSFER_BY_INTENT(6, "Transfer to agent based on intent match")
-        # 
-        # - TRANSFER_AFTER_NOANSWER(7, "Transfer to agent after rejection")
-        # 
-        # - INO_INTERACTION(8, "No interaction from client side")
-        # 
-        # - ERROR(9, "System error interrupted")
-        # 
-        # - SPECIAL_INTERCEPT_VOICE_ASSISTANT(10, "Intercepted by voice assistant")
-        # 
-        # - SPECIAL_INTERCEPT_EXTENSION_NUMBER_TRANSFER(11, "Intercepted by extension transfer")
+        # The reason why the task ended. Valid values:
+        # - FINISHED (1): The task completed normally.
+        # - CHATBOT_HANGUP_AFTER_NOANSWER (2): The robot hung up after an unrecognized intent.
+        # - CHATBOT_HANGUP_AFTER_SILENCE (3): The robot hung up due to a silence timeout.
+        # - CLIENT_HANGUP_AFTER_NOANSWER (4): The user hung up after an unrecognized intent.
+        # - CLIENT_HANGUP (5): The user hung up without a specific reason.
+        # - TRANSFER_BY_INTENT (6): The call was transferred to an agent due to a matched intent.
+        # - TRANSFER_AFTER_NOANSWER (7): The call was transferred to an agent after an unrecognized intent.
+        # - INO_INTERACTION (8): No interaction occurred on the user side.
+        # - ERROR (9): The task was interrupted by a system exception.
+        # - SPECIAL_INTERCEPT_VOICE_ASSISTANT (10): The call was intercepted by the voice assistant.
+        # - SPECIAL_INTERCEPT_EXTENSION_NUMBER_TRANSFER (11): The call was intercepted during extension number transfer.
         self.task_end_reason = task_end_reason
-        # Task ID
+        # The task ID.
         self.task_id = task_id
-        # Valid values:
+        # The task status. Valid values:
+        # (Note: The **Succeeded** status is subdivided into specific causes. The general **Succeeded**: 1 (Connected) status is not displayed. Instead, specific subdivided causes are returned.)
         # 
-        # - **Executing**: 0 (Calling).
-        # 
+        # - **Executing**: 0 (Dialing).
         # - **Succeeded**: 1 (Connected).
-        # 
-        # - **NoAnswer**: 2 (No answer).
-        # 
-        # - **NotExist**: 3 (Nonexistent number).
-        # 
-        # - **Busy**: 4 (Line busy).
-        # 
-        # - **Cancelled**: 5 (Call canceled due to job stop).
-        # 
-        # - **Failed**: 6 (Call failed).
-        # 
-        # - **NotConnected**: 7 (Cannot connect).
-        # 
-        # - **PoweredOff**: 8 (Phone powered off).
-        # 
-        # - **OutOfService**: 9 (Called number out of service).
-        # 
-        # - **InArrears**: 10 (Called number overdue payment).
-        # 
-        # - **EmptyNumber**: 11 (Empty number, no outbound call).
-        # 
-        # - **PerDayCallCountLimit**: 12 (Daily call limit exceeded).
-        # 
-        # - **ContactBlockList**: 13 (Blacklisted).
-        # 
-        # - **CallerNotRegistered**: 14 (Caller number not registered).
-        # 
-        # - **Terminated**: 15 (Call terminated).
-        # 
-        # - **VerificationCancelled**: 16 (Call canceled due to pre-call validation failure).
-        # 
-        # - **OutOfServiceNoCall**: 17 (Called number out of service, no outbound call).
-        # 
-        # - **InArrearsNoCall**: 18 (Called number overdue payment, no outbound call).
-        # 
-        # - **CallingNumberNotExist**: 19 (Caller number does not exist).
-        # 
-        # - **SucceededFinish**: 20 (Connected and ended normally).
-        # 
-        # - **SucceededChatbotHangUpAfterNoAnswer**: 21 (Connected and robot hung up after rejection).
-        # 
-        # - **SucceededChatbotHangUpAfterSilence**: 22 (Connected and robot hung up after silence timeout).
-        # 
-        # - **SucceededClientHangUpAfterNoAnswer**: 23 (Connected and client hung up after rejection).
-        # 
-        # - **SucceededClientHangUp**: 24 (Connected and client hung up without reason).
-        # 
-        # - **SucceededTransferByIntent**: 25 (Connected and transferred to agent based on intent match).
-        # 
-        # - **SucceededTransferAfterNoAnswer**: 26 (Connected and transferred to agent after rejection).
-        # 
-        # - **SucceededInoInterAction**: 27 (Connected and no interaction from client side).
-        # 
-        # - **SucceededError**: 28 (Connected but system error interrupted).
-        # 
-        # - **SucceededSpecialInterceptVoiceAssistant**: 29 (Connected but intercepted by voice assistant).
-        # 
-        # - **SucceededSpecialInterceptExtensionNumberTransfer**: 30 (Connected but intercepted by extension transfer).
+        # - **NoAnswer**: 2 (Not connected - No answer).
+        # - **NotExist**: 3 (Not connected - Nonexistent number).
+        # - **Busy**: 4 (Not connected - Busy).
+        # - **Cancelled**: 5 (Not dialed - Task stopped).
+        # - **Failed**: 6 (Failed).
+        # - **NotConnected**: 7 (Not connected - Unreachable).
+        # - **PoweredOff**: 8 (Not connected - Powered off).
+        # - **OutOfService**: 9 (Not connected - Suspended).
+        # - **InArrears**: 10 (Not connected - Overdue payment).
+        # - **EmptyNumber**: 11 (Not dialed - Nonexistent number, not dialed).
+        # - **PerDayCallCountLimit**: 12 (Not dialed - Daily limit exceeded).
+        # - **ContactBlockList**: 13 (Not dialed - Blacklisted).
+        # - **CallerNotRegistered**: 14 (Not dialed - Caller number not registered).
+        # - **Terminated**: 15 (Not dialed - Terminated).
+        # - **VerificationCancelled**: 16 (Not dialed - Canceled due to pre-call verification failure).
+        # - **OutOfServiceNoCall**: 17 (Not dialed - Callee suspended, not dialed).
+        # - **InArrearsNoCall**: 18 (Not dialed - Callee has overdue payment, not dialed).
+        # - **CallingNumberNotExist**: 19 (Not dialed - Caller number does not exist).
+        # - **SucceededFinish**: 20 (Connected - Normal completion).
+        # - **SucceededChatbotHangUpAfterNoAnswer**: 21 (Connected - Robot hung up after unrecognized intent).
+        # - **SucceededChatbotHangUpAfterSilence**: 22 (Connected - Hung up due to silence timeout).
+        # - **SucceededClientHangUpAfterNoAnswer**: 23 (Connected - User hung up after unrecognized intent).
+        # - **SucceededClientHangUp**: 24 (Connected - User hung up without reason).
+        # - **SucceededTransferByIntent**: 25 (Connected - Transferred to agent due to matched intent).
+        # - **SucceededTransferAfterNoAnswer**: 26 (Connected - Transferred to agent after unrecognized intent).
+        # - **SucceededInoInterAction**: 27 (Connected - No interaction on user side).
+        # - **SucceededError**: 28 (Connected - Interrupted by system exception).
+        # - **SucceededSpecialInterceptVoiceAssistant**: 29 (Connected - Special interception - Voice assistant).
+        # - **SucceededSpecialInterceptExtensionNumberTransfer**: 30 (Connected - Special interception - Extension number transfer).
         self.task_status = task_status
-        # Display text for task status
+        # The display content of the call status. Valid values:
+        # (Note: The **Succeeded** status is subdivided into specific causes. The general **Succeeded**: 1 (Connected) status is not displayed. Instead, specific subdivided causes are returned.)
         # 
-        # - **Executing**: 0 (Calling).
-        # 
+        # - **Executing**: 0 (Dialing).
         # - **Succeeded**: 1 (Connected).
-        # 
-        # - **NoAnswer**: 2 (No answer).
-        # 
-        # - **NotExist**: 3 (Nonexistent number).
-        # 
-        # - **Busy**: 4 (Line busy).
-        # 
-        # - **Cancelled**: 5 (Call canceled due to job stop).
-        # 
-        # - **Failed**: 6 (Call failed).
-        # 
-        # - **NotConnected**: 7 (Cannot connect).
-        # 
-        # - **PoweredOff**: 8 (Phone powered off).
-        # 
-        # - **OutOfService**: 9 (Called number out of service).
-        # 
-        # - **InArrears**: 10 (Called number overdue payment).
-        # 
-        # - **EmptyNumber**: 11 (Empty number, no outbound call).
-        # 
-        # - **PerDayCallCountLimit**: 12 (Daily call limit exceeded).
-        # 
-        # - **ContactBlockList**: 13 (Blacklisted).
-        # 
-        # - **CallerNotRegistered**: 14 (Caller number not registered).
-        # 
-        # - **Terminated**: 15 (Call terminated).
-        # 
-        # - **VerificationCancelled**: 16 (Call canceled due to pre-call validation failure).
-        # 
-        # - **OutOfServiceNoCall**: 17 (Called number out of service, no outbound call).
-        # 
-        # - **InArrearsNoCall**: 18 (Called number overdue payment, no outbound call).
-        # 
-        # - **CallingNumberNotExist**: 19 (Caller number does not exist).
-        # 
-        # - **SucceededFinish**: 20 (Connected and ended normally).
-        # 
-        # - **SucceededChatbotHangUpAfterNoAnswer**: 21 (Connected and robot hung up after rejection).
-        # 
-        # - **SucceededChatbotHangUpAfterSilence**: 22 (Connected and robot hung up after silence timeout).
-        # 
-        # - **SucceededClientHangUpAfterNoAnswer**: 23 (Connected and client hung up after rejection).
-        # 
-        # - **SucceededClientHangUp**: 24 (Connected and client hung up without reason).
-        # 
-        # - **SucceededTransferByIntent**: 25 (Connected and transferred to agent based on intent match).
-        # 
-        # - **SucceededTransferAfterNoAnswer**: 26 (Connected and transferred to agent after rejection).
-        # 
-        # - **SucceededInoInterAction**: 27 (Connected and no interaction from client side).
-        # 
-        # - **SucceededError**: 28 (Connected but system error interrupted).
-        # 
-        # - **SucceededSpecialInterceptVoiceAssistant**: 29 (Connected but intercepted by voice assistant).
-        # 
-        # - **SucceededSpecialInterceptExtensionNumberTransfer**: 30 (Connected but intercepted by extension transfer).
+        # - **NoAnswer**: 2 (Not connected - No answer).
+        # - **NotExist**: 3 (Not connected - Nonexistent number).
+        # - **Busy**: 4 (Not connected - Busy).
+        # - **Cancelled**: 5 (Not dialed - Task stopped).
+        # - **Failed**: 6 (Failed).
+        # - **NotConnected**: 7 (Not connected - Unreachable).
+        # - **PoweredOff**: 8 (Not connected - Powered off).
+        # - **OutOfService**: 9 (Not connected - Suspended).
+        # - **InArrears**: 10 (Not connected - Overdue payment).
+        # - **EmptyNumber**: 11 (Not dialed - Nonexistent number, not dialed).
+        # - **PerDayCallCountLimit**: 12 (Not dialed - Daily limit exceeded).
+        # - **ContactBlockList**: 13 (Not dialed - Blacklisted).
+        # - **CallerNotRegistered**: 14 (Not dialed - Caller number not registered).
+        # - **Terminated**: 15 (Not dialed - Terminated).
+        # - **VerificationCancelled**: 16 (Not dialed - Canceled due to pre-call verification failure).
+        # - **OutOfServiceNoCall**: 17 (Not dialed - Callee suspended, not dialed).
+        # - **InArrearsNoCall**: 18 (Not dialed - Callee has overdue payment, not dialed).
+        # - **CallingNumberNotExist**: 19 (Not dialed - Caller number does not exist).
+        # - **SucceededFinish**: 20 (Connected - Normal completion).
+        # - **SucceededChatbotHangUpAfterNoAnswer**: 21 (Connected - Robot hung up after unrecognized intent).
+        # - **SucceededChatbotHangUpAfterSilence**: 22 (Connected - Hung up due to silence timeout).
+        # - **SucceededClientHangUpAfterNoAnswer**: 23 (Connected - User hung up after unrecognized intent).
+        # - **SucceededClientHangUp**: 24 (Connected - User hung up without reason).
+        # - **SucceededTransferByIntent**: 25 (Connected - Transferred to agent due to matched intent).
+        # - **SucceededTransferAfterNoAnswer**: 26 (Connected - Transferred to agent after unrecognized intent).
+        # - **SucceededInoInterAction**: 27 (Connected - No interaction on user side).
+        # - **SucceededError**: 28 (Connected - Interrupted by system exception).
+        # - **SucceededSpecialInterceptVoiceAssistant**: 29 (Connected - Special interception - Voice assistant).
+        # - **SucceededSpecialInterceptExtensionNumberTransfer**: 30 (Connected - Special interception - Extension number transfer).
         self.task_status_name = task_status_name
-        # Task status
+        # The task status. Valid values:
+        # (Note: The **Succeeded** status is subdivided into specific causes. The general **Succeeded**: 1 (Connected) status is not displayed. Instead, specific subdivided causes are returned.)
         # 
-        # - **Executing**: 0 (Calling).
-        # 
+        # - **Executing**: 0 (Dialing).
         # - **Succeeded**: 1 (Connected).
-        # 
-        # - **NoAnswer**: 2 (No answer).
-        # 
-        # - **NotExist**: 3 (Nonexistent number).
-        # 
-        # - **Busy**: 4 (Line busy).
-        # 
-        # - **Cancelled**: 5 (Call canceled due to job stop).
-        # 
-        # - **Failed**: 6 (Call failed).
-        # 
-        # - **NotConnected**: 7 (Cannot connect).
-        # 
-        # - **PoweredOff**: 8 (Phone powered off).
-        # 
-        # - **OutOfService**: 9 (Called number out of service).
-        # 
-        # - **InArrears**: 10 (Called number overdue payment).
-        # 
-        # - **EmptyNumber**: 11 (Empty number, no outbound call).
-        # 
-        # - **PerDayCallCountLimit**: 12 (Daily call limit exceeded).
-        # 
-        # - **ContactBlockList**: 13 (Blacklisted).
-        # 
-        # - **CallerNotRegistered**: 14 (Caller number not registered).
-        # 
-        # - **Terminated**: 15 (Call terminated).
-        # 
-        # - **VerificationCancelled**: 16 (Call canceled due to pre-call validation failure).
-        # 
-        # - **OutOfServiceNoCall**: 17 (Called number out of service, no outbound call).
-        # 
-        # - **InArrearsNoCall**: 18 (Called number overdue payment, no outbound call).
-        # 
-        # - **CallingNumberNotExist**: 19 (Caller number does not exist).
-        # 
-        # - **SucceededFinish**: 20 (Connected and ended normally).
-        # 
-        # - **SucceededChatbotHangUpAfterNoAnswer**: 21 (Connected and robot hung up after rejection).
-        # 
-        # - **SucceededChatbotHangUpAfterSilence**: 22 (Connected and robot hung up after silence timeout).
-        # 
-        # - **SucceededClientHangUpAfterNoAnswer**: 23 (Connected and client hung up after rejection).
-        # 
-        # - **SucceededClientHangUp**: 24 (Connected and client hung up without reason).
-        # 
-        # - **SucceededTransferByIntent**: 25 (Connected and transferred to agent based on intent match).
-        # 
-        # - **SucceededTransferAfterNoAnswer**: 26 (Connected and transferred to agent after rejection).
-        # 
-        # - **SucceededInoInterAction**: 27 (Connected and no interaction from client side).
-        # 
-        # - **SucceededError**: 28 (Connected but system error interrupted).
-        # 
-        # - **SucceededSpecialInterceptVoiceAssistant**: 29 (Connected but intercepted by voice assistant).
-        # 
-        # - **SucceededSpecialInterceptExtensionNumberTransfer**: 30 (Connected but intercepted by extension transfer).
-        # 
-        # - **SucceededSpecialInterceptCustomSpecialIntercept**: 31 (Connected but intercepted by custom rule).
-        # 
-        # - **HighRiskSipCode**: 32 (High-risk SIP code, no outbound call).
+        # - **NoAnswer**: 2 (Not connected - No answer).
+        # - **NotExist**: 3 (Not connected - Nonexistent number).
+        # - **Busy**: 4 (Not connected - Busy).
+        # - **Cancelled**: 5 (Not dialed - Task stopped).
+        # - **Failed**: 6 (Failed).
+        # - **NotConnected**: 7 (Not connected - Unreachable).
+        # - **PoweredOff**: 8 (Not connected - Powered off).
+        # - **OutOfService**: 9 (Not connected - Suspended).
+        # - **InArrears**: 10 (Not connected - Overdue payment).
+        # - **EmptyNumber**: 11 (Not dialed - Nonexistent number, not dialed).
+        # - **PerDayCallCountLimit**: 12 (Not dialed - Daily limit exceeded).
+        # - **ContactBlockList**: 13 (Not dialed - Blacklisted).
+        # - **CallerNotRegistered**: 14 (Not dialed - Caller number not registered).
+        # - **Terminated**: 15 (Not dialed - Terminated).
+        # - **VerificationCancelled**: 16 (Not dialed - Canceled due to pre-call verification failure).
+        # - **OutOfServiceNoCall**: 17 (Not dialed - Callee suspended, not dialed).
+        # - **InArrearsNoCall**: 18 (Not dialed - Callee has overdue payment, not dialed).
+        # - **CallingNumberNotExist**: 19 (Not dialed - Caller number does not exist).
+        # - **SucceededFinish**: 20 (Connected - Normal completion).
+        # - **SucceededChatbotHangUpAfterNoAnswer**: 21 (Connected - Robot hung up after unrecognized intent).
+        # - **SucceededChatbotHangUpAfterSilence**: 22 (Connected - Hung up due to silence timeout).
+        # - **SucceededClientHangUpAfterNoAnswer**: 23 (Connected - User hung up after unrecognized intent).
+        # - **SucceededClientHangUp**: 24 (Connected - User hung up without reason).
+        # - **SucceededTransferByIntent**: 25 (Connected - Transferred to agent due to matched intent).
+        # - **SucceededTransferAfterNoAnswer**: 26 (Connected - Transferred to agent after unrecognized intent).
+        # - **SucceededInoInterAction**: 27 (Connected - No interaction on user side).
+        # - **SucceededError**: 28 (Connected - Interrupted by system exception).
+        # - **SucceededSpecialInterceptVoiceAssistant**: 29 (Connected - Special interception - Voice assistant).
+        # - **SucceededSpecialInterceptExtensionNumberTransfer**: 30 (Connected - Special interception - Extension number transfer).
+        # - **SucceededSpecialInterceptCustomSpecialIntercept**: 31 (Connected - Special interception - Custom interception).
+        # - **HighRiskSipCode**: 32 (Not dialed - High risk, not dialed).
         self.task_status_string = task_status_string
-        # User ID
+        # The user ID.
         self.user_id = user_id
-        # Username
+        # The username.
         self.user_name = user_name
 
     def validate(self):
@@ -695,9 +580,9 @@ class SearchTaskResponseBodySearchTaskInfoListLabels(DaraModel):
         k: str = None,
         v: str = None,
     ):
-        # Label name
+        # The label name.
         self.k = k
-        # Matched label value
+        # The matched label value.
         self.v = v
 
     def validate(self):
@@ -732,9 +617,9 @@ class SearchTaskResponseBodyLabels(DaraModel):
         name: str = None,
         value_list: List[str] = None,
     ):
-        # Label name
+        # The label name.
         self.name = name
-        # List of label values
+        # The list of label values.
         self.value_list = value_list
 
     def validate(self):

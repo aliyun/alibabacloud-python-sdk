@@ -21,11 +21,11 @@ class ListScriptPublishHistoriesResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The response message.
+        # The API message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The script publishing histories.
+        # The publish history list.
         self.script_publish_histories = script_publish_histories
         # Indicates whether the request was successful.
         self.success = success
@@ -90,13 +90,13 @@ class ListScriptPublishHistoriesResponseBodyScriptPublishHistories(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The data list.
+        # The data array.
         self.list = list
         # The page number.
         self.page_number = page_number
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # The total count.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -154,13 +154,13 @@ class ListScriptPublishHistoriesResponseBodyScriptPublishHistoriesList(DaraModel
         script_id: str = None,
         script_version: str = None,
     ):
-        # The description of this published version.
+        # The publish description.
         self.description = description
         # The instance ID.
         self.instance_id = instance_id
-        # The publish time.
+        # The publish time. The value is a UNIX timestamp in milliseconds.
         self.publish_time = publish_time
-        # The script ID.
+        # The scenario ID.
         self.script_id = script_id
         # The script version.
         self.script_version = script_version

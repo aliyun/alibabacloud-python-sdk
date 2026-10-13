@@ -21,7 +21,7 @@ class ModifyInstanceResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The instance information.
         self.instance = instance
-        # The response message.
+        # The message returned by the API.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -92,13 +92,13 @@ class ModifyInstanceResponseBodyInstance(DaraModel):
         max_concurrent_conversation: int = None,
         owner_name: str = None,
     ):
-        # The creation time.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.creation_time = creation_time
         # The ID of the creator.
         self.creator_id = creator_id
         # The name of the creator.
         self.creator_name = creator_name
-        # The instance description.
+        # The description of the instance.
         self.instance_description = instance_description
         # The instance ID.
         self.instance_id = instance_id

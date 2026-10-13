@@ -16,17 +16,17 @@ class ListInstancesRequest(DaraModel):
         resource_group_id: str = None,
         tag: List[main_models.ListInstancesRequestTag] = None,
     ):
-        # The name of the Outbound Bot instance.
+        # The name of the outbound robot instance.
         self.name = name
         # The page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
         # The resource group ID.
-        # > You can obtain the source API from the Resource Management documentation. For more information, see: https://api.aliyun.com/document/ResourceManager/2020-03-31/ListResourceGroups
+        # > You can obtain the source API from the Resource Management documentation. Related link: https://api.aliyun.com/document/ResourceManager/2020-03-31/ListResourceGroups
         self.resource_group_id = resource_group_id
-        # The list of tags for the service instances.
-        # > You can call the ListResourceTags operation to obtain tags.
+        # The tags of the outbound robot instances.
+        # > You can obtain the tags by calling the ListResourceTags operation.
         self.tag = tag
 
     def validate(self):
@@ -87,9 +87,9 @@ class ListInstancesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the instance.
+        # The key of the instance tag.
         self.key = key
-        # The tag value of the instance.
+        # The value of the instance tag.
         self.value = value
 
     def validate(self):

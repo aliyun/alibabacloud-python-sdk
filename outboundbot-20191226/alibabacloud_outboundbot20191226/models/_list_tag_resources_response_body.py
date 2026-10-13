@@ -18,19 +18,19 @@ class ListTagResourcesResponseBody(DaraModel):
         success: bool = None,
         tag_resources: List[main_models.ListTagResourcesResponseBodyTagResources] = None,
     ):
-        # The status code of the API
+        # The status code of the operation.
         self.code = code
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The message of the API
+        # The message returned by the operation.
         self.message = message
-        # The token to start the next query
+        # The token for the next query.
         self.next_token = next_token
-        # The request ID
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful
+        # Indicates whether the request was successful.
         self.success = success
-        # Resources
+        # The list of resources.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -105,13 +105,13 @@ class ListTagResourcesResponseBodyTagResources(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # Resource ID
+        # The resource ID.
         self.resource_id = resource_id
-        # Resource type
+        # The resource type.
         self.resource_type = resource_type
-        # Tag key
+        # The tag key.
         self.tag_key = tag_key
-        # Tag value
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):

@@ -14,17 +14,17 @@ class DeleteAgentProfilesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # API status code
+        # The API status code.
         self.code = code
-        # Returned data
+        # The returned data.
         self.data = data
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # API message
+        # The API response message.
         self.message = message
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful
+        # Indicates whether the operation is successful.
         self.success = success
 
     def validate(self):

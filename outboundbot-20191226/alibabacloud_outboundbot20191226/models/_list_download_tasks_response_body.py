@@ -17,17 +17,17 @@ class ListDownloadTasksResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # API status code
+        # The status code.
         self.code = code
-        # Download task list
+        # The list of download tasks.
         self.download_tasks = download_tasks
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # API message
+        # The message returned by the API.
         self.message = message
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Success
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -90,13 +90,13 @@ class ListDownloadTasksResponseBodyDownloadTasks(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # Download task array
+        # The array of download tasks.
         self.list = list
-        # Page number
+        # The page number.
         self.page_number = page_number
-        # Count
+        # The number of entries per page.
         self.page_size = page_size
-        # Total count
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -154,27 +154,21 @@ class ListDownloadTasksResponseBodyDownloadTasksList(DaraModel):
         task_id: str = None,
         title: str = None,
     ):
-        # Download task file list
+        # The list of files for the download task.
         self.download_task_files = download_task_files
-        # The expiration time.
+        # The expiration time. The value is a UNIX timestamp in seconds.
         self.expire_time = expire_time
-        # Export status.
-        # 
-        # - Pending: Pending
-        # 
-        # - InProgress: In progress
-        # 
-        # - Finished: Completed
-        # 
-        # - Failed: Failed
-        # 
-        # - Expired: Expired
-        # 
-        # - Cancelled: Canceled
+        # The export status. Valid values:
+        # - Pending: Pending.
+        # - InProgress: In progress.
+        # - Finished: Finished.
+        # - Failed: Failed.
+        # - Expired: Expired.
+        # - Cancelled: Cancelled.
         self.status = status
-        # Task ID
+        # The task ID.
         self.task_id = task_id
-        # Title
+        # The title.
         self.title = title
 
     def validate(self):
@@ -237,25 +231,19 @@ class ListDownloadTasksResponseBodyDownloadTasksListDownloadTaskFiles(DaraModel)
         status: str = None,
         title: str = None,
     ):
-        # File ID
+        # The file ID.
         self.file_id = file_id
-        # Completion progress [Deprecated]
+        # **[Deprecated]** The completion progress.
         self.progress = progress
-        # File status
-        # 
-        # - Pending: Pending
-        # 
-        # - InProgress: In progress
-        # 
-        # - Finished: Completed
-        # 
-        # - Failed: Failed
-        # 
-        # - Expired: Expired
-        # 
-        # - Cancelled: Canceled
+        # The file status. Valid values:
+        # - Pending: Pending.
+        # - InProgress: In progress.
+        # - Finished: Finished.
+        # - Failed: Failed.
+        # - Expired: Expired.
+        # - Cancelled: Cancelled.
         self.status = status
-        # Title
+        # The title.
         self.title = title
 
     def validate(self):

@@ -15,15 +15,15 @@ class ModifyAgentProfileResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Status code
+        # The status code.
         self.code = code
-        # Returned data
+        # The returned data.
         self.data = data
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Response message
+        # The response message.
         self.message = message
-        # Request ID
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -103,53 +103,49 @@ class ModifyAgentProfileResponseBodyData(DaraModel):
         update_time: str = None,
         variables_json: str = None,
     ):
-        # Agent configuration ID
+        # The agent profile ID.
         self.agent_profile_id = agent_profile_id
         # Agent Template ID
         self.agent_profile_template_id = agent_profile_template_id
         # Agent Type
         self.agent_type = agent_type
-        # API plug-in configuration
+        # The API plugin configuration.
         self.api_plugin_json = api_plugin_json
-        # Creation time
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # Description
+        # The description.
         self.description = description
-        # Instance ID
+        # The instance ID.
         self.instance_id = instance_id
-        # Instruction configuration
+        # The instruction configuration.
         self.instruction_json = instruction_json
-        # Label description
+        # The label description.
         self.labels_json = labels_json
-        # Model ID
+        # The model ID.
         self.model = model
-        # Model configuration
+        # The model configuration.
         self.model_config = model_config
-        # NLU configuration, parameter settings:
+        # The NLU configuration. Parameter settings:
         # 
-        # - chatbotInstanceId Xiaomi Large Language Model (LLM) robot instance ID
-        # 
-        # - faqCategoryIds bound FAQ category ID
-        # 
-        # - llmAgentId Xiaomi Large Language Model (LLM) workspace ID
-        # 
-        # - llmAgentKey Xiaomi Large Language Model (LLM) workspace key
-        # 
-        # - llmAgentInstanceId Xiaomi Large Language Model (LLM) workspace instance ID
+        # - chatbotInstanceId: the Chatbot large model robot instance ID.
+        # - faqCategoryIds: the attached FAQ category IDs.
+        # - llmAgentId: the Chatbot large model workspace ID.
+        # - llmAgentKey: the Chatbot large model workspace key.
+        # - llmAgentInstanceId: the Chatbot large model workspace instance ID.
         self.nlu_config_json = nlu_config_json
-        # Prompt (Professional Mode)
+        # The prompt in professional mode.
         self.prompt = prompt
-        # Agent configuration
+        # The agent configuration.
         self.prompt_json = prompt_json
-        # Scenario
+        # The scenario.
         self.scenario = scenario
-        # Scenario ID
+        # The scenario ID.
         self.script_id = script_id
-        # Is it a system template?
+        # Indicates whether the template is a system template.
         self.system = system
-        # Modification time
+        # The update time. The value is a UNIX timestamp in seconds.
         self.update_time = update_time
-        # Variable configuration
+        # The variable configuration.
         self.variables_json = variables_json
 
     def validate(self):

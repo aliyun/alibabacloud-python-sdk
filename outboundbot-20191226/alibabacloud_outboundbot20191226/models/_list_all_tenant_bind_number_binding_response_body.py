@@ -17,17 +17,17 @@ class ListAllTenantBindNumberBindingResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Status code.
+        # The status code.
         self.code = code
-        # Data.
+        # The data.
         self.data = data
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # API response message.
+        # The message returned by the API.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call succeeded.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -87,7 +87,7 @@ class ListAllTenantBindNumberBindingResponseBodyData(DaraModel):
         self,
         list: List[main_models.ListAllTenantBindNumberBindingResponseBodyDataList] = None,
     ):
-        # Array.
+        # The list.
         self.list = list
 
     def validate(self):
@@ -128,16 +128,17 @@ class ListAllTenantBindNumberBindingResponseBodyDataList(DaraModel):
         serialized_params: str = None,
         trunk_name: str = None,
     ):
+        # The billing method of the number.
         self.billing_type = billing_type
-        # Binding ID.
+        # The binding ID.
         self.binding_id = binding_id
-        # List of instance names.
+        # The list of instance names.
         self.instance_name_list = instance_name_list
-        # Phone number.
+        # The number.
         self.number = number
-        # Policy.
+        # The policy.
         self.serialized_params = serialized_params
-        # Trunk name.
+        # The trunk name.
         self.trunk_name = trunk_name
 
     def validate(self):

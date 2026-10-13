@@ -21,13 +21,13 @@ class ModifyJobGroupResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The job group details.
+        # The job information.
         self.job_group = job_group
-        # The API response message.
+        # The API message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -105,37 +105,41 @@ class ModifyJobGroupResponseBodyJobGroup(DaraModel):
         status: str = None,
         strategy: main_models.ModifyJobGroupResponseBodyJobGroupStrategy = None,
     ):
-        # The list of calling numbers.
+        # The list of caller numbers.
         self.calling_numbers = calling_numbers
         # The creation time.
         # 
-        # > Call the `DescribeJobGroup` operation to obtain this value.
+        # > You can obtain this value from the response of the DescribeJobGroup operation. The value is a UNIX timestamp in milliseconds.
         self.creation_time = creation_time
-        # The export progress. [Deprecated]
+        # The export information. This is a legacy parameter and is no longer used.
         self.export_progress = export_progress
-        # Extra parameters for the flash SMS service. The value is a JSON string that contains the configuration for a third-party provider.
+        # The configuration parameters for flash message push in JSON format, including the configuration information of third-party flash messages.
         # 
-        # `templateId`: The flash SMS template ID. `configId`: The flash SMS configuration ID.
+        # templateId: the flash message template ID.
+        # configId: the flash message configuration ID.
         self.flash_sms_extras = flash_sms_extras
-        # The data parsing task ID. [Deprecated]
+        # **[Deprecated]** The ID of the parsing task corresponding to the outbound job file.
         self.job_data_parsing_task_id = job_data_parsing_task_id
-        # The job file path. [Deprecated]
+        # **[Deprecated]** The OSS storage path of the job file.
         self.job_file_path = job_file_path
-        # The job group description.
+        # The job description.
         self.job_group_description = job_group_description
-        # The job group ID.
+        # The job ID.
         self.job_group_id = job_group_id
-        # The job group name.
+        # The job name.
         self.job_group_name = job_group_name
-        # The minimum number of concurrent calls to reserve for this job group. The sum of this value for all job groups with the same priority cannot exceed the total concurrency of the instance. If set to 0, the system dynamically allocates idle lines from a shared pool.
+        # The guaranteed concurrency.
+        # When a job starts, a minimum of N concurrent calls are guaranteed.
+        # The sum of guaranteed concurrency values for jobs of the same priority cannot exceed the instance concurrency.
+        # If the guaranteed concurrency is set to 0, the system intelligently allocates idle concurrency.
         self.min_concurrency = min_concurrency
         # The modification time.
-        # 
-        # > Call the `DescribeJobGroup` operation to obtain this value.
+        # > You can obtain this value from the response of the DescribeJobGroup operation. The value is a UNIX timestamp in milliseconds.
         self.modify_time = modify_time
         # The job group priority. Valid values:
         # 
-        # `Urgent`: For high-priority jobs. `Daily`: For standard-priority jobs.
+        # Urgent: urgent job.
+        # Daily: daily job.
         self.priority = priority
         # The recall strategy.
         self.recall_strategy = recall_strategy
@@ -143,15 +147,15 @@ class ModifyJobGroupResponseBodyJobGroup(DaraModel):
         self.ringing_duration = ringing_duration
         # The scenario ID.
         # 
-        # > This parameter is deprecated. To obtain the `ScriptId`, call the `DescribeJobGroup` operation.
+        # > This parameter returns a legacy value. You can obtain the specific ScriptId from the response of the DescribeJobGroup operation.
         self.scenario_id = scenario_id
         # The script name.
         self.script_name = script_name
         # The script version.
         self.script_version = script_version
-        # The job group status.
+        # The status.
         self.status = status
-        # The outbound strategy.
+        # The outbound call strategy.
         self.strategy = strategy
 
     def validate(self):
@@ -309,38 +313,38 @@ class ModifyJobGroupResponseBodyJobGroupStrategy(DaraModel):
         type: str = None,
         working_time: List[main_models.ModifyJobGroupResponseBodyJobGroupStrategyWorkingTime] = None,
     ):
-        # The customized strategy data. [Deprecated]
+        # The custom strategy data. This is a legacy parameter and is no longer used.
         self.customized = customized
-        # The end time.
+        # The end time. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # The action to take when the execution cycle ends. [Deprecated]
+        # The processing method after the execution cycle ends. This is a legacy parameter and is no longer used.
         self.follow_up_strategy = follow_up_strategy
-        # Indicates whether the strategy is a template. [Deprecated]
+        # Indicates whether it is a template. This is a legacy parameter and is no longer used.
         self.is_template = is_template
-        # The maximum attempts per day.
+        # The maximum number of attempts.
         self.max_attempts_per_day = max_attempts_per_day
-        # The minimum attempt interval.
+        # The retry interval after a failure.
         self.min_attempt_interval = min_attempt_interval
-        # The repeat mode. Valid values: `Once` (runs only once), `Day` (repeats daily), `Week` (repeats weekly), and `Month` (repeats monthly).
+        # The recurrence type. Valid values: Once (no recurrence), Day (daily), Week (weekly), and Month (monthly).
         self.repeat_by = repeat_by
-        # The days of the week or month on which the job repeats.
+        # The execution days for recurrence.
         # 
-        # If `RepeatBy` is set to `Week`, valid values are `0` to `6`, where `0` represents Sunday, and `1` to `6` represent Monday to Saturday.
-        # If `RepeatBy` is set to `Month`, valid values are `1` to `31`. If a month is shorter than the specified day (for example, day 31 in February), the job does not run that month.
+        # If the recurrence type RepeatBy is Week, 0 indicates Sunday, and 1 to 6 indicate Monday to Saturday.
+        # If the recurrence type RepeatBy is Month, 1 to 31 indicate the 1st to the 31st day of the month. If a month does not have the specified day, the job is not executed in that month. For example, if the 30th is selected, the job is not executed in February.
         self.repeat_days = repeat_days
-        # The routing strategy.
+        # The phone number routing strategy.
         self.routing_strategy = routing_strategy
-        # The start time.
+        # The start time. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
         # The strategy description.
         self.strategy_description = strategy_description
         # The strategy ID.
         self.strategy_id = strategy_id
-        # The strategy name.
+        # The policy name.
         self.strategy_name = strategy_name
         # The strategy type.
         self.type = type
-        # The time windows for making outbound calls.
+        # The time period during which outbound calls are allowed.
         self.working_time = working_time
 
     def validate(self):
@@ -461,9 +465,9 @@ class ModifyJobGroupResponseBodyJobGroupStrategyWorkingTime(DaraModel):
         begin_time: str = None,
         end_time: str = None,
     ):
-        # The start time.
+        # The start time. The format is HH:mm:ss.
         self.begin_time = begin_time
-        # The end time.
+        # The end time. The format is HH:mm:ss.
         self.end_time = end_time
 
     def validate(self):
@@ -499,11 +503,11 @@ class ModifyJobGroupResponseBodyJobGroupRecallStrategy(DaraModel):
         in_arrears_ignore: bool = None,
         out_of_service_ignore: bool = None,
     ):
-        # Indicates whether to ignore an invalid number.
+        # Specifies whether to ignore nonexistent numbers for outbound calls.
         self.empty_number_ignore = empty_number_ignore
-        # Indicates whether to ignore a number in arrears.
+        # Specifies whether to ignore numbers with overdue payments for outbound calls.
         self.in_arrears_ignore = in_arrears_ignore
-        # Indicates whether to ignore an out-of-service number.
+        # Specifies whether to ignore out-of-service numbers for outbound calls.
         self.out_of_service_ignore = out_of_service_ignore
 
     def validate(self):
@@ -547,9 +551,9 @@ class ModifyJobGroupResponseBodyJobGroupExportProgress(DaraModel):
     ):
         # The file URL.
         self.file_http_url = file_http_url
-        # The progress of the export.
+        # The progress.
         self.progress = progress
-        # The export status.
+        # The status.
         self.status = status
 
     def validate(self):

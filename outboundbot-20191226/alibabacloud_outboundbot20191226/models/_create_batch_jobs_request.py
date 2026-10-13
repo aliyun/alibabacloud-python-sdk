@@ -19,29 +19,31 @@ class CreateBatchJobsRequest(DaraModel):
         strategy_json: str = None,
         submitted: bool = None,
     ):
-        # Description of the batch job.
+        # The description of the batch job.
         self.batch_job_description = batch_job_description
-        # Name of the batch job.
+        # The name of the batch job.
         # 
         # This parameter is required.
         self.batch_job_name = batch_job_name
-        # List of caller numbers.
+        # The list of calling numbers.
         self.calling_number = calling_number
-        # ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Path to the Excel file that contains the batch job data.
+        # The URL to download the Excel file for the batch job.
         # 
-        # > Get this value from the Folder parameter in the response of the GetJobDataUploadParams operation.
+        # >You can obtain this parameter from the Folder response parameter of the GetJobDataUploadParams operation.
         self.job_file_path = job_file_path
-        # ID of the scenario.
+        # The scenario ID.
         self.scenario_id = scenario_id
-        # ID of the script.
+        # The script ID.
         self.script_id = script_id
-        # JSON string that defines the job execution policy. Required.
+        # The JSON string of the job execution strategy. This parameter is required.
         self.strategy_json = strategy_json
-        # Indicates whether the job is submitted. Set to false to submit the job. Set to true to save it as a draft.
+        # Specifies whether the job is submitted. Valid values:
+        # - true: The job is saved as a draft.
+        # - false: The job is submitted.
         # 
         # This parameter is required.
         self.submitted = submitted

@@ -27,7 +27,7 @@ class QueryJobsResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -90,13 +90,13 @@ class QueryJobsResponseBodyJobs(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The list of jobs.
+        # The job array.
         self.list = list
         # The page number.
         self.page_number = page_number
         # The page size.
         self.page_size = page_size
-        # The total number of records.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -163,31 +163,31 @@ class QueryJobsResponseBodyJobsList(DaraModel):
         tag_hits: List[main_models.QueryJobsResponseBodyJobsListTagHits] = None,
         tasks: List[main_models.QueryJobsResponseBodyJobsListTasks] = None,
     ):
-        # The list of calling numbers.
+        # The calling number list.
         self.calling_numbers = calling_numbers
-        # The contact information. This parameter has been deprecated.
+        # **[Deprecated]** The contact information.
         # 
-        # > You can retrieve this information by calling the DescribeJob operation.
+        # > You can obtain this information by calling the DescribeJob operation.
         self.contacts = contacts
-        # The business data. Displays tag collection results for large language model scenarios.
+        # The business data, which displays the tag collection status in large model scenarios.
         # 
-        # > Keys equal to TenantId or ServiceId are system parameters.
+        # > If the key is TenantId or ServiceId, it is a system parameter.
         self.extras = extras
-        # The failure reason. Valid values:
+        # The reason for the failure. Valid values:
         # - Unknown: Unknown error.  
         # - NoAnswer: No answer.
         # - InvalidStrategy: Invalid strategy. The strategy configuration is incorrect.
         # - TimeUp: Timeout detected during scheduling.
         # - NoStrategy: The strategy is empty or not found.
         # - CallFailed: Call failed.
-        # - PerDayCallCountLimit: Daily call count limit for the number reached.
-        # - ContactBlockList: The number is on the blocked list.
-        # - EmptyNumber: Nonexistent number. No further outbound calls.
-        # - JobPerDayCallCountLimit: Daily call count limit for the number reached.
-        # - VerificationCancelled: Pre-call verification failed. The call was cancelled.
+        # - PerDayCallCountLimit: The daily call count limit for the number is reached.
+        # - ContactBlockList: The number is on the outbound call blacklist.
+        # - EmptyNumber: The number is a nonexistent number and will not be called.
+        # - JobPerDayCallCountLimit: The daily call count limit for the number is reached.
+        # - VerificationCancelled: Cancelled due to failed pre-call verification.
         # - ContactSuspended: Call suspended.
         # - InArrears: Overdue payment.
-        # - OutOfService: Out of service.
+        # - OutOfService: Service suspended.
         self.failure_reason = failure_reason
         # The job group ID.
         self.job_group_id = job_group_id
@@ -197,26 +197,26 @@ class QueryJobsResponseBodyJobsList(DaraModel):
         self.priority = priority
         # The associated business ID.
         self.reference_id = reference_id
-        # The scenario ID. This is a legacy parameter and has been deprecated.
+        # **[Deprecated]** The scenario ID. This is a legacy parameter.
         self.scenario_id = scenario_id
         # The job status. Valid values:
-        # - Scheduling(0): Scheduling.
-        # - Executing(1): Executing.
-        # - Succeeded(2): Completed - Reached.
-        # - Paused(3): Paused.
-        # - Failed(4): Completed - Not reached.
-        # - Cancelled(5): Cancelled - Manual intervention.
-        # - Drafted(6): Draft.
+        # - Scheduling(0, "Scheduling")
+        # - Executing(1, "Executing")
+        # - Succeeded(2, "Finished - Reached")
+        # - Paused(3, "Paused")
+        # - Failed(4, "Finished - Not reached")
+        # - Cancelled(5, "Cancelled - Manual intervention")
+        # - Drafted(6, "Draft")
         self.status = status
         # The strategy ID.
         self.strategy_id = strategy_id
-        # The conversation summary. This is a legacy field and is no longer in use. Deprecated.
+        # **[Deprecated]** The conversation summary. This is a legacy field and is no longer used.
         self.summary = summary
-        # The tag hit information in small model scenarios.
+        # The matched tag information in small model scenarios.
         self.tag_hits = tag_hits
-        # The call list. This parameter has been deprecated.
+        # **[Deprecated]** The call list.
         # 
-        # > You can retrieve this information by calling the searchTask operation.
+        # > You can obtain this information by calling the searchTask operation.
         self.tasks = tasks
 
     def validate(self):
@@ -378,17 +378,17 @@ class QueryJobsResponseBodyJobsListTasks(DaraModel):
         status: str = None,
         task_id: str = None,
     ):
-        # The actual outbound call time.
+        # The actual outbound call time. The value is a UNIX timestamp in milliseconds.
         self.actual_time = actual_time
-        # The summary. This is a legacy field and is no longer in use.
+        # **[Deprecated]** The summary. This is a legacy field and is no longer used.
         self.brief = brief
-        # SIP call ID。
+        # The SIP call ID.
         self.call_id = call_id
         # The called number.
         self.called_number = called_number
         # The calling number.
         self.calling_number = calling_number
-        # The chatbot ID.
+        # The robot ID.
         self.chatbot_id = chatbot_id
         # The contact information.
         self.contact = contact
@@ -396,72 +396,44 @@ class QueryJobsResponseBodyJobsListTasks(DaraModel):
         self.duration = duration
         # The job ID.
         self.job_id = job_id
-        # The planned outbound call time.
+        # The planned outbound call time. The value is a UNIX timestamp in milliseconds.
         self.planed_time = planed_time
         # The scenario ID.
         self.scenario_id = scenario_id
-        # The task status. Note: The Succeeded status has been subdivided into specific reason types. The Succeeded:1 (Connected) status is no longer returned. Instead, the specific sub-reason type is returned. Valid values:
-        # 
-        # - Executing: 0 (Dialing).
+        # The task status. Note: The Succeeded status is subdivided into specific reasons. The Succeeded: 1 (Connected) status is no longer returned. Instead, specific subdivided reason types are returned. Valid values:
+        # - Executing: 0 (Calling).
         # - Succeeded: 1 (Connected).
         # - NoAnswer: 2 (Not connected - No answer).
-        # 
         # - NotExist: 3 (Not connected - Nonexistent number).
-        # 
         # - Busy: 4 (Not connected - Busy).
-        # 
-        # - Cancelled: 5 (Not dialed - Task stopped).
-        # 
+        # - Cancelled: 5 (Not called - Task stopped).
         # - Failed: 6 (Failed).
-        # 
         # - NotConnected: 7 (Not connected - Unreachable).
-        # 
         # - PoweredOff: 8 (Not connected - Powered off).
-        # 
-        # - OutOfService: 9 (Not connected - Called party out of service).
-        # 
-        # - InArrears: 10 (Not connected - Called party has overdue payment).
-        # 
-        # - EmptyNumber: 11 (Not dialed - Nonexistent number).
-        # 
-        # - PerDayCallCountLimit: 12 (Not dialed - Daily limit exceeded).
-        # 
-        # - ContactBlockList: 13 (Not dialed - Blocked list).
-        # 
-        # - CallerNotRegistered: 14 (Not dialed - Caller number not registered).
-        # 
-        # - Terminated: 15 (Not dialed - Terminated).
-        # 
-        # - VerificationCancelled: 16 (Not dialed - Pre-call verification failed).
-        # 
-        # - OutOfServiceNoCall: 17 (Not dialed - Called party out of service).
-        # 
-        # - InArrearsNoCall: 18 (Not dialed - Called party has overdue payment).
-        # 
-        # - CallingNumberNotExist: 19 (Not dialed - Caller number does not exist).
-        # - SucceededFinish: 20 (Connected - Completed normally).
-        # 
-        # - SucceededChatbotHangUpAfterNoAnswer: 21 (Connected - Robot hung up after no recognition).
-        # 
-        # - SucceededChatbotHangUpAfterSilence: 22 (Connected - Silence timeout hang-up).
-        # 
-        # - SucceededClientHangUpAfterNoAnswer: 23 (Connected - User hung up after no recognition).
-        # 
+        # - OutOfService: 9 (Not connected - Callee service suspended).
+        # - InArrears: 10 (Not connected - Callee overdue payment).
+        # - EmptyNumber: 11 (Not called - Nonexistent number, no outbound call).
+        # - PerDayCallCountLimit: 12 (Not called - Daily limit exceeded).
+        # - ContactBlockList: 13 (Not called - Blacklisted).
+        # - CallerNotRegistered: 14 (Not called - Caller number not registered).
+        # - Terminated: 15 (Not called - Terminated).
+        # - VerificationCancelled: 16 (Not called - Cancelled due to failed pre-call verification).
+        # - OutOfServiceNoCall: 17 (Not called - Callee service suspended, no outbound call).
+        # - InArrearsNoCall: 18 (Not called - Callee overdue payment, no outbound call).
+        # - CallingNumberNotExist: 19 (Not called - Caller number does not exist).
+        # - SucceededFinish: 20 (Connected - Normally finished).
+        # - SucceededChatbotHangUpAfterNoAnswer: 21 (Connected - Robot hung up after rejection).
+        # - SucceededChatbotHangUpAfterSilence: 22 (Connected - Hung up due to silence timeout).
+        # - SucceededClientHangUpAfterNoAnswer: 23 (Connected - User hung up after rejection).
         # - SucceededClientHangUp: 24 (Connected - User hung up without reason).
-        # 
-        # - SucceededTransferByIntent: 25 (Connected - Transferred to agent by intent).
-        # 
-        # - SucceededTransferAfterNoAnswer: 26 (Connected - Transferred to agent after no recognition).
-        # 
-        # - SucceededInoInterAction: 27 (Connected - No interaction from user side).
-        # 
-        # - SucceededError: 28 (Connected - System exception interruption).
-        # 
-        # - SucceededSpecialInterceptVoiceAssistant: 29 (Connected - Special intercept - Voice assistant).
-        # 
-        # - SucceededSpecialInterceptExtensionNumberTransfer: 30 (Connected - Special intercept - Extension number transfer).
-        # - SucceededSpecialInterceptCustomSpecialIntercept: 31 (Connected - Special intercept - Custom intercept).
-        # - HighRiskSipCode: 32 (Not dialed - High risk).
+        # - SucceededTransferByIntent: 25 (Connected - Transferred to agent due to intent match).
+        # - SucceededTransferAfterNoAnswer: 26 (Connected - Transferred to agent after rejection).
+        # - SucceededInoInterAction: 27 (Connected - No interaction from the user side).
+        # - SucceededError: 28 (Connected - Interrupted due to system exception).
+        # - SucceededSpecialInterceptVoiceAssistant: 29 (Connected - Special interception - Voice assistant).
+        # - SucceededSpecialInterceptExtensionNumberTransfer: 30 (Connected - Special interception - Extension number transfer).
+        # - SucceededSpecialInterceptCustomSpecialIntercept: 31 (Connected - Special interception - Custom interception).
+        # - HighRiskSipCode: 32 (Not called - High risk, no outbound call).
         self.status = status
         # The call ID.
         self.task_id = task_id
@@ -576,11 +548,11 @@ class QueryJobsResponseBodyJobsListTasksContact(DaraModel):
         self.contact_id = contact_id
         # The contact name.
         self.contact_name = contact_name
-        # The honorific title.
+        # The honorific.
         self.honorific = honorific
         # The job ID.
         self.job_id = job_id
-        # The contact phone number.
+        # The phone number of the contact.
         self.phone_number = phone_number
         # The associated business ID.
         self.reference_id = reference_id
@@ -785,9 +757,9 @@ class QueryJobsResponseBodyJobsListExtras(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The business data key.
+        # The key of the business data.
         self.key = key
-        # The business data value.
+        # The value of the business data.
         self.value = value
 
     def validate(self):
@@ -832,7 +804,7 @@ class QueryJobsResponseBodyJobsListContacts(DaraModel):
         self.contact_id = contact_id
         # The contact name.
         self.contact_name = contact_name
-        # The honorific title.
+        # The honorific.
         self.honorific = honorific
         # The job ID.
         self.job_id = job_id

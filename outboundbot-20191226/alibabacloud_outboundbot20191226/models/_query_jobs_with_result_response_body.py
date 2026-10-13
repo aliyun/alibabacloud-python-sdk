@@ -25,15 +25,15 @@ class QueryJobsWithResultResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The jobs.
         self.jobs = jobs
-        # The label information that can be used as filter conditions.
+        # The tag information that can be used as filter conditions. This field displays all tags with enumeration values in the task group.
         self.labels = labels
-        # The prompt message returned by the operation.
+        # The message returned by the API operation.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
-        # The label names to be collected.
+        # The names of the tags to be collected.
         self.variable_names = variable_names
 
     def validate(self):
@@ -115,9 +115,9 @@ class QueryJobsWithResultResponseBodyLabels(DaraModel):
         name: str = None,
         value_list: List[str] = None,
     ):
-        # The label name.
+        # The tag name.
         self.name = name
-        # The list of label values.
+        # The list of tag values.
         self.value_list = value_list
 
     def validate(self):
@@ -155,7 +155,7 @@ class QueryJobsWithResultResponseBodyJobs(DaraModel):
         page_size: int = None,
         row_count: int = None,
     ):
-        # The job list.
+        # The list of jobs.
         self.list = list
         # The total number of pages.
         self.page_count = page_count
@@ -229,13 +229,20 @@ class QueryJobsWithResultResponseBodyJobsList(DaraModel):
     ):
         # The job ID.
         self.id = id
-        # The reason for job failure.
+        # The reason for the job failure.
         self.job_failure_reason = job_failure_reason
         # The latest call.
         self.latest_task = latest_task
-        # The job status.
+        # The job status. Valid values:
+        # - Scheduling(0, "Scheduling")
+        # - Executing(1, "Executing")
+        # - Succeeded(2, "Completed - Reached")
+        # - Paused(3, "Paused")
+        # - Failed(4, "Completed - Not reached")
+        # - Cancelled(5, "Canceled - Manual intervention")
+        # - Drafted(6, "Draft")
         self.status = status
-        # The job status name.
+        # The name of the job status.
         self.status_name = status_name
 
     def validate(self):
@@ -308,32 +315,33 @@ class QueryJobsWithResultResponseBodyJobsListLatestTask(DaraModel):
         self.call_duration = call_duration
         # The call duration.
         self.call_duration_display = call_duration_display
-        # The call time.
+        # The call time. The value is a UNIX timestamp in milliseconds.
         self.call_time = call_time
         # The contact.
         self.contact = contact
         # The call exception codes.
         self.dial_exception_codes = dial_exception_codes
-        # The label names to be collected.
+        # The names of the tags to be collected.
         self.extras = extras
         # The party that hung up the call.
         self.hang_up_direction = hang_up_direction
-        # Indicates whether the call was answered.
+        # Indicates whether the call is answered.
         self.has_answered = has_answered
         # Specifies whether the call is hung up due to rejection.
         self.has_hang_up_by_rejection = has_hang_up_by_rejection
-        # Indicates whether the playback was completed when the call was hung up.
+        # Indicates whether the playback is completed when the call is hung up.
         self.has_last_playback_completed = has_last_playback_completed
-        # Specifies whether the call has reached the end of the flow.
+        # Specifies whether the flow is completed.
         self.has_reached_end_of_flow = has_reached_end_of_flow
         # The call status.
         self.status = status
-        # The call status name.
+        # The name of the call status.
         self.status_name = status_name
-        # The label hit information (returned by the legacy canvas).
+        # The tag hit information. This field is returned for the legacy canvas.
         self.tag_hits = tag_hits
         # The call result.
         self.task_end_reason = task_end_reason
+        # The name of the voice used in the call.
         self.voice_name = voice_name
 
     def validate(self):
@@ -481,9 +489,9 @@ class QueryJobsWithResultResponseBodyJobsListLatestTaskTagHits(DaraModel):
         tag_group: str = None,
         tag_name: str = None,
     ):
-        # The label group to which the label belongs.
+        # The tag group to which the tag belongs.
         self.tag_group = tag_group
-        # The label name.
+        # The tag name.
         self.tag_name = tag_name
 
     def validate(self):
@@ -518,9 +526,9 @@ class QueryJobsWithResultResponseBodyJobsListLatestTaskExtras(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The label key.
+        # The tag key.
         self.key = key
-        # The label value.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -600,29 +608,25 @@ class QueryJobsWithResultResponseBodyJobsListLatestTaskContact(DaraModel):
         round: int = None,
         state: str = None,
     ):
-        # The honorific for the contact. If not specified, the value defaults to the same as the name.
+        # The honorific of the contact. If this field is not specified, the default value is the same as the name. This is a custom field passed in JSON format when you call the API operation to execute the outbound call task.
         self.honorific = honorific
-        # The contact ID, which is a unique identifier generated by the system when the outbound call list is uploaded.
+        # The contact ID. A unique identifier generated by the system when the outbound call list is uploaded.
         self.id = id
         # The job ID.
         self.job_uuid = job_uuid
-        # The name of the contact, such as John Smith.
+        # The name of the contact, such as Zhang San.
         self.name = name
         # The phone number of the contact.
         self.phone_number = phone_number
-        # The phone number specified by the callee for communication. If this number is provided, the system calls this number.
-        # > This is a custom value passed in JSON format when calling the API operation to execute an outbound task.
+        # The phone number specified by the callee during the conversation. If this field is specified, the system calls this number. This is a custom field passed in JSON format when you call the API operation to execute the outbound call task.
         self.preferred_phone_number = preferred_phone_number
-        # The contact ID uploaded by the customer. This ID must be provided by the business side to avoid duplicate name issues.
+        # The custom contact ID uploaded by the customer. This ID must be provided by the business side to avoid duplicate names.
         self.reference_id = reference_id
-        # The role of the contact in this outbound call task. If not specified, no role distinction is made. For example, in collection tasks, contact roles can include borrower, co-borrower, and guarantor.
-        # 
-        # > Custom-defined by the user. When using the API, pass this value in JSON format.
+        # The role of the contact in the outbound call business. If this field is not specified, roles are not distinguished. For example, in debt collection, contact roles can be borrower, co-borrower, or guarantor. This is a custom field passed in JSON format when you call the API operation.
         self.role = role
-        # The round number.
+        # The conversation round.
         self.round = round
-        # The state of the contact, such as Available, WrongNumber, or DoesNotExist.
-        # > Custom-defined by the user. Pass this value in JSON format when calling the API operation to execute an outbound task.
+        # The status of the contact, such as Available, WrongNumber, or DoesNotExist. This is a custom field passed in JSON format when you call the API operation to execute the outbound call task.
         self.state = state
 
     def validate(self):

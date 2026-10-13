@@ -20,11 +20,11 @@ class ListScriptPublishHistoriesRequest(DaraModel):
         # 
         # This parameter is required.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The script ID.
+        # The scenario ID.
         # 
         # This parameter is required.
         self.script_id = script_id

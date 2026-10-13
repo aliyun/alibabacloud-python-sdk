@@ -11,17 +11,17 @@ class GetTaskByUuidRequest(DaraModel):
         task_id: str = None,
         with_conversations: bool = None,
     ):
-        # Instance ID
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Task ID
+        # The task ID.
         # 
         # This parameter is required.
         self.task_id = task_id
-        # Include conversation details
+        # Specifies whether to include conversation information.
         # 
-        # > The default value is false.
+        # > Default value: false.
         self.with_conversations = with_conversations
 
     def validate(self):

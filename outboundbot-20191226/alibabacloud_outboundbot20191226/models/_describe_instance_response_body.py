@@ -19,13 +19,13 @@ class DescribeInstanceResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The business instance information.
+        # The instance information.
         self.instance = instance
-        # The response message.
+        # The message returned by the API.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -93,21 +93,21 @@ class DescribeInstanceResponseBodyInstance(DaraModel):
         owner_name: str = None,
         resource_group_id: str = None,
     ):
-        # The creation time.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.creation_time = creation_time
-        # The creator ID.
+        # The ID of the creator.
         self.creator_id = creator_id
         # The name of the creator.
         self.creator_name = creator_name
-        # The description of the business instance.
+        # The description of the instance.
         self.instance_description = instance_description
-        # The business instance ID.
+        # The instance ID.
         self.instance_id = instance_id
-        # The name of the business instance.
+        # The name of the instance.
         self.instance_name = instance_name
-        # The maximum concurrency of the instance.
+        # The maximum number of concurrent conversations for the instance.
         self.max_concurrent_conversation = max_concurrent_conversation
-        # The name of the business instance owner.
+        # The name of the instance owner.
         self.owner_name = owner_name
         # The resource group ID.
         self.resource_group_id = resource_group_id

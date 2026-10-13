@@ -29,15 +29,15 @@ class ListBeebotIntentResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The list of intents.
         self.intents = intents
-        # The message returned by the operation.
+        # The message returned by the API operation.
         self.message = message
         # The page number.
         self.page_number = page_number
-        # The number of entries returned on each page.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call succeeded.
+        # Indicates whether the request is successful.
         self.success = success
         # The total number of entries.
         self.total_count = total_count
@@ -139,23 +139,22 @@ class ListBeebotIntentResponseBodyIntents(DaraModel):
     ):
         # The intent alias.
         self.alias_name = alias_name
-        # The time when the intent was created.
+        # The creation time. The format is YYYY-MM-DD HH:mm:ss.+ZZZZ, where +ZZZZ indicates the time zone offset.
         self.create_time = create_time
         # The ID of the user who created the intent.
         self.create_user_id = create_user_id
-        # The name of the account that created the intent.
+        # The name of the user who created the intent.
         self.create_user_name = create_user_name
         # The intent ID.
         self.intent_id = intent_id
         # The intent name.
-        # 
-        # > This is the intent code. It uniquely identifies the intent.
+        # > The intent code, which is a unique identifier.
         self.intent_name = intent_name
-        # The time when the intent was last modified.
+        # The modification time. The format is YYYY-MM-DD HH:mm:ss.+ZZZZ, where +ZZZZ indicates the time zone offset.
         self.modify_time = modify_time
-        # Modify User ID
+        # The ID of the user who modified the intent.
         self.modify_user_id = modify_user_id
-        # Modify the account name.
+        # The name of the user who modified the intent.
         self.modify_user_name = modify_user_name
 
     def validate(self):

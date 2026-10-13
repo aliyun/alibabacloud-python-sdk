@@ -19,7 +19,7 @@ class DescribeJobRequest(DaraModel):
         # 
         # This parameter is required.
         self.job_id = job_id
-        # Specifies whether to return task scenario information.
+        # Specifies whether to return the task scenario information.
         self.with_script = with_script
 
     def validate(self):

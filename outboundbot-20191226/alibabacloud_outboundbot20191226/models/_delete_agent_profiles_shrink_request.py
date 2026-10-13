@@ -10,9 +10,9 @@ class DeleteAgentProfilesShrinkRequest(DaraModel):
         agent_profile_ids_shrink: str = None,
         app_ip: str = None,
     ):
-        # Collection of agent profile IDs
+        # The collection of agent configuration IDs.
         self.agent_profile_ids_shrink = agent_profile_ids_shrink
-        # app_ip (system field, optional)
+        # The app_ip (system field, optional).
         self.app_ip = app_ip
 
     def validate(self):

@@ -18,14 +18,13 @@ class ListBeebotIntentRequest(DaraModel):
         # This parameter is required.
         self.instance_id = instance_id
         # The intent name.
-        # 
-        # > This is the intent code. It uniquely identifies the intent.
+        # > The intent code, which is a unique identifier.
         self.intent_name = intent_name
         # The page number.
         # 
         # This parameter is required.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
         # This parameter is required.
         self.page_size = page_size

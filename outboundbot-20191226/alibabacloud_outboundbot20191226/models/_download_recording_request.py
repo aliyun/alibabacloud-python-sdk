@@ -18,7 +18,7 @@ class DownloadRecordingRequest(DaraModel):
         self.instance_id = instance_id
         # Specifies whether to query segmented recordings.
         self.need_voice_slice_recording = need_voice_slice_recording
-        # Specifies whether to swap left and right audio channels. Default value: false (not swapped).
+        # Specifies whether to swap the left and right audio channels. Default value: false.
         self.swap_channels = swap_channels
         # The call ID.
         # 

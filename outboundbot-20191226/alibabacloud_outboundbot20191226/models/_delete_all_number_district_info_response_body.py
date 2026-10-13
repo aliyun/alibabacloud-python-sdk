@@ -13,15 +13,15 @@ class DeleteAllNumberDistrictInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Response code
+        # The response code.
         self.code = code
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Interface message
+        # The response message.
         self.message = message
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Success status
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

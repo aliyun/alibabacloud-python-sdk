@@ -40,6 +40,9 @@ from ._create_beebot_intent_user_say_request import CreateBeebotIntentUserSayReq
 from ._create_beebot_intent_user_say_shrink_request import CreateBeebotIntentUserSayShrinkRequest
 from ._create_beebot_intent_user_say_response_body import CreateBeebotIntentUserSayResponseBody
 from ._create_beebot_intent_user_say_response import CreateBeebotIntentUserSayResponse
+from ._create_custom_script_template_request import CreateCustomScriptTemplateRequest
+from ._create_custom_script_template_response_body import CreateCustomScriptTemplateResponseBody
+from ._create_custom_script_template_response import CreateCustomScriptTemplateResponse
 from ._create_dialogue_flow_request import CreateDialogueFlowRequest
 from ._create_dialogue_flow_response_body import CreateDialogueFlowResponseBody
 from ._create_dialogue_flow_response import CreateDialogueFlowResponse
@@ -67,6 +70,9 @@ from ._create_job_group_response import CreateJobGroupResponse
 from ._create_job_group_export_task_request import CreateJobGroupExportTaskRequest
 from ._create_job_group_export_task_response_body import CreateJobGroupExportTaskResponseBody
 from ._create_job_group_export_task_response import CreateJobGroupExportTaskResponse
+from ._create_number_request import CreateNumberRequest
+from ._create_number_response_body import CreateNumberResponseBody
+from ._create_number_response import CreateNumberResponse
 from ._create_script_request import CreateScriptRequest
 from ._create_script_response_body import CreateScriptResponseBody
 from ._create_script_response import CreateScriptResponse
@@ -82,6 +88,9 @@ from ._create_task_export_task_response import CreateTaskExportTaskResponse
 from ._create_tenant_key_request import CreateTenantKeyRequest
 from ._create_tenant_key_response_body import CreateTenantKeyResponseBody
 from ._create_tenant_key_response import CreateTenantKeyResponse
+from ._create_voice_clone_request import CreateVoiceCloneRequest
+from ._create_voice_clone_response_body import CreateVoiceCloneResponseBody
+from ._create_voice_clone_response import CreateVoiceCloneResponse
 from ._delete_agent_profiles_request import DeleteAgentProfilesRequest
 from ._delete_agent_profiles_shrink_request import DeleteAgentProfilesShrinkRequest
 from ._delete_agent_profiles_response_body import DeleteAgentProfilesResponseBody
@@ -103,6 +112,9 @@ from ._delete_contact_block_list_response import DeleteContactBlockListResponse
 from ._delete_contact_white_list_request import DeleteContactWhiteListRequest
 from ._delete_contact_white_list_response_body import DeleteContactWhiteListResponseBody
 from ._delete_contact_white_list_response import DeleteContactWhiteListResponse
+from ._delete_custom_script_template_request import DeleteCustomScriptTemplateRequest
+from ._delete_custom_script_template_response_body import DeleteCustomScriptTemplateResponseBody
+from ._delete_custom_script_template_response import DeleteCustomScriptTemplateResponse
 from ._delete_dialogue_flow_request import DeleteDialogueFlowRequest
 from ._delete_dialogue_flow_response_body import DeleteDialogueFlowResponseBody
 from ._delete_dialogue_flow_response import DeleteDialogueFlowResponse
@@ -130,6 +142,9 @@ from ._delete_script_recording_response import DeleteScriptRecordingResponse
 from ._delete_script_waveform_request import DeleteScriptWaveformRequest
 from ._delete_script_waveform_response_body import DeleteScriptWaveformResponseBody
 from ._delete_script_waveform_response import DeleteScriptWaveformResponse
+from ._delete_voice_clone_request import DeleteVoiceCloneRequest
+from ._delete_voice_clone_response_body import DeleteVoiceCloneResponseBody
+from ._delete_voice_clone_response import DeleteVoiceCloneResponse
 from ._describe_beebot_intent_request import DescribeBeebotIntentRequest
 from ._describe_beebot_intent_response_body import DescribeBeebotIntentResponseBody
 from ._describe_beebot_intent_response import DescribeBeebotIntentResponse
@@ -294,6 +309,9 @@ from ._list_beebot_intent_user_say_response import ListBeebotIntentUserSayRespon
 from ._list_chatbot_instances_request import ListChatbotInstancesRequest
 from ._list_chatbot_instances_response_body import ListChatbotInstancesResponseBody
 from ._list_chatbot_instances_response import ListChatbotInstancesResponse
+from ._list_custom_script_templates_request import ListCustomScriptTemplatesRequest
+from ._list_custom_script_templates_response_body import ListCustomScriptTemplatesResponseBody
+from ._list_custom_script_templates_response import ListCustomScriptTemplatesResponse
 from ._list_dialogue_flows_request import ListDialogueFlowsRequest
 from ._list_dialogue_flows_response_body import ListDialogueFlowsResponseBody
 from ._list_dialogue_flows_response import ListDialogueFlowsResponse
@@ -348,12 +366,18 @@ from ._list_script_voice_configs_response import ListScriptVoiceConfigsResponse
 from ._list_scripts_request import ListScriptsRequest
 from ._list_scripts_response_body import ListScriptsResponseBody
 from ._list_scripts_response import ListScriptsResponse
+from ._list_sip_trunks_request import ListSipTrunksRequest
+from ._list_sip_trunks_response_body import ListSipTrunksResponseBody
+from ._list_sip_trunks_response import ListSipTrunksResponse
 from ._list_tag_resources_request import ListTagResourcesRequest
 from ._list_tag_resources_response_body import ListTagResourcesResponseBody
 from ._list_tag_resources_response import ListTagResourcesResponse
 from ._list_tags_request import ListTagsRequest
 from ._list_tags_response_body import ListTagsResponseBody
 from ._list_tags_response import ListTagsResponse
+from ._list_voice_clone_request import ListVoiceCloneRequest
+from ._list_voice_clone_response_body import ListVoiceCloneResponseBody
+from ._list_voice_clone_response import ListVoiceCloneResponse
 from ._modify_agent_profile_request import ModifyAgentProfileRequest
 from ._modify_agent_profile_shrink_request import ModifyAgentProfileShrinkRequest
 from ._modify_agent_profile_response_body import ModifyAgentProfileResponseBody
@@ -409,6 +433,9 @@ from ._modify_ttsconfig_response import ModifyTTSConfigResponse
 from ._modify_tag_groups_request import ModifyTagGroupsRequest
 from ._modify_tag_groups_response_body import ModifyTagGroupsResponseBody
 from ._modify_tag_groups_response import ModifyTagGroupsResponse
+from ._modify_voice_clone_request import ModifyVoiceCloneRequest
+from ._modify_voice_clone_response_body import ModifyVoiceCloneResponseBody
+from ._modify_voice_clone_response import ModifyVoiceCloneResponse
 from ._publish_script_request import PublishScriptRequest
 from ._publish_script_response_body import PublishScriptResponseBody
 from ._publish_script_response import PublishScriptResponse
@@ -472,6 +499,9 @@ from ._submit_batch_jobs_response import SubmitBatchJobsResponse
 from ._submit_recording_request import SubmitRecordingRequest
 from ._submit_recording_response_body import SubmitRecordingResponseBody
 from ._submit_recording_response import SubmitRecordingResponse
+from ._submit_script_pre_review_result_request import SubmitScriptPreReviewResultRequest
+from ._submit_script_pre_review_result_response_body import SubmitScriptPreReviewResultResponseBody
+from ._submit_script_pre_review_result_response import SubmitScriptPreReviewResultResponse
 from ._submit_script_review_request import SubmitScriptReviewRequest
 from ._submit_script_review_response_body import SubmitScriptReviewResponseBody
 from ._submit_script_review_response import SubmitScriptReviewResponse
@@ -519,6 +549,7 @@ from ._create_job_group_response_body import CreateJobGroupResponseBodyJobGroupR
 from ._create_job_group_response_body import CreateJobGroupResponseBodyJobGroupStrategyWorkingTime
 from ._create_job_group_response_body import CreateJobGroupResponseBodyJobGroupStrategy
 from ._create_job_group_response_body import CreateJobGroupResponseBodyJobGroup
+from ._create_number_request import CreateNumberRequestNumbers
 from ._create_script_response_body import CreateScriptResponseBodyScript
 from ._describe_beebot_intent_response_body import DescribeBeebotIntentResponseBodyIntent
 from ._describe_dialogue_node_statistics_response_body import DescribeDialogueNodeStatisticsResponseBodyHangUpDialogueNodes
@@ -601,6 +632,8 @@ from ._list_beebot_intent_response_body import ListBeebotIntentResponseBodyInten
 from ._list_beebot_intent_lgf_response_body import ListBeebotIntentLgfResponseBodyLgfs
 from ._list_beebot_intent_user_say_response_body import ListBeebotIntentUserSayResponseBodyUserSays
 from ._list_chatbot_instances_response_body import ListChatbotInstancesResponseBodyBots
+from ._list_custom_script_templates_response_body import ListCustomScriptTemplatesResponseBodyDataList
+from ._list_custom_script_templates_response_body import ListCustomScriptTemplatesResponseBodyData
 from ._list_dialogue_flows_response_body import ListDialogueFlowsResponseBodyDialogueFlows
 from ._list_download_tasks_response_body import ListDownloadTasksResponseBodyDownloadTasksListDownloadTaskFiles
 from ._list_download_tasks_response_body import ListDownloadTasksResponseBodyDownloadTasksList
@@ -657,10 +690,14 @@ from ._list_script_voice_configs_response_body import ListScriptVoiceConfigsResp
 from ._list_scripts_response_body import ListScriptsResponseBodyScriptsListNluProfile
 from ._list_scripts_response_body import ListScriptsResponseBodyScriptsList
 from ._list_scripts_response_body import ListScriptsResponseBodyScripts
+from ._list_sip_trunks_response_body import ListSipTrunksResponseBodyListIps
+from ._list_sip_trunks_response_body import ListSipTrunksResponseBodyList
 from ._list_tag_resources_request import ListTagResourcesRequestTag
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
 from ._list_tags_response_body import ListTagsResponseBodyTagGroups
 from ._list_tags_response_body import ListTagsResponseBodyTags
+from ._list_voice_clone_response_body import ListVoiceCloneResponseBodyDataVoiceClones
+from ._list_voice_clone_response_body import ListVoiceCloneResponseBodyData
 from ._modify_agent_profile_response_body import ModifyAgentProfileResponseBodyData
 from ._modify_annotation_mission_response_body import ModifyAnnotationMissionResponseBodyData
 from ._modify_batch_jobs_response_body import ModifyBatchJobsResponseBodyJobGroupStrategyWorkingTime
@@ -715,6 +752,7 @@ from ._search_task_response_body import SearchTaskResponseBodySearchTaskInfoList
 from ._search_task_response_body import SearchTaskResponseBodySearchTaskInfoList
 from ._start_job_response_body import StartJobResponseBodyCallIds
 from ._start_job_response_body import StartJobResponseBodyTaskIds
+from ._submit_script_pre_review_result_response_body import SubmitScriptPreReviewResultResponseBodyScript
 from ._tag_resources_request import TagResourcesRequestTag
 from ._withdraw_script_review_response_body import WithdrawScriptReviewResponseBodyScript
 
@@ -757,6 +795,9 @@ __all__ = [
     CreateBeebotIntentUserSayShrinkRequest,
     CreateBeebotIntentUserSayResponseBody,
     CreateBeebotIntentUserSayResponse,
+    CreateCustomScriptTemplateRequest,
+    CreateCustomScriptTemplateResponseBody,
+    CreateCustomScriptTemplateResponse,
     CreateDialogueFlowRequest,
     CreateDialogueFlowResponseBody,
     CreateDialogueFlowResponse,
@@ -784,6 +825,9 @@ __all__ = [
     CreateJobGroupExportTaskRequest,
     CreateJobGroupExportTaskResponseBody,
     CreateJobGroupExportTaskResponse,
+    CreateNumberRequest,
+    CreateNumberResponseBody,
+    CreateNumberResponse,
     CreateScriptRequest,
     CreateScriptResponseBody,
     CreateScriptResponse,
@@ -799,6 +843,9 @@ __all__ = [
     CreateTenantKeyRequest,
     CreateTenantKeyResponseBody,
     CreateTenantKeyResponse,
+    CreateVoiceCloneRequest,
+    CreateVoiceCloneResponseBody,
+    CreateVoiceCloneResponse,
     DeleteAgentProfilesRequest,
     DeleteAgentProfilesShrinkRequest,
     DeleteAgentProfilesResponseBody,
@@ -820,6 +867,9 @@ __all__ = [
     DeleteContactWhiteListRequest,
     DeleteContactWhiteListResponseBody,
     DeleteContactWhiteListResponse,
+    DeleteCustomScriptTemplateRequest,
+    DeleteCustomScriptTemplateResponseBody,
+    DeleteCustomScriptTemplateResponse,
     DeleteDialogueFlowRequest,
     DeleteDialogueFlowResponseBody,
     DeleteDialogueFlowResponse,
@@ -847,6 +897,9 @@ __all__ = [
     DeleteScriptWaveformRequest,
     DeleteScriptWaveformResponseBody,
     DeleteScriptWaveformResponse,
+    DeleteVoiceCloneRequest,
+    DeleteVoiceCloneResponseBody,
+    DeleteVoiceCloneResponse,
     DescribeBeebotIntentRequest,
     DescribeBeebotIntentResponseBody,
     DescribeBeebotIntentResponse,
@@ -1011,6 +1064,9 @@ __all__ = [
     ListChatbotInstancesRequest,
     ListChatbotInstancesResponseBody,
     ListChatbotInstancesResponse,
+    ListCustomScriptTemplatesRequest,
+    ListCustomScriptTemplatesResponseBody,
+    ListCustomScriptTemplatesResponse,
     ListDialogueFlowsRequest,
     ListDialogueFlowsResponseBody,
     ListDialogueFlowsResponse,
@@ -1065,12 +1121,18 @@ __all__ = [
     ListScriptsRequest,
     ListScriptsResponseBody,
     ListScriptsResponse,
+    ListSipTrunksRequest,
+    ListSipTrunksResponseBody,
+    ListSipTrunksResponse,
     ListTagResourcesRequest,
     ListTagResourcesResponseBody,
     ListTagResourcesResponse,
     ListTagsRequest,
     ListTagsResponseBody,
     ListTagsResponse,
+    ListVoiceCloneRequest,
+    ListVoiceCloneResponseBody,
+    ListVoiceCloneResponse,
     ModifyAgentProfileRequest,
     ModifyAgentProfileShrinkRequest,
     ModifyAgentProfileResponseBody,
@@ -1126,6 +1188,9 @@ __all__ = [
     ModifyTagGroupsRequest,
     ModifyTagGroupsResponseBody,
     ModifyTagGroupsResponse,
+    ModifyVoiceCloneRequest,
+    ModifyVoiceCloneResponseBody,
+    ModifyVoiceCloneResponse,
     PublishScriptRequest,
     PublishScriptResponseBody,
     PublishScriptResponse,
@@ -1189,6 +1254,9 @@ __all__ = [
     SubmitRecordingRequest,
     SubmitRecordingResponseBody,
     SubmitRecordingResponse,
+    SubmitScriptPreReviewResultRequest,
+    SubmitScriptPreReviewResultResponseBody,
+    SubmitScriptPreReviewResultResponse,
     SubmitScriptReviewRequest,
     SubmitScriptReviewResponseBody,
     SubmitScriptReviewResponse,
@@ -1236,6 +1304,7 @@ __all__ = [
     CreateJobGroupResponseBodyJobGroupStrategyWorkingTime,
     CreateJobGroupResponseBodyJobGroupStrategy,
     CreateJobGroupResponseBodyJobGroup,
+    CreateNumberRequestNumbers,
     CreateScriptResponseBodyScript,
     DescribeBeebotIntentResponseBodyIntent,
     DescribeDialogueNodeStatisticsResponseBodyHangUpDialogueNodes,
@@ -1318,6 +1387,8 @@ __all__ = [
     ListBeebotIntentLgfResponseBodyLgfs,
     ListBeebotIntentUserSayResponseBodyUserSays,
     ListChatbotInstancesResponseBodyBots,
+    ListCustomScriptTemplatesResponseBodyDataList,
+    ListCustomScriptTemplatesResponseBodyData,
     ListDialogueFlowsResponseBodyDialogueFlows,
     ListDownloadTasksResponseBodyDownloadTasksListDownloadTaskFiles,
     ListDownloadTasksResponseBodyDownloadTasksList,
@@ -1374,10 +1445,14 @@ __all__ = [
     ListScriptsResponseBodyScriptsListNluProfile,
     ListScriptsResponseBodyScriptsList,
     ListScriptsResponseBodyScripts,
+    ListSipTrunksResponseBodyListIps,
+    ListSipTrunksResponseBodyList,
     ListTagResourcesRequestTag,
     ListTagResourcesResponseBodyTagResources,
     ListTagsResponseBodyTagGroups,
     ListTagsResponseBodyTags,
+    ListVoiceCloneResponseBodyDataVoiceClones,
+    ListVoiceCloneResponseBodyData,
     ModifyAgentProfileResponseBodyData,
     ModifyAnnotationMissionResponseBodyData,
     ModifyBatchJobsResponseBodyJobGroupStrategyWorkingTime,
@@ -1432,6 +1507,7 @@ __all__ = [
     SearchTaskResponseBodySearchTaskInfoList,
     StartJobResponseBodyCallIds,
     StartJobResponseBodyTaskIds,
+    SubmitScriptPreReviewResultResponseBodyScript,
     TagResourcesRequestTag,
     WithdrawScriptReviewResponseBodyScript
 ]

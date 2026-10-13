@@ -23,6 +23,7 @@ class GetContactWhiteListRequest(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
+        # The search condition for the outbound whitelist.
         self.search_pattern = search_pattern
 
     def validate(self):

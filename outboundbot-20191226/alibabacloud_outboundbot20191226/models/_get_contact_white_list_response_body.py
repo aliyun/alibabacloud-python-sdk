@@ -19,11 +19,11 @@ class GetContactWhiteListResponseBody(DaraModel):
     ):
         # The API status code.
         self.code = code
-        # The contact list.
+        # The contact whitelist.
         self.contact_whitelist_list = contact_whitelist_list
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The API response message.
+        # The API message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -90,7 +90,7 @@ class GetContactWhiteListResponseBodyContactWhitelistList(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The contact list.
+        # The contact whitelist.
         self.list = list
         # The page number.
         self.page_number = page_number
@@ -159,7 +159,7 @@ class GetContactWhiteListResponseBodyContactWhitelistListList(DaraModel):
     ):
         # The whitelist ID.
         self.contact_white_list_id = contact_white_list_id
-        # The creation time.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.creation_time = creation_time
         # The creator.
         self.creator = creator
@@ -171,7 +171,7 @@ class GetContactWhiteListResponseBodyContactWhitelistListList(DaraModel):
         self.operator = operator
         # The phone number.
         self.phone_number = phone_number
-        # The remarks.
+        # The remark.
         self.remark = remark
 
     def validate(self):

@@ -15,17 +15,17 @@ class SaveAnnotationMissionTagInfoListRequest(DaraModel):
         instance_id: str = None,
         reset: bool = None,
     ):
-        # The list of tags.
+        # The tag list.
         # 
-        # > This parameter has the same function as AnnotationMissionTagInfoListJsonString. Specify either this parameter or AnnotationMissionTagInfoListJsonString.
+        # > This parameter is the same as the AnnotationMissionTagInfoListJsonString parameter. Specify either one.
         self.annotation_mission_tag_info_list = annotation_mission_tag_info_list
-        # The JSON-formatted data of the tags.
+        # The tag JSON data.
         # 
-        # > The parameters in the JSON string are the same as those in AnnotationMissionTagInfoList. Specify either this parameter or AnnotationMissionTagInfoList.
+        # > The parameters in the JSON are the same as those in the AnnotationMissionTagInfoList parameter. Specify either this parameter or AnnotationMissionTagInfoList.
         self.annotation_mission_tag_info_list_json_string = annotation_mission_tag_info_list_json_string
         # The instance ID.
         self.instance_id = instance_id
-        # Indicates whether to restore the default tag values.
+        # Specifies whether to restore the default tag values.
         self.reset = reset
 
     def validate(self):
@@ -90,9 +90,9 @@ class SaveAnnotationMissionTagInfoListRequestAnnotationMissionTagInfoList(DaraMo
         self.annotation_mission_tag_info_id = annotation_mission_tag_info_id
         # The tag name.
         self.annotation_mission_tag_info_name = annotation_mission_tag_info_name
-        # Indicates whether to delete the tag.
+        # Specifies whether to delete the tag.
         # 
-        # > Set this parameter to true to delete the tag. Set it to false to add the tag.
+        # > Set this parameter to true to delete the tag, or false to add the tag.
         self.delete = delete
         # The instance ID.
         self.instance_id = instance_id

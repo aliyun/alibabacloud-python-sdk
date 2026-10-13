@@ -11,17 +11,17 @@ class ListChatbotInstancesRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # Workspace access key for the chatbot.
+        # The access key of the chatbot workspace.
         # 
-        # > Get this key by calling ListChatbotAgents. If you omit this parameter, the API returns instances from all workspaces.
+        # > You can obtain the value by calling the ListChatbotAgents operation. If you leave this parameter empty, chatbots in all workspaces are queried.
         self.agent_key = agent_key
-        # Page number.
+        # The page number.
         # 
         # This parameter is required.
         self.page_number = page_number
-        # Number of items per page.
+        # The number of entries per page.
         # 
-        # > The value must be less than or equal to 50.
+        # > The value of this parameter must be less than or equal to 50.
         # 
         # This parameter is required.
         self.page_size = page_size

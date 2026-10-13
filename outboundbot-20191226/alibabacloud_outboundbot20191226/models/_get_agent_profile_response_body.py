@@ -25,7 +25,7 @@ class GetAgentProfileResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -103,15 +103,15 @@ class GetAgentProfileResponseBodyData(DaraModel):
         update_time: str = None,
         variables_json: str = None,
     ):
-        # The ID of the agent configuration.
+        # The agent profile ID.
         self.agent_profile_id = agent_profile_id
-        # The ID of the agent configuration template.
+        # The agent profile template ID.
         self.agent_profile_template_id = agent_profile_template_id
-        # The agent type.
+        # agent type
         self.agent_type = agent_type
         # The API plugin configuration.
         self.api_plugin_json = api_plugin_json
-        # The time when the configuration was created.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The description.
         self.description = description
@@ -119,25 +119,20 @@ class GetAgentProfileResponseBodyData(DaraModel):
         self.instance_id = instance_id
         # The instruction configuration.
         self.instruction_json = instruction_json
-        # The description of the labels.
+        # The label descriptions.
         self.labels_json = labels_json
         # The model ID.
         self.model = model
         # The model configuration.
         self.model_config = model_config
-        # The Natural Language Understanding (NLU) configuration. The parameters are described as follows:
-        # 
-        # - chatbotInstanceId: The instance ID of the ChatMe LLM agent.
-        # 
-        # - faqCategoryIds: The IDs of the attached FAQ categories.
-        # 
-        # - llmAgentId: The ID of the ChatMe LLM workspace.
-        # 
-        # - llmAgentKey: The key of the ChatMe LLM workspace.
-        # 
-        # - llmAgentInstanceId: The instance ID of the ChatMe LLM workspace.
+        # The NLU configuration. Parameter settings:
+        # - chatbotInstanceId: the instance ID of the Chatbot large language model.
+        # - faqCategoryIds: the IDs of the attached FAQ categories.
+        # - llmAgentId: the workspace ID of the Chatbot large language model.
+        # - llmAgentKey: the workspace key of the Chatbot large language model.
+        # - llmAgentInstanceId: the workspace instance ID of the Chatbot large language model.
         self.nlu_config_json = nlu_config_json
-        # The prompt for the professional pattern.
+        # The prompt in professional mode.
         self.prompt = prompt
         # The agent configuration.
         self.prompt_json = prompt_json
@@ -147,7 +142,7 @@ class GetAgentProfileResponseBodyData(DaraModel):
         self.script_id = script_id
         # Indicates whether the template is a system template.
         self.system = system
-        # The time when the configuration was last modified.
+        # The update time. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
         # The variable configuration.
         self.variables_json = variables_json

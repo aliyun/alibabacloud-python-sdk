@@ -23,19 +23,19 @@ class ListBeebotIntentUserSayResponseBody(DaraModel):
     ):
         # The internal request ID.
         self.beebot_request_id = beebot_request_id
-        # The status code of the API.
+        # The API status code.
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The message returned for the API call.
+        # The API message.
         self.message = message
         # The page number.
         self.page_number = page_number
-        # The number of entries displayed per page.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
         # The total number of entries.
         self.total_count = total_count
@@ -133,13 +133,13 @@ class ListBeebotIntentUserSayResponseBodyUserSays(DaraModel):
         modify_time: str = None,
         user_say_id: str = None,
     ):
-        # The content of the utterance.
+        # The utterance content.
         self.content = content
-        # The time when the utterance was created.
+        # The creation time. The format is YYYY-MM-DD HH:mm:ss.+ZZZZ, where +ZZZZ indicates the time zone offset.
         self.create_time = create_time
         # The intent ID.
         self.intent_id = intent_id
-        # The time when the utterance was last modified.
+        # The modification time. The format is YYYY-MM-DD HH:mm:ss.+ZZZZ, where +ZZZZ indicates the time zone offset.
         self.modify_time = modify_time
         # The utterance ID.
         self.user_say_id = user_say_id

@@ -18,19 +18,19 @@ class GetRealtimeConcurrencyReportResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # API status code
+        # The API status code.
         self.code = code
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Response message
+        # The response message.
         self.message = message
-        # Report generation time
+        # The time when the report was generated. The value is a UNIX timestamp in milliseconds.
         self.report_date = report_date
-        # Report details.
+        # The report details.
         self.reports = reports
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Is successful
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -99,13 +99,13 @@ class GetRealtimeConcurrencyReportResponseBodyReports(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # Report collection data
+        # The list of reports.
         self.list = list
-        # Page number
+        # The page number.
         self.page_number = page_number
-        # Page size
+        # The number of entries per page.
         self.page_size = page_size
-        # Total count
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -166,21 +166,21 @@ class GetRealtimeConcurrencyReportResponseBodyReportsList(DaraModel):
         occupied_concurrency_count: int = None,
         report_date: int = None,
     ):
-        # Instance ID
+        # The instance ID.
         self.instance_id = instance_id
-        # Instance name
+        # The instance name.
         self.instance_name = instance_name
-        # Job ID
+        # The job ID.
         self.job_group_id = job_group_id
-        # Job name.
+        # The job name.
         self.job_group_name = job_group_name
-        # Maximum configured concurrency limit
+        # The configured maximum concurrency limit.
         self.max_concurrency_limit = max_concurrency_limit
-        # Minimum concurrency limit for the job
+        # The minimum concurrency limit for the job.
         self.min_concurrency_limit = min_concurrency_limit
-        # Occupied concurrency value
+        # The occupied concurrency.
         self.occupied_concurrency_count = occupied_concurrency_count
-        # Report generation time
+        # The time when the report was generated. The value is a UNIX timestamp in milliseconds.
         self.report_date = report_date
 
     def validate(self):

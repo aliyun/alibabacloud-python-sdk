@@ -11,13 +11,13 @@ class GetAnnotationMissionTagInfoListRequest(DaraModel):
         page_index: int = None,
         page_size: int = None,
     ):
-        # Instance ID
+        # The instance ID.
         # 
-        # > If you do not specify this parameter, the system returns the default tags for the tenant.
+        # > If this parameter is not specified, the default tags of the tenant are returned.
         self.instance_id = instance_id
-        # Page number
+        # The page number.
         self.page_index = page_index
-        # Number of records per page
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):

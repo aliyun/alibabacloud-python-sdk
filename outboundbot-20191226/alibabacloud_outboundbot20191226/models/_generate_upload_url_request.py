@@ -10,9 +10,7 @@ class GenerateUploadUrlRequest(DaraModel):
         file_name: str = None,
         key: str = None,
     ):
-        # File name, including the extension
         self.file_name = file_name
-        # Upload URL key
         self.key = key
 
     def validate(self):

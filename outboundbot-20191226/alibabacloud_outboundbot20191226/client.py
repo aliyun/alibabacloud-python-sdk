@@ -21,9 +21,6 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'cn-shanghai': 'outboundbot.cn-shanghai.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('outboundbot', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -1153,6 +1150,104 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_beebot_intent_user_say_with_options_async(request, runtime)
 
+    def create_custom_script_template_with_options(
+        self,
+        request: main_models.CreateCustomScriptTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCustomScriptTemplateResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.labels_json):
+            body['LabelsJson'] = request.labels_json
+        if not DaraCore.is_null(request.model):
+            body['Model'] = request.model
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.prompt):
+            body['Prompt'] = request.prompt
+        if not DaraCore.is_null(request.prompt_json):
+            body['PromptJson'] = request.prompt_json
+        if not DaraCore.is_null(request.script_id):
+            body['ScriptId'] = request.script_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCustomScriptTemplate',
+            version = '2019-12-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCustomScriptTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_custom_script_template_with_options_async(
+        self,
+        request: main_models.CreateCustomScriptTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCustomScriptTemplateResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.labels_json):
+            body['LabelsJson'] = request.labels_json
+        if not DaraCore.is_null(request.model):
+            body['Model'] = request.model
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.prompt):
+            body['Prompt'] = request.prompt
+        if not DaraCore.is_null(request.prompt_json):
+            body['PromptJson'] = request.prompt_json
+        if not DaraCore.is_null(request.script_id):
+            body['ScriptId'] = request.script_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCustomScriptTemplate',
+            version = '2019-12-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCustomScriptTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_custom_script_template(
+        self,
+        request: main_models.CreateCustomScriptTemplateRequest,
+    ) -> main_models.CreateCustomScriptTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.create_custom_script_template_with_options(request, runtime)
+
+    async def create_custom_script_template_async(
+        self,
+        request: main_models.CreateCustomScriptTemplateRequest,
+    ) -> main_models.CreateCustomScriptTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.create_custom_script_template_with_options_async(request, runtime)
+
     def create_dialogue_flow_with_options(
         self,
         request: main_models.CreateDialogueFlowRequest,
@@ -1915,6 +2010,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_job_group_export_task_with_options_async(request, runtime)
 
+    def create_number_with_options(
+        self,
+        request: main_models.CreateNumberRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateNumberResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.numbers):
+            query['Numbers'] = request.numbers
+        if not DaraCore.is_null(request.trunk_id):
+            query['TrunkId'] = request.trunk_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateNumber',
+            version = '2019-12-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateNumberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_number_with_options_async(
+        self,
+        request: main_models.CreateNumberRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateNumberResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.numbers):
+            query['Numbers'] = request.numbers
+        if not DaraCore.is_null(request.trunk_id):
+            query['TrunkId'] = request.trunk_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateNumber',
+            version = '2019-12-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateNumberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_number(
+        self,
+        request: main_models.CreateNumberRequest,
+    ) -> main_models.CreateNumberResponse:
+        runtime = RuntimeOptions()
+        return self.create_number_with_options(request, runtime)
+
+    async def create_number_async(
+        self,
+        request: main_models.CreateNumberRequest,
+    ) -> main_models.CreateNumberResponse:
+        runtime = RuntimeOptions()
+        return await self.create_number_with_options_async(request, runtime)
+
     def create_script_with_options(
         self,
         request: main_models.CreateScriptRequest,
@@ -2354,6 +2523,88 @@ class Client(OpenApiClient):
     ) -> main_models.CreateTenantKeyResponse:
         runtime = RuntimeOptions()
         return await self.create_tenant_key_with_options_async(request, runtime)
+
+    def create_voice_clone_with_options(
+        self,
+        request: main_models.CreateVoiceCloneRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateVoiceCloneResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_id):
+            query['FileId'] = request.file_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.model):
+            query['Model'] = request.model
+        if not DaraCore.is_null(request.voice_name):
+            query['VoiceName'] = request.voice_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateVoiceClone',
+            version = '2019-12-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateVoiceCloneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_voice_clone_with_options_async(
+        self,
+        request: main_models.CreateVoiceCloneRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateVoiceCloneResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_id):
+            query['FileId'] = request.file_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.model):
+            query['Model'] = request.model
+        if not DaraCore.is_null(request.voice_name):
+            query['VoiceName'] = request.voice_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateVoiceClone',
+            version = '2019-12-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateVoiceCloneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_voice_clone(
+        self,
+        request: main_models.CreateVoiceCloneRequest,
+    ) -> main_models.CreateVoiceCloneResponse:
+        runtime = RuntimeOptions()
+        return self.create_voice_clone_with_options(request, runtime)
+
+    async def create_voice_clone_async(
+        self,
+        request: main_models.CreateVoiceCloneRequest,
+    ) -> main_models.CreateVoiceCloneResponse:
+        runtime = RuntimeOptions()
+        return await self.create_voice_clone_with_options_async(request, runtime)
 
     def delete_agent_profiles_with_options(
         self,
@@ -2884,6 +3135,80 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteContactWhiteListResponse:
         runtime = RuntimeOptions()
         return await self.delete_contact_white_list_with_options_async(request, runtime)
+
+    def delete_custom_script_template_with_options(
+        self,
+        request: main_models.DeleteCustomScriptTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCustomScriptTemplateResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_profile_id):
+            body['AgentProfileId'] = request.agent_profile_id
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCustomScriptTemplate',
+            version = '2019-12-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCustomScriptTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_custom_script_template_with_options_async(
+        self,
+        request: main_models.DeleteCustomScriptTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCustomScriptTemplateResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_profile_id):
+            body['AgentProfileId'] = request.agent_profile_id
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCustomScriptTemplate',
+            version = '2019-12-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCustomScriptTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_custom_script_template(
+        self,
+        request: main_models.DeleteCustomScriptTemplateRequest,
+    ) -> main_models.DeleteCustomScriptTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.delete_custom_script_template_with_options(request, runtime)
+
+    async def delete_custom_script_template_async(
+        self,
+        request: main_models.DeleteCustomScriptTemplateRequest,
+    ) -> main_models.DeleteCustomScriptTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_custom_script_template_with_options_async(request, runtime)
 
     def delete_dialogue_flow_with_options(
         self,
@@ -3566,6 +3891,80 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteScriptWaveformResponse:
         runtime = RuntimeOptions()
         return await self.delete_script_waveform_with_options_async(request, runtime)
+
+    def delete_voice_clone_with_options(
+        self,
+        request: main_models.DeleteVoiceCloneRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteVoiceCloneResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.voice_id):
+            query['VoiceId'] = request.voice_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteVoiceClone',
+            version = '2019-12-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteVoiceCloneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_voice_clone_with_options_async(
+        self,
+        request: main_models.DeleteVoiceCloneRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteVoiceCloneResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.voice_id):
+            query['VoiceId'] = request.voice_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteVoiceClone',
+            version = '2019-12-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteVoiceCloneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_voice_clone(
+        self,
+        request: main_models.DeleteVoiceCloneRequest,
+    ) -> main_models.DeleteVoiceCloneResponse:
+        runtime = RuntimeOptions()
+        return self.delete_voice_clone_with_options(request, runtime)
+
+    async def delete_voice_clone_async(
+        self,
+        request: main_models.DeleteVoiceCloneRequest,
+    ) -> main_models.DeleteVoiceCloneResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_voice_clone_with_options_async(request, runtime)
 
     def describe_beebot_intent_with_options(
         self,
@@ -7849,6 +8248,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_chatbot_instances_with_options_async(request, runtime)
 
+    def list_custom_script_templates_with_options(
+        self,
+        request: main_models.ListCustomScriptTemplatesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCustomScriptTemplatesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCustomScriptTemplates',
+            version = '2019-12-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCustomScriptTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_custom_script_templates_with_options_async(
+        self,
+        request: main_models.ListCustomScriptTemplatesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCustomScriptTemplatesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCustomScriptTemplates',
+            version = '2019-12-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCustomScriptTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_custom_script_templates(
+        self,
+        request: main_models.ListCustomScriptTemplatesRequest,
+    ) -> main_models.ListCustomScriptTemplatesResponse:
+        runtime = RuntimeOptions()
+        return self.list_custom_script_templates_with_options(request, runtime)
+
+    async def list_custom_script_templates_async(
+        self,
+        request: main_models.ListCustomScriptTemplatesRequest,
+    ) -> main_models.ListCustomScriptTemplatesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_custom_script_templates_with_options_async(request, runtime)
+
     def list_dialogue_flows_with_options(
         self,
         request: main_models.ListDialogueFlowsRequest,
@@ -9325,6 +9802,66 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_scripts_with_options_async(request, runtime)
 
+    def list_sip_trunks_with_options(
+        self,
+        request: main_models.ListSipTrunksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSipTrunksResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'ListSipTrunks',
+            version = '2019-12-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSipTrunksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_sip_trunks_with_options_async(
+        self,
+        request: main_models.ListSipTrunksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSipTrunksResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'ListSipTrunks',
+            version = '2019-12-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSipTrunksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_sip_trunks(
+        self,
+        request: main_models.ListSipTrunksRequest,
+    ) -> main_models.ListSipTrunksResponse:
+        runtime = RuntimeOptions()
+        return self.list_sip_trunks_with_options(request, runtime)
+
+    async def list_sip_trunks_async(
+        self,
+        request: main_models.ListSipTrunksRequest,
+    ) -> main_models.ListSipTrunksResponse:
+        runtime = RuntimeOptions()
+        return await self.list_sip_trunks_with_options_async(request, runtime)
+
     def list_tag_resources_with_options(
         self,
         request: main_models.ListTagResourcesRequest,
@@ -9484,6 +10021,88 @@ class Client(OpenApiClient):
     ) -> main_models.ListTagsResponse:
         runtime = RuntimeOptions()
         return await self.list_tags_with_options_async(request, runtime)
+
+    def list_voice_clone_with_options(
+        self,
+        request: main_models.ListVoiceCloneRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVoiceCloneResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVoiceClone',
+            version = '2019-12-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVoiceCloneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_voice_clone_with_options_async(
+        self,
+        request: main_models.ListVoiceCloneRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVoiceCloneResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVoiceClone',
+            version = '2019-12-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVoiceCloneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_voice_clone(
+        self,
+        request: main_models.ListVoiceCloneRequest,
+    ) -> main_models.ListVoiceCloneResponse:
+        runtime = RuntimeOptions()
+        return self.list_voice_clone_with_options(request, runtime)
+
+    async def list_voice_clone_async(
+        self,
+        request: main_models.ListVoiceCloneRequest,
+    ) -> main_models.ListVoiceCloneResponse:
+        runtime = RuntimeOptions()
+        return await self.list_voice_clone_with_options_async(request, runtime)
 
     def modify_agent_profile_with_options(
         self,
@@ -11146,6 +11765,88 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyTagGroupsResponse:
         runtime = RuntimeOptions()
         return await self.modify_tag_groups_with_options_async(request, runtime)
+
+    def modify_voice_clone_with_options(
+        self,
+        request: main_models.ModifyVoiceCloneRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyVoiceCloneResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.voice_id):
+            query['VoiceId'] = request.voice_id
+        if not DaraCore.is_null(request.voice_name):
+            query['VoiceName'] = request.voice_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyVoiceClone',
+            version = '2019-12-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyVoiceCloneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_voice_clone_with_options_async(
+        self,
+        request: main_models.ModifyVoiceCloneRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyVoiceCloneResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.voice_id):
+            query['VoiceId'] = request.voice_id
+        if not DaraCore.is_null(request.voice_name):
+            query['VoiceName'] = request.voice_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyVoiceClone',
+            version = '2019-12-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyVoiceCloneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_voice_clone(
+        self,
+        request: main_models.ModifyVoiceCloneRequest,
+    ) -> main_models.ModifyVoiceCloneResponse:
+        runtime = RuntimeOptions()
+        return self.modify_voice_clone_with_options(request, runtime)
+
+    async def modify_voice_clone_async(
+        self,
+        request: main_models.ModifyVoiceCloneRequest,
+    ) -> main_models.ModifyVoiceCloneResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_voice_clone_with_options_async(request, runtime)
 
     def publish_script_with_options(
         self,
@@ -12920,6 +13621,88 @@ class Client(OpenApiClient):
     ) -> main_models.SubmitRecordingResponse:
         runtime = RuntimeOptions()
         return await self.submit_recording_with_options_async(request, runtime)
+
+    def submit_script_pre_review_result_with_options(
+        self,
+        request: main_models.SubmitScriptPreReviewResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitScriptPreReviewResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.record_id):
+            query['RecordId'] = request.record_id
+        if not DaraCore.is_null(request.reject_reason):
+            query['RejectReason'] = request.reject_reason
+        if not DaraCore.is_null(request.review_result):
+            query['ReviewResult'] = request.review_result
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitScriptPreReviewResult',
+            version = '2019-12-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitScriptPreReviewResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_script_pre_review_result_with_options_async(
+        self,
+        request: main_models.SubmitScriptPreReviewResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitScriptPreReviewResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.record_id):
+            query['RecordId'] = request.record_id
+        if not DaraCore.is_null(request.reject_reason):
+            query['RejectReason'] = request.reject_reason
+        if not DaraCore.is_null(request.review_result):
+            query['ReviewResult'] = request.review_result
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitScriptPreReviewResult',
+            version = '2019-12-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitScriptPreReviewResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_script_pre_review_result(
+        self,
+        request: main_models.SubmitScriptPreReviewResultRequest,
+    ) -> main_models.SubmitScriptPreReviewResultResponse:
+        runtime = RuntimeOptions()
+        return self.submit_script_pre_review_result_with_options(request, runtime)
+
+    async def submit_script_pre_review_result_async(
+        self,
+        request: main_models.SubmitScriptPreReviewResultRequest,
+    ) -> main_models.SubmitScriptPreReviewResultResponse:
+        runtime = RuntimeOptions()
+        return await self.submit_script_pre_review_result_with_options_async(request, runtime)
 
     def submit_script_review_with_options(
         self,

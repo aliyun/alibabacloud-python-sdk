@@ -21,11 +21,11 @@ class ListScriptVariablesResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The returned message.
+        # The API message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # Indicates whether the request was successful.
         self.success = success
         # The list of variables.
         self.variables = variables

@@ -17,17 +17,19 @@ class SaveAnnotationMissionSessionListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code.
+        # The status code of the API operation.
         self.code = code
-        # The returned data.
+        # The data.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The returned message. If the request is successful, success is returned. If the request fails, an error code is returned.
+        # The additional information. If the request is successful, success is returned. If the request fails, a specific error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful. A value of true indicates success. A value of false indicates failure.
+        # Indicates whether the call is successful. Valid values:
+        # - true: The call is successful.
+        # - false: The call fails.
         self.success = success
 
     def validate(self):
@@ -90,13 +92,13 @@ class SaveAnnotationMissionSessionListResponseBodyData(DaraModel):
         save_annotation_mission_session_list_request: main_models.SaveAnnotationMissionSessionListResponseBodyDataSaveAnnotationMissionSessionListRequest = None,
         success: bool = None,
     ):
-        # The message returned for the operation.
+        # The message returned by the API operation.
         self.message = message
-        # The list of messages.
+        # The message list.
         self.message_list = message_list
         # The request result.
         self.save_annotation_mission_session_list_request = save_annotation_mission_session_list_request
-        # Indicates whether the operation was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -144,7 +146,7 @@ class SaveAnnotationMissionSessionListResponseBodyDataSaveAnnotationMissionSessi
         self,
         annotation_mission_session_list_json_string: str = None,
     ):
-        # The content of the script for the approval requests
+        # The script content of the approval application.
         self.annotation_mission_session_list_json_string = annotation_mission_session_list_json_string
 
     def validate(self):

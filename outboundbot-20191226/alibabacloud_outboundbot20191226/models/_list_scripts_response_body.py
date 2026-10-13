@@ -21,11 +21,11 @@ class ListScriptsResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The response message.
+        # The message returned by the API.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The script list.
+        # The list of scripts.
         self.scripts = scripts
         # Indicates whether the request was successful.
         self.success = success
@@ -90,7 +90,7 @@ class ListScriptsResponseBodyScripts(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The script array.
+        # The array of scripts.
         self.list = list
         # The page number.
         self.page_number = page_number
@@ -173,38 +173,39 @@ class ListScriptsResponseBodyScriptsList(DaraModel):
         update_time: int = None,
         agent_id: int = None,
     ):
-        # The access key of the robot business workspace.
+        # The access key of the robot workspace.
         self.agent_key = agent_key
-        # Indicates whether the robot business workspace is a large model workspace.
+        # Indicates whether the robot workspace is a large model workspace.
         self.agent_llm = agent_llm
+        # The chatbot ID.
         self.chat_bot_id = chat_bot_id
-        # The creation time.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The debug status.
         self.debug_status = debug_status
-        # Indicates whether the emotion recognition feature is enabled. This parameter is set to false for all large model scenarios.
+        # Indicates whether the emotion recognition configuration is enabled. This value is always false for large models.
         self.emotion_enable = emotion_enable
         # The industry.
         self.industry = industry
-        # Indicates whether the debug version is in draft state.
+        # Indicates whether the debug version is in the draft state.
         self.is_debug_drafted = is_debug_drafted
         # Indicates whether the script is a draft.
         self.is_drafted = is_drafted
         # Indicates whether the scenario is a preset scenario.
         self.is_preset = is_preset
-        # Indicates whether the long pause detection feature is enabled. This parameter is set to false for all large model scenarios.
+        # Indicates whether the long pause configuration is enabled. This value is always false for large models.
         self.long_wait_enable = long_wait_enable
-        # Indicates whether the filler phrase feature is enabled.
+        # Indicates whether the filler word configuration is enabled.
         self.mini_playback_enable = mini_playback_enable
-        # Indicates whether the graceful barge-in feature is enabled. This parameter is set to false for all large model scenarios.
+        # Indicates whether the graceful barge-in configuration is enabled. This value is always false for large models.
         self.new_barge_in_enable = new_barge_in_enable
-        # The robot access type. If the scenario uses a small model, this field is empty. If the scenario uses a large model, this field is set to Managed.
+        # The robot access type. If the scenario is a small model scenario, this field is empty. If the scenario is a large model scenario, this field is Managed.
         self.nlu_access_type = nlu_access_type
-        # The robot engine. If the scenario uses a small model, this field is empty. If the scenario uses a large model, this field is set to Prompts.
+        # The robot engine. If the scenario is a small model scenario, this field is empty. If the scenario is a large model scenario, this field is Prompts.
         self.nlu_engine = nlu_engine
-        # The function computing service mode configuration.
+        # The Function Compute service mode configuration.
         self.nlu_profile = nlu_profile
-        # The reason for review rejection.
+        # The reason for rejection.
         self.reject_reason = reject_reason
         # The scenario.
         self.scene = scene
@@ -216,9 +217,9 @@ class ListScriptsResponseBodyScriptsList(DaraModel):
         self.script_name = script_name
         # The script status.
         self.status = status
-        # The update time.
+        # The update time. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
-        # The robot business workspace ID.
+        # The robot workspace ID.
         self.agent_id = agent_id
 
     def validate(self):
@@ -390,9 +391,9 @@ class ListScriptsResponseBodyScriptsListNluProfile(DaraModel):
     ):
         # The function service name.
         self.fc_function = fc_function
-        # The function service trigger URL.
+        # The function service trigger.
         self.fc_http_trigger_url = fc_http_trigger_url
-        # The function service region.
+        # The region of the function service.
         self.fc_region = fc_region
 
     def validate(self):

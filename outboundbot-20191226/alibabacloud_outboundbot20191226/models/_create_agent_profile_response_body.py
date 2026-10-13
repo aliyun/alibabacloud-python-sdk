@@ -15,17 +15,17 @@ class CreateAgentProfileResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Status code
+        # The status code.
         self.code = code
-        # Response data
+        # The returned data.
         self.data = data
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Response message
+        # The response message.
         self.message = message
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request succeeded
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -103,39 +103,39 @@ class CreateAgentProfileResponseBodyData(DaraModel):
         update_time: str = None,
         variables_json: str = None,
     ):
-        # Agent profile ID
+        # The agent profile ID.
         self.agent_profile_id = agent_profile_id
-        # Agent profile template ID
+        # The agent profile template ID.
         self.agent_profile_template_id = agent_profile_template_id
-        # Agent type
+        # agent type
         self.agent_type = agent_type
-        # Creation time
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # Description
+        # The description.
         self.description = description
-        # Instance ID
+        # The instance ID.
         self.instance_id = instance_id
-        # Instruction configuration
+        # The instruction configuration.
         self.instruction_json = instruction_json
-        # Label description
+        # The label descriptions.
         self.labels_json = labels_json
-        # Model ID
+        # The model ID.
         self.model = model
-        # Model configuration
+        # The model configuration.
         self.model_config = model_config
-        # Prompt (professional mode)
+        # The prompt in professional mode.
         self.prompt = prompt
-        # Agent configuration
+        # The agent configuration.
         self.prompt_json = prompt_json
-        # Scenario
+        # The scenario.
         self.scenario = scenario
-        # Scenario ID
+        # The scenario ID.
         self.script_id = script_id
-        # Indicates whether this is a system template
+        # Indicates whether the template is a system template.
         self.system = system
-        # Last update time
+        # The update time. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
-        # Variable configuration
+        # The variable configuration.
         self.variables_json = variables_json
 
     def validate(self):

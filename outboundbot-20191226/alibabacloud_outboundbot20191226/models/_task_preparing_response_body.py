@@ -18,13 +18,13 @@ class TaskPreparingResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The response message.
+        # The message returned by the operation.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
-        # The task ID.
+        # The node ID.
         self.task_id = task_id
 
     def validate(self):

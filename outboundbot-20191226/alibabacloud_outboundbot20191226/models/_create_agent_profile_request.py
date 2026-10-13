@@ -22,41 +22,41 @@ class CreateAgentProfileRequest(DaraModel):
         script_id: str = None,
         variables_json: str = None,
     ):
-        # Agent profile template ID (unique value)
+        # The agent profile template ID (unique value).
         # 
         # This parameter is required.
         self.agent_profile_template_id = agent_profile_template_id
-        # app_ip (system field) — optional
+        # The app_ip (system field). This parameter is optional.
         self.app_ip = app_ip
-        # Description
+        # The description.
         self.description = description
-        # FAQ folder ID
+        # The FAQ category IDs.
         self.faq_category_ids = faq_category_ids
-        # Instance ID
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Instruction configuration
+        # The instruction configuration.
         self.instruction_json = instruction_json
-        # Label description
+        # The label descriptions.
         self.labels_json = labels_json
-        # Model ID (unique value)
+        # The model ID (unique value).
         # 
         # This parameter is required.
         self.model = model
-        # Model configuration (deprecated)
+        # **[Deprecated]** The model configuration.
         self.model_config = model_config
-        # Agent configuration (professional mode)
+        # The agent configuration in professional mode.
         self.prompt = prompt
-        # Agent configuration in Normal mode
+        # The agent configuration in normal mode.
         self.prompt_json = prompt_json
-        # Scenario
+        # The scenario.
         self.scenario = scenario
-        # Scenario ID
+        # The scenario ID.
         # 
         # This parameter is required.
         self.script_id = script_id
-        # Variable configuration
+        # The variable configuration.
         self.variables_json = variables_json
 
     def validate(self):

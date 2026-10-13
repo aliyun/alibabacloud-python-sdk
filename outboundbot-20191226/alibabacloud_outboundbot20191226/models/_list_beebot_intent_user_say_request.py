@@ -14,7 +14,7 @@ class ListBeebotIntentUserSayRequest(DaraModel):
         page_size: int = None,
         script_id: str = None,
     ):
-        # The keyword in the user utterance.
+        # The keyword in the utterance content.
         self.content = content
         # The instance ID.
         # 
@@ -28,7 +28,7 @@ class ListBeebotIntentUserSayRequest(DaraModel):
         # 
         # This parameter is required.
         self.page_number = page_number
-        # The number of entries to display on each page.
+        # The number of entries per page.
         # 
         # This parameter is required.
         self.page_size = page_size

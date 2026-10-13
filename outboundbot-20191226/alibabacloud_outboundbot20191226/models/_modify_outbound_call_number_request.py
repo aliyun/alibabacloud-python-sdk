@@ -29,7 +29,7 @@ class ModifyOutboundCallNumberRequest(DaraModel):
         # 
         # This parameter is required.
         self.rate_limit_count = rate_limit_count
-        # The rate limit period. Unit: seconds.
+        # The rate limit period, in seconds.
         # 
         # This parameter is required.
         self.rate_limit_period = rate_limit_period

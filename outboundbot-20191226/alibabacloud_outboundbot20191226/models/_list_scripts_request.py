@@ -19,12 +19,12 @@ class ListScriptsRequest(DaraModel):
         self.instance_id = instance_id
         # The NLU robot engine.
         # 
-        # - If this parameter is left empty, small model scenarios are queried.
+        # - If you do not specify this parameter, scripts in small model scenarios are queried.
         # 
-        # - If this parameter is set to Prompts, the text input mode under large model scenarios is queried.
+        # - If you set this parameter to Prompts, scripts in the text completion mode for large models are queried.
         # 
-        # - If this parameter is set to SSE_FUNCTION, the function computing mode under large model scenarios is queried.
-        # - If this parameter is set to BeeBot, the workflow configuration mode under large model scenarios is queried.
+        # - If you set this parameter to SSE_FUNCTION, scripts in the Function Compute mode for large models are queried.
+        # - If you set this parameter to BeeBot, scripts in the workflow configuration mode for large models are queried.
         self.nlu_engine = nlu_engine
         # The page number.
         # 

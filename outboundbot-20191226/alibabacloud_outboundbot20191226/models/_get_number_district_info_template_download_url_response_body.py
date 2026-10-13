@@ -14,17 +14,17 @@ class GetNumberDistrictInfoTemplateDownloadUrlResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # API status code
+        # The API status code.
         self.code = code
-        # File URL
+        # The file URL.
         self.file_http_url = file_http_url
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # API message
+        # The API response message.
         self.message = message
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request succeeded
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

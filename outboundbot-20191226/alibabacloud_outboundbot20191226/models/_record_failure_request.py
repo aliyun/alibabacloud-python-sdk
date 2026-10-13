@@ -16,45 +16,39 @@ class RecordFailureRequest(DaraModel):
         instance_id: str = None,
         task_id: str = None,
     ):
-        # Call start time
+        # The start time of the call. The value is a UNIX timestamp in milliseconds.
         # 
         # This parameter is required.
         self.actual_time = actual_time
-        # Call ID
+        # The call ID.
         # 
         # This parameter is required.
         self.call_id = call_id
-        # Called number
+        # The called number.
         # 
         # This parameter is required.
         self.called_number = called_number
-        # Calling number
+        # The calling number.
         # 
         # This parameter is required.
         self.calling_number = calling_number
-        # Failure reason.
-        # 
-        # - Nonexistent number (NotExists)
-        # 
-        # - Busy (Busy)
-        # 
-        # - No answer (NotAnswered)
+        # The cause of the failure. Valid values:
+        # - NotExists: nonexistent number.
+        # - Busy: busy.
+        # - NotAnswered: not answered.
         # 
         # This parameter is required.
         self.disposition_code = disposition_code
-        # Error code when the outbound call fails.
-        # 
-        # - Nonexistent number (NotExists)
-        # 
-        # - Busy (Busy)
-        # 
-        # - No answer (NotAnswered)
+        # The error codes that occur when the outbound call fails. Valid values:
+        # - NotExists: nonexistent number.
+        # - Busy: busy.
+        # - NotAnswered: not answered.
         self.exception_codes = exception_codes
-        # Instance ID
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Task ID
+        # The task ID.
         # 
         # This parameter is required.
         self.task_id = task_id

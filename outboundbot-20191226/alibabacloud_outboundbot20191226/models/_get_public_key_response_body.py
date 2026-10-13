@@ -14,7 +14,7 @@ class GetPublicKeyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code of the API.
+        # The API status code.
         self.code = code
         # The public key.
         self.data = data
@@ -24,7 +24,7 @@ class GetPublicKeyResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

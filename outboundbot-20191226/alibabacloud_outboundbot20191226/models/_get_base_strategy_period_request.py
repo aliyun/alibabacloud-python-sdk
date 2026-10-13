@@ -10,17 +10,14 @@ class GetBaseStrategyPeriodRequest(DaraModel):
         entry_id: str = None,
         strategy_level: int = None,
     ):
-        # Instance ID
+        # The instance ID.
         # 
         # This parameter is required.
         self.entry_id = entry_id
-        # Strategy level. Default value is 2.
-        # 
-        # - 0: System
-        # 
-        # - 1: Tenant
-        # 
-        # - 2: Instance
+        # The policy level. Default value: 2. Valid values:
+        # - 0: System.
+        # - 1: Tenant.
+        # - 2: Instance.
         self.strategy_level = strategy_level
 
     def validate(self):

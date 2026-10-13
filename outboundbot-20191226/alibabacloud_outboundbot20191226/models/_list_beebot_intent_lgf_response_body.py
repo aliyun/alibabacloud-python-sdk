@@ -29,15 +29,15 @@ class ListBeebotIntentLgfResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The list of LGFs.
         self.lgfs = lgfs
-        # The message returned by the API.
+        # The API message.
         self.message = message
         # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
         # The total number of entries.
         self.total_count = total_count
@@ -133,13 +133,13 @@ class ListBeebotIntentLgfResponseBodyLgfs(DaraModel):
         modify_time: str = None,
         rule_text: str = None,
     ):
-        # The time when the template was created.
+        # The creation time. The format is YYYY-MM-DD HH:mm:ss.+ZZZZ, where +ZZZZ indicates the time zone offset.
         self.create_time = create_time
         # The intent ID.
         self.intent_id = intent_id
-        # The ID of the utterance template.
+        # The utterance template ID.
         self.lgf_id = lgf_id
-        # The time when the template was last modified.
+        # The modification time. The format is YYYY-MM-DD HH:mm:ss.+ZZZZ, where +ZZZZ indicates the time zone offset.
         self.modify_time = modify_time
         # The content of the utterance template.
         self.rule_text = rule_text

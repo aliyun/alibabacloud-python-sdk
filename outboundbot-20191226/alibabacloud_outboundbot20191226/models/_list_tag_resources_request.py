@@ -16,15 +16,15 @@ class ListTagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.ListTagResourcesRequestTag] = None,
     ):
-        # The token to start the next query
+        # The token for the next query.
         self.next_token = next_token
-        # Deprecated
+        # Deprecated.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The list of resource IDs. The value range of n is [1, 50].
+        # The list of resource IDs. Valid values of n: 1 to 50.
         self.resource_id = resource_id
-        # Resource type
+        # The resource type.
         # 
         # This parameter is required.
         self.resource_type = resource_type
@@ -89,9 +89,9 @@ class ListTagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. The value range of n is [1, 20].
+        # The tag key. Valid values of n: 1 to 20.
         self.key = key
-        # The tag value. The value range of n is [1, 20].
+        # The tag value. Valid values of n: 1 to 20.
         self.value = value
 
     def validate(self):

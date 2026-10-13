@@ -26,7 +26,7 @@ class ListJobGroupsAsyncResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The task list.
+        # The list of job groups.
         self.job_groups = job_groups
         # The response message.
         self.message = message
@@ -42,7 +42,7 @@ class ListJobGroupsAsyncResponseBody(DaraModel):
         self.timeout = timeout
         # The total number of entries.
         self.total_count = total_count
-        # Indicates whether the result is valid.
+        # Indicates whether the request is valid.
         self.vaild = vaild
 
     def validate(self):
@@ -152,35 +152,35 @@ class ListJobGroupsAsyncResponseBodyJobGroups(DaraModel):
         strategy: main_models.ListJobGroupsAsyncResponseBodyJobGroupsStrategy = None,
         total_call_num: int = None,
     ):
-        # The creation time.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.creation_time = creation_time
         # The export progress.
         self.export_progress = export_progress
-        # The ID of the jobFile parsing task. [Deprecated]
+        # **[Deprecated]** The ID of the jobFile parsing task.
         self.job_data_parsing_task_id = job_data_parsing_task_id
-        # The task description.
+        # The description of the job group.
         self.job_group_description = job_group_description
-        # The task ID.
+        # The ID of the job group.
         self.job_group_id = job_group_id
-        # The task name.
+        # The name of the job group.
         self.job_group_name = job_group_name
         # The minimum concurrency.
         self.min_concurrency = min_concurrency
-        # The modification time, in milliseconds.
+        # The modification time in milliseconds.
         self.modify_time = modify_time
         # The node statistics information.
         self.progress = progress
-        # The script ID.
+        # The ID of the script.
         self.script_id = script_id
-        # The script name.
+        # The name of the script.
         self.script_name = script_name
-        # The script version.
+        # The version of the script.
         self.script_version = script_version
-        # The task status.
+        # The status of the job group.
         self.status = status
-        # The strategy. [Deprecated]
+        # **[Deprecated]** The strategy.
         # 
-        # > To view the task strategy information, call the DescribeJobGroup operation.
+        # > To view the strategy information of the job group, call the DescribeJobGroup operation.
         self.strategy = strategy
         # The total number of calls.
         self.total_call_num = total_call_num
@@ -303,9 +303,9 @@ class ListJobGroupsAsyncResponseBodyJobGroupsStrategy(DaraModel):
         end_time: int = None,
         start_time: int = None,
     ):
-        # The strategy end time.
+        # The end time of the strategy. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # The strategy start time.
+        # The start time of the strategy. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
 
     def validate(self):
@@ -349,9 +349,9 @@ class ListJobGroupsAsyncResponseBodyJobGroupsProgress(DaraModel):
         total_jobs: int = None,
         total_not_answered: int = None,
     ):
-        # The number of cancelled jobs.
+        # The number of canceled jobs.
         self.cancelled_num = cancelled_num
-        # The total execution duration so far. [Deprecated]
+        # **[Deprecated]** The total execution duration up to the current time.
         self.duration = duration
         # The number of jobs being executed.
         self.executing_num = executing_num
@@ -361,24 +361,24 @@ class ListJobGroupsAsyncResponseBodyJobGroupsProgress(DaraModel):
         self.paused_num = paused_num
         # The number of jobs being scheduled.
         self.scheduling = scheduling
-        # The start time. [Deprecated]
+        # **[Deprecated]** The start time. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
         # The execution status. Valid values:
         # 
-        # - Draft: Draft.
-        # - Scheduling: Scheduling in progress.
-        # - Executing: Executing.
-        # - Completed: Completed.
-        # - Paused: Paused.
-        # - Failed: Failed.
-        # - Cancelled: Cancelled.
-        # - Initializing: Initializing.
+        # - Draft: The job group is a draft.
+        # - Scheduling: The job group is being scheduled.
+        # - Executing: The job group is being executed.
+        # - Completed: The job group is completed.
+        # - Paused: The job group is paused.
+        # - Failed: The job group failed.
+        # - Cancelled: The job group is canceled.
+        # - Initializing: The job group is being initialized.
         self.status = status
         # The number of completed jobs.
         self.total_completed = total_completed
         # The total number of jobs.
         self.total_jobs = total_jobs
-        # The number of unanswered jobs. [Deprecated]
+        # **[Deprecated]** The number of unanswered jobs.
         self.total_not_answered = total_not_answered
 
     def validate(self):
@@ -468,7 +468,7 @@ class ListJobGroupsAsyncResponseBodyJobGroupsExportProgress(DaraModel):
         progress: str = None,
         status: str = None,
     ):
-        # The download URL. [Deprecated]
+        # **[Deprecated]** The download URL.
         self.file_http_url = file_http_url
         # The progress.
         self.progress = progress

@@ -90,7 +90,7 @@ class GetContactBlockListResponseBodyContactBlocklistList(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The array data.
+        # The data array.
         self.list = list
         # The page number.
         self.page_number = page_number
@@ -157,9 +157,9 @@ class GetContactBlockListResponseBodyContactBlocklistListList(DaraModel):
         phone_number: str = None,
         remark: str = None,
     ):
-        # The unique business key of the outbound call blocklist entry.
+        # The unique business key of the outbound call blocklist.
         self.contact_block_list_id = contact_block_list_id
-        # The creation time.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.creation_time = creation_time
         # The creator.
         self.creator = creator
@@ -171,7 +171,7 @@ class GetContactBlockListResponseBodyContactBlocklistListList(DaraModel):
         self.operator = operator
         # The phone number.
         self.phone_number = phone_number
-        # The remarks.
+        # The remark.
         self.remark = remark
 
     def validate(self):

@@ -19,10 +19,11 @@ class GetContactBlockListRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The page number. This parameter is required.
+        # The page number.
         self.page_number = page_number
-        # The number of entries per page. This parameter is required.
+        # The number of entries per page.
         self.page_size = page_size
+        # The search criteria for the outbound call blocklist.
         self.search_pattern = search_pattern
 
     def validate(self):

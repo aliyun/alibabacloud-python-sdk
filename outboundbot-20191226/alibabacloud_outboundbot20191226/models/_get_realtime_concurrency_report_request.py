@@ -12,13 +12,13 @@ class GetRealtimeConcurrencyReportRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # Instance ID
+        # The instance ID.
         self.instance_id = instance_id
-        # Task group ID
+        # The job group ID.
         self.job_group_id = job_group_id
-        # Page number
+        # The page number.
         self.page_number = page_number
-        # Page size
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):

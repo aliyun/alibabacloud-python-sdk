@@ -17,21 +17,21 @@ class DescribeGroupExecutingInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # API status code
+        # The API status code.
         self.code = code
-        # Execution information
+        # The execution information.
         self.executing_info = executing_info
-        # Task group ID
+        # The job group ID.
         self.group_id = group_id
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Instance ID
+        # The instance ID.
         self.instance_id = instance_id
-        # API message
+        # The API response message.
         self.message = message
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request succeeded
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -116,39 +116,38 @@ class DescribeGroupExecutingInfoResponseBodyExecutingInfo(DaraModel):
         transfer_by_intent_num: int = None,
         transfer_by_no_answer: int = None,
     ):
-        # Average talk time
+        # The average call duration.
         self.avg_talk_time = avg_talk_time
-        # Number of failed calls
+        # The number of failed calls.
         self.call_failed_num = call_failed_num
-        # Number of outbound calls
+        # The number of outbound calls.
         self.call_num = call_num
-        # Deprecated
+        # **[Deprecated]**
         self.creator_name = creator_name
-        # Call duration distribution
+        # The distribution of call durations.
         self.duration_distribution = duration_distribution
-        # End time
+        # The end time. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # Number of completed executions
+        # The number of completed jobs.
         self.finished_num = finished_num
-        # Number of calls hung up by customers
+        # The number of customer-initiated hang-ups.
         self.hang_up_by_client_num = hang_up_by_client_num
-        # Execution progress
+        # The execution progress.
         self.jobs_progress = jobs_progress
-        # Number of calls with no interaction
+        # The number of calls with no interaction.
         self.no_interaction_num = no_interaction_num
-        # Start time
+        # The start time. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
-        # Distribution of conversation rounds
+        # The distribution of talk turns.
         # 
-        # - total: total number of conversation rounds involved
+        # - total: The total number of talk turns involved.
+        # - Number: The corresponding turn count.
         # 
-        # - number: specific round number
-        # 
-        # > * Example: {"total":"5","5":"1"} means 5 conversation rounds were involved, and 1 call had 5 user turns.
+        # > - Example: {"total":"5","5":"1"} indicates that the total number of talk turns involved is 5, and there is 1 call with 5 user turns.
         self.talk_turns_distribution = talk_turns_distribution
-        # Intent recognition
+        # The number of intent recognitions.
         self.transfer_by_intent_num = transfer_by_intent_num
-        # No answer
+        # The number of unanswered calls.
         self.transfer_by_no_answer = transfer_by_no_answer
 
     def validate(self):
@@ -263,21 +262,21 @@ class DescribeGroupExecutingInfoResponseBodyExecutingInfoJobsProgress(DaraModel)
         total_jobs: int = None,
         total_not_answered_num: int = None,
     ):
-        # Number of canceled tasks
+        # The number of canceled jobs.
         self.cancelled_num = cancelled_num
-        # Number of executing jobs
+        # The number of executing jobs.
         self.executing_num = executing_num
-        # Number of failed tasks
+        # The number of failed jobs.
         self.failed_num = failed_num
-        # Number of paused tasks
+        # The number of paused jobs.
         self.paused_num = paused_num
-        # Number of tasks being scheduled
+        # The number of jobs being scheduled.
         self.scheduling_num = scheduling_num
-        # Total number of completed tasks
+        # The total number of completed jobs.
         self.total_completed_num = total_completed_num
-        # Total number of jobs
+        # The total number of jobs.
         self.total_jobs = total_jobs
-        # Number of unanswered calls
+        # The total number of unanswered calls.
         self.total_not_answered_num = total_not_answered_num
 
     def validate(self):

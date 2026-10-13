@@ -15,13 +15,13 @@ class DownloadRecordingResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The interface status code.
+        # The API status code.
         self.code = code
-        # The download URL of the file.
+        # The download URL.
         self.download_params = download_params
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The interface prompt message.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -88,12 +88,13 @@ class DownloadRecordingResponseBodyDownloadParams(DaraModel):
         signature_url: str = None,
         voice_slice_recording_list_json: str = None,
     ):
+        # The signed download URL for the early media recording file.
         self.early_media_signature_url = early_media_signature_url
-        # The recording file name, which is typically a UUID.
+        # The name of the recording file, which is typically a UUID.
         self.file_name = file_name
-        # A URL that points to the recording file. Use HTTP to download the file.
+        # The URL used to download the recording file over HTTP.
         self.signature_url = signature_url
-        # The list of segmented recordings, including file names and file URLs.
+        # The list of segmented recordings, including the file names and file URLs.
         self.voice_slice_recording_list_json = voice_slice_recording_list_json
 
     def validate(self):

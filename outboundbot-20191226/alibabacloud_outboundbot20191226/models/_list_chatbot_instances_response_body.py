@@ -20,23 +20,23 @@ class ListChatbotInstancesResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # Chatbot list details
+        # The list of chatbots.
         self.bots = bots
-        # Response code.
+        # The response code.
         self.code = code
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Response message.
+        # The message returned by the API.
         self.message = message
-        # Page number.
+        # The page number.
         self.page_number = page_number
-        # Number of items per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call succeeded.
+        # Indicates whether the request was successful.
         self.success = success
-        # Total number of items.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -126,19 +126,19 @@ class ListChatbotInstancesResponseBodyBots(DaraModel):
         name: str = None,
         time_zone: str = None,
     ):
-        # Profile picture URL.
+        # The URL of the avatar.
         self.avatar = avatar
-        # Creation time.
+        # The creation time. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
         self.create_time = create_time
-        # Instance ID.
+        # The instance ID.
         self.instance_id = instance_id
-        # Chatbot description.
+        # The description of the chatbot.
         self.introduction = introduction
-        # Language used by the chatbot, such as zh-cn or en-us.
+        # The language of the chatbot service, such as zh-cn and en-us.
         self.language_code = language_code
-        # Chatbot name.
+        # The name of the chatbot.
         self.name = name
-        # Time zone of the chatbot. See Common Time Zone Codes.
+        # The time zone of the chatbot. For more information, see Public - Time Zone Codes.
         self.time_zone = time_zone
 
     def validate(self):

@@ -12,13 +12,13 @@ class ModifyAnnotationMissionRequest(DaraModel):
         annotation_status: int = None,
         delete: bool = None,
     ):
-        # Annotation task ID.
+        # The annotation task ID.
         self.annotation_mission_id = annotation_mission_id
-        # Annotation task name.
+        # The annotation task name.
         self.annotation_mission_name = annotation_mission_name
-        # Annotation task status.
+        # The annotation task status.
         self.annotation_status = annotation_status
-        # Delete the task.
+        # Specifies whether to delete the task.
         self.delete = delete
 
     def validate(self):

@@ -1,3 +1,16 @@
+2026-10-13 Version: 2.2.0
+- Support API CreateCustomScriptTemplate.
+- Support API CreateNumber.
+- Support API CreateVoiceClone.
+- Support API DeleteCustomScriptTemplate.
+- Support API DeleteVoiceClone.
+- Support API ListCustomScriptTemplates.
+- Support API ListSipTrunks.
+- Support API ListVoiceClone.
+- Support API ModifyVoiceClone.
+- Support API SubmitScriptPreReviewResult.
+
+
 2026-08-09 Version: 2.1.6
 - Update API GetContactBlockList: add request parameters SearchPattern.
 - Update API GetContactWhiteList: add request parameters SearchPattern.

@@ -17,17 +17,17 @@ class CreateBatchJobsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Information about the job group.
+        # The job group information.
         self.batch_job = batch_job
-        # API status code.
+        # The API status code.
         self.code = code
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Response message.
+        # The message.
         self.message = message
-        # ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call succeeded.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -94,21 +94,21 @@ class CreateBatchJobsResponseBodyBatchJob(DaraModel):
         scenario_id: str = None,
         strategy: main_models.CreateBatchJobsResponseBodyBatchJobStrategy = None,
     ):
-        # ID of the job group.
+        # The job group ID.
         self.batch_job_id = batch_job_id
-        # List of caller numbers.
+        # The list of calling numbers.
         self.calling_numbers = calling_numbers
-        # Time when the job group was created.
+        # The time when the job group was created. The time is a UNIX timestamp in milliseconds.
         self.creation_time = creation_time
-        # Key of the uploaded Excel file.
+        # The key of the uploaded Excel file.
         self.job_file_path = job_file_path
-        # Description of the job group.
+        # The description of the job group.
         self.job_group_description = job_group_description
-        # Name of the job group.
+        # The name of the job group.
         self.job_group_name = job_group_name
-        # ID of the scenario for the job group.
+        # The scenario ID of the job group.
         self.scenario_id = scenario_id
-        # Job execution policy.
+        # The job execution strategy.
         self.strategy = strategy
 
     def validate(self):
@@ -194,35 +194,39 @@ class CreateBatchJobsResponseBodyBatchJobStrategy(DaraModel):
         type: str = None,
         working_time: List[main_models.CreateBatchJobsResponseBodyBatchJobStrategyWorkingTime] = None,
     ):
-        # Custom information for the policy.
+        # The custom information of the strategy.
         self.customized = customized
-        # End time of the scheduling policy.
+        # The end time of the scheduling strategy. The time is a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # Action to take for outbound calls that were not completed in the previous cycle.
+        # The follow-up strategy for outbound calls that are not completed in the previous cycle.
         self.follow_up_strategy = follow_up_strategy
-        # Indicates whether the policy is a template.
+        # Indicates whether the strategy is a template.
         self.is_template = is_template
-        # Maximum number of retries per day after a failed call.
+        # The maximum number of retries per day after a call fails.
         self.max_attempts_per_day = max_attempts_per_day
-        # Minimum interval between retries.
+        # The minimum interval between retries.
         self.min_attempt_interval = min_attempt_interval
-        # How often the job repeats. Valid values: Once, Day, Week, and Month.
+        # The repetition mode. Valid values:
+        # - Once: The job is not repeated.
+        # - Day: The job is repeated every day.
+        # - Week: The job is repeated every week.
+        # - Month: The job is repeated every month.
         self.repeat_by = repeat_by
-        # List of days on which the job repeats.
+        # The list of days on which the job is repeated.
         self.repeat_days = repeat_days
-        # Recording policy for caller numbers.
+        # The recording strategy for the calling number.
         self.routing_strategy = routing_strategy
-        # Start time when the job group begins execution.
+        # The time when the job group starts to be executed. The time is a UNIX timestamp in milliseconds.
         self.start_time = start_time
-        # Description of the policy.
+        # The strategy description.
         self.strategy_description = strategy_description
-        # ID of the policy.
+        # The strategy ID.
         self.strategy_id = strategy_id
-        # Name of the policy.
+        # The strategy name.
         self.strategy_name = strategy_name
-        # Type of the policy.
+        # The strategy type.
         self.type = type
-        # Time periods during which the job runs each day.
+        # The time periods during which the job is executed in a day.
         self.working_time = working_time
 
     def validate(self):
@@ -343,9 +347,9 @@ class CreateBatchJobsResponseBodyBatchJobStrategyWorkingTime(DaraModel):
         begin_time: str = None,
         end_time: str = None,
     ):
-        # Start time.
+        # The start time. The format is HH:mm:ss.
         self.begin_time = begin_time
-        # End time.
+        # The end time. The format is HH:mm:ss.
         self.end_time = end_time
 
     def validate(self):

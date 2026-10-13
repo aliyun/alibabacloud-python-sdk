@@ -23,39 +23,39 @@ class ModifyAgentProfileRequest(DaraModel):
         scenario: str = None,
         variables_json: str = None,
     ):
-        # Agent configuration ID
+        # The agent profile ID.
         # 
-        # > Get the agent configuration ID for created scenarios from the ChatbotId return parameter of DescribeScript.
+        # > You can obtain the agent profile ID of a created scenario from the ChatbotId response parameter of DescribeScript.
         # 
         # This parameter is required.
         self.agent_profile_id = agent_profile_id
-        # API plug-in configuration
+        # The API plugin configuration.
         # 
-        # > To bind multiple APIs, get the UUIDs of multiple APIs through ListApiPlugins and fill them in the format [{"uuid":"xxx"},{"uuid":"xxxx""},....].
+        # > To bind multiple APIs, obtain the UUIDs of multiple APIs through ListApiPlugins, and fill them in the format of [{"uuid":"xxx"},{"uuid":"xxxx"},....].
         self.api_plugin_json = api_plugin_json
-        # Description
+        # The description.
         self.description = description
-        # FAQ category ID
+        # The FAQ category IDs.
         self.faq_category_ids = faq_category_ids
-        # Instance ID
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Instruction configuration
+        # The instruction configuration.
         self.instruction_json = instruction_json
-        # Label description
+        # The label description.
         self.labels_json = labels_json
-        # Model ID
+        # The model ID.
         self.model = model
-        # Model configuration
+        # The model configuration.
         self.model_config = model_config
-        # Prompt (Professional Mode)
+        # The prompt in professional mode.
         self.prompt = prompt
-        # Agent configuration
+        # The agent configuration.
         self.prompt_json = prompt_json
-        # Scenario
+        # The scenario.
         self.scenario = scenario
-        # Variable configuration
+        # The variable configuration.
         self.variables_json = variables_json
 
     def validate(self):

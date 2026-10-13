@@ -14,43 +14,35 @@ class ListAnnotationMissionSessionRequest(DaraModel):
         page_index: int = None,
         page_size: int = None,
     ):
-        # The task ID.
+        # The annotation mission ID.
         self.annotation_mission_id = annotation_mission_id
-        # The ID of the chat instance for the annotation task.
+        # The annotation mission chat instance ID.
         # 
-        # > Obtain this ID by calling the SaveAnnotationMissionSessionList operation.
+        # > Obtained by calling the SaveAnnotationMissionSessionList operation.
         self.annotation_mission_session_id = annotation_mission_session_id
         # The environment.
         # 
-        # > The default value is 2.
+        # > Default value: 2.
         # 
-        # **Enumeration values**
-        # 
-        # - 0: NONE
-        # 
-        # - 1: Private cloud
-        # 
-        # - 2: Public cloud
+        # **Valid values:**
+        # - 0: NONE.
+        # - 1: Private cloud.
+        # - 2: Public cloud.
         self.environment = environment
-        # The list of statuses to include.
+        # The list of included statuses.
         # 
-        # > The format is [1]. Fill the array with specific enumeration values.
+        # > The format is [1]. Specify the actual enum values in the array.
         # 
-        # **Enumeration values**
-        # 
-        # - 1: Correctly detected
-        # 
-        # - 2: Incorrectly detected
-        # 
-        # - 8: Invalid data
-        # 
-        # - 4: Uncovered intent
-        # 
-        # - 16: Transcription error
+        # **Valid values:**
+        # - 1: Correct recognition.
+        # - 2: Incorrect recognition.
+        # - 8: Invalid data.
+        # - 4: Uncovered intent.
+        # - 16: Transcription misrecognition.
         self.include_status_list_json_string = include_status_list_json_string
         # The page number.
         self.page_index = page_index
-        # The number of records to display on each page.
+        # The number of entries to return on each page.
         self.page_size = page_size
 
     def validate(self):

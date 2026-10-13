@@ -19,21 +19,21 @@ class GetBaseStrategyPeriodResponseBody(DaraModel):
         success: bool = None,
         working_time: List[main_models.GetBaseStrategyPeriodResponseBodyWorkingTime] = None,
     ):
-        # API status code
+        # The API status code.
         self.code = code
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Response message
+        # The response message.
         self.message = message
-        # Indicates whether the period applies only to weekends
+        # Indicates whether the time periods apply only to weekends.
         self.only_weekdays = only_weekdays
-        # Indicates whether the period applies only to weekdays
+        # Indicates whether the time periods apply only to workdays.
         self.only_workdays = only_workdays
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call succeeded
+        # Indicates whether the request is successful.
         self.success = success
-        # Time periods when the strategy runs
+        # The execution time periods of the policy.
         self.working_time = working_time
 
     def validate(self):
@@ -114,13 +114,13 @@ class GetBaseStrategyPeriodResponseBodyWorkingTime(DaraModel):
         end_time: str = None,
         end_time_millis: int = None,
     ):
-        # Start time
+        # The start time. Format: HH:mm:ss.
         self.begin_time = begin_time
-        # Daily start time, in milliseconds
+        # The daily start time in milliseconds.
         self.begin_time_millis = begin_time_millis
-        # End time
+        # The end time. Format: HH:mm:ss.
         self.end_time = end_time
-        # Daily end time, in milliseconds
+        # The daily end time in milliseconds.
         self.end_time_millis = end_time_millis
 
     def validate(self):

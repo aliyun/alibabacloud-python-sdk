@@ -17,17 +17,17 @@ class GetTaskByUuidResponseBody(DaraModel):
         success: bool = None,
         task: main_models.GetTaskByUuidResponseBodyTask = None,
     ):
-        # API status code
+        # The API status code.
         self.code = code
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Response message
+        # The returned message.
         self.message = message
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request succeeded
+        # Indicates whether the request is successful.
         self.success = success
-        # Task information
+        # The task information.
         self.task = task
 
     def validate(self):
@@ -98,55 +98,42 @@ class GetTaskByUuidResponseBodyTask(DaraModel):
         job_id: str = None,
         planned_time: int = None,
     ):
-        # Actual execution time
+        # The actual execution time. The value is a UNIX timestamp in milliseconds.
         self.actual_time = actual_time
-        # Call ID
+        # The call ID.
         self.call_id = call_id
-        # Callee number
+        # The called number.
         self.called_number = called_number
-        # Caller number
+        # The calling number.
         self.calling_number = calling_number
-        # List of conversations
+        # The list of conversation information.
         self.conversations = conversations
-        # Reason the task ended
+        # The end reason. Valid values:
+        # - FINISHED: normal completion.
+        # - CHATBOT_HANGUP_AFTER_NOANSWER: the robot hangs up after unrecognized input.
+        # - CHATBOT_HANGUP_AFTER_SILENCE: the robot hangs up after a silence timeout.
+        # - CLIENT_HANGUP_AFTER_NOANSWER: the user hangs up after unrecognized input.
+        # - CLIENT_HANGUP: the user hangs up without a reason.
+        # - TRANSFER_BY_INTENT: the call is transferred to a human agent due to intent matching.
+        # - TRANSFER_AFTER_NOANSWER: the call is transferred to a human agent after unrecognized input.
+        # - INO_INTERACTION: no interaction from the user.
+        # - ERROR: the system is interrupted due to an exception.
+        # - SPECIAL_INTERCEPT_VOICE_ASSISTANT: intercepted due to special circumstances - voice assistant.
+        # - SPECIAL_INTERCEPT_EXTENSION_NUMBER_TRANSFER: intercepted due to special circumstances - extension number transfer.
         # 
-        # - FINISHED: Task completed normally
-        # 
-        # - CHATBOT_HANGUP_AFTER_NOANSWER: Bot hung up after no answer
-        # 
-        # - CHATBOT_HANGUP_AFTER_SILENCE: Bot hung up after silence timeout
-        # 
-        # - CLIENT_HANGUP_AFTER_NOANSWER: Client hung up after no answer
-        # 
-        # - CLIENT_HANGUP: Client hung up without reason
-        # 
-        # - TRANSFER_BY_INTENT: Transferred to agent after intent match
-        # 
-        # - TRANSFER_AFTER_NOANSWER: Transferred to agent after no answer
-        # 
-        # - INO_INTERACTION: No interaction from client
-        # 
-        # - ERROR: System error interrupted the task
-        # 
-        # - SPECIAL_INTERCEPT_VOICE_ASSISTANT: Intercepted due to voice assistant
-        # 
-        # - SPECIAL_INTERCEPT_EXTENSION_NUMBER_TRANSFER: Intercepted due to extension number transfer
-        # 
-        # >Notice: 
-        # 
-        # This parameter is a string that returns an enumeration value such as FINISHED.
+        # >Notice: The data type of this parameter is String. The returned value is an enumerated value such as FINISHED.</notice>
         self.end_reason = end_reason
-        # End time
+        # The end time. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # Task ID
+        # The task ID.
         self.id = id
-        # Instance ID
+        # The instance ID.
         self.instance_id = instance_id
-        # Job group ID
+        # The job group ID.
         self.job_group_id = job_group_id
-        # Job ID
+        # The job ID.
         self.job_id = job_id
-        # Planned execution time (deprecated)
+        # **[Deprecated]** The planned execution time of the task. The value is a UNIX timestamp in milliseconds.
         self.planned_time = planned_time
 
     def validate(self):
@@ -252,43 +239,30 @@ class GetTaskByUuidResponseBodyTaskConversations(DaraModel):
         speaker: str = None,
         timestamp: int = None,
     ):
-        # Action type
-        # 
-        # - Dialogue: Dialogue
-        # 
-        # - AbortDialogue: Abort a dialogue
-        # 
-        # - SilenceTimeout: Silence timeout
-        # 
-        # - CollectedNumber: Collected number
-        # 
-        # - EndDialogue: End a dialogue
-        # 
-        # - Broadcast: Greeting message
-        # 
-        # - HangUp: Hang up
-        # 
-        # - Authorize: Authorization
-        # 
-        # - TransferToAgent: Transfer to an agent
-        # 
-        # - TransferToIVR: Transfer to an IVR system
-        # 
-        # - RedirectToPage: Redirect to a page
-        # 
-        # - CollectNumber: Collect a number
-        # 
-        # - WaitOnAsyncTask: Wait for an asynchronous task
-        # 
-        # - Error: Error
+        # The instruction. Valid values:
+        # - BeginDialogue: starts the conversation.
+        # - Dialogue: indicates a conversation.
+        # - AbortDialogue: aborts the conversation.
+        # - SilenceTimeout: indicates a silence timeout.
+        # - CollectedNumber: indicates a collected number.
+        # - EndDialogue: ends the conversation.
+        # - Broadcast: indicates an opening remark.
+        # - HangUp: hangs up the call.
+        # - Authorize: grants authorization.
+        # - TransferToAgent: transfers the call to an agent.
+        # - TransferToIVR: transfers the call to an IVR.
+        # - RedirectToPage: redirects to a page.
+        # - CollectNumber: collects a number.
+        # - WaitOnAsyncTask: waits for an asynchronous task.
+        # - Error: indicates an error.
         self.action = action
-        # Conversation text.
+        # The conversation text.
         self.script = script
-        # Session ID
+        # The session ID.
         self.sequence_id = sequence_id
-        # Who spoke in the conversation. Valid values: Robot or Contact.
+        # The speaker of the conversation. Valid values: Robot and Contact.
         self.speaker = speaker
-        # Timestamp when the summary was created.
+        # The time when the summary was created. The value is a UNIX timestamp in milliseconds.
         self.timestamp = timestamp
 
     def validate(self):
