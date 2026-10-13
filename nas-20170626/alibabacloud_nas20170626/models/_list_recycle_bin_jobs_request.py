@@ -13,17 +13,17 @@ class ListRecycleBinJobsRequest(DaraModel):
         page_size: int = None,
         status: str = None,
     ):
-        # The file system ID.
+        # The ID of the file system.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
-        # The task ID.
+        # The ID of the task.
         self.job_id = job_id
-        # The page number of the current page in a paged query.
+        # The current page number for paging.
         # 
         # Start value (default value): 1.
         self.page_number = page_number
-        # The number of entries per page in a paged query.
+        # The number of entries per page for paging.
         # 
         # Valid values: 1 to 100.
         # 

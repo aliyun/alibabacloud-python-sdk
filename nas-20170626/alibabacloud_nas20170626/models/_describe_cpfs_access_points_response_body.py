@@ -122,7 +122,7 @@ class DescribeCpfsAccessPointsResponseBodyAccessPoints(DaraModel):
         # 
         # > You can mount the file system only when the status is Active.
         self.status = status
-        # The list of CPFS access point tags.
+        # The list of tags for the CPFS access point.
         self.tags = tags
 
     def validate(self):

@@ -14,7 +14,7 @@ class StartLifecyclePolicyExecutionRequest(DaraModel):
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
-        # The lifecycle policy ID.
+        # The ID of the lifecycle management policy.
         # 
         # This parameter is required.
         self.lifecycle_policy_id = lifecycle_policy_id

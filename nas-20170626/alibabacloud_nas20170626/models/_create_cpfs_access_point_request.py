@@ -26,9 +26,9 @@ class CreateCpfsAccessPointRequest(DaraModel):
         self.description = description
         # The file system ID.
         # 
-        # - Cloud Parallel File Storage (CPFS): must start with `cpfs-`, such as cpfs-125487\\*\\*\\*\\*.
+        # - Cloud Parallel File Storage (CPFS): The ID must start with `cpfs-`. Example: cpfs-125487\\*\\*\\*\\*.
         # 
-        # - CPFS for Lingjun: must start with `bmcpfs-`, such as bmcpfs-0015\\*\\*\\*\\*.
+        # - CPFS for Lingjun: The ID must start with `bmcpfs-`. Example: bmcpfs-0015\\*\\*\\*\\*.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id

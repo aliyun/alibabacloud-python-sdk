@@ -14,7 +14,7 @@ class ListTagResourcesResponseBody(DaraModel):
         request_id: str = None,
         tag_resources: main_models.ListTagResourcesResponseBodyTagResources = None,
     ):
-        # A pagination token. It can be used in the next request to retrieve a new page of results. If the value of this parameter is null, no queries are performed after the current query.
+        # The token for the next query. If NextToken is empty, no more results exist.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id

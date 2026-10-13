@@ -17,7 +17,7 @@ class CreateLifecycleRetrieveJobRequest(DaraModel):
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
-        # The list of directories or file paths to retrieve. You can specify up to 10 paths.
+        # The list of directories or file paths to retrieve. A maximum of 10 paths are supported.
         # 
         # This parameter is required.
         self.paths = paths

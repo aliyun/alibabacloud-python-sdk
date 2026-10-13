@@ -17,7 +17,7 @@ class DescribeRegionsRequest(DaraModel):
         # - all: all types.
         # - standard (default): General-purpose NAS.
         # - extreme: Extreme NAS.
-        # - cpfs: CPFS.
+        # - cpfs: Cloud Parallel File Storage (CPFS).
         self.file_system_type = file_system_type
         # The page number of the list.
         # 

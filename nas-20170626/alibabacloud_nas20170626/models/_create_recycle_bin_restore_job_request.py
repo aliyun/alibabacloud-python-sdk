@@ -14,9 +14,9 @@ class CreateRecycleBinRestoreJobRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # Generate a value from your client to ensure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # Generate a parameter value from your client to ensure uniqueness across different requests. The ClientToken value supports only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         # 
-        # >If you do not specify ClientToken, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may vary for each API request.
+        # >If you do not specify ClientToken, the system uses the RequestId of the API request as the ClientToken. The RequestId may vary for each API request.
         self.client_token = client_token
         # The FileId of the file or directory to restore.
         # 
@@ -38,12 +38,12 @@ class CreateRecycleBinRestoreJobRequest(DaraModel):
         self.file_system_id = file_system_id
         # The FileId of the directory to which the file is restored.
         # 
-        # - You can call the [ListRecentlyRecycledDirectories](https://help.aliyun.com/document_detail/2412173.html) operation to query the TargetFileId of directories from which files have been deleted.
+        # - You can call the [ListRecentlyRecycledDirectories](https://help.aliyun.com/document_detail/2412173.html) operation to query the TargetFileId of directories from which files were deleted.
         # 
         # - You can call the [ListDirectoriesAndFiles](https://help.aliyun.com/document_detail/2412163.html) operation to query the TargetFileId of existing directories in the file system.
         # 
         # **Special notes**:
-        # - The FileId of the root directory of a file system is fixed to `2`. You can directly use this value as the TargetFileId to restore a file to the root directory without querying.
+        # - The FileId of the root directory of a file system is fixed to `2`. You can use this value directly as the TargetFileId to restore a file to the root directory without querying.
         # 
         # This parameter is required.
         self.target_file_id = target_file_id

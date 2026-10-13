@@ -93,7 +93,7 @@ class DescribeAccessPointsResponseBodyAccessPoints(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The access point ARN.
+        # The Alibaba Cloud Resource Name (ARN) of the access point.
         self.arn = arn
         # The permission group name.
         self.access_group = access_group
@@ -103,7 +103,7 @@ class DescribeAccessPointsResponseBodyAccessPoints(DaraModel):
         self.access_point_name = access_point_name
         # The time when the access point was created. Format: Unix/POSIX timestamp.
         self.create_time = create_time
-        # The access point domain name.
+        # The domain name of the access point.
         self.domain_name = domain_name
         # Indicates whether the RAM policy is enabled.
         self.enabled_ram = enabled_ram
@@ -115,7 +115,7 @@ class DescribeAccessPointsResponseBodyAccessPoints(DaraModel):
         self.posix_user = posix_user
         # The root directory.
         self.root_path = root_path
-        # The root directory permission.
+        # The root directory permissions.
         self.root_path_permission = root_path_permission
         # The current root directory status.
         # 
@@ -129,12 +129,12 @@ class DescribeAccessPointsResponseBodyAccessPoints(DaraModel):
         # 
         # Valid values:
         # 
-        # - Active: available.
-        # - Inactive: unavailable.
+        # - Active: active.
+        # - Inactive: inactive.
         # - Pending: being created.
         # - Deleting: being deleted.
         # 
-        # > You can mount the file system only when the status is Active.
+        # > You can mount a file system only when the status is Active.
         self.status = status
         # The list of access point tags.
         self.tags = tags

@@ -62,7 +62,7 @@ class GetRecycleBinAttributeResponseBodyRecycleBinAttribute(DaraModel):
         # 
         # If the recycle bin is disabled, this parameter returns 0.
         self.reserved_days = reserved_days
-        # The storage usage of Infrequent Access (IA) data in the recycle bin. Unit: bytes.
+        # The storage usage of IA storage class data in the recycle bin. Unit: bytes.
         self.secondary_size = secondary_size
         # The storage usage of files in the recycle bin. Unit: bytes.
         self.size = size

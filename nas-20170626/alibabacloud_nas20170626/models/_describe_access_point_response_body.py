@@ -85,7 +85,7 @@ class DescribeAccessPointResponseBodyAccessPoint(DaraModel):
         self.agentic_space_id = agentic_space_id
         # The time when the access point was created. Format: Unix/POSIX timestamp.
         self.create_time = create_time
-        # The time when the access point was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
+        # The time when the access point was created. The time follows the ISO 8601 standard. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.create_time_utc = create_time_utc
         # The access point domain name.
         self.domain_name = domain_name
@@ -95,7 +95,7 @@ class DescribeAccessPointResponseBodyAccessPoint(DaraModel):
         self.file_system_id = file_system_id
         # The time when the access point was last modified. Format: Unix/POSIX timestamp.
         self.modify_time = modify_time
-        # The time when the access point was last modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
+        # The time when the access point was last modified. The time follows the ISO 8601 standard. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.modify_time_utc = modify_time_utc
         # The POSIX user.
         self.posix_user = posix_user
@@ -117,10 +117,10 @@ class DescribeAccessPointResponseBodyAccessPoint(DaraModel):
         # 
         # Valid values:
         # 
-        # - Active: available.
-        # - Inactive: unavailable.
-        # - Pending: being created.
-        # - Deleting: being deleted.
+        # - Active: active
+        # - Inactive: inactive
+        # - Pending: being created
+        # - Deleting: being deleted
         self.status = status
         # The list of access point tags.
         self.tags = tags
@@ -329,11 +329,11 @@ class DescribeAccessPointResponseBodyAccessPointRootPathPermission(DaraModel):
         owner_user_id: int = None,
         permission: str = None,
     ):
-        # The file group ID of the owner.
+        # The file group ID.
         self.owner_group_id = owner_group_id
-        # The user ID of the owner.
+        # The file owner ID.
         self.owner_user_id = owner_user_id
-        # The POSIX permission.
+        # The POSIX permissions.
         self.permission = permission
 
     def validate(self):
@@ -375,9 +375,9 @@ class DescribeAccessPointResponseBodyAccessPointPosixUser(DaraModel):
         posix_secondary_group_ids: List[int] = None,
         posix_user_id: int = None,
     ):
-        # The POSIX group ID.
+        # The POSIX user group ID.
         self.posix_group_id = posix_group_id
-        # The secondary group IDs.
+        # The secondary user group IDs.
         self.posix_secondary_group_ids = posix_secondary_group_ids
         # The POSIX user ID.
         self.posix_user_id = posix_user_id

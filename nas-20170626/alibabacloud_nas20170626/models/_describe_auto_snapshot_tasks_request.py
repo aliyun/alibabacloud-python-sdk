@@ -23,7 +23,7 @@ class DescribeAutoSnapshotTasksRequest(DaraModel):
         self.file_system_ids = file_system_ids
         # The type of the file system.
         # 
-        # Valid values: extreme (Extreme NAS file system)
+        # Valid values: extreme (Extreme NAS file system).
         # 
         # This parameter is required.
         self.file_system_type = file_system_type
@@ -35,7 +35,7 @@ class DescribeAutoSnapshotTasksRequest(DaraModel):
         self.page_number = page_number
         # The page number of the automatic snapshot task list.
         # 
-        # Start value (default value): 1
+        # Start value (default value): 1.
         self.page_size = page_size
 
     def validate(self):

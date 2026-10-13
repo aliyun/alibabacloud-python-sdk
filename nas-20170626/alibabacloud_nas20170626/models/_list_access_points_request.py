@@ -19,7 +19,7 @@ class ListAccessPointsRequest(DaraModel):
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
-        # The filter information.
+        # The filter key information.
         self.filters = filters
         # The maximum number of results to return per query.
         # 

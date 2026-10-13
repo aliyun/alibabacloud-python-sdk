@@ -12,26 +12,26 @@ class StartDataFlowRequest(DaraModel):
         dry_run: bool = None,
         file_system_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
+        # Ensures the idempotency of the request. Generate a unique parameter value from your client to ensure that the value is unique across different requests.
         # 
-        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
+        # ClientToken supports only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotency](https://help.aliyun.com/document_detail/25693.html).
         # 
-        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may vary for each API request.
         self.client_token = client_token
-        # The ID of the dataflow.
+        # The data flow ID.
         # 
         # This parameter is required.
         self.data_flow_id = data_flow_id
-        # Specifies whether to perform only a dry run, without performing the actual request.
+        # Specifies whether to perform a dry run for this request.
         # 
-        # During the dry run, the system checks whether the request parameters are valid and whether the requested resources are available. The dry run does not enable the specified dataflow or incur fees.
+        # A dry run checks parameter validity and resource availability without actually creating an instance or incurring fees.
         # 
         # Valid values:
         # 
-        # *   true: performs only a dry run. The system checks the required parameters, request syntax, service limits, and available NAS resources. If the request fails the dry run, an error message is returned. If the request passes the dry run, the HTTP status code 200 is returned.
-        # *   false (default): performs a dry run and sends the request. If the request passes the dry run, the specified dataflow is enabled.
+        # - true: Sends a dry run request without creating an instance. The check items include required parameters, request format, business limits, and NAS inventory. If the check fails, the corresponding error is returned. If the check passes, HTTP status code 200 is returned, but FileSystemId is empty.
+        # - false (default): Sends a normal request. After the check passes, the instance is directly created.
         self.dry_run = dry_run
-        # The ID of the file system.
+        # The file system ID.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id

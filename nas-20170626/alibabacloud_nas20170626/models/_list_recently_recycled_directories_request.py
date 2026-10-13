@@ -23,7 +23,7 @@ class ListRecentlyRecycledDirectoriesRequest(DaraModel):
         self.max_results = max_results
         # The pagination token for the next page. You do not need to specify this parameter for the first request.
         # 
-        # If a single query does not return all directories, the NextToken parameter is returned with a value. You can specify a valid NextToken value in subsequent requests to continue the query.
+        # If a single query does not return all directories, the NextToken parameter is returned with a value. You can specify a valid NextToken value in the next request to continue the query.
         self.next_token = next_token
 
     def validate(self):

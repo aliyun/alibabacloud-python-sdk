@@ -16,11 +16,11 @@ class DescribeDirQuotasResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The queried directory quotas.
+        # The collection of quota information for each directory.
         self.dir_quota_infos = dir_quota_infos
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of directories on each page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -89,11 +89,11 @@ class DescribeDirQuotasResponseBodyDirQuotaInfos(DaraModel):
     ):
         # The inode number of the directory.
         self.dir_inode = dir_inode
-        # The absolute path of a directory.
+        # The absolute path of the directory in the file system.
         self.path = path
-        # The status of the quota created for the directory. Valid values: Initializing and Normal. The Initializing state indicates that the quota is being created. The Normal state indicates that the quota is created.
+        # The statistical status of the directory. The value is Initializing during initialization and Normal when the status is normal.
         self.status = status
-        # The information about quotas for all users.
+        # The collection of quota information for each user.
         self.user_quota_infos = user_quota_infos
 
     def validate(self):
@@ -154,24 +154,23 @@ class DescribeDirQuotasResponseBodyDirQuotaInfosUserQuotaInfos(DaraModel):
         user_id: str = None,
         user_type: str = None,
     ):
-        # The maximum number of files that a user can create in the directory.
+        # The maximum number of files that the user can create in the directory.
         self.file_count_limit = file_count_limit
-        # The total number of files that a user has created in the directory.
+        # The actual number of files owned by the user in the directory.
         self.file_count_real = file_count_real
-        # The type of the quota. Valid values: Accounting and Enforcement.
+        # The quota type. Valid values: Accounting (statistical quota) and Enforcement (restrictive quota).
         self.quota_type = quota_type
-        # The maximum size of files that a user can create in the directory. Unit: GiB.
+        # The maximum total size of files that the user can store in the directory. Unit: GiB.
         self.size_limit = size_limit
-        # The total size of files that a user has created in the directory. Unit: GiB.
+        # The actual total size of files owned by the user in the directory. Unit: GiB.
         self.size_real = size_real
-        # The total size of files that a user has created in the directory. Unit: bytes.
+        # The actual total size of files owned by the user in the directory. Unit: bytes.
         self.size_real_in_byte = size_real_in_byte
-        # The ID of the user that you specify to create a quota for the directory. The value depends on the value of the UserType parameter. Valid values: Uid and Gid.
+        # The UID or GID to be restricted, depending on the value of UserType.
         self.user_id = user_id
-        # The type of user. Valid values: Uid, Gid, and AllUsers.
-        # 
-        # *   If Uid or Gid is returned, a value is returned for UserId.
-        # *   If AllUsers is returned, UserId is empty.
+        # The type of the UserId. Valid values: Uid, Gid, and AllUsers.
+        # - If the value is Uid or Gid, UserId has a return value.
+        # - If the value is AllUsers, UserId is empty.
         self.user_type = user_type
 
     def validate(self):

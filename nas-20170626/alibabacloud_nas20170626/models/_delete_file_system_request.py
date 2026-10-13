@@ -10,10 +10,9 @@ class DeleteFileSystemRequest(DaraModel):
         file_system_id: str = None,
     ):
         # The ID of the file system that you want to delete.
-        # 
-        # *   Sample ID of a General-purpose NAS file system: 31a8e4\\*\\*\\*\\*.
-        # *   The IDs of Extreme NAS file systems must start with `extreme-`, for example, extreme-0015\\*\\*\\*\\*.
-        # *   The IDs of Cloud Parallel File Storage (CPFS) file systems must start with `cpfs-`, for example, cpfs-00cb6fa094ca\\*\\*\\*\\*.
+        # - General-purpose NAS: 31a8e4\\*\\*\\*\\*.
+        # - Extreme NAS: The ID must start with `extreme-`, such as extreme-0015\\*\\*\\*\\*.
+        # - Cloud Parallel File Storage (CPFS): The ID must start with `cpfs-`, such as cpfs-00cb6fa094ca\\*\\*\\*\\*.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id

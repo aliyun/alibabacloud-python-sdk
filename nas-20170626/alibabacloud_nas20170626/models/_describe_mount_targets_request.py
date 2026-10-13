@@ -13,9 +13,9 @@ class DescribeMountTargetsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The IPv4 and IPv6 dual-stack mount target.
+        # The dual-stack (IPv4 and IPv6) mount target domain.
         # 
-        # > Currently, only Extreme NAS in regions in the Chinese mainland supports IPv6.
+        # > IPv6 is currently supported only in the Chinese mainland regions for Extreme NAS file systems.
         self.dual_stack_mount_target_domain = dual_stack_mount_target_domain
         # The file system ID.
         # 
@@ -23,7 +23,7 @@ class DescribeMountTargetsRequest(DaraModel):
         # 
         # - Extreme NAS: must start with `extreme-`, for example, extreme-0015\\*\\*\\*\\*.
         # 
-        # - CPFS: must start with `cpfs-`, for example, cpfs-125487\\*\\*\\*\\*.
+        # - Cloud Parallel File Storage (CPFS): must start with `cpfs-`, for example, cpfs-125487\\*\\*\\*\\*.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id

@@ -18,11 +18,15 @@ class DescribeLogAnalysisRequest(DaraModel):
         # 
         # - standard: General-purpose NAS
         # - extreme: Extreme NAS
-        # - all (default): all types.
+        # - all (default): all types
         self.file_system_type = file_system_type
         # The page number of the file system list. Default value: 1.
         self.page_number = page_number
-        # The number of file systems on each page in a paging query. Valid values: 1 to 100. Default value: 10.
+        # The number of file systems on each page during a paged query.
+        # 
+        # Valid values: 1 to 100.
+        # 
+        # Default value: 10.
         self.page_size = page_size
         # The region ID.
         # 

@@ -11,13 +11,13 @@ class DescribeBlackListClientsRequest(DaraModel):
         file_system_id: str = None,
         region_id: str = None,
     ):
-        # The IP address of the client.
+        # The client IP address.
         self.client_ip = client_ip
-        # The ID of the file system.
+        # The file system ID.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
-        # The ID of the region where the file system resides.
+        # The region ID of the file system.
         # 
         # This parameter is required.
         self.region_id = region_id

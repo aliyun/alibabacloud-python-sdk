@@ -104,7 +104,7 @@ class ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs(DaraModel):
         self.job_id = job_id
         # The execution paths of the data retrieval task.
         self.paths = paths
-        # The number of files that are successfully retrieved by the data retrieval task.
+        # The number of files successfully retrieved by the data retrieval task.
         self.retrieved_file_count = retrieved_file_count
         # The status of the data retrieval task. Valid values:
         # - active: Running.
@@ -114,7 +114,7 @@ class ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs(DaraModel):
         self.status = status
         # The storage class. Valid values:
         # - InfrequentAccess: IA storage class.
-        # - Archive: Archive storage.
+        # - Archive: Archive storage class.
         self.storage_type = storage_type
         # The time when the task was last updated.
         # 

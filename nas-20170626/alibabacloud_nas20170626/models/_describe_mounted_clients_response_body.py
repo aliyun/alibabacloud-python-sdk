@@ -17,13 +17,13 @@ class DescribeMountedClientsResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.clients = clients
-        # The page number.
+        # The page number of the client list.
         self.page_number = page_number
-        # The number of IP addresses returned per page.
+        # The number of client IP addresses on each page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of IP addresses.
+        # The total number of client IP addresses returned.
         self.total_count = total_count
 
     def validate(self):

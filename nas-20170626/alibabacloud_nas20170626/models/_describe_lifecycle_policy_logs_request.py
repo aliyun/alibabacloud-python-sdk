@@ -12,11 +12,11 @@ class DescribeLifecyclePolicyLogsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The file system ID.
+        # The ID of the file system.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
-        # The ID of the lifecycle management policy.
+        # The ID of the lifecycle policy.
         # 
         # This parameter is required.
         self.lifecycle_policy_id = lifecycle_policy_id
@@ -24,9 +24,10 @@ class DescribeLifecyclePolicyLogsRequest(DaraModel):
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of log entries per page.
+        # The number of log entries to return on each page.
         # 
-        # Valid values: 1 to 100. Default value: 10.
+        # Valid values: 1 to 100.
+        # Default value: 10.
         self.page_size = page_size
 
     def validate(self):

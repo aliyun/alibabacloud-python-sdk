@@ -17,11 +17,11 @@ class DescribeStoragePackagesResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.packages = packages
-        # The page number of the returned page.
+        # The page number of the storage plan list.
         self.page_number = page_number
-        # The number of storage plans returned per page.
+        # The number of storage plans on each page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The number of storage plans.
         self.total_count = total_count

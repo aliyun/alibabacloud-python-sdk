@@ -10,14 +10,14 @@ class ModifyLifecyclePolicyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The request status.
         # 
         # Valid values:
         # 
-        # - true: The request was successful.
-        # - false: The request failed.
+        # - true: The request is successful.
+        # - false: The request fails.
         self.success = success
 
     def validate(self):

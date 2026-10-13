@@ -88,7 +88,7 @@ class DescribeProtocolMountTargetResponseBodyProtocolMountTargets(DaraModel):
         self.export_id = export_id
         # The fileset ID of the protocol service export directory.
         self.fset_id = fset_id
-        # The exported directory of the protocol service.
+        # The export directory of the protocol service.
         self.path = path
         # The domain name of the protocol service export directory.
         self.protocol_mount_target_domain = protocol_mount_target_domain

@@ -17,11 +17,11 @@ class DescribeProtocolMountTargetRequest(DaraModel):
         next_token: str = None,
         protocol_service_ids: str = None,
     ):
-        # Ensures the idempotence of the request. Generate a unique parameter value from your client to ensure that the value is unique among different requests.
+        # Ensures the idempotency of the request. Generate a value from your client to ensure that the value is unique among different requests.
         # 
-        # ClientToken supports only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotency](https://help.aliyun.com/document_detail/25693.html).
         # 
-        # > If you do not specify this parameter, the system uses the RequestId of the API request as the ClientToken. The RequestId may vary for each API request.
+        # > If you do not specify this parameter, the system uses the RequestId of the API request as the ClientToken value. The RequestId may vary for each API request.
         self.client_token = client_token
         # The file system ID.
         # 
@@ -29,14 +29,14 @@ class DescribeProtocolMountTargetRequest(DaraModel):
         self.file_system_id = file_system_id
         # The filter keys for querying protocol service export directories.
         self.filters = filters
-        # The maximum number of results to return per query.
+        # The maximum number of results to return in each query.
         # 
-        #  - Valid values: 10 to 100.
+        #  - Valid values: 10 to 100
         # 
         # 
-        # - Default value: 20.
+        # - Default value: 20
         self.max_results = max_results
-        # The token used to initiate the next request when the response is truncated. You can use this token to retrieve the remaining results from where the truncation occurred.
+        # The token that is used for the next query. If not all results are returned in a query, a value is returned for the NextToken parameter. You can use this token in the next request to retrieve the remaining results.
         self.next_token = next_token
         # The list of protocol service IDs.
         self.protocol_service_ids = protocol_service_ids

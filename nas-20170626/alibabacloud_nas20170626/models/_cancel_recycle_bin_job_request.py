@@ -9,7 +9,9 @@ class CancelRecycleBinJobRequest(DaraModel):
         self,
         job_id: str = None,
     ):
-        # The job ID.
+        # The ID of the task that you want to cancel.
+        # 
+        # You can call the [ListRecycleBinJobs](https://help.aliyun.com/document_detail/2412172.html) operation to query the task ID.
         # 
         # This parameter is required.
         self.job_id = job_id

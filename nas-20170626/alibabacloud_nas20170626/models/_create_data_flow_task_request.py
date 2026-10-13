@@ -22,25 +22,25 @@ class CreateDataFlowTaskRequest(DaraModel):
         task_action: str = None,
         transfer_file_list_path: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests.
         # 
         # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         # 
-        # > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the value of RequestId as the value of ClientToken. The value of RequestId may be different for each API request.
         self.client_token = client_token
         # The conflict policy for files with the same name.
         # Valid values:
         # 
-        # - SKIP_THE_FILE: Skips files with the same name.
-        # - KEEP_LATEST: Compares the update time and keeps the latest version.
-        # - OVERWRITE_EXISTING: Forcibly overwrites files with the same name.
+        # - SKIP_THE_FILE: skips files with the same name.
+        # - KEEP_LATEST: compares the update time and keeps the latest version.
+        # - OVERWRITE_EXISTING: forcibly overwrites files with the same name.
         # > This parameter is required when the file system type is CPFS for Lingjun.
         self.conflict_policy = conflict_policy
         # Specifies whether to enable automatic creation of the folder if it does not exist.
         # Valid values:
         # 
-        # - true: Automatic creation of the folder is enabled.
-        # - false (default): Automatic creation of the folder is not enabled.
+        # - true: enables automatic creation of the folder.
+        # - false (default): does not automatically create the folder.
         # 
         # > - This parameter takes effect when TaskAction is set to Import.
         # > - Only CPFS for Lingjun 2.6.0 and later support this feature.
@@ -53,7 +53,7 @@ class CreateDataFlowTaskRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # - Metadata: the metadata of files, including attributes such as timestamp, ownership, and permission. If you select Metadata, only the metadata of files is imported. You can see the file, but when you access the file data, the data is loaded from the source storage on demand.
+        # - Metadata: the metadata of files, including the timestamp, ownership, permission, and other attributes. If you select Metadata, only the metadata of files is imported. You can view the file, but when you access the file data, the data is loaded from the source storage on demand.
         # - Data: the data blocks of files.
         # - MetaAndData: the metadata and data blocks of files.
         # > When TaskAction is set to Evict, the DataType parameter is required.
@@ -72,16 +72,16 @@ class CreateDataFlowTaskRequest(DaraModel):
         # > StreamImport and StreamExport are supported only by CPFS for Lingjun 2.6.0 and later.
         # Directory, EntryList, and TransferFileListPath are mutually exclusive parameters. You can specify only one of them.
         self.directory = directory
-        # Specifies whether to perform a dry run for this request.
+        # Specifies whether to perform a dry run.
         # 
-        # A dry run checks parameter validity, verifies inventory, and performs other checks without actually creating the instance or incurring fees.
+        # The dry run checks parameter validity and resource availability without actually creating the instance or incurring fees.
         # 
         # Valid values:
         # 
-        # - true: sends a dry run request without creating the instance. The check items include whether required parameters are specified, the request format, business limits, and File Storage NAS inventory. If the check fails, the corresponding error is returned. If the check succeeds, HTTP status code 200 is returned, but TaskId is empty.
-        # - false (default): sends a normal request. After the check succeeds, the instance is directly created.
+        # - true: performs a dry run without creating the instance. The system checks the required parameters, request syntax, service limits, and File Storage NAS inventory. If the request fails the dry run, the corresponding error is returned. If the request passes the dry run, the HTTP status code 200 is returned, but TaskId is empty.
+        # - false (default): performs a dry run and sends the request. If the request passes the dry run, the instance is created.
         self.dry_run = dry_run
-        # The target directory to which the data flow task is mapped.
+        # The target directory to which the data flow task maps.
         # Limits:
         #  - The value must start and end with a forward slash (/). /../ is not supported.
         #  - The value must be 1 to 1,023 characters in length.
@@ -100,7 +100,7 @@ class CreateDataFlowTaskRequest(DaraModel):
         # - The value must be encoded in UTF-8.
         # - The total length of the file list must be less than 64 KB.
         # - The file list must be in JSON format.
-        # - The path of each file must be 1 to 1,023 characters in length and must start with a forward slash (/).
+        # - Each file path must be 1 to 1,023 characters in length and must start with a forward slash (/).
         # - When TaskAction is set to Import, each element in the list represents an OSS object name.
         # - When TaskAction is set to Export, each element in the list represents a CPFS file path.
         # > Directory, EntryList, and TransferFileListPath are mutually exclusive parameters. You can specify only one of them.
@@ -116,7 +116,7 @@ class CreateDataFlowTaskRequest(DaraModel):
         # Filters directories under the specified directory and transfers the content of the included folders.
         # 
         # > - This parameter takes effect only when the Directory parameter is specified.
-        # > - The path of each folder must be 1 to 1,023 characters in length and must start and end with a forward slash (/). The total length cannot exceed 3,000 characters.
+        # > - Each folder path must be 1 to 1,023 characters in length and must start and end with a forward slash (/). The total length must not exceed 3,000 characters.
         # > - Only CPFS for Lingjun supports this feature.
         self.includes = includes
         # If you specify SrcTaskId, enter the data flow task ID. The system copies the TaskAction, DataType, and EntryList parameter information from the specified data flow task. You do not need to specify these parameters separately.
@@ -126,12 +126,12 @@ class CreateDataFlowTaskRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # - Import: data import from the source storage to CPFS.
+        # - Import: performs data import of specified data from the source storage to CPFS.
         # - Export: exports specified data from CPFS to the source storage.
-        # - StreamImport: batch data import from the source storage to CPFS.
+        # - StreamImport: performs batch data import of specified data from the source storage to CPFS.
         # - StreamExport: batch exports specified data from CPFS to the source storage.
-        # - Evict: releases data blocks of files on CPFS. After the release, only metadata is retained on CPFS. You can still query the file, but the data blocks are purged and do not occupy storage capacity on CPFS. When you access the file data, the data is loaded from the source storage on demand.
-        # - Inventory: obtains the file checklist managed by the data stream on CPFS. This provides the cache status of files in the data stream.
+        # - Evict: releases data blocks of files on CPFS. After the release, only metadata is retained on CPFS. You can still query the file, but the data blocks are purged and do not occupy storage capacity on CPFS. When you access the file data, the data is loaded from the source storage on demand as a data stream.
+        # - Inventory: obtains the file checklist managed by data flow on CPFS. This provides the cache status of files in the data flow.
         # > CPFS for Lingjun supports only Import, Export, StreamImport, and StreamExport. StreamImport and StreamExport are supported only by CPFS for Lingjun 2.6.0 and later.
         self.task_action = task_action
         # The OSS directory. Data is synchronized based on the content of CSV files in the OSS directory. Limits:

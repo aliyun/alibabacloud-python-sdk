@@ -10,9 +10,9 @@ class CreateFilesetResponseBody(DaraModel):
         fset_id: str = None,
         request_id: str = None,
     ):
-        # The fileset ID.
+        # Fileset ID。
         self.fset_id = fset_id
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

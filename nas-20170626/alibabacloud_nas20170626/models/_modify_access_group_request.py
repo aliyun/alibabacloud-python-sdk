@@ -16,17 +16,17 @@ class ModifyAccessGroupRequest(DaraModel):
         # Limits:
         # 
         # - The name must be 3 to 64 characters in length.
-        # - The name must start with a letter and can contain letters, digits, underscores (_), or hyphens (-).
+        # - The name must start with a letter and can contain letters, digits, underscores (_), and hyphens (-).
         # 
         # This parameter is required.
         self.access_group_name = access_group_name
-        # The permission group description.
+        # The description of the permission group.
         # 
         # Limits:
         # 
         # - By default, the description is the same as the permission group name. The description must be 2 to 128 characters in length.
         # - The description must start with a letter and cannot start with `http://` or `https://`.
-        # - The description can contain digits, colons (:), underscores (_), or hyphens (-).
+        # - The description can contain digits, colons (:), underscores (_), and hyphens (-).
         self.description = description
         # The file system type.
         # 

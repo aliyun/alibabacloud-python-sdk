@@ -10,7 +10,7 @@ class CreateLogAnalysisRequest(DaraModel):
         file_system_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the file system.
+        # The file system ID.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id

@@ -15,17 +15,17 @@ class DescribeAgenticSpacesRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # The file system ID.
+        # The ID of the file system.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
-        # The collection of filter conditions.
+        # The collection of filter key information.
         self.filters = filters
-        # The number of results per query.
+        # The number of entries to return for each query.
         # 
         # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
-        # The pagination token. Set this parameter to the value of NextToken that is returned in the previous API call.
+        # The query token. Set the value to the NextToken value returned from the previous call.
         self.next_token = next_token
 
     def validate(self):
@@ -83,8 +83,8 @@ class DescribeAgenticSpacesRequestFilters(DaraModel):
         # The name of the filter key. Valid values:
         # - AgenticSpaceIds
         self.key = key
-        # The value of the filter key. Wildcards are not supported.
-        # - AgenticSpaceIds: Only a single ID can be specified.
+        # The value of the filter key. This parameter does not support wildcards.
+        # - AgenticSpaceIds: You can specify only one ID.
         self.value = value
 
     def validate(self):

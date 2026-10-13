@@ -14,15 +14,19 @@ class TagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.TagResourcesRequestTag] = None,
     ):
-        # The resource IDs. Valid values of N: 1 to 50.
+        # The resource IDs. Valid values of array length: 1 to 50.
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # The resource type. Set the value to filesystem.
+        # The resource type.
+        # 
+        # Valid values:
+        # - filesystem: file system.
+        # - accesspoint: access point.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The details about the tags.
+        # The tags. Array length: 1 to 20. If the array contains multiple tag objects, the tag key (Key) must be unique.
         # 
         # This parameter is required.
         self.tag = tag
@@ -73,26 +77,23 @@ class TagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N to add to the resource.
+        # The tag key.
         # 
         # Limits:
         # 
-        # *   The tag key cannot be left empty.
-        # *   Valid values of N: 1 to 20.
-        # *   The tag key must be 1 to 128 characters in length.
-        # *   The tag key cannot start with `aliyun` or `acs:`.
-        # *   The tag key cannot contain `http://` or `https://`.
+        # - Cannot be empty or an empty string. 
+        # - Can be up to 128 characters in length.
+        # - Cannot start with `aliyun` or `acs:`.
+        # - Cannot contain `http://` or `https://`.
         # 
         # This parameter is required.
         self.key = key
-        # The value of tag N to add to the resource.
+        # The tag value.
         # 
         # Limits:
         # 
-        # *   Valid values of N: 1 to 20.
-        # *   The tag value must be 1 to 128 characters in length.
-        # *   The tag value cannot start with `aliyun` or `acs:`.
-        # *   The tag value cannot contain `http://` or `https://`.
+        # - Can be up to 128 characters in length.
+        # - Cannot contain `http://` or `https://`.
         # 
         # This parameter is required.
         self.value = value

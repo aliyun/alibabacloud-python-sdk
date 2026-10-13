@@ -14,7 +14,7 @@ class GetProtocolMountTargetResponseBody(DaraModel):
         protocol_mount_target: main_models.GetProtocolMountTargetResponseBodyProtocolMountTarget = None,
         request_id: str = None,
     ):
-        # If the response is truncated, you can use NextToken to send a subsequent request to retrieve the content after the current truncation point.
+        # The pagination token that is used in the next request to retrieve a new page of results. If the return results are truncated, use NextToken to initiate another request to retrieve the content after the current truncation position.
         self.next_token = next_token
         # The export directory information of the protocol service.
         self.protocol_mount_target = protocol_mount_target
@@ -97,9 +97,9 @@ class GetProtocolMountTargetResponseBodyProtocolMountTarget(DaraModel):
         # 
         # Valid values:
         # 
-        # - NFS: NFS protocol
-        # - SMB: SMB protocol
-        # - cpfs: the protocol type supported by CPFS file systems
+        # - NFS: NFS protocol.
+        # - SMB: SMB protocol.
+        # - cpfs: the protocol type supported by the CPFS file system.
         self.protocol_type = protocol_type
         # The status of the protocol service export directory. Valid values:
         # - CREATING: Being created.
@@ -112,7 +112,7 @@ class GetProtocolMountTargetResponseBodyProtocolMountTarget(DaraModel):
         self.v_switch_id = v_switch_id
         # The list of vSwitch IDs of the protocol service export.
         self.v_switch_ids = v_switch_ids
-        # The virtual private cloud (VPC) ID of the protocol service export.
+        # The VPC ID of the protocol service export.
         self.vpc_id = vpc_id
 
     def validate(self):

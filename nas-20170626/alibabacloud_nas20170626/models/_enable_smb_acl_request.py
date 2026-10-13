@@ -15,9 +15,9 @@ class EnableSmbAclRequest(DaraModel):
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
-        # The Base64-encoded content of the Keytab file. When using Kerberos authentication mode (default mode), the Keytab parameter is required.
+        # The Base64-encoded content of the keytab file. When you use the Kerberos authentication mode (default mode), the Keytab parameter is required.
         self.keytab = keytab
-        # The MD5-encrypted string of the Keytab file content.
+        # The MD5-encrypted string of the keytab file content.
         self.keytab_md_5 = keytab_md_5
 
     def validate(self):

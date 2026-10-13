@@ -17,18 +17,19 @@ class DescribeLifecyclePolicyLogsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The execution logs of the lifecycle management policy.
+        # The execution logs of the lifecycle policy.
         self.lifecycle_policy_logs = lifecycle_policy_logs
         # The page number.
         self.page_number = page_number
-        # The number of log entries per page.
+        # The number of log entries returned on each page.
         self.page_size = page_size
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The request status. Valid values:
+        # Indicates whether the request is successful.
         # 
-        # - true: The request was successful.
-        # - false: The request failed.
+        # Valid values:
+        # - true: The request is successful.
+        # - false: The request fails.
         self.success = success
         # The total number of log entries.
         self.total_count = total_count
@@ -103,28 +104,28 @@ class DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogs(DaraModel):
         summary: str = None,
         transit_rules: List[main_models.DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsTransitRules] = None,
     ):
-        # The time when the task was created. The time follows the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
+        # The time when the task was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
-        # The file data expiration and deletion rules. A maximum of one rule can be configured.
+        # The expiration and deletion rules for file data. You can configure up to one rule.
         self.delete_rules = delete_rules
-        # The execution paths of the specified retrieval task.
+        # The execution paths specified for the retrieval task.
         self.paths = paths
         # The file data retrieval rules.
         self.retrieve_rules = retrieve_rules
         # The status of the data retrieval task. Valid values:
-        # - PENDING: Being created.
-        # - RUNNING: Running.
-        # - STOPPED: Stopped.
-        # - FINISHED: Finished.
-        # - FAILED: Failed.
+        # - PENDING: The task is being created.
+        # - RUNNING: The task is running.
+        # - STOPPED: The task is stopped.
+        # - FINISHED: The task is completed.
+        # - FAILED: The task fails.
         self.status = status
         # The tiered storage type. Valid values:
-        # - InfrequentAccess: IA storage class (default).
-        # - Archive: Archive storage.
+        # - InfrequentAccess: IA storage class. This is the default value.
+        # - Archive: Archive storage class.
         self.storage_type = storage_type
-        # The task overview.
+        # The task summary.
         self.summary = summary
-        # The file data transit rules.
+        # The file data transition rules.
         self.transit_rules = transit_rules
 
     def validate(self):
@@ -224,12 +225,12 @@ class DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsTransitRules(Dar
         # The attribute of the rule.
         # 
         # Valid values:
-        # - Atime: the last access time of the file.
+        # - Atime: The last access time of the file.
         self.attribute = attribute
         # The threshold of the rule.
         # 
         # Valid values:
-        # - If Attribute is set to Atime, this parameter specifies the number of days since the file was last accessed. Valid values: 1 to 365.
+        # - If Attribute is set to Atime, the value indicates the number of days a file has not been accessed. Valid values: 1 to 365.
         self.threshold = threshold
 
     def validate(self):
@@ -265,12 +266,12 @@ class DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsRetrieveRules(Da
         threshold: str = None,
     ):
         # The attribute of the rule. Valid values:
-        # - RetrieveType: the retrieval method.
+        # - RetrieveType: The retrieval method.
         self.attribute = attribute
         # The threshold of the rule. Valid values:
-        # - RetrieveType
-        #     - AfterVisit: Supported when LifecyclePolicyType=Auto. Indicates best-effort recall on visit.
-        #     - All: Supported when LifecyclePolicyType=OnDemand. Indicates retrieving all data.
+        # - RetrieveType:
+        #   - AfterVisit: Supported when LifecyclePolicyType is set to Auto. This value indicates best-effort recall on visit.
+        #   - All: Supported when LifecyclePolicyType is set to OnDemand. This value indicates that all data is retrieved.
         self.threshold = threshold
 
     def validate(self):
@@ -308,12 +309,12 @@ class DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsDeleteRules(Dara
         # The attribute of the rule.
         # 
         # Valid values:
-        # - Atime: the last access time of the file.
+        # - Atime: The last access time of the file.
         self.attribute = attribute
         # The threshold of the rule.
         # 
         # Valid values:
-        # - If Attribute is set to Atime, this parameter specifies the number of days since the file was last accessed. Valid values: 1 to 365.
+        # - If Attribute is set to Atime, the value indicates the number of days a file has not been accessed. Valid values: 1 to 365.
         self.threshold = threshold
 
     def validate(self):

@@ -15,7 +15,7 @@ class DescribeAgenticSpacesResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.agentic_spaces = agentic_spaces
-        # The pagination token. Set this parameter to the value of NextToken that is returned in the previous API call.
+        # The query token. Set the value to the NextToken value returned from the previous call.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id

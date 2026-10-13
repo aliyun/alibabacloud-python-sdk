@@ -14,7 +14,7 @@ class EnableRecycleBinRequest(DaraModel):
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
-        # The retention period of the files in the recycle bin. Unit: days.
+        # The retention period of files in the recycle bin. Unit: days.
         # 
         # Valid values: 1 to 180.
         # 

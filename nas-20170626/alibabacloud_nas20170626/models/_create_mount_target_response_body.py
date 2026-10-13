@@ -58,7 +58,7 @@ class CreateMountTargetResponseBodyMountTargetExtra(DaraModel):
         self,
         dual_stack_mount_target_domain: str = None,
     ):
-        # The dual-stack mount target that supports both IPv4 and IPv6.
+        # The IPv4 and IPv6 dual-stack mount target.
         self.dual_stack_mount_target_domain = dual_stack_mount_target_domain
 
     def validate(self):

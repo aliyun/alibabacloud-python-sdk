@@ -14,18 +14,18 @@ class ModifyProtocolMountTargetRequest(DaraModel):
         file_system_id: str = None,
         protocol_service_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. Generate a unique value from your client to ensure that different requests have unique ClientToken values.
+        # The client token that is used to ensure the idempotence of the request. Generate a unique value from your client to ensure that the value is unique among different requests.
         # 
-        # ClientToken supports only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         # 
-        # > If you do not specify this parameter, the system uses the RequestId of the API request as the ClientToken. The RequestId may vary for each API request.
+        # > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may differ for each API request.
         self.client_token = client_token
         # The description of the export directory of the protocol service.
         # 
         # Limits:
         # 
         # - The description must be 2 to 128 characters in length.
-        # - The description must start with a letter or Chinese character and cannot start with `http://` or `https://`.
+        # - The description must start with a letter or a Chinese character and cannot start with `http://` or `https://`.
         # - The description can contain digits, colons (:), underscores (_), and hyphens (-).
         self.description = description
         # Specifies whether to perform a dry run for this modification request.

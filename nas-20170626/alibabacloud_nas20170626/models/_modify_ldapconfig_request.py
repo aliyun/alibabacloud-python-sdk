@@ -12,9 +12,9 @@ class ModifyLDAPConfigRequest(DaraModel):
         search_base: str = None,
         uri: str = None,
     ):
-        # The LDAP entry.
+        # The distinguished name (DN) of the entry to bind to the LDAP directory.
         self.bind_dn = bind_dn
-        # The ID of the file system.
+        # The file system ID.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
@@ -22,7 +22,7 @@ class ModifyLDAPConfigRequest(DaraModel):
         # 
         # This parameter is required.
         self.search_base = search_base
-        # The LDAP service address.
+        # The LDAP server address.
         # 
         # This parameter is required.
         self.uri = uri

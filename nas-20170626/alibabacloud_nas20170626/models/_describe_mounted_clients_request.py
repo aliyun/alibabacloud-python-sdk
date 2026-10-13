@@ -14,24 +14,24 @@ class DescribeMountedClientsRequest(DaraModel):
         page_size: int = None,
         region_id: str = None,
     ):
-        # The IP address of the client.
+        # The client IP address.
         # 
-        # *   If you specify an IP address, the operation checks whether the client list includes this IP address. If the client list includes the IP address, the operation returns the IP address. If the client list does not include the IP address, the operation returns an empty list.
-        # *   If you do not specify an IP address, the operation returns the IP addresses of all clients that have accessed the specified NAS file system within the last minute.
+        # - If you specify a client IP address, the operation checks whether the client list contains the specified client IP address. If the list contains the IP address, the IP address is returned. If the list does not contain the IP address, an empty list is returned.
+        # - If you do not specify a client IP address, the operation returns all client IP addresses that have used the NAS file system within the last minute.
         self.client_ip = client_ip
-        # The ID of the file system.
+        # The file system ID.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
-        # The domain name of the mount target.
+        # The mount target.
         # 
         # This parameter is required.
         self.mount_target_domain = mount_target_domain
-        # The page number.
+        # The page number of the client list.
         # 
-        # Pages start from page 1. Default value: 1.
+        # Start value (default value): 1.
         self.page_number = page_number
-        # The number of IP addresses to return on each page.
+        # The number of client IP addresses on each page in a paged query.
         # 
         # Valid values: 1 to 100.
         # 

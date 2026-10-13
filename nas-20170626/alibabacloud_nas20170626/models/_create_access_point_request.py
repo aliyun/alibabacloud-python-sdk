@@ -41,10 +41,10 @@ class CreateAccessPointRequest(DaraModel):
         # Specifies whether to enable the RAM policy.
         # Valid values:
         # 
-        # - true: enabled.
-        # - false (default): not enabled.
+        # - true: Enabled.
+        # - false (default): Not enabled.
         # 
-        # > After you enable the access point RAM policy, all Resource Access Management (RAM) users are denied access to mount and access data through the access point by default. You must grant the corresponding access permissions through authorization and mount the file system through the access point. After you disable the RAM policy, the access point allows anonymous mounting. For more information about how to configure access point permissions, see [Configure an access point policy](https://help.aliyun.com/document_detail/2545998.html).
+        # > After you enable the RAM policy for the access point, all Resource Access Management (RAM) users are denied access to mount and access data through the access point by default. You must grant authorization for the corresponding access permissions to the accounts and mount the file system through the access point. After you disable the RAM policy, the access point allows anonymous mounting. For more information about how to configure access point permissions, see [Configure an access point policy](https://help.aliyun.com/document_detail/2545998.html).
         # 
         # >For Agentic file systems, this parameter must be set to true.
         self.enabled_ram = enabled_ram
@@ -62,7 +62,7 @@ class CreateAccessPointRequest(DaraModel):
         # This parameter is required if the RootDirectory directory does not exist.
         # >Not supported for Agentic file systems.
         self.owner_user_id = owner_user_id
-        # The POSIX permission. Default value: "0755". Limit: The value must be a four-digit octal number that starts with 0.
+        # The POSIX permission. Default value: "0755". The value must be a four-digit octal number that starts with 0.
         # 
         # This parameter takes effect after you specify the OwnerUserId and OwnerGroupId parameters.
         # >Not supported for Agentic file systems.
@@ -80,7 +80,7 @@ class CreateAccessPointRequest(DaraModel):
         # Default value: "/". If the access point directory does not exist, you must also specify the OwnerUserId and OwnerGroupId parameters.
         # >Not supported for Agentic file systems.
         self.root_directory = root_directory
-        # The list of access point tags.
+        # The access point tags.
         self.tag = tag
         # The virtual private cloud (VPC) ID.
         # 

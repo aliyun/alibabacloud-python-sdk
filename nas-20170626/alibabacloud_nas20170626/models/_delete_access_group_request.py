@@ -10,11 +10,11 @@ class DeleteAccessGroupRequest(DaraModel):
         access_group_name: str = None,
         file_system_type: str = None,
     ):
-        # The name of the access group to delete.
+        # The name of the permission group to delete.
         # 
         # This parameter is required.
         self.access_group_name = access_group_name
-        # The type of the file system.
+        # The file system type.
         # 
         # Valid values:
         # - standard (default): General-purpose NAS

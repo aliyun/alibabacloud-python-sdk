@@ -46,7 +46,7 @@ class ModifyAccessRuleRequest(DaraModel):
         # 
         # Default value: 1 (highest priority).
         self.priority = priority
-        # The read and write permissions of the authorized object on the file system.
+        # The read and write permissions on the file system granted to the authorized object.
         # 
         # Valid values:
         # 
@@ -59,7 +59,7 @@ class ModifyAccessRuleRequest(DaraModel):
         # 
         # > You must specify either SourceCidrIp or Ipv6SourceCidrIp. You cannot leave both parameters empty, and you cannot specify both parameters at the same time.
         self.source_cidr_ip = source_cidr_ip
-        # The authorization of the system user of the authorized object on the file system.
+        # The authorization for the system user of the authorized object to access the file system.
         # 
         # Valid values:
         # 
@@ -67,7 +67,7 @@ class ModifyAccessRuleRequest(DaraModel):
         # - root_squash: maps the root user to the nobody user when the root user accesses the file system.
         # - all_squash: maps all users to the nobody user regardless of the user identity used to access the file system.
         # 
-        # The nobody user is a default user in Linux. This user can access only public content on the server and has low privileges and high security.
+        # The nobody user is the default user in Linux. This user can access only public content on the server and has low privileges and high security.
         self.user_access_type = user_access_type
 
     def validate(self):

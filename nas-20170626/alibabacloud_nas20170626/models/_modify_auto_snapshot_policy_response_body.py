@@ -9,9 +9,7 @@ class ModifyAutoSnapshotPolicyResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # The request ID.
-        # 
-        # Every response returns a unique request ID regardless of whether the request is successful.
+        # The request ID. A request ID is returned regardless of whether the API call succeeds.
         self.request_id = request_id
 
     def validate(self):

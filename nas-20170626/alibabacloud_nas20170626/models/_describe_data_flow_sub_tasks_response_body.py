@@ -15,9 +15,9 @@ class DescribeDataFlowSubTasksResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.data_flow_sub_task = data_flow_sub_task
-        # If the response is truncated, you can use NextToken to send a subsequent request to retrieve the remaining content from the point of truncation.
+        # The token that is used to retrieve the next page of results when the returned results are truncated. You can use NextToken to initiate another request to retrieve the results after the current truncation point.
         self.next_token = next_token
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

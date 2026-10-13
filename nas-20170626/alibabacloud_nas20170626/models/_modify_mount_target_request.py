@@ -34,10 +34,10 @@ class ModifyMountTargetRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # - Active: active
-        # - Inactive: inactive
+        # - Active: Active.
+        # - Inactive: Inactive.
         # 
-        # > Only General-purpose NAS supports changing the mount target status.
+        # > Currently, only General-purpose NAS supports changing the mount target status.
         self.status = status
 
     def validate(self):

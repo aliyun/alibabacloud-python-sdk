@@ -13,9 +13,9 @@ class DescribeFilesystemsAssociatedHpnZonesResponseBody(DaraModel):
         filesystems: List[main_models.DescribeFilesystemsAssociatedHpnZonesResponseBodyFilesystems] = None,
         request_id: str = None,
     ):
-        # The list of HpnZones associated with the file system.
+        # The list of HpnZones associated with the file systems.
         self.filesystems = filesystems
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

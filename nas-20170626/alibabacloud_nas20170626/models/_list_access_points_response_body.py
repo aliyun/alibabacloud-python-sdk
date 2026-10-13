@@ -106,17 +106,17 @@ class ListAccessPointsResponseBodyAccessPoints(DaraModel):
         self.access_point_name = access_point_name
         # AgenticSpace Id。
         self.agentic_space_id = agentic_space_id
-        # The time when the access point was created. The time follows the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
+        # The time when the access point was created. The time follows the ISO 8601 standard and is displayed in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.create_time = create_time
         # The time when the agentic space was created. The time follows the ISO 8601 standard. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.create_time_utc = create_time_utc
-        # The access point domain name.
+        # The domain name of the access point.
         self.domain_name = domain_name
         # Indicates whether the RAM policy is enabled.
         self.enabled_ram = enabled_ram
         # The file system ID.
         self.file_system_id = file_system_id
-        # The time when the access point was last modified. The time follows the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
+        # The time when the access point was last modified. The time follows the ISO 8601 standard and is displayed in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.modify_time = modify_time
         # The time when the agentic space was last modified. The time follows the ISO 8601 standard. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.modify_time_utc = modify_time_utc
@@ -138,10 +138,10 @@ class ListAccessPointsResponseBodyAccessPoints(DaraModel):
         # 
         # Valid values:
         # 
-        # - Active: Available.
-        # - Inactive: Unavailable.
-        # - Pending: Being created.
-        # - Deleting: Being deleted.
+        # - Active: The access point is available.
+        # - Inactive: The access point is unavailable.
+        # - Pending: The access point is being created.
+        # - Deleting: The access point is being deleted.
         # 
         # > You can mount a file system only when the status is Active.
         self.status = status
@@ -344,9 +344,9 @@ class ListAccessPointsResponseBodyAccessPointsRootPathPermission(DaraModel):
         owner_user_id: int = None,
         permission: str = None,
     ):
-        # The owner group ID.
+        # The file group ID of the owner.
         self.owner_group_id = owner_group_id
-        # The owner user ID.
+        # The user ID of the owner.
         self.owner_user_id = owner_user_id
         # The POSIX permission.
         self.permission = permission
@@ -390,9 +390,9 @@ class ListAccessPointsResponseBodyAccessPointsPosixUser(DaraModel):
         posix_secondary_group_ids: List[int] = None,
         posix_user_id: int = None,
     ):
-        # The POSIX group ID.
+        # The POSIX user group ID.
         self.posix_group_id = posix_group_id
-        # The secondary group ID.
+        # The secondary user group ID.
         self.posix_secondary_group_ids = posix_secondary_group_ids
         # The POSIX user ID.
         self.posix_user_id = posix_user_id

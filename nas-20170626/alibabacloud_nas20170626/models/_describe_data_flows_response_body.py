@@ -15,7 +15,7 @@ class DescribeDataFlowsResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.data_flow_info = data_flow_info
-        # The pagination token that is used in the next request to retrieve a new page of results. If the return results are truncated, use NextToken to obtain content starting from the truncation point.
+        # The token that determines the start point of the next query. If the returned results are truncated, you can use NextToken to initiate another request to retrieve the results after the truncation point.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id

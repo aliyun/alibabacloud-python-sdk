@@ -10,17 +10,17 @@ class DescribeZonesRequest(DaraModel):
         file_system_type: str = None,
         region_id: str = None,
     ):
-        # The type of the file system.
+        # The file system type.
         # 
-        # Valid value:
+        # Valid values:
         # 
-        # *   standard: General-purpose Apsara File Storage NAS (NAS) file system
-        # *   extreme: Extreme NAS file system.
-        # *   cpfs: CPFS file system.
+        # - standard (default): General-purpose NAS.
+        # - extreme: Extreme NAS file system.
+        # - cpfs: Cloud Parallel File Storage.
         self.file_system_type = file_system_type
-        # The ID of the region where you want to query zones.
+        # The ID of the region where the zones reside.
         # 
-        # You can call the DescribeRegions operation to query the latest region list.
+        # You can call DescribeRegions to query the latest region list.
         # 
         # This parameter is required.
         self.region_id = region_id

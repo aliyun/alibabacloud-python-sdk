@@ -9799,6 +9799,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyLifecyclePolicyResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
         if not DaraCore.is_null(request.file_system_id):
             query['FileSystemId'] = request.file_system_id
         if not DaraCore.is_null(request.lifecycle_policy_id):
@@ -9837,6 +9839,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyLifecyclePolicyResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
         if not DaraCore.is_null(request.file_system_id):
             query['FileSystemId'] = request.file_system_id
         if not DaraCore.is_null(request.lifecycle_policy_id):

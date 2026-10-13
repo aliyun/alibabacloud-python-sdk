@@ -35,7 +35,7 @@ class CancelDirQuotaRequest(DaraModel):
         # 
         # - Uid: user ID
         # - Gid: user group ID
-        # - AllUsers: all users.
+        # - AllUsers: all users
         # 
         # This parameter is required.
         self.user_type = user_type

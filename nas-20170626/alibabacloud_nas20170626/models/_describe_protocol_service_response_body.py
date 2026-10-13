@@ -14,9 +14,9 @@ class DescribeProtocolServiceResponseBody(DaraModel):
         protocol_services: List[main_models.DescribeProtocolServiceResponseBodyProtocolServices] = None,
         request_id: str = None,
     ):
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # The marker used to retrieve the remaining protocol services.
         self.next_token = next_token
-        # The information about protocol service list.
+        # The list of protocol service information.
         self.protocol_services = protocol_services
         # The request ID.
         self.request_id = request_id
@@ -80,56 +80,52 @@ class DescribeProtocolServiceResponseBodyProtocolServices(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The time when the protocol service was created. The time is displayed in UTC.
+        # The time when the protocol service was created, in UTC.
         self.create_time = create_time
         # The description of the protocol service.
         # 
         # Limits:
-        # 
-        # *   The description must be 2 to 128 characters in length.
-        # *   The description must start with a letter and cannot start with `http://` or `https://`.
-        # *   The description can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        # - The description must be 2 to 128 characters in length.
+        # - The description must start with a letter and cannot start with `http://` or `https://`.
+        # - The description can contain digits, colons (:), underscores (_), or hyphens (-).
         self.description = description
-        # The ID of the file system.
+        # The file system ID.
         self.file_system_id = file_system_id
-        # The base throughput of the protocol service. Unit: MB/s.
+        # The base throughput of the protocol node. Unit: MB/s.
         self.instance_base_throughput = instance_base_throughput
-        # The burst throughput of the protocol service. Unit: MB/s.
+        # The burst throughput of the protocol node. Unit: MB/s.
         self.instance_burst_throughput = instance_burst_throughput
-        # The memory cache size of the protocol service. Unit: GiB.
+        # The memory cache size of the protocol node. Unit: GiB.
         self.instance_ram = instance_ram
-        # The time when the protocol service was modified. The time is displayed in UTC.
+        # The time when the protocol service was last modified, in UTC.
         self.modify_time = modify_time
-        # The total number of CPFS directories and filesets exported in the protocol service.
+        # The total number of CPFS directories and filesets exported in this protocol service.
         self.mount_target_count = mount_target_count
-        # The ID of the protocol service.
+        # The protocol service ID.
         self.protocol_service_id = protocol_service_id
-        # The specification of the protocol service.
-        # 
-        # *   Valid value: General.
-        # *   Default value: General.
+        # The specification of the protocol service cluster.
+        # - Valid values: General
+        # - Default value: General
         self.protocol_spec = protocol_spec
         # The throughput of the protocol service. Unit: MB/s.
         self.protocol_throughput = protocol_throughput
         # The protocol type supported by the protocol service.
         # 
         # Valid values:
-        # 
-        # *   NFS: The protocol service supports access over the Network File System (NFS) protocol.
+        #  - NFS: The protocol service supports NFS protocol access.
         self.protocol_type = protocol_type
         # The status of the protocol service.
         # 
         # Valid values:
-        # 
-        # *   Creating: The protocol service is being created.
-        # *   Starting: The protocol service is being started.
-        # *   Running: The protocol service is running.
-        # *   Updating: The protocol service is being updated.
-        # *   Deleting: The protocol service is being deleted.
-        # *   Stopping: The protocol service is being stopped.
-        # *   Stopped: The protocol service is stopped.
+        # - Creating: The protocol service is being created.
+        # - Starting: The protocol service is being started.
+        # - Running: The protocol service is available.
+        # - Updating: The protocol service is being updated.
+        # - Deleting: The protocol service is being deleted.
+        # - Stopping: The protocol service is being stopped.
+        # - Stopped: The protocol service is stopped.
         self.status = status
-        # The VSW ID associated with the protocol service.
+        # The vSwitch ID associated with the protocol service.
         self.v_switch_id = v_switch_id
         # The VPC ID associated with the protocol service.
         self.vpc_id = vpc_id

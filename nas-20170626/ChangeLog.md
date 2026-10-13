@@ -1,3 +1,7 @@
+2026-10-13 Version: 3.7.4
+- Update API ModifyLifecyclePolicy: add request parameters Description.
+
+
 2026-09-21 Version: 3.7.3
 - Update API DescribeFileSystems: add response parameters Body.FileSystems.$.AutoUpgradeConfig.
 - Update API ModifyFileSystem: add request parameters AutoUpgradeConfig.

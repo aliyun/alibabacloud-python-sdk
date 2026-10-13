@@ -20,7 +20,7 @@ class ModifyFileSystemRequest(DaraModel):
         # Limits:
         # 
         # - The description must be 2 to 128 characters in length.
-        # - The description must start with a letter. It cannot start with `http://` or `https://`.
+        # - The description must start with a letter or Chinese character and cannot start with `http://` or `https://`.
         # - The description can contain digits, colons (:), underscores (_), or hyphens (-).
         self.description = description
         # The file system ID.
@@ -87,11 +87,10 @@ class ModifyFileSystemRequestOptions(DaraModel):
     ):
         # Specifies whether to enable the SMB Access-Based Enumeration (ABE) feature.
         self.enable_abe = enable_abe
-        # Specifies whether the OpLock feature is enabled.
-        # 
+        # Specifies whether to enable the OpLock feature.
         # Valid values:
         # - true: Enabled.
-        # - false: Not enabled.
+        # - false: Disabled.
         # > Only file systems of the SMB Protocol Type are supported.
         self.enable_oplock = enable_oplock
         # Specifies whether the Lingjun VSC mount target supports only access point-based access.

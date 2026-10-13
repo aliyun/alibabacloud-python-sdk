@@ -22,7 +22,7 @@ class CreateLifecyclePolicyRequest(DaraModel):
         storage_type: str = None,
         transit_rules: List[main_models.CreateLifecyclePolicyRequestTransitRules] = None,
     ):
-        # The file data expiration and deletion rules. You can configure up to one rule.
+        # The data expiration and deletion rules. You can configure up to one rule.
         self.delete_rules = delete_rules
         # The lifecycle policy description.
         # 
@@ -46,11 +46,11 @@ class CreateLifecyclePolicyRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # - DEFAULT_ATIME_14: files that have not been accessed for 14 days.
-        # - DEFAULT_ATIME_30: files that have not been accessed for 30 days.
-        # - DEFAULT_ATIME_60: files that have not been accessed for 60 days.
-        # - DEFAULT_ATIME_90: files that have not been accessed for 90 days.
-        # - DEFAULT_ATIME_180: files that have not been accessed for 180 days. DEFAULT_ATIME_180 is supported only when StorageType is set to Archive.
+        # - DEFAULT_ATIME_14: files not accessed in the last 14 days.
+        # - DEFAULT_ATIME_30: files not accessed in the last 30 days.
+        # - DEFAULT_ATIME_60: files not accessed in the last 60 days.
+        # - DEFAULT_ATIME_90: files not accessed in the last 90 days.
+        # - DEFAULT_ATIME_180: files not accessed in the last 180 days. DEFAULT_ATIME_180 is supported only when StorageType is set to Archive.
         # >- If an IA storage class policy has already been configured for the directory, the archive policy duration must be longer than the IA storage class policy duration.
         # > - Only General-purpose NAS supports this parameter.
         self.lifecycle_rule_name = lifecycle_rule_name
@@ -63,20 +63,20 @@ class CreateLifecyclePolicyRequest(DaraModel):
         self.path = path
         # The absolute paths of directories associated with the lifecycle management policy.
         self.paths = paths
-        # The file data retrieval rules. You can configure up to one rule.
+        # The data retrieval rules. You can configure up to one rule.
         # >Only CPFS for Lingjun file systems are supported.
         # 
         # >When LifecyclePolicyType is set to OnDemand, at least one of TransitRules or RetrieveRules must be specified.
         self.retrieve_rules = retrieve_rules
         # The storage tiering type.
         # - InfrequentAccess: IA storage class.
-        # - Archive: Archive storage class.
+        # - Archive: Archive storage.
         # 
         # >General-purpose NAS supports InfrequentAccess and Archive. CPFS for Lingjun supports only InfrequentAccess.
         # 
         # This parameter is required.
         self.storage_type = storage_type
-        # The file data transit rules. You can configure up to one rule.
+        # The data transit rules. You can configure up to one rule.
         # 
         # >Supported only when LifecyclePolicyType is set to Auto for CPFS for Lingjun file systems.
         self.transit_rules = transit_rules
@@ -196,7 +196,7 @@ class CreateLifecyclePolicyRequestTransitRules(DaraModel):
         # The rule attribute.
         # 
         # Valid values:
-        # - Atime: the last access time of the file.
+        # - Atime: the access time of the file.
         self.attribute = attribute
         # The rule threshold.
         # 
@@ -280,7 +280,7 @@ class CreateLifecyclePolicyRequestDeleteRules(DaraModel):
         # The rule attribute.
         # 
         # Valid values:
-        # - Atime: the last access time of the file.
+        # - Atime: the access time of the file.
         self.attribute = attribute
         # The rule threshold.
         # 

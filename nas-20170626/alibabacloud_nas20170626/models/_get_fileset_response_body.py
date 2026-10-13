@@ -11,7 +11,7 @@ class GetFilesetResponseBody(DaraModel):
         data: main_models.GetFilesetResponseBodyData = None,
         request_id: str = None,
     ):
-        # The response parameters.
+        # The data details.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -59,52 +59,49 @@ class GetFilesetResponseBodyData(DaraModel):
         status: str = None,
         update_time: str = None,
     ):
-        # The time when the fileset was created.
+        # The time when the Fileset was created.
         # 
-        # Return format: `yyyy-MM-dd HH:mm:ss`
+        # Format: `yyyy-MM-dd HH:mm:ss`.
         self.create_time = create_time
-        # Specifies whether the fileset is protected from being released through the console or the [DeleteFileset](https://help.aliyun.com/document_detail/2402263.html) operation.
+        # The release protection property of the instance. Specifies whether the instance can be released from the console or by calling the [DeleteFileset](https://help.aliyun.com/document_detail/2402263.html) operation.
         # 
-        # *   true: Enables release protection. The fileset cannot be released.
-        # *   false (default): Disables release protection. The fileset can be released.
+        # -   true: Release protection is enabled.
+        # -   false (default): Release protection is disabled.
         # 
-        # >  This parameter can protect filesets only against manual releases, but not against automatic releases.
+        # > This property applies only to manual release operations and does not apply to system-initiated release operations.
         self.deletion_protection = deletion_protection
-        # The description of the fileset.
+        # The description of the Fileset.
         self.description = description
-        # The usage of the file quantity.
-        # 
-        # >  Only CPFS for LINGJUN V2.7.0 and later support this parameter.
+        # The file count usage.
+        # > Only CPFS for Lingjun 2.7.0 and later support this parameter.
         self.file_count_usage = file_count_usage
-        # The ID of the file system.
+        # The file system ID.
         # 
-        # *   The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-125487\\*\\*\\*\\*.
-        # *   The IDs of CPFS for Lingjun file systems must start with `bmcpfs-`. Example: bmcpfs-0015\\*\\*\\*\\*.
+        # - CPFS: The ID must start with `cpfs-`, such as cpfs-125487\\*\\*\\*\\*.
+        # 
+        # - CPFS for Lingjun: The ID must start with `bmcpfs-`, such as bmcpfs-0015\\*\\*\\*\\*.
         self.file_system_id = file_system_id
-        # The directory of the fileset in the CPFS file system.
+        # The path of the Fileset in the CPFS file system.
         self.file_system_path = file_system_path
-        # The fileset ID.
-        # 
-        # >  This parameter is required for CPFS file systems.
+        # The Fileset ID.
+        # > This parameter is required if the file system type is CPFS.
         self.fset_id = fset_id
         # The quota information.
-        # 
-        # >  Only CPFS for Lingjun V2.7.0 and later support this parameter.
+        # > Only CPFS for Lingjun 2.7.0 and later support this parameter.
         self.quota = quota
         # The capacity usage. Unit: bytes.
-        # 
-        # >  Only CPFS for Lingjun V2.7.0 and later support this parameter.
+        # > Only CPFS for Lingjun 2.7.0 and later support this parameter.
         self.space_usage = space_usage
-        # The fileset status. Valid values:
+        # The status of the Fileset. Valid values:
         # 
-        # *   CREATING: The fileset is being created.
-        # *   CREATED: The fileset has been created and is running properly.
-        # *   RELEASING: The fileset is being released.
-        # *   RELEASED: The fileset has been deleted.
+        # - CREATING: The Fileset is being created.
+        # - CREATED: The Fileset is created and running as expected. 
+        # - RELEASING: The Fileset is being released.
+        # - RELEASED: The Fileset is deleted.
         self.status = status
-        # The time when the fileset was last updated.
+        # The time when the Fileset was last updated.
         # 
-        # Return format: `yyyy-MM-dd HH:mm:ss`
+        # Format: `yyyy-MM-dd HH:mm:ss`.
         self.update_time = update_time
 
     def validate(self):
@@ -195,17 +192,19 @@ class GetFilesetResponseBodyDataQuota(DaraModel):
         file_count_limit: int = None,
         size_limit: int = None,
     ):
-        # The file quantity quota. Valid values:
+        # The file count limit of the quota. Value range:
         # 
-        # *   Minimum value: 10,000.
-        # *   Maximum value: 10,000,000,000.
+        # - Minimum value: 10,000.
+        # 
+        # - Maximum value: 10,000,000,000.
         self.file_count_limit = file_count_limit
-        # The total quota capacity limit. Unit: bytes.
+        # The total capacity limit of the quota. Unit: bytes.
         # 
-        # Valid values:
+        # Value range:
         # 
-        # *   Minimum value: 10,737,418,240 (10 GiB).
-        # *   Step size: 1,073,741,824 (1 GiB).
+        # - Minimum value: 10,737,418,240 (10 GiB).
+        # 
+        # - Increment: 1,073,741,824 (1 GiB).
         self.size_limit = size_limit
 
     def validate(self):

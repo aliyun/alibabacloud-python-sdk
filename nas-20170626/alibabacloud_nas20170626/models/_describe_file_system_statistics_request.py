@@ -10,11 +10,11 @@ class DescribeFileSystemStatisticsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The page number.
+        # The page number of the list.
         # 
-        # Pages start from page 1. Default value: 1.
+        # Start value (default value): 1.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of file system statistics entries per page in a paging query.
         # 
         # Valid values: 1 to 100.
         # 

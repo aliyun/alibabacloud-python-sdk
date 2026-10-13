@@ -33,7 +33,7 @@ class ListLifecycleRetrieveJobsRequest(DaraModel):
         self.status = status
         # The storage class. Valid values:
         # - InfrequentAccess: IA storage class.
-        # - Archive: Archive storage.
+        # - Archive: Archive storage class.
         # > If StorageType is not specified, data retrieval tasks of all storage classes are returned.
         self.storage_type = storage_type
 

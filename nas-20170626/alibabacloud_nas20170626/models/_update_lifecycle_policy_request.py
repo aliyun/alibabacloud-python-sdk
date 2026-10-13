@@ -39,14 +39,14 @@ class UpdateLifecyclePolicyRequest(DaraModel):
         self.lifecycle_policy_id = lifecycle_policy_id
         # The absolute paths of the directories associated with the lifecycle management policy.
         self.paths = paths
-        # The data retrieval rules. You can configure up to one rule.
+        # The data retrieval rules. A maximum of one rule can be configured.
         # > Only CPFS for Lingjun file systems are supported.
         self.retrieve_rules = retrieve_rules
         # The tiered storage type.
         # - InfrequentAccess: IA storage class (default).
         # - Archive: Archive storage class.
         self.storage_type = storage_type
-        # The data transit rules. You can configure up to one rule.
+        # The data transit rules. A maximum of one rule can be configured.
         # 
         # > This parameter is supported only when LifecyclePolicyType is set to Auto for CPFS for Lingjun file systems.
         self.transit_rules = transit_rules
@@ -148,7 +148,7 @@ class UpdateLifecyclePolicyRequestTransitRules(DaraModel):
         # The attribute of the rule.
         # 
         # Valid values:
-        # - Atime: the last access time of the file.
+        # - Atime: the access time of the file.
         self.attribute = attribute
         # The threshold of the rule.
         # 
@@ -194,7 +194,7 @@ class UpdateLifecyclePolicyRequestRetrieveRules(DaraModel):
         # The threshold of the rule. Valid values:
         # - RetrieveType
         #     - AfterVisit: supported when LifecyclePolicyType is set to Auto. Indicates best-effort recall on visit.
-        #     - All: supported when LifecyclePolicyType is set to OnDemand. Indicates retrieving all data.
+        #     - All: supported when LifecyclePolicyType is set to OnDemand. Indicates retrieval of all data.
         self.threshold = threshold
 
     def validate(self):
@@ -232,7 +232,7 @@ class UpdateLifecyclePolicyRequestDeleteRules(DaraModel):
         # The attribute of the rule.
         # 
         # Valid values:
-        # - Atime: the last access time of the file.
+        # - Atime: the access time of the file.
         self.attribute = attribute
         # The threshold of the rule.
         # 

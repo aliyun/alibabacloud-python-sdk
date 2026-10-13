@@ -98,7 +98,7 @@ class DescribeLifecyclePoliciesResponseBodyLifecyclePolicies(DaraModel):
     ):
         # The time when the lifecycle management policy was created.
         # 
-        # The time follows the ISO 8601 standard in the format: `yyyy-MM-ddTHH:mm:ssZ`.
+        # The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format.
         self.create_time = create_time
         # The file data expiration and deletion rules. A maximum of one rule can be configured.
         self.delete_rules = delete_rules
@@ -126,7 +126,7 @@ class DescribeLifecyclePoliciesResponseBodyLifecyclePolicies(DaraModel):
         self.paths = paths
         # The file data retrieval rules.
         self.retrieve_rules = retrieve_rules
-        # The storage type. Valid values:
+        # The storage tiering type. Valid values:
         # - InfrequentAccess: IA storage class.
         # - Archive: Archive storage class.
         self.storage_type = storage_type
@@ -339,7 +339,7 @@ class DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesDeleteRules(DaraMode
         # The threshold of the rule.
         # 
         # Valid values:
-        # - When Attribute is set to Atime, the value indicates the number of days since the file was last accessed. Valid values: 1 to 365.
+        # - If Attribute is set to Atime, this value indicates the number of days since the file was last accessed. Valid values: 1 to 365.
         self.threshold = threshold
 
     def validate(self):

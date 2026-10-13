@@ -23,7 +23,7 @@ class DescribeCpfsAccessPointMountedClientsRequest(DaraModel):
         self.file_system_id = file_system_id
         # The page number of the list.
         self.page_number = page_number
-        # The number of results on each page. Valid values: 1 to 100.
+        # The number of entries per page. Valid values: 1 to 100.
         # Default value: 10.
         self.page_size = page_size
         # The region ID.

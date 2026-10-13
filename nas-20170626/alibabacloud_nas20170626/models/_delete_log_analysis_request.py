@@ -10,11 +10,11 @@ class DeleteLogAnalysisRequest(DaraModel):
         file_system_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the file system.
+        # The file system ID.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
-        # The region ID.
+        # The region.
         # 
         # This parameter is required.
         self.region_id = region_id

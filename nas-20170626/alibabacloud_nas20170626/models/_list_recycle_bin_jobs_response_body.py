@@ -18,7 +18,7 @@ class ListRecycleBinJobsResponseBody(DaraModel):
     ):
         # The collection of task information in the recycle bin.
         self.jobs = jobs
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
         # The number of tasks per page.
         self.page_size = page_size
@@ -102,13 +102,13 @@ class ListRecycleBinJobsResponseBodyJobs(DaraModel):
         # 
         # This value is valid only when JobStatus is Fail or PartialSuccess.
         self.error_message = error_message
-        # The FileId of the file or directory associated with the task.
+        # The file ID of the file or directory associated with the task.
         self.file_id = file_id
         # The name of the file or directory associated with the task.
         self.file_name = file_name
-        # The task ID.
+        # The ID of the task.
         self.id = id
-        # The execution progress of the task.
+        # The progress of the task.
         # 
         # Valid values: 1 to 100.
         self.progress = progress

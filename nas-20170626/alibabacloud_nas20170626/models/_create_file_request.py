@@ -18,11 +18,11 @@ class CreateFileRequest(DaraModel):
         # This parameter is required.
         self.file_system_id = file_system_id
         # The portable account ID.
-        # Limit: The value is a 16-character string that supports digits and lowercase letters.
+        # Limit: The value is a 16-character string that contains digits and lowercase letters.
         self.owner = owner
         # Specifies whether to share directory permissions. Valid values:
-        # - false (default): does not share directory permissions.
-        # - true: shares directory permissions.
+        # - false (default): Directory permissions are not shared.
+        # - true: Directory permissions are shared.
         # > - This parameter takes effect only when Type is set to Directory and Owner is not empty.
         # > - The directory has inheritable Owner permissions. The Owner has read and write permissions on subdirectories and files created under this directory, even if they are created by other users.
         self.owner_access_inheritable = owner_access_inheritable

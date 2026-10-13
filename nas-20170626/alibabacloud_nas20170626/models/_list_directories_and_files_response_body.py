@@ -16,7 +16,7 @@ class ListDirectoriesAndFilesResponseBody(DaraModel):
     ):
         # The collection of directory or file information.
         self.entries = entries
-        # The pagination token that is used in the next request to retrieve a new page of results. If the return results are truncated, you can use NextToken to initiate a new request to retrieve the content after the current truncation position.
+        # If the returned results are truncated, you can use NextToken to initiate a new request to retrieve the content after the current truncation point.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -82,30 +82,30 @@ class ListDirectoriesAndFilesResponseBodyEntries(DaraModel):
     ):
         # The query time.
         # 
-        # The time follows the ISO 8601 standard and is returned in the format: `yyyy-MM-ddTHH:mm:ssZ`.
+        # The value follows the ISO 8601 standard and is returned in the format: `yyyy-MM-ddTHH:mm:ssZ`.
         # 
-        # This parameter is returned and meaningful only when Type is set to File.
+        # This parameter is returned and meaningful only when Type is File.
         self.atime = atime
         # The time when the metadata was modified.
         # 
-        # The time follows the ISO 8601 standard and is returned in the format: `yyyy-MM-ddTHH:mm:ssZ`.
+        # The value follows the ISO 8601 standard and is returned in the format: `yyyy-MM-ddTHH:mm:ssZ`.
         # 
-        # This parameter is returned and meaningful only when Type is set to File.
+        # This parameter is returned and meaningful only when Type is File.
         self.ctime = ctime
         # The FileId of the directory or file.
         self.file_id = file_id
-        # Indicates whether the directory contains archive storage class files.
+        # Indicates whether the directory contains archive storage files.
         # 
-        # This parameter is returned and meaningful only when Type is set to Directory.
+        # This parameter is returned and meaningful only when Type is Directory.
         # 
         # Valid values:
         # 
-        # - true: The directory contains archive storage class files.
-        # - false: The directory does not contain archive storage class files.
+        # - true: The directory contains archive storage files.
+        # - false: The directory does not contain archive storage files.
         self.has_archive_file = has_archive_file
         # Indicates whether the directory contains IA storage class files.
         # 
-        # This parameter is returned and meaningful only when Type is set to Directory.
+        # This parameter is returned and meaningful only when Type is Directory.
         # 
         # Valid values:
         # 
@@ -116,9 +116,9 @@ class ListDirectoriesAndFilesResponseBodyEntries(DaraModel):
         self.inode = inode
         # The time when the file was modified.
         # 
-        # The time follows the ISO 8601 standard and is returned in the format: `yyyy-MM-ddTHH:mm:ssZ`.
+        # The value follows the ISO 8601 standard and is returned in the format: `yyyy-MM-ddTHH:mm:ssZ`.
         # 
-        # This parameter is returned and meaningful only when Type is set to File.
+        # This parameter is returned and meaningful only when Type is File.
         self.mtime = mtime
         # The file name or directory name.
         self.name = name
@@ -129,21 +129,21 @@ class ListDirectoriesAndFilesResponseBodyEntries(DaraModel):
         # The portable account ID.
         # This parameter is meaningful only when ProtocolType is set to SMB and access control is enabled.
         self.owner = owner
-        # The time when the most recent data retrieval task was run.
+        # The time when the most recent data retrieval task was executed.
         # 
-        # The time follows the ISO 8601 standard and is returned in the format: `yyyy-MM-ddTHH:mm:ssZ`.
+        # The value follows the ISO 8601 standard and is returned in the format: `yyyy-MM-ddTHH:mm:ssZ`.
         # 
-        # This parameter is returned and meaningful only when Type is set to File.
+        # This parameter is returned and meaningful only when Type is File.
         self.retrieve_time = retrieve_time
         # The size of the file.
         # 
         # Unit: bytes.
         # 
-        # This parameter is returned and meaningful only when Type is set to File.
+        # This parameter is returned and meaningful only when Type is File.
         self.size = size
         # The storage class type of the returned file.
         # 
-        # This parameter is returned and meaningful only when Type is set to File.
+        # This parameter is returned and meaningful only when Type is File.
         # 
         # Valid values:
         # - InfrequentAccess: IA storage class.

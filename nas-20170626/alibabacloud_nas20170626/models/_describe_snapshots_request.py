@@ -20,7 +20,7 @@ class DescribeSnapshotsRequest(DaraModel):
         self.file_system_id = file_system_id
         # The file system type.
         # 
-        # Valid values: extreme (Extreme NAS file system)
+        # Valid value: extreme (Extreme NAS file system).
         self.file_system_type = file_system_type
         # The page number of the snapshot list.
         # 

@@ -12,12 +12,11 @@ class StartLifecyclePolicyExecutionResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # The request status.
         # 
         # Valid values:
         # 
         # - true: The request was successful.
-        # 
         # - false: The request failed.
         self.success = success
 

@@ -14,36 +14,35 @@ class CreateDirRequest(DaraModel):
         recursion: bool = None,
         root_directory: str = None,
     ):
-        # The ID of the file system.
+        # The file system ID.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
-        # The ID of the owner group for the directory. Valid values: 0 to 4294967295.
+        # The user group ID of the directory owner. Valid values: 0 to 4294967295.
         # 
         # This parameter is required.
         self.owner_group_id = owner_group_id
-        # The owner ID for the directory. Valid values: 0 to 4294967295.
+        # The user ID of the directory owner. Valid values: 0 to 4294967295.
         # 
         # This parameter is required.
         self.owner_user_id = owner_user_id
-        # The Portable Operating System Interface (POSIX) permissions applied to the root directory. The value is a valid octal number, such as 0755.
+        # The POSIX permissions to apply to the root directory path. The value is a valid octal number, such as 0755.
         # 
         # This parameter is required.
         self.permission = permission
         # Specifies whether to create a multi-level directory. Valid values:
         # 
-        # *   true (default): If no multi-level directory exists, directories are created level by level.
-        # *   false: Only the last level of directory is created. An error message is returned because the parent directory does not exist.
+        # - true (default): If the multi-level directory does not exist, the system creates the directories level by level.
+        # - false: Only the last-level directory is created. If the parent directory does not exist, an error message is returned.
         self.recursion = recursion
         # The directory name.
         # 
-        # *   The directory must start with a forward slash (/).
-        # *   The directory can contain digits and letters.
-        # *   The directory can contain underscores (_), hyphens (-), and periods (.).
-        # *   The directory cannot contain symbolic links, such as the current directory (.), the upper-level directory (..), and other symbolic links.
-        # 
-        # > *   If the root directory does not exist, configure the information for directory creation. The system then automatically creates the specified root directory based on your settings.
-        # > *  If the root directory exists, you do not need to configure the information for directory creation. The configurations for directory creation are ignored even if you configure the information.
+        # - The name must start with a forward slash (/).
+        # - The name can contain digits and uppercase and lowercase letters.
+        # - The name can contain underscores (_), hyphens (-), or periods (.).
+        # - The path cannot contain symbolic links, such as the current directory (.), the parent directory (..), or other symbolic links.
+        # >  - If the root directory does not exist, configure the automatic creation information. The system automatically creates the specified root directory based on the settings.
+        #  > - If the root directory already exists, you do not need to configure the automatic creation information. If you configure the information, the automatic creation settings are ignored.
         # 
         # This parameter is required.
         self.root_directory = root_directory

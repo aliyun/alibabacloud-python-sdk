@@ -14,7 +14,7 @@ class ListRecycledDirectoriesAndFilesRequest(DaraModel):
     ):
         # The FileId of the directory to query.
         # 
-        # This field is the NFS inode number. When the recycle bin is empty, you can call this operation with FileId=2 (root directory inode) to verify the reachability of the operation or query the recycle bin content under the root directory. Other valid FileId values can be obtained by calling the [ListRecentlyRecycledDirectories](https://help.aliyun.com/document_detail/2412173.html) operation.
+        # This field is the NFS inode number. When the recycle bin is empty, you can call this operation with FileId=2 (root directory inode) to verify the reachability of the operation or query the recycle bin content under the root directory. You can obtain other valid FileId values by calling the [ListRecentlyRecycledDirectories](https://help.aliyun.com/document_detail/2412173.html) operation.
         # 
         # This parameter is required.
         self.file_id = file_id

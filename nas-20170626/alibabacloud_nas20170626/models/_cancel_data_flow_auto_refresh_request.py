@@ -13,38 +13,38 @@ class CancelDataFlowAutoRefreshRequest(DaraModel):
         file_system_id: str = None,
         refresh_path: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
+        # Ensures the idempotence of the request. Generate a unique parameter value from your client to ensure that the value is unique among different requests.
         # 
-        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
+        # The value of ClientToken can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         # 
-        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The value of RequestId may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may vary for each API request.
         self.client_token = client_token
-        # The ID of the dataflow.
+        # The data flow ID.
         # 
         # This parameter is required.
         self.data_flow_id = data_flow_id
-        # Specifies whether to perform a dry run.
+        # Specifies whether to perform a dry run for this request.
         # 
-        # During the dry run, the system checks whether the request parameters are valid and whether the requested resources are available. During the dry run, no file system is created and no fee is incurred.
+        # A dry run checks parameter validity and resource availability without actually creating the instance or incurring fees.
         # 
         # Valid values:
         # 
-        # *   true: performs a dry run. The system checks the request format, service limits, prerequisites, and whether the required parameters are specified. If the request fails the dry run, an error message is returned. If the request passes the dry run, the HTTP status code 200 is returned. No value is returned for the DataFlowld parameter.
-        # *   false (default): performs a dry run and sends the request. If the request passes the dry run, a file system is created.
+        # - true: Sends a dry run request without creating the data flow. The dry run checks whether required parameters are specified, whether the request format is valid, and whether business dependencies are met. If the check fails, the corresponding error is returned. If the check succeeds, HTTP status code 200 is returned, but DataFlowId is empty.
+        # - false (default): Sends a normal request. After the check succeeds, the instance is directly created.
         self.dry_run = dry_run
-        # The ID of the file system.
+        # The file system ID.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
-        # The directory for which you want to cancel AutoRefresh configurations.
+        # The directory for which you want to cancel the automatic update configuration.
         # 
         # Limits:
         # 
-        # *   The directory must be 2 to 1,024 characters in length.
-        # *   The directory must be encoded in UTF-8.
-        # *   The directory must start and end with a forward slash (/).
+        # - The length must be 2 to 1,024 characters.
+        # - The value must be encoded in UTF-8.
+        # - The value must start and end with a forward slash (/).
         # 
-        # >  The directory must be an existing directory in the CPFS file system and must be in a fileset where the dataflow is enabled.
+        # > The directory must be an existing directory in CPFS and must be in a fileset for which data flow is enabled.
         # 
         # This parameter is required.
         self.refresh_path = refresh_path

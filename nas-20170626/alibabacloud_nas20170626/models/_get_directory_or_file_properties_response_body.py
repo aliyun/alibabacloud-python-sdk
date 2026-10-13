@@ -65,17 +65,17 @@ class GetDirectoryOrFilePropertiesResponseBodyEntry(DaraModel):
         # 
         # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         # 
-        # This parameter is returned only when Type is File.
+        # This parameter is returned only when Type is set to File.
         self.atime = atime
         # The time when the metadata was modified.
         # 
         # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         # 
-        # This parameter is returned only when Type is File.
+        # This parameter is returned only when Type is set to File.
         self.ctime = ctime
         # Indicates whether the directory contains Archive storage class files.
         # 
-        # This parameter is returned only when Type is Directory.
+        # This parameter is returned only when Type is set to Directory.
         # 
         # Valid values:
         # 
@@ -84,7 +84,7 @@ class GetDirectoryOrFilePropertiesResponseBodyEntry(DaraModel):
         self.has_archive_file = has_archive_file
         # Indicates whether the directory contains IA storage class files.
         # 
-        # This parameter is returned only when Type is Directory.
+        # This parameter is returned only when Type is set to Directory.
         # 
         # Valid values:
         # 
@@ -97,7 +97,7 @@ class GetDirectoryOrFilePropertiesResponseBodyEntry(DaraModel):
         # 
         # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         # 
-        # This parameter is returned only when Type is File.
+        # This parameter is returned only when Type is set to File.
         self.mtime = mtime
         # The file name or directory name.
         self.name = name
@@ -105,21 +105,21 @@ class GetDirectoryOrFilePropertiesResponseBodyEntry(DaraModel):
         self.offline_duration = offline_duration
         # The total duration for which the file has remained unchanged since it was stored as an Archive file. Unit: seconds.
         self.offline_unchanged_duration = offline_unchanged_duration
-        # The time when the most recent data retrieval task was executed.
+        # The time when the most recent data retrieval task was run.
         # 
         # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         # 
-        # This parameter is returned only when Type is File.
+        # This parameter is returned only when Type is set to File.
         self.retrieve_time = retrieve_time
         # The size of the file.
         # 
         # Unit: bytes.
         # 
-        # This parameter is returned only when Type is File.
+        # This parameter is returned only when Type is set to File.
         self.size = size
         # The storage type of the returned file.
         # 
-        # This parameter is returned only when Type is File.
+        # This parameter is returned only when Type is set to File.
         # 
         # Valid values:
         # 

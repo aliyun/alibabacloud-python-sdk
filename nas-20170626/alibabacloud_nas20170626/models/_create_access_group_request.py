@@ -12,7 +12,7 @@ class CreateAccessGroupRequest(DaraModel):
         description: str = None,
         file_system_type: str = None,
     ):
-        # The name of the permission group.
+        # The permission group name.
         # 
         # Limits:
         # 
@@ -24,7 +24,7 @@ class CreateAccessGroupRequest(DaraModel):
         # 
         # This parameter is required.
         self.access_group_name = access_group_name
-        # The type of the permission group. Set the value to **Vpc**, which indicates VPC.
+        # The type of the permission group. Set the value to **Vpc**, which indicates a virtual private cloud (VPC).
         # 
         # This parameter is required.
         self.access_group_type = access_group_type
@@ -36,7 +36,7 @@ class CreateAccessGroupRequest(DaraModel):
         # - The description must start with a letter and cannot start with `http://` or `https://`.
         # - The description can contain digits, colons (:), underscores (_), or hyphens (-).
         self.description = description
-        # The type of the file system.
+        # The file system type.
         # 
         # Valid values:
         # 

@@ -11,7 +11,7 @@ class DescribeNfsAclResponseBody(DaraModel):
         acl: main_models.DescribeNfsAclResponseBodyAcl = None,
         request_id: str = None,
     ):
-        # The information about the ACL feature.
+        # The ACL information.
         self.acl = acl
         # The request ID.
         self.request_id = request_id
@@ -49,10 +49,11 @@ class DescribeNfsAclResponseBodyAcl(DaraModel):
         self,
         enabled: bool = None,
     ):
-        # Indicates whether the NFS ACL feature is enabled.
+        # Indicates whether the NFS ACL feature is enabled. Valid values:
         # 
-        # *   true: The NFS ACL feature is enabled.
-        # *   false: The NFS ACL feature is disabled.
+        # - true: The NFS ACL feature is enabled.
+        # 
+        # - false: The NFS ACL feature is not enabled.
         self.enabled = enabled
 
     def validate(self):

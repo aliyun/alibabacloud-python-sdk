@@ -37,7 +37,7 @@ class DescribeCpfsAccessPointsRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The list of CPFS access point tags.
+        # The list of tags for the CPFS access point.
         self.tag = tag
 
     def validate(self):

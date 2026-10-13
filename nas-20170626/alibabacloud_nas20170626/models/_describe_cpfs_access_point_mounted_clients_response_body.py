@@ -20,7 +20,7 @@ class DescribeCpfsAccessPointMountedClientsResponseBody(DaraModel):
         self.mounted_client = mounted_client
         # The page number of the list.
         self.page_number = page_number
-        # The number of results on each page. Valid values: 1 to 100. Default value: 10.
+        # The number of entries per page. Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id

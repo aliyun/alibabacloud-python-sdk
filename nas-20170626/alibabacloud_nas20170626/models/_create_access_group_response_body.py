@@ -10,7 +10,7 @@ class CreateAccessGroupResponseBody(DaraModel):
         access_group_name: str = None,
         request_id: str = None,
     ):
-        # The name of the permission group.
+        # The permission group name.
         self.access_group_name = access_group_name
         # The request ID.
         self.request_id = request_id
