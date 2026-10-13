@@ -30,7 +30,7 @@ class ListDataAgentWorkspaceResponseBody(DaraModel):
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -169,6 +169,7 @@ class ListDataAgentWorkspaceResponseBodyDataContent(DaraModel):
         create_time: int = None,
         creator: str = None,
         creator_name: str = None,
+        custom_agent_count: int = None,
         description: str = None,
         is_session_share_enabled: bool = None,
         modify_time: int = None,
@@ -181,19 +182,21 @@ class ListDataAgentWorkspaceResponseBodyDataContent(DaraModel):
         workspace_name: str = None,
         workspace_status: str = None,
     ):
-        # The time when the workspace was created. The value is a timestamp in milliseconds.
+        # The creation time of the workspace. The value is a timestamp in milliseconds.
         self.create_time = create_time
         # The UID of the workspace creator.
         self.creator = creator
         # The name of the workspace creator.
         self.creator_name = creator_name
+        # The number of custom agents in the workspace.
+        self.custom_agent_count = custom_agent_count
         # The description of the workspace.
         self.description = description
         # Indicates whether session sharing is enabled for the workspace.
         self.is_session_share_enabled = is_session_share_enabled
-        # The time when the workspace was last modified. The value is a timestamp in milliseconds.
+        # The last modification time of the workspace. The value is a timestamp in milliseconds.
         self.modify_time = modify_time
-        # The name of the user\\"s role in the workspace.
+        # The role name of the user in the workspace.
         self.role_name = role_name
         # The number of running sessions in the workspace.
         self.running_session_count = running_session_count
@@ -201,9 +204,9 @@ class ListDataAgentWorkspaceResponseBodyDataContent(DaraModel):
         self.total_member = total_member
         # The total number of sessions in the workspace.
         self.total_session_count = total_session_count
-        # The workspace type.
+        # The type of the workspace.
         self.type = type
-        # The workspace ID.
+        # The ID of the workspace.
         self.workspace_id = workspace_id
         # The name of the workspace.
         self.workspace_name = workspace_name
@@ -226,6 +229,9 @@ class ListDataAgentWorkspaceResponseBodyDataContent(DaraModel):
 
         if self.creator_name is not None:
             result['CreatorName'] = self.creator_name
+
+        if self.custom_agent_count is not None:
+            result['CustomAgentCount'] = self.custom_agent_count
 
         if self.description is not None:
             result['Description'] = self.description
@@ -272,6 +278,9 @@ class ListDataAgentWorkspaceResponseBodyDataContent(DaraModel):
 
         if m.get('CreatorName') is not None:
             self.creator_name = m.get('CreatorName')
+
+        if m.get('CustomAgentCount') is not None:
+            self.custom_agent_count = m.get('CustomAgentCount')
 
         if m.get('Description') is not None:
             self.description = m.get('Description')

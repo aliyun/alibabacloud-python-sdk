@@ -1,3 +1,9 @@
+2026-10-13 Version: 4.1.1
+- Update API ListDataAgentAccuracyTestInstances: add response parameters Body.Data.$.DatasetId.
+- Update API ListDataAgentAccuracyTestInstances: add response parameters Body.Data.$.Description.
+- Update API ListDataAgentWorkspace: add response parameters Body.Data.Content.$.CustomAgentCount.
+
+
 2026-10-12 Version: 4.1.0
 - Support API DescribeCustomAgentMonitorMetrics.
 - Support API ListCustomAgentMonitorSessions.

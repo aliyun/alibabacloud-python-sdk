@@ -18,25 +18,25 @@ class AgenticTableColumnEngineMeta(DaraModel):
         generation_expression: str = None,
         nullable: bool = None,
     ):
-        # Indicates whether the column uses auto-increment.
+        # Specifies whether the field is auto-incremented.
         self.auto_increment = auto_increment
-        # The data length of the column. This parameter typically applies to string and binary data types.
+        # The defined length of the field.
         self.data_length = data_length
-        # The data precision of the column, which is the total number of digits in a numeric type.
+        # The precision of the numeric field.
         self.data_precision = data_precision
-        # The data scale of the column, which is the number of digits to the right of the decimal point in a numeric type.
+        # The scale of the numeric field, which is the number of decimal places.
         self.data_scale = data_scale
-        # The default value of the column.
+        # The default value of the field.
         self.default_value = default_value
-        # The character encoding of the column.
+        # The character set of the field.
         self.encoding = encoding
-        # Engine-specific attributes or flags for the column.
+        # The additional information of the field, such as auto_increment.
         self.extra = extra
-        # Indicates whether the column is a generated column.
+        # Specifies whether the field is a generated column.
         self.generation_column = generation_column
-        # The expression used to generate the column\\"s value. Applies only if `GenerationColumn` is `true`.
+        # The calculation expression of the generated column.
         self.generation_expression = generation_expression
-        # Indicates whether the column is nullable.
+        # Specifies whether the field allows null values.
         self.nullable = nullable
 
     def validate(self):

@@ -28,9 +28,9 @@ class ListDataAgentWorkspaceRequest(DaraModel):
         self.next_token = next_token
         # The sort order.
         self.order = order
-        # The sort field name.
+        # The name of the field to sort by.
         self.order_by = order_by
-        # The page number.
+        # The starting page number.
         # 
         # This parameter is required.
         self.page_number = page_number
@@ -40,7 +40,7 @@ class ListDataAgentWorkspaceRequest(DaraModel):
         self.page_size = page_size
         # The name of the workspace.
         self.workspace_name = workspace_name
-        # The workspace type.
+        # The workspace type to query.
         # 
         # This parameter is required.
         self.workspace_type = workspace_type

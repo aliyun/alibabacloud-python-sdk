@@ -16,15 +16,15 @@ class ListDataAgentAccuracyTestInstancesRequest(DaraModel):
     ):
         # The accuracy test instance ID.
         self.accuracy_test_ins_id = accuracy_test_ins_id
-        # The maximum number of entries per page.
+        # The maximum number of results to return.
         self.max_results = max_results
-        # The pagination token.
+        # The next token.
         self.next_token = next_token
         # The page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The workspace ID.
+        # The ID of the workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

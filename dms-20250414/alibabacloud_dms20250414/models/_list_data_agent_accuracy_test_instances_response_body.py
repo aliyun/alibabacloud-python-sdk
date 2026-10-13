@@ -22,15 +22,15 @@ class ListDataAgentAccuracyTestInstancesResponseBody(DaraModel):
         timestamp: str = None,
         total: str = None,
     ):
-        # The response struct.
+        # The response data.
         self.data = data
         # The error code.
         self.error_code = error_code
         # The error message.
         self.error_message = error_message
-        # The maximum number of entries returned per page. You can use this parameter together with NextToken to implement paging.
+        # The maximum number of results to return per request. You can use this parameter with NextToken to paginate results.
         self.max_results = max_results
-        # The pagination token.
+        # The next token.
         self.next_token = next_token
         # The page number.
         self.page_number = page_number
@@ -38,9 +38,9 @@ class ListDataAgentAccuracyTestInstancesResponseBody(DaraModel):
         self.page_size = page_size
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
-        # The operation timestamp.
+        # The timestamp of the operation.
         self.timestamp = timestamp
         # The total number of records.
         self.total = total
@@ -139,7 +139,9 @@ class ListDataAgentAccuracyTestInstancesResponseBodyData(DaraModel):
         accuracy_test_ins_id: str = None,
         agent_id: str = None,
         creator: str = None,
+        dataset_id: str = None,
         datasource: str = None,
+        description: str = None,
         file_id: str = None,
         gmt_create: str = None,
         gmt_modified: str = None,
@@ -156,13 +158,17 @@ class ListDataAgentAccuracyTestInstancesResponseBodyData(DaraModel):
         self.agent_id = agent_id
         # The UID of the workspace creator.
         self.creator = creator
+        # The ID of the test dataset.
+        self.dataset_id = dataset_id
         # The data source.
         self.datasource = datasource
+        # The description.
+        self.description = description
         # The ID of the test set file.
         self.file_id = file_id
         # The creation time.
         self.gmt_create = gmt_create
-        # The modification time.
+        # The update time.
         self.gmt_modified = gmt_modified
         # The language used for the analysis task.
         self.language = language
@@ -172,9 +178,9 @@ class ListDataAgentAccuracyTestInstancesResponseBodyData(DaraModel):
         self.mode = mode
         # The custom agent name.
         self.name = name
-        # Specifies whether sessions are displayed after analysis. This feature is not supported.
+        # Specifies whether the session is displayed after analysis. This feature is currently not supported.
         self.need_delete = need_delete
-        # The workspace ID.
+        # The ID of the workspace.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -194,8 +200,14 @@ class ListDataAgentAccuracyTestInstancesResponseBodyData(DaraModel):
         if self.creator is not None:
             result['Creator'] = self.creator
 
+        if self.dataset_id is not None:
+            result['DatasetId'] = self.dataset_id
+
         if self.datasource is not None:
             result['Datasource'] = self.datasource
+
+        if self.description is not None:
+            result['Description'] = self.description
 
         if self.file_id is not None:
             result['FileId'] = self.file_id
@@ -237,8 +249,14 @@ class ListDataAgentAccuracyTestInstancesResponseBodyData(DaraModel):
         if m.get('Creator') is not None:
             self.creator = m.get('Creator')
 
+        if m.get('DatasetId') is not None:
+            self.dataset_id = m.get('DatasetId')
+
         if m.get('Datasource') is not None:
             self.datasource = m.get('Datasource')
+
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
 
         if m.get('FileId') is not None:
             self.file_id = m.get('FileId')

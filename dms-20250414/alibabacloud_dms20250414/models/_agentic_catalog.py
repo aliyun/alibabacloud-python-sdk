@@ -21,16 +21,43 @@ class AgenticCatalog(DaraModel):
         state: int = None,
         storage_location: str = None,
     ):
+        # The business attributes of the catalog, returned as key-value pairs. The following keys may be included:
+        # 
+        # - **ALIAS**: the alias of the data source
+        # - **HOST**: the endpoint of the data source
+        # - **PORT**: the connection port of the data source
+        # - **ENV_TYPE**: the environment type of the data source
+        # - **VERSION**: the database version of the data source
+        # - **SYNC_ALIAS**: whether automatic synchronization of instance aliases is enabled
         self.catalog_biz_attrs = catalog_biz_attrs
+        # The type of the catalog. Valid values:
+        # 
+        # - **JDBC**: relational database catalog
+        # - **DataLake**: data lake catalog
+        # - **Dataset**: knowledge base catalog
         self.catalog_type = catalog_type
+        # The unique identifier of the catalog.
         self.catalog_uuid = catalog_uuid
+        # The unique identifier of the data source associated with the catalog.
         self.data_source_uuid = data_source_uuid
+        # The database type of the data source associated with the catalog. The value is the uppercase name of the database type, such as MYSQL.
         self.db_type = db_type
+        # The description of the catalog.
         self.description = description
+        # The name of the catalog.
         self.name = name
+        # The extended properties of the catalog, returned as key-value pairs.
         self.properties = properties
+        # The region ID of the data source associated with the catalog.
         self.region_id = region_id
+        # The status of the catalog. Valid values:
+        # 
+        # - **0**: Normal. This value is set when the data source is created.
+        # - **-1**: Deleted. This value is set when the data source is deleted.
+        # 
+        # Disabling a data source does not change the status of the catalog.
         self.state = state
+        # The storage location. This property is returned only for catalogs of the DataLake type.
         self.storage_location = storage_location
 
     def validate(self):
