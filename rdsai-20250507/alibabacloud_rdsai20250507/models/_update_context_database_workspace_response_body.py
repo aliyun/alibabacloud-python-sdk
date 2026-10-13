@@ -14,7 +14,7 @@ class UpdateContextDatabaseWorkspaceResponseBody(DaraModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
-        # The time when the workspace was created, in ISO-8601 format.
+        # The time when the workspace was created, in ISO 8601 format.
         self.created_at = created_at
         # The request ID.
         self.request_id = request_id
@@ -24,7 +24,7 @@ class UpdateContextDatabaseWorkspaceResponseBody(DaraModel):
         self.type = type
         # The workspace ID.
         self.workspace_id = workspace_id
-        # The modified name of the workspace.
+        # The updated name of the workspace.
         self.workspace_name = workspace_name
 
     def validate(self):

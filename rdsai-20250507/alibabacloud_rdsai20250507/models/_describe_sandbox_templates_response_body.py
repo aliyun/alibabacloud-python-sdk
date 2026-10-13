@@ -18,7 +18,7 @@ class DescribeSandboxTemplatesResponseBody(DaraModel):
         sandbox_templates: List[main_models.DescribeSandboxTemplatesResponseBodySandboxTemplates] = None,
         total_count: int = None,
     ):
-        # A reserved parameter. You do not need to specify this parameter.
+        # A reserved parameter. You can ignore this parameter.
         self.max_results = max_results
         # The token that indicates the position from which the current read operation starts. An empty value indicates that the read operation starts from the beginning.
         self.next_token = next_token
@@ -30,7 +30,7 @@ class DescribeSandboxTemplatesResponseBody(DaraModel):
         self.request_id = request_id
         # The list of sandbox templates.
         self.sandbox_templates = sandbox_templates
-        # The total number of records that match the request conditions.
+        # The total number of records that meet the request conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -112,20 +112,20 @@ class DescribeSandboxTemplatesResponseBodySandboxTemplates(DaraModel):
         template_id: str = None,
     ):
         self.created_by = created_by
-        # The number of CPUs for the sandbox created with this template.
+        # The number of CPUs for the sandbox created by using this template.
         self.default_cpu = default_cpu
-        # The memory size of the sandbox created with this template.
+        # The memory size of the sandbox created by using this template.
         self.default_memory = default_memory
         # The sandbox template description.
         self.description = description
-        # Indicates whether the sandbox created with this template can access resources in the VPC where Supabase resides.
+        # Indicates whether the sandbox created by using this template can access resources in the VPC where Supabase resides.
         self.enable_vpc_access = enable_vpc_access
         self.image = image
         # The sandbox template name.
         self.name = name
         self.replicas = replicas
         self.tags = tags
-        # The sandbox template ID. Specify this ID when creating a sandbox with this template.
+        # The sandbox template ID. Specify this ID when you create a sandbox by using this template.
         self.template_id = template_id
 
     def validate(self):

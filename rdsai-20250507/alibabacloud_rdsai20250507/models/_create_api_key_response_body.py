@@ -15,9 +15,9 @@ class CreateApiKeyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response data.
+        # The returned data.
         self.data = data
-        # The response message.
+        # The returned message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -133,11 +133,11 @@ class CreateApiKeyResponseBodyDataCustomKeyList(DaraModel):
         self.api_key = api_key
         # The daily quota of the API key.
         self.daily_token_quota = daily_token_quota
-        # The API key name.
+        # The name of the API key.
         self.key_name = key_name
         # The quota percentage.
         self.limit_rate = limit_rate
-        # The quota allocation method. Valid values:
+        # The quota type. Valid values:
         # 
         # - **fixed**: By fixed value.
         # 

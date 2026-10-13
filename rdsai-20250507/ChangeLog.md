@@ -1,3 +1,84 @@
+2026-10-13 Version: 3.10.0
+- Support API AddContextDatabaseSyncJobExclusion.
+- Support API CancelContextDatabaseSyncDiscovery.
+- Support API CancelContextDatabaseSyncRun.
+- Support API CreateContextDatabaseSyncConnection.
+- Support API CreateContextDatabaseSyncJob.
+- Support API CreateContextDatabaseSyncSource.
+- Support API DeleteContextDatabaseSyncConnection.
+- Support API DeleteContextDatabaseSyncJob.
+- Support API DeleteContextDatabaseSyncSource.
+- Support API GetContextDatabaseSyncConnection.
+- Support API GetContextDatabaseSyncConnectionAuthorization.
+- Support API GetContextDatabaseSyncDiscoveryTask.
+- Support API GetContextDatabaseSyncJob.
+- Support API GetContextDatabaseSyncJobReadiness.
+- Support API GetContextDatabaseSyncJobSchedule.
+- Support API GetContextDatabaseSyncRun.
+- Support API GetContextDatabaseSyncSource.
+- Support API GetContextDatabaseSyncSourceSelection.
+- Support API ListContextDatabaseSyncConnections.
+- Support API ListContextDatabaseSyncJobDocuments.
+- Support API ListContextDatabaseSyncJobExclusions.
+- Support API ListContextDatabaseSyncJobs.
+- Support API ListContextDatabaseSyncPlugins.
+- Support API ListContextDatabaseSyncRunItems.
+- Support API ListContextDatabaseSyncRunLogs.
+- Support API ListContextDatabaseSyncRuns.
+- Support API ListContextDatabaseSyncSourceTreeNodes.
+- Support API ListContextDatabaseSyncSources.
+- Support API RemoveContextDatabaseSyncJobExclusion.
+- Support API RetryFailedContextDatabaseSyncRun.
+- Support API StartContextDatabaseSyncRun.
+- Support API StartContextDatabaseSyncSourceDiscovery.
+- Support API UpdateContextDatabaseSyncConnection.
+- Support API UpdateContextDatabaseSyncConnectionCredential.
+- Support API UpdateContextDatabaseSyncJob.
+- Support API UpdateContextDatabaseSyncJobSchedule.
+- Support API UpdateContextDatabaseSyncSource.
+- Support API UpdateContextDatabaseSyncSourceSelection.
+- Support API VerifyContextDatabaseSyncConnection.
+- Update API CreateSkill: add request parameters UpdateNote.
+- Update API CreateSkill: add response parameters Body.Action.
+- Update API CreateSkill: add response parameters Body.BundleHash.
+- Update API CreateSkill: add response parameters Body.SkillId.
+- Update API CreateSkill: add response parameters Body.VersionId.
+- Update API GetSkill: add request parameters Download.
+- Update API GetSkill: add request parameters Path.
+- Update API GetSkill: add request parameters VersionId.
+- Update API GetSkill: add response parameters Body.BundleHash.
+- Update API GetSkill: add response parameters Body.BundleSizeBytes.
+- Update API GetSkill: add response parameters Body.Capabilities.
+- Update API GetSkill: add response parameters Body.DownloadUrl.
+- Update API GetSkill: add response parameters Body.ExpiresAt.
+- Update API GetSkill: add response parameters Body.File.
+- Update API GetSkill: add response parameters Body.Files.
+- Update API GetSkill: add response parameters Body.Frontmatter.
+- Update API GetSkill: add response parameters Body.SkillId.
+- Update API GetSkill: add response parameters Body.SkillMarkdown.
+- Update API GetSkill: add response parameters Body.Version.
+- Update API GetSkill: add response parameters Body.VersionId.
+- Update API GetSkill: add response parameters Body.Visibility.
+- Update API GetSkill: add response parameters Body.Versions.$.FileCount.
+- Update API GetSkill: add response parameters Body.Versions.$.Source.
+- Update API GetSkill: add response parameters Body.Versions.$.UpdateNote.
+- Update API ListSkill: add request parameters Query.
+- Update API ListSkill: add request parameters Scope.
+- Update API ListSkill: add request parameters Sort.
+- Update API ListSkill: add request parameters Source.
+- Update API ListSkill: add response parameters Body.Data.$.ActiveVersion.
+- Update API ListSkill: add response parameters Body.Data.$.Visibility.
+- Update API ModifyMessagesFeedbacks: add request parameters WorkspaceId.
+- Update API UpdateSkill: add request parameters UpdateNote.
+- Update API UpdateSkill: add request parameters UploadId.
+- Update API UpdateSkill: add request parameters UploadToken.
+- Update API UpdateSkill: add request parameters WorkspaceId.
+- Update API UpdateSkill: add response parameters Body.Action.
+- Update API UpdateSkill: add response parameters Body.BundleHash.
+- Update API UpdateSkill: add response parameters Body.SkillId.
+- Update API UpdateSkill: add response parameters Body.VersionId.
+
+
 2026-09-16 Version: 3.9.3
 - Update API ChatMessages: add request parameters Inputs.ResumeCallId.
 - Update API ChatMessages: add request parameters Inputs.ToolApprovalMode.

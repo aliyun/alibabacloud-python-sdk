@@ -17,7 +17,7 @@ class ModifyInstanceStorageConfigRequest(DaraModel):
         region_id: str = None,
     ):
         self.branch_name = branch_name
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, which ensures that the request is not repeated.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, which prevents repeated submissions of requests.
         self.client_token = client_token
         # The list of storage configurations.
         self.config_list = config_list
@@ -92,7 +92,7 @@ class ModifyInstanceStorageConfigRequestConfigList(DaraModel):
         # - **AWS_ACCESS_KEY_ID**: the AccessKey ID for OSS.
         # - **AWS_SECRET_ACCESS_KEY**: the AccessKey Secret for OSS.
         # - **GLOBAL_S3_BUCKET**: the bucket name of OSS.
-        # - **TENANT_ID**: the OSS directory name. You do not need to create it in advance.
+        # - **TENANT_ID**: the OSS directory name. You do not need to create it.
         # - **GLOBAL_S3_ENDPOINT**: the endpoint of OSS.
         # - **REGION**: the region of OSS.
         self.name = name

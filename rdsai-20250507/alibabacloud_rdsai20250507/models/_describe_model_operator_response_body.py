@@ -102,7 +102,7 @@ class DescribeModelOperatorResponseBodyData(DaraModel):
         self.instance_class = instance_class
         # The instance name.
         self.instance_id = instance_id
-        # The usage of each key (including deleted keys).
+        # The usage of each key, including deleted keys.
         self.key_usage_list = key_usage_list
         # Indicates whether the prefix routing persistence feature is enabled.
         self.prefix_cache_enabled = prefix_cache_enabled
@@ -112,9 +112,9 @@ class DescribeModelOperatorResponseBodyData(DaraModel):
         self.start_time = start_time
         # The module status.
         self.status = status
-        # The total quota for the current cycle (such as the monthly total).
+        # The total quota for the current cycle, such as the monthly quota.
         self.total_quota = total_quota
-        # The used quota for the current cycle (such as the monthly usage).
+        # The used quota for the current cycle, such as the monthly usage.
         self.used_quota = used_quota
 
     def validate(self):
@@ -334,7 +334,7 @@ class DescribeModelOperatorResponseBodyDataKeyUsageListDailyUsage(DaraModel):
         date: str = None,
         usage: str = None,
     ):
-        # The date (accurate to the day).
+        # The date, accurate to the day.
         self.date = date
         # The number of tokens used.
         self.usage = usage
@@ -371,7 +371,7 @@ class DescribeModelOperatorResponseBodyDataDailyUsage(DaraModel):
         date: str = None,
         usage: int = None,
     ):
-        # The date (accurate to the day).
+        # The date, accurate to the day.
         self.date = date
         # The token usage.
         self.usage = usage

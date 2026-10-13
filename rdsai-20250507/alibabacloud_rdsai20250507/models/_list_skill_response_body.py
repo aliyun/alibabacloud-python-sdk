@@ -22,7 +22,7 @@ class ListSkillResponseBody(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The unique request identifier.
+        # The request ID.
         self.request_id = request_id
         # The total number of records.
         self.total_count = total_count
@@ -82,6 +82,7 @@ class ListSkillResponseBody(DaraModel):
 class ListSkillResponseBodyData(DaraModel):
     def __init__(
         self,
+        active_version: Dict[str, Any] = None,
         active_version_id: str = None,
         category: str = None,
         content: Dict[str, Any] = None,
@@ -97,8 +98,11 @@ class ListSkillResponseBodyData(DaraModel):
         skill_type: str = None,
         slug: str = None,
         updated_at: str = None,
+        visibility: str = None,
     ):
-        # The ID of the currently active version.
+        # The currently active skill version information.
+        self.active_version = active_version
+        # The currently active version ID.
         self.active_version_id = active_version_id
         # The skill category.
         self.category = category
@@ -110,7 +114,7 @@ class ListSkillResponseBodyData(DaraModel):
         self.dbtypes = dbtypes
         # The description.
         self.description = description
-        # The display name of the skill.
+        # The skill display name.
         self.display_name = display_name
         # The public HTTPS URL of the current icon. Empty if not configured.
         self.icon = icon
@@ -120,14 +124,16 @@ class ListSkillResponseBodyData(DaraModel):
         self.is_deleted = is_deleted
         # The skill name.
         self.name = name
-        # The visibility scope of the skill.
+        # The skill visibility scope.
         self.scope = scope
         # The skill type.
         self.skill_type = skill_type
-        # The stable identifier of the skill.
+        # The skill stable identifier.
         self.slug = slug
         # The update time.
         self.updated_at = updated_at
+        # The skill visibility for the current user.
+        self.visibility = visibility
 
     def validate(self):
         pass
@@ -137,6 +143,9 @@ class ListSkillResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.active_version is not None:
+            result['ActiveVersion'] = self.active_version
+
         if self.active_version_id is not None:
             result['ActiveVersionId'] = self.active_version_id
 
@@ -182,10 +191,16 @@ class ListSkillResponseBodyData(DaraModel):
         if self.updated_at is not None:
             result['UpdatedAt'] = self.updated_at
 
+        if self.visibility is not None:
+            result['Visibility'] = self.visibility
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ActiveVersion') is not None:
+            self.active_version = m.get('ActiveVersion')
+
         if m.get('ActiveVersionId') is not None:
             self.active_version_id = m.get('ActiveVersionId')
 
@@ -230,6 +245,9 @@ class ListSkillResponseBodyData(DaraModel):
 
         if m.get('UpdatedAt') is not None:
             self.updated_at = m.get('UpdatedAt')
+
+        if m.get('Visibility') is not None:
+            self.visibility = m.get('Visibility')
 
         return self
 

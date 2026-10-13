@@ -21,7 +21,7 @@ class DescribeSandboxTemplatesRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_name = instance_name
-        # A reserved parameter. You do not need to specify this parameter.
+        # A reserved parameter. You can ignore this parameter.
         self.max_results = max_results
         # The pagination token.
         self.next_token = next_token

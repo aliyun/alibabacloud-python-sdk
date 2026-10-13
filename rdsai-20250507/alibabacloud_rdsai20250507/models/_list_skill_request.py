@@ -10,6 +10,10 @@ class ListSkillRequest(DaraModel):
         language: str = None,
         page_number: int = None,
         page_size: int = None,
+        query: str = None,
+        scope: str = None,
+        sort: str = None,
+        source: str = None,
         workspace_id: str = None,
     ):
         # The supported languages. Valid values:
@@ -23,6 +27,14 @@ class ListSkillRequest(DaraModel):
         self.page_number = page_number
         # The number of entries per page. Default value: 20. Maximum value: 100.
         self.page_size = page_size
+        # The search parameter for skill name or description. This filter is not currently enabled in the ContextDB management console.
+        self.query = query
+        # The ContextDB query scope. Valid values: all (default), private, and system.
+        self.scope = scope
+        # The sort parameter for skills. This sorting is not currently enabled in the ContextDB management console.
+        self.sort = sort
+        # The filter parameter for skill source. This filter is not currently enabled in the ContextDB management console.
+        self.source = source
         # The ContextDB workspace ID.
         self.workspace_id = workspace_id
 
@@ -43,6 +55,18 @@ class ListSkillRequest(DaraModel):
         if self.page_size is not None:
             result['PageSize'] = self.page_size
 
+        if self.query is not None:
+            result['Query'] = self.query
+
+        if self.scope is not None:
+            result['Scope'] = self.scope
+
+        if self.sort is not None:
+            result['Sort'] = self.sort
+
+        if self.source is not None:
+            result['Source'] = self.source
+
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
 
@@ -58,6 +82,18 @@ class ListSkillRequest(DaraModel):
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+
+        if m.get('Query') is not None:
+            self.query = m.get('Query')
+
+        if m.get('Scope') is not None:
+            self.scope = m.get('Scope')
+
+        if m.get('Sort') is not None:
+            self.sort = m.get('Sort')
+
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
 
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')

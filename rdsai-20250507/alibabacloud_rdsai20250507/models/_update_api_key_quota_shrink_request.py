@@ -12,7 +12,7 @@ class UpdateApiKeyQuotaShrinkRequest(DaraModel):
     ):
         # The instance ID.
         self.instance_id = instance_id
-        # A list of API keys.
+        # The list of API keys.
         self.keys_shrink = keys_shrink
 
     def validate(self):

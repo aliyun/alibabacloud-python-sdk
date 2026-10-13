@@ -17,17 +17,16 @@ class ListCustomAgentResponseBody(DaraModel):
         skills: List[main_models.ListCustomAgentResponseBodySkills] = None,
         total_count: int = None,
     ):
-        # A list of custom agents.
+        # The returned data object.
         self.data = data
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of records per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # A list of skills.
         self.skills = skills
-        # The total number of entries that match the query. This parameter is not returned by default.
+        # The total number of data records that meet the request conditions. This parameter is optional and is not returned by default.
         self.total_count = total_count
 
     def validate(self):
@@ -105,13 +104,9 @@ class ListCustomAgentResponseBodySkills(DaraModel):
         name: str = None,
         skill_type: str = None,
     ):
-        # The description of the skill.
         self.description = description
-        # The skill ID.
         self.id = id
-        # The name of the skill.
         self.name = name
-        # The type of the skill.
         self.skill_type = skill_type
 
     def validate(self):
@@ -167,13 +162,13 @@ class ListCustomAgentResponseBodyData(DaraModel):
         self.created_at = created_at
         # Indicates whether tools are enabled.
         self.enable_tools = enable_tools
-        # The agent ID.
+        # AgentId。
         self.id = id
-        # The name of the custom agent.
+        # The name of the dedicated agent.
         self.name = name
         # The system prompt.
         self.system_prompt = system_prompt
-        # A list of tools.
+        # The tool information.
         self.tools = tools
         # The update time.
         self.updated_at = updated_at

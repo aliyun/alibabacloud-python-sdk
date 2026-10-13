@@ -17,7 +17,7 @@ class ModifyInstancesSSLShrinkRequest(DaraModel):
         # The certificate type. Currently, only **custom** is supported, which indicates a custom certificate.
         # > This parameter is required when **SSLEnabled** is set to **1**.
         self.catype = catype
-        # The list of instance IDs of AI applications. A maximum of 10 instance IDs are supported.
+        # The list of instance IDs of AI applications. A maximum of 10 instance IDs can be specified.
         # 
         # This parameter is required.
         self.instance_names_shrink = instance_names_shrink

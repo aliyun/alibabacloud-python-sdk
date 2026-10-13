@@ -19,19 +19,19 @@ class DescribeEventsListResponseBody(DaraModel):
         total_count: int = None,
         total_pages: int = None,
     ):
-        # The count for each event code.
+        # The total number of events.
         self.event_code_counts = event_code_counts
-        # A list of events.
+        # The list of events.
         self.events = events
-        # The number of pages returned.
+        # The total number of pages.
         self.page_count = page_count
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of records per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of records.
         self.total_count = total_count
         # The total number of pages.
         self.total_pages = total_pages
@@ -121,15 +121,14 @@ class DescribeEventsListResponseBodyEvents(DaraModel):
         self.event_code = event_code
         # The event status.
         self.event_status = event_status
-        # A list of event times.
+        # The list of event times.
         self.event_time_list = event_time_list
-        # The instance description.
+        # The description of the instance.
         self.instance_description = instance_description
         # The instance ID.
         self.instance_id = instance_id
         # The recovery time.
         self.recovery_time = recovery_time
-        # The region ID.
         self.region_id = region_id
 
     def validate(self):

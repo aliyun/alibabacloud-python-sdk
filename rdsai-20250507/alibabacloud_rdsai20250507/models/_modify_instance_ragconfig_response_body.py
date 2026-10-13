@@ -17,7 +17,7 @@ class ModifyInstanceRAGConfigResponseBody(DaraModel):
         self.instance_name = instance_name
         # The request ID.
         self.request_id = request_id
-        # The RAG Agent status. Valid values:
+        # The RAG Agent status.
         # 
         # - **true**: Enabled.
         # - **false**: Disabled.

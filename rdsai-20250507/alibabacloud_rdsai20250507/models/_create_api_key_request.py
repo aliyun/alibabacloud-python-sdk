@@ -21,11 +21,11 @@ class CreateApiKeyRequest(DaraModel):
         self.daily_token_quota = daily_token_quota
         # The instance name.
         self.instance_id = instance_id
-        # The API key name.
+        # The name of the API key.
         self.key_name = key_name
         # The quota percentage.
         self.limit_rate = limit_rate
-        # The quota allocation method. Valid values:
+        # The quota type. Valid values:
         # 
         # - ratio: by percentage.
         # - fixed: by fixed value.

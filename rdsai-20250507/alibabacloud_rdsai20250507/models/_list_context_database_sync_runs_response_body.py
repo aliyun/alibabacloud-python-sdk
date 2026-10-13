@@ -1,0 +1,421 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import List
+
+from alibabacloud_rdsai20250507 import models as main_models
+from darabonba.model import DaraModel
+
+class ListContextDatabaseSyncRunsResponseBody(DaraModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: main_models.ListContextDatabaseSyncRunsResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The error code.
+        self.code = code
+        # The returned data.
+        self.data = data
+        # The HTTP status code.
+        self.http_status_code = http_status_code
+        # The message.
+        self.message = message
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether the request was successful.
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.code is not None:
+            result['Code'] = self.code
+
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+
+        if self.message is not None:
+            result['Message'] = self.message
+
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+
+        if self.success is not None:
+            result['Success'] = self.success
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+
+        if m.get('Data') is not None:
+            temp_model = main_models.ListContextDatabaseSyncRunsResponseBodyData()
+            self.data = temp_model.from_map(m.get('Data'))
+
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+
+        return self
+
+class ListContextDatabaseSyncRunsResponseBodyData(DaraModel):
+    def __init__(
+        self,
+        page: int = None,
+        page_size: int = None,
+        runs: List[main_models.ListContextDatabaseSyncRunsResponseBodyDataRuns] = None,
+        total: int = None,
+    ):
+        # The page number. Pages start from 1.
+        self.page = page
+        # The number of entries per page.
+        self.page_size = page_size
+        # The list of runs.
+        self.runs = runs
+        # The total number of entries.
+        self.total = total
+
+    def validate(self):
+        if self.runs:
+            for v1 in self.runs:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.page is not None:
+            result['Page'] = self.page
+
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+
+        result['Runs'] = []
+        if self.runs is not None:
+            for k1 in self.runs:
+                result['Runs'].append(k1.to_map() if k1 else None)
+
+        if self.total is not None:
+            result['Total'] = self.total
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Page') is not None:
+            self.page = m.get('Page')
+
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+
+        self.runs = []
+        if m.get('Runs') is not None:
+            for k1 in m.get('Runs'):
+                temp_model = main_models.ListContextDatabaseSyncRunsResponseBodyDataRuns()
+                self.runs.append(temp_model.from_map(k1))
+
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+
+        return self
+
+class ListContextDatabaseSyncRunsResponseBodyDataRuns(DaraModel):
+    def __init__(
+        self,
+        attempt: int = None,
+        cancel_requested_at: str = None,
+        dry_run: bool = None,
+        finished_at: str = None,
+        job_config_version: int = None,
+        job_id: str = None,
+        job_name: str = None,
+        knowledge_base_id: str = None,
+        last_error: str = None,
+        plugin_ref: str = None,
+        request_id: str = None,
+        run_id: str = None,
+        scheduled_at: str = None,
+        started_at: str = None,
+        status: str = None,
+        summary: main_models.ListContextDatabaseSyncRunsResponseBodyDataRunsSummary = None,
+        trigger: str = None,
+    ):
+        # The number of attempts.
+        self.attempt = attempt
+        # The time when the cancellation was requested.
+        self.cancel_requested_at = cancel_requested_at
+        # Specifies whether the run is a dry run.
+        self.dry_run = dry_run
+        # The end time.
+        self.finished_at = finished_at
+        # The configuration version number of the import job.
+        self.job_config_version = job_config_version
+        # The job ID, which is a system-generated UUID.
+        self.job_id = job_id
+        # The name of the import job.
+        self.job_name = job_name
+        # The ID of the destination knowledge base.
+        self.knowledge_base_id = knowledge_base_id
+        # The latest error message.
+        self.last_error = last_error
+        # The plugin reference.
+        self.plugin_ref = plugin_ref
+        # The request ID.
+        self.request_id = request_id
+        # The run ID, which is a system-generated UUID.
+        self.run_id = run_id
+        # The scheduled run time.
+        self.scheduled_at = scheduled_at
+        # The start time.
+        self.started_at = started_at
+        # The run status. Valid values: queued, running, cancelling, succeeded, partial, failed, cancelled, skipped, and dead.
+        self.status = status
+        # The summary of the run results.
+        self.summary = summary
+        # The trigger method of the run. Valid values: manual, schedule, and retry.
+        self.trigger = trigger
+
+    def validate(self):
+        if self.summary:
+            self.summary.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.attempt is not None:
+            result['Attempt'] = self.attempt
+
+        if self.cancel_requested_at is not None:
+            result['CancelRequestedAt'] = self.cancel_requested_at
+
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+
+        if self.finished_at is not None:
+            result['FinishedAt'] = self.finished_at
+
+        if self.job_config_version is not None:
+            result['JobConfigVersion'] = self.job_config_version
+
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+
+        if self.job_name is not None:
+            result['JobName'] = self.job_name
+
+        if self.knowledge_base_id is not None:
+            result['KnowledgeBaseId'] = self.knowledge_base_id
+
+        if self.last_error is not None:
+            result['LastError'] = self.last_error
+
+        if self.plugin_ref is not None:
+            result['PluginRef'] = self.plugin_ref
+
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+
+        if self.run_id is not None:
+            result['RunId'] = self.run_id
+
+        if self.scheduled_at is not None:
+            result['ScheduledAt'] = self.scheduled_at
+
+        if self.started_at is not None:
+            result['StartedAt'] = self.started_at
+
+        if self.status is not None:
+            result['Status'] = self.status
+
+        if self.summary is not None:
+            result['Summary'] = self.summary.to_map()
+
+        if self.trigger is not None:
+            result['Trigger'] = self.trigger
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Attempt') is not None:
+            self.attempt = m.get('Attempt')
+
+        if m.get('CancelRequestedAt') is not None:
+            self.cancel_requested_at = m.get('CancelRequestedAt')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+
+        if m.get('FinishedAt') is not None:
+            self.finished_at = m.get('FinishedAt')
+
+        if m.get('JobConfigVersion') is not None:
+            self.job_config_version = m.get('JobConfigVersion')
+
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+
+        if m.get('JobName') is not None:
+            self.job_name = m.get('JobName')
+
+        if m.get('KnowledgeBaseId') is not None:
+            self.knowledge_base_id = m.get('KnowledgeBaseId')
+
+        if m.get('LastError') is not None:
+            self.last_error = m.get('LastError')
+
+        if m.get('PluginRef') is not None:
+            self.plugin_ref = m.get('PluginRef')
+
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+
+        if m.get('RunId') is not None:
+            self.run_id = m.get('RunId')
+
+        if m.get('ScheduledAt') is not None:
+            self.scheduled_at = m.get('ScheduledAt')
+
+        if m.get('StartedAt') is not None:
+            self.started_at = m.get('StartedAt')
+
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+
+        if m.get('Summary') is not None:
+            temp_model = main_models.ListContextDatabaseSyncRunsResponseBodyDataRunsSummary()
+            self.summary = temp_model.from_map(m.get('Summary'))
+
+        if m.get('Trigger') is not None:
+            self.trigger = m.get('Trigger')
+
+        return self
+
+class ListContextDatabaseSyncRunsResponseBodyDataRunsSummary(DaraModel):
+    def __init__(
+        self,
+        cancelled: int = None,
+        deferred: int = None,
+        failed: int = None,
+        metadata_updated: int = None,
+        processing: int = None,
+        skipped: int = None,
+        unchanged: int = None,
+        upload_accepted: int = None,
+        uploaded: int = None,
+    ):
+        # The number of canceled items.
+        self.cancelled = cancelled
+        # The number of deferred items.
+        self.deferred = deferred
+        # The number of failed items.
+        self.failed = failed
+        # The number of items with updated metadata.
+        self.metadata_updated = metadata_updated
+        # The number of items being processed.
+        self.processing = processing
+        # The number of skipped items.
+        self.skipped = skipped
+        # The number of unchanged items.
+        self.unchanged = unchanged
+        # The number of accepted uploads.
+        self.upload_accepted = upload_accepted
+        # The number of uploaded items.
+        self.uploaded = uploaded
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.cancelled is not None:
+            result['Cancelled'] = self.cancelled
+
+        if self.deferred is not None:
+            result['Deferred'] = self.deferred
+
+        if self.failed is not None:
+            result['Failed'] = self.failed
+
+        if self.metadata_updated is not None:
+            result['MetadataUpdated'] = self.metadata_updated
+
+        if self.processing is not None:
+            result['Processing'] = self.processing
+
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+
+        if self.unchanged is not None:
+            result['Unchanged'] = self.unchanged
+
+        if self.upload_accepted is not None:
+            result['UploadAccepted'] = self.upload_accepted
+
+        if self.uploaded is not None:
+            result['Uploaded'] = self.uploaded
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cancelled') is not None:
+            self.cancelled = m.get('Cancelled')
+
+        if m.get('Deferred') is not None:
+            self.deferred = m.get('Deferred')
+
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+
+        if m.get('MetadataUpdated') is not None:
+            self.metadata_updated = m.get('MetadataUpdated')
+
+        if m.get('Processing') is not None:
+            self.processing = m.get('Processing')
+
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+
+        if m.get('Unchanged') is not None:
+            self.unchanged = m.get('Unchanged')
+
+        if m.get('UploadAccepted') is not None:
+            self.upload_accepted = m.get('UploadAccepted')
+
+        if m.get('Uploaded') is not None:
+            self.uploaded = m.get('Uploaded')
+
+        return self
+

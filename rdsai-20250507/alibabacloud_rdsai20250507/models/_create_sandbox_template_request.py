@@ -19,9 +19,9 @@ class CreateSandboxTemplateRequest(DaraModel):
         tags: Dict[str, str] = None,
         template_name: str = None,
     ):
-        # The number of CPUs for sandboxes created by using this template. Valid values: 1 to 4.
+        # The number of CPUs for sandboxes created from this template. Valid values: 1 to 4.
         self.default_cpu = default_cpu
-        # The memory size for sandboxes created by using this template. Unit: Gi. Valid values: 1Gi to 8Gi.
+        # The memory size for sandboxes created from this template. Unit: Gi. Valid values: 1Gi to 8Gi.
         self.default_memory = default_memory
         # The description of the sandbox template. The description must be unique within the VPC.
         self.description = description

@@ -13,13 +13,22 @@ class ListLLMTokenUsageRequest(DaraModel):
         region_id: str = None,
         start_time: str = None,
     ):
+        # The end time of the inspection in UTC. Specify the time in the ISO 8601 standard. Format: YYYY-MM-DDTHH:mm:ssZ. The end time must be at least 2 hours later than the start time.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The instance ID of the AI application.
+        # 
         # This parameter is required.
         self.instance_name = instance_name
+        # The model to query.
         self.model = model
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The start time of the inspection in UTC. Specify the time in the ISO 8601 standard. Format: YYYY-MM-DDTHH:mm:ssZ.
+        # 
         # This parameter is required.
         self.start_time = start_time
 

@@ -21,11 +21,7 @@ class CreateContextDatabaseMemberRequest(DaraModel):
         # 
         # This parameter is required.
         self.member_name = member_name
-        # The member role. Valid values:
-        # 
-        # - owner
-        # - admin
-        # - member
+        # The member role. Valid values: owner, admin, and member.
         # 
         # This parameter is required.
         self.role = role

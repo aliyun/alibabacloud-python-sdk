@@ -17,7 +17,7 @@ class DescribeMonitorDataResponseBody(DaraModel):
     ):
         # The result.
         self.data = data
-        # The response message.
+        # The return message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -123,7 +123,7 @@ class DescribeMonitorDataResponseBodyDataValue(DaraModel):
     ):
         # The point in time.
         self.time = time
-        # The returned value.
+        # The return value.
         self.value = value
 
     def validate(self):

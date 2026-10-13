@@ -15,13 +15,13 @@ class ResetApiKeyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The returned data.
+        # The query result.
         self.data = data
         # The response message.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # The request result.
         self.success = success
 
     def validate(self):
@@ -71,11 +71,11 @@ class ResetApiKeyResponseBodyData(DaraModel):
         base_url: str = None,
         custom_key_list: List[main_models.ResetApiKeyResponseBodyDataCustomKeyList] = None,
     ):
-        # The new system API key.
+        # The system API key.
         self.api_key = api_key
-        # The model invocation URL.
+        # The URL for model invocation.
         self.base_url = base_url
-        # A list of custom API keys.
+        # The list of custom API keys.
         self.custom_key_list = custom_key_list
 
     def validate(self):
@@ -126,7 +126,7 @@ class ResetApiKeyResponseBodyDataCustomKeyList(DaraModel):
     ):
         # The custom API key.
         self.api_key = api_key
-        # The name of the API key.
+        # The API key name.
         self.key_name = key_name
 
     def validate(self):

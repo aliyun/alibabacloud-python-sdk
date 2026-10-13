@@ -12,7 +12,9 @@ class GetAvailableLLMModelsResponseBody(DaraModel):
         models: List[str] = None,
         request_id: str = None,
     ):
+        # The models.
         self.models = models
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

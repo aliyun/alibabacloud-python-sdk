@@ -28,7 +28,7 @@ class DescribeMOTokenUsageDetailResponseBody(DaraModel):
         self.records = records
         # Id of the request
         self.request_id = request_id
-        # The total number of records that match the query conditions. This parameter is optional and may not be returned by default.
+        # The total number of records that match the query conditions.
         self.total_count = total_count
         # The usage type.
         self.usage_type = usage_type

@@ -43,19 +43,19 @@ class DescribeAppInstanceAttributeResponseBody(DaraModel):
         self.app_name = app_name
         # The application type. Currently, only **supabase** is supported, which indicates [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html).
         self.app_type = app_type
-        # Reserved parameter.
+        # A reserved parameter.
         self.branch_name = branch_name
-        # Reserved parameter.
+        # A reserved parameter.
         self.branching_enabled = branching_enabled
         # The list of components.
         self.components = components
-        # The ID of the RDS PostgreSQL database instance that the AI application is connected to.
+        # The instance ID of the RDS PostgreSQL database instance connected to the AI application.
         self.dbinstance_name = dbinstance_name
         # The instance ID of the EIP.
         self.eip_id = eip_id
         # The activation status of the EIP.
         self.eip_status = eip_status
-        # The instance class of the AI application.
+        # The instance type of the AI application.
         self.instance_class = instance_class
         # The latest minor version of the RDS AI application instance.
         self.instance_latest_version = instance_latest_version
@@ -63,35 +63,35 @@ class DescribeAppInstanceAttributeResponseBody(DaraModel):
         self.instance_minor_version = instance_minor_version
         # The instance ID of the AI application.
         self.instance_name = instance_name
-        # Reserved parameter.
+        # A reserved parameter.
         self.login_token = login_token
-        # The minor version details of each component of the RDS AI application instance.
+        # The minor versions of individual components of the RDS AI application instance.
         self.minor_version_detail = minor_version_detail
         # The creator of the NAT gateway.
         self.nat_created_by = nat_created_by
-        # The ID of the NAT gateway.
+        # The NAT gateway ID.
         self.nat_gateway_id = nat_gateway_id
         # The activation status of the NAT gateway.
         self.nat_status = nat_status
-        # The public connection string of the AI application.
+        # The public endpoint of the AI application.
         self.public_connection_string = public_connection_string
         # The region ID.
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
-        # Reserved parameter.
+        # A reserved parameter.
         self.retention_hours = retention_hours
-        # Reserved parameter.
+        # A reserved parameter.
         self.sql_extend_mo_instance_id = sql_extend_mo_instance_id
-        # The instance status. For more information, see [Instance status table](https://help.aliyun.com/document_detail/2623972.html).
+        # The instance status. For more information, see [Instance status](https://help.aliyun.com/document_detail/2623972.html).
         self.status = status
-        # Reserved parameter.
+        # A reserved parameter.
         self.upload_key = upload_key
-        # Reserved parameter.
+        # A reserved parameter.
         self.upload_key_list = upload_key_list
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The internal connection string of the AI application.
+        # The internal endpoint of the AI application.
         self.vpc_connection_string = vpc_connection_string
         # The zone ID.
         self.zone_id = zone_id
@@ -304,15 +304,15 @@ class DescribeAppInstanceAttributeResponseBodyUploadKeyList(DaraModel):
         status: str = None,
         upload_key: str = None,
     ):
-        # Reserved parameter.
+        # A reserved parameter.
         self.is_system_key = is_system_key
-        # Reserved parameter.
+        # A reserved parameter.
         self.remark = remark
-        # Reserved parameter.
+        # A reserved parameter.
         self.sls_storage_bytes = sls_storage_bytes
-        # Reserved parameter.
+        # A reserved parameter.
         self.status = status
-        # Reserved parameter.
+        # A reserved parameter.
         self.upload_key = upload_key
 
     def validate(self):

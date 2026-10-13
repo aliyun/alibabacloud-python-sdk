@@ -23,7 +23,7 @@ class DescribeMOTokenUsageDetailRequest(DaraModel):
         self.api_key = api_key
         # The consumer associated with the API key.
         self.consumer_name = consumer_name
-        # The cursor-based pagination token. This parameter takes priority over Page. Leave this parameter empty for the first request. For subsequent requests, use the NextCursor value returned in the previous response.
+        # The cursor-based pagination token. This parameter takes priority over Page. Leave this parameter empty for the first call. For subsequent calls, use the NextCursor value returned from the previous page.
         self.cursor = cursor
         # The end time in ISO 8601 format (UTC).
         self.end_time = end_time

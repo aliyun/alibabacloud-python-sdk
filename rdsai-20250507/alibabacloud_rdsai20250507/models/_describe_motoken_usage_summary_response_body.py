@@ -17,11 +17,17 @@ class DescribeMOTokenUsageSummaryResponseBody(DaraModel):
         summary: main_models.DescribeMOTokenUsageSummaryResponseBodySummary = None,
         usage_type: str = None,
     ):
+        # The response message.
         self.message = message
+        # The token usage records.
         self.records = records
+        # Id of the request
         self.request_id = request_id
+        # The request result.
         self.success = success
+        # The usage summary information.
         self.summary = summary
+        # The type.
         self.usage_type = usage_type
 
     def validate(self):
@@ -93,9 +99,13 @@ class DescribeMOTokenUsageSummaryResponseBodySummary(DaraModel):
         output_tokens: float = None,
         total_tokens: float = None,
     ):
+        # The number of input tokens that hit the cache.
         self.cache_tokens = cache_tokens
+        # The input token usage.
         self.input_tokens = input_tokens
+        # The output token usage.
         self.output_tokens = output_tokens
+        # The total number of tokens.
         self.total_tokens = total_tokens
 
     def validate(self):
@@ -150,15 +160,25 @@ class DescribeMOTokenUsageSummaryResponseBodyRecords(DaraModel):
         total_tokens: float = None,
         usage_type: str = None,
     ):
+        # The API key used.
         self.api_key = api_key
+        # The number of input tokens that hit the cache.
         self.cache_tokens = cache_tokens
+        # The date, accurate to the day.
         self.date = date
+        # The input token usage.
         self.input_tokens = input_tokens
+        # The API key name.
         self.key_name = key_name
+        # The model called.
         self.model = model
+        # The output token usage.
         self.output_tokens = output_tokens
+        # The number of requests.
         self.request_count = request_count
+        # The total number of tokens.
         self.total_tokens = total_tokens
+        # The query type.
         self.usage_type = usage_type
 
     def validate(self):

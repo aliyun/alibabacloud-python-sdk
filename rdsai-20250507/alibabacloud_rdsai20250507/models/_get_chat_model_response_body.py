@@ -13,7 +13,9 @@ class GetChatModelResponseBody(DaraModel):
         data: List[main_models.GetChatModelResponseBodyData] = None,
         request_id: str = None,
     ):
+        # The query result.
         self.data = data
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -59,10 +61,15 @@ class GetChatModelResponseBodyData(DaraModel):
         model_id: str = None,
         thinking_levels: List[str] = None,
     ):
+        # The context window size of the model.
         self.context_window = context_window
+        # Indicates whether this is the default model.
         self.default = default
+        # The list of supported modalities.
         self.features = features
+        # The model ID.
         self.model_id = model_id
+        # The list of thinking depth levels for the model.
         self.thinking_levels = thinking_levels
 
     def validate(self):

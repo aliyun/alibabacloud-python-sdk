@@ -10,6 +10,7 @@ class ModifyMessagesFeedbacksRequest(DaraModel):
         content: str = None,
         message_id: str = None,
         rating: str = None,
+        workspace_id: str = None,
     ):
         # The feedback content.
         self.content = content
@@ -17,6 +18,8 @@ class ModifyMessagesFeedbacksRequest(DaraModel):
         self.message_id = message_id
         # The rating.
         self.rating = rating
+        # The ContextDB workspace ID. Required only for ContextDB Manager App requests.
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -35,6 +38,9 @@ class ModifyMessagesFeedbacksRequest(DaraModel):
         if self.rating is not None:
             result['Rating'] = self.rating
 
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -47,6 +53,9 @@ class ModifyMessagesFeedbacksRequest(DaraModel):
 
         if m.get('Rating') is not None:
             self.rating = m.get('Rating')
+
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
 
         return self
 

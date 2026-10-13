@@ -11,6 +11,7 @@ class CreateSkillShrinkRequest(DaraModel):
         dbtypes_shrink: str = None,
         description: str = None,
         name: str = None,
+        update_note: str = None,
         upload_id: str = None,
         upload_token: str = None,
         workspace_id: str = None,
@@ -19,13 +20,15 @@ class CreateSkillShrinkRequest(DaraModel):
         self.content_shrink = content_shrink
         # The list of database types.
         self.dbtypes_shrink = dbtypes_shrink
-        # The Skill description. The description can be up to 1000 characters in length.
+        # The skill description. The description can be up to 1000 characters in length.
         self.description = description
-        # The Skill name. The name can contain only lowercase letters, digits, and hyphens.
+        # The skill name. The name can contain only lowercase letters, digits, and hyphens.
         self.name = name
-        # The Skill upload session ID.
+        # The ContextDB skill version update note. Provide this value when confirming storage after validation passes. The note can be up to 1000 characters in length.
+        self.update_note = update_note
+        # The skill upload session ID.
         self.upload_id = upload_id
-        # The Skill upload session token.
+        # The skill upload session token.
         self.upload_token = upload_token
         # The ContextDB workspace ID.
         self.workspace_id = workspace_id
@@ -49,6 +52,9 @@ class CreateSkillShrinkRequest(DaraModel):
 
         if self.name is not None:
             result['Name'] = self.name
+
+        if self.update_note is not None:
+            result['UpdateNote'] = self.update_note
 
         if self.upload_id is not None:
             result['UploadId'] = self.upload_id
@@ -74,6 +80,9 @@ class CreateSkillShrinkRequest(DaraModel):
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('UpdateNote') is not None:
+            self.update_note = m.get('UpdateNote')
 
         if m.get('UploadId') is not None:
             self.upload_id = m.get('UploadId')

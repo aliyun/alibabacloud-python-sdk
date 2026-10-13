@@ -13,9 +13,13 @@ class DescribeMOUsageDetailExportResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The result.
         self.data = data
+        # The response message.
         self.message = message
+        # Id of the request
         self.request_id = request_id
+        # The request result.
         self.success = success
 
     def validate(self):
@@ -72,18 +76,25 @@ class DescribeMOUsageDetailExportResponseBodyData(DaraModel):
         row_count: int = None,
         status: str = None,
     ):
+        # The completion time.
         self.completed_at = completed_at
+        # The creation time.
         self.created_at = created_at
-        # OSS 预签名下载 URL；status=expired 时为 null
+        # The download URL.
         self.download_url = download_url
+        # The error message. Read this message to determine the error when the final value of Status is not SUCCESSED.
         self.error_message = error_message
-        # 下载 URL 失效时间（UTC ISO8601）
+        # The expiration time in ISO 8601 format.
         self.expires_at = expires_at
+        # The total size of the source backup file.
         self.file_size = file_size
+        # The query filter conditions.
         self.filters = filters
+        # The target conversion format.
         self.format = format
+        # The total number of data rows.
         self.row_count = row_count
-        # none / pending / processing / completed / failed / expired
+        # The module status.
         self.status = status
 
     def validate(self):
@@ -171,10 +182,15 @@ class DescribeMOUsageDetailExportResponseBodyDataFilters(DaraModel):
         model: str = None,
         start_time: str = None,
     ):
+        # The API key that is used.
         self.api_key = api_key
+        # The end time of the instance in ISO 8601 format. The interval between EndTime and StartTime cannot exceed 30 days.
         self.end_time = end_time
+        # The instance name.
         self.instance_id = instance_id
+        # The model that is called.
         self.model = model
+        # The start time of the instance in ISO 8601 format.
         self.start_time = start_time
 
     def validate(self):

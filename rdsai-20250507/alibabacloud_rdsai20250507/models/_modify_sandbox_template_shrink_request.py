@@ -18,7 +18,7 @@ class ModifySandboxTemplateShrinkRequest(DaraModel):
     ):
         # The number of CPUs for sandboxes created from this template. Valid values: 1 to 4.
         self.default_cpu = default_cpu
-        # The memory size for sandboxes created from this template. Unit: Gi. Valid values: 1Gi to 8Gi.
+        # The memory size of sandboxes created from this template. Unit: Gi. Valid values: 1Gi to 8Gi.
         self.default_memory = default_memory
         self.image = image
         # The instance ID of the AI application.

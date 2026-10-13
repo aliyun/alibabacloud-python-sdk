@@ -13,7 +13,7 @@ class ListCustomAgentToolsResponseBody(DaraModel):
         data: List[main_models.ListCustomAgentToolsResponseBodyData] = None,
         request_id: str = None,
     ):
-        # The returned data.
+        # The returned data object.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -62,17 +62,17 @@ class ListCustomAgentToolsResponseBodyData(DaraModel):
         type: str = None,
         zh: str = None,
     ):
-        # The description in English.
+        # The English description.
         self.en = en
-        # The description in Japanese.
+        # The Japanese description.
         self.ja = ja
         # The tool name.
         self.name = name
-        # The description in Traditional Chinese.
+        # The Traditional Chinese description.
         self.tc = tc
         # The read/write type of the tool.
         self.type = type
-        # The description in Simplified Chinese.
+        # The Chinese description.
         self.zh = zh
 
     def validate(self):

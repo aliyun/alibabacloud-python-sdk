@@ -12,7 +12,7 @@ class ListCustomAgentRequest(DaraModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of records per page.
         self.page_size = page_size
 
     def validate(self):

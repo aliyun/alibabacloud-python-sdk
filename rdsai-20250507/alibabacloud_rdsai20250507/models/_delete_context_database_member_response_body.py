@@ -18,7 +18,7 @@ class DeleteContextDatabaseMemberResponseBody(DaraModel):
         role: str = None,
         status: str = None,
     ):
-        # The creation time.
+        # The time when the member was created.
         self.created_at = created_at
         # The API key details. An empty array is returned.
         self.keys = keys
@@ -111,17 +111,17 @@ class DeleteContextDatabaseMemberResponseBodyKeys(DaraModel):
         revoked_at: str = None,
         status: str = None,
     ):
-        # The creation time. This field is empty.
+        # The time when the API key was created. This field is empty.
         self.created_at = created_at
         # The API key description. This field is empty.
         self.description = description
         # This field is empty.
         self.expires_at = expires_at
-        # The API key suffix. This field is empty.
+        # The suffix of the API key. This field is empty.
         self.key_display_suffix = key_display_suffix
         # The key ID. This field is empty.
         self.key_id = key_id
-        # The API key prefix. This field is empty.
+        # The prefix of the API key. This field is empty.
         self.key_prefix = key_prefix
         # This field is empty.
         self.last_used_at = last_used_at

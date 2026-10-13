@@ -15,13 +15,13 @@ class UpdateApiKeyQuotaResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The returned data.
+        # The response data.
         self.data = data
-        # The returned message.
+        # The response message.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # The request result.
         self.success = success
 
     def validate(self):
@@ -109,20 +109,18 @@ class UpdateApiKeyQuotaResponseBodyDataCustomKeyList(DaraModel):
         limit_type: str = None,
         token_quota: int = None,
     ):
-        # The API key.
+        # Api Key
         self.api_key = api_key
         self.daily_token_quota = daily_token_quota
-        # The limit rate.
+        # The quota ratio.
         self.limit_rate = limit_rate
-        # The quota limiting method. Valid values:
+        # The quota type. Valid values:
         # 
-        # - `ratio`: Sets the limit based on a ratio.
-        # 
-        # - `fixed`: Sets the limit to a fixed value.
-        # 
-        # - `auto`: Allocates the limit automatically.
+        # - ratio: by ratio.
+        # - fixed: by fixed value.
+        # - auto: automatic allocation of EPS resource.
         self.limit_type = limit_type
-        # The token quota for the API key.
+        # The quota of the current key.
         self.token_quota = token_quota
 
     def validate(self):

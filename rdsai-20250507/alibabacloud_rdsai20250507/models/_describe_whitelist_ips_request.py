@@ -9,7 +9,7 @@ class DescribeWhitelistIpsRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
-        # The instance ID.
+        # The instance name.
         self.instance_id = instance_id
 
     def validate(self):

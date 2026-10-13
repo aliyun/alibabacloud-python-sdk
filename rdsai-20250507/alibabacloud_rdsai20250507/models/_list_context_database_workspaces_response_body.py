@@ -79,7 +79,7 @@ class ListContextDatabaseWorkspacesResponseBodyWorkspaces(DaraModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
-        # The time when the workspace was created, in ISO-8601 format.
+        # The time when the workspace was created, in ISO 8601 format.
         self.created_at = created_at
         # The workspace status.
         self.status = status

@@ -16,7 +16,7 @@ class RestartInstanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_name = instance_name
-        # The region ID.
+        # The region.
         self.region_id = region_id
 
     def validate(self):

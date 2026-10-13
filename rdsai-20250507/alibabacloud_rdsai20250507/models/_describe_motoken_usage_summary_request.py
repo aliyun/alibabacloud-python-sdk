@@ -14,12 +14,19 @@ class DescribeMOTokenUsageSummaryRequest(DaraModel):
         start_time: str = None,
         usage_type: str = None,
     ):
+        # The API key used.
         self.api_key = api_key
+        # The end time of the instance. Format: YYYY-MM-DD. The interval between EndTime and StartTime cannot exceed 31 days.
         self.end_time = end_time
+        # The instance name.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The model called.
         self.model = model
+        # The start time of the instance. Format: YYYY-MM-DD.
         self.start_time = start_time
+        # The query type.
         self.usage_type = usage_type
 
     def validate(self):

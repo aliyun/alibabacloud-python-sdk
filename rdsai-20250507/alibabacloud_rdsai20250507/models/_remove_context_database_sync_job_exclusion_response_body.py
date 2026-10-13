@@ -1,0 +1,146 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from alibabacloud_rdsai20250507 import models as main_models
+from darabonba.model import DaraModel
+
+class RemoveContextDatabaseSyncJobExclusionResponseBody(DaraModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: main_models.RemoveContextDatabaseSyncJobExclusionResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The error code.
+        self.code = code
+        # The returned data.
+        self.data = data
+        # The HTTP status code.
+        self.http_status_code = http_status_code
+        # The message.
+        self.message = message
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether the request is successful.
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.code is not None:
+            result['Code'] = self.code
+
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+
+        if self.message is not None:
+            result['Message'] = self.message
+
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+
+        if self.success is not None:
+            result['Success'] = self.success
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+
+        if m.get('Data') is not None:
+            temp_model = main_models.RemoveContextDatabaseSyncJobExclusionResponseBodyData()
+            self.data = temp_model.from_map(m.get('Data'))
+
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+
+        return self
+
+class RemoveContextDatabaseSyncJobExclusionResponseBodyData(DaraModel):
+    def __init__(
+        self,
+        changed: bool = None,
+        config_version: int = None,
+        document_id: str = None,
+        excluded: bool = None,
+        job_id: str = None,
+    ):
+        # Indicates whether the data has changed.
+        self.changed = changed
+        # The configuration version number.
+        self.config_version = config_version
+        # The document ID.
+        self.document_id = document_id
+        # Indicates whether the item is excluded.
+        self.excluded = excluded
+        # The job ID, which is a system-generated UUID.
+        self.job_id = job_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.changed is not None:
+            result['Changed'] = self.changed
+
+        if self.config_version is not None:
+            result['ConfigVersion'] = self.config_version
+
+        if self.document_id is not None:
+            result['DocumentId'] = self.document_id
+
+        if self.excluded is not None:
+            result['Excluded'] = self.excluded
+
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Changed') is not None:
+            self.changed = m.get('Changed')
+
+        if m.get('ConfigVersion') is not None:
+            self.config_version = m.get('ConfigVersion')
+
+        if m.get('DocumentId') is not None:
+            self.document_id = m.get('DocumentId')
+
+        if m.get('Excluded') is not None:
+            self.excluded = m.get('Excluded')
+
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+
+        return self
+

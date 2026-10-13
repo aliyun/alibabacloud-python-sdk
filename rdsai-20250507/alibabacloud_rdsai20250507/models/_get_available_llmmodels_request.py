@@ -11,9 +11,14 @@ class GetAvailableLLMModelsRequest(DaraModel):
         instance_name: str = None,
         region_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only printable ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The instance ID of the AI application.
+        # 
         # This parameter is required.
         self.instance_name = instance_name
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

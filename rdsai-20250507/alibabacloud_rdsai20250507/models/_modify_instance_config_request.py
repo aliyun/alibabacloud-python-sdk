@@ -15,7 +15,7 @@ class ModifyInstanceConfigRequest(DaraModel):
         region_id: str = None,
     ):
         self.branch_name = branch_name
-        # The idempotency parameter.
+        # The idempotence parameter.
         self.client_token = client_token
         # The name of the configuration item to modify. This parameter is used together with ConfigValue.
         self.config_name = config_name

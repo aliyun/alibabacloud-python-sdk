@@ -14,18 +14,23 @@ class CreateMOUsageDetailExportRequest(DaraModel):
         start_time: str = None,
         usage_type: str = None,
     ):
+        # The API key to use.
         self.api_key = api_key
-        # 结束时间，UTC 0 时区 ISO8601 字符串，格式 yyyy-MM-ddTHH:mm:ssZ；与 StartTime 跨度不超过 30 天
+        # The inspection end time in the YYYY-MM-DDTHH:mm:ssZ format. The time range between StartTime and EndTime cannot exceed 30 days.
         # 
         # This parameter is required.
         self.end_time = end_time
+        # The instance name.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The model to call.
         self.model = model
-        # 起始时间，UTC 0 时区 ISO8601 字符串，格式 yyyy-MM-ddTHH:mm:ssZ
+        # The inspection start time in the YYYY-MM-DDTHH:mm:ssZ format.
         # 
         # This parameter is required.
         self.start_time = start_time
+        # The view type.
         self.usage_type = usage_type
 
     def validate(self):

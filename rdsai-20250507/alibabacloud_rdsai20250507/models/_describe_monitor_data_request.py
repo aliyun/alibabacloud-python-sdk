@@ -26,7 +26,7 @@ class DescribeMonitorDataRequest(DaraModel):
         self.instance_id = instance_id
         # The statistical period. Default value: 15s.
         self.interval = interval
-        # The metric to query.
+        # The metric to query. Valid values:
         # 
         # - pv
         # - uv

@@ -9,7 +9,7 @@ class GetCustomAgentRequest(DaraModel):
         self,
         custom_agent_id: str = None,
     ):
-        # The ID of the custom agent.
+        # The ID of the dedicated agent.
         self.custom_agent_id = custom_agent_id
 
     def validate(self):

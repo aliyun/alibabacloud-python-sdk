@@ -14,11 +14,11 @@ class UpdateMOQuotaAlertThresholdResponseBody(DaraModel):
         results: List[main_models.UpdateMOQuotaAlertThresholdResponseBodyResults] = None,
         success: bool = None,
     ):
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # The result list.
+        # The list of results.
         self.results = results
-        # A value of `true` indicates that the request was successful.
+        # The request result.
         self.success = success
 
     def validate(self):
@@ -70,15 +70,15 @@ class UpdateMOQuotaAlertThresholdResponseBodyResults(DaraModel):
         key_type: str = None,
         threshold_percent: int = None,
     ):
-        # The API key.
+        # API Key
         self.apikey = apikey
-        # The instance ID.
+        # The instance name.
         self.instance_id = instance_id
         # The API key name.
         self.key_name = key_name
         # The key type.
         self.key_type = key_type
-        # The alert threshold percentage. For example, a value of 80 triggers an alert when usage reaches 80% of the usage quota. The alert is reset after the usage falls below this percentage.
+        # The alert threshold percentage. For example, 80 indicates that an alert is triggered when the usage reaches 80%. The alert is reset when the usage drops below this percentage.
         self.threshold_percent = threshold_percent
 
     def validate(self):

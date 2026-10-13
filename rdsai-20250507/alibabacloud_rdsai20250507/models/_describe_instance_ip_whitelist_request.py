@@ -17,7 +17,7 @@ class DescribeInstanceIpWhitelistRequest(DaraModel):
         self.group_name = group_name
         # The instance ID of the AI application.
         self.instance_name = instance_name
-        # The region ID.
+        # The region.
         self.region_id = region_id
 
     def validate(self):

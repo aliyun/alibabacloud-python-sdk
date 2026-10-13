@@ -10,6 +10,8 @@ from darabonba.model import DaraModel
 class CreateSkillResponseBody(DaraModel):
     def __init__(
         self,
+        action: str = None,
+        bundle_hash: str = None,
         catalog_revision: int = None,
         content: Dict[str, Any] = None,
         created_at: str = None,
@@ -19,9 +21,15 @@ class CreateSkillResponseBody(DaraModel):
         name: str = None,
         request_id: str = None,
         skill: main_models.CreateSkillResponseBodySkill = None,
+        skill_id: str = None,
         skill_type: str = None,
         version: main_models.CreateSkillResponseBodyVersion = None,
+        version_id: str = None,
     ):
+        # The publish action for this release.
+        self.action = action
+        # The content digest of the Skill package.
+        self.bundle_hash = bundle_hash
         # The Skill catalog revision number.
         self.catalog_revision = catalog_revision
         # The content grouped by database type.
@@ -40,10 +48,14 @@ class CreateSkillResponseBody(DaraModel):
         self.request_id = request_id
         # The created Skill.
         self.skill = skill
+        # The ID of the created Skill.
+        self.skill_id = skill_id
         # The Skill type.
         self.skill_type = skill_type
         # The created Skill version.
         self.version = version
+        # The ID of the created Skill version.
+        self.version_id = version_id
 
     def validate(self):
         if self.skill:
@@ -56,6 +68,12 @@ class CreateSkillResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.action is not None:
+            result['Action'] = self.action
+
+        if self.bundle_hash is not None:
+            result['BundleHash'] = self.bundle_hash
+
         if self.catalog_revision is not None:
             result['CatalogRevision'] = self.catalog_revision
 
@@ -83,16 +101,28 @@ class CreateSkillResponseBody(DaraModel):
         if self.skill is not None:
             result['Skill'] = self.skill.to_map()
 
+        if self.skill_id is not None:
+            result['SkillId'] = self.skill_id
+
         if self.skill_type is not None:
             result['SkillType'] = self.skill_type
 
         if self.version is not None:
             result['Version'] = self.version.to_map()
 
+        if self.version_id is not None:
+            result['VersionId'] = self.version_id
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+
+        if m.get('BundleHash') is not None:
+            self.bundle_hash = m.get('BundleHash')
+
         if m.get('CatalogRevision') is not None:
             self.catalog_revision = m.get('CatalogRevision')
 
@@ -121,12 +151,18 @@ class CreateSkillResponseBody(DaraModel):
             temp_model = main_models.CreateSkillResponseBodySkill()
             self.skill = temp_model.from_map(m.get('Skill'))
 
+        if m.get('SkillId') is not None:
+            self.skill_id = m.get('SkillId')
+
         if m.get('SkillType') is not None:
             self.skill_type = m.get('SkillType')
 
         if m.get('Version') is not None:
             temp_model = main_models.CreateSkillResponseBodyVersion()
             self.version = temp_model.from_map(m.get('Version'))
+
+        if m.get('VersionId') is not None:
+            self.version_id = m.get('VersionId')
 
         return self
 
@@ -151,21 +187,21 @@ class CreateSkillResponseBodyVersion(DaraModel):
         self.created_at = created_at
         # Indicates whether the Skill requires a credential.
         self.credential_required = credential_required
-        # The Skill version ID.
+        # The ID of the Skill version.
         self.id = id
-        # The Skill package size, in bytes.
+        # The size of the Skill package, in bytes.
         self.package_size = package_size
-        # The revocation reason of the Skill version.
+        # The reason for revoking the Skill version.
         self.revoke_reason = revoke_reason
         # The revocation time of the Skill version.
         self.revoked_at = revoked_at
         # The SHA-256 digest of the Skill package.
         self.sha_256 = sha_256
-        # The ID of the parent Skill.
+        # The ID of the Skill to which this version belongs.
         self.skill_id = skill_id
         # The status of the Skill version.
         self.status = status
-        # The Skill version number.
+        # The version number of the Skill.
         self.version = version
 
     def validate(self):
@@ -267,11 +303,11 @@ class CreateSkillResponseBodySkill(DaraModel):
         self.active_version_id = active_version_id
         # The Skill category.
         self.category = category
-        # The Skill creation time.
+        # The creation time of the Skill.
         self.created_at = created_at
         # The Skill description.
         self.description = description
-        # The Skill display name.
+        # The display name of the Skill.
         self.display_name = display_name
         # The public HTTPS URL of the current icon. This value is empty if no icon is configured.
         self.icon = icon
@@ -283,7 +319,7 @@ class CreateSkillResponseBodySkill(DaraModel):
         self.scope = scope
         # The stable identifier of the Skill.
         self.slug = slug
-        # The Skill update time.
+        # The update time of the Skill.
         self.updated_at = updated_at
 
     def validate(self):

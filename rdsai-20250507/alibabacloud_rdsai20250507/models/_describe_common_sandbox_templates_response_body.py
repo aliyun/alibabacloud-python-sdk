@@ -17,7 +17,7 @@ class DescribeCommonSandboxTemplatesResponseBody(DaraModel):
     ):
         # A reserved parameter. You do not need to specify this parameter.
         self.max_results = max_results
-        # The token that indicates the position from which the query starts. Set this parameter to empty to start from the beginning.
+        # The token that determines the start point of the query. Set this parameter to empty to start the query from the beginning.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
@@ -79,15 +79,15 @@ class DescribeCommonSandboxTemplatesResponseBodyTemplates(DaraModel):
         description: str = None,
         name: str = None,
     ):
-        # The default number of CPUs for sandboxes created by using this template.
+        # The default number of CPUs for a sandbox created by using this template.
         self.default_cpu = default_cpu
-        # The default memory size for sandboxes created by using this template. The unit ends with Gi.
+        # The default memory size for a sandbox created by using this template. The unit ends with Gi.
         self.default_memory = default_memory
         # The default number of prewarmed sandboxes.
         self.default_replicas = default_replicas
-        # The description of the sandbox template.
+        # The sandbox template description.
         self.description = description
-        # The name of the sandbox template.
+        # The sandbox template name.
         self.name = name
 
     def validate(self):

@@ -77,17 +77,17 @@ class ModifyInstanceAuthConfigRequestConfigList(DaraModel):
     ):
         # The configuration item name. Valid values:
         # 
-        # - **GOTRUE_EXTERNAL_EMAIL_ENABLED**: specifies whether to allow external email addresses.
-        # - **GOTRUE_SITE_URL**: the website URL displayed when the AI application sends emails.
-        # - **GOTRUE_SMTP_PORT**: the port of the SMTP provider.
-        # - **GOTRUE_SMTP_SENDER_NAME**: the name of the email sender.
-        # - **GOTRUE_SMTP_USER**: the username of the SMTP provider.
-        # - **GOTRUE_SMTP_PASS**: the secret key of the SMTP provider.
-        # - **GOTRUE_SMTP_ADMIN_EMAIL**: the email address of the SMTP provider.
-        # - **GOTRUE_SMTP_HOST**: the host address of the SMTP provider.
-        # - **GOTRUE_MAILER_AUTOCONFIRM**: specifies whether to enable automatic confirmation.
-        # - **GOTRUE_MAILER_OTP_EXP**: the validity period of the one-time password (OTP). Unit: seconds.
-        # - **GOTRUE_MAILER_OTP_LENGTH**: the length of the one-time password (OTP) verification code. The value must be an integer greater than or equal to 6.
+        # - **GOTRUE_EXTERNAL_EMAIL_ENABLED**: Specifies whether to allow external email addresses.
+        # - **GOTRUE_SITE_URL**: The website URL displayed when the AI application sends emails.
+        # - **GOTRUE_SMTP_PORT**: The port of the SMTP provider.
+        # - **GOTRUE_SMTP_SENDER_NAME**: The name of the email sender.
+        # - **GOTRUE_SMTP_USER**: The username of the SMTP provider.
+        # - **GOTRUE_SMTP_PASS**: The secret key of the SMTP provider.
+        # - **GOTRUE_SMTP_ADMIN_EMAIL**: The email address of the SMTP provider.
+        # - **GOTRUE_SMTP_HOST**: The host address of the SMTP provider.
+        # - **GOTRUE_MAILER_AUTOCONFIRM**: Specifies whether to enable automatic confirmation.
+        # - **GOTRUE_MAILER_OTP_EXP**: The validity period of the one-time password (OTP). Unit: seconds.
+        # - **GOTRUE_MAILER_OTP_LENGTH**: The length of the one-time password (OTP) verification code. The value must be an integer greater than or equal to 6.
         self.name = name
         # The value of the configuration item.
         self.value = value

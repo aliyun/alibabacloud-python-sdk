@@ -13,11 +13,11 @@ class UpdateMOQuotaAlertThresholdRequest(DaraModel):
         apikey: List[main_models.UpdateMOQuotaAlertThresholdRequestApikey] = None,
         instance_id: str = None,
     ):
-        # A list of API keys.
+        # The list of API keys.
         # 
         # This parameter is required.
         self.apikey = apikey
-        # The instance ID.
+        # The instance name.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -62,9 +62,9 @@ class UpdateMOQuotaAlertThresholdRequestApikey(DaraModel):
         apikey: str = None,
         threshold_percent: int = None,
     ):
-        # The API key.
+        # ApiKey
         self.apikey = apikey
-        # The alert threshold percentage. For example, a value of 80 triggers an alert when usage reaches 80% of the usage quota. The alert is reset after the usage falls below this percentage.
+        # The alert threshold percentage. For example, 80 indicates that an alert is triggered when the usage reaches 80%. The alert is reset when the usage drops below this percentage.
         self.threshold_percent = threshold_percent
 
     def validate(self):

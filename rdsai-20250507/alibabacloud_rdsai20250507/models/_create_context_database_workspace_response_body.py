@@ -34,7 +34,7 @@ class CreateContextDatabaseWorkspaceResponseBody(DaraModel):
         # The role of the first member. The value is fixed as owner.
         self.role = role
         # The workspace status. Valid values:
-        # - Active: running normally.
+        # - Active: running as expected.
         # - Locked: locked due to overdue payment or expiration.
         self.status = status
         # The workspace type. Valid values:

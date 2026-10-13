@@ -120,7 +120,7 @@ class ChatMessagesRequestInputs(DaraModel):
         self.think_effort = think_effort
         # The time zone. Default value: **Asia/Shanghai**.
         self.timezone = timezone
-        # The tool approval mode for the current conversation. Valid values: read_only (read-only, write tools are rejected), manual (write tools require manual approval), and auto (the approval sub-agent automatically determines the action. If the result is needs_human, the approval is escalated to manual review). When this parameter is passed, the approval mode of the current conversation is updated.
+        # The tool approval mode for the current conversation. Valid values: read_only (read-only, write tools are rejected), manual (write tools require manual approval), and auto (the approval sub-agent automatically determines the action. If the result is needs_human, the request is escalated to manual approval). When this parameter is passed, the approval mode of the current conversation is updated.
         self.tool_approval_mode = tool_approval_mode
         # The ContextDB workspace ID.
         self.workspace_id = workspace_id
@@ -198,8 +198,6 @@ class ChatMessagesRequestInputs(DaraModel):
             self.workspace_id = m.get('WorkspaceId')
 
         return self
-
-
 
 class ChatMessagesRequestFiles(DaraModel):
     def __init__(
