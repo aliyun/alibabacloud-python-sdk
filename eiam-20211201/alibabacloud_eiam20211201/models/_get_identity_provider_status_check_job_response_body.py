@@ -13,7 +13,7 @@ class GetIdentityProviderStatusCheckJobResponseBody(DaraModel):
         identity_provider_status_check_job: main_models.GetIdentityProviderStatusCheckJobResponseBodyIdentityProviderStatusCheckJob = None,
         request_id: str = None,
     ):
-        # The information about the IdP status check job.
+        # The IdP status check job information.
         self.identity_provider_status_check_job = identity_provider_status_check_job
         # The request ID.
         self.request_id = request_id
@@ -58,21 +58,21 @@ class GetIdentityProviderStatusCheckJobResponseBodyIdentityProviderStatusCheckJo
         start_time: int = None,
         status: str = None,
     ):
-        # The result of the check task.
+        # The job check result.
         self.check_result = check_result
-        # The end time.
+        # The end time. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # The ID of the IdP.
+        # The identity provider ID.
         self.identity_provider_id = identity_provider_id
-        # The ID of the IdP status check job.
+        # The IdP status check job ID.
         self.identity_provider_status_check_job_id = identity_provider_status_check_job_id
         # The instance ID.
         self.instance_id = instance_id
-        # The results of the status check subtasks.
+        # The status check sub-item task result information.
         self.job_check_items = job_check_items
-        # The start time.
+        # The start time. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
-        # The status of the check task.
+        # The job check status.
         self.status = status
 
     def validate(self):
@@ -153,7 +153,7 @@ class GetIdentityProviderStatusCheckJobResponseBodyIdentityProviderStatusCheckJo
         minor_check_item: str = None,
         result: str = None,
     ):
-        # The reason for the error.
+        # The error reason.
         self.error_reason = error_reason
         # The major check item.
         self.major_check_item = major_check_item

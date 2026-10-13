@@ -29,6 +29,7 @@ class CreateApplicationRequest(DaraModel):
         # 
         # This parameter is required.
         self.application_name = application_name
+        # The application owner.
         self.application_owner = application_owner
         # The source from which the application is created. Valid values:
         # - urn:alibaba:idaas:app:source:template: application template.
@@ -36,8 +37,9 @@ class CreateApplicationRequest(DaraModel):
         # 
         # This parameter is required.
         self.application_source_type = application_source_type
-        # The application template ID. This parameter is required when ApplicationSourceType is set to urn:alibaba:idaas:app:source:template.
+        # The application template ID. This parameter is required when the ApplicationSourceType parameter is set to urn:alibaba:idaas:app:source:template.
         self.application_template_id = application_template_id
+        # The list of application extension fields.
         self.custom_fields = custom_fields
         # The application description.
         self.description = description
@@ -47,7 +49,7 @@ class CreateApplicationRequest(DaraModel):
         self.instance_id = instance_id
         # The URL of the application logo.
         self.logo_url = logo_url
-        # The single sign-on protocol. Valid values:
+        # The single sign-on (SSO) protocol. Valid values:
         # - saml2: SAML 2.0 protocol.
         # - oidc: OpenID Connect protocol.
         # 
@@ -145,7 +147,9 @@ class CreateApplicationRequestCustomFields(DaraModel):
         field_name: str = None,
         field_value: str = None,
     ):
+        # The identifier of the application extension field.
         self.field_name = field_name
+        # The value of the application extension field. When FieldName is set to agentType, valid values are bailian, pai, dify, and volcano. When FieldName is set to agentExternalId, enter the relevant value.
         self.field_value = field_value
 
     def validate(self):
@@ -180,7 +184,9 @@ class CreateApplicationRequestApplicationOwner(DaraModel):
         group_ids: List[str] = None,
         user_ids: List[str] = None,
     ):
+        # The list of group IDs.
         self.group_ids = group_ids
+        # The list of user IDs.
         self.user_ids = user_ids
 
     def validate(self):

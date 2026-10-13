@@ -13,7 +13,7 @@ class ListNetworkAccessPathsResponseBody(DaraModel):
         network_access_paths: List[main_models.ListNetworkAccessPathsResponseBodyNetworkAccessPaths] = None,
         request_id: str = None,
     ):
-        # The list of network access endpoint paths.
+        # The list of network access endpoint access paths.
         self.network_access_paths = network_access_paths
         # The request ID.
         self.request_id = request_id
@@ -68,31 +68,34 @@ class ListNetworkAccessPathsResponseBodyNetworkAccessPaths(DaraModel):
         vpc_id: str = None,
         vpc_region_id: str = None,
     ):
-        # The creation time of the dedicated network access endpoint path. The value is a UNIX timestamp in milliseconds.
+        # The time when the dedicated network access endpoint access path was created, in UNIX timestamp format. Unit: milliseconds.
         self.create_time = create_time
+        # The role of the network access endpoint path.
         self.cross_region_replication_role = cross_region_replication_role
         # The instance ID.
         self.instance_id = instance_id
         # The ID of the dedicated network access endpoint.
         self.network_access_endpoint_id = network_access_endpoint_id
-        # The ID of the dedicated network access endpoint path.
+        # The ID of the dedicated network access endpoint access path.
         self.network_access_path_id = network_access_path_id
-        # The ID of the ENI used by the dedicated network access endpoint path.
+        # The ID of the ENI used by the dedicated network access endpoint access path.
         self.network_interface_id = network_interface_id
-        # The private endpoint of the ENI used by the dedicated network access endpoint path.
+        # The private endpoint of the ENI on the private network used by the dedicated network access endpoint access path.
         self.private_ip_address = private_ip_address
-        # The status of the dedicated network access endpoint path. Valid values:
+        # The status of the dedicated network access endpoint access path. Valid values:
         #  
         # - pending: Pending initialization.
         # - creating: Being created.
         # - running: Running.
         # - deleting: Being deleted.
         self.status = status
-        # The last update time of the dedicated network access endpoint path. The value is a UNIX timestamp in milliseconds.
+        # The time when the dedicated network access endpoint access path was last updated, in UNIX timestamp format. Unit: milliseconds.
         self.update_time = update_time
-        # The ID of the vSwitch to which the ENI of the dedicated network access endpoint path belongs.
+        # The ID of the vSwitch to which the ENI of the dedicated network access endpoint access path belongs.
         self.v_switch_id = v_switch_id
+        # The VPC ID.
         self.vpc_id = vpc_id
+        # The VPC region information.
         self.vpc_region_id = vpc_region_id
 
     def validate(self):

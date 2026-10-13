@@ -17,17 +17,17 @@ class ListUserAuthnSourceMappingsResponseBody(DaraModel):
         total_count: int = None,
         user_authn_source_mappings: List[main_models.ListUserAuthnSourceMappingsResponseBodyUserAuthnSourceMappings] = None,
     ):
-        # The maximum number of entries returned on each page.
+        # The maximum number of rows per page in a paged query.
         self.max_results = max_results
-        # The token to retrieve the next page of results.
+        # The pagination token returned by this call.
         self.next_token = next_token
-        # The token to retrieve the previous page of results.
+        # The pagination token returned by this call.
         self.previous_token = previous_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries in the list.
         self.total_count = total_count
-        # A list of bindings for third-party account logons.
+        # The list of third-party account login bindings.
         self.user_authn_source_mappings = user_authn_source_mappings
 
     def validate(self):
@@ -100,17 +100,17 @@ class ListUserAuthnSourceMappingsResponseBodyUserAuthnSourceMappings(DaraModel):
         user_external_id: str = None,
         user_id: str = None,
     ):
-        # The authentication source type.
+        # The authentication source type of the source IdP.
         self.authn_source_type = authn_source_type
-        # The time when the binding was created.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # Information about the associated third-party account.
+        # The association information of the third-party account.
         self.external_data = external_data
         # The source IdP ID.
         self.identity_provider_id = identity_provider_id
         # The instance ID.
         self.instance_id = instance_id
-        # The time when the binding was last updated.
+        # The last update time. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
         # The external ID.
         self.user_external_id = user_external_id

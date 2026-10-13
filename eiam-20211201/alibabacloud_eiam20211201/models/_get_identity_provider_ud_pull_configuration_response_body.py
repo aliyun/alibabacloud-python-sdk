@@ -61,15 +61,17 @@ class GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration(Dara
     ):
         # The group synchronization status. Valid values:
         # 
-        # - disabled
-        # - enabled.
+        # - disabled: Disabled.
+        # 
+        # - enabled: Enabled.
         self.group_sync_status = group_sync_status
         # The identity provider ID.
         self.identity_provider_id = identity_provider_id
         # The incremental callback status, which specifies whether to process incremental callback data from the IdP. Valid values:
         # 
-        # - disabled
-        # - enabled.
+        # - disabled: Disabled.
+        # 
+        # - enabled: Enabled.
         self.incremental_callback_status = incremental_callback_status
         # The instance ID.
         self.instance_id = instance_id
@@ -79,8 +81,9 @@ class GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration(Dara
         self.periodic_sync_config = periodic_sync_config
         # The periodic verification status, which specifies whether to periodically verify data differences between IDaaS and the identity provider. Valid values:
         # 
-        # - disabled
-        # - enabled.
+        # - disabled: Disabled.
+        # 
+        # - enabled: Enabled.
         self.periodic_sync_status = periodic_sync_status
         # The inbound synchronization protection rule configuration.
         self.pull_protected_rule = pull_protected_rule
@@ -172,9 +175,9 @@ class GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationUdSyn
         source_scopes: List[str] = None,
         target_scope: str = None,
     ):
-        # The list of source nodes for synchronization.
+        # The list of source scope nodes.
         self.source_scopes = source_scopes
-        # The target node for synchronization.
+        # The target scope node.
         self.target_scope = target_scope
 
     def validate(self):
@@ -258,7 +261,7 @@ class GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationPerio
     ):
         # The cron expression.
         self.periodic_sync_cron = periodic_sync_cron
-        # The execution time points. For example, [3, 5] indicates that synchronization runs once between 3:00 and 4:00 and once between 5:00 and 6:00.
+        # The execution time points. For example, [3, 5] indicates that the task runs once between 3:00 and 4:00 and once between 5:00 and 6:00.
         self.periodic_sync_times = periodic_sync_times
         # The periodic synchronization type.
         self.periodic_sync_type = periodic_sync_type
@@ -305,13 +308,13 @@ class GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationLdapU
         user_object_class: str = None,
         user_object_class_custom_filter: str = None,
     ):
-        # The group member identifier attribute.
+        # The group member attribute name.
         self.group_member_attribute_name = group_member_attribute_name
         # The group ObjectClass.
         self.group_object_class = group_object_class
         # The custom filter for groups.
         self.group_object_class_custom_filter = group_object_class_custom_filter
-        # The organizational unit ObjectClass.
+        # The organization ObjectClass.
         self.organization_unit_object_class = organization_unit_object_class
         # The user ObjectClass.
         self.user_object_class = user_object_class

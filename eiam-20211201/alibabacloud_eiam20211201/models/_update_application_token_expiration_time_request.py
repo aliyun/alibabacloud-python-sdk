@@ -20,7 +20,7 @@ class UpdateApplicationTokenExpirationTimeRequest(DaraModel):
         # 
         # This parameter is required.
         self.application_token_id = application_token_id
-        # The expiration time.
+        # The expiration time. Specify a UNIX timestamp in milliseconds.
         # 
         # This parameter is required.
         self.expiration_time = expiration_time

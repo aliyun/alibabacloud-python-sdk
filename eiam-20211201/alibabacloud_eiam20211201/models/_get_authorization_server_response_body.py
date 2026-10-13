@@ -62,27 +62,27 @@ class GetAuthorizationServerResponseBodyAuthorizationServer(DaraModel):
     ):
         # The authorization server ID.
         self.authorization_server_id = authorization_server_id
-        # The name of the authorization server.
+        # The authorization server name.
         self.authorization_server_name = authorization_server_name
-        # The time when the authorization server was created.
+        # The time when the authorization server was created. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The creation type.
         self.creation_type = creation_type
-        # The description of the authorization server.
+        # The authorization server description.
         self.description = description
         # The instance ID.
         self.instance_id = instance_id
-        # The issuer of the authorization token.
+        # The authorization token issuer.
         self.issuer = issuer
         # The domain name used by the issuer.
         self.issuer_domain = issuer_domain
         # The issuer mode.
         self.issuer_mode = issuer_mode
-        # The time when the authorization server was last updated.
+        # The time when the authorization server was last updated. The value is a UNIX timestamp in milliseconds.
         self.last_update_time = last_update_time
-        # The endpoint configuration of the authorization server.
+        # The authorization server endpoint configuration.
         self.protocol_endpoint = protocol_endpoint
-        # The status of the authorization server.
+        # The authorization server status.
         self.status = status
 
     def validate(self):

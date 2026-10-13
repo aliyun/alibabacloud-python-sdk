@@ -130,7 +130,7 @@ class GetIdentityProviderResponseBodyIdentityProviderDetail(DaraModel):
         self.identity_provider_id = identity_provider_id
         # The name of the identity provider.
         self.identity_provider_name = identity_provider_name
-        # The synchronization type of the identity provider. Valid values:
+        # The sync type of the identity provider. Valid values:
         # 
         # - urn:alibaba:idaas:idp:alibaba:dingtalk:pull: Inbound DingTalk.
         # 
@@ -166,21 +166,21 @@ class GetIdentityProviderResponseBodyIdentityProviderDetail(DaraModel):
         self.oidc_config = oidc_config
         # The SAML IdP configuration.
         self.saml_config = saml_config
-        # The inbound sync configuration.
+        # The inbound synchronization configuration.
         self.ud_pull_config = ud_pull_config
-        # Indicates whether the inbound sync feature is supported. Valid values:
+        # Indicates whether the inbound synchronization feature is supported. Valid values:
         # 
-        # - disabled: Disabled.
+        # - disabled
         # 
-        # - enabled: Enabled.
+        # - enabled
         self.ud_pull_status = ud_pull_status
-        # The outbound sync configuration.
+        # The outbound synchronization configuration.
         self.ud_push_config = ud_push_config
-        # Indicates whether the outbound sync capability is enabled. Valid values:
+        # Indicates whether the outbound synchronization capability is enabled. Valid values:
         # 
-        # - disabled: Disabled.
+        # - disabled
         # 
-        # - enabled: Enabled.
+        # - enabled
         self.ud_push_status = ud_push_status
         # The update time, in UNIX timestamp format. Unit: milliseconds.
         self.update_time = update_time
@@ -412,7 +412,7 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailWeComConfig(DaraModel
         self.agent_id = agent_id
         # The authorization callback domain.
         self.authorize_callback_domain = authorize_callback_domain
-        # The WeCom contacts secret.
+        # The WeCom contact secret.
         self.contact_secret = contact_secret
         # The corpId of the WeCom self-built application.
         self.corp_id = corp_id
@@ -479,7 +479,7 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfig(DaraMode
     ):
         # This field is not in use. Ignore it.
         self.incremental_callback_status = incremental_callback_status
-        # The list of sync scope configurations.
+        # The list of synchronization scope configurations.
         self.ud_sync_scope_configs = ud_sync_scope_configs
 
     def validate(self):
@@ -562,17 +562,17 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfig(DaraMode
     ):
         # Indicates whether group synchronization is enabled. Valid values:
         # 
-        # - disabled: Disabled.
+        # - disabled
         # 
-        # - enabled: Enabled.
+        # - enabled
         self.group_sync_status = group_sync_status
         # The incremental callback status, which indicates whether incremental callback data from the IdP is processed. Valid values:
         # 
-        # - disabled: Disabled.
+        # - disabled
         # 
-        # - enabled: Enabled.
+        # - enabled
         self.incremental_callback_status = incremental_callback_status
-        # The sync scope configuration.
+        # The synchronization scope configuration.
         self.ud_sync_scope_config = ud_sync_scope_config
 
     def validate(self):
@@ -672,7 +672,7 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig(DaraModel)
         self.require_request_signed = require_request_signed
         # Indicates whether the external IdP is required to sign assertions.
         self.want_assertions_signed = want_assertions_signed
-        # Indicates whether the external IdP is required to sign the Response.
+        # Indicates whether the external IdP is required to sign responses.
         self.want_response_signed = want_response_signed
 
     def validate(self):
@@ -792,7 +792,7 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificate
     ):
         # The date after which the certificate is no longer valid.
         self.not_after = not_after
-        # The date before which the certificate is not valid.
+        # The date before which the certificate is not yet valid.
         self.not_before = not_before
 
     def validate(self):
@@ -839,11 +839,11 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfig(DaraModel)
         self.grant_scopes = grant_scopes
         # The OIDC grant type.
         self.grant_type = grant_type
-        # The PKCE algorithm. Valid values:
+        # The PKCE challenge method. Valid values:
         # 
         # - S256: SHA-256.
         # 
-        # - plain: plaintext.
+        # - plain: Plaintext.
         self.pkce_challenge_method = pkce_challenge_method
         # Indicates whether PKCE is used in the AuthorizationCode grant mode.
         self.pkce_required = pkce_required

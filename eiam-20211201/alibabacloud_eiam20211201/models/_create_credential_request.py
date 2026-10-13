@@ -22,14 +22,15 @@ class CreateCredentialRequest(DaraModel):
         exclusive_user_id: str = None,
         instance_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken parameter supports only ASCII characters and cannot exceed 64 characters in length. For more information, see References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+        # Ensures the idempotence of the request. Generate a parameter value from your client to ensure that the value is unique across different requests. The ClientToken value supports only ASCII characters and cannot exceed 64 characters in length. For more information, see References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
         # 
         # This parameter is required.
         self.client_token = client_token
-        # The credential content.
+        # The content of the credential.
         # 
         # This parameter is required.
         self.credential_content = credential_content
+        # The external unique identifier of the credential.
         self.credential_external_id = credential_external_id
         # The credential identifier.
         # 
@@ -43,10 +44,11 @@ class CreateCredentialRequest(DaraModel):
         # - llm: large language model.
         # - saas: third-party SaaS service.
         self.credential_scenario_label = credential_scenario_label
+        # The sharing scope of the credential.
         self.credential_sharing_scope = credential_sharing_scope
-        # The subject ID of the credential.
+        # The subject ID to which the credential belongs.
         self.credential_subject_id = credential_subject_id
-        # The subject type of the credential. Valid values:
+        # The subject type to which the credential belongs. Valid values:
         # - authentication_token_provider: authentication token provider.
         self.credential_subject_type = credential_subject_type
         # The credential type. Valid values:
@@ -55,8 +57,9 @@ class CreateCredentialRequest(DaraModel):
         # 
         # This parameter is required.
         self.credential_type = credential_type
-        # The credential description.
+        # The description of the credential.
         self.description = description
+        # The exclusive user ID of the credential.
         self.exclusive_user_id = exclusive_user_id
         # The instance ID.
         # 
@@ -241,7 +244,7 @@ class CreateCredentialRequestCredentialContentApiKeyContent(DaraModel):
         self,
         api_key: str = None,
     ):
-        # The API key content.
+        # The content of the API key.
         self.api_key = api_key
 
     def validate(self):

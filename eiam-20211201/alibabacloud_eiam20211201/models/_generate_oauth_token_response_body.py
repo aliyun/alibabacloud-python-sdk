@@ -53,12 +53,13 @@ class GenerateOauthTokenResponseBodyTokenResponse(DaraModel):
         issued_token_type: str = None,
         token_type: str = None,
     ):
-        # Access Token。
+        # The access token.
         self.access_token = access_token
         # The expiration time, in UNIX timestamp format, in seconds.
         self.expires_at = expires_at
         # The validity period, in seconds.
         self.expires_in = expires_in
+        # The issued token type.
         self.issued_token_type = issued_token_type
         # The token type. Currently, only Bearer is supported.
         self.token_type = token_type

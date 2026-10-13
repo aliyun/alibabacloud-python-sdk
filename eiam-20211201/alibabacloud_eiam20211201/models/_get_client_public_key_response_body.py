@@ -63,11 +63,11 @@ class GetClientPublicKeyResponseBodyClientPublicKey(DaraModel):
         self.application_id = application_id
         # The ID of the application ClientPublicKey.
         self.client_public_key_id = client_public_key_id
-        # The creation time.
+        # The creation time. The value is a UNIX timestamp. Unit: milliseconds.
         self.create_time = create_time
         # The instance ID.
         self.instance_id = instance_id
-        # The last time the key pair was used.
+        # The last used time. The value is a UNIX timestamp. Unit: milliseconds.
         self.last_used_time = last_used_time
         # Indicates whether the key pair is used with priority.
         self.primary = primary

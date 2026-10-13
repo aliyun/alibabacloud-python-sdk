@@ -17,13 +17,13 @@ class ListFederatedCredentialProvidersResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of federated trust sources.
+        # The list of federated credential providers.
         self.federated_credential_providers = federated_credential_providers
         # The maximum number of entries per page for a paged query.
         self.max_results = max_results
-        # The pagination token returned by this call.
+        # The query token (Token) value returned by this call.
         self.next_token = next_token
-        # The pagination token returned by this call.
+        # The query token (Token) value returned by this call.
         self.previous_token = previous_token
         # The request ID.
         self.request_id = request_id
@@ -105,12 +105,13 @@ class ListFederatedCredentialProvidersResponseBodyFederatedCredentialProviders(D
         status: str = None,
         update_time: int = None,
     ):
+        # The configuration of the cloud identity provider for federated credentials.
         self.cloud_id_pprovider_config = cloud_id_pprovider_config
-        # The creation time.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The description.
         self.description = description
-        # The federated trust source ID.
+        # The federated credential provider ID.
         self.federated_credential_provider_id = federated_credential_provider_id
         # The name of the federated trust source.
         self.federated_credential_provider_name = federated_credential_provider_name
@@ -128,7 +129,7 @@ class ListFederatedCredentialProvidersResponseBodyFederatedCredentialProviders(D
         self.private_ca_provider_config = private_ca_provider_config
         # The status.
         self.status = status
-        # The update time.
+        # The update time. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -297,9 +298,9 @@ class ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPr
     ):
         # The certificate metadata.
         self.certificate_metadata = certificate_metadata
-        # The root certificate content.
+        # The content of the root certificate.
         self.content = content
-        # The root certificate fingerprint.
+        # The fingerprint of the root certificate.
         self.fingerprint = fingerprint
 
     def validate(self):
@@ -387,9 +388,9 @@ class ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPk
         self.certificates = certificates
         # The CMS verification mode.
         self.cms_verification_mode = cms_verification_mode
-        # The signature effective time.
+        # The signature effective time. The value indicates the duration for which the signature is valid, in seconds.
         self.signature_effective_time = signature_effective_time
-        # The expression used to retrieve the signing time.
+        # The expression used to obtain the signing time.
         self.signing_time_value_expression = signing_time_value_expression
         # The certificate trust anchor source.
         self.trust_anchor_source = trust_anchor_source
@@ -555,9 +556,9 @@ class ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersOi
         self.audiences = audiences
         # The dynamically obtained JWKS.
         self.dynamic_jwks = dynamic_jwks
-        # Issuer
+        # The token issuer identifier (Issuer).
         self.issuer = issuer
-        # The time when the JWKS was last obtained.
+        # The time when the JWKS was last obtained. The value is a UNIX timestamp in milliseconds.
         self.jwks_last_obtained_time = jwks_last_obtained_time
         # The JWKS source.
         self.jwks_source = jwks_source
@@ -635,6 +636,7 @@ class ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersCl
         self,
         identity_provider_id: str = None,
     ):
+        # The ID of the identity provider.
         self.identity_provider_id = identity_provider_id
 
     def validate(self):

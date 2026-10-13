@@ -16,7 +16,7 @@ class ListResourceServersForUserResponseBody(DaraModel):
         resource_servers: List[main_models.ListResourceServersForUserResponseBodyResourceServers] = None,
         total_count: int = None,
     ):
-        # The number of entries per page in a paged query.
+        # The number of rows per page in a paged query.
         self.max_results = max_results
         # The pagination token for the next page.
         self.next_token = next_token
@@ -151,8 +151,8 @@ class ListResourceServersForUserResponseBodyResourceServersResourceServerScopes(
         resource_server_scope_name: str = None,
     ):
         # Indicates whether direct authorization exists. Valid values:
-        # - true: Direct authorization exists.
-        # - false: Direct authorization does not exist.
+        # - true: Yes.
+        # - false: No.
         self.has_direct_authorization = has_direct_authorization
         # Indicates whether inherited authorization exists.
         self.has_inherit_authorization = has_inherit_authorization

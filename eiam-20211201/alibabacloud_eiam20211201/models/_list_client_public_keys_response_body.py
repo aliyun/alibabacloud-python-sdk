@@ -16,15 +16,15 @@ class ListClientPublicKeysResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of client public keys for the application.
+        # The list of ClientPublicKeys for the application.
         self.client_public_keys = client_public_keys
-        # The number of entries returned on each page.
+        # The number of entries per page in a paged query.
         self.max_results = max_results
-        # The token for the next page of results.
+        # The pagination token returned by this call.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of entries in the list.
         self.total_count = total_count
 
     def validate(self):
@@ -96,15 +96,15 @@ class ListClientPublicKeysResponseBodyClientPublicKeys(DaraModel):
         self.algorithm_type = algorithm_type
         # The application ID.
         self.application_id = application_id
-        # The ID of the client public key.
+        # The ID of the application ClientPublicKey.
         self.client_public_key_id = client_public_key_id
-        # The time when the key was created.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The instance ID.
         self.instance_id = instance_id
-        # The time when the key was last used.
+        # The last used time. The value is a UNIX timestamp in milliseconds.
         self.last_used_time = last_used_time
-        # Indicates whether the key is used with priority.
+        # Indicates whether this key is used with priority.
         self.primary = primary
         # The public key.
         self.public_key = public_key

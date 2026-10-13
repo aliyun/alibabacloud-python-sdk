@@ -12,15 +12,15 @@ class ListConditionalAccessPoliciesRequest(DaraModel):
         next_token: str = None,
         previous_token: str = None,
     ):
-        # Instance ID.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Number of rows per page in paginated queries.
+        # The number of rows per page in a paged query.
         self.max_results = max_results
-        # Next page query token.
+        # The pagination token for the next page.
         self.next_token = next_token
-        # Previous page query token.
+        # The pagination token for the previous page.
         self.previous_token = previous_token
 
     def validate(self):

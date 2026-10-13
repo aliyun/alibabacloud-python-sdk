@@ -25,7 +25,7 @@ class CreateTrustedOriginRequest(DaraModel):
         # 
         # This parameter is required.
         self.origin = origin
-        # The name of the trusted origin used for management, display, and auditing. If not specified, the value is empty.
+        # The name of the trusted origin used for management, display, and auditing. If this parameter is not specified, the value is empty.
         self.trust_origin_name = trust_origin_name
         # The trusted origin scenes. Only iframe_embed and cors are supported. At least one value is required.
         # 

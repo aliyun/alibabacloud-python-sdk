@@ -67,12 +67,13 @@ class GetCredentialResponseBodyCredential(DaraModel):
     ):
         # The creation time, in UNIX timestamp format. Unit: milliseconds.
         self.create_time = create_time
-        # The content of the credential.
+        # The credential content.
         self.credential_content = credential_content
         # The creation type of the credential. Valid values:
         # - system_init: Created by the system.
         # - user_custom: Created by the user.
         self.credential_creation_type = credential_creation_type
+        # The external unique identifier of the credential.
         self.credential_external_id = credential_external_id
         # The credential ID.
         self.credential_id = credential_id
@@ -84,18 +85,20 @@ class GetCredentialResponseBodyCredential(DaraModel):
         # - llm: Large language model.
         # - saas: Third-party SaaS service.
         self.credential_scenario_label = credential_scenario_label
+        # The credential sharing scope.
         self.credential_sharing_scope = credential_sharing_scope
-        # The ID of the subject to which the credential belongs.
+        # The subject ID to which the credential belongs.
         self.credential_subject_id = credential_subject_id
-        # The type of the subject to which the credential belongs. Valid values:
+        # The subject type to which the credential belongs. Valid values:
         # - authentication_token_provider: Authentication token provider.
         self.credential_subject_type = credential_subject_type
         # The credential type. Valid values:
-        # - api_key: API key credential.
-        # - oauth_client: OAuth client credential.
+        # - api_key: API key authentication credential.
+        # - oauth_client: OAuth client authentication credential.
         self.credential_type = credential_type
         # The credential description.
         self.description = description
+        # The exclusive account ID of the credential.
         self.exclusive_user_id = exclusive_user_id
         # The instance ID.
         self.instance_id = instance_id
@@ -229,7 +232,7 @@ class GetCredentialResponseBodyCredentialCredentialContent(DaraModel):
         self,
         oauth_client_content: main_models.GetCredentialResponseBodyCredentialCredentialContentOAuthClientContent = None,
     ):
-        # The content of the OAuth client credential.
+        # The credential content of the OAuth client authentication credential type.
         self.oauth_client_content = oauth_client_content
 
     def validate(self):

@@ -15,19 +15,19 @@ class UpdateTrustedOriginRequest(DaraModel):
         trusted_origin_id: str = None,
         trusted_origin_scene: List[str] = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The idempotence token.
         self.client_token = client_token
-        # The ID of the IDaaS EIAM instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # If this parameter is not specified, the trusted origin name is not modified.
+        # The trusted origin name.
         self.trust_origin_name = trust_origin_name
-        # The ID of the trusted origin.
+        # The trusted origin ID.
         # 
         # This parameter is required.
         self.trusted_origin_id = trusted_origin_id
-        # When specified, the existing values are entirely replaced. Only iframe_embed and cors are supported.
+        # The trusted origin scenario.
         self.trusted_origin_scene = trusted_origin_scene
 
     def validate(self):

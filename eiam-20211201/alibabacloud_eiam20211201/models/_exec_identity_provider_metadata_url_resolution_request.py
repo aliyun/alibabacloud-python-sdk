@@ -13,16 +13,17 @@ class ExecIdentityProviderMetadataUrlResolutionRequest(DaraModel):
         oidc_issuer: str = None,
         saml_metadata_url: str = None,
     ):
-        # The ID of the identity provider in IDaaS.
+        # The identity provider ID in IDaaS.
         self.identity_provider_id = identity_provider_id
         # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The network access endpoint ID.
+        # The network endpoint ID.
         self.network_access_endpoint_id = network_access_endpoint_id
         # The OIDC issuer URL.
         self.oidc_issuer = oidc_issuer
+        # The SAML metadata URL.
         self.saml_metadata_url = saml_metadata_url
 
     def validate(self):

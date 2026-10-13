@@ -20,7 +20,7 @@ class CreateApplicationTokenRequest(DaraModel):
         # 
         # This parameter is required.
         self.application_token_type = application_token_type
-        # The expiration time.
+        # The expiration time. Specify a UNIX timestamp in milliseconds.
         self.expiration_time = expiration_time
         # The instance ID.
         # 

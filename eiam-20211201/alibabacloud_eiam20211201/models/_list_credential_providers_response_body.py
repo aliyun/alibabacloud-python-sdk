@@ -18,9 +18,9 @@ class ListCredentialProvidersResponseBody(DaraModel):
     ):
         # The list of credential providers.
         self.credential_providers = credential_providers
-        # The maximum number of entries per page for a paged query.
+        # The number of entries per page in a paged query.
         self.max_results = max_results
-        # The pagination token returned in this call.
+        # The pagination token returned by this call.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -99,6 +99,9 @@ class ListCredentialProvidersResponseBodyCredentialProviders(DaraModel):
         # The configuration of the credential provider.
         self.credential_provider_config = credential_provider_config
         # The creation type of the credential provider. Valid values:
+        # 
+        # - system_init: Created by the system.
+        # - user_custom: Created by the user.
         self.credential_provider_creation_type = credential_provider_creation_type
         # The credential provider ID.
         self.credential_provider_id = credential_provider_id
@@ -107,12 +110,18 @@ class ListCredentialProvidersResponseBodyCredentialProviders(DaraModel):
         # The name of the credential provider.
         self.credential_provider_name = credential_provider_name
         # The credential provider type. Valid values:
+        # 
+        # - oauth: OAuth credential provider
+        # - jwt: JWT credential provider
         self.credential_provider_type = credential_provider_type
         # The description of the credential provider.
         self.description = description
         # The instance ID.
         self.instance_id = instance_id
         # The credential provider status. Valid values:
+        # 
+        # - enabled: Enabled.
+        # - disabled: Disabled.
         self.status = status
         # The time when the credential provider was last updated. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
@@ -210,7 +219,9 @@ class ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderCo
         self.jwt_provider_config = jwt_provider_config
         # The configuration of the OAuth-type credential provider.
         self.oauth_provider_config = oauth_provider_config
-        # The list of credential IDs that correspond to the sensitive configurations of the credential provider.
+        # The list of credential IDs that correspond to the sensitive configuration of the credential provider.
+        # 
+        # > The system securely stores the sensitive configuration of the credential provider as credentials.
         self.provider_credential_ids = provider_credential_ids
 
     def validate(self):
@@ -265,26 +276,39 @@ class ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderCo
         system_redirect_uri: str = None,
         token_endpoint: str = None,
     ):
-        # The endpoint URL used to guide users through authorization. Conditionally required: this parameter is required when AuthorizationFlow is set to user_federation and ProviderVendor is set to custom. For preset vendors, this value can be automatically populated through DiscoveryUrl.
+        # The authorization endpoint of the OAuth protocol.
         self.authorization_endpoint = authorization_endpoint
         # The OAuth authorization flow type. Valid values:
-        # - m2m: machine-to-machine (2LO, Client Credentials).
-        # - user_federation: user federation (3LO, Authorization Code).
+        # - m2m: Machine-to-machine.
+        # - user_federation: User federation.
         self.authorization_flow = authorization_flow
         # The client_id in the OAuth protocol.
         self.client_id = client_id
-        # The URL of the discovery document used to automatically obtain OAuth endpoint configurations. Conditionally optional: used when AuthorizationFlow is set to user_federation. If DiscoveryUrl is not provided, you must manually configure fields such as TokenEndpoint and AuthorizationEndpoint.
+        # The URL of the OAuth discovery document.
         self.discovery_url = discovery_url
+        # The issuer endpoint of the OAuth protocol.
         self.issuer = issuer
-        # The method used to generate the PKCE code_challenge. Default value: s256.
+        # The algorithm used to compute the code challenge in PKCE. Valid values:
+        # - S256
+        # - plain
         self.pkce_challenge_method = pkce_challenge_method
-        # Specifies whether to use the PKCE extension to enhance security. We recommend that you always enable this feature.
+        # Indicates whether PKCE is enabled.
         self.pkce_enabled = pkce_enabled
-        # The preset vendor or custom configuration. Optional. Default value: custom.
+        # The OAuth provider vendor type. Valid values:
+        # - custom: Custom.
+        # - dingtalk: DingTalk.
+        # - feishu: Lark.
+        # - github: GitHub.
+        # - microsoft: Microsoft.
+        # - google: Google.
         self.provider_vendor = provider_vendor
         # The scope in the OAuth protocol, which specifies the permission scope.
+        # 
+        # > The scope configured on the credential provider serves as the default value. If the scope parameter is not specified when calling the DeveloperAPI to obtain an OAuth access token, the scope configured on the credential provider is used for token issuance.
+        # 
+        # >Notice: Multiple scope values are separated by spaces.
         self.scope = scope
-        # The redirect URI automatically generated by the system when the credential provider is created. Configure this value as the redirect_uri in the OAuth provider.
+        # The system-generated redirect URI.
         self.system_redirect_uri = system_redirect_uri
         # The token endpoint of the OAuth protocol.
         self.token_endpoint = token_endpoint
@@ -381,15 +405,15 @@ class ListCredentialProvidersResponseBodyCredentialProvidersCredentialProviderCo
     ):
         # The list of allowed JWT issuers.
         self.allowed_token_issuers = allowed_token_issuers
-        # Specifies whether to enable the JWT-derived short token capability.
+        # Indicates whether the JWT-derived short token feature is enabled.
         self.derived_short_token_enabled = derived_short_token_enabled
         # The validity period of the JWT, in seconds.
         self.expiration = expiration
-        # Specifies whether to enable JWT expiration cleanup.
+        # Indicates whether JWT expiration cleanup is enabled.
         self.expiration_cleanup_enabled = expiration_cleanup_enabled
         # JWT issuer。
         self.issuer = issuer
-        # The JWKs endpoint URL.
+        # The JWKS endpoint URL.
         self.jwks_endpoint = jwks_endpoint
 
     def validate(self):

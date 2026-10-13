@@ -26,17 +26,21 @@ class GenerateOauthTokenRequest(DaraModel):
         # 
         # This parameter is required.
         self.audience = audience
+        # The grant type.
         self.grant_type = grant_type
         # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The requested token type.
         self.requested_token_type = requested_token_type
-        # The permission scopes.
+        # The permission scope.
         # 
         # This parameter is required.
         self.scope_values = scope_values
+        # The subject token.
         self.subject_token = subject_token
+        # The subject token type.
         self.subject_token_type = subject_token_type
 
     def validate(self):

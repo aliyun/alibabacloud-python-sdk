@@ -10,11 +10,11 @@ class ListConditionalAccessPoliciesForApplicationRequest(DaraModel):
         application_id: str = None,
         instance_id: str = None,
     ):
-        # Application ID associated with the conditional access policy.
+        # The ID of the application associated with the conditional access policies.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # Instance ID.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

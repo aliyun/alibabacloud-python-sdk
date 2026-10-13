@@ -17,7 +17,7 @@ class ListOrganizationalUnitsForResourceServerRequest(DaraModel):
         next_token: str = None,
         resource_server_scope_id: str = None,
     ):
-        # The resource server application ID.
+        # The ResourceServer application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
@@ -27,11 +27,11 @@ class ListOrganizationalUnitsForResourceServerRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The maximum number of entries to return on each page.
+        # The number of rows per page in a paged query.
         self.max_results = max_results
-        # The pagination token. To retrieve the next page of results, set this parameter to the NextToken value from the previous response.
+        # The pagination token. Set this parameter to the NextToken value returned in the previous API call.
         self.next_token = next_token
-        # The ID of the resource server scope.
+        # The permission ID.
         self.resource_server_scope_id = resource_server_scope_id
 
     def validate(self):
@@ -98,9 +98,9 @@ class ListOrganizationalUnitsForResourceServerRequestFilter(DaraModel):
         name: str = None,
         value: List[str] = None,
     ):
-        # The filter key.
+        # The name of the filter condition.
         self.name = name
-        # The list of filter values.
+        # The list of filter condition values.
         self.value = value
 
     def validate(self):

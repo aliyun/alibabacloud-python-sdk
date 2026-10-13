@@ -1,3 +1,7 @@
+2026-10-13 Version: 3.0.0
+- Update API GetCloudAccount: delete response parameters Body.CloudAccount.CloudAccountRoleCreationType.
+
+
 2026-09-10 Version: 2.19.3
 - Update API CreateIdentityProvider: add request parameters WeComConfig.ContactSecret.
 - Update API GetIdentityProvider: add response parameters Body.IdentityProviderDetail.WeComConfig.ContactSecret.

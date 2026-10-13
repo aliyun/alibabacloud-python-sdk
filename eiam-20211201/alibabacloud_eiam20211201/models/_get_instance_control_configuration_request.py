@@ -10,6 +10,7 @@ class GetInstanceControlConfigurationRequest(DaraModel):
         element_name: str = None,
         instance_id: str = None,
     ):
+        # The name of the instance control item.
         self.element_name = element_name
         # The instance ID.
         # 

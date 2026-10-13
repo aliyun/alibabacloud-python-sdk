@@ -168,10 +168,11 @@ class UpdateIdentityProviderRequestWeComConfig(DaraModel):
         self.agent_id = agent_id
         # The authorization callback domain.
         self.authorize_callback_domain = authorize_callback_domain
+        # The WeCom contacts secret.
         self.contact_secret = contact_secret
         # The CorpSecret of the WeCom self-built application.
         self.corp_secret = corp_secret
-        # The trusted domain name.
+        # The trusted domain.
         self.trustable_domain = trustable_domain
 
     def validate(self):
@@ -232,7 +233,7 @@ class UpdateIdentityProviderRequestSamlConfig(DaraModel):
     ):
         # The binding type.
         self.binding_method = binding_method
-        # The certificate list of the IdP.
+        # The list of IdP certificates.
         self.certificates = certificates
         # The EntityId of the IdP.
         self.id_pentity_id = id_pentity_id
@@ -322,7 +323,7 @@ class UpdateIdentityProviderRequestSamlConfigCertificates(DaraModel):
         self,
         content: str = None,
     ):
-        # The certificate content.
+        # The content of the certificate.
         self.content = content
 
     def validate(self):

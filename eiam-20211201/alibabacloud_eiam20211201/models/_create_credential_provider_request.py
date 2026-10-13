@@ -20,13 +20,13 @@ class CreateCredentialProviderRequest(DaraModel):
     ):
         # The idempotency token that ensures the idempotence of the request.
         # 
-        # Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters in length. For more information, see References [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+        # Generate a unique parameter value from your client to ensure that different requests have unique values. ClientToken supports only ASCII characters and cannot exceed 64 characters in length. For more information, see References [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
         # 
         # This parameter is required.
         self.client_token = client_token
         # The configuration of the credential provider.
         self.credential_provider_config = credential_provider_config
-        # The identifier of the credential provider.
+        # The business identifier of the credential provider.
         # 
         # > Allowed characters include uppercase and lowercase letters, digits, and the special characters `.-_`. The length cannot exceed 64 characters.
         # 
@@ -169,46 +169,57 @@ class CreateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig
         scope: str = None,
         token_endpoint: str = None,
     ):
-        # The endpoint address used to guide users through authorization. Conditionally required: required when AuthorizationFlow=user_federation and ProviderVendor=custom. For preset vendors, this can be automatically populated through DiscoveryUrl.
+        # The authorization endpoint of the OAuth protocol.
         self.authorization_endpoint = authorization_endpoint
-        # The OAuth authorization flow type. Valid values: m2m: machine-to-machine (2LO, Client Credentials). user_federation: user federation (3LO, Authorization Code).
+        # The OAuth authorization flow type. Valid values:
+        # - m2m: Machine-to-machine.
+        # - user_federation: User federation.
         self.authorization_flow = authorization_flow
-        # The client_id in the OAuth protocol.
+        # The client_id in the OAuth protocol, which is the client ID.
         # 
         # > The length cannot exceed 128 characters.
         # 
         # This parameter is required.
         self.client_id = client_id
-        # The client_secret in the OAuth protocol.
+        # The client_secret in the OAuth protocol, which is the client secret.
         # 
         # > The length cannot exceed 1024 characters.
         # 
         # This parameter is required.
         self.client_secret = client_secret
-        # The Discovery document URL used to automatically retrieve OAuth endpoint configurations. Conditionally optional: used when AuthorizationFlow=user_federation. If DiscoveryUrl is not provided, you must manually configure fields such as TokenEndpoint and AuthorizationEndpoint.
+        # The URL of the OAuth Discovery document.
         self.discovery_url = discovery_url
+        # The Issuer endpoint of the OAuth protocol.
         self.issuer = issuer
-        # The PKCE code_challenge generation method. Default value: s256.
+        # The algorithm used to calculate the Code Challenge in PKCE. Valid values:
+        # - S256.
+        # - plain.
         self.pkce_challenge_method = pkce_challenge_method
-        # Specifies whether to use the PKCE extension to enhance security. We recommend that you always enable this feature.
+        # Specifies whether to enable PKCE.
         self.pkce_enabled = pkce_enabled
-        # The preset vendor or custom configuration. Optional. Default value: custom.
+        # The OAuth provider vendor type. Valid values:
+        # - custom: Custom.
+        # - dingtalk: DingTalk.
+        # - feishu: Lark.
+        # - github: GitHub.
+        # - microsoft: Microsoft.
+        # - google: Google.
         self.provider_vendor = provider_vendor
-        # The scope in the OAuth protocol, which defines the permission range.
+        # The scope in the OAuth protocol, which specifies the permission scope.
         # 
-        # > The Scope configuration on the credential provider serves as the fallback value. If the scope parameter is not specified when calling the DeveloperAPI to obtain an OAuth Access Token, the Scope configuration on the credential provider is used for issuance.
+        # > The Scope configuration on the credential provider serves as the default value. If the scope parameter is not specified when calling the DeveloperAPI to obtain an OAuth Access Token, the Scope configuration on the credential provider is used for issuance.
         # 
         # >Notice: Separate multiple Scope values with spaces.
         # 
-        # Restrictions for each individual Scope value:
-        # 1. Allowed characters: lowercase letters, digits, and the special characters `|/:_-.`
+        # The following restrictions apply to each individual Scope value:
+        # 1. Allowed characters: lowercase letters, digits, and the special characters `|/:_-.`.
         # 2. Must contain at least one lowercase letter or digit.
         # 3. Must start with the special character `.`, a lowercase letter, or a digit.
         # 4. The length cannot exceed 1024 characters.
         self.scope = scope
         # The token endpoint of the OAuth protocol.
         # 
-        # > Must start with `http://` or `https://`, and the length cannot exceed 1024 characters.
+        # > The value must start with `http://` or `https://`, and the length cannot exceed 1024 characters.
         self.token_endpoint = token_endpoint
 
     def validate(self):
@@ -301,11 +312,11 @@ class CreateCredentialProviderRequestCredentialProviderConfigJwtProviderConfig(D
     ):
         # The list of allowed JWT issuers.
         # 
-        # > The list length cannot exceed 200.
+        # > The list cannot contain more than 200 entries.
         self.allowed_token_issuers = allowed_token_issuers
-        # Specifies whether to enable the JWT derived short token capability.
+        # Specifies whether to enable the JWT derived short token feature.
         self.derived_short_token_enabled = derived_short_token_enabled
-        # The validity duration of the JWT. Unit: seconds.
+        # The validity period of the JWT, in seconds.
         self.expiration = expiration
         # Specifies whether to enable JWT expiration cleanup.
         self.expiration_cleanup_enabled = expiration_cleanup_enabled

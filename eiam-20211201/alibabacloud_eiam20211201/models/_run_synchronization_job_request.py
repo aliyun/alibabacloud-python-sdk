@@ -26,17 +26,16 @@ class RunSynchronizationJobRequest(DaraModel):
         self.instance_id = instance_id
         # Specifies whether to initialize the password.
         self.password_initialization = password_initialization
-        # The configuration of the synchronization scope.
+        # The synchronization scope configuration.
         self.synchronization_scope_config = synchronization_scope_config
-        # The ID of the synchronization target.
+        # The synchronization target ID.
         # 
         # This parameter is required.
         self.target_id = target_id
-        # The type of the synchronization target. Valid values:
+        # The synchronization target type. Valid values:
         # 
-        # - identity_provider: The identity provider.
-        # 
-        # - application: The application.
+        # - identity_provider: identity provider
+        # - application: application
         # 
         # This parameter is required.
         self.target_type = target_type

@@ -13,7 +13,7 @@ class GetFederatedCredentialProviderResponseBody(DaraModel):
         federated_credential_provider: main_models.GetFederatedCredentialProviderResponseBodyFederatedCredentialProvider = None,
         request_id: str = None,
     ):
-        # The federated credential provider.
+        # The federated credential provider object.
         self.federated_credential_provider = federated_credential_provider
         # The request ID.
         self.request_id = request_id
@@ -63,30 +63,31 @@ class GetFederatedCredentialProviderResponseBodyFederatedCredentialProvider(Dara
         status: str = None,
         update_time: int = None,
     ):
+        # The cloud identity provider configuration.
         self.cloud_id_pprovider_config = cloud_id_pprovider_config
-        # The time when the provider was created.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The description.
         self.description = description
-        # The ID of the federated credential provider.
+        # The federated trust source ID.
         self.federated_credential_provider_id = federated_credential_provider_id
         # The name of the federated credential provider.
         self.federated_credential_provider_name = federated_credential_provider_name
         # The type of the federated credential provider.
         self.federated_credential_provider_type = federated_credential_provider_type
-        # The ID of the EIAM instance.
+        # The EIAM instance ID.
         self.instance_id = instance_id
-        # The ID of the network access endpoint.
+        # The network access endpoint ID.
         self.network_access_endpoint_id = network_access_endpoint_id
-        # The OpenID Connect (OIDC) configuration.
+        # The OIDC configuration.
         self.oidc_provider_config = oidc_provider_config
-        # The PKCS#7 configuration.
+        # The PKCS7 configuration.
         self.pkcs_7provider_config = pkcs_7provider_config
-        # The private certificate authority (CA) configuration.
+        # The private CA configuration.
         self.private_ca_provider_config = private_ca_provider_config
-        # The status of the federated credential provider.
+        # The status.
         self.status = status
-        # The time when the provider was last updated.
+        # The update time. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -199,11 +200,11 @@ class GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPriva
         trust_anchor_source: str = None,
         trust_condition: str = None,
     ):
-        # A list of root certificates.
+        # The root certificate.
         self.certificates = certificates
-        # The method for obtaining the root certificate.
+        # The method used to retrieve the root certificate.
         self.trust_anchor_source = trust_anchor_source
-        # The trust condition for the root certificate.
+        # The trust condition of the root certificate.
         self.trust_condition = trust_condition
 
     def validate(self):
@@ -255,9 +256,9 @@ class GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPriva
     ):
         # The certificate metadata.
         self.certificate_metadata = certificate_metadata
-        # The content of the root certificate.
+        # The root certificate content.
         self.content = content
-        # The fingerprint of the root certificate.
+        # The root certificate fingerprint.
         self.fingerprint = fingerprint
 
     def validate(self):
@@ -302,7 +303,7 @@ class GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPriva
     ):
         # The time when the certificate expires.
         self.not_after = not_after
-        # The time when the certificate becomes valid.
+        # The effective period of the certificate.
         self.not_before = not_before
 
     def validate(self):
@@ -341,17 +342,17 @@ class GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPkcs7
         trust_anchor_source: str = None,
         trust_condition: str = None,
     ):
-        # A list of PKCS#7 certificates.
+        # The PKCS7 certificate list.
         self.certificates = certificates
-        # The Cryptographic Message Syntax (CMS) verification mode.
+        # The CMS verification mode.
         self.cms_verification_mode = cms_verification_mode
-        # The validity period of the signature, in seconds.
+        # The signature effective time. The value indicates the duration for which the signature is valid. Unit: seconds.
         self.signature_effective_time = signature_effective_time
-        # An expression that specifies the signing time.
+        # The signing time.
         self.signing_time_value_expression = signing_time_value_expression
-        # The source of the certificate trust anchor.
+        # The certificate trust anchor source.
         self.trust_anchor_source = trust_anchor_source
-        # The trust condition for the PKCS#7 provider.
+        # The trust condition.
         self.trust_condition = trust_condition
 
     def validate(self):
@@ -421,9 +422,9 @@ class GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPkcs7
     ):
         # The certificate metadata.
         self.certificate_metadata = certificate_metadata
-        # The content of the certificate.
+        # The root certificate content.
         self.content = content
-        # The fingerprint of the certificate.
+        # The root certificate fingerprint.
         self.fingerprint = fingerprint
 
     def validate(self):
@@ -468,7 +469,7 @@ class GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPkcs7
     ):
         # The time when the certificate expires.
         self.not_after = not_after
-        # The time when the certificate becomes valid.
+        # The effective period of the certificate.
         self.not_before = not_before
 
     def validate(self):
@@ -509,21 +510,21 @@ class GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderOidcP
         static_jwks: str = None,
         trust_condition: str = None,
     ):
-        # A list of audiences for the OIDC credential.
+        # The audience list of the OIDC credential.
         self.audiences = audiences
         # The dynamically obtained JWKS.
         self.dynamic_jwks = dynamic_jwks
-        # The issuer of the OIDC credential.
+        # The token issuer identifier (Issuer).
         self.issuer = issuer
-        # The time of the last JWKS retrieval.
+        # The time when the JWKS was last obtained. The value is a UNIX timestamp in milliseconds.
         self.jwks_last_obtained_time = jwks_last_obtained_time
-        # The source of the JSON Web Key Set (JWKS).
+        # The JWKS source.
         self.jwks_source = jwks_source
         # The JWKS endpoint.
         self.jwks_uri = jwks_uri
-        # The static JWKS content.
+        # The statically obtained JWKS.
         self.static_jwks = static_jwks
-        # The trust condition for the OIDC provider.
+        # The trust condition.
         self.trust_condition = trust_condition
 
     def validate(self):
@@ -593,6 +594,7 @@ class GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderCloud
         self,
         identity_provider_id: str = None,
     ):
+        # The identity provider ID.
         self.identity_provider_id = identity_provider_id
 
     def validate(self):

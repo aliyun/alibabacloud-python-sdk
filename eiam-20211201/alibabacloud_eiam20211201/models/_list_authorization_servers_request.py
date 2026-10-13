@@ -15,7 +15,7 @@ class ListAuthorizationServersRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of entries per page for a paged query.
+        # The maximum number of entries per page for a paged query.
         self.max_results = max_results
         # The pagination token.
         self.next_token = next_token

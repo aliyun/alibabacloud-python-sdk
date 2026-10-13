@@ -76,7 +76,12 @@ class ListEiamInstancesResponseBodyInstances(DaraModel):
         self.instance_id = instance_id
         # The instance status.
         self.instance_status = instance_status
-        # The instance version.
+        # The instance version. Valid values:
+        # 
+        # - EIAM 2~0: EIAM 2.0.
+        # - EIAM 1~0: EIAM 1.0.
+        # [_single.resp.200.props.Instances.items.InstanceVersion.enum.EIAM 2~0]EIAM 2.0
+        # [_single.resp.200.props.Instances.items.InstanceVersion.enum.EIAM 1~0]EIAM 1.0
         self.instance_version = instance_version
         # The private domain name of the OpenAPI for the instance.
         self.open_apiprivate_domain = open_apiprivate_domain
@@ -84,7 +89,7 @@ class ListEiamInstancesResponseBodyInstances(DaraModel):
         self.open_apipublic_domain = open_apipublic_domain
         # The SSO domain name of the instance.
         self.ssodomain = ssodomain
-        # The time when the instance was created.
+        # The time when the instance was created. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
 
     def validate(self):

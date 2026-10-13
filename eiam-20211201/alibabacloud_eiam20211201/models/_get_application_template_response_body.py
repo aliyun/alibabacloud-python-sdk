@@ -62,29 +62,29 @@ class GetApplicationTemplateResponseBodyApplicationTemplate(DaraModel):
         sso_types: List[str] = None,
         update_time: int = None,
     ):
-        # The application template ID.
+        # The ID of the application template.
         self.application_template_id = application_template_id
-        # The application template name.
+        # The name of the application template.
         self.application_template_name = application_template_name
-        # The time when the application template was created.
+        # The creation time of the application template. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The application template description.
+        # The description of the application template.
         self.description = description
         # The help document URL of the application template.
         self.help_document_url = help_document_url
         # The logo URL of the application template.
         self.logo_url = logo_url
-        # The service code of the Alibaba Cloud service that manages the application template.
+        # The service code of the cloud service that manages the application template.
         self.managed_service_code = managed_service_code
         # The sale information of the application template.
         self.sale_info = sale_info
-        # The console URL of the Alibaba Cloud service that manages the application template.
+        # The console URL of the cloud service that manages the application template.
         self.service_console_url = service_console_url
-        # Indicates whether the application template is managed by an Alibaba Cloud service.
+        # Indicates whether the application template is managed by a cloud service.
         self.service_managed = service_managed
         # The supported SSO protocols.
         self.sso_types = sso_types
-        # The time when the application template was last updated.
+        # The update time of the application template. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):

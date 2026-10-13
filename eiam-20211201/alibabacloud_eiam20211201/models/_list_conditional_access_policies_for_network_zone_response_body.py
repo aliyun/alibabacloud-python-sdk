@@ -71,13 +71,13 @@ class ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPo
     ):
         # The conditional access policy ID.
         self.conditional_access_policy_id = conditional_access_policy_id
-        # The conditional access policy name.
+        # The Policy Name of the conditional access policy.
         self.conditional_access_policy_name = conditional_access_policy_name
         # The type of the conditional access policy.
         self.conditional_access_policy_type = conditional_access_policy_type
         # The conditions configuration of the conditional access policy.
         self.conditions_config = conditions_config
-        # The creation time.
+        # The time when the policy was created. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The decision action configuration of the conditional access policy.
         self.decision_config = decision_config
@@ -89,9 +89,9 @@ class ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPo
         self.evaluate_at = evaluate_at
         # The instance ID.
         self.instance_id = instance_id
-        # The last updated time.
+        # The time when the policy was last updated. The value is a UNIX timestamp in milliseconds.
         self.last_updated_time = last_updated_time
-        # The priority.
+        # The priority of the conditional access policy.
         self.priority = priority
         # The enabled or disabled status of the conditional access policy.
         self.status = status
@@ -204,7 +204,7 @@ class ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPo
     ):
         # Indicates whether session reuse is enabled.
         self.active_session_reuse_status = active_session_reuse_status
-        # The decision action of the conditional access policy.
+        # The decision action effect of the conditional access policy.
         self.effect = effect
         # The re-authentication interval of the conditional access policy, in seconds.
         self.mfa_authentication_interval_seconds = mfa_authentication_interval_seconds

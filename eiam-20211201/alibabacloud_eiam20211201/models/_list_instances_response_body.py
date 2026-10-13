@@ -78,15 +78,15 @@ class ListInstancesResponseBodyInstances(DaraModel):
     ):
         # The time when the instance was created. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # Indicates whether cross-region replication is enabled. Valid values: enabled or disabled.
+        # Indicates whether cross-region replication is enabled. Valid values: enabled and disabled.
         self.cross_region_replication = cross_region_replication
-        # The cross-region replication role. Valid values: primary (primary instance) or backup (backup instance).
+        # The cross-region replication role. Valid values: primary, which indicates the primary instance, and backup, which indicates the backup instance.
         self.cross_region_replication_role = cross_region_replication_role
         # The default endpoint of the instance.
         self.default_endpoint = default_endpoint
         # The instance description.
         self.description = description
-        # The instance failover activation status. Valid values: active (activated) or inactive (not activated).
+        # The failover activation status of the instance. Valid values: active, which indicates that failover is activated, and inactive, which indicates that failover is not activated.
         self.instance_failover_status = instance_failover_status
         # The instance ID.
         self.instance_id = instance_id
@@ -195,9 +195,9 @@ class ListInstancesResponseBodyInstancesReplicationConfiguration(DaraModel):
         primary_instance_region_id: str = None,
         replication_create_time: int = None,
     ):
-        # The instance ID of the backup instance.
+        # The instance ID of the disaster recovery instance.
         self.backup_instance_id = backup_instance_id
-        # The region ID of the backup instance.
+        # The region ID of the disaster recovery instance.
         self.backup_instance_region_id = backup_instance_region_id
         # The instance ID of the primary instance.
         self.primary_instance_id = primary_instance_id

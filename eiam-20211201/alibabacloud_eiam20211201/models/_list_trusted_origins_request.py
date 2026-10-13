@@ -17,21 +17,24 @@ class ListTrustedOriginsRequest(DaraModel):
         trust_origin_name: str = None,
         trusted_origin_scene: List[str] = None,
     ):
-        # The ID of the IDaaS EIAM instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of entries per page. Default value: 20. Maximum value: 100. If you set this parameter to 0, the default value is used.
+        # The maximum number of results per page.
         self.max_results = max_results
-        # The NextToken returned by the previous call.
+        # The pagination token.
         self.next_token = next_token
-        # Filters by the exact normalized origin.
+        # The origin filter.
         self.origin = origin
-        # Filters by exact status. Valid values: Enabled or Disabled.
+        # The status filter. Valid values:
+        # 
+        # - Enabled: Enabled.
+        # - Disabled: Disabled.
         self.status = status
-        # Filters by exact name.
+        # The name filter.
         self.trust_origin_name = trust_origin_name
-        # Filters by exact trusted origin scene. You can specify at most one value.
+        # The trusted origin scene filter.
         self.trusted_origin_scene = trusted_origin_scene
 
     def validate(self):

@@ -24,9 +24,9 @@ class ListFederatedCredentialProvidersRequest(DaraModel):
         self.instance_id = instance_id
         # The maximum number of entries per page for a paged query.
         self.max_results = max_results
-        # The pagination token.
+        # The pagination token for the next page.
         self.next_token = next_token
-        # The token used to query the previous page.
+        # The pagination token for the previous page.
         self.previous_token = previous_token
 
     def validate(self):

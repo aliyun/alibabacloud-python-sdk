@@ -115,7 +115,7 @@ class ListApplicationFederatedCredentialsResponseBodyApplicationFederatedCredent
         self.application_federated_credential_type = application_federated_credential_type
         # The application ID.
         self.application_id = application_id
-        # The creation time.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The application federated credential description.
         self.description = description
@@ -123,7 +123,7 @@ class ListApplicationFederatedCredentialsResponseBodyApplicationFederatedCredent
         self.federated_credential_provider_id = federated_credential_provider_id
         # The instance ID.
         self.instance_id = instance_id
-        # The last used time.
+        # The last used time. The value is a UNIX timestamp in milliseconds.
         self.last_used_time = last_used_time
         # The OIDC structured configuration.
         self.oidc_verification_config = oidc_verification_config
@@ -131,13 +131,13 @@ class ListApplicationFederatedCredentialsResponseBodyApplicationFederatedCredent
         self.pkcs_7verification_config = pkcs_7verification_config
         # The application federated credential status.
         self.status = status
-        # The update time.
+        # The update time. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
         # The verification condition.
         self.verification_condition = verification_condition
         # The verification mode. Valid values:
-        # - freedom: free mode.
-        # - structured: structured mode.
+        # - freedom: Free mode.
+        # - structured: Structured mode.
         self.verification_mode = verification_mode
 
     def validate(self):
@@ -439,9 +439,9 @@ class ListApplicationFederatedCredentialsResponseBodyApplicationFederatedCredent
     ):
         # The list of VM instance IDs.
         self.instance_ids = instance_ids
-        # The GCP project ID.
+        # The GCP project ID to which the resource belongs.
         self.project_id = project_id
-        # The sub claim corresponding to the service account.
+        # The subject (sub) that corresponds to the service account.
         self.service_account_id = service_account_id
 
     def validate(self):

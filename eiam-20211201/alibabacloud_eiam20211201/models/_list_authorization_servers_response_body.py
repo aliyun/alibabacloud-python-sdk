@@ -18,9 +18,9 @@ class ListAuthorizationServersResponseBody(DaraModel):
     ):
         # The list of authorization servers.
         self.authorization_servers = authorization_servers
-        # The number of entries per page for a paged query.
+        # The maximum number of entries per page for a paged query.
         self.max_results = max_results
-        # The pagination token returned in this call.
+        # The pagination token returned by this call.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -98,7 +98,7 @@ class ListAuthorizationServersResponseBodyAuthorizationServers(DaraModel):
         self.authorization_server_id = authorization_server_id
         # The name of the authorization server.
         self.authorization_server_name = authorization_server_name
-        # The creation time.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The creation type.
         self.creation_type = creation_type
@@ -114,7 +114,7 @@ class ListAuthorizationServersResponseBodyAuthorizationServers(DaraModel):
         self.issuer_mode = issuer_mode
         # The status.
         self.status = status
-        # The update time.
+        # The update time. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):

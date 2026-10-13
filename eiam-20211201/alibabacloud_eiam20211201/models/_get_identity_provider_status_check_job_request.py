@@ -11,11 +11,11 @@ class GetIdentityProviderStatusCheckJobRequest(DaraModel):
         identity_provider_status_check_job_id: str = None,
         instance_id: str = None,
     ):
-        # The identity provider (IdP) ID.
+        # The identity provider ID.
         # 
         # This parameter is required.
         self.identity_provider_id = identity_provider_id
-        # The task ID.
+        # The job ID.
         # 
         # This parameter is required.
         self.identity_provider_status_check_job_id = identity_provider_status_check_job_id

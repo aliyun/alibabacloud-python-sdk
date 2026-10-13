@@ -78,7 +78,7 @@ class GetApplicationResponseBodyApplication(DaraModel):
         status: str = None,
         update_time: int = None,
     ):
-        # The status of the Developer API feature for the application. Valid values:
+        # The Developer API feature status of the application. Valid values:
         # - enabled: Enabled.
         # - disabled: Disabled.
         self.api_invoke_status = api_invoke_status
@@ -92,12 +92,13 @@ class GetApplicationResponseBodyApplication(DaraModel):
         self.application_identity_type = application_identity_type
         # The application name.
         self.application_name = application_name
+        # The application owner.
         self.application_owner = application_owner
         # The source from which the application was created. Valid values:
         # - urn:alibaba:idaas:app:source:template: Application template.
         # - urn:alibaba:idaas:app:source:standard: Standard protocol.
         self.application_source_type = application_source_type
-        # The ID of the application template associated during creation. This value is returned only when the application was created from an application template.
+        # The application template ID associated during creation. This value is returned only when the application was created from an application template.
         self.application_template_id = application_template_id
         # The application visibility.
         self.application_visibility = application_visibility
@@ -107,10 +108,11 @@ class GetApplicationResponseBodyApplication(DaraModel):
         self.authorization_type = authorization_type
         # The client ID of the application.
         self.client_id = client_id
-        # The time when the application was created. The value is a UNIX timestamp in milliseconds.
+        # The time when the application was created, in UNIX timestamp format. Unit: milliseconds.
         self.create_time = create_time
+        # The list of application custom fields.
         self.custom_fields = custom_fields
-        # Indicates whether the custom Subject field in the token is enabled. After this feature is enabled, the issued Access Token changes from \\<clientId\\> to \\<clientId\\>:\\<client.activeSubjectUrn\\>, where client.activeSubjectUrn is configured in the attribute mapping of the federated identity credential of the application.
+        # Indicates whether the custom Subject field in the token is enabled. After this feature is enabled, the issued Access Token changes from <clientId> to <clientId>:<client.activeSubjectUrn>, where client.activeSubjectUrn is configured in the attribute mapping of the federated identity credential of the application.
         self.custom_subject_status = custom_subject_status
         # The application description.
         self.description = description
@@ -127,7 +129,7 @@ class GetApplicationResponseBodyApplication(DaraModel):
         self.m_2mclient_status = m_2mclient_status
         # The ServiceCode of the cloud service that manages the application template.
         self.managed_service_code = managed_service_code
-        # The unique identifier of the ResourceServer, which corresponds to the ResourceServer audience.
+        # The unique identifier of the ResourceServer, corresponding to the ResourceServer audience.
         self.resource_server_identifier = resource_server_identifier
         # The resource server source type.
         self.resource_server_source_type = resource_server_source_type
@@ -135,6 +137,7 @@ class GetApplicationResponseBodyApplication(DaraModel):
         self.resource_server_status = resource_server_status
         # Indicates whether the application template is managed by a cloud service.
         self.service_managed = service_managed
+        # The list of capabilities configured through smart configuration.
         self.smart_config_capabilities = smart_config_capabilities
         # The single sign-on protocol. Valid values:
         # - saml2: SAML 2.0 protocol.
@@ -146,7 +149,7 @@ class GetApplicationResponseBodyApplication(DaraModel):
         # - enabled: Enabled.
         # - disabled: Disabled.
         self.status = status
-        # The time when the application was last updated. The value is a UNIX timestamp in milliseconds.
+        # The time when the application was last updated, in UNIX timestamp format. Unit: milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -348,7 +351,9 @@ class GetApplicationResponseBodyApplicationCustomFields(DaraModel):
         field_name: str = None,
         field_value: str = None,
     ):
+        # The identifier of the application custom field.
         self.field_name = field_name
+        # The value of the application custom field. When FieldName is set to agentType, valid values are bailian, pai, dify, and volcano. When FieldName is set to agentExternalId, enter the corresponding value.
         self.field_value = field_value
 
     def validate(self):
@@ -383,7 +388,9 @@ class GetApplicationResponseBodyApplicationApplicationOwner(DaraModel):
         group_ids: List[str] = None,
         user_ids: List[str] = None,
     ):
+        # The list of group scopes for synchronization authorization.
         self.group_ids = group_ids
+        # The list of user IDs.
         self.user_ids = user_ids
 
     def validate(self):

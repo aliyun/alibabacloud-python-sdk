@@ -20,6 +20,7 @@ class CreateFederatedCredentialProviderRequest(DaraModel):
         pkcs_7provider_config: main_models.CreateFederatedCredentialProviderRequestPkcs7ProviderConfig = None,
         private_ca_provider_config: main_models.CreateFederatedCredentialProviderRequestPrivateCaProviderConfig = None,
     ):
+        # The identity provider configuration.
         self.cloud_id_pprovider_config = cloud_id_pprovider_config
         # The description of the federated trust source.
         self.description = description
@@ -134,7 +135,7 @@ class CreateFederatedCredentialProviderRequestPrivateCaProviderConfig(DaraModel)
         self.certificates = certificates
         # The method used to retrieve the root certificate.
         self.trust_anchor_source = trust_anchor_source
-        # The trust condition for the root certificate.
+        # The trust condition of the root certificate.
         self.trust_condition = trust_condition
 
     def validate(self):
@@ -326,7 +327,7 @@ class CreateFederatedCredentialProviderRequestOidcProviderConfig(DaraModel):
     ):
         # The list of audiences.
         self.audiences = audiences
-        # Issuer
+        # The token issuer identifier (Issuer).
         self.issuer = issuer
         # The source of the JWKS.
         self.jwks_source = jwks_source
@@ -392,6 +393,7 @@ class CreateFederatedCredentialProviderRequestCloudIdPProviderConfig(DaraModel):
         self,
         identity_provider_id: str = None,
     ):
+        # The ID of the identity provider.
         self.identity_provider_id = identity_provider_id
 
     def validate(self):

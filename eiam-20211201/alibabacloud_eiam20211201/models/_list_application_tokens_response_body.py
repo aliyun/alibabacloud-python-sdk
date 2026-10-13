@@ -67,7 +67,7 @@ class ListApplicationTokensResponseBodyApplicationTokens(DaraModel):
         last_used_time: int = None,
         status: str = None,
     ):
-        # aliUid。
+        # The Alibaba Cloud account UID.
         self.ali_uid = ali_uid
         # The application ID.
         self.application_id = application_id
@@ -77,15 +77,15 @@ class ListApplicationTokensResponseBodyApplicationTokens(DaraModel):
         self.application_token_id = application_token_id
         # The application token type.
         self.application_token_type = application_token_type
-        # The creation time.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The application token description.
         self.description = description
-        # The expiration time.
+        # The expiration time. The value is a UNIX timestamp in milliseconds.
         self.expiration_time = expiration_time
         # The IDaaS EIAM instance ID.
         self.instance_id = instance_id
-        # The last used time.
+        # The last used time. The value is a UNIX timestamp in milliseconds.
         self.last_used_time = last_used_time
         # The enabling status.
         self.status = status

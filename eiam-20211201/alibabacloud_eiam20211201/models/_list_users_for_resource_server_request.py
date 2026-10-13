@@ -17,21 +17,21 @@ class ListUsersForResourceServerRequest(DaraModel):
         next_token: str = None,
         resource_server_scope_id: str = None,
     ):
-        # The ID of the Resource Server application.
+        # The ResourceServer application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # A list of filter conditions.
+        # The list of filter conditions.
         self.filter = filter
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of entries per page for paged queries.
+        # The number of entries per page in a paged query.
         self.max_results = max_results
-        # The token for the next page. Set this parameter to the value of NextToken returned by the previous API call.
+        # The pagination token. Set this parameter to the NextToken value returned in the previous API call.
         self.next_token = next_token
-        # 权限唯一标识。
+        # The permission ID.
         self.resource_server_scope_id = resource_server_scope_id
 
     def validate(self):
@@ -100,7 +100,7 @@ class ListUsersForResourceServerRequestFilter(DaraModel):
     ):
         # The name of the filter condition.
         self.name = name
-        # A list of values for the filter condition.
+        # The list of filter condition values.
         self.value = value
 
     def validate(self):

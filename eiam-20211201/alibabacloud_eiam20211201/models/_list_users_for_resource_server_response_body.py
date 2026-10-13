@@ -16,15 +16,15 @@ class ListUsersForResourceServerResponseBody(DaraModel):
         total_count: int = None,
         users: List[main_models.ListUsersForResourceServerResponseBodyUsers] = None,
     ):
-        # The number of entries per page for paged queries.
+        # The number of entries per page in a paged query.
         self.max_results = max_results
-        # The token for the next page.
+        # The pagination token for the next page.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries in the list.
         self.total_count = total_count
-        # A list of user accounts.
+        # The list of accounts.
         self.users = users
 
     def validate(self):
@@ -86,11 +86,11 @@ class ListUsersForResourceServerResponseBodyUsers(DaraModel):
         resource_server_scopes: List[main_models.ListUsersForResourceServerResponseBodyUsersResourceServerScopes] = None,
         user_id: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # A list of granted scope permissions.
+        # The list of granted scope permissions.
         self.resource_server_scopes = resource_server_scopes
-        # The ID of the user account.
+        # The account ID.
         self.user_id = user_id
 
     def validate(self):
@@ -139,9 +139,9 @@ class ListUsersForResourceServerResponseBodyUsersResourceServerScopes(DaraModel)
         resource_server_scope_id: str = None,
         resource_server_scope_name: str = None,
     ):
-        # The ID of the scope permission.
+        # The scope permission ID.
         self.resource_server_scope_id = resource_server_scope_id
-        # The name of the scope permission.
+        # The scope permission name.
         self.resource_server_scope_name = resource_server_scope_name
 
     def validate(self):

@@ -63,23 +63,27 @@ class GetInstanceResponseBodyInstance(DaraModel):
         service_managed: bool = None,
         status: str = None,
     ):
-        # The time when the instance was created. The value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the instance was created. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
+        # Indicates whether cross-region replication is enabled. Valid values: enabled or disabled.
         self.cross_region_replication = cross_region_replication
+        # The cross-region replication role. Valid values: primary indicates the primary instance, and backup indicates the backup instance.
         self.cross_region_replication_role = cross_region_replication_role
-        # The default domain name of the instance. This field is no longer maintained. Use the DomainConfig fields or refer to the query domain name list operation instead.
+        # The default domain name of the instance. This field is no longer maintained. Use the DomainConfig fields or refer to the domain name list query operation instead.
         self.default_endpoint = default_endpoint
-        # The description of the instance.
+        # The instance description.
         self.description = description
         # The domain name configuration of the instance.
         self.domain_config = domain_config
-        # The public egress CIDR blocks of the instance. For example, during Active Directory (AD) account synchronization, the EIAM instance accesses your AD server through these public CIDR blocks.
+        # The egress public IP address ranges of the instance. For example, during AD account synchronization, the EIAM instance accesses your AD server through these public IP address ranges.
         self.egress_addresses = egress_addresses
+        # The failover activation status of the instance. Valid values: active indicates activated, and inactive indicates not activated.
         self.instance_failover_status = instance_failover_status
         # The instance ID.
         self.instance_id = instance_id
-        # The ServiceCode of the Alibaba Cloud service that manages the instance.
+        # The service code of the Alibaba Cloud service that manages the instance.
         self.managed_service_code = managed_service_code
+        # The cross-region replication configuration. This parameter is returned only when CrossRegionReplication is set to enabled.
         self.replication_configuration = replication_configuration
         # Indicates whether the instance is managed by an Alibaba Cloud service.
         self.service_managed = service_managed
@@ -197,10 +201,15 @@ class GetInstanceResponseBodyInstanceReplicationConfiguration(DaraModel):
         primary_instance_region_id: str = None,
         replication_create_time: int = None,
     ):
+        # The instance ID of the backup instance.
         self.backup_instance_id = backup_instance_id
+        # The region ID of the backup instance.
         self.backup_instance_region_id = backup_instance_region_id
+        # The instance ID of the primary instance.
         self.primary_instance_id = primary_instance_id
+        # The region ID of the primary instance.
         self.primary_instance_region_id = primary_instance_region_id
+        # The time when the disaster recovery data replication was created. The value is a UNIX timestamp in milliseconds.
         self.replication_create_time = replication_create_time
 
     def validate(self):
@@ -258,7 +267,7 @@ class GetInstanceResponseBodyInstanceDomainConfig(DaraModel):
         self.default_domain = default_domain
         # The initialization domain name of the instance.
         self.init_domain = init_domain
-        # The automatic redirect status of the initialization domain name. Valid values:
+        # The auto-redirect status of the initialization domain name. Valid values:
         # - enabled: Enabled.
         # 
         # - disabled: Disabled.
@@ -302,7 +311,7 @@ class GetInstanceResponseBodyInstanceDefaultEndpoint(DaraModel):
         endpoint: str = None,
         status: str = None,
     ):
-        # The domain name of the instance.
+        # The domain name address of the instance.
         self.endpoint = endpoint
         # The status of the instance domain name. Valid values:
         # - resolved: Resolved.

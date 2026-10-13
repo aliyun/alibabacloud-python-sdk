@@ -20,9 +20,9 @@ class ListClientPublicKeysRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of entries to return on each page of a paged query.
+        # The number of entries per page in a paged query.
         self.max_results = max_results
-        # The token for the next page of results. Set this to the NextToken value from the previous API call. For the first query, leave this parameter empty.
+        # The pagination token. Set this parameter to the NextToken value returned in the previous API call. Leave this parameter empty for the first query.
         self.next_token = next_token
 
     def validate(self):

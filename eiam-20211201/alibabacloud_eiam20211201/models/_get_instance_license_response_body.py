@@ -11,7 +11,7 @@ class GetInstanceLicenseResponseBody(DaraModel):
         license: main_models.GetInstanceLicenseResponseBodyLicense = None,
         request_id: str = None,
     ):
-        # The response result.
+        # The returned result.
         self.license = license
         # The request ID.
         self.request_id = request_id
@@ -68,7 +68,7 @@ class GetInstanceLicenseResponseBodyLicense(DaraModel):
         self.instance_license_detail = instance_license_detail
         # The billing type of the license.
         self.license_charge_type = license_charge_type
-        # The detailed license configuration in JSON string format.
+        # The detailed license configuration as a JSON string.
         self.license_config_json = license_config_json
         # The creation time of the license, in timestamp format.
         self.license_create_time = license_create_time
@@ -78,7 +78,7 @@ class GetInstanceLicenseResponseBodyLicense(DaraModel):
         self.license_status = license_status
         # The purchase channel of the license.
         self.purchase_channel = purchase_channel
-        # The unique identifier of the external product associated with the license.
+        # The unique identifier of the external commodity associated with the license.
         self.purchase_instance_id = purchase_instance_id
         # The start date of the license validity period, in timestamp format.
         self.start_time = start_time
@@ -195,9 +195,9 @@ class GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail(DaraModel):
         self.mim_application_license_status = mim_application_license_status
         # The network access endpoint quota of the license.
         self.network_access_endpoint_quota = network_access_endpoint_quota
-        # The PAM privileged management license status. Valid values: enabled and disabled.
+        # The PAM privileged access management license status.
         self.pam_license_status = pam_license_status
-        # The number of prepaid active accounts.
+        # The number of prepaid active users.
         self.prepaid_active_user_number = prepaid_active_user_number
         # The user quota of the license.
         self.user_quota = user_quota

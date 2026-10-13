@@ -73,23 +73,23 @@ class ListConditionalAccessPoliciesForUserResponseBodyConditionalAccessPolicies(
         self.conditional_access_policy_id = conditional_access_policy_id
         # The conditional access policy name.
         self.conditional_access_policy_name = conditional_access_policy_name
-        # The type of the conditional access policy.
+        # The conditional access policy type.
         self.conditional_access_policy_type = conditional_access_policy_type
         # The conditional access policy conditions.
         self.conditions_config = conditions_config
-        # The creation time.
+        # The time when the policy was created. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The execution configuration of the conditional access policy.
+        # The decision configuration of the conditional access policy.
         self.decision_config = decision_config
-        # The execution type of the conditional access policy.
+        # The decision type of the conditional access policy.
         self.decision_type = decision_type
-        # The description of the conditional access policy.
+        # The conditional access policy description.
         self.description = description
         # The evaluation point of the conditional access policy.
         self.evaluate_at = evaluate_at
         # The instance ID.
         self.instance_id = instance_id
-        # The last updated time.
+        # The time when the policy was last updated. The value is a UNIX timestamp in milliseconds.
         self.last_updated_time = last_updated_time
         # The priority.
         self.priority = priority
@@ -208,7 +208,7 @@ class ListConditionalAccessPoliciesForUserResponseBodyConditionalAccessPoliciesD
         self.effect = effect
         # The re-authentication interval of the conditional access policy, in seconds.
         self.mfa_authentication_interval_seconds = mfa_authentication_interval_seconds
-        # The MFA methods allowed by the conditional access policy.
+        # The MFA types allowed by the conditional access policy.
         self.mfa_authentication_methods = mfa_authentication_methods
         # The MFA type of the conditional access policy.
         self.mfa_type = mfa_type

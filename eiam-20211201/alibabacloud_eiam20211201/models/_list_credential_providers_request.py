@@ -28,7 +28,7 @@ class ListCredentialProvidersRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The maximum number of entries per page for a paged query.
+        # The number of entries per page in a paged query.
         self.max_results = max_results
         # The pagination token.
         self.next_token = next_token
@@ -106,6 +106,9 @@ class ListCredentialProvidersRequestFilter(DaraModel):
         value: List[str] = None,
     ):
         # The filter condition name. Valid values:
+        # 
+        # - CredentialProviderName: the credential provider name.
+        # - CredentialProviderIdentifier: the credential provider identifier.
         self.name = name
         # The list of filter condition values.
         self.value = value

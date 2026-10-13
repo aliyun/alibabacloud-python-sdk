@@ -14,7 +14,7 @@ class ListConditionalAccessPoliciesForNetworkZoneRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The network zone ID associated with the conditional access policy.
+        # The ID of the application associated with the conditional access policy.
         # 
         # This parameter is required.
         self.network_zone_id = network_zone_id

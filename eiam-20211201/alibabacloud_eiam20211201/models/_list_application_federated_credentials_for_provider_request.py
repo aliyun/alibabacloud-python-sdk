@@ -19,7 +19,7 @@ class ListApplicationFederatedCredentialsForProviderRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The maximum number of entries per page for a paged query.
+        # The maximum number of entries per page in a paged query.
         self.max_results = max_results
         # The pagination token for the next page.
         self.next_token = next_token

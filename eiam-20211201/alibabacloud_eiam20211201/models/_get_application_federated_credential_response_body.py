@@ -76,7 +76,7 @@ class GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredentia
         self.application_id = application_id
         # The attribute mappings.
         self.attribute_mappings = attribute_mappings
-        # The creation time.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The application federated credential description.
         self.description = description
@@ -84,7 +84,7 @@ class GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredentia
         self.federated_credential_provider_id = federated_credential_provider_id
         # The instance ID.
         self.instance_id = instance_id
-        # The last used time.
+        # The last used time. The value is a UNIX timestamp in milliseconds.
         self.last_used_time = last_used_time
         # The OIDC structured configuration.
         self.oidc_verification_config = oidc_verification_config
@@ -92,7 +92,7 @@ class GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredentia
         self.pkcs_7verification_config = pkcs_7verification_config
         # The application federated credential status.
         self.status = status
-        # The update time.
+        # The update time. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
         # The verification condition.
         self.verification_condition = verification_condition
@@ -415,9 +415,9 @@ class GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredentia
     ):
         # The list of VM instance IDs.
         self.instance_ids = instance_ids
-        # The GCP project ID.
+        # The GCP project ID to which the resource belongs.
         self.project_id = project_id
-        # The subject corresponding to the service account.
+        # The sub claim that corresponds to the service account.
         self.service_account_id = service_account_id
 
     def validate(self):
@@ -460,7 +460,7 @@ class GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredentia
         subscription_id: str = None,
         vm_names: List[str] = None,
     ):
-        # The principal ID.
+        # The identity identifier.
         self.principal_id = principal_id
         # The Azure resource group name.
         self.resource_group_name = resource_group_name

@@ -13,7 +13,7 @@ class ExecIdentityProviderMetadataUrlResolutionResponseBody(DaraModel):
         identity_provider_metadata: main_models.ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadata = None,
         request_id: str = None,
     ):
-        # The identity provider metadata.
+        # The metadata of the identity provider.
         self.identity_provider_metadata = identity_provider_metadata
         # The request ID.
         self.request_id = request_id
@@ -52,9 +52,9 @@ class ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetad
         oidc_open_id_configuration: main_models.ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataOidcOpenIdConfiguration = None,
         saml_metadata_configuration: main_models.ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfiguration = None,
     ):
-        # The OIDC identity provider metadata.
+        # The metadata of the OIDC IdP.
         self.oidc_open_id_configuration = oidc_open_id_configuration
-        # The SAML identity provider metadata.
+        # The metadata of the SAML IdP.
         self.saml_metadata_configuration = saml_metadata_configuration
 
     def validate(self):
@@ -95,11 +95,11 @@ class ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetad
         id_pentity_id: str = None,
         id_psso_url: str = None,
     ):
-        # The certificates.
+        # The list of IdP certificates.
         self.certificates = certificates
-        # The entity ID of the SAML identity provider.
+        # The entity ID of the IdP.
         self.id_pentity_id = id_pentity_id
-        # The SSO URL of the SAML identity provider.
+        # The single sign-on URL of the IdP.
         self.id_psso_url = id_psso_url
 
     def validate(self):
@@ -147,7 +147,7 @@ class ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetad
         self,
         content: str = None,
     ):
-        # The content of the certificate.
+        # The certificate content.
         self.content = content
 
     def validate(self):
@@ -179,15 +179,15 @@ class ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetad
         token_endpoint: str = None,
         userinfo_endpoint: str = None,
     ):
-        # The OAuth 2.0 authorization endpoint.
+        # The OAuth2 authorization endpoint.
         self.authorization_endpoint = authorization_endpoint
-        # The OIDC issuer.
+        # The OIDC issuer information.
         self.issuer = issuer
-        # The OIDC JSON Web Key Set (JWKS) URI.
+        # The OIDC JWKS URI.
         self.jwks_uri = jwks_uri
-        # The OAuth 2.0 token endpoint.
+        # The OAuth2 token endpoint.
         self.token_endpoint = token_endpoint
-        # The OIDC userinfo endpoint.
+        # The OIDC UserInfo endpoint.
         self.userinfo_endpoint = userinfo_endpoint
 
     def validate(self):
