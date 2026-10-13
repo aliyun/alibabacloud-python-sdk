@@ -14,21 +14,21 @@ class ListLgfRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The key of the business space. If you do not specify this parameter, the default business space is used. You can obtain the key from the Business Management page of your main account.
+        # The business space key. If not specified, the default business space is accessed. You can obtain the key value from the business management page of the Alibaba Cloud account.
         self.agent_key = agent_key
-        # The ID of the chatbot.
+        # The chatbot ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the intent.
+        # The intent ID.
         # 
         # This parameter is required.
         self.intent_id = intent_id
-        # The text used to filter the advanced semantic configurations.
+        # The semantic configuration content to filter.
         self.lgf_text = lgf_text
-        # The number of the page to return. Defaults to 1.
+        # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Defaults to 10.
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
 
     def validate(self):

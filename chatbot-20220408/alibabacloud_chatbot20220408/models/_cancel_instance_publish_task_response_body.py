@@ -18,19 +18,19 @@ class CancelInstancePublishTaskResponseBody(DaraModel):
         response: str = None,
         status: str = None,
     ):
-        # A list of business types.
+        # The list of business types.
         self.biz_type_list = biz_type_list
-        # The creation time of the task in UTC.
+        # The UTC time when the task was created.
         self.create_time = create_time
-        # The error message if the task fails.
+        # The job failure information.
         self.error = error
         # The task ID.
         self.id = id
-        # The last modification time of the task in UTC.
+        # The UTC time when the task was last modified.
         self.modify_time = modify_time
         # The request ID.
         self.request_id = request_id
-        # The task ID, returned as a string.
+        # The task ID.
         self.response = response
         # The task status.
         self.status = status

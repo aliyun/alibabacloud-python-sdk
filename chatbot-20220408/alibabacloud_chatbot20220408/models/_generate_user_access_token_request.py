@@ -15,23 +15,21 @@ class GenerateUserAccessTokenRequest(DaraModel):
         nick: str = None,
         telephone: str = None,
     ):
-        # The key of the business space. If you do not specify this parameter, the system accesses the default business space. You can obtain the key from the Business Management page of your main account.
+        # The key of the business space. If you do not specify this parameter, the default business space is accessed. You can obtain the key value on the business management page of the primary account.
         self.agent_key = agent_key
-        # The user\\"s email address.
         self.email = email
-        # This parameter is reserved. You do not need to specify it.
+        # Reserved parameter. You do not need to specify this parameter.
         self.expire_time = expire_time
-        # Additional information formatted as a JSON string.
+        # The additional information in JSON string format.
         self.extra_info = extra_info
         # The external user ID.
         # 
         # This parameter is required.
         self.foreign_id = foreign_id
-        # The visitor\\"s nickname.
+        # The nickname of the visitor.
         # 
         # This parameter is required.
         self.nick = nick
-        # The user\\"s telephone number.
         self.telephone = telephone
 
     def validate(self):

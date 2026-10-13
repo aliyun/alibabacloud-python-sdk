@@ -23,34 +23,45 @@ class UpdateDocRequest(DaraModel):
         tag_ids: List[int] = None,
         title: str = None,
     ):
-        # The key for the business space. If this parameter is not specified, the default business space is used. You can obtain the key on the Business Management page of your master account.
+        # The business space key. If this parameter is not specified, the default business space is accessed. You can obtain the key value on the business management page of the primary account.
         self.agent_key = agent_key
         # The document category ID.
         self.category_id = category_id
-        # **Splitter**: The method used to split the document. Valid values: `paragraphSplitter` (splits by paragraph, default) and `treeSplitter` (splits by hierarchical rules).
+        # The document parsing/chunking configuration.
+        # Configuration item: Splitter
+        # KEY: Splitter
+        # Valid values: paragraphSplitter - hierarchy recognition (default)
+        # Valid values: treeSplitter - rule-based hierarchy
         # 
-        # **ChunkSize**: The chunk size. The value must be an integer from 200 to 800. The default value is 500.
+        # Configuration item: Document chunk size
+        # KEY: ChunkSize
+        # VALUE: Default 500. Range: [200,800]
         # 
-        # **TreePatterns**: An array of regular expressions that define the structure for rule-based splitting. The default value is `[]`.
+        # Configuration item: Rule-based hierarchy
+        # KEY: TreePatterns
+        # VALUE: Default []
         # 
-        # **TitleSource**: The source of the document title. Valid values: `ocrTitle` (uses the OCR-recognized title, default) and `docName` (uses the document name as the title).
+        # Configuration item: Document title source
+        # KEY: TitleSource
+        # Valid values: ocrTitle - OCR-recognized title (default)
+        # Valid values: docName - document name as title.
         self.config = config
         # The document content.
         self.content = content
         self.doc_metadata = doc_metadata
         # The document name.
         self.doc_name = doc_name
-        # The time when the document expires. Specify the time in UTC, using the `YYYY-MM-DDThh:mm:ssZ` format.
+        # The end of the effective period.
         self.end_date = end_date
         # The document ID.
         # 
         # This parameter is required.
         self.knowledge_id = knowledge_id
-        # The metadata of the document, specified as a JSON string.
+        # The document metadata.
         self.meta = meta
-        # The time when the document becomes effective. Specify the time in UTC, using the `YYYY-MM-DDThh:mm:ssZ` format.
+        # The start of the effective period.
         self.start_date = start_date
-        # The tag IDs to associate with the document. Passing an empty array removes all existing tag associations.
+        # The list of tag IDs. If this parameter is left empty, the tag bindings are removed.
         self.tag_ids = tag_ids
         # The document title.
         self.title = title

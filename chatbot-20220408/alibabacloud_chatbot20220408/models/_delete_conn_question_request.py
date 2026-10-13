@@ -10,9 +10,9 @@ class DeleteConnQuestionRequest(DaraModel):
         agent_key: str = None,
         outline_id: int = None,
     ):
-        # The business space key. If you do not set this parameter, the default business space is used. You can find the key on the Business Management page of your primary account.
+        # The key of the workspace. If this parameter is not specified, the default workspace is accessed. You can obtain the key on the business management page of the Alibaba Cloud account.
         self.agent_key = agent_key
-        # The unique ID of the association.
+        # The ID of the association.
         # 
         # This parameter is required.
         self.outline_id = outline_id

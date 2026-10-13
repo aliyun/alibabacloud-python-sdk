@@ -14,19 +14,21 @@ class FeedbackRequest(DaraModel):
         message_id: str = None,
         session_id: str = None,
     ):
-        # The key for the business space. If this parameter is not set, the system uses the default business space. You can obtain the key from the business management page of your primary account.
+        # The business space key. If this parameter is not specified, the default business space is accessed. You can obtain the key value on the business management page of the Alibaba Cloud account.
         self.agent_key = agent_key
-        # The feedback rating for the response. This parameter corresponds to `FeedbackType` in the session history API.
+        # The feedback type, which corresponds to the FeedbackType field in the session history API.
         # 
-        # Enumerated values: \\"good\\" (a positive rating) and \\"bad\\" (a negative rating).
+        # Valid values:
+        # - good: Like.
+        # - bad: Dislike.
         self.feedback = feedback
-        # The detailed feedback content. You can provide this as a raw string or as a JSON string. If you use a JSON string, the \\"content\\" field corresponds to \\"FeedbackUserInfo\\" and the \\"feedbackLabels\\" field corresponds to \\"FeedbackLabels\\" in the session history.
+        # The content of the like or dislike feedback. You can directly enter the feedback content or pass in a JSON string as shown in the example. The content field corresponds to FeedbackUserInfo in the session history, and feedbackLabels corresponds to FeedbackLabels in the session history.
         self.feedback_content = feedback_content
-        # The unique identifier of the chatbot instance.
+        # The unique identifier of the chatbot.
         self.instance_id = instance_id
-        # The unique identifier of a single message within the session.
+        # The ID that uniquely identifies a single message in a session window.
         self.message_id = message_id
-        # The unique identifier for the session. The instant messaging (IM) system uses this ID to track the conversation.
+        # The session ID that uniquely identifies an IM session.
         self.session_id = session_id
 
     def validate(self):

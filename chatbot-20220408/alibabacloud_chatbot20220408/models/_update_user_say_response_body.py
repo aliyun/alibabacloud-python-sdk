@@ -12,7 +12,7 @@ class UpdateUserSayResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The ID of the updated user say.
+        # The utterance ID.
         self.user_say_id = user_say_id
 
     def validate(self):

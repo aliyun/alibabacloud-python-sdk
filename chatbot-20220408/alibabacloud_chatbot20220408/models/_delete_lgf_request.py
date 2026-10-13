@@ -12,9 +12,9 @@ class DeleteLgfRequest(DaraModel):
         intent_id: int = None,
         lgf_id: int = None,
     ):
-        # The key of the business space. If omitted, the default business space is used. You can find this key on the Business Management page of your primary account.
+        # The business space key. If not specified, the default business space is accessed. You can obtain the key value on the business management page of the Alibaba Cloud account.
         self.agent_key = agent_key
-        # The robot ID.
+        # The chatbot ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -22,7 +22,7 @@ class DeleteLgfRequest(DaraModel):
         # 
         # This parameter is required.
         self.intent_id = intent_id
-        # The ID of the LGF configuration.
+        # lgf Id
         # 
         # This parameter is required.
         self.lgf_id = lgf_id

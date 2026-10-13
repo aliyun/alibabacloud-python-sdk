@@ -13,17 +13,17 @@ class UpdateLgfRequest(DaraModel):
         lgf_definition: main_models.UpdateLgfRequestLgfDefinition = None,
         lgf_id: int = None,
     ):
-        # The key for the business space. If omitted, the default business space is used. You can get the key on the Business Management page of your main account.
+        # The business space key. If not specified, the default business space is accessed. You can obtain the key value from the business management page of the Alibaba Cloud account.
         self.agent_key = agent_key
-        # The bot ID.
+        # The chatbot ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The LGF definition.
+        # The LGF information.
         # 
         # This parameter is required.
         self.lgf_definition = lgf_definition
-        # The LGF ID.
+        # LGF ID
         # 
         # This parameter is required.
         self.lgf_id = lgf_id

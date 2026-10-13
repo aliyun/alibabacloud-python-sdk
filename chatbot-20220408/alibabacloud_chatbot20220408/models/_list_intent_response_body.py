@@ -16,15 +16,15 @@ class ListIntentResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # A list of intents.
+        # The list of intents.
         self.intents = intents
         # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of intents per page. Default value: 10.
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of intents.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -93,25 +93,25 @@ class ListIntentResponseBodyIntents(DaraModel):
         modify_user_name: str = None,
         slot_infos: List[main_models.ListIntentResponseBodyIntentsSlotInfos] = None,
     ):
-        # The intent alias.
+        # The alias of the intent.
         self.alias_name = alias_name
-        # The time at which the intent was created, in UTC.
+        # The creation time in UTC.
         self.create_time = create_time
-        # The ID of the user who created the intent.
+        # The unique identifier of the creator.
         self.create_user_id = create_user_id
-        # The name of the user who created the intent.
+        # The name of the creator.
         self.create_user_name = create_user_name
         # The intent ID.
         self.intent_id = intent_id
         # The intent name.
         self.intent_name = intent_name
-        # The time at which the intent was last modified, in UTC.
+        # The modification time in UTC.
         self.modify_time = modify_time
-        # The ID of the user who last modified the intent.
+        # The unique identifier of the user who last modified the intent.
         self.modify_user_id = modify_user_id
         # The name of the user who last modified the intent.
         self.modify_user_name = modify_user_name
-        # A list of slots associated with the intent.
+        # The slot information associated with the intent.
         self.slot_infos = slot_infos
 
     def validate(self):
@@ -206,11 +206,11 @@ class ListIntentResponseBodyIntentsSlotInfos(DaraModel):
         slot_id: str = None,
         value: str = None,
     ):
-        # Indicates whether the slot can accept multiple values.
+        # Indicates whether the slot is an array.
         self.array = array
-        # Indicates whether the slot contains sensitive data.
+        # Indicates whether the slot is sensitive.
         self.encrypt = encrypt
-        # Indicates whether the slot value is collected interactively.
+        # Indicates whether the slot is collected interactively.
         self.interactive = interactive
         # The slot name.
         self.name = name

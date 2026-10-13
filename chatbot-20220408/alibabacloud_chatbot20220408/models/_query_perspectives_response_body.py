@@ -13,7 +13,7 @@ class QueryPerspectivesResponseBody(DaraModel):
         perspectives: List[main_models.QueryPerspectivesResponseBodyPerspectives] = None,
         request_id: str = None,
     ):
-        # A list of perspectives.
+        # The list of perspectives.
         self.perspectives = perspectives
         # The request ID.
         self.request_id = request_id
@@ -69,13 +69,15 @@ class QueryPerspectivesResponseBodyPerspectives(DaraModel):
         self.modify_time = modify_time
         # The perspective name.
         self.name = name
-        # The perspective code (used for the Q\\&A API).
+        # The perspective code, which is used for the Q&A API.
         self.perspective_code = perspective_code
         # The perspective ID.
         self.perspective_id = perspective_id
         # Indicates whether the perspective is custom-defined.
         self.self_define = self_define
-        # The status of the perspective. Valid values are 3 (enabled) and 1 (disabled).
+        # The data status. Valid values:
+        # - 3: Enabled.
+        # - 1: Not enabled.
         self.status = status
 
     def validate(self):

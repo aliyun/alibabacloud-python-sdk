@@ -11,13 +11,10 @@ class InitIMConnectRequest(DaraModel):
         from_: str = None,
         user_access_token: str = None,
     ):
-        # The key for the business space. Omit this parameter to use the default business space. You can get the key from the business management page of your main account.
+        # The business space key. If this parameter is not specified, the default business space is accessed. You can obtain the key value on the business management page of the Alibaba Cloud account.
         self.agent_key = agent_key
-        # The identifier for the connection source. You can obtain this value from the channel console.
-        # 
         # This parameter is required.
         self.from_ = from_
-        # The access token for user authentication.
         self.user_access_token = user_access_token
 
     def validate(self):

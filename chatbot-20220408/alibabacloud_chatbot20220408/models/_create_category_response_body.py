@@ -11,7 +11,7 @@ class CreateCategoryResponseBody(DaraModel):
         category: main_models.CreateCategoryResponseBodyCategory = None,
         request_id: str = None,
     ):
-        # Details of the created category.
+        # The category information.
         self.category = category
         # The request ID.
         self.request_id = request_id
@@ -59,9 +59,12 @@ class CreateCategoryResponseBodyCategory(DaraModel):
         self.category_id = category_id
         # The category name.
         self.name = name
-        # The ID of the parent category.
+        # The parent category ID.
         self.parent_category_id = parent_category_id
-        # The category status. A value of -1 indicates that the category has been deleted, but this change has not been published. A value of 0 indicates Normal.
+        # The category status. Valid values:
+        # 
+        # - -1: deleted but not published.
+        # - 0: Normal.
         self.status = status
 
     def validate(self):

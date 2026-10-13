@@ -16,15 +16,15 @@ class ListDSEntityValueResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # A list of entity values.
+        # The entity list.
         self.entity_values = entity_values
-        # The page number of the returned results.
+        # The current page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries on the returned page.
+        # The page size. Default value: 10.
         self.page_size = page_size
         # The unique request ID.
         self.request_id = request_id
-        # The total count of matching entries.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -89,17 +89,17 @@ class ListDSEntityValueResponseBodyEntityValues(DaraModel):
         modify_time: str = None,
         synonyms: List[str] = None,
     ):
-        # The content of the entity value, which can be a standard value or a regular expression.
+        # The entity member name (entity value or regular expression).
         self.content = content
-        # The creation time of the entity value in UTC.
+        # The creation time in UTC.
         self.create_time = create_time
-        # The ID of the entity.
+        # The entity ID.
         self.entity_id = entity_id
-        # The ID of the entity value.
+        # The entity member ID.
         self.entity_value_id = entity_value_id
-        # The last modification time of the entity value in UTC.
+        # The modification time in UTC.
         self.modify_time = modify_time
-        # A list of synonyms for the entity value.
+        # The synonym list.
         self.synonyms = synonyms
 
     def validate(self):

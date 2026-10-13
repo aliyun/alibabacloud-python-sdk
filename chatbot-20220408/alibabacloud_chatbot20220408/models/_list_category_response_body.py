@@ -13,7 +13,7 @@ class ListCategoryResponseBody(DaraModel):
         categories: List[main_models.ListCategoryResponseBodyCategories] = None,
         request_id: str = None,
     ):
-        # An array of categories.
+        # The list of categories.
         self.categories = categories
         # The request ID.
         self.request_id = request_id
@@ -69,7 +69,10 @@ class ListCategoryResponseBodyCategories(DaraModel):
         self.name = name
         # The parent category ID.
         self.parent_category_id = parent_category_id
-        # The status of the category. Valid values: `0` (Normal) and `-1` (Deleted).
+        # The category status. Valid values:
+        # 
+        # - -1: Deleted but not published.
+        # - 0: Normal.
         self.status = status
 
     def validate(self):

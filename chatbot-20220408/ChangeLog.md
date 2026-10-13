@@ -1,3 +1,8 @@
+2026-10-13 Version: 2.5.5
+- Update API TongyiChatDebugInfo: add response parameters Body.AnswerInfo.MessageBody.DirectMessageBody.HitSystemAskConfig.
+- Update API TongyiChatDebugInfo: add response parameters Body.AnswerInfo.MessageBody.DirectMessageBody.RtDetail.
+
+
 2026-08-28 Version: 2.5.4
 - Update API TongyiChatDebugInfo: add response parameters Body.SessionId.
 

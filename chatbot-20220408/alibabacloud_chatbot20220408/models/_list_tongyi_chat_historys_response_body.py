@@ -13,9 +13,9 @@ class ListTongyiChatHistorysResponseBody(DaraModel):
         datas: List[Dict[str, Any]] = None,
         request_id: str = None,
     ):
-        # The request duration, in milliseconds.
+        # The time consumed by the request.
         self.cost_time = cost_time
-        # A list of chat history entries.
+        # The data details.
         self.datas = datas
         # The request ID.
         self.request_id = request_id

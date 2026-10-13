@@ -13,19 +13,19 @@ class ListTongyiChatHistorysRequest(DaraModel):
         robot_instance_id: str = None,
         start_time: str = None,
     ):
-        # The key for the business space. If this parameter is omitted, the default business space is used. You can obtain this key from the Business Management page of your primary account.
+        # The key of the business space. If this parameter is not specified, the default business space is accessed. You can obtain the key value on the business management page of the primary account.
         self.agent_key = agent_key
-        # The end time for the query, in `yyyy-MM-dd HH:mm:ss` format. For example: `2024-04-01 08:00:00`.
+        # The end time of the query. The time is in the yyyy-MM-dd HH:mm:ss format, such as 2024-04-01 08:00:00.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The number of entries to return. Default: 30. Maximum: 500.
+        # The number of data entries. Default value: 30. Maximum value: 500.
         self.limit = limit
-        # The robot instance ID.
+        # The ID of the robot instance.
         # 
         # This parameter is required.
         self.robot_instance_id = robot_instance_id
-        # The start time for the query, in `yyyy-MM-dd HH:mm:ss` format. For example: `2024-04-01 00:00:00`.
+        # The start time of the query. The time is in the yyyy-MM-dd HH:mm:ss format, such as 2024-04-01 00:00:00.
         # 
         # This parameter is required.
         self.start_time = start_time

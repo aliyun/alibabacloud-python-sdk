@@ -14,15 +14,15 @@ class ListInstanceRequest(DaraModel):
         robot_type: str = None,
         sandbox: bool = None,
     ):
-        # The key of the business space. You can obtain the key on the Business Management page of the primary account. If you do not set this parameter, the default business space is accessed.
+        # The business space key. If not specified, the default business space is accessed. Obtain the key value from the business management page of the Alibaba Cloud account.
         self.agent_key = agent_key
-        # The name of the chatbot. A fuzzy search is supported.
+        # Performs a fuzzy match by chatbot name.
         self.name = name
-        # The page number. Default value: 1.
+        # The page number for pagination. Default value: 1.
         self.page_number = page_number
-        # The number of instances to return on each page. Default value: 10.
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # The type of the chatbot.
+        # Filters chatbots by type.
         self.robot_type = robot_type
         self.sandbox = sandbox
 

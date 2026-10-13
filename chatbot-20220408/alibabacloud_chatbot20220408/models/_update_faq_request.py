@@ -17,23 +17,23 @@ class UpdateFaqRequest(DaraModel):
         tag_id_list: List[int] = None,
         title: str = None,
     ):
-        # The key for the business space. If this parameter is omitted, the default business space is used. You can find this key on the Business Management page of your main account.
+        # The workspace key. If not specified, the default workspace is accessed. You can obtain the key value from the business management page of the Alibaba Cloud account.
         self.agent_key = agent_key
-        # The ID of the knowledge entry\\"s category.
+        # The category ID of the knowledge entry.
         # 
         # This parameter is required.
         self.category_id = category_id
-        # The expiration date and time. The value must be in ISO 8601 format.
+        # The expiration time.
         self.end_date = end_date
-        # The ID of the knowledge entry.
+        # The knowledge ID.
         # 
         # This parameter is required.
         self.knowledge_id = knowledge_id
-        # The effective start date and time. The value must be in ISO 8601 format.
+        # The effective period.
         self.start_date = start_date
-        # A list of tag IDs.
+        # The list of tag IDs.
         self.tag_id_list = tag_id_list
-        # The knowledge title.
+        # The title of the knowledge entry.
         # 
         # This parameter is required.
         self.title = title

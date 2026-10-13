@@ -12,15 +12,15 @@ class UpdateUserSayShrinkRequest(DaraModel):
         user_say_definition_shrink: str = None,
         user_say_id: int = None,
     ):
-        # The workspace key. If you omit this parameter, the default workspace is used. You can find this key on the Workspace Management page in your main account.
+        # The business space key. If this parameter is not specified, the default business space is accessed. You can obtain the key value from the business management page of the Alibaba Cloud account.
         self.agent_key = agent_key
-        # The ID of the bot.
+        # The robot ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The definition of the user say.
+        # The definition of the user utterance.
         self.user_say_definition_shrink = user_say_definition_shrink
-        # The ID of the user say.
+        # The user utterance ID.
         # 
         # This parameter is required.
         self.user_say_id = user_say_id

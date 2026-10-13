@@ -10,9 +10,9 @@ class DeleteDocRequest(DaraModel):
         agent_key: str = None,
         knowledge_id: int = None,
     ):
-        # The business space key. If this parameter is not specified, the default business space is used. You can obtain the key from the Business Management page of your main account.
+        # The key of the business space. If this parameter is not set, the default business space is accessed. You can obtain the key on the business management page of the Alibaba Cloud account.
         self.agent_key = agent_key
-        # The ID of the knowledge.
+        # The knowledge ID.
         # 
         # This parameter is required.
         self.knowledge_id = knowledge_id

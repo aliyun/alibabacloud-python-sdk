@@ -11,11 +11,11 @@ class NluRequest(DaraModel):
         instance_id: str = None,
         utterance: str = None,
     ):
-        # The agent key. If not specified, the default agent is used. Find the key on the Business Management page of your Alibaba Cloud account.
+        # The business space key. If not specified, the default business space is accessed. You can obtain the key on the business management page of the Alibaba Cloud account.
         self.agent_key = agent_key
-        # The unique identifier of the bot instance.
+        # The unique identifier of the chatbot.
         self.instance_id = instance_id
-        # The user\\"s text input.
+        # The user utterance.
         self.utterance = utterance
 
     def validate(self):

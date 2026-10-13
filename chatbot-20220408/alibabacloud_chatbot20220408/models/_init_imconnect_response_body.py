@@ -15,11 +15,11 @@ class InitIMConnectResponseBody(DaraModel):
     ):
         # The return code.
         self.code = code
-        # The IM connection information, returned as a JSON string.
+        # The IM connection information.
         self.data = data
-        # The response message. If the request fails, this parameter provides the exception message.
+        # The error message.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success

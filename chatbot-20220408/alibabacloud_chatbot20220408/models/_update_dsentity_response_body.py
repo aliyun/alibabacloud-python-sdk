@@ -10,7 +10,7 @@ class UpdateDSEntityResponseBody(DaraModel):
         entity_id: int = None,
         request_id: str = None,
     ):
-        # The ID of the updated entity.
+        # The entity ID.
         self.entity_id = entity_id
         # The request ID.
         self.request_id = request_id

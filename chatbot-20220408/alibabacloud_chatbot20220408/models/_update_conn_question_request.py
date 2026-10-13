@@ -11,13 +11,13 @@ class UpdateConnQuestionRequest(DaraModel):
         conn_question_id: int = None,
         outline_id: int = None,
     ):
-        # The key of the business space. If you omit this parameter, the default business space is used. You can obtain the key from the Business Management page of your main account.
+        # The key of the workspace. If this parameter is not specified, the default workspace is accessed. You can obtain the key on the business management page of the Alibaba Cloud account.
         self.agent_key = agent_key
-        # The ID of the associated question.
+        # The ID of the associated knowledge.
         # 
         # This parameter is required.
         self.conn_question_id = conn_question_id
-        # The ID of the connection.
+        # The ID of the association.
         # 
         # This parameter is required.
         self.outline_id = outline_id

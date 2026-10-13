@@ -27,9 +27,9 @@ class SearchDocShrinkRequest(DaraModel):
         status: int = None,
         tag_ids_shrink: str = None,
     ):
-        # The workspace key. If omitted, the default workspace is used. You can obtain this key from the Business Management page of your main account.
+        # The business space key. If not specified, the default business space is accessed. You can obtain the key value from the business management page of the primary account.
         self.agent_key = agent_key
-        # A list of category IDs.
+        # The list of category IDs.
         self.category_ids_shrink = category_ids_shrink
         # The start of the creation time range.
         self.create_time_begin = create_time_begin
@@ -41,29 +41,39 @@ class SearchDocShrinkRequest(DaraModel):
         self.end_time_begin = end_time_begin
         # The end of the expiration time range.
         self.end_time_end = end_time_end
-        # The search keyword.
+        # The keyword.
         self.keyword = keyword
         # The start of the modification time range.
         self.modify_time_begin = modify_time_begin
         # The end of the modification time range.
         self.modify_time_end = modify_time_end
-        # The name of the last modifier.
+        # The name of the modifier.
         self.modify_user_name = modify_user_name
-        # The page number to return.
+        # The page number.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The task status.<br>Valid values:<br>• -1: Queued<br>• 0: Succeeded<br>• 1: Parsing<br>• 2: Processing<br>• 3: Failed<br><br><br><br><br><br>
+        # The task status. Valid values:
+        # - -1: queued
+        # - 0: succeeded
+        # - 1: parsing
+        # - 2: processing
+        # - 3: processing failed
         self.process_status = process_status
-        # The search scope.<br>Valid values:<br>• 1: Search titles<br>• 2: Search content<br><br><br>
+        # The search scope. Valid values: 
+        # - 1: search by title
+        # - 2: search by content
         self.search_scope = search_scope
         # The start of the effective time range.
         self.start_time_begin = start_time_begin
         # The end of the effective time range.
         self.start_time_end = start_time_end
-        # The edit status.<br>Valid values:<br>• 1: Unpublished<br>• 2: Published<br>• 3: Updated but not published<br><br><br><br>
+        # The editing status. Valid values:
+        # - 1: unpublished
+        # - 2: published
+        # - 3: updated but not published
         self.status = status
-        # A list of tag IDs. If you provide multiple IDs, the operation returns documents that match at least one of the specified tags (logical OR).
+        # The list of label IDs. When multiple labels are specified, the union logic is used for filtering.
         self.tag_ids_shrink = tag_ids_shrink
 
     def validate(self):

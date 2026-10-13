@@ -15,15 +15,15 @@ class UpdateIntentRequest(DaraModel):
         intent_definition: main_models.UpdateIntentRequestIntentDefinition = None,
         intent_id: int = None,
     ):
-        # The key for the business space. If you omit this parameter, the system uses the default business space. You can find this key on the Business Management page of your primary account.
+        # The business space key. If this parameter is not specified, the default business space is accessed. You can obtain the key value on the business management page of the Alibaba Cloud account.
         self.agent_key = agent_key
-        # The ID of the chatbot instance.
+        # The chatbot ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The intent definition object.
+        # The intent definition struct.
         self.intent_definition = intent_definition
-        # The ID of the intent.
+        # The intent ID.
         # 
         # This parameter is required.
         self.intent_id = intent_id
@@ -75,13 +75,13 @@ class UpdateIntentRequestIntentDefinition(DaraModel):
         intent_name: str = None,
         slot_infos: List[main_models.UpdateIntentRequestIntentDefinitionSlotInfos] = None,
     ):
-        # The alias for the intent.
+        # The intent alias.
         self.alias_name = alias_name
-        # The name of the intent.
+        # The intent name.
         # 
         # This parameter is required.
         self.intent_name = intent_name
-        # A list of slot objects.
+        # The slot information.
         self.slot_infos = slot_infos
 
     def validate(self):
@@ -134,17 +134,17 @@ class UpdateIntentRequestIntentDefinitionSlotInfos(DaraModel):
         slot_id: str = None,
         value: str = None,
     ):
-        # Specifies whether the slot can contain an array of values.
+        # Specifies whether the slot is an array.
         self.array = array
-        # Specifies whether to enable data masking for the slot value.
+        # Specifies whether the slot value is masked.
         self.encrypt = encrypt
-        # Specifies whether the slot is interactive. If true, the chatbot prompts the user for a value if the user does not provide one.
+        # Specifies whether the slot is interactive.
         self.interactive = interactive
-        # The name of the slot.
+        # The slot name.
         # 
         # This parameter is required.
         self.name = name
-        # The ID of the slot.
+        # The slot ID.
         # 
         # This parameter is required.
         self.slot_id = slot_id

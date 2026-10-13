@@ -16,23 +16,26 @@ class CreateFaqShrinkRequest(DaraModel):
         tag_id_list_shrink: str = None,
         title: str = None,
     ):
-        # The agent key. If omitted, the default agent is used. Find this key on the Agent Management page.
+        # The key of the business space. If this parameter is not set, the default business space is accessed. You can obtain the key value from the business management page of the main account.
         self.agent_key = agent_key
-        # The ID of the knowledge category.
+        # The category ID of the knowledge entry.
         # 
         # This parameter is required.
         self.category_id = category_id
-        # The knowledge end time. The time is in UTC and in ISO 8601 format.
+        # The expiration time.
         self.end_date = end_date
-        # The content of the default solution. Required if the fallback feature is enabled.
+        # The default answer content. This parameter is required if the fallback perspective is enabled.
         self.solution_content = solution_content
-        # The type of the default solution. Valid values: `0` (plain text) and `1` (rich text).
+        # The type of the default answer. Valid values:
+        # 
+        # - 0: plain text.
+        # - 1: rich text.
         self.solution_type = solution_type
-        # The knowledge start time. The time is in UTC and in ISO 8601 format.
+        # The effective period.
         self.start_date = start_date
-        # A list of tag IDs to associate with the knowledge.
+        # The list of label IDs.
         self.tag_id_list_shrink = tag_id_list_shrink
-        # The knowledge title. Max length: 120 characters.
+        # The title of the knowledge entry. Maximum length: 120 characters.
         # 
         # This parameter is required.
         self.title = title

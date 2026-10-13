@@ -11,7 +11,7 @@ class DeleteIntentRequest(DaraModel):
         instance_id: str = None,
         intent_id: int = None,
     ):
-        # The key that identifies the business space. If you omit this parameter, the service uses the default business space. You can get this key from the Business Management page of your primary account.
+        # The business space key. If this parameter is not specified, the default business space is accessed. You can obtain the key value from the business management page of the Alibaba Cloud account.
         self.agent_key = agent_key
         # The robot ID.
         # 

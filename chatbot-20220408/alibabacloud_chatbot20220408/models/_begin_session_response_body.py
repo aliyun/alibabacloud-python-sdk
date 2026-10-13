@@ -13,13 +13,13 @@ class BeginSessionResponseBody(DaraModel):
         silence_reply_timeout: int = None,
         welcome_message: str = None,
     ):
-        # The ASR end-pointing detection time, in milliseconds.
+        # The Automatic Speech Recognition (ASR) end-of-speech detection time. Unit: milliseconds.
         self.asr_max_end_silence = asr_max_end_silence
-        # Indicates whether voice playback is interruptible.
+        # Indicates whether the voice broadcast can be interrupted.
         self.interruptible = interruptible
         # The request ID.
         self.request_id = request_id
-        # The silence timeout, in seconds.
+        # The silence timeout period. Unit: seconds.
         self.silence_reply_timeout = silence_reply_timeout
         # The welcome message.
         self.welcome_message = welcome_message

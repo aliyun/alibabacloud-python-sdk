@@ -11,13 +11,13 @@ class TongyiChatDebugInfoRequest(DaraModel):
         instance_id: str = None,
         message_id: str = None,
     ):
-        # The business space key. If not specified, the default business space is accessed. Obtain the key value from the business management page of the primary account.
+        # The key of the workspace. If you do not specify this parameter, the default workspace is accessed. You can obtain the key value from the Business Management page of the Alibaba Cloud account.
         self.agent_key = agent_key
-        # The chatbot ID.
+        # The ID of the chatbot.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the response message in the current session.
+        # The ID of the response message for the current session.
         # 
         # This parameter is required.
         self.message_id = message_id

@@ -11,13 +11,13 @@ class UpdateSimQuestionRequest(DaraModel):
         sim_question_id: int = None,
         title: str = None,
     ):
-        # The key of the workspace. If you do not specify this parameter, the default workspace is used. You can find the key on the Business Management page of your master account.
+        # The key of the business space. If this parameter is not specified, the default business space is accessed. You can obtain the key on the business management page of the Alibaba Cloud account.
         self.agent_key = agent_key
-        # The ID of the similar question that you want to update.
+        # The ID of the similar question.
         # 
         # This parameter is required.
         self.sim_question_id = sim_question_id
-        # The new title of the similar question. The title can be up to 120 characters long.
+        # The title of the similar question. The maximum length is 120 characters.
         # 
         # This parameter is required.
         self.title = title

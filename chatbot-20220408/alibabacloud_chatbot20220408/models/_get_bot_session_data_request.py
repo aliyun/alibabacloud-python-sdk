@@ -12,17 +12,17 @@ class GetBotSessionDataRequest(DaraModel):
         robot_instance_id: str = None,
         start_time: str = None,
     ):
-        # The key for the workspace. If you omit this parameter, the operation uses the default workspace. You can find the key on the business management page of your main account.
+        # The business space key. If this parameter is not specified, the default business space is accessed. You can obtain the key value on the business management page of the Alibaba Cloud account.
         self.agent_key = agent_key
-        # The end time for the query. The format must be `yyyyMMdd`. For example: `20240605`.
+        # The end time of the query. The time format is yyyyMMdd, such as 20240605.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The ID of the bot instance.
+        # The ID of the chatbot instance.
         # 
         # This parameter is required.
         self.robot_instance_id = robot_instance_id
-        # The start time for the query. The format must be `yyyyMMdd`. For example: `20240505`.
+        # The start time of the query. The time format is yyyyMMdd, such as 20240505.
         # 
         # This parameter is required.
         self.start_time = start_time

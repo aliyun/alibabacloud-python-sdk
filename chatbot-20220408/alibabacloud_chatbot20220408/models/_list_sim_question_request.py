@@ -10,9 +10,9 @@ class ListSimQuestionRequest(DaraModel):
         agent_key: str = None,
         knowledge_id: int = None,
     ):
-        # The key for the business space. If you do not specify this parameter, the default business space is used. You can get the key from the Business Management Page of your Alibaba Cloud account.
+        # The workspace key. If not specified, the default workspace is accessed. You can obtain the key value on the business management page of the Alibaba Cloud account.
         self.agent_key = agent_key
-        # The knowledge entry ID.
+        # The knowledge ID.
         # 
         # This parameter is required.
         self.knowledge_id = knowledge_id

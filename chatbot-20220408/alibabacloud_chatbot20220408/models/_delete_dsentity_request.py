@@ -11,7 +11,7 @@ class DeleteDSEntityRequest(DaraModel):
         entity_id: int = None,
         instance_id: str = None,
     ):
-        # If unspecified, the default agent is used. You can get the key from the agent management page of your main account.
+        # Business space key. If not specified, the default business space is accessed. Obtain the key value from the business management page of the Alibaba Cloud account.
         self.agent_key = agent_key
         # The entity ID.
         # 

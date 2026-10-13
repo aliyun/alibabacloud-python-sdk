@@ -16,23 +16,26 @@ class CreateSolutionRequest(DaraModel):
         perspective_codes: List[str] = None,
         tag_id_list: List[int] = None,
     ):
-        # The key of the business space. If this parameter is omitted, the system uses the default business space. You can obtain the key from the Business Management page of your primary account.
+        # The key of the workspace. If this parameter is not specified, the default workspace is accessed. You can obtain the key on the business management page of the Alibaba Cloud account.
         self.agent_key = agent_key
-        # The content of the knowledge answer.
+        # The content of the answer.
         # 
         # This parameter is required.
         self.content = content
-        # The answer type. Valid values: `0` (plain text) and `1` (rich text).
+        # The type of the answer. Valid values:
+        # 
+        # - 0: plain text.
+        # - 1: rich text.
         self.content_type = content_type
-        # The ID of the knowledge.
+        # The knowledge ID.
         # 
         # This parameter is required.
         self.knowledge_id = knowledge_id
-        # A list of perspective codes.
+        # The list of perspective codes.
         # 
         # This parameter is required.
         self.perspective_codes = perspective_codes
-        # A list of tag IDs.
+        # The list of tag IDs.
         self.tag_id_list = tag_id_list
 
     def validate(self):

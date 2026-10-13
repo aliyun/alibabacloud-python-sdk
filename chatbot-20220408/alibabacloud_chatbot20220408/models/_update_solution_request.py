@@ -16,23 +16,26 @@ class UpdateSolutionRequest(DaraModel):
         solution_id: int = None,
         tag_id_list: List[int] = None,
     ):
-        # The agent key. If you omit this parameter, the default agent is used. You can obtain the key on the Business Management page of your primary account.
+        # The workspace key. If this parameter is not specified, the default workspace is accessed. You can obtain the key from the business management page of the Alibaba Cloud account.
         self.agent_key = agent_key
-        # The content of the solution.
+        # The answer content.
         # 
         # This parameter is required.
         self.content = content
-        # The content type. Valid values: 0 for plain text and 1 for rich text.
+        # The answer type. Valid values:
+        # 
+        # - 0: plain text
+        # - 1: rich text
         self.content_type = content_type
-        # A list of perspective codes.
+        # The list of perspective codes.
         # 
         # This parameter is required.
         self.perspective_codes = perspective_codes
-        # The ID of the solution.
+        # The answer ID.
         # 
         # This parameter is required.
         self.solution_id = solution_id
-        # A list of tag IDs.
+        # The list of tag IDs.
         self.tag_id_list = tag_id_list
 
     def validate(self):

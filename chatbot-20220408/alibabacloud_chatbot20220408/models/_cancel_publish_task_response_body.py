@@ -18,23 +18,27 @@ class CancelPublishTaskResponseBody(DaraModel):
         response: str = None,
         status: str = None,
     ):
-        # A list of business types.
+        # The list of business types.
         self.biz_type_list = biz_type_list
-        # The time when the task was created, in UTC.
+        # The UTC time when the task was created.
         self.create_time = create_time
-        # The error message returned if the task fails.
+        # The task failure information.
         self.error = error
-        # The ID of the publish task.
+        # The publish task ID.
         self.id = id
-        # The time when the task was last modified, in UTC.
+        # The UTC time when the task was last modified.
         self.modify_time = modify_time
         # The request ID.
         self.request_id = request_id
-        # The ID of the publish task. This is a redundant field. We recommend that you use the `Id` field instead.
+        # The publish task ID. This is a redundant field. Use the publish task ID instead.
         self.response = response
-        # The task status. Valid values:
+        # The task status.
+        # Valid values:
         # 
-        # `FE_RUNNING`: in progress, `FE_SUCCESS`: succeeded, `FE_FAILED`: failed, `FE_ABORTED`: aborted.
+        # - FE_RUNNING: Publishing in progress.
+        # - FE_SUCCESS: Published successfully.
+        # - FE_FAILED: Publishing failed.
+        # - FE_ABORTED: Publishing canceled.
         self.status = status
 
     def validate(self):

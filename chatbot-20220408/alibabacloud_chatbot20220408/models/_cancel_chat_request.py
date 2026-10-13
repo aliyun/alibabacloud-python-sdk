@@ -14,17 +14,17 @@ class CancelChatRequest(DaraModel):
         session_id: str = None,
         type: str = None,
     ):
-        # The agent key. If unspecified, the default agent is used. You can obtain the key on the Business Management page of your Alibaba Cloud account.
+        # The business space key. If this parameter is not specified, the default business space is accessed. You can obtain the key value on the business management page of the Alibaba Cloud account.
         self.agent_key = agent_key
-        # The content of the answer.
+        # The answer content.
         self.answer = answer
-        # The ID that identifies a single chat turn.
+        # The ID that identifies a single conversation.
         self.chat_id = chat_id
-        # The ID of the chatbot instance.
+        # The chatbot ID.
         self.instance_id = instance_id
-        # The session ID is used to identify a visitor\\"s session and maintain context. For a new visitor, omit this parameter in the first call to the chat operation. The chatbot starts a session and returns the session ID in the response. For subsequent turns, you must pass the session ID to maintain context. The value can be up to 64 characters in length.
+        # The session ID, which is used to identify a visitor\\"s session and maintain context information. For a new visitor, you do not need to specify this parameter when calling the Chat operation for the first time. The chatbot starts a session and returns the SessionId in the response of the Chat operation. For subsequent conversation turns of the visitor, pass the SessionId of the current session when calling the Chat operation so that the chatbot can continue the conversation based on the SessionId. Maximum length: 64 characters.
         self.session_id = session_id
-        # The cancellation type.
+        # The interruption type.
         self.type = type
 
     def validate(self):

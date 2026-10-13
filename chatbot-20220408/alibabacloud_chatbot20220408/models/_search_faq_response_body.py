@@ -16,7 +16,7 @@ class SearchFaqResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of matching FAQs.
+        # The knowledge search results.
         self.faq_hits = faq_hits
         # The page number.
         self.page_number = page_number
@@ -24,7 +24,7 @@ class SearchFaqResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of matched entries.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -98,29 +98,38 @@ class SearchFaqResponseBodyFaqHits(DaraModel):
     ):
         # The category ID.
         self.category_id = category_id
-        # The creation time (UTC).
+        # The creation time in UTC.
         self.create_time = create_time
-        # The creator ID.
+        # The ID of the creator.
         self.create_user_id = create_user_id
-        # The creator\\"s username.
+        # The name of the creator.
         self.create_user_name = create_user_name
-        # The effective status of the FAQ. This status is determined by the StartDate and EndDate parameters.
+        # The effective status of the knowledge, calculated based on StartDate and EndDate. Valid values:
+        # 
+        # - 20: Active.
+        # - 21: Expired.
+        # - 22: Pending.
         self.effect_status = effect_status
-        # A list of matched similar titles.
+        # The list of hit similar questions.
         self.hit_similar_titles = hit_similar_titles
-        # A list of matched answers.
+        # The list of hit solutions.
         self.hit_solutions = hit_solutions
-        # The FAQ ID.
+        # The knowledge ID.
         self.knowledge_id = knowledge_id
-        # The modification time (UTC).
+        # The modification time in UTC.
         self.modify_time = modify_time
-        # The modifier ID.
+        # The ID of the modifier.
         self.modify_user_id = modify_user_id
-        # The modifier\\"s username.
+        # The name of the modifier.
         self.modify_user_name = modify_user_name
-        # The FAQ status.
+        # The knowledge status. Valid values:
+        # 
+        # - -1: deleted and unpublished.
+        # - 1: unpublished.
+        # - 2: published.
+        # - 3: updated and unpublished.
         self.status = status
-        # The title of the FAQ.
+        # The title.
         self.title = title
 
     def validate(self):

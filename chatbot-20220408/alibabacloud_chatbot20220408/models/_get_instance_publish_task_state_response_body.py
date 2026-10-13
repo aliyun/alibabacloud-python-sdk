@@ -24,9 +24,9 @@ class GetInstancePublishTaskStateResponseBody(DaraModel):
         self.biz_type_list = biz_type_list
         # The UTC time when the task was created.
         self.create_time = create_time
-        # The error message if the task fails.
+        # The job failure information.
         self.error = error
-        # A map of error messages for each submodule, where the key is the submodule and the value is an array of errors.
+        # The fault information for each sub-publish module. The key is the sub-publish module and the value is the fault information.
         self.errors = errors
         # The task ID.
         self.id = id
@@ -34,11 +34,11 @@ class GetInstancePublishTaskStateResponseBody(DaraModel):
         self.modify_time = modify_time
         # The request ID.
         self.request_id = request_id
-        # The task ID, returned as a string.
+        # The task ID.
         self.response = response
-        # The status of the task.
+        # The task status.
         self.status = status
-        # A map of warning messages for each submodule, where the key is the submodule and the value is an array of warnings.
+        # The warning information for each sub-publish module. The key is the sub-publish module and the value is the warning information.
         self.warnings = warnings
 
     def validate(self):

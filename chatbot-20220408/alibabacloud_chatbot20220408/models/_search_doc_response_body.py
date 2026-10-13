@@ -16,15 +16,15 @@ class SearchDocResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # A list of matching documents.
+        # The list of documents.
         self.doc_hits = doc_hits
-        # The page number.
+        # The current page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # The total number of matching entries.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -108,49 +108,76 @@ class SearchDocResponseBodyDocHits(DaraModel):
         self.biz_code = biz_code
         # The category ID.
         self.category_id = category_id
-        # The splitter for the document. Key: `Splitter`. Valid values:<br>• `paragraphSplitter` (default): Splits the document by paragraph.<br>• `treeSplitter`: Splits the document based on a rule-based hierarchy.<br><br>
+        # The document parsing and chunking configuration.
         # 
-        # The size of each document chunk. Key: `ChunkSize`. Default value: 500. Value range: [200, 800].
+        # Configuration item: Splitter
+        # KEY: Splitter
+        # Valid values:
+        # - paragraphSplitter: hierarchy recognition (default)
+        # - treeSplitter: rule-based hierarchy
         # 
-        # The patterns for the rule-based hierarchy. Key: `TreePatterns`. Default value: `[]`.
+        # Configuration item: Document chunk size
+        # KEY: ChunkSize
+        # VALUE: Default value: 500. Value range: [200, 800].
         # 
-        # The source of the document title. Key: `TitleSource`. Valid values:<br>• `ocrTitle` (default): Uses the OCR-identified title.<br>• `docName`: Uses the document name as the title.<br><br>
+        # Configuration item: Rule-based hierarchy
+        # KEY: TreePatterns
+        # VALUE: Default value: [].
+        # 
+        # Configuration item: Document title source
+        # KEY: TitleSource
+        # Valid values:
+        # - ocrTitle: OCR-recognized title (default)
+        # - docName: document name as title
         self.config = config
-        # The time the document was created (UTC).
+        # The creation time in UTC.
         self.create_time = create_time
-        # The creator ID.
+        # The ID of the creator.
         self.create_user_id = create_user_id
         # The name of the creator.
         self.create_user_name = create_user_name
         # The document name.
         self.doc_name = doc_name
-        # A list of the document\\"s tags.
+        # The list of label details.
         self.doc_tags = doc_tags
-        # The knowledge\\"s effective status, calculated based on `StartDate` and `EndDate`. Valid values:<br>• 20: Active<br>• 21: Expired<br>• 22: Pending<br><br><br>
+        # The knowledge effective status, calculated based on StartDate and EndDate. Valid values:
+        # - 20: effective
+        # - 21: expired
+        # - 22: pending effective
         self.effect_status = effect_status
-        # The time the knowledge expires (UTC).
+        # The expiration time in UTC.
         self.end_date = end_date
         # The knowledge ID.
         self.knowledge_id = knowledge_id
-        # The document metadata.
+        # The metadata associated with the document.
         self.meta = meta
-        # The time the document was last modified (UTC).
+        # The modification time in UTC.
         self.modify_time = modify_time
-        # The modifier ID.
+        # The ID of the modifier.
         self.modify_user_id = modify_user_id
-        # The name of the last modifier.
+        # The name of the modifier.
         self.modify_user_name = modify_user_name
-        # Indicates whether the task can be retried.<br>• `true`: The task can be retried.<br>• `false`: The task cannot be retried.<br><br>
+        # Indicates whether the task can be retried. Valid values:
+        # - true: The task can be retried.
+        # - false: The task cannot be retried.
         self.process_can_retry = process_can_retry
-        # The processing message for the task.
+        # The task processing message.
         self.process_message = process_message
-        # The task\\"s processing status. Valid values:<br>• -1: Queued<br>• 0: Succeeded<br>• 1: Parsing<br>• 2: Processing<br>• 3: Failed<br><br><br><br><br>
+        # The task processing status. Valid values:
+        # - -1: queued
+        # - 0: succeeded
+        # - 1: parsing
+        # - 2: processing
+        # - 3: processing failed
         self.process_status = process_status
-        # The time the knowledge takes effect (UTC).
+        # The effective period in UTC.
         self.start_date = start_date
-        # The editing status of the document. Valid values:<br>• 1: Unpublished<br>• 2: Published<br>• 3: Updated but not published<br><br><br>
+        # The editing status. Valid values:
+        # - 1: unpublished
+        # - 2: published
+        # - 3: updated but not published
         self.status = status
-        # The OSS URL of the object.
+        # The OSS URL where the document is stored.
         self.url = url
 
     def validate(self):
@@ -310,15 +337,15 @@ class SearchDocResponseBodyDocHitsDocTags(DaraModel):
         tag_id: int = None,
         tag_name: str = None,
     ):
-        # Indicates whether this is a default tag.
+        # Indicates whether this is the default label that represents all labels.
         self.default_tag = default_tag
-        # The tag group ID.
+        # The label group ID.
         self.group_id = group_id
-        # The tag group name.
+        # The label group name.
         self.group_name = group_name
-        # The tag ID.
+        # The label ID.
         self.tag_id = tag_id
-        # The tag name.
+        # The label name.
         self.tag_name = tag_name
 
     def validate(self):

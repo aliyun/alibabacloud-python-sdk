@@ -10,7 +10,7 @@ class DeleteSimQuestionRequest(DaraModel):
         agent_key: str = None,
         sim_question_id: int = None,
     ):
-        # The key for the business space. If you omit this parameter, the default business space is used. You can find the key on the business management page of your primary account.
+        # The business space key. If this parameter is not specified, the default business space is accessed. You can obtain the key value on the business management page of the Alibaba Cloud account.
         self.agent_key = agent_key
         # The ID of the similar question.
         # 

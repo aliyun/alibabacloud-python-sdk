@@ -12,17 +12,17 @@ class DeleteUserSayRequest(DaraModel):
         intent_id: int = None,
         user_say_id: int = None,
     ):
-        # The key of the business space. If omitted, the default business space is used. You can obtain the key from the Business Management page of your primary account.
+        # The business space key. If this parameter is not set, the default business space is accessed. You can obtain the key value on the business management page of the Alibaba Cloud account.
         self.agent_key = agent_key
-        # The instance ID of the bot.
+        # The robot ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the intent.
+        # The intent ID.
         # 
         # This parameter is required.
         self.intent_id = intent_id
-        # The ID of the user say.
+        # The utterance ID.
         # 
         # This parameter is required.
         self.user_say_id = user_say_id

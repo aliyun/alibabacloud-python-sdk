@@ -19,27 +19,27 @@ class DescribeDSEntityResponseBody(DaraModel):
         request_id: str = None,
         sys_entity_code: str = None,
     ):
-        # The time when the entity was created, in UTC.
+        # The creation time in UTC.
         self.create_time = create_time
-        # The ID of the user who created the entity.
+        # The ID of the creator.
         self.create_user_id = create_user_id
-        # The name of the user who created the entity.
+        # The name of the creator.
         self.create_user_name = create_user_name
         # The entity ID.
         self.entity_id = entity_id
-        # The entity name. The name can contain only Chinese characters, letters, digits, and underscores (_).
+        # The entity name. Only Chinese characters, uppercase and lowercase letters, digits, and underscores are supported.
         self.entity_name = entity_name
-        # The entity type. Valid values are `synonyms` and `regex`.
+        # The entity type. Valid values: synonyms (synonym) and regex (regular expression).
         self.entity_type = entity_type
-        # The time when the entity was last modified, in UTC.
+        # The modification time in UTC.
         self.modify_time = modify_time
-        # The ID of the user who last modified the entity.
+        # The unique identifier of the modifier.
         self.modify_user_id = modify_user_id
-        # The name of the user who last modified the entity.
+        # The name of the modifier.
         self.modify_user_name = modify_user_name
         # The request ID.
         self.request_id = request_id
-        # The code of the system entity, such as sys.date. This parameter is empty for user-defined entities.
+        # The system entity code, such as sys.date. This parameter is empty for user entities.
         self.sys_entity_code = sys_entity_code
 
     def validate(self):

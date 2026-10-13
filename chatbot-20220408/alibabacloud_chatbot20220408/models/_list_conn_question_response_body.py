@@ -13,7 +13,7 @@ class ListConnQuestionResponseBody(DaraModel):
         outlines: List[main_models.ListConnQuestionResponseBodyOutlines] = None,
         request_id: str = None,
     ):
-        # A list of connected questions.
+        # The list of associated questions.
         self.outlines = outlines
         # The request ID.
         self.request_id = request_id
@@ -61,15 +61,15 @@ class ListConnQuestionResponseBodyOutlines(DaraModel):
         outline_id: int = None,
         title: str = None,
     ):
-        # The ID of the connected question.
+        # The associated knowledge ID.
         self.conn_question_id = conn_question_id
-        # The creation time, in UTC.
+        # The creation time in UTC.
         self.create_time = create_time
-        # The last modification time, in UTC.
+        # The modification time in UTC.
         self.modify_time = modify_time
-        # The relation ID.
+        # The association ID.
         self.outline_id = outline_id
-        # The title of the connected question.
+        # The title of the associated knowledge item.
         self.title = title
 
     def validate(self):

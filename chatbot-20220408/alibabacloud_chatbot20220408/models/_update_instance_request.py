@@ -12,13 +12,13 @@ class UpdateInstanceRequest(DaraModel):
         introduction: str = None,
         name: str = None,
     ):
-        # The workspace key. If you omit this parameter, the default workspace is used. You can get this key from the Business Management page in your Alibaba Cloud account.
+        # The business space key. If this parameter is not specified, the default business space is accessed. You can obtain the key value from the business management page of the Alibaba Cloud account.
         self.agent_key = agent_key
-        # The unique ID of the chatbot instance.
+        # The unique identifier of the chatbot.
         self.instance_id = instance_id
-        # The new description of the chatbot.
+        # The remarks of the chatbot to update.
         self.introduction = introduction
-        # The new name of the chatbot. The maximum length is 50 characters.
+        # The name of the chatbot to update. The name can be up to 50 characters in length.
         self.name = name
 
     def validate(self):

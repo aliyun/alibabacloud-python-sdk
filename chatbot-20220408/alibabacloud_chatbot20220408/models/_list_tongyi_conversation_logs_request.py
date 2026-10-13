@@ -11,13 +11,13 @@ class ListTongyiConversationLogsRequest(DaraModel):
         robot_instance_id: str = None,
         session_id: str = None,
     ):
-        # The key for the business space. If omitted, the default business space is used. You can find this key on the Business Management page of your root account.
+        # The business space key. If not specified, the default business space is accessed. You can obtain the key value from the business management page of the Alibaba Cloud account.
         self.agent_key = agent_key
-        # The ID of the chatbot instance.
+        # The robot instance ID.
         # 
         # This parameter is required.
         self.robot_instance_id = robot_instance_id
-        # The ID of the session.
+        # The session ID.
         # 
         # This parameter is required.
         self.session_id = session_id

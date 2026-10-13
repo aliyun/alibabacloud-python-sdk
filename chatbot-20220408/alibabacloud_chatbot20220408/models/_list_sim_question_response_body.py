@@ -60,9 +60,9 @@ class ListSimQuestionResponseBodySimQuestions(DaraModel):
         sim_question_id: int = None,
         title: str = None,
     ):
-        # The creation time of the similar question, in UTC.
+        # The creation time in UTC.
         self.create_time = create_time
-        # The modification time of the similar question, in UTC.
+        # The modification time in UTC.
         self.modify_time = modify_time
         # The similar question ID.
         self.sim_question_id = sim_question_id

@@ -15,15 +15,15 @@ class UpdateUserSayRequest(DaraModel):
         user_say_definition: main_models.UpdateUserSayRequestUserSayDefinition = None,
         user_say_id: int = None,
     ):
-        # The workspace key. If you omit this parameter, the default workspace is used. You can find this key on the Workspace Management page in your main account.
+        # The business space key. If this parameter is not specified, the default business space is accessed. You can obtain the key value from the business management page of the Alibaba Cloud account.
         self.agent_key = agent_key
-        # The ID of the bot.
+        # The robot ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The definition of the user say.
+        # The definition of the user utterance.
         self.user_say_definition = user_say_definition
-        # The ID of the user say.
+        # The user utterance ID.
         # 
         # This parameter is required.
         self.user_say_id = user_say_id
@@ -75,15 +75,15 @@ class UpdateUserSayRequestUserSayDefinition(DaraModel):
         intent_id: int = None,
         slot_infos: List[main_models.UpdateUserSayRequestUserSayDefinitionSlotInfos] = None,
     ):
-        # The content of the user say.
+        # The user utterance.
         # 
         # This parameter is required.
         self.content = content
-        # The ID of the intent.
+        # The intent ID.
         # 
         # This parameter is required.
         self.intent_id = intent_id
-        # An array that contains information for each slot.
+        # The slot information.
         self.slot_infos = slot_infos
 
     def validate(self):
@@ -133,11 +133,11 @@ class UpdateUserSayRequestUserSayDefinitionSlotInfos(DaraModel):
         slot_id: str = None,
         start_index: int = None,
     ):
-        # The zero-based end index (exclusive) of the slot within the content of the user say.
+        # The end index of the slot in the intent utterance (exclusive).
         self.end_index = end_index
-        # The ID of the slot.
+        # The slot ID.
         self.slot_id = slot_id
-        # The zero-based start index of the slot within the content of the user say.
+        # The start index of the slot in the intent utterance.
         self.start_index = start_index
 
     def validate(self):

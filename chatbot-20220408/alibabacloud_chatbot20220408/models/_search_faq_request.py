@@ -27,39 +27,48 @@ class SearchFaqRequest(DaraModel):
         start_time_end: str = None,
         status: int = None,
     ):
-        # The key for the workspace. If this parameter is not specified, the default workspace is used. You can get the key on the Business Management page of your main account.
+        # The business space key. If not specified, the default business space is accessed. Obtain the key value from the business management page of the Alibaba Cloud account.
         self.agent_key = agent_key
-        # An array of category IDs to filter the search results.
+        # The unique identifier of the category.
         self.category_ids = category_ids
-        # The start of the creation period.
+        # The start of the creation time range.
         self.create_time_begin = create_time_begin
-        # The end of the creation period.
+        # The end of the creation time range.
         self.create_time_end = create_time_end
-        # The creator\\"s username.
+        # The name of the creator.
         self.create_user_name = create_user_name
-        # The start of the expiration period.
+        # The start of the expiration time range.
         self.end_time_begin = end_time_begin
-        # The end of the expiration period.
+        # The end of the expiration time range.
         self.end_time_end = end_time_end
-        # The search keyword.
+        # The keyword.
         self.keyword = keyword
-        # The start of the modification period.
+        # The start of the modification time range.
         self.modify_time_begin = modify_time_begin
-        # The end of the modification period.
+        # The end of the modification time range.
         self.modify_time_end = modify_time_end
-        # The modifier\\"s username.
+        # The name of the modifier.
         self.modify_user_name = modify_user_name
-        # The number of the page to return. The default value is 1.
+        # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. The default value is 10, and the maximum value is 100.
+        # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
-        # The search scope.
+        # The search scope. Valid values:
+        # 
+        # - 1: Search titles and similar questions.
+        # - 2: Search answers.
+        # - 3: Search all.
         self.search_scope = search_scope
-        # The start of the effective period.
+        # The start of the effective time range.
         self.start_time_begin = start_time_begin
-        # The end of the effective period.
+        # The end of the effective time range.
         self.start_time_end = start_time_end
-        # The status of the knowledge item.
+        # The knowledge status. Valid values:
+        # 
+        # - -1: deleted and unpublished.
+        # - 1: unpublished.
+        # - 2: published.
+        # - 3: updated and unpublished.
         self.status = status
 
     def validate(self):

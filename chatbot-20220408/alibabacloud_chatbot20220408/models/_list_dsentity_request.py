@@ -14,19 +14,19 @@ class ListDSEntityRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The key of the business space. If this parameter is not set, the default business space is used. You can find this key on the Business Management page of your main account.
+        # The business space key. If this parameter is not specified, the default business space is accessed. You can obtain the key value on the business management page of the primary account.
         self.agent_key = agent_key
-        # The entity type. If you omit this parameter, all custom entities are returned.
+        # If left empty, all custom entities are returned (default).
         self.entity_type = entity_type
-        # The robot ID.
+        # The chatbot ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # A keyword to filter entities by name using a \\"contains\\" match. Future releases will also support searching by entity member and synonym.
+        # The filter keyword. Uses contains matching. Scope: entity name (future expansion: entity members, synonyms).
         self.keyword = keyword
-        # The current page number. Default value: 1.
+        # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return per page. The default value is 10.
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
 
     def validate(self):

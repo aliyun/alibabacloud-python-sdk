@@ -14,7 +14,7 @@ class NluResponseBody(DaraModel):
         messages: List[main_models.NluResponseBodyMessages] = None,
         request_id: str = None,
     ):
-        # The ID of the natural language understanding response.
+        # The ID of the NLU response message.
         self.message_id = message_id
         # The list of messages.
         self.messages = messages
@@ -67,9 +67,9 @@ class NluResponseBodyMessages(DaraModel):
         dialog_hub_nlu_info: main_models.NluResponseBodyMessagesDialogHubNluInfo = None,
         ds_nlu_info: main_models.NluResponseBodyMessagesDsNluInfo = None,
     ):
-        # The natural language understanding information from DialogHub.
+        # The NLU information from the dialog central controller.
         self.dialog_hub_nlu_info = dialog_hub_nlu_info
-        # The natural language understanding information from Dialog Studio.
+        # The NLU information from the dialog flow.
         self.ds_nlu_info = ds_nlu_info
 
     def validate(self):
@@ -169,13 +169,18 @@ class NluResponseBodyMessagesDsNluInfoIntentList(DaraModel):
     ):
         # The intent ID.
         self.intent_id = intent_id
-        # The details of the matching process.
+        # The match details (matching process).
         self.match_detail = match_detail
-        # The match type. Valid values are `Similarity` (match by utterance similarity), `Lgf` (match by LGF), `Classify` (match by model training), `FewShotLearning` (match by the built-in few-shot learning model), and `BuildIn` (match with a built-in intent).
+        # The match type. Valid values:
+        # - Similarity: The query matches the intent through intent utterance similarity.
+        # - Lgf: The query matches the intent through LGF.
+        # - Classify: The query matches the intent through model training.
+        # - FewShotLearning: The query matches the intent through the built-in few-shot model.
+        # - BuildIn: The query matches a built-in system intent.
         self.match_type = match_type
-        # The name of the intent.
+        # The intent name.
         self.name = name
-        # The confidence score of the match.
+        # The score.
         self.score = score
         # The list of slots for the matched intent.
         self.slot_list = slot_list
@@ -246,13 +251,13 @@ class NluResponseBodyMessagesDsNluInfoIntentListSlotList(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The name of the entity.
+        # The entity name.
         self.name = name
-        # The original word for the entity, also known as an entity member.
+        # The original word of the entity (entity member).
         self.origin = origin
-        # The type of the entity. Currently, only the `text` type is supported.
+        # The entity type. Currently, only the text type is supported.
         self.type = type
-        # The entity\\"s synonym.
+        # The synonym of the entity.
         self.value = value
 
     def validate(self):
@@ -301,13 +306,13 @@ class NluResponseBodyMessagesDsNluInfoEntityList(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The name of the entity.
+        # The entity name.
         self.name = name
-        # The original word for the entity, also known as an entity member.
+        # The original word of the entity (entity member).
         self.origin = origin
-        # The type of the entity. Currently, only the `text` type is supported.
+        # The entity type. Currently, only the text type is supported.
         self.type = type
-        # The entity\\"s synonym.
+        # The synonym of the entity.
         self.value = value
 
     def validate(self):
@@ -354,7 +359,7 @@ class NluResponseBodyMessagesDialogHubNluInfo(DaraModel):
         global_dict_list: List[main_models.NluResponseBodyMessagesDialogHubNluInfoGlobalDictList] = None,
         global_sensitive_word_list: List[main_models.NluResponseBodyMessagesDialogHubNluInfoGlobalSensitiveWordList] = None,
     ):
-        # The list of global dictionary entries.
+        # The list of global nouns.
         self.global_dict_list = global_dict_list
         # The list of global sensitive words.
         self.global_sensitive_word_list = global_sensitive_word_list

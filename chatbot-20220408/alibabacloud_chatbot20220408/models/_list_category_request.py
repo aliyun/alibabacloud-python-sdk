@@ -11,11 +11,16 @@ class ListCategoryRequest(DaraModel):
         knowledge_type: int = None,
         parent_category_id: int = None,
     ):
-        # The business space key. If you omit this parameter, the default business space is used. You can obtain the key on the Business Management page of your primary account.
+        # The key of the business space. If not specified, the default business space is accessed. Obtain the key value from the business management page of the Alibaba Cloud account.
         self.agent_key = agent_key
-        # The knowledge type. Valid values: `1` (FAQ category) and `3` (document category). The default value is `1`.
+        # The knowledge type. Valid values:
+        # 
+        # - 1: FAQ category.
+        # - 3: Document category.
+        # 
+        # Default value: 1.
         self.knowledge_type = knowledge_type
-        # The parent category ID.
+        # The ID of the parent category.
         self.parent_category_id = parent_category_id
 
     def validate(self):

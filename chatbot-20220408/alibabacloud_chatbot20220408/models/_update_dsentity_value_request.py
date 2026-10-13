@@ -16,25 +16,25 @@ class UpdateDSEntityValueRequest(DaraModel):
         instance_id: str = None,
         synonyms: List[str] = None,
     ):
-        # The key for the business space. If you omit this parameter, the default business space is used. You can find this key on the Business Management page of your primary account.
+        # The business space key. If this parameter is not set, the default business space is accessed. Obtain the key value from the business management page of the main account.
         self.agent_key = agent_key
-        # The new content for the entity value. For an entity type of `synonyms`, this is the normalized value. For an entity type of `regex`, this is the regular expression.
+        # When the entity type is synonyms, this parameter specifies the normalized value of the entity. When the entity type is regex, this parameter specifies the regular expression text.
         # 
         # This parameter is required.
         self.content = content
-        # The entity ID. You can leave this parameter empty when modifying an entity value.
+        # The entity ID. This parameter can be left empty when you modify an entity member.
         # 
         # This parameter is required.
         self.entity_id = entity_id
-        # The ID of the entity value to update.
+        # The entity member ID. This parameter is left empty when you create an entity member.
         # 
         # This parameter is required.
         self.entity_value_id = entity_value_id
-        # The bot ID.
+        # The chatbot ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The synonym list for the normalized value.
+        # The list of synonyms.
         self.synonyms = synonyms
 
     def validate(self):

@@ -10,9 +10,9 @@ class CreateInstanceResponseBody(DaraModel):
         instance_id: str = None,
         request_id: str = None,
     ):
-        # The instance ID of the robot.
+        # The unique identifier of the chatbot.
         self.instance_id = instance_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

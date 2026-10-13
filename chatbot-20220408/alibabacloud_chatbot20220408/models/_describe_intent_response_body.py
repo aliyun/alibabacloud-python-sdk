@@ -24,25 +24,25 @@ class DescribeIntentResponseBody(DaraModel):
     ):
         # The intent alias.
         self.alias_name = alias_name
-        # The time when the intent was created, in UTC format.
+        # The creation time in UTC.
         self.create_time = create_time
-        # The creator ID.
+        # The unique identifier of the creator.
         self.create_user_id = create_user_id
-        # The creator name.
+        # The name of the creator.
         self.create_user_name = create_user_name
         # The intent ID.
         self.intent_id = intent_id
         # The intent name.
         self.intent_name = intent_name
-        # The time when the intent was last modified, in UTC format.
+        # The modification time in UTC.
         self.modify_time = modify_time
-        # The modifier ID.
+        # The unique identifier of the user who last modified the intent.
         self.modify_user_id = modify_user_id
-        # The modifier name.
+        # The name of the user who last modified the intent.
         self.modify_user_name = modify_user_name
         # The request ID.
         self.request_id = request_id
-        # An array of objects that contain the slot information for the intent.
+        # The slot information associated with the intent.
         self.slot_infos = slot_infos
 
     def validate(self):
@@ -143,17 +143,17 @@ class DescribeIntentResponseBodySlotInfos(DaraModel):
         slot_id: str = None,
         value: str = None,
     ):
-        # Indicates whether the slot can contain an array of values.
+        # Indicates whether the slot is an array.
         self.array = array
-        # Indicates whether the slot is configured to encrypt its value.
+        # Indicates whether the slot is sensitive.
         self.encrypt = encrypt
         # Indicates whether interactive slot filling is enabled. Default value: false.
         self.interactive = interactive
         # The slot name.
         self.name = name
-        # The slot ID.
+        # The unique identifier of the slot.
         self.slot_id = slot_id
-        # The value extracted for the slot.
+        # The slot tagging result.
         self.value = value
 
     def validate(self):

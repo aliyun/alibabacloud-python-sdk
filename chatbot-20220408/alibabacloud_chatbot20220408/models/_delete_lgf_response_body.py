@@ -10,7 +10,7 @@ class DeleteLgfResponseBody(DaraModel):
         lgf_id: int = None,
         request_id: str = None,
     ):
-        # The ID of the LGF configuration.
+        # LGF ID
         self.lgf_id = lgf_id
         # The request ID.
         self.request_id = request_id

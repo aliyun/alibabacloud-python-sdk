@@ -13,7 +13,7 @@ class BeginSessionRequest(DaraModel):
         session_id: str = None,
         vendor_param: str = None,
     ):
-        # The key for the business space. If not specified, the default business space is used. You can find the key on the Business Management page of your main account.
+        # The key of the workspace. If this parameter is not set, the default workspace is accessed. You can obtain the key on the business management page of the Alibaba Cloud account.
         self.agent_key = agent_key
         self.instance_id = instance_id
         self.sand_box = sand_box

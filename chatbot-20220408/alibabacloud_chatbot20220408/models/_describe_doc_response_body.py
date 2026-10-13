@@ -40,57 +40,71 @@ class DescribeDocResponseBody(DaraModel):
         self.biz_code = biz_code
         # The category ID.
         self.category_id = category_id
-        # The configuration for document parsing and splitting. Key: `Splitter`. Valid values: `paragraphSplitter` (splits by recognition level, default) and `treeSplitter` (splits by rule level).
+        # The document parsing and chunking configuration items:
         # 
-        # Key: `ChunkSize`. The size of each document chunk, which must be between 200 and 800. The default value is 500.
+        # Chunker KEY: Splitter. Valid values: paragraphSplitter - hierarchy recognition (default). treeSplitter - rule-based hierarchy.
         # 
-        # Key: `TreePatterns`. The patterns for the rule-based hierarchy. The default value is [].
+        # Document chunk size KEY: ChunkSize. VALUE: default 500. Range: [200, 800].
         # 
-        # Key: `TitleSource`. The source of the document title. Valid values: `ocrTitle` (OCR-recognized title, default) and `docName` (document name).
+        # Rule-based hierarchy KEY: TreePatterns. VALUE: default [].
+        # 
+        # Document title source KEY: TitleSource. Valid values: ocrTitle - OCR-recognized title (default). docName - document name as title.
         self.config = config
         # The creation time.
         self.create_time = create_time
-        # The creator ID.
+        # The ID of the user who created the document.
         self.create_user_id = create_user_id
-        # The creator name.
+        # The name of the user who created the document.
         self.create_user_name = create_user_name
         # The document details.
         self.doc_info = doc_info
-        # A list of metadata sets, where each set corresponds to a business view.
         self.doc_metadata = doc_metadata
         # The document name.
         self.doc_name = doc_name
-        # A list of document tags.
+        # The list of tag details.
         self.doc_tags = doc_tags
-        # The effective status, calculated from `StartDate` and `EndDate`.<br>20: Active<br>21: Expired<br>22: Pending<br><br><br>
+        # The effective status, which is calculated based on StartDate and EndDate. Valid values:
+        # - 20: Effective.
+        # - 21: Expired.
+        # - 22: Pending effective.
         self.effect_status = effect_status
-        # The end time in UTC format.
+        # The expiration time (UTC).
         self.end_date = end_date
         # The knowledge ID.
         self.knowledge_id = knowledge_id
-        # The document\\"s metadata.
+        # The metadata associated with the document.
         self.meta = meta
         # The modification time.
         self.modify_time = modify_time
-        # The modifier ID.
+        # The ID of the user who last modified the document.
         self.modify_user_id = modify_user_id
-        # The modifier name.
+        # The name of the user who last modified the document.
         self.modify_user_name = modify_user_name
-        # Indicates whether a failed task can be retried.<br>`true`: The task can be retried.<br>`false`: The task cannot be retried.<br><br>
+        # Indicates whether the task can be retried. Valid values:
+        # - true: The task can be retried.
+        # - false: The task cannot be retried.
         self.process_can_retry = process_can_retry
-        # The processing message.
+        # The task processing message.
         self.process_message = process_message
-        # The processing status of the task.<br>-1: Queued<br>0: Succeeded<br>1: Parsing<br>2: Processing<br>3: Failed<br><br><br><br><br>
+        # The task processing status. Valid values:
+        # - -1: Queued.
+        # - 0: Succeeded.
+        # - 1: Parsing.
+        # - 2: Processing.
+        # - 3: Failed.
         self.process_status = process_status
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # The start time in UTC format.
+        # The effective period (UTC).
         self.start_date = start_date
-        # The edit status.<br>1: Unpublished<br>2: Published<br>3: Updated but not published<br><br><br>
+        # The editing status. Valid values:
+        # - 1: Unpublished.
+        # - 2: Published.
+        # - 3: Updated but not published.
         self.status = status
         # The document title.
         self.title = title
-        # The OSS address of the document.
+        # The OSS URL where the document is stored.
         self.url = url
 
     def validate(self):
@@ -286,9 +300,9 @@ class DescribeDocResponseBodyDocTags(DaraModel):
         tag_id: int = None,
         tag_name: str = None,
     ):
-        # Indicates whether the tag represents all items by default.
+        # Indicates whether this is the default "all tags" label.
         self.default_tag = default_tag
-        # The tag\\"s group ID.
+        # The tag group ID.
         self.group_id = group_id
         # The tag group name.
         self.group_name = group_name
@@ -348,11 +362,9 @@ class DescribeDocResponseBodyDocMetadata(DaraModel):
         business_view_name: str = None,
         meta_cell_info_dtolist: List[main_models.DescribeDocResponseBodyDocMetadataMetaCellInfoDTOList] = None,
     ):
-        # The ID of the business view.
         self.business_view_id = business_view_id
-        # The business view name.
+        # The tag name.
         self.business_view_name = business_view_name
-        # A list of metadata cells.
         self.meta_cell_info_dtolist = meta_cell_info_dtolist
 
     def validate(self):
@@ -402,11 +414,8 @@ class DescribeDocResponseBodyDocMetadataMetaCellInfoDTOList(DaraModel):
         field_name: str = None,
         value: str = None,
     ):
-        # The code of the field.
         self.field_code = field_code
-        # The field name.
         self.field_name = field_name
-        # The value of the field.
         self.value = value
 
     def validate(self):
@@ -446,7 +455,7 @@ class DescribeDocResponseBodyDocInfo(DaraModel):
         self,
         doc_paras: List[main_models.DescribeDocResponseBodyDocInfoDocParas] = None,
     ):
-        # The paragraphs of the document.
+        # The document paragraph information.
         self.doc_paras = doc_paras
 
     def validate(self):
@@ -487,11 +496,14 @@ class DescribeDocResponseBodyDocInfoDocParas(DaraModel):
     ):
         # The paragraph level.
         self.para_level = para_level
-        # The paragraph number.
+        # The paragraph sequence number.
         self.para_no = para_no
-        # The paragraph content. The content can be plain text, text extracted from an image using optical character recognition (OCR), or a table in Markdown format.
+        # The paragraph content (plain text, OCR content for images, or Markdown representation for tables).
         self.para_text = para_text
-        # The paragraph type.<br>text: Text<br>figure: Image<br>table: Table<br><br><br>
+        # The paragraph content type. Valid values:
+        # - text: Text.
+        # - figure: Image.
+        # - table: Table.
         self.para_type = para_type
 
     def validate(self):

@@ -10,7 +10,7 @@ class CreateConnQuestionResponseBody(DaraModel):
         outline_id: int = None,
         request_id: str = None,
     ):
-        # The outline ID.
+        # The association ID.
         self.outline_id = outline_id
         # The request ID.
         self.request_id = request_id

@@ -13,15 +13,15 @@ class GenerateUserAccessTokenResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. 200 indicates a successful request.
+        # The response code.
         self.code = code
-        # The generated token value.
+        # The token value.
         self.data = data
-        # The error message for a failed request.
+        # The error message.
         self.message = message
-        # The unique request ID.
+        # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values: `true` and `false`.
+        # Indicates whether the operation is successful.
         self.success = success
 
     def validate(self):

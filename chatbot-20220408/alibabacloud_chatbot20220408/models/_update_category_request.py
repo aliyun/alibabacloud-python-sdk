@@ -12,7 +12,7 @@ class UpdateCategoryRequest(DaraModel):
         category_id: int = None,
         name: str = None,
     ):
-        # The key for the business space. If this parameter is omitted, the default business space is used. You can obtain the key on the **Business Management** page of your primary account.
+        # The business space key. If this parameter is not specified, the default business space is accessed. Obtain the key value from the business management page of the Alibaba Cloud account.
         self.agent_key = agent_key
         # The business code.
         self.biz_code = biz_code

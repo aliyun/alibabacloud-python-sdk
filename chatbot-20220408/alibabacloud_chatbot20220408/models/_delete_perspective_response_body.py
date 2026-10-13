@@ -12,7 +12,7 @@ class DeletePerspectiveResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the perspective was successfully deleted.
+        # The result of deleting the perspective.
         self.result = result
 
     def validate(self):

@@ -12,17 +12,17 @@ class DeleteDSEntityValueRequest(DaraModel):
         entity_value_id: int = None,
         instance_id: str = None,
     ):
-        # The Agent key. If omitted, the system uses the default Agent. You can get this key from the Business Management page of your main account.
+        # The key of the workspace. If this parameter is not specified, the default workspace is accessed. You can obtain the key on the business management page of the Alibaba Cloud account.
         self.agent_key = agent_key
-        # The unique identifier of the entity.
+        # The entity ID.
         # 
         # This parameter is required.
         self.entity_id = entity_id
-        # The unique identifier of the entity value.
+        # The entity member ID.
         # 
         # This parameter is required.
         self.entity_value_id = entity_value_id
-        # The unique identifier of the instance.
+        # The robot ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

@@ -10,7 +10,7 @@ class UpdateLgfResponseBody(DaraModel):
         lgf_id: int = None,
         request_id: str = None,
     ):
-        # The unique ID of the LGF.
+        # The unique identifier of the LGF.
         self.lgf_id = lgf_id
         # The request ID.
         self.request_id = request_id

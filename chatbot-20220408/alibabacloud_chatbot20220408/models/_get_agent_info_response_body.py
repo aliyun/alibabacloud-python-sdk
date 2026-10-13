@@ -13,11 +13,11 @@ class GetAgentInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The agent details.
+        # The business space data.
         self.data = data
-        # The error message returned if the request fails.
+        # The error message.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -68,9 +68,9 @@ class GetAgentInfoResponseBodyData(DaraModel):
         agent_key: str = None,
         agent_name: str = None,
     ):
-        # The agent key. It is used to specify the agent in Platform as a Service (PaaS) API calls.
+        # The signature of the business space, used to specify the business space when calling PaaS API operations.
         self.agent_key = agent_key
-        # The agent name.
+        # The name of the business space.
         self.agent_name = agent_name
 
     def validate(self):

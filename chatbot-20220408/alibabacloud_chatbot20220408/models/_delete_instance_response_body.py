@@ -19,13 +19,13 @@ class DeleteInstanceResponseBody(DaraModel):
         response: int = None,
         status: str = None,
     ):
-        # A list of business types.
+        # The list of business types.
         self.biz_type_list = biz_type_list
         # The UTC time when the task was created.
         self.create_time = create_time
-        # The ID of the user who created the task.
+        # The ID of the task creator.
         self.create_user_id = create_user_id
-        # The username of the user who created the task.
+        # The name of the task creator.
         self.create_user_name = create_user_name
         # The error message.
         self.error = error
@@ -33,9 +33,9 @@ class DeleteInstanceResponseBody(DaraModel):
         self.id = id
         # The request ID.
         self.request_id = request_id
-        # The task ID. This parameter is an alias for `Id`.
+        # The task ID.
         self.response = response
-        # The task status. For more information about possible states, see the GetInstancePublishTaskState API operation.
+        # The task status. You can call the GetInstancePublishTaskState operation to learn more about the status.
         self.status = status
 
     def validate(self):

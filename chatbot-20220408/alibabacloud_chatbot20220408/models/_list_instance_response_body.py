@@ -92,13 +92,13 @@ class ListInstanceResponseBodyInstances(DaraModel):
     ):
         # The URL of the chatbot avatar.
         self.avatar = avatar
-        # The time when the chatbot was created. The time is in the UTC format.
+        # The UTC time when the chatbot was created.
         self.create_time = create_time
-        # The unique ID of the chatbot.
+        # The unique identifier of the chatbot.
         self.instance_id = instance_id
-        # The remarks on the chatbot.
+        # The description of the chatbot.
         self.introduction = introduction
-        # The language of the chatbot, such as zh-cn and en-us. For more information, see http\\://www\\.lingoes.net/en/translator/langcode.htm.
+        # The language of the chatbot service, such as zh-cn or en-us. For more information, see http://www.lingoes.net/zh/translator/langcode.htm.
         self.language_code = language_code
         # The name of the chatbot.
         self.name = name

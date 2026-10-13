@@ -22,36 +22,50 @@ class CreateDocRequest(DaraModel):
         title: str = None,
         url: str = None,
     ):
-        # The key for the business space. If this parameter is not specified, the default business space is used. You can obtain the key from the Business Management page of your primary account.
+        # The business space key. If this parameter is not specified, the default business space is accessed. You can obtain the key value on the business management page of the primary account.
         self.agent_key = agent_key
         # The document category ID.
         # 
         # This parameter is required.
         self.category_id = category_id
-        # The configuration for document splitting. Set the key to `Splitter`. Valid values are `paragraphSplitter` (identifies content hierarchy) and `treeSplitter` (uses a rule-based hierarchy).
+        # The document parsing and chunking configuration.
         # 
-        # The document chunk size. Set the key to `ChunkSize`. The default value is 500. The value must be in the range of 200 to 800.
+        # Configuration item: Splitter
+        # KEY: Splitter
+        # Valid values:
+        # - ParagraphSplitter: recognition-based hierarchy.
+        # - TreeSplitter: rule-based hierarchy.
         # 
-        # The patterns for the rule-based hierarchy. Set the key to `TreePatterns`. The default value is an empty array (`[]`).
+        # Configuration item: Document chunk size
+        # KEY: ChunkSize
+        # VALUE: Default value: 500. Value range: [200, 800].
         # 
-        # The document title source. Set the key to `TitleSource`. Valid values are `ocrTitle` (default), which uses the title recognized by Optical Character Recognition (OCR), and `docName`, which uses the document name as the title.
+        # Configuration item: Rule-based hierarchy
+        # KEY: TreePatterns
+        # VALUE: Default value: [].
+        # 
+        # Configuration item: Document title source
+        # KEY: TitleSource
+        # Valid values:
+        # - ocrTitle: OCR-recognized title. This is the default value.
+        # - docName: the document name is used as the title.
         self.config = config
-        # The document content. You must specify either this parameter or `Url`.
+        # The document content. Specify either this parameter or URL.
         self.content = content
         self.doc_metadata = doc_metadata
-        # The time when the document expires. The time is in UTC.
+        # The effective end time in UTC.
         self.end_date = end_date
-        # The passthrough data of the document.
+        # The document metadata.
         self.meta = meta
-        # The time when the document takes effect. The time is in UTC.
+        # The effective start time in UTC.
         self.start_date = start_date
-        # A list of tag IDs.
+        # The list of tag IDs.
         self.tag_ids = tag_ids
         # The document title.
         # 
         # This parameter is required.
         self.title = title
-        # The URL of the document. You must specify either this parameter or `Content`. Supported formats include .txt, .pdf, .markdown, .doc, and .docx. The following limits apply to a single file: a maximum of 100 pages, less than 200 KB for .txt and .markdown files, and less than 100 MB for .pdf, .doc, and .docx files.
+        # The URL of the document. Specify either this parameter or Content. Supported formats: txt, pdf, markdown, doc, and docx. Limits for a single file: up to 100 pages, txt files smaller than 200 KB, pdf files smaller than 100 MB, markdown files smaller than 200 KB, doc files smaller than 100 MB, and docx files smaller than 100 MB.
         self.url = url
 
     def validate(self):

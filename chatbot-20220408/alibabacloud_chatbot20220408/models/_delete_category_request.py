@@ -10,9 +10,9 @@ class DeleteCategoryRequest(DaraModel):
         agent_key: str = None,
         category_id: int = None,
     ):
-        # The agent key. If not specified, the default agent is used. You can obtain the key from the agent management page of your main account.
+        # The business space key. If this parameter is not specified, the default business space is accessed. You can obtain the key value from the business management page of the Alibaba Cloud account.
         self.agent_key = agent_key
-        # The unique identifier of the category.
+        # The category ID.
         # 
         # This parameter is required.
         self.category_id = category_id

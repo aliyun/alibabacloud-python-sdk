@@ -16,13 +16,15 @@ class TongyiChatDebugInfoResponseBody(DaraModel):
         request_id: str = None,
         session_id: str = None,
     ):
+        # The answer information corresponding to the conversation.
         self.answer_info = answer_info
-        # The ID of the response message in the current session.
+        # The ID of the response message for the current session.
         self.message_id = message_id
-        # The information about the entire Q&A pipeline.
+        # The information about the entire Q&A process.
         self.pipeline = pipeline
         # Id of the request
         self.request_id = request_id
+        # The ID of the session to which the current response message belongs.
         self.session_id = session_id
 
     def validate(self):
@@ -90,16 +92,16 @@ class TongyiChatDebugInfoResponseBodyPipeline(DaraModel):
     ):
         # The debugging input information.
         self.input = input
-        # The Policy Name. Valid values:
-        # - High-frequency Q&A direct response
+        # The policy name. Valid values:
+        # - High-frequency Q&A direct output
         # - Keyword-based transfer to agent
         # - Global sensitive words
         # 
-        # This field is returned only when NodeType is system_strategy.
+        # This field is available only when NodeType is system_strategy.
         self.name = name
         # The node type. Valid values:
-        # * **system_strategy**: system strategy.
-        # * **rewrite_query**: retrieval query.
+        # * **system_strategy**: system policy.
+        # * **rewrite_query**: retrieved question.
         # * **invoke_llm**: LLM invocation.
         # * **invoke_tools**: tool calling.
         self.node_type = node_type
@@ -150,7 +152,9 @@ class TongyiChatDebugInfoResponseBodyAnswerInfo(DaraModel):
         answer_reference_info: main_models.TongyiChatDebugInfoResponseBodyAnswerInfoAnswerReferenceInfo = None,
         message_body: main_models.TongyiChatDebugInfoResponseBodyAnswerInfoMessageBody = None,
     ):
+        # The referenced knowledge information of the matched answer.
         self.answer_reference_info = answer_reference_info
+        # The message body.
         self.message_body = message_body
 
     def validate(self):
@@ -190,7 +194,9 @@ class TongyiChatDebugInfoResponseBodyAnswerInfoMessageBody(DaraModel):
         commands: Any = None,
         direct_message_body: main_models.TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBody = None,
     ):
+        # The command parameters, such as the skill group for the transfer-to-agent command.
         self.commands = commands
+        # The message body that contains the Q&A results, including the answer, text type, recommended questions, and matched system type.
         self.direct_message_body = direct_message_body
 
     def validate(self):
@@ -225,16 +231,28 @@ class TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBody(Dara
     def __init__(
         self,
         content_type: str = None,
+        hit_system_ask_config: str = None,
+        rt_detail: main_models.TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBodyRtDetail = None,
         transition_list: List[str] = None,
         related_question_list: List[str] = None,
         sentence_list: List[main_models.TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBodySentenceList] = None,
     ):
+        # The answer type.
         self.content_type = content_type
+        # The matched system Q&A policy.
+        self.hit_system_ask_config = hit_system_ask_config
+        # The response time (RT) debugging information for the current Q&A.
+        self.rt_detail = rt_detail
+        # The list of transition phrases.
         self.transition_list = transition_list
+        # The list of similar questions.
         self.related_question_list = related_question_list
+        # The list of formal answers.
         self.sentence_list = sentence_list
 
     def validate(self):
+        if self.rt_detail:
+            self.rt_detail.validate()
         if self.sentence_list:
             for v1 in self.sentence_list:
                  if v1:
@@ -247,6 +265,12 @@ class TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBody(Dara
             result = _map
         if self.content_type is not None:
             result['ContentType'] = self.content_type
+
+        if self.hit_system_ask_config is not None:
+            result['HitSystemAskConfig'] = self.hit_system_ask_config
+
+        if self.rt_detail is not None:
+            result['RtDetail'] = self.rt_detail.to_map()
 
         if self.transition_list is not None:
             result['TransitionList'] = self.transition_list
@@ -265,6 +289,13 @@ class TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBody(Dara
         m = m or dict()
         if m.get('ContentType') is not None:
             self.content_type = m.get('ContentType')
+
+        if m.get('HitSystemAskConfig') is not None:
+            self.hit_system_ask_config = m.get('HitSystemAskConfig')
+
+        if m.get('RtDetail') is not None:
+            temp_model = main_models.TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBodyRtDetail()
+            self.rt_detail = temp_model.from_map(m.get('RtDetail'))
 
         if m.get('TransitionList') is not None:
             self.transition_list = m.get('TransitionList')
@@ -286,7 +317,9 @@ class TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBodySente
         content: str = None,
         refer_number: int = None,
     ):
+        # The formal answer entry.
         self.content = content
+        # The number that corresponds one-to-one with the Number in AnswerReferenceInfo.ItemList for generating this answer.
         self.refer_number = refer_number
 
     def validate(self):
@@ -315,11 +348,49 @@ class TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBodySente
 
         return self
 
+class TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBodyRtDetail(DaraModel):
+    def __init__(
+        self,
+        sentence_rt_list: Any = None,
+        transition_rt_list: Any = None,
+    ):
+        # The list of RTs for each segment from the time the user question is received on the text side to the sequential generation of the formal answer.
+        self.sentence_rt_list = sentence_rt_list
+        # The list of RTs for each segment from the time the user question is received on the text side to the sequential generation of the transition phrases.
+        self.transition_rt_list = transition_rt_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.sentence_rt_list is not None:
+            result['SentenceRtList'] = self.sentence_rt_list
+
+        if self.transition_rt_list is not None:
+            result['TransitionRtList'] = self.transition_rt_list
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SentenceRtList') is not None:
+            self.sentence_rt_list = m.get('SentenceRtList')
+
+        if m.get('TransitionRtList') is not None:
+            self.transition_rt_list = m.get('TransitionRtList')
+
+        return self
+
 class TongyiChatDebugInfoResponseBodyAnswerInfoAnswerReferenceInfo(DaraModel):
     def __init__(
         self,
         item_list: List[main_models.TongyiChatDebugInfoResponseBodyAnswerInfoAnswerReferenceInfoItemList] = None,
     ):
+        # The list of referenced knowledge entries.
         self.item_list = item_list
 
     def validate(self):
@@ -360,11 +431,17 @@ class TongyiChatDebugInfoResponseBodyAnswerInfoAnswerReferenceInfoItemList(DaraM
         reference_ext: Any = None,
         title: str = None,
     ):
+        # The type of the referenced text.
         self.content_type = content_type
+        # The source of the referenced knowledge.
         self.data_source = data_source
+        # The ID of the referenced knowledge.
         self.id = id
+        # The number that corresponds one-to-one with the ReferNumber in AnswerInfo.MessageBody.DirectMessageBody.SentenceList.
         self.number = number
+        # The extension information specific to the knowledge type.
         self.reference_ext = reference_ext
+        # The title of the referenced knowledge.
         self.title = title
 
     def validate(self):

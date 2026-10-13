@@ -10,9 +10,9 @@ class DescribeInstanceRequest(DaraModel):
         agent_key: str = None,
         instance_id: str = None,
     ):
-        # The key for the business space. If this parameter is omitted, the default business space is used. You can obtain this key from the business management page of your main account.
+        # The key of the business space. If this parameter is not specified, the default business space is accessed. You can obtain the key on the business management page of the Alibaba Cloud account.
         self.agent_key = agent_key
-        # The unique identifier of the robot instance.
+        # The unique identifier of the chatbot.
         self.instance_id = instance_id
 
     def validate(self):
