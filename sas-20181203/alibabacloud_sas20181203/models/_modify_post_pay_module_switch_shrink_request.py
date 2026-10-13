@@ -16,47 +16,51 @@ class ModifyPostPayModuleSwitchShrinkRequest(DaraModel):
         post_pay_module_switch: str = None,
         post_pay_module_switch_obj_shrink: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. Use a different token for each request. Only ASCII characters are supported. The token can be up to 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # Specifies whether to perform a dry run. Valid values: true: performs a check without executing the operation. false: executes the operation. Default value: false.
+        # Specifies whether to perform a dry run on the request. Valid values:
+        # - true: Performs a dry run. The system checks the request but does not perform the actual operation.
+        # - false: Performs the request normally.
+        # Default value: false.
         self.dry_run = dry_run
+        # The switch configuration of the EDR module.
         self.edr_module_switch_shrink = edr_module_switch_shrink
-        # Specifies whether to automatically bind new assets for host and container protection. Valid values:
+        # Specifies whether to automatically bind new assets to the host and container protection feature. Valid values:
         # 
-        # - **0**: Disabled.
-        # - **1**: Enabled.
+        # - **0**: disabled
+        # - **1**: enabled
         self.post_paid_host_auto_bind = post_paid_host_auto_bind
         # The edition to which new assets are automatically bound for host and container protection. Valid values:
-        # - **1**: Free Edition. 
-        # - **3**: Enterprise Edition.
-        # - **5**: Advanced Edition.
-        # - **6**: Anti-virus Edition.    
-        # - **7**: Ultimate Edition.
+        # - **1**: Free Edition 
+        # - **3**: Enterprise Edition
+        # - **5**: Advanced Edition
+        # - **6**: Anti-virus Edition    
+        # - **7**: Ultimate Edition
         self.post_paid_host_auto_bind_version = post_paid_host_auto_bind_version
         # The pay-as-you-go instance ID. This parameter is required.
         # 
-        # > Invoke the [DescribeVersionConfig](~~DescribeVersionConfig~~) operation to obtain this parameter.
+        # > Invoke the [DescribeVersionConfig](~~DescribeVersionConfig~~) operation to obtain the value of this parameter.
         self.post_pay_instance_id = post_pay_instance_id
-        # The switch status of pay-as-you-go modules in JSON string format. Valid values:
+        # The switch status of pay-as-you-go modules. The value is a JSON string. Valid values:
         # - Key:
-        #   - **VUL**: vulnerability management module
-        #   - **CSPM**: Cloud Security Posture Management (CSPM) module
-        #   - **AGENTLESS**: agentless detection module
-        #   - **SERVERLESS**: serverless security module
-        #   - **CTDR**: threat detection and response module
-        #   - **POST_HOST**: host and container security module
-        #   - **SDK**: malicious file detection SDK module
-        #   - **RASP**: application protection module
-        #   - **CTDR_STORAGE**: log management module
-        #   - **ANTI_RANSOMWARE**: anti-ransomware management
+        #   - **VUL**: Vulnerability fixing module
+        #   - **CSPM**: Cloud Security Posture Management module
+        #   - **AGENTLESS**: Agentless detection module
+        #   - **SERVERLESS**: Serverless security module
+        #   - **CTDR**: Cloud Threat Detection and Response module
+        #   - **POST_HOST**: Host and container security module
+        #   - **SDK**: Malicious file detection SDK module
+        #   - **RASP**: Application protection module
+        #   - **CTDR_STORAGE**: Log management module
+        #   - **ANTI_RANSOMWARE**: Anti-ransomware management
         # - Value: 0 indicates disabled. 1 indicates enabled.
         # 
-        # > Modules for which no value is specified remain unchanged.
+        # > The values of modules that are not specified remain unchanged.
         # 
-        # <notice>This parameter has the same meaning as PostPayModuleSwitchObj. If both parameters are specified, the value of PostPayModuleSwitch takes precedence.</notice>
+        # <notice>This parameter has the same meaning as the PostPayModuleSwitchObj parameter. If both parameters are specified, the value of PostPayModuleSwitch takes precedence.</notice>
         self.post_pay_module_switch = post_pay_module_switch
-        # The pay-as-you-go module switch.
-        # >Notice: This parameter has the same meaning as PostPayModuleSwitch. If both parameters are specified, the value of PostPayModuleSwitch takes precedence.</notice>
+        # The switches of pay-as-you-go modules.
+        # >Notice:  This parameter has the same meaning as the PostPayModuleSwitch parameter. If both parameters are specified, the value of PostPayModuleSwitch takes precedence.</notice>
         self.post_pay_module_switch_obj_shrink = post_pay_module_switch_obj_shrink
 
     def validate(self):

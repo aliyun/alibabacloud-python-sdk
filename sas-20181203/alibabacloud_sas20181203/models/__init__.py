@@ -188,6 +188,9 @@ from ._create_cycle_task_response import CreateCycleTaskResponse
 from ._create_dynamic_dict_request import CreateDynamicDictRequest
 from ._create_dynamic_dict_response_body import CreateDynamicDictResponseBody
 from ._create_dynamic_dict_response import CreateDynamicDictResponse
+from ._create_file_deep_analyze_request import CreateFileDeepAnalyzeRequest
+from ._create_file_deep_analyze_response_body import CreateFileDeepAnalyzeResponseBody
+from ._create_file_deep_analyze_response import CreateFileDeepAnalyzeResponse
 from ._create_file_detect_request import CreateFileDetectRequest
 from ._create_file_detect_response_body import CreateFileDetectResponseBody
 from ._create_file_detect_response import CreateFileDetectResponse
@@ -4142,6 +4145,9 @@ __all__ = [
     CreateDynamicDictRequest,
     CreateDynamicDictResponseBody,
     CreateDynamicDictResponse,
+    CreateFileDeepAnalyzeRequest,
+    CreateFileDeepAnalyzeResponseBody,
+    CreateFileDeepAnalyzeResponse,
     CreateFileDetectRequest,
     CreateFileDetectResponseBody,
     CreateFileDetectResponse,

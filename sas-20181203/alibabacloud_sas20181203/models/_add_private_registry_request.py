@@ -21,66 +21,65 @@ class AddPrivateRegistryRequest(DaraModel):
         user_name: str = None,
         vpc_id: str = None,
     ):
-        # The domain name of the image repository.
+        # The domain name of the registry.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The additional parameter of the image repository. This parameter is required when you set the RegistryType parameter to **quay**. Valid values:
+        # The additional parameters for the image registry. This parameter is required when you use **quay**. The parameters include:
         # 
-        # *   **namespace**
-        # *   **authToken**
+        # - **namespace**: The namespace.
+        # - **authToken**: The authorization token.
         self.extra_param = extra_param
         # The network type. Valid values:
-        # 
-        # *   **1**: Internet
-        # *   **2**: virtual private cloud (VPC)
+        # - **1**: Internet.
+        # - **2**: VPC.
         # 
         # This parameter is required.
         self.net_type = net_type
-        # The password that is used to log on to the image repository.
+        # The password.
         # 
         # This parameter is required.
         self.password = password
         # The port number.
         self.port = port
-        # The type of the protocol. Valid values:
-        # 
-        # *   **1**: HTTP
-        # *   **2**: HTTPS
+        # The protocol type. Valid values:
+        # - **1**: HTTP.
+        # - **2**: HTTPS.
         # 
         # This parameter is required.
         self.protocol_type = protocol_type
-        # The IP address of the image repository.
+        # The IP address of the registry.
+        # 
+        # Enter a valid IPv4 address that can be used to connect to the image registry. To specify a domain name for the image registry, use the DomainName parameter.
         # 
         # This parameter is required.
         self.registry_host_ip = registry_host_ip
         # The region ID.
-        # 
-        # >  You can call the [ListImageRegistryRegion](~~ListImageRegistryRegion~~) operation to query the IDs of supported regions.
+        # >You can call the [ListImageRegistryRegion](~~ListImageRegistryRegion~~) operation to query the supported region IDs.
         # 
         # This parameter is required.
         self.registry_region_id = registry_region_id
-        # The type of the private image repository. Valid values:
-        # 
-        # *   **harbor**
-        # *   **quay**
+        # The type of the private image registry. Valid values:
+        # - **harbor**: Harbor environment.
+        # - **quay**: Quay environment.
         # 
         # This parameter is required.
         self.registry_type = registry_type
-        # The version of the image repository. Valid values:
+        # The version of the image registry. Valid values:
         # 
-        # *   **V1**
-        # *   **V2**
+        # 
+        # - **V1**: Version 1.0.
+        # - **V2**: Version 2.0.
         # 
         # This parameter is required.
         self.registry_version = registry_version
-        # The number of images that are scanned per hour.
+        # The number of images scanned per hour.
         self.trans_per_hour = trans_per_hour
-        # The username that is used to log on to the image repository.
+        # The username of the image registry.
         # 
         # This parameter is required.
         self.user_name = user_name
-        # The ID of the VPC.
+        # The instance ID of the VPC.
         self.vpc_id = vpc_id
 
     def validate(self):

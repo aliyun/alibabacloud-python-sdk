@@ -1,3 +1,7 @@
+2026-10-13 Version: 10.3.0
+- Support API CreateFileDeepAnalyze.
+
+
 2026-10-09 Version: 10.2.1
 - Update API ListAgentlessTask: add request parameters TaskIdList.
 

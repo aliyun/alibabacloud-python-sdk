@@ -27,43 +27,45 @@ class ModifyServerlessAuthToMachineRequest(DaraModel):
         un_bind_app_list: List[str] = None,
         un_bind_uuid_list: List[str] = None,
     ):
-        # The application query conditions.
+        # The query conditions for applications.
         self.app_criteria = app_criteria
         # The instance type. Valid values:
-        # - **SERVERLESS**: Serverless asset.
+        # - **SERVERLESS**: Serverless assets.
         self.auth_item = auth_item
         # Specifies whether to enable automatic binding. Valid values:
         # 
-        # - **0**: Disable automatic binding.
-        # - **1**: Enable automatic binding.
+        # - **0**: Disabled.
+        # - **1**: Enabled.
         self.auto_bind = auto_bind
         # Specifies whether to bind all assets. Default value: **false**. Valid values:
         # 
-        # - **true**: Bind all assets.
-        # - **false**: Do not bind all assets.
+        # - **true**: Yes.
+        # - **false**: No.
         self.bind_all = bind_all
         # The list of application IDs to bind.
         # 
-        # > Obtain the IDs by calling the [ListMachineApps](~~ListMachineApps~~) operation.
+        # > You can obtain the application IDs by calling the [ListMachineApps](~~ListMachineApps~~) operation.
         self.bind_app_list = bind_app_list
-        # The Asset Type for the operation. Valid values:
+        # The Asset Type to operate. Valid values:
         # - **INSTANCE**: Instance.
         # - **APP**: Application.
+        # 
+        # This parameter is required when you manage Serverless asset authorizations.
         self.bind_asset_type = bind_asset_type
         # The list of asset UUIDs to bind.
         self.bind_uuid_list = bind_uuid_list
-        # The client token that is used to ensure the idempotence of the request. Use a different token for each request. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The search conditions for assets. This parameter is in JSON format. Pay attention to letter case when you specify this parameter.
-        # > You can search for assets by instance ID, instance name, VPC ID, region, public IP address, and other conditions. Call the [DescribeCriteria](~~DescribeCriteria~~) operation to query the supported search conditions.
+        # Specifies the conditions for searching assets. The value must be in JSON format and is case-sensitive.
+        # > You can search for assets by using conditions such as the instance ID, instance name, VPC ID, region, and public IP address of the asset. You can call the [DescribeCriteria](~~DescribeCriteria~~) operation to query the supported search conditions.
         self.criteria = criteria
-        # Specifies whether to perform a dry run. true: performs only a check without executing the actual operation. false: performs the actual operation. Default value: false.
+        # Specifies whether to only precheck the request. A value of true indicates that only the request is prechecked and no actual operation is performed. A value of false indicates that the request is executed. Default value: false.
         self.dry_run = dry_run
-        # The logical relationship among multiple search conditions. Valid values:
-        # - **OR**: Multiple conditions are evaluated using a logical OR.
-        # - **AND**: Multiple conditions are evaluated using a logical AND.
+        # Specifies the logical relationship among multiple search conditions. Valid values:
+        # - **OR**: The conditions have an OR relationship.
+        # - **AND**: The conditions have an AND relationship.
         self.logical_exp = logical_exp
-        # The NTM version code for pre-binding.
+        # The NTM version code used for pre-binding.
         self.ntm_version = ntm_version
         # Specifies whether to perform a pre-binding operation. Valid values:
         # 
@@ -71,15 +73,15 @@ class ModifyServerlessAuthToMachineRequest(DaraModel):
         # - **1**: Yes.
         # 
         # 
-        # > After pre-binding is enabled, the corresponding number of authorization licenses are automatically bound to the specified servers after the purchase is completed.
+        # > After you enable pre-binding, the system automatically binds the corresponding version of authorizations to the specified server after the purchase is completed.
         self.pre_bind = pre_bind
-        # The pre-binding order ID.
+        # The ID of the pre-binding order.
         self.pre_bind_order_id = pre_bind_order_id
-        # The UID of the resource directory.
+        # The UID of the associated resource directory.
         self.resource_directory_uid = resource_directory_uid
         # The list of application IDs to unbind.
         # 
-        # > Obtain the IDs by calling the [ListMachineApps](~~ListMachineApps~~) operation.
+        # > You can obtain the application IDs by calling the [ListMachineApps](~~ListMachineApps~~) operation.
         self.un_bind_app_list = un_bind_app_list
         # The list of asset UUIDs to unbind.
         self.un_bind_uuid_list = un_bind_uuid_list

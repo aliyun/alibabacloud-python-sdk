@@ -2,7 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict
+import json
+
+from typing import Dict, Generator, AsyncGenerator
 
 from alibabacloud_sas20181203 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
@@ -5332,6 +5334,182 @@ class Client(OpenApiClient):
     ) -> main_models.CreateDynamicDictResponse:
         runtime = RuntimeOptions()
         return await self.create_dynamic_dict_with_options_async(request, runtime)
+
+    def create_file_deep_analyze_with_sse(
+        self,
+        request: main_models.CreateFileDeepAnalyzeRequest,
+        runtime: RuntimeOptions,
+    ) -> Generator[main_models.CreateFileDeepAnalyzeResponse, None, None]:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.context):
+            query['Context'] = request.context
+        if not DaraCore.is_null(request.event_id):
+            query['EventId'] = request.event_id
+        if not DaraCore.is_null(request.hash):
+            query['Hash'] = request.hash
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
+        if not DaraCore.is_null(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateFileDeepAnalyze',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi(params, req, runtime)
+        for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.CreateFileDeepAnalyzeResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    async def create_file_deep_analyze_with_sse_async(
+        self,
+        request: main_models.CreateFileDeepAnalyzeRequest,
+        runtime: RuntimeOptions,
+    ) -> AsyncGenerator[main_models.CreateFileDeepAnalyzeResponse, None, None]:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.context):
+            query['Context'] = request.context
+        if not DaraCore.is_null(request.event_id):
+            query['EventId'] = request.event_id
+        if not DaraCore.is_null(request.hash):
+            query['Hash'] = request.hash
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
+        if not DaraCore.is_null(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateFileDeepAnalyze',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi_async(params, req, runtime)
+        async for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.CreateFileDeepAnalyzeResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    def create_file_deep_analyze_with_options(
+        self,
+        request: main_models.CreateFileDeepAnalyzeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateFileDeepAnalyzeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.context):
+            query['Context'] = request.context
+        if not DaraCore.is_null(request.event_id):
+            query['EventId'] = request.event_id
+        if not DaraCore.is_null(request.hash):
+            query['Hash'] = request.hash
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
+        if not DaraCore.is_null(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateFileDeepAnalyze',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateFileDeepAnalyzeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_file_deep_analyze_with_options_async(
+        self,
+        request: main_models.CreateFileDeepAnalyzeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateFileDeepAnalyzeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.context):
+            query['Context'] = request.context
+        if not DaraCore.is_null(request.event_id):
+            query['EventId'] = request.event_id
+        if not DaraCore.is_null(request.hash):
+            query['Hash'] = request.hash
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
+        if not DaraCore.is_null(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateFileDeepAnalyze',
+            version = '2018-12-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateFileDeepAnalyzeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_file_deep_analyze(
+        self,
+        request: main_models.CreateFileDeepAnalyzeRequest,
+    ) -> main_models.CreateFileDeepAnalyzeResponse:
+        runtime = RuntimeOptions()
+        return self.create_file_deep_analyze_with_options(request, runtime)
+
+    async def create_file_deep_analyze_async(
+        self,
+        request: main_models.CreateFileDeepAnalyzeRequest,
+    ) -> main_models.CreateFileDeepAnalyzeResponse:
+        runtime = RuntimeOptions()
+        return await self.create_file_deep_analyze_with_options_async(request, runtime)
 
     def create_file_detect_with_options(
         self,

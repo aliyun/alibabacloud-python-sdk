@@ -13,12 +13,12 @@ class CreateSoarStrategyTaskRequest(DaraModel):
         strategy_task_params: str = None,
         strategy_task_plan_exe_time: int = None,
     ):
-        # The policy ID.
-        # >Call the [DescribeSoarSubscribedStrategy](~~DescribeSoarSubscribedStrategy~~) operation to obtain this parameter.
+        # The ID of the policy.
+        # >You can call the [DescribeSoarSubscribedStrategy](~~DescribeSoarSubscribedStrategy~~) operation to query this parameter.
         # 
         # This parameter is required.
         self.strategy_id = strategy_id
-        # The policy name. Set the value to: Automated Batch Vulnerability Fix Policy.
+        # The Policy Name. Set the value to Automated Batch Vulnerability Fix Policy.
         # 
         # This parameter is required.
         self.strategy_name = strategy_name
@@ -26,26 +26,28 @@ class CreateSoarStrategyTaskRequest(DaraModel):
         # 
         # This parameter is required.
         self.strategy_task_name = strategy_task_name
-        # The parameter information of the policy. The value is a string in JSONArray format. The following items are included:
+        # The parameter settings of the policy. The value is a character string in JSON array format. Details:
         # 
-        # Vulnerability configuration item. Valid values:
+        # Vulnerability configuration item. Values:
         # - name: vluList
         # - associationProperty: sasAllVul
-        # - value: the basic information of the vulnerability.
+        # - value: the basic information about the vulnerability
         # 
-        # Snapshot configuration item. Valid values:
+        # Snapshot configuration item. Values:
         # - name: snapshotConfig
         # - associationProperty: snapshotConfig
-        # - value: the storage time information.
+        # - value: the storage duration information
         # 
-        # Notification configuration. Valid values:
+        # Notification configuration:
         # - name: notifyConfig
         # - associationProperty: notifyConfig
-        # - value: the configuration information of email or DingTalk notifications.
+        # - value: the configuration information about email or DingTalk
+        # 
+        # The vulList child configuration item is required, and the JSON array must contain an entry whose name is vulList. The snapshotConfig and notifyConfig child configuration items are optional.
         # 
         # This parameter is required.
         self.strategy_task_params = strategy_task_params
-        # The planned execution timestamp of the policy task. Unit: milliseconds.
+        # The scheduled execution timestamp of the policy task. Unit: milliseconds.
         self.strategy_task_plan_exe_time = strategy_task_plan_exe_time
 
     def validate(self):

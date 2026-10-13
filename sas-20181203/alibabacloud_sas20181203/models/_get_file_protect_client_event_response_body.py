@@ -73,52 +73,55 @@ class GetFileProtectClientEventResponseBodyData(DaraModel):
     ):
         # The alert notification level. Valid values:
         # 
-        # - 0: no alert
-        # - 1: reminder
-        # - 2: suspicious
-        # - 3: high-risk.
+        # - 0: No alert.
+        # 
+        # - 1: Reminder.
+        # 
+        # - 2: Suspicious.
+        # 
+        # - 3: High-risk.
         self.alert_level = alert_level
         # The command line of the event.
         self.cmd_line = cmd_line
         # The number of times the alert occurred.
         self.count = count
-        # The file path.
+        # The path of the file.
         self.file_path = file_path
-        # The process permissions.
+        # The permissions of the process.
         self.file_permission = file_permission
         # The timestamp when the event first occurred.
         self.first_time = first_time
-        # The time when the event was handled.
+        # The time when the event was handled. The value is a UNIX timestamp in milliseconds.
         self.handle_time = handle_time
-        # The event ID.
+        # The ID of the event.
         self.id = id
-        # The instance name.
+        # The name of the instance.
         self.instance_name = instance_name
         # The public IP address of the associated instance.
         self.internet_ip = internet_ip
         # The private IP address of the associated instance.
         self.intranet_ip = intranet_ip
-        # The time when the event most recently occurred.
+        # The time when the event last occurred. The value is a UNIX timestamp in milliseconds.
         self.latest_time = latest_time
         # The operation that the process performed on the file.
         self.operation = operation
-        # The operating system type.
+        # The type of the operating system.
         self.platform = platform
-        # The process path.
+        # The path of the process.
         self.proc_path = proc_path
         # The process ID of the event.
         self.process_id = process_id
         # The remarks.
         self.remark = remark
-        # The action of the blocking rule.
+        # The action of the interception rule.
         self.rule_action = rule_action
-        # The rule name.
+        # The name of the rule.
         self.rule_name = rule_name
-        # The event status. Valid values:
+        # The status of the event. Valid values:
         # 
-        # - 0: unhandled 
-        # - 1: handled
-        # - 2: whitelisted.
+        # - 0: Unhandled. 
+        # - 1: Handled.
+        # - 2: Whitelisted.
         self.status = status
         # The user ID of the event.
         self.user_id = user_id

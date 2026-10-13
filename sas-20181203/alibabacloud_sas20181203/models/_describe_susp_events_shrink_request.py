@@ -49,50 +49,50 @@ class DescribeSuspEventsShrinkRequest(DaraModel):
     ):
         # The unique ID of the alert event.
         # 
-        # > To query the exception information of a single alert event, provide the unique ID of the alert event. You can obtain this ID by calling the [DescribeSuspEvents](~~DescribeSuspEvents~~) operation.
+        # > To query the exception event information of a single alert event, you must provide the unique ID of the alert event. You can call the [DescribeSuspEvents](~~DescribeSuspEvents~~) operation to obtain the ID.
         self.alarm_unique_info = alarm_unique_info
-        # The collection of asset types.
+        # The list of asset types.
         self.assets_type_list = assets_type_list
-        # The cluster ID for which you want to query alert events.
+        # The ID of the cluster for which you want to query alert events.
         self.cluster_id = cluster_id
         # The container search field. Valid values:
         # 
-        # - **instanceId**: instance ID
-        # - **appName**: application name
-        # - **clusterId**: cluster ID
-        # - **regionId**: region
-        # - **nodeName**: node name
-        # - **namespace**: namespace
-        # - **clusterName**: cluster name
-        # - **image**: image name
-        # - **imageRepoName**: image repository name
-        # - **imageRepoNamespace**: image repository namespace
-        # - **imageRepoTag**: image tag
-        # - **imageDigest**: image digest
+        # - **instanceId**: Instance ID.
+        # - **appName**: Application name.
+        # - **clusterId**: Cluster ID.
+        # - **regionId**: Region ID.
+        # - **nodeName**: Node name.
+        # - **namespace**: Namespace.
+        # - **clusterName**: Cluster name.
+        # - **image**: Image name.
+        # - **imageRepoName**: Image repository name.
+        # - **imageRepoNamespace**: Image repository namespace.
+        # - **imageRepoTag**: Image tag.
+        # - **imageDigest**: Image digest.
         self.container_field_name = container_field_name
         # The value of the container search field.
         self.container_field_value = container_field_value
-        # The page number of the page to return in a paged query. Default value: **1**, which indicates that the results start from page 1.
+        # The page number of the page to return. Default value: **1**.
         self.current_page = current_page
-        # Specifies whether the alert events to query have been handled. Valid values:
-        # - **N**: Unhandled.
+        # Specifies whether the alert events to query are handled. Valid values:
+        # - **N**: Pending.
         # - **Y**: Handled.
         self.dealed = dealed
-        # The discovery source. This is an invalid field.
+        # The detection source. This field is invalid.
         self.detect_source = detect_source
         # The subtypes of the alert events. Separate multiple subtypes with commas (,).
         self.event_names = event_names
-        # The data source identifier of the alert event. The value is fixed as sas.
+        # The identifier of the data source to which the alert event belongs. Set the value to sas.
         self.from_ = from_
-        # The group ID of the asset affected by the alert event.
+        # The ID of the asset group affected by the alert event.
         self.group_id = group_id
-        # The unique ID that identifies the alert event record.
+        # The unique ID of the alert event record.
         self.id = id
         # The language of the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese.
         # - **en**: English.
         self.lang = lang
-        # The severity levels of the alert events to query. Separate multiple severity levels with commas (,). The severity levels are listed in descending order. Valid values:
+        # The urgency levels of the alert events to query. Separate multiple urgency levels with commas (,). The urgency levels are listed in descending order. Valid values:
         # - **serious**: Urgent.
         # - **suspicious**: Suspicious.
         # - **remind**: Reminder.
@@ -103,46 +103,46 @@ class DescribeSuspEventsShrinkRequest(DaraModel):
         self.multi_account_action_type = multi_account_action_type
         # The name of the asset affected by the alert event.
         self.name = name
-        # The collection of alert event handling result codes.
+        # The list of alert event handling result codes.
         self.operate_error_code_list = operate_error_code_list
         # The end timestamp of the handling time.
         self.operate_time_end = operate_time_end
         # The start timestamp of the handling time.
         self.operate_time_start = operate_time_start
-        # The number of alert events to display on each page in a paged query. Default value: **20**, which indicates that 20 alert events are displayed on each page. Maximum value: 100.
+        # The settings for the paged query, specifying the number of alert events to return on each page. Default value: **20**, which indicates that 20 alert events are returned on each page. Maximum value: 100.
         self.page_size = page_size
-        # The alerting type of the alert events to query. Valid values:
+        # The Alarm Metric of the alert events to query. Valid values:
         # 
         # - **Abnormal process behavior**
         # - **Web shell**
         # - **Unusual logon**
-        # - **Abnormal event**
+        # - **Abnormal events**
         # - **Sensitive file tampering**
         # - **Malicious process (cloud scan)**
-        # - **Suspicious network connectivity**
-        # - **Abnormal account**
-        # - **Application intrusion event**
+        # - **Suspicious network connection**
+        # - **Abnormal accounts**
+        # - **Application intrusion events**
         # - **Cloud service threat detection**
         # - **Precise defense**
         # - **Application whitelist**
         # - **Persistent backdoor**
         # - **Web application threat detection**
-        # - **Malicious script**
+        # - **Malicious scripts**
         # - **Threat intelligence**
         # - **Malicious network behavior**
-        # - **Container cluster exception**
+        # - **Container cluster anomalies**
         # - **Web shell (local scan)**
         # - **Vulnerability exploits**
         # - **Malicious process (local scan)**
-        # - **Trusted exception**
-        # - **Other**
+        # - **Trusted exceptions**
+        # - **Others**
         self.parent_event_types = parent_event_types
         # The alert name or asset information to query.
         # 
-        # > Fuzzy match is supported. Asset information includes the asset name, public IP address, and private IP address.
+        # > Fuzzy match is supported. Asset information includes the asset name, public IP address, and internal IP address.
         self.remark = remark
-        # The Alibaba Cloud account ID of the member accounts in the resource directory.
-        # >Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+        # The ID of the Alibaba Cloud account to which the resource folder member accounts belong.
+        # > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
         # The custom sort field. Default value: **operateTime**. Valid values:
         # 
@@ -158,24 +158,24 @@ class DescribeSuspEventsShrinkRequest(DaraModel):
         # 
         # > This field takes effect only when **Dealed** is set to Y.
         self.sort_type = sort_type
-        # The alert source.
+        # The source of the alert.
         self.source = source
         # The list of Alibaba Cloud account IDs that generated the alerts.
         self.source_ali_uids_shrink = source_ali_uids_shrink
-        # The IP address of the access source.
+        # The source IP address.
         self.source_ip = source_ip
         # The status of the alert events to query. Valid values:
         # - **0**: All.
-        # - **1**: Unhandled.
+        # - **1**: Pending.
         # - **2**: Ignored.
         # - **4**: Confirmed.
         # - **8**: Marked as false positive.
-        # - **16**: Handling.
+        # - **16**: Processing.
         # - **32**: Handled.
         # - **64**: Expired.
         # - **128**: Deleted.
-        # - **512**: Automatic blocking in progress.
-        # - **513**: Automatic blocking completed.
+        # - **512**: Automatically blocking.
+        # - **513**: Automatically blocked.
         self.status = status
         # Specifies whether the alert is in strict mode. Valid values:
         # - N: No.
@@ -185,10 +185,10 @@ class DescribeSuspEventsShrinkRequest(DaraModel):
         self.support_operate_code_list = support_operate_code_list
         # The ATT&CK tactic ID.
         self.tactic_id = tactic_id
-        # The target type for container search. Valid values:
-        # - **containerId**: container ID
-        # - **uuid**: server UUID
-        # - **imageUuid**: image UUID
+        # The container search target type. Valid values:
+        # - **containerId**: Container ID.
+        # - **uuid**: Server UUID.
+        # - **imageUuid**: Image UUID.
         self.target_type = target_type
         # The end time of the latest occurrence. Format: YYYY-MM-DD HH:mm:ss.
         self.time_end = time_end

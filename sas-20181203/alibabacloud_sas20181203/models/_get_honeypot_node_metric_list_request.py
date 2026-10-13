@@ -16,32 +16,32 @@ class GetHoneypotNodeMetricListRequest(DaraModel):
         period: str = None,
         start_time: str = None,
     ):
-        # The end of the time range to query. Valid values:
+        # The end time. Supported formats:
         # 
-        # *   UNIX timestamp: the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC
-        # *   Date format: YYYY-MM-DDThh:mm:ssZ
+        # - UNIX timestamp: the number of milliseconds that have elapsed since January 1, 1970.
+        # - Formatted time: YYYY-MM-DDThh:mm:ssZ.
         self.end_time = end_time
-        # The expression that is used to compute the query results in real time.
-        # 
-        # >  Only the groupby expression is supported. This expression is similar to the GROUP BY statement that applies to databases.
+        # The expression used to perform real-time calculations on the query results.
+        # > Currently, only groupby (similar to the GROUP BY clause in databases) is supported.
         self.express = express
-        # The number of entries per page.
+        # The number of records to return on each page for paging in a paged query.
         # 
-        # >  The maximum value of the Length parameter in a request is 1440.
+        # > The maximum value of Length for a single request is 1440.
         self.length = length
-        # The metric that is used to monitor the cloud service.
+        # The name of the monitoring metric for the cloud service.
         self.metric_name = metric_name
-        # The namespace of the cloud service. Format: acs_cloud service name.
+        # The data namespace of the cloud service. Naming convention: acs_ServiceName.
         self.namespace = namespace
-        # The management node ID.
+        # The ID of the management node.
+        # 
+        # This parameter is required. If you do not specify this parameter, the API returns an IllegalParam error (HTTP 400).
         self.node_id = node_id
         # The time interval. Unit: seconds. Valid values: 60, 300, and 900.
         self.period = period
-        # The beginning of the time range to query. The following formats are supported:
-        # 
-        # *   UNIX timestamp: the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC
-        # *   Date format: YYYY-MM-DDThh:mm:ssZ
-        # *   The interval between the start time and the end time is less than or equal to 31 days.
+        # The start time. Supported formats:
+        # - UNIX timestamp: the number of milliseconds that have elapsed since January 1, 1970.
+        # - Formatted time: YYYY-MM-DDThh:mm:ssZ.
+        # - The interval between StartTime and EndTime must be less than or equal to 31 days.
         self.start_time = start_time
 
     def validate(self):

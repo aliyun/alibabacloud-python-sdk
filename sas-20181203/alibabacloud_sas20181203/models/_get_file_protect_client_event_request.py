@@ -9,7 +9,7 @@ class GetFileProtectClientEventRequest(DaraModel):
         self,
         id: int = None,
     ):
-        # The unique ID of the alert event.
+        # The unique ID of the alert event. This parameter is required. If it is not provided, the API returns an HTTP 400 error.
         self.id = id
 
     def validate(self):

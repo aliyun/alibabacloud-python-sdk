@@ -29,40 +29,43 @@ class UpdateOssScanConfigRequest(DaraModel):
     ):
         # Specifies whether to match all file prefixes.
         self.all_key_prefix = all_key_prefix
+        # Specifies whether to automatically add new buckets to the scan policy. Valid values:
+        # - **0**: Disabled.
+        # - **1**: Enabled.
         self.auto_add = auto_add
         # The list of bucket names.
         self.bucket_name_list = bucket_name_list
-        # The maximum number of files to decompress. Minimum value: 1. Maximum value: 1000. When the maximum number of decompressed files is exceeded, the decompression operation ends immediately. The detection of files that have already been decompressed is not affected.
+        # The maximum number of files to decompress. Valid values: 1 to 1000. If the number of files exceeds the maximum value, the decompression stops. The scan of the decompressed files is not affected.
         self.decompress_max_file_count = decompress_max_file_count
-        # The maximum number of decompression layers when multiple levels of nested compressed files exist. Minimum value: 1. Maximum value: 5. When the maximum number of decompression layers is exceeded, the decompression operation ends immediately. The detection of files that have already been decompressed is not affected.
+        # The maximum number of decompression layers for nested compressed files. Valid values: 1 to 5. If the number of layers exceeds the maximum value, the decompression stops. The scan of the decompressed files is not affected.
         self.decompress_max_layer = decompress_max_layer
         # The list of decryption types.
         self.decryption_list = decryption_list
-        # Specifies whether to enable the policy. Valid values:
+        # Specifies whether to enable the feature. Valid values:
         # - **1**: Enabled.
         # - **0**: Disabled.
         self.enable = enable
-        # The scan stop time in the HH:mm:ss format.
+        # The end time of the scan. Format: HH:mm:ss.
         self.end_time = end_time
-        # The scan policy ID.
+        # The ID of the scan policy.
         self.id = id
-        # The prefix list of files.
+        # The file prefix list.
         self.key_prefix_list = key_prefix_list
-        # The list of file suffixes.
+        # The list of file name extensions.
         self.key_suffix_list = key_suffix_list
-        # Specifies that only files whose last modification time is after the specified timestamp are scanned. Unit: milliseconds.
+        # The start timestamp for the last modification time of the files to be scanned. Unit: milliseconds.
         self.last_modified_start_time = last_modified_start_time
-        # The scan policy name.
+        # The configuration policy name.
         self.name = name
-        # Specifies whether to enable real-time incremental detection. When this parameter is set to true, the ScanDayList, StartTime, and EndTime parameters do not take effect.
+        # Specifies whether to enable real-time incremental scanning. If this parameter is set to true, the ScanDayList, StartTime, and EndTime parameters do not take effect.
         self.real_time_incr = real_time_incr
-        # The scan days. The number indicates the day of the week.
+        # The days of the week when scans are performed. A number represents a day of the week.
         self.scan_day_list = scan_day_list
-        # The business source. Valid values:
-        # - **OSS**: OSS
-        # - **NAS**: NAS
+        # The service source. Valid values:
+        # - **OSS**: OSS.
+        # - **NAS**: NAS.
         self.source = source
-        # The scan start time in the HH:mm:ss format.
+        # The start time of the scan. Format: HH:mm:ss.
         self.start_time = start_time
 
     def validate(self):

@@ -10,8 +10,9 @@ class DescribeSuspEventExportInfoRequest(DaraModel):
         export_id: int = None,
     ):
         # The ID of the export task.
+        # > You can call the [ExportSuspEvents](~~ExportSuspEvents~~) operation to export events and obtain this ID.
         # 
-        # > You can call the [ExportSuspEvents](~~ExportSuspEvents~~) operation to query the ID.
+        # This parameter is required. If it is not provided, the API returns an HTTP 400 error.
         self.export_id = export_id
 
     def validate(self):

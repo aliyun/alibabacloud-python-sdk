@@ -30,7 +30,7 @@ class UpdateFileProtectClientEventRequest(DaraModel):
     ):
         # The list of alert notification levels.
         self.alert_levels = alert_levels
-        # The timestamp of the end time.
+        # The end time. The value is a UNIX timestamp.
         self.end_time = end_time
         # The list of excluded event IDs.
         self.exclude_id_list = exclude_id_list
@@ -54,19 +54,19 @@ class UpdateFileProtectClientEventRequest(DaraModel):
         # 
         # This parameter is required.
         self.new_status = new_status
-        # The type of the operation.
+        # The type of the current operation.
         self.operation = operation
         # The process path.
         self.proc_path = proc_path
-        # The remarks.
+        # The remark. This parameter is required when SelectAll is set to true. If this parameter is not provided, the service returns HTTP 500 with the error code -100.
         self.remark = remark
-        # The rule name.
+        # The name of the rule.
         self.rule_name = rule_name
-        # Specifies whether to select all.
+        # Specifies whether to select all events.
         # 
         # This parameter is required.
         self.select_all = select_all
-        # The start time.
+        # The start time. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
         # The event status. Valid values:
         # - **0**: Unhandled.

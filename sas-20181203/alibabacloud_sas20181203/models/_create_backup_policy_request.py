@@ -17,46 +17,48 @@ class CreateBackupPolicyRequest(DaraModel):
         server_type: str = None,
         uuid_list: List[str] = None,
     ):
-        # The name of the protection policy to create. Set this parameter to the desired policy name.
+        # Sets the name of the anti-ransomware policy to create.
         # 
         # This parameter is required.
         self.name = name
-        # - **IsDefault**: The type of the protection policy to create. Valid values:
-        #     - **1**: Recommended policy.
-        #     - **0**: Custom policy.
+        # - **IsDefault**: The type of the anti-ransomware policy to create. Valid values:
+        #     - **1**: recommended policy
+        #     - **0**: custom policy
         # - **Include**: The file types to protect. To protect all file types, set this parameter to [].
-        # - **Source**: The server folders to protect. To protect all folders, set this parameter to [].
-        # - **ExcludeSystemPath**: Specifies whether to exclude specified folders. Set this parameter to **true** to exclude folders. If you do not want to exclude folders, you do not need to set this parameter.
-        # - **Exclude**: The specified protection folder addresses. If you do not want to specify protection folder addresses, set this parameter to [].
-        # - **Schedule**: The time and interval at which the data backup task is scheduled to run. Specify a non-peak hour that is not on the hour. Examples:
-        #     - Example 1: I|1583216092|P21D indicates that the data backup starts at 2020-03-03 14:14:52 and the backup policy runs at an interval of 3 weeks.
-        #     - Example 2: I|1583216092|PT24H indicates that the data backup starts at 2020-03-03 14:14:52 and the backup policy runs at an interval of 24 hours.
-        # - **Retention**: The retention period of backup data, in days. The value 7 indicates 1 week, 365 indicates 1 year, and -1 indicates permanent retention.
-        # - **SpeedLimiter**: The network bandwidth throttling for backup. For example, 0:24:30720 indicates that the network bandwidth throttling for backup is 30 MB/s from 00:00 to 24:00.
+        # - **Source**: The server directories to protect. To protect all directories, set this parameter to [].
+        # - **ExcludeSystemPath**: Specifies whether to exclude the specified directories. To exclude the directories, set this parameter to **true**. If you do not want to exclude the directories, you do not need to set this parameter.
+        # - **Exclude**: Sets the specified protection directory addresses. If you do not want to specify protection directory addresses, set this parameter to [].
+        # - **Schedule**: Sets the execution time and execution interval of the data backup task. We recommend that you specify a non-integer hour during off-peak hours. Examples:
+        #     - Example 1: I|1583216092|P21D indicates that the data backup starts at 14:14:52 on March 3, 2020, and the backup policy execution interval is 3 weeks.
+        #     - Example 2: I|1583216092|PT24H indicates that the data backup starts at 14:14:52 on March 3, 2020, and the backup policy execution interval is 24 hours.
+        # - **Retention**: The retention period of the backup data. Unit: days. A value of 7 indicates 1 week, 365 indicates 1 year, and -1 indicates permanent retention.
+        # - **SpeedLimiter**: Sets the backup network bandwidth limit. Example: 0:24:30720 indicates that the network bandwidth limit for the backup network is 30 MByte/s from 00:00 to 24:00.
         # - **UseVss**: Specifies whether to enable the Volume Shadow Copy Service (VSS) feature for Windows. Valid values:
-        #     - **true**: Enabled.
-        #     - **false**: Not enabled.
+        #     - **true**: enabled
+        #     - **false**: disabled
         # 
-        # > The VSS (Windows) feature applies only to Windows systems. After this feature is enabled, the issue of individual file backup failures due to process occupation is effectively reduced. We recommend that you enable this feature. After this feature is enabled, file backup for exFAT and FAT32 disk formats is not supported.
+        # > The VSS feature is available only for Windows systems. Enabling this feature effectively reduces the issue of individual file backup failures caused by process occupation. We recommend that you enable this feature. After this feature is enabled, file backup for exFAT and FAT32 disk formats is not supported.
         # 
         # This parameter is required.
         self.policy = policy
-        # The region ID of the non-Alibaba Cloud server.
+        # The region ID of the server that is not deployed on Alibaba Cloud.
         # 
-        # > Call the [DescribeSupportRegion](~~DescribeSupportRegion~~) operation to query the regions supported by the anti-ransomware feature, and then select the supported region closest to the region where your non-Alibaba Cloud server resides.
+        # > You can call the [DescribeSupportRegion](~~DescribeSupportRegion~~) operation to query the regions supported by the anti-ransomware feature, and then select a supported region that is closest to the region of your server that is not deployed on Alibaba Cloud.
+        # 
+        # This parameter is required when the ServerType parameter is set to OUT_CLOUD.
         self.policy_region_id = policy_region_id
-        # The version of the protection policy. Set the value to **2.0.0**.
+        # The version of the anti-ransomware policy. Fixed value: **2.0.0**.
         # 
         # This parameter is required.
         self.policy_version = policy_version
-        # The method used to cover assets. Valid values:
-        # - **ALL_MACHINE**: All assets.
-        # > To cover all assets of this type, set this parameter to **ALL_MACHINE**. In this case, **UuidList** is invalid. Only one policy that covers all assets can exist for each server type.
+        # The method to cover assets. Valid values:
+        # - **ALL_MACHINE**: all assets
+        # > To cover all assets of the specified type, set this parameter to **ALL_MACHINE**. In this case, the **UuidList** parameter is invalid. Only one policy that covers all assets can be created for each server type.
         self.select_type = select_type
         # The server type. Valid values:
-        # - **ALIYUN**: Alibaba Cloud server.
-        # - **OUT_CLOUD**: Non-Alibaba Cloud server.
-        # - **TRIPARTITE**: Simple application server.
+        # - **ALIYUN**: Alibaba Cloud server
+        # - **OUT_CLOUD**: server that is not deployed on Alibaba Cloud
+        # - **TRIPARTITE**: simple application server
         self.server_type = server_type
         # The UUIDs of the servers to protect.
         self.uuid_list = uuid_list

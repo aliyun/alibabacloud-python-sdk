@@ -19,32 +19,31 @@ class DescribeSuspEventExportInfoResponseBody(DaraModel):
         total_count: int = None,
         type: str = None,
     ):
-        # The handling status for the exception. Valid values:
-        # 
-        # *   **exporting**: in progress
-        # *   **success**: successful
-        # *   **failed**: failed
-        # *   **pending**: pending
+        # The processing status of anomalous events. Valid values:
+        # - **exporting**: Processing.
+        # - **success**: Succeeded.
+        # - **failed**: Failed.
+        # - **pending**: Pending.
         self.export_status = export_status
         # The name of the exported file.
         self.file_name = file_name
-        # The time when the export task was created.
+        # The creation time.
         self.gmt_create = gmt_create
-        # The time when the export task was modified.
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # The ID of the export task.
+        # The ID of the export task for anomalous events.
         self.id = id
-        # The URL at which you can download the exported Excel file.
+        # The download URL of the exported Excel file.
         self.link = link
-        # The progress percentage of the export task.
+        # The export progress of anomalous events, in percentage.
         self.progress = progress
-        # The exported parameters of exceptions.
+        # The export parameters for anomalous events.
         self.properties = properties
         # The ID of the request.
         self.request_id = request_id
-        # The total number of exceptions exported.
+        # The total number of anomalous events.
         self.total_count = total_count
-        # The type of the export task. The value is fixed as suspiciousEvent.
+        # The type of the export task. The value is fixed to suspiciousEvent.
         self.type = type
 
     def validate(self):

@@ -16,27 +16,27 @@ class DescribeSuspEventQuaraFilesRequest(DaraModel):
         source_ip: str = None,
         status: str = None,
     ):
-        # The page number of the file list to view.
+        # The page number of the file list to return.
         self.current_page = current_page
-        # The identifier of the request source. Set the value to **sas**.
+        # The source identifier of the request. Set the value to **sas**.
         self.from_ = from_
         # The ID of the asset group.
         self.group_id = group_id
-        # The ID of the server group where the quarantined file is located.
+        # The ID of the server group to which the quarantined file belongs.
         self.grouping_id = grouping_id
-        # The maximum number of entries per page in a paged query.
+        # The maximum number of entries to return on each page during paging in a paged query.
         self.page_size = page_size
         # The unique identifier of the quarantined file.
         self.quara_tag = quara_tag
-        # The IP address of the access source.
+        # The source IP address.
         self.source_ip = source_ip
-        # The status of the quarantined files to query. Valid values:  
+        # The status of the quarantined files that you want to query. Valid values:  
         # - **quaraFailed**: Quarantine failed.
         # - **quaraDone**: Quarantine succeeded.
-        # - **quaraing**: Quarantine in progress.
-        # - **rollbackFailed**: Quarantine rollback failed.
-        # - **rollbackDone**: Quarantine rollback succeeded.
-        # - **rollbacking**: Quarantine rollback in progress.
+        # - **quaraing**: Quarantining.
+        # - **rollbackFailed**: Restore failed.
+        # - **rollbackDone**: Restore succeeded.
+        # - **rollbacking**: Restoring.
         self.status = status
 
     def validate(self):

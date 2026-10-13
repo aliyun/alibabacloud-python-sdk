@@ -16,31 +16,34 @@ class DescribeTraceInfoNodeRequest(DaraModel):
         uuid: str = None,
         vertex_id: str = None,
     ):
-        # The event name.
+        # The name of the event.
         # 
-        # >For more information, call the [DescribeSuspEvents](~~DescribeSuspEvents~~) operation to obtain this parameter.
+        # > For more information about how to obtain this parameter, see [DescribeSuspEvents](~~DescribeSuspEvents~~).
         self.event_name = event_name
-        # The source identifier of the request. Set the value to sas.
+        # The identifier of the request source. Set the value to sas.
         # 
         # This parameter is required.
         self.from_ = from_
-        # The time when the event was first detected. This value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the event was first detected. The value is a UNIX timestamp. Unit: milliseconds.
         self.incident_time = incident_time
-        # The language type of the request and response. Default value: **zh**. Valid values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
         # - **en**: English
         self.lang = lang
-        # The source IP address of the request. You do not need to specify this parameter. The system automatically obtains this value.
+        # The source IP address of the request. You do not need to specify this parameter. The system automatically obtains the value.
         self.source_ip = source_ip
-        # The vertex type. You can obtain this value by calling the [DescribeTraceInfoDetail](~~DescribeTraceInfoDetail~~) operation. Valid values: **SAS_ASSET**: indicates a server asset. In this case, VertexId is the UUID of the server, which can be obtained by calling the DescribeCloudCenterInstances operation. If no security events exist for the account, you can obtain the VertexId by calling the DescribeCloudCenterInstances operation.
+        # The vertex type. You can call the [DescribeTraceInfoDetail](~~DescribeTraceInfoDetail~~) operation to obtain the value. Valid values:
+        # - **SAS_ASSET**: server asset. In this case, VertexId is the UUID of the server, which can be obtained by calling the DescribeCloudCenterInstances operation. If no security events exist in the account, you can call the DescribeCloudCenterInstances operation to obtain the value of VertexId.
         # 
         # This parameter is required.
         self.type = type
-        # The UUID of the server to query. You can obtain this parameter by calling the [DescribeSuspEvents](~~DescribeSuspEvents~~) operation.
+        # The UUID of the server to query. You can call the [DescribeSuspEvents](~~DescribeSuspEvents~~) operation to obtain the value.
         # 
         # This parameter is required.
         self.uuid = uuid
         # The vertex ID.
+        # 
+        # If Type is set to SAS_ASSET, specify the UUID of the server. The value must be the same as the value of the Uuid parameter.
         # 
         # This parameter is required.
         self.vertex_id = vertex_id
