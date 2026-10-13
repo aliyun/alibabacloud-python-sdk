@@ -3271,6 +3271,206 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_policy_attachment_with_options_async(request, headers, runtime)
 
+    def create_portal_with_options(
+        self,
+        request: main_models.CreatePortalRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePortalResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePortal',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/portals',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePortalResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_portal_with_options_async(
+        self,
+        request: main_models.CreatePortalRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePortalResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePortal',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/portals',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePortalResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_portal(
+        self,
+        request: main_models.CreatePortalRequest,
+    ) -> main_models.CreatePortalResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_portal_with_options(request, headers, runtime)
+
+    async def create_portal_async(
+        self,
+        request: main_models.CreatePortalRequest,
+    ) -> main_models.CreatePortalResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_portal_with_options_async(request, headers, runtime)
+
+    def create_product_with_options(
+        self,
+        request: main_models.CreateProductRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateProductResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.auto_approve):
+            body['autoApprove'] = request.auto_approve
+        if not DaraCore.is_null(request.categories):
+            body['categories'] = request.categories
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.document):
+            body['document'] = request.document
+        if not DaraCore.is_null(request.feature):
+            body['feature'] = request.feature
+        if not DaraCore.is_null(request.icon):
+            body['icon'] = request.icon
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateProduct',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/products',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateProductResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_product_with_options_async(
+        self,
+        request: main_models.CreateProductRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateProductResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.auto_approve):
+            body['autoApprove'] = request.auto_approve
+        if not DaraCore.is_null(request.categories):
+            body['categories'] = request.categories
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.document):
+            body['document'] = request.document
+        if not DaraCore.is_null(request.feature):
+            body['feature'] = request.feature
+        if not DaraCore.is_null(request.icon):
+            body['icon'] = request.icon
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateProduct',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/products',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateProductResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_product(
+        self,
+        request: main_models.CreateProductRequest,
+    ) -> main_models.CreateProductResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_product_with_options(request, headers, runtime)
+
+    async def create_product_async(
+        self,
+        request: main_models.CreateProductRequest,
+    ) -> main_models.CreateProductResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_product_with_options_async(request, headers, runtime)
+
     def create_product_category_with_options(
         self,
         request: main_models.CreateProductCategoryRequest,
@@ -8505,6 +8705,294 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_policy_attachment_with_options_async(policy_attachment_id, headers, runtime)
 
+    def get_portal_with_options(
+        self,
+        portal_id: str,
+        request: main_models.GetPortalRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPortalResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetPortal',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/portals/{DaraURL.percent_encode(portal_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetPortalResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_portal_with_options_async(
+        self,
+        portal_id: str,
+        request: main_models.GetPortalRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPortalResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetPortal',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/portals/{DaraURL.percent_encode(portal_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetPortalResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_portal(
+        self,
+        portal_id: str,
+        request: main_models.GetPortalRequest,
+    ) -> main_models.GetPortalResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_portal_with_options(portal_id, request, headers, runtime)
+
+    async def get_portal_async(
+        self,
+        portal_id: str,
+        request: main_models.GetPortalRequest,
+    ) -> main_models.GetPortalResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_portal_with_options_async(portal_id, request, headers, runtime)
+
+    def get_product_with_options(
+        self,
+        product_id: str,
+        request: main_models.GetProductRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetProductResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetProduct',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/products/{DaraURL.percent_encode(product_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetProductResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_product_with_options_async(
+        self,
+        product_id: str,
+        request: main_models.GetProductRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetProductResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetProduct',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/products/{DaraURL.percent_encode(product_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetProductResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_product(
+        self,
+        product_id: str,
+        request: main_models.GetProductRequest,
+    ) -> main_models.GetProductResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_product_with_options(product_id, request, headers, runtime)
+
+    async def get_product_async(
+        self,
+        product_id: str,
+        request: main_models.GetProductRequest,
+    ) -> main_models.GetProductResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_product_with_options_async(product_id, request, headers, runtime)
+
+    def get_product_category_with_options(
+        self,
+        category_id: str,
+        request: main_models.GetProductCategoryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetProductCategoryResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetProductCategory',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/product-categories/{DaraURL.percent_encode(category_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetProductCategoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_product_category_with_options_async(
+        self,
+        category_id: str,
+        request: main_models.GetProductCategoryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetProductCategoryResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetProductCategory',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/product-categories/{DaraURL.percent_encode(category_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetProductCategoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_product_category(
+        self,
+        category_id: str,
+        request: main_models.GetProductCategoryRequest,
+    ) -> main_models.GetProductCategoryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_product_category_with_options(category_id, request, headers, runtime)
+
+    async def get_product_category_async(
+        self,
+        category_id: str,
+        request: main_models.GetProductCategoryRequest,
+    ) -> main_models.GetProductCategoryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_product_category_with_options_async(category_id, request, headers, runtime)
+
+    def get_product_ref_with_options(
+        self,
+        product_id: str,
+        request: main_models.GetProductRefRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetProductRefResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetProductRef',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/products/{DaraURL.percent_encode(product_id)}/ref',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetProductRefResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_product_ref_with_options_async(
+        self,
+        product_id: str,
+        request: main_models.GetProductRefRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetProductRefResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetProductRef',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/products/{DaraURL.percent_encode(product_id)}/ref',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetProductRefResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_product_ref(
+        self,
+        product_id: str,
+        request: main_models.GetProductRefRequest,
+    ) -> main_models.GetProductRefResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_product_ref_with_options(product_id, request, headers, runtime)
+
+    async def get_product_ref_async(
+        self,
+        product_id: str,
+        request: main_models.GetProductRefRequest,
+    ) -> main_models.GetProductRefResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_product_ref_with_options_async(product_id, request, headers, runtime)
+
     def get_resource_overview_with_options(
         self,
         request: main_models.GetResourceOverviewRequest,
@@ -9005,6 +9493,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_trace_config_with_options_async(gateway_id, request, headers, runtime)
 
+    def handle_oidc_callback_with_options(
+        self,
+        request: main_models.HandleOidcCallbackRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.HandleOidcCallbackResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.code):
+            query['code'] = request.code
+        if not DaraCore.is_null(request.state):
+            query['state'] = request.state
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'HandleOidcCallback',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/oidc/callback',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.HandleOidcCallbackResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def handle_oidc_callback_with_options_async(
+        self,
+        request: main_models.HandleOidcCallbackRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.HandleOidcCallbackResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.code):
+            query['code'] = request.code
+        if not DaraCore.is_null(request.state):
+            query['state'] = request.state
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'HandleOidcCallback',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/oidc/callback',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.HandleOidcCallbackResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def handle_oidc_callback(
+        self,
+        request: main_models.HandleOidcCallbackRequest,
+    ) -> main_models.HandleOidcCallbackResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.handle_oidc_callback_with_options(request, headers, runtime)
+
+    async def handle_oidc_callback_async(
+        self,
+        request: main_models.HandleOidcCallbackRequest,
+    ) -> main_models.HandleOidcCallbackResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.handle_oidc_callback_with_options_async(request, headers, runtime)
+
     def import_http_api_with_options(
         self,
         request: main_models.ImportHttpApiRequest,
@@ -9132,6 +9700,82 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.import_http_api_with_options_async(request, headers, runtime)
+
+    def initiate_oidc_auth_with_options(
+        self,
+        request: main_models.InitiateOidcAuthRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.InitiateOidcAuthResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.provider):
+            query['provider'] = request.provider
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'InitiateOidcAuth',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/oidc/authorize',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InitiateOidcAuthResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def initiate_oidc_auth_with_options_async(
+        self,
+        request: main_models.InitiateOidcAuthRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.InitiateOidcAuthResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.provider):
+            query['provider'] = request.provider
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'InitiateOidcAuth',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/oidc/authorize',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InitiateOidcAuthResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def initiate_oidc_auth(
+        self,
+        request: main_models.InitiateOidcAuthRequest,
+    ) -> main_models.InitiateOidcAuthResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.initiate_oidc_auth_with_options(request, headers, runtime)
+
+    async def initiate_oidc_auth_async(
+        self,
+        request: main_models.InitiateOidcAuthRequest,
+    ) -> main_models.InitiateOidcAuthResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.initiate_oidc_auth_with_options_async(request, headers, runtime)
 
     def install_plugin_with_options(
         self,
@@ -9575,6 +10219,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_ai_model_providers_with_options_async(request, headers, runtime)
 
+    def list_api_path_field_templates_with_options(
+        self,
+        request: main_models.ListApiPathFieldTemplatesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListApiPathFieldTemplatesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListApiPathFieldTemplates',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/api-path-fields/templates',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListApiPathFieldTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_api_path_field_templates_with_options_async(
+        self,
+        request: main_models.ListApiPathFieldTemplatesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListApiPathFieldTemplatesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListApiPathFieldTemplates',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/api-path-fields/templates',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListApiPathFieldTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_api_path_field_templates(
+        self,
+        request: main_models.ListApiPathFieldTemplatesRequest,
+    ) -> main_models.ListApiPathFieldTemplatesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_api_path_field_templates_with_options(request, headers, runtime)
+
+    async def list_api_path_field_templates_async(
+        self,
+        request: main_models.ListApiPathFieldTemplatesRequest,
+    ) -> main_models.ListApiPathFieldTemplatesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_api_path_field_templates_with_options_async(request, headers, runtime)
+
     def list_batch_export_tasks_with_options(
         self,
         request: main_models.ListBatchExportTasksRequest,
@@ -9678,6 +10402,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_batch_export_tasks_with_options_async(request, headers, runtime)
+
+    def list_chat_sessions_with_options(
+        self,
+        request: main_models.ListChatSessionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListChatSessionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListChatSessions',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/sessions',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListChatSessionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_chat_sessions_with_options_async(
+        self,
+        request: main_models.ListChatSessionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListChatSessionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListChatSessions',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/sessions',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListChatSessionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_chat_sessions(
+        self,
+        request: main_models.ListChatSessionsRequest,
+    ) -> main_models.ListChatSessionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_chat_sessions_with_options(request, headers, runtime)
+
+    async def list_chat_sessions_async(
+        self,
+        request: main_models.ListChatSessionsRequest,
+    ) -> main_models.ListChatSessionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_chat_sessions_with_options_async(request, headers, runtime)
 
     def list_consumer_authorization_rules_with_options(
         self,
@@ -10214,6 +11026,106 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_consumers_with_options_async(request, headers, runtime)
+
+    def list_developers_with_options(
+        self,
+        request: main_models.ListDevelopersRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDevelopersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.portal_id):
+            query['portalId'] = request.portal_id
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        if not DaraCore.is_null(request.username):
+            query['username'] = request.username
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDevelopers',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/developers',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDevelopersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_developers_with_options_async(
+        self,
+        request: main_models.ListDevelopersRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDevelopersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.portal_id):
+            query['portalId'] = request.portal_id
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        if not DaraCore.is_null(request.username):
+            query['username'] = request.username
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDevelopers',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/developers',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDevelopersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_developers(
+        self,
+        request: main_models.ListDevelopersRequest,
+    ) -> main_models.ListDevelopersResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_developers_with_options(request, headers, runtime)
+
+    async def list_developers_async(
+        self,
+        request: main_models.ListDevelopersRequest,
+    ) -> main_models.ListDevelopersResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_developers_with_options_async(request, headers, runtime)
 
     def list_domains_with_options(
         self,
@@ -11273,6 +12185,202 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_global_policies_with_options_async(request, headers, runtime)
 
+    def list_hi_market_consumer_subscriptions_with_options(
+        self,
+        consumer_id: str,
+        request: main_models.ListHiMarketConsumerSubscriptionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListHiMarketConsumerSubscriptionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListHiMarketConsumerSubscriptions',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/consumers/{DaraURL.percent_encode(consumer_id)}/subscriptions',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListHiMarketConsumerSubscriptionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_hi_market_consumer_subscriptions_with_options_async(
+        self,
+        consumer_id: str,
+        request: main_models.ListHiMarketConsumerSubscriptionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListHiMarketConsumerSubscriptionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListHiMarketConsumerSubscriptions',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/consumers/{DaraURL.percent_encode(consumer_id)}/subscriptions',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListHiMarketConsumerSubscriptionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_hi_market_consumer_subscriptions(
+        self,
+        consumer_id: str,
+        request: main_models.ListHiMarketConsumerSubscriptionsRequest,
+    ) -> main_models.ListHiMarketConsumerSubscriptionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_hi_market_consumer_subscriptions_with_options(consumer_id, request, headers, runtime)
+
+    async def list_hi_market_consumer_subscriptions_async(
+        self,
+        consumer_id: str,
+        request: main_models.ListHiMarketConsumerSubscriptionsRequest,
+    ) -> main_models.ListHiMarketConsumerSubscriptionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_hi_market_consumer_subscriptions_with_options_async(consumer_id, request, headers, runtime)
+
+    def list_hi_market_consumers_with_options(
+        self,
+        request: main_models.ListHiMarketConsumersRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListHiMarketConsumersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.developer_id):
+            query['developerId'] = request.developer_id
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.portal_id):
+            query['portalId'] = request.portal_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListHiMarketConsumers',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/consumers',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListHiMarketConsumersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_hi_market_consumers_with_options_async(
+        self,
+        request: main_models.ListHiMarketConsumersRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListHiMarketConsumersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.developer_id):
+            query['developerId'] = request.developer_id
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.portal_id):
+            query['portalId'] = request.portal_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListHiMarketConsumers',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/consumers',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListHiMarketConsumersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_hi_market_consumers(
+        self,
+        request: main_models.ListHiMarketConsumersRequest,
+    ) -> main_models.ListHiMarketConsumersResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_hi_market_consumers_with_options(request, headers, runtime)
+
+    async def list_hi_market_consumers_async(
+        self,
+        request: main_models.ListHiMarketConsumersRequest,
+    ) -> main_models.ListHiMarketConsumersResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_hi_market_consumers_with_options_async(request, headers, runtime)
+
     def list_http_api_operations_with_options(
         self,
         http_api_id: str,
@@ -11845,6 +12953,78 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_k8s_cluster_sources_with_options_async(gateway_id, request, headers, runtime)
 
+    def list_mcp_product_tools_with_options(
+        self,
+        product_id: str,
+        request: main_models.ListMcpProductToolsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMcpProductToolsResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMcpProductTools',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/products/{DaraURL.percent_encode(product_id)}/tools',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMcpProductToolsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_mcp_product_tools_with_options_async(
+        self,
+        product_id: str,
+        request: main_models.ListMcpProductToolsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMcpProductToolsResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMcpProductTools',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/products/{DaraURL.percent_encode(product_id)}/tools',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMcpProductToolsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_mcp_product_tools(
+        self,
+        product_id: str,
+        request: main_models.ListMcpProductToolsRequest,
+    ) -> main_models.ListMcpProductToolsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_mcp_product_tools_with_options(product_id, request, headers, runtime)
+
+    async def list_mcp_product_tools_async(
+        self,
+        product_id: str,
+        request: main_models.ListMcpProductToolsRequest,
+    ) -> main_models.ListMcpProductToolsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_mcp_product_tools_with_options_async(product_id, request, headers, runtime)
+
     def list_mcp_servers_with_options(
         self,
         request: main_models.ListMcpServersRequest,
@@ -12024,6 +13204,82 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_migration_tasks_with_options_async(request, headers, runtime)
+
+    def list_model_cards_with_options(
+        self,
+        request: main_models.ListModelCardsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListModelCardsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.provider):
+            query['provider'] = request.provider
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListModelCards',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/model-cards',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListModelCardsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_model_cards_with_options_async(
+        self,
+        request: main_models.ListModelCardsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListModelCardsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.provider):
+            query['provider'] = request.provider
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListModelCards',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/model-cards',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListModelCardsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_model_cards(
+        self,
+        request: main_models.ListModelCardsRequest,
+    ) -> main_models.ListModelCardsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_model_cards_with_options(request, headers, runtime)
+
+    async def list_model_cards_async(
+        self,
+        request: main_models.ListModelCardsRequest,
+    ) -> main_models.ListModelCardsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_model_cards_with_options_async(request, headers, runtime)
 
     def list_mse_nacos_sources_with_options(
         self,
@@ -12772,6 +14028,646 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_policy_classes_with_options_async(request, headers, runtime)
+
+    def list_portal_publications_with_options(
+        self,
+        portal_id: str,
+        request: main_models.ListPortalPublicationsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPortalPublicationsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.product_name):
+            query['productName'] = request.product_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPortalPublications',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/portals/{DaraURL.percent_encode(portal_id)}/publications',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPortalPublicationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_portal_publications_with_options_async(
+        self,
+        portal_id: str,
+        request: main_models.ListPortalPublicationsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPortalPublicationsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.product_name):
+            query['productName'] = request.product_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPortalPublications',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/portals/{DaraURL.percent_encode(portal_id)}/publications',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPortalPublicationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_portal_publications(
+        self,
+        portal_id: str,
+        request: main_models.ListPortalPublicationsRequest,
+    ) -> main_models.ListPortalPublicationsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_portal_publications_with_options(portal_id, request, headers, runtime)
+
+    async def list_portal_publications_async(
+        self,
+        portal_id: str,
+        request: main_models.ListPortalPublicationsRequest,
+    ) -> main_models.ListPortalPublicationsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_portal_publications_with_options_async(portal_id, request, headers, runtime)
+
+    def list_portals_with_options(
+        self,
+        request: main_models.ListPortalsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPortalsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPortals',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/portals',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPortalsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_portals_with_options_async(
+        self,
+        request: main_models.ListPortalsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPortalsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPortals',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/portals',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPortalsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_portals(
+        self,
+        request: main_models.ListPortalsRequest,
+    ) -> main_models.ListPortalsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_portals_with_options(request, headers, runtime)
+
+    async def list_portals_async(
+        self,
+        request: main_models.ListPortalsRequest,
+    ) -> main_models.ListPortalsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_portals_with_options_async(request, headers, runtime)
+
+    def list_product_categories_with_options(
+        self,
+        request: main_models.ListProductCategoriesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListProductCategoriesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListProductCategories',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/product-categories',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListProductCategoriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_product_categories_with_options_async(
+        self,
+        request: main_models.ListProductCategoriesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListProductCategoriesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListProductCategories',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/product-categories',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListProductCategoriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_product_categories(
+        self,
+        request: main_models.ListProductCategoriesRequest,
+    ) -> main_models.ListProductCategoriesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_product_categories_with_options(request, headers, runtime)
+
+    async def list_product_categories_async(
+        self,
+        request: main_models.ListProductCategoriesRequest,
+    ) -> main_models.ListProductCategoriesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_product_categories_with_options_async(request, headers, runtime)
+
+    def list_product_publications_with_options(
+        self,
+        product_id: str,
+        request: main_models.ListProductPublicationsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListProductPublicationsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.portal_name):
+            query['portalName'] = request.portal_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListProductPublications',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/products/{DaraURL.percent_encode(product_id)}/publications',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListProductPublicationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_product_publications_with_options_async(
+        self,
+        product_id: str,
+        request: main_models.ListProductPublicationsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListProductPublicationsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.portal_name):
+            query['portalName'] = request.portal_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListProductPublications',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/products/{DaraURL.percent_encode(product_id)}/publications',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListProductPublicationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_product_publications(
+        self,
+        product_id: str,
+        request: main_models.ListProductPublicationsRequest,
+    ) -> main_models.ListProductPublicationsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_product_publications_with_options(product_id, request, headers, runtime)
+
+    async def list_product_publications_async(
+        self,
+        product_id: str,
+        request: main_models.ListProductPublicationsRequest,
+    ) -> main_models.ListProductPublicationsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_product_publications_with_options_async(product_id, request, headers, runtime)
+
+    def list_product_subscriptions_with_options(
+        self,
+        product_id: str,
+        request: main_models.ListProductSubscriptionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListProductSubscriptionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.consumer_name):
+            query['consumerName'] = request.consumer_name
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListProductSubscriptions',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/products/{DaraURL.percent_encode(product_id)}/subscriptions',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListProductSubscriptionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_product_subscriptions_with_options_async(
+        self,
+        product_id: str,
+        request: main_models.ListProductSubscriptionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListProductSubscriptionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.consumer_name):
+            query['consumerName'] = request.consumer_name
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListProductSubscriptions',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/products/{DaraURL.percent_encode(product_id)}/subscriptions',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListProductSubscriptionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_product_subscriptions(
+        self,
+        product_id: str,
+        request: main_models.ListProductSubscriptionsRequest,
+    ) -> main_models.ListProductSubscriptionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_product_subscriptions_with_options(product_id, request, headers, runtime)
+
+    async def list_product_subscriptions_async(
+        self,
+        product_id: str,
+        request: main_models.ListProductSubscriptionsRequest,
+    ) -> main_models.ListProductSubscriptionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_product_subscriptions_with_options_async(product_id, request, headers, runtime)
+
+    def list_products_with_options(
+        self,
+        request: main_models.ListProductsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListProductsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.category_ids):
+            query['categoryIds'] = request.category_ids
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.portal_id):
+            query['portalId'] = request.portal_id
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        if not DaraCore.is_null(request.type):
+            query['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListProducts',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/products',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListProductsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_products_with_options_async(
+        self,
+        request: main_models.ListProductsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListProductsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.category_ids):
+            query['categoryIds'] = request.category_ids
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.portal_id):
+            query['portalId'] = request.portal_id
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        if not DaraCore.is_null(request.type):
+            query['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListProducts',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/products',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListProductsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_products(
+        self,
+        request: main_models.ListProductsRequest,
+    ) -> main_models.ListProductsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_products_with_options(request, headers, runtime)
+
+    async def list_products_async(
+        self,
+        request: main_models.ListProductsRequest,
+    ) -> main_models.ListProductsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_products_with_options_async(request, headers, runtime)
+
+    def list_publishable_products_with_options(
+        self,
+        portal_id: str,
+        request: main_models.ListPublishableProductsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPublishableProductsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPublishableProducts',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/portals/{DaraURL.percent_encode(portal_id)}/publishable-products',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPublishableProductsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_publishable_products_with_options_async(
+        self,
+        portal_id: str,
+        request: main_models.ListPublishableProductsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPublishableProductsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPublishableProducts',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/portals/{DaraURL.percent_encode(portal_id)}/publishable-products',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPublishableProductsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_publishable_products(
+        self,
+        portal_id: str,
+        request: main_models.ListPublishableProductsRequest,
+    ) -> main_models.ListPublishableProductsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_publishable_products_with_options(portal_id, request, headers, runtime)
+
+    async def list_publishable_products_async(
+        self,
+        portal_id: str,
+        request: main_models.ListPublishableProductsRequest,
+    ) -> main_models.ListPublishableProductsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_publishable_products_with_options_async(portal_id, request, headers, runtime)
 
     def list_risk_check_results_with_options(
         self,
@@ -13577,6 +15473,234 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_zones_with_options_async(request, headers, runtime)
 
+    def login_developer_with_options(
+        self,
+        request: main_models.LoginDeveloperRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.LoginDeveloperResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.password):
+            body['password'] = request.password
+        if not DaraCore.is_null(request.username):
+            body['username'] = request.username
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'LoginDeveloper',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/developers/login',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.LoginDeveloperResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def login_developer_with_options_async(
+        self,
+        request: main_models.LoginDeveloperRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.LoginDeveloperResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.password):
+            body['password'] = request.password
+        if not DaraCore.is_null(request.username):
+            body['username'] = request.username
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'LoginDeveloper',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/developers/login',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.LoginDeveloperResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def login_developer(
+        self,
+        request: main_models.LoginDeveloperRequest,
+    ) -> main_models.LoginDeveloperResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.login_developer_with_options(request, headers, runtime)
+
+    async def login_developer_async(
+        self,
+        request: main_models.LoginDeveloperRequest,
+    ) -> main_models.LoginDeveloperResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.login_developer_with_options_async(request, headers, runtime)
+
+    def logout_developer_with_options(
+        self,
+        request: main_models.LogoutDeveloperRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.LogoutDeveloperResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'LogoutDeveloper',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/developers/logout',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.LogoutDeveloperResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def logout_developer_with_options_async(
+        self,
+        request: main_models.LogoutDeveloperRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.LogoutDeveloperResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'LogoutDeveloper',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/developers/logout',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.LogoutDeveloperResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def logout_developer(
+        self,
+        request: main_models.LogoutDeveloperRequest,
+    ) -> main_models.LogoutDeveloperResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.logout_developer_with_options(request, headers, runtime)
+
+    async def logout_developer_async(
+        self,
+        request: main_models.LogoutDeveloperRequest,
+    ) -> main_models.LogoutDeveloperResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.logout_developer_with_options_async(request, headers, runtime)
+
+    def publish_product_with_options(
+        self,
+        product_id: str,
+        request: main_models.PublishProductRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.PublishProductResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.portal_id):
+            body['portalId'] = request.portal_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'PublishProduct',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/products/{DaraURL.percent_encode(product_id)}/publications',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PublishProductResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def publish_product_with_options_async(
+        self,
+        product_id: str,
+        request: main_models.PublishProductRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.PublishProductResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.portal_id):
+            body['portalId'] = request.portal_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'PublishProduct',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/products/{DaraURL.percent_encode(product_id)}/publications',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PublishProductResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def publish_product(
+        self,
+        product_id: str,
+        request: main_models.PublishProductRequest,
+    ) -> main_models.PublishProductResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.publish_product_with_options(product_id, request, headers, runtime)
+
+    async def publish_product_async(
+        self,
+        product_id: str,
+        request: main_models.PublishProductRequest,
+    ) -> main_models.PublishProductResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.publish_product_with_options_async(product_id, request, headers, runtime)
+
     def query_consumer_authorization_rules_with_options(
         self,
         request: main_models.QueryConsumerAuthorizationRulesRequest,
@@ -14097,6 +16221,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.run_plugin_pipeline_with_options_async(workspace_id, request, headers, runtime)
 
+    def subscribe_product_with_options(
+        self,
+        consumer_id: str,
+        request: main_models.SubscribeProductRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SubscribeProductResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.product_id):
+            body['productId'] = request.product_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubscribeProduct',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/consumers/{DaraURL.percent_encode(consumer_id)}/subscriptions',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubscribeProductResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def subscribe_product_with_options_async(
+        self,
+        consumer_id: str,
+        request: main_models.SubscribeProductRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SubscribeProductResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.product_id):
+            body['productId'] = request.product_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubscribeProduct',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/consumers/{DaraURL.percent_encode(consumer_id)}/subscriptions',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubscribeProductResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def subscribe_product(
+        self,
+        consumer_id: str,
+        request: main_models.SubscribeProductRequest,
+    ) -> main_models.SubscribeProductResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.subscribe_product_with_options(consumer_id, request, headers, runtime)
+
+    async def subscribe_product_async(
+        self,
+        consumer_id: str,
+        request: main_models.SubscribeProductRequest,
+    ) -> main_models.SubscribeProductResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.subscribe_product_with_options_async(consumer_id, request, headers, runtime)
+
     def sync_mcpservers_with_options(
         self,
         request: main_models.SyncMCPServersRequest,
@@ -14496,6 +16700,82 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.uninstall_plugin_with_options_async(plugin_id, headers, runtime)
+
+    def unpublish_product_with_options(
+        self,
+        product_id: str,
+        publication_id: str,
+        request: main_models.UnpublishProductRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UnpublishProductResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'UnpublishProduct',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/products/{DaraURL.percent_encode(product_id)}/publications/{DaraURL.percent_encode(publication_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UnpublishProductResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def unpublish_product_with_options_async(
+        self,
+        product_id: str,
+        publication_id: str,
+        request: main_models.UnpublishProductRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UnpublishProductResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'UnpublishProduct',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/products/{DaraURL.percent_encode(product_id)}/publications/{DaraURL.percent_encode(publication_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UnpublishProductResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def unpublish_product(
+        self,
+        product_id: str,
+        publication_id: str,
+        request: main_models.UnpublishProductRequest,
+    ) -> main_models.UnpublishProductResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.unpublish_product_with_options(product_id, publication_id, request, headers, runtime)
+
+    async def unpublish_product_async(
+        self,
+        product_id: str,
+        publication_id: str,
+        request: main_models.UnpublishProductRequest,
+    ) -> main_models.UnpublishProductResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.unpublish_product_with_options_async(product_id, publication_id, request, headers, runtime)
 
     def untag_resources_with_options(
         self,
@@ -14965,6 +17245,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_authorization_rule_with_options_async(consumer_authorization_rule_id, request, headers, runtime)
 
+    def update_category_products_with_options(
+        self,
+        category_id: str,
+        request: main_models.UpdateCategoryProductsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCategoryProductsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.action):
+            body['action'] = request.action
+        if not DaraCore.is_null(request.product_ids):
+            body['productIds'] = request.product_ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateCategoryProducts',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/product-categories/{DaraURL.percent_encode(category_id)}/products',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateCategoryProductsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_category_products_with_options_async(
+        self,
+        category_id: str,
+        request: main_models.UpdateCategoryProductsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCategoryProductsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.action):
+            body['action'] = request.action
+        if not DaraCore.is_null(request.product_ids):
+            body['productIds'] = request.product_ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateCategoryProducts',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/product-categories/{DaraURL.percent_encode(category_id)}/products',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateCategoryProductsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_category_products(
+        self,
+        category_id: str,
+        request: main_models.UpdateCategoryProductsRequest,
+    ) -> main_models.UpdateCategoryProductsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_category_products_with_options(category_id, request, headers, runtime)
+
+    async def update_category_products_async(
+        self,
+        category_id: str,
+        request: main_models.UpdateCategoryProductsRequest,
+    ) -> main_models.UpdateCategoryProductsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_category_products_with_options_async(category_id, request, headers, runtime)
+
     def update_consumer_with_options(
         self,
         consumer_id: str,
@@ -15236,6 +17600,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_consumer_group_with_options_async(consumer_group_id, request, headers, runtime)
+
+    def update_developer_status_with_options(
+        self,
+        developer_id: str,
+        request: main_models.UpdateDeveloperStatusRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDeveloperStatusResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.portal_id):
+            body['portalId'] = request.portal_id
+        if not DaraCore.is_null(request.status):
+            body['status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDeveloperStatus',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/developers/{DaraURL.percent_encode(developer_id)}/status',
+            method = 'PATCH',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDeveloperStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_developer_status_with_options_async(
+        self,
+        developer_id: str,
+        request: main_models.UpdateDeveloperStatusRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDeveloperStatusResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.portal_id):
+            body['portalId'] = request.portal_id
+        if not DaraCore.is_null(request.status):
+            body['status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDeveloperStatus',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/developers/{DaraURL.percent_encode(developer_id)}/status',
+            method = 'PATCH',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDeveloperStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_developer_status(
+        self,
+        developer_id: str,
+        request: main_models.UpdateDeveloperStatusRequest,
+    ) -> main_models.UpdateDeveloperStatusResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_developer_status_with_options(developer_id, request, headers, runtime)
+
+    async def update_developer_status_async(
+        self,
+        developer_id: str,
+        request: main_models.UpdateDeveloperStatusRequest,
+    ) -> main_models.UpdateDeveloperStatusResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_developer_status_with_options_async(developer_id, request, headers, runtime)
 
     def update_domain_with_options(
         self,
@@ -16872,6 +19320,306 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_policy_with_options_async(policy_id, request, headers, runtime)
+
+    def update_portal_with_options(
+        self,
+        portal_id: str,
+        request: main_models.UpdatePortalRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdatePortalResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.portal_setting_config):
+            body['portalSettingConfig'] = request.portal_setting_config
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdatePortal',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/portals/{DaraURL.percent_encode(portal_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdatePortalResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_portal_with_options_async(
+        self,
+        portal_id: str,
+        request: main_models.UpdatePortalRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdatePortalResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.portal_setting_config):
+            body['portalSettingConfig'] = request.portal_setting_config
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdatePortal',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/portals/{DaraURL.percent_encode(portal_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdatePortalResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_portal(
+        self,
+        portal_id: str,
+        request: main_models.UpdatePortalRequest,
+    ) -> main_models.UpdatePortalResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_portal_with_options(portal_id, request, headers, runtime)
+
+    async def update_portal_async(
+        self,
+        portal_id: str,
+        request: main_models.UpdatePortalRequest,
+    ) -> main_models.UpdatePortalResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_portal_with_options_async(portal_id, request, headers, runtime)
+
+    def update_product_with_options(
+        self,
+        product_id: str,
+        request: main_models.UpdateProductRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateProductResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.auto_approve):
+            body['autoApprove'] = request.auto_approve
+        if not DaraCore.is_null(request.categories):
+            body['categories'] = request.categories
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.document):
+            body['document'] = request.document
+        if not DaraCore.is_null(request.feature):
+            body['feature'] = request.feature
+        if not DaraCore.is_null(request.icon):
+            body['icon'] = request.icon
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateProduct',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/products/{DaraURL.percent_encode(product_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateProductResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_product_with_options_async(
+        self,
+        product_id: str,
+        request: main_models.UpdateProductRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateProductResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.auto_approve):
+            body['autoApprove'] = request.auto_approve
+        if not DaraCore.is_null(request.categories):
+            body['categories'] = request.categories
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.document):
+            body['document'] = request.document
+        if not DaraCore.is_null(request.feature):
+            body['feature'] = request.feature
+        if not DaraCore.is_null(request.icon):
+            body['icon'] = request.icon
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateProduct',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/products/{DaraURL.percent_encode(product_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateProductResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_product(
+        self,
+        product_id: str,
+        request: main_models.UpdateProductRequest,
+    ) -> main_models.UpdateProductResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_product_with_options(product_id, request, headers, runtime)
+
+    async def update_product_async(
+        self,
+        product_id: str,
+        request: main_models.UpdateProductRequest,
+    ) -> main_models.UpdateProductResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_product_with_options_async(product_id, request, headers, runtime)
+
+    def update_product_category_with_options(
+        self,
+        category_id: str,
+        request: main_models.UpdateProductCategoryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateProductCategoryResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.icon):
+            body['icon'] = request.icon
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateProductCategory',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/product-categories/{DaraURL.percent_encode(category_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateProductCategoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_product_category_with_options_async(
+        self,
+        category_id: str,
+        request: main_models.UpdateProductCategoryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateProductCategoryResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.icon):
+            body['icon'] = request.icon
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateProductCategory',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/himarket/v1/product-categories/{DaraURL.percent_encode(category_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateProductCategoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_product_category(
+        self,
+        category_id: str,
+        request: main_models.UpdateProductCategoryRequest,
+    ) -> main_models.UpdateProductCategoryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_product_category_with_options(category_id, request, headers, runtime)
+
+    async def update_product_category_async(
+        self,
+        category_id: str,
+        request: main_models.UpdateProductCategoryRequest,
+    ) -> main_models.UpdateProductCategoryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_product_category_with_options_async(category_id, request, headers, runtime)
 
     def update_risk_notification_with_options(
         self,

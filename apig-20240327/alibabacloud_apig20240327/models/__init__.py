@@ -201,6 +201,12 @@ from ._create_policy_response import CreatePolicyResponse
 from ._create_policy_attachment_request import CreatePolicyAttachmentRequest
 from ._create_policy_attachment_response_body import CreatePolicyAttachmentResponseBody
 from ._create_policy_attachment_response import CreatePolicyAttachmentResponse
+from ._create_portal_request import CreatePortalRequest
+from ._create_portal_response_body import CreatePortalResponseBody
+from ._create_portal_response import CreatePortalResponse
+from ._create_product_request import CreateProductRequest
+from ._create_product_response_body import CreateProductResponseBody
+from ._create_product_response import CreateProductResponse
 from ._create_product_category_request import CreateProductCategoryRequest
 from ._create_product_category_response_body import CreateProductCategoryResponseBody
 from ._create_product_category_response import CreateProductCategoryResponse
@@ -387,6 +393,18 @@ from ._get_policy_response_body import GetPolicyResponseBody
 from ._get_policy_response import GetPolicyResponse
 from ._get_policy_attachment_response_body import GetPolicyAttachmentResponseBody
 from ._get_policy_attachment_response import GetPolicyAttachmentResponse
+from ._get_portal_request import GetPortalRequest
+from ._get_portal_response_body import GetPortalResponseBody
+from ._get_portal_response import GetPortalResponse
+from ._get_product_request import GetProductRequest
+from ._get_product_response_body import GetProductResponseBody
+from ._get_product_response import GetProductResponse
+from ._get_product_category_request import GetProductCategoryRequest
+from ._get_product_category_response_body import GetProductCategoryResponseBody
+from ._get_product_category_response import GetProductCategoryResponse
+from ._get_product_ref_request import GetProductRefRequest
+from ._get_product_ref_response_body import GetProductRefResponseBody
+from ._get_product_ref_response import GetProductRefResponse
 from ._get_resource_overview_request import GetResourceOverviewRequest
 from ._get_resource_overview_response_body import GetResourceOverviewResponseBody
 from ._get_resource_overview_response import GetResourceOverviewResponse
@@ -404,9 +422,15 @@ from ._get_source_response import GetSourceResponse
 from ._get_trace_config_request import GetTraceConfigRequest
 from ._get_trace_config_response_body import GetTraceConfigResponseBody
 from ._get_trace_config_response import GetTraceConfigResponse
+from ._handle_oidc_callback_request import HandleOidcCallbackRequest
+from ._handle_oidc_callback_response_body import HandleOidcCallbackResponseBody
+from ._handle_oidc_callback_response import HandleOidcCallbackResponse
 from ._import_http_api_request import ImportHttpApiRequest
 from ._import_http_api_response_body import ImportHttpApiResponseBody
 from ._import_http_api_response import ImportHttpApiResponse
+from ._initiate_oidc_auth_request import InitiateOidcAuthRequest
+from ._initiate_oidc_auth_response_body import InitiateOidcAuthResponseBody
+from ._initiate_oidc_auth_response import InitiateOidcAuthResponse
 from ._install_plugin_request import InstallPluginRequest
 from ._install_plugin_response_body import InstallPluginResponseBody
 from ._install_plugin_response import InstallPluginResponse
@@ -419,9 +443,15 @@ from ._list_ai_model_cards_response import ListAiModelCardsResponse
 from ._list_ai_model_providers_request import ListAiModelProvidersRequest
 from ._list_ai_model_providers_response_body import ListAiModelProvidersResponseBody
 from ._list_ai_model_providers_response import ListAiModelProvidersResponse
+from ._list_api_path_field_templates_request import ListApiPathFieldTemplatesRequest
+from ._list_api_path_field_templates_response_body import ListApiPathFieldTemplatesResponseBody
+from ._list_api_path_field_templates_response import ListApiPathFieldTemplatesResponse
 from ._list_batch_export_tasks_request import ListBatchExportTasksRequest
 from ._list_batch_export_tasks_response_body import ListBatchExportTasksResponseBody
 from ._list_batch_export_tasks_response import ListBatchExportTasksResponse
+from ._list_chat_sessions_request import ListChatSessionsRequest
+from ._list_chat_sessions_response_body import ListChatSessionsResponseBody
+from ._list_chat_sessions_response import ListChatSessionsResponse
 from ._list_consumer_authorization_rules_request import ListConsumerAuthorizationRulesRequest
 from ._list_consumer_authorization_rules_response_body import ListConsumerAuthorizationRulesResponseBody
 from ._list_consumer_authorization_rules_response import ListConsumerAuthorizationRulesResponse
@@ -440,6 +470,9 @@ from ._list_consumer_quota_rules_response import ListConsumerQuotaRulesResponse
 from ._list_consumers_request import ListConsumersRequest
 from ._list_consumers_response_body import ListConsumersResponseBody
 from ._list_consumers_response import ListConsumersResponse
+from ._list_developers_request import ListDevelopersRequest
+from ._list_developers_response_body import ListDevelopersResponseBody
+from ._list_developers_response import ListDevelopersResponse
 from ._list_domains_request import ListDomainsRequest
 from ._list_domains_response_body import ListDomainsResponseBody
 from ._list_domains_response import ListDomainsResponse
@@ -473,6 +506,12 @@ from ._list_gateways_response import ListGatewaysResponse
 from ._list_global_policies_request import ListGlobalPoliciesRequest
 from ._list_global_policies_response_body import ListGlobalPoliciesResponseBody
 from ._list_global_policies_response import ListGlobalPoliciesResponse
+from ._list_hi_market_consumer_subscriptions_request import ListHiMarketConsumerSubscriptionsRequest
+from ._list_hi_market_consumer_subscriptions_response_body import ListHiMarketConsumerSubscriptionsResponseBody
+from ._list_hi_market_consumer_subscriptions_response import ListHiMarketConsumerSubscriptionsResponse
+from ._list_hi_market_consumers_request import ListHiMarketConsumersRequest
+from ._list_hi_market_consumers_response_body import ListHiMarketConsumersResponseBody
+from ._list_hi_market_consumers_response import ListHiMarketConsumersResponse
 from ._list_http_api_operations_request import ListHttpApiOperationsRequest
 from ._list_http_api_operations_response_body import ListHttpApiOperationsResponseBody
 from ._list_http_api_operations_response import ListHttpApiOperationsResponse
@@ -488,12 +527,18 @@ from ._list_installable_gateways_response import ListInstallableGatewaysResponse
 from ._list_k8s_cluster_sources_request import ListK8sClusterSourcesRequest
 from ._list_k8s_cluster_sources_response_body import ListK8sClusterSourcesResponseBody
 from ._list_k8s_cluster_sources_response import ListK8sClusterSourcesResponse
+from ._list_mcp_product_tools_request import ListMcpProductToolsRequest
+from ._list_mcp_product_tools_response_body import ListMcpProductToolsResponseBody
+from ._list_mcp_product_tools_response import ListMcpProductToolsResponse
 from ._list_mcp_servers_request import ListMcpServersRequest
 from ._list_mcp_servers_response_body import ListMcpServersResponseBody
 from ._list_mcp_servers_response import ListMcpServersResponse
 from ._list_migration_tasks_request import ListMigrationTasksRequest
 from ._list_migration_tasks_response_body import ListMigrationTasksResponseBody
 from ._list_migration_tasks_response import ListMigrationTasksResponse
+from ._list_model_cards_request import ListModelCardsRequest
+from ._list_model_cards_response_body import ListModelCardsResponseBody
+from ._list_model_cards_response import ListModelCardsResponse
 from ._list_mse_nacos_sources_request import ListMseNacosSourcesRequest
 from ._list_mse_nacos_sources_response_body import ListMseNacosSourcesResponseBody
 from ._list_mse_nacos_sources_response import ListMseNacosSourcesResponse
@@ -518,6 +563,27 @@ from ._list_policies_response import ListPoliciesResponse
 from ._list_policy_classes_request import ListPolicyClassesRequest
 from ._list_policy_classes_response_body import ListPolicyClassesResponseBody
 from ._list_policy_classes_response import ListPolicyClassesResponse
+from ._list_portal_publications_request import ListPortalPublicationsRequest
+from ._list_portal_publications_response_body import ListPortalPublicationsResponseBody
+from ._list_portal_publications_response import ListPortalPublicationsResponse
+from ._list_portals_request import ListPortalsRequest
+from ._list_portals_response_body import ListPortalsResponseBody
+from ._list_portals_response import ListPortalsResponse
+from ._list_product_categories_request import ListProductCategoriesRequest
+from ._list_product_categories_response_body import ListProductCategoriesResponseBody
+from ._list_product_categories_response import ListProductCategoriesResponse
+from ._list_product_publications_request import ListProductPublicationsRequest
+from ._list_product_publications_response_body import ListProductPublicationsResponseBody
+from ._list_product_publications_response import ListProductPublicationsResponse
+from ._list_product_subscriptions_request import ListProductSubscriptionsRequest
+from ._list_product_subscriptions_response_body import ListProductSubscriptionsResponseBody
+from ._list_product_subscriptions_response import ListProductSubscriptionsResponse
+from ._list_products_request import ListProductsRequest
+from ._list_products_response_body import ListProductsResponseBody
+from ._list_products_response import ListProductsResponse
+from ._list_publishable_products_request import ListPublishableProductsRequest
+from ._list_publishable_products_response_body import ListPublishableProductsResponseBody
+from ._list_publishable_products_response import ListPublishableProductsResponse
 from ._list_risk_check_results_request import ListRiskCheckResultsRequest
 from ._list_risk_check_results_response_body import ListRiskCheckResultsResponseBody
 from ._list_risk_check_results_response import ListRiskCheckResultsResponse
@@ -546,6 +612,15 @@ from ._list_tag_resources_response import ListTagResourcesResponse
 from ._list_zones_request import ListZonesRequest
 from ._list_zones_response_body import ListZonesResponseBody
 from ._list_zones_response import ListZonesResponse
+from ._login_developer_request import LoginDeveloperRequest
+from ._login_developer_response_body import LoginDeveloperResponseBody
+from ._login_developer_response import LoginDeveloperResponse
+from ._logout_developer_request import LogoutDeveloperRequest
+from ._logout_developer_response_body import LogoutDeveloperResponseBody
+from ._logout_developer_response import LogoutDeveloperResponse
+from ._publish_product_request import PublishProductRequest
+from ._publish_product_response_body import PublishProductResponseBody
+from ._publish_product_response import PublishProductResponse
 from ._query_consumer_authorization_rules_request import QueryConsumerAuthorizationRulesRequest
 from ._query_consumer_authorization_rules_response_body import QueryConsumerAuthorizationRulesResponseBody
 from ._query_consumer_authorization_rules_response import QueryConsumerAuthorizationRulesResponse
@@ -562,6 +637,9 @@ from ._restart_gateway_response import RestartGatewayResponse
 from ._run_plugin_pipeline_request import RunPluginPipelineRequest
 from ._run_plugin_pipeline_response_body import RunPluginPipelineResponseBody
 from ._run_plugin_pipeline_response import RunPluginPipelineResponse
+from ._subscribe_product_request import SubscribeProductRequest
+from ._subscribe_product_response_body import SubscribeProductResponseBody
+from ._subscribe_product_response import SubscribeProductResponse
 from ._sync_mcpservers_request import SyncMCPServersRequest
 from ._sync_mcpservers_response_body import SyncMCPServersResponseBody
 from ._sync_mcpservers_response import SyncMCPServersResponse
@@ -575,6 +653,9 @@ from ._undeploy_http_api_response_body import UndeployHttpApiResponseBody
 from ._undeploy_http_api_response import UndeployHttpApiResponse
 from ._uninstall_plugin_response_body import UninstallPluginResponseBody
 from ._uninstall_plugin_response import UninstallPluginResponse
+from ._unpublish_product_request import UnpublishProductRequest
+from ._unpublish_product_response_body import UnpublishProductResponseBody
+from ._unpublish_product_response import UnpublishProductResponse
 from ._untag_resources_request import UntagResourcesRequest
 from ._untag_resources_shrink_request import UntagResourcesShrinkRequest
 from ._untag_resources_response_body import UntagResourcesResponseBody
@@ -591,6 +672,9 @@ from ._update_and_attach_policy_response import UpdateAndAttachPolicyResponse
 from ._update_authorization_rule_request import UpdateAuthorizationRuleRequest
 from ._update_authorization_rule_response_body import UpdateAuthorizationRuleResponseBody
 from ._update_authorization_rule_response import UpdateAuthorizationRuleResponse
+from ._update_category_products_request import UpdateCategoryProductsRequest
+from ._update_category_products_response_body import UpdateCategoryProductsResponseBody
+from ._update_category_products_response import UpdateCategoryProductsResponse
 from ._update_consumer_request import UpdateConsumerRequest
 from ._update_consumer_response_body import UpdateConsumerResponseBody
 from ._update_consumer_response import UpdateConsumerResponse
@@ -600,6 +684,9 @@ from ._update_consumer_authorization_rule_response import UpdateConsumerAuthoriz
 from ._update_consumer_group_request import UpdateConsumerGroupRequest
 from ._update_consumer_group_response_body import UpdateConsumerGroupResponseBody
 from ._update_consumer_group_response import UpdateConsumerGroupResponse
+from ._update_developer_status_request import UpdateDeveloperStatusRequest
+from ._update_developer_status_response_body import UpdateDeveloperStatusResponseBody
+from ._update_developer_status_response import UpdateDeveloperStatusResponse
 from ._update_domain_request import UpdateDomainRequest
 from ._update_domain_response_body import UpdateDomainResponseBody
 from ._update_domain_response import UpdateDomainResponse
@@ -651,6 +738,15 @@ from ._update_plugin_attachment_response import UpdatePluginAttachmentResponse
 from ._update_policy_request import UpdatePolicyRequest
 from ._update_policy_response_body import UpdatePolicyResponseBody
 from ._update_policy_response import UpdatePolicyResponse
+from ._update_portal_request import UpdatePortalRequest
+from ._update_portal_response_body import UpdatePortalResponseBody
+from ._update_portal_response import UpdatePortalResponse
+from ._update_product_request import UpdateProductRequest
+from ._update_product_response_body import UpdateProductResponseBody
+from ._update_product_response import UpdateProductResponse
+from ._update_product_category_request import UpdateProductCategoryRequest
+from ._update_product_category_response_body import UpdateProductCategoryResponseBody
+from ._update_product_category_response import UpdateProductCategoryResponse
 from ._update_risk_notification_request import UpdateRiskNotificationRequest
 from ._update_risk_notification_response_body import UpdateRiskNotificationResponseBody
 from ._update_risk_notification_response import UpdateRiskNotificationResponse
@@ -838,6 +934,8 @@ from ._create_plugin_class_response_body import CreatePluginClassResponseBodyDat
 from ._create_plugin_workspace_response_body import CreatePluginWorkspaceResponseBodyData
 from ._create_policy_response_body import CreatePolicyResponseBodyData
 from ._create_policy_attachment_response_body import CreatePolicyAttachmentResponseBodyData
+from ._create_portal_response_body import CreatePortalResponseBodyData
+from ._create_product_response_body import CreateProductResponseBodyData
 from ._create_product_category_response_body import CreateProductCategoryResponseBodyData
 from ._create_product_ref_request import CreateProductRefRequestApigRefConfig
 from ._create_risk_check_task_response_body import CreateRiskCheckTaskResponseBodyData
@@ -944,6 +1042,10 @@ from ._get_plugin_attachment_response_body import GetPluginAttachmentResponseBod
 from ._get_plugin_class_response_body import GetPluginClassResponseBodyData
 from ._get_plugin_workspace_response_body import GetPluginWorkspaceResponseBodyData
 from ._get_policy_attachment_response_body import GetPolicyAttachmentResponseBodyData
+from ._get_portal_response_body import GetPortalResponseBodyData
+from ._get_product_response_body import GetProductResponseBodyData
+from ._get_product_category_response_body import GetProductCategoryResponseBodyData
+from ._get_product_ref_response_body import GetProductRefResponseBodyData
 from ._get_resource_overview_response_body import GetResourceOverviewResponseBodyDataApi
 from ._get_resource_overview_response_body import GetResourceOverviewResponseBodyDataGateway
 from ._get_resource_overview_response_body import GetResourceOverviewResponseBodyDataRiskOverviewRiskDetails
@@ -956,6 +1058,7 @@ from ._get_source_response_body import GetSourceResponseBodyDataK8SSourceInfo
 from ._get_source_response_body import GetSourceResponseBodyDataNacosSourceInfo
 from ._get_source_response_body import GetSourceResponseBodyData
 from ._get_trace_config_response_body import GetTraceConfigResponseBodyData
+from ._handle_oidc_callback_response_body import HandleOidcCallbackResponseBodyData
 from ._import_http_api_request import ImportHttpApiRequestSpecOssConfig
 from ._import_http_api_response_body import ImportHttpApiResponseBodyDataDryRunInfoFailureComponents
 from ._import_http_api_response_body import ImportHttpApiResponseBodyDataDryRunInfoFailureOperations
@@ -980,8 +1083,12 @@ from ._list_ai_model_providers_response_body import ListAiModelProvidersResponse
 from ._list_ai_model_providers_response_body import ListAiModelProvidersResponseBodyDataItemsModelCards
 from ._list_ai_model_providers_response_body import ListAiModelProvidersResponseBodyDataItems
 from ._list_ai_model_providers_response_body import ListAiModelProvidersResponseBodyData
+from ._list_api_path_field_templates_response_body import ListApiPathFieldTemplatesResponseBodyDataItems
+from ._list_api_path_field_templates_response_body import ListApiPathFieldTemplatesResponseBodyData
 from ._list_batch_export_tasks_response_body import ListBatchExportTasksResponseBodyDataItems
 from ._list_batch_export_tasks_response_body import ListBatchExportTasksResponseBodyData
+from ._list_chat_sessions_response_body import ListChatSessionsResponseBodyDataContent
+from ._list_chat_sessions_response_body import ListChatSessionsResponseBodyData
 from ._list_consumer_authorization_rules_response_body import ListConsumerAuthorizationRulesResponseBodyDataItems
 from ._list_consumer_authorization_rules_response_body import ListConsumerAuthorizationRulesResponseBodyData
 from ._list_consumer_group_consumers_response_body import ListConsumerGroupConsumersResponseBodyDataItems
@@ -994,6 +1101,8 @@ from ._list_consumer_quota_rules_response_body import ListConsumerQuotaRulesResp
 from ._list_consumer_quota_rules_response_body import ListConsumerQuotaRulesResponseBodyData
 from ._list_consumers_response_body import ListConsumersResponseBodyDataItems
 from ._list_consumers_response_body import ListConsumersResponseBodyData
+from ._list_developers_response_body import ListDevelopersResponseBodyDataContent
+from ._list_developers_response_body import ListDevelopersResponseBodyData
 from ._list_domains_response_body import ListDomainsResponseBodyData
 from ._list_environments_response_body import ListEnvironmentsResponseBodyData
 from ._list_external_services_response_body import ListExternalServicesResponseBodyDataItemsServices
@@ -1029,6 +1138,10 @@ from ._list_gateways_response_body import ListGatewaysResponseBodyDataItemsZones
 from ._list_gateways_response_body import ListGatewaysResponseBodyDataItems
 from ._list_gateways_response_body import ListGatewaysResponseBodyData
 from ._list_global_policies_response_body import ListGlobalPoliciesResponseBodyData
+from ._list_hi_market_consumer_subscriptions_response_body import ListHiMarketConsumerSubscriptionsResponseBodyDataContent
+from ._list_hi_market_consumer_subscriptions_response_body import ListHiMarketConsumerSubscriptionsResponseBodyData
+from ._list_hi_market_consumers_response_body import ListHiMarketConsumersResponseBodyDataContent
+from ._list_hi_market_consumers_response_body import ListHiMarketConsumersResponseBodyData
 from ._list_http_api_operations_response_body import ListHttpApiOperationsResponseBodyData
 from ._list_http_api_routes_response_body import ListHttpApiRoutesResponseBodyData
 from ._list_http_apis_response_body import ListHttpApisResponseBodyData
@@ -1036,6 +1149,8 @@ from ._list_installable_gateways_response_body import ListInstallableGatewaysRes
 from ._list_installable_gateways_response_body import ListInstallableGatewaysResponseBodyData
 from ._list_k8s_cluster_sources_response_body import ListK8sClusterSourcesResponseBodyDataItems
 from ._list_k8s_cluster_sources_response_body import ListK8sClusterSourcesResponseBodyData
+from ._list_mcp_product_tools_response_body import ListMcpProductToolsResponseBodyDataTools
+from ._list_mcp_product_tools_response_body import ListMcpProductToolsResponseBodyData
 from ._list_mcp_servers_response_body import ListMcpServersResponseBodyDataItemsAssembledSources
 from ._list_mcp_servers_response_body import ListMcpServersResponseBodyDataItemsNacosMcpSyncInfo
 from ._list_mcp_servers_response_body import ListMcpServersResponseBodyDataItems
@@ -1044,6 +1159,9 @@ from ._list_migration_tasks_response_body import ListMigrationTasksResponseBodyD
 from ._list_migration_tasks_response_body import ListMigrationTasksResponseBodyDataItemsVirtualServices
 from ._list_migration_tasks_response_body import ListMigrationTasksResponseBodyDataItems
 from ._list_migration_tasks_response_body import ListMigrationTasksResponseBodyData
+from ._list_model_cards_response_body import ListModelCardsResponseBodyDataAvailablePaths
+from ._list_model_cards_response_body import ListModelCardsResponseBodyDataMeta
+from ._list_model_cards_response_body import ListModelCardsResponseBodyData
 from ._list_mse_nacos_sources_response_body import ListMseNacosSourcesResponseBodyDataItems
 from ._list_mse_nacos_sources_response_body import ListMseNacosSourcesResponseBodyData
 from ._list_plugin_attachments_response_body import ListPluginAttachmentsResponseBodyDataItems
@@ -1060,6 +1178,19 @@ from ._list_plugins_response_body import ListPluginsResponseBodyDataItems
 from ._list_plugins_response_body import ListPluginsResponseBodyData
 from ._list_policies_response_body import ListPoliciesResponseBodyData
 from ._list_policy_classes_response_body import ListPolicyClassesResponseBodyData
+from ._list_portal_publications_response_body import ListPortalPublicationsResponseBodyDataContent
+from ._list_portal_publications_response_body import ListPortalPublicationsResponseBodyData
+from ._list_portals_response_body import ListPortalsResponseBodyDataContent
+from ._list_portals_response_body import ListPortalsResponseBodyData
+from ._list_product_categories_response_body import ListProductCategoriesResponseBodyDataContent
+from ._list_product_categories_response_body import ListProductCategoriesResponseBodyData
+from ._list_product_publications_response_body import ListProductPublicationsResponseBodyData
+from ._list_product_subscriptions_response_body import ListProductSubscriptionsResponseBodyDataContent
+from ._list_product_subscriptions_response_body import ListProductSubscriptionsResponseBodyData
+from ._list_products_response_body import ListProductsResponseBodyDataContent
+from ._list_products_response_body import ListProductsResponseBodyData
+from ._list_publishable_products_response_body import ListPublishableProductsResponseBodyDataContent
+from ._list_publishable_products_response_body import ListPublishableProductsResponseBodyData
 from ._list_risk_check_results_response_body import ListRiskCheckResultsResponseBodyData
 from ._list_secret_references_response_body import ListSecretReferencesResponseBodyDataItemsPluginConfig
 from ._list_secret_references_response_body import ListSecretReferencesResponseBodyDataItemsServiceConfig
@@ -1080,12 +1211,15 @@ from ._list_tag_resources_request import ListTagResourcesRequestTag
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
 from ._list_zones_response_body import ListZonesResponseBodyDataItems
 from ._list_zones_response_body import ListZonesResponseBodyData
+from ._login_developer_response_body import LoginDeveloperResponseBodyData
+from ._publish_product_response_body import PublishProductResponseBodyData
 from ._query_consumer_authorization_rules_response_body import QueryConsumerAuthorizationRulesResponseBodyDataItemsResourceInfo
 from ._query_consumer_authorization_rules_response_body import QueryConsumerAuthorizationRulesResponseBodyDataItems
 from ._query_consumer_authorization_rules_response_body import QueryConsumerAuthorizationRulesResponseBodyData
 from ._reset_gateway_quota_rule_response_body import ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems
 from ._reset_gateway_quota_rule_response_body import ResetGatewayQuotaRuleResponseBodyDataConflictPreview
 from ._reset_gateway_quota_rule_response_body import ResetGatewayQuotaRuleResponseBodyData
+from ._subscribe_product_response_body import SubscribeProductResponseBodyData
 from ._sync_mcpservers_request import SyncMCPServersRequestNacosMcpServers
 from ._sync_mcpservers_response_body import SyncMCPServersResponseBodyDataFailedMcpServers
 from ._sync_mcpservers_response_body import SyncMCPServersResponseBodyDataSucceedMcpServers
@@ -1129,6 +1263,7 @@ from ._update_mcp_server_request import UpdateMcpServerRequestGrayMcpServerConfi
 from ._update_mcp_server_request import UpdateMcpServerRequestGrayMcpServerConfigs
 from ._update_mcp_server_request import UpdateMcpServerRequestMcpServerConfig
 from ._update_migration_task_request import UpdateMigrationTaskRequestVirtualServices
+from ._update_portal_response_body import UpdatePortalResponseBodyData
 from ._update_service_request import UpdateServiceRequestHealthCheckConfig
 from ._update_service_request import UpdateServiceRequestOutlierDetectionConfig
 from ._update_service_request import UpdateServiceRequestPorts
@@ -1336,6 +1471,12 @@ __all__ = [
     CreatePolicyAttachmentRequest,
     CreatePolicyAttachmentResponseBody,
     CreatePolicyAttachmentResponse,
+    CreatePortalRequest,
+    CreatePortalResponseBody,
+    CreatePortalResponse,
+    CreateProductRequest,
+    CreateProductResponseBody,
+    CreateProductResponse,
     CreateProductCategoryRequest,
     CreateProductCategoryResponseBody,
     CreateProductCategoryResponse,
@@ -1522,6 +1663,18 @@ __all__ = [
     GetPolicyResponse,
     GetPolicyAttachmentResponseBody,
     GetPolicyAttachmentResponse,
+    GetPortalRequest,
+    GetPortalResponseBody,
+    GetPortalResponse,
+    GetProductRequest,
+    GetProductResponseBody,
+    GetProductResponse,
+    GetProductCategoryRequest,
+    GetProductCategoryResponseBody,
+    GetProductCategoryResponse,
+    GetProductRefRequest,
+    GetProductRefResponseBody,
+    GetProductRefResponse,
     GetResourceOverviewRequest,
     GetResourceOverviewResponseBody,
     GetResourceOverviewResponse,
@@ -1539,9 +1692,15 @@ __all__ = [
     GetTraceConfigRequest,
     GetTraceConfigResponseBody,
     GetTraceConfigResponse,
+    HandleOidcCallbackRequest,
+    HandleOidcCallbackResponseBody,
+    HandleOidcCallbackResponse,
     ImportHttpApiRequest,
     ImportHttpApiResponseBody,
     ImportHttpApiResponse,
+    InitiateOidcAuthRequest,
+    InitiateOidcAuthResponseBody,
+    InitiateOidcAuthResponse,
     InstallPluginRequest,
     InstallPluginResponseBody,
     InstallPluginResponse,
@@ -1554,9 +1713,15 @@ __all__ = [
     ListAiModelProvidersRequest,
     ListAiModelProvidersResponseBody,
     ListAiModelProvidersResponse,
+    ListApiPathFieldTemplatesRequest,
+    ListApiPathFieldTemplatesResponseBody,
+    ListApiPathFieldTemplatesResponse,
     ListBatchExportTasksRequest,
     ListBatchExportTasksResponseBody,
     ListBatchExportTasksResponse,
+    ListChatSessionsRequest,
+    ListChatSessionsResponseBody,
+    ListChatSessionsResponse,
     ListConsumerAuthorizationRulesRequest,
     ListConsumerAuthorizationRulesResponseBody,
     ListConsumerAuthorizationRulesResponse,
@@ -1575,6 +1740,9 @@ __all__ = [
     ListConsumersRequest,
     ListConsumersResponseBody,
     ListConsumersResponse,
+    ListDevelopersRequest,
+    ListDevelopersResponseBody,
+    ListDevelopersResponse,
     ListDomainsRequest,
     ListDomainsResponseBody,
     ListDomainsResponse,
@@ -1608,6 +1776,12 @@ __all__ = [
     ListGlobalPoliciesRequest,
     ListGlobalPoliciesResponseBody,
     ListGlobalPoliciesResponse,
+    ListHiMarketConsumerSubscriptionsRequest,
+    ListHiMarketConsumerSubscriptionsResponseBody,
+    ListHiMarketConsumerSubscriptionsResponse,
+    ListHiMarketConsumersRequest,
+    ListHiMarketConsumersResponseBody,
+    ListHiMarketConsumersResponse,
     ListHttpApiOperationsRequest,
     ListHttpApiOperationsResponseBody,
     ListHttpApiOperationsResponse,
@@ -1623,12 +1797,18 @@ __all__ = [
     ListK8sClusterSourcesRequest,
     ListK8sClusterSourcesResponseBody,
     ListK8sClusterSourcesResponse,
+    ListMcpProductToolsRequest,
+    ListMcpProductToolsResponseBody,
+    ListMcpProductToolsResponse,
     ListMcpServersRequest,
     ListMcpServersResponseBody,
     ListMcpServersResponse,
     ListMigrationTasksRequest,
     ListMigrationTasksResponseBody,
     ListMigrationTasksResponse,
+    ListModelCardsRequest,
+    ListModelCardsResponseBody,
+    ListModelCardsResponse,
     ListMseNacosSourcesRequest,
     ListMseNacosSourcesResponseBody,
     ListMseNacosSourcesResponse,
@@ -1653,6 +1833,27 @@ __all__ = [
     ListPolicyClassesRequest,
     ListPolicyClassesResponseBody,
     ListPolicyClassesResponse,
+    ListPortalPublicationsRequest,
+    ListPortalPublicationsResponseBody,
+    ListPortalPublicationsResponse,
+    ListPortalsRequest,
+    ListPortalsResponseBody,
+    ListPortalsResponse,
+    ListProductCategoriesRequest,
+    ListProductCategoriesResponseBody,
+    ListProductCategoriesResponse,
+    ListProductPublicationsRequest,
+    ListProductPublicationsResponseBody,
+    ListProductPublicationsResponse,
+    ListProductSubscriptionsRequest,
+    ListProductSubscriptionsResponseBody,
+    ListProductSubscriptionsResponse,
+    ListProductsRequest,
+    ListProductsResponseBody,
+    ListProductsResponse,
+    ListPublishableProductsRequest,
+    ListPublishableProductsResponseBody,
+    ListPublishableProductsResponse,
     ListRiskCheckResultsRequest,
     ListRiskCheckResultsResponseBody,
     ListRiskCheckResultsResponse,
@@ -1681,6 +1882,15 @@ __all__ = [
     ListZonesRequest,
     ListZonesResponseBody,
     ListZonesResponse,
+    LoginDeveloperRequest,
+    LoginDeveloperResponseBody,
+    LoginDeveloperResponse,
+    LogoutDeveloperRequest,
+    LogoutDeveloperResponseBody,
+    LogoutDeveloperResponse,
+    PublishProductRequest,
+    PublishProductResponseBody,
+    PublishProductResponse,
     QueryConsumerAuthorizationRulesRequest,
     QueryConsumerAuthorizationRulesResponseBody,
     QueryConsumerAuthorizationRulesResponse,
@@ -1697,6 +1907,9 @@ __all__ = [
     RunPluginPipelineRequest,
     RunPluginPipelineResponseBody,
     RunPluginPipelineResponse,
+    SubscribeProductRequest,
+    SubscribeProductResponseBody,
+    SubscribeProductResponse,
     SyncMCPServersRequest,
     SyncMCPServersResponseBody,
     SyncMCPServersResponse,
@@ -1710,6 +1923,9 @@ __all__ = [
     UndeployHttpApiResponse,
     UninstallPluginResponseBody,
     UninstallPluginResponse,
+    UnpublishProductRequest,
+    UnpublishProductResponseBody,
+    UnpublishProductResponse,
     UntagResourcesRequest,
     UntagResourcesShrinkRequest,
     UntagResourcesResponseBody,
@@ -1726,6 +1942,9 @@ __all__ = [
     UpdateAuthorizationRuleRequest,
     UpdateAuthorizationRuleResponseBody,
     UpdateAuthorizationRuleResponse,
+    UpdateCategoryProductsRequest,
+    UpdateCategoryProductsResponseBody,
+    UpdateCategoryProductsResponse,
     UpdateConsumerRequest,
     UpdateConsumerResponseBody,
     UpdateConsumerResponse,
@@ -1735,6 +1954,9 @@ __all__ = [
     UpdateConsumerGroupRequest,
     UpdateConsumerGroupResponseBody,
     UpdateConsumerGroupResponse,
+    UpdateDeveloperStatusRequest,
+    UpdateDeveloperStatusResponseBody,
+    UpdateDeveloperStatusResponse,
     UpdateDomainRequest,
     UpdateDomainResponseBody,
     UpdateDomainResponse,
@@ -1786,6 +2008,15 @@ __all__ = [
     UpdatePolicyRequest,
     UpdatePolicyResponseBody,
     UpdatePolicyResponse,
+    UpdatePortalRequest,
+    UpdatePortalResponseBody,
+    UpdatePortalResponse,
+    UpdateProductRequest,
+    UpdateProductResponseBody,
+    UpdateProductResponse,
+    UpdateProductCategoryRequest,
+    UpdateProductCategoryResponseBody,
+    UpdateProductCategoryResponse,
     UpdateRiskNotificationRequest,
     UpdateRiskNotificationResponseBody,
     UpdateRiskNotificationResponse,
@@ -1973,6 +2204,8 @@ __all__ = [
     CreatePluginWorkspaceResponseBodyData,
     CreatePolicyResponseBodyData,
     CreatePolicyAttachmentResponseBodyData,
+    CreatePortalResponseBodyData,
+    CreateProductResponseBodyData,
     CreateProductCategoryResponseBodyData,
     CreateProductRefRequestApigRefConfig,
     CreateRiskCheckTaskResponseBodyData,
@@ -2079,6 +2312,10 @@ __all__ = [
     GetPluginClassResponseBodyData,
     GetPluginWorkspaceResponseBodyData,
     GetPolicyAttachmentResponseBodyData,
+    GetPortalResponseBodyData,
+    GetProductResponseBodyData,
+    GetProductCategoryResponseBodyData,
+    GetProductRefResponseBodyData,
     GetResourceOverviewResponseBodyDataApi,
     GetResourceOverviewResponseBodyDataGateway,
     GetResourceOverviewResponseBodyDataRiskOverviewRiskDetails,
@@ -2091,6 +2328,7 @@ __all__ = [
     GetSourceResponseBodyDataNacosSourceInfo,
     GetSourceResponseBodyData,
     GetTraceConfigResponseBodyData,
+    HandleOidcCallbackResponseBodyData,
     ImportHttpApiRequestSpecOssConfig,
     ImportHttpApiResponseBodyDataDryRunInfoFailureComponents,
     ImportHttpApiResponseBodyDataDryRunInfoFailureOperations,
@@ -2115,8 +2353,12 @@ __all__ = [
     ListAiModelProvidersResponseBodyDataItemsModelCards,
     ListAiModelProvidersResponseBodyDataItems,
     ListAiModelProvidersResponseBodyData,
+    ListApiPathFieldTemplatesResponseBodyDataItems,
+    ListApiPathFieldTemplatesResponseBodyData,
     ListBatchExportTasksResponseBodyDataItems,
     ListBatchExportTasksResponseBodyData,
+    ListChatSessionsResponseBodyDataContent,
+    ListChatSessionsResponseBodyData,
     ListConsumerAuthorizationRulesResponseBodyDataItems,
     ListConsumerAuthorizationRulesResponseBodyData,
     ListConsumerGroupConsumersResponseBodyDataItems,
@@ -2129,6 +2371,8 @@ __all__ = [
     ListConsumerQuotaRulesResponseBodyData,
     ListConsumersResponseBodyDataItems,
     ListConsumersResponseBodyData,
+    ListDevelopersResponseBodyDataContent,
+    ListDevelopersResponseBodyData,
     ListDomainsResponseBodyData,
     ListEnvironmentsResponseBodyData,
     ListExternalServicesResponseBodyDataItemsServices,
@@ -2164,6 +2408,10 @@ __all__ = [
     ListGatewaysResponseBodyDataItems,
     ListGatewaysResponseBodyData,
     ListGlobalPoliciesResponseBodyData,
+    ListHiMarketConsumerSubscriptionsResponseBodyDataContent,
+    ListHiMarketConsumerSubscriptionsResponseBodyData,
+    ListHiMarketConsumersResponseBodyDataContent,
+    ListHiMarketConsumersResponseBodyData,
     ListHttpApiOperationsResponseBodyData,
     ListHttpApiRoutesResponseBodyData,
     ListHttpApisResponseBodyData,
@@ -2171,6 +2419,8 @@ __all__ = [
     ListInstallableGatewaysResponseBodyData,
     ListK8sClusterSourcesResponseBodyDataItems,
     ListK8sClusterSourcesResponseBodyData,
+    ListMcpProductToolsResponseBodyDataTools,
+    ListMcpProductToolsResponseBodyData,
     ListMcpServersResponseBodyDataItemsAssembledSources,
     ListMcpServersResponseBodyDataItemsNacosMcpSyncInfo,
     ListMcpServersResponseBodyDataItems,
@@ -2179,6 +2429,9 @@ __all__ = [
     ListMigrationTasksResponseBodyDataItemsVirtualServices,
     ListMigrationTasksResponseBodyDataItems,
     ListMigrationTasksResponseBodyData,
+    ListModelCardsResponseBodyDataAvailablePaths,
+    ListModelCardsResponseBodyDataMeta,
+    ListModelCardsResponseBodyData,
     ListMseNacosSourcesResponseBodyDataItems,
     ListMseNacosSourcesResponseBodyData,
     ListPluginAttachmentsResponseBodyDataItems,
@@ -2195,6 +2448,19 @@ __all__ = [
     ListPluginsResponseBodyData,
     ListPoliciesResponseBodyData,
     ListPolicyClassesResponseBodyData,
+    ListPortalPublicationsResponseBodyDataContent,
+    ListPortalPublicationsResponseBodyData,
+    ListPortalsResponseBodyDataContent,
+    ListPortalsResponseBodyData,
+    ListProductCategoriesResponseBodyDataContent,
+    ListProductCategoriesResponseBodyData,
+    ListProductPublicationsResponseBodyData,
+    ListProductSubscriptionsResponseBodyDataContent,
+    ListProductSubscriptionsResponseBodyData,
+    ListProductsResponseBodyDataContent,
+    ListProductsResponseBodyData,
+    ListPublishableProductsResponseBodyDataContent,
+    ListPublishableProductsResponseBodyData,
     ListRiskCheckResultsResponseBodyData,
     ListSecretReferencesResponseBodyDataItemsPluginConfig,
     ListSecretReferencesResponseBodyDataItemsServiceConfig,
@@ -2215,12 +2481,15 @@ __all__ = [
     ListTagResourcesResponseBodyTagResources,
     ListZonesResponseBodyDataItems,
     ListZonesResponseBodyData,
+    LoginDeveloperResponseBodyData,
+    PublishProductResponseBodyData,
     QueryConsumerAuthorizationRulesResponseBodyDataItemsResourceInfo,
     QueryConsumerAuthorizationRulesResponseBodyDataItems,
     QueryConsumerAuthorizationRulesResponseBodyData,
     ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems,
     ResetGatewayQuotaRuleResponseBodyDataConflictPreview,
     ResetGatewayQuotaRuleResponseBodyData,
+    SubscribeProductResponseBodyData,
     SyncMCPServersRequestNacosMcpServers,
     SyncMCPServersResponseBodyDataFailedMcpServers,
     SyncMCPServersResponseBodyDataSucceedMcpServers,
@@ -2264,6 +2533,7 @@ __all__ = [
     UpdateMcpServerRequestGrayMcpServerConfigs,
     UpdateMcpServerRequestMcpServerConfig,
     UpdateMigrationTaskRequestVirtualServices,
+    UpdatePortalResponseBodyData,
     UpdateServiceRequestHealthCheckConfig,
     UpdateServiceRequestOutlierDetectionConfig,
     UpdateServiceRequestPorts,

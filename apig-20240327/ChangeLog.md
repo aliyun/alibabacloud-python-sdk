@@ -1,3 +1,38 @@
+2026-10-13 Version: 11.6.0
+- Support API CreatePortal.
+- Support API CreateProduct.
+- Support API GetPortal.
+- Support API GetProduct.
+- Support API GetProductCategory.
+- Support API GetProductRef.
+- Support API HandleOidcCallback.
+- Support API InitiateOidcAuth.
+- Support API ListApiPathFieldTemplates.
+- Support API ListChatSessions.
+- Support API ListDevelopers.
+- Support API ListHiMarketConsumerSubscriptions.
+- Support API ListHiMarketConsumers.
+- Support API ListMcpProductTools.
+- Support API ListModelCards.
+- Support API ListPortalPublications.
+- Support API ListPortals.
+- Support API ListProductCategories.
+- Support API ListProductPublications.
+- Support API ListProductSubscriptions.
+- Support API ListProducts.
+- Support API ListPublishableProducts.
+- Support API LoginDeveloper.
+- Support API LogoutDeveloper.
+- Support API PublishProduct.
+- Support API SubscribeProduct.
+- Support API UnpublishProduct.
+- Support API UpdateCategoryProducts.
+- Support API UpdateDeveloperStatus.
+- Support API UpdatePortal.
+- Support API UpdateProduct.
+- Support API UpdateProductCategory.
+
+
 2026-10-12 Version: 11.5.0
 - Support API CheckCommodityStatus.
 - Support API CreateChatSession.
