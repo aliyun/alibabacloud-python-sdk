@@ -29,50 +29,50 @@ class DescribeNodeGroupResponseBody(DaraModel):
         user_data: str = None,
         virtual_gpu_enabled: bool = None,
     ):
-        # The zone ID.
+        # The zone.
         self.az = az
-        # The ID of the cluster.
+        # The cluster ID.
         self.cluster_id = cluster_id
         # The cluster name.
         self.cluster_name = cluster_name
-        # The creation time.
+        # The creation time. The time is in ISO 8601 format.
         self.create_time = create_time
-        # Indicates whether file storage can be mounted.
+        # Indicates whether file storage mounting is supported.
         self.file_system_mount_enabled = file_system_mount_enabled
         # The image ID.
         self.image_id = image_id
-        # The name of the image.
+        # The image name.
         self.image_name = image_name
         # The name of the key pair.
         self.key_pair_name = key_pair_name
         # Valid values:
-        # • password: The node group supports only password-based logon.
-        # • keypair: The node group supports only key pair-based logon.
-        # • both: The node group supports password-based and key pair-based logon.
+        # • password: The group supports only password-based logon. 
+        # • keypair: The group supports only key pair-based logon. 
+        # • both: The group supports both password-based and key pair-based logon.
         # 
-        # If this parameter is not returned, no logon method is configured for the node group.
+        # If the value is empty, no logon method is configured for the group.
         self.login_type = login_type
-        # The instance type.
+        # The machine type.
         self.machine_type = machine_type
         # The number of nodes.
         self.node_count = node_count
-        # The description of the node group.
+        # The node group description.
         self.node_group_description = node_group_description
-        # The ID of the node group.
+        # The node group ID.
         self.node_group_id = node_group_id
-        # The name of the node group.
+        # The node group name.
         self.node_group_name = node_group_name
-        # The name of the RAM role. You can call the ListRoles operation of the RAM API to query the RAM roles that you created.
+        # The name of the RAM role for the node. You can call the RAM API ListRoles to query the RAM roles that you have created.
         self.ram_role_name = ram_role_name
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # The system disk information.
+        # The system cloud disk information.
         self.system_disk = system_disk
-        # The time when the node group was last updated.
+        # The update time. The time is in ISO 8601 format.
         self.update_time = update_time
-        # The user data.
+        # The user-defined script.
         self.user_data = user_data
-        # Indicates whether the node group supports GPU virtualization.
+        # Indicates whether GPU virtualization slicing is supported.
         self.virtual_gpu_enabled = virtual_gpu_enabled
 
     def validate(self):
@@ -218,33 +218,24 @@ class DescribeNodeGroupResponseBodySystemDisk(DaraModel):
         performance_level: str = None,
         size: int = None,
     ):
-        # The category of the disk.
+        # The category of the cloud disk.
         self.category = category
-        # The performance level of the ESSD. Valid values:
-        # 
+        # The performance level (PL) of the ESSD used as the system cloud disk. Valid values:
         # - PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
-        # 
         # - PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
         self.performance_level = performance_level
-        # The size of the system disk. Unit: GiB. Valid values:
+        # The size of the system cloud disk. Unit: GiB. Valid values:
         # 
-        # - Basic disk: 20–500.
-        # 
+        # - Premium performance disk: 20 to 500.
         # - ESSD:
+        #   - PL0: 1 to 2048.
+        #   - PL1: 20 to 2048.
+        #   - PL2: 461 to 2048.
+        #   - PL3: 1261 to 2048.
+        # - ESSD AutoPL: 1 to 2048.
+        # - Other cloud disk types: 20 to 2048.
         # 
-        #   - PL0: 1–2,048.
-        # 
-        #   - PL1: 20–2,048.
-        # 
-        #   - PL2: 461–2,048.
-        # 
-        #   - PL3: 1,261–2,048.
-        # 
-        # - ESSD AutoPL disk: 1–2,048.
-        # 
-        # - Other disk categories: 20–2,048.
-        # 
-        # Default value: the larger value between 20 and the size of the image that is specified by `ImageId`.
+        # Default value: max{20, size of the image specified by the parameter ImageId}.
         self.size = size
 
     def validate(self):

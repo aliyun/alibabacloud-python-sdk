@@ -9,7 +9,7 @@ class DescribeTaskRequest(DaraModel):
         self,
         task_id: str = None,
     ):
-        # The task ID.
+        # The node ID.
         # 
         # This parameter is required.
         self.task_id = task_id

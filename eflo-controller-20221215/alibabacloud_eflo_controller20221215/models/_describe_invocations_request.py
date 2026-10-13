@@ -12,23 +12,19 @@ class DescribeInvocationsRequest(DaraModel):
         invoke_id: str = None,
         node_id: str = None,
     ):
-        # The encoding mode of the `CommandContent` and `Output` fields in the response. Valid values:
-        # 
+        # The encoding method for the CommandContent and Output fields in the response. Valid values:
         # - PlainText: Returns the original command content and output.
-        # 
         # - Base64 (default): Returns the Base64-encoded command content and output.
         self.content_encoding = content_encoding
-        # Specifies whether to include the command output in the response.
-        # 
-        # - true: Returns the output. You must specify the `InvokeId` or `NodeId` parameter.
-        # 
+        # Specifies whether to return the command output in the results.
+        # - true: Returns the output. In this case, specify at least the InvokeId or InstanceId parameter.
         # - false (default): Does not return the output.
         self.include_output = include_output
-        # The ID of the command execution.
+        # The command execution ID.
         # 
         # This parameter is required.
         self.invoke_id = invoke_id
-        # The ID of the instance.
+        # The instance ID.
         self.node_id = node_id
 
     def validate(self):

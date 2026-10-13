@@ -14,11 +14,11 @@ class ListSyslogsRequest(DaraModel):
         reverse: bool = None,
         to_time: str = None,
     ):
-        # The start time.
+        # The start time. Specify a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.from_time = from_time
-        # The token for the next page. To retrieve the next page of results, include the token in the next request.
+        # The token for the next page. Include this token when you retrieve the next page of results.
         self.next_token = next_token
         # The node ID.
         # 
@@ -26,9 +26,9 @@ class ListSyslogsRequest(DaraModel):
         self.node_id = node_id
         # The query condition.
         self.query = query
-        # Specifies whether to sort the results by time in descending order.
+        # Specifies whether to query logs in reverse chronological order.
         self.reverse = reverse
-        # The end time.
+        # The end time. Specify a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.to_time = to_time

@@ -21,15 +21,15 @@ class ListClusterHyperNodesRequest(DaraModel):
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The number of entries to return on each page. The maximum value is 100.
+        # The number of entries per page in a paged query. Maximum value: 100.
         # 
         # Default value:
         # 
-        # • If this parameter is not set or is set to a value less than 20, the default value is 20.
+        # - If this parameter is not set or is set to a value less than 20, the default value is 20.
         # 
-        # • If this parameter is set to a value greater than 100, the default value is 100.
+        # - If this parameter is set to a value greater than 100, the default value is 100.
         self.max_results = max_results
-        # The token used to start the query. Set this parameter to the NextToken value returned from a previous call.
+        # The pagination token. Set this parameter to the NextToken value returned in the previous API call.
         self.next_token = next_token
         # The node group ID.
         self.node_group_id = node_group_id

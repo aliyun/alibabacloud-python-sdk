@@ -9,7 +9,7 @@ class DescribeNodeTypeRequest(DaraModel):
         self,
         node_type: str = None,
     ):
-        # The node scale-out pattern.
+        # The node scaling mode.
         self.node_type = node_type
 
     def validate(self):

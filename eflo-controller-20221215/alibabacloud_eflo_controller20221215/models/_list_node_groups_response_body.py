@@ -14,11 +14,11 @@ class ListNodeGroupsResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The node groups.
+        # The cluster group information.
         self.groups = groups
-        # The token that is used in the next request to retrieve a new page of results.
+        # The NextToken for the next page. Include this return value when requesting the next page.
         self.next_token = next_token
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -83,7 +83,7 @@ class ListNodeGroupsResponseBodyGroups(DaraModel):
         self.cluster_id = cluster_id
         # The cluster name.
         self.cluster_name = cluster_name
-        # The creation time.
+        # The creation time. The time is in ISO 8601 format.
         self.create_time = create_time
         # The description.
         self.description = description
@@ -97,13 +97,13 @@ class ListNodeGroupsResponseBodyGroups(DaraModel):
         self.image_id = image_id
         # The image name.
         self.image_name = image_name
-        # The instance type.
+        # The machine type.
         self.machine_type = machine_type
         # The number of nodes.
         self.node_count = node_count
-        # The update time.
+        # The update time. The time is in ISO 8601 format.
         self.update_time = update_time
-        # Whether to enable gpu virtualization or not
+        # Indicates whether GPU virtualization splitting is supported.
         self.virtual_gpu_enabled = virtual_gpu_enabled
         # The zone ID.
         self.zone_id = zone_id

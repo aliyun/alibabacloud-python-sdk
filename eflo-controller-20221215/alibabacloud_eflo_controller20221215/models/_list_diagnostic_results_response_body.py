@@ -17,14 +17,15 @@ class ListDiagnosticResultsResponseBody(DaraModel):
     ):
         # The diagnostic information.
         self.diagnostic_results = diagnostic_results
-        # Number of items per page in a paginated query. The maximum value is 100.
+        # The number of entries per page in a paged query. Maximum value: 100.
         # 
         # Default value:
         # 
-        # - If no value is set or the set value is less than 20, the default value is 20.
-        # - If the set value is greater than 100, the default value is 100.
+        # - If this parameter is not specified or is set to a value less than 20, the default value is 20.
+        # 
+        # - If this parameter is set to a value greater than 100, the default value is 100.
         self.max_results = max_results
-        # NextToken for the next page. Include this value when requesting the next page.
+        # The NextToken for the next page. Include this value when you request the next page.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -91,26 +92,23 @@ class ListDiagnosticResultsResponseBodyDiagnosticResults(DaraModel):
     ):
         # The cluster ID.
         self.cluster_id = cluster_id
-        # Cluster Name
+        # The cluster name.
         self.cluster_name = cluster_name
-        # Creation time of the diagnostic task.
+        # The time when the diagnostic task was created. The time is in ISO 8601 format. Z in the example indicates UTC.
         self.creation_time = creation_time
-        # Diagnostic content. For example, in network diagnostics, there are static configuration checks, dynamic operation checks, and other diagnostic contents.
+        # The diagnostic content. For example, in the network diagnostic type, the diagnostic content includes static configuration checks and dynamic runtime checks.
         self.diag_content = diag_content
-        # Diagnosis ID
+        # The diagnostic ID.
         self.diag_id = diag_id
-        # Diagnostic result, either success or failure.
+        # The diagnostic result, which indicates success or failure.
         self.diag_result = diag_result
-        # Completion time of the diagnostic task.
+        # The time when the diagnostic task was completed. The time is in ISO 8601 format. Z in the example indicates UTC.
         self.finished_time = finished_time
         # The resource ID.
         self.resource_id = resource_id
-        # Server name.
+        # The service name.
         self.server_name = server_name
-        # Status of the diagnostic task. Possible values:
-        # - InProgress: Diagnosing.
-        # - Finished: Diagnosis completed.
-        # - Failed: Diagnosis failed.
+        # The governance status.
         self.status = status
 
     def validate(self):

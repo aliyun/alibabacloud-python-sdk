@@ -12,16 +12,17 @@ class ListDiagnosticResultsRequest(DaraModel):
         next_token: str = None,
         resource_group_id: str = None,
     ):
-        # Type of diagnosis, indicating which diagnostic rules are hit.
+        # The diagnostic type.
         self.diag_type = diag_type
-        # Number of items per page in a paginated query. The maximum value is 100.
+        # The number of entries per page in a paged query. Maximum value: 100.
         # 
         # Default value:
         # 
-        # - If no value is set or the set value is less than 20, the default value is 20.
-        # - If the set value is greater than 100, the default value is 100.
+        # - If this parameter is not specified or is set to a value less than 20, the default value is 20.
+        # 
+        # - If this parameter is set to a value greater than 100, the default value is 100.
         self.max_results = max_results
-        # NextToken for the next page. Include this value when requesting the next page.
+        # The pagination token. Set this parameter to the value of NextToken that was returned from the previous API call.
         self.next_token = next_token
         # The resource group ID.
         self.resource_group_id = resource_group_id

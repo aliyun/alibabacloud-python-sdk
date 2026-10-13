@@ -21,9 +21,9 @@ class ExtendClusterRequest(DaraModel):
         self.cluster_id = cluster_id
         # Specifies whether to skip failed nodes. Default value: False.
         self.ignore_failed_node_tasks = ignore_failed_node_tasks
-        # The combined IP allocation policy. Each policy can use only one policy type, and multiple policies can be combined.
+        # The combined policy for IP allocation. Each policy can use only one policy type, and multiple policies can be combined.
         self.ip_allocation_policy = ip_allocation_policy
-        # The node groups.
+        # The node group.
         self.node_groups = node_groups
         # The zone ID of the vSwitch.
         self.v_switch_zone_id = v_switch_zone_id
@@ -116,7 +116,7 @@ class ExtendClusterRequestNodeGroups(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The number of nodes to purchase. Valid values: 0 to 500. If Amount is set to 0, no nodes are purchased and existing nodes are used for scale-out. If Amount is set to a value from 1 to 500, the specified number of nodes are purchased and used for scale-out. Default value: 0
+        # The number of nodes to purchase. Valid values: 0 to 500. If Amount is set to 0, no nodes are purchased and existing nodes are used for scale-out. If Amount is set to a value from 1 to 500, the specified number of nodes are purchased and used for scale-out. Default value: 0.
         self.amount = amount
         # Specifies whether to enable auto-renewal for the purchased nodes. This parameter takes effect when Amount is not 0 and ChargeType is set to PREPAY or POSTPAY. Valid values: True: Enable auto-renewal. False: Disable auto-renewal. Default value: False.
         self.auto_renew = auto_renew
@@ -132,13 +132,13 @@ class ExtendClusterRequestNodeGroups(DaraModel):
         self.node_group_id = node_group_id
         # The node tags.
         self.node_tag = node_tag
-        # The node list.
+        # The list of nodes.
         self.nodes = nodes
         # The subscription duration of the purchased nodes. Unit: months. Valid values: 1, 6, 12, 24, 36, and 48. This parameter takes effect when Amount is not 0 and ChargeType is set to PREPAY.
         self.period = period
         # The savings plan ID.
         self.savings_plan_id = savings_plan_id
-        # The custom executable shell script. The script must be Base64-encoded. The maximum size of the raw data is 16 KB.
+        # The custom executable shell script. The script must be in Base64 encoding. The maximum size of the raw data is 16 KB.
         self.user_data = user_data
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
@@ -377,17 +377,17 @@ class ExtendClusterRequestNodeGroupsNodesDataDisk(DaraModel):
         provisioned_iops: int = None,
         size: int = None,
     ):
-        # Specifies whether to enable burst (I/O burst).
+        # Specifies whether to enable burst (performance burst).
         self.bursting_enabled = bursting_enabled
         # The type.
         self.category = category
         # Specifies whether the data cloud disk is deleted when the node is unsubscribed.
         self.delete_with_node = delete_with_node
-        # The performance metric of the data cloud disk.
+        # The performance parameter of the data cloud disk.
         self.performance_level = performance_level
         # The provisioned performance (IOPS). Valid values: 0 to 50000.
         self.provisioned_iops = provisioned_iops
-        # The cloud disk size.
+        # The disk size.
         self.size = size
 
     def validate(self):
@@ -488,7 +488,7 @@ class ExtendClusterRequestNodeGroupsHyperNodes(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The list of cloud disk information.
+        # The list of disk information.
         self.data_disk = data_disk
         # The hostname.
         self.hostname = hostname
@@ -577,21 +577,21 @@ class ExtendClusterRequestNodeGroupsHyperNodesDataDisk(DaraModel):
         provisioned_iops: int = None,
         size: int = None,
     ):
-        # Specifies whether to enable burst (I/O burst).
+        # Specifies whether to enable burst (performance burst).
         self.bursting_enabled = bursting_enabled
         # The cloud disk type. Valid values:
         # 
-        #  - cloud_essd: ESSD.
+        #  - cloud_essd: Enterprise SSD (ESSD) cloud disk.
         self.category = category
         # Specifies whether the data cloud disk is deleted when the node is unsubscribed.
         self.delete_with_node = delete_with_node
-        # The performance level (PL) when an ESSD is used as a system cloud disk. Valid values:
-        # - PL0: a maximum of 10,000 random read/write IOPS per disk.
-        # - PL1: a maximum of 50,000 random read/write IOPS per disk.
+        # The performance level (PL) of the ESSD cloud disk used as a system cloud disk. Valid values:
+        # - PL0: A maximum of 10,000 random read/write IOPS per disk.
+        # - PL1: A maximum of 50,000 random read/write IOPS per disk.
         self.performance_level = performance_level
-        # The provisioned performance (read/write IOPS) of a single ESSD AutoPL cloud disk.
+        # The provisioned performance of read/write IOPS for the ESSD AutoPL cloud disk (per disk).
         self.provisioned_iops = provisioned_iops
-        # The cloud disk size. Unit: GiB.
+        # The disk size. Unit: GiB.
         self.size = size
 
     def validate(self):

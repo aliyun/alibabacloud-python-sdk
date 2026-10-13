@@ -12,11 +12,11 @@ class ListNodeGroupDriftedNodesShrinkRequest(DaraModel):
         node_group_id: str = None,
         node_ids_shrink: str = None,
     ):
-        # The maximum number of entries per page for a paged query. Valid values: 1 to 500. Default value: 100.
+        # The maximum number of entries per page in a paging query. Valid values: 1 to 500. Default value: 100.
         self.max_results = max_results
         # The pagination token. Set this parameter to the NextToken value returned in the previous call. You do not need to set this parameter for the first request.
         self.next_token = next_token
-        # The ID of the node group.
+        # The node group ID. Call ListClusters to obtain the ClusterId, pass the ClusterId to ListNodeGroups, and obtain the value from the NodeGroupId response parameter.
         # 
         # This parameter is required.
         self.node_group_id = node_group_id

@@ -17,7 +17,7 @@ class ListNodeGroupRefreshTasksResponseBody(DaraModel):
     ):
         # The maximum number of entries per page.
         self.max_results = max_results
-        # The pagination token for the next query. An empty value indicates that no more results exist.
+        # The pagination token for the next query. If NextToken is empty, no more results exist.
         self.next_token = next_token
         # The list of node group refresh tasks.
         self.node_group_refresh_tasks = node_group_refresh_tasks
@@ -103,7 +103,7 @@ class ListNodeGroupRefreshTasksResponseBodyNodeGroupRefreshTasks(DaraModel):
         # - Success: The refresh task is executed.
         # - Failed: The refresh task failed.
         self.status = status
-        # The total number of nodes to refresh in this task.
+        # The total number of nodes to be refreshed by the task.
         self.total_node_count = total_node_count
 
     def validate(self):

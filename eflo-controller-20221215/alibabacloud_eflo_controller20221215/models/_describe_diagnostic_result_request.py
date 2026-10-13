@@ -9,7 +9,7 @@ class DescribeDiagnosticResultRequest(DaraModel):
         self,
         diagnostic_id: str = None,
     ):
-        # The diagnostic task ID.
+        # The diagnostic ID.
         self.diagnostic_id = diagnostic_id
 
     def validate(self):

@@ -14,7 +14,7 @@ class ListFreeNodesResponseBody(DaraModel):
         nodes: List[main_models.ListFreeNodesResponseBodyNodes] = None,
         request_id: str = None,
     ):
-        # The token returned for the next query.
+        # The pagination token returned by this call.
         self.next_token = next_token
         # The list of nodes.
         self.nodes = nodes
@@ -79,11 +79,11 @@ class ListFreeNodesResponseBodyNodes(DaraModel):
     ):
         # The commodity code.
         self.commodity_code = commodity_code
-        # The creation time.
+        # The creation time. The time is in ISO 8601 format.
         self.create_time = create_time
-        # The expiration time of the machine.
+        # The expiration time of the machine. The time is in ISO 8601 format.
         self.expired_time = expired_time
-        # The cluster ID.
+        # The cluster number.
         self.hpn_zone = hpn_zone
         # The hyper node ID.
         self.hyper_node_id = hyper_node_id

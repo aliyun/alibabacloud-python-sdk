@@ -15,9 +15,9 @@ class ListNodeGroupDriftedNodesResponseBody(DaraModel):
         nodes: List[main_models.ListNodeGroupDriftedNodesResponseBodyNodes] = None,
         request_id: str = None,
     ):
-        # The maximum number of entries per page for a single query.
+        # The maximum number of entries per page.
         self.max_results = max_results
-        # The pagination token returned by this call. An empty value indicates that no more pages are available.
+        # The pagination token returned by this call. An empty value indicates that no more pages exist.
         self.next_token = next_token
         # The list of nodes that are inconsistent with the node group configuration (paginated).
         self.nodes = nodes
@@ -76,7 +76,7 @@ class ListNodeGroupDriftedNodesResponseBodyNodes(DaraModel):
         node_id: str = None,
         property_drifts: List[main_models.ListNodeGroupDriftedNodesResponseBodyNodesPropertyDrifts] = None,
     ):
-        # The ID of the node.
+        # The node ID.
         self.node_id = node_id
         # The list of inconsistent properties for this node.
         self.property_drifts = property_drifts
@@ -125,7 +125,7 @@ class ListNodeGroupDriftedNodesResponseBodyNodesPropertyDrifts(DaraModel):
     ):
         # The current value of the node property. Complex types are serialized as JSON strings.
         self.actual_value = actual_value
-        # The minimum action required to apply the TargetValue: Refresh / Reboot / Reimage. For more information, refer to the MaxDisruptiveAction parameter description in the RefreshNodeGroupNodes operation.
+        # The minimum action required to apply the TargetValue: Refresh, Reboot, or Reimage. For more information, refer to the MaxDisruptiveAction parameter of the RefreshNodeGroupNodes operation.
         self.min_required_action = min_required_action
         # The property path in dot notation (such as a.b.c), compatible with both flat and nested properties.
         self.property_path = property_path

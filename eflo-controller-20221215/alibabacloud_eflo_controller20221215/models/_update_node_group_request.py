@@ -20,21 +20,21 @@ class UpdateNodeGroupRequest(DaraModel):
     ):
         # Specifies whether file storage mounting is supported.
         self.file_system_mount_enabled = file_system_mount_enabled
-        # The default image ID of the node group. If this parameter is not specified, the image remains unchanged.
+        # The default image ID of the node group. If you do not specify this parameter, the image ID remains unchanged.
         self.image_id = image_id
-        # The key pair name.
+        # The name of the key pair.
         self.key_pair_name = key_pair_name
-        # The logon password of the machines in the node group.
+        # The logon password for the machines in the node group.
         self.login_password = login_password
-        # The node group name.
+        # The name of the node group.
         self.new_node_group_name = new_node_group_name
-        # The node group ID.
+        # The ID of the node group.
         self.node_group_id = node_group_id
-        # The RAM role name of the node. You can call the RAM API ListRoles to query the node RAM roles that you have created. The trusted entity of the role must be set to Lingjun AI Computing Service.
-        # Note: Clearing an existing role is not supported.
+        # The name of the RAM role for the node. You can call the ListRoles API operation of RAM to query the RAM roles that you have created. The trusted entity of the role must be Lingjun AI Computing Service. <warning>Submitting an empty string "" clears the RAM role of the node group.</warning>
         self.ram_role_name = ram_role_name
+        # The system cloud disk configuration.
         self.system_disk = system_disk
-        # The custom executable shell script. The script must be Base64-encoded. The maximum size of the raw data is 16 KB.
+        # The custom executable shell script. It must be Base64-encoded, and the maximum size of the raw data is 16 KB.
         self.user_data = user_data
 
     def validate(self):
@@ -112,6 +112,7 @@ class UpdateNodeGroupRequestSystemDisk(DaraModel):
         self,
         performance_level: str = None,
     ):
+        # The performance level.
         self.performance_level = performance_level
 
     def validate(self):

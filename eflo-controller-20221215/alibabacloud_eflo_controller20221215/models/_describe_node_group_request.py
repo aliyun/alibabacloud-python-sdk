@@ -9,7 +9,7 @@ class DescribeNodeGroupRequest(DaraModel):
         self,
         node_group_id: str = None,
     ):
-        # The ID of the node group.
+        # The node group ID.
         # 
         # This parameter is required.
         self.node_group_id = node_group_id

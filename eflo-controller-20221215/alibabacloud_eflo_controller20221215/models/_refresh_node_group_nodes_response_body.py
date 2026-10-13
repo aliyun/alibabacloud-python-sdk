@@ -10,7 +10,7 @@ class RefreshNodeGroupNodesResponseBody(DaraModel):
         node_group_refresh_task_id: str = None,
         request_id: str = None,
     ):
-        # The task ID. Query the task progress by calling DescribeNodeGroupRefreshTask. If no nodes have configuration drift, no task is created and this field returns an empty string.
+        # The task ID. Query the task progress through DescribeNodeGroupRefreshTask. If no node has configuration drift, no task is created and this field returns an empty string.
         self.node_group_refresh_task_id = node_group_refresh_task_id
         # Id of the request
         self.request_id = request_id

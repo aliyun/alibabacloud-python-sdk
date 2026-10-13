@@ -14,15 +14,15 @@ class ListNodeGroupsRequest(DaraModel):
     ):
         # The cluster ID.
         self.cluster_id = cluster_id
-        # The number of entries per page. Maximum value: 100.
+        # The number of entries per page for a paged query. Maximum value: 100.
         # 
         # Default value:
         # 
-        # • If you do not configure this parameter or if you set this parameter to a value less than 20, the default value is 20.
+        # *   If the value is not set or is set to less than 20, the default value is 20.
         # 
-        # • If you set this parameter to a value greater than 100, the default value is 100.
+        # *   If the value is set to greater than 100, the default value is 100.
         self.max_results = max_results
-        # The token that is used in the next request to retrieve a new page of results.
+        # The NextToken for the next page. Include this return value when requesting the next page.
         self.next_token = next_token
         # The node group ID.
         self.node_group_id = node_group_id

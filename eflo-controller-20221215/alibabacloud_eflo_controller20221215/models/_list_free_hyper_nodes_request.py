@@ -22,19 +22,19 @@ class ListFreeHyperNodesRequest(DaraModel):
         self.hpn_zone = hpn_zone
         # The machine type.
         self.machine_type = machine_type
-        # The number of entries to return on each page. The maximum value is 100.
+        # The number of entries per page in a paged query. Maximum value: 100.
         # 
         # Default value:
         # 
-        # • If you do not set this parameter or you set a value less than 20, the default value is 20.
+        # •If this parameter is not specified or is set to a value less than 20, the default value is 20.
         # 
-        # • If you set a value greater than 100, the default value is 100.
+        # •If this parameter is set to a value greater than 100, the default value is 100.
         self.max_results = max_results
-        # The token to retrieve the next page of results. Set this parameter to the NextToken value from the previous response.
+        # The pagination token. Set this parameter to the value of NextToken that was returned from the last API call.
         self.next_token = next_token
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # A list of statuses of unused nodes to return.
+        # The list of unused node statuses to return.
         self.status = status
         # The list of tags.
         self.tags = tags

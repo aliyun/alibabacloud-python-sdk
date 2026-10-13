@@ -14,11 +14,11 @@ class ListClustersResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # Cluster information.
+        # The cluster information.
         self.clusters = clusters
-        # Token returned by this call for retrieving next page.
+        # The pagination token returned by this call.
         self.next_token = next_token
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -81,37 +81,37 @@ class ListClustersResponseBodyClusters(DaraModel):
         update_time: str = None,
         vpc_id: str = None,
     ):
-        # Cluster description.
+        # The cluster description.
         self.cluster_description = cluster_description
-        # Cluster ID.
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # Cluster name.
+        # The cluster name.
         self.cluster_name = cluster_name
-        # Cluster type.
+        # The cluster type.
         self.cluster_type = cluster_type
-        # Component information.
+        # The component information.
         self.components = components
-        # IP version of computing network.
+        # The IP version of the computing network.
         self.computing_ip_version = computing_ip_version
-        # Cluster creation time.
+        # The creation time. The time is in ISO 8601 format.
         self.create_time = create_time
-        # Cluster zone identifier.
+        # The cluster number.
         self.hpn_zone = hpn_zone
-        # Number of nodes.
+        # The number of nodes.
         self.node_count = node_count
-        # Number of node groups.
+        # The number of node groups.
         self.node_group_count = node_group_count
-        # Cluster status.
+        # The cluster status.
         self.operating_state = operating_state
-        # Resource group ID.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Tag information.
+        # The tag information.
         self.tags = tags
-        # Task ID.
+        # The task ID.
         self.task_id = task_id
-        # Last update time.
+        # The update time. The time is in ISO 8601 format.
         self.update_time = update_time
-        # VPC ID.
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -238,9 +238,9 @@ class ListClustersResponseBodyClustersTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # Tag key.
+        # The tag key.
         self.key = key
-        # Tag value.
+        # The tag value.
         self.value = value
 
     def validate(self):

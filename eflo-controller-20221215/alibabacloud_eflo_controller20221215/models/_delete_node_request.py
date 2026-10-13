@@ -9,7 +9,7 @@ class DeleteNodeRequest(DaraModel):
         self,
         node_id: str = None,
     ):
-        # The ID of the node.
+        # The node ID.
         # 
         # This parameter is required.
         self.node_id = node_id

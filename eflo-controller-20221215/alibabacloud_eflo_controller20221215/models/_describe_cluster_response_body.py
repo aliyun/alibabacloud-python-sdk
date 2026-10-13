@@ -31,21 +31,21 @@ class DescribeClusterResponseBody(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The description of the cluster.
+        # The cluster description.
         self.cluster_description = cluster_description
         # The cluster ID.
         self.cluster_id = cluster_id
-        # The name of the cluster.
+        # The cluster name.
         self.cluster_name = cluster_name
-        # The type of the cluster.
+        # The cluster type.
         self.cluster_type = cluster_type
         # The component information.
         self.components = components
         # The IP version of the computing network.
         self.computing_ip_version = computing_ip_version
-        # The time when the cluster was created.
+        # The creation time. The time is in ISO 8601 format. Z in the example indicates UTC.
         self.create_time = create_time
-        # The zone of the cluster.
+        # The cluster number.
         self.hpn_zone = hpn_zone
         # The network information.
         self.networks = networks
@@ -55,7 +55,7 @@ class DescribeClusterResponseBody(DaraModel):
         self.node_group_count = node_group_count
         # The jumbo frame setting for the network interface.
         self.open_eni_jumbo_frame = open_eni_jumbo_frame
-        # The state of the cluster.
+        # The cluster status.
         self.operating_state = operating_state
         # The request ID.
         self.request_id = request_id
@@ -65,11 +65,11 @@ class DescribeClusterResponseBody(DaraModel):
         self.security_group_id = security_group_id
         # The task ID.
         self.task_id = task_id
-        # The time when the cluster was last updated.
+        # The update time. The time is in ISO 8601 format. Z in the example indicates UTC.
         self.update_time = update_time
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The ID of the virtual private cloud (VPC).
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -222,7 +222,7 @@ class DescribeClusterResponseBodyNetworks(DaraModel):
         self,
         vpd_id: str = None,
     ):
-        # The ID of the virtual private datacenter (VPD).
+        # The cluster CIDR block ID.
         self.vpd_id = vpd_id
 
     def validate(self):
@@ -253,7 +253,7 @@ class DescribeClusterResponseBodyComponents(DaraModel):
     ):
         # The component ID.
         self.component_id = component_id
-        # The type of the component.
+        # The component type.
         self.component_type = component_type
 
     def validate(self):

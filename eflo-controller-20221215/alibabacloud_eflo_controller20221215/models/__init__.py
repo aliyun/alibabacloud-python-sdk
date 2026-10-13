@@ -62,6 +62,9 @@ from ._describe_cluster_response import DescribeClusterResponse
 from ._describe_diagnostic_result_request import DescribeDiagnosticResultRequest
 from ._describe_diagnostic_result_response_body import DescribeDiagnosticResultResponseBody
 from ._describe_diagnostic_result_response import DescribeDiagnosticResultResponse
+from ._describe_fault_report_request import DescribeFaultReportRequest
+from ._describe_fault_report_response_body import DescribeFaultReportResponseBody
+from ._describe_fault_report_response import DescribeFaultReportResponse
 from ._describe_hyper_node_request import DescribeHyperNodeRequest
 from ._describe_hyper_node_response_body import DescribeHyperNodeResponseBody
 from ._describe_hyper_node_response import DescribeHyperNodeResponse
@@ -115,6 +118,10 @@ from ._list_clusters_response import ListClustersResponse
 from ._list_diagnostic_results_request import ListDiagnosticResultsRequest
 from ._list_diagnostic_results_response_body import ListDiagnosticResultsResponseBody
 from ._list_diagnostic_results_response import ListDiagnosticResultsResponse
+from ._list_fault_reports_request import ListFaultReportsRequest
+from ._list_fault_reports_shrink_request import ListFaultReportsShrinkRequest
+from ._list_fault_reports_response_body import ListFaultReportsResponseBody
+from ._list_fault_reports_response import ListFaultReportsResponse
 from ._list_free_hyper_nodes_request import ListFreeHyperNodesRequest
 from ._list_free_hyper_nodes_response_body import ListFreeHyperNodesResponseBody
 from ._list_free_hyper_nodes_response import ListFreeHyperNodesResponse
@@ -173,6 +180,9 @@ from ._reimage_nodes_request import ReimageNodesRequest
 from ._reimage_nodes_shrink_request import ReimageNodesShrinkRequest
 from ._reimage_nodes_response_body import ReimageNodesResponseBody
 from ._reimage_nodes_response import ReimageNodesResponse
+from ._report_node_status_request import ReportNodeStatusRequest
+from ._report_node_status_response_body import ReportNodeStatusResponseBody
+from ._report_node_status_response import ReportNodeStatusResponse
 from ._report_nodes_status_request import ReportNodesStatusRequest
 from ._report_nodes_status_shrink_request import ReportNodesStatusShrinkRequest
 from ._report_nodes_status_response_body import ReportNodesStatusResponseBody
@@ -193,6 +203,9 @@ from ._stop_invocation_request import StopInvocationRequest
 from ._stop_invocation_shrink_request import StopInvocationShrinkRequest
 from ._stop_invocation_response_body import StopInvocationResponseBody
 from ._stop_invocation_response import StopInvocationResponse
+from ._stop_node_diagnostic_request import StopNodeDiagnosticRequest
+from ._stop_node_diagnostic_response_body import StopNodeDiagnosticResponseBody
+from ._stop_node_diagnostic_response import StopNodeDiagnosticResponse
 from ._stop_nodes_request import StopNodesRequest
 from ._stop_nodes_shrink_request import StopNodesShrinkRequest
 from ._stop_nodes_response_body import StopNodesResponseBody
@@ -263,6 +276,7 @@ from ._describe_node_response_body import DescribeNodeResponseBodyNetworks
 from ._describe_node_group_response_body import DescribeNodeGroupResponseBodySystemDisk
 from ._describe_node_group_refresh_task_response_body import DescribeNodeGroupRefreshTaskResponseBodyNodesPropertyDrifts
 from ._describe_node_group_refresh_task_response_body import DescribeNodeGroupRefreshTaskResponseBodyNodes
+from ._describe_node_type_response_body import DescribeNodeTypeResponseBodyNetworkCards
 from ._describe_regions_response_body import DescribeRegionsResponseBodyRegions
 from ._describe_send_file_results_response_body import DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodesInvokeNode
 from ._describe_send_file_results_response_body import DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodes
@@ -295,6 +309,7 @@ from ._list_clusters_request import ListClustersRequestTags
 from ._list_clusters_response_body import ListClustersResponseBodyClustersTags
 from ._list_clusters_response_body import ListClustersResponseBodyClusters
 from ._list_diagnostic_results_response_body import ListDiagnosticResultsResponseBodyDiagnosticResults
+from ._list_fault_reports_response_body import ListFaultReportsResponseBodyReports
 from ._list_free_hyper_nodes_request import ListFreeHyperNodesRequestTags
 from ._list_free_hyper_nodes_response_body import ListFreeHyperNodesResponseBodyHyperNodesTags
 from ._list_free_hyper_nodes_response_body import ListFreeHyperNodesResponseBodyHyperNodes
@@ -404,6 +419,9 @@ __all__ = [
     DescribeDiagnosticResultRequest,
     DescribeDiagnosticResultResponseBody,
     DescribeDiagnosticResultResponse,
+    DescribeFaultReportRequest,
+    DescribeFaultReportResponseBody,
+    DescribeFaultReportResponse,
     DescribeHyperNodeRequest,
     DescribeHyperNodeResponseBody,
     DescribeHyperNodeResponse,
@@ -457,6 +475,10 @@ __all__ = [
     ListDiagnosticResultsRequest,
     ListDiagnosticResultsResponseBody,
     ListDiagnosticResultsResponse,
+    ListFaultReportsRequest,
+    ListFaultReportsShrinkRequest,
+    ListFaultReportsResponseBody,
+    ListFaultReportsResponse,
     ListFreeHyperNodesRequest,
     ListFreeHyperNodesResponseBody,
     ListFreeHyperNodesResponse,
@@ -515,6 +537,9 @@ __all__ = [
     ReimageNodesShrinkRequest,
     ReimageNodesResponseBody,
     ReimageNodesResponse,
+    ReportNodeStatusRequest,
+    ReportNodeStatusResponseBody,
+    ReportNodeStatusResponse,
     ReportNodesStatusRequest,
     ReportNodesStatusShrinkRequest,
     ReportNodesStatusResponseBody,
@@ -535,6 +560,9 @@ __all__ = [
     StopInvocationShrinkRequest,
     StopInvocationResponseBody,
     StopInvocationResponse,
+    StopNodeDiagnosticRequest,
+    StopNodeDiagnosticResponseBody,
+    StopNodeDiagnosticResponse,
     StopNodesRequest,
     StopNodesShrinkRequest,
     StopNodesResponseBody,
@@ -605,6 +633,7 @@ __all__ = [
     DescribeNodeGroupResponseBodySystemDisk,
     DescribeNodeGroupRefreshTaskResponseBodyNodesPropertyDrifts,
     DescribeNodeGroupRefreshTaskResponseBodyNodes,
+    DescribeNodeTypeResponseBodyNetworkCards,
     DescribeRegionsResponseBodyRegions,
     DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodesInvokeNode,
     DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodes,
@@ -637,6 +666,7 @@ __all__ = [
     ListClustersResponseBodyClustersTags,
     ListClustersResponseBodyClusters,
     ListDiagnosticResultsResponseBodyDiagnosticResults,
+    ListFaultReportsResponseBodyReports,
     ListFreeHyperNodesRequestTags,
     ListFreeHyperNodesResponseBodyHyperNodesTags,
     ListFreeHyperNodesResponseBodyHyperNodes,

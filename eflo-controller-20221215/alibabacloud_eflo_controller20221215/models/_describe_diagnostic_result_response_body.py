@@ -21,19 +21,19 @@ class DescribeDiagnosticResultResponseBody(DaraModel):
     ):
         # The cluster ID.
         self.cluster_id = cluster_id
-        # The creation time.
+        # The time when the device was created. The time is in ISO 8601 format.
         self.created_time = created_time
-        # The diagnostic task ID.
+        # The diagnostic ID.
         self.diagnostic_id = diagnostic_id
         # The diagnostic information.
         self.diagnostic_results = diagnostic_results
         # The diagnostic status.
         self.diagnostic_state = diagnostic_state
-        # The type of the diagnostic task.
+        # The diagnostic type.
         self.diagnostic_type = diagnostic_type
-        # The end time of the instance exception. The time format with time zone based on the ISO8601 standard. The format is yyyy-MM-ddTHH:mm:ss +0800.
+        # The time when the node exception ended. The time is in ISO 8601 format with a time zone, in the yyyy-MM-ddTHH:mm:ss+0800 format.
         self.end_time = end_time
-        # The node IDs.
+        # The list of node IDs.
         self.node_ids = node_ids
         # The request ID.
         self.request_id = request_id

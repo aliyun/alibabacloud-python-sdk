@@ -13,7 +13,7 @@ class ChangeNodeGroupRequest(DaraModel):
         nodes: List[str] = None,
         target_node_group_id: str = None,
     ):
-        # Specifies whether to skip failed nodes. The default value is False.
+        # Specifies whether to skip failed nodes. Default value: False.
         self.ignore_failed_node_tasks = ignore_failed_node_tasks
         # The node information.
         self.nodes = nodes

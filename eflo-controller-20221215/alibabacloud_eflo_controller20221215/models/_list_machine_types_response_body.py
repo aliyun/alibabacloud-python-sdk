@@ -14,9 +14,9 @@ class ListMachineTypesResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # Details of the machine types.
+        # The details of the machine types.
         self.machine_types = machine_types
-        # The token to request the next page of results. Include this token in your next request to retrieve the next page.
+        # The next token for pagination. Include this value in the request to retrieve the next page of results.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
@@ -83,29 +83,35 @@ class ListMachineTypesResponseBodyMachineTypes(DaraModel):
     ):
         # The number of bonds.
         self.bond_num = bond_num
-        # CPU information.
+        # The CPU information.
         self.cpu_info = cpu_info
+        # The structured CPU specifications.
         self.cpu_info_detail = cpu_info_detail
-        # Disk information.
+        # The disk information.
         self.disk_info = disk_info
+        # The disk information.
         self.disk_info_detail = disk_info_detail
+        # The frontend network information.
         self.frontend_network_detail = frontend_network_detail
-        # GPU information.
+        # The GPU information.
         self.gpu_info = gpu_info
+        # The GPU information.
         self.gpu_info_detail = gpu_info_detail
-        # Memory information.
+        # The memory information.
         self.memory_info = memory_info
+        # The memory information.
         self.memory_info_detail = memory_info_detail
         # The name of the machine type.
         self.name = name
-        # Network information.
+        # The network information.
         self.network_info = network_info
         # The number of nodes.
         self.node_count = node_count
+        # The RDMA information.
         self.rdma_info_detail = rdma_info_detail
         # The number of CPU cores.
         self.total_cpu_core = total_cpu_core
-        # The type of the machine type.
+        # The machine type.
         self.type = type
 
     def validate(self):
@@ -240,9 +246,16 @@ class ListMachineTypesResponseBodyMachineTypesRdmaInfoDetail(DaraModel):
         self,
         backend_rdma_nic_bw_in_gbps: int = None,
         backend_rdma_nic_count: int = None,
+        backend_rdma_supported: bool = None,
     ):
+        # The bandwidth per backend RDMA NIC, in Gbps.
         self.backend_rdma_nic_bw_in_gbps = backend_rdma_nic_bw_in_gbps
+        # The number of backend RDMA NICs.
         self.backend_rdma_nic_count = backend_rdma_nic_count
+        # Indicates whether backend RDMA is supported. Valid values:
+        # - true: The current machine type supports backend RDMA.
+        # - false: The current machine type does not support backend RDMA.
+        self.backend_rdma_supported = backend_rdma_supported
 
     def validate(self):
         pass
@@ -258,6 +271,9 @@ class ListMachineTypesResponseBodyMachineTypesRdmaInfoDetail(DaraModel):
         if self.backend_rdma_nic_count is not None:
             result['BackendRdmaNicCount'] = self.backend_rdma_nic_count
 
+        if self.backend_rdma_supported is not None:
+            result['BackendRdmaSupported'] = self.backend_rdma_supported
+
         return result
 
     def from_map(self, m: dict = None):
@@ -268,6 +284,9 @@ class ListMachineTypesResponseBodyMachineTypesRdmaInfoDetail(DaraModel):
         if m.get('BackendRdmaNicCount') is not None:
             self.backend_rdma_nic_count = m.get('BackendRdmaNicCount')
 
+        if m.get('BackendRdmaSupported') is not None:
+            self.backend_rdma_supported = m.get('BackendRdmaSupported')
+
         return self
 
 class ListMachineTypesResponseBodyMachineTypesMemoryInfoDetail(DaraModel):
@@ -275,6 +294,7 @@ class ListMachineTypesResponseBodyMachineTypesMemoryInfoDetail(DaraModel):
         self,
         memory_size_in_gb: int = None,
     ):
+        # The memory size, in GB.
         self.memory_size_in_gb = memory_size_in_gb
 
     def validate(self):
@@ -306,10 +326,15 @@ class ListMachineTypesResponseBodyMachineTypesGpuInfoDetail(DaraModel):
         gpu_vendor: str = None,
         total_gpu_memory_in_gb: int = None,
     ):
+        # The number of GPUs.
         self.gpu_count = gpu_count
+        # The GPU memory per card, in GB.
         self.gpu_memory_in_gb = gpu_memory_in_gb
+        # The GPU name.
         self.gpu_name = gpu_name
+        # The GPU vendor.
         self.gpu_vendor = gpu_vendor
+        # The total GPU memory, in GB.
         self.total_gpu_memory_in_gb = total_gpu_memory_in_gb
 
     def validate(self):
@@ -362,7 +387,9 @@ class ListMachineTypesResponseBodyMachineTypesFrontendNetworkDetail(DaraModel):
         frontend_network_type: str = None,
         jumbo_frame_supported: bool = None,
     ):
+        # The frontend network type.
         self.frontend_network_type = frontend_network_type
+        # Indicates whether jumbo frames are supported.
         self.jumbo_frame_supported = jumbo_frame_supported
 
     def validate(self):
@@ -398,8 +425,11 @@ class ListMachineTypesResponseBodyMachineTypesDiskInfoDetail(DaraModel):
         local_disk_size_in_tb: float = None,
         local_disk_type: str = None,
     ):
+        # The number of disks.
         self.local_disk_count = local_disk_count
+        # The capacity per disk, in TB.
         self.local_disk_size_in_tb = local_disk_size_in_tb
+        # The disk type.
         self.local_disk_type = local_disk_type
 
     def validate(self):
@@ -441,8 +471,11 @@ class ListMachineTypesResponseBodyMachineTypesCpuInfoDetail(DaraModel):
         cpu_sockets: int = None,
         vcpu_cores: int = None,
     ):
+        # The CPU architecture.
         self.cpu_arch = cpu_arch
+        # The number of CPU sockets.
         self.cpu_sockets = cpu_sockets
+        # The number of vCPU cores.
         self.vcpu_cores = vcpu_cores
 
     def validate(self):

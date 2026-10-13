@@ -21,26 +21,6 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'cn-wulanchabu': 'eflo-controller.cn-wulanchabu.aliyuncs.com',
-            'cn-beijing': 'eflo-controller.cn-beijing.aliyuncs.com',
-            'cn-shanghai': 'eflo-controller.cn-shanghai.aliyuncs.com',
-            'cn-hongkong': 'eflo-controller.cn-hongkong.aliyuncs.com',
-            'cn-heyuan': 'eflo-controller.cn-heyuan.aliyuncs.com',
-            'cn-zhangjiakou': 'eflo-controller.cn-zhangjiakou.aliyuncs.com',
-            'cn-shenzhen': 'eflo-controller.cn-shenzhen.aliyuncs.com',
-            'ap-northeast-1': 'eflo-controller.ap-northeast-1.aliyuncs.com',
-            'cn-guangzhou': 'eflo-controller.cn-guangzhou.aliyuncs.com',
-            'ap-southeast-1': 'eflo-controller.ap-southeast-1.aliyuncs.com',
-            'ap-southeast-3': 'eflo-controller.ap-southeast-3.aliyuncs.com',
-            'cn-huhehaote': 'eflo-controller.cn-huhehaote.aliyuncs.com',
-            'ap-southeast-7': 'eflo-controller.ap-southeast-7.aliyuncs.com',
-            'cn-hangzhou': 'eflo-controller.cn-hangzhou.aliyuncs.com',
-            'ap-southeast-8': 'eflo-controller.ap-southeast-8.aliyuncs.com',
-            'eu-central-1': 'eflo-controller.eu-central-1.aliyuncs.com',
-            'me-east-1': 'eflo-controller.me-east-1.aliyuncs.com',
-            'cn-shanghai-finance-1': 'eflo-controller.cn-shanghai-finance-1.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('eflo-controller', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -1572,6 +1552,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_diagnostic_result_with_options_async(request, runtime)
 
+    def describe_fault_report_with_options(
+        self,
+        request: main_models.DescribeFaultReportRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeFaultReportResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.report_id):
+            body['ReportId'] = request.report_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeFaultReport',
+            version = '2022-12-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeFaultReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_fault_report_with_options_async(
+        self,
+        request: main_models.DescribeFaultReportRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeFaultReportResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.report_id):
+            body['ReportId'] = request.report_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeFaultReport',
+            version = '2022-12-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeFaultReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_fault_report(
+        self,
+        request: main_models.DescribeFaultReportRequest,
+    ) -> main_models.DescribeFaultReportResponse:
+        runtime = RuntimeOptions()
+        return self.describe_fault_report_with_options(request, runtime)
+
+    async def describe_fault_report_async(
+        self,
+        request: main_models.DescribeFaultReportRequest,
+    ) -> main_models.DescribeFaultReportResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_fault_report_with_options_async(request, runtime)
+
     def describe_hyper_node_with_options(
         self,
         request: main_models.DescribeHyperNodeRequest,
@@ -2913,6 +2963,96 @@ class Client(OpenApiClient):
     ) -> main_models.ListDiagnosticResultsResponse:
         runtime = RuntimeOptions()
         return await self.list_diagnostic_results_with_options_async(request, runtime)
+
+    def list_fault_reports_with_options(
+        self,
+        tmp_req: main_models.ListFaultReportsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListFaultReportsResponse:
+        tmp_req.validate()
+        request = main_models.ListFaultReportsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.nodes):
+            request.nodes_shrink = Utils.array_to_string_with_specified_style(tmp_req.nodes, 'Nodes', 'json')
+        body = {}
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.nodes_shrink):
+            body['Nodes'] = request.nodes_shrink
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListFaultReports',
+            version = '2022-12-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListFaultReportsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_fault_reports_with_options_async(
+        self,
+        tmp_req: main_models.ListFaultReportsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListFaultReportsResponse:
+        tmp_req.validate()
+        request = main_models.ListFaultReportsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.nodes):
+            request.nodes_shrink = Utils.array_to_string_with_specified_style(tmp_req.nodes, 'Nodes', 'json')
+        body = {}
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.nodes_shrink):
+            body['Nodes'] = request.nodes_shrink
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListFaultReports',
+            version = '2022-12-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListFaultReportsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_fault_reports(
+        self,
+        request: main_models.ListFaultReportsRequest,
+    ) -> main_models.ListFaultReportsResponse:
+        runtime = RuntimeOptions()
+        return self.list_fault_reports_with_options(request, runtime)
+
+    async def list_fault_reports_async(
+        self,
+        request: main_models.ListFaultReportsRequest,
+    ) -> main_models.ListFaultReportsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_fault_reports_with_options_async(request, runtime)
 
     def list_free_hyper_nodes_with_options(
         self,
@@ -4404,6 +4544,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.reimage_nodes_with_options_async(request, runtime)
 
+    def report_node_status_with_options(
+        self,
+        request: main_models.ReportNodeStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ReportNodeStatusResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.diagnosis_type):
+            body['DiagnosisType'] = request.diagnosis_type
+        if not DaraCore.is_null(request.node_id):
+            body['NodeId'] = request.node_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ReportNodeStatus',
+            version = '2022-12-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ReportNodeStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def report_node_status_with_options_async(
+        self,
+        request: main_models.ReportNodeStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ReportNodeStatusResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.diagnosis_type):
+            body['DiagnosisType'] = request.diagnosis_type
+        if not DaraCore.is_null(request.node_id):
+            body['NodeId'] = request.node_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ReportNodeStatus',
+            version = '2022-12-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ReportNodeStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def report_node_status(
+        self,
+        request: main_models.ReportNodeStatusRequest,
+    ) -> main_models.ReportNodeStatusResponse:
+        runtime = RuntimeOptions()
+        return self.report_node_status_with_options(request, runtime)
+
+    async def report_node_status_async(
+        self,
+        request: main_models.ReportNodeStatusRequest,
+    ) -> main_models.ReportNodeStatusResponse:
+        runtime = RuntimeOptions()
+        return await self.report_node_status_with_options_async(request, runtime)
+
     def report_nodes_status_with_options(
         self,
         tmp_req: main_models.ReportNodesStatusRequest,
@@ -4929,6 +5147,76 @@ class Client(OpenApiClient):
     ) -> main_models.StopInvocationResponse:
         runtime = RuntimeOptions()
         return await self.stop_invocation_with_options_async(request, runtime)
+
+    def stop_node_diagnostic_with_options(
+        self,
+        request: main_models.StopNodeDiagnosticRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.StopNodeDiagnosticResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.report_id):
+            body['ReportId'] = request.report_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'StopNodeDiagnostic',
+            version = '2022-12-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StopNodeDiagnosticResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_node_diagnostic_with_options_async(
+        self,
+        request: main_models.StopNodeDiagnosticRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.StopNodeDiagnosticResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.report_id):
+            body['ReportId'] = request.report_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'StopNodeDiagnostic',
+            version = '2022-12-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StopNodeDiagnosticResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_node_diagnostic(
+        self,
+        request: main_models.StopNodeDiagnosticRequest,
+    ) -> main_models.StopNodeDiagnosticResponse:
+        runtime = RuntimeOptions()
+        return self.stop_node_diagnostic_with_options(request, runtime)
+
+    async def stop_node_diagnostic_async(
+        self,
+        request: main_models.StopNodeDiagnosticRequest,
+    ) -> main_models.StopNodeDiagnosticResponse:
+        runtime = RuntimeOptions()
+        return await self.stop_node_diagnostic_with_options_async(request, runtime)
 
     def stop_nodes_with_options(
         self,

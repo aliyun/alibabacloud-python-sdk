@@ -18,15 +18,15 @@ class ListFreeNodesRequest(DaraModel):
         resource_group_id: str = None,
         tags: List[main_models.ListFreeNodesRequestTags] = None,
     ):
-        # The cluster ID.
+        # The cluster number.
         self.hpn_zone = hpn_zone
         # The machine type.
         self.machine_type = machine_type
-        # The number of entries to return on each page for a paged query. The default value is 20.
+        # The number of entries per page for a paged query. Default value: 20.
         self.max_results = max_results
-        # The query token. Set it to the NextToken value returned from the previous API call.
+        # The pagination token. Set this parameter to the value of NextToken that is returned from the previous API call.
         self.next_token = next_token
-        # The type of unused nodes to be returned.
+        # The type of unused nodes to return.
         self.operating_states = operating_states
         # The resource group ID.
         self.resource_group_id = resource_group_id

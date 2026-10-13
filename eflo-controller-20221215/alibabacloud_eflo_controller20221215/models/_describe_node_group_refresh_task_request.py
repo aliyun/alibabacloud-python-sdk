@@ -14,15 +14,15 @@ class DescribeNodeGroupRefreshTaskRequest(DaraModel):
         node_group_refresh_task_id: str = None,
         node_statuses: List[str] = None,
     ):
-        # The maximum number of entries per page for a paged query. Valid values: 1 to 500. Default value: 100. For more information about paging, set this parameter together with NextToken.
+        # The maximum number of entries per page for a paged query. Valid values: 1 to 500. Default value: 100. For more information about paging, see the NextToken parameter.
         self.max_results = max_results
         # The pagination token. Set this parameter to the NextToken value returned in the previous call. You do not need to set this parameter for the first request. This parameter is used to paginate through the node list in the current refresh task.
         self.next_token = next_token
-        # The ID of the refresh task.
+        # The ID of the node group configuration refresh task. After you call RefreshNodeGroupNodes to trigger a node group configuration refresh, obtain this value from the NodeGroupRefreshTaskId response parameter. Before you call this operation, the node group must contain nodes with configuration drift.
         # 
         # This parameter is required.
         self.node_group_refresh_task_id = node_group_refresh_task_id
-        # The node refresh statuses to filter by. Valid values:
+        # The node refresh statuses to filter by:
         # - Pending: the node is waiting to be refreshed.
         # - InProgress: the node is being refreshed.
         # - Success: the node is refreshed.

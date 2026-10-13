@@ -28,33 +28,31 @@ class DescribeNetTestResultResponseBody(DaraModel):
         self.cluster_id = cluster_id
         # The cluster name.
         self.cluster_name = cluster_name
-        # The configuration for the communication library test. This parameter is returned when the network test type is a communication library test.
+        # The communication library test configuration. This field is required when the traffic test type is communication library test.
         self.comm_test = comm_test
-        # The time when the diagnostic task was created.
+        # The time when the diagnostic task was created. The time is in ISO 8601 format and includes the time zone offset.
         self.creation_time = creation_time
-        # The configuration for the delay test. This parameter is returned when the network test type is a delay test.
+        # The latency test configuration. This field is required when the network test type is latency test.
         self.delay_test = delay_test
-        # The time when the diagnostic task was completed.
+        # The time when the diagnostic task was completed. The time is in ISO 8601 format. Z in the example indicates UTC.
         self.finished_time = finished_time
-        # The type of the network test.
+        # The network test type.
         self.net_test_type = net_test_type
         # The test port number.
         self.port = port
         # The request ID.
         self.request_id = request_id
-        # The details of the diagnostic result. The value is a JSON string.
+        # The details of the diagnostic result. The value is returned as a JSON string.
         self.result_detial = result_detial
         # The status of the diagnostic task. Valid values:
         # 
-        # - InProgress: The task is in progress.
-        # 
-        # - Finished: The task is complete.
-        # 
-        # - Failed: The task failed.
+        # - InProgress: The diagnostic task is in progress.
+        # - Finished: The diagnostic task is complete.
+        # - Failed: The diagnostic task failed.
         self.status = status
-        # The ID of the test task. This ID uniquely identifies the network test task.
+        # The ID of the test task. This is the unique identifier of the network test task.
         self.test_id = test_id
-        # The configuration for the traffic test. This parameter is returned when the network test type is a traffic test.
+        # If TrafficModel is set to Fullmesh, this field is empty.
         self.traffic_test = traffic_test
 
     def validate(self):
@@ -168,15 +166,15 @@ class DescribeNetTestResultResponseBodyTrafficTest(DaraModel):
         servers: List[main_models.DescribeNetTestResultResponseBodyTrafficTestServers] = None,
         traffic_model: str = None,
     ):
-        # The client nodes.
+        # The resource IDs.
         self.clients = clients
-        # The runtime of the flow task in seconds.
+        # The duration of the workflow task. Unit: seconds.
         self.duration = duration
-        # Indicates whether GPUDirect RDMA (GDR) is enabled. This parameter is returned only if the protocol is RDMA. Valid values: True and False. If the protocol is TCP, this field is empty.
+        # If Protocol is set to RDMA, specify True or False. If Protocol is set to TCP, this field is empty.
         self.gdr = gdr
-        # The network protocol. Valid values: Remote Direct Memory Access (RDMA) and Transmission Control Protocol (TCP).
+        # The network protocol. Valid values: RDMA and TCP.
         self.protocol = protocol
-        # If the protocol is TCP, this is the number of concurrent connections for the test. If the protocol is RDMA, this is the Queue Pair (QP) value.
+        # If Protocol is set to TCP, specify the number of test Concurrent Connections. If Protocol is set to RDMA, specify the QP value.
         self.qp = qp
         # The list of servers.
         self.servers = servers
@@ -264,9 +262,9 @@ class DescribeNetTestResultResponseBodyTrafficTestServers(DaraModel):
         resource_id: str = None,
         server_name: str = None,
     ):
-        # The bonded port of the NIC.
+        # The NIC bond interface.
         self.bond = bond
-        # The IP address of the node.
+        # The node IP address.
         self.ip = ip
         # The resource ID.
         self.resource_id = resource_id
@@ -319,9 +317,9 @@ class DescribeNetTestResultResponseBodyTrafficTestClients(DaraModel):
         resource_id: str = None,
         server_name: str = None,
     ):
-        # The bonded port of the network interface card (NIC).
+        # The NIC bond interface.
         self.bond = bond
-        # The IP address of the node.
+        # The node IP address.
         self.ip = ip
         # The resource ID.
         self.resource_id = resource_id
@@ -410,9 +408,9 @@ class DescribeNetTestResultResponseBodyDelayTestHosts(DaraModel):
         resource_id: str = None,
         server_name: str = None,
     ):
-        # The bonded port of the NIC.
+        # The NIC bond interface.
         self.bond = bond
-        # The IP address of the node.
+        # The node IP address.
         self.ip = ip
         # The resource ID.
         self.resource_id = resource_id
@@ -467,11 +465,11 @@ class DescribeNetTestResultResponseBodyCommTest(DaraModel):
     ):
         # The number of GPUs.
         self.gpunum = gpunum
-        # The hosts for the test.
+        # The resource ID.
         self.hosts = hosts
         # The communication library model.
         self.model = model
-        # The type of the communication library test. Valid values: Alibaba Cloud Collective Communication Library (ACCL) and NVIDIA Collective Communication Library (NCCL).
+        # The communication library test category. Valid values: ACCL and NCCL.
         self.type = type
 
     def validate(self):

@@ -34,11 +34,11 @@ class DescribeNodeGroupRefreshTaskResponseBody(DaraModel):
         self.max_disruptive_action = max_disruptive_action
         # The maximum number of entries per page.
         self.max_results = max_results
-        # The token for the next query. An empty value of NextToken indicates that no more results exist.
+        # The pagination token for the next query. An empty value indicates that no more results exist.
         self.next_token = next_token
-        # The ID of the node group.
+        # The node group ID.
         self.node_group_id = node_group_id
-        # The ID of the refresh task.
+        # The refresh task ID.
         self.node_group_refresh_task_id = node_group_refresh_task_id
         # The list of nodes.
         self.nodes = nodes
@@ -165,7 +165,7 @@ class DescribeNodeGroupRefreshTaskResponseBodyNodes(DaraModel):
         property_drifts: List[main_models.DescribeNodeGroupRefreshTaskResponseBodyNodesPropertyDrifts] = None,
         status: str = None,
     ):
-        # The action level actually executed on the node. If multiple properties are refreshed on the node, the highest required action level is used. Valid values:
+        # The action level actually performed on the node. If multiple properties are refreshed on the node, the highest required action level is used. Valid values:
         # - Refresh: in-place refresh.
         # - Reboot: restart.
         # - Reimage: reimage.
@@ -175,9 +175,9 @@ class DescribeNodeGroupRefreshTaskResponseBodyNodes(DaraModel):
         self.error_code = error_code
         # The error message.
         self.error_message = error_message
-        # The ID of the node.
+        # The node ID.
         self.node_id = node_id
-        # The list of property drifts for the node, including both executed and skipped properties.
+        # The property drift list for the node, including both executed and skipped properties.
         self.property_drifts = property_drifts
         # The node refresh status. Valid values:
         # - Pending: the node is waiting to be refreshed.
@@ -256,7 +256,7 @@ class DescribeNodeGroupRefreshTaskResponseBodyNodesPropertyDrifts(DaraModel):
     ):
         # The current value of the node property. Complex types are serialized as JSON strings.
         self.actual_value = actual_value
-        # The minimum action required to apply the target value: Refresh / Reboot / Reimage. For more information, see the MaxDisruptiveAction parameter description in the RefreshNodeGroupNodes operation.
+        # The minimum action required to apply the target value: Refresh, Reboot, or Reimage. For more information, see the MaxDisruptiveAction parameter of the RefreshNodeGroupNodes operation.
         self.min_required_action = min_required_action
         # The property path in dot notation.
         self.property_path = property_path

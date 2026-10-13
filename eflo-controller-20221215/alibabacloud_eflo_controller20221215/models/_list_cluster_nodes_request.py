@@ -22,17 +22,17 @@ class ListClusterNodesRequest(DaraModel):
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The maximum number of entries to return on each page. The default value is 20.
+        # The number of entries per page in a paged query. Default value: 20.
         self.max_results = max_results
-        # The token for pagination. To retrieve the next page of results, set this parameter to the NextToken value returned from the previous call.
+        # The pagination token. Set this parameter to the value of NextToken that was returned in the previous API call.
         self.next_token = next_token
         # The node group ID.
         self.node_group_id = node_group_id
-        # The operating states for filtering nodes.
+        # The list of node states.
         self.operating_states = operating_states
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The tags for filtering nodes.
+        # The tag information.
         self.tags = tags
 
     def validate(self):
@@ -105,9 +105,9 @@ class ListClusterNodesRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The key of the node tag.
         self.key = key
-        # The value of the tag.
+        # The value of the node tag.
         self.value = value
 
     def validate(self):

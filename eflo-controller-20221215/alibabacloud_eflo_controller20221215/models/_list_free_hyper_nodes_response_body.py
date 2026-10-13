@@ -17,15 +17,15 @@ class ListFreeHyperNodesResponseBody(DaraModel):
     ):
         # The list of nodes.
         self.hyper_nodes = hyper_nodes
-        # The number of entries returned on each page. The maximum value is 100.
+        # The number of entries per page in a paged query. Maximum value: 100.
         # 
         # Default value:
         # 
-        # • If you do not set this parameter or you set a value less than 20, the default value is 20.
+        # •If this parameter is not specified or is set to a value less than 20, the default value is 20.
         # 
-        # • If you set a value greater than 100, the default value is 100.
+        # •If this parameter is set to a value greater than 100, the default value is 100.
         self.max_results = max_results
-        # The token to retrieve the next page of results. If this parameter is empty, no more results are available.
+        # The pagination token returned by this call.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -94,9 +94,9 @@ class ListFreeHyperNodesResponseBodyHyperNodes(DaraModel):
     ):
         # The commodity code.
         self.commodity_code = commodity_code
-        # The time when the node was created.
+        # The creation time. The time is in ISO 8601 format.
         self.create_time = create_time
-        # The expiration time of the machine.
+        # The machine expiration time. The time is in ISO 8601 format. Z in the example indicates UTC.
         self.expire_time = expire_time
         # The hostname.
         self.hostname = hostname
@@ -106,11 +106,11 @@ class ListFreeHyperNodesResponseBodyHyperNodes(DaraModel):
         self.hyper_node_id = hyper_node_id
         # The machine type.
         self.machine_type = machine_type
-        # The status of the hypernode.
+        # The hyper node status.
         self.operating_state = operating_state
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The status of the hypernode.
+        # The hyper node status.
         self.status = status
         # The list of tags.
         self.tags = tags

@@ -1,3 +1,18 @@
+2026-10-13 Version: 3.2.0
+- Support API DescribeFaultReport.
+- Support API ListFaultReports.
+- Support API ReportNodeStatus.
+- Support API StopNodeDiagnostic.
+- Update API DescribeNodeType: add response parameters Body.EriQuantity.
+- Update API DescribeNodeType: add response parameters Body.NetworkCardQuantity.
+- Update API DescribeNodeType: add response parameters Body.NetworkCards.
+- Update API DescribeNodeType: add response parameters Body.PrimaryEniQueueNumber.
+- Update API DescribeNodeType: add response parameters Body.QueuePairNumber.
+- Update API DescribeNodeType: add response parameters Body.SecondaryEniQueueNumber.
+- Update API DescribeNodeType: add response parameters Body.TotalEniQueueQuantity.
+- Update API ListMachineTypes: add response parameters Body.MachineTypes.$.RdmaInfoDetail.BackendRdmaSupported.
+
+
 2026-08-17 Version: 3.1.1
 - Update API ListMachineTypes: add response parameters Body.MachineTypes.$.CpuInfoDetail.
 - Update API ListMachineTypes: add response parameters Body.MachineTypes.$.DiskInfoDetail.

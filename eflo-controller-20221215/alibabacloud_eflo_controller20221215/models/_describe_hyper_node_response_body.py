@@ -32,9 +32,9 @@ class DescribeHyperNodeResponseBody(DaraModel):
         self.cluster_id = cluster_id
         # The cluster name.
         self.cluster_name = cluster_name
-        # The time when the hyper node was created.
+        # The creation time. The time is in ISO 8601 format. The Z in the example indicates UTC.
         self.create_time = create_time
-        # The expiration time.
+        # The expiration time. The time is in ISO 8601 format.
         self.expire_time = expire_time
         # Indicates whether file storage mounting is supported.
         self.file_system_mount_enabled = file_system_mount_enabled
@@ -42,23 +42,23 @@ class DescribeHyperNodeResponseBody(DaraModel):
         self.hostname = hostname
         # The cluster number.
         self.hpn_zone = hpn_zone
-        # The ID of the hyper node.
+        # The hypernode ID.
         self.hyper_node_id = hyper_node_id
         # The machine type.
         self.machine_type = machine_type
         # The node group ID.
         self.node_group_id = node_group_id
-        # The name of the node group.
+        # The node group name.
         self.node_group_name = node_group_name
         # The list of nodes.
         self.nodes = nodes
-        # The state of the hyper node.
+        # The hypernode status.
         self.operating_state = operating_state
         # The request ID.
         self.request_id = request_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The state of the node.
+        # The node status.
         self.status = status
         # The zone ID.
         self.zone_id = zone_id
@@ -212,9 +212,9 @@ class DescribeHyperNodeResponseBodyNodes(DaraModel):
         self.networks = networks
         # The node ID.
         self.node_id = node_id
-        # The state of the node.
+        # The node status.
         self.operating_state = operating_state
-        # The state.
+        # The status.
         self.status = status
         # The user-defined script.
         self.user_data = user_data
@@ -304,9 +304,9 @@ class DescribeHyperNodeResponseBodyNodesNetworks(DaraModel):
         bond_name: str = None,
         ip: str = None,
     ):
-        # The name of the network interface on the machine.
+        # The bond interface name of the machine.
         self.bond_name = bond_name
-        # The IP address of the machine in the virtual private cloud (VPC).
+        # The IP address of the machine in the VPC.
         self.ip = ip
 
     def validate(self):
@@ -344,27 +344,23 @@ class DescribeHyperNodeResponseBodyNodesDisks(DaraModel):
         size: int = None,
         type: str = None,
     ):
-        # The packet classification. Valid values:
+        # The packet category. Valid values:
         # 
-        # - **DOWNLINK_PACKET**: downlink packet
-        # 
-        # - **UPLINK_PACKET**: uplink packet
+        # - **DOWNLINK_PACKET**: downlink packet.
+        # - **UPLINK_PACKET**: uplink packet.
         self.category = category
         # The disk ID.
         self.disk_id = disk_id
-        # When you create an enhanced SSD (ESSD) to use as a system disk, set the performance level of the disk. Valid values:
-        # 
-        # - PL0: A maximum of 10,000 random read/write input/output operations per second (IOPS) per disk.
-        # 
-        # - PL1: A maximum of 50,000 random read/write IOPS per disk.
+        # The performance level (PL) of the cloud disk when an ESSD is created as the system cloud disk. Settings:
+        # - PL0: A maximum of 10,000 random read/write IOPS per standard SSD.
+        # - PL1: A maximum of 50,000 random read/write IOPS per standard SSD.
         self.performance_level = performance_level
         # The disk size. Unit: GiB.
         self.size = size
         # The disk type. Valid values:
         # 
-        # - system: system disk.
-        # 
-        # - data: data disk.
+        # - system: system cloud disk.
+        # - data: data cloud disk.
         self.type = type
 
     def validate(self):

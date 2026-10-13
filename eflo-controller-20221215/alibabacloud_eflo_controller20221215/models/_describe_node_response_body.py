@@ -39,19 +39,19 @@ class DescribeNodeResponseBody(DaraModel):
         self.cluster_id = cluster_id
         # The cluster name.
         self.cluster_name = cluster_name
-        # The creation time.
+        # The creation time. The time is in ISO 8601 format. Z in the example indicates UTC.
         self.create_time = create_time
         # The list of disk information.
         self.disks = disks
-        # The expiration time.
+        # The expiration time. The time is in ISO 8601 format. Z in the example indicates UTC.
         self.expired_time = expired_time
-        # Indicates whether file system mounting is supported.
+        # Indicates whether file storage mounting is supported.
         self.file_system_mount_enabled = file_system_mount_enabled
         # The hostname.
         self.hostname = hostname
         # The cluster number.
         self.hpn_zone = hpn_zone
-        # The hyper node ID.
+        # The HyperNode ID.
         self.hyper_node_id = hyper_node_id
         # The image ID.
         self.image_id = image_id
@@ -83,7 +83,7 @@ class DescribeNodeResponseBody(DaraModel):
         self.resource_group_id = resource_group_id
         # The savings plan ID.
         self.savings_plan_id = savings_plan_id
-        # The unique machine identifier.
+        # The unique identifier of the machine.
         self.sn = sn
         # The user-defined script.
         self.user_data = user_data
@@ -277,7 +277,7 @@ class DescribeNodeResponseBodyNetworks(DaraModel):
     ):
         # The NIC port information.
         self.bond_name = bond_name
-        # The machine IP address.
+        # The IP address of the machine.
         self.ip = ip
         # The security group ID.
         self.security_group_id = security_group_id
@@ -347,22 +347,22 @@ class DescribeNodeResponseBodyDisks(DaraModel):
         size: int = None,
         type: str = None,
     ):
-        # The disk type. Valid values:
+        # The disk category. Valid values:
         # 
         #  - cloud_essd: ESSD cloud disk.
         self.category = category
         # The disk ID.
         self.disk_id = disk_id
-        # The performance level of the cloud disk when an ESSD cloud disk is created as a system disk. Valid values:
-        # - PL0: A single disk can deliver up to 10,000 random read/write IOPS.
-        # - PL1: A single disk can deliver up to 50,000 random read/write IOPS.
+        # The performance level (PL) of the ESSD cloud disk when it is used as the system cloud disk. Valid values:
+        # - PL0: a maximum of 10,000 random read/write IOPS per disk.
+        # - PL1: a maximum of 50,000 random read/write IOPS per disk.
         self.performance_level = performance_level
         # The disk size. Unit: GiB.
         self.size = size
         # The disk type. Valid values:
         # 
-        # - system: system disk.
-        # - data: data disk.
+        # - system: system cloud disk.
+        # - data: data cloud disk.
         self.type = type
 
     def validate(self):

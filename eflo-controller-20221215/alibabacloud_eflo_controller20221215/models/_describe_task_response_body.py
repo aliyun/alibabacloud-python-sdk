@@ -25,46 +25,21 @@ class DescribeTaskResponseBody(DaraModel):
         self.cluster_id = cluster_id
         # The cluster name.
         self.cluster_name = cluster_name
-        # The create time.
+        # The start time. The value is in ISO 8601 format. Z in the example indicates UTC.
         self.create_time = create_time
-        # The error message returned for failed tasks.
+        # The task failure message.
         self.message = message
-        # The IDs of the nodes.
+        # The list of node IDs.
         self.node_ids = node_ids
         # The request ID.
         self.request_id = request_id
-        # The steps.
+        # The execution steps.
         self.steps = steps
-        # The task status.
-        # 
-        # Valid values:
-        # 
-        # *   running
-        # *   execution_success
-        # *   execution_fail
-        # *   waiting_to_run
+        # The task state.
         self.task_state = task_state
         # The task type.
-        # 
-        # Valid values:
-        # 
-        # *   reclone_node_sub_task
-        # *   initialize_bare_cluster
-        # *   extend_bare_cluster
-        # *   reclone_node
-        # *   reboot_node
-        # *   extend_ack_edge_cluster
-        # *   extend_cluster
-        # *   initialize_ack_edge_cluster
-        # *   cut_node_sub_task
-        # *   reboot_node_sub_task
-        # *   reclone_ack_edge_node
-        # *   initialize_cluster
-        # *   cut_cluster
-        # *   reclone_bare_node
-        # *   cut_bare_cluster
         self.task_type = task_type
-        # The update time.
+        # The update time. Uses ISO 8601 format. The Z in the example indicates UTC.
         self.update_time = update_time
 
     def validate(self):
@@ -161,48 +136,21 @@ class DescribeTaskResponseBodySteps(DaraModel):
         sub_tasks: List[main_models.DescribeTaskResponseBodyStepsSubTasks] = None,
         update_time: str = None,
     ):
-        # The error message of the step.
+        # The step failure message.
         self.message = message
-        # The stage marker.
-        # 
-        # Valid values:
-        # 
-        # *   机器释放: Machine release.
-        # *   节点并发初始化: Node concurrent initialization.
-        # *   节点释放: Node release.
-        # *   机器替换: Machine replacement.
-        # *   节点缩容: Node scale-in.
-        # *   提前续费: Early renewal.
-        # *   物理机清理: Physical machine cleanup.
-        # *   节点清理: Node cleanup.
-        # *   创建K8s集群: Create Kubernetes cluster.
-        # *   网络初始化: Network initialization.
-        # *   节点重启: Node restart.
-        # *   节点退订: Node unsubscribe.
-        # *   集群扩容: Cluster scale-out.
-        # *   异常机器释放: Abnormal machine release.
+        # The stage tag.
         self.stage_tag = stage_tag
-        # The start time.
+        # The start time. Z in the example indicates UTC.
         self.start_time = start_time
-        # The name of the step.
+        # The step name.
         self.step_name = step_name
-        # The step status.
-        # 
-        # Valid values:
-        # 
-        # *   execution_success
-        # *   execution_failed
+        # The step execution state.
         self.step_state = step_state
-        # The type of the step.
-        # 
-        # Valid values:
-        # 
-        # *   normal: A normal step has only one successor step.
-        # *   dispersive: A dispersive step has multiple successor steps.
+        # The step type.
         self.step_type = step_type
-        # The sub tasks.
+        # The subtasks.
         self.sub_tasks = sub_tasks
-        # The update time.
+        # The update time. Uses ISO 8601 format. The Z in the example indicates UTC.
         self.update_time = update_time
 
     def validate(self):
@@ -285,35 +233,17 @@ class DescribeTaskResponseBodyStepsSubTasks(DaraModel):
         task_type: str = None,
         update_time: str = None,
     ):
-        # The creation time.
+        # The creation time. The Z in the example indicates UTC.
         self.create_time = create_time
-        # The error message returned for failed sub tasks.
+        # The subtask failure message.
         self.message = message
-        # The task ID.
+        # The node ID.
         self.task_id = task_id
-        # The task status.
+        # The task execution state.
         self.task_state = task_state
         # The task type.
-        # 
-        # Valid values:
-        # 
-        # *   reclone_node_sub_task
-        # *   initialize_bare_cluster
-        # *   extend_bare_cluster
-        # *   reclone_node
-        # *   reboot_node
-        # *   extend_ack_edge_cluster
-        # *   extend_cluster
-        # *   initialize_ack_edge_cluster
-        # *   cut_node_sub_task
-        # *   reboot_node_sub_task
-        # *   reclone_ack_edge_node
-        # *   initialize_cluster
-        # *   cut_cluster
-        # *   reclone_bare_node
-        # *   cut_bare_cluster
         self.task_type = task_type
-        # The update time.
+        # The update time. Uses ISO 8601 format. The Z in the example indicates UTC.
         self.update_time = update_time
 
     def validate(self):

@@ -14,11 +14,11 @@ class ListSyslogsResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The object that contains the paginated list of logs.
+        # The paginated list of log objects.
         self.logs = logs
-        # The \\`NextToken\\` for the next page. To retrieve the next page of results, include this return value in the next request.
+        # The NextToken for the next page. Include this value in the request to retrieve the next page of results.
         self.next_token = next_token
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -87,37 +87,37 @@ class ListSyslogsResponseBodyLogs(DaraModel):
         self.cluster_id = cluster_id
         # The security domain of the client.
         self.domain = domain
-        # A standard field in Linux syslog.
+        # The Linux syslog standard field.
         self.facility = facility
         # The hostname of the client.
         self.hostname = hostname
         # The IP address of the client.
         self.ip = ip
-        # The content of the syslog.
+        # The syslog content.
         self.msg = msg
         # The node ID.
         self.node_id = node_id
-        # A standard field in Linux syslog.
+        # The Linux syslog standard field.
         self.severity = severity
         # The unique identifier of the machine.
         self.sn = sn
         # The hostname of the syslog server.
         self.source = source
-        # A standard field in Linux syslog.
+        # The Linux syslog standard field.
         self.syslogtag = syslogtag
-        # Tag: Hostname.
+        # The tag for the hostname.
         self.tag_hostname = tag_hostname
-        # Tag: Package ID.
+        # The tag for the pack ID.
         self.tag_pack_id = tag_pack_id
-        # Tag: Path.
+        # The tag for the path.
         self.tag_path = tag_path
-        # Tag: Receive time.
+        # The tag for the receive time. Specify a UNIX timestamp in seconds.
         self.tag_receive_time = tag_receive_time
-        # Tag: User-defined ID.
+        # The tag for the user-defined ID.
         self.tag_user_defined_id = tag_user_defined_id
-        # The time in UNIX format.
+        # The time in UNIX timestamp format.
         self.time = time
-        # The topic. Valid values are \\`logserver\\` and \\`log2sls\\`. Note: Both are syslog servers. \\`logserver\\` collects data over TCP. \\`log2sls\\` collects data over UDP.
+        # The topic, which is logserver or log2sls. Both are syslog servers. logserver collects logs over TCP, and log2sls collects logs over UDP.
         self.topic = topic
 
     def validate(self):

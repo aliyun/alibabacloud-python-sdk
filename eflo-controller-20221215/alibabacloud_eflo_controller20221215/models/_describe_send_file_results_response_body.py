@@ -16,9 +16,9 @@ class DescribeSendFileResultsResponseBody(DaraModel):
     ):
         # The file sending records.
         self.invocations = invocations
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # The total number of the commands.
+        # The total number of commands.
         self.total_count = total_count
 
     def validate(self):
@@ -108,56 +108,55 @@ class DescribeSendFileResultsResponseBodyInvocationsInvocation(DaraModel):
         overwrite: bool = None,
         target_dir: str = None,
     ):
-        # The command output.
+        # The output information after command execution.
         # 
-        # If ContentEncoding is set to PlainText in the request, the original command output is returned. If ContentEncoding is set to Base64 in the request, the Base64-encoded command output is returned.
+        # If ContentEncoding is set to PlainText, the original output information is returned.
+        # If ContentEncoding is set to Base64, the Base64-encoded output information is returned.
         self.content = content
-        # The content type of the file.
+        # The file content type. Valid values:
         # 
-        # PlainText: The file content is not encoded. Base64: The file content is encoded in Base64. Default value: PlainText.
+        # - PlainText: Plain text.
+        # - Base64: Base64 encoding.
+        # 
+        # Default value: PlainText.
         self.content_type = content_type
-        # The time when the file sending task was created.
+        # The time when the sending task was created. The time is in ISO 8601 format and includes the time zone offset.
         self.creation_time = creation_time
         # The command description.
         self.description = description
         # The user group of the file.
         self.file_group = file_group
-        # The permissions on the file.
+        # The permissions of the file.
         self.file_mode = file_mode
-        # The owner of the file.
+        # The user of the file.
         self.file_owner = file_owner
-        # The overall sending status of the file. The overall sending status of the file varies based on the sending status of the file on all destination instances. Valid values:
+        # The overall sending status of the file. The overall status depends on the combined execution status of all instances in this sending operation. Valid values:
         # 
-        # *   Pending: The file is being verified or sent. If the sending state of the file on at least one instance is Pending, the overall sending state of the file is Pending.
-        # 
-        # *   Running: The file is being sent to the instance. If the sending state of the file on at least one instance is Running, the overall sending state of the file is Running.
-        # 
-        # *   Success: If the sending state of the file on all instances is Success, the overall sending state of the file is Success.
-        # 
-        # *   Failed: If the sending state of the file on all instances is Failed, the overall sending state of the file is Failed. If the sending state of the file on one or more instances is one of the following values, the overall sending state of the file is Failed:
-        # 
-        #     *   Invalid: The file is invalid.
-        #     *   Aborted: The file failed to be sent to the instances.
-        #     *   Failed: The file failed to be created on the instances.
-        #     *   Timeout: The file sending task timed out.
-        #     *   Error: An error occurred and interrupted the file sending task.
-        # 
-        # *   PartialFailed: The file sending task was completed on some instances but failed on other instances. If the sending state of the file is Success on some instances and is Failed on other instances, the overall sending state of the file is PartialFailed.
+        # - Pending: The system is validating or sending the file. If the file sending status of at least one instance is Pending, the overall status is Pending.
+        # - Running: The file is being sent on the instance. If the file sending status of at least one instance is Running, the overall status is Running.
+        # - Success: If the file sending status on all instances is Success, the overall status is Success.
+        # - Failed: If the file sending status on all instances is Failed, the overall status is Failed. The return value is Failed when one or more of the following statuses occur on an instance:
+        #     - The specified file parameters are invalid and validation failed (Invalid).
+        #     - Failed to send the file to the instance (Aborted).
+        #     - Failed to create the file on the instance (Failed).
+        #     - File sending timed out (Timeout).
+        #     - An exception occurred during file sending and the operation cannot continue (Error).
+        # - PartialFailed: File sending succeeded on some instances but failed on others. If the file sending status on all instances is either Success or Failed, the overall status is PartialFailed.
         self.invocation_status = invocation_status
         # The file sending records.
         self.invoke_nodes = invoke_nodes
-        # The name of the file sending task.
+        # The file sending name.
         self.name = name
         # The number of nodes.
         self.node_count = node_count
-        # Indicates whether a file was overwritten in the destination directory if the file has the same name as the sent file.
+        # Specifies whether to overwrite the file if a file with the same name already exists in the target directory. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: Overwrite the file.
+        # - false: Do not overwrite the file.
         # 
         # Default value: false.
         self.overwrite = overwrite
-        # The destination directory.
+        # The target path.
         self.target_dir = target_dir
 
     def validate(self):
@@ -259,7 +258,7 @@ class DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodes(DaraMo
         self,
         invoke_node: List[main_models.DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodesInvokeNode] = None,
     ):
-        # The file sending records on a node.
+        # The file sending record of a node.
         self.invoke_node = invoke_node
 
     def validate(self):
@@ -302,51 +301,65 @@ class DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodesInvokeN
         start_time: str = None,
         update_time: str = None,
     ):
-        # The time when the file sending task was created.
+        # The time when the file sending task was created. The time is in ISO 8601 format. Z in the example indicates UTC.
         self.creation_time = creation_time
-        # The error code returned when the file failed to be sent to the instance. Valid values:
+        # The error code for the file sending failure. Valid values:
         # 
-        # Null: The file is sent to the instance. NodeNotExists: The specified instance does not exist or has been released. NodeReleased: The instance was released while the file was being sent. NodeNotRunning: The instance was not running while the file sending task was being created. AccountNotExists: The specified account does not exist. ClientNotRunning: Cloud Assistant Agent is not running. ClientNotResponse: Cloud Assistant Agent did not respond. ClientIsUpgrading: Cloud Assistant Agent was being upgraded. ClientNeedUpgrade: Cloud Assistant Agent needs to be upgraded. DeliveryTimeout: The file sending task timed out. FileCreateFail: The file failed to be created. FileAlreadyExists: A file with the same name exists in the specified directory. FileContentInvalid: The file content is invalid. FileNameInvalid: The file name is invalid. FilePathInvalid: The specified directory is invalid. FileAuthorityInvalid: The specified permissions on the file are invalid. UserGroupNotExists: The specified user group does not exist.
+        # - Empty: File sending was normal.
+        # - NodeNotExists: The specified instance does not exist or has been released.
+        # - NodeReleased: The instance was released during file sending.
+        # - NodeNotRunning: The instance was not running when the file sending task was created.
+        # - AccountNotExists: The specified account does not exist.
+        # - ClientNotRunning: Cloud Assistant Agent is not running.
+        # - ClientNotResponse: Cloud Assistant Agent is not responding.
+        # - ClientIsUpgrading: Cloud Assistant Agent is being upgraded.
+        # - ClientNeedUpgrade: Cloud Assistant Agent needs to be upgraded.
+        # - DeliveryTimeout: File sending timed out.
+        # - FileCreateFail: File creation failed.
+        # - FileAlreadyExists: A file with the same name already exists in the same path.
+        # - FileContentInvalid: The file content is invalid.
+        # - FileNameInvalid: The file name is invalid.
+        # - FilePathInvalid: The file path is invalid.
+        # - FileAuthorityInvalid: The file permissions are invalid.
+        # - UserGroupNotExists: The user group specified during file sending does not exist.
         self.error_code = error_code
-        # The error message returned if the command failed to be sent or run. Valid values:
-        # 
-        # *   null: The command is run as expected.
-        # *   the specified instance does not exists: The specified instance does not exist or is released.
-        # *   the node has released when create task: The instance is released when the command is being run.
-        # *   the node is not running when create task: The instance is not in the Running state while the command is being run.
-        # *   the command is not applicable: The command is not applicable to the specified instance.
-        # *   the specified account does not exists: The specified account does not exist.
-        # *   the specified directory does not exists: The specified directory does not exist.
-        # *   the cron job expression is invalid: The cron expression that specifies the execution time is invalid.
-        # *   the aliyun service is not running on the instance: Cloud Assistant Agent is not running.
-        # *   the aliyun service in the instance does not response: Cloud Assistant Agent does not respond.
-        # *   the aliyun service in the node is upgrading now: Cloud Assistant Agent is being upgraded.
-        # *   the aliyun service in the node need upgrade: Cloud Assistant Agent needs to be upgraded.
-        # *   the command delivery has been timeout: The request to send the command timed out.
-        # *   the command execution has been timeout: The command execution timed out.
-        # *   the command execution got an exception: An exception occurred when the command is being run.
-        # *   the command execution has been interrupted: The command execution is interrupted.
-        # *   the command execution exit code is not zero: The command execution completes, but the exit code is not 0.
-        # *   the specified instance has been released: The instance is released while the file is being sent.
+        # The details of the reason why the command failed to be sent or executed. Valid values:
+        # - Empty: The command was executed normally.
+        # - the specified instance does not exists: The specified instance does not exist or has been released.
+        # - the node has released when create task: The instance was released during command execution.
+        # - the node is not running when create task: The instance was not running when the command was executed.
+        # - the command is not applicable: The command is not applicable to the specified instance.
+        # - the specified account does not exists: The specified account does not exist.
+        # - the specified directory does not exists: The specified directory does not exist.
+        # - the cron job expression is invalid: The specified execution time expression is invalid.
+        # - the aliyun service is not running on the instance: Cloud Assistant Agent is not running.
+        # - the aliyun service in the instance does not response: Cloud Assistant Agent is not responding.
+        # - the aliyun service in the node is upgrading now: Cloud Assistant Agent is being upgraded.
+        # - the aliyun service in the node need upgrade: Cloud Assistant Agent needs to be upgraded.
+        # - the command delivery has been timeout: Sending the command timed out.
+        # - the command execution has been timeout: Command execution timed out.
+        # - the command execution got an exception: An exception occurred during command execution.
+        # - the command execution has been interrupted: Command execution was interrupted.
+        # - the command execution exit code is not zero: Command execution ended with a non-zero exit code.
+        # - the specified instance has been released: The instance was released during file sending.
         self.error_info = error_info
-        # The time when the file sending task ends. The time is in the 2020-05-22T17:04:18 format.
+        # The end time, in the format: "2020-05-22T17:04:18".
         self.finish_time = finish_time
-        # The status of the file sending task on an instance. Valid values:
-        # 
-        # *   Pending: The file is being verified or sent.
-        # *   Invalid: The file is invalid.
-        # *   Running: The file is being sent to the instance.
-        # *   Aborted: The file failed to be sent to the instance.
-        # *   Success: The file is sent.
-        # *   Failed: The file failed to be created on the instance.
-        # *   Error: An error occurred and interrupted the file sending task.
-        # *   Timeout: The file sending task timed out.
+        # The file sending status on a single instance. Valid values:
+        # - Pending: The system is validating or sending the file.
+        # - Invalid: The specified file parameters are invalid and validation failed.
+        # - Running: The file is being sent on the instance.
+        # - Aborted: Failed to send the file to the instance.
+        # - Success: File sending completed.
+        # - Failed: Failed to create the file on the instance.
+        # - Error: An exception occurred during file sending and the operation cannot continue.
+        # - Timeout: File sending timed out.
         self.invocation_status = invocation_status
         # The node ID.
         self.node_id = node_id
-        # The start time.
+        # The start time. The time is in ISO 8601 format. Z in the example indicates UTC.
         self.start_time = start_time
-        # The update time.
+        # The update time. The time is in ISO 8601 format. Z in the example indicates UTC.
         self.update_time = update_time
 
     def validate(self):
