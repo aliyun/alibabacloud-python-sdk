@@ -1,3 +1,6 @@
+2026-10-13 Version: 2.2.2
+- Generated python 2026-08-04 for AgentCore.
+
 2026-10-12 Version: 2.2.1
 - Update API CreateExternalAgent: add request parameters body.skills.$.sourceType.
 - Update API CreateExternalAgent: add request parameters body.skills.$.versionSelector.
