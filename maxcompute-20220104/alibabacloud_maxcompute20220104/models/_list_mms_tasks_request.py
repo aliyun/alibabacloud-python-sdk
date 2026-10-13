@@ -33,7 +33,7 @@ class ListMmsTasksRequest(DaraModel):
         self.page_num = page_num
         # The page size.
         self.page_size = page_size
-        # The partition value. Use this parameter to filter migration tasks that migrated a specific partition value.
+        # The partition value. Filters migration tasks that migrated a specific partition value.
         self.partition = partition
         # The source database name.
         self.src_db_name = src_db_name
@@ -130,9 +130,9 @@ class ListMmsTasksRequestSorter(DaraModel):
         start_time: str = None,
         status: str = None,
     ):
-        # Sorts results by the start time.
+        # Sorts the results by start time.
         self.start_time = start_time
-        # Sorts results by status.
+        # Sorts the results by status.
         self.status = status
 
     def validate(self):

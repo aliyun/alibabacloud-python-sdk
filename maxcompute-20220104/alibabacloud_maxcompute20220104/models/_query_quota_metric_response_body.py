@@ -23,16 +23,11 @@ class QueryQuotaMetricResponseBody(DaraModel):
         # The error message.
         self.error_msg = error_msg
         # The HTTP status code.
-        # 
-        # - 1xx: informational response. The request was received and is being processed.
-        # 
-        # - 2xx: success. The request was successfully received, understood, and accepted by the server.
-        # 
-        # - 3xx: redirection. The request was redirected. Further action needs to be taken to complete the request.
-        # 
-        # - 4xx: client error. The request contains incorrect request parameters or syntax, or specific request conditions cannot be met.
-        # 
-        # - 5xx: server error. The server failed to fulfill the request for other reasons.
+        # - 1xx: Informational. The request was received and is being processed.
+        # - 2xx: Success. The request was successfully received, understood, and accepted by the server.
+        # - 3xx: Redirection. The request was redirected, and further action is required to complete it.
+        # - 4xx: Client error. The request contains bad syntax, invalid parameters, or cannot be fulfilled.
+        # - 5xx: Server error. The server failed to fulfill the request due to other reasons.
         self.http_code = http_code
         # The request ID.
         self.request_id = request_id
@@ -91,11 +86,11 @@ class QueryQuotaMetricResponseBodyData(DaraModel):
         name: str = None,
         period: int = None,
     ):
-        # This parameter is not supported.
+        # Not supported.
         self.category = category
         # The metric values.
         self.metrics = metrics
-        # The name of the metric.
+        # The name of the observed metric.
         self.name = name
         # The step size of the monitoring data.
         self.period = period
@@ -152,7 +147,7 @@ class QueryQuotaMetricResponseBodyDataMetrics(DaraModel):
         metric: Dict[str, str] = None,
         values: List[List[float]] = None,
     ):
-        # The metadata of the metric.
+        # The metric metadata information.
         self.metric = metric
         # The time series data.
         self.values = values

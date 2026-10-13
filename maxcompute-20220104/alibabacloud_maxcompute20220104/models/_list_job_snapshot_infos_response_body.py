@@ -16,23 +16,18 @@ class ListJobSnapshotInfosResponseBody(DaraModel):
         http_code: int = None,
         request_id: str = None,
     ):
-        # The returned data.
+        # The response data.
         self.data = data
         # The error code.
         self.error_code = error_code
         # The error message.
         self.error_msg = error_msg
         # The HTTP status code.
-        # 
-        # - 1xx: Informational - The request has been received and the process is continuing.
-        # 
-        # - 2xx: Success - The request was successfully received, understood, and accepted.
-        # 
-        # - 3xx: Redirection - Further action must be taken to complete the request.
-        # 
-        # - 4xx: Client Error - The request contains bad syntax or cannot be fulfilled.
-        # 
-        # - 5xx: Server Error - The server failed to fulfill an apparently valid request.
+        # - 1xx: Informational. The request was received and is being processed.
+        # - 2xx: Success. The request was successfully received, understood, and accepted by the server.
+        # - 3xx: Redirection. The request was redirected, and further action is required to complete it.
+        # - 4xx: Client error. The request contains invalid parameters, bad syntax, or specific request conditions cannot be met.
+        # - 5xx: Server error. The server failed to fulfill the request due to other reasons.
         self.http_code = http_code
         # The request ID.
         self.request_id = request_id
@@ -93,11 +88,11 @@ class ListJobSnapshotInfosResponseBodyData(DaraModel):
     ):
         # The list of job snapshots.
         self.job_info_list = job_info_list
-        # The page number.
+        # The current page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -181,13 +176,13 @@ class ListJobSnapshotInfosResponseBodyDataJobInfoList(DaraModel):
         total_time: int = None,
         waiting_time: int = None,
     ):
-        # The amount of CPU cores requested by the job at the snapshot time.
+        # The requested CPU resources of the job at the snapshot time. Unit: Core.
         self.cpu_request = cpu_request
-        # The CPU usage of the job at the snapshot time. Unit: cores.
+        # The CPU usage of the job at the snapshot time. Unit: Core.
         self.cpu_usage = cpu_usage
-        # The CPU fulfillment ratio of the job at the snapshot time. This is calculated by dividing the CPU usage by the CPU request.
+        # The CPU fulfillment rate of the job at the snapshot time, which is calculated as CPU usage divided by requested CPU resources.
         self.cpu_usage_to_request_ratio = cpu_usage_to_request_ratio
-        # The upstream node ID.
+        # The upstream node IDs.
         self.ext_node_id = ext_node_id
         # The account ID of the task owner.
         self.ext_node_on_duty = ext_node_on_duty
@@ -198,53 +193,52 @@ class ListJobSnapshotInfosResponseBodyDataJobInfoList(DaraModel):
         self.instance_id = instance_id
         # The job owner.
         self.job_owner = job_owner
-        # The job type.
+        # The job types.
         self.job_type = job_type
-        # This parameter is not used.
+        # Ignore this parameter.
         self.max_cpu_pct = max_cpu_pct
-        # This parameter is not used.
+        # Ignore this parameter.
         self.max_memory_pct = max_memory_pct
-        # The amount of memory requested by the job at the snapshot time, in MB.
+        # The requested memory resources of the job at the snapshot time. Unit: MB.
         self.memory_request = memory_request
         # The memory usage of the job at the snapshot time. Unit: MB.
         self.memory_usage = memory_usage
-        # The memory fulfillment ratio of the job at the snapshot time. This is calculated by dividing the memory usage by the memory request.
+        # The memory fulfillment rate of the job at the snapshot time, which is calculated as memory usage divided by requested memory resources.
         self.memory_usage_to_request_ratio = memory_usage_to_request_ratio
-        # The CPU usage percentage of a subscription job at the snapshot time. This value is calculated by dividing the CPU usage by the sum of the reserved CPU guarantee and the elastic reserved CPU. This parameter is not available for pay-as-you-go jobs.
+        # The CPU usage ratio of a subscription job at the snapshot time, which is calculated as CPU usage divided by the sum of reserved CPU and elastic reserved CPU. This parameter is not returned for pay-as-you-go jobs.
         self.min_cpu_pct = min_cpu_pct
-        # The memory usage percentage of a subscription job at the observation time. This value is calculated by dividing the memory usage by the sum of the reserved memory guarantee and the elastic reserved memory. This parameter is not available for pay-as-you-go jobs.
+        # The memory usage ratio of a subscription job at the observation time, which is calculated as memory usage divided by the sum of reserved memory and elastic reserved memory. This parameter is not returned for pay-as-you-go jobs.
         self.min_memory_pct = min_memory_pct
-        # The job priority.
+        # The job priorities.
         self.priority = priority
-        # The project name.
+        # The project names.
         self.project = project
-        # The nickname of the computing quota that the job uses.
+        # The nickname of the compute quota used by the job.
         self.quota_nickname = quota_nickname
         # The quota type.
         self.quota_type = quota_type
         # The region ID.
         self.region = region
         # The time when the job started running.
-        # 
-        # > The time when the job acquired its first computing resource.
+        # > The time when the job obtained the first compute resource. The value is a UNIX timestamp in seconds.
         self.running_at_time = running_at_time
-        # The runtime duration, in seconds. This is the duration from when the job started running to the snapshot time. If the job has not started, this parameter is empty.
+        # The running duration, which is the time from when the job started running to the snapshot time. If the job has not started running, this parameter is empty. Unit: s.
         self.running_time = running_time
-        # The signature of the SQL job.
+        # The SQL job signatures.
         self.signature = signature
-        # The snapshot time.
+        # The snapshot time. The value is a UNIX timestamp, Unit: s.
         self.snapshot_time = snapshot_time
         # The job status.
         # 
-        # > The status of a snapshot job can only be \\`running\\`.
+        # > The status of a job in a snapshot is always running.
         self.status = status
-        # The time when the job was submitted.
+        # The time when the job was submitted. The value is a UNIX timestamp, Unit: s.
         self.submitted_at_time = submitted_at_time
         # The tenant ID.
         self.tenant_id = tenant_id
-        # The total duration, in seconds. This is the duration from when the job was submitted to the snapshot time.
+        # The total duration, which is the time from when the job was submitted to the snapshot time. Unit: s.
         self.total_time = total_time
-        # The waiting duration, in seconds. This is the duration from when the job was submitted to when it started running. If the job has not started, this is the duration from the submission time to the snapshot time.
+        # The waiting duration, which is the time from when the job was submitted to when it started running. If the job has not started running, the value is the time from when the job was submitted to the snapshot time. Unit: s.
         self.waiting_time = waiting_time
 
     def validate(self):

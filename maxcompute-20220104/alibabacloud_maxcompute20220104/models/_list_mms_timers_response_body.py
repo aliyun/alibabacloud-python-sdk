@@ -54,11 +54,11 @@ class ListMmsTimersResponseBodyData(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
-        # A list of timers.
+        # The log information.
         self.object_list = object_list
         # The page number.
         self.page_num = page_num
-        # The number of entries on the current page.
+        # The number of entries displayed per page.
         self.page_size = page_size
         # The total number of entries.
         self.total = total
@@ -123,21 +123,21 @@ class ListMmsTimersResponseBodyDataObjectList(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The creation time.
+        # The creation time. The format is YYYY-MM-DD HH:mm:ss.
         self.create_time = create_time
         # The source database ID.
         self.db_id = db_id
-        # The timer ID.
+        # The scheduled task ID.
         self.id = id
-        # The timer name.
+        # The scheduled task name.
         self.name = name
-        # The schedule type.
+        # The schedule type of the scheduled task.
         self.schedule_type = schedule_type
         # The data source ID.
         self.source_id = source_id
         # The source database name.
         self.src_db_name = src_db_name
-        # Indicates whether the timer is stopped.
+        # Indicates whether the task is stopped.
         self.stopped = stopped
         # The job type.
         self.type = type

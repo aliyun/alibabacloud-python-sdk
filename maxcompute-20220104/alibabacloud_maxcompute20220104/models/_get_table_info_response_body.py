@@ -13,7 +13,7 @@ class GetTableInfoResponseBody(DaraModel):
         data: main_models.GetTableInfoResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The response result.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -83,79 +83,79 @@ class GetTableInfoResponseBodyData(DaraModel):
         type: str = None,
         view_text: str = None,
     ):
-        # Indicates whether the materialized view is automatically refreshed. This response parameter is returned when type is set to materializedView.
+        # Indicates whether automatic refresh of the materialized view is enabled. This parameter is returned only when the type is materialized view.
         self.auto_refresh_enabled = auto_refresh_enabled
-        # The clustering attribute. This response parameter is returned when the table is a clustered table.
+        # The clustering properties. This parameter is returned only when the table type is clustered table.
         self.cluster_info = cluster_info
-        # The comments of the table.
+        # The table comment.
         self.comment = comment
-        # DDL statement to create a table.
+        # The DDL statement used to create the table.
         self.create_table_ddl = create_table_ddl
-        # The creation time.
+        # The creation time. The time is in ISO 8601 format and in the UTC time zone.
         self.creation_time = creation_time
         # The display name.
         self.display_name = display_name
-        # The number of file of the table.
+        # The number of files.
         self.file_num = file_num
-        # Indicates whether the table is an external table. This response parameter is returned when type is set to external.
+        # Indicates whether the table is an external table. This parameter is returned only when the type is table.
         self.is_external_table = is_external_table
-        # Indicates whether data of the materialized view is invalid due to changes in the data of the source table. This response parameter is returned when type is set to materializedView.
+        # Indicates whether the data in the materialized view is invalid due to changes in the source table data. This parameter is returned only when the type is materialized view.
         self.is_outdated = is_outdated
-        # The time when data of the table or view was last accessed.
+        # The time when the data of the table or view was last accessed. This parameter is returned only when the table is a non-partitioned table.
+        # > This data has been gradually collected since July 2023. If the table has not been accessed after the upgrade, or if it is accessed through ALGO jobs or Hologres direct read, the last_access_time cannot be collected.
         self.last_access_time = last_access_time
-        # The time when the data definition language (DDL) statement of the table or view was last modified.
+        # The time when the DDL statement of the table or view was last modified.
         self.last_ddltime = last_ddltime
-        # The time when data of the table or view was last modified.
+        # The time when the data of the table or view was last modified. The time is in ISO 8601 format and in the UTC time zone.
         self.last_modified_time = last_modified_time
-        # The lifecycle. Unit: days.
+        # The lifecycle in days.
         self.lifecycle = lifecycle
-        # The path of the external table. This response parameter is returned when type is set to external.
+        # The external table location. This parameter is returned only when the type is external table.
         self.location = location
-        # Indicates whether the table or view is a [materialize view](https://www.alibabacloud.com/help/maxcompute/user-guide/materialized-view-operations).
+        # Indicates whether the table is a <props="china">[materialized view](https://www.alibabacloud.com/help/en/maxcompute/user-guide/materialized-view-operations)
+        # <props="intl">[materialized view](https://www.alibabacloud.com/help/maxcompute/user-guide/materialized-view-operations).
         self.materialized_view = materialized_view
         # The name of the table or view.
         self.name = name
-        # The field information.
+        # The column information.
         self.native_columns = native_columns
-        # The Alibaba Cloud Resource Name (ARN) of the role AliyunODPSDefaultRole in Resource Access Management (RAM). This response parameter is returned when type is set to external.
+        # The ARN of AliyunODPSDefaultRole in RAM. This parameter is returned only when the type is external table.
         self.odps_properties_rolearn = odps_properties_rolearn
-        # Indicates whether the table header is ignored. This response parameter is returned when type is set to external.
+        # Indicates whether to ignore the header. This parameter is returned only when the type is external table.
         self.odps_sql_text_option_flush_header = odps_sql_text_option_flush_header
-        # The first N rows that were ignored in the table header. This response parameter is returned when type is set to external.
+        # The number of header lines to ignore. This parameter is returned only when the type is external table.
         self.odps_text_option_header_lines_count = odps_text_option_header_lines_count
-        # The account information of the table or view owner.
+        # The account information of the owner of the table or view.
         self.owner = owner
-        # The information about partition key columns. This response parameter is returned only for partitioned tables.
+        # The partition column information. This parameter is returned only for partitioned tables.
         self.partition_columns = partition_columns
-        # The physical size of the table.
+        # The physical size.
         self.physical_size = physical_size
         # The name of the project to which the table or view belongs.
         self.project_name = project_name
-        # Indicates whether the query rewrite operation can be performed by using the materialized view. This response parameter is returned when type is set to materializedView.
+        # Indicates whether query rewrite through the materialized view is allowed. This parameter is returned only when the type is materialized view.
         self.rewrite_enabled = rewrite_enabled
-        # The name of the schema to which the table or the view belongs.
+        # The name of the schema to which the table or view belongs.
         self.schema = schema
-        # The data size of the non-partitioned table. If the table is a partitioned table, the system does not calculate the data size of the table. In this case, the value of this parameter is NULL. The PARTITIONS view includes the data size of each partition in a partitioned table. Unit: bytes.
+        # The data size of the table. If the table is a non-partitioned table, the value is the data size of the table. If the table is a partitioned table, the system does not calculate the data size of the table, and the value is NULL. The PARTITIONS view contains the data size of each partition in the partitioned table. Unit: bytes.
         self.size = size
-        # The storage handler of the external table. This response parameter is returned when type is set to external.
+        # The external table parser. This parameter is returned only when the type is external table.
         self.storage_handler = storage_handler
-        # The sensitivity-level label of the table. For more information, see [Label-based access control](https://www.alibabacloud.com/help/maxcompute/user-guide/label-based-access-control).
+        # The sensitivity level label of the table. For more information, see <props="china">[Label-based access control](https://www.alibabacloud.com/help/en/maxcompute/user-guide/label-based-access-control)
+        # <props="intl">[Label-based access control](https://www.alibabacloud.com/help/maxcompute/user-guide/label-based-access-control).
         self.table_label = table_label
-        # The name of the Tablestore table to be accessed. This response parameter is returned when type is set to external.
+        # The name of the Tablestore table to be accessed. This parameter is returned only when the type is external table.
         self.tablesotre_table_name = tablesotre_table_name
-        # The columns of the Tablestore table to be accessed, including the primary key column and attribute column. This response parameter is returned when type is set to external.
+        # The columns of the Tablestore table to be accessed by MaxCompute, including the primary key columns and attribute columns. This parameter is returned only when the type is external table.
         self.tablestore_columns_mapping = tablestore_columns_mapping
         # The type of the table or view. Valid values:
-        # 
-        # - **internal**: internal table
-        # 
-        # - **external**: external table
-        # 
-        # - **view**: view
-        # 
-        # - **materializedView**: [materialize view](https://www.alibabacloud.com/help/maxcompute/user-guide/materialized-view-operations)
+        # - **internal**: Internal table.
+        # - **external**: External table.
+        # - **view**: View.
+        # - **materializedView**: <props="china">[Materialized view](https://www.alibabacloud.com/help/en/maxcompute/user-guide/materialized-view-operations)
+        # <props="intl">[Materialized view](https://www.alibabacloud.com/help/maxcompute/user-guide/materialized-view-operations).
         self.type = type
-        # The statement that generates the view. This response parameter is returned when type is set to view.
+        # The statement used to create the view. This parameter is returned only when the type is view.
         self.view_text = view_text
 
     def validate(self):
@@ -398,13 +398,14 @@ class GetTableInfoResponseBodyDataPartitionColumns(DaraModel):
         name: str = None,
         type: str = None,
     ):
-        # The comments of the partition key column.
+        # The partition column comment.
         self.comment = comment
-        # The sensitivity-level label of the column. For more information, see [Label-based access control](https://www.alibabacloud.com/help/maxcompute/user-guide/label-based-access-control).
+        # The sensitivity level label of the column. For more information, see <props="china">[Label-based access control](https://www.alibabacloud.com/help/en/maxcompute/user-guide/label-based-access-control)
+        # <props="intl">[Label-based access control](https://www.alibabacloud.com/help/maxcompute/user-guide/label-based-access-control).
         self.label = label
         # The partition name.
         self.name = name
-        # The partition column type.
+        # The data type.
         self.type = type
 
     def validate(self):
@@ -453,13 +454,14 @@ class GetTableInfoResponseBodyDataNativeColumns(DaraModel):
         name: str = None,
         type: str = None,
     ):
-        # The column comments.
+        # The column comment.
         self.comment = comment
-        # The sensitivity-level label of the column. For more information, see [Label-based access control](https://www.alibabacloud.com/help/maxcompute/user-guide/label-based-access-control).
+        # The sensitivity level label of the column. For more information, see <props="china">[Label-based access control](https://www.alibabacloud.com/help/en/maxcompute/user-guide/label-based-access-control)
+        # <props="intl">[Label-based access control](https://www.alibabacloud.com/help/maxcompute/user-guide/label-based-access-control).
         self.label = label
         # The column name.
         self.name = name
-        # The column type.
+        # The data type.
         self.type = type
 
     def validate(self):
@@ -508,15 +510,16 @@ class GetTableInfoResponseBodyDataClusterInfo(DaraModel):
         cluster_type: str = None,
         sort_cols: List[main_models.GetTableInfoResponseBodyDataClusterInfoSortCols] = None,
     ):
-        # Optional. The number of buckets in the clustered table. The value 0 indicates that the number of buckets dynamically changes when a job is running.
+        # The number of buckets in the clustered table. This is an optional field. A value of 0 indicates that the number of buckets is dynamically determined during job execution.
         self.bucket_num = bucket_num
-        # The cluster keys.
+        # The cluster key.
         self.cluster_cols = cluster_cols
-        # The clustering type of the table. MaxCompute supports [hash clustering](https://www.alibabacloud.com/help/maxcompute/use-cases/hash-clustering) and
-        # 
-        # [range clustering](https://www.alibabacloud.com/help/maxcompute/use-cases/range-clustering).
+        # The clustering type of the table. MaxCompute currently supports <props="china">[Hash Clustering](https://www.alibabacloud.com/help/en/maxcompute/use-cases/hash-clustering)
+        # <props="intl">[Hash Clustering](https://www.alibabacloud.com/help/maxcompute/use-cases/hash-clustering) and
+        # <props="china"> [Range Clustering](https://www.alibabacloud.com/help/en/maxcompute/use-cases/hash-clustering)
+        # <props="intl">[Range Clustering](https://www.alibabacloud.com/help/maxcompute/use-cases/range-clustering).
         self.cluster_type = cluster_type
-        # The condition by which the results are sorted.
+        # The sort columns.
         self.sort_cols = sort_cols
 
     def validate(self):
@@ -571,9 +574,9 @@ class GetTableInfoResponseBodyDataClusterInfoSortCols(DaraModel):
         name: str = None,
         order: str = None,
     ):
-        # The name of the sorting field.
+        # The name of the sort column.
         self.name = name
-        # The sorting order.
+        # The sort order.
         self.order = order
 
     def validate(self):

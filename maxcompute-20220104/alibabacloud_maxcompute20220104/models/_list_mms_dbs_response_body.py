@@ -13,9 +13,9 @@ class ListMmsDbsResponseBody(DaraModel):
         data: main_models.ListMmsDbsResponseBodyData = None,
         request_id: str = None,
     ):
-        # Returned data.
+        # The returned data.
         self.data = data
-        # Request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -54,13 +54,13 @@ class ListMmsDbsResponseBodyData(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
-        # Database list
+        # The list of databases.
         self.object_list = object_list
-        # Page number
+        # The page number.
         self.page_num = page_num
-        # Page size
+        # The number of entries per page.
         self.page_size = page_size
-        # Total number of records.
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -140,59 +140,59 @@ class ListMmsDbsResponseBodyDataObjectList(DaraModel):
         update_time: str = None,
         updated: bool = None,
     ):
-        # Time created in MMS
+        # The time when the database was created in MMS.
         self.create_time = create_time
-        # Whether deleted
+        # Indicates whether the database has been deleted.
         self.deleted = deleted
-        # Database description
+        # The description of the database.
         self.description = description
-        # The MaxCompute schema corresponding to the source database. If the target MaxCompute project does not have a schema layer enabled, this value is null. By default, it is consistent with the source database name.
+        # The MaxCompute schema that corresponds to the source database. If the schema layer is not enabled for the destination MaxCompute project, this value is null. By default, this value is the same as the name of the source database.
         self.dst_name = dst_name
-        # Target MaxCompute project name
+        # The name of the destination MaxCompute project.
         self.dst_project_name = dst_project_name
-        # Other information stored in JSON format
+        # The additional information stored in JSON format.
         self.extra = extra
-        # Database ID
+        # The ID of the database.
         self.id = id
         # Last DDL Time
         self.last_ddl_time = last_ddl_time
-        # Database storage location
+        # The storage location of the database.
         self.location = location
-        # Database name
+        # The name of the database.
         self.name = name
-        # Number of database data rows
+        # The number of data rows in the database.
         self.num_rows = num_rows
-        # Database owner
+        # The owner of the database.
         self.owner = owner
-        # Number of partitions
+        # The number of partitions.
         self.partitions = partitions
-        # Partitions being migrated
+        # The partitions being migrated.
         self.partitions_doing = partitions_doing
-        # Partitions migrated
+        # The partitions that have been migrated.
         self.partitions_done = partitions_done
-        # Failed partitions
+        # The partitions that failed to migrate.
         self.partitions_failed = partitions_failed
-        # Database data size in bytes
+        # The size of the database data, in bytes.
         self.size = size
-        # Data source ID.
+        # The ID of the data source.
         self.source_id = source_id
-        # Data source name
+        # The name of the data source.
         self.source_name = source_name
-        # Migration status: INIT, DOING, FAILED, DONE, PART_DONE
+        # The migration status. Valid values: INIT, DOING, FAILED, DONE, and PART_DONE.
         self.status = status
-        # Number of tables
+        # The number of tables.
         self.tables = tables
-        # Tables being migrated
+        # The tables being migrated.
         self.tables_doing = tables_doing
-        # Tables migrated
+        # The tables that have been migrated.
         self.tables_done = tables_done
-        # Failed tables
+        # The tables that failed to migrate.
         self.tables_failed = tables_failed
-        # Partially migrated tables
+        # The tables that are partially migrated.
         self.tables_part_done = tables_part_done
-        # Latest data update time
+        # The latest update time of the data. Format: YYYY-MM-DD HH:mm:ss.
         self.update_time = update_time
-        # Whether data is updated
+        # Indicates whether the data has been updated.
         self.updated = updated
 
     def validate(self):

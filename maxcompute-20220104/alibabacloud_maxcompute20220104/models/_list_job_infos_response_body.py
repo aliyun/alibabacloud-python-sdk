@@ -16,7 +16,7 @@ class ListJobInfosResponseBody(DaraModel):
     ):
         # The response data.
         self.data = data
-        # The HTTP status code. If the value is not empty and is not 200, the request failed.
+        # Indicates whether the request is successful. If the value is not null and is not 200, the request failed.
         self.http_code = http_code
         # The request ID.
         self.request_id = request_id
@@ -161,13 +161,13 @@ class ListJobInfosResponseBodyDataJobInfoList(DaraModel):
         self.cu_snapshot = cu_snapshot
         # The total CU usage.
         self.cu_usage = cu_usage
-        # The time when the job finished running.
+        # The end time of the execution. The value is a UNIX timestamp in seconds.
         self.end_at_time = end_at_time
         # The DataWorks node ID.
         self.ext_node_id = ext_node_id
         # The name of the external scheduling platform that submitted the job.
         self.ext_node_name = ext_node_name
-        # The person responsible for the execution.
+        # The person in charge of the execution.
         self.ext_node_on_duty = ext_node_on_duty
         # The upstream platform.
         self.ext_plant_from = ext_plant_from
@@ -195,13 +195,13 @@ class ListJobInfosResponseBodyDataJobInfoList(DaraModel):
         self.quota_type = quota_type
         # The region ID.
         self.region = region
-        # The role session name of the entity that submitted the job through role assumption.
+        # The role assumption used to commit the job.
         self.role_session_name = role_session_name
-        # The time when the job started running.
+        # The start time of the job execution. The value is a UNIX timestamp in seconds.
         self.running_at_time = running_at_time
-        # The running time.
+        # The execution duration. Unit: seconds.
         self.running_time = running_time
-        # The intelligent diagnostics results.
+        # The intelligent diagnosis results.
         self.scene_results = scene_results
         # The SQL signature.
         self.signature = signature
@@ -209,7 +209,7 @@ class ListJobInfosResponseBodyDataJobInfoList(DaraModel):
         self.status = status
         # The snapshot status of the job.
         self.status_snapshot = status_snapshot
-        # The time when the job was submitted.
+        # The submission time of the job. The value is a UNIX timestamp in seconds.
         self.submitted_at_time = submitted_at_time
         # The tags.
         self.tags = tags
@@ -217,9 +217,9 @@ class ListJobInfosResponseBodyDataJobInfoList(DaraModel):
         self.task_name = task_name
         # The tenant ID.
         self.tenant_id = tenant_id
-        # The total running duration.
+        # The total execution duration.
         self.total_time = total_time
-        # The waiting time.
+        # The waiting time. Unit: seconds.
         self.waiting_time = waiting_time
 
     def validate(self):
@@ -452,17 +452,17 @@ class ListJobInfosResponseBodyDataJobInfoListSceneResults(DaraModel):
         summary: str = None,
         type: str = None,
     ):
-        # The details of the intelligent diagnostics result.
+        # The details of the intelligent diagnosis result.
         self.description = description
-        # The node information about data skew or data bloat. This parameter is returned only when the diagnostics scenario is data skew or data bloat.
+        # The node information for data skew and data bloat. This parameter is returned only when the diagnosis scenario is data skew or data bloat.
         self.params = params
-        # The scenario of the intelligent diagnostics result.
+        # The scenario of the intelligent diagnosis result.
         self.scene = scene
-        # The tag of the intelligent diagnostics result.
+        # The tag of the intelligent diagnosis result.
         self.scene_tag = scene_tag
-        # The summary of the intelligent diagnostics result.
+        # The summary of the intelligent diagnosis result.
         self.summary = summary
-        # The type of the intelligent diagnostics result.
+        # The type of the intelligent diagnosis result.
         self.type = type
 
     def validate(self):

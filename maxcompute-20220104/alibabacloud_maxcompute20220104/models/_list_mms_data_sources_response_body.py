@@ -13,7 +13,7 @@ class ListMmsDataSourcesResponseBody(DaraModel):
         data: main_models.ListMmsDataSourcesResponseBodyData = None,
         request_id: str = None,
     ):
-        # The response payload.
+        # The returned data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -60,7 +60,7 @@ class ListMmsDataSourcesResponseBodyData(DaraModel):
         self.page_num = page_num
         # The number of entries per page.
         self.page_size = page_size
-        # The total number of data sources.
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -139,55 +139,60 @@ class ListMmsDataSourcesResponseBodyDataObjectList(DaraModel):
         tables_part_done_num: int = None,
         type: str = None,
     ):
-        # Indicates whether the agent for the data source instance is online.
+        # Specifies whether the data source instance or the associated agent is started.
         self.agent_is_online = agent_is_online
-        # A list of data source configurations.
+        # The configurations related to the data source.
         self.config = config
-        # The time the data source was created.
+        # The time when the data source was created. Format: YYYY-MM-DD HH:mm:ss.
         self.create_time = create_time
         # The number of databases in the data source.
         self.db_num = db_num
         # The default destination MaxCompute project.
         self.dst_project = dst_project
-        # A list of destination MaxCompute projects.
+        # The list of destination MaxCompute projects.
         self.dst_projects = dst_projects
-        # The reason the data source instance failed to start or stop. This parameter is returned only if the `status` is `START_FAILED` or `STOP_FAILED`.
+        # The reason why the data source instance failed to start or stop when the status is START_FAILED or STOP_FAILED.
         self.err_msg = err_msg
-        # The data source ID.
+        # The ID of the data source.
         self.id = id
-        # The last metadata synchronization time.
+        # The time when the metadata was last synchronized. Format: YYYY-MM-DD HH:mm:ss.
         self.last_update_time = last_update_time
-        # The data source name.
+        # The name of the data source.
         self.name = name
-        # The network connection, specified in the `VpcId:RegionId` format.
+        # The MaxCompute network connectivity ID. Format: "MaxCompute network connectivity ID":region ID.
         self.networklink = networklink
         # The number of partitions in the data source.
         self.partition_num = partition_num
-        # The number of partitions currently being migrated.
+        # The number of partitions being migrated.
         self.partitions_doing_num = partitions_doing_num
-        # The number of successfully migrated partitions.
+        # The number of partitions that have been migrated.
         self.partitions_done_num = partitions_done_num
-        # The number of partitions that failed to migrate.
+        # The number of partitions that failed to be migrated.
         self.partitions_failed_num = partitions_failed_num
         # The region ID.
         self.region = region
+        # The cause of the metadata update task failure.
         self.scan_err_msg = scan_err_msg
         # The ID of the metadata synchronization task.
         self.scan_id = scan_id
+        # The status of the metadata update task. Valid values:
+        # - DOING: The task is running.
+        # - DONE: The task succeeded.
+        # - FAILED: The task failed.
         self.scan_status = scan_status
-        # The data source status.
+        # The status of the data source.
         self.status = status
         # The number of tables in the data source.
         self.table_num = table_num
-        # The number of tables currently being migrated.
+        # The number of tables being migrated.
         self.tables_doing_num = tables_doing_num
-        # The number of successfully migrated tables.
+        # The number of tables that have been migrated.
         self.tables_done_num = tables_done_num
-        # The number of tables that failed to migrate.
+        # The number of tables that failed to be migrated.
         self.tables_failed_num = tables_failed_num
-        # The number of partially migrated tables.
+        # The number of tables that have been partially migrated.
         self.tables_part_done_num = tables_part_done_num
-        # The data source type.
+        # The type of the data source.
         self.type = type
 
     def validate(self):
@@ -384,23 +389,23 @@ class ListMmsDataSourcesResponseBodyDataObjectListConfig(DaraModel):
     ):
         # The description of the configuration.
         self.desc = desc
-        # A list of valid values for the configuration.
+        # The enumerated values of the configuration.
         self.enums = enums
         # The configuration group.
         self.group = group
-        # The unique key for the configuration.
+        # The English identifier of the configuration.
         self.key = key
-        # The configuration name.
+        # The name of the configuration.
         self.name = name
-        # A placeholder for the configuration value.
+        # The sample value of the configuration.
         self.place_holder = place_holder
-        # Indicates whether the configuration is required.
+        # Specifies whether the configuration is required.
         self.required = required
-        # The required file extension (for example, `.keytab`) when `type` is `file`.
+        # The specific file type when the type is file, such as .keytab.
         self.sub_type = sub_type
-        # The configuration type.
+        # The type of the configuration. Valid values: boolean, int, map, string, password, and file.
         self.type = type
-        # The configuration value.
+        # The value of the configuration.
         self.value = value
 
     def validate(self):

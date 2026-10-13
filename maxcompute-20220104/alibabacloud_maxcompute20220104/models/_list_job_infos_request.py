@@ -32,7 +32,7 @@ class ListJobInfosRequest(DaraModel):
         region: str = None,
         tenant_id: str = None,
     ):
-        # Specifies whether to sort in ascending or descending order.
+        # Specifies whether to sort the results in ascending order.
         self.asc_order = asc_order
         # The upstream node IDs.
         self.ext_node_id_list = ext_node_id_list
@@ -42,9 +42,9 @@ class ListJobInfosRequest(DaraModel):
         # 
         # This parameter is required.
         self.from_ = from_
-        # The job instance IDs.
+        # The job instance Id.
         self.instance_id_list = instance_id_list
-        # The job owners.
+        # The list of job owners.
         self.job_owner_list = job_owner_list
         # The job priorities.
         self.priority_list = priority_list
@@ -52,13 +52,13 @@ class ListJobInfosRequest(DaraModel):
         self.project_list = project_list
         # The quota nickname.
         self.quota_nickname = quota_nickname
-        # The intelligent diagnosis labels.
+        # The intelligent diagnostics tags.
         self.scene_tag_list = scene_tag_list
         # The job signatures.
         self.signature_list = signature_list
-        # The fields used for multi-column sorting.
+        # The multi-column sort fields.
         self.sort_by_list = sort_by_list
-        # The sort orders for multi-column sorting.
+        # The multi-column sort orders.
         self.sort_order_list = sort_order_list
         # The job statuses.
         self.status_list = status_list
@@ -70,11 +70,11 @@ class ListJobInfosRequest(DaraModel):
         self.to = to
         # The job types.
         self.type_list = type_list
-        # The column used for sorting.
+        # The sort column.
         self.order_column = order_column
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries to return on each page.
         self.page_size = page_size
         # The region ID.
         self.region = region

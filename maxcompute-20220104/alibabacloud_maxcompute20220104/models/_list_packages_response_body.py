@@ -15,7 +15,7 @@ class ListPackagesResponseBody(DaraModel):
     ):
         # The returned data.
         self.data = data
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -52,9 +52,9 @@ class ListPackagesResponseBodyData(DaraModel):
         created_packages: List[main_models.ListPackagesResponseBodyDataCreatedPackages] = None,
         installed_packages: List[main_models.ListPackagesResponseBodyDataInstalledPackages] = None,
     ):
-        # The packages that were created.
+        # The list of created packages.
         self.created_packages = created_packages
-        # The packages that were installed.
+        # The list of installed packages.
         self.installed_packages = installed_packages
 
     def validate(self):
@@ -108,13 +108,13 @@ class ListPackagesResponseBodyDataInstalledPackages(DaraModel):
         source_project: str = None,
         status: str = None,
     ):
-        # The time when the package was installed.
+        # The installation time. The format is ISO 8601 and the time zone is UTC.
         self.install_time = install_time
         # The name of the package.
         self.name = name
-        # The project to which the package belongs. This parameter is required if the package is installed in the MaxCompute project.
+        # The project to which the package belongs. This parameter is required if the package is installed.
         self.source_project = source_project
-        # The status of the package.
+        # The status.
         self.status = status
 
     def validate(self):
@@ -161,7 +161,7 @@ class ListPackagesResponseBodyDataCreatedPackages(DaraModel):
         create_time: int = None,
         name: str = None,
     ):
-        # The time when the package was created.
+        # The creation time. The format is ISO 8601 and the time zone is UTC.
         self.create_time = create_time
         # The name of the package.
         self.name = name

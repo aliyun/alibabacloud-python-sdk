@@ -15,9 +15,9 @@ class ListMmsDataSourcesRequest(DaraModel):
     ):
         # The name of the data source.
         self.name = name
-        # The page number. If pagination is not used, all data sources are returned.
+        # The page number. If this parameter is not specified, all records are queried.
         self.page_num = page_num
-        # The number of entries per page. If pagination is not used, all data sources are returned.
+        # The number of entries to return on each page. If this parameter is not specified, all records are queried.
         self.page_size = page_size
         # The region ID.
         self.region = region

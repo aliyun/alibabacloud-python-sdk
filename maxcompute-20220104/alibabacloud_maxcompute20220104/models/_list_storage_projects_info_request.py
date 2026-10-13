@@ -19,20 +19,15 @@ class ListStorageProjectsInfoRequest(DaraModel):
     ):
         # Specifies whether to sort the results in ascending order.
         self.asc_order = asc_order
-        # The statistics collection date. The date is accurate to the day. The date must be in the `YYYYMMdd` format.
+        # The statistical date, in the YYYYMMdd format. Data is collected on a daily basis.
         # 
         # This parameter is required.
         self.date = date
-        # The column to sort by. Valid values:
-        # 
+        # The sort column. Valid values:
         # - totalStorage
-        # 
         # - longTermStorage
-        # 
         # - lowFreqStorage
-        # 
         # - standardStorage
-        # 
         # - recycleBinStorage
         self.order_column = order_column
         # The page number.
@@ -41,11 +36,11 @@ class ListStorageProjectsInfoRequest(DaraModel):
         self.page_size = page_size
         # The prefix of the MaxCompute project name.
         self.project_prefix = project_prefix
-        # The number of days for year-over-year comparison.
+        # The number of days used for comparison.
         self.recent_days = recent_days
         # The region ID.
         self.region = region
-        # The tenant ID. You can log on to the MaxCompute console and choose **Tenant Property** in the navigation pane on the left to view the tenant ID.
+        # The tenant ID. You can view the tenant ID by logging on to the MaxCompute console and choosing **Tenant Management** > **Tenant Properties** in the left-side navigation pane.
         self.tenant_id = tenant_id
 
     def validate(self):

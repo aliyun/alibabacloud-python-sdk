@@ -12,9 +12,9 @@ class ListResourcesRequest(DaraModel):
         name: str = None,
         schema_name: str = None,
     ):
-        # Specifies the marker after which the returned list begins.
+        # Specifies the marker after which results are returned in alphabetical order.
         self.marker = marker
-        # The maximum number of entries to return on each page.
+        # The maximum number of results to return per page.
         self.max_item = max_item
         # The name of the resource.
         self.name = name

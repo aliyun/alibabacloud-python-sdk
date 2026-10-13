@@ -17,13 +17,13 @@ class ListQuotasRequest(DaraModel):
     ):
         # The billing method.
         self.billing_type = billing_type
-        # The token that specifies the position from which to start returning results. The results are sorted in alphabetical order.
+        # The marker after which the results are returned in alphabetical order.
         self.marker = marker
-        # The maximum number of entries to return on each page.
+        # The maximum number of items to return.
         self.max_item = max_item
         self.product_id = product_id
         self.region = region
-        # The cost allocation tags that are used to filter quotas. You can create cost allocation tags in the Tag service.
+        # The billing tags used to filter quota objects. Billing tags are created by users for cloud products.
         self.sale_tags = sale_tags
         self.tenant_id = tenant_id
 

@@ -23,16 +23,11 @@ class ListStorageProjectsInfoResponseBody(DaraModel):
         # The error message.
         self.error_msg = error_msg
         # The HTTP status code.
-        # 
-        # - 1xx: an informational response. The request has been received and is being processed.
-        # 
-        # - 2xx: a success response. The request has been successfully received, understood, and accepted by the server.
-        # 
-        # - 3xx: a redirection response. The request is redirected. You must take further action to complete the request.
-        # 
-        # - 4xx: a client error. The request contains invalid request parameters or syntax, or cannot be fulfilled.
-        # 
-        # - 5xx: a server error. The server fails to fulfill the request for other reasons.
+        # - 1xx: Informational. The request was received and is being processed.
+        # - 2xx: Success. The action requested by the client was successfully received, understood, and accepted by the server.
+        # - 3xx: Redirection. The request was redirected, and further action is required to complete it.
+        # - 4xx: Client error. The request contains bad syntax, invalid parameters, or cannot be fulfilled.
+        # - 5xx: Server error. The server failed to fulfill the request.
         self.http_code = http_code
         # The request ID.
         self.request_id = request_id
@@ -92,15 +87,15 @@ class ListStorageProjectsInfoResponseBodyData(DaraModel):
         storage_project_info_list: List[main_models.ListStorageProjectsInfoResponseBodyDataStorageProjectInfoList] = None,
         total_count: int = None,
     ):
-        # The statistics collection date.
+        # The statistical date. The format is YYYYMMDD.
         self.date = date
         # The page number.
         self.page_number = page_number
-        # The number of entries on each page.
+        # The number of entries per page.
         self.page_size = page_size
         # The list of project-level storage information.
         self.storage_project_info_list = storage_project_info_list
-        # The total number of returned entries.
+        # The total number of returned results.
         self.total_count = total_count
 
     def validate(self):
@@ -173,27 +168,27 @@ class ListStorageProjectsInfoResponseBodyDataStorageProjectInfoList(DaraModel):
         total_storage: float = None,
         total_storage_unit: str = None,
     ):
-        # The statistics collection date. The date is accurate to the day. The date must be in the `YYYYMMdd` format.
+        # The statistical date. Data is collected on a daily basis. Specify the date in the YYYYMMDD format.
         self.date = date
-        # The Long Term storage usage.
+        # The long-term storage usage.
         self.long_term_storage = long_term_storage
-        # The unit of the Long Term storage usage.
+        # The unit of the long-term storage usage.
         self.long_term_storage_unit = long_term_storage_unit
-        # The IA storage class usage.
+        # The low-frequency storage usage.
         self.low_freq_storage = low_freq_storage
-        # The unit of the IA storage class usage.
+        # The unit of the low-frequency storage usage.
         self.low_freq_storage_unit = low_freq_storage_unit
         # The name of the MaxCompute project.
         self.project_name = project_name
-        # The year-over-year change rate of the total storage usage in the last {$recentDays} days.
+        # The rate of change in the total storage usage compared with {$recentDays} days ago.
         self.rate = rate
         # The recycle bin storage usage.
         self.recycle_bin_storage = recycle_bin_storage
         # The unit of the recycle bin storage usage.
         self.recycle_bin_storage_unit = recycle_bin_storage_unit
-        # The Standard storage usage.
+        # The standard storage usage.
         self.standard_storage = standard_storage
-        # The unit of the Standard storage usage.
+        # The unit of the standard storage usage.
         self.standard_storage_unit = standard_storage_unit
         # The timestamp of the last data update.
         self.timestamp = timestamp

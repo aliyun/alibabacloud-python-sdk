@@ -11,11 +11,11 @@ class KillJobsRequest(DaraModel):
         region: str = None,
         tenant_id: str = None,
     ):
-        # The request body parameters.
+        # The list of jobs to terminate. The instanceId is obtained from the job instance ID returned by ListJobInfos, and the projectName is obtained from the project name returned by ListProjects.
         self.body = body
-        # The ID of the region in which the instance resides.
+        # The region ID.
         self.region = region
-        # The ID of the tenant.
+        # The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):

@@ -16,23 +16,18 @@ class ListStoragePartitionsInfoResponseBody(DaraModel):
         http_code: int = None,
         request_id: str = None,
     ):
-        # The returned data.
+        # The returned result.
         self.data = data
         # The error code.
         self.error_code = error_code
         # The error message.
         self.error_msg = error_msg
-        # The HTTP status code.
-        # 
-        # - 1xx: Informational response - The request has been received and is being processed.
-        # 
-        # - 2xx: Success - The request was successfully received, understood, and accepted.
-        # 
-        # - 3xx: Redirection - Further action must be taken to complete the request.
-        # 
-        # - 4xx: Client error - The request contains invalid parameters or syntax, or cannot be fulfilled.
-        # 
-        # - 5xx: Server error - The server failed to fulfill a valid request.
+        # The HTTP status code. Valid values:
+        # - 1xx: Informational response. The request was received and is being processed.
+        # - 2xx: Success. The request was successfully received, understood, and accepted by the server.
+        # - 3xx: Redirection. The request was redirected, and further action is required to complete it.
+        # - 4xx: Client error. The request contains bad syntax, invalid parameters, or cannot be fulfilled.
+        # - 5xx: Server error. The server failed to fulfill the request due to other reasons.
         self.http_code = http_code
         # The request ID.
         self.request_id = request_id
@@ -92,15 +87,15 @@ class ListStoragePartitionsInfoResponseBodyData(DaraModel):
         storage_partition_info_list: List[main_models.ListStoragePartitionsInfoResponseBodyDataStoragePartitionInfoList] = None,
         total_count: int = None,
     ):
-        # The date to which the statistics apply.
+        # The statistical date. The format is YYYYMMDD.
         self.date = date
-        # The page number of the returned data.
+        # The current page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The storage information for the partitions.
+        # The list of partition storage information.
         self.storage_partition_info_list = storage_partition_info_list
-        # The total number of entries.
+        # The total number of returned results.
         self.total_count = total_count
 
     def validate(self):
@@ -180,49 +175,39 @@ class ListStoragePartitionsInfoResponseBodyDataStoragePartitionInfoList(DaraMode
         self.file_size = file_size
         # The unit of the storage size.
         self.file_size_unit = file_size_unit
-        # Indicates whether the table is a partitioned table. You can ignore this parameter because this operation returns data only for partitions.
+        # Indicates whether the table is partitioned. This API operation returns only partition information. You can ignore this field.
         self.is_partitioned = is_partitioned
-        # The last access time of the partition.
-        # 
-        # > Data collection for this metric began a gradual rollout in July 2023. Consequently, the lastAccessTime may not be recorded for a partition that has not been accessed since then or is accessed only by ALGO jobs or direct reads from Hologres.
+        # The last access time of the data in the partition.
+        # > The collection of this data has been gradually upgraded since July 2023. The last_access_time cannot be collected if the partition has not been accessed after the upgrade or if it is accessed through ALGO jobs or Hologres direct read.
         self.last_access_time = last_access_time
         # The partition name.
         self.partition = partition
         # The project name.
         self.project_name = project_name
-        # The period-over-period change in the total storage usage over the last {$recentDays} days. This API operation does not return this parameter.
+        # The year-over-year comparison of the total storage capacity over the recent {$recentDays} days. This API operation does not return this value.
         self.rate = rate
         # The schema name.
         self.schema_name = schema_name
         # The storage type. Valid values:
-        # 
-        # - `standard`: Standard storage
-        # 
-        # - `lowfrequency`: Infrequent-access storage
-        # 
-        # - `longterm`: Archive storage
+        # - standard: Standard storage.
+        # - lowfrequency: Low-frequency storage.
+        # - longterm: Long-term storage.
         self.storage_type = storage_type
         # The table name.
         self.table_name = table_name
         # The access frequency.
-        # 
-        # > - Access activities include:
-        # >
-        # > > * The table is used as input in a SQL compute task.
-        # > >
-        # > > * The table is downloaded via Tunnel.
-        # > >
-        # > > * The table data is read by calling the `Read` operation of the StorageAPI. Partition-level data for partitioned tables is not available. Each access activity increases the access frequency by 1.
-        # >
-        # > - Data collection for this metric began a gradual rollout in July 2023. Consequently, the access frequency may not be recorded for tables that have not been accessed since then or are accessed only by ALGO jobs or direct reads from Hologres.
+        # > - Access behaviors include:
+        # >> - The table is used as an input table in SQL computing tasks.
+        # >> - The table is downloaded by using Tunnel.
+        # >> - The table is read by calling the Read operation of StorageAPI (partition-level data for partitioned tables is currently unavailable). The access frequency increases by 1 for each additional access.
+        # > - The statistics for this data have been gradually upgraded since July 2023. Accesses that did not occur after the upgrade or accesses made through ALGO jobs or Hologres direct read cannot be counted in the access frequency.
         self.total_frequency = total_frequency
-        # The total data accessed.
-        # 
-        # > The cumulative amount of data read from all access operations.
+        # The total amount of accessed data.
+        # > The amount of data read by all access behaviors.
         self.total_input_amount = total_input_amount
-        # The unit of the total data accessed.
+        # The unit of the total amount of accessed data.
         self.total_input_amount_unit = total_input_amount_unit
-        # The type of the object. The value is always PARTITION.
+        # The type.
         self.type = type
 
     def validate(self):

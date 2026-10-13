@@ -11,9 +11,9 @@ class CreateMmsTimerResponseBody(DaraModel):
         data: main_models.CreateMmsTimerResponseBodyData = None,
         request_id: str = None,
     ):
-        # The response data.
+        # The returned result.
         self.data = data
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -49,7 +49,7 @@ class CreateMmsTimerResponseBodyData(DaraModel):
         self,
         timer_id: int = None,
     ):
-        # The ID of the timer.
+        # timer id
         self.timer_id = timer_id
 
     def validate(self):

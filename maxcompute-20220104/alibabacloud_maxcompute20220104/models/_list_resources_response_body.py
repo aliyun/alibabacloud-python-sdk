@@ -15,7 +15,7 @@ class ListResourcesResponseBody(DaraModel):
     ):
         # The returned data.
         self.data = data
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -53,9 +53,9 @@ class ListResourcesResponseBodyData(DaraModel):
         max_item: int = None,
         resources: List[main_models.ListResourcesResponseBodyDataResources] = None,
     ):
-        # Indicates the marker after which the returned list begins.
+        # Specifies the marker after which results are returned in alphabetical order.
         self.marker = marker
-        # The maximum number of entries returned per page.
+        # The maximum number of results to return per page.
         self.max_item = max_item
         # The list of resources.
         self.resources = resources
@@ -115,17 +115,17 @@ class ListResourcesResponseBodyDataResources(DaraModel):
         size: int = None,
         type: str = None,
     ):
-        # The remarks.
+        # The comment.
         self.comment = comment
-        # The Base64-encoded 128-bit MD5 hash value of the HTTP request body.
+        # The Base64-encoded 128-bit MD5 hash of the HTTP request body.
         self.content_md5 = content_md5
-        # The time when the resource was created.
+        # The creation time in ISO 8601 format in the UTC time zone.
         self.creation_time = creation_time
         # The display name.
         self.display_name = display_name
-        # The time when the resource was modified.
+        # The last modification time in ISO 8601 format in the UTC time zone.
         self.last_modified_time = last_modified_time
-        # The user who updated the resource.
+        # The user who last updated the resource.
         self.last_updator = last_updator
         # The name of the resource.
         self.name = name
@@ -136,48 +136,6 @@ class ListResourcesResponseBodyDataResources(DaraModel):
         # The size of the resource.
         self.size = size
         # The resource type.
-        # 
-        # Valid values:
-        # 
-        # - file
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        # - py
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        # - jar
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        # - volumefile
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        # - table
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
-        # 
-        #   <!-- -->
         self.type = type
 
     def validate(self):

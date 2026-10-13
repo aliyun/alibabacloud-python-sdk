@@ -14,15 +14,15 @@ class ListMmsDbsRequest(DaraModel):
         sorter: main_models.ListMmsDbsRequestSorter = None,
         status: str = None,
     ):
-        # Data source name
+        # The name of the data source.
         self.name = name
-        # Page number
+        # The page number.
         self.page_num = page_num
-        # Number of records per page
+        # The number of entries per page.
         self.page_size = page_size
-        # Sorting conditions
+        # The sorting conditions.
         self.sorter = sorter
-        # Data source status
+        # The status of the data source.
         self.status = status
 
     def validate(self):
@@ -78,11 +78,11 @@ class ListMmsDbsRequestSorter(DaraModel):
         size: str = None,
         update_time: str = None,
     ):
-        # Number of data rows in the database
+        # The number of data rows in the database.
         self.num_rows = num_rows
-        # Size of data in the database
+        # The size of data in the database.
         self.size = size
-        # Update time
+        # The update time. Format: YYYY-MM-DD HH:mm:ss.
         self.update_time = update_time
 
     def validate(self):

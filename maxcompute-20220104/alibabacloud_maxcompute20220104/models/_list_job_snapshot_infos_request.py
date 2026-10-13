@@ -31,75 +31,59 @@ class ListJobSnapshotInfosRequest(DaraModel):
     ):
         # Specifies whether to sort the results in ascending order.
         self.asc_order = asc_order
-        # The upstream node ID.
+        # The upstream node IDs.
         self.ext_node_id_list = ext_node_id_list
-        # The start UNIX timestamp.
-        # 
-        # > This parameter is invalid. The end timestamp is the point in time for the snapshot that you want to view.
+        # The start timestamp.
+        # > This parameter is invalid. The end timestamp specifies the snapshot time to query.
         self.from_ = from_
-        # The job instance ID.
+        # The job instance Id.
         self.instance_id_list = instance_id_list
-        # The job owner.
+        # The list of job owners.
         self.job_owner_list = job_owner_list
-        # The job priority.
+        # The job priorities.
         self.priority_list = priority_list
-        # The project name.
+        # The project names.
         self.project_list = project_list
-        # The nickname of the computing quota that the job uses.
+        # The nickname of the compute quota used by the job.
         self.quota_nickname = quota_nickname
-        # The signature of the SQL job.
+        # The SQL job signatures.
         self.signature_list = signature_list
-        # The fields for multi-column sorting.
+        # The multi-column sort fields.
         self.sort_by_list = sort_by_list
-        # The sort orders for multi-column sorting.
+        # The multi-column sort orders.
         self.sort_order_list = sort_order_list
-        # The job status.
+        # The job statuses.
         self.status_list = status_list
-        # The end UNIX timestamp.
+        # The end timestamp.
         # 
         # This parameter is required.
         self.to = to
-        # The job type.
+        # The job types.
         self.type_list = type_list
-        # The column to sort by. Valid values:
-        # 
+        # The sort column. Valid values:
         # - submittedAtTime
-        # 
         # - waitingTime
-        # 
         # - runningAtTime
-        # 
         # - runningTime
-        # 
         # - snapshotTime
-        # 
         # - totalTime
-        # 
-        # - cpuUsage
-        # 
+        # - cpuUsage 
         # - memoryUsage
-        # 
         # - minCpuPct
-        # 
         # - minMemoryPct
-        # 
         # - priority
-        # 
         # - cpuRequest
-        # 
         # - memoryRequest
-        # 
         # - cpuUsageToRequestRatio
-        # 
         # - memoryUsageToRequestRatio
         self.order_column = order_column
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size, which is the maximum number of entries to return per page.
         self.page_size = page_size
         # The region ID.
         self.region = region
-        # The tenant ID. To view the tenant ID, log on to the MaxCompute console. In the navigation pane on the left, choose Tenant Management > Tenant Properties.
+        # The tenant ID. You can view the tenant ID by logging on to the MaxCompute console and choosing Tenant Management > Tenant Properties in the left-side navigation pane.
         self.tenant_id = tenant_id
 
     def validate(self):

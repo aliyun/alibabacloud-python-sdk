@@ -13,7 +13,7 @@ class ListMmsTasksResponseBody(DaraModel):
         data: main_models.ListMmsTasksResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned data.
+        # The response data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -134,7 +134,7 @@ class ListMmsTasksResponseBodyDataObjectList(DaraModel):
         table_id: int = None,
         type: str = None,
     ):
-        # The time when the task was created.
+        # The task creation time. The format is YYYY-MM-DD HH:mm:ss.
         self.create_time = create_time
         # The source database ID.
         self.db_id = db_id
@@ -144,7 +144,7 @@ class ListMmsTasksResponseBodyDataObjectList(DaraModel):
         self.dst_schema_name = dst_schema_name
         # The destination MaxCompute table.
         self.dst_table_name = dst_table_name
-        # The end time of the task.
+        # The end time. The format is YYYY-MM-DD HH:mm:ss.
         self.end_time = end_time
         # The migration task ID.
         self.id = id
@@ -152,7 +152,7 @@ class ListMmsTasksResponseBodyDataObjectList(DaraModel):
         self.job_id = job_id
         # The migration job name.
         self.job_name = job_name
-        # The number of retries that have been performed.
+        # The number of retries.
         self.retried_times = retried_times
         # Indicates whether the task is running.
         self.running = running
@@ -162,11 +162,11 @@ class ListMmsTasksResponseBodyDataObjectList(DaraModel):
         self.source_name = source_name
         # The source database name.
         self.src_db_name = src_db_name
-        # The source schema name in a three-level namespace.
+        # The source schema name. This is the schema in the three-level namespace.
         self.src_schema_name = src_schema_name
         # The source table name.
         self.src_table_name = src_table_name
-        # The start time of the task.
+        # The start time. The format is YYYY-MM-DD HH:mm:ss.
         self.start_time = start_time
         # The migration task status.
         self.status = status

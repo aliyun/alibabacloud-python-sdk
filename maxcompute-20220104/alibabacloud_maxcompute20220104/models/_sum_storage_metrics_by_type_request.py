@@ -14,13 +14,15 @@ class SumStorageMetricsByTypeRequest(DaraModel):
         start_date: int = None,
         stats_type: str = None,
     ):
-        # Required. The query end time, specified as a Unix timestamp in milliseconds.
+        # The end time of the statistical period. This parameter is required. Unit: milliseconds (UNIX timestamp).
         self.end_date = end_date
-        # An array of project names.
+        # The instance name.
         self.project_names = project_names
-        # Required. The query start time, specified as a Unix timestamp in milliseconds.
+        # The start time of the statistical period. This parameter is required. Unit: milliseconds (UNIX timestamp).
         self.start_date = start_date
-        # The dimension for aggregating statistics. Valid values: `PROJECT` (by project) and `STORAGE_TYPE` (by storage type).
+        # The statistics type. Valid values:
+        # - PROJECT: instance.
+        # - STORAGE_TYPE: storage type.
         self.stats_type = stats_type
 
     def validate(self):

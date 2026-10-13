@@ -26,37 +26,37 @@ class CreateMmsTimerRequest(DaraModel):
         tables: List[str] = None,
         value: str = None,
     ):
-        # A map of source column names to target column names.
+        # The mapping between source and destination column names in the {source column name: destination column name} format.
         self.column_mapping = column_mapping
-        # Specifies whether to migrate table data.
+        # Specifies whether to migrate the table data.
         self.enable_data_migration = enable_data_migration
         # Specifies whether to migrate the table schema.
         self.enable_schema_migration = enable_schema_migration
-        # Specifies whether to enable data verification. If set to `true`, the system runs a `SELECT COUNT(*)` query on both the source and target tables and compares the row counts.
+        # Specifies whether to enable verification. Currently, the verification method executes SELECT COUNT on the source and destination to compare the number of rows.
         self.enable_verification = enable_verification
         # The name of the scheduled task.
         self.name = name
-        # Other configuration settings.
+        # Other configuration information.
         self.others = others
-        # A map of table names to their corresponding partition filter expressions.
+        # The partition filter expression. Configure the partition filter expression for the specified table.
         self.partition_filters = partition_filters
-        # A list of IDs for the table partitions to migrate. This parameter takes effect only when the `type` parameter is set to `Partitions`.
+        # The list of partition IDs for the tables to be migrated. Specify this parameter when type is set to Partitions.
         self.partitions = partitions
-        # The schedule type for the task.
+        # The schedule type of the scheduled task. Valid values: Daily (runs daily) and Hourly (runs hourly).
         self.schedule_type = schedule_type
-        # The ID of the data source.
+        # The data source ID.
         self.source_id = source_id
         # The name of the source database.
         self.src_db_name = src_db_name
-        # A blacklist of tables to exclude from the migration. This parameter takes effect only when the `type` parameter is set to `Database`.
+        # The list of tables to exclude from migration. Specify this parameter when type is set to Database.
         self.table_black_list = table_black_list
-        # A map of source table names to target table names.
+        # The mapping between the source table name and the destination table name.
         self.table_mapping = table_mapping
-        # A whitelist of tables to migrate. This parameter takes effect only when the `type` parameter is set to `Database`. If omitted, all tables in the source database are migrated.
+        # The list of tables to migrate. Specify this parameter when type is set to Database. If this parameter is not specified, all tables in the corresponding database are migrated.
         self.table_white_list = table_white_list
-        # A list of table names to migrate. This parameter takes effect only when the `type` parameter is set to `Tables`.
+        # The list of names of the tables to be migrated. Specify this parameter when type is set to Tables.
         self.tables = tables
-        # The time to run the scheduled task. If `scheduleType` is set to `Daily`, the value is the time in `HH:MM` format. If `scheduleType` is set to `Hourly`, the value is the minute of the hour (`MM`).
+        # The schedule time of the scheduled task. When scheduleType is set to Daily, the value is in the HH:MM format. When scheduleType is set to Hourly, the value is in the MM format.
         self.value = value
 
     def validate(self):

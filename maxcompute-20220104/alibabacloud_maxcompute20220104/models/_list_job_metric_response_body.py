@@ -16,23 +16,18 @@ class ListJobMetricResponseBody(DaraModel):
         http_code: int = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The response data.
         self.data = data
         # The error code.
         self.error_code = error_code
         # The error message.
         self.error_msg = error_msg
-        # HTTP status code.
-        # 
-        # - 1xx: Informational response - Request received, processing continues.
-        # 
-        # - 2xx: Success - The request has been successfully received, understood, and accepted by the server.
-        # 
-        # - 3xx: Redirection - Further action must be taken to complete the request.
-        # 
-        # - 4xx: Client error - The request contains bad syntax or cannot be fulfilled.
-        # 
-        # - 5xx: Server error - The server failed to fulfill an apparently valid request.
+        # The HTTP status code.
+        # - 1xx: Informational response. The request was received and is being processed.
+        # - 2xx: Success. The request action was successfully received, understood, and accepted by the server.
+        # - 3xx: Redirection. The request was redirected, and further action is required to complete it.
+        # - 4xx: Client error. The request contains invalid parameters, bad syntax, or cannot be fulfilled due to specific request conditions.
+        # - 5xx: Server error. The server failed to fulfill the request due to other reasons.
         self.http_code = http_code
         # The request ID.
         self.request_id = request_id
@@ -91,13 +86,13 @@ class ListJobMetricResponseBodyData(DaraModel):
         name: str = None,
         period: int = None,
     ):
-        # The category of the metrics.
+        # The metric type.
         self.category = category
-        # Metric details.
+        # The metric details.
         self.metrics = metrics
-        # The name of observation metric.
+        # The metric name.
         self.name = name
-        # The monitoring statistical period.Unit:Second(s).
+        # The monitoring statistical period.
         self.period = period
 
     def validate(self):
@@ -152,9 +147,9 @@ class ListJobMetricResponseBodyDataMetrics(DaraModel):
         metric: Dict[str, str] = None,
         values: List[List[float]] = None,
     ):
-        # Metric related information.
+        # The metric-related information.
         self.metric = metric
-        # Metric values information.
+        # The metric value information.
         self.values = values
 
     def validate(self):

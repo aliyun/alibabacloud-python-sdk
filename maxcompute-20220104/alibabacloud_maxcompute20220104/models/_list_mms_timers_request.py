@@ -14,7 +14,7 @@ class ListMmsTimersRequest(DaraModel):
         src_table_name: str = None,
         stopped: bool = None,
     ):
-        # The timer name.
+        # The table name.
         self.name = name
         # The page number.
         self.page_num = page_num
@@ -24,7 +24,7 @@ class ListMmsTimersRequest(DaraModel):
         self.src_db_name = src_db_name
         # The source table name.
         self.src_table_name = src_table_name
-        # Filters timers by their stopped state.
+        # Specifies whether the job is stopped.
         self.stopped = stopped
 
     def validate(self):
