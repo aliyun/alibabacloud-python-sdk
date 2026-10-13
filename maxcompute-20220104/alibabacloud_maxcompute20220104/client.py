@@ -2033,6 +2033,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_job_resource_usage_with_options_async(request, headers, runtime)
 
+    def get_logview_download_url_with_options(
+        self,
+        project: str,
+        instance: str,
+        request: main_models.GetLogviewDownloadUrlRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetLogviewDownloadUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.use_vpc_endpoint):
+            query['useVpcEndpoint'] = request.use_vpc_endpoint
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetLogviewDownloadUrl',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/logview/project/{DaraURL.percent_encode(project)}/instance/{DaraURL.percent_encode(instance)}/downloadUrl',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetLogviewDownloadUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_logview_download_url_with_options_async(
+        self,
+        project: str,
+        instance: str,
+        request: main_models.GetLogviewDownloadUrlRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetLogviewDownloadUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.use_vpc_endpoint):
+            query['useVpcEndpoint'] = request.use_vpc_endpoint
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetLogviewDownloadUrl',
+            version = '2022-01-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/logview/project/{DaraURL.percent_encode(project)}/instance/{DaraURL.percent_encode(instance)}/downloadUrl',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetLogviewDownloadUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_logview_download_url(
+        self,
+        project: str,
+        instance: str,
+        request: main_models.GetLogviewDownloadUrlRequest,
+    ) -> main_models.GetLogviewDownloadUrlResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_logview_download_url_with_options(project, instance, request, headers, runtime)
+
+    async def get_logview_download_url_async(
+        self,
+        project: str,
+        instance: str,
+        request: main_models.GetLogviewDownloadUrlRequest,
+    ) -> main_models.GetLogviewDownloadUrlResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_logview_download_url_with_options_async(project, instance, request, headers, runtime)
+
     def get_mms_async_task_with_options(
         self,
         source_id: str,

@@ -1,3 +1,7 @@
+2026-10-13 Version: 7.2.0
+- Support API GetLogviewDownloadUrl.
+
+
 2026-10-13 Version: 7.1.4
 - Generated python 2022-01-04 for MaxCompute.
 

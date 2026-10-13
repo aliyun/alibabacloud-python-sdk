@@ -64,6 +64,9 @@ from ._get_job_resource_usage_request import GetJobResourceUsageRequest
 from ._get_job_resource_usage_shrink_request import GetJobResourceUsageShrinkRequest
 from ._get_job_resource_usage_response_body import GetJobResourceUsageResponseBody
 from ._get_job_resource_usage_response import GetJobResourceUsageResponse
+from ._get_logview_download_url_request import GetLogviewDownloadUrlRequest
+from ._get_logview_download_url_response_body import GetLogviewDownloadUrlResponseBody
+from ._get_logview_download_url_response import GetLogviewDownloadUrlResponse
 from ._get_mms_async_task_response_body import GetMmsAsyncTaskResponseBody
 from ._get_mms_async_task_response import GetMmsAsyncTaskResponse
 from ._get_mms_data_source_request import GetMmsDataSourceRequest
@@ -658,6 +661,9 @@ __all__ = [
     GetJobResourceUsageShrinkRequest,
     GetJobResourceUsageResponseBody,
     GetJobResourceUsageResponse,
+    GetLogviewDownloadUrlRequest,
+    GetLogviewDownloadUrlResponseBody,
+    GetLogviewDownloadUrlResponse,
     GetMmsAsyncTaskResponseBody,
     GetMmsAsyncTaskResponse,
     GetMmsDataSourceRequest,

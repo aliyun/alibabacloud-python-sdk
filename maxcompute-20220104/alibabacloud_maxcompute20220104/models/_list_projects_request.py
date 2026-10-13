@@ -20,8 +20,8 @@ class ListProjectsRequest(DaraModel):
         tenant_id: str = None,
         type: str = None,
     ):
-        # Specifies whether to list the built-in **SYSTEM_CATALOG** project. This project provides information such as project metadata and usage history. For more information, see the <props="china">[Information Schema](https://www.alibabacloud.com/help/en/maxcompute/user-guide/tenant-level-information-schema)
-        # <props="intl">[Information Schema](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/tenant-level-information-schema) feature.
+        # Specifies whether to list the built-in **SYSTEM_CATALOG** project. This project provides information such as project metadata and usage history. For more information, see the <props="china">[Information Schema](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/tenant-level-information-schema)
+        # <props="intl">[Information Schema](https://www.alibabacloud.com/help/en/maxcompute/user-guide/tenant-level-information-schema) feature.
         self.list_system_catalog = list_system_catalog
         # The marker used to specify the starting point of the returned results. The results are sorted in alphabetical order and returned starting from the first item after the marker.
         self.marker = marker

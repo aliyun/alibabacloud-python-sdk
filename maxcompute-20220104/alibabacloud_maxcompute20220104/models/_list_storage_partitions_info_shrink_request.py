@@ -34,7 +34,7 @@ class ListStoragePartitionsInfoShrinkRequest(DaraModel):
         self.partition_prefix = partition_prefix
         # The region ID.
         self.region = region
-        # The schema to which the table belongs.
+        # The name of the schema.
         self.schema = schema
         # The tenant ID. You can view the tenant ID by logging on to the MaxCompute console and choosing **Tenant Management** > **Tenant Properties** in the left-side navigation pane.
         self.tenant_id = tenant_id

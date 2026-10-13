@@ -134,12 +134,12 @@ class ListProjectsResponseBodyDataProjects(DaraModel):
         # The creation time. The time is a UNIX timestamp in milliseconds.
         self.created_time = created_time
         # The default compute quota.
-        # This is used to allocate compute resources. If no compute quota is specified, jobs initiated in the project consume resources from the default quota. For more information about how to use compute resources, see <props="china">[Use of computing resources](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources)
-        # <props="intl">[Use of computing resources](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/use-of-computing-resources).
+        # This is used to allocate compute resources. If no compute quota is specified, jobs initiated in the project consume resources from the default quota. For more information about how to use compute resources, see <props="china">[Use of computing resources](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/use-of-computing-resources)
+        # <props="intl">[Use of computing resources](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
         self.default_quota = default_quota
         # The IP address whitelist.
         self.ip_white_list = ip_white_list
-        # The project name.
+        # The project names.
         self.name = name
         # The account information of the project owner.
         self.owner = owner
@@ -158,8 +158,8 @@ class ListProjectsResponseBodyDataProjects(DaraModel):
         # - **DELETING**: deleting
         self.status = status
         # Specifies whether to support schema-based storage.
-        # MaxCompute supports schemas, which are located under projects and used to classify objects such as tables, resources, and UDFs. A project can contain multiple schemas. For more information, see <props="china">[Schema-related operations](https://www.alibabacloud.com/help/en/maxcompute/user-guide/schema-related-operations)
-        # <props="intl">[Schema-related operations](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/schema-related-operations).
+        # MaxCompute supports schemas, which are located under projects and used to classify objects such as tables, resources, and UDFs. A project can contain multiple schemas. For more information, see <props="china">[Schema-related operations](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/schema-related-operations)
+        # <props="intl">[Schema-related operations](https://www.alibabacloud.com/help/en/maxcompute/user-guide/schema-related-operations).
         self.three_tier_model = three_tier_model
         # The project type. Valid values:
         # - **managed**: internal project
@@ -286,24 +286,24 @@ class ListProjectsResponseBodyDataProjectsSecurityProperties(DaraModel):
         using_acl: bool = None,
         using_policy: bool = None,
     ):
-        # Specifies whether to use the <props="china">[download control](https://www.alibabacloud.com/help/en/maxcompute/user-guide/download-control)
-        # <props="intl">[download control](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/label-based-access-control) feature. By default, this feature is disabled.
+        # Specifies whether to use the <props="china">[download control](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/download-control)
+        # <props="intl">[download control](https://www.alibabacloud.com/help/en/maxcompute/user-guide/label-based-access-control) feature. By default, this feature is disabled.
         self.enable_download_privilege = enable_download_privilege
-        # Specifies whether to use the <props="china">[label-based access control](https://www.alibabacloud.com/help/en/maxcompute/user-guide/label-based-access-control)
-        # <props="intl">[label-based access control](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/label-based-access-control) feature. By default, this feature is disabled.
+        # Specifies whether to use the <props="china">[label-based access control](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/label-based-access-control)
+        # <props="intl">[label-based access control](https://www.alibabacloud.com/help/en/maxcompute/user-guide/label-based-access-control) feature. By default, this feature is disabled.
         self.label_security = label_security
         # Specifies whether to allow object creators to have access permissions on the objects. By default, this is allowed.
         self.object_creator_has_access_permission = object_creator_has_access_permission
         # Specifies whether to allow object creators to have authorization permissions on the objects. By default, this is allowed.
         self.object_creator_has_grant_permission = object_creator_has_grant_permission
-        # The <props="china">[data protection mechanism](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection)
-        # <props="intl">[data protection mechanism](https://www.alibabacloud.com/help/zh/maxcompute/security-and-compliance/project-data-protection) properties.
+        # The <props="china">[data protection mechanism](https://www.alibabacloud.com/help/zh/maxcompute/security-and-compliance/project-data-protection)
+        # <props="intl">[data protection mechanism](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection) properties.
         self.project_protection = project_protection
-        # Specifies whether to use the <props="china">[ACL-based access control](https://www.alibabacloud.com/help/en/maxcompute/user-guide/acl-based-access-control)
-        # <props="intl">[ACL-based access control](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/acl-based-access-control) feature. By default, this feature is enabled.
+        # Specifies whether to use the <props="china">[ACL-based access control](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/acl-based-access-control)
+        # <props="intl">[ACL-based access control](https://www.alibabacloud.com/help/en/maxcompute/user-guide/acl-based-access-control) feature. By default, this feature is enabled.
         self.using_acl = using_acl
-        # Specifies whether to use the <props="china">[policy-based access control](https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1)
-        # <props="intl">[policy-based access control](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/policy-based-access-control-1) feature. By default, this feature is enabled.
+        # Specifies whether to use the <props="china">[policy-based access control](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/policy-based-access-control-1)
+        # <props="intl">[policy-based access control](https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1) feature. By default, this feature is enabled.
         self.using_policy = using_policy
 
     def validate(self):
@@ -372,8 +372,8 @@ class ListProjectsResponseBodyDataProjectsSecurityPropertiesProjectProtection(Da
     ):
         # If you enable data protection for the project, you can configure exceptions or trusted projects to allow specified users to transfer data of specified objects to specified projects. All scenarios described in the exception policy can bypass the data protection mechanism.
         self.exception_policy = exception_policy
-        # Specifies whether to enable the <props="china">[data protection mechanism](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection)
-        # <props="intl">[data protection mechanism](https://www.alibabacloud.com/help/zh/maxcompute/security-and-compliance/project-data-protection) for the project to prohibit or allow data stream out of the project. The default enabling status is disabled.
+        # Specifies whether to enable the <props="china">[data protection mechanism](https://www.alibabacloud.com/help/zh/maxcompute/security-and-compliance/project-data-protection)
+        # <props="intl">[data protection mechanism](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection) for the project to prohibit or allow data stream out of the project. The default enabling status is disabled.
         self.protected = protected
 
     def validate(self):
@@ -474,8 +474,8 @@ class ListProjectsResponseBodyDataProjectsProperties(DaraModel):
         self.table_lifecycle = table_lifecycle
         # The time zone of the project, which is the odps.sql.timezone property.
         self.timezone = timezone
-        # The EPS resource group of the <props="china">[data transfer service](https://www.alibabacloud.com/help/en/maxcompute/user-guide/overview-of-dts)
-        # <props="intl">[data transfer service](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/overview-of-dts) bound to the project.
+        # The EPS resource group of the <props="china">[data transfer service](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/overview-of-dts)
+        # <props="intl">[data transfer service](https://www.alibabacloud.com/help/en/maxcompute/user-guide/overview-of-dts) bound to the project.
         # 
         # - Default (shared EPS resource group for the data transfer service): The project is not allowed to use the subscription EPS resource group for the data transfer service. Regardless of the default EPS resource group setting, data transfer tasks submitted by default in this project automatically use the Default EPS resource group.
         # 
@@ -486,8 +486,8 @@ class ListProjectsResponseBodyDataProjectsProperties(DaraModel):
         # - **2**: MaxCompute V2.0 data type edition
         # - **hive**: Hive-compatible data type edition
         # 
-        # For more information about the differences among the three data type editions, see <props="china">[Data type editions](https://www.alibabacloud.com/help/en/maxcompute/user-guide/data-type-editions)
-        # <props="intl">[Data type editions](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/data-type-editions).
+        # For more information about the differences among the three data type editions, see <props="china">[Data type editions](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/data-type-editions)
+        # <props="intl">[Data type editions](https://www.alibabacloud.com/help/en/maxcompute/user-guide/data-type-editions).
         self.type_system = type_system
 
     def validate(self):
@@ -623,8 +623,8 @@ class ListProjectsResponseBodyDataProjectsPropertiesExternalProjectProperties(Da
         self,
         is_external_catalog_bound: str = None,
     ):
-        # Specifies whether the project is an external project of <props="china">[Data Lakehouse Solution 2.0](https://www.alibabacloud.com/help/en/maxcompute/user-guide/lake-warehouse-integrated-2-0-use-guide)
-        # <props="intl">[Data Lakehouse Solution 2.0](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/lake-warehouse-integrated-2-0-use-guide).
+        # Specifies whether the project is an external project of <props="china">[Data Lakehouse Solution 2.0](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/lake-warehouse-integrated-2-0-use-guide)
+        # <props="intl">[Data Lakehouse Solution 2.0](https://www.alibabacloud.com/help/en/maxcompute/user-guide/lake-warehouse-integrated-2-0-use-guide).
         self.is_external_catalog_bound = is_external_catalog_bound
 
     def validate(self):
@@ -657,8 +657,8 @@ class ListProjectsResponseBodyDataProjectsPropertiesEncryption(DaraModel):
         # The data encryption algorithm. The encryption algorithms supported by the key include AES256, AESCTR, and RC4.
         self.algorithm = algorithm
         # Specifies whether to enable data encryption for the project. For more information about data encryption, see 
-        # <props="china">[Storage encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
-        # <props="intl">[Storage encryption](https://www.alibabacloud.com/help/zh/maxcompute/security-and-compliance/storage-encryption).
+        # <props="china">[Storage encryption](https://www.alibabacloud.com/help/zh/maxcompute/security-and-compliance/storage-encryption)
+        # <props="intl">[Storage encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption).
         self.enable = enable
         # The type of the key used for data encryption. Valid values include the default key (MaxCompute Default Key) and Bring Your Own Key (BYOK). The default key is a default key created internally by MaxCompute.
         self.key = key
