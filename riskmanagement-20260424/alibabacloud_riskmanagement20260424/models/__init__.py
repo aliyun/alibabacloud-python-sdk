@@ -37,6 +37,9 @@ from ._download_resource_control_events_request import DownloadResourceControlEv
 from ._download_resource_control_events_shrink_request import DownloadResourceControlEventsShrinkRequest
 from ._download_resource_control_events_response_body import DownloadResourceControlEventsResponseBody
 from ._download_resource_control_events_response import DownloadResourceControlEventsResponse
+from ._end_penetration_test_request import EndPenetrationTestRequest
+from ._end_penetration_test_response_body import EndPenetrationTestResponseBody
+from ._end_penetration_test_response import EndPenetrationTestResponse
 from ._get_alert_record_analysis_result_request import GetAlertRecordAnalysisResultRequest
 from ._get_alert_record_analysis_result_shrink_request import GetAlertRecordAnalysisResultShrinkRequest
 from ._get_alert_record_analysis_result_response_body import GetAlertRecordAnalysisResultResponseBody
@@ -105,6 +108,12 @@ from ._query_account_safety_incident_response import QueryAccountSafetyIncidentR
 from ._query_guide_sub_status_request import QueryGuideSubStatusRequest
 from ._query_guide_sub_status_response_body import QueryGuideSubStatusResponseBody
 from ._query_guide_sub_status_response import QueryGuideSubStatusResponse
+from ._query_penetration_test_detail_request import QueryPenetrationTestDetailRequest
+from ._query_penetration_test_detail_response_body import QueryPenetrationTestDetailResponseBody
+from ._query_penetration_test_detail_response import QueryPenetrationTestDetailResponse
+from ._query_penetration_test_list_request import QueryPenetrationTestListRequest
+from ._query_penetration_test_list_response_body import QueryPenetrationTestListResponseBody
+from ._query_penetration_test_list_response import QueryPenetrationTestListResponse
 from ._query_resource_control_events_request import QueryResourceControlEventsRequest
 from ._query_resource_control_events_shrink_request import QueryResourceControlEventsShrinkRequest
 from ._query_resource_control_events_response_body import QueryResourceControlEventsResponseBody
@@ -122,6 +131,9 @@ from ._submit_apply_record_request import SubmitApplyRecordRequest
 from ._submit_apply_record_shrink_request import SubmitApplyRecordShrinkRequest
 from ._submit_apply_record_response_body import SubmitApplyRecordResponseBody
 from ._submit_apply_record_response import SubmitApplyRecordResponse
+from ._submit_penetration_test_request import SubmitPenetrationTestRequest
+from ._submit_penetration_test_response_body import SubmitPenetrationTestResponseBody
+from ._submit_penetration_test_response import SubmitPenetrationTestResponse
 from ._update_post_paid_bind_rel_request import UpdatePostPaidBindRelRequest
 from ._update_post_paid_bind_rel_shrink_request import UpdatePostPaidBindRelShrinkRequest
 from ._update_post_paid_bind_rel_response_body import UpdatePostPaidBindRelResponseBody
@@ -210,10 +222,16 @@ from ._query_account_safety_incident_response_body import QueryAccountSafetyInci
 from ._query_account_safety_incident_response_body import QueryAccountSafetyIncidentResponseBodyDataList
 from ._query_account_safety_incident_response_body import QueryAccountSafetyIncidentResponseBodyDataPageInfo
 from ._query_account_safety_incident_response_body import QueryAccountSafetyIncidentResponseBodyData
+from ._query_penetration_test_detail_response_body import QueryPenetrationTestDetailResponseBodyData
+from ._query_penetration_test_list_response_body import QueryPenetrationTestListResponseBodyDataList
+from ._query_penetration_test_list_response_body import QueryPenetrationTestListResponseBodyDataPageInfo
+from ._query_penetration_test_list_response_body import QueryPenetrationTestListResponseBodyData
 from ._query_resource_control_events_response_body import QueryResourceControlEventsResponseBodyDataList
 from ._query_resource_control_events_response_body import QueryResourceControlEventsResponseBodyDataPageInfo
 from ._query_resource_control_events_response_body import QueryResourceControlEventsResponseBodyData
 from ._query_security_check_report_response_body import QuerySecurityCheckReportResponseBodyData
+from ._submit_penetration_test_response_body import SubmitPenetrationTestResponseBodyDataList
+from ._submit_penetration_test_response_body import SubmitPenetrationTestResponseBodyData
 from ._update_post_paid_bind_rel_request import UpdatePostPaidBindRelRequestSdkRequestBindAction
 from ._update_post_paid_bind_rel_request import UpdatePostPaidBindRelRequestSdkRequest
 from ._update_post_paid_bind_rel_response_body import UpdatePostPaidBindRelResponseBodyDataBody
@@ -255,6 +273,9 @@ __all__ = [
     DownloadResourceControlEventsShrinkRequest,
     DownloadResourceControlEventsResponseBody,
     DownloadResourceControlEventsResponse,
+    EndPenetrationTestRequest,
+    EndPenetrationTestResponseBody,
+    EndPenetrationTestResponse,
     GetAlertRecordAnalysisResultRequest,
     GetAlertRecordAnalysisResultShrinkRequest,
     GetAlertRecordAnalysisResultResponseBody,
@@ -323,6 +344,12 @@ __all__ = [
     QueryGuideSubStatusRequest,
     QueryGuideSubStatusResponseBody,
     QueryGuideSubStatusResponse,
+    QueryPenetrationTestDetailRequest,
+    QueryPenetrationTestDetailResponseBody,
+    QueryPenetrationTestDetailResponse,
+    QueryPenetrationTestListRequest,
+    QueryPenetrationTestListResponseBody,
+    QueryPenetrationTestListResponse,
     QueryResourceControlEventsRequest,
     QueryResourceControlEventsShrinkRequest,
     QueryResourceControlEventsResponseBody,
@@ -340,6 +367,9 @@ __all__ = [
     SubmitApplyRecordShrinkRequest,
     SubmitApplyRecordResponseBody,
     SubmitApplyRecordResponse,
+    SubmitPenetrationTestRequest,
+    SubmitPenetrationTestResponseBody,
+    SubmitPenetrationTestResponse,
     UpdatePostPaidBindRelRequest,
     UpdatePostPaidBindRelShrinkRequest,
     UpdatePostPaidBindRelResponseBody,
@@ -428,10 +458,16 @@ __all__ = [
     QueryAccountSafetyIncidentResponseBodyDataList,
     QueryAccountSafetyIncidentResponseBodyDataPageInfo,
     QueryAccountSafetyIncidentResponseBodyData,
+    QueryPenetrationTestDetailResponseBodyData,
+    QueryPenetrationTestListResponseBodyDataList,
+    QueryPenetrationTestListResponseBodyDataPageInfo,
+    QueryPenetrationTestListResponseBodyData,
     QueryResourceControlEventsResponseBodyDataList,
     QueryResourceControlEventsResponseBodyDataPageInfo,
     QueryResourceControlEventsResponseBodyData,
     QuerySecurityCheckReportResponseBodyData,
+    SubmitPenetrationTestResponseBodyDataList,
+    SubmitPenetrationTestResponseBodyData,
     UpdatePostPaidBindRelRequestSdkRequestBindAction,
     UpdatePostPaidBindRelRequestSdkRequest,
     UpdatePostPaidBindRelResponseBodyDataBody,

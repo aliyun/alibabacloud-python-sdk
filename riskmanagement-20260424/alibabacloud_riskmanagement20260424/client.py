@@ -897,6 +897,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.download_resource_control_events_with_options_async(request, runtime)
 
+    def end_penetration_test_with_options(
+        self,
+        request: main_models.EndPenetrationTestRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EndPenetrationTestResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EndPenetrationTest',
+            version = '2026-04-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EndPenetrationTestResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def end_penetration_test_with_options_async(
+        self,
+        request: main_models.EndPenetrationTestRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EndPenetrationTestResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EndPenetrationTest',
+            version = '2026-04-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EndPenetrationTestResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def end_penetration_test(
+        self,
+        request: main_models.EndPenetrationTestRequest,
+    ) -> main_models.EndPenetrationTestResponse:
+        runtime = RuntimeOptions()
+        return self.end_penetration_test_with_options(request, runtime)
+
+    async def end_penetration_test_async(
+        self,
+        request: main_models.EndPenetrationTestRequest,
+    ) -> main_models.EndPenetrationTestResponse:
+        runtime = RuntimeOptions()
+        return await self.end_penetration_test_with_options_async(request, runtime)
+
     def get_alert_record_analysis_result_with_options(
         self,
         tmp_req: main_models.GetAlertRecordAnalysisResultRequest,
@@ -2473,6 +2543,150 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.query_guide_sub_status_with_options_async(request, runtime)
 
+    def query_penetration_test_detail_with_options(
+        self,
+        request: main_models.QueryPenetrationTestDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryPenetrationTestDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryPenetrationTestDetail',
+            version = '2026-04-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryPenetrationTestDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_penetration_test_detail_with_options_async(
+        self,
+        request: main_models.QueryPenetrationTestDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryPenetrationTestDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryPenetrationTestDetail',
+            version = '2026-04-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryPenetrationTestDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_penetration_test_detail(
+        self,
+        request: main_models.QueryPenetrationTestDetailRequest,
+    ) -> main_models.QueryPenetrationTestDetailResponse:
+        runtime = RuntimeOptions()
+        return self.query_penetration_test_detail_with_options(request, runtime)
+
+    async def query_penetration_test_detail_async(
+        self,
+        request: main_models.QueryPenetrationTestDetailRequest,
+    ) -> main_models.QueryPenetrationTestDetailResponse:
+        runtime = RuntimeOptions()
+        return await self.query_penetration_test_detail_with_options_async(request, runtime)
+
+    def query_penetration_test_list_with_options(
+        self,
+        request: main_models.QueryPenetrationTestListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryPenetrationTestListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryPenetrationTestList',
+            version = '2026-04-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryPenetrationTestListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_penetration_test_list_with_options_async(
+        self,
+        request: main_models.QueryPenetrationTestListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryPenetrationTestListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryPenetrationTestList',
+            version = '2026-04-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryPenetrationTestListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_penetration_test_list(
+        self,
+        request: main_models.QueryPenetrationTestListRequest,
+    ) -> main_models.QueryPenetrationTestListResponse:
+        runtime = RuntimeOptions()
+        return self.query_penetration_test_list_with_options(request, runtime)
+
+    async def query_penetration_test_list_async(
+        self,
+        request: main_models.QueryPenetrationTestListRequest,
+    ) -> main_models.QueryPenetrationTestListResponse:
+        runtime = RuntimeOptions()
+        return await self.query_penetration_test_list_with_options_async(request, runtime)
+
     def query_resource_control_events_with_options(
         self,
         tmp_req: main_models.QueryResourceControlEventsRequest,
@@ -2978,6 +3192,112 @@ class Client(OpenApiClient):
     ) -> main_models.SubmitApplyRecordResponse:
         runtime = RuntimeOptions()
         return await self.submit_apply_record_with_options_async(request, runtime)
+
+    def submit_penetration_test_with_options(
+        self,
+        request: main_models.SubmitPenetrationTestRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitPenetrationTestResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.asset_list):
+            query['AssetList'] = request.asset_list
+        if not DaraCore.is_null(request.is_thirdparty_test):
+            query['IsThirdpartyTest'] = request.is_thirdparty_test
+        if not DaraCore.is_null(request.test_content):
+            query['TestContent'] = request.test_content
+        if not DaraCore.is_null(request.test_end_date):
+            query['TestEndDate'] = request.test_end_date
+        if not DaraCore.is_null(request.test_source_ips):
+            query['TestSourceIps'] = request.test_source_ips
+        if not DaraCore.is_null(request.test_start_date):
+            query['TestStartDate'] = request.test_start_date
+        if not DaraCore.is_null(request.test_steps):
+            query['TestSteps'] = request.test_steps
+        if not DaraCore.is_null(request.thirdparty_email):
+            query['ThirdpartyEmail'] = request.thirdparty_email
+        if not DaraCore.is_null(request.thirdparty_mobile):
+            query['ThirdpartyMobile'] = request.thirdparty_mobile
+        if not DaraCore.is_null(request.thirdparty_tester):
+            query['ThirdpartyTester'] = request.thirdparty_tester
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitPenetrationTest',
+            version = '2026-04-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitPenetrationTestResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_penetration_test_with_options_async(
+        self,
+        request: main_models.SubmitPenetrationTestRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitPenetrationTestResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.asset_list):
+            query['AssetList'] = request.asset_list
+        if not DaraCore.is_null(request.is_thirdparty_test):
+            query['IsThirdpartyTest'] = request.is_thirdparty_test
+        if not DaraCore.is_null(request.test_content):
+            query['TestContent'] = request.test_content
+        if not DaraCore.is_null(request.test_end_date):
+            query['TestEndDate'] = request.test_end_date
+        if not DaraCore.is_null(request.test_source_ips):
+            query['TestSourceIps'] = request.test_source_ips
+        if not DaraCore.is_null(request.test_start_date):
+            query['TestStartDate'] = request.test_start_date
+        if not DaraCore.is_null(request.test_steps):
+            query['TestSteps'] = request.test_steps
+        if not DaraCore.is_null(request.thirdparty_email):
+            query['ThirdpartyEmail'] = request.thirdparty_email
+        if not DaraCore.is_null(request.thirdparty_mobile):
+            query['ThirdpartyMobile'] = request.thirdparty_mobile
+        if not DaraCore.is_null(request.thirdparty_tester):
+            query['ThirdpartyTester'] = request.thirdparty_tester
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitPenetrationTest',
+            version = '2026-04-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitPenetrationTestResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_penetration_test(
+        self,
+        request: main_models.SubmitPenetrationTestRequest,
+    ) -> main_models.SubmitPenetrationTestResponse:
+        runtime = RuntimeOptions()
+        return self.submit_penetration_test_with_options(request, runtime)
+
+    async def submit_penetration_test_async(
+        self,
+        request: main_models.SubmitPenetrationTestRequest,
+    ) -> main_models.SubmitPenetrationTestResponse:
+        runtime = RuntimeOptions()
+        return await self.submit_penetration_test_with_options_async(request, runtime)
 
     def update_post_paid_bind_rel_with_options(
         self,

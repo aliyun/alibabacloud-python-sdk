@@ -1,3 +1,10 @@
+2026-10-13 Version: 1.3.0
+- Support API EndPenetrationTest.
+- Support API QueryPenetrationTestDetail.
+- Support API QueryPenetrationTestList.
+- Support API SubmitPenetrationTest.
+
+
 2026-09-10 Version: 1.2.0
 - Support API DownloadResourceControlEvents.
 
