@@ -19,8 +19,8 @@ class ListClustersResponseBody(DaraModel):
         # The request ID, which can be used for end-to-end diagnostics.
         self.request_id = request_id
         # The status code.
-        # - `code == Success` indicates that the authorization is successful.
-        # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
+        # - If `code == Success`, the authorization is successful.
+        # - Other status codes indicate authorization failed. Check the `message` field for the detailed fault information.
         self.code = code
         # The returned data.
         self.data = data
@@ -97,8 +97,8 @@ class ListClustersResponseBodyData(DaraModel):
     ):
         # The actual cluster ID.
         # 
-        # > - For `ACK` type clusters, this is the ACK cluster ID.
-        # > - For `CUSTOM` type clusters, this serves as a unique identifier with no additional meaning.
+        # > - For `ACK` clusters, this cluster ID is the ACK cluster ID.
+        # > - For `CUSTOM` clusters, this cluster ID serves as a unique identifier and has no additional meaning.
         self.cluster_id = cluster_id
         # - `Running`: The cluster is managed normally.
         # - `Installing`: An installation task is in progress for the cluster.
@@ -107,7 +107,7 @@ class ListClustersResponseBodyData(DaraModel):
         # - `Offline`: The cluster is offline and management is abnormal.
         self.cluster_status = cluster_status
         # - `ACK`: ACK cluster.
-        # - `CUSTOM`: Custom cluster (default clusters belong to custom clusters).
+        # - `CUSTOM`: Custom cluster. The default cluster belongs to the custom cluster type.
         self.cluster_type = cluster_type
         # The creation time.
         self.created_at = created_at

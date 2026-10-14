@@ -10,7 +10,6 @@ from darabonba.model import DaraModel
 class CreateAlertDestinationRequest(DaraModel):
     def __init__(
         self,
-        x_debug_id: str = None,
         app_id: str = None,
         app_secret: str = None,
         group_id: List[str] = None,
@@ -19,9 +18,7 @@ class CreateAlertDestinationRequest(DaraModel):
         params: main_models.CreateAlertDestinationRequestParams = None,
         source: str = None,
         target: str = None,
-        x_sysom_invoke_source: str = None,
     ):
-        self.x_debug_id = x_debug_id
         self.app_id = app_id
         self.app_secret = app_secret
         self.group_id = group_id
@@ -34,7 +31,6 @@ class CreateAlertDestinationRequest(DaraModel):
         self.source = source
         # The notification target. Currently, only DingTalk chatbots are supported.
         self.target = target
-        self.x_sysom_invoke_source = x_sysom_invoke_source
 
     def validate(self):
         if self.params:
@@ -45,9 +41,6 @@ class CreateAlertDestinationRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.x_debug_id is not None:
-            result['X-Debug-Id'] = self.x_debug_id
-
         if self.app_id is not None:
             result['app_id'] = self.app_id
 
@@ -72,16 +65,10 @@ class CreateAlertDestinationRequest(DaraModel):
         if self.target is not None:
             result['target'] = self.target
 
-        if self.x_sysom_invoke_source is not None:
-            result['x-sysom-invoke-source'] = self.x_sysom_invoke_source
-
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('X-Debug-Id') is not None:
-            self.x_debug_id = m.get('X-Debug-Id')
-
         if m.get('app_id') is not None:
             self.app_id = m.get('app_id')
 
@@ -107,9 +94,6 @@ class CreateAlertDestinationRequest(DaraModel):
         if m.get('target') is not None:
             self.target = m.get('target')
 
-        if m.get('x-sysom-invoke-source') is not None:
-            self.x_sysom_invoke_source = m.get('x-sysom-invoke-source')
-
         return self
 
 class CreateAlertDestinationRequestParams(DaraModel):
@@ -124,7 +108,7 @@ class CreateAlertDestinationRequestParams(DaraModel):
         self.email = email
         # The phone number.
         self.phone = phone
-        # The secret key of the chatbot.
+        # The chatbot secret key.
         self.sec = sec
         # The webhook URL of the chatbot.
         self.webhook = webhook

@@ -21,7 +21,7 @@ class GetVmcoreDiagnosisTaskResponseBody(DaraModel):
         self.data = data
         # The error message.
         # - If `code == Success`, this field is empty.
-        # - Otherwise, this field contains the request error information.
+        # - Otherwise, this field contains the request error message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -89,7 +89,7 @@ class GetVmcoreDiagnosisTaskResponseBodyData(DaraModel):
         self.task_status = task_status
         # The task type.
         self.task_type = task_type
-        # The download URLs of related files associated with the task.
+        # The download links for files related to the task.
         self.urls = urls
 
     def validate(self):
@@ -158,13 +158,13 @@ class GetVmcoreDiagnosisTaskResponseBodyDataUrls(DaraModel):
         dmesg_url: str = None,
         vmcore_url: str = None,
     ):
-        # The download URL of the debuginfo-common RPM package.
+        # The download link for the debuginfo-common RPM package.
         self.debuginfo_common_url = debuginfo_common_url
-        # The download URL of the debuginfo RPM package.
+        # The download link for the debuginfo RPM package.
         self.debuginfo_url = debuginfo_url
-        # The download URL of the dmesg log.
+        # The download link for the dmesg log.
         self.dmesg_url = dmesg_url
-        # The download URL of the vmcore file.
+        # The download link for the vmcore file.
         self.vmcore_url = vmcore_url
 
     def validate(self):

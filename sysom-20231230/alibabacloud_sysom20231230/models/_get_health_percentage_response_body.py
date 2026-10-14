@@ -15,7 +15,7 @@ class GetHealthPercentageResponseBody(DaraModel):
         message: str = None,
     ):
         # The status code.
-        # - `code == Success` indicates that the authorization is successful.
+        # - `code == Success` indicates that the authorization was successful.
         # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
         self.code = code
         # The returned data.
@@ -69,7 +69,7 @@ class GetHealthPercentageResponseBodyData(DaraModel):
         type: str = None,
         value: int = None,
     ):
-        # The health level of the node or Pod.
+        # The health level of the node or pod.
         self.type = type
         # The quantity.
         self.value = value

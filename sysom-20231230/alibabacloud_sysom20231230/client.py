@@ -49,11 +49,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.AuthDiagnosisResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.auto_create_role):
             body['autoCreateRole'] = request.auto_create_role
@@ -63,7 +58,6 @@ class Client(OpenApiClient):
             body['instances'] = request.instances
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -89,11 +83,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.AuthDiagnosisResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.auto_create_role):
             body['autoCreateRole'] = request.auto_create_role
@@ -103,7 +92,6 @@ class Client(OpenApiClient):
             body['instances'] = request.instances
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -138,6 +126,102 @@ class Client(OpenApiClient):
         headers = {}
         return await self.auth_diagnosis_with_options_async(request, headers, runtime)
 
+    def check_agent_config_supported_with_options(
+        self,
+        request: main_models.CheckAgentConfigSupportedRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckAgentConfigSupportedResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['agentId'] = request.agent_id
+        if not DaraCore.is_null(request.check_type):
+            query['checkType'] = request.check_type
+        if not DaraCore.is_null(request.clusters):
+            query['clusters'] = request.clusters
+        if not DaraCore.is_null(request.config_id):
+            query['configId'] = request.config_id
+        if not DaraCore.is_null(request.content):
+            query['content'] = request.content
+        if not DaraCore.is_null(request.instances):
+            query['instances'] = request.instances
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckAgentConfigSupported',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/checkAgentConfigSupported',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckAgentConfigSupportedResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_agent_config_supported_with_options_async(
+        self,
+        request: main_models.CheckAgentConfigSupportedRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckAgentConfigSupportedResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['agentId'] = request.agent_id
+        if not DaraCore.is_null(request.check_type):
+            query['checkType'] = request.check_type
+        if not DaraCore.is_null(request.clusters):
+            query['clusters'] = request.clusters
+        if not DaraCore.is_null(request.config_id):
+            query['configId'] = request.config_id
+        if not DaraCore.is_null(request.content):
+            query['content'] = request.content
+        if not DaraCore.is_null(request.instances):
+            query['instances'] = request.instances
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckAgentConfigSupported',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/checkAgentConfigSupported',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckAgentConfigSupportedResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_agent_config_supported(
+        self,
+        request: main_models.CheckAgentConfigSupportedRequest,
+    ) -> main_models.CheckAgentConfigSupportedResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.check_agent_config_supported_with_options(request, headers, runtime)
+
+    async def check_agent_config_supported_async(
+        self,
+        request: main_models.CheckAgentConfigSupportedRequest,
+    ) -> main_models.CheckAgentConfigSupportedResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.check_agent_config_supported_with_options_async(request, headers, runtime)
+
     def check_instance_support_with_options(
         self,
         request: main_models.CheckInstanceSupportRequest,
@@ -145,11 +229,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.CheckInstanceSupportResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.instances):
             body['instances'] = request.instances
@@ -157,7 +236,6 @@ class Client(OpenApiClient):
             body['region'] = request.region
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -183,11 +261,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.CheckInstanceSupportResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.instances):
             body['instances'] = request.instances
@@ -195,7 +268,6 @@ class Client(OpenApiClient):
             body['region'] = request.region
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -237,17 +309,11 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> Generator[main_models.CpuHighAgentStreamResponseResponse, None, None]:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.llm_param_string):
             body['llmParamString'] = request.llm_param_string
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -282,17 +348,11 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> AsyncGenerator[main_models.CpuHighAgentStreamResponseResponse, None, None]:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.llm_param_string):
             body['llmParamString'] = request.llm_param_string
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -327,17 +387,11 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.CpuHighAgentStreamResponseResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.llm_param_string):
             body['llmParamString'] = request.llm_param_string
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -363,17 +417,11 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.CpuHighAgentStreamResponseResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.llm_param_string):
             body['llmParamString'] = request.llm_param_string
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -408,6 +456,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.cpu_high_agent_stream_response_with_options_async(request, headers, runtime)
 
+    def create_agent_config_with_options(
+        self,
+        request: main_models.CreateAgentConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAgentConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_id):
+            body['agentId'] = request.agent_id
+        if not DaraCore.is_null(request.config_name):
+            body['configName'] = request.config_name
+        if not DaraCore.is_null(request.content):
+            body['content'] = request.content
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAgentConfig',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/createAgentConfig',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAgentConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_agent_config_with_options_async(
+        self,
+        request: main_models.CreateAgentConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAgentConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_id):
+            body['agentId'] = request.agent_id
+        if not DaraCore.is_null(request.config_name):
+            body['configName'] = request.config_name
+        if not DaraCore.is_null(request.content):
+            body['content'] = request.content
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAgentConfig',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/createAgentConfig',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAgentConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_agent_config(
+        self,
+        request: main_models.CreateAgentConfigRequest,
+    ) -> main_models.CreateAgentConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_agent_config_with_options(request, headers, runtime)
+
+    async def create_agent_config_async(
+        self,
+        request: main_models.CreateAgentConfigRequest,
+    ) -> main_models.CreateAgentConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_agent_config_with_options_async(request, headers, runtime)
+
     def create_alert_destination_with_options(
         self,
         request: main_models.CreateAlertDestinationRequest,
@@ -415,11 +547,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.CreateAlertDestinationResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.app_id):
             body['app_id'] = request.app_id
@@ -439,7 +566,6 @@ class Client(OpenApiClient):
             body['target'] = request.target
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -465,11 +591,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.CreateAlertDestinationResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.app_id):
             body['app_id'] = request.app_id
@@ -489,7 +610,6 @@ class Client(OpenApiClient):
             body['target'] = request.target
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -531,11 +651,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.CreateAlertStrategyResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.enabled):
             body['enabled'] = request.enabled
@@ -547,7 +662,6 @@ class Client(OpenApiClient):
             body['strategy'] = request.strategy
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -573,11 +687,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.CreateAlertStrategyResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.enabled):
             body['enabled'] = request.enabled
@@ -589,7 +698,6 @@ class Client(OpenApiClient):
             body['strategy'] = request.strategy
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -631,11 +739,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.CreateClusterVpcEndpointConnectionResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.cluster_id):
             body['clusterId'] = request.cluster_id
@@ -645,7 +748,6 @@ class Client(OpenApiClient):
             body['region'] = request.region
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -671,11 +773,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.CreateClusterVpcEndpointConnectionResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.cluster_id):
             body['clusterId'] = request.cluster_id
@@ -685,7 +782,6 @@ class Client(OpenApiClient):
             body['region'] = request.region
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -727,11 +823,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.CreateInstanceInspectionResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.instance):
             body['instance'] = request.instance
@@ -745,7 +836,6 @@ class Client(OpenApiClient):
             body['source'] = request.source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -771,11 +861,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.CreateInstanceInspectionResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.instance):
             body['instance'] = request.instance
@@ -789,7 +874,6 @@ class Client(OpenApiClient):
             body['source'] = request.source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -831,11 +915,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.CreateVmcoreDiagnosisTaskResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.debuginfo_common_url):
             body['debuginfoCommonUrl'] = request.debuginfo_common_url
@@ -849,7 +928,6 @@ class Client(OpenApiClient):
             body['vmcoreUrl'] = request.vmcore_url
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -875,11 +953,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.CreateVmcoreDiagnosisTaskResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.debuginfo_common_url):
             body['debuginfoCommonUrl'] = request.debuginfo_common_url
@@ -893,7 +966,6 @@ class Client(OpenApiClient):
             body['vmcoreUrl'] = request.vmcore_url
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -928,6 +1000,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_vmcore_diagnosis_task_with_options_async(request, headers, runtime)
 
+    def delete_agent_config_with_options(
+        self,
+        request: main_models.DeleteAgentConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAgentConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['agentId'] = request.agent_id
+        if not DaraCore.is_null(request.config_id):
+            query['configId'] = request.config_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAgentConfig',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/deleteAgentConfig',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAgentConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_agent_config_with_options_async(
+        self,
+        request: main_models.DeleteAgentConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAgentConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['agentId'] = request.agent_id
+        if not DaraCore.is_null(request.config_id):
+            query['configId'] = request.config_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAgentConfig',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/deleteAgentConfig',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAgentConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_agent_config(
+        self,
+        request: main_models.DeleteAgentConfigRequest,
+    ) -> main_models.DeleteAgentConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_agent_config_with_options(request, headers, runtime)
+
+    async def delete_agent_config_async(
+        self,
+        request: main_models.DeleteAgentConfigRequest,
+    ) -> main_models.DeleteAgentConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_agent_config_with_options_async(request, headers, runtime)
+
     def delete_alert_destination_with_options(
         self,
         request: main_models.DeleteAlertDestinationRequest,
@@ -936,12 +1088,8 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteAlertDestinationResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.id):
             query['id'] = request.id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -970,12 +1118,8 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteAlertDestinationResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.id):
             query['id'] = request.id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -1020,12 +1164,8 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteAlertStrategyResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.id):
             query['id'] = request.id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -1054,12 +1194,8 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteAlertStrategyResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.id):
             query['id'] = request.id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -1104,8 +1240,6 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeMetricListResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.end_time):
             query['endTime'] = request.end_time
         if not DaraCore.is_null(request.instance):
@@ -1114,8 +1248,6 @@ class Client(OpenApiClient):
             query['metricName'] = request.metric_name
         if not DaraCore.is_null(request.start_time):
             query['startTime'] = request.start_time
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -1144,8 +1276,6 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeMetricListResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.end_time):
             query['endTime'] = request.end_time
         if not DaraCore.is_null(request.instance):
@@ -1154,8 +1284,6 @@ class Client(OpenApiClient):
             query['metricName'] = request.metric_name
         if not DaraCore.is_null(request.start_time):
             query['startTime'] = request.start_time
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -1199,17 +1327,11 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.GenerateCopilotResponseResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.llm_param_string):
             body['llmParamString'] = request.llm_param_string
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -1235,17 +1357,11 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.GenerateCopilotResponseResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.llm_param_string):
             body['llmParamString'] = request.llm_param_string
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -1287,17 +1403,11 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> Generator[main_models.GenerateCopilotStreamResponseResponse, None, None]:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.llm_param_string):
             body['llmParamString'] = request.llm_param_string
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -1332,17 +1442,11 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> AsyncGenerator[main_models.GenerateCopilotStreamResponseResponse, None, None]:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.llm_param_string):
             body['llmParamString'] = request.llm_param_string
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -1377,17 +1481,11 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.GenerateCopilotStreamResponseResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.llm_param_string):
             body['llmParamString'] = request.llm_param_string
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -1413,17 +1511,11 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.GenerateCopilotStreamResponseResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.llm_param_string):
             body['llmParamString'] = request.llm_param_string
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -1465,17 +1557,11 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.GetAIQueryResultResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.analysis_id):
             body['analysisId'] = request.analysis_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -1501,17 +1587,11 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.GetAIQueryResultResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.analysis_id):
             body['analysisId'] = request.analysis_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -1554,8 +1634,6 @@ class Client(OpenApiClient):
     ) -> main_models.GetAbnormalEventsCountResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.cluster):
             query['cluster'] = request.cluster
         if not DaraCore.is_null(request.end):
@@ -1572,8 +1650,6 @@ class Client(OpenApiClient):
             query['showPod'] = request.show_pod
         if not DaraCore.is_null(request.start):
             query['start'] = request.start
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -1602,8 +1678,6 @@ class Client(OpenApiClient):
     ) -> main_models.GetAbnormalEventsCountResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.cluster):
             query['cluster'] = request.cluster
         if not DaraCore.is_null(request.end):
@@ -1620,8 +1694,6 @@ class Client(OpenApiClient):
             query['showPod'] = request.show_pod
         if not DaraCore.is_null(request.start):
             query['start'] = request.start
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -1666,12 +1738,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetAgentResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.agent_id):
             query['agent_id'] = request.agent_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -1700,12 +1768,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetAgentResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.agent_id):
             query['agent_id'] = request.agent_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -1742,6 +1806,102 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_agent_with_options_async(request, headers, runtime)
 
+    def get_agent_config_with_options(
+        self,
+        request: main_models.GetAgentConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['agentId'] = request.agent_id
+        if not DaraCore.is_null(request.config_id):
+            query['configId'] = request.config_id
+        if not DaraCore.is_null(request.config_name):
+            query['configName'] = request.config_name
+        if not DaraCore.is_null(request.current):
+            query['current'] = request.current
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.region):
+            query['region'] = request.region
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgentConfig',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/getAgentConfig',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgentConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_agent_config_with_options_async(
+        self,
+        request: main_models.GetAgentConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['agentId'] = request.agent_id
+        if not DaraCore.is_null(request.config_id):
+            query['configId'] = request.config_id
+        if not DaraCore.is_null(request.config_name):
+            query['configName'] = request.config_name
+        if not DaraCore.is_null(request.current):
+            query['current'] = request.current
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.region):
+            query['region'] = request.region
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgentConfig',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/getAgentConfig',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgentConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_agent_config(
+        self,
+        request: main_models.GetAgentConfigRequest,
+    ) -> main_models.GetAgentConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_agent_config_with_options(request, headers, runtime)
+
+    async def get_agent_config_async(
+        self,
+        request: main_models.GetAgentConfigRequest,
+    ) -> main_models.GetAgentConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_agent_config_with_options_async(request, headers, runtime)
+
     def get_agent_task_with_options(
         self,
         request: main_models.GetAgentTaskRequest,
@@ -1750,12 +1910,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetAgentTaskResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.task_id):
             query['task_id'] = request.task_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -1784,12 +1940,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetAgentTaskResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.task_id):
             query['task_id'] = request.task_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -1826,6 +1978,158 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_agent_task_with_options_async(request, headers, runtime)
 
+    def get_aifg_result_with_options(
+        self,
+        request: main_models.GetAifgResultRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAifgResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAifgResult',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/aifg/getAifgResult',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAifgResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_aifg_result_with_options_async(
+        self,
+        request: main_models.GetAifgResultRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAifgResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAifgResult',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/aifg/getAifgResult',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAifgResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_aifg_result(
+        self,
+        request: main_models.GetAifgResultRequest,
+    ) -> main_models.GetAifgResultResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_aifg_result_with_options(request, headers, runtime)
+
+    async def get_aifg_result_async(
+        self,
+        request: main_models.GetAifgResultRequest,
+    ) -> main_models.GetAifgResultResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_aifg_result_with_options_async(request, headers, runtime)
+
+    def get_aifg_url_with_options(
+        self,
+        request: main_models.GetAifgUrlRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAifgUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAifgUrl',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/aifg/getAifgUrl',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAifgUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_aifg_url_with_options_async(
+        self,
+        request: main_models.GetAifgUrlRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAifgUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAifgUrl',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/aifg/getAifgUrl',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAifgUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_aifg_url(
+        self,
+        request: main_models.GetAifgUrlRequest,
+    ) -> main_models.GetAifgUrlResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_aifg_url_with_options(request, headers, runtime)
+
+    async def get_aifg_url_async(
+        self,
+        request: main_models.GetAifgUrlRequest,
+    ) -> main_models.GetAifgUrlResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_aifg_url_with_options_async(request, headers, runtime)
+
     def get_alert_destination_with_options(
         self,
         request: main_models.GetAlertDestinationRequest,
@@ -1834,12 +2138,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetAlertDestinationResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.id):
             query['id'] = request.id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -1868,12 +2168,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetAlertDestinationResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.id):
             query['id'] = request.id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -1918,12 +2214,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetAlertStrategyResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.id):
             query['id'] = request.id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -1952,12 +2244,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetAlertStrategyResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.id):
             query['id'] = request.id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -2002,8 +2290,6 @@ class Client(OpenApiClient):
     ) -> main_models.GetConfigByNameResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.config_name):
             query['configName'] = request.config_name
         if not DaraCore.is_null(request.config_type):
@@ -2014,8 +2300,6 @@ class Client(OpenApiClient):
             query['useGlobalUid'] = request.use_global_uid
         if not DaraCore.is_null(request.version_id):
             query['versionId'] = request.version_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -2044,8 +2328,6 @@ class Client(OpenApiClient):
     ) -> main_models.GetConfigByNameResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.config_name):
             query['configName'] = request.config_name
         if not DaraCore.is_null(request.config_type):
@@ -2056,8 +2338,6 @@ class Client(OpenApiClient):
             query['useGlobalUid'] = request.use_global_uid
         if not DaraCore.is_null(request.version_id):
             query['versionId'] = request.version_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -2101,17 +2381,11 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.GetCopilotHistoryResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.count):
             body['count'] = request.count
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -2137,17 +2411,11 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.GetCopilotHistoryResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.count):
             body['count'] = request.count
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -2190,12 +2458,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetDiagnosisResultResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.task_id):
             query['task_id'] = request.task_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -2224,12 +2488,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetDiagnosisResultResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.task_id):
             query['task_id'] = request.task_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -2266,6 +2526,294 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_diagnosis_result_with_options_async(request, headers, runtime)
 
+    def get_gpu_cluster_args_options_with_options(
+        self,
+        request: main_models.GetGpuClusterArgsOptionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetGpuClusterArgsOptionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.filter_type):
+            query['filterType'] = request.filter_type
+        if not DaraCore.is_null(request.filter_values):
+            query['filterValues'] = request.filter_values
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetGpuClusterArgsOptions',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/aiTopology/topology/listClusterTopologyOptions',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetGpuClusterArgsOptionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_gpu_cluster_args_options_with_options_async(
+        self,
+        request: main_models.GetGpuClusterArgsOptionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetGpuClusterArgsOptionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.filter_type):
+            query['filterType'] = request.filter_type
+        if not DaraCore.is_null(request.filter_values):
+            query['filterValues'] = request.filter_values
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetGpuClusterArgsOptions',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/aiTopology/topology/listClusterTopologyOptions',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetGpuClusterArgsOptionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_gpu_cluster_args_options(
+        self,
+        request: main_models.GetGpuClusterArgsOptionsRequest,
+    ) -> main_models.GetGpuClusterArgsOptionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_gpu_cluster_args_options_with_options(request, headers, runtime)
+
+    async def get_gpu_cluster_args_options_async(
+        self,
+        request: main_models.GetGpuClusterArgsOptionsRequest,
+    ) -> main_models.GetGpuClusterArgsOptionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_gpu_cluster_args_options_with_options_async(request, headers, runtime)
+
+    def get_gpu_cluster_list_alarm_record_with_options(
+        self,
+        request: main_models.GetGpuClusterListAlarmRecordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetGpuClusterListAlarmRecordResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.alarm_cluster):
+            query['alarmCluster'] = request.alarm_cluster
+        if not DaraCore.is_null(request.alarm_ext_info):
+            query['alarmExtInfo'] = request.alarm_ext_info
+        if not DaraCore.is_null(request.alarm_task):
+            query['alarmTask'] = request.alarm_task
+        if not DaraCore.is_null(request.alarm_time):
+            query['alarmTime'] = request.alarm_time
+        if not DaraCore.is_null(request.alarm_type):
+            query['alarmType'] = request.alarm_type
+        if not DaraCore.is_null(request.current):
+            query['current'] = request.current
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetGpuClusterListAlarmRecord',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/aiTopology/topology/listAlarmRecord',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetGpuClusterListAlarmRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_gpu_cluster_list_alarm_record_with_options_async(
+        self,
+        request: main_models.GetGpuClusterListAlarmRecordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetGpuClusterListAlarmRecordResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.alarm_cluster):
+            query['alarmCluster'] = request.alarm_cluster
+        if not DaraCore.is_null(request.alarm_ext_info):
+            query['alarmExtInfo'] = request.alarm_ext_info
+        if not DaraCore.is_null(request.alarm_task):
+            query['alarmTask'] = request.alarm_task
+        if not DaraCore.is_null(request.alarm_time):
+            query['alarmTime'] = request.alarm_time
+        if not DaraCore.is_null(request.alarm_type):
+            query['alarmType'] = request.alarm_type
+        if not DaraCore.is_null(request.current):
+            query['current'] = request.current
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetGpuClusterListAlarmRecord',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/aiTopology/topology/listAlarmRecord',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetGpuClusterListAlarmRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_gpu_cluster_list_alarm_record(
+        self,
+        request: main_models.GetGpuClusterListAlarmRecordRequest,
+    ) -> main_models.GetGpuClusterListAlarmRecordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_gpu_cluster_list_alarm_record_with_options(request, headers, runtime)
+
+    async def get_gpu_cluster_list_alarm_record_async(
+        self,
+        request: main_models.GetGpuClusterListAlarmRecordRequest,
+    ) -> main_models.GetGpuClusterListAlarmRecordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_gpu_cluster_list_alarm_record_with_options_async(request, headers, runtime)
+
+    def get_gpu_cluster_topology_with_options(
+        self,
+        request: main_models.GetGpuClusterTopologyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetGpuClusterTopologyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.channel_id):
+            query['channelId'] = request.channel_id
+        if not DaraCore.is_null(request.cluster_id):
+            query['clusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.communication_id):
+            query['communicationId'] = request.communication_id
+        if not DaraCore.is_null(request.instance_id_list):
+            query['instanceIdList'] = request.instance_id_list
+        if not DaraCore.is_null(request.pod_list):
+            query['podList'] = request.pod_list
+        if not DaraCore.is_null(request.start_time):
+            query['startTime'] = request.start_time
+        if not DaraCore.is_null(request.task_id_list):
+            query['taskIdList'] = request.task_id_list
+        if not DaraCore.is_null(request.topo_type):
+            query['topoType'] = request.topo_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetGpuClusterTopology',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/aiTopology/topology/clusterTopology',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetGpuClusterTopologyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_gpu_cluster_topology_with_options_async(
+        self,
+        request: main_models.GetGpuClusterTopologyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetGpuClusterTopologyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.channel_id):
+            query['channelId'] = request.channel_id
+        if not DaraCore.is_null(request.cluster_id):
+            query['clusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.communication_id):
+            query['communicationId'] = request.communication_id
+        if not DaraCore.is_null(request.instance_id_list):
+            query['instanceIdList'] = request.instance_id_list
+        if not DaraCore.is_null(request.pod_list):
+            query['podList'] = request.pod_list
+        if not DaraCore.is_null(request.start_time):
+            query['startTime'] = request.start_time
+        if not DaraCore.is_null(request.task_id_list):
+            query['taskIdList'] = request.task_id_list
+        if not DaraCore.is_null(request.topo_type):
+            query['topoType'] = request.topo_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetGpuClusterTopology',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/aiTopology/topology/clusterTopology',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetGpuClusterTopologyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_gpu_cluster_topology(
+        self,
+        request: main_models.GetGpuClusterTopologyRequest,
+    ) -> main_models.GetGpuClusterTopologyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_gpu_cluster_topology_with_options(request, headers, runtime)
+
+    async def get_gpu_cluster_topology_async(
+        self,
+        request: main_models.GetGpuClusterTopologyRequest,
+    ) -> main_models.GetGpuClusterTopologyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_gpu_cluster_topology_with_options_async(request, headers, runtime)
+
     def get_health_percentage_with_options(
         self,
         request: main_models.GetHealthPercentageRequest,
@@ -2274,8 +2822,6 @@ class Client(OpenApiClient):
     ) -> main_models.GetHealthPercentageResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.cluster):
             query['cluster'] = request.cluster
         if not DaraCore.is_null(request.end):
@@ -2284,8 +2830,6 @@ class Client(OpenApiClient):
             query['instance'] = request.instance
         if not DaraCore.is_null(request.start):
             query['start'] = request.start
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -2314,8 +2858,6 @@ class Client(OpenApiClient):
     ) -> main_models.GetHealthPercentageResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.cluster):
             query['cluster'] = request.cluster
         if not DaraCore.is_null(request.end):
@@ -2324,8 +2866,6 @@ class Client(OpenApiClient):
             query['instance'] = request.instance
         if not DaraCore.is_null(request.start):
             query['start'] = request.start
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -2370,8 +2910,6 @@ class Client(OpenApiClient):
     ) -> main_models.GetHostCountResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.cluster):
             query['cluster'] = request.cluster
         if not DaraCore.is_null(request.end):
@@ -2380,8 +2918,6 @@ class Client(OpenApiClient):
             query['instance'] = request.instance
         if not DaraCore.is_null(request.start):
             query['start'] = request.start
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -2410,8 +2946,6 @@ class Client(OpenApiClient):
     ) -> main_models.GetHostCountResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.cluster):
             query['cluster'] = request.cluster
         if not DaraCore.is_null(request.end):
@@ -2420,8 +2954,6 @@ class Client(OpenApiClient):
             query['instance'] = request.instance
         if not DaraCore.is_null(request.start):
             query['start'] = request.start
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -2465,11 +2997,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.GetHotSpotUniqListResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.beg_end):
             body['beg_end'] = request.beg_end
@@ -2485,7 +3012,6 @@ class Client(OpenApiClient):
             body['uniq'] = request.uniq
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -2511,11 +3037,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.GetHotSpotUniqListResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.beg_end):
             body['beg_end'] = request.beg_end
@@ -2531,7 +3052,6 @@ class Client(OpenApiClient):
             body['uniq'] = request.uniq
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -2566,6 +3086,82 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_hot_spot_uniq_list_with_options_async(request, headers, runtime)
 
+    def get_hotfix_task_with_options(
+        self,
+        request: main_models.GetHotfixTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetHotfixTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetHotfixTask',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/hotfix_manager/task/get',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetHotfixTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_hotfix_task_with_options_async(
+        self,
+        request: main_models.GetHotfixTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetHotfixTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetHotfixTask',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/hotfix_manager/task/get',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetHotfixTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_hotfix_task(
+        self,
+        request: main_models.GetHotfixTaskRequest,
+    ) -> main_models.GetHotfixTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_hotfix_task_with_options(request, headers, runtime)
+
+    async def get_hotfix_task_async(
+        self,
+        request: main_models.GetHotfixTaskRequest,
+    ) -> main_models.GetHotfixTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_hotfix_task_with_options_async(request, headers, runtime)
+
     def get_hotspot_analysis_with_options(
         self,
         request: main_models.GetHotspotAnalysisRequest,
@@ -2573,11 +3169,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.GetHotspotAnalysisResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.app_type):
             body['appType'] = request.app_type
@@ -2593,7 +3184,6 @@ class Client(OpenApiClient):
             body['table'] = request.table
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -2619,11 +3209,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.GetHotspotAnalysisResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.app_type):
             body['appType'] = request.app_type
@@ -2639,7 +3224,6 @@ class Client(OpenApiClient):
             body['table'] = request.table
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -2681,11 +3265,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.GetHotspotCompareResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.beg_1end):
             body['beg1_end'] = request.beg_1end
@@ -2709,7 +3288,6 @@ class Client(OpenApiClient):
             body['table'] = request.table
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -2735,11 +3313,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.GetHotspotCompareResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.beg_1end):
             body['beg1_end'] = request.beg_1end
@@ -2763,7 +3336,6 @@ class Client(OpenApiClient):
             body['table'] = request.table
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -2805,11 +3377,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.GetHotspotInstanceListResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.beg_end):
             body['beg_end'] = request.beg_end
@@ -2819,7 +3386,6 @@ class Client(OpenApiClient):
             body['table'] = request.table
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -2845,11 +3411,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.GetHotspotInstanceListResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.beg_end):
             body['beg_end'] = request.beg_end
@@ -2859,7 +3420,6 @@ class Client(OpenApiClient):
             body['table'] = request.table
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -2901,11 +3461,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.GetHotspotPidListResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.beg_end):
             body['beg_end'] = request.beg_end
@@ -2917,7 +3472,6 @@ class Client(OpenApiClient):
             body['table'] = request.table
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -2943,11 +3497,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.GetHotspotPidListResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.beg_end):
             body['beg_end'] = request.beg_end
@@ -2959,7 +3508,6 @@ class Client(OpenApiClient):
             body['table'] = request.table
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -3001,11 +3549,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.GetHotspotTrackingResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.beg_end):
             body['beg_end'] = request.beg_end
@@ -3021,7 +3564,6 @@ class Client(OpenApiClient):
             body['table'] = request.table
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -3047,11 +3589,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.GetHotspotTrackingResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.beg_end):
             body['beg_end'] = request.beg_end
@@ -3067,7 +3604,6 @@ class Client(OpenApiClient):
             body['table'] = request.table
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -3110,12 +3646,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetInspectionReportResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.report_id):
             query['reportId'] = request.report_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -3144,12 +3676,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetInspectionReportResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.report_id):
             query['reportId'] = request.report_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -3194,14 +3722,10 @@ class Client(OpenApiClient):
     ) -> main_models.GetInstantScoreResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.cluster):
             query['cluster'] = request.cluster
         if not DaraCore.is_null(request.instance):
             query['instance'] = request.instance
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -3230,14 +3754,10 @@ class Client(OpenApiClient):
     ) -> main_models.GetInstantScoreResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.cluster):
             query['cluster'] = request.cluster
         if not DaraCore.is_null(request.instance):
             query['instance'] = request.instance
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -3274,6 +3794,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_instant_score_with_options_async(request, headers, runtime)
 
+    def get_list_gpu_cluster_with_options(
+        self,
+        request: main_models.GetListGpuClusterRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetListGpuClusterResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        if not DaraCore.is_null(request.time_region):
+            query['timeRegion'] = request.time_region
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetListGpuCluster',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/aiTopology/topology/listCluster',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetListGpuClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_list_gpu_cluster_with_options_async(
+        self,
+        request: main_models.GetListGpuClusterRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetListGpuClusterResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        if not DaraCore.is_null(request.time_region):
+            query['timeRegion'] = request.time_region
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetListGpuCluster',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/aiTopology/topology/listCluster',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetListGpuClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_list_gpu_cluster(
+        self,
+        request: main_models.GetListGpuClusterRequest,
+    ) -> main_models.GetListGpuClusterResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_list_gpu_cluster_with_options(request, headers, runtime)
+
+    async def get_list_gpu_cluster_async(
+        self,
+        request: main_models.GetListGpuClusterRequest,
+    ) -> main_models.GetListGpuClusterResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_list_gpu_cluster_with_options_async(request, headers, runtime)
+
     def get_list_record_with_options(
         self,
         request: main_models.GetListRecordRequest,
@@ -3282,8 +3882,6 @@ class Client(OpenApiClient):
     ) -> main_models.GetListRecordResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.analysis_id):
             query['analysisId'] = request.analysis_id
         if not DaraCore.is_null(request.current):
@@ -3294,8 +3892,6 @@ class Client(OpenApiClient):
             query['pageSize'] = request.page_size
         if not DaraCore.is_null(request.region):
             query['region'] = request.region
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -3324,8 +3920,6 @@ class Client(OpenApiClient):
     ) -> main_models.GetListRecordResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.analysis_id):
             query['analysisId'] = request.analysis_id
         if not DaraCore.is_null(request.current):
@@ -3336,8 +3930,6 @@ class Client(OpenApiClient):
             query['pageSize'] = request.page_size
         if not DaraCore.is_null(request.region):
             query['region'] = request.region
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -3382,8 +3974,6 @@ class Client(OpenApiClient):
     ) -> main_models.GetProblemPercentageResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.cluster):
             query['cluster'] = request.cluster
         if not DaraCore.is_null(request.end):
@@ -3392,8 +3982,6 @@ class Client(OpenApiClient):
             query['instance'] = request.instance
         if not DaraCore.is_null(request.start):
             query['start'] = request.start
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -3422,8 +4010,6 @@ class Client(OpenApiClient):
     ) -> main_models.GetProblemPercentageResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.cluster):
             query['cluster'] = request.cluster
         if not DaraCore.is_null(request.end):
@@ -3432,8 +4018,6 @@ class Client(OpenApiClient):
             query['instance'] = request.instance
         if not DaraCore.is_null(request.start):
             query['start'] = request.start
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -3478,8 +4062,6 @@ class Client(OpenApiClient):
     ) -> main_models.GetRangeScoreResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.cluster):
             query['cluster'] = request.cluster
         if not DaraCore.is_null(request.end):
@@ -3488,8 +4070,6 @@ class Client(OpenApiClient):
             query['instance'] = request.instance
         if not DaraCore.is_null(request.start):
             query['start'] = request.start
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -3518,8 +4098,6 @@ class Client(OpenApiClient):
     ) -> main_models.GetRangeScoreResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.cluster):
             query['cluster'] = request.cluster
         if not DaraCore.is_null(request.end):
@@ -3528,8 +4106,6 @@ class Client(OpenApiClient):
             query['instance'] = request.instance
         if not DaraCore.is_null(request.start):
             query['start'] = request.start
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -3574,16 +4150,12 @@ class Client(OpenApiClient):
     ) -> main_models.GetResourcesResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.cluster):
             query['cluster'] = request.cluster
         if not DaraCore.is_null(request.instance):
             query['instance'] = request.instance
         if not DaraCore.is_null(request.type):
             query['type'] = request.type
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -3612,16 +4184,12 @@ class Client(OpenApiClient):
     ) -> main_models.GetResourcesResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.cluster):
             query['cluster'] = request.cluster
         if not DaraCore.is_null(request.instance):
             query['instance'] = request.instance
         if not DaraCore.is_null(request.type):
             query['type'] = request.type
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -3670,16 +4238,12 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.params):
             request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'params', 'json')
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.channel):
             query['channel'] = request.channel
         if not DaraCore.is_null(request.params_shrink):
             query['params'] = request.params_shrink
         if not DaraCore.is_null(request.service_name):
             query['service_name'] = request.service_name
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -3712,16 +4276,12 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.params):
             request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'params', 'json')
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.channel):
             query['channel'] = request.channel
         if not DaraCore.is_null(request.params_shrink):
             query['params'] = request.params_shrink
         if not DaraCore.is_null(request.service_name):
             query['service_name'] = request.service_name
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -3766,12 +4326,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetVmcoreDiagnosisTaskResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.task_id):
             query['taskId'] = request.task_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -3800,12 +4356,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetVmcoreDiagnosisTaskResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.task_id):
             query['taskId'] = request.task_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -3849,11 +4401,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.InitialSysomResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.check_only):
             body['check_only'] = request.check_only
@@ -3861,7 +4408,6 @@ class Client(OpenApiClient):
             body['source'] = request.source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -3887,11 +4433,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.InitialSysomResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.check_only):
             body['check_only'] = request.check_only
@@ -3899,7 +4440,6 @@ class Client(OpenApiClient):
             body['source'] = request.source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -3941,11 +4481,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.InstallAgentResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.agent_id):
             body['agent_id'] = request.agent_id
@@ -3957,7 +4492,6 @@ class Client(OpenApiClient):
             body['instances'] = request.instances
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -3983,11 +4517,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.InstallAgentResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.agent_id):
             body['agent_id'] = request.agent_id
@@ -3999,7 +4528,6 @@ class Client(OpenApiClient):
             body['instances'] = request.instances
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -4041,11 +4569,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.InstallAgentForClusterResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.agent_id):
             body['agent_id'] = request.agent_id
@@ -4059,7 +4582,6 @@ class Client(OpenApiClient):
             body['grayscale_config'] = request.grayscale_config
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -4085,11 +4607,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.InstallAgentForClusterResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.agent_id):
             body['agent_id'] = request.agent_id
@@ -4103,7 +4620,6 @@ class Client(OpenApiClient):
             body['grayscale_config'] = request.grayscale_config
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -4145,11 +4661,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.InstallAgentWithTypeResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.tag):
             body['Tag'] = request.tag
@@ -4165,7 +4676,6 @@ class Client(OpenApiClient):
             body['instances'] = request.instances
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -4191,11 +4701,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.InstallAgentWithTypeResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.tag):
             body['Tag'] = request.tag
@@ -4211,7 +4716,6 @@ class Client(OpenApiClient):
             body['instances'] = request.instances
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -4246,6 +4750,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.install_agent_with_type_with_options_async(request, headers, runtime)
 
+    def install_hotfix_with_options(
+        self,
+        request: main_models.InstallHotfixRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.InstallHotfixResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.cve_id):
+            body['cveId'] = request.cve_id
+        if not DaraCore.is_null(request.instances):
+            body['instances'] = request.instances
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'InstallHotfix',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/hotfix_manager/hotfix/install',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InstallHotfixResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def install_hotfix_with_options_async(
+        self,
+        request: main_models.InstallHotfixRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.InstallHotfixResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.cve_id):
+            body['cveId'] = request.cve_id
+        if not DaraCore.is_null(request.instances):
+            body['instances'] = request.instances
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'InstallHotfix',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/hotfix_manager/hotfix/install',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InstallHotfixResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def install_hotfix(
+        self,
+        request: main_models.InstallHotfixRequest,
+    ) -> main_models.InstallHotfixResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.install_hotfix_with_options(request, headers, runtime)
+
+    async def install_hotfix_async(
+        self,
+        request: main_models.InstallHotfixRequest,
+    ) -> main_models.InstallHotfixResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.install_hotfix_with_options_async(request, headers, runtime)
+
     def invoke_anomaly_diagnosis_with_options(
         self,
         request: main_models.InvokeAnomalyDiagnosisRequest,
@@ -4254,12 +4838,8 @@ class Client(OpenApiClient):
     ) -> main_models.InvokeAnomalyDiagnosisResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.uuid):
             query['uuid'] = request.uuid
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -4288,12 +4868,8 @@ class Client(OpenApiClient):
     ) -> main_models.InvokeAnomalyDiagnosisResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.uuid):
             query['uuid'] = request.uuid
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -4422,8 +4998,6 @@ class Client(OpenApiClient):
     ) -> main_models.ListAbnormalyEventsResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.cluster):
             query['cluster'] = request.cluster
         if not DaraCore.is_null(request.current):
@@ -4446,8 +5020,6 @@ class Client(OpenApiClient):
             query['showPod'] = request.show_pod
         if not DaraCore.is_null(request.start):
             query['start'] = request.start
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -4476,8 +5048,6 @@ class Client(OpenApiClient):
     ) -> main_models.ListAbnormalyEventsResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.cluster):
             query['cluster'] = request.cluster
         if not DaraCore.is_null(request.current):
@@ -4500,8 +5070,6 @@ class Client(OpenApiClient):
             query['showPod'] = request.show_pod
         if not DaraCore.is_null(request.start):
             query['start'] = request.start
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -4546,8 +5114,6 @@ class Client(OpenApiClient):
     ) -> main_models.ListAgentInstallRecordsResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.current):
             query['current'] = request.current
         if not DaraCore.is_null(request.instance_id):
@@ -4562,8 +5128,6 @@ class Client(OpenApiClient):
             query['region'] = request.region
         if not DaraCore.is_null(request.status):
             query['status'] = request.status
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -4592,8 +5156,6 @@ class Client(OpenApiClient):
     ) -> main_models.ListAgentInstallRecordsResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.current):
             query['current'] = request.current
         if not DaraCore.is_null(request.instance_id):
@@ -4608,8 +5170,6 @@ class Client(OpenApiClient):
             query['region'] = request.region
         if not DaraCore.is_null(request.status):
             query['status'] = request.status
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -4654,8 +5214,6 @@ class Client(OpenApiClient):
     ) -> main_models.ListAgentsResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.current):
             query['current'] = request.current
         if not DaraCore.is_null(request.name):
@@ -4664,8 +5222,6 @@ class Client(OpenApiClient):
             query['pageSize'] = request.page_size
         if not DaraCore.is_null(request.type):
             query['type'] = request.type
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -4694,8 +5250,6 @@ class Client(OpenApiClient):
     ) -> main_models.ListAgentsResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.current):
             query['current'] = request.current
         if not DaraCore.is_null(request.name):
@@ -4704,8 +5258,6 @@ class Client(OpenApiClient):
             query['pageSize'] = request.page_size
         if not DaraCore.is_null(request.type):
             query['type'] = request.type
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -4742,6 +5294,102 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_agents_with_options_async(request, headers, runtime)
 
+    def list_aifg_jobs_with_options(
+        self,
+        request: main_models.ListAifgJobsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAifgJobsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current):
+            query['current'] = request.current
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.region):
+            query['region'] = request.region
+        if not DaraCore.is_null(request.service_name):
+            query['serviceName'] = request.service_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAifgJobs',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/aifg/listAifgJobs',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAifgJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_aifg_jobs_with_options_async(
+        self,
+        request: main_models.ListAifgJobsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAifgJobsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current):
+            query['current'] = request.current
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.region):
+            query['region'] = request.region
+        if not DaraCore.is_null(request.service_name):
+            query['serviceName'] = request.service_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAifgJobs',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/aifg/listAifgJobs',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAifgJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_aifg_jobs(
+        self,
+        request: main_models.ListAifgJobsRequest,
+    ) -> main_models.ListAifgJobsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_aifg_jobs_with_options(request, headers, runtime)
+
+    async def list_aifg_jobs_async(
+        self,
+        request: main_models.ListAifgJobsRequest,
+    ) -> main_models.ListAifgJobsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_aifg_jobs_with_options_async(request, headers, runtime)
+
     def list_alert_destinations_with_options(
         self,
         request: main_models.ListAlertDestinationsRequest,
@@ -4750,8 +5398,6 @@ class Client(OpenApiClient):
     ) -> main_models.ListAlertDestinationsResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.current):
             query['current'] = request.current
         if not DaraCore.is_null(request.max_results):
@@ -4762,8 +5408,6 @@ class Client(OpenApiClient):
             query['nextToken'] = request.next_token
         if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -4792,8 +5436,6 @@ class Client(OpenApiClient):
     ) -> main_models.ListAlertDestinationsResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.current):
             query['current'] = request.current
         if not DaraCore.is_null(request.max_results):
@@ -4804,8 +5446,6 @@ class Client(OpenApiClient):
             query['nextToken'] = request.next_token
         if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -4908,8 +5548,6 @@ class Client(OpenApiClient):
     ) -> main_models.ListAlertStrategiesResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.current):
             query['current'] = request.current
         if not DaraCore.is_null(request.max_results):
@@ -4920,8 +5558,6 @@ class Client(OpenApiClient):
             query['nextToken'] = request.next_token
         if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -4950,8 +5586,6 @@ class Client(OpenApiClient):
     ) -> main_models.ListAlertStrategiesResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.current):
             query['current'] = request.current
         if not DaraCore.is_null(request.max_results):
@@ -4962,8 +5596,6 @@ class Client(OpenApiClient):
             query['nextToken'] = request.next_token
         if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -5008,8 +5640,6 @@ class Client(OpenApiClient):
     ) -> main_models.ListAllInstancesResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.current):
             query['current'] = request.current
         if not DaraCore.is_null(request.filters):
@@ -5028,8 +5658,6 @@ class Client(OpenApiClient):
             query['pluginId'] = request.plugin_id
         if not DaraCore.is_null(request.region):
             query['region'] = request.region
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -5058,8 +5686,6 @@ class Client(OpenApiClient):
     ) -> main_models.ListAllInstancesResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.current):
             query['current'] = request.current
         if not DaraCore.is_null(request.filters):
@@ -5078,8 +5704,6 @@ class Client(OpenApiClient):
             query['pluginId'] = request.plugin_id
         if not DaraCore.is_null(request.region):
             query['region'] = request.region
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -5124,8 +5748,6 @@ class Client(OpenApiClient):
     ) -> main_models.ListClusterAgentInstallRecordsResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.agent_config_id):
             query['agent_config_id'] = request.agent_config_id
         if not DaraCore.is_null(request.cluster_id):
@@ -5138,8 +5760,6 @@ class Client(OpenApiClient):
             query['plugin_id'] = request.plugin_id
         if not DaraCore.is_null(request.plugin_version):
             query['plugin_version'] = request.plugin_version
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -5168,8 +5788,6 @@ class Client(OpenApiClient):
     ) -> main_models.ListClusterAgentInstallRecordsResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.agent_config_id):
             query['agent_config_id'] = request.agent_config_id
         if not DaraCore.is_null(request.cluster_id):
@@ -5182,8 +5800,6 @@ class Client(OpenApiClient):
             query['plugin_id'] = request.plugin_id
         if not DaraCore.is_null(request.plugin_version):
             query['plugin_version'] = request.plugin_version
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -5228,8 +5844,6 @@ class Client(OpenApiClient):
     ) -> main_models.ListClustersResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.cluster_id):
             query['cluster_id'] = request.cluster_id
         if not DaraCore.is_null(request.cluster_status):
@@ -5244,8 +5858,6 @@ class Client(OpenApiClient):
             query['name'] = request.name
         if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -5274,8 +5886,6 @@ class Client(OpenApiClient):
     ) -> main_models.ListClustersResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.cluster_id):
             query['cluster_id'] = request.cluster_id
         if not DaraCore.is_null(request.cluster_status):
@@ -5290,8 +5900,6 @@ class Client(OpenApiClient):
             query['name'] = request.name
         if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -5336,8 +5944,6 @@ class Client(OpenApiClient):
     ) -> main_models.ListDiagnosisResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.current):
             query['current'] = request.current
         if not DaraCore.is_null(request.page_size):
@@ -5348,8 +5954,6 @@ class Client(OpenApiClient):
             query['service_name'] = request.service_name
         if not DaraCore.is_null(request.status):
             query['status'] = request.status
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -5378,8 +5982,6 @@ class Client(OpenApiClient):
     ) -> main_models.ListDiagnosisResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.current):
             query['current'] = request.current
         if not DaraCore.is_null(request.page_size):
@@ -5390,8 +5992,6 @@ class Client(OpenApiClient):
             query['service_name'] = request.service_name
         if not DaraCore.is_null(request.status):
             query['status'] = request.status
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -5436,8 +6036,6 @@ class Client(OpenApiClient):
     ) -> main_models.ListInstanceHealthResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.cluster):
             query['cluster'] = request.cluster
         if not DaraCore.is_null(request.current):
@@ -5450,8 +6048,6 @@ class Client(OpenApiClient):
             query['pageSize'] = request.page_size
         if not DaraCore.is_null(request.start):
             query['start'] = request.start
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -5480,8 +6076,6 @@ class Client(OpenApiClient):
     ) -> main_models.ListInstanceHealthResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.cluster):
             query['cluster'] = request.cluster
         if not DaraCore.is_null(request.current):
@@ -5494,8 +6088,6 @@ class Client(OpenApiClient):
             query['pageSize'] = request.page_size
         if not DaraCore.is_null(request.start):
             query['start'] = request.start
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -5540,8 +6132,6 @@ class Client(OpenApiClient):
     ) -> main_models.ListInstanceInfoResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.info_type):
             query['infoType'] = request.info_type
         if not DaraCore.is_null(request.instance_type):
@@ -5556,8 +6146,6 @@ class Client(OpenApiClient):
             query['pluginId'] = request.plugin_id
         if not DaraCore.is_null(request.region):
             query['region'] = request.region
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -5586,8 +6174,6 @@ class Client(OpenApiClient):
     ) -> main_models.ListInstanceInfoResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.info_type):
             query['infoType'] = request.info_type
         if not DaraCore.is_null(request.instance_type):
@@ -5602,8 +6188,6 @@ class Client(OpenApiClient):
             query['pluginId'] = request.plugin_id
         if not DaraCore.is_null(request.region):
             query['region'] = request.region
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -5648,8 +6232,6 @@ class Client(OpenApiClient):
     ) -> main_models.ListInstanceStatusResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.current):
             query['current'] = request.current
         if not DaraCore.is_null(request.instance):
@@ -5660,8 +6242,6 @@ class Client(OpenApiClient):
             query['region'] = request.region
         if not DaraCore.is_null(request.status):
             query['status'] = request.status
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -5690,8 +6270,6 @@ class Client(OpenApiClient):
     ) -> main_models.ListInstanceStatusResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.current):
             query['current'] = request.current
         if not DaraCore.is_null(request.instance):
@@ -5702,8 +6280,6 @@ class Client(OpenApiClient):
             query['region'] = request.region
         if not DaraCore.is_null(request.status):
             query['status'] = request.status
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -5748,8 +6324,6 @@ class Client(OpenApiClient):
     ) -> main_models.ListInstancesResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.cluster_id):
             query['cluster_id'] = request.cluster_id
         if not DaraCore.is_null(request.current):
@@ -5762,8 +6336,6 @@ class Client(OpenApiClient):
             query['region'] = request.region
         if not DaraCore.is_null(request.status):
             query['status'] = request.status
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -5792,8 +6364,6 @@ class Client(OpenApiClient):
     ) -> main_models.ListInstancesResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.cluster_id):
             query['cluster_id'] = request.cluster_id
         if not DaraCore.is_null(request.current):
@@ -5806,8 +6376,6 @@ class Client(OpenApiClient):
             query['region'] = request.region
         if not DaraCore.is_null(request.status):
             query['status'] = request.status
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -5852,8 +6420,6 @@ class Client(OpenApiClient):
     ) -> main_models.ListInstancesEcsInfoListResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.info_type):
             query['info_type'] = request.info_type
         if not DaraCore.is_null(request.instance_id):
@@ -5864,8 +6430,6 @@ class Client(OpenApiClient):
             query['plugin_id'] = request.plugin_id
         if not DaraCore.is_null(request.region):
             query['region'] = request.region
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -5894,8 +6458,6 @@ class Client(OpenApiClient):
     ) -> main_models.ListInstancesEcsInfoListResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.info_type):
             query['info_type'] = request.info_type
         if not DaraCore.is_null(request.instance_id):
@@ -5906,8 +6468,6 @@ class Client(OpenApiClient):
             query['plugin_id'] = request.plugin_id
         if not DaraCore.is_null(request.region):
             query['region'] = request.region
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -5956,8 +6516,6 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.instance_tag):
             request.instance_tag_shrink = Utils.array_to_string_with_specified_style(tmp_req.instance_tag, 'instance_tag', 'json')
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.current):
             query['current'] = request.current
         if not DaraCore.is_null(request.health_status):
@@ -5988,8 +6546,6 @@ class Client(OpenApiClient):
             query['resource_group_id_name'] = request.resource_group_id_name
         if not DaraCore.is_null(request.resource_group_name):
             query['resource_group_name'] = request.resource_group_name
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -6022,8 +6578,6 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.instance_tag):
             request.instance_tag_shrink = Utils.array_to_string_with_specified_style(tmp_req.instance_tag, 'instance_tag', 'json')
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.current):
             query['current'] = request.current
         if not DaraCore.is_null(request.health_status):
@@ -6054,8 +6608,6 @@ class Client(OpenApiClient):
             query['resource_group_id_name'] = request.resource_group_id_name
         if not DaraCore.is_null(request.resource_group_name):
             query['resource_group_name'] = request.resource_group_name
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -6100,8 +6652,6 @@ class Client(OpenApiClient):
     ) -> main_models.ListPluginsInstancesResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.current):
             query['current'] = request.current
         if not DaraCore.is_null(request.instance_id_name):
@@ -6116,8 +6666,6 @@ class Client(OpenApiClient):
             query['plugin_id'] = request.plugin_id
         if not DaraCore.is_null(request.region):
             query['region'] = request.region
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -6146,8 +6694,6 @@ class Client(OpenApiClient):
     ) -> main_models.ListPluginsInstancesResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.current):
             query['current'] = request.current
         if not DaraCore.is_null(request.instance_id_name):
@@ -6162,8 +6708,6 @@ class Client(OpenApiClient):
             query['plugin_id'] = request.plugin_id
         if not DaraCore.is_null(request.region):
             query['region'] = request.region
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -6208,8 +6752,6 @@ class Client(OpenApiClient):
     ) -> main_models.ListPodsOfInstanceResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.cluster_id):
             query['cluster_id'] = request.cluster_id
         if not DaraCore.is_null(request.current):
@@ -6218,8 +6760,6 @@ class Client(OpenApiClient):
             query['instance'] = request.instance
         if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -6248,8 +6788,6 @@ class Client(OpenApiClient):
     ) -> main_models.ListPodsOfInstanceResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.cluster_id):
             query['cluster_id'] = request.cluster_id
         if not DaraCore.is_null(request.current):
@@ -6258,8 +6796,6 @@ class Client(OpenApiClient):
             query['instance'] = request.instance
         if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -6362,12 +6898,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListVmcoreDiagnosisTaskResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.days):
             query['days'] = request.days
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -6396,12 +6928,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListVmcoreDiagnosisTaskResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.days):
             query['days'] = request.days
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -6438,6 +6966,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_vmcore_diagnosis_task_with_options_async(request, headers, runtime)
 
+    def query_hotfix_status_with_options(
+        self,
+        request: main_models.QueryHotfixStatusRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryHotfixStatusResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.cve_id):
+            body['cveId'] = request.cve_id
+        if not DaraCore.is_null(request.instances):
+            body['instances'] = request.instances
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryHotfixStatus',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/hotfix_manager/hotfix/query_status',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryHotfixStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_hotfix_status_with_options_async(
+        self,
+        request: main_models.QueryHotfixStatusRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryHotfixStatusResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.cve_id):
+            body['cveId'] = request.cve_id
+        if not DaraCore.is_null(request.instances):
+            body['instances'] = request.instances
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryHotfixStatus',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/hotfix_manager/hotfix/query_status',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryHotfixStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_hotfix_status(
+        self,
+        request: main_models.QueryHotfixStatusRequest,
+    ) -> main_models.QueryHotfixStatusResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.query_hotfix_status_with_options(request, headers, runtime)
+
+    async def query_hotfix_status_async(
+        self,
+        request: main_models.QueryHotfixStatusRequest,
+    ) -> main_models.QueryHotfixStatusResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.query_hotfix_status_with_options_async(request, headers, runtime)
+
     def start_aianalysis_with_options(
         self,
         request: main_models.StartAIAnalysisRequest,
@@ -6445,11 +7053,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.StartAIAnalysisResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.analysis_tool):
             body['analysisTool'] = request.analysis_tool
@@ -6481,7 +7084,6 @@ class Client(OpenApiClient):
             body['uid'] = request.uid
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -6507,11 +7109,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.StartAIAnalysisResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.analysis_tool):
             body['analysisTool'] = request.analysis_tool
@@ -6543,7 +7140,6 @@ class Client(OpenApiClient):
             body['uid'] = request.uid
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -6585,11 +7181,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.StartAIDiffAnalysisResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.task_1):
             body['task1'] = request.task_1
@@ -6597,7 +7188,6 @@ class Client(OpenApiClient):
             body['task2'] = request.task_2
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -6623,11 +7213,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.StartAIDiffAnalysisResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.task_1):
             body['task1'] = request.task_1
@@ -6635,7 +7220,6 @@ class Client(OpenApiClient):
             body['task2'] = request.task_2
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -6670,6 +7254,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.start_aidiff_analysis_with_options_async(request, headers, runtime)
 
+    def start_aifg_analysis_with_options(
+        self,
+        request: main_models.StartAifgAnalysisRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.StartAifgAnalysisResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.channel):
+            body['channel'] = request.channel
+        if not DaraCore.is_null(request.params):
+            body['params'] = request.params
+        if not DaraCore.is_null(request.region):
+            body['region'] = request.region
+        if not DaraCore.is_null(request.service_name):
+            body['serviceName'] = request.service_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'StartAifgAnalysis',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/aifg/startAifgAnalysis',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StartAifgAnalysisResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_aifg_analysis_with_options_async(
+        self,
+        request: main_models.StartAifgAnalysisRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.StartAifgAnalysisResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.channel):
+            body['channel'] = request.channel
+        if not DaraCore.is_null(request.params):
+            body['params'] = request.params
+        if not DaraCore.is_null(request.region):
+            body['region'] = request.region
+        if not DaraCore.is_null(request.service_name):
+            body['serviceName'] = request.service_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'StartAifgAnalysis',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/aifg/startAifgAnalysis',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StartAifgAnalysisResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_aifg_analysis(
+        self,
+        request: main_models.StartAifgAnalysisRequest,
+    ) -> main_models.StartAifgAnalysisResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.start_aifg_analysis_with_options(request, headers, runtime)
+
+    async def start_aifg_analysis_async(
+        self,
+        request: main_models.StartAifgAnalysisRequest,
+    ) -> main_models.StartAifgAnalysisResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.start_aifg_analysis_with_options_async(request, headers, runtime)
+
     def uninstall_agent_with_options(
         self,
         request: main_models.UninstallAgentRequest,
@@ -6677,11 +7349,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.UninstallAgentResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.agent_id):
             body['agent_id'] = request.agent_id
@@ -6691,7 +7358,6 @@ class Client(OpenApiClient):
             body['instances'] = request.instances
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -6717,11 +7383,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.UninstallAgentResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.agent_id):
             body['agent_id'] = request.agent_id
@@ -6731,7 +7392,6 @@ class Client(OpenApiClient):
             body['instances'] = request.instances
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -6773,11 +7433,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.UninstallAgentForClusterResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.agent_id):
             body['agent_id'] = request.agent_id
@@ -6787,7 +7442,6 @@ class Client(OpenApiClient):
             body['cluster_id'] = request.cluster_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -6813,11 +7467,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.UninstallAgentForClusterResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.agent_id):
             body['agent_id'] = request.agent_id
@@ -6827,7 +7476,6 @@ class Client(OpenApiClient):
             body['cluster_id'] = request.cluster_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -6869,11 +7517,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.UninstallAgentWithTypeResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.agent_id):
             body['agentId'] = request.agent_id
@@ -6885,7 +7528,6 @@ class Client(OpenApiClient):
             body['instances'] = request.instances
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -6911,11 +7553,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.UninstallAgentWithTypeResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.agent_id):
             body['agentId'] = request.agent_id
@@ -6927,7 +7564,6 @@ class Client(OpenApiClient):
             body['instances'] = request.instances
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -6962,6 +7598,170 @@ class Client(OpenApiClient):
         headers = {}
         return await self.uninstall_agent_with_type_with_options_async(request, headers, runtime)
 
+    def uninstall_hotfix_with_options(
+        self,
+        request: main_models.UninstallHotfixRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UninstallHotfixResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.cve_id):
+            body['cveId'] = request.cve_id
+        if not DaraCore.is_null(request.instances):
+            body['instances'] = request.instances
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UninstallHotfix',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/hotfix_manager/hotfix/uninstall',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UninstallHotfixResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def uninstall_hotfix_with_options_async(
+        self,
+        request: main_models.UninstallHotfixRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UninstallHotfixResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.cve_id):
+            body['cveId'] = request.cve_id
+        if not DaraCore.is_null(request.instances):
+            body['instances'] = request.instances
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UninstallHotfix',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/hotfix_manager/hotfix/uninstall',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UninstallHotfixResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def uninstall_hotfix(
+        self,
+        request: main_models.UninstallHotfixRequest,
+    ) -> main_models.UninstallHotfixResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.uninstall_hotfix_with_options(request, headers, runtime)
+
+    async def uninstall_hotfix_async(
+        self,
+        request: main_models.UninstallHotfixRequest,
+    ) -> main_models.UninstallHotfixResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.uninstall_hotfix_with_options_async(request, headers, runtime)
+
+    def update_agent_config_with_options(
+        self,
+        request: main_models.UpdateAgentConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAgentConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_id):
+            body['agentId'] = request.agent_id
+        if not DaraCore.is_null(request.config_id):
+            body['configId'] = request.config_id
+        if not DaraCore.is_null(request.content):
+            body['content'] = request.content
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAgentConfig',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/updateAgentConfig',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAgentConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_agent_config_with_options_async(
+        self,
+        request: main_models.UpdateAgentConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAgentConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_id):
+            body['agentId'] = request.agent_id
+        if not DaraCore.is_null(request.config_id):
+            body['configId'] = request.config_id
+        if not DaraCore.is_null(request.content):
+            body['content'] = request.content
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAgentConfig',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/updateAgentConfig',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAgentConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_agent_config(
+        self,
+        request: main_models.UpdateAgentConfigRequest,
+    ) -> main_models.UpdateAgentConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_agent_config_with_options(request, headers, runtime)
+
+    async def update_agent_config_async(
+        self,
+        request: main_models.UpdateAgentConfigRequest,
+    ) -> main_models.UpdateAgentConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_agent_config_with_options_async(request, headers, runtime)
+
     def update_alert_destination_with_options(
         self,
         request: main_models.UpdateAlertDestinationRequest,
@@ -6969,11 +7769,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.UpdateAlertDestinationResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.app_id):
             body['app_id'] = request.app_id
@@ -6995,7 +7790,6 @@ class Client(OpenApiClient):
             body['target'] = request.target
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -7021,11 +7815,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.UpdateAlertDestinationResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.app_id):
             body['app_id'] = request.app_id
@@ -7047,7 +7836,6 @@ class Client(OpenApiClient):
             body['target'] = request.target
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -7089,11 +7877,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.UpdateAlertEnabledResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.enabled):
             body['enabled'] = request.enabled
@@ -7101,7 +7884,6 @@ class Client(OpenApiClient):
             body['id'] = request.id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -7127,11 +7909,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.UpdateAlertEnabledResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.enabled):
             body['enabled'] = request.enabled
@@ -7139,7 +7916,6 @@ class Client(OpenApiClient):
             body['id'] = request.id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -7181,11 +7957,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.UpdateAlertStrategyResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.enabled):
             body['enabled'] = request.enabled
@@ -7199,7 +7970,6 @@ class Client(OpenApiClient):
             body['strategy'] = request.strategy
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -7225,11 +7995,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.UpdateAlertStrategyResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.enabled):
             body['enabled'] = request.enabled
@@ -7243,7 +8008,6 @@ class Client(OpenApiClient):
             body['strategy'] = request.strategy
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -7278,6 +8042,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_alert_strategy_with_options_async(request, headers, runtime)
 
+    def update_cluster_agent_config_with_options(
+        self,
+        request: main_models.UpdateClusterAgentConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateClusterAgentConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_id):
+            body['agentId'] = request.agent_id
+        if not DaraCore.is_null(request.cluster_id):
+            body['clusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.config_id):
+            body['configId'] = request.config_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateClusterAgentConfig',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/updateClusterAgentConfig',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateClusterAgentConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_cluster_agent_config_with_options_async(
+        self,
+        request: main_models.UpdateClusterAgentConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateClusterAgentConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_id):
+            body['agentId'] = request.agent_id
+        if not DaraCore.is_null(request.cluster_id):
+            body['clusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.config_id):
+            body['configId'] = request.config_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateClusterAgentConfig',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/updateClusterAgentConfig',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateClusterAgentConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_cluster_agent_config(
+        self,
+        request: main_models.UpdateClusterAgentConfigRequest,
+    ) -> main_models.UpdateClusterAgentConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_cluster_agent_config_with_options(request, headers, runtime)
+
+    async def update_cluster_agent_config_async(
+        self,
+        request: main_models.UpdateClusterAgentConfigRequest,
+    ) -> main_models.UpdateClusterAgentConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_cluster_agent_config_with_options_async(request, headers, runtime)
+
     def update_events_attention_with_options(
         self,
         request: main_models.UpdateEventsAttentionRequest,
@@ -7285,11 +8133,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.UpdateEventsAttentionResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.mode):
             body['mode'] = request.mode
@@ -7299,7 +8142,6 @@ class Client(OpenApiClient):
             body['uuid'] = request.uuid
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -7325,11 +8167,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.UpdateEventsAttentionResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.mode):
             body['mode'] = request.mode
@@ -7339,7 +8176,6 @@ class Client(OpenApiClient):
             body['uuid'] = request.uuid
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -7386,16 +8222,12 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.params):
             request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'params', 'json')
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.channel):
             query['channel'] = request.channel
         if not DaraCore.is_null(request.params_shrink):
             query['params'] = request.params_shrink
         if not DaraCore.is_null(request.service_name):
             query['service_name'] = request.service_name
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -7428,16 +8260,12 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.params):
             request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'params', 'json')
         query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
         if not DaraCore.is_null(request.channel):
             query['channel'] = request.channel
         if not DaraCore.is_null(request.params_shrink):
             query['params'] = request.params_shrink
         if not DaraCore.is_null(request.service_name):
             query['service_name'] = request.service_name
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -7474,6 +8302,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_func_switch_record_with_options_async(request, headers, runtime)
 
+    def update_instance_agent_config_with_options(
+        self,
+        request: main_models.UpdateInstanceAgentConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateInstanceAgentConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_id):
+            body['agentId'] = request.agent_id
+        if not DaraCore.is_null(request.config_id):
+            body['configId'] = request.config_id
+        if not DaraCore.is_null(request.instances):
+            body['instances'] = request.instances
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateInstanceAgentConfig',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/updateInstanceAgentConfig',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateInstanceAgentConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_instance_agent_config_with_options_async(
+        self,
+        request: main_models.UpdateInstanceAgentConfigRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateInstanceAgentConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_id):
+            body['agentId'] = request.agent_id
+        if not DaraCore.is_null(request.config_id):
+            body['configId'] = request.config_id
+        if not DaraCore.is_null(request.instances):
+            body['instances'] = request.instances
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateInstanceAgentConfig',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/updateInstanceAgentConfig',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateInstanceAgentConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_instance_agent_config(
+        self,
+        request: main_models.UpdateInstanceAgentConfigRequest,
+    ) -> main_models.UpdateInstanceAgentConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_instance_agent_config_with_options(request, headers, runtime)
+
+    async def update_instance_agent_config_async(
+        self,
+        request: main_models.UpdateInstanceAgentConfigRequest,
+    ) -> main_models.UpdateInstanceAgentConfigResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_instance_agent_config_with_options_async(request, headers, runtime)
+
     def upgrade_agent_with_options(
         self,
         request: main_models.UpgradeAgentRequest,
@@ -7481,11 +8393,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.UpgradeAgentResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.agent_id):
             body['agent_id'] = request.agent_id
@@ -7495,7 +8402,6 @@ class Client(OpenApiClient):
             body['instances'] = request.instances
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -7521,11 +8427,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.UpgradeAgentResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.agent_id):
             body['agent_id'] = request.agent_id
@@ -7535,7 +8436,6 @@ class Client(OpenApiClient):
             body['instances'] = request.instances
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -7577,11 +8477,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.UpgradeAgentForClusterResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.agent_id):
             body['agent_id'] = request.agent_id
@@ -7591,7 +8486,6 @@ class Client(OpenApiClient):
             body['cluster_id'] = request.cluster_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -7617,11 +8511,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.UpgradeAgentForClusterResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.agent_id):
             body['agent_id'] = request.agent_id
@@ -7631,7 +8520,6 @@ class Client(OpenApiClient):
             body['cluster_id'] = request.cluster_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -7673,11 +8561,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.UpgradeAgentWithTypeResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.agent_id):
             body['agentId'] = request.agent_id
@@ -7689,7 +8572,6 @@ class Client(OpenApiClient):
             body['instances'] = request.instances
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -7715,11 +8597,6 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.UpgradeAgentWithTypeResponse:
         request.validate()
-        query = {}
-        if not DaraCore.is_null(request.x_debug_id):
-            query['X-Debug-Id'] = request.x_debug_id
-        if not DaraCore.is_null(request.x_sysom_invoke_source):
-            query['x-sysom-invoke-source'] = request.x_sysom_invoke_source
         body = {}
         if not DaraCore.is_null(request.agent_id):
             body['agentId'] = request.agent_id
@@ -7731,7 +8608,6 @@ class Client(OpenApiClient):
             body['instances'] = request.instances
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(

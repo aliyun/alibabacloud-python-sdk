@@ -21,11 +21,11 @@ class ListInstanceInfoResponseBody(DaraModel):
         self.code = code
         # The returned data.
         self.data = data
-        # The maximum number of entries returned per request.
+        # The maximum number of records returned in a single request.
         self.max_results = max_results
         # The error message.
         # - If `code == Success`, this field is empty.
-        # - Otherwise, this field contains the request error message.
+        # - Otherwise, this field contains the error message of the request.
         self.message = message
         # The pagination token for the next request.
         self.next_token = next_token

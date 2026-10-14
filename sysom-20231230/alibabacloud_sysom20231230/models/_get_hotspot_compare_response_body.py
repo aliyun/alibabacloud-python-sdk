@@ -20,13 +20,13 @@ class GetHotspotCompareResponseBody(DaraModel):
         self.code = code
         # The returned data.
         self.data = data
-        # The response message.
+        # The returned message.
         self.message = message
         # Id of the request
         self.request_id = request_id
         # Indicates whether the API call was successful. Valid values:
-        # - true: The call was successful.
-        # - false: The call failed.
+        # - true: The API call was successful.
+        # - false: The API call failed.
         self.success = success
 
     def validate(self):

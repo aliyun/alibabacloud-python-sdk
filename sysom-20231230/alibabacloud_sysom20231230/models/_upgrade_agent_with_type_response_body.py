@@ -17,11 +17,11 @@ class UpgradeAgentWithTypeResponseBody(DaraModel):
         # - `code == Success` indicates that the authorization is successful.
         # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
         self.code = code
-        # The response data.
+        # The returned data.
         self.data = data
         # The error message.
         # - If `code == Success`, this field is empty.
-        # - Otherwise, this field contains the request error information.
+        # - Otherwise, this field contains the error information of the request.
         self.message = message
         # The request ID, which can be used for end-to-end diagnostics.
         self.request_id = request_id

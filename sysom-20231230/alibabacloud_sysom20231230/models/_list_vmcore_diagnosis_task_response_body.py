@@ -17,14 +17,14 @@ class ListVmcoreDiagnosisTaskResponseBody(DaraModel):
         total: int = None,
     ):
         # The status code.
-        # - `code == Success` indicates that the authorization is successful.
-        # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
+        # - `code == Success`: The authorization is successful.
+        # - Other status codes: The authorization failed. Check the `message` field for the detailed fault information.
         self.code = code
         # The returned data.
         self.data = data
         # The error message.
         # - If `code == Success`, this field is empty.
-        # - Otherwise, this field contains the error message of the request.
+        # - Otherwise, this field contains the request error information.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -92,7 +92,7 @@ class ListVmcoreDiagnosisTaskResponseBodyData(DaraModel):
         task_status: str = None,
         task_type: str = None,
     ):
-        # The task creation time.
+        # The time when the task was created.
         self.created_at = created_at
         # The error message.
         self.error_msg = error_msg

@@ -20,7 +20,7 @@ class GetListRecordResponseBody(DaraModel):
         self.code = code
         # The returned data.
         self.data = data
-        # The description of the status code.
+        # The status code description.
         self.message = message
         # Id of the request
         self.request_id = request_id

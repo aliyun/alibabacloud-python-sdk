@@ -9,7 +9,6 @@ from darabonba.model import DaraModel
 class StartAIAnalysisRequest(DaraModel):
     def __init__(
         self,
-        x_debug_id: str = None,
         analysis_tool: str = None,
         analysis_params: List[str] = None,
         channel: str = None,
@@ -24,22 +23,20 @@ class StartAIAnalysisRequest(DaraModel):
         region: str = None,
         timeout: int = None,
         uid: str = None,
-        x_sysom_invoke_source: str = None,
     ):
-        self.x_debug_id = x_debug_id
-        # The analysis tool. This parameter does not need to be specified when you use OpenAPI.
+        # The analysis tool. This parameter does not need to be specified when you call this operation by using OpenAPI.
         self.analysis_tool = analysis_tool
-        # The data richness level.
+        # The data richness.
         self.analysis_params = analysis_params
         # The channel name.
         self.channel = channel
         # The process name. This parameter is optional.
         self.comms = comms
-        # The creator. This parameter does not need to be specified when you use OpenAPI.
+        # The creator. This parameter does not need to be specified when you call this operation by using OpenAPI.
         self.created_by = created_by
         # The instance ID.
         self.instance = instance
-        # The instance type. This parameter does not need to be specified when you use OpenAPI.
+        # The instance type. This parameter does not need to be specified when you call this operation by using OpenAPI.
         self.instance_type = instance_type
         # The iteration entry function. This parameter is required only in iteration mode and can be left empty.
         self.iteration_func = iteration_func
@@ -47,15 +44,16 @@ class StartAIAnalysisRequest(DaraModel):
         self.iteration_mod = iteration_mod
         # The iteration range. The iteration count refers to the number of iterations when the data collection module is activated, which is independent of the AI job iteration count.
         self.iteration_range = iteration_range
-        # The process IDs (PIDs) of the AI job. Multiple PIDs are supported, separated by commas.
+        # The process IDs (PIDs) of the AI job. Multiple PIDs are supported and separated by commas (,).
         self.pids = pids
         # The region ID.
         self.region = region
-        # The AI Infra analysis duration. Unit: milliseconds. Default value: 2000.
+        # The AI Infra analysis duration.
+        # Unit: milliseconds.
+        # Default value: 2000.
         self.timeout = timeout
-        # The Alibaba Cloud user ID. This parameter does not need to be specified when you use OpenAPI.
+        # The Alibaba Cloud account ID. This parameter does not need to be specified when you call this operation by using OpenAPI.
         self.uid = uid
-        self.x_sysom_invoke_source = x_sysom_invoke_source
 
     def validate(self):
         pass
@@ -65,9 +63,6 @@ class StartAIAnalysisRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.x_debug_id is not None:
-            result['X-Debug-Id'] = self.x_debug_id
-
         if self.analysis_tool is not None:
             result['analysisTool'] = self.analysis_tool
 
@@ -110,16 +105,10 @@ class StartAIAnalysisRequest(DaraModel):
         if self.uid is not None:
             result['uid'] = self.uid
 
-        if self.x_sysom_invoke_source is not None:
-            result['x-sysom-invoke-source'] = self.x_sysom_invoke_source
-
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('X-Debug-Id') is not None:
-            self.x_debug_id = m.get('X-Debug-Id')
-
         if m.get('analysisTool') is not None:
             self.analysis_tool = m.get('analysisTool')
 
@@ -161,9 +150,6 @@ class StartAIAnalysisRequest(DaraModel):
 
         if m.get('uid') is not None:
             self.uid = m.get('uid')
-
-        if m.get('x-sysom-invoke-source') is not None:
-            self.x_sysom_invoke_source = m.get('x-sysom-invoke-source')
 
         return self
 

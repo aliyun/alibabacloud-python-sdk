@@ -19,7 +19,7 @@ class GetAgentTaskResponseBody(DaraModel):
         self.request_id = request_id
         # The status code.
         # - `code == Success` indicates that the authorization is successful.
-        # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
+        # - Other status codes indicate that the authorization failed. If the authorization fails, check the `message` field for the detailed fault information.
         self.code = code
         # The returned data.
         self.data = data
@@ -133,10 +133,10 @@ class GetAgentTaskResponseBodyDataJobs(DaraModel):
         result: str = None,
         status: str = None,
     ):
-        # The reason that caused the task to fail. This field is returned only when the task execution fails.
+        # If the task fails, this field contains the cause of the failure.
         self.error = error
-        # The error code of the subtask failure. Valid values:
-        # * Empty: The task is executed normally.
+        # The error code for the subtask failure. Valid values:
+        # * Empty: The task is running normally.
         # * INSTANCE_NOT_SUPPORTED: The instance type is not supported.
         # * INSTANCE_NOT_EXISTS: The instance does not exist.
         # * INSTANCE_RELEASED: The instance has been released.
@@ -145,18 +145,18 @@ class GetAgentTaskResponseBodyDataJobs(DaraModel):
         # * AGENT_ALREADY_INSTALLED: The Agent is already installed.
         # * AGENT_NOT_INSTALLED: The Agent is not installed.
         # * AGENT_SAME_VERSION: The version is the same.
-        # * HAS_RUNNING_JOB: A running task exists.
+        # * HAS_RUNNING_JOB: A running task already exists.
         # * RPM_LOCK_HELD: The RPM lock is held.
-        # * DISK_SPACE_INSUFFICIENT: The disk space is insufficient.
+        # * DISK_SPACE_INSUFFICIENT: Insufficient disk space.
         # * NODE_LOAD_HIGH: The node load is high.
-        # * COMMAND_FAILED: The command execution failed.
+        # * COMMAND_FAILED: Command execution failed.
         # * CLIENT_NOT_RUNNING: The Cloud Assistant Agent is not running.
         # * CLIENT_NOT_RESPONSE: The Cloud Assistant Agent is not responding.
-        # * DELIVERY_TIMEOUT: The command delivery timed out.
-        # * EXECUTION_TIMEOUT: The command execution timed out.
-        # * TASK_CONCURRENCY_LIMIT: The task concurrency limit is reached.
+        # * DELIVERY_TIMEOUT: Command delivery timed out.
+        # * EXECUTION_TIMEOUT: Command execution timed out.
+        # * TASK_CONCURRENCY_LIMIT: The task concurrency limit has been reached.
         self.error_code = error_code
-        # The detailed description of the subtask failure. Valid values:
+        # The detailed description of the subtask failure cause. Valid values:
         # * The instance type is not supported.
         # * The instance does not exist.
         # * The instance has been released.
@@ -167,14 +167,14 @@ class GetAgentTaskResponseBodyDataJobs(DaraModel):
         # * The Agent version is the same. No upgrade is required.
         # * A running task exists. Try again later.
         # * The RPM lock is held. Try again later.
-        # * The disk space is insufficient.
+        # * Insufficient disk space.
         # * The node load is too high. Try again later.
-        # * The command execution failed. Try again later.
+        # * Command execution failed. Try again later.
         # * The Cloud Assistant Agent is not running.
         # * The Cloud Assistant Agent is not responding.
-        # * The command delivery timed out.
-        # * The command execution timed out.
-        # * The task concurrency limit is reached.
+        # * Command delivery timed out.
+        # * Command execution timed out.
+        # * The task concurrency limit has been reached.
         self.error_message = error_message
         # The instance ID.
         self.instance = instance
@@ -185,10 +185,10 @@ class GetAgentTaskResponseBodyDataJobs(DaraModel):
         # The subtask execution result.
         self.result = result
         # The subtask status. Valid values:
-        # - Created: The subtask is created.
-        # - Running: The subtask is running.
-        # - Success: The subtask succeeded.
-        # - Fail: The subtask failed.
+        # - Created: Created.
+        # - Running: Running.
+        # - Success: The task succeeded.
+        # - Fail: The task failed.
         self.status = status
 
     def validate(self):

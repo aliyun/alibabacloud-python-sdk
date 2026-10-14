@@ -7,7 +7,6 @@ from darabonba.model import DaraModel
 class ListAgentInstallRecordsRequest(DaraModel):
     def __init__(
         self,
-        x_debug_id: str = None,
         current: int = None,
         instance_id: str = None,
         page_size: int = None,
@@ -15,24 +14,21 @@ class ListAgentInstallRecordsRequest(DaraModel):
         plugin_version: str = None,
         region: str = None,
         status: str = None,
-        x_sysom_invoke_source: str = None,
     ):
-        self.x_debug_id = x_debug_id
         # The current page number. Pages start from page 1.
         self.current = current
-        # Specifies the instance ID. If this parameter is specified, only the Agent installation records for the specified instance are returned.
+        # The instance ID. If you specify this parameter, only the Agent installation records for the specified instance are returned.
         self.instance_id = instance_id
         # The number of entries per page.
         self.page_size = page_size
-        # Specifies the Agent ID. If this parameter is specified, only the installation records for the specified Agent are returned. You can use this parameter together with the plugin_version parameter.
+        # The Agent ID. If you specify this parameter, only the installation records for the specified Agent are returned. You can use this parameter together with the plugin_version parameter.
         self.plugin_id = plugin_id
-        # Specifies the Agent version. This parameter cannot be used alone and must be used together with the plugin_id parameter to filter the installation records for a specific version of the specified Agent.
+        # The Agent version. This parameter cannot be used alone. Use it together with the plugin_id parameter to filter the installation records for a specific version of the specified Agent.
         self.plugin_version = plugin_version
         # The region ID.
         self.region = region
-        # Filters component installation records by status.
+        # The status used to filter component installation records.
         self.status = status
-        self.x_sysom_invoke_source = x_sysom_invoke_source
 
     def validate(self):
         pass
@@ -42,9 +38,6 @@ class ListAgentInstallRecordsRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.x_debug_id is not None:
-            result['X-Debug-Id'] = self.x_debug_id
-
         if self.current is not None:
             result['current'] = self.current
 
@@ -66,16 +59,10 @@ class ListAgentInstallRecordsRequest(DaraModel):
         if self.status is not None:
             result['status'] = self.status
 
-        if self.x_sysom_invoke_source is not None:
-            result['x-sysom-invoke-source'] = self.x_sysom_invoke_source
-
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('X-Debug-Id') is not None:
-            self.x_debug_id = m.get('X-Debug-Id')
-
         if m.get('current') is not None:
             self.current = m.get('current')
 
@@ -96,9 +83,6 @@ class ListAgentInstallRecordsRequest(DaraModel):
 
         if m.get('status') is not None:
             self.status = m.get('status')
-
-        if m.get('x-sysom-invoke-source') is not None:
-            self.x_sysom_invoke_source = m.get('x-sysom-invoke-source')
 
         return self
 

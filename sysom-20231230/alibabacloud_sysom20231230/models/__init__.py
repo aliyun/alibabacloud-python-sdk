@@ -5,12 +5,18 @@ from __future__ import annotations
 from ._auth_diagnosis_request import AuthDiagnosisRequest
 from ._auth_diagnosis_response_body import AuthDiagnosisResponseBody
 from ._auth_diagnosis_response import AuthDiagnosisResponse
+from ._check_agent_config_supported_request import CheckAgentConfigSupportedRequest
+from ._check_agent_config_supported_response_body import CheckAgentConfigSupportedResponseBody
+from ._check_agent_config_supported_response import CheckAgentConfigSupportedResponse
 from ._check_instance_support_request import CheckInstanceSupportRequest
 from ._check_instance_support_response_body import CheckInstanceSupportResponseBody
 from ._check_instance_support_response import CheckInstanceSupportResponse
 from ._cpu_high_agent_stream_response_request import CpuHighAgentStreamResponseRequest
 from ._cpu_high_agent_stream_response_response_body import CpuHighAgentStreamResponseResponseBody
 from ._cpu_high_agent_stream_response_response import CpuHighAgentStreamResponseResponse
+from ._create_agent_config_request import CreateAgentConfigRequest
+from ._create_agent_config_response_body import CreateAgentConfigResponseBody
+from ._create_agent_config_response import CreateAgentConfigResponse
 from ._create_alert_destination_request import CreateAlertDestinationRequest
 from ._create_alert_destination_response_body import CreateAlertDestinationResponseBody
 from ._create_alert_destination_response import CreateAlertDestinationResponse
@@ -26,6 +32,9 @@ from ._create_instance_inspection_response import CreateInstanceInspectionRespon
 from ._create_vmcore_diagnosis_task_request import CreateVmcoreDiagnosisTaskRequest
 from ._create_vmcore_diagnosis_task_response_body import CreateVmcoreDiagnosisTaskResponseBody
 from ._create_vmcore_diagnosis_task_response import CreateVmcoreDiagnosisTaskResponse
+from ._delete_agent_config_request import DeleteAgentConfigRequest
+from ._delete_agent_config_response_body import DeleteAgentConfigResponseBody
+from ._delete_agent_config_response import DeleteAgentConfigResponse
 from ._delete_alert_destination_request import DeleteAlertDestinationRequest
 from ._delete_alert_destination_response_body import DeleteAlertDestinationResponseBody
 from ._delete_alert_destination_response import DeleteAlertDestinationResponse
@@ -50,9 +59,18 @@ from ._get_abnormal_events_count_response import GetAbnormalEventsCountResponse
 from ._get_agent_request import GetAgentRequest
 from ._get_agent_response_body import GetAgentResponseBody
 from ._get_agent_response import GetAgentResponse
+from ._get_agent_config_request import GetAgentConfigRequest
+from ._get_agent_config_response_body import GetAgentConfigResponseBody
+from ._get_agent_config_response import GetAgentConfigResponse
 from ._get_agent_task_request import GetAgentTaskRequest
 from ._get_agent_task_response_body import GetAgentTaskResponseBody
 from ._get_agent_task_response import GetAgentTaskResponse
+from ._get_aifg_result_request import GetAifgResultRequest
+from ._get_aifg_result_response_body import GetAifgResultResponseBody
+from ._get_aifg_result_response import GetAifgResultResponse
+from ._get_aifg_url_request import GetAifgUrlRequest
+from ._get_aifg_url_response_body import GetAifgUrlResponseBody
+from ._get_aifg_url_response import GetAifgUrlResponse
 from ._get_alert_destination_request import GetAlertDestinationRequest
 from ._get_alert_destination_response_body import GetAlertDestinationResponseBody
 from ._get_alert_destination_response import GetAlertDestinationResponse
@@ -68,6 +86,15 @@ from ._get_copilot_history_response import GetCopilotHistoryResponse
 from ._get_diagnosis_result_request import GetDiagnosisResultRequest
 from ._get_diagnosis_result_response_body import GetDiagnosisResultResponseBody
 from ._get_diagnosis_result_response import GetDiagnosisResultResponse
+from ._get_gpu_cluster_args_options_request import GetGpuClusterArgsOptionsRequest
+from ._get_gpu_cluster_args_options_response_body import GetGpuClusterArgsOptionsResponseBody
+from ._get_gpu_cluster_args_options_response import GetGpuClusterArgsOptionsResponse
+from ._get_gpu_cluster_list_alarm_record_request import GetGpuClusterListAlarmRecordRequest
+from ._get_gpu_cluster_list_alarm_record_response_body import GetGpuClusterListAlarmRecordResponseBody
+from ._get_gpu_cluster_list_alarm_record_response import GetGpuClusterListAlarmRecordResponse
+from ._get_gpu_cluster_topology_request import GetGpuClusterTopologyRequest
+from ._get_gpu_cluster_topology_response_body import GetGpuClusterTopologyResponseBody
+from ._get_gpu_cluster_topology_response import GetGpuClusterTopologyResponse
 from ._get_health_percentage_request import GetHealthPercentageRequest
 from ._get_health_percentage_response_body import GetHealthPercentageResponseBody
 from ._get_health_percentage_response import GetHealthPercentageResponse
@@ -77,6 +104,9 @@ from ._get_host_count_response import GetHostCountResponse
 from ._get_hot_spot_uniq_list_request import GetHotSpotUniqListRequest
 from ._get_hot_spot_uniq_list_response_body import GetHotSpotUniqListResponseBody
 from ._get_hot_spot_uniq_list_response import GetHotSpotUniqListResponse
+from ._get_hotfix_task_request import GetHotfixTaskRequest
+from ._get_hotfix_task_response_body import GetHotfixTaskResponseBody
+from ._get_hotfix_task_response import GetHotfixTaskResponse
 from ._get_hotspot_analysis_request import GetHotspotAnalysisRequest
 from ._get_hotspot_analysis_response_body import GetHotspotAnalysisResponseBody
 from ._get_hotspot_analysis_response import GetHotspotAnalysisResponse
@@ -98,6 +128,9 @@ from ._get_inspection_report_response import GetInspectionReportResponse
 from ._get_instant_score_request import GetInstantScoreRequest
 from ._get_instant_score_response_body import GetInstantScoreResponseBody
 from ._get_instant_score_response import GetInstantScoreResponse
+from ._get_list_gpu_cluster_request import GetListGpuClusterRequest
+from ._get_list_gpu_cluster_response_body import GetListGpuClusterResponseBody
+from ._get_list_gpu_cluster_response import GetListGpuClusterResponse
 from ._get_list_record_request import GetListRecordRequest
 from ._get_list_record_response_body import GetListRecordResponseBody
 from ._get_list_record_response import GetListRecordResponse
@@ -129,6 +162,9 @@ from ._install_agent_for_cluster_response import InstallAgentForClusterResponse
 from ._install_agent_with_type_request import InstallAgentWithTypeRequest
 from ._install_agent_with_type_response_body import InstallAgentWithTypeResponseBody
 from ._install_agent_with_type_response import InstallAgentWithTypeResponse
+from ._install_hotfix_request import InstallHotfixRequest
+from ._install_hotfix_response_body import InstallHotfixResponseBody
+from ._install_hotfix_response import InstallHotfixResponse
 from ._invoke_anomaly_diagnosis_request import InvokeAnomalyDiagnosisRequest
 from ._invoke_anomaly_diagnosis_response_body import InvokeAnomalyDiagnosisResponseBody
 from ._invoke_anomaly_diagnosis_response import InvokeAnomalyDiagnosisResponse
@@ -144,6 +180,9 @@ from ._list_agent_install_records_response import ListAgentInstallRecordsRespons
 from ._list_agents_request import ListAgentsRequest
 from ._list_agents_response_body import ListAgentsResponseBody
 from ._list_agents_response import ListAgentsResponse
+from ._list_aifg_jobs_request import ListAifgJobsRequest
+from ._list_aifg_jobs_response_body import ListAifgJobsResponseBody
+from ._list_aifg_jobs_response import ListAifgJobsResponse
 from ._list_alert_destinations_request import ListAlertDestinationsRequest
 from ._list_alert_destinations_response_body import ListAlertDestinationsResponseBody
 from ._list_alert_destinations_response import ListAlertDestinationsResponse
@@ -194,12 +233,18 @@ from ._list_regions_response import ListRegionsResponse
 from ._list_vmcore_diagnosis_task_request import ListVmcoreDiagnosisTaskRequest
 from ._list_vmcore_diagnosis_task_response_body import ListVmcoreDiagnosisTaskResponseBody
 from ._list_vmcore_diagnosis_task_response import ListVmcoreDiagnosisTaskResponse
+from ._query_hotfix_status_request import QueryHotfixStatusRequest
+from ._query_hotfix_status_response_body import QueryHotfixStatusResponseBody
+from ._query_hotfix_status_response import QueryHotfixStatusResponse
 from ._start_aianalysis_request import StartAIAnalysisRequest
 from ._start_aianalysis_response_body import StartAIAnalysisResponseBody
 from ._start_aianalysis_response import StartAIAnalysisResponse
 from ._start_aidiff_analysis_request import StartAIDiffAnalysisRequest
 from ._start_aidiff_analysis_response_body import StartAIDiffAnalysisResponseBody
 from ._start_aidiff_analysis_response import StartAIDiffAnalysisResponse
+from ._start_aifg_analysis_request import StartAifgAnalysisRequest
+from ._start_aifg_analysis_response_body import StartAifgAnalysisResponseBody
+from ._start_aifg_analysis_response import StartAifgAnalysisResponse
 from ._uninstall_agent_request import UninstallAgentRequest
 from ._uninstall_agent_response_body import UninstallAgentResponseBody
 from ._uninstall_agent_response import UninstallAgentResponse
@@ -209,6 +254,12 @@ from ._uninstall_agent_for_cluster_response import UninstallAgentForClusterRespo
 from ._uninstall_agent_with_type_request import UninstallAgentWithTypeRequest
 from ._uninstall_agent_with_type_response_body import UninstallAgentWithTypeResponseBody
 from ._uninstall_agent_with_type_response import UninstallAgentWithTypeResponse
+from ._uninstall_hotfix_request import UninstallHotfixRequest
+from ._uninstall_hotfix_response_body import UninstallHotfixResponseBody
+from ._uninstall_hotfix_response import UninstallHotfixResponse
+from ._update_agent_config_request import UpdateAgentConfigRequest
+from ._update_agent_config_response_body import UpdateAgentConfigResponseBody
+from ._update_agent_config_response import UpdateAgentConfigResponse
 from ._update_alert_destination_request import UpdateAlertDestinationRequest
 from ._update_alert_destination_response_body import UpdateAlertDestinationResponseBody
 from ._update_alert_destination_response import UpdateAlertDestinationResponse
@@ -218,6 +269,9 @@ from ._update_alert_enabled_response import UpdateAlertEnabledResponse
 from ._update_alert_strategy_request import UpdateAlertStrategyRequest
 from ._update_alert_strategy_response_body import UpdateAlertStrategyResponseBody
 from ._update_alert_strategy_response import UpdateAlertStrategyResponse
+from ._update_cluster_agent_config_request import UpdateClusterAgentConfigRequest
+from ._update_cluster_agent_config_response_body import UpdateClusterAgentConfigResponseBody
+from ._update_cluster_agent_config_response import UpdateClusterAgentConfigResponse
 from ._update_events_attention_request import UpdateEventsAttentionRequest
 from ._update_events_attention_response_body import UpdateEventsAttentionResponseBody
 from ._update_events_attention_response import UpdateEventsAttentionResponse
@@ -225,6 +279,9 @@ from ._update_func_switch_record_request import UpdateFuncSwitchRecordRequest
 from ._update_func_switch_record_shrink_request import UpdateFuncSwitchRecordShrinkRequest
 from ._update_func_switch_record_response_body import UpdateFuncSwitchRecordResponseBody
 from ._update_func_switch_record_response import UpdateFuncSwitchRecordResponse
+from ._update_instance_agent_config_request import UpdateInstanceAgentConfigRequest
+from ._update_instance_agent_config_response_body import UpdateInstanceAgentConfigResponseBody
+from ._update_instance_agent_config_response import UpdateInstanceAgentConfigResponse
 from ._upgrade_agent_request import UpgradeAgentRequest
 from ._upgrade_agent_response_body import UpgradeAgentResponseBody
 from ._upgrade_agent_response import UpgradeAgentResponse
@@ -235,27 +292,39 @@ from ._upgrade_agent_with_type_request import UpgradeAgentWithTypeRequest
 from ._upgrade_agent_with_type_response_body import UpgradeAgentWithTypeResponseBody
 from ._upgrade_agent_with_type_response import UpgradeAgentWithTypeResponse
 from ._auth_diagnosis_request import AuthDiagnosisRequestInstances
+from ._check_agent_config_supported_response_body import CheckAgentConfigSupportedResponseBodyData
 from ._check_instance_support_response_body import CheckInstanceSupportResponseBodyData
+from ._create_agent_config_response_body import CreateAgentConfigResponseBodyData
 from ._create_alert_destination_request import CreateAlertDestinationRequestParams
 from ._create_alert_destination_response_body import CreateAlertDestinationResponseBodyDataParams
 from ._create_alert_destination_response_body import CreateAlertDestinationResponseBodyData
 from ._create_alert_strategy_request import CreateAlertStrategyRequestStrategy
 from ._create_cluster_vpc_endpoint_connection_response_body import CreateClusterVpcEndpointConnectionResponseBodyData
 from ._create_vmcore_diagnosis_task_response_body import CreateVmcoreDiagnosisTaskResponseBodyData
+from ._delete_agent_config_response_body import DeleteAgentConfigResponseBodyData
 from ._describe_metric_list_response_body import DescribeMetricListResponseBodyData
 from ._get_abnormal_events_count_response_body import GetAbnormalEventsCountResponseBodyData
 from ._get_agent_response_body import GetAgentResponseBodyDataVersions
 from ._get_agent_response_body import GetAgentResponseBodyData
+from ._get_agent_config_response_body import GetAgentConfigResponseBodyDataResource
+from ._get_agent_config_response_body import GetAgentConfigResponseBodyData
 from ._get_agent_task_response_body import GetAgentTaskResponseBodyDataJobs
 from ._get_agent_task_response_body import GetAgentTaskResponseBodyData
+from ._get_aifg_result_response_body import GetAifgResultResponseBodyData
+from ._get_aifg_url_response_body import GetAifgUrlResponseBodyData
 from ._get_alert_destination_response_body import GetAlertDestinationResponseBodyData
 from ._get_alert_strategy_response_body import GetAlertStrategyResponseBodyDataStrategy
 from ._get_alert_strategy_response_body import GetAlertStrategyResponseBodyData
 from ._get_copilot_history_response_body import GetCopilotHistoryResponseBodyData
 from ._get_diagnosis_result_response_body import GetDiagnosisResultResponseBodyData
+from ._get_gpu_cluster_list_alarm_record_response_body import GetGpuClusterListAlarmRecordResponseBodyData
+from ._get_gpu_cluster_topology_response_body import GetGpuClusterTopologyResponseBodyDataData
+from ._get_gpu_cluster_topology_response_body import GetGpuClusterTopologyResponseBodyData
 from ._get_health_percentage_response_body import GetHealthPercentageResponseBodyData
 from ._get_host_count_response_body import GetHostCountResponseBodyData
 from ._get_hot_spot_uniq_list_response_body import GetHotSpotUniqListResponseBodyData
+from ._get_hotfix_task_response_body import GetHotfixTaskResponseBodyDataJobs
+from ._get_hotfix_task_response_body import GetHotfixTaskResponseBodyData
 from ._get_hotspot_compare_response_body import GetHotspotCompareResponseBodyDataFlame
 from ._get_hotspot_compare_response_body import GetHotspotCompareResponseBodyDataSeriesInstance1
 from ._get_hotspot_compare_response_body import GetHotspotCompareResponseBodyDataSeriesInstance2
@@ -282,6 +351,8 @@ from ._install_agent_for_cluster_response_body import InstallAgentForClusterResp
 from ._install_agent_with_type_request import InstallAgentWithTypeRequestTag
 from ._install_agent_with_type_request import InstallAgentWithTypeRequestInstances
 from ._install_agent_with_type_response_body import InstallAgentWithTypeResponseBodyData
+from ._install_hotfix_request import InstallHotfixRequestInstances
+from ._install_hotfix_response_body import InstallHotfixResponseBodyData
 from ._invoke_diagnosis_response_body import InvokeDiagnosisResponseBodyData
 from ._list_abnormaly_events_response_body import ListAbnormalyEventsResponseBodyDataOptsResult
 from ._list_abnormaly_events_response_body import ListAbnormalyEventsResponseBodyDataOpts
@@ -290,6 +361,7 @@ from ._list_abnormaly_events_response_body import ListAbnormalyEventsResponseBod
 from ._list_agent_install_records_response_body import ListAgentInstallRecordsResponseBodyData
 from ._list_agents_response_body import ListAgentsResponseBodyDataVersions
 from ._list_agents_response_body import ListAgentsResponseBodyData
+from ._list_aifg_jobs_response_body import ListAifgJobsResponseBodyData
 from ._list_alert_strategies_response_body import ListAlertStrategiesResponseBodyDataStrategy
 from ._list_alert_strategies_response_body import ListAlertStrategiesResponseBodyData
 from ._list_all_instances_response_body import ListAllInstancesResponseBodyDataAttributes
@@ -309,20 +381,29 @@ from ._list_plugins_instances_response_body import ListPluginsInstancesResponseB
 from ._list_plugins_instances_response_body import ListPluginsInstancesResponseBodyData
 from ._list_pods_of_instance_response_body import ListPodsOfInstanceResponseBodyData
 from ._list_vmcore_diagnosis_task_response_body import ListVmcoreDiagnosisTaskResponseBodyData
+from ._query_hotfix_status_request import QueryHotfixStatusRequestInstances
+from ._query_hotfix_status_response_body import QueryHotfixStatusResponseBodyData
 from ._start_aianalysis_response_body import StartAIAnalysisResponseBodyData
 from ._start_aidiff_analysis_request import StartAIDiffAnalysisRequestTask1
 from ._start_aidiff_analysis_request import StartAIDiffAnalysisRequestTask2
+from ._start_aifg_analysis_response_body import StartAifgAnalysisResponseBodyData
 from ._uninstall_agent_request import UninstallAgentRequestInstances
 from ._uninstall_agent_response_body import UninstallAgentResponseBodyData
 from ._uninstall_agent_for_cluster_response_body import UninstallAgentForClusterResponseBodyData
 from ._uninstall_agent_with_type_request import UninstallAgentWithTypeRequestInstances
 from ._uninstall_agent_with_type_response_body import UninstallAgentWithTypeResponseBodyData
+from ._uninstall_hotfix_request import UninstallHotfixRequestInstances
+from ._uninstall_hotfix_response_body import UninstallHotfixResponseBodyData
+from ._update_agent_config_response_body import UpdateAgentConfigResponseBodyData
 from ._update_alert_destination_request import UpdateAlertDestinationRequestParams
 from ._update_alert_strategy_request import UpdateAlertStrategyRequestStrategy
+from ._update_cluster_agent_config_response_body import UpdateClusterAgentConfigResponseBodyData
 from ._update_events_attention_response_body import UpdateEventsAttentionResponseBodyData
 from ._update_func_switch_record_request import UpdateFuncSwitchRecordRequestParamsArgs
 from ._update_func_switch_record_request import UpdateFuncSwitchRecordRequestParams
 from ._update_func_switch_record_response_body import UpdateFuncSwitchRecordResponseBodyData
+from ._update_instance_agent_config_request import UpdateInstanceAgentConfigRequestInstances
+from ._update_instance_agent_config_response_body import UpdateInstanceAgentConfigResponseBodyData
 from ._upgrade_agent_request import UpgradeAgentRequestInstances
 from ._upgrade_agent_response_body import UpgradeAgentResponseBodyData
 from ._upgrade_agent_for_cluster_response_body import UpgradeAgentForClusterResponseBodyData
@@ -333,12 +414,18 @@ __all__ = [
     AuthDiagnosisRequest,
     AuthDiagnosisResponseBody,
     AuthDiagnosisResponse,
+    CheckAgentConfigSupportedRequest,
+    CheckAgentConfigSupportedResponseBody,
+    CheckAgentConfigSupportedResponse,
     CheckInstanceSupportRequest,
     CheckInstanceSupportResponseBody,
     CheckInstanceSupportResponse,
     CpuHighAgentStreamResponseRequest,
     CpuHighAgentStreamResponseResponseBody,
     CpuHighAgentStreamResponseResponse,
+    CreateAgentConfigRequest,
+    CreateAgentConfigResponseBody,
+    CreateAgentConfigResponse,
     CreateAlertDestinationRequest,
     CreateAlertDestinationResponseBody,
     CreateAlertDestinationResponse,
@@ -354,6 +441,9 @@ __all__ = [
     CreateVmcoreDiagnosisTaskRequest,
     CreateVmcoreDiagnosisTaskResponseBody,
     CreateVmcoreDiagnosisTaskResponse,
+    DeleteAgentConfigRequest,
+    DeleteAgentConfigResponseBody,
+    DeleteAgentConfigResponse,
     DeleteAlertDestinationRequest,
     DeleteAlertDestinationResponseBody,
     DeleteAlertDestinationResponse,
@@ -378,9 +468,18 @@ __all__ = [
     GetAgentRequest,
     GetAgentResponseBody,
     GetAgentResponse,
+    GetAgentConfigRequest,
+    GetAgentConfigResponseBody,
+    GetAgentConfigResponse,
     GetAgentTaskRequest,
     GetAgentTaskResponseBody,
     GetAgentTaskResponse,
+    GetAifgResultRequest,
+    GetAifgResultResponseBody,
+    GetAifgResultResponse,
+    GetAifgUrlRequest,
+    GetAifgUrlResponseBody,
+    GetAifgUrlResponse,
     GetAlertDestinationRequest,
     GetAlertDestinationResponseBody,
     GetAlertDestinationResponse,
@@ -396,6 +495,15 @@ __all__ = [
     GetDiagnosisResultRequest,
     GetDiagnosisResultResponseBody,
     GetDiagnosisResultResponse,
+    GetGpuClusterArgsOptionsRequest,
+    GetGpuClusterArgsOptionsResponseBody,
+    GetGpuClusterArgsOptionsResponse,
+    GetGpuClusterListAlarmRecordRequest,
+    GetGpuClusterListAlarmRecordResponseBody,
+    GetGpuClusterListAlarmRecordResponse,
+    GetGpuClusterTopologyRequest,
+    GetGpuClusterTopologyResponseBody,
+    GetGpuClusterTopologyResponse,
     GetHealthPercentageRequest,
     GetHealthPercentageResponseBody,
     GetHealthPercentageResponse,
@@ -405,6 +513,9 @@ __all__ = [
     GetHotSpotUniqListRequest,
     GetHotSpotUniqListResponseBody,
     GetHotSpotUniqListResponse,
+    GetHotfixTaskRequest,
+    GetHotfixTaskResponseBody,
+    GetHotfixTaskResponse,
     GetHotspotAnalysisRequest,
     GetHotspotAnalysisResponseBody,
     GetHotspotAnalysisResponse,
@@ -426,6 +537,9 @@ __all__ = [
     GetInstantScoreRequest,
     GetInstantScoreResponseBody,
     GetInstantScoreResponse,
+    GetListGpuClusterRequest,
+    GetListGpuClusterResponseBody,
+    GetListGpuClusterResponse,
     GetListRecordRequest,
     GetListRecordResponseBody,
     GetListRecordResponse,
@@ -457,6 +571,9 @@ __all__ = [
     InstallAgentWithTypeRequest,
     InstallAgentWithTypeResponseBody,
     InstallAgentWithTypeResponse,
+    InstallHotfixRequest,
+    InstallHotfixResponseBody,
+    InstallHotfixResponse,
     InvokeAnomalyDiagnosisRequest,
     InvokeAnomalyDiagnosisResponseBody,
     InvokeAnomalyDiagnosisResponse,
@@ -472,6 +589,9 @@ __all__ = [
     ListAgentsRequest,
     ListAgentsResponseBody,
     ListAgentsResponse,
+    ListAifgJobsRequest,
+    ListAifgJobsResponseBody,
+    ListAifgJobsResponse,
     ListAlertDestinationsRequest,
     ListAlertDestinationsResponseBody,
     ListAlertDestinationsResponse,
@@ -522,12 +642,18 @@ __all__ = [
     ListVmcoreDiagnosisTaskRequest,
     ListVmcoreDiagnosisTaskResponseBody,
     ListVmcoreDiagnosisTaskResponse,
+    QueryHotfixStatusRequest,
+    QueryHotfixStatusResponseBody,
+    QueryHotfixStatusResponse,
     StartAIAnalysisRequest,
     StartAIAnalysisResponseBody,
     StartAIAnalysisResponse,
     StartAIDiffAnalysisRequest,
     StartAIDiffAnalysisResponseBody,
     StartAIDiffAnalysisResponse,
+    StartAifgAnalysisRequest,
+    StartAifgAnalysisResponseBody,
+    StartAifgAnalysisResponse,
     UninstallAgentRequest,
     UninstallAgentResponseBody,
     UninstallAgentResponse,
@@ -537,6 +663,12 @@ __all__ = [
     UninstallAgentWithTypeRequest,
     UninstallAgentWithTypeResponseBody,
     UninstallAgentWithTypeResponse,
+    UninstallHotfixRequest,
+    UninstallHotfixResponseBody,
+    UninstallHotfixResponse,
+    UpdateAgentConfigRequest,
+    UpdateAgentConfigResponseBody,
+    UpdateAgentConfigResponse,
     UpdateAlertDestinationRequest,
     UpdateAlertDestinationResponseBody,
     UpdateAlertDestinationResponse,
@@ -546,6 +678,9 @@ __all__ = [
     UpdateAlertStrategyRequest,
     UpdateAlertStrategyResponseBody,
     UpdateAlertStrategyResponse,
+    UpdateClusterAgentConfigRequest,
+    UpdateClusterAgentConfigResponseBody,
+    UpdateClusterAgentConfigResponse,
     UpdateEventsAttentionRequest,
     UpdateEventsAttentionResponseBody,
     UpdateEventsAttentionResponse,
@@ -553,6 +688,9 @@ __all__ = [
     UpdateFuncSwitchRecordShrinkRequest,
     UpdateFuncSwitchRecordResponseBody,
     UpdateFuncSwitchRecordResponse,
+    UpdateInstanceAgentConfigRequest,
+    UpdateInstanceAgentConfigResponseBody,
+    UpdateInstanceAgentConfigResponse,
     UpgradeAgentRequest,
     UpgradeAgentResponseBody,
     UpgradeAgentResponse,
@@ -563,27 +701,39 @@ __all__ = [
     UpgradeAgentWithTypeResponseBody,
     UpgradeAgentWithTypeResponse,
     AuthDiagnosisRequestInstances,
+    CheckAgentConfigSupportedResponseBodyData,
     CheckInstanceSupportResponseBodyData,
+    CreateAgentConfigResponseBodyData,
     CreateAlertDestinationRequestParams,
     CreateAlertDestinationResponseBodyDataParams,
     CreateAlertDestinationResponseBodyData,
     CreateAlertStrategyRequestStrategy,
     CreateClusterVpcEndpointConnectionResponseBodyData,
     CreateVmcoreDiagnosisTaskResponseBodyData,
+    DeleteAgentConfigResponseBodyData,
     DescribeMetricListResponseBodyData,
     GetAbnormalEventsCountResponseBodyData,
     GetAgentResponseBodyDataVersions,
     GetAgentResponseBodyData,
+    GetAgentConfigResponseBodyDataResource,
+    GetAgentConfigResponseBodyData,
     GetAgentTaskResponseBodyDataJobs,
     GetAgentTaskResponseBodyData,
+    GetAifgResultResponseBodyData,
+    GetAifgUrlResponseBodyData,
     GetAlertDestinationResponseBodyData,
     GetAlertStrategyResponseBodyDataStrategy,
     GetAlertStrategyResponseBodyData,
     GetCopilotHistoryResponseBodyData,
     GetDiagnosisResultResponseBodyData,
+    GetGpuClusterListAlarmRecordResponseBodyData,
+    GetGpuClusterTopologyResponseBodyDataData,
+    GetGpuClusterTopologyResponseBodyData,
     GetHealthPercentageResponseBodyData,
     GetHostCountResponseBodyData,
     GetHotSpotUniqListResponseBodyData,
+    GetHotfixTaskResponseBodyDataJobs,
+    GetHotfixTaskResponseBodyData,
     GetHotspotCompareResponseBodyDataFlame,
     GetHotspotCompareResponseBodyDataSeriesInstance1,
     GetHotspotCompareResponseBodyDataSeriesInstance2,
@@ -610,6 +760,8 @@ __all__ = [
     InstallAgentWithTypeRequestTag,
     InstallAgentWithTypeRequestInstances,
     InstallAgentWithTypeResponseBodyData,
+    InstallHotfixRequestInstances,
+    InstallHotfixResponseBodyData,
     InvokeDiagnosisResponseBodyData,
     ListAbnormalyEventsResponseBodyDataOptsResult,
     ListAbnormalyEventsResponseBodyDataOpts,
@@ -618,6 +770,7 @@ __all__ = [
     ListAgentInstallRecordsResponseBodyData,
     ListAgentsResponseBodyDataVersions,
     ListAgentsResponseBodyData,
+    ListAifgJobsResponseBodyData,
     ListAlertStrategiesResponseBodyDataStrategy,
     ListAlertStrategiesResponseBodyData,
     ListAllInstancesResponseBodyDataAttributes,
@@ -637,20 +790,29 @@ __all__ = [
     ListPluginsInstancesResponseBodyData,
     ListPodsOfInstanceResponseBodyData,
     ListVmcoreDiagnosisTaskResponseBodyData,
+    QueryHotfixStatusRequestInstances,
+    QueryHotfixStatusResponseBodyData,
     StartAIAnalysisResponseBodyData,
     StartAIDiffAnalysisRequestTask1,
     StartAIDiffAnalysisRequestTask2,
+    StartAifgAnalysisResponseBodyData,
     UninstallAgentRequestInstances,
     UninstallAgentResponseBodyData,
     UninstallAgentForClusterResponseBodyData,
     UninstallAgentWithTypeRequestInstances,
     UninstallAgentWithTypeResponseBodyData,
+    UninstallHotfixRequestInstances,
+    UninstallHotfixResponseBodyData,
+    UpdateAgentConfigResponseBodyData,
     UpdateAlertDestinationRequestParams,
     UpdateAlertStrategyRequestStrategy,
+    UpdateClusterAgentConfigResponseBodyData,
     UpdateEventsAttentionResponseBodyData,
     UpdateFuncSwitchRecordRequestParamsArgs,
     UpdateFuncSwitchRecordRequestParams,
     UpdateFuncSwitchRecordResponseBodyData,
+    UpdateInstanceAgentConfigRequestInstances,
+    UpdateInstanceAgentConfigResponseBodyData,
     UpgradeAgentRequestInstances,
     UpgradeAgentResponseBodyData,
     UpgradeAgentForClusterResponseBodyData,

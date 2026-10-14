@@ -18,7 +18,7 @@ class ListAlertDestinationsResponseBody(DaraModel):
         total: int = None,
     ):
         # The status code.
-        # - `code == Success` indicates that the authorization is successful.
+        # - `code == Success` indicates that the authorization was successful.
         # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
         self.code = code
         # The returned data.
@@ -27,13 +27,13 @@ class ListAlertDestinationsResponseBody(DaraModel):
         self.max_results = max_results
         # The error message.
         # - If `code == Success`, this field is empty.
-        # - Otherwise, this field contains the error information for the request.
+        # - Otherwise, this field contains the request error information.
         self.message = message
         # The pagination token for the next request.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The maximum number of records returned by this request based on MaxResults.
+        # The maximum number of records returned by MaxResults for this request.
         self.total = total
 
     def validate(self):

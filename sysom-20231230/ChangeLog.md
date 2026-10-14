@@ -1,3 +1,173 @@
+2026-10-14 Version: 3.0.0
+- Support API CheckAgentConfigSupported.
+- Support API CreateAgentConfig.
+- Support API DeleteAgentConfig.
+- Support API GetAgentConfig.
+- Support API GetAifgResult.
+- Support API GetAifgUrl.
+- Support API GetGpuClusterArgsOptions.
+- Support API GetGpuClusterListAlarmRecord.
+- Support API GetGpuClusterTopology.
+- Support API GetHotfixTask.
+- Support API GetListGpuCluster.
+- Support API InstallHotfix.
+- Support API ListAifgJobs.
+- Support API QueryHotfixStatus.
+- Support API StartAifgAnalysis.
+- Support API UninstallHotfix.
+- Support API UpdateAgentConfig.
+- Support API UpdateClusterAgentConfig.
+- Support API UpdateInstanceAgentConfig.
+- Update API AuthDiagnosis: delete request parameters X-Debug-Id.
+- Update API AuthDiagnosis: delete request parameters x-sysom-invoke-source.
+- Update API CheckInstanceSupport: delete request parameters X-Debug-Id.
+- Update API CheckInstanceSupport: delete request parameters x-sysom-invoke-source.
+- Update API CpuHighAgentStreamResponse: delete request parameters X-Debug-Id.
+- Update API CpuHighAgentStreamResponse: delete request parameters x-sysom-invoke-source.
+- Update API CreateAlertDestination: delete request parameters X-Debug-Id.
+- Update API CreateAlertDestination: delete request parameters x-sysom-invoke-source.
+- Update API CreateAlertStrategy: delete request parameters X-Debug-Id.
+- Update API CreateAlertStrategy: delete request parameters x-sysom-invoke-source.
+- Update API CreateClusterVpcEndpointConnection: delete request parameters X-Debug-Id.
+- Update API CreateClusterVpcEndpointConnection: delete request parameters x-sysom-invoke-source.
+- Update API CreateInstanceInspection: delete request parameters X-Debug-Id.
+- Update API CreateInstanceInspection: delete request parameters x-sysom-invoke-source.
+- Update API CreateVmcoreDiagnosisTask: delete request parameters X-Debug-Id.
+- Update API CreateVmcoreDiagnosisTask: delete request parameters x-sysom-invoke-source.
+- Update API DeleteAlertDestination: delete request parameters X-Debug-Id.
+- Update API DeleteAlertDestination: delete request parameters x-sysom-invoke-source.
+- Update API DeleteAlertStrategy: delete request parameters X-Debug-Id.
+- Update API DeleteAlertStrategy: delete request parameters x-sysom-invoke-source.
+- Update API DescribeMetricList: delete request parameters X-Debug-Id.
+- Update API DescribeMetricList: delete request parameters x-sysom-invoke-source.
+- Update API GenerateCopilotResponse: delete request parameters X-Debug-Id.
+- Update API GenerateCopilotResponse: delete request parameters x-sysom-invoke-source.
+- Update API GenerateCopilotStreamResponse: delete request parameters X-Debug-Id.
+- Update API GenerateCopilotStreamResponse: delete request parameters x-sysom-invoke-source.
+- Update API GetAIQueryResult: delete request parameters X-Debug-Id.
+- Update API GetAIQueryResult: delete request parameters x-sysom-invoke-source.
+- Update API GetAbnormalEventsCount: delete request parameters X-Debug-Id.
+- Update API GetAbnormalEventsCount: delete request parameters x-sysom-invoke-source.
+- Update API GetAgent: delete request parameters X-Debug-Id.
+- Update API GetAgent: delete request parameters x-sysom-invoke-source.
+- Update API GetAgentTask: delete request parameters X-Debug-Id.
+- Update API GetAgentTask: delete request parameters x-sysom-invoke-source.
+- Update API GetAlertDestination: delete request parameters X-Debug-Id.
+- Update API GetAlertDestination: delete request parameters x-sysom-invoke-source.
+- Update API GetAlertStrategy: delete request parameters X-Debug-Id.
+- Update API GetAlertStrategy: delete request parameters x-sysom-invoke-source.
+- Update API GetConfigByName: delete request parameters X-Debug-Id.
+- Update API GetConfigByName: delete request parameters x-sysom-invoke-source.
+- Update API GetCopilotHistory: delete request parameters X-Debug-Id.
+- Update API GetCopilotHistory: delete request parameters x-sysom-invoke-source.
+- Update API GetDiagnosisResult: delete request parameters X-Debug-Id.
+- Update API GetDiagnosisResult: delete request parameters x-sysom-invoke-source.
+- Update API GetHealthPercentage: delete request parameters X-Debug-Id.
+- Update API GetHealthPercentage: delete request parameters x-sysom-invoke-source.
+- Update API GetHostCount: delete request parameters X-Debug-Id.
+- Update API GetHostCount: delete request parameters x-sysom-invoke-source.
+- Update API GetHotSpotUniqList: delete request parameters X-Debug-Id.
+- Update API GetHotSpotUniqList: delete request parameters x-sysom-invoke-source.
+- Update API GetHotspotAnalysis: delete request parameters X-Debug-Id.
+- Update API GetHotspotAnalysis: delete request parameters x-sysom-invoke-source.
+- Update API GetHotspotCompare: delete request parameters X-Debug-Id.
+- Update API GetHotspotCompare: delete request parameters x-sysom-invoke-source.
+- Update API GetHotspotInstanceList: delete request parameters X-Debug-Id.
+- Update API GetHotspotInstanceList: delete request parameters x-sysom-invoke-source.
+- Update API GetHotspotPidList: delete request parameters X-Debug-Id.
+- Update API GetHotspotPidList: delete request parameters x-sysom-invoke-source.
+- Update API GetHotspotTracking: delete request parameters X-Debug-Id.
+- Update API GetHotspotTracking: delete request parameters x-sysom-invoke-source.
+- Update API GetInspectionReport: delete request parameters X-Debug-Id.
+- Update API GetInspectionReport: delete request parameters x-sysom-invoke-source.
+- Update API GetInstantScore: delete request parameters X-Debug-Id.
+- Update API GetInstantScore: delete request parameters x-sysom-invoke-source.
+- Update API GetListRecord: delete request parameters X-Debug-Id.
+- Update API GetListRecord: delete request parameters x-sysom-invoke-source.
+- Update API GetProblemPercentage: delete request parameters X-Debug-Id.
+- Update API GetProblemPercentage: delete request parameters x-sysom-invoke-source.
+- Update API GetRangeScore: delete request parameters X-Debug-Id.
+- Update API GetRangeScore: delete request parameters x-sysom-invoke-source.
+- Update API GetResources: delete request parameters X-Debug-Id.
+- Update API GetResources: delete request parameters x-sysom-invoke-source.
+- Update API GetServiceFuncStatus: delete request parameters X-Debug-Id.
+- Update API GetServiceFuncStatus: delete request parameters x-sysom-invoke-source.
+- Update API GetVmcoreDiagnosisTask: delete request parameters X-Debug-Id.
+- Update API GetVmcoreDiagnosisTask: delete request parameters x-sysom-invoke-source.
+- Update API InitialSysom: delete request parameters X-Debug-Id.
+- Update API InitialSysom: delete request parameters x-sysom-invoke-source.
+- Update API InstallAgent: delete request parameters X-Debug-Id.
+- Update API InstallAgent: delete request parameters x-sysom-invoke-source.
+- Update API InstallAgentForCluster: delete request parameters X-Debug-Id.
+- Update API InstallAgentForCluster: delete request parameters x-sysom-invoke-source.
+- Update API InstallAgentWithType: delete request parameters X-Debug-Id.
+- Update API InstallAgentWithType: delete request parameters x-sysom-invoke-source.
+- Update API InvokeAnomalyDiagnosis: delete request parameters X-Debug-Id.
+- Update API InvokeAnomalyDiagnosis: delete request parameters x-sysom-invoke-source.
+- Update API ListAbnormalyEvents: delete request parameters X-Debug-Id.
+- Update API ListAbnormalyEvents: delete request parameters x-sysom-invoke-source.
+- Update API ListAgentInstallRecords: delete request parameters X-Debug-Id.
+- Update API ListAgentInstallRecords: delete request parameters x-sysom-invoke-source.
+- Update API ListAgents: delete request parameters X-Debug-Id.
+- Update API ListAgents: delete request parameters x-sysom-invoke-source.
+- Update API ListAlertDestinations: delete request parameters X-Debug-Id.
+- Update API ListAlertDestinations: delete request parameters x-sysom-invoke-source.
+- Update API ListAlertStrategies: delete request parameters X-Debug-Id.
+- Update API ListAlertStrategies: delete request parameters x-sysom-invoke-source.
+- Update API ListAllInstances: delete request parameters X-Debug-Id.
+- Update API ListAllInstances: delete request parameters x-sysom-invoke-source.
+- Update API ListClusterAgentInstallRecords: delete request parameters X-Debug-Id.
+- Update API ListClusterAgentInstallRecords: delete request parameters x-sysom-invoke-source.
+- Update API ListClusters: delete request parameters X-Debug-Id.
+- Update API ListClusters: delete request parameters x-sysom-invoke-source.
+- Update API ListDiagnosis: delete request parameters X-Debug-Id.
+- Update API ListDiagnosis: delete request parameters x-sysom-invoke-source.
+- Update API ListInstanceHealth: delete request parameters X-Debug-Id.
+- Update API ListInstanceHealth: delete request parameters x-sysom-invoke-source.
+- Update API ListInstanceInfo: delete request parameters X-Debug-Id.
+- Update API ListInstanceInfo: delete request parameters x-sysom-invoke-source.
+- Update API ListInstanceStatus: delete request parameters X-Debug-Id.
+- Update API ListInstanceStatus: delete request parameters x-sysom-invoke-source.
+- Update API ListInstances: delete request parameters X-Debug-Id.
+- Update API ListInstances: delete request parameters x-sysom-invoke-source.
+- Update API ListInstancesEcsInfoList: delete request parameters X-Debug-Id.
+- Update API ListInstancesEcsInfoList: delete request parameters x-sysom-invoke-source.
+- Update API ListInstancesWithEcsInfo: delete request parameters X-Debug-Id.
+- Update API ListInstancesWithEcsInfo: delete request parameters x-sysom-invoke-source.
+- Update API ListPluginsInstances: delete request parameters X-Debug-Id.
+- Update API ListPluginsInstances: delete request parameters x-sysom-invoke-source.
+- Update API ListPodsOfInstance: delete request parameters X-Debug-Id.
+- Update API ListPodsOfInstance: delete request parameters x-sysom-invoke-source.
+- Update API ListVmcoreDiagnosisTask: delete request parameters X-Debug-Id.
+- Update API ListVmcoreDiagnosisTask: delete request parameters x-sysom-invoke-source.
+- Update API StartAIAnalysis: delete request parameters X-Debug-Id.
+- Update API StartAIAnalysis: delete request parameters x-sysom-invoke-source.
+- Update API StartAIDiffAnalysis: delete request parameters X-Debug-Id.
+- Update API StartAIDiffAnalysis: delete request parameters x-sysom-invoke-source.
+- Update API UninstallAgent: delete request parameters X-Debug-Id.
+- Update API UninstallAgent: delete request parameters x-sysom-invoke-source.
+- Update API UninstallAgentForCluster: delete request parameters X-Debug-Id.
+- Update API UninstallAgentForCluster: delete request parameters x-sysom-invoke-source.
+- Update API UninstallAgentWithType: delete request parameters X-Debug-Id.
+- Update API UninstallAgentWithType: delete request parameters x-sysom-invoke-source.
+- Update API UpdateAlertDestination: delete request parameters X-Debug-Id.
+- Update API UpdateAlertDestination: delete request parameters x-sysom-invoke-source.
+- Update API UpdateAlertEnabled: delete request parameters X-Debug-Id.
+- Update API UpdateAlertEnabled: delete request parameters x-sysom-invoke-source.
+- Update API UpdateAlertStrategy: delete request parameters X-Debug-Id.
+- Update API UpdateAlertStrategy: delete request parameters x-sysom-invoke-source.
+- Update API UpdateEventsAttention: delete request parameters X-Debug-Id.
+- Update API UpdateEventsAttention: delete request parameters x-sysom-invoke-source.
+- Update API UpdateFuncSwitchRecord: delete request parameters X-Debug-Id.
+- Update API UpdateFuncSwitchRecord: delete request parameters x-sysom-invoke-source.
+- Update API UpgradeAgent: delete request parameters X-Debug-Id.
+- Update API UpgradeAgent: delete request parameters x-sysom-invoke-source.
+- Update API UpgradeAgentForCluster: delete request parameters X-Debug-Id.
+- Update API UpgradeAgentForCluster: delete request parameters x-sysom-invoke-source.
+- Update API UpgradeAgentWithType: delete request parameters X-Debug-Id.
+- Update API UpgradeAgentWithType: delete request parameters x-sysom-invoke-source.
+
+
 2026-09-09 Version: 2.0.0
 - Update API InvokeDiagnosis: delete request parameters X-Debug-Id.
 - Update API InvokeDiagnosis: delete request parameters x-sysom-invoke-source.

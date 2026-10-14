@@ -26,7 +26,7 @@ class ListPodsOfInstanceResponseBody(DaraModel):
         # 
         # This parameter is required.
         self.message = message
-        # The maximum number of entries returned for this request.
+        # The maximum number of records returned in this request.
         self.total = total
 
     def validate(self):
@@ -87,7 +87,7 @@ class ListPodsOfInstanceResponseBodyData(DaraModel):
         namespace: str = None,
         pod: str = None,
     ):
-        # The namespace in which the pod resides.
+        # The namespace of the pod.
         self.namespace = namespace
         # The pod name.
         self.pod = pod

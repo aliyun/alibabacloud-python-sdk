@@ -16,12 +16,12 @@ class ListAbnormalyEventsResponseBody(DaraModel):
         total: int = None,
     ):
         # The status code.
-        # - `code == Success` indicates that the authorization was successful.
+        # - `code == Success` indicates that the authorization is successful.
         # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
         self.code = code
         # The returned result.
         self.data = data
-        # The error code description. This value is empty if no error occurred.
+        # The error code description. This field is empty if no error occurs.
         self.message = message
         # The total number of records.
         self.total = total
@@ -92,14 +92,9 @@ class ListAbnormalyEventsResponseBodyData(DaraModel):
     ):
         # The creation time.
         self.created_at = created_at
-        # The detailed description of the anomaly item.
+        # The description of the anomaly item.
         self.description = description
-        # The diagnostic status. Valid values:
-        # - 1: diagnosis ready.
-        # - 2: diagnosis in progress.
-        # - 3: diagnosis completed.
-        # - 4: not diagnosable.
-        # - 5: diagnosis failed.
+        # The diagnostic status. Valid values: 1: the diagnosis is ready. 2: the diagnosis is running. 3: the diagnosis is complete. 4: the item is not diagnosable. 5: the diagnosis failed.
         self.diag_status = diag_status
         # The end time of the anomaly event.
         self.end_at = end_at

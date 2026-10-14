@@ -7,7 +7,6 @@ from darabonba.model import DaraModel
 class GetHotspotCompareRequest(DaraModel):
     def __init__(
         self,
-        x_debug_id: str = None,
         beg_1end: int = None,
         beg_1start: int = None,
         beg_2end: int = None,
@@ -18,9 +17,7 @@ class GetHotspotCompareRequest(DaraModel):
         pid_1: int = None,
         pid_2: int = None,
         table: str = None,
-        x_sysom_invoke_source: str = None,
     ):
-        self.x_debug_id = x_debug_id
         # The end time 1.
         # 
         # This parameter is required.
@@ -55,7 +52,6 @@ class GetHotspotCompareRequest(DaraModel):
         # 
         # This parameter is required.
         self.table = table
-        self.x_sysom_invoke_source = x_sysom_invoke_source
 
     def validate(self):
         pass
@@ -65,9 +61,6 @@ class GetHotspotCompareRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.x_debug_id is not None:
-            result['X-Debug-Id'] = self.x_debug_id
-
         if self.beg_1end is not None:
             result['beg1_end'] = self.beg_1end
 
@@ -98,16 +91,10 @@ class GetHotspotCompareRequest(DaraModel):
         if self.table is not None:
             result['table'] = self.table
 
-        if self.x_sysom_invoke_source is not None:
-            result['x-sysom-invoke-source'] = self.x_sysom_invoke_source
-
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('X-Debug-Id') is not None:
-            self.x_debug_id = m.get('X-Debug-Id')
-
         if m.get('beg1_end') is not None:
             self.beg_1end = m.get('beg1_end')
 
@@ -137,9 +124,6 @@ class GetHotspotCompareRequest(DaraModel):
 
         if m.get('table') is not None:
             self.table = m.get('table')
-
-        if m.get('x-sysom-invoke-source') is not None:
-            self.x_sysom_invoke_source = m.get('x-sysom-invoke-source')
 
         return self
 

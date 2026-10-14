@@ -17,7 +17,7 @@ class GetCopilotHistoryResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The list of chat records. The length equals the requested count. If the actual chat records are fewer than the requested count, the actual number is returned. Format: [{"user":"","content":"".question,"time":""},{...}]
+        # The list of chat records. The length equals the requested number. If the actual chat records are fewer than the requested number, the actual number is returned. Format: [{"user":"","content":"".question,"time":""},{...}]
         self.data = data
         # The error message.
         # - If `code == Success`, this field is empty.
@@ -81,11 +81,11 @@ class GetCopilotHistoryResponseBodyData(DaraModel):
     ):
         # The chat content text.
         self.content = content
-        # The time of the chat record. The value is of the string type.
+        # The chat record time, of the string type.
         self.time = time
         # The role identifier. Valid values:
-        # - user: a user.
-        # - copilot: a bot.
+        # - user: the user.
+        # - copilot: the bot.
         self.user = user
 
     def validate(self):

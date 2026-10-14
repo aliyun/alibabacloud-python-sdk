@@ -22,11 +22,13 @@ class GetHotSpotUniqListResponseBody(DaraModel):
         self.code = code
         # The returned data.
         self.data = data
-        # The response message.
+        # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the API call is successful. true: successful. false: failed.
+        # Indicates whether the API call is successful. Valid values:
+        # - true: The API call is successful.
+        # - false: The API call failed.
         self.success = success
 
     def validate(self):

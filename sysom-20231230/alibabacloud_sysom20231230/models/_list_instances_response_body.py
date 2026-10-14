@@ -17,8 +17,8 @@ class ListInstancesResponseBody(DaraModel):
         total: int = None,
     ):
         # The status code.
-        # - `code == Success` indicates that the authorization is successful.
-        # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
+        # - If `code == Success`, the authorization is successful.
+        # - Other status codes indicate authorization failed. Check the `message` field for the detailed fault information.
         self.code = code
         # The returned result.
         self.data = data
@@ -105,19 +105,19 @@ class ListInstancesResponseBodyData(DaraModel):
         self.instance = instance
         # The current kernel version of the instance.
         self.kernel_version = kernel_version
-        # The metadata of the instance.
+        # The instance metadata.
         self.meta = meta
         # The architecture of the ECS instance.
         self.os_arch = os_arch
         # The health score of the instance.
         self.os_health_score = os_health_score
-        # The operating system name of the instance (obtained from /etc/os-release).
+        # The operating system name of the instance, obtained from /etc/os-release.
         self.os_name = os_name
-        # The operating system name ID of the instance (obtained from /etc/os-release).
+        # The operating system name ID of the instance, obtained from /etc/os-release.
         self.os_name_id = os_name_id
-        # The operating system version of the instance (obtained from /etc/os-release).
+        # The operating system version of the instance, obtained from /etc/os-release.
         self.os_version = os_version
-        # The operating system version ID of the instance (obtained from /etc/os-release).
+        # The operating system version ID of the instance, obtained from /etc/os-release.
         self.os_version_id = os_version_id
         # The region where the instance resides.
         self.region = region

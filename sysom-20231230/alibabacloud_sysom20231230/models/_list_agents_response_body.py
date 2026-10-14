@@ -103,13 +103,13 @@ class ListAgentsResponseBodyData(DaraModel):
         self.id = id
         # The component name.
         self.name = name
-        # The supported architectures (multiple architectures are separated by commas).
+        # The supported architectures. Multiple architectures are separated by commas.
         self.support_arch = support_arch
         # The type of the component. Valid values:
         # - Control: control-type component.
         # - AI: AI component.
         self.type = type
-        # The time when the component was updated.
+        # The time when the component was last updated.
         self.updated_at = updated_at
         # The list of component versions.
         self.versions = versions
@@ -198,13 +198,13 @@ class ListAgentsResponseBodyDataVersions(DaraModel):
         self.created_at = created_at
         # The installation script of the component.
         self.install_script = install_script
-        # The uninstallation script of the component.
+        # The uninstall script of the component.
         self.uninstall_script = uninstall_script
-        # The time when the component version was updated.
+        # The time when the component version was last updated.
         self.updated_at = updated_at
-        # The update script of the component.
+        # The upgrade script of the component.
         self.upgrade_script = upgrade_script
-        # The component version number.
+        # The version number of the component.
         self.version = version
 
     def validate(self):

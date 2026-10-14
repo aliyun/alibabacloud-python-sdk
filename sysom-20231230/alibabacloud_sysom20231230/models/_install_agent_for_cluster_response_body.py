@@ -23,7 +23,7 @@ class InstallAgentForClusterResponseBody(DaraModel):
         self.data = data
         # The error message.
         # - If `code == Success`, this field is empty.
-        # - Otherwise, this field contains the request error information.
+        # - Otherwise, this field contains the error information of the request.
         self.message = message
 
     def validate(self):

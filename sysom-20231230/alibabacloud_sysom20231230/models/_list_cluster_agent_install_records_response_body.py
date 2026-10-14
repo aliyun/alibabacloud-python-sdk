@@ -103,13 +103,13 @@ class ListClusterAgentInstallRecordsResponseBodyData(DaraModel):
         self.cluster_id = cluster_id
         # The creation time.
         self.created_at = created_at
-        # The canary release environment.
+        # The grayscale configuration.
         self.grayscale_config = grayscale_config
         # The component ID.
         self.plugin_id = plugin_id
         # The plug-in version.
         self.plugin_version = plugin_version
-        # The modification time.
+        # The update time.
         self.updated_at = updated_at
 
     def validate(self):

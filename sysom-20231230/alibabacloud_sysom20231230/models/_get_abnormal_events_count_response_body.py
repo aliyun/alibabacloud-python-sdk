@@ -70,9 +70,9 @@ class GetAbnormalEventsCountResponseBodyData(DaraModel):
     ):
         # The list of abnormal events.
         self.event_list = event_list
-        # The type of the abnormal event.
+        # The type of the abnormality.
         self.type = type
-        # The number of abnormal events of this type.
+        # The number of abnormalities of this type.
         self.value = value
 
     def validate(self):

@@ -67,7 +67,7 @@ class CreateClusterVpcEndpointConnectionResponseBodyData(DaraModel):
         self,
         endpoint_connection_id: str = None,
     ):
-        # The ID of the endpoint connection.
+        # The endpoint connection ID.
         self.endpoint_connection_id = endpoint_connection_id
 
     def validate(self):

@@ -126,7 +126,7 @@ class ListInstancesWithEcsInfoResponseBodyData(DaraModel):
         # 
         # 
         # 
-        # > An instance in the Offline state indicates that the heartbeat between the node and the SysOM server is lost. It does not mean that the corresponding ECS instance has stopped running.
+        # > An instance in the Offline state indicates that the heartbeat between the node and the SysOM server is lost. It does not mean that the corresponding ECS instance is not running.
         self.status = status
 
     def validate(self):

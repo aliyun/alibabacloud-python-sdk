@@ -18,7 +18,7 @@ class UpdateAlertDestinationResponseBody(DaraModel):
         # - If `code == Success`, the authorization is successful.
         # - Other status codes indicate authorization failed. Check the `message` field for the detailed fault information.
         self.code = code
-        # The returned result.
+        # The response result.
         self.data = data
         # The error message.
         # - If `code == Success`, this field is empty.

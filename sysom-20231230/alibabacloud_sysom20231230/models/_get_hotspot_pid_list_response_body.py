@@ -19,7 +19,7 @@ class GetHotspotPidListResponseBody(DaraModel):
         self.code = code
         # The returned data.
         self.data = data
-        # The response message.
+        # The returned message.
         self.message = message
         # Id of the request
         self.request_id = request_id

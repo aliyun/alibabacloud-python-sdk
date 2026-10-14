@@ -17,7 +17,7 @@ class GetServiceFuncStatusResponseBody(DaraModel):
         # - `code == Success` indicates that the authorization is successful.
         # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
         self.code = code
-        # The returned result.
+        # The response data.
         self.data = data
         # The error message.
         # - If `code == Success`, this field is empty.

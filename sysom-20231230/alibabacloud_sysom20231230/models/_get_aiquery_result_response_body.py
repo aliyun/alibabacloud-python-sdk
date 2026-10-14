@@ -14,7 +14,7 @@ class GetAIQueryResultResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The returned result. The data volume is large.
+        # The response data. The data volume can be large.
         self.data = data
         # The error message.
         self.message = message

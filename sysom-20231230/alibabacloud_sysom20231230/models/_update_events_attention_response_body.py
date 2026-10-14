@@ -15,11 +15,11 @@ class UpdateEventsAttentionResponseBody(DaraModel):
     ):
         # The request ID, which can be used for end-to-end diagnostics.
         self.request_id = request_id
-        # The status code. Valid values:
-        # - Success: The authorization is successful.
-        # - Other values: The authorization failed. Check the message field for the detailed fault information.
+        # The status code.
+        # - `code == Success` indicates that the authorization is successful.
+        # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
         self.code = code
-        # The response data.
+        # The returned data.
         self.data = data
         # The error message.
         self.message = message

@@ -12,8 +12,8 @@ class InvokeAnomalyDiagnosisResponseBody(DaraModel):
         request_id: str = None,
     ):
         # The status code.
-        # - If `code == Success`, the authorization is successful.
-        # - Other status codes indicate authorization failed. Check the `message` field for the detailed fault message.
+        # - `code == Success` indicates that the authorization is successful.
+        # - Other status codes indicate that the authorization failed. If the authorization fails, check the `message` field for the detailed fault information.
         self.code = code
         # The error message.
         # - If `code == Success`, this field is empty.

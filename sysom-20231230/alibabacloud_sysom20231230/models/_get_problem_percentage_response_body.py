@@ -89,9 +89,9 @@ class GetProblemPercentageResponseBodyData(DaraModel):
         type: str = None,
         value: int = None,
     ):
-        # The type of the abnormal item.
+        # The anomaly item type.
         self.type = type
-        # The number of abnormal items of this type.
+        # The number of anomaly items of this type.
         self.value = value
 
     def validate(self):

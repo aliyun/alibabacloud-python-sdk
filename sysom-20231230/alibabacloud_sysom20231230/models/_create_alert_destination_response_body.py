@@ -19,7 +19,7 @@ class CreateAlertDestinationResponseBody(DaraModel):
         self.data = data
         # The error message.
         # - If `code == Success`, this field is empty.
-        # - Otherwise, this field contains the error message for the request.
+        # - Otherwise, this field contains the error message of the request.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -76,7 +76,7 @@ class CreateAlertDestinationResponseBodyData(DaraModel):
         uid: str = None,
         updated_at: int = None,
     ):
-        # The creation time.
+        # The time when the contact was created.
         self.created_at = created_at
         # The policy ID.
         self.id = id
@@ -90,7 +90,7 @@ class CreateAlertDestinationResponseBodyData(DaraModel):
         self.target = target
         # The user ID.
         self.uid = uid
-        # The update time.
+        # The time when the contact was last updated.
         self.updated_at = updated_at
 
     def validate(self):
@@ -169,7 +169,7 @@ class CreateAlertDestinationResponseBodyDataParams(DaraModel):
         self.email = email
         # The phone number.
         self.phone = phone
-        # The secret key of the chatbot.
+        # The chatbot secret key.
         self.sec = sec
         # The webhook URL of the chatbot.
         self.webhook = webhook

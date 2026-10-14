@@ -14,7 +14,7 @@ class GetConfigByNameResponseBody(DaraModel):
     ):
         # The status code.
         # - `code == Success` indicates that the authorization is successful.
-        # - Other status codes indicate that the authorization has failed. Check the `message` field for the detailed error message.
+        # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
         self.code = code
         # The response data.
         self.data = data
