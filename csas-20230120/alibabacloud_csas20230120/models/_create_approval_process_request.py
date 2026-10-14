@@ -15,15 +15,15 @@ class CreateApprovalProcessRequest(DaraModel):
         process_name: str = None,
         process_nodes: List[List[str]] = None,
     ):
-        # The description of the approval flow. The description must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), hyphens (-), and spaces. Chinese characters are supported.
+        # The description of the approval process. The description must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), hyphens (-), and spaces.
         self.description = description
         # The matched approval templates.
         self.match_schemas = match_schemas
-        # The flow name. The name must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). Chinese characters are supported.
+        # The name of the process. The name must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), and hyphens (-).
         # 
         # This parameter is required.
         self.process_name = process_name
-        # The list of approval nodes. You can define up to 5 approval nodes.
+        # The list of approval nodes. You can define up to five approval nodes.
         # 
         # This parameter is required.
         self.process_nodes = process_nodes
@@ -82,11 +82,11 @@ class CreateApprovalProcessRequestMatchSchemas(DaraModel):
         software_block_schema_id: str = None,
         software_hardening_schema_id: str = None,
     ):
-        # The ID of the device uninstall approval template.
+        # The ID of the application uninstallation approval template.
         self.app_uninstall_schema_id = app_uninstall_schema_id
         # The ID of the device registration approval template.
         self.device_registration_schema_id = device_registration_schema_id
-        # The ID of the file outbound approval template.
+        # The ID of the outbound file transfer approval template.
         self.dlp_send_schema_id = dlp_send_schema_id
         # The ID of the domain name blacklist approval template.
         self.domain_blacklist_schema_id = domain_blacklist_schema_id

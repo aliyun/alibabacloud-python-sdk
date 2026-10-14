@@ -9,8 +9,8 @@ class GetRegistrationPolicyRequest(DaraModel):
         self,
         policy_id: str = None,
     ):
-        # The ID of the device registration policy. Valid values are obtained from the following sources:
-        # - [ListRegistrationPolicies](~~ListRegistrationPolicies~~): Queries device registration policies in batches.
+        # The ID of the device registration policy. You can obtain the value from the following operations:
+        # - [ListRegistrationPolicies](~~ListRegistrationPolicies~~): Lists device registration policies.
         # - [GetRegistrationPolicy](~~GetRegistrationPolicy~~): Queries the details of a device registration policy.
         # - [CreateRegistrationPolicy](~~CreateRegistrationPolicy~~): Creates a device registration policy.
         # - [UpdateRegistrationPolicy](~~UpdateRegistrationPolicy~~): Updates a device registration policy.

@@ -14,11 +14,11 @@ class ListPrivateAccessApplicationsResponseBody(DaraModel):
         request_id: str = None,
         total_num: int = None,
     ):
-        # The list of internal-facing access applications.
+        # The list of private access applications.
         self.applications = applications
         # The ID of the request.
         self.request_id = request_id
-        # The total number of internal-facing access applications.
+        # The total number of private access applications.
         self.total_num = total_num
 
     def validate(self):
@@ -73,6 +73,8 @@ class ListPrivateAccessApplicationsResponseBodyApplications(DaraModel):
         connector_ids: List[str] = None,
         create_time: str = None,
         description: str = None,
+        health_check_config: main_models.HealthCheckConfig = None,
+        health_check_mode: str = None,
         l_7proxy_domain_automatic: str = None,
         l_7proxy_domain_custom: str = None,
         name: str = None,
@@ -82,43 +84,56 @@ class ListPrivateAccessApplicationsResponseBodyApplications(DaraModel):
         status: str = None,
         tag_ids: List[str] = None,
     ):
+        # The application address groups. This parameter is returned when ConfigMode is set to Precise, and is empty when ConfigMode is an empty string.
         self.address_groups = address_groups
-        # The addresses of the internal-facing access application.
+        # The addresses of the private access application.
         self.addresses = addresses
-        # The ID of the internal-facing access application.
+        # The ID of the private access application.
         self.application_id = application_id
+        # Specifies whether the application is created by automatic creation. Valid values:
+        # * 0: manual creation.
+        # * 1: automatic creation.
         self.auto_generated = auto_generated
         # The browser access mode. Valid values:
         # - **Enabled**: enabled.
         # - **Disabled**: disabled.
         self.browser_access_status = browser_access_status
+        # The configuration mode. Valid values:
+        # * Empty string: default mode.
+        # * Precise: precise mode.
         self.config_mode = config_mode
-        # The connector IDs.
+        # The IDs of the connectors.
         self.connector_ids = connector_ids
-        # The time when the internal-facing access application was created.
+        # The time when the private access application was created. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
-        # The description of the internal-facing access application.
+        # The description of the private access application.
         self.description = description
-        # The browser access mode parameter: mapped proxy domain name.
+        # The health check configuration. This parameter contains valid configurations only when the health check mode is Continuous.
+        self.health_check_config = health_check_config
+        # The health check mode. Valid values:
+        # * OnAccess: checks upon access.
+        # * Continuous: continuous checks.
+        self.health_check_mode = health_check_mode
+        # The parameter for the browser access mode: the mapped proxy domain name.
         self.l_7proxy_domain_automatic = l_7proxy_domain_automatic
-        # The browser access mode parameter: custom proxy domain name.
+        # The parameter for the browser access mode: the custom proxy domain name.
         self.l_7proxy_domain_custom = l_7proxy_domain_custom
-        # The name of the internal-facing access application.
+        # The name of the private access application.
         self.name = name
-        # The IDs of internal-facing access policies.
+        # The IDs of the private access policies.
         self.policy_ids = policy_ids
-        # The port ranges of the internal-facing access application. Multiple port ranges cannot be duplicate or overlapping.
+        # The port ranges of the private access application. Multiple port ranges cannot be duplicate or overlap.
         self.port_ranges = port_ranges
-        # The protocol of the internal-facing access application. Valid values:
+        # The protocol of the private access application. Valid values:
         # - **All**: all protocols.
         # - **TCP**
-        # - **UDP**.
+        # - **UDP**
         self.protocol = protocol
-        # The status of the internal-facing access application. Valid values:
+        # The status of the private access application. Valid values:
         # - **Enabled**: enabled.
         # - **Disabled**: disabled.
         self.status = status
-        # The IDs of internal-facing access tags.
+        # The IDs of the private access tags.
         self.tag_ids = tag_ids
 
     def validate(self):
@@ -126,6 +141,8 @@ class ListPrivateAccessApplicationsResponseBodyApplications(DaraModel):
             for v1 in self.address_groups:
                  if v1:
                     v1.validate()
+        if self.health_check_config:
+            self.health_check_config.validate()
         if self.port_ranges:
             for v1 in self.port_ranges:
                  if v1:
@@ -164,6 +181,12 @@ class ListPrivateAccessApplicationsResponseBodyApplications(DaraModel):
 
         if self.description is not None:
             result['Description'] = self.description
+
+        if self.health_check_config is not None:
+            result['HealthCheckConfig'] = self.health_check_config.to_map()
+
+        if self.health_check_mode is not None:
+            result['HealthCheckMode'] = self.health_check_mode
 
         if self.l_7proxy_domain_automatic is not None:
             result['L7ProxyDomainAutomatic'] = self.l_7proxy_domain_automatic
@@ -224,6 +247,13 @@ class ListPrivateAccessApplicationsResponseBodyApplications(DaraModel):
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('HealthCheckConfig') is not None:
+            temp_model = main_models.HealthCheckConfig()
+            self.health_check_config = temp_model.from_map(m.get('HealthCheckConfig'))
+
+        if m.get('HealthCheckMode') is not None:
+            self.health_check_mode = m.get('HealthCheckMode')
 
         if m.get('L7ProxyDomainAutomatic') is not None:
             self.l_7proxy_domain_automatic = m.get('L7ProxyDomainAutomatic')

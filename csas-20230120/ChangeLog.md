@@ -1,3 +1,16 @@
+2026-10-14 Version: 1.25.0
+- Support API DescribeApplicationHealthCheckReports.
+- Update API CreatePrivateAccessApplication: add request parameters HealthCheckConfig.
+- Update API CreatePrivateAccessApplication: add request parameters HealthCheckMode.
+- Update API GetPrivateAccessApplication: add response parameters Body.Application.HealthCheckConfig.
+- Update API GetPrivateAccessApplication: add response parameters Body.Application.HealthCheckMode.
+- Update API ListPrivateAccessApplications: add request parameters HealthCheckStatus.
+- Update API ListPrivateAccessApplications: add response parameters Body.Applications.$.HealthCheckConfig.
+- Update API ListPrivateAccessApplications: add response parameters Body.Applications.$.HealthCheckMode.
+- Update API UpdatePrivateAccessApplication: add request parameters HealthCheckConfig.
+- Update API UpdatePrivateAccessApplication: add request parameters HealthCheckMode.
+
+
 2026-09-11 Version: 1.24.1
 - Update API UpdateDeviceGroup: add request parameters DynamicRule.
 

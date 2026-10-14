@@ -17,29 +17,23 @@ class ListDomainAccessLogsRequest(DaraModel):
         start_time: int = None,
         user_name: str = None,
     ):
-        # The action taken upon a rule hit. Exact match is used. Valid values:
-        # 
-        # - Audit: Audit.
-        # - Observe: Observe only.
-        # - WhiteList: Allowed by whitelist.
-        # - Block: Blocked.
-        # - Redirect: Redirected to a prompt page.
+        # The matched action for exact match.
         self.block_action = block_action
         # The current page number.
         self.current_page = current_page
-        # The department. Exact match is used.
+        # The department for exact match.
         self.department = department
-        # The end time of the query. This value is a UNIX timestamp in seconds.
+        # The end time of the query, which is a UNIX timestamp in seconds.
         self.end_time = end_time
-        # The number of entries per page in paging. Valid values: 1 to 1000.
+        # The Settings for the number of entries per page during paging in a paged query. Valid values: 1 to 1000.
         self.page_size = page_size
-        # The policy type used to filter results.
+        # The policy type used for filtering.
         self.policy_type = policy_type
-        # The destination domain name accessed. Exact match is used.
+        # The destination domain name for exact match.
         self.remote_host = remote_host
-        # The start time of the query. This value is a UNIX timestamp in seconds.
+        # The start time of the query, which is a UNIX timestamp in seconds.
         self.start_time = start_time
-        # The username. Exact match is used.
+        # The username for exact match.
         self.user_name = user_name
 
     def validate(self):

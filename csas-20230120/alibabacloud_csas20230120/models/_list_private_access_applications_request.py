@@ -14,6 +14,7 @@ class ListPrivateAccessApplicationsRequest(DaraModel):
         application_ids: List[str] = None,
         connector_id: str = None,
         current_page: int = None,
+        health_check_status: str = None,
         name: str = None,
         page_size: int = None,
         policy_id: str = None,
@@ -24,33 +25,39 @@ class ListPrivateAccessApplicationsRequest(DaraModel):
         # - **app**: application access. Filters applications that support application access.
         # - **browser**: browser access. Filters applications that support browser access.
         self.access_modes = access_modes
-        # The address of the internal-facing access application. The address is 1 to 128 characters in length and supports IPv4 addresses, CIDR blocks, domain names, and wildcard domain names.
+        # The address of the private access application. The address must be 1 to 128 characters in length, and can be an IPv4 address, a CIDR block, a domain name, or a wildcard domain name.
         self.address = address
-        # The IDs of internal-facing access applications. You can specify up to 100 application IDs.
+        # The IDs of the private access applications. You can specify up to 100 IDs.
         self.application_ids = application_ids
-        # The connector ID. You can obtain the ID from the [ListConnectors](~~ListConnectors~~) operation.
+        # The ID of the connector. You can obtain the ID from the following operation: [ListConnectors](~~ListConnectors~~): List connectors.
         self.connector_id = connector_id
-        # The page number of the current page displayed in a paged query. Valid values: 1 to 10000.
+        # The page number of the current page in a paging query. Valid values: 1 to 10000.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The name of the internal-facing access application. The name is 1 to 128 characters in length, supports Chinese and uppercase and lowercase letters, and can contain digits, periods (.), underscores (_), and hyphens (-).
+        # Filters applications by health check status. Valid values:
+        # * normal: The success rate of the last check is greater than or equal to 95%.
+        # * partialError: The success rate of the last check is greater than 0 and less than 95%.
+        # * error: The success rate of the last check is 0.
+        # * uncompleted: No check results are available.
+        self.health_check_status = health_check_status
+        # The name of the private access application. The name must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), and hyphens (-).
         self.name = name
-        # The number of entries per page in a paged query. Valid values: 1 to 1000.
+        # The Settings for the number of entries per page in a paging query. Valid values: 1 to 1000.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The ID of the internal-facing access policy. You can obtain the ID from the following operations:
-        # - [ListPrivateAccessPolices](~~ListPrivateAccessPolices~~): queries internal-facing access policies in batches.
-        # - [CreatePrivateAccessPolicy](~~CreatePrivateAccessPolicy~~): creates an internal-facing access policy.
+        # The ID of the private access policy. You can obtain the ID from the following operations:
+        # - [ListPrivateAccessPolices](~~ListPrivateAccessPolices~~): List private access policies.
+        # - [CreatePrivateAccessPolicy](~~CreatePrivateAccessPolicy~~): Create a private access policy.
         self.policy_id = policy_id
-        # The status of the internal-facing access application. Valid values:
+        # The status of the private access application. Valid values:
         # - **Enabled**: enabled.
         # - **Disabled**: disabled.
         self.status = status
-        # The ID of the internal-facing access tag. You can obtain the ID from the following operations:
-        # - [ListPrivateAccessTags](~~ListPrivateAccessTags~~): queries internal-facing access tags in batches.
-        # - [CreatePrivateAccessTag](~~CreatePrivateAccessTag~~): creates an internal-facing access tag.
+        # The ID of the private access tag. You can obtain the ID from the following operations:
+        # - [ListPrivateAccessTags](~~ListPrivateAccessTags~~): List private access tags.
+        # - [CreatePrivateAccessTag](~~CreatePrivateAccessTag~~): Create a private access tag.
         self.tag_id = tag_id
 
     def validate(self):
@@ -75,6 +82,9 @@ class ListPrivateAccessApplicationsRequest(DaraModel):
 
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
+
+        if self.health_check_status is not None:
+            result['HealthCheckStatus'] = self.health_check_status
 
         if self.name is not None:
             result['Name'] = self.name
@@ -109,6 +119,9 @@ class ListPrivateAccessApplicationsRequest(DaraModel):
 
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
+
+        if m.get('HealthCheckStatus') is not None:
+            self.health_check_status = m.get('HealthCheckStatus')
 
         if m.get('Name') is not None:
             self.name = m.get('Name')

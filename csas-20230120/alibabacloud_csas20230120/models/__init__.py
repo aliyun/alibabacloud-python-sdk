@@ -9,6 +9,7 @@ from ._common_config import CommonConfig
 from ._device_group_dynamic_rule import DeviceGroupDynamicRule
 from ._disposal_content import DisposalContent
 from ._execute_period import ExecutePeriod
+from ._health_check_config import HealthCheckConfig
 from ._idp_attr_map_config import IdpAttrMapConfig
 from ._idp_attr_map_config_item import IdpAttrMapConfigItem
 from ._idp_config import IdpConfig
@@ -255,6 +256,9 @@ from ._delete_virus_scan_scheduled_strategies_response import DeleteVirusScanSch
 from ._delete_vul_scan_scheduled_strategy_request import DeleteVulScanScheduledStrategyRequest
 from ._delete_vul_scan_scheduled_strategy_response_body import DeleteVulScanScheduledStrategyResponseBody
 from ._delete_vul_scan_scheduled_strategy_response import DeleteVulScanScheduledStrategyResponse
+from ._describe_application_health_check_reports_request import DescribeApplicationHealthCheckReportsRequest
+from ._describe_application_health_check_reports_response_body import DescribeApplicationHealthCheckReportsResponseBody
+from ._describe_application_health_check_reports_response import DescribeApplicationHealthCheckReportsResponse
 from ._detach_application_2connector_request import DetachApplication2ConnectorRequest
 from ._detach_application_2connector_shrink_request import DetachApplication2ConnectorShrinkRequest
 from ._detach_application_2connector_response_body import DetachApplication2ConnectorResponseBody
@@ -813,6 +817,7 @@ from ._create_wm_extract_task_request import CreateWmExtractTaskRequestCsvContro
 from ._create_wm_extract_task_request import CreateWmExtractTaskRequestImageExtractParamsOpenApi
 from ._create_wm_extract_task_response_body import CreateWmExtractTaskResponseBodyData
 from ._create_wm_info_mapping_response_body import CreateWmInfoMappingResponseBodyData
+from ._describe_application_health_check_reports_response_body import DescribeApplicationHealthCheckReportsResponseBodyReports
 from ._get_active_idp_config_response_body import GetActiveIdpConfigResponseBodyData
 from ._get_approval_response_body import GetApprovalResponseBodyApprovalApprovalProgressesOperators
 from ._get_approval_response_body import GetApprovalResponseBodyApprovalApprovalProgresses
@@ -1150,6 +1155,7 @@ __all__ = [
     DeviceGroupDynamicRule,
     DisposalContent,
     ExecutePeriod,
+    HealthCheckConfig,
     IdpAttrMapConfig,
     IdpAttrMapConfigItem,
     IdpConfig,
@@ -1396,6 +1402,9 @@ __all__ = [
     DeleteVulScanScheduledStrategyRequest,
     DeleteVulScanScheduledStrategyResponseBody,
     DeleteVulScanScheduledStrategyResponse,
+    DescribeApplicationHealthCheckReportsRequest,
+    DescribeApplicationHealthCheckReportsResponseBody,
+    DescribeApplicationHealthCheckReportsResponse,
     DetachApplication2ConnectorRequest,
     DetachApplication2ConnectorShrinkRequest,
     DetachApplication2ConnectorResponseBody,
@@ -1954,6 +1963,7 @@ __all__ = [
     CreateWmExtractTaskRequestImageExtractParamsOpenApi,
     CreateWmExtractTaskResponseBodyData,
     CreateWmInfoMappingResponseBodyData,
+    DescribeApplicationHealthCheckReportsResponseBodyReports,
     GetActiveIdpConfigResponseBodyData,
     GetApprovalResponseBodyApprovalApprovalProgressesOperators,
     GetApprovalResponseBodyApprovalApprovalProgresses,

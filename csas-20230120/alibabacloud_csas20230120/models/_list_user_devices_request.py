@@ -35,66 +35,67 @@ class ListUserDevicesRequest(DaraModel):
         username: str = None,
         workshop: str = None,
     ):
-        # The collection of client statuses.
+        # The client statuses.
         self.app_statuses = app_statuses
-        # The collection of client versions.
+        # The client versions.
         self.app_versions = app_versions
+        # The automatic logon statuses used to filter user endpoint devices.
         self.auto_login_statuses = auto_login_statuses
-        # The page number of the current page in a paging query. Valid values: 1 to 10000.
+        # The current page number for paging queries. Valid values: 1 to 10000.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The department to which the user belongs. The value is 1 to 128 characters in length and supports Chinese characters and uppercase and lowercase letters. It can contain digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces.
+        # The department to which the user belongs. The name must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces.
         self.department = department
         # The ownership of the endpoint device. Valid values:
-        # - **Personal**: personal device.
-        # - **Company**: company device.
+        # - **Personal**: Personal device.
+        # - **Company**: Company device.
         self.device_belong = device_belong
-        # The device group ID.
+        # The ID of the device group.
         self.device_group_id = device_group_id
-        # The collection of endpoint device statuses.
+        # The endpoint device statuses.
         self.device_statuses = device_statuses
-        # The collection of endpoint device IDs.
+        # The IDs of the endpoint devices.
         self.device_tags = device_tags
-        # The collection of endpoint device operating system types.
+        # The operating system types of the endpoint devices.
         self.device_types = device_types
-        # The collection of office data protection statuses.
+        # The office data protection statuses.
         self.dlp_statuses = dlp_statuses
-        # The name of the endpoint device. The value is 1 to 128 characters in length and supports Chinese characters and uppercase and lowercase letters. It can contain digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces. If you enter only an underscore (_), endpoint devices whose names contain 4-byte UTF-8 characters are also queried.
+        # The name of the endpoint device. The name must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces. If you enter only an underscore (_), the system also queries all endpoint devices whose names contain 4-byte UTF-8 characters.
         self.hostname = hostname
-        # The collection of Internet access statuses.
+        # The Internet access statuses.
         self.ia_statuses = ia_statuses
         # The internal IP address of the endpoint device.
         self.inner_ip = inner_ip
         # The MAC address of the endpoint device.
         self.mac = mac
-        # The collection of network access control statuses.
+        # The network access control statuses.
         self.nac_statuses = nac_statuses
-        # The collection of private access statuses.
+        # The internal network access statuses.
         self.pa_statuses = pa_statuses
-        # The number of entries per page in a paging query. Settings: 1 to 500.
+        # The number of entries per page for paging queries. Valid values: 1 to 500.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The user ID. You can obtain this value from the following operations:
+        # The user ID. You can obtain the value from the following operations:
         # - [GetUserDevice](~~GetUserDevice~~): Queries the details of a user endpoint device.
-        # - [ListUserDevices](~~ListUserDevices~~): Lists user endpoint devices.
+        # - [ListUserDevices](~~ListUserDevices~~): Queries a list of user endpoint devices.
         self.sase_user_id = sase_user_id
         # Specifies whether sharing is enabled for the device. Valid values:
         # - **true**: Sharing is enabled.
         # - **false**: Sharing is disabled.
         self.sharing_status = sharing_status
-        # The BIOS system serial number.
+        # The BIOS system SN.
         self.sn_bios = sn_bios
-        # The system serial number.
+        # The system serial number (SN).
         self.sn_system = sn_system
-        # The sort parameter. Valid values:
-        # - **Username**: sorted by Username in ascending order.
-        # - **AppVersion**: sorted by AppVersion in descending order.
-        # - **UpdateTime**: sorted by UpdateTime in descending order.
-        # - **CreateTime**: sorted by CreateTime in descending order.
+        # The sorting parameter. Valid values:
+        # - **Username**: Sorts by Username in ascending order.
+        # - **AppVersion**: Sorts by AppVersion in descending order.
+        # - **UpdateTime**: Sorts by UpdateTime in descending order.
+        # - **CreateTime**: Sorts by CreateTime in descending order.
         self.sort_by = sort_by
-        # The username. The value is 1 to 128 characters in length and supports Chinese characters and uppercase and lowercase letters. It can contain digits, periods (.), underscores (_), hyphens (-), asterisks (*), at signs (@), and spaces.
+        # The username. The name must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), hyphens (-), asterisks (*), at signs (@), and spaces.
         self.username = username
         # The name of the office area.
         self.workshop = workshop

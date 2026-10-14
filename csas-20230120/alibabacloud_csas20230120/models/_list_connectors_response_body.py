@@ -14,9 +14,9 @@ class ListConnectorsResponseBody(DaraModel):
         request_id: str = None,
         total_num: int = None,
     ):
-        # A list of connectors.
+        # The list of connectors.
         self.connectors = connectors
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The total number of connectors.
         self.total_num = total_num
@@ -78,41 +78,35 @@ class ListConnectorsResponseBodyConnectors(DaraModel):
         upgrade_time: main_models.ListConnectorsResponseBodyConnectorsUpgradeTime = None,
         vip_cidr: str = None,
     ):
-        # Indicates whether global acceleration is enabled. Valid values:
-        # 
-        # - **Enabled**: Global acceleration is enabled.
-        # 
-        # - **Disabled**: Global acceleration is disabled.
+        # Specifies whether global acceleration is enabled. Valid values:
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Disabled.
         self.accelerate_status = accelerate_status
-        # A list of associated private access applications.
+        # The internal access applications associated with the connector.
         self.applications = applications
-        # The cluster IP address.
+        # The IP address of the cluster.
         self.cluster_ip = cluster_ip
-        # The cluster port.
+        # The port of the cluster.
         self.cluster_port = cluster_port
-        # A list of deployed connector clients.
+        # The deployed connector clients.
         self.connector_clients = connector_clients
         # The connector ID.
         self.connector_id = connector_id
-        # The time the connector was created.
+        # The time when the connector was created. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
-        # The connector name.
+        # The name of the connector.
         self.name = name
         # The region ID.
         self.region_id = region_id
         # The connection status of the connector. Valid values:
-        # 
-        # - **Online**: The connector is online.
-        # 
-        # - **Offline**: The connector is offline.
+        # - **Online**: Online.
+        # - **Offline**: Offline.
         self.status = status
-        # The status of the connector instance. Valid values:
-        # 
-        # - **Enabled**: The connector is enabled.
-        # 
-        # - **Disabled**: The connector is disabled.
+        # The connector instance status. Valid values:
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Shutdown.
         self.switch_status = switch_status
-        # The upgrade window for the connector.
+        # The upgrade time of the connector.
         self.upgrade_time = upgrade_time
         self.vip_cidr = vip_cidr
 
@@ -234,9 +228,9 @@ class ListConnectorsResponseBodyConnectorsUpgradeTime(DaraModel):
         end: str = None,
         start: str = None,
     ):
-        # The end time of the upgrade window.
+        # The end time.
         self.end = end
-        # The start time of the upgrade window.
+        # The start time.
         self.start = start
 
     def validate(self):
@@ -273,9 +267,9 @@ class ListConnectorsResponseBodyConnectorsConnectorClients(DaraModel):
         hostname: str = None,
         public_ip: str = None,
     ):
-        # The connection status between the connector client and connector server.
+        # The connection status between the connector client and the connector server.
         self.connection_status = connection_status
-        # The unique device ID of the connector client.
+        # The unique device identifier of the connector client.
         self.dev_tag = dev_tag
         # The hostname of the connector client.
         self.hostname = hostname
@@ -326,9 +320,9 @@ class ListConnectorsResponseBodyConnectorsApplications(DaraModel):
         application_id: str = None,
         application_name: str = None,
     ):
-        # The private access application ID.
+        # The ID of the internal access application.
         self.application_id = application_id
-        # The private access application name.
+        # The name of the internal access application.
         self.application_name = application_name
 
     def validate(self):

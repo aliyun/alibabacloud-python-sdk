@@ -16,9 +16,9 @@ class ListDlpOutboundLogsResponseBody(DaraModel):
     ):
         # The log objects.
         self.logs = logs
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The total number of records that match the query conditions.
+        # The total number of records that meet the query conditions.
         self.total_number = total_number
 
     def validate(self):
@@ -107,17 +107,17 @@ class ListDlpOutboundLogsResponseBodyLogs(DaraModel):
         self.channel_type = channel_type
         # The department.
         self.department = department
-        # The local path of the file on the device.
+        # The local path of the file on the endpoint.
         self.dev_file_path = dev_file_path
-        # The unique identifier of the device.
+        # The unique identifier of the endpoint.
         self.device_tag = device_tag
-        # The device type.
+        # The endpoint type.
         self.device_type = device_type
         # The storage policy ID.
         self.dlp_storage_config_id = dlp_storage_config_id
         # The storage type.
         self.dlp_storage_type = dlp_storage_type
-        # The outbound destination address or URL.
+        # The destination address or URL of the outbound transfer.
         self.dst_addr = dst_addr
         # The file source.
         self.file_origin = file_origin
@@ -125,17 +125,17 @@ class ListDlpOutboundLogsResponseBodyLogs(DaraModel):
         self.file_origin_host = file_origin_host
         # The referrer of the file source.
         self.file_origin_referrer = file_origin_referrer
-        # The file content preview snippet.
+        # The preview snippet of the file content.
         self.file_preview = file_preview
         # The file type.
         self.format = format
         # The organizational structure path.
         self.group_info = group_info
-        # The hostname of the device.
+        # The endpoint hostname.
         self.host_name = host_name
         # LogId
         self.log_id = log_id
-        # The matched dictionary statistics.
+        # The statistics of matched dictionaries.
         self.matched_dicts = matched_dicts
         # The list of matched policy details.
         self.matched_policies = matched_policies
@@ -145,7 +145,7 @@ class ListDlpOutboundLogsResponseBodyLogs(DaraModel):
         self.policy_action = policy_action
         # The list of matched policy names.
         self.policy_name = policy_name
-        # The outbound process name.
+        # The outbound transfer process name.
         self.process_name = process_name
         # The secondary channel description.
         self.process_name_desc = process_name_desc
@@ -159,11 +159,11 @@ class ListDlpOutboundLogsResponseBodyLogs(DaraModel):
         self.size = size
         # The original file name.
         self.src_file_name = src_file_name
-        # The source IP address of the device.
+        # The source IP address of the endpoint.
         self.src_ip = src_ip
-        # The time when the event occurred.
+        # The time when the event occurred. Format: YYYY-MM-DD HH:mm:ss.
         self.start_time = start_time
-        # The time when the log was reported.
+        # The time when the log was reported. Format: YYYY-MM-DD HH:mm:ss.
         self.upload_time = upload_time
         # The username.
         self.user = user
@@ -410,11 +410,11 @@ class ListDlpOutboundLogsResponseBodyLogsMatchedPolicies(DaraModel):
         self.engine_data_level = engine_data_level
         # The corresponding data type.
         self.engine_data_type = engine_data_type
-        # The matched detection rule name.
+        # The name of the matched identification rule.
         self.engine_name = engine_name
         # The policy description.
         self.policy_desc = policy_desc
-        # The matched policy name.
+        # The hit Policy Name.
         self.policy_name = policy_name
 
     def validate(self):
@@ -539,7 +539,7 @@ class ListDlpOutboundLogsResponseBodyLogsMatchedDictsUserDicts(DaraModel):
         count: int = None,
         name: str = None,
     ):
-        # The number of matches.
+        # The hit count.
         self.count = count
         # The dictionary name.
         self.name = name
@@ -576,7 +576,7 @@ class ListDlpOutboundLogsResponseBodyLogsMatchedDictsKeywords(DaraModel):
         count: int = None,
         name: str = None,
     ):
-        # The number of matches.
+        # The hit count.
         self.count = count
         # The keyword name.
         self.name = name
@@ -613,7 +613,7 @@ class ListDlpOutboundLogsResponseBodyLogsMatchedDictsInnerDicts(DaraModel):
         count: int = None,
         name: str = None,
     ):
-        # The number of matches.
+        # The hit count.
         self.count = count
         # The dictionary name.
         self.name = name

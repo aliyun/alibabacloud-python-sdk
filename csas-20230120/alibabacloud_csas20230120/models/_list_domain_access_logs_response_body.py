@@ -14,11 +14,11 @@ class ListDomainAccessLogsResponseBody(DaraModel):
         request_id: str = None,
         total_num: int = None,
     ):
-        # The list of access log records.
+        # The list of access records.
         self.access_logs = access_logs
         # Id of the request
         self.request_id = request_id
-        # The total number of records that match the query conditions.
+        # The total number of records that meet the specified conditions.
         self.total_num = total_num
 
     def validate(self):
@@ -76,13 +76,13 @@ class ListDomainAccessLogsResponseBodyAccessLogs(DaraModel):
         src_address: str = None,
         username: str = None,
     ):
-        # The action taken upon a rule hit.
+        # The matched action.
         self.block_action = block_action
         # The department.
         self.department = department
         # The destination URL accessed.
         self.dest_address = dest_address
-        # The event time.
+        # The time when the event occurred, in the YYYY-MM-DD HH:mm:ss format.
         self.event_time = event_time
         # The Layer 4 protocol type.
         self.l_4protocol_type = l_4protocol_type

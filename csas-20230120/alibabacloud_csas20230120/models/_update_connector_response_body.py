@@ -11,9 +11,9 @@ class UpdateConnectorResponseBody(DaraModel):
         connector: main_models.UpdateConnectorResponseBodyConnector = None,
         request_id: str = None,
     ):
-        # Connector。
+        # The connector.
         self.connector = connector
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -57,27 +57,27 @@ class UpdateConnectorResponseBodyConnector(DaraModel):
         upgrade_time: main_models.UpdateConnectorResponseBodyConnectorUpgradeTime = None,
         vip_cidr: str = None,
     ):
-        # Specifies whether to enable Global Accelerator. Valid values:
+        # Specifies whether to enable global acceleration. Valid values:
         # - **Enabled**: Enabled.
         # - **Disabled**: Disabled.
         self.accelerate_status = accelerate_status
-        # ConnectorID。
+        # The connector ID.
         self.connector_id = connector_id
-        # The creation time of the Connector.
+        # The time when the connector was created, in the YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
-        # The Connector name.
+        # The name of the connector.
         self.name = name
         # The region ID.
         self.region_id = region_id
-        # The connection status of the Connector. Valid values:
+        # The connection status of the connector. Valid values:
         # - **Online**: Online.
         # - **Offline**: Offline.
         self.status = status
-        # The instance status of the Connector. Valid values:
+        # The instance status of the connector. Valid values:
         # - **Enabled**: Enabled.
         # - **Disabled**: Shutdown.
         self.switch_status = switch_status
-        # The upgrade time of the Connector.
+        # The upgrade time of the connector.
         self.upgrade_time = upgrade_time
         # The virtual IP address.
         self.vip_cidr = vip_cidr

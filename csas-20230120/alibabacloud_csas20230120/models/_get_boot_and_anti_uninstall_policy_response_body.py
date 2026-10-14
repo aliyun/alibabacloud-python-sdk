@@ -15,7 +15,7 @@ class GetBootAndAntiUninstallPolicyResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The auto-start and anti-uninstall policy.
+        # The auto-start and anti-uninstallation policy.
         self.strategy = strategy
 
     def validate(self):
@@ -64,21 +64,21 @@ class GetBootAndAntiUninstallPolicyResponseBodyStrategy(DaraModel):
         self.allow_report = allow_report
         # The content displayed in the client interception pop-up window.
         self.block_content = block_content
-        # The time when the policy was created.
+        # The time when the policy was created. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
-        # Indicates whether the anti-uninstall feature is enabled.
+        # Indicates whether the anti-uninstallation feature is enabled.
         self.is_anti_uninstall = is_anti_uninstall
         # Indicates whether the auto-start feature is enabled.
         self.is_boot = is_boot
-        # The policy ID.
+        # The ID of the policy.
         self.policy_id = policy_id
         # The ID of the approval process associated with the policy.
         self.report_process_id = report_process_id
-        # The time when the policy was updated.
+        # The time when the policy was updated. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.update_time = update_time
         # The list of user group IDs to which the policy applies.
         self.user_group_ids = user_group_ids
-        # The list of whitelist users.
+        # The list of whitelisted users.
         self.whitelist_users = whitelist_users
 
     def validate(self):
@@ -207,13 +207,13 @@ class GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextZh(D
         minor_button_text: str = None,
         title: str = None,
     ):
-        # The pop-up window content.
+        # The content of the pop-up window.
         self.content = content
         # The text of the primary button in the pop-up window.
         self.main_button_text = main_button_text
         # The text of the secondary button in the pop-up window.
         self.minor_button_text = minor_button_text
-        # The pop-up window title.
+        # The title of the pop-up window.
         self.title = title
 
     def validate(self):
@@ -262,13 +262,13 @@ class GetBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextEn(D
         minor_button_text: str = None,
         title: str = None,
     ):
-        # The pop-up window content.
+        # The content of the pop-up window.
         self.content = content
         # The text of the primary button in the pop-up window.
         self.main_button_text = main_button_text
         # The text of the secondary button in the pop-up window.
         self.minor_button_text = minor_button_text
-        # The pop-up window title.
+        # The title of the pop-up window.
         self.title = title
 
     def validate(self):

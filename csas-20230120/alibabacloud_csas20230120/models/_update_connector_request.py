@@ -13,17 +13,17 @@ class UpdateConnectorRequest(DaraModel):
         switch_status: str = None,
         vip_cidr: str = None,
     ):
-        # Specifies whether to enable Global Accelerator. Valid values:
+        # Specifies whether to enable global acceleration. Valid values:
         # - **Enabled**: Enabled.
         # - **Disabled**: Disabled.
         self.accelerate_status = accelerate_status
-        # The Connector ID. You can obtain the value by calling [ListConnectors](~~ListConnectors~~).
+        # The ID of the connector. You can call the [ListConnectors](~~ListConnectors~~) operation to query connectors and obtain the value.
         # 
         # This parameter is required.
         self.connector_id = connector_id
-        # The Connector name. The name must be 1 to 128 characters in length and can contain Chinese characters, letters, digits, periods (.), underscores (_), and hyphens (-).
+        # The name of the connector. The name must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), and hyphens (-).
         self.name = name
-        # The instance status of the Connector. Valid values:
+        # The instance status of the connector. Valid values:
         # - **Enabled**: Enabled.
         # - **Disabled**: Shutdown.
         self.switch_status = switch_status

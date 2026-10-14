@@ -16,7 +16,7 @@ class ListUserDevicesResponseBody(DaraModel):
     ):
         # The list of endpoint devices.
         self.devices = devices
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The total number of endpoint devices.
         self.total_num = total_num
@@ -115,8 +115,8 @@ class ListUserDevicesResponseBodyDevices(DaraModel):
         workshop: str = None,
     ):
         # The client status. Valid values:
-        # - **Online**: online.
-        # - **Offline**: offline.
+        # - **Online**: Online.
+        # - **Offline**: Offline.
         self.app_status = app_status
         # The client version.
         self.app_version = app_version
@@ -124,40 +124,43 @@ class ListUserDevicesResponseBodyDevices(DaraModel):
         self.auto_login_status = auto_login_status
         # The CPU model of the endpoint device.
         self.cpu = cpu
+        # The city of the public IP address.
         self.city = city
-        # The city name in English.
+        # The city in English.
         self.city_en = city_en
-        # The city name in Chinese.
+        # The city in Chinese.
         self.city_zh = city_zh
+        # The continent of the public IP address.
         self.continent = continent
-        # The continent name in English.
+        # The continent in English.
         self.continent_en = continent_en
-        # The continent name in Chinese.
+        # The continent in Chinese.
         self.continent_zh = continent_zh
+        # The country of the public IP address.
         self.country = country
-        # The country name in English.
+        # The country in English.
         self.country_en = country_en
-        # The country name in Chinese.
+        # The country in Chinese.
         self.country_zh = country_zh
         # The registration time of the endpoint device.
         self.create_time = create_time
         # The department to which the user belongs.
         self.department = department
         # The ownership of the endpoint device. Valid values:
-        # - **Personal**: personal device.
-        # - **Company**: company device.
+        # - **Personal**: Personal device.
+        # - **Company**: Company device.
         self.device_belong = device_belong
         # The model of the endpoint device.
         self.device_model = device_model
         # The status of the endpoint device. Valid values:
-        # - **Online**: online.
-        # - **Offline**: offline.
-        # - **LongTermOffline**: long-term offline.
-        # - **Locked**: locked.
-        # - **Lost**: reported as lost.
-        # - **Unbound**: unbound.
+        # - **Online**: Online.
+        # - **Offline**: Offline.
+        # - **LongTermOffline**: Long-term offline.
+        # - **Locked**: Locked.
+        # - **Lost**: Reported lost.
+        # - **Unbound**: Unbound.
         self.device_status = device_status
-        # The endpoint device ID.
+        # The ID of the endpoint device.
         self.device_tag = device_tag
         # The operating system type of the endpoint device. Valid values:
         # - **Windows**: Windows.
@@ -172,66 +175,67 @@ class ListUserDevicesResponseBodyDevices(DaraModel):
         # The disk model of the endpoint device.
         self.disk = disk
         # The office data protection status. Valid values:
-        # - **Enabled**: enabled.
-        # - **Disabled**: disabled.
-        # - **Unprovisioned**: not configured.
-        # - **Unauthorized**: unauthorized.
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Disabled.
+        # - **Unprovisioned**: Unprovisioned.
+        # - **Unauthorized**: Unauthorized.
         self.dlp_status = dlp_status
         # The anti-intrusion status. Valid values:
-        # - **Enabled**: enabled.
-        # - **Disabled**: disabled.
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Disabled.
         self.edr_status = edr_status
         # The list of full department paths.
         self.full_department = full_department
         # The name of the endpoint device.
         self.hostname = hostname
         # The Internet access status. Valid values:
-        # - **Enabled**: enabled.
-        # - **Disabled**: disabled.
-        # - **Unprovisioned**: not configured.
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Disabled.
+        # - **Unprovisioned**: Unprovisioned.
         self.ia_status = ia_status
         # The internal IP address of the endpoint device.
         self.inner_ip = inner_ip
-        # Indicates whether the device is joined to an Active Directory (AD) domain.
+        # Indicates whether the endpoint device is added to an Active Directory (AD) domain.
         self.join_ad_domain = join_ad_domain
         # The MAC address of the endpoint device.
         self.mac = mac
-        # The collection of matched device group IDs.
+        # The IDs of the matched device groups.
         self.match_device_group_ids = match_device_group_ids
         # The memory capacity of the endpoint device. Unit: GB.
         self.memory = memory
         # The network access control status. Valid values:
-        # - **Enabled**: enabled.
-        # - **Disabled**: disabled.
-        # - **Unprovisioned**: not configured.
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Disabled.
+        # - **Unprovisioned**: Unprovisioned.
         self.nac_status = nac_status
-        # The list of network interfaces of the endpoint device.
+        # The list of network interface controllers (NICs) of the endpoint device.
         self.net_interface_info = net_interface_info
-        # The private access status. Valid values:
-        # - **Enabled**: enabled.
-        # - **Disabled**: disabled.
-        # - **Unprovisioned**: not configured.
+        # The internal network access status. Valid values:
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Disabled.
+        # - **Unprovisioned**: Unprovisioned.
         self.pa_status = pa_status
+        # The province of the public IP address.
         self.province = province
-        # The province name in English.
+        # The province in English.
         self.province_en = province_en
-        # The province name in Chinese.
+        # The province in Chinese.
         self.province_zh = province_zh
-        # The user ID.
+        # The ID of the user.
         self.sase_user_id = sase_user_id
         # Specifies whether sharing is enabled for the device. Valid values:
         # - **true**: Sharing is enabled.
         # - **false**: Sharing is disabled.
         self.sharing_status = sharing_status
-        # The motherboard serial number.
+        # The serial number of the baseboard.
         self.sn_base_board = sn_base_board
-        # The BIOS system serial number.
+        # The serial number of the BIOS.
         self.sn_bios = sn_bios
-        # The hard disk serial number.
+        # The serial number of the hard disk.
         self.sn_disk_drive = sn_disk_drive
-        # The processor serial number.
+        # The serial number of the processor.
         self.sn_processor = sn_processor
-        # The system serial number.
+        # The system serial number (SN).
         self.sn_system = sn_system
         # The logon IP address of the endpoint device.
         self.src_ip = src_ip
@@ -564,9 +568,9 @@ class ListUserDevicesResponseBodyDevicesNetInterfaceInfo(DaraModel):
         mac: str = None,
         name: str = None,
     ):
-        # The MAC address of the network interface.
+        # The MAC address of the NIC.
         self.mac = mac
-        # The name of the network interface.
+        # The name of the NIC.
         self.name = name
 
     def validate(self):

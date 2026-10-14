@@ -13,9 +13,9 @@ class GetConnectorClientResponseBody(DaraModel):
         connector_client: main_models.GetConnectorClientResponseBodyConnectorClient = None,
         request_id: str = None,
     ):
-        # ConnectorClient。
+        # The ConnectorClient.
         self.connector_client = connector_client
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -70,16 +70,16 @@ class GetConnectorClientResponseBodyConnectorClient(DaraModel):
         # The number of CPUs of the ConnectorClient.
         self.cpusize = cpusize
         # The connection status of the ConnectorClient. Valid values:
-        # - **Connected**: Connected.
-        # - **Disconnected**: Disconnected.
+        # - **Connected**: The client is connected.
+        # - **Disconnected**: The client is disconnected.
         self.connection_status = connection_status
-        # ConnectorID。
+        # The connector ID.
         self.connector_id = connector_id
-        # The connector client version.
+        # The version of the connector client.
         self.connector_version = connector_version
-        # The creation time of the ConnectorClient.
+        # The time when the ConnectorClient was created. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
-        # The unique device identifier of the ConnectorClient.
+        # The unique identifier of the ConnectorClient device.
         self.dev_tag = dev_tag
         # The hostname.
         self.hosname = hosname
@@ -88,24 +88,24 @@ class GetConnectorClientResponseBodyConnectorClient(DaraModel):
         # The memory size of the ConnectorClient. Unit: MB.
         self.memory_size = memory_size
         # The O&M status. Valid values:
-        # - **Running**: O&M in progress.
+        # - **Running**: O&M is in progress.
         # - **Failed**: O&M failed.
-        # - (Empty string): Not in O&M status.
+        # - (Empty string): Not in an O&M state.
         self.operation_status = operation_status
         # The private IP address of the ConnectorClient.
         self.private_ip = private_ip
-        # The program runtime. Unit: seconds.
+        # The runtime of the program. Unit: seconds.
         self.process_run_time = process_run_time
         # The public IP address of the ConnectorClient.
         self.public_ip = public_ip
         # The release notes.
         self.release_notes = release_notes
-        # The enabled status of the ConnectorClient, which can be used to force the client offline. Valid values:
+        # The enabling status of the ConnectorClient. You can use this parameter to force the client offline. Valid values:
         # - **Enabled**: Enabled.
         # - **Disabled**: Disabled.
         self.status = status
-        # The new version status of the connector. Valid values:
-        # - **Latest**: The current version is the latest.
+        # The upgrade status of the connector. Valid values:
+        # - **Latest**: The connector is of the latest version.
         # - **NewVersionAvailable**: A newer version is available for upgrade.
         self.upgrade_status = upgrade_status
         # The version to roll back to.

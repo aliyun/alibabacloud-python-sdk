@@ -15,6 +15,8 @@ class UpdatePrivateAccessApplicationShrinkRequest(DaraModel):
         application_id: str = None,
         config_mode: str = None,
         description: str = None,
+        health_check_config_shrink: str = None,
+        health_check_mode: str = None,
         l_7config_shrink: str = None,
         l_7proxy_domain_automatic_prefix: str = None,
         l_7proxy_domain_custom: str = None,
@@ -27,48 +29,55 @@ class UpdatePrivateAccessApplicationShrinkRequest(DaraModel):
         tag_ids: List[str] = None,
         unauthorized_access_config_shrink: str = None,
     ):
-        # The application address groups. This parameter can be specified when ConfigMode is set to Precise. This parameter cannot be specified when ConfigMode is an empty string.
+        # The application address groups. You can specify this parameter when ConfigMode is Precise. You cannot specify this parameter when ConfigMode is an empty string.
         self.address_groups = address_groups
-        # The addresses of the private access application. You can specify up to 1000 addresses.
+        # The collection of private access application addresses. You can enter up to 1,000 private access application addresses.
         self.addresses = addresses
-        # The ID of the private access application. You can obtain the value from:
+        # The ID of the private access application. You can obtain the value from the following operations:
         # - [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): Lists private access applications.
         # - [CreatePrivateAccessApplication](~~CreatePrivateAccessApplication~~): Creates a private access application.
         # 
         # This parameter is required.
         self.application_id = application_id
         # The configuration mode. Valid values:
-        # * Empty string: default mode.
-        # * Precise: precise mode.
+        # * Empty string: the default mode.
+        # * Precise: the precise mode.
         self.config_mode = config_mode
-        # The description of the private access application. The description must be 1 to 128 characters in length and can contain Chinese characters, letters, digits, periods (.), underscores (_), hyphens (-), and spaces.
+        # The description of the private access application. The description must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), hyphens (-), and spaces.
         self.description = description
-        # The browser access mode parameter: the Layer 7 application configuration.
+        # The health check configuration. This parameter is valid only when HealthCheckMode is set to Continuous. You cannot specify this parameter when HealthCheckMode is set to OnAccess.
+        self.health_check_config_shrink = health_check_config_shrink
+        # The health check mode. Valid values:
+        # * OnAccess: Checks upon access without active probing.
+        # * Continuous: Performs continuous checks and periodically probes based on the configurations in HealthCheckConfig.
+        # If this parameter is not specified, the default value is OnAccess. When the application addresses include wildcard domain names or CIDR blocks, or when the number of application addresses exceeds 10, only OnAccess is supported.
+        self.health_check_mode = health_check_mode
+        # The Layer 7 application configuration in browser access mode.
         self.l_7config_shrink = l_7config_shrink
-        # The browser access mode parameter: the prefix of the mapped proxy domain name. The prefix must be 3 to 20 characters in length and can contain lowercase letters, digits, and hyphens (-).
+        # The prefix of the mapped proxy domain name in browser access mode. The prefix must be 3 to 20 characters in length, and can contain lowercase letters, digits, and hyphens (-).
         self.l_7proxy_domain_automatic_prefix = l_7proxy_domain_automatic_prefix
-        # The browser access mode parameter: the custom proxy domain name.
+        # The custom proxy domain name in browser access mode.
         self.l_7proxy_domain_custom = l_7proxy_domain_custom
-        # The browser access mode parameter: the private proxy domain name.
+        # The private proxy domain name in browser access mode.
         self.l_7proxy_domain_private = l_7proxy_domain_private
         # The modification type of the private access application. Valid values:
-        # - **Cover** (default): overwrites the original addresses, port ranges, and tag IDs with the values of the **Addresses**, **PortRanges**, and **TagIds** parameters.
-        # - **Append**: appends the values of the **Addresses**, **PortRanges**, and **TagIds** parameters to the original addresses, port ranges, and tag IDs.
+        # - **Cover** (default): Overwrites the original addresses, port ranges, and tag IDs with the values of the **Addresses**, **PortRanges**, and **TagIds** parameters.
+        # - **Append**: Appends the values specified in the **Addresses**, **PortRanges**, and **TagIds** parameters to the original addresses, port ranges, and tag IDs.
         self.modify_type = modify_type
-        # The application name.
+        # The name of the application.
         self.name = name
-        # The port ranges of the private access application. You can specify up to 65535 port ranges. Multiple port ranges cannot overlap.
+        # The collection of port ranges for the private access application. You can enter up to 65,535 port ranges. Multiple port ranges cannot be duplicate or overlap.
         self.port_ranges = port_ranges
         # The protocol of the private access application. Valid values:
-        # - **All**: all protocols.
+        # - **All**: All protocols.
         # - **TCP**
         # - **UDP**
         self.protocol = protocol
         # The status of the private access application. Valid values:
-        # - **Enabled**: enabled.
-        # - **Disabled**: disabled.
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Disabled.
         self.status = status
-        # The IDs of private access tags. A private access application can be associated with up to 6 custom private access tags.
+        # The collection of private access tag IDs. You can associate up to six custom private access tags with a single private access application.
         self.tag_ids = tag_ids
         # The configuration for unauthorized application access requests.
         self.unauthorized_access_config_shrink = unauthorized_access_config_shrink
@@ -104,6 +113,12 @@ class UpdatePrivateAccessApplicationShrinkRequest(DaraModel):
 
         if self.description is not None:
             result['Description'] = self.description
+
+        if self.health_check_config_shrink is not None:
+            result['HealthCheckConfig'] = self.health_check_config_shrink
+
+        if self.health_check_mode is not None:
+            result['HealthCheckMode'] = self.health_check_mode
 
         if self.l_7config_shrink is not None:
             result['L7Config'] = self.l_7config_shrink
@@ -161,6 +176,12 @@ class UpdatePrivateAccessApplicationShrinkRequest(DaraModel):
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('HealthCheckConfig') is not None:
+            self.health_check_config_shrink = m.get('HealthCheckConfig')
+
+        if m.get('HealthCheckMode') is not None:
+            self.health_check_mode = m.get('HealthCheckMode')
 
         if m.get('L7Config') is not None:
             self.l_7config_shrink = m.get('L7Config')

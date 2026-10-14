@@ -15,7 +15,7 @@ class UpdateApprovalStatusResponseBody(DaraModel):
     ):
         # The approval instance.
         self.approval = approval
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -73,24 +73,24 @@ class UpdateApprovalStatusResponseBodyApproval(DaraModel):
     ):
         # The details of the approval instance.
         self.approval_detail = approval_detail
-        # The approval instance ID.
+        # The ID of the approval instance.
         self.approval_id = approval_id
-        # The list of approval progress nodes.
+        # The list of progress nodes for the approval instance.
         self.approval_progresses = approval_progresses
-        # The time when the approval instance was created.
+        # The time when the approval instance was created. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
-        # The ID of the terminal device from which the approval instance was created.
+        # The ID of the endpoint device used to create the approval instance.
         self.creator_dev_tag = creator_dev_tag
         # The ID of the user who created the approval instance.
         self.creator_user_id = creator_user_id
-        # The expiration time of the approval instance. The value is a UNIX timestamp in seconds.
+        # The expiration time of the approval instance. The value is a UNIX timestamp accurate to seconds.
         self.end_timestamp = end_timestamp
-        # The policy type associated with the approval instance. Valid values:
+        # The type of the policy associated with the approval instance. Valid values:
         # - **DomainBlacklist**: Domain name blacklist.
         # - **DomainWhitelist**: Domain name whitelist.
         # - **SoftwareBlock**: Software blocking.
-        # - **AppUninstall**: Terminal uninstallation.
-        # - **DlpSend**: File outbound transfer.
+        # - **AppUninstall**: Endpoint uninstallation.
+        # - **DlpSend**: Outbound file transfer.
         # - **PeripheralBlock**: Peripheral control.
         self.policy_type = policy_type
         # The ID of the process associated with the approval instance.
@@ -99,16 +99,16 @@ class UpdateApprovalStatusResponseBodyApproval(DaraModel):
         self.process_name = process_name
         # The reason for creating the approval instance.
         self.reason = reason
-        # The content of the template associated with the approval instance.
+        # The content of the schema associated with the approval instance.
         self.schema_content = schema_content
-        # The ID of the template associated with the approval instance.
+        # The ID of the schema associated with the approval instance.
         self.schema_id = schema_id
-        # The name of the template associated with the approval instance.
+        # The name of the schema associated with the approval instance.
         self.schema_name = schema_name
-        # The instance status of the approval. Valid values:
+        # The status of the approval instance. Valid values:
         # - **Pending**: Pending approval.
         # - **Approved**: Approved.
-        # - **Rejected**: Deny.
+        # - **Rejected**: deny.
         # - **Revoked**: Revoked.
         # - **Expired**: Expired.
         self.status = status
@@ -253,7 +253,7 @@ class UpdateApprovalStatusResponseBodyApprovalApprovalProgresses(DaraModel):
         # - **Rejected**: Rejected.
         # - **Revoked**: Revoked.
         self.status = status
-        # The time when the action was performed on the approval progress node. The value is a UNIX timestamp in seconds.
+        # The time when the action was performed on the approval progress node. The value is a UNIX timestamp accurate to seconds.
         self.timestamp = timestamp
 
     def validate(self):

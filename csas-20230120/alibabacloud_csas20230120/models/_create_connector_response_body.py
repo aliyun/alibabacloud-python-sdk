@@ -11,7 +11,7 @@ class CreateConnectorResponseBody(DaraModel):
         connector: main_models.CreateConnectorResponseBodyConnector = None,
         request_id: str = None,
     ):
-        # Connector。
+        # The connector.
         self.connector = connector
         # Id of the request
         self.request_id = request_id
@@ -55,23 +55,23 @@ class CreateConnectorResponseBodyConnector(DaraModel):
         switch_status: str = None,
         upgrade_time: main_models.CreateConnectorResponseBodyConnectorUpgradeTime = None,
     ):
-        # ConnectorID。
+        # The connector ID.
         self.connector_id = connector_id
-        # The connector creation time.
+        # The time when the connector was created. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
-        # The connector name.
+        # The name of the connector.
         self.name = name
         # The region ID.
         self.region_id = region_id
-        # The connector connection status. Valid values:
+        # The connection status of the connector. Valid values:
         # - **Online**: Online.
         # - **Offline**: Offline.
         self.status = status
-        # The connector instance status. Valid values:
+        # The instance status of the connector. Valid values:
         # - **Enabled**: Enabled.
         # - **Disabled**: Shutdown.
         self.switch_status = switch_status
-        # The connector upgrade time.
+        # The upgrade time of the connector.
         self.upgrade_time = upgrade_time
 
     def validate(self):

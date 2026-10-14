@@ -29,58 +29,58 @@ class ListApprovalsRequest(DaraModel):
         schema_name: str = None,
         statuses: List[str] = None,
     ):
-        # The collection of approval instance IDs.
+        # The IDs of the approval instances.
         self.approval_ids = approval_ids
-        # The end time for querying approval instance creation, in seconds-level timestamp.
+        # The end time when the approval instance was created. The value is a UNIX timestamp in seconds.
         self.create_end_time = create_end_time
-        # The start time for querying approval instance creation, in seconds-level timestamp.
+        # The start time when the approval instance was created. The value is a UNIX timestamp in seconds.
         self.create_start_time = create_start_time
-        # The department of the approval instance creator.
+        # The department of the user who created the approval instance.
         self.creator_department = creator_department
-        # The terminal device ID of the approval instance creator.
+        # The ID of the endpoint device on which the approval instance was created.
         self.creator_dev_tag = creator_dev_tag
-        # The ID of the approval instance creator.
+        # The ID of the user who created the approval instance.
         self.creator_user_id = creator_user_id
-        # The username of the approval instance creator.
+        # The username of the user who created the approval instance.
         self.creator_username = creator_username
-        # The page number of the current page in a paging query. Valid values: 1 to 10000.
+        # The page number of the current page for a paging query. Valid values: 1 to 10000.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The list of report effective statuses, serialized in Flat format. Duplicate values are not allowed. Only records with an approval status of Approved are matched. Valid values:
-        # * Enabled: effective.
-        # * Expired: expired or invalidated.
+        # The list of effective statuses of reports. The list uses the flat serialization format and cannot contain duplicate values. Only records with the Approved approval status are matched. Valid values:
+        # * Enabled: Valid.
+        # * Expired: Invalid or expired.
         self.effect_statuses = effect_statuses
-        # The ID of the approval instance operator.
+        # The ID of the user who operated the approval instance.
         self.operator_user_id = operator_user_id
-        # The username of the approval instance operator.
+        # The username of the user who operated the approval instance.
         self.operator_username = operator_username
-        # The number of entries per page in a paging query. Valid values: 1 to 500.
+        # The number of entries per page for a paging query. Valid values: 1 to 500.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The adaptation policy type. Valid values:
+        # The type of the adapted policy. Valid values:
         # - **DomainBlacklist**: Domain name blacklist.
         # - **DomainWhitelist**: Domain name whitelist.
         # - **SoftwareBlock**: Software blocking.
-        # - **AppUninstall**: Agent uninstallation.
-        # - **DlpSend**: File outbound transfer.
+        # - **AppUninstall**: Endpoint uninstallation.
+        # - **DlpSend**: Outbound file transfer.
         # - **PeripheralBlock**: Peripheral control.
         self.policy_type = policy_type
-        # The associated approval process ID.
+        # The ID of the associated approval process.
         self.process_id = process_id
-        # The associated approval process name.
+        # The name of the associated approval process.
         self.process_name = process_name
-        # The list of report types, serialized in Flat format. Duplicate values are not allowed. Valid values:
-        # * ApprovalReport: approval report.
-        # * BackendReport: backend report.
-        # If not specified, only ApprovalReport is queried by default.
+        # The list of report types. The list uses the flat serialization format and cannot contain duplicate values. Valid values:
+        # * ApprovalReport: Approval report.
+        # * BackendReport: Backend report.
+        # If you do not specify this parameter, only ApprovalReport is queried by default.
         self.report_types = report_types
-        # The associated approval template ID.
+        # The ID of the associated approval template.
         self.schema_id = schema_id
-        # The associated approval template name.
+        # The name of the associated approval template.
         self.schema_name = schema_name
-        # The collection of approval instance statuses.
+        # The statuses of the approval instances.
         self.statuses = statuses
 
     def validate(self):

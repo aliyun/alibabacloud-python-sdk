@@ -22,31 +22,31 @@ class GetRegistrationPolicyResponseBody(DaraModel):
         user_group_ids: List[str] = None,
         whitelist: List[str] = None,
     ):
-        # The time when the device registration policy was created.
+        # The time when the device registration policy was created. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
         # The description of the device registration policy.
         self.description = description
-        # The list of limit details of the device registration policy.
+        # The list of limit details for the device registration policy.
         self.limit_detail = limit_detail
-        # The match mode of the policy. Valid values:
-        # - **UserGroupAll**: associated with all users.
-        # - **UserGroupNormal**: associated with specific user groups.
+        # The target type for policy matching. Valid values:
+        # - **UserGroupAll**: All users.
+        # - **UserGroupNormal**: Specific user groups.
         self.match_mode = match_mode
-        # The name of the device registration policy.
+        # The policy name of the device registration policy.
         self.name = name
         # The ID of the device registration policy.
         self.policy_id = policy_id
-        # The priority of the device registration policy. The value 0 indicates the highest priority, and the value 99 indicates the lowest priority.
+        # The policy priority of the device registration policy. A value of 0 indicates the highest priority, and a value of 99 indicates the lowest priority.
         self.priority = priority
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The status of the device registration policy. Valid values:
-        # - **Enabled**: enabled.
-        # - **Disabled**: disabled.
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Disabled.
         self.status = status
-        # The IDs of the user groups associated with the device registration policy. This parameter is valid when the match mode of the policy is **UserGroupNormal**.
+        # The IDs of the user groups associated with the device registration policy. This field has a value only when the target type for policy matching is **UserGroupNormal**.
         self.user_group_ids = user_group_ids
-        # The list of whitelisted users in the device registration policy.
+        # The list of whitelisted users for the device registration policy.
         self.whitelist = whitelist
 
     def validate(self):
@@ -144,16 +144,16 @@ class GetRegistrationPolicyResponseBodyLimitDetail(DaraModel):
         limit_count: main_models.GetRegistrationPolicyResponseBodyLimitDetailLimitCount = None,
         limit_type: str = None,
     ):
-        # The ownership of the device. Valid values:
-        # - **Company**: company-owned device.
-        # - **Personal**: personal device.
+        # The device ownership. Valid values:
+        # - **Company**: Corporate device.
+        # - **Personal**: Personal device.
         self.device_belong = device_belong
-        # The device registration limit count.
+        # The limit on the number of device registrations.
         self.limit_count = limit_count
-        # The type of the device registration limit. Valid values:
-        # - **Unlimited**: no limit.
-        # - **LimitAll**: limit by total count.
-        # - **LimitDiff**: limit by terminal category.
+        # The type of device registration limit. Valid values:
+        # - **Unlimited**: Unlimited.
+        # - **LimitAll**: Limited by total count.
+        # - **LimitDiff**: Limited by endpoint category.
         self.limit_type = limit_type
 
     def validate(self):
@@ -197,11 +197,11 @@ class GetRegistrationPolicyResponseBodyLimitDetailLimitCount(DaraModel):
         mobile: int = None,
         pc: int = None,
     ):
-        # The total device registration limit. This parameter is valid when the device registration limit type is **LimitAll**.
+        # The total limit on the number of device registrations. This field is valid only when the type of device registration limit is **LimitAll**.
         self.all = all
-        # The number of mobile logins allowed by the device registration limit. This parameter is valid when the device registration limit type is **LimitDiff**.
+        # The limit on the number of mobile logons for device registration. This field is valid only when the type of device registration limit is **LimitDiff**.
         self.mobile = mobile
-        # The number of PC logins allowed by the device registration limit. This parameter is valid when the device registration limit type is **LimitDiff**.
+        # The limit on the number of PC logons for device registration. This field is valid only when the type of device registration limit is **LimitDiff**.
         self.pc = pc
 
     def validate(self):

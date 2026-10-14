@@ -16,22 +16,22 @@ class ListSoftwarelibSoftwareRequest(DaraModel):
         software_name: str = None,
         source_type: str = None,
     ):
-        # The software classification ID. You can call [ListSoftwarelibClassify](~~ListSoftwarelibClassify~~) to obtain the value.
+        # The software category ID. You can call [ListSoftwarelibClassify](~~ListSoftwarelibClassify~~) to obtain the value.
         self.classify_id = classify_id
-        # The page number of the current page in a paging query. Valid values: 1 to 10000.
+        # The page number of the current page displayed during paging in a paged query. Valid values: 1 to 10000.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The maximum number of entries per page. This parameter is not supported by this operation. Use CurrentPage and PageSize for pagination.
+        # The maximum number of entries per page. This parameter is not supported by the current operation. Use CurrentPage and PageSize for pagination.
         self.max_results = max_results
-        # The pagination token. This parameter is not supported by this operation. Use CurrentPage and PageSize for pagination.
+        # The query token. This parameter is not supported by the current operation. Use CurrentPage and PageSize for pagination.
         self.next_token = next_token
-        # The operating system to which the software package applies. Valid values:
+        # The operating system applicable to the software package. Valid values:
         # - **Windows**: Windows.
         # - **Mac(Apple)**: macOS with Apple silicon.
-        # - **Mac(Intel)**: macOS with Intel processors.
+        # - **Mac(Intel)**: macOS with Intel chips.
         self.os = os
-        # The number of entries per page in a paging query. Valid values: 1 to 500.
+        # The Settings for the number of entries per page during paging in a paged query. Valid values: 1 to 500.
         # 
         # This parameter is required.
         self.page_size = page_size

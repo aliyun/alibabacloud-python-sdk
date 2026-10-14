@@ -18,13 +18,13 @@ class ListSoftwarelibSoftwareResponseBody(DaraModel):
     ):
         # The software list.
         self.data_list = data_list
-        # The maximum number of entries per page. This parameter is not returned by this operation.
+        # The maximum number of entries per page. This parameter is not returned by the current operation.
         self.max_results = max_results
-        # The pagination token. This parameter is not returned by this operation.
+        # The query token. This parameter is not returned by the current operation.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
-        # The total number of software entries that match the query conditions.
+        # The total number of software packages that meet the query conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -106,33 +106,33 @@ class ListSoftwarelibSoftwareResponseBodyDataList(DaraModel):
         versions: List[main_models.ListSoftwarelibSoftwareResponseBodyDataListVersions] = None,
         windows_version: str = None,
     ):
-        # The associated built-in software ID.
+        # The ID of the associated built-in software.
         self.builtin_software_id = builtin_software_id
-        # The software BundleId used for verification.
+        # The software bundle ID used for verification.
         self.check_bundle_id = check_bundle_id
         # The software name used for verification.
         self.check_software_name = check_software_name
-        # The software classification ID.
+        # The software category ID.
         self.classify_id = classify_id
-        # The time when the software was created, in seconds-level UNIX timestamp.
+        # The time when the software was created. The value is a UNIX timestamp accurate to seconds.
         self.create_time = create_time
         # The software description.
         self.description = description
-        # The list of associated terminal device IDs.
+        # The list of associated endpoint device IDs.
         self.dev_tags = dev_tags
         # The list of associated device group IDs.
         self.device_group_ids = device_group_ids
-        # The number of times the software has been manually downloaded from the client.
+        # The number of times the software is manually downloaded from the client.
         self.download_times = download_times
         # Indicates whether a new version is available for the software.
         self.has_new_version = has_new_version
         # The URL of the software logo.
         self.logo_url = logo_url
-        # The latest software version number for Mac (Apple).
+        # The maximum software version number for macOS with Apple silicon.
         self.mac_apple_version = mac_apple_version
-        # The latest software version number for Mac (Intel).
+        # The maximum software version number for macOS with Intel chips.
         self.mac_intel_version = mac_intel_version
-        # The policy matching target type. Valid values:
+        # The policy match target type. Valid values:
         # - **UserGroupAll**: all users.
         # - **UserGroupNormal**: specified user groups.
         # - **DevTagNormal**: specified devices.
@@ -142,13 +142,13 @@ class ListSoftwarelibSoftwareResponseBodyDataList(DaraModel):
         self.match_mode = match_mode
         # The official download URL of the software.
         self.official_download_url = official_download_url
-        # The execution account (only supported on Windows).
+        # The execution account. Only Windows is supported.
         self.run_as_account = run_as_account
         # The software ID.
         self.software_id = software_id
         # The software name.
         self.software_name = software_name
-        # Indicates whether the built-in library source has been deleted.
+        # Indicates whether the built-in library source is deleted.
         self.source_removed = source_removed
         # The software source. Valid values:
         # - **custom**: custom software.
@@ -156,9 +156,9 @@ class ListSoftwarelibSoftwareResponseBodyDataList(DaraModel):
         self.source_type = source_type
         # The list of associated user group IDs.
         self.user_group_ids = user_group_ids
-        # The software version list. This field is not returned by this operation. Call [ListSoftwarelibVersion](~~ListSoftwarelibVersion~~) to query software versions.
+        # The software version list. This field is not returned by the current operation. Call [ListSoftwarelibVersion](~~ListSoftwarelibVersion~~) to query software versions.
         self.versions = versions
-        # The latest software version number for Windows.
+        # The maximum software version number for Windows.
         self.windows_version = windows_version
 
     def validate(self):
@@ -338,24 +338,24 @@ class ListSoftwarelibSoftwareResponseBodyDataListVersions(DaraModel):
         version: str = None,
         version_id: str = None,
     ):
-        # The time when the software version was created.
+        # The time when the software version was created. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
-        # The number of times the software has been downloaded from the client.
+        # The number of times the software is downloaded from the client.
         self.download_times = download_times
-        # The MD5 value of the software package.
+        # The MD5 hash value of the software package.
         self.md_5 = md_5
         # The time when the software version was last modified.
         self.modify_time = modify_time
-        # The operating system to which the software package applies. Valid values:
+        # The operating system applicable to the software package. Valid values:
         # - **Windows**: Windows.
         # - **Mac(Apple)**: macOS with Apple silicon.
-        # - **Mac(Intel)**: macOS with Intel processors.
+        # - **Mac(Intel)**: macOS with Intel chips.
         self.os = os
         # The software publisher type. Valid values:
-        # - **local**: locally uploaded.
+        # - **local**: local upload.
         # - **thirdparty**: third-party link.
         self.publisher_type = publisher_type
-        # The ID of the software to which this version belongs.
+        # The ID of the software to which the version belongs.
         self.software_id = software_id
         # The name of the software package.
         self.software_pkg_name = software_pkg_name
@@ -363,9 +363,9 @@ class ListSoftwarelibSoftwareResponseBodyDataListVersions(DaraModel):
         self.software_pkg_size = software_pkg_size
         # The download URL of the software package.
         self.software_url = software_url
-        # The version publish status. Valid values:
+        # The release status of the version. Valid values:
         # - **published**: published.
-        # - **unpublished**: not published.
+        # - **unpublished**: unpublished.
         self.status = status
         # The software version number.
         self.version = version

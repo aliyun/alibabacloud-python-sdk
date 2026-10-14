@@ -16,7 +16,7 @@ class ListPrivateAccessPolicesResponseBody(DaraModel):
     ):
         # The list of private access policies.
         self.polices = polices
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The total number of private access policies.
         self.total_num = total_num
@@ -87,15 +87,15 @@ class ListPrivateAccessPolicesResponseBodyPolices(DaraModel):
         valid_time_status: str = None,
         valid_until: int = None,
     ):
-        # The collection of application IDs of the private access policy. This field has a value when the application type is **Application**.
+        # The IDs of the applications for the private access policy. This field has a value when the application type is **Application**.
         self.application_ids = application_ids
         # The application type of the private access policy. Valid values:
         # - **Application**: Application.
         # - **Tag**: Tag.
         self.application_type = application_type
-        # The creation time of the private access policy.
+        # The time when the private access policy was created. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
-        # The collection of custom user group attributes. Multiple custom user group attributes have an OR relationship and take effect by union.
+        # The collection of custom user group attributes. Multiple custom user group attributes have an OR relationship and take effect as a union.
         self.custom_user_attributes = custom_user_attributes
         # The description of the private access policy.
         self.description = description
@@ -105,7 +105,7 @@ class ListPrivateAccessPolicesResponseBodyPolices(DaraModel):
         self.device_attribute_action = device_attribute_action
         # The ID of the security baseline policy.
         self.device_attribute_id = device_attribute_id
-        # The name of the private access policy.
+        # The Policy Name of the internal network access policy.
         self.name = name
         # The action of the private access policy. Valid values:
         # - **Block**: Block.
@@ -113,13 +113,13 @@ class ListPrivateAccessPolicesResponseBodyPolices(DaraModel):
         self.policy_action = policy_action
         # The ID of the private access policy.
         self.policy_id = policy_id
-        # The priority of the private access policy. A value of 1 indicates the highest priority.
+        # The policy priority of the internal network access policy. A value of 1 indicates the highest priority.
         self.priority = priority
         # The status of the private access policy. Valid values:
         # - **Enabled**: Enabled.
         # - **Disabled**: Disabled.
         self.status = status
-        # The collection of tag IDs of the private access policy. This field has a value when the application type is **Tag**.
+        # The IDs of the tags for the private access policy. This field has a value when the application type is **Tag**.
         self.tag_ids = tag_ids
         # The ID of the trigger template.
         self.trigger_template_id = trigger_template_id
@@ -131,19 +131,19 @@ class ListPrivateAccessPolicesResponseBodyPolices(DaraModel):
         self.trusted_process_status = trusted_process_status
         # The list of trusted software IDs.
         self.trusted_software_ids = trusted_software_ids
-        # The collection of user group IDs for the private access policy. This field has a value when the user group type is **Normal**.
+        # The IDs of the user groups for the private access policy. This field has a value when the user group type is **Normal**.
         self.user_group_ids = user_group_ids
         # The user group type of the private access policy. Valid values:
-        # - **Normal**: Normal user group.
+        # - **Normal**: Common user group.
         # - **Custom**: Custom user group.
         self.user_group_mode = user_group_mode
-        # The effective start time of the zero trust policy, in second-level Unix timestamp.
+        # The effective start time of the zero trust policy. The value is a UNIX timestamp in seconds.
         self.valid_from = valid_from
-        # The status of the effective time switch. Valid values:
+        # The status of the effective period switch. Valid values:
         # - **Enabled**: Enabled.
-        # - **Disabled**: Disabled.
+        # - **Disabled**: shutdown.
         self.valid_time_status = valid_time_status
-        # The effective end time of the zero trust policy, in second-level Unix timestamp.
+        # The effective end time of the zero trust policy. The value is a UNIX timestamp in seconds.
         self.valid_until = valid_until
 
     def validate(self):
@@ -308,23 +308,23 @@ class ListPrivateAccessPolicesResponseBodyPolicesCustomUserAttributes(DaraModel)
         user_group_type: str = None,
         value: str = None,
     ):
-        # The identity provider ID of the user group. This value exists when the custom user group type is **department**.
+        # The ID of the identity source for the user group. This value exists when the custom user group type is **department**.
         self.idp_id = idp_id
         # The relation of the user group. Valid values:
-        # - **Equal**: Equal.
-        # - **Unequal**: Not equal.
+        # - **Equal**: Equal to.
+        # - **Unequal**: Not equal to.
         self.relation = relation
         # The type of the user group. Valid values:
         # - **username**: Username.
         # - **department**: Department.
-        # - **email**: Email.
-        # - **telephone**: Mobile phone.
+        # - **email**: Email address.
+        # - **telephone**: Mobile phone number.
         self.user_group_type = user_group_type
         # The value of the user group attribute.
-        # - When the user group type is **username**, this indicates the value of the username. The value must be 1 to 128 characters in length and supports Chinese characters and uppercase and lowercase English letters. It can contain digits, periods (.), underscores (_), and hyphens (-).
-        # - When the user group type is **department**, this indicates the value of the department. For example: OU=Department1,OU=SASE DingTalk.
-        # - When the user group type is **email**, this indicates the value of the email. For example: username@example.com.
-        # - When the user group type is **telephone**, this indicates the value of the mobile phone. For example: 13900001234.
+        # - If the user group type is **username**, this value indicates the username. The value must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), and hyphens (-).
+        # - If the user group type is **department**, this value indicates the department. Example: OU=Department 1,OU=SASE DingTalk.
+        # - If the user group type is **email**, this value indicates the email address. Example: username@example.com.
+        # - If the user group type is **telephone**, this value indicates the mobile phone number. Example: 13900001234.
         self.value = value
 
     def validate(self):

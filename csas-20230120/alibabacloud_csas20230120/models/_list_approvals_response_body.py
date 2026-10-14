@@ -88,43 +88,43 @@ class ListApprovalsResponseBodyApprovals(DaraModel):
     ):
         # The details of the approval instance.
         self.approval_detail = approval_detail
-        # The instance ID of the approval.
+        # The ID of the approval instance.
         self.approval_id = approval_id
-        # The list of approval progress nodes.
+        # The list of progress nodes for the approval instance.
         self.approval_progresses = approval_progresses
         # The approval type. Valid values:
-        # * 0: built-in approval.
-        # * 1: DingTalk approval.
-        # * 2: WeCom approval.
-        # * 3: Lark approval.
+        # - 0: Built-in approval.
+        # - 1: DingTalk approval.
+        # - 2: WeCom approval.
+        # - 3: Lark approval.
         self.approval_type = approval_type
-        # The time when the approval instance was created.
+        # The time when the approval instance was created. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
-        # The department of the approval instance creator.
+        # The department of the user who created the approval instance.
         self.creator_department = creator_department
-        # The terminal device ID of the approval instance creator.
+        # The ID of the endpoint device on which the approval instance was created.
         self.creator_dev_tag = creator_dev_tag
-        # The ID of the approval instance creator.
+        # The ID of the user who created the approval instance.
         self.creator_user_id = creator_user_id
-        # The username of the approval instance creator.
+        # The username of the user who created the approval instance.
         self.creator_username = creator_username
-        # The filing effective status. An empty string is returned when the approval status is not Approved. Valid values:
-        # * Enabled: effective.
-        # * Expired: expired or reached the expiration date.
+        # The effective status of the report. If the approval status is not Approved, an empty string is returned. Valid values:
+        # - Enabled: Valid.
+        # - Expired: Invalid or expired.
         self.effect_status = effect_status
-        # The filing deadline. The value is a UNIX timestamp in seconds. The value 0 is returned when ValidityType is set to Permanent.
+        # The expiration time of the report. The value is a UNIX timestamp in seconds. If ValidityType is set to Permanent, 0 is returned.
         self.end_timestamp = end_timestamp
-        # The policy type associated with the approval instance. Valid values:
+        # The type of the policy associated with the approval instance. Valid values:
         # - **DomainBlacklist**: Domain name blacklist.
         # - **DomainWhitelist**: Domain name whitelist.
         # - **SoftwareBlock**: Software blocking.
         # - **DeviceRegistration**: Excess registration.
         # - **AppUninstall**: Endpoint uninstallation.
-        # - **DlpSend**: File outbound transfer.
+        # - **DlpSend**: Outbound file transfer.
         # - **PeripheralBlock**: Peripheral control.
         # - **EndpointHardening**: Endpoint hardening.
         # - **oftwareHardening**: Software hardening.
-        # - **AiAgentBlock**: AI Agent control.
+        # - **AiAgentBlock**: AI agent control.
         # - **PrivateAccessBlock**: Internal network access.
         self.policy_type = policy_type
         # The ID of the process associated with the approval instance.
@@ -133,9 +133,9 @@ class ListApprovalsResponseBodyApprovals(DaraModel):
         self.process_name = process_name
         # The reason for creating the approval instance.
         self.reason = reason
-        # The filing type. Valid values:
-        # * ApprovalReport: approval filing.
-        # * BackendReport: backend filing.
+        # The report type. Valid values:
+        # - ApprovalReport: Approval report.
+        # - BackendReport: Backend report.
         self.report_type = report_type
         # The content of the template associated with the approval instance.
         self.schema_content = schema_content
@@ -143,7 +143,7 @@ class ListApprovalsResponseBodyApprovals(DaraModel):
         self.schema_id = schema_id
         # The name of the template associated with the approval instance.
         self.schema_name = schema_name
-        # The instance status of the approval. Valid values:
+        # The status of the approval instance. Valid values:
         # - **Pending**: Pending approval.
         # - **Approved**: Approved.
         # - **Rejected**: Denied.
@@ -151,7 +151,7 @@ class ListApprovalsResponseBodyApprovals(DaraModel):
         # - **Expired**: Expired.
         # - **Deleted**: Deleted.
         self.status = status
-        # The validity duration type. Valid values: FixedTime, Permanent.
+        # The validity duration type. Valid values: FixedTime and Permanent.
         self.validity_type = validity_type
 
     def validate(self):
@@ -313,12 +313,12 @@ class ListApprovalsResponseBodyApprovalsApprovalProgresses(DaraModel):
         timestamp: int = None,
     ):
         # The action performed on the approval progress node. Valid values:
-        # - **Approve**: Approved.
-        # - **Reject**: Rejected.
-        # - **Revoke**: Revoked.
-        # - **Comment**: Commented.
+        # - **Approve**: Approve.
+        # - **Reject**: Reject.
+        # - **Revoke**: Revoke.
+        # - **Comment**: Comment.
         self.action = action
-        # The comment on the approval progress node.
+        # The comment added to the approval progress node.
         self.comment = comment
         # The ID of the executor for the approval progress node.
         self.executor = executor
@@ -330,7 +330,7 @@ class ListApprovalsResponseBodyApprovalsApprovalProgresses(DaraModel):
         # - **Rejected**: Rejected.
         # - **Revoked**: Revoked.
         self.status = status
-        # The time when the approval progress node was executed. The value is a UNIX timestamp in seconds.
+        # The time when the action was performed on the approval progress node. The value is a UNIX timestamp in seconds.
         self.timestamp = timestamp
 
     def validate(self):

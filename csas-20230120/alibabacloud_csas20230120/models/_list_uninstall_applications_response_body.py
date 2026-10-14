@@ -14,11 +14,11 @@ class ListUninstallApplicationsResponseBody(DaraModel):
         request_id: str = None,
         total_num: int = None,
     ):
-        # The list of uninstall applications.
+        # The list of uninstallation applications.
         self.applications = applications
         # The ID of the request.
         self.request_id = request_id
-        # The total number of uninstall applications.
+        # The total number of uninstallation applications.
         self.total_num = total_num
 
     def validate(self):
@@ -79,9 +79,9 @@ class ListUninstallApplicationsResponseBodyApplications(DaraModel):
         status: str = None,
         username: str = None,
     ):
-        # The uninstall application ID.
+        # The ID of the uninstallation application.
         self.application_id = application_id
-        # The time when the uninstall application was created.
+        # The time when the uninstallation application was created. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
         # The department to which the user belongs.
         self.department = department
@@ -107,10 +107,10 @@ class ListUninstallApplicationsResponseBodyApplications(DaraModel):
         self.mac = mac
         # The reason for the application.
         self.reason = reason
-        # The user ID.
+        # The ID of the user.
         self.sase_user_id = sase_user_id
-        # The uninstall application status. Valid values:
-        # - **Pending**: Pending processing.
+        # The status of the uninstallation application. Valid values:
+        # - **Pending**: Pending.
         # - **Approved**: Approved.
         # - **Rejected**: Rejected.
         self.status = status

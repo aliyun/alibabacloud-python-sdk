@@ -12,9 +12,16 @@ class ProcessItem(DaraModel):
         directory: str = None,
         process: str = None,
     ):
+        # The bundle identity (Bundle ID) of the application to which the process belongs. The example value com.apple.Terminal is the Bundle ID of the macOS terminal application.
         self.bundle_id = bundle_id
+        # The operating system type of the user terminal device to which the process belongs. Valid values:
+        # - windows: Windows operating system
+        # - macOS: macOS operating system
+        # - linux: Linux operating system
         self.dev_type = dev_type
+        # The process folder path.
         self.directory = directory
+        # The process name.
         self.process = process
 
     def validate(self):

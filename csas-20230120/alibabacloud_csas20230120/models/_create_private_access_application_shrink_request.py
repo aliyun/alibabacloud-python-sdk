@@ -15,6 +15,8 @@ class CreatePrivateAccessApplicationShrinkRequest(DaraModel):
         browser_access_status: str = None,
         config_mode: str = None,
         description: str = None,
+        health_check_config_shrink: str = None,
+        health_check_mode: str = None,
         l_7config_shrink: str = None,
         l_7proxy_domain_automatic_prefix: str = None,
         l_7proxy_domain_custom: str = None,
@@ -25,47 +27,55 @@ class CreatePrivateAccessApplicationShrinkRequest(DaraModel):
         tag_ids: List[str] = None,
         unauthorized_access_config_shrink: str = None,
     ):
-        # The application address groups. Required when ConfigMode is set to Precise. Not allowed when ConfigMode is an empty string.
+        # The application address groups. This parameter is required when ConfigMode is set to Precise, and cannot be specified when ConfigMode is an empty string.
         self.address_groups = address_groups
-        # The collection of internal-facing access application addresses. You can specify up to 1000 addresses.
+        # The collection of private access application addresses. You can enter up to 1,000 private access application addresses.
         self.addresses = addresses
-        # The browser access status of the internal-facing access application. After this feature is enabled, you can access internal applications in a clientless manner. Default value: **Disabled**. Valid values:
-        # - **Enabled**: enabled.
-        # - **Disabled**: disabled.
+        # The browser access status of the private access application. After you enable this feature, you can access private access applications without a client. Default value: **Disabled**. Valid values:
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Disabled.
         self.browser_access_status = browser_access_status
         # The configuration mode. Valid values:
-        # * Empty string: default mode.
-        # * Precise: precise mode.
+        # * Empty string: Default mode.
+        # * Precise: Precise mode.
         self.config_mode = config_mode
-        # The description of the internal-facing access application. The description must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), hyphens (-), and spaces. Chinese characters are supported.
+        # The description of the private access application. The description must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), hyphens (-), and spaces.
         self.description = description
-        # The browser access mode parameter: the application configuration.
+        # The health check configuration. This parameter is required when HealthCheckMode is set to Continuous, and cannot be specified when HealthCheckMode is set to OnAccess.
+        self.health_check_config_shrink = health_check_config_shrink
+        # The health check mode. Valid values:
+        # * OnAccess: Checks upon access without proactive probing.
+        # * Continuous: Performs continuous checks and proactive probing based on the configurations in HealthCheckConfig.
+        # If this parameter is not specified, the default value is OnAccess. When the application addresses include wildcard domain names or CIDR blocks, or when the number of application addresses exceeds 10, only OnAccess is supported.
+        self.health_check_mode = health_check_mode
+        # The application configuration in browser access mode.
         self.l_7config_shrink = l_7config_shrink
-        # The browser access mode parameter: the prefix of the mapped proxy domain name. The prefix must be 3 to 20 characters in length and can contain lowercase letters, digits, and hyphens (-).
+        # The prefix of the mapped proxy domain name in browser access mode. The prefix must be 3 to 20 characters in length, and can contain lowercase letters, digits, and hyphens (-).
         self.l_7proxy_domain_automatic_prefix = l_7proxy_domain_automatic_prefix
-        # The browser access mode parameter: the custom proxy domain name. The value must be a valid domain name.
+        # The custom proxy domain name in browser access mode. The value must be a valid domain name.
         self.l_7proxy_domain_custom = l_7proxy_domain_custom
-        # The name of the internal-facing access application. The name must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). Chinese characters are supported.
+        # The name of the private access application. The name must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), and hyphens (-).
         # 
         # This parameter is required.
         self.name = name
-        # The collection of port ranges for the internal-facing access application. You can specify up to 65535 port ranges. Port ranges cannot overlap or be duplicated.
+        # The collection of port ranges for the private access application. You can enter up to 65,535 port ranges. Multiple port ranges cannot be duplicate or overlap.
         self.port_ranges = port_ranges
-        # The protocol of the internal-facing access application. Valid values:
-        # - **All**: all protocols.
+        # The protocol of the private access application. Valid values:
+        # - **All**: All protocols.
         # - **TCP**
         # - **UDP**
         # 
         # This parameter is required.
         self.protocol = protocol
-        # The status of the internal-facing access application. Valid values:
-        # - **Enabled**: enabled.
-        # - **Disabled**: disabled.
+        # The status of the private access application. Valid values:
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Disabled.
         # 
         # This parameter is required.
         self.status = status
-        # The collection of internal-facing access tag IDs. You can associate up to 6 custom-type internal-facing access tags with each application.
+        # The collection of private access tag IDs. You can associate up to six custom private access tags with a single private access application.
         self.tag_ids = tag_ids
+        # The configuration for unauthorized application access requests.
         self.unauthorized_access_config_shrink = unauthorized_access_config_shrink
 
     def validate(self):
@@ -99,6 +109,12 @@ class CreatePrivateAccessApplicationShrinkRequest(DaraModel):
 
         if self.description is not None:
             result['Description'] = self.description
+
+        if self.health_check_config_shrink is not None:
+            result['HealthCheckConfig'] = self.health_check_config_shrink
+
+        if self.health_check_mode is not None:
+            result['HealthCheckMode'] = self.health_check_mode
 
         if self.l_7config_shrink is not None:
             result['L7Config'] = self.l_7config_shrink
@@ -150,6 +166,12 @@ class CreatePrivateAccessApplicationShrinkRequest(DaraModel):
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('HealthCheckConfig') is not None:
+            self.health_check_config_shrink = m.get('HealthCheckConfig')
+
+        if m.get('HealthCheckMode') is not None:
+            self.health_check_mode = m.get('HealthCheckMode')
 
         if m.get('L7Config') is not None:
             self.l_7config_shrink = m.get('L7Config')

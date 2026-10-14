@@ -13,7 +13,9 @@ class ListVirusScanAdditionalListsResponseBody(DaraModel):
         additional_lists: List[main_models.ListVirusScanAdditionalListsResponseBodyAdditionalLists] = None,
         request_id: str = None,
     ):
+        # The blacklists and whitelists grouped by matching dimension. If a matching dimension contains no list entries, that dimension does not appear in the list.
         self.additional_lists = additional_lists
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -56,7 +58,14 @@ class ListVirusScanAdditionalListsResponseBodyAdditionalLists(DaraModel):
         additional_type: str = None,
         lists: List[main_models.ListVirusScanAdditionalListsResponseBodyAdditionalListsLists] = None,
     ):
+        # The matching dimension of the list entry. Valid values:
+        # - **FileSuffix**: Matches by file name extension.
+        # - **FileName**: Matches by file name.
+        # - **FolderName**: Matches by folder name.
+        # - **FilePath**: Matches by file path.
+        # - **FileMd5**: Matches by file MD5 hash.
         self.additional_type = additional_type
+        # The lists grouped by list type under this matching dimension.
         self.lists = lists
 
     def validate(self):
@@ -99,7 +108,11 @@ class ListVirusScanAdditionalListsResponseBodyAdditionalListsLists(DaraModel):
         list_detail: List[main_models.ListVirusScanAdditionalListsResponseBodyAdditionalListsListsListDetail] = None,
         list_type: str = None,
     ):
+        # The list of entries.
         self.list_detail = list_detail
+        # The list type. Valid values:
+        # - **Blacklist**: Blacklist. Files that match are directly identified as virus files.
+        # - **Whitelist**: Whitelist. Files that match are excluded from virus detection.
         self.list_type = list_type
 
     def validate(self):
@@ -143,8 +156,11 @@ class ListVirusScanAdditionalListsResponseBodyAdditionalListsListsListDetail(Dar
         detail: str = None,
         list_id: str = None,
     ):
+        # The creation time of the list entry, in the yyyy-MM-dd HH:mm:ss format. The time is in the UTC+8 time zone.
         self.create_time = create_time
+        # The content of the list entry. The meaning is determined by the AdditionalType to which it belongs.
         self.detail = detail
+        # The list entry ID.
         self.list_id = list_id
 
     def validate(self):

@@ -13,7 +13,7 @@ class GetUserDeviceResponseBody(DaraModel):
         device: main_models.GetUserDeviceResponseBodyDevice = None,
         request_id: str = None,
     ):
-        # The terminal device.
+        # The endpoint device.
         self.device = device
         # The ID of the request.
         self.request_id = request_id
@@ -105,111 +105,147 @@ class GetUserDeviceResponseBodyDevice(DaraModel):
         username: str = None,
         workshop: str = None,
     ):
-        # The client status. Valid values:
+        # The status of the client. Valid values:
+        # - **Online**: Online.
+        # - **Offline**: Offline.
         self.app_status = app_status
         # The client version.
         self.app_version = app_version
-        # The auto-logon status of the device. Valid values:
+        # The password-free logon status of the device. Valid values:
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Disabled.
+        # - **Unprovisioned**: Unprovisioned.
         self.auto_login_status = auto_login_status
         # The battery health percentage.
         self.battery_health_percentage = battery_health_percentage
-        # The battery remaining charge percentage.
+        # The remaining battery percentage.
         self.battery_remaining_percentage = battery_remaining_percentage
-        # The CPU model of the terminal device.
+        # The CPU model of the endpoint device.
         self.cpu = cpu
         # The city to which the public IP address belongs.
         self.city = city
-        # The city name in English.
+        # The city in English.
         self.city_en = city_en
-        # The city name in Chinese.
+        # The city in Chinese.
         self.city_zh = city_zh
         # The continent to which the public IP address belongs.
         self.continent = continent
-        # The continent name in English.
+        # The continent in English.
         self.continent_en = continent_en
-        # The continent name in Chinese.
+        # The continent in Chinese.
         self.continent_zh = continent_zh
         # The country to which the public IP address belongs.
         self.country = country
-        # The country name in English.
+        # The country in English.
         self.country_en = country_en
-        # The country name in Chinese.
+        # The country in Chinese.
         self.country_zh = country_zh
-        # The registration time of the terminal device.
+        # The registration time of the endpoint device. Format: YYYY-MM-DD HH:mm:ss.
         self.create_time = create_time
         # The department to which the user belongs.
         self.department = department
-        # The ownership of the terminal device. Valid values:
+        # The ownership of the endpoint device. Valid values:
+        # - **Personal**: Personal device.
+        # - **Company**: Company device.
         self.device_belong = device_belong
-        # The model of the terminal device.
+        # The model of the endpoint device.
         self.device_model = device_model
-        # The status of the terminal device. Valid values:
+        # The status of the endpoint device. Valid values:
+        # - **Online**: Online.
+        # - **Offline**: Offline.
+        # - **LongTermOffline**: Long-term offline.
+        # - **Locked**: Locked.
+        # - **Lost**: Reported as lost.
+        # - **Unbound**: Unbound.
         self.device_status = device_status
-        # The ID of the terminal device.
+        # The ID of the endpoint device.
         self.device_tag = device_tag
-        # The operating system type of the terminal device. Valid values:
+        # The operating system type of the endpoint device. Valid values:
+        # - **Windows**: Windows.
+        # - **macOS**: macOS.
+        # - **Linux**: Linux.
+        # - **Android**: Android.
+        # - **iOS**: iOS.
+        # - **Windows_Wuying**: WUYING Workspace.
         self.device_type = device_type
-        # The operating system version of the terminal device.
+        # The operating system version of the endpoint device.
         self.device_version = device_version
-        # The disk model of the terminal device.
+        # The disk model of the endpoint device.
         self.disk = disk
         # The available disk space, in GB.
         self.disk_available = disk_available
         # The used disk space, in GB.
         self.disk_used = disk_used
         # The office data protection status. Valid values:
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Disabled.
+        # - **Unprovisioned**: Unprovisioned.
+        # - **Unauthorized**: Unauthorized.
         self.dlp_status = dlp_status
         # The anti-intrusion status. Valid values:
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Disabled.
         self.edr_status = edr_status
-        # The historical users of the terminal device.
+        # The collection of historical users of the endpoint device.
         self.history_users = history_users
-        # The name of the terminal device.
+        # The name of the endpoint device.
         self.hostname = hostname
         # The Internet access status. Valid values:
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Disabled.
+        # - **Unprovisioned**: Unprovisioned.
         self.ia_status = ia_status
-        # The internal IP address of the terminal device.
+        # The internal IP address of the endpoint device.
         self.inner_ip = inner_ip
-        # Indicates whether the terminal has joined an AD domain.
+        # Indicates whether the terminal is joined to an Active Directory (AD) domain.
         self.join_ad_domain = join_ad_domain
-        # The MAC address of the terminal device.
+        # The MAC address of the endpoint device.
         self.mac = mac
-        # The IDs of matched device groups.
+        # The collection of matched device group IDs.
         self.match_device_group_ids = match_device_group_ids
-        # The memory capacity of the terminal device. Unit: GB.
+        # The memory capacity of the endpoint device. Unit: GB.
         self.memory = memory
         # The network access control status. Valid values:
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Disabled.
+        # - **Unprovisioned**: Unprovisioned.
         self.nac_status = nac_status
-        # The list of network interface controllers (NICs) of the terminal device.
+        # The list of network interface controllers (NICs) of the endpoint device.
         self.net_interface_info = net_interface_info
-        # The private access status. Valid values:
+        # The internal network access status. Valid values:
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Disabled.
+        # - **Unprovisioned**: Unprovisioned.
         self.pa_status = pa_status
-        # The list of processes running on the terminal.
+        # The list of running processes on the terminal.
         self.processes = processes
         # The province to which the public IP address belongs.
         self.province = province
-        # The province name in English.
+        # The province in English.
         self.province_en = province_en
-        # The province name in Chinese.
+        # The province in Chinese.
         self.province_zh = province_zh
-        # The user ID.
+        # The ID of the user.
         self.sase_user_id = sase_user_id
-        # Indicates whether sharing is enabled for the device. Valid values:
+        # Specifies whether sharing is enabled for the device. Valid values:
+        # - **true**: Enabled.
+        # - **false**: Disabled.
         self.sharing_status = sharing_status
         # The motherboard serial number.
         self.sn_base_board = sn_base_board
-        # The serial number (SN) of the BIOS system.
+        # The serial number of the BIOS.
         self.sn_bios = sn_bios
         # The hard disk serial number.
         self.sn_disk_drive = sn_disk_drive
-        # The serial number (SN) of the processor.
+        # The serial number of the processor.
         self.sn_processor = sn_processor
         # The system serial number.
         self.sn_system = sn_system
-        # The logon IP address of the terminal device.
+        # The logon IP address of the endpoint device.
         self.src_ip = src_ip
         # The timestamp when the terminal process information was collected.
         self.terminal_info_collect_time = terminal_info_collect_time
-        # The last online time of the terminal device.
+        # The last online time of the endpoint device. Format: YYYY-MM-DD HH:mm:ss.
         self.update_time = update_time
         # The username.
         self.username = username
@@ -596,11 +632,11 @@ class GetUserDeviceResponseBodyDeviceProcesses(DaraModel):
     ):
         # The CPU usage percentage of the process.
         self.cpu = cpu
-        # The process running description.
+        # The description of the running process.
         self.description = description
         # The memory usage of the process, in MB.
         self.memory = memory
-        # The process name.
+        # The name of the process.
         self.name = name
 
     def validate(self):
@@ -684,7 +720,7 @@ class GetUserDeviceResponseBodyDeviceHistoryUsers(DaraModel):
         sase_user_id: str = None,
         username: str = None,
     ):
-        # The user ID.
+        # The ID of the user.
         self.sase_user_id = sase_user_id
         # The username.
         self.username = username

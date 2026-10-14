@@ -17,11 +17,11 @@ class ListDlpOutboundLogsRequest(DaraModel):
         sub_channel_type: str = None,
         user_name: str = None,
     ):
-        # The current page number, starting from 1.
+        # The current page number. Pages start from 1.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The end time of the query. UNIX timestamp in seconds.
+        # The end time of the query. The value is a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.end_time = end_time
@@ -31,17 +31,17 @@ class ListDlpOutboundLogsRequest(DaraModel):
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The policy action. Single-value exact match.
+        # The policy action. Exact match for a single value is supported.
         self.policy_action = policy_action
-        # The original file name. Fuzzy match.
+        # The original file name. Fuzzy match is supported.
         self.src_file_name = src_file_name
-        # The start time of the query. UNIX timestamp in seconds.
+        # The start time of the query. The value is a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.start_time = start_time
-        # The secondary channel ID in the format of `PrimaryChannelID.SubChannelID`. Separate multiple values with commas.
+        # The secondary channel ID. Format: primary channel ID.secondary channel ID. Multiple values are separated by commas.
         self.sub_channel_type = sub_channel_type
-        # The username. Exact match.
+        # The username. Exact match is supported.
         self.user_name = user_name
 
     def validate(self):

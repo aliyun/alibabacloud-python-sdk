@@ -11,7 +11,7 @@ class GetConnectorResponseBody(DaraModel):
         connector: main_models.GetConnectorResponseBodyConnector = None,
         request_id: str = None,
     ):
-        # Connector。
+        # The connector.
         self.connector = connector
         # Id of the request
         self.request_id = request_id
@@ -56,25 +56,25 @@ class GetConnectorResponseBodyConnector(DaraModel):
         upgrade_time: main_models.GetConnectorResponseBodyConnectorUpgradeTime = None,
         vip_cidr: str = None,
     ):
-        # ConnectorID。
+        # The connector ID.
         self.connector_id = connector_id
-        # The connector creation time.
+        # The time when the connector was created, in the YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
-        # The connector name.
+        # The name of the connector.
         self.name = name
         # The region ID.
         self.region_id = region_id
-        # The connector connection status. Valid values:
+        # The connection status of the connector. Valid values:
         # - **Online**: Online.
         # - **Offline**: Offline.
         self.status = status
-        # The connector instance status. Valid values:
-        # - **Enabled**: Enabled.
-        # - **Disabled**: Disabled.
+        # The instance status of the connector. Valid values:
+        # - **Enabled**: enabled
+        # - **Disabled**: shutdown
         self.switch_status = switch_status
-        # The connector upgrade time.
+        # The upgrade time of the connector.
         self.upgrade_time = upgrade_time
-        # The virtual IP address range.
+        # The virtual IP address CIDR block.
         self.vip_cidr = vip_cidr
 
     def validate(self):

@@ -16,29 +16,25 @@ class ListConnectorsRequest(DaraModel):
         status: str = None,
         switch_status: str = None,
     ):
-        # An array of up to 100 ConnectorIDs.
+        # The IDs of the connectors. You can specify up to 100 connector IDs.
         self.connector_ids = connector_ids
-        # The number of the page to return. Valid values: 1 to 10,000.
+        # The page number of the current page for paging in a paged query. Valid values: 1 to 10000.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The name of the connector. The name must be 1 to 128 characters long and can contain letters, Chinese characters, digits, periods (.), underscores (_), and hyphens (-).
+        # The name of the connector. The name must be 1 to 128 characters in length and can contain Chinese characters, letters, digits, periods (.), underscores (_), and hyphens (-).
         self.name = name
-        # The number of entries per page. Valid values: 1 to 1,000.
+        # The number of entries per page in the Settings for paging in a paged query. Valid values: 1 to 1000.
         # 
         # This parameter is required.
         self.page_size = page_size
         # The connection status of the connector. Valid values:
-        # 
-        # - **Online**
-        # 
-        # - **Offline**
+        # - **Online**: Online.
+        # - **Offline**: Offline.
         self.status = status
-        # The state of the connector instance. Valid values:
-        # 
-        # - **Enabled**
-        # 
-        # - **Disabled**
+        # The connector instance status. Valid values:
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Shutdown.
         self.switch_status = switch_status
 
     def validate(self):

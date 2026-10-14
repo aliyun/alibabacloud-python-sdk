@@ -9,7 +9,7 @@ class GetConnectorRequest(DaraModel):
         self,
         connector_id: str = None,
     ):
-        # ConnectorID。
+        # The connector ID.
         # 
         # This parameter is required.
         self.connector_id = connector_id

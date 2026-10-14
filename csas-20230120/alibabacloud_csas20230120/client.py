@@ -2007,6 +2007,8 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.CreatePrivateAccessApplicationShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.health_check_config):
+            request.health_check_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.health_check_config, 'HealthCheckConfig', 'json')
         if not DaraCore.is_null(tmp_req.l_7config):
             request.l_7config_shrink = Utils.array_to_string_with_specified_style(tmp_req.l_7config, 'L7Config', 'json')
         if not DaraCore.is_null(tmp_req.unauthorized_access_config):
@@ -2023,6 +2025,10 @@ class Client(OpenApiClient):
             body['ConfigMode'] = request.config_mode
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
+        if not DaraCore.is_null(request.health_check_config_shrink):
+            body['HealthCheckConfig'] = request.health_check_config_shrink
+        if not DaraCore.is_null(request.health_check_mode):
+            body['HealthCheckMode'] = request.health_check_mode
         if not DaraCore.is_null(request.l_7config_shrink):
             body['L7Config'] = request.l_7config_shrink
         if not DaraCore.is_null(request.l_7proxy_domain_automatic_prefix):
@@ -2069,6 +2075,8 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.CreatePrivateAccessApplicationShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.health_check_config):
+            request.health_check_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.health_check_config, 'HealthCheckConfig', 'json')
         if not DaraCore.is_null(tmp_req.l_7config):
             request.l_7config_shrink = Utils.array_to_string_with_specified_style(tmp_req.l_7config, 'L7Config', 'json')
         if not DaraCore.is_null(tmp_req.unauthorized_access_config):
@@ -2085,6 +2093,10 @@ class Client(OpenApiClient):
             body['ConfigMode'] = request.config_mode
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
+        if not DaraCore.is_null(request.health_check_config_shrink):
+            body['HealthCheckConfig'] = request.health_check_config_shrink
+        if not DaraCore.is_null(request.health_check_mode):
+            body['HealthCheckMode'] = request.health_check_mode
         if not DaraCore.is_null(request.l_7config_shrink):
             body['L7Config'] = request.l_7config_shrink
         if not DaraCore.is_null(request.l_7proxy_domain_automatic_prefix):
@@ -6146,6 +6158,88 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteVulScanScheduledStrategyResponse:
         runtime = RuntimeOptions()
         return await self.delete_vul_scan_scheduled_strategy_with_options_async(request, runtime)
+
+    def describe_application_health_check_reports_with_options(
+        self,
+        request: main_models.DescribeApplicationHealthCheckReportsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeApplicationHealthCheckReportsResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.application_ids):
+            body_flat['ApplicationIds'] = request.application_ids
+        if not DaraCore.is_null(request.end_time):
+            body['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.start_time):
+            body['StartTime'] = request.start_time
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeApplicationHealthCheckReports',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeApplicationHealthCheckReportsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_application_health_check_reports_with_options_async(
+        self,
+        request: main_models.DescribeApplicationHealthCheckReportsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeApplicationHealthCheckReportsResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.application_ids):
+            body_flat['ApplicationIds'] = request.application_ids
+        if not DaraCore.is_null(request.end_time):
+            body['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.start_time):
+            body['StartTime'] = request.start_time
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeApplicationHealthCheckReports',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeApplicationHealthCheckReportsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_application_health_check_reports(
+        self,
+        request: main_models.DescribeApplicationHealthCheckReportsRequest,
+    ) -> main_models.DescribeApplicationHealthCheckReportsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_application_health_check_reports_with_options(request, runtime)
+
+    async def describe_application_health_check_reports_async(
+        self,
+        request: main_models.DescribeApplicationHealthCheckReportsRequest,
+    ) -> main_models.DescribeApplicationHealthCheckReportsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_application_health_check_reports_with_options_async(request, runtime)
 
     def detach_application_2connector_with_options(
         self,
@@ -11242,6 +11336,8 @@ class Client(OpenApiClient):
             query['ConnectorId'] = request.connector_id
         if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.health_check_status):
+            query['HealthCheckStatus'] = request.health_check_status
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
         if not DaraCore.is_null(request.page_size):
@@ -11288,6 +11384,8 @@ class Client(OpenApiClient):
             query['ConnectorId'] = request.connector_id
         if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.health_check_status):
+            query['HealthCheckStatus'] = request.health_check_status
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
         if not DaraCore.is_null(request.page_size):
@@ -15829,6 +15927,8 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.UpdatePrivateAccessApplicationShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.health_check_config):
+            request.health_check_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.health_check_config, 'HealthCheckConfig', 'json')
         if not DaraCore.is_null(tmp_req.l_7config):
             request.l_7config_shrink = Utils.array_to_string_with_specified_style(tmp_req.l_7config, 'L7Config', 'json')
         if not DaraCore.is_null(tmp_req.unauthorized_access_config):
@@ -15845,6 +15945,10 @@ class Client(OpenApiClient):
             body['ConfigMode'] = request.config_mode
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
+        if not DaraCore.is_null(request.health_check_config_shrink):
+            body['HealthCheckConfig'] = request.health_check_config_shrink
+        if not DaraCore.is_null(request.health_check_mode):
+            body['HealthCheckMode'] = request.health_check_mode
         if not DaraCore.is_null(request.l_7config_shrink):
             body['L7Config'] = request.l_7config_shrink
         if not DaraCore.is_null(request.l_7proxy_domain_automatic_prefix):
@@ -15895,6 +15999,8 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.UpdatePrivateAccessApplicationShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.health_check_config):
+            request.health_check_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.health_check_config, 'HealthCheckConfig', 'json')
         if not DaraCore.is_null(tmp_req.l_7config):
             request.l_7config_shrink = Utils.array_to_string_with_specified_style(tmp_req.l_7config, 'L7Config', 'json')
         if not DaraCore.is_null(tmp_req.unauthorized_access_config):
@@ -15911,6 +16017,10 @@ class Client(OpenApiClient):
             body['ConfigMode'] = request.config_mode
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
+        if not DaraCore.is_null(request.health_check_config_shrink):
+            body['HealthCheckConfig'] = request.health_check_config_shrink
+        if not DaraCore.is_null(request.health_check_mode):
+            body['HealthCheckMode'] = request.health_check_mode
         if not DaraCore.is_null(request.l_7config_shrink):
             body['L7Config'] = request.l_7config_shrink
         if not DaraCore.is_null(request.l_7proxy_domain_automatic_prefix):
